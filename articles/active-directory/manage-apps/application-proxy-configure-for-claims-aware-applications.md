@@ -15,17 +15,17 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77d465b5900a3c36e6c6b957431b9d6ba56f50a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97def0608251f65aa222e13760877d4287135d08
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764855"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386975"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Práce s aplikacemi pracujícími s deklaracemi v proxy aplikací
 [Aplikace pracující s deklaracemi](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) provádějí přesměrování na službu tokenů zabezpečení (STS). Služba STS požaduje přihlašovací údaje od uživatele v Exchangi pro token a pak uživatele přesměruje na aplikaci. Existuje několik způsobů, jak povolit proxy aplikace pro práci s těmito přesměrování. V tomto článku můžete nakonfigurovat nasazení pro aplikace pracující s deklaracemi. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Ujistěte se, že služba STS, na kterou pracují deklarace, je k dispozici mimo místní síť. Službu STS můžete zpřístupnit tím, že ji vystavíte prostřednictvím proxy serveru nebo pokud povolíte vnější připojení. 
 
 ## <a name="publish-your-application"></a>Publikování aplikace
@@ -55,7 +55,6 @@ Pokud jsou všechny interní adresy URL pro vaše aplikace plně kvalifikované 
    ![Přidání koncového bodu – nastavit důvěryhodnou hodnotu adresy URL – snímek obrazovky](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>Další kroky
-* [Povolit jednotné přihlašování](configure-single-sign-on-non-gallery-applications.md) pro aplikace, které nepodporují deklarace identity
 * [Povolit nativním klientským aplikacím pracovat s proxy aplikacemi](application-proxy-configure-native-client-application.md)
 
 

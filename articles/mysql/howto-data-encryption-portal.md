@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2020
-ms.openlocfilehash: c3bb15e494638d543795ac5b95e2513cb5871a2a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dcc8a99480400786a48ff952eb378a57c595464f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118626"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388182"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Šifrování dat pro Azure Database for MySQL pomocí Azure Portal
 
@@ -22,13 +22,13 @@ Naučte se používat Azure Portal k nastavení a správě šifrování dat pro 
 * Musíte mít předplatné Azure a mít oprávnění správce k tomuto předplatnému.
 * V Azure Key Vault vytvořte Trezor klíčů a klíč, který se použije pro klíč spravovaný zákazníkem.
 * Trezor klíčů musí mít následující vlastnosti, které se mají použít jako klíč spravovaný zákazníkem:
-  * [Obnovitelné odstranění](../key-vault/general/overview-soft-delete.md)
+  * [Obnovitelné odstranění](../key-vault/general/soft-delete-overview.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [Vyprázdnit chráněné](../key-vault/general/overview-soft-delete.md#purge-protection)
+  * [Vyprázdnit chráněné](../key-vault/general/soft-delete-overview.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true

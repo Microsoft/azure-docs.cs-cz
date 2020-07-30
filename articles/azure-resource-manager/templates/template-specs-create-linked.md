@@ -3,12 +3,12 @@ title: Vytvoření specifikace šablony s propojenými šablonami
 description: Naučte se vytvořit specifikaci šablony s propojenými šablonami.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: c2648cb8a71be709406f314d02a226ed097be6f0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b952baa465092fef19ad2feb11a43328a6177d1c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096685"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387859"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Kurz: Vytvoření specifikace šablony s propojenými šablonami (Preview)
 
@@ -33,7 +33,7 @@ Odkazovaná šablona se nazývá **linkedTemplate.jsv**a je uložena v podsložc
 - `/artifacts/linkedTemplate.json`
 - `artifacts/linkedTemplate.json`
 
-Pokud je na počítači, který se zavolal z linkedTemplate.jsa linkedTemplate2.jsve stejné podsložce artefaktů, zavolal jiný linkedTemplate2.js, relativePath zadaný v linkedTemplate.jsje **linkedTemplate2.jszapnutý**.
+`relativePath`Vlastnost je vždy relativní vzhledem k souboru šablony, ve kterém `relativePath` je deklarována, takže pokud je k dispozici jiné linkedTemplate2.jsv, která je volána z linkedTemplate.jsna a linkedTemplate2.jsje uložena ve stejné podsložce artefakty, je RelativePath určený v linkedTemplate.js`linkedTemplate2.json` .
 
 1. Vytvořte hlavní šablonu s následujícím JSON. Uložte hlavní šablonu jako **azuredeploy.js** do svého místního počítače. V tomto kurzu se předpokládá, že jste uložili do cesty **c:\Templates\linkedTS\azuredeploy.js** , ale můžete použít libovolnou cestu.
 

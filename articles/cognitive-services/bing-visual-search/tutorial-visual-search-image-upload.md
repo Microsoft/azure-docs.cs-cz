@@ -10,12 +10,13 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: scottwhi
-ms.openlocfilehash: ecd1ab5e613bb326b65f6aa50f3f85172bc334ac
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c2e0e907734f30010690817ddb7bb15527c93bbf
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80477930"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404011"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Kurz: nahrání obrázků do rozhraní API pro vizuální vyhledávání Bingu
 
@@ -30,13 +31,13 @@ Ukázková aplikace předvádí, jak:
 > * Zobrazení výsledků hledání obrázků ve webové aplikaci
 > * Prozkoumejte různé přehledy poskytované rozhraním API
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-structure-the-webpage"></a>Vytvoření a strukturování webové stránky
 
-Vytvoří stránku HTML, která pošle obrázek do rozhraní API pro vizuální vyhledávání Bingu, přijme přehledy a zobrazí je. Ve svém oblíbeném editoru nebo integrovaném vývojovém prostředí vytvořte soubor s názvem "uploaddemo. html". Do souboru přidejte následující základní strukturu HTML:
+Vytvoří stránku HTML, která pošle obrázek do rozhraní API pro vizuální vyhledávání Bingu, přijme přehledy a zobrazí je. V oblíbených editorech nebo v integrovaném vývojovém prostředí vytvořte soubor s názvem "uploaddemo.html". Do souboru přidejte následující základní strukturu HTML:
 
 ```html
 <!DOCTYPE html>
@@ -50,7 +51,7 @@ Vytvoří stránku HTML, která pošle obrázek do rozhraní API pro vizuální 
 </html>
 ```
 
-Rozdělte stránku do oddílu žádosti, kde uživatel poskytne všechny informace požadované pro požadavek, a část odpovědi, kde jsou přehledy zobrazené. Přidejte následující `<div>` značky do `<body>`. `<hr>` Značka vizuálně odděluje oddíl žádosti z části odpověď:
+Rozdělte stránku do oddílu žádosti, kde uživatel poskytne všechny informace požadované pro požadavek, a část odpovědi, kde jsou přehledy zobrazené. Přidejte následující `<div>` značky do `<body>` . `<hr>`Značka vizuálně odděluje oddíl žádosti z části odpověď:
 
 ```html
 <div id="requestSection"></div>
@@ -67,11 +68,11 @@ Přidejte `<script>` značku ke `<head>` značce, která bude obsahovat JavaScri
 
 ## <a name="get-the-upload-file"></a>Získat soubor pro odeslání
 
-Aby uživatel mohl vybrat obrázek k nahrání, aplikace použije `<input>` značku s atributem type nastaveným na. `file` Uživatelské rozhraní musí být jasné, že aplikace používá Bing k získání výsledků hledání.
+Aby uživatel mohl vybrat obrázek k nahrání, aplikace použije `<input>` značku s atributem type nastaveným na `file` . Uživatelské rozhraní musí být jasné, že aplikace používá Bing k získání výsledků hledání.
 
-Přidejte následující `<div>` do `requestSection` `<div>`. Vstup souboru přijímá jeden soubor libovolného typu obrázku (například .jpg, .gif, .png). Událost `onchange` určuje obslužnou rutinu, která je volána, když uživatel vybere soubor.
+Přidejte následující `<div>` do `requestSection` `<div>` . Vstup souboru přijímá jeden soubor libovolného typu obrázku (například .jpg, .gif, .png). Událost `onchange` určuje obslužnou rutinu, která je volána, když uživatel vybere soubor.
 
-`<output>` Značka se používá k zobrazení Miniatury vybrané Image:
+`<output>`Značka se používá k zobrazení Miniatury vybrané Image:
 
 ```html
 <div>
@@ -145,9 +146,9 @@ Aplikace vyžaduje pro volání rozhraní API pro vizuální vyhledávání Bing
     </div>
 ```
 
-Pomocí Image a klíče předplatného můžete uskutečnit volání Vizuální vyhledávání Bingu, abyste získali přehled o imagi. V tomto kurzu volání používá výchozí trh (`en-us`) a bezpečnou vyhledávací hodnotu (`moderate`).
+Pomocí Image a klíče předplatného můžete uskutečnit volání Vizuální vyhledávání Bingu, abyste získali přehled o imagi. V tomto kurzu volání používá výchozí trh ( `en-us` ) a bezpečnou vyhledávací hodnotu ( `moderate` ).
 
-Tato aplikace má možnost tyto hodnoty změnit. Níže přidejte následující `<div>` klíč `<div>`předplatného. Aplikace používá `<select>` značku k poskytnutí rozevíracího seznamu pro hodnoty na trhu a bezpečné vyhledávání. V obou seznamech se zobrazí výchozí hodnota.
+Tato aplikace má možnost tyto hodnoty změnit. Níže přidejte následující `<div>` klíč předplatného `<div>` . Aplikace používá `<select>` značku k poskytnutí rozevíracího seznamu pro hodnoty na trhu a bezpečné vyhledávání. V obou seznamech se zobrazí výchozí hodnota.
 
 ```html
 <div>
@@ -211,7 +212,7 @@ Tato aplikace má možnost tyto hodnoty změnit. Níže přidejte následující
 
 ## <a name="add-search-options-to-the-webpage"></a>Přidat možnosti hledání na webovou stránku
 
-Aplikace skryje seznamy v sbalitelné `<div>` , které jsou ovládány odkazem možnosti dotazu. Když kliknete na odkaz Možnosti dotazu, rozšíří `<div>` se, aby bylo možné zobrazit a upravit možnosti dotazu. Pokud znovu kliknete na odkaz Možnosti dotazu, `<div>` sbalení a bude skryto. Následující fragment kódu ukazuje `onclick` obslužnou rutinu odkazu možnosti dotazu. Obslužná rutina řídí, `<div>` zda je rozbalen nebo sbalen. Přidejte tuto obslužnou rutinu `<script>` do oddílu. Obslužná rutina se používá všemi sbalitelnými `<div>` oddíly v ukázce.
+Aplikace skryje seznamy v sbalitelné `<div>` , které jsou ovládány odkazem možnosti dotazu. Když kliknete na odkaz Možnosti dotazu, rozšíří se, `<div>` aby bylo možné zobrazit a upravit možnosti dotazu. Pokud znovu kliknete na odkaz Možnosti dotazu, `<div>` sbalení a bude skryto. Následující fragment kódu ukazuje `onclick` obslužnou rutinu odkazu možnosti dotazu. Obslužná rutina řídí, zda `<div>` je rozbalen nebo sbalen. Přidejte tuto obslužnou rutinu do `<script>` oddílu. Obslužná rutina se používá všemi sbalitelnými `<div>` oddíly v ukázce.
 
 ```javascript
 // Contains the toggle state of divs.
@@ -241,7 +242,7 @@ Přidejte následující `"Get insights"` tlačítko pod možnostmi `<div>` v t�
 <p><input type="button" id="query" value="Get insights" onclick="document.body.style.cursor='wait'; handleQuery()" /></p>
 ```
 
-Přidejte `onclick` `handleQuery()` do `<script>` značky obslužnou rutinu tlačítka.
+Přidejte `onclick` do značky obslužnou rutinu tlačítka `handleQuery()` `<script>` .
 
 ## <a name="handle-the-query"></a>Zpracování dotazu
 
@@ -284,7 +285,7 @@ function handleQuery() {
 
 ## <a name="send-the-search-request"></a>Odeslat požadavek hledání
 
-`sendRequest()` Funkce formátuje adresu URL koncového bodu, nastaví `Ocp-Apim-Subscription-Key` hlavičku na klíč předplatného, připojí binární soubor obrázku, který se má nahrát, určí obslužnou rutinu odpovědi a provede volání:
+`sendRequest()`Funkce formátuje adresu URL koncového bodu, nastaví `Ocp-Apim-Subscription-Key` hlavičku na klíč předplatného, připojí binární soubor obrázku, který se má nahrát, určí obslužnou rutinu odpovědi a provede volání:
 
 ```javascript
 function sendRequest(file, key) {
@@ -306,7 +307,7 @@ function sendRequest(file, key) {
 
 ## <a name="get-and-handle-the-api-response"></a>Získání a zpracování odpovědi rozhraní API
 
-`handleResponse()` Funkce zpracovává odpověď od volání vizuální vyhledávání Bingu. Pokud je volání úspěšné, naparsuje odpověď JSON do jednotlivých značek, které obsahují přehledy. V dalším kroku přidá výsledky hledání na stránku. Aplikace potom vytvoří sbalitelnou `<div>` pro každou značku, která bude spravovat, kolik dat se zobrazí. Přidejte obslužnou rutinu do `<script>` oddílu.
+`handleResponse()`Funkce zpracovává odpověď od volání vizuální vyhledávání Bingu. Pokud je volání úspěšné, naparsuje odpověď JSON do jednotlivých značek, které obsahují přehledy. V dalším kroku přidá výsledky hledání na stránku. Aplikace potom vytvoří sbalitelnou `<div>` pro každou značku, která bude spravovat, kolik dat se zobrazí. Přidejte obslužnou rutinu do `<script>` oddílu.
 
 ```javascript
 function handleResponse() {
@@ -328,7 +329,7 @@ function handleResponse() {
 
 ### <a name="parse-the-response"></a>Parsování odpovědi
 
-`parseResponse` Funkce PŘEVEDE odpověď JSON na objekt Dictionary pomocí iterace `json.tags`.
+`parseResponse`Funkce převede odpověď JSON na objekt Dictionary pomocí iterace `json.tags` .
 
 ```javascript
 function parseResponse(json) {
@@ -351,7 +352,7 @@ function parseResponse(json) {
 
 ### <a name="build-a-tag-section"></a>Sestavení oddílu značky
 
-`buildTagSections()` Funkce provádí iteraci analyzovaných značek JSON a volá `buildDiv()` funkci pro sestavení `<div>` pro každou značku. Každá značka se zobrazí jako odkaz. Po kliknutí na odkaz se značka rozbalí a zobrazí se přehledy spojené se značkou. Opakovaným kliknutím na odkaz dojde k sbalení oddílu.
+`buildTagSections()`Funkce provádí iteraci analyzovaných značek JSON a volá `buildDiv()` funkci pro sestavení `<div>` pro každou značku. Každá značka se zobrazí jako odkaz. Po kliknutí na odkaz se značka rozbalí a zobrazí se přehledy spojené se značkou. Opakovaným kliknutím na odkaz dojde k sbalení oddílu.
 
 ```javascript
 function buildTagSections(tags) {
@@ -390,7 +391,7 @@ function buildDiv(tags, tag) {
 
 ## <a name="display-the-search-results-in-the-webpage"></a>Zobrazení výsledků hledání na webové stránce
 
-`buildDiv()` Funkce volá `addDivContent` funkci pro sestavení obsahu každé sbalitelné `<div>`značky.
+`buildDiv()`Funkce volá `addDivContent` funkci pro sestavení obsahu každé sbalitelné značky `<div>` .
 
 Obsah značky zahrnuje kód JSON z odpovědi pro značku. Zpočátku jsou zobrazeny pouze první 100 znaky JSON, ale můžete kliknout na řetězec JSON a zobrazit tak všechny JSON. Pokud na něj kliknete znovu, řetězec JSON se sbalí zpět na 100 znaků.
 
@@ -478,7 +479,7 @@ Následující funkce zobrazují přehledy o různých akcích. Funkce poskytuj�
 
 ### <a name="relatedimages-insights"></a>RelatedImages přehledy
 
-`addRelatedImages()` Funkce vytvoří název pro každý web, který hostuje související image, tak, že projde seznam `RelatedImages` akcí a připojí `<img>` značku k vnějšímu `<div>` pro každý z nich:
+`addRelatedImages()`Funkce vytvoří název pro každý web, který hostuje související image, tak, že projde seznam `RelatedImages` akcí a připojí `<img>` značku k vnějšímu `<div>` pro každý z nich:
 
 ```javascript
     function addRelatedImages(div, images) {
@@ -509,7 +510,7 @@ Následující funkce zobrazují přehledy o různých akcích. Funkce poskytuj�
 
 ### <a name="pagesincluding-insights"></a>PagesIncluding přehledy
 
-`addPagesIncluding()` Funkce vytvoří odkaz pro každý web hostující nahranou image tak, že projde seznam `PagesIncluding` akcí a připojí `<img>` značku k vnějšímu `<div>` pro každý z nich:
+`addPagesIncluding()`Funkce vytvoří odkaz pro každý web hostující nahranou image tak, že projde seznam `PagesIncluding` akcí a připojí `<img>` značku k vnějšímu `<div>` pro každý z nich:
 
 ```javascript
 
@@ -533,7 +534,7 @@ Následující funkce zobrazují přehledy o různých akcích. Funkce poskytuj�
 
 ### <a name="relatedsearches-insights"></a>RelatedSearches přehledy
 
-`addRelatedSearches()` Funkce vytvoří odkaz na web, který je hostitelem obrázku, tak, že projde seznam `RelatedSearches` akcí a připojí `<img>` značku k vnějšímu `<div>` pro každý z nich:
+`addRelatedSearches()`Funkce vytvoří odkaz na web, který je hostitelem obrázku, tak, že projde seznam `RelatedSearches` akcí a připojí `<img>` značku k vnějšímu `<div>` pro každý z nich:
 
 ```javascript
 
@@ -566,7 +567,7 @@ Následující funkce zobrazují přehledy o různých akcích. Funkce poskytuj�
 
 ### <a name="recipes-insights"></a>Přehledy recepty
 
-`addRecipes()` Funkce vytvoří odkaz pro každý recept vrácený při iteraci seznamem `Recipes` akcí a připojením `<img>` značky k vnějšímu `<div>` pro každý z nich:
+`addRecipes()`Funkce vytvoří odkaz pro každý recept vrácený při iteraci seznamem `Recipes` akcí a připojením `<img>` značky k vnějšímu `<div>` pro každý z nich:
 
 ```javascript
     // Display links to the first 10 recipes. Include the recipe's rating,
@@ -598,7 +599,7 @@ Následující funkce zobrazují přehledy o různých akcích. Funkce poskytuj�
 
 ### <a name="shopping-insights"></a>Přehledy nákupu
 
-`addShopping()` Funkce vytvoří odkaz pro všechny vrácené výsledky nákupu tak, že projde seznam `RelatedImages` akcí a připojí `<img>` značku k vnějšímu `<div>` :
+`addShopping()`Funkce vytvoří odkaz pro všechny vrácené výsledky nákupu tak, že projde seznam `RelatedImages` akcí a připojí `<img>` značku k vnějšímu `<div>` :
 
 ```javascript
     // Display links for the first 10 shopping offers.
@@ -627,7 +628,7 @@ Následující funkce zobrazují přehledy o různých akcích. Funkce poskytuj�
 
 ### <a name="products-insights"></a>Přehledy produktů
 
-`addProducts()` Funkce vytvoří odkaz na výsledky vrácených produktů pomocí iterace v seznamu `Products` akcí a připojením `<img>` značky k vnějšímu `<div>` pro každý z nich:
+`addProducts()`Funkce vytvoří odkaz na výsledky vrácených produktů pomocí iterace v seznamu `Products` akcí a připojením `<img>` značky k vnějšímu `<div>` pro každý z nich:
 
 ```javascript
 
@@ -691,7 +692,7 @@ Následující funkce zobrazují přehledy o různých akcích. Funkce poskytuj�
 
 ### <a name="textresult-insights"></a>TextResult přehledy
 
-`addTextResult()` Funkce zobrazí veškerý text, který byl rozpoznán v obrázku:
+`addTextResult()`Funkce zobrazí veškerý text, který byl rozpoznán v obrázku:
 
 ```javascript
 
@@ -702,7 +703,7 @@ Následující funkce zobrazují přehledy o různých akcích. Funkce poskytuj�
     }
 ```
 
-`addEntity()` Funkce zobrazí odkaz, který převezme uživatele, aby Bing.com, kde mohou získat podrobnosti o typu entity v imagi, pokud byl nalezen:
+`addEntity()`Funkce zobrazí odkaz, který převezme uživatele, aby Bing.com, kde mohou získat podrobnosti o typu entity v imagi, pokud byl nalezen:
 
 ```javascript
     // If the image is of a person, the tag might include an entity
@@ -718,7 +719,7 @@ Následující funkce zobrazují přehledy o různých akcích. Funkce poskytuj�
     }
 ```
 
-`addImageWithWebSearchUrl()` Funkce zobrazí obrázek s možností kliknutí `<div>` , který uživateli provede hledání výsledků na Bing.com:
+`addImageWithWebSearchUrl()`Funkce zobrazí obrázek s `<div>` možností kliknutí, který uživateli provede hledání výsledků na Bing.com:
 
 ```javascript
     function addImageWithWebSearchUrl(div, image, action) {

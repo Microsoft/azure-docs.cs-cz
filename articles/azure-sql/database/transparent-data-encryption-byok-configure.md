@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: ac72e3e232ec17c4c4d810f6d2c7fed6fa84fd02
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 84166e5523cdbdb9ccebf9a0cbfc5e4dee0eb9e8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981324"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387128"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell a rozhraní příkazového řádku Azure CLI: povolení transparentní šifrování dat s klíčem spravovaným zákazníkem z Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Tento článek vás seznámí s postupem použití klíče z Azure Key Vault pro
 - Vytvořte Azure Key Vault a klíč pro použití pro TDE.
   - [Pokyny k používání modulu hardwarového zabezpečení (HSM) a Key Vault](../../key-vault/keys/hsm-protected-keys.md)
     - Trezor klíčů musí mít následující vlastnost, která se má použít pro TDE:
-  - [obnovitelné odstraňování](../../key-vault/general/overview-soft-delete.md) a mazání ochrany
+  - [obnovitelné odstraňování](../../key-vault/general/soft-delete-overview.md) a mazání ochrany
 - Klíč musí mít následující atributy, které se mají použít pro TDE:
   - Žádné datum vypršení platnosti
   - Nezakázáno
@@ -121,7 +121,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
    -ServerName <LogicalServerName> -DatabaseName <DatabaseName>  
 ```
 
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pokud chcete nainstalovat požadovanou verzi Azure CLI (verze 2,0 nebo novější) a připojit se k předplatnému Azure, přečtěte si téma [instalace a konfigurace 2,0 rozhraní příkazového řádku Azure pro více platforem](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -207,7 +207,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
    Remove-AzSqlServerKeyVaultKey -KeyId <KeyVaultKeyId> -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 - Obecné nastavení databáze najdete v tématu [AZ SQL](/cli/azure/sql).
 
@@ -217,7 +217,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 * * *
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud dojde k problému, podívejte se na následující:
 
@@ -229,7 +229,7 @@ Pokud dojde k problému, podívejte se na následující:
    Get-AzSubscription -SubscriptionId <SubscriptionId>
    ```
 
-   # <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
+   # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
    ```powershell
    az account show - s <SubscriptionId>

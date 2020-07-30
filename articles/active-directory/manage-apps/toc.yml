@@ -21,8 +21,6 @@
       href: delete-application-portal.md
 - name: Kurzy
   items:
-    - name: 'Přidání aplikace, která není uvedená v galerii'
-      href: add-non-gallery-app.md
     - name: 'Integrované aplikace v galerii (např. ServiceNow, Salesforce, Dropbox)'
       href: /azure/active-directory/saas-apps/
     - name: Přidání místní aplikace prostřednictvím proxy aplikací
@@ -42,6 +40,8 @@
       items:
         - name: Začínáme s integrací aplikací
           href: plan-an-application-integration.md
+        - name: 'Plánování aplikací, které nejsou uvedené v galerii'
+          href: non-gallery-apps.md
         - name: Plánování nasazení přístupového panelu
           href: access-panel-deployment-plan.md
         - name: Pokyny pro vývojáře
@@ -106,7 +106,7 @@
             - name: Konfigurace jednotného přihlašování pomocí SAML
               items:
                 - name: Konfigurace jednotného přihlašování pomocí SAML
-                  href: configure-single-sign-on-non-gallery-applications.md
+                  href: configure-saml-single-sign-on.md
                 - name: Přizpůsobení atributů a deklarací identit uživatelů
                   items:
                     - name: Konfigurace deklarace identit skupin

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 0058c250c2d1d29061ac7a4130dffedbcf62a249
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4fabaed28ca186f3ca091107e51ed3900168ba41
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294051"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387723"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Dočasné disky s operačním systémem pro virtuální počítače Azure
 
@@ -35,7 +35,7 @@ Klíčové rozdíly mezi trvalými a dočasnými disky s operačním systémem:
 |                             | Trvalý disk s operačním systémem                          | Dočasný disk s operačním systémem                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | **Omezení velikosti pro disk s operačním systémem**      | 2 TB                                                                                        | Velikost mezipaměti pro velikost virtuálního počítače nebo 2TiB, podle toho, která hodnota je menší. **Velikost mezipaměti v GIB najdete v**tématu [DS](sizes-general.md), [ES](sizes-memory.md), [M](sizes-memory.md), [FS](sizes-compute.md)a [GS](sizes-previous-gen.md#gs-series) .              |
-| **Podporované velikosti virtuálních počítačů**          | Vše                                                                                          | Velikosti virtuálních počítačů, které podporují službu Premium Storage, jako je DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, LSv2, M                                               |
+| **Podporované velikosti virtuálních počítačů**          | Vše                                                                                          | Velikosti virtuálních počítačů, které podporují službu Premium Storage, jako je DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, M                                               |
 | **Podpora typů disků**           | Spravovaný a nespravovaný disk s operačním systémem                                                                | Jenom spravovaný disk s operačním systémem                                                               |
 | **Podpora oblastí**              | Všechny oblasti                                                                                  | Všechny oblasti                              |
 | **Trvalost dat**            | Data disku s operačním systémem zapsaná na disk s operačním systémem se ukládají v Azure Storage                                  | Data zapsaná na disk s operačním systémem se ukládají do místního úložiště virtuálního počítače a neukládají se do Azure Storage. |

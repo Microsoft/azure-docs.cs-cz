@@ -10,12 +10,13 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 3d4ccc6ecf18eb2eecc3ccc69ed97bf1094b2035
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-javascript
+ms.openlocfilehash: cc73dcf6376dc5a222b1b68d67e4f02090258807
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206459"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407859"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání obrázků
 
@@ -316,7 +317,7 @@ function renderImageResults(items) {
 
 Rozhraní API Bingu pro vyhledávání obrázků může vrátit čtyři typy návrhů vyhledávání, které pomáhají uživatelům s vyhledáváním, každý ve vlastním objektu nejvyšší úrovně:
 
-| Návrh         | Description                                                                                                                                                                                                         |
+| Návrh         | Popis                                                                                                                                                                                                         |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `pivotSuggestions` | Dotazy, které nahradí pivotové slovo v původním vyhledávání jiným. Pokud třeba vyhledáváte „červené květiny“, pivotové slovo může být „červené“ a pivotový návrh může být „žluté květiny“. |
 | `queryExpansions`  | Dotazy, které původní hledání zúží přidáním dalších výrazů. Pokud třeba vyhledáváte „Microsoft Surface“, rozšíření dotazu může být „Microsoft Surface Pro“.                                   |
@@ -338,7 +339,7 @@ searchItemRenderers = {
 
 Funkce rendereru může přijímat tyto parametry:
 
-| Parametr         | Description                                                                                              |
+| Parametr         | Popis                                                                                              |
 |---------|----------------------------------------------------------------------------------------------|
 | `item`  | Objekt JavaScriptu obsahující vlastnosti položky, jako je její adresa URL a popis. |
 | `index` | Index položky výsledků v rámci jeho kolekce.                                          |
@@ -410,6 +411,6 @@ Při používání ukázkové aplikace nechte příkazové okno otevřené. Zav�
 > [!div class="nextstepaction"]
 > [Extrahování podrobností o obrázku pomocí rozhraní API Bingu pro vyhledávání obrázků](tutorial-image-post.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

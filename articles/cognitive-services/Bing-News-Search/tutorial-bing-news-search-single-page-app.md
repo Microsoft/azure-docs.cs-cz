@@ -10,13 +10,13 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 9721a00ef1f0df056b3300ababfee0d0d29bbddc
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.custom: seodec2018, devx-track-javascript
+ms.openlocfilehash: 2391b63cbc0539b9c2e505e8cf531aeb78eb9bfd
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801270"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406074"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Kurz: Vytvoření webové aplikace s jednou stránkou
 
@@ -41,7 +41,7 @@ Ukázková aplikace předvádí, jak:
 Stránka kurzu je zcela nezávislá. Nepoužívá žádná externí rozhraní, šablony stylů ani soubory obrázků. Používá jenom běžně podporované funkce jazyka JavaScript a funguje s aktuálními verzemi všech hlavních webových prohlížečů.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli postupovat podle tohoto kurzu, potřebujete klíče předplatného pro rozhraní Vyhledávání Bingu API. Pokud je nemáte, budete je muset vytvořit:
 
@@ -109,7 +109,7 @@ Následující obrázek znázorňuje textové pole dotazu a možnosti, které de
 
 Formulář HTML obsahuje prvky s těmito názvy:
 
-|Prvek|Popis|
+|Element|Popis|
 |-|-|
 | `where` | Rozevírací nabídka pro výběr trhu (polohy a jazyka) pro vyhledávání. |
 | `query` | Textového pole k zadání hledaných termínů. |
@@ -279,7 +279,7 @@ function handleBingResponse() {
 
 Velká část kódu v obou předchozích funkcích je vyhrazená zpracování chyb. V následujících fázích můžou nastat chyby:
 
-|Krok|Potenciální chyby|Čím se zpracují|
+|Fáze|Potenciální chyby|Čím se zpracují|
 |-|-|-|
 |Vytváření javascriptového objektu požadavku|Neplatná adresa URL|Blok `try`/`catch`|
 |Provedení žádosti|Chyby sítě, přerušená připojení|Obslužné rutiny událostí `error` a `abort`|

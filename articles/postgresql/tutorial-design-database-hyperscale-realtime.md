@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: f4eeb646de8b68c2c8d30586d0c75cece5317e40
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: db3cd95c5a833b299ee85c1e68b15644ae0e0226
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76716330"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387570"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Kurz: Návrh řídicího panelu analýzy v reálném čase pomocí Azure Database for PostgreSQL – škálovatelné (Citus)
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte, jak používat Azure Database for PostgreSQL-Citus (
 > * Dotazování na hrubá a agregovaná data
 > * Vypršení platnosti dat
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -86,16 +86,18 @@ Nově vytvořené tabulky můžete zobrazit v seznamu tabulek nyní pomocí toho
 
 Nasazení v rámci škálování ukládá řádky tabulky na různých uzlech na základě hodnoty uživatelem označeného sloupce. Tento "distribuční sloupec" označuje způsob, jakým se data horizontálně dělené napříč uzly.
 
-Nastavíme distribuční sloupec jako ID webu\_, klíč horizontálních oddílů. V psql spusťte tyto funkce:
+Nastavíme distribuční sloupec jako \_ ID webu, klíč horizontálních oddílů. V psql spusťte tyto funkce:
 
   ```sql
 SELECT create_distributed_table('http_request',      'site_id');
 SELECT create_distributed_table('http_request_1min', 'site_id');
 ```
 
+[!INCLUDE [azure-postgresql-hyperscale-dist-alert](../../includes/azure-postgresql-hyperscale-dist-alert.md)]
+
 ## <a name="generate-sample-data"></a>Generování ukázkových dat
 
-Naše skupina serverů by teď měla být připravená na ingestování některých dat. K průběžnému vkládání dat můžeme z našeho `psql` připojení spustit následující místně.
+Naše skupina serverů by teď měla být připravená na ingestování některých dat. `psql`K průběžnému vkládání dat můžeme z našeho připojení spustit následující místně.
 
 ```sql
 DO $$
@@ -122,7 +124,7 @@ DO $$
 END $$;
 ```
 
-Dotaz vkládá přibližně osm řádků každou sekundu. Řádky jsou uloženy na různých pracovních uzlech, `site_id`které jsou směrovány pomocí distribučního sloupce.
+Dotaz vkládá přibližně osm řádků každou sekundu. Řádky jsou uloženy na různých pracovních uzlech, které jsou směrovány pomocí distribučního sloupce `site_id` .
 
    > [!NOTE]
    > Ponechte dotaz na generování dat spuštěný a otevřete druhé připojení psql pro zbývající příkazy v tomto kurzu.
