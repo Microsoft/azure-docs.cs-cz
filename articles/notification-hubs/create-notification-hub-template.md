@@ -66,7 +66,7 @@ az notification-hub show --resource-group ContosoNotificationsGroup --namespace-
 az notification-hub namespace show --resource-group ContosoNotificationsGroup --name nhtestns123
 ```
 
----
+
 The output looks similar to: null
 ':::image type="content" source="media/create-notification-hub-template/verify-deploy.png" alt-text="Verify deployment"::': null
 
