@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 182ceca11d6e9b9bbebcf2911de1783cef43dd1a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 4928938c38df8a1ed0f1e31c73e755a4f7f6c371
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207334"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367626"
 ---
 # <a name="tutorial-manipulating-models"></a>Kurz: manipulace s modely
 
@@ -23,7 +23,7 @@ V tomto kurzu se naučíte:
 > * Raycast s prostorovými dotazy
 > * Přidat jednoduché animace pro vzdáleně vykreslené objekty
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Tento kurz sestaví v [kurzu: rozhraní a vlastní modely](../custom-models/custom-models.md).
 
@@ -185,7 +185,7 @@ Tento kurz používá MRTK pro interakci s objekty. Většina implementace konkr
 
 1. Pokud ho chcete přesunout, stiskněte levé tlačítko a přetáhněte ho.
 
-Měl by se zobrazit vzdálený vykreslený obsah, který se bude pohybovat spolu s ohraničujícím polem. Můžete si všimnout prodlevy nebo prodlevy mezi ohraničujícím polem vzdáleného obsahu. Tato prodleva bude záviset na latenci Internetu a šířce pásma.
+Měl by se zobrazit vzdálený vykreslený obsah, který se bude pohybovat spolu s ohraničujícím polem. Můžete si všimnout prodlevy nebo prodlevy mezi ohraničovacím polem a vzdáleným obsahem. Tato prodleva bude záviset na latenci Internetu a šířce pásma.
 
 ## <a name="ray-cast-and-spatial-queries-of-remote-models"></a>Přetypování ray a prostorové dotazy na vzdálené modely
 

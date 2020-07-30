@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 7a9762d36d2c9ae6ede6718a31cae99afa230ef6
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 3ed655ed419e3be378a68b26b9f14b03c1af4796
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84702319"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039510"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Programové získání přehledu o využití Azure pomocí rozhraní API pro fakturaci Azure
 Rozhraní API pro fakturaci Azure můžete využít k předání dat o využití a prostředcích do vašeho upřednostňovaného nástroje pro datové analýzy. Rozhraní API využití a ceníku prostředků Azure vám pomohou přesně odhadnout a spravovat vaše náklady. Tato rozhraní API se implementují jako poskytovatel prostředků a jsou součástí řady rozhraní API, která zveřejňuje Azure Resource Manager.  
@@ -22,7 +22,7 @@ Rozhraní API pro fakturaci Azure můžete využít k předání dat o využití
 ## <a name="azure-invoice-download-api-preview"></a>Azure Invoice Download API (Preview)
 Jakmile se [dokončí udělení přístupu](manage-billing-access.md#opt-in), můžete si pomocí verze Preview rozhraní [API Faktury](/rest/api/billing) stahovat faktury. Toto jsou některé z dostupných funkcí:
 
-* **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com) nebo v [rutinách Azure PowerShell](/powershell/azure/overview) můžete určit, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Pokud chcete, aby volající získal přístup k datům využití pro určité předplatné Azure, přidejte ho do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel.
+* **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com) nebo v [rutinách Azure PowerShell](/powershell/azure/) můžete určit, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Pokud chcete, aby volající získal přístup k datům využití pro určité předplatné Azure, přidejte ho do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel.
 * **Filtrování podle data** – pomocí parametru `$filter` můžete načíst všechny faktury v obráceném chronologickém pořadí podle koncového data období faktury.
 
 > [!NOTE]
@@ -31,7 +31,7 @@ Jakmile se [dokončí udělení přístupu](manage-billing-access.md#opt-in), m�
 ## <a name="azure-resource-usage-api-preview"></a>Azure Resource Usage API (Preview)
 Pomocí [rozhraní API Využití prostředků Azure](/previous-versions/azure/reference/mt219003(v=azure.100)) můžete získat údaje o odhadované spotřebě Azure. Rozhraní API nabízí tyto funkce:
 
-* **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com) nebo v [rutinách Azure PowerShell](/powershell/azure/overview) můžete určit, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Pokud chcete, aby volající získal přístup k datům využití pro určité předplatné Azure, přidejte ho do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel.
+* **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com) nebo v [rutinách Azure PowerShell](/powershell/azure/) můžete určit, kteří uživatelé nebo aplikace můžou získat přístup k údajům o využití pro dané předplatné. Volající musí k ověření používat standardní tokeny Azure Active Directory. Pokud chcete, aby volající získal přístup k datům využití pro určité předplatné Azure, přidejte ho do role Čtenář fakturace, Čtenář, Vlastník nebo Přispěvatel.
 * **Hodinová nebo denní agregace** – volající můžou určit, jestli chtějí údaje o využití Azure zobrazit v hodinových, nebo denních intervalech. Výchozí nastavení je denní interval.
 * **Metadata instance (včetně značek prostředků)** – můžete získat podrobnosti na úrovni instance, třeba kvalifikovaný identifikátor URI prostředku (/subscriptions/{id-předplatného}/…), informace o skupině prostředků nebo značky prostředků. Tato metadata pomáhají deterministicky a programově přidělovat využití pomocí značek pro potřeby různých případů použití, jako je rozúčtování poplatků.
 * **Metadata prostředků** – podrobnosti o prostředcích, jako je název měřiče, kategorie měřiče, podkategorie měřiče, jednotka a oblast, poskytují volajícímu lepší přehled o spotřebovaných prostředcích. Pracujeme také na sjednocení terminologie metadat prostředků na webu Azure Portal, v souboru CSV s informacemi o využití Azure, v souboru CSV o fakturaci smluv EA a v dalších veřejných prostředích, abyste viděli souvislosti mezi daty z různých prostředí.
@@ -40,7 +40,7 @@ Pomocí [rozhraní API Využití prostředků Azure](/previous-versions/azure/re
 ## <a name="azure-resource-ratecard-api-preview"></a>Azure Resource RateCard API (Preview)
 Pomocí [rozhraní API RateCard pro prostředky Azure](/previous-versions/azure/reference/mt219005(v=azure.100)) získáte seznam dostupných prostředků Azure a informace o odhadovaných cenách každého z nich. Rozhraní API nabízí tyto funkce:
 
-* **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com) nebo v [rutinách Azure PowerShell](/powershell/azure/overview) můžete určit, kteří uživatelé nebo aplikace můžou získat přístup k datům RateCard. Volající musí k ověření používat standardní tokeny Azure Active Directory. Pokud chcete, aby volající získal přístup k datům využití pro určité předplatné Azure, přidejte ho do role Čtenář, Vlastník nebo Přispěvatel.
+* **Řízení přístupu k Azure na základě rolí** – na webu [Azure Portal](https://portal.azure.com) nebo v [rutinách Azure PowerShell](/powershell/azure/) můžete určit, kteří uživatelé nebo aplikace můžou získat přístup k datům RateCard. Volající musí k ověření používat standardní tokeny Azure Active Directory. Pokud chcete, aby volající získal přístup k datům využití pro určité předplatné Azure, přidejte ho do role Čtenář, Vlastník nebo Přispěvatel.
 * **Podpora nabídek s průběžnými platbami, MSDN, s peněžním závazkem a s peněžním kreditem (nepodporují se programy EA a [CSP](https://docs.microsoft.com/partner-center))** – toto rozhraní API poskytuje informace o sazbách na úrovni nabídky.  Volající tohoto rozhraní API musí k zobrazení podrobností o prostředcích a sazeb zadat informace o nabídce. V tuto chvíli nemůžeme poskytovat sazby pro smlouvy EA, protože nabídky smluv EA mají vlastní sazby.
 
 ## <a name="scenarios"></a>Scénáře
