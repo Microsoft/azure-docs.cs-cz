@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: b7f58c13181c9ec966d548096ffc2756d5d333e3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ac083f842bf10adcbb23e3e1c1157383e11f3af9
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124883"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432418"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Monitorování a Data Factory výstrah pomocí Azure Monitor
 
@@ -111,8 +111,8 @@ Toto řešení poskytuje souhrn celkového stavu vašich Data Factory, s možnos
 Při instalaci tohoto řešení se vytvoří výchozí sada zobrazení v části sešity vybraného Log Analytics pracovního prostoru. V důsledku toho se aktivují následující metriky:
 
 * Spuštění ADF – 1) spuštění kanálu pomocí Data Factory
-* Spuštění ADF – 2) spuštění aktivit podle datového faktoru
-* Spuštění ADF – 3) spuštění triggeru podle datového faktoru
+* Spuštění ADF – 2) spuštění aktivit pomocí Data Factory
+* Spuštění ADF – 3) spuštění triggeru pomocí Data Factory
 * Chyby ADF – 1) horní 10 chyb kanálu podle Data Factory
 * Chyby ADF – 2) prvních 10 spuštění aktivit pomocí Data Factory
 * Chyby ADF – 3) hlavních 10 chyb triggerů podle Data Factory
@@ -201,7 +201,7 @@ Přihlaste se k Azure Portal a vyberte **monitorování**  >  **výstrah** a vyt
 
 ### <a name="diagnostic-settings"></a>Nastavení diagnostiky
 
-Použijte nastavení diagnostiky ke konfiguraci diagnostických protokolů pro nevýpočetní prostředky. Nastavení pro ovládací prvek prostředků má následující funkce:
+Použijte nastavení diagnostiky ke konfiguraci diagnostických protokolů pro prostředky, které nejsou výpočetními prostředky. Nastavení pro ovládací prvek prostředků má následující funkce:
 
 * Určují, kde jsou odesílány diagnostické protokoly. Mezi příklady patří účet Azure Storage, centrum událostí Azure nebo monitorování protokolů.
 * Určují, které kategorie protokolů se odesílají.
@@ -214,7 +214,7 @@ Použijte nastavení diagnostiky ke konfiguraci diagnostických protokolů pro n
 
 #### <a name="create-or-update-a-diagnostics-setting-in-the-monitor-rest-api"></a>Vytvoří nebo aktualizuje nastavení diagnostiky v REST API monitorování.
 
-##### <a name="request"></a>Request
+##### <a name="request"></a>Žádost
 
 ```
 PUT
@@ -334,7 +334,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 #### <a name="get-information-about-diagnostics-settings-in-the-monitor-rest-api"></a>Získat informace o nastavení diagnostiky v REST API monitorování
 
-##### <a name="request"></a>Request
+##### <a name="request"></a>Žádost
 
 ```
 GET

@@ -6,16 +6,17 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 64414d3ec31e8763b7c576af93374bf514141fd4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: da79556b466e3511845724e969c76477ad2ba0a8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726491"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423010"
 ---
 # <a name="protected-content"></a>Chráněný obsah #
 
-Azure Media Player aktuálně podporuje šifrovaný obsah obálek AES-128 a společný šifrovaný obsah (přes PlayReady a Widevine) nebo zašifrovaný obsah prostřednictvím FairPlay. Aby bylo možné správně přehrát chráněný obsah, je nutné sdělit Azure Media Player `protectionInfo`. Tyto informace existují na zdroj a lze je přidat přímo na `<source>` značku prostřednictvím. `data-setup`  V `protectionInfo` případě dynamického nastavování zdroje můžete také přidat přímo jako parametr.
+Azure Media Player aktuálně podporuje šifrovaný obsah obálek AES-128 a společný šifrovaný obsah (přes PlayReady a Widevine) nebo zašifrovaný obsah prostřednictvím FairPlay. Aby bylo možné správně přehrát chráněný obsah, je nutné sdělit Azure Media Player `protectionInfo` . Tyto informace existují na zdroj a lze je přidat přímo na `<source>` značku prostřednictvím `data-setup` .  V `protectionInfo` případě dynamického nastavování zdroje můžete také přidat přímo jako parametr.
 
 `protectionInfo`přijímá objekt JSON a obsahuje:
 
@@ -27,7 +28,7 @@ Azure Media Player aktuálně podporuje šifrovaný obsah obálek AES-128 a spol
 > [!IMPORTANT]
 > Objekt **certificateUrl** je potřeba jenom pro Fairplay DRM. * * *
 >[!NOTE]
-> Výchozí techOrder byl změněn tak, aby vyhovovala novému technickému obsahu, `html5FairPlayHLS` konkrétně k přehrávání FairPlayého obsahu v prohlížečích, které ho podporují (Safari na OSX 8 +). Pokud jste FairPlay obsah pro přehrávání **a** v aplikaci jste změnili výchozí techOrder na vlastní, budete ho muset přidat do svého objektu techOrder. Doporučujeme, abyste ho zahrnuli před Silverlightem, takže váš obsah nebude přehrán přes PlayReady.
+> Výchozí techOrder byl změněn tak, aby vyhovovala novému technickému `html5FairPlayHLS` obsahu, konkrétně k přehrávání FairPlayého obsahu v prohlížečích, které ho podporují (Safari na OSX 8 +). Pokud jste FairPlay obsah pro přehrávání **a** v aplikaci jste změnili výchozí techOrder na vlastní, budete ho muset přidat do svého objektu techOrder. Doporučujeme, abyste ho zahrnuli před Silverlightem, takže váš obsah nebude přehrán přes PlayReady.
 
 ## <a name="code-sample"></a>Ukázka kódu ##
 

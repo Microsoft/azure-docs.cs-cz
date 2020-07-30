@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 237361c6a519fea4dde7f1fe85f91d97ce0365b1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: db3eae5cd31fff0db465389ea4a09b1666453634
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281578"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386992"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co je Azure Virtual Network?
 
@@ -27,7 +27,7 @@ Azure Virtual Network (VNet) je základní stavební blok vaší privátní sít
 ## <a name="vnet-concepts"></a>Koncepty virtuální sítě
 
 - **Adresní prostor:** Při vytváření virtuální sítě musíte zadat vlastní adresní prostor privátních IP adres pomocí veřejných a privátních adres (RFC 1918). Azure přiřazuje prostředkům ve virtuální síti privátní IP adresy z přiřazeného adresního prostoru. Pokud například nasadíte virtuální počítač ve virtuální síti s adresním prostorem 10.0.0.0/16, bude virtuálnímu počítači přiřazená privátní IP adresa, jako je 10.0.0.4.
-- **Podsítě:** Podsítě umožňují segmentovat virtuální síť do jedné nebo více podsítí a přidělit část adresního prostoru virtuální sítě ke každé podsíti. Prostředky Azure pak můžete nasadit v konkrétní podsíti. Stejně jako v tradiční síti vám podsítě umožní segmentovat adresní prostor virtuální sítě do segmentů, které jsou vhodné pro interní síť organizace. Tím se také zlepšuje efektivita přidělování adres. Prostředky v rámci podsítí můžete zabezpečit pomocí skupin zabezpečení sítě. Další informace najdete v tématu [skupiny zabezpečení](security-overview.md).
+- **Podsítě:** Podsítě umožňují segmentovat virtuální síť do jedné nebo více podsítí a přidělit část adresního prostoru virtuální sítě ke každé podsíti. Prostředky Azure pak můžete nasadit v konkrétní podsíti. Stejně jako v tradiční síti vám podsítě umožní segmentovat adresní prostor virtuální sítě do segmentů, které jsou vhodné pro interní síť organizace. Tím se také zlepšuje efektivita přidělování adres. Prostředky v rámci podsítí můžete zabezpečit pomocí skupin zabezpečení sítě. Další informace najdete v tématu [skupiny zabezpečení sítě](security-overview.md).
 - **Oblasti**: virtuální síť je vymezená na jednu oblast nebo umístění; víc virtuálních sítí z různých oblastí ale můžete propojit společně pomocí Virtual Network partnerských vztahů.
 - **Předplatné:** Virtuální síť je vymezená pro předplatné. V každém [předplatném](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) Azure a v každé [oblasti](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region) Azure můžete implementovat několik virtuálních sítí.
 
@@ -67,7 +67,7 @@ Své místní počítače a sítě můžete připojit k virtuální síti pomoc�
 
 Síťový provoz mezi podsítěmi můžete filtrovat pomocí jedné nebo obou z následujících možností:
 
-- **Skupiny zabezpečení:** Skupiny zabezpečení sítě a skupiny zabezpečení aplikací můžou obsahovat několik příchozích a odchozích pravidel zabezpečení, která umožňují filtrovat provoz do a z prostředků podle zdrojové a cílové IP adresy, portu a protokolu. Další informace najdete v tématu [skupiny zabezpečení sítě](security-overview.md#network-security-groups) nebo [skupiny zabezpečení aplikací](security-overview.md#application-security-groups).
+- **Skupiny zabezpečení sítě:** Skupiny zabezpečení sítě a skupiny zabezpečení aplikací můžou obsahovat několik příchozích a odchozích pravidel zabezpečení, která umožňují filtrovat provoz do a z prostředků podle zdrojové a cílové IP adresy, portu a protokolu. Další informace najdete v tématu [skupiny zabezpečení sítě](security-overview.md#network-security-groups) nebo [skupiny zabezpečení aplikací](security-overview.md#application-security-groups).
 - **Síťová virtuální zařízení:** Síťové virtuální zařízení je virtuální počítač, který provádí určitou síťovou funkci, jako je například brána firewall, optimalizace sítě WAN nebo jiná síťová funkce. Úplný seznam dostupných síťových virtuálních zařízení, která můžete nasadit do virtuální sítě, najdete na webu [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances).
 
 ## <a name="route-network-traffic"></a>Směrování síťového provozu

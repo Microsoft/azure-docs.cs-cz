@@ -4,27 +4,27 @@ description: Naučte se, jak vytvořit kontejner v Azure Cosmos DB pomocí Azure
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/24/2020
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 22c51497a9c9a331f1337134fbaf7c781b9c8ba7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 761789b36e85b16f0b4482cef12645e673c73be7
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390886"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429711"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Vytvoření kontejneru Azure Cosmos
 
-Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (kolekce, tabulka nebo graf). K tomu můžete použít Azure Portal, Azure CLI nebo podporované sady SDK. Tento článek ukazuje, jak vytvořit kontejner, zadat klíč oddílu a zajistit propustnost.
+Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (kolekce, tabulky nebo grafu) pomocí Azure Portal, Azure CLI, PowerShellu nebo podporovaných sad SDK. Tento článek ukazuje, jak vytvořit kontejner, zadat klíč oddílu a zajistit propustnost.
 
 > [!NOTE]
 > Při vytváření kontejnerů se ujistěte, že nevytvoříte dva kontejnery se stejným názvem, ale s různou velikostí písmen. Důvodem je to, že některé části platformy Azure nerozlišují velká a malá písmena a to může vést k nejasnostem/kolizi telemetrie a akcí na kontejnerech s takovými názvy.
 
 ## <a name="create-a-container-using-azure-portal"></a>Vytvoření kontejneru pomocí webu Azure Portal
 
-### <a name="sql-api"></a><a id="portal-sql"></a>ROZHRANÍ SQL API
+### <a name="sql-api"></a><a id="portal-sql"></a>SQL API
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet.
 
@@ -40,7 +40,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 ### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
@@ -56,7 +56,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Rozhraní Cassandra API
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-cassandra-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
@@ -75,7 +75,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 ### <a name="gremlin-api"></a><a id="portal-gremlin"></a>Rozhraní Gremlin API
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-graph-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
@@ -92,7 +92,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 ### <a name="table-api"></a><a id="portal-table"></a>Rozhraní Table API
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-table-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
@@ -111,7 +111,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 Níže uvedené odkazy ukazují, jak vytvořit prostředky kontejneru pro Azure Cosmos DB pomocí rozhraní příkazového řádku Azure CLI.
 
-Seznam všech ukázek Azure CLI napříč všemi Azure Cosmos DB rozhraní API najdete v tématu rozhraní API [SQL](cli-samples.md), [rozhraní API Cassandra](cli-samples-cassandra.md), [rozhraní API pro MongoDB](cli-samples-mongodb.md), rozhraní [Gremlin API](cli-samples-gremlin.md)a [rozhraní API pro tabulky](cli-samples-table.md)
+Seznam všech ukázek Azure CLI napříč všemi Azure Cosmos DB rozhraní API najdete v [ukázkách Azure CLI pro Azure Cosmos DB](cli-samples.md).
 
 * [Vytvoření kontejneru pomocí Azure CLI](manage-with-cli.md#create-a-container)
 * [Vytvoření kolekce pro Azure Cosmos DB rozhraní API MongoDB pomocí Azure CLI](./scripts/cli/mongodb/create.md)
@@ -123,7 +123,7 @@ Seznam všech ukázek Azure CLI napříč všemi Azure Cosmos DB rozhraní API n
 
 Níže uvedené odkazy ukazují, jak vytvořit prostředky kontejneru pro Azure Cosmos DB pomocí prostředí PowerShell.
 
-Seznam všech ukázek Azure CLI napříč všemi Azure Cosmos DB rozhraní API najdete v tématu rozhraní API [SQL](powershell-samples-sql.md), [rozhraní API Cassandra](powershell-samples-cassandra.md), [rozhraní API pro MongoDB](powershell-samples-mongodb.md), rozhraní [Gremlin API](powershell-samples-gremlin.md)a [rozhraní API pro tabulky](powershell-samples-table.md)
+Seznam všech ukázek PowerShellu pro všechna Azure Cosmos DB rozhraní API najdete v tématu rozhraní API [SQL](powershell-samples-sql.md), [rozhraní API Cassandra](powershell-samples-cassandra.md), [rozhraní MongoDB API](powershell-samples-mongodb.md), [rozhraní Gremlin API](powershell-samples-gremlin.md)a [rozhraní API pro tabulky](powershell-samples-table.md)
 
 * [Vytvoření kontejneru pomocí PowerShellu](manage-with-powershell.md#create-container)
 * [Vytvoření kolekce pro Azure Cosmos DB rozhraní API MongoDB pomocí PowerShellu](./scripts/powershell/mongodb/ps-mongodb-create.md)

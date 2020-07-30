@@ -4,14 +4,14 @@ description: Přečtěte si o dostupných možnostech škálování Azure Cosmos
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: c9517b6d48f21a2ac2c4b92e68c788a33897511b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 447744f0436cb29e849a52694a02600183fd357a
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119150"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432820"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Elastické škálování účtu Azure Cosmos DB rozhraní API Cassandra
 
@@ -46,7 +46,7 @@ Výhodou této metody je, že jde o jednoduchý klíč způsob, jak spravovat ka
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>Použití roviny ovládacího prvku
 
-Rozhraní API pro Azure Cosmos DB pro Cassandra poskytuje schopnost programově upravovat propustnost pomocí našich různých funkcí pro kontrolu rovin. Pokyny a ukázky najdete v článcích [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [POWERSHELL](powershell-samples-cassandra.md)a [Azure CLI](cli-samples-cassandra.md) .
+Rozhraní API pro Azure Cosmos DB pro Cassandra poskytuje schopnost programově upravovat propustnost pomocí našich různých funkcí pro kontrolu rovin. Pokyny a ukázky najdete v článcích [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [POWERSHELL](powershell-samples-cassandra.md)a [Azure CLI](cli-samples.md) .
 
 Výhodou této metody je, že můžete automatizovat horizontální navýšení nebo snížení kapacity prostředků na základě časovače k účtu aktivity špičky nebo obdobích s nízkou aktivitou. Podívejte se na [naši ukázku, jak to můžete udělat](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) pomocí Azure functions a PowerShellu.
 

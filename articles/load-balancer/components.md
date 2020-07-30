@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 7aa0889ab95cdac37f9fe0735c7ad58569621059
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bf9e403fb8691f378558ef5f0403d132214ed187
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205402"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421769"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer komponenty
 
@@ -75,7 +75,7 @@ Pravidlo Load Balancer slouží k definování způsobu distribuce příchozího
 Použijte například pravidlo vyrovnávání zatížení pro port 80 ke směrování provozu z IP adresy front-endu na port 80 vašich back-end instancí.
 
 <p align="center">
-  <img src="./media/load-balancer-components/lbrules.svg" width="512" title="Pravidla vyrovnávání zatížení">
+  <img src="./media/load-balancer-components/lbrules.svg" alt= "Figure depicts how Azure Load Balancer directs frontend port 80 to three instances of backend port 80." width="512" title="Pravidla vyrovnávání zatížení">
 </p>
 
 *Obrázek: pravidla vyrovnávání zatížení*
@@ -97,7 +97,7 @@ Rozhodnutí o vyrovnávání zatížení se provádí na jeden tok. Tato akce je
 Pravidla vyrovnávání zatížení portů HA vám pomůžou s kritickými scénáři, jako je vysoká dostupnost a škálování síťových virtuálních zařízení (síťová virtuální zařízení) uvnitř virtuálních sítí. Tato funkce může pomáhat při vyrovnávání zatížení velkého počtu portů.
 
 <p align="center">
-  <img src="./media/load-balancer-components/harules.svg" width="512" title="Pravidla portů HA">
+  <img src="./media/load-balancer-components/harules.svg" alt="Figure depicts how Azure Load Balancer directs all frontend ports to three instances of all backend ports" width="512" title="Pravidla portů HA">
 </p>
 
 *Obrázek: pravidla portů HA*
@@ -111,7 +111,7 @@ Příchozí pravidlo překladu adres (NAT) přepošle příchozí provoz odeslan
 Například pokud chcete, aby relace protokol RDP (Remote Desktop Protocol) (RDP) nebo Secure Shell (SSH) oddělují instance virtuálních počítačů ve fondu back-endu. Do portů na stejné IP adrese front-endu lze namapovat více interních koncových bodů. IP adresy front-endu lze použít k vzdálené správě virtuálních počítačů bez dalšího pole s odkazem.
 
 <p align="center">
-  <img src="./media/load-balancer-components/inboundnatrules.svg" width="512" title="Příchozí pravidla NAT">
+  <img src="./media/load-balancer-components/inboundnatrules.svg" alt="Figure depicts how Azure Load Balancer directs frontend ports 3389, 443, and 80 to backend ports with the same values on separate servers." width="512" title="Příchozí pravidla NAT">
 </p>
 
 *Obrázek: příchozí pravidla NAT*

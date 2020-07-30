@@ -3,13 +3,13 @@ title: Rychlý Start – nasazení kontejneru Docker do kontejneru rozhraní př
 description: V tomto rychlém startu použijete Docker CLI k rychlému nasazení kontejnerové webové aplikace, která běží v izolované instanci kontejneru Azure.
 ms.topic: quickstart
 ms.date: 07/16/2020
-ms.custom: ''
-ms.openlocfilehash: 684bb3537d26b60afb0fc0796a94e1a134aa50c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0e4569904ef6aee304518ce012889d10dc2ecbce
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101998"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408080"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-docker-cli"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí Docker CLI
 
@@ -19,7 +19,7 @@ V tomto rychlém startu použijete nativní příkazy rozhraní příkazového �
 
 :::image type="content" source="media/container-instances-quickstart-docker-cli/view-application-running-in-an-azure-container-instance.png" alt-text="Aplikace nasazená pomocí služby Azure Container Instances zobrazená v prohlížeči":::
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet][azure-account], ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet][azure-account].
 
 V tomto rychlém startu je potřeba nainstalovat Docker Desktop Edge verze 2.3.2.0 nebo novější, který je k dispozici pro [Windows](https://desktop.docker.com/win/edge/Docker%20Desktop%20Installer.exe) nebo [MacOS](https://desktop.docker.com/mac/edge/Docker.dmg). Nebo nainstalujte rozhraní příkazového [řádku Docker ACI Integration CLI pro Linux](https://docs.docker.com/engine/context/aci-integration/#install-the-docker-aci-integration-cli-on-linux) (beta verze). 
 

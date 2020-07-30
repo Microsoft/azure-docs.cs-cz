@@ -3,12 +3,12 @@ title: Privátní koncové body
 description: Pochopení procesu vytváření privátních koncových bodů pro Azure Backup a scénářů, kdy použití privátních koncových bodů pomáhá udržet zabezpečení vašich prostředků.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: e9c8f142e9781946f572f6f3a744d8bc2736a3de
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a50a655af02bc2bfa188225209024cfbaa82a7c
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503757"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432866"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Soukromé koncové body pro Azure Backup
 
@@ -21,7 +21,7 @@ Tento článek vám pomůže pochopit proces vytváření privátních koncovýc
 - Soukromé koncové body lze vytvořit pouze pro nové trezory Recovery Services (které nemají zaregistrovány žádné položky do trezoru). Proto je nutné před pokusem o ochranu položek do trezoru vytvořit privátní koncové body.
 - Jedna virtuální síť může obsahovat privátní koncové body pro několik trezorů Recovery Services. Kromě toho může mít jeden Recovery Services trezor pro něj privátní koncové body ve více virtuálních sítích. Maximální počet privátních koncových bodů, které je možné vytvořit pro trezor, je však 12.
 - Po vytvoření privátního koncového bodu pro trezor se trezor zamkne. Nebude k dispozici (pro zálohování a obnovení) z sítí kromě těch, které obsahují soukromý koncový bod pro trezor. Pokud jsou všechny privátní koncové body trezoru odebrány, bude trezor přístupný ze všech sítí.
-- Připojení privátního koncového bodu pro zálohování používá celkem 11 privátních IP adres ve vaší podsíti. Toto číslo může být pro určité oblasti Azure vyšší (až 15). Proto doporučujeme, abyste při pokusu o vytvoření privátních koncových bodů pro zálohování měli k dispozici dostatek privátních IP adres.
+- Připojení privátního koncového bodu pro zálohování používá celkem 11 privátních IP adres ve vaší podsíti. Toto číslo může být pro určité oblasti Azure vyšší (až 25). Proto doporučujeme, abyste při pokusu o vytvoření privátních koncových bodů pro zálohování měli k dispozici dostatek privátních IP adres.
 - I když je Recovery Services trezor používá (obojí) Azure Backup a Azure Site Recovery, Tento článek popisuje použití privátních koncových bodů jenom pro Azure Backup.
 - Azure Active Directory v současné době nepodporuje privátní koncové body. Takže IP adresy a plně kvalifikované názvy domény, které Azure Active Directory pro práci v oblasti, musí mít povolený odchozí přístup ze zabezpečené sítě při provádění zálohování databází ve virtuálních počítačích Azure a při zálohování pomocí agenta MARS. Můžete také použít značky NSG a značky Azure Firewall pro povolení přístupu ke službě Azure AD (podle potřeby).
 - U privátních koncových bodů se virtuální sítě se zásadami sítě nepodporují. Než budete pokračovat, budete muset zakázat zásady sítě.
@@ -88,7 +88,7 @@ Existují dvě povinné zóny DNS, které je třeba vytvořit:
     - `privatelink.blob.core.windows.net`
     - `privatelink.queue.core.windows.net`
 
-    | **Zóna**                           | **Službám** | **Podrobnosti o předplatném a skupině prostředků (RG)**                  |
+    | **Zóna**                           | **Služba** | **Podrobnosti o předplatném a skupině prostředků (RG)**                  |
     | ---------------------------------- | ----------- | ------------------------------------------------------------ |
     | `privatelink.blob.core.windows.net`  | Blob        | **Předplatné**: stejné jako místo, kde je potřeba vytvořit privátní koncový bod **RG**: RG virtuální sítě nebo privátního koncového bodu. |
     | `privatelink.queue.core.windows.net` | Fronta       | **RG**: buď RG virtuální sítě, nebo privátního koncového bodu. |
@@ -103,7 +103,7 @@ Zákazníci si můžou vybrat integraci svých privátních koncových bodů s p
 
 Pokud chcete vytvořit samostatnou privátní zónu DNS v Azure, můžete stejný postup použít stejný postup jako při vytváření závazných zón DNS. Podrobnosti o pojmenování a předplatném jsou sdílené níže:
 
-| **Zóna**                                                     | **Službám** | **Podrobnosti o předplatném a skupině prostředků**                  |
+| **Zóna**                                                     | **Služba** | **Podrobnosti o předplatném a skupině prostředků**                  |
 | ------------------------------------------------------------ | ----------- | ------------------------------------------------------------ |
 | `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **Poznámka**: *geografické* umístění tady odkazuje na kód oblasti. Například *wcus* a *ne* pro středozápadní USA a Severní Evropa v uvedeném pořadí. | Backup      | **Předplatné**: stejné jako místo, kde je potřeba vytvořit privátní koncový bod **RG**: libovolný RG v rámci předplatného. |
 
@@ -495,7 +495,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 Musíte vytvořit tři privátní zóny DNS a propojit je s vaší virtuální sítí.
 
-| **Zóna**                                                     | **Službám** |
+| **Zóna**                                                     | **Služba** |
 | ------------------------------------------------------------ | ----------- |
 | `privatelink.<geo>.backup.windowsazure.com`      | Backup      |
 | `privatelink.blob.core.windows.net`                            | Blob        |

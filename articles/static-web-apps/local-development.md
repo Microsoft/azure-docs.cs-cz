@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: a7215790a7f052227b08f51dcd7ad5dd337bb4e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d9988adea8e4d2dab39de64f9fd155a9d0b02cae
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259265"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432970"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Nastavení místního vývoje pro Azure static Web Apps Preview
 
@@ -27,7 +28,7 @@ Tento článek popisuje doporučené osvědčené postupy pro místní vývoj, v
 - Ladění a spuštění aplikace
 - Osvědčené postupy pro strukturu souborů a složek vaší aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Azure Functions rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) pro Visual Studio Code
@@ -46,7 +47,7 @@ V závislosti na tom, jak je web sestavený, může nebo nemusí být nutný k s
 
 ### <a name="javascript-frameworks-and-libraries"></a>JavaScriptové architektury a knihovny
 
-- [Úhlové CLI](https://angular.io/cli)
+- [Angular CLI](https://angular.io/cli)
 - [Vue CLI](https://cli.vuejs.org/guide/creating-a-project.html)
 - [Reagovat CLI](https://create-react-app.dev/)
 
@@ -62,15 +63,15 @@ Pokud k obsluze svého webu používáte nástroj rozhraní příkazového řád
 
 Live Server Extension for Visual Studio Code poskytuje místní vývojový webový server, který obsluhuje statický obsah.
 
-#### <a name="create-a-repository"></a>Vytvoření úložiště
+#### <a name="create-a-repository"></a>Vytvořte úložiště
 
 1. Ujistěte se, že jste přihlášeni k GitHubu, a [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) pomocí této šablony přejděte do a vytvořte nový projekt GitHubu s názvem **Vanilla-API**.
 
     :::image type="content" source="media/local-development/vanilla-api.png" alt-text="Nové okno úložiště GitHubu":::
 
-1. Otevřete Visual Studio Code.
+1. Otevřete nástroj Visual Studio Code.
 
-1. Stisknutím **klávesy F1** otevřete paletu příkazů.
+1. Stisknutím klávesy **F1** otevřete paletu příkazů.
 
 1. Do vyhledávacího pole zadejte **Clone** a vyberte **git: Clone**.
 
@@ -92,7 +93,7 @@ Visual Studio Code otevře Klonovaný projekt v editoru.
 
 ### <a name="run-the-website-locally-with-live-server"></a>Místní spuštění webu pomocí živého serveru
 
-1. Stisknutím **klávesy F1** otevřete paletu příkazů.
+1. Stisknutím klávesy **F1** otevřete paletu příkazů.
 
 1. Do vyhledávacího pole zadejte **Live Server** a vyberte **živý Server: otevřít na Live serveru.**
 
@@ -193,7 +194,7 @@ Další informace o konfiguraci souborů prostředí pro front-endové rozhraní
 
     :::image type="content" source="media/local-development/stop-live-server.png" alt-text="Příkaz Zastavit živý Server v paletě příkazů sady Visual Studio":::
 
-1. Stisknutím **klávesy F1** otevřete paletu příkazů.
+1. Stisknutím klávesy **F1** otevřete paletu příkazů.
 
 1. Zadejte **živý Server** a vyberte **živý Server: otevřít v Live serveru**.
 

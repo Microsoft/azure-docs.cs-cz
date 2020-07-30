@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 2e1395e23ec8fa3bbd787b5b12a810f6e9720392
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d16fabbf08b95d16cf54926d7d0373596e7bcf13
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326218"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430108"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Nasazení webových služeb Azure Machine Learning Studio (Classic), které používají moduly importu a exportu dat
 
-**platí pro:** ![ žádná](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasická) 
+**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 Při vytváření prediktivní experimentu obvykle přidáte vstup a výstup webové služby. Při nasazení experimentu mohou uživatelé odesílat a přijímat data z webové služby prostřednictvím vstupů a výstupů. U některých aplikací mohou být data spotřebitele k dispozici z datového kanálu nebo již nacházejí v externím zdroji dat, jako je například úložiště objektů BLOB v Azure. V těchto případech nepotřebují číst a zapisovat data pomocí vstupů a výstupů webové služby. Můžou místo toho použít službu Batch Execution Service (BES) ke čtení dat ze zdroje dat pomocí modulu import dat a zápis výsledků bodování do jiného umístění dat pomocí modulu export dat.

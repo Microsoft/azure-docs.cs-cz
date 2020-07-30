@@ -4,14 +4,14 @@ description: Naučte se používat klauzuli LIMITu POSUNu k přeskočení a prov
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.author: mjbrown
-ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/29/2020
+ms.author: tisande
+ms.openlocfilehash: 9342c0c10ed4f7287716d21823fddfe992e0568f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76771572"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432720"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Klauzule LIMIT POSUNu v Azure Cosmos DB
 
@@ -39,9 +39,9 @@ OFFSET <offset_amount> LIMIT <limit_amount>
   
   `OFFSET`V klauzuli je vyžadován jak Count, tak `LIMIT` počet `OFFSET LIMIT` . Pokud `ORDER BY` se použije volitelná klauzule, sada výsledků se vytvoří tak, že se přeskočí seřazené hodnoty. V opačném případě bude dotaz vracet pevné pořadí hodnot.
 
-  Poplatek za RU s dotazem se `OFFSET LIMIT` narůstá, protože se zvyšuje počet podmínek, které se posunují. U dotazů, které mají více stránek výsledků, typicky doporučujeme používat tokeny pro pokračování. Tokeny pokračování jsou "záložkou" pro místo, kde může dotaz později pokračovat. Použijete `OFFSET LIMIT` -li, není k dispozici žádná "Záložka". Pokud jste chtěli vrátit další stránku dotazu, bude nutné začít od začátku.
+  Poplatek za RU s dotazem se `OFFSET LIMIT` narůstá, protože se zvyšuje počet podmínek, které se posunují. U dotazů, které mají [více stránek výsledků](sql-query-pagination.md), typicky doporučujeme používat [tokeny pro pokračování](sql-query-pagination.md#continuation-tokens). Tokeny pokračování jsou "záložkou" pro místo, kde může dotaz později pokračovat. Použijete `OFFSET LIMIT` -li, není k dispozici žádná "Záložka". Pokud jste chtěli vrátit další stránku dotazu, bude nutné začít od začátku.
   
-  Měli byste použít `OFFSET LIMIT` pro případy, kdy byste chtěli dokumenty úplně přeskočit a uložit prostředky klienta. Například byste měli použít, `OFFSET LIMIT` Pokud chcete přeskočit na výsledek dotazu 1000th a nemusíte zobrazit výsledky 1 až 999. V back-endu se `OFFSET LIMIT` pořád načítá každý dokument, včetně těch, které se přeskočily. Výhoda výkonu je úspora v klientských zdrojích, protože se vyhnete zpracování nepotřebných dokumentů.
+  Měli byste použít `OFFSET LIMIT` pro případy, kdy byste chtěli zcela přeskočit položky a uložit prostředky klienta. Například byste měli použít, `OFFSET LIMIT` Pokud chcete přeskočit na výsledek dotazu 1000th a nemusíte zobrazit výsledky 1 až 999. Na back-endu `OFFSET LIMIT` pořád načítá každou položku, včetně těch, které se přeskočí. Výhoda výkonu je úspora v klientských prostředcích tím, že se vyhnete nepotřebným zpracování položek.
 
 ## <a name="examples"></a>Příklady
 
@@ -68,7 +68,7 @@ Výsledky jsou následující:
 Zde je dotaz, který přeskočí první hodnotu a vrátí druhou hodnotu (bez řazení):
 
 ```sql
-   SELECT f.id, f.address.city
+    SELECT f.id, f.address.city
     FROM Families f
     OFFSET 1 LIMIT 1
 ```

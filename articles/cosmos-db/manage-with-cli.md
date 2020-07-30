@@ -4,14 +4,14 @@ description: Pomocí Azure CLI můžete spravovat Azure Cosmos DB účet, datab�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/03/2020
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 97b5118f74cbd098beea804c312ed08f1a152873
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ae29039702a6f73a33f73afc366532077aa4b71
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067177"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432827"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Správa prostředků Azure Cosmos pomocí Azure CLI
 
@@ -19,7 +19,7 @@ Následující příručka popisuje běžné příkazy pro automatizaci správy 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.9.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="azure-cosmos-accounts"></a>Účty Azure Cosmos
 
@@ -308,6 +308,7 @@ az lock delete --ids $lockid
 Následující části ukazují, jak spravovat Azure Cosmos DB kontejner, včetně:
 
 * [Vytvoření kontejneru](#create-a-container)
+* [Vytvoření kontejneru pomocí automatického škálování](#create-a-container-with-autoscale)
 * [Vytvoření kontejneru s povoleným TTL](#create-a-container-with-ttl)
 * [Vytvoření kontejneru s vlastními zásadami indexů](#create-a-container-with-a-custom-index-policy)
 * [Změna propustnosti kontejneru](#change-container-throughput)
@@ -330,6 +331,25 @@ az cosmosdb sql container create \
     -a $accountName -g $resourceGroupName \
     -d $databaseName -n $containerName \
     -p $partitionKey --throughput $throughput
+```
+
+### <a name="create-a-container-with-autoscale"></a>Vytvoření kontejneru pomocí automatického škálování
+
+Vytvořte kontejner Cosmos s výchozími zásadami indexování, klíč oddílu a 4000 automatického škálování RU/s z.
+
+```azurecli-interactive
+# Create a SQL API container
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+partitionKey='/myPartitionKey'
+maxThroughput=4000
+
+az cosmosdb sql container create \
+    -a $accountName -g $resourceGroupName \
+    -d $databaseName -n $containerName \
+    -p $partitionKey --max-throughput $maxThroughput
 ```
 
 ### <a name="create-a-container-with-ttl"></a>Vytvoření kontejneru s hodnotou TTL

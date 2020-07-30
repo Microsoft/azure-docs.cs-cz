@@ -4,14 +4,14 @@ description: Použijte Helm s AKS a Azure Container Registry k zabalení a spuš
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 1f67605918e093e9ab28aa88be777d27acd831ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82169564"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407111"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Rychlý Start: vývoj ve službě Azure Kubernetes Service (AKS) s využitím Helm
 
@@ -19,11 +19,10 @@ ms.locfileid: "82169564"
 
 V tomto článku se dozvíte, jak pomocí Helm zabalit a spustit aplikaci na AKS. Další informace o instalaci existující aplikace pomocí Helm najdete v tématu [instalace existujících aplikací pomocí Helm v AKS][helm-existing].
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 * [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
-* Docker je nainstalovaný a nakonfigurovaný. Docker nabízí balíčky pro konfiguraci Dockeru v systému [Mac][docker-for-mac], [Windows][docker-for-windows] nebo [Linux][docker-for-linux].
 * [Nainstalovaná verze Helm V3][helm-install].
 
 ## <a name="create-an-azure-container-registry"></a>Vytvoření služby Azure Container Registry
@@ -58,15 +57,7 @@ Výstup se podobá následujícímu příkladu. Poznamenejte si hodnotu *loginSe
 }
 ```
 
-Pokud chcete použít instanci ACR, musíte se nejdřív přihlásit. Přihlaste se pomocí příkazu [AZ ACR Login][az-acr-login] . Následující příklad se přihlásí k ACR s názvem *MyHelmACR*.
-
-```azurecli
-az acr login --name MyHelmACR
-```
-
-Příkaz po dokončení vrátí zprávu o *úspěšném přihlášení* .
-
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes Service
 
 Vytvořte cluster AKS. Následující příkaz vytvoří cluster AKS s názvem MyAKS a připojí MyHelmACR.
 
@@ -122,18 +113,12 @@ CMD ["node","server.js"]
 
 ## <a name="build-and-push-the-sample-application-to-the-acr"></a>Sestavení a vložení ukázkové aplikace do ACR
 
-Adresu přihlašovacího serveru získáte pomocí příkazu [AZ ACR list][az-acr-list] a dotazování na *loginServer*:
+Pomocí příkazu [AZ ACR Build][az-acr-build] Sestavte a nahrajte image do registru pomocí předchozího souboru Dockerfile. Na `.` konci příkazu nastaví umístění souboru Dockerfile, v tomto případě aktuální adresář.
 
 ```azurecli
-az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
-```
-
-Pomocí Docker sestavíte, označíte a nahrajete vzorový kontejner aplikace do ACR:
-
-```console
-docker build -t webfrontend:latest .
-docker tag webfrontend <acrLoginServer>/webfrontend:v1
-docker push <acrLoginServer>/webfrontend:v1
+az acr build --image webfrontend:v1 \
+  --registry MyHelmACR \
+  --file Dockerfile .
 ```
 
 ## <a name="create-your-helm-chart"></a>Vytvoření grafu Helm
@@ -144,9 +129,9 @@ Vygenerujte graf Helm pomocí `helm create` příkazu.
 helm create webfrontend
 ```
 
-Proveďte následující aktualizace pro *webendu/Values. yaml*:
+Proveďte následující aktualizace *webendu/Values. yaml*. Nahraďte loginServer registru, který jste si poznamenali v předchozím kroku, jako je například *myhelmacr.azurecr.IO*:
 
-* Změnit `image.repository` na`<acrLoginServer>/webfrontend`
+* Změnit `image.repository` na`<loginServer>/webfrontend`
 * Změnit `service.type` na`LoadBalancer`
 
 Příklad:
@@ -159,7 +144,7 @@ Příklad:
 replicaCount: 1
 
 image:
-  repository: <acrLoginServer>/webfrontend
+  repository: *myhelmacr.azurecr.io*/webfrontend
   pullPolicy: IfNotPresent
 ...
 service:
@@ -218,16 +203,11 @@ Další informace o použití Helm najdete v dokumentaci k Helm.
 > [!div class="nextstepaction"]
 > [Dokumentace k Helm][helm-documentation]
 
-[az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-create]: /cli/azure/acr#az-acr-create
-[az-acr-list]: /cli/azure/acr#az-acr-list
+[az-acr-build]: /cli/azure/acr#az-acr-build
 [az-group-delete]: /cli/azure/group#az-group-delete
 [az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli
-
-[docker-for-linux]: https://docs.docker.com/engine/installation/#supported-platforms
-[docker-for-mac]: https://docs.docker.com/docker-for-mac/
-[docker-for-windows]: https://docs.docker.com/docker-for-windows/
 [example-nodejs]: https://github.com/Azure/dev-spaces/tree/master/samples/nodejs/getting-started/webfrontend
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [helm]: https://helm.sh/

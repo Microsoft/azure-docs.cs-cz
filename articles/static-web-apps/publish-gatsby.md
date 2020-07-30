@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 24d5ee132444f19118613f6b1b798fd763e46e3c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 192e939d21cae3b67cafe190e32e7202cd8bdb20
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299305"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429674"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Gatsby ve službě Azure static Web Apps Preview
 
@@ -22,17 +23,17 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
-> - Vytvoření aplikace v Gatsby
+> - Vytvořte aplikaci Gatsby
 > - Nastavení webu Azure static Web Apps
 > - Nasazení aplikace Gatsby do Azure
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. Pokud ho nemáte, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/).
 - Účet GitHub. Pokud ho nemáte, můžete si [účet zdarma vytvořit](https://github.com/join).
-- Nainstalovaný jazyk [Node.js](https://nodejs.org).
+- [Node.js](https://nodejs.org) nainstalován.
 
 ## <a name="create-a-gatsby-app"></a>Vytvoření aplikace v Gatsby
 
@@ -84,10 +85,10 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 ### <a name="create-the-application"></a>Vytvoření aplikace
 
 1. Přejít na [Azure Portal](https://portal.azure.com)
-1. Klikněte na **vytvořit prostředek** .
-1. Hledání **statického Web Apps**
-1. Klikněte na **statické Web Apps (Preview)** .
-1. Klikněte na **vytvořit** .
+1. Klikněte na **Vytvořit prostředek**.
+1. Vyhledejte **Static Web Apps**.
+1. Klikněte na **Static Web Apps (Preview)**
+1. Klikněte na **Vytvořit**.
 
    :::image type="content" source="./media/publish-gatsby/create-in-portal.png" alt-text="Vytvoření statického Web Apps (Preview) na portálu":::
 
@@ -117,7 +118,7 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 Dále přidejte nastavení konfigurace, které proces sestavení používá k sestavení vaší aplikace.
 
-1. Kliknutím na tlačítko **Další: >sestavení** upravíte konfiguraci sestavení
+1. Klikněte na tlačítko **Další: Build >** (Další: Sestavení) a upravte konfiguraci sestavení.
 
 1. Pokud chcete nakonfigurovat nastavení kroku v akcích GitHubu, nastavte _umístění aplikace_ na **/** .
 

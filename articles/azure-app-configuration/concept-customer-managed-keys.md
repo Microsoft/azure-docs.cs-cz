@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: bcafdbdfd07456a01d956b622d9c5e6ed4b0b6f2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8942c93b7346613b8cfdc97d9afe09f1c473fb10
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371851"
+ms.locfileid: "87384867"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Použití klíčů spravovaných zákazníkem k šifrování dat konfigurace aplikace
 Konfigurace aplikace Azure [šifruje citlivé informace v klidovém umístění](../security/fundamentals/encryption-atrest.md). Použití klíčů spravovaných zákazníkem poskytuje rozšířenou ochranu dat tím, že vám umožní spravovat šifrovací klíče.  Při použití spravovaného šifrování klíčů se všechny citlivé informace v konfiguraci aplikace šifrují pomocí Azure Key Vaultho klíče zadaného uživatelem.  Tato možnost umožňuje otočit šifrovací klíč na vyžádání.  Také umožňuje odvolat přístup ke konfiguraci aplikací Azure pro citlivé informace tím, že odvolává přístup instance konfigurace aplikace k tomuto klíči.
@@ -20,7 +20,7 @@ Konfigurace aplikace Azure [šifruje citlivé informace v klidovém umístění]
 Konfigurace aplikací Azure šifruje citlivé informace v klidovém formátu pomocí 256 šifrovacího klíče AES, který poskytuje Microsoft. Každá instance konfigurace aplikace má vlastní šifrovací klíč, který spravuje služba a používá se k šifrování citlivých informací. Citlivé informace obsahují hodnoty nalezené v páru klíč-hodnota.  Pokud je povolená klíčová funkce spravovaná zákazníkem, používá konfigurace aplikace spravovanou identitu přiřazenou ke konfigurační instanci aplikace k ověření pomocí Azure Active Directory. Spravovaná identita pak zavolá Azure Key Vault a zabalí šifrovací klíč instance konfigurace aplikace. Zabalené šifrovací klíče se pak uloží a nezabalený šifrovací klíč se uloží do mezipaměti v konfiguraci aplikace po dobu jedné hodiny. Konfigurace aplikace aktualizuje nezabalenou verzi šifrovacího klíče instance aplikace každou hodinu. Tím zajistíte dostupnost za normálních provozních podmínek. 
 
 >[!IMPORTANT]
-> Pokud identita přiřazená instanci konfigurace aplikace už nemá oprávnění k rozbalení šifrovacího klíče instance, nebo pokud se spravovaný klíč trvale odstraní, pak už nebude možné dešifrovat citlivé informace uložené v instanci konfigurace aplikace. Použití funkce [obnovitelného odstranění](../key-vault/general/overview-soft-delete.md) Azure Key Vault snižuje riziko nechtěného odstranění šifrovacího klíče.
+> Pokud identita přiřazená instanci konfigurace aplikace už nemá oprávnění k rozbalení šifrovacího klíče instance, nebo pokud se spravovaný klíč trvale odstraní, pak už nebude možné dešifrovat citlivé informace uložené v instanci konfigurace aplikace. Použití funkce [obnovitelného odstranění](../key-vault/general/soft-delete-overview.md) Azure Key Vault snižuje riziko nechtěného odstranění šifrovacího klíče.
 
 Když uživatelé povolí funkci spravovaného klíče zákazníka na své instanci konfigurace aplikace Azure, budou řídit schopnost služby přistupovat k citlivým informacím. Spravovaný klíč slouží jako kořenový šifrovací klíč. Uživatel může u své instance aplikace odvolat přístup ke svému spravovanému klíči změnou zásad přístupu trezoru klíčů. Když se tento přístup odvolá, konfigurace aplikace ztratí možnost dešifrovat data uživatelů během jedné hodiny. V tomto okamžiku instance konfigurace aplikace zakazuje všechny pokusy o přístup. Tato situace je obnovitelná tím, že službu udělí přístup ke spravovanému klíči znovu.  Během jedné hodiny bude konfigurace aplikace schopná dešifrovat uživatelská data a fungovat za běžných podmínek.
 

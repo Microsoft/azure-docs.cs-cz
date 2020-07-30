@@ -6,26 +6,26 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 9/25/2019
-ms.openlocfilehash: ff700739e2f8c6330ea151dbe489332acea3238c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/29/2020
+ms.openlocfilehash: 4d1a56c80cab58e98121ae35c98a086d16dfe02b
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71275406"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432237"
 ---
 # <a name="create-an-azure-cosmos-account-with-virtual-network-service-endpoints-using-azure-cli"></a>Vytvoření účtu Azure Cosmos s použitím koncových bodů služby virtuální sítě pomocí Azure CLI
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.73 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.9.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-Tato ukázka vytvoří novou virtuální síť s podsítí front-end a povoluje koncové body služby pro `Microsoft.AzureCosmosDB`. Pak načte ID prostředku pro tuto podsíť a použije ho pro účet Azure Cosmos a povolí koncové body služby pro tento účet.
+Tato ukázka vytvoří novou virtuální síť s podsítí front-end a povoluje koncové body služby pro `Microsoft.AzureCosmosDB` . Pak načte ID prostředku pro tuto podsíť a použije ho pro účet Azure Cosmos a povolí koncové body služby pro tento účet.
 
 > [!NOTE]
-> Tato ukázka předvádí použití účtu rozhraní API SQL (Core). Chcete-li použít tuto ukázku pro jiná rozhraní API `enable-virtual-network` , `virtual-network-rules` použijte parametry a ve skriptu níže do skriptu specifického pro rozhraní API.
+> Tato ukázka předvádí použití účtu Core (SQL) API. Chcete-li použít tuto ukázku pro jiná rozhraní API, použijte `enable-virtual-network` `virtual-network-rules` parametry a ve skriptu níže do skriptu specifického pro rozhraní API.
 
 [!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/common/service-endpoints.sh "Create an Azure Cosmos account with service endpoints.")]
 

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: cedb5899b392cb111f9c1bb76949e940ef837252
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4ca6d6647882e81dbf20a0dd39b1ae659b6a6ab6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284808"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432993"
 ---
 # <a name="lsv2-series"></a>Řada Lsv2
 
@@ -52,7 +52,7 @@ Aktualizace pro zachování paměti: nepodporováno
 
 <sup>3</sup> technologie Hyper-V NVMe Direct poskytuje zabezpečený přístup k místním jednotkám NVMe mapované na místo virtuálního počítače hosta.  Dosažení maximálního výkonu vyžaduje použití nejnovějšího sestavení WS2019 nebo Ubuntu 18,04 nebo 16,04 z Azure Marketplace.  Výkon zápisu se liší v závislosti na velikosti vstupně-výstupních operací, zatížení jednotky a využití kapacity.
 
-<sup>4</sup> virtuální počítače řady Lsv2-Series neposkytují mezipaměť hostitele pro datový disk, protože nevyužívají úlohy Lsv2.  Virtuální počítače s Lsv2 ale můžou vyhovovat možnosti dočasného disku s operačním systémem virtuálního počítače Azure (až 30 GiB).
+<sup>4</sup> virtuální počítače řady Lsv2-Series neposkytují mezipaměť hostitele pro datový disk, protože nevyužívají úlohy Lsv2.
 
 <sup>5</sup> virtuálních počítačů řady Lsv2- [Series můžou zvýšit](linux/disk-bursting.md) výkon svého disku po dobu až 30 minut. 
 

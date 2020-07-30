@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: mvc, tracking-python
+ms.custom: mvc, tracking-python, devx-track-javascript
 ms.subservice: blobs
-ms.openlocfilehash: f7c3ebb1a68d671f63e3239794266c8c24f5906a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 60829e7755c31fdc5204b74c278b8eed21946c60
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553203"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432640"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Kurz: vytvoření vysoce dostupné aplikace s úložištěm BLOB
 
@@ -26,7 +26,7 @@ Po dokončení tohoto kurzu budete mít konzolovou aplikaci, která nahrává a 
 
 Geografická redundance v Azure Storage replikuje transakce asynchronně z primární oblasti do sekundární oblasti, která je od sebe stovky kilometrů. Tento proces replikace zaručuje, že data v sekundární oblasti jsou nakonec konzistentní. Konzolová aplikace používá ke zjištění, ke kterému koncovému bodu se připojuje, automatické přepínání mezi koncovými body, jako jsou chyby a obnovení, a to pomocí vzoru [Break](/azure/architecture/patterns/circuit-breaker) .
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 V první části tohoto kurzu se naučíte:
 
@@ -35,7 +35,7 @@ V první části tohoto kurzu se naučíte:
 > * Nastavit připojovací řetězec
 > * Spustit konzolovou aplikaci
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -52,13 +52,13 @@ Pro absolvování tohoto kurzu potřebujete:
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-* Nainstalujte [Node. js](https://nodejs.org).
+* Nainstalujte [Node.js](https://nodejs.org).
 
 ---
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
@@ -70,16 +70,16 @@ Pomocí těchto kroků vytvořte účet úložiště s přístupem Geo-Zone-redu
 2. Z **nové** stránky vyberte **účet úložiště – objekt blob, soubor, tabulka, fronta** .
 4. Vyplňte formulář účtu úložiště následujícími informacemi, jak ukazuje následující obrázek, a vyberte **Vytvořit**:
 
-   | Nastavení       | Ukázková hodnota | Description |
+   | Nastavení       | Ukázková hodnota | Popis |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Předplatné** | *Moje předplatné* | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.azure.com/Subscriptions). |
    | **ResourceGroup** | *myResourceGroup* | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
    | **Název** | *mystorageaccount* | Jedinečný název vašeho účtu úložiště. |
-   | **Umístění** | *USA – východ* | Zvolte umístění. |
+   | **Umístění** | *East US* | Zvolte umístění. |
    | **Výkon** | *Standard* | Standardní výkon je dobrou možností pro ukázkový scénář. |
    | **Druh účtu** | *StorageV2* | Doporučuje se použít účet úložiště pro obecné účely v2. Další informace o typech účtů úložiště Azure najdete v tématu [Přehled účtu úložiště](../common/storage-account-overview.md). |
-   | **Umístění**| *Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)* | Primární oblast je redundantní v zóně a replikuje se do sekundární oblasti s povoleným přístupem pro čtení do sekundární oblasti. |
-   | **Access tier (Vrstva přístupu)**| *Horká* | Pro často používaná data použijte vrstvu Hot. |
+   | **Replikace**| *Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)* | Primární oblast je redundantní v zóně a replikuje se do sekundární oblasti s povoleným přístupem pro čtení do sekundární oblasti. |
+   | **Úroveň přístupu**| *Horká* | Pro často používaná data použijte vrstvu Hot. |
 
     ![Vytvoření účtu úložiště](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
@@ -103,7 +103,7 @@ git clone https://github.com/Azure-Samples/storage-python-circuit-breaker-patter
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-[Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) a rozbalte soubor. Můžete také použít [git](https://git-scm.com/) a stáhnout si kopii aplikace do vývojového prostředí. Vzorový projekt obsahuje základní aplikaci Node. js.
+[Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs) a rozbalte soubor. Můžete také použít [git](https://git-scm.com/) a stáhnout si kopii aplikace do vývojového prostředí. Ukázkový projekt obsahuje základní aplikaci Node.js.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
@@ -194,7 +194,7 @@ Před stažením se definuje objekt služby [retry_callback](https://docs.micros
 
 Chcete-li spustit ukázku, otevřete příkazový řádek, přejděte do složky Sample a pak zadejte `node index.js` .
 
-Ukázka vytvoří kontejner v účtu úložiště objektů blob, nahraje do kontejneru **Hello. png** a pak opakovaně kontroluje, jestli se kontejner a image replikují do sekundární oblasti. Po dokončení replikace se zobrazí výzva k zadání **D** nebo **Q** (následovaný ENTER) ke stažení nebo ukončení. Výstup by měl vypadat podobně jako v následujícím příkladu:
+Ukázka vytvoří kontejner v účtu služby Blob Storage, nahraje **HelloWorld.png** do kontejneru a pak opakovaně kontroluje, zda se kontejner a image replikují do sekundární oblasti. Po dokončení replikace se zobrazí výzva k zadání **D** nebo **Q** (následovaný ENTER) ke stažení nebo ukončení. Výstup by měl vypadat podobně jako v následujícím příkladu:
 
 ```
 Created container successfully: newcontainer1550799840726
@@ -317,7 +317,7 @@ def response_callback(response):
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-V v10 za účelem SDK pro Node. js nejsou potřebné obslužné rutiny zpětného volání. Místo toho ukázka vytvoří kanál nakonfigurovaný s možnostmi opakování a sekundárním koncovým bodem. To umožňuje aplikaci automaticky přepnout na sekundární kanál, pokud se nepovede k vašim datům přes primární kanál.
+V sadě Node.js v10 za účelem SDK nejsou potřebné obslužné rutiny zpětného volání. Místo toho ukázka vytvoří kanál nakonfigurovaný s možnostmi opakování a sekundárním koncovým bodem. To umožňuje aplikaci automaticky přepnout na sekundární kanál, pokud se nepovede k vašim datům přes primární kanál.
 
 ```javascript
 const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;

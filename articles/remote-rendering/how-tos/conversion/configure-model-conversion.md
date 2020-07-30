@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ddf4641cfba2fb9704c2354e01299df368eb2ac
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84147935"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432024"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurace převodu modelů
 
@@ -18,7 +18,8 @@ Tato kapitola dokumentuje možnosti převodu modelu.
 
 ## <a name="settings-file"></a>Soubor nastavení
 
-Pokud je soubor s názvem `ConversionSettings.json` nalezen ve vstupním kontejneru vedle vstupního modelu, je použit k poskytnutí dodatečné konfigurace pro proces převodu modelu.
+Pokud `<modelName>.ConversionSettings.json` je v vstupním kontejneru vedle vstupního modelu nalezen soubor s názvem `<modelName>.<ext>` , bude použit k poskytnutí další konfigurace pro proces převodu modelu.
+Například `box.ConversionSettings.json` by se mělo použít při převodu `box.gltf` .
 
 Obsah souboru by měl vyhovovat následujícímu schématu JSON:
 
@@ -54,7 +55,7 @@ Obsah souboru by měl vyhovovat následujícímu schématu JSON:
 }
 ```
 
-Příkladem `ConversionSettings.json` souboru může být:
+Příkladem souboru `box.ConversionSettings.json` může být:
 
 ```json
 {
@@ -66,15 +67,18 @@ Příkladem `ConversionSettings.json` souboru může být:
 
 ### <a name="geometry-parameters"></a>Parametry geometrie
 
-* `scaling`– Tento parametr škáluje model jednotně. Škálování lze použít ke zvětšení nebo zmenšení modelu, například k zobrazení stavebního modelu na nejvyšší úrovni tabulky. Vzhledem k tomu, že vykreslovací modul očekává, že se v měřičích určí jiné důležité použití tohoto parametru, nastanou jiné důležité použití tohoto parametru, když je model definován v různých jednotkách. Například pokud je model definován v centimetrech, pak použití stupnice 0,01 by mělo vykreslovat model ve správné velikosti.
+* `scaling`– Tento parametr škáluje model jednotně. Škálování lze použít ke zvětšení nebo zmenšení modelu, například k zobrazení stavebního modelu na nejvyšší úrovni tabulky.
+Škálování je také důležité, pokud je model definován v jiných jednotkách než měřiče, protože vykreslovací modul očekává měřiče.
+Například pokud je model definován v centimetrech, pak použití stupnice 0,01 by mělo vykreslovat model ve správné velikosti.
 Některé zdrojové formáty dat (například. FBX) poskytují pomocný parametr škálování jednotky. v takovém případě převod implicitně škáluje model na jednotky měřičů. Implicitní škálování, které poskytuje formát zdroje, se použije nad parametrem škálování.
 Konečný faktor škálování se aplikuje na vrcholy geometrie a místní transformace uzlů grafu scény. Škálování pro transformaci kořenové entity zůstane beze změny.
 
 * `recenterToOrigin`-Uvádí, že by měl být model převeden tak, aby jeho ohraničovací rámeček byl zarovnán na střed na začátku.
-Centrování je důležité, pokud je zdrojový model umístěn daleko od počátku, protože v takovém případě problémy s přesností plovoucí desetinné čárky mohou způsobit vykreslování artefaktů.
+Pokud je zdrojový model umístěn daleko od počátku, mohou problémy s přesností s plovoucí desetinnou čárkou způsobit vykreslování artefaktů.
+Centrování modelu může v této situaci pomáhat.
 
 * `opaqueMaterialDefaultSidedness`-Modul vykreslování předpokládá, že neprůhledné materiály jsou oboustranné.
-Pokud to není zamýšlené chování, tento parametr by měl být nastaven na "SingleSided". Další informace najdete v tématu [ :::no-loc text="single sided"::: vykreslování](../../overview/features/single-sided-rendering.md).
+Pokud tento předpoklad nemá hodnotu true konkrétního modelu, tento parametr by měl být nastaven na hodnotu "SingleSided". Další informace najdete v tématu [ :::no-loc text="single sided"::: vykreslování](../../overview/features/single-sided-rendering.md).
 
 ### <a name="material-overrides"></a>Přepsání materiálu
 
@@ -102,7 +106,7 @@ Pokud je model definován pomocí prostoru hodnot gamma, pak tyto možnosti by m
   * `static`: Všechny objekty jsou zpřístupněny v rozhraní API, ale nelze je transformovat nezávisle.
   * `none`: Graf scény je sbalený do jednoho objektu.
 
-Každý režim má jiný běhový výkon. V `dynamic` režimu se náklady na výkon lineárně škálují s počtem [entit](../../concepts/entities.md) v grafu, a to i v případě, že se nepřesouvají žádné součásti. Mělo by být použito pouze při přesunu částí, které jsou pro aplikaci nezbytné, například pro animaci "zobrazení rozpadu".
+Každý režim má jiný běhový výkon. V `dynamic` režimu se náklady na výkon lineárně škálují s počtem [entit](../../concepts/entities.md) v grafu, a to i v případě, že se nepřesouvají žádné součásti. `dynamic`Režim použití pouze v případě, že je nutné přesunout součásti jednotlivě, například pro animaci zobrazení rozpadu.
 
 `static`Režim provede export celého grafu scény, ale části v tomto grafu mají konstantní transformaci vzhledem ke své kořenové části. Kořenový uzel objektu je však stále možné přesunout, otočit nebo škálovat bez značných nákladů na výkon. Kromě toho [prostorové dotazy](../../overview/features/spatial-queries.md) vrátí jednotlivé části a každá část se dá upravit pomocí [přepsání stavu](../../overview/features/override-hierarchical-state.md). V tomto režimu je režie za modul runtime na objekt zanedbatelná. Je ideální pro velké scény, kde stále potřebujete kontrolu na jednotlivé objekty, ale ne žádné transformační změny pro jednotlivé objekty.
 
@@ -178,7 +182,7 @@ Tyto formáty jsou povolené pro příslušné součásti:
 
 Paměťové nároky na formáty jsou následující:
 
-| Formát | Description | Počet bajtů za sekundu:::no-loc text="vertex"::: |
+| Formát | Popis | Počet bajtů za sekundu:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|Úplná přesnost plovoucí desetinné čárky se dvěma komponentami|8
 |16_16_FLOAT|poloviční přesnost s plovoucí desetinnou čárkou pro dvě komponenty|4
@@ -278,6 +282,11 @@ V těchto případech mají modely často velmi vysoký detail v rámci malých 
 * Jednotlivé části by měly být vybrané a pohyblivé, takže `sceneGraphMode` musí být ponecháno na `dynamic` .
 * Přetypování do ray jsou obvykle nedílnou součástí aplikace, takže je potřeba vygenerovat sítě kolizí.
 * Vyjmuté roviny vypadají lépe s `opaqueMaterialDefaultSidedness` povoleným příznakem.
+
+## <a name="deprecated-features"></a>Zastaralé funkce:
+
+Poskytování nastavení pomocí souboru filename, který není specifický pro model, `conversionSettings.json` je stále podporováno, ale zastaralé.
+Místo toho prosím použijte název specifický pro daný model `<modelName>.ConversionSettings.json` .
 
 ## <a name="next-steps"></a>Další kroky
 

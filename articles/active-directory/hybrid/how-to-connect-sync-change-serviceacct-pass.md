@@ -17,12 +17,12 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfb6e0608609a3940affd83a0aa235a2ef7c041c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce4c64f0be61c2fe28a102674929333235ee29c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357558"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385088"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>Změna hesla účtu služby ADSync
 Změníte-li heslo účtu služby ADSync, synchronizační služba nebude moci správně spustit, dokud neodstraníte šifrovací klíč a znovu znovu spustíte heslo účtu služby ADSync. 
@@ -52,7 +52,7 @@ Chcete-li zajistit, že tyto chyby neobdržíte, postupujte podle pokynů v čá
  
 ## <a name="abandoning-the-adsync-service-account-encryption-key"></a>Přenechání šifrovacího klíče účtu služby ADSync
 >[!IMPORTANT]
->Následující postupy platí jenom pro Azure AD Connect Build verze 1.1.443.0 nebo starší.
+>Následující postupy platí jenom pro Azure AD Connect Build verze 1.1.443.0 nebo starší. Toto nelze použít pro novější verze Azure AD Connect.
 
 K opuštění šifrovacího klíče použijte následující postupy.
 

@@ -5,16 +5,20 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: e6678eb2e738c206bbe67151361b594679d97b35
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 35acf4e9bd338a0e67b046a59d8884df0626e516
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281017"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429258"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Získat data o počasí od partnerů počasí
 
-Azure FarmBeats vám pomůže přenést data z vašich poskytovatelů dat počasí pomocí rozhraní konektoru na bázi Docker. Pomocí tohoto rozhraní poskytovatelé dat počasí implementují Docker, který se dá integrovat s FarmBeats. V současné době se podporuje jenom poskytovatel dat s [DTN](https://www.dtn.com/dtn-content-integration/) počasí.
+Azure FarmBeats vám pomůže přenést data z vašich poskytovatelů dat počasí pomocí rozhraní konektoru na bázi Docker. Pomocí tohoto rozhraní poskytovatelé dat počasí implementují Docker, který se dá integrovat s FarmBeats. V současné době je podporován následující zprostředkovatel dat počasí.
+
+  ![Partneři FarmBeats](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
+  
+   [DTN](https://www.dtn.com/dtn-content-integration/)
 
 Data o počasí je možné využít ke generování přehledů s užitečnými poznatky a vytváření modelů AI a ML v FarmBeats.
 
@@ -147,7 +151,7 @@ Dotazování dat o počasí pomocí REST API FarmBeats:
 
 1. V nástroji FarmBeats DataHub [Swagger](https://yourdatahub.azurewebsites.net/swagger), navštivte rozhraní/WeatherDataLocation API a vytvořte žádost o získání. Odpověď zahrnuje objekty/WeatherDataLocation vytvořené pro umístění (zeměpisná šířka a délka), které úloha zadala. Poznamenejte si **ID** a **weatherDataModelId** objektů.
 
-2. Vytvořte si požadavek GET/{ID} na rozhraní/WeatherDataModel API pro **weatherDataModelId** , jak jste to provedli dříve. Datový model počasí zobrazuje všechna metadata a podrobnosti o přijatých datech o počasí. Například v objektu datového modelu počasí, míra počasí podrobně popisuje, jaké informace o počasí jsou podporovány a v jakých typech a jednotkách. Například:
+2. Vytvořte si požadavek GET/{ID} na rozhraní/WeatherDataModel API pro **weatherDataModelId** , jak jste to provedli dříve. Datový model počasí zobrazuje všechna metadata a podrobnosti o přijatých datech o počasí. Například v objektu datového modelu počasí, míra počasí podrobně popisuje, jaké informace o počasí jsou podporovány a v jakých typech a jednotkách. Příklad:
 
    ```json
    {

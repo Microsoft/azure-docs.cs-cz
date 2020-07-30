@@ -1,22 +1,22 @@
 ---
-title: 'Rychlý Start: QnA Maker s rozhraním REST API pro Node. js'
-description: V tomto rychlém startu se dozvíte, jak začít s rozhraními REST API QnA Maker pro Node. js. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
+title: 'Rychlý Start: QnA Maker s rozhraním REST API pro Node.js'
+description: V tomto rychlém startu se dozvíte, jak začít s rozhraními REST API QnA Maker pro Node.js. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27
+ms.custom: RESTCURL2020FEB27, devx-track-javascript
 ms.topic: how-to
-ms.openlocfilehash: b42bc3be0d425a84da8bb545ebb29e261a6b0780
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 18ccec5332e3751a86225ab087a1f68b0577cf96
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342727"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406091"
 ---
-# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Rychlý Start: QnA Maker rozhraní REST API pro Node. js
+# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Rychlý Start: QnA Maker rozhraní REST API pro Node.js
 
-Začínáme s rozhraními REST API QnA Maker pro Node. js. Pomocí těchto kroků můžete vyzkoušet ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
+Začínáme s rozhraními REST API QnA Maker pro Node.js. Pomocí těchto kroků můžete vyzkoušet ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
 
-Pro Node. js použijte QnA Maker rozhraní REST API pro:
+Pro Node.js použijte QnA Maker rozhraní REST API:
 
 * Vytvoření znalostní báze
 * Výměna znalostní báze
@@ -25,14 +25,14 @@ Pro Node. js použijte QnA Maker rozhraní REST API pro:
 * Stáhnout znalostní bázi
 * Získat stav operace
 
-[Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Ukázky Node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [UkázkyNode.js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Aktuální verze [Node. js](https://nodejs.org).
+* Aktuální verze [Node.js](https://nodejs.org).
 * Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .
 
 ## <a name="setting-up"></a>Nastavení
@@ -65,7 +65,7 @@ npm install requestretry request --save
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto fragmenty kódu ukazují, jak provést následující s QnA Maker rozhraní REST API pro Node. js:
+Tyto fragmenty kódu ukazují, jak provést následující s QnA Maker rozhraní REST API pro Node.js:
 
 * [Vytvoření znalostní báze](#create-a-knowledge-base)
 * [Výměna znalostní báze](#replace-a-knowledge-base)

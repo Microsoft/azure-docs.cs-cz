@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 707a0f801a739a7a91cee19635e609305cd8f021
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 21f4494bedd824cef373a391c5635e35ec2600d0
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74805786"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406873"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Povolení protokolování v sadě Speech SDK
 
@@ -26,7 +27,7 @@ Protokolování do souboru je volitelnou funkcí sady Speech SDK. Během protoko
 
 ## <a name="sample"></a>Ukázka
 
-Název souboru protokolu je zadán v objektu konfigurace. Vezměte `SpeechConfig` jako příklad a za předpokladu, že jste vytvořili instanci s názvem `config`:
+Název souboru protokolu je zadán v objektu konfigurace. Vezměte `SpeechConfig` jako příklad a za předpokladu, že jste vytvořili instanci s názvem `config` :
 
 ```csharp
 config.SetProperty(PropertyId.Speech_LogFilename, "LogfilePathAndName");
@@ -51,7 +52,7 @@ config.set_property(speechsdk.PropertyId.Speech_LogFilename, "LogfilePathAndName
 Nástroj pro rozpoznávání můžete vytvořit z konfiguračního objektu. Tím se povolí protokolování pro všechny nástroje pro rozpoznávání.
 
 > [!NOTE]
-> Pokud vytvoříte `SpeechSynthesizer` z konfiguračního objektu, nebude protokolování povoleno. Pokud je povoleno protokolování v případě, budete také dostávat diagnostiku z `SpeechSynthesizer`.
+> Pokud vytvoříte `SpeechSynthesizer` z konfiguračního objektu, nebude protokolování povoleno. Pokud je povoleno protokolování v případě, budete také dostávat diagnostiku z `SpeechSynthesizer` .
 
 ## <a name="create-a-log-file-on-different-platforms"></a>Vytvoření souboru protokolu na různých platformách
 
@@ -79,7 +80,7 @@ File logFile = new File(dir, "logfile.txt");
 config.setProperty(PropertyId.Speech_LogFilename, logFile.getAbsolutePath());
 ```
 
-Výše uvedený kód uloží soubor protokolu do externího úložiště v kořenovém adresáři adresáře, který je specifický pro aplikaci. Uživatel má k souboru přístup pomocí Správce souborů (obvykle v aplikaci `Android/data/ApplicationName/logfile.txt`). Soubor bude odstraněn při odinstalaci aplikace.
+Výše uvedený kód uloží soubor protokolu do externího úložiště v kořenovém adresáři adresáře, který je specifický pro aplikaci. Uživatel má k souboru přístup pomocí Správce souborů (obvykle v aplikaci `Android/data/ApplicationName/logfile.txt` ). Soubor bude odstraněn při odinstalaci aplikace.
 
 Musíte taky požádat o `WRITE_EXTERNAL_STORAGE` oprávnění v souboru manifestu:
 
@@ -104,7 +105,7 @@ NSString *filePath = [
 [speechConfig setPropertyTo:filePath byId:SPXSpeechLogFilename];
 ```
 
-Chcete-li získat přístup k vytvořenému souboru, přidejte níže `Info.plist` uvedené vlastnosti do seznamu vlastností aplikace:
+Chcete-li získat přístup k vytvořenému souboru, přidejte níže uvedené vlastnosti do `Info.plist` seznamu vlastností aplikace:
 
 ```xml
 <key>UIFileSharingEnabled</key>

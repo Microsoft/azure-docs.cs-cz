@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.custom: mqtt
-ms.openlocfilehash: d31e520dac1c7e2a13fbd9e24a0cd3167f69e904
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: c0aac897d85cd96d537238bc81cbc89d3626a07c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682011"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422755"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Vytvoření a otestování nového simulovaného zařízení
 
@@ -31,9 +31,9 @@ Ve druhém scénáři chce contoso otestovat nové zařízení inteligentního �
 
 *Vlastnosti*
 
-| Name                     | Hodnoty                      |
+| Název                     | Hodnoty                      |
 | ------------------------ | --------------------------- |
-| Barva                    | Bílá, červená, modrá            |
+| Color                    | Bílá, červená, modrá            |
 | Světlost               | 0 až 100                    |
 | Odhad zbývající životnost | Odpočítávání z 10 000 hodin |
 
@@ -41,7 +41,7 @@ Ve druhém scénáři chce contoso otestovat nové zařízení inteligentního �
 
 V následující tabulce jsou uvedena data, která žárovky do cloudu, jako datový proud:
 
-| Name   | Hodnoty      |
+| Název   | Hodnoty      |
 | ------ | ----------- |
 | Status | "zapnuto", "vypnuto" |
 | Teplota | Stupně F |
@@ -54,7 +54,7 @@ V následující tabulce jsou uvedena data, která žárovky do cloudu, jako dat
 
 Následující tabulka uvádí akce, které nové zařízení podporuje:
 
-| Name        |
+| Název        |
 | ----------- |
 | Přepnout na   |
 | Přepnout  |
@@ -63,7 +63,7 @@ Následující tabulka uvádí akce, které nové zařízení podporuje:
 
 V následující tabulce je uveden počáteční stav zařízení:
 
-| Name                     | Hodnoty |
+| Název                     | Hodnoty |
 | ------------------------ | -------|
 | Počáteční barva            | White  |
 | Počáteční jas       | 75     |
@@ -73,11 +73,11 @@ V následující tabulce je uveden počáteční stav zařízení:
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle tohoto návodu, budete potřebovat:
 

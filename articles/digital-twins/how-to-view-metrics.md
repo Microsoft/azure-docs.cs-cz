@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 09e32d5baa367b76c34ebca28adfdd20385e4e18
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c6db571d64b0fd276519f15a3984848e80c4e18a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374553"
+ms.locfileid: "87387672"
 ---
 # <a name="view-and-understand-azure-digital-twins-metrics"></a>Zobrazení a pochopení metrik digitálních vláken Azure
 
@@ -36,7 +36,7 @@ Metriky jsou ve výchozím nastavení povolené. Z [Azure Portal](https://portal
 
     :::image type="content" source="media/how-to-view-metrics/diagnostic-settings.png" alt-text="Snímek obrazovky zobrazující stránku nastavení diagnostiky a tlačítko, které se má přidat":::
 
-    Další informace o tomto procesu najdete v tématu [*Postup: nastavení diagnostiky*](how-to-set-up-diagnostics.md).
+    Další informace o tomto procesu najdete v tématu [*řešení potíží: nastavení diagnostiky*](troubleshoot-diagnostics.md).
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Metriky digitálních vláken Azure a jejich použití
 
@@ -94,7 +94,7 @@ Operace (pro směrování) | Event Grid </br>Centrum událostí </br>Service Bus
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě zaznamenaných metrik pro digitální vlákna Azure najdete v tématu [*Postup: nastavení diagnostiky*](how-to-set-up-diagnostics.md).
+Další informace o správě zaznamenaných metrik pro digitální vlákna Azure najdete v tématu [*řešení potíží: nastavení diagnostiky*](troubleshoot-diagnostics.md).
 
 Nebo teď, když jste se seznámili s přehledem metrik digitálních vláken Azure, najdete na následujících odkazech, kde najdete další informace o správě digitálních vláken Azure:
 
