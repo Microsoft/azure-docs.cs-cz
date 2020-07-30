@@ -28,7 +28,7 @@ Po přidání aplikace do tenanta Azure AD můžete:
 - Umožňuje spravovat přístup uživatelů k aplikaci pomocí zásad podmíněného přístupu.
 - Nakonfigurujte jednotné přihlašování, aby se uživatelé mohli přihlašovat do aplikace pomocí svých přihlašovacích údajů Azure AD.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete přidat aplikaci do tenanta Azure AD, budete potřebovat:
 

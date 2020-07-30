@@ -3,16 +3,16 @@ title: Monitorování využití a útraty s využitím upozornění na náklady
 description: Tento článek popisuje, jak vám upozornění na náklady umožňují sledovat využití a útraty ve službě Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
-ms.topic: conceptual
+ms.date: 07/24/2020
+ms.topic: how-to
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: e3816c167aea80f32c35c7196de166de57dc9622
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ce63756e19e0991ce7aee0b2b6c9c65712b1680b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203062"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290799"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Použití upozornění na náklady ke sledování použití a výdajů
 

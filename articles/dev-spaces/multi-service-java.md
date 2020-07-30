@@ -5,12 +5,13 @@ ms.date: 11/21/2018
 ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak pomocí Azure Dev Spaces a Visual Studio Code ladit aplikaci s více službami v jazyce Java ve službě Azure Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: beab91964cab9938a5d63584089326bb408f6efc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-java
+ms.openlocfilehash: 95bcc0b25ba937b8db96f006adf80226dee99968
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438330"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374248"
 ---
 # <a name="running-multiple-dependent-services-java-and-visual-studio-code-with-azure-dev-spaces"></a>Spuštění více závislých služeb: Java a Visual Studio Code s Azure Dev Spaces
 
@@ -65,7 +66,7 @@ Předchozí příklad kódu předává hlavičku `azds-route-as` z příchozího
 
 ### <a name="debug-across-multiple-services"></a>Ladění více služeb
 1. V této fázi byste měli mít spuštěnou službu `mywebapi` s připojeným ladicím programem. Pokud tomu tak není, stiskněte v projektu `mywebapi` klávesu F5.
-1. Nastavte zarážku v `index()` metodě `mywebapi` projektu, na [řádku 19 `Application.java` ](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java#L19)
+1. Nastavte zarážku v `index()` metodě `mywebapi` projektu, na [řádku `Application.java` 19](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/mywebapi/src/main/java/com/ms/sample/mywebapi/Application.java#L19)
 1. V projektu `webfrontend` na řádku začínajícím `try` nastavte zarážku těsně před odesláním požadavku GET do `mywebapi`.
 1. V projektu `webfrontend` stiskněte F5 (nebo restartujte ladicí program, pokud je aktuálně spuštěný).
 1. Otevřete webovou aplikaci a projděte kód obou služeb.
