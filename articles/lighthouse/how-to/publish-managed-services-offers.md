@@ -1,14 +1,14 @@
 ---
 title: Publikování nabídky spravované služby pro Azure Marketplace
 description: Naučte se publikovat nabídku spravované služby, která zákazníkům zařadí do Azure Lighthouse.
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 19364164617a32a561140e985c8723f8deafe1a7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e86cec16cc377470f255c8b677d7462dee6b3573
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133306"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407060"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Publikování nabídky spravované služby pro Azure Marketplace
 
@@ -34,7 +34,7 @@ Další informace o obecném procesu publikování najdete v tématu [Průvodce 
 Jakmile zákazník vaši nabídku přidá, bude moct delegovat jedno nebo víc předplatných nebo skupin prostředků, které se pak připojí [do Azure Lighthouse](#the-customer-onboarding-process).
 
 > [!IMPORTANT]
-> Každý plán v nabídce spravované služby obsahuje oddíl s **podrobnostmi o manifestu** , ve kterém definujete entity Azure Active Directory (Azure AD) ve vašem tenantovi, které budou mít přístup k delegovaným skupinám prostředků nebo předplatným pro zákazníky, kteří si zakoupí tento plán. Je důležité si uvědomit, že jakákoli skupina (nebo uživatel nebo instanční objekt), kterou zahrnete, bude mít stejná oprávnění pro každého zákazníka, který plán koupí. Pokud chcete přiřadit různé skupiny pro práci s každým zákazníkem, budete muset publikovat samostatný [soukromý plán](../../marketplace/private-offers.md) , který je exkluzivní pro každého zákazníka.
+> Každý plán v nabídce spravované služby obsahuje oddíl s **podrobnostmi o manifestu** , ve kterém definujete entity Azure Active Directory (Azure AD) ve vašem tenantovi, které budou mít přístup k delegovaným skupinám prostředků nebo předplatným pro zákazníky, kteří si zakoupí tento plán. Je důležité si uvědomit, že jakákoli skupina (nebo uživatel nebo instanční objekt), kterou zahrnete, bude mít stejná oprávnění pro každého zákazníka, který plán koupí. Pro přiřazení různých skupin pro práci se všemi zákazníky můžete publikovat samostatný [soukromý plán](../../marketplace/private-offers.md) , který je exkluzivní pro každého zákazníka. Pamatujte, že privátní plány nejsou podporovány u předplatných vytvořených prostřednictvím prodejce programu Cloud Solution Provider (CSP).
 
 ## <a name="publish-your-offer"></a>Publikování nabídky
 

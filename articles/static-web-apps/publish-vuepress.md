@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: cc1bf52190cb47bc4ffd6efe159ed88cac560e02
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6f5e05e9bfea6b14e46bbde8d17fba2d2a3b7b07
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297988"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429496"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu VuePress ve službě Azure static Web Apps Preview
 
@@ -26,11 +27,11 @@ V tomto kurzu se naučíte:
 > - Nastavení statického Web Apps Azure
 > - Nasazení aplikace VuePress do Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. Pokud ho nemáte, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/).
 - Účet GitHub. Pokud ho nemáte, můžete si [účet zdarma vytvořit](https://github.com/join).
-- Nainstalovaný jazyk [Node.js](https://nodejs.org).
+- [Node.js](https://nodejs.org) nainstalován.
 
 ## <a name="create-a-vuepress-app"></a>Vytvoření aplikace v VuePress
 
@@ -48,7 +49,7 @@ Vytvoření aplikace v VuePress z rozhraní příkazového řádku (CLI):
    echo '# Hello From VuePress' > README.md
    ```
 
-1. Inicializujte soubor _Package. JSON_ .
+1. Inicializujte _package.jsv_ souboru.
 
    ```bash
    npm init -y
@@ -60,7 +61,7 @@ Vytvoření aplikace v VuePress z rozhraní příkazového řádku (CLI):
    npm install --save-dev vuepress
    ```
 
-1. V textovém editoru otevřete soubor _Package. JSON_ a přidejte do oddílu příkaz Build [`scripts`](https://docs.npmjs.com/cli-commands/run-script.html) .
+1. Otevřete _package.js_ v souboru v textovém editoru a přidejte do oddílu příkaz Build [`scripts`](https://docs.npmjs.com/cli-commands/run-script.html) .
 
    ```json
    ...
@@ -109,10 +110,10 @@ Následující kroky ukazují, jak vytvořit novou statickou Web Apps aplikaci a
 ### <a name="create-the-application"></a>Vytvoření aplikace
 
 1. Přejít na [Azure Portal](https://portal.azure.com)
-1. Klikněte na **vytvořit prostředek** .
-1. Hledání **statického Web Apps**
-1. Klikněte na **statické Web Apps (Preview)** .
-1. Klikněte na **vytvořit** .
+1. Klikněte na **Vytvořit prostředek**.
+1. Vyhledejte **Static Web Apps**.
+1. Klikněte na **Static Web Apps (Preview)**
+1. Klikněte na **Vytvořit**.
 
    :::image type="content" source="./media/publish-vuepress/create-in-portal.png" alt-text="Vytvoření statického Web Apps (Preview) na portálu":::
 
@@ -142,7 +143,7 @@ Následující kroky ukazují, jak vytvořit novou statickou Web Apps aplikaci a
 
 Dále přidáte nastavení konfigurace, které proces sestavení používá k sestavení vaší aplikace. Následující nastavení nakonfigurují soubor pracovního postupu akce GitHubu.
 
-1. Kliknutím na tlačítko **Další: >sestavení** upravíte konfiguraci sestavení
+1. Klikněte na tlačítko **Další: Build >** (Další: Sestavení) a upravte konfiguraci sestavení.
 
 1. Nastavte _umístění aplikace_ na **/** .
 

@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 5d1c7d628a61e550aa9dc4a5265ae16c5ed5336a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 248fcdc8d57ca2408ada01db4ecf3b8ee7712e4d
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513621"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388038"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -70,28 +70,63 @@ Kliknutím na tento odkaz otevřete sešit zálohované sestavy.
 
 Sestava obsahuje různé karty:
 
-- **Shrnutí**: na této kartě můžete získat podrobný přehled o vaší nemovitosti k zálohování. Můžete získat rychlý přehled o celkovém počtu zálohovaných položek, celkovém využitém cloudovém úložišti, počtu chráněných instancí a četnosti úspěšnosti úlohy na jeden typ pracovního vytížení. Podrobnější informace o konkrétním typu artefaktu zálohování získáte, když přejdete na příslušné karty.
+##### <a name="summary"></a>Souhrn
+Tato karta vám umožní získat podrobný přehled o vaší nemovitosti k zálohování. Můžete získat rychlý přehled o celkovém počtu zálohovaných položek, celkovém využitém cloudovém úložišti, počtu chráněných instancí a četnosti úspěšnosti úlohy na jeden typ pracovního vytížení. Podrobnější informace o konkrétním typu artefaktu zálohování získáte, když přejdete na příslušné karty.
 
    ![Karta se shrnutím](./media/backup-azure-configure-backup-reports/summary.png)
 
-- **Zálohované položky**: pomocí této karty můžete zobrazit informace a trendy v cloudovém úložišti spotřebovaném na úrovni záložních položek. Pokud například použijete SQL v zálohování virtuálního počítače Azure, můžete zobrazit cloudové úložiště spotřebované pro každou zálohovanou databázi SQL. Můžete se také rozhodnout, že se budou zobrazovat data pro záložní položky určitého stavu ochrany. Například když vyberete dlaždici **zastavená ochrana** v horní části karty, vyfiltruje všechny widgety pod tím, aby zobrazovaly data pouze pro zálohované položky ve stavu ochrana zastaveno.
+##### <a name="backup-items"></a>Zálohované položky
+Tato karta slouží k zobrazení informací a trendů v cloudovém úložišti spotřebovaného na úrovni záložních položek. Pokud například použijete SQL v zálohování virtuálního počítače Azure, můžete zobrazit cloudové úložiště spotřebované pro každou zálohovanou databázi SQL. Můžete se také rozhodnout, že se budou zobrazovat data pro záložní položky určitého stavu ochrany. Například když vyberete dlaždici **zastavená ochrana** v horní části karty, vyfiltruje všechny widgety pod tím, aby zobrazovaly data pouze pro zálohované položky ve stavu ochrana zastaveno.
 
    ![Karta zálohované položky](./media/backup-azure-configure-backup-reports/backup-items.png)
 
-- **Použití**: na této kartě můžete zobrazit parametry fakturace klíče pro vaše zálohy. Informace zobrazené na této kartě jsou na úrovni fakturačních entit (chráněných kontejnerů). Například v případě zálohování serveru DPM do Azure můžete zobrazit trend chráněných instancí a cloudového úložiště spotřebovaného pro server DPM. Podobně platí, že pokud použijete SQL ve Azure Backup nebo SAP HANA v Azure Backup, tato karta poskytuje informace související s využitím na úrovni virtuálního počítače, ve kterém jsou tyto databáze obsažené.
+##### <a name="usage"></a>Využití
+Pomocí této karty můžete zobrazit klíčové parametry fakturace pro vaše zálohy. Informace zobrazené na této kartě jsou na úrovni fakturačních entit (chráněných kontejnerů). Například v případě zálohování serveru DPM do Azure můžete zobrazit trend chráněných instancí a cloudového úložiště spotřebovaného pro server DPM. Podobně platí, že pokud použijete SQL ve Azure Backup nebo SAP HANA v Azure Backup, tato karta poskytuje informace související s využitím na úrovni virtuálního počítače, ve kterém jsou tyto databáze obsažené.
 
    ![Karta použití](./media/backup-azure-configure-backup-reports/usage.png)
 
 > [!NOTE]
 > U úloh aplikace DPM se uživatelům může v porovnání s hodnotou agregovaného využití zobrazit lehký rozdíl (z pořadí 20 MB na server DPM) mezi hodnotami využití zobrazenými v sestavách, jak je znázorněno na kartě Přehled trezoru služby Recovery Services. Tento rozdíl je vydaný faktem, že každý server DPM, který se zaregistruje pro zálohování, má přidružený zdroj dat metadata, který není povrchový jako artefakt pro vytváření sestav.
 
-- **Úlohy**: na této kartě můžete zobrazit dlouhotrvající trendy na úlohách, jako je počet neúspěšných úloh za den a nejvyšší příčiny selhání úlohy. Tyto informace můžete zobrazit jak na agregované úrovni, tak na úrovni záložních položek. Vyberte konkrétní položku zálohy v mřížce pro zobrazení podrobných informací o každé úloze, která byla aktivována u dané zálohované položky ve vybraném časovém rozsahu.
+##### <a name="jobs"></a>Úlohy
+Tato karta slouží k zobrazení dlouhotrvajících trendů v úlohách, jako je počet neúspěšných úloh za den a nejvyšší příčiny selhání úlohy. Tyto informace můžete zobrazit jak na agregované úrovni, tak na úrovni záložních položek. Vyberte konkrétní položku zálohy v mřížce pro zobrazení podrobných informací o každé úloze, která byla aktivována u dané zálohované položky ve vybraném časovém rozsahu.
 
    ![Karta úlohy](./media/backup-azure-configure-backup-reports/jobs.png)
 
-- **Zásady**: na této kartě můžete zobrazit informace o všech aktivních zásadách, například o počtu přidružených položek a celkovém cloudovém úložišti spotřebovanému položkami zálohovanými v rámci dané zásady. Vyberte konkrétní zásadu pro zobrazení informací o všech přidružených zálohovaných položkách.
+##### <a name="policies"></a>Zásady
+Tato karta slouží k zobrazení informací o všech aktivních zásadách, například o počtu přidružených položek a celkovém cloudovém úložišti spotřebovanému položkami zálohovanými v rámci dané zásady. Vyberte konkrétní zásadu pro zobrazení informací o všech přidružených zálohovaných položkách.
 
    ![Karta Zásady](./media/backup-azure-configure-backup-reports/policies.png)
+
+##### <a name="optimize"></a>Optimalizace
+Tato karta slouží k získání přehledu o potenciálních příležitostech pro optimalizaci nákladů pro vaše zálohy. Tady jsou uvedené scénáře, pro které karta optimalizace aktuálně poskytuje přehledy:
+
+###### <a name="inactive-resources"></a>Neaktivní prostředky
+Pomocí tohoto zobrazení můžete identifikovat zálohované položky, které po významnou dobu neobsahovaly úspěšnou zálohu. To může znamenat, že základní počítač, který se zálohuje, už neexistuje (a proto má za následek neúspěšné zálohování), nebo dojde k nějakému problému s počítačem, který brání spolehlivému zálohování. 
+
+Neaktivní prostředky zobrazíte tak, že přejdete na kartu **optimalizace** a kliknete na dlaždici **neaktivní prostředky** . Kliknutím na tuto dlaždici zobrazíte mřížku, která obsahuje podrobnosti o všech neaktivních prostředcích, které existují ve vybraném oboru. Ve výchozím nastavení mřížka zobrazuje položky, které nemají bod obnovení za posledních 7 dnů. Pokud chcete najít neaktivní prostředky pro jiný časový rozsah, můžete upravit filtr **časového rozsahu** v horní části karty.
+
+Po zjištění neaktivního prostředku můžete problém prozkoumat tak, že přejdete na řídicí panel zálohovaných položek nebo na okno prostředků Azure pro daný prostředek (kdykoli je to možné). V závislosti na vašem scénáři můžete zvolit buď zastavení zálohování počítače (Pokud již neexistuje), a ušetřit tak náklady za chráněnou instanci, nebo můžete opravit problémy v počítači, abyste měli jistotu, že zálohování bude spolehlivé.
+
+![Karta optimalizace – neaktivní prostředky](./media/backup-azure-configure-backup-reports/optimize-inactive-resources.png)
+
+###### <a name="backup-items-with-a-large-retention-duration"></a>Zálohované položky s velkou dobou trvání uchování
+V tomto zobrazení můžete identifikovat ty položky, jejichž zálohy se uchovávají po delší dobu, než vyžaduje vaše organizace. 
+
+Když kliknete na dlaždici **optimalizace zásad** a potom na dlaždici **optimalizace uchovávání informací** , zobrazí se mřížka obsahující všechny zálohované položky, pro které je uchovávání denních, týdenních, měsíčních nebo ročního bodu uchovávání (RP) větší než zadaná hodnota. Ve výchozím nastavení mřížka zobrazuje všechny zálohované položky ve vybraném oboru. Filtry můžete použít pro denní, týdenní, měsíční a roční dobu zjišťování, abyste mohli mřížku dále vyfiltrovat a identifikovat tyto položky, pro které by mohlo být ukládání potenciálně omezené, aby se ušetřily náklady na úložiště zálohování.
+
+Všimněte si, že pro databázové úlohy, jako je SQL a SAP HANA, se doby uchování zobrazené v mřížce shodují s dobami uchování úplných bodů zálohy, nikoli rozdílovým bodem zálohy. Totéž platí i pro filtry uchovávání informací.  
+
+![Optimalizace optimalizace uchovávání karet](./media/backup-azure-configure-backup-reports/optimize-retention.png)
+
+###### <a name="databases-configured-for-daily-full-backup"></a>Databáze nakonfigurované pro každodenní úplnou zálohu
+Pomocí tohoto zobrazení můžete identifikovat databázové úlohy, které byly nakonfigurovány pro každodenní úplnou zálohu. Použití denní rozdílové zálohy spolu s týdenním úplným zálohováním je často cenově výhodnější. 
+
+Kliknutím na dlaždici **optimalizace zásad** a na dlaždici **Optimalizace plánu zálohování** se zobrazí mřížka obsahující všechny databáze se každodenní zásadou úplného zálohování. Můžete se rozhodnout přejít na konkrétní zálohovanou položku a upravit ji tak, aby používala každodenní rozdílovou zálohu s týdenním úplným zálohováním.
+
+Všimněte si, že filtr **typu správy zálohování** v horní části karty by měl mít položky **SQL na virtuálním počítači Azure** a **SAP HANA ve vybraných virtuálních počítačích Azure** , aby mřížka mohla zobrazovat databázové úlohy podle očekávání.
+
+![Optimalizace karet – Optimalizace plánu zálohování](./media/backup-azure-configure-backup-reports/optimize-backup-schedule.png)
 
 ## <a name="export-to-excel"></a>Exportovat do aplikace Excel
 

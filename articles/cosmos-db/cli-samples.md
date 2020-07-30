@@ -1,31 +1,84 @@
 ---
-title: Ukázky v Azure CLI pro Azure Cosmos DB SQL (jádro) API
-description: Ukázky v Azure CLI pro Azure Cosmos DB SQL (jádro) API
+title: Ukázky v Azure CLI pro Azure Cosmos DB
+description: Ukázky v Azure CLI pro Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 06/03/2020
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 39550c3da7a5ed129e26dec3d33f19c65d76cdfa
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 43e4b0ae2e7a33cc1b66784bf8e7545b4ed202f1
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560529"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431372"
 ---
-# <a name="azure-cli-samples-for-azure-cosmos-db-core-sql-api"></a>Ukázky v Azure CLI pro rozhraní API pro Azure Cosmos DB Core (SQL)
+# <a name="azure-cli-samples-for-azure-cosmos-db"></a>Ukázky v Azure CLI pro službu Azure Cosmos DB
 
-Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro rozhraní API pro Azure Cosmos DB Core (SQL). Referenční stránky pro všechny příkazy rozhraní příkazového řádku Azure Cosmos DB jsou k dispozici v [referenčních informacích k Azure CLI](/cli/azure/cosmosdb). Ukázky Azure CLI pro další Azure Cosmos DB rozhraní API najdete v tématu [rozhraní API Cassandra](cli-samples-cassandra.md), [rozhraní MongoDB API](cli-samples-mongodb.md), rozhraní [Gremlin API](cli-samples-gremlin.md)a [rozhraní API pro tabulky](cli-samples-table.md). Všechny ukázkové skripty Azure Cosmos DB CLI najdete v [úložišti GitHub Azure Cosmos DB CLI](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
+Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro službu Azure Cosmos DB. Pomocí odkazů na pravé straně přejděte na ukázky specifické pro rozhraní API. Běžné ukázky jsou stejné napříč všemi rozhraními API. Referenční stránky pro všechny příkazy rozhraní příkazového řádku Azure Cosmos DB jsou k dispozici v [referenčních informacích k Azure CLI](/cli/azure/cosmosdb). Ukázkové skripty Azure Cosmos DB CLI můžete najít také v [úložišti GitHub Azure Cosmos DB CLI](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
+
+Tyto ukázky vyžadují Azure CLI verze 2.9.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli) .
+
+## <a name="common-samples"></a>Běžné ukázky
+
+Tyto ukázky se vztahují na všechna rozhraní Azure Cosmos DB API.
 
 |Úkol | Popis |
 |---|---|
-| [Vytvoření účtu Azure Cosmos, databáze a kontejneru](scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a kontejner pro rozhraní API SQL (Core). |
-| [Změna propustnosti](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualizujte RU/s na databázi a kontejner.|
 | [Oblasti přidání nebo převzetí služeb při selhání](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Přidání oblasti, změna priority převzetí služeb při selhání, aktivace ručního převzetí služeb při selhání|
 | [Klíče účtu a připojovací řetězce](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Vypíše klíče účtu, klíče jen pro čtení, znovu vygeneruje klíče a seznam připojovacích řetězců.|
 | [Zabezpečení pomocí brány firewall protokolu IP](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvořte účet Cosmos s nakonfigurovanou bránou firewall protokolu IP.|
 | [Zabezpečený nový účet pomocí koncových bodů služby](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvořte účet Cosmos a zabezpečte ho pomocí koncových bodů služby.|
 | [Zabezpečení stávajícího účtu pomocí koncových bodů služby](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| Aktualizujte účet Cosmos na zabezpečení pomocí koncových bodů služby, když je podsíť nakonec nakonfigurovaná.|
+|||
+
+## <a name="core-sql-api-samples"></a>Core (SQL) – ukázky rozhraní API
+
+|Úkol | Popis |
+|---|---|
+| [Vytvoření účtu Azure Cosmos, databáze a kontejneru](scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a kontejner pro rozhraní API jádra (SQL). |
+| [Vytvoření účtu Azure Cosmos, databáze a kontejneru pomocí automatického škálování](scripts/cli/sql/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a kontejner s funkcí automatického škálování pro rozhraní API jádra (SQL). |
+| [Změna propustnosti](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualizujte RU/s na databázi a kontejner.|
 | [Uzamčení prostředků před odstraněním](scripts/cli/sql/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Zabránit odstranění prostředků s zámky prostředků|
+|||
+
+## <a name="mongodb-api-samples"></a>Ukázky rozhraní API pro MongoDB
+
+|Úkol | Popis |
+|---|---|
+| [Vytvoření účtu Azure Cosmos, databáze a kolekce](scripts/cli/mongodb/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a kolekci pro rozhraní API MongoDB. |
+| [Vytvoření účtu Azure Cosmos, databáze s možností automatického škálování a dvou kolekcí se sdílenou propustností](scripts/cli/mongodb/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi s možností automatického škálování a dvě kolekce se sdílenou propustností pro rozhraní MongoDB API. |
+| [Změna propustnosti](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualizujte RU/s na databázi a kolekci.|
+| [Uzamčení prostředků před odstraněním](scripts/cli/mongodb/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Zabránit odstranění prostředků s zámky prostředků|
+|||
+
+## <a name="cassandra-api-samples"></a>Ukázky rozhraní API Cassandra
+
+|Úkol | Popis |
+|---|---|
+| [Vytvoření účtu Azure Cosmos, místa a tabulky](scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, prostor a tabulku pro rozhraní API Cassandra. |
+| [Vytvoření účtu Azure Cosmos, místa a tabulky s použitím automatického škálování](scripts/cli/cassandra/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří Azure Cosmos DB účet, prostor a tabulku s AutoScale rozhraní API Cassandra. |
+| [Změna propustnosti](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualizujte RU/s na místě a tabulce klíčů.|
+| [Uzamčení prostředků před odstraněním](scripts/cli/cassandra/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Zabránit odstranění prostředků s zámky prostředků|
+|||
+
+## <a name="gremlin-api-samples"></a>Ukázky rozhraní API pro Gremlin
+
+|Úkol | Popis |
+|---|---|
+| [Vytvoření účtu Azure Cosmos, databáze a grafu](scripts/cli/gremlin/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a graf pro rozhraní Gremlin API. |
+| [Vytvoření účtu Azure Cosmos, databáze a grafu pomocí automatického škálování](scripts/cli/gremlin/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a graf s možností automatického škálování pro rozhraní Gremlin API. |
+| [Změna propustnosti](scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualizujte RU/s na databázi a graf.|
+| [Uzamčení prostředků před odstraněním](scripts/cli/gremlin/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Zabránit odstranění prostředků s zámky prostředků|
+|||
+
+## <a name="table-api-samples"></a>Ukázky rozhraní API pro tabulky
+
+|Úkol | Popis |
+|---|---|
+| [Vytvoření účtu Azure Cosmos a tabulky](scripts/cli/table/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB a tabulku pro rozhraní API pro tabulky. |
+| [Vytvoření účtu Azure Cosmos a tabulky pomocí automatického škálování](scripts/cli/table/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB a tabulku s automatickém škálováním pro rozhraní API pro tabulky. |
+| [Změna propustnosti](scripts/cli/table/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Aktualizujte RU/s na tabulce.|
+| [Uzamčení prostředků před odstraněním](scripts/cli/table/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Zabránit odstranění prostředků s zámky prostředků|
 |||

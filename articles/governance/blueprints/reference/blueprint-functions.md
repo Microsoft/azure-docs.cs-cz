@@ -3,12 +3,12 @@ title: Funkce Azure modrotisky
 description: Popisuje funkce, které jsou k dispozici pro použití s artefakty podrobného plánu v definicích a přiřazeních Azure modrotisky.
 ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: c402075aa9f6beb52e72454179c2e96d148c271f
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 7a52901060466692e7094cf74fa5acfcded5f1da
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970871"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422840"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funkce pro použití s plány Azure
 
@@ -34,9 +34,9 @@ Vrátí objekt vlastností naplněný pomocí tohoto výstupu artefaktů podrobn
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| artefakt |Yes |řetězec |Název artefaktu podrobného plánu |
+| artefakt |Ano |řetězec |Název artefaktu podrobného plánu |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -113,7 +113,7 @@ Některé příklady načítání dat z ukázky _myTemplateArtifact_ jsou:
 |`[artifacts("myTemplateArtifact").outputs.myString]` | Řetězec | "moje hodnota řetězce" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Objekt | {"MyProperty": "moje hodnota", "anotherProperty": true} |
 |`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Řetězec | "moje hodnota" |
-|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Logická hodnota | True |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Logická hodnota | Ano |
 
 ## <a name="concat"></a>concat
 
@@ -123,10 +123,10 @@ Kombinuje více řetězcových hodnot a vrátí zřetězený řetězec.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| řetězec1 |Yes |řetězec |První hodnota pro zřetězení |
-| Další argumenty |No |řetězec |Další hodnoty v sekvenčním pořadí pro zřetězení |
+| řetězec1 |Ano |řetězec |První hodnota pro zřetězení |
+| Další argumenty |Ne |řetězec |Další hodnoty v sekvenčním pořadí pro zřetězení |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -148,9 +148,9 @@ Vrátí hodnotu parametru podrobného plánu. Zadaný název parametru musí bý
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |řetězec |Název parametru, který se má vrátit. |
+| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -174,7 +174,7 @@ Definujte parametr _principalIds_ v definici podrobného plánu:
                 "type": "array",
                 "metadata": {
                     "displayName": "Principal IDs",
-                    "description": "This is a blueprint parameter that any artifact can reference. We'll display these descriptions for you in the info bubble. Supply principal IDs for the users,groups, or service principals for the RBAC assignment.",
+                    "description": "This is a blueprint parameter that any artifact can reference. We'll display these descriptions for you in the info bubble. Supply principal IDs for the users,groups, or service principals for the Azure role assignment.",
                     "strongType": "PrincipalId"
                 }
             }
@@ -269,9 +269,9 @@ Vrátí objekt, který představuje zadaný artefakt skupiny prostředků. Na ro
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Povinné | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| zástupný znak |Yes |řetězec |Zástupný název artefaktu skupiny prostředků, který se má vrátit |
+| zástupný znak |Ano |řetězec |Zástupný název artefaktu skupiny prostředků, který se má vrátit |
 
 ### <a name="return-value"></a>Vrácená hodnota
 

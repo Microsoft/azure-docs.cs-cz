@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 07/27/2020
-ms.openlocfilehash: 113249f56c1f5f9c035ec2ff6ccb7309dd355763
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281340"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432661"
 ---
 # <a name="changelog"></a>Protokol změn #
 
@@ -57,13 +57,13 @@ ms.locfileid: "87281340"
 
 ### <a name="changes-234"></a>Změny 2.3.4
 
-- Při přehrávání HLSu v iOS a MacOS Safari se odstranil prázdný popisek/záznam titulků.
+- Při přehrávání HLSu v iOS a macOS Safari se odstranil prázdný popisek/záznam titulků.
 - Snížil se počet 412s pro popisky IMSC1.
 - Upozornění na výstup v konzole pro 10 po sobě jdoucích prázdných odpovědí na IMSC1 titulků, abychom usnadnili živé ladění
 
 ## <a name="232-official-update-october-9-2019"></a>2.3.2 (oficiální aktualizace říjen 9 2019)
 
-### <a name="features"></a>Funkce
+### <a name="features-232"></a>Funkce 2.3.2
 
 – Přidala se podpora PlayReady pro PŘERUŠOVANé přehrávání pro prohlížeč chrom Edge.
 
@@ -101,7 +101,7 @@ ms.locfileid: "87281340"
 
 - Po získání segmentDecryptError a přehrávači už je na živém okraji, Player teď aktualizuje manifest, místo abyste vyzkoušeli další segment.
 - Přidání dalšího protokolování pro diagnostiku
-- Aktualizovaná dokumentace k podpoře zahrňte FairPlay pro iOS Safari
+- Aktualizovaná dokumentace, která zahrnuje podporu FairPlay pro iOS Safari
 - Přidal se příklad pro možnost srclang možnosti IMSC1.
 - Přidání odsazení, textPadding, přepsání boxShadow pro textové stopy
 - Přidání ErrorCode (0x0020025B) pro odlišení toho, že se stahování segmentu nepovedlo kvůli nejenom vyvolání 0x00200259
@@ -228,7 +228,7 @@ ms.locfileid: "87281340"
 
 ### <a name="changes-218"></a>2.1.8 změny ###
 
-- Mění Aktualizovala se 0x0600001 chyby, která se zobrazí, když se obsah AES přehrává s použitím Flash 30, protože není v tuto chvíli podporovaný. Další podrobnosti najdete v části [známé problémy](azure-media-player-known-issues.md) .
+- Mění Aktualizovaná chyba 0x0600001, která se zobrazí, když se obsah AES přehrává s použitím Flash 30, protože není v tuto chvíli podporovaný. Další podrobnosti najdete v části [známé problémy](azure-media-player-known-issues.md) .
 - Mění Přidání dalších opakování pro živé scénáře, když manifest vyžádá 404 nebo vrátí prázdné manifesty.
 
 ## <a name="217-official-update"></a>2.1.7 (oficiální aktualizace) ##

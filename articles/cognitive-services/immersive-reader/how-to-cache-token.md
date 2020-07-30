@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: e652aa29b1c1935fcc4887dbe13ef9b683a8bd05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 70173e1904ce9d7a159532c8962932765060e4d9
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75946163"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406941"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>Jak uložit ověřovací token do mezipaměti
 
@@ -22,7 +23,7 @@ Tento článek ukazuje, jak uložit ověřovací token do mezipaměti za účele
 
 ## <a name="using-aspnet"></a>Použití ASP.NET
 
-Importujte balíček NuGet **Microsoft. IdentityModel. clients. Active** , který se používá k získání tokenu. V dalším kroku použijte následující kód k získání `AuthenticationResult`a pomocí hodnot ověřování, které jste dostali při [vytváření prostředku pro moderní čtečku](./how-to-create-immersive-reader.md).
+Importujte balíček NuGet **Microsoft. IdentityModel. clients. Active** , který se používá k získání tokenu. V dalším kroku použijte následující kód k získání `AuthenticationResult` a pomocí hodnot ověřování, které jste dostali při [vytváření prostředku pro moderní čtečku](./how-to-create-immersive-reader.md).
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()
@@ -34,9 +35,9 @@ private async Task<AuthenticationResult> GetTokenAsync()
 }
 ```
 
-`AuthenticationResult` Objekt má `AccessToken` vlastnost, která je skutečným tokenem, který použijete při spouštění moderního ČTECÍHO zařízení pomocí sady SDK. Obsahuje také `ExpiresOn` vlastnost, která označuje, kdy vyprší platnost tokenu. Před spuštěním moderního čtecího zařízení můžete zjistit, jestli vypršela platnost tokenu, a získat nový token, jenom pokud vypršela jeho platnost.
+`AuthenticationResult`Objekt má vlastnost, `AccessToken` která je skutečným tokenem, který použijete při spouštění moderního čtecího zařízení pomocí sady SDK. Obsahuje také vlastnost, `ExpiresOn` která označuje, kdy vyprší platnost tokenu. Před spuštěním moderního čtecího zařízení můžete zjistit, jestli vypršela platnost tokenu, a získat nový token, jenom pokud vypršela jeho platnost.
 
-## <a name="using-nodejs"></a>Použití Node. JS
+## <a name="using-nodejs"></a>Použití Node.JS
 
 Přidejte do projektu balíček [**Request**](https://www.npmjs.com/package/request) npm. Použijte následující kód k získání tokenu pomocí hodnot ověřování, které jste dostali při [vytváření prostředku pro moderní čtečku](./how-to-create-immersive-reader.md).
 
@@ -64,7 +65,7 @@ router.get('/token', function(req, res) {
 });
 ```
 
-`expires_on` Vlastnost je datum a čas, kdy vyprší platnost tokenu, vyjádřený jako počet sekund od 1. ledna 1970 UTC. Tuto hodnotu použijte k určení, jestli vypršela platnost tokenu, než se pokusí získat nový.
+`expires_on`Vlastnost je datum a čas, kdy vyprší platnost tokenu, vyjádřený jako počet sekund od 1. ledna 1970 UTC. Tuto hodnotu použijte k určení, jestli vypršela platnost tokenu, než se pokusí získat nový.
 
 ```javascript
 async function getToken() {

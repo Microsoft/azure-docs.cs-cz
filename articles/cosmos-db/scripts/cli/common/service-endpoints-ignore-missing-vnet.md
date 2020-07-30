@@ -6,26 +6,26 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 9/25/2019
-ms.openlocfilehash: 46e93e864034c451e1da1848a318ab176a292b6e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/29/2020
+ms.openlocfilehash: 4fd434fcfcc560a69b1e223730021aa4dd32c334
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71275560"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432257"
 ---
 # <a name="connect-an-existing-azure-cosmos-account-with-virtual-network-service-endpoints-using-azure-cli"></a>Připojení existujícího účtu Azure Cosmos k koncovým bodům služby virtuální sítě pomocí Azure CLI
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.73 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.9.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-Tato ukázka je určená k tomu, aby ukázala, jak připojit existující účet Azure Cosmos k existující nové virtuální síti, ve které ještě není nakonfigurovaná podsíť pro koncové body `ignore-missing-vnet-service-endpoint` služby pomocí parametru. To umožňuje, aby se konfigurace účtu Cosmos dokončila bez chyby, než se dokončí konfigurace podsítě virtuální sítě. Po dokončení konfigurace podsítě bude účet Cosmos dostupný přes nakonfigurovanou podsíť.
+Tato ukázka je určená k tomu, aby ukázala, jak připojit existující účet Azure Cosmos k existující nové virtuální síti, ve které ještě není nakonfigurovaná podsíť pro koncové body služby pomocí `ignore-missing-vnet-service-endpoint` parametru. To umožňuje, aby se konfigurace účtu Cosmos dokončila bez chyby, než se dokončí konfigurace podsítě virtuální sítě. Po dokončení konfigurace podsítě bude účet Cosmos dostupný přes nakonfigurovanou podsíť.
 
 > [!NOTE]
-> Tato ukázka předvádí použití účtu rozhraní API SQL (Core). Chcete-li použít tuto ukázku pro jiná rozhraní API `enable-virtual-network` , `virtual-network-rules` použijte parametry a ve skriptu níže do skriptu specifického pro rozhraní API.
+> Tato ukázka předvádí použití účtu rozhraní API SQL (Core). Chcete-li použít tuto ukázku pro jiná rozhraní API, použijte `enable-virtual-network` `virtual-network-rules` parametry a ve skriptu níže do skriptu specifického pro rozhraní API.
 
 [!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/common/service-endpoints-ignore-missing-vnet.sh "Create an Azure Cosmos account with service endpoints.")]
 

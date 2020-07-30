@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c4a128d46ca1b3f84981f9732f86ff49f72cc18
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a4f30202b08328854296b45e0279fc51b25b0a7c
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025825"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428459"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro spravované domény
 
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte:
 > * Konfigurace hybridního připojení k Azure AD
 > * Povolení zařízení s Windows nižší úrovně
 > * Ověření připojených zařízení
-> * Odstranit potíže
+> * Řešení potíží
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -69,6 +69,9 @@ Služba připojení k hybridní službě Azure AD vyžaduje, aby zařízení mě
 - `https://login.microsoftonline.com`
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com`(Pokud používáte nebo plánujete používat bezproblémové přihlašování SSO)
+
+> [!WARNING]
+> Pokud vaše organizace používá proxy servery, které zachycují provoz SSL pro scénáře, jako je prevence ztráty dat nebo omezení tenanta Azure AD, zajistěte, aby byl provoz do ' https://device.login.microsoftonline.com ' vyloučený z přerušení TLS a prověřený. Vyloučení se nepovedlo https://device.login.microsoftonline.com , může způsobit rušení s ověřováním klientským certifikátem a způsobuje problémy s registrací zařízení a podmíněným přístupem na základě zařízení.
 
 Pokud vaše organizace vyžaduje přístup k Internetu prostřednictvím odchozího proxy serveru, můžete pomocí [implementace automatického zjišťování webových proxy serverů (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) povolit počítačům s Windows 10 registraci zařízení ve službě Azure AD. Problémy s konfigurací a správou protokolu WPAD najdete v tématu [řešení potíží při automatickém zjišťování](/previous-versions/tn-archive/cc302643(v=technet.10)). V zařízeních s Windows 10 starších než 1709 aktualizace je k dispozici jen možnost WPAD pro konfiguraci proxy serveru pro práci s hybridním připojením k Azure AD. 
 

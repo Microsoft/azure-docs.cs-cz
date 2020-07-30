@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: e3a5d2228074ed358244b49bdf283c09f777ddee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d8ac2a8317343b1bc172eefa17c6eb0074c5c21f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292073"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432634"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady B-Series
 
@@ -92,18 +92,21 @@ V případě D16s_v3, který má 16 vCPU a 64 GiB paměti, je hodinová sazba $0
 
 ## <a name="q--a"></a>Otázky a odpovědi
 
+### <a name="q-what-happens-if-the-credits-run-out"></a>Otázka: co se stane, když kredit skončí?
+Odpověď **: po**vyčerpání kreditů se virtuální počítač vrátí k výkonu směrného plánu.
+
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>Otázka: jak získáte 135% výkonnost směrného plánu z virtuálního počítače?
 
 Odpověď **: 135**% se sdílí mezi 8 vCPU a tvoří velikost virtuálního počítače. Například pokud vaše aplikace používá 4 až 8 jader pracujících na dávkovém zpracování a každý z těchto 4 vCPU běží na 30% využití, celková velikost výkonu procesoru virtuálního počítače by byla rovna 120%.  To znamená, že váš virtuální počítač bude sestavovat kredit na základě 15% rozdílu od vašeho směrného výkonu.  Ale také to znamená, že pokud máte k dispozici kredity, může stejný virtuální počítač použít 100% ze všech 8 vCPUů, takže virtuální počítač má maximální výkon procesoru 800%.
 
 
-### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>Otázka: Jak můžu monitorovat zůstatek a spotřebu svého kreditu
+### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>Otázka: Jak můžu monitorovat zůstatek a spotřebu svého kreditu?
 
 Odpověď **: budeme**zavádět dvě nové metriky v nadcházejících týdnech, metrika **kreditu** vám umožní zobrazit, kolik kreditů má váš virtuální počítač v bance, a metrika **CONSUMEDCREDIT** zobrazí počet KREDITů procesoru, které váš virtuální počítač využil z banky.    Tyto metriky budete moct zobrazit z podokna metrik na portálu nebo programově prostřednictvím rozhraní Azure Monitor API.
 
 Další informace o tom, jak získat přístup k datům metrik pro Azure, najdete v tématu [Přehled metrik v Microsoft Azure](../azure-monitor/platform/data-platform.md).
 
-### <a name="q-how-are-credits-accumulated"></a>Otázka: jak se počítají kredity?
+### <a name="q-how-are-credits-accumulated-and-consumed"></a>Otázka: jak se shromažďují a spotřebovávají kredity?
 
 Odpověď: míra akumulace a spotřeby virtuálních počítačů je nastavená **tak,** že virtuální počítač, na kterém běží přesně jeho základní úroveň výkonu, nebude ani kumulace ani spotřeba kreditů.  Virtuální počítač bude mít čisté zvýšení kreditů vždy, když je spuštěný pod základní úrovní výkonu a bude mít čistý pokles v kreditech, kdykoli virtuální počítač využívá procesor větší, než je základní úroveň výkonu.
 

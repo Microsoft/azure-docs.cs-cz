@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu pomocí Node. js | Microsoft Docs'
+title: 'Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu pomocí Node.js | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu pomocí Node. js.
+description: Pomocí tohoto rychlého startu můžete začít požadovat výsledky hledání z vaší instance Vlastní vyhledávání Bingu pomocí Node.js.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,22 +10,23 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 34d64db9caefd26adc91471ed67e528a6e3196dc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: devx-track-javascript
+ms.openlocfilehash: dcfb5ed0b7a7fe2ec004ef5ceebf9ee51112c67c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199841"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406448"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu pomocí Node. js
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Rychlý Start: volání koncového bodu Vlastní vyhledávání Bingu pomocí Node.js
 
 V tomto rychlém startu se dozvíte, jak vyžádat výsledky hledání z vaší instance Vlastní vyhledávání Bingu. I když je tato aplikace napsaná v JavaScriptu, rozhraní API pro vlastní vyhledávání Bingu je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingCustomSearchv7.js).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Instance Vlastní vyhledávání Bingu. Další informace najdete v tématu [rychlý Start: Vytvoření první instance vlastní vyhledávání Bingu](quick-start.md).
 
-- [Modul runtime Node. js JavaScript](https://www.nodejs.org/).
+- [Modul runtime jazyka JavaScript Node.js](https://www.nodejs.org/).
 
 - [Knihovna požadavků JavaScriptu](https://github.com/request/request)
 

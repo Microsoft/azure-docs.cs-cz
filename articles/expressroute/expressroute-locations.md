@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 72408b4f17aa5e8601095b27478806883739a7a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0aac3d7a4bc2eb8bb83405155b345360f5d2c699
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031622"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407349"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>Partneři připojení ExpressRoute a umístění partnerského vztahu
 
@@ -51,7 +51,7 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Oceánie** | Austrálie – jihovýchod, Austrálie – východ |Auckland, Melbourne, Perth, Sydney, Sydney2 |
 | **Jižní Korea** | Jižní Korea – střed, Jižní Korea – jih |Busan, Soul|
 | **Spojené arabské emiráty** | Spojené arabské emiráty Central, Spojené arabské emiráty sever | Dubaj, Dubai2 |
-| **Jižní Afrika** | Jižní Afrika – západ, Jižní Afrika – sever |Kapské město, Johannesburg |
+| **Jihoafrická republika** | Jižní Afrika – západ, Jižní Afrika – sever |Kapské město, Johannesburg |
 | **Jižní Amerika** | Brazil South |Sao Paulo |
 
 
@@ -82,7 +82,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Sítě Aryaka](https://www.aryaka.com/)** |Podporováno |Podporováno |Amsterdam, Chicago, Praha, Hongkong – zvláštní správní oblast, Svatý Paulo, Seattle, Silicon sedla, Singapur, Tokio, Washington DC |
 | **[Datová centra Ascenty](https://www.ascenty.com/en/cloud/microsoft-express-route)** |Podporováno |Podporováno |Sao Paulo |
 | **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Podporováno |Podporováno |Amsterdam, Chicago, Praha, Frankfurt, Londýn, Silicon sedlo, Singapur, Sydney, Tokio, Toronto, Washington DC |
-| **[V BRNĚ](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | Podporováno | Podporováno | Tokyo2 |
+| **[V BRNĚ](https://www.attokyo.com/connectivity/azure.html)** | Podporováno | Podporováno | Ósaka, Tokyo2 |
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | Podporováno | Podporováno | Tokio |
 | **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |Podporováno |Podporováno |Kapské město, Johannesburg|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Podporováno |Podporováno |Montreal, Toronto, Quebec City |
@@ -109,7 +109,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **Etisalat Spojené arabské emiráty** |Podporováno |Podporováno |Dubaj|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Podporováno |Podporováno |Amsterdam, Amsterdam2, Dublin, Frankfurt, Londýn |
 | **FarEasTone** |Podporováno |Podporováno |WAN|
-| **GÉANT** |Podporováno |Podporováno |Amsterdam, Dublin, Frankfurt, Marseille |
+| **GÉANT** |Podporováno |Podporováno |Amsterdam, Amsterdam2, Dublin, Frankfurt, Marseille |
 | **GTT** |Podporováno |Podporováno |London2 |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Podporováno| Podporováno | Čennaj, Bombaj |
 | **Intelsat** | Podporováno | Podporováno | Washington DC2 |

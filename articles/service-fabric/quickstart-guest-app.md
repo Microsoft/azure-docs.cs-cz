@@ -3,24 +3,25 @@ title: Rychlé nasazení existující aplikace do clusteru
 description: Použijte cluster Azure Service Fabric k hostování existující aplikace Node.js pomocí sady Visual Studio.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9b39e14b18a784274f1bac12072f4fa39de2bb87
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614838"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430729"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hostování aplikace Node.js na platformě Azure Service Fabric
 
 Tento rychlý start vám pomůže s nasazením existující aplikace (v tomto příkladu Node.js) do clusteru Service Fabric spuštěného v Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte [nastavené vývojové prostředí](service-fabric-get-started.md). Který zahrnuje instalaci Service Fabric SDK a sady Visual Studio 2019 nebo 2015.
 
 Také musíte mít existující aplikaci Node.js k nasazení. V tomto rychlém startu se používá jednoduchý web v Node.js, který je ke stažení [zde][download-sample]. Po vytvoření projektu v dalším kroku extrahujte tento soubor do složky `<path-to-project>\ApplicationPackageRoot\<package-name>\Code\`.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet][create-account].
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][create-account].
 
 ## <a name="create-the-service"></a>Vytvoření služby
 

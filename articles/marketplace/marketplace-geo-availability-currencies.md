@@ -3,16 +3,16 @@ title: Geografická dostupnost a podpora měny pro komerční tržiště Microso
 description: Geografická dostupnost a podpora měny pro transakce na komerčním webu Marketplace
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 01/29/2020
-ms.openlocfilehash: 57d1564c155a553571499a47a5c1d83c80c074b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7041221b015465e9db2d67d8dd7760d644c34f0c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120003"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387434"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografická dostupnost a podpora měny pro komerční tržiště
 
@@ -43,12 +43,12 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Brazílie                              | BR        | BRL\*        |
 | Brunej                              | BN        | USD          |
 | Bulharsko                            | BG        | EUR          |
+| Cabo Verde                          | CV        | USD          |
 | Kamerun                            | CM        | USD          |
 | Kanada                              | CA        | CAD          |
-| Cabo Verde                          | CV        | USD          |
 | Kajmanské ostrovy                      | KY        | USD          |
 | Chile                               | CL        | USD          |
-| Lidov\**                            | CN        | Není k dispozici          |
+| Lidov\**                            | CN        | –          |
 | Kolumbie                            | CO        | USD          |
 | Kostarika                          | CR        | USD          |
 | Côte d’Ivoire (Pobřeží slonoviny)                       | CI        | USD          |
@@ -107,11 +107,11 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Mongolsko                            | MN        | USD          |
 | Černá Hora                          | ME        | USD          |
 | Maroko                             | MA        | USD          |
-| Namibie                             | NA        | USD          |
+| Namibie                             | Není k dispozici        | USD          |
 | Nepál                               | NP        | USD          |
 | Nizozemsko                         | NL        | EUR          |
-| Nikaragua                           | NI        | USD          |
 | Nový Zéland                         | NZ        | NZD          |
+| Nikaragua                           | NI        | USD          |
 | Nigérie                             | NG        | USD          |
 | Norsko                              | NO        | NOK          |
 | Omán                                | OM        | USD          |
@@ -148,15 +148,15 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Tunisko                             | TN        | USD          |
 | Turecko                              | TR        | USD          |
 | Turkmenistán                        | TM        | USD          |
-| Vatikán (Svatý stolec viz)             | VA        | EUR          |
-| Panenské ostrovy USA | VI        | USD          |
 | Uganda                              | UG        | USD          |
 | Ukrajina                             | UA        | USD          |
 | Spojené arabské emiráty                | AE        | USD          |
 | Spojené království                      | GB        | GBP          |
 | USA                       | USA        | USD          |
+| Americké Panenské ostrovy                 | VI        | USD          |
 | Uruguay                             | UY        | USD          |
 | Uzbekistán                          | UZ        | USD          |
+| Vatikán (Svatý stolec viz)             | VA        | EUR          |
 | Venezuela                           | VE        | USD          |
 | Vietnam                             | VN        | USD          |
 | Jemen                               | JE        | USD          |

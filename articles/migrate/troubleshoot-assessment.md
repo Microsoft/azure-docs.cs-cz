@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 61afc3ec0f37f5d8b1030818d21b7daabb7fce40
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b47c6c7d2137737021766f239fdb6ab1c64bd12f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121669"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422857"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Řešení potíží s vyhodnocením a vizualizací závislostí
 
@@ -52,7 +52,7 @@ Podmíněně připravené Internet Protocol | Platí jenom pro posouzení řeše
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Navrhovaný Nástroj pro migraci v hodnocení AVS založeném na importu, který je označený jako neznámý
 
-U počítačů importovaných prostřednictvím souboru CSV je výchozí nástroj pro migraci v nástroji a hodnocení služby AVS neznámý. Ale u počítačů VMware se doporučuje použít řešení VMWare Hybrid Cloud Extension (HCX). [Další informace](../azure-vmware/hybrid-cloud-extension-installation.md)
+U počítačů importovaných prostřednictvím souboru CSV je výchozí nástroj pro migraci v nástroji a hodnocení služby AVS neznámý. Ale u počítačů VMware se doporučuje použít řešení VMware Hybrid Cloud Extension (HCX). [Další informace](../azure-vmware/hybrid-cloud-extension-installation.md)
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Virtuální počítače se systémem Linux jsou podmíněně připravené ve službě Azure VM Assessment
 
@@ -112,7 +112,7 @@ Posouzení Azure Migrate serveru v současné době zohledňuje náklady na lice
 Nástroj Hodnocení serverů průběžně shromažďuje data o výkonu místních počítačů a používá je k doporučení skladové položky virtuálního počítače a disku v Azure. [Přečtěte si, jak](concepts-assessment-calculation.md#calculate-sizing-performance-based) se shromažďují data založená na výkonu.
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>Proč je moje hodnocení zobrazeno upozorněním, že bylo vytvořeno s neplatnou kombinací rezervovaných instancí, doba provozu a slevy virtuálního počítače (%)?
-Když vyberete možnost rezervované instance, sleva (%) a vlastnosti pro dobu provozu virtuálního počítače nelze použít. Při vytváření hodnocení s neplatnou kombinací těchto vlastností jsou tlačítka upravit a přepočítat zakázaná. Vytvořte prosím nové posouzení. [Další informace](https://go.microsoft.com/fwlink/?linkid=2131554).
+Když vyberete možnost rezervované instance, sleva (%) a vlastnosti pro dobu provozu virtuálního počítače nelze použít. Při vytváření hodnocení s neplatnou kombinací těchto vlastností jsou tlačítka upravit a přepočítat zakázaná. Vytvořte prosím nové posouzení. [Přečtěte si další informace](https://go.microsoft.com/fwlink/?linkid=2131554).
 
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>Nezobrazují se údaje o výkonu pro některé síťové adaptéry na mých fyzických serverech.
 
@@ -181,12 +181,15 @@ Po migraci počítačů s povolenou vizualizací závislostí do Azure se můžo
 ## <a name="dependencies-export-csv-shows-unknown-process"></a>Při exportu sdílených svazků clusteru se zobrazí zpráva "Neznámý proces".
 V rámci analýzy závislostí bez agenta se názvy procesů zachycují na základě nejlepšího úsilí. V některých případech, i když jsou zachyceny názvy zdrojového a cílového serveru a cílový port, není možné určit názvy procesů na obou koncích závislosti. V takových případech je proces označený jako "Neznámý proces".
 
+## <a name="my-log-analytics-workspace-is-not-listed-when-trying-to-configure-the-workspace-in-server-assessment"></a>Můj pracovní prostor Log Analytics není uveden při pokusu o konfiguraci pracovního prostoru v posouzení serveru.
+Azure Migrate v současné době podporuje vytvoření pracovního prostoru OMS v oblastech USA – východ, Jihovýchodní Asie a Evropa – západ. Pokud je pracovní prostor vytvořen mimo Azure Migrate v jakékoli jiné oblasti, nelze jej aktuálně přidružit k projektu Azure Migrate.
+
 
 ## <a name="capture-network-traffic"></a>Zaznamenání síťového provozu
 
 Shromážděte protokoly síťového provozu následujícím způsobem:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Stisknutím klávesy F12 spusťte Vývojářské nástroje. V případě potřeby zrušte zaškrtnutí **políčka vymazat položky u nastavení navigace** .
 3. Vyberte kartu **síť** a zahajte zachytávání síťového provozu:
    - V části Chrome vyberte **zachovat protokol**. Záznam by se měl spustit automaticky. Červený kroužek indikuje, že se zaznamenává provoz. Pokud se červené kolečko nezobrazí, vyberte černý kroužek, který chcete spustit.

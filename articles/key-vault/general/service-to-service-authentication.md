@@ -9,17 +9,17 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 83c4a48f8c177cf84078966bae32126102b45c3b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bfbe67c20fdec292dca0d6e07a05f2ff27637396
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521016"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87427971"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba-služba pro Azure Key Vault pomocí .NET
 
 > [!NOTE]
-> Metody ověřování popsané v tomto článku se už nepovažují za osvědčené postupy. Doporučujeme, abyste přijali aktualizované metody ověřování v tématu [ověření Azure Key Vault](authentication.md).
+> **Microsoft. Azure. Services. AppAuthentication** je zastaralý. Nahrazuje se WIT nová knihovna Azure identity **DefaultAzureCredentials** dostupná pro .NET, Java, TypeScript a Python a měla by se používat pro všechny nové vývojové prostředí. Další informace najdete tady: [ověřování a Azure SDK](https://azure.github.io/azure-sdk/posts/2020-02-25/defaultazurecredentials.html).
 
 K ověření pro Azure Key Vault potřebujete přihlašovací údaje Azure Active Directory (Azure AD), buď sdílený tajný klíč, nebo certifikát.
 

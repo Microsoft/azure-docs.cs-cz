@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: shresha
-ms.openlocfilehash: a5721748f023ea5f098b71d8d43dbda53721c54d
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: a74a5e2b8e80121324dc8b880d90f493d5b2ddfd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171764"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423945"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Migrace na nové verze rozhraní API Azure Time Series Insights Gen2
 
@@ -286,7 +286,7 @@ Tělo aktualizovaného požadavku (používá `2020-07-31` ):
 
 Alternativně `value` může být také `$event['Bar-Pressure-Offset'].Double` . Pokud není zadán žádný datový typ, je vždy považován datový typ za Double. Znak závorky musí být použit k úniku speciálního znaku ( `-` ).
 
-#### <a name="getaggregateseries"></a>GetAggregateSeries
+#### <a name="aggregateseries"></a>AggregateSeries
 
 Původní text požadavku (používaný uživatelem `2018-11-01-preview` ):
 

@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 95372d69f58249afc946f12ec74696507429e5c6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a971291dd423894e4d04158abe873a7222f9802c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125279"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405564"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Žádost o službu se nezdařila. Stav: 403 (zakázáno)
 
@@ -57,7 +57,7 @@ Pokud jste vlastníkem předplatného, můžete tento příkaz Spustit sami. Pok
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-Další podrobnosti o tomto požadavku role a procesu přiřazení najdete v [části *Nastavení přístupových oprávnění uživatele* ](how-to-set-up-instance-manual.md#set-up-your-users-access-permissions) v tématu *Postupy: nastavení instance a ověřování (ruční)*.
+Další podrobnosti o tomto požadavku role a procesu přiřazení najdete v [části *Nastavení přístupových oprávnění uživatele* ](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) v tématu *Postupy: nastavení instance a ověřování (CLI nebo portál)*.
 
 Pokud již máte přiřazení této role k problému 403, pokračujte dalším řešením.
 
@@ -75,12 +75,12 @@ Nejdřív ověřte, že nastavení oprávnění pro digitální vlákna Azure by
 
 #### <a name="fix-issues"></a>Opravit problémy
 
-Pokud se některá z těchto informací zobrazí jinak než popsané, postupujte podle pokynů v části Nastavení registrace aplikace v [části *Nastavení oprávnění přístupu pro klientské aplikace* v tématu](how-to-set-up-instance-manual.md#set-up-access-permissions-for-client-applications) *Postupy: nastavení instance a ověřování (ruční)*.
+Pokud se některá z těchto informací zobrazí jinak než popsané, postupujte podle pokynů v části Postup nastavení registrace aplikace v části [ *Nastavení oprávnění přístupu pro klientské aplikace* v tématu](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications) *Postupy: nastavení instance a ověřování (CLI nebo portál)*.
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si instalační kroky pro vytvoření a ověření nové instance digitálního vlákna Azure:
-* [*Postupy: nastavení instance a ověřování (ruční)*](how-to-set-up-instance-manual.md)
+* [*Postupy: nastavení instance a ověřování (CLI)*](how-to-set-up-instance-cli.md)
 
 Přečtěte si další informace o zabezpečení a oprávněních u digitálních vláken Azure:
 * [*Koncepty: zabezpečení pro řešení digitálních vláken Azure*](concepts-security.md)

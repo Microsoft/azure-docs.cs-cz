@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: 702ea4e76f1fb13a3c7935f131da4ef11d369813
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d716b026159311c12341c30a8c32d5a9ecc6fa3f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002994"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432741"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Použití Azure CDN s SAS
 
@@ -96,7 +96,7 @@ Tato možnost je dostupná jenom pro **Azure CDN Premium ze profilů Verizon** .
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
-3. Doladit dobu trvání mezipaměti buď pomocí pravidel ukládání do mezipaměti, nebo přidáním `Cache-Control` hlaviček na zdrojovém serveru. Vzhledem k tomu, že Azure CDN považuje token SAS za řetězec jednoduchého dotazu, jako osvědčený postup byste měli nastavit dobu ukládání do mezipaměti, která vyprší v nebo před časem vypršení platnosti SAS. V opačném případě, pokud je soubor uložen do mezipaměti po delší dobu, než je aktivní SAS, může být soubor přístupný z Azure CDNho zdrojového serveru po uplynutí doby vypršení platnosti SAS. Pokud k této situaci dojde a chcete, aby byl soubor v mezipaměti nepřístupný, je nutné provést operaci vyprázdnění souboru, aby byl vymazán z mezipaměti. Informace o nastavení doby trvání mezipaměti v Azure CDN najdete v tématu [Azure CDN řízení chování při ukládání do mezipaměti pomocí pravidel ukládání do](cdn-caching-rules.md)mezipaměti.
+3. Doladit dobu trvání mezipaměti buď pomocí pravidel ukládání do mezipaměti, nebo přidáním `Cache-Control` hlaviček na zdrojovém serveru. Vzhledem k tomu, že Azure CDN považuje token SAS za řetězec jednoduchého dotazu, jako osvědčený postup byste měli nastavit dobu ukládání do mezipaměti, která vyprší v nebo před časem vypršení platnosti SAS. V opačném případě, pokud je soubor uložen do mezipaměti po delší dobu, než je aktivní SAS, může být soubor přístupný z Azure CDN koncového bodu po uplynutí doby vypršení platnosti SAS. Pokud k této situaci dojde a chcete, aby byl soubor v mezipaměti nepřístupný, je nutné provést operaci vyprázdnění souboru, aby byl vymazán z mezipaměti. Informace o nastavení doby trvání mezipaměti v Azure CDN najdete v tématu [Azure CDN řízení chování při ukládání do mezipaměti pomocí pravidel ukládání do](cdn-caching-rules.md)mezipaměti.
 
 ### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>Možnost 3: ověřování pomocí tokenu zabezpečení CDN s pravidlem přepsání
 

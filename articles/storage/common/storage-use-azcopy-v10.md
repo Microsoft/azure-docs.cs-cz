@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 08e70265399a67ee58ad66e06adffbfd30b20e10
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b43b20023aa0d96dcaa3ce79b626d61ec6f6752d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289231"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423827"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s nástrojem AzCopy
 
@@ -97,7 +97,7 @@ Tyto role se dají přiřadit k objektu zabezpečení v libovolném z těchto ob
 Informace o tom, jak ověřit a přiřadit role, najdete [v tématu udělení přístupu k datům Azure Blob a Queue do fronty pomocí RBAC v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
-> Pamatujte na to, že přiřazení rolí RBAC může trvat až pět minut.
+> Mějte na paměti, že rozšíření přiřazení rolí Azure může trvat až pět minut.
 
 Pokud je do seznamu řízení přístupu (ACL) cílového kontejneru nebo adresáře přidaný objekt zabezpečení, nemusíte mít přiřazenou žádnou z těchto rolí. V seznamu ACL vyžaduje váš instanční objekt oprávnění k zápisu do cílového adresáře a oprávnění ke spuštění na kontejneru a v jednotlivých nadřazených adresářích.
 

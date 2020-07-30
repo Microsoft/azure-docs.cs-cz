@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 77b4dd4c0efbe6d03e64865f18c2c87614aaecb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65778d0a6ba3bd5cdc719609ae4c2d18bf05aab9
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80632528"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424405"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii z VMware do Azure
 
@@ -34,10 +34,27 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 
 ![Komponenty](./media/vmware-azure-architecture/arch-enhanced.png)
 
+## <a name="set-up-outbound-network-connectivity"></a>Nastavení odchozího připojení k síti
+
+Aby mohla Site Recovery fungovat podle očekávání, musíte upravit odchozí síťové připojení, aby bylo možné prostředí replikovat.
+
+> [!NOTE]
+> Site Recovery nepodporuje připojení k síti pomocí ověřovacího proxy serveru.
+
+### <a name="outbound-connectivity-for-urls"></a>Odchozí připojení pro adresy URL
+
+Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, povolte přístup k těmto adresám URL:
+
+| **Název**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |
+| Replikace               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. |
 
 ## <a name="replication-process"></a>Proces replikace
 
-1. Když pro virtuální počítač povolíte replikaci, začne počáteční replikace do Azure Storage s použitím zadaných zásad replikace. Je třeba počítat s následujícím:
+1. Když pro virtuální počítač povolíte replikaci, začne počáteční replikace do Azure Storage s použitím zadaných zásad replikace. Všimněte si, že:
     - U virtuálních počítačů VMware je replikace na úrovni bloků téměř nepřetržitá a používá agenta služby mobility běžícího na virtuálním počítači.
     - Platí všechna nastavení zásad replikace:
         - **Prahová hodnota cíle RPO**. Toto nastavení nemá vliv na replikaci. Pomáhá s monitorováním. Dojde k vyvolání události a případně odeslání e-mailu, pokud aktuální cíl bodu obnovení překročí prahovou hodnotu, kterou určíte.

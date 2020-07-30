@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 07/14/2020
-ms.openlocfilehash: f3589fb9ae176e04f727f516cca7c18c87dad9e0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/29/2020
+ms.openlocfilehash: 3c5c86f89882654e44f924ce0a19d4d71713144d
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317497"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431663"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Získat identifikátor URI sdíleného přístupového podpisu pro vaši image virtuálního počítače
 
@@ -31,17 +31,15 @@ Při generování identifikátorů URI SAS pro vaše virtuální pevné disky po
 
 Existují dva běžné nástroje, které slouží k vytvoření adresy SAS (URL):
 
-* **Microsoft Průzkumník služby Storage** – grafický nástroj dostupný pro Windows, MacOS a Linux.
+* **Microsoft Průzkumník služby Storage** – grafický nástroj dostupný v Azure Portal.
 * **Microsoft Azure CLI** – doporučeno pro operační systémy jiné než Windows a automatizované nebo nepřetržité integrační prostředí.
 
 ### <a name="use-microsoft-storage-explorer"></a>Použití Microsoft Průzkumník služby Storage
 
-1. Stáhněte a nainstalujte [Průzkumník služby Microsoft Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
-2. Otevřete Průzkumníka a v nabídce vlevo vyberte **Přidat účet**. Zobrazí se dialogové okno **připojit k Azure Storage** .
-3. Vyberte **Přidat účet Azure** a pak **se přihlaste**. Provedením požadovaných kroků se přihlaste k účtu Azure.
-4. V podokně vlevo v**Průzkumníkovi** klikněte na **účty úložiště** a rozbalte tento uzel.
-5. Klikněte pravým tlačítkem na virtuální pevný disk a vyberte **získat přístup k přístupu pro sdílení**.
-6. Zobrazí se dialogové okno **sdílený přístupový podpis** . Vyplňte následující pole:
+1. V Azure Portal přejít na svůj účet úložiště.
+2. V podokně Průzkumník na levé straně otevřete nástroj **Průzkumník služby Storage** (Preview).
+3. Klikněte pravým tlačítkem na virtuální pevný disk a vyberte **získat sdílený přístupový podpis**.
+4. Zobrazí se dialogové okno **sdílený přístupový podpis** . Vyplňte následující pole:
 
     * **Čas spuštění** – datum zahájení oprávnění pro přístup VHD. Zadejte datum, které je před aktuálním datem jeden den.
     * **Čas** vypršení platnosti – datum vypršení platnosti oprávnění pro přístup VHD. Zadejte datum, které je nejméně tři týdny po aktuálním datu.
@@ -50,20 +48,11 @@ Existují dva běžné nástroje, které slouží k vytvoření adresy SAS (URL)
 
         :::image type="content" source="media/create-sas-uri-storage-explorer.png" alt-text="Ukazuje dialogové okno sdíleného přístupového podpisu.":::
 
-7. Pokud chcete vytvořit přidružený identifikátor URI SAS pro tento virtuální pevný disk, vyberte **vytvořit**. Dialogové okno se aktualizuje a zobrazí podrobnosti o této operaci.
-8. Zkopírujte **identifikátor URI** a uložte ho do textového souboru v zabezpečeném umístění.
+5. Pokud chcete vytvořit přidružený identifikátor URI SAS pro tento virtuální pevný disk, vyberte **vytvořit**. Dialogové okno se aktualizuje a zobrazí podrobnosti o této operaci.
+6. Zkopírujte **identifikátor URI** a uložte ho do textového souboru v zabezpečeném umístění.
 
     :::image type="content" source="media/create-sas-uri-shared-access-signature-details.png" alt-text="Ukazuje pole podrobností o sdíleném přístupovém podpisu.":::
-
-    Tento vygenerovaný identifikátor URI SAS je pro přístup na úrovni kontejneru. Pokud to chcete udělat, upravte textový soubor a přidejte název VHD (další krok).
-
-9. Po řetězci VHD v identifikátoru URI SAS vložte název virtuálního pevného disku (včetně lomítka). Výsledný identifikátor URI SAS by měl vypadat takto:
-
-    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>`Například pokud je název při `TestRGVM2.vhd` , výsledný identifikátor URI SAS by byl:
-
-    `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-10. Tento postup opakujte pro každý virtuální pevný disk v plánech, které budete publikovat.
+7. Tento postup opakujte pro každý virtuální pevný disk v plánech, které budete publikovat.
 
 ### <a name="using-azure-cli"></a>Použití Azure CLI
 

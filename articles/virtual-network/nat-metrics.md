@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 75e20a4fb91b73bc353d347f0b34f9be8f7a8a58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3c47a60a6cda074eba7b5c3292577c29f50c2ab
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709942"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424047"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Metriky služby Azure Virtual Network NAT
 
 Prostředky brány Azure Virtual Network NAT poskytují multidimenzionální metriky. Tyto metriky můžete použít ke sledování operace a k [řešení problémů](troubleshoot-nat.md).  Výstrahy je možné nakonfigurovat pro kritické problémy, jako je například vyčerpání SNAT.
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtual Network překlad adres (NAT) pro odchozí připojení do Internetu">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="Virtual Network překlad adres (NAT) pro odchozí připojení do Internetu">
 </p>
 
 *Obrázek: Virtual Network NAT pro odchozí připojení do Internetu*
@@ -36,13 +36,13 @@ Prostředky brány Azure Virtual Network NAT poskytují multidimenzionální met
 
 Prostředky brány NAT poskytují v Azure Monitor následující multidimenzionální metriky:
 
-| Metric | Popis | Doporučená agregace | Dimenze |
+| Metrika | Popis | Doporučená agregace | Dimenze |
 |---|---|---|---|
-| Bajty | Příchozí a odchozí bajty zpracované | Součet | Směr (v; Out), protokol (6 TCP; 17 UDP) |
-| Rámců | Příchozí a odchozí pakety zpracované | Součet | Směr (v; Out), protokol (6 TCP; 17 UDP) |
-| Vyřazené pakety | Pakety vyřazené bránou NAT | Součet | / |
-| Počet připojení SNAT | Přechody stavu za interval | Součet | Stav připojení, protokol (6 TCP; 17 UDP) |
-| Celkový počet připojení SNAT | Aktuální aktivní připojení SNAT (počet používaných portů: ~ SNAT) | Součet | Protokol (6 TCP; 17 UDP) |
+| Bajty | Příchozí a odchozí bajty zpracované | Sčítání | Směr (v; Out), protokol (6 TCP; 17 UDP) |
+| Rámců | Příchozí a odchozí pakety zpracované | Sčítání | Směr (v; Out), protokol (6 TCP; 17 UDP) |
+| Vyřazené pakety | Pakety vyřazené bránou NAT | Sčítání | / |
+| Počet připojení SNAT | Přechody stavu za interval | Sčítání | Stav připojení, protokol (6 TCP; 17 UDP) |
+| Celkový počet připojení SNAT | Aktuální aktivní připojení SNAT (počet používaných portů: ~ SNAT) | Sčítání | Protokol (6 TCP; 17 UDP) |
 
 
 ## <a name="alerts"></a>Výstrahy

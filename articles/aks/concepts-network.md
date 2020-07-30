@@ -4,12 +4,12 @@ description: Přečtěte si o sítích ve službě Azure Kubernetes Service (AKS
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d0e2c193e626b2d82fc57ef0699a2558ec3a9629
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dacb14664b21412df1b1d48c023017378cf364c9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244646"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387757"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -105,7 +105,7 @@ Mezi kubenet a Azure CNI existují následující rozdíly v chování:
 | Vystavení služeb Kubernetes pomocí služby Vyrovnávání zatížení, služby App Gateway nebo řadiče pro příchozí přenosy | Podporováno | Podporováno |
 | Výchozí Azure DNS a soukromé zóny                                                          | Podporováno | Podporováno |
 
-V souvislosti se službou DNS nabízí CoreDNS sada démonů, která je spuštěná v AKS, pomocí kubenet i služby Azure CNI plugins. Další informace o CoreDNS v Kubernetes najdete v tématu [přizpůsobení služby DNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). Služba CoreDNS je nakonfigurovaná na výchozí hodnotu pro přeposílání neznámých domén na servery DNS uzlů, jinými slovy, na funkce DNS Azure Virtual Network, kde je nasazený cluster AKS. Proto Azure DNS a soukromé zóny budou fungovat pro lusky běžící v AKS.
+V souvislosti se službou DNS nabízí kubenet i služba Azure CNI plugins DNS, což je nasazení běžící v AKS s vlastním nástrojem pro horizontální navýšení kapacity. Další informace o CoreDNS v Kubernetes najdete v tématu [přizpůsobení služby DNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). Služba CoreDNS je nakonfigurovaná na výchozí hodnotu pro přeposílání neznámých domén na servery DNS uzlů, jinými slovy, na funkce DNS Azure Virtual Network, kde je nasazený cluster AKS. Proto Azure DNS a soukromé zóny budou fungovat pro lusky běžící v AKS.
 
 ### <a name="support-scope-between-network-models"></a>Rozsah podpory mezi síťovými modely
 

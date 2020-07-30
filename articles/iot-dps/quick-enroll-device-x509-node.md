@@ -1,6 +1,6 @@
 ---
-title: Registrace zařízení X. 509 do služby Azure Device Provisioning pomocí Node. js
-description: V tomto rychlém startu se používají skupinové registrace. V tomto rychlém startu zaregistrujete zařízení X. 509 do Azure IoT Hub Device Provisioning Service (DPS) pomocí sady SDK služby Node. js.
+title: Registrace zařízení X. 509 do služby Azure Device Provisioning pomocí Node.js
+description: V tomto rychlém startu se používají skupinové registrace. V tomto rychlém startu zaregistrujete zařízení X. 509 do Azure IoT Hub Device Provisioning Service (DPS) pomocí sady SDK služby Node.js.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -8,25 +8,25 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
-ms.custom: mvc
-ms.openlocfilehash: 35f5cc4914689fd171cc3fa8ec7d809924127f28
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 0f6d18aa0ce4576db1618d17d8fb3866101f87b1
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77605547"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424354"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí Node.js
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-V tomto rychlém startu použijete Node. js k programovému vytvoření skupiny registrací, která používá certifikáty X. 509 zprostředkující nebo kořenové certifikační autority. Skupiny registrací se vytvoří pomocí sady SDK IoT pro Node.js a ukázkové aplikace Node.js.
+V tomto rychlém startu použijete Node.js k programovému vytvoření skupiny registrací, která využívá certifikáty X. 509 zprostředkující nebo kořenové certifikační autority. Skupiny registrací se vytvoří pomocí sady SDK IoT pro Node.js a ukázkové aplikace Node.js.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Dokončení [nastavení IoT Hub Device Provisioning Service pomocí Azure Portal](./quick-setup-auto-provision.md).
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Node. js v 4.0 +](https://nodejs.org). V tomto rychlém startu se nainstaluje [Sada IoT SDK pro Node. js](https://github.com/Azure/azure-iot-sdk-node) níže.
+- [Node.js v 4.0 +](https://nodejs.org). V tomto rychlém startu se nainstaluje [Sada IoT SDK pro Node.js](https://github.com/Azure/azure-iot-sdk-node) níže.
 - [Git](https://git-scm.com/download/).
 - [Sada SDK Azure IoT C](https://github.com/Azure/azure-iot-sdk-c).
 
@@ -143,7 +143,7 @@ Skupina registrací řídí přístup ke službě zřizování pro zařízení, 
     ![Vlastnosti registrace na portálu](./media/quick-enroll-device-x509-node/verify-enrollment-portal.png) 
  
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud plánujete prozkoumat ukázky služeb Node. js, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky Azure vytvořené tímto rychlým startem.
+Pokud plánujete prozkoumat ukázky služby Node.js, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky Azure vytvořené tímto rychlým startem.
  
 1. Zavřete na svém počítači okno výstupu ukázky v Node.js.
 2. Přejděte do vaší služby Device Provisioning v Azure Portal, vyberte **spravovat registrace**a pak vyberte kartu **skupiny** registrací. zaškrtněte políčko vedle *názvu skupiny* pro zařízení X. 509, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části podokna.    
@@ -153,7 +153,7 @@ Pokud plánujete prozkoumat ukázky služeb Node. js, neprovádějte čištění
 
 V tomto rychlém startu jste vytvořili registraci skupin pro certifikát X. 509 zprostředkující nebo kořenové certifikační autority pomocí IoT Hub Device Provisioning Service Azure. Pokud se chcete se zřizováním zařízení seznámit podrobněji, pokračujte ke kurzu nastavení služby Device Provisioning na webu Azure Portal. 
 
-Podívejte se také na [ukázku zřizování zařízení Node. js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device/samples).
+Podívejte se také na [ukázku zřizování zařízeníNode.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device/samples).
  
 > [!div class="nextstepaction"]
 > [Kurzy pro službu Azure IoT Hub Device Provisioning](./tutorial-set-up-cloud.md)

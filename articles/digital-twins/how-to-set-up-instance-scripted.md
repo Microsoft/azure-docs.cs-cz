@@ -1,18 +1,18 @@
 ---
 title: Nastavení instance a ověřování (se skriptem)
 titleSuffix: Azure Digital Twins
-description: Podívejte se, jak nastavit instanci služby Azure Digital revlákens, včetně správného ověřování. Skriptovaná verze
+description: Podívejte se, jak nastavit instanci služby digitální vlákna Azure pomocí automatizovaného skriptu nasazení.
 author: baanders
 ms.author: baanders
-ms.date: 7/22/2020
+ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 522096b921faf34130f0c37f727d89c7bf95c530
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 076bde9e2760a862822d80d63197e2c15a678d35
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337904"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407435"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Nastavení instance a ověřování Azure pro digitální vlákna (skriptované)
 
@@ -20,9 +20,12 @@ ms.locfileid: "87337904"
 
 Tento článek popisuje postup **Nastavení nové instance digitálního vlákna Azure**, včetně vytvoření instance a nastavení ověřování. Po dokončení tohoto článku budete mít instanci digitálních vláken Azure, která je připravená na zahájení programování.
 
-Tato verze tohoto článku dokončí tento postup spuštěním [ukázky **skriptu automatizovaného nasazení** ](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/) , který zjednodušuje proces. Chcete-li zobrazit ruční kroky, pomocí kterých se skript spouští na pozadí, přečtěte si příručku k ruční verzi tohoto článku: [*Postupy: nastavení instance a ověřování (ruční)*](how-to-set-up-instance-manual.md).
+Tato verze tohoto článku dokončí tento postup spuštěním [ukázky **skriptu automatizovaného nasazení** ](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/) , který zjednodušuje proces. 
+* Pokud chcete zobrazit kroky ručního rozhraní příkazového řádku, které skript spouští na pozadí, přečtěte si verzi rozhraní příkazového řádku tohoto článku: [*Postupy: nastavení instance a ověřování (CLI)*](how-to-set-up-instance-cli.md).
+* Postup ručního provedení kroků v závislosti na Azure Portal najdete v části verze tohoto článku na portálu: [*Postupy: nastavení instance a ověřování (portál)*](how-to-set-up-instance-portal.md).
 
-[!INCLUDE [digital-twins-setup-starter.md](../../includes/digital-twins-setup-starter.md)]
+[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+[!INCLUDE [digital-twins-setup-role-cli.md](../../includes/digital-twins-setup-role-cli.md)]
 
 ## <a name="run-the-deployment-script"></a>Spuštění skriptu nasazení
 
@@ -41,7 +44,7 @@ Tady je postup, jak spustit skript nasazení v Cloud Shell.
  
 2. Po přihlášení se podívejte na panel ikon Cloud Shellového okna. Vyberte ikonu Odeslat/stáhnout soubory a zvolte nahrát.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell-upload.png" alt-text="Cloud Shell okno zobrazující výběr možnosti nahrání":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell okno zobrazující výběr možnosti nahrání":::
 
     Na svém počítači přejděte na soubor _**deploy.ps1**_ a stiskněte otevřít. Tím se soubor nahraje do Cloud Shell, abyste ho mohli spustit v okně Cloud Shell.
 
@@ -57,21 +60,38 @@ Skript vytvoří instanci digitálních vláken Azure, přiřadí uživatele Azu
 
 Tady je ukázka výstupního protokolu ze skriptu:
 
-:::image type="content" source="media/how-to-set-up-instance/deployment-script-output.png" alt-text="Okno Cloud Shell zobrazující protokol vstupů a výstupů prostřednictvím spuštění skriptu nasazení" lightbox="media/how-to-set-up-instance/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Okno Cloud Shell zobrazující protokol vstupů a výstupů prostřednictvím spuštění skriptu nasazení" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 Pokud se skript úspěšně dokončí, vysloví se konečný výtisk `Deployment completed successfully` . Jinak vyřešte chybovou zprávu a znovu spusťte skript. Přeskočí kroky, které jste už dokončili, a začněte znovu požádat o vstup v místě, kde jste skončili.
 
-Po dokončení skriptu teď máte k dispozici instanci digitálního vlákna Azure, která je připravená k použití, a oprávnění nastavená pro její správu.
+Po dokončení skriptu teď máte k dispozici instanci digitálních vláken Azure, která je připravená k tomu, aby se mohla spravovat, a měli byste nastavit oprávnění pro klientské aplikace pro přístup k ní.
+
+> [!NOTE]
+> Skript aktuálně přiřadí požadovanou roli správy v rámci digitálních vláken Azure (ve*verzi Preview)* pro stejného uživatele, který spouští skript z Cloud Shell. Pokud potřebujete tuto roli přiřadit někomu jinému, kdo bude spravovat instanci, můžete to udělat hned pomocí Azure Portal ([pokyny](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) nebo rozhraní příkazového řádku ([pokynů](how-to-set-up-instance-cli.md#set-up-user-access-permissions)).
 
 ## <a name="collect-important-values"></a>Shromažďovat důležité hodnoty
 
-Existují dvě důležité hodnoty pro registraci aplikace, které budete potřebovat později k [ověření klientské aplikace s využitím rozhraní API pro digitální vlákna Azure](how-to-authenticate-client.md). 
+Existuje několik důležitých hodnot z prostředků nastavených skriptem, které můžete potřebovat při práci s instancí digitálních vláken Azure. V této části použijete [Azure Portal](https://portal.azure.com) ke shromáždění těchto hodnot. Měli byste je uložit na bezpečné místo, nebo se vrátit do této části, abyste je později našli, až je budete potřebovat.
+
+Pokud budou jiné uživatele programovat s instancí, měli byste je také nasdílet pomocí těchto hodnot.
+
+### <a name="collect-instance-values"></a>Shromáždit hodnoty instance
+
+V [Azure Portal](https://portal.azure.com)Najděte instanci digitálních vláken Azure pomocí hledání názvu vaší instance na panelu hledání na portálu.
+
+Výběrem této možnosti se otevře stránka *Přehled* instance. Poznamenejte si jeho *název*, *skupinu prostředků*a *název hostitele*. Později je budete možná potřebovat k identifikaci a připojení k instanci.
+
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Zvýrazňování důležitých hodnot na stránce přehledu instance":::
+
+### <a name="collect-app-registration-values"></a>Shromažďovat hodnoty registrace aplikace 
+
+Existují dvě důležité hodnoty pro registraci aplikace, které budete potřebovat později k [zápisu ověřovacího kódu klientské aplikace pro rozhraní API digitálních vláken Azure](how-to-authenticate-client.md). 
 
 Pokud je chcete najít, přejděte pomocí [tohoto odkazu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) na stránku s přehledem registrace aplikace Azure AD v Azure Portal. Tato stránka zobrazuje všechny registrace aplikací, které byly vytvořeny v rámci vašeho předplatného.
 
 Měla by se zobrazit registrace aplikace, kterou jste právě vytvořili v tomto seznamu. Vyberte ho a otevřete jeho podrobnosti:
 
-:::image type="content" source="media/how-to-set-up-instance/app-important-values.png" alt-text="Zobrazení důležitých hodnot pro registraci aplikace na portálu":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Zobrazení důležitých hodnot pro registraci aplikace na portálu":::
 
 Poznamenejte si *ID aplikace (klienta)* a *ID adresáře (tenanta)* **zobrazené na stránce** . Pokud nejste osoba, která bude psát kód pro klientské aplikace, budete muset tyto hodnoty sdílet s osobou, která bude.
 
@@ -86,6 +106,9 @@ Pokud chcete ověřit, jestli se vaše instance vytvořila, na [stránce Azure P
 ### <a name="verify-user-role-assignment"></a>Ověřit přiřazení role uživatele
 
 [!INCLUDE [digital-twins-setup-verify-role-assignment.md](../../includes/digital-twins-setup-verify-role-assignment.md)]
+
+> [!NOTE]
+> Odvolání, že skript aktuálně přiřadí tuto požadovanou roli stejnému uživateli, který spouští skript z Cloud Shell. Pokud potřebujete tuto roli přiřadit někomu jinému, kdo bude spravovat instanci, můžete to udělat hned pomocí Azure Portal ([pokyny](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) nebo rozhraní příkazového řádku ([pokynů](how-to-set-up-instance-cli.md#set-up-user-access-permissions)).
 
 ### <a name="verify-app-registration"></a>Ověřit registraci aplikace
 

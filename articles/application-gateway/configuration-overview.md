@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 892ace66c4994f4c2e263d529d69e505ed9c1c1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20d1dfea251fdfd0bd6e8432d1ea0c7af7284cb5
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068018"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428179"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace Application Gateway
 
@@ -55,7 +55,7 @@ V Application Gateway jsou podporovány skupiny zabezpečení sítě (skupin zab
   - Neodstraňujte Výchozí odchozí pravidla.
   - Nevytvářejte jiná odchozí pravidla, která odmítají jakékoli odchozí připojení.
 
-- Musí být povolený provoz ze značky **AzureLoadBalancer** .
+- **Musí být** povolen provoz ze značky **AzureLoadBalancer** v cílové podsíti.
 
 #### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Povolí Application Gateway přístup k několika zdrojovým IP adresám.
 
@@ -74,7 +74,7 @@ V tomto scénáři použijte skupin zabezpečení sítě v podsíti Application 
 
 - **V1**
 
-   V případě SKU v1 jsou uživatelsky definované trasy (udr) podporované v Application Gateway podsíti, pokud se nezmění na koncovou komunikaci mezi požadavky a odpověďmi. V Application Gateway podsíti můžete například nastavit UDR, aby odkazoval na zařízení brány firewall pro kontrolu paketů. Je ale nutné se ujistit, že paket se po kontrole může dostat k zamýšlenému cíli. V takovém případě může dojít k nesprávnému chování při testování stavu nebo směrování provozu. To zahrnuje naučené trasy nebo výchozí trasy 0.0.0.0/0, které šíří služby Azure ExpressRoute nebo VPN Gateway ve virtuální síti.
+   V případě SKU v1 jsou uživatelsky definované trasy (udr) podporované v Application Gateway podsíti, pokud se nezmění na koncovou komunikaci mezi požadavky a odpověďmi. V Application Gateway podsíti můžete například nastavit UDR, aby odkazoval na zařízení brány firewall pro kontrolu paketů. Je ale nutné se ujistit, že paket se po kontrole může dostat k zamýšlenému cíli. V takovém případě může dojít k nesprávnému chování při testování stavu nebo směrování provozu. To zahrnuje naučené trasy nebo výchozí trasy 0.0.0.0/0, které šíří služby Azure ExpressRoute nebo VPN Gateway ve virtuální síti. Pro V1 se nepodporuje jakýkoli scénář, ve kterém musí být adresa 0.0.0.0/0 přesměrována místně (vynucené tunelování).
 
 - **v2**
 
@@ -279,12 +279,12 @@ Další informace o přesměrování najdete v tématu:
 - [Přesměrování provozu na externí web pomocí prostředí PowerShell](redirect-external-site-powershell.md)
 - [Přesměrování provozu na externí web pomocí rozhraní příkazového řádku](redirect-external-site-cli.md)
 
-### <a name="rewrite-http-headers-and-url"></a>Přepsat hlavičky a adresu URL protokolu HTTP
+### <a name="rewrite-http-headers-and-url"></a>Přepsání hlaviček HTTP a adres URL
 
 Pomocí pravidel pro přepsání můžete přidat, odebrat nebo aktualizovat žádosti a hlavičky odpovědí HTTP (S) a také cestu URL a parametry řetězce dotazu, protože pakety požadavků a odpovědí se pohybují mezi klienty klienta a back-endu přes Aplikační bránu.
 
 Parametry hlaviček a adres URL lze nastavit na statické hodnoty nebo na jiné hlavičky a proměnné serveru. To pomáhá s důležitými případy použití, jako je například extrakce IP adres klientů, odebrání citlivých informací o back-endu, přidání dalších zabezpečení atd.
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
  - [Přehled přepsaných hlaviček a adres URL protokolu HTTP](rewrite-http-headers-url.md)
  - [Konfigurace přepsání hlaviček HTTP](rewrite-http-headers-portal.md)

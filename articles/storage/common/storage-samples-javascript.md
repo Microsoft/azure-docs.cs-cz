@@ -1,25 +1,26 @@
 ---
 title: Azure Storage ukázky pomocí JavaScriptu | Microsoft Docs
-description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure Storage. Objevte úvodní ukázky pro objekty blob, fronty, tabulky a soubory pomocí klientských knihoven pro úložiště JavaScript/Node. js.
+description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure Storage. Seznamte se s úvodními ukázkami objektů blob, front, tabulek a souborů pomocí klientských knihoven pro úložiště pro JavaScript nebo Node.js.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/19/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 1d6b4d37a3d7c4accc3e407fb6cf841600ac1c16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 466a1318dbe0a9299eebb9259ef8e0fe9bbbc0e7
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77485841"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433082"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>Azure Storage ukázky pomocí klientských knihoven V12 JavaScript
 
 Následující tabulky obsahují přehled našich ukázkových úložišť a scénářů popsaných v jednotlivých ukázkách. Kliknutím na odkazy zobrazíte odpovídající vzorový kód v GitHubu.
 
 > [!NOTE]
-> Tyto ukázky používají nejnovější knihovnu V12 JavaScriptu pro Azure Storage. Starší verzi kódu V11 naleznete v tématu [Začínáme with Azure Blob Service v Node. js](https://github.com/Azure-Samples/storage-blob-node-getting-started) v úložišti GitHub.
+> Tyto ukázky používají nejnovější knihovnu V12 JavaScriptu pro Azure Storage. Starší verzi kódu V11 naleznete v tématu [Začínáme with Azure Blob Service v Node.js](https://github.com/Azure-Samples/storage-blob-node-getting-started) v úložišti GitHub.
 
 ## <a name="blob-samples"></a>Ukázky objektů BLOB
 
@@ -90,7 +91,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
    :::column-end:::
 :::row-end:::
 
-### <a name="blob"></a>Objekt blob
+### <a name="blob"></a>Blob
 
 :::row:::
    :::column span="":::
@@ -243,7 +244,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
    :::column-end:::
 :::row-end:::
 
-### <a name="file"></a>File
+### <a name="file"></a>Soubor
 
 :::row:::
    :::column span="":::
@@ -349,7 +350,7 @@ Následující tabulky obsahují přehled našich ukázkových úložišť a sc�
       [Entity Batch](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87)
    :::column-end:::
    :::column span="":::
-      [Vytvořit tabulku](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
+      [Vytvoření tabulky](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
    :::column-end:::
 :::row-end:::
 :::row:::

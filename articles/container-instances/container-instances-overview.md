@@ -4,18 +4,18 @@ description: Služba Azure Container Instances nabízí nejrychlejší a nejjedn
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 261e5d0159b4201aab0e8aad1e05fa320cc76a14
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 572557860f5d715d6c708acb640acc24e1dd4a35
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259502"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424150"
 ---
 # <a name="what-is-azure-container-instances"></a>Co je služba Azure Container Instances?
 
 Kontejnery se stávají upřednostňovaným způsobem balení, nasazování a správy cloudových aplikací. Služba Azure Container Instances nabízí nejrychlejší a nejjednodušší způsob spouštění kontejneru v Azure. Není přitom nutné spravovat žádné virtuální počítače nebo využívat služby vyšší úrovně.
 
-Azure Container Instances je skvělým řešením pro jakýkoli scénář, který může fungovat v izolovaných kontejnerech, včetně jednoduchých aplikací, automatizace úkolů a úloh sestavení. Pro scénáře, kde potřebujete úplnou orchestraci kontejnerů, včetně zjišťování služeb napříč více kontejnery, automatického škálování a koordinovaných upgradů aplikací, doporučujeme službu [Azure Kubernetes Service (AKS)](../aks/index.yml).
+Azure Container Instances je skvělým řešením pro jakýkoli scénář, který může fungovat v izolovaných kontejnerech, včetně jednoduchých aplikací, automatizace úkolů a úloh sestavení. Pro scénáře, kde potřebujete úplnou orchestraci kontejnerů, včetně zjišťování služeb napříč více kontejnery, automatického škálování a koordinovaných upgradů aplikací, doporučujeme [službu Azure Kubernetes Service (AKS)](../aks/index.yml).
 
 ## <a name="fast-startup-times"></a>Rychlé časy spuštění
 
@@ -68,7 +68,7 @@ Azure Container Instances podporuje plánování [skupin více kontejnerů](cont
 
 ## <a name="virtual-network-deployment"></a>Nasazení virtuální sítě
 
-Tato funkce Azure Container Instances v současnosti dostupná pro produkční úlohy v podmnožině oblastí Azure a umožňuje [nasazení instancí kontejnerů do služby Azure Virtual Network](container-instances-vnet.md). Když nasadíte instance kontejnerů do podsítě ve virtuální síti, můžou zabezpečeně komunikovat s jinými prostředky ve virtuální síti včetně těch, které jsou v místním prostředí (prostřednictvím [brány virtuální sítě](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoute](../expressroute/expressroute-introduction.md)).
+Azure Container Instances umožňuje [nasazení instancí kontejnerů do služby Azure Virtual Network](container-instances-vnet.md). Při nasazení do podsítě ve virtuální síti můžou instance kontejneru bezpečně komunikovat s ostatními prostředky ve virtuální síti, včetně místně (přes [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoute](../expressroute/expressroute-introduction.md)).
 
 ## <a name="next-steps"></a>Další kroky
 

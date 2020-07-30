@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 07/27/2020
-ms.openlocfilehash: 4dd27a5d3bca5ca1c0395feb049d5a814211c539
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/29/2020
+ms.openlocfilehash: 968fe5a0f4999c25486189384186c23d1fcd5509
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309252"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430254"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopírování přetransakční kopie databáze v Azure SQL Database
 
@@ -116,6 +116,9 @@ Pomocí postupu v části [kopírování SQL Database do jiného serveru](#copy-
 
 > [!NOTE]
 > [Azure Portal](https://portal.azure.com), PowerShell a rozhraní příkazového řádku Azure CLI nepodporují kopírování databáze do jiného předplatného.
+
+> [!TIP]
+> Kopírování databáze pomocí T-SQL podporuje kopírování databáze z předplatného v jiném tenantovi Azure.
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>Sledování průběhu operace kopírování
 

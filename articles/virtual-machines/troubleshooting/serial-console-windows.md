@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 4778ea7781d181a89e7a6b2d6c4ad5d474e9b5c9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c30999a5f0239e60c842084b60b44c165fb7182e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005935"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423996"
 ---
 # <a name="azure-serial-console-for-windows"></a>Sériová konzola Azure pro Windows
 
@@ -26,10 +26,12 @@ Konzola sériového portu v Azure Portal poskytuje přístup k textové konzole 
 
 Sériová konzola funguje stejným způsobem pro virtuální počítače a instance sady škálování virtuálních počítačů. V tomto dokumentu budou všechny zmínky k virtuálním počítačům implicitně zahrnovat instance sady škálování virtuálních počítačů, pokud není uvedeno jinak.
 
+Konzola sériového portu je všeobecně dostupná v globálních oblastech Azure a ve verzi Public Preview v Azure Government. Ještě není k dispozici v cloudu Azure Čína.
+
 Dokumentaci k sériové konzole pro Linux najdete v tématu věnovaném [sériové konzole Azure pro Linux](serial-console-linux.md).
 
 > [!NOTE]
-> Konzola sériového portu je všeobecně dostupná v globálních oblastech Azure a ve veřejné verzi Preview v Azure Government. Ještě není k dispozici v cloudu Azure Čína.
+> Sériová konzola je aktuálně nekompatibilní se spravovaným účtem úložiště diagnostiky spouštění. Pokud chcete použít sériovou konzolu, ujistěte se, že používáte vlastní účet úložiště.
 
 
 ## <a name="prerequisites"></a>Předpoklady
@@ -158,7 +160,7 @@ Pokud je uživatel připojen ke konzole sériového portu a jiný uživatel úsp
 > [!CAUTION]
 > To znamená, že odpojený uživatel nebude odhlášen. Možnost vymáhat odhlášení po odpojení (pomocí SIGHUP nebo podobného mechanismu) je stále v plánu. V případě systému Windows je v konzole SAC povolen automatický časový limit. pro Linux můžete nakonfigurovat nastavení časový limit terminálu.
 
-## <a name="accessibility"></a>Usnadnění
+## <a name="accessibility"></a>Přístupnost
 Přístupnost je klíčovým fokusem pro konzolu sériového rozhraní Azure. Za tímto účelem jsme zajistili přístup ke konzole sériového rozhraní pro lidi, kteří mají zhoršené zhoršení, nebo kteří mají těžkou sluchu, a také uživatele, kteří by nemohli používat myš.
 
 ### <a name="keyboard-navigation"></a>Navigace přes klávesnici

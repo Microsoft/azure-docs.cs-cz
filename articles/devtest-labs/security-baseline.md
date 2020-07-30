@@ -3,12 +3,12 @@ title: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 description: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 47adca5867fef1d41ccfec2455acc6932269842d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7f0dc1fb18740e2b0611b5954821a5ceda2d2657
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282275"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387825"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 
@@ -547,7 +547,7 @@ Pokud používáte Azure Disk Encryption, můžete virtuální počítač Azure 
 **Doprovodné materiály:** Když zálohujete spravované disky pomocí Azure Backup, virtuální počítače se zašifrují v klidovém stavu pomocí Šifrování služby Storage (SSE). Azure Backup taky můžou zálohovat virtuální počítače Azure, které jsou zašifrované pomocí Azure Disk Encryption. Azure Disk Encryption se integruje s šifrovacími klíči BitLockeru (BEKs), které jsou v trezoru klíčů zabezpečené jako tajné klíče. Azure Disk Encryption se taky integruje s klíči šifrovacího klíče Azure Key Vault (KEK). Povolit obnovitelné odstranění v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
 - [Obnovitelné odstranění pro virtuální počítače](../backup/soft-delete-virtual-machines.md)
-- [Přehled Azure Key Vault-Soft-odstranění](../key-vault/general/overview-soft-delete.md)
+- [Přehled Azure Key Vault-Soft-odstranění](../key-vault/general/soft-delete-overview.md)
 
 **Monitorování Azure Security Center:** Ano
 

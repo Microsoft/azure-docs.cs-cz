@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 1956090f1b927d9fd4e205eaa57bf1952cb1b070
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f80403946b3097e81678383c4829ef6606f26cd6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083986"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430353"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Rozšířené zabezpečené skóre v Azure Security Center
 
@@ -169,6 +169,10 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Povolit auditování a protokolování (max. skóre 1)</p></strong>Protokolování dat poskytuje přehledy o minulých problémech a zabraňuje potenciálním možnostem, může zlepšit výkon aplikace a umožňuje automatizovat akce, které by jinak byly ruční.<br>- <strong>Protokoly řízení a správy</strong> poskytují informace o operacích <a href="https://docs.microsoft.com/azure/azure-resource-manager/management/overview">Azure Resource Manager</a> .<br>- <strong>Protokoly roviny dat</strong> poskytují informace o událostech vyvolaných v rámci využití prostředků Azure.<br>- <strong>Zpracované události</strong> poskytují informace o analyzovaných událostech a výstrahách, které byly zpracovány.</td>
     <td class="tg-lboi"; width=55%>-Auditování na SQL serveru by mělo být povolené.<br>-Měly by být povolené diagnostické protokoly v App Services.<br>-Měly by být povolené diagnostické protokoly v Azure Data Lake Store.<br>-Měly by být povolené diagnostické protokoly v Azure Stream Analytics.<br>-V účtech Batch by měly být povolené diagnostické protokoly.<br>-Měly by být povolené diagnostické protokoly v Data Lake Analytics.<br>-Měly by být povolené diagnostické protokoly v centru událostí.<br>-Měly by být povolené diagnostické protokoly v IoT Hub.<br>-Měly by být povolené diagnostické protokoly v Key Vault.<br>-Měly by být povolené diagnostické protokoly v Logic Apps.<br>-Diagnostické protokoly ve službě Search Service by se měly povolit.<br>-Měly by být povolené diagnostické protokoly v Service Bus.<br>-Měly by být povolené diagnostické protokoly v Virtual Machine Scale Sets.<br>-Pravidla upozornění na metriky by měly být nakonfigurovaná na účtech Batch.<br>-Nastavení auditování SQL by mělo mít akce – skupiny konfigurované pro zachycení kritických aktivit.<br>-SQL servery by měly být nakonfigurované s uchováním dat po dobu delší než 90 dní.</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Povolit rozšířenou ochranu před internetovými útoky (max. skóre 0)</p></strong>Ochrana před hrozbami Azure Security Center poskytuje komplexní ochranu vašeho prostředí. Pokud Security Center zjistí hrozbu v jakékoli oblasti vašeho prostředí, vygeneruje výstrahu. Tyto výstrahy popisují podrobnosti o ovlivněných prostředcích, navrhovaných krocích pro nápravu a v některých případech možnost aktivovat aplikaci logiky v reakci.<br>Každý svazek ochrany před hrozbami je samostatnou volitelnou nabídkou, kterou můžete povolit pomocí relevantního doporučení v tomto řízení zabezpečení.<br><a href="https://docs.microsoft.com/azure/security-center/threat-protection">Přečtěte si další informace o ochraně před hrozbami v Security Center</a>.</td>
+    <td class="tg-lboi"; width=55%>-V Azure SQL Databasech serverech by mělo být povolené rozšířené zabezpečení dat.<br>-Rozšířené zabezpečení dat by mělo být povoleno na serverech SQL na počítačích<br>-V Virtual Machines by měla být povolena rozšířená ochrana před internetovými útoky.<br>-V plánech Azure App Service by měla být povolena rozšířená ochrana před internetovými útoky.<br>-Pro účty Azure Storage by měla být povolena rozšířená ochrana před internetovými útoky.<br>-V clusterech služby Azure Kubernetes by měla být povolena rozšířená ochrana před internetovými útoky.<br>-V Azure Container Registry Registry by měla být povolena rozšířená ochrana před internetovými útoky.<br>-V trezorech Azure Key Vault by měla být povolena rozšířená ochrana před internetovými útoky.</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Implementovat osvědčené postupy zabezpečení (maximální skóre 0)</p></strong>Mezi moderní postupy zabezpečení se předpokládá porušení sítě v hraniční síti. Z tohoto důvodu se řada osvědčených postupů v tomto ovládacím prvku zaměřuje na správu identit.<br>Ztráta klíčů a přihlašovacích údajů je běžný problém. <a href="https://docs.microsoft.com/azure/key-vault/key-vault-overview">Azure Key Vault</a> chránit klíče a tajné kódy šifrováním klíčů, souborů PFX a hesel.<br>Virtuální privátní sítě (VPN) představují zabezpečený způsob přístupu k virtuálním počítačům. Pokud sítě VPN nejsou k dispozici, používejte složitá přístupová hesla a dvojúrovňové ověřování, jako je například <a href="https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks">Azure Multi-Factor Authentication</a>. Dvojúrovňové ověřování zabraňuje slabým místům, které jsou podstatné při spoléhání jenom na uživatelská jména a hesla.<br>Použití silného ověřování a autorizačních platforem je další osvědčené postupy. Použití federovaných identit umožňuje organizacím delegovat správu autorizovaných identit. To je důležité i v případě, že se zaměstnanci ukončí a jejich přístup je potřeba odvolat.</td>

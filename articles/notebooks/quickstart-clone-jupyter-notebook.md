@@ -3,12 +3,12 @@ title: Klonování Jupyter poznámkového bloku z GitHubu s využitím Azure Not
 description: Z úložiště GitHubu si rychle naklonujte Jupyter Poznámkový blok a spusťte ho v účtu Azure Notebooks.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 35352e74a8db071a2f85bd71857d47f3af1953e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 267e79e7d4bf108ac3b2c72d64cee5a07ba638be
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833082"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424473"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>Rychlý Start: naklonování poznámkového bloku v Azure Notebooks Preview
 
@@ -20,7 +20,7 @@ V tomto rychlém startu zkopírujete Poznámkový blok Jupyter uložený v GitHu
 
 Vzhledem k tomu, že je váš Azure Notebooks klonem v cloudu, můžete ho sdílet s spolupracovníky, kteří na svém počítači nemusejí dělat žádné místní kopie nebo mít Jupyter nainstalované. Poznámkový blok můžete také klonovat jednoduše jako výchozí bod pro projekt, který vlastníte, nebo pro získání datových souborů. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Žádné
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>Klonovat notebooky Azure Cognitive Services
@@ -49,7 +49,7 @@ Vzhledem k tomu, že je váš Azure Notebooks klonem v cloudu, můžete ho sdíl
 
 1. Po dokončení klonování Azure Notebooks přejdete k novému projektu, kde vidíte kopie všech souborů.
 
-    [![](media/quickstarts/completed-clone.png "View of a completed clone")](media/quickstarts/completed-clone.png#lightbox)
+    :::image type="content" source="media/quickstarts/completed-clone.png" alt-text="Zobrazení dokončeného klonu." lightbox="media/quickstarts/completed-clone.png":::
 
 ## <a name="share-a-notebook"></a>Sdílení poznámkového bloku
 

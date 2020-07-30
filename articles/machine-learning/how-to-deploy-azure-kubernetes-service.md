@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: ad34195e003e0ca2d73000d3482cc79c3dbe3ee0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 58a8bd6b8e5594f36bf27a3ad76bee137fdd1160
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372106"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433230"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,7 +45,7 @@ Cluster AKS a pracovní prostor AML můžou být v různých skupinách prostře
 >
 > Můžete se také podívat na Azure Machine Learning – [nasazení do místního poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -63,7 +63,11 @@ Cluster AKS a pracovní prostor AML můžou být v různých skupinách prostře
 
 - Fragmenty rozhraní příkazového __řádku__ v tomto článku předpokládají, že jste vytvořili `inferenceconfig.json` dokument. Další informace o vytváření tohoto dokumentu najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
+- Pokud v clusteru potřebujete nasadit Standard Load Balancer (SLB) místo základního Load Balancer (BLB), vytvořte prosím cluster na portálu AKS/CLI/SDK a pak ho připojte k pracovnímu prostoru AML.
+
 - Pokud připojíte cluster AKS, který má [povolený povolený rozsah IP adres pro přístup k serveru rozhraní API](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), povolte rozsahy IP adres AML contol pro cluster AKS. Rovina ovládacího prvku AML se nasadí mezi spárované oblasti a nasadí Inferencing lusky do clusteru AKS. Bez přístupu k serveru rozhraní API se Inferencing lusky nedají nasadit. Při povolování rozsahů IP adres v clusteru AKS použijte [rozsahy IP adres](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) pro obě [spárované oblasti]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions) .
+
+__Rozsahy IP adres Authroized fungují jenom s Standard Load Balancer.__
  
  - Název výpočtu musí být v rámci pracovního prostoru jedinečný.
    - Název je povinný a musí mít délku 3 až 24 znaků.
@@ -73,7 +77,7 @@ Cluster AKS a pracovní prostor AML můžou být v různých skupinách prostře
    
  - Pokud chcete nasadit modely do uzlů GPU nebo FPGAch uzlů (nebo jakékoli konkrétní SKU), musíte vytvořit cluster s konkrétní SKU. Neexistuje žádná podpora pro vytváření fondu sekundárních uzlů v existujícím clusteru a nasazování modelů do fondu sekundárních uzlů.
  
- - Pokud v clusteru potřebujete nasadit Standard Load Balancer (SLB) místo základního Load Balancer (BLB), vytvořte prosím cluster na portálu AKS/CLI/SDK a pak ho připojte k pracovnímu prostoru AML. 
+ 
 
 
 
@@ -257,6 +261,30 @@ Informace o použití VS Code najdete v tématu [nasazení do AKS prostřednictv
 
 > [!IMPORTANT]
 > Nasazení prostřednictvím VS Code vyžaduje, aby byl cluster AKS vytvořen nebo připojen k vašemu pracovnímu prostoru předem.
+
+### <a name="understand-the-deployment-processes"></a>Pochopení procesů nasazení
+
+Slovo "Deployment" se používá v Kubernetes i Azure Machine Learning. Nasazení má v těchto dvou kontextech velmi různé významy. V Kubernetes `Deployment` je entita konkrétní entitou, která je zadána pomocí deklarativního souboru YAML. Kubernetes `Deployment` má definovaný životní cyklus a konkrétní vztahy k jiným entitám Kubernetes, jako jsou `Pods` a `ReplicaSets` . Informace o Kubernetes najdete v dokumentaci k dokumentům a videím na adrese [Kubernetes?](https://aka.ms/k8slearning).
+
+V Azure Machine Learning se "nasazení" používá v obecnější smyslu, jak zpřístupnit a vyčistit prostředky projektu. Postup, který Azure Machine Learning považuje za součást nasazení, jsou tyto:
+
+1. Zipování soubory ve složce projektu, které budou ignorovány, které jsou zadány v souboru. amlignore nebo. gitignore
+1. Vertikální navýšení kapacity výpočetního clusteru (týká se Kubernetes)
+1. Sestavování nebo stahování souboru Dockerfile do výpočetního uzlu (týká se Kubernetes)
+    1. Systém vypočítá hodnotu hash: 
+        - Základní obrázek 
+        - Vlastní kroky Docker (viz [nasazení modelu pomocí vlastního Docker Base image](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
+        - Definice conda YAML (viz téma [vytvoření & použití softwarových prostředí v Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+    1. Systém používá tuto hodnotu hash jako klíč při vyhledávání Azure Container Registry pracovního prostoru (ACR).
+    1. Pokud se nenajde, vyhledá shodu v globálním ACR
+    1. Pokud není nalezen, systém vytvoří novou bitovou kopii (která bude uložena do mezipaměti a bude registrována v pracovním prostoru ACR).
+1. Stažení souboru projektu zip do dočasného úložiště na výpočetním uzlu
+1. Rozzipovává soubor projektu
+1. Prováděný výpočetní uzel`python <entry script> <arguments>`
+1. Ukládání protokolů, souborů modelů a dalších souborů zapsaných do `./outputs` účtu úložiště přidruženého k pracovnímu prostoru
+1. Horizontální snížení kapacity, včetně odebrání dočasného úložiště (týká se Kubernetes)
+
+Při použití AKS se horizontální navýšení a snížení kapacity výpočetních prostředků řídí pomocí Kubernetes, a to pomocí souboru Dockerfile sestaveného nebo nalezeného, jak je popsáno výše. 
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Nasazení modelů do AKS pomocí řízeného zavedení (Preview)
 

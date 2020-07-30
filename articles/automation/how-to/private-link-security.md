@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: a7ff659eb6fc204208c84146a2fc33c8278f7154
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c81d9774dccf8c02d2eab7b1ebbb69e6671869e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207284"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423792"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Použití privátního odkazu Azure k bezpečnému připojení sítí k Azure Automation (Preview)
 
@@ -85,7 +85,7 @@ V této části vytvoříte privátní koncový bod pro svůj účet Automation.
     | Předplatné | Vyberte předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
-    | Name | Zadejte své *PrivateEndpoint*. |
+    | Název | Zadejte své *PrivateEndpoint*. |
     | Oblast | Vyberte **YourRegion**. |
     |||
 
@@ -98,7 +98,7 @@ V této části vytvoříte privátní koncový bod pro svůj účet Automation.
     |Způsob připojení  | V adresáři vyberte připojit k prostředku Azure.|
     | Předplatné| Vyberte předplatné. |
     | Typ prostředku | Vyberte **Microsoft. Automation/automationAccounts**. |
-    | Resource |Vybrat *myAutomationAccount*|
+    | Prostředek |Vybrat *myAutomationAccount*|
     |Cílový podprostředek |V závislosti na vašem scénáři vyberte *Webhook* nebo *DSCAndHybridWorker* .|
     |||
 
@@ -132,15 +132,15 @@ Pokud má příjemce služby oprávnění RBAC pro prostředek automatizace, mů
 
 ## <a name="set-public-network-access-flags"></a>Nastavit příznaky přístupu k veřejné síti
 
-Můžete nakonfigurovat účet Automation pro odepření všech veřejných konfigurací a povolit jenom připojení prostřednictvím privátních koncových bodů, aby se zvýšilo zabezpečení sítě. Pokud chcete omezit přístup k účtu Automation jenom v rámci virtuální sítě a Nepovolit přístup z veřejného Internetu, můžete nastavit `publicNetworkAccess` vlastnost na `$true` .
+Můžete nakonfigurovat účet Automation pro odepření všech veřejných konfigurací a povolit jenom připojení prostřednictvím privátních koncových bodů, aby se zvýšilo zabezpečení sítě. Pokud chcete omezit přístup k účtu Automation jenom v rámci virtuální sítě a Nepovolit přístup z veřejného Internetu, můžete nastavit `publicNetworkAccess` vlastnost na `$false` .
 
-Je-li nastavení **Odepřít přístup k veřejné síti** nastaveno na hodnotu `true` , jsou povolena pouze připojení prostřednictvím privátních koncových bodů a všechna připojení prostřednictvím veřejných koncových bodů budou odepřena s chybovou zprávou.
+Pokud je nastavení **přístup k veřejné síti** nastaveno na `$false` , jsou povolena pouze připojení prostřednictvím privátních koncových bodů a všechna připojení prostřednictvím veřejných koncových bodů budou odepřena s chybovou zprávou unathorized a stavem protokolu HTTP 401. 
 
 Následující skript prostředí PowerShell ukazuje, jak `Get` a `Set` vlastnost **přístup k veřejné síti** na úrovni účtu Automation:
 
 ```powershell
 $account = Get-AzResource -ResourceType Microsoft.Automation/automationAccounts -ResourceGroupName "<resourceGroupName>" -Name "<automationAccountName>" -ApiVersion "2020-01-13-preview"
-$account.Properties | Add-Member -Name 'publicNetworkAccess' -Type NoteProperty -Value $true
+$account.Properties | Add-Member -Name 'publicNetworkAccess' -Type NoteProperty -Value $false
 $account | Set-AzResource -Force -ApiVersion "2020-01-13-preview"
 ```
 

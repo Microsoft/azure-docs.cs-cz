@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 07/20/2020
-ms.openlocfilehash: 0eea1b696d8eae8606c0b6009f248a215d12db57
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ed3f23b13920a9c3220a030059fdc8471f350d28
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515106"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428220"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
 
@@ -50,7 +50,7 @@ Chcete-li provést obnovení, přečtěte si téma [obnovení databáze ze zálo
 
 Operaci konfigurace zálohování a obnovení můžete vyzkoušet v následujících příkladech:
 
-| | portál Azure | Azure PowerShell |
+| | Azure Portal | Azure PowerShell |
 |---|---|---|
 | **Změna uchovávání záloh** | [Samostatná databáze](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [Spravovaná instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [Samostatná databáze](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | **Změna dlouhodobého uchovávání záloh** | [Samostatná databáze](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance – není k dispozici  | [Samostatná databáze](long-term-backup-retention-configure.md)<br/>Spravovaná instance – není k dispozici  |
@@ -161,6 +161,9 @@ Pokud chcete pochopit náklady na úložiště zálohování, v Azure Portal kli
 Přidejte filtr pro **název služby**a potom v rozevíracím seznamu vyberte **SQL Database** . Filtr **podkategorie měřiče** použijte k výběru čítače fakturace pro vaši službu. Pro izolovanou databázi nebo fond elastické databáze vyberte **Single/elastický fond Pitr úložiště zálohování**. V případě spravované instance vyberte **mi Pitr úložiště zálohování**. Podkategorie **úložišť** a **výpočtů** vám můžou zajímat i to, že nejsou spojené s náklady na úložiště zálohování.
 
 ![Analýza nákladů na úložiště zálohování](./media/automated-backups-overview/check-backup-storage-cost-sql-mi.png)
+
+  >[!NOTE]
+  > Měřiče jsou viditelné pouze pro čítače, které jsou právě používány. Pokud není čítač k dispozici, je pravděpodobná kategorie aktuálně nepoužitá. Například čítače spravované instance nebudou k dispozici pro zákazníky, kteří nemají nasazenou spravovanou instanci. Podobně se nebudou zobrazovat čítače úložiště pro prostředky, které nespotřebovávají úložiště. 
 
 ## <a name="encrypted-backups"></a>Šifrovaná zálohování
 

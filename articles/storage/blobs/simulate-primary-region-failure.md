@@ -10,12 +10,13 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: f7a792eea28c6a6d05c4f295241291fdf2449467
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a9aa58ec990170df99f330f67991fff7b61c2b49
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82859036"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429837"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Kurz: simulace selhání při čtení dat z primární oblasti
 
@@ -23,7 +24,7 @@ Tento kurz je druhá část série. V takovém případě se dozvíte o výhodá
 
 Aby se mohla simulovat chyba, můžete použít buď [statické směrování](#simulate-a-failure-with-an-invalid-static-route) , nebo [Fiddler](#simulate-a-failure-with-fiddler). Obě metody umožní simulovat selhání požadavků na primární koncový bod vašeho [geograficky redundantního účtu úložiště s přístupem pro čtení](../common/storage-redundancy.md) (RA-GZRS), takže aplikace bude číst ze sekundárního koncového bodu.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 Ve druhé části této série se naučíte:
 
@@ -32,7 +33,7 @@ Ve druhé části této série se naučíte:
 > * Simulace selhání s [neplatnou statickou trasou](#simulate-a-failure-with-an-invalid-static-route) nebo [Fiddler](#simulate-a-failure-with-fiddler)
 > * Simulovat obnovení primárního koncového bodu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, dokončete předchozí kurz: [zajištění vysoké dostupnosti dat aplikace v Azure Storage][previous-tutorial].
 
@@ -52,7 +53,7 @@ Pomocí pokynů v [předchozím kurzu][previous-tutorial] spusťte ukázku a St�
 
 Když je aplikace pozastavena, otevřete příkazový řádek ve Windows jako správce nebo spusťte terminál jako kořenový adresář v systému Linux.
 
-Zadáním následujícího příkazu na příkazovém řádku nebo terminálu Získejte informace o primární doméně koncového bodu účtu úložiště a nahraďte `STORAGEACCOUNTNAME` ho názvem vašeho účtu úložiště.
+Zadáním následujícího příkazu na příkazovém řádku nebo terminálu Získejte informace o primární doméně koncového bodu účtu úložiště a nahraďte ho `STORAGEACCOUNTNAME` názvem vašeho účtu úložiště.
 
 ```
 nslookup STORAGEACCOUNTNAME.blob.core.windows.net
@@ -62,7 +63,7 @@ Zkopírujte IP adresu vašeho účtu úložiště do textového editoru pro pozd
 
 Pokud chcete získat IP adresu místního hostitele, zadejte `ipconfig` na příkazovém řádku Windows nebo `ifconfig` na terminálu Linuxu.
 
-Pokud chcete přidat statickou trasu pro cílového hostitele, zadejte na příkazovém řádku Windows nebo terminálu pro Linux následující příkaz a nahraďte `<destination_ip>` IP adresou vašeho účtu úložiště a `<gateway_ip>` IP adresou místního hostitele.
+Pokud chcete přidat statickou trasu pro cílového hostitele, zadejte na příkazovém řádku Windows nebo terminálu pro Linux následující příkaz a nahraďte IP `<destination_ip>` adresou vašeho účtu úložiště a `<gateway_ip>` IP adresou místního hostitele.
 
 #### <a name="linux"></a>Linux
 
@@ -108,9 +109,9 @@ Otevřete Fiddler, vyberte **Rules** (Pravidla) a **Customize Rules** (Přizpůs
 
 ![Přizpůsobení pravidel Fiddleru](media/simulate-primary-region-failure/figure1.png)
 
-Fiddler ScriptEditor spustí a zobrazí soubor **SampleRules. js** . Tento soubor slouží k přizpůsobení Fiddleru.
+Fiddler ScriptEditor spustí a zobrazí soubor **SampleRules.js** . Tento soubor slouží k přizpůsobení Fiddleru.
 
-Do `OnBeforeResponse` funkce vložte následující ukázku kódu a nahraďte `STORAGEACCOUNTNAME` názvem svého účtu úložiště. V závislosti na ukázce může být také nutné nahradit `HelloWorld` názvem testovacího souboru (nebo předpony, jako je například `sampleFile`), kterou chcete stáhnout. Nový kód je komentovaný, aby se zajistilo, že se nespustí okamžitě.
+Do funkce vložte následující ukázku kódu `OnBeforeResponse` a nahraďte `STORAGEACCOUNTNAME` názvem svého účtu úložiště. V závislosti na ukázce může být také nutné nahradit `HelloWorld` názvem testovacího souboru (nebo předpony, jako je například), kterou chcete `sampleFile` Stáhnout. Nový kód je komentovaný, aby se zajistilo, že se nespustí okamžitě.
 
 Až budete hotovi, vyberte **soubor** a **Uložit** a uložte provedené změny. Ponechte okno ScriptEditor otevřené pro použití v následujících krocích.
 
@@ -138,7 +139,7 @@ Pomocí pokynů v [předchozím kurzu][previous-tutorial] spusťte ukázku a St�
 
 ### <a name="simulate-failure"></a>Simulace chyby
 
-Když je aplikace pozastavená, přepněte zpátky na Fiddler a odkomentujte vlastní pravidlo, které jste `OnBeforeResponse` uložili do funkce. Nezapomeňte vybrat **soubor** a **Uložit** změny, aby se pravidlo projevilo. Tento kód vyhledá požadavky na účet úložiště RA-GZRS a pokud cesta obsahuje název ukázkového souboru, vrátí kód odpovědi `503 - Service Unavailable`.
+Když je aplikace pozastavená, přepněte zpátky na Fiddler a odkomentujte vlastní pravidlo, které jste uložili do `OnBeforeResponse` funkce. Nezapomeňte vybrat **soubor** a **Uložit** změny, aby se pravidlo projevilo. Tento kód vyhledá požadavky na účet úložiště RA-GZRS a pokud cesta obsahuje název ukázkového souboru, vrátí kód odpovědi `503 - Service Unavailable` .
 
 V okně se spuštěnou ukázkou obnovte aplikaci nebo stiskněte odpovídající klíč ke stažení ukázkového souboru a potvrďte, že pochází ze sekundárního úložiště. Pak můžete ukázku znovu pozastavit nebo počkat na příkazovém řádku.
 

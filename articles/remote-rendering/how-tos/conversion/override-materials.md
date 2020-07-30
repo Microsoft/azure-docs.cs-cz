@@ -5,23 +5,24 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
-ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e9cb216c100f1732230a90572284bd3f8462584
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681477"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433137"
 ---
 # <a name="override-materials-during-model-conversion"></a>Potlačení materiálů během převodu modelů
 
-Během převodu se k definování materiálů [PBR](../../overview/features/pbr-materials.md) používaných nástrojem pro vykreslování použijí nastavení materiálu ve zdrojovém modelu.
+Nastavení materiálu ve zdrojovém modelu slouží k definování [materiálů PBR](../../overview/features/pbr-materials.md) používaných nástrojem pro vykreslování.
 V některých případech [výchozí převod](../../reference/material-mapping.md) neposkytuje požadované výsledky a je třeba provést změny.
 Když je model převeden pro použití ve vzdáleném vykreslování Azure, můžete poskytnout soubor pro přepsání materiálu a přizpůsobit tak, jak se převod materiálu provádí na základě jednotlivých materiálů.
 Část týkající se [konfigurace převodu modelu](configure-model-conversion.md) obsahuje pokyny pro deklaraci názvu souboru přepisu materiálu.
 
 ## <a name="the-override-file-used-during-conversion"></a>Soubor přepsání použitý při převodu
 
-Jednoduchým příkladem je řekněme, že krabicový model má jeden materiál s názvem default. Barva albedo musí být upravena pro použití v ARR.
+Jednoduchým příkladem je řekněme, že krabicový model má jeden materiál s názvem default.
+Řekněme také, že je potřeba upravit albedo barvu pro použití v ARR.
 V takovém případě `box_materials_override.json` lze soubor vytvořit takto:
 
 ```json
@@ -38,7 +39,7 @@ V takovém případě `box_materials_override.json` lze soubor vytvořit takto:
 ]
 ```
 
-`box_materials_override.json`Soubor je umístěn ve vstupním kontejneru a `ConversionSettings.json` přidá se vedle `box.fbx` , který oznamuje převod, kde najít soubor přepsání (viz [konfigurace převodu modelu](configure-model-conversion.md)):
+`box_materials_override.json`Soubor je umístěn ve vstupním kontejneru a `box.ConversionSettings.json` přidá se vedle `box.fbx` , který oznamuje převod, kde najít soubor přepsání (viz [konfigurace převodu modelu](configure-model-conversion.md)):
 
 ```json
 {
@@ -51,7 +52,7 @@ Při převodu modelu se použijí nová nastavení.
 ### <a name="color-materials"></a>Barevné materiály
 
 [Barevný materiálový](../../overview/features/color-materials.md) model popisuje nepřetržitě stínovaný povrch, který je nezávislý na osvětlení.
-To je užitečné pro prostředky vytvořené pomocí Photogrammetry algoritmů, například.
+Barevné materiály jsou užitečné pro prostředky vytvořené Photogrammetry algoritmy, například.
 V souborech přepsání materiálu může být materiál deklarovaný jako barevný materiál nastavením `unlit` na `true` .
 
 ```json

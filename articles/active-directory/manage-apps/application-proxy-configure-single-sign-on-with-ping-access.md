@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f644203b494e5baf087241e2a4fe669b7db07b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 512aed93906968b14f7c6a13e08f74bbeb2f5f31
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077897"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431081"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Ověřování založené na hlavičkách pro jednotné přihlašování s proxy aplikací a PingAccess
 
@@ -121,6 +121,11 @@ Pak se ujistěte, že adresa URL pro přesměrování je nastavená na externí 
 1. Vyberte svou aplikaci.
 1. Vyberte odkaz vedle **identifikátorů URI přesměrování**, který zobrazuje počet identifikátorů URI pro přesměrování pro webové a veřejné klienty. Zobrazí se stránka ** \<application name> -ověřování** .
 1. Ověřte, zda externí adresa URL, kterou jste dříve přiřadili k vaší aplikaci, je v seznamu **identifikátorů URI pro přesměrování** . Pokud ne, přidejte externí adresu URL teď pomocí typu URI přesměrování **webu**a vyberte **Uložit**.
+
+Kromě externí adresy URL by se měl do seznamu identifikátorů URI pro přesměrování přidat autorizační koncový bod Azure Active Directory na externí adrese URL.
+
+`https://*.msappproxy.net/pa/oidc/cb`
+`https://*.msappproxy.net/`
 
 Nakonec nastavte svou místní aplikaci tak, aby uživatelé měli přístup pro čtení a další aplikace mají přístup pro čtení a zápis:
 

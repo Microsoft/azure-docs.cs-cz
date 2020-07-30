@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: tracking-python
-ms.openlocfilehash: da437f830a452a57ea1290b3d85a3faa92895bcd
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b35f971d90f8cd74e2f5a60e34864d8e55a743c4
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147053"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431918"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Výuka modelů pomocí Azure Machine Learning
 
@@ -92,9 +92,31 @@ Kanály strojového učení můžou používat dřív zmíněné metody školen�
 * [Příklady: kanál s automatickým strojovým učením](https://aka.ms/pl-automl)
 * [Příklady: kanál s odhady](https://aka.ms/pl-estimator)
 
+### <a name="understand-what-happens-when-you-submit-a-training-job"></a>Informace o tom, co se stane, když odešlete školicí úlohu
+
+Životní cyklus školení Azure se skládá z těchto součástí:
+
+1. Zipování soubory ve složce projektu, které budou ignorovány, které jsou zadány v souboru _. amlignore_ nebo _. gitignore_
+1. Škálování výpočetního clusteru 
+1. Sestavování nebo stahování souboru Dockerfile do výpočetního uzlu 
+    1. Systém vypočítá hodnotu hash: 
+        - Základní obrázek 
+        - Vlastní kroky Docker (viz [nasazení modelu pomocí vlastního Docker Base image](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
+        - Definice conda YAML (viz téma [vytvoření & použití softwarových prostředí v Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+    1. Systém používá tuto hodnotu hash jako klíč při vyhledávání Azure Container Registry pracovního prostoru (ACR).
+    1. Pokud se nenajde, vyhledá shodu v globálním ACR
+    1. Pokud není nalezen, systém vytvoří novou bitovou kopii (která bude uložena do mezipaměti a bude registrována v pracovním prostoru ACR).
+1. Stažení souboru projektu zip do dočasného úložiště na výpočetním uzlu
+1. Rozzipovává soubor projektu
+1. Prováděný výpočetní uzel`python <entry script> <arguments>`
+1. Ukládání protokolů, souborů modelů a dalších souborů zapsaných do `./outputs` účtu úložiště přidruženého k pracovnímu prostoru
+1. Snížení kapacity výpočetních prostředků, včetně odebrání dočasného úložiště 
+
+Pokud se rozhodnete, že budete na svém místním počítači ("konfigurovat jako místní běh"), nemusíte používat Docker. Pokud si zvolíte (příklad najdete v části [Konfigurace kanálu ml](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline ) ), můžete použít Docker lokálně.
+
 ## <a name="r-sdk"></a>R SDK
 
-Sada R SDK umožňuje používat jazyk R s Azure Machine Learning. Sada SDK používá balíček reticulate k navázání Azure Machine Learning Python SDK. To umožňuje přístup k základním objektům a metodám implementovaným v sadě Python SDK z jakéhokoli prostředí jazyka R.
+Sada R SDK umožňuje používat jazyk R s Azure Machine Learning. Sada SDK používá balíček reticulate k navázání Azure Machine Learning Python SDK. Díky tomu máte přístup k základním objektům a metodám implementovaným v sadě Python SDK z jakéhokoli prostředí jazyka R.
 
 Další informace najdete v následujících článcích:
 
@@ -103,7 +125,7 @@ Další informace najdete v následujících článcích:
 
 ## <a name="azure-machine-learning-designer"></a>Návrhář Azure Machine Learning
 
-Návrhář vám umožní naučit modely pomocí rozhraní přetažení ve webovém prohlížeči.
+Návrhář umožňuje výukové modely pomocí rozhraní přetažení ve webovém prohlížeči.
 
 + [Co je Návrhář?](concept-designer.md)
 + [Kurz: předpověď ceny automobilu](tutorial-designer-automobile-price-train-score.md)

@@ -1,17 +1,14 @@
 ---
 title: Integrace Azure Functions s Azure Virtual Network
 description: Podrobný kurz, ve kterém se dozvíte, jak připojit funkci ke službě Azure Virtual Network
-author: alexkarcher-msft
 ms.topic: article
 ms.date: 4/23/2020
-ms.author: alkarche
-ms.reviewer: glenga
-ms.openlocfilehash: e1babfa188a29e79cb52cd14af19d552123345f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122636"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387519"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Kurz: Integrace služby Functions s virtuální sítí Azure
 
@@ -32,7 +29,7 @@ Následující diagram znázorňuje architekturu řešení, kterou vytvoříte:
 
 Funkce spuštěné v plánu Premium mají stejné možnosti hostování jako webové aplikace v Azure App Service, což zahrnuje funkci Integrace virtuální sítě. Další informace o integraci virtuální sítě, včetně řešení potíží a pokročilých konfigurací, najdete v tématu [integrace aplikace do služby Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro účely tohoto kurzu je důležité pochopit IP adresy a podsítě. Můžete začít s [tímto článkem, který se zabývá základy adresování a podsítí](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Mnoho dalších článků a videí je k dispozici online.
 
@@ -63,7 +60,7 @@ V dalším kroku vytvořte předkonfigurovaný virtuální počítač, který sp
     | **Předplatné** | Vaše předplatné | Předplatné, ve kterém se vaše prostředky vytvářejí. | 
     | **[Skupina prostředků](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Vyberte `myResourceGroup` nebo skupinu prostředků, kterou jste vytvořili pomocí aplikace Function App. Použití stejné skupiny prostředků pro aplikaci Function App, virtuálního počítače WordPress a plánu hostování usnadňuje vyčištění prostředků, pokud jste s tímto kurzem hotovi. |
     | **Název virtuálního počítače** | Virtuální síť – WordPress | Název virtuálního počítače musí být ve skupině prostředků jedinečný. |
-    | **[Věřitel](https://azure.microsoft.com/regions/)** | Evropským Západní Evropa | Vyberte oblast poblíž nebo poblíž funkcí, které přistupují k virtuálnímu počítači. |
+    | **[Oblast](https://azure.microsoft.com/regions/)** | Evropským Západní Evropa | Vyberte oblast poblíž nebo poblíž funkcí, které přistupují k virtuálnímu počítači. |
     | **Velikost** | B1s | Zvolte možnost **změnit velikost** a pak vyberte standardní image B1s, která má 1 vCPU a 1 GB paměti. |
     | **Typ ověřování** | Heslo | Chcete-li použít ověřování heslem, je nutné zadat také **uživatelské jméno**, zabezpečené **heslo**a **potvrzení hesla**. Pro tento kurz se nemusíte přihlašovat k virtuálnímu počítači, pokud nepotřebujete řešit problémy. |
 
@@ -142,7 +139,7 @@ Když máte povolenou integraci virtuální sítě, můžete ve své aplikaci Fu
 
 1. Výběrem **vytvořit** přidejte proxy do aplikace Function App.
 
-## <a name="try-it-out"></a>Vyzkoušejte si to.
+## <a name="try-it-out"></a>Vyzkoušet
 
 1. V prohlížeči se pokuste získat přístup k adrese URL, kterou jste použili jako **adresu URL back-endu**. Podle očekávání vypršel časový limit žádosti. Dojde k vypršení časového limitu, protože vaše lokalita WordPress je připojená jenom k vaší virtuální síti, a ne k Internetu.
 
