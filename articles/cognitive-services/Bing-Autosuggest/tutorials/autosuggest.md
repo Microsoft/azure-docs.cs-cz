@@ -10,12 +10,13 @@ ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 04f4c91ece77f7476cbe3bb27236ecdc2b5c60e7
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a45000c59f975a03f51aa5ee86846c772cbdfaaa
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603158"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406465"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Kurz: získání návrhů vyhledávání na webové stránce
 
@@ -27,7 +28,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > - Vytvoření jednoduchého dotazu na rozhraní API pro automatické návrhy Bingu
 > - zobrazení výsledků dotazu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro automatické návrhy Bingu. Pokud ho ještě nemáte, vytvořte v Azure Portal [prostředek automatické návrhy Bingu](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7) .
 
@@ -279,7 +280,7 @@ Přidejte značku HTML **div**, kterou používáme pro zobrazení výsledků. K
 </html>
 ```
 
-Uložte soubor.
+Soubor uložte.
 
 ## <a name="display-results"></a>Zobrazení výsledků
 

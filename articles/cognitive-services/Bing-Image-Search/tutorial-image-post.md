@@ -10,12 +10,13 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
-ms.openlocfilehash: 69c5fc9805bed8fdfde3dd208e7fb66254e82c3c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2b51fb8dcc456d895d5c4032bd16e1502ee86f0f
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75383871"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407077"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Kurz: Extrahování podrobností pomocí rozhraní API Bingu pro vyhledávání obrázků a C#
 
@@ -34,7 +35,7 @@ Tento kurz vysvětluje následující postupy:
 
 Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingGetSimilarImages.cs).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Libovolná edice sady [Visual studio 2017 nebo novější](https://visualstudio.microsoft.com/downloads/).
 
@@ -111,6 +112,6 @@ Pokud obrázek obsahuje identifikovatelné osoby nebo místa, tento požadavek o
 > [!div class="nextstepaction"]
 > [Zobrazení obrázků a možnosti vyhledávání v jednostránkové webové aplikaci ](tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

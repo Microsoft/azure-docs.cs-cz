@@ -3,13 +3,13 @@ title: Kurz – spuštění image sestavení při aktualizaci základního obrá
 description: V tomto kurzu se naučíte konfigurovat úlohu Azure Container Registry pro automatické spouštění sestavení imagí kontejneru v cloudu, když se ve stejném registru aktualizuje základní image.
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 4797dd1f1fe19b98ab94c4743ad4af3c43ce0627
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seodec18, mvc, devx-track-javascript
+ms.openlocfilehash: 0efac34d05dfaf8877efec2e66f1f95a19ca95be
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78402857"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407995"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Kurz: automatizace sestavení imagí kontejneru při aktualizaci základní image ve službě Azure Container Registry 
 
@@ -30,7 +30,7 @@ V tomto kurzu:
 
 Pokud chcete Azure CLI používat místně, musíte mít nainstalovanou verzi Azure CLI **2.0.46** nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku (CLI), přečtěte si téma [Instalace Azure CLI][azure-cli].
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="complete-the-previous-tutorials"></a>Dokončení předchozích kurzů
 
@@ -97,7 +97,7 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-Tato úloha se podobá úkolu vytvořenému v [předchozím kurzu](container-registry-tutorial-build-task.md). Dává službě ACR Tasks pokyn aktivovat sestavení image, když se do úložiště určeného parametrem `--context` odešlou potvrzení. Zatímco souboru Dockerfile použitý k sestavení image v předchozím kurzu určuje veřejnou základní Image (`FROM node:9-alpine`), souboru Dockerfile v této úloze, [souboru Dockerfile-App][dockerfile-app], určí základní image ve stejném registru:
+Tato úloha se podobá úkolu vytvořenému v [předchozím kurzu](container-registry-tutorial-build-task.md). Dává službě ACR Tasks pokyn aktivovat sestavení image, když se do úložiště určeného parametrem `--context` odešlou potvrzení. Zatímco souboru Dockerfile použitý k sestavení image v předchozím kurzu určuje veřejnou základní Image ( `FROM node:9-alpine` ), souboru Dockerfile v této úloze, [souboru Dockerfile-App][dockerfile-app], určí základní image ve stejném registru:
 
 ```dockerfile
 FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
@@ -125,7 +125,7 @@ Nejprve proveďte ověření ve vašem registru kontejneru pomocí [AZ ACR Login
 az acr login --name $ACR_NAME
 ```
 
-Teď pomocí `docker run` spusťte kontejner místně. Nahraďte ** \<rutinu\> Run-ID** identifikátorem běhu nalezeným ve výstupu z předchozího kroku (například "DA6"). Tento příklad pojmenuje `myapp` kontejner a obsahuje `--rm` parametr pro odebrání kontejneru při jeho zastavení.
+Teď pomocí `docker run` spusťte kontejner místně. Nahraďte **\<run-id\>** ID spuštění, které najdete ve výstupu z předchozího kroku (například "DA6"). Tento příklad pojmenuje kontejner `myapp` a obsahuje `--rm` parametr pro odebrání kontejneru při jeho zastavení.
 
 ```bash
 docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-id>

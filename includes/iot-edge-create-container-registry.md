@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 12/30/2019
 ms.author: kgremban
-ms.openlocfilehash: f8cb734e8a57e3b0ee114ae20f454d0034e9cdc9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0c43c6dcced94225e9ab9ae903535ce74286ad9a
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387607"
+ms.locfileid: "87406706"
 ---
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
@@ -33,7 +33,7 @@ Pokud ještě nemáte registr kontejnerů, postupujte podle těchto kroků a vyt
 
 3. Vyberte **Vytvořit**.
 
-4. Po vytvoření registru kontejneru ho vyhledejte a v levém podokně vyberte **přístupové klíče** z nabídky, která se nachází v části **Nastavení**.
+4. Po vytvoření registru kontejneru ho vyhledejte a v levém podokně vyberte **přístupové klíče** z nabídky, která se nachází v části **Nastavení**. 
 
 5. Kliknutím povolíte uživateli s oprávněními správce zobrazit **uživatelské jméno** a **heslo** pro váš registr kontejnerů.
 

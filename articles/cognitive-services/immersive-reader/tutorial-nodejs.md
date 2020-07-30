@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: spuštění moderního čtečky pomocí Node. js'
+title: 'Kurz: spuštění moderního čtečky pomocí Node.js'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu vytvoříte aplikaci Node. js, která spustí moderní čtečku.
+description: V tomto kurzu vytvoříte aplikaci Node.js, která spustí moderní čtečku.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,36 +10,37 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: 139dd2ebdabbc91a6de3b0a1eb921b110d47c3f3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c64fc95c44aad81087cada23639e3b13bf478056
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842023"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407179"
 ---
-# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Kurz: spuštění moderního čtecího zařízení (Node. js)
+# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Kurz: spuštění moderního čtecího zařízení (Node.js)
 
-V tomto [přehledu](./overview.md)jste se dozvěděli o tom, co je moderní čtečka a jak implementuje osvědčené techniky pro zlepšení porozumění čtení pro jazykové učení, vznikající čtenáři a studenty s rozdíly v učení. V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci Node. js, která spustí moderní čtečku. V tomto kurzu se naučíte:
+V tomto [přehledu](./overview.md)jste se dozvěděli o tom, co je moderní čtečka a jak implementuje osvědčené techniky pro zlepšení porozumění čtení pro jazykové učení, vznikající čtenáři a studenty s rozdíly v učení. V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci Node.js, která spouští moderní čtečku. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření webové aplikace v Node. js pomocí Expressu
+> * Vytvoření Node.js webové aplikace pomocí Expressu
 > * Získání přístupového tokenu
 > * Spuštění moderního čtecího zařízení s ukázkovým obsahem
 > * Zadejte jazyk vašeho obsahu
 > * Zadejte jazyk rozhraní moderního čtecího zařízení.
 > * Spuštění moderního čtečky s využitím matematického obsahu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](./how-to-create-immersive-reader.md) si můžete nastavit. Při konfiguraci vlastností prostředí budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
-* [Node. js](https://nodejs.org/) a [příze](https://yarnpkg.com)
+* [Node.js](https://nodejs.org/) a [příze](https://yarnpkg.com)
 * Rozhraní IDE, jako je například [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="create-a-nodejs-web-app-with-express"></a>Vytvoření webové aplikace v Node. js pomocí Expressu
+## <a name="create-a-nodejs-web-app-with-express"></a>Vytvoření Node.js webové aplikace pomocí Expressu
 
-Pomocí `express-generator` nástroje vytvořte webovou aplikaci v Node. js.
+Pomocí nástroje vytvořte webovou aplikaci v Node.js `express-generator` .
 
 ```bash
 npm install express-generator -g
@@ -47,7 +48,7 @@ express --view=pug myapp
 cd myapp
 ```
 
-Nainstalujte závislosti příze a přidejte závislosti `request` a `dotenv`, které se použijí později v tomto kurzu.
+Nainstalujte závislosti příze a přidejte závislosti `request` a `dotenv` , které se použijí později v tomto kurzu.
 
 ```bash
 yarn
@@ -79,7 +80,7 @@ SUBDOMAIN={YOUR_SUBDOMAIN}
 
 Ujistěte se, že tento soubor nechcete potvrdit do správy zdrojových kódů, protože obsahuje tajné klíče, které by neměly být zveřejněny.
 
-V dalším kroku otevřete _App. js_ a na začátek souboru přidejte následující. Tím se načte vlastnosti definované v souboru. env jako proměnné prostředí do uzlu.
+Dále otevřete _app.js_ a na začátek souboru přidejte následující. Tím se načte vlastnosti definované v souboru. env jako proměnné prostředí do uzlu.
 
 ```javascript
 require('dotenv').config();
@@ -189,7 +190,7 @@ Koncový bod rozhraní API **getimmersivereaderlaunchparams** by měl být zabez
     npm start
     ```
 
-4. Otevřete prohlížeč a přejděte na _http://localhost:3000_. Na stránce byste měli vidět výše uvedený obsah. Kliknutím na tlačítko pro **moderní čtečku** spustíte moderní čtečku s vaším obsahem.
+4. Otevřete prohlížeč a přejděte na _http://localhost:3000_ . Na stránce byste měli vidět výše uvedený obsah. Kliknutím na tlačítko pro **moderní čtečku** spustíte moderní čtečku s vaším obsahem.
 
 ## <a name="specify-the-language-of-your-content"></a>Zadejte jazyk vašeho obsahu
 
@@ -201,7 +202,7 @@ Moderní čtečka podporuje řadu různých jazyků. Jazyk vašeho obsahu může
     p(id='content-spanish') El estudio de las formas terrestres de la Tierra se llama geografía física. Los accidentes geográficos pueden ser montañas y valles. También pueden ser glaciares, lagos o ríos.
     ```
 
-2. V kódu JavaScriptu přidejte následující nad volání `ImmersiveReader.launchAsync`. Tento kód předá španělský obsah do moderního čtecího zařízení.
+2. V kódu JavaScriptu přidejte následující nad volání `ImmersiveReader.launchAsync` . Tento kód předá španělský obsah do moderního čtecího zařízení.
 
     ```pug
     content.chunks.push({
@@ -210,7 +211,7 @@ Moderní čtečka podporuje řadu různých jazyků. Jazyk vašeho obsahu může
     });
     ```
 
-3. Znovu přejděte _http://localhost:3000_ na. Na stránce byste měli vidět španělský text a když kliknete na **moderní čtečku**, zobrazí se i v moderní čtečce.
+3. Znovu přejděte na _http://localhost:3000_ . Na stránce byste měli vidět španělský text a když kliknete na **moderní čtečku**, zobrazí se i v moderní čtečce.
 
 ## <a name="specify-the-language-of-the-immersive-reader-interface"></a>Zadejte jazyk rozhraní moderního čtecího zařízení.
 
@@ -225,13 +226,13 @@ Standardně se jazyk moderního čtecího rozhraní shoduje s nastavením jazyka
     ImmersiveReader.launchAsync(token, subdomain, content, options);
     ```
 
-2. Přejděte na _http://localhost:3000_. Při spuštění moderního čtecího zařízení se rozhraní zobrazí ve francouzštině.
+2. Přejděte na _http://localhost:3000_ . Při spuštění moderního čtecího zařízení se rozhraní zobrazí ve francouzštině.
 
 ## <a name="launch-the-immersive-reader-with-math-content"></a>Spuštění moderního čtečky s využitím matematického obsahu
 
 Do moderního čtecího zařízení můžete zahrnout matematický obsah pomocí formátu [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML).
 
-1. Upravte _views\index.pug_ tak, aby zahrnoval následující kód nad volání `ImmersiveReader.launchAsync`:
+1. Upravte _views\index.pug_ tak, aby zahrnoval následující kód nad volání `ImmersiveReader.launchAsync` :
 
     ```javascript
     const mathML = '<math xmlns="https://www.w3.org/1998/Math/MathML" display="block"> \
@@ -256,7 +257,7 @@ Do moderního čtecího zařízení můžete zahrnout matematický obsah pomocí
     });
     ```
 
-2. Přejděte na _http://localhost:3000_. Když spustíte moderní čtečku a posuňte se k dolnímu okraji, uvidíte matematický vzorec.
+2. Přejděte na _http://localhost:3000_ . Když spustíte moderní čtečku a posuňte se k dolnímu okraji, uvidíte matematický vzorec.
 
 ## <a name="next-steps"></a>Další kroky
 

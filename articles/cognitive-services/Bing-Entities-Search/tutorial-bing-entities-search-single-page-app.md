@@ -10,18 +10,19 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 53731540c4a2861c77c02b1a4b25b60fd0e23872
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d14681e07518188deabd9f48a04b80a489d858b8
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184136"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407927"
 ---
 # <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránková webová aplikace
 
 Rozhraní API Bingu pro vyhledávání entit umožňuje vyhledávat na webu informace o *entitách* a *místech.* Daným dotazem můžete požadovat jeden z druhů výsledku, nebo oba. Definice míst a entit jsou uvedeny níže.
 
-| Výsledek | Description |
+| Výsledek | Popis |
 |-|-|
 |Entity|Známí lidé, místa a věci, které najdete podle jména|
 |Zadá|Restaurace, hotely a další místní firmy, které najdete podle názvu *nebo* podle typu (italské restaurace)|
@@ -141,7 +142,7 @@ Značka HTML `<body>` obsahuje atribut `onload`, který po dokončení načítá
 
 HTML formulář obsahuje následující ovládací prvky:
 
-| Řízení | Description |
+| Řízení | Popis |
 |-|-|
 |`where`|Rozevírací nabídka pro výběr trhu (polohy a jazyka) pro vyhledávání.|
 |`query`|Textové pole pro zadání hledaných termínů.|
@@ -411,7 +412,7 @@ A nakonec. `sidebar` odkazuje na pomocné výsledky hledání. Ty se můžou zob
 
 Každá položka v kolekci `rankingResponse` odkazuje k položce skutečných výsledků hledání dvěma různými, ale rovnocennými způsoby.
 
-| Položka | Description |
+| Položka | Popis |
 |-|-|
 |`id`|`id` vypadá jako adresa URL, ale pro odkazy by se používat nemělo. `id` typ výsledku hledání odpovídá `id` položky výsledku hledání v kolekci odpovědí, *nebo* celé kolekce odpovědí (jako například `Entities`).
 |`answerType`<br>`resultIndex`|`answerType` odkazuje na nejvyšší úroveň kolekce odpovědí, která obsahuje výsledky (například `Entities`). `resultIndex` odkazuje na index výsledků v této kolekci. Když vynecháme `resultIndex`, bude výsledek hodnocení odkazovat na celou kolekci.

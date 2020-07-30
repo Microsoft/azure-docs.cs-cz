@@ -3,12 +3,13 @@ title: 'Kurz: Language Understanding robot Node.js v4'
 description: Pomocí Node.js sestavíte v tomto kurzu v tomto kurzu integraci robota v rámci jazyka porozumění (LUIS). Tento chatovací robot používá k rychlé implementaci řešení robota aplikaci Human Resources. K vytvoření robota se používá Bot Framework ve verzi 4 a Web App Bot Azure.
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 0f726034f18f834dcaf9b202ffbf03a45e5b6ce7
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 522502a043778d6f482c1756506063dfa6515ca3
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85443535"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405020"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Kurz: použití robota webové aplikace s povolenou službou Language Understanding v Node.js
 
@@ -22,7 +23,7 @@ Pomocí Node.js můžete vytvořit chatovací robot integrovaný s jazykem poroz
 > * Spustit robota a emulátor místně na počítači
 > * Zobrazit výsledky promluv v robotovi
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Emulátor robota](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
@@ -42,7 +43,7 @@ Pomocí Node.js můžete vytvořit chatovací robot integrovaný s jazykem poroz
     |Skupina prostředků|Logická skupina prostředků Azure|Vytvořte novou skupinu k uložení všech prostředků používaných s tímto robotem a skupinu pojmenujte `luis-nodejs-bot-resource-group`.|
     |Umístění|Oblast Azure – nemusí být stejná jako oblast LUIS pro vytváření nebo publikování.|`westus`|
     |Cenová úroveň|Slouží pro limity žádostí o služby a fakturaci.|`F0` je bezplatná úroveň.
-    |App name (Název aplikace)|Název se používá jako subdoména, když je váš robot nasazený do cloudu (například humanresourcesbot.azurewebsites.net).|`luis-nodejs-bot-` + `<your-name>`, například `luis-nodejs-bot-johnsmith`|
+    |Název aplikace|Název se používá jako subdoména, když je váš robot nasazený do cloudu (například humanresourcesbot.azurewebsites.net).|`luis-nodejs-bot-` + `<your-name>`, například `luis-nodejs-bot-johnsmith`|
     |Bot template (Šablona robota)|Nastavení Bot Frameworku – viz následující tabulka|
     |LUIS App location (Umístění aplikace LUIS)|Musí být stejné jako oblast prostředků LUIS|`westus`|
     |Plán/umístění služby App Service|Neměňte z poskytnuté výchozí hodnoty.|
@@ -74,7 +75,7 @@ Proces vytvoření služby robot také vytvoří novou aplikaci LUIS s záměry 
 |Kniha let|`Travel to Paris`|
 |Zrušit|`bye`|
 |Getpočasí|`what's the weather like?`|
-|Žádná|Cokoli mimo doménu aplikace|
+|Žádné|Cokoli mimo doménu aplikace|
 
 ## <a name="test-the-bot-in-web-chat"></a>Testování robota ve webovém chatu
 

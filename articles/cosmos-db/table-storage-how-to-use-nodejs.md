@@ -8,12 +8,13 @@ ms.topic: sample
 ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 2abe23de5fbd2feada6ac8ff0a827b8575bcb28b
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9404232533ae86e14f9b87c65fdd086f84e8aebb
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171998"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87413999"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
 
@@ -80,7 +81,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 
 ### <a name="add-an-azure-cosmos-db-connection"></a>Přidání připojení ke službě Azure Cosmos DB
 
-Pokud chcete přidat Azure Cosmos DB připojení, vytvořte `TableService` objekt a zadejte název svého účtu, primární klíč a koncový bod. Tyto hodnoty můžete zkopírovat z **Nastavení**  >  **připojovací řetězec** v Azure Portal pro účet Cosmos DB. Například:
+Pokud chcete přidat Azure Cosmos DB připojení, vytvořte `TableService` objekt a zadejte název svého účtu, primární klíč a koncový bod. Tyto hodnoty můžete zkopírovat z **Nastavení**  >  **připojovací řetězec** v Azure Portal pro účet Cosmos DB. Příklad:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -210,7 +211,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > Ve výchozím nastavení se při aktualizaci entity nekontroluje, jestli se aktualizovaná data dříve neupravila jiným procesem. Zajištění podpory souběžných aktualizací:
 >
 > 1. Získejte značku entity aktualizovaného objektu. Ta se vrací jako součást `response` pro všechny operace související s entitou a je možné ji načíst prostřednictvím příkazu `response['.metadata'].etag`.
-> 2. Při provádění operace aktualizace entity přidejte do nové entity dříve načtené informace o značce entity. Například:
+> 2. Při provádění operace aktualizace entity přidejte do nové entity dříve načtené informace o značce entity. Příklad:
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. Proveďte operaci aktualizace. Pokud se od načtení hodnoty značky entity daná entita upravila, například jinou instancí aplikace, vrátí se `error` oznamující, že nebyla splněná podmínka aktualizace zadaná v požadavku.
