@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: vývoj modulu Node. js pro Linux-Azure IoT Edge | Microsoft Docs'
+title: Kurz pro vývoj Node.js modul pro Linux-Azure IoT Edge | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak vytvořit modul IoT Edge s kódem v jazyce Node.js a jak ho nasadit na hraniční zařízení.
 services: iot-edge
 author: shizn
@@ -8,17 +8,17 @@ ms.author: xshi
 ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc, tracking-python
-ms.openlocfilehash: 7e17da94ba124c3b20fdede93ad6b4716247c6ba
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: mvc, tracking-python, devx-track-javascript
+ms.openlocfilehash: 01c7973efd2619a37ea77dfe4dad131b14144991
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610113"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420137"
 ---
-# <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Kurz: vývoj a nasazení IoT Edge modul Node. js pro zařízení se systémem Linux
+# <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Kurz: vývoj a nasazení modulu Node.js IoT Edge pro zařízení se systémem Linux
 
-Pomocí Visual Studio Code můžete vyvinout kód Node. js a nasadit ho do zařízení se systémem Linux se spuštěným Azure IoT Edge.
+Visual Studio Code můžete použít k vývoji kódu Node.js a jeho nasazení na zařízení se systémem Linux se spuštěným Azure IoT Edge.
 
 Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás povede při vytvoření a nasazení modulu IoT Edge, který filtruje data ze senzoru. Budete používat simulované zařízení IoT Edge, které jste vytvořili v rychlých startech. V tomto kurzu se naučíte:
 
@@ -27,7 +27,7 @@ Moduly IoT Edge můžete použít k nasazení kódu, který implementuje obchodn
 > * Používat Visual Studio Code k vytvoření modulu IoT Edge Node.js
 > * Používat Visual Studio Code a Docker k vytvoření image Dockeru a jejímu publikování v registru.
 > * Nasazení modulu do zařízení IoT Edge
-> * Zobrazení vygenerovaných dat
+> * Zobrazit vygenerovaná data
 
 Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje generované zařízením. Zprávy posílá dále, jen když teplota překročí zadanou prahovou hodnotu. Tento typ analýzy v zařízení Edge je užitečný kvůli zmenšení objemu dat přenášených a ukládaných do cloudu.
 
@@ -35,16 +35,16 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 ## <a name="solution-scope"></a>Obor řešení
 
-Tento kurz ukazuje, jak vytvořit modul v **Node. js** pomocí **Visual Studio Code**a jak ho nasadit na **zařízení se systémem Linux**. IoT Edge nepodporuje moduly node. js pro zařízení s Windows.
+Tento kurz ukazuje, jak vytvořit modul v **Node.js** pomocí **Visual Studio Code**a jak ho nasadit na **zařízení se systémem Linux**. IoT Edge nepodporuje moduly Node.js pro zařízení s Windows.
 
-Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modulů Node. js:
+Následující tabulka vám pomůže pochopit možnosti pro vývoj a nasazování Node.jsch modulů:
 
 | Node.js | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
-| **Linux AMD64** | ![Použití VS Code pro moduly node. js v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
-| **Linux ARM32** | ![Použití VS Code pro moduly node. js v systému Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
+| **Linux AMD64** | ![Použití VS Code pro Node.js moduly v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
+| **Linux ARM32** | ![Použití VS Code pro Node.js moduly na platformě Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení některého z těchto kurzů byste měli mít následující požadavky:
 
@@ -54,13 +54,13 @@ Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastaven�
 * [Visual Studio Code](https://code.visualstudio.com/) nakonfigurovaných pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) nakonfigurovaný pro spouštění kontejnerů Linux.
 
-Chcete-li vytvořit modul IoT Edge v Node. js, nainstalujte na svém vývojovém počítači následující další požadavky:
+Pokud chcete vytvořit modul IoT Edge v Node.js, nainstalujte na svém vývojovém počítači následující další požadavky:
 
 * [Node.js a npm](https://nodejs.org) Balíček npm se distribuuje společně s Node.js, takže když si stáhnete Node.js, nainstaluje se vám npm na počítač automaticky.
 
 ## <a name="create-a-module-project"></a>Vytvořit projekt modulu
 
-Následující kroky ukazují, jak vytvořit IoT Edge modul Node. js pomocí Visual Studio Code a nástrojů Azure IoT.
+Následující kroky ukazují, jak vytvořit modul IoT Edge Node.js pomocí Visual Studio Code a nástrojů Azure IoT.
 
 ### <a name="create-a-new-project"></a>Vytvoření nového projektu
 
@@ -82,9 +82,9 @@ Pomocí **npm** vytvořte šablonu řešení Node.js, na jejímž základě bude
 
    | Pole | Hodnota |
    | ----- | ----- |
-   | Vyberte složku | Zvolte umístění na vývojovém počítači, ve kterém VS Code vytvoří soubory řešení. |
+   | Vybrat složku | Zvolte umístění na vývojovém počítači, ve kterém VS Code vytvoří soubory řešení. |
    | Zadejte název řešení | Zadejte popisný název vašeho řešení nebo přijměte výchozí **EdgeSolution**. |
-   | Vyberte šablonu modulu | Vyberte **modul Node. js**. |
+   | Vyberte šablonu modulu | Vyberte **modulNode.js**. |
    | Zadejte název modulu | Dejte modulu název **NodeModule**. |
    | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru se předem vyplní názvem, který jste zadali v posledním kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br>Konečné úložiště imagí vypadá jako \<registry name\> . azurecr.IO/nodemodule. |
 
@@ -100,7 +100,7 @@ V souboru prostředí jsou uložené přihlašovací údaje pro kontejner úlož
 
 ### <a name="select-your-target-architecture"></a>Vyberte cílovou architekturu.
 
-V současné době Visual Studio Code může vyvíjet moduly node. js pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64.
+V současné době Visual Studio Code může vyvíjet Node.js moduly pro zařízení se systémem Linux AMD64 a Linux ARM32v7. Musíte vybrat architekturu, kterou cílíte na každé řešení, protože kontejner je sestavený a pro každý typ architektury funguje jinak. Výchozí hodnota je Linux AMD64.
 
 1. Otevřete paletu příkazů a vyhledejte **Azure IoT Edge: Nastavte výchozí cílovou platformu pro řešení Edge**nebo vyberte ikonu zástupce na bočním panelu v dolní části okna.
 
@@ -110,7 +110,7 @@ V současné době Visual Studio Code může vyvíjet moduly node. js pro zaří
 
 Každá šablona obsahuje vzorový kód, který obsahuje Simulovaná data senzorů z modulu **SimulatedTemperatureSensor** a směruje je IoT Hub. V této části přidáte kód, který připraví NodeModule k analýze zpráv před jejich odesláním.
 
-1. V Průzkumníku vs Code otevřete **modules**  >  **NodeModule**  >  **App. js**.
+1. V Průzkumníku vs Code otevřete **moduly**  >  **NodeModule**  >  **app.js**.
 
 2. Pod požadované moduly uzlu přidejte proměnnou prahové teploty. Prahová teplota definuje hodnotu, kterou musí naměřená teplota překročit, aby se data odeslala do IoT Hubu.
 
@@ -195,13 +195,13 @@ V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do
 
    Může se zobrazit upozornění zabezpečení, které doporučuje použití nástroje `--password-stdin` . I když se tento osvědčený postup doporučuje u produkčních scénářů, je mimo rozsah tohoto kurzu. Další informace najdete v tématu přihlašovací Reference k [Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
-1. V Průzkumníku VS Code klikněte pravým tlačítkem myši na soubor **Deployment. template. JSON** a vyberte **sestavení a nabízené IoT Edge řešení**.
+1. V Průzkumníku VS Code klikněte pravým tlačítkem na **deployment.template.jsna** soubor a vyberte **sestavení a nabízené IoT Edge řešení**.
 
    Příkaz Build a push spustí tři operace. Nejprve vytvoří novou složku v řešení s názvem **config** , která obsahuje úplný manifest nasazení, a vyplní informace v šabloně nasazení a dalších souborech řešení. Za druhé se spustí `docker build` sestavení image kontejneru na základě vhodné souboru Dockerfile pro vaši cílovou architekturu. Pak se spustí a nahraje `docker push` úložiště imagí do registru kontejneru.
 
 ## <a name="deploy-modules-to-device"></a>Nasadit moduly do zařízení
 
-K nasazení projektu modulu do zařízení IoT Edge použijte Průzkumníka Visual Studio Code a rozšíření Azure IoT Tools. Již máte připravený manifest nasazení pro váš scénář, soubor **Deployment. JSON** ve složce config. Teď stačí jen vybrat zařízení, na které se nasazení provede.
+K nasazení projektu modulu do zařízení IoT Edge použijte Průzkumníka Visual Studio Code a rozšíření Azure IoT Tools. Už máte připravený manifest nasazení pro váš scénář, **deployment.js** v souboru ve složce config. Teď stačí jen vybrat zařízení, na které se nasazení provede.
 
 Ujistěte se, že je zařízení IoT Edge spuštěné.
 

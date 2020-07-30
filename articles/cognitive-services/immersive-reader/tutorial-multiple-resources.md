@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Integrace více prostředků moderního čtecího zařízení'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu vytvoříte aplikaci Node. js, která spustí moderní čtečku s využitím více prostředků moderního čtecího zařízení.
+description: V tomto kurzu vytvoříte aplikaci Node.js, která spouští moderní čtečku s využitím více prostředků moderního čtecího zařízení.
 author: skamal
 manager: nitinme
 ms.service: cognitive-services
@@ -9,24 +9,25 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: d4fa61f8290f3bf9e2f065ec841fa94d8ecaaac1
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 214d6d614fcc54a532766854f2e72ac45dbfa8ad
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267201"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407196"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Kurz: Integrace více prostředků moderního čtecího zařízení
 
-V tomto [přehledu](./overview.md)jste se dozvěděli o tom, co je moderní čtečka a jak implementuje osvědčené techniky pro zlepšení porozumění čtení pro jazykové učení, vznikající čtenáři a studenty s rozdíly v učení. V [rychlém startu Node. js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)jste zjistili, jak používat moderní čtečku s jedním prostředkem. V tomto kurzu se dozvíte, jak integrovat více prostředků moderního čtecího zařízení do stejné aplikace. V tomto kurzu se naučíte:
+V tomto [přehledu](./overview.md)jste se dozvěděli o tom, co je moderní čtečka a jak implementuje osvědčené techniky pro zlepšení porozumění čtení pro jazykové učení, vznikající čtenáři a studenty s rozdíly v učení. V [rychlém startuNode.js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)jste zjistili, jak používat moderní čtečku s jedním prostředkem. V tomto kurzu se dozvíte, jak integrovat více prostředků moderního čtecího zařízení do stejné aplikace. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření více prostředků moderního čtecího zařízení v existující skupině prostředků
 > * Spuštění moderního čtečky s využitím několika prostředků
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Postupujte podle pokynů v [rychlém](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) startu a vytvořte webovou aplikaci, která spustí moderní čtečku pomocí NodeJS. V tomto rychlém startu nakonfigurujete jeden prostředek pro moderní čtečku. V tomto kurzu se budeme sestavovat nahoru.
 
@@ -78,7 +79,7 @@ SUBDOMAIN_EUS={YOUR_EASTUS_SUBDOMAIN}
 
 Ujistěte se, že tento soubor nechcete potvrdit do správy zdrojových kódů, protože obsahuje tajné klíče, které by neměly být zveřejněny.
 
-V dalším kroku provedeme úpravu souboru _routes\index.js_ , který jsme vytvořili pro podporu našich více prostředků. Nahraďte jeho obsah následujícím kódem.
+V dalším kroku upravíte soubor _routes\index.js_ , který jsme vytvořili pro podporu našich více prostředků. Nahraďte jeho obsah následujícím kódem.
 
 Stejně jako dřív tento kód vytvoří koncový bod rozhraní API, který získá ověřovací token Azure AD pomocí vašeho hesla instančního objektu. Tentokrát umožňuje uživateli zadat umístění prostředku a předat ho jako parametr dotazu. Pak vrátí objekt obsahující token a odpovídající subdoménu.
 

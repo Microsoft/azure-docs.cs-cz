@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: tracking-python
-ms.openlocfilehash: f89a8caf5b91fb22cca020b1d146905b68c6ed96
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d7093895392cb26e25e8054f0cdcb6870ce9e18a
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002018"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336099"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Kurz: vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Python)
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 > * Pomocí zobrazení můžete spravovat vlastnosti zařízení.
 > * Pro řízení zařízení zavolejte synchronní a asynchronní příkazy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
@@ -312,7 +312,6 @@ Můžete zjistit, jak zařízení reaguje na příkazy a aktualizace vlastností
 
 Jako vývojář pro zařízení teď, když jste se seznámili se základy vytvoření zařízení pomocí Pythonu, je u některých navrhovaných dalších kroků potřeba:
 
-* Naučte se, jak připojit reálné zařízení k IoT Central v tématu [připojení zařízení IoT DevKit k vaší aplikaci Azure IoT Central](./howto-connect-devkit.md) .
 * Přečtěte si, [co jsou šablony zařízení?](./concepts-device-templates.md) Další informace o roli šablon zařízení při implementaci kódu zařízení.
 * Další informace o registraci zařízení pomocí IoT Central a o tom, jak IoT Central zabezpečují připojení zařízení, najdete v tématu věnovaném [připojení k Azure IoT Central](./concepts-get-connected.md) .
 

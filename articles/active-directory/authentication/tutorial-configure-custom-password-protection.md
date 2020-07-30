@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 642082b3fe23e0d007e21409062fe8e777728cc3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a5b2f3a61e2167067bd6e61ee2a36bb1d22950d8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518535"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419661"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Kurz: Konfigurace vlastního zakázaného hesla pro Azure Active Directory ochranu heslem
 
@@ -32,7 +32,7 @@ Co se v tomto kurzu naučíte:
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
-* Funkční tenant Azure AD, který má přiřazenou alespoň zkušební licenci.
+* Funkční tenant Azure AD s povolenou aspoň Azure AD Premium P1 nebo zkušební licencí.
     * V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Účet s oprávněními *globálního správce* .
 * Uživatel bez oprávnění správce s heslem, které znáte, například *testuser*. Pomocí tohoto účtu v tomto kurzu otestujete událost změny hesla.
@@ -77,7 +77,7 @@ Pokud chcete povolit seznam vlastních zakázaných hesel a přidávat do něj p
 
     Určete vlastní hesla, která chcete zakázat, jak je znázorněno v následujícím příkladu.
 
-    [![](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png "Modify the custom banned password list under Authentication Methods in the Azure portal")](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
+    [![V Azure Portal ](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png) upravte vlastní seznam zakázaných hesel v části metody ověřování.](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
 
 1. Ponechte možnost **Povolit ochranu heslem ve službě Windows Server Active Directory** na *ne*.
 1. Pokud chcete povolit vlastní zakázaná hesla a vaše položky, vyberte **Uložit**.
@@ -108,7 +108,7 @@ Chcete-li zobrazit vlastní seznam zakázaných hesel v akci, zkuste změnit hes
 
 Pokud už nechcete používat vlastní seznam zakázaných hesel, který jste nakonfigurovali v rámci tohoto kurzu, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte **Azure Active Directory**a pak v nabídce na levé straně zvolte **zabezpečení** .
 1. V záhlaví nabídky **Spravovat** vyberte **metody ověřování**a pak **ochrana heslem**.
 1. Nastavte možnost **vymáhat vlastní seznam** na *ne*.

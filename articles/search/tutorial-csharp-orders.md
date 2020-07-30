@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: 552f974b99b9430d82596a5a25265bb916cb4e25
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f2182dcfd3db83580dfbec9b4f09479650dd62ca
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262187"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420630"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Kurz: seřazení výsledků hledání pomocí sady .NET SDK
 
@@ -28,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Filtrovat výsledky podle vzdálenosti od zeměpisného bodu
 > * Seřazení výsledků na základě profilu vyhodnocování
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -461,7 +462,7 @@ Pro zobrazení výsledků na základě zeměpisné vzdálenosti je potřeba něk
 
 4. Nyní je třeba tyto koncepce spojit dohromady. Tyto fragmenty kódu jsou nicméně až do našeho kurzu, takže sestavení aplikace založené na mapě je ponecháno jako cvičení pro čtenáře. Pokud chcete tento příklad dále použít, zvažte buď zadání názvu města s poloměrem, nebo vyhledání bodu na mapě a výběr poloměru. Další informace o těchto možnostech najdete v následujících zdrojích informací:
 
-* [Dokumentace ke službě Azure Maps](https://docs.microsoft.com/azure/azure-maps/)
+* [Dokumentace k Azure Maps](https://docs.microsoft.com/azure/azure-maps/)
 * [Najít adresu pomocí služby Azure Maps Search Service](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>Seřazení výsledků na základě profilu vyhodnocování
@@ -956,7 +957,7 @@ Pojďme se podívat na tři příklady profilů vyhodnocování a vzít v úvahu
 
 4. Vyzkoušejte si profil "podle renovated data/hodnocení", abyste viděli, jestli se vám neočekáváte. Pouze nedávno renovated hotely by měli zvýšit zvýšení _aktuálnosti_ .
 
-### <a name="resources"></a>Zdroje a prostředky
+### <a name="resources"></a>Prostředky
 
 Další informace najdete v následujících tématech [přidání profilů vyhodnocování do indexu služby Azure kognitivní hledání](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
 

@@ -210,8 +210,10 @@
     - name: Specifikace šablon
       items:
         - name: Vytvoření s využitím propojených šablon
+          displayName: template specs
           href: template-specs-create-linked.md
         - name: Nasazení ve formě propojené šablony
+          displayName: template specs
           href: template-specs-deploy-linked-template.md
     - name: Rozšířené šablony
       items:
@@ -366,8 +368,8 @@
           href: deploy-to-management-group.md
         - name: Tenant
           href: deploy-to-tenant.md
-        - name: Mezi skupinami prostředků
-          href: cross-resource-group-deployment.md
+        - name: Nasazení napříč obory
+          href: cross-scope-deployment.md
     - name: Zadání parametrů
       items:
         - name: Vytvoření souboru parametrů
@@ -451,7 +453,7 @@
       href: /rest/api/resources/
     - name: Azure PowerShell
       href: /powershell/module/az.resources
-    - name: Rozhraní příkazového řádku Azure
+    - name: Azure CLI
       href: /cli/azure/resource
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.resourcemanager
