@@ -42,8 +42,10 @@
           href: how-to-use-cli.md
         - name: Nastavení instance a ověřování (se skriptem)
           href: how-to-set-up-instance-scripted.md
-        - name: Nastavení instance a ověřování (ruční)
-          href: how-to-set-up-instance-manual.md
+        - name: Nastavení instance a ověřování (CLI)
+          href: how-to-set-up-instance-cli.md
+        - name: Nastavení instance a ověřování (portál)
+          href: how-to-set-up-instance-portal.md
         - name: Zápis ověřovacího kódu aplikace
           href: how-to-authenticate-client.md
     - name: Návrh modelů

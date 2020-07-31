@@ -68,7 +68,9 @@
       href: my-account-portal-privacy-page.md
     - name: Zobrazení nedávné přihlašovací aktivity
       href: my-account-portal-sign-ins-page.md
-- name: Nápověda k bezpečnostním údajům (Preview)
+    - name: Změna nastavení portálu
+      href: my-account-portal-settings.md
+- name: Nápověda k bezpečnostním údajům
   items:
     - name: Přidání bezpečnostních údajů během přihlašování
       href: security-info-setup-signin.md

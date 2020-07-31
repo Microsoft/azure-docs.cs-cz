@@ -29,30 +29,36 @@
           href: cache-python-get-started.md
 - name: Kurzy
   items:
+    - name: ASP.NET
+      items:
+        - name: Použití poskytovatele stavu relace
+          href: cache-aspnet-session-state-provider.md
+        - name: Použití poskytovatele výstupní mezipaměti
+          href: cache-aspnet-output-cache-provider.md
+    - name: Java Spring
+      items:
+        - name: Použití aplikace Spring Boot Initializer
+          href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: Použití ukládání do mezipaměti s tabulkami výsledků
       href: cache-web-app-cache-aside-leaderboard.md
-- name: ukázky
-  items:
-    - name: Ukázky služby Azure Cache for Redis
-      href: cache-redis-samples.md
-    - name: Azure
+    - name: Azure PowerShell
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure CLI
       href: cli-samples.md
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
-    - name: Zabezpečení
-      items:
-        - name: Standardní hodnoty zabezpečení
-          href: security-baseline.md
     - name: Převzetí služeb při selhání a opravy
       href: cache-failover.md
     - name: Osvědčené postupy
       href: cache-best-practices.md
-    - name: Osvědčené postupy architektury pro ukládání do mezipaměti
+    - name: Zabezpečení
+      items:
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
+    - name: Architektura mezipaměti
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: Návody
   items:
@@ -86,18 +92,6 @@
           href: cache-redis-cache-arm-provision.md
         - name: Zřízení webové aplikace s využitím služby Azure Cache for Redis
           href: cache-web-app-arm-with-redis-cache-provision.md
-    - name: Integrace s aplikací
-      items:
-        - name: ASP.NET
-          items:
-            - name: Použití poskytovatele stavu relace
-              href: cache-aspnet-session-state-provider.md
-            - name: Použití poskytovatele výstupní mezipaměti
-              href: cache-aspnet-output-cache-provider.md
-        - name: Java Spring
-          items:
-            - name: Použití aplikace Spring Boot Initializer
-              href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: Spravovat
       items:
         - name: Konfigurace na webu Azure Portal
@@ -136,35 +130,37 @@
           href: cache-how-to-premium-clustering.md
 - name: Referenční informace
   items:
-    - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/resources/samples/?service=redis-cache'
-    - name: Azure PowerShell
-      href: /powershell/module/az.rediscache
-    - name: Rozhraní příkazového řádku Azure
-      href: /cli/azure/redis
+    - name: Ukázky služby Azure Cache for Redis
+      href: cache-redis-samples.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.redis
     - name: Java
       href: /java/api/com.microsoft.azure.management.redis.rediscache
     - name: Klienti Redis
       href: 'https://redis.io/clients'
-    - name: Příkazy Redis
-      href: 'https://redis.io/commands#'
+    - name: Azure PowerShell
+      href: /powershell/module/az.rediscache
+    - name: Azure CLI
+      href: /cli/azure/redis
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/redis/'
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.cache/allversions
+    - name: Integrované služby Azure Policy
+      href: ./policy-samples.md
+    - name: Příkazy Redis
+      href: 'https://redis.io/commands#'
 - name: Zdroje a prostředky
   items:
-    - name: Získávání dovedností pomocí Microsoft Learn
-      href: /learn/browse/?products=azure-redis-cache
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/cache/'
     - name: Nejčastější dotazy ke službě Azure Cache for Redis
       href: cache-faq.md
     - name: Videa
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'
     - name: Stránka s dotazy na Microsoft Q&A
       href: 'https://docs.microsoft.com/answers/topics/azure-cache-redis.html'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cache/'
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/browse/?products=azure-redis-cache
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'

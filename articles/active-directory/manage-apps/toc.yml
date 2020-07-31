@@ -8,6 +8,7 @@
     - name: Co je jednotné přihlašování (SSO)?
       href: what-is-single-sign-on.md
 - name: Rychlé starty
+  expanded: true
   items:
     - name: Zobrazení aplikací
       href: view-applications-portal.md
@@ -30,7 +31,7 @@
     - name: Ukázky Azure PowerShellu pro proxy aplikací
       href: application-proxy-powershell-samples.md
 - name: Koncepty
-  expanded: true
+  expanded: false
   items:
     - name: Osvědčené postupy správy aplikací
       href: application-management-fundamentals.md
@@ -97,195 +98,177 @@
         - name: Porovnání řešení vzdáleného přístupu
           href: application-proxy-migration.md
 - name: Návody
-  expanded: true
+  expanded: false
   items:
-    - name: Cloudové aplikace a jednotné přihlašování
+    - name: Konfigurace jednotného přihlašování
       items:
-        - name: Konfigurace jednotného přihlašování
-          items:
-            - name: Konfigurace jednotného přihlašování pomocí SAML
-              items:
-                - name: Konfigurace jednotného přihlašování pomocí SAML
-                  href: configure-saml-single-sign-on.md
-                - name: Přizpůsobení atributů a deklarací identit uživatelů
-                  items:
-                    - name: Konfigurace deklarace identit skupin
-                      href: /azure/active-directory/hybrid/how-to-connect-fed-group-claims?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Konfigurace deklarací identity rolí
-                      href: /azure/active-directory/develop/active-directory-enterprise-app-role-management?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Přizpůsobení deklarací identity na portálu
-                      href: /azure/active-directory/develop/active-directory-saml-claims-customization?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Přizpůsobení deklarací identity s využitím PowerShellu
-                      href: /azure/active-directory/develop/active-directory-claims-mapping?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Konfigurace volitelných deklarací identity
-                      href: /azure/active-directory/develop/active-directory-optional-claims?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: Konfigurace životnosti tokenů
-                      href: /azure/active-directory/develop/active-directory-configurable-token-lifetimes?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: Konfigurace přihlašování pomocí hesel
-              href: configure-password-single-sign-on-non-gallery-applications.md
-            - name: Konfigurace propojeného přihlašování
-              href: configure-linked-sign-on.md
-        - name: Přiřazení uživatelů a správa přístupu k aplikacím
-          items:
-            - name: Konfigurace souhlasu uživatele
-              href: configure-user-consent.md
-            - name: Správa a vyhodnocení žádostí o souhlas
-              href: manage-consent-requests.md
-            - name: Udělení souhlasu správce v rámci celého tenanta
-              href: grant-admin-consent.md
-            - name: Konfigurace pracovního postupu souhlasu správce (Preview)
-              href: configure-admin-consent-workflow.md
-            - name: Přiřazení uživatele nebo skupiny k aplikaci
-              href: assign-user-or-group-access-portal.md
-            - name: Kontrola oprávnění udělených aplikacím
-              href: manage-application-permissions.md
-            - name: Vytváření kolekcí na portálu Moje aplikace
-              href: access-panel-collections.md
-            - name: Použití samoobslužného přístupu k aplikacím
-              href: access-panel-manage-self-service-access.md
-            - name: Metody pro odebrání přístupu uživatele k aplikaci
-              href: methods-for-removing-user-access.md
-            - name: Odebrání přístupu uživatele nebo skupiny
-              href: remove-user-or-group-access-portal.md
-            - name: Skrytí aplikace před uživatelem
-              href: hide-application-from-user-portal.md
-            - name: Zákaz přihlašování uživatelů
-              href: disable-user-sign-in-portal.md
-            - name: Konfigurace samoobslužného přiřazení aplikace
-              href: manage-self-service-access.md
-            - name: Zjišťování domovské sféry
-              href: configure-authentication-for-federated-users-portal.md
+        - name: Konfigurace jednotného přihlašování pomocí SAML
+          href: configure-saml-single-sign-on.md
+        - name: Konfigurace přihlašování pomocí hesel
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: Konfigurace propojeného přihlašování
+          href: configure-linked-sign-on.md
         - name: Automatizace jednotného přihlašování založeného na SAML s využitím MS Graph API
           href: application-saml-sso-configure-api.md
-        - name: Migrace aplikací do Azure AD
-          items:
-            - name: Prostředky migrace
-              href: migration-resources.md
-            - name: Migrace aplikace ADFS do Azure
-              href: migrate-adfs-apps-to-azure.md
-            - name: Použití sestavy aktivity aplikací AD FS (Preview)
-              href: migrate-adfs-application-activity.md
-        - name: Řešení potíží
-          items:
-            - name: Řešení potíží s přidáváním aplikací
-              items:
-                - name: Běžné problémy – aplikace v galerii
-                  href: adding-gallery-app-common-problems.md
-                - name: Běžné problémy – aplikace mimo galerii
-                  href: adding-non-gallery-app-common-problems.md
-            - name: Řešení potíží s přihlašováním uživatelů
-              items:
-                - name: Neočekávaná výzva k poskytnutí souhlasu
-                  href: application-sign-in-unexpected-user-consent-prompt.md
-                - name: Chyba souhlasu uživatele
-                  href: application-sign-in-unexpected-user-consent-error.md
-                - name: Potíže s přihlašováním z vlastního portálu
-                  href: application-sign-in-other-problem-deeplink.md
-                - name: Potíže s přihlašováním z přístupového panelu
-                  href: application-sign-in-other-problem-access-panel.md
-                - name: Chyba na přihlašovací stránce aplikace
-                  href: application-sign-in-problem-application-error.md
-                - name: Potíže s jednotným přihlašováním pomocí hesla – aplikace mimo galerii
-                  href: application-sign-in-problem-password-sso-non-gallery.md
-                - name: Potíže s jednotným přihlašováním pomocí hesla – aplikace v galerii
-                  href: application-sign-in-problem-password-sso-gallery.md
-                - name: Potíže s přihlášením k aplikaci Microsoftu
-                  href: application-sign-in-problem-first-party-microsoft.md
-                - name: Potíže s federovaným jednotným přihlašováním – aplikace mimo galerii
-                  href: application-sign-in-problem-federated-sso-non-gallery.md
-                - name: Potíže s federovaným jednotným přihlašováním – aplikace v galerii
-                  href: application-sign-in-problem-federated-sso-gallery.md
-                - name: Potíže s vlastní vyvinutou aplikací
-                  href: application-sign-in-problem-custom-dev.md
-            - name: Řešení potíží s jednotným přihlašováním
-              items:
-                - name: Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace v galerii
-                  href: configure-federated-single-sign-on-gallery-applications-problems.md
-                - name: Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace mimo galerii
-                  href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-                - name: Běžné potíže s konfigurací hesel – aplikace v galerii
-                  href: configure-password-single-sign-on-gallery-applications-problems.md
-                - name: Běžné potíže s konfigurací hesel – aplikace mimo galerii
-                  href: configure-password-single-sign-on-non-gallery-applications-problems.md
-            - name: Řešení potíží se seznamem aplikací a přiřazením
-              items:
-                - name: Správa seznamu aplikací pro vašeho tenanta
-                  href: application-types.md
-                - name: Přiřazený neočekávaný uživatel
-                  href: ways-users-get-assigned-to-applications.md
-            - name: Řešení potíží na přístupovém panelu
-              items:
-                - name: Správa rozšíření prohlížeče
-                  href: manage-access-panel-browser-extension.md
-                - name: Aplikace se nezobrazuje
-                  href: access-panel-troubleshoot-application-not-appearing.md
-                - name: Zobrazuje e neočekávaná aplikace
-                  href: access-panel-troubleshoot-unexpected-application.md
-                - name: Nejde se přihlásit
-                  href: access-panel-troubleshoot-web-sign-in-problem.md
-                - name: Chyba při instalaci rozšíření prohlížeče
-                  href: access-panel-extension-problem-installing.md
-                - name: Chyba při využívání samoobslužného přístupu k aplikacím
-                  href: access-panel-troubleshoot-self-service-access.md
-    - name: Proxy aplikací pro místní aplikace
+    - name: Přiřazení uživatelů a správa přístupu k aplikacím
       items:
-        - name: Konfigurace konektorů
+        - name: Konfigurace souhlasu uživatele
+          href: configure-user-consent.md
+        - name: Správa a vyhodnocení žádostí o souhlas
+          href: manage-consent-requests.md
+        - name: Udělení souhlasu správce v rámci celého tenanta
+          href: grant-admin-consent.md
+        - name: Konfigurace pracovního postupu souhlasu správce (Preview)
+          href: configure-admin-consent-workflow.md
+        - name: Přiřazení uživatele nebo skupiny k aplikaci
+          href: assign-user-or-group-access-portal.md
+        - name: Kontrola oprávnění udělených aplikacím
+          href: manage-application-permissions.md
+        - name: Vytváření kolekcí na portálu Moje aplikace
+          href: access-panel-collections.md
+        - name: Použití samoobslužného přístupu k aplikacím
+          href: access-panel-manage-self-service-access.md
+        - name: Metody pro odebrání přístupu uživatele k aplikaci
+          href: methods-for-removing-user-access.md
+        - name: Odebrání přístupu uživatele nebo skupiny
+          href: remove-user-or-group-access-portal.md
+        - name: Skrytí aplikace před uživatelem
+          href: hide-application-from-user-portal.md
+        - name: Zákaz přihlašování uživatelů
+          href: disable-user-sign-in-portal.md
+        - name: Konfigurace samoobslužného přiřazení aplikace
+          href: manage-self-service-access.md
+        - name: Zjišťování domovské sféry
+          href: configure-authentication-for-federated-users-portal.md
+    - name: Migrace správy identit do Azure AD
+      items:
+        - name: Prostředky migrace
+          href: migration-resources.md
+        - name: Migrace aplikace ADFS do Azure
+          href: migrate-adfs-apps-to-azure.md
+        - name: Použití sestavy aktivity aplikací AD FS (Preview)
+          href: migrate-adfs-application-activity.md
+    - name: Konfigurace místních konektorů
+      items:
+        - name: Konfigurace s využitím proxy serverů
+          href: application-proxy-configure-connectors-with-proxy-servers.md
+        - name: Registrace konektoru – bezobslužná instalace
+          href: application-proxy-register-connector-powershell.md
+    - name: Konfigurace přístupu k místním aplikacím
+      items:
+        - name: Konfigurace aplikací pracujících s deklaracemi
+          href: application-proxy-configure-for-claims-aware-applications.md
+        - name: Poskytnutí přístupu k místním rozhraním API pro mobilní a desktopové aplikace
+          href: application-proxy-secure-api-access.md
+        - name: Konfigurace mobilních a desktopových klientských aplikací
+          href: application-proxy-configure-native-client-application.md
+        - name: Konfigurace vlastní domovské stránky
+          href: application-proxy-configure-custom-home-page.md
+        - name: Převod vložených odkazů
+          href: application-proxy-configure-hard-coded-link-translation.md
+        - name: Konfigurace nastavení souborů cookie
+          href: application-proxy-configure-cookie-settings.md
+        - name: Publikování s využitím zástupných znaků
+          href: application-proxy-wildcard.md
+        - name: Odebrání osobních údajů
+          href: application-proxy-remove-personal-data.md
+        - name: Konfigurace vlastní domény
+          href: application-proxy-configure-custom-domain.md
+        - name: Jednotné přihlašování s využitím proxy aplikací
           items:
-            - name: Konfigurace s využitím proxy serverů
-              href: application-proxy-configure-connectors-with-proxy-servers.md
-            - name: Registrace konektoru – bezobslužná instalace
-              href: application-proxy-register-connector-powershell.md
-        - name: Konfigurace aplikačního přístupu
+            - name: Omezené delegování Kerberos (KCD)
+              href: application-proxy-configure-single-sign-on-with-kcd.md
+            - name: Ukládání hesel do trezoru
+              href: application-proxy-configure-single-sign-on-password-vaulting.md
+            - name: Hlavičky
+              href: application-proxy-configure-single-sign-on-with-ping-access.md
+            - name: SAML SSO
+              href: application-proxy-configure-single-sign-on-on-premises-apps.md
+        - name: Zabezpečení aplikací starší verze s využitím kontrolerů doručování aplikací nebo sítí
+          href: secure-hybrid-access.md
+        - name: Názorné postupy publikování
           items:
-            - name: Konfigurace aplikací pracujících s deklaracemi
-              href: application-proxy-configure-for-claims-aware-applications.md
-            - name: Poskytnutí přístupu k místním rozhraním API pro mobilní a desktopové aplikace
-              href: application-proxy-secure-api-access.md
-            - name: Konfigurace mobilních a desktopových klientských aplikací
-              href: application-proxy-configure-native-client-application.md
-            - name: Konfigurace vlastní domovské stránky
-              href: application-proxy-configure-custom-home-page.md
-            - name: Převod vložených odkazů
-              href: application-proxy-configure-hard-coded-link-translation.md
-            - name: Konfigurace nastavení souborů cookie
-              href: application-proxy-configure-cookie-settings.md
-            - name: Publikování s využitím zástupných znaků
-              href: application-proxy-wildcard.md
-            - name: Odebrání osobních údajů
-              href: application-proxy-remove-personal-data.md
-            - name: Konfigurace vlastní domény
-              href: application-proxy-configure-custom-domain.md
-            - name: Jednotné přihlašování s využitím proxy aplikací
-              items:
-                - name: Omezené delegování Kerberos (KCD)
-                  href: application-proxy-configure-single-sign-on-with-kcd.md
-                - name: Ukládání hesel do trezoru
-                  href: application-proxy-configure-single-sign-on-password-vaulting.md
-                - name: Hlavičky
-                  href: application-proxy-configure-single-sign-on-with-ping-access.md
-                - name: SAML SSO
-                  href: application-proxy-configure-single-sign-on-on-premises-apps.md
-            - name: Názorné postupy publikování
-              items:
-                - name: Integrace s proxy aplikací na serveru NDES
-                  href: active-directory-app-proxy-protect-ndes.md
-                - name: Integrace s Azure AD Domain Services
-                  href: /azure/active-directory-domain-services/deploy-azure-app-proxy?context=azure/active-directory/manage-apps/context/manage-apps-context
-                - name: Integrace s Power BI
-                  href: application-proxy-integrate-with-power-bi.md
-                - name: "Integrace s\_řešením Cloud App Security"
-                  href: application-proxy-integrate-with-microsoft-cloud-application-security.md
-                - name: Integrace se Vzdálenou plochou
-                  href: application-proxy-integrate-with-remote-desktop-services.md
-                - name: Integrace se SharePointem
-                  href: application-proxy-integrate-with-sharepoint-server.md
-                - name: Integrace s Teams
-                  href: application-proxy-integrate-with-teams.md
-                - name: Integrace s Tableau
-                  href: application-proxy-integrate-with-tableau.md
-                - name: Integrace s Qlikem
-                  href: application-proxy-qlik.md
-        - name: Řešení potíží s proxy aplikací
+            - name: Integrace s proxy aplikací na serveru NDES
+              href: active-directory-app-proxy-protect-ndes.md
+            - name: Integrace s Azure AD Domain Services
+              href: /azure/active-directory-domain-services/deploy-azure-app-proxy?context=azure/active-directory/manage-apps/context/manage-apps-context
+            - name: Integrace s Power BI
+              href: application-proxy-integrate-with-power-bi.md
+            - name: "Integrace s\_řešením Cloud App Security"
+              href: application-proxy-integrate-with-microsoft-cloud-application-security.md
+            - name: Integrace se Vzdálenou plochou
+              href: application-proxy-integrate-with-remote-desktop-services.md
+            - name: Integrace se SharePointem
+              href: application-proxy-integrate-with-sharepoint-server.md
+            - name: Integrace s Teams
+              href: application-proxy-integrate-with-teams.md
+            - name: Integrace s Tableau
+              href: application-proxy-integrate-with-tableau.md
+            - name: Integrace s Qlikem
+              href: application-proxy-qlik.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží s přidáváním aplikací
+          items:
+            - name: Běžné problémy – aplikace v galerii
+              href: adding-gallery-app-common-problems.md
+            - name: Běžné problémy – aplikace mimo galerii
+              href: adding-non-gallery-app-common-problems.md
+        - name: Řešení potíží s přihlašováním uživatelů
+          items:
+            - name: Neočekávaná výzva k poskytnutí souhlasu
+              href: application-sign-in-unexpected-user-consent-prompt.md
+            - name: Chyba souhlasu uživatele
+              href: application-sign-in-unexpected-user-consent-error.md
+            - name: Potíže s přihlašováním z vlastního portálu
+              href: application-sign-in-other-problem-deeplink.md
+            - name: Potíže s přihlašováním z přístupového panelu
+              href: application-sign-in-other-problem-access-panel.md
+            - name: Chyba na přihlašovací stránce aplikace
+              href: application-sign-in-problem-application-error.md
+            - name: Potíže s jednotným přihlašováním pomocí hesla – aplikace mimo galerii
+              href: application-sign-in-problem-password-sso-non-gallery.md
+            - name: Potíže s jednotným přihlašováním pomocí hesla – aplikace v galerii
+              href: application-sign-in-problem-password-sso-gallery.md
+            - name: Potíže s přihlášením k aplikaci Microsoftu
+              href: application-sign-in-problem-first-party-microsoft.md
+            - name: Potíže s federovaným jednotným přihlašováním – aplikace mimo galerii
+              href: application-sign-in-problem-federated-sso-non-gallery.md
+            - name: Potíže s federovaným jednotným přihlašováním – aplikace v galerii
+              href: application-sign-in-problem-federated-sso-gallery.md
+            - name: Potíže s vlastní vyvinutou aplikací
+              href: application-sign-in-problem-custom-dev.md
+        - name: Řešení potíží s jednotným přihlašováním
+          items:
+            - name: Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace v galerii
+              href: configure-federated-single-sign-on-gallery-applications-problems.md
+            - name: Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace mimo galerii
+              href: configure-federated-single-sign-on-non-gallery-applications-problems.md
+            - name: Běžné potíže s konfigurací hesel – aplikace v galerii
+              href: configure-password-single-sign-on-gallery-applications-problems.md
+            - name: Běžné potíže s konfigurací hesel – aplikace mimo galerii
+              href: configure-password-single-sign-on-non-gallery-applications-problems.md
+        - name: Řešení potíží se seznamem aplikací a přiřazením
+          items:
+            - name: Správa seznamu aplikací pro vašeho tenanta
+              href: application-types.md
+            - name: Přiřazený neočekávaný uživatel
+              href: ways-users-get-assigned-to-applications.md
+        - name: Řešení potíží na přístupovém panelu
+          items:
+            - name: Správa rozšíření prohlížeče
+              href: manage-access-panel-browser-extension.md
+            - name: Aplikace se nezobrazuje
+              href: access-panel-troubleshoot-application-not-appearing.md
+            - name: Zobrazuje e neočekávaná aplikace
+              href: access-panel-troubleshoot-unexpected-application.md
+            - name: Nejde se přihlásit
+              href: access-panel-troubleshoot-web-sign-in-problem.md
+            - name: Chyba při instalaci rozšíření prohlížeče
+              href: access-panel-extension-problem-installing.md
+            - name: Chyba při využívání samoobslužného přístupu k aplikacím
+              href: access-panel-troubleshoot-self-service-access.md
+        - name: Řešení potíží s místními aplikacemi
           items:
             - name: Řešení potíží s proxy aplikací
               href: application-proxy-troubleshoot.md
@@ -319,10 +302,6 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: Problémy s CORS v proxy aplikací
               href: application-proxy-understand-cors-issues.md
-    - name: Zabezpečený hybridní přístup (cloud a místní prostředí)
-      items:
-        - name: Zabezpečení aplikací starší verze s využitím kontrolerů doručování aplikací nebo sítí
-          href: secure-hybrid-access.md
 - name: Referenční informace
   items:
     - name: Nejčastější dotazy k proxy aplikací

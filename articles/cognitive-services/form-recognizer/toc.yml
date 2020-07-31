@@ -42,6 +42,8 @@
   items:
     - name: Použití Rozpoznávání formulářů se službou Cognitive Search
       href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
+    - name: Použití Rozpoznávání formulářů se službou AI Builder
+      href: tutorial-ai-builder.md
 - name: Návody
   items:
     - name: Vytvoření trénovací sady dat

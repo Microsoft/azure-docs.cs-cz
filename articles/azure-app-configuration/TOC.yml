@@ -4,6 +4,8 @@
   items:
     - name: Služba Azure App Configuration
       href: overview.md
+    - name: Osvědčené postupy
+      href: howto-best-practices.md
     - name: Nejčastější dotazy
       href: faq.md
 - name: Rychlé starty
@@ -34,26 +36,32 @@
           href: quickstart-feature-flag-spring-boot.md
 - name: Kurzy
   items:
-    - name: Povolení dynamické konfigurace v ASP.NET Core
-      href: enable-dynamic-configuration-aspnet-core.md
-    - name: Povolení dynamické konfigurace v aplikaci .NET Core
-      href: enable-dynamic-configuration-dotnet-core.md
-    - name: Povolení dynamické konfigurace v .NET Framework
-      href: enable-dynamic-configuration-dotnet.md
-    - name: Povolení dynamické konfigurace v Azure Functions
-      href: enable-dynamic-configuration-azure-functions-csharp.md
-    - name: Povolení dynamické konfigurace ve Spring Bootu
-      href: enable-dynamic-configuration-java-spring-app.md
-    - name: Použití příznaků funkcí v aplikaci .NET Core
-      href: use-feature-flags-dotnet-core.md
-    - name: Použití příznaků funkcí v aplikaci Spring Boot
-      href: use-feature-flags-spring-boot.md
+    - name: Povolení dynamické konfigurace
+      items:
+        - name: Jádro ASP.NET
+          href: enable-dynamic-configuration-aspnet-core.md
+        - name: .NET Core
+          href: enable-dynamic-configuration-dotnet-core.md
+        - name: .NET Framework
+          href: enable-dynamic-configuration-dotnet.md
+        - name: Azure Functions
+          href: enable-dynamic-configuration-azure-functions-csharp.md
+        - name: Spring Boot
+          href: enable-dynamic-configuration-java-spring-app.md
+    - name: Použití příznaků funkcí
+      items:
+        - name: .NET Core
+          href: use-feature-flags-dotnet-core.md
+        - name: Spring Boot
+          href: use-feature-flags-spring-boot.md
     - name: Správa příznaků funkcí
       href: manage-feature-flags.md
-    - name: Použití referencí Key Vaultu v ASP.NET Core
-      href: use-key-vault-references-dotnet-core.md
-    - name: Použití referencí Key Vaultu v aplikaci Spring Boot
-      href: use-key-vault-references-spring-boot.md
+    - name: Použití odkazů na službu Key Vault
+      items:
+        - name: Jádro ASP.NET
+          href: use-key-vault-references-dotnet-core.md
+        - name: Spring Boot
+          href: use-key-vault-references-spring-boot.md
     - name: Integrace s kanálem CI/CD
       href: integrate-ci-cd-pipeline.md
     - name: Integrace s nasazením Kubernetes s využitím Helmu
@@ -105,8 +113,6 @@
       href: howto-app-configuration-event.md
     - name: Automatické zálohování úložiště konfigurace
       href: howto-backup-config-store.md
-    - name: Osvědčené postupy
-      href: howto-best-practices.md
 - name: Referenční informace
   items:
     - name: Konfigurace

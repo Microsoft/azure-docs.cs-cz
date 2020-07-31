@@ -304,6 +304,8 @@
               items:
                 - name: Zobrazení rezervací a využití
                   href: reservations/view-reservations.md?toc=/azure/cost-management-billing/toc.json
+                - name: Zobrazení rezervací jako CSP
+                  href: reservations/how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/toc.json
                 - name: Správa rezervací
                   href: reservations/manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/toc.json
                 - name: Výměna a refundace rezervací

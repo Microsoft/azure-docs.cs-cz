@@ -206,11 +206,11 @@
           href: event-hubs-management-libraries.md
     - name: Zabezpečení
       items:
-        - name: Konfigurace brány firewall protokolu P
+        - name: Povolení přístupu z konkrétních IP adres
           href: event-hubs-ip-filtering.md
-        - name: Konfigurace koncových bodů služby pro virtuální síť
+        - name: Povolení přístupu z konkrétních virtuálních sítí
           href: event-hubs-service-endpoints.md
-        - name: Konfigurace privátních koncových bodů
+        - name: Povolení přístupu prostřednictvím privátních koncových bodů
           href: private-link-service.md
         - name: Konfigurace klíčů spravovaných zákazníkem
           href: configure-customer-managed-key.md

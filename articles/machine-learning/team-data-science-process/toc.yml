@@ -95,7 +95,7 @@
               href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
             - name: Začínáme používat R Server ve službě HDInsight
               href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
-        - name: Pracovní prostor služby Azure Machine Learning
+        - name: Pracovní prostor Machine Learning Studio (classic)
           href: /azure/machine-learning/studio/create-workspace?context=azure/machine-learning/team-data-science-process/context/ml-context
     - name: Analýza obchodních potřeb
       items:
@@ -192,8 +192,6 @@
       href: deploy-models-in-production.md
 - name: Související
   items:
-    - name: Azure Machine Learning
-      href: ../
     - name: Cognitive Services
       href: 'https://docs.microsoft.com/azure/cognitive-services/'
     - name: Detekce anomálií

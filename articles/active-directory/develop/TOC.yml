@@ -512,6 +512,8 @@
           href: active-directory-claims-mapping.md
         - name: Konfigurace volitelných deklarací identity
           href: active-directory-optional-claims.md
+        - name: Použití atributů rozšíření schématu adresáře v deklaracích identity
+          href: active-directory-schema-extensions.md
         - name: Konfigurace životnosti tokenů
           href: active-directory-configurable-token-lifetimes.md
         - name: Zpracování změn souborů cookie SameSite v prohlížeči Chrome

@@ -458,12 +458,15 @@
         - name: Parameterizovaný dotaz
           displayName: 'parameterized query, parameterized, parameter, parameters'
           href: sql-query-parameterized-queries.md
-        - name: Technologie LINQ to SQL
-          displayName: 'linq, .NET'
-          href: sql-query-linq-to-sql.md
         - name: Spouštění dotazů SQL
           displayName: 'query performance, query execution'
           href: sql-query-execution.md
+        - name: Stránkování
+          displayName: 'page, paging, continuation, token, pagination'
+          href: sql-query-pagination.md
+        - name: Technologie LINQ to SQL
+          displayName: 'linq, .NET'
+          href: sql-query-linq-to-sql.md
     - name: Práce s účtem Azure Cosmos
       href: account-overview.md
     - name: Kontejnery a položky
@@ -671,7 +674,7 @@
             - name: Správa pomocí prostředí PowerShell
               href: powershell-samples-cassandra.md
             - name: Správa s využitím rozhraní příkazového řádku Azure
-              href: cli-samples-cassandra.md
+              href: cli-samples.md
     - name: Rozhraní MongoDB API
       items:
         - name: Přehled
@@ -765,7 +768,7 @@
             - name: Správa pomocí prostředí PowerShell
               href: powershell-samples-mongodb.md
             - name: Správa s využitím rozhraní příkazového řádku Azure
-              href: cli-samples-mongodb.md
+              href: cli-samples.md
             - name: Řešení běžných potíží
               href: mongodb-troubleshoot.md
     - name: Rozhraní Gremlin API
@@ -825,7 +828,7 @@
             - name: Správa pomocí prostředí PowerShell
               href: powershell-samples-gremlin.md
             - name: Správa s využitím rozhraní příkazového řádku Azure
-              href: cli-samples-gremlin.md
+              href: cli-samples.md
         - name: Referenční informace
           items:
             - name: Hlavičky odpovědi
@@ -896,7 +899,7 @@
             - name: Správa pomocí prostředí PowerShell
               href: powershell-samples-table.md
             - name: Správa s využitím rozhraní příkazového řádku Azure
-              href: cli-samples-table.md
+              href: cli-samples.md
         - name: Referenční informace
           items:
             - name: .NET
