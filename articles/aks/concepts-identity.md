@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 075837d0c382f5bc6f436a63dfe227c17f0a57a3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f3eacbe6f93388756ce26324babeb2ca38bd09a5
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128654"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87438899"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Možnosti identit a přístupu pro Azure Kubernetes Service (AKS)
 
@@ -74,8 +74,6 @@ Zabezpečení clusterů AKS se dá zvýšit integrací Azure Active Directory (A
 S integrovanými clustery AKS Azure AD můžete uživatelům nebo skupinám udělit přístup k prostředkům Kubernetes v rámci oboru názvů nebo napříč clusterem. Aby mohl `kubectl` uživatel získat kontext konfigurace, může spustit příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] . Když uživatel potom komunikuje s clusterem AKS s `kubectl` , zobrazí se jim výzva k přihlášení pomocí přihlašovacích údajů Azure AD. Tento přístup poskytuje jeden zdroj pro správu uživatelských účtů a přihlašovací údaje k heslům. Uživatel má přístup pouze k prostředkům definovaným správcem clusteru.
 
 Ověřování Azure AD je k dispozici pro clustery AKS s OpenID Connect. OpenID Connect je vrstva identity postavená nad protokolem OAuth 2,0. Další informace o OpenID připojení najdete v dokumentaci k [otevřenému ID Connect][openid-connect]. V rámci clusteru Kubernetes se ověřování pomocí [tokenu Webhooku][webhook-token-docs] používá k ověření ověřovacích tokenů. Ověřování tokenu Webhooku je nakonfigurované a spravované jako součást clusteru AKS.
-
-V rámci clusteru Kubernetes se ověřování pomocí tokenu Webhooku používá k ověření ověřovacích tokenů. Ověřování tokenu Webhooku je nakonfigurované a spravované jako součást clusteru AKS.
 
 ### <a name="webhook-and-api-server"></a>Webhook a Server API
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 07/30/2020
 ms.author: absha
-ms.openlocfilehash: 20d1dfea251fdfd0bd6e8432d1ea0c7af7284cb5
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 9315884db30c053d86c889ff3b45aaea17d48b17
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428179"
+ms.locfileid: "87438915"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace Application Gateway
 
@@ -122,11 +122,19 @@ V tomto scénáři použijte skupin zabezpečení sítě v podsíti Application 
 
 ## <a name="front-end-ip"></a>Front-end IP adresa
 
-Aplikační bránu můžete nakonfigurovat tak, aby měla veřejnou IP adresu, soukromou IP adresu nebo obojí. Veřejná IP adresa se vyžaduje při hostování back-endu, ke kterému musí klienti přistupovat přes Internet prostřednictvím internetové virtuální IP adresy (VIP). 
+Aplikační bránu můžete nakonfigurovat tak, aby měla veřejnou IP adresu, soukromou IP adresu nebo obojí. Veřejná IP adresa se vyžaduje při hostování back-endu, ke kterému musí klienti přistupovat přes Internet prostřednictvím internetové virtuální IP adresy (VIP).
+
+> [!NOTE]
+> Application Gateway V2 v současné době nepodporuje pouze režim privátních IP adres. Podporuje následující kombinace:
+>* Privátní IP adresa a veřejná IP adresa
+>* Jenom veřejná IP adresa
+>
+> Další informace najdete v článku [Nejčastější dotazy k Application Gateway](application-gateway-faq.md#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address).
+
 
 Veřejná IP adresa není nutná pro interní koncový bod, který není vystavený pro Internet. To se říká jako koncový bod *interního nástroje pro vyrovnávání zatížení* (interního nástroje) nebo privátní IP adresa front-endu. Služba Application Gateway interního nástroje je užitečná pro interní obchodní aplikace, které nejsou přístupné pro Internet. Je to také užitečné pro služby a vrstvy v rámci hranice zabezpečení, které nejsou přístupné z Internetu, ale vyžadují distribuci zatížení kruhového dotazování, vytrvalost relace nebo ukončení protokolu TLS.
 
-Je podporovaná jenom jedna veřejná IP adresa nebo jedna privátní IP adresa. Při vytváření aplikační brány zvolíte front-end IP adresu.
+Podporovaná je jenom jedna veřejná IP adresa nebo jedna privátní IP adresa. Při vytváření aplikační brány zvolíte front-end IP adresu.
 
 - U veřejné IP adresy můžete vytvořit novou veřejnou IP adresu nebo použít stávající veřejnou IP adresu ve stejném umístění jako Aplikační brána. Další informace najdete v tématu [statická a dynamická veřejná IP adresa](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
 

@@ -4,15 +4,15 @@ description: Místní brána je nutná v případě, že se Server Analysis Serv
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 648646b6f973762245c344cd2629a874a219b170
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76310148"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87438820"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s místní bránou dat
 
@@ -28,12 +28,12 @@ V případě Azure Analysis Services se při prvním procesu čtyř částí zí
 
 - **Vytvoření prostředku brány v Azure** – v tomto kroku vytvoříte prostředek brány v Azure.
 
-- **Připojte své servery k prostředku brány** – Jakmile budete mít prostředek brány, můžete k němu začít propojovat servery. Můžete propojit víc serverů a dalších prostředků, pokud jsou ve stejné oblasti.
+- **Připojte prostředek brány k serverům** – Jakmile máte prostředek brány, můžete k němu začít připojovat servery. Můžete propojit víc serverů a dalších prostředků, pokud jsou ve stejné oblasti.
 
 
 
-## <a name="how-it-works"></a><a name="how-it-works"> </a>Jak to funguje
-Bránu, kterou nainstalujete do počítače ve vaší organizaci, se spouští jako služba systému Windows, místní **Brána dat**. Tato místní služba je zaregistrovaná v cloudové službě brány přes Azure Service Bus. Pak vytvoříte prostředek místní brány dat pro vaše předplatné Azure. Vaše Azure Analysis Services servery se pak připojí k vašemu prostředku brány Azure. Když se modely na vašem serveru potřebují připojovat k místním zdrojům dat pro dotazy nebo zpracování, dotaz a tok dat procházejí prostředek brány, Azure Service Bus, místní služby místní brány dat a zdroji dat. 
+## <a name="how-it-works"></a>Jak to funguje
+Bránu, kterou nainstalujete do počítače ve vaší organizaci, se spouští jako služba systému Windows, místní **Brána dat**. Tato místní služba je zaregistrovaná v cloudové službě brány přes Azure Service Bus. Pak vytvoříte prostředek místní brány dat pro předplatné Azure. Vaše Azure Analysis Services servery se pak připojí k vašemu prostředku brány Azure. Když se modely na vašem serveru potřebují připojovat k místním zdrojům dat pro dotazy nebo zpracování, dotaz a tok dat procházejí prostředek brány, Azure Service Bus, místní služby místní brány dat a zdroji dat. 
 
 ![Jak to funguje](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
@@ -50,6 +50,10 @@ Tok dotazů a dat:
 
 Při instalaci pro prostředí Azure Analysis Services je důležité postupovat podle kroků popsaných v tématu [instalace a konfigurace místní brány dat pro Azure Analysis Services](analysis-services-gateway-install.md). Tento článek je určený pro Azure Analysis Services. Obsahuje další kroky potřebné k nastavení místního prostředku brány dat v Azure a připojení serveru Azure Analysis Services k prostředku.
 
+## <a name="connecting-to-a-gateway-resource-in-a-different-subscription"></a>Připojení k prostředku brány v jiném předplatném
+
+Doporučuje se vytvořit prostředek brány Azure ve stejném předplatném jako váš server. Servery ale můžete nakonfigurovat tak, aby se připojovaly k prostředku brány v jiném předplatném. Připojení k prostředku brány v jiném předplatném není podporované při konfiguraci stávajícího nastavení serveru nebo při vytváření nového serveru na portálu, ale dá se nakonfigurovat pomocí PowerShellu. Další informace najdete v tématu [připojení prostředku brány k serveru](analysis-services-gateway-install.md#connect-gateway-resource-to-server).
+
 ## <a name="ports-and-communication-settings"></a>Nastavení portů a komunikace
 
 Brána vytvoří odchozí připojení k Azure Service Bus. Komunikuje na odchozích portech: TCP 443 (výchozí), 5671, 5672, 9350 až 9354.  Příchozí porty brána nevyžaduje.
@@ -58,7 +62,7 @@ Možná budete muset v bráně firewall zahrnout IP adresy pro vaši oblast dat.
 
 Níže jsou uvedené plně kvalifikované názvy domény používané bránou.
 
-| Názvy domén | Odchozí porty | Description |
+| Názvy domén | Odchozí porty | Popis |
 | --- | --- | --- |
 | *.powerbi.com |80 |Ke stažení instalačního programu se používá HTTP. |
 | *.powerbi.com |443 |HTTPS |
@@ -71,9 +75,9 @@ Níže jsou uvedené plně kvalifikované názvy domény používané bránou.
 | login.microsoftonline.com |443 |HTTPS |
 | *.msftncsi.com |443 |Používá se k otestování připojení k internetu v případě, že je brána nedostupná pro službu Power BI. |
 | *.microsoftonline-p.com |443 |Používá se k ověření v závislosti na konfiguraci. |
-| dc.services.visualstudio.com  |443 |Používá se v AppInsights ke shromáždění telemetrie. |
+| dc.services.visualstudio.com    |443 |Používá se v AppInsights ke shromáždění telemetrie. |
 
-### <a name="forcing-https-communication-with-azure-service-bus"></a><a name="force-https"></a>Vynucení komunikace přes protokol HTTPS s Azure Service Busem
+### <a name="forcing-https-communication-with-azure-service-bus"></a>Vynucení komunikace přes protokol HTTPS s Azure Service Busem
 
 Bráně můžete vynutit komunikaci s Azure Service Bus pomocí protokolu HTTPS místo přímého protokolu TCP; Nicméně to může významně snížit výkon. Soubor *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* můžete upravit změnou hodnoty z `AutoDetect` na `Https` . Tento soubor se obvykle nachází v adresáři *C:\Program Files\On-premises data Gateway*.
 

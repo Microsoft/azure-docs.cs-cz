@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: df318fea4960601dcbfa84149fdc47bedc9104a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2a1a5f3eaf79a345b0d33f43d260fe6aa15236b
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079821"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439259"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Řešení obecné chyby protokolu RDP na virtuálním počítači Azure
 
@@ -81,7 +81,7 @@ Než budete postupovat podle těchto kroků, pořiďte si snímek disku s opera�
 1. Ověřte, jestli je protokol RDP zakázaný pomocí zásad skupiny.
 
     ```
-    REM Get the group policy 
+    REM Get the group policy setting
     reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
     ```
     Pokud zásada skupiny uvádí, že je protokol RDP zakázán (hodnota fDenyTSConnections je 0x1), spusťte následující příkaz, který povolí službu TermService. Pokud se klíč registru nenajde, není pro zakázání protokolu RDP nakonfigurovaná žádná zásada skupiny. Můžete přejít k dalšímu kroku.

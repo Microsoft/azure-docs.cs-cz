@@ -4,25 +4,25 @@ description: V tomto kurzu vyvíjíte funkci Azure Function jako modul IoT Edge 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/25/2019
+ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: f909ca12ce080fc5d1241bcc649c041361e405a7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d9b9ba3a8092992c9ebca9b3242223213b75ad80
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80421166"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439674"
 ---
-# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Kurz: nasazení služby Azure Functions jako modulů IoT Edge
+# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Kurz: nasazení Azure Functions jako IoT Edgech modulů
 
-Pomocí služby Azure Functions můžete nasadit kód, který implementuje vaši obchodní logiku přímo do zařízení Azure IoT Edge. Tento kurz vás provedete vytvořením a nasazením funkce Azure Functions, která filtruje data senzorů na simulovaném zařízení IoT Edge. Budete používat simulované zařízení IoT Edge, které jste vytvořili v rychlých startech o nasazení Azure IoT Edge na simulované zařízení ve [Windows](quickstart.md) nebo [Linuxu](quickstart-linux.md). V tomto kurzu se naučíte:
+Pomocí služby Azure Functions můžete nasadit kód, který implementuje vaši obchodní logiku přímo do zařízení Azure IoT Edge. Tento kurz vás provede vytvořením a nasazením funkce Azure, která filtruje data senzorů na simulovaném IoT Edgem zařízení. Budete používat simulované zařízení IoT Edge, které jste vytvořili v rychlých startech o nasazení Azure IoT Edge na simulované zařízení ve [Windows](quickstart.md) nebo [Linuxu](quickstart-linux.md). V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
-> * Použít Visual Studio Code k vytvoření funkce Azure Functions.
+> * Pomocí Visual Studio Code vytvořit funkci Azure Functions.
 > * Použít VS Code a Docker k vytvoření image Dockeru a jejímu publikování do registru kontejneru.
 > * Nasadit modul z registru kontejneru do zařízení IoT Edge.
 > * Zobrazit filtrovaná data.
@@ -32,11 +32,11 @@ Pomocí služby Azure Functions můžete nasadit kód, který implementuje vaši
 ![Diagram – architektura kurzu: fáze a nasazení modulu funkcí](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
 
-Funkce Azure Functions, kterou v tomto kurzu vytvoříte, filtruje teplotní údaje generované zařízením. Tato funkce pošle zprávy dál do Azure IoT Hubu jen v případě, že teplota překročí zadanou prahovou hodnotu.
+Funkce Azure, kterou vytvoříte v tomto kurzu, filtruje data o teplotě vygenerovaná vaším zařízením. Funkce odesílá zprávy do Azure IoT Hub pouze v případě, že je teplota nad určenou prahovou hodnotou.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
@@ -53,7 +53,7 @@ Pokud chcete vytvořit modul IoT Edge v nástroji s Azure Functions, nainstalujt
 
 ## <a name="create-a-function-project"></a>Vytvoření projektu funkce
 
-Nástroje Azure IoT Tools pro Visual Studio Code, které jste nainstalovali v požadavcích, poskytují možnosti správy i některé šablony kódu. V této části pomocí Visual Studio Code vytvoříte řešení IoT Edge obsahující funkci Azure Functions.
+Nástroje Azure IoT Tools pro Visual Studio Code, které jste nainstalovali v požadavcích, poskytují možnosti správy i některé šablony kódu. V této části použijete Visual Studio Code k vytvoření řešení IoT Edge obsahujícího funkci Azure Functions.
 
 ### <a name="create-a-new-project"></a>Vytvoření nového projektu
 
@@ -61,23 +61,25 @@ Vytvořte šablonu řešení Functions v jazyce C#, kterou lze přizpůsobit vla
 
 1. Na vývojovém počítači otevřete Visual Studio Code.
 
-2. Otevřete paletu příkazů vs Code výběrem možnosti **Zobrazit** > **paletu příkazů**.
+2. Otevřete paletu příkazů vs Code výběrem možnosti **Zobrazit**  >  **paletu příkazů**.
 
 3. Na paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: Nové řešení IoT Edge). Vytvořte řešení podle výzev, které se zobrazí na paletě příkazů.
 
    | Pole | Hodnota |
    | ----- | ----- |
-   | Vyberte složku | Zvolte umístění na vývojovém počítači, ve kterém VS Code vytvoří soubory řešení. |
+   | Vybrat složku | Zvolte umístění na vývojovém počítači, ve kterém VS Code vytvoří soubory řešení. |
    | Zadejte název řešení | Zadejte popisný název vašeho řešení, třeba **FunctionSolution**, nebo přijměte výchozí nastavení. |
    | Vyberte šablonu modulu | Vyberte možnost **Azure Functions-C#**. |
    | Zadejte název modulu | Zadejte název modulu **CSharpFunction**. |
-   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněná z předchozího kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. Výsledný řetězec vypadá jako \<název\>registru. azurecr.IO/CSharpFunction. |
+   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněná z předchozího kroku. Položku **localhost: 5000** nahraďte hodnotou **přihlašovacího serveru** z služby Azure Container Registry. Přihlašovací server můžete načíst ze stránky přehled v registru kontejneru v Azure Portal. Výsledný řetězec vypadá jako \<registry name\> . azurecr.IO/CSharpFunction. |
 
    ![Zadání úložiště imagí Dockeru](./media/tutorial-deploy-function/repository.png)
 
 ### <a name="add-your-registry-credentials"></a>Přidání přihlašovacích údajů registru
 
 V souboru prostředí jsou uložené přihlašovací údaje pro registr kontejneru, které soubor sdílí s modulem runtime IoT Edge. Modul runtime tyto přihlašovací údaje potřebuje k přetažení vašich privátních imagí do zařízení IoT Edge.
+
+Rozšíření IoT Edge se pokusí načíst přihlašovací údaje registru kontejneru z Azure a naplnit je do souboru prostředí. Zkontrolujte, jestli jsou vaše přihlašovací údaje už zahrnuté. Pokud ne, přidejte je nyní:
 
 1. V průzkumníku VS Code otevřete soubor .env.
 2. Aktualizujte pole hodnotami **uživatelské jméno** a **heslo**, které jste zkopírovali z registru kontejneru Azure.
@@ -95,7 +97,7 @@ V současné době Visual Studio Code může vyvíjet moduly C pro zařízení s
 
 Pojďme přidat nějaký další kód, aby modul zpracoval zprávy na hranici před jejich přesměrováním na IoT Hub.
 
-1. V Visual Studio Code otevřete **moduly** > **CSharpFunction** > **CSharpFunction.cs**.
+1. V Visual Studio Code otevřete **moduly**  >  **CSharpFunction**  >  **CSharpFunction.cs**.
 
 1. Obsah souboru **CSharpFunction.cs** nahraďte následujícím kódem. Tento kód obdrží telemetrii o teplotě okolí a počítače a přesměruje zprávu na IoT Hub, pokud je teplota počítače nad stanovenou prahovou hodnotou.
 
@@ -170,32 +172,27 @@ Pojďme přidat nějaký další kód, aby modul zpracoval zprávy na hranici p�
    }
    ```
 
-1. Uložte soubor.
+1. Soubor uložte.
 
-## <a name="build-your-iot-edge-solution"></a>Vytvoření řešení IoT Edge
+## <a name="build-and-push-your-iot-edge-solution"></a>Sestavení a nabízení IoT Edge řešení
 
 V předchozí části jste vytvořili řešení IoT Edge a upravili **CSharpFunction** pro filtrování zpráv s nahlášenými teplotami počítačů pod přijatelnou prahovou hodnotou. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
 
-V této části zadáte přihlašovací údaje pro váš registr kontejneru za sekundu (první byl v souboru **. env** vašeho řešení IoT Edge), a to tak, že se přihlásíte místně z vývojového počítače, aby Visual Studio Code mohl do registru vložit image.
+1. Otevřete vs Code Integrated Terminal výběrem možnosti **Zobrazit**  >  **terminál**.
 
-1. Otevřete vs Code Integrated Terminal výběrem možnosti **Zobrazit** > **terminál**.
+2. Přihlaste se k Docker zadáním následujícího příkazu v terminálu. Přihlaste se pomocí uživatelského jména, hesla a přihlašovacího serveru ze služby Azure Container Registry. Tyto hodnoty můžete načíst z oddílu **přístupové klíče** v registru v Azure Portal.
 
-2. Přihlaste se k registru kontejneru zadáním následujícího příkazu v integrovaném terminálu. Použijte uživatelské jméno a přihlašovací server, které jste předtím zkopírovali ze služby Azure Container Registry.
+   ```bash
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
+   ```
 
-    ```csh/sh
-    docker login -u <ACR username> <ACR login server>
-    ```
+   Může se zobrazit upozornění zabezpečení, které doporučuje použití nástroje `--password-stdin` . I když se tento osvědčený postup doporučuje u produkčních scénářů, je mimo rozsah tohoto kurzu. Další informace najdete v tématu přihlašovací Reference k [Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
-    Po zobrazení výzvy k zadání hesla vložte heslo (nebude viditelné v okně terminálu) pro váš registr kontejneru a stiskněte klávesu **ENTER**.
+3. V Průzkumníku VS Code klikněte pravým tlačítkem na **deployment.template.jsna** soubor a vyberte **sestavení a nabízené IoT Edge řešení**.
 
-    ```csh/sh
-    Password: <paste in the ACR password and press enter>
-    Login Succeeded
-    ```
+   Příkaz Build a push spustí tři operace. Nejprve vytvoří novou složku v řešení s názvem **config** , která obsahuje úplný manifest nasazení, který vychází z informací v šabloně nasazení a dalších souborů řešení. Za druhé se spustí `docker build` sestavení image kontejneru na základě vhodné souboru Dockerfile pro vaši cílovou architekturu. Pak se spustí a nahraje `docker push` úložiště imagí do registru kontejneru.
 
-3. V průzkumníku VS Code klikněte pravým tlačítkem na soubor deployment.template.json a vyberte **Build and Push IoT Edge solution** (Vytvořit a odeslat řešení IoT Edge).
-
-Když Visual Studio Code vystavíte řešení, nejprve převezme informace v šabloně nasazení a vygeneruje soubor Deployment. JSON v nové složce s názvem **config**. Potom spustí dva příkazy v integrovaném terminálu: `docker build` a. `docker push` Příkaz Build vytvoří kód a kontejnerizuje funkce. Potom příkaz push vloží kód do registru kontejneru, který jste zadali při inicializaci řešení.
+   Tento proces může trvat několik minut poprvé, ale při příštím spuštění příkazů je rychlejší.
 
 ## <a name="view-your-container-image"></a>Zobrazení image kontejneru
 
@@ -208,15 +205,17 @@ Po odeslání image kontejneru do registru kontejneru zobrazí Visual Studio Cod
 
 ## <a name="deploy-and-run-the-solution"></a>Nasazení a spuštění řešení
 
-K nasazení modulu funkce na zařízení IoT Edge můžete použít web Azure Portal, jako jste to udělali v rychlých startech. Moduly však můžete také nasadit a monitorovat z editoru Visual Studio Code. V následujících částech se používají nástroje Azure IoT pro VS Code, které jsou uvedené v části požadavky. Pokud jste to ještě neudělali, nainstalujte toto rozšíření nyní.
+Pomocí Azure Portal můžete nasadit modul Functions do IoT Edge zařízení, jako jste provedli v rychlých startech. Moduly však můžete také nasadit a monitorovat z editoru Visual Studio Code. V následujících částech se používají nástroje Azure IoT pro VS Code, které jsou uvedené v části požadavky. Pokud jste to ještě neudělali, nainstalujte toto rozšíření nyní.
 
-1. V průzkumníku VS Code rozbalte oddíl **Azure IoT Hub Devices** (Zařízení Azure IoT Hub).
+1. V Průzkumníkovi Visual Studio Code v části **Azure IoT Hub** rozbalte **zařízení** , abyste viděli seznam zařízení IoT.
 
-2. Klikněte pravým tlačítkem na název vašeho zařízení IoT Edge a pak vyberte **Create Deployment for single device** (Vytvořit nasazení pro jedno zařízení).
+2. Klikněte pravým tlačítkem na název zařízení IoT Edge a pak vyberte **vytvořit nasazení pro jedno zařízení**.
 
-3. Přejděte do složky řešení, která obsahuje modul **CSharpFunction**. Otevřete konfigurační složku, vyberte soubor **Deployment. JSON** a pak zvolte **možnost vybrat manifest nasazení Edge**.
+3. Přejděte do složky řešení, která obsahuje modul **CSharpFunction**. Otevřete konfigurační složku, vyberte **deployment.amd64.jsv** souboru a pak zvolte **možnost vybrat manifest nasazení Edge**.
 
-4. Aktualizujte sekci **Azure IoT Hub Devices** (Zařízení Azure IoT Hub). Měl by se zobrazit nový **CSharpFunction** spuštěný spolu s modulem **SimulatedTemperatureSensor** a **$edgeAgent** a **$edgeHub**. Aby se nové moduly zobrazovaly, může chvíli trvat. Vaše zařízení IoT Edge musí načíst nové informace o nasazení z IoT Hub, začít nové kontejnery a pak stav nahlásit zpět do IoT Hub.
+4. V části zařízení rozbalte **moduly** a zobrazte seznam nasazených a spuštěných modulů. Klikněte na tlačítko pro obnovení. Měl by se zobrazit nový **CSharpFunction** spuštěný spolu s modulem **SimulatedTemperatureSensor** a **$edgeAgent** a **$edgeHub**.
+
+    Aby se nové moduly zobrazovaly, může chvíli trvat. Vaše zařízení IoT Edge musí načíst nové informace o nasazení z IoT Hub, začít nové kontejnery a pak stav nahlásit zpět do IoT Hub.
 
    ![Zobrazení nasazených modulů ve VS Code](./media/tutorial-deploy-function/view-modules.png)
 
@@ -238,7 +237,7 @@ Jinak můžete místní konfigurace a prostředky Azure vytvořené v tomto čl�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili modul funkce Azure Functions s kódem pro filtrování nezpracovaných dat generovaných zařízením IoT Edge. Až budete připraveni vytvořit vlastní moduly, můžete získat další informace o [vývoji Azure IoT Edge Visual Studio Code](how-to-vs-code-develop-module.md).
+V tomto kurzu jste vytvořili modul Azure Functions s kódem k filtrování nezpracovaných dat generovaných vaším zařízením IoT Edge. Až budete připraveni vytvořit vlastní moduly, můžete získat další informace o [vývoji Azure IoT Edge Visual Studio Code](how-to-vs-code-develop-module.md).
 
 Pokračujte dalšími kurzy, ve kterých se seznámíte s jinými způsoby, jak vám může Azure IoT Edge pomoct přeměnit data na obchodní informace na hraničním zařízení.
 

@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů Azure v trezoru Recovery Service
 description: Popisuje, jak zálohovat virtuální počítače Azure v Recovery Services trezoru pomocí Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: c4fbafc63ce063159d0524ddf26bb936c53328df
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b9d57449e56fb50bfbfddb627a1d6bb379710da4
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373856"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439709"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure v trezoru Recovery Services
 
@@ -88,7 +88,7 @@ Nakonfigurujte zásady zálohování pro trezor.
      ![Podokno vybrat virtuální počítače](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
     >[!NOTE]
-    > Pro konfiguraci zálohování jsou k dispozici všechny virtuální počítače ve stejné oblasti a předplatném, které jsou v trezoru. Při konfiguraci zálohování můžete přejít na název virtuálního počítače a jeho skupinu prostředků, i když nemáte požadovaná oprávnění k těmto virtuálním počítačům.  
+    > Pro konfiguraci zálohování jsou k dispozici všechny virtuální počítače ve stejné oblasti a předplatném, které jsou v trezoru. Při konfiguraci zálohování můžete přejít na název virtuálního počítače a jeho skupinu prostředků, i když nemáte požadovaná oprávnění k těmto virtuálním počítačům. Pokud je váš virtuální počítač v tichém odstraněném stavu, nezobrazí se v tomto seznamu. Pokud potřebujete znovu nastavit ochranu virtuálního počítače, musíte počkat na vypršení platnosti nebo zrušit platnost tohoto virtuálního počítače ze seznamu odstraněných. Další informace najdete v [článku obnovitelné odstranění pro virtuální počítače](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
 
 1. V **zálohování**vyberte **Povolit zálohování**. Tím se tyto zásady nasadí do trezoru a do virtuálních počítačů a nainstaluje se rozšíření zálohování na agenta virtuálního počítače spuštěného na virtuálním počítači Azure.
 

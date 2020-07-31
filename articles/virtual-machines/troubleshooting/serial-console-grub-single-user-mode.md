@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 3b074bb1d439a6d20ac476f4e10b6a26b7107be8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5341cc62a7d02c3072df90becf893dec18427ac2
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284706"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439548"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použití sériové konzoly pro přístup k GRUB a jednomu uživatelskému režimu
 Při spouštění virtuálního počítače (VM) je pravděpodobně první věcí, kterou vidíte, při spuštění virtuálního počítače. Vzhledem k tomu, že se zobrazuje před spuštěním operačního systému, GRUB není přístupná přes SSH. V GRUB můžete upravit konfiguraci spouštění pro spuštění do režimu jednoho uživatele mimo jiné.
 
 Režim jednoho uživatele je minimální prostředí s minimální funkčností. Může být užitečné při zkoumání potíží se spouštěním, problémů systému souborů nebo problémů se sítí. Méně služeb může běžet na pozadí a v závislosti na runlevel nemusí být systém souborů ani automaticky připojen.
 
-Režim jednoho uživatele je také užitečný v situacích, kdy je možné nakonfigurovat virtuální počítač tak, aby přijímal jenom klíče SSH pro přihlášení. V takovém případě můžete použít režim jednoho uživatele k vytvoření účtu s ověřováním hesla. 
+Režim jednoho uživatele je také užitečný v situacích, kdy je možné nakonfigurovat virtuální počítač tak, aby přijímal jenom klíče SSH pro přihlášení. V takovém případě můžete použít režim jednoho uživatele k vytvoření účtu s ověřováním hesla.
 
 > [!NOTE]
 > Služba sériové konzoly umožňuje pouze uživatelům s úrovní *Přispěvatel* nebo vyšší oprávnění pro přístup ke konzole sériového virtuálního počítače.
@@ -66,6 +66,9 @@ RHEL se dodává s povoleným GRUBem. Pokud chcete zadat GRUB, restartujte virtu
 
 **Pro RHEL 8**
 
+>[!NOTE]
+> Red Hat doporučuje pomocí Grubby nakonfigurovat parametry příkazového řádku jádra v RHEL 8 +. V současné době není možné aktualizovat parametry grub timeout a Terminal pomocí Grubby. Chcete-li upravit aktualizaci GRUB_CMDLINE_LINUX argument pro všechny položky spuštění, spusťte příkaz `grubby --update-kernel=ALL --args="console=ttyS0,115200 console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"` . Další podrobnosti jsou k dispozici [zde](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel).
+
 ```
 GRUB_TIMEOUT=5
 GRUB_TERMINAL="serial console"
@@ -90,8 +93,7 @@ Uživatel root je ve výchozím nastavení zakázaný. Režim jednoho uživatele
 1. Přepněte na kořen.
 1. Pomocí následujícího postupu povolte heslo pro kořenového uživatele:
     * Spusťte `passwd root` (nastavte silné kořenové heslo).
-1. Zajistěte, aby se uživatel root mohl přihlásit jenom přes ttyS0, a to následujícím způsobem:  
-    a. Spusťte `edit /etc/ssh/sshd_config` příkaz a ujistěte se, že je PermitRootLogIn nastaveno na `no` .  
+1. Zajistěte, aby se kořenový uživatel mohl přihlásit jenom přes ttyS0, a to následujícím způsobem: a. Spusťte `edit /etc/ssh/sshd_config` příkaz a ujistěte se, že je PermitRootLogIn nastaveno na `no` .
     b. Spusťte příkaz `edit /etc/securetty file` pro povolení přihlášení pouze přes ttyS0.
 
 Když se teď systém spustí do režimu jednoho uživatele, můžete se přihlásit pomocí kořenového hesla.
@@ -106,7 +108,7 @@ Pokud jste nastavili GRUB a root Access pomocí předchozích pokynů, můžete 
 1. Najděte řádek jádra. V Azure začíná na *linux16*.
 1. Stisknutím kombinace kláves CTRL + E přejdete na konec řádku.
 1. Na konci řádku přidejte *System. Unit = zachránit. Target*.
-    
+
     Tato akce spustí režim jednoho uživatele. Pokud chcete použít nouzový režim, přidejte *System. Unit = Emergency. Target* do konce řádku (místo *System. Unit = zachránit. Target*).
 
 1. Stisknutím kombinace kláves CTRL + X ukončete a restartujte s použitým nastavením.
@@ -130,11 +132,11 @@ Pokud jste nepovolili kořenového uživatele podle předchozích pokynů, můž
     Tato akce přeruší proces spouštění před předáním řízení z `initramfs` do `systemd` , jak je popsáno v [dokumentaci k Red Hat](https://aka.ms/rhel7rootpassword).
 1. Stisknutím kombinace kláves CTRL + X ukončete a restartujte s použitým nastavením.
 
-   Po restartování počítače se systémem souborů, který je jen pro čtení, přestanete do nouzového režimu. 
-   
+   Po restartování počítače se systémem souborů, který je jen pro čtení, přestanete do nouzového režimu.
+
 1. V prostředí zadejte pro opětovné `mount -o remount,rw /sysroot` připojení kořenového systému souborů s oprávněním ke čtení a zápisu.
 1. Po spuštění do režimu jednoho uživatele `chroot /sysroot` Přepněte do `sysroot` jailbreaku.
-1. Teď jste v kořenovém adresáři. Můžete resetovat své kořenové heslo tak, že zadáte `passwd` a potom použijete předchozí pokyny k zadání režimu jednoho uživatele. 
+1. Teď jste v kořenovém adresáři. Můžete resetovat své kořenové heslo tak, že zadáte `passwd` a potom použijete předchozí pokyny k zadání režimu jednoho uživatele.
 1. Až budete hotovi, zadejte příkaz `reboot -f` k restartování.
 
 ![Animovaný obrázek znázorňující rozhraní příkazového řádku Uživatel vybere Server, vyhledá konec řádku jádra a zadá zadané příkazy.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)

@@ -1,5 +1,5 @@
 ---
-title: Zásady vytváření názvů virtuálních počítačů Azure
+title: Zásady vytváření názvů velikostí virtuálních počítačů Azure
 description: Vysvětluje konvence pojmenování používané pro velikosti virtuálních počítačů Azure.
 ms.service: virtual-machines
 subservice: sizes
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
-ms.openlocfilehash: 2059c6f374e4cd5c2518e2fc0ac0da5858b99825
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3af4387723f74c1e09597564bc5330183fe1df69
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131714"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439460"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Zásady vytváření názvů virtuálních počítačů Azure
 
@@ -29,7 +29,7 @@ Tato stránka popisuje konvence pojmenování používané pro virtuální poč�
 | Rodina | Označuje řadu rodin virtuálních počítačů.| 
 | * Sub-Family | Používá se jenom pro specializované rozlišení virtuálních počítačů.|
 | počet vCPU| Označuje počet vCPU virtuálního počítače. |
-| Doplňkové funkce | Jedno nebo několik malých písmen značí doplňkové funkce, jako například: <br> a = procesor založený na platformě AMD <br> d = disk (místní dočasný disk je přítomen); Toto je pro novější virtuální počítače Azure, viz [Ddv4 a Ddsv4-Series](./ddv4-ddsv4-series.md) . <br> h = podporuje hibernace <br> i = izolovaný <br> l = nedostatek paměti <br> m = náročné na paměť <br> t = malá paměť <br> r = RDMA <br> s = Premium Storage schopný, včetně možného použití [SSD úrovně Ultra](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) (Poznámka: Některé novější velikosti bez atributu s mohou i nadále podporovat Premium Storage, například M128, M64 atd.)<br> |
+| Doplňkové funkce | Jedno nebo několik malých písmen značí doplňkové funkce, jako například: <br> a = procesor založený na platformě AMD <br> d = disk (místní dočasný disk je přítomen); Toto je pro novější virtuální počítače Azure, viz [Ddv4 a Ddsv4-Series](./ddv4-ddsv4-series.md) . <br> h = podporuje hibernace <br> i = izolovaná velikost <br> l = nedostatek paměti; menší množství paměti, než je velikost náročná na paměť <br> m = náročné na paměť; největší velikost paměti v určité velikosti <br> t = malá paměť; nejmenší velikost paměti v určité velikosti <br> r = podporuje RDMA <br> s = Premium Storage schopný, včetně možného použití [SSD úrovně Ultra](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) (Poznámka: Některé novější velikosti bez atributu s mohou i nadále podporovat Premium Storage, například M128, M64 atd.)<br> |
 | * Typ akcelerátoru | Označuje typ hardwarového akcelerátoru v SKU specializovaného/GPU. V názvu budou mít v názvu pouze nové specializované SKU/SKU GPU spuštěné z tohoto čtvrtletí 2020. |
 | Verze | Označuje verzi řady virtuálních počítačů. |
 

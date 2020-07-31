@@ -4,20 +4,20 @@
   items:
     - name: Machine Learning
       tocHref: /azure/storage/
-      topicHref: /azure/machine-learning/index
+      topicHref: /azure/index
       items:
         - name: Vědecké zpracování týmových dat
           tocHref: /azure/storage/
           topicHref: /azure/machine-learning/team-data-science-process/index
           items:
-            - name: Úložiště
+            - name: Storage
               tocHref: /azure/storage/blobs/
               topicHref: /azure/storage/index
               items:
                 - name: Objekty blob
                   tocHref: /azure/storage/blobs/
                   topicHref: /azure/storage/blobs/index
-            - name: Úložiště
+            - name: Storage
               tocHref: /azure/storage/common/
               topicHref: /azure/storage/index
               items:
@@ -30,7 +30,7 @@
   items:
     - name: Machine Learning
       tocHref: /azure/machine-learning/
-      topicHref: /azure/machine-learning/index
+      topicHref: /azure/index
       items:
         - name: Vědecké zpracování týmových dat
           tocHref: /azure/machine-learning/
@@ -45,7 +45,7 @@
   items:
     - name: Machine Learning
       tocHref: /azure/hdinsight/
-      topicHref: /azure/machine-learning/index
+      topicHref: /azure/index
       items:
         - name: Vědecké zpracování týmových dat
           tocHref: /azure/hdinsight/spark/
@@ -64,7 +64,7 @@
   items:
     - name: Machine Learning
       tocHref: /azure/hdinsight/
-      topicHref: /azure/machine-learning/index
+      topicHref: /azure/index
       items:
         - name: Vědecké zpracování týmových dat
           tocHref: /azure/hdinsight/spark/

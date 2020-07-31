@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/23/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: bd849a413d718ba5a25839c50c63ec2ad39be440
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3f2b844163abce0946dc5df29c3121691e83035b
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128093"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439222"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -168,7 +168,9 @@ Počáteční kapacita propustnosti Azure Firewall je 2,5 – 3 GB/s a škálov�
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Jak dlouho trvá Azure Firewall k horizontálnímu navýšení kapacity?
 
-Azure Firewall postupně škáluje, když je průměrná propustnost nebo spotřeba procesoru na 60%. Horizontální navýšení kapacity trvá pět až sedm minut. Při testování výkonu se ujistěte, že jste otestovali alespoň 10 až 15 minut, a spusťte nová připojení, abyste mohli využít nově vytvořené uzly brány firewall.
+Azure Firewall postupně škáluje, když je průměrná propustnost nebo spotřeba procesoru na 60%. Výchozí maximální propustnost nasazení je přibližně 2,5 – 3 GB/s a začíná horizontálním navýšení kapacity, když dosáhne 60% tohoto čísla. Horizontální navýšení kapacity trvá pět až sedm minut. 
+
+Při testování výkonu se ujistěte, že jste otestovali alespoň 10 až 15 minut, a spusťte nová připojení, abyste mohli využít nově vytvořené uzly brány firewall.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Má Azure Firewall ve výchozím nastavení povolený přístup ke službě Active Directory?
 
@@ -219,4 +221,4 @@ Ne, v současné době je nutné nasadit Azure Firewall s veřejnou IP adresou.
 
 ## <a name="where-does-azure-firewall-store-customer-data"></a>Kam se Azure Firewall ukládají zákaznická data?
 
-Azure Firewall nepřesouvá nebo neukládají zákaznická data mimo oblast, ve které je nasazená.
+Azure Firewall nepřesouvá ani neukládají zákaznická data mimo oblast, ve které je nasazená.

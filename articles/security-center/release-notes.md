@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 17b54eb747e3ddd3b381659031171bc795b61f54
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: bf503cf90df7b08e5a957416d66eae2f1a599bed
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430450"
+ms.locfileid: "87438949"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -32,11 +32,11 @@ Tato stránka se pravidelně aktualizuje, takže ji můžete často znovu navšt
 ## <a name="july-2020"></a>Červenec 2020
 
 Aktualizace v červenci zahrnují:
-- [Posouzení ohrožení zabezpečení pro virtuální počítače je teď k dispozici pro automatické image mimo Marketplace](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images).        
+- [Pro Image mimo Marketplace je teď k dispozici posouzení ohrožení zabezpečení pro virtuální počítače.](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)
 - [Ochrana před hrozbami pro Azure Storage rozšířena tak, aby zahrnovala soubory Azure a Azure Data Lake Storage Gen2 (Preview)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
 - [Osm nových doporučení pro povolení funkcí ochrany před hrozbami](#eight-new-recommendations-to-enable-threat-protection-features)
 - [Vylepšení zabezpečení kontejnerů – rychlejší prohledávání registru a aktualizace dokumentace](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
-- [Nové doporučení pro aktualizaci pravidel adaptivních řízení aplikací](#new-recommendation-to-update-your-adaptive-application-controls-rules)
+- [Adaptivní řízení aplikací je aktualizované o nové doporučení a podporu zástupných znaků v pravidlech cesty.](#adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules)
 - [Šest zásad pro zabezpečení rozšířených dat SQL zastaralé](#six-policies-for-sql-advanced-data-security-deprecated)
 
 
@@ -115,11 +115,16 @@ Další informace o zabezpečení kontejneru Security Center najdete v následuj
 
 
 
-### <a name="new-recommendation-to-update-your-adaptive-application-controls-rules"></a>Nové doporučení pro aktualizaci pravidel adaptivních řízení aplikací
+### <a name="adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules"></a>Adaptivní řízení aplikací je aktualizované o nové doporučení a podporu zástupných znaků v pravidlech cesty.
 
-Funkce Adaptivní řízení aplikací nepřetržitě monitoruje aktivity počítačů v konfigurovaných skupinách. Z této aktualizace budete upozorněni na potenciálně legitimní chování, které dříve nebylo povoleno, což může způsobit falešně pozitivní výstrahy.
+Funkce Adaptivní řízení aplikací obdržela dvě důležité aktualizace:
 
-Nové doporučení, **pravidla povolených v zásadách adaptivního řízení aplikací by se měla aktualizovat**, vyzve vás k přidání nových pravidel do stávajících zásad, aby se snížil počet falešně pozitivních výstrah v rámci adaptivních upozornění na porušení řízení aplikací.
+- Nové doporučení identifikuje potenciálně legitimní chování, které nebylo dříve povoleno. Nové doporučení, **pravidla povolených v zásadách adaptivního řízení aplikací by se měla aktualizovat**, vyzve vás k přidání nových pravidel do stávajících zásad, aby se snížil počet falešně pozitivních výstrah v rámci adaptivních upozornění na porušení řízení aplikací.
+
+- Pravidla cesty teď podporují zástupné znaky. Z této aktualizace můžete nakonfigurovat pravidla povolených cest pomocí zástupných znaků. Existují dva podporované scénáře:
+
+    - Použití zástupného znaku na konci cesty pro povolení všech spustitelných souborů v této složce a podsložkách
+    - Použití zástupných znaků uprostřed cesty k povolení známého názvu spustitelného souboru s názvem složky (například osobní složky uživatele se známým spustitelným souborem, automaticky generované názvy složek atd.). 
 
 [Přečtěte si další informace o adaptivních řízeních aplikací](security-center-adaptive-application.md).
 

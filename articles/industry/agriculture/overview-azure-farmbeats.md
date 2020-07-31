@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 12bb0b0098b5108bf780b88fc42b86861ea6fcdc
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80667304"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439563"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Přehled služby Azure FarmBeats (Preview)
 
 Azure FarmBeats je nabídka pro firmy, která je dostupná v Azure Marketplace. Umožňuje agregaci zemědělských datových sad mezi poskytovateli. Azure FarmBeats umožňuje vytvářet modely umělé Intelligence (AI) nebo strojové učení (ML) založené na prostředcích s pojistnou datovou sadu. S využitím Azure FarmBeats se podniky v oblasti zemědělství můžou soustředit na základní hodnoty – přidává se místo nerozlišené těžkého zvedání datových techniků.
 
 > [!NOTE]
-> Služba Azure FarmBeats je aktuálně ve verzi Public Preview. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Azure FarmBeats se poskytuje bez smlouvy o úrovni služeb. Pro podporu použijte [Fórum Azure FarmBeats](https://aka.ms/FarmBeatsMSDN ) .
+> Služba Azure FarmBeats je aktuálně ve verzi Public Preview. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Azure FarmBeats se poskytuje bez smlouvy o úrovni služeb. Pro podporu použijte [fórum podpory Azure FarmBeats](https://aka.ms/farmbeatssupport) .
 
 ![Beats farmy projektu](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 
@@ -58,8 +58,8 @@ Správce může do Azure FarmBeats přidat několik partnerů jako zprostředkov
 | Typ partnera    |   Akce  | Rozsah |
 | ---- | -------- | -------- |
 | Partner snímače  |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat | DeviceModel, zařízení, SensorModel, senzor <br/> <br/> ExtendedType |
-| Partner pro satelitní servery  |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Čtení | Scéna, SceneFile <br/> <br/> ExtendedType <br/> <br/> Sdílených |
-| Partner s počasí * <br/> <br/>  (* Již brzy) |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Čtení | WeatherDataModel, WeatherDataLocation, JobType <br/> <br/> ExtendedType <br/> <br/> Sdílených |
+| Partner pro satelitní servery  |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Číst | Scéna, SceneFile <br/> <br/> ExtendedType <br/> <br/> Sdílených |
+| Partner s počasí * <br/> <br/>  (* Již brzy) |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Číst | WeatherDataModel, WeatherDataLocation, JobType <br/> <br/> ExtendedType <br/> <br/> Sdílených |
 
 ## <a name="resources"></a>Zdroje a prostředky
 

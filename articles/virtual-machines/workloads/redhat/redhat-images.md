@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: de7ead8acd059d957673b2f063dd3d330cf473f5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525496"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439467"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Přehled Red Hat Enterprise Linuxch imagí
 
@@ -100,6 +100,9 @@ Pro image RHEL 7. x existuje několik různých typů obrázků. V následujíc�
 
 ## <a name="rhel-8-image-types"></a>Typy imagí RHEL 8
 
+>[!NOTE]
+> Red Hat doporučuje pomocí Grubby nakonfigurovat parametry příkazového řádku jádra v RHEL 8 +. Další podrobnosti jsou k dispozici [zde](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel).
+
 Podrobnosti o typech imagí RHEL 8 jsou uvedené níže.
 
 |Publisher | Nabídka | Hodnota SKU | Verze | Podrobnosti
@@ -142,7 +145,7 @@ Informace v následující tabulce se vztahují na RHEL image připojené k úlo
 >
 > Další informace o dostupnosti RHEL EUS najdete v tématu [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata).
 
-Dílčí verze |Příklad obrázku EUS              |Stav EUS                                                   |
+Podverze |Příklad obrázku EUS              |Stav EUS                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Obrázky publikované v dubnu 2019 a novějších jsou ve výchozím nastavení EUS.|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | Obrázky publikované od června 2019 a novějších jsou EUS ve výchozím nastavení. |

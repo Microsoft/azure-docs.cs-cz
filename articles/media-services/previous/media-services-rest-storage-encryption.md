@@ -14,20 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 0e477b95f43c091bf17ec54d2fef9f971d5f6986
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 761a508543af79f3a242bfa2133e22a00b0ca689
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000156"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439615"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Šifrování obsahu pomocí šifrování úložiště 
 
 > [!NOTE]
 > K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).   > do Media Services V2 se přidávají žádné nové funkce ani funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
->   
-
-Důrazně doporučujeme Šifrovat obsah místně pomocí šifrování AES-256 a pak ho nahrát do Azure Storage tam, kde je uložený zašifrovaný v klidovém stavu.
+>
 
 Tento článek poskytuje přehled šifrování úložiště AMS a ukazuje, jak nahrát šifrovaný obsah úložiště:
 
@@ -203,7 +201,7 @@ Jedna z hodnot, které je třeba nastavit při vytváření klíče obsahu, je t
 
 Následující příklad ukazuje, jak vytvořit **ContentKey** s **ContentKeyType** sadou pro šifrování úložiště ("1") a **ProtectionKeyType** nastavenou na "0", která označuje, že ID klíče ochrany je kryptografický otisk certifikátu X. 509.  
 
-Request
+Žádost
 
 ```console
 POST https://media.windows.net/api/ContentKeys HTTP/1.1

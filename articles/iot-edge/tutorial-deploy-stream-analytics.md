@@ -3,16 +3,16 @@ title: Kurz – Stream Analytics na hraničních zařízeních pomocí Azure IoT
 description: V tomto kurzu nasadíte Azure Stream Analytics jako modul pro IoT Edge zařízení.
 author: kgremban
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 62ee95db0e3b35c996cb4ee68d772a21c00778fb
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c259e913a8ee5181bc58aea651af62324cf01fcb
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220270"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439412"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Kurz: nasazení Azure Stream Analytics jako modulu IoT Edge
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Zařízení Azure IoT Edge:
 
@@ -107,7 +107,7 @@ V této části se s využitím těchto tří prvků (vstup, výstup a dotaz) vy
 
 1. V podokně **Nový vstup** zadejte **teplota** jako alias pro vstup.
 
-1. U ostatních polí ponechte výchozí hodnoty a vyberte **Uložit**.
+1. V ostatních polích nechte výchozí hodnoty a vyberte **Uložit**.
 
 1. V části **Topologie úlohy** otevřete **Výstupy** a pak vyberte **Přidat**.
 
@@ -117,9 +117,9 @@ V této části se s využitím těchto tří prvků (vstup, výstup a dotaz) vy
 
 1. V podokně **Nový výstup** zadejte **upozornění** jako alias pro výstup.
 
-1. U ostatních polí ponechte výchozí hodnoty a vyberte **Uložit**.
+1. V ostatních polích nechte výchozí hodnoty a vyberte **Uložit**.
 
-1. V části **Topologie úlohy** vyberte **Dotaz**.
+1. V části **topologie úlohy**vyberte možnost **dotaz**.
 
 1. Výchozí text nahraďte následujícím dotazem. Tento kód SQL odešle do výstupu úlohy příkaz k resetování, pokud průměrná teplota počítače v 30sekundovém intervalu dosáhne 70 stupňů. Příkaz k resetování je ve snímači předem naprogramovaný jako akce, kterou je možné provést.
 
@@ -134,7 +134,7 @@ V této části se s využitím těchto tří prvků (vstup, výstup a dotaz) vy
     HAVING Avg(machine.temperature) > 70
     ```
 
-1. Vyberte **Uložit**.
+1. Vyberte **Uložit dotaz**.
 
 ### <a name="configure-iot-edge-settings"></a>Konfigurace nastavení IoT Edge
 
@@ -189,11 +189,11 @@ Pro účely tohoto kurzu nasadíte dva moduly. První je **SimulatedTemperatureS
 
 1. Vyberte **aktualizovat** nebo **Zrušit**.
 
-1. Poznamenejte si název vašeho modulu Stream Analytics, protože ho budete potřebovat v dalším kroku, vyberte **Další: trasy** pro pokračování.
+1. Poznamenejte si název vašeho modulu Stream Analytics, protože ho budete potřebovat v dalším kroku. Pak pokračujte výběrem **Další: trasy** .
 
 1. Na kartě **trasy** definujete, jak jsou zprávy předávány mezi moduly a IoT Hub. Zprávy se vytvářejí pomocí párů název/hodnota. Nahraďte výchozí `route` `upstream` hodnoty a název a hodnoty dvojicemi, které jsou uvedené v následující tabulce, následující páry název/hodnota, které nahradí instance typu _{Module}_ názvem vašeho modulu Azure Stream Analytics.
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     | --- | --- |
     | `telemetryToCloud` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO $upstream` |
     | `alertsToCloud` | `FROM /messages/modules/{moduleName}/* INTO $upstream` |

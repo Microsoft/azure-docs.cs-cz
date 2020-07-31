@@ -167,8 +167,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Prostředí Integration Runtime
       href: concepts-integration-runtime.md
-    - name: Spravované virtuální sítě
-      href: managed-virtual-network-private-endpoint.md
     - name: Zabezpečení
       items:
         - name: Standardní hodnoty zabezpečení
@@ -588,6 +586,8 @@
           href: data-factory-service-identity.md
         - name: Šifrování s využitím klíčů spravovaných zákazníkem
           href: enable-customer-managed-key.md
+        - name: Spravované virtuální sítě
+          href: managed-virtual-network-private-endpoint.md
     - name: Monitorování a správa
       items:
         - name: Vizuální monitorování

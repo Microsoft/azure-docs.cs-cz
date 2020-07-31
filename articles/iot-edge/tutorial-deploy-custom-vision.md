@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/15/2020
+ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5d4b87c14422744fd62d42a4d8e5b1ca0f34ffac
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76167000"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439730"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Kurz: Provádění klasifikace obrázků na hraničních zařízeních s využitím služby Custom Vision
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 >[!TIP]
 >Tento kurz je zjednodušenou verzí [Custom Vision a Azure IoT Edge v projektu s](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) ukázkovým projektem malin. PI 3. Tento kurz byl navržený tak, aby se spouštěl v cloudovém virtuálním počítači a pomocí statických imagí dokázal naučit a testovat třídění imagí. to je užitečné pro někoho, co začne hodnotit Custom Vision IoT Edge. Ukázkový projekt používá fyzický hardware a nastavuje živý kanál kamery ke školení a testování klasifikátoru obrázků, který je užitečný pro někoho, kdo chce vyzkoušet podrobnější scénář pro reálný život.
@@ -142,17 +142,17 @@ Teď máte soubory pro kontejnerovou verzi klasifikátoru obrázků na svém mí
 
 Řešení představuje logický způsob vývoje a uspořádání více modulů pro jedno nasazení IoT Edge. Řešení obsahuje kód jednoho nebo několika modulů a manifest nasazení, který určuje, jak se mají nakonfigurovat na zařízení IoT Edge. 
 
-1. Výběrem **Zobrazit** > **paleta příkazů** otevřete paletu příkazů vs Code. 
+1. V Visual Studio Code výběrem **Zobrazit**  >  **paleta příkazů** otevřete paletu příkazů vs Code. 
 
 1. Na paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: Nové řešení IoT Edge). Na paletě příkazů zadejte následující informace k vytvoření řešení: 
 
    | Pole | Hodnota |
    | ----- | ----- |
-   | Vyberte složku | Zvolte umístění na vývojovém počítači, ve kterém VS Code vytvoří soubory řešení. |
+   | Vybrat složku | Zvolte umístění na vývojovém počítači, ve kterém VS Code vytvoří soubory řešení. |
    | Zadejte název řešení | Zadejte popisný název řešení, například **CustomVisionSolution**, nebo přijměte výchozí hodnotu. |
    | Vyberte šablonu modulu | Zvolte **Modul Python**. |
    | Zadejte název modulu | Pojmenujte modul **classifier**.<br><br>Je důležité, aby tento název modulu obsahoval pouze malá písmena. IoT Edge při odkazování na moduly rozlišuje malá a velká písmena a toto řešení využívá knihovnu, která všechny požadavky formátuje tak, aby obsahovaly pouze malá písmena. |
-   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněná z předchozího kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal.<br><br>Výsledný řetězec vypadá jako ** \<název\>registru. azurecr.IO/Classifier**. |
+   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněná z předchozího kroku. Položku **localhost: 5000** nahraďte hodnotou **přihlašovacího serveru** z služby Azure Container Registry. Přihlašovací server můžete načíst ze stránky přehled v registru kontejneru v Azure Portal.<br><br>Výsledný řetězec vypadá jako ** \<registry name\> . azurecr.IO/Classifier**. |
  
    ![Zadání úložiště imagí Dockeru](./media/tutorial-deploy-custom-vision/repository.png)
 
@@ -161,6 +161,8 @@ V okně Visual Studio Code se načte pracovní prostor řešení IoT Edge.
 ### <a name="add-your-registry-credentials"></a>Přidání přihlašovacích údajů registru
 
 V souboru prostředí jsou uložené přihlašovací údaje pro registr kontejneru, které soubor sdílí s modulem runtime IoT Edge. Modul runtime tyto přihlašovací údaje potřebuje k přetažení vašich privátních imagí do zařízení IoT Edge.
+
+Rozšíření IoT Edge se pokusí načíst přihlašovací údaje registru kontejneru z Azure a naplnit je do souboru prostředí. Zkontrolujte, jestli jsou vaše přihlašovací údaje už zahrnuté. Pokud ne, přidejte je nyní:
 
 1. V průzkumníku VS Code otevřete soubor .env.
 2. Aktualizujte pole hodnotami **uživatelské jméno** a **heslo**, které jste zkopírovali z registru kontejneru Azure.
@@ -214,10 +216,10 @@ V této části do stejného řešení CustomVisionSolution přidáte nový modu
 
    | Výzva | Hodnota | 
    | ------ | ----- |
-   | Vyberte soubor šablony nasazení | Vyberte soubor deployment.template.json ve složce CustomVisionSolution. |
+   | Vyberte soubor šablony nasazení | Vyberte **deployment.template.js** v souboru ve složce CustomVisionSolution. |
    | Vyberte šablonu modulu | Vyberte **Modul Python**. |
    | Zadejte název modulu | Pojmenujte modul **cameraCapture**. |
-   | Zadejte pro modul úložiště imagí Dockeru | Nahraďte **localhost:5000** hodnotou přihlašovacího serveru pro váš registr kontejneru Azure.<br><br>Výsledný řetězec vypadá jako ** \<\>Registry. azurecr.IO/cameracapture**. |
+   | Zadejte pro modul úložiště imagí Dockeru | Položku **localhost: 5000** nahraďte hodnotou **přihlašovacího serveru** pro službu Azure Container Registry.<br><br>Výsledný řetězec vypadá jako ** \<registryname\> . azurecr.IO/cameracapture**. |
 
    V okně VS Code se nový modul načte do pracovního prostoru řešení a aktualizuje se soubor deployment.template.json. Teď by se měly zobrazit dvě složky modulu: classifier a cameraCapture. 
 
@@ -322,11 +324,11 @@ V této části do stejného řešení CustomVisionSolution přidáte nový modu
 
 Místo toho, abychom k poskytování kanálu obrázků pro tento scénář použili skutečnou kameru, použijeme jeden testovací obrázek. Testovací obrázek je součástí úložiště GitHub s trénovacími obrázky, které jste stáhli dříve v tomto kurzu. 
 
-1. Přejděte na testovací obrázek, který se nachází v**Samples** / **Images** / **testu vyzkoušení** **-CustomVision-Windows** / test imagí. 
+1. Přejděte na testovací obrázek, který se nachází v testu vyzkoušení **-CustomVision-Windows**  /  **Samples**  /  **Images**  /  **test**imagí. 
 
 2. Zkopírujte soubor **test_image.jpg**. 
 
-3. Přejděte do adresáře řešení IoT Edge a vložte testovací obrázek do složky**cameraCapture** **modulů** / . Obrázek musí být ve stejné složce jako soubor main.py, který jste upravovali v předchozí části. 
+3. Přejděte do adresáře řešení IoT Edge a vložte testovací obrázek do **modules**  /  složky**cameraCapture** modulů. Obrázek musí být ve stejné složce jako soubor main.py, který jste upravovali v předchozí části. 
 
 4. Ve Visual Studio Code otevřete soubor **Dockerfile.amd64** s modulem cameraCapture.
 
@@ -364,7 +366,7 @@ Rozšíření IoT Edge pro Visual Studio Code poskytuje v každém řešení IoT
 
     ```json
         "routes": {
-          "CameraCaptureToIoTHub": "FROM /messages/modules/cameraCapture/outputs/* INTO $upstream"
+          "cameraCaptureToIoTHub": "FROM /messages/modules/cameraCapture/outputs/* INTO $upstream"
         },
     ```
 
@@ -372,31 +374,51 @@ Rozšíření IoT Edge pro Visual Studio Code poskytuje v každém řešení IoT
 
 7. Uložte soubor **deployment.template.json**.
 
-## <a name="build-and-deploy-your-iot-edge-solution"></a>Vytvoření a nasazení řešení IoT Edge
+## <a name="build-and-push-your-iot-edge-solution"></a>Sestavení a nabízení IoT Edge řešení
 
-Když máte vytvořené oba moduly a nakonfigurovanou šablonu manifestu nasazení, jste připraveni sestavit image kontejneru a odeslat je do registru kontejneru. 
+Když máte vytvořené oba moduly a nakonfigurovanou šablonu manifestu nasazení, jste připraveni sestavit image kontejneru a odeslat je do registru kontejneru.
 
 Jakmile budou image ve vašem registru, můžete řešení nasadit do zařízení IoT Edge. Moduly na zařízení můžete nastavit prostřednictvím služby IoT Hub, ale přistupovat ke službě IoT Hub a zařízením můžete také přes Visual Studio Code. V této části nastavíte přístup ke službě IoT Hub a pak pomocí VS Code nasadíte své řešení do zařízení IoT Edge.
 
-Nejprve sestavte řešení a odešlete ho do registru kontejneru. 
+Nejprve sestavte řešení a odešlete ho do registru kontejneru.
 
-1. V Průzkumníku VS Code klikněte pravým tlačítkem myši na soubor **Deployment. template. JSON** a vyberte **sestavení a nabízené IoT Edge řešení**. Průběh této operace můžete sledovat v integrovaném terminálu VS Code. 
-2. Všimněte si, že do vašeho řešení, **config**bylo přidáno nové složky. Rozbalte tuto složku a otevřete soubor **Deployment. JSON** v části.
-3. Zkontrolujte informace v souboru deployment.json. Soubor deployment.json se vytvoří (nebo aktualizuje) automaticky na základě souboru šablony nasazení, který jste nakonfigurovali, a informací z řešení, včetně souboru .env a souborů module.json. 
+1. Otevřete vs Code Integrated Terminal výběrem možnosti **Zobrazit**  >  **terminál**.
 
-Pak vyberte své zařízení a nasaďte své řešení.
+2. Přihlaste se k Docker zadáním následujícího příkazu v terminálu. Přihlaste se pomocí uživatelského jména, hesla a přihlašovacího serveru ze služby Azure Container Registry. Tyto hodnoty můžete načíst z oddílu **přístupové klíče** v registru v Azure Portal.
 
-1. V průzkumníku VS Code rozbalte oddíl **Azure IoT Hub Devices** (Zařízení Azure IoT Hub). 
-2. Klikněte pravým tlačítkem na zařízení, na které chcete cílit nasazení, a vyberte **Create deployment for single device** (Vytvořit nasazení pro jedno zařízení). 
-3. V Průzkumníku souborů přejděte do složky **config** uvnitř vašeho řešení a zvolte soubor **deployment.json**. Klikněte na **Select Edge deployment manifest** (Vybrat manifest nasazení Edge). 
+   ```bash
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
+   ```
 
-Pokud nasazení proběhne úspěšně, ve výstupu VS Code se zobrazí potvrzovací zpráva. V průzkumníku VS Code rozbalte podrobnosti o zařízení IoT Edge, které jste použili pro toto nasazení. Pokud se moduly hned nezobrazí, najeďte kurzorem na nadpis **Zařízení Azure IoT Hub**, aby se aktivovalo tlačítko pro aktualizaci. Spuštění modulů a jejich ohlášení zpět do služby IoT Hub může chvíli trvat. 
+   Může se zobrazit upozornění zabezpečení, které doporučuje použití nástroje `--password-stdin` . I když se tento osvědčený postup doporučuje u produkčních scénářů, je mimo rozsah tohoto kurzu. Další informace najdete v tématu přihlašovací Reference k [Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
-Můžete také zkontrolovat, jestli jsou na vašem zařízení zprovozněné všechny moduly. Spuštěním následujícího příkazu na vašem zařízení IoT Edge zobrazte stav modulů. Spuštění modulů může chvíli trvat.
+3. V Průzkumníku VS Code klikněte pravým tlačítkem na **deployment.template.jsna** soubor a vyberte **sestavení a nabízené IoT Edge řešení**.
+
+   Příkaz Build a push spustí tři operace. Nejprve vytvoří novou složku v řešení s názvem **config** , která obsahuje úplný manifest nasazení, který vychází z informací v šabloně nasazení a dalších souborů řešení. Za druhé se spustí `docker build` sestavení image kontejneru na základě vhodné souboru Dockerfile pro vaši cílovou architekturu. Pak se spustí a nahraje `docker push` úložiště imagí do registru kontejneru.
+
+   Tento proces může trvat několik minut poprvé, ale při příštím spuštění příkazů je rychlejší.
+
+## <a name="deploy-modules-to-device"></a>Nasadit moduly do zařízení
+
+K nasazení projektu modulu do zařízení IoT Edge použijte Průzkumníka Visual Studio Code a rozšíření Azure IoT Tools. Už máte připravený manifest nasazení pro váš scénář, **deployment.amd64.js** v souboru ve složce config. Teď stačí jen vybrat zařízení, na které se nasazení provede.
+
+Ujistěte se, že je zařízení IoT Edge spuštěné.
+
+1. V Průzkumníkovi Visual Studio Code v části **Azure IoT Hub** rozbalte **zařízení** , abyste viděli seznam zařízení IoT.
+
+2. Klikněte pravým tlačítkem na název vašeho zařízení IoT Edge a pak vyberte **Create Deployment for Single Device** (Vytvořit nasazení pro jedno zařízení).
+
+3. Vyberte **deployment.amd64.js** v souboru ve složce **config** a pak klikněte na **Vybrat manifest nasazení Edge**. Nepoužívejte soubor deployment.template.json.
+
+4. V části zařízení rozbalte **moduly** a zobrazte seznam nasazených a spuštěných modulů. Klikněte na tlačítko pro obnovení. Měli byste vidět nové moduly **třídění** a **cameraCapture** spuštěné společně s **$edgeAgent** a **$edgeHub**.  
+
+Můžete také zkontrolovat, jestli jsou na vašem zařízení zprovozněné všechny moduly. Spuštěním následujícího příkazu na vašem zařízení IoT Edge zobrazte stav modulů.
 
    ```bash
    iotedge list
    ```
+
+Spuštění modulů může trvat několik minut. Modul runtime IoT Edge musí přijmout nový manifest nasazení, Stáhnout image modulu z modulu runtime kontejneru a pak začít každý nový modul.
 
 ## <a name="view-classification-results"></a>Zobrazení výsledků klasifikace
 
@@ -410,7 +432,12 @@ Na svém zařízení si prohlédněte protokoly modulu cameraCapture, kde uvidí
 
 V Visual Studio Code klikněte pravým tlačítkem myši na název vašeho zařízení IoT Edge a vyberte **Spustit sledování integrovaného koncového bodu události**. 
 
-Výsledky z modulu služby Custom Vision, které se odesílají jako zprávy z modulu cameraCapture, zahrnují pravděpodobnost, s jakou se jedná o obrázek jedlovce nebo sakury. Vzhledem k tomu, že se jedná o obrázek jedlovce, měla by se zobrazit pravděpodobnost 1.0. 
+> [!NOTE]
+> Ve výstupu se může zpočátku zobrazit chyba připojení z modulu cameraCapture. Důvodem je zpoždění mezi moduly nasazenými a spuštěnými.
+>
+> Modul cameraCapture se automaticky pokusí o připojení, dokud neproběhne úspěšně. Následně byste měli začít zobrazovat očekávané zprávy o klasifikaci imagí popsané níže.
+
+Výsledky z modulu služby Custom Vision, které se odesílají jako zprávy z modulu cameraCapture, zahrnují pravděpodobnost, s jakou se jedná o obrázek jedlovce nebo sakury. Vzhledem k tomu, že se jedná o obrázek jedlovce, měla by se zobrazit pravděpodobnost 1.0.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
