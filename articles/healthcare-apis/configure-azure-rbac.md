@@ -1,5 +1,5 @@
 ---
-title: Konfigurace Azure role based Access Control (RBAC) pro Azure API pro FHIR
+title: Konfigurace řízení přístupu na základě role v Azure (Azure RBAC) pro Azure API pro FHIR
 description: Tento článek popisuje, jak nakonfigurovat Azure RBAC pro rovinu dat Azure API pro FHIR.
 author: hansenms
 ms.service: healthcare-apis
@@ -7,16 +7,16 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: 3fbbfd931efb0e570bc96639bc6b7943fddc0237
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a3cdb5a640e09c0095db79f5e3a43b455a1a5705
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417671"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447163"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>Konfigurace služby Azure RBAC pro FHIR 
 
-V tomto článku se dozvíte, jak pomocí [Access Control na základě rolí v Azure](https://docs.microsoft.com/azure/role-based-access-control/) přiřadit přístup k rozhraní Azure API pro rovinu dat FHIR. Azure RBAC je preferované metody pro přiřazení přístupu k rovině dat, když se uživatelé roviny dat spravují v tenantovi Azure Active Directory přidruženého k vašemu předplatnému Azure. Pokud používáte externího tenanta Azure Active Directory, přečtěte si [odkaz na místní přiřazení RBAC](configure-local-rbac.md).
+V tomto článku se dozvíte, jak pomocí [řízení přístupu založeného na rolích Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/) přiřadit přístup k rozhraní Azure API pro rovinu dat FHIR. Azure RBAC je preferované metody pro přiřazení přístupu k rovině dat, když se uživatelé roviny dat spravují v tenantovi Azure Active Directory přidruženého k vašemu předplatnému Azure. Pokud používáte externího tenanta Azure Active Directory, přečtěte si [odkaz na místní přiřazení RBAC](configure-local-rbac.md).
 
 ## <a name="confirm-azure-rbac-mode"></a>Potvrďte režim Azure RBAC
 

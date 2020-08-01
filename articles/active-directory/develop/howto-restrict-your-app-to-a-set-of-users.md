@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: da09f78817e1271832397b4a130195385207645f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e20b2f8c0e12fdb23668d16e2cbd7936cc4e48c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477783"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445467"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Postupy: omezení aplikace Azure AD na skupinu uživatelů v tenantovi Azure AD
 
@@ -26,7 +26,7 @@ Aplikace zaregistrované v tenantovi Azure Active Directory (Azure AD) jsou ve v
 
 Podobně platí, že v případě [víceklientské](howto-convert-app-to-be-multi-tenant.md) aplikace budou mít všichni uživatelé v TENANTOVI Azure AD, kde se tato aplikace zřídí, přístup k této aplikaci až po úspěšném ověření v příslušném tenantovi.
 
-Správci klientů a vývojáři mají často požadavky na to, že aplikace musí být omezená na určitou skupinu uživatelů. Vývojáři můžou totéž dosáhnout pomocí oblíbených autorizačních vzorů, jako je Access Control na základě rolí (RBAC), ale tento přístup vyžaduje významnou práci v rámci vývojářů.
+Správci klientů a vývojáři mají často požadavky na to, že aplikace musí být omezená na určitou skupinu uživatelů. Vývojáři můžou totéž dosáhnout pomocí oblíbených autorizačních vzorů, jako je řízení přístupu na základě role Azure (Azure RBAC), ale tento přístup vyžaduje významnou práci, která je součástí vývojáře.
 
 Správci klientů a vývojáři mohou aplikaci omezit na konkrétní skupinu uživatelů nebo skupin zabezpečení v tenantovi pomocí této integrované funkce služby Azure AD.
 
@@ -65,7 +65,7 @@ Existují dva způsoby, jak vytvořit aplikaci s povoleným přiřazením uživa
 1. Vyhledejte nastavení **přiřazení uživatele požadované?** a nastavte ho na **Ano**. Pokud je tato možnost nastavená na **hodnotu Ano**, uživatelé v tenantovi musí být nejprve přiřazeni k této aplikaci nebo se nebudou moci přihlásit k této aplikaci.
 1. Vyberte **Uložit** a uložte tuto změnu konfigurace.
 
-### <a name="app-registration"></a>Registrace aplikace
+### <a name="app-registration"></a>Registrace aplikací
 
 1. Přejít na [**Azure Portal**](https://portal.azure.com/).
 1. V horním panelu vyberte přihlášený účet. 

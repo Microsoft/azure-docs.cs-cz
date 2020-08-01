@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 8b44dc230dbee1b29b9889a1b81e35ebe25f6b97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24c5133b9c012b628e43e956c56d5112e1ad4649
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078690"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447019"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Co je nového v Azure Load Balancer?
 
@@ -29,11 +29,21 @@ Nejnovější Azure Load Balancer aktualizace a přihlásit se k odběru informa
 
 | Typ |Název |Popis  |Datum přidání  |
 | ------ |---------|---------|---------|
-| Funkce | Podpora správy fondů back-endu založených na protokolu IP (verze Preview) | Azure Load Balancer podporuje přidávání a odebírání prostředků z back-endového fondu prostřednictvím adres IPv4 nebo IPv6. To umožňuje snadnou správu kontejnerů, virtuálních počítačů a sady škálování virtuálních počítačů přidružených k Load Balancer. Umožní taky, aby se IP adresy rezervovaly jako součást fondu back-endu před vytvořením přidružených prostředků. Další informace najdete [tady](backend-pool-management.md).|Červenec 2020 |
-| Funkce| Azure Load Balancer přehledy pomocí Azure Monitor | Jako součást Azure Monitor pro sítě mají zákazníci nyní topologické mapy pro všechny své Load Balancer konfigurace a řídicí panely stavu pro své standardní nástroje pro vyrovnávání zatížení, které jsou předem nakonfigurované s metrikami v Azure Portal. [Začněte a získejte další informace](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | Červen 2020 |
+| Příznak | Podpora správy fondů back-endu založených na protokolu IP (verze Preview) | Azure Load Balancer podporuje přidávání a odebírání prostředků z back-endového fondu prostřednictvím adres IPv4 nebo IPv6. To umožňuje snadnou správu kontejnerů, virtuálních počítačů a sady škálování virtuálních počítačů přidružených k Load Balancer. Umožní taky, aby se IP adresy rezervovaly jako součást fondu back-endu před vytvořením přidružených prostředků. Další informace najdete [tady](backend-pool-management.md).|Červenec 2020 |
+| Příznak| Azure Load Balancer přehledy pomocí Azure Monitor | Jako součást Azure Monitor pro sítě mají zákazníci nyní topologické mapy pro všechny své Load Balancer konfigurace a řídicí panely stavu pro své standardní nástroje pro vyrovnávání zatížení, které jsou předem nakonfigurované s metrikami v Azure Portal. [Začněte a získejte další informace](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | Červen 2020 |
 | Ověřování | Přidání ověření pro porty HA | Bylo přidáno ověření, které zajistí, že pravidla portů HA a pravidla portů bez vysoké dostupnosti jsou konfigurovatelná pouze v případě, že je povolena plovoucí IP adresa. Dříve tato konfigurace procházela, ale nefunguje tak, jak je zamýšlená. Nebyla provedena žádná změna funkčnosti. Další informace najdete [tady](load-balancer-ha-ports-overview.md#limitations) .| Červen 2020 |
-| Funkce| Podpora protokolu IPv6 pro Azure Load Balancer (všeobecně dostupná) | Pro vaše front-end služby Vyrovnávání zatížení Azure můžete mít IPv6 adresy. Další informace o tom, jak [vytvořit aplikaci s duálním zásobníkem](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) |Duben 2020|
-| Funkce| Resetování TCP při nečinnosti časového limitu (všeobecně dostupné)| Použijte resety TCP k vytvoření předvídatelného chování aplikace. [Další informace](load-balancer-tcp-reset.md)| Únor 2020 |
+| Příznak| Podpora protokolu IPv6 pro Azure Load Balancer (všeobecně dostupná) | Pro vaše front-end služby Vyrovnávání zatížení Azure můžete mít IPv6 adresy. Další informace o tom, jak [vytvořit aplikaci s duálním zásobníkem](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) |Duben 2020|
+| Příznak| Resetování TCP při nečinnosti časového limitu (všeobecně dostupné)| Použijte resety TCP k vytvoření předvídatelného chování aplikace. [Další informace](load-balancer-tcp-reset.md)| Únor 2020 |
+
+## <a name="known-issues"></a>Známé problémy
+
+Produktová skupina aktivně pracuje na řešeních pro následující známé problémy:
+
+|Problém |Popis  |Omezení rizik  |
+| ---------- |---------|---------|
+| Export Log Analytics | Log Analytics nemůže exportovat metriky pro standardní nástroje pro vyrovnávání zatížení ani protokoly stavu sondy stavu pro základní Load Balancer  | [Využijte Azure monitor pro multidimenzionální metriky pro vaši Standard Load Balancer](load-balancer-standard-diagnostics.md). I když není možné použít Log Analytics ke sledování, Azure Monitor poskytuje vizualizaci pro bohatou sadu multidimenzionálních metrik. Řídicí panel předem konfigurovaných metrik můžete využít v podokně přehledy Load Balancer. Pokud používáte základní Load Balancer [upgradujte na standard](upgrade-basic-standard.md) pro monitorování metrik na úrovni produkčního prostředí.
+
+  
 
 ## <a name="next-steps"></a>Další kroky
 

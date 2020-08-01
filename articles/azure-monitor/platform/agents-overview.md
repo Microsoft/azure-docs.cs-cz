@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: a9786c1f596a9f59e63886fa503bddac58ee7a8e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c6aea3be5782c967c5816a1e40dc5443306671b3
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325334"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445296"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Přehled agentů Azure Monitor
 
@@ -62,7 +62,7 @@ Agenta Log Analytics použijte v případě, že potřebujete:
 * Odešlete data do pracovního prostoru Log Analytics, abyste mohli využívat funkce podporované [Azure monitor protokoly](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs) , jako jsou například [dotazy protokolu](../log-query/log-query-overview.md).
 * Použijte [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) , které vám umožní monitorovat vaše virtuální počítače ve velkém měřítku a monitorovat jejich procesy a závislosti na dalších prostředcích a externích procesech.  
 * Spravujte zabezpečení virtuálních počítačů pomocí [Azure Security Center](../../security-center/security-center-intro.md) nebo [Azure Sentinel](../../sentinel/overview.md).
-* Pro zajištění komplexní správy virtuálních počítačů Azure použijte [Azure Automation správu aktualizací](../../automation/automation-update-management.md), [konfiguraci Azure Automation](../../automation/automation-dsc-overview.md)nebo [Azure Automation Change Tracking a inventarizaci](../../automation/change-tracking.md) .
+* Pro zajištění komplexní správy virtuálních počítačů Azure použijte [Azure Automation správu aktualizací](../../automation/update-management/update-mgmt-overview.md), [konfiguraci Azure Automation](../../automation/automation-dsc-overview.md)nebo [Azure Automation Change Tracking a inventarizaci](../../automation/change-tracking.md) .
 * Pomocí různých [řešení](../monitor-reference.md#insights-and-core-solutions) můžete monitorovat konkrétní službu nebo aplikaci.
 
 Mezi omezení agenta Log Analytics patří:

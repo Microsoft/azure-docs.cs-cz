@@ -1,5 +1,5 @@
 ---
-title: Konfigurace místního Access Control na základě rolí (RBAC) pro Azure API pro FHIR
+title: Konfigurace řízení přístupu na základě místní role (místní RBAC) pro Azure API pro FHIR
 description: Tento článek popisuje, jak nakonfigurovat rozhraní API Azure pro FHIR, aby používalo externí tenanta Azure AD pro rovinu dat.
 author: hansenms
 ms.service: healthcare-apis
@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: 8aa454e272e0dbf4c69941c35a63ee036c16f78f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 11e7d31385140206070e3b415224ccca725d110f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422568"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446900"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>Konfigurace místní RBAC pro FHIR 
 

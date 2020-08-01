@@ -1,6 +1,6 @@
 ---
 title: Konfigurace rozšíření Azure MFA NPS – Azure Active Directory
-description: Po instalaci rozšíření serveru NPS použijte tyto kroky pro pokročilou konfiguraci, jako je přidávání do seznamu povolených IP adres a nahrazení UPN.
+description: Po instalaci rozšíření serveru NPS použijte tento postup pro pokročilou konfiguraci, jako je povolený seznam IP adres a nahrazení UPN.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34d92af88106151e7efba679c53c5b5bd1c07dcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: beaed8a3e23cba90b2afe476b1e993ed1f99dae7
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653791"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445517"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Rozšířené možnosti konfigurace rozšíření NPS pro službu Multi-Factor Authentication
 
@@ -30,10 +30,10 @@ V rámci rozšíření serveru NPS můžete určit atribut služby Active Direct
 
 Pokud chcete nakonfigurovat alternativní přihlašovací ID, použijte `HKLM\SOFTWARE\Microsoft\AzureMfa` a upravte následující hodnoty registru:
 
-| Name | Typ | Výchozí hodnota | Description |
+| Název | Typ | Výchozí hodnota | Popis |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | řetězec | Obsahovat | Místo hlavního názvu uživatele (UPN) určete název atributu služby Active Directory, který chcete použít. Tento atribut se používá jako atribut AlternateLoginId. Pokud je tato hodnota registru nastavena na [platný atribut služby Active Directory](https://msdn.microsoft.com/library/ms675090.aspx) (například mail nebo DisplayName), pak se hodnota atributu používá místo hlavního názvu uživatele (UPN) pro ověřování. Pokud je tato hodnota registru prázdná nebo není nakonfigurovaná, je AlternateLoginId zakázaná a k ověřování se používá hlavní název uživatele (UPN). |
-| LDAP_FORCE_GLOBAL_CATALOG | Boolean | False | Pomocí tohoto příznaku vynutíte při vyhledávání AlternateLoginId použití globálního katalogu pro hledání LDAP. Nakonfigurujte řadič domény jako globální katalog, přidejte do globálního katalogu atribut AlternateLoginId a pak tento příznak povolte. <br><br> Pokud je nakonfigurováno LDAP_LOOKUP_FORESTS (není prázdné), **bude tento příznak vynutil jako true**bez ohledu na hodnotu nastavení registru. V takovém případě rozšíření serveru NPS vyžaduje, aby byl globální katalog nakonfigurovaný s atributem AlternateLoginId pro jednotlivé doménové struktury. |
+| LDAP_FORCE_GLOBAL_CATALOG | boolean | Ne | Pomocí tohoto příznaku vynutíte při vyhledávání AlternateLoginId použití globálního katalogu pro hledání LDAP. Nakonfigurujte řadič domény jako globální katalog, přidejte do globálního katalogu atribut AlternateLoginId a pak tento příznak povolte. <br><br> Pokud je nakonfigurováno LDAP_LOOKUP_FORESTS (není prázdné), **bude tento příznak vynutil jako true**bez ohledu na hodnotu nastavení registru. V takovém případě rozšíření serveru NPS vyžaduje, aby byl globální katalog nakonfigurovaný s atributem AlternateLoginId pro jednotlivé doménové struktury. |
 | LDAP_LOOKUP_FORESTS | řetězec | Obsahovat | Zadejte středníkem oddělený seznam doménových struktur, které se mají hledat. Například *contoso. com; panel. com*. Pokud je tato hodnota registru nakonfigurovaná, rozšíření serveru NPS provede iterativní hledání všech doménových struktur v pořadí, ve kterém byly uvedené, a vrátí první úspěšnou hodnotu AlternateLoginId. Pokud tato hodnota registru není nakonfigurovaná, vyhledávání AlternateLoginId je omezené na aktuální doménu.|
 
 Pokud chcete řešit problémy s alternativními přihlašovacími ID, použijte doporučené kroky pro [alternativní chyby ID přihlášení](howto-mfa-nps-extension-errors.md#alternate-login-id-errors).
@@ -44,7 +44,7 @@ Pokud potřebujete monitorovat dostupnost serveru, třeba když nástroje pro vy
 
 Pokud chcete nakonfigurovat seznam povolených IP adres, použijte `HKLM\SOFTWARE\Microsoft\AzureMfa` a nakonfigurujte tuto hodnotu registru:
 
-| Name | Typ | Výchozí hodnota | Description |
+| Název | Typ | Výchozí hodnota | Popis |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | řetězec | Obsahovat | Zadejte středníkem oddělený seznam IP adres. Zahrňte IP adresy počítačů, ve kterých pochází žádosti o služby, jako je třeba server NAS/VPN. Rozsahy IP adres a podsítě se nepodporují. <br><br> Například *10.0.0.1; 10.0.0.2; 10.0.0.3*.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 09ecaf327b2030a77f8a91d99f291cebb0281235
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dd108e8c2877c7fe459819bf01b0e5b206cd9c0
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781595"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445557"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Plánování aplikace cloudového HR pro Azure Active Directory zřizování uživatelů
 
@@ -52,11 +52,11 @@ Integrace aplikace pro cloudovou HR se zřizováním uživatelů Azure AD je ide
 - Vyžadovat, aby se uživatelé synchronizovaly do jedné nebo víc doménových struktur služby Active Directory, domén a organizačních jednotek, a to na základě informací o změně zjištěných v aplikaci cloudového HR.
 - K odeslání e-mailu použijte Office 365.
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>Informace
 
 Zřizování uživatelů vytvoří základ pro průběžné řízení identit. Vylepšuje kvalitu obchodních procesů, které spoléhají na data autoritativní identity.
 
-### <a name="terms"></a>Terminologie
+### <a name="terms"></a>Výrazy
 
 Tento článek používá následující výrazy:
 
@@ -79,7 +79,7 @@ Pokud chcete nakonfigurovat aplikaci cloudového HR na integraci zřizování u�
 
 Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a je zajištěná v rámci služby Active Directory nebo Azure AD, potřebujete také platnou licenci pro předplatného Azure AD Premium P1 nebo vyšší. Jakýkoli nesprávný počet licencí vlastněných v aplikaci cloudového HR může vést k chybám při zřizování uživatele.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - [Správce hybridní identity](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator) Azure AD ke konfiguraci Azure AD Connectho agenta zřizování.
 - Role [Správce aplikací](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) Azure AD pro konfiguraci zřizování aplikace v Azure Portal
@@ -404,7 +404,6 @@ Chcete-li vyřešit všechny problémy, které se mohou během zřizování vypn
 
 - [Problém s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD](application-provisioning-config-problem.md)
 - [Synchronizace atributu z místní služby Active Directory do Azure AD kvůli zřizování pro aplikaci](user-provisioning-sync-attributes-for-mapping.md)
-- [Zřizování uživatelů pro aplikaci Galerie Azure AD trvá několik hodin.](application-provisioning-when-will-provisioning-finish.md)
 - [Při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů pro aplikaci Galerie Azure Active Directory došlo k potížím.](application-provisioning-config-problem-storage-limit.md)
 - [Pro aplikaci Galerie Azure AD se nezřídí žádní uživatelé.](application-provisioning-config-problem-no-users-provisioned.md)
 - [Pro aplikaci Galerie Azure AD se zřizuje nesprávná sada uživatelů.](application-provisioning-config-problem-wrong-users-provisioned.md)

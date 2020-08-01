@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: ricarlse
 ms.custom: seodec18
-ms.openlocfilehash: 5bf7a1e3cc2bfa8ccf42d05e199c58b8c9314fce
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 99b51610e41aaf8358e7e3069d38dfd8c68ae422
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281697"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446765"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Azure ExpressRoute pro poskytovatele Cloud Solution Provider
 Společnost Microsoft poskytuje pro tradiční prodejce a distributory (poskytovatele Cloud Solution Provider) hyperškálovatelné služby, aby mohli pro vaše zákazníky rychle zřizovat nové služby a řešení bez nutnosti investovat do vývoje těchto nových služeb. Aby měl poskytovatel Cloud Solution Provider (CSP) možnosti spravovat tyto služby přímo, poskytuje společnost Microsoft programy a rozhraní API umožňující poskytovateli CSP spravovat prostředky Microsoft Azure za své zákazníky. Jeden z těchto prostředků je ExpressRoute. ExpressRoute umožňuje poskytovateli CSP připojovat prostředky zákazníků ke službám Azure. ExpressRoute je vysokorychlostní propojení se službami v Azure, které zajišťuje privátní komunikaci. 
@@ -60,7 +60,7 @@ Tento scénář připojení vyžaduje, aby se zákazník připojil přímo prost
 
 Volba mezi těmito dvěma možnostmi závisí na potřebách zákazníka a na vaší aktuální potřebě poskytování služeb Azure. Podrobnosti o těchto modelech a přidruženém řízení přístupu na základě role, sítích a vzorech návrhu identity jsou uvedeny na následujících odkazech:
 
-* **Řízení přístupu na základě role (RBAC)** – Funkce RBAC je založena na službě Azure Active Directory.  Další informace o funkci Azure RBAC najdete [tady](../role-based-access-control/role-assignments-portal.md).
+* **Řízení přístupu na základě role v Azure (Azure RBAC)** – RBAC je založené na Azure Active Directory.  Další informace o funkci Azure RBAC najdete [tady](../role-based-access-control/role-assignments-portal.md).
 * **Sítě** – Obsahuje informace k různým tématům týkající se sítí v Microsoft Azure.
 * **Azure Active Directory (Azure AD)** – Azure AD poskytuje správu identit pro Microsoft Azure a aplikace SaaS jiných dodavatelů. Další informace o Azure AD najdete [tady](https://azure.microsoft.com/documentation/services/active-directory/).  
 

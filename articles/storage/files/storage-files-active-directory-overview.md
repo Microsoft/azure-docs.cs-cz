@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 48441a48fe6f72e88e080967451d9904c3e586b2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 65d7845763b60a66f396d9081f3c9c6e1d04c1bc
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372313"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447250"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Přehled možností ověřování na základě identity souborů Azure pro přístup přes protokol SMB
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -44,7 +44,7 @@ Je užitečné pochopit některé klíčové podmínky týkající se ověřová
 
     Integrace s místními Active Directory Domain Services (služba AD DS) se službou Azure Files poskytuje metody pro ukládání dat adresáře a jejich zpřístupnění uživatelům a správcům sítě. Zabezpečení je integrováno do služba AD DS prostřednictvím ověřování přihlášení a řízení přístupu k objektům v adresáři. Pomocí jediného přihlášení k síti můžou správci spravovat data adresáře a organizaci v celé své síti a autorizovaní uživatelé sítě mají přístup k prostředkům kdekoli v síti. Služba AD DS obvykle přijímá podniky v místních prostředích a služba AD DS přihlašovací údaje se používají jako identita pro řízení přístupu. Další informace najdete v tématu [přehled Active Directory Domain Services](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
--   **Access Control na základě rolí Azure (RBAC)**
+-   **Řízení přístupu na základě role v Azure (Azure RBAC)**
 
     Řízení přístupu na základě role Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí RBAC můžete spravovat přístup k prostředkům tím, že uživatelům udělíte nejnižší oprávnění potřebná k provádění svých úloh. Další informace o RBAC najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC) v Azure?](../../role-based-access-control/overview.md).
 

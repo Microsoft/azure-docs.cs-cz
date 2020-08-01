@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: eb5eb18351f6411a8049e962deed35e5d8f181d9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 62b60afb7dc4adb70a0963984ee7848ab056e823
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185241"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447819"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Správa runbooků v Azure Automation
 
@@ -226,7 +226,7 @@ Použití vlastního skriptu:
 
 1. Vytvořte účet Automation a získejte [roli přispěvatele](automation-role-based-access-control.md).
 2. [Připojte účet k pracovnímu prostoru Azure](../security-center/security-center-enable-data-collection.md).
-3. Povolí [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), [Update Management](automation-update-management.md)nebo jinou funkci automatizace. 
+3. Povolí [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), [Update Management](update-management/update-mgmt-overview.md)nebo jinou funkci automatizace. 
 4. Pokud máte na počítači se systémem Linux, budete potřebovat vysoké oprávnění. Přihlaste se a [vypněte kontroly podpisů](automation-linux-hrw-install.md#turn-off-signature-validation).
 
 ## <a name="test-a-runbook"></a>Testování runbooku

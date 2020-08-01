@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 1063f7189de4bdf1aaca4a6d72c979476433c32f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 493c77a8f875018627bfe3167e66addeaf65d089
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097004"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445788"
 ---
 # <a name="frequently-asked-questions---azure-key-vault-certificate-import"></a>Nejčastější dotazy – Import certifikátu Azure Key Vault
 
@@ -64,6 +64,9 @@ Ano, můžete importovat certifikáty z libovolné certifikační autority, ale 
 
 ### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-auto-renew-feature-still-work"></a>Pokud naimportujem certifikát z partnerské CA, bude funkce automatického obnovení pořád fungovat?
 Ano, musíte se ujistit, že po nahrání určíte automatické otočení v zásadách vystavování certifikátu. Změny se projeví také až do příštího cyklu nebo verze certifikátu.
+
+### <a name="unable-to-see-the-app-service-certificate-imported-to-key-vault"></a>Nemůžete zobrazit App Service Certificate naimportovaná do Key Vault? 
+Pokud se certifikát úspěšně naimportoval, přečtěte si ho v části tajné klíče.
 
 
 ## <a name="next-steps"></a>Další kroky

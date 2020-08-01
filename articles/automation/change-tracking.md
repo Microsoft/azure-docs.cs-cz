@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 192fd0fe73a34ca4d6ffc49badeac7ca8a080793
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ca96f817407aaef808fa10fbedec7af7b5912dc8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185581"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447934"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Přehled Change Tracking a inventáře
 
@@ -164,7 +164,7 @@ V následující tabulce jsou uvedené limity sledovaných položek na počíta�
 
 | **Prostředek** | **Počtu** |
 |---|---|---|
-|Soubor|500|
+|File|500|
 |Registry|250|
 |Software Windows (nezahrnuje opravy hotfix) |250|
 |Balíčky Linux|1250|
@@ -203,7 +203,7 @@ Klíčovou funkcí Change Tracking a inventáře jsou výstrahy týkající se z
 
 - Pokud chcete tuto funkci povolit z účtu Automation, přečtěte si téma [povolení Change Tracking a inventáře z účtu Automation](automation-enable-changes-from-auto-acct.md).
 
-- Pokud chcete funkci povolit procházením Azure Portal, přečtěte si téma [povolení Change Tracking a inventáře z Azure Portal](automation-onboard-solutions-from-browse.md).
+- Pokud chcete funkci povolit procházením Azure Portal, přečtěte si téma [povolení Change Tracking a inventáře z Azure Portal](automation-enable-changes-from-browse.md).
 
 - Pokud chcete tuto funkci povolit ze sady Runbook, přečtěte si téma [povolení Change Tracking a inventáře ze sady Runbook](automation-enable-changes-from-runbook.md).
 

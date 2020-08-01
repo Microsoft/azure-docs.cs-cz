@@ -110,6 +110,11 @@
           href: knowledge-store-projection-overview.md
         - name: Přírůstkové obohacení
           href: cognitive-search-incremental-indexing-conceptual.md
+    - name: Zabezpečení
+      items:
+        - name: Mechanismy zabezpečení služby Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: Návody
   items:
     - name: Vytváření indexů a konstrukcí

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e067e8d56f8a928f952648fc76cd5d6b7a1afe7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: fea05ada52ba4281acb3451769446d7f0bad790d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221249"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448718"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Zobrazení a přiřazení rolí správce v Azure Active Directory
 
@@ -56,6 +56,12 @@ Pokud jste globální správce nebo správce privilegovaných rolí, můžete sn
 Při prohlížení členů role vyberte možnost **Popis** a zobrazí se úplný seznam oprávnění udělených přiřazením role. Stránka obsahuje odkazy na příslušnou dokumentaci, která vám pomůže s tím, jak spravovat role adresáře.
 
 ![seznam oprávnění pro roli správce](./media/directory-manage-roles-portal/role-description.png)
+
+## <a name="download-role-assignments"></a>Stažení přiřazení rolí
+
+Pokud chcete stáhnout všechna přiřazení pro určitou roli, na stránce **role a správci** vyberte roli a pak vyberte **Stáhnout přiřazení rolí**. Stáhne se soubor CSV se seznamem přiřazení všech oborů pro danou roli.
+
+![Stáhnout všechna přiřazení pro roli](./media/directory-manage-roles-portal/download-role-assignments.png)
 
 ## <a name="assign-a-role"></a>Přiřazení role
 

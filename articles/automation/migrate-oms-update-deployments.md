@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9bd6a7ff943b5f3750ce8aaeada32010b88272c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c8238e6e0b52a625c76f79fa0dd5a91dd640fb8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745629"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447851"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Migrace Azure Monitor v protokolech nasazení aktualizací do Azure Portal
 
@@ -19,7 +19,7 @@ Portál Operations Management Suite (OMS) je [zastaralý](../azure-monitor/platf
 ## <a name="key-information"></a>Informace o klíči
 
 * Existující nasazení budou fungovat i nadále. Po opětovném vytvoření nasazení v Azure můžete odstranit staré nasazení.
-* Všechny existující funkce, které jste měli v OMS, jsou dostupné v Azure. Další informace o Update Management najdete v tématu [Update Management Overview](automation-update-management.md).
+* Všechny existující funkce, které jste měli v OMS, jsou dostupné v Azure. Další informace o Update Management najdete v tématu [Update Management Overview](update-management/update-mgmt-overview.md).
 
 ## <a name="access-the-azure-portal"></a>Přejděte na portál Microsoft Azure
 
@@ -57,7 +57,7 @@ Pokud chcete použít toto existující uložené hledání, postupujte takto:
 
     | Vlastnost | Popis |
     | --- | --- |
-    |Name |Jedinečný název pro identifikaci nasazení aktualizace. |
+    |Název |Jedinečný název pro identifikaci nasazení aktualizace. |
     |Operační systém| Vyberte **Linux** nebo **Windows**.|
     |Počítače, které se mají aktualizovat |V rozevíracím seznamu vyberte uložené hledání, importovanou skupinu nebo vyberte možnost počítač a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../azure-monitor/platform/computer-groups.md) |
     |Update classifications|Vyberte všechny klasifikace aktualizací, které potřebujete. CentOS tento seznam nepodporuje.|
@@ -74,4 +74,4 @@ Pokud chcete použít toto existující uložené hledání, postupujte takto:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Update Management v Azure Automation najdete v tématu [přehled Update Management](automation-update-management.md).
+Další informace o Update Management v Azure Automation najdete v tématu [přehled Update Management](update-management/update-mgmt-overview.md).

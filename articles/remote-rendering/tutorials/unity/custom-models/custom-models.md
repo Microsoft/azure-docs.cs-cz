@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: b08670c51b56f01ad1193d2729ecc77821242a19
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ae3d0ac6fb332fa17fbe938572b94c51e0785089
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200754"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449017"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>Kurz: rozhraní a vlastní modely
 
@@ -33,7 +33,7 @@ Mixed reality Toolkit (MRTK) je sada nástrojů pro různé platformy, která sl
 
 Pokud chcete přidat MRTK, postupujte podle [požadovaných kroků](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#required) uvedených v části [Začínáme s MRTK](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html).
 
-Tyto kroky:
+Jde o následující kroky:
  - [Získat nejnovější balíčky Unity pro MRTK](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#get-the-latest-mrtk-unity-packages)
      - I když říká "poslední", je to pro verzi 2,3.
      - V tomto kurzu používáme jenom balíček *Foundation* . Balíčky *rozšíření*, *nástroje*a *Příklady* se nevyžadují.
@@ -75,14 +75,14 @@ Teď můžete do scény přidat Prefab **AppMenu** , abyste mohli vizuální zp�
 1. Vyhledání **AppMenu** Prefab v *assets/RemoteRenderingTutorial/Prefabs/AppMenu*
 1. Přetáhněte **AppMenu** Prefab do scény.
 1. Pravděpodobně se zobrazí dialogové okno pro **importování TMP**, protože se jedná o první, kdy do scény patří assety pro práci s *textovými oky pro* . Podle pokynů **importujte základy TMP**. Pak zavřete dialog pro import, příklady a další funkce nejsou potřeba.
-1. **AppMenu** se nakonfiguruje tak, aby se automaticky připojila a poskytovala modální spojení pro připojení k relaci, takže můžeme odebrat vynechání, které jste nastavili dříve. Na GameObject **RemoteRenderingCoordinator** odeberte nepoužitou položku pro autorizaci, kterou jsme dřív implementovali, a to tak, že stisknete tlačítko "–" na **vyžádání události při žádosti o autorizaci** . \
- ![Odebrat obejití ](./media/remove-bypass-event.png) . \
+1. **AppMenu** se nakonfiguruje tak, aby se automaticky připojila a poskytovala modální spojení pro připojení k relaci, takže můžeme odebrat vynechání, které jste nastavili dříve. Na GameObject **RemoteRenderingCoordinator** odeberte nepoužitou položku pro autorizaci, kterou jsme dřív implementovali, a to tak, že stisknete tlačítko "–" na **vyžádání události při žádosti o autorizaci** .
+ ![Odebrat vynechat ](./media/remove-bypass-event.png) .
 1. Kliknutím na tlačítko **Přehrát** v editoru Unity otestujte kontroler zobrazení.
 1. V editoru teď, když je MRTK nakonfigurovaný, můžete pomocí klíčů WASD změnit umístění vašeho zobrazení a podržet pravé tlačítko myši + přesunout ukazatel myši a změnit směr zobrazení. Vyzkoušejte "jízda" kolem scény, abyste získali dojem pro ovládací prvky.
 1. Na zařízení můžete dovolávat svůj Palm k předvolání **AppMenu**v editoru Unity, a to pomocí klávesové zkratky '.
 1. Pokud jste ztratili pohled na nabídku, stiskněte klávesu ' m ' k předvolání nabídky. Nabídka se umístí poblíž kamery a umožní tak snadnou interakci.
-1. Autorizace se teď zobrazí jako žádost napravo od **AppMenu**, od této chvíle, kterou použijete k autorizaci aplikace ke správě relací vzdáleného vykreslování. \
- ![Autorizace uživatelského rozhraní](./media/authorize-request-ui.png)\
+1. Autorizace se teď zobrazí jako žádost napravo od **AppMenu**, od této chvíle, kterou použijete k autorizaci aplikace ke správě relací vzdáleného vykreslování.
+ ![Autorizace uživatelského rozhraní](./media/authorize-request-ui.png)
 1. Pokud chcete pokračovat v kurzu, zastavte si Unity.
 
 ## <a name="manage-model-state"></a>Spravovat stav modelu
@@ -255,11 +255,11 @@ Ve většině základních podmínek obsahuje **RemoteRenderedModel** data potř
 Pojďme nový skript otestovat načtením testovacího modelu znovu. Vytvoříme herní objekt, který bude obsahovat skript a musí být nadřazený testovacímu modelu.
 
 1. Vytvořte nový prázdný herní objekt na scéně a pojmenujte ho **TestModel**.
-1. Přidejte skript *RemoteRenderedModel* do **TestModel**. \
+1. Přidejte skript *RemoteRenderedModel* do **TestModel**.
 ![Přidat komponentu RemoteRenderedModel](./media/add-remote-rendered-model-script.png)
-1. V `Model Display Name` `Model Path` uvedeném pořadí zadejte "*TestModel*" a "*Builtin://Engine*". \
+1. Vyplňte v `Model Display Name` `Model Path` uvedeném pořadí a zadejte "*TestModel*" a "*Builtin://Engine*".
 ![Zadat podrobnosti modelu](./media/add-model-script.png)
-1. Umístěte objekt **TestModel** před fotoaparát na pozici **x = 0, y = 0, z = 3**. \
+1. Umístěte objekt **TestModel** před fotoaparát na pozici **x = 0, y = 0, z = 3**.
 ![Pozice – objekt](./media/test-model-position.png)
 1. Ujistěte se, že je zapnutá funkce **AutomaticallyLoad** .
 1. Kliknutím na tlačítko **Přehrát** v editoru Unity otestujete aplikaci.
@@ -280,7 +280,7 @@ Postupujte podle kroků uvedených v [rychlém startu: převod modelu pro vykres
 ## <a name="load-and-rendering-a-custom-model"></a>Načtení a vykreslení vlastního modelu
 
 1. Vytvořte ve scéně novou prázdnou GameObject a pojmenujte ji jako svůj vlastní model.
-1. Přidejte skript *RemoteRenderedModel* do nově vytvořené GameObject. \
+1. Přidejte skript *RemoteRenderedModel* do nově vytvořené GameObject.
  ![Přidat komponentu RemoteRenderedModel](./media/add-remote-rendered-model-script.png)
 1. Zadejte `Model Display Name` pro svůj model příslušný název.
 1. Zadejte `Model Path` identifikátor URI *sdíleného přístupového podpisu (SAS)* modelu, který jste vytvořili v krocích příjmu výše.

@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 611cb5b94ee2ad458fa00a61af673696d7e7a212
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae83d8f68b78a3b13f9ebafe3c7cedd18a29de53
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085142"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449130"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -33,18 +33,19 @@ Vývoj funkcí v místním počítači a jejich publikování v Azure pomocí z�
 
 Existují tři verze Azure Functions Core Tools. Použitá verze závisí na vašem místním vývojovém prostředí, [výběru jazyka](supported-languages.md)a požadované úrovni podpory:
 
-+ **Verze 1. x**: podporuje verzi 1. x modulu runtime Azure Functions. Tato verze nástrojů je podporována pouze v počítačích se systémem Windows a je instalována z [balíčku npm](https://www.npmjs.com/package/azure-functions-core-tools).
-
 + [**Verze 3. x/2. x**](#v2): podporuje buď [verzi 3. x, nebo 2. x Azure Functions runtime](functions-versions.md). Tyto verze podporují [Windows](?tabs=windows#v2), [MacOS](?tabs=macos#v2)a [Linux](?tabs=linux#v2) a k instalaci používají správce balíčků pro konkrétní platformu nebo npm.
 
++ **Verze 1. x**: podporuje verzi 1. x modulu runtime Azure Functions. Tato verze nástrojů je podporována pouze v počítačích se systémem Windows a je instalována z [balíčku npm](https://www.npmjs.com/package/azure-functions-core-tools).
+
 Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 3. x.
+
+## <a name="prerequisites"></a>Předpoklady
+
+Azure Functions Core Tools v současné době závisí na Azure CLI pro ověřování pomocí účtu Azure. To znamená, že musíte [Azure CLI nainstalovat místně](/cli/azure/install-azure-cli) , aby bylo možné [publikovat do Azure](#publish) z Azure Functions Core Tools. 
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalace nástrojů Azure Functions Core
 
 [Azure Functions Core Tools] obsahuje verzi stejného modulu runtime, který funguje Azure Functions runtime, který můžete spustit na místním vývojovém počítači. Poskytuje také příkazy pro vytváření funkcí, připojení k Azure a nasazení projektů funkcí.
-
->[!IMPORTANT]
->Aby bylo možné publikovat do Azure z Azure Functions Core Tools, musíte mít místně nainstalované rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .  
 
 ### <a name="version-3x-and-2x"></a><a name="v2"></a>Verze 3. x a 2. x
 
@@ -55,27 +56,12 @@ Verze 3. x/2. x nástroje používá modul runtime Azure Functions, který je po
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-Následující kroky používají npm k instalaci základních nástrojů v systému Windows. Můžete také použít [čokolády](https://chocolatey.org/). Další informace najdete v [souboru Readme pro základní nástroje](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
+Následující kroky používají Instalační službu systému Windows (MSI) k instalaci základních nástrojů v3. x. Další informace o dalších instalačních nástrojích na základě balíčků, které jsou potřeba k instalaci základních nástrojů v2. x, najdete v [souboru Readme pro základní nástroje](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
-1. Nainstalujte [Node.js], která zahrnuje npm.
-    - Pro verzi 3. x nástroje se podporuje jenom Node.js 10 a novějších verzí.
-    - Pro verzi 2. x nástroje se podporuje jenom Node.js 8,5 a novější verze.
+1. Stáhněte a spusťte instalační program základních nástrojů na základě vaší verze systému Windows:
 
-1. Nainstalujte balíček Core Tools:
-
-    ##### <a name="v3x-recommended"></a>V3. x (doporučeno)
-
-    ```cmd
-    npm install -g azure-functions-core-tools@3
-    ```
-
-    ##### <a name="v2x"></a>v2. x
-
-    ```cmd
-    npm install -g azure-functions-core-tools@2
-    ```
-
-   Stažení a instalace balíčku Core Tools může trvat několik minut, než se npm.
+    - [v3. x-Windows 64-bit](https://go.microsoft.com/fwlink/?linkid=2135274) (doporučeno. [Visual Studio Code ladění](functions-develop-vs-code.md#debugging-functions-locally) vyžaduje 64-bit.)
+    - [V3. x-Windows 32-bit](https://go.microsoft.com/fwlink/?linkid=2135275)
 
 1. Pokud neplánujete použít [sady rozšíření](functions-bindings-register.md#extension-bundles), nainstalujte [sadu .NET Core 3. x SDK pro Windows](https://dotnet.microsoft.com/download).
 

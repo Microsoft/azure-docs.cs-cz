@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 69c921ba67159d28a913173cee5e90fb04dcbf0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54014a0d76130b82788a1ae432e42baec28df2c2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561049"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448334"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm
 
@@ -76,9 +76,9 @@ Následující omezení platí pro zásady uchovávání informací:
 
 ### <a name="allow-protected-append-blobs-writes"></a>Povolení zápisů chráněných objektů BLOB
 
-Doplňovací objekty BLOB se skládají z datových bloků a jsou optimalizované pro operace přidávání dat vyžadované scénáři auditování a protokolování. V rámci návrhu připojovat objekty blob umožňují pouze přidávání nových bloků na konec objektu BLOB. Bez ohledu na neměnnosti, úprava nebo odstranění existujících bloků v doplňovacím objektu BLOB není v podstatě povolená. Další informace o přidaných objektech blob najdete v tématu věnovaném [přidávání objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs).
+Doplňovací objekty BLOB se skládají z bloků dat a jsou optimalizované pro operace připojení dat vyžadované scénáři auditování a protokolování. V rámci návrhu připojovat objekty blob umožňují pouze přidávání nových bloků na konec objektu BLOB. Bez ohledu na neměnnosti, úprava nebo odstranění existujících bloků v doplňovacím objektu BLOB není v podstatě povolená. Další informace o přidaných objektech blob najdete v tématu věnovaném [přidávání objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs).
 
-Jenom zásady uchovávání informací mají `allowProtectedAppendWrites` nastavení, které umožňuje psát nové bloky do doplňovacího objektu BLOB při zachování ochrany neměnnosti a dodržování předpisů. Pokud je povoleno, můžete vytvořit doplňovací objekt BLOB přímo v kontejneru chráněný zásadami a pokračovat v přidávání nových bloků dat na konec stávajících objektů BLOB pomocí rozhraní *AppendBlock* API. Přidat lze pouze nové bloky a všechny existující bloky nelze upravovat ani odstraňovat. Ochrana neměnnosti s časovým limitem se pořád platí, takže je možné odstranit doplňovací objekt BLOB až do doby, kdy uplynula doba uchování. Povolení tohoto nastavení nemá vliv na chování neměnnosti objektů blob bloku nebo objektů blob stránky.
+Jenom zásady uchovávání informací mají `allowProtectedAppendWrites` nastavení, které umožňuje psát nové bloky do doplňovacího objektu BLOB při zachování ochrany neměnnosti a dodržování předpisů. Pokud je toto nastavení povolené, budete moct vytvořit doplňovací objekt BLOB přímo v kontejneru chráněném zásadami a dál přidávat nové bloky dat na konec stávajících objektů BLOB s použitím rozhraní *AppendBlock* API. Přidat lze pouze nové bloky a všechny existující bloky nelze upravovat ani odstraňovat. Ochrana neměnnosti s časovým limitem se pořád platí, takže je možné odstranit doplňovací objekt BLOB až do doby, kdy uplynula doba uchování. Povolení tohoto nastavení nemá vliv na chování neměnnosti objektů blob bloku nebo objektů blob stránky.
 
 Vzhledem k tomu, že toto nastavení je součástí zásad uchovávání informací založených na čase, doplňovací objekty blob zůstanou v neměnném stavu po dobu trvání *efektivní* doby uchování. Vzhledem k tomu, že je možné přidat nová data mimo počáteční vytvoření doplňovacího objektu blob, dojde k mírnému rozdílu v tom, jak se určuje doba uchování. Efektivní doba uchování je rozdíl mezi přidaným **časem poslední změny** připojení objektu BLOB a intervalem uchování zadaného uživatelem. Podobně když je interval uchovávání rozšířený, neměnné úložiště používá k výpočtu efektivní doby uchování nejnovější hodnotu intervalu uchování zadaného uživatelem.
 
@@ -108,7 +108,7 @@ V následující tabulce jsou uvedeny typy operací úložiště objektů blob, 
 |---------|---------|---------|---------|
 |Efektivní interval uchovávání informací pro objekt blob ještě nevypršel a/nebo je nastavené blokování z právních důvodů     |Neměnné: chráněné proti odstranění i zápisu         | Vložte objekt BLOB<sup>1</sup>, PUT blok<sup>1</sup>, PUT seznam blokování<sup>1</sup>, odstranit kontejner, odstranit objekt blob, nastavte metadata objektu blob, vložte stránku, nastavte vlastnosti objektů blob, objekt BLOB snímku, přírůstkový objekt BLOB kopírování, připojovací blok<sup>2</sup> .         |Odstranění kontejneru bylo odepřeno; Odstranění účtu úložiště se zamítlo.         |
 |Platnost platnosti intervalu uchování u objektu BLOB vypršela a není nastavené žádné právní blokování.    |Chráněné pouze proti zápisu (operace odstranění jsou povolené)         |Vložte objekt BLOB<sup>1</sup>, PUT blok<sup>1</sup>, PUT seznam blokování<sup>1</sup>, nastavte metadata objektu blob, PUT, nastavte vlastnosti objektů blob, objekt BLOB snímku, objekt BLOB přírůstkového kopírování, připojovat blok<sup>2</sup> .         |Odstranění kontejneru bylo odepřeno, pokud v chráněném kontejneru existuje alespoň 1 objekt BLOB; Odstranění účtu úložiště bylo odepřeno jenom pro *uzamčené* zásady založené na čase.         |
-|Neaplikují se žádné zásady ČERVů (žádné uchování založené na čase ani značka právního blokování).     |Měnitelné         |Žádná         |Žádná         |
+|Neaplikují se žádné zásady ČERVů (žádné uchování založené na čase ani značka právního blokování).     |Měnitelné         |Žádné         |Žádné         |
 
 <sup>1</sup> služba BLOB umožňuje těmto operacím vytvořit nový objekt BLOB jednou. Všechny následné operace přepsání na stávající cestě objektu BLOB v neměnitelném kontejneru nejsou povoleny.
 

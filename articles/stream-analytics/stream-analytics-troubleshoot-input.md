@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3cac20e33ff865058ce41799ae8841a05716edc9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045072"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448873"
 ---
 # <a name="troubleshoot-input-connections"></a>Řešení potíží se vstupními připojeními
 
@@ -71,7 +71,7 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 Pokud chcete do instance Event Hubs přidat novou skupinu příjemců, postupujte takto:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. Vyhledejte centrum událostí.
 
@@ -118,7 +118,7 @@ FROM inputEventHub
 …
 ```
 
-Použít tento dotaz:
+Použijte tento dotaz:
 
 ```SQL
 WITH data AS (
@@ -161,7 +161,11 @@ SELECT foo FROM DataTwo
 
 ```
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>Počet čtenářů na oddíl překračuje limit IoT Hub.
+
+Úlohy Stream Analytics používají integrovaný [koncový bod kompatibilní](../iot-hub/iot-hub-devguide-messages-read-builtin.md) s centrem událostí IoT Hub k připojení a čtení událostí z IoT Hub. Pokud vaše čtení na oddíl překročí limity IoT Hub, můžete ho vyřešit pomocí [řešení pro centrum událostí](#readers-per-partition-exceeds-event-hubs-limit) . Můžete vytvořit skupinu příjemců pro integrovaný koncový bod prostřednictvím relace koncového bodu portálu IoT Hub nebo prostřednictvím [sady IoT Hub SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup).
+
+## <a name="get-help"></a>Podpora
 
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

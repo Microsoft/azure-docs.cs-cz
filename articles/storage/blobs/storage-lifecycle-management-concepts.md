@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 6285c25c44b7b8c5b2c1d9c148424fc36912b57c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 624b8e18f8c0fb523c27c41ce9c10af93c8b6190
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528691"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446666"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů blob v Azure
 
@@ -67,7 +67,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Zobrazení seznamu Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal vyhledejte a vyberte svůj účet úložiště. 
 
@@ -88,7 +88,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 9. Pokud chcete přidat novou zásadu, vyberte **Přidat** .
 
 #### <a name="azure-portal-code-view"></a>Azure Portal zobrazení kódu
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal vyhledejte a vyberte svůj účet úložiště.
 
@@ -202,7 +202,7 @@ Správu životního cyklu můžete definovat pomocí Azure Resource Manager šab
 
 ---
 
-## <a name="policy"></a>Zásady
+## <a name="policy"></a>Zásada
 
 Zásady správy životního cyklu jsou kolekce pravidel v dokumentu JSON:
 
@@ -232,10 +232,10 @@ Zásada je kolekcí pravidel:
 
 Každé pravidlo v zásadě má několik parametrů:
 
-| Název parametru | Typ parametru | Poznámky | Vyžadováno |
+| Název parametru | Typ parametru | Poznámky | Povinné |
 |----------------|----------------|-------|----------|
 | `name`         | Řetězec |Název pravidla může obsahovat až 256 alfanumerických znaků. Název pravidla rozlišuje velká a malá písmena.  Musí být jedinečný v rámci zásad. | Ano |
-| `enabled`      | Logická hodnota | Volitelná logická hodnota, která povolí dočasné vypnutí pravidla. Výchozí hodnota je true, pokud není nastavena. | Nepravda | 
+| `enabled`      | Logická hodnota | Volitelná logická hodnota, která povolí dočasné vypnutí pravidla. Výchozí hodnota je true, pokud není nastavena. | Ne | 
 | `type`         | Hodnota výčtu | Aktuální platný typ je `Lifecycle` . | Ano |
 | `definition`   | Objekt definující pravidlo životního cyklu | Každá definice se skládá ze sady filtrů a sady akcí. | Ano |
 
@@ -248,7 +248,8 @@ Každá definice pravidla obsahuje sadu filtrů a sadu akcí. [Sada filtr](#rule
 Následující ukázkové pravidlo filtruje účet, aby spouštěl akce na objektech, které existují uvnitř `container1` a začínají na `foo` .  
 
 >[!NOTE]
->Správa životního cyklu podporuje jenom typ objektu blob bloku.  
+>- Správa životního cyklu podporuje jenom typ objektu blob bloku.<br>
+>- Správa životního cyklu nemá vliv na systémové kontejnery, jako je $logs a $web.
 
 - Úroveň objektu BLOB na studenou vrstvu 30 dní od poslední změny
 - Úroveň objektu BLOB na archivní vrstvu 90 dní od poslední změny
@@ -292,8 +293,8 @@ Filtry zahrnují:
 | Název filtru | Typ filtru | Poznámky | Je povinné |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Pole předdefinovaných hodnot výčtu. | Aktuální verze podporuje `blockBlob` . | Ano |
-| prefixMatch | Pole řetězců, pro které mají být předpony spárovány. Každé pravidlo může definovat až 10 předpon. Řetězec předpony musí začínat názvem kontejneru. Například pokud chcete, aby se všechny objekty blob shodovaly v rámci `https://myaccount.blob.core.windows.net/container1/foo/...` pravidla, prefixMatch je `container1/foo` . | Pokud prefixMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště.  | No |
-| blobIndexMatch | Pole hodnot slovníku sestávající z klíče značek indexu objektu BLOB a podmínky hodnoty, které mají být porovnány. Každé pravidlo může definovat až 10 stavových značek indexu objektu BLOB. Například pokud chcete, aby se všechny objekty blob shodovaly s `Project = Contoso` v rámci `https://myaccount.blob.core.windows.net/` pro pravidlo, je blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Pokud blobIndexMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | No |
+| prefixMatch | Pole řetězců, pro které mají být předpony spárovány. Každé pravidlo může definovat až 10 předpon. Řetězec předpony musí začínat názvem kontejneru. Například pokud chcete, aby se všechny objekty blob shodovaly v rámci `https://myaccount.blob.core.windows.net/container1/foo/...` pravidla, prefixMatch je `container1/foo` . | Pokud prefixMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště.  | Ne |
+| blobIndexMatch | Pole hodnot slovníku sestávající z klíče značek indexu objektu BLOB a podmínky hodnoty, které mají být porovnány. Každé pravidlo může definovat až 10 stavových značek indexu objektu BLOB. Například pokud chcete, aby se všechny objekty blob shodovaly s `Project = Contoso` v rámci `https://myaccount.blob.core.windows.net/` pro pravidlo, je blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Pokud blobIndexMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | Ne |
 
 > [!NOTE]
 > Index objektu BLOB je ve verzi Public Preview a je dostupný v oblastech **Francie – střed** a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).

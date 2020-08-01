@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4eee6aeaff045264c8d23276ac91a83592ddc601
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 297241c5f939ae15fc77b29614b55d9b2bd63c84
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207809"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445903"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Kurz: zabezpečení vzdáleného vykreslování a úložiště modelu Azure
 
@@ -143,7 +143,7 @@ Pojďme upravit **RemoteRenderingCoordinator** , aby se načetl vlastní model z
     }
     ```
 
-    Tento kód přidá do komponenty **RemoteRenderingCoordinator** tři další řetězcové proměnné. \
+    Tento kód přidá do komponenty **RemoteRenderingCoordinator** tři další řetězcové proměnné.
     ![Propojený model](./media/storage-account-linked-model.png)
 
 1. Přidejte hodnoty do komponenty **RemoteRenderingCoordinator** . Po převedení [modelu na převod](../../../quickstarts/convert-model.md), vaše hodnoty by měly být:
@@ -156,7 +156,7 @@ Pojďme upravit **RemoteRenderingCoordinator** , aby se načetl vlastní model z
     > Pokud [spustíte skript **Conversion.ps1** ](../../../quickstarts/convert-model.md#run-the-conversion) bez argumentu "-UseContainerSas", skript vypíše všechny výše uvedené hodnoty pro místo tokenu SAS. ![Propojený model](./media/converted-output.png)
 1. V době, kdy je to potřeba, odeberte nebo zakažte GameObject **TestModel**, abyste uvolnili prostor pro načtení vlastního modelu.
 1. Nahrajte scénu a připojte se ke vzdálené relaci.
-1. Klikněte pravým tlačítkem na **RemoteRenderingCoordinator** a vyberte **načíst propojený vlastní model**. \
+1. Klikněte pravým tlačítkem na **RemoteRenderingCoordinator** a vyberte **načíst propojený vlastní model**.
     ![Načíst propojený model](./media/load-linked-model.png)
 
 Tyto kroky zvýšily zabezpečení aplikace odebráním tokenu SAS z místní aplikace.
@@ -176,16 +176,13 @@ Skript **RemoteRenderingCoordinator** má delegáta s názvem **ARRCredentialGet
 1. Postupujte podle pokynů v tématu [Postupy: Konfigurace ověřování pro nasazené aplikace](../../../how-tos/authentication.md#authentication-for-deployed-applications), konkrétně budete postupovat podle pokynů uvedených v dokumentaci k Azure AD anchorch kotev v dokumentaci k [ověřování uživatelů Azure AD](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication). Zahrnuje registraci nové aplikace Azure Active Directory a konfiguraci přístupu k instanci ARR.
 1. Po nakonfigurování nové aplikace AAD ověřte, že vaše aplikace AAD vypadá jako na následujících obrázcích:
 
-    **Aplikace AAD – ověřování >**\
-    ![Ověřování aplikací](./media/app-authentication-public.png)
+    **Aplikace AAD – ověřování >** ![ Ověřování aplikací](./media/app-authentication-public.png)
 
-    **Aplikace AAD – > oprávnění API**\
-    ![Rozhraní API pro aplikace](./media/request-api-permissions-step-five.png)
+    **Aplikace AAD – > oprávnění API** ![ Rozhraní API pro aplikace](./media/request-api-permissions-step-five.png)
 
 1. Po nakonfigurování účtu vzdáleného vykreslování ověřte, že vaše konfigurace vypadá jako na následujícím obrázku:
 
-    **AAR-> AccessControl (IAM)**\
-    ![Role ARR](./media/azure-remote-rendering-role-assignment-complete.png)
+    **AAR-> AccessControl (IAM)** ![ Role ARR](./media/azure-remote-rendering-role-assignment-complete.png)
 
     >[!NOTE]
     > Role *vlastníka* není dostatečná ke správě relací prostřednictvím klientské aplikace. Pro každého uživatele, kterému chcete udělit možnost Spravovat relace, musíte poskytnout **klienta vzdáleného vykreslování**role. Pro každého uživatele, který chcete spravovat relace a převod modelů, je nutné zadat **Správce vzdáleného vykreslování**role.
@@ -356,10 +353,8 @@ Pokud je v editoru Unity aktivní ověřování AAD, budete se muset ověřit p�
 
 1. Stiskněte Přehrát v editoru Unity a vyjádření souhlasu s spuštěním relace.
     Vzhledem k tomu, že komponenta **AADAuthentication** má kontroler zobrazení, automaticky se připojovat k zobrazení výzvy po modálním panelu autorizace relace.
-1. Postupujte podle pokynů, které najdete na panelu napravo od **AppMenu**. \
-    Mělo by se zobrazit něco podobného: \
-    ![Součást ověřování AAD](./media/device-flow-instructions.png)\
-    Po zadání poskytnutého kódu na sekundární zařízení (nebo v prohlížeči na stejném zařízení) a přihlášení pomocí vašich přihlašovacích údajů se přístupový token vrátí do žádající aplikace, v tomto případě v editoru Unity.
+1. Postupujte podle pokynů uvedených na panelu napravo od **AppMenu**.
+    Měla by se zobrazit podobný text: ![ Komponenta ověření AAD ](./media/device-flow-instructions.png) po zadání poskytnutého kódu na sekundárním zařízení (nebo v prohlížeči na stejném zařízení) a přihlášení pomocí vašich přihlašovacích údajů se přístupový token vrátí do žádající aplikace, v tomto případě v editoru Unity.
 1. Po tomto okamžiku by všechno v aplikaci mělo normálně pokračovat. Pokud nebudete postupovat podle očekávaných fází, podívejte se na konzolu Unity s případnými chybami.
 
 ## <a name="build-to-device"></a>Sestavit do zařízení

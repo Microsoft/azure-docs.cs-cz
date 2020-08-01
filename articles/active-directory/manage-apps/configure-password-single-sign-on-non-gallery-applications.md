@@ -10,36 +10,36 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: c3f9f96c6429d4925c60a56cd450a9c2ee7dde24
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1193e6f9ed637f6bd28b2fef6488b2d4902ec67b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419950"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459381"
 ---
 # <a name="configure-password-based-single-sign-on"></a>Konfigurace jednotného přihlašování založeného na heslech
 
-V [řadě rychlých startů](view-applications-portal.md) při správě aplikací jste zjistili, jak používat Azure AD jako zprostředkovatele identity (IDP) pro aplikaci. V průvodci rychlým startem můžete nastavit jednotné přihlašování založené na SAML. Kromě SAML existuje možnost jednotného přihlašování založeného na heslech. V tomto článku najdete další podrobnosti o možnosti založené na hesle pro jednotné přihlašování. 
+V [řadě rychlých startů](view-applications-portal.md) při správě aplikací jste zjistili, jak používat Azure AD jako zprostředkovatele identity (IDP) pro aplikaci. V průvodci rychlým startem můžete nastavit jednotné přihlašování založené na SAML. Další možností je jednotné přihlašování založené na heslech. Tento článek se podrobněji týká možnosti jednotného přihlašování založeného na heslech. 
 
-Tato možnost je k dispozici pro všechny webové stránky s přihlašovací stránkou HTML. Jednotné přihlašování založené na heslech, označované taky jako trezor hesel, umožňuje spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je to také užitečné ve scénářích, kdy je potřeba, aby několik uživatelů sdílelo jeden účet, například k účtům aplikací sociálních médií vaší organizace. 
+Tato možnost je k dispozici pro všechny webové stránky s přihlašovací stránkou HTML. Jednotné přihlašování založené na heslech se taky označuje jako trezor hesel. Jednotné přihlašování pomocí hesla umožňuje spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je také užitečné, když několik uživatelů potřebuje sdílet jeden účet, například k účtům aplikací sociálních médií vaší organizace.
 
 Jednotné přihlašování založené na heslech je skvělým způsobem, jak rychle začít integrovat aplikace do služby Azure AD a umožní vám:
 
-- Povolení jednotného přihlašování pro uživatele díky bezpečnému ukládání a přehrávání uživatelských jmen a hesel pro aplikaci, kterou jste integrací se službou Azure AD.
+- Povolení jednotného přihlašování pro uživatele díky bezpečnému ukládání a přehrávání uživatelských jmen a hesel
 
 - Podpora aplikací, které vyžadují více polí přihlašování pro aplikace, které pro přihlášení vyžadují víc než jenom uživatelské jméno a heslo
 
-- Přizpůsobení popisků vstupních polí uživatelského jména a hesla, která se uživatelům zobrazí na [přístupovém panelu aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) při zadání přihlašovacích údajů
+- Přizpůsobte popisky polí uživatelské jméno a heslo, které uživatelé uvidí na [přístupovém panelu aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) při zadávání přihlašovacích údajů.
 
-- Umožněte uživatelům zadání vlastních uživatelských jmen a hesel pro všechny existující účty aplikací, které zadávají ručně.
+- Umožněte uživatelům zadání vlastních uživatelských jmen a hesel pro všechny existující účty aplikací, které píšete ručně.
 
 - Umožňuje členům obchodní skupiny zadat uživatelská jména a hesla přiřazená uživateli pomocí funkce [Samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) .
 
--   Umožňuje správci zadat uživatelské jméno a heslo, které mají jednotlivci nebo skupiny používat při přihlašování k aplikaci pomocí funkce aktualizovat přihlašovací údaje. 
+-   Umožňuje správci zadat uživatelské jméno a heslo, které mají jednotlivci nebo skupiny používat při přihlášení k aplikaci pomocí funkce aktualizovat přihlašovací údaje. 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Použití Azure AD jako zprostředkovatele identity a nastavení jednotného přihlašování (SSO) může být jednoduché nebo složité v závislosti na používané aplikaci. Některé aplikace je možné nastavit jenom pomocí několika akcí. Jiné vyžadují hloubkovou konfiguraci. K rychlému navýšení si Projděte příručku [rychlý Start](view-applications-portal.md) při správě aplikací. Pokud je aplikace, kterou přidáváte, jednoduchá, pak pravděpodobně nebudete muset číst tento článek. Pokud aplikace, kterou přidáváte, vyžaduje vlastní konfiguraci a potřebujete použít jednotné přihlašování založené na heslech, bude tento článek pro vás.
+Použití Azure AD jako zprostředkovatele identity (IdP) a nastavení jednotného přihlašování (SSO) může být jednoduché nebo složité v závislosti na používané aplikaci. Některé aplikace je možné nastavit jenom pomocí několika akcí. Jiné vyžadují hloubkovou konfiguraci. K rychlému navýšení si Projděte příručku [rychlý Start](view-applications-portal.md) při správě aplikací. Pokud je aplikace, kterou přidáváte, jednoduchá, pak pravděpodobně nebudete muset číst tento článek. Pokud aplikace, kterou přidáváte, vyžaduje vlastní konfiguraci a potřebujete použít jednotné přihlašování založené na heslech, bude tento článek pro vás.
 
 > [!IMPORTANT] 
 > Existují některé scénáře, kdy možnost **jednotného přihlašování** nebude v navigaci pro aplikaci v **podnikových aplikacích**. 
@@ -51,13 +51,13 @@ Použití Azure AD jako zprostředkovatele identity a nastavení jednotného př
 
 ## <a name="basic-configuration"></a>Základní konfigurace
 
-V [řadě rychlý Start](view-applications-portal.md)jste zjistili, jak přidat aplikaci do svého tenanta, aby Azure AD věděl, že se používá jako zprostředkovatel identity (IDP) pro aplikaci. Některé aplikace jsou už předem nakonfigurované a zobrazují se v galerii Azure AD. Ostatní aplikace nejsou v galerii a Vy musíte vytvořit obecnou aplikaci a nakonfigurovat ji ručně. V závislosti na aplikaci nemusí být možnost jednotného přihlašování založená na heslech k dispozici. Pokud se seznam možností založených na heslech na stránce jednotného přihlašování pro aplikaci nezobrazuje, není k dispozici.
+V [řadě rychlých startů](view-applications-portal.md)jste zjistili, jak do svého tenanta přidat aplikaci, která umožňuje, aby Azure AD věděl, že se používá jako zprostředkovatel identity (IDP) pro aplikaci. Některé aplikace jsou už předem nakonfigurované a zobrazují se v galerii Azure AD. Ostatní aplikace nejsou v galerii a Vy musíte vytvořit obecnou aplikaci a nakonfigurovat ji ručně. V závislosti na aplikaci nemusí být možnost jednotného přihlašování založená na heslech k dispozici. Pokud se seznam možností založených na heslech na stránce jednotného přihlašování pro aplikaci nezobrazuje, není k dispozici.
 
 Konfigurační stránka jednotného přihlašování založená na heslech je jednoduchá. Obsahuje jenom adresu URL přihlašovací stránky, kterou používá aplikace. Tento řetězec musí být stránka, která obsahuje pole pro zadání uživatelského jména.
 
 Po zadání adresy URL vyberte **Uložit**. Azure AD analyzuje kód HTML přihlašovací stránky pro pole pro zadání uživatelského jména a hesla. Pokud je pokus úspěšný, jste hotovi.
  
-Dalším krokem je [přiřazení uživatelů nebo skupin k aplikaci](methods-for-assigning-users-and-groups.md). Po přiřazení uživatelů a skupin můžete zadat přihlašovací údaje, které se budou používat jménem uživatele při přihlášení k aplikaci. Vyberte **Uživatelé a skupiny**, zaškrtněte políčko pro řádek uživatele nebo skupiny a pak vyberte **Aktualizovat přihlašovací údaje**. Pak zadejte uživatelské jméno a heslo, které chcete použít jménem uživatele nebo skupiny. V opačném případě budou uživatelé vyzváni k zadání přihlašovacích údajů sami při spuštění.
+Dalším krokem je [přiřazení uživatelů nebo skupin k aplikaci](methods-for-assigning-users-and-groups.md). Po přiřazení uživatelů a skupin můžete zadat přihlašovací údaje, které se mají použít pro uživatele při přihlášení k aplikaci. Vyberte **Uživatelé a skupiny**, zaškrtněte políčko pro řádek uživatele nebo skupiny a pak vyberte **Aktualizovat přihlašovací údaje**. Nakonec zadejte uživatelské jméno a heslo, které se má použít pro uživatele nebo skupinu. Pokud to neuděláte, uživatelé budou vyzváni k zadání přihlašovacích údajů sami při spuštění.
  
 
 ## <a name="manual-configuration"></a>Ruční konfigurace

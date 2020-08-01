@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: b1e550fde0d43b4d2c7bd1a64856edeac607cab3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14beaf4fc0f207abe652a9ed62c974f7ab4b8e79
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999084"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449108"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-windows"></a>Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager ve Windows
 
@@ -197,7 +197,7 @@ Co je potřeba vzít v úvahu:
 
 Záměrné, jaké služby teď chcete v Azure Resource Manager povolit.  Spousta zákazníků pro svá prostředí Azure vyhledá méně závažná řešení:
 
-- [Access Control na základě rolí](../../role-based-access-control/overview.md).
+- [Řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 - [Šablony Azure Resource Manager pro snazší a lepší řízené nasazení](../../azure-resource-manager/templates/overview.md).
 - [Značky](../../azure-resource-manager/management/tag-resources.md).
 - [Řízení aktivit](../../azure-resource-manager/management/view-activity-logs.md)

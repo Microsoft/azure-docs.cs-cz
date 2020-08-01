@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: b33bd5ba20e21d757e412e9dac7c474308c4561d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9c4e9676208a5d2cfa8c0c04a97675a3c634e3d5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077152"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446785"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Přesun portálu OMS do Azure
 
@@ -32,7 +32,7 @@ Následující změny jsou oznámeny vyřazením portálu OMS. Každá z těchto
 - [Mobilní aplikace OMS](#oms-mobile-app) je zastaralá. 
 - [Řešení NSG se nahrazuje](#azure-network-security-group-analytics) vylepšenými funkcemi dostupnými prostřednictvím řešení Analýza provozu.
 - Nová připojení z System Center Operations Manager pro Log Analytics vyžadují [aktualizované sady Management Pack](#system-center-operations-manager).
-- Podrobnosti o změnách [Update Management](../../automation/automation-update-management.md)najdete v tématu [migrace nasazení aktualizace OMS do Azure](../../automation/migrate-oms-update-deployments.md) .
+- Podrobnosti o změnách [Update Management](../../automation/update-management/update-mgmt-overview.md)najdete v tématu [migrace nasazení aktualizace OMS do Azure](../../automation/migrate-oms-update-deployments.md) .
 
 
 ## <a name="what-should-i-do-now"></a>Co mám dělat?

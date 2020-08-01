@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: e358742635d9ed939bbc62bb0d54e8169382e7de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c2845cd0fad8375db67d1aa86333f144222dc0aa
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043496"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446323"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services kvóty a omezení
@@ -28,14 +28,14 @@ V tomto článku jsou uvedené některé z nejběžnějších omezení Microsoft
 
 ## <a name="account-limits"></a>Omezení účtu
 
-| Prostředek | Výchozí omezení | 
-| --- | --- | 
+| Prostředek | Výchozí omezení |
+| --- | --- |
 | [Účty Media Services](media-services-account-concept.md) v jednom předplatném | 25 (pevné) |
 
 ## <a name="asset-limits"></a>Omezení assetu
 
-| Prostředek | Výchozí omezení | 
-| --- | --- | 
+| Prostředek | Výchozí omezení |
+| --- | --- |
 | [Prostředky](assets-concept.md) na účet Media Services | 1 000 000|
 
 ## <a name="storage-limits"></a>Omezení úložiště
@@ -86,9 +86,10 @@ Všechny záznamy úloh ve vašem účtu starším než 90 dnů budou automatick
 
 ## <a name="packaging--delivery-limits"></a>Zabalení & omezení doručení
 
-| Prostředek | Výchozí omezení | 
-| --- | --- | 
+| Prostředek | Výchozí omezení |
+| --- | --- |
 | [Koncové body streamování](streaming-endpoint-concept.md) (zastavené nebo spuštěné) na účet Media Services|2 |
+| Jednotky streamování Premium | 10 |
 | [Filtry dynamických manifestů](filters-dynamic-manifest-overview.md)|100|
 | [Zásady streamování](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | Jedinečné [Lokátory streamování](streaming-locators-concept.md) přidružené k prostředku v jednom okamžiku | 100<sup>(7)</sup> (fixní) |

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 4d337c9cff4b0d7dbfb18a7ba0cf213265286017
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5e1f2108c5607917c77330f362952f960e57e03a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289156"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447904"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Řešení chyb občasného odchozího připojení v Azure App Service
 
@@ -38,7 +38,7 @@ Když aplikace nebo funkce rychle otevřou nové připojení, můžou rychle vy�
 
 ## <a name="avoiding-the-problem"></a>Zamezení problému
 
-Pokud je vaším cílem služba Azure, která podporuje koncové body služby, můžete se vyhnout problémům s vyčerpáním portů SNAT pomocí služeb [Integrace virtuální](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) sítě a koncových bodů služby. Při použití integrace virtuální sítě a umístění koncových bodů služby v integrační podsíti nebudou mít odchozí přenosy na tyto služby omezení portů SNAT.
+Pokud je vaším cílem služba Azure, která podporuje koncové body služby, můžete se vyhnout problémům s vyčerpáním portů SNAT pomocí [místní služby virtuální](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) sítě a koncových bodů služby nebo privátních koncových bodů. Pokud používáte místní integraci virtuální sítě a umístění koncových bodů služby v podsíti Integration, nebude mít odchozí přenosy na tyto služby omezení portů SNAT. Podobně platí, že pokud použijete místní integraci virtuální sítě a soukromé koncové body, nebudete mít k tomuto cíli žádné odchozí problémy portů SNAT. 
 
 Vyloučení problému s portem SNAT znamená, že se vyhnete vytváření nových připojení opakovaně ke stejnému hostiteli a portu.
 

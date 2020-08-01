@@ -3,12 +3,12 @@ title: Azure Machine Learning jako zdroj Event Grid
 description: Popisuje vlastnosti, které jsou k dispozici pro pracovní prostor Machine Learning události s Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: e256dbcef8c4e4a1354455843e4466d666c7d7b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb8cd76829622962b642580bbda7f2a655604c2f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090667"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458038"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning jako zdroj Event Grid
 
@@ -257,11 +257,11 @@ Datový objekt má pro každý typ události následující vlastnosti:
 ## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
 | Nadpis | Popis |
 | ----- | ----- |
-| [Využívání Azure Machine Learningch událostí](../machine-learning/concept-event-grid-integration.md) | Přehled Integrace Azure Machine Learning s Event Grid |
+| [Využívání Azure Machine Learningch událostí](../machine-learning/how-to-use-event-grid.md) | Přehled Integrace Azure Machine Learning s Event Grid |
 
 ## <a name="next-steps"></a>Další kroky
 
 * Úvod do Azure Event Grid najdete v tématu [co je Event Grid?](overview.md)
 * Další informace o vytváření předplatného Azure Event Grid najdete v tématu [schéma předplatného Event Grid](subscription-creation-schema.md) .
-* Úvod k použití Azure Event Grid s Azure Machine Learning najdete v tématu věnovaném zpracování [Azure Machine Learningch událostí](/azure/machine-learning/concept-event-grid-integration) .
-* Příklad použití Azure Event Grid s Azure Machine Learning najdete v tématu [vytváření pracovních postupů pro Machine Learning řízených událostmi](/azure/machine-learning/how-to-use-event-grid) .
+* Úvod k použití Azure Event Grid s Azure Machine Learning najdete v tématu věnovaném zpracování [Azure Machine Learningch událostí](../machine-learning/how-to-use-event-grid.md) .
+* Příklad použití Azure Event Grid s Azure Machine Learning najdete v tématu [vytváření pracovních postupů pro Machine Learning řízených událostmi](../machine-learning/how-to-use-event-grid.md) .

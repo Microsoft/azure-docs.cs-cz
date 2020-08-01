@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 043c30af6d28e61a532c8030dabdc17b73303e7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b139441adb02f5fb33ae8c4a70aaa9b423f0d0e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360125"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447098"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: povolení zpětného zápisu zařízení
 > [!NOTE]
@@ -61,7 +61,7 @@ Nainstalujte Azure AD Connect pomocí vlastních nebo expresních nastavení. Sp
 
     a. **Zadejte přihlašovací údaje podnikového správce**: Pokud jsou k dispozici přihlašovací údaje správce podniku pro doménovou strukturu, ve které se musí zařízení zapsat zpátky, Azure AD Connect se automaticky připraví doménová struktura během konfigurace zpětného zápisu zařízení.
 
-    b. **Stažení skriptu PowerShellu**: Azure AD Connect automaticky vygeneruje skript prostředí PowerShell, který může připravit službu Active Directory pro zpětný zápis zařízení. V případě, že se v Azure AD Connect nedají zadat přihlašovací údaje správce podniku, navrhne se stažení skriptu PowerShellu. Poskytněte staženému skriptu PowerShellu **CreateDeviceContainer. PSQ** správci podnikové sítě, kde se budou zařízení zapisovat zpátky.
+    b. **Stažení skriptu PowerShellu**: Azure AD Connect automaticky vygeneruje skript prostředí PowerShell, který může připravit službu Active Directory pro zpětný zápis zařízení. V případě, že se v Azure AD Connect nedají zadat přihlašovací údaje správce podniku, navrhne se stažení skriptu PowerShellu. Poskytněte staženému skriptu PowerShellu **CreateDeviceContainer.ps1** pro podnikového správce doménové struktury, kde se budou zařízení zapisovat zpátky.
     ![Příprava doménové struktury služby Active Directory](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     Pro přípravu doménové struktury služby Active Directory se provádí následující operace:

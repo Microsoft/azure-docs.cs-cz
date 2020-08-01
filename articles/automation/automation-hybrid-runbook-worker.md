@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 69680fbb442b4e636b72f480ed21f36924362a13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4d29979e28140b728478d405db934cb41783f4b0
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024822"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448073"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Přehled funkce Hybrid Runbook Worker
 
@@ -90,13 +90,13 @@ Azure Automation Hybrid Runbook Worker lze v Azure Government použít pro podpo
 
 ## <a name="update-management-on-hybrid-runbook-worker"></a>Update Management v Hybrid Runbook Worker
 
-Pokud je povolená Azure Automation [Update Management](automation-update-management.md) , bude se každý počítač připojený k vašemu Log Analytics pracovnímu prostoru automaticky konfigurovat jako Hybrid Runbook Worker. Každý pracovní proces může podporovat Runbooky cílené na správu aktualizací.
+Pokud je povolená Azure Automation [Update Management](update-management/update-mgmt-overview.md) , bude se každý počítač připojený k vašemu Log Analytics pracovnímu prostoru automaticky konfigurovat jako Hybrid Runbook Worker. Každý pracovní proces může podporovat Runbooky cílené na správu aktualizací.
 
 Počítač nakonfigurovaný tímto způsobem není zaregistrovaný u žádné Hybrid Runbook Worker skupiny, které už jsou ve vašem účtu Automation definované. Počítač můžete přidat do skupiny Hybrid Runbook Worker, ale je nutné použít stejný účet pro Update Management a členství ve skupině Hybrid Runbook Worker. Tato funkce se přidala do 7.2.12024.0 verze Hybrid Runbook Worker.
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Update Management adres pro Hybrid Runbook Worker
 
-Update Management další požadavky na konfiguraci sítě, které jsou popsané v části [Plánování sítě](automation-update-management.md#ports) , najdete na standardních adresách a portech potřebných pro Hybrid Runbook Worker.
+Update Management další požadavky na konfiguraci sítě, které jsou popsané v části [Plánování sítě](update-management/update-mgmt-overview.md#ports) , najdete na standardních adresách a portech potřebných pro Hybrid Runbook Worker.
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Konfigurace stavu Azure Automation na Hybrid Runbook Worker
 

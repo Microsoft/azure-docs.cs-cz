@@ -3,12 +3,12 @@ title: Matice podpory pro zotavení po havárii VMware/fyzický v Azure Site Rec
 description: Shrnuje podporu pro zotavení po havárii virtuálních počítačů VMware a fyzického serveru do Azure pomocí Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: c7eebfee771a9c65901bd89336e49c026a944a65
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56c86993e4e98764bc7e3ce04180f9e870cc612d
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528855"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458021"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -91,7 +91,7 @@ Linux: CentOS | 5,2 až 5,11</b><br/> 6,1 až 6,10</b><br/> 7,0 až 7,8<br/> <br
 Ubuntu | Server Ubuntu 14,04 LTS [(kontrola podporovaných verzí jádra)](#ubuntu-kernel-versions)<br/><br/>Server Ubuntu 16,04 LTS [(kontrola podporovaných verzí jádra)](#ubuntu-kernel-versions) </br> Server Ubuntu 18,04 LTS [(kontrola podporovaných verzí jádra)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 (zahrnuje podporu pro všechny 7. *x*, 8. *x* verze) [(kontrola podporovaných verzí jádra)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4, [SP5](https://support.microsoft.com/help/4570609) [(kontrola podporovaných verzí jádra)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(kontrola podporovaných verzí jádra)](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Upgrade replikovaných počítačů z SUSE Linux Enterprise Server 11 SP3 na SP4 se nepodporuje. Pokud chcete upgradovat, zakažte replikaci a po upgradu ji znovu povolte.
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) [7,8](https://support.microsoft.com/help/4573888/), [8,0](https://support.microsoft.com/help/4573888/), [8,1](https://support.microsoft.com/help/4573888/), [8,2](https://support.microsoft.com/help/4573888/) <br/><br/> Spuštění jádra kompatibilního s Red Hat nebo nedělitelné podnikové jádro verze 3, 4 & 5 (UEK3, UEK4, UEK5)
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [8,0](https://support.microsoft.com/help/4573888/), [8,2](https://support.microsoft.com/help/4573888/)  <br/> Spuštění jádra kompatibilního s Red Hat nebo nedělitelné podnikové jádro verze 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>[8.1](https://support.microsoft.com/help/4573888/)<br/>Je podporováno spouštění všech jader UEK a jádra RedHat <= 3.10.0-1062. *. Podpora pro zbytek jader RedHat bude k dispozici v 9,36. konci srpna se očekává.
 
 > [!Note]
 > Pro každou verzi Windows Azure Site Recovery podporuje jenom sestavení [LTSC (Long-Term Servicing Channel)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) .  [Pololetní verze kanálů](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) v tuto chvíli nejsou aktuálně podporovány.
@@ -174,16 +174,16 @@ Přidat disk na replikovaný virtuální počítač | Nepodporováno<br/> Zakaž
 **Komponenta** | **Podporováno**
 --- | ---
 Seskupování síťových adaptérů hostitele | Podporováno pro virtuální počítače VMware. <br/><br/>Není podporováno pro replikaci fyzického počítače.
-Síť VLAN sítě hostitele | Yes.
-Síť IPv4 hostitele | Yes.
+Síť VLAN sítě hostitele | Ano.
+Síť IPv4 hostitele | Ano.
 Síť IPv6 hostitele | Ne.
 Seskupování síťových adaptérů hosta/serveru | Ne.
-Síť IPv4 hosta/serveru | Yes.
+Síť IPv4 hosta/serveru | Ano.
 Síť s protokolem IPv6 Host/Server | Ne.
-Statická IP adresa sítě hosta/serveru (Windows) | Yes.
-Statická IP adresa sítě hosta nebo serveru (Linux) | Yes. <br/><br/>Virtuální počítače jsou nakonfigurovány na používání protokolu DHCP při navrácení služeb po obnovení.
-Síť s více síťovými kartami Host/Server | Yes.
-Přístup k Site Recovery službě přes soukromé odkazy | Yes. [Přečtěte si další informace](hybrid-how-to-enable-replication-private-endpoints.md).
+Statická IP adresa sítě hosta/serveru (Windows) | Ano.
+Statická IP adresa sítě hosta nebo serveru (Linux) | Ano. <br/><br/>Virtuální počítače jsou nakonfigurovány na používání protokolu DHCP při navrácení služeb po obnovení.
+Síť s více síťovými kartami Host/Server | Ano.
+Přístup k Site Recovery službě přes soukromé odkazy | Ano. [Přečtěte si další informace](hybrid-how-to-enable-replication-private-endpoints.md).
 
 
 ## <a name="azure-vm-network-after-failover"></a>Síť virtuálních počítačů Azure (po převzetí služeb při selhání)
@@ -199,34 +199,34 @@ Adresa Vyhrazená IP adresa | Ano
 IPv4 | Ano
 Zachovat zdrojovou IP adresu | Ano
 Koncové body služby virtuální sítě Azure<br/> | Ano
-Urychlení sítě | No
+Urychlení sítě | Ne
 
 ## <a name="storage"></a>Storage
 **Komponenta** | **Podporováno**
 --- | ---
 Dynamický disk | Disk s operačním systémem musí být základní disk. <br/><br/>Datové disky můžou být dynamické disky.
-Konfigurace disku Docker | No
+Konfigurace disku Docker | Ne
 Hostitelský systém souborů NFS | Ano pro VMware<br/><br/> Ne pro fyzické servery
 SÍŤ SAN hostitele (iSCSI/FC) | Ano
 Síti vSAN hostitele | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
 Funkce Multipath (MPIO) hostitele | Ano, Testováno pomocí Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM pro CLARiiON
 Virtuální svazky hostitele (VVols) | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
 VMDK nebo server typu Host | Ano
-Disk sdíleného clusteru Host/Server | No
-Zašifrovaný disk hosta/Server | No
-Host/Server NFS NFS | No
+Disk sdíleného clusteru Host/Server | Ne
+Zašifrovaný disk hosta/Server | Ne
+Host/Server NFS NFS | Ne
 ISCSI Host/Server | Migrace – Ano<br/>V případě zotavení po havárii – technologie iSCSI navrácení služeb po obnovení jako připojeného disku k virtuálnímu počítači.
-Host/server SMB 3,0 | No
+Host/server SMB 3,0 | Ne
 Host/Server – RDM | Ano<br/><br/> Není k dispozici pro fyzické servery
 Disk hosta/Server > 1 TB | Ano, disk musí být větší než 1024 MB.<br/><br/>Až 8 192 GB při replikaci do spravovaných disků (9,26 verze a vyšší)<br></br> Až 4 095 GB při replikaci do účtů úložiště
-Disk hosta/Server s velikostí logického sektoru 4K a 4k | No
-Disk hosta/serveru s velikostí logického sektoru 4K a 512-byte | No
+Disk hosta/Server s velikostí logického sektoru 4K a 4k | Ne
+Disk hosta/serveru s velikostí logického sektoru 4K a 512-byte | Ne
 Svazek typu Host/Server s prokládaným diskem >4 TB | Ano
 Správa logických svazků (LVM)| Silné zřizování – Ano <br></br> Dynamické zajišťování – ne
-Host/Server – prostory úložiště | No
-Host/Server – Hot přidat/odebrat disk | No
+Host/Server – prostory úložiště | Ne
+Host/Server – Hot přidat/odebrat disk | Ne
 Host/Server – vyloučit disk | Ano
-Funkce Multipath Host/Server (MPIO) | No
+Funkce Multipath Host/Server (MPIO) | Ne
 Oddíly GPT/Server GPT | Z [kumulativní aktualizace 37](https://support.microsoft.com/help/4508614/) (verze 9,25 služby mobility) (verze) a vyšší je podporované pět oddílů. Dříve byly podporovány předchozí čtyři.
 ReFS | Odolný systém souborů je podporován se službou mobility verze 9,23 nebo vyšší.
 Spuštění hosta/serveru EFI/UEFI | – Podporováno pro všechna [operačních systémech rozhraní Azure Marketplace UEFI](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-images-in-azure-marketplace) s agentem Site Recovery mobility verze 9,30 a vyšší. <br/> -Typ spouštění zabezpečeného rozhraní UEFI není podporován. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#on-premises-vs-azure-generation-2-vms)
@@ -235,9 +235,9 @@ Spuštění hosta/serveru EFI/UEFI | – Podporováno pro všechna [operačních
 
 |**Typ replikace**   |**Podporováno**  |
 |---------|---------|
-|Přenosy dat se sníženou zátěží (ODX)    |       No  |
-|Offline osazení        |   No      |
-| Azure Data Box | No
+|Přenosy dat se sníženou zátěží (ODX)    |       Ne  |
+|Offline osazení        |   Ne      |
+| Azure Data Box | Ne
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -246,16 +246,16 @@ Spuštění hosta/serveru EFI/UEFI | – Podporováno pro všechna [operačních
 (Locally redundant storage) Místně redundantní úložiště | Ano
 Geograficky redundantní úložiště | Ano
 Geograficky redundantní úložiště s přístupem pro čtení | Ano
-Studené úložiště | No
-Horké úložiště| No
-Objekty blob bloku | No
+Studené úložiště | Ne
+Horké úložiště| Ne
+Objekty blob bloku | Ne
 Šifrování v Rest (SSE)| Ano
 Šifrování v klidovém případě (CMK)| Ano (přes PowerShell AZ 3.3.0 Module a vyšší)
 Dvojité šifrování v klidovém umístění | Ano (přes PowerShell AZ 3.3.0 Module a vyšší). Další informace najdete v podporovaných oblastech pro [systémy Windows](../virtual-machines/windows/disk-encryption.md) a [Linux](../virtual-machines/linux/disk-encryption.md).
 Premium Storage | Ano
 Možnost zabezpečeného přenosu | Ano
-Služba import/export | No
-Azure Storage brány firewall pro virtuální sítě | Yes.<br/> Nakonfigurováno na cílovém účtu úložiště nebo úložiště mezipaměti (používá se k ukládání dat replikace).
+Služba import/export | Ne
+Azure Storage brány firewall pro virtuální sítě | Ano.<br/> Nakonfigurováno na cílovém účtu úložiště nebo úložiště mezipaměti (používá se k ukládání dat replikace).
 Účty úložiště pro obecné účely v2 (horká a studená úroveň) | Ano (cena za transakce je podstatně vyšší pro V2 v porovnání s V1)
 
 ## <a name="azure-compute"></a>Výpočetní prostředí Azure
@@ -263,7 +263,7 @@ Azure Storage brány firewall pro virtuální sítě | Yes.<br/> Nakonfigurován
 **Funkce** | **Podporováno**
 --- | ---
 Skupiny dostupnosti | Ano
-Zóny dostupnosti | No
+Zóny dostupnosti | Ne
 ZDROJ | Ano
 Spravované disky | Ano
 
@@ -319,15 +319,15 @@ Maximální četnost změn dat za den s podporou procesového serveru | 2 TB
 
 **Akce** | **Podporováno**
 --- | ---
-Přesunout trezor mezi skupinami prostředků | No
-Přesun trezoru v rámci předplatných a mezi nimi | No
-Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků | No
-Přesuňte úložiště, síť, virtuální počítače Azure v rámci i napříč předplatnými. | No
+Přesunout trezor mezi skupinami prostředků | Ne
+Přesun trezoru v rámci předplatných a mezi nimi | Ne
+Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků | Ne
+Přesuňte úložiště, síť, virtuální počítače Azure v rámci i napříč předplatnými. | Ne
 
 
 ## <a name="obtain-latest-components"></a>Získat nejnovější součásti
 
-**Název** | **Popis** | **Podrobnosti**
+**Název** | **Description** | **Podrobnosti**
 --- | --- | ---
 Konfigurační server | Místně nainstalované.<br/> Koordinuje komunikaci mezi místními servery VMware nebo fyzickými počítači a Azure. | - [Přečtěte si o](vmware-physical-azure-config-process-server-overview.md) konfiguračním serveru.<br/> - [Přečtěte si informace o](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) upgradu na nejnovější verzi.<br/> - [Přečtěte si informace o](vmware-azure-deploy-configuration-server.md) nastavení konfiguračního serveru.
 Procesový Server | Obvykle se instaluje na konfigurační server.<br/> Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do Azure.<br/> Jak vaše nasazení poroste, můžete přidat další procesové servery, které budou zpracovávat větší objemy replikačních přenosů. | - [Přečtěte si o](vmware-physical-azure-config-process-server-overview.md) procesovém serveru.<br/> - [Přečtěte si informace o](vmware-azure-manage-process-server.md#upgrade-a-process-server) upgradu na nejnovější verzi.<br/> - [Přečtěte si informace o](vmware-physical-large-deployment.md#set-up-a-process-server) nastavení procesových serverů se škálováním na více instancí.

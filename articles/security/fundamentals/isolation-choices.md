@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 0bcc67e80861df2827237298444175c3abdb6602
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3195c27351ba6110c784ddd8a10ea9ddfb0d903a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084040"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447346"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 
@@ -76,7 +76,7 @@ Azure RBAC má tři základní role, které se vztahují na všechny typy prost�
 
 - **Čtenář** si může zobrazit existující prostředky Azure.
 
-![Řízení přístupu na základě role v Azure](./media/isolation-choices/azure-isolation-fig3.png)
+![Řízení přístupu na základě role v Azure (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
 
 Zbývající role RBAC v Azure umožňují správu konkrétních prostředků Azure. Role Přispěvatel virtuálních počítačů například uživateli umožňuje vytvářet a spravovat virtuální počítače. Neuděluje jim přístup k Virtual Network Azure ani k podsíti, ke které se virtuální počítač připojuje.
 

@@ -7,13 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/16/2020
-ms.openlocfilehash: d28f852ad4159472b7fcb3289a322db54be8af1e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 07/29/2020
+ms.custom: generated
+ms.openlocfilehash: 753ee8eef1af1dbac9c776ed0410d2143cd71735
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387383"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449062"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -143,6 +144,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft. Features](#microsoftfeatures) |
 | [Microsoft. GuestConfiguration](#microsoftguestconfiguration) |
 | [Microsoft. HybridCompute](#microsofthybridcompute) |
+| [Microsoft. Kubernetes](#microsoftkubernetes) |
 | [Microsoft. ManagedServices](#microsoftmanagedservices) |
 | [Microsoft. Management](#microsoftmanagement) |
 | [Microsoft. PolicyInsights](#microsoftpolicyinsights) |
@@ -154,7 +156,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft. Subscription](#microsoftsubscription) |
 | **Intune** |
 | [Microsoft.Intune](#microsoftintune) |
-| **Jiné** |
+| **Další** |
 | [Microsoft. BingMaps](#microsoftbingmaps) |
 
 
@@ -567,7 +569,7 @@ Služba Azure: [Virtual Machines](../virtual-machines/index.yml), [Virtual Machi
 > | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/networkInterfaces/IPConfiguration/Read | Získá vlastnosti jedné nebo všech konfigurací IP síťového rozhraní vytvořeného pomocí sady škálování virtuálního počítače. Konfigurace protokolu IP reprezentují privátní IP adresy. |
 > | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/networkInterfaces/IPConfiguration/publicIPAddresses/číst | Získá vlastnosti veřejné IP adresy vytvořené pomocí sady škálování virtuálních počítačů. Sada škálování virtuálního počítače může vytvořit maximálně jednu veřejnou IP adresu na IPConfiguration (privátní IP adresa). |
 > | Microsoft. COMPUTE/virtualMachineScaleSets/povolených velikostí/Read | Vypíše dostupné velikosti pro vytvoření nebo aktualizaci virtuálního počítače v sadě škálování virtuálního počítače. |
-> | **Akce dataaction** | **Popis** |
+> | **Akce dataaction** | **Description** |
 > | Microsoft. COMPUTE/virtualMachines/Login/Action | Přihlaste se k virtuálnímu počítači jako běžný uživatel. |
 > | Microsoft. COMPUTE/virtualMachines/loginAsAdmin/Action | Přihlášení k virtuálnímu počítači pomocí oprávnění správce Windows nebo kořenového uživatele platformy Linux |
 
@@ -913,6 +915,9 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/firewallPolicies/JOIN/Action | Připojí se k zásadě brány firewall. Nelze upozorňovat. |
 > | Microsoft. Network/firewallPolicies/certifikáty/akce | Generování certifikátů zásad brány firewall |
 > | Microsoft. Network/firewallPolicies/DELETE | Odstraní zásady brány firewall. |
+> | Microsoft. Network/firewallPolicies/ruleCollectionGroups/Read | Načte skupinu kolekcí pravidel zásad brány firewall. |
+> | Microsoft. Network/firewallPolicies/ruleCollectionGroups/Write | Vytvoří skupinu kolekcí pravidel zásad brány firewall nebo aktualizuje existující skupinu kolekcí pravidel zásad brány firewall. |
+> | Microsoft. Network/firewallPolicies/ruleCollectionGroups/DELETE | Odstraní skupinu kolekcí pravidel zásad brány firewall. |
 > | Microsoft. Network/firewallPolicies/ruleGroups/Read | Načte skupinu pravidel zásad brány firewall. |
 > | Microsoft. Network/firewallPolicies/ruleGroups/Write | Vytvoří skupinu pravidel zásad brány firewall nebo aktualizuje stávající skupinu pravidel zásad brány firewall. |
 > | Microsoft. Network/firewallPolicies/ruleGroups/DELETE | Odstraní skupinu pravidel zásad brány firewall. |
@@ -982,6 +987,7 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/umístění/checkAcceleratedNetworkingSupport/Action | Kontroluje podporu akcelerované sítě. |
 > | Microsoft. Network/umístění/checkPrivateLinkServiceVisibility/Action | Kontroluje viditelnost služby privátního propojení. |
 > | Microsoft. Network/umístění/bareMetalTenants/Action | Přidělí nebo ověří tenanta holého klienta. |
+> | Microsoft. Network/umístění/setLoadBalancerFrontendPublicIpAddresses/Action | SetLoadBalancerFrontendPublicIpAddresses cílí na front-endové konfigurace protokolu IP se 2 nástroji pro vyrovnávání zatížení. V těle žádosti se nacházejí Azure Resource Manager ID konfigurací protokolu IP. |
 > | Microsoft. Network/Locations/autoApprovedPrivateLinkServices/Read | Získá automaticky schválené služby privátního propojení. |
 > | Microsoft. Network/Locations/availableDelegations/Read | Získá dostupná delegování. |
 > | Microsoft. Network/Locations/availablePrivateEndpointTypes/Read | Získá dostupné prostředky privátního koncového bodu. |
@@ -1087,6 +1093,7 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/p2sVpnGateways/Read | Načte objekt P2SVpnGateway. |
 > | Microsoft. Network/p2sVpnGateways/Write | Vloží P2SVpnGateway. |
 > | Microsoft. Network/p2sVpnGateways/DELETE | Odstraní objekt P2SVpnGateway. |
+> | Microsoft. Network/p2sVpnGateways/Reset/Action | Resetuje P2SVpnGateway |
 > | Microsoft. Network/p2sVpnGateways/generatevpnprofile/Action | Vygenerovat profil sítě VPN pro P2SVpnGateway |
 > | Microsoft. Network/p2sVpnGateways/getp2svpnconnectionhealth/Action | Získá stav připojení VPN P2S pro P2SVpnGateway. |
 > | Microsoft. Network/p2sVpnGateways/getp2svpnconnectionhealthdetailed/Action | Získá podrobný stav připojení P2S VPN pro P2SVpnGateway. |
@@ -1281,6 +1288,8 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/vpnGateways/vpnConnections/Read | Načte objekt VpnConnection. |
 > | Microsoft. Network/vpnGateways/vpnConnections/Write | Vloží VpnConnection. |
 > | Microsoft. Network/vpnGateways/vpnConnections/DELETE | Odstraní objekt VpnConnection. |
+> | Microsoft. Network/vpnGateways/vpnConnections/startpacketcapture/Action | Spustit zachytávání paketů pro vybrané propojení v připojení VPN |
+> | Microsoft. Network/vpnGateways/vpnConnections/stoppacketcapture/Action | Zastavit zachytávání paketů pro vybrané propojení v připojení VPN |
 > | Microsoft. Network/vpnGateways/vpnConnections/vpnLinkConnections/Read | Získá připojení VPN Link. |
 > | Microsoft. Network/vpnServerConfigurations/Read | Získat VpnServerConfiguration |
 > | Microsoft. Network/vpnServerConfigurations/Write | Vytvořit nebo aktualizovat VpnServerConfiguration |
@@ -1550,7 +1559,7 @@ Služba Azure: [úložiště](../storage/index.yml)
 > | Microsoft. Storage/storageAccounts/tableServices/Tables/Read |  |
 > | Microsoft. Storage/storageAccounts/tableServices/Tables/Write |  |
 > | Microsoft. Storage/použití/čtení | Vrátí limit a aktuální počet použití pro prostředky v zadaném předplatném. |
-> | **Akce dataaction** | **Popis** |
+> | **Akce dataaction** | **Description** |
 > | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Read | Vrátí objekt BLOB nebo seznam objektů BLOB. |
 > | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Write | Vrátí výsledek zápisu objektu BLOB. |
 > | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE | Vrátí výsledek odstranění objektu BLOB. |
@@ -1879,7 +1888,7 @@ Služba Azure: [Azure Maps](../azure-maps/index.yml)
 > | Microsoft. Maps/Accounts/privateAtlases/Read | Získejte soukromou Atlas. |
 > | Microsoft. Maps/Accounts/privateAtlases/DELETE | Odstraňte soukromou Atlas. |
 > | Microsoft. Maps/Operations/Read | Přečtěte si operace poskytovatele. |
-> | **Akce dataaction** | **Popis** |
+> | **Akce dataaction** | **Description** |
 > | Microsoft. Maps/Accounts/Services/data/Read | Umožňuje čtení dat pro služby nahrávání dat a soukromou Atlas. |
 > | Microsoft. Maps/Accounts/Services/data/DELETE | Umožňuje odstranit data pro služby nahrávání dat a soukromou Atlas. |
 > | Microsoft. Maps/Accounts/Services/data/Write | Povoluje zápis nebo aktualizaci dat pro služby nahrávání dat a soukromou Atlas. |
@@ -2056,7 +2065,7 @@ Služba Azure: [Služba signalizace Azure](../azure-signalr/index.yml)
 > | Microsoft. SignalRService/Signaler/privateEndpointConnections/Write | Schválení nebo zamítnutí připojení privátního koncového bodu |
 > | Microsoft. SignalRService/Signaler/privateEndpointConnections/Read | Čtení připojení privátního koncového bodu |
 > | Microsoft. SignalRService/Signaler/privateLinkResources/Read | Zobrazit seznam všech prostředků privátního propojení signálem |
-> | **Akce dataaction** | **Popis** |
+> | **Akce dataaction** | **Description** |
 > | Microsoft. SignalRService/Signaler/serverConnection/Write | Spusťte připojení k serveru. |
 > | Microsoft. SignalRService/Signaler/Service/accessKey/Action | Získejte dočasnou AccessKey pro podepisování ClientTokens. |
 > | Microsoft. SignalRService/Signaler/Service/clientToken/Action | Získejte ClientToken pro spuštění připojení klienta. |
@@ -2524,7 +2533,7 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/staticSites/customdomains/ověřit/akce | Ověření, jestli se vlastní doména dá přidat ke statické lokalitě |
 > | Microsoft. Web/staticSites/Functions/Read | Seznam funkcí pro statický Web |
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Kontejnery
 
 ### <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
@@ -2687,7 +2696,7 @@ Služba Azure: [Služba Azure Kubernetes (AKS)](../aks/index.yml)
 > | Microsoft. ContainerService/openShiftManagedClusters/Write | Vytvoří nový spravovaný cluster s otevřeným Shift nebo aktualizuje stávající. |
 > | Microsoft. ContainerService/openShiftManagedClusters/DELETE | Odstranění spravovaného clusteru s otevřeným Shift |
 > | Microsoft. ContainerService/Operations/Read | Zobrazí seznam operací dostupných v poskytovateli prostředků Microsoft. ContainerService. |
-> | **Akce dataaction** | **Popis** |
+> | **Akce dataaction** | **Description** |
 > | Microsoft. ContainerService/managedClusters/admissionregistration. k8s. IO/initializerconfigurations/Read | Přečte initializerconfigurations |
 > | Microsoft. ContainerService/managedClusters/admissionregistration. k8s. IO/initializerconfigurations/Write | Zapisuje initializerconfigurations |
 > | Microsoft. ContainerService/managedClusters/admissionregistration. k8s. IO/initializerconfigurations/DELETE | Odstraní nebo odstraní prostředek initializerconfigurationscollection. |
@@ -3248,6 +3257,8 @@ Služba Azure: [Azure Database for MariaDB](../mariadb/index.yml)
 > | Microsoft. DBforMariaDB/performanceTiers/Read | Vrátí seznam úrovní výkonu, které jsou k dispozici. |
 > | Microsoft. DBforMariaDB/servery/queryTexts/Action | Vrátí text pro seznam dotazů. |
 > | Microsoft. DBforMariaDB/servery/queryTexts/Action | Vrátí text dotazu. |
+> | Microsoft. DBforMariaDB/servery/spustit/akce | Spustí konkrétní server. |
+> | Microsoft. DBforMariaDB/servery/zastavit/akce | Zastaví konkrétní server. |
 > | Microsoft. DBforMariaDB/servery/číst | Vrátí seznam serverů nebo získá vlastnosti pro zadaný server. |
 > | Microsoft. DBforMariaDB/servery/Write | Vytvoří server se zadanými parametry nebo aktualizuje vlastnosti nebo značky pro zadaný server. |
 > | Microsoft. DBforMariaDB/servery/DELETE | Odstraní existující server. |
@@ -3324,6 +3335,9 @@ Služba Azure: [Azure Database for MySQL](../mysql/index.yml)
 > | Microsoft. DBforMySQL/Locations/serverKeyOperationResults/Read | Načte probíhající operace s klíči šifrovacího serveru dat. |
 > | Microsoft. DBforMySQL/Operations/Read | Vrátí seznam operací MySQL. |
 > | Microsoft. DBforMySQL/performanceTiers/Read | Vrátí seznam úrovní výkonu, které jsou k dispozici. |
+> | Microsoft. DBforMySQL/servery/spustit/akce | Spustí konkrétní server. |
+> | Microsoft. DBforMySQL/servery/zastavit/akce | Zastaví konkrétní server. |
+> | Microsoft. DBforMySQL/servery/export/akce |  |
 > | Microsoft. DBforMySQL/servery/queryTexts/Action | Vrátí text pro seznam dotazů. |
 > | Microsoft. DBforMySQL/servery/queryTexts/Action | Vrátí text dotazu. |
 > | Microsoft. DBforMySQL/servery/číst | Vrátí seznam serverů nebo získá vlastnosti pro zadaný server. |
@@ -3695,6 +3709,8 @@ Služba Azure: [Azure Cosmos DB](../cosmos-db/index.yml)
 > | Microsoft.DocumentDB/umístění/deleteVirtualNetworkOrSubnets/Action | Oznamuje Microsoft.DocumentDB, že se odstraňuje VirtualNetwork nebo podsíť. |
 > | Microsoft.DocumentDB/Locations/deleteVirtualNetworkOrSubnets/operationResults/Read | Stav čtení asynchronní operace deleteVirtualNetworkOrSubnets |
 > | Microsoft.DocumentDB/umístění/operationsStatus/číst | Přečte stav asynchronních operací. |
+> | Microsoft.DocumentDB/umístění/restorableDatabaseAccounts/číst | Přečtěte si účet databáze obnovitelné nebo seznam všech účtů databáze obnovitelné. |
+> | Microsoft.DocumentDB/umístění/restorableDatabaseAccounts/Restore/Action | Odeslat žádost o obnovení |
 > | Microsoft.DocumentDB/operationResults/Read | Stav čtení asynchronní operace |
 > | Microsoft.DocumentDB/operací/čtení | Operace čtení dostupné pro Microsoft DocumentDB  |
 
@@ -3727,6 +3743,8 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), [spravovan
 > | Microsoft. SQL/Locations/elasticPoolOperationResults/Read | Získá výsledek operace elastického fondu. |
 > | Microsoft. SQL/Locations/encryptionProtectorAzureAsyncOperation/Read | Načte probíhající operace na transparentní ochraně šifrování šifrování dat. |
 > | Microsoft. SQL/Locations/encryptionProtectorOperationResults/Read | Načte probíhající operace na transparentní ochraně šifrování šifrování dat. |
+> | Microsoft. SQL/Locations/exportManagedDatabaseOperationResults/Read | Načte operace exportu spravované databáze v průběhu. |
+> | Microsoft. SQL/Locations/exportManagedInstanceOperationResults/Read | Načte probíhající operace exportu. |
 > | Microsoft. SQL/Locations/extendedAuditingSettingsAzureAsyncOperation/Read | Načíst výsledek operace set zásad auditování objektu BLOB rozšířeného serveru |
 > | Microsoft. SQL/Locations/extendedAuditingSettingsOperationResults/Read | Načíst výsledek operace set zásad auditování objektu BLOB rozšířeného serveru |
 > | Microsoft. SQL/Locations/firewallRulesAzureAsyncOperation/Read | Získá stav operace pravidla brány firewall. |
@@ -3796,6 +3814,7 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), [spravovan
 > | Microsoft. SQL/managedInstances/databáze/číst | Načte existující spravovanou databázi. |
 > | Microsoft. SQL/managedInstances/databáze/odstranit | Odstraní existující spravovanou databázi. |
 > | Microsoft. SQL/managedInstances/databáze/Write | Vytvoří novou databázi nebo aktualizuje stávající databázi. |
+> | Microsoft. SQL/managedInstances/databáze/export/akce | Exportuje uživatelské databáze. |
 > | Microsoft. SQL/managedInstances/databáze/completeRestore/Action | Dokončena operace obnovení spravované databáze |
 > | Microsoft. SQL/managedInstances/databáze/backupLongTermRetentionPolicies/Write | Aktualizuje dlouhodobé zásady uchovávání informací pro spravovanou databázi. |
 > | Microsoft. SQL/managedInstances/databáze/backupLongTermRetentionPolicies/Read | Získá dlouhodobé zásady uchovávání informací pro spravovanou databázi. |
@@ -3838,7 +3857,6 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), [spravovan
 > | Microsoft. SQL/managedInstances/encryptionProtector/revalidate/Action | Aktualizuje vlastnosti pro zadanou ochranu pomocí šifrování serveru. |
 > | Microsoft. SQL/managedInstances/encryptionProtector/Read | Vrátí seznam chráněných šifrovacích serverů nebo získá vlastnosti pro zadané ochrany šifrování serveru. |
 > | Microsoft. SQL/managedInstances/encryptionProtector/Write | Aktualizuje vlastnosti pro zadanou ochranu pomocí šifrování serveru. |
-> | Microsoft. SQL/managedInstances/exportOperationResults/Read | Načte probíhající operace exportu. |
 > | Microsoft. SQL/managedInstances/inaccessibleManagedDatabases/Read | Načte seznam nepřístupných spravovaných databází ve spravované instanci. |
 > | Microsoft. SQL/managedInstances/Keys/číst | Vrátí seznam klíčů spravované instance nebo získá vlastnosti pro zadaný klíč spravované instance. |
 > | Microsoft. SQL/managedInstances/Keys/Write | Vytvoří klíč se zadanými parametry nebo aktualizuje vlastnosti nebo značky pro zadaný klíč spravované instance. |
@@ -4180,6 +4198,14 @@ Služba Azure: [Azure Databricks](https://docs.microsoft.com/azure/databricks/)
 > | Microsoft. datacihly/pracovní prostory/updateDenyAssignment/Action | Aktualizace přiřazení zamítnutí akcí pro skupinu spravovaných prostředků pracovního prostoru |
 > | Microsoft. datacihly/pracovní prostory/refreshWorkspaces/Action | Aktualizuje pracovní prostor s novými podrobnostmi, jako je adresa URL. |
 > | Microsoft. datacihly/pracovní prostory/dbWorkspaces/Write | Inicializuje pracovní prostor datacihly (jenom interní). |
+> | Microsoft. datacihly/pracovní prostory/privateEndpointConnectionProxies/Read | Získat proxy připojení privátního koncového bodu |
+> | Microsoft. datacihly/pracovní prostory/privateEndpointConnectionProxies/ověřit/akci | Ověření proxy serverů připojení privátního koncového bodu |
+> | Microsoft. datacihly/pracovní prostory/privateEndpointConnectionProxies/Write | Vložit proxy privátního koncového bodu připojení |
+> | Microsoft. datacihly/pracovní prostory/privateEndpointConnectionProxies/DELETE | Odstranit proxy připojení privátního koncového bodu |
+> | Microsoft. datacihly/pracovní prostory/privateEndpointConnections/Read | Výpis připojení privátních koncových bodů |
+> | Microsoft. datacihly/pracovní prostory/privateEndpointConnections/Write | Schválit připojení privátního koncového bodu |
+> | Microsoft. datacihly/pracovní prostory/privateEndpointConnections/DELETE | Odebrat připojení privátního koncového bodu |
+> | Microsoft. datacihly/pracovní prostory/privateLinkResources/Read | Seznam prostředků privátního propojení |
 > | Microsoft. datacihly/pracovní prostory/poskytovatelé/Microsoft. Insights/diagnosticSettings/Read | Nastaví dostupná nastavení diagnostiky pro pracovní prostor datacihly. |
 > | Microsoft. datacihly/pracovní prostory/zprostředkovatelé/Microsoft. Insights/diagnosticSettings/Write | Přidat nebo upravit nastavení diagnostiky. |
 > | Microsoft. datacihly/pracovní prostory/poskytovatelé/Microsoft. Insights/logDefinitions/Read | Získá dostupné definice protokolů pro pracovní prostor datacihly. |
@@ -4342,7 +4368,7 @@ Služba Azure: [Event Hubs](../event-hubs/index.yml)
 > | Microsoft. EventHub/Operations/Read | Získat operace |
 > | Microsoft. EventHub/SKU/číst | Získá seznam popisů prostředků SKU. |
 > | Microsoft. EventHub/SKU/Regions/Read | Získá seznam popisů prostředků SkuRegions. |
-> | **Akce dataaction** | **Popis** |
+> | **Akce dataaction** | **Description** |
 > | Microsoft. EventHub/obory názvů/zprávy/odeslání/akce | Odesílání zpráv |
 > | Microsoft. EventHub/obory názvů/zprávy/přijmout/akce | Příjem zpráv |
 > | Microsoft. EventHub/obory názvů/schemas/Read | Načtení schémat |
@@ -4525,7 +4551,7 @@ Služba Azure: [Služba Azure blockchain](../blockchain/workbench/index.yml)
 > | Microsoft. blockchain/Locations/checkNameAvailability/Action | Kontroluje, zda je název prostředku platný a není používán. |
 > | Microsoft. blockchain/Locations/blockchainMemberOperationResults/Read | Získá výsledky operace členů blockchain. |
 > | Microsoft. blockchain/Operations/Read | Vypíše všechny operace v poskytovateli prostředků Microsoft blockchain. |
-> | **Akce dataaction** | **Popis** |
+> | **Akce dataaction** | **Description** |
 > | Microsoft. blockchain/blockchainMembers/transactionNodes/Connect/Action | Připojí se k uzlu transakce člena blockchain. |
 
 ## <a name="ai--machine-learning"></a>AI a strojové učení
@@ -4546,10 +4572,30 @@ Služba Azure: [Azure bot Service](https://docs.microsoft.com/azure/bot-service/
 > | Microsoft. BotService/botServices/Channels/Write | Zápis kanálu služby bot |
 > | Microsoft. BotService/botServices/Channels/DELETE | Odstranění kanálu služby bot |
 > | Microsoft. BotService/botServices/Channels/listchannelwithkeys/Action | Výpis kanálů Botservice s tajnými kódy |
+> | Microsoft. BotService/botServices/Channels/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/botServices/Channels/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/botServices/Channels/Providers/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly pro &lt; název prostředku.&gt; |
+> | Microsoft. BotService/botServices/Channels/Providers/Microsoft. Insights/metricDefinitions/Read | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
 > | Microsoft. BotService/botServices/Connections/Read | Čtení připojení služby bot |
 > | Microsoft. BotService/botServices/Connections/Write | Napsání připojení služby bot |
 > | Microsoft. BotService/botServices/Connections/DELETE | Odstranění připojení služby bot |
 > | Microsoft. BotService/botServices/Connections/listwithsecrets/Write | Zápis seznamu připojení služby bot  |
+> | Microsoft. BotService/botServices/Connections/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/botServices/Connections/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/botServices/Connections/Providers/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly pro &lt; název prostředku.&gt; |
+> | Microsoft. BotService/botServices/Connections/Providers/Microsoft. Insights/metricDefinitions/Read | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/botServices/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/botServices/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/botServices/Providers/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly pro &lt; název prostředku.&gt; |
+> | Microsoft. BotService/botServices/Providers/Microsoft. Insights/metricDefinitions/Read | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/checknameavailability/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/checknameavailability/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/checknameavailability/Providers/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly pro &lt; název prostředku.&gt; |
+> | Microsoft. BotService/checknameavailability/Providers/Microsoft. Insights/metricDefinitions/Read | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/listauthserviceproviders/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/listauthserviceproviders/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
+> | Microsoft. BotService/listauthserviceproviders/Providers/Microsoft. Insights/logDefinitions/Read | Získá dostupné protokoly pro &lt; název prostředku.&gt; |
+> | Microsoft. BotService/listauthserviceproviders/Providers/Microsoft. Insights/metricDefinitions/Read | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek. |
 > | Microsoft. BotService/Locations/operationresults/Read | Přečtěte si stav asynchronní operace. |
 > | Microsoft. BotService/Operations/Read | Přečtěte si operace pro všechny typy prostředků. |
 
@@ -4584,7 +4630,7 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/Locations/checkSkuAvailability/Action | Přečte dostupné SKU pro předplatné. |
 > | Microsoft. Cognitiveservices Account/Locations/operationresults/Read | Přečtěte si stav asynchronní operace. |
 > | Microsoft. Cognitiveservices Account/Operations/Read | Vypsat všechny dostupné operace |
-> | **Akce dataaction** | **Popis** |
+> | **Akce dataaction** | **Description** |
 > | Microsoft. Cognitiveservices Account/Accounts/AnomalyDetector/časové řady/celého/Detect/Action | Tato operace generuje model pomocí celé řady, přičemž každý bod je zjištěn stejným modelem.<br>V této metodě body před a po určitém bodu se používají k určení, zda se jedná o anomálii.<br>Celá detekce může uživateli poskytnout celkový stav časových řad. |
 > | Microsoft. Cognitiveservices Account/Accounts/AnomalyDetector/časové řady/Last/Detect/Action | Tato operace vygeneruje model pomocí bodů před poslední. S touto metodou se k určení, zda je cílový bod anomálií, používají pouze historické body. Nejnovější body, které se zjišťují, se shodují se scénářem monitorování obchodních metrik v reálném čase. |
 > | Microsoft. Cognitiveservices Account/Accounts/Automatický návrh/hledání/akce | Tato operace poskytuje návrhy na daný dotaz nebo částečný dotaz. |
@@ -4930,7 +4976,7 @@ Služba Azure: [služba Machine Learning](../machine-learning/index.yml)
 > | Akce | Popis |
 > | --- | --- |
 > | Microsoft. MachineLearningServices/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků Machine Learning Services. |
-> | Microsoft. MachineLearningServices/Locations/updateQuotas/Action | Aktualizujte kvótu pro každou rodinu virtuálních počítačů v pracovním prostoru. |
+> | Microsoft. MachineLearningServices/Locations/updateQuotas/Action | Aktualizujte kvótu pro každou rodinu virtuálních počítačů v rámci předplatného nebo na úrovni pracovního prostoru. |
 > | Microsoft. MachineLearningServices/Locations/computeoperationsstatus/Read | Získá stav konkrétní výpočetní operace. |
 > | Microsoft. MachineLearningServices/umístění/kvóty/číst | Získá aktuálně přiřazené kvóty pracovního prostoru založené na VMFamily. |
 > | Microsoft. MachineLearningServices/umístění/použití/číst | Sestava využití pro výpočetní prostředky AML v předplatném |
@@ -5276,7 +5322,7 @@ Služba Azure: [prostorové kotvy Azure](../spatial-anchors/index.yml)
 > | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro Microsoft. MixedReality/spatialAnchorsAccounts. |
 > | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro Microsoft. MixedReality/spatialAnchorsAccounts. |
 > | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. Insights/metricDefinitions/Read | Získá dostupné metriky pro Microsoft. MixedReality/spatialAnchorsAccounts. |
-> | **Akce dataaction** | **Popis** |
+> | **Akce dataaction** | **Description** |
 > | Microsoft. MixedReality/ObjectUnderstandingAccounts/ingesta/akce | Vytvořit úlohu ingestování modelu |
 > | Microsoft. MixedReality/ObjectUnderstandingAccounts/ingestovat/číst | Získat stav úlohy příjmu modelu |
 > | Microsoft. MixedReality/RemoteRenderingAccounts/Convert/Action | Spustit převod assetu |
@@ -5549,7 +5595,7 @@ Služba Azure: jádro
 > | Microsoft. AppConfiguration/configurationStores/Providers/Microsoft. Insights/metricDefinitions/Read | Načte všechny definice metriky pro konfiguraci aplikací Microsoft. |
 > | Microsoft. AppConfiguration/Locations/operationsStatus/Read | Získá stav operace. |
 > | Microsoft. AppConfiguration/Operations/Read | Zobrazí seznam všech operací, které aplikace Microsoft App Configuration podporuje. |
-> | **Akce dataaction** | **Popis** |
+> | **Akce dataaction** | **Description** |
 > | Microsoft. AppConfiguration/configurationStores/hodnoty/čtení | Přečte klíčovou hodnotu z úložiště konfigurace. |
 > | Microsoft. AppConfiguration/configurationStores/hodnoty/zápis | Vytvoří nebo aktualizuje klíčovou hodnotu v úložišti konfigurace. |
 > | Microsoft. AppConfiguration/configurationStores/hodnoty a/DELETE | Odstraní existující klíč-hodnota z úložiště konfigurace. |
@@ -6011,7 +6057,7 @@ Služba Azure: [Service Bus](../service-bus/index.md)
 > | Microsoft. ServiceBus/Operations/Read | Získat operace |
 > | Microsoft. ServiceBus/SKU/číst | Získá seznam popisů prostředků SKU. |
 > | Microsoft. ServiceBus/SKU/Regions/Read | Získá seznam popisů prostředků SkuRegions. |
-> | **Akce dataaction** | **Popis** |
+> | **Akce dataaction** | **Description** |
 > | Microsoft. ServiceBus/obory názvů/zprávy/odeslání/akce | Odesílání zpráv |
 > | Microsoft. ServiceBus/obory názvů/zprávy/přijmout/akce | Příjem zpráv |
 
@@ -6208,7 +6254,7 @@ Služba Azure: [Key Vault](../key-vault/index.yml)
 > | Trezory Microsoft. a trezory/eventGridFilters/DELETE | Upozorní Microsoft. webtrezor, že se odstraňuje EventGrid odběr pro Key Vault. |
 > | Trezor Microsoft. a trezory/tajné klíče/čtení | Umožňuje zobrazit vlastnosti tajného klíče, ale ne jeho hodnotu. |
 > | Trezor Microsoft. a trezory/tajné klíče/zápis | Vytvoří nový tajný klíč nebo aktualizuje hodnotu existujícího tajného kódu. |
-> | **Akce dataaction** | **Popis** |
+> | **Akce dataaction** | **Description** |
 > | Trezory Microsoft. a trezory/certificatecas/DELETE | Odstranit vystavitele certifikátu |
 > | Trezory Microsoft. a trezory/certificatecas/Read | Přečíst Vystavitel certifikátu |
 > | Trezory Microsoft. a trezory/certificatecas/Write | Zápis vystavitele certifikátu |
@@ -7272,7 +7318,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. Insights/sešity/zápis | Vytvoří nebo aktualizuje sešit. |
 > | Microsoft. Insights/sešity/odstranit | Odstranění sešitu |
 > | Microsoft. Insights/sešity/číst | Přečíst sešit |
-> | **Akce dataaction** | **Popis** |
+> | **Akce dataaction** | **Description** |
 > | Microsoft. Insights/DataCollectionRules/data/Write | Odeslat data do pravidla shromažďování dat |
 > | Microsoft. Insights/metriky/Write | Zapsat metriky |
 
@@ -7339,6 +7385,9 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AADDomainServicesPolicyChange/číst | Čtení dat z tabulky AADDomainServicesPolicyChange |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AADDomainServicesPrivilegeUse/číst | Čtení dat z tabulky AADDomainServicesPrivilegeUse |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AADDomainServicesSystemSecurity/číst | Čtení dat z tabulky AADDomainServicesSystemSecurity |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/AADManagedIdentitySignInLogs/číst | Čtení dat z tabulky AADManagedIdentitySignInLogs |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/AADNonInteractiveUserSignInLogs/číst | Čtení dat z tabulky AADNonInteractiveUserSignInLogs |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/AADServicePrincipalSignInLogs/číst | Čtení dat z tabulky AADServicePrincipalSignInLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ADAssessmentRecommendation/číst | Čtení dat z tabulky ADAssessmentRecommendation |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AddonAzureBackupAlerts/číst | Čtení dat z tabulky AddonAzureBackupAlerts |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AddonAzureBackupJobs/číst | Čtení dat z tabulky AddonAzureBackupJobs |
@@ -7933,7 +7982,7 @@ Služba Azure: [Batch](../batch/index.yml)
 > | Microsoft.Batch/Locations/accountOperationResults/Read | Získá výsledky dlouhotrvající operace účtu Batch. |
 > | Microsoft.Batch/umístění/kvóty/čtení | Načte kvóty dávky zadaného předplatného v zadané oblasti Azure. |
 > | Microsoft.Batch/operací/čtení | Vypíše dostupné operace pro poskytovatele prostředků Microsoft.Batch. |
-> | **Akce dataaction** | **Popis** |
+> | **Akce dataaction** | **Description** |
 > | Microsoft.Batch/batchAccounts/Jobs/Read | Vypisuje úlohy na účtu Batch nebo získá vlastnosti úlohy. |
 > | Microsoft.Batch/batchAccounts/Jobs/Write | Vytvoří novou úlohu na účtu Batch nebo aktualizuje existující úlohu. |
 > | Microsoft.Batch/batchAccounts/Jobs/DELETE | Odstraní úlohu z účtu Batch. |
@@ -8183,6 +8232,317 @@ Služba Azure: [Azure ARC](../azure-arc/index.yml)
 > | Microsoft. HybridCompute/počítače/rozšíření/odstranit | Odstraní rozšíření ARC Azure. |
 > | Microsoft. HybridCompute/Operations/Read | Načte všechny operace pro Azure ARC pro servery. |
 
+### <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
+
+Služba Azure: [Kubernetes s povoleným ARC Azure](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. Kubernetes/connectedClusters/Read | Číst connectedClusters |
+> | Microsoft. Kubernetes/connectedClusters/Write | Zapisuje connectedClusters |
+> | Microsoft. Kubernetes/connectedClusters/DELETE | Odstraní connectedClusters |
+> | Microsoft. Kubernetes/connectedClusters/listClusterUserCredentials/Action | Zobrazit seznam přihlašovacích údajů clusterUser |
+> | Microsoft. Kubernetes/RegisteredSubscriptions/Read | Čtení registrovaných předplatných |
+> | **Akce dataaction** | **Description** |
+> | Microsoft. Kubernetes/connectedClusters/admissionregistration. k8s. IO/initializerconfigurations/Read | Přečte initializerconfigurations |
+> | Microsoft. Kubernetes/connectedClusters/admissionregistration. k8s. IO/initializerconfigurations/Write | Zapisuje initializerconfigurations |
+> | Microsoft. Kubernetes/connectedClusters/admissionregistration. k8s. IO/initializerconfigurations/DELETE | Odstraní initializerconfigurations |
+> | Microsoft. Kubernetes/connectedClusters/admissionregistration. k8s. IO/mutatingwebhookconfigurations/Read | Přečte mutatingwebhookconfigurations |
+> | Microsoft. Kubernetes/connectedClusters/admissionregistration. k8s. IO/mutatingwebhookconfigurations/Write | Zapisuje mutatingwebhookconfigurations |
+> | Microsoft. Kubernetes/connectedClusters/admissionregistration. k8s. IO/mutatingwebhookconfigurations/DELETE | Odstraní mutatingwebhookconfigurations |
+> | Microsoft. Kubernetes/connectedClusters/admissionregistration. k8s. IO/validatingwebhookconfigurations/Read | Přečte validatingwebhookconfigurations |
+> | Microsoft. Kubernetes/connectedClusters/admissionregistration. k8s. IO/validatingwebhookconfigurations/Write | Zapisuje validatingwebhookconfigurations |
+> | Microsoft. Kubernetes/connectedClusters/admissionregistration. k8s. IO/validatingwebhookconfigurations/DELETE | Odstraní validatingwebhookconfigurations |
+> | Microsoft. Kubernetes/connectedClusters/API/Read | Přečte rozhraní API. |
+> | Microsoft. Kubernetes/connectedClusters/API/v1/Read | Přečte rozhraní API/v1. |
+> | Microsoft. Kubernetes/connectedClusters/apiextensions. k8s. IO/customresourcedefinitions/Read | Přečte customresourcedefinitions |
+> | Microsoft. Kubernetes/connectedClusters/apiextensions. k8s. IO/customresourcedefinitions/Write | Zapisuje customresourcedefinitions |
+> | Microsoft. Kubernetes/connectedClusters/apiextensions. k8s. IO/customresourcedefinitions/DELETE | Odstraní customresourcedefinitions |
+> | Microsoft. Kubernetes/connectedClusters/apiregistration. k8s. IO/apiservices/Read | Přečte apiservices |
+> | Microsoft. Kubernetes/connectedClusters/apiregistration. k8s. IO/apiservices/Write | Zapisuje apiservices |
+> | Microsoft. Kubernetes/connectedClusters/apiregistration. k8s. IO/apiservices/DELETE | Odstraní apiservices |
+> | Microsoft. Kubernetes/connectedClusters/API/Read | Čtení rozhraní API |
+> | Microsoft. Kubernetes/connectedClusters/API/admissionregistration. k8s. IO/Read | Přečte admissionregistration.k8s.io |
+> | Microsoft. Kubernetes/connectedClusters/API/admissionregistration. k8s. IO/v1/Read | Přečte admissionregistration.k8s.io/v1 |
+> | Microsoft. Kubernetes/connectedClusters/API/admissionregistration. k8s. IO/v1beta1/Read | Přečte admissionregistration.k8s.io/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/API/apiextensions. k8s. IO/Read | Přečte apiextensions.k8s.io |
+> | Microsoft. Kubernetes/connectedClusters/API/apiextensions. k8s. IO/v1/Read | Přečte apiextensions.k8s.io/v1 |
+> | Microsoft. Kubernetes/connectedClusters/API/apiextensions. k8s. IO/v1beta1/Read | Přečte apiextensions.k8s.io/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/API/apiregistration. k8s. IO/Read | Přečte apiregistration.k8s.io |
+> | Microsoft. Kubernetes/connectedClusters/API/apiregistration. k8s. IO/v1/Read | Přečte apiregistration.k8s.io/v1 |
+> | Microsoft. Kubernetes/connectedClusters/API/apiregistration. k8s. IO/v1beta1/Read | Přečte apiregistration.k8s.io/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/API/Apps/číst | Čtení aplikací |
+> | Microsoft. Kubernetes/connectedClusters/API/Apps/v1beta1/Read | Načte aplikace/v1beta1. |
+> | Microsoft. Kubernetes/connectedClusters/API/Apps/v1beta2/Read | Přečte v1beta2 |
+> | Microsoft. Kubernetes/connectedClusters/API/Authentication. k8s. IO/Read | Přečte authentication.k8s.io |
+> | Microsoft. Kubernetes/connectedClusters/API/Authentication. k8s. IO/v1/Read | Přečte authentication.k8s.io/v1 |
+> | Microsoft. Kubernetes/connectedClusters/API/Authentication. k8s. IO/v1beta1/Read | Přečte authentication.k8s.io/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/API/Authorization. k8s. IO/Read | Přečte authorization.k8s.io |
+> | Microsoft. Kubernetes/connectedClusters/API/Authorization. k8s. IO/v1/Read | Přečte authorization.k8s.io/v1 |
+> | Microsoft. Kubernetes/connectedClusters/API/Authorization. k8s. IO/v1beta1/Read | Přečte authorization.k8s.io/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/API/automatické škálování/čtení | Načte automatické škálování. |
+> | Microsoft. Kubernetes/connectedClusters/rozhraní API/automatické škálování/v1/čtení | Načte automatické škálování/v1. |
+> | Microsoft. Kubernetes/connectedClusters/API/autoškálování/v2beta1/Read | Načte automatické škálování/v2beta1. |
+> | Microsoft. Kubernetes/connectedClusters/API/autoškálování/v2beta2/Read | Načte automatické škálování/v2beta2. |
+> | Microsoft. Kubernetes/connectedClusters/API/Batch/Read | Přečte dávku |
+> | Microsoft. Kubernetes/connectedClusters/API/Batch/v1/Read | Přečte dávku/v1. |
+> | Microsoft. Kubernetes/connectedClusters/API/Batch/v1beta1/Read | Přečte dávku/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/API/Certificates. k8s. IO/Read | Přečte certificates.k8s.io |
+> | Microsoft. Kubernetes/connectedClusters/API/Certificates. k8s. IO/v1beta1/Read | Přečte certificates.k8s.io/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/API/koordinace. k8s. IO/Read | Přečte coordination.k8s.io |
+> | Microsoft. Kubernetes/connectedClusters/API/koordinace. k8s. IO/v1/Read | Koordinace čtení/v1 |
+> | Microsoft. Kubernetes/connectedClusters/API/koordinace. k8s. IO/v1beta1/Read | Přečte coordination.k8s.io/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/API/Events. k8s. IO/Read | Přečte events.k8s.io |
+> | Microsoft. Kubernetes/connectedClusters/API/Events. k8s. IO/v1beta1/Read | Přečte events.k8s.io/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/API/Extensions/Read | Načte rozšíření |
+> | Microsoft. Kubernetes/connectedClusters/API/Extensions/v1beta1/Read | Načte rozšíření/v1beta1. |
+> | Microsoft. Kubernetes/connectedClusters/API/metriky. k8s. IO/Read | Přečte metrics.k8s.io |
+> | Microsoft. Kubernetes/connectedClusters/API/metriky. k8s. IO/v1beta1/Read | Přečte metrics.k8s.io/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/API/Networking. k8s. IO/Read | Přečte networking.k8s.io |
+> | Microsoft. Kubernetes/connectedClusters/API/Networking. k8s. IO/v1/Read | Načte sítě/v1. |
+> | Microsoft. Kubernetes/connectedClusters/API/Networking. k8s. IO/v1beta1/Read | Přečte networking.k8s.io/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/API/Node. k8s. IO/Read | Přečte node.k8s.io |
+> | Microsoft. Kubernetes/connectedClusters/API/Node. k8s. IO/v1beta1/Read | Přečte node.k8s.io/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/API/Policy/Read | Přečte zásadu. |
+> | Microsoft. Kubernetes/connectedClusters/API/Policy/v1beta1/Read | Čtení zásad/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/API/RBAC. Authorization. k8s. IO/Read | Přečte rbac.authorization.k8s.io |
+> | Microsoft. Kubernetes/connectedClusters/API/RBAC. Authorization. k8s. IO/v1/Read | Čte RBAC. Authorization/v1 |
+> | Microsoft. Kubernetes/connectedClusters/API/RBAC. Authorization. k8s. IO/v1beta1/Read | Přečte rbac.authorization.k8s.io/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/API/plánování. k8s. IO/Read | Přečte scheduling.k8s.io |
+> | Microsoft. Kubernetes/connectedClusters/API/Scheduling. k8s. IO/v1/Read | Načte plán/v1. |
+> | Microsoft. Kubernetes/connectedClusters/API/Scheduling. k8s. IO/v1beta1/Read | Přečte scheduling.k8s.io/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/API/Storage. k8s. IO/Read | Přečte storage.k8s.io |
+> | Microsoft. Kubernetes/connectedClusters/API/Storage. k8s. IO/v1/Read | Čtení úložiště/v1 |
+> | Microsoft. Kubernetes/connectedClusters/API/Storage. k8s. IO/v1beta1/Read | Přečte storage.k8s.io/v1beta1 |
+> | Microsoft. Kubernetes/connectedClusters/Apps/controllerrevisions/Read | Přečte controllerrevisions |
+> | Microsoft. Kubernetes/connectedClusters/Apps/controllerrevisions/Write | Zapisuje controllerrevisions |
+> | Microsoft. Kubernetes/connectedClusters/Apps/controllerrevisions/DELETE | Odstraní controllerrevisions |
+> | Microsoft. Kubernetes/connectedClusters/Apps/daemonsets/Read | Přečte daemonsets |
+> | Microsoft. Kubernetes/connectedClusters/Apps/daemonsets/Write | Zapisuje daemonsets |
+> | Microsoft. Kubernetes/connectedClusters/Apps/daemonsets/DELETE | Odstraní daemonsets |
+> | Microsoft. Kubernetes/connectedClusters/aplikace/nasazení/čtení | Načte nasazení |
+> | Microsoft. Kubernetes/connectedClusters/aplikace/nasazení/zápis | Zapisuje nasazení |
+> | Microsoft. Kubernetes/connectedClusters/aplikace/nasazení/odstranit | Odstraní nasazení. |
+> | Microsoft. Kubernetes/connectedClusters/Apps/replicasets/Read | Přečte replicasets |
+> | Microsoft. Kubernetes/connectedClusters/Apps/replicasets/Write | Zapisuje replicasets |
+> | Microsoft. Kubernetes/connectedClusters/Apps/replicasets/DELETE | Odstraní replicasets |
+> | Microsoft. Kubernetes/connectedClusters/Apps/statefulsets/Read | Přečte statefulsets |
+> | Microsoft. Kubernetes/connectedClusters/Apps/statefulsets/Write | Zapisuje statefulsets |
+> | Microsoft. Kubernetes/connectedClusters/Apps/statefulsets/DELETE | Odstraní statefulsets |
+> | Microsoft. Kubernetes/connectedClusters/Authentication. k8s. IO/tokenreviews/Write | Zapisuje tokenreviews |
+> | Microsoft. Kubernetes/connectedClusters/Authentication. k8s. IO/userextras/Impersonate/Action | Zosobnit userextras |
+> | Microsoft. Kubernetes/connectedClusters/Authorization. k8s. IO/localsubjectaccessreviews/Write | Zapisuje localsubjectaccessreviews |
+> | Microsoft. Kubernetes/connectedClusters/Authorization. k8s. IO/selfsubjectaccessreviews/Write | Zapisuje selfsubjectaccessreviews |
+> | Microsoft. Kubernetes/connectedClusters/Authorization. k8s. IO/selfsubjectrulesreviews/Write | Zapisuje selfsubjectrulesreviews |
+> | Microsoft. Kubernetes/connectedClusters/Authorization. k8s. IO/subjectaccessreviews/Write | Zapisuje subjectaccessreviews |
+> | Microsoft. Kubernetes/connectedClusters/autoškálování/horizontalpodautoscalers/Read | Přečte horizontalpodautoscalers |
+> | Microsoft. Kubernetes/connectedClusters/autoškálování/horizontalpodautoscalers/Write | Zapisuje horizontalpodautoscalers |
+> | Microsoft. Kubernetes/connectedClusters/autoškálování/horizontalpodautoscalers/DELETE | Odstraní horizontalpodautoscalers |
+> | Microsoft. Kubernetes/connectedClusters/Batch/cronjobs/Read | Přečte cronjobs |
+> | Microsoft. Kubernetes/connectedClusters/Batch/cronjobs/Write | Zapisuje cronjobs |
+> | Microsoft. Kubernetes/connectedClusters/Batch/cronjobs/DELETE | Odstraní cronjobs |
+> | Microsoft. Kubernetes/connectedClusters/Batch/Jobs/Read | Čte úlohy |
+> | Microsoft. Kubernetes/connectedClusters/Batch/Jobs/Write | Zapisuje úlohy |
+> | Microsoft. Kubernetes/connectedClusters/Batch/Jobs/DELETE | Odstraní úlohy. |
+> | Microsoft. Kubernetes/connectedClusters/Bindings/Write | Zapisuje vazby |
+> | Microsoft. Kubernetes/connectedClusters/Certificates. k8s. IO/certificatesigningrequests/Read | Přečte certificatesigningrequests |
+> | Microsoft. Kubernetes/connectedClusters/Certificates. k8s. IO/certificatesigningrequests/Write | Zapisuje certificatesigningrequests |
+> | Microsoft. Kubernetes/connectedClusters/Certificates. k8s. IO/certificatesigningrequests/DELETE | Odstraní certificatesigningrequests |
+> | Microsoft. Kubernetes/connectedClusters/clusterconfig. Azure. com/azureclusteridentityrequests/Read | Přečte azureclusteridentityrequests |
+> | Microsoft. Kubernetes/connectedClusters/clusterconfig. Azure. com/azureclusteridentityrequests/Write | Zapisuje azureclusteridentityrequests |
+> | Microsoft. Kubernetes/connectedClusters/clusterconfig. Azure. com/azureclusteridentityrequests/DELETE | Odstraní azureclusteridentityrequests |
+> | Microsoft. Kubernetes/connectedClusters/componentstatuses/Read | Přečte componentstatuses |
+> | Microsoft. Kubernetes/connectedClusters/componentstatuses/Write | Zapisuje componentstatuses |
+> | Microsoft. Kubernetes/connectedClusters/componentstatuses/DELETE | Odstraní componentstatuses |
+> | Microsoft. Kubernetes/connectedClusters/configmaps/Read | Přečte configmaps |
+> | Microsoft. Kubernetes/connectedClusters/configmaps/Write | Zapisuje configmaps |
+> | Microsoft. Kubernetes/connectedClusters/configmaps/DELETE | Odstraní configmaps |
+> | Microsoft. Kubernetes/connectedClusters/koordinace. k8s. IO/zapůjčení/Přečtěte si | Načte zapůjčení. |
+> | Microsoft. Kubernetes/connectedClusters/koordinace. k8s. IO/zapůjčení/zápis | Zapisuje zapůjčení |
+> | Microsoft. Kubernetes/connectedClusters/koordinace. k8s. IO/zapůjčení/odstranit | Odstraní zapůjčení. |
+> | Microsoft. Kubernetes/connectedClusters/Endpoints/Read | Přečte koncové body. |
+> | Microsoft. Kubernetes/connectedClusters/Endpoints/Write | Zápis koncových bodů |
+> | Microsoft. Kubernetes/connectedClusters/Endpoints/DELETE | Odstraní koncové body. |
+> | Microsoft. Kubernetes/connectedClusters/Events/Read | Čte události |
+> | Microsoft. Kubernetes/connectedClusters/Events/Write | Zapisuje události |
+> | Microsoft. Kubernetes/connectedClusters/Events/DELETE | Odstraní události. |
+> | Microsoft. Kubernetes/connectedClusters/Events. k8s. IO/Events/Read | Čte události |
+> | Microsoft. Kubernetes/connectedClusters/Events. k8s. IO/Events/Write | Zapisuje události |
+> | Microsoft. Kubernetes/connectedClusters/Events. k8s. IO/Events/DELETE | Odstraní události. |
+> | Microsoft. Kubernetes/connectedClusters/Extensions/daemonsets/Read | Přečte daemonsets |
+> | Microsoft. Kubernetes/connectedClusters/Extensions/daemonsets/Write | Zapisuje daemonsets |
+> | Microsoft. Kubernetes/connectedClusters/Extensions/daemonsets/DELETE | Odstraní daemonsets |
+> | Microsoft. Kubernetes/connectedClusters/rozšíření/nasazení/čtení | Načte nasazení |
+> | Microsoft. Kubernetes/connectedClusters/rozšíření/nasazení/zápis | Zapisuje nasazení |
+> | Microsoft. Kubernetes/connectedClusters/rozšíření/nasazení/odstranit | Odstraní nasazení. |
+> | Microsoft. Kubernetes/connectedClusters/Extensions/vstups/Read | Načte příchozí přenosy. |
+> | Microsoft. Kubernetes/connectedClusters/Extensions/příchozí/Write | Zapisuje příchozí přenosy |
+> | Microsoft. Kubernetes/connectedClusters/Extensions/příchozí/DELETE | Odstraní příchozí přenosy. |
+> | Microsoft. Kubernetes/connectedClusters/Extensions/networkpolicies/Read | Přečte networkpolicies |
+> | Microsoft. Kubernetes/connectedClusters/Extensions/networkpolicies/Write | Zapisuje networkpolicies |
+> | Microsoft. Kubernetes/connectedClusters/Extensions/networkpolicies/DELETE | Odstraní networkpolicies |
+> | Microsoft. Kubernetes/connectedClusters/Extensions/podsecuritypolicies/Read | Přečte podsecuritypolicies |
+> | Microsoft. Kubernetes/connectedClusters/Extensions/podsecuritypolicies/Write | Zapisuje podsecuritypolicies |
+> | Microsoft. Kubernetes/connectedClusters/Extensions/podsecuritypolicies/DELETE | Odstraní podsecuritypolicies |
+> | Microsoft. Kubernetes/connectedClusters/Extensions/replicasets/Read | Přečte replicasets |
+> | Microsoft. Kubernetes/connectedClusters/Extensions/replicasets/Write | Zapisuje replicasets |
+> | Microsoft. Kubernetes/connectedClusters/Extensions/replicasets/DELETE | Odstraní replicasets |
+> | Microsoft. Kubernetes/connectedClusters/Groups/Impersonate/Action | Zosobnit skupiny |
+> | Microsoft. Kubernetes/connectedClusters/healthz/Read | Přečte healthz |
+> | Microsoft. Kubernetes/connectedClusters/healthz/autoregister – dokončení/čtení | Čtení automatického zápisu – dokončování |
+> | Microsoft. Kubernetes/connectedClusters/healthz/etcd/Read | Přečte etcd |
+> | Microsoft. Kubernetes/connectedClusters/healthz/log/Read | Čtení protokolu |
+> | Microsoft. Kubernetes/connectedClusters/healthz/test/Read | Přečte příkazy. |
+> | Microsoft. Kubernetes/connectedClusters/healthz/poststarthook/apiservice-openapi-Controller/Read | Čtení apiservice-openapi-Controller |
+> | Microsoft. Kubernetes/connectedClusters/healthz/poststarthook/apiservice – registrace – kontroler/čtení | Čtení apiservice – kontroler registrace |
+> | Microsoft. Kubernetes/connectedClusters/healthz/poststarthook/apiservice-stav-k dispozici – kontroler/čtení | Čtení apiservice-stav-k dispozici – kontroler |
+> | Microsoft. Kubernetes/connectedClusters/healthz/poststarthook/Bootstrap-Controller/Read | Čtení spouštěcího kontroleru |
+> | Microsoft. Kubernetes/connectedClusters/healthz/poststarthook/CA-registrace/čtení | Čtení CA – registrace |
+> | Microsoft. Kubernetes/connectedClusters/healthz/poststarthook/CRD-informující-syncd/Read | Čtení CRD-Informed – synchronizovaný |
+> | Microsoft. Kubernetes/connectedClusters/healthz/poststarthook/Generic-apiserver-Started-INFORMS/Read | Přečte obecné – apiserver-Start-informující. |
+> | Microsoft. Kubernetes/connectedClusters/healthz/poststarthook/Kube-apiserver – Automatická registrace/čtení | Čtení Kube-apiserver – Automatická registrace |
+> | Microsoft. Kubernetes/connectedClusters/healthz/poststarthook/RBAC/Bootstrap-role/čtení | Načte Bootstrap – role |
+> | Microsoft. Kubernetes/connectedClusters/healthz/poststarthook/Scheduling/Bootstrap-System-priority-Classes/Read | Přečte rutiny Bootstrap-System-priority-Classes. |
+> | Microsoft. Kubernetes/connectedClusters/healthz/poststarthook/Start-apiextensions-Controllers/Read | Čtení Start-apiextensions – Controllers |
+> | Microsoft. Kubernetes/connectedClusters/healthz/poststarthook/Start-apiextensions-Informer/Read | Přečte Start-apiextensions-informující. |
+> | Microsoft. Kubernetes/connectedClusters/healthz/poststarthook/Start-Kube-agregátor-INFORMS/Read | Přečte Start-Kube-agregátor-INFORMS |
+> | Microsoft. Kubernetes/connectedClusters/healthz/poststarthook/Start-Kube-apiserver-Admission-inicializátor/Read | Přečte Start-Kube-apiserver-Admission-inicializátor |
+> | Microsoft. Kubernetes/connectedClusters/limitranges/Read | Přečte limitranges |
+> | Microsoft. Kubernetes/connectedClusters/limitranges/Write | Zapisuje limitranges |
+> | Microsoft. Kubernetes/connectedClusters/limitranges/DELETE | Odstraní limitranges |
+> | Microsoft. Kubernetes/connectedClusters/livez/Read | Přečte livez |
+> | Microsoft. Kubernetes/connectedClusters/livez/autoregister – dokončení/čtení | Čtení automatického zápisu – dokončování |
+> | Microsoft. Kubernetes/connectedClusters/livez/etcd/Read | Přečte etcd |
+> | Microsoft. Kubernetes/connectedClusters/livez/log/Read | Čtení protokolu |
+> | Microsoft. Kubernetes/connectedClusters/livez/test/Read | Přečte příkazy. |
+> | Microsoft. Kubernetes/connectedClusters/livez/poststarthook/apiservice-openapi-Controller/Read | Čtení apiservice-openapi-Controller |
+> | Microsoft. Kubernetes/connectedClusters/livez/poststarthook/apiservice – registrace – kontroler/čtení | Čtení apiservice – kontroler registrace |
+> | Microsoft. Kubernetes/connectedClusters/livez/poststarthook/apiservice-stav-k dispozici – kontroler/čtení | Čtení apiservice-stav-k dispozici – kontroler |
+> | Microsoft. Kubernetes/connectedClusters/livez/poststarthook/Bootstrap-Controller/Read | Čtení spouštěcího kontroleru |
+> | Microsoft. Kubernetes/connectedClusters/livez/poststarthook/CA-registrace/čtení | Čtení CA – registrace |
+> | Microsoft. Kubernetes/connectedClusters/livez/poststarthook/CRD-informující-syncd/Read | Čtení CRD-Informed – synchronizovaný |
+> | Microsoft. Kubernetes/connectedClusters/livez/poststarthook/Generic-apiserver-Started-INFORMS/Read | Přečte obecné – apiserver-Start-informující. |
+> | Microsoft. Kubernetes/connectedClusters/livez/poststarthook/Kube-apiserver – Automatická registrace/čtení | Čtení Kube-apiserver – Automatická registrace |
+> | Microsoft. Kubernetes/connectedClusters/livez/poststarthook/RBAC/Bootstrap-role/čtení | Načte Bootstrap – role |
+> | Microsoft. Kubernetes/connectedClusters/livez/poststarthook/Scheduling/Bootstrap-System-priority-Classes/Read | Přečte rutiny Bootstrap-System-priority-Classes. |
+> | Microsoft. Kubernetes/connectedClusters/livez/poststarthook/Start-apiextensions-Controllers/Read | Čtení Start-apiextensions – Controllers |
+> | Microsoft. Kubernetes/connectedClusters/livez/poststarthook/Start-apiextensions-Informer/Read | Přečte Start-apiextensions-informující. |
+> | Microsoft. Kubernetes/connectedClusters/livez/poststarthook/Start-Kube-agregátor-INFORMS/Read | Přečte Start-Kube-agregátor-INFORMS |
+> | Microsoft. Kubernetes/connectedClusters/livez/poststarthook/Start-Kube-apiserver-Admission-inicializátor/Read | Přečte Start-Kube-apiserver-Admission-inicializátor |
+> | Microsoft. Kubernetes/connectedClusters/logs/číst | Čtení protokolů |
+> | Microsoft. Kubernetes/connectedClusters/metriky/číst | Přečte metriky. |
+> | Microsoft. Kubernetes/connectedClusters/metriky. k8s. IO/Nodes/Read | Přečte uzly. |
+> | Microsoft. Kubernetes/connectedClusters/metriky. k8s. IO/lusky/Read | Čtení lusků |
+> | Microsoft. Kubernetes/connectedClusters/obory názvů/číst | Čtení oborů názvů |
+> | Microsoft. Kubernetes/connectedClusters/Namespaces/Write | Zapisuje obory názvů |
+> | Microsoft. Kubernetes/connectedClusters/Namespaces/DELETE | Odstraní obory názvů. |
+> | Microsoft. Kubernetes/connectedClusters/Networking. k8s. IO/vstups/Read | Načte příchozí přenosy. |
+> | Microsoft. Kubernetes/connectedClusters/Networking. k8s. IO/příchozí/příchozí/Write | Zapisuje příchozí přenosy |
+> | Microsoft. Kubernetes/connectedClusters/Networking. k8s. IO/vstups/DELETE | Odstraní příchozí přenosy. |
+> | Microsoft. Kubernetes/connectedClusters/Networking. k8s. IO/networkpolicies/Read | Přečte networkpolicies |
+> | Microsoft. Kubernetes/connectedClusters/Networking. k8s. IO/networkpolicies/Write | Zapisuje networkpolicies |
+> | Microsoft. Kubernetes/connectedClusters/Networking. k8s. IO/networkpolicies/DELETE | Odstraní networkpolicies |
+> | Microsoft. Kubernetes/connectedClusters/Node. k8s. IO/runtimeclasses/Read | Přečte runtimeclasses |
+> | Microsoft. Kubernetes/connectedClusters/Node. k8s. IO/runtimeclasses/Write | Zapisuje runtimeclasses |
+> | Microsoft. Kubernetes/connectedClusters/Node. k8s. IO/runtimeclasses/DELETE | Odstraní runtimeclasses |
+> | Microsoft. Kubernetes/connectedClusters/Nodes/Read | Přečte uzly. |
+> | Microsoft. Kubernetes/connectedClusters/Nodes/Write | Zapisuje uzly |
+> | Microsoft. Kubernetes/connectedClusters/Nodes/DELETE | Odstraní uzly. |
+> | Microsoft. Kubernetes/connectedClusters/openapi/v2/Read | Přečte v2 |
+> | Microsoft. Kubernetes/connectedClusters/persistentvolumeclaims/Read | Přečte persistentvolumeclaims |
+> | Microsoft. Kubernetes/connectedClusters/persistentvolumeclaims/Write | Zapisuje persistentvolumeclaims |
+> | Microsoft. Kubernetes/connectedClusters/persistentvolumeclaims/DELETE | Odstraní persistentvolumeclaims |
+> | Microsoft. Kubernetes/connectedClusters/persistentvolumes/Read | Přečte persistentvolumes |
+> | Microsoft. Kubernetes/connectedClusters/persistentvolumes/Write | Zapisuje persistentvolumes |
+> | Microsoft. Kubernetes/connectedClusters/persistentvolumes/DELETE | Odstraní persistentvolumes |
+> | Microsoft. Kubernetes/connectedClusters/lusky/číst | Čtení lusků |
+> | Microsoft. Kubernetes/connectedClusters/lusky/Write | Zapisuje lusky |
+> | Microsoft. Kubernetes/connectedClusters/lusky/DELETE | Odstraní lusky. |
+> | Microsoft. Kubernetes/connectedClusters/podtemplates/Read | Přečte podtemplates |
+> | Microsoft. Kubernetes/connectedClusters/podtemplates/Write | Zapisuje podtemplates |
+> | Microsoft. Kubernetes/connectedClusters/podtemplates/DELETE | Odstraní podtemplates |
+> | Microsoft. Kubernetes/connectedClusters/Policy/poddisruptionbudgets/Read | Přečte poddisruptionbudgets |
+> | Microsoft. Kubernetes/connectedClusters/Policy/poddisruptionbudgets/Write | Zapisuje poddisruptionbudgets |
+> | Microsoft. Kubernetes/connectedClusters/Policy/poddisruptionbudgets/DELETE | Odstraní poddisruptionbudgets |
+> | Microsoft. Kubernetes/connectedClusters/Policy/podsecuritypolicies/Read | Přečte podsecuritypolicies |
+> | Microsoft. Kubernetes/connectedClusters/Policy/podsecuritypolicies/Write | Zapisuje podsecuritypolicies |
+> | Microsoft. Kubernetes/connectedClusters/Policy/podsecuritypolicies/DELETE | Odstraní podsecuritypolicies |
+> | Microsoft. Kubernetes/connectedClusters/Policy/podsecuritypolicies/použít/Action | Použít akci na podsecuritypolicies |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/clusterrolebindings/Read | Přečte clusterrolebindings |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/clusterrolebindings/Write | Zapisuje clusterrolebindings |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/clusterrolebindings/DELETE | Odstraní clusterrolebindings |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/clusterroles/Read | Přečte clusterroles |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/clusterroles/Write | Zapisuje clusterroles |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/clusterroles/DELETE | Odstraní clusterroles |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/clusterroles/BIND/Action | Vytvoří vazby clusterroles |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/clusterroles/eskalace/Action | Eskaluje |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/rolebindings/Read | Přečte rolebindings |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/rolebindings/Write | Zapisuje rolebindings |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/rolebindings/DELETE | Odstraní rolebindings |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/Roles/Read | Čtení rolí |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/role/Write | Zapisuje role |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/role/DELETE | Odstraní role. |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/Roles/BIND/Action | Vytvoří vazby rolí. |
+> | Microsoft. Kubernetes/connectedClusters/RBAC. Authorization. k8s. IO/role/eskalace/akce | Eskalace rolí |
+> | Microsoft. Kubernetes/connectedClusters/readyz/Read | Přečte readyz |
+> | Microsoft. Kubernetes/connectedClusters/readyz/autoregister – dokončení/čtení | Čtení automatického zápisu – dokončování |
+> | Microsoft. Kubernetes/connectedClusters/readyz/etcd/Read | Přečte etcd |
+> | Microsoft. Kubernetes/connectedClusters/readyz/log/Read | Čtení protokolu |
+> | Microsoft. Kubernetes/connectedClusters/readyz/test/Read | Přečte příkazy. |
+> | Microsoft. Kubernetes/connectedClusters/readyz/poststarthook/apiservice-openapi-Controller/Read | Čtení apiservice-openapi-Controller |
+> | Microsoft. Kubernetes/connectedClusters/readyz/poststarthook/apiservice – registrace – kontroler/čtení | Čtení apiservice – kontroler registrace |
+> | Microsoft. Kubernetes/connectedClusters/readyz/poststarthook/apiservice-stav-k dispozici – kontroler/čtení | Čtení apiservice-stav-k dispozici – kontroler |
+> | Microsoft. Kubernetes/connectedClusters/readyz/poststarthook/Bootstrap-Controller/Read | Čtení spouštěcího kontroleru |
+> | Microsoft. Kubernetes/connectedClusters/readyz/poststarthook/CA-registrace/čtení | Čtení CA – registrace |
+> | Microsoft. Kubernetes/connectedClusters/readyz/poststarthook/CRD-informující-syncd/Read | Čtení CRD-Informed – synchronizovaný |
+> | Microsoft. Kubernetes/connectedClusters/readyz/poststarthook/Generic-apiserver-Started-INFORMS/Read | Přečte obecné – apiserver-Start-informující. |
+> | Microsoft. Kubernetes/connectedClusters/readyz/poststarthook/Kube-apiserver – Automatická registrace/čtení | Čtení Kube-apiserver – Automatická registrace |
+> | Microsoft. Kubernetes/connectedClusters/readyz/poststarthook/RBAC/Bootstrap-role/čtení | Načte Bootstrap – role |
+> | Microsoft. Kubernetes/connectedClusters/readyz/poststarthook/Scheduling/Bootstrap-System-priority-Classes/Read | Přečte rutiny Bootstrap-System-priority-Classes. |
+> | Microsoft. Kubernetes/connectedClusters/readyz/poststarthook/Start-apiextensions-Controllers/Read | Čtení Start-apiextensions – Controllers |
+> | Microsoft. Kubernetes/connectedClusters/readyz/poststarthook/Start-apiextensions-Informer/Read | Přečte Start-apiextensions-informující. |
+> | Microsoft. Kubernetes/connectedClusters/readyz/poststarthook/Start-Kube-agregátor-INFORMS/Read | Přečte Start-Kube-agregátor-INFORMS |
+> | Microsoft. Kubernetes/connectedClusters/readyz/poststarthook/Start-Kube-apiserver-Admission-inicializátor/Read | Přečte Start-Kube-apiserver-Admission-inicializátor |
+> | Microsoft. Kubernetes/connectedClusters/readyz/Shutdown/Read | Čtení z vypnutí |
+> | Microsoft. Kubernetes/connectedClusters/replicationcontrollers/Read | Přečte replicationcontrollers |
+> | Microsoft. Kubernetes/connectedClusters/replicationcontrollers/Write | Zapisuje replicationcontrollers |
+> | Microsoft. Kubernetes/connectedClusters/replicationcontrollers/DELETE | Odstraní replicationcontrollers |
+> | Microsoft. Kubernetes/connectedClusters/resetMetrics/Read | Přečte resetMetrics |
+> | Microsoft. Kubernetes/connectedClusters/resourcequotas/Read | Přečte resourcequotas |
+> | Microsoft. Kubernetes/connectedClusters/resourcequotas/Write | Zapisuje resourcequotas |
+> | Microsoft. Kubernetes/connectedClusters/resourcequotas/DELETE | Odstraní resourcequotas |
+> | Microsoft. Kubernetes/connectedClusters/Scheduling. k8s. IO/priorityclasses/Read | Přečte priorityclasses |
+> | Microsoft. Kubernetes/connectedClusters/Scheduling. k8s. IO/priorityclasses/Write | Zapisuje priorityclasses |
+> | Microsoft. Kubernetes/connectedClusters/Scheduling. k8s. IO/priorityclasses/DELETE | Odstraní priorityclasses |
+> | Microsoft. Kubernetes/connectedClusters/tajné/přečíst | Čtení tajných kódů |
+> | Microsoft. Kubernetes/connectedClusters/tajných kódů/Write | Zápis tajných kódů |
+> | Microsoft. Kubernetes/connectedClusters/tajné/odstranit | Odstraní tajné kódy. |
+> | Microsoft. Kubernetes/connectedClusters/serviceaccounts/Read | Přečte serviceaccounts |
+> | Microsoft. Kubernetes/connectedClusters/serviceaccounts/Write | Zapisuje serviceaccounts |
+> | Microsoft. Kubernetes/connectedClusters/serviceaccounts/DELETE | Odstraní serviceaccounts |
+> | Microsoft. Kubernetes/connectedClusters/serviceaccounts/Impersonate/Action | Zosobnit serviceaccounts |
+> | Microsoft. Kubernetes/connectedClusters/Services/Read | Čte služby |
+> | Microsoft. Kubernetes/connectedClusters/Services/Write | Zapisuje služby |
+> | Microsoft. Kubernetes/connectedClusters/Services/DELETE | Odstraní služby. |
+> | Microsoft. Kubernetes/connectedClusters/Storage. k8s. IO/csidrivers/Read | Přečte csidrivers |
+> | Microsoft. Kubernetes/connectedClusters/Storage. k8s. IO/csidrivers/Write | Zapisuje csidrivers |
+> | Microsoft. Kubernetes/connectedClusters/Storage. k8s. IO/csidrivers/DELETE | Odstraní csidrivers |
+> | Microsoft. Kubernetes/connectedClusters/Storage. k8s. IO/csinodes/Read | Přečte csinodes |
+> | Microsoft. Kubernetes/connectedClusters/Storage. k8s. IO/csinodes/Write | Zapisuje csinodes |
+> | Microsoft. Kubernetes/connectedClusters/Storage. k8s. IO/csinodes/DELETE | Odstraní csinodes |
+> | Microsoft. Kubernetes/connectedClusters/Storage. k8s. IO/storageclasses/Read | Přečte storageclasses |
+> | Microsoft. Kubernetes/connectedClusters/Storage. k8s. IO/storageclasses/Write | Zapisuje storageclasses |
+> | Microsoft. Kubernetes/connectedClusters/Storage. k8s. IO/storageclasses/DELETE | Odstraní storageclasses |
+> | Microsoft. Kubernetes/connectedClusters/Storage. k8s. IO/volumeattachments/Read | Přečte volumeattachments |
+> | Microsoft. Kubernetes/connectedClusters/Storage. k8s. IO/volumeattachments/Write | Zapisuje volumeattachments |
+> | Microsoft. Kubernetes/connectedClusters/Storage. k8s. IO/volumeattachments/DELETE | Odstraní volumeattachments |
+> | Microsoft. Kubernetes/connectedClusters/swaggerer – rozhraní API/čtení | Čtení Swagger – rozhraní API |
+> | Microsoft. Kubernetes/connectedClusters/Swagger – uživatelské rozhraní/čtení | Čtení Swagger – uživatelské rozhraní |
+> | Microsoft. Kubernetes/connectedClusters/UI/číst | Přečte uživatelské rozhraní. |
+> | Microsoft. Kubernetes/connectedClusters/Users/Impersonate/Action | Zosobnit uživatele |
+> | Microsoft. Kubernetes/connectedClusters/Version/Read | Přečte verzi |
+
 ### <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
 
 Služba Azure: [Azure Lighthouse](../lighthouse/index.yml)
@@ -8251,7 +8611,7 @@ Služba Azure: [Azure Policy](../governance/policy/index.yml)
 > | Microsoft. PolicyInsights/nápravy/odstranit | Odstraňte nápravy zásad. |
 > | Microsoft. PolicyInsights/nápravy/zrušit/akce | Zruší probíhající nápravu zásad Microsoftu. |
 > | Microsoft. PolicyInsights/nápravy/listDeployments/Read | Zobrazí seznam nasazení vyžadovaných nápravou zásad. |
-> | **Akce dataaction** | **Popis** |
+> | **Akce dataaction** | **Description** |
 > | Microsoft. PolicyInsights/checkDataPolicyCompliance/Action | Zkontroluje stav dodržování předpisů dané součásti proti zásadám dat. |
 > | Microsoft. PolicyInsights/policyEvents/logDataEvents/Action | Zaprotokoluje události zásad součásti prostředků. |
 
@@ -8612,7 +8972,7 @@ Služba Azure: přehledy monitorování Microsoftu
 > | Microsoft. Intune/diagnosticsettings/DELETE | Odstranění nastavení diagnostiky |
 > | Microsoft. Intune/diagnosticsettingscategories/Read | Čtení kategorií nastavení diagnostiky |
 
-## <a name="other"></a>Ostatní
+## <a name="other"></a>Další
 
 ### <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 

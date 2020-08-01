@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: 6e3ce99211da35105fd9e118a850110dfd48ece1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4ea5889cbecbbb8609f90eed83ec9bd6b0032f9
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986291"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448228"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Použití značek indexu objektů BLOB (Preview) ke správě a hledání dat v úložišti objektů BLOB v Azure
 
@@ -24,7 +24,7 @@ Další informace o indexu objektů BLOB najdete v tématu [Správa a hledání 
 > [!NOTE]
 > Index objektu BLOB je ve verzi Public Preview a je dostupný v oblasti **Kanada – střed**, Kanada – **východ**, Francie – **střed** a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 - Předplatné je zaregistrované a schválené pro přístup k náhledu indexu objektů BLOB.
 - Přístup k [Azure Portal](https://portal.azure.com/)
@@ -70,7 +70,9 @@ using System.Threading.Tasks;
 ![Nahrávání dat pomocí značek indexu objektů BLOB](media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png)
 
 # <a name="net"></a>[.NET](#tab/net)
+
 Následující příklad ukazuje, jak vytvořit doplňovací objekt BLOB se značkami nastavenými při vytváření.
+
 ```csharp
 static async Task BlobIndexTagsOnCreate()
    {
@@ -84,7 +86,7 @@ static async Task BlobIndexTagsOnCreate()
 
           // Create an append blob
           AppendBlobClient appendBlobWithTags = container.GetAppendBlobClient("myAppendBlob0.logs");
-         
+
           // Blob Index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>

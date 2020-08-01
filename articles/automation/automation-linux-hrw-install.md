@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fc7951411f1c8956b4816f9031a8b7c26594b42
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 7f19aec65ed2616d757718116ac948473dd4b0ed
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856127"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448015"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker pro Linux
 
@@ -18,7 +18,7 @@ Pomocí funkce Hybrid Runbook Worker služby Azure Automation můžete spouště
 
 Po úspěšném nasazení služby Runbook Worker si přečtěte téma [spuštění runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md) , kde se dozvíte, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -28,7 +28,7 @@ Role Hybrid Runbook Worker závisí na pracovním prostoru Azure Monitor Log Ana
 
 Pokud nemáte pracovní prostor Azure Monitor Log Analytics, před vytvořením pracovního prostoru si přečtěte téma [Průvodce návrhem protokolu Azure monitor](../azure-monitor/platform/design-logs-deployment.md) .
 
-Pokud máte pracovní prostor, ale není propojený s vaším účtem Automation, umožňuje funkce automatizace přidat funkce pro Azure Automation, včetně podpory Hybrid Runbook Worker. Pokud povolíte jednu z Azure Automation funkcí v pracovním prostoru Log Analytics, konkrétně [Update Management](automation-update-management.md) nebo [Change Tracking a inventáře](change-tracking.md), automaticky se do počítače agenta přiřadí komponenty pracovního procesu.
+Pokud máte pracovní prostor, ale není propojený s vaším účtem Automation, umožňuje funkce automatizace přidat funkce pro Azure Automation, včetně podpory Hybrid Runbook Worker. Pokud povolíte jednu z Azure Automation funkcí v pracovním prostoru Log Analytics, konkrétně [Update Management](update-management/update-mgmt-overview.md) nebo [Change Tracking a inventáře](change-tracking.md), automaticky se do počítače agenta přiřadí komponenty pracovního procesu.
 
 Pokud chcete přidat funkci Update Management do svého pracovního prostoru, spusťte následující rutinu PowerShellu:
 
@@ -66,27 +66,27 @@ Minimální požadavky pro Hybrid Runbook Worker pro Linux jsou:
 * 4 GB RAM paměti
 * Port 443 (odchozí)
 
-| **Požadovaný balíček** | **Popis** | **Minimální verze**|
+| **Požadovaný balíček** | **Description** | **Minimální verze**|
 |--------------------- | --------------------- | -------------------|
 |Glibc |Knihovna GNU C| 2.5-12 |
 |Openssl| Knihovny OpenSSL | 1,0 (podporované TLS 1,1 a TLS 1,2)|
 |Curl | Webový klient s kudrlinkou | 7.15.5|
 |Python – ctypes | Python 2. x je povinný. |
 |PAM | Pluggable Authentication Modules|
-| **Volitelný balíček** | **Popis** | **Minimální verze**|
+| **Volitelný balíček** | **Description** | **Minimální verze**|
 | PowerShell Core | Aby bylo možné spouštět Runbooky PowerShellu, je nutné nainstalovat prostředí PowerShell Core. Další informace o tom, jak ji nainstalovat, najdete v tématu [instalace PowerShellu Core v systému Linux](/powershell/scripting/install/installing-powershell-core-on-linux) . | 6.0.0 |
 
 ## <a name="supported-runbook-types"></a>Podporované typy runbooků
 
 Procesy Hybrid Runbook Worker pro Linux podporují v Azure Automation omezené sady sad Runbook a jsou popsány v následující tabulce.
 
-|Typ Runbooku | Podporuje se |
+|Typ Runbooku | Podporováno |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |Ano |
 |PowerShell |Ano<sup>1</sup> |
-|Pracovní postup PowerShellu |No |
-|Grafický |No |
-|Grafický pracovní postup PowerShellu |No |
+|Pracovní postup PowerShellu |Ne |
+|Grafický |Ne |
+|Grafický pracovní postup PowerShellu |Ne |
 
 <sup>1</sup> Runbooky PowerShellu vyžadují, aby byl na počítači se systémem Linux nainstalovaný PowerShell Core. Další informace o tom, jak ji nainstalovat, najdete v tématu [instalace PowerShellu Core v systému Linux](/powershell/scripting/install/installing-powershell-core-on-linux) .
 

@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31388f27eddcef2c75d4ad4d2030655b35f6aa1c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76897035"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446956"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
 Tým Azure Active Directory pravidelně aktualizuje Azure AD Connect Health novými funkcemi a funkcemi. V tomto článku jsou uvedené verze a funkce, které byly vydány.  
@@ -109,7 +109,7 @@ Azure AD Connect Health pro synchronizaci je integrována s instalací Azure AD 
   1. Oprava hotfix pro správu paměti agenta a související výstrahy specificky pro 3.0.244.0 verze
 
 
-## <a name="may-2018"></a>May 2018
+## <a name="may-2018"></a>Květen 2018
 **Aktualizace agenta:**
 * Agent Azure AD Connect Health pro služba AD DS (verze 3.0.244.0)
   1. Vylepšení ochrany osobních údajů agenta  
@@ -217,7 +217,7 @@ Azure AD Connect Health pro synchronizaci je integrována s instalací Azure AD 
 ## <a name="november-2015"></a>Listopad 2015
 **Nové funkce:**
 
-* Podpora [Access Control na základě rolí](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
+* Podpora [řízení přístupu na základě role v Azure (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
 
 **Nové funkce ve verzi Preview:**
 
@@ -253,4 +253,3 @@ Azure AD Connect Health pro synchronizaci je integrována s instalací Azure AD 
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [monitorování místní infrastruktury identit a synchronizačních služeb v cloudu](whatis-hybrid-identity-health.md).
-

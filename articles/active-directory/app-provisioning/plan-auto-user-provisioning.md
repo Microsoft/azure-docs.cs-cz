@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cecea24fe002ee64d54052635a6d7dec982aeee2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781629"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445654"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Naplánování nasazení automatického zřizování uživatelů
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) Automatické zřizování uživatelů zjednodu
 
 Další informace najdete v tématu [Automatizace zřizování a rušení uživatelů při SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md) pro lepší pochopení funkčnosti.
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>Informace
 
 Zřizování uživatelů vytvoří základ pro průběžné řízení identit a vylepšuje kvalitu obchodních procesů, které spoléhají na data autoritativní identity.
 
@@ -50,7 +50,7 @@ Služba Azure AD poskytuje samoobslužnou integraci jakékoli aplikace pomocí �
 
 Pro aplikace, které chcete automaticky zřídit, budete potřebovat příslušné licence. Prodiskutujte s vlastníky aplikace bez ohledu na to, zda uživatelé přiřazení k aplikaci mají správné licence na své aplikační role. Pokud Azure AD spravuje Automatické zřizování na základě rolí, musí se role přiřazené v Azure AD zarovnat k licencím na aplikace. Nesprávné licence vlastněné v aplikaci mohou vést k chybám během zřizování nebo aktualizace uživatele.
 
-### <a name="terms"></a>Terminologie
+### <a name="terms"></a>Výrazy
 
 Tento článek používá následující výrazy:
 
@@ -66,7 +66,7 @@ Tento článek používá následující výrazy:
 
 ### <a name="training-resources"></a>Školicí materiály
 
-| Prostředky| Odkaz a popis |
+| Zdroje a prostředky| Odkaz a popis |
 | - | - |
 | Webináře na vyžádání| [Správa podnikových aplikací pomocí Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Přečtěte si, jak vám Azure AD může přispět k zajištění jednotného přihlašování k podnikovým aplikacím SaaS a osvědčeným postupům pro řízení přístupu. |
 | Videa| [Co je zřizování uživatelů v aktivním adresáři Azure?](https://youtu.be/_ZjARPpI6NI) <br> [Jak nasadit zřizování uživatelů v aktivním adresáři Azure?](https://youtu.be/pKzyts6kfrw) <br> [Integrování Salesforce s Azure AD: Jak automatizovat zřizování uživatelů](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
@@ -256,7 +256,7 @@ Vyberte kroky, které odpovídají vašim požadavkům na řešení.
 
 Když se služba zřizování Azure AD poprvé spustí, počáteční cyklus proti zdrojovému systému a cílovým systémům vytvoří snímek všech uživatelských objektů pro každý cílový systém.
 
-Při povolování automatického zřizování pro aplikaci může počáteční cyklus trvat až 20 minut až několik hodin. Doba trvání závisí na velikosti adresáře služby Azure AD a počtu uživatelů v oboru pro zřizování. Podívejte [se, jak vylepšit výkon zřizování](../app-provisioning/application-provisioning-when-will-provisioning-finish.md).
+Při povolování automatického zřizování pro aplikaci může počáteční cyklus trvat až 20 minut až několik hodin. Doba trvání závisí na velikosti adresáře služby Azure AD a počtu uživatelů v oboru pro zřizování.
 
 Služba zřizování ukládá stav obou systémů po počátečním cyklu a zvyšuje výkon následných přírůstkových cyklů.
 
@@ -300,8 +300,6 @@ Pokud chcete vyřešit všechny problémy, které se můžou během zřizování
 
 * [Synchronizace atributu z místní služby Active Directory do Azure AD kvůli zřizování pro aplikaci](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
 
-* [Zřizování uživatelů pro aplikaci Galerie Azure AD trvá několik hodin.](../app-provisioning/application-provisioning-when-will-provisioning-finish.md)
-
 * [Při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů pro aplikaci Galerie Azure Active Directory došlo k potížím.](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
 
 * [Pro aplikaci Galerie Azure AD se nezřídí žádní uživatelé.](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)
@@ -318,7 +316,7 @@ Pokud chcete vyřešit všechny problémy, které se můžou během zřizování
 
 * [Agent zřizování Azure AD Connect: Historie verzí](provisioning-agent-release-version-history.md)
 
-#### <a name="resources"></a>Prostředky
+#### <a name="resources"></a>Zdroje a prostředky
 
 * [Poskytnutí zpětné vazby k produktu](https://feedback.azure.com/forums/169401-azure-active-directory)
 

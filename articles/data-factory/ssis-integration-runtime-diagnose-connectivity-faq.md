@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s diagnostikou připojení v prostředí SSIS Integration runtime
-description: Tento článek popisuje pokyny k odstraňování potíží s diagnostikou připojení v prostředí SSIS Integration runtime.
+title: Použití funkce diagnostiky připojení v prostředí SSIS Integration runtime
+description: Řešení potíží s připojením v prostředí SSIS Integration runtime pomocí funkce diagnostiky připojení.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,87 +10,100 @@ author: meiyl
 ms.reviewer: sawinark
 manager: yidetu
 ms.date: 06/07/2020
-ms.openlocfilehash: 8e520048a6067f134e847953f4f4aa0598d9926e
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cf41da685036770144ebf7eb2befd0c3d126362d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172598"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446027"
 ---
-# <a name="troubleshoot-diagnose-connectivity-in-the-ssis-integration-runtime"></a>Řešení potíží s diagnostikou připojení v prostředí SSIS Integration runtime
+# <a name="use-the-diagnose-connectivity-feature-in-the-ssis-integration-runtime"></a>Použití funkce diagnostiky připojení v prostředí SSIS Integration runtime
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Pokud narazíte na problémy s připojením při spouštění balíčků SSIS v prostředí SSIS Integration runtime, zejména v případě, že se váš modul runtime integrace SSIS připojil ke službě Azure Virtual Network. Můžete zkusit provést samočinnou diagnostiku problémů pomocí této funkce diagnostiky připojení na stránce monitorování SSIS Integration runtime portálu Azure Data Factory. 
+Při provádění balíčků služba SSIS (SQL Server Integration Services) (SSIS) v prostředí SSIS Integration runtime můžete najít problémy s připojením. K těmto potížím dochází hlavně v případě, že SSIS Integration runtime propojuje službu Azure Virtual Network.
 
- ![Stránka monitorování – Diagnostika ](media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-diagnose-connectivity.png) ![ monitorování připojení stránka-Test připojení](media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-test-connection.png)
- 
-Tento článek obsahuje nejběžnější chyby, se kterými se můžete setkat při testování připojení v prostředí SSIS Integration runtime. Popisuje možné příčiny a akce pro řešení chyb. 
+Vyřešte problémy s připojením pomocí funkce *diagnostiky připojení* a otestujte připojení. Tato funkce se nachází na stránce monitorování SSIS Integration runtime na portálu Azure Data Factory.
 
-## <a name="common-errors-potential-causes-and-recommendation-solutions"></a>Běžné chyby, potenciální příčiny a řešení pro doporučení
+ ![Stránka monitorování – Diagnostika připojení](media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-diagnose-connectivity.png)
 
-### <a name="error-code-invalidinput"></a>Kód chyby: InvalidInput.
-* **Chybová zpráva**: Ověřte prosím správnost vstupu.
-* **Možné příčiny:** Váš vstup není správný.
-* **Doporučení:** Zkontrolujte prosím svůj vstup.
+ ![Monitorovat stránku-testovat připojení](media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-test-connection.png)
 
-### <a name="error-code-firewallornetworkissue"></a>Kód chyby: FirewallOrNetworkIssue.
-* **Chybová zpráva**: Ověřte prosím, jestli je tento port otevřený v bráně firewall/serveru/NSG a síť je stabilní.
-* **Možné příčiny:** 
-  * Váš server neotevírá tento port.
-  * Vaše skupina zabezpečení sítě má na tomto portu odepřený odchozí provoz.
-  * Vaše brána firewall síťové virtuální zařízení/Azure/on-Prem firewall neotevírá tento port.
-* **Základě** 
-  * Otevřete tento port na serveru.
-  * Aktualizujte skupinu zabezpečení sítě tak, aby povolovala odchozí přenosy na tomto portu.
-  * Otevřete tento port na síťové virtuální zařízení/Azure firewall/on-Prem firewall.
+V následujících částech se dozvíte o nejběžnějších chybách, ke kterým dochází při testování připojení. Každá část popisuje:
 
-### <a name="error-code-misconfigureddnssettings"></a>Kód chyby: MisconfiguredDnsSettings.
-* **Chybová zpráva**: Pokud používáte vlastní server DNS ve virtuální síti připojené pomocí Azure-SSIS IR, ověřte prosím, jestli dokáže přeložit název hostitele.
-* **Možné příčiny:** 
-  *  Problém vlastního DNS
-  *  Pro název privátního hostitele nepoužíváte plně kvalifikovaný název domény (FQDN).
-* **Základě** 
-  *  Opravte vlastní problém DNS, abyste se ujistili, že dokáže přeložit název hostitele.
-  *  Použijte plně kvalifikovaný název domény (FQDN), třeba použít <your_private_server>. contoso.com místo <your_private_server>, protože Azure-SSIS IR automaticky nepřipojí vlastní příponu DNS.
+- Kód chyby
+- Chybová zpráva
+- Možné příčiny chyby
+- Doporučená řešení
 
-### <a name="error-code-servernotallowremoteconenction"></a>Kód chyby: ServerNotAllowRemoteConenction.
-* **Chybová zpráva**: Ověřte prosím, jestli váš server umožňuje přes tento port vzdálená připojení TCP.
-* **Možné příčiny:** 
-  *  Brána firewall serveru nepovoluje vzdálená připojení TCP.
-  *  Váš server není online.
-* **Základě** 
-  *  Povolte vzdálená připojení TCP v bráně firewall serveru.
-  *  Spusťte server.
+## <a name="error-code-invalidinput"></a>Kód chyby: InvalidInput
+
+- **Chybová zpráva**: Ověřte prosím správnost vstupu.
+- **Potenciální příčina**: váš vstup není správný.
+- **Doporučení**: Ověřte si zadání.
+
+## <a name="error-code-firewallornetworkissue"></a>Kód chyby: FirewallOrNetworkIssue
+
+- **Chybová zpráva**: Ověřte prosím, jestli je tento port otevřený v bráně firewall/serveru/NSG a síť je stabilní.
+- **Možné příčiny:**
+  - Váš server neotevře port.
+  - Vaše skupina zabezpečení sítě má odepřený odchozí provoz na portu.
+  - SÍŤOVÉ virtuální zařízení/Azure Firewall/místní brána firewall neotevírá port.
+- **Doporučit**
+  - Otevřete port na serveru.
+  - Aktualizujte skupinu zabezpečení sítě tak, aby povolovala odchozí přenosy na portu.
+  - Otevřete port na síťové virtuální zařízení/Azure Firewall/místní bránu firewall.
+
+## <a name="error-code-misconfigureddnssettings"></a>Kód chyby: MisconfiguredDnsSettings
+
+- **Chybová zpráva**: Pokud používáte vlastní server DNS ve virtuální síti, který jste připojili k vašemu Azure-SSIS IR, ověřte, že dokáže přeložit název hostitele. "
+- **Možné příčiny:**
+  -  Došlo k potížím s vlastním DNS.
+  -  Pro název privátního hostitele nepoužíváte plně kvalifikovaný název domény (FQDN).
+- **Doporučit**
+  -  Opravte vlastní problém DNS, abyste se ujistili, že dokáže přeložit název hostitele.
+  -  Použijte plně kvalifikovaný název domény. Azure-SSIS IR automaticky nepřipojí vlastní příponu DNS. Použijte například **<your_private_server>. contoso.com** namísto **<your_private_server>**.
+
+## <a name="error-code-servernotallowremoteconnection"></a>Kód chyby: ServerNotAllowRemoteConnection
+
+- **Chybová zpráva**: "Ověřte prosím, jestli je na serveru povoleno vzdálené připojení TCP prostřednictvím tohoto portu."
+- **Možné příčiny:**
+  -  Brána firewall serveru nepovoluje vzdálená připojení TCP.
+  -  Váš server není online.
+- **Doporučit**
+  -  Povolte vzdálená připojení TCP v bráně firewall serveru.
+  -  Spusťte server.
    
-### <a name="error-code-misconfigurednsgsettings"></a>Kód chyby: MisconfiguredNsgSettings.
-* **Chybová zpráva**: Ověřte prosím, že NSG vaší virtuální sítě umožňuje odchozí přenosy přes tento port. Pokud používáte Azure ExpressRoute a nebo UDR, ověřte prosím, jestli je tento port v bráně firewall nebo na serveru otevřený.
-* **Možné příčiny:** 
-  *  Vaše skupina zabezpečení sítě má na tomto portu odepřený odchozí provoz.
-  *  Vaše brána firewall síťové virtuální zařízení/Azure/on-Prem firewall neotevírá tento port.
-* **Základě** 
-  *  Aktualizujte skupinu zabezpečení sítě tak, aby povolovala odchozí přenosy na tomto portu.
-  *  Otevřete tento port na síťové virtuální zařízení/Azure firewall/on-Prem firewall.
+## <a name="error-code-misconfigurednsgsettings"></a>Kód chyby: MisconfiguredNsgSettings
 
-### <a name="error-code-genericissues"></a>Kód chyby: GenericIssues.
-* **Chybová zpráva**: test připojení se nezdařil z důvodu obecných problémů.
-* **Možné příčiny:** Test připojení zjistil obecný dočasný problém.
-* **Doporučení:** Zkuste prosím testovací připojení znovu později. Pokud se tento pokus nepomůže, obraťte se prosím na tým podpory Azure Data Factory.
+- **Chybová zpráva**: Ověřte prosím, jestli NSG vaší virtuální sítě umožňuje odchozí přenosy přes tento port. Pokud používáte Azure ExpressRoute a nebo UDR, ověřte prosím, jestli je tento port v bráně firewall nebo na serveru otevřený.
+- **Možné příčiny:**
+  -  Vaše skupina zabezpečení sítě má odepřený odchozí provoz na portu.
+  -  SÍŤOVÉ virtuální zařízení/Azure Firewall/místní brána firewall neotevírá port.
+- **Základě**
+  -  Aktualizujte skupinu zabezpečení sítě tak, aby povolovala odchozí přenosy na portu.
+  -  Otevřete port na síťové virtuální zařízení/Azure Firewall/místní bránu firewall.
 
+## <a name="error-code-genericissues"></a>Kód chyby: GenericIssues
 
-### <a name="error-code-pspingexecutiontimeout"></a>Kód chyby: PSPingExecutionTimeout.
-* **Chybová zpráva**: časový limit testovacího připojení, zkuste to prosím znovu později.
-* **Možné příčiny:** Vypršel časový limit pro test připojení.
-* **Doporučení:** Zkuste prosím testovací připojení znovu později. Pokud se tento pokus nepomůže, obraťte se prosím na tým podpory Azure Data Factory.
+- **Chybová zpráva**: "test připojení selhalo z důvodu obecných problémů".
+- **Potenciální příčina**: test Connection zjistil obecný dočasný problém.
+- **Doporučení**: zkuste připojení otestovat později. Pokud se k opakovanému pokusu nepodaří, obraťte se na tým podpory Azure Data Factory.
 
-### <a name="error-code-networkinstable"></a>Kód chyby: NetworkInstable.
-* **Chybová zpráva**: test připojení byl neúspěšný, protože došlo k nestabilitě sítě.
-* **Možné příčiny:** Přechodný problém sítě.
-* **Doporučení:** Zkontrolujte prosím, jestli je server nebo síť brány firewall stabilní.
+## <a name="error-code-pspingexecutiontimeout"></a>Kód chyby: PSPingExecutionTimeout
+
+- **Chybová zpráva**: "časový limit připojení testu", zkuste to prosím znovu později. "
+- **Potenciální příčina**: vypršel časový limit připojení testu.
+- **Doporučení**: zkuste připojení otestovat později. Pokud se k opakovanému pokusu nepodaří, obraťte se na tým podpory Azure Data Factory.
+
+## <a name="error-code-networkinstable"></a>Kód chyby: NetworkInstable
+
+- **Chybová zpráva**: "test připojení se nezdařil z důvodu nestability sítě".
+- **Potenciální příčina**: přechodný problém sítě.
+- **Doporučení**: Ověřte, zda je server nebo síť brány firewall stabilní.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Nasaďte balíčky. Další informace najdete v tématu [nasazení projektu SSIS do Azure pomocí SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms).
-- Spusťte balíčky. Další informace najdete v tématu [spuštění balíčků SSIS v Azure pomocí SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms).
-- Naplánujte balíčky. Další informace najdete v tématu [plánování balíčků SSIS v Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15).
-
+- [Nasazení projektu SSIS do Azure pomocí SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms)
+- [Spouštění balíčků SSIS v Azure s SSMS](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms)
+- [Plánování balíčků SSIS v Azure](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: d956ce273a7ea630bfdcf900fbbba5e8be30b254
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 940a24aedb8592d0e809bc79dc1c8977bc3abd38
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288456"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448982"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Rychlé kroky: vytvoření a použití páru veřejných privátních klíčů SSH pro virtuální počítače se systémem Linux v Azure
 
@@ -37,10 +37,10 @@ Následující příkaz vytvoří pár klíčů SSH pomocí šifrování RSA a b
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-Pokud k vytvoření virtuálního počítače pomocí příkazu [AZ VM Create](/cli/azure/vm#az-vm-create) použijete rozhraní příkazového [řádku Azure CLI](/cli/azure) , můžete volitelně vygenerovat soubory veřejného a privátního klíče SSH pomocí `--generate-ssh-keys` Možnosti. Klíčové soubory jsou uloženy v adresáři ~/.ssh, pokud nejsou zadány jinak s `--ssh-dest-key-path` možností. `--generate-ssh-keys`Možnost nepřepisuje stávající soubory klíčů, místo toho vrátí chybu. V následujícím příkazu nahraďte *VMname* a *RGname* vlastními hodnotami:
+Pokud k vytvoření virtuálního počítače pomocí příkazu [AZ VM Create](/cli/azure/vm#az-vm-create) použijete rozhraní příkazového [řádku Azure CLI](/cli/azure) , můžete volitelně vygenerovat soubory veřejného a privátního klíče SSH pomocí `--generate-ssh-keys` Možnosti. Klíčové soubory jsou uloženy v adresáři ~/.ssh, pokud nejsou zadány jinak s `--ssh-dest-key-path` možností. Pokud pár klíčů ssh již existuje a `--generate-ssh-keys` možnost se použije, nový pár klíčů se nevygeneruje, ale místo toho se použije existující pár klíčů. V následujícím příkazu nahraďte *VMname* a *RGname* vlastními hodnotami:
 
 ```azurecli
-az vm create --name VMname --resource-group RGname --generate-ssh-keys 
+az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-ssh-keys 
 ```
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>Při nasazování virtuálního počítače zadejte veřejný klíč SSH.

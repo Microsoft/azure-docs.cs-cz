@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 49a40d78b4ba3bc1e90bb341cca90bece0b998a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03258bf204491afce4635828b3a33a06886aca2d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81450011"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448410"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 Tento článek popisuje osvědčené postupy zabezpečení pro virtuální počítače a operační systémy.
@@ -84,7 +84,7 @@ Pomocí [Azure Security Center](../../security-center/index.yml) můžete integr
 Virtuální počítače Azure, jako jsou všechny místní virtuální počítače, se považují za spravované uživatelem. Azure v nich nenabízí instalaci aktualizací Windows. Musíte spravovat aktualizace virtuálních počítačů.
 
 **Osvědčený postup**: Udržujte své virtuální počítače aktuální.   
-**Podrobnosti**: pomocí řešení [Update Management](../../automation/automation-update-management.md) v Azure Automation můžete spravovat aktualizace operačního systému pro počítače s Windows a Linux, které jsou nasazené v Azure, v místních prostředích nebo v jiných poskytovatelích cloudu. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
+**Podrobnosti**: pomocí řešení [Update Management](../../automation/update-management/update-mgmt-overview.md) v Azure Automation můžete spravovat aktualizace operačního systému pro počítače s Windows a Linux, které jsou nasazené v Azure, v místních prostředích nebo v jiných poskytovatelích cloudu. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
 
 Počítače spravované pomocí Update Managementu používají k provádění posuzovacích a aktualizačních nasazení následující konfigurace:
 

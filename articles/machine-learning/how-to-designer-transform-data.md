@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 3858a5a3b39c7ecaaad17a6bb6c313caf7bbc0ae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 05a21ce10db2822c963f1b375842e9a7233e0816
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326983"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87457817"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Transformuje data v Návrháři Azure Machine Learning (Preview).
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -112,7 +112,7 @@ Teď, když je váš kanál nastavený pro rozdělení dat, je potřeba určit, 
     **Formát souboru**: CSV
 
     > [!NOTE]
-    > V tomto článku se předpokládá, že máte přístup k úložišti dat registrovanému v aktuálním pracovním prostoru Azure Machine Learning. Pokyny, jak nastavit úložiště dat, najdete v tématu [připojení ke službám Azure Storage](how-to-access-data.md#azure-machine-learning-studio).
+    > V tomto článku se předpokládá, že máte přístup k úložišti dat registrovanému v aktuálním pracovním prostoru Azure Machine Learning. Pokyny, jak nastavit úložiště dat, najdete v tématu [připojení ke službám Azure Storage](how-to-access-data.md#studio).
 
     Pokud úložiště dat nemáte, můžete si ho vytvořit teď. V tomto článku se například uloží datové sady do výchozího účtu služby Blob Storage přidruženého k pracovnímu prostoru. Datové sady se uloží do `azureml` kontejneru v nové složce s názvem `data` .
 

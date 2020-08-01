@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: ef2691f63d7bb8c468d065b82c9726e8f7740c20
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ce017d1ac92e3aabe7ad0e36b2e8b87dc04b34f6
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203164"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445936"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Urychlení analýz velkých objemů dat pomocí Apache Spark pro Azure Cosmos DB konektor
 
@@ -95,7 +95,7 @@ writeConfig = {
 }
 
 # Write to Cosmos DB from the flights DataFrame
-flights.write.format("com.microsoft.azure.cosmosdb.spark").options(
+flights.write.mode("overwrite").format("com.microsoft.azure.cosmosdb.spark").options(
     **writeConfig).save()
 ```
 
@@ -299,7 +299,7 @@ Na wikiwebu máme další informace, `azure-cosmosdb-spark` [wiki](https://githu
 
 ### <a name="performance"></a>Výkon
 
-* [Tipy ke zvýšení výkonu](https://github.com/Azure/azure-cosmosdb-spark/wiki/Performance-tips)
+* [Tipy pro zvýšení výkonu](https://github.com/Azure/azure-cosmosdb-spark/wiki/Performance-tips)
 * [Dotazy na testovací běhy](https://github.com/Azure/azure-documentdb-spark/wiki/Query-Test-Runs)
 * [Zápis testovacích běhů](https://github.com/Azure/azure-cosmosdb-spark/wiki/Writing-Test-Runs)
 
@@ -309,7 +309,7 @@ Na wikiwebu máme další informace, `azure-cosmosdb-spark` [wiki](https://githu
 * [Změny ukázek informačních kanálů](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
 * [Ukázky strukturovaného streamu](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
 
-### <a name="monitoring"></a>Monitorování
+### <a name="monitoring"></a>Sledování
 
 * [Monitorování úloh Spark pomocí Application Insights](https://github.com/Azure/azure-cosmosdb-spark/tree/2.3/samples/monitoring)
 

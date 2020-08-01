@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, konfigurace stavu, Správa aktualiz
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 30cfadcec1f0c28a463740ddaefa8fc76f04af3f
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: d10570efe49203f879cdceae776af5c3bc6991c0
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186176"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448058"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Seznámení s Azure Automation
 
@@ -31,19 +31,19 @@ Automatizace procesů podporuje integraci služeb Azure a dalších veřejných 
 Správa konfigurace v Azure Automation umožňuje přístup ke dvěma funkcím:
 
 * Change Tracking a Inventory
-* Azure Automation State Configuration
+* Služba Azure Automation State Configuration
 
 ### <a name="change-tracking-and-inventory"></a>Change Tracking a Inventory
 
 Change Tracking a inventář kombinuje funkce Change Tracking a Inventory, které vám umožní sledovat změny infrastruktury virtuálních počítačů a serverů. Služba podporuje sledování změn napříč službami, démony, softwarem, Registry a soubory ve vašem prostředí, které vám pomůžou diagnostikovat nechtěné změny a vyvolat výstrahy. Podpora inventáře vám umožní dotazovat se na prostředky v hostovi pro přehlednost v nainstalovaných aplikacích a dalších položkách konfigurace. Podrobnosti o této funkci najdete v tématu [Change Tracking a inventář](change-tracking.md).
 
-### <a name="azure-automation-state-configuration"></a>Azure Automation State Configuration
+### <a name="azure-automation-state-configuration"></a>Služba Azure Automation State Configuration
 
 [Konfigurace stavu Azure Automation](automation-dsc-overview.md) je cloudová funkce pro konfiguraci požadovaného stavu PowerShellu (DSC), která poskytuje služby pro podniková prostředí. Pomocí této funkce můžete spravovat prostředky DSC v Azure Automation a aplikovat konfigurace na virtuální nebo fyzické počítače ze serveru vyžádané replikace DSC v cloudu Azure. 
 
 ## <a name="update-management"></a>Správa aktualizací
 
-Azure Automation obsahuje funkci [Update Management](automation-update-management.md) pro systémy Windows a Linux napříč hybridními prostředími. Update Management vám poskytne přehled o kompatibilitě aktualizací napříč Azure a ostatními cloudy a místním prostředí. Tato funkce umožňuje vytvářet plánovaná nasazení, která orchestrují instalaci aktualizací v rámci definovaného časového období údržby. Pokud by se aktualizace neměla instalovat na počítač, můžete k vyloučení z nasazení použít funkci Update Management.
+Azure Automation obsahuje funkci [Update Management](update-management/update-mgmt-overview.md) pro systémy Windows a Linux napříč hybridními prostředími. Update Management vám poskytne přehled o kompatibilitě aktualizací napříč Azure a ostatními cloudy a místním prostředí. Tato funkce umožňuje vytvářet plánovaná nasazení, která orchestrují instalaci aktualizací v rámci definovaného časového období údržby. Pokud by se aktualizace neměla instalovat na počítač, můžete k vyloučení z nasazení použít funkci Update Management.
 
 ## <a name="shared-capabilities"></a>Sdílené možnosti
 

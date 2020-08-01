@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2a49c76e6fdb7f957c026e8f8220cd29a7b35d8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749951"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448369"
 ---
 # <a name="azure-operational-security"></a>Provozní zabezpečení Azure
 ## <a name="introduction"></a>Úvod
@@ -66,10 +66,10 @@ Díky protokolům Azure Monitor můžete spravovat libovolnou instanci v jakémk
 
 Základní funkce protokolů Azure Monitor poskytují sady služeb, které běží v Azure. Každá služba poskytuje specifickou funkci správy a kombinováním služeb je možné dosahovat různých scénářů správy.
 
-| Služba  | Description|
+| Služba  | Popis|
 | :------------- | :-------------|
 | Protokoly služby Azure Monitor | Monitorování a analýza dostupnosti a výkonu různých prostředků včetně fyzických a virtuálních počítačů |
-|Automation | Automatizace ručních procesů a vynucení konfigurací pro fyzické a virtuální počítače |
+|Automatizace | Automatizace ručních procesů a vynucení konfigurací pro fyzické a virtuální počítače |
 | Backup | Zálohování a obnovení důležitých dat. |
 | Site Recovery | Poskytnutí vysoké dostupnosti pro důležitá data |
 
@@ -108,7 +108,7 @@ Chráněná data ve službě Azure Backup se ukládají do trezoru záloh umíst
 
 ![Řešení pro správu](./media/operational-security/azure-operational-security-fig4.png)
 
-Dobrým příkladem řešení, které využívá více služeb k poskytnutí dalších funkcí je [Update Management řešení](../../automation/automation-update-management.md). Toto řešení používá agenta [Azure Monitorch protokolů](../../log-analytics/log-analytics-queries.md) pro systémy Windows a Linux ke shromáždění informací o požadovaných aktualizacích u každého agenta. Tato data zapisuje do úložiště protokolů Azure Monitor, kde je můžete analyzovat pomocí vloženého řídicího panelu.
+Dobrým příkladem řešení, které využívá více služeb k poskytnutí dalších funkcí je [Update Management řešení](../../automation/update-management/update-mgmt-overview.md). Toto řešení používá agenta [Azure Monitorch protokolů](../../log-analytics/log-analytics-queries.md) pro systémy Windows a Linux ke shromáždění informací o požadovaných aktualizacích u každého agenta. Tato data zapisuje do úložiště protokolů Azure Monitor, kde je můžete analyzovat pomocí vloženého řídicího panelu.
 
 Při vytváření nasazení se k instalaci požadovaných aktualizací použijí Runbooky v [Azure Automation](../../automation/automation-intro.md) . Celý tento proces spravujete na portálu a nemusíte se starat o podrobnosti.
 

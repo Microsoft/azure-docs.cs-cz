@@ -9,18 +9,18 @@ ms.reviewer: dseven
 ms.author: mihansen
 author: hansenms
 ms.date: 02/07/2019
-ms.openlocfilehash: 684f85042fd09c14621801ec017fea0e632f2598
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: f6c3b1f4c24ad2bce68c1cff7b22f0059d3534a2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "84872675"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446052"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Přístup k rozhraní API Azure pro FHIR s využitím post
 
 Klientská aplikace by měla přístup k rozhraní FHIR API prostřednictvím [REST API](https://www.hl7.org/fhir/http.html). Můžete také při sestavování aplikací pracovat přímo se serverem FHIR, například pro účely ladění. V tomto kurzu Vás provedeme kroky potřebnými k použití [metody post](https://www.getpostman.com/) pro přístup k serveru FHIR. Publikování je nástroj, který se často používá pro ladění při sestavování aplikací, které přistupují k rozhraním API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Koncový bod FHIR v Azure. Můžete ho nastavit pomocí spravovaného rozhraní API Azure pro FHIR nebo open source serveru FHIR pro Azure. Nastavte spravované rozhraní API Azure pro FHIR pomocí [Azure Portal](fhir-paas-portal-quickstart.md), [PowerShellu](fhir-paas-powershell-quickstart.md)nebo rozhraní příkazového [řádku Azure CLI](fhir-paas-cli-quickstart.md).
 - Po instalaci. Můžete si ho stáhnout z[https://www.getpostman.com](https://www.getpostman.com)
@@ -71,7 +71,7 @@ Budete potřebovat několik podrobností:
 | ID klienta             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                            | ID aplikace             |
 | Tajný klíč klienta         | `XXXXXXXX`                                                                                                        | Tajný klíč klienta          |
 | Rozsah | `<Leave Blank>` |
-| Stav                 | `1234`                                                                                                            |                            |
+| State                 | `1234`                                                                                                            |                            |
 | Ověření klienta | Poslat přihlašovací údaje klienta v těle                                                                                 |                 
 
 Zajděte si "token žádosti" a budete provedeni pomocí Azure Active Directoryho toku ověřování a token se vrátí do post. Pokud narazíte na problémy, otevřete konzolu pro odesílání (z položky nabídky Zobrazit a >zobrazit na konzole pro publikování).
@@ -108,7 +108,7 @@ Pokud zkontrolujete přístupový token pomocí nástroje [https://jwt.ms](https
 }
 ```
 
-V situacích řešení potíží se ověřováním, že máte správnou cílovou skupinu ( `aud` deklarace identity), je dobrým místem, kde začít. Pokud váš token pochází ze správného vystavitele ( `iss` deklarace identity) a má správnou cílovou skupinu ( `aud` deklarace identity), ale stále nemůžete získat přístup k rozhraní FHIR API, je pravděpodobný, že uživatel nebo instanční objekt ( `oid` deklarace identity) nemá přístup k rovině dat FHIR. K přiřazení rolí roviny dat uživatelům doporučujeme [použít Access Control na základě rolí Azure](configure-azure-rbac.md) . Pokud pro svou rovinu dat používáte externího sekundárního tenanta Azure Active Directory, budete muset [nakonfigurovat místní přiřazení RBAC](configure-local-rbac.md).
+V situacích řešení potíží se ověřováním, že máte správnou cílovou skupinu ( `aud` deklarace identity), je dobrým místem, kde začít. Pokud váš token pochází ze správného vystavitele ( `iss` deklarace identity) a má správnou cílovou skupinu ( `aud` deklarace identity), ale stále nemůžete získat přístup k rozhraní FHIR API, je pravděpodobný, že uživatel nebo instanční objekt ( `oid` deklarace identity) nemá přístup k rovině dat FHIR. K přiřazení rolí roviny dat uživatelům doporučujeme [použít řízení přístupu na základě role Azure (Azure RBAC)](configure-azure-rbac.md) . Pokud pro svou rovinu dat používáte externího sekundárního tenanta Azure Active Directory, budete muset [nakonfigurovat místní přiřazení RBAC](configure-local-rbac.md).
 
 Je také možné [získat token pro rozhraní API Azure pro FHIR pomocí Azure CLI](get-healthcare-apis-access-token-cli.md). Pokud používáte token získaný v rozhraní příkazového řádku Azure CLI, měli byste použít typ ověřování "nosný token" a přímo ho vložit.
 

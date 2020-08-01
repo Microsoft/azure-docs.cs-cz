@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 31dfae60b1967e221e294195f66bb7fe59a15e64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69926671730e41845cd28df3108ec86b24a57075
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187522"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448516"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Síťové topologie pro migrace spravované instance SQL Azure pomocí Azure Database Migration Service
 
@@ -39,7 +39,7 @@ Tuto topologii použijte, pokud je vaše spravovaná instance SQL Azure připoje
 Tuto topologii sítě použijte v případě, že vaše prostředí vyžaduje jeden nebo více následujících scénářů:
 
 - Spravovaná instance SQL je izolovaná od místního připojení, ale vaše instance Azure Database Migration Service je připojená k místní síti.
-- Pokud jsou zásady Access Control na základě role (RBAC) na místě a potřebujete omezit uživatele na přístup ke stejnému předplatnému, které hostuje spravovanou instanci SQL.
+- Pokud jsou nastavené zásady řízení přístupu na základě role Azure (Azure RBAC) a potřebujete omezit uživatele na přístup ke stejnému předplatnému, které je hostitelem spravované instance SQL.
 - Virtuální sítě používané pro spravovanou instanci SQL a Azure Database Migration Service jsou v různých předplatných.
 
 ![Síťová topologie pro spravovanou instanci izolovaná od místní sítě](media/resource-network-topologies/mi-isolated-workload.png)
@@ -64,7 +64,7 @@ Tuto topologii použijte, pokud je zdrojový SQL Server hostovaný na virtuáln�
 Tuto topologii sítě použijte v případě, že vaše prostředí vyžaduje jeden nebo více následujících scénářů:
 
 - Spravovaná instance SQL se zřídí v izolované virtuální síti.
-- Pokud jsou zásady Access Control na základě role (RBAC) na místě a potřebujete omezit uživatele na přístup ke stejnému předplatnému, které je hostitelem spravované instance SQL.
+- Pokud jsou nastavené zásady řízení přístupu na základě role Azure (Azure RBAC) a potřebujete omezit uživatele na přístup ke stejnému předplatnému, které je hostitelem spravované instance SQL.
 - Virtuální sítě používané pro spravovanou instanci SQL a Azure Database Migration Service jsou v různých předplatných.
 
 ![Síťová topologie pro migrace z cloudu do cloudu s izolovanou virtuální sítí](media/resource-network-topologies/cloud-to-cloud-isolated.png)
@@ -77,18 +77,18 @@ Tuto topologii sítě použijte v případě, že vaše prostředí vyžaduje je
 
 | **NÁZEV**   | **PŘÍSTAVNÍ** | **PROTOKOL** | **Zdrojová** | **TABULKA** | **KROKY** |
 |------------|----------|--------------|------------|-----------------|------------|
-| DMS_subnet | Všechny      | Všechny          | PODSÍŤ DMS | Všechny             | Povolit      |
+| DMS_subnet | Libovolný      | Všechny          | PODSÍŤ DMS | Všechny             | Povolit      |
 
 ## <a name="outbound-security-rules"></a>Odchozí pravidla zabezpečení
 
 | **NÁZEV**                  | **PŘÍSTAVNÍ**                                              | **PROTOKOL** | **Zdrojová** | **TABULKA**           | **KROKY** | **Důvod pravidla**                                                                                                                                                                              |
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| správa                | 443, 9354                                              | TCP          | Všechny        | Všechny                       | Povolit      | Komunikace roviny správy prostřednictvím Service Bus a úložiště objektů BLOB v Azure. <br/>(Pokud je povolen partnerský vztah Microsoftu, možná toto pravidlo nebudete potřebovat.)                                                             |
-| Diagnostika               | 12000                                                 | TCP          | Všechny        | Všechny                       | Povolit      | DMS pomocí tohoto pravidla shromažďuje diagnostické informace pro účely řešení potíží.                                                                                                                      |
-| Zdrojový server SQL         | 1433 (nebo port TCP IP, na který SQL Server naslouchá) | TCP          | Všechny        | Adresní prostor místního prostředí | Povolit      | Připojení ke zdroji SQL Server z DMS <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.)                                                                                       |
-| SQL Server pojmenované instance | 1434                                                  | UDP          | Všechny        | Adresní prostor místního prostředí | Povolit      | SQL Server připojení ke zdroji pojmenované instance z DMS <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.)                                                                        |
-| Sdílená složka SMB                 | 445                                                   | TCP          | Všechny        | Adresní prostor místního prostředí | Povolit      | Síťová sdílená složka SMB pro DMS pro ukládání záložních souborů databáze pro migrace do Azure SQL Database MI a SQL serverů na virtuálním počítači Azure <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.) |
-| DMS_subnet                | Všechny                                                   | Všechny          | Všechny        | DMS_Subnet                | Povolit      |                                                                                                                                                                                                  |
+| správa                | 443, 9354                                              | TCP          | Libovolný        | Všechny                       | Povolit      | Komunikace roviny správy prostřednictvím Service Bus a úložiště objektů BLOB v Azure. <br/>(Pokud je povolen partnerský vztah Microsoftu, možná toto pravidlo nebudete potřebovat.)                                                             |
+| Diagnostika               | 12000                                                 | TCP          | Libovolný        | Všechny                       | Povolit      | DMS pomocí tohoto pravidla shromažďuje diagnostické informace pro účely řešení potíží.                                                                                                                      |
+| Zdrojový server SQL         | 1433 (nebo port TCP IP, na který SQL Server naslouchá) | TCP          | Libovolný        | Adresní prostor místního prostředí | Povolit      | Připojení ke zdroji SQL Server z DMS <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.)                                                                                       |
+| SQL Server pojmenované instance | 1434                                                  | UDP          | Libovolný        | Adresní prostor místního prostředí | Povolit      | SQL Server připojení ke zdroji pojmenované instance z DMS <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.)                                                                        |
+| Sdílená složka SMB                 | 445                                                   | TCP          | Libovolný        | Adresní prostor místního prostředí | Povolit      | Síťová sdílená složka SMB pro DMS pro ukládání záložních souborů databáze pro migrace do Azure SQL Database MI a SQL serverů na virtuálním počítači Azure <br/>(Pokud máte připojení Site-to-site, možná toto pravidlo nebudete potřebovat.) |
+| DMS_subnet                | Libovolný                                                   | Všechny          | Všechny        | DMS_Subnet                | Povolit      |                                                                                                                                                                                                  |
 
 ## <a name="see-also"></a>Viz také
 

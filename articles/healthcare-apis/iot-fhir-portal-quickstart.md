@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: punagpal
-ms.openlocfilehash: bc85765666ba3baeae7ec795118f615f6b4b4368
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95f5b5f13401c224ccf67c5f013deedf00379de7
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102030"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446808"
 ---
 # <a name="quickstart-deploy-iot-connector-preview-using-azure-portal"></a>Rychlý Start: nasazení konektoru IoT (Preview) pomocí Azure Portal
 
@@ -181,7 +181,7 @@ Po nasazení IoT Central aplikace začnou vaše dvě předem připravená simulo
 Prostředky pro sledování založené na FHIR, které vytvořila služba IoT Connector, můžete zobrazit v rozhraní Azure API pro FHIR pomocí post. Nastavte svého poskytovatele [pro přístup k rozhraní API Azure pro FHIR](access-fhir-postman-tutorial.md) a `GET` vyžádejte si požadavek na `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` zobrazení informací o prostředcích FHIR pro sledování pomocí hodnoty srdcových sazeb. 
 
 > [!TIP]
-> Ujistěte se, že váš uživatel má odpovídající přístup k rozhraní Azure API pro rovinu dat FHIR. Pomocí [Access Control založeného na rolích Azure](configure-azure-rbac.md) můžete přiřadit požadované role roviny dat.
+> Ujistěte se, že váš uživatel má odpovídající přístup k rozhraní Azure API pro rovinu dat FHIR. Pomocí [řízení přístupu na základě role Azure (Azure RBAC)](configure-azure-rbac.md) přiřaďte požadované role roviny dat.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

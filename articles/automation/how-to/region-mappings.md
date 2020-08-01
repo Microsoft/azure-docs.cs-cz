@@ -10,12 +10,12 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: a8b5f14147ee748f5d32d794f51d5437eeddfb51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e5cad25c80661f9e707f545929e6ffcb00a1e42
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261184"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447854"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Podporované oblasti pro propojený pracovní prostor Log Analytics
 
@@ -78,11 +78,11 @@ Po odebrání funkcí můžete pomocí následujících kroků zrušit propojen�
 
 Alternativně můžete zrušit propojení pracovního prostoru s účtem Automation v pracovním prostoru.
 
-1. V pracovním prostoru vyberte **účet Automation** v části **související prostředky**. 
+1. V pracovním prostoru vyberte **účet Automation** v části **související prostředky**.
 2. Na stránce účet Automation vyberte zrušit **propojení účtu**.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o Update Management v článku [Update Management přehled](../automation-update-management.md).
+* Přečtěte si o Update Management v článku [Update Management přehled](../update-management/update-mgmt-overview.md).
 * Přečtěte si o Change Tracking a inventáři v [přehledu Change Tracking a inventáře](../change-tracking.md).
 * Přečtěte si o Start/Stop VMs during off-hours v článku [Start/Stop VMS during off-hours přehled](../automation-solution-vm-management.md).

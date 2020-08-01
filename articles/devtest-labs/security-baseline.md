@@ -3,12 +3,12 @@ title: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 description: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 7f0dc1fb18740e2b0611b5954821a5ceda2d2657
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b392af17a24b0a5aabdd245af236caa743762244
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387825"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448963"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 
@@ -275,7 +275,7 @@ Microsoft provádí správu ohrožení zabezpečení na podkladových zdrojích,
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: nasazení automatizovaného řešení pro správu oprav operačního systému
 **Doprovodné materiály:** Pomocí Azure Update Management zajistěte, aby byly na virtuálních počítačích s Windows a Linux hostovaných v rámci DevTest Labs nainstalované nejnovější aktualizace zabezpečení. U virtuálních počítačů s Windows ověřte, že je povolená možnost web Windows Update a že se nastaví automatické aktualizace. Toto nastavení není aktuálně k dispozici pro konfiguraci prostřednictvím DevTest Labs, ale správce testovacího prostředí nebo správce předplatného může nakonfigurovat toto nastavení u základních výpočetních virtuálních počítačů ve svém předplatném. 
 
-- [Postup konfigurace Update Management pro virtuální počítače v Azure](../automation/automation-update-management.md)
+- [Postup konfigurace Update Management pro virtuální počítače v Azure](../automation/update-management/update-mgmt-overview.md)
 - [Porozumění zásadám zabezpečení Azure monitorovaným Security Center](../security-center/security-center-policy-definitions.md)
 
 **Monitorování Azure Security Center:** Nelze použít
@@ -289,8 +289,8 @@ Přečtěte si další informace o [objektu pro vytváření imagí DevTest Labs
 
 Jako správce předplatného můžete také pomocí řešení Azure Update Management spravovat aktualizace a opravy pro virtuální počítače DevTest Labs. Update Management spoléhá na místně nakonfigurované úložiště aktualizací, které opraví podporované systémy Windows. Nástroje, jako je System Center Updates Publisher (Updates Publisher), umožňují publikovat vlastní aktualizace do Windows Server Update Services (WSUS). Tento scénář umožňuje Update Management opravit počítače, které používají Configuration Manager jako úložiště aktualizací se softwarem třetích stran.
 
-- [Řešení Update Management v Azure](../automation/automation-update-management.md)
-- [Správa aktualizací a oprav pro virtuální počítače Azure](../automation/automation-tutorial-update-management.md)
+- [Řešení Update Management v Azure](../automation/update-management/update-mgmt-overview.md)
+- [Správa aktualizací a oprav pro virtuální počítače](../automation/update-management/update-mgmt-overview.md)
 
 **Monitorování Azure Security Center:** Nelze použít
 

@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 427a09f3855d44af0206ebf1fd6183099da75f19
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80331080"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446978"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health nejčastějších dotazech
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Active Directory (Azure AD) Connect Health. Tyto nejčastější dotazy obsahují otázky týkající se používání služby, včetně modelu fakturace, možností, omezení a podpory.
@@ -135,7 +135,7 @@ Registraci agenta stavu z následujících možných důvodů se může zdařit:
 
 * Agent nemůže komunikovat s požadovanými koncovými body, protože brána firewall blokuje provoz. To je zvláště běžné na proxy serverech webových aplikací. Ujistěte se, že jste povolili odchozí komunikaci s požadovanými koncovými body a porty. Podrobnosti najdete v [části požadavky](how-to-connect-health-agent-install.md#requirements) .
 * Odchozí komunikace se řídí kontrolou TLS v síťové vrstvě. To způsobí, že certifikát, který agent používá, bude nahrazen kontrolním serverem nebo entitou a kroky pro dokončení registrace agenta selžou.
-* Uživatel nemá přístup k provedení registrace agenta. Globální správci mají ve výchozím nastavení přístup. K delegování přístupu jiným uživatelům můžete použít [Access Control na základě rolí](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) .
+* Uživatel nemá přístup k provedení registrace agenta. Globální správci mají ve výchozím nastavení přístup. K delegování přístupu jiným uživatelům můžete použít [řízení přístupu na základě role Azure (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) .
 
 **Otázka: zobrazuje se upozornění, že "Health Service data nejsou aktuální." Návody řešení problému?**
 

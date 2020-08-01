@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: 091a5d33e49e2abe811bf3cc250d04d69506165d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dfbe1e7fdfca6f9959218f47d903301cb4b6d899
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011630"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448390"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services V2 vs. v3
 
@@ -83,7 +83,8 @@ Rozhraní V3 API má následující mezery v souvislosti s rozhraním API v2. Uz
     * Vložení tiché zvukové stopy, když vstup nemá žádný zvuk
     * Vložení stop videa, když vstup nemá žádné video
 * Živé události s překódováním v současné době nepodporují vložení do středu a vložení značek AD prostřednictvím volání rozhraní API. 
- 
+* `https://github.com/Azure-Samples/media-services-v2-dotnet-core-restsharp-sample.git`Osvědčené postupy a vzory týkající se použití REST API v2 v systému najdete v ukázkovém kódu. NETCore SDK.
+
 ## <a name="asset-specific-changes"></a>Změny specifické pro prostředek
 
 ### <a name="map-v3-asset-properties-to-v2"></a>Mapování vlastností assetu V3 na v2

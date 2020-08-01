@@ -3,12 +3,12 @@ title: Použití aplikace Web App-personalizovat
 description: Přizpůsobení webové aplikace v jazyce C# .NET pomocí smyčky vlastního nastavení pro poskytnutí správného obsahu uživateli na základě akcí (s funkcemi) a funkcí kontextu.
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: b8b5c005f7003f9b0d9ac228c5a5961c80c85599
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 6e3373ef8ace401ff40b3d48026fc46b96f1ad79
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133125"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446370"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Kurz: Přidání přizpůsobení do webové aplikace .NET
 
@@ -41,7 +41,7 @@ V tomto kurzu jsou akce typy jídla:
 * internetových
 * neobsahuje
 
-Chcete-li lépe přizpůsobovat informace o svých akcích, odešlete obě_Akce _ pomocí_ funkcí a _funkcí kontextu_ s každou žádostí rozhraní API pro řazení.
+Chcete-li lépe přizpůsobovat informace o vašich akcích, odešlete obě _akce s_ funkcemi a _kontextovou funkcí_ s každou žádostí rozhraní API pro řazení.
 
 **Funkce** modelu je informace o akci nebo kontextu, které mohou být agregovány (seskupeny) mezi členy vaší uživatelské základny webové aplikace. Funkce _není_ individuálně specifická (například ID uživatele) nebo má vysokou specifickou hodnotu (například přesný denní čas).
 

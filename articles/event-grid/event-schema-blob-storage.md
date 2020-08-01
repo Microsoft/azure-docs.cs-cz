@@ -3,12 +3,12 @@ title: Azure Blob Storage jako zdroj Event Grid
 description: Popisuje vlastnosti, které jsou k dispozici pro události služby Blob Storage s Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 792e4b24df5eb374d1e3589629fa8628d6680cf8
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a914edbb6f624617766c77b277d7ee8e6ad08bd9
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371273"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458939"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure Blob Storage jako zdroj Event Grid
 
@@ -25,7 +25,7 @@ Tento článek poskytuje vlastnosti a schéma pro události služby Blob Storage
 Tyto události se aktivují, když klient vytvoří, nahradí nebo odstraní objekt BLOB voláním rozhraní REST API pro objekty blob.
 
 > [!NOTE]
-> Použití koncového bodu DFS *`(abfss://URI) `* pro účty, které nejsou hierarchicky povoleným oborem názvů, nebude generovat události. U takových účtů budou události generovat jenom koncový bod objektu BLOB *`(wasb:// URI)`* .
+> `$logs`Kontejnery a `$blobchangefeed` nejsou integrovány s Event Grid, takže aktivita v těchto kontejnerech nebude generovat události. Také použití koncového bodu DFS *`(abfss://URI) `* pro účty s povolenými nehierarchickými obory názvů negeneruje události, ale koncový bod objektu BLOB *`(wasb:// URI)`* bude generovat události.
 
  |Název události |Popis|
  |----------|-----------|
@@ -33,7 +33,7 @@ Tyto události se aktivují, když klient vytvoří, nahradí nebo odstraní obj
  |**Microsoft. Storage. BlobDeleted** |Aktivuje se při odstranění objektu BLOB. <br>Konkrétně se tato událost aktivuje, když klienti volají `DeleteBlob` operaci, která je k dispozici v objektu Blob REST API. |
 
 > [!NOTE]
-> Chcete-li zajistit, aby se událost **Microsoft. Storage. BlobCreated** aktivovala pouze v případě, že je objekt blob bloku zcela potvrzen, vyfiltrujte událost pro `CopyBlob` `PutBlob` volání, a `PutBlockList` REST API. Tato volání rozhraní API aktivují událost **Microsoft. Storage. BlobCreated** až po úplném potvrzení dat do objektu blob bloku. Další informace o tom, jak vytvořit filtr, najdete v tématu [filtrování událostí pro Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> Chcete-li zajistit, aby se událost **Microsoft. Storage. BlobCreated** aktivovala pouze v případě, že je objekt blob bloku zcela potvrzen, vyfiltrujte událost pro `CopyBlob` `PutBlob` volání, a `PutBlockList` REST API. Tato volání rozhraní API aktivují událost **Microsoft. Storage. BlobCreated** až po úplném potvrzení dat do objektu blob bloku. Další informace o tom, jak vytvořit filtr, najdete v tématu [filtrování událostí pro Event Grid](./how-to-filter-events.md).
 
 ### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Seznam událostí pro rozhraní REST API pro Azure Data Lake Storage Gen 2
 
@@ -49,7 +49,7 @@ Tyto události se aktivují, pokud povolíte hierarchický obor názvů v účtu
 |**Microsoft. Storage. DirectoryDeleted**|Aktivuje se, když se odstraní adresář. <br>Konkrétně se tato událost aktivuje, když klienti použijí `DeleteDirectory` operaci, která je k dispozici v REST API Azure Data Lake Storage Gen2.|
 
 > [!NOTE]
-> Chcete-li zajistit, aby se událost **Microsoft. Storage. BlobCreated** aktivovala pouze v případě, že je objekt blob bloku zcela potvrzen, vyfiltrujte událost pro `FlushWithClose` volání REST API. Toto volání rozhraní API aktivuje událost **Microsoft. Storage. BlobCreated** až po úplném potvrzení dat do objektu blob bloku. Další informace o tom, jak vytvořit filtr, najdete v tématu [filtrování událostí pro Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> Chcete-li zajistit, aby se událost **Microsoft. Storage. BlobCreated** aktivovala pouze v případě, že je objekt blob bloku zcela potvrzen, vyfiltrujte událost pro `FlushWithClose` volání REST API. Toto volání rozhraní API aktivuje událost **Microsoft. Storage. BlobCreated** až po úplném potvrzení dat do objektu blob bloku. Další informace o tom, jak vytvořit filtr, najdete v tématu [filtrování událostí pro Event Grid](./how-to-filter-events.md).
 
 <a name="example-event"></a>
 ### <a name="the-contents-of-an-event-response"></a>Obsah odpovědi na událost
@@ -307,8 +307,8 @@ Datový objekt má následující vlastnosti:
 | Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | api | řetězec | Operace, která aktivovala událost. |
-| ID žádosti klienta | řetězec | ID požadavku pro rozhraní API úložiště poskytnuté klientem. Toto ID lze použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Client-Request-ID" v protokolech a lze je poskytnout v klientských požadavcích pomocí hlavičky x-MS-Client-Request-ID. Viz [Formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-| Identifikátor | řetězec | ID žádosti generované službou pro operaci rozhraní API úložiště Dá se použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Request-ID-header" v protokolech a vrátí se z inicializace volání rozhraní API v hlavičce x-MS-Request-ID. Viz [Formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+| ID žádosti klienta | řetězec | ID požadavku pro rozhraní API úložiště poskytnuté klientem. Toto ID lze použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Client-Request-ID" v protokolech a lze je poskytnout v klientských požadavcích pomocí hlavičky x-MS-Client-Request-ID. Viz [Formát protokolu](/rest/api/storageservices/storage-analytics-log-format). |
+| Identifikátor | řetězec | ID žádosti generované službou pro operaci rozhraní API úložiště Dá se použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Request-ID-header" v protokolech a vrátí se z inicializace volání rozhraní API v hlavičce x-MS-Request-ID. Viz [Formát protokolu](/rest/api/storageservices/storage-analytics-log-format). |
 | značk | řetězec | Hodnota, kterou můžete použít k podmíněnému provádění operací. |
 | Třída | řetězec | Typ obsahu zadaný pro objekt BLOB. |
 | contentLength | celé číslo | Velikost objektu BLOB v bajtech |

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4928938c38df8a1ed0f1e31c73e755a4f7f6c371
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ea951943c3f48443e4348d633c16ed61303f7aa8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367626"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449054"
 ---
 # <a name="tutorial-manipulating-models"></a>Kurz: manipulace s modely
 
@@ -23,7 +23,7 @@ V tomto kurzu se naučíte:
 > * Raycast s prostorovými dotazy
 > * Přidat jednoduché animace pro vzdáleně vykreslené objekty
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Tento kurz sestaví v [kurzu: rozhraní a vlastní modely](../custom-models/custom-models.md).
 
@@ -332,18 +332,14 @@ Po úspěšném dokončení přetypování do **RemoteRayCastPointerHandler**se 
 
 2. Na **TestModel** GameObject, který jste vytvořili dříve, přidejte komponentu **RemoteRayCastPointerHandler** i komponentu **RemoteEntityHelper** .
 1. Přiřaďte `EntityToDebugLog` k události metodu `OnRemoteEntityClicked` . Pokud se shoduje typ výstupu události a vstupní typ metody, můžeme použít dynamickou událost propojení Unity, která bude automaticky předávat hodnotu události do metody.
-    1. Vytvoří nové pole zpětného volání \.
-    ![Přidat zpětné volání](./media/add-callback-remote-entity-clicked.png)
-    1. Přetáhněte komponentu **pomocníka vzdálené entity** do pole Object, aby odkazovala na nadřazený GameObject \
-    ![Přiřadit objekt](./media/assign-object.png)
-    1. Přiřadit `EntityToDebugLog` jako zpětné volání \
-    ![Přiřazení zpětného volání](./media/remote-entity-event.png)
+    1. Vytvoří nové pole zpětného volání. ![ Přidat zpětné volání](./media/add-callback-remote-entity-clicked.png)
+    1. Přetáhněte komponentu **pomocníka vzdálené entity** do pole Object, aby odkazovala na nadřazený ![ objekt GameObject přiřazení.](./media/assign-object.png)
+    1. Přiřazení `EntityToDebugLog` ![ zpětného volání pro přiřazení zpětného volání](./media/remote-entity-event.png)
 1. Stisknutím přehrát v editoru Unity zahájíte scénu, připojíte se ke vzdálené relaci a nahrajete testovací model.
 1. Když použijete MRTKovou simulaci, stiskněte a podržíte levý klávesu SHIFT.
 1. Nasměrujte simulovanou ruku tak, aby ruka v poli odkazovala na model testu.
 1. Dlouhým kliknutím simulaci vzduchem spustíte `OnPointerClicked` událost.
-1. Podívejte se na konzolu Unity pro zprávu protokolu s názvem vybrané podřízené entity. Příklad: \
-![Příklad podřízené entity](./media/child-entity-example.png)
+1. Podívejte se na konzolu Unity pro zprávu protokolu s názvem vybrané podřízené entity. Příklad: ![ příklad podřízené entity](./media/child-entity-example.png)
 
 ## <a name="synchronizing-the-remote-object-graph-into-the-unity-hierarchy"></a>Synchronizace vzdáleného objektu grafu s hierarchií Unity
 
@@ -351,9 +347,9 @@ Až do této chvíle jsme viděli jenom jeden místní GameObject představujíc
 
 1. Spusťte scénu a načtěte testovací model.
 1. Rozbalte podřízené položky **TestModel** GameObject v hierarchii Unity a vyberte **TestModel_Entity** GameObject.
-1. V inspektoru klikněte na tlačítko *Zobrazit podřízené* . \
+1. V inspektoru klikněte na tlačítko *Zobrazit podřízené* .
 ![Zobrazit podřízené](./media/show-remote-children.png)
-1. Pokračujte tím, že rozbalíte podřízené položky v hierarchii a kliknete na *Zobrazit podřízené* , dokud se nezobrazí velký seznam podřízených objektů. \
+1. Pokračujte v Rozbalení podřízených objektů v hierarchii a kliknutím na možnost *Zobrazit podřízené* , dokud se nezobrazí velký seznam podřízených objektů.
 ![Všechny podřízené objekty](./media/test-model-children.png)
 
 V seznamu desítek entit se teď naplní hierarchie. Když vyberete jednu z nich, zobrazí `Transform` se `RemoteEntitySyncObject` v Inspektoru komponenty a. Ve výchozím nastavení se každou entitu v každém snímku automaticky nesynchronizují, takže místní změny se `Transform` nesynchronizují se serverem. V zobrazení scény můžete sledovat *synchronizaci všech snímků* a pak přesouvat, škálovat nebo otáčet transformaci. v zobrazení scény se nezobrazuje vykreslený model. Podívejte se na herní zobrazení a zobrazte si vizuální aktualizaci pozice a otočení modelu.
@@ -371,13 +367,13 @@ Stejný postup lze provést programově a je prvním krokem při úpravě specif
     }
     ```
 
-1. Přidejte další zpětné volání do události **RemoteRayCastPointerHandler** `OnRemoteEntityClicked` a nastavte ji na `MakeSyncedGameObject` . \
+1. Přidejte další zpětné volání do události **RemoteRayCastPointerHandler** `OnRemoteEntityClicked` a nastavte ji na `MakeSyncedGameObject` .
 ![Další zpětné volání](./media/additional-callback.png)
 1. Když použijete MRTKovou simulaci, stiskněte a podržíte levý klávesu SHIFT.
 1. Nasměrujte simulovanou ruku tak, aby ruka v poli odkazovala na model testu.
 1. Dlouhým kliknutím simulaci vzduchem spustíte `OnPointerClicked` událost.
-1. Zkontrolujte a rozbalte hierarchii pro zobrazení nového podřízeného objektu, který představuje kliklou entitu. \
-![Reprezentace GameObject](./media/gameobject-representing-entity.png)\
+1. Zkontrolujte a rozbalte hierarchii pro zobrazení nového podřízeného objektu, který představuje kliklou entitu.
+![Reprezentace GameObject](./media/gameobject-representing-entity.png)
 1. Po otestování odeberte zpětné volání pro `MakeSyncedGameObject` , protože ho zařadíme jako součást dalších účinků později.
 
 > [!NOTE]

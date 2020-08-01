@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 06/27/2020
 ms.author: punagpal
-ms.openlocfilehash: aeed0c90eeecd59e23a1d87a3ebc1e1a836a84ec
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: d606cd4f5c4b901c060c97d73524997b94eaf225
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116836"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446295"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Kurz: příjem dat ze zařízení prostřednictvím Azure IoT Hub
 
@@ -96,7 +96,7 @@ Pomocí zařízení (reálné nebo simulované) odešlete ukázkovou zprávu o k
 Prostředky pro sledování FHIR vytvořené službou IoT Connector můžete zobrazit v rozhraní Azure API pro FHIR pomocí post. Nastavte svého poskytovatele [pro přístup k rozhraní API Azure pro FHIR](access-fhir-postman-tutorial.md) a `GET` vyžádejte si požadavek na `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` zobrazení pozorovacích prostředků FHIR s hodnotou srdce odeslanou v předchozí ukázkové zprávě.
 
 > [!TIP]
-> Ujistěte se, že váš uživatel má odpovídající přístup k rozhraní Azure API pro rovinu dat FHIR. Pomocí [Access Control založeného na rolích Azure](configure-azure-rbac.md) můžete přiřadit požadované role roviny dat.
+> Ujistěte se, že váš uživatel má odpovídající přístup k rozhraní Azure API pro rovinu dat FHIR. Pomocí [řízení přístupu na základě role Azure (Azure RBAC)](configure-azure-rbac.md) přiřaďte požadované role roviny dat.
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -114,4 +114,3 @@ Naučte se konfigurovat konektor IoT pomocí šablon pro mapování zařízení 
 >[Šablony mapování konektoru IoT](iot-mapping-templates.md)
 
 FHIR je registrovaná ochranná známka HL7 a používá se s povolením HL7.
-

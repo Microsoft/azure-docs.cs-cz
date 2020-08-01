@@ -3,12 +3,12 @@ title: Uspořádání prostředků pomocí skupin pro správu – zásady správ
 description: Další informace o skupinách pro správu, fungování jejich oprávnění a způsobu jejich využití
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 8c8c254b2156a6f710c7130503b7c2a18d7168b0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7c6d5d752886f47da1321289696feb4261abe7e5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420511"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447118"
 ---
 # <a name="what-are-azure-management-groups"></a>Co jsou skupiny pro správu Azure?
 
@@ -82,7 +82,7 @@ Pokud máte k tomuto procesu obnovení nějaké dotazy, obraťte se na `manageme
   
 ## <a name="management-group-access"></a>Přístup ke skupinám pro správu
 
-Skupiny pro správu Azure podporují [řízení přístupu na základě role Azure (RBAC)](../../role-based-access-control/overview.md) pro všechny přístupy k prostředkům a definice rolí.
+Skupiny pro správu Azure podporují [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md) pro všechny přístupy k prostředkům a definice rolí.
 Tato oprávnění se dědí do podřízených prostředků, které v hierarchii existují. Kterákoli role RBAC se dá přiřadit ke skupině pro správu, která zdědí hierarchii na prostředky. Skupině pro správu se dá například přiřadit role RBAC Přispěvatel virtuálních počítačů. Tato role nemá ve skupině pro správu žádnou akci, ale zdědí se do všech virtuálních počítačů v rámci této skupiny.
 
 Následující diagram ukazuje role a podporované akce pro skupiny pro správu.

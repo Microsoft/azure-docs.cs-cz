@@ -3,12 +3,12 @@ title: Monitorování delegovaných prostředků ve velkém měřítku
 description: Naučte se efektivně používat Azure Monitor protokoly škálovatelným způsobem napříč klienty zákazníka, které spravujete.
 ms.date: 07/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 758437fdc7a32fd5937434ce10f16a8c792423d3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5cace0396c5a1f430ce10ba29ee051b5e432c125
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072722"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448943"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Monitorování delegovaných prostředků ve velkém měřítku
 
@@ -38,7 +38,7 @@ Po nasazení zásad se data přihlásí do Log Analytics pracovních prostorů, 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Prozkoumejte tento [ukázkový sešit MVP (MVP](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)), který sleduje generování sestav dodržování předpisů pomocí [dotazování Update Management protokolů](../../automation/automation-update-management-query-logs.md) napříč více Log Analytics pracovních prostorů. 
+- Prozkoumejte tento [ukázkový sešit MVP (MVP](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)), který sleduje generování sestav dodržování předpisů pomocí [dotazování Update Management protokolů](../../automation/update-management/update-mgmt-query-logs.md) napříč více Log Analytics pracovních prostorů. 
 - Přečtěte si o [Azure monitor](../../azure-monitor/index.yml).
 - Přečtěte si o [Azure Monitorch protokolech](../../azure-monitor/platform/data-platform-logs.md).
 - Přečtěte si o [prostředích pro správu mezi klienty](../concepts/cross-tenant-management-experience.md).

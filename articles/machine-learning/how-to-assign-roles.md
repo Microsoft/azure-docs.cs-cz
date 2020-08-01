@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 2e787bb494c1e919a235b762b4d8c5250c8cda61
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6a49497cbe71dddb8ab6e76be9b3679dd62b0cee
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321611"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449030"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru Azure Machine Learning
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -369,7 +369,7 @@ Můžou se taky najít v seznamu [operací poskytovatele prostředků](/azure/ro
 
 ### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>Otázka: Jaké jsou některé běžné možná úskalí při použití Azure RBAC?
 
-Tady je několik věcí, na kterých je potřeba vědět, když používáte řízení přístupu na základě rolí Azure:
+Tady je několik věcí, na kterých je potřeba vědět, když používáte řízení přístupu na základě role Azure (Azure RBAC):
 
 - Když vytvoříte prostředek v Azure, řekněme, že nejste přímo vlastníkem tohoto pracovního prostoru. Vaše role se zdědí z nejvyšší role oboru, ke které jste v tomto předplatném udělili autorizaci. Příklad: Pokud jste správce sítě a máte oprávnění k vytvoření pracovního prostoru Machine Learning, bude vám přiřazena role správce sítě v daném pracovním prostoru, nikoli role vlastníka.
 - Když ke stejnému uživateli AAD s konfliktními oddíly akcí/NotActions existují dvě přiřazení rolí, operace uvedené v NotActions z jedné role se nemusí projevit, pokud jsou uvedené i jako akce v jiné roli. Další informace o tom, jak Azure analyzuje přiřazení rolí, najdete v článku [jak Azure RBAC určuje, jestli má uživatel přístup k prostředku](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) .

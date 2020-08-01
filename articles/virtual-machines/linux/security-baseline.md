@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 0231070e73c5b38562e8d110d80a2fba3c28724d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b0e8de797d66b875b65c1b6b593852707c587e6e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385479"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446551"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Základní hodnoty zabezpečení Azure pro Linux Virtual Machines
 
@@ -628,9 +628,9 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 **Pokyny**: pomocí řešení Azure Update Management můžete spravovat aktualizace a opravy pro virtuální počítače. Update Management spoléhá na místně nakonfigurované úložiště aktualizací pro opravy podporovaných systémů.
 
-* [Řešení Update Management v Azure](../../automation/automation-update-management.md)
+* [Řešení Update Management v Azure](../../automation/update-management/update-mgmt-overview.md)
 
-* [Správa aktualizací a oprav pro virtuální počítače Azure](../../automation/automation-tutorial-update-management.md)
+* [Správa aktualizací a oprav pro virtuální počítače](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -640,9 +640,9 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 **Doprovodné**materiály: můžete použít řešení pro správu oprav třetích stran. Pomocí řešení Azure Update Management můžete spravovat aktualizace a opravy pro virtuální počítače. Update Management spoléhá na místně nakonfigurované úložiště aktualizací pro opravy podporovaných systémů.
 
-* [Řešení Update Management v Azure](../../automation/automation-update-management.md)
+* [Řešení Update Management v Azure](../../automation/update-management/update-mgmt-overview.md)
 
-* [Správa aktualizací a oprav pro virtuální počítače Azure](../../automation/automation-tutorial-update-management.md)
+* [Správa aktualizací a oprav pro virtuální počítače](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Monitorování Azure Security Center**: není k dispozici.
 

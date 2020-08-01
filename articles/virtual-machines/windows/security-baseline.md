@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 10802cd141e0b10e30cb01d3d1dc385aedf7fc1e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 11b532b5ece10c8a9ac6dad61e4ca64a9f19f901
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387009"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445209"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Základní hodnoty zabezpečení Azure pro Windows Virtual Machines
 
@@ -620,9 +620,9 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 **Pokyny**: pomocí řešení Azure Update Management můžete spravovat aktualizace a opravy pro virtuální počítače. Update Management spoléhá na místně nakonfigurované úložiště aktualizací, které opraví podporované systémy Windows. Nástroje, jako je System Center Updates Publisher (Updates Publisher), umožňují publikovat vlastní aktualizace do Windows Server Update Services (WSUS). Tento scénář umožňuje Update Management opravit počítače, které používají Configuration Manager jako úložiště aktualizací se softwarem třetích stran.
 
-* [Řešení Update Management v Azure](../../automation/automation-update-management.md)
+* [Řešení Update Management v Azure](../../automation/update-management/update-mgmt-overview.md)
 
-* [Správa aktualizací a oprav pro virtuální počítače Azure](../../automation/automation-tutorial-update-management.md)
+* [Správa aktualizací a oprav pro virtuální počítače](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -632,9 +632,9 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 **Doprovodné**materiály: můžete použít řešení pro správu oprav třetích stran. Pomocí řešení Azure Update Management můžete spravovat aktualizace a opravy pro virtuální počítače. Update Management spoléhá na místně nakonfigurované úložiště aktualizací, které opraví podporované systémy Windows. Nástroje, jako je System Center Updates Publisher (Updates Publisher), umožňují publikovat vlastní aktualizace do Windows Server Update Services (WSUS). Tento scénář umožňuje Update Management opravit počítače, které používají Configuration Manager jako úložiště aktualizací se softwarem třetích stran.
 
-* [Řešení Update Management v Azure](../../automation/automation-update-management.md)
+* [Řešení Update Management v Azure](../../automation/update-management/update-mgmt-overview.md)
 
-* [Správa aktualizací a oprav pro virtuální počítače Azure](../../automation/automation-tutorial-update-management.md)
+* [Správa aktualizací a oprav pro virtuální počítače](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Monitorování Azure Security Center**: není k dispozici.
 

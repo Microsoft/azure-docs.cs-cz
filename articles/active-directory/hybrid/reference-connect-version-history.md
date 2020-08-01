@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72acf60bd9bc5baeba37d8ccffa79fe597954f16
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 04f97dc7296dd2ca9e9f869373cbf82838aa79f5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230379"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445326"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -47,6 +47,20 @@ Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect
 >Pokud jste povolili Azure AD Connect pro synchronizaci, brzy automaticky zahájíte přijímání oznámení o stavu, která vás upozorní na nadcházející vyřazení, pokud používáte některou ze starších verzí.
 >
 >Další informace o tom, jak upgradovat Azure AD Connect na nejnovější verzi najdete v [tomto článku](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) .
+
+## <a name="15450"></a>1.5.45.0
+
+### <a name="release-status"></a>Stav verze
+07/29/2020: vydáno ke stažení
+
+### <a name="functional-changes"></a>Funkční změny
+Toto je verze opravy chyb. V této verzi nejsou žádné funkční změny.
+
+### <a name="fixed-issues"></a>Opravené problémy
+
+- Opravili jsme problém, kdy správce nemůže povolit bezproblémové jednotné přihlašování, pokud se účet počítače AZUREADSSOACC už v Active Directory nachází.
+- Opravili jsme problém, který způsobil chybu přípravy během rozdílového importu API v2 pro konfliktní objekt, který byl opraven prostřednictvím portálu Health.
+- Opravili jsme problém v konfiguraci importu/exportu, kde bylo zakázané vlastní pravidlo, které se naimportovalo jako povolené.
 
 ## <a name="15420"></a>1.5.42.0
 
@@ -585,7 +599,7 @@ Pomocí následujících změn oprávnění v místní službě AD Zablokujte p�
 *   Odebere všechny položky ACE u konkrétního objektu s výjimkou položek ACE specifických pro sebe. Chceme, aby výchozí oprávnění zůstala beze změny, když se dostane do sebe.
 *   Přiřaďte tato konkrétní oprávnění:
 
-Typ     | Name                          | Access               | Platí pro
+Typ     | Název                          | Access               | Platí pro
 ---------|-------------------------------|----------------------|--------------|
 Povolit    | SYSTEM                        | Úplné řízení         | Tento objekt  |
 Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |
@@ -1186,7 +1200,7 @@ Vydáno: srpen 2016
 
 * Změny intervalu synchronizace se neprojeví, dokud se nedokončí další cyklus synchronizace.
 * Průvodce Azure AD Connect nepřijímá účet služby Azure AD, jehož uživatelské jméno začíná podtržítkem ( \_ ).
-* V průvodci Azure AD Connect se nepovedlo ověřit účet Azure AD, pokud heslo účtu obsahuje příliš mnoho speciálních znaků. Chybová zpráva: Nepodařilo se ověřit přihlašovací údaje. Došlo k neočekávané chybě. " je vrácen.
+* V průvodci Azure AD Connect se nepovedlo ověřit účet Azure AD, pokud heslo účtu obsahuje příliš mnoho speciálních znaků. Chybová zpráva: Nepodařilo se ověřit přihlašovací údaje. Došlo k neočekávané chybě. " .
 * Odinstalace přípravného serveru zakáže synchronizaci hesel v tenantovi Azure AD a způsobí selhání synchronizace hesel s aktivním serverem.
 * Synchronizace hesla se v neobvyklých případech nezdařila, pokud se na uživatele neuloží hodnota hash hesla.
 * Když je Azure AD Connect Server povolený pro pracovní režim, zpětný zápis hesla není dočasně zakázaný.

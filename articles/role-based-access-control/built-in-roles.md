@@ -7,13 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/16/2020
-ms.openlocfilehash: c0a397ac71c7c466145357093b6c22f78e627d1c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/29/2020
+ms.custom: generated
+ms.openlocfilehash: edf0d0085a8f1f9446e9c699c15b1eebb0a2d004
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511581"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448901"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
@@ -149,9 +150,9 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Přispěvatel spravovaných identit](#managed-identity-contributor) | Vytvoření, čtení, aktualizace a odstranění identity přiřazené uživatelem | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | [Spravovaný operátor identity](#managed-identity-operator) | Čtení a přiřazení identity přiřazené uživateli | f1a07417-d97a-45cb-824c-7a7467783830 |
 > | **Zabezpečení** |  |  |
-> | [Přispěvatel Sentinel Azure](#azure-sentinel-contributor) | Přispěvatel Sentinel Azure | ab8e14d6-4a74-4a29-9ba8-549422addade |
-> | [Čtečka Sentinel Azure](#azure-sentinel-reader) | Čtečka Sentinel Azure | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
-> | [Respondér služby Azure Sentinel](#azure-sentinel-responder) | Respondér služby Azure Sentinel | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
+> | [Azure Sentinel Contributor](#azure-sentinel-contributor) (přispěvatel) | Azure Sentinel Contributor (přispěvatel) | ab8e14d6-4a74-4a29-9ba8-549422addade |
+> | [Azure Sentinel Reader](#azure-sentinel-reader) (čtenář) | Azure Sentinel Reader (čtenář) | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
+> | [Azure Sentinel Responder](#azure-sentinel-responder) (reagující) | Azure Sentinel Responder | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
 > | [Přispěvatel Key Vault](#key-vault-contributor) | Umožňuje spravovat trezory klíčů, ale ne přístup k nim. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
 > | [Správce zabezpečení](#security-admin) | Zobrazit a aktualizovat oprávnění pro Security Center. Stejná oprávnění jako role čtecího modulu zabezpečení a mohou také aktualizovat zásady zabezpečení a zapustit výstrahy a doporučení. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Přispěvatel vyhodnocení zabezpečení](#security-assessment-contributor) | Umožňuje doručovat hodnocení do Security Center | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
@@ -180,6 +181,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Přispěvatel Cost Management](#cost-management-contributor) | Umožňuje zobrazit náklady a spravovat konfiguraci nákladů (např. rozpočty, exporty). | 434105ed-43f6-45c7-a02f-909b2ba83430 |
 > | [Čtecí modul Cost Management](#cost-management-reader) | Může zobrazit data a konfiguraci nákladů (např. rozpočty, exporty). | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
 > | [Správce nastavení hierarchie](#hierarchy-settings-administrator) | Umožňuje uživatelům upravovat a odstraňovat nastavení hierarchie. | 350f8d15-c687-4448-8ae1-157740a3936d |
+> | [Cluster Kubernetes – registrace k Azure ARC](#kubernetes-cluster---azure-arc-onboarding) | Definice role pro autorizaci libovolného uživatele nebo služby k vytvoření prostředku connectedClusters | 34e09817-6cbe-4d01-b1a2-e0eac5743d41 |
 > | [Role Přispěvatel spravovaných aplikací](#managed-application-contributor-role) | Umožňuje vytváření prostředků spravovaných aplikací. | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [Role operátora spravované aplikace](#managed-application-operator-role) | Umožňuje číst a provádět akce s prostředky spravovaných aplikací. | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [Čtecí modul spravovaných aplikací](#managed-applications-reader) | Umožňuje číst prostředky ve spravované aplikaci a vyžadovat přístup JIT. | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
@@ -194,7 +196,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Čtecí modul Site Recovery](#site-recovery-reader) | Umožňuje zobrazit Site Recovery stav, ale nemůže provádět jiné operace správy. | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
 > | [Přispěvatel žádostí o podporu](#support-request-contributor) | Umožňuje vytvářet a spravovat žádosti o podporu. | cfd33db0-3dd1-45e3-aa9d-cdbdf3b6f24e |
 > | [Přispěvatel značek](#tag-contributor) | Umožňuje spravovat značky entit bez poskytnutí přístupu k samotným entitám. | 4a9ae827-6dc8-4573-8ac7-8239d42aa03f |
-> | **Jiné** |  |  |
+> | **Další** |  |  |
 > | [Přispěvatel BizTalk](#biztalk-contributor) | Umožňuje spravovat BizTalk Services, ale ne přístup k nim. | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
 > | [Uživatel virtualizace plochy](#desktop-virtualization-user) | Umožňuje uživateli používat aplikace ve skupině aplikací. | 1d18fff3-a72a-46b5-b4a9-0b38a3cd7e63 |
 > | [Přispěvatel kolekcí úloh Scheduleru](#scheduler-job-collections-contributor) | Umožňuje spravovat kolekce úloh Scheduleru, ale ne přístup k nim. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
@@ -3097,7 +3099,7 @@ Vypíše akci přihlašovacích údajů uživatele clusteru. [Další informace]
 
 ### <a name="azure-kubernetes-service-contributor-role"></a>Role přispěvatele služby Azure Kubernetes
 
-Uděluje přístup ke čtení a zápisu clusterů služby Azure Kubernetes.
+Udělí přístup ke čtení a zápisu clusterů služby Azure Kubernetes. [Další informace](../aks/concepts-identity.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -3140,7 +3142,7 @@ Uděluje přístup ke čtení a zápisu clusterů služby Azure Kubernetes.
 
 ### <a name="azure-kubernetes-service-rbac-admin"></a>Správce RBAC služby Azure Kubernetes
 
-Umožňuje spravovat všechny prostředky v rámci clusteru nebo oboru názvů, s výjimkou kvót prostředků a obory názvů pro aktualizaci nebo odstranění. [Další informace](../aks/concepts-identity.md)
+Umožňuje spravovat všechny prostředky v rámci clusteru nebo oboru názvů, s výjimkou kvót prostředků a obory názvů pro aktualizaci nebo odstranění. [Další informace](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -3203,7 +3205,7 @@ Umožňuje spravovat všechny prostředky v rámci clusteru nebo oboru názvů, 
 
 ### <a name="azure-kubernetes-service-rbac-cluster-admin"></a>Správce clusteru RBAC služby Azure Kubernetes
 
-Umožňuje správu všech prostředků v clusteru. [Další informace](../aks/concepts-identity.md)
+Umožňuje správu všech prostředků v clusteru. [Další informace](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -3258,7 +3260,7 @@ Umožňuje správu všech prostředků v clusteru. [Další informace](../aks/co
 
 ### <a name="azure-kubernetes-service-rbac-reader"></a>Čtečka RBAC služby Azure Kubernetes
 
-Umožňuje zobrazit všechny prostředky v clusteru nebo oboru názvů s výjimkou tajných klíčů. [Další informace](../aks/concepts-identity.md)
+Umožňuje zobrazit všechny prostředky v clusteru nebo oboru názvů s výjimkou tajných klíčů. [Další informace](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -3319,7 +3321,7 @@ Umožňuje zobrazit všechny prostředky v clusteru nebo oboru názvů s výjimk
 
 ### <a name="azure-kubernetes-service-rbac-writer"></a>Zapisovač RBAC služby Azure Kubernetes
 
-Umožňuje aktualizovat vše v clusteru/oboru názvů, s výjimkou kvót prostředků, oborů názvů, pod zásadami zabezpečení, žádostí o podepsání certifikátu, (cluster) a vazeb rolí (cluster) rolí. [Další informace](../aks/concepts-identity.md)
+Umožňuje aktualizovat vše v clusteru/oboru názvů, s výjimkou kvót prostředků, oborů názvů, pod zásadami zabezpečení, žádostí o podepsání certifikátu, (cluster) a vazeb rolí (cluster) rolí. [Další informace](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -4058,7 +4060,7 @@ Umožňuje spravovat servery a databáze SQL, ale ne přístup k nim, a ne jejic
 }
 ```
 
-## <a name="analytics"></a>Analýza
+## <a name="analytics"></a>Analýzy
 
 
 ### <a name="azure-event-hubs-data-owner"></a>Vlastník dat Event Hubs Azure
@@ -6063,7 +6065,7 @@ Vytvoření, čtení, aktualizace a odstranění identity přiřazené uživatel
 ## <a name="security"></a>Zabezpečení
 
 
-### <a name="azure-sentinel-contributor"></a>Přispěvatel Sentinel Azure
+### <a name="azure-sentinel-contributor"></a>Azure Sentinel Contributor (přispěvatel)
 
 Azure Sentinel Přispěvatel – další [informace](../sentinel/roles.md)
 
@@ -6128,7 +6130,7 @@ Azure Sentinel Přispěvatel – další [informace](../sentinel/roles.md)
 }
 ```
 
-### <a name="azure-sentinel-reader"></a>Čtečka Sentinel Azure
+### <a name="azure-sentinel-reader"></a>Azure Sentinel Reader (čtenář)
 
 [Další informace o](../sentinel/roles.md) čtečce Azure Sentinel
 
@@ -6197,7 +6199,7 @@ Azure Sentinel Přispěvatel – další [informace](../sentinel/roles.md)
 }
 ```
 
-### <a name="azure-sentinel-responder"></a>Respondér služby Azure Sentinel
+### <a name="azure-sentinel-responder"></a>Azure Sentinel Responder
 
 Azure Sentinel Responder – další [informace](../sentinel/roles.md)
 
@@ -6486,12 +6488,12 @@ Oprávnění k zobrazení Security Center. Může zobrazit doporučení, výstra
 > | Akce | Popis |
 > | --- | --- |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
-> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/Read | Čtení klasické výstrahy metriky |
 > | [Microsoft. operationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Zobrazení dat Log Analytics |
-> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/*/Read |  |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
 > | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/*/Read | Číst součásti a zásady zabezpečení |
-> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/*/Read |  |
 > | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
 > | **NotActions** |  |
 > | *žádný* |  |
@@ -6512,12 +6514,12 @@ Oprávnění k zobrazení Security Center. Může zobrazit doporučení, výstra
     {
       "actions": [
         "Microsoft.Authorization/*/read",
-        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/alertRules/read",
         "Microsoft.operationalInsights/workspaces/*/read",
-        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/deployments/*/read",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*/read",
-        "Microsoft.Support/*",
+        "Microsoft.Support/*/read",
         "Microsoft.Management/managementGroups/read"
       ],
       "notActions": [],
@@ -7641,6 +7643,61 @@ Umožňuje uživatelům upravovat a odstraňovat nastavení hierarchie.
     }
   ],
   "roleName": "Hierarchy Settings Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="kubernetes-cluster---azure-arc-onboarding"></a>Cluster Kubernetes – registrace k Azure ARC
+
+Definice role pro autorizaci libovolného uživatele nebo služby k vytvoření prostředku connectedClusters [Další informace](../azure-arc/kubernetes/connect-cluster.md)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/Write | Vytvoří nebo aktualizuje nasazení. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | Získejte výsledky operace předplatného. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Získá seznam předplatných. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Write | Zapisuje connectedClusters |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Read | Číst connectedClusters |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | *žádný* |  |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Role definition to authorize any user/service to create connectedClusters resource",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/34e09817-6cbe-4d01-b1a2-e0eac5743d41",
+  "name": "34e09817-6cbe-4d01-b1a2-e0eac5743d41",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Kubernetes/connectedClusters/Write",
+        "Microsoft.Kubernetes/connectedClusters/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Kubernetes Cluster - Azure Arc Onboarding",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

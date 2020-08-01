@@ -4,12 +4,12 @@ description: Pomocí Access Control na základě rolí můžete spravovat přís
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 89e5cf7c6b46d63b10bd358fc078f8f87db689c8
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4c5a0a43efe7bda5fdc4b60d13b97f61565809bd
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371698"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445316"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Pro správu Azure Backup bodů obnovení použít Access Control na základě rolí
 
@@ -77,7 +77,7 @@ Následující tabulka zachycuje akce správy zálohování a odpovídající ro
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Access Control založené na rolích](../role-based-access-control/role-assignments-portal.md): Začínáme s RBAC v Azure Portal.
+* [Řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Začněte s RBAC v Azure Portal.
 * Naučte se spravovat přístup pomocí:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)

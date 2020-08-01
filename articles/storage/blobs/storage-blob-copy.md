@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: f4e6e2f2732d1c90e8fe669788d82692c8016fd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce0c16d43e6de9bada5d747949e370eb83f85826
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463446"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446860"
 ---
 # <a name="copy-a-blob-with-net"></a>Kopírování objektu BLOB s využitím .NET
 
@@ -23,7 +23,7 @@ Tento článek ukazuje, jak kopírovat objekt BLOB s účtem Azure Storage. Tak�
 
 Když kopírujete objekt BLOB v rámci stejného účtu úložiště, jedná se o synchronní operaci. Při kopírování mezi účty se jedná o asynchronní operaci. Metody [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) a [STARTCOPYASYNC](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) vracejí hodnotu ID kopie, která se používá ke kontrole stavu nebo přerušení operace kopírování.
 
-Zdrojový objekt BLOB pro operaci kopírování může být objekt blob bloku, doplňovací objekt blob, objekt blob stránky nebo snímek. Pokud cílový objekt BLOB už existuje, musí se jednat o stejný typ objektu BLOB jako zdrojový objekt BLOB. Veškerý existující cílový objekt BLOB bude přepsán. 
+Zdrojový objekt BLOB pro operaci kopírování může být objekt blob bloku, doplňovací objekt blob, objekt blob stránky nebo snímek. Pokud cílový objekt BLOB už existuje, musí se jednat o stejný typ objektu BLOB jako zdrojový objekt BLOB. Existující cílový objekt BLOB bude přepsán.
 
 Cílový objekt BLOB se nedá změnit, když probíhá operace kopírování. Cílový objekt BLOB může mít jenom jednu nevyřízenou operaci kopírování objektů BLOB. Jinými slovy, objekt BLOB nemůže být cílem pro více operací kopírování, které čekají na zpracování.
 
@@ -35,18 +35,18 @@ U všech typů objektů blob můžete v cílovém objektu BLOB ověřit vlastnos
 
 Operace kopírování může mít některou z následujících forem:
 
-  - Zdrojový objekt blob můžete zkopírovat do cílového objektu BLOB s jiným názvem. Cílový objekt BLOB může být existující objekt BLOB stejného typu objektu BLOB (blok, připojit nebo stránka), nebo může být nový objekt BLOB vytvořený operací kopírování.
-  - Zdrojový objekt blob můžete zkopírovat do cílového objektu BLOB se stejným názvem a efektivně nahradit cílový objekt BLOB. Taková operace kopírování odstraní všechny nepotvrzené bloky a přepíše metadata cílového objektu BLOB.
-  - Zdrojový soubor v Souborové službě Azure můžete zkopírovat do cílového objektu BLOB. Cílový objekt BLOB může být existující objekt blob bloku nebo může být nový objekt blob bloku vytvořený operací kopírování. Kopírování ze souborů do objektů blob stránky nebo doplňovací objekty BLOB se nepodporuje.
-  - Snímek můžete zkopírovat přes svůj základní objekt BLOB. Zvýšením úrovně snímku na pozici základního objektu blob můžete obnovit předchozí verzi objektu BLOB.
-  - Snímek můžete zkopírovat do cílového objektu BLOB s jiným názvem. Výsledný cílový objekt BLOB je zapisovatelný objekt blob, který není snímkem.
+- Zdrojový objekt blob můžete zkopírovat do cílového objektu BLOB s jiným názvem. Cílový objekt BLOB může být existující objekt BLOB stejného typu objektu BLOB (blok, připojit nebo stránka), nebo může být nový objekt BLOB vytvořený operací kopírování.
+- Zdrojový objekt blob můžete zkopírovat do cílového objektu BLOB se stejným názvem a efektivně nahradit cílový objekt BLOB. Taková operace kopírování odstraní všechny nepotvrzené bloky a přepíše metadata cílového objektu BLOB.
+- Zdrojový soubor v Souborové službě Azure můžete zkopírovat do cílového objektu BLOB. Cílový objekt BLOB může být existující objekt blob bloku nebo může být nový objekt blob bloku vytvořený operací kopírování. Kopírování ze souborů do objektů blob stránky nebo doplňovací objekty BLOB se nepodporuje.
+- Snímek můžete zkopírovat přes svůj základní objekt BLOB. Zvýšením úrovně snímku na pozici základního objektu blob můžete obnovit předchozí verzi objektu BLOB.
+- Snímek můžete zkopírovat do cílového objektu BLOB s jiným názvem. Výsledný cílový objekt BLOB je zapisovatelný objekt blob, který není snímkem.
 
 ## <a name="copy-a-blob"></a>Kopírování objektu BLOB
 
 Chcete-li kopírovat objekt blob, zavolejte jednu z následujících metod:
 
- - [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
- - [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
+- [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
+- [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
 
 Následující příklad kódu získá odkaz na objekt blob, který jste vytvořili dříve, a zkopíruje ho do nového objektu BLOB ve stejném kontejneru:
 

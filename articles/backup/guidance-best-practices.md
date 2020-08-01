@@ -3,12 +3,12 @@ title: Doprovodné materiály a osvědčené postupy
 description: Seznamte se s osvědčenými postupy a pokyny pro zálohování cloudových a místních úloh do cloudu.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 4a5f7e1f55eb5b4a68ee889ef6e1378eb573a6a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d0ce7877ebd33385deb98977c9439bf8a05b5325
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097349"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447288"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Zálohování cloudových a místních úloh do cloudu
 
@@ -26,7 +26,7 @@ I když je snadné začít chránit infrastrukturu a aplikace v Azure, když zab
 
 ## <a name="architecture"></a>Architektura
 
-![Architektura Azure Backup](./media/guidance-best-practices/azure-backup-architecture.png)
+![Architektura služby Azure Backup](./media/guidance-best-practices/azure-backup-architecture.png)
 
 ### <a name="workloads"></a>Úlohy
 
@@ -137,7 +137,7 @@ Abychom vám pomohli chránit vaše Zálohovaná data a plnit požadavky na zabe
 
 ### <a name="authentication-and-authorization"></a>Ověřování a autorizace
 
-* Access Control založená na rolích (RBAC) Azure umožňuje jemně odstupňovanou správu přístupu, oddělení funkcí v rámci týmu a udělování přístupu uživatelům potřebným k provádění svých úloh. [Další informace najdete tady](backup-rbac-rs-vault.md).
+* Řízení přístupu na základě role v Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu, oddělení funkcí v rámci týmu a udělení přístupu k uživatelům potřebným k provádění svých úloh. [Další informace najdete tady](backup-rbac-rs-vault.md).
 
 * Azure Backup poskytuje tři předdefinované role pro řízení operací správy zálohování: přispěvatelé, operátoři a čtenáři zálohování. [Další informace najdete tady](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions).
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 38ddfad179a8ef459b5c10f84619a836193ee092
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7dae16140c376bc9288fec5b8744ac6cd14051e5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781646"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445624"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
@@ -162,7 +162,7 @@ Když je v karanténě, frekvence přírůstkových cyklů se postupně zkracuje
 
 ### <a name="how-long-provisioning-takes"></a>Jak dlouho trvá zřizování
 
-Výkon závisí na tom, jestli vaše úloha zřizování spouští počáteční cyklus zřizování nebo přírůstkový cyklus. Podrobnosti o tom, jak dlouho trvá zřizování a jak monitorovat stav služby zřizování, najdete v tématu [Zkontrolujte stav zřizování uživatelů](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md).
+Výkon závisí na tom, jestli vaše úloha zřizování spouští počáteční cyklus zřizování nebo přírůstkový cyklus. Podrobnosti o tom, jak dlouho trvá zřizování a jak monitorovat stav služby zřizování, najdete v tématu [Zkontrolujte stav zřizování uživatelů](application-provisioning-when-will-provisioning-finish-specific-user.md).
 
 ### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>Jak zjistit, jestli se uživatelé správně zřídí
 

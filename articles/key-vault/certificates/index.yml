@@ -11,12 +11,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 78963c02d35d93b4756c12f948c5ba214fb23e90
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: 365f0b07370937a73d3925373be0be544a182865
+  ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81423526"
+  ms.lasthandoff: 07/29/2020
+  ms.locfileid: "87386771"
 landingContent:
 - title: Certifikáty
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
     links:
     - text: Co jsou certifikáty služby Key Vault?
       url: about-certificates.md
+    - text: Důležité novinky o obnovitelném odstranění
+      url: ../general/soft-delete-change.md
     - text: Začínáme s certifikáty služby Key Vault
       url: certificate-scenarios.md
     - text: Metody vytvoření certifikátu
@@ -53,7 +55,7 @@ landingContent:
     - text: Základní koncepty
       url: ../general/basic-concepts.md
     - text: Přehled obnovitelného odstranění
-      url: ../general/overview-soft-delete.md
+      url: ../general/soft-delete-overview.md
     - text: Přehled zabezpečení
       url: ../general/overview-security.md
 - title: Microsoft Learn

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3b86c249630f7bfa5c2d319577c66d750b0f6268
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 948ada46085d83c8cf453cdde23cb407ea2dd2d8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045911"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447715"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Základní hodnoty zabezpečení Azure pro automatizaci
 
@@ -220,7 +220,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 * [Podporované oblasti pro propojený pracovní prostor Log Analytics](./how-to/region-mappings.md)
 
-* [Dotazy Update Management protokoly](./automation-update-management-query-logs.md)
+* [Dotazy Update Management protokoly](./update-management/update-mgmt-query-logs.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -646,9 +646,9 @@ Pokud používáte hybridní pracovní procesy Runbooku, virtuální disky na vi
 
 Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěné virtuálními počítači Azure, použijte Azure Update Management ke správě aktualizací a oprav pro virtuální počítače. Update Management spoléhá na místně nakonfigurované úložiště aktualizací, které opraví podporované systémy Windows. Nástroje, jako je System Center Updates Publisher (Updates Publisher), umožňují publikovat vlastní aktualizace do Windows Server Update Services (WSUS). Tento scénář umožňuje Update Management opravit počítače, které používají Configuration Manager jako úložiště aktualizací se softwarem třetích stran.
 
-* [Update Management v Azure](./automation-update-management.md)
+* [Update Management v Azure](./update-management/update-mgmt-overview.md)
 
-* [Správa aktualizací a oprav pro virtuální počítače Azure](./automation-tutorial-update-management.md)
+* [Správa aktualizací a oprav pro virtuální počítače](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -660,9 +660,9 @@ Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěn�
 
 Pokud používáte hybridní pracovní procesy Runbooku, které jsou zajištěné virtuálními počítači Azure, můžete pomocí Azure Update Management spravovat aktualizace a opravy pro virtuální počítače. Update Management spoléhá na místně nakonfigurované úložiště aktualizací, které opraví podporované systémy Windows. Nástroje, jako je System Center Updates Publisher (Updates Publisher), umožňují publikovat vlastní aktualizace do Windows Server Update Services (WSUS). Tento scénář umožňuje Update Management opravy počítačů, které používají Configuration Manager jako úložiště aktualizací se softwarem třetích stran.
 
-* [Řešení Update Management v Azure](./automation-update-management.md)
+* [Řešení Update Management v Azure](./update-management/update-mgmt-overview.md)
 
-* [Správa aktualizací a oprav pro virtuální počítače Azure](./automation-tutorial-update-management.md)
+* [Správa aktualizací a oprav pro virtuální počítače Azure](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Monitorování Azure Security Center**: nelze použít
 

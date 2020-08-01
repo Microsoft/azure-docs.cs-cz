@@ -69,8 +69,6 @@
           href: application-provisioning-config-problem-wrong-users-provisioned.md
         - name: Chybějící atribut zdroje
           href: user-provisioning-sync-attributes-for-mapping.md
-        - name: Úloha zřizování je pomalá
-          href: application-provisioning-when-will-provisioning-finish.md
         - name: Protokoly zřizování
           href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context
     - name: Vytvoření koncového bodu SCIM a konfigurace zřizování
