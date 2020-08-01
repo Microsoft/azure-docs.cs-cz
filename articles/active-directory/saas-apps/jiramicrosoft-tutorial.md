@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba0c44953a33e6ccd0bbe406159e9636411695ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f06f0f376c1ecafcff833aa4b6bece0a0e35d10
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017089"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475273"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s JIRA SAML SSO Microsoftu
 
@@ -42,7 +42,7 @@ K povolení jednotného přihlašování použijte účet Microsoft Azure Active
 K nakonfigurování integrace služby Azure AD pomocí jednotného přihlašování JIRA SAML od Microsoftu budete potřebovat následující položky:
 
 - Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-- JIRA Core a software 6,4 8.8.0 nebo JIRA Service Desk 3,0 na 4.8.0 by se měly nainstalovat a nakonfigurovat v systému Windows 64-bit verze
+- JIRA Core a software 6,4 8.11.0 nebo JIRA Service Desk 3,0 na 4.8.0 by se měly nainstalovat a nakonfigurovat v systému Windows 64-bit verze
 - Server JIRA je povolený pomocí HTTPS.
 - Poznámka: podporované verze pro modul plug-in JIRA jsou uvedené v následující části.
 - JIRA Server je dosažitelný na internetu, zejména na přihlašovací stránce Azure AD pro ověřování a měl by být schopný získat token z Azure AD.
@@ -63,7 +63,7 @@ Chcete-li začít, potřebujete následující položky:
 
 ## <a name="supported-versions-of-jira"></a>Podporované verze JIRA
 
-* JIRA Core a software: 6,4 až 8.8.0
+* JIRA Core a software: 6,4 až 8.11.0
 * JIRA oddělení služeb 3.0.0 na 4.8.0
 * JIRA také podporuje 5,2. Další podrobnosti získáte, když kliknete na [Microsoft Azure Active Directory jednotné přihlašování pro JIRA 5,2](jira52microsoft-tutorial.md) .
 

@@ -3,19 +3,19 @@ title: Doručení události Webhooku
 description: Tento článek popisuje doručování událostí Webhooku a ověření koncového bodu při použití webhooků.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b616c82092ad896da82d0f98f37e3c45f3ba1014
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e9a52d0cb3e4e880d91e1b748d97ef3041298930
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118949"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461234"
 ---
 # <a name="webhook-event-delivery"></a>Doručení události Webhooku
 Webhooky jsou jedním z mnoha způsobů, jak přijímat události z Azure Event Grid. Když je nová událost připravena, Služba Event Grid odešle požadavek HTTP do nakonfigurovaného koncového bodu s událostí v textu požadavku.
 
 Stejně jako mnoho dalších služeb, které podporují Webhooky, Event Grid vyžaduje, abyste prokáže vlastnictví koncového bodu Webhooku předtím, než začne doručovat události do tohoto koncového bodu. Tento požadavek brání uživateli se zlými úmysly v přeplavení koncového bodu s událostmi. Když použijete některou ze tří služeb Azure uvedených níže, infrastruktura Azure toto ověření automaticky zpracuje:
 
-- Azure Logic Apps s [konektorem Event Grid](https://docs.microsoft.com/connectors/azureeventgrid/)
+- Azure Logic Apps s [konektorem Event Grid](/connectors/azureeventgrid/)
 - Azure Automation prostřednictvím [Webhooku](../event-grid/ensure-tags-exists-on-new-virtual-machines.md)
 - Azure Functions s [triggerem Event Grid](../azure-functions/functions-bindings-event-grid.md)
 
@@ -81,7 +81,7 @@ Nebo můžete předplatné ověřit ručně odesláním požadavku GET na adresu
 Příklad manipulace s metodou handshake ověření předplatného najdete v tématu [ukázka jazyka C#](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
 
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>Ověření koncového bodu pomocí CloudEvents v 1.0
-Pokud už jste obeznámeni s Event Grid, možná jste si všimli, že je Event Grid ověření koncového bodu handshake pro předcházení zneužití. CloudEvents v 1.0 implementuje svou vlastní [sémantiku ochrany proti zneužívání](webhook-event-delivery.md) pomocí metody HTTP. Další informace si můžete přečíst [tady](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Při použití schématu CloudEvents pro výstup Event Grid použití s ochranou zneužití CloudEvents v 1.0 místo mechanismu události ověřování Event Grid.
+Pokud už jste obeznámeni s Event Grid, možná jste si všimli, že je Event Grid ověření koncového bodu handshake pro předcházení zneužití. CloudEvents v 1.0 implementuje svou vlastní [sémantiku ochrany proti zneužívání](webhook-event-delivery.md) pomocí metody HTTP. Další informace o této službě si můžete přečíst [tady](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Při použití schématu CloudEvents pro výstup Event Grid použití s ochranou zneužití CloudEvents v 1.0 místo mechanismu události ověřování Event Grid.
 
 ## <a name="next-steps"></a>Další kroky
 V následujícím článku se dozvíte, jak řešit ověřování odběrů událostí: 

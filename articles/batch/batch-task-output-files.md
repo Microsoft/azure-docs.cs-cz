@@ -2,14 +2,14 @@
 title: Zachování výstupních dat pro Azure Storage s využitím rozhraní API služby Batch
 description: Naučte se používat rozhraní API služby Batch k trvalému zachovávání výstupních dat úlohy a úloh Batch a Azure Storage.
 ms.topic: how-to
-ms.date: 03/05/2019
+ms.date: 07/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 24e9f242b3c71965984534ac986031757bbc8420
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 964ffea2ed1536dc1851aefc03c735cb08ba7ed7
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143506"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475613"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Zachování dat úkolu Azure Storage pomocí rozhraní API služby Batch
 
@@ -19,6 +19,9 @@ Rozhraní API služby Batch podporuje ukládání výstupních dat do Azure Stor
 
 Výhodou použití rozhraní API služby Batch k zachování výstupu úlohy je, že nemusíte měnit aplikaci, kterou úloha spouští. Místo toho s několika úpravami klientské aplikace můžete zachovat výstup úlohy ze stejného kódu, který úlohu vytvoří.
 
+> [!IMPORTANT]
+> Uchování dat úkolu pro Azure Storage pomocí rozhraní API služby Batch nefunguje s fondy vytvořenými před [1. února 2018](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md#1204).
+
 ## <a name="when-do-i-use-the-batch-service-api-to-persist-task-output"></a>Kdy se používá rozhraní API služby Batch k uchování výstupu úlohy?
 
 Azure Batch poskytuje více než jeden způsob, jak uchovat výstup úlohy. Použití rozhraní API služby Batch je pohodlný přístup, který nejlépe vyhovuje těmto scénářům:
@@ -26,9 +29,9 @@ Azure Batch poskytuje více než jeden způsob, jak uchovat výstup úlohy. Pou�
 - Chcete napsat kód pro uchování výstupu úlohy z klientské aplikace bez změny aplikace, kterou váš úkol spouští.
 - Chcete zachovat výstup z úloh služby Batch a úloh Správce úloh ve fondech vytvořených s konfigurací virtuálního počítače.
 - Chcete zachovat výstup do kontejneru Azure Storage s libovolným názvem.
-- Chcete zachovat výstup do kontejneru Azure Storage s názvem podle [standardu pro dávkové soubory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files). 
+- Chcete zachovat výstup do kontejneru Azure Storage s názvem podle [standardu pro dávkové soubory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files).
 
-Pokud se váš scénář liší od výše uvedených výše, možná budete muset zvážit jiný přístup. Rozhraní API služby Batch například v současné době nepodporuje výstup streamování do Azure Storage, zatímco je úloha spuštěná. Pokud chcete streamovat výstup, zvažte použití knihovny konvence souborů Batch, která je k dispozici pro .NET. V ostatních jazycích budete muset implementovat vlastní řešení. Další informace o dalších možnostech pro zachování výstupu úlohy najdete v tématu [trvalé uložení úloh a úloh do Azure Storage](batch-task-output.md).
+Pokud se váš scénář liší od výše uvedených výše, možná budete muset zvážit jiný přístup. Rozhraní API služby Batch například v současné době nepodporuje výstup streamování do Azure Storage, zatímco je úloha spuštěná. Pokud chcete streamovat výstup, zvažte použití knihovny konvence souborů Batch, která je k dispozici pro .NET. V ostatních jazycích budete muset implementovat vlastní řešení. Informace o dalších možnostech zachování výstupu úlohy najdete v tématu [trvalé uložení úlohy a výstupu úlohy do Azure Storage](batch-task-output.md).
 
 ## <a name="create-a-container-in-azure-storage"></a>Vytvoření kontejneru v Azure Storage
 
@@ -88,6 +91,9 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
             uploadCondition: OutputFileUploadCondition.TaskCompletion)),
 }
 ```
+
+> [!NOTE]
+> Pokud používáte tento příklad se systémem Linux, nezapomeňte změnit zpětná lomítka na lomítka.
 
 ### <a name="specify-a-file-pattern-for-matching"></a>Zadat vzor souboru pro porovnávání
 
@@ -169,7 +175,7 @@ Pokud vyvíjíte v jiném jazyce než C#, bude nutné implementovat standardní 
 
 ## <a name="code-sample"></a>Ukázka kódu
 
-Vzorový projekt [PersistOutputs][github_persistoutputs] je jednou z [Azure Batch ukázek kódu][github_samples] na GitHubu. Toto řešení sady Visual Studio ukazuje, jak pomocí klientské knihovny Batch pro .NET uchovat výstup úlohy do trvalého úložiště. Chcete-li spustit ukázku, postupujte podle následujících kroků:
+Vzorový projekt [PersistOutputs](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs) je jednou z [Azure Batch ukázek kódu](https://github.com/Azure/azure-batch-samples) na GitHubu. Toto řešení sady Visual Studio ukazuje, jak pomocí klientské knihovny Batch pro .NET uchovat výstup úlohy do trvalého úložiště. Chcete-li spustit ukázku, postupujte podle následujících kroků:
 
 1. Otevřete projekt v **aplikaci Visual Studio 2019**.
 2. Přidejte **přihlašovací údaje** služby Batch a účtu úložiště do **AccountSettings. settings** v projektu Microsoft.Azure.Batch. Samples. Common.
@@ -181,8 +187,5 @@ Vzorový projekt [PersistOutputs][github_persistoutputs] je jednou z [Azure Batc
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o zachování výstupu úlohy pomocí knihovny konvence souborů pro rozhraní .NET najdete v tématu [zachování úloh a dat úloh pro Azure Storage s knihovnou konvence souborů Batch pro .NET](batch-task-output-file-conventions.md).
-- Informace o dalších metodách zachování výstupních dat v Azure Batch naleznete v tématu [trvalé uložení úlohy a úlohy do Azure Storage](batch-task-output.md).
-
-[github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
-[github_samples]: https://github.com/Azure/azure-batch-samples
+- Další informace o zachování výstupu úlohy pomocí knihovny pro konvence souborů pro .NET najdete v tématu [zachování úloh a dat úloh pro Azure Storage s knihovnou konvence souborů Batch pro .NET](batch-task-output-file-conventions.md).
+- Další informace o dalších možnostech, jak zachovat výstupní data v Azure Batch, najdete v tématu [trvalé uložení úlohy a úlohy do Azure Storage](batch-task-output.md).

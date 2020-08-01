@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 07/07/2020
 ms.author: eamono
-ms.openlocfilehash: 79f3d83417a99d40ea0d4bd101a89300bc85a393
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3b9b49a4d38566891f442a3d2d7eac9bf1d36465
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114512"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461999"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Kurz: Integrace Azure Automation s Event Grid a Microsoft Teams
 
@@ -27,13 +27,13 @@ V tomto kurzu se naučíte:
 > * Vytvoří odběr Event Gridu.
 > * Vytvořit virtuální počítač, který spustí runbook
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-K dokončení tohoto kurzu je potřeba [účet Azure Automation](../automation/automation-offering-get-started.md) pro uložení runbooku, který se spouští z předplatného Azure Event Gridu.
+K dokončení tohoto kurzu je potřeba [účet Azure Automation](../automation/index.yml) pro uložení runbooku, který se spouští z předplatného Azure Event Gridu.
 
 * Modul `AzureRM.Tags` musí být načtený v účtu Automation. Způsob importu modulů do Azure Automation najdete v [popisu importu modulů do Azure Automation](../automation/automation-update-azure-modules.md).
 
@@ -125,7 +125,7 @@ K dokončení tohoto kurzu je potřeba [účet Azure Automation](../automation/a
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu nastavíte integraci služeb Event Grid a Automation. Naučili jste se tyto postupy:
+V tomto kurzu nastavíte integraci služeb Event Grid a Automation. Naučili jste se:
 
 > [!div class="checklist"]
 > * Importovat ukázkový runbook Event Gridu

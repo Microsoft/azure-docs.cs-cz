@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 6b9cf3f76afecb1e6f7ad00a18eb7290b8decb5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 06c4ecd92368487af3110e84391ec721700a95aa
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056056"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461166"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Aktivační událost Azure Blob Storage pro Azure Functions
 
@@ -331,7 +331,7 @@ Následující příklad aktivuje pouze objekty BLOB v `input` kontejneru, kter�
 "path": "input/original-{name}",
 ```
 
-Pokud je název objektu BLOB *original-Blob1.txt*, hodnota `name` proměnné v kódu funkce je `Blob1` .
+Pokud je název objektu BLOB *original-Blob1.txt*, hodnota `name` proměnné v kódu funkce je `Blob1.txt` .
 
 ### <a name="filter-on-file-type"></a>Filtrovat podle typu souboru
 

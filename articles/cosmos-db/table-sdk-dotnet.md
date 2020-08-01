@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 419c3f21c8606bb16112fd18cfe141655fd7b868
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f735668e1519a6a12082537dabfe17be3e96ffdd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84168144"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459996"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB rozhraní .NET API: stažení a poznámky k verzi
 
@@ -82,10 +82,7 @@ Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady 
 
 `Microsoft.Azure.CosmosDB.Table`Knihovna je aktuálně dostupná jenom pro .NET Framework a je v režimu údržby a bude brzy zastaralá. Nové funkce a funkce a optimalizace se přidávají jenom do knihovny .NET Standard [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table), protože se doporučuje upgradovat na [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).
 
-Balíček [windowsazure. Storage-Premium](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) v Preview se už nepoužívá. Sada WindowsAzure. Storage-Premium SDK se vyřadí 15. listopadu 2018, kdy se požadavky na vyřazenou sadu SDK nepovolují. 
-
-Všechny požadavky na Azure Cosmos DB s využitím vyřazené sady SDK jsou službou odmítnuty.
-<br/>
+Balíček [windowsazure. Storage-Premium](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) v Preview se už nepoužívá. Sada WindowsAzure. Storage-Premium SDK se vyřadí 15. listopadu 2018, kdy se požadavky na vyřazenou sadu SDK nepovolují.
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |

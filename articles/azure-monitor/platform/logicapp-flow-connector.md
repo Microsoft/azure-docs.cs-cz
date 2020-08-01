@@ -7,15 +7,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6048b5f0a3702e95cef9175933041fe36f2f07bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2ef7095d186902425adb5065c470325be1283023
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081555"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475732"
 ---
-# <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Konektor protokolů Azure Monitor pro Logic Apps a flow
-[Azure Logic Apps](../../logic-apps/index.yml) a [Power](https://ms.flow.microsoft.com) Automata umožňují vytvářet automatizované pracovní postupy s využitím stovek akcí pro nejrůznější služby. Konektor protokolů Azure Monitor umožňuje vytvářet pracovní postupy, které načítají data z pracovního prostoru Log Analytics nebo Application Insights aplikace v Azure Monitor. Tento článek popisuje akce, které konektor obsahuje, a poskytuje návod k sestavení pracovního postupu pomocí těchto dat.
+# <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Konektor protokolů Azure Monitor pro Logic Apps a automatizace
+[Azure Logic Apps](../../logic-apps/index.yml) a [Power](https://flow.microsoft.com) Automata umožňují vytvářet automatizované pracovní postupy s využitím stovek akcí pro nejrůznější služby. Konektor protokolů Azure Monitor umožňuje vytvářet pracovní postupy, které načítají data z pracovního prostoru Log Analytics nebo Application Insights aplikace v Azure Monitor. Tento článek popisuje akce, které konektor obsahuje, a poskytuje návod k sestavení pracovního postupu pomocí těchto dat.
 
 Můžete například vytvořit aplikaci logiky, která bude používat data protokolu Azure Monitor v e-mailovém oznámení ze sady Office 365, vytvořit chybu v Azure DevOps nebo odeslat zprávu o časové rezervě.  Pracovní postup můžete aktivovat jednoduchým plánem nebo z nějaké akce v připojené službě, jako je například doručení e-mailu nebo. 
 
@@ -126,4 +126,4 @@ Po dokončení aplikace logiky Ověřte e-mailovou adresu příjemce, kterého j
 
 - Přečtěte si další informace o [dotazech protokolu v Azure monitor](../log-query/log-query-overview.md).
 - Další informace o [Logic Apps](../../logic-apps/index.yml)
-- Přečtěte si další informace o [Microsoft Flow](https://ms.flow.microsoft.com).
+- Přečtěte si další informace o [Power automatizuje](https://flow.microsoft.com).

@@ -7,17 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff77d6cad60b459b1fe6a4f83641c7aebe204dfa
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79256962"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460095"
 ---
 # <a name="manage-the-mobility-agent"></a>Správa agenta mobility 
 
 Na serveru můžete nastavit agenta mobility, když používáte Azure Site Recovery pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure. Agent mobility koordinuje komunikaci mezi vaším chráněným počítačem, konfiguračním serverem nebo procesovým serverem se škálováním na více systémů a spravuje replikaci dat. Tento článek shrnuje běžné úlohy pro správu agenta mobility po jeho nasazení.
 
+>[!TIP]
+>Pokud chcete instalační program stáhnout pro konkrétní operační systém/Linux distribuce, přečtěte si pokyny [zde](vmware-physical-mobility-service-overview.md#locate-installer-files). K automatické aktualizaci z portálu nemusíte stahovat instalační program. [ASR automaticky načte instalační program z konfiguračního serveru a aktualizuje agenta](#update-mobility-service-from-azure-portal).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -33,7 +35,7 @@ Na serveru můžete nastavit agenta mobility, když používáte Azure Site Reco
 
      ![Seznam virtuálních počítačů replikovaných položek](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
-5. Spustí se úloha aktualizace služby mobility pro všechny vybrané počítače.
+5. Spustí se úloha aktualizace služby mobility pro všechny vybrané počítače. Agent mobility je aktualizovaný na verzi konfiguračního serveru. Pokud je například konfigurační server verze 9,33, je agent mobility na chráněném virtuálním počítači aktualizován také na 9,33 verzi.
 
 ## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Aktualizace služby mobility prostřednictvím skriptu PowerShellu na Windows serveru
 

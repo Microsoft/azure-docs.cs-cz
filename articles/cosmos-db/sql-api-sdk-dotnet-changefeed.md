@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 679f3113cddbfe13370483f2678154f4dd1f8ab2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2c846298fecdc771dd5d9831a558b99c74b2737
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392059"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461064"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Sada SDK pro rozhraní Change feed pro .NET: stažení a poznámky k verzi
 
@@ -48,7 +48,11 @@ ms.locfileid: "85392059"
 
 ### <a name="v2-builds"></a>V2 sestavení
 
-### <a name="230"></a><a name="2.3.0"></a>2.3.0
+### <a name="231"></a><a name="2.3.1"/>kládají
+* Opraven případ při `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` odeslání důvodu uzavření na, `FeedProcessing.IChangeFeedObserver.CloseAsync` Pokud oddíl nebyl nalezen nebo pokud cílová replika není aktuální s relací čtení. V těchto případech `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` a `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` jsou nyní použity důvody zavření.
+* Byl přidán nový důvod zavření `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` , který je odeslán za účelem zavření pozorovatele kanálu změn v případě, že cílová replika není v aktuálním stavu v relaci čtení.
+
+### <a name="230"></a><a name="2.3.0"/>2.3.0
 * Přidala se nová metoda `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` a odpovídající veřejné rozhraní `ICheckpointPartitionProcessorFactory` . To umožňuje implementaci `IPartitionProcessor` rozhraní k použití integrovaného mechanismu kontrolního bodu. Nový objekt pro vytváření je podobný jako stávající `IPartitionProcessorFactory` , s tím rozdílem, že jeho `Create` Metoda také přijímá `ILeaseCheckpointer` parametr.
 * `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` Pro stejnou instanci lze použít pouze jednu ze dvou metod, buď nebo `ChangeFeedProcessorBuilder` .
 
@@ -178,16 +182,16 @@ ms.locfileid: "85392059"
 
 ## <a name="release--retirement-dates"></a>Data vyřazení & vydání
 
-Microsoft bude před vyřazením sady SDK do novější nebo podporované verze oznámení obsahovat alespoň **12 měsíců** .
+Microsoft bude před vyřazením sady SDK do novější nebo podporované verze oznámení obsahovat alespoň **12 měsíců** . Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK.
 
-Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK. 
-
-Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou odmítnuty.
+> [!WARNING]
+> Po 31. srpna 2022 již Azure Cosmos DB nebude provádět opravy chyb, přidávat nové funkce a poskytovat podporu pro verze 1. x rozhraní Azure Cosmos DB .NET nebo .NET Core SDK pro rozhraní SQL API. Pokud nechcete upgradovat, požadavky odeslané z verze 1. x sady SDK budou nadále obsluhovány službou Azure Cosmos DB.
 
 <br/>
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [kládají](#2.3.1) |30. července 2020 |--- |
 | [2.3.0](#2.3.0) |2. dubna 2020 |--- |
 | [2.2.8](#2.2.8) |28. října 2019 |--- |
 | [2.2.7](#2.2.7) |14. května 2019 |--- |

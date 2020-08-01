@@ -2,20 +2,30 @@
 title: Přehled Azure Data Lake Analytics
 description: Díky službě Data Lake Analytics můžete podpořit své podnikání s využitím přehledů získaných z cloudových dat v jakémkoli měřítku.
 services: data-lake-analytics
+author: saveenr
+ms.author: saveenr
+ms.reviewer: jasonwhowell
 ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: 01a38829056d8f96ddc1029fc4df5ec79414e8bb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b86b569b1b14b943cdc6dcc805a7b7a208d03447
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321001"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475115"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Co je Azure Data Lake Analytics?
 
 Azure Data Lake Analytics je služba analytických úloh na vyžádání, která zjednodušuje práci s velkými objemy dat. Namísto nasazení, konfigurace a ladění hardwaru můžete psát dotazy, transformovat data a extrahovat cenné informace. Analytická služba dokáže okamžitě zpracovávat úlohy libovolného rozsahu – stačí nastavit, jaký výkon potřebujete. Za úlohu platíte jenom tehdy, když je spuštěná, což je nákladově efektivní. 
+
+## <a name="azure-data-lake-analytics-recent-update-information"></a>Informace o nejnovější aktualizaci Azure Data Lake Analytics
+
+Služba Azure Data Lake Analytics Service se pro určitý účel aktualizuje na aperiodic bázi. Dál poskytujeme podporu pro tuto službu pomocí aktualizace komponent, verze beta verze Preview a tak dále. 
+
+- Obecné informace o nejnovější aktualizaci najdete v tématu [co je nového v Data Lake Analytics?](data-lake-analytics-whats-new.md).
+- Informace o jednotlivých aktualizacích najdete v [poznámkách k verzi Azure Data Lake Analytics](https://github.com/Azure/AzureDataLake/tree/master/docs/Release_Notes).
 
 ## <a name="dynamic-scaling"></a>Dynamické škálování
   
@@ -41,8 +51,10 @@ Služba Data Lake Analytics je nákladově efektivní řešení pro spouštění
   
 Data Lake Analytics spolupracuje s Azure Data Lake Storage pro nejvyšší výkon, propustnost a paralelní zpracování a funguje s Azure Storagemi objekty blob, Azure SQL Database a Azure synapse Analytics (dříve Azure SQL Data Warehouse).
 
+
 ## <a name="next-steps"></a>Další kroky
 
+* Podívejte se na Azure Data Lake Analytics Poslední aktualizace s využitím [novinek v Azure Data Lake Analytics?](data-lake-analytics-whats-new.md)
 * Začínáme s Data Lake Analytics pomocí rozhraní příkazového řádku [Azure Portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [CLI](data-lake-analytics-get-started-cli.md)
 * Správa Azure Data Lake Analytics pomocí [Azure Portal](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [CLI](data-lake-analytics-manage-use-cli.md)  |  [Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md)  |  [Node.js](data-lake-analytics-manage-use-nodejs.md)
 * [Kontrola nákladů a úspory s využitím služby Data Lake Analytics](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c)

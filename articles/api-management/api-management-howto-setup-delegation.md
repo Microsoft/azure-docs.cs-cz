@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 07/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 43dc0020f64a80e10f179fd194c4878f2fec41ad
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243201"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460996"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegování registrace uživatelů a předplatného produktu
 
@@ -49,8 +49,6 @@ Nyní je třeba vytvořit **koncový bod delegování**. Je potřeba provést n�
 1. Příjem žádosti v následujícím formátu:
    
    > *http: \/ /www.yourwebsite.com/apimdelegation?operation=SignIn&ReturnUrl = {adresa URL zdrojové stránky} &Salt = {String} &SIG = {String}*
-   > 
-   > 
    
     Parametry dotazu pro případ přihlášení/přihlášení:
    
@@ -84,6 +82,7 @@ Kromě operace **přihlášení** můžete také provádět správu účtů podl
 * **Metodu ChangePassword**
 * **ChangeProfile**
 * **CloseAccount**
+* **SignOut**
 
 Pro operace správy účtů musíte předat následující parametry dotazu.
 
@@ -93,6 +92,7 @@ Pro operace správy účtů musíte předat následující parametry dotazu.
 * **SIG**: vypočítaná hodnota hash zabezpečení, která se má použít pro porovnání s vámi vypočítanou hodnotou hash
 
 ## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>Delegování předplatného produktu
+
 Delegování předplatného produktu funguje podobně jako delegování přihlášení uživatele. Konečný pracovní postup by byl následující:
 
 1. Vývojář vybere produkt na portálu pro vývojáře API Management a klikne na tlačítko přihlásit k odběru.
@@ -114,9 +114,9 @@ Dále zajistěte, aby koncový bod delegování provede následující akce:
      * "Předplatné": žádost o přihlášení uživatele k danému produktu se zadaným ID (viz níže)
      * "Zrušit odběr": požadavek na zrušení odběru uživatele z produktu
      * "Prodloužit": požadavek na obnovení předplatného (například může vypršet platnost)
-   * **ProductID**: ID produktu, který uživatel požádal o přihlášení k odběru
+   * **ProductID**: po *přihlášení k odběru* – ID produktu, který uživatel požádal o přihlášení k odběru
    * **SubscriptionId**: při *zrušení odběru* a *obnovení* – ID předplatného produktu
-   * **userId**: ID uživatele, který požadavek odeslal.
+   * **userId**: on *předplatné* – ID uživatele, pro který se žádost vytvořila
    * **Salt**: speciální řetězec Salt používaný k výpočtu hodnoty hash zabezpečení
    * **SIG**: vypočítaná hodnota hash zabezpečení, která se má použít pro porovnání s vámi vypočítanou hodnotou hash
 

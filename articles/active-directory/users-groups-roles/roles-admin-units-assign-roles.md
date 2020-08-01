@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 07/10/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d0a1f2551338207a71b6c547d9c2cd57fea777
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 918675b111b7b1b85669692b63fed683ea2831f8
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284383"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475630"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Přiřazení vymezených rolí k jednotce pro správu
 
@@ -46,7 +46,7 @@ Na portálu můžete přejít na **jednotky pro správu Azure AD >** . Vyberte j
 
 ![Výběr jednotky pro správu pro změnu rozsahu role](./media/roles-admin-units-assign-roles/select-role-to-scope.png)
 
-Vyberte roli, kterou chcete přiřadit, a pak vyberte **Přidat přiřazení**. Tím se otevře panel na pravé straně, kde můžete vybrat jednoho nebo více uživatelů, kteří mají být přiřazeni k roli.
+Vyberte roli, kterou chcete přiřadit, a pak vyberte **Přidat přiřazení**. Otevře se panel na pravé straně, kde můžete vybrat jednoho nebo více uživatelů, kteří mají být přiřazeni k roli.
 
 ![Vyberte roli pro obor a pak vyberte přidat přiřazení.](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
@@ -104,4 +104,5 @@ Request body
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Řešení potíží s jednotkami pro správu a nejčastější dotazy](roles-admin-units-faq-troubleshoot.md)
+- [Použití skupin cloudů ke správě přiřazení rolí](roles-groups-concept.md)
+- [Řešení potíží s rolemi přiřazenými ke skupinám cloudu](roles-groups-faq-troubleshooting.md)

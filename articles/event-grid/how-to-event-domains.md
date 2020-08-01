@@ -3,12 +3,12 @@ title: Publikování událostí s doménami událostí pomocí Azure Event Grid
 description: Ukazuje, jak spravovat velké sady témat v Azure Event Grid a publikovat do nich události pomocí domén událostí.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: eae467c1c4cc1257e7a5205dd5efda40490f7908
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ce1cc9c2b09dd6b0c9508ad6b0597428bd355d4b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423639"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460554"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Správa témat a publikování událostí pomocí domén událostí
 
@@ -78,7 +78,7 @@ Všimněte si, že `endpoint` a jsou `id` nutné ke správě událostí domény 
 
 ## <a name="manage-access-to-topics"></a>Správa přístupu k tématům
 
-Správa přístupu k tématům se provádí prostřednictvím [přiřazení role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli). Přiřazení role používá řízení přístupu na základě rolí k omezení operací s prostředky Azure u autorizovaných uživatelů v určitém oboru.
+Správa přístupu k tématům se provádí prostřednictvím [přiřazení role](../role-based-access-control/role-assignments-cli.md). Přiřazení role používá řízení přístupu na základě rolí k omezení operací s prostředky Azure u autorizovaných uživatelů v určitém oboru.
 
 Event Grid má dvě předdefinované role, které můžete použít k přiřazení přístupu konkrétním uživatelům k různým tématům v rámci domény. Tyto role jsou `EventGrid EventSubscription Contributor (Preview)` , což umožňuje vytvořit a odstranit odběry a `EventGrid EventSubscription Reader (Preview)` , které umožňují pouze výpis odběrů událostí.
 

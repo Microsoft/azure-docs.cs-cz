@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f547aa900c1b8dbea27eceff7ac7ebc86a83e33
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d582db4bd7ef99d86602f49bc9046aadb8c3e8f0
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019824"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460605"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí připraveného zavedení (Preview)
 
@@ -50,6 +50,8 @@ Přehled této funkce najdete v tomto tématu Azure Active Directory: co je post
 -   Pokud chcete použít funkci dvoufázové zavedení, musíte být globálním správcem vašeho tenanta.
 
 -   Pokud chcete povolit *bezproblémové přihlašování* v konkrétní doménové struktuře služby Active Directory, musíte být správce domény.
+
+-  Pokud nasazujete hybridní službu Azure AD nebo službu Azure AD JOIN, musíte upgradovat na Windows 10 1903 Update.
 
 
 ## <a name="supported-scenarios"></a>Podporované scénáře

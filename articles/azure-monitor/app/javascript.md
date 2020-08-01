@@ -2,16 +2,14 @@
 title: Azure Application Insights pro webové aplikace v JavaScriptu
 description: Získejte zobrazení stránky a počty relací, data webového klienta, jednostránkové aplikace (SPA) a sledujte vzorce používání. Zjištění výjimek a problémů s výkonem na webových stránkách v jazyce JavaScript.
 ms.topic: conceptual
-author: Dawgfan
-ms.author: mmcc
 ms.date: 09/20/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8cd0c7c73ac4f5c531d91d7e458300ab1b0ad1af
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 063d648c68431dd84fd1aeb88b85bc68f2acbe62
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371477"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475749"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -342,7 +340,9 @@ To neznamená, že budeme podporovat jenom nejnižší běžnou sadu funkcí, st
 
 ## <a name="open-source-sdk"></a>Open-Source sada SDK
 
-Sada Application Insights JavaScript SDK je open source, aby zobrazila zdrojový kód nebo přispívala k projektu na [oficiálním úložišti GitHub](https://github.com/Microsoft/ApplicationInsights-JS).
+Sada Application Insights JavaScript SDK je open source, aby zobrazila zdrojový kód nebo přispívala k projektu na [oficiálním úložišti GitHub](https://github.com/Microsoft/ApplicationInsights-JS). 
+
+Nejnovější aktualizace a opravy chyb [najdete v poznámkách k verzi](./release-notes.md).
 
 ## <a name="next-steps"></a><a name="next"></a>Další kroky
 * [Sledování využití](usage-overview.md)

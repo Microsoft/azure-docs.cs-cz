@@ -1,19 +1,19 @@
 ---
-title: Mapování vizuálního monitorování toku dat
-description: Jak vizuálně monitorovat toky Azure Data Factory dat
+title: Monitorování toků dat mapování
+description: Jak vizuálně monitorovat toky dat mapování v Azure Data Factory
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/03/2020
-ms.openlocfilehash: 1126f73b4d2e51e952a7cf971363020242838c34
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ad5fb077596b6cc444c1c4df81af32cbcfa7c1db
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958888"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475545"
 ---
 # <a name="monitor-data-flows"></a>Monitorování toků dat
 
@@ -27,7 +27,7 @@ Po spuštění kanálu můžete monitorovat kanál a všechny aktivity obsažen�
 
 Na této úrovni vidíte statistiku, včetně časů běhu a stavu. ID běhu na úrovni aktivity se liší od ID běhu na úrovni kanálu. ID spuštění na předchozí úrovni je pro kanál. Výběrem brýlí získáte podrobné informace o spuštění toku dat.
 
-![Sledování toku dat](media/data-flow/mon002.png "Sledování toku dat")
+![Sledování toku dat](media/data-flow/monitoring-details.png "Sledování toku dat")
 
 Když jste v zobrazení monitorování grafického uzlu, můžete zobrazit zjednodušenou verzi grafu toku dat, která je jen pro zobrazení.
 

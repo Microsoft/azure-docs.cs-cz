@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: b78364cef6bfd6cf91e6edf81fd57fa5912125db
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be04b690add70468335ac694e3be54fa55a94249
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260688"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475647"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift 4
 
@@ -33,42 +33,12 @@ Pokud chcete vytvořit cluster Azure Red Hat OpenShift, ověřte následující 
 |**Správce uživatelského přístupu**|X|X| |
 |**Přispěvatel**|X|X|X|
 
-### <a name="install-the-az-aro-extension"></a>Nainstalovat `az aro` rozšíření
-`az aro`Rozšíření umožňuje vytvořit, otevřít a odstranit clustery Azure Red Hat OpenShift přímo z příkazového řádku pomocí Azure CLI.
-
-Spusťte následující příkaz pro instalaci `az aro` rozšíření.
-
-```azurecli-interactive
-az extension add -n aro --index https://az.aroapp.io/stable
-```
-
-Pokud už máte rozšíření nainstalované, můžete ho aktualizovat spuštěním následujícího příkazu.
-
-```azurecli-interactive
-az extension update -n aro --index https://az.aroapp.io/stable
-```
-
 ### <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
 
 Dál je potřeba zaregistrovat `Microsoft.RedHatOpenShift` poskytovatele prostředků ve vašem předplatném.
 
 ```azurecli-interactive
 az provider register -n Microsoft.RedHatOpenShift --wait
-```
-
-Ověřte, zda je rozšíření registrováno.
-
-```azurecli-interactive
-az -v
-```
-
-  Měl by se zobrazit výstup podobný následujícímu.
-
-```output
-...
-Extensions:
-aro                                1.0.0
-...
 ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Získání tajného kódu pro vyžádání Red Hat (volitelné)

@@ -3,12 +3,12 @@ title: Připojení jako Azure Event Grid partner
 description: Připojte se jako typ tématu Azure Event Grid partner. Seznamte se s modelem prostředků a s průběhem publikování pro témata partnerů.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8003e3e6a28b0e6a05d553be01c171029e244d74
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bf4534849ae29d89524a877ca410d25c74637c94
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116110"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461251"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Připojení jako Azure Event Grid partner
 
@@ -144,19 +144,19 @@ Po odeslání do koncového bodu partnerNamespace obdržíte odpověď. Odpově�
 
 | Výsledek                             | Odpověď              |
 |------------------------------------|-----------------------|
-| Úspěch                            | 200 OK                |
-| Data události mají nesprávný formát.    | 400 Chybný požadavek       |
-| Neplatný přístupový klíč                 | 401 Neautorizováno      |
+| Success                            | 200 OK                |
+| Data události mají nesprávný formát.    | 400 – Chybný požadavek       |
+| Neplatný přístupový klíč                 | 401 – Neautorizováno      |
 | Nesprávný koncový bod                 | 404 Nenalezeno         |
 | Pole nebo událost překračuje omezení velikosti. | datová část 413 je moc velká. |
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [Šablona ARM](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
   * [Schéma šablony ARM](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
-  * [Rozhraní REST API](https://docs.microsoft.com/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
-  * [Rozšíření CLI](https://docs.microsoft.com/cli/azure/ext/eventgrid/?view=azure-cli-latest)
+  * [REST API](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
+  * [Rozšíření CLI](/cli/azure/ext/eventgrid/?view=azure-cli-latest)
 
 ### <a name="sdks"></a>Sady SDK
   * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/5.3.1-preview)

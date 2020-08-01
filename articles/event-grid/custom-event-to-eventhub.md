@@ -3,12 +3,12 @@ title: 'Rychlý Start: odesílání vlastních událostí do Event Hubs-Event Gr
 description: 'Rychlý Start: pomocí Azure Event Grid a Azure CLI můžete publikovat téma a přihlásit se k odběru této události. Centrum událostí se používá pro koncový bod.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 77268dde90959298c76813fb146e972ecfa3685d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1d27ebe0151c6a49d21975216e146f1daa20e4e2
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104091"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87462033"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Rychlý Start: směrování vlastních událostí do Azure Event Hubs pomocí Azure CLI a Event Grid
 
@@ -97,8 +97,8 @@ Přejděte na portálu do centra událostí a všimněte si, že služba Event G
 
 Obvykle vytvoříte aplikaci, která načte události z centra událostí. Pokud chcete vytvořit aplikaci, která získá zprávy z centra událostí, přečtěte si témata:
 
-* [Začínáme s příjmem zpráv pomocí třídy Event Processor Host v .NET Standard](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
-* [Příjem událostí ze služby Azure Event Hubs pomocí Javy](../event-hubs/event-hubs-java-get-started-receive-eph.md)
+* [Začínáme s příjmem zpráv pomocí třídy Event Processor Host v .NET Standard](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+* [Příjem událostí ze služby Azure Event Hubs pomocí Javy](../event-hubs/event-hubs-java-get-started-send.md)
 * [Příjem událostí ze služby Event Hubs pomocí Apache Storm](../event-hubs/event-hubs-storm-getstarted-receive.md)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

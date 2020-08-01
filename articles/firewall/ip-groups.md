@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 7bfa1ae5bd0f2ffe92fb37494f9fe589e1b2040e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97d8d10e30d0d0c1654c82651220489785a37059
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565538"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460214"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>Skupiny IP adres v Azure Firewall
 
@@ -27,7 +27,7 @@ Skupina IP adres může mít jednu IP adresu, několik IP adres nebo jeden nebo 
 
 Skupiny IP adres se dají znovu použít v Azure Firewall DNAT, síti a pravidel aplikací pro několik bran firewall v rámci oblastí a předplatných v Azure. Názvy skupin musí být jedinečné. Skupinu IP adres můžete nakonfigurovat v Azure Portal, Azure CLI nebo REST API. K dispozici je Ukázková šablona, která vám umožní začít.
 
-## <a name="sample-format"></a>Vzorový formát
+## <a name="sample-format"></a>Formát ukázky
 
 Následující příklady formátu IPv4 adres jsou platné pro použití ve skupinách IP:
 
@@ -70,43 +70,7 @@ Skupiny IP adres jsou dostupné ve všech oblastech veřejného cloudu.
 
 ## <a name="ip-address-limits"></a>Omezení IP adres
 
-Pro 50 nebo méně skupin IP adres můžete mít každou instanci brány firewall maximálně 5000 individuálních IP adres. Pro skupiny IP adres 51 až 100 můžete pro každou instanci brány firewall určit jednotlivé IP adresy 500.
-
-### <a name="examples"></a>Příklady
-
-#### <a name="example-1-supported"></a>Příklad 1: podporováno
-
-|Skupiny IP adres  |Počet IP adres  |Notace  |Pravidlo  |
-|---------|---------|---------|---------|
-|IPGroup1 |4 096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |3|196.0.0.0 - 196.0.0.2|Rule1|
-|IPGroup3     |1|1.2.3.4|Rule1|
-|     |**Celkem 4100**|         |         |
-|     |         |         |         |
-
-#### <a name="example-2-supported"></a>Příklad 2: podporované
-
-|Skupiny IP adres  |Počet IP adres  |Notace  |Pravidlo  |
-|---------|---------|---------|---------|
-|IPGroup1 |4 096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |4 096|11.0.0.0/20|Rule1|
-|     |**Celkem 8192**|         |         |
-
-#### <a name="example-3-not-supported"></a>Příklad 3: nepodporováno
-
-|Skupiny IP adres  |Počet IP adres  |Notace  |Pravidlo  |
-|---------|---------|---------|---------|
-|IPGroup1 |8192     |10.0.0.0/20, 11.0.0.0/20  |Rule1|
-|     |**Celkem 8192**|||
-
-#### <a name="example-4-supported"></a>Příklad 4: podporováno
-
-|Skupiny IP adres  |Počet IP adres  |Notace  |Pravidlo  |
-|---------|---------|---------|---------|
-|IPGroup1 |4 096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |4 096|11.0.0.0/20|Rule2|
-|     |**Celkem 8192**|         |         |
-
+Můžete mít maximálně 100 skupin IP adres na bránu firewall s maximálním počtem 5000 individuálních IP adres nebo předpon IP adres na každou skupinu IP adres.
 
 ## <a name="related-azure-powershell-cmdlets"></a>Související rutiny Azure PowerShell
 

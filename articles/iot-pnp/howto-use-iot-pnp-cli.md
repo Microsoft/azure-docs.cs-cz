@@ -7,16 +7,16 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 3699213fe61c64d7677ba026a8df54ccbbfe4b33
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: dadb1f044547acd6e5f0d274143123e89d7dae46
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352158"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475477"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Instalace a použití rozšíření Azure IoT pro rozhraní příkazového řádku Azure
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) je open source nástroj příkazového řádku pro různé platformy, který slouží ke správě prostředků Azure, jako je IoT Hub. Rozhraní příkazového řádku Azure je dostupné v systémech Windows, Linux a MacOS. Rozhraní příkazového řádku Azure je také předem nainstalováno v [Azure Cloud Shell](https://shell.azure.com). Rozhraní příkazového řádku Azure umožňuje spravovat prostředky Azure IoT Hub, instance služby Device Provisioning a propojená centra bez nutnosti instalovat jakákoli rozšíření.
+[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) je open source nástroj příkazového řádku pro různé platformy, který slouží ke správě prostředků Azure, jako je IoT Hub. Rozhraní příkazového řádku Azure je dostupné v systémech Windows, Linux a macOS. Rozhraní příkazového řádku Azure umožňuje spravovat prostředky Azure IoT Hub, instance služby Device Provisioning a propojená centra bez nutnosti instalovat jakákoli rozšíření.
 
 Rozšíření Azure IoT pro Azure CLI je nástroj příkazového řádku pro interakci s a testování zařízení IoT technologie Plug and Play ve verzi Preview. Rozšíření můžete použít k těmto akcím:
 
@@ -44,16 +44,13 @@ K odebrání rozšíření můžete použít příkaz `az extension remove --nam
 
 ## <a name="use-azure-iot-extension-for-the-azure-cli"></a>Použití rozšíření Azure IoT pro rozhraní příkazového řádku Azure
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Pokud se chcete přihlásit ke svému předplatnému Azure, spusťte následující příkaz:
 
 ```azurecli
 az login
 ```
-
-> [!NOTE]
-> Pokud používáte Azure Cloud Shell, jste přihlášeni automaticky a nemusíte spouštět předchozí příkaz.
 
 Pokud chcete používat rozšíření Azure IoT pro rozhraní příkazového řádku Azure CLI, budete potřebovat:
 
@@ -109,6 +106,65 @@ Monitorujte všechny události IoT technologie Plug and Play digitálních udál
 az iot hub monitor-events -n {iothub_name} -d {device_id} -i {interface_id}
 ```
 
+### <a name="manage-models-in-the-model-repository"></a>Správa modelů v úložišti modelu
+
+Příkazy úložiště modelu Azure CLI můžete použít ke správě modelů v úložišti.
+
+#### <a name="create-model-repository"></a>Vytvořit úložiště modelu
+
+Pokud jste prvním uživatelem ve vašem tenantovi, vytvořte nové úložiště IoT technologie Plug and Play společnosti pro vašeho tenanta:
+
+```azurecli
+az iot pnp repo create
+```
+
+#### <a name="manage-model-repository-tenant-roles"></a>Správa rolí tenanta úložiště modelu
+
+Umožňuje vytvořit přiřazení role pro uživatele nebo instanční objekt ke konkrétnímu prostředku.
+
+Poskytněte například user@consoso.com roli **ModelsCreator** pro tenanta:
+
+```azurecli
+az iot pnp role-assignment create --resource-id {tenant_id} --resource-type Tenant --subject-id {user@contoso.com} --subject-type User --role ModelsCreator
+```
+
+Nebo poskytněte user@consoso.com roli **ModelAdministrator** pro určitý model:
+
+```azurecli
+az iot pnp role-assignment create --resource-id {model_id} --resource-type Model --subject-id {user@contoso.com} --subject-type User --role ModelAdministrator
+```
+
+#### <a name="create-a-model"></a>Vytvoření modelu
+
+Vytvořte nový model v úložišti společnosti:
+
+```azurecli
+az iot pnp model create --model {model_json or path_to_file}
+```
+
+#### <a name="search-a-model"></a>Hledání v modelu
+
+Vypíše modely, které odpovídají konkrétnímu klíčovému slovu:
+
+```azurecli
+az iot pnp model list -q {search_keyword}
+```
+
+#### <a name="publish-a-model"></a>Publikování modelu
+
+Publikujte model zařízení umístěný v úložišti společnosti do veřejného úložiště.
+
+Například proveďte veřejný model s ID `dtmi:com:example:ClimateSensor;1` :
+
+```azurecli
+az iot pnp model publish --dtmi "dtmi:com:example:ClimateSensor;1"
+```
+
+Chcete-li publikovat model, musí být splněny následující požadavky:
+
+- Tenant společnosti nebo organizace musí být partnerem Microsoftu. 
+- Uživatel nebo instanční objekt musí být členem role **vydavatele** tenanta úložiště.
+
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku se naučíte, jak nainstalovat a používat rozšíření Azure IoT pro rozhraní příkazového řádku Azure pro interakci s technologie Plug and Playmi zařízeními. Navržený další krok se naučíte používat [Azure IoT Explorer se svými zařízeními](./howto-use-iot-explorer.md).
+V tomto článku se naučíte, jak nainstalovat a používat rozšíření Azure IoT pro rozhraní příkazového řádku Azure CLI pro interakci s technologie Plug and Playmi zařízeními IoT. Navržený další krok se naučíte používat [Azure IoT Explorer se svými zařízeními](./howto-use-iot-explorer.md).

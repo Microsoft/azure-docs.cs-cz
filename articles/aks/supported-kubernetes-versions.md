@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: fc50934b4c301b4eea509ecc22e00c62ca091d75
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 273c41a523de8b2776982e5229c5a8b618b82c19
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056554"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475188"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -91,6 +91,14 @@ New Supported Version List
 1.17.*9*, 1.17.*8*, 1.16.*11*, 1.16.*10*
 ```
 
+### <a name="supported-kubectl-versions"></a>Podporované `kubectl` verze
+
+Můžete použít jednu podverzi starší nebo novější `kubectl` vzhledem k vaší verzi *Kube-apiserver* , která je v souladu se [zásadami podpory Kubernetes pro kubectl](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl).
+
+Například pokud je vaše *Kube-apiserver* v *1,17*, můžete použít verze *1,16* pro *1,18* `kubectl` s tímto *Kube-apiserver*.
+
+Chcete-li nainstalovat nebo aktualizovat svou verzi `kubectl` , spusťte příkaz `az aks install-cli` .
+
 ## <a name="release-and-deprecation-process"></a>Proces vydání a vyřazení
 
 V kalendáři vydaných verzí [AKS Kubernetes](#aks-kubernetes-release-calendar)můžete odkazovat na nadcházející verze verzí a zastaralá vydání.
@@ -121,7 +129,6 @@ Pokud chcete zjistit, jaké verze jsou aktuálně k dispozici pro vaše předpla
 az aks get-versions --location eastus --output table
 ```
 
-
 ## <a name="aks-kubernetes-release-calendar"></a>AKS Kubernetes – kalendář vydání
 
 Historii předchozích verzí najdete [tady](https://en.wikipedia.org/wiki/Kubernetes#History).
@@ -135,7 +142,7 @@ Historii předchozích verzí najdete [tady](https://en.wikipedia.org/wiki/Kuber
 
 \*Čeká na nedokončené odesílání data vydání.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Co se stane, když uživatel upgraduje cluster Kubernetes s menší verzí, která se nepodporuje?**
 

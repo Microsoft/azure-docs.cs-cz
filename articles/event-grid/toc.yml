@@ -93,7 +93,7 @@
     - name: Šablony Resource Manageru
       href: template-samples.md
     - name: Ukázky kódů
-      href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
+      href: /samples/browse/?term=Event+Grid
     - name: Integrované služby Azure Policy
       href: ./policy-samples.md
 - name: Koncepty

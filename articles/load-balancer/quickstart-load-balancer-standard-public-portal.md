@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1864ce5a3c1b5b0b2e0cfe757e66fca2074b764c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125186"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475801"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření služby Vyrovnávání zatížení pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
 Začněte s Azure Load Balancer pomocí Azure Portal k vytvoření veřejného nástroje pro vyrovnávání zatížení a tří virtuálních počítačů.
 
@@ -36,7 +36,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[Možnost 1 (výchozí): Vytvoření nástroje pro vyrovnávání zatížení (standardní SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[Možnost 1 (výchozí): vytvoření veřejného nástroje pro vyrovnávání zatížení (standardní skladová položka Standard)](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU.  Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
@@ -58,7 +58,7 @@ Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoří
     | Název                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
-    | Skladová položka           | Vybrat **Standard** |
+    | SKU           | Vybrat **Standard** |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou byste chtěli použít, vyberte **použít existující**. |
     | Název veřejné IP adresy | Do textového pole zadejte **myPublicIP** .|
     | Zóna dostupnosti | Chcete-li vytvořit odolný Nástroj pro vyrovnávání zatížení, vyberte **zónu – redundantní** . Pokud chcete vytvořit nástroj pro vyrovnávání zatížení, vyberte konkrétní zónu z 1, 2 nebo 3. |
@@ -76,7 +76,7 @@ V této části nakonfigurujete:
 
 * Nastavení nástroje pro vyrovnávání zatížení pro fond back-end adres.
 * Sonda stavu.
-* Pravidlo nástroje pro vyrovnávání zatížení a automatické odchozí pravidlo.
+* Pravidlo nástroje pro vyrovnávání zatížení.
 
 ### <a name="create-a-backend-pool"></a>Vytvoření back-endového fondu
 
@@ -222,7 +222,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     
     | Nastavení | Hodnota |
     |-|-|
-    | **Monitorování** |  |
+    | **Sledování** |  |
     | Diagnostika spouštění | Vybrat **vypnuto** |
    
 7. Vyberte **Zkontrolovat a vytvořit**. 
@@ -253,15 +253,15 @@ Další informace o odchozích připojeních najdete v tématu [odchozí připoj
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Název | Zadejte **myOutboundRule**. |
-    | IP adresa front-endu | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Do **název**zadejte **LoadBalancerFrontEndOutbound**. </br> Vyberte **IP adresu** nebo **předponu IP**adresy. </br> V části **Veřejná IP adresa** nebo **předpona veřejné IP**adresy vyberte **vytvořit novou** . </br> Jako název zadejte **myPublicIPOutbound** nebo **myPublicIPPrefixOutbound**. </br> Vyberte **OK**. </br> Vyberte **Přidat**.|
+    | IP adresa front-endu | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Do **název**zadejte **LoadBalancerFrontEndOutbound**. </br> Vyberte **IP adresu** nebo **předponu IP**adresy. </br> V části **Veřejná IP adresa** nebo **předpona veřejné IP**adresy vyberte **vytvořit novou** . </br> Jako název zadejte **myPublicIPOutbound** nebo **myPublicIPPrefixOutbound**. </br> Vyberte **OK**. </br> Vyberte možnost **Přidat**.|
     | Časový limit nečinnosti (minuty) | Přesuňte posuvník na **15 minut**.|
     | Resetování protokolu TCP | Vyberte **Povoleno**.|
-    | Back-endový fond | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název**zadejte **myBackendPoolOutbound** . </br> Vyberte **Přidat**. |
+    | Back-endový fond | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název**zadejte **myBackendPoolOutbound** . </br> Vyberte možnost **Přidat**. |
     | Přidělování portů-> přidělování portů | Vyberte možnost **ručně vybrat počet odchozích portů** . |
     | Odchozí porty – > zvolit podle | Vybrat **porty na instanci** |
     | Odchozí porty – > porty na instanci | Zadejte **10000**. |
 
-4. Vyberte **Přidat**.
+4. Vyberte možnost **Přidat**.
 
 ### <a name="add-virtual-machines-to-outbound-pool"></a>Přidat virtuální počítače do odchozího fondu
 
@@ -277,11 +277,11 @@ Další informace o odchozích připojeních najdete v tématu [odchozí připoj
 
 6. Zaškrtněte políčka vedle **myVM1**, **myVM2**a **myVM3**. 
 
-7. Vyberte **Přidat**.
+7. Vyberte možnost **Přidat**.
 
 8. Vyberte **Uložit**.
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[Možnost 2: Vytvoření nástroje pro vyrovnávání zatížení (základní skladová položka)](#tab/option-1-create-load-balancer-basic)
+# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[Možnost 2: vytvoření veřejného nástroje pro vyrovnávání zatížení (základní skladová položka)](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU.  Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
@@ -303,7 +303,7 @@ Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoří
     | Název                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
-    | Skladová položka           | Vybrat **základní** |
+    | SKU           | Vybrat **základní** |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou byste chtěli použít, vyberte **použít existující**. |
     | Název veřejné IP adresy | Do textového pole zadejte **myPublicIP** .|
     | Přiřazení | Vybrat **dynamický** |
@@ -468,9 +468,10 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 5. Vyberte kartu **Správa** nebo vyberte možnost **Další**  >  **Správa**.
 
 6. Na kartě **Správa** vyberte nebo zadejte:
+    
     | Nastavení | Hodnota |
-    |-|-|
-    | **Monitorování** | |
+    |---|---|
+    | **Sledování** | |
     | Diagnostika spouštění | Vybrat **vypnuto** |
 
 7. Vyberte **Zkontrolovat a vytvořit**. 
@@ -484,6 +485,24 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Název |  **myVM2** |**myVM3**|
     | Skupina dostupnosti| Vybrat **myAvailabilitySet** | Vybrat **myAvailabilitySet**|
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**| Vybrat existující **myNSG**|
+
+### <a name="add-virtual-machines-to-the-backend-pool"></a>Přidání virtuálních počítačů do back-endového fondu
+
+Virtuální počítače vytvořené v předchozích krocích se musí přidat do back-endu fondu **myLoadBalancer**.
+
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myLoadBalancer** .
+
+2. V části **Nastavení**vyberte **back-end fondy**a pak vyberte **myBackendPool**.
+
+3. Vyberte **virtuální počítače** v nástroji **přidruženo k**.
+
+4. V části **virtuální počítače** vyberte **+ Přidat**.
+
+5. Zaškrtněte políčka vedle **myVM1**, **myVM2**a **myVM3**.
+
+6. Vyberte možnost **Přidat**.
+
+7. Vyberte **Uložit**.
 
 ---
 

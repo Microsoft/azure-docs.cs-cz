@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16203ab972f6117cec41e43ee5dd89cda7e95ede
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c4b9ae0ed682d6b34099c8eff941f1d0b6cabad
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025691"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461761"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -121,6 +121,9 @@ Připojení k hybridní službě Azure AD funguje s oběma spravovanými i feder
 Spravované prostředí se dá nasadit buď pomocí [synchronizace hodnot hash hesel (kosmetice)](/azure/active-directory/hybrid/whatis-phs) , nebo [předávat ověřování (PTA)](/azure/active-directory/hybrid/how-to-connect-pta) pomocí [bezproblémového jednotného přihlašování](/azure/active-directory/hybrid/how-to-connect-sso).
 
 Tyto scénáře nevyžadují konfiguraci federačního serveru pro ověřování.
+
+> [!NOTE]
+> [Cloudové ověřování pomocí připraveného zavedení](/hybrid/how-to-connect-staged-rollout) je podporované jenom při spuštění aktualizace Windows 10 1903.
 
 ### <a name="federated-environment"></a>Federované prostředí
 

@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 547b3ed84c8e4406b65ee8cf51c0db10b6878793
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c89bc434d9d67144a95b5c2f23e7664078fe7825
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87063840"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474304"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft. Common. TextBox – element uživatelského rozhraní
 
@@ -29,6 +29,7 @@ Ovládací prvek, který lze použít k úpravám neformátovaného textu.
     "label": "Name",
     "defaultValue": "contoso123",
     "toolTip": "Use only allowed characters",
+    "placeholder": "",
     "constraints": {
         "required": true,
         "validations": [
@@ -60,6 +61,7 @@ Ovládací prvek, který lze použít k úpravám neformátovaného textu.
 - `isValid`Vlastnost obsahuje výraz, který je vyhodnocen na hodnotu true nebo false. V rámci výrazu Definujte podmínku, která určuje, zda je textové pole platné.
 - `message`Vlastnost je řetězec, který se zobrazí, když se hodnota textového pole nezdařila.
 - Je možné zadat hodnotu, která `regex` `required` je nastavena na **hodnotu false**. V tomto scénáři není požadovaná hodnota pro úspěšné ověření tohoto textového pole. Pokud je zadaný, musí se shodovat se vzorem regulárního výrazu.
+- `placeholder`Vlastnost je text v nápovědě, který zmizí, když uživatel začne upravovat. Pokud `placeholder` jsou a `defaultValue` definovány obě, má `defaultValue` přednost a je zobrazena.
 
 ## <a name="example"></a>Příklad
 

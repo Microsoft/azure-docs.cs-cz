@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 1abde88b653ae0f0ef3651b161e806047e143078
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 82b10525fe4d8b9db88300b61ae2da6630030dfd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418776"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461183"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>Konfigurace jednotného přihlašování pomocí SAML
 
@@ -25,7 +25,7 @@ V [řadě rychlých startů](view-applications-portal.md) při správě aplikac�
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Použití Azure AD jako zprostředkovatele identity a nastavení jednotného přihlašování (SSO) může být jednoduché nebo složité v závislosti na používané aplikaci. Některé aplikace je možné nastavit jenom pomocí několika akcí. Jiné vyžadují hloubkovou konfiguraci. K rychlému navýšení si Projděte příručku [rychlý Start](view-applications-portal.md) při správě aplikací. Pokud je aplikace, kterou přidáváte, jednoduchá, pak pravděpodobně nebudete muset číst tento článek. Pokud aplikace, kterou přidáváte, vyžaduje vlastní konfiguraci pro jednotné přihlašování založené na SAML, pak je tento článek pro vás.
+Použití Azure AD jako zprostředkovatele identity (IdP) a nastavení jednotného přihlašování (SSO) může být jednoduché nebo složité v závislosti na používané aplikaci. Některé aplikace je možné nastavit jenom pomocí několika akcí. Jiné vyžadují hloubkovou konfiguraci. K rychlému navýšení si Projděte příručku [rychlý Start](view-applications-portal.md) při správě aplikací. Pokud je aplikace, kterou přidáváte, jednoduchá, pak pravděpodobně nebudete muset číst tento článek. Pokud aplikace, kterou přidáváte, vyžaduje vlastní konfiguraci pro jednotné přihlašování založené na SAML, pak je tento článek pro vás.
 
 V [sérii rychlých startech](view-applications-portal.md)je k dispozici článek týkající se konfigurace jednotného přihlašování. V takovém případě se dozvíte, jak získat přístup ke konfigurační stránce SAML pro aplikaci. Stránka Konfigurace SAML obsahuje pět oddílů. Tyto části jsou podrobně popsány v tomto článku.
 

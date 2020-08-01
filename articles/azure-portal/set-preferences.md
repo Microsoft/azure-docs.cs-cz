@@ -5,22 +5,23 @@ services: azure-portal
 keywords: nastavení, časový limit, jazyk, oblast
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/19/2019
+ms.date: 07/30/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: d4c675ab18a7a9231229ce0c7de9a7450dc1baa8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8ce638bf61c69fb732d94d537218aabaeaa9a7c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763954"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461920"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Nastavení předvoleb pro Azure Portal
 
 Výchozí nastavení Azure Portal můžete změnit tak, aby splňovalo vaše vlastní předvolby. Každé z následujících nastavení lze změnit:
 
 * [Časový limit neaktivních relací](#change-the-idle-duration-for-inactive-sign-out)
+* [Výchozí předplatné](#choose-your-default-subscription)
 * [Výchozí zobrazení](#choose-your-default-view)
 * [Režim nabídky portálu](#choose-a-portal-menu-mode)
 * [Motiv barvy a vysokého kontrastu](#choose-a-theme)
@@ -29,7 +30,7 @@ Výchozí nastavení Azure Portal můžete změnit tak, aby splňovalo vaše vla
 
 ## <a name="change-general-portal-settings"></a>Změnit obecné nastavení portálu
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. V záhlaví globální stránky vyberte **Nastavení** .
 
     ![Snímek obrazovky zobrazující ikony záhlaví globálních stránek s zvýrazněným nastavením](./media/set-preferences/header-settings.png)
@@ -55,9 +56,21 @@ Pokud váš správce povolil zásady časového limitu nečinnosti, zaškrtněte
 > Pokud jste správce a chcete vymáhat nastavení neaktivního časového limitu pro všechny uživatele Azure Portal, přečtěte si téma [nastavení časového limitu nečinnosti na úrovni adresáře pro uživatele Azure Portal](admin-timeout.md)
 >
 
+### <a name="choose-your-default-subscription"></a>Zvolit výchozí předplatné
+
+Když se přihlašujete k Azure Portal, můžete změnit odběr, který se ve výchozím nastavení otevře. To je užitečné v případě, že máte primární předplatné, se kterým pracujete, ale budete s nimi občas používat jiné. 
+
+:::image type="content" source="media/set-preferences/filter-subscription-default-view.png" alt-text="Filtrovat seznam prostředků podle předplatného":::
+
+1. V horním navigačním panelu vyberte ikonu filtru adresářů a předplatného.
+1. Po spuštění portálu vyberte předplatné, které chcete jako Výchozí předplatná. 
+
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="Po spuštění portálu vyberte předplatné, které chcete jako Výchozí předplatná."::: 
+
+
 ### <a name="choose-your-default-view"></a>Zvolit výchozí zobrazení 
 
-Když se přihlásíte k Azure Portal, můžete změnit stránku, která se ve výchozím nastavení otevře.
+Když se přihlašujete k Azure Portal, můžete změnit stránku, která se otevře ve výchozím nastavení.
 
    ![Snímek obrazovky zobrazující Azure Portal nastavení s zvýrazněným výchozím zobrazením](./media/set-preferences/default-view.png)
 

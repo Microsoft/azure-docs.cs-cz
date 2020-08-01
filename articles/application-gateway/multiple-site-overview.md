@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 07/20/2020
-ms.author: amsriva
+ms.author: surmb
 ms.topic: conceptual
-ms.openlocfilehash: 23f76f18256ecadcbef59a498292222ea358008f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290987"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474321"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostování více webů ve službě Application Gateway
 
@@ -42,6 +42,7 @@ Pomocí zástupného znaku v názvu hostitele můžete vyhledat více názvů ho
 
 >[!NOTE]
 >Tato funkce je aktuálně dostupná jenom prostřednictvím [Azure PowerShell](tutorial-multiple-sites-powershell.md) a [Azure CLI](tutorial-multiple-sites-cli.md). Už brzy bude dostupná podpora portálu.
+> Počítejte s tím, že protože podpora portálu není plně dostupná, pokud používáte pouze parametr HostNames, posluchač se zobrazí jako základní naslouchací proces na portálu a sloupec název hostitele v zobrazení seznamu naslouchacího procesu nebude zobrazovat názvy hostitelů, které jsou nakonfigurovány. U všech změn pro naslouchací proces se zástupnými znaky se ujistěte, že používáte Azure PowerShell nebo CLI, dokud není na portálu podporován.
 
 V [Azure PowerShell](tutorial-multiple-sites-powershell.md)je nutné použít `-HostNames` místo `-HostName` . U názvů hostitelů můžete uvést až 5 názvů hostitelů jako hodnot oddělených čárkami a použít zástupné znaky. Například `-HostNames "*.contoso.com,*.fabrikam.com"`.
 

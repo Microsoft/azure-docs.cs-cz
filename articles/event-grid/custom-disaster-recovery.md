@@ -3,12 +3,12 @@ title: Zotavení po havárii pro vlastní témata v Azure Event Grid
 description: Tento kurz vás provede postupem nastavení architektury událostí pro obnovení, pokud služba Event Grid v oblasti není v pořádku.
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: da796a9ac4d03f7ad6999b8fa4530fddfb60cbfe
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: dc893973fe1f6367cd9b95de2014d92c045056f4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420256"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461676"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Vytvoření vlastního zotavení po havárii pro vlastní témata v Event Grid
 Zotavení po havárii se zaměřuje na obnovení z vážné ztráty funkčnosti aplikace. V tomto kurzu se dozvíte, jak nastavit architekturu událostí pro obnovení, pokud služba Event Grid v konkrétní oblasti nebude v pořádku.
@@ -42,7 +42,7 @@ Nezapomeňte tuto adresu URL poznamenat, protože ji budete potřebovat později
 
 Nejprve vytvořte dvě Event Grid témata. Tato témata budou fungovat jako primární a sekundární. Ve výchozím nastavení budou vaše události procházet vaším primárním tématem. Pokud v primární oblasti dojde k výpadku služby, vaše sekundární převezme.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 
 1. V levém horním rohu hlavní nabídky Azure zvolte **všechny služby** > vyhledejte **Event Grid** > vyberte **Event Grid témata**.
 
@@ -207,4 +207,4 @@ Podobně můžete chtít implementovat logiku navrácení služeb po obnovení n
 
 - Informace o tom, jak [přijímat události na koncovém bodu http](./receive-events.md)
 - Zjistěte, jak [směrovat události do Hybrid Connections](./custom-event-to-hybrid-connection.md)
-- Přečtěte si o [zotavení po havárii pomocí Azure DNS a Traffic Manager](https://docs.microsoft.com/azure/networking/disaster-recovery-dns-traffic-manager)
+- Přečtěte si o [zotavení po havárii pomocí Azure DNS a Traffic Manager](../networking/disaster-recovery-dns-traffic-manager.md)

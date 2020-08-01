@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
-ms.openlocfilehash: f212143d90b6a6bf9c8f1f597c276b9ab4100617
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 60ad7f5df4f13d626d7a2c24990c7f48db28d01d
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406256"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475222"
 ---
 # <a name="iot-plug-and-play-preview-refresh"></a>Aktualizace IoT technologie Plug and Play Preview
 
@@ -86,7 +86,7 @@ Sada SDK služby je dostupná v [Node.js](https://github.com/Azure/azure-iot-sdk
 
 Rozšíření [Azure IoT Device Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) poskytuje podporu vytváření obsahu pro DTDL V1, integraci s předchozí verzí úložiště modelu a generování kódu.
 
-Pokud požadujete podporu vytváření DTDL V2 v VS Code, nainstalujte nové [rozšíření DTDL](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl) v vs Code. Rozšíření neposkytuje integraci s úložištěm modelu nebo generováním kódu. Správa modelů v úložišti se teď provádí pomocí [webového uživatelského rozhraní](https://aka.ms/iotmodelrepo).
+Pokud požadujete podporu vytváření DTDL V2 v VS Code, nainstalujte nové [rozšíření DTDL](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl) v vs Code. Rozšíření neposkytuje integraci s úložištěm modelu nebo generováním kódu. Správa modelů v úložišti se teď provádí pomocí [webového uživatelského rozhraní](https://aka.ms/iotmodelrepo) nebo [CLI](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest).
 
 ## <a name="digital-twin-service-side-rest-apis"></a>Digitální vlákna REST API na straně služby
 
@@ -103,8 +103,6 @@ V této verzi jsou nadále podporovány existující rozhraní REST API.
 Teď je k dispozici jediné úložiště modelů, které obsahuje veřejné publikované modely, a soukromé modely společnosti chráněné pomocí RBAC. Všechny modely mají jedinečný identifikátor a po vytvoření jsou neměnné.
 
 Existující úložiště modelu společnosti z předchozí verze nejsou v této verzi podporovaná. Ke správě starých modelů DTDL v1 můžete dál používat web [Azure Certified for IoT](https://preview.catalog.azureiotsolutions.com/products) . Tento web už ale nebudete moct používat k registraci, testování a certifikaci zařízení.
-
-Rozšíření Azure IoT pro rozhraní příkazového řádku Azure nepodporuje nové úložiště modelu. `az iot pnp`Příkazy fungují pouze v úložištích modelu z předchozí verze.
 
 ## <a name="azure-iot-central"></a>Azure IoT Central
 

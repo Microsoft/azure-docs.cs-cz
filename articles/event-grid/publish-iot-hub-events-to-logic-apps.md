@@ -7,12 +7,12 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.author: robinsh
-ms.openlocfilehash: b9c2fc636b08e872b9ea5288eb6205d905885f0e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 49c91a2b96ebf02ec87637c3176e9263302184bf
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120479"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460928"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Kurz: Posílání e-mailových oznámení o událostech služby Azure IoT Hub s využitím služeb Event Grid a Logic Apps
 
@@ -20,16 +20,16 @@ Azure Event Grid vám umožňuje reagovat na události ve službě IoT Hub aktiv
 
 Tento článek vás provede ukázkovou konfigurací, která používá IoT Hub a Event Grid. Na konci máte aplikaci logiky Azure nastavenou k odeslání e-mailu s oznámením pokaždé, když se do služby IoT Hub přidá zařízení. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Aktivní předplatné Azure. Pokud předplatné nemáte, můžete si [vytvořit bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Musíte mít aktivní předplatné Azure. Pokud předplatné nemáte, můžete si [vytvořit bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* E-mailový účet od jakéhokoli poskytovatele e-mailu, který podporuje Azure Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Tento e-mailový účet se používá k posílání oznámení o událostech. Úplný seznam podporovaných konektorů aplikace logiky najdete v tématu [Přehled konektorů](https://docs.microsoft.com/connectors/).
+* E-mailový účet od jakéhokoli poskytovatele e-mailu, který podporuje Azure Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Tento e-mailový účet se používá k posílání oznámení o událostech. Úplný seznam podporovaných konektorů aplikace logiky najdete v tématu [Přehled konektorů](/connectors/).
 
   > [!IMPORTANT]
-  > Než použijete Gmail, ověřte, jestli máte obchodní účet G-Suite (e-mailová adresa s vlastní doménou) nebo účet uživatele Gmail (e-mailová adresa s @gmail.com nebo @googlemail.com ). Konektor Gmail můžou používat jenom obchodní účty G-Suite s jinými konektory bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete použít konektor Gmail s pouze konkrétními službami, které jsou schváleny pro Google, nebo můžete [vytvořit klientskou aplikaci Google, která bude použita pro ověřování](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Než použijete Gmail, ověřte, jestli máte obchodní účet G-Suite (e-mailová adresa s vlastní doménou) nebo účet uživatele Gmail (e-mailová adresa s @gmail.com nebo @googlemail.com ). Konektor Gmail můžou používat jenom obchodní účty G-Suite s jinými konektory bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete použít konektor Gmail s pouze konkrétními službami, které jsou schváleny pro Google, nebo můžete [vytvořit klientskou aplikaci Google, která bude použita pro ověřování](/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
-* IoT Hub v Azure. Pokud jste si ještě žádné nevytvořili, přečtěte si téma [Začínáme se službou IoT Hub](../iot-hub/iot-hub-csharp-csharp-getstarted.md), kde najdete návod.
+* IoT Hub v Azure. Pokud jste si ještě žádné nevytvořili, přečtěte si téma [Začínáme se službou IoT Hub](../iot-hub/quickstart-send-telemetry-dotnet.md), kde najdete návod.
 
 ## <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
 
@@ -53,7 +53,7 @@ Nejdřív vytvořte aplikaci logiky a přidejte Trigger služby Event Grid, kter
 
 1. V Návrháři Logic Apps stránku dolů a zobrazte **šablony**. Vyberte **prázdná aplikace logiky** , abyste mohli vytvořit aplikaci logiky od začátku.
 
-### <a name="select-a-trigger"></a>Výběr triggeru
+### <a name="select-a-trigger"></a>Výběr aktivační události
 
 Trigger je konkrétní událost, která spustí aplikaci logiky. V tomto kurzu trigger, který spustí pracovní postup, přijímá žádost přes protokol HTTP.  
 
@@ -133,19 +133,19 @@ Akce jsou všechny kroky, které se provádějí potom, co trigger spustí praco
 
 1. Pokud budete vyzváni, přihlaste se k e-mailovému účtu. 
 
-1. Vytvořte šablonu e-mailu. 
+1. Vytvořte e-mailovou šablonu. 
 
-   * **Komu**: Zadejte e-mailovou adresu, která bude dostávat e-maily s oznámeními. V tomto kurzu použijte e-mailový účet, který máte dostupný pro testování. 
+   * **Komu**: Zadejte e-mailovou adresu pro příjem e-mailů s oznámením. Pro účely tohoto kurzu použijte e-mailový účet, ke kterému máte při testování přístup. 
 
    * **Předmět**: Vyplňte text předmětu. Po kliknutí na textové pole Předmět můžete vybrat dynamický obsah, který chcete zahrnout. Tento kurz například používá `IoT Hub alert: {event Type}` . Pokud nevidíte dynamický obsah, vyberte hypertextový odkaz **Přidat dynamický obsah** – tím ho přepínáte a vypnuli.
 
-   * **Tělo**: napište text pro váš e-mail. Vyberte vlastnosti JSON z nástroje pro výběr, aby se zahrnul dynamický obsah na základě dat událostí. Pokud nemůžete zobrazit dynamický obsah, v textovém poli text **zprávy** vyberte hypertextový odkaz **Přidat dynamický obsah** . Pokud se vám nezobrazují požadovaná pole, klikněte na tlačítko *Další* na obrazovce dynamický obsah a přidejte pole z předchozí akce.
+   * **Text**: Napište text e-mailu. V nástroji pro výběr vyberte vlastnosti JSON, které budou zahrnovat dynamický obsah na základě dat události. Pokud nemůžete zobrazit dynamický obsah, v textovém poli text **zprávy** vyberte hypertextový odkaz **Přidat dynamický obsah** . Pokud se vám nezobrazují požadovaná pole, klikněte na tlačítko *Další* na obrazovce dynamický obsah a přidejte pole z předchozí akce.
 
    Vaše e-mailová šablona může vypadat podobně jako tento příklad:
 
    ![Vyplnění informací e-mailu](./media/publish-iot-hub-events-to-logic-apps/email-content.png)
 
-1. Uložte svou aplikaci logiky. 
+1. Uložte aplikaci logiky. 
 
 ### <a name="copy-the-http-url"></a>Zkopírujte adresu URL protokolu HTTP
 
@@ -192,62 +192,62 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
 
          ![Výběr adresy URL koncového bodu](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
 
-         Až budete hotovi, podokno by mělo vypadat jako v následujícím příkladu: 
+         Po dokončení by mělo příslušné podokno vypadat podobně jako v následujícím příkladu: 
 
         ![Ukázkový formulář odběru události](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
-5. Tady byste si mohli uložit odběr události a přijímat oznámení pro každé zařízení, které se vytvoří ve vašem centru IoT. Pro tento kurz ale použijte volitelná pole k filtrování pro konkrétní zařízení. V horní části podokna vyberte **filtry** .
+5. Tady byste si mohli uložit odběr události a přijímat oznámení pro každé zařízení, které se vytvoří ve vašem centru IoT. V tomto kurzu ale využijeme volitelná pole, abychom vyfiltrovali konkrétní zařízení. V horní části podokna vyberte **Filtry**.
 
-6. Vyberte **Přidat nový filtr**. Vyplňte pole těmito hodnotami:
+6. Vyberte **Přidat nový filtr**. Vyplňte příslušná pole následujícími hodnotami:
 
-   * **Klíč**: vyberte `Subject` .
+   * **Klíč**: Vyberte `Subject`.
 
-   * **Operátor**: Select `String begins with` .
+   * **Operátor**: Vyberte `String begins with`.
 
    * **Hodnota**: zadejte `devices/Building1_` , chcete-li vyfiltrovat události zařízení v budově 1.
   
-   Přidejte další filtr s těmito hodnotami:
+   Přidejte další filtr společně s následujícími hodnotami:
 
-   * **Klíč**: vyberte `Subject` .
+   * **Klíč**: Vyberte `Subject`.
 
-   * **Operátor**: Select `String ends with` .
+   * **Operátor**: Vyberte `String ends with`.
 
-   * **Hodnota**: Pokud `_Temperature` chcete vyfiltrovat události zařízení související s teplotou, zadejte.
+   * **Hodnota:** Zadejte `_Temperature`, aby se filtrovaly události zařízení spojené s teplotou.
 
    Karta **filtry** vašeho odběru událostí by teď měla vypadat podobně jako na tomto obrázku:
 
    ![Přidávání filtrů do odběru událostí](./media/publish-iot-hub-events-to-logic-apps/event-subscription-filters.png)
 
-7. Výběrem možnosti **Vytvořit** uložte odběr události.
+7. Vyberte **Vytvořit**, aby se odběr událostí uložil.
 
 ## <a name="create-a-new-device"></a>Vytvoření nového zařízení
 
-Otestujte si aplikaci logiky vytvořením nového zařízení, aby se aktivoval e-mail s oznámením události. 
+Otestujte aplikaci logiky tak, že vytvoříte nové zařízení, aby se aktivoval e-mail s oznámením události. 
 
-1. V centru IoT vyberte **Zařízení IoT**. 
+1. Ve službě IoT Hub vyberte **zařízení IoT**. 
 
-2. Vyberte **Nový**.
+2. Vyberte **Nové**.
 
-3. Pro **ID zařízení** zadejte `Building1_Floor1_Room1_Light`.
+3. Jako **ID zařízení** zadejte `Building1_Floor1_Room1_Light`.
 
 4. Vyberte **Uložit**. 
 
-5. Můžete přidat více zařízení s různými ID a otestovat filtry odběrů událostí. Zkuste tyto příklady: 
+5. Můžete přidat více zařízení s různými ID a otestovat filtry odběrů událostí. Vyzkoušejte tyto příklady: 
 
    * Building1_Floor1_Room1_Light
    * Building1_Floor2_Room2_Temperature
    * Building2_Floor1_Room1_Temperature
    * Building2_Floor1_Room1_Light
 
-   Pokud jste přidali čtyři příklady, váš seznam zařízení IoT by měl vypadat jako na následujícím obrázku:
+   Pokud jste uvedené čtyři příklady přidali, měl by váš seznam zařízení IoT vypadat podobně jako na následujícím obrázku:
 
-   ![Seznam zařízení IoT Hub](./media/publish-iot-hub-events-to-logic-apps/iot-hub-device-list.png)
+   ![Seznam zařízení IoT Hubu](./media/publish-iot-hub-events-to-logic-apps/iot-hub-device-list.png)
 
 6. Po přidání několika zařízení do centra IoT se podívejte do e-mailu, která z nich aktivovala aplikaci logiky. 
 
 ## <a name="use-the-azure-cli"></a>Použití Azure CLI
 
-Místo použití webu Azure Portal můžete provést kroky služby IoT Hub pomocí rozhraní příkazového řádku Azure CLI. Podrobnosti najdete na stránkách Azure CLI pro [Vytvoření odběru událostí](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) a [Vytvoření zařízení IoT](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity).
+Místo použití webu Azure Portal můžete provést kroky služby IoT Hub pomocí rozhraní příkazového řádku Azure CLI. Podrobnosti najdete na stránkách Azure CLI pro [Vytvoření odběru událostí](/cli/azure/eventgrid/event-subscription) a [Vytvoření zařízení IoT](/cli/azure/ext/azure-iot/iot/hub/device-identity).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

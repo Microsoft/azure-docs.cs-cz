@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c3933e9165160c16a9e533bf8bf95f1533dff1cc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 006825b5040db482262f79497b9fd810ed3b790c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386686"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460622"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -20,11 +20,22 @@ Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organ
 Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, abyste si přečetli [Plánování nasazení souborů Azure](storage-files-planning.md) a [Plánování nasazení Azure File Sync](storage-sync-files-planning.md) .
 
 ## <a name="prerequisites"></a>Předpoklady
-* Sdílená složka Azure ve stejné oblasti, kterou chcete nasadit Azure File Sync. Další informace najdete v tématech:
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+1. Sdílená složka Azure ve stejné oblasti, kterou chcete nasadit Azure File Sync. Další informace najdete v tématech:
     - [Dostupnost oblasti](storage-sync-files-planning.md#azure-file-sync-region-availability) pro Azure File Sync.
     - [Vytvořte sdílenou složku](storage-how-to-create-file-share.md) , kde najdete podrobný popis postupu vytvoření sdílené složky.
-* Minimálně jedna podporovaná instance clusteru Windows serveru nebo Windows serveru pro synchronizaci s Azure File Sync. Další informace o podporovaných verzích systému Windows Server a doporučených systémových prostředcích najdete v tématu [požadavky na souborový server systému Windows](storage-sync-files-planning.md#windows-file-server-considerations).
-* Modul AZ PowerShell lze použít buď s PowerShellem 5,1, nebo s PowerShellem 6 +. Můžete použít modul AZ PowerShell pro Azure File Sync v jakémkoli podporovaném systému, včetně systémů, které nejsou systémy Windows, ale rutina registrace serveru musí být vždycky spuštěná na instanci Windows serveru, kterou zaregistrujete (dá se udělat přímo nebo prostřednictvím vzdálené komunikace PowerShellu). V systému Windows Server 2012 R2 můžete ověřit, zda používáte alespoň PowerShell 5,1. \* Podívejte se na hodnotu vlastnosti **PSVersion** objektu **$PSVersionTable** :
+1. Minimálně jedna podporovaná instance clusteru Windows serveru nebo Windows serveru pro synchronizaci s Azure File Sync. Další informace o podporovaných verzích systému Windows Server a doporučených systémových prostředcích najdete v tématu [požadavky na souborový server systému Windows](storage-sync-files-planning.md#windows-file-server-considerations).
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+1. Sdílená složka Azure ve stejné oblasti, kterou chcete nasadit Azure File Sync. Další informace najdete v tématech:
+    - [Dostupnost oblasti](storage-sync-files-planning.md#azure-file-sync-region-availability) pro Azure File Sync.
+    - [Vytvořte sdílenou složku](storage-how-to-create-file-share.md) , kde najdete podrobný popis postupu vytvoření sdílené složky.
+1. Minimálně jedna podporovaná instance clusteru Windows serveru nebo Windows serveru pro synchronizaci s Azure File Sync. Další informace o podporovaných verzích systému Windows Server a doporučených systémových prostředcích najdete v tématu [požadavky na souborový server systému Windows](storage-sync-files-planning.md#windows-file-server-considerations).
+
+1. Modul AZ PowerShell lze použít buď s PowerShellem 5,1, nebo s PowerShellem 6 +. Můžete použít modul AZ PowerShell pro Azure File Sync v jakémkoli podporovaném systému, včetně systémů, které nejsou systémy Windows, ale rutina registrace serveru musí být vždycky spuštěná na instanci Windows serveru, kterou zaregistrujete (dá se udělat přímo nebo prostřednictvím vzdálené komunikace PowerShellu). V systému Windows Server 2012 R2 můžete ověřit, zda používáte alespoň PowerShell 5,1. \* Podívejte se na hodnotu vlastnosti **PSVersion** objektu **$PSVersionTable** :
 
     ```powershell
     $PSVersionTable.PSVersion
@@ -37,7 +48,7 @@ Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, a
     > [!Important]  
     > Pokud plánujete místo registrace přímo z PowerShellu použít uživatelské rozhraní pro registraci serveru, musíte použít PowerShell 5,1.
 
-* Pokud jste se rozhodli použít PowerShell 5,1, ujistěte se, že je nainstalovaná aspoň .NET 4.7.2. Přečtěte si další informace o [.NET Framework verzích a závislostech](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) na vašem systému.
+1. Pokud jste se rozhodli použít PowerShell 5,1, ujistěte se, že je nainstalovaná aspoň .NET 4.7.2. Přečtěte si další informace o [.NET Framework verzích a závislostech](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) na vašem systému.
 
     > [!Important]  
     > Pokud instalujete .NET 4.7.2 + na jádro Windows serveru, musíte nainstalovat s `quiet` příznaky a, jinak se `norestart` instalace nezdaří. Například při instalaci rozhraní .NET 4,8 by příkaz vypadal takto:
@@ -45,10 +56,51 @@ Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, a
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-* Modul AZ PowerShell, který se dá nainstalovat, podle pokynů uvedených tady: [instalace a konfigurace Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+1. Modul AZ PowerShell, který se dá nainstalovat, podle pokynů uvedených tady: [instalace a konfigurace Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
      
     > [!Note]  
     > Modul AZ. StorageSync se teď nainstaluje automaticky při instalaci modulu AZ PowerShellu.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Sdílená složka Azure ve stejné oblasti, kterou chcete nasadit Azure File Sync. Další informace najdete v tématech:
+    - [Dostupnost oblasti](storage-sync-files-planning.md#azure-file-sync-region-availability) pro Azure File Sync.
+    - [Vytvořte sdílenou složku](storage-how-to-create-file-share.md) , kde najdete podrobný popis postupu vytvoření sdílené složky.
+1. Minimálně jedna podporovaná instance clusteru Windows serveru nebo Windows serveru pro synchronizaci s Azure File Sync. Další informace o podporovaných verzích systému Windows Server a doporučených systémových prostředcích najdete v tématu [požadavky na souborový server systému Windows](storage-sync-files-planning.md#windows-file-server-considerations).
+
+1. [Instalace Azure CLI](/cli/azure/install-azure-cli)
+
+   Pokud budete chtít, můžete k dokončení kroků v tomto kurzu použít taky Azure Cloud Shell.  Azure Cloud Shell je interaktivní prostředí prostředí, které používáte v prohlížeči.  Spusťte Cloud Shell pomocí jedné z následujících metod:
+
+   - Zvolte **Vyzkoušet** v pravém horním rohu bloku kódu. **Zkuste** otevřít Azure Cloud Shell, ale nezkopíruje automaticky kód do Cloud Shell.
+
+   - Otevřete Cloud Shell tak, že na[https://shell.azure.com](https://shell.azure.com)
+
+   - Vyberte tlačítko **Cloud Shell** na řádku nabídek v pravém horním rohu [Azure Portal](https://portal.azure.com)
+
+1. Přihlásit se.
+
+   Přihlaste se pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) , pokud používáte místní instalaci rozhraní příkazového řádku.
+
+   ```azurecli
+   az login
+   ```
+
+    Proces ověřování dokončíte podle kroků zobrazených v terminálu.
+
+1. Nainstalujte rozhraní [AZ. Sync](/cli/azure/ext/storagesync/storagesync) Azure CLI Extension.
+
+   ```azurecli
+   az extension add --name storagesync
+   ```
+
+   Po instalaci odkazu na rozšíření **storagesync** se zobrazí následující upozornění.
+
+   ```output
+   The installed extension 'storagesync' is experimental and not covered by customer support. Please use with discretion.
+   ```
+
+---
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Příprava Windows Serveru na použití se Synchronizací souborů Azure
 Pro každý server, který máte v úmyslu používat s Azure File Sync, včetně každého uzlu serveru v clusteru s podporou převzetí služeb při selhání, zakažte **konfiguraci rozšířeného zabezpečení aplikace Internet Explorer**. To se vyžaduje jenom při prvotní registraci serveru. Po zaregistrování serveru můžete tuto možnost znovu povolit.
@@ -87,6 +139,10 @@ if ($installType -ne "Server Core") {
     Stop-Process -Name iexplore -ErrorAction SilentlyContinue
 }
 ``` 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Postupujte podle pokynů pro Azure Portal nebo PowerShell.
 
 ---
 
@@ -155,6 +211,10 @@ $storageSyncName = "<my_storage_sync_service>"
 $storageSync = New-AzStorageSyncService -ResourceGroupName $resourceGroup -Name $storageSyncName -Location $region
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Postupujte podle pokynů pro Azure Portal nebo PowerShell.
+
 ---
 
 ## <a name="install-the-azure-file-sync-agent"></a>Instalace agenta Synchronizace souborů Azure
@@ -207,6 +267,9 @@ Start-Process -FilePath "StorageSyncAgent.msi" -ArgumentList "/quiet" -Wait
 # You may remove the temp folder containing the MSI and the EXE installer
 Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Postupujte podle pokynů pro Azure Portal nebo PowerShell.
 
 ---
 
@@ -242,6 +305,9 @@ Po výběru příslušných informací vyberte **Registrovat** a dokončete regi
 ```powershell
 $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Postupujte podle pokynů pro Azure Portal nebo PowerShell.
 
 ---
 
@@ -312,6 +378,27 @@ New-AzStorageSyncCloudEndpoint `
     -AzureFileShareName $fileShare.Name
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pomocí příkazu [AZ storagesync Sync-Group](/cli/azure/ext/storagesync/storagesync/sync-group#ext-storagesync-az-storagesync-sync-group-create) vytvořte novou skupinu synchronizace.  Chcete-li nastavit výchozí skupinu prostředků pro všechny příkazy rozhraní příkazového řádku, použijte příkaz [AZ Configure](/cli/azure/reference-index#az-configure).
+
+```azurecli
+az storagesync sync-group create --resource-group myResourceGroupName \
+                                 --name myNewSyncGroupName \
+                                 --storage-sync-service myStorageSyncServiceName \
+```
+
+Pomocí příkazu [AZ storagesync Sync-Group Cloud-Endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/cloud-endpoint#ext-storagesync-az-storagesync-sync-group-cloud-endpoint-create) vytvořte nový koncový bod cloudu.
+
+```azurecli
+az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup \
+                                                --storage-sync-service myStorageSyncServiceName \
+                                                --sync-group-name mySyncGroupName \
+                                                --name myNewCloudEndpointName \
+                                                --storage-account mystorageaccountname \
+                                                --azure-file-share-name azure-file-share-name
+```
+
 ---
 
 ## <a name="create-a-server-endpoint"></a>Vytvoření koncového bodu serveru
@@ -363,6 +450,34 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath 
 }
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pomocí příkazu [AZ storagesync Sync-Group Server-Endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/server-endpoint#ext-storagesync-az-storagesync-sync-group-server-endpoint-create) vytvořte nový koncový bod serveru.
+
+```azurecli
+# Create a new sync group server endpoint 
+az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
+                                                 --name myNewServerEndpointName
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0
+                                                 --server-local-path d:\myPath
+                                                 --storage-sync-service myStorageSyncServiceNAme
+                                                 --sync-group-name mySyncGroupName
+
+# Create a new sync group server endpoint with additional optional parameters
+az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
+                                                 --name myNewServerEndpointName \
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0 \
+                                                 --server-local-path d:\myPath \
+                                                 --storage-sync-service myStorageSyncServiceName \
+                                                 --sync-group-name mySyncGroupName \
+                                                 --cloud-tiering on \
+                                                 --offline-data-transfer on \
+                                                 --offline-data-transfer-share-name myfilesharename \
+                                                 --tier-files-older-than-days 15 \
+                                                 --volume-free-space-percent 85 \
+
 ```
 
 ---

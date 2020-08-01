@@ -3,12 +3,12 @@ title: Instalace hybridního cloudového rozšíření (HCX)
 description: Nastavení řešení HCX (VMware Hybrid Cloud Extension) pro privátní cloud Azure VMware Solution (AVS)
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: b897a44fb6811c4e3564c59a8ab2c064506f0a4f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea968cb21812f7273af342763d307c2faba1eea6
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539155"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475443"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Nainstalovat HCX pro řešení VMware pro Azure
 
@@ -19,7 +19,7 @@ HCX Advanced – výchozí instalace podporuje až tři servery vCenter. Pokud p
 
 [Před zahájením, před začátkem](#before-you-begin), [požadavky na verzi softwaru](#software-version-requirements)a [požadavky nejprve důkladně](#prerequisites) prostudujte. 
 
-Pak projdeme všemi potřebnými postupy:
+Pak vás provedeme všemi potřebnými postupy:
 
 > [!div class="checklist"]
 > * Nasazení místní HCXé VAJÍČKy
@@ -31,10 +31,10 @@ Po dokončení instalace můžete postupovat podle doporučených dalších krok
 
 ## <a name="before-you-begin"></a>Než začnete
     
-* Přečtěte si část [kurz](tutorial-network-checklist.md) Basic AVS software definované datacentrum (SDDC).
-* Přečtěte si [dokumentaci k VMware HCX](https://docs.vmware.com/en/VMware-HCX/index.html) , včetně uživatelské příručky HCX.
-* Kontrola dokumentů VMware [s migrací Virtual Machines pomocí VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
-* Volitelně si přečtěte téma [požadavky na nasazení VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)
+* Projděte si základní [řadu kurzů](tutorial-network-checklist.md)SDDC (software Standarded Software Defined Datacenter).
+* Projděte si [dokumentaci k VMware HCX](https://docs.vmware.com/en/VMware-HCX/index.html) , která zahrnuje uživatelskou příručku HCX.
+* Projděte si dokumentaci [k VMware s migrací Virtual Machines pomocí VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g).
+* Volitelně si přečtěte téma [požadavky na nasazení VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html).
 * Volitelně si můžete prohlédnout související materiály VMware na HCX, jako je například [série blogů](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) VMware VSPHERE v HCX. 
 * Seřazení služby AVS HCX Enterprise Activation prostřednictvím kanálů podpory služby AVS
 
@@ -47,12 +47,12 @@ Na součástech infrastruktury musí běžet požadovaná minimální verze.
 | --- | --- | --- |
 | vCenter Server   | 5.1<br/><br/>Pokud používáte 5,5 U1 nebo starší, použijte samostatné uživatelské rozhraní HCX pro operace HCX.  | 6,0 U2 a vyšší   |
 | ESXi   | 5.0    | ESXi 6,0 a vyšší   |
-| NSX    | Pro HCX síťové rozšíření logických přepínačů ve zdroji: NSXv 6.2 + nebo NSX-T 2.4 +   | NSXv 6.2 + nebo NSX-T 2.4 +<br/><br/>Pro směrování blízkosti HCX: NSXv 6.4 + (směrování blízkosti se nepodporuje s NSX-T). |
+| NSX    | Pro HCX síťové rozšíření logických přepínačů ve zdroji: NSXv 6.2 + nebo NSX-T 2.4 +   | NSXv 6.2 + nebo NSX-T 2.4 +<br/><br/>Pro směrování blízkosti HCX: NSXv 6.4 + (pro NSX-T není podporováno směrování blízkosti). |
 | vCloud ředitel   | Nepožadováno – bez interoperability s vCloud ředitelem ve zdrojové lokalitě | Při integraci cílového prostředí s vCloud Directorem je minimum 9.1.0.2.  |
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Globální dosah by měl být nakonfigurovaný mezi místními a SDDC ER okruhy.
+* ExpressRoute Global Reach by se měly konfigurovat mezi místními a SDDC ExpressRoute okruhy.
 
 * Všechny požadované porty by se měly otevírat mezi místními a SDDC (v [dokumentaci k VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html)).
 

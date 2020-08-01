@@ -3,12 +3,12 @@ title: Odeslání událostí služby Blob Storage do webového koncového bodu �
 description: Pomocí Azure Event Grid a šablony Azure Resource Manager vytvořte účet úložiště objektů BLOB a přihlaste se k odběru událostí. Odeslat události do Webhooku
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 603d6bf11f2ec6988d52e69817bddf2fd3ccf3b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e1d266f747671542059e0610cfcdd8cd12594e51
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103309"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460435"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Směrování událostí služby Blob Storage do webového koncového bodu pomocí šablony ARM
 
@@ -16,13 +16,13 @@ Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ### <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 
@@ -39,7 +39,7 @@ Před přihlášením k odběru událostí úložiště objektů blob vytvořím
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-event-grid-subscription-and-storage/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-event-grid-subscription-and-storage/).
 
 :::code language="json" source="~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json" range="1-91" highlight="40-85":::
 
@@ -86,7 +86,7 @@ Pokud už je nepotřebujete, [odstraňte skupinu prostředků](../azure-resource
 
 Další informace o šablonách Azure Resource Manager najdete v následujících článcích:
 
-* [Dokumentace k Azure Resource Manager](/azure/azure-resource-manager)
+* [Dokumentace k Azure Resource Manager](../azure-resource-manager/index.yml)
 * [Definování prostředků v šablonách Azure Resource Manager](/azure/templates/)
 * [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/)
 * [Šablony Azure Event Grid](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

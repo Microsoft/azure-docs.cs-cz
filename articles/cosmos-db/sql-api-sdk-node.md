@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 64bc8e76a4dcce963251219528bd93dd786f01cf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ddbbb9f39dd17daf5c500bf582c100b4e1754a15
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419610"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461353"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -410,17 +410,8 @@ Ne vždy nejčastěji viditelné změny, ale pomůžou náš tým dodat lepší 
 * GA SDK.
 
 ## <a name="release--retirement-dates"></a>Data vyřazení & vydání
-Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady SDK z důvodu hladkého přechodu na novější/podporovanou verzi.
 
-Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK.
-
-Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou odmítnuty.
-
-> [!WARNING]
-> Všechny verze **1. x** klientské sady SDK pro rozhraní SQL API budou vyřazeny 30. **srpna 2020**. To má vliv jenom na sadu SDK uzlu na straně klienta a nemá vliv na skripty na straně serveru (uložené procedury, triggery a UDF).
-> 
->
-<br/>
+Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady SDK z důvodu hladkého přechodu na novější/podporovanou verzi. Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK.
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
@@ -480,6 +471,6 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou 
 ## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) .
 

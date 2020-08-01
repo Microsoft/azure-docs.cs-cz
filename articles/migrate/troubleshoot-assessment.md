@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: b47c6c7d2137737021766f239fdb6ab1c64bd12f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f9598ad508e3760bf1bad04f8694838465e4961f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422857"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460979"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Řešení potíží s vyhodnocením a vizualizací závislostí
 
@@ -66,6 +66,9 @@ V případě virtuálních počítačů VMware a Hyper-V vyznačuje vyhodnocová
 
 Tuto mezeru můžete vyřešit povolením [zjišťování aplikací](./how-to-discover-applications.md) na virtuálních počítačích VMware. Posouzení serveru používá k dispozici operační systém zjištěný z virtuálního počítače pomocí zadaných přihlašovacích údajů hosta. Tato data operačního systému identifikují správné informace o operačním systému v případě virtuálních počítačů se systémem Windows i Linux.
 
+## <a name="operating-system-version-not-available"></a>Verze operačního systému není k dispozici.
+
+Pro fyzické servery by měly být k dispozici informace o dílčí verzi operačního systému. Pokud není k dispozici, obraťte se na podpora Microsoftu. U počítačů VMware používá posouzení serveru informace o operačním systému zadané pro virtuální počítač v vCenter Server. VCenter Server ale neposkytuje dílčí verzi pro operační systémy. Chcete-li zjistit dílčí verzi, je třeba nastavit funkci [zjišťování aplikací](./how-to-discover-applications.md). Pro virtuální počítače Hyper-V není zjišťování dílčí verze operačního systému podporované. 
 
 ## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Skladové jednotky Azure větší než místní ve službě Azure VM Assessment
 
@@ -189,7 +192,7 @@ Azure Migrate v současné době podporuje vytvoření pracovního prostoru OMS 
 
 Shromážděte protokoly síťového provozu následujícím způsobem:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Stisknutím klávesy F12 spusťte Vývojářské nástroje. V případě potřeby zrušte zaškrtnutí **políčka vymazat položky u nastavení navigace** .
 3. Vyberte kartu **síť** a zahajte zachytávání síťového provozu:
    - V části Chrome vyberte **zachovat protokol**. Záznam by se měl spustit automaticky. Červený kroužek indikuje, že se zaznamenává provoz. Pokud se červené kolečko nezobrazí, vyberte černý kroužek, který chcete spustit.

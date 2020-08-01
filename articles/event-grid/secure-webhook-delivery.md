@@ -3,16 +3,16 @@ title: Zabezpečené doručování webhooků pomocí Azure AD v Azure Event Grid
 description: Popisuje, jak doručovat události do koncových bodů HTTPS chráněných pomocí Azure Active Directory pomocí Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b0503d7da9e191e9d6764076392ead8faa5109a1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 90d06f203bc93177101a87a7a774d816b11b16f6
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119119"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460707"
 ---
-# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Publikovat události do Azure Active Directory chráněných koncových bodů
+# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Publikování událostí do chráněných koncových bodů Azure Active Directory
 
-Tento článek popisuje, jak využít Azure Active Directory k zabezpečení připojení mezi odběrem událostí a vaším koncovým bodem Webhooku. Přehled aplikací a instančních objektů služby Azure AD najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
+Tento článek popisuje, jak využít Azure Active Directory k zabezpečení připojení mezi odběrem událostí a vaším koncovým bodem Webhooku. Přehled aplikací a instančních objektů služby Azure AD najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](../active-directory/develop/v2-overview.md).
 
 Tento článek používá Azure Portal k ukázce, ale funkci lze také povolit pomocí rozhraní příkazového řádku, PowerShellu nebo sad SDK.
 
@@ -28,7 +28,7 @@ Začněte vytvořením aplikace Azure AD pro chráněný koncový bod. Viz tří
 K vytvoření role a instančního objektu ve vaší aplikaci Azure AD použijte níže uvedený skript prostředí PowerShell. Budete potřebovat ID tenanta a ID objektu z vaší aplikace Azure AD:
 
    > [!NOTE]
-   > Abyste mohli tento skript spustit, musíte být členem [role Správce aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) .
+   > Abyste mohli tento skript spustit, musíte být členem [role Správce aplikací Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) .
     
 1. Upravte $myTenantId skriptu PowerShellu tak, aby používal vaše ID tenanta Azure AD.
 1. Upravte $myAzureADApplicationObjectId skriptu PowerShellu tak, aby používal ID objektu vaší aplikace Azure AD.

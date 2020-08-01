@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: e8efb43ac0711bac1324ac2c9e3b59373ce59419
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 850879675d4554329f24c86f2ac28660b303084c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84635117"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475562"
 ---
 # <a name="what-are-mapping-data-flows"></a>Co jsou toky dat mapování?
 
@@ -93,41 +93,9 @@ První karta v podokně Konfigurace každé transformace obsahuje nastavení spe
 
 #### <a name="optimize"></a>Optimalizace
 
-Karta **optimalizace** obsahuje nastavení pro konfiguraci schémat dělení.
+Karta **optimalizace** obsahuje nastavení pro konfiguraci schémat dělení. Další informace o tom, jak optimalizovat toky dat, najdete v [Průvodci výkonem mapování výkonu toku dat](concepts-data-flow-performance.md).
 
-![Optimalizace](media/data-flow/optimize1.png "Optimalizace")
-
-Ve výchozím nastavení se **používá aktuální dělení**, které dává pokyn Azure Data Factory, aby používalo schéma dělení, které je nativní pro toky dat běžící na Sparku. Ve většině scénářů doporučujeme toto nastavení.
-
-V některých případech můžete chtít upravit dělení. Pokud například chcete transformovat transformace do jednoho souboru v Lake, vyberte v transformaci jímky **jeden oddíl** .
-
-Dalším případem, kdy byste mohli chtít řídit schémata dělení, je optimalizace výkonu. Úpravy dělení poskytují kontrolu nad distribucí vašich dat mezi výpočetními uzly a optimalizací dat, které mohou mít jak pozitivní, tak negativní dopad na celkový výkon toku dat. Další informace najdete v tématu [Průvodce výkonem toku dat](concepts-data-flow-performance.md).
-
-Chcete-li změnit dělení na jakékoli transformaci, vyberte kartu **optimalizace** a vyberte přepínač **nastavit dělení** . Zobrazí se řada možností pro dělení. Nejlepší způsob dělení se liší v závislosti na vašich datových svazcích, kandidátních klíčích, hodnotách null a mohutnosti. 
-
-Osvědčeným postupem je začít s výchozím dělením a pak vyzkoušet různé možnosti dělení. Můžete testovat pomocí ladicích běhů kanálu a zobrazit dobu provádění a využití oddílů v každém seskupení transformace v zobrazení monitorování. Další informace najdete v tématu [monitorování toků dat](concepts-data-flow-monitoring.md).
-
-K dispozici jsou následující možnosti dělení.
-
-##### <a name="round-robin"></a>Kruhové dotazování 
-
-Kruhové dotazování je jednoduchý oddíl, který automaticky distribuuje data rovnoměrně mezi oddíly. Pomocí kruhového dotazování nemusíte mít vhodné klíčové kandidáty k implementaci ucelené strategie vytváření oddílů. Můžete nastavit počet fyzických oddílů.
-
-##### <a name="hash"></a>Hodnota hash
-
-Azure Data Factory vytvoří hodnotu hash sloupců pro vytvoření stejnorodých oddílů tak, aby řádky s podobnými hodnotami byly ve stejném oddílu. Když použijete možnost hash, otestujete možnou hodnotu zešikmení oddílu. Můžete nastavit počet fyzických oddílů.
-
-##### <a name="dynamic-range"></a>Dynamický rozsah
-
-Dynamický rozsah používá dynamické rozsahy Spark na základě sloupců nebo výrazů, které zadáte. Můžete nastavit počet fyzických oddílů. 
-
-##### <a name="fixed-range"></a>Pevný rozsah
-
-Sestavte výraz, který poskytuje pevný rozsah pro hodnoty v rámci sloupců s dělenými daty. Abyste se vyhnuli zkosení oddílu, měli byste před použitím této možnosti dobře pochopit svá data. Hodnoty, které zadáte pro výraz, se používají jako součást funkce oddílu. Můžete nastavit počet fyzických oddílů.
-
-##### <a name="key"></a>Klíč
-
-Pokud máte dobré znalosti o mohutnosti vašich dat, může být vytváření oddílů dobrým zvykem. Klíčové vytváření oddílů vytváří oddíly pro každou jedinečnou hodnotu ve sloupci. Počet oddílů nejde nastavit, protože číslo je založené na jedinečných hodnotách v datech.
+![Optimalizace](media/data-flow/optimize.png "Optimalizace")
 
 #### <a name="inspect"></a>Prohlížen
 

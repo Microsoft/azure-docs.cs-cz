@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: Vytvoření aplikace pro iOS'
-description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci pro iOS pomocí prostorových ukotvení.
+description: Naučte se vytvářet aplikace pro iOS pomocí prostorových kotev Azure programově buď v SWIFT, nebo v objektivu – C.
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,12 +9,12 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.custom: has-adal-ref
-ms.openlocfilehash: 542b5168bb70d876d91f8a747a230f2b754568e9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 99f3b5bc763c6ffb43fd143cf394be9157b2c83f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873110"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460265"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Rychlý Start: Vytvoření aplikace pro iOS pomocí prostorových kotev Azure v SWIFT nebo objektivní-C
 
@@ -29,7 +29,7 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
@@ -146,7 +146,7 @@ brew link --overwrite cocoapods
 
 Pokud nasadíte aplikaci pro iOS v iOS 10.3.1 z osobního zřizovacího profilu/vývojářského účtu, může se zobrazit tato chyba: `Library not loaded: @rpath/ADAL...` . 
 
-Problém vyřešíte takto:
+Řešení tohoto problému:
 
 - Použijte zřizovací profil, který není osobním týmovým profilem (placený vývojářský účet).
 - Nasaďte aplikaci do zařízení se systémem iOS se systémem iOS 13,3 nebo starším nebo na jednu verzi systému iOS 13,4 beta nebo release.

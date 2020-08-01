@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 0f19d63bd5f22dc7bc60ceb76ef5bdbeff717dbb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4ee970f7e4a1228d40a284372300ed9e95c00b7e
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325725"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460384"
 ---
 # <a name="payout-summary-overview"></a>Souhrnný přehled plateb
 
@@ -23,7 +23,7 @@ Pokud prodáváte nabídky v Azure Marketplace, zobrazí se také informace o ú
 > [!NOTE]
 > Aby bylo možné výsledek vyhodnotit, vaše výtěžek musí dosáhnout [prahové hodnoty pro platbu](./payment-thresholds-methods-timeframes.md) $50. Podrobnosti o prahové hodnotě platby najdete v [Microsoft Azure Marketplace smlouvě vydavatele](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt).
 
-Všechny sestavy a přehledy pro možnost publikování v režimu Transact jsou k dispozici v části analýza v partnerském centru, ke kterým se dostanete pomocí této ikony v pravém horním rohu portálu:
+Chcete-li zobrazit podrobnosti výběru, přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home) a v pravém horním rohu obrazovky vyberte ikonu výběr:
 
 ![Ukazuje ikonu Výběr v pravém horním rohu portálu partnerského centra.](./media/payout-overview.png)
 

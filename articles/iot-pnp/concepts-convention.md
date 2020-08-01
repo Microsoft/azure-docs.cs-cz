@@ -7,14 +7,14 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b06edb83e85ef6d56cf8bf8f91551fe99535eba1
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 126673391b49f884a51521d462060c425a314667
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352182"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475664"
 ---
-# <a name="iot-plug-and-play-conventions"></a>Konvence technologie Plug and Play IoT
+# <a name="iot-plug-and-play-conventions"></a>Konvence IoT Plug and Play
 
 Zařízení IoT technologie Plug and Play ve verzi Preview by měla při výměně zpráv se službou IoT Hub dodržovat sadu konvencí. Zařízení IoT technologie Plug and Play ve verzi Preview používají ke komunikaci s IoT Hub protokol MQTT.
 
@@ -25,11 +25,11 @@ Popíšete telemetrii, vlastnosti a příkazy, které zařízení technologie Pl
 
 Další informace naleznete v tématu [komponenty IoT technologie Plug and Play v modelech](concepts-components.md).
 
-## <a name="model-discovery"></a>Zjišťování modelů
+## <a name="identify-the-model"></a>Identifikace modelu
 
 Aby bylo možné ohlásit model, který implementuje, zařízení IoT technologie Plug and Play zahrnuje ID modelu v paketu připojení MQTT přidáním `model-id` do `USERNAME` pole.
 
-Chcete-li zjistit model, který zařízení implementuje, může služba získat ID modelu z:
+Pro identifikaci modelu, který zařízení implementuje, může služba získat ID modelu z:
 
 - Pole vlákna zařízení `modelId` .
 - Pole digitálního vlákna `$metadata.$model` .

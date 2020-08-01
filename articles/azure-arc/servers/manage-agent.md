@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/14/2020
+ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 122f88e8bf14d3e3b082930716cffc3621afd336
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 80c133eceb6af419d0eb5aa35ff784a0f9321d37
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067696"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474950"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Správa a údržba agenta připojeného počítače
 
@@ -181,6 +181,9 @@ Pokud se chcete odpojit od přihlašovacích údajů se zvýšenými oprávněn�
 `azcmagent disconnect --tenant-id <tenantID>`
 
 ### <a name="reconnect"></a>Znovu připojit
+
+> [!WARNING]
+> `reconnect`Příkaz je zastaralý a neměl by se používat. Příkaz se odebere v budoucí verzi agenta a stávající agenti se nebude moct dokončit žádost o opětovné připojení. Místo toho [odpojte](#disconnect) počítač a znovu ho [Připojte](#connect) .
 
 Tento parametr znovu připojí již registrovaný nebo připojený počítač ke službě Azure ARC pro servery (Preview). To může být nutné v případě, že je počítač vypnutý, minimálně 45 dní, aby jeho platnost jeho certifikátu vypršela. Tento parametr používá možnosti ověřování, které jsou k dispozici pro načtení nových přihlašovacích údajů odpovídajících prostředku Azure Resource Manager, který představuje tento počítač.
 

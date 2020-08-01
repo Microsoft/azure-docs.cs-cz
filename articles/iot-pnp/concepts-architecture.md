@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f2d9407d9c7172839027e2650486695244f67889
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f656de0bb2e5244e137ae21a6d7af88f3430b12c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352153"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475681"
 ---
-# <a name="iot-plug-and-play-preview-architecture"></a>Architektura IoT technologie Plug and Play Preview
+# <a name="iot-plug-and-play-preview-architecture"></a>Architektura IoT Plug and Play Preview
 
 IoT technologie Plug and Play Preview umožňuje tvůrcům řešení integrovat inteligentní zařízení s jejich řešeními bez jakékoli ruční konfigurace. V jádru IoT technologie Plug and Play je _model_ zařízení, který popisuje možnosti zařízení pro aplikaci s podporou technologie Plug and Play IoT. Tento model je strukturovaný jako sada rozhraní definujících:
 
@@ -30,7 +30,7 @@ Následující diagram znázorňuje klíčové prvky řešení IoT technologie P
 
 :::image type="content" source="media/concepts-architecture/pnp-architecture.png" alt-text="Architektura IoT technologie Plug and Play":::
 
-## <a name="model-repository"></a>Úložiště modelu
+## <a name="model-repository"></a>Úložiště modelů
 
 [Úložiště modelu](./concepts-model-repository.md) je úložiště pro definice modelů a rozhraní. Modely a rozhraní definujete pomocí [jazyka DTDL (Digital Definition Language)](https://github.com/Azure/opendigitaltwins-dtdl).
 
@@ -79,5 +79,5 @@ Back-end řešení může použít informace z definic rozhraní pro:
 Teď, když máte přehled o architektuře řešení IoT technologie Plug and Play, další kroky jsou další informace o:
 
 - [Úložiště modelu](./concepts-model-repository.md)
-- [Proces zjišťování modelu](./concepts-model-discovery.md)
+- [Integrace digitálního zdvojeného modelu](./concepts-model-discovery.md)
 - [Vývoj pro IoT technologie Plug and Play](./concepts-developer-guide.md)

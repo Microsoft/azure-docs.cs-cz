@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 23e98c40420a5f1ed9b048d5530eacfe5eedfb32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74887e6ee4656091aa647b481bc406dcc23b9c12
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413973"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460078"
 ---
 # <a name="cloud-tiering-overview"></a>Přehled vrstvení cloudu
 Vrstvení cloudu je volitelná funkce Azure File Sync, ve které jsou často používané soubory ukládány do mezipaměti místně na serveru, zatímco všechny ostatní soubory jsou vrstveny do souborů Azure na základě nastavení zásad. Když je soubor vrstvený, Azure File Sync filtr systému souborů (StorageSync.sys) nahradí soubor místně s ukazatelem nebo bodem rozboru. Bod rozboru představuje adresu URL souboru ve službě soubory Azure. Vrstvený soubor má atribut offline i atribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastavený v systému souborů NTFS, aby aplikace třetích stran mohli bezpečně identifikovat vrstvené soubory.
@@ -40,16 +40,19 @@ Vrstvení cloudu nezávisí na funkci systému souborů NTFS ke sledování čas
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Jaká je minimální velikost souboru pro soubor do vrstvy?
 
-U agentů verze 9 a novějších je minimální velikost souboru na vrstvu založená na velikosti clusteru systému souborů. Následující tabulka ilustruje minimální velikosti souborů, které je možné rozvrstvit, na základě velikosti clusteru svazku:
+U agentů verze 9 a novějších je minimální velikost souboru na vrstvu založená na velikosti clusteru systému souborů. Minimální velikost souboru způsobilá pro vytváření vrstev cloudu se počítá podle dvojnásobku velikosti clusteru a minimálně 8 KB. Následující tabulka ilustruje minimální velikosti souborů, které je možné rozvrstvit, na základě velikosti clusteru svazku:
 
 |Velikost clusteru svazků (bajty) |Soubory této velikosti nebo větší lze převrstveny  |
 |----------------------------|---------|
-|4 KB (4096)                 | 8 kB    |
+|4 KB nebo menší (4096)      | 8 kB    |
 |8 KB (8192)                 | 16 kB   |
 |16 KB (16384)               | 32 KB   |
-|32 KB (32768) a větší    | 64 kB   |
+|32 KB (32768)               | 64 kB   |
+|64 KB (65536)               | 128 kB  |
 
-Všechny systémy souborů používané systémem Windows organizují pevný disk na základě velikosti clusteru (označované také jako velikost alokační jednotky). Velikost clusteru představuje nejmenší množství místa na disku, které lze použít k uložení souboru. Když velikosti souborů nejdou na sudý násobek velikosti clusteru, je potřeba k uchování souboru použít další místo (až do další násobku velikosti clusteru).
+V systémech Windows Server 2019 a Azure File Sync Agent verze 12 a novějších jsou podporovány také velikosti clusterů až 2 MB a vrstvení na tyto větší velikosti clusterů funguje stejným způsobem. Starší verze operačního systému nebo agenta podporují velikost clusteru až do 64 KB.
+
+Všechny systémy souborů používané systémem Windows organizují pevný disk na základě velikosti clusteru (označované také jako velikost alokační jednotky). Velikost clusteru představuje nejmenší množství místa na disku, které lze použít k uložení souboru. Když velikosti souborů nejdou na sudý násobek velikosti clusteru, je potřeba použít další místo pro uložení souboru do další násobky velikosti clusteru.
 
 Azure File Sync se podporuje na svazcích NTFS s Windows Serverem 2012 R2 a novějším. Následující tabulka popisuje výchozí velikosti clusterů při vytváření nového svazku NTFS. 
 
@@ -60,9 +63,11 @@ Azure File Sync se podporuje na svazcích NTFS s Windows Serverem 2012 R2 a nov�
 |32 TB – 64 TB   | 16 kB         |
 |64 TB – 128 TB  | 32 KB         |
 |128TB – 256 TB | 64 kB         |
-|> 256 TB       | Nepodporuje se |
+|> 256 TB       | Nepodporováno |
 
-Při vytváření svazku je možné ručně naformátovat svazek s jinou velikostí clusteru (alokační jednotka). Pokud svazek vychází ze starší verze Windows, můžou se výchozí velikosti clusterů lišit také. [Tento článek obsahuje další podrobnosti o výchozích velikostech clusteru.](https://support.microsoft.com/help/140365/default-cluster-size-for-ntfs-fat-and-exfat)
+Při vytváření svazku je možné ručně naformátovat svazek s jinou velikostí clusteru. Pokud svazek vychází ze starší verze Windows, můžou se výchozí velikosti clusterů lišit také. [Tento článek obsahuje další podrobnosti o výchozích velikostech clusteru.](https://support.microsoft.com/help/140365/default-cluster-size-for-ntfs-fat-and-exfat) I v případě, že zvolíte velikost clusteru menší než 4 KB, limit 8 KB jako nejmenší velikost souboru, který může být vrstvený, bude stále platit. (I v případě, že by technicky 2x velikost clusteru byla rovna méně než 8 KB)
+
+Důvod absolutního minima se nachází v způsobu, jakým systém souborů NTFS ukládá extrémně malé soubory – 1 KB až 4 soubory velikosti KB. V závislosti na dalších parametrech svazku je možné, že malé soubory nejsou uloženy v clusteru na disku vůbec. Je možné, že budete chtít ukládat takové soubory přímo do hlavní tabulky souborů svazku nebo do záznamu MFT. Bod rozboru vrstvy cloudu se vždycky ukládá na disk a zabírá přesně jeden cluster. Vrstvení takových malých souborů může skončit bez úspory místa. V extrémních případech může dokonce dokončit větší místo s povoleným vytvářením vrstev cloudu. Aby se předešlo ochraně, nejmenší velikost souboru, na který se vrstva cloudu bude nacházet, je 8 KB až o 4 KB nebo menší velikost clusteru.
 
 <a id="afs-volume-free-space"></a>
 ### <a name="how-does-the-volume-free-space-tiering-policy-work"></a>Jak fungují zásady vrstvení volného místa svazku?
@@ -95,7 +100,7 @@ Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
 
 Mějte na paměti, že zásady volného místa na svazku vždy mají přednost a když na svazku není dost volného místa, abyste zachovali tolik dní, kolik se bude považovat za soubor, který je popsaný v zásadách data, Azure File Sync bude pokračovat ve vrstvení souborů coldest, dokud nedosáhne procento volného místa na svazku.
 
-Řekněme například, že máte zásady vrstvení založené na datu 60 dnů a zásady volného místa svazku o 20%. Pokud po použití zásad data je na svazku méně než 20% volného místa, zásada pro volné místo svazku se zahájí a přepíše zásadu data. Výsledkem bude, že se zaměří víc souborů, takže objem dat uchovávaných na serveru se může snížit z 60 dnů od data do 45 dnů. Naopak tato zásada vynutí vrstvení souborů, které spadají mimo váš časový rozsah, a to i v případě, že jste nedosáhli prahové hodnoty pro volné místo, takže soubor, který je 61 dnů staré, bude vrstvený i v případě, že je svazek prázdný.
+Řekněme například, že máte zásady vrstvení založené na datu 60 dnů a zásady volného místa svazku o 20%. Pokud se po použití zásady data na tomto svazku nachází méně než 20% volného místa, zásada pro volné místo svazku se zahájí a přepíše zásadu data. Výsledkem bude, že se zaměří víc souborů, takže objem dat uchovávaných na serveru se může snížit z 60 dnů od data do 45 dnů. Naopak tato zásada vynutí vrstvení souborů, které spadají mimo váš časový rozsah, a to i v případě, že jste nedosáhli prahové hodnoty pro volné místo, takže soubor, který je 61 dnů staré, bude vrstvený i v případě, že je svazek prázdný.
 
 <a id="volume-free-space-guidelines"></a>
 ### <a name="how-do-i-determine-the-appropriate-amount-of-volume-free-space"></a>Jak určím vhodnou velikost volného místa svazku?

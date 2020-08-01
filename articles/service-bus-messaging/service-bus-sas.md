@@ -2,13 +2,13 @@
 title: Řízení přístupu Azure Service Bus pomocí sdílených přístupových podpisů
 description: Přehled řízení přístupu Service Bus pomocí podpisů sdíleného přístupu najdete v podrobnostech o autorizaci SAS pomocí Azure Service Bus.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: e0d8abcd5693ac20c79a1357eb066e3ae8dcdfe8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/30/2020
+ms.openlocfilehash: b75f1ec3a1aac36124287523140c24d468329aaa
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340965"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460690"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu Service Bus pomocí sdílených přístupových podpisů
 
@@ -89,6 +89,9 @@ Identifikátor URI prostředku je úplný identifikátor URI Service Bus prostř
 Autorizační pravidlo sdíleného přístupu použité pro podepisování musí být nakonfigurováno pro entitu určenou tímto identifikátorem URI nebo jedním z jeho hierarchických nadřazených prvků. Například `http://contoso.servicebus.windows.net/contosoTopics/T1` nebo `http://contoso.servicebus.windows.net` v předchozím příkladu.
 
 Token SAS je platný pro všechny prostředky s předponou `<resourceURI>` použitou v `signature-string` .
+
+> [!NOTE]
+> Příklady generování tokenu SAS pomocí různých programovacích jazyků najdete v tématu [vygenerování tokenu SAS](/rest/api/eventhub/generate-sas-token). 
 
 ## <a name="regenerating-keys"></a>Opětovné generování klíčů
 
@@ -273,7 +276,7 @@ Následující tabulka uvádí přístupová práva požadovaná pro různé ope
 | Získání stavu přidruženého k relaci fronty zpráv |Naslouchat |Libovolná platná adresa fronty |
 | Nastavení stavu přidruženého k relaci fronty zpráv |Naslouchat |Libovolná platná adresa fronty |
 | Naplánování zprávy pro pozdější doručení; například [ScheduleMessageAsync ()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Naslouchat | Libovolná platná adresa fronty
-| **Výklad** | | |
+| **Téma** | | |
 | Vytvoření tématu |Spravovat |Libovolná adresa oboru názvů |
 | Odstranění tématu |Spravovat |Jakákoli platná adresa tématu |
 | Vyčíslení výčtu témat |Spravovat |/Topics $Resources |

@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: a594b9636dcb4e584fd10a17bca6c48c2d1fb960
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2488bbded1b4d55f3c4cf21c63e9fcb90e9bfb4f
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514080"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475052"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -132,28 +132,96 @@ Chcete-li tyto oddíly převést do režimu online, spusťte příkazy v násled
 
 #### <a name="for-lvm-partitions"></a>Pro LVM oddíly
 
-Seznam názvů skupin svazků v rámci fyzického svazku:
+Po spuštění skriptu jsou oddíly LVM připojeny ve fyzických nebo/diskch fyzických svazcích určených ve výstupu skriptu. Proces je
+
+1. Získat jedinečný seznam názvů skupin svazků z fyzických svazků nebo disků
+2. Pak vytvořte seznam logických svazků v těchto skupinách svazků.
+3. Pak připojte logické svazky k požadované cestě.
+
+##### <a name="listing-volume-group-names-from-physical-volumes"></a>Výpis názvů skupin svazků z fyzických svazků
+
+Seznam názvů skupin svazků:
+
+```bash
+pvs -o +vguuid
+```
+
+Tento příkaz zobrazí seznam všech fyzických svazků (včetně těch, které jsou k dispozici před spuštěním skriptu), jejich odpovídající názvy skupin svazků a jedinečné identifikátory uživatelů (UUID) skupiny svazků. Příklad výstupu příkazu je uveden níže.
+
+```bash
+PV         VG        Fmt  Attr PSize   PFree    VG UUID
+
+  /dev/sda4  rootvg    lvm2 a--  138.71g  113.71g EtBn0y-RlXA-pK8g-de2S-mq9K-9syx-B29OL6
+
+  /dev/sdc   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sde   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sdf   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
+
+  /dev/sdd   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
+```
+
+1. sloupec (PV) zobrazuje fyzický svazek. následující sloupce zobrazují relevantní název skupiny svazků, formát, atributy, velikost, volné místo a jedinečné ID skupiny svazků. Výstup příkazu zobrazuje všechny fyzické svazky. Podívejte se na výstup skriptu a Identifikujte svazky související se zálohováním. Ve výše uvedeném příkladu by byl výstup skriptu zobrazený jako/dev/SDF a/dev/SDD.. A takže skupina svazků datavg_db patří do skriptu a skupina svazků Appvg_new patří do tohoto počítače. Posledním účelem je zajistit, aby měl jedinečný název skupiny svazků 1 jedinečné ID.
+
+###### <a name="duplicate-volume-groups"></a>Duplicitní skupiny svazků
+
+K dispozici jsou situace, kdy názvy skupin svazků můžou po spuštění skriptu obsahovat 2 identifikátory UUID. Znamená to, že názvy skupin svazků v počítači, ve kterém se skript spustí, a v zálohovaném virtuálním počítači jsou stejné. Pak musíme přejmenovat skupiny svazků zálohovaných virtuálních počítačů. Podívejte se na následující příklad.
+
+```bash
+PV         VG        Fmt  Attr PSize   PFree    VG UUID
+
+  /dev/sda4  rootvg    lvm2 a--  138.71g  113.71g EtBn0y-RlXA-pK8g-de2S-mq9K-9syx-B29OL6
+
+  /dev/sdc   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sde   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sdg   APPvg_new lvm2 a--  <75.00g  508.00m lCAisz-wTeJ-eqdj-S4HY-108f-b8Xh-607IuC
+
+  /dev/sdh   APPvg_new lvm2 a--  <75.00g  508.00m lCAisz-wTeJ-eqdj-S4HY-108f-b8Xh-607IuC
+
+  /dev/sdm2  rootvg    lvm2 a--  194.57g  127.57g efohjX-KUGB-ETaH-4JKB-MieG-EGOc-XcfLCt
+```
+
+Výstup skriptu by zobrazil/dev/SDG,/dev/SDH,/dev/sdm2 jako připojený. Proto jsou odpovídající názvy VG Appvg_new a rootvg. Ale v seznamu VG počítače se taky nacházejí stejné názvy. Můžeme ověřit, že 1 VG název má 2 UUID.
+
+Teď je potřeba přejmenovat VG názvy pro svazky založené na skriptech, tj.,/dev/SDG,/dev/SDH,/dev/sdm2.. Pokud chcete přejmenovat skupinu svazků, použijte následující příkaz.
+
+```bash
+vgimportclone -n rootvg_new /dev/sdm2
+vgimportclone -n APPVg_2 /dev/sdg /dev/sdh
+```
+
+Teď máme všechna VG jména s jedinečnými identifikátory.
+
+###### <a name="active-volume-groups"></a>Aktivní skupiny svazků
+
+Ujistěte se, že jsou aktivní skupiny svazků odpovídající svazkům skriptu. Následující příkaz slouží k zobrazení aktivních skupin svazků. Ověřte, zda se v tomto seznamu vyskytují skupiny svazků související s tímto skriptem.
+
+```bash
+vgdisplay -a
+```  
+
+Jinak aktivujte skupinu svazků pomocí příkazu níže.
 
 ```bash
 #!/bin/bash
-pvs <volume name as shown above in the script output>
+vgchange –a y  <volume-group-name>
 ```
 
-Výpis všech logických svazků, názvů a jejich cest ve skupině svazků:
+##### <a name="listing-logical-volumes-within-volume-groups"></a>Výpis logických svazků v rámci skupin svazků
+
+Jakmile získáme jedinečný a aktivní seznam VGs týkajících se skriptu, logické svazky přítomné v těchto skupinách svazků můžou být uvedené pomocí příkazu níže.
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs commands results>
+lvdisplay <volume-group-name>
 ```
 
-Tento ```lvdisplay``` příkaz také ukazuje, zda jsou skupiny svazků aktivní. Pokud je skupina svazků označená jako neaktivní, je nutné ji znovu aktivovat, aby se mohla připojit. Pokud je skupina Volume-Group zobrazená jako neaktivní, aktivujte ji pomocí následujícího příkazu.
+Tento příkaz zobrazí cestu k jednotlivým logickým svazkům jako "LV Path".
 
-```bash
-#!/bin/bash
-vgchange –a y  <volume-group-name from the pvs commands results>
-```
-
-Až bude název skupiny svazků aktivní, spusťte ```lvdisplay``` příkaz jednou pro zobrazení všech relevantních atributů.
+##### <a name="mounting-logical-volumes"></a>Připojování logických svazků
 
 Připojení logických svazků k vybrané cestě:
 
@@ -161,6 +229,9 @@ Připojení logických svazků k vybrané cestě:
 #!/bin/bash
 mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
+
+> [!WARNING]
+> Nepoužívejte příkaz "Mount-a". Tento příkaz připojí všechna zařízení popsaná v '/etc/fstab '. To může znamenat, že se může připojit k duplicitním zařízením. Data je možné přesměrovat na zařízení vytvořená skriptem, která data neuchovávají, a proto by mohlo dojít ke ztrátě dat.
 
 #### <a name="for-raid-arrays"></a>Pro pole RAID
 

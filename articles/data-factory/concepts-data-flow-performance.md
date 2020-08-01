@@ -6,171 +6,277 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 07/06/2020
-ms.openlocfilehash: 9f420b37bd44a46d4149e89cf5876d8e8b712581
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/27/2020
+ms.openlocfilehash: 55483b93b770687703b381366d48edbc7d48f26e
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114376"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475299"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Mapování toků dat v Azure Data Factory poskytuje rozhraní bez kódu pro návrh, nasazení a orchestraci transformací dat ve velkém měřítku. Pokud nejste obeznámeni s toky mapování dat, přečtěte si téma [Přehled toku dat mapování](concepts-data-flow-overview.md).
+Mapování toků dat v Azure Data Factory poskytuje rozhraní bez kódu pro návrh a spouštění transformací dat ve velkém měřítku. Pokud nejste obeznámeni s toky mapování dat, přečtěte si téma [Přehled toku dat mapování](concepts-data-flow-overview.md). V tomto článku se seznámíte s různými způsoby, jak vyladit a optimalizovat toky dat, aby splňovaly srovnávací testy výkonu.
 
-Při navrhování a testování toků dat z uživatelského prostředí ADF nezapomeňte přepnout na režim ladění, abyste mohli provádět toky dat v reálném čase, aniž byste čekali na zahřívání clusteru. Další informace naleznete v tématu [režim ladění](concepts-data-flow-debug-mode.md).
+Podívejte se na toto video, kde se dozvíte, že ukázka časování transformuje data pomocí toků dat.
 
-Toto video ukazuje několik ukázkových časování transformují data pomocí toků dat:
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rNxM]
+
+## <a name="testing-data-flow-logic"></a>Testování logiky toku dat
+
+Při navrhování a testování toků dat z uživatelského rozhraní ADF vám režim ladění umožňuje interaktivní testování proti aktivnímu clusteru Spark. Díky tomu můžete zobrazovat náhled dat a spouštět toky dat bez čekání na zahřívání clusteru. Další informace naleznete v tématu [režim ladění](concepts-data-flow-debug-mode.md).
 
 ## <a name="monitoring-data-flow-performance"></a>Monitorování výkonu toku dat
 
-Při návrhu toků mapování dat můžete každou transformaci otestovat tak, že na panelu Konfigurace kliknete na kartu náhled dat. Po ověření logiky otestujte tok dat od začátku po aktivitu v kanálu. Přidejte aktivitu spustit tok dat a použijte tlačítko ladit k otestování výkonu toku dat. Pokud chcete otevřít plán spuštění a profil výkonu vašeho toku dat, klikněte na ikonu brýlí v části akce na kartě výstup vašeho kanálu.
+Po ověření logiky transformace pomocí režimu ladění spusťte celý tok dat jako aktivitu v kanálu. Toky dat jsou v kanálu v provozu pomocí [aktivity spustit tok dat](control-flow-execute-data-flow-activity.md). Aktivita toku dat má jedinečné prostředí monitorování v porovnání s jinými Azure Data Factory aktivitami, které zobrazují podrobný plán spuštění a profil výkonu logiky transformace. Chcete-li zobrazit podrobné informace o sledování toku dat, klikněte na ikonu brýlí v aktivitě spustit výstup kanálu. Další informace najdete v tématu [monitorování toků dat mapování](concepts-data-flow-monitoring.md).
 
-![Sledování toku dat](media/data-flow/mon002.png "Monitor toku dat 2")
+![Sledování toku dat](media/data-flow/monitoring-details.png "Monitor toku dat 2")
 
- Tyto informace můžete použít k odhadu výkonu toku dat proti zdrojům dat s různou velikostí. Další informace najdete v tématu [monitorování toků dat mapování](concepts-data-flow-monitoring.md).
+Při monitorování výkonu toku dat existují čtyři možná kritická místa pro hledání:
 
-![Sledování toku dat](media/data-flow/mon003.png "Monitor toku dat 3")
+* Čas spuštění clusteru
+* Čtení ze zdroje
+* Čas transformace
+* Zápis do jímky 
 
- V případě spuštění ladění kanálu se v případě teplého clusteru vyžaduje asi jedna minuta času nastavení clusteru v celkových výpočtech výkonu. Pokud inicializujete výchozí Azure Integration Runtime, může čas aktivace trvat přibližně 4 minuty.
+![Sledování toku dat](media/data-flow/monitoring-performance.png "Monitor toku dat 3")
 
-## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Zvýšení výpočetní velikosti v Azure Integration Runtime
+Doba spuštění clusteru je doba potřebná k vystavení clusteru Apache Spark. Tato hodnota je umístěna v pravém horním rohu obrazovky monitorování. Toky dat běží na modelu za běhu, kde každá úloha používá izolovaný cluster. Tento čas zahájení obvykle trvá 3-5 minut. U sekvenčních úloh to můžete zkrátit tím, že zapnete hodnotu TTL (Time to Live). Další informace najdete v tématu [optimalizace Azure Integration runtime](#ir).
 
-Integration Runtime s více jádry zvyšuje počet uzlů ve výpočetním prostředí Spark a poskytuje větší výpočetní výkon pro čtení, zápis a transformaci dat. Datové proudy ADF využívají Spark pro výpočetní modul. Prostředí Spark funguje velmi dobře pro paměťově optimalizované prostředky.
+Toky dat využívají Optimalizátor Sparku, který mění pořadí a spouští vaši obchodní logiku ve fázích, aby je bylo možné co nejrychleji provést. Pro každou jímku, do které tok dat zapisuje, výstup monitorování vypíše dobu trvání jednotlivých fází transformace spolu s časem potřebným k zápisu dat do jímky. Čas, který je největší, je pravděpodobný kritickým bodem toku dat. Pokud fáze transformace, která využívá největší, obsahuje zdroj, můžete chtít zobrazit další informace o optimalizaci doby čtení. Pokud transformace trvá dlouhou dobu, může být nutné změnit rozdělení nebo zvětšit velikost prostředí Integration runtime. Pokud je doba zpracování jímky velká, možná budete potřebovat škálovat databázi nebo ověřit, že nechcete mít výstup do jednoho souboru.
 
-Doporučujeme použít **paměť optimalizovanou** pro produkci většiny úloh. Do paměti budete moct ukládat víc dat a minimalizovat chyby z důvodu nedostatku paměti. Optimalizovaná paměť má vyšší cenový bod na jádro než výpočetní výkon, ale bude nejspíš mít za následek rychlejší přenosové rychlosti a více úspěšných kanálů. Pokud dojde k chybám při provádění toků dat z paměti, přepněte na konfiguraci optimalizované pro paměť Azure IR.
+Po zjištění kritického bodu toku dat můžete zvýšit výkon pomocí níže uvedených strategií optimalizace.
 
-**Optimalizované pro výpočty** mohou postačovat pro ladění a náhled dat s omezeným počtem řádků dat. Optimalizované výpočty se nejspíš nebudou provádět i v produkčních úlohách.
+## <a name="optimize-tab"></a>Karta Optimalizace
 
-![Nový IR](media/data-flow/ir-new.png "Nový IR")
+Karta **optimalizace** obsahuje nastavení pro konfiguraci schématu dělení clusteru Spark. Tato karta existuje v každé transformaci toku dat a určuje, zda chcete znovu rozdělit data **po** dokončení transformace. Úpravy dělení poskytují kontrolu nad distribucí vašich dat mezi výpočetními uzly a optimalizací dat, které mohou mít jak pozitivní, tak negativní dopad na celkový výkon toku dat.
+
+![Optimalizace](media/data-flow/optimize.png "Optimalizace")
+
+Ve výchozím nastavení je vybrána *možnost použít aktuální rozdělení do oddílů* , která určuje, Azure Data Factory zachovat aktuální výstupní oddíl transformace. Při změně rozdělení dat do oddílů se ve většině scénářů doporučuje *použít aktuální dělení* . Scénáře, ve kterých můžete chtít znovu rozdělit data, patří po agregacích a spojeních, které významně zkosí vaše data nebo využívají zdrojové oddíly databáze SQL.
+
+Chcete-li změnit dělení na jakékoli transformaci, vyberte kartu **optimalizace** a vyberte přepínač **nastavit dělení** . Zobrazí se řada možností pro dělení. Nejlepší způsob dělení se liší v závislosti na vašich datových svazcích, kandidátních klíčích, hodnotách null a mohutnosti. 
+
+> [!IMPORTANT]
+> Jeden oddíl kombinuje všechna distribuovaná data do jednoho oddílu. Jedná se o velmi pomalou operaci, která významně ovlivňuje veškerou transformaci a zápisy po celém proudu. Azure Data Factory důrazně doporučuje použití této možnosti, pokud není k dispozici explicitní obchodní důvod.
+
+Následující možnosti dělení jsou k dispozici v každé transformaci:
+
+### <a name="round-robin"></a>Kruhové dotazování 
+
+Kruhové dotazování distribuuje data rovnoměrně napříč oddíly. Pomocí kruhového dotazování nemusíte mít vhodné klíčové kandidáty k implementaci ucelené strategie vytváření oddílů. Můžete nastavit počet fyzických oddílů.
+
+### <a name="hash"></a>Hodnoty hash
+
+Azure Data Factory vytvoří hodnotu hash sloupců pro vytvoření stejnorodých oddílů tak, aby řádky s podobnými hodnotami byly ve stejném oddílu. Když použijete možnost hash, otestujete možnou hodnotu zešikmení oddílu. Můžete nastavit počet fyzických oddílů.
+
+### <a name="dynamic-range"></a>Dynamický rozsah
+
+Dynamický rozsah používá dynamické rozsahy Spark na základě sloupců nebo výrazů, které zadáte. Můžete nastavit počet fyzických oddílů. 
+
+### <a name="fixed-range"></a>Pevný rozsah
+
+Sestavte výraz, který poskytuje pevný rozsah pro hodnoty v rámci sloupců s dělenými daty. Abyste se vyhnuli zkosení oddílu, měli byste před použitím této možnosti dobře pochopit svá data. Hodnoty, které zadáte pro výraz, se používají jako součást funkce oddílu. Můžete nastavit počet fyzických oddílů.
+
+### <a name="key"></a>Klíč
+
+Pokud máte dobré znalosti o mohutnosti vašich dat, může být vytváření oddílů dobrým zvykem. Klíčové vytváření oddílů vytváří oddíly pro každou jedinečnou hodnotu ve sloupci. Počet oddílů nejde nastavit, protože číslo je založené na jedinečných hodnotách v datech.
+
+> [!TIP]
+> Ruční nastavení schématu dělení přesadí data a může kompenzovat výhody Optimalizátoru Sparku. Osvědčeným postupem je nenastavit oddíly ručně, pokud nepotřebujete.
+
+## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a>Optimalizace Azure Integration Runtime
+
+Toky dat běží na clusterech Spark, které se provedou v době běhu. V modulu Integration runtime (IR) aktivity se definuje konfigurace pro použitý cluster. Při definování prostředí Integration runtime jsou k dispozici tři požadavky na výkon: typ clusteru, velikost clusteru a doba do provozu.
 
 Další informace o tom, jak vytvořit Integration Runtime, najdete v tématu [Integration runtime v Azure Data Factory](concepts-integration-runtime.md).
 
-### <a name="increase-the-size-of-your-debug-cluster"></a>Zvětšit velikost clusteru ladění
+### <a name="cluster-type"></a>Typ clusteru
 
-Při zapnutí ladění se ve výchozím nastavení použije výchozí prostředí Azure Integration runtime, které se vytvoří automaticky pro každou datovou továrnu. Tato výchozí Azure IR je nastavená na osm jader, čtyři pro uzel ovladače a čtyři pro pracovní uzel pomocí obecných výpočetních vlastností. Při testování s většími objemy dat můžete zvětšit velikost clusteru ladění tím, že vytvoříte Azure IR s větší konfigurací a zvolíte tuto novou Azure IR při přepnutí na ladění. To vám podá pokyn ADF k použití tohoto Azure IR pro náhled dat a ladění kanálu pomocí toků dat.
+Existují tři dostupné možnosti pro typ přístupnosti clusteru Spark: obecné účely, optimalizace paměti a optimalizované pro výpočty.
 
-### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>Snižte čas spuštění výpočetního clusteru s hodnotou TTL.
+Clustery pro **obecné účely** jsou výchozími možnostmi a budou ideální pro většinu úloh toku dat. Ty mají za následek nejlepší rovnováhu mezi výkonem a náklady.
 
-V Azure IR v části vlastnosti toku dat je vlastnost, která vám umožní vytvořit fond výpočetních prostředků clusteru pro vaši továrnu. S tímto fondem můžete postupně odesílat aktivity toku dat ke spuštění. Po navázání fondu bude každá další úloha trvat 1-2 minut, než se v clusteru Spark na vyžádání spustí vaše úloha. Počáteční nastavení fondu zdrojů bude trvat přibližně 4 minuty. Zadejte dobu, po kterou chcete spravovat fond zdrojů v nastavení TTL (Time to Live).
+Pokud má tok dat mnoho spojení a hledání, můžete chtít použít **paměťově optimalizovaný** cluster. Paměťově optimalizované clustery můžou ukládat víc dat do paměti a minimalizovat všechny chyby z důvodu nedostatku paměti, které se vám můžou stát. Optimalizovaná paměť má nejvyšší cenový bod na jádro, ale také obvykle vede k většímu počtu úspěšných kanálů. Pokud dojde k chybám při spouštění toků dat, přepněte na paměťově optimalizované Azure IR konfiguraci. 
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Optimalizace pro Azure SQL Database a Azure SQL Data Warehouse synapse
+**Optimalizované výpočty** nejsou ideální pro pracovní postupy ETL a nedoporučují Azure Data Factory tým pro většinu produkčních úloh. Pro jednodušší, nepaměťově náročné transformace dat, jako je filtrování dat nebo přidávání odvozených sloupců, je možné výpočetní clustery, které jsou optimalizované pro výpočty, používat s levnější cenou za jádro.
 
-### <a name="partitioning-on-source"></a>Vytváření oddílů na zdroji
+### <a name="cluster-size"></a>Velikost clusteru
 
-1. Přejít na kartu **optimalizace** a vybrat **nastavit dělení**
-1. Vyberte **zdroj**.
-1. V části **počet oddílů**nastavte maximální počet připojení k databázi SQL Azure. Můžete vyzkoušet vyšší nastavení, abyste získali paralelní připojení k vaší databázi. V některých případech ale může dojít k rychlejšímu výkonu s omezeným počtem připojení.
-1. Vyberte, jestli se má rozdělit na oddíly podle konkrétního sloupce tabulky nebo dotazu.
-1. Pokud jste vybrali **sloupec**, vyberte sloupec partition (oddíl).
-1. Pokud jste vybrali **dotaz**, zadejte dotaz, který odpovídá schématu dělení vaší databázové tabulky. Tento dotaz umožňuje zdrojovému databázovému stroji využít odstraňování oddílů. Zdrojové tabulky databáze není nutné rozdělit na oddíly. Pokud váš zdroj ještě není rozdělený na oddíly, ADF bude v prostředí Spark Transforming dál používat dělení dat, a to na základě klíče, který jste vybrali ve zdrojové transformaci.
+Toky dat distribuují zpracování dat do různých uzlů v clusteru Spark, aby se operace prováděly paralelně. Cluster Spark s více jádry zvyšuje počet uzlů ve výpočetním prostředí. Další uzly zvyšují výpočetní výkon toku dat. Zvýšení velikosti clusteru je často snadný způsob, jak zkrátit dobu zpracování.
 
-![Zdrojová část](media/data-flow/sourcepart3.png "Zdrojová část")
+Výchozí velikost clusteru je čtyři uzly ovladačů a čtyři pracovní uzly.  Při zpracování více dat se doporučuje větší clustery. Níže jsou uvedeny možné možnosti změny velikosti:
+
+| Jádra pracovního procesu | Jádra ovladače | Celkem jader | Poznámky |
+| ------------ | ------------ | ----------- | ----- |
+| 4 | 4 | 8 | Není k dispozici pro optimalizaci Compute. |
+| 8 | 8 | 16 | |
+| 16 | 16 | 32 | |
+| 32 | 16 | 48 | |
+| 64 | 16 | 80 | |
+| 128 | 16 | 144 | |
+| 256 | 16 | 272 | |
+
+Ceny datových toků se účtují za Vcore, což znamená, že do této funkce patří i velikost clusteru i doba provádění. Při horizontálním navýšení kapacity se zvýší náklady na cluster za minutu, ale celková doba se sníží.
+
+> [!TIP]
+> Existuje strop, jak velká velikost clusteru ovlivňuje výkon toku dat. V závislosti na velikosti dat je bod, ve kterém zvýšení velikosti clusteru přestane zvyšovat výkon. Například pokud máte více uzlů než oddíly dat, přidání dalších uzlů nebude užitečné. Osvědčeným postupem je začít malým a horizontálním škálováním, aby se splnily požadavky na výkon. 
+
+### <a name="time-to-live"></a>Hodnota TTL (Time to Live)
+
+Ve výchozím nastavení každá aktivita toku dat natočí nový cluster na základě konfigurace IR. Doba spuštění clusteru trvá několik minut a zpracování dat nepůjde spustit, dokud nebude dokončeno. Pokud vaše kanály obsahují více **sekvenčních** toků dat, můžete povolit hodnotu TTL (Time to Live). Zadání hodnoty TTL (Time to Live) udržuje cluster aktivní po určitou dobu po dokončení jeho spuštění. Pokud se nová úloha začne používat v čase TTL během času TTL, bude znovu použit stávající cluster a čas spuštění bude v sekundách, nikoli v minutách. Po dokončení druhé úlohy zůstane cluster opět aktivní pro dobu TTL.
+
+V jednom clusteru může běžet jenom jedna úloha. Pokud je k dispozici cluster, ale dva toky dat se spustí, použije se živý cluster jenom s jedním. Druhá úloha si vytočí svůj vlastní izolovaný cluster.
+
+Pokud se většina toků dat spouští paralelně, nedoporučuje se povolit hodnotu TTL. 
 
 > [!NOTE]
-> Dobrá příručka, která vám pomůže vybrat počet oddílů pro zdroj, je založený na počtu jader, které jste nastavili pro svůj Azure Integration Runtime a vynásobit ho číslem pěti. Pokud například transformuje řadu souborů ve složkách adls a budete používat 32 Azure IR Core, počet oddílů, které by se měly cílit, je 32 x 5 = 160 oddílů.
+> Doba do Live není při použití prostředí Integration runtime pro automatické řešení dostupná.
 
-### <a name="source-batch-size-input-and-isolation-level"></a>Velikost, vstup a úroveň izolace zdrojové dávky
+## <a name="optimizing-sources"></a>Optimalizace zdrojů
 
-V části **Možnosti zdroje** ve zdrojové transformaci můžou mít následující nastavení vliv na výkon:
+U každého zdroje s výjimkou Azure SQL Database se doporučuje jako vybraná hodnota **použít aktuální rozdělení na oddíly** . Při čtení ze všech ostatních zdrojových systémů data toků automaticky rozdělí data rovnoměrně na základě velikosti dat. Vytvoří se nový oddíl pro přibližně každých 128 MB dat. Při zvýšení velikosti dat se zvýší počet oddílů.
 
-* Velikost dávky nastaví ADF k ukládání dat do sad v paměti Spark místo řádek po řádku. Velikost dávky je volitelné nastavení a na výpočetních uzlech, pokud nemají správnou velikost, můžou být vycházející prostředky. Pokud tato vlastnost není nastavená, budou se používat výchozí hodnoty Batch pro dávkování Spark.
-* Nastavení dotazu vám umožní filtrovat řádky ve zdroji předtím, než dorazí do toku dat ke zpracování. Díky tomu může být počáteční získání dat rychlejší. Pokud použijete dotaz, můžete přidat volitelné pomocný parametr dotazu pro databázi SQL Azure, například nepotvrzené čtení.
-* Čtení nepotvrzeného vám poskytne rychlejší výsledky dotazu na transformaci zdroje.
+Jakékoli vlastní dělení se provede *po* čtení Sparku v datech a negativně ovlivní výkon toku dat. Vzhledem k tomu, že jsou data rovnoměrně rozdělená na čtení, to se nedoporučuje. 
 
-![Zdroj](media/data-flow/source4.png "Zdroj")
+> [!NOTE]
+> Rychlost čtení může být omezená propustností vašeho zdrojového systému.
 
-### <a name="sink-batch-size"></a>Velikost dávky jímky
+### <a name="azure-sql-database-sources"></a>Azure SQL Database zdroje
 
-Abyste se vyhnuli zpracování datových toků po řádcích, nastavte **velikost dávky** na kartě nastavení pro Azure SQL DB a jímky Azure SQL DW. Pokud je nastavena velikost dávky, vytvoří ADF v dávkách zápisy do dávek v závislosti na zadané velikosti. Pokud tato vlastnost není nastavená, budou se používat výchozí hodnoty Batch pro dávkování Spark.
+Azure SQL Database má jedinečnou možnost dělení s názvem source partitioning. Povolením vytváření oddílů můžete zlepšit dobu čtení ze služby Azure SQL DB povolením paralelních připojení na zdrojovém systému. Zadejte počet oddílů a způsob dělení dat. Použijte sloupec oddílu s vysokou mohutnosti. Můžete také zadat dotaz, který odpovídá schématu dělení zdrojové tabulky.
 
-![Jímka](media/data-flow/sink4.png "Jímka")
+> [!TIP]
+> V případě zdrojového dělení jsou vstupně-výstupní operace SQL Server kritickým bodem. Přidání příliš velkého počtu oddílů může nasycení zdrojové databáze. Při použití této možnosti je ideální obecně čtyři nebo pět oddílů.
 
-### <a name="partitioning-on-sink"></a>Dělení na jímku
+![Vytváření oddílů zdrojového kódu](media/data-flow/sourcepart3.png "Vytváření oddílů zdrojového kódu")
 
-I když vaše data v cílových tabulkách nejsou rozdělená do oddílů, doporučuje se, aby data byla rozdělená do oddílů v transformaci jímky. Data dělená do oddílů často načítají mnohem rychlejší načítání přes vynucení všech připojení, aby používaly jeden uzel nebo oddíl. Přejít na kartu optimalizace jímky a výběrem možnosti *kruhového dotazování* na oddíly vyberte ideální počet oddílů, které chcete zapisovat do jímky.
+#### <a name="isolation-level"></a>Úroveň izolace
 
-### <a name="disable-indexes-on-write"></a>Zakázat indexy při zápisu
+Úroveň izolace čtení ve zdrojovém systému Azure SQL má vliv na výkon. Pokud zvolíte číst nepotvrzené, získáte nejrychlejší výkon a znemožníte zámkům v databázi. Další informace o úrovních izolace SQL najdete v tématu [Principy úrovní izolace](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15).
 
-V kanálu přidejte [aktivitu uložené procedury](transform-data-using-stored-procedure.md) do aktivity toku dat, která zakáže indexy na cílových tabulkách napsaných z jímky. Po aktivitě toku dat přidejte další aktivitu uložené procedury, která povoluje tyto indexy. Nebo využijte skripty předběžného zpracování a následného zpracování v jímky databáze.
+#### <a name="read-using-query"></a>Číst pomocí dotazu
 
-### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>Zvětšete velikost vaší databáze SQL Azure a DW.
+Můžete číst z Azure SQL Database pomocí tabulky nebo dotazu SQL. Pokud spouštíte dotaz SQL, musí být dotaz dokončen, aby bylo možné spustit transformaci. Dotazy SQL mohou být užitečné při přebírání operací, které mohou být spuštěny rychleji, a snížit množství dat čtených z SQL Server, jako jsou příkazy SELECT, WHERE a JOIN. Při vkládání operací přijdete o schopnost sledovat, jestli jsou transformace a jejich výkon, než data přijde do toku dat.
+
+### <a name="azure-synapse-analytics-sources"></a>Zdroje analýzy Azure synapse
+
+Pokud používáte Azure synapse Analytics, nastavení s názvem **Povolit přípravu** existuje v možnostech zdroje. Díky tomu může ADF číst z synapse s využitím [základny](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15), která významně zlepšuje výkon při čtení. Při povolení podkladu je potřeba zadat Blob Storage služby Azure nebo Azure Data Lake Storage Gen2 pracovní umístění v nastavení aktivity toku dat.
+
+![Zapnout pracovní režim](media/data-flow/enable-staging.png "Zapnout pracovní režim")
+
+### <a name="file-based-sources"></a>Souborové zdroje
+
+Zatímco datové toky podporují různé typy souborů, Azure Data Factory doporučuje použít formát Spark-Native Parquet pro optimální dobu čtení a zápisu.
+
+Pokud používáte stejný tok dat v sadě souborů, doporučujeme číst ze složky, pomocí zástupných cest nebo číst ze seznamu souborů. Spuštění jedné aktivity toku dat může zpracovat všechny vaše soubory ve službě Batch. Další informace o tom, jak tato nastavení nastavit, najdete v dokumentaci konektoru, jako je například [Azure Blob Storage](connector-azure-blob-storage.md#source-transformation).
+
+Pokud je to možné, vyhněte se použití aktivity for-each ke spouštění datových toků v sadě souborů. Tím dojde k tomu, že každá iterace pro každý z nich provede vlastní cluster Spark, který není často nutný a může být nákladný. 
+
+## <a name="optimizing-sinks"></a>Optimalizace jímky
+
+Při zapisování toků dat do jímky dojde k jakémukoli vlastnímu dělení hned před zápisem. Podobně jako u zdroje se ve většině případů doporučuje používat jako možnost vybraný oddíl **aktuální dělení na oddíly** . Dělená data budou zapisovat významně rychlejší než nedělená data, i když vaše cíle není rozdělené do oddílů. Níže jsou uvedeny jednotlivé předpoklady pro různé typy jímky. 
+
+### <a name="azure-sql-database-sinks"></a>Azure SQL Database jímky
+
+Při použití Azure SQL Database by výchozí dělení mělo fungovat ve většině případů. Je pravděpodobné, že vaše jímka může mít příliš mnoho oddílů pro zpracování vaší databáze SQL. Pokud k tomu dojde, snižte počet oddílů vydaných jímkou SQL Database.
+
+#### <a name="disabling-indexes-using-a-sql-script"></a>Zakázání indexů pomocí skriptu SQL
+
+Zakázání indexů před zatížením databáze SQL může významně zlepšit výkon zápisu do tabulky. Před zápisem do jímky SQL spusťte následující příkaz.
+
+`ALTER INDEX ALL ON dbo.[Table Name] DISABLE`
+
+Po dokončení zápisu znovu sestavte indexy pomocí následujícího příkazu:
+
+`ALTER INDEX ALL ON dbo.[Table Name] REBUILD`
+
+Je možné je nativně provádět pomocí skriptů před a po SQL v rámci služby Azure SQL DB nebo synapse jímky v mapování datových toků.
+
+![Zakázat indexy](media/data-flow/disable-indexes-sql.png "Zakázat indexy")
+
+> [!WARNING]
+> Při zakázání indexů je tok dat efektivně přebírat řízení databáze a dotazy jsou v tuto chvíli pravděpodobně neúspěšné. V důsledku toho se řada úloh ETL aktivuje v noci uprostřed noční, aby se předešlo tomuto konfliktu. Další informace získáte v informacích o [omezeních zakazování indexů](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15) .
+
+#### <a name="scaling-up-your-database"></a>Škálování databáze
 
 Naplánujte změnu velikosti zdroje a jímky Azure SQL DB a DW před spuštěním kanálu, abyste zvýšili propustnost a minimalizovali omezení Azure, jakmile dosáhnete limitů DTU. Po dokončení spuštění kanálu změňte velikost databází zpět na normální rychlost běhu.
 
-* Zdrojová tabulka SQL DB s 887k řádky a 74 sloupci do tabulky SQL DB s jednou odvozenou transformací sloupce trvá přibližně 3 minuty od začátku do konce pomocí paměťově 80 optimalizované pro ladění Azure Core.
+### <a name="azure-synapse-analytics-sinks"></a>Jímky Azure synapse Analytics
 
-### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Jenom Azure synapse SQL DW] Použití přípravy k hromadnému načtení dat prostřednictvím základu
+Když zapisujete do služby Azure synapse Analytics, ujistěte se, že **možnost Povolit přípravu** je nastavená na hodnotu true. Díky tomu může ADF zapisovat pomocí [základu](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) , který efektivně načte data do hromadného zatížení. Když použijete základnu, budete muset odkazovat na Azure Data Lake Storage Gen2 nebo účet Azure Blob Storage pro přípravu dat.
 
-Pokud chcete do datové sady DW vyhnout vkládání řádků, zaškrtněte v nastavení jímky **Povolit přípravu** , aby ADF mohl použít [základ](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide). Základem může být, že ADF načte data hromadně.
-* Při provádění aktivity toku dat z kanálu musíte vybrat objekt BLOB nebo ADLS Gen2 umístění úložiště pro přípravu dat během hromadného načítání.
+Kromě základu se stejné osvědčené postupy vztahují i na Azure synapse Analytics jako Azure SQL Database.
 
-* Zdroj souborů 421Mb s 74 sloupci do tabulky synapse a jedna odvozená transformace sloupce trvá přibližně 4 minuty od začátku do konce pomocí paměťově 80 optimalizované pro ladění Azure Core.
+### <a name="file-based-sinks"></a>Jímky založené na souborech 
 
-## <a name="optimizing-for-files"></a>Optimalizace pro soubory
+Zatímco datové toky podporují různé typy souborů, Azure Data Factory doporučuje použít formát Spark-Native Parquet pro optimální dobu čtení a zápisu.
 
-V každé transformaci můžete nastavit schéma dělení, které má Datová továrna použít na kartě optimalizace. Je vhodné nejdřív otestovat jímky založené na souborech, které zachovají výchozí dělení a optimalizace. V případě, že se v jímky pro cíl souboru přesunují oddíly na "aktuální dělení", umožní vám Spark nastavit příslušné výchozí oddíly pro vaše úlohy. Výchozí dělení používá 128 MB na oddíl.
+Pokud jsou data rovnoměrně distribuována, použijte pro zápis souborů možnost **aktuální rozdělení** do oddílů.
 
-* U menších souborů se můžete setkat s tím, že zvolíte méně oddílů, někdy je lepší a rychlejší než při vytváření oddílů malých souborů v Sparku.
-* Pokud nemáte dostatek informací o zdrojových datech, vyberte možnost *kruhové dotazování* na oddíly a nastavte počet oddílů.
-* Pokud vaše data obsahují sloupce, které mohou být vhodnými klíči hash, vyberte možnost *dělení hodnoty hash*.
+#### <a name="file-name-options"></a>Možnosti názvu souboru
 
-* Zdroj souborů s jímkou souborů 421Mb souborů s 74 sloupci a jedna odvozená transformace sloupce trvá přibližně 2 minuty od začátku do konce pomocí paměťově 80 optimalizované pro ladění Azure Core.
+Při psaní souborů můžete zvolit možnosti pojmenování, které mají vliv na výkon.
 
-Při ladění v náhledu dat a při ladění kanálu se limity a velikosti vzorkování pro zdrojové datové sady na základě souborů vztahují pouze na počet vrácených řádků, nikoli na počet čtených řádků. To může mít vliv na výkon při spuštění ladění a může způsobit selhání toku.
-* Clustery ladění jsou ve výchozím nastavení malými clustery s jedním uzlem a doporučujeme pro ladění použít ukázkové malé soubory. Přejděte na nastavení ladění a najeďte na malou podmnožinu dat pomocí dočasného souboru.
+![Možnosti jímky](media/data-flow/file-sink-settings.png "možnosti jímky")
 
-    ![Nastavení ladění](media/data-flow/debugsettings3.png "Nastavení ladění")
+Výběr **výchozí** možnosti bude zapisovat nejrychlejší. Každý oddíl se bude rovnat souboru s výchozím názvem Spark. To je užitečné, pokud právě čtete ze složky dat.
 
-### <a name="file-naming-options"></a>Možnosti pojmenovávání souborů
+Nastavením **vzoru** pro pojmenování dojde k přejmenování každého souboru oddílu na více uživatelsky přívětivého názvu. Tato operace proběhne po zápisu a je mírně pomalejší než volba výchozí. Jednotlivé oddíly umožňují jednotlivé oddíly pojmenovat ručně.
 
-Nejběžnější způsob, jak zapsat transformovaná data v části mapování toků dat pro zápis do objektů BLOB nebo ADLS úložiště souborů V jímky musíte vybrat datovou sadu, která odkazuje na kontejner nebo složku, nikoli na pojmenovaný soubor. Protože mapování toku dat používá Spark ke spuštění, váš výstup je rozdělen do více souborů na základě schématu vytváření oddílů.
+Pokud sloupec odpovídá způsobu, jakým chcete data výstupovat, můžete vybrat **jako data ve sloupci**. Tím dojde k přemístění dat a může to mít vliv na výkon, pokud sloupce nejsou rovnoměrně distribuovány.
 
-Běžným schématem vytváření oddílů je výběr _výstupu do jediného souboru_, který sloučí všechny soubory výstupních součástí do jednoho souboru v jímky. Tato operace vyžaduje, aby se výstup snížil na jeden oddíl na jednom uzlu clusteru. Pokud kombinujete mnoho velkých zdrojových souborů do jednoho výstupního souboru, můžete použít prostředky uzlu clusteru.
+**Výstup do jednoho souboru** kombinuje všechna data do jednoho oddílu. To vede k dlouhým časem zápisu, zejména pro velké datové sady. Azure Data Factory tým **vysoce doporučuje tuto** možnost Nevybrat, pokud není k dispozici explicitní obchodní důvod.
 
-Aby se zabránilo vyčerpání prostředků výpočetních uzlů, ponechte výchozí optimalizované schéma v toku dat a přidejte do kanálu aktivitu kopírování, která sloučí všechny soubory součástí z výstupní složky do nového jediného souboru. Tato technika odděluje akci transformace ze slučování souborů a dosáhne stejného výsledku jako nastavení _výstupu do jediného souboru_.
+### <a name="cosmosdb-sinks"></a>CosmosDB jímky
 
-### <a name="looping-through-file-lists"></a>Procházení seznamem souborů
+Při psaní do CosmosDB může změna propustnosti a velikosti dávek během provádění toku dat zvýšit výkon. Tyto změny se projeví pouze během spuštění aktivity toku dat a po uzavření se vrátí k původnímu nastavení kolekce. 
 
-Tok dat mapování bude proveden lépe, pokud zdrojová transformace prochází přes více souborů místo smyček prostřednictvím smyčky pro každou aktivitu. Ve zdrojové transformaci doporučujeme používat zástupné znaky nebo seznamy souborů. Proces toku dat se zrychluje tím, že umožňuje opakování smyčky v rámci clusteru Spark. Další informace najdete v tématu [zástupné znaky v transformaci zdroje](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
+**Velikost dávky:** Vypočítá přibližnou velikost řádků dat a ujistěte se, že velikost řádku * velikost dávky je menší než 2 000 000. Pokud je, zvyšte velikost dávky, abyste získali lepší propustnost.
 
-Pokud máte například seznam datových souborů z července 2019, které chcete zpracovat ve složce v Blob Storage, níže je zástupný znak, který můžete použít ve své zdrojové transformaci.
+**Propustnost:** Nastavením vyšší propustnosti zadáte rychlejší zápis dokumentů do CosmosDB. Na základě nastavení vysoké propustnosti mějte na paměti vyšší náklady na RU.
 
-```DateFiles/*_201907*.txt```
+**Rozpočet propustnosti zápisu:** Použijte hodnotu, která je menší než celková ru za minutu. Pokud máte tok dat s vysokým počtem oddílů Spark, nastavení propustnosti rozpočtu umožní v těchto oddílech větší rovnováhu.
 
-Když použijete zástupné znaky, kanál bude obsahovat jenom jednu aktivitu toku dat. To bude mít lepší výkon než vyhledávání v úložišti objektů blob, které pak projde všemi odpovídajícími soubory pomocí příkazu ForEach s aktivitou spustit tok dat uvnitř.
 
-Kanál každého v paralelním režimu spustí více clusterů, a to tak, že clustery úloh rozcházejí na každou spuštěnou aktivitu toku dat. To může způsobit omezení služby Azure s vysokým počtem souběžných spuštění. Nicméně použití toku dat spouštění uvnitř a pro každý s sekvenčním nastavením v kanálu se vyhne omezení a vyčerpání prostředků. Tím vynutíte Data Factory, aby se jednotlivé soubory v toku dat prováděly postupně.
+## <a name="optimizing-transformations"></a>Optimalizace transformací
 
-Doporučuje se, abyste při použití pro každý z nich s tokem dat využívali nastavení TTL v Azure Integration Runtime. Důvodem je to, že každý soubor bude v rámci vašeho iterátoru zabývat úplným časem spuštění clusteru.
+### <a name="optimizing-joins-exists-and-lookups"></a>Optimalizace spojení, existence a vyhledávání
 
-### <a name="optimizing-for-cosmosdb"></a>Optimalizace pro CosmosDB
+#### <a name="broadcasting"></a>Vysílací
 
-Nastavení propustnosti a vlastností dávky u jímky CosmosDB se projeví pouze během provádění tohoto toku dat z aktivity toku dat kanálu. Po spuštění toku dat budou v CosmosDB dodržena původní nastavení kolekce.
+V spojeních, vyhledávání a existují transformace, pokud je jeden nebo oba datové proudy dostatečně malé, aby se vešly do paměti pracovních uzlů, můžete optimalizovat výkon tím, že povolíte **všesměrové vysílání**. Všesměrové vysílání je při odesílání malých datových snímků všem uzlům v clusteru. To umožňuje, aby modul Spark prováděl spojení bez nutnosti přesměrovat data ve velkém datovém proudu. Ve výchozím nastavení se modul Spark automaticky rozhodne, jestli se má vysílat jedna strana spojení. Pokud znáte vaše příchozí data a víte, že jeden datový proud bude výrazně menší než druhý, můžete vybrat **pevné** vysílání. Pevné vysílání vynutí, aby Spark vysílaly vybraný datový proud. 
 
-* Velikost dávky: Vypočítejte přibližnou velikost řádků dat a ujistěte se, že velikost dávky rowSize * je menší než 2 000 000. Pokud je, zvyšte velikost dávky, abyste získali lepší propustnost.
-* Propustnost: tady nastavte vyšší propustnost, aby bylo možné dokumentům psát rychleji CosmosDB. Na základě nastavení vysoké propustnosti Prosím mějte na paměti vyšší náklady na RU.
-*   Rozpočet propustnosti zápisu: použijte hodnotu, která je menší než celková ru za minutu. Pokud máte tok dat s vysokým počtem oddílů Spark, nastavení propustnosti rozpočtu umožní v těchto oddílech větší rovnováhu.
+Pokud je velikost všesměrového data pro uzel Spark příliš velká, může dojít k chybě z důvodu nedostatku paměti. Aby nedošlo k chybám, používejte **paměťově optimalizované** clustery. Pokud při provádění toku dat dojde k vypršení časového limitu všesměrového vysílání, můžete vypnout optimalizaci vysílání. Výsledkem ale bude pomalejší provádění toků dat.
 
-## <a name="join-and-lookup-performance"></a>Výkon připojení a vyhledávání
+![Optimalizace transformace JOIN](media/data-flow/joinoptimize.png "Spojit optimalizaci")
 
-Správa výkonu spojení v toku dat je velice obvyklá operace, kterou provedete v celém životním cyklu transformací dat. V rámci ADF data nevyžadují, aby datové toky před spojením seřadily data, protože se tyto operace provádějí jako spojení s algoritmem hash ve Sparku. Můžete ale využít vyšší výkon s optimalizací spojení vysílání, které platí pro spojení, existují a transformace vyhledávání.
+#### <a name="cross-joins"></a>Vzájemné spojení
 
-Tím se vyhnete neprůběžným rozchodům tím, že do uzlu Spark zapnete obsah obou stran relace připojení. Tato funkce je vhodná pro menší tabulky, které se používají pro hledání odkazů. Větší tabulky, které se nevejdou do paměti uzlu, nejsou vhodnými kandidáty pro optimalizaci všesměrového vysílání.
+Pokud ve svých podmínkách připojení používáte literálové hodnoty nebo máte více shod na obou stranách spojení, Spark spustí spojení jako vzájemné spojení. Mezi spojením je plný kartézském produkt, který potom odfiltruje Spojené hodnoty. To je výrazně pomalejší než u jiných typů spojení. Ujistěte se, že na obou stranách podmínky připojení máte odkazy na sloupec, abyste se vyhnuli dopadu na výkon.
 
-Doporučená konfigurace pro toky dat s mnoha operacemi spojování spočívá v tom, že optimalizace je nastavená na hodnotu automaticky pro vysílání a používá konfiguraci ***paměťově optimalizovaného*** Azure Integration runtime. Pokud při spuštění toku dat dojde k chybám nebo časovým limitům všesměrového vysílání, můžete zapnout optimalizaci vysílání. Výsledkem ale bude pomalejší provádění toků dat. Volitelně můžete nastavit tok dat pro přenos jenom na levou nebo pravou stranu spojení nebo obojí.
+#### <a name="sorting-before-joins"></a>Řazení před spojením
 
-![Nastavení všesměrového vysílání](media/data-flow/newbroad.png "Nastavení všesměrového vysílání")
+Na rozdíl od sloučení slučovacích nástrojů v nástrojích, jako je SSIS, transformace spojení není povinná operace sloučení spojení. Klíče JOIN nevyžadují řazení před transformací. Tým Azure Data Factory v mapování toků dat nedoporučuje používat transformace řazení.
 
-Další optimalizací spojení je vytvoření spojení tak, aby se zabránilo tomu, že Spark bude implementovat vzájemné spojení. Například pokud zahrnete literálové hodnoty do podmínek připojení, Spark může vidět, že jako první vyžaduje kompletní kartézském produkt a pak odfiltruje Spojené hodnoty. Pokud ale budete mít jistotu, že na obou stranách podmínky připojení máte hodnoty sloupce, můžete se tomuto kartézském produktu s procesorem Spark vyhnout a zvýšit výkon vašich spojení a toků dat.
+### <a name="repartitioning-skewed-data"></a>Přerozdělení zkosených dat
+
+Některé transformace, jako jsou spojení a agregace, rozdělí vaše oddíly dat a občas můžou vést k zkoseným datům. Zkosených dat znamená, že data nejsou rovnoměrně rozložena mezi oddíly. Silně zkosená data mohou vést k pomalejším transformům a zápisům jímky. Kliknutím na transformaci v zobrazení monitorování můžete v jakémkoli okamžiku spuštění toku dat kontrolovat zešikmení vašich dat.
+
+![Zešikmení a špičatost](media/data-flow/skewness-kurtosis.png "Zešikmení a špičatost")
+
+V zobrazení monitorování se zobrazí způsob distribuce dat napříč jednotlivými oddíly spolu se dvěma metrikami, zešikmení a fluktuace. **Asymetrie** je míra, jak asymetrická data jsou a můžou mít kladnou, nulovou, zápornou nebo nedefinovanou hodnotu. Záporné zkosení znamená, že levý konec je delší než vpravo. **Špičatost** je měřítko, zda jsou data příliš zatížená nebo lehká. Hodnoty vysoké fluktuace nejsou vhodné. Ideální rozsahy zešikmení leží mezi-3 a 3 a rozsahy špičatosti jsou menší než 10. Snadný způsob, jak interpretovat tato čísla, je prohlížení grafu oddílů a zobrazení, zda je 1 panel výrazně větší než zbytek.
+
+Pokud vaše data nejsou rovnoměrně rozdělená po transformaci, můžete k jejímu rozdělení použít [kartu optimalizace](#optimize-tab) . Rozmísení dat trvá čas a nemusí zlepšit výkon toku dat.
+
+> [!TIP]
+> Pokud data změníte na oddíly, ale budete mít k dispozici transformace, které přerozdělí data, použijte dělení algoritmu hash u sloupce používaného jako klávesa JOIN.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další články toku dat související s výkonem:
 
-- [Karta optimalizace toku dat](concepts-data-flow-overview.md#optimize)
 - [Aktivita toku dat](control-flow-execute-data-flow-activity.md)
 - [Sledování výkonu toku dat](concepts-data-flow-monitoring.md)

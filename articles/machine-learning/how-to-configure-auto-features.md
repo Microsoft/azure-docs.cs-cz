@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: b01d6c36b31ef4f03522d03ca327439cfa31be8d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1c26164ed7a2b7c335d3977e143fcef28c8955db
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373738"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475817"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurization v automatizovaném strojovém učení
 
@@ -64,7 +64,7 @@ Následující tabulka shrnuje techniky, které jsou automaticky aplikovány na 
 | ------------- | ------------- |
 |**Přetáhnout vysokou mohutnost nebo žádné funkce odchylky*** |Tyto funkce přetáhněte ze sady školení a ověření. Platí pro funkce se všemi chybějícími hodnotami, se stejnou hodnotou ve všech řádcích nebo s vysokou mohutnou (například hodnoty hash, ID nebo identifikátory GUID).|
 |**Imputace – chybějící hodnoty*** |Pro číselné funkce imputace s průměrem hodnot ve sloupci.<br/><br/>V případě funkcí kategorií se imputac s nejčastější hodnotou.|
-|**Generování dalších funkcí*** |Pro funkce DateTime: rok, měsíc, den, den v týdnu, den roku, čtvrtletí, týden v roce, hodina, minuta, sekunda.<br/><br/>Pro funkce textu: četnost termínů založená na unigrams, bigrams a trigrams. Přečtěte si další informace o [tom, jak to uděláte pomocí Bert.](#bert-integration)|
+|**Generování dalších funkcí*** |Pro funkce DateTime: rok, měsíc, den, den v týdnu, den roku, čtvrtletí, týden v roce, hodina, minuta, sekunda.<br><br> *Pro úlohy předpovědi* jsou vytvořeny tyto další funkce DateTime: ISO year, pololetí, kalendářní měsíc jako řetězec, týden, den v týdnu jako řetězec, den čtvrtletí, den v roce, dop. odp. (0, pokud je hodina v hodnotě poledne (12 ODP), 1 jinak), AM/PM jako řetězec, hodina dne (12hr základ)<br/><br/>Pro funkce textu: četnost termínů založená na unigrams, bigrams a trigrams. Přečtěte si další informace o [tom, jak to uděláte pomocí Bert.](#bert-integration)|
 |**Transformace a kódování***|Transformujte číselné funkce, které mají v kategorií funkce několik jedinečných hodnot.<br/><br/>Pro funkce kategorií s nízkou mohutnou se používá kódování One-Hot. Kódování One-Hot-hash se používá pro funkce kategorií s vysokou mohutnosti.|
 |**Vkládání slov**|Text featurizer převede vektory textových tokenů na vektory věty pomocí předvýukového modelu. Vektory vložení každého slova v dokumentu jsou agregovány s využitím zbytku pro vytvoření vektoru funkce dokumentu.|
 |**Cílová kódování**|V případě funkcí kategorií tento krok mapuje každou kategorii s průměrnou cílovou hodnotou pro regresní problémy a pravděpodobností třídy pro jednotlivé třídy pro problémy s klasifikací. Pro snížení přeložení mapování a šumu způsobených kategoriemi zhuštěných dat se aplikují váhy založené na kmitočtech a k skládání k.|
@@ -163,9 +163,11 @@ text_transformations_used
 
 3. V kroku pro mazání funkcí AutoML porovnává BERT se směrným plánem (penalta slov obsahuje funkce + předpracované vkládání slov) na ukázku dat a určuje, jestli BERT by poskytovala vylepšení přesnosti. Pokud se zjistí, že BERT vykonává lepší hodnotu než standardní hodnoty, AutoML potom použije BERT pro text featurization jako optimální strategii featurization a pokračuje s featurizing celými daty. V takovém případě se v konečném modelu zobrazí "PretrainedTextDNNTransformer".
 
+BERT obvykle běží déle než většina ostatních featurizers. Dá se urychlitovat tím, že ve svém clusteru poskytnete víc výpočetních prostředků. AutoML bude distribuovat školení BERT napříč více uzly, pokud jsou k dispozici (až maximálně 8 uzlů). To se dá udělat nastavením [max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) na větší než 1. Pro lepší výkon doporučujeme použít skladové položky s možnostmi RDMA (například "STANDARD_NC24r" nebo "STANDARD_NC24rs_V3").
+
 AutoML v současné době podporuje kolem jazyků 100 a v závislosti na jazyku datové sady AutoML zvolí příslušný model BERT. Pro německé údaje používáme model německého BERT. V anglickém jazyce používáme BERT model English. Pro všechny ostatní jazyky používáme model vícejazyčného BERT.
 
-V následujícím kódu se aktivuje německý model BERT, protože jazyk datové sady je určený jako DEU, kód jazyka 3 pro němčinu podle [klasifikace ISO](https://iso639-3.sil.org/code/hbs):
+V následujícím kódu se aktivuje německý model BERT, protože jazyk datové sady je určený jako DEU, kód jazyka 3 pro němčinu podle [klasifikace ISO](https://iso639-3.sil.org/code/deu):
 
 ```python
 from azureml.automl.core.featurization import FeaturizationConfig

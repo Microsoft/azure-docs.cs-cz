@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: 55ee6e99cdf6d77ea1e78799e016d4c276e85fcd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 07/30/2020
+ms.openlocfilehash: 9fe9a431d7bbc3b0d3b4b95d9883ed8b5a1f4704
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423860"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475426"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Zabezpečení v Azure Kognitivní hledání – přehled
 
 Tento článek popisuje klíčové funkce zabezpečení v Azure Kognitivní hledání, které mohou chránit obsah a operace. 
 
-+ Ve vrstvě úložiště je šifrování v klidovém prostředí zadáno na úrovni platformy, ale Kognitivní hledání také nabízí možnost "dvojité šifrování" pro zákazníky, kteří chtějí duální ochranu pro uživatele a klíče spravované Microsoftem.
++ Ve vrstvě úložiště je šifrování v klidovém formátu uvedené na úrovni platformy, ale Kognitivní hledání také nabízí klíče spravované zákazníkem prostřednictvím Azure Key Vault pro další vrstvu šifrování.
 
 + Příchozí zabezpečení chrání koncový bod vyhledávací služby na rostoucí úrovni zabezpečení: od klíčů rozhraní API v žádosti až po příchozí pravidla v bráně firewall až po privátní koncové body, které plně chrání vaše služby před veřejným internetem.
 
@@ -125,7 +125,11 @@ Naproti tomu práva správce k obsahu hostovanému na službě, jako je napřík
 
 Pro veřejný cloud i Azure Government byl v Azure Kognitivní hledání certifikovaný standard pro více globálních, regionálních a specifických standardů. Úplný seznam najdete v dokumentu [White paper o **kompatibilitě Microsoft Azure** ](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) na stránce oficiálních sestav auditu.
 
-## <a name="see-also"></a>Viz také:
+V případě dodržování předpisů můžete použít [Azure Policy](../governance/policy/overview.md) , které vám pomůžou implementovat osvědčené postupy [zabezpečení Azure](../security/benchmarks/introduction.md)v rámci vysokého zabezpečení. Srovnávací test zabezpečení Azure je kolekcí doporučení zabezpečení, která se mapují na klíčové akce, které byste měli vzít v úvahu při zmírnění hrozeb pro služby a data. V současné době je k dispozici 11 kontrol zabezpečení, včetně [zabezpečení sítě](../security/benchmarks/security-control-network-security.md), [protokolování a monitorování](../security/benchmarks/security-control-logging-monitoring.md)a [ochrany dat](../security/benchmarks/security-control-data-protection.md) .
+
+Azure Policy je funkce integrovaná do Azure, která vám pomůže spravovat dodržování předpisů pro několik standardů, včetně standardů Azure Security test. V případě dobře známých srovnávacích testů Azure Policy poskytuje předdefinované definice, abyste mohli snadněji vytvářet zásady. V případě Azure Kognitivní hledání existuje v současné době jedna integrovaná definice pro diagnostické protokolování, což znamená, že můžete přiřadit zásadu, která identifikuje a opravuje libovolnou vyhledávací službu, která není kompatibilní s řízením zabezpečení protokolování a monitorování. Další informace najdete v tématu [Azure Policy kontroly dodržování předpisů pro Azure kognitivní hledání](security-controls-policy.md).
+
+## <a name="see-also"></a>Viz také
 
 + [Základní informace o zabezpečení Azure](../security/fundamentals/index.yml)
 + [Zabezpečení Azure](https://azure.microsoft.com/overview/security)

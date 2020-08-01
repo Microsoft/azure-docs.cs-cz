@@ -3,12 +3,12 @@ title: Nastavení analýzy webových aplikací pro ASP.NET pomocí Azure Applica
 description: Nakonfigurujte nástroje pro analýzu výkonu, dostupnosti a chování uživatelů pro váš web ASP.NET, který je hostovaný místně nebo v Azure.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 4e51fb43a9e088c991af2132b6a5d2257da8d78a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: acfba63cba520631831888a1480929be3b1897f0
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324212"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475528"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
@@ -16,7 +16,7 @@ Tímto postupem je možné konfigurovat webovou aplikaci ASP.NET tak, aby odesí
 
 Nastavení je otázkou několika kliknutí v sadě Visual Studio. Máte možnost vyhnout se placení poplatků, pokud objem telemetrických dat omezíte. Tato funkce umožňuje experimentovat a ladit nebo monitorovat lokalitu, která nemá mnoho uživatelů. Pokud se později rozhodnete, že chcete pokračovat a monitorovat svůj provozní server, můžete limit snadno zvýšit.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pro přidání Application Insights na web ASP.NET potřebujete:
 
 - Nainstalujte [Visual Studio 2019 pro Windows](https://www.visualstudio.com/downloads/) s následujícími úlohami:
@@ -112,7 +112,10 @@ Prostředek Azure, který přijímá telemetrická data aplikace, je určen *ins
 
 
 ## <a name="upgrade-to-future-sdk-versions"></a>Upgrade na budoucí verze sady SDK
-Pokud chcete upgradovat na [novou verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases), otevřete **Správce balíčků NuGet** a filtrujte nainstalované balíčky. Vyberte **Microsoft. ApplicationInsights. Web**a zvolte **upgradovat**.
+
+* [Zpráva k vydání verze](./release-notes.md)
+
+Chcete-li upgradovat na novou verzi sady SDK, otevřete **Správce balíčků NuGet**a filtrujte nainstalované balíčky. Vyberte **Microsoft. ApplicationInsights. Web**a zvolte **upgradovat**.
 
 Pokud jste provedli jakékoli úpravy souboru ApplicationInsights.config, před upgradem si uložte jeho kopii. Potom slučte změny do nové verze.
 
@@ -141,7 +144,7 @@ K dispozici jsou i alternativní témata, na která se v případě zájmu můž
 * [Inteligentní diagnostika:](./proactive-diagnostics.md) Tyto testy se spouštějí automaticky, takže je nemusíte nijak nastavovat. Upozorní vás, pokud má aplikace nezvykle velký podíl neúspěšných požadavků.
 * [Výstrahy metriky](../platform/alerts-log.md): Nastavte výstrahy, které vás upozorní, pokud metrika překračuje prahovou hodnotu. Upozornění můžete nastavit u vlastních metrik, které v aplikaci naprogramujete.
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Automatizace
 
 * [Automatizace vytvoření prostředku Application Insights](./powershell.md)
 

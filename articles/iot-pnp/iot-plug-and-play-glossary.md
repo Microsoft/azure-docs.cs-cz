@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d88ac62d9117df9d24c6d865e684a0972c87dae
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d8efec0517cd0b4bdcba643a0936b474593d58c4
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337309"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475460"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Glosář pojmů pro IoT technologie Plug and Play Preview
 
@@ -95,19 +95,15 @@ Dotazovací jazyk IoT Hub slouží k více účelům. Jazyk můžete například
 
 Zařízení IoT technologie Plug and Play je typicky malé škálované samostatné výpočetní zařízení, které shromažďuje data nebo řídí jiná zařízení a spouští software nebo firmware, který implementuje [model zařízení](#device-model).  Například zařízení IoT technologie Plug and Play může být zařízením pro monitorování prostředí nebo kontroler pro zavlažovací systémy s inteligentním zemědělstvím. Řešení IoT hostované v cloudu můžete napsat pro příkazy, řízení a příjem dat ze zařízení IoT technologie Plug and Play.
 
-## <a name="iot-plug-and-play-conventions"></a>Konvence technologie Plug and Play IoT
+## <a name="iot-plug-and-play-conventions"></a>Konvence IoT Plug and Play
 
 U [zařízení](#iot-plug-and-play-device) IoT technologie Plug and Play se očekává, že se při výměně dat s řešením dodržujte se sadou [konvencí](concepts-convention.md) .
-
-## <a name="model-discovery"></a>Zjišťování modelů
-
-Když se [zařízení iot technologie Plug and Play](#iot-plug-and-play-device) připojuje k řešení IoT, může řešení zjistit schopnosti zařízení, a to tak, že najde [model zařízení](#device-model). Řešení může najít model zařízení v [úložišti modelu](#model-repository) nebo jiném umístění.
 
 ## <a name="model-id"></a>ID modelu
 
 Když se zařízení IoT technologie Plug and Play připojuje k IoT Hub, pošle **ID modelu** [DTDL](#digital-twins-definition-language) modelu, který implementuje. To umožňuje řešení najít model zařízení.
 
-## <a name="model-repository"></a>Úložiště modelu
+## <a name="model-repository"></a>Úložiště modelů
 
 [Úložiště modelu](concepts-model-repository.md) ukládá [modely zařízení](#device-model) a [rozhraní](#interface).
 

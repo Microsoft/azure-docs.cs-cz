@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: overview
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 07/27/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44a01bb7d2f4aa3d31204d6235e955e82e471d5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 093f4f3cd54f1e4638a0fbcd161a2af4fecba5da
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729043"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475783"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Správa administrativních jednotek v Azure Active Directory (Preview)
 
@@ -74,26 +74,26 @@ Následující tabulka popisuje aktuální podporu scénářů pro správu jedno
 
 Oprávnění |   MS Graph/PowerShell   | Portál Azure AD | Centrum pro správu služby Microsoft 365
 ----------- | ----------------------- | --------------- | -----------------
-Vytváření a odstraňování jednotek pro správu   |    Podporuje se    |   Podporuje se   |    Nepodporuje se
-Přidávání a odebírání členů administrativní jednotky jednotlivě    |   Podporuje se    |   Podporuje se   |    Nepodporuje se
-Hromadné přidávání a odebírání členů jednotek pro správu pomocí souboru. csv   |    Nepodporuje se     |  Podporuje se   |    Žádný plán k podpoře
-Přiřazování správců v rámci jednotky pro správu  |     Podporuje se    |   Podporuje se    |   Nepodporuje se
-Dynamické přidávání a odebírání členů AU na základě atributů | Nepodporuje se | Nepodporuje se | Nepodporuje se
+Vytváření a odstraňování jednotek pro správu   |    Podporováno    |   Podporováno   |    Nepodporováno
+Přidávání a odebírání členů administrativní jednotky jednotlivě    |   Podporováno    |   Podporováno   |    Nepodporováno
+Hromadné přidávání a odebírání členů jednotek pro správu pomocí souboru. csv   |    Nepodporováno     |  Podporováno   |    Žádný plán k podpoře
+Přiřazování správců v rámci jednotky pro správu  |     Podporováno    |   Podporováno    |   Nepodporováno
+Dynamické přidávání a odebírání členů AU na základě atributů | Nepodporováno | Nepodporováno | Nepodporováno
 
 ### <a name="user-management"></a>Správa uživatelů
 
 Oprávnění |   MS Graph/PowerShell   | Portál Azure AD | Centrum pro správu služby Microsoft 365
 ----------- | ----------------------- | --------------- | -----------------
-Správa vlastností uživatele, hesel a licencí s rozsahem administrativní jednotky   |    Podporuje se     |  Podporuje se   |   Podporuje se
-blokující a odblokování přihlášení uživatelů v oboru jednotky pro správu    |   Podporuje se   |    Podporuje se   |    Podporuje se
-Správa přihlašovacích údajů uživatelského ověřování s rozsahem jednotky pro správu   |    Podporuje se   |   Podporuje se   |   Nepodporuje se
+Správa vlastností uživatele, hesel a licencí s rozsahem administrativní jednotky   |    Podporováno     |  Podporováno   |   Podporováno
+blokující a odblokování přihlášení uživatelů v oboru jednotky pro správu    |   Podporováno   |    Podporováno   |    Podporováno
+Správa přihlašovacích údajů uživatelského ověřování s rozsahem jednotky pro správu   |    Podporováno   |   Podporováno   |   Nepodporováno
 
 ### <a name="group-management"></a>Správa skupin
 
 Oprávnění |   MS Graph/PowerShell   | Portál Azure AD | Centrum pro správu služby Microsoft 365
 ----------- | ----------------------- | --------------- | -----------------
-Správa vlastností skupin a členů s rozsahem jednotky pro správu     |  Podporuje se   |    Podporuje se    |  Nepodporuje se
-Správa licencování skupin pro správu s rozsahem jednotky   |    Podporuje se  |    Podporuje se   |   Nepodporuje se
+Správa vlastností skupin a členů s rozsahem jednotky pro správu     |  Podporováno   |    Podporováno    |  Nepodporováno
+Správa licencování skupin pro správu s rozsahem jednotky   |    Podporováno  |    Podporováno   |   Nepodporováno
 
 > [!NOTE]
 >
