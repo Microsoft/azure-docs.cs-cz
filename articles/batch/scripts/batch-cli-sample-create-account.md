@@ -3,12 +3,13 @@ title: Ukázkový skript Azure CLI – vytvoření účtu Batch – služba Batc
 description: Tento skript vytvoří účet Azure Batch v režimu služby Batch a předvede dotazování a aktualizaci různých vlastností účtu.
 ms.topic: sample
 ms.date: 01/29/2018
-ms.openlocfilehash: 5fce745340c583b902c98716678a9b7afcfc002c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 42f2766130c9809fe2e05d9ce82bf8a78fc712f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681923"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494413"
 ---
 # <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>Příklad rozhraní příkazového řádku: Vytvoření účtu Batch v režimu služby Batch
 

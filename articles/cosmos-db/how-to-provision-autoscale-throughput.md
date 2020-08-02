@@ -5,19 +5,19 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/29/2020
-ms.openlocfilehash: e8dadbad309a146500db342f55bee9339fde6172
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 07/30/2020
+ms.openlocfilehash: dba0fccaa3eb79ad297ce80462efea5b69a4a009
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430975"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497048"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Zřizování propustnosti automatického škálování v databázi nebo kontejneru v Azure Cosmos DB
 
 Tento článek vysvětluje, jak zřídit propustnost automatického škálování pro databázi nebo kontejner (kolekci, graf nebo tabulku) v Azure Cosmos DB. Můžete povolit automatické škálování v jednom kontejneru nebo zřídit propustnost automatického škálování databáze a sdílet ji mezi všemi kontejnery v databázi.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>portál Azure
 
 ### <a name="create-new-database-or-container-with-autoscale"></a>Vytvoření nové databáze nebo kontejneru pomocí automatického škálování
 
@@ -242,13 +242,13 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 
 ---
 
-## <a name="cassandra-api"></a>Rozhraní Cassandra API
+## <a name="cassandra-api"></a>Rozhraní API Cassandra
 
-Účty Azure Cosmos DB pro rozhraní API Cassandra se dají zřídit pro automatické škálování pomocí [příkazů CQL](manage-scale-cassandra.md#use-autoscale), [Azure CLI](cli-samples.md)nebo [šablon pro Azure Resource Manager](resource-manager-samples.md).
+Účty Azure Cosmos DB pro rozhraní API Cassandra se dají zřídit pro automatické škálování pomocí [příkazů CQL](manage-scale-cassandra.md#use-autoscale), [Azure CLI](cli-samples.md), [Azure PowerShell](powershell-samples.md) nebo [šablon Azure Resource Manager](resource-manager-samples.md).
 
 ## <a name="azure-cosmos-db-api-for-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 
-Účty Azure Cosmos DB pro MongoDB API se dají zřídit pro automatické škálování pomocí [příkazů rozšíření MongoDB](mongodb-custom-commands.md), [Azure CLI](cli-samples.md)nebo [šablon Azure Resource Manager](resource-manager-samples.md).
+Účty Azure Cosmos DB pro rozhraní API MongoDB se dají zřídit pro automatické škálování pomocí [příkazů rozšíření MongoDB](mongodb-custom-commands.md), [Azure CLI](cli-samples.md), [Azure PowerShell](powershell-samples.md) nebo [šablon Azure Resource Manager](resource-manager-samples.md).
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -257,6 +257,10 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 ## <a name="azure-cli"></a>Azure CLI
 
 Azure CLI se dá využít ke zřízení propustnosti automatického škálování u databáze nebo prostředků na úrovni kontejneru pro všechna Azure Cosmos DB rozhraní API. Ukázky najdete v [ukázkách Azure CLI pro Azure Cosmos DB](cli-samples.md).
+
+## <a name="azure-powershell"></a>Azure PowerShell
+
+Azure PowerShell lze použít ke zřízení propustnosti automatického škálování u databáze nebo prostředků na úrovni kontejneru pro všechna rozhraní API Azure Cosmos DB. Ukázky najdete v tématu [Azure PowerShell Samples for Azure Cosmos DB](powershell-samples.md).
 
 ## <a name="next-steps"></a>Další kroky
 

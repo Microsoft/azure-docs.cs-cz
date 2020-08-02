@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 63f8d408d76cfce86c254ad3840c2f0eefb09fd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a63e5a8b59c1e043b4af7b35c34cde6be0314d22
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263635"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497014"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db"></a>Zřizování standardní (ruční) propustnosti databáze v Azure Cosmos DB
 
@@ -21,7 +22,7 @@ Tento článek vysvětluje, jak zřídit standardní (ruční) propustnost v dat
 
 ### <a name="sql-core-api"></a><a id="portal-sql"></a>Rozhraní SQL (Core) API
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet Azure Cosmos.
 
@@ -69,7 +70,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 ---
 
-### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Rozhraní Cassandra API
+### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Rozhraní API Cassandra
 
 Podobný příkaz lze provést prostřednictvím libovolného ovladače kompatibilního s CQL.
 

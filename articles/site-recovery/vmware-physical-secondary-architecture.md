@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9b16a0edc1549a1b4d8ef5ba53d8b795f6d74e07
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7c884ce839523706e67e4278f43e237e1a2b0580
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418317"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496963"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektura pro replikaci VMware/fyzických serverů do sekundární místní lokality
 
@@ -42,7 +42,7 @@ Aby mohla Site Recovery fungovat podle očekávání, musíte upravit odchozí s
 
 Pokud k řízení odchozího připojení používáte proxy server brány firewall založený na adrese URL, povolte přístup k těmto adresám URL:
 
-| **Název**                  | **Komerční**                               | **Státní správa**                                 | **Popis** |
+| **Název**                  | **Komerční**                               | **Státní správa**                                 | **Description** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |
@@ -55,9 +55,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 2. Po počáteční replikaci odesílá agent na každém počítači na procesní server rozdílové replikační změny.
 3. Procesní server tato data optimalizuje a přenese je na hlavní cílový server v sekundární lokalitě. Konfigurační server spravuje replikační proces.
 
-**Obr. 6: Replikace z VMware do VMware**
-
-![Z VMware do VMware](./media/site-recovery-components/vmware-to-vmware.png)
+![Diagram znázorňující replikaci virtuálních počítačů VMware a fyzických serverů do sekundárního datového centra](./media/site-recovery-components/vmware-to-vmware.png)
 
 
 

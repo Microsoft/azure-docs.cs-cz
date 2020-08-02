@@ -6,19 +6,19 @@ ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: sample, mvc
+ms.custom: sample, mvc, devx-track-azurecli
 ms.date: 5/6/2019
-ms.openlocfilehash: 094222c9d6cee6c785f44111a9f9ac6a2185536c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: aca37ea3d3d1509a6866d4febcdc9a4eb3f9bdb4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120531"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496538"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql---single-server"></a>Ukázky v Azure CLI pro Azure Database for PostgreSQL – jeden server
 Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro službu Azure Database for PostgreSQL.
 
-| Vzorový odkaz | Description |
+| Vzorový odkaz | Popis |
 |---|---|
 |**Vytvoření serveru**||
 | [Vytvoření serveru a pravidla brány firewall](scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | Skript Azure CLI, který vytvoří server Azure Database for PostgreSQL a nakonfiguruje pravidlo brány firewall na úrovni serveru. |

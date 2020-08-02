@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: d4ea5889cbecbbb8609f90eed83ec9bd6b0032f9
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 57366011c93065803162164c03c7878e1610af9f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448228"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500381"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Použití značek indexu objektů BLOB (Preview) ke správě a hledání dat v úložišti objektů BLOB v Azure
 
@@ -24,7 +24,7 @@ Další informace o indexu objektů BLOB najdete v tématu [Správa a hledání 
 > [!NOTE]
 > Index objektu BLOB je ve verzi Public Preview a je dostupný v oblasti **Kanada – střed**, Kanada – **východ**, Francie – **střed** a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 - Předplatné je zaregistrované a schválené pro přístup k náhledu indexu objektů BLOB.
 - Přístup k [Azure Portal](https://portal.azure.com/)
@@ -32,11 +32,9 @@ Další informace o indexu objektů BLOB najdete v tématu [Správa a hledání 
 # <a name="net"></a>[.NET](#tab/net)
 Protože index BLOB je ve verzi Public Preview, balíček úložiště .NET je vydaný v kanálu NuGet Preview. Tato knihovna se může změnit mezi nyní a když se změní na oficiální. 
 
-1. V aplikaci Visual Studio přidejte adresu URL `https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json` do zdrojů balíčků NuGet. 
+1. Nastavte projekt sady Visual Studio tak, aby Začínáme s klientskou knihovnou služby Azure Blob Storage V12 pro .NET. Další informace najdete v tématu [rychlý Start pro .NET](storage-quickstart-blobs-dotnet.md) .
 
-   Informace o postupu najdete v tématu [zdroje balíčků](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources).
-
-2. V okně Správce balíčků NuGet vyhledejte balíček **Azure. Storage. BLOBs** a do svého projektu nainstalujte Version **12.5.0-dev. 20200422.2** . Můžete také spustit příkaz```Install-Package Azure.Storage.Blobs -Version 12.5.0-dev.20200422.2```
+2. Ve Správci balíčků NuGet Najděte balíček **Azure. Storage. BLOBs** a nainstalujte verzi **12.5.0-Preview. 6** nebo novější do svého projektu. Můžete také spustit příkaz```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6```
 
    Informace o postupu najdete v tématu [vyhledání a instalace balíčku](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
 

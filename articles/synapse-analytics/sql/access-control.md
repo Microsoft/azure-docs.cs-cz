@@ -9,19 +9,19 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: e5db52d1e28a7db5594b3b2a16bc145d0a50e2e3
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 6dc0bb08e3d824c1d3fea155d1b3d4c52e1af4a6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765076"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499836"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Správa přístupu k pracovním prostorům, datům a kanálům
 
 Naučte se spravovat řízení přístupu k pracovním prostorům, datům a kanálům v pracovním prostoru Azure synapse Analytics (Preview).
 
 > [!NOTE]
-> V případě GA se RBAC bude vyvíjet prostřednictvím zavedení rolí Azure RBAC specifických pro synapse.
+> V případě GA se RBAC bude vyvíjet prostřednictvím zavedení rolí Azure specifických pro synapse.
 
 ## <a name="access-control-for-workspace"></a>Access Control pro pracovní prostor
 
@@ -47,7 +47,7 @@ V případě produkčního nasazení do pracovního prostoru Azure synapse dopor
 
 Když jste zřídili pracovní prostor, museli jste vybrat účet [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) a kontejner pro systém souborů, který má pracovní prostor použít.
 
-1. Otevřete [Azure Portal](https://portal.azure.com)
+1. Otevřete [Azure Portal](https://portal.azure.com).
 2. Přejít na účet Azure Data Lake Storage Gen2
 3. Přejít do kontejneru (FileSystem), který jste vybrali pro pracovní prostor Azure synapse
 4. Klikněte na **Access Control (IAM)** .

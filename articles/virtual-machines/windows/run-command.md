@@ -7,13 +7,14 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
+ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: 76ff9ff9479351eb3ec2a0e973fe3c44562adf55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd1e20504d96b55d6a450512ea287b9352fb043a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508419"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496929"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Spouštění skriptů PowerShellu na VIRTUÁLNÍm počítači s Windows pomocí příkazu Spustit
 
@@ -51,7 +52,7 @@ Tato tabulka obsahuje seznam příkazů, které jsou k dispozici pro virtuální
 The entity was not found in this Azure location
 ```
 
-|**Název**|**Popis**|
+|**Název**|**Description**|
 |---|---|
 |**RunPowerShellScript**|Spustí skript prostředí PowerShell.|
 |**EnableRemotePS**|Nakonfiguruje počítač tak, aby povoloval vzdálené prostředí PowerShell.|

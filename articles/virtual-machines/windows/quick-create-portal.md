@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5cf23a9c66c76f778dbd5d2b126b28a5a577c978
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 46119b9f7cdac47920d4bba8e00c3fc56b0edc78
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097995"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494515"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows na webu Azure Portal
 
 Virtuální počítače Azure je možné vytvářet na webu Azure Portal. Tato metoda poskytuje uživatelské rozhraní v prohlížeči, pomocí kterého můžete vytvářet virtuální počítače a jejich související prostředky. V tomto rychlém startu se dozvíte, jak použít Azure Portal k nasazení virtuálního počítače v Azure se systémem Windows Server 2019. Pak se k virtuálnímu počítači připojíte přes protokol RDP a nainstalujete na něj webový server služby IIS, abyste virtuální počítač viděli v akci.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -32,23 +32,23 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 1. Na stránce **virtuální počítače** vyberte **Přidat**. 
 1. Přesvědčte se, že je na kartě **Základy** v části **Podrobnosti o projektu** vybrané správné předplatné a pak ve Skupině prostředků vyberte **Vytvořit nový**. Jako název zadejte *myResourceGroup* . 
 
-    ![Vytvoření nové skupiny prostředků pro virtuální počítač](./media/quick-create-portal/project-details.png)
+    ![Snímek obrazovky s oddílem Project Details s informacemi o tom, kde jste vybrali předplatné Azure a skupinu prostředků pro virtuální počítač](./media/quick-create-portal/project-details.png)
 
 1. V **části Podrobnosti o instanci**zadejte *MyVM* pro **název virtuálního počítače** a zvolte *východní USA* pro vaši **oblast**a pak zvolte *Windows Server 2019 Datacenter* pro **bitovou kopii**. Zbytek ponechte ve výchozím nastavení.
 
-    ![Část podrobnosti o instancích](./media/quick-create-portal/instance-details.png)
+    ![Snímek obrazovky s oddílem podrobností instance, kde můžete zadat název virtuálního počítače a vybrat jeho oblast, obrázek a velikost](./media/quick-create-portal/instance-details.png)
 
 1. V **Účtu správce** zadejte uživatelské jméno, například *azureuser*, a heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
-    ![Zadejte uživatelské jméno a heslo.](./media/quick-create-portal/administrator-account.png)
+    ![Snímek obrazovky s oddílem účtu správce, kde můžete zadat uživatelské jméno a heslo správce](./media/quick-create-portal/administrator-account.png)
 
 1. V části **pravidla portů pro příchozí spojení**zvolte **Povolit vybrané porty** a v rozevíracím seznamu vyberte **RDP (3389)** a **http (80)** .
 
-    ![Otevřené porty pro protokoly RDP a HTTP](./media/quick-create-portal/inbound-port-rules.png)
+    ![Snímek obrazovky s částí pravidla portů pro příchozí spojení, kde můžete vybrat, na kterých portech jsou příchozí připojení povolena](./media/quick-create-portal/inbound-port-rules.png)
 
 1. Zbytek ponechte ve výchozím nastavení a potom v dolní části stránky vyberte tlačítko **Zkontrolovat a vytvořit**.
 
-    ![Zkontrolovat a vytvořit](./media/quick-create-portal/review-create.png)
+    ![Snímek obrazovky zobrazující tlačítko pro kontrolu a vytvoření v dolní části stránky](./media/quick-create-portal/review-create.png)
 
 
 ## <a name="connect-to-virtual-machine"></a>Připojení k virtuálnímu počítači
@@ -57,13 +57,13 @@ Vytvořte připojení ke vzdálené ploše virtuálního počítače. Tyto pokyn
 
 1. Klikněte na tlačítko **připojit** na stránce Přehled pro váš virtuální počítač. 
 
-    ![Připojení k virtuálnímu počítači Azure z portálu](./media/quick-create-portal/portal-quick-start-9.png)
+    ![Snímek obrazovky se stránkou s přehledem virtuálního počítače zobrazující umístění tlačítka připojit](./media/quick-create-portal/portal-quick-start-9.png)
     
 2. Na stránce **připojit k virtuálnímu počítači** ponechte výchozí možnosti připojit pomocí IP adresy, přes port 3389 a klikněte na **Stáhnout soubor RDP**.
 
 2. Otevřete stažený soubor RDP a po zobrazení výzvy klikněte na **Připojit**. 
 
-3. V okně **Zabezpečení systému Windows** vyberte **Další možnosti** a pak **Použít jiný účet**. Zadejte uživatelské jméno jako **localhost**\\*uživatelské jméno*hostitele, zadejte heslo, které jste pro virtuální počítač vytvořili, a pak klikněte na **OK**.
+3. V okně **Zabezpečení systému Windows** vyberte **Další možnosti** a pak **Použít jiný účet**. Zadejte uživatelské jméno jako **localhost** \\ *uživatelské jméno*hostitele, zadejte heslo, které jste pro virtuální počítač vytvořili, a pak klikněte na **OK**.
 
 4. Během procesu přihlášení se může zobrazit upozornění certifikátu. Klikněte na **Ano** nebo **Pokračovat** a vytvořte připojení.
 
@@ -82,7 +82,7 @@ Jakmile budete hotovi, ukončete připojení RDP k virtuálnímu počítači.
 
 Na portálu vyberte virtuální počítač a v přehledu virtuálního počítače pomocí tlačítka pro **kopírování na** pravé straně IP adresy ho zkopírujte a vložte na kartu prohlížeče. Otevře se výchozí uvítací stránka služby IIS, která by měla vypadat takto:
 
-![Výchozí web služby IIS](./media/quick-create-powershell/default-iis-website.png)
+![Snímek obrazovky s výchozím webem služby IIS v prohlížeči](./media/quick-create-powershell/default-iis-website.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

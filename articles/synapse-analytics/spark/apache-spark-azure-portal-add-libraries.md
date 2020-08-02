@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b0231b28894ea7233e5f6e588300f03cb8784e5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0d34d80df77b5c6fcdefc39b3bc3b1619a93705
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036450"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496249"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Přidávání a Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
 
@@ -21,7 +21,7 @@ Apache Spark závisí na řadě knihoven, které poskytují funkce. Tyto knihovn
 
 Balíčky Pythonu se dají přidat na úrovni fondů Spark (Preview) a balíčky založené na JAR se dají přidat na úrovni definice úlohy Spark.
 
-## <a name="adding-or-updating-python-libraries"></a>Přidávání a aktualizace knihoven Pythonu
+## <a name="add-or-update-python-libraries"></a>Přidat nebo aktualizovat knihovny Pythonu
 
 Apache Spark ve službě Azure synapse Analytics má úplnou instalaci Anacondas a další knihovny. Seznam úplných knihoven najdete na stránce [podpora Apache Spark verzí](apache-spark-version-support.md).
 
@@ -51,7 +51,7 @@ Nahrajte konfigurační soubor prostředí pomocí voliče souborů v části **
 
 ![Přidat knihovny Pythonu](./media/apache-spark-azure-portal-add-libraries/add-python-libraries.png "Přidat knihovny Pythonu")
 
-### <a name="verifying-installed-libraries"></a>Ověřují se nainstalované knihovny.
+### <a name="verify-installed-libraries"></a>Ověřit nainstalované knihovny
 
 Pokud chcete ověřit, jestli jsou nainstalované správné verze správných knihoven, spusťte následující kód.
 

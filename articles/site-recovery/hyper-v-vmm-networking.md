@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: c0426872c29fa126514f22a5f4fb57f19903c967
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43942c20a353ff69383f3e721679e4c95ab9d230
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021660"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495939"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Nastavení IP adresování pro připojení k sekundárnímu místnímu webu po převzetí služeb při selhání
 
@@ -63,11 +63,11 @@ Následující obrázek ilustruje podsítě před a po převzetí služeb při s
 
 **Před převzetím služeb při selhání**
 
-![Před převzetím služeb při selhání](./media/hyper-v-vmm-networking/network-design2.png)
+![Diagram znázorňující podsítě před převzetím služeb při selhání.](./media/hyper-v-vmm-networking/network-design2.png)
 
 **Po převzetí služeb při selhání**
 
-![Po převzetí služeb při selhání](./media/hyper-v-vmm-networking/network-design3.png)
+![Diagram znázorňující podsítě po převzetí služeb při selhání.](./media/hyper-v-vmm-networking/network-design3.png)
 
 Po převzetí služeb při selhání Site Recovery přidělí IP adresu pro každé síťové rozhraní virtuálního počítače. Adresa je přidělena z fondu statických IP adres v příslušné síti pro každou instanci virtuálního počítače.
 
@@ -118,11 +118,11 @@ V tomto příkladu máme v primárních a sekundárních lokalitách různé IP 
 
 **Před převzetím služeb při selhání**
 
-![Jiná IP adresa – před převzetím služeb při selhání](./media/hyper-v-vmm-networking/network-design10.png)
+![Diagram znázorňující různé IP adresy před převzetím služeb při selhání.](./media/hyper-v-vmm-networking/network-design10.png)
 
 **Po převzetí služeb při selhání**
 
-![Jiná IP adresa – po převzetí služeb při selhání](./media/hyper-v-vmm-networking/network-design11.png)
+![Diagram znázorňující různé IP adresy po převzetí služeb při selhání](./media/hyper-v-vmm-networking/network-design11.png)
 
 
 ## <a name="next-steps"></a>Další kroky

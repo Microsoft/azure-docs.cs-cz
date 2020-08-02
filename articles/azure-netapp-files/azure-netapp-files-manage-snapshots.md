@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: caa73b5a86c5c245aefd18de9b60ec49616b3b84
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7d583172fe4021a2709a4d58b5488e9bc3898919
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281544"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497592"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Správa snímků s využitím služby Azure NetApp Files
 
@@ -47,8 +47,22 @@ Snímky svazků můžete vytvářet na vyžádání.
 
 Pomocí zásad snímku můžete naplánovat, aby se snímky svazků automaticky provedly. Podle potřeby můžete také upravit zásady snímků nebo odstranit zásadu snímku, kterou už nepotřebujete.  
 
-> [!IMPORTANT] 
-> Použití funkce zásad snímků vyžaduje přidávání do seznamu povolených. Vyžádejte si e-mail anffeedback@microsoft.com s ID předplatného, abyste mohli požádat o tuto funkci.
+### <a name="register-the-feature"></a>Zaregistrujte funkci.
+
+1. Funkce **zásad snímku** je aktuálně ve verzi Preview. Pokud tuto funkci používáte poprvé, zaregistrujte funkci před jejím použitím: 
+
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
+    ```
+
+2. Ověřte stav registrace funkce: 
+
+    > [!NOTE]
+    > **RegistrationState** může být ve `Registering` stavu několik minut, než se změní na `Registered` . Než budete pokračovat, počkejte, než se stav **zaregistruje** .
+
+    ```azurepowershell-interactive
+    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
+    ```
 
 ### <a name="create-a-snapshot-policy"></a>Vytvoření zásady snímku 
 

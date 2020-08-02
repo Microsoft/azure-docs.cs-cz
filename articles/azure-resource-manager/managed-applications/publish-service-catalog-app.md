@@ -3,15 +3,15 @@ title: Publikování spravované aplikace katalogu služeb
 description: Ukazuje, jak vytvořit spravovanou aplikaci Azure, která je určená pro členy vaší organizace.
 author: tfitzmac
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: d0a3e2a435be679a2a35941dfa24978ae77291b0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f6a3a16fe7fd6b0036b36520262e85a9066a4e63
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249032"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497850"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Rychlé zprovoznění: Vytvoření a publikování definice spravované aplikace
 
@@ -195,7 +195,7 @@ az storage blob upload \
 
 ### <a name="create-an-azure-active-directory-user-group-or-application"></a>Vytvoření skupiny uživatelů nebo aplikace Azure Active Directory
 
-Dalším krokem je výběr skupiny uživatelů, uživatele nebo aplikace pro správu prostředků pro zákazníka. Tato identita má oprávnění pro spravovanou skupinu prostředků podle přiřazené role. Touto rolí může být kterákoli předdefinovaná role řízení přístupu na základě role (RBAC), například role vlastníka nebo přispěvatele. Pokud chcete vytvořit novou skupinu uživatelů služby Active Directory, přečtěte si téma [Vytvoření skupiny a přidání členů v Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+Dalším krokem je výběr skupiny uživatelů, uživatele nebo aplikace pro správu prostředků pro zákazníka. Tato identita má oprávnění pro spravovanou skupinu prostředků podle přiřazené role. Role může být libovolná předdefinovaná role Azure, jako je vlastník nebo Přispěvatel. Pokud chcete vytvořit novou skupinu uživatelů služby Active Directory, přečtěte si téma [Vytvoření skupiny a přidání členů v Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Potřebujete ID objektu skupiny uživatelů, které se má používat pro správu zdrojů. 
 
@@ -311,7 +311,7 @@ Zkopírujte ID prostředku účtu úložiště. Použije se později při nasazo
 
 Předtím, než bude možné nasadit definici spravované aplikace do svého účtu úložiště, musíte udělit oprávnění přispěvatele k roli **poskytovatele prostředků zařízení** , aby mohla zapisovat definiční soubory do kontejneru účtu úložiště.
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do svého účtu úložiště.
+1. Na webu [Azure Portal](https://portal.azure.com) přejděte ke svému účtu úložiště.
 1. Vyberte **řízení přístupu (IAM)** a zobrazte nastavení řízení přístupu pro účet úložiště. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí.
 1. V okně **Přidat přiřazení role** vyberte roli **Přispěvatel** . 
 1. V poli **přiřadit přístup k** vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD**.

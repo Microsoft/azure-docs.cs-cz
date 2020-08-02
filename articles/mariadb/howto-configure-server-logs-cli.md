@@ -7,12 +7,13 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 4/13/2020
-ms.openlocfilehash: cc4a2e8c3de05a9df136e74a1e0d32956891a175
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: cd74feaebe5a89667668c05e332ed9d3c7cdad5d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118490"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490247"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-by-using-azure-cli"></a>Konfigurace a přístup k protokolům Azure Database for Marie DB pomalým dotazům pomocí Azure CLI
 

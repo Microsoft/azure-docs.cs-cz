@@ -8,18 +8,19 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: f8047ebeb8e47f609db79e3ac1235b5cd65a4fd4
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: dc65bedc8b008d9628d09ef3e4bfc7cc6ea12e95
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "84820226"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495246"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-azure-cli"></a>Rychlý Start: nasazení Open Source serveru FHIR pomocí Azure CLI
 
 V tomto rychlém startu se dozvíte, jak nasadit otevřený zdrojový &reg; Server FHIR v Azure pomocí rozhraní příkazového řádku Azure CLI.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -44,7 +45,7 @@ az group deployment create -g $servicename --template-uri https://raw.githubuser
 
 Získat příkaz funkce ze serveru FHIR pomocí:
 
-```console
+```azurecli-interactive
 metadataurl="https://${servicename}.azurewebsites.net/metadata"
 curl --url $metadataurl
 ```

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 312723818c4cef82ad6c96b013d7ec81ede276cc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: ed517f2f6e04f60ec1c9c808f2fdf03203fb891b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130917"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498969"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Příprava Azure na místní zotavení po havárii do Azure
 
@@ -62,7 +62,7 @@ K provedení těchto úloh by váš účet měl mít přiřazenou předdefinovan
 6. V části **oblast**vyberte oblast, ve které se má Trezor umístit. používáme oblast **Západní Evropa**.
 7. Vyberte **Zkontrolovat a vytvořit**.
 
-   ![Vytvoření nového trezoru](./media/tutorial-prepare-azure/new-vault-settings.png)
+   ![Snímek obrazovky s stránkou vytvořit Recovery Services trezor](./media/tutorial-prepare-azure/new-vault-settings.png)
 
    Nový trezor se teď zobrazí v části **řídicí panel**  >  **všechny prostředky**a na hlavní stránce **Recovery Services trezory** .
 
@@ -81,7 +81,7 @@ Místní počítače se replikují do Azure Managed disks. Když dojde k převze
 9. Ponecháváme výchozí možnosti základní ochrany DDoS Protection bez koncového bodu služby nebo brány firewall v síti.
 9. Vyberte **Vytvořit**.
 
-   ![Vytvoření virtuální sítě](media/tutorial-prepare-azure/create-network.png)
+   ![Snímek obrazovky s možnostmi vytvoření virtuální sítě](media/tutorial-prepare-azure/create-network.png)
 
 Vytvoření virtuální sítě trvá několik sekund. Po vytvoření se zobrazí na řídicím panelu Azure Portal.
 

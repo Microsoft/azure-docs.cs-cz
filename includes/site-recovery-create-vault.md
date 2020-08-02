@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: fd1a7f133c5719873133554fc2292e94e6fe26a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7826b09ef063d572a98fb344f6862cc8310aa86
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75980332"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495964"
 ---
 1. Přihlaste se [Azure portal](https://portal.azure.com)k  >  **Recovery Services**Azure Portal.
 2. Klikněte na **vytvořit prostředek**  >  **monitorování a Správa**  >  **zálohování a Site Recovery**.
@@ -17,6 +17,6 @@ ms.locfileid: "75980332"
 4. [Vytvořte skupinu prostředků](../articles/azure-resource-manager/templates/deploy-portal.md)nebo vyberte některou z existujících. Zadejte oblast Azure. 
 5. Chcete-li rychle získat přístup k trezoru z řídicího panelu, klikněte na **Připnout na řídicí panel**  >  **vytvořit**.
 
-   ![Nový trezor](./media/site-recovery-create-vault/new-vault-settings.png)
+   ![Snímek obrazovky s možnostmi vytvoření trezoru služby Rescovery Services](./media/site-recovery-create-vault/new-vault-settings.png)
 
    Nový trezor se zobrazí v části **řídicí panel**  >  **všechny prostředky**a na hlavní stránce **Recovery Services trezory** .

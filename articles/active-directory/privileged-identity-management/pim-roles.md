@@ -14,12 +14,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d1d7ad27c43a0f8b4bbb763a1eb933a63cec58e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80762511591d10bd2823101e2ff233fdd0f0eb00
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83115638"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495620"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Role, které nemůžete spravovat v Privileged Identity Management
 
@@ -33,7 +33,7 @@ V Privileged Identity Management nemůžete spravovat tyto klasické role správ
 - Správce služeb
 - Spolusprávce
 
-Další informace o rolích Správce předplatného pro Classic najdete v tématu [role správců pro klasické předplatné, role Azure RBAC a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+Další informace o rolích správců klasických předplatných najdete v tématu role [správců pro klasický odběr, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 ## <a name="what-about-office-365-admin-roles"></a>Co jsou role správců Office 365?
 

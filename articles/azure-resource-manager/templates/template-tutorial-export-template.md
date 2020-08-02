@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f95efbaedc2718c968062c47427ab7765756bde7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4042ed29b143ab160883ca46ecb1cc17d2e0c761
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80408550"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497150"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Kurz: použití exportované šablony z Azure Portal
 
@@ -32,7 +33,7 @@ Tato šablona funguje dobře pro nasazení účtů úložiště, ale můžete ch
 
 ## <a name="create-app-service-plan"></a>Vytvoření plánu služby App Service
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Vyberte **Vytvořit prostředek**.
 1. V **části Hledat na Marketplace**zadejte **App Service plán**a potom vyberte **App Service plán**.  Nevybírat **plán App Service (klasický)**
 1. Vyberte **Vytvořit**.
@@ -42,7 +43,7 @@ Tato šablona funguje dobře pro nasazení účtů úložiště, ale můžete ch
     - **Skupina prostředků**: vyberte **vytvořit novou** a zadejte název. Zadejte jiný název skupiny prostředků než ten, který jste používali v této sérii kurzů.
     - **Název**: zadejte název plánu služby App Service.
     - **Operační systém**: vyberte **Linux**.
-    - **Oblast**: vyberte umístění Azure. Například **střed USA**.
+    - **Oblast**: vyberte umístění Azure. Například **USA – střed**.
     - **Cenová úroveň**: Pokud chcete ušetřit náklady, změňte SKU na **Basic B1** (vývoj/test).
 
     ![Portál šablony Správce prostředků Exportovat šablonu](./media/template-tutorial-export-template/resource-manager-template-export.png)
@@ -97,7 +98,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete spustit tento příkaz nasazení, musíte mít [nejnovější verzi](/cli/azure/install-azure-cli) rozhraní příkazového řádku Azure CLI.
+Jestliže chcete spustit tento příkaz nasazení, musíte mít k dispozici [nejnovější verzi](/cli/azure/install-azure-cli) Azure CLI.
 
 ```azurecli
 az deployment group create \
@@ -116,7 +117,7 @@ az deployment group create \
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. Skupina prostředků obsahuje účet úložiště a plán App Service.

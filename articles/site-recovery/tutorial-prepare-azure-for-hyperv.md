@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 3be81d104e32946e2bfd7dc76052dad464f95623
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4e28a46b8d231b3f228a95ea06b7b9cada50de54
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130972"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498986"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Příprava prostředků Azure pro zotavení po havárii technologie Hyper-V
 
@@ -34,9 +34,9 @@ V tomto kurzu se dozvíte, jak připravit komponenty Azure v případě, že chc
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="sign-in"></a>Přihlásit se
+## <a name="sign-in"></a>Přihlášení
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="verify-account-permissions"></a>Ověření oprávnění k účtu
 
@@ -63,7 +63,7 @@ Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Vi
 9. V části **umístění**vyberte geografické umístění účtu úložiště. Pro tento kurz použijte **západní Evropa**.
 10. Vyberte **Vytvořit** a vytvořte účet úložiště.
 
-   ![vytvořit účet úložiště](media/tutorial-prepare-azure/create-storageacct.png)
+   ![Snímek obrazovky s možnostmi vytvoření účtu úložiště](media/tutorial-prepare-azure/create-storageacct.png)
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
 
@@ -74,7 +74,7 @@ Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Vi
 3. V části **umístění**vyberte oblast, ve které se má Trezor nacházet. Pro tento kurz použijte **západní Evropa**.
 4. Chcete-li rychle získat přístup k trezoru z řídicího panelu, vyberte možnost **Připnout na řídicí panel**  >  **vytvořit**.
 
-![Vytvoření nového trezoru](./media/tutorial-prepare-azure/new-vault-settings.png)
+![Snímek obrazovky s stránkou vytvořit Recovery Services trezor](./media/tutorial-prepare-azure/new-vault-settings.png)
 
 Nový trezor se zobrazí v části **řídicí panel**  >  **všechny prostředky**a na hlavní stránce **Recovery Services trezory** .
 
@@ -91,7 +91,7 @@ Když se po převzetí služeb při selhání vytvoří z úložiště virtuáln
 7. Ponechte výchozí možnosti základní DDoS Protection bez koncového bodu služby v síti.
 8. Vyberte **Vytvořit**.
 
-![Vytvoření virtuální sítě](media/tutorial-prepare-azure/create-network.png)
+![Snímek obrazovky s možnostmi vytvoření virtuální sítě](media/tutorial-prepare-azure/create-network.png)
 
 Vytvoření virtuální sítě trvá několik sekund. Po vytvoření se zobrazí na řídicím panelu Azure Portal.
 

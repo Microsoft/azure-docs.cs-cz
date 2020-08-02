@@ -4,18 +4,18 @@ description: Přečtěte si, jak parametrizované dotazy SQL poskytují robustn�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f66bc89ef56dd0c2291903d531a4637210abd8df
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74870815"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496980"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Parametrizované dotazy v Azure Cosmos DB
 
-Cosmos DB podporuje dotazy s parametry vyjádřenými známým znakem @ Notation. Parametrizované SQL poskytují robustní zpracování a uvozovací znaky vstupu uživatele a zabraňují nechtěnému úniku dat prostřednictvím injektáže SQL.
+Azure Cosmos DB podporuje dotazy s parametry vyjádřenými známým znakem @ Notation. Parametrizované SQL poskytují robustní zpracování a uvozovací znaky vstupu uživatele a zabraňují nechtěnému úniku dat prostřednictvím injektáže SQL.
 
 ## <a name="examples"></a>Příklady
 
@@ -27,7 +27,7 @@ Můžete například napsat dotaz, který přebírá `lastName` a `address.state
     WHERE f.lastName = @lastName AND f.address.state = @addressState
 ```
 
-Tuto žádost pak můžete odeslat Cosmos DB jako parametrizovaný dotaz JSON, jako je například následující:
+Tuto žádost pak můžete odeslat Azure Cosmos DB jako parametrizovaný dotaz JSON, jako je například následující:
 
 ```sql
     {
@@ -39,7 +39,7 @@ Tuto žádost pak můžete odeslat Cosmos DB jako parametrizovaný dotaz JSON, j
     }
 ```
 
-Následující příklad nastaví horní argument s parametrizovaným dotazem: 
+Následující příklad nastaví horní argument s parametrizovaným dotazem:
 
 ```sql
     {
@@ -50,8 +50,14 @@ Následující příklad nastaví horní argument s parametrizovaným dotazem:
     }
 ```
 
-Hodnoty parametrů můžou být jakékoli platné JSON: řetězce, čísla, logické hodnoty, hodnoty null, sudé pole nebo vnořené JSON. Vzhledem k tomu, že Cosmos DB je bez schématu, parametry nejsou ověřeny proti žádnému typu.
+Hodnoty parametrů můžou být jakékoli platné JSON: řetězce, čísla, logické hodnoty, hodnoty null, sudé pole nebo vnořené JSON. Vzhledem k tomu, že Azure Cosmos DB je bez schématu, parametry nejsou ověřeny proti žádnému typu.
 
+Tady jsou příklady pro parametrizované dotazy v každé sadě Azure Cosmos DB SDK:
+
+- [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L195)
+- [Java](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L392-L421)
+- [Node.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts#L58-L79)
+- [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L66-L78)
 
 ## <a name="next-steps"></a>Další kroky
 

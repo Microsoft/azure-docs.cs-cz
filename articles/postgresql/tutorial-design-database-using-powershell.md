@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 06/08/2020
-ms.custom: mvc
-ms.openlocfilehash: 67949cef755bb2dbefb62a69e6b394ebd74ea7f0
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: b424213a1041c426653e5cb455615111c265746a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740389"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500057"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-powershell"></a>Kurz: návrh Azure Database for PostgreSQLho samostatného serveru pomocí prostředí PowerShell
 
@@ -80,7 +80,7 @@ Hodnota parametru **SKU** dodržuje cenové úrovně ** \_ \_ virtuální jádra
 
 - `-Sku B_Gen5_1`mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
 - `-Sku GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
-- `-Sku MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
+- `-Sku MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se dvěma virtuálními jádry.
 
 Informace o platných hodnotách **SKU** podle oblasti a pro vrstvy najdete v tématu [Azure Database for PostgreSQL cenové úrovně](./concepts-pricing-tiers.md).
 

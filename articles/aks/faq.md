@@ -2,13 +2,13 @@
 title: Nejčastější dotazy ke službě Azure Kubernetes (AKS)
 description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure Kubernetes Service (AKS).
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 4d93a4f3b58fc38710184f345fd467b2beb32b1a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/31/2020
+ms.openlocfilehash: 6d30bc1faa6a896233d09f9247fe8c56f82371fa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057200"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87485622"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy ohledně služby Azure Kubernetes Service (AKS)
 
@@ -24,11 +24,11 @@ Ne. Clustery AKS jsou regionální prostředky a nemůžou zahrnovat oblasti. Po
 
 ## <a name="can-i-spread-an-aks-cluster-across-availability-zones"></a>Je možné rozložit cluster AKS napříč zónami dostupnosti?
 
-Yes. Cluster AKS můžete nasadit v rámci jedné nebo více [zón dostupnosti][availability-zones] v [oblastech, které je podporují][az-regions].
+Ano. Cluster AKS můžete nasadit v rámci jedné nebo více [zón dostupnosti][availability-zones] v [oblastech, které je podporují][az-regions].
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Můžu omezit, kdo má přístup k serveru rozhraní Kubernetes API?
 
-Yes. K dispozici jsou dvě možnosti omezení přístupu k serveru rozhraní API:
+Ano. K dispozici jsou dvě možnosti omezení přístupu k serveru rozhraní API:
 
 - Použijte [rozsahy povolených IP adres serveru API][api-server-authorized-ip-ranges] , pokud chcete zachovat veřejný koncový bod pro Server rozhraní API, ale omezte přístup na sadu důvěryhodných IP adres.
 - Pokud chcete omezit Server API tak, aby byl dostupný *jenom* v rámci vaší virtuální sítě, použijte [Privátní cluster][private-clusters] .
@@ -62,7 +62,7 @@ Pro povolení této architektury zahrnuje každé nasazení AKS dvě skupiny pro
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Můžu pro skupinu prostředků uzlu AKS zadat vlastní název?
 
-Yes. Ve výchozím nastavení AKS pojmenuje skupinu prostředků uzlu *MC_resourcegroupname_clustername_location*, ale můžete také zadat vlastní název.
+Ano. Ve výchozím nastavení AKS pojmenuje skupinu prostředků uzlu *MC_resourcegroupname_clustername_location*, ale můžete také zadat vlastní název.
 
 Pokud chcete zadat vlastní název skupiny prostředků, nainstalujte rozšíření Azure CLI [AKS-Preview][aks-preview-cli] verze *0.3.2* nebo novější. Při vytváření clusteru AKS pomocí příkazu [AZ AKS Create][az-aks-create] použijte parametr *--Node-Resource-Group* a zadejte název skupiny prostředků. Pokud k nasazení clusteru AKS [použijete šablonu Azure Resource Manager][aks-rm-template] , můžete definovat název skupiny prostředků pomocí vlastnosti *nodeResourceGroup* .
 
@@ -190,6 +190,10 @@ I když AKS má mechanismy odolnosti k vyvýšení těchto konfigurací a obnove
 ## <a name="can-i-use-custom-vm-extensions"></a>Můžu použít vlastní rozšíření virtuálních počítačů?
 
 Žádná AKS není spravovaná služba a manipulace s prostředky IaaS není podporovaná. Instalace vlastních komponent atd. Využijte prosím rozhraní API a mechanismů Kubernetes. Můžete například využít DaemonSets k instalaci požadovaných součástí.
+
+## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>Ukládá AKS data o zákaznících mimo oblast clusteru?
+
+Ne. Všechna data vytvořená v clusteru AKS se udržují v oblasti clusteru.
 
 <!-- LINKS - internal -->
 

@@ -7,12 +7,13 @@ ms.author: jzim
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: e7396ce9fbed46688d59b582f246e5454d063fb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 64b71c135126ebb540d5ccf72f829f83c74ed0b3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79477030"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495314"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Nastavení vývojového prostředí Azure Red Hat OpenShift
 
@@ -26,7 +27,7 @@ K sestavování a spouštění aplikací Microsoft Azure Red Hat OpenShift budet
 
 Následující pokyny vás provedou všemi těmito požadavky.
 
-## <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
+## <a name="install-the-azure-cli"></a>Instalace Azure CLI
 
 Azure Red Hat OpenShift vyžaduje rozhraní příkazového řádku Azure 2.0.65 nebo vyšší verze. Pokud jste už rozhraní příkazového řádku Azure nainstalovali, můžete zjistit, kterou verzi máte spuštěnou:
 

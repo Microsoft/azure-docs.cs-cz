@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 3fe4a70d2cf59f003c785740b55634d44863dc9c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: b657231cb6b896479766654e5bd989468d9b73e7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009522"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501146"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Rozšíření Azure Diagnostics pro virtuální počítače s Windows
 
@@ -21,7 +22,7 @@ ms.locfileid: "87009522"
 
 Rozšíření Azure Diagnostics VM umožňuje shromažďovat data monitorování, například čítače výkonu a protokoly událostí, z virtuálního počítače s Windows. Můžete přesně určit, jaká data chcete shromažďovat a kam chcete data přejít, jako je například účet Azure Storage nebo centrum událostí Azure. Tato data můžete také použít k sestavování grafů v Azure Portal nebo vytváření výstrah metrik.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -72,7 +73,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstranit potíže
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 

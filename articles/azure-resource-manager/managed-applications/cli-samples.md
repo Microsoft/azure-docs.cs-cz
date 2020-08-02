@@ -5,12 +5,13 @@ author: tfitzmac
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 1f2ffa7515fb15f323e469daf9f3c94779e48eca
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e4145484029539b3f800b2f431edefe56b908bca
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515355"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498629"
 ---
 # <a name="azure-cli-samples-for-azure-managed-applications"></a>Ukázky v Azure CLI pro Azure Managed Applications
 
@@ -20,5 +21,5 @@ Následující tabulka obsahuje odkazy na skripty bash pro Azure Managed Applica
 | -------------------------- | ----------- |
 | [Vytvořit definici spravované aplikace](scripts/managed-application-cli-sample-create-definition.md) | Vytvoří definici spravované aplikace v katalogu služeb.  |
 | [Nasazení spravované aplikace](scripts/managed-application-cli-sample-create-application.md) | Nasadí spravovanou aplikaci z katalogu služeb.  |
-|**Aktualizovat spravovanou skupinu prostředků**| **Popis** |
+|**Aktualizovat spravovanou skupinu prostředků**| **Description** |
 | [Získání prostředků ve spravované skupině prostředků a změna velikosti virtuálních počítačů](scripts/managed-application-cli-sample-get-managed-group-resize-vm.md) | Získá prostředky ze spravované skupiny prostředků a změní velikost virtuálních počítačů. |

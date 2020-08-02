@@ -6,12 +6,13 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 8/7/2019
-ms.openlocfilehash: 2f04bbf052716b32c012222d4c5dbdcd8f4571bd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4d4d9c6ac3eb4e9b0642f1ecb714b19a5029a314
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119697"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87493767"
 ---
 # <a name="auto-grow-azure-database-for-postgresql-storage---single-server-using-the-azure-cli"></a>Automatické zvětšování Azure Database for PostgreSQL Storage – jeden server pomocí Azure CLI
 Tento článek popisuje, jak můžete nakonfigurovat úložiště serveru Azure Database for PostgreSQL pro růst, aniž by to ovlivnilo zatížení.

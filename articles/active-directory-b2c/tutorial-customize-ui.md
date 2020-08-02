@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/11/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 235fd429707a418fa193e986b95c9b38fa6c8101
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29a03f1d1b1007845c1df516192da22d74705af0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385021"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481729"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Kurz: přizpůsobení rozhraní uživatelského prostředí v Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Aktualizace toku uživatele pro použití souborů
 > * Testování přizpůsobeného uživatelského rozhraní
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,7 +43,7 @@ Vytvoříte účet a kontejner úložiště Azure a potom do kontejneru umístí
 
 I když můžete soubory ukládat mnoha různými způsoby, můžete je v tomto kurzu ukládat do [úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md).
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje vaše předplatné Azure. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vaše předplatné. Tento adresář je jiný než ten, který obsahuje vašeho tenanta Azure B2C.
 3. V levém horním rohu Azure Portal vyberte všechny služby, vyhledejte a vyberte **účty úložiště**.
 4. Vyberte možnost **Přidat**.
@@ -139,7 +139,7 @@ V tomto kurzu ukládáte soubory, které jste vytvořili v účtu úložiště t
 ## <a name="update-the-user-flow"></a>Aktualizace toku uživatele
 
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
-2. Vyberte **toky uživatelů (zásady)** a pak vyberte tok uživatele *B2C_1_signupsignin1* .
+2. Vyberte **toky uživatelů**a potom vyberte tok uživatele *B2C_1_signupsignin1* .
 3. Vyberte **rozložení stránky**a potom v části **jednotná registrace nebo přihlášení**klikněte na **Ano** , aby se **použil vlastní obsah stránky**.
 4. Do pole **URI vlastní stránky**zadejte identifikátor URI pro soubor *custom-ui.html* , který jste si poznamenali dříve.
 5. V horní části stránky vyberte **Save (Uložit**).

@@ -13,12 +13,13 @@ ms.date: 05/27/2020
 ms.author: dbradish
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: d32bae48348e482e0e175760a416097ffbc17a1c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 3e76f2c23944dec69393a7b01dddc2d9f4fed7d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080943"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498000"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Rychlý Start: vytvoření centra oznámení Azure pomocí Azure CLI
 
@@ -26,7 +27,7 @@ Služba Azure Notification Hubs nabízí snadno použitelné, škálovatelné za
 
 V tomto rychlém startu vytvoříte centrum oznámení pomocí Azure CLI. První část obsahuje postup vytvoření oboru názvů centra oznámení.  Druhá část obsahuje postup vytvoření centra oznámení v existujícím oboru názvů.  Naučíte se také, jak vytvořit vlastní zásady přístupu.  
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

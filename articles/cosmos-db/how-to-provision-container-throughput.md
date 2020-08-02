@@ -6,21 +6,21 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.custom: devx-track-javascript
-ms.openlocfilehash: e02b169cbaf515217b0a9fdbaa844b9022fb4e12
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: fa03ae10239be4ec735a2d450343bf98fde00e70
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422160"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497031"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Zřízení standardní (ruční) propustnosti v kontejneru Azure Cosmos
 
 Tento článek vysvětluje, jak zřídit standardní (ruční) propustnost na kontejneru (kolekci, grafu nebo tabulky) v Azure Cosmos DB. Můžete zřídit propustnost v jednom kontejneru nebo [zřídit propustnost databáze](how-to-provision-database-throughput.md) a sdílet ji mezi kontejnery v rámci databáze. Propustnost můžete zřídit na kontejneru pomocí Azure Portal, rozhraní příkazového řádku Azure nebo sady Azure Cosmos DB SDK.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet Azure Cosmos.
 
@@ -100,7 +100,7 @@ offer.content.offerThroughput = 2000;
 await client.offer(offer.id).replace(offer);
 ```
 
-### <a name="mongodb-api"></a><a id="dotnet-mongodb"></a>Rozhraní MongoDB API
+### <a name="mongodb-api"></a><a id="dotnet-mongodb"></a>Rozhraní API MongoDB
 
 ```csharp
 // refer to MongoDB .NET Driver
@@ -121,7 +121,7 @@ mongoDatabase = mongoClient.GetDatabase("testdb");
 var result = mongoDatabase.RunCommand<BsonDocument>(@"{customAction: ""UpdateCollection"", collection: ""testcollection"", offerThroughput: 400}");
 ```
 
-### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Rozhraní Cassandra API
+### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Rozhraní API Cassandra
 
 Podobné příkazy lze vydat prostřednictvím libovolného ovladače kompatibilního s CQL.
 

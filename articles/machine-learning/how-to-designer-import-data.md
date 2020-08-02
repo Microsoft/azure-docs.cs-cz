@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 01/16/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 92568ceb9c7f0a428189647f259a3f84278eb612
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327000"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495367"
 ---
 # <a name="import-data-into-azure-machine-learning-designer-preview"></a>Import dat do návrháře Azure Machine Learning (Preview)
 
@@ -32,7 +32,7 @@ Pro import dat do návrháře doporučujeme použít datové [sady](concept-data
 
 ### <a name="register-a-dataset"></a>Registrace datové sady
 
-Existující datové sady [programově se sadou SDK](how-to-create-register-datasets.md#use-the-sdk) můžete registrovat nebo [vizuálně v Azure Machine Learning Studiu](how-to-create-register-datasets.md#use-the-ui).
+Existující datové sady [programově se sadou SDK](how-to-create-register-datasets.md#datasets-sdk) můžete registrovat nebo [vizuálně v Azure Machine Learning Studiu](how-to-create-register-datasets.md#datasets-ui).
 
 Výstup můžete také zaregistrovat pro libovolný modul návrháře jako datovou sadu.
 
@@ -59,7 +59,7 @@ I když doporučujeme k importu dat použít datové sady, můžete také použ�
 Podrobné informace o tom, jak používat modul import dat, najdete na [stránce s referenčními informacemi k importu dat](algorithm-module-reference/import-data.md).
 
 > [!NOTE]
-> Pokud vaše datová sada obsahuje příliš mnoho sloupců, může dojít k následující chybě: "ověření se nezdařilo z důvodu omezení velikosti". Pokud se tomu chcete vyhnout, [Zaregistrujte datovou sadu v rozhraní datových sad](how-to-create-register-datasets.md#use-the-ui).
+> Pokud vaše datová sada obsahuje příliš mnoho sloupců, může dojít k následující chybě: "ověření se nezdařilo z důvodu omezení velikosti". Pokud se tomu chcete vyhnout, [Zaregistrujte datovou sadu v rozhraní datových sad](how-to-create-register-datasets.md#datasets-ui).
 
 ## <a name="supported-sources"></a>Podporované zdroje
 

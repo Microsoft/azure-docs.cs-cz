@@ -5,16 +5,17 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dcdbbb325e6589669abe6cf3d25ac5191e29118b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0163fcc62ea6c813af8e9e5693ca35fa0e650f96
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80411735"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497524"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>Kurz: Přidání prostředku do šablony ARM
 
-V [předchozím kurzu](template-tutorial-create-first-template.md)jste zjistili, jak vytvořit prázdnou šablonu a nasadit ji. Teď jste připraveni nasadit skutečný prostředek. V tomto kurzu přidáte účet úložiště. Dokončení tohoto kurzu trvá přibližně **9 minut** .
+V [předchozím kurzu](template-tutorial-create-first-template.md)jste zjistili, jak vytvořit prázdnou šablonu a nasadit ji. Teď můžete nasadit skutečný prostředek. V tomto kurzu přidáte účet úložiště. Dokončení tohoto kurzu trvá přibližně **9 minut** .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -72,7 +73,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete spustit tento příkaz nasazení, musíte mít [nejnovější verzi](/cli/azure/install-azure-cli) rozhraní příkazového řádku Azure CLI.
+Jestliže chcete spustit tento příkaz nasazení, musíte mít k dispozici [nejnovější verzi](/cli/azure/install-azure-cli) Azure CLI.
 
 ```azurecli
 az deployment group create \
@@ -102,7 +103,7 @@ Toto nasazení trvá déle než při nasazení prázdné šablony, protože je v
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. Vidíte, že je nasazený účet úložiště.
@@ -124,4 +125,4 @@ Pokud nyní zastavíte, budete možná chtít vyčistit prostředky, které jste
 Vytvořili jste jednoduchou šablonu pro nasazení účtu úložiště Azure.  V dalších kurzech se dozvíte, jak přidat parametry, proměnné, prostředky a výstupy do šablony. Tyto funkce jsou stavebními bloky pro mnohem složitější šablony.
 
 > [!div class="nextstepaction"]
-> [Přidat parametry](template-tutorial-add-parameters.md)
+> [Přidání parametrů](template-tutorial-add-parameters.md)

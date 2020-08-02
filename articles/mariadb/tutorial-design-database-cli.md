@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 3/18/2020
-ms.custom: mvc
-ms.openlocfilehash: 455d7a0c1b3826060ade1083ec6eea99e397574b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: f08f9065b2a7361294a2f6257c85be772d0f7119
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79534843"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496062"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Kurz: návrh Azure Database for MariaDB pomocí Azure CLI
 
@@ -51,9 +51,9 @@ az group create --name myresourcegroup --location westus
 ```
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>Vytvoření serveru Azure Database for MariaDB
-Pomocí `az mariadb server create` příkazu vytvořte server Azure Database for MariaDB. Server může spravovat více databází. Obvykle se pro jednotlivé projekty nebo uživatele používají samostatné databáze.
+Pomocí příkazu vytvořte server Azure Database for MariaDB `az mariadb server create` . Server může spravovat více databází. Obvykle se pro jednotlivé projekty nebo uživatele používají samostatné databáze.
 
-Následující příklad vytvoří server Azure Database for MariaDB umístěný ve `westus` skupině `myresourcegroup` prostředků s názvem. `mydemoserver` Server má správce s přihlašovacím jménem `myadmin`. Je to Pro obecné účelyý Server Gen 5 se 2 virtuální jádra. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
+Následující příklad vytvoří server Azure Database for MariaDB umístěný ve `westus` skupině prostředků `myresourcegroup` s názvem `mydemoserver` . Server má správce s přihlašovacím jménem `myadmin`. Je to Pro obecné účelyý Server Gen 5 se 2 virtuální jádra. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
 
 ```azurecli-interactive
 az mariadb server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 10.2
@@ -61,7 +61,7 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver --
 Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
 + `--sku-name B_Gen5_4` se mapuje na úroveň Basic 5. generace se 4 virtuálními jádry.
 + `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
-+ `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
++ `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se dvěma virtuálními jádry.
 
 Vysvětlení platných hodnot pro jednotlivé oblasti a úrovně najdete v dokumentaci k [cenovým úrovním](./concepts-pricing-tiers.md).
 
@@ -70,7 +70,7 @@ Vysvětlení platných hodnot pro jednotlivé oblasti a úrovně najdete v dokum
 
 
 ## <a name="configure-firewall-rule"></a>Konfigurace pravidla brány firewall
-Pomocí `az mariadb server firewall-rule create` příkazu vytvořte pravidlo brány firewall na úrovni serveru Azure Database for MariaDB. Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například nástroj příkazového řádku **MySQL** nebo MySQL Workbench, aby se připojila k vašemu serveru prostřednictvím brány firewall služby Azure MariaDB.
+Pomocí příkazu vytvořte pravidlo brány firewall na úrovni serveru Azure Database for MariaDB `az mariadb server firewall-rule create` . Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například nástroj příkazového řádku **MySQL** nebo MySQL Workbench, aby se připojila k vašemu serveru prostřednictvím brány firewall služby Azure MariaDB.
 
 Následující příklad vytvoří pravidlo brány firewall `AllowMyIP`, které povolí připojení z konkrétní IP adresy 192.168.0.1. Nahraďte ji za IP adresu nebo rozsah IP adres, které odpovídají umístění, ze kterého se budete připojovat.
 
@@ -188,7 +188,7 @@ Příkaz `az mariadb server restore` potřebuje následující parametry:
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, ve které se nachází zdrojový server.  |
-| jméno | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
+| name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Vyberte bod v čase, ke kterému se má provést obnovení. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete použít například své místní časové pásmo, třeba `2017-04-13T05:59:00-08:00`, nebo formát UTC Zulu `2017-04-13T13:59:00Z`. |
 | source-server | mydemoserver | Název nebo ID zdrojového serveru, ze kterého se má provést obnovení. |
 

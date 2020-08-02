@@ -3,12 +3,13 @@ title: Ukázkový skript Azure CLI – spuštění úlohy služby Batch
 description: Tento skript vytvoří úlohu Batch a přidá do ní řadu úkolů. Ukazuje také, jak monitorovat úlohu a její úkoly.
 ms.topic: sample
 ms.date: 12/12/2019
-ms.openlocfilehash: eefc6cfdc01ddf4b8fe05b3b52360994e5763013
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d8efce1bc8dc32070b770769104b7fdc38e683cd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957253"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500227"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>Příklad rozhraní příkazového řádku: Spuštění úlohy a úkolů pomocí služby Azure Batch
 

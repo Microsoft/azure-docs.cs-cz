@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.custom: mvc
-ms.openlocfilehash: f2d0d0517579608a76ccf8c1e63aa993556e8d58
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 4f2c0a51f7c8d2441c9ddff2520dae2f5cc13565
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608021"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495334"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Rychlý Start: vytvoření Azure Database for MySQL pomocí jednoduchého příkazu rozhraní příkazového řádku Azure – AZ MySQL up (Preview)
 
@@ -56,7 +56,7 @@ az mysql up
 
 Server se vytvoří s následujícími výchozími hodnotami (Pokud je nepřepíšete ručně):
 
-**Nastavení** | **Výchozí hodnota** | **Popis**
+**Nastavení** | **Výchozí hodnota** | **Description**
 ---|---|---
 název-serveru | Vygenerované systémem | Jedinečný název, který identifikuje váš server Azure Database for MySQL.
 resource-group | Vygenerované systémem | Nová skupina prostředků Azure.

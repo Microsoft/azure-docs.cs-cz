@@ -112,6 +112,8 @@
           href: cognitive-search-incremental-indexing-conceptual.md
     - name: Zabezpečení
       items:
+        - name: Přehled zabezpečení
+          href: search-security-overview.md
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -329,8 +331,6 @@
           href: search-api-migration.md
     - name: Zabezpečení
       items:
-        - name: Přehled
-          href: search-security-overview.md
         - name: Šifrování dat
           items:
             - name: Klíče spravované zákazníkem

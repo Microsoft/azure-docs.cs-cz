@@ -7,12 +7,13 @@ ms.service: mysql
 ms.devlang: azurepowershel
 ms.topic: how-to
 ms.date: 4/28/2020
-ms.openlocfilehash: 85c04c875e543a5c41e9ad5e736a7de77ac1dad0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0f85283ad90f219dfbf404c437a843e1191b19fa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119867"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498731"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Postup zálohování a obnovení serveru Azure Database for MySQL pomocí prostředí PowerShell
 
@@ -77,7 +78,7 @@ Sada parametrů **PointInTimeRestore** `Restore-AzMySqlServer` rutiny vyžaduje 
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
-| Name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
+| Název | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | RestorePointInTime | 2020-03-13T13:59:00Z | Vyberte bod v čase, který chcete obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete například použít vlastní místní časové pásmo, například **2020-03-13T05:59:00-08:00**. Můžete také použít formát Zulu UTC, například **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | K obnovení použijte režim bodu v čase. |
 
@@ -119,7 +120,7 @@ Sada **GeoRestore** parametrů pro dopředné obnovení `Restore-AzMySqlServer` 
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Název skupiny prostředků, do které nový server patří|
-|Name | mydemoserver – geograficky obnovené | Název nového serveru. |
+|Název | mydemoserver – geograficky obnovené | Název nového serveru. |
 |Umístění | eastus | Umístění nového serveru. |
 |UseGeoRestore | `<SwitchParameter>` | K obnovení použijte geografický režim. |
 

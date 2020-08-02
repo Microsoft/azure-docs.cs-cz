@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 347232d452b5d309da7cdb7c8fe34f0e41abde00
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 86223c35118c9c54be49fa830a264a0059ef3937
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025334"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494430"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Přiřazení nebo přidání předplatného Azure do tenanta Azure Active Directory
 
@@ -95,6 +95,6 @@ Až přiřadíte předplatné k jinému adresáři, možná budete muset provés
 
 - Pokud chcete vytvořit nového tenanta Azure AD, přečtěte si téma [rychlý Start: vytvoření nového tenanta v Azure Active Directory](active-directory-access-create-new-tenant.md).
 
-- Další informace o tom, jak Microsoft Azure řídí přístup k prostředkům, najdete v tématu [role správců klasického předplatného, role Azure RBAC a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+- Další informace o tom, jak Microsoft Azure řídí přístup k prostředkům, najdete v tématu [role správců klasického předplatného, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 - Další informace o tom, jak přiřadit role v Azure AD, najdete v tématu [přiřazení rolí správců a uživatelů bez oprávnění správce k Azure Active Directory](active-directory-users-assign-role-azure-portal.md).

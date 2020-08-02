@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: e030bc86dcdd36e6267345433510a79c5eb13bd0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b039073810b7b429a560485bcc55df3be569be17
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475001"
+ms.locfileid: "87494872"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-search"></a>Azure Policy kontroly dodržování předpisů pro Azure Kognitivní hledání
 
-Pokud používáte [Azure Policy](../governance/policy/overview.md) k vymáhání doporučení v [testu zabezpečení Azure](../security/benchmarks/introduction.md), pravděpodobně už víte, že můžete vytvářet zásady pro identifikaci a opravy nekompatibilních služeb. Tyto zásady můžou být vlastní nebo můžou být založené na předdefinovaných definicích, které poskytují kritéria dodržování předpisů a vhodná řešení.
+Pokud používáte [Azure Policy](../governance/policy/overview.md) k vymáhání doporučení v [testu zabezpečení Azure](../security/benchmarks/introduction.md), pravděpodobně už víte, že můžete vytvářet zásady pro identifikaci a opravy nekompatibilních služeb. Tyto zásady můžou být vlastní nebo můžou být založené na integrovaných definicích, které poskytují kritéria dodržování předpisů a vhodná řešení pro dobře srozumitelné osvědčené postupy.
 
-V případě Azure Kognitivní hledání je v současné době jedna integrovaná definice, kterou můžete použít v přiřazení zásady. Integrovaná je pro protokolování a monitorování. Při použití této předdefinované definice v [zásadě, kterou vytvoříte](../governance/policy/assign-policy-portal.md), bude systém vyhledávat vyhledávací služby, které nemají [diagnostické protokolování](search-monitor-logs.md), a pak je povolit odpovídajícím způsobem.
+V případě Azure Kognitivní hledání je v současné době jedna předdefinovaná definice, kterou můžete použít v přiřazení zásady. Integrovaná je pro protokolování a monitorování. Při použití této předdefinované definice v [zásadě, kterou vytvoříte](../governance/policy/assign-policy-portal.md), bude systém vyhledávat vyhledávací služby, které nemají [diagnostické protokolování](search-monitor-logs.md), a pak je povolit odpovídajícím způsobem.
 
 [Dodržování legislativních předpisů v Azure Policy](../governance/policy/concepts/regulatory-compliance.md) poskytuje definice Microsoftem a spravované iniciativy, označované jako _předdefinované_, pro **domény dodržování předpisů** a **bezpečnostní prvky zabezpečení** související s různými standardy dodržování předpisů. Tato stránka obsahuje seznam **domén dodržování předpisů** a **řízení zabezpečení** pro Azure kognitivní hledání. Můžete jim přiřadit předdefinované **ovládací prvky zabezpečení** , které vám pomůžou zajistit, aby prostředky Azure vyhovovaly konkrétnímu standardu.
 
