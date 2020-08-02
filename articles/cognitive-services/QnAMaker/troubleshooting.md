@@ -3,12 +3,12 @@ title: Řešení potíží – QnA Maker
 description: Seznam z nejčastějších dotazů týkajících se QnA Maker služby vám pomůže s tím, že službu povedete rychleji a s lepšími výsledky.
 ms.topic: troubleshooting
 ms.date: 03/25/2020
-ms.openlocfilehash: ec994677b17ee21dbf4ee6091be3bdf943572b2e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 50823e29eb5c276c00a1c8f0e3227ec67999a703
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131986"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502575"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Řešení potíží pro QnA Maker
 
@@ -87,7 +87,7 @@ Všechna odstranění jsou trvalá, včetně párů dotazů a odpovědí, soubor
 <details>
 <summary><b>Můžete znalostní bázi sdílet s přispěvatelem, který není ve stejném tenantovi AAD, abyste mohli upravit znalostní bázi?</b></summary>
 
-**Odpověď**: sdílení je založené na řízení přístupu na základě role (RBAC) v Azure. Pokud můžete sdílet _libovolný_ prostředek v Azure s jiným uživatelem, můžete také sdílet QnA maker.
+**Odpověď**: sdílení je založené na řízení přístupu na základě role Azure (Azure RBAC). Pokud můžete sdílet _libovolný_ prostředek v Azure s jiným uživatelem, můžete také sdílet QnA maker.
 
 </details>
 

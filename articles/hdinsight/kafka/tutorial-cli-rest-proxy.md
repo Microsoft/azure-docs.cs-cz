@@ -7,12 +7,13 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
-ms.openlocfilehash: 6ba5e433839d1f27c9522749fd7a8831c7243aae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 44951fc19f36bb6652caf79ded96484bcc4b38f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78201882"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503136"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>Kurz: Vytvoření clusteru s povoleným Apache Kafka proxy REST v HDInsight pomocí Azure CLI
 
@@ -34,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Skupina zabezpečení Azure AD s vaší registrovanou aplikací jako členem. Tato skupina zabezpečení se použije k určení, které aplikace můžou pracovat s proxy REST. Další informace o vytváření skupin Azure AD najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-* Rozhraní příkazového řádku Azure Ujistěte se, že máte minimálně verzi 2.0.79. Viz [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Azure CLI Ujistěte se, že máte minimálně verzi 2.0.79. Viz [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-an-apache-kafka-cluster"></a>Vytvoření clusteru Apache Kafka
 
@@ -57,8 +58,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     |storageAccount|Nahraďte STORAGEACCOUNTNAME názvem nového účtu úložiště.|
     |httpPassword|HESLO pro přihlášení ke clusteru a **správce**nahraďte heslem.|
     |sshPassword|Heslo nahraďte heslem pro uživatelské jméno zabezpečeného prostředí **sshuser**.|
-    |securityGroupName|Nahraďte SECURITYGROUPNAME názvem skupiny zabezpečení AAD klienta pro proxy Kafka REST. Proměnná bude předána `--kafka-client-group-name` parametru pro `az-hdinsight-create`.|
-    |securityGroupID|Nahraďte SECURITYGROUPID ID skupiny zabezpečení AAD klienta pro proxy REST Kafka. Proměnná bude předána `--kafka-client-group-id` parametru pro `az-hdinsight-create`.|
+    |securityGroupName|Nahraďte SECURITYGROUPNAME názvem skupiny zabezpečení AAD klienta pro proxy Kafka REST. Proměnná bude předána `--kafka-client-group-name` parametru pro `az-hdinsight-create` .|
+    |securityGroupID|Nahraďte SECURITYGROUPID ID skupiny zabezpečení AAD klienta pro proxy REST Kafka. Proměnná bude předána `--kafka-client-group-id` parametru pro `az-hdinsight-create` .|
     |storageContainer|Kontejner úložiště, který bude cluster používat, ponechte ho pro tento kurz. Tato proměnná se nastaví s názvem clusteru.|
     |workernodeCount|Počet uzlů pracovního procesu v clusteru, ponechte to pro účely tohoto kurzu. Kafka vyžaduje minimálně 3 pracovní uzly, aby se zajistila vysoká dostupnost.|
     |clusterType|Typ clusteru HDInsight, ponechte to pro účely tohoto kurzu.|
@@ -142,9 +143,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
         |--verze|Verze clusteru HDInsight musí být minimálně 4,0. Hodnota je předána z proměnné **$clusterVersion**.|
         |--součást-verze|Verze Kafka musí být minimálně 2,1. Hodnota je předána z proměnné **$componentVersion**.|
     
-        Pokud chcete cluster vytvořit bez proxy serveru REST, `--kafka-management-node-size`vylučte, `--kafka-client-group-id`a `--kafka-client-group-name` z `az hdinsight create` příkazu.
+        Pokud chcete cluster vytvořit bez proxy serveru REST, vylučte `--kafka-management-node-size` , `--kafka-client-group-id` a `--kafka-client-group-name` z `az hdinsight create` příkazu.
 
-    1. Pokud máte existující virtuální síť, přidejte parametry `--vnet-name` a `--subnet`a jejich hodnoty.
+    1. Pokud máte existující virtuální síť, přidejte parametry `--vnet-name` a a `--subnet` jejich hodnoty.
 
     Zadejte následující příkaz pro vytvoření clusteru:
 

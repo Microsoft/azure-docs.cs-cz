@@ -5,12 +5,13 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 09df78955de6423244c2d8ec94e1e1c06ecab257
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4f425af7681b666b42fbcc70ac0e4c31d9df6d49
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650027"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503748"
 ---
 # <a name="create-and-use-a-custom-provider"></a>Vytvoření a použití vlastního zprostředkovatele
 
@@ -31,17 +32,17 @@ Po vytvoření koncového bodu můžete vytvořit vlastního poskytovatele, kter
 }
 ```
 
-Vlastnost | Požaduje se | Popis
+Vlastnost | Povinné | Popis
 ---|---|---
 **Jméno** | Ano | Název definice koncového bodu. Azure zpřístupňuje tento název prostřednictvím rozhraní API pod/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}
 **routingType** | Ne | Typ kontraktu koncového bodu. Pokud hodnota není zadaná, použije se výchozí hodnota "proxy".
-**endpoint** | Ano | Koncový bod, do kterého mají být směrovány požadavky. Tento koncový bod zpracovává odpověď a všechny vedlejší účinky žádosti.
+**Služba** | Ano | Koncový bod, do kterého mají být směrovány požadavky. Tento koncový bod zpracovává odpověď a všechny vedlejší účinky žádosti.
 
-Hodnota **koncového bodu** je aktivační adresa URL aplikace funkce Azure Functions. Zástupné symboly `<yourapp>`, `<funcname>`a `<functionkey>` musí být nahrazeny hodnotami pro vaši vytvořenou aplikaci Function App.
+Hodnota **koncového bodu** je aktivační adresa URL aplikace funkce Azure Functions. `<yourapp>` `<funcname>` `<functionkey>` Zástupné symboly, a musí být nahrazeny hodnotami pro vaši vytvořenou aplikaci Function App.
 
 ## <a name="define-custom-actions-and-resources"></a>Definování vlastních akcí a prostředků
 
-Vlastní zprostředkovatel obsahuje seznam definic koncových bodů, které jsou napsány v rámci vlastností **Actions** a **ResourceType** . Vlastnost **Actions (akce** ) se mapuje na vlastní akce vystavené vlastním poskytovatelem **a vlastnost** Resources je vlastní prostředky. V tomto kurzu má vlastní zprostředkovatel vlastnost **Actions** s názvem `myCustomAction` a vlastnost **resourcetypes** s názvem `myCustomResources`.
+Vlastní zprostředkovatel obsahuje seznam definic koncových bodů, které jsou napsány v rámci vlastností **Actions** a **ResourceType** . Vlastnost **Actions (akce** ) se mapuje na vlastní akce vystavené vlastním poskytovatelem **a vlastnost** Resources je vlastní prostředky. V tomto kurzu má vlastní zprostředkovatel vlastnost **Actions** s názvem `myCustomAction` a vlastnost **resourcetypes** s názvem `myCustomResources` .
 
 ```JSON
 {
@@ -112,7 +113,7 @@ Po vytvoření vlastního poskytovatele můžete použít nová rozhraní API Az
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
-> Zástupné symboly `{subscriptionId}` a `{resourceGroupName}` je nutné nahradit předplatným a skupinou prostředků, kde jste nasadili vlastního zprostředkovatele.
+> `{subscriptionId}`Zástupné symboly a je nutné nahradit `{resourceGroupName}` předplatným a skupinou prostředků, kde jste nasadili vlastního zprostředkovatele.
 
 ```azurecli-interactive
 az resource invoke-action --action myCustomAction \
@@ -123,7 +124,7 @@ az resource invoke-action --action myCustomAction \
                             }'
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Povinné | Popis
 ---|---|---
 *kroky* | Ano | Název akce definované ve vlastním zprostředkovateli
 *identifikační* | Ano | ID prostředku vlastního zprostředkovatele
@@ -131,7 +132,7 @@ Parametr | Požaduje se | Popis
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Žádné.
+Žádné
 
 ---
 
@@ -140,7 +141,7 @@ Parametr | Požaduje se | Popis
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
-> Zástupné symboly `{subscriptionId}` a `{resourceGroupName}` je nutné nahradit předplatným a skupinou prostředků, kde jste nasadili vlastního zprostředkovatele.
+> `{subscriptionId}`Zástupné symboly a je nutné nahradit `{resourceGroupName}` předplatným a skupinou prostředků, kde jste nasadili vlastního zprostředkovatele.
 
 #### <a name="create-a-custom-resource"></a>Vytvoření vlastního prostředku
 
@@ -156,10 +157,10 @@ az resource create --is-full-object \
                     }'
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Povinné | Popis
 ---|---|---
 *je-full-Object* | Ano | Určuje, zda objekt Properties obsahuje další možnosti, jako je umístění, značky, SKU nebo plán.
-*účet* | Ano | ID prostředku vlastního prostředku Toto ID je rozšířením ID prostředku vlastního poskytovatele.
+*id* | Ano | ID prostředku vlastního prostředku Toto ID je rozšířením ID prostředku vlastního poskytovatele.
 *vlastnosti* | Ano | Text žádosti, který se odešle do koncového bodu.
 
 #### <a name="delete-a-custom-resource"></a>Odstranění vlastního prostředku
@@ -168,9 +169,9 @@ Parametr | Požaduje se | Popis
 az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/myCustomProvider/myCustomResources/myTestResourceName1
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Povinné | Popis
 ---|---|---
-*účet* | Ano | ID prostředku vlastního prostředku Toto ID je rozšířením ID prostředku vlastního poskytovatele.
+*id* | Ano | ID prostředku vlastního prostředku Toto ID je rozšířením ID prostředku vlastního poskytovatele.
 
 #### <a name="retrieve-a-custom-resource"></a>Načtení vlastního prostředku
 
@@ -178,9 +179,9 @@ Parametr | Požaduje se | Popis
 az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/myCustomProvider/myCustomResources/myTestResourceName1
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Povinné | Popis
 ---|---|---
-*účet* | Ano | ID prostředku vlastního prostředku Toto ID je rozšířením ID prostředku vlastního poskytovatele.
+*id* | Ano | ID prostředku vlastního prostředku Toto ID je rozšířením ID prostředku vlastního poskytovatele.
 
 # <a name="template"></a>[Šablona](#tab/template)
 
@@ -204,9 +205,9 @@ Vzorová šablona Správce prostředků:
 }
 ```
 
-Parametr | Požaduje se | Popis
+Parametr | Povinné | Popis
 ---|---|---
-*Typ prostředku* | Ano | `name` Hodnota vlastnosti **resourcetypes** definovaná ve vlastním zprostředkovateli.
+*Typ prostředku* | Ano | `name`Hodnota vlastnosti **resourcetypes** definovaná ve vlastním zprostředkovateli.
 *resourceProviderName* | Ano | Název instance vlastního zprostředkovatele.
 *customResourceName* | Ano | Název vlastního prostředku
 
@@ -217,7 +218,7 @@ Parametr | Požaduje se | Popis
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o vlastních poskytovatelích. Další informace naleznete v tématu:
+V tomto článku jste se dozvěděli o vlastních poskytovatelích. Další informace:
 
 - [Postupy: Přidání vlastních akcí do Azure REST API](./custom-providers-action-endpoint-how-to.md)
 - [Postupy: Přidání vlastních prostředků do Azure REST API](./custom-providers-resources-endpoint-how-to.md)

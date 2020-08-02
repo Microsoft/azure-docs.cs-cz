@@ -10,12 +10,13 @@ ms.date: 02/05/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: bf7d72e6f16605827b55e3a460a9b28010842d2f
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 07e265710c69c2ed72df520bf090b7c7d86c8097
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220826"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503765"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Vytvoření účtu, který podporuje klíče spravované zákazníkem pro tabulky a fronty
 
@@ -61,7 +62,7 @@ az feature register --namespace Microsoft.Storage \
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Nelze použít
+Není k dispozici
 
 ---
 
@@ -93,7 +94,7 @@ az feature show --namespace Microsoft.Storage \
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Nelze použít
+Není k dispozici
 
 ---
 
@@ -119,7 +120,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Nelze použít
+Není k dispozici
 
 ---
 
@@ -247,7 +248,7 @@ az storage account show /
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Nelze použít
+Není k dispozici
 
 ---
 

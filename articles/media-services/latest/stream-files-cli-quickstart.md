@@ -10,15 +10,15 @@ keywords: azure media services, stream
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 91259e10966173cb701b867f5b3ed362112beef3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5a90e1fdc50a6e2b1544a06f587362bf43b80369
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80382779"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504445"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>Kurz: kódování vzdáleného souboru na základě adresy URL a streamování videa – Azure CLI
 
@@ -48,7 +48,7 @@ az group create -n amsResourceGroup -l westus2
 
 V tomto příkladu vytvoříme účet Standard LRS pro obecné účely v2.
 
-Pokud chcete experimentovat s účty úložiště, použijte `--sku Standard_LRS`. Když vybíráte SKU pro produkci, zvažte použití nástroje `--sku Standard_RAGRS`, který zajišťuje geografickou replikaci pro kontinuitu podnikových prostředí. Další informace najdete v tématu [účty úložiště](/cli/azure/storage/account).
+Pokud chcete experimentovat s účty úložiště, použijte `--sku Standard_LRS` . Když vybíráte SKU pro produkci, zvažte použití nástroje `--sku Standard_RAGRS` , který zajišťuje geografickou replikaci pro kontinuitu podnikových prostředí. Další informace najdete v tématu [účty úložiště](/cli/azure/storage/account).
 
 ```azurecli-interactive
 az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
@@ -187,12 +187,12 @@ Dostanete odpověď takto:
 
 Když odesíláte úlohy pro zpracování videí, je nutné sdělit Media Services, kde najít vstupní video. Jednou z možností je zadat adresu URL HTTPS jako vstup úlohy, jak je znázorněno v tomto příkladu.
 
-Když spustíte `az ams job start`, můžete pro výstup úlohy nastavit popisek. Pak můžete pomocí popisku identifikovat, k čemu je výstupní Asset.
+Když spustíte `az ams job start` , můžete pro výstup úlohy nastavit popisek. Pak můžete pomocí popisku identifikovat, k čemu je výstupní Asset.
 
 - Pokud k popisku přiřadíte hodnotu, nastavte '--Output-assets ' na "Asset = Label".
 - Pokud k popisku nepřiřadíte hodnotu, nastavte '--Output-assets ' na "Asset =".
 
-  Všimněte si, že přidáme "=" `output-assets`do.
+  Všimněte si, že přidáme "=" do `output-assets` .
 
 ```azurecli-interactive
 az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup
@@ -308,7 +308,7 @@ Dostanete odpověď takto:
 }
 ```
 
-Zkopírujte cestu k HTTP Live Streaming (HLS). V tomto případě je to `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`.
+Zkopírujte cestu k HTTP Live Streaming (HLS). V tomto případě je to `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)` .
 
 ## <a name="build-the-url"></a>Sestavení adresy URL
 
@@ -318,11 +318,11 @@ Zkopírujte cestu k HTTP Live Streaming (HLS). V tomto případě je to `/e01b2b
 az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 ```
 
-Zkopírujte `hostName` hodnotu. V tomto případě je to `amsaccount-usw22.streaming.media.azure.net`.
+Zkopírujte `hostName` hodnotu. V tomto případě je to `amsaccount-usw22.streaming.media.azure.net` .
 
 ### <a name="assemble-the-url"></a>Sestavení adresy URL
 
-"https://" + &lt;hodnota cesty&gt; + &lt;pro název hostitele HLS&gt;
+"https://" + hodnota &lt; cesty pro název hostitele &gt;  +  &lt; HLS&gt;
 
 Tady je příklad:
 
@@ -333,7 +333,7 @@ Tady je příklad:
 > [!NOTE]
 > Pokud je přehrávač hostovaný na serveru HTTPS, ujistěte se, že jste spustili adresu URL s protokolem HTTPS.
 
-1. Otevřete webový prohlížeč a pokračujte na [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
+1. Otevřete webový prohlížeč a pokračujte na [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) .
 2. Do pole **Adresa URL** vložte adresu URL, kterou jste vytvořili v předchozí části. Adresu URL můžete vložit ve formátu HLS, pomlčka nebo vyhlazení. Azure Media Player bude automaticky používat vhodný protokol pro streamování pro přehrávání na vašem zařízení.
 3. Vyberte **aktualizovat přehrávač**.
 

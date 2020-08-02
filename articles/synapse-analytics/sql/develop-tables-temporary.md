@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9e871b7959c11d7fbae650abf8394811b9088ed1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6c0e86bc372790cda2de4ff4c1274f414a01ab0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020556"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503204"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Dočasné tabulky v synapse SQL
 
@@ -23,7 +23,7 @@ Tento článek obsahuje základní pokyny k používání dočasných tabulek a 
 
 Prostředky ve fondu SQL i na vyžádání SQL (Preview) můžou využívat dočasné tabulky. SQL na vyžádání má omezení popsaná na konci tohoto článku. 
 
-## <a name="what-are-temporary-tables"></a>Co jsou dočasné tabulky?
+## <a name="temporary-tables"></a>Dočasné tabulky
 
 Dočasné tabulky jsou užitečné při zpracování dat, zejména při transformaci, kde jsou mezilehlé výsledky přechodné. V synapse SQL existují dočasné tabulky na úrovni relace.  Jsou viditelné pouze v relaci, ve které byly vytvořeny. V takovém případě jsou automaticky vyhozeny při odhlášení relace. 
 
@@ -98,7 +98,7 @@ GROUP BY
 > 
 > 
 
-### <a name="dropping-temporary-tables"></a>Vyřazení dočasných tabulek
+### <a name="drop-temporary-tables"></a>Odstranit dočasné tabulky
 Při vytvoření nové relace by neexistovaly žádné dočasné tabulky.  Nicméně pokud voláte stejnou uloženou proceduru, která vytvoří dočasný se stejným názvem, aby bylo zajištěno, že `CREATE TABLE` budou příkazy úspěšné, použijte jednoduchou kontrolu existence pomocí `DROP` : 
 
 ```sql
@@ -116,7 +116,7 @@ V případě vývoje uložených procedur je běžné vidět na konci postupu p�
 DROP TABLE #stats_ddl
 ```
 
-### <a name="modularizing-code"></a>Modularizing kód
+### <a name="modularize-code"></a>Naplánovat modularizaci kód
 Dočasné tabulky lze použít kdekoli v uživatelské relaci. Tato funkce se pak dá zneužít, aby vám pomohlo naplánovat modularizaci kód vaší aplikace.  Chcete-li předvést následující uloženou proceduru, vygeneruje DDL pro aktualizaci všech statistik v databázi podle názvu statistiky:
 
 ```sql

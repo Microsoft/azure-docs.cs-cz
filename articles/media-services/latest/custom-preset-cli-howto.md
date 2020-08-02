@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 3b718a0a67381e2b1eb19d2397ecf86e4a9c196d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4ea328cc21d849367d36342ed1b0953a7eb26c77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090123"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503884"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Jak kódovat pomocí vlastní transformace – Azure CLI
 
@@ -30,7 +30,7 @@ Při vytváření vlastních přednastavení platí následující požadavky:
 * Všechny hodnoty pro výšku a šířku v obsahu AVC musí být násobkem 4.
 * V Azure Media Services V3 jsou všechny přenosové rychlosti kódování v bitech za sekundu. To se liší od přednastavení s našimi rozhraními API v2, která jako jednotku používala kilobity za sekundu. Pokud je například přenosová rychlost v v2 zadaná jako 128 (kilobit/s), ve verzi V3 by se nastavila na 128000 (bity za sekundu).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [Vytvořte účet Media Services](./create-account-howto.md).
 

@@ -8,15 +8,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: abf7e864398d48742e0cbf99a9a7b7dae56b9c5d
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: ebf687716c8898acffb5e081fbf2f6217fe0f943
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100918"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503119"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Kurz: Import certifikátu v Azure Key Vault
 
@@ -25,7 +25,7 @@ Azure Key Vault je cloudová služba, která funguje jako zabezpečené úloži�
 V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
-> * Vytvoření trezoru klíčů
+> * Vytvořte trezor klíčů.
 > * Importujte certifikát v Key Vault pomocí portálu.
 > * Importujte certifikát v Key Vault pomocí rozhraní příkazového řádku.
 > * Importujte certifikát v Key Vault pomocí PowerShellu.
@@ -33,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Než začnete, přečtěte si téma [Key Vault Basic koncepty](../general/basic-concepts.md). 
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -90,7 +90,7 @@ Jakmile se zobrazí zpráva o úspěšném importu certifikátu, můžete na ně
 
 ## <a name="import-a-certificate-using-azure-cli"></a>Import certifikátu pomocí Azure CLI
 
-Importuje certifikát do zadaného trezoru klíčů. Pokud chcete importovat existující platný certifikát, který obsahuje privátní klíč, do Azure Key Vault, soubor, který se má importovat, může být ve formátu PFX nebo PEM. Pokud je certifikát ve formátu PEM, musí soubor PEM obsahovat klíč i certifikáty x509. Tato operace vyžaduje oprávnění k certifikátům a importu.
+Importuje certifikát do zadaného trezoru klíčů. Pokud chcete importovat existující platný certifikát, který obsahuje privátní klíč, do Azure Key Vault, soubor, který se má importovat, může být ve formátu PFX nebo PEM. Pokud je certifikát ve formátu PEM, musí soubor PEM obsahovat klíč i certifikáty x509. Tato operace vyžaduje oprávnění k importu certifikátů.
 
 ```azurecli
 az keyvault certificate import --file

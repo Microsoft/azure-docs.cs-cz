@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 5df104efb65152f5bcb71a86911e694611d8a742
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 154e5b5d9639203810e9d16dec4e2907fe5ee80a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022867"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504292"
 ---
 # <a name="monitor-media-services-metrics"></a>Monitorování metrik služby Media Services
 
@@ -26,7 +27,7 @@ ms.locfileid: "87022867"
 
 Azure Monitor poskytuje několik způsobů, jak pracovat s metrikami, včetně jejich grafu na portálu, přístupu k nim přes REST API nebo jejich dotazování pomocí rozhraní příkazového řádku Azure CLI. Tento článek ukazuje, jak monitorovat metriky pomocí Azure Portalch grafů a Azure CLI.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvoření účtu Media Services](./create-account-howto.md)
 - Kontrola [monitorování Media Services metriky a diagnostické protokoly](media-services-metrics-diagnostic-logs.md)

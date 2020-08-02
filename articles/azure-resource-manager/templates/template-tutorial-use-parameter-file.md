@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b91041b96a3819dbace3898d92226f0351f0f973
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: bd7917a96550d45b14eb5a5b5cae1ac957aa78b5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80411508"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502796"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Kurz: použití souborů parametrů k nasazení šablony ARM
 
@@ -34,13 +35,13 @@ Tato šablona funguje dobře, ale nyní chcete snadno spravovat parametry, kter�
 
 Soubory parametrů jsou soubory JSON se strukturou, která je podobná vaší šabloně. V souboru zadejte hodnoty parametrů, které chcete předat během nasazování.
 
-V VS Code vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem **azuredeploy. Parameters. dev. JSON**.
+V VS Code vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem **azuredeploy.parameters.dev.jsv**.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
 Tento soubor je vaším souborem parametrů pro vývojové prostředí. Všimněte si, že pro účet úložiště používá Standard_LRS, pojmenuje prostředky s předponou pro **vývoj** a nastaví značku **prostředí** na **dev**.
 
-Znovu vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem **azuredeploy. Parameters. prod. JSON**.
+Znovu vytvořte nový soubor s následujícím obsahem. Uložte soubor s názvem **azuredeploy.parameters.prod.jsv**.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
@@ -71,7 +72,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete spustit tento příkaz nasazení, musíte mít [nejnovější verzi](/cli/azure/install-azure-cli) rozhraní příkazového řádku Azure CLI.
+Jestliže chcete spustit tento příkaz nasazení, musíte mít k dispozici [nejnovější verzi](/cli/azure/install-azure-cli) Azure CLI.
 
 ```azurecli
 templateFile="{path-to-the-template-file}"
@@ -127,7 +128,7 @@ az deployment group create \
 
 Nasazení můžete ověřit prozkoumáním skupin prostředků z Azure Portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. V tomto kurzu se zobrazí dvě nové skupiny prostředků, které jste nasadili.
 1. Vyberte buď skupinu prostředků, a zobrazte nasazené prostředky. Všimněte si, že odpovídají hodnotám, které jste zadali v souboru parametrů pro toto prostředí.
@@ -141,7 +142,7 @@ Nasazení můžete ověřit prozkoumáním skupin prostředků z Azure Portal.
 
 ## <a name="next-steps"></a>Další kroky
 
-Gratulujeme, dokončili jste tento Úvod k nasazování šablon do Azure. Dejte nám vědět, pokud máte komentáře a návrhy v části věnované zpětné vazbě. Děkujeme!
+Gratulujeme, dokončili jste tento Úvod k nasazování šablon do Azure. Dejte nám vědět, pokud máte komentáře a návrhy v části věnované zpětné vazbě. Díky!
 
 Další série kurzů se podrobněji seznámí s nasazením šablon.
 

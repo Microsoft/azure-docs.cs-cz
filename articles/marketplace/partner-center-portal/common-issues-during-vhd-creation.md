@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: d717d93b616e8acd296c89322b7277cda5ade3a3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 273e6560cd4a9efeac6704ca5d44772248c26050
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323991"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504309"
 ---
 # <a name="common-issues-during-vhd-creation"></a>Běžné problémy při vytváření virtuálního pevného disku
 
@@ -34,8 +34,8 @@ Nemůžete. Po vytvoření virtuálního počítače už uživatelé (včetně v
 
 Tyto články vysvětlují, jak provést obnovení služby RDS pro virtuální počítače se systémem Windows a Linux:
 
-* [Jak resetovat službu Vzdálená plocha nebo její přihlašovací heslo ve virtuálním počítači s Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-reset-rdp/)
-* [Postup resetování hesla nebo klíče SSH pro Linux, oprava konfigurace SSH a kontrola konzistence disku pomocí rozšíření VMAccess](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
+* [Jak resetovat službu Vzdálená plocha nebo její přihlašovací heslo ve virtuálním počítači s Windows](/azure/virtual-machines/troubleshooting/reset-rdp)
+* [Postup resetování hesla nebo klíče SSH pro Linux, oprava konfigurace SSH a kontrola konzistence disku pomocí rozšíření VMAccess](/azure/virtual-machines/extensions/vmaccess)
 
 ## <a name="how-do-i-generate-new-ssh-certificates"></a>Návody generovat nové certifikáty SSH?
 
@@ -59,7 +59,7 @@ Ano, pokud je hostována v Azure. Azure přiřadí jedinečný identifikátor, k
 
 ## <a name="in-a-vm-how-do-i-manage-the-custom-script-extension-in-the-startup-task"></a>Jak se ve virtuálním počítači dá spravovat rozšíření vlastních skriptů v úloze po spuštění?
 
-Podrobnosti o použití rozšíření vlastních skriptů pomocí modulu Azure PowerShell, Azure Resource Manager šablon a postupu při řešení potíží v systémech Windows najdete v tématu [rozšíření vlastních skriptů pro Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/).
+Podrobnosti o použití rozšíření vlastních skriptů pomocí modulu Azure PowerShell, Azure Resource Manager šablon a postupu při řešení potíží v systémech Windows najdete v tématu [rozšíření vlastních skriptů pro Windows](/azure/virtual-machines/extensions/custom-script-windows).
 
 ## <a name="are-32-bit-applications-or-services-supported-in-azure-marketplace"></a>Jsou 32 aplikace nebo služby podporované v Azure Marketplace?
 

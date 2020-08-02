@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 4ba5c8b69776b39d8a6640744b0c24600f3a0d5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7bdeeedaac65f67a3224e824c19e8cad794682b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67175194"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507230"
 ---
 #### <a name="to-create-a-new-service"></a>Vytvoření nové služby
 
@@ -29,7 +29,7 @@ ms.locfileid: "67175194"
 
     2.  V rozevíracím seznamu **Předplatné** vyberte předplatné. Předplatné je propojeno s vaším fakturačním účtem. Toto pole není dostupné, pokud máte pouze jedno předplatné.
 
-    3.  V případě **skupiny prostředků**vyberte existující skupinu nebo vytvořte novou. Další informace najdete v tématu [Skupiny prostředků Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
+    3.  V případě **skupiny prostředků**vyberte existující skupinu nebo vytvořte novou. Další informace najdete v tématu [Skupiny prostředků Azure](/azure/azure-resource-manager/management/manage-resource-groups-portal).
 
     4.  Zadejte **Umístění** služby. V tématu [oblasti Azure](https://azure.microsoft.com/regions/#services) najdete další informace o tom, které služby jsou dostupné v jednotlivých oblastech. V části Obecné vyberte **umístění** , které je nejblíže geografické oblasti, kde chcete zařízení nasadit. Zvažte i následující okolnosti:
 

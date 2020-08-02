@@ -3,18 +3,19 @@ title: 'Kurz: odeslání vlastních událostí do hybridního připojení – Ev
 description: 'Kurz: k publikování tématu použijte Azure Event Grid a Azure CLI a přihlaste se k odběru této události. Hybridní připojení se používá pro koncový bod.'
 ms.date: 07/07/2020
 ms.topic: tutorial
-ms.openlocfilehash: acb3f3021722a612d6f07ec83d344f4be62c60f3
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 679cccf892d7b30964881d9a6146e02f3ee5dc90
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459432"
+ms.locfileid: "87503170"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Kurz: směrování vlastních událostí Azure Relay Hybrid Connections pomocí Azure CLI a Event Grid
 
 Azure Event Grid je služba zpracování událostí pro cloud. Azure Relay Hybrid Connections je jednou z podporovaných obslužných rutin událostí. Hybridní připojení použijete jako obslužnou rutinu události, když je potřeba zpracovat události z aplikací, které nemají veřejný koncový bod. Tyto aplikace se můžou nacházet ve vaší podnikové síti. V tomto článku vytvoříte pomocí Azure CLI vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Události odešlete do hybridního připojení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek předpokládá, že už máte hybridní připojení a aplikaci naslouchacího procesu. Pokud chcete začít používat hybridní připojení, přečtěte si téma [Začínáme s Relay Hybrid Connections – .NET](/azure/azure-relay/relay-hybrid-connections-dotnet-get-started) nebo [Začínáme s Relay Hybrid Connections – Node](/azure/azure-relay/relay-hybrid-connections-node-get-started).
 

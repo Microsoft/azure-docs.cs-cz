@@ -4,19 +4,19 @@ description: Přečtěte si o vytváření a konfiguraci spravovaných instancí
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 3f0eb2c1ecb26475b25cd5ca41c9c61d5e2b47a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cc2930422bf644f217737d0f0ba585c243575ee
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695572"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503000"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Reference spravovaného rozhraní API pro spravovanou instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ Pokud chcete vytvořit a spravovat spravované instance pomocí Azure PowerShell
 > [!TIP]
 > Ukázkové skripty PowerShellu najdete v tématu [skript pro rychlý Start: vytvoření spravované instance pomocí knihovny prostředí PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/).
 
-| Rutina | Description |
+| Rutina | Popis |
 | --- | --- |
 |[New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Vytvoří spravovanou instanci. |
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Vrátí informace o spravované instanci.|
@@ -56,7 +56,7 @@ Pokud chcete vytvořit a nakonfigurovat spravované instance pomocí [Azure CLI]
 > [!TIP]
 > Rychlý Start Azure CLI najdete v tématu [práce se službou SQL Managed instance pomocí Azure CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
 
-| Rutina | Description |
+| Rutina | Popis |
 | --- | --- |
 |[AZ SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |Vytvoří spravovanou instanci.|
 |[AZ SQL mi list](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|Zobrazí seznam dostupných spravovaných instancí.|
@@ -78,7 +78,7 @@ Chcete-li vytvořit a konfigurovat databáze instancí po vytvoření spravovan�
 > [!IMPORTANT]
 > Pomocí jazyka Transact-SQL nemůžete vytvořit nebo odstranit spravovanou instanci.
 
-| Příkaz | Description |
+| Příkaz | Popis |
 | --- | --- |
 |[VYTVOŘIT DATABÁZI](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|Vytvoří novou instanci databáze ve spravované instanci SQL. Aby bylo možné vytvořit novou databázi, je nutné, abyste byli připojeni k hlavní databázi.|
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Upraví databázi instance ve spravované instanci SQL.|
@@ -87,7 +87,7 @@ Chcete-li vytvořit a konfigurovat databáze instancí po vytvoření spravovan�
 
 Pokud chcete vytvořit a nakonfigurovat spravované instance, použijte tyto požadavky REST API.
 
-| Příkaz | Description |
+| Příkaz | Popis |
 | --- | --- |
 |[Spravované instance – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|Vytvoří nebo aktualizuje spravovanou instanci.|
 |[Spravované instance – odstranění](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|Odstraní spravovanou instanci.|

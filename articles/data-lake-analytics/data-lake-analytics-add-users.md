@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 09f866d7ed72e82770a7f3a0fe5da24bb864851f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7f9af576640e6d269ff5a44d7b0e2a529c20c505
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126070"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502932"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Přidání uživatele na webu Azure Portal
 
@@ -33,7 +33,7 @@ V případě potřeby udělte "R-X" nebo "RWX" ve složkách, které obsahují v
 1.  Najděte svůj Azure Data Lake Storage Gen1 účet.
 2.  Klikněte na **Uživatelé**.
 3. Klikněte na **Přidat**.
-4.  Vyberte roli Azure RBAC pro přiřazení této skupiny.
+4.  Vyberte roli Azure, která tuto skupinu přiřadí.
 5.  Přiřaďte roli čtenáře. Tato role má minimální sadu oprávnění potřebných pro procházení a správu dat uložených v ADLSGen1. Pokud skupina není určená pro správu služeb Azure, přiřaďte ji k této roli.
 6.  Zadejte název skupiny.
 7.  Klikněte na **OK**.
@@ -54,4 +54,3 @@ Vzorový příkaz, který uživateli poskytne přístup k odesílání úloh, zo
 * [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Začínáme s Data Lake Analytics pomocí Azure Portal](data-lake-analytics-get-started-portal.md)
 * [Správa Azure Data Lake Analytics pomocí Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
-

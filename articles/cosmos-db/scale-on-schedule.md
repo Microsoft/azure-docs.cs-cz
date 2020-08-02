@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9f538b02e81d885e22a6417d7c1f139c22635b0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 670a38b48ee89930078078dc4a8ac1a2876648e2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262476"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503731"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Škálování Azure Cosmos DB propustnosti pomocí triggeru časovače Azure Functions
 
 Výkon účtu Azure Cosmos vychází z množství zřízené propustnosti vyjádřené v jednotkách žádosti za sekundu (RU/s). Zřizování je druhé členitosti a účtuje se na základě nejvyšších RU/s za hodinu. Tento model zřízené kapacity umožňuje službě poskytovat předvídatelné a konzistentní propustnost, zaručenou nízkou latenci a vysokou dostupnost. Většina produkčních úloh tyto funkce. Ve vývojových a testovacích prostředích, kde se Azure Cosmos DB používá jenom během pracovní doby, si ale můžete horizontální navýšení kapacity škálovat a až do hodin večer po pracovní době škálovat zpátky.
 
-Propustnost můžete nastavit prostřednictvím [šablon Azure Resource Manager](resource-manager-samples.md), [Azure CLI](cli-samples.md)a [PowerShellu](powershell-samples-sql.md)pro Core (SQL) účty rozhraní API nebo pomocí sad SDK pro Azure Cosmos DB konkrétní jazyk. Výhodou použití šablon Správce prostředků, Azure CLI nebo PowerShellu je to, že podporují všechna rozhraní API Azure Cosmos DB modelů.
+Propustnost můžete nastavit prostřednictvím [šablon Azure Resource Manager](resource-manager-samples.md), [Azure CLI](cli-samples.md)a [PowerShellu](powershell-samples.md)pro Core (SQL) účty rozhraní API nebo pomocí sad SDK pro Azure Cosmos DB konkrétní jazyk. Výhodou použití šablon Správce prostředků, Azure CLI nebo PowerShellu je to, že podporují všechna rozhraní API Azure Cosmos DB modelů.
 
 ## <a name="throughput-scheduler-sample-project"></a>Ukázkový projekt plánovače propustnosti
 

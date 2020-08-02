@@ -7,18 +7,19 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: 34a9858ffbec2360a347b8c765d53551fd2d9fc0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 8fdf78c0a3dd2f7a130d827751ce93c5539575df
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76935426"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502949"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Rychlý Start: Vytvoření privátní zóny DNS Azure pomocí Azure CLI
 
 Tento rychlý Start vás provede kroky k vytvoření první privátní zóny DNS a záznamu pomocí Azure CLI.
 
-K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Ty se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
+K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do vaší virtuální sítě, zadáte seznam virtuálních sítí, které mají povolené překládání záznamů v rámci zóny.  Ty se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
 
 V tomto rychlém startu se naučíte:
 
@@ -109,7 +110,7 @@ az vm create \
  --image win2016datacenter
 ```
 
-Dokončení tohoto procesu může několik minut trvat.
+Dokončení může několik minut trvat.
 
 ## <a name="create-an-additional-dns-record"></a>Vytvoření dalšího záznamu DNS
 
@@ -160,7 +161,7 @@ Totéž zopakujte pro virtuální počítač myVM02.
    ping myVM01.private.contoso.com
    ```
 
-   Zobrazený výstup by měl vypadat zhruba takto:
+   Zobrazený výstup by měl vypadat nějak takto:
 
    ```
    PS C:\> ping myvm01.private.contoso.com
@@ -184,7 +185,7 @@ Totéž zopakujte pro virtuální počítač myVM02.
    ping db.private.contoso.com
    ```
 
-   Zobrazený výstup by měl vypadat zhruba takto:
+   Zobrazený výstup by měl vypadat nějak takto:
 
    ```
    PS C:\> ping db.private.contoso.com

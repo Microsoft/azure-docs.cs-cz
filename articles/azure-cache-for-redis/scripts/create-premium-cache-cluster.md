@@ -8,12 +8,13 @@ ms.service: cache
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
-ms.openlocfilehash: 68203fe2e054f32ce5764fe4f1b07013b0806104
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: ad29c7d12428d8f010017f9ef3a66cecb82db43a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75411144"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502830"
 ---
 # <a name="create-a-premium-azure-cache-for-redis-with-clustering"></a>Vytvoření mezipaměti Azure Premium pro Redis s clusteringem
 

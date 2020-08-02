@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 721f9c623255b964e38da1c0f4b7bbf72d0c721d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6867d24d84f6dfb51b2ca7b86ec882102b96552b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075631"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504411"
 ---
-# <a name="windows-virtual-desktop-faq"></a>Nejčastější dotazy k virtuálním plochám Windows
+# <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop – nejčastější dotazy
 
 Tento článek obsahuje odpovědi na nejčastější dotazy a vysvětluje osvědčené postupy pro virtuální počítače s Windows.
 
@@ -46,7 +46,7 @@ Chcete-li správce omezit pouze na správu uživatelských relací, jako je nap�
 
 ## <a name="does-windows-virtual-desktop-support-split-azure-active-directory-models"></a>Podporuje virtuální počítač s Windows rozdělení Azure Active Directory modelů?
 
-Když je uživatel přiřazen ke skupině aplikací, služba provede jednoduché přiřazení role řízení přístupu na základě role (RBAC) Azure. V důsledku toho musí být Azure Active Directory uživatele (AD) a služba Azure AD skupiny aplikací ve stejném umístění. Všechny objekty služby, jako jsou fondy hostitelů, skupiny aplikací a pracovní prostory, musí být ve stejné službě Azure AD jako uživatel.
+Když je uživatel přiřazen ke skupině aplikací, služba provede jednoduché přiřazení role Azure. V důsledku toho musí být Azure Active Directory uživatele (AD) a služba Azure AD skupiny aplikací ve stejném umístění. Všechny objekty služby, jako jsou fondy hostitelů, skupiny aplikací a pracovní prostory, musí být ve stejné službě Azure AD jako uživatel.
 
 Pokud synchronizujete službu Active Directory se službou Azure AD ve stejné virtuální síti (VNET), můžete vytvořit virtuální počítače v jiné službě Azure AD.
 
