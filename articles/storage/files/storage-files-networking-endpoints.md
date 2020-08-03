@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0859b034cf0caa60039fbf9eb4dd9be54448a940
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: cef1aab42eea84c737d5c0173bd4d0e0aa509fe4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510327"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497762"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Konfigurace koncových bodů sítě služby soubory Azure
 Soubory Azure poskytují dva hlavní typy koncových bodů pro přístup ke sdíleným složkám Azure: 
@@ -153,7 +154,7 @@ Když omezíte účet úložiště na konkrétní virtuální sítě, povolujete
 
 ---
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 - [Požadavky na síť pro Azure Files](storage-files-networking-overview.md)
-- [Konfigurace předávání DNS pro soubory Azure](storage-files-networking-dns.md)
+- [Konfigurace přesměrování DNS pro Azure Files](storage-files-networking-dns.md)
 - [Konfigurace S2S VPN pro soubory Azure](storage-files-configure-s2s-vpn.md)

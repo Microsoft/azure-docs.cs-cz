@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/24/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 15cf4aa6adda26991e76ec8a5e7378766fe2a21f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6234e9efe4f6dd122a22ee834ef9c35269eea95f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84552646"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500976"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Zabezpečení přístupu k datům v Azure Machine Learning
 
@@ -67,14 +67,17 @@ Podporované cloudové služby úložiště v Azure, které se dají registrovat
 
 ## <a name="datasets"></a>Datové sady
 
-Azure Machine Learning datové sady jsou odkazy, které odkazují na data ve vaší službě úložiště. Nejedná se o kopie vašich dat, takže se neúčtují žádné dodatečné náklady na úložiště. Pokud chcete s daty v úložišti pracovat, [Vytvořte datovou sadu](how-to-create-register-datasets.md) , která zabalí data do spotřebního objektu pro úlohy strojového učení. Zaregistrujte datovou sadu do svého pracovního prostoru, abyste ji mohli sdílet a opakovaně používat v různých experimentech bez složitosti příjmu dat.
+Azure Machine Learning datové sady jsou odkazy, které odkazují na data ve vaší službě úložiště. Nejedná se o kopie vašich dat, takže se neúčtují žádné dodatečné náklady na úložiště a integrita vašich původních zdrojů dat nehrozí.
+
+ Pokud chcete s daty v úložišti pracovat, [Vytvořte datovou sadu](how-to-create-register-datasets.md) , která zabalí data do spotřebního objektu pro úlohy strojového učení. Zaregistrujte datovou sadu do svého pracovního prostoru, abyste ji mohli sdílet a opakovaně používat v různých experimentech bez složitosti příjmu dat.
 
 Datové sady je možné vytvořit z místních souborů, veřejných adres URL, [otevřených datových sad Azure](https://azure.microsoft.com/services/open-datasets/)nebo služeb úložiště Azure prostřednictvím úložiště dat. Chcete-li vytvořit datovou sadu z datového rámce v paměti PANDAS, zapište data do místního souboru, jako je například Parquet, a vytvořte datovou sadu z tohoto souboru.  
 
 Podporujeme 2 typy datových sad: 
-+ [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) představuje data v tabulkovém formátu tak, že analyzuje zadaný soubor nebo seznam souborů. Můžete načíst TabularDataset do datového rámce PANDAS nebo Spark pro další manipulaci a čištění. Úplný seznam formátů dat, ze kterých můžete vytvořit TabularDatasets, najdete v tématu [Třída TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference).
 
-+ [Datová sada](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) souborů odkazuje na jeden nebo více souborů v úložišti dat nebo veřejných adresách URL. Do cíle výpočetního prostředí můžete [Stáhnout nebo připojit soubory](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) , na které odkazují datové sady.
++ [Datová sada](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) souborů odkazuje na jeden nebo více souborů v úložišti dat nebo veřejných adresách URL. Pokud jsou vaše data už vyčištěná a připravená k použití ve školicích experimentech, můžete [Stáhnout nebo připojit soubory](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) , na které se odkazuje pomocí datových sad, do svého cíle výpočetní služby.
+
++ [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) představuje data v tabulkovém formátu tak, že analyzuje zadaný soubor nebo seznam souborů. Můžete načíst TabularDataset do datového rámce PANDAS nebo Spark pro další manipulaci a čištění. Úplný seznam formátů dat, ze kterých můžete vytvořit TabularDatasets, najdete v tématu [Třída TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference).
 
 Další možnosti datových sad najdete v následující dokumentaci:
 

@@ -5,13 +5,13 @@ author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: 0c4c5ddfebe9e2b5b37a2c28ec4941f6c38668f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/31/2020
+ms.openlocfilehash: 93507bae3f817f92cfa427ceca10f651352a46bc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219223"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497575"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Nejčastější dotazy k Azure Red Hat OpenShift
 
@@ -235,3 +235,7 @@ V případě clusterů 3,11 nejsou data na úrovni etcd šifrovaná. Možnost za
 Pro clustery 4. x je disk Azure (Premium_LRS) nakonfigurovaný jako výchozí třída úložiště. Další poskytovatele úložiště a podrobnosti o konfiguraci (včetně souboru Azure) najdete v dokumentaci k Red Hat v [trvalém úložišti](https://docs.openshift.com/aro/4/storage/understanding-persistent-storage.html).
 
 Pro clustery 3,11 jsou ve výchozím nastavení k dispozici dvě třídy úložiště: jeden pro disk Azure (Premium_LRS) a jeden pro soubor Azure.
+
+## <a name="does-aro-store-any-customer-data-outside-of-the-clusters-region"></a>Ukládá ARO všechna zákaznická data mimo oblast clusteru?
+
+Ne. Všechna data vytvořená v clusteru ARO se udržují v rámci oblasti clusteru.

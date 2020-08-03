@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 2a534bd0cb89e837ff2315cb3fb9cfe70ad01f5f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ab1cba455f93abe4d603f417f8d0a00dda0e315e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078982"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497643"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
@@ -36,7 +36,7 @@ Pokud chcete vytvořit cluster HDInsight, který používá Data Lake Storage Ge
 
 Vytvořte spravovanou identitu přiřazenou uživatelem, pokud ji ještě nemáte.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V levém horním rohu klikněte na **vytvořit prostředek**.
 1. Do vyhledávacího pole zadejte **přiřazený uživatel** a klikněte na položku **spravovaná identita přiřazená uživateli**.
 1. Klikněte na **Vytvořit**.
@@ -51,7 +51,7 @@ Další informace o tom, jak spravované identity fungují ve službě Azure HDI
 
 Vytvořte účet úložiště Azure Data Lake Storage Gen2.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V levém horním rohu klikněte na **vytvořit prostředek**.
 1. Do vyhledávacího pole zadejte **Storage** a klikněte na **účet úložiště**.
 1. Klikněte na **Vytvořit**.
@@ -61,7 +61,7 @@ Vytvořte účet úložiště Azure Data Lake Storage Gen2.
     1. Klikněte na kartu **Upřesnit** .
     1. V části **Data Lake Storage Gen2**klikněte na **povoleno** vedle **hierarchického oboru názvů** .
     1. Klikněte na **Zkontrolovat a vytvořit**.
-    1. Klikněte na **vytvořit** .
+    1. Klikněte na **Vytvořit**.
 
 Další informace o dalších možnostech při vytváření účtu úložiště najdete v tématu [rychlý Start: vytvoření účtu úložiště Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
@@ -159,7 +159,7 @@ Data Lake Storage Gen2 používá model řízení přístupu, který podporuje �
 
 RBAC pomocí přiřazení rolí efektivně aplikuje sady oprávnění pro uživatele, skupiny a instanční objekty pro prostředky Azure. Tyto prostředky Azure jsou obvykle omezené na prostředky nejvyšší úrovně (například účty Azure Storage). Pro Azure Storage a také Data Lake Storage Gen2 tento mechanismus byl rozšířen na prostředek systému souborů.
 
- Další informace o oprávněních k souborům pomocí RBAC najdete v tématu [řízení přístupu na základě role (RBAC) v Azure](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac).
+ Další informace o oprávněních k souborům pomocí RBAC najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac).
 
 Další informace o oprávněních k souborům pomocí seznamů řízení přístupu najdete v tématu [seznam řízení přístupu pro soubory a adresáře](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 

@@ -4,12 +4,12 @@ description: Azure Service Fabric Reliable State Manager a Reliable Collections 
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
-ms.openlocfilehash: c7d0970918b0fc60f1208b5997d696a57e5bc698
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d1094462ebabcea1fbead3d5b30fdfb8dda6463a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245105"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500278"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transakce a režimy zámků ve službě Azure Service Fabric Reliable Collections
 
@@ -68,16 +68,16 @@ Zámek aktualizace je asymetrický zámek, který slouží k tomu, aby se zabrá
 
 Matice o kompatibilitě zámku najdete v následující tabulce:
 
-| Žádost – uděleno | Žádné | Shared | Aktualizovat | Vyhrazen |
+| Žádost – uděleno | Žádná | Shared | Aktualizace | Vyhrazen |
 | --- |:--- |:--- |:--- |:--- |
 | Shared |Bez konfliktu |Bez konfliktu |Konflikt |Konflikt |
-| Aktualizovat |Bez konfliktu |Bez konfliktu |Konflikt |Konflikt |
+| Aktualizace |Bez konfliktu |Bez konfliktu |Konflikt |Konflikt |
 | Vyhrazen |Bez konfliktu |Konflikt |Konflikt |Konflikt |
 
 Pro detekci zablokování se používá argument Timeout v rozhraních API Reliable Collections.
 Například dvě transakce (T1 a T2) se pokoušejí přečíst a aktualizovat K1.
 Je možné je zablokovat, protože oba končí sdíleným zámkem.
-V takovém případě dojde k vypršení časového limitu jedné nebo obou operací. I v tomto scénáři by zámek aktualizace mohl zabránit takovému zablokování.
+V takovém případě dojde k vypršení časového limitu jedné nebo obou operací. V tomto scénáři by zámek aktualizace mohl zabránit takovému zablokování.
 
 ## <a name="next-steps"></a>Další kroky
 

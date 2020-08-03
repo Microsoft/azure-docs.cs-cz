@@ -5,12 +5,13 @@ author: mumian
 ms.date: 06/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1e286a3b59279ed9658a373210f1425ece05eff4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 140eb73cdf6d5bb701c08b0dd8d5f85b6f137df6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102095"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497473"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Kurz: vytvoření a nasazení první šablony ARM
 
@@ -20,7 +21,7 @@ Tento kurz je první z řad. Jak budete postupovat podle řady, upravíte úvodn
 
 Pokud se chcete dozvědět o výhodách používání šablon a proč byste měli automatizovat nasazení se šablonami, přečtěte si téma [Azure Resource Manager šablony](overview.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="get-tools"></a>Získat nástroje
 
@@ -34,7 +35,7 @@ Pojďme začít tím, že budete mít k dispozici nástroje, které potřebujete
 
 K nasazení šablony budete taky potřebovat buď Azure PowerShell, nebo rozhraní příkazového řádku Azure. Pokud používáte Azure CLI, musíte mít nejnovější verzi. Pokyny k instalaci najdete v těchto tématech:
 
-- [Instalace prostředí Azure PowerShell](/powershell/azure/install-az-ps)
+- [Nainstalovat Azure PowerShell](/powershell/azure/install-az-ps)
 - [Instalace Azure CLI ve Windows](/cli/azure/install-azure-cli-windows)
 - [Instalace rozhraní příkazového řádku Azure CLI v systému Linux](/cli/azure/install-azure-cli-linux)
 - [Instalace Azure CLI v macOS](/cli/azure/install-azure-cli-macos)
@@ -75,7 +76,7 @@ V pořádku budete připraveni začít se získáváním informací o šablonác
     - **contentversion –**: Určuje verzi šablony (například 1.0.0.0). Pro tento prvek můžete zadat libovolnou hodnotu. Tuto hodnotu použijte k dokumentování významných změn v šabloně. Při nasazování prostředků pomocí šablony můžete tuto hodnotu použít k tomu, abyste se ujistili, že je používána pravá šablona.
     - **prostředky**: obsahuje prostředky, které chcete nasadit nebo aktualizovat. V současné době je prázdná, ale později přidáte prostředky.
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 Blahopřejeme, vytvořili jste svou první šablonu.
 
@@ -138,7 +139,7 @@ az group create \
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
-K nasazení šablony použijte rozhraní příkazového řádku Azure nebo Azure PowerShell. Použijte skupinu prostředků, kterou jste vytvořili. Zadejte název nasazení, abyste ho mohli snadno identifikovat v historii nasazení. Pro usnadnění práce vytvořte také proměnnou, která ukládá cestu k souboru šablony. Tato proměnná usnadňuje spuštění příkazů nasazení, protože nemusíte znovu zadávat cestu pokaždé, když nasadíte.
+K nasazení šablony použijte rozhraní příkazového řádku Azure nebo Azure PowerShell. Použijte skupinu prostředků, kterou jste vytvořili. Zadejte název nasazení, abyste ho mohli snadno identifikovat v historii nasazení. Pro usnadnění práce vytvořte také proměnnou, která ukládá cestu k souboru šablony. Tato proměnná vám usnadní spouštění příkazů nasazení, protože nebudete muset znovu zadávat cestu při každém nasazování.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -152,7 +153,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete spustit tento příkaz nasazení, musíte mít [nejnovější verzi](/cli/azure/install-azure-cli) rozhraní příkazového řádku Azure CLI.
+Jestliže chcete spustit tento příkaz nasazení, musíte mít k dispozici [nejnovější verzi](/cli/azure/install-azure-cli) Azure CLI.
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
@@ -183,7 +184,7 @@ Příkaz pro nasazení vrátí výsledky. Vyhledejte, pokud `ProvisioningState` 
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 

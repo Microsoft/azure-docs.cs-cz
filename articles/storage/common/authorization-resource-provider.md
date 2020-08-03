@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d2e84cf06019c592a726564768f9b332ab5ed610
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5b171c5ff5bc848a0005fad5a2e0b6c0ca548724
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372293"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496069"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Použití poskytovatele prostředků Azure Storage k přístupu k prostředkům správy
 
@@ -36,7 +36,7 @@ Každé předplatné Azure má přidruženou Azure Active Directory, která spra
 
 Když přiřadíte roli RBAC objektu zabezpečení, také určíte rozsah, ve kterém budou oprávnění udělená rolí platná. Pro operace správy můžete přiřadit roli na úrovni předplatného, skupiny prostředků nebo účtu úložiště. Roli RBAC můžete přiřadit objektu zabezpečení pomocí [Azure Portal](https://portal.azure.com/), [nástrojů Azure CLI](../../cli-install-nodejs.md), [powershellu](/powershell/azure/)nebo [poskytovatele prostředků Azure Storage REST API](/rest/api/storagerp).
 
-Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md) a [klasické role správců předplatného, role Azure RBAC a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md) a [klasické role správců předplatného, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 ### <a name="built-in-roles-for-management-operations"></a>Předdefinované role pro operace správy
 
@@ -77,5 +77,5 @@ Další informace o modelech nasazení Azure najdete v tématu [Správce prostř
 ## <a name="next-steps"></a>Další kroky
 
 - [Přehled Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
-- [Co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md)
+- [Co je řízení přístupu na základě role v Azure (Azure RBAC)?](../../role-based-access-control/overview.md)
 - [Cíle škálovatelnosti pro poskytovatele prostředků Azure Storage](scalability-targets-resource-provider.md)

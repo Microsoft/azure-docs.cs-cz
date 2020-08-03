@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d1de40944b4ab15268cda576f477c08fc179f1df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a13a8b2eef9fa1bd9c7281ac6b7c7dba40105428
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255942"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497320"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Základní hodnoty zabezpečení Azure pro Azure Data Box
 
@@ -216,7 +216,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Doprovodné**materiály: udržování inventáře uživatelských účtů, které mají přístup pro správu k vašemu Azure Data box. Ke konfiguraci řízení přístupu na základě role (RBAC) můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. při prvním vytvoření objednávky můžete určit, kdo má mít přístup k vaší objednávce. Nastavte role Access Control na základě rolí (RBAC) v různých oborech, abyste mohli řídit přístup k objednávce Data Box. Role RBAC určuje typ přístupu – čtení i zápis, čtení i zápis v podmnožině operací.
+**Doprovodné**materiály: udržování inventáře uživatelských účtů, které mají přístup pro správu k vašemu Azure Data box. Ke konfiguraci řízení přístupu na základě role (RBAC) můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. při prvním vytvoření objednávky můžete určit, kdo má mít přístup k vaší objednávce. Nastavte role Azure v různých oborech, abyste mohli řídit přístup k pořadí Data Box. Role Azure určuje typ přístupu – čtení i zápis, čtení i zápis v podmnožině operací.
 
 * [Porozumění vlastním rolím](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 

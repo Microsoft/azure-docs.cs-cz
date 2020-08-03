@@ -8,13 +8,13 @@ ms.service: application-gateway
 ms.topic: quickstart
 ms.date: 03/05/2020
 ms.author: victorh
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: b36b5b1700df1767ad4323fed72ee05fdb05321f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: mvc, devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: d79f51e32fa62527140ccf19cfc3573339d22fab
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290964"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499122"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure CLI
 

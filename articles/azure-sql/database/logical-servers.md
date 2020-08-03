@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: b45714489f13d33d90b5694f458e6339e33595f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbcc82d3ec4b50cf51210f8a4319bbf374185a88
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367563"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498085"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Co je logický SQL Server v Azure SQL Database a Azure synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -34,7 +34,7 @@ Server v SQL Database a Azure synapse:
 - Je nadřazeným prostředkem pro databáze, elastické fondy a datové sklady.
 - Poskytuje obor názvů pro databáze, elastické fondy a databázi datového skladu.
 - Je logický kontejner se silnými sémantikou životního cyklu – odstraní Server a odstraní jeho databáze, elastické fondy a SQK fondy.
-- Podílí se na [řízení přístupu na základě role (RBAC) v Azure](/azure/role-based-access-control/overview) – databáze, elastické fondy a databáze datového skladu na serveru dědí přístupová práva ze serveru.
+- Podílí se na [řízení přístupu na základě role Azure (Azure RBAC)](/azure/role-based-access-control/overview) – databáze, elastické fondy a databáze datového skladu na serveru dědí přístupová práva ze serveru.
 - Je vysokým prvkem identity databází, elastických fondů a databází datového skladu pro účely správy prostředků Azure (viz schéma adresy URL pro databáze a fondy).
 - Uspořádává prostředky v oblasti.
 - Poskytuje koncový bod připojení pro přístup k databázi (`<serverName>`.database.windows.net).
@@ -87,7 +87,7 @@ Pokud chcete spravovat existující databázi, přejděte na stránku **databáz
 
 Pokud chcete vytvářet a spravovat servery, databáze a brány firewall pomocí Azure PowerShell, použijte následující rutiny PowerShellu. Pokud potřebujete nainstalovat nebo upgradovat PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Informace o vytváření a správě elastických fondů najdete v tématu [elastické fondy](elastic-pool-overview.md).
 
-| Rutina | Description |
+| Rutina | Popis |
 | --- | --- |
 |[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|Vytvoří databázi. |
 |[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|Získá jednu nebo více databází.|
@@ -112,7 +112,7 @@ Pokud chcete vytvářet a spravovat servery, databáze a brány firewall pomocí
 
 Pokud chcete vytvořit a spravovat servery, databáze a brány firewall pomocí [Azure CLI](/cli/azure), použijte následující příkazy [Azure CLI SQL Database](/cli/azure/sql/db) . Rozhraní příkazového řádku můžete spustit v prohlížeči pomocí [Cloud Shellu](/azure/cloud-shell/overview) nebo [nainstalovat](/cli/azure/install-azure-cli) v systémech macOS, Linux nebo Windows. Informace o vytváření a správě elastických fondů najdete v tématu [elastické fondy](elastic-pool-overview.md).
 
-| Rutina | Description |
+| Rutina | Popis |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Vytvoří databázi.|
 |[AZ SQL DB list](/cli/azure/sql/db#az-sql-db-list)|Zobrazí všechny databáze spravované serverem nebo všechny databáze v elastickém fondu.|
@@ -145,7 +145,7 @@ Chcete-li vytvořit a spravovat servery, databáze a brány firewall pomocí jaz
 > [!IMPORTANT]
 > Nemůžete vytvořit nebo odstranit server pomocí jazyka Transact-SQL.
 
-| Příkaz | Description |
+| Příkaz | Popis |
 | --- | --- |
 |[VYTVOŘIT databázi (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Vytvoří novou databázi v Azure SQL Database. Aby bylo možné vytvořit novou databázi, je nutné, abyste byli připojeni k hlavní databázi.|
 |[Vytvoření databáze (Azure synapse)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Vytvoří novou databázi datového skladu v Azure synapse. Aby bylo možné vytvořit novou databázi, je nutné, abyste byli připojeni k hlavní databázi.|
@@ -171,7 +171,7 @@ Chcete-li vytvořit a spravovat servery, databáze a brány firewall pomocí jaz
 
 Pokud chcete vytvářet a spravovat servery, databáze a brány firewall, použijte tyto požadavky REST API.
 
-| Příkaz | Description |
+| Příkaz | Popis |
 | --- | --- |
 |[Servery – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Vytvoří nebo aktualizuje nový server.|
 |[Servery – odstranit](https://docs.microsoft.com/rest/api/sql/servers/delete)|Odstraní server.|

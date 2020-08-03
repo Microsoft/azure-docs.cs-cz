@@ -14,7 +14,7 @@ ms.locfileid: "87336888"
 ---
 ## <a name="prepare-an-iot-hub"></a>Příprava služby IoT Hub
 
-Abyste mohli dokončit kroky v tomto článku, potřebujete ve svém předplatném Azure službu Azure IoT Hub. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Abyste mohli dokončit kroky v tomto článku, potřebujete ve svém předplatném Azure službu Azure IoT Hub. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 Pokud používáte Azure CLI místně, přihlaste se ke svému předplatnému Azure pomocí `az login` . Pokud tyto příkazy spouštíte v Azure Cloud Shell, jste přihlášeni automaticky.
 

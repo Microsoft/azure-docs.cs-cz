@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: a3b012d86444ca2bb9b84af37aa17424221457d1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955059"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495688"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Ladění výkonu s využitím materializovaných zobrazení
 
@@ -36,11 +36,11 @@ Většina standardních požadavků zobrazení se pořád vztahuje na materializ
 |Zobrazení definice                 | Uložené v Azure Data Warehouse.              | Uložené v Azure Data Warehouse.
 |Zobrazení obsahu                    | Vygenerováno pokaždé, když je použito zobrazení.   | Předzpracovaná a uložená v Azure Data Warehouse během vytváření zobrazení. Aktualizováno při přidání dat do podkladových tabulek.
 |Aktualizace dat                    | Vždy Aktualizováno                               | Vždy Aktualizováno
-|Rychlost načtení dat zobrazení ze složitých dotazů     | Pomalé                                         | Světl  
+|Rychlost načtení dat zobrazení ze složitých dotazů     | Pomalá                                         | Rychlý  
 |Dodatečné úložiště                   | No                                           | Ano
 |Syntax                          | VYTVOŘIT ZOBRAZENÍ                                  | VYTVOŘIT MATERIALIZOVANÁ ZOBRAZENÍ JAKO VYBRAT
 
-## <a name="benefits-of-using-materialized-views"></a>Výhody použití materializovaná zobrazení
+## <a name="benefits-of-materialized-views"></a>Výhody materializovaná zobrazení
 
 Správně navržené materializované zobrazení přináší následující výhody:
 
@@ -58,7 +58,7 @@ Ve srovnání s jinými poskytovateli datového skladu poskytují materializovan
 - Podpora široké agregační funkce Viz téma [Vytvoření materializované zobrazení jako Select (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 - Podpora doporučení pro materializované zobrazení pro konkrétní dotazy  Viz [vysvětlení (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-## <a name="common-scenarios"></a>Typické scénáře  
+## <a name="common-scenarios"></a>Obvyklé scénáře  
 
 Materializovaná zobrazení se obvykle používají v následujících scénářích:
 

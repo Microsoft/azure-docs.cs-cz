@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 07/24/2020
+ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: 979891a3ebea8070c6882fff62ed4a7954041d3e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a6d5c7e06ed59ab76b15f4f8ae880408dc6f7835
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371034"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500874"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -33,9 +33,7 @@ Azure Lighthouse umožňuje větší flexibilitu při správě prostředků pro 
 
 Úlohy správy můžete u delegovaných prostředků provádět buď přímo na portálu, nebo pomocí rozhraní API a nástrojů pro správu (například Azure CLI a Azure PowerShell). Všechna existující rozhraní API se dají použít při práci s delegovanými prostředky, pokud je tato funkce podporovaná pro správu mezi klienty a uživatel má příslušná oprávnění.
 
-[Rutina Azure PowerShell Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) zobrazuje `tenantID` pro každé předplatné, což vám umožní určit, jestli vrácené předplatné patří do vašeho tenanta poskytovatele služeb nebo do spravovaného tenanta zákazníka.
-
-Podobně příkazy rozhraní příkazového řádku Azure, jako [AZ Account list](/cli/azure/account?view=azure-cli-latest#az-account-list) , zobrazují atributy **homeTenantId** a **managedByTenants** .
+Příkazy rozhraní příkazového řádku Azure, jako je například [AZ Account list](/cli/azure/account?view=azure-cli-latest#az-account-list) , **homeTenantId** a **managedByTenants** atributy pro každé předplatné, což vám umožní určit, jestli vrácené předplatné patří do vašeho tenanta poskytovatele služeb nebo do spravovaného tenanta zákazníka.
 
 > [!TIP]
 > Pokud nevidíte tyto hodnoty při použití rozhraní příkazového řádku Azure, zkuste vyprázdnit mezipaměť spuštěním příkazu `az account clear` a `az login --identity` .
@@ -70,7 +68,7 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 
 [Azure cost management + fakturace](../../cost-management-billing/index.yml):
 
-- Od tenanta pro správu můžou partneři CSP zobrazovat, spravovat a analyzovat náklady na předběžnou spotřebu (bez nákupů) pro zákazníky, kteří jsou v rámci plánu Azure. Náklady budou vycházet z maloobchodních sazeb a přístup k řízení přístupu na základě role (RBAC) v Azure, který má partner pro předplatné zákazníka.
+- Od tenanta pro správu můžou partneři CSP zobrazovat, spravovat a analyzovat náklady na předběžnou spotřebu (bez nákupů) pro zákazníky, kteří jsou v rámci plánu Azure. Náklady budou založené na prodejních tarifech a na řízení přístupu na základě role Azure (Azure RBAC), které má partner pro předplatné zákazníka.
 
 [Služba Azure Kubernetes (AKS)](../../aks/index.yml):
 

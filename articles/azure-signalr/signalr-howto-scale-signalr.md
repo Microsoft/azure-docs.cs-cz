@@ -6,12 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: zhshang
-ms.openlocfilehash: c8d74342e624b837c7ee803a2bcdcc12a3fb814b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: bd112526c7b36d5636d5d85c66b25b6310d35d1e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75659283"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500483"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>Jak škálovat instanci služby signalizace Azure?
 V tomto článku se dozvíte, jak škálovat instanci služby signalizace Azure. Existují dva scénáře pro škálování, horizontální navýšení kapacity a horizontální navýšení kapacity.

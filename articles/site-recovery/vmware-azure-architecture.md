@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 65778d0a6ba3bd5cdc719609ae4c2d18bf05aab9
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4b1b8a0cfa98d48d7cb92474c1572f17c79ffd0d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424405"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498948"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii z VMware do Azure
 
@@ -30,9 +30,7 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 **Servery VMware** | Virtuální počítače VMware se hostují na místních serverech vSphere ESXi. Pro správu hostitelů doporučujeme Server vCenter. | Během nasazení Site Recovery přidáte do trezoru Recovery Services servery VMware.
 **Replikované počítače** | Na každém virtuálním počítači VMware, který budete replikovat, se nainstaluje služba mobility. | Doporučujeme, abyste povolili automatickou instalaci z procesového serveru. Alternativně můžete službu nainstalovat ručně nebo použít metodu automatizovaného nasazení, například Configuration Manager.
 
-**Architektura replikace z VMware do Azure**
-
-![Komponenty](./media/vmware-azure-architecture/arch-enhanced.png)
+![Diagram znázorňující vztahy architektury VMware to Azure pro replikaci.](./media/vmware-azure-architecture/arch-enhanced.png)
 
 ## <a name="set-up-outbound-network-connectivity"></a>Nastavení odchozího připojení k síti
 
@@ -71,9 +69,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
     - Procesový server přijímá data replikace, optimalizuje je a šifruje je a odesílá je do Azure Storage přes odchozí port 443.
 5. Data replikace zaprotokolují první půdu v účtu úložiště mezipaměti v Azure. Tyto protokoly se zpracují a data se ukládají na spravovaný disk Azure (nazývaný jako počáteční disk ASR). Body obnovení jsou vytvořeny na tomto disku.
 
-**Proces replikace z VMware do Azure**
-
-![Proces replikace](./media/vmware-azure-architecture/v2a-architecture-henry.png)
+![Diagram znázorňující proces replikace VMware do Azure](./media/vmware-azure-architecture/v2a-architecture-henry.png)
 
 ## <a name="resynchronization-process"></a>Proces opakované synchronizace
 
@@ -108,9 +104,8 @@ Po nastavení replikace a spuštění postupu zotavení po havárii (testovací 
     - Fáze 3: po navrácení služby po selhání se znovu povolí replikace místních virtuálních počítačů.
     
  
-**VMware navrácení služeb po obnovení z Azure**
 
-![Navrácení služeb po obnovení](./media/vmware-azure-architecture/enhanced-failback.png)
+![Diagram znázorňující navrácení služeb po obnovení VMware z Azure.](./media/vmware-azure-architecture/enhanced-failback.png)
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.custom: mvc
-ms.openlocfilehash: f83af794a179634b9b6b7adedd329ea6f4a7b8d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 9f20f4cced74c5607fbfea2119e22cface0a8e03
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79536458"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499054"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Vytvoření serveru Azure Database for MariaDB pomocí Azure CLI
 
@@ -45,24 +45,24 @@ az group create --name myresourcegroup --location westus
 
 Server Azure Database for MariaDB vytvoříte pomocí příkazu [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create). Server může spravovat více databází. Obvykle se pro jednotlivé projekty nebo uživatele používají samostatné databáze.
 
-Nastavení | Ukázková hodnota | Popis
+Nastavení | Ukázková hodnota | Description
 ---|---|---
-jméno | **mydemoserver** | Zadejte jedinečný název, který identifikuje váš server Azure Database for MariaDB. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí mít 3 až 63 znaků.
+name | **mydemoserver** | Zadejte jedinečný název, který identifikuje váš server Azure Database for MariaDB. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí mít 3 až 63 znaků.
 resource-group | **myresourcegroup** | Zadejte název skupiny prostředků Azure.
-sku-name | **GP_Gen5_2** | Název skladové položky. Postupuje podle konvence*COMPUTE COMPUTE pro výpočet*\_*virtuální jádra* ve zkrácené *úrovni*\_. Další informace o parametru **sku-name** najdete v části pod touto tabulkou.
-backup-retention | **čl** | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny. Rozsah: 7 až 35. 
+sku-name | **GP_Gen5_2** | Název skladové položky. Postupuje podle *pricing tier*konvence \_ *COMPUTE COMPUTE pro výpočet* \_ *virtuální jádra* ve zkrácené úrovni. Další informace o parametru **sku-name** najdete v části pod touto tabulkou.
+backup-retention | **7** | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny. Rozsah: 7 až 35. 
 geo-redundant-backup | **Disabled** (Zakázáno) | Určuje, jestli pro tento server mají být povolené geograficky redundantní zálohy. Povolené hodnoty: **Enabled** (Povoleno), **Disabled** (Zakázáno).
 location | **westus** | Lokace Azure pro server.
-ssl-enforcement | **Enabled** (Povoleno) | Určuje, jestli pro tento server má být povolený protokol SSL. Povolené hodnoty: **Enabled** (Povoleno), **Disabled** (Zakázáno).
+ssl-enforcement | **Povoleno** | Určuje, jestli pro tento server má být povolený protokol SSL. Povolené hodnoty: **Enabled** (Povoleno), **Disabled** (Zakázáno).
 velikost úložiště | **51200** | Kapacita úložiště serveru (jednotkou jsou megabajty). Platné velikosti úložiště jsou 5 120 MB (minimum) a vyšší s přírůstky po 1 024 MB. Další informace o omezeních velikosti úložiště najdete v tématu [Cenové úrovně](./concepts-pricing-tiers.md). 
-version | **10.2** | Hlavní verze modulu MariaDB
+verze | **10,2** | Hlavní verze modulu MariaDB
 admin-user | **myadmin** | Uživatelské jméno pro přihlášení správce. Parametr **admin-user** nemůže být **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
 admin-password | *Vaše heslo* | Heslo uživatele, který je správcem. Vaše heslo musí mít 8 až 128 znaků. Musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.
 
 Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
 + `--sku-name B_Gen5_1`mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
 + `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
-+ `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
++ `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se dvěma virtuálními jádry.
 
 Informace o platných hodnotách pro jednotlivé oblasti a úrovně najdete v tématu [Cenové úrovně](./concepts-pricing-tiers.md).
 
@@ -216,7 +216,7 @@ Připojení k serveru pomocí nástroje pro příkazový řádek mysql:
    | Způsob připojení | **Standard (TCP/IP)** | Pro připojení k Azure Database for MariaDB použijte protokol TCP/IP. |
    | Název hostitele | **mydemoserver.mariadb.database.azure.com** | Název serveru, který jste si poznamenali dříve. |
    | Port | **3306** | Výchozí port pro Azure Database for MariaDB. |
-   | Uživatelské jméno | **myadmin\@mydemoserver** | Přihlašovací jméno správce serveru, které jste si poznamenali dříve. |
+   | Uživatelské jméno | **myadmin \@ mydemoserver** | Přihlašovací jméno správce serveru, které jste si poznamenali dříve. |
    | Heslo | *Vaše heslo* | Použijte heslo účtu správce, které jste nastavili dříve. |
 
 3. Pokud chcete zkontrolovat, jestli jsou všechny parametry správně nakonfigurované, vyberte **Test připojení**.

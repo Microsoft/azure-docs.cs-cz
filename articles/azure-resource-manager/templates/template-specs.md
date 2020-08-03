@@ -2,28 +2,34 @@
 title: Přehled specifikací šablon
 description: Popisuje, jak vytvořit specifikace šablony a sdílet je s ostatními uživateli ve vaší organizaci.
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 07/31/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 47dcf44b35ad5c0b77dd0b88d683071a7f2f4ecb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 829aaa41bc60b3dcbf78ef6083457fff3b794914
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096679"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497796"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager specifikace šablon (Preview)
 
-Specifikace šablony je nový typ prostředku pro uložení šablony Azure Resource Manager (šablona ARM) v Azure pro pozdější nasazení. Tento typ prostředku umožňuje sdílet šablony ARM s ostatními uživateli ve vaší organizaci. Stejně jako u jakéhokoli jiného prostředku Azure můžete ke sdílení specifikace šablony použít řízení přístupu na základě role (RBAC). uživatelé potřebují k nasazení šablony jenom přístup pro čtení ke specifikaci šablony, takže šablonu můžete sdílet, aniž by ji ostatní mohli upravovat.
+Specifikace šablony je nový typ prostředku pro uložení šablony Azure Resource Manager (šablona ARM) v Azure pro pozdější nasazení. Tento typ prostředku umožňuje sdílet šablony ARM s ostatními uživateli ve vaší organizaci. Stejně jako u jakéhokoli jiného prostředku Azure můžete ke sdílení specifikace šablony použít řízení přístupu na základě role (RBAC).
 
 **Microsoft. Resources/templateSpecs** je nový typ prostředku pro specifikace šablon. Skládá se z hlavní šablony a libovolného počtu propojených šablon. Azure bezpečně ukládá specifikace šablon do skupin prostředků. Specifikace šablon podporují [správu verzí](#versioning).
 
 K nasazení specifikace šablony použijte standardní nástroje Azure, jako je PowerShell, Azure CLI, Azure Portal, REST a další podporované sady SDK a klienti. Použijte stejné příkazy a předejte stejné parametry pro šablonu.
 
-Výhodou použití specifikací šablon je, že týmy ve vaší organizaci nemusejí znovu vytvářet ani kopírovat šablony pro běžné scénáře. Vytvoříte kanonické šablony a sdílíte je. Šablony, které zahrnete do specifikace šablony, by měli ověřit správci ve vaší organizaci, aby postupoval podle požadavků a pokynů pro organizaci.
-
 > [!NOTE]
 > Specifikace šablony jsou momentálně ve verzi Preview. Pokud ho chcete použít, musíte se [zaregistrovat v seznamu čekání](https://aka.ms/templateSpecOnboarding).
+
+## <a name="why-use-template-specs"></a>Proč používat specifikace šablon?
+
+Pokud v současné době máte šablony v úložišti GitHub nebo účtu úložiště, při pokusu o sdílení a používání šablon dojde k několika problémům. Aby ho uživatel mohl nasadit, musí být buď místní, nebo musí být adresa URL pro tuto šablonu veřejně přístupná. Chcete-li se vyhnout tomuto omezení, můžete sdílet kopie šablony s uživateli, kteří je potřebují nasadit, nebo otevřít přístup k úložišti nebo účtu úložiště. Když uživatelé vlastní místní kopie šablony, můžou se tyto kopie nakonec odchýlit od původní šablony. Když provedete veřejně přístupný úložiště nebo účet úložiště, můžete uživatelům, kteří mají přístup k šabloně, umožnit neúmyslnému.
+
+Výhodou použití specifikací šablon je, že můžete vytvářet kanonické šablony a sdílet je s týmy ve vaší organizaci. Specifikace šablony jsou zabezpečené, protože jsou k dispozici pro Azure Resource Manager pro nasazení, ale nejsou přístupné pro uživatele bez oprávnění RBAC. Uživatelé potřebují ke specifikaci šablony jenom přístup pro čtení, aby mohli nasadit její šablonu, takže šablonu můžete sdílet, aniž by ji ostatní mohli upravovat.
+
+Šablony, které zahrnete do specifikace šablony, by měli ověřit správci ve vaší organizaci, aby postupoval podle požadavků a pokynů pro organizaci.
 
 ## <a name="create-template-spec"></a>Vytvořit specifikaci šablony
 

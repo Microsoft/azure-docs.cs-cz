@@ -4,12 +4,12 @@ description: Dostupnost výpočetních a paměťových prostředků pro službu 
 ms.topic: article
 ms.date: 04/27/2020
 ms.author: danlep
-ms.openlocfilehash: 119c1202fe59e02a1b6ff802e3dbdc4d52133abe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 591d7dd07ea3717303589cdc070623068c4d3864
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583901"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500602"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro Azure Container Instances v oblastech Azure
 
@@ -54,9 +54,6 @@ Pro skupinu kontejnerů nasazené ve [službě Azure Virtual Network](container-
 ## <a name="availability---gpu-resources-preview"></a>Dostupnost – prostředky GPU (Preview)
 
 Pro skupinu kontejnerů nasazenou s [prostředky GPU](container-instances-gpu.md) (Preview) jsou k dispozici následující oblasti a maximální počet prostředků.
-
-> [!IMPORTANT]
-> Prostředky GPU jsou k dispozici pouze na vyžádání. Pokud chcete požádat o přístup k prostředkům GPU, odešlete prosím [žádost o podporu Azure][azure-support].
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]

@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 04/29/2020
-ms.custom: mvc
-ms.openlocfilehash: 6bb3c25d4d4d24e626ad210c78c6ac64c560e43e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 32efda0c97bec10f2c8aa29d6f83a28538d64468
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614386"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496759"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-powershell"></a>Kurz: návrh Azure Database for MySQL pomocí prostředí PowerShell
 
@@ -35,7 +35,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
-> I když je modul PowerShell AZ. MySql ve verzi Preview, musíte ho nainstalovat samostatně z modulu AZ PowerShellu pomocí následujícího příkazu: `Install-Module -Name Az.MySql -AllowPrerelease`.
+> I když je modul PowerShell AZ. MySql ve verzi Preview, musíte ho nainstalovat samostatně z modulu AZ PowerShellu pomocí následujícího příkazu: `Install-Module -Name Az.MySql -AllowPrerelease` .
 > Jakmile je modul PowerShellu AZ. MySql všeobecně dostupný, bude součástí budoucna k budoucímu AZ PowerShell Release releases a k dispozici nativně z Azure Cloud Shell.
 
 Pokud používáte službu Azure Database for MySQL poprvé, je nutné zaregistrovat poskytovatele prostředků **Microsoft. DBforMySQL** .
@@ -76,11 +76,11 @@ $Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
 New-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_Gen5_2 -GeoRedundantBackup Enabled -Location westus -AdministratorUsername myadmin -AdministratorLoginPassword $Password
 ```
 
-Hodnota parametru **SKU** dodržuje cenové úrovně **virtuální jádra\_COMPUTE-Generation\_** , jak je znázorněno v následujících příkladech.
+Hodnota parametru **SKU** dodržuje cenové úrovně ** \_ \_ virtuální jádra COMPUTE-Generation** , jak je znázorněno v následujících příkladech.
 
 - `-Sku B_Gen5_1`mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
 - `-Sku GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
-- `-Sku MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
+- `-Sku MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se dvěma virtuálními jádry.
 
 Informace o platných hodnotách **SKU** podle oblasti a pro vrstvy najdete v tématu [Azure Database for MySQL cenové úrovně](./concepts-pricing-tiers.md).
 
@@ -91,7 +91,7 @@ Zvažte použití cenové úrovně Basic, pokud je pro vaše zatížení vhodné
 
 ## <a name="configure-a-firewall-rule"></a>Konfigurace pravidla brány firewall
 
-Vytvořte pravidlo brány firewall na `New-AzMySqlFirewallRule` úrovni serveru Azure Database for MySQL pomocí rutiny. Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je `mysql` například nástroj příkazového řádku nebo MySQL Workbench, aby se připojila k vašemu serveru prostřednictvím brány firewall služby Azure Database for MySQL.
+Vytvořte pravidlo brány firewall na úrovni serveru Azure Database for MySQL pomocí `New-AzMySqlFirewallRule` rutiny. Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například `mysql` Nástroj příkazového řádku nebo MySQL Workbench, aby se připojila k vašemu serveru prostřednictvím brány firewall služby Azure Database for MySQL.
 
 Následující příklad vytvoří pravidlo brány firewall s názvem **AllowMyIP** , které umožňuje připojení z konkrétní IP adresy 192.168.0.1. Nahraďte IP adresu nebo rozsah IP adres, které odpovídají umístění, ze kterého se připojujete.
 
@@ -119,7 +119,7 @@ mydemoserver.mysql.database.azure.com       myadmin
 
 ## <a name="connect-to-the-server-using-the-mysql-command-line-tool"></a>Připojení k serveru pomocí nástroje příkazového řádku MySQL
 
-Připojte se k serveru pomocí nástroje `mysql` příkazového řádku. Pokud si chcete stáhnout a nainstalovat nástroj příkazového řádku, přečtěte si téma [soubory komunity MySQL ke stažení](https://dev.mysql.com/downloads/shell/). Můžete také získat přístup k předem nainstalované verzi nástroje `mysql` příkazového řádku v Azure Cloud Shell tak, že v tomto článku vyberete tlačítko **vyzkoušet** v ukázce kódu. Dalším způsobem, jak získat přístup k Azure Cloud Shell, je vybrat tlačítko **>_** na pravém horním panelu nástrojů v Azure Portal nebo [Shell.Azure.com](https://shell.azure.com/).
+Připojte se k serveru pomocí `mysql` nástroje příkazového řádku. Pokud si chcete stáhnout a nainstalovat nástroj příkazového řádku, přečtěte si téma [soubory komunity MySQL ke stažení](https://dev.mysql.com/downloads/shell/). Můžete také získat přístup k předem nainstalované verzi `mysql` nástroje příkazového řádku v Azure Cloud Shell tak, že v tomto článku vyberete tlačítko **vyzkoušet** v ukázce kódu. Dalším způsobem, jak získat přístup k Azure Cloud Shell, je vybrat tlačítko **>_** na pravém horním panelu nástrojů v Azure Portal nebo [Shell.Azure.com](https://shell.azure.com/).
 
 ```azurepowershell-interactive
 mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
@@ -188,7 +188,7 @@ SELECT * FROM inventory;
 
 Server můžete obnovit k předchozímu bodu v čase. Obnovená data se zkopírují na nový server a stávající server zůstane beze změny. Například pokud je tabulka omylem vyřazena, můžete ji obnovit v čase pouhým odhozením. Pak můžete načíst chybějící tabulku a data z obnovené kopie serveru.
 
-K obnovení serveru použijte rutinu `Restore-AzMySqlServer` PowerShellu.
+K obnovení serveru použijte `Restore-AzMySqlServer` rutinu PowerShellu.
 
 ### <a name="run-the-restore-command"></a>Spuštění příkazu RESTORE
 

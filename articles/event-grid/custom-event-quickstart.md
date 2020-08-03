@@ -3,12 +3,13 @@ title: 'Rychlý Start: odesílání vlastních událostí pomocí Event Grid a A
 description: 'Rychlý Start: použití Azure Event Grid a Azure CLI k publikování vlastního tématu a přihlášení k odběru událostí pro toto téma. Události jsou zpracovávány webovou aplikací.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: ecf7e753df4f6fb3de6095ba295a07fd57b458cf
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 46341a9cd4f7880333cb2653691328f4969f1fb4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101677"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497371"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Rychlý Start: směrování vlastních událostí na webový koncový bod pomocí Azure CLI a Event Grid
 

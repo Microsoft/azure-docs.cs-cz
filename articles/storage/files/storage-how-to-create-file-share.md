@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ba6f4bcaffbf9fa11c949853362485d524bec23a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a642aa9735c4360c11d50cf475e5de63259c55df
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510012"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495705"
 ---
 # <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 Pokud chcete vytvořit sdílenou složku Azure, musíte odpovědět na tři otázky týkající se toho, jak ji budete používat:
@@ -83,7 +84,7 @@ Další nastavení, která jsou k dispozici na kartě Upřesnit (objekt BLOB Sof
 #### <a name="tags"></a>Značky
 Značky jsou páry název-hodnota, které umožňují kategorizaci prostředků a zobrazení konsolidované fakturace, a to použitím stejné značky na více prostředků a skupin prostředků. Tyto jsou volitelné a dají se použít po vytvoření účtu úložiště.
 
-#### <a name="review--create"></a>Zkontrolovat a vytvořit
+#### <a name="review--create"></a>Kontrola a vytvoření
 Posledním krokem při vytváření účtu úložiště je výběr tlačítka **vytvořit** na kartě **Revize + vytvořit** . Toto tlačítko nebude k dispozici, pokud nejsou vyplněna všechna povinná pole pro účet úložiště.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)

@@ -4,16 +4,17 @@ description: Naučte se nasadit propojenou šablonu.
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 177a994450b6ffe5489a8c95c3b484521fd9b77b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 63383f810b6f5643bad9feb86360745cd2f9b000
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80672924"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501129"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Kurz: nasazení propojené šablony
 
-V [předchozích kurzech](./deployment-tutorial-local-template.md)jste zjistili, jak nasadit šablonu, která je uložená v místním počítači. Pro nasazení složitých řešení můžete rozdělit šablonu na mnoho šablon a tyto šablony nasadit pomocí hlavní šablony. V tomto kurzu se naučíte, jak nasadit hlavní šablonu obsahující odkaz na propojenou šablonu. Po nasazení hlavní šablony aktivuje nasazení propojené šablony. Naučíte se také, jak uložit a zabezpečit propojenou šablonu pomocí tokenu SAS. Dokončení trvá přibližně **12 minut** .
+V [předchozích kurzech](./deployment-tutorial-local-template.md)jste zjistili, jak nasadit šablonu, která je uložená v místním počítači. Pro nasazení složitých řešení můžete rozdělit šablonu na mnoho šablon a tyto šablony nasadit pomocí hlavní šablony. V tomto kurzu se naučíte, jak nasadit hlavní šablonu obsahující odkaz na propojenou šablonu. Jakmile se nasadí hlavní šablona, aktivuje se nasazení propojené šablony. Naučíte se také, jak uložit a zabezpečit propojenou šablonu pomocí tokenu SAS. Dokončení trvá přibližně **12 minut** .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,7 +36,7 @@ Následující šablona je hlavní šablonou.  Zvýrazněný objekt **Microsoft.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 
-Uložte kopii hlavní šablony do místního počítače s příponou. JSON, například azuredeploy. JSON. Nemusíte ukládat kopii propojené šablony.  Odkazovaná šablona se zkopíruje z úložiště GitHubu do účtu úložiště.
+Uložte kopii hlavní šablony do místního počítače s příponou. JSON, například azuredeploy.js. Nemusíte ukládat kopii propojené šablony.  Odkazovaná šablona se zkopíruje z úložiště GitHubu do účtu úložiště.
 
 ## <a name="store-the-linked-template"></a>Uložit propojenou šablonu
 

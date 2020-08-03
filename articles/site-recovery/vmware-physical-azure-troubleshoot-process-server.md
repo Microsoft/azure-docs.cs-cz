@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131990"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499751"
 ---
 # <a name="troubleshoot-the-process-server"></a>Řešení potíží s procesovým serverem
 
@@ -49,7 +49,7 @@ Prvním krokem při řešení potíží je kontrolu stavu a stavu procesového s
 
 Procesový Server vygeneruje množství upozornění na stav. Tyto výstrahy a doporučené akce jsou shrnuty v následující tabulce.
 
-**Typ upozornění** | **Chyba** | **Odstranit potíže**
+**Typ upozornění** | **Chyba** | **Řešení potíží**
 --- | --- | --- 
 ![V pořádku][green] | Žádná  | Procesový Server je připojený a v pořádku.
 ![Upozornění][yellow] | Zadané služby nejsou spuštěny. | 1. Ověřte, zda jsou služby spuštěny.<br/> 2. Pokud služby běží podle očekávání, postupujte podle pokynů níže a odstraňte potíže s [připojením a replikací](#check-connectivity-and-replication).
@@ -91,7 +91,7 @@ Pokud z procesového serveru není žádný prezenční signál (kód chyby 806)
 
  Úvodní a průběžné selhání replikace často způsobují problémy s připojením mezi zdrojovými počítači a procesovým serverem, nebo mezi procesovým serverem a Azure. Tyto kroky jsou shrnuté na následujícím obrázku a následují postupy, které vám pomohou postupovat podle pokynů.
 
-![Řešení potíží s připojením a replikací](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
+![Vývojový diagram znázorňuje kroky pro řešení potíží s připojením a replikací.](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
 
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>Krok 4: ověření času synchronizace na zdrojovém počítači
@@ -170,7 +170,7 @@ Ověřte, jestli procesový Server aktivně donáší data do Azure.
   2. Vyberte kartu **výkon** > **otevřít sledování prostředků**.
   3. Na stránce **Sledování prostředků** vyberte kartu **síť** . V části **procesy s aktivitou sítě**ověřte, zda cbengine.exe aktivně odesílá velké množství dat.
 
-       ![Svazky v procesech s aktivitou sítě](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
+       ![Snímek obrazovky s velkým počtem svazků v procesech se síťovou aktivitou](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
   Pokud cbengine.exe neposílá velký objem dat, proveďte kroky v následujících částech.
 
@@ -179,7 +179,7 @@ Ověřte, jestli procesový Server aktivně donáší data do Azure.
 1. V Sledování prostředků vyberte **cbengine.exe**.
 2. V části **připojení TCP**zkontrolujte, jestli je mezi procesovým serverem dosažitelný přístup k úložišti Azure.
 
-  ![Připojení mezi cbengine.exe a adresou URL úložiště objektů BLOB v Azure](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
+  ![Snímek obrazovky s připojením mezi cbengine.exe a adresou URL úložiště objektů BLOB v Azure](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
 ### <a name="check-services"></a>Kontrolovat služby
 

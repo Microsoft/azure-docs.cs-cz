@@ -3,18 +3,19 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: cc4cd4b099a37ef103e2da79b8c15269008e7423
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0cb31f5470519e33b76c6cad83d7b47972f21381
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837897"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407301"
 ---
-V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s Node. js k sestavení modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro sestavení vlastní aplikace Node. js.
+V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s Node.js k vytvoření modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace Node.js.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Je nainstalovaný [Node. js 8](https://www.nodejs.org/en/download/) nebo novější.
+- Je nainstalovaná [Node.js 8](https://www.nodejs.org/en/download/) nebo novější.
 - [npm](https://www.npmjs.com/) je nainstalovaný.
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
@@ -25,7 +26,7 @@ V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s No
 
 ## <a name="install-the-custom-vision-sdk"></a>Instalace sady Custom Vision SDK
 
-Chcete-li do projektu nainstalovat sady SDK služby Custom Vision Service pro Node. js, spusťte následující příkazy:
+Chcete-li nainstalovat sady SDK služby Custom Vision pro Node.js ve vašem projektu, spusťte následující příkazy:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
@@ -34,7 +35,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ## <a name="add-the-code"></a>Přidání kódu
 
-V upřednostňovaném adresáři projektu vytvořte nový soubor s názvem *Sample. js* .
+V upřednostňovaném adresáři projektu vytvořte nový soubor s názvem *sample.js* .
 
 ### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
 
@@ -79,7 +80,7 @@ async function asyncForEach (array, callback) {
 
 ### <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
 
-Chcete-li vytvořit klasifikační značky pro projekt, přidejte následující kód na konec souboru *Sample. js*:
+Chcete-li vytvořit klasifikační značky pro projekt, přidejte následující kód na konec *sample.js*:
 
 ```javascript
     const forkTag = await trainer.createTag(sampleProject.id, "Fork");
@@ -216,7 +217,7 @@ Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpo
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte *Sample. js*.
+Spusťte *sample.js*.
 
 ```shell
 node sample.js

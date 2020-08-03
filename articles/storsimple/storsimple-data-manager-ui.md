@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00748cfa60882e49336c3a0ac3ecfdec389021ac
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78933748"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496436"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Správa služby StorSimple Data Manager v Azure Portal
 
@@ -42,7 +42,7 @@ Chcete-li vytvořit službu StorSimple Data Manager, proveďte následující kr
 
    2. Vyberte **předplatné** z rozevíracího seznamu. Předplatné je propojeno s vaším fakturačním účtem. Pokud máte jenom jedno předplatné, vyplní se toto pole automaticky (a nedá se vybrat).
 
-   3. Vyberte existující skupinu prostředků nebo vytvořte novou skupinu. Další informace najdete v tématu [Skupiny prostředků Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
+   3. Vyberte existující skupinu prostředků nebo vytvořte novou skupinu. Další informace najdete v tématu [Skupiny prostředků Azure](/azure/azure-resource-manager/management/manage-resource-groups-portal).
 
    4. Zadejte **umístění** služby, které slouží k uložení účtů úložiště a služby StorSimple data Manager. Služba StorSimple Device Manager, Služba Data Manager a přidružený účet úložiště by měly být všechny v podporovaných oblastech.
     

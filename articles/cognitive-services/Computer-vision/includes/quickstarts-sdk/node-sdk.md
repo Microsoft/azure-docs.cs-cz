@@ -9,12 +9,13 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/22/2020
 ms.author: pafarley
-ms.openlocfilehash: 556e56991d59eb65f789fde4d705706a03a63be9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.custom: devx-track-javascript
+ms.openlocfilehash: dc01600d052752d4558e22fe5c5ca48fb84a8121
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073263"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405483"
 ---
 <a name="HOLTop"></a>
 
@@ -71,7 +72,7 @@ Pak definujte funkci `computerVision` a deklarujte asynchronní řadu s primárn
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce sady Počítačové zpracování obrazu Node.js SDK.
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | Tato třída je potřebná pro všechny funkce Počítačové zpracování obrazu. Vytvoříte jeho instanci s informacemi o předplatném a použijete ho k provádění většiny operací s imagí.|
 |[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| Tento výčet definuje různé typy analýz obrázků, které lze provést v rámci standardní operace analýzy. V závislosti na vašich potřebách můžete zadat sadu hodnot **VisualFeatureTypes** . |

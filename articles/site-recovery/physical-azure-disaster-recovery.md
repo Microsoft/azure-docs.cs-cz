@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: c3d4a2120f86a03508b91d4b2dea52e629dc0f79
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1fdfe57c2995628855ea8e068c4f8eb2f2ac466a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130185"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500419"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Nastavení zotavení po havárii do Azure pro místní fyzické servery
 
@@ -111,7 +111,7 @@ Nastavte konfigurační server, zaregistrujte ho v trezoru a vyhledejte virtuál
 4. Stáhněte instalační soubor sjednocené instalace Site Recovery.
 5. Stáhněte registrační klíč trezoru. Budete ho potřebovat při spuštění sjednocené instalace. Klíč je platný pět dní od jeho vygenerování.
 
-   ![Nastavení zdroje](./media/physical-azure-disaster-recovery/source-environment.png)
+   ![Snímek obrazovky zobrazující možnosti stažení instalačního souboru a registračního klíče.](./media/physical-azure-disaster-recovery/source-environment.png)
 
 
 ### <a name="register-the-configuration-server-in-the-vault"></a>Registrace konfiguračního serveru v trezoru
@@ -136,7 +136,6 @@ Chcete-li nainstalovat konfigurační server, spusťte sjednocené nastavení ja
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-Po dokončení registrace se konfigurační server zobrazí na stránce **Nastavení**  >  **serverů** v trezoru.
 
 ## <a name="set-up-the-target-environment"></a>Nastavení cílového prostředí
 
@@ -146,7 +145,7 @@ Vyberte a zkontrolujte cílové prostředky.
 2. Zadejte cílový model nasazení.
 3. Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure.
 
-   ![Cíl](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Snímek obrazovky s možnostmi pro nastavení cílového prostředí](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
@@ -157,7 +156,7 @@ Vyberte a zkontrolujte cílové prostředky.
 4. V části **Uchování bodu obnovení** zadejte (v hodinách), jak dlouhý je interval uchovávání dat pro jednotlivé body obnovení. Replikované virtuální počítače můžete v rámci okna uchování obnovit do libovolného časového bodu. Pro počítače replikované do úložiště úrovně Premium se podporuje uchování po dobu až 24 hodin. V případě úložiště úrovně Standard je to 72 hodin.
 5. V nastavení **frekvence snímků konzistentní vzhledem k aplikacím**určete, jak často (v minutách) se mají vytvářet body obnovení obsahující snímky konzistentní vzhledem k aplikacím. Kliknutím na tlačítko **OK** vytvořte zásadu.
 
-    ![Zásady replikace](./media/physical-azure-disaster-recovery/replication-policy.png)
+    ![Snímek obrazovky s možnostmi pro vytváření zásad replikace](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
 Tato zásada se automaticky přidruží ke konfiguračnímu serveru. Ve výchozím nastavení se pro navrácení služeb po obnovení automaticky vytvoří zásada párování. Pokud je například zásada replikace zásadou pro **replikaci** , vytvoří se zásady navrácení služeb **po obnovení.** Tato zásada se nepoužije, dokud nespustíte navrácení služeb po obnovení z Azure.

@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fd620e253e661f986f67a440272937026cb4ff7f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2085f0e8a148e27914b517f25e48894009592dd2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528396"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498595"
 ---
 # <a name="blob-versioning-preview"></a>Správa verzí objektů BLOB (Preview)
 
@@ -176,7 +177,7 @@ Správa verzí objektů BLOB je navržená tak, aby chránila vaše data před n
 
 Následující tabulka uvádí, které akce RBAC podporují odstranění objektu BLOB nebo verze objektu BLOB.
 
-| Popis | Operace Blob service | Vyžaduje se akce s daty RBAC. | Integrovaná podpora rolí RBAC |
+| Description | Operace Blob service | Vyžaduje se akce s daty RBAC. | Integrovaná podpora rolí RBAC |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | Odstraňuje se aktuální verze objektu BLOB. | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE** | Přispěvatel dat objektu BLOB služby Storage |
 | Odstraňuje se verze | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/deleteBlobVersion/Action** | Vlastník dat objektu BLOB služby Storage |

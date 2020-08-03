@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 47f412dae6b467518fb1b51518716625c1395717
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 98cad9a359a9a2807b1f1f3f2daba45759471718
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035821"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495654"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -174,7 +174,7 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
    3. Otestujte sekvenci zálohování a obnovování a časování a v případě potřeby proveďte opravy. Ujistěte se, že jsou časy zálohování dostatečné. Také je nutné otestovat aktivity obnovení a doba obnovení. Ujistěte se, že časy obnovení jsou v rámci RTO SLA, kde RTO spoléhá na proces obnovení databáze nebo virtuálního počítače.
    4. Testování funkcí a architektury DR mezi oblastmi
 1. Kontroly zabezpečení.
-   1. Otestujte platnost vaší architektury řízení přístupu na základě role (RBAC) v Azure. Cílem je oddělení a omezení přístupu a oprávnění různých týmů. Například členové týmu SAP by měli být schopní nasadit virtuální počítače a přiřadit disky z Azure Storage do dané virtuální sítě Azure. Ale tým pro SAP by neměl mít možnost vytvářet vlastní virtuální sítě ani měnit nastavení stávajících virtuálních sítí. Členové síťového týmu by neměli moci nasadit virtuální počítače do virtuálních sítí, ve kterých jsou spuštěné aplikace SAP a virtuální počítače s DBMS. Ani by členové tohoto týmu nemohli měnit atributy virtuálních počítačů nebo dokonce odstraňovat virtuální počítače nebo disky.  
+   1. Otestuje platnost architektury Azure řízení přístupu na základě role (Azure RBAC). Cílem je oddělení a omezení přístupu a oprávnění různých týmů. Například členové týmu SAP by měli být schopní nasadit virtuální počítače a přiřadit disky z Azure Storage do dané virtuální sítě Azure. Ale tým pro SAP by neměl mít možnost vytvářet vlastní virtuální sítě ani měnit nastavení stávajících virtuálních sítí. Členové síťového týmu by neměli moci nasadit virtuální počítače do virtuálních sítí, ve kterých jsou spuštěné aplikace SAP a virtuální počítače s DBMS. Ani by členové tohoto týmu nemohli měnit atributy virtuálních počítačů nebo dokonce odstraňovat virtuální počítače nebo disky.  
    1.  Ověřte, že [Skupina zabezpečení sítě a pravidla ASC](../../../virtual-network/security-overview.md) pracují podle očekávání a chrání chráněné prostředky.
    1.  Ujistěte se, že jsou šifrované všechny prostředky, které je třeba šifrovat. Definuje a implementuje procesy pro zálohování certifikátů, ukládání a přístup k těmto certifikátům a obnovování šifrovaných entit.
    1.  Použijte [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) pro disky s operačním systémem, kde je to možné, z pohledu na operační systém – bod podpory.

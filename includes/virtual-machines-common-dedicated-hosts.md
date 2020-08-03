@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 24e4554e2202c8b5452193e1b0f48cf6c8ada5dd
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 691293d0f7ecf5bb2ad83a3f292ad2c9b873e31e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133805"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386520"
 ---
 ## <a name="limitations"></a>Omezení
 
@@ -53,7 +53,7 @@ Pokud skupinu hostitelů přiřadíte k zóně dostupnosti, musí se všechny vi
 
 Hostitele je možné vytvořit v určité doméně selhání. Stejně jako virtuální počítač ve skupině pro škálování nebo v sadě dostupnosti budou hostitelé v různých doménách selhání umístit do různých fyzických skříní v datovém centru. Při vytváření skupiny hostitelů je nutné zadat počet domén selhání. Při vytváření hostitelů v rámci skupiny hostitelů přiřadíte doménu selhání pro každého hostitele. Virtuální počítače nevyžadují žádné přiřazení domény selhání.
 
-Domény selhání se neshodují se stejným způsobem jako společné. Stejná doména selhání u dvou hostitelů neznamená, že jsou mezi sebou vzájemně blízko.
+Domény selhání nejsou stejné jako společné umístění. Stejná doména selhání u dvou hostitelů neznamená, že jsou mezi sebou vzájemně blízko.
 
 Doména selhání je vymezena pro skupinu hostitelů. Neměli byste provádět žádné předpoklady proti spřažení mezi dvěma skupinami hostitelů (pokud nejsou v různých zónách dostupnosti).
 

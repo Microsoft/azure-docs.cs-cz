@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 0ffcda4a33c43866c3b580a60c87c1ffca59bbc4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066342"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495603"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytváření smyček opakujících akce pracovních postupů nebo zpracovávajících pole v Azure Logic Apps
 
@@ -22,9 +22,9 @@ Chcete-li opakovat akce, dokud není splněna podmínka nebo změny stavu, můž
 > [!TIP]
 > Pokud máte aktivační událost, která přijímá pole a chcete pro každou položku pole Spustit pracovní postup, můžete toto pole v *dávce* [ **SplitOn** vlastností triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
+* Účet a předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -32,11 +32,11 @@ Chcete-li opakovat akce, dokud není splněna podmínka nebo změny stavu, můž
 
 ## <a name="foreach-loop"></a>Smyčka foreach
 
-"Foreach Loop" opakuje jednu nebo více akcí u každé položky pole a funguje pouze pro pole. Iterace v rámci smyčky foreach běží paralelně. Můžete však spustit iterace po jednom nastavením [sekvenční smyčky "foreach"](#sequential-foreach-loop). 
+"Foreach Loop" opakuje jednu nebo více akcí u každé položky pole a funguje pouze pro pole. Zde jsou některé okolnosti použití smyček "foreach":
 
-Zde jsou některé okolnosti použití smyček "foreach":
+* Ve výchozím nastavení se iterace ve smyčce "foreach" spouští ve stejnou dobu, nebo paralelně. Toto chování se liší od [Automatizace napájení u **všech** cyklů](/power-automate/apply-to-each) , kde jsou iterace spouštěny po jednom, nebo sekvenčně. Můžete ale [nastavit sekvenční iterace smyčky "foreach"](#sequential-foreach-loop). Například pokud chcete pozastavit další iteraci ve smyčce "foreach" pomocí [akce zpoždění](../connectors/connectors-native-delay.md), je nutné nastavit smyčku tak, aby běžela sekvenčně.
 
-* Ve vnořených smyčkách jsou iterace vždy spouštěny sekvenčně, nikoli paralelně. K paralelnímu spuštění operací pro položky ve vnořené smyčce vytvořte a [zavolejte podřízenou aplikaci logiky](../logic-apps/logic-apps-http-endpoint.md).
+  Výjimkou z výchozího chování jsou vnořené smyčky, kde jsou iterace vždy spouštěny sekvenčně, nikoli paralelně. K paralelnímu spuštění operací pro položky ve vnořené smyčce vytvořte a [zavolejte podřízenou aplikaci logiky](../logic-apps/logic-apps-http-endpoint.md).
 
 * Chcete-li získat předvídatelné výsledky z operací na proměnné během každé iterace smyčky, spusťte cykly postupně. Například když cyklus končí souběžně, operace zvýšení, snížení a připojení k proměnným operaci vrátí předvídatelné výsledky. Během každé iterace v souběžně běžící smyčce ale můžou tyto operace vracet nepředvídatelné výsledky. 
 
@@ -192,7 +192,7 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
    | Vlastnost | Hodnota | Popis |
    | -------- | ----- | ----------- |
    | **Název** | Omezení | Název vaší proměnné | 
-   | **Typ** | Celé číslo | Datový typ proměnné | 
+   | **Typ** | Integer | Datový typ proměnné | 
    | **Hodnota** | 0 | Počáteční hodnota vaší proměnné | 
    |||| 
 

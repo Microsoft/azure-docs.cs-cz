@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1c5ce50a3736d6e96620e25cf084c5c66c456a5f
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: bde1ff4003ba69a4c5449996f4e18d646e6ecff6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85375107"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498340"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Základní hodnoty zabezpečení Azure pro Cognitive Services
 
@@ -28,7 +28,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Ochrana prostředků Azure v rámci virtuálních sítí
 
-**Doprovodné**materiály: Azure Cognitive Services poskytuje vrstvený model zabezpečení. Tento model vám umožní zabezpečit účty Cognitive Services pro konkrétní podmnožinu sítí. Při konfiguraci síťových pravidel mají přístup k účtu jenom aplikace požadující data přes zadanou sadu sítí. Můžete omezit přístup k vašim prostředkům pomocí filtrování požadavků a povolit pouze požadavky, které pocházejí ze zadaných IP adres, rozsahů IP adres nebo ze seznamu podsítí ve službě Azure Virtual Network.
+**Doprovodné**materiály: Azure Cognitive Services poskytuje vrstvený model zabezpečení. Tento model umožňuje zabezpečit účty služeb Cognitive Services pro konkrétní podmnožinu sítí. Když jsou nakonfigurovaná pravidla sítě, můžou k účtu přistupovat pouze aplikace, které žádají o data přes zadanou sadu sítí. Můžete omezit přístup k vašim prostředkům pomocí filtrování požadavků a povolit pouze požadavky, které pocházejí ze zadaných IP adres, rozsahů IP adres nebo ze seznamu podsítí ve službě Azure Virtual Network.
 
 Podpora služby Virtual Network a koncového bodu služby pro Cognitive Services je omezená na konkrétní sadu oblastí.
 
@@ -73,7 +73,7 @@ Všimněte si také, že je nutné zakázat hloubkovou kontrolu paketů pro vaš
 **Doprovodné**materiály: když jsou virtuální počítače nasazené ve stejné virtuální síti jako kontejner Azure Cognitive Services, definujte a Implementujte standardní konfigurace zabezpečení pro související síťové prostředky s Azure Policy. Pomocí aliasů Azure Policy v oborech názvů Microsoft. Cognitiveservices Account a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo vymáhání konfigurace sítě pro instance Azure cache. Můžete také využít integrované definice zásad, například:
 - Měla by být povolená DDoS Protection Standard.
 
-Plány Azure můžete použít také ke zjednodušení rozsáhlých nasazení Azure tím, že zabalíte artefakty klíčových prostředí, jako jsou například šablony Azure Resource Manager, řízení přístupu na základě role (RBAC) a zásady v rámci jedné definice podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
+Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte artefakty klíčových prostředí, jako jsou například šablony Azure Resource Manager, řízení přístupu na základě role Azure (Azure RBAC) a zásady v jediné definici podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
 
 Pokud používáte Cognitive Services v rámci kontejneru, můžete rozšířit nasazení kontejnerů pomocí řešení firewallu webových aplikací s front-endu, které filtruje škodlivý provoz a podporuje komplexní šifrování TLS, a přitom udržuje koncový bod kontejneru privátní a zabezpečený.
 
@@ -655,7 +655,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování mezipaměti Azure pro instance Redis a související prostředky. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
 Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných zákazníka pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 * [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
@@ -679,7 +679,7 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování prostředků v rámci předplatných.
@@ -719,7 +719,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 * [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)

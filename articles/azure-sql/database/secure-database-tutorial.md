@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 73ffe7fe6336d9547ebbbf4c894bd1b9398e0900
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 12c3a35e12e3f432345ea788893d0d0ae6e6433f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092928"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496912"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Kurz: zabezpečení databáze v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ Další informace najdete v článcích [Přehled zabezpečení Azure SQL Databa
 > [!TIP]
 > Následující Microsoft Learn modul vám pomůže získat zdarma informace o tom, jak [zabezpečit databázi v Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
@@ -190,7 +190,7 @@ Přidání uživatele s ověřováním SQL:
 Ověřování Azure Active Directory vyžaduje, aby byli uživatelé databáze vytvořeni jako obsažené. Uživatel databáze s omezením se mapuje na identitu v adresáři služby Azure AD přidruženém k databázi a nemá v *Hlavní* databázi žádné přihlašovací údaje. Identita Azure AD může být buď pro jednotlivé uživatele, nebo skupinu. Další informace najdete v tématech [Uživatelé databáze s omezením, zajištění přenosné databáze](/sql/relational-databases/security/contained-database-users-making-your-database-portable) a kontrola [kurzu Azure AD](authentication-aad-configure.md) o ověřování pomocí Azure AD.
 
 > [!NOTE]
-> Uživatele databáze (s výjimkou správců) nelze pomocí Azure Portal vytvořit. Role Azure RBAC se nešíří do serverů SQL, databází ani datových skladů. Používají se jenom ke správě prostředků Azure a nevztahují se na oprávnění databáze.
+> Uživatele databáze (s výjimkou správců) nelze pomocí Azure Portal vytvořit. Role Azure se nešíří do serverů SQL, databází ani datových skladů. Používají se jenom ke správě prostředků Azure a nevztahují se na oprávnění databáze.
 >
 > Například role *přispěvatel SQL Server* neuděluje přístup pro připojení k databázi nebo datovému skladu. Toto oprávnění je nutné udělit v rámci databáze pomocí příkazů T-SQL.
 

@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.custom: mvc
-ms.openlocfilehash: 844b9a725a74034b8970e344cc1907eeec42ccc4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 76c5bac600f05094f2e2a354cd5cf5895d9d45d2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740419"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496606"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>Rychlý Start: vytvoření serveru Azure Database for PostgreSQL-Single pomocí prostředí PowerShell
 
@@ -77,7 +77,7 @@ Hodnota parametru **SKU** dodržuje cenové úrovně ** \_ \_ virtuální jádra
 
 - `-Sku B_Gen5_1`mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
 - `-Sku GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
-- `-Sku MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
+- `-Sku MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se dvěma virtuálními jádry.
 
 Informace o platných hodnotách **SKU** podle oblasti a pro vrstvy najdete v tématu [Azure Database for PostgreSQL cenové úrovně](./concepts-pricing-tiers.md).
 
@@ -171,7 +171,7 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
 
    ![Karta Připojení](./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png)
 
-    Parametr pgAdmin |Hodnota|Description
+    Parametr pgAdmin |Hodnota|Popis
     ---|---|---
     Název nebo adresa hostitele | Název serveru | Hodnota názvu serveru, kterou jste použili dříve při vytváření serveru Azure Database for PostgreSQL. Ukázkový server v příkladu je **mydemoserver.postgres.database.azure.com**. Použijte plně kvalifikovaný název domény (** \* . Postgres.Database.Azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části.
     Port | 5432 | Port, který se použije pro připojení k serveru Azure Database for PostgreSQL.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4e10843eab8ac2ccbda3d6876f51c88a598d7139
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 36f3c4192f43e323df2aaf9397364dfd1b4da731
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371681"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501368"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Základní hodnoty zabezpečení Azure pro Azure Storage
 
@@ -292,7 +292,7 @@ Také pro svůj účet Azure Storage povolit rozšířenou ochranu před interne
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: Změna výchozích hesel tam, kde je to možné
 
-**Doprovodné**materiály: účty Azure Storage ani Azure Active Directory nemají koncept výchozích nebo prázdných hesel. Azure Storage implementuje model řízení přístupu, který podporuje řízení přístupu na základě role (RBAC) v Azure, stejně jako sdílené klíče a signatury sdíleného přístupu (SAS). Charakteristika sdíleného klíče a ověřování SAS je, že k volajícímu není přidružena žádná identita, a proto nelze provést autorizaci na základě oprávnění zabezpečení. 
+**Doprovodné**materiály: účty Azure Storage ani Azure Active Directory nemají koncept výchozích nebo prázdných hesel. Azure Storage implementuje model řízení přístupu, který podporuje řízení přístupu na základě role Azure (Azure RBAC), stejně jako sdílené klíče a signatury sdíleného přístupu (SAS). Charakteristika sdíleného klíče a ověřování SAS je, že k volajícímu není přidružena žádná identita, a proto nelze provést autorizaci na základě oprávnění zabezpečení. 
 
 - [Autorizace přístupu k datům v Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth)
 

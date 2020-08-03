@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6c50ceae36c784b8b869977f14351ab5858fc7c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cfe5f763b3dedd68c5180f5a0a3c7a3f4ea3e93
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466013"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496419"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Migrace Azure Data Lake Storage z Gen1 na Gen2
 
@@ -81,7 +81,7 @@ Migrujte data, úlohy a aplikace pomocí vhodného vzoru. Doporučujeme, abyste 
    
 6. Vyhledejte odkazy URI, které obsahují řetězec `adl://` v souborech kódu nebo v poznámkových blocích datacihly, Apache Hive soubory HQL nebo jakýkoli jiný soubor, který se používá jako součást vašich úloh. Nahraďte tyto odkazy [identifikátorem URI Gen2 formátovaného](data-lake-storage-introduction-abfs-uri.md) nového účtu úložiště. Příklad: identifikátor URI Gen1: `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` může být `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` . 
 
-7. Nakonfigurujte zabezpečení svého účtu tak, aby zahrnovalo [role řízení přístupu na základě role (RBAC)](../common/storage-auth-aad-rbac-portal.md), [zabezpečení na úrovni souborů a složek](data-lake-storage-access-control.md)a [Azure Storage brány firewall a virtuální sítě](../common/storage-network-security.md).
+7. Nakonfigurujte zabezpečení na účtu tak, aby zahrnovalo [role Azure](../common/storage-auth-aad-rbac-portal.md), [zabezpečení na úrovni souborů a složek](data-lake-storage-access-control.md)a [Azure Storage brány firewall a virtuální sítě](../common/storage-network-security.md).
 
 ### <a name="step-4-cutover-from-gen1-to-gen2"></a>Krok 4: přímou migraci z Gen1 na Gen2
 
@@ -207,4 +207,3 @@ Toto je nejjednodušší vzor.
 - Přečtěte si o různých součástech nastavení zabezpečení pro účet úložiště. Viz [Průvodce zabezpečením Azure Storage](../common/storage-security-guide.md).
 - Optimalizujte výkon pro vaše Data Lake Store. Zvýšení výkonu najdete v tématu věnovaném [optimalizaci Azure Data Lake Storage Gen2](data-lake-storage-performance-tuning-guidance.md) .
 - Projděte si osvědčené postupy pro správu Data Lake Store. Viz [osvědčené postupy pro používání Azure Data Lake Storage Gen2](data-lake-storage-best-practices.md)
-

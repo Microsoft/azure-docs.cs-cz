@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 317cc5222b3444ae2ed242df694d317503c72a87
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9831305f3889f977a270630b40fa0d78ec1085bd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290665"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501197"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware
 
@@ -41,7 +41,7 @@ Dokončete předchozí kurzy:
 3. V tomto kurzu si ukážeme, jak replikovat jeden virtuální počítač. Pokud nasazujete více virtuálních počítačů VMware, měli byste použít [nástroj Plánovač nasazení](https://aka.ms/asr-deployment-planner). [Přečtěte si další informace](site-recovery-deployment-planner.md) o tomto nástroji.
 4. V tomto kurzu se používá několik možností, které byste mohli chtít udělat jinak:
     - V tomto kurzu se pomocí šablony vajíček vytvoří virtuální počítač VMware konfiguračního serveru. Pokud to z nějakého důvodu nemůžete udělat, postupujte podle [těchto pokynů](physical-manage-configuration-server.md) a nastavte konfigurační server ručně.
-    - V tomto kurzu Site Recovery automaticky stáhne a nainstaluje MySQL na konfigurační server. Pokud chcete, můžete ho místo toho nastavit ručně. [Přečtěte si další informace](vmware-azure-deploy-configuration-server.md#configure-settings).
+    - V tomto kurzu Site Recovery automaticky stáhne a nainstaluje MySQL na konfigurační server. Pokud chcete, můžete ho místo toho nastavit ručně. [Další informace](vmware-azure-deploy-configuration-server.md#configure-settings).
 
 
 
@@ -87,7 +87,7 @@ Všechny tyto součásti jsou nainstalovány společně na jednom místním poč
 1. Přihlaste se k serveru VMware vCenter nebo vSphere hostitele ESXi pomocí klienta VMware vSphere.
 2. V nabídce **soubor** vyberte **nasadit šablonu OVF** a spusťte **Průvodce nasazením šablony OVF**.
 
-     ![Šablona OVF](./media/vmware-azure-tutorial/vcenter-wizard.png)
+     ![Snímek obrazovky s příkazem nasadit šablonu OVF v klientovi VMWare vSphere](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
 3. V části **Select source** (Vybrat zdroj) zadejte umístění staženého souboru OVF.
 4. V části **Review details** (Kontrola podrobností) vyberte **Next** (Další).
@@ -153,7 +153,7 @@ Vyberte a zkontrolujte cílové prostředky.
 1. Vyberte **připravit**  >  **cíl**infrastruktury. Vyberte předplatné Azure, které chcete použít. Používáme model Resource Manager.
 2. Site Recovery kontroluje, zda máte jednu nebo více virtuálních sítí. Měli byste je mít, když nastavujete komponenty Azure v [prvním kurzu](tutorial-prepare-azure.md) v této sérii.
 
-   ![Karta Cíl](./media/vmware-azure-tutorial/storage-network.png)
+   ![Snímek obrazovky přípravy infrastruktury > možnosti cíle](./media/vmware-azure-tutorial/storage-network.png)
 
 ## <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
 
@@ -165,7 +165,7 @@ Vyberte a zkontrolujte cílové prostředky.
 6. V části **Uchování bodu obnovení** zadejte, po jakou delší dobu se má každý bod obnovení uchovat. V tomto kurzu použijeme 72 hodin. Replikované virtuální počítače můžete v rámci okna uchování obnovit do libovolného časového bodu.
 7. U možnosti **Frekvence snímků konzistentní vzhledem k aplikacím ** zadejte, jak často se vytvářejí snímky konzistentní vzhledem k aplikaci. Používáme výchozí hodnotu 60 minut. Vyberte **OK** a vytvořte zásadu.
 
-   ![Vytvoření zásady replikace](./media/vmware-azure-tutorial/replication-policy.png)
+   ![Snímek obrazovky s možnostmi vytvoření zásad replikace](./media/vmware-azure-tutorial/replication-policy.png)
 
 - Tato zásada se automaticky přidruží ke konfiguračnímu serveru.
 - Ve výchozím nastavení se pro navrácení služeb po obnovení automaticky vytvoří zásada párování. Pokud má zásada replikace název například **rep-policy**, zásada navrácení služeb po obnovení bude mít název **rep-policy-failback**. Tato zásada se nepoužije, dokud nespustíte navrácení služeb po obnovení z Azure.

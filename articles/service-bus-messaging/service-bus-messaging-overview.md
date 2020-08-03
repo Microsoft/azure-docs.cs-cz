@@ -3,12 +3,12 @@ title: Přehled přenosu zpráv ve službě Azure Service Bus | Dokumentace Micr
 description: Tento článek poskytuje přehled Azure Service Bus, plně spravovaného zprostředkovatele zpráv pro podnikovou integraci.
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 5adcdf10898a7b0ee2d551a3a24b9f80195d645f
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 478dd0debb5117e76cf8d0ab6599dcf363c12ab3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449120"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501470"
 ---
 # <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
 
@@ -23,7 +23,7 @@ Mezi běžné scénáře zasílání zpráv patří:
 * *Témata a odběry*. Povolit vztah 1:*n* mezi vydavateli a předplatiteli.
 * *Relace zpráv*. Implementujte pracovní postupy, které vyžadují řazení zpráv nebo odložení zpráv.
 
-## <a name="namespaces"></a>Jmenné prostory
+## <a name="namespaces"></a>Obory názvů
 
 Obor názvů je kontejner pro všechny součásti zasílání zpráv. V jednom oboru názvů může být několik front a témat a obory názvů často slouží jako kontejnery aplikací.
 
@@ -92,7 +92,7 @@ Chyba by mohla způsobit pochybnosti o výsledku operace odeslání. Zjišťová
 ### <a name="security-protocols"></a>Protokoly zabezpečení
 <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>
 
-Service Bus podporuje protokoly zabezpečení, jako je například SAS ( [Shared Access signatury](service-bus-sas.md) ), [řízení přístupu na základě role (Azure RBAC)](authenticate-application.md) (RBAC) a [spravované identity pro prostředky Azure](service-bus-managed-service-identity.md).
+Service Bus podporuje protokoly zabezpečení, jako je například SAS ( [Shared Access signatury](service-bus-sas.md) ), [řízení přístupu na základě role Azure (Azure RBAC)](authenticate-application.md) a [spravované identity pro prostředky Azure](service-bus-managed-service-identity.md).
 
 ### <a name="geo-disaster-recovery"></a>Geografické zotavení po havárii
 

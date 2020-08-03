@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: de7ec961672db2f3120e00f1a42b33f71e7ab092
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: b1454106c4498f4519972633df8a871585d254f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80437833"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497541"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>Kurz: Přidání parametrů do šablony ARM
 
@@ -56,7 +57,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete spustit tento příkaz nasazení, musíte mít [nejnovější verzi](/cli/azure/install-azure-cli) rozhraní příkazového řádku Azure CLI.
+Jestliže chcete spustit tento příkaz nasazení, musíte mít k dispozici [nejnovější verzi](/cli/azure/install-azure-cli) Azure CLI.
 
 ```azurecli
 az deployment group create \
@@ -72,7 +73,7 @@ az deployment group create \
 
 V předchozí části jste nasadili účet úložiště se stejným názvem, který jste vytvořili dříve. Možná vás zajímá, jak je prostředek ovlivněný znovu nasazením.
 
-Pokud prostředek již existuje a ve vlastnostech není zjištěna žádná změna, není provedena žádná akce. Pokud prostředek už existuje a vlastnost se změnila, prostředek se aktualizuje. Pokud prostředek neexistuje, vytvoří se.
+Pokud prostředek už existuje a ve vlastnostech se nezjistí žádná změna, neprovede se žádná akce. Jestliže prostředek už existuje a vlastnost se změnila, prostředek se aktualizuje. V případě, že prostředek neexistuje, vytvoří se.
 
 Tato možnost manipulace s aktualizacemi znamená, že vaše šablona může zahrnovat všechny prostředky, které potřebujete pro řešení Azure. Šablonu můžete bezpečně znovu nasadit a zjistit, jestli se prostředky v případě potřeby změnily nebo vytvářejí. Pokud jste například přidali soubory do svého účtu úložiště, můžete znovu nasadit účet úložiště bez ztráty těchto souborů.
 

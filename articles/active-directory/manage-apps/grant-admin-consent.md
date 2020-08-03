@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c24023bdd3540785dec58ebeaa14d99ab659ab1
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 713b4ed2559e3cd16943af92e68818047e249ef4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848363"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501010"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Udělení souhlasu správce v rámci celého tenanta aplikaci
 
@@ -31,9 +31,16 @@ Udělení souhlasu správce pro celé tenanta vyžaduje, abyste se přihlásili 
 
 > [!IMPORTANT]
 > Pokud se aplikaci udělí souhlas správce na úrovni tenanta, všichni uživatelé se budou moct k aplikaci přihlásit, pokud není nakonfigurovaná tak, aby vyžadovala přiřazení uživatele. Chcete-li omezit, kteří uživatelé se mohou přihlašovat k aplikaci, vyžadovat přiřazení uživatele a pak přiřadit uživatele nebo skupiny k aplikaci. Další informace najdete v tématu [metody přiřazení uživatelů a skupin](methods-for-assigning-users-and-groups.md).
+>
+> K poskytnutí souhlasu správce Microsoft Graph rozhraní API je potřeba role globálního správce.
+>
+
 
 > [!WARNING]
 > Udělení souhlasu správce na úrovni tenanta aplikaci udělí aplikaci a vydavateli aplikace přístup k datům vaší organizace. Pečlivě zkontrolujte oprávnění, která aplikace požaduje před udělením souhlasu.
+>
+> K poskytnutí souhlasu správce Microsoft Graph rozhraní API je potřeba role globálního správce.
+>
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>Udělit souhlas správce od Azure Portal
 

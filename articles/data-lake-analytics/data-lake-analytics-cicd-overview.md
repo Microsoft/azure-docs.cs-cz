@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 09b4f36a5c97b6bcc0a8d11d2fb1ee0893fae80a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3517938ae0e08af62a6fcf0d3d0a43a5eaee48dd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130133"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496113"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Jak nastavit kanál CI/CD pro Azure Data Lake Analytics  
 
@@ -35,7 +35,7 @@ Projekt U-SQL lze vytvořit pomocí Microsoft Build Engine (MSBuild) předáním
 
 Než nastavíte úlohu sestavení pro projekt U-SQL, ujistěte se, že máte nejnovější verzi projektu U-SQL. V editoru otevřete soubor projektu U-SQL a ověřte, že máte tyto položky importu:
 
-```   
+```xml
 <!-- check for SDK Build target in current path then in USQLSDKPath-->
 <Import Project="UsqlSDKBuild.targets" Condition="Exists('UsqlSDKBuild.targets')" />
 <Import Project="$(USQLSDKPath)\UsqlSDKBuild.targets" Condition="!Exists('UsqlSDKBuild.targets') And '$(USQLSDKPath)' != '' And Exists('$(USQLSDKPath)\UsqlSDKBuild.targets')" />
@@ -66,14 +66,14 @@ Skripty u-SQL v projektu U-SQL mohou mít příkazy dotazu pro objekty databáze
 Další informace o [projektu U-SQL Database](data-lake-analytics-data-lake-tools-develop-usql-database.md).
 
 >[!NOTE]
->Příkaz DROP může způsobit potíže s odstraněním nehody. Chcete-li povolit příkaz DROP, je nutné explicitně zadat argumenty nástroje MSBuild. **AllowDropStatement** povolí operaci přetažení, která nesouvisí s daty, třeba drop Assembly a drop Table vracející funkci. **AllowDataDropStatement** povolí operaci odkládacích dat, jako je například vyřazení tabulky a řazení. Před použitím AllowDataDropStatement musíte povolit AllowDropStatement.
+> Příkaz DROP může způsobit nechtěné odstranění. Chcete-li povolit příkaz DROP, je nutné explicitně zadat argumenty nástroje MSBuild. **AllowDropStatement** povolí operaci přetažení, která nesouvisí s daty, třeba drop Assembly a drop Table vracející funkci. **AllowDataDropStatement** povolí operaci odkládacích dat, jako je například vyřazení tabulky a řazení. Před použitím AllowDataDropStatement musíte povolit AllowDropStatement.
 >
 
 ### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>Sestavení projektu U-SQL pomocí příkazového řádku MSBuild
 
 Nejprve migrujte projekt a získejte balíček NuGet. Pak zavolejte standardní příkazový řádek nástroje MSBuild s následujícími dalšími argumenty pro sestavení projektu U-SQL: 
 
-``` 
+```console
 msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime;USQLTargetType=SyntaxCheck;DataRoot=datarootfolder;/p:EnableDeployment=true
 ``` 
 
@@ -100,7 +100,7 @@ Kromě příkazového řádku můžete také použít úlohu sestavení sady Vis
 
     ![Definování proměnných CI/CD MSBuild pro projekt U-SQL](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
 
-    ```
+    ```console
     /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime /p:USQLTargetType=SyntaxCheck /p:DataRoot=$(Build.SourcesDirectory) /p:EnableDeployment=true
     ```
 
@@ -109,9 +109,7 @@ Kromě příkazového řádku můžete také použít úlohu sestavení sady Vis
 Po spuštění sestavení jsou všechny skripty v projektu U-SQL sestaveny a výstup do souboru zip s názvem `USQLProjectName.usqlpack` . Struktura složek v projektu je udržována ve výstupu metody zip Build.
 
 > [!NOTE]
->
-> Soubory kódu na pozadí pro každý skript U-SQL budou sloučeny jako vložený příkaz do výstupu sestavení skriptu.
->
+> Soubory kódu na pozadí každého skriptu U-SQL budou sloučeny jako vložený příkaz do výstupu sestavení skriptu.
 
 ## <a name="test-u-sql-scripts"></a>Testování skriptů U-SQL
 
@@ -229,6 +227,10 @@ Function Main()
 
 Main
 ```
+
+>[!NOTE]
+> Příkazy: `Submit-AzDataLakeAnalyticsJob` a `Wait-AzDataLakeAnalyticsJob` jsou Azure PowerShell rutiny pro Azure Data Lake Analytics v rozhraní Azure Resource Manager Framework. Muset pracovní stanici s nainstalovanou Azure PowerShell. Další příkazy a příklady najdete v [seznamu příkazů](https://docs.microsoft.com/powershell/module/Az.DataLakeAnalytics/?view=azps-4.3.0) .
+>
 
 ### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>Nasazení úloh U-SQL prostřednictvím Azure Data Factory
 
