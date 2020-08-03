@@ -46,18 +46,24 @@
       href: manage-dhcp.md
     - name: Zotavení po havárii
       href: disaster-recovery.md
-    - name: Azure Backup Server pro AVS
-      items:
-        - name: Nastavení Azure Backup Serveru pro AVS
-          href: set-up-mabs-for-avs.md
-        - name: Zálohování virtuálních počítačů AVS s využitím Azure Backup Serveru
-          href: backup-avs-vms-with-mabs.md
     - name: Nativní integrace Azure
       items:
         - name: API Management
           href: concepts-api-management.md
         - name: Hvězdicová architektura
           href: concepts-avs-hub-and-spoke-integration.md
+        - name: Azure Backup Server pro AVS
+          items:
+            - name: Nastavení Backup Serveru pro AVS
+              href: set-up-mabs-for-avs.md
+            - name: Zálohování virtuálních počítačů AVS s využitím Backup Serveru
+              href: backup-avs-vms-with-mabs.md
+        - name: Application Gateway v AVS
+          href: protect-avs-web-apps-with-app-gateway.md
+    - name: Řešení VMware
+      items:
+        - name: Nastavení vRealize Operations pro AVS
+          href: vrealize-operations-for-avs.md
 - name: Referenční informace
   items: null
 - name: Zdroje a prostředky

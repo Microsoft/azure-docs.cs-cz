@@ -38,6 +38,8 @@
       href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
     - name: Použití spravované identity pro připojení Key Vaultu k aplikaci Azure Spring Cloud
       href: spring-cloud-tutorial-managed-identities-key-vault.md
+    - name: Nastavení automatického škálování pro aplikace mikroslužeb
+      href: spring-cloud-tutorial-setup-autoscale.md
 - name: ukázky
   items:
     - name: Integrované služby Azure Policy

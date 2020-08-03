@@ -175,6 +175,22 @@
               href: roles-custom-available-permissions.md
             - name: Delegování oprávnění správce aplikace
               href: roles-delegate-app-roles.md
+        - name: Využití skupin ke správě přiřazení rolí
+          items:
+            - name: Přiřazení rolí na základě skupin (Preview)
+              href: roles-groups-concept.md
+            - name: Vytvoření skupiny s možností přiřazení rolí
+              href: roles-groups-create-eligible.md
+            - name: Přiřazení rolí ke skupině
+              href: roles-groups-assign-role.md
+            - name: Odebrání přiřazení rolí ze skupiny
+              href: roles-groups-remove-assignment.md
+            - name: Zobrazení přiřazení rolí pro skupinu
+              href: roles-groups-view-assignments.md
+            - name: Zajištění možnosti přiřazení role v PIM pro skupinu
+              href: roles-groups-pim-eligible.md
+            - name: Nejčastější dotazy a řešení potíží
+              href: roles-groups-faq-troubleshooting.md
         - name: Role s nejnižšími oprávněními podle úkolu
           href: roles-delegate-by-task.md
         - name: Role Microsoft 365

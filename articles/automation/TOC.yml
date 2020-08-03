@@ -244,43 +244,49 @@
     - name: Update Management
       items:
         - name: Přehled
-          href: automation-update-management.md
+          href: update-management/update-mgmt-overview.md
         - name: Podporované oblasti pro propojený pracovní prostor Log Analytics
           href: how-to/region-mappings.md
         - name: Povolení
           items:
             - name: Povolení Update Managementu s využitím šablony Azure Resource Manageru
-              href: automation-update-management-deploy-template.md
+              href: update-management/update-mgmt-enable-template.md
             - name: Povolení Update Managementu z webu Azure Portal
-              href: automation-onboard-solutions-from-browse.md
+              href: update-management/update-mgmt-enable-portal.md
             - name: Povolení Update Managementu z virtuálního počítače Azure
-              href: automation-onboard-solutions-from-vm.md
+              href: update-management/update-mgmt-enable-vm.md
             - name: Povolení Update Managementu z účtu Automation
-              href: automation-onboard-solutions-from-automation-account.md
+              href: update-management/update-mgmt-enable-automation-account.md
             - name: Povolení Update Managementu z runbooku
-              href: automation-onboard-solutions.md
-        - name: Správa aktualizací pro virtuální počítače Azure
-          href: automation-tutorial-update-management.md
-        - name: Správa aktualizací pro několik virtuálních počítačů
-          href: manage-update-multi.md
-        - name: Zobrazení posouzení aktualizací
-          href: automation-view-update-assessments.md
-        - name: Správa předzálohovacích a pozálohovacích skriptů
-          href: pre-post-scripts.md
+              href: update-management/update-mgmt-enable-runbook.md
+        - name: Správa aktualizací pro virtuální počítače
+          items:
+            - name: Začínáme
+              href: update-management/update-mgmt-manage-updates-for-vm.md
+            - name: Posouzení dodržování předpisů
+              href: update-management/update-mgmt-view-update-assessments.md
+            - name: Nasazení aktualizací a kontrola stavu
+              href: update-management/update-mgmt-deploy-updates.md
+            - name: Použití předzálohovacích a pozálohovacích skriptů
+              href: update-management/update-mgmt-pre-post-scripts.md
+            - name: Konfigurace upozornění
+              href: update-management/update-mgmt-configure-alerts.md
         - name: Integrace s Configuration Managerem
-          href: updatemgmt-mecmintegration.md
+          href: update-management/update-mgmt-mecmintegration.md
         - name: Konfigurace klienta služby Windows Update
-          href: automation-configure-windows-update.md
+          href: update-management/update-mgmt-configure-wuagent.md
         - name: Použití dynamických skupin
-          href: automation-update-management-groups.md
+          href: update-management/update-mgmt-groups.md
         - name: Dotazování na protokoly Update Managementu
-          href: automation-update-management-query-logs.md
+          href: update-management/update-mgmt-query-logs.md
         - name: Práce s konfiguracemi oboru
-          href: automation-scope-configurations-update-management.md
-        - name: Odpojení pracovního prostoru od účtu Automation
-          href: automation-unlink-workspace-update-management.md
-        - name: Odebrání virtuálních počítačů z Update Managementu
-          href: automation-remove-vms-from-update-management.md
+          href: update-management/update-mgmt-scope-configuration.md
+        - name: Zakázat
+          items:
+            - name: Odebrání Update Managementu
+              href: update-management/update-mgmt-remove-feature.md
+            - name: Odebrání virtuálních počítačů z Update Managementu
+              href: update-management/update-mgmt-remove-vms.md
         - name: Řešení potíží
           items:
             - name: Řešení problémů s nasazením funkcí

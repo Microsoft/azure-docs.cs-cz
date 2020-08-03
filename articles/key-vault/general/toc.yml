@@ -67,7 +67,9 @@
     - name: Obnovitelné odstranění
       items:
         - name: Obnovitelné odstranění ve službě Azure Key Vault
-          href: overview-soft-delete.md
+          href: soft-delete-overview.md
+        - name: Aktivované obnovitelné odstranění ve výchozím nastavení
+          href: soft-delete-change.md
     - name: 'Ověřování, požadavky a odpovědi'
       href: authentication-requests-and-responses.md
     - name: Pokyny k omezování služby Azure Key Vault

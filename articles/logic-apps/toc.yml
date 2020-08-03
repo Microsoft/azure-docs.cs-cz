@@ -28,6 +28,8 @@
       href: tutorial-process-email-attachments-workflow.md
 - name: ukázky
   items:
+    - name: Vytvoření aplikace logiky – ukázkový skript
+      href: sample-logic-apps-cli-script.md
     - name: Ukázky kódu Azure
       href: /samples/browse/?products=azure-logic-apps
     - name: Šablony pro rychlý start Resource Manageru

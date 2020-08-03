@@ -9,7 +9,7 @@
 - name: Kurzy
   expanded: true
   items:
-    - name: Vytvoření základní spravované domény
+    - name: Vytvoření spravované domény
       href: tutorial-create-instance.md
     - name: Konfigurace virtuální sítě pro aplikace
       href: tutorial-configure-networking.md
@@ -21,9 +21,11 @@
       href: tutorial-configure-ldaps.md
     - name: Konfigurace synchronizace hodnot hash hesel
       href: tutorial-configure-password-hash-sync.md
-    - name: Vytvoření pokročilé spravované domény
+    - name: Vytvoření sady replik (Preview)
+      href: tutorial-create-replica-set.md
+    - name: Vytvoření přizpůsobené spravované domény
       href: tutorial-create-instance-advanced.md
-    - name: Vytvoření vztahu důvěryhodnosti doménové struktury (Preview)
+    - name: Vytvoření vztahu důvěryhodnosti doménové struktury
       href: tutorial-create-forest-trust.md
 - name: ukázky
   items:
@@ -33,12 +35,16 @@
       href: template-create-instance.md
     - name: Konfigurace synchronizace s vymezeným oborem s využitím Azure AD PowerShellu
       href: powershell-scoped-synchronization.md
+    - name: Vytvoření lesu prostředků a vztahu důvěryhodnosti s využitím Azure PowerShell
+      href: create-resource-forest-powershell.md
 - name: Koncepty
   items:
     - name: Základy správy
       href: administration-concepts.md
     - name: Obvyklé scénáře nasazení
       href: scenarios.md
+    - name: Sady replik (Preview)
+      href: concepts-replica-sets.md
     - name: Doménové struktury a vztahy důvěryhodnosti
       items:
         - name: Lesy prostředků

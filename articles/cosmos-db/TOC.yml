@@ -592,6 +592,8 @@
           href: policy.md
     - name: Kvóty služeb
       href: concepts-limits.md
+    - name: Automatická doporučení
+      href: automated-recommendations.md
 - name: 'Cassandra, MongoDB a další rozhraní API'
   expanded: true
   items:

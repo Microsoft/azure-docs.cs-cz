@@ -45,7 +45,7 @@
           href: pim-resource-roles-activate-your-roles.md
     - name: Správa rolí Azure AD
       items:
-        - name: Aktualizace funkcí
+        - name: Přehled funkcí
           href: azure-ad-roles-features.md
         - name: PowerShell pro role Azure AD
           href: powershell-for-azure-ad-roles.md
@@ -87,6 +87,22 @@
           href: azure-pim-resource-rbac.md
         - name: Použití vlastních rolí
           href: pim-resource-roles-custom-role-policy.md
+    - name: Správa přístupových přístupových skupin (Preview)
+      items:
+        - name: Přehled privilegovaného přístupu
+          href: groups-features.md
+        - name: Zjišťování skupin
+          href: groups-discover-groups.md
+        - name: Přiřazení člena nebo vlastníka
+          href: groups-assign-member-owner.md
+        - name: Schvalování žádostí
+          href: groups-approval-workflow.md
+        - name: Prodloužení nebo obnovení přiřazení
+          href: groups-renew-extend.md
+        - name: Konfigurace nastavení role
+          href: groups-role-settings.md
+        - name: Zobrazení historie auditů
+          href: groups-audit.md
     - name: Řešení potíží s PIM
       href: pim-troubleshoot.md
     - name: Kontroly přístupu

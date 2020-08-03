@@ -42,6 +42,8 @@
       href: vpn-gateway-about-point-to-site-routing.md
     - name: Zónově redundantní brány pro zóny dostupnosti
       href: about-zone-redundant-vnet-gateways.md
+    - name: Integrované ovládací prvky zabezpečení
+      href: vpn-gateway-security-controls.md
     - name: Interoperabilita možností připojení back-endu
       items:
         - name: Úvod a nastavení testu
@@ -52,8 +54,6 @@
           href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
         - name: Analýza roviny dat
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
-    - name: Integrované ovládací prvky zabezpečení
-      href: vpn-gateway-security-controls.md
 - name: Návody
   items:
     - name: Vytvoření a správa služby VPN Gateway
@@ -160,8 +160,8 @@
               href: vpn-gateway-howto-openvpn.md
             - name: Konfigurace klientů OpenVPN
               href: vpn-gateway-howto-openvpn-clients.md
-        - name: Přechod na protokol OpenVPN nebo IKEv2 od SSTP
-          href: ikev2-openvpn-from-sstp.md
+            - name: Přechod na protokol OpenVPN nebo IKEv2 od SSTP
+              href: ikev2-openvpn-from-sstp.md
         - name: Přechod na certifikát veřejné brány CA pro P2S
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Konfigurace tunelu zařízení VPN AlwaysOn
@@ -170,12 +170,6 @@
           href: vpn-gateway-howto-always-on-user-tunnel.md
         - name: Inzerce vlastních tras pro klienty P2S
           href: vpn-gateway-p2s-advertise-custom-routes.md
-    - name: Vytvoření zónově redundantní brány
-      href: create-zone-redundant-vnet-gateway.md
-    - name: Konfigurace zásad IPsec/IKE pro připojení
-      href: vpn-gateway-ipsecikepolicy-rm-powershell.md
-    - name: Konfigurace připojení typu aktivní-aktivní
-      href: vpn-gateway-activeactive-rm-powershell.md
     - name: 'Směrování, BGP a VNet Peering'
       items:
         - name: Konfigurace BGP pro bránu VPN
@@ -218,6 +212,18 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: Konfigurace zachytávání paketů
       href: packet-capture.md
+    - name: Zónově redundantní brány
+      items:
+        - name: Vytvoření zónově redundantní brány
+          href: create-zone-redundant-vnet-gateway.md
+    - name: Konfigurace zásad IPsec/IKE pro připojení
+      items:
+        - name: PowerShell
+          href: vpn-gateway-ipsecikepolicy-rm-powershell.md
+    - name: Konfigurace připojení typu aktivní-aktivní
+      items:
+        - name: PowerShell
+          href: vpn-gateway-activeactive-rm-powershell.md
     - name: Řešení potíží
       href: vpn-gateway-troubleshoot.md
       items:

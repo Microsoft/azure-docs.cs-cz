@@ -51,7 +51,7 @@
       href: concepts-digital-twin.md
     - name: Úložiště modelů
       href: concepts-model-repository.md
-    - name: Zjišťování modelů
+    - name: Použití modelů v řešení
       href: concepts-model-discovery.md
     - name: Analyzátor modelů
       href: concepts-model-parser.md

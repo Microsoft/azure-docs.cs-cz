@@ -12,12 +12,12 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 07/30/2020
-  ms.openlocfilehash: 066f82bf214a9a5a2a364bc9dc021a1baa31feac
-  ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+  ms.openlocfilehash: 40a8fc105dd297ec4bc70ecc0a27b9fa295d3fe1
+  ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/30/2020
-  ms.locfileid: "87433075"
+  ms.lasthandoff: 07/31/2020
+  ms.locfileid: "87474508"
 landingContent:
 - title: Začínáme se strojovým učením
   linkLists:
@@ -25,12 +25,18 @@ landingContent:
     links:
     - text: Poznámkové bloky v Pythonu
       url: tutorial-1st-experiment-sdk-setup.md
-    - text: Designer (přetažení a vložení)
-      url: tutorial-designer-automobile-price-train-score.md
     - text: AutoML (bez kódu / bez rozsáhlého kódu)
       url: tutorial-first-experiment-automated-ml.md
+    - text: Designer (podporující přetahování)
+      url: tutorial-designer-automobile-price-train-score.md
     - text: RStudio
       url: tutorial-1st-r-experiment.md
+- title: Přenesení modelu ML do Azure
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Nasazení místního modelu do cloudu
+      url: how-to-deploy-existing-model.md
 - title: Použití AutoML nebo přetahování v sadě Studio
   linkLists:
   - linkListType: overview
@@ -45,50 +51,10 @@ landingContent:
     links:
     - text: 'AutoML: sestavení klasifikačního modelu'
       url: tutorial-first-experiment-automated-ml.md
-    - text: 'AutoML: trénování a nasazení modelů ML'
-      url: how-to-use-automated-ml-for-ml-models.md
     - text: 'Designer: predikce cen automobilů'
       url: tutorial-designer-automobile-price-train-score.md
-    - text: Vytvoření projektu pro označování obrázků
+    - text: Označení obrázků pro klasifikaci
       url: tutorial-labeling.md
-- title: Přenesení modelu do Azure
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Nasazení místního modelu do cloudu
-      url: how-to-deploy-existing-model.md
-- title: Trénování s využitím sady Python SDK
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Vytvoření prvního experimentu ML
-      url: tutorial-1st-experiment-sdk-setup.md
-    - text: Klasifikace obrázků
-      url: tutorial-train-models-with-aml.md
-    - text: Předpověď ceny jízdy taxíkem s využitím AutoML
-      url: tutorial-auto-train-models.md
-    - text: Vytváření kanálů Azure ML
-      url: tutorial-pipeline-batch-scoring-classification.md
-  - linkListType: how-to-guide
-    links:
-    - text: Nastavení prostředí
-      url: how-to-configure-environment.md
-    - text: Interpretace a vysvětlení modelů
-      url: how-to-machine-learning-interpretability.md
-    - text: Hluboké učení vs. ML
-      url: concept-deep-learning-vs-machine-learning.md
-    - text: Trénování a registrace modelů Scikit-learn
-      url: how-to-train-scikit-learn.md
-    - text: Trénování a registrace modelů TensorFlow
-      url: how-to-train-tensorflow.md
-    - text: Trénování a registrace modelů PyTorch
-      url: how-to-train-pytorch.md
-    - text: Trénování a registrace modelů Keras
-      url: how-to-train-keras.md
-    - text: Zpětnovazební učení
-      url: how-to-use-reinforcement-learning.md
-    - text: Co jsou kanály ML?
-      url: concept-ml-pipelines.md
 - title: 'MLOps: Nasazení a správa modelů'
   linkLists:
   - linkListType: how-to-guide
@@ -101,6 +67,34 @@ landingContent:
       url: how-to-consume-web-service.md
     - text: Dávkové předpovědi
       url: how-to-use-parallel-run-step.md
+    - text: Úložiště příkladů MLOps
+      url: https://github.com/microsoft/MLOps
+- title: Trénování s využitím sady Python SDK
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření prvního experimentu ML
+      url: tutorial-1st-experiment-sdk-setup.md
+    - text: Předpověď ceny jízdy taxíkem s využitím AutoML
+      url: tutorial-auto-train-models.md
+    - text: Vytváření kanálů Azure ML
+      url: tutorial-pipeline-batch-scoring-classification.md
+    - text: Klasifikace obrázků
+      url: tutorial-train-models-with-aml.md
+  - linkListType: how-to-guide
+    links:
+    - text: Nastavení prostředí
+      url: how-to-configure-environment.md
+    - text: Trénování modelů Scikit-learn
+      url: how-to-train-scikit-learn.md
+    - text: Trénování modelů TensorFlow
+      url: how-to-train-tensorflow.md
+    - text: Trénování modelů PyTorch
+      url: how-to-train-pytorch.md
+    - text: Trénování modulů Keras
+      url: how-to-train-keras.md
+    - text: Co jsou kanály ML?
+      url: concept-ml-pipelines.md
 - title: Přejít k referenčním dokumentům
   linkLists:
   - linkListType: reference
@@ -109,8 +103,6 @@ landingContent:
       url: https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py
     - text: Moduly a algoritmy designeru
       url: algorithm-module-reference/module-reference.md
-    - text: Úložiště příkladů MLOps
-      url: https://github.com/microsoft/MLOps
     - text: REST API
       url: https://docs.microsoft.com/rest/api/azureml/
     - text: Machine Learning CLI

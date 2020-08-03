@@ -232,10 +232,12 @@
           href: devtest-lab-mandatory-artifacts.md
         - name: Řešení potíží s použitím artefaktů
           href: devtest-lab-troubleshoot-apply-artifacts.md
-    - name: Šifrování úložiště a disků s operačním systémem používaných testovacím prostředím
+    - name: Šifrování prostředků testovacího prostředí
       items:
         - name: Šifrování úložiště používaného testovacím prostředím
           href: encrypt-storage.md
+        - name: Šifrování disků OS s využitím klíčů spravovaných zákazníkem
+          href: encrypt-disks-customer-managed-keys.md
     - name: Integrace s CI/CD
       items:
         - name: Integrace testovacího prostředí do kanálu CI/CD služby Azure Pipelines

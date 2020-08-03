@@ -262,7 +262,7 @@
           items:
             - name: Monitorování účtu úložiště
               href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Migrace z klasických metrik
+            - name: Přechod z klasických metrik
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Monitorování (klasické prostředí)
               items:
@@ -685,7 +685,7 @@
           items:
             - name: Monitorování účtu úložiště
               href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Migrace z klasických metrik
+            - name: Přechod z klasických metrik
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Monitorování (klasické prostředí)
               items:

@@ -452,6 +452,8 @@
       displayName: security
     - name: Verze toku uživatele
       href: user-flow-versions.md
+    - name: Starší verze toku uživatele
+      href: user-flow-versions-legacy.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna
