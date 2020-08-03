@@ -45,7 +45,7 @@ Tento rychlý Start vyžaduje [účet Azure Cognitive Services](https://docs.mic
 [!INCLUDE [Python quickstart](includes/dictionary-python.md)]
 ::: zone-end
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Přeložení textu](quickstart-translate.md)
 * [Transliterace textu](quickstart-transliterate.md)
