@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f87f732fbfff23e71096a89a7c04c65d1bd7959
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: a88e30e85402f60489839b0a34b5a793fd7192df
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432349"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502473"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -392,7 +392,7 @@ Uživatelé s touto rolí můžou nastavit nebo resetovat přihlašovací údaje
 
 ### <a name="privileged-role-administrator"></a>[Správce privilegovaných rolí](#privileged-role-administrator-permissions)
 
-Uživatelé s touto rolí můžou spravovat přiřazení rolí v Azure Active Directory a taky v Azure AD Privileged Identity Management. Kromě toho tato role umožňuje správu všech aspektů Privileged Identity Management a jednotek pro správu.
+Uživatelé s touto rolí můžou spravovat přiřazení rolí v Azure Active Directory a taky v Azure AD Privileged Identity Management. Můžou vytvářet a spravovat skupiny, které se dají přiřadit k rolím Azure AD. Kromě toho tato role umožňuje správu všech aspektů Privileged Identity Management a jednotek pro správu.
 
 > [!IMPORTANT]
 > Tato role uděluje možnost spravovat přiřazení pro všechny role Azure AD, včetně role globálního správce. Tato role nezahrnuje žádné další privilegované možnosti ve službě Azure AD, jako je vytváření nebo aktualizace uživatelů. Uživatelé přiřazení k této roli ale můžou udělit další role nebo jiné další oprávnění.
@@ -748,6 +748,9 @@ Může spravovat všechny aspekty Azure AD a služeb Microsoftu, které použív
 | Microsoft. Directory/directoryRoleTemplates/allProperties/allTasks | Vytvořit a odstranit directoryRoleTemplates a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
 | Microsoft. Directory/domény/allProperties/allTasks | Vytváření a odstraňování domén a čtení a aktualizace všech vlastností v Azure Active Directory. |
 | Microsoft. Directory/Groups/allProperties/allTasks | Vytváření a odstraňování skupin a čtení a aktualizace všech vlastností v Azure Active Directory. |
+| Microsoft. Directory/groupsAssignableToRoles/allProperties/Update | Aktualizujte skupiny s vlastností isAssignableToRole nastavenou na hodnotu true v Azure Active Directory. |
+| Microsoft. Directory/groupsAssignableToRoles/Create | V Azure Active Directory vytvořit skupiny s vlastností isAssignableToRole nastavenou na hodnotu true. |
+| Microsoft. Directory/groupsAssignableToRoles/DELETE | V Azure Active Directory odstraňte skupiny s vlastností isAssignableToRole nastavenou na hodnotu true. |
 | Microsoft. Directory/groupSettings/allProperties/allTasks | Vytvořit a odstranit groupSettings a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
 | Microsoft. Directory/groupSettingTemplates/allProperties/allTasks | Vytvořit a odstranit groupSettingTemplates a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
 | Microsoft. Directory/loginTenantBranding/allProperties/allTasks | Vytvořit a odstranit loginTenantBranding a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
@@ -1582,7 +1585,10 @@ Může spravovat přiřazení rolí v Azure AD a všechny aspekty Privileged Ide
 
 | **Akce** | **Popis** |
 | --- | --- |
-| Microsoft. aad. privilegedIdentityManagement/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. aad. privilegedIdentityManagement. |
+| Microsoft. Directory/groupsAssignableToRoles/allProperties/Update | Aktualizujte skupiny s vlastností isAssignableToRole nastavenou na hodnotu true v Azure Active Directory. |
+| Microsoft. Directory/groupsAssignableToRoles/Create | V Azure Active Directory vytvořit skupiny s vlastností isAssignableToRole nastavenou na hodnotu true. |
+| Microsoft. Directory/groupsAssignableToRoles/DELETE | V Azure Active Directory odstraňte skupiny s vlastností isAssignableToRole nastavenou na hodnotu true. |
+| Microsoft. Directory/privilegedIdentityManagement/allEntities/allTasks | Vytvořit a odstranit všechny prostředky a číst a aktualizovat standardní vlastnosti v Microsoft. aad. privilegedIdentityManagement. |
 | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/allTasks | Přečte a nakonfiguruje vlastnost servicePrincipals. appRoleAssignedTo v Azure Active Directory. |
 | Microsoft. Directory/servicePrincipals/oAuth2PermissionGrants/allTasks | Přečte a nakonfiguruje vlastnost servicePrincipals. oAuth2PermissionGrants v Azure Active Directory. |
 | Microsoft. Directory/administrativeUnits/allProperties/allTasks | Vytváření a Správa jednotek pro správu (včetně členů) |

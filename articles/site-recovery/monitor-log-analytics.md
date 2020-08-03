@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 047b689b10d03cf92e5cc744aa707b3f70fe77bd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529025"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495059"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Monitorování Site Recovery s využitím protokolů Azure Monitoru
 
@@ -36,7 +36,7 @@ Zde je seznam toho, co k tomu potřebujete:
 
 - Aspoň jeden počítač chráněný v úložišti Recovery Services.
 - Log Analytics pracovní prostor pro ukládání protokolů Site Recovery. [Přečtěte si o](../azure-monitor/learn/quick-create-workspace.md) nastavení pracovního prostoru.
-- Základní informace o tom, jak zapisovat, spouštět a analyzovat dotazy protokolu v Log Analytics. [Přečtěte si další informace](../azure-monitor/log-query/get-started-portal.md).
+- Základní informace o tom, jak zapisovat, spouštět a analyzovat dotazy protokolu v Log Analytics. [Další informace](../azure-monitor/log-query/get-started-portal.md).
 
 Než začnete, doporučujeme, abyste si přečtěte [běžné otázky týkající se monitorování](monitoring-common-questions.md) .
 
@@ -44,14 +44,14 @@ Než začnete, doporučujeme, abyste si přečtěte [běžné otázky týkajíc�
 
 1. V trezoru klikněte na **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky**.
 
-    ![Vybrat protokolování prostředků](./media/monitoring-log-analytics/add-diagnostic.png)
+    ![Snímek obrazovky znázorňující možnost Přidat nastavení diagnostiky](./media/monitoring-log-analytics/add-diagnostic.png)
 
 2. V okně **nastavení diagnostiky**zadejte název a zaškrtněte políčko **Odeslat do Log Analytics**.
 3. Vyberte odběr Azure Monitor protokoly a pracovní prostor Log Analytics.
 4. V přepínači vyberte **Azure Diagnostics** .
 5. V seznamu protokol vyberte všechny protokoly s předponou **AzureSiteRecovery**. Pak klikněte na **OK**.
 
-    ![Výběr pracovního prostoru](./media/monitoring-log-analytics/select-workspace.png)
+    ![Snímek obrazovky s nastavením diagnostiky](./media/monitoring-log-analytics/select-workspace.png)
 
 Protokoly Site Recovery začnou předávat do tabulky (**AzureDiagnostics**) ve vybraném pracovním prostoru.
 
@@ -125,7 +125,7 @@ rpoInSeconds_d <= 1800, "15-30Min", ">30Min") 
 | render barchart 
 ```
 
-![CÍL dotazu](./media/monitoring-log-analytics/example1.png)
+![Snímek obrazovky znázorňující pruhový graf virtuálních počítačů Azure replikovaných s Site Recovery.](./media/monitoring-log-analytics/example1.png)
 
 ### <a name="query-site-recovery-jobs"></a>Úlohy Site Recovery dotazů
 
@@ -190,7 +190,7 @@ AzureDiagnostics  
 | project TimeGenerated, name_s , RPO_in_seconds = rpoInSeconds_d   
 | render timechart 
 ```
-![Dotaz RPO počítače](./media/monitoring-log-analytics/example2.png)
+![Snímek obrazovky trendového grafu sledujícího cíl bodu obnovení konkrétního virtuálního počítače Azure](./media/monitoring-log-analytics/example2.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Četnost změn dat dotazů a rychlost nahrávání pro virtuální počítač Azure
 
@@ -207,7 +207,7 @@ Category contains "Upload", "UploadRate", "none") 
 | project TimeGenerated , InstanceWithType , Churn_MBps = todouble(Value_s)/1048576   
 | render timechart  
 ```
-![Změna dat dotazu](./media/monitoring-log-analytics/example3.png)
+![snímek obrazovky trendového grafu pro konkrétní virtuální počítač Azure](./media/monitoring-log-analytics/example3.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>Četnost změn dat dotazů a rychlost nahrávání pro VMware nebo fyzický počítač
 

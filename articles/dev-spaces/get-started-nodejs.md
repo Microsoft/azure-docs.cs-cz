@@ -5,13 +5,13 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak pomocí Azure Dev Spaces a Visual Studio Code ladit a rychle iterovat Node.js aplikace ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c4c583a53cb9250a37b934629ffc0539d760a876
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: a351ab92b01ac1a9cfe2834f6019bbb947751d35
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419576"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504343"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Vytvoření Kubernetesho vývojového prostoru: Visual Studio Code a Node.js pomocí Azure Dev Spaces
 

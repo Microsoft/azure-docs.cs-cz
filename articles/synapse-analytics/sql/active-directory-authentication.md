@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 894eecc7746ddb1352708f2dfe5d6d2d53cdd8c9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9c1b694d3a50759dcf49222f4e6b27ac7b34f9e5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021649"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502150"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Použití ověřování Azure Active Directory pro ověřování pomocí synapse SQL
 
@@ -99,7 +99,7 @@ Jakékoli ověřování Azure AD je možné pouze v případě, že byl vytvoře
   - `SUSER_ID(<admin name>)`
   - `SUSER_SID(<admin name>)`
 
-## <a name="connecting-using-azure-ad-identities"></a>Připojení pomocí identit Azure AD
+## <a name="connect-using-azure-ad-identities"></a>Připojení pomocí identit Azure AD
 
 Ověřování Azure Active Directory podporuje následující metody připojení k databázi pomocí identit Azure AD:
 

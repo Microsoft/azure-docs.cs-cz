@@ -6,12 +6,13 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: 64cf2568b448c74748be63901cafb51305eab713
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 94c5ee53b48aa1e373099614d1637d4b6da0088b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386363"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502014"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Šifrování dat pro Azure Database for PostgreSQL jeden server pomocí Azure CLI
 

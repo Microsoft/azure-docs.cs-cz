@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 624b8e18f8c0fb523c27c41ce9c10af93c8b6190
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 865263d22d6f92dec74ef2820e80481e1a308804
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446666"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494549"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů blob v Azure
 
@@ -30,17 +30,11 @@ Vezměte v úvahu scénář, kdy data budou často přístupná v počátečníc
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="storage-account-support"></a>Podpora účtu úložiště
+## <a name="availability-and-pricing"></a>Dostupnost a ceny
 
-Zásady správy životního cyklu jsou dostupné s účty Pro obecné účely v2 (GPv2), účty BLOB Storage a účty úložiště blob bloku úrovně Premium. V Azure Portal můžete upgradovat existující účet Pro obecné účely (GPv1) na účet GPv2. Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).  
-
-## <a name="pricing"></a>Ceny
+Funkce správy životního cyklu je dostupná ve všech oblastech Azure pro účty Pro obecné účely v2 (GPv2), účty BLOB Storage a účty úložiště blob bloku úrovně Premium. V Azure Portal můžete upgradovat existující účet Pro obecné účely (GPv1) na účet GPv2. Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).  
 
 Funkce správy životního cyklu je bezplatná. Zákazníkům se účtují běžné provozní náklady za volání rozhraní API [vrstvy objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) . Operace odstranění je zadarmo. Další informace o cenách najdete v tématu [ceny za objekty blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).
-
-## <a name="regional-availability"></a>Regionální dostupnost
-
-Funkce správy životního cyklu je dostupná ve všech oblastech Azure.
 
 ## <a name="add-or-remove-a-policy"></a>Přidat nebo odebrat zásadu
 
@@ -67,7 +61,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Zobrazení seznamu Azure Portal
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal vyhledejte a vyberte svůj účet úložiště. 
 
@@ -88,7 +82,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 9. Pokud chcete přidat novou zásadu, vyberte **Přidat** .
 
 #### <a name="azure-portal-code-view"></a>Azure Portal zobrazení kódu
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. V Azure Portal vyhledejte a vyberte svůj účet úložiště.
 
@@ -232,7 +226,7 @@ Zásada je kolekcí pravidel:
 
 Každé pravidlo v zásadě má několik parametrů:
 
-| Název parametru | Typ parametru | Poznámky | Povinné |
+| Název parametru | Typ parametru | Poznámky | Vyžadováno |
 |----------------|----------------|-------|----------|
 | `name`         | Řetězec |Název pravidla může obsahovat až 256 alfanumerických znaků. Název pravidla rozlišuje velká a malá písmena.  Musí být jedinečný v rámci zásad. | Ano |
 | `enabled`      | Logická hodnota | Volitelná logická hodnota, která povolí dočasné vypnutí pravidla. Výchozí hodnota je true, pokud není nastavena. | Ne | 
@@ -297,7 +291,7 @@ Filtry zahrnují:
 | blobIndexMatch | Pole hodnot slovníku sestávající z klíče značek indexu objektu BLOB a podmínky hodnoty, které mají být porovnány. Každé pravidlo může definovat až 10 stavových značek indexu objektu BLOB. Například pokud chcete, aby se všechny objekty blob shodovaly s `Project = Contoso` v rámci `https://myaccount.blob.core.windows.net/` pro pravidlo, je blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Pokud blobIndexMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | Ne |
 
 > [!NOTE]
-> Index objektu BLOB je ve verzi Public Preview a je dostupný v oblastech **Francie – střed** a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
+> Index objektu BLOB je ve verzi Public Preview a je dostupný v oblasti **Kanada – střed**, Kanada – **východ**, Francie – **střed**a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
 
 ### <a name="rule-actions"></a>Akce pravidla
 
@@ -473,7 +467,7 @@ Pro data, která se pravidelně upravují a přibývají k nim přistupovaly bě
 }
 ```
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Vytvořili jsem novou zásadu, proč se akce nespouštějí hned?**  
 Platforma spouští zásady životního cyklu jednou denně. Po nakonfigurování zásady může trvat až 24 hodin, než se některé akce poprvé spustí.  

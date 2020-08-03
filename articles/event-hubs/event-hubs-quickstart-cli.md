@@ -4,12 +4,13 @@ description: Tento rychlý start popisuje, jak pomocí Azure CLI vytvořit centr
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 90828a09b925fd3af774b22db3102094c1dd0c6d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: acdeb1e176be1676bd531eca33faf1e0e18f3ecd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537152"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502337"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>Rychlý start: Vytvoření centra událostí pomocí Azure CLI
 
@@ -17,7 +18,7 @@ Azure Event Hubs je platforma pro streamování velkých objemů dat a služba p
 
 V tomto rychlém startu vytvoříte centrum událostí pomocí Azure CLI.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K dokončení tohoto rychlého startu potřebujete předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet][] před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -64,7 +65,7 @@ Spuštěním následujícího příkazu vytvořte centrum událostí:
 az eventhubs eventhub create --name <event hub name> --resource-group <resource group name> --namespace-name <Event Hubs namespace>
 ```
 
-Blahopřejeme! Pomocí Azure CLI jste vytvořili obor názvů služby Event Hubs a v něm centrum událostí. 
+Gratulujeme! Pomocí Azure CLI jste vytvořili obor názvů služby Event Hubs a v něm centrum událostí. 
 
 ## <a name="next-steps"></a>Další kroky
 

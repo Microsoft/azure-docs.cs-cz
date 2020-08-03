@@ -6,16 +6,16 @@ ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 877545eb22331e724520102814ec8a00b2c205e5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a11cd001e33e52f9138d9b302c39e04ee3d984a5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370814"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503527"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Správa přístupu Site Recovery pomocí řízení přístupu na základě role (RBAC)
 
-Řízení přístupu na základě role (RBAC) v Azure umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí RBAC můžete oddělit zodpovědnosti v rámci svého týmu a k provádění konkrétních úloh udělit uživatelům pouze konkrétní přístupová oprávnění.
+Řízení přístupu na základě role Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro Azure. Pomocí RBAC můžete oddělit zodpovědnosti v rámci svého týmu a k provádění konkrétních úloh udělit uživatelům pouze konkrétní přístupová oprávnění.
 
 Azure Site Recovery poskytuje 3 předdefinované role pro řízení operací správy Site Recovery. Další informace o [předdefinovaných rolích Azure](../role-based-access-control/built-in-roles.md)
 

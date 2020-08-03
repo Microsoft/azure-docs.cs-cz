@@ -3,12 +3,12 @@ title: Zabezpečení Azure Functions
 description: Přečtěte si, jak zajistit, aby byl kód vaší funkce běžící v Azure lépe zabezpečený před běžnými útoky.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: bdb012c3f379b1e0314364f79ccc4aa49eba4bd3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0c5036681aace103ea69d1e9cc73e96dc30821f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079685"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502677"
 ---
 # <a name="securing-azure-functions"></a>Zabezpečení Azure Functions
 
@@ -26,7 +26,7 @@ V této části se můžete co nejdříve nakonfigurovat a spustit aplikaci Func
 
 Security Center se integruje s aplikací Function App na portálu. Poskytuje zdarma rychlé posouzení potenciálních chyb zabezpečení souvisejících s konfigurací. Aplikace Function App spuštěné ve vyhrazeném plánu můžou k dalším nákladům použít také funkce zabezpečení Security Center v reálném čase. Další informace najdete v tématu [ochrana Azure App Service webových aplikací a rozhraní API](../security-center/security-center-app-services.md). 
 
-### <a name="log-and-monitor"></a>Protokolovat a monitorovat
+### <a name="log-and-monitor"></a>Protokolování a monitorování
 
 Jedním z nich zjišťování útoků je prostřednictvím aktivity monitorování aktivity a analýzy protokolování. Funkce se integrují s Application Insights pro shromažďování dat o protokolech, výkonu a chybách pro aplikaci Function App. Application Insights automaticky detekuje anomálie výkonu a zahrnuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, jak se vaše funkce používají. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 
@@ -83,7 +83,7 @@ Jako u jakékoli aplikace nebo služby je cílem spustit aplikaci Function App s
 
 #### <a name="user-management-permissions"></a>Oprávnění správy uživatelů
 
-Funkce podporují integrované [řízení přístupu na základě role (RBAC) v Azure](../role-based-access-control/overview.md). Role RBAC podporované funkcemi jsou [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor), [vlastník](../role-based-access-control/built-in-roles.md#owner)a [Čtenář](../role-based-access-control/built-in-roles.md#owner). 
+Funkce podporují integrované [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md). Role Azure podporované funkcemi jsou [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor), [vlastník](../role-based-access-control/built-in-roles.md#owner)a [Čtenář](../role-based-access-control/built-in-roles.md#owner). 
 
 Oprávnění jsou platná na úrovni aplikace Function App. Role přispěvatele je nutná k provádění většiny úkolů na úrovni aplikace Function App. Aplikace Function App může odstranit pouze role vlastníka. 
 
@@ -207,4 +207,3 @@ Služby brány, jako je například [azure Application Gateway](../application-g
 
 + [Základní hodnoty zabezpečení Azure pro Azure Functions](security-baseline.md)
 + [Diagnostika Azure Functions](functions-diagnostics.md)
-        

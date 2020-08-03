@@ -17,13 +17,13 @@ ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: b3919a016613da2470c14995663acc9c5415e483
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 9fcc26d17b9bb1d67d85a1775c4df191fe3524f0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80382847"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502048"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Rychlý start: Diagnostika problému s filtrováním síťového provozu virtuálního počítače – Azure CLI
 

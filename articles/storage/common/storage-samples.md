@@ -1,18 +1,19 @@
 ---
 title: Ukázka kódu Azure Storage | Microsoft Docs
-description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure Storage. Objevte úvodní ukázky pro objekty blob, fronty, tabulky a soubory pomocí klientských knihoven .NET, Java, Python, Node. js, Azure CLI a C++ Storage.
+description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure Storage. Seznamte se s úvodními ukázkami objektů blob, front, tabulek a souborů pomocí klientských knihoven .NET, Java, Python, Node.js, Azure CLI a C++ Storage.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 900fb5120b1674397c248fd7d090660c7a813705
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: edf30d628a73c879ce81f68bda7cd2d7daa6cde3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594181"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503646"
 ---
 # <a name="azure-storage-samples"></a>Ukázky Azure Storage
 
@@ -42,9 +43,9 @@ Pokud chcete prozkoumat ukázky Pythonu, Stáhněte si [klientskou knihovnu pro 
 
 ## <a name="nodejs-samples"></a>Ukázky Node.js
 
-Chcete-li prozkoumat ukázky Node. js, Stáhněte si [klientskou knihovnu pro úložiště Node. js](https://github.com/Azure/azure-storage-node).
+Pokud chcete prozkoumat ukázky Node.js, Stáhněte si [klientskou knihovnuNode.js Storage](https://github.com/Azure/azure-storage-node).
 
-* [Ukázky Azure Storage pomocí JavaScriptu nebo Node. js](storage-samples-javascript.md)
+* [Ukázky Azure Storage pomocí JavaScriptu/Node.js](storage-samples-javascript.md)
 
 ## <a name="c-samples"></a>Ukázky jazyka C++
 
@@ -64,12 +65,12 @@ Pokud chcete prozkoumat ukázky Azure CLI, nejdřív [nainstalujte rozhraní př
 
 ## <a name="api-reference-and-source-code"></a>Reference k rozhraní API a zdrojový kód
 
-| Jazyk | referenční dokumentace k rozhraní API | Zdrojový kód |
+| Jazyk | Referenční informace k rozhraní API | Zdrojový kód |
 |----------|---------------|-------------|
 | .NET | [Reference ke klientské knihovně .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [Zdrojový kód pro klientskou knihovnu úložiště .NET](https://github.com/Azure/azure-storage-net) |
 | Java | [Reference ke klientské knihovně Java](https://docs.microsoft.com/java/api/overview/azure/storage) | [Zdrojový kód pro klientskou knihovnu pro úložiště Java](https://github.com/azure/azure-storage-java) |
 | Python | [Referenční dokumentace klientské knihovny Pythonu](https://azure-storage.readthedocs.io/) | [Zdrojový kód pro knihovnu klienta úložiště Python](https://github.com/Azure/azure-storage-python) |
-| Node.js | [Reference ke klientské knihovně Node. js](https://azure.github.io/azure-storage-node) | [Zdrojový kód pro klientskou knihovnu pro úložiště Node. js](https://github.com/Azure/azure-storage-node) |
+| Node.js | [Reference ke klientské knihovněNode.js](https://azure.github.io/azure-storage-node) | [Zdrojový kód pro klientskou knihovnu Node.js Storage](https://github.com/Azure/azure-storage-node) |
 | C++ | [C++ – Reference klientské knihovny](https://azure.github.io/azure-storage-cpp/) | [Zdrojový kód pro klientskou knihovnu úložiště C++](https://github.com/Azure/azure-storage-cpp)|
 | Azure CLI | [Reference ke knihovně Azure CLI](/cli/azure/storage) | [Zdrojový kód pro klientskou knihovnu Azure CLI Storage](https://github.com/Azure-Samples/azure-cli-samples/tree/master/storage)
 

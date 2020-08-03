@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ef87d5da2c2d56a4fdc3873410bb5a6e5c711d01
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0156cfb0720e78b87abc36f0811db69bc8435894
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075716"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503187"
 ---
-# <a name="optimizing-transactions-in-sql-pool"></a>Optimalizace transakcí ve fondu SQL
+# <a name="optimize-transactions-in-sql-pool"></a>Optimalizace transakcí ve fondu SQL
 
 Přečtěte si, jak optimalizovat výkon transakčního kódu ve fondu SQL a zároveň minimalizovat rizika pro dlouhá vrácení zpět.
 
@@ -82,7 +82,7 @@ Je třeba poznamenat, že jakékoli zápisy k aktualizaci sekundárních nebo ne
 
 Načtení dat do neprázdné tabulky s clusterovaným indexem může často obsahovat kombinaci plně protokolovaných a minimálních protokolovaných řádků. Clusterovaný index je vyrovnaný strom (b-Tree) stránek. Pokud stránka, na kterou se zapisuje, již obsahuje řádky z jiné transakce, pak budou tyto zápisy plně protokolovány. Pokud je ale stránka prázdná, pak se zápis na tuto stránku bude považovat za minimální protokol.
 
-## <a name="optimizing-deletes"></a>Optimalizace odstranění
+## <a name="optimize-deletes"></a>Optimalizovat odstranění
 
 ODSTRANĚNÍ je plně zaprotokolovaná operace.  Pokud potřebujete v tabulce nebo oddílu odstranit velké množství dat, často to znamená, že `SELECT` data, která chcete zachovat, je vhodnější, což je možné spustit jako podobuně zaznamenanou operaci.  Pokud chcete data vybrat, vytvořte novou tabulku pomocí [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).  Po vytvoření pomocí [Přejmenovat](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) zahodíte starou tabulku s nově vytvořenou tabulkou.
 
@@ -114,7 +114,7 @@ RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
-## <a name="optimizing-updates"></a>Optimalizace aktualizací
+## <a name="optimize-updates"></a>Optimalizace aktualizací
 
 AKTUALIZACE je plně zaprotokolovaná operace.  Pokud potřebujete aktualizovat velký počet řádků v tabulce nebo oddílu, může být často efektivnější použít k tomu přihlášené operace, například [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) .
 
@@ -179,7 +179,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 > [!NOTE]
 > Opětovné vytváření velkých tabulek může mít za úkol používání funkcí správy úloh fondu SQL. Další informace najdete v tématu [třídy prostředků pro správu úloh](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-## <a name="optimizing-with-partition-switching"></a>Optimalizace pomocí přepínání oddílů
+## <a name="optimize-with-partition-switching"></a>Optimalizace pomocí přepínání oddílů
 
 Pokud se v [oddílu tabulky](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)setkávají změny ve velkém měřítku, dává vzor přepínání oddílů smysl. Pokud je změna dat významná a zahrnuje několik oddílů, pak iterace na těchto oddílech dosáhne stejného výsledku.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: 4e07334e859f2c1401547cc3f88988830b71c5e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77192648"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507291"
 ---
 Tento článek popisuje, jak migrovat prostředky infrastruktury jako služby (IaaS) z modelu nasazení Classic na Správce prostředků a podrobně popisuje, jak připojit prostředky ze dvou modelů nasazení, které ve vašem předplatném existují, pomocí bran sítě Site-to-site. Další informace o [funkcích Azure Resource Manager a výhodách](../articles/azure-resource-manager/management/overview.md)najdete v článku. 
 
@@ -22,9 +22,9 @@ Správce prostředků umožňuje nasazení složitých aplikací prostřednictv�
 
 Téměř všechny funkce z modelu nasazení Classic jsou podporovány pro výpočetní výkon, síť a úložiště v rámci Azure Resource Manager. Pokud chcete využívat nové funkce v Azure Resource Manager, můžete migrovat existující nasazení z modelu nasazení Classic.
 
-## <a name="supported-resources-for-migration"></a>Podporované prostředky pro migraci
-Tyto klasické prostředky IaaS se během migrace podporují.
+## <a name="supported-resources--configurations-for-migration"></a>Podporované prostředky & konfigurací pro migraci
 
+### <a name="supported-resources-for-migration"></a>Podporované prostředky pro migraci
 * Virtual Machines
 * Skupiny dostupnosti
 * Účty úložiště
@@ -34,6 +34,13 @@ Tyto klasické prostředky IaaS se během migrace podporují.
 * Network Security Groups (Skupiny zabezpečení sítě)
 * Směrovací tabulky
 * Vyhrazené IP adresy
+
+## <a name="supported-configurations-for-migration"></a>Podporované konfigurace pro migraci
+Tyto klasické prostředky IaaS se během migrace podporují.
+
+| Služba | Konfigurace |
+| --- | --- |
+| Azure AD Domain Services | [Virtuální sítě, které obsahují službu Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/migrate-from-classic-vnet) |
 
 ## <a name="supported-scopes-of-migration"></a>Podporované obory migrace
 Existují čtyři různé způsoby, jak dokončit migraci výpočetních, síťových a úložných prostředků:
@@ -74,7 +81,7 @@ Pokud váš účet úložiště nemá žádné přidružené disky nebo Virtual 
 > Model nasazení Správce prostředků nemá koncept klasických imagí a disků. Když se účet úložiště migruje, klasické image a disky se v Správce prostředkůovém zásobníku nezobrazí, ale záložní virtuální pevné disky zůstanou v účtu úložiště.
 
 Následující snímky obrazovky ukazují, jak upgradovat klasický účet úložiště na účet služby Azure Resource Manager Storage pomocí Azure Portal:
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte na svůj účet úložiště.
 3. V části **Nastavení** klikněte na možnost **migrovat do ARM**.
 4. Kliknutím na **ověřit** určete proveditelnost migrace.
@@ -100,7 +107,7 @@ Některé funkce a konfigurace se aktuálně nepodporují. v následujících č
 ### <a name="unsupported-features"></a>Nepodporované funkce
 Následující funkce se momentálně nepodporují. Volitelně můžete tato nastavení odebrat, migrovat virtuální počítače a pak znovu povolit nastavení v modelu nasazení Správce prostředků.
 
-| Poskytovatel prostředků | Funkce | Doporučení |
+| Poskytovatel prostředků | Příznak | Doporučení |
 | --- | --- | --- |
 | Compute | Nepřidružené disky virtuálních počítačů. | Objekty blob VHD na těchto discích se migrují při migraci účtu úložiště. |
 | Compute | Image virtuálních počítačů. | Objekty blob VHD na těchto discích se migrují při migraci účtu úložiště. |
@@ -129,5 +136,4 @@ Následující konfigurace se aktuálně nepodporují.
 | Azure App Service |Virtuální sítě obsahující App Service prostředí |To se v tuto chvíli nepodporuje. |
 | Azure HDInsight |Virtuální sítě obsahující služby HDInsight |To se v tuto chvíli nepodporuje. |
 | Služby životního cyklu Microsoft Dynamics |Virtuální sítě obsahující virtuální počítače, které jsou spravované službami životního cyklu Dynamics |To se v tuto chvíli nepodporuje. |
-| Azure AD Domain Services |Virtuální sítě, které obsahují službu Azure AD Domain Services |To se v tuto chvíli nepodporuje. |
 | Azure API Management |Virtuální sítě obsahující nasazení služby Azure API Management |To se v tuto chvíli nepodporuje. Pokud chcete migrovat virtuální síť IaaS, změňte virtuální síť nasazení API Management, což není operace bez výpadku. |

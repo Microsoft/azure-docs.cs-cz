@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: afa8375805ebc5d52ac716126adca86850147166
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134087"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504224"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -51,14 +51,14 @@ Toto je třetí kurz ze specializované série. Předpokládá se, že jste již
 6. V **nástroji používáte nástroj System Center VMM ke správě hostitelů technologie Hyper-V?** vyberte možnost **ne**.
 7. Vyberte **OK**.
 
-    ![Cíl replikace](./media/hyper-v-azure-tutorial/replication-goal.png)
+    ![Snímek obrazovky s možnostmi cíle ochrany v části Příprava infrastruktury](./media/hyper-v-azure-tutorial/replication-goal.png)
 
 ## <a name="confirm-deployment-planning"></a>Potvrzení plánování nasazení
 
 1. Pokud plánujete rozsáhlé nasazení, v části **Plánování nasazení**si stáhněte Plánovač nasazení pro Hyper-V z odkazu na stránce. [Přečtěte si další informace](hyper-v-deployment-planner-overview.md) o plánování nasazení technologie Hyper-V.
 2. Pro tento kurz nepotřebujeme Plánovač nasazení. **Dokončili jste plánování nasazení?** vyberte **I později**a pak vyberte **OK**.
 
-    ![Plánování nasazení](./media/hyper-v-azure-tutorial/deployment-planning.png)
+    ![Snímek možností plánování nasazení v části Příprava infrastruktury](./media/hyper-v-azure-tutorial/deployment-planning.png)
 
 ## <a name="set-up-the-source-environment"></a>Nastavení zdrojového prostředí
 
@@ -68,17 +68,17 @@ Zdrojové prostředí nastavíte tak, že vytvoříte lokalitu Hyper-V a do tét
 2. V rozevíracím sestavování **zdroj**vyberte **+ lokalita Hyper-V**.
 3. V části **vytvořit lokalitu technologie Hyper-V**zadejte název lokality. Používáme **ContosoHyperVSite**.
 
-    ![Lokalita Hyper-V](./media/hyper-v-azure-tutorial/hyperv-site.png)
+    ![Snímek obrazovky s výběrem webu Hyper-V v přípravě infrastruktury.](./media/hyper-v-azure-tutorial/hyperv-site.png)
 
 4. Po vytvoření lokality v části **připravit zdroj**  >  **Krok 1: Vyberte lokalitu Hyper-V**, vyberte lokalitu, kterou jste vytvořili.
 5. Vyberte **+ Server Hyper-V**.
 
-    ![Server Hyper-V](./media/hyper-v-azure-tutorial/hyperv-server.png)
+    ![Snímek obrazovky s výběrem serveru Hyper-V v přípravě infrastruktury](./media/hyper-v-azure-tutorial/hyperv-server.png)
 
 6. Stáhněte instalační program pro poskytovatele Microsoft Azure Site Recovery.
 7. Stáhněte registrační klíč trezoru. Tento klíč budete potřebovat k instalaci poskytovatele. Klíč je platný pět dní od jeho vygenerování.
 
-    ![Stažení poskytovatele a registračního klíče](./media/hyper-v-azure-tutorial/download.png)
+    ![Snímek obrazovky s možnostmi stažení poskytovatele a registračního klíče](./media/hyper-v-azure-tutorial/download.png)
     
 
 ### <a name="install-the-provider"></a>Instalace zprostředkovatele

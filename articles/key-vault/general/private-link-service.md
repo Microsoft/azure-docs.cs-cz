@@ -7,12 +7,13 @@ ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.openlocfilehash: 95a999f38104e0bb3cfd6a510bd8f9e3d5440562
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 70a0620369792c1aaf2c11867fd468f42d6bb9ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521084"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494685"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrace služby Key Vault se službou Azure Private Link
 
@@ -22,7 +23,7 @@ Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukr
 
 Další informace najdete v tématu [co je privátní propojení Azure?](../../private-link/private-link-overview.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K integraci trezoru klíčů s privátním propojením Azure budete potřebovat následující:
 
@@ -155,9 +156,9 @@ Při vytváření privátního koncového bodu musí být připojení schváleno
 
 Existují čtyři stavy zřizování:
 
-| Služba poskytuje akci | Stav privátního koncového bodu příjemce služby | Popis |
+| Služba poskytuje akci | Stav privátního koncového bodu příjemce služby | Description |
 |--|--|--|
-| Žádný | Čekající | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
+| Žádná | Čekající | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
 | Schválení | Schválené | Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití. |
 | Odmítnout | Zamítnuto | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu. |
 | Odebrat | Propojení | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění. |
@@ -233,6 +234,38 @@ Address:  10.1.0.5 (private IP address)
 Aliases:  <your-key-vault-name>.vault.azure.net
           <your-key-vault-name>.privatelink.vaultcore.azure.net
 ```
+
+## <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
+
+* Zkontrolujte, zda je privátní koncový bod ve stavu schváleno. 
+    1. Tuto možnost můžete ověřit a opravit v Azure Portal. Otevřete prostředek Key Vault a klikněte na možnost sítě. 
+    2. Pak vyberte kartu připojení privátního koncového bodu. 
+    3. Ujistěte se, že stav připojení je schváleno a že je stav zřizování úspěšné. 
+    4. Můžete také přejít na prostředek privátního koncového bodu a zkontrolovat stejné vlastnosti, a pak dvakrát zkontrolovat, jestli virtuální síť odpovídá používanému typu.
+
+* Ověřte, že máte prostředek zóny Privátní DNS. 
+    1. Musíte mít prostředek zóny Privátní DNS s přesným názvem: privatelink.vaultcore.azure.net. 
+    2. Další informace o tom, jak tento postup nastavit, najdete na následujícím odkazu. [Privátní DNS zóny](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    
+* Ověřte, zda Privátní DNS zóna není propojena s Virtual Network. To může být problém, pokud se vám stále vrátí veřejná IP adresa. 
+    1. Pokud DNS privátní zóny není propojena s virtuální sítí, dotaz DNS pocházející z virtuální sítě vrátí veřejnou IP adresu trezoru klíčů. 
+    2. Přejděte do prostředku zóny Privátní DNS v Azure Portal a klikněte na možnost odkazy virtuální sítě. 
+    4. Musí být uvedena virtuální síť, která provede volání do trezoru klíčů. 
+    5. Pokud tam není, přidejte ho. 
+    6. Podrobný postup najdete v následujícím dokumentu [Virtual Network odkaz na privátní DNS Zone](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)
+
+* Ověřte, že v zóně Privátní DNS chybí záznam A pro Trezor klíčů. 
+    1. Přejděte na stránku Privátní DNS zóna. 
+    2. Klikněte na přehled a podívejte se, jestli existuje záznam A s jednoduchým názvem trezoru klíčů (tj. fabrikam). Nezadávejte žádné přípony.
+    3. Ujistěte se, že jste kontrolovali pravopis a buď záznam a vytvoříte nebo opravíte. Můžete použít hodnotu TTL 3600 (1 hodina). 
+    4. Ujistěte se, že jste zadali správnou privátní IP adresu. 
+    
+* Ověřte, že záznam A má správnou IP adresu. 
+    1. IP adresu můžete potvrdit otevřením prostředku privátního koncového bodu v Azure Portal 
+    2. V Azure Portal (ne prostředku Key Vault) přejděte do prostředku Microsoft. Network/privateEndpoints.
+    3. Na stránce Přehled vyhledejte síťové rozhraní a klikněte na něj. 
+    4. Odkaz zobrazí přehled prostředku síťové karty, který obsahuje privátní IP adresu vlastnosti. 
+    5. Ověřte, zda se jedná o správnou IP adresu, která je zadána v záznamu A.
 
 ## <a name="limitations-and-design-considerations"></a>Omezení a faktory návrhu
 

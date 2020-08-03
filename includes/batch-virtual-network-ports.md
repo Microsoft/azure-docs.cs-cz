@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.date: 06/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 1b21141a4b3f9ae92cdcf1d5a93a457012cb136a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e4bca058f554f60dfa5c237633d1fecf06dfea7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506584"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507552"
 ---
 ### <a name="general-requirements"></a>Obecné požadavky
 
@@ -89,7 +89,7 @@ Příchozí provoz na portu 3389 (Windows) nebo 22 (Linux) nakonfigurujte pouze 
 
 `/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}`
 
-**Oprávnění** – Instanční objekt `Microsoft Azure Batch` musí mít pro zadanou virtuální síť roli řízení přístupu na základě role `Classic Virtual Machine Contributor`.
+**Oprávnění** – `Microsoft Azure Batch` instanční objekt musí mít `Classic Virtual Machine Contributor` pro zadanou virtuální síť roli Azure.
 
 #### <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 

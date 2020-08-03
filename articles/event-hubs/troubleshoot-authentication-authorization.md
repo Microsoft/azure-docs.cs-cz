@@ -3,18 +3,18 @@ title: Řešení potíží s ověřováním a autorizací – Azure Event Hubs
 description: Tento článek poskytuje informace o řešení potíží s ověřováním a autorizací pomocí Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1c053f60c877cdd26655948c37ab81a5e4d61cf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fca0c29c20e2bfe0c3ec64e3068b61bd5147bdb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322420"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502099"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Řešení potíží s ověřováním a autorizací – Azure Event Hubs
 Článek [Poradce při](troubleshooting-guide.md) potížích s připojením poskytuje tipy pro řešení potíží s připojením pomocí Azure Event Hubs. Tento článek poskytuje tipy a doporučení pro řešení problémů s ověřováním a autorizací pomocí Azure Event Hubs. 
 
 ## <a name="if-you-are-using-azure-active-directory"></a>Pokud používáte Azure Active Directory
-Pokud používáte Azure Active Directory (Azure AD) k ověřování a autorizaci pomocí Azure Event Hubs, zkontrolujte, že identita, která přistupuje k centru událostí, je členem správné **role řízení přístupu na základě role (RBAC)** v pravém **oboru prostředků** (skupina příjemců, centrum událostí, obor názvů, skupina prostředků nebo předplatné).
+Pokud používáte Azure Active Directory (Azure AD) k ověřování a autorizaci se službou Azure Event Hubs, ověřte, že identita, která přistupuje k centru událostí, je členem správné **role Azure** v pravém **oboru prostředků** (skupina příjemců, centrum událostí, obor názvů, skupina prostředků nebo předplatné).
 
 ### <a name="rbac-roles"></a>Role RBAC
 - [Vlastník dat Event Hubs Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) pro úplný přístup k prostředkům Event Hubs.

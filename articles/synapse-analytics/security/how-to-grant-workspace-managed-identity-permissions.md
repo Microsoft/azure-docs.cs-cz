@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cb1ddceff30b247caf3ecd9ee3bc21d5addb519
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b11f11ac8a0d4f3a0623c2903dfc9355e875d14
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089443"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501929"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Udělení oprávnění pro spravovanou identitu pracovního prostoru (Preview)
 
@@ -22,7 +22,7 @@ V tomto článku se naučíte, jak udělit oprávnění ke spravované identitě
 >[!NOTE]
 >Tato identita spravovaná pracovním prostorem se bude v ostatních částech tohoto dokumentu označovat jako spravovaná identita.
 
-## <a name="grant-the-managed-identity--permissions-to-the-sql-pool"></a>Udělení oprávnění ke spravovaným identitám pro fond SQL
+## <a name="grant-managed-identity-permissions-to-the-sql-pool"></a>Udělení oprávnění ke spravovaným identitám pro fond SQL
 
 Spravovaná identita uděluje oprávnění k fondům SQL v pracovním prostoru. S udělenými oprávněními můžete orchestrovat kanály, které provádějí aktivity související se fondem SQL. Když vytvoříte pracovní prostor Azure synapse pomocí Azure Portal, můžete pro fondy SQL udělit oprávnění řízení spravovaných identit.
 

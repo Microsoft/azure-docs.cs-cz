@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/30/2020
-ms.openlocfilehash: 84e9593884f40fce8affce628b7817c528b3c31d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/31/2020
+ms.openlocfilehash: 42a4d1288c7daeb4579e481f0258666d8e2cdbce
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343281"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502983"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Škálování jednoho databázového prostředku v Azure SQL Database
 
@@ -50,11 +50,12 @@ Změna úrovně služby nebo výpočetní velikosti hlavně zahrnuje službu, kt
 
 Odhadovaná latence změny úrovně služby, škálování výpočetní velikosti izolované databáze nebo elastického fondu, přesun databáze do nebo z elastického fondu nebo přesun databáze mezi elastickými fondy je parametrizovaný takto:
 
-|Úroveň služeb|Jednoduchá databáze úrovně Basic,</br>Standard (S0-S1)|Elastický fond úrovně Basic,</br>Standard (S2-S12), </br>Hyperškálovatelný </br>Pro obecné účely izolovanou databázi nebo elastický fond|Izolovaná databáze nebo elastický fond úrovně Premium nebo Pro důležité obchodní informace|
-|:---|:---|:---|:---|
-|**Basic Single Database </br> Standard (S0-S1)**|&bull;&nbsp;Konstantní latence v čase nezávisle na využitém prostoru</br>&bull;&nbsp;Obvykle méně než 5 minut|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|
-|**Základní elastický fond, </br> Standard (S2-S12), </br> škálovatelná, pro obecné účely izolovaná </br> databáze nebo elastický fond**|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|&bull;&nbsp;Konstantní latence v čase nezávisle na využitém prostoru</br>&bull;&nbsp;Obvykle méně než 5 minut|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|
-|**Izolovaná databáze nebo elastický fond úrovně Premium nebo Pro důležité obchodní informace**|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|
+|Úroveň služby|Jednoduchá databáze úrovně Basic,</br>Standard (S0-S1)|Elastický fond úrovně Basic,</br>Standard (S2-S12), </br>Pro obecné účely izolovanou databázi nebo elastický fond|Izolovaná databáze nebo elastický fond úrovně Premium nebo Pro důležité obchodní informace|Hyperškálování
+|:---|:---|:---|:---|:---|
+|**Basic Single Database </br> Standard (S0-S1)**|&bull;&nbsp;Konstantní latence v čase nezávisle na využitém prostoru</br>&bull;&nbsp;Obvykle méně než 5 minut|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|
+|**Základní elastický fond, </br> Standard (S2-S12), pro obecné účely izolovanou </br> databázi nebo elastický fond**|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|&bull;&nbsp;Konstantní latence v čase nezávisle na využitém prostoru</br>&bull;&nbsp;Obvykle méně než 5 minut|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|
+|**Izolovaná databáze nebo elastický fond úrovně Premium nebo Pro důležité obchodní informace**|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|&bull;&nbsp;Latence úměrná k místu databáze použitému v důsledku kopírování dat</br>&bull;&nbsp;Obvykle se za GB využitého místa méně než 1 minuta.|
+|**Hyperškálování**|N/A|N/A|N/A|&bull;&nbsp;Konstantní latence v čase nezávisle na využitém prostoru</br>&bull;&nbsp;Obvykle méně než 2 minuty|
 
 > [!NOTE]
 > Pro Standard (S2-S12) a Pro obecné účely databáze je navíc latence pro přesun databáze do elastického fondu nebo mezi elastickými fondy úměrná velikosti databáze, pokud databáze používá úložiště[PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)(Premium File Share).

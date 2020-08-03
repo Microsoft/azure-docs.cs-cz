@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 103a5534c143e5edf87f70570eb941dfa72bd45b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8148163dc969920b473f12a7162c6f317d85b3c8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317820"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503221"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Vytvoření nabídky kontejneru Azure v Azure Marketplace
 
@@ -50,7 +50,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a o tom, jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Tato stránka zobrazuje různé odkazy na základě aktuálního stavu nabídky. Například:
+Tato stránka zobrazuje různé odkazy na základě aktuálního stavu nabídky. Příklad:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](update-existing-offer.md#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](update-existing-offer.md#stop-selling-an-offer-or-plan) .
@@ -133,7 +133,7 @@ Tato stránka umožňuje definovat podrobnosti nabídky, které se zobrazí na k
 > [!NOTE]
 > Podrobnosti nabídky nejsou v anglickém jazyce nutné, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Také je v pořádku poskytnutí užitečného odkazu na nabídku obsahu v jazyce, který se liší od toho, který se používá v podrobnostech seznamu nabídky.
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -151,7 +151,7 @@ Krátký popis vaší nabídky Může to být až 100 znaků dlouhé a použív�
 
 Podrobnější popis vaší nabídky. Může to být až 256 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -284,9 +284,7 @@ Na této kartě můžete vybrat cloudy, ve kterých je plán k dispozici. Vaše 
 
 Všechny plány pro nabídky Azure Container jsou automaticky dostupné v **globálním Azure**.  Váš plán můžou používat zákazníci ve všech globálních oblastech Azure, které využívají komerční tržiště. Podrobnosti najdete v tématu [geografická dostupnost a podpora měny](../marketplace-geo-availability-currencies.md).
 
-Pokud chcete, aby se vaše řešení zobrazilo tady, vyberte možnost [**Azure Government**](../../azure-government/documentation-government-welcome.md) . Toto je Cloud komunity státní správy se spravovaným přístupem pro zákazníky ze federální federace, s] (... /Marketplace-Geo-Availability-currencies.MD) em. Jako vydavatel zodpovídáte za řízení dodržování předpisů, míry zabezpečení a osvědčené postupy pro tuto komunitu cloudu. Azure Government používá fyzicky izolovaná datová centra a sítě (jenom v USA).
-
-Před [publikováním](../../azure-government/documentation-government-manage-marketplace-partners.md) Azure Government, otestujte a potvrďte své řešení v rámci této oblasti, protože výsledky se můžou lišit. Pokud chcete své řešení vytvořit a otestovat, vyžádejte si zkušební účet z [Microsoft Azure Government zkušební verze](https://azure.microsoft.com/global-infrastructure/government/request/).
+Pokud chcete, aby se vaše řešení zobrazilo tady, vyberte možnost [Azure Government](../../azure-government/documentation-government-welcome.md) . Toto je Cloud komunity státní správy s řízeným přístupem pro zákazníky ze federálních, státních a místních nebo samosprávné vládních úřadů USA a partnerů, kteří jim mají nárok na jejich obsluhu. Jako vydavatel zodpovídáte za řízení dodržování předpisů, míry zabezpečení a osvědčené postupy pro tuto komunitu cloudu. Azure Government používá fyzicky izolovaná datová centra a sítě (jenom v USA). Před [publikováním](../../azure-government/documentation-government-manage-marketplace-partners.md) Azure Government, otestujte a potvrďte své řešení v rámci této oblasti, protože výsledky se můžou lišit. Pokud chcete své řešení vytvořit a otestovat, vyžádejte si zkušební účet z [Microsoft Azure Government zkušební verze](https://azure.microsoft.com/global-infrastructure/government/request/).
 
 > [!NOTE]
 > Po publikování a dostupnosti plánu v konkrétní oblasti už tuto oblast nemůžete odebrat.

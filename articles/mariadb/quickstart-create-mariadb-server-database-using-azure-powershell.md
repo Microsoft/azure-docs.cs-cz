@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.custom: mvc
-ms.openlocfilehash: a0ee237aa480e38f236ae44854415e3f88851f0a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 3715b3eb00a1ccb549bf77d14ce33969f9a7eda1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054237"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502252"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>Rychlý Start: vytvoření serveru Azure Database for MariaDB pomocí prostředí PowerShell
 
@@ -77,7 +77,7 @@ Hodnota parametru **SKU** dodržuje cenové úrovně ** \_ \_ virtuální jádra
 
 - `-Sku B_Gen5_1`mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
 - `-Sku GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
-- `-Sku MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
+- `-Sku MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se dvěma virtuálními jádry.
 
 Informace o platných hodnotách **SKU** podle oblasti a pro vrstvy najdete v tématu [Azure Database for MariaDB cenové úrovně](./concepts-pricing-tiers.md).
 

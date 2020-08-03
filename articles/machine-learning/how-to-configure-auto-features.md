@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 1c26164ed7a2b7c335d3977e143fcef28c8955db
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 31df880d9d6d586491d115d9b70de9f85bc980b2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475817"
+ms.locfileid: "87502915"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurization v automatizovaném strojovém učení
 
@@ -106,7 +106,7 @@ Guardrail|Status|Podmínka &nbsp; pro &nbsp; aktivační událost
 **Chybějící hodnoty funkcí imputace** |Předaný <br><br><br> Hotovo| Ve školicích datech se nezjistily žádné chybějící hodnoty funkcí. Přečtěte si další informace o [imputaci chybějících hodnot.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Ve školicích datech se zjistily chybějící hodnoty funkcí a byly imputované.
 **Zpracování funkcí vysoké mohutnosti** |Předaný <br><br><br> Hotovo| Vaše vstupy byly analyzovány a nebyly zjištěny žádné funkce vysoké mohutnosti. <br><br> Ve vašich vstupech se zjistily funkce vysoké mohutnosti a zpracovaly se.
 **Zpracování děleného ověřování** |Hotovo| Konfigurace ověření byla nastavena na `'auto'` a školicí data obsahovala *méně než 20 000 řádků*. <br> Každá iterace proučeného modelu byla ověřena pomocí křížového ověření. Přečtěte si další informace o [ověřovacích datech](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data). <br><br> Konfigurace ověření byla nastavena na hodnotu `'auto'` a školicí data obsahují *více než 20 000 řádků*. <br> Vstupní data byla rozdělena na školicí datovou sadu a datovou sadu ověřování pro ověřování modelu.
-**Detekce vyrovnávání tříd** |Předaný <br><br><br><br><br> Upozorněni | Vaše vstupy byly analyzovány a všechny třídy jsou ve vašich školicích datech vyváženy. Datová sada je považována za vyrovnanou, pokud každá třída má dobrou reprezentaci v datové sadě, jak je měřeno počtem a poměr vzorků. <br><br><br> Ve vašich vstupech se zjistily nevyvážené třídy. Pokud chcete opravit posun modelu, vyřešte problém s vyrovnáváním. Přečtěte si další informace o [vyrovnaných datech](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data).
+**Detekce vyrovnávání tříd** |Předaný <br><br><br><br><br> Upozorněni <br><br><br><br> Hotovo| Vaše vstupy byly analyzovány a všechny třídy jsou ve vašich školicích datech vyváženy. Datová sada je považována za vyrovnanou, pokud každá třída má dobrou reprezentaci v datové sadě, jak je měřeno počtem a poměr vzorků. <br><br> Ve vašich vstupech se zjistily nevyvážené třídy. Pokud chcete opravit posun modelu, vyřešte problém s vyrovnáváním. Přečtěte si další informace o [vyrovnaných datech](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data). <br><br> Ve vašich vstupech se zjistily nevyvážené třídy a v této logice se určilo použití vyrovnávání.
 **Detekce problémů paměti** |Předaný <br><br><br><br> Hotovo |<br> Vybrané hodnoty (horizont, lag, posuvné okno) byly analyzovány a nebyly zjištěny žádné potenciální problémy způsobené nedostatkem paměti. Přečtěte si další informace o [konfiguracích prognózování](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)časových řad. <br><br><br>Vybrané hodnoty (horizont, lag, posuvné okno) byly analyzovány a mohou způsobit nedostatek paměti experimentu. Konfigurace zpoždění nebo posuvných oken byla vypnuta.
 **Detekce četnosti** |Předaný <br><br><br><br> Hotovo |<br> Časová řada byla analyzována a všechny datové body jsou zarovnány s zjištěnou frekvencí. <br> <br> Časová řada byla analyzována a byly zjištěny datové body, které neodpovídají zjištěné četnosti. Tyto datové body byly z datové sady odebrány. Další informace o [přípravě dat pro prognózování časových řad](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data).
 

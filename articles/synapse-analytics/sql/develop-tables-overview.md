@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f1eec76d92edc97f7e4058d3afe813f0bb2aae47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cb1b4d33a538b48ca1519d66f6602d902033c3e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431875"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494821"
 ---
 # <a name="design-tables-using-synapse-sql"></a>Návrh tabulek pomocí synapse SQL
 
@@ -45,7 +45,7 @@ V následující tabulce jsou uvedena témata týkající se fondu SQL a SQL na 
 | [Statistika](#statistics)                                    | Ano                | Ano                     |
 | [Primární klíč a jedinečný klíč](#primary-key-and-unique-key)    | Ano                | Ne                      |
 | [Příkazy pro vytváření tabulek](#commands-for-creating-tables) | Ano                | Ne                      |
-| [Zarovnávání zdrojových dat s datovým skladem](#aligning-source-data-with-the-data-warehouse) | Ano                | Ne                      |
+| [Zarovnávání zdrojových dat s datovým skladem](#align-source-data-with-the-data-warehouse) | Ano                | Ne                      |
 | [Nepodporované funkce tabulky](#unsupported-table-features)    | Ano                | Ne                      |
 | [Dotazy na velikost tabulky](#table-size-queries)                    | Ano                | Ne                      |
 
@@ -106,7 +106,7 @@ Importujte data z externích tabulek do fondu SQL pomocí příkazu [CREATE TABL
 
 V případě SQL na vyžádání můžete pomocí [CETAS](develop-tables-cetas.md) uložit výsledek dotazu do externí tabulky v Azure Storage.
 
-## <a name="data-types"></a>Typy dat
+## <a name="data-types"></a>Datové typy
 
 Fond SQL podporuje nejběžněji používané datové typy. Seznam podporovaných datových typů najdete v tématu [datové typy v CREATE TABLE odkaz](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes) v příkazu CREATE TABLE. Další informace o použití datových typů najdete v tématu [datové typy](../sql/develop-tables-data-types.md).
 
@@ -115,7 +115,7 @@ Fond SQL podporuje nejběžněji používané datové typy. Seznam podporovanýc
 Základní funkcí fondu SQL je způsob, jakým může ukládat a fungovat v tabulkách napříč [distribucí](../sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#distributions).  Fond SQL podporuje tři metody pro distribuci dat:
 
 - Kruhové dotazování (výchozí)
-- Hodnota hash
+- Hodnoty hash
 - Replikované
 
 ### <a name="hash-distributed-tables"></a>Distribuované zatřiďovací tabulky (distribuce hodnot hash)
@@ -214,7 +214,7 @@ Tabulku můžete vytvořit jako novou prázdnou tabulku. Můžete také vytvoři
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Naplní novou tabulku výsledky příkazu SELECT. Sloupce tabulky a datové typy jsou založené na výsledcích příkazu SELECT. K importu dat tento příkaz může vybrat z externí tabulky. |
 | [VYTVOŘIT EXTERNÍ TABULKU JAKO SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Vytvoří novou externí tabulku exportováním výsledků příkazu SELECT do externího umístění.  Umístění je buď úložiště objektů BLOB v Azure, nebo Azure Data Lake Storage. |
 
-## <a name="aligning-source-data-with-the-data-warehouse"></a>Zarovnávání zdrojových dat s datovým skladem
+## <a name="align-source-data-with-the-data-warehouse"></a>Zarovnávání zdrojových dat s datovým skladem
 
 Tabulky datového skladu jsou vyplněny načtením dat z jiného zdroje dat. Aby bylo možné dosáhnout úspěšného zatížení, musí být počet a datové typy sloupců ve zdrojových datech v souladu s definicí tabulky v datovém skladu.
 

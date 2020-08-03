@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 7aad1eb10018445150fb5cf3ac01b97480da674b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c043cfb6cf437ab55cc4a48ced716798738adbef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86226415"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507244"
 ---
 Pokud při provádění jakýchkoli operací se sdílenými galeriemi imagí, definicemi imagí a verzemi imagí narazíte na problémy, spusťte příkaz, který selhal, znovu v režimu ladění. Režim ladění je aktivován předáním přepínače pomocí rozhraní příkazového `--debug` řádku a `-Debug` přepínače pomocí prostředí PowerShell. Po vyhledání chyby použijte tento dokument k odstranění chyb.
 
@@ -76,7 +76,7 @@ Možné příčiny:
 
 *Uživatel, který se pokouší vytvořit virtuální počítač nebo sadu škálování virtuálního počítače, nemá přístup pro čtení k verzi image.*
 
-Obraťte se na vlastníka předplatného a požádejte ho, aby poskytl přístup pro čtení k verzi obrázku nebo k nadřazeným prostředkům (jako je galerie sdílených imagí nebo definice obrázku) prostřednictvím [Access Control na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC). 
+Obraťte se na vlastníka předplatného a požádejte ho, aby pomocí [řízení přístupu založeného na rolích Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)poskytl přístup pro čtení k verzi Image nebo nadřazeným prostředkům (jako je například galerie sdílených imagí nebo definice obrázku). 
 
 *Verze bitové kopie nebyla nalezena.*
 
@@ -97,6 +97,3 @@ Pomocí příznaku **--expand ReplicationStatus** můžete ověřit, jestli se d
 ## <a name="azure-limits-and-quotas"></a>Omezení a kvóty Azure 
 
 [Omezení a kvóty Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) se vztahují na všechny prostředky pro galerii sdílených imagí, definice obrázků a verze imagí. Ujistěte se, že jste v omezeních pro vaše předplatná. 
-
-
-

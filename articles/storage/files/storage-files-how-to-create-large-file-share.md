@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 427d936353b47e951f8faaf90483691bab856767
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 538cbfea2480573c190a1dd0ee0480e21aecefe2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510723"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502082"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Povolit a vytvořit velké sdílené složky souborů
 
@@ -20,7 +21,7 @@ Když v účtu úložiště povolíte velké sdílené složky, sdílené složk
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 - Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
 
@@ -34,7 +35,7 @@ Povolení velkých sdílených složek na účtu je nevratný proces. Když ho p
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V Azure Portal vyberte **všechny služby**. 
 1. V seznamu prostředků zadejte **účty úložiště**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **účty úložiště**.
 1. V okně **účty úložiště** , které se zobrazí, vyberte **Přidat**.
@@ -52,8 +53,8 @@ Povolení velkých sdílených složek na účtu je nevratný proces. Když ho p
    |---------|---------|
    |Model nasazení     |Resource Manager         |
    |Výkon     |Standard         |
-   |Account kind (Druh účtu)     |StorageV2 (obecné účely v2)         |
-   |Access tier (Vrstva přístupu)     |Hot         |
+   |Druh účtu     |StorageV2 (obecné účely v2)         |
+   |Úroveň přístupu     |Horká         |
 
 1. Vyberte **Upřesnit**a potom vyberte možnost **povoleno** napravo od **velkých sdílených složek**.
 1. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.

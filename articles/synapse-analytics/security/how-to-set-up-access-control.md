@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e66af8e55f7b60347d9577c64b7183c6ef8b44f4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089307"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501912"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview)
 
@@ -36,7 +36,7 @@ Pokud chcete zabezpečit pracovní prostor synapse (Preview), postupujte podle v
 
 Tento dokument používá ke zjednodušení pokynů standardní názvy. Nahraďte je libovolnými názvy.
 
-|Nastavení | Příklad hodnoty | Popis |
+|Nastavení | Příklad hodnoty | Description |
 | :------ | :-------------- | :---------- |
 | **Pracovní prostor synapse** | WS1 |  Název, který bude mít pracovní prostor synapse. |
 | **Účet ADLSGEN2** | STG1 | Účet ADLS, který se má používat s vaším pracovním prostorem. |
@@ -82,7 +82,7 @@ V Azure Portal vytvořte pracovní prostor synapse:
   - Přiřazení **WS1 \_ SparkAdmins** správcům synapse Spark
   - Přiřazení **WS1 \_ SQLAdmins** SPRÁVCům synapse SQL
 
-## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>Krok 4: Konfigurace Data Lake Storage Gen2 pro použití v pracovním prostoru synapse
+## <a name="step-4-configure-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>Krok 4: Konfigurace Data Lake Storage Gen2 pro použití v pracovním prostoru synapse
 
 Pracovní prostor synapse potřebuje přístup k STG1 a CNT1, aby mohl spouštět kanály a provádět systémové úlohy.
 
@@ -100,7 +100,7 @@ Pracovní prostor synapse potřebuje přístup k STG1 a CNT1, aby mohl spouště
 - V části **Nastavení**klikněte na **Správce služby SQL Active Directory** .
 - Klikněte na **nastavit správce** a vyberte WS1 \_ SQLAdmins.
 
-## <a name="step-6-maintaining-access-control"></a>Krok 6: udržování řízení přístupu
+## <a name="step-6-maintain-access-control"></a>Krok 6: udržování řízení přístupu
 
 Konfigurace je dokončená.
 

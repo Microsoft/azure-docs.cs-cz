@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: ca13cbd8bdba911882f7452e34c45cbc7918dd7f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7b02296d5d9aed5866c0efcdf85fa1c9946617d0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077693"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501895"
 ---
 # <a name="introduction"></a>Úvod
 
@@ -38,7 +38,7 @@ Z tohoto důvodu není nutné vytvářet přihlašovací údaje ani je zadat v r
 
 - Tento konektor funguje pouze v Scala.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Musí být členem role **db_exporter** v databázi nebo ve fondu SQL, do které chcete přenést data.
 - Musí být členem role Přispěvatel dat objektů BLOB úložiště ve výchozím účtu úložiště.
@@ -67,7 +67,7 @@ EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 
 Příkazy import nejsou vyžadovány, jsou předem importovány pro prostředí poznámkového bloku.
 
-### <a name="transferring-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>Přenos dat do nebo z fondu SQL připojeném k pracovnímu prostoru
+### <a name="transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>Přenos dat do nebo z fondu SQL připojeného k pracovnímu prostoru
 
 > [!NOTE]
 > **V prostředí poznámkových blocích nejsou importy nutné.**
@@ -134,7 +134,7 @@ df.write.
 
 ```
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Pokud přenášíte data do nebo z fondu nebo databáze SQL mimo pracovní prostor
+### <a name="if-you-transfer-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Pokud přenášíte data do nebo z fondu nebo databáze SQL mimo pracovní prostor
 
 > [!NOTE]
 > V prostředí poznámkových blocích nejsou importy nutné.
@@ -160,7 +160,7 @@ option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="using-sql-auth-instead-of-aad"></a>Použití ověřování SQL místo AAD
+### <a name="use-sql-auth-instead-of-aad"></a>Místo AAD použít ověřování SQL
 
 #### <a name="read-api"></a>Rozhraní API pro čtení
 
@@ -184,7 +184,7 @@ option(Constants.PASSWORD, <SQLServer Login Password>).
 sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="using-the-pyspark-connector"></a>Použití konektoru PySpark
+### <a name="use-the-pyspark-connector"></a>Použití konektoru PySpark
 
 > [!NOTE]
 > Tento příklad je dán pouze v případě, že máte na paměti poznámkové bloky zachovány.
@@ -208,7 +208,7 @@ pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTE
 
 Podobně ve scénáři čtení si přečtěte data pomocí Scala a zapište je do dočasné tabulky a pomocí Spark SQL v PySpark se Dotazujte dočasnou tabulku do datového rámce.
 
-## <a name="allowing-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>Povolení, aby jiní uživatelé používali Azure synapse Apache Spark ke konektoru SQL synapse ve vašem pracovním prostoru
+## <a name="allow-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>Povolí ostatním uživatelům používat Azure synapse Apache Spark ke konektoru SQL synapse ve vašem pracovním prostoru.
 
 V účtu úložiště ADLS Gen2 připojeném k pracovnímu prostoru musíte být vlastníkem dat objektu BLOB úložiště, abyste mohli změnit chybějící oprávnění pro ostatní. Ujistěte se, že uživatel má přístup k pracovnímu prostoru a oprávnění ke spouštění poznámkových bloků.
 

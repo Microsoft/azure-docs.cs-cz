@@ -3,12 +3,13 @@ title: Ukázky Azure CLI (az) a Azure Service Fabric CLI (sfctl)
 description: Ukázky Azure CLI (AZ) a Azure Service Fabric CLI (sfctl) najdete v ukázkách pro správu clusterů, aplikací a služeb.
 ms.topic: sample
 ms.date: 04/09/2018
-ms.openlocfilehash: b54efcf6ca6ef66beb655c423283ea1ad0a59d72
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 12a48c525d1458b2d920f6a25d91d67e58749a96
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182810"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502422"
 ---
 # <a name="azure-cli-az-and-azure-service-fabric-cli-sfctl-samples"></a>Ukázky Azure CLI (az) a Azure Service Fabric CLI (sfctl)
 

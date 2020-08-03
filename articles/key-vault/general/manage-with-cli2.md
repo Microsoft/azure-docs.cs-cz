@@ -9,12 +9,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 127f0cdfc8cecf9789a68210f4b7ce1927333cc8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: dc60d2b6cef8ad19526c5ec243ae1c43529954a6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422582"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504530"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Správa Key Vault pomocí Azure CLI 
 
@@ -64,7 +65,7 @@ Můžete si také přečíst následující články, které vám pomůžou sezn
 
 ## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>Jak v Azure vytvořit zesílený kontejner (trezor)
 
-Trezory jsou zabezpečené kontejnery zajištěné moduly hardwarového zabezpečení. Trezory pomáhají snížit riziko nechtěné ztráty informací o zabezpečení tím, že centralizují ukládání tajných klíčů aplikací. Trezory klíčů také řídí a protokolují přístup ke všem položkám, které jsou v nich uložené. Azure Key Vault může zpracovávat žádosti o certifikáty TLS (Transport Layer Security) a jejich obnovování a poskytuje funkce potřebné pro robustní řešení správy životního cyklu certifikátů. V dalších krocích vytvoříte trezor.
+Trezory jsou zabezpečené kontejnery zajištěné moduly hardwarového zabezpečení. Trezory pomáhají snížit riziko nechtěné ztráty informací o zabezpečení tím, že centralizují ukládání tajných kódů aplikací. Trezory klíčů také řídí a protokolují přístup ke všem položkám, které jsou v nich uložené. Azure Key Vault může zpracovávat žádosti o certifikáty TLS (Transport Layer Security) a jejich obnovování a poskytuje funkce potřebné pro robustní řešení správy životního cyklu certifikátů. V dalších krocích vytvoříte trezor.
 
 ### <a name="connect-to-your-subscriptions"></a>Připojte se ke svým předplatným
 
@@ -93,7 +94,7 @@ az account set --subscription <subscription name or ID>
 
 Další informace o konfiguraci rozhraní příkazového řádku pro více platforem Azure najdete v tématu [instalace Azure CLI](/cli/azure/install-azure-cli).
 
-### <a name="create-a-new-resource-group"></a>Vytvořte novou skupinu prostředků
+### <a name="create-a-new-resource-group"></a>Vytvoření nové skupiny prostředků
 
 Při použití Azure Resource Manager se všechny související prostředky vytvoří v rámci skupiny prostředků. Trezor klíčů můžete vytvořit v existující skupině prostředků. Pokud chcete použít novou skupinu prostředků, můžete vytvořit novou.
 
@@ -115,7 +116,7 @@ az account list-locations
 az provider register -n Microsoft.KeyVault
 ```
 
-### <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
+### <a name="create-a-key-vault"></a>Vytvořte trezor klíčů.
 
 Pomocí `az keyvault create` příkazu vytvořte Trezor klíčů. Tento skript má tři povinné parametry: název skupiny prostředků, název trezoru klíčů a zeměpisnou polohu.
 
@@ -128,7 +129,7 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 Výstup tohoto příkazu zobrazuje vlastnosti trezoru klíčů, který jste vytvořili. Dvě nejdůležitější vlastnosti jsou:
 
 * **název**: v tomto příkladu je název ContosoKeyVault. Tento název použijete pro jiné Key Vault příkazy.
-* **vaultUri**: v tomto příkladu je https://contosokeyvault.vault.azure.netidentifikátor URI. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
+* **vaultUri**: v tomto příkladu je identifikátor URI https://contosokeyvault.vault.azure.net . Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
 Váš účet Azure je nyní oprávněn provádět nad tímto trezorem klíčů všechny operace. Od tohoto konce je nikdo jiný autorizovaný.
 
@@ -146,7 +147,7 @@ Pokud máte existující klíč v souboru. pem, můžete ho nahrát na Azure Key
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-Nyní můžete odkazovat na klíč, který jste vytvořili nebo nahráli do Azure Key Vault, pomocí jeho identifikátoru URI. K **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** získání aktuální verze vždycky použijte. K získání této konkrétní verze použijte protokol https://[název trezoru klíčů]. trezor. Azure. NET/Keys/[KeyName]/[klíč-Unique-ID]. Například **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**. 
+Nyní můžete odkazovat na klíč, který jste vytvořili nebo nahráli do Azure Key Vault, pomocí jeho identifikátoru URI. **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey**K získání aktuální verze vždycky použijte. K získání této konkrétní verze použijte protokol https://[název trezoru klíčů]. trezor. Azure. NET/Keys/[KeyName]/[klíč-Unique-ID]. Příklad: **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**. 
 
 Přidejte do trezoru tajný klíč, což je heslo s názvem SQLPassword, které má hodnotu "hVFkk965BuUv" pro trezory klíčů Azure. 
 
@@ -154,7 +155,7 @@ Přidejte do trezoru tajný klíč, což je heslo s názvem SQLPassword, které 
 az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
-Odkažte na toto heslo pomocí jeho identifikátoru URI. Pokud **https://ContosoVault.vault.azure.net/secrets/SQLPassword** chcete získat konkrétní verzi, použijte k tomu vždycky získat aktuální verzi a https://[název trezoru]. trezor. Azure. NET/Secret/[tajný klíč-název]/[tajný kód-jedinečné ID]. Například **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**.
+Odkažte na toto heslo pomocí jeho identifikátoru URI. Pokud chcete **https://ContosoVault.vault.azure.net/secrets/SQLPassword** získat konkrétní verzi, použijte k tomu vždycky získat aktuální verzi a https://[název trezoru]. trezor. Azure. NET/Secret/[tajný klíč-název]/[tajný kód-jedinečné ID]. Příklad: **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**.
 
 Importujte certifikát do trezoru pomocí souboru. pem nebo. pfx.
 
@@ -191,7 +192,7 @@ Aplikace, které používají trezor klíčů, se musí ověřit pomocí tokenu 
 - **ID aplikace** (označované také jako ID klienta AAD nebo AppID)
 - **Ověřovací klíč** (také označovaný jako sdílený tajný kód) 
 
-Pro získání tokenu musí aplikace obě tyto hodnoty poskytnout do Azure Active Directory. Způsob, jakým je aplikace nakonfigurovaná tak, aby získala token, bude záviset na aplikaci. V případě [ukázkové aplikace Key Vault](https://www.microsoft.com/download/details.aspx?id=45343)nastaví vlastník aplikace tyto hodnoty v souboru App. config.
+Pro získání tokenu musí aplikace obě tyto hodnoty poskytnout do Azure Active Directory. Způsob, jakým je aplikace nakonfigurovaná tak, aby získala token, bude záviset na aplikaci. V případě [ukázkové aplikace Key Vault](https://www.microsoft.com/download/details.aspx?id=45343)nastaví vlastník aplikace tyto hodnoty v souboru app.config.
 
 Podrobné pokyny k registraci aplikace v Azure Active Directory najdete v článcích s názvem [integrování aplikací pomocí Azure Active Directory](../../active-directory/develop/active-directory-integrating-applications.md), [použití portálu k vytvoření Azure Active Directory aplikace a instančního objektu, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md), a [Vytvoření instančního objektu Azure pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli).
 

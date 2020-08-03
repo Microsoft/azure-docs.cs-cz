@@ -7,13 +7,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: fc32dd5c477a76a20bc3a641ec8761e95c129554
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 34553c1b211b9e2c4b13a083f5c3a6732fb65472
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805892"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502694"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Směrování webového provozu na základě adresy URL pomocí Azure CLI
 
@@ -33,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-url-route-powershell.md) nebo [Azure Portal](create-url-route-portal.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -98,7 +98,7 @@ az network application-gateway create \
  Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplikační brány se zobrazí tyto nové funkce:
 
 
-|Funkce  |Description  |
+|Funkce  |Popis  |
 |---------|---------|
 |appGatewayBackendPool     |Aplikační brána musí mít alespoň jeden back-endový fond adres.|
 |appGatewayBackendHttpSettings     |Určuje, že se ke komunikaci používá port 80 a protokol HTTP.|
@@ -234,7 +234,7 @@ for i in `seq 1 3`; do
 done
 ```
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 K získání veřejné IP adresy aplikační brány použijte příkaz az network public-ip show. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například, `http://40.121.222.19` , `http://40.121.222.19:8080/images/test.htm` nebo `http://40.121.222.19:8080/video/test.htm` .
 

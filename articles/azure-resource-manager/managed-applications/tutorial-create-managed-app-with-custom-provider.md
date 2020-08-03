@@ -5,16 +5,17 @@ ms.topic: tutorial
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
-ms.openlocfilehash: c3750da6bd76c8cb3908fbdc71ba676f09d77def
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e8824f534f573d97353cc86d2a1b112b1acdb211
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650076"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494498"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Kurz: vytvoření spravované aplikace s vlastními akcemi a prostředky
 
-V tomto kurzu vytvoříte vlastní spravovanou aplikaci s vlastními akcemi a prostředky. Spravovaná aplikace bude na `Overview` stránce obsahovat vlastní akci, vlastní typ prostředku zobrazený jako samostatná položka nabídky v aplikaci `Table of Content` a vlastní kontextovou akci na stránce vlastní prostředek.
+V tomto kurzu vytvoříte vlastní spravovanou aplikaci s vlastními akcemi a prostředky. Spravovaná aplikace bude na stránce obsahovat vlastní akci `Overview` , vlastní typ prostředku zobrazený jako samostatná položka nabídky v aplikaci `Table of Content` a vlastní kontextovou akci na stránce vlastní prostředek.
 
 Tento kurz obsahuje následující kroky:
 
@@ -40,7 +41,7 @@ K dokončení tohoto kurzu potřebujete znát tyto informace:
 
 V tomto kurzu vytvoříte spravovanou aplikaci a její spravovanou skupinu prostředků, která bude obsahovat vlastní instanci poskytovatele, účet úložiště a funkci. Funkce Azure použitá v tomto příkladu implementuje rozhraní API, které zpracovává vlastní operace poskytovatele pro akce a prostředky. Účet Azure Storage se používá jako základní úložiště pro prostředky vlastního zprostředkovatele.
 
-Definice uživatelského rozhraní pro vytvoření instance spravované aplikace zahrnuje `funcname` a `storagename` vstupní prvky. Název a název funkce účtu úložiště musí být globálně jedinečné. Ve výchozím nastavení se soubory funkcí nasazují z [balíčku ukázkové funkce](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip), ale můžete ho změnit přidáním elementu Input pro odkaz na balíček v souboru *createUIDefinition. JSON*:
+Definice uživatelského rozhraní pro vytvoření instance spravované aplikace zahrnuje `funcname` a `storagename` vstupní prvky. Název a název funkce účtu úložiště musí být globálně jedinečné. Ve výchozím nastavení se soubory funkcí nasazují z [balíčku ukázkové funkce](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip), ale můžete ho změnit přidáním elementu Input pro odkaz na balíček v *createUIDefinition.js*:
 
 ```json
 {
@@ -73,7 +74,7 @@ Definice uživatelského rozhraní pro vytvoření instance spravované aplikace
 }
 ```
 
-a výstup v *createUIDefinition. JSON*:
+a výstup v *createUIDefinition.js*:
 
 ```json
   "funcname": "[steps('applicationSettings').funcname]",
@@ -81,13 +82,13 @@ a výstup v *createUIDefinition. JSON*:
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-Kompletní ukázku *createUIDefinition. JSON* najdete na adrese [: artefakty prvků uživatelského rozhraní](reference-createuidefinition-artifact.md).
+Kompletní *createUIDefinition.jspro* ukázku lze nalézt v [referenci: artefakty prvků uživatelského rozhraní](reference-createuidefinition-artifact.md).
 
 ## <a name="template-with-custom-provider"></a>Šablona s vlastním zprostředkovatelem
 
-Pokud chcete vytvořit instanci spravované aplikace s vlastním poskytovatelem, je potřeba definovat prostředek vlastního zprostředkovatele s názvem **Public** a do svého **mainTemplate. JSON**zadat **Microsoft. CustomProviders/resourceProviders** . V tomto prostředku definujete typy prostředků a akce pro vaši službu. Pro nasazení funkce Azure functions a Azure Storage instance účtů definují prostředky `Microsoft.Web/sites` typu `Microsoft.Storage/storageAccounts` a v uvedeném pořadí.
+Chcete-li vytvořit instanci spravované aplikace s vlastním poskytovatelem, je třeba definovat prostředek vlastního zprostředkovatele s názvem **Public** a do svého **mainTemplate.js**zadat **Microsoft. CustomProviders/resourceProviders** . V tomto prostředku definujete typy prostředků a akce pro vaši službu. Pro nasazení funkce Azure functions a Azure Storage instance účtů definují prostředky typu `Microsoft.Web/sites` a `Microsoft.Storage/storageAccounts` v uvedeném pořadí.
 
-`users` V tomto kurzu vytvoříte jeden typ prostředku, `ping` vlastní akci a `users/contextAction` vlastní akci, která se provede v kontextu `users` vlastního prostředku. Pro každý typ prostředku a akci zadejte koncový bod, který odkazuje na funkci s názvem zadaným v [createUIDefinition. JSON](#user-interface-definition). Zadejte **routingType** jako `Proxy,Cache` pro typy prostředků a `Proxy` pro akce:
+V tomto kurzu vytvoříte jeden `users` typ prostředku, `ping` vlastní akci a `users/contextAction` vlastní akci, která se provede v kontextu `users` vlastního prostředku. Pro každý typ prostředku a akci zadejte koncový bod, který odkazuje na funkci s názvem, který je zadaný v [createUIDefinition.js](#user-interface-definition). Zadejte **routingType** jako `Proxy,Cache` pro typy prostředků a `Proxy` pro akce:
 
 ```json
 {
@@ -122,16 +123,16 @@ Pokud chcete vytvořit instanci spravované aplikace s vlastním poskytovatelem,
 }
 ```
 
-Kompletní ukázku *mainTemplate. JSON* najdete v části [Reference: artefakt šablony nasazení](reference-main-template-artifact.md).
+Kompletní *mainTemplate.jspro* ukázku najdete v části [Reference: artefakt šablony nasazení](reference-main-template-artifact.md).
 
 ## <a name="view-definition-artifact"></a>Zobrazení definičních artefaktů
 
-Chcete-li definovat uživatelské rozhraní, které zahrnuje vlastní akce a vlastní prostředky ve spravované aplikaci, je nutné vytvořit artefakt **položku galerie. JSON** . Další informace o artefaktu definice zobrazení naleznete [v tématu artefakt definice zobrazení v Azure Managed Applications](concepts-view-definition.md).
+Chcete-li definovat uživatelské rozhraní, které zahrnuje vlastní akce a vlastní prostředky ve spravované aplikaci, je třeba vytvořit **viewDefinition.js** artefaktem. Další informace o artefaktu definice zobrazení naleznete [v tématu artefakt definice zobrazení v Azure Managed Applications](concepts-view-definition.md).
 
 V tomto kurzu nadefinujete:
-* Stránka s *přehledem* s tlačítkem panelu nástrojů, která představuje `TestAction` vlastní akci se základním zadáním textu.
-* Stránka *uživatele* , která představuje vlastní typ `users`prostředku.
-* Vlastní akce `users/contextAction` prostředku na stránce *Uživatelé* , která bude provedena v kontextu vlastního prostředku typu `users`.
+* Stránka s *přehledem* s tlačítkem panelu nástrojů, která představuje vlastní akci `TestAction` se základním zadáním textu.
+* Stránka *uživatele* , která představuje vlastní typ prostředku `users` .
+* Vlastní akce prostředku `users/contextAction` na stránce *Uživatelé* , která bude provedena v kontextu vlastního prostředku typu `users` .
 
 Následující příklad ukazuje zobrazení konfigurace pro stránku Přehled:
 
@@ -174,15 +175,15 @@ Níže uvedený příklad obsahuje "uživatelé" – konfigurace stránky prost�
   }
 ```
 
-Kompletní ukázku *položku galerie. JSON* najdete v části [Reference: artefakt definice zobrazení](reference-view-definition-artifact.md).
+Kompletní *viewDefinition.jspro* ukázku najdete v části [Reference: artefakt definice zobrazení](reference-view-definition-artifact.md).
 
 ## <a name="managed-application-definition"></a>Definice spravované aplikace
 
 Zabalit následující artefakty spravovaných aplikací do archivu zip a nahrát je do úložiště:
 
-* createUiDefinition. JSON
-* mainTemplate. JSON
-* Položku galerie. JSON
+* createUiDefinition.jsna
+* mainTemplate.jsna
+* viewDefinition.jsna
 
 Všechny soubory musí být na kořenové úrovni. Balíček s artefakty může být uložený v jakémkoli úložišti, například v objektu BLOB GitHubu nebo v objektu BLOB účtu Azure Storage. Tady je skript pro nahrání balíčku aplikace do účtu úložiště: 
 
@@ -244,7 +245,7 @@ az managedapp definition create \
   --package-file-uri "path to your app.zip package"
 ```
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte a vyberte **spravované aplikace Centrum**.
 2. V **centru spravovaných aplikací**vyberte **definice aplikace katalogu služeb** a klikněte na **Přidat**. 
@@ -300,7 +301,7 @@ az managedapp create \
   --parameters "{\"funcname\": {\"value\": \"managedusersappfunction\"}, \"storageName\": {\"value\": \"managedusersappstorage\"}}"
 ```
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte a vyberte **spravované aplikace Centrum**.
 2. V **centru spravovaných aplikací**vyberte **aplikace katalogu služeb** a klikněte na **Přidat**. 
@@ -326,7 +327,7 @@ az managedapp create \
 
 ## <a name="custom-actions-and-resources"></a>Vlastní akce a prostředky
 
-Po nasazení instance aplikace katalogu služeb máte dvě nové skupiny prostředků. První skupina `applicationGroup` prostředků obsahuje instanci spravované aplikace, druhá skupina `managedResourceGroup` prostředků obsahuje prostředky pro spravovanou aplikaci, včetně **vlastního poskytovatele**.
+Po nasazení instance aplikace katalogu služeb máte dvě nové skupiny prostředků. První skupina prostředků `applicationGroup` obsahuje instanci spravované aplikace, druhá skupina prostředků obsahuje `managedResourceGroup` prostředky pro spravovanou aplikaci, včetně **vlastního poskytovatele**.
 
 ![Skupiny prostředků aplikace](./media/tutorial-create-managed-app-with-custom-provider/application-resource-groups.png)
 

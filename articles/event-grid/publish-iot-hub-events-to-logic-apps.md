@@ -7,12 +7,13 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.author: robinsh
-ms.openlocfilehash: 49c91a2b96ebf02ec87637c3176e9263302184bf
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 35359c63b79d9eea6f8f6ad688bd040428a39eb8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460928"
+ms.locfileid: "87503442"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Kurz: Posílání e-mailových oznámení o událostech služby Azure IoT Hub s využitím služeb Event Grid a Logic Apps
 
@@ -20,7 +21,7 @@ Azure Event Grid vám umožňuje reagovat na události ve službě IoT Hub aktiv
 
 Tento článek vás provede ukázkovou konfigurací, která používá IoT Hub a Event Grid. Na konci máte aplikaci logiky Azure nastavenou k odeslání e-mailu s oznámením pokaždé, když se do služby IoT Hub přidá zařízení. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Musíte mít aktivní předplatné Azure. Pokud předplatné nemáte, můžete si [vytvořit bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial/).
 

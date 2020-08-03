@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 0ef3135f572b00176ff2a114fd02db82c7a05bca
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258389"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494481"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Sledování a protokolování událostí pro Azure Data Box a Azure Data Box Heavy exportu objednávek
 
@@ -34,7 +34,7 @@ Následující tabulka obsahuje souhrn kroků Data Box exportu a nástroje, kter
 
 ## <a name="set-up-access-control-on-the-order"></a>Nastavení řízení přístupu na objednávce
 
-Můžete určit, kdo má mít přístup k vaší objednávce při prvním vytvoření objednávky. Nastavte role Access Control na základě rolí (RBAC) v různých oborech, abyste mohli řídit přístup k objednávce Data Box. Role RBAC určuje typ přístupu – čtení i zápis, čtení i zápis v podmnožině operací.
+Můžete určit, kdo má mít přístup k vaší objednávce při prvním vytvoření objednávky. Nastavte role Azure v různých oborech, abyste mohli řídit přístup k pořadí Data Box. Role Azure určuje typ přístupu – čtení i zápis, čtení i zápis v podmnožině operací.
 
 Pro službu Azure Data Box lze definovat dvě role:
 
@@ -306,7 +306,3 @@ BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ## <a name="next-steps"></a>Další kroky
 
 - Naučte se [řešit problémy s data box a data box Heavy](data-box-troubleshoot.md).
-
-
-
-

@@ -6,19 +6,19 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 97f9635cf6bba9ee276e6775c1718a5d83e9af3e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ad255b2e03cdecd9a87f1af3ce780ae64535bfa2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282122"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495076"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>Připojení SSL/TLS v Azure Database for MySQL
 
 Azure Database for MySQL podporuje připojení vašeho databázového serveru k klientským aplikacím pomocí SSL (Secure Sockets Layer) (SSL). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
 
 > [!NOTE]
-> Aktualizace `require_secure_transport` hodnoty parametru serveru nemá vliv na chování služby MySQL. Pomocí funkcí vynucení SSL a TLS popsaných v tomto článku můžete zabezpečit připojení k vašemu.
+> Aktualizace `require_secure_transport` hodnoty parametru serveru nemá vliv na chování služby MySQL. Pomocí funkcí vynucení protokolu SSL a TLS popsaných v tomto článku můžete zabezpečit připojení k vaší databázi.
 
 ## <a name="ssl-default-settings"></a>Výchozí nastavení SSL
 

@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: b1f1ac9e7c5d44fd5cf6e7d692a71f5cf34b48df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 36afc42844203436313f2a5b15975746f2acd349
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261677"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494351"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurace brány firewall protokolu IP v Azure Cosmos DB
 
@@ -64,7 +65,7 @@ Z důvodu zjednodušení vývoje vám Azure Portal pomůže identifikovat a při
 
 Portál automaticky rozpozná IP adresu klienta. Může to být IP adresa klienta vašeho počítače nebo IP adresa vaší síťové brány. Nezapomeňte odebrat tuto IP adresu, aby bylo možné převzít své úlohy do produkčního prostředí.
 
-Pokud chcete do seznamu IP adres přidat aktuální IP adresu, vyberte **Přidat moji aktuální IP adresu**. Pak vyberte **Uložit**.
+Pokud chcete do seznamu IP adres přidat aktuální IP adresu, vyberte **Přidat moji aktuální IP adresu**. Potom vyberte **Uložit**.
 
 :::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="Snímek obrazovky, který ukazuje, jak nakonfigurovat nastavení brány firewall pro aktuální IP adresu":::
 

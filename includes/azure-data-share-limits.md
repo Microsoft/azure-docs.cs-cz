@@ -2,27 +2,27 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: azure data share
-author: jife
+author: jifems
 ms.service: azure data share
 ms.topic: include
-ms.date: 02/07/2020
+ms.date: 07/30/2020
 ms.author: jife
 ms.custom: include file
-ms.openlocfilehash: e1416b8b99c66daa4a27fa7f9bd7a20dfa9519e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c11ace5983ee906ebb12ebb2c60f4567f40e430
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77087442"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87515348"
 ---
 Azure Data Share umožňuje organizacím jednoduše a bezpečně sdílet data se svými zákazníky a partnery.
 
 | **Prostředek** | **Počtu** |
 | --- | --- |
-| Maximální počet prostředků pro sdílení dat na předplatné Azure |50 |
-| Maximální počet odeslaných sdílených složek na jeden prostředek sdílení dat |100 |
+| Maximální počet prostředků pro sdílení dat na předplatné Azure |100 |
+| Maximální počet odeslaných sdílených složek na jeden prostředek sdílení dat |200 |
 | Maximální počet přijatých sdílených složek na jeden prostředek sdílení dat |100 |
-| Maximální počet pozvánek na odeslané sdílení |100 |
-| Maximální počet předplatných pro sdílení na jednu odeslanou sdílenou složku |100 |
-| Maximální počet datových sad na sdílenou složku |100 |
+| Maximální počet pozvánek na odeslané sdílení |200 |
+| Maximální počet předplatných pro sdílení na jednu odeslanou sdílenou složku |200 |
+| Maximální počet datových sad na sdílenou složku |200 |
 | Maximální počet plánů snímků na sdílenou složku |1 |

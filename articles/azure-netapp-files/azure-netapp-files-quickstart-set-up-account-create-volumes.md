@@ -7,12 +7,13 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
 ms.date: 06/09/2020
-ms.openlocfilehash: 1281f5c3355a09659f2f45c4cf944271936f50d8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 73e1067a7d2d1ff9cc9e2086070c9cb9bf7a000a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636382"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504241"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS 
 
@@ -25,7 +26,7 @@ V tomto rychlém startu vytvoříte následující položky:
 - Fond kapacit
 - Svazek NFS pro Azure NetApp Files
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="before-you-begin"></a>Než začnete 
 
@@ -82,7 +83,7 @@ Tento článek s postupem vyžaduje Azure PowerShell modul AZ verze 2.6.0 nebo n
 
 3. V okně Nový účet NetApp zadejte následující informace: 
    1. Jako název účtu zadejte **myaccount1** . 
-   2. Vyberte své předplatné.
+   2. Vyberte předplatné.
    3. Vyberte **vytvořit novou** a vytvořte novou skupinu prostředků. Jako název skupiny prostředků zadejte **myRG1** . Klikněte na **OK**. 
    4. Vyberte umístění svého účtu.  
 

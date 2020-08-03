@@ -3,13 +3,13 @@ title: Začínáme s Azure CLI pro Batch
 description: Rychlý úvod k příkazům Batch v rozhraní příkazového řádku Azure CLI pro správu prostředků služby Azure Batch
 ms.topic: how-to
 ms.date: 07/24/2018
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b07045bc0a756c5565356bb0a674188cf84c8785
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: H1Hack27Feb2017, devx-track-azurecli
+ms.openlocfilehash: ea3f91615a488a1013ac4821ce7ba14b2006c14a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960856"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494940"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Správa prostředků služby Batch pomocí Azure CLI
 
@@ -17,7 +17,7 @@ Azure CLI je prostředí příkazového řádku Azure pro správu prostředků A
 
 Tento článek obsahuje přehled používání rozhraní [Azure CLI verze 2.0](/cli/azure) se službou Batch. V článku [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli) najdete přehled používání rozhraní příkazového řádku s Azure.
 
-## <a name="set-up-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
+## <a name="set-up-the-azure-cli"></a>Nastavení Azure CLI
 
 Nejnovější verzi Azure CLI můžete spustit ve službě [Azure Cloud Shell](../cloud-shell/overview.md). Pokud chcete nainstalovat Azure CLI místně, postupujte podle kroků uvedených v tématu [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
@@ -141,7 +141,7 @@ Při dotazování služby Batch pomocí operace `list` můžete určit klauzuli 
 
 Následující tabulka popisuje klauzule OData podporované službou Batch:
 
-| Klauzule | Description |
+| Klauzule | Popis |
 |---|---|
 | `--select-clause [select-clause]` | Vrátí podmnožinu vlastností pro každou entitu. |
 | `--filter-clause [filter-clause]` | Vrátí pouze ty entity, které odpovídají zadanému výrazu OData. |

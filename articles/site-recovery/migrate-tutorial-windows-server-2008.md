@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c62cb9b64c42446c1f4ba8f6eb496fc792ff59a1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8d672c1113f265f9fbbabc7caed8df071f548f2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281272"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503816"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrace serverů s Windows Serverem 2008 do Azure
 
@@ -104,7 +104,7 @@ Provedením následujících úloh připravte předplatné Azure a VMware v mís
 5. Zadejte oblast Azure. Pokud chcete zjistit podporované oblasti, přečtěte si článek geografická dostupnost v [Azure Site Recovery podrobnosti o cenách](https://azure.microsoft.com/pricing/details/site-recovery/).
 6. Pokud chcete mít možnost rychle se dostat k trezoru z řídicího panelu, klikněte na **Připnout na řídicí panel** a potom klikněte na **Vytvořit**.
 
-   ![Nový trezor](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
+   ![Snímek obrazovky s možnostmi nového vytvoření trezoru](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
 
 Nový trezor se přidá do oblasti **Řídicí panel** v části **Všechny prostředky** a na hlavní stránku **Trezory Recovery Services**.
 
@@ -136,15 +136,15 @@ Tato zásada se automaticky přidruží ke konfiguračnímu serveru.
 > [!WARNING]
 > Ujistěte se, že v nastavení Frekvence pořizování snímků konzistentních vzhledem k aplikacím v zásadě replikace zadáte **VYPNUTO**. Při replikaci serverů s Windows Serverem 2008 se podporují pouze body obnovení konzistentní vzhledem k selháním. Zadáním jakékoli jiné hodnoty frekvence snímků konzistentní vzhledem k aplikacím dojde k nepravdivým výstrahám, protože stav replikace je kritický pro server z důvodu nedostatku bodů obnovení konzistentního vzhledem k aplikacím.
 
-   ![Vytvoření zásady replikace](media/migrate-tutorial-windows-server-2008/create-policy.png)
+   ![Snímek obrazovky znázorňující možnosti vytvoření zásady replikace](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
 ### <a name="enable-replication"></a>Povolení replikace
 
 [Povolte replikaci](physical-azure-disaster-recovery.md#enable-replication) pro server s Windows Serverem 2008 SP2 nebo Windows Serverem 2008 R2 SP1, který se má migrovat.
    
-   ![Přidání fyzického serveru](media/migrate-tutorial-windows-server-2008/Add-physical-server.png)
+   ![Snímek obrazovky zobrazující možnosti pro přidání fyzických počítačů](media/migrate-tutorial-windows-server-2008/Add-physical-server.png)
 
-   ![Povolení replikace](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
+   ![Snímek obrazovky znázorňující možnosti pro povolení replikace](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
 
 ### <a name="run-a-test-migration"></a>Spuštění testu migrace
 
@@ -152,7 +152,7 @@ Po dokončení počáteční replikace a změně stavu serveru na **Chráněno**
 
 Spusťte [testovací převzetí služeb při selhání](tutorial-dr-drill-azure.md) do Azure a ujistěte se, že vše funguje podle očekávání.
 
-   ![Testovací převzetí služeb při selhání](media/migrate-tutorial-windows-server-2008/testfailover.png)
+   ![Snímek obrazovky se zobrazeným příkazem test převzetí služeb při selhání](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
 ### <a name="migrate-to-azure"></a>Migrace do Azure
@@ -168,7 +168,7 @@ Spusťte převzetí služeb při selhání pro počítače, které chcete migrov
     - Dokončí proces migrace, zastaví replikaci serveru a zastaví Site Recovery fakturace pro obsluhu.
     - Tento krok vyčistí data replikace. Migrované virtuální počítače se neodstraňují.
 
-   ![Dokončení migrace](media/migrate-tutorial-windows-server-2008/complete-migration.png)
+   ![Snímek obrazovky s příkazem Kompletní migrace](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]

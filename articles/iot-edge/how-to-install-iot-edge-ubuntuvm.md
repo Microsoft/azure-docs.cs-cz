@@ -9,16 +9,17 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
-ms.openlocfilehash: 050631731a04e4c2ea89d8c7792ec093d6ab316e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e70b22b3edaae96e00306d5d0a93d229e11aac41
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800558"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494073"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Spuštění Azure IoT Edge v Ubuntu Virtual Machines
 
-Azure IoT Edge modul runtime je tím, že zařízení přepíná do IoT Edge zařízení. Modul runtime se dá na zařízeních nasadit tak, jak malý, jako např. v/v jako průmyslový Server. Jakmile je zařízení nakonfigurované s modulem runtime IoT Edge, můžete do něj začít nasazovat obchodní logiku z cloudu.
+Azure IoT Edge modul runtime je tím, že zařízení přepíná do IoT Edge zařízení. Modul runtime se dá na zařízeních nasadit tak, jak malý, jako např. v/v jako průmyslový Server. Jakmile v zařízení nakonfigurujete modul runtime IoT Edge, můžete do něj z cloudu začít nasazovat obchodní logiku.
 
 Další informace o tom, jak modul runtime IoT Edge funguje a jaké součásti jsou zahrnuté, najdete v tématu [pochopení Azure IoT Edge runtime a jeho architektury](iot-edge-runtime.md).
 
@@ -34,12 +35,12 @@ Při prvním spuštění nainstaluje virtuální počítač Ubuntu 18,04 LTS [ne
 
 1. Nasadíme Azure IoT Edge povolený virtuální počítač Linux pomocí šablony Azure Resource Manager iotedge-VM-Deploy.  Začněte tím, že kliknete na tlačítko níže:
 
-    [![Tlačítko nasadit do Azure pro iotedge-VM-Deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
+    [![Tlačítko Nasazení do Azure pro iotedge-vm-deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
 
 1. V nově otevřeném okně vyplňte dostupná pole formuláře:
 
     > [!div class="mx-imgBorder"]
-    > [![Snímek obrazovky zobrazující šablonu iotedge-VM-Deploy](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)
+    > [![Snímek obrazovky zobrazující šablonu iotedge-vm-deploy](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)
 
     **Předplatné**: aktivní předplatné Azure, do kterého se má virtuální počítač nasadit.
 
@@ -63,9 +64,9 @@ Při prvním spuštění nainstaluje virtuální počítač Ubuntu 18,04 LTS [ne
 
     Po vyplnění všech polí zaškrtněte políčko v dolní části stránky, aby se podmínky přijaly, a výběrem **koupit** zahájíte nasazení.
 
-1. Ověřte, že se nasazení úspěšně dokončilo.  Do vybrané skupiny prostředků by měl být nasazený prostředek virtuálního počítače.  Poznamenejte si název počítače, který by měl být ve formátu `vm-0000000000000` . Také si poznamenejte přidružený **název DNS**, který by měl být ve formátu `<dnsLabelPrefix>` . `<location>` . cloudapp.azure.com.
+1. Ověřte, že se nasazení úspěšně dokončilo.  Do vybrané skupiny prostředků by měl být nasazený prostředek virtuálního počítače.  Poznamenejte si název počítače, který by měl být ve formátu `vm-0000000000000` . Dále si poznamenejte související **název DNS**, který by měl být ve formátu `<dnsLabelPrefix>`.`<location>`. cloudapp.azure.com.
 
-    **Název DNS** se dá získat z oddílu **Přehled** nově nasazeného virtuálního počítače v rámci Azure Portal.
+    **Název DNS** můžete získat v části **Přehled** nově nasazeného virtuálního počítače na webu Azure Portal.
 
     > [!div class="mx-imgBorder"]
     > [![Snímek obrazovky zobrazující název DNS virtuálního počítače s iotedge](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
@@ -138,7 +139,7 @@ Při prvním spuštění nainstaluje virtuální počítač Ubuntu 18,04 LTS [ne
     --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
     ```
 
-1. Ověřte, že se nasazení úspěšně dokončilo.  Do vybrané skupiny prostředků by měl být nasazený prostředek virtuálního počítače.  Poznamenejte si název počítače, který by měl být ve formátu `vm-0000000000000` . Také si poznamenejte přidružený **název DNS**, který by měl být ve formátu `<dnsLabelPrefix>` . `<location>` . cloudapp.azure.com.
+1. Ověřte, že se nasazení úspěšně dokončilo.  Do vybrané skupiny prostředků by měl být nasazený prostředek virtuálního počítače.  Poznamenejte si název počítače, který by měl být ve formátu `vm-0000000000000` . Dále si poznamenejte související **název DNS**, který by měl být ve formátu `<dnsLabelPrefix>`.`<location>`. cloudapp.azure.com.
 
     **Název DNS** se dá získat z výstupu z předchozího kroku ve formátu JSON, v části **výstupy** jako součást **veřejné položky SSH** .  Hodnotu této položky lze použít pro SSH do nově nasazeného počítače.
 

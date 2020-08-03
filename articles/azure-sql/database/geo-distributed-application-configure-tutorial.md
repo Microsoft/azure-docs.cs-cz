@@ -4,19 +4,19 @@ description: Naučte se konfigurovat databázi v Azure SQL Database a klientské
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: e76ccc83be8f269cb14826b5e3e8873d4c7c427a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 90bfe3f6e8d5ed19380ab2b48aa38e598c3f109a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045018"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501606"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Kurz: implementace geografické distribuované databáze (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ Nakonfigurujte databázi v SQL Database a klientské aplikace pro převzetí slu
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

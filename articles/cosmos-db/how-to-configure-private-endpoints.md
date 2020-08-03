@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.author: thweiss
-ms.openlocfilehash: bb1310d0f45f945fc150e0ae011ede0d102a5918
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: aa8fd911aaf5c61fc8c33ca469798291fca3d3d1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259115"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502116"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurace privátního odkazu Azure pro účet Azure Cosmos
 
@@ -52,7 +53,7 @@ Pomocí následujících kroků můžete vytvořit privátní koncový bod pro e
     |Způsob připojení  | **V adresáři vyberte připojit k prostředku Azure**. <br/><br/> Pak můžete zvolit jeden z vašich prostředků pro nastavení privátního propojení. Nebo se můžete připojit k prostředku jiné osoby pomocí ID prostředku nebo aliasu, který s vámi sdílí.|
     | Předplatné| Vyberte předplatné. |
     | Typ prostředku | Vyberte **Microsoft. AzureCosmosDB/databaseAccounts**. |
-    | Resource |Vyberte svůj účet Azure Cosmos. |
+    | Prostředek |Vyberte svůj účet Azure Cosmos. |
     |Cílový dílčí prostředek |Vyberte Azure Cosmos DB typ rozhraní API, který chcete namapovat. Tato možnost je standardně jenom jedna volba pro rozhraní API SQL, MongoDB a Cassandra. Pro Gremlin a rozhraní Table API můžete také zvolit **SQL** , protože tato rozhraní API se vzájemně spolupracují s rozhraním SQL API. |
     |||
 

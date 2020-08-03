@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 40dd7f1b177fd1319b145036c8263ba2c6e30137
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a17764984e33e4312b9d81a5743d851dc14b5c05
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024668"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87492152"
 ---
-# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Kurz: Vytvoření vztahu důvěryhodnosti odchozí doménové struktury do místní domény v Azure Active Directory Domain Services (Preview)
+# <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Kurz: Vytvoření vztahu důvěryhodnosti odchozí doménové struktury do místní domény v Azure Active Directory Domain Services
 
-V prostředích, kde nemůžete synchronizovat hodnoty hash hesel, nebo máte uživatele, kteří se výhradně přihlásili pomocí čipových karet, aby si neznali heslo, můžete v Azure Active Directory Domain Services (Azure služba AD DS) použít doménovou strukturu prostředků. Doménová struktura prostředků používá jednosměrný odchozí vztah důvěryhodnosti z Azure služba AD DS do jednoho nebo více místních služba AD DS prostředí. Tento vztah důvěryhodnosti umožňuje uživatelům, aplikacím a počítačům provádět ověřování v místní doméně ze spravované domény Azure služba AD DS. Doménové struktury prostředků Azure služba AD DS jsou momentálně ve verzi Preview.
+V prostředích, kde nemůžete synchronizovat hodnoty hash hesel, nebo máte uživatele, kteří se výhradně přihlásili pomocí čipových karet, aby si neznali heslo, můžete v Azure Active Directory Domain Services (Azure služba AD DS) použít doménovou strukturu prostředků. Doménová struktura prostředků používá jednosměrný odchozí vztah důvěryhodnosti z Azure služba AD DS do jednoho nebo více místních služba AD DS prostředí. Tento vztah důvěryhodnosti umožňuje uživatelům, aplikacím a počítačům provádět ověřování v místní doméně ze spravované domény Azure služba AD DS. V doménové struktuře prostředků nejsou hodnoty hash místních hesel nikdy synchronizovány.
 
 ![Diagram vztahu důvěryhodnosti doménové struktury z Azure služba AD DS do místního služba AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].

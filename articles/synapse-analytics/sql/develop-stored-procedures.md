@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0f88b994104ed8a2d80fb3b16f125f8a087cbe3c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2b106a28514179d9be43b3c56ea8030eaf7ba13f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958374"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494991"
 ---
 # <a name="use-stored-procedures-in-sql-pool"></a>Použití uložených procedur ve fondu SQL
 
@@ -27,7 +27,7 @@ Fond SQL podporuje mnoho funkcí T-SQL, které se používají v SQL Server. Dů
 
 Pokud ale chcete zachovat rozsah a výkon fondu SQL, existují i některé funkce a funkce, které mají rozdíly v chování a jiné, které se nepodporují.
 
-## <a name="introducing-stored-procedures"></a>Představení uložených procedur
+## <a name="stored-procedures-in-sql-pool"></a>Uložené procedury ve fondu SQL
 
 Uložené procedury jsou skvělým způsobem, jak zapouzdření kódu SQL; Uložte je blízko do vašich dat v datovém skladu. Uložené procedury mohou vývojářům naplánovat modularizaci svá řešení zapouzdřením kódu do spravovatelných jednotek. usnadnění větší použitelnosti kódu. Každý uložený postup může také přijímat parametry, aby byly ještě flexibilnější.
 

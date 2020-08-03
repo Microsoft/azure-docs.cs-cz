@@ -8,13 +8,21 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: d05386f1dfbab28d5fe42d02b8e9be0f257afafd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 014d1ea4575b17b1d4017c9519bee6c5ea66ceb5
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527200"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87515340"
 ---
+## <a name="what-is-azure-service-manager-and-what-does-it-mean-by-classic"></a>Co je Azure Service Manager a co to znamená Classic?
+
+Slovo "Classic" na virtuálním počítači s IaaS (Classic) odkazuje na virtuální počítače spravované službou Azure Service Manager (ASM). Azure Service Manager (ASM) je stará Řídicí rovina Azure zodpovědná za vytváření, správu a odstraňování virtuálních počítačů a provádění jiných operací roviny řízení. 
+
+## <a name="what-is-azure-resource-manager"></a>Co je Azure Resource Manager?
+
+[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) je nejnovější Řídicí rovina Azure zodpovědná za vytváření, správu a odstraňování virtuálních počítačů a provádění jiných operací roviny řízení. 
+
 ## <a name="what-is-the-time-required-for-migration"></a>Jaký je čas potřebný k migraci?
 
 Plánování a provádění migrace značně závisí na složitosti architektury a může trvat několik měsíců.  
@@ -84,7 +92,7 @@ Pokud navíc chcete zálohovat migrovaný virtuální počítač, v okně Správ
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>Je možné ověřit, jestli jsou prostředky nebo předplatné schopné migrace? 
 
-Yes. U možnosti migrace s podporou platformy je prvním krokem přípravy na migraci ověření, že jsou prostředky schopné migrace. V případě selhání operace ověření se zobrazí zprávy se všemi důvody, proč migraci není možné dokončit.
+Ano. U možnosti migrace s podporou platformy je prvním krokem přípravy na migraci ověření, že jsou prostředky schopné migrace. V případě selhání operace ověření se zobrazí zprávy se všemi důvody, proč migraci není možné dokončit.
 
 ## <a name="what-happens-if-i-run-into-a-quota-error-while-preparing-the-iaas-resources-for-migration"></a>Co se stane, pokud při přípravě prostředků IaaS na migraci dojde k chybě kvóty? 
 

@@ -4,12 +4,13 @@ description: Tento článek obsahuje ukázkový skript rozhraní příkazového 
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: 0d8287100eb4a16572fd5fbd764549b62a284c93
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 1d3887a98f0a53e0f04932c257aa7bb822cadc76
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460860"
+ms.locfileid: "87494107"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-azure-cli"></a>Přihlášení k odběru událostí skupiny prostředků a vyfiltrování prostředku pomocí Azure CLI
 

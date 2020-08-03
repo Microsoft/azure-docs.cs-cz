@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f73d20c19e8fc26c553490772f5374e8a88a77b2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 432c92bcfa8a2e0df26adf1516f5bdc9ee73d267
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289305"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502371"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Navrácení služeb po obnovení virtuálního počítače Azure mezi oblastmi Azure
 
@@ -42,7 +42,7 @@ Po opětovném zapnutí ochrany virtuálních počítačů můžete v případě
 
 1. V trezoru vyberte **replikované položky**a potom vyberte virtuální počítač, který se znovu zabezpečí.
 
-    ![Navrácení služeb po obnovení primárnímu](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
+    ![Snímek obrazovky s navrácením služeb po obnovení na primární v Azure Portal.](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
 
 2. V části **replikované položky**vyberte virtuální počítač a pak vyberte **převzetí služeb při selhání**.
 3. V části **převzetí služeb při selhání**vyberte bod obnovení, který převezme služby při selhání:
@@ -55,7 +55,7 @@ Po opětovném zapnutí ochrany virtuálních počítačů můžete v případě
 7. Po ověření převzetí služeb při selhání vyberte **Potvrdit převzetí služeb při selhání**. Potvrzení odstraní všechny dostupné body obnovení. Možnost změnit bod obnovení již není k dispozici.
 8. Virtuální počítač by se měl zobrazit při převzetí služeb při selhání a vrácení se zpět.
 
-    ![Virtuální počítač v primárních a sekundárních oblastech](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
+    ![Snímek obrazovky, který ukazuje virtuální počítač v primárních a sekundárních oblastech](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
 > Pro počítače, které používají spravované disky a verze rozšíření Site Recovery 9.28. x. x. x. x. [kumulativní aktualizace 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery vyčistí počítače v sekundární oblasti zotavení po havárii, po dokončení navrácení služeb po obnovení a virtuální počítače budou znovu chráněny. Nemusíte ručně odstraňovat virtuální počítače a síťové adaptéry v sekundární oblasti. Upozorňujeme, že virtuální počítače s nespravovanými disky se nevyčistí. Pokud po převzetí služeb při selhání dojde k úplnému vypnutí replikace, Site Recovery kromě virtuálních počítačů a síťových karet vyčistí disky v oblasti zotavení po havárii.

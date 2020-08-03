@@ -10,12 +10,12 @@ ms.date: 07/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 108dd37370290a68d620a61f84b4553ed59792ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 185992284e353c3e58104bc46296c1741fbca7d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077870"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502167"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)
 
@@ -58,7 +58,7 @@ SAS můžete podepsat jedním ze dvou způsobů:
 
 - Pomocí *klíče pro delegování uživatele* , který byl vytvořen pomocí pověření Azure Active Directory (Azure AD). Delegování uživatele je podepsané klíčem delegování uživatele.
 
-    K získání klíče pro delegování uživatele a vytvoření SAS musí být objekt zabezpečení služby Azure AD přiřazený k roli řízení přístupu na základě role (RBAC), která zahrnuje akci **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** . Podrobné informace o rolích RBAC s oprávněními k získání klíče pro delegování uživatelů najdete v tématu [Vytvoření SAS uživatele (REST API)](/rest/api/storageservices/create-user-delegation-sas).
+    Aby se získal klíč pro delegování uživatelů a vytvořil SAS, musí být objekt zabezpečení služby Azure AD přiřazený k roli Azure, která zahrnuje akci **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** . Podrobné informace o rolích Azure s oprávněními k získání klíče pro delegování uživatelů najdete v tématu [Vytvoření SAS uživatele pro delegování (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
 - Pomocí klíče účtu úložiště. Podpis SAS služby i účtu SAS jsou podepsané klíčem účtu úložiště. K vytvoření SAS podepsaného klíčem účtu musí aplikace mít přístup k tomuto klíči účtu.
 

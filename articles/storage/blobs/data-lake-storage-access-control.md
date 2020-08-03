@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4b52fe22e455f5b0ebce6960b40bcc80c46079c3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: eab2beecc4153bdb2b74ca81bb43f86e2e29a778
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421344"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504139"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu ve službě Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 implementuje model řízení přístupu, který podporuje řízení přístupu na základě role (RBAC) Azure a seznamy řízení přístupu (ACL) typu POSIX. Tento článek shrnuje základy modelu řízení přístupu pro Data Lake Storage Gen2.
+Azure Data Lake Storage Gen2 implementuje model řízení přístupu, který podporuje řízení přístupu na základě role Azure (Azure RBAC) a seznamy řízení přístupu (ACL) typu POSIX. Tento článek shrnuje základy modelu řízení přístupu pro Data Lake Storage Gen2.
 
 <a id="azure-role-based-access-control-rbac"></a>
 
@@ -95,7 +95,7 @@ Přístupové seznamy ACL a výchozí seznamy ACL mají stejnou strukturu.
 
 Oprávnění pro objekt kontejneru jsou **čtení**, **zápis**a **spouštění**a lze je použít u souborů a adresářů, jak je znázorněno v následující tabulce:
 
-|            |    Soubor     |   Adresář |
+|            |    File     |   Adresář |
 |------------|-------------|----------|
 | **Číst (R)** | Může číst obsah souboru | K vypsání obsahu adresáře vyžaduje **čtení** a **provedení** . |
 | **Zapisovat (W)** | Může zapisovat do souboru nebo k němu připojovat data | Pro vytváření podřízených položek v adresáři vyžaduje **zápis** a **provedení** . |
@@ -348,6 +348,6 @@ Seznamy ACL nedědí. Výchozí seznamy ACL je ale možné použít k nastavení
 * [POSIX ACL na Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL: Using Access Control Lists on Linux (Seznamy ACL: Používání seznamů řízení přístupu v Linuxu)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Přehled Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)

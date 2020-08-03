@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 6939553206fe223d8166368d2963f03b32d2629e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1311af54c2335f403f2db071ced1caee3b122abc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67175061"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507411"
 ---
 #### <a name="to-create-a-new-service"></a>Vytvoření nové služby
 1. Pomocí přihlašovacích údajů pro účet Microsoft se přihlaste k [portálu Microsoft Azure Government](https://portal.azure.us/).
@@ -18,7 +18,7 @@ ms.locfileid: "67175061"
    
    1. Zadejte pro službu jedinečný **Název prostředku**. Tento název je popisný název, který můžete použít k identifikaci služby. Název může být tvořen 2 až 50 písmeny, číslicemi a spojovníky. Název musí začínat a končit písmenem nebo číslicí.
    2. V rozevíracím seznamu **Předplatné** vyberte předplatné. Předplatné je propojeno s vaším fakturačním účtem. Toto pole není dostupné, pokud máte pouze jedno předplatné.
-   3. V části **Skupina prostředků** vyberte možnost **Použít existující** nebo **Vytvořit novou** skupinu. Další informace najdete v tématu [Skupiny prostředků Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
+   3. V části **Skupina prostředků** vyberte možnost **Použít existující** nebo **Vytvořit novou** skupinu. Další informace najdete v tématu [Skupiny prostředků Azure](/azure/azure-resource-manager/management/manage-resource-groups-portal).
    4. Zadejte **Umístění** služby. Umístění odkazuje na geografickou oblast, do které chcete zařízení nasadit. Vyberte **USGov Iowa** nebo **USGov) – Virginia**.
    5. Výběrem možnosti **Vytvořit nový účet úložiště** můžete vytvořit účet úložiště automaticky se službou. Zadejte název tohoto účtu úložiště. Pokud potřebujete mít data v jiném umístění, zaškrtnutí políčka zrušte.
    6. Pokud chcete mít na řídicím panelu rychlý odkaz na tuto službu, zaškrtněte políčko **Připnout na řídicí panel**.

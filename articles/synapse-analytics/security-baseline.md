@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ef8c4754afc921eaeb68a84fbd8147f336a4940c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2cd42d8d4ba1ecabc1b87942536e2ef9a9017b22
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370270"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501946"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>Základní plán zabezpečení Azure pro synapse Analytics
 
@@ -328,7 +328,7 @@ Pro operace správy použijte předdefinované role Azure, které se musí expli
 
 * [Správa stávajících přihlašovacích údajů a účtů správců v Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
 
-* [Předdefinované role Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
+* [Předdefinované role v Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -584,7 +584,7 @@ Kromě toho můžete v Azure Portal nastavit zásadu dynamického maskování da
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
 
-**Pokyny**: použití řízení přístupu na základě role (RBAC) v Azure ke správě přístupu k databázím SQL Azure ve fondu SQL synapse.
+**Pokyny**: pomocí řízení přístupu na základě role Azure (Azure RBAC) můžete spravovat přístup k databázím SQL Azure ve fondu SQL synapse.
 
 Autorizaci řídí členství v databázové roli vašeho uživatelského účtu a oprávnění na úrovni objektů. Doporučený postup je udělit uživatelům co nejmenší možná oprávnění.
 
@@ -1014,7 +1014,7 @@ Předem prohledejte veškerý obsah, který se nahrává do nevýpočetních pro
 
 **Doprovodné**materiály: snímky vašeho fondu SQL synapse se automaticky provedou během dne vytváření bodů obnovení, které jsou k dispozici po dobu sedmi dnů. Tuto dobu uchování nelze změnit. Fond SQL podporuje osm hodin cíl bodu obnovení (RPO). Datový sklad můžete obnovit v primární oblasti z libovolného snímku, který jste provedli během posledních sedmi dnů. Všimněte si, že v případě potřeby můžete také ručně aktivovat snímky.
 
-* [Zálohování a obnovení ve fondu SQL Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Zálohování a obnovení ve fondu SQL Azure synapse](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 **Monitorování Azure Security Center**: nelze použít
 

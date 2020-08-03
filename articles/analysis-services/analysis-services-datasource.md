@@ -4,15 +4,15 @@ description: Popisuje zdroje dat a konektory podporované tabulkami 1200 a vyš�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc25c853a37de5c310d37e7ee64c6f762283cb0a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 72a1a37bf240355e6bc87cbfd62b0dc2d25ce68b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077435"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503595"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Podporované zdroje dat ve službě Azure Analysis Services
 
@@ -24,12 +24,12 @@ Zdroje dat a konektory zobrazené v průvodci získáním dat nebo importu tabul
 |---------|---------|---------|---------|
 |Azure SQL Database      |   Ano      |    Yes      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
 |Azure synapse Analytics (SQL DW)      |   Ano      |   Yes       |<sup>[2](#azprovider)</sup>|
-|Azure Blob Storage      |   Yes       |    No      | <sup>[první](#tab1400a)</sup> |
-|Azure Table Storage     |   Yes       |    No      | <sup>[první](#tab1400a)</sup>|
-|Azure Cosmos DB     |  Yes        |  No        |<sup>[první](#tab1400a)</sup> |
-|Azure Data Lake Store Gen1      |   Yes       |    No      |<sup>[první](#tab1400a)</sup> |
+|Azure Blob Storage      |   Yes       |    No      | <sup>[1](#tab1400a)</sup> |
+|Azure Table Storage     |   Yes       |    No      | <sup>[1](#tab1400a)</sup>|
+|Azure Cosmos DB     |  Yes        |  No        |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Yes       |    No      |<sup>[1](#tab1400a)</sup> |
 |Azure Data Lake Store Gen2       |   Yes       |    No      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
-|HDFS Azure HDInsight    |     Yes     |   No       |<sup>[první](#tab1400a)</sup> |
+|HDFS Azure HDInsight    |     Yes     |   No       |<sup>[1](#tab1400a)</sup> |
 |Azure HDInsight Spark     |   Yes       |   No       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
@@ -71,7 +71,7 @@ Zdroje dat a konektory zobrazené v průvodci získáním dat nebo importu tabul
 |SQL Server |Ano   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |SQL Server datový sklad |Ano   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Databáze Sybase     |  Yes | No |  |
-|Teradata | Ano  | Yes  | <sup>[10](#teradata)</sup> |
+|Teradata | Ano  | Yes  | <sup>[10pruhový](#teradata)</sup> |
 |Soubor TXT  |Yes | No |  |
 |Tabulka XML    |  Yes | No | <sup>[6](#tab1400b)</sup> |
 | | | |
@@ -80,7 +80,7 @@ Zdroje dat a konektory zobrazené v průvodci získáním dat nebo importu tabul
 <a name="tab1400b">6</a> – tabulkové 1400 a vyšší modely.  
 <a name="sqlim">7</a> – při zadání jako zdroje dat *zprostředkovatele* v tabulkových 1200 a vyšších modelech zadejte Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (doporučeno), SQL Server Native Client 11,0 nebo .NET Framework Zprostředkovatel dat pro SQL Server.  
 <a name="instgw">8</a> – Pokud zadáte MSOLEDBSQL jako poskytovatele dat, může být nutné stáhnout a nainstalovat [ovladač Microsoft OLE DB pro SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) na stejném počítači jako místní brána dat.  
-<a name="oracle">9</a> – pro tabelární modely 1200 nebo jako zdroj dat *zprostředkovatele* v tabulkách 1400 s více modely určete Oracle zprostředkovatel dat pro .NET.  
+<a name="oracle">9</a> – pro tabelární modely 1200 nebo jako zdroj dat *zprostředkovatele* v tabulkách 1400 s více modely určete Oracle zprostředkovatel dat pro .NET. Pokud je zadaný jako strukturovaný zdroj dat, je potřeba [povolit spravovaného zprostředkovatele Oracle](#enable-oracle-managed-provider).   
 <a name="teradata">10</a> – pro tabelární modely 1200 nebo jako zdroj dat *zprostředkovatele* v tabulkách 1400 s více modely určete zprostředkovatel dat Teradata pro .NET.  
 <a name="filesSP">11</a> – soubory v místní službě SharePoint nejsou podporovány.
 
@@ -123,6 +123,43 @@ Pro cloudové zdroje dat:
 Pro tabelární modely na úrovni kompatibility 1400 a vyšší s použitím režimu v paměti, Azure SQL Database, Azure synapse (dříve SQL Data Warehouse), Dynamics 365 a SharePointového seznamu podporují přihlašovací údaje OAuth. Azure Analysis Services spravuje aktualizace tokenu pro zdroje dat OAuth, aby nedocházelo k vypršení časových limitů pro dlouhotrvající operace aktualizace. Pokud chcete generovat platné tokeny, nastavte přihlašovací údaje pomocí SSMS.
 
 Režim přímého dotazu není u přihlašovacích údajů OAuth podporován.
+
+## <a name="enable-oracle-managed-provider"></a>Povolit spravovaného zprostředkovatele Oracle
+
+V některých případech můžou dotazy jazyka DAX na zdroj dat Oracle vracet neočekávané výsledky. To může být způsobeno tím, že se poskytovatel používá pro připojení ke zdroji dat.
+
+Jak je popsáno v části [Principy zprostředkovatelů](#understanding-providers) , tabulkové modely se připojují ke zdrojům dat buď jako *strukturovaný* zdroj dat, nebo jako zdroj dat *zprostředkovatele* . Pro modely se zdrojem dat Oracle zadaným jako zdrojem dat zprostředkovatele zajistěte, aby zadaný zprostředkovatel byl Oracle Zprostředkovatel dat pro .NET (Oracle. DataAccess. Client). 
+
+Pokud je zdroj dat Oracle zadaný jako strukturovaný zdroj dat, povolte vlastnost serveru **MDataEngine\UseManagedOracleProvider** . Nastavení této vlastnosti zajistí, že se model připojí ke zdroji dat Oracle pomocí doporučeného Zprostředkovatel dat Oracle pro poskytovatele spravovaného rozhraní .NET.
+ 
+Povolení spravovaného zprostředkovatele Oracle:
+
+1. V SQL Server Management Studio se připojte k serveru.
+2. Vytvořte dotaz XMLA pomocí následujícího skriptu. Nahraďte **servername** úplným názvem serveru a pak spusťte dotaz.
+
+    ```xml
+    <Alter AllowCreate="true" ObjectExpansion="ObjectProperties" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+        <Object />
+        <ObjectDefinition>
+            <Server xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" 
+    xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" 
+    xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" 
+    xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500">
+                <ID>ServerName</ID>
+                <Name>ServerName</Name>
+                <ServerProperties>
+                    <ServerProperty>
+                        <Name>MDataEngine\UseManagedOracleProvider</Name>
+                        <Value>1</Value>
+                    </ServerProperty>
+                </ServerProperties>
+            </Server>
+        </ObjectDefinition>
+    </Alter>
+    ```
+
+3. Restartujte server.
+
 
 ## <a name="next-steps"></a>Další kroky
 

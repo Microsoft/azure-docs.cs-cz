@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: tracking-python
-ms.openlocfilehash: e0b0525035732a54965f7c391ac6041b114d7304
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a7dc0fcae9a6fea789d30bac10511007454ecc5f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045684"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503983"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a Správa poznámkových bloků synapse Studio (Preview) v Azure synapse Analytics
 
@@ -71,7 +71,7 @@ V rozevíracím seznamu na horním panelu příkazů můžete nastavit primárn�
 
 V jednom poznámkovém bloku můžete použít více jazyků zadáním správného příkazu jazyka Magic na začátku buňky. V následující tabulce jsou uvedeny příkazy Magic pro přepínání jazyků buněk.
 
-|Magic – příkaz |Jazyk | Description |  
+|Magic – příkaz |Jazyk | Popis |  
 |---|------|-----|
 |%% pyspark| Python | Spustí dotaz **Pythonu** v kontextu Sparku.  |
 |%% Spark| Scala | Spustí dotaz **Scala** proti kontextu Spark.  |  
@@ -119,7 +119,7 @@ Funkce IntelliSense mají různé úrovně splatnosti pro různé jazyky. Pomoc�
 |PySpark (Python)|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Spark (Scala)|Ano|Ano|Ano|Ano|-|-|-|Ano|
 |SparkSQL|Ano|Ano|-|-|-|-|-|-|
-|.NET for Spark (C#)|Yes|-|-|-|-|-|-|-|
+|.NET for Spark (C#)|Ano|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Formátování textové buňky pomocí tlačítek panelu nástrojů
 
@@ -191,6 +191,10 @@ Chcete-li získat přístup k nabídce Další akce v buňce úplně vpravo, vyb
    ![Run-Cells-nad nebo – níže](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
 
+### <a name="cancel-all-running-cells"></a>Zrušit všechny běžící buňky
+Kliknutím na tlačítko **Zrušit vše** zrušíte běžící buňky nebo buňky čekající ve frontě. 
+   ![Zrušit vše – buňky](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
+
 ### <a name="cell-status-indicator"></a>Indikátor stavu buňky
 
 Podrobný stav spuštění buňky se zobrazí pod buňkou, která vám umožní zobrazit jeho aktuální průběh. Po dokončení spuštění buňky se zobrazí souhrn spuštění s celkovou dobou trvání a časem ukončení a bude se uchovávat pro budoucí použití.
@@ -200,6 +204,7 @@ Podrobný stav spuštění buňky se zobrazí pod buňkou, která vám umožní 
 ### <a name="spark-progress-indicator"></a>Indikátor průběhu Sparku
 
 Notebook Azure synapse Studio je čistě založený na Sparku. Buňky kódu se spouštějí ve fondu Spark vzdáleně. Indikátor průběhu úlohy Spark je k dispozici s pruhem průběhu v reálném čase, který vám pomůže pochopit stav provádění úlohy.
+Počet úloh na každou úlohu nebo fázi vám pomůžou identifikovat paralelní úroveň úlohy Sparku. Můžete také přejít k uživatelskému rozhraní Spark konkrétní úlohy (nebo fáze) pomocí kliknutí na odkaz v názvu úlohy (nebo fáze).
 
 
 ![Spark – indikátor průběhu](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
@@ -208,7 +213,11 @@ Notebook Azure synapse Studio je čistě založený na Sparku. Buňky kódu se s
 
 Můžete zadat dobu trvání, číslo a velikost prováděcích modulů, které se mají přiřadit aktuální relaci Sparku v části **konfigurovat relaci**. Restartujte relaci Spark, aby se projevily změny v konfiguraci. Všechny proměnné poznámkového bloku uložené v mezipaměti jsou vymazány.
 
-![Správa relací](./media/apache-spark-development-using-notebooks/synapse-spark-session-mgmt.png)
+[![Správa relací](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
+
+Doporučení pro relaci Sparku je teď k dispozici na panelu konfigurace relace Spark. Můžete vybrat fond Spark přímo z panelu konfigurace relace a zjistit, kolik uzlů používá a kolik dalších prováděcích modulů je dostupných. Tyto informace vám můžou usnadnit nastavování velikosti relace, ale nemusíte je měnit zpátky a zpátky.
+
+![relace – doporučit](./media/apache-spark-development-using-notebooks/synapse-spark-session-recommender.png)
 
 
 ## <a name="bring-data-to-a-notebook"></a>Přenesení dat do poznámkového bloku
@@ -264,15 +273,25 @@ K datům v primárním účtu úložiště můžete přistupovat přímo. Není 
 
 ## <a name="visualize-data-in-a-notebook"></a>Vizualizace dat v poznámkovém bloku
 
-### <a name="display"></a>Zobrazit ()
+### <a name="produce-rendered-table-view"></a>Vygenerovat zobrazení vykreslené tabulky
 
 Zobrazení tabelárních výsledků je k dispozici s možností vytvoření pruhového grafu, spojnicového grafu, výsečového grafu, bodového grafu a plošného grafu. Data můžete vizualizovat bez nutnosti psát kód. Grafy je možné přizpůsobit v **možnostech grafu**. 
 
-V zobrazení vykreslené tabulky je ve výchozím nastavení zobrazen výstup příkazů **%%** Magic. Zobrazení vykreslené tabulky můžete vyvolat voláním funkce **Display ( `<DataFrame name>` )** pro datové rámce Spark nebo odolné distribuované datové sady (RDD).
+V zobrazení vykreslené tabulky je ve výchozím nastavení zobrazen výstup příkazů **%%** Magic. <code>display(df)</code>Chcete-li vygenerovat zobrazení vykreslené tabulky, můžete volat funkce Spark Dataframes nebo odolné distribuované datové sady (RDD).
 
-   ![předdefinované – grafy](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)
+   [![předdefinované – grafy](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
 
-### <a name="displayhtml"></a>DisplayHTML()
+### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>Vizualizace vestavěných grafů z velkého rozsahu datové sady 
+
+Ve výchozím nastavení <code>display(df)</code> bude funkce při vykreslování grafů provádět pouze první 1000 řádky dat. Podívejte se na **agregaci všech výsledků** a klikněte na tlačítko **použít** . generování grafu se použije z celé datové sady. Při změně nastavení grafu se aktivuje úloha Sparku, takže se výpočet dokončí a graf se vykreslí. 
+    [![Builtin-Charts-Aggregator-All](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
+
+
+### <a name="visualize-data-statistic-information"></a>Vizualizace informací o statistice dat
+Můžete použít <code>display(df, summary = true)</code> ke kontrole souhrnu statistik daného datového rámce Sparku, který obsahuje název sloupce, typ sloupce, jedinečné hodnoty a chybějící hodnoty pro každý sloupec. Můžete také vybrat konkrétní sloupec, abyste viděli jeho minimální hodnotu, maximální hodnotu, střední hodnotu a směrodatnou odchylku.
+    [![Builtin – grafy – souhrn ](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png#lightbox)
+
+### <a name="render-html-or-interactive-libraries"></a>Vykreslování HTML nebo interaktivních knihoven
 
 Můžete vykreslit HTML nebo interaktivní knihovny, jako je **rozostření**, pomocí **displayHTML ()**.
 
@@ -332,9 +351,36 @@ Ve vlastnostech poznámkového bloku můžete nakonfigurovat, jestli se má při
 ## <a name="magic-commands"></a>Magic – příkazy
 V poznámkových blocích Azure synapse Studio můžete používat známé příkazy Jupyter Magic. V následujícím seznamu vyhledejte aktuální dostupné příkazy Magic. Řekněte nám své případy použití na GitHubu, abychom mohli pokračovat v sestavování dalších příkazů Magic pro splnění vašich požadavků.
 
-Dostupné magicy řádků: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
+Dostupné Magic linky: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% času](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 
 Dostupné buňky Magic: [%% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%% Capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%% WriteFile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%% SQL](#use-multiple-languages), [%% pyspark](#use-multiple-languages), [%% Spark](#use-multiple-languages), [%% CSharp](#use-multiple-languages)
+
+
+## <a name="orchestrate-notebook"></a>Orchestrace poznámkového bloku
+
+### <a name="add-a-notebook-to-a-pipeline"></a>Přidání poznámkového bloku do kanálu
+
+Kliknutím na tlačítko **Přidat do kanálu** v pravém horním rohu přidáte Poznámkový blok do existujícího kanálu nebo vytvoříte nový kanál.
+
+![přidání do kanálu](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
+
+### <a name="designate-a-parameters-cell"></a>Určení buňky parametrů
+
+Chcete-li použít možnost parametrizovat svůj Poznámkový blok, vyberte tři tečky (...) pro přístup k nabídce Další akce v buňce úplně vpravo. Pak vyberte položku **Přepnout parametr buňka** k označení buňky jako buňky Parameters.
+
+![přepínač-Parameter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
+
+Azure Data Factory vyhledá buňku Parameters a považuje tuto buňku za výchozí hodnoty parametrů předaných v době spuštění. Spouštěcí modul přidá novou buňku pod buňkou Parameters se vstupními parametry, aby bylo možné přepsat výchozí hodnoty. Pokud není určena žádná buňka parametrů, vložená buňka se vloží do horní části poznámkového bloku.
+
+### <a name="assign-parameters-values-from-a-pipeline"></a>Přiřazení hodnot parametrů z kanálu
+
+Po vytvoření poznámkového bloku s parametry ho můžete spustit z kanálu pomocí aktivity poznámkového bloku Azure synapse. Po přidání aktivity na plátno kanálu budete moci nastavit hodnoty parametrů v části **základní parametry** na kartě **Nastavení** . 
+
+![přiřadit parametr](./media/apache-spark-development-using-notebooks/assign-parameter.png)
+
+Při přiřazování hodnot parametrů můžete použít [Jazyk výrazu kanálu](../../data-factory/control-flow-expression-language-functions.md) nebo [systémové proměnné](../../data-factory/control-flow-system-variables.md).
+
+
 
 ## <a name="shortcut-keys"></a>Klávesové zkratky
 
@@ -390,7 +436,7 @@ Pomocí následujících klávesových zkratek můžete v režimu úprav snadně
 |Přepnout do režimu příkazu| Esc |
 
 ## <a name="next-steps"></a>Další kroky
-
+- [Podívejte se na ukázkové poznámkové bloky synapse](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [Rychlý Start: Vytvoření fondu Apache Spark (ve verzi Preview) ve službě Azure synapse Analytics pomocí nástrojů pro web](../quickstart-apache-spark-notebook.md)
 - [Co je Apache Spark ve službě Azure synapse Analytics](apache-spark-overview.md)
 - [Použití .NET pro Apache Spark s Azure synapse Analytics](spark-dotnet.md)

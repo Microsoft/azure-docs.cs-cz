@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: e9d6f31674db0744e220a9cd88033a32bb5c1e17
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 02828e0c159e2d30dacc5759f1239dae1268dac5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024685"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491778"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Kurz: povolení synchronizace hesel v Azure Active Directory Domain Services pro hybridní prostředí
 
@@ -22,7 +22,7 @@ U hybridních prostředí je možné nakonfigurovat klienta Azure Active Directo
 
 Pokud chcete používat Azure služba AD DS s účty synchronizovanými z místního prostředí služba AD DS, je nutné nakonfigurovat Azure AD Connect pro synchronizaci hodnot hash hesel vyžadovaných pro ověřování protokolem NTLM a protokolem Kerberos. Po nakonfigurování Azure AD Connect dojde k místnímu vytvoření účtu nebo události změny hesla a pak se do Azure AD synchronizují starší hodnoty hash hesel.
 
-Pokud používáte jenom cloudové účty bez místního prostředí služba AD DS, nemusíte tyto kroky provádět.
+Pokud používáte jenom cloudové účty bez místního prostředí služba AD DS nebo pokud používáte *doménovou strukturu prostředků*, nemusíte tyto kroky provádět. U spravovaných domén, které používají doménovou strukturu prostředků, se hodnoty hash místních hesel nikdy nesynchronizují. Ověřování pro místní účty používají vztahy důvěryhodnosti v doménové struktuře zpátky na vlastní služba AD DS řadiče domény.
 
 V tomto kurzu se naučíte:
 
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.mi
 
 K dokončení tohoto kurzu potřebujete následující zdroje:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, který se synchronizuje s místním adresářem pomocí Azure AD Connect.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].

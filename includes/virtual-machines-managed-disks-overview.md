@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2ef1fab7a6f32f45ee3047a24610085a2133a339
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ba9147aefb793387b429702623639bbccf0beea
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102556"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507228"
 ---
 ## <a name="benefits-of-managed-disks"></a>Výhody spravovaných disků
 
@@ -41,7 +41,7 @@ K ochraně před místními haváriemi se [Azure Backup](../articles/backup/back
 
 ### <a name="granular-access-control"></a>Podrobné řízení přístupu
 
-[Řízení přístupu na základě role (RBAC) v Azure](../articles/role-based-access-control/overview.md) můžete použít k přiřazení konkrétních oprávnění ke spravovanému disku jednomu nebo více uživatelům. Managed disks zveřejňuje nejrůznější operace, včetně čtení, zápisu (vytvoření a aktualizace), odstranění a načtení [identifikátoru URI sdíleného přístupového podpisu (SAS)](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) pro disk. Můžete udělit přístup pouze k operacím, které osoba potřebuje k provedení svých úloh. Například pokud nechcete, aby osoba kopírovala spravovaný disk do účtu úložiště, můžete se rozhodnout neudělit přístup k exportní akci pro tento spravovaný disk. Podobně pokud nechcete, aby uživatel k kopírování spravovaného disku používal identifikátor URI SAS, můžete se rozhodnout, že toto oprávnění neudělíte spravovanému disku.
+[Řízení přístupu na základě role Azure (Azure RBAC)](../articles/role-based-access-control/overview.md) můžete použít k přiřazení konkrétních oprávnění ke spravovanému disku jednomu nebo více uživatelům. Managed disks zveřejňuje nejrůznější operace, včetně čtení, zápisu (vytvoření a aktualizace), odstranění a načtení [identifikátoru URI sdíleného přístupového podpisu (SAS)](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) pro disk. Můžete udělit přístup pouze k operacím, které osoba potřebuje k provedení svých úloh. Například pokud nechcete, aby osoba kopírovala spravovaný disk do účtu úložiště, můžete se rozhodnout neudělit přístup k exportní akci pro tento spravovaný disk. Podobně pokud nechcete, aby uživatel k kopírování spravovaného disku používal identifikátor URI SAS, můžete se rozhodnout, že toto oprávnění neudělíte spravovanému disku.
 
 ### <a name="upload-your-vhd"></a>Nahrání virtuálního pevného disku
 
@@ -105,7 +105,7 @@ Další informace o tom, jak vytvořit snímky pro služby Managed disks, najdet
 * [Vytvoření snímku spravovaného disku ve Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [Vytvoření snímku spravovaného disku v systému Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
-### <a name="images"></a>Obrázky
+### <a name="images"></a>Image
 
 Spravované disky také podporují vytváření spravované vlastní image. Můžete vytvořit image z vlastního virtuálního pevného disku v účtu úložiště nebo přímo z zobecněného (nástroje Sysprep) virtuálního počítače. Tento proces zachycuje jeden obrázek. Tato image obsahuje všechny spravované disky přidružené k virtuálnímu počítači, včetně operačního systému i datových disků. Tato spravovaná vlastní image umožňuje vytvářet stovky virtuálních počítačů s využitím vlastní image bez nutnosti kopírovat ani spravovat žádné účty úložiště.
 

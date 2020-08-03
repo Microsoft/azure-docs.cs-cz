@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 33c3cf4b9da33b15d7a7d1c14b0c3fb892b60121
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e2ce35158e8f9a3a2ad9da2b3d67a3f35d5a8c80
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317803"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503561"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Možnosti Transact-The pro komerční web Marketplace
 
 ## <a name="transactions-by-publishing-option"></a>Transakce podle možnosti publikování
 
-Vydavatel nebo Microsoft zodpovídá za správu transakcí softwarových licencí pro nabídky na komerčním tržišti. Možnost publikování, kterou zvolíte pro vaši nabídku, určí, kdo bude transakci spravovat. Podívejte [se na téma určení možnosti publikování](./determine-your-listing-type.md#choose-a-publishing-option) pro dostupnost a vysvětlení jednotlivých možností publikování.
+Vydavatel nebo Microsoft zodpovídá za správu transakcí softwarových licencí pro nabídky na komerčním tržišti. Možnost publikování, kterou zvolíte pro vaši nabídku, určí, kdo bude transakci spravovat. Podívejte [se na téma určení možnosti publikování](./determine-your-listing-type.md#choose-a-call-to-action) pro dostupnost a vysvětlení jednotlivých možností publikování.
 
 ### <a name="list-trial-and-byol-publishing-options"></a>Možnosti publikování seznamu, zkušební verze a BYOL
 
@@ -136,7 +136,7 @@ V tomto scénáři Microsoft účtuje $100,00 pro softwarovou licenci a vyplatí
 |Společnost Microsoft vám zaplatí 80% vašich licenčních nákladů. <br> \*Společnost Microsoft vám pro všechny kvalifikované aplikace SaaS zaplatí 90% nákladů na licenci.   |   $80,00 za měsíc <br> \*$90,00 za měsíc    |
 |Společnost Microsoft udržuje 20% vašich licenčních nákladů. <br> \*Pro všechny kvalifikované aplikace SaaS udržuje společnost Microsoft 10% nákladů na licenci.  |  $20,00 za měsíc <br> \*$10,00     |
 
-U některých nabídek, které publikujete na komerčním webu Marketplace, sníží společnost Microsoft svůj poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní incetivized Azure. Nárok na získání omezeného servisního poplatku za měsíc musí být splněn nejméně pět (5) pracovních dnů před koncem každého kalendářního měsíce. Snížený poplatek za službu Marketplace se vztahuje na Azure IP spoluprodejní motivovaní SaaS, virtuální počítače, spravované aplikace a jakékoli další kvalifikované IaaSové nabídky, které jsou dostupné prostřednictvím komerčního tržiště.
+U některých nabídek, které publikujete na komerčním webu Marketplace, sníží společnost Microsoft svůj poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídky získaly nárok, vaše nabídky musí být určené společností Microsoft jako spoluprodejní motivovaní Azure. Nárok na získání omezeného servisního poplatku za měsíc musí být splněn nejméně pět (5) pracovních dnů před koncem každého kalendářního měsíce. Snížený poplatek za službu Marketplace se vztahuje na Azure IP spoluprodejní motivovaní SaaS, virtuální počítače, spravované aplikace a jakékoli další kvalifikované IaaSové nabídky, které jsou dostupné prostřednictvím komerčního tržiště.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Fakturace, platby, fakturace a kolekce zákazníků
 
@@ -163,7 +163,7 @@ Zákazníci se obvykle kupují pomocí smlouva Enterprise nebo smlouvy s povolen
 
 #### <a name="billing-questions-and-support"></a>Otázky a podpora fakturace
 
-Další informace a právní zásady najdete v tématu [smlouva vydavatele](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (k dispozici v partnerském centru).
+Další informace a právní zásady najdete v tématu [smlouva vydavatele](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx) (k dispozici v partnerském centru).
 
 Pokud chcete získat nápovědu k fakturaci, kontaktujte [podporu pro komerčního vydavatele na webu Marketplace](https://aka.ms/marketplacepublishersupport).
 

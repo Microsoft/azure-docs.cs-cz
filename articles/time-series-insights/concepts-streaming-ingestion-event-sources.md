@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: c2a25632942c0c39a20fa0c7f51a1e8937bdd873
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9ef87027bcda6c645d1239598c849f57fb0c8992
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059384"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491965"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights zdroje událostí Gen2
 
@@ -27,7 +27,7 @@ Události se musí odesílat jako JSON kódovaný ve formátu UTF-8.
 
 ## <a name="create-or-edit-event-sources"></a>Vytvoření nebo úprava zdrojů událostí
 
-Prostředky zdroje událostí můžou být živé ve stejném předplatném Azure jako vaše prostředí Azure Time Series Insights Gen2 nebo jiné předplatné. K vytváření, úpravám a odstraňování zdrojů událostí vašeho prostředí můžete použít [Azure Portal](time-series-insights-update-create-environment.md#create-a-preview-payg-environment), [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights), [šablony ARM](time-series-insights-manage-resources-using-azure-resource-manager-template.md)a [REST API](https://docs.microsoft.com/rest/api/time-series-insights/management/eventsources) .
+Prostředky zdroje událostí můžou být živé ve stejném předplatném Azure jako vaše prostředí Azure Time Series Insights Gen2 nebo jiné předplatné. K vytváření, úpravám a odstraňování zdrojů událostí vašeho prostředí můžete použít [Azure Portal](time-series-insights-update-create-environment.md#create-a-preview-payg-environment), [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights), [šablony ARM](time-series-insights-manage-resources-using-azure-resource-manager-template.md)a [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) .
 
 Po připojení zdroje událostí vaše prostředí Azure Time Series Insights Gen2 přečte všechny události, které jsou aktuálně uložené ve službě IoT nebo v centru událostí, počínaje nejstarší událostí.
 

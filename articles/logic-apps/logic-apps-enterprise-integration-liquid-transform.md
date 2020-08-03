@@ -1,25 +1,32 @@
 ---
-title: Převod dat JSON pomocí kapalinových transformací
-description: Vytváření transformací nebo mapování pro pokročilé transformace JSON pomocí Logic Apps a kapalné šablony
+title: Převod JSON a XML pomocí šablon kapalin
+description: Transformujte JSON a XML pomocí šablon kapalné jako mapy v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 04/01/2020
-ms.openlocfilehash: d2598dfe9d7972dcb764abf4a1239613a1e8417a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/31/2020
+ms.openlocfilehash: 5aa6b3717925146607f3785ad5ea5fb940e8c236
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80879169"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503369"
 ---
-# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Provádění pokročilých transformací JSON pomocí šablon Liquid v Azure Logic Apps
+# <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>Transformujte JSON a XML pomocí šablon Liquid jako mapy v Azure Logic Apps
 
-V Logic Apps můžete provádět základní transformace JSON s akcemi nativních operací s daty, jako je například **Vytvoření** nebo **Analýza JSON**. K provádění pokročilých transformací JSON můžete vytvářet šablony nebo mapy pomocí [tekutého](https://shopify.github.io/liquid/), což je open source jazyk šablony pro flexibilní webové aplikace. Šablona Liquid definuje, jak transformovat výstup JSON, a podporuje složitější transformace JSON, jako jsou iterace, toky řízení, proměnné a tak dále.
+Pokud chcete v aplikacích logiky provádět základní transformace JSON, můžete použít operace nativních [dat](../logic-apps/logic-apps-perform-data-operations.md) , jako je například **Vytvoření** nebo **Analýza JSON**. Pro rozšířené a komplexní transformace JSON na JSON, které obsahují prvky, jako jsou iterace, kontrolní toky a proměnné, vytvořte a použijte šablony, které popisují tyto transformace pomocí Open Source šablony typu [Liquid](https://shopify.github.io/liquid/) . Můžete také [provádět další transformace](#other-transformations), například JSON na text, XML na JSON a XML na text.
 
-Předtím, než můžete v aplikaci logiky provést transformaci kapalin, je nutné nejprve definovat mapování JSON na JSON s šablonou Liquid a uložit tuto mapu v účtu integrace. V tomto článku se dozvíte, jak vytvořit a použít tuto šablonu nebo mapu kapalné.
+Předtím, než můžete provést transformaci v aplikaci logiky, musíte nejprve vytvořit kapalinovou šablonu, která definuje mapování, které chcete. Pak [šablonu nahrajte jako mapu](../logic-apps/logic-apps-enterprise-integration-maps.md) do svého účtu pro [integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Když do aplikace logiky přidáte akci **transformace JSON do formátu JSON** , můžete vybrat šablonu Liquid jako mapu pro akci, která se má použít.
+
+V tomto článku se dozvíte, jak tyto úlohy provést:
+
+* Vytvořte šablonu kapalin.
+* Přidejte šablonu do účtu pro integraci.
+* Přidejte akci pro kapalinovou transformaci do aplikace logiky.
+* Vyberte šablonu jako mapu, kterou chcete použít.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -27,20 +34,22 @@ Předtím, než můžete v aplikaci logiky provést transformaci kapalin, je nut
 
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Účet Basic [Integration](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* [Účet pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
 * Základní znalosti o [jazyce kapalné šablony](https://shopify.github.io/liquid/)
 
-## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Vytvořit šablonu nebo mapu pro svůj účet pro integraci
+  > [!NOTE]
+  > Akce **transformace JSON na formát JSON** následuje po [implementaci DotLiquid pro kapalinu](https://github.com/dotliquid/dotliquid), která se liší v určitých případech od [implementace Shopify pro kapalinu](https://shopify.github.io/liquid). Další informace najdete v tématu [požadavky na šablonu pro Liquid](#template-considerations).
 
-1. V tomto příkladu vytvořte ukázkovou kapalinovou šablonu popsanou v tomto kroku. V šabloně kapalin můžete použít [kapalné filtry](https://shopify.github.io/liquid/basics/introduction/#filters), které používají konvence vytváření názvů v [DotLiquid](https://github.com/dotliquid/dotliquid) a C#.
+## <a name="create-the-template"></a>Vytvoření šablony
 
-   > [!NOTE]
-   > Ujistěte se, že názvy filtrů používají pro šablonu *velká písmena ve větě* . V opačném případě nebudou filtry fungovat. Mapy také mají [omezení velikosti souborů](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits).
+1. Vytvořte šablonu kapalin, kterou použijete jako mapu pro transformaci JSON. Můžete použít libovolný nástroj pro úpravy, který chcete.
+
+   V tomto příkladu vytvořte ukázkovou kapalinovou šablonu, jak je popsáno v této části:
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
-   
+
    {
       "fullName": "{{content.firstName | Append: ' ' | Append: content.lastName}}",
       "firstNameUpperCase": "{{content.firstName | Upcase}}",
@@ -52,12 +61,18 @@ Předtím, než můžete v aplikaci logiky provést transformaci kapalin, je nut
             {%- else -%}
             "{{device}}",
             {%- endif -%}
-        {%- endfor -%}
-        ]
+         {%- endfor -%}
+      ]
    }
    ```
 
-1. V [Azure Portal](https://portal.azure.com)do pole Azure Search zadejte `integration accounts` a vyberte **účty pro integraci**.
+1. Uložte šablonu pomocí `.liquid` rozšíření. Tento příklad používá `SimpleJsonToJsonTemplate.liquid` .
+
+## <a name="upload-the-template"></a>Odeslat šablonu
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
+
+1. Do vyhledávacího pole Azure Portal zadejte `integration accounts` a vyberte účty pro **integraci**.
 
    ![Vyhledání "účtů pro integraci"](./media/logic-apps-enterprise-integration-liquid-transform/find-integration-accounts.png)
 
@@ -71,16 +86,16 @@ Předtím, než můžete v aplikaci logiky provést transformaci kapalin, je nut
 
 1. V podokně **mapy** vyberte **Přidat** a zadejte podrobnosti pro mapu:
 
-   | Vlastnost | Hodnota | Popis | 
+   | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
-   | **Název** | `JsonToJsonTemplate` | Název pro mapu, která je v tomto příkladu "JsonToJsonTemplate" | 
-   | **Typ mapy** | **ukazuje** | Typ pro mapu. Pro transformaci JSON na JSON musíte vybrat možnost **Liquid**. | 
-   | **Mapa** | `SimpleJsonToJsonTemplate.liquid` | Existující šablona nebo soubor mapování v kapalném formátu, který je použit pro transformaci, která je v tomto příkladu "SimpleJsonToJsonTemplate. Liquid". K vyhledání tohoto souboru můžete použít nástroj pro výběr souborů. Omezení velikosti mapování najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
-   ||| 
+   | **Název** | `JsonToJsonTemplate` | Název pro mapu, která je v tomto příkladu "JsonToJsonTemplate" |
+   | **Typ mapy** | **ukazuje** | Typ pro mapu. Pro transformaci JSON na JSON musíte vybrat možnost **Liquid**. |
+   | **Mapy** | `SimpleJsonToJsonTemplate.liquid` | Existující šablona nebo soubor mapování v kapalném formátu, který je použit pro transformaci, která je v tomto příkladu "SimpleJsonToJsonTemplate. Liquid". K vyhledání tohoto souboru můžete použít nástroj pro výběr souborů. Omezení velikosti mapování najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
+   |||
 
    ![Přidat kapalinovou šablonu](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
-    
-## <a name="add-the-liquid-action-for-json-transformation"></a>Přidat kapalinovou akci pro transformaci JSON
+
+## <a name="add-the-liquid-transformation-action"></a>Přidat akci transformace kapalin
 
 1. V Azure Portal postupujte podle těchto kroků a [vytvořte prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -117,51 +132,119 @@ Předtím, než můžete v aplikaci logiky provést transformaci kapalin, je nut
 
 ## <a name="test-your-logic-app"></a>Testování aplikace logiky
 
-Odeslání vstupu JSON do aplikace logiky z [post](https://www.getpostman.com/postman) nebo podobného nástroje. Transformovaný výstup JSON z aplikace logiky vypadá jako v tomto příkladu:
-  
+Pomocí [post](https://www.getpostman.com/postman) nebo podobného nástroje odešlete vstup JSON do aplikace logiky. Transformovaný výstup JSON z aplikace logiky vypadá jako v tomto příkladu:
+
 ![Příklad výstupu](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
 
-## <a name="more-liquid-action-examples"></a>Příklady dalších kapalných akcí
-Kapalina není omezena pouze na transformace JSON. Tady jsou další dostupné akce transformace, které používají kapalná.
+<a name="template-considerations"></a>
 
-* Transformovat JSON na text
-  
-  Zde je šablona kapalin použitá v tomto příkladu:
-   
-   ``` json
-   {{content.firstName | Append: ' ' | Append: content.lastName}}
-   ```
-   Tady jsou ukázkové vstupy a výstupy:
-  
-   ![Příklad výstupu JSON na text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
+## <a name="liquid-template-considerations"></a>Požadavky na šablonu kapalin
 
-* Transformovat XML na JSON
-  
-  Zde je šablona kapalin použitá v tomto příkladu:
-   
-   ``` json
-   [{% JSONArrayFor item in content -%}
-        {{item}}
-    {% endJSONArrayFor -%}]
-   ```
-   Tady jsou ukázkové vstupy a výstupy:
+* Kapalné šablony následují [omezení velikosti souborů pro mapy](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits) v Azure Logic Apps.
 
-   ![Příklad výstupního souboru XML do formátu JSON](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
+* Akce **transformace JSON na JSON** se řídí [implementací DotLiquid pro kapalinu](https://github.com/dotliquid/dotliquid). Tato implementace je port pro .NET Framework z [implementace Shopify pro kapalinu](https://shopify.github.io/liquid/) a v [určitých případech](https://github.com/dotliquid/dotliquid/issues)se liší.
 
-* Transformovat XML na text
-  
-  Zde je šablona kapalin použitá v tomto příkladu:
+  Tady jsou známé rozdíly:
 
-   ``` json
-   {{content.firstName | Append: ' ' | Append: content.lastName}}
-   ```
+  * Akce **Transform JSON pro transformaci** JSON nativně výstupuje řetězec, který může zahrnovat JSON, XML, HTML a tak dále. Kapalinová akce znamená, že očekávaný textový výstup z šablony kapaliny je řetězec JSON. Akce nastaví aplikaci logiky k analýze vstupu jako objektu JSON a použije obálku, aby kapalina mohla interpretovat strukturu JSON. Po transformaci akce instruuje vaši aplikaci logiky, aby analyzovala textový výstup z tekutiny zpět do formátu JSON.
 
-   Tady jsou ukázkové vstupy a výstupy:
+    DotLiquid nativně nerozumí formátu JSON, takže se ujistěte, že jste nastavili znak zpětného lomítka ( `\` ) a všechny jiné vyhrazené znaky JSON.
 
-   ![Příklad výstupního souboru XML na text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
+  * Pokud vaše šablona používá [kapalné filtry](https://shopify.github.io/liquid/basics/introduction/#filters), ujistěte se, že dodržujete [konvence vytváření názvů pro DotLiquid a C#](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers#filter-and-output-casing), které používají *velká a malá písmena*. Pro všechny transformace v kapalině se ujistěte, že názvy filtru ve vaší šabloně používají také velká a malá písmena. V opačném případě nebudou filtry fungovat.
+
+    Například při použití `replace` filtru, použijte `Replace` , nikoli `replace` . Stejné pravidlo platí, pokud si vyzkoušíte příklady na [webu DotLiquid online](http://dotliquidmarkup.org/try-online). Další informace naleznete v tématu [Shopify Liquid Filters](https://shopify.dev/docs/themes/liquid/reference/filters) a [DotLiquid Liquid Filters](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Developers#create-your-own-filters). Specifikace Shopify obsahuje příklady pro každý filtr, takže pro porovnání můžete vyzkoušet tyto příklady na [DotLiquid-try online](https://dotliquidmarkup.org/try-online).
+
+  * `json`Filtr z filtrů rozšíření Shopify není [v současnosti implementován v DotLiquid](https://github.com/dotliquid/dotliquid/issues/384). Tento filtr obvykle můžete použít k přípravě textového výstupu pro analýzu řetězců JSON, ale místo toho je potřeba použít `Replace` Filtr.
+
+  * Standardní `Replace` Filtr v [implementaci DotLiquid](https://github.com/dotliquid/dotliquid/blob/b6a7d992bf47e7d7dcec36fb402f2e0d70819388/src/DotLiquid/StandardFilters.cs#L425) používá [porovnání regulárního výrazu (Regex)](/dotnet/standard/base-types/regular-expression-language-quick-reference), zatímco [implementace Shopify](https://shopify.github.io/liquid/filters/replace/) používá [jednoduché řetězcové porovnání](https://github.com/Shopify/liquid/issues/202). Obě implementace se zdají fungovat stejným způsobem, dokud nepoužijete znak vyhrazený regulárním výrazem nebo řídicí znak v parametru Match.
+
+    Například pro řídicí znak zpětného lomítka (), který je vyhrazen pro regulární výrazy `\` , použijte `| Replace: '\\', '\\'` , a ne `| Replace: '\', '\\'` . Tyto příklady ukazují, jak se `Replace` Filtr chová odlišně, když se pokusíte řídicí znak zpětného lomítka použít. I když tato verze funguje úspěšně:
+
+    `{ "SampleText": "{{ 'The quick brown fox "jumped" over the sleeping dog\\' | Replace: '\\', '\\' | Replace: '"', '\"'}}"}`
+
+    S tímto výsledkem:
+
+    `{ "SampleText": "The quick brown fox \"jumped\" over the sleeping dog\\\\"}`
+
+    Tato verze se nezdařila:
+
+    `{ "SampleText": "{{ 'The quick brown fox "jumped" over the sleeping dog\\' | Replace: '\', '\\' | Replace: '"', '\"'}}"}`
+
+    S touto chybou:
+
+    `{ "SampleText": "Liquid error: parsing "\" - Illegal \ at end of pattern."}`
+
+    Další informace naleznete v tématu [Replace Filter Standard používá porovnávání vzorů regulárního výrazu...](https://github.com/dotliquid/dotliquid/issues/385).
+
+  * `Sort`Filtr v [implementaci DotLiquid](https://github.com/dotliquid/dotliquid/blob/b6a7d992bf47e7d7dcec36fb402f2e0d70819388/src/DotLiquid/StandardFilters.cs#L326) Seřadí položky v poli nebo kolekci podle vlastnosti, ale s těmito rozdíly:<p>
+
+    * Sleduje chování [Shopify sort_natural](https://shopify.github.io/liquid/filters/sort_natural/), ale chování při [řazení Shopify](https://shopify.github.io/liquid/filters/sort/).
+
+    * Seřadí pouze v řetězcové abecedě. Další informace najdete v tématu [číselné řazení](https://github.com/Shopify/liquid/issues/980).
+
+    * Používá řazení bez *rozlišení* velkých a malých písmen, nerozlišuje velká a malá písmena. Další informace najdete v tématu [filtr řazení nedodržuje chování velkých a malých písmen ze specifikace Shopify]( https://github.com/dotliquid/dotliquid/issues/393).
+
+<a name="other-transformations"></a>
+
+## <a name="other-transformations-using-liquid"></a>Další transformace pomocí Liquid
+
+Kapalina není omezena pouze na transformace JSON. Můžete také použít kapalinu k provádění dalších transformací, například:
+
+* [JSON na text](#json-text)
+* [XML do formátu JSON](#xml-json)
+* [XML na text](#xml-text)
+
+<a name="json-text"></a>
+
+### <a name="transform-json-to-text"></a>Transformovat JSON na text
+
+Tady je šablona Liquid, která se používá v tomto příkladu:
+
+```json
+{{content.firstName | Append: ' ' | Append: content.lastName}}
+```
+
+Tady jsou ukázkové vstupy a výstupy:
+
+![Příklad výstupu JSON na text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
+
+<a name="xml-json"></a>
+
+### <a name="transform-xml-to-json"></a>Transformovat XML na JSON
+
+Tady je šablona Liquid, která se používá v tomto příkladu:
+
+``` json
+[{% JSONArrayFor item in content -%}
+      {{item}}
+  {% endJSONArrayFor -%}]
+```
+
+`JSONArrayFor`Smyčka je vlastní mechanismus smyčky pro vstup XML, takže můžete vytvořit datové části JSON, které zabraňují koncové čárkě. `where`Podmínka pro tento mechanismus vlastního smyčky také používá název elementu XML pro porovnání, nikoli hodnotu prvku jako jiné kapalné filtry. Další informace najdete v tématu podrobné [podrobně o zásadách pro nastavení těla – kolekce věcí](https://azure.microsoft.com/blog/deep-dive-on-set-body-policy).
+
+Tady jsou ukázkové vstupy a výstupy:
+
+![Příklad výstupního souboru XML do formátu JSON](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
+
+<a name="xml-text"></a>
+
+### <a name="transform-xml-to-text"></a>Transformovat XML na text
+
+Tady je šablona Liquid, která se používá v tomto příkladu:
+
+``` json
+{{content.firstName | Append: ' ' | Append: content.lastName}}
+```
+
+Tady jsou ukázkové vstupy a výstupy:
+
+![Příklad výstupního souboru XML na text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informace o Enterprise Integration Pack")  
-* [Další informace o mapách](../logic-apps/logic-apps-enterprise-integration-maps.md "Další informace o službě Enterprise Integration Maps")  
-
+* [Jazyk a příklady Shopify Liquid](https://shopify.github.io/liquid/basics/introduction/)
+* [DotLiquid](http://dotliquidmarkup.org/)
+* [DotLiquid – vyzkoušet online](https://dotliquidmarkup.org/try-online)
+* [DotLiquid GitHub](https://github.com/dotliquid/dotliquid)
+* [Problémy s DotLiquid GitHubem](https://github.com/dotliquid/dotliquid/issues/)
+* Další informace o [mapách](../logic-apps/logic-apps-enterprise-integration-maps.md)

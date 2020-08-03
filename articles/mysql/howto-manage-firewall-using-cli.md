@@ -7,12 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 42245a8e1c8ce726b925fccade3c62637abb4f12
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d981bf66ef9c17fda031e66e12e18a2ad9c67cc3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118660"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503051"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Vytváření a Správa Azure Database for MySQL pravidel brány firewall pomocí Azure CLI
 Pravidla brány firewall na úrovni serveru se dají použít ke správě přístupu k serveru Azure Database for MySQL z konkrétní IP adresy nebo rozsahu IP adres. Pomocí pohodlných příkazů rozhraní příkazového řádku Azure můžete vytvářet, aktualizovat, odstraňovat, zobrazovat a zobrazovat pravidla brány firewall pro správu serveru. Přehled Azure Database for MySQL bran firewall najdete v tématu [pravidla brány firewall pro Azure Database for MySQL serveru](./concepts-firewall-rules.md).
@@ -89,7 +90,7 @@ az mysql server firewall-rule create --resource-group myresourcegroup --server m
 ```
 
 > [!IMPORTANT]
-> Touto možností se brána firewall nakonfiguruje tak, aby povolovala všechna připojení z Azure, včetně připojení z předplatných ostatních zákazníků. Když vyberete tuto možnost, ujistěte se, že vaše přihlašovací a uživatelská oprávnění omezují přístup pouze na autorizované uživatele.
+> Touto možností se brána firewall nakonfiguruje tak, aby povolovala všechna připojení z Azure, včetně připojení z předplatných ostatních zákazníků. Když vyberete tuto možnost, ujistěte se, že vaše přihlašovací a uživatelská oprávnění omezují přístup jenom na autorizované uživatele.
 > 
 
 Po úspěšném vytvoření výstupního příkazu pro vytváření se zobrazí podrobnosti o vytvořeném pravidlu brány firewall ve formátu JSON (ve výchozím nastavení). Pokud dojde k selhání, výstup zobrazí text chybové zprávy.

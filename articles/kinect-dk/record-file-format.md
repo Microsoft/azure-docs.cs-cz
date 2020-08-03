@@ -7,17 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: reference
 keywords: Kinect, Azure, senzor, SDK, Hloubka, RGB, záznam, přehrávání, Matroska, MKV
-ms.openlocfilehash: d0f7653afe3cc92e059b2615ebef18312faa716b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a78ed158c78df1c9a6eadcc0bfb2e40b22750bd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277156"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501776"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>Použití sady Azure Kinect snímače SDK k záznamu formátu souboru
 
-Chcete-li zaznamenávat data ze senzorů, je použit formát kontejneru Matroska (. MKV), který umožňuje uložení více stop.
-použití široké škály kodeků. Soubor nahrávky obsahuje stopy pro ukládání barev, hloubky, obrázků IR a IMU.
+Chcete-li zaznamenávat data ze senzorů, je použit formát kontejneru Matroska (. MKV), který umožňuje uložení více stop pomocí široké škály kodeků. Soubor nahrávky obsahuje stopy pro ukládání barev, hloubky, obrázků IR a IMU.
 
 Podrobnosti nízké úrovně formátu kontejneru. MKV najdete na [webu Matroska](https://www.matroska.org/index.html).
 

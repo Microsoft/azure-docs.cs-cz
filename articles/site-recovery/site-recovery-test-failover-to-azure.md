@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4233df62de48dd7a7253c488b0cd69c38cd8d445
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699052"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503493"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>Spuštění testovacího převzetí služeb při selhání (přechod zotavení po havárii) do Azure 
 
@@ -25,7 +25,7 @@ Testovací převzetí služeb při selhání můžete použít k ověření vaš
 ## <a name="run-a-test-failover"></a>Spuštění testovacího převzetí služeb při selhání
 Tento postup popisuje, jak spustit testovací převzetí služeb při selhání pro plán obnovení. Pokud chcete spustit testovací převzetí služeb při selhání pro jeden virtuální počítač, postupujte podle kroků popsaných [tady](tutorial-dr-drill-azure.md#run-a-test-failover-for-a-single-vm) .
 
-![Testovací převzetí služeb při selhání](./media/site-recovery-test-failover-to-azure/TestFailover.png)
+![Snímek stránky testovacího převzetí služeb při selhání v Azure Portal.](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
 1. V Site Recovery Azure Portal klikněte na **plány obnovení**  >  *recoveryplan_name*  >  **testovací převzetí služeb při selhání**.
@@ -48,7 +48,7 @@ Tento postup popisuje, jak spustit testovací převzetí služeb při selhání 
 8. V části **poznámky**si zaznamenejte a uložte všechny poznámky spojené s testovacím převzetím služeb při selhání.
 
 
-![Testovací převzetí služeb při selhání](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
+![Snímek obrazovky s kartou úlohy testovacího převzetí služeb při selhání](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
 
 Při aktivaci testovacího převzetí služeb při selhání dojde k následujícímu:
 

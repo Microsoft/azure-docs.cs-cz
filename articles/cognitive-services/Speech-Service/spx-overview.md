@@ -10,14 +10,15 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: trbye
-ms.openlocfilehash: 3fb0b71cbb82b3b9acad1d1ce093baa86c700a51
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: ab019250e03feb9a776d628c06e792b884252260
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800342"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501810"
 ---
-# <a name="what-is-the-speech-cli"></a>Co je to funkce Speech CLI?
+# <a name="what-is-the-speech-cli"></a>Co je CLI služby Speech?
 
 Rozpoznávání řeči je nástroj příkazového řádku pro používání služby Speech bez psaní kódu. Rozhraní příkazového řádku pro rozpoznávání řeči vyžaduje minimální nastavení a je snadné začít experimentovat se základními funkcemi služby Speech Service, abyste viděli, jestli se můžou vaše případy použití splnit. Během několika minut můžete spustit jednoduché testovací pracovní postupy, jako je rozpoznávání řeči Batch z adresáře souborů, nebo převod textu na řeč pro kolekci řetězců ze souboru. Mimo jednoduché pracovní postupy je rozpoznávání řeči pro rozpoznávání řeči připravené k provozu a dá se škálovat až ke spouštění větších procesů pomocí automatizovaných `.bat` skriptů nebo skriptů prostředí.
 

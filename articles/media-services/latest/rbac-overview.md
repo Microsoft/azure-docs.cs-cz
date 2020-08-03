@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1872d0dd56a0459988e65852340c36493ee53f9f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c75b6e67932cfd26a3374eab3f3efa34ceade577
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132241"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504479"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Řízení přístupu na základě role (RBAC) pro účty Media Services
 
@@ -40,8 +40,8 @@ V článku [předdefinované definice rolí](../../role-based-access-control/bui
 
 Další informace najdete v následujících článcích:
 
-- [Role klasického správce předplatného, role Azure RBAC a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md)
-- [Co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md)
+- [Role správců pro klasický odběr, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Co je řízení přístupu na základě role v Azure (Azure RBAC)?](../../role-based-access-control/overview.md)
 - [Správa přístupu pomocí RBAC](../../role-based-access-control/role-assignments-rest.md)
 - [Media Services operace poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md#microsoftmedia)
 

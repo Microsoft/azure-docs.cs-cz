@@ -11,14 +11,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 04/05/2017
-ms.openlocfilehash: 471690c5c0f5ebb4cea111b85cab1fe0524a36cd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e71b2f940c637a8b1375be71f9b6ca95fd76628e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509717"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501861"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>Nasazení stacku LAMP do škálovací sady virtuálních počítačů s vyrovnáváním zatížení
 
