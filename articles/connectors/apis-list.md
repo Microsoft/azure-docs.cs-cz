@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 166909f1e048ac54184ef5eee2ecee3bfedcdb02
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0707d578f90f70318c2a01f324b50092d9962965
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284128"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513838"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Konektory pro Azure Logic Apps
 
@@ -153,11 +153,48 @@ Logic Apps poskytuje tyto oblíbené standardní konektory pro automatizaci úlo
 
 Tady jsou některé běžně používané standardní konektory, které Logic Apps poskytují přístup k datům a prostředkům v místních systémech. Než budete moct vytvořit připojení k místnímu systému, musíte nejdřív [Stáhnout, nainstalovat a nastavit místní bránu dat][gateway-doc]. Tato brána poskytuje zabezpečený komunikační kanál bez nutnosti nastavovat nezbytnou síťovou infrastrukturu.
 
-|___|___|___|___|___|
-|---|---|---|---|---|
-| [![Ikona rozhraní API ][biztalk-server-icon]<br> **BizTalk** <br> **serveru**][biztalk-server-doc] | [![Ikona rozhraní API ][file-system-icon]<br> ** <br> systému souborů**][file-system-doc] | [![Ikona rozhraní API ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc] | [![Ikona rozhraní API ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc] | [![Ikona rozhraní API ][mysql-icon]<br> **MySQL**][mysql-doc] |
-| [![Ikona rozhraní API ][oracle-db-icon]<br> **Oracle DB**][oracle-db-doc] | [![Ikona rozhraní API ][postgre-sql-icon]<br> **PostgreSQL**][postgre-sql-doc] | [![Ikona rozhraní API ][sharepoint-server-icon]<br> **SharePoint <br> serveru**][sharepoint-server-doc] | [![Ikona rozhraní API ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc] | [![Ikona rozhraní API ][teradata-icon]<br> **Teradata**][teradata-doc] |
-||||||
+:::row:::
+    :::column:::
+        [![Ikona rozhraní API ][biztalk-server-icon]<br> **BizTalk** <br> **serveru**][biztalk-server-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][file-system-icon]<br> ** <br> systému souborů**][file-system-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![Ikona rozhraní API ][mysql-icon]<br> **MySQL**][mysql-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][oracle-db-icon]<br> **Oracle DB**][oracle-db-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][postgre-sql-icon]<br> **PostgreSQL**][postgre-sql-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][sharepoint-server-icon]<br> **SharePoint <br> serveru**][sharepoint-server-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![Ikona rozhraní API ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][teradata-icon]<br> **Teradata**][teradata-doc]
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+:::row-end:::
 
 <a name="integration-account-connectors"></a>
 
@@ -165,12 +202,48 @@ Tady jsou některé běžně používané standardní konektory, které Logic Ap
 
 Logic Apps poskytuje standardní konektory pro vytváření řešení B2B (Business-to-Business) s aplikacemi logiky při vytváření a placení účtu pro [integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), který je k dispozici prostřednictvím Enterprise Integration Pack (EIP) v Azure. Pomocí tohoto účtu můžete vytvářet a ukládat artefakty B2B, jako jsou obchodní partneři, smlouvy, mapy, schémata, certifikáty atd. Pokud chcete použít tyto artefakty, přidružte své aplikace logiky k účtu pro integraci. Pokud v tuto chvíli používáte BizTalk Server, tyto konektory se možná už dobře znají.
 
-|___|___|___|___|
-|---|---|---|---|
-| [![Ikona rozhraní API ][as2-icon]<br> ** <br> dekódování AS2**][as2-doc] | [![Ikona rozhraní API ][as2-icon]<br> ** <br> kódování AS2**][as2-doc] | [![Ikona rozhraní API ][edifact-icon]<br> ** <br> dekódování EDIFACT**][edifact-decode-doc] | [![Ikona rozhraní API ][edifact-icon]<br> ** <br> kódování EDIFACT**][edifact-encode-doc] |
-| [![Ikona rozhraní API – ][flat-file-decode-icon]<br> ** <br> dekódování plochého souboru**][flat-file-decode-doc] | [![Ikona rozhraní API – ][flat-file-encode-icon]<br> ** <br> kódování plochého souboru**][flat-file-encode-doc] | [![Ikona rozhraní API ][integration-account-icon]<br> ** <br> účet pro integraci**][integration-account-doc] | [![Ikona rozhraní API – ][liquid-icon]<br> **kapalinové** <br> **transformace**][json-liquid-transform-doc] |
-| [![Ikona rozhraní API ][x12-icon]<br> ** <br> dekódování X12**][x12-decode-doc] | [![Ikona rozhraní API ][x12-icon]<br> ** <br> kódování X12**][x12-encode-doc] | [![Ikona rozhraní API ][xml-transform-icon]<br> **XML** <br> **transformace** XML][xml-transform-doc] | [![Ikona rozhraní API ][xml-validate-icon]<br> ** <br> ověřování XML**][xml-validate-doc] |
-|||||
+:::row:::
+    :::column:::
+        [![Ikona rozhraní API ][as2-icon]<br> ** <br> dekódování AS2**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][as2-icon]<br> ** <br> kódování AS2**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][edifact-icon]<br> ** <br> dekódování EDIFACT**][edifact-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][edifact-icon]<br> ** <br> kódování EDIFACT**][edifact-encode-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![Ikona rozhraní API – ][flat-file-decode-icon]<br> ** <br> dekódování plochého souboru**][flat-file-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API – ][flat-file-encode-icon]<br> ** <br> kódování plochého souboru**][flat-file-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][integration-account-icon]<br> ** <br> účet pro integraci**][integration-account-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API – ][liquid-icon]<br> **kapalinové** <br> **transformace**][json-liquid-transform-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![Ikona rozhraní API ][x12-icon]<br> ** <br> dekódování X12**][x12-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][x12-icon]<br> ** <br> kódování X12**][x12-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][xml-transform-icon]<br> **XML** <br> **transformace** XML][xml-transform-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][xml-validate-icon]<br> ** <br> ověřování XML**][xml-validate-doc]
+    :::column-end:::
+:::row-end:::
 
 <a name="enterprise-connectors"></a>
 
@@ -178,10 +251,20 @@ Logic Apps poskytuje standardní konektory pro vytváření řešení B2B (Busin
 
 Logic Apps poskytuje těmto podnikovým konektorům přístup k podnikovým systémům, jako jsou SAP a IBM MQ:
 
-|___|___|___|
-|---|---|---|
-| [![Ikona rozhraní API ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc] | [![Ikona rozhraní API ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc] | [![Ikona rozhraní API ][sap-icon]<br> **SAP**][sap-connector-doc] |
-|||
+:::row:::
+    :::column:::
+        [![Ikona rozhraní API ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][sap-icon]<br> **SAP**][sap-connector-doc]
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+:::row-end:::
 
 <a name="ise-connectors"></a>
 
@@ -189,14 +272,90 @@ Logic Apps poskytuje těmto podnikovým konektorům přístup k podnikovým syst
 
 Pro Logic Apps, které vytvoříte a spustíte ve vyhrazeném [prostředí ISE (integred Integration Service Environment)](#integration-service-environment), návrhář aplikace logiky identifikuje integrované aktivační události a akce, které běží v ISE, pomocí popisku **Core** . Spravované konektory, které běží na ISE, zobrazují jmenovku **ISE** , zatímco konektory spuštěné v globální Logic Apps službě pro více tenantů nezobrazuje buď popisek. V tomto seznamu jsou uvedeny konektory, které aktuálně mají verze ISE:
 
-|___|___|___|___|___|
-|---|---|---|---|---|
-| [![Ikona rozhraní API ][as2-icon]<br> **AS2**][as2-doc] | [![Ikona rozhraní API ][azure-automation-icon]<br> **Azure <br> Automation**][azure-automation-doc] | [![Ikona rozhraní API ][azure-blob-storage-icon]<br> **Azure Blob <br> Storage**][azure-blob-storage-doc] | [![Ikona rozhraní API služby ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> DB**][azure-cosmos-db-doc] | [![Ikona rozhraní API ][azure-event-hubs-icon]<br> ** <br> centra událostí Azure**][azure-event-hubs-doc] |
-| [![Ikona rozhraní API ][azure-event-grid-icon]<br> **Azure Event <br> gridu**][azure-event-grid-doc] | [![Ikona rozhraní API služby ][azure-file-storage-icon]<br> **Azure File <br> Storage**][azure-file-storage-doc] | [![Ikona rozhraní API ][azure-key-vault-icon]<br> ** <br> trezoru klíčů Azure**][azure-key-vault-doc] | [![Ikona rozhraní API ][azure-monitor-logs-icon]<br> **Azure monitor <br> protokoly**][azure-monitor-logs-doc] | [![Ikona rozhraní API ][azure-service-bus-icon]<br> **Azure Service <br> Bus**][azure-service-bus-doc] |
-| [![Ikona rozhraní API ][azure-sql-data-warehouse-icon]<br> **Azure SQL data <br> Warehouse**][azure-sql-data-warehouse-doc] | [![Ikona rozhraní API pro ][azure-table-storage-icon]<br> **Azure Table <br> Storage**][azure-table-storage-doc] | [![Ikona rozhraní API ][azure-queues-icon]<br> ** <br> fronty Azure**][azure-queues-doc] | [![Ikona rozhraní API ][edifact-icon]<br> **EDIFACT**][edifact-doc] | [![Ikona rozhraní API ][file-system-icon]<br> ** <br> systému souborů**][file-system-doc] |
-| [![Ikona rozhraní API ][ftp-icon]<br> **FTP**][ftp-doc] | [![Ikona rozhraní API ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc] | [![Ikona rozhraní API ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc] | [![Ikona rozhraní API ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc] | [![Ikona rozhraní API ][sap-icon]<br> **SAP**][sap-connector-doc] |
-| [![Ikona rozhraní API ][sftp-ssh-icon]<br> **SFTP – SSH**][sftp-ssh-doc] | [![Ikona rozhraní API ][smtp-icon]<br> **SMTP**][smtp-doc] | [![Ikona rozhraní API ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc] | [![Ikona rozhraní API ][x12-icon]<br> **X12**][x12-doc] |
-||||||
+:::row:::
+    :::column:::
+        [![Ikona rozhraní API ][as2-icon]<br> **AS2**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][azure-automation-icon]<br> **Azure <br> Automation**][azure-automation-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][azure-blob-storage-icon]<br> **Azure Blob <br> Storage**][azure-blob-storage-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API služby ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> DB**][azure-cosmos-db-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![Ikona rozhraní API ][azure-event-hubs-icon]<br> ** <br> centra událostí Azure**][azure-event-hubs-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][azure-event-grid-icon]<br> **Azure Event <br> gridu**][azure-event-grid-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API služby ][azure-file-storage-icon]<br> **Azure File <br> Storage**][azure-file-storage-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][azure-key-vault-icon]<br> ** <br> trezoru klíčů Azure**][azure-key-vault-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![Ikona rozhraní API ][azure-monitor-logs-icon]<br> **Azure monitor <br> protokoly**][azure-monitor-logs-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][azure-service-bus-icon]<br> **Azure Service <br> Bus**][azure-service-bus-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][azure-sql-data-warehouse-icon]<br> **Azure SQL data <br> Warehouse**][azure-sql-data-warehouse-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API pro ][azure-table-storage-icon]<br> **Azure Table <br> Storage**][azure-table-storage-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![Ikona rozhraní API ][azure-queues-icon]<br> ** <br> fronty Azure**][azure-queues-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][edifact-icon]<br> **EDIFACT**][edifact-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][file-system-icon]<br> ** <br> systému souborů**][file-system-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][ftp-icon]<br> **FTP**][ftp-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![Ikona rozhraní API ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][sap-icon]<br> **SAP**][sap-connector-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![Ikona rozhraní API ][sftp-ssh-icon]<br> **SFTP – SSH**][sftp-ssh-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][smtp-icon]<br> **SMTP**][smtp-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![Ikona rozhraní API ][x12-icon]<br> **X12**][x12-doc]
+    :::column-end:::
+:::row-end:::
 
 Další informace najdete v těchto tématech:
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: e77701e17ef1b47aa6b8e3b8f2d10e93bf5e054e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ead0c13a1fce0b5d56c9dd875c594a2269e2c78c
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101450"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513107"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Kurz: použití Azure Key Vault s virtuálním počítačem v .NET
 
@@ -37,7 +37,7 @@ Než začnete, přečtěte si téma [Key Vault Basic koncepty](basic-concepts.md
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro Windows, Mac a Linux:
   * [Git](https://git-scm.com/downloads)
@@ -56,21 +56,15 @@ Pokud se chcete přihlásit k Azure pomocí rozhraní příkazového řádku Azu
 az login
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>Vytvoření skupiny prostředků a trezoru klíčů
+## <a name="create-a-resource-group-and-key-vault"></a>Vytvoření skupiny prostředků a trezoru klíčů
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-### <a name="populate-your-key-vault-with-a-secret"></a>Naplnění trezoru klíčů pomocí tajného klíče
+## <a name="populate-your-key-vault-with-a-secret"></a>Naplnění trezoru klíčů pomocí tajného klíče
 
-Nyní do trezoru klíčů přidejte tajný klíč pomocí příkazu [AZ Key trezor tajné sady](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) . Pokud chcete v trezoru klíčů s názvem **mySecret**vytvořit tajný klíč, zadejte následující příkaz:
+[!INCLUDE [Create a secret](../../../includes/key-vault-create-secret.md)]
 
-```azurecli
-az keyvault secret set --vault-name "<your-unique-key-vault-name>" --name "mySecret" --value "MySecret"
-```
-
-Tento tajný kód ukládá hodnotu **MySecret**.
-
-### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 Vytvořte virtuální počítač se systémem Windows nebo Linux pomocí jedné z následujících metod:
 
 | Windows | Linux |
@@ -79,7 +73,7 @@ Vytvořte virtuální počítač se systémem Windows nebo Linux pomocí jedné 
 | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) |
 | [Azure Portal](../../virtual-machines/windows/quick-create-portal.md) | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) |
 
-### <a name="assign-an-identity-to-the-vm"></a>Přiřazení identity k virtuálnímu počítači
+## <a name="assign-an-identity-to-the-vm"></a>Přiřazení identity k virtuálnímu počítači
 Vytvořte pro virtuální počítač identitu přiřazenou systémem pomocí příkazu [AZ VM identity Assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) :
 
 ```azurecli
@@ -95,16 +89,16 @@ Poznamenejte si identitu přiřazenou systémem, která se zobrazí v následuj�
 }
 ```
 
-### <a name="assign-permissions-to-the-vm-identity"></a>Přiřazení oprávnění k identitě virtuálního počítače
+## <a name="assign-permissions-to-the-vm-identity"></a>Přiřazení oprávnění k identitě virtuálního počítače
 Přiřaďte dříve vytvořená oprávnění identity k trezoru klíčů pomocí příkazu [AZ Key trezor set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) :
 
 ```azurecli
 az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-### <a name="sign-in-to-the-virtual-machine"></a>Přihlaste se k virtuálnímu počítači.
+## <a name="sign-in-to-the-virtual-machine"></a>Přihlaste se k virtuálnímu počítači.
 
-Pokud se chcete přihlásit k virtuálnímu počítači, postupujte podle pokynů v tématu [připojení a přihlášení k virtuálnímu počítači Azure s Windows](../../virtual-machines/windows/connect-logon.md) nebo se [připojte k virtuálnímu počítači Azure s operačním systémem Linux a přihlaste se](../../virtual-machines/linux/login-using-aad.md).
+Pokud se chcete přihlásit k virtuálnímu počítači, postupujte podle pokynů v části [připojení a přihlášení k virtuálnímu počítači Azure s Windows](../../virtual-machines/windows/connect-logon.md) nebo [se připojte k virtuálnímu počítači Azure Linux a přihlaste se](../../virtual-machines/linux/login-using-aad.md).
 
 ## <a name="set-up-the-console-app"></a>Nastavení konzolové aplikace
 

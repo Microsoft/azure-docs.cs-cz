@@ -11,16 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8ceb375eb9da853b4c89ffe278d3483f6a4fa72
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a3a06f01507ad5715d1e8a3f828ab008e1e8ce65
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050963"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512971"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Souhrnné informace o registraci informací o zabezpečení pro Azure Active Directory
 
 Před kombinovanou registrací uživatelé zaregistrovali metody ověřování pro Azure Multi-Factor Authentication a Samoobslužné resetování hesla (SSPR) samostatně. Lidem se zaznamenalo, že podobné metody byly použity pro Multi-Factor Authentication a SSPR, ale musely se zaregistrovat pro obě funkce. Teď se při kombinované registraci můžou uživatelé zaregistrovat jednou a získat výhody Multi-Factor Authentication i SSPR.
+
+> [!NOTE]
+> Od 15. srpna 2020 budou všichni noví klienti Azure AD automaticky povoleni pro kombinovanou registraci.
 
 Tento článek popisuje, jaká kombinovaná registrace zabezpečení je. Informace o tom, jak začít používat kombinovanou registraci zabezpečení, najdete v následujícím článku:
 
@@ -48,17 +51,17 @@ Pokud chcete vynutit určitý jazyk, můžete přidat `?lng=<language>` na konec
 
 Kombinovaná registrace podporuje následující metody ověřování a akce:
 
-| Metoda | Registrovat | Změnit | Odstranit |
+| Metoda | Zaregistrovat | Změnit | Odstranit |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Ano (maximálně 5) | No | Yes |
-| Jiná ověřovací aplikace | Ano (maximálně 5) | No | Yes |
-| Hardwarový token | No | No | Yes |
+| Microsoft Authenticator | Ano (maximálně 5) | Ne | Ano |
+| Jiná ověřovací aplikace | Ano (maximálně 5) | Ne | Ano |
+| Hardwarový token | Ne | Ne | Ano |
 | Rozložení | Ano | Ano | Ano |
 | Alternativní telefon | Ano | Ano | Ano |
-| Telefon do kanceláře | No | No | No |
+| Telefon do kanceláře | Ne | Ne | Ne |
 | E-mail | Ano | Ano | Ano |
-| Bezpečnostní otázky | Yes | No | Yes |
-| Hesla aplikací | Yes | No | Yes |
+| Bezpečnostní otázky | Ano | Ne | Ano |
+| Hesla aplikací | Ano | Ne | Ano |
 | FIDO2 klíče zabezpečení<br />*Spravovaný režim pouze ze stránky [bezpečnostní údaje](https://mysignins.microsoft.com/security-info)*| Ano | Ano | Ano |
 
 > [!NOTE]

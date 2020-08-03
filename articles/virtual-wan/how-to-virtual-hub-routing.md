@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6d14094edc7ae21ca0d56b544fb9c2b19f1f0582
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 634967fbe50c74770bdc3b526d68896728e4ee07
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144984"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513056"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Postup konfigurace směrování virtuálního centra
 
@@ -22,7 +22,7 @@ Virtuální rozbočovač může obsahovat několik bran, například bránu VPN 
 Další informace najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
 
 > [!NOTE]
-> Některé z těchto možností se pořád můžou vymezit. Očekává se, že se dokončí 3. srpna.
+> Některé z těchto možností se pořád můžou vymezit. Očekává se, že to dokončí 17. srpna.
 >
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>Vytvoření směrovací tabulky

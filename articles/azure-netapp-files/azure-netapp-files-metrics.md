@@ -1,6 +1,6 @@
 ---
 title: Metriky pro Azure NetApp Files | Microsoft Docs
-description: Popisuje metriky pro Azure NetApp Files.
+description: Azure NetApp Files poskytuje metriky přiděleného úložiště, skutečné využití úložiště, Volume IOPS a latenci. Pomocí těchto metrik můžete pochopit využití a výkon.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: b-juche
-ms.openlocfilehash: c8e3b616dee1ab4e6bb6e77c6a8bab5661d4e20b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e6ab90010d4379c1640f73a8deeba874e601daf
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460428"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513804"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriky pro Azure NetApp Files
 

@@ -1,6 +1,6 @@
 ---
 title: Vytvoření svazku SMB pro Azure NetApp Files | Microsoft Docs
-description: Popisuje postup vytvoření svazku SMB pro Azure NetApp Files.
+description: V tomto článku se dozvíte, jak vytvořit SMBv3 svazek v Azure NetApp Files. Seznamte se s požadavky na připojení služby Active Directory a doménové služby.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 848a5779538f4754ef038a1e88be63c33177bc82
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 24a5e342c66d8154f4635acc957084d243fbd75e
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169966"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513073"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -45,7 +45,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
     |    Webové služby AD    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    –       |    Odpověď na ozvěnu    |
+    |    ICMPv4             |    Není k dispozici       |    Odpověď na ozvěnu    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -163,8 +163,20 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
      * **Uživatelé zásad zálohování**  
         Můžete zahrnout další účty, které vyžadují zvýšená oprávnění k účtu počítače vytvořenému pro použití s Azure NetApp Files. U zadaných účtů bude povoleno změnit oprávnění systému souborů NTFS na úrovni souboru nebo složky. Můžete například zadat účet neprivilegované služby, který se používá k migraci dat do sdílené složky SMB v Azure NetApp Files.  
 
-        > [!IMPORTANT] 
-        > Použití uživatelské funkce zásady zálohování vyžaduje přidávání do seznamu povolených. Vyžádejte si e-mail anffeedback@microsoft.com s ID předplatného, abyste mohli požádat o tuto funkci. 
+        Funkce **Uživatelé zásad zálohování** je teď ve verzi Preview. Pokud tuto funkci používáte poprvé, zaregistrujte funkci před jejím použitím: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
+
+        Ověřte stav registrace funkce: 
+
+        > [!NOTE]
+        > **RegistrationState** může být ve `Registering` stavu několik minut, než se změní na `Registered` . Než budete pokračovat, počkejte, než se stav **zaregistruje** .
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
 
     * Přihlašovací údaje, včetně **uživatelského jména** a **hesla**
 

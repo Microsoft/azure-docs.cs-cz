@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 5b5de26afceb1127b42c937f1cb1005a660881d4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bae5770baf8cfad7e5f28d5cc0499949912c1146
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273418"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513124"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>Automatizace konfigurace aplikace jednotného přihlašování založeného na SAML pomocí rozhraní Microsoft Graph API
 
@@ -113,6 +113,11 @@ Pomocí ID šablony, které jste načetli pro aplikaci v posledním kroku, [vytv
 
 > [!NOTE] 
 > K vytvoření instance [aplikací mimo galerii](add-non-gallery-app.md)můžete použít rozhraní applicationTemplate API. Použijte applicationTemplateId `8adf8e6e-67b2-4cf2-a259-e3dc5476c621` .
+
+> [!NOTE]
+> Počkejte nějakou dobu, než se aplikace zřídí do vašeho tenanta Azure AD. Nejedná se o okamžitou. Jednou z strategií je provést dotaz GET na objekt aplikace nebo instančního objektu každé 5-10 sekund, dokud nebude dotaz úspěšný.
+
+
 #### <a name="request"></a>Žádost
 
 <!-- {
@@ -194,6 +199,8 @@ Použijte odpověď z předchozího volání a načtěte a uložte ID objektu ap
 
 V tomto příkladu nastavíte `saml` jako režim jednotného přihlašování v [typu prostředku servicePrincipal](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-1.0). Další vlastnosti jednotného přihlašování SAML, které můžete konfigurovat, jsou: `notificationEmailAddresses` , `loginUrl` a.`samlSingleSignOnSettings.relayState`
 
+Než bude tento dotaz fungovat, musíte vyjádřit souhlas na kartě **Upravit oprávnění** v aplikaci Graph Explorer. Také se ujistěte, že používáte ID **servicePrincipal** , které jste získali dříve.
+
 #### <a name="request"></a>Žádost
 
 <!-- {
@@ -224,6 +231,8 @@ HTTP/1.1 204
 ### <a name="set-basic-saml-urls-such-as-identifier-reply-url-sign-on-url"></a>Nastavte základní adresy URL SAML, jako je identifikátor, adresa URL odpovědi, přihlašovací adresa URL.
 
 Nastavte identifikátor a adresy URL odpovědí pro AWS v objektu Application.
+
+Ujistěte se, že používáte ID **aplikace** , které jste získali dříve.
 
 #### <a name="request"></a>Žádost
 
@@ -341,6 +350,9 @@ Kromě základních deklarací identity nakonfigurujte následující deklarace 
 
 Další informace najdete v tématu [přizpůsobení deklarací identity emitovaných v tokenu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping).
 
+> [!NOTE]
+> U některých klíčů v zásadách mapování deklarací se rozlišují velká a malá písmena (např. "verze"). Pokud se zobrazí chybová zpráva, například "vlastnost má neplatnou hodnotu", může se jednat o problém s rozlišováním velkých a malých písmen.
+
 #### <a name="request"></a>Žádost
 
 <!-- {
@@ -451,7 +463,7 @@ Použití rozhraní [applicationTemplate](https://docs.microsoft.com/graph/api/r
 
 ### <a name="create-a-custom-signing-certificate"></a>Vytvoření vlastního podpisového certifikátu
 
-K otestování můžete použít následující příkaz prostředí PowerShell k získání certifikátu podepsaného svým držitelem. Pomocí osvědčeného postupu zabezpečení z vaší společnosti vytvořte podpisový certifikát pro produkční prostředí.
+K otestování můžete použít následující příkaz prostředí PowerShell k získání certifikátu podepsaného svým držitelem. Pak budete muset ručně manipulovat a načítat hodnoty, které potřebujete, pomocí jiných nástrojů. Pomocí osvědčeného postupu zabezpečení z vaší společnosti vytvořte podpisový certifikát pro produkční prostředí.
 
 ```powershell
 Param(
@@ -478,6 +490,99 @@ Export-PfxCertificate -cert $path -FilePath $pfxFile -Password $pwdSecure
 Export-Certificate -cert $path -FilePath $cerFile
 ```
 
+Alternativně lze následující konzolovou aplikaci v jazyce C# použít jako důkaz konceptu pro pochopení, jak lze získat požadované hodnoty. Všimněte si, že tento kód je určen **pouze pro učení a odkazování** a neměl by být použit jako v produkčním prostředí.
+
+```csharp
+using System;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+
+
+/* CONSOLE APP - PROOF OF CONCEPT CODE ONLY!!
+ * This code uses a self signed certificate and should not be used 
+ * in production. This code is for reference and learning ONLY.
+ */
+namespace Self_signed_cert
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Generate a guid to use as a password and then create the cert.
+            string password = Guid.NewGuid().ToString();
+            var selfsignedCert = buildSelfSignedServerCertificate(password);
+
+            // Print values so we can copy paste into the JSON fields.
+            // Print out the private key in base64 format.
+            Console.WriteLine("Private Key: {0}{1}", Convert.ToBase64String(selfsignedCert.Export(X509ContentType.Pfx, password)), Environment.NewLine);
+
+            // Print out the start date in ISO 8601 format.
+            DateTime startDate = DateTime.Parse(selfsignedCert.GetEffectiveDateString()).ToUniversalTime();
+            Console.WriteLine("For All startDateTime: " + startDate.ToString("o"));
+
+            // Print out the end date in ISO 8601 format.
+            DateTime endDate = DateTime.Parse(selfsignedCert.GetExpirationDateString()).ToUniversalTime();
+            Console.WriteLine("For All endDateTime: " + endDate.ToString("o"));
+
+            // Print the GUID used for keyId
+            string signAndPasswordGuid = Guid.NewGuid().ToString();
+            string verifyGuid = Guid.NewGuid().ToString();
+            Console.WriteLine("GUID to use for keyId for keyCredentials->Usage == Sign and passwordCredentials: " + signAndPasswordGuid);
+            Console.WriteLine("GUID to use for keyId for keyCredentials->Usage == Verify: " + verifyGuid);
+
+            // Print out the password.
+            Console.WriteLine("Password is: {0}", password);
+
+            // Print out a displayName to use as an example.
+            Console.WriteLine("displayName to use: CN=Example");
+            Console.WriteLine();
+
+            // Print out the public key.
+            Console.WriteLine("Public Key: {0}{1}", Convert.ToBase64String(selfsignedCert.Export(X509ContentType.Cert)), Environment.NewLine);
+            Console.WriteLine();
+
+            // Generate the customKeyIdentifier using hash of thumbprint.
+            Console.WriteLine("You can generate the customKeyIdentifier by getting the SHA256 hash of the certs thumprint.\nThe certs thumbprint is: {0}{1}", selfsignedCert.Thumbprint, Environment.NewLine);
+            Console.WriteLine("The hash of the thumbprint that we will use for customeKeyIdentifier is:");
+            string keyIdentifier = GetSha256FromThumbprint(selfsignedCert.Thumbprint);
+            Console.WriteLine(keyIdentifier);
+        }
+
+        // Generate a self-signed certificate.
+        private static X509Certificate2 buildSelfSignedServerCertificate(string password)
+        {
+            const string CertificateName = @"Microsoft Azure Federated SSO Certificate TEST";
+            DateTime certificateStartDate = DateTime.UtcNow;
+            DateTime certificateEndDate = certificateStartDate.AddYears(2).ToUniversalTime();
+
+            X500DistinguishedName distinguishedName = new X500DistinguishedName($"CN={CertificateName}");
+
+            using (RSA rsa = RSA.Create(2048))
+            {
+                var request = new CertificateRequest(distinguishedName, rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+
+                request.CertificateExtensions.Add(
+                    new X509KeyUsageExtension(X509KeyUsageFlags.DataEncipherment | X509KeyUsageFlags.KeyEncipherment | X509KeyUsageFlags.DigitalSignature, false));
+
+                var certificate = request.CreateSelfSigned(new DateTimeOffset(certificateStartDate), new DateTimeOffset(certificateEndDate));
+                certificate.FriendlyName = CertificateName;
+
+                return new X509Certificate2(certificate.Export(X509ContentType.Pfx, password), password, X509KeyStorageFlags.Exportable);
+            }
+        }
+
+        // Generate hash from thumbprint.
+        public static string GetSha256FromThumbprint(string thumbprint)
+        {
+            var message = Encoding.ASCII.GetBytes(thumbprint);
+            SHA256Managed hashString = new SHA256Managed();
+            return Convert.ToBase64String(hashString.ComputeHash(message));
+        }
+    }
+}
+```
+
 ### <a name="add-a-custom-signing-key"></a>Přidat vlastní podpisový klíč
 
 Do instančního objektu přidejte následující informace:
@@ -488,18 +593,7 @@ Do instančního objektu přidejte následující informace:
 
 Extrahujte privátní a veřejný klíč s kódováním base64 ze souboru PFX. Další informace o vlastnostech najdete v tématu [typ prostředku přihlašovacích údajů](https://docs.microsoft.com/graph/api/resources/keycredential?view=graph-rest-1.0)ke službě.
 
-Ujistěte se, že keyId pro přihlašovací údaje použité pro Sign se shoduje s keyIdem passwordCredential.
-
-Můžete vygenerovat `customkeyIdentifier` pomocí získání hodnoty hash kryptografického otisku certifikátu.
-
-```csharp
-  public string GetSha256FromThumbprint(string thumbprint)
-  {
-      var message = Encoding.ASCII.GetBytes(thumbprint);
-      SHA256Managed hashString = new SHA256Managed();
-      return Convert.ToBase64String(hashString.ComputeHash(message));
-  }
-```
+Ujistěte se, že keyId pro přihlašovací údaje použité pro Sign se shoduje s keyIdem passwordCredential. Můžete vygenerovat `customkeyIdentifier` pomocí získání hodnoty hash kryptografického otisku certifikátu. Viz referenční kód jazyka C# výše.
 
 #### <a name="request"></a>Žádost
 
@@ -522,7 +616,7 @@ Content-type: servicePrincipals/json
             "endDateTime": "2021-04-22T22:10:13Z",
             "keyId": "4c266507-3e74-4b91-aeba-18a25b450f6e",
             "startDateTime": "2020-04-22T21:50:13Z",
-            "type": "AsymmetricX509Cert",
+            "type": "X509CertAndPassword",
             "usage": "Sign",
             "key":"MIIKIAIBAz.....HBgUrDgMCERE20nuTptI9MEFCh2Ih2jaaLZBZGeZBRFVNXeZmAAgIH0A==",
             "displayName": "CN=awsAPI"

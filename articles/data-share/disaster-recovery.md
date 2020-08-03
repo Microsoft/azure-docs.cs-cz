@@ -1,31 +1,31 @@
 ---
 title: Zotavení po havárii pro sdílenou složku Azure
 description: Zotavení po havárii pro sdílenou složku Azure
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 12/18/2019
-ms.openlocfilehash: 8c53450094801825b86b74505fbe34dc8defe4f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 61804aaf65a97485e2b2b5bb4869c335a14ce812
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110960"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513554"
 ---
 # <a name="disaster-recovery-for-azure-data-share"></a>Zotavení po havárii pro sdílenou složku Azure
 
-V tomto článku se dozvíte, jak nakonfigurovat prostředí pro zotavení po havárii pro Azure Data Share. Výpadky datového centra Azure jsou v některých případech zřídka, ale můžou to trvat kdekoliv pár minut až hodin. Výpadky datového centra můžou způsobit přerušení prostředí, která se spoléhají na data sdílená poskytovatelem dat. Pomocí kroků popsaných v tomto článku můžou poskytovatelé dat dál sdílet data s uživateli s daty v případě výpadku datového centra pro primární oblast, která hostuje vaši sdílenou složku vašich dat. 
+Tento článek vysvětluje, jak nakonfigurovat prostředí pro zotavení po havárii pro sdílenou složku Azure. Výpadky datového centra Azure jsou v některých případech zřídka, ale můžou to trvat kdekoliv pár minut až hodin. Výpadky datového centra můžou způsobit přerušení prostředí, která se spoléhají na data sdílená poskytovatelem dat. Pomocí kroků popsaných v tomto článku můžou poskytovatelé dat dál sdílet data se svými spotřebiteli dat v případě výpadku datového centra pro primární oblast hostující vaši sdílenou složku dat. 
 
 ## <a name="achieving-business-continuity-for-azure-data-share"></a>Dosažení provozní kontinuity pro sdílenou složku Azure
 
-Aby bylo možné podobu výpadku datového centra připravit, může mít poskytovatel dat v sekundární oblasti zřízené prostředí pro sdílení dat. Existují míry, které je možné provést, což zajistí hladké převzetí služeb při selhání v případě, že dojde k výpadku datového centra. 
+Aby bylo možné podobu výpadku datového centra připravit, může mít poskytovatel dat v sekundární oblasti zřízené prostředí pro sdílení dat. K zajištění hladkého převzetí služeb při selhání v případě, že dojde k výpadku datového centra, se dají měřit míry. 
 
-Poskytovatelé dat můžou zřídit sekundární prostředky sdílené složky Azure v další oblasti. Tyto prostředky sdílení dat je možné nakonfigurovat tak, aby zahrnovaly datové sady, které existují v prostředí primárního sdílení dat. Příjemci dat se dají do sdílené složky přidat při konfiguraci prostředí DR nebo v pozdějším časovém okamžiku (tj. jako součást kroků ručního převzetí služeb při selhání.
+Poskytovatelé dat můžou zřídit sekundární prostředky sdílené složky Azure v další oblasti. Tyto prostředky pro sdílení dat je možné nakonfigurovat tak, aby zahrnovaly sdílené složky a datové sady, které existují v primárním prostředku sdílené složky Azure. Můžou pozvat příjemce dat do sekundární sdílené složky při konfiguraci prostředí DR nebo později (tj. jako součást kroků ručního převzetí služeb při selhání.
 
-Pokud příjemci dat mají aktivní předplatné sdílení v sekundárním prostředí zřízené pro účely zotavení po havárii, můžou jako součást převzetí služeb při selhání Povolit plán snímků. Pokud se spotřebitelé dat nechtějí přihlašovat k odběru sekundární oblasti pro účely zotavení po havárii, můžou se k sekundární sdílené složce dat přizvat později v pozdějším okamžiku. 
+Pokud příjemci dat mají aktivní sdílení předplatných v sekundárním prostředí zřízené pro účely zotavení po havárii, můžou jako součást převzetí služeb při selhání Povolit plán snímků. Pokud se uživatelé dat nechtějí přihlásit k odběru sekundární oblasti pro účely zotavení po havárii, můžou se do sekundární sdílené složky pozvat později. 
 
-Příjemci dat můžou mít aktivní sdílení předplatného, které je nečinné pro účely zotavení po havárii, nebo je můžou přidat v pozdějším okamžiku v rámci postupu ručního převzetí služeb při selhání. 
+Příjemci dat můžou mít aktivní sdílení předplatného, které je nečinné pro účely zotavení po havárii, nebo je můžou později pozvat jako součást postupů ručního převzetí služeb při selhání. 
 
 ## <a name="related-information"></a>Související informace
 

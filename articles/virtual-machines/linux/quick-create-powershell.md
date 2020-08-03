@@ -5,21 +5,21 @@ author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 10/17/2018
+ms.date: 07/31/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e18f66beb8f318e993bd9367f5e50740d76db73f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e3d400726bfb65b2548bc773ffb460fe1ad426a0
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510323"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513447"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem v Azure pomocí PowerShellu
 
-Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí modulu Azure PowerShell nasadit do Azure virtuální počítač s Linuxem. V tomto rychlém startu se používá image Ubuntu 16.04 LTS z marketplace od společnosti Canonical. Také se k virtuálnímu počítači připojíte přes SSH a nainstalujete na něj webový server NGINX, abyste virtuální počítač viděli v akci.
+Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí modulu Azure PowerShell nasadit do Azure virtuální počítač s Linuxem. V tomto rychlém startu se používá Image Ubuntu 18,04 LTS z webu z kanonického tvaru. Také se k virtuálnímu počítači připojíte přes SSH a nainstalujete na něj webový server NGINX, abyste virtuální počítač viděli v akci.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
@@ -29,17 +29,18 @@ Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém ho
 
 ## <a name="create-ssh-key-pair"></a>Vytvoření páru klíčů SSH
 
-K dokončení tohoto rychlého startu potřebujete pár klíčů SSH. Pokud už máte pár klíčů SSH, můžete tento krok přeskočit.
+K vytvoření páru klíčů SSH použijte [ssh-keygen](https://www.ssh.com/ssh/keygen/) . Pokud už máte pár klíčů SSH, můžete tento krok přeskočit.
 
-Otevřete prostředí Bash a pomocí nástroje [ssh-keygen](https://www.ssh.com/ssh/keygen/) vytvořte pár klíčů SSH. Pokud na místním počítači nemáte prostředí Bash, můžete použít [Azure Cloud Shell](https://shell.azure.com/bash).  
 
 ```azurepowershell-interactive
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-Podrobnější informace o vytváření párů klíčů SSH, včetně použití PuTTY, najdete v tématu [Jak používat klíče SSH s Windows](ssh-from-windows.md).
+Zobrazí se výzva k zadání názvu souboru pro dvojici klíčů nebo můžete použít **ENTER** a použít výchozí umístění `/home/<username>/.ssh/id_rsa` . V případě, že budete chtít, budete moct vytvořit i heslo pro klíče.
 
-Pokud pár klíčů SSH vytvoříte pomocí služby Cloud Shell, uloží se do image kontejneru v [účtu úložiště, který automaticky vytvoří Cloud Shell](../../cloud-shell/persisting-shell-storage.md). Tento účet úložiště ani sdílenou složku v něm neodstraňujte, dokud nenačtete své klíče, jinak ztratíte přístup k virtuálnímu počítači. 
+Podrobnější informace o tom, jak vytvořit páry klíčů SSH, najdete v tématu [použití klíčů ssh v systému Windows](ssh-from-windows.md).
+
+Pokud vytvoříte pár klíčů SSH pomocí Cloud Shell, uloží se do [účtu úložiště, který se automaticky vytvoří pomocí Cloud Shell](../../cloud-shell/persisting-shell-storage.md). Neodstraňujte si účet úložiště nebo do něj sdílejte soubory, dokud si klíče nenačtete nebo ztratíte přístup k virtuálnímu počítači. 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -147,7 +148,7 @@ Set-AzVMOperatingSystem `
 Set-AzVMSourceImage `
   -PublisherName "Canonical" `
   -Offer "UbuntuServer" `
-  -Skus "16.04-LTS" `
+  -Skus "18.04-LTS" `
   -Version "latest" | `
 Add-AzVMNetworkInterface `
   -Id $nic.Id
@@ -178,7 +179,7 @@ Vytvořte k virtuálnímu počítači připojení SSH s použitím jeho veřejn�
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ```
 
-Do stejného prostředí Bash, které jste použili k vytvoření páru klíčů SSH (například [Azure Cloud Shell](https://shell.azure.com/bash) nebo místní prostředí Bash), vložte příkaz pro připojení přes SSH a vytvořte relaci SSH.
+Pomocí stejného prostředí, které jste použili k vytvoření páru klíčů SSH, vložte do prostředí následující příkaz, abyste mohli vytvořit relaci SSH. *10.111.12.123* nahraďte IP adresou vašeho virtuálního počítače.
 
 ```bash
 ssh azureuser@10.111.12.123

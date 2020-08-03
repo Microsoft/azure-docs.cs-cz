@@ -1,17 +1,17 @@
 ---
 title: Jak monitorovat Azure Data Share
 description: Naučte se monitorovat stav pozvánky, sdílet odběry a historii snímků ve službě Azure Data Share.
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 07/10/2019
-ms.openlocfilehash: 3ee3f0d37c8e35972a1fc2b8c5d04504d2e065f3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 2a986afa1916d179834c516a26f76a2789f82452
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120190"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511883"
 ---
 # <a name="monitor-azure-data-share"></a>Monitorování služby Azure Data Share  
 

@@ -1,30 +1,32 @@
 ---
-title: 'Koncepty: tok dat v rozhraní API Azure pro FHIR v konektoru IoT (Preview)'
-description: Pochopení toku dat konektoru IoT IoT Connector ingestuje, normalizuje, seskupuje, transformuje a ukládá IoMT data do Azure API pro FHIR.
+title: 'Koncepty: tok dat ve službě Azure IoT Connector pro FHIR (Preview) funkce Azure API pro FHIR'
+description: Seznámení se službou Azure IoT Connector pro tok dat FHIR (Preview). Azure IoT Connector pro FHIR (Preview) ingestuje, normalizuje, seskupuje, transformuje a ukládá IoMT data do Azure API pro FHIR.
 services: healthcare-apis
 author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 07/31/2020
 ms.author: punagpal
-ms.openlocfilehash: c2d150fcd35bc51478a1d7f4a0407abce1446c06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43b7bcba97617d6931fd5c191e62e833a25bf89d
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097332"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513365"
 ---
-# <a name="iot-connector-preview-data-flow"></a>Tok dat konektoru IoT Connector (Preview)
+# <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Datový tok Azure IoT Connector pro FHIR (Preview)
 
-Tento článek poskytuje přehled toku dat v konektoru IoT. Dozvíte se o různých fázích zpracování dat v rámci služby IoT Connector, které transformují data zařízení na FHIRé prostředky pro [pozorování](https://www.hl7.org/fhir/observation.html) .
+Tento článek poskytuje přehled toku dat ve službě Azure IoT Connector pro FHIR *. V rámci služby Azure IoT Connector se dozvíte víc o různých fázích zpracování dat pro FHIR, které transformují data zařízení do [pozorovacích](https://www.hl7.org/fhir/observation.html) prostředků založených na FHIR.
 
-![Tok dat konektoru IoT](media/concepts-iot-data-flow/iot-connector-data-flow.png)
+![Azure IoT Connector pro tok dat FHIR](media/concepts-iot-data-flow/iot-connector-data-flow.png)
 
-Diagram výše znázorňuje různé fáze toku dat v rámci konektoru IoT. 
+Diagram výše znázorňuje běžné toky dat pomocí Azure IoT Connector pro FHIR. 
+
+Níže jsou uvedeny různé fáze, kterými data procházejí po přijetí službou Azure IoT Connector pro FHIR.
 
 ## <a name="ingest"></a>Ingestování
-Ingestuje se první fáze, kdy se data zařízení přijímají do konektoru IoT. Koncový bod přijímání dat zařízení je hostovaný v [centru událostí Azure](https://docs.microsoft.com/azure/event-hubs/). Platforma Azure Event hub podporuje vysoké škálování a propustnost s možností přijímat a zpracovávat miliony zpráv za sekundu. Také umožňuje konektoru IoT Connector zpracovávat zprávy asynchronně a odebrat nutnost čekat na zpracování dat ze zařízení.
+Ingestuje se první fáze, kdy se data zařízení přijímají do služby Azure IoT Connector pro FHIR. Koncový bod přijímání dat zařízení je hostovaný v [centru událostí Azure](https://docs.microsoft.com/azure/event-hubs/). Platforma Azure Event hub podporuje vysoké škálování a propustnost s možností přijímat a zpracovávat miliony zpráv za sekundu. Umožňuje taky službě Azure IoT Connector pro FHIR spotřebovávat zprávy asynchronně a odebrat nutnost čekat na zpracování dat ze zařízení.
 
 > [!NOTE]
 > Formát JSON je v tuto chvíli jediným podporovaným formátem pro data zařízení.
@@ -37,7 +39,7 @@ Proces normalizace nejen zjednodušuje zpracování dat v pozdějších fázích
 ## <a name="group"></a>Skupina
 Skupina je další fáze, kde se normalizované zprávy dostupné z předchozí fáze seskupují pomocí tří různých parametrů: identita zařízení, typ měření a časové období.
 
-Seskupení typů identit a měření zařízení povoluje použití typu měření [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) . Tento typ poskytuje stručný způsob reprezentace časových řad měření ze zařízení v FHIR. A časové období řídí latenci, při které se prostředky sledování vygenerované službou IoT Connector zapisují do Azure API pro FHIR.
+Seskupení typů identit a měření zařízení povoluje použití typu měření [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) . Tento typ poskytuje stručný způsob reprezentace časových řad měření ze zařízení v FHIR. A časové období řídí latenci, při které se prostředky sledování vygenerované službou Azure IoT Connector pro FHIR zapisují do Azure API pro FHIR.
 
 > [!NOTE]
 > Hodnota časového období je nastavena na 15 minut a nelze ji nakonfigurovat pro verzi Preview.
@@ -50,7 +52,7 @@ V tomto okamžiku se ze serveru FHIR načte taky prostředek [zařízení](https
 > [!NOTE]
 > Po vyřešení veškerého zatížení serveru FHIR jsou všechny zdroje uložené v mezipaměti. Pokud plánujete opakované použití zařízení s více pacienty, doporučujeme vytvořit prostředek virtuálního zařízení, který je specifický pro pacient a poslat identifikátor virtuálního zařízení v datové části zprávy. Virtuální zařízení je možné propojit s aktuálním prostředkem zařízení jako nadřazeným objektem.
 
-Pokud na serveru FHIR neexistuje žádný prostředek zařízení pro daný identifikátor zařízení, bude výsledek záviset na hodnotě `Resolution Type` nastavené v době vytvoření. Při nastavení na je `Lookup` specifická zpráva ignorována a kanál bude pokračovat ve zpracování dalších příchozích zpráv. Pokud je nastaveno na `Create` , IoT Connector vytvoří holé prostředky zařízení a pacienta na serveru FHIR.  
+Pokud na serveru FHIR neexistuje žádný prostředek zařízení pro daný identifikátor zařízení, bude výsledek záviset na hodnotě `Resolution Type` nastavené v době vytvoření. Při nastavení na je `Lookup` specifická zpráva ignorována a kanál bude pokračovat ve zpracování dalších příchozích zpráv. Pokud je nastavená na `Create` , Azure IoT Connector pro FHIR vytvoří holé prostředky zařízení a pacienta na serveru FHIR.  
 
 ## <a name="persist"></a>Persist
 Jakmile se prostředek sledování FHIR ve fázi transformace vygeneruje, uloží se prostředek do Azure API pro FHIR. Pokud je prostředek FHIR nový, vytvoří se na serveru. Pokud prostředek FHIR už existuje, bude aktualizovaný.
@@ -60,7 +62,8 @@ Jakmile se prostředek sledování FHIR ve fázi transformace vygeneruje, ulož�
 Pokud chcete zjistit, jak vytvořit šablony mapování zařízení a FHIR, klikněte níže na další krok.
 
 >[!div class="nextstepaction"]
->[Šablony mapování konektoru IoT](iot-mapping-templates.md)
+>[Azure IoT Connector pro šablony mapování FHIR](iot-mapping-templates.md)
 
+* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview).
 
 FHIR je registrovaná ochranná známka HL7 a používá se s povolením HL7.

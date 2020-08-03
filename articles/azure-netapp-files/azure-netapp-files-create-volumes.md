@@ -1,6 +1,6 @@
 ---
 title: Vytvoření svazku NFS pro Azure NetApp Files | Microsoft Docs
-description: Popisuje, jak vytvořit svazek NFS pro Azure NetApp Files.
+description: V tomto článku se dozvíte, jak vytvořit svazek NFS v Azure NetApp Files. Seznamte se s důležitými informacemi, jako je třeba verze, kterou chcete použít, a osvědčenými postupy.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 7f14ac279f14feb3f83490ab96965d4355bed125
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 2e1e6ad6625586e882551521111057a2a20f0fff
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169446"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513039"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Vytvoření svazku NFS pro Azure NetApp Files
 
