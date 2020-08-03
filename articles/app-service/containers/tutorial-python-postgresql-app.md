@@ -10,12 +10,13 @@ ms.custom:
 - seo-python-october2019
 - cli-validate
 - tracking-python
-ms.openlocfilehash: 718c9a62cc867e5d65cc3c79e78ce3282f1037c7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+- devx-track-azurecli
+ms.openlocfilehash: dfc7cf0a0d3b46020d94e86a3158b1e0cbf6ea5f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285845"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87485282"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: nasazení webové aplikace v Django s PostgreSQL v Azure App Service
 

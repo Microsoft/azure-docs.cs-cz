@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: a4b969ecbc92df45021b4a9ec711960171d77d4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: abc1f1de45fe846f9f50a6a7aa3dae2ed837b52b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495291"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486790"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>Dotazování na data z Azure Time Series Insights Gen2
 
@@ -37,7 +37,7 @@ Podporují se následující základní rozhraní API.
 
 ## <a name="environment-apis"></a>Rozhraní API prostředí
 
-* [Získat rozhraní API prostředí](https://docs.microsoft.com/rest/api/time-series-insights/management/environments/get): vrátí seznam prostředí, ke kterým má volající oprávnění k přístupu.
+* [Získat rozhraní API prostředí](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment): vrátí seznam prostředí, ke kterým má volající oprávnění k přístupu.
 * [Získat rozhraní API pro dostupnost prostředí](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability): vrátí distribuci počtu událostí přes časové razítko události `$ts` . Toto rozhraní API pomáhá určit, jestli se v prostředí vyskytují nějaké události, a to tak, že vrátí počet událostí v časových intervalech, pokud existují.
 * [Získat rozhraní API pro schéma událostí](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema): vrátí metadata schématu události pro daný rozsah hledání. Toto rozhraní API pomáhá načíst všechna metadata a vlastnosti, které jsou ve schématu k dispozici pro daný rozsah hledání.
 

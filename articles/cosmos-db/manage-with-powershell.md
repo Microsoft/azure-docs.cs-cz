@@ -7,25 +7,25 @@ ms.topic: how-to
 ms.date: 05/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 1e43cc48a6c4684326a152adedabcd00a44657a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d17d7e03c1a0fff642edbac912e596ecb030706d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390835"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486472"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Správa prostředků rozhraní SQL API Azure Cosmos DB pomocí PowerShellu
 
 Následující příručka popisuje, jak pomocí PowerShellu skriptovat a automatizovat správu prostředků Azure Cosmos DB, včetně účtů, databází, kontejnerů a propustnosti.
 
 > [!NOTE]
-> Ukázky v tomto článku využívají rutiny [AZ. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) Management. Nejnovější změny najdete na stránce s referenční stránkou [AZ. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) API.
+> Ukázky v tomto článku využívají rutiny [AZ. CosmosDB](/powershell/module/az.cosmosdb) Management. Nejnovější změny najdete na stránce s referenční stránkou [AZ. CosmosDB](/powershell/module/az.cosmosdb) API.
 
 Pro správu Azure Cosmos DB pro různé platformy můžete použít `Az` `Az.CosmosDB` rutiny a s [prostředím PowerShell pro různé platformy](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)a také rozhraní příkazového [řádku Azure CLI](manage-with-cli.md), [REST API][rp-rest-api]nebo [Azure Portal](create-sql-api-dotnet.md#create-account).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="getting-started"></a>Začínáme
+## <a name="getting-started"></a>začínáme
 
 Postupujte podle pokynů v tématu [instalace a konfigurace Azure PowerShell][powershell-install-configure] pro instalaci a přihlášení ke svému účtu Azure v prostředí PowerShell.
 
@@ -475,6 +475,7 @@ Remove-AzResourceLock `
 Následující části ukazují, jak spravovat Azure Cosmos DB kontejner, včetně:
 
 * [Vytvoření kontejneru Azure Cosmos DB](#create-container)
+* [Vytvoření kontejneru Azure Cosmos DB s AutoScale](#create-container-autoscale)
 * [Vytvoření kontejneru Azure Cosmos DB s velkým klíčem oddílu](#create-container-big-pk)
 * [Získání propustnosti Azure Cosmos DB kontejneru](#get-container-ru)
 * [Vytvoření kontejneru Azure Cosmos DB s vlastním indexováním](#create-container-custom-index)
@@ -496,6 +497,7 @@ $accountName = "mycosmosaccount"
 $databaseName = "myDatabase"
 $containerName = "myContainer"
 $partitionKeyPath = "/myPartitionKey"
+$throughput = 400 #minimum = 400
 
 New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
@@ -503,7 +505,29 @@ New-AzCosmosDBSqlContainer `
     -DatabaseName $databaseName `
     -Name $containerName `
     -PartitionKeyKind Hash `
-    -PartitionKeyPath $partitionKeyPath
+    -PartitionKeyPath $partitionKeyPath `
+    -Throughput $throughput
+```
+
+### <a name="create-an-azure-cosmos-db-container-with-autoscale"></a><a id="create-container-autoscale"></a>Vytvoření kontejneru Azure Cosmos DB s AutoScale
+
+```azurepowershell-interactive
+# Create an Azure Cosmos DB container with default indexes and autoscale throughput at 4000 RU
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$partitionKeyPath = "/myPartitionKey"
+$autoscaleMaxThroughput = 4000 #minimum = 4000
+
+New-AzCosmosDBSqlContainer `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -PartitionKeyKind Hash `
+    -PartitionKeyPath $partitionKeyPath `
+    -AutoscaleMaxThroughput $autoscaleMaxThroughput
 ```
 
 ### <a name="create-an-azure-cosmos-db-container-with-a-large-partition-key-size"></a><a id="create-container-big-pk"></a>Vytvoření kontejneru Azure Cosmos DB s velkou velikostí klíče oddílu

@@ -7,22 +7,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/30/2018
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 465643d21d3059cd41948ff682d7464b00f749c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c9edaf3356ea4c1a521a89f2ec60a4b6ba1a5ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384001"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481491"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>Nastavení samoobslužného resetování hesla pro vaše zákazníky
 
 Díky funkci samoobslužného resetování hesla si vaši zákazníci, kteří si zaregistrovali místní účty, můžou svá hesla resetovat sami. To významně snižuje zatížení pracovníků podpory, zejména v případě, že vaše aplikace má v pravidelných intervalech miliony zákazníků. V současné době je jako jediná podporovaná metoda obnovení použita ověřená e-mailová adresa.
 
 > [!NOTE]
-> Tento článek se týká samoobslužného resetování hesla, které se používá v souvislosti s uživatelským tokem **přihlášení** V1, který jako zprostředkovatele identity používá **přihlášení pomocí místního účtu** . Pokud potřebujete plně přizpůsobitelné uživatelské toky pro resetování hesla vyvolané z vaší aplikace, přečtěte si [Tento článek](user-flow-overview.md).
+> Tento článek se týká samoobslužného resetování hesla, které se používá v kontextu uživatelského toku standardního **přihlašování** , který jako poskytovatele identity používá **přihlášení pomocí místního účtu** . Pokud potřebujete plně přizpůsobitelné uživatelské toky pro resetování hesla vyvolané z vaší aplikace, přečtěte si [Tento článek](user-flow-overview.md).
 >
 >
 

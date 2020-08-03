@@ -9,12 +9,13 @@ ms.topic: include
 ms.date: 07/27/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: cc5db825771369d35b447232b58a9e42b14efb4f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-javascript
+ms.openlocfilehash: b1a0425fba7dc8c6fb87f03305062f61fc431ca9
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375812"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87451297"
 ---
 <a name="HOLTop"></a>
 
@@ -211,7 +212,7 @@ Spusťte kód `node index.js` v okně konzoly.
 
 ---
 
-## <a name="language-detection"></a>rozpoznávání jazyka,
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
 #### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
@@ -265,7 +266,7 @@ Document ID: 3 , Language: Chinese_Simplified
 #### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 > [!NOTE]
-> Ve verzi `3.0-preview` :
+> Ve verzi `3.0` :
 > * Odkaz na entitu je samostatný požadavek než NER.
 
 Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte `recognizeEntities()` metodu klienta a získejte `RecognizeEntitiesResult` objekt. Iterujte seznamem výsledků a vytiskněte název entity, typ, podtyp, posun, délku a skóre.
@@ -410,7 +411,7 @@ Document ID: 2
 
 ---
 
-## <a name="key-phrase-extraction"></a>extrakce klíčových frází,
+## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
 #### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 

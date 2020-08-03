@@ -7,12 +7,13 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: 8d84db9f9c36dc2818c78c5091b1ebe29c35f865
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: af8bd9a0420c90df4dea16fa8ebacbf4ea6494db
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726192"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488124"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Uspořádání událostí připojení zařízení z Azure IoT Hubu pomocí služby Azure Cosmos DB
 
@@ -154,7 +155,7 @@ Napřed vytvořte aplikaci logiky a přidejte trigger služby Event Grid, který
 
 4. V návrháři aplikace logiky se posuňte doprava, dokud neuvidíte běžné aktivační události. V části **šablony**vyberte **prázdná aplikace logiky** , abyste mohli vytvořit aplikaci logiky od začátku.
 
-### <a name="select-a-trigger"></a>Výběr triggeru
+### <a name="select-a-trigger"></a>Výběr aktivační události
 
 Trigger je konkrétní událost, která spustí aplikaci logiky. V tomto kurzu trigger, který spustí pracovní postup, přijímá žádost přes protokol HTTP.
 
@@ -236,7 +237,7 @@ V pracovním postupu aplikace logiky můžou podmínky po předání této konkr
 
    ![naplnění aplikace logiky pro každý](./media/iot-hub-how-to-order-connection-state-events/logicapp-foreach-body.png)
 
-8. Uložte svou aplikaci logiky.
+8. Uložte aplikaci logiky.
 
 ### <a name="copy-the-http-url"></a>Zkopírujte adresu URL protokolu HTTP
 
@@ -278,7 +279,7 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
 
    ![Ukázkový formulář odběru události](./media/iot-hub-how-to-order-connection-state-events/subscription-form.png)
 
-   Výběrem možnosti **Vytvořit** uložte odběr události.
+   Vyberte **Vytvořit**, aby se odběr událostí uložil.
 
 ## <a name="observe-events"></a>Sledovat události
 
@@ -286,11 +287,11 @@ Teď, když je vaše předplatné událostí nastavené, otestujeme připojení 
 
 ### <a name="register-a-device-in-iot-hub"></a>Registrace zařízení v IoT Hub
 
-1. V centru IoT vyberte **Zařízení IoT**.
+1. Ve službě IoT Hub vyberte **zařízení IoT**.
 
 2. V horní části podokna vyberte **+ Přidat** .
 
-3. Pro **ID zařízení** zadejte `Demo-Device-1`.
+3. Jako **ID zařízení** zadejte `Demo-Device-1`.
 
 4. Vyberte **Uložit**.
 

@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: ca41a403f789fd529ac65c21799d3d3e7f3becf6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bbd3cb88b017209adff58a646e274caf31ab425f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285454"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486438"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Řešení potíží se službou Live video Analytics na IoT Edge
 
@@ -234,7 +234,7 @@ Live video Analytics prostřednictvím procesoru rozšíření HTTP může rozš
 
     ![Snímek obrazovky, který zobrazuje stav spuštěných modulů v Azure IoT Hub.](./media/troubleshoot-how-to/iot-hub.png)
 
-* Zkontrolujte, zda odesíláte události do správného koncového bodu adresy URL. Externí kontejner AI zpřístupňuje adresu URL a port, přes který obdrží, a vrátí data z požadavků POST. Tato adresa URL je zadána jako `endpoint: url` vlastnost pro procesor rozšíření http. Jak je vidět na [adrese URL topologie](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json), koncový bod je nastaven na parametr adresy URL Inferencing. Ujistěte se, že výchozí hodnota pro [parametr](http://yolov3/score) nebo předaná hodnota je přesná. Můžete otestovat a zjistit, zda funguje pomocí adresy URL klienta (kudrlinkou).  
+* Zkontrolujte, zda odesíláte události do správného koncového bodu adresy URL. Externí kontejner AI zpřístupňuje adresu URL a port, přes který obdrží, a vrátí data z požadavků POST. Tato adresa URL je zadána jako `endpoint: url` vlastnost pro procesor rozšíření http. Jak je vidět na [adrese URL topologie](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json), koncový bod je nastaven na parametr adresy URL Inferencing. Ujistěte se, že výchozí hodnota pro parametr nebo předaná hodnota je přesná. Můžete otestovat a zjistit, zda funguje pomocí adresy URL klienta (kudrlinkou).  
 
     Tady je příklad kontejner Yolo v3, který běží na místním počítači s IP adresou 172.17.0.3. K vyhledání IP adresy použijte Docker kontroler.
 

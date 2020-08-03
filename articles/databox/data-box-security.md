@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 3ec5889d952e2836f1d112e38b8248f667cab586
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7b74c40ab504c08f5a19a1382c303530116c0fdf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200402"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483825"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Zabezpečení a ochrana dat v zařízení Azure Data Box
 
@@ -68,7 +68,7 @@ Služba Data Box Disk je chráněná následujícími funkcemi.
 
 - Přístup ke službě Data Box vyžaduje, aby vaše organizace měla předplatné Azure, které zahrnuje Data Box. Vaše předplatné určuje funkce, které máte na webu Azure Portal dostupné.
 - Protože služba Data Box je hostovaná v Azure, je chráněna funkcemi zabezpečení Azure. Další informace o funkcích zabezpečení poskytovaných v prostředí Microsoft Azure najdete v [Centru zabezpečení Microsoft Azure](https://www.microsoft.com/TrustCenter/Security/default.aspx).
-- Přístup k pořadí Data Box lze řídit pomocí rolí Access Control RBAC (role) na základě rolí. Další informace najdete v tématu [nastavení řízení přístupu pro pořadí data box](data-box-logs.md#set-up-access-control-on-the-order) .
+- Přístup k pořadí Data Box lze řídit pomocí rolí Azure. Další informace najdete v tématu [nastavení řízení přístupu pro pořadí data box](data-box-logs.md#set-up-access-control-on-the-order) .
 - Služba Data Box ukládá heslo pro odemčení, které slouží k odemčení zařízení ve službě.
 - Služba Data Box ukládá údaje o objednávce a stavu přenosu v úložišti služby. Tyto informace se odstraní při smazání objednávky.
 
@@ -84,9 +84,9 @@ Azure Data Box shromažďuje a zobrazuje osobní údaje v následujících klí�
   - Telefonní číslo
   - E-mail
   - Ulice a číslo
-  - City (Město)
+  - Město
   - PSČ
-  - Stav
+  - State
   - Provincie/kraj/oblast
   - Číslo účtu dopravce
   - Sledovací číslo zásilky

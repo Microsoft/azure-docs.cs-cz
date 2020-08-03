@@ -10,16 +10,16 @@ ms.date: 07/27/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 6e8e00d7f9f529010cf99ae5a180c1ecb0a74177
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e0edd688fa34033209798603ef15352b42cd9497
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375577"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87451156"
 ---
 <a name="HOLTop"></a>
 
-[Referenční dokumentace](https://aka.ms/azsdk-java-textanalytics-ref-docs)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics)  |  [Balíček](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Referenční dokumentace](https://aka.ms/azsdk-java-textanalytics-ref-docs)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics)  |  [Balíček](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,7 +33,7 @@ ms.locfileid: "87375577"
 
 ### <a name="add-the-client-library"></a>Přidat klientskou knihovnu
 
-Vytvořte projekt Maven v upřednostňovaném prostředí IDE nebo vývojovém prostředí. Pak přidejte následující závislost do souboru *pom.xml* projektu. Syntaxi implementace [pro jiné nástroje buildu](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0) můžete najít online.
+Vytvořte projekt Maven v upřednostňovaném prostředí IDE nebo vývojovém prostředí. Pak přidejte následující závislost do souboru *pom.xml* projektu. Syntaxi implementace [pro jiné nástroje buildu](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0) můžete najít online.
 
 ```xml
 <dependencies>
@@ -148,7 +148,7 @@ Recognized sentence sentiment: positive, positive score: 1.0, neutral score: 0.0
 Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.77, negative score: 0.02.
 ```
 
-## <a name="language-detection"></a>rozpoznávání jazyka,
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
 Vytvořte novou funkci s názvem `detectLanguageExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `detectLanguage()` funkci. Vrácený `DetectLanguageResult` objekt bude obsahovat nalezen primární jazyk, seznam dalších jazyků, který byl nalezen v případě úspěchu, nebo v `errorMessage` případě potřeby.
 
@@ -264,7 +264,7 @@ Name: BASIC, ID: BASIC, URL: https://en.wikipedia.org/wiki/BASIC, Data Source: W
 Matches:
 Text: BASIC, Score: 0.33
 ```
-## <a name="key-phrase-extraction"></a>extrakce klíčových frází,
+## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
 Vytvořte novou funkci s názvem `extractKeyPhrasesExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `extractKeyPhrases()` funkci. Vrácený `ExtractKeyPhraseResult` objekt bude obsahovat seznam klíčových frází, pokud je to úspěšné, nebo `errorMessage` Pokud ne.
 

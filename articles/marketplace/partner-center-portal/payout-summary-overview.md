@@ -7,21 +7,21 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 4ee970f7e4a1228d40a284372300ed9e95c00b7e
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 2e7658e965931dd78a6db0e2c9fee36edffff98b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460384"
+ms.locfileid: "87479808"
 ---
 # <a name="payout-summary-overview"></a>Souhrnný přehled plateb
 
 [Souhrn výběrů](./payout-summary.md) vám ukáže podrobnosti o peníze, které jste získali od Microsoftu. Také vám umožní zjistit, kdy obdržíte platby a kolik vám bude placeno.
 
-Pokud prodáváte nabídky v Azure Marketplace, zobrazí se také informace o úspěšných výběrech v souhrnu výběrů. Další informace o platbě Azure Marketplace najdete v tématu [Azure Marketplace zásady účasti](https://docs.microsoft.com/legal/marketplace/participation-policy) a [Microsoft Azure Marketplace smlouvu vydavatele](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt).
+Pokud prodáváte nabídky v Azure Marketplace, zobrazí se také informace o úspěšných výběrech v souhrnu výběrů. Další informace o platbě Azure Marketplace najdete v tématu [Azure Marketplace zásady účasti](https://docs.microsoft.com/legal/marketplace/participation-policy) a [Microsoft Azure Marketplace smlouvu vydavatele](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 > [!NOTE]
-> Aby bylo možné výsledek vyhodnotit, vaše výtěžek musí dosáhnout [prahové hodnoty pro platbu](./payment-thresholds-methods-timeframes.md) $50. Podrobnosti o prahové hodnotě platby najdete v [Microsoft Azure Marketplace smlouvě vydavatele](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt).
+> Aby bylo možné výsledek vyhodnotit, vaše výtěžek musí dosáhnout [prahové hodnoty pro platbu](./payment-thresholds-methods-timeframes.md) $50. Podrobnosti o prahové hodnotě platby najdete v [Microsoft Azure Marketplace smlouvě vydavatele](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx).
 
 Chcete-li zobrazit podrobnosti výběru, přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home) a v pravém horním rohu obrazovky vyberte ikonu výběr:
 

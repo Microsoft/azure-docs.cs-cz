@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f7e9a76309b4d9dcd010b85d1b55f340374be5c4
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 960fff073353375cd50b31bc7284134ca733f142
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337921"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488019"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>O dotazovacím jazyku pro digitální vlákna Azure
 
@@ -20,23 +20,7 @@ Odvolat, že střed digitálních vláken Azure je [**dvojitým grafem**](concep
 
 K odeslání dotazu do služby z klientské aplikace použijete [**rozhraní API pro dotazování**](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.digitaltwinsclient.query?view=azure-dotnet-preview)digitálních vláken Azure. To umožňuje vývojářům psát dotazy a používat filtry pro hledání sad digitálních vláken ve dvojitých grafech a další informace o scénáři digitálních vláken Azure.
 
-## <a name="query-language-features"></a>Funkce jazyka dotazů
-
-Digitální vlákna Azure poskytuje rozsáhlé možnosti dotazování pro dvojitou graf. Dotazy jsou popsány pomocí syntaxe jako v jazyce SQL, podobně jako [dotazovací jazyk IoT Hub](../iot-hub/iot-hub-devguide-query-language.md) s mnoha srovnatelnými funkcemi.
-
-> [!NOTE]
-> U všech operací dotazů na digitální vlákna Azure se rozlišují velká a malá písmena.
-
-Tady jsou dostupné operace v jazyce úložiště dotazů digitálních vláken Azure:
-* Získejte vlákna podle vlastností digitálních vláken (včetně [značek](how-to-use-tags.md)).
-* Získejte vlákna pomocí rozhraní digitálních vláken.
-* Získejte vlákna podle vlastností vztahu.
-* Získejte vlákna v několika typech vztahů ( `JOIN` dotazů). Existují omezení počtu `JOIN` povolených (jedna úroveň pro veřejnou verzi Preview).
-* Použijte vlastní funkci `IS_OF_MODEL(twinCollection, twinTypeName)` , která umožňuje filtrování na základě [modelu](concepts-models.md)vlákna. Podporuje dědičnost.
-* Použijte skalární funkce: `IS_BOOL` , `IS_DEFINED` , `IS_NULL` , `IS_NUMBER` , `IS_OBJECT` , `IS_PRIMITIVE` , `IS_STRING` , `STARTS_WITH` , `ENDS_WITH` .
-* Použití relačních operátorů dotazu: `IN` / `NIN` , `=` , `!=` , `<` , `>` , `<=` , `>=` .
-* Použijte libovolnou kombinaci ( `AND` , `OR` , `NOT` operátor) výše uvedeného.
-* Použít pokračování: objekt dotazu má vytvořenou velikost stránky (až 100). Pomocí tokenu pokračování v následných voláních rozhraní API můžete načíst digitální vlákna na jednu stránku po dobu.
+[!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

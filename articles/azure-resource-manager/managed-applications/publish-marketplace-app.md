@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: dcd036f09982cba8271ed6057a167eb7440303a9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: a5e2a3569c70404d64d24ecfc35a8258ea864a4f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054487"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480420"
 ---
 # <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Kurz: publikování spravovaných aplikací Azure na webu Marketplace
 
@@ -98,7 +98,7 @@ Skladová položka se na marketplace zobrazí pod příslušnou nadřazenou nab�
 
      Dostupné akce najdete v tématu [Azure Resource Manager operací poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md). Například pokud chcete, aby uživatelé mohli restartovat virtuální počítače, přidejte `Microsoft.Compute/virtualMachines/restart/action` do povolených akcí. `*/read`Akce je povolena automaticky, takže nemusíte toto nastavení zahrnovat.
    * **PrincipalId:** Tato vlastnost je identifikátor Azure Active Directory (Azure AD) pro uživatele, skupinu uživatelů nebo aplikaci, kteří mají přístup k prostředkům v předplatném uživatele. Definice role popisuje tato oprávnění.
-   * **Role Definition (Definice role):** Tato vlastnost je seznamem všech integrovaných rolí pro řízení přístupu na základě role (RBAC), které poskytuje Azure AD. Můžete vybrat roli, která je nejvhodnější pro správu prostředků v zastoupení uživatele.
+   * **Definice role**: Tato vlastnost je seznam všech předdefinovaných rolí Azure poskytovaných službou Azure AD. Můžete vybrat roli, která je nejvhodnější pro správu prostředků v zastoupení uživatele.
    * **Nastavení zásad:** Použijte na svou spravovanou aplikaci zásady [Azure Policy](../../governance/policy/overview.md), abyste u nasazených řešení určili požadavky na dodržování předpisů. Z dostupných možností vyberte požadované zásady. V části **Parametry zásad** zadejte řetězec JSON s hodnotami parametrů. Definice zásad a formátování hodnot parametrů najdete v tématu [Ukázky Azure Policy](../../governance/policy/samples/index.md).
 
 Autorizací můžete přidat několik. Doporučujeme, abyste vytvořili skupinu uživatelů AD a její ID zadali do **PrincipalId**. Budete tak mít možnost přidávat do této skupiny uživatelů další uživatele, aniž by bylo nutné aktualizovat SKU.

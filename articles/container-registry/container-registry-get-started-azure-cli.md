@@ -3,13 +3,13 @@ title: Rychlý Start – vytvoření registru – rozhraní příkazového řád
 description: Rychle se naučíte, jak vytvořit privátní registr Dockeru pomocí Azure CLI.
 ms.topic: quickstart
 ms.date: 06/12/2020
-ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: 31e917fa306330ca579266e21560d7d42c7f2bc7
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.custom: seodec18, H1Hack27Feb2017, mvc, devx-track-azurecli
+ms.openlocfilehash: f4e69616d30c6a7b853c5cc854adee147ebde206
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752468"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486540"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI
 
@@ -31,7 +31,7 @@ Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umí
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
 V tomto rychlém startu vytvoříte *základní* registr, což je výhodná možnost pro vývojáře, kteří se naučí o Azure Container Registry. Podrobnosti o dostupných úrovních služby najdete v tématu [úrovně služby registru kontejnerů][container-registry-skus].
 

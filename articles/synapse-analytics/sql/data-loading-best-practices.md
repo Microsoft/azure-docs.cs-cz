@@ -11,18 +11,18 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6321fa484c883e196279ddf33661e78397bc3855
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: acfb2af7d482f9c0a51596818b1302584277defb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963882"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486812"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>Osvědčené postupy načítání dat pro datové sklady
 
 Doporučení a optimalizace výkonu pro načítání dat
 
-## <a name="preparing-data-in-azure-storage"></a>Příprava dat v Azure Storage
+## <a name="prepare-data-in-azure-storage"></a>Příprava dat v Azure Storage
 
 Vrstvu úložiště i datový sklad uložte společně do stejného umístění, abyste minimalizovali latenci.
 
@@ -34,13 +34,13 @@ Všechny formáty souborů mají jiné výkonové charakteristiky. Pokud chcete 
 
 Velké komprimované soubory rozdělte do menších komprimovaných souborů.
 
-## <a name="running-loads-with-enough-compute"></a>Dostatečné výpočetní prostředky pro načítání dat
+## <a name="run-loads-with-enough-compute"></a>Spuštění zátěže s dostatečnými výpočetními prostředky
 
 Největší rychlosti při načítání dosáhnete, když budete spouštět vždy jen jednu úlohu načtení dat. Pokud to není možné, spouštějte souběžně co nejmenší počet úloh. Pokud očekáváte velkou úlohu načítání, zvažte možnost škálovat svůj fond SQL před zatížením.
 
 Pokud chcete spouštět načítání s odpovídajícími výpočetními prostředky, vytvořte uživatele načítání vyhrazené pro spouštění načítání. Přiřaďte každého uživatele načítání do konkrétní třídy prostředku nebo skupiny úloh. Pokud chcete spustit zátěž, přihlaste se jako jeden z uživatelů načítání a potom spusťte načtení. Načítání se spustí s využitím třídy prostředků tohoto uživatele.  Tato metoda je jednodušší než se pokoušet o změnu třídy prostředků uživatele podle aktuálních potřeb třídy prostředků.
 
-### <a name="example-of-creating-a-loading-user"></a>Příklad vytvoření uživatele načítání
+### <a name="create-a-loading-user"></a>Vytvořit uživatele načítání
 
 Tento příklad vytvoří uživatele načítání pro třídu prostředků staticrc20. Prvním krokem je **připojení k předloze** a vytvoření přihlášení.
 
@@ -62,7 +62,7 @@ Pokud chcete spustit zatížení s prostředky pro třídy prostředků staticRC
 
 Spouštějte načítání v rámci statických, a ne dynamických, tříd prostředků. Použití statických tříd prostředků garantuje stejné prostředky bez ohledu na [jednotky datového skladu](resource-consumption-models.md). Pokud použijete dynamickou třídu prostředků, budou se prostředky lišit v závislosti na vaší úrovni služby. V případě dynamických tříd znamená nižší úroveň služby, že pro vašeho uživatele načítání pravděpodobně musíte použít větší třídu prostředků.
 
-## <a name="allowing-multiple-users-to-load"></a>Povolení načítání více uživatelům
+## <a name="allow-multiple-users-to-load"></a>Povolení načtení více uživatelů
 
 Často je potřeba, aby data do datového skladu načítalo více uživatelů. Načítání pomocí [Create Table jako Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) vyžaduje oprávnění k řízení databáze.  Oprávnění CONTROL poskytuje přístup pro řízení ke všem schématům. Pravděpodobně ale nebudete chtít, aby všichni uživatelé, kteří načítají data, měli oprávnění CONTROL pro přístup ke všem schématům. K omezení oprávnění slouží příkaz DENY CONTROL.
 
@@ -75,13 +75,13 @@ Představte si například schémata databáze schema_A pro oddělení A a schem
 
 User_A a user_B jsou nyní uzamčeny ze schématu jiné oddělení.
 
-## <a name="loading-to-a-staging-table"></a>Načítání do pracovní tabulky
+## <a name="load-to-a-staging-table"></a>Načítání do pracovní tabulky
 
 Pokud chcete při přesunu dat do tabulky datového skladu dosáhnout největší načítací rychlosti, načtěte data do pracovní tabulky.  Pracovní tabulku definujte jako haldu a jako způsob distribuce použijte kruhové dotazování (round robin).
 
 Myslete na to, že načítání je většinou dvoufázový proces, kdy napřed načtete data do pracovní tabulky a pak je vložíte do tabulky v provozním datovém skladu. Pokud provozní tabulka používá k distribuci algoritmus hash, může být celková doba načtení a vložení dat kratší, než když k definici pracovní tabulky použijete distribuci hash. Načítání do pracovní tabulky trvá déle, ale druhý krok, který spočívá ve vkládání řádků do provozní tabulky, nepřesouvá data prostřednictvím distribuce.
 
-## <a name="loading-to-a-columnstore-index"></a>Načítání do indexu columnstore
+## <a name="load-to-a-columnstore-index"></a>Načíst do indexu columnstore
 
 Indexy columnstore vyžadují hodně paměti, aby mohly komprimovat data do vysoce kvalitních skupin řádků. Kvůli zajištění co nejlepší účinnosti komprese a indexování musí index columnstore do každé skupiny řádků zkomprimovat maximální počet 1 048 576 řádků. V případě nedostatku paměti nemusí index columnstore dosahovat maximální míry komprese. To zase ovlivňuje výkon dotazů. Podrobné informace najdete v tématu [Optimalizace paměti pro columnstore](data-load-columnstore-compression.md).
 
@@ -92,19 +92,19 @@ Indexy columnstore vyžadují hodně paměti, aby mohly komprimovat data do vyso
 
 Jak už bylo zmíněno dříve, načítající se s využitím základny budou poskytovat nejvyšší propustnost s synapse fondem SQL. Pokud nemůžete použít základnu pro načtení a musí používat rozhraní SQLBulkCopy API (nebo BCP), měli byste zvážit zvýšení propustnosti pro lepší propustnost – dobré pravidlo je velikost dávky mezi 100 tisíc a 1M řádky.
 
-## <a name="handling-loading-failures"></a>Zpracování chyb načítání
+## <a name="manage-loading-failures"></a>Spravovat selhání načítání
 
 Načtení s použitím externí tabulky může selhat s chybou *Query aborted-- the maximum reject threshold was reached while reading from an external source* (Dotaz byl přerušen – při čtení z externího zdroje byla dosažena maximální prahová hodnota pro odmítnutí). Tato zpráva znamená, že vaše externí data obsahují nezapsané záznamy. Datový záznam se považuje za nezapsaný, pokud se typy dat nebo čísla sloupců neshodují s definicemi sloupců externí tabulky nebo pokud data neodpovídají zadanému formátu externího souboru.
 
 Pokud chcete nezapsané záznamy opravit, ujistěte se, že jsou definice formátů externí tabulky a externího souboru správné a že externí data těmto definicím odpovídají. V případě nezapsané podmnožiny externích datových záznamů se můžete rozhodnout, že ve svých dotazech, které využívají možnosti zamítnutí v příkazu CREATE EXTERNAL TABLE, chcete tyto záznamy zamítnout.
 
-## <a name="inserting-data-into-a-production-table"></a>Vložení dat do provozní tabulky
+## <a name="insert-data-into-a-production-table"></a>Vložení dat do produkční tabulky
 
 Při jednorázovém načtení malé tabulky [příkazem INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) nebo i při pravidelně se opakujícím načítání funkcí look-up pravděpodobně vystačíte s následujícím příkazem: `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Vkládání jednotlivých záznamů ale není tak účinné jako hromadné načtení.
 
 Pokud máte za den tisíce nebo více samostatných vložení, vytvořte z nich dávku, abyste je mohli načíst hromadně.  Vyvíjejte své procesy tak, aby samostatná vkládání připojovaly do souboru, a pak vytvořte další proces, který tento soubor bude pravidelně načítat.
 
-## <a name="creating-statistics-after-the-load"></a>Vytvoření statistiky po načtení
+## <a name="create-statistics-after-the-load"></a>Vytvoření statistiky po načtení
 
 Pro zlepšení výkonu dotazů je důležité vytvořit statistiku pro všechny sloupce všech tabulek po prvním načtení, nebo když v datech dojde k zásadnějším změnám.  To můžete provést ručně nebo můžete povolit [Automatické vytváření statistik](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 

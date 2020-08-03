@@ -7,19 +7,60 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/08/2019
-ms.openlocfilehash: b5e26ef72d4be38c021cbedbcaf1fa919d7276d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/31/2020
+ms.openlocfilehash: eb533ef93f012e99d135c49725ef8add77b6f7ec
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511972"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87484194"
 ---
 # <a name="archived-release-notes"></a>Archivované poznámky k verzi
 
 ## <a name="summary"></a>Souhrn
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky pro Open Source Apache Hadoop a Apache Spark analýzy v Azure.
+
+## <a name="release-date-07132020"></a>Datum vydání: 07/13/2020
+
+Tato verze platí pro HDInsight 3,6 a 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
+
+### <a name="new-features"></a>Nové funkce
+#### <a name="support-for-customer-lockbox-for-microsoft-azure"></a>Podpora Customer Lockbox pro Microsoft Azure
+Azure HDInsight teď podporuje Azure Customer Lockbox. Poskytuje rozhraní pro zákazníky, kteří budou kontrolovat a schvalovat nebo odmítat žádosti o přístup k datům zákazníků. Používá se, když Microsoft inženýr potřebuje přístup k zákaznickým datům během žádosti o podporu. Další informace najdete v tématu [Customer Lockbox pro Microsoft Azure](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview).
+
+#### <a name="service-endpoint-policies-for-storage"></a>Zásady koncového bodu služby pro úložiště
+Zákazníci teď můžou používat zásady koncového bodu služby (SEP) v podsíti clusteru HDInsight. Přečtěte si další informace o [zásadách koncového bodu služby Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
+
+### <a name="deprecation"></a>Vyřazení
+#### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Ukončení podpory Sparku 2.1 a 2.2 v clusteru HDInsight 3.6 Spark
+Od července 1 2020 nemohou zákazníci vytvářet nové clustery Spark pomocí Sparku 2,1 a 2,2 ve službě HDInsight 3,6. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na Spark 2,3 ve službě HDInsight 3,6 pomocí června 30 2020, aby se předešlo potenciálnímu přerušení systému/podpory.
+ 
+#### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>Ukončení podpory Sparku 2.3 v clusteru HDInsight 4.0 Spark
+Od července 1 2020 nemohou zákazníci vytvářet nové clustery Spark se Sparkem 2,3 ve službě HDInsight 4,0. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na Spark 2.4 v HDInsight 4.0 nejpozději do 30. června 2020, abyste se vyhnuli možnému přerušení služeb nebo podpory.
+ 
+#### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Ukončení podpory Kafka 1.1 v clusteru HDInsight 4.0 Kafka
+Od července 1 2020 nebudou zákazníci moci vytvářet nové clustery Kafka s Kafka 1,1 ve službě HDInsight 4,0. Existující clustery se spustí, a to bez podpory Microsoftu. Zvažte přechod na Kafka 2.1 v HDInsight 4.0 nejpozději do 30. června 2020, abyste se vyhnuli možnému přerušení služeb nebo podpory.
+
+### <a name="behavior-changes"></a>Změny chování
+Žádné změny chování, ke kterým byste měli věnovat pozornost.
+
+### <a name="upcoming-changes"></a>Nadcházející změny
+V nadcházejících verzích dojde k následujícím změnám. 
+
+#### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Možnost výběru různých Zookeeper SKU pro služby Spark, Hadoop a ML
+HDInsight dnes nepodporuje změnu Zookeeper SKU pro typy clusterů Spark, Hadoop a ML. Používá A2_v2 SKU/a2 pro uzly Zookeeper a zákazníkům se za ně neúčtují poplatky. V nadcházející verzi budou zákazníci moct podle potřeby měnit Zookeeper SKU pro služby Spark, Hadoop a ML. Zookeeper uzly s jinou skladovou jednotkou než A2_v2/a2 budou účtovány. Výchozí SKU bude i nadále A2_V2/a2 a zadarmo.
+
+### <a name="bug-fixes"></a>Opravy chyb
+HDInsight nadále zdokonaluje spolehlivost a výkon clusteru. 
+#### <a name="fixed-hive-warehouse-connector-issue"></a>Problém konektoru pro pevný datový sklad
+Došlo k potížím při použitelnosti konektoru skladu z podregistru v předchozí verzi. Problém byl vyřešen. 
+
+#### <a name="fixed-zeppelin-notebook-truncates-leading-zeros-issue"></a>Pevný Poznámkový blok Zeppelin zkrátí problém s počátečními nulami
+Zeppelin nesprávně zkrátila úvodní nuly ve výstupu tabulky pro formát řetězce. V této verzi jsme tento problém vyřešili.
+
+### <a name="component-version-change"></a>Změna verze součásti
+Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.
 
 ## <a name="release-date-06112020"></a>Datum vydání: 06/11/2020
 
@@ -145,10 +186,10 @@ Tato verze platí pro HDInsight 3,6 a 4,0.
 ### <a name="new-features"></a>Nové funkce
 
 #### <a name="service-tags"></a>Značky služeb
-Značky služeb zjednodušují zabezpečení virtuálních počítačů Azure a virtuálních sítí Azure tím, že umožňují snadno omezit síťový přístup ke službám Azure. Pomocí značek služeb ve skupinách zabezpečení sítě (NSG) můžete povolit nebo odepřít provoz do konkrétní služby Azure globálně nebo podle oblasti Azure. Azure poskytuje údržbu IP adres, které jsou základem jednotlivých značek. Značky služby HDInsight pro skupiny zabezpečení sítě (skupin zabezpečení sítě) jsou skupiny IP adres pro služby stavu a správy. Tyto skupiny vám pomůžou minimalizovat složitost pro vytváření pravidel zabezpečení. Zákazníci HDInsight můžou povolit značku služby prostřednictvím webu Azure Portal, PowerShellu a REST API. Další informace najdete v tématu [značky služby skupiny zabezpečení sítě (NSG) pro Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags).
+Značky služeb zjednodušují zabezpečení virtuálních počítačů Azure a virtuálních sítí Azure tím, že umožňují snadno omezit síťový přístup ke službám Azure. Pomocí značek služeb ve skupinách zabezpečení sítě (NSG) můžete povolit nebo odepřít provoz do konkrétní služby Azure globálně nebo podle oblasti Azure. Azure poskytuje údržbu IP adres, které jsou základem jednotlivých značek. Značky služby HDInsight pro skupiny zabezpečení sítě (skupin zabezpečení sítě) jsou skupiny IP adres pro služby stavu a správy. Tyto skupiny vám pomůžou minimalizovat složitost pro vytváření pravidel zabezpečení. Zákazníci HDInsight můžou povolit značku služby prostřednictvím Azure Portal, PowerShellu a REST API. Další informace najdete v tématu [značky služby skupiny zabezpečení sítě (NSG) pro Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags).
 
 #### <a name="custom-ambari-db"></a>Vlastní Ambari DB
-HDInsight teď umožňuje používat pro Apache Ambari vlastní SQL DB. Tuto vlastní databázi Ambari DB můžete nakonfigurovat z Azure Portal nebo pomocí šablony Resource Manageru.  Tato funkce umožňuje zvolit správnou databázi SQL pro potřeby zpracování a kapacity. Můžete také snadno upgradovat, aby odpovídaly požadavkům na obchodní růst. Další informace najdete v tématu [Nastavení clusterů HDInsight s vlastní AMBARI DB](hdinsight-custom-ambari-db.md).
+HDInsight teď umožňuje používat pro Apache Ambari vlastní SQL DB. Tuto vlastní Ambari DB můžete nakonfigurovat z šablony Azure Portal nebo prostřednictvím Správce prostředků.  Tato funkce umožňuje zvolit správnou databázi SQL pro potřeby zpracování a kapacity. Můžete také snadno upgradovat, aby odpovídaly požadavkům na obchodní růst. Další informace najdete v tématu [Nastavení clusterů HDInsight s vlastní AMBARI DB](hdinsight-custom-ambari-db.md).
 
 ![Vlastní Ambari DB](./media/hdinsight-release-notes/custom-ambari-db.png)
 
@@ -1126,7 +1167,7 @@ Tato verze poskytuje Spark 2.3.0 a následující opravy Apache:
 
 Tato verze poskytuje Sqoop 1.4.6 bez dalších oprav Apache.
 
-#### <a name="storm"></a>Storm
+#### <a name="storm"></a>Bouře
 
 Tato verze poskytuje Zaplavu 1.1.1 a následující opravy Apache:
 
@@ -1160,7 +1201,7 @@ Tato verze poskytuje Zeppelin 0.7.3 bez oprav additionalApache.
 
 Tato verze poskytuje ZooKeeper 3.4.6 a následující opravy Apache:
 
--   [ZOOKEEPER-1256](https://issues.apache.org/jira/browse/ZOOKEEPER-1256): ClientPortBindTest selhává při Mac OS X.
+-   [ZOOKEEPER-1256](https://issues.apache.org/jira/browse/ZOOKEEPER-1256): ClientPortBindTest selhává při MacOS X.
 
 -   [ZOOKEEPER-1901](https://issues.apache.org/jira/browse/ZOOKEEPER-1901): \[ JDK8 \] Seřadit podřízené položky pro porovnání v AsyncOps testech.
 
@@ -1282,7 +1323,7 @@ Opravené problémy představují vybrané problémy, které byly dříve protok
 | CHYBA-98655              | [RANGER-2066](https://issues.apache.org/jira/browse/RANGER-2066)                                                                                                                                                                                                               | HBA – přístup k rodině sloupců je autorizován pomocí tagovaného sloupce ve skupině sloupců.                                       |
 | CHYBA-99883              | [Podregistr-19073](https://issues.apache.org/jira/browse/HIVE-19073), [podregistr-19145](https://issues.apache.org/jira/browse/HIVE-19145)                                                                                                                                                 | StatsOptimizer může pozměněovat konstantní sloupce.                                                                             |
 
-**Jiné**
+**Další**
 
 | **ID chyby Hortonworks** | **Apache JIRA**                                                                                                                        | **Souhrn**                                                                                                                                |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|

@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d7f990b059346c4c782ca923e663997317c4df16
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c33e2152fc120d406886d89adda26603126a8ba
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046882"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483548"
 ---
-# <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>Přístup k externímu úložišti v synapse SQL (na vyžádání)
+# <a name="access-external-storage-in-synapse-sql-on-demand"></a>Přístup k externímu úložišti v synapse SQL (na vyžádání)
 
 Tento dokument popisuje, jak může uživatel číst data ze souborů uložených na Azure Storage v synapse SQL (na vyžádání). Uživatelé mají k dispozici následující možnosti pro přístup k úložišti:
 
@@ -59,7 +59,7 @@ Pokud není k dispozici žádné přihlašovací údaje na úrovni serveru, kter
 > [!NOTE]
 > Tato verze OPENROWSET je navržená pro rychlé a snadné zkoumání dat pomocí výchozího ověřování. Chcete-li využít zosobnění nebo spravovanou identitu, použijte OPENROWSET se zdrojem dat popsaným v následující části.
 
-### <a name="querying-data-sources-using-openrowset"></a>Dotazování na zdroje dat pomocí OPENROWSET
+### <a name="query-data-sources-using-openrowset"></a>Dotazování zdrojů dat pomocí OPENROWSET
 
 OPENROWSET umožňuje uživateli zadat dotaz na soubory umístěné na některém externím zdroji dat:
 
@@ -91,7 +91,7 @@ Volající musí mít jedno z následujících oprávnění ke spuštění funkc
   - `ADMINISTER DATABASE BULK OPERATIONS`umožňuje, aby uživatel s oborem databáze spustil funkci OPENROWSET.
 - ODKAZUJE na přihlašovací údaje VYMEZENé databáze na přihlašovací údaje, na které se odkazuje v EXTERNÍm zdroji dat.
 
-#### <a name="accessing-anonymous-data-sources"></a>Přístup k anonymním zdrojům dat
+#### <a name="access-anonymous-data-sources"></a>Přístup k anonymním zdrojům dat
 
 Uživatel může vytvořit externí zdroj dat bez PŘIHLAŠOVACÍch údajů, který bude odkazovat na úložiště veřejného přístupu nebo používat předávací ověřování Azure AD:
 
@@ -132,7 +132,7 @@ CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 
 POVĚŘENÍ oboru databáze určuje, jak přistupovat k souborům na odkazovaném zdroji dat.
 
-### <a name="reading-external-files-with-external-table"></a>Čtení externích souborů s externí TABULKou
+### <a name="read-external-files-with-external-table"></a>Čtení externích souborů s externí TABULKou
 
 EXTERNÍ tabulka umožňuje číst data ze souborů, na které se odkazuje přes zdroj dat pomocí standardního příkazu SELECT jazyka SQL:
 

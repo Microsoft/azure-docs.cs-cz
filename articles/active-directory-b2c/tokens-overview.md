@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c31053f62f768cc534e07a8ac8d692176cf52b1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8acdf714f459ae604ccd7788b021aee3ee037935
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83757615"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482579"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Přehled tokenů v Azure Active Directory B2C
 
@@ -42,7 +42,7 @@ Při komunikaci s Azure AD B2C se používají následující tokeny:
 
 Tokeny zabezpečení, které vaše aplikace přijímá z Azure AD B2C můžou pocházet z `/authorize` `/token` koncových bodů nebo. Pokud jsou tokeny ID získány z `/authorize` koncového bodu, je provedeno pomocí [implicitního toku](implicit-flow-single-page-application.md), který se často používá pro uživatele přihlašování k webovým aplikacím založeným na jazyce JavaScript. Když se tokeny ID získávají z `/token` koncového bodu, provádí se pomocí [toku autorizačního kódu](openid-connect.md#get-a-token), který tento token udržuje v prohlížeči skrytý.
 
-## <a name="claims"></a>Deklarace identity
+## <a name="claims"></a>Deklarace identit
 
 Při použití Azure AD B2C máte jemně odstupňovanou kontrolu nad obsahem vašich tokenů. Můžete nakonfigurovat [toky uživatelů](user-flow-overview.md) a [vlastní zásady](custom-policy-overview.md) , které odesílají určité sady uživatelských dat v deklaracích identity, které jsou nutné pro vaši aplikaci. Tyto deklarace můžou zahrnovat standardní vlastnosti, jako jsou **DisplayName** a **EmailAddress**. Vaše aplikace můžou tyto deklarace identity použít k bezpečnému ověření uživatelů a požadavků.
 
@@ -61,8 +61,8 @@ V následující tabulce jsou uvedeny deklarace identity, které můžete oček�
 | Hodnota hash kódu | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Hodnota hash kódu je obsažena v tokenu ID pouze v případě, že je token vydán společně s autorizačním kódem OAuth 2,0. Hodnota hash kódu se dá použít k ověření pravosti autorizačního kódu. Další informace o tom, jak provést toto ověření, najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html).  |
 | Hodnota hash tokenu přístupu | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Hodnota hash přístupového tokenu, která je obsažená v tokenu ID jenom v případě, že je token vydaný společně s přístupovým tokenem OAuth 2,0. K ověření pravosti přístupového tokenu se dá použít hodnota hash přístupového tokenu. Další informace o tom, jak provést toto ověření, najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) .  |
 | Generované | `nonce` | `12345` | Hodnota nonce je strategie používaná ke zmírnění útoků opakovaného přehrání tokenu. Vaše aplikace může zadat hodnotu NONCE v žádosti o autorizaci pomocí `nonce` parametru dotazu. Hodnota, kterou zadáte v požadavku, je vygenerována beze změny v `nonce` deklaraci identity tokenu ID. Tato deklarace umožňuje vaší aplikaci ověřit hodnotu oproti hodnotě zadané v požadavku. Vaše aplikace by měla provést toto ověření během procesu ověřování tokenu ID. |
-| Subjekt | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Objekt zabezpečení, o kterém token vyhodnotí informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Dá se použít k bezpečnému provádění kontrol autorizace, například když se token používá pro přístup k prostředku. Ve výchozím nastavení se deklarace identity subjektu naplní s ID objektu uživatele v adresáři. |
-| Referenční dokumentace třídy kontextu ověřování | `acr` | Nelze použít | Používá se jenom se staršími zásadami. |
+| Předmět | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Objekt zabezpečení, o kterém token vyhodnotí informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Dá se použít k bezpečnému provádění kontrol autorizace, například když se token používá pro přístup k prostředku. Ve výchozím nastavení se deklarace identity subjektu naplní s ID objektu uživatele v adresáři. |
+| Referenční dokumentace třídy kontextu ověřování | `acr` | Neuvedeno | Používá se jenom se staršími zásadami. |
 | Zásada pro pravidlo důvěryhodnosti | `tfp` | `b2c_1_signupsignin1` | Název zásady, která byla použita k získání tokenu ID. |
 | Čas ověřování | `auth_time` | `1438535543` | Čas, kdy uživatel naposledy zadal pověření, reprezentovaný v epocha čase. Neexistuje žádná diskriminace mezi tímto ověřováním, jedná se o nové přihlášení, relaci jednotného přihlašování (SSO) nebo jiný typ přihlášení. `auth_time`Je poslední čas, kdy aplikace (nebo uživatel) iniciovala pokus o ověření u Azure AD B2C. Metoda použitá k ověření není odlišná. |
 | Rozsah | `scp` | `Read`| Oprávnění udělená prostředku pro přístupový token. Vícenásobná udělená oprávnění jsou oddělená mezerou. |
@@ -97,7 +97,7 @@ Ke [správě kompatibility tokenů](configure-tokens.md)se používají následu
 
 ## <a name="pass-through"></a>Průchod
 
-Po zahájení cesty uživatele Azure AD B2C obdrží přístupový token od poskytovatele identity. Azure AD B2C používá tento token k načtení informací o uživateli. [V toku uživatele povolíte deklaraci identity](idp-pass-through-user-flow.md) nebo [ve svých vlastních zásadách definujete deklaraci identity](idp-pass-through-custom.md) , abyste mohli token předat do aplikací, které zaregistrujete v Azure AD B2C. Aby bylo možné využít výhod předávání tokenu jako deklarace identity, musí vaše aplikace používat [uživatelský tok v2](user-flow-versions.md) .
+Po zahájení cesty uživatele Azure AD B2C obdrží přístupový token od poskytovatele identity. Azure AD B2C používá tento token k načtení informací o uživateli. [V toku uživatele povolíte deklaraci identity](idp-pass-through-user-flow.md) nebo [ve svých vlastních zásadách definujete deklaraci identity](idp-pass-through-custom.md) , abyste mohli token předat do aplikací, které zaregistrujete v Azure AD B2C. Aby bylo možné využít výhod předávání tokenu jako deklarace identity, musí vaše aplikace používat [doporučený tok uživatele](user-flow-versions.md) .
 
 Azure AD B2C aktuálně podporuje pouze předávání přístupového tokenu zprostředkovatelů identity OAuth 2,0, které zahrnují Facebook a Google. U všech ostatních zprostředkovatelů identity se deklarace identity vrátí jako prázdná.
 

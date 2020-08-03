@@ -1,14 +1,14 @@
 ---
 title: Ukázkové ovládací prvky FedRAMP High detailal
 description: Mapování ovládacího prvku pro ukázku FedRAMP High detailal. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-ms.date: 05/12/2020
+ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: cf9db71a18654f973306637831ae1bcdf8dbef9e
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: ae534248196dec30c087ff4b529e699ef082426e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517197"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87484228"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>Mapování ovládacího prvku ukázky FedRAMP High detailal
 

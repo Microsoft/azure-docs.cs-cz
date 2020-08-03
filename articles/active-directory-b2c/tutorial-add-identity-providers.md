@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 746c406c4e6d458f699eb844156190e47d5c7a26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bdb7637624a1da5270eb1cba49e9f66e5042ccf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384902"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482001"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Kurz: Přidání zprostředkovatelů identit do aplikací v Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Ve svých aplikacích obvykle používáte pouze jednoho poskytovatele identity, ale máte možnost přidat další. V tomto kurzu se dozvíte, jak do vaší aplikace přidat poskytovatele identity Azure AD a poskytovatele identity Facebooku. Přidání obou těchto poskytovatelů identity do aplikace je volitelné. Můžete také přidat další zprostředkovatele identity, jako je [Amazon](identity-provider-amazon.md), [GitHub](identity-provider-github.md), [Google](identity-provider-google.md), [LinkedIn](identity-provider-linkedin.md), [Microsoft](identity-provider-microsoft-account.md)nebo [Twitter](identity-provider-twitter.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,7 +45,7 @@ Aplikace zprostředkovatele identity poskytují identifikátor a klíč, který 
 
 Pokud chcete povolit přihlášení pro uživatele ze služby Azure AD, musíte zaregistrovat aplikaci v tenantovi Azure AD. Tenant Azure AD není stejný jako váš tenant Azure AD B2C.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**.
@@ -133,7 +133,7 @@ Po vytvoření aplikace pro zprostředkovatele identity, který chcete přidat, 
 
 V kurzu, který jste dokončili v rámci požadavků, jste vytvořili uživatelský tok pro registraci a přihlašování s názvem *B2C_1_signupsignin1*. V této části přidáte zprostředkovatele identity do toku *B2C_1_signupsignin1ho* uživatele.
 
-1. Vyberte **toky uživatelů (zásady)** a pak vyberte tok uživatele *B2C_1_signupsignin1* .
+1. Vyberte **toky uživatelů**a potom vyberte tok uživatele *B2C_1_signupsignin1* .
 2. Vyberte **Zprostředkovatelé identity**a vyberte poskytovatele identit **Azure AD** , kterého jste přidali **Facebook** a contoso.
 3. Vyberte **Uložit**.
 

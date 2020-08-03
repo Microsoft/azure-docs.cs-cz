@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8802d612f2497cc58c90856e9a5a5572a142f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385412"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482834"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Zabezpečení rozhraní API služby Azure API Management pomocí Azure AD B2C
 
@@ -39,7 +39,7 @@ K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové j
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**a pak vyberte kartu **vlastněné aplikace** .
@@ -47,7 +47,7 @@ K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové j
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. V části **Spravovat**vyberte **aplikace (starší verze)**.
@@ -60,7 +60,7 @@ K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové j
 Dále Získejte dobře známou adresu URL konfigurace pro některý z vašich Azure AD B2Cch uživatelských toků. Také potřebujete identifikátor URI koncového bodu vystavitele tokenu, který chcete podporovat v Azure API Management.
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na svého tenanta Azure AD B2C.
-1. V části **zásady**vyberte **toky uživatelů (zásady)**.
+1. V části **zásady**vyberte **toky uživatelů**.
 1. Vyberte existující zásadu, například *B2C_1_signupsignin1*, a pak vyberte **Spustit tok uživatele**.
 1. Poznamenejte si adresu URL v hypertextovém odkazu zobrazenou pod nadpisem **tok spouštěného uživatele** v horní části stránky. Tato adresa URL je známý koncový bod zjišťování OpenID Connect pro tok uživatele a v další části ho použijete při konfiguraci příchozí zásady v Azure API Management.
 
@@ -126,7 +126,7 @@ Pro volání rozhraní API potřebujete přístupový token vydaný Azure AD B2C
 Nejdřív potřebujete token vydaný Azure AD B2C, který se má použít v `Authorization` hlavičce v poli post. Můžete ji získat pomocí funkce **Spustit nyní** v uživatelském toku registrace/přihlášení, kterou byste měli vytvořit jako jeden z požadovaných součástí.
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na svého tenanta Azure AD B2C.
-1. V části **zásady**vyberte **toky uživatelů (zásady)**.
+1. V části **zásady**vyberte **toky uživatelů**.
 1. Vyberte existující tok uživatelů registrace nebo přihlašování, například *B2C_1_signupsignin1*.
 1. V případě **aplikace**vyberte *WebApp1*.
 1. V možnosti **Adresa URL odpovědi**vyberte `https://jwt.ms` .

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 310527d8e98e474faa43f19406f037e1a3835756
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 62a2ffeea1d15a16c4ec4aa6a2b88c8e34763064
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040261"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480403"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Koncepty a funkce doménové struktury prostředků pro Azure Active Directory Domain Services
 
@@ -23,10 +23,7 @@ Azure Active Directory Domain Services (Azure služba AD DS) poskytuje přihlaš
 
 I když zabezpečení a poskytuje další výhody zabezpečení, některé organizace nemůžou synchronizovat hodnoty hash hesel uživatelů do služby Azure AD nebo Azure služba AD DS. Uživatelé v organizaci nemusí znát heslo, protože používají jenom ověřování pomocí čipové karty. Tato omezení brání některým organizacím v používání Azure služba AD DS k přenesení a posunutí místních klasických aplikací do Azure.
 
-Pro řešení těchto potřeb a omezení můžete vytvořit spravovanou doménu, která používá doménovou strukturu prostředků. Tento koncepční článek vysvětluje, co jsou doménové struktury a jak důvěřují jiným prostředkům, aby poskytovala zabezpečenou metodu ověřování. Doménové struktury prostředků Azure služba AD DS jsou momentálně ve verzi Preview.
-
-> [!IMPORTANT]
-> Doménové struktury prostředků Azure služba AD DS v současné době nepodporují Azure HDInsight ani soubory Azure. Výchozí doménové struktury uživatelů Azure služba AD DS podporují obě tyto další služby.
+Pro řešení těchto potřeb a omezení můžete vytvořit spravovanou doménu, která používá doménovou strukturu prostředků. Tento koncepční článek vysvětluje, co jsou doménové struktury a jak důvěřují jiným prostředkům, aby poskytovala zabezpečenou metodu ověřování.
 
 ## <a name="what-are-forests"></a>Co jsou doménové struktury?
 
@@ -36,7 +33,7 @@ Ve spravované doméně Azure služba AD DS doménová struktura obsahuje jenom 
 
 Ve výchozím nastavení je spravovaná doména vytvořena jako doménová struktura *uživatelů* . Tento typ doménové struktury synchronizuje všechny objekty z Azure AD, včetně všech uživatelských účtů vytvořených v místním služba AD DS prostředí. Uživatelské účty se můžou přímo ověřovat proti spravované doméně, třeba pro přihlášení k virtuálnímu počítači připojenému k doméně. Doménová struktura uživatelů funguje, když je možné synchronizovat hodnoty hash hesla a uživatelé nepoužívají exkluzivní metody přihlašování, jako je ověřování pomocí čipové karty.
 
-Ve spravované doménové struktuře *prostředků* domény se uživatelé ověřují prostřednictvím jednosměrné *důvěryhodnosti* doménové struktury ze svých místních služba AD DS. S tímto přístupem nejsou uživatelské objekty a hodnoty hash hesel synchronizovány do spravované domény. Uživatelské objekty a přihlašovací údaje existují pouze v místních služba AD DS. Tento přístup umožňuje podnikům hostovat prostředky a aplikační platformy v Azure, které jsou závislé na klasických ověřováních, jako jsou protokoly LDAP, Kerberos nebo NTLM, ale všechny problémy s ověřováním nebo obavy se odeberou. Doménové struktury prostředků Azure služba AD DS jsou momentálně ve verzi Preview.
+Ve spravované doménové struktuře *prostředků* domény se uživatelé ověřují prostřednictvím jednosměrné *důvěryhodnosti* doménové struktury ze svých místních služba AD DS. S tímto přístupem nejsou uživatelské objekty a hodnoty hash hesel synchronizovány do spravované domény. Uživatelské objekty a přihlašovací údaje existují pouze v místních služba AD DS. Tento přístup umožňuje podnikům hostovat prostředky a aplikační platformy v Azure, které jsou závislé na klasických ověřováních, jako jsou protokoly LDAP, Kerberos nebo NTLM, ale všechny problémy s ověřováním nebo obavy se odeberou.
 
 Doménové struktury prostředků také poskytují schopnost nasouvat a přesouvat aplikace po jednotlivých součástech najednou. Mnohé starší verze místních aplikací jsou vícevrstvé, často se používají webový server nebo front-end a mnoho součástí souvisejících s databází. Tyto vrstvy usnadňují navýšení a posunutí celé aplikace do cloudu v jednom kroku. Pomocí doménových struktur prostředků můžete svou aplikaci nasunout do cloudu v rámci postupného přístupu, což usnadňuje přesun vaší aplikace do Azure.
 
@@ -116,7 +113,7 @@ Vztahy důvěryhodnosti poskytují tento mechanismus k ověřování žádostí 
 
 Další informace o vztahu důvěryhodnosti najdete v tématu [jak vztahy důvěryhodnosti doménové struktury fungují v Azure služba AD DS?][concepts-trust]
 
-Informace o vytváření spravované domény pomocí doménové struktury prostředků najdete v tématu [Vytvoření a konfigurace spravované domény Azure služba AD DS][tutorial-create-advanced]. Pak můžete [vytvořit odchozí vztah důvěryhodnosti doménové struktury k místní doméně (Preview)][create-forest-trust].
+Informace o vytváření spravované domény pomocí doménové struktury prostředků najdete v tématu [Vytvoření a konfigurace spravované domény Azure služba AD DS][tutorial-create-advanced]. Pak můžete [vytvořit vztah důvěryhodnosti odchozí doménové struktury k místní doméně][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

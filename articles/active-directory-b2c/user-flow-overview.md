@@ -1,5 +1,6 @@
 ---
 title: Toky uživatelů v Azure Active Directory B2C | Microsoft Docs
+titleSuffix: Azure AD B2C
 description: Přečtěte si další informace o rozšiřitelném rozhraní zásad Azure Active Directory B2C a o tom, jak vytvářet různé toky uživatelů.
 services: active-directory-b2c
 author: msmimart
@@ -7,28 +8,24 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 07/30/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1dc0e297ca16bf2605993e36942de9d31c331680
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 7a7736602fafb740d1d76fa09fd26da25e4ff9f5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115861"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481593"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Toky uživatelů v Azure Active Directory B2C
 
-Rozšiřitelná architektura zásad Azure Active Directory B2C (Azure AD B2C) je základní silo služby. Zásady plně popisují prostředí identity, jako je registrace, přihlašování nebo úpravy profilu. Aby vám pomohly nastavit nejběžnější úkoly identity, Azure AD B2C portál obsahuje předdefinované a konfigurovatelné zásady nazývané **uživatelské toky**.
-
-## <a name="what-are-user-flows"></a>Co jsou toky uživatelů?
-
-Tok uživatele umožňuje řídit chování ve vašich aplikacích konfigurací následujících nastavení:
+Aby vám pomohlo nastavit nejběžnější úlohy identit pro vaše aplikace, Azure AD B2C portál obsahuje předdefinované a konfigurovatelné zásady nazývané **uživatelské toky**. Tok uživatele umožňuje určit, jak uživatelé budou pracovat s vaší aplikací, když provádějí věci, jako je přihlášení, registrace, úprava profilu nebo resetování hesla. Pomocí uživatelských toků můžete řídit následující možnosti:
 
 - Typy účtů používané pro přihlašování, jako jsou účty sociálních sítí, jako je například Facebook nebo místní účet
 - Atributy, které se mají shromáždit od příjemce, jako je křestní jméno, PSČ a velikost bot
-- Vícefaktorové ověřování Azure
+- Azure Multi-Factor Authentication
 - Přizpůsobení uživatelského rozhraní
 - Informace, které aplikace obdrží jako deklarace identity v tokenu
 
@@ -62,13 +59,21 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="user-flow-versions"></a>Verze toku uživatele
 
-V Azure Portal se neustále přidávají nové [verze uživatelských toků](user-flow-versions.md) . Až začnete s Azure AD B2C, doporučuje se testovat toky uživatelů, které můžete použít. Při vytváření nového toku uživatele si z **Doporučené** karty zvolíte tok uživatele, který potřebujete.
+Azure AD B2C obsahuje několik typů uživatelských toků:
 
-V současné době jsou doporučeny následující toky uživatelů:
-
-- **Zaregistrujte se a přihlaste se a přihlaste** se pomocí jediné konfigurace. Uživatelé mají v závislosti na kontextu správnou cestu. Doporučuje se používat tento tok uživatelů v uživatelském toku pro **registraci** nebo v uživatelském toku **přihlášení** .
+- **Zaregistrujte se a přihlaste se a přihlaste** se pomocí jediné konfigurace. Uživatelé mají v závislosti na kontextu správnou cestu. K dispozici jsou také samostatné toky **registrace** nebo **přihlašování** uživatelů. Obecně doporučujeme, abyste použili kombinaci registrace a přihlášení uživatele.
 - **Úpravy profilu** – umožňuje uživatelům upravovat informace o profilu.
 - **Resetování hesla** – umožňuje nakonfigurovat, jestli a jak můžou uživatelé resetovat heslo.
+
+Většina typů uživatelských toků má jak **doporučenou** verzi, tak i **standardní** verzi. Podrobnosti najdete v tématu [verze toku uživatele](user-flow-versions.md).
+
+> [!IMPORTANT]
+> Pokud jste s toky uživatelů v Azure AD B2C pracovali předem, všimnete si, že jsme změnili způsob, jakým odkazujeme na verze uživatelského toku. Dříve jsme nabídli verze V1 (připravené pro produkční prostředí) a verze V 1.1 a v2 (Preview). Nyní jsme konsoliduje toky uživatelů do dvou verzí:
+>
+>- **Doporučené** toky pro uživatele jsou nové verze Preview toků uživatelů. Jsou důkladně testovány a kombinovány se všemi funkcemi starších verzí **v2** a **v 1.1** . Až dál, budou se udržovat a aktualizovat nové doporučené toky uživatelů. Po přechodu na tyto nové doporučené toky uživatelů budete mít přístup k novým funkcím, jakmile jsou vydány.
+>- **Standardní** uživatelské toky, dříve označované jako **v1**, jsou všeobecně dostupné, uživatelské toky připravené pro produkční prostředí. Pokud jsou toky uživatelů klíčové a závisí na vysoce stabilních verzích, můžete pokračovat v používání standardních uživatelských toků a realizovat, že tyto verze nebudou zachované a aktualizované.
+>
+>Všechny toky pro uživatele starší verze Preview (V 1.1 a v2) jsou na cestě k vyřazení od **1. srpna 2021**. Pokud je to možné, důrazně doporučujeme [přepínat na nové **Doporučené** uživatelské toky](user-flow-versions.md#how-to-switch-to-a-new-recommended-user-flow) , abyste mohli vždycky využít nejnovější funkce a aktualizace.
 
 ## <a name="linking-user-flows"></a>Propojení toků uživatelů
 

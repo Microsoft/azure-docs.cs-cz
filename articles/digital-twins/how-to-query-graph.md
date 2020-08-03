@@ -7,20 +7,24 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 05bcbf8df695ba308a6eaff5e7401f0a6d638747
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 3e7ee90d75a2ff2b3552992c19f11cc86b6109ca
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337598"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486646"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
 Tento článek obsahuje příklady a další podrobnosti o používání [jazyka úložiště dotazů digitálních vláken Azure](concepts-query-language.md) k dotazování na [dvojitou graf](concepts-twins-graph.md) pro informace. Dotazy můžete spouštět v grafu pomocí [**rozhraní API pro dotazování**](how-to-use-apis-sdks.md)digitálních vláken Azure.
 
+[!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
+
+Ve zbývající části tohoto článku najdete příklady použití těchto operací.
+
 ## <a name="query-syntax"></a>Syntaxe dotazů
 
-Tady je několik ukázkových dotazů, které ilustrují strukturu dotazovacího jazyka a provádějí možné operace dotazů.
+Tato část obsahuje ukázkové dotazy, které ilustrují strukturu dotazovacího jazyka a provádějí možné operace dotazů.
 
 Získat [digitální vlákna](concepts-twins-graph.md) podle vlastností (včetně ID a metadat):
 ```sql
@@ -31,16 +35,55 @@ AND T.$dtId in ['123', '456']
 AND T.Temperature = 70
 ```
 
-Získat digitální vlákna podle [modelu](concepts-models.md)
-```sql
-SELECT  * 
-FROM DigitalTwins T  
-WHERE IS_OF_MODEL(T , 'dtmi:com:contoso:Space;3')
-AND T.roomSize > 50
-```
-
 > [!TIP]
 > ID digitálního vlákna se dotazuje pomocí pole metadata `$dtId` .
+
+Můžete také získat zdvojené podle jejich vlastností *značek* , jak je popsáno v tématu [Přidání značek do digitálních vláken](how-to-use-tags.md):
+```sql
+select * from digitaltwins where is_defined(tags.red) 
+```
+
+### <a name="select-top-items"></a>Vybrat horní položky
+
+Můžete vybrat několik "horních" položek v dotazu pomocí `Select TOP` klauzule.
+
+```sql
+SELECT TOP (5)
+FROM DIGITALTWINS
+WHERE property = 42
+```
+
+### <a name="query-by-model"></a>Dotaz podle modelu
+
+`IS_OF_MODEL`Operátor lze použít k filtrování na základě [modelu](concepts-models.md)vlákna. Podporuje dědičnost a má několik možností přetížení.
+
+Nejjednodušší použití `IS_OF_MODEL` přebírá pouze `twinTypeName` parametr: `IS_OF_MODEL(twinTypeName)` .
+Tady je příklad dotazu, který předává hodnotu v tomto parametru:
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1')
+```
+
+Chcete-li zadat dvojitou kolekci, která bude prohledána, je-li použit více než jeden (například při `JOIN` použití), přidejte `twinCollection` parametr: `IS_OF_MODEL(twinCollection, twinTypeName)` .
+Tady je příklad dotazu, který přidá hodnotu pro tento parametr:
+
+```sql
+SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1')
+```
+
+Chcete-li provést přesnou shodu, přidejte `exact` parametr: `IS_OF_MODEL(twinTypeName, exact)` .
+Tady je příklad dotazu, který přidá hodnotu pro tento parametr:
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1', exact)
+```
+
+Můžete také předat všechny tři argumenty společně: `IS_OF_MODEL(twinCollection, twinTypeName, exact)` .
+Tady je příklad dotazu, který určuje hodnotu pro všechny tři parametry:
+
+```sql
+SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', exact)
+```
 
 ### <a name="query-based-on-relationships"></a>Dotaz na základě relací
 

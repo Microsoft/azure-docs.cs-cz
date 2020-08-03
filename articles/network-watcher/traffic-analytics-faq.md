@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 84e9dab149cfed265833336577d718e57bd9bc2d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165324"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479842"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastějších dotazech
 
@@ -36,7 +36,7 @@ Analýza provozu vyžaduje následující předpoklady:
 
 Aby bylo možné povolit analýzu provozu, musí váš účet splňovat jednu z následujících možností:
 
-- Váš účet musí mít v oboru předplatného jeden z následujících rolí řízení přístupu na základě role (RBAC): vlastník, přispěvatel, čtenář nebo přispěvatel sítě.
+- Váš účet musí mít v oboru předplatného některou z následujících rolí Azure: vlastník, přispěvatel, čtenář nebo přispěvatel sítě.
 - Pokud váš účet není přiřazený k některé z výše uvedených rolí, musí být přiřazený k vlastní roli, která je přiřazená k následujícím akcím na úrovni předplatného.
             
     - Microsoft. Network/applicationGateways/Read
@@ -401,4 +401,3 @@ Stránka topologie virtuální podsítě obsahuje dvě hlavní části:
 - Chcete-li přejít na jiné zvýrazněné uzly v zobrazení topologie, použijte `Shift+Right arrow` klávesu pro dopředný pohyb. 
 - Na zvýrazněných uzlech se fokus přesune do **pole informační nástroj** pro uzel. Ve výchozím nastavení se fokus přesune na tlačítko **Další podrobnosti** v **poli informační nástroj**. Chcete-li se dále pohybovat uvnitř zobrazení **pole** , použijte `Right arrow` klávesy a a `Left arrow` přejděte k části vpřed a zpět v uvedeném pořadí. Stisknutí `Enter` má stejný efekt jako v **poli informační nástroj**vyberte tlačítko s fokusem.
 - Na výběr všech takových uzlů můžete všechny své připojení navštívit tak, že stisknete `Shift+Left arrow` klávesu. Fokus se přesune do **pole informační nástroj** daného připojení. V jakémkoli okamžiku se dá fokus přesunout zpátky na uzel stisknutím klávesy `Shift+Right arrow` znovu.    
-

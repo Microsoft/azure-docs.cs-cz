@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/04/2020
+ms.date: 07/30/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6bcf268ba45ee8fefa027263a25ff411344b4669
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 8c0b6ba4045e1e92d395752f106258d3c0709108
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116428"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486717"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
@@ -170,7 +170,7 @@ Chcete-li přizpůsobit stránky toku uživatele, je třeba nejprve nakonfigurov
 
 Začněte tím, že nastavíte logo banner, obrázek pozadí a barvu pozadí v rámci **brandingu společnosti**.
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. V části **Spravovat**vyberte **Branding společnosti**.
@@ -188,7 +188,7 @@ Po nakonfigurování firemního brandingu ho Povolte ve svých uživatelských t
 
 1. V levé nabídce Azure Portal vyberte **Azure AD B2C**.
 1. V části **zásady**vyberte **toky uživatelů (zásady)**.
-1. Vyberte tok uživatele, pro který chcete povolit Branding společnosti. Branding společnosti není **podporován** pro *přihlašování* a úpravy profilů pro uživatele *v1 typu v1* .
+1. Vyberte tok uživatele, pro který chcete povolit Branding společnosti. Branding společnosti není **podporován** pro standardní *přihlašování* a standardní *profily pro úpravu* typů toku uživatele.
 1. V části **přizpůsobit**vyberte **rozložení stránky**a potom vyberte rozložení, které chcete označit jako značku. Vyberte například možnost **sjednocení registrace nebo přihlášení na přihlašovací stránce**.
 1. Pro **verzi rozložení stránky (Preview)** vyberte verze **1.2.0** nebo vyšší.
 1. Vyberte **Uložit**.
