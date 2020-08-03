@@ -1,5 +1,5 @@
 ---
-title: Získat záměr pomocí volání REST v Node. js
+title: Získat záměr pomocí volání REST v Node.js
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: 05142c1d98906a591fae41658c5c7b9d36cdb8c4
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0c8217ba2c8c6c7681e649f4e519ef14ced6f596
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418005"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405261"
 ---
 [Referenční dokumentace](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)  |  [Ukázka](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-predict-with-rest/predict.js)
 
@@ -26,9 +27,9 @@ ms.locfileid: "84418005"
 
 [!INCLUDE [Create pizza app](get-started-get-intent-create-pizza-app.md)]
 
-## <a name="create-the-nodejs-project"></a>Vytvoření projektu Node. js
+## <a name="create-the-nodejs-project"></a>Vytvoření projektu Node.js
 
-1. Vytvořte novou složku pro uložení projektu Node. js, například `node-predict-with-rest` .
+1. Vytvořte novou složku pro uložení Node.js projektu, například `node-predict-with-rest` .
 
 1. Otevřete nový příkazový řádek, přejděte do složky, kterou jste vytvořili, a spusťte následující příkaz:
 
@@ -48,7 +49,7 @@ ms.locfileid: "84418005"
 
 ## <a name="get-intent-programmatically"></a>Získání záměru prostřednictvím kódu programu
 
-Pomocí Node. js můžete zadat dotaz na [koncový bod předpovědi](https://aka.ms/luis-apim-v3-prediction) a získat výsledek předpovědi.
+Pomocí Node.js můžete zadat dotaz na [koncový bod předpovědi](https://aka.ms/luis-apim-v3-prediction) a získat výsledek předpovědi.
 
 1. Zkopírujte následující fragment kódu do souboru s názvem `predict.js` :
 

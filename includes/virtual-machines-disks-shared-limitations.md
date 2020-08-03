@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d2cf7dbcd97c8f740447607eaf443bc3ea4a6733
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f6175a797b14077cafacaca1f2fd48f36e945d9e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500584"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424991"
 ---
 Povolení sdílených disků je dostupné jenom pro podmnožinu typů disků. Sdílené disky teď můžou povolit jenom disky Ultra a Premium SSD. U každého spravovaného disku, na kterém jsou povolené sdílené disky, platí následující omezení uspořádaná podle typu disku:
 
@@ -25,6 +25,8 @@ Při sdílení Ultra discích mají tato dodatečná omezení:
 
 - V současné době omezena na Azure Resource Manager nebo podporu sady SDK. 
 - V některých verzích clusteru s podporou převzetí služeb při selhání Windows serveru se dají použít jenom základní disky. Podrobnosti najdete v tématu [požadavky na hardware clusteringu s podporou převzetí služeb při selhání a možnosti](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)
+
+Sdílené disky Ultra jsou k dispozici ve všech oblastech, které ve výchozím nastavení podporují disky Ultra a nevyžadují, abyste se k jejich používání přihlásili.
 
 ### <a name="premium-ssds"></a>Disky SSD úrovně Premium
 
@@ -38,4 +40,4 @@ Při sdílení Ultra discích mají tato dodatečná omezení:
 - V některých verzích clusteru s podporou převzetí služeb při selhání Windows serveru se dají použít jenom základní disky. Podrobnosti najdete v tématu [požadavky na hardware clusteringu s podporou převzetí služeb při selhání a možnosti](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)
 - Podpora Azure Backup a Azure Site Recovery ještě není dostupná.
 
-Pokud se zajímáte o vyzkoušení sdílených disků, [Zaregistrujte si přístup](https://aka.ms/AzureSharedDiskGASignUp).
+Pokud vás zajímá, že budete chtít vyzkoušet Shared Premium SSD, [Zaregistrujte si přístup](https://aka.ms/AzureSharedDiskGASignUp).

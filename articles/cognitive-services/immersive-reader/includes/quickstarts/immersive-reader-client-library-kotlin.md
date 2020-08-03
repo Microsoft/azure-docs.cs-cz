@@ -9,20 +9,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: 7db367222d96d7bc9dae48242992ee76a89c849d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0b4016d696231fd500f6b5e9b487fc4e0f984693
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544898"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424978"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
 V tomto rychlém startu sestavíte aplikaci pro Android od začátku a integrujete moderní čtečku. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [na GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](../../how-to-create-immersive-reader.md) si můžete nastavit. Když nakonfigurujete vlastnosti prostředí, budete potřebovat některé z hodnot, které jsou tady vytvořené. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
 * [Git](https://git-scm.com/).

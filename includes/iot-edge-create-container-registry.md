@@ -29,7 +29,7 @@ Pokud ještě nemáte registr kontejnerů, postupujte podle těchto kroků a vyt
    | Skupina prostředků | Pro všechny testovací prostředky, které vytvoříte v průběhu rychlých startů a kurzů pro IoT Edge, doporučujeme použít stejnou skupinu prostředků. Například **IoTEdgeResources**. |
    | Název registru | Zadejte jedinečný název. |
    | Umístění | Zvolte umístění, které je blízko vás. |
-   | Skladová položka | Vyberte **Basic**. |
+   | SKU | Vyberte **Basic**. |
 
 3. Vyberte **Vytvořit**.
 

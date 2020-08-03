@@ -9,18 +9,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: a5bd7b3e6262fa21865f04a6b65d1a75faafefa4
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 68009797e48ab15c1c8df983b3413d7b7dac54b0
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038186"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425082"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
 V tomto rychlém startu vytvoříte webovou aplikaci od začátku a integrujete moderní čtečku pomocí klientské knihovny pro moderní čtenáře. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -289,7 +290,7 @@ V dolní části _Views\Home\Index.cshtml_přidejte následující kód:
 }
 ```
 
-## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
+## <a name="build-and-run-the-app"></a>Sestavte a spusťte aplikaci.
 
 V řádku nabídek vyberte možnost **ladění > spustit ladění**, nebo stiskněte klávesu **F5** a spusťte aplikaci.
 

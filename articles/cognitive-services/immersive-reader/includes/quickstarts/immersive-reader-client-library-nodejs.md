@@ -1,5 +1,5 @@
 ---
-title: Úvodní čtecí modul pro klientské knihovny Node. js pro moderní čtení
+title: Rychlý Start Node.js klientské knihovny pro moderní čtečku
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vytvoříte webovou aplikaci od začátku a přidáte funkce rozhraní API pro moderní čtečku.
 services: cognitive-services
@@ -9,28 +9,29 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 2092ccbedd95ee13ac4ad929f052afd1d85729ec
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d0d5c77fde24b705dbfa7ac44b0d32f0967d1526
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268718"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425123"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
 V tomto rychlém startu vytvoříte webovou aplikaci od začátku a integrujete moderní čtečku pomocí klientské knihovny pro moderní čtenáře. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](../../how-to-create-immersive-reader.md) si můžete nastavit. Při konfiguraci vlastností prostředí budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
-* [Node. js](https://nodejs.org/) a [příze](https://yarnpkg.com)
+* [Node.js](https://nodejs.org/) a [příze](https://yarnpkg.com)
 * Rozhraní IDE, jako je například [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="create-a-nodejs-web-app-with-express"></a>Vytvoření webové aplikace v Node. js pomocí Expressu
+## <a name="create-a-nodejs-web-app-with-express"></a>Vytvoření Node.js webové aplikace pomocí Expressu
 
-Pomocí nástroje vytvořte webovou aplikaci v Node. js `express-generator` .
+Pomocí nástroje vytvořte webovou aplikaci v Node.js `express-generator` .
 
 ```bash
 npm install express-generator -g
@@ -62,7 +63,7 @@ SUBDOMAIN={YOUR_SUBDOMAIN}
 
 Ujistěte se, že tento soubor nechcete potvrdit do správy zdrojových kódů, protože obsahuje tajné klíče, které by neměly být zveřejněny.
 
-V dalším kroku otevřete _App. js_ a na začátek souboru přidejte následující. Tím se načte vlastnosti definované v souboru. env jako proměnné prostředí do uzlu.
+Dále otevřete _app.js_ a na začátek souboru přidejte následující. Tím se načte vlastnosti definované v souboru. env jako proměnné prostředí do uzlu.
 
 ```javascript
 require('dotenv').config();
@@ -235,7 +236,7 @@ script(type="text/javascript").
 
 Všimněte si, že veškerý text má atribut **lang** , který popisuje jazyky textu. Tento atribut pomáhá modernímu čtečce poskytovat relevantní jazykové a gramatické funkce.
 
-## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
+## <a name="build-and-run-the-app"></a>Sestavte a spusťte aplikaci.
 
 Naše webová aplikace je teď připravená. Spusťte aplikaci spuštěním:
 

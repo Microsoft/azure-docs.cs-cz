@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 07/16/2020
 ms.author: tamram
-ms.openlocfilehash: c222869df561a9a36ebd69eb9ae09fa688ba0086
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 644d58c3d1c60611b0d22d2757da089313fa12b6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518672"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423697"
 ---
 Než přiřadíte roli RBAC objektu zabezpečení, určete rozsah přístupu, který má objekt zabezpečení mít. Osvědčené postupy určují, že vždy nejlépe přidělíte jenom nejužšímu možnému rozsahu.
 
@@ -24,4 +24,4 @@ Následující seznam popisuje úrovně, na jejichž základě můžete nastavit
 - **Předplatné.** V tomto oboru se přiřazení role vztahuje na všechny kontejnery nebo fronty ve všech účtech úložiště ve všech skupinách prostředků v rámci předplatného.
 - **Skupina pro správu.** V tomto oboru se přiřazení role vztahuje na všechny kontejnery nebo fronty ve všech účtech úložiště ve všech skupinách prostředků ve všech předplatných ve skupině pro správu.
 
-Další informace o přiřazení a rozsahu rolí RBAC najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../articles/role-based-access-control/overview.md).
+Další informace o přiřazení a rozsahu rolí Azure najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../articles/role-based-access-control/overview.md).

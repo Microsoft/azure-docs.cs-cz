@@ -3,12 +3,13 @@ title: 'Rychlý Start: QnA Maker klientskou knihovnu pro Node.js'
 description: V tomto rychlém startu se dozvíte, jak začít s klientskou knihovnou QnA Maker pro Node.js.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 7b3c5e69e820951896cb00b82295dc07ba698c94
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 76d0587c68ac46253dbd937c661b06bdb8c495c8
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114513"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404072"
 ---
 Pomocí klientské knihovny QnA Maker Node.js:
 

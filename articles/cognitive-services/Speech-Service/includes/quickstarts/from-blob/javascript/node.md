@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/12/2020
 ms.author: trbye
-ms.openlocfilehash: bc5c5bf6a6baf32a74413272334fe6070b0a7a5f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 5d1d7008151ae61a72368d3d8ecfaf545a2080fa
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85839084"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406162"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -419,7 +420,7 @@ request.write(postPayload);
 request.end();
 ```
 
-## <a name="run-your-app"></a>Spuštění aplikace
+## <a name="run-your-app"></a>Spusťte aplikaci
 
 Nyní jste připraveni sestavit aplikaci a otestovat rozpoznávání řeči pomocí služby Speech.
 

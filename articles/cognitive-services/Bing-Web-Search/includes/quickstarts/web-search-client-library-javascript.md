@@ -8,14 +8,15 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 0380dc8d2ff34cf9eecaad063a305491a357ca29
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0a505e5fb11e776a90c8e198b2568e2ac0bd1854
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78925200"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406366"
 ---
-Klientská knihovna Vyhledávání na webu Bingu umožňuje snadnou integraci Vyhledávání na webu Bingu do aplikace Node. js. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
+Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledávání na webu Bingu do aplikace Node.js. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 
 Chcete se rovnou podívat na kód? Ukázky pro [klientské knihovny vyhledávání Bingu pro JavaScript](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples) jsou k dispozici na GitHubu.
 
@@ -102,7 +103,7 @@ Až projekt dokončíte, nezapomeňte z kódu programu odebrat klíč předplatn
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Ukázky Cognitive Services Node. js SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+> [Ukázky sady SDK pro Cognitive Services Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
 ## <a name="see-also"></a>Viz také
 

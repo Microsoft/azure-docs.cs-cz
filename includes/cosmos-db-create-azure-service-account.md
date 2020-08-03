@@ -2,17 +2,17 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: cosmos-db
-author: MarkMcGeeAtAquent
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 10/07/2019
-ms.author: mimig
+ms.date: 07/23/2020
+ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: be3637870edc4900059f02392536194a910e9e41
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 014d53b3f8ef8f5009ee5de03b8697a07e1317fd
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72818611"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171954"
 ---
-S tabulkami můžete pracovat prostřednictvím služby Azure Table Storage nebo Azure Cosmos DB. Další informace o rozdílech mezi službami najdete v tématu [nabídky tabulek](../articles/cosmos-db/table-introduction.md#table-offerings). U služby, kterou budete používat, si budete muset vytvořit účet.
+S tabulkami můžete pracovat pomocí služby Azure Table Storage nebo Azure Cosmos DB. Další informace o rozdílech mezi nabídkami tabulek v těchto dvou službách najdete v článku věnovaném [nabídkám pro tabulky](../articles/cosmos-db/table-introduction.md#table-offerings) . U služby, kterou budete používat, si budete muset vytvořit účet. V následujících částech se dozvíte, jak vytvořit službu Azure Table Storage a účet Azure Cosmos DB, ale stačí použít jednu z nich. 

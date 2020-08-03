@@ -1,5 +1,5 @@
 ---
-title: 'Získání modelu pomocí volání REST v jazyce C #'
+title: Získat model s voláním REST v Node.js
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: a1a72d9be339ed1ee0a1c525ee426047b1768f2f
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d2dd43366068c8b0d5f280a4c5c22ac774824f59
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84416360"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407250"
 ---
 [Referenční dokumentace](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)  |  [Ukázka](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-model-with-rest/model.js)
 
@@ -26,9 +27,9 @@ ms.locfileid: "84416360"
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
-## <a name="create-the-nodejs-project"></a>Vytvoření projektu Node. js
+## <a name="create-the-nodejs-project"></a>Vytvoření projektu Node.js
 
-1. Vytvořte novou složku pro uložení projektu Node. js, například `node-model-with-rest` .
+1. Vytvořte novou složku pro uložení Node.js projektu, například `node-model-with-rest` .
 
 1. Otevřete nový příkazový řádek, přejděte do složky, kterou jste vytvořili, a spusťte následující příkaz:
 

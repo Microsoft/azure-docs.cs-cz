@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
-ms.openlocfilehash: ac2f83c824014e16cfbe9ab18483b914ed8b077d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f5a3b48fd6be48d468b66009a77de100962be10d
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79136764"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405058"
 ---
 Pomocí tohoto rychlého startu můžete začít vyhledávat entity pomocí Vyhledávání entit Bingu klientské knihovny pro JavaScript. I když Vyhledávání entit Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js).
 
@@ -21,7 +22,7 @@ Pomocí tohoto rychlého startu můžete začít vyhledávat entity pomocí Vyhl
 
 * Nejnovější verze [Node.js](https://nodejs.org/en/download/)
 
-* [Sada SDK vyhledávání entit Bingu pro Node. js](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
+* [Sada vyhledávání entit Bingu SDK pro Node.js](https://www.npmjs.com/package/@azure/cognitiveservices-entitysearch)
 
 Instalace sady Vyhledávání entit Bingu SDK:
 
@@ -49,7 +50,7 @@ Instalace sady Vyhledávání entit Bingu SDK:
 
 ## <a name="send-a-request-and-receive-a-response"></a>Odeslat žádost a přijmout odpověď
 
-1. Odešlete žádost o vyhledávání entit `entitiesOperations.search()`pomocí. Po přijetí odpovědi si vytiskněte `queryContext`počet vrácených výsledků a popis prvního výsledku.
+1. Odešlete žádost o vyhledávání entit pomocí `entitiesOperations.search()` . Po přijetí odpovědi si vytiskněte `queryContext` počet vrácených výsledků a popis prvního výsledku.
 
     ```javascript
     entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {

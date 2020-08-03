@@ -63,7 +63,7 @@ Při vytváření serveru Azure Database for PostgreSQL se vytvoří výchozí d
    psql "host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"
    ```
 
-   Zkopírujte řetězec. Heslo pro správu, které jste si zvolili dříve, budete muset nahradit {Your\_Password}. Systém neuloží vaše heslo ve formátu prostého textu, a proto ho nemůže zobrazit v připojovacím řetězci.
+   Zkopírujte řetězec. \_Heslo pro správu, které jste si zvolili dříve, budete muset nahradit {your password}. Systém neuloží vaše heslo ve formátu prostého textu, a proto ho nemůže zobrazit v připojovacím řetězci.
 
 2. Otevřete okno terminálu na místním počítači.
 

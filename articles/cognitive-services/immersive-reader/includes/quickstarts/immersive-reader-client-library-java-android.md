@@ -8,20 +8,20 @@ manager: guillasi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/10/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-javascript
 ms.author: dylankil
-ms.openlocfilehash: 014babfe20916d0adc623d0b080d9b72d5580f6f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5ea35d6da2e76d5eacc76829c9da93f82a842271
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375303"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425065"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
 V tomto rychlém startu sestavíte aplikaci pro Android od začátku a integrujete moderní čtečku. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [na GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
