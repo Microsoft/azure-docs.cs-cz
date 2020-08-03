@@ -10,12 +10,12 @@ ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: db65ba904cdce7bec83b851c6b50316c89fcedfd
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9d4097e847417f56c9881a3e18237e97dfee465e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128722"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501402"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Použití Azure Portal k přístupu k datům objektů BLOB nebo Queue
 
@@ -38,7 +38,7 @@ K přístupu k datům objektů BLOB a front pomocí přístupového klíče úč
 Když se pokusíte o přístup k datům objektů BLOB nebo front v Azure Portal, portál nejprve zkontroluje, jestli vám byla přiřazena role s **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Pokud jste k této akci přiřadili roli, portál použije klíč účtu pro přístup k datům BLOB a Queue. Pokud jste k této akci nepřiřadili roli, pokusí se portál získat přístup k datům pomocí účtu Azure AD.
 
 > [!NOTE]
-> Správci služby pro klasický odběr role správce a spolusprávce zahrnují ekvivalent role Azure Resource Manager [Owner](../../role-based-access-control/built-in-roles.md#owner) . Role **vlastníka** zahrnuje všechny akce, včetně **Microsoft. Storage/storageAccounts/klíče listkey/Action**, takže uživatel s jednou z těchto rolí pro správu může také přistupovat k datům objektů BLOB a Queue pomocí klíče účtu. Další informace najdete v tématu [role správců pro klasický odběr, role Azure RBAC a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+> Správci služby pro klasický odběr role správce a spolusprávce zahrnují ekvivalent role Azure Resource Manager [Owner](../../role-based-access-control/built-in-roles.md#owner) . Role **vlastníka** zahrnuje všechny akce, včetně **Microsoft. Storage/storageAccounts/klíče listkey/Action**, takže uživatel s jednou z těchto rolí pro správu může také přistupovat k datům objektů BLOB a Queue pomocí klíče účtu. Další informace najdete v tématech [role správců klasického předplatného, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ### <a name="use-your-azure-ad-account"></a>Použití účtu Azure AD
 

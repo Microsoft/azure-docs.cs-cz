@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35e75037b4bf759fe90d608be0682004d3d3f23c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85480435"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496385"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL na vyžádání (Preview) ve službě Azure synapse Analytics 
 
@@ -31,7 +31,7 @@ SQL na vyžádání je bez serveru, proto není k dispozici žádná infrastrukt
 
 Pokud používáte Apache Spark pro Azure synapse v datovém kanálu, pro přípravu, čištění nebo obohacení dat, můžete [zadávat dotazy na externí tabulky Spark](develop-storage-files-spark-tables.md) , které jste v procesu vytvořili, přímo z SQL na vyžádání. Pomocí [privátního odkazu](../security/how-to-connect-to-workspace-with-private-links.md) přeneste koncový bod SQL na vyžádání do vaší [virtuální sítě spravovaného pracovního prostoru](../security/synapse-workspace-managed-vnet.md).  
 
-## <a name="who-is-sql-on-demand-for"></a>Kdo je SQL na vyžádání pro
+## <a name="sql-on-demand-benefits"></a>Výhody SQL na vyžádání
 
 Pokud potřebujete prozkoumat data v Data Lake, získat z nich přehledy nebo optimalizovat stávající kanál pro transformaci dat, můžete využívat výhod SQL na vyžádání. Je vhodný pro následující scénáře:
 
@@ -46,7 +46,7 @@ Z SQL na vyžádání můžou využívat různé role Professional:
 - Datové Analytiké můžou [Prozkoumat data a Spark externí tabulky](develop-storage-files-spark-tables.md) vytvořené odborníky přes data nebo pomocí známých nástrojů T-SQL nebo jejich oblíbených nástrojů, které se můžou připojit k SQL na vyžádání.
 - Profesionálové v BI můžou rychle [vytvářet Power BI sestavy nad daty v tabulkách Lake](tutorial-connect-power-bi-desktop.md) a Spark.
 
-## <a name="what-do-i-need-to-do-to-start-using-it"></a>Co je potřeba udělat, aby ji bylo možné začít používat?
+## <a name="how-to-start-using-sql-on-demand"></a>Jak začít používat SQL na vyžádání
 
 Koncový bod SQL na vyžádání je k dispozici v rámci každého pracovního prostoru Azure synapse. Můžete vytvořit pracovní prostor a spustit dotazování na data okamžitě pomocí nástrojů, které znáte.
 
@@ -54,7 +54,7 @@ Koncový bod SQL na vyžádání je k dispozici v rámci každého pracovního p
 
 SQL na vyžádání umožňuje existujícím nástrojům pro dotazování ad-hoc a business intelligenceům, aby mohli na data Lake klepnout. Vzhledem k tomu, že poskytuje známou syntaxi T-SQL, se může každý nástroj schopný vytvořit nabídky SQL připojení TDS, [připojit k SQL na vyžádání a dotazovat se na synapse](connect-overview.md) . Můžete se připojit pomocí Azure Data Studio a spustit ad-hoc dotazy nebo se připojit pomocí Power BI a získat přehledy během několika minut.
 
-## <a name="is-full-t-sql-supported"></a>Podporuje se kompletní T-SQL?
+## <a name="t-sql-support"></a>Podpora T-SQL
 
 SQL na vyžádání nabízí oblast pro dotazování T-SQL, která je mírně rozšířená nebo rozšířená v některých aspektech, aby se zajistila možnost vyhledávání částečně strukturovaných a nestrukturovaných dat. Kromě toho některé aspekty jazyka T-SQL nejsou podporované v důsledku návrhu SQL na vyžádání, jako například funkce DML není aktuálně podporovaná.
 

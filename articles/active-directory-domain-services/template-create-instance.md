@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a9518eb4c8635275b9cbf0467f3091eca10f647
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 880ccf9a69d5898da98aeabcfd89d05ff94e3b43
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223002"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489805"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Vytvoření spravované domény Azure Active Directory Domain Services pomocí šablony Azure Resource Manager
 
@@ -23,7 +23,7 @@ Azure Active Directory Domain Services (Azure služba AD DS) poskytuje spravovan
 
 V tomto článku se dozvíte, jak vytvořit spravovanou doménu pomocí šablony Azure Resource Manager. Podpůrné prostředky se vytvářejí pomocí Azure PowerShell.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku potřebujete tyto prostředky:
 
@@ -126,7 +126,7 @@ V rámci definice prostředků Správce prostředků jsou potřeba následujíc�
 | domainName              | Název domény DNS pro spravovanou doménu, který bere v úvahu předchozí body při pojmenovávání předpon a konfliktů. |
 | filteredSync            | Azure služba AD DS umožňuje synchronizovat *všechny* uživatele a skupiny, které jsou dostupné ve službě Azure AD, nebo jenom *vymezenou* synchronizaci jenom konkrétních skupin.<br /><br /> Další informace o vymezené synchronizaci najdete v tématu [Azure AD Domain Services s vymezeným rozsahem synchronizace][scoped-sync].|
 | notificationSettings    | Pokud se ve spravované doméně generují nějaké výstrahy, můžou se e-mailová oznámení poslat. <br /><br />U těchto oznámení je možné *Povolit* *globální správce* tenanta Azure a členové skupiny *Správci AAD DC* .<br /><br /> V případě potřeby můžete přidat další příjemce pro oznámení, pokud se zobrazí výstrahy, které vyžadují pozornost.|
-| domainConfigurationType | Ve výchozím nastavení je spravovaná doména vytvořena jako doménová struktura *uživatelů* . Tento typ doménové struktury synchronizuje všechny objekty z Azure AD, včetně všech uživatelských účtů vytvořených v místním služba AD DS prostředí. Pro vytvoření doménové struktury uživatele není nutné zadávat hodnotu *domainConfiguration* .<br /><br /> Doménová struktura *prostředků* synchronizuje jenom uživatele a skupiny vytvořené přímo ve službě Azure AD. Doménové struktury prostředků jsou momentálně ve verzi Preview. Nastavte hodnotu na *ResourceTrusting* , aby se vytvořila doménová struktura prostředků.<br /><br />Další informace o doménových strukturách *prostředků* , včetně důvodů, proč je můžete použít a jak vytvořit vztahy důvěryhodnosti doménové struktury s místními služba AD DS doménami, najdete v tématu [Přehled doménových struktur Azure služba AD DS][resource-forests].|
+| domainConfigurationType | Ve výchozím nastavení je spravovaná doména vytvořena jako doménová struktura *uživatelů* . Tento typ doménové struktury synchronizuje všechny objekty z Azure AD, včetně všech uživatelských účtů vytvořených v místním služba AD DS prostředí. Pro vytvoření doménové struktury uživatele není nutné zadávat hodnotu *domainConfiguration* .<br /><br /> Doménová struktura *prostředků* synchronizuje jenom uživatele a skupiny vytvořené přímo ve službě Azure AD. Nastavte hodnotu na *ResourceTrusting* , aby se vytvořila doménová struktura prostředků.<br /><br />Další informace o doménových strukturách *prostředků* , včetně důvodů, proč je můžete použít a jak vytvořit vztahy důvěryhodnosti doménové struktury s místními služba AD DS doménami, najdete v tématu [Přehled doménových struktur Azure služba AD DS][resource-forests].|
 
 Následující definice zhuštěných parametrů ukazuje, jak jsou tyto hodnoty deklarovány. Uživatelská doménová struktura s názvem *aaddscontoso.com* se vytvoří se všemi uživateli z Azure AD synchronizovanými do spravované domény:
 

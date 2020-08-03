@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: b9ca2dc9d907e65b2679c08d8d2b6482f02ba53d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 630364a95c4ee427b71aa5e8b763b4447a41c962
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327884"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489448"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Správa přístupu k datům protokolů a pracovním prostorům ve službě Azure Monitor
 
@@ -20,7 +20,7 @@ Azure Monitor ukládá data [protokolu](data-platform-logs.md) v pracovním pros
 Tento článek vysvětluje, jak spravovat přístup k protokolům a spravovat pracovní prostory, které je obsahují, včetně toho, jak udělit přístup k: 
 
 * Pracovní prostor s oprávněními v pracovním prostoru.
-* Uživatelé, kteří potřebují přístup k datům protokolu z konkrétních prostředků pomocí řízení přístupu na základě role (RBAC) založeného na rolích (RBAC), označovaného také jako [prostředek – kontext](design-logs-deployment.md#access-mode)
+* Uživatelé, kteří potřebují přístup k datům protokolu z konkrétních prostředků pomocí řízení přístupu na základě role Azure (Azure RBAC), označovaného také jako [kontext prostředku](design-logs-deployment.md#access-mode)
 * Uživatelé, kteří potřebují přístup k datům protokolů v konkrétní tabulce v pracovním prostoru pomocí Azure RBAC.
 
 Pro pochopení konceptů protokolů o RBAC a strategiích přístupu si přečtěte téma [návrh nasazení Azure Monitorch protokolů](design-logs-deployment.md)
@@ -313,4 +313,3 @@ Někdy vlastní protokoly pocházejí ze zdrojů, které nejsou přímo přidru�
 * Informace o shromažďování dat z počítačů ve vašem datovém centru nebo v jiném cloudovém prostředí najdete v tématu [Přehled agenta Log Analytics](./log-analytics-agent.md) .
 
 * Další informace najdete v tématu [shromáždění dat o virtuálních počítačích Azure](../learn/quick-collect-azurevm.md) ke konfiguraci shromažďování dat z virtuálních počítačů Azure.
-

@@ -7,12 +7,13 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95d7abca27ec9db46a72140bc8a61b2841c63fcb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0d9d0bad982a12e3b96bdbe4f680f2501b33ec67
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77598557"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495785"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rychlý start: Vytváření a správa sdílených složek Azure pomocí Azure CLI
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí Azure CLI. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
@@ -202,7 +203,7 @@ az storage file list \
     --output table
 ```
 
-I když `az storage file copy start` je tento příkaz vhodný pro přesun souborů mezi sdílenými složkami Azure, pro migrace a větší přesuny dat `rsync` doporučujeme v MacOS a Linux `robocopy` a ve Windows. `rsync`a `robocopy` k provádění přesunů dat místo rozhraní REST API použijte protokol SMB.
+I když `az storage file copy start` je tento příkaz vhodný pro přesun souborů mezi sdílenými složkami Azure, pro migrace a větší přesuny dat doporučujeme `rsync` v MacOS a Linux a `robocopy` ve Windows. `rsync`a `robocopy` k provádění přesunů dat místo rozhraní REST API použijte protokol SMB.
 
 ## <a name="create-and-manage-share-snapshots"></a>Vytváření a správa snímků sdílených složek
 Další užitečnou úlohou, kterou se sdílenými složkami Azure můžete provádět, je vytváření snímků sdílených složek. Snímek uchovává kopii sdílené složky Azure k určitému bodu v čase. Snímky sdílených složek jsou podobné některým technologiím operačního systému, které už možná znáte:
@@ -287,7 +288,7 @@ az storage share delete \
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Až budete hotovi, můžete k odebrání skupiny [`az group delete`](/cli/azure/group) prostředků a všech souvisejících prostředků použít příkaz: 
+Až budete hotovi, můžete [`az group delete`](/cli/azure/group) k odebrání skupiny prostředků a všech souvisejících prostředků použít příkaz: 
 
 ```azurecli-interactive 
 az group delete --name $resourceGroupName

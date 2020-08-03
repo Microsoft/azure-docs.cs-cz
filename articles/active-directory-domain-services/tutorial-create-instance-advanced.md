@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ead20713752b4eb28700541b4314241d86b6cc27
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8b48cfa29555cf0ca15428758208df27a52a84f7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87278539"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491133"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>Kurz: vytvoření a konfigurace spravované domény Azure Active Directory Domain Services s pokročilými možnostmi konfigurace
 
@@ -56,7 +56,7 @@ V tomto kurzu vytvoříte a nakonfigurujete spravovanou doménu pomocí Azure Po
 
 Chcete-li spustit průvodce **povolením Azure AD Domain Services** , proveďte následující kroky:
 
-1. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**.
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 1. Do panelu hledání zadejte *Domain Services* a pak zvolte *Azure AD Domain Services* z návrhů hledání.
 1. Na stránce Azure AD Domain Services vyberte **vytvořit**. Spustí se průvodce **povolením Azure AD Domain Services** .
 1. Vyberte **předplatné** Azure, ve kterém chcete vytvořit spravovanou doménu.
@@ -100,7 +100,7 @@ Vyplňte pole v okně *základy* Azure Portal k vytvoření spravované domény:
     Pro tento kurz vyberte *standardní* SKU.
 1. *Doménová struktura* je logická konstrukce, kterou používá Active Directory Domain Services k seskupení jedné nebo více domén. Ve výchozím nastavení je spravovaná doména vytvořena jako doménová struktura *uživatelů* . Tento typ doménové struktury synchronizuje všechny objekty z Azure AD, včetně všech uživatelských účtů vytvořených v místním služba AD DS prostředí.
 
-    Doménová struktura *prostředků* synchronizuje jenom uživatele a skupiny vytvořené přímo ve službě Azure AD. Doménové struktury prostředků jsou momentálně ve verzi Preview. Další informace o doménových strukturách *prostředků* , včetně důvodů, proč je můžete použít a jak vytvořit vztahy důvěryhodnosti doménové struktury s místními služba AD DS doménami, najdete v tématu [Přehled doménových struktur Azure služba AD DS][resource-forests].
+    Doménová struktura *prostředků* synchronizuje jenom uživatele a skupiny vytvořené přímo ve službě Azure AD. Hodnoty hash hesla pro místní uživatele se při vytváření doménové struktury prostředků nikdy nesynchronizují se spravovanými doménami. Další informace o doménových strukturách *prostředků* , včetně důvodů, proč je můžete použít a jak vytvořit vztahy důvěryhodnosti doménové struktury s místními služba AD DS doménami, najdete v tématu [Přehled doménových struktur Azure služba AD DS][resource-forests].
 
     V tomto kurzu se rozhodnete vytvořit doménovou strukturu *uživatelů* .
 

@@ -7,13 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 78aee7829e58feede3360f30f10260903713c52f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-azurecli
+ms.openlocfilehash: b3a049d76f880f590060a999ddda00e3706bac94
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770082"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500210"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Kurz: použití rozšíření zpráv Azure IoT Hub
 
@@ -38,7 +38,7 @@ Tady jsou úkoly, které provedete k dokončení tohoto kurzu:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Mít předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+* Mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 * Nainstalujte [Visual Studio](https://www.visualstudio.com/).
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
@@ -279,7 +279,7 @@ V tomto okamžiku se prostředky nastavují a směrování zpráv je nakonfiguro
 ## <a name="create-and-configure-by-using-a-resource-manager-template"></a>Vytvoření a konfigurace pomocí šablony Správce prostředků
 Šablonu Správce prostředků můžete použít k vytvoření a konfiguraci prostředků, směrování zpráv a rozšíření zpráv.
 
-1. Přihlaste se k portálu Azure. Výběrem **+ vytvořit prostředek zobrazíte** vyhledávací pole. Zadejte *nasazení šablony*a vyhledejte ho. V podokně výsledků vyberte možnost **template Deployment (nasadit pomocí vlastní šablony)**.
+1. Přihlaste se k webu Azure Portal. Výběrem **+ vytvořit prostředek zobrazíte** vyhledávací pole. Zadejte *nasazení šablony*a vyhledejte ho. V podokně výsledků vyberte možnost **template Deployment (nasadit pomocí vlastní šablony)**.
 
    ![Template deployment v Azure Portal](./media/tutorial-message-enrichments/template-select-deployment.png)
 
@@ -356,7 +356,7 @@ Aplikace odesílá zprávy typu zařízení-cloud do centra IoT každou sekundu.
 
 Po odeslání několika zpráv úložiště si prohlédněte data.
 
-1. Vyberte **Skupiny prostředků**. Vyhledejte skupinu prostředků **ContosoResourcesMsgEn**a vyberte ji.
+1. Vyberte **skupiny prostředků**. Vyhledejte skupinu prostředků **ContosoResourcesMsgEn**a vyberte ji.
 
 2. Vyberte svůj účet úložiště, který je **contosostorage**. V levém podokně vyberte **Průzkumník služby Storage (Preview)** .
 

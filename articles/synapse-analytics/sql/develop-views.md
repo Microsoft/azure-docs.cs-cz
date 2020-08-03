@@ -9,17 +9,17 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3a073c9539f2fb996ae59ef513525c217170f2e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84cd5c2de0b1a6d0909a31071506d98627966775
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81428651"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500738"
 ---
 # <a name="t-sql-views-using-synapse-sql"></a>Zobrazení T-SQL s využitím synapse SQL
 V tomto článku najdete tipy pro použití zobrazení T-SQL a vývoj řešení pomocí synapse SQL. 
 
-## <a name="why-use-views"></a>Proč používat zobrazení?
+## <a name="why-use-views"></a>Proč používat zobrazení
 
 Zobrazení lze použít mnoha různými způsoby ke zlepšení kvality řešení.  Tento článek popisuje několik příkladů, jak rozšířit vaše řešení pomocí zobrazení a obsahuje omezení, která je potřeba vzít v úvahu.
 

@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d87da234e675059ba2c170f4322d0ba53965dc89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075703"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500755"
 ---
-# <a name="using-transactions-in-sql-pool"></a>Používání transakcí ve fondu SQL
+# <a name="use-transactions-in-sql-pool"></a>Použít transakce ve fondu SQL
 
 Tipy pro implementaci transakcí ve fondu SQL (datový sklad) pro vývoj řešení
 
@@ -183,7 +183,7 @@ Všechny, které se změnily, je, že vrácení transakce se musí nacházet př
 
 Také je třeba poznamenat, že fond SQL neimplementuje ani nepodporuje funkci ERROR_LINE (). Pokud máte tento kód ve vašem kódu, musíte ho odebrat, aby byl kompatibilní s fondem SQL. Místo toho použijte pro implementaci ekvivalentních funkcí popisky dotazů ve svém kódu. Další podrobnosti najdete v článku s [popisem](develop-label.md) .
 
-## <a name="using-throw-and-raiserror"></a>Použití THROW a RAISERROR
+## <a name="use-of-throw-and-raiserror"></a>Použití THROW a RAISERROR
 
 THROW je moderní implementace pro vyvolávání výjimek ve fondu SQL, ale je také podporována příkaz RAISERROR. Existuje několik rozdílů, které jsou pro vás za platební pozornost.
 

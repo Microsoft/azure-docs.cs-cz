@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: f3eacbe6f93388756ce26324babeb2ca38bd09a5
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: f87e3f4add0cb5949036ec6caca2e361e2e88ea0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438899"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498119"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Možnosti identit a přístupu pro Azure Kubernetes Service (AKS)
 
@@ -119,7 +119,7 @@ Podívejte se na Další informace o použití služby Azure RBAC k zabezpečen�
 
 ### <a name="azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC pro autorizaci Kubernetes (Preview)
 
-Díky integraci Azure RBAC AKS použije server Webhooku Kubernetes autorizaci, který vám umožní spravovat oprávnění a přiřazení prostředků clusteru K8s integrovaných do Azure AD pomocí definice role a přiřazení rolí Azure.
+Díky integraci Azure RBAC AKS použije server Webhooku Kubernetes pro autorizaci, který vám umožní spravovat oprávnění a přiřazení prostředků clusteru K8s integrovaných do Azure AD pomocí definice role Azure a přiřazení rolí.
 
 ![Azure RBAC pro Kubernetes autorizační tok](media/concepts-identity/azure-rbac-k8s-authz-flow.png)
 

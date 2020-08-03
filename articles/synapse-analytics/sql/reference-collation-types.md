@@ -8,12 +8,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c36df4745e276471e35addf4774470dbaaa9e150
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1099c4e4dd69a8dc8caee96ec5dda633ce8b9d12
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080705"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496198"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Podpora řazení databáze pro synapse SQL
 
@@ -23,7 +23,7 @@ Výchozí kolaci databáze můžete změnit z Azure Portal při vytváření nov
 
 Můžete určit výchozí kolaci databáze synapse SQL na vyžádání v době vytváření pomocí příkazu CREATE DATABASE.
 
-## <a name="changing-collation"></a>Změna kolace
+## <a name="change-collation"></a>Změnit kolaci
 Pokud chcete změnit výchozí kolaci pro databázi fondu SQL, jednoduchá aktualizace na pole kolace v prostředí zřizování. Například pokud jste chtěli změnit výchozí kolaci na rozlišení velkých a malých písmen, můžete jednoduše přejmenovat kolaci z SQL_Latin1_General_CP1_CI_AS na SQL_Latin1_General_CP1_CS_AS. 
 
 Pokud chcete změnit výchozí kolaci pro databázi SQL na vyžádání, můžete použít příkaz ALTER DATABASE.
@@ -104,7 +104,7 @@ Kromě toho fond SQL nepodporuje následující typy kolace:
 *    SQL_EBCDIC277_2_CP1_CS_AS
 *    UTF-8
 
-## <a name="checking-the-current-collation"></a>Kontroluje se aktuální kolace.
+## <a name="check-the-current-collation"></a>Zkontroluje aktuální kolaci.
 Chcete-li zjistit aktuální kolaci pro databázi, můžete spustit následující fragment T-SQL:
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;

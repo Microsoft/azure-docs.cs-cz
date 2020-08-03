@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 013b78e0e8ad47e98b1d192bfc48c5c4a4de0163
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555131"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489584"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Porovnání samoobslužně spravovaných Active Directory Domain Services, Azure Active Directory a spravovaných Azure Active Directory Domain Services
 
@@ -47,7 +47,7 @@ Pokud máte aplikace a služby, které potřebují přístup k tradičnímu mech
 
 V případě Azure služba AD DS jsou základní součásti služby nasazeny a udržovány za vás Microsoft jako prostředí *spravované* domény. Nebudete nasazovat, spravovat, opravovat a zabezpečovat infrastrukturu služba AD DS pro součásti, jako jsou virtuální počítače, operační systém Windows Server nebo řadiče domény (DCs).
 
-Azure služba AD DS poskytuje menší podmnožinu funkcí tradičního prostředí služba AD DS spravovaného v rámci sebe, což snižuje část složitosti návrhu a správy. Například neexistují žádné doménové struktury služby AD, domény, lokality a replikační odkazy pro návrh a údržbu. Stále můžete [vytvářet vztahy důvěryhodnosti mezi Azure služba AD DS a místními prostředími (aktuálně ve verzi Preview)][create-forest-trust].
+Azure služba AD DS poskytuje menší podmnožinu funkcí tradičního prostředí služba AD DS spravovaného v rámci sebe, což snižuje část složitosti návrhu a správy. Například neexistují žádné doménové struktury služby AD, domény, lokality a replikační odkazy pro návrh a údržbu. [Mezi Azure služba AD DS a místními prostředími stále můžete vytvářet vztahy důvěryhodnosti doménové struktury][create-forest-trust].
 
 Pro aplikace a služby, které běží v cloudu a potřebují přístup k tradičním ověřovacím mechanismům, jako je Kerberos nebo NTLM, poskytuje Azure služba AD DS prostředí spravované v doméně s minimálními nároky na správu. Další informace najdete v tématu [koncepty správy pro uživatelské účty, hesla a správu v Azure služba AD DS][administration-concepts].
 
@@ -62,7 +62,7 @@ Mezi běžné modely nasazení pro samoobslužně spravované prostředí služb
 
 Následující tabulka popisuje některé funkce, které možná budete potřebovat pro vaši organizaci, a rozdíly mezi spravovanou doménou Azure služba AD DS nebo služba AD DS doménou, kterou spravujete samostatně.
 
-| **Funkce** | **služba AD DS Azure** | **služba AD DS samoobslužné správy** |
+| **Funkce** | **Azure AD DS** | **služba AD DS samoobslužné správy** |
 | ----------- |:---------------:|:----------------------:|
 | **Spravovaná služba**                               | **&#x2713;** | **&#x2715;** |
 | **Zabezpečená nasazení**                            | **&#x2713;** | Správce zabezpečení nasazení |

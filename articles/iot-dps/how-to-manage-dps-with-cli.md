@@ -6,13 +6,14 @@ ms.author: menchi
 ms.date: 01/17/2018
 ms.topic: conceptual
 ms.service: iot-dps
+ms.custom: devx-track-azurecli
 services: iot-dps
-ms.openlocfilehash: e49f71c100911d9186a0e4693ef133f548e7bc66
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 72978636b878aac9120b356e7be5fe5c978d1738
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037966"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499785"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>Jak používat rozhraní příkazového řádku Azure a rozšíření IoT ke správě IoT Hub Device Provisioning Service
 
@@ -30,7 +31,7 @@ V tomto kurzu nejprve dokončíte kroky pro nastavení rozhraní příkazového 
 
 Vyžaduje se [Python 2.7x nebo Python 3.x](https://www.python.org/downloads/).
 
-### <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
+### <a name="install-the-azure-cli"></a>Instalace Azure CLI
 
 Při instalaci rozhraní příkazového řádku Azure v prostředí postupujte podle pokynů k [instalaci](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) . Minimální verze rozhraní příkazového řádku Azure CLI musí být 2.0.70 nebo vyšší. Ke kontrole použijte příkaz `az –version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack. Ve Windows můžete instalaci jednoduše provést stažením a instalací [MSI](https://aka.ms/InstallAzureCliWindows).
 

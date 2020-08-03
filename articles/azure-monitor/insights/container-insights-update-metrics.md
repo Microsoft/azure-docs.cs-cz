@@ -3,12 +3,13 @@ title: Postup aktualizace Azure Monitor pro kontejnery pro metriky | Microsoft D
 description: Tento článek popisuje, jak aktualizovat Azure Monitor pro kontejnery pro povolení funkce vlastní metriky, která podporuje prozkoumávání a upozorňování na agregované metriky.
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 78a6612e522accce8c934885a090e66a51850c97
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d56a280bdef2058c28d596f6c259eb319d80b08e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498980"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499955"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Jak aktualizovat službu Azure Monitor pro kontejnery a povolit metriky
 
@@ -30,7 +31,7 @@ V rámci podpory těchto nových funkcí je součástí vydání nový kontejner
 
 Buď proces přiřadí roli **vydavatele metrik monitorování** k instančnímu objektu clusteru nebo k souboru MSI přiřazenému uživateli pro doplněk monitorování, aby data shromážděná agentem mohla být publikována do vašeho prostředku clusterů. Vydavatel monitorování metrik má oprávnění pouze k odeslání metrik do prostředku, nemůže změnit žádný stav, aktualizovat prostředek ani číst žádná data. Další informace o roli najdete v tématu [monitorování role vydavatele metrik](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před aktualizací clusteru potvrďte následující:
 

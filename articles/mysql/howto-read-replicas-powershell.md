@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: f6d24ba0d31020b82669947189da180348f2a46b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e99d378b49596ac208f7235a4d1d8b2b1c8c5310
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107984"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498758"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Jak vytvářet a spravovat repliky pro čtení v Azure Database for MySQL pomocí prostředí PowerShell
 
@@ -53,7 +54,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzMySqlServerReplica`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Description  |
+| Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které se vytvoří server repliky.  |
 | Name | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
@@ -82,7 +83,7 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMySqlReplica`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Description  |
+| Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
 | ServerName | mydemoserver | Název nebo ID hlavního serveru. |

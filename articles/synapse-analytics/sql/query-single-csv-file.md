@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1d033a904087bf8ff32721372209820a64090502
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 63755616bb524226d3c40d32b9695f4b787860d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383881"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489703"
 ---
 # <a name="query-csv-files"></a>Dotazování na soubory CSV
 
@@ -31,7 +31,7 @@ Všechny výše uvedené variace budou uvedené níže.
 
 `OPENROWSET`funkce umožňuje číst obsah souboru CSV zadáním adresy URL souboru.
 
-### <a name="reading-csv-file"></a>Čtení souboru CSV
+### <a name="read-a-csv-file"></a>Čtení souboru CSV
 
 Nejjednodušší způsob, jak zobrazit obsah `CSV` souboru, je poskytnout URL souboru pro `OPENROWSET` funkci, zadat csv `FORMAT` a 2,0 `PARSER_VERSION` . Pokud je soubor veřejně dostupný nebo pokud vaše identita Azure AD může získat přístup k tomuto souboru, měli byste být schopni zobrazit obsah souboru pomocí dotazu, jako je ten, který je znázorněn v následujícím příkladu:
 
@@ -46,7 +46,7 @@ from openrowset(
 
 Možnost `firstrow` slouží k přeskočení prvního řádku v souboru CSV, který představuje hlavičku v tomto případě. Ujistěte se, že máte přístup k tomuto souboru. Pokud je soubor chráněný klíčem SAS nebo vlastní identitou, bude potřeba nastavit [přihlašovací údaje na úrovni serveru pro přihlášení SQL](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential).
 
-### <a name="using-data-source"></a>Používání zdroje dat
+### <a name="data-source-usage"></a>Využití zdroje dat
 
 Předchozí příklad používá úplnou cestu k souboru. Jako alternativu můžete vytvořit externí zdroj dat s umístěním, které odkazuje na kořenovou složku úložiště:
 
@@ -93,7 +93,7 @@ from openrowset(
 
 V následujících částech se můžete podívat, jak se dotazovat na různé typy souborů CSV.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Prvním krokem je **Vytvoření databáze** , ve které budou vytvořeny tabulky. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 
@@ -214,7 +214,7 @@ WHERE
 > [!NOTE]
 > Tento dotaz vrátí stejné výsledky, pokud jste vynechali parametr FIELDQUOTE, protože výchozí hodnota pro FIELDQUOTE je dvojité uvozovky.
 
-## <a name="escaping-characters"></a>Znaky uvozovacích znaků
+## <a name="escape-characters"></a>Řídicí znaky
 
 Následující dotaz ukazuje, jak číst soubor s řádkem záhlaví s novým řádkem ve stylu systému UNIX, sloupci s oddělovači a řídicím znakem použitým pro oddělovač pole (čárka) v rámci hodnot. Všimněte si, že se v porovnání s ostatními příklady liší umístění souboru.
 
@@ -246,7 +246,7 @@ WHERE
 > [!NOTE]
 > Tento dotaz by se nezdařil, pokud není zadán parametr ESCAPECHAR, protože čárka v "slov, enia" by byla považována za oddělovač polí namísto části názvu země nebo oblasti. "Slov, enia" by se považovat za dva sloupce. Proto bude mít konkrétní řádek jeden sloupec více než ostatní řádky a jeden sloupec je více, než jste definovali v klauzuli WITH.
 
-### <a name="escaping-quoting-characters"></a>Uvozovací znaky citací
+### <a name="escape-quoting-characters"></a>Řídicí znaky pro uvozovky
 
 Následující dotaz ukazuje, jak číst soubor s řádkem záhlaví s novým řádkem ve stylu UNIX, s oddělovači sloupců a s řídicím znakem dvojitých uvozovek v rámci hodnot. Všimněte si, že se v porovnání s ostatními příklady liší umístění souboru.
 
@@ -306,7 +306,7 @@ WHERE
     AND year = 2017
 ```
 
-## <a name="returning-subset-of-columns"></a>Vrácení podmnožiny sloupců
+## <a name="return-a-subset-of-columns"></a>Vrácení podmnožiny sloupců
 
 Zatím jste určili schéma souboru CSV pomocí nástroje s a seznamem všech sloupců. V dotazu můžete zadat pouze sloupce, které skutečně potřebujete, a to pomocí pořadového čísla pro každý požadovaný sloupec. Vynecháte také sloupce bez zájmu.
 

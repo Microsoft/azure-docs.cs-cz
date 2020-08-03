@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: 7349504b5a1ed5a67f3b34be2c4ff5dda29afbf3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 08835bda959fb4fe261e86e4d519ab85bd2a4625
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025298"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495144"
 ---
 # <a name="http-application-routing"></a>Směrování aplikace HTTP
 
@@ -20,7 +20,7 @@ ms.locfileid: "87025298"
 Když je doplněk povolený, vytvoří v předplatném zónu DNS. Další informace o cenách služby DNS najdete v tématu [ceny služby DNS][dns-pricing].
 
 > [!CAUTION]
-> Doplněk pro směrování aplikací HTTP je navržený tak, aby vám umožnil rychle vytvořit kontroler příchozího přenosu dat a přistupovat k aplikacím. Tento doplněk není doporučen pro produkční použití. Pro nasazení příchozích dat do provozu, která zahrnují víc replik a podporu TLS, najdete informace v tématu [vytvoření řadiče HTTPS pro příchozí](./ingress-tls.md)přenosy.
+> Doplněk pro směrování aplikací HTTP je navržený tak, aby vám umožnil rychle vytvořit kontroler příchozího přenosu dat a přistupovat k aplikacím. Tento doplněk není aktuálně navržený pro použití v produkčním prostředí a nedoporučuje se pro produkční použití. Pro nasazení příchozích dat do provozu, která zahrnují víc replik a podporu TLS, najdete informace v tématu [vytvoření řadiče HTTPS pro příchozí](./ingress-tls.md)přenosy.
 
 ## <a name="http-routing-solution-overview"></a>Přehled řešení směrování HTTP
 
@@ -203,7 +203,7 @@ kubectl delete configmaps addon-http-application-routing-nginx-configuration --n
 
 Opakujte předchozí `kubectl delete` krok pro všechny prostředky funkce *addon-http-Application-Routing* , které zůstaly ve vašem clusteru.
 
-## <a name="troubleshoot"></a>Odstranit potíže
+## <a name="troubleshoot"></a>Řešení potíží
 
 Pomocí příkazu [kubectl logs][kubectl-logs] Zobrazte protokoly aplikací pro externí aplikaci DNS. Protokoly by měly potvrdit, že byl úspěšně vytvořen záznam DNS a a TXT.
 

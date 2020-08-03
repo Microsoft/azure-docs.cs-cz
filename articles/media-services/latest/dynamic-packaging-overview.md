@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/11/2020
+ms.date: 07/31/2020
 ms.author: juliako
-ms.openlocfilehash: f019ebd59b2d0b9d6bae8a5dc4904f1bcae0e6c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 032a3c719610d658ec32492033a04a610117643d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090106"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489771"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
@@ -33,6 +33,8 @@ V Media Services představuje [koncový bod streamování](streaming-endpoint-co
 ## <a name="to-prepare-your-source-files-for-delivery"></a>Příprava zdrojových souborů na doručení
 
 Pokud chcete využít výhod dynamického balení, musíte soubor Mezzanine (zdrojový soubor) [zakódovat](encoding-concept.md) do sady souborů MP4 s více přenosovými rychlostmi (ISO Base Media 14496-12). Potřebujete mít [Asset](assets-concept.md) s šifrovanými konfiguračními soubory MP4 a streaming, které vyžaduje Media Services dynamické balení. Z této sady souborů MP4 můžete použít dynamické balení k doručování videa prostřednictvím protokolů multimediálního datového proudu popsaných níže.
+
+Azure Media Services dynamické balení podporuje pouze videosoubory a zvukové soubory ve formátu kontejneru MP4. Zvukové soubory musí být zakódované do kontejneru MP4 i při použití alternativních kodeků, jako je Dolby.  
 
 > [!TIP]
 > Jedním ze způsobů, jak získat konfigurační soubory MP4 a streamování, je [kódování souboru Mezzanine pomocí Media Services](#encode-to-adaptive-bitrate-mp4s). 
@@ -87,7 +89,7 @@ Následující diagram znázorňuje streamování na vyžádání s dynamickým 
 
 ![Diagram pracovního postupu pro streamování na vyžádání s dynamickým balením](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-Cesta ke stažení je k dispozici ve výše uvedeném obrázku, aby bylo vidět, že si můžete stáhnout soubor MP4 přímo prostřednictvím *koncového bodu streamování* (počátek) (zadáte [zásadu streamování](streaming-policy-concept.md) ke stažení na lokátoru streamování).<br/>Dynamický balíček nemění soubor. 
+Cesta ke stažení je k dispozici ve výše uvedeném obrázku, aby bylo vidět, že si můžete stáhnout soubor MP4 přímo prostřednictvím *koncového bodu streamování* (počátek) (zadáte [zásadu streamování](streaming-policy-concept.md) ke stažení na lokátoru streamování).<br/>Dynamický balíček nemění soubor. Můžete volitelně použít rozhraní API služby Azure Blob Storage pro přístup k MP4 přímo pro progresivní stahování, pokud chcete obejít funkce *koncového bodu streamování* (Origin). 
 
 ### <a name="encode-to-adaptive-bitrate-mp4s"></a>Kódovat do adaptivní přenosové rychlosti rychlostmi
 
@@ -123,17 +125,17 @@ Informace o živém streamování v Media Services V3 najdete v tématu [Přehle
 
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>Video kodeky podporované dynamickým balením
 
-Dynamické balení podporuje soubory MP4, které obsahují video kódované pomocí [H. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC nebo AVC1) nebo [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 nebo hvc1).
+Dynamické balení podporuje videosoubory, které jsou ve formátu souboru kontejneru MP4, a obsahuje video, které je kódované pomocí [h. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC nebo AVC1) nebo [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 nebo hvc1).
 
 > [!NOTE]
 > Rozlišení až 4K a snímkových frekvencí až 60 snímků za sekundu byly testovány s *dynamickým balením*. [Kodér úrovně Premium](../previous/media-services-encode-asset.md#media-encoder-premium-workflow) podporuje kódování do H. 265 prostřednictvím starších rozhraní API v2.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Zvukové kodeky podporované dynamickým balením
 
-Dynamické balení podporuje zvuk, který je kódovaný pomocí následujících protokolů:
+Dynamické balení podporuje také zvukové soubory, které jsou uloženy ve formátu kontejneru souboru MP4, který obsahuje kódovaný zvukový stream v jednom z následujících kodeků:
 
-* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1 nebo HE-AAC v2)
-* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (vylepšené AC-3 nebo E-AC3)
+* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1 nebo HE-AAC v2). 
+* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3 nebo E-AC3).  Aby bylo možné pracovat s dynamickým balíčkem, musí být kódovaný zvuk uložený ve formátu kontejneru MP4.
 * Dolby ATMOS
 
    Streamování formátu Dolby ATMOS je podporováno pro standardy, jako je protokol MPEG-dispomlčka (CSF) nebo Common Media Application Format (CMAF) fragmentované MP4 a prostřednictvím HTTP Live Streaming (HLS) s CMAF.
@@ -146,6 +148,10 @@ Dynamické balení podporuje zvuk, který je kódovaný pomocí následujících
     * DTS-HD – bezeztrátová (bez jádra) (dtsl)
 
 Dynamické balení podporuje více zvukových stop s POMLČKou nebo HLS (verze 4 nebo novější) pro streamování assetů, které mají více zvukových stop s více kodeky a jazyky.
+
+Pro všechny výše uvedené zvukové kodeky musí být kódovaný zvuk uložený ve formátu kontejneru MP4, aby fungoval s dynamickým balením. Služba nepodporuje ve službě BLOB Storage nezpracované základní formáty souborů streamu (například následující by se nepodporovaly –. DTS,. AC3.) 
+
+Pro vytváření zvukových balíčků jsou podporovány pouze soubory s příponou. mp4 rozšíření. mp4a. 
 
 ### <a name="limitations"></a>Omezení
 

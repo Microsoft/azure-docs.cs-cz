@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a622179d1e83b41e906a9d276377f5c9474264b9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a5764e44db31755110ac99a3e8e8e0984cdf9604
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86129959"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490570"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Plánování kapacity pro zotavení po havárii virtuálního počítače Hyper-V 
 
@@ -47,7 +47,7 @@ Nástroj můžete spustit ve dvou režimech:
 
 2. V seznamu **Vyberte typ plánovače** vyberte **rychlé plánování**.
 
-   ![Začínáme](./media/site-recovery-capacity-planner/getting-started.png)
+   ![Snímek obrazovky s možností vybrat typ plánovače s vybraným rychlým plánovačem](./media/site-recovery-capacity-planner/getting-started.png)
 
 3. V listu **Capacity Planner** zadejte požadované informace. Vyplňte všechna pole v červeném kruhu na následujícím snímku obrazovky:
 
@@ -61,7 +61,7 @@ Nástroj můžete spustit ve dvou režimech:
 
    e. V **počtu hodin, během kterých by měla být počáteční replikace pro dávku virtuálních počítačů dokončena** , a **počet virtuálních počítačů na počáteční dávku replikace**zadejte nastavení, která se použijí k výpočtu požadavků na počáteční replikaci. Při nasazení Site Recovery se nahraje celá počáteční datová sada.
 
-   ![Vstupy](./media/site-recovery-capacity-planner/inputs.png)
+   ![Snímek obrazovky Capacity Planner listu zobrazující požadované vstupní informace](./media/site-recovery-capacity-planner/inputs.png)
 
 4. Po zadání hodnot pro zdrojové prostředí obsahuje zobrazený výstup:
 
@@ -77,7 +77,7 @@ Nástroj můžete spustit ve dvou režimech:
    * **Počet požadovaných dalších procesových serverů**: zobrazuje, jestli jsou nutné další procesové servery, kromě procesového serveru, který běží na konfiguračním serveru ve výchozím nastavení.
    * **100% další úložiště na zdroji**: zobrazuje, zda je v umístění zdroje vyžadováno další úložiště.
 
-      ![Výstup](./media/site-recovery-capacity-planner/output.png)
+      ![Snímek obrazovky zobrazeného výstupu na základě poskytnutého vstupu](./media/site-recovery-capacity-planner/output.png)
 
 ## <a name="run-the-detailed-planner"></a>Spuštění podrobného plánovače
 
@@ -85,7 +85,7 @@ Nástroj můžete spustit ve dvou režimech:
 
 2. V části **Vyberte typ plánovače**vyberte **podrobný Plánovač** ze seznamu.
 
-   ![Úvodní pokyny](./media/site-recovery-capacity-planner/getting-started-2.png)
+   ![Snímek obrazovky s možností vybrat typ plánovače s vybraným podrobným plánovačem](./media/site-recovery-capacity-planner/getting-started-2.png)
 
 3. V listu **kvalifikace úlohy** zadejte požadované informace. Musíte vyplnit všechna označená pole.
 
@@ -105,7 +105,7 @@ Nástroj můžete spustit ve dvou režimech:
 
    h. V části **mapování velikosti virtuálního počítače Azure**zadejte velikost virtuálního počítače Azure, kterou chcete namapovat. Pokud to nechcete provést ručně, vyberte **COMPUTE IaaS virtuální počítače**. Pokud zadáte ruční nastavení a pak vyberete **výpočetní virtuální počítače IaaS**, může být ruční nastavení přepsáno. Výpočetní proces automaticky identifikuje nejlepší shodu velikosti virtuálního počítače Azure.
 
-   ![List kvalifikace úlohy](./media/site-recovery-capacity-planner/workload-qualification.png)
+   ![Snímek obrazovky s listem kvalifikace úlohy, který zobrazuje požadované vstupní informace](./media/site-recovery-capacity-planner/workload-qualification.png)
 
 4. Pokud vyberete **virtuální počítače COMPUTE IaaS**, najdete tady:
 
@@ -117,12 +117,12 @@ Nástroj můžete spustit ve dvou režimech:
 
 Sloupce AA až AE jsou výstupem a poskytují informace pro každý virtuální počítač.
 
-![Výstupní sloupce AA až AE](./media/site-recovery-capacity-planner/workload-qualification-2.png)
+![Snímek obrazovky zobrazující výstupní sloupce AA až AE](./media/site-recovery-capacity-planner/workload-qualification-2.png)
 
 ### <a name="example"></a>Příklad
 Například pro šest virtuálních počítačů s hodnotami zobrazenými v tabulce nástroj vypočítá a přiřadí nejlepší shodu virtuálních počítačů s Azure a požadavky na úložiště Azure.
 
-![Přiřazení kvalifikace úloh](./media/site-recovery-capacity-planner/workload-qualification-3.png)
+![Snímek obrazovky znázorňující přiřazení kvalifikace úlohy](./media/site-recovery-capacity-planner/workload-qualification-3.png)
 
 * V příkladu výstupu si všimněte následujícího:
 
@@ -144,7 +144,7 @@ Po zadání všech informací vyberte **Odeslat data do nástroje Planner** a ot
 
 2. Chcete-li provést změny, je nutné upravit sešit **kvalifikace úlohy** . Pak znovu vyberte **Odeslat data do nástroje Planner** .
 
-   ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
+   ![Snímek obrazovky znázorňující změněné vstupy a výsledné výstupy v listu Capacity Planner.](./media/site-recovery-capacity-planner/capacity-planner.png)
 
 ## <a name="next-steps"></a>Další kroky
 [Přečtěte si, jak spustit](./hyper-v-deployment-planner-overview.md) Nástroj pro plánování kapacity.

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8b95f6b6eca0f1464a7d09d2810aa66836d76f8f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04b2d7842222426010b76a1a7ed4c72ee74e3d87
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386635"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489720"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotazování souborů JSON pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání (ve v
 - Standardní soubory JSON, kde je více dokumentů JSON uloženo jako pole JSON.
 - Soubory JSON s hodnotami oddělenými řádky, kde jsou dokumenty JSON oddělené znakem nového řádku. Společná rozšíření pro tyto typy souborů jsou `jsonl` , `ldjson` a `ndjson` .
 
-## <a name="reading-json-documents"></a>Čtení dokumentů JSON
+## <a name="read-json-documents"></a>Čtení dokumentů JSON
 
 Nejjednodušší způsob, jak zobrazit obsah souboru JSON, je poskytnout URL souboru pro `OPENROWSET` funkci, zadat CSV `FORMAT` a nastavit hodnoty `0x0b` pro `fieldterminator` a `fieldquote` . Pokud potřebujete číst soubory JSON s oddělovači řádků, je to pro vás dostačující. Pokud máte klasický soubor JSON, budete muset nastavit hodnoty `0x0b` pro `rowterminator` . `OPENROWSET`funkce bude analyzovat JSON a vracet všechny dokumenty v následujícím formátu:
 
@@ -60,7 +60,7 @@ from openrowset(
 
 Tento dotaz vrátí každý dokument JSON jako samostatný řádek sady výsledků dotazu. Ujistěte se, že máte přístup k tomuto souboru. Pokud je soubor chráněný pomocí klíče SAS nebo vlastní identity, budete muset nastavit [přihlašovací údaje na úrovni serveru pro přihlášení SQL](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential). 
 
-### <a name="using-data-source"></a>Používání zdroje dat
+### <a name="data-source-usage"></a>Využití zdroje dat
 
 Předchozí příklad používá úplnou cestu k souboru. Jako alternativu můžete vytvořit externí zdroj dat s umístěním, které odkazuje na kořenovou složku úložiště, a použít tento zdroj dat a relativní cestu k souboru ve `OPENROWSET` funkci:
 

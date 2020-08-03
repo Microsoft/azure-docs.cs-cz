@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: dd6d3ef6f610dcbdc511297e459cc5856bebe033
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5f6fca572524d1b0254c777d0820d8781c9f7be8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030041"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496623"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Základní hodnoty zabezpečení Azure pro Azure Database for PostgreSQL – škálovatelné
 
@@ -484,7 +484,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
 
-**Doprovodné**materiály: použití řízení přístupu na základě role (RBAC) v Azure k řízení přístupu k rovině ovládacího prvku Citus (škálování na úrovni) (např. Azure Portal). RBAC nemá vliv na uživatelská oprávnění v rámci databáze.
+**Doprovodné**materiály: použijte řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k rovině ovládacího prvku Citus (škálování na úrovni) (např. Azure Portal). RBAC nemá vliv na uživatelská oprávnění v rámci databáze.
 
 Pokud chcete upravit uživatelská oprávnění na úrovni databáze, použijte standardní příkazy PostgreSQL pomocí nástroje, jako je PgAdmin nebo psql.
 

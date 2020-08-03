@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, seodec18, tracking-python
-ms.openlocfilehash: ca7feacf5d631b4e85a0b3f4e7a039bbb79abe45
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: f30f2b45944281ed74da2026eb14e8938260b259
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460197"
+ms.locfileid: "87496096"
 ---
 # <a name="connect-to-azure-storage-services"></a>Připojení ke službám Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,10 +29,10 @@ Z [těchto řešení Azure Storage](#matrix)můžete vytvořit úložiště dat.
 
 Informace o tom, kde je úložiště dat vhodné v rámci celkového pracovního postupu pro přístup k datům v Azure Machine Learning, najdete v článku [zabezpečený přístup k datům](concept-data.md#data-workflow) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat:
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Účet úložiště Azure s [podporovaným typem úložiště](#matrix).
 
@@ -96,7 +96,7 @@ V **rámci počátečního procesu vytváření a registrace úložiště dat**A
 
 **Po vytvoření úložiště dat**se toto ověřování provede jenom u metod, které vyžadují přístup k podkladové kontejneru úložiště, **ne** při každém načtení objektů úložiště dat. K ověření dojde například v případě, že chcete stáhnout soubory z úložiště dat. Pokud ale chcete pouze změnit výchozí úložiště dat, pak k ověření nedojde.
 
-Pokud chcete ověřit přístup k základní službě úložiště, můžete zadat klíč účtu, tokeny (SAS) nebo instanční objekt v odpovídající `register_azure_*()` metodě typu úložiště dat, který chcete vytvořit. V [matici typ úložiště](#matrix) jsou uvedené podporované typy ověřování, které odpovídají jednotlivým typům úložiště dat.
+Pokud chcete ověřit přístup k základní službě úložiště, můžete v odpovídající `register_azure_*()` metodě typu úložiště dat, který chcete vytvořit, zadat buď klíč účtu, tokeny sdíleného přístupu (SAS) nebo instanční objekt. V [matici typ úložiště](#matrix) jsou uvedené podporované typy ověřování, které odpovídají jednotlivým typům úložiště dat.
 
 Klíč účtu, token SAS a informace o instančním objektu najdete na svém [Azure Portal](https://portal.azure.com).
 
@@ -113,7 +113,7 @@ Klíč účtu, token SAS a informace o instančním objektu najdete na svém [Az
 
 ### <a name="permissions"></a>Oprávnění
 
-Pro kontejner objektů BLOB v Azure a Azure Data Lake úložiště Gen 2 se ujistěte, že přihlašovací údaje mají přístup ke službě **BLOB data Reader úložiště** . Přečtěte si další informace o [čtečce dat objektů BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). 
+V případě kontejneru objektů blob Azure a Azure Data Lake úložiště Gen 2 se ujistěte, že přihlašovací údaje mají přístup ke **čtečce dat objektů BLOB úložiště** . Přečtěte si další informace o [čtečce dat objektů BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). 
 
 <a name="python"></a>
 
@@ -176,7 +176,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 Pro úložiště dat Azure Data Lake Storage generace 2 (ADLS Gen 2) použijte [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) k registraci úložiště dat přihlašovacích údajů připojeného k úložišti Azure datalake Gen 2 s [oprávněními instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). 
 
-Aby bylo možné využívat instanční objekt, potřebujete [zaregistrovat aplikaci](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) a udělit instančnímu objektu přístup ke **čtečce dat objektů BLOB služby Storage** . Přečtěte si další informace o [nastavení řízení přístupu pro adls Gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
+Aby bylo možné použít instanční objekt, musíte [aplikaci zaregistrovat](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) a udělit instančnímu objektu přístup ke **čtečce dat objektů BLOB služby Storage** . Přečtěte si další informace o [nastavení řízení přístupu pro adls Gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
 Následující kód vytvoří a zaregistruje `adlsgen2_datastore_name` úložiště dat do `ws` pracovního prostoru. Toto úložiště dat přistupuje k systému souborů `test` v `account_name` účtu úložiště pomocí zadaných přihlašovacích údajů instančního objektu.
 
@@ -202,7 +202,9 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 <a name="studio"></a>
 
+
 ## <a name="create-datastores-in-the-studio"></a>Vytváření úložiště dat v studiu 
+
 
 V několika krocích se Azure Machine Learning Studiu vytvoří nové úložiště dat.
 
@@ -212,17 +214,16 @@ V několika krocích se Azure Machine Learning Studiu vytvoří nové úložišt
 1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
 1. V levém podokně v části **Spravovat**vyberte **úložiště** .
 1. Vyberte **+ nové úložiště dat**.
-1. Vyplňte formulář pro nové úložiště dat. Formulář se inteligentně aktualizuje na základě vašich výběrů pro typ úložiště Azure a typ ověřování. V [části přístup k úložišti a oprávněním](#access-validation) se dozvíte, kde najít přihlašovací údaje pro ověřování, které potřebujete k vyplnění tohoto formuláře.
+1. Vyplňte formulář pro nové úložiště dat. Formulář se inteligentně aktualizuje na základě vašich výběrů pro typ úložiště Azure a typ ověřování. V [části přístup k úložišti a oprávněním](#access-validation) se dozvíte, kde najít přihlašovací údaje pro ověřování, které potřebujete k naplnění tohoto formuláře.
 
 Následující příklad ukazuje, jak formulář vypadá při vytváření **úložiště dat objektů BLOB v Azure**: 
     
 ![Formulář pro nové úložiště dat](media/how-to-access-data/new-datastore-form.png)
 
 <a name="train"></a>
-
 ## <a name="use-data-in-your-datastores"></a>Použití dat v úložišti dat
 
-Po vytvoření úložiště dat [vytvořte Azure Machine Learning datovou sadu](how-to-create-register-datasets.md) pro interakci s daty. Datové sady zabalí vaše data do vyhodnoceného spotřebního objektu laxně vytvářená pro úlohy strojového učení, jako je například školení. Také poskytují možnost [stahovat nebo připojovat](how-to-train-with-datasets.md#mount-vs-download) soubory libovolného formátu ze služeb Azure Storage, jako je Azure Blob Storage a adls Gen 2. Můžete je také použít k načtení tabulkových dat do datového rámce PANDAS nebo Spark.
+Po vytvoření úložiště dat [vytvořte Azure Machine Learning datovou sadu](how-to-create-register-datasets.md) pro interakci s daty. Datové sady zabalí vaše data do laxně vytvářená vyhodnoceného spotřebního objektu pro úlohy strojového učení, jako je například školení. Také poskytují možnost [stahovat nebo připojovat](how-to-train-with-datasets.md#mount-vs-download) soubory libovolného formátu ze služeb Azure Storage, jako je Azure Blob Storage a adls Gen 2. Můžete je také použít k načtení tabulkových dat do datového rámce PANDAS nebo Spark.
 
 <a name="get"></a>
 

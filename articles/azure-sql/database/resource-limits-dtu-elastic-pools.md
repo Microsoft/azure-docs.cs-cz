@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: 0fd875b2c02f5d61663339ac523fd6733732ad01
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0dd15fe5d68a521293f279978c668bc88599115e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420987"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498289"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ V případě Azure SQL Database elastických fondů se v následujících tabulk
 
 Limity prostředků jednotlivých databází v elastických fondech jsou obecně stejné jako pro izolované databáze mimo fondy založené na DTU a vrstvě služeb. Například maximální počet souběžných pracovních procesů pro databázi S2 je 120 pracovních procesů. Maximální počet souběžných pracovních procesů pro databázi ve fondu Standard je tedy 120 pracovních procesů, pokud je maximální počet DTU na databázi ve fondu 50 DTU (což je ekvivalentem S2).
  
-Prostředky poskytované elastickému fondu můžou přesáhnout prostředky poskytované do izolované databáze mimo elastický fond pro stejný počet DTU. To znamená, že využití eDTU elastického fondu může být menší než součet využití DTU napříč databázemi v rámci fondu v závislosti na vzorech úloh. Například v extrémním případě s pouze jednou databází v elastickém fondu, kde využití DTU databáze je 100%, je možné, že využití eDTU fondu činí 50% pro určité vzory úloh. K tomu může dojít i v případě, že nebyla nastavena žádná explicitní maximální DTU na databázi. V takovém případě je spotřeba DTU databáze ve fondu omezená stejným způsobem jako využití DTU izolované databáze s odpovídajícím cílem služby.
+Pro stejný počet DTU můžou prostředky poskytované elastickému fondu překročit prostředky poskytované do izolované databáze mimo elastický fond. To znamená, že využití eDTU elastického fondu může být menší než součet využití DTU napříč databázemi v rámci fondu v závislosti na vzorech úloh. Například v extrémním případě s pouze jednou databází v elastickém fondu, kde využití DTU databáze je 100%, je možné, že využití eDTU fondu činí 50% pro určité vzory úloh. K tomu může dojít i v případě, že maximální počet jednotek DTU na databázi zůstává maximální podporovanou hodnotou velikosti daného fondu.
 
 > [!NOTE]
 > Omezení počtu prostředků úložiště na jeden fond v každé z následujících tabulek nezahrnuje úložiště tempdb a log.
@@ -51,12 +51,12 @@ Prostředky poskytované elastickému fondu můžou přesáhnout prostředky pos
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Maximální velikost úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Maximální úložiště OLTP v paměti na fond (GB) | – | – | – | – | – | – | – | – |
+| Maximální úložiště OLTP v paměti na fond (GB) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
 | Maximální počet databáze na fond <sup>1</sup> | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>2</sup> | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Maximální počet souběžných relací na fond <sup>2</sup> | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
-| Minimální možnosti eDTU na databázi | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 |
-| Maximální počet eDTU vybraných pro každou databázi | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
+| Minimální počet jednotek DTU na jednu databázi | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 | 0,5 |
+| Maximální počet DTU na výběr databáze | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
 | Maximální velikost úložiště na databázi (GB) | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 |
 ||||||||
 
@@ -70,12 +70,12 @@ Prostředky poskytované elastickému fondu můžou přesáhnout prostředky pos
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Zahrnuté úložiště na fond (GB) <sup>1</sup> | 50 | 100 | 200 | 300 | 400 | 800 |
 | Maximální velikost úložiště na fond (GB) | 500 | 750 | 1024 | 1280 | 1536 | 2 048 |
-| Maximální úložiště OLTP v paměti na fond (GB) | – | – | – | – | – | – |
+| Maximální úložiště OLTP v paměti na fond (GB) | N/A | N/A | N/A | N/A | N/A | N/A |
 | Maximální počet databáze na fond <sup>2</sup> | 100 | 200 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>3</sup> | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Maximální počet souběžných relací na fond <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
-| Minimální možnosti eDTU na databázi | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
-| Maximální počet eDTU vybraných pro každou databázi | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 |
+| Minimální počet jednotek DTU na jednu databázi | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
+| Maximální počet DTU na výběr databáze | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 |
 | Maximální velikost úložiště na databázi (GB) | 500 | 750 | 1024 | 1024 | 1024 | 1024 |
 ||||||||
 
@@ -91,12 +91,12 @@ Prostředky poskytované elastickému fondu můžou přesáhnout prostředky pos
 |:---|---:|---:|---:| ---: | ---: |
 | Zahrnuté úložiště na fond (GB) <sup>1</sup> | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Maximální velikost úložiště na fond (GB) | 2560 | 3072 | 3584 | 4 096 | 4 096 |
-| Maximální úložiště OLTP v paměti na fond (GB) | – | – | – | – | – |
+| Maximální úložiště OLTP v paměti na fond (GB) | N/A | N/A | N/A | N/A | N/A |
 | Maximální počet databáze na fond <sup>2</sup> | 500 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>3</sup> | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Maximální počet souběžných relací na fond <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
-| Minimální možnosti eDTU na databázi | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500, 3 000 |
-| Maximální počet eDTU vybraných pro každou databázi | 10, 20, 50, 100, 200, 300, 400, 800, 1 200 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500, 3 000 |
+| Minimální počet jednotek DTU na jednu databázi | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500, 3 000 |
+| Maximální počet DTU na výběr databáze | 10, 20, 50, 100, 200, 300, 400, 800, 1 200 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500 | 10, 20, 50, 100, 200, 300, 400, 800, 1 200, 1 600, 2 000, 2 500, 3 000 |
 | Maximální velikost úložiště na databázi (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 |||||||
 
@@ -137,8 +137,8 @@ Prostředky poskytované elastickému fondu můžou přesáhnout prostředky pos
 | Maximální počet databáze na fond <sup>2</sup> | 100 | 100 | 100 | 100 | 100 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>3</sup> | 3200 | 4000 | 4800 | 5600 | 6400 |
 | Maximální počet souběžných relací na fond <sup>3</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
-| Minimální možnosti eDTU na databázi | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750, 4 000 |
-| Maximální počet eDTU vybraných pro každou databázi | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750, 4 000 |
+| Minimální počet jednotek DTU na jednu databázi | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 0, 25, 50, 75, 125, 250, 500, 1 000, 1 750, 4 000 |
+| Maximální počet DTU na výběr databáze | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750 | 25, 50, 75, 125, 250, 500, 1 000, 1 750, 4 000 |
 | Maximální velikost úložiště na databázi (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 |||||||
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 6dfa162de02174ac4a1a8251457249bd5ea4d766
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416328"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495722"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Hyper-V do Azure
 
@@ -36,7 +36,7 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 
 **Architektura Hyper-V do Azure (bez VMM)**
 
-![Architektura](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
+![Diagram znázorňující, že místní lokalita Hyper-V do architektury Azure bez VMM](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>Komponenty architektury – technologie Hyper-V s nástrojem VMM
@@ -53,7 +53,7 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 
 **Architektura Hyper-V do Azure (s VMM)**
 
-![Komponenty](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
+![Diagram znázorňující, že místní lokalita Hyper-V do architektury Azure pomocí nástroje VMM.](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
 ## <a name="set-up-outbound-network-connectivity"></a>Nastavení odchozího připojení k síti
 
@@ -76,7 +76,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 
 ## <a name="replication-process"></a>Proces replikace
 
-![Replikace z Hyper-V do Azure](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
+![Diagram znázorňující proces replikace Hyper-V do Azure](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
 
 **Replikace a proces obnovení**
 
@@ -86,7 +86,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 1. Po povolení ochrany pro virtuální počítače Hyper-V (na webu Azure Portal nebo místně) se spustí **Povolení ochrany**.
 2. Úloha zkontroluje, zda počítač splňuje požadavky, a potom vyvolá metodu [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice), která nastaví replikaci s nastavením, které jste nakonfigurovali.
 3. Úloha spustí počáteční replikaci vyvoláním metody [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice), která zahájí úplnou replikaci virtuálního počítače a odešle virtuální disky virtuálního počítače do Azure.
-4. Úlohu můžete sledovat na kartě **úlohy** .      ![ ](media/hyper-v-azure-architecture/image1.png) Seznam ![ úloh Zapnout přecházení k ochraně](media/hyper-v-azure-architecture/image2.png)
+4. Úlohu můžete sledovat na kartě **úlohy** .      ![Snímek obrazovky se seznamem úloh na kartě úlohy. ](media/hyper-v-azure-architecture/image1.png) ![Snímek obrazovky zapnout ochranu s dalšími podrobnostmi](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Počáteční replikace dat
@@ -123,7 +123,7 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 2. Po dokončení resynchronizace by měla pokračovat normální rozdílová replikace.
 3. Pokud nechcete čekat na výchozí opětovnou synchronizaci mimo hodiny, můžete virtuální počítač znovu synchronizovat ručně. Například pokud dojde k výpadku. Provedete to tak, že v Azure Portal > znovu **synchronizujete**virtuální počítač.
 
-    ![Ruční resynchronizace](./media/hyper-v-azure-architecture/image4-site.png)
+    ![Snímek obrazovky znázorňující možnost opětovné synchronizace](./media/hyper-v-azure-architecture/image4-site.png)
 
 
 ### <a name="retry-process"></a>Opakovat proces

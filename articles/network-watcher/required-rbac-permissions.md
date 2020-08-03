@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: d31240cad709a156d7235f116c9cd2c8fb698b03
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: de345578b2cade18d126a113937f2eede8e8157e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421140"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497303"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Oprávnění k řízení přístupu na základě rolí, která jsou nutná k použití možností Network Watcher
 
-Řízení přístupu na základě role (RBAC) v Azure vám umožňuje přiřadit jenom konkrétní akce členům vaší organizace, které vyžadují, aby se jejich přiřazené zodpovědnosti dokončily. Pokud chcete používat funkce Network Watcher, účet, ke kterému se přihlašujete do Azure, musí být přiřazený k předdefinovaným rolím [vlastník](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner), [přispěvatele](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)nebo [přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor) nebo přiřazený k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) , která je přiřazená k akcím uvedeným u jednotlivých funkcí Network Watcher v následujících oddílech. Další informace o možnostech Network Watcher najdete v tématu [co je Network Watcher?](network-watcher-monitoring-overview.md).
+Řízení přístupu na základě role v Azure (Azure RBAC) umožňuje přiřadit jenom konkrétní akce členům vaší organizace, které vyžadují, aby se jejich přiřazené zodpovědnosti dokončily. Pokud chcete používat funkce Network Watcher, účet, ke kterému se přihlašujete do Azure, musí být přiřazený k předdefinovaným rolím [vlastník](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner), [přispěvatele](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)nebo [přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor) nebo přiřazený k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) , která je přiřazená k akcím uvedeným u jednotlivých funkcí Network Watcher v následujících oddílech. Další informace o možnostech Network Watcher najdete v tématu [co je Network Watcher?](network-watcher-monitoring-overview.md).
 
 ## <a name="network-watcher"></a>Network Watcher
 
@@ -102,7 +102,7 @@ ms.locfileid: "87421140"
 
 Funkce Network Watcher také vyžadují následující akce:
 
-| Akce:                                                           | Popis                                                    |
+| Akce:                                                           | Description                                                    |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Authorization/ \* /Read                                     | Používá se k načtení přiřazení rolí Azure a definic zásad.          |
 | Microsoft. Resources/Subscriptions/resourceGroups/Read               | Používá se k zobrazení výčtu všech skupin prostředků v rámci předplatného.    |

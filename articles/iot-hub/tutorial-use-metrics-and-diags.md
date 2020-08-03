@@ -10,12 +10,13 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 3eda4cd8dc10bd9128186b2ff4f8d6ac0254fe5d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- devx-track-azurecli
+ms.openlocfilehash: b31fc9df5451665b79a41172286a0cc471b681fd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770599"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500993"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a diagnostických protokolů ve službě IoT Hub
 
@@ -292,7 +293,7 @@ Dvojím kliknutím na soubor řešení (SimulatedDevice.sln) otevřete kód v sa
 
 ## <a name="run-and-test"></a>Spuštění a testování 
 
-V Program.cs změňte hodnotu `Task.Delay` od 1000 na 10, což zkracuje dobu mezi odesíláním zpráv z 1 sekundy na. 01 sekund. Zkrácením tohoto zpoždění se zvýší počet odeslaných zpráv.
+V Program.cs změňte `Task.Delay` hodnotu od 1000 na 10, což zkracuje dobu mezi odesíláním zpráv z 1 sekundy na. 01 sekund. Zkrácením tohoto zpoždění se zvýší počet odeslaných zpráv.
 
 ```csharp
 await Task.Delay(10);

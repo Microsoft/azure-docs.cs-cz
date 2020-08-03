@@ -8,21 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85dd58398021ef61e425eb58797e818b233c491b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170118"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489511"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Konfigurace itsme OpenID Connect (OIDC) pomocí Azure Active Directory B2C
 
 Aplikace itsme Digital ID vám umožní bezpečně se přihlásit bez čtecího zařízení, hesla, dvojúrovňového ověřování nebo více kódů PIN. Aplikace itsme poskytuje silné ověřování zákazníků s ověřenou identitou. V tomto článku se dozvíte, jak integrovat ověřování Azure AD B2C pomocí itsme OpenID Connect (OIDC) pomocí zásad toku uživatele tajného kódu klienta.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli začít, budete potřebovat:
 
@@ -86,7 +86,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    | Adresa URL metadat | `https://oidc.<environment>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration` <br>kde `<environment>` je buď `e2e` (testovací prostředí) nebo `prd` (produkční)  |
    | ClientID     | **ID klienta**, označované také jako **partnerský kód**  |
    | Tajný klíč klienta | Vaše **client_secret** |
-   | Obor  | Služba OpenID: e-mailový profil YOURSERVICECODE [telefon] [adresa]  |
+   | Rozsah  | Služba OpenID: e-mailový profil YOURSERVICECODE [telefon] [adresa]  |
    |Typ odpovědi | kód |
    |Režim odezvy | query |
    |Pomocný parametr domény | *Tohle můžete nechat prázdné.* |
@@ -104,7 +104,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 2. Vyberte **Nový tok uživatele**.
 
-3. Vyberte **zaregistrovat se a přihlaste se**.
+3. Vyberte **zaregistrovat, přihlaste**se, vyberte verzi a pak vyberte **vytvořit**.
 
 4. Zadejte **název**.
 

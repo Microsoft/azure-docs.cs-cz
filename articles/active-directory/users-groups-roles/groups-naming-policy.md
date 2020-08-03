@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46fdd72842db790a8f4ecadfc875069962dcf449
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 380962b71d6829b8a217a5d3038e2ae4dd7264fd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728142"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497082"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Vynutili zásady pojmenování skupin Office 365 v Azure Active Directory
 
@@ -72,7 +72,7 @@ Blokovaná pravidla pro seznam slov:
 Pokud chcete nakonfigurovat zásady pojmenování, je potřeba jedna z následujících rolí:
 - Globální správce
 - Správce skupiny
-- Správce uživatelů
+
 
 Vybraní Správci mohou být z těchto zásad vyloučeni napříč všemi úlohami skupin a koncovými body, aby mohli vytvářet skupiny pomocí blokovaných slov a jejich vlastních zásad vytváření názvů. Níže jsou uvedeny role správců, které jsou vyňaté ze zásady pojmenování skupin.
 

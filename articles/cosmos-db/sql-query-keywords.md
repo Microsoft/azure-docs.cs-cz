@@ -4,14 +4,14 @@ description: Seznamte se s klíčovými slovy SQL pro Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f00e757f9b51da850c49924f6ae49bf00c9c53d1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261563"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496677"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Klíčová slova v Azure Cosmos DB
 
@@ -35,9 +35,6 @@ Klíčové slovo lze použít také `BETWEEN` v `SELECT` klauzuli, jak je uveden
 ```
 
 V rozhraní SQL API na rozdíl od ANSI SQL můžete vyjádřit dotazy na rozsah proti vlastnostem smíšených typů. `grade`Může se například jednat o číslo, například `5` v některých položkách, a v řetězci podobném `grade4` jiným. V těchto případech, jako v jazyce JavaScript, porovnávání dvou různých typů má za následek `Undefined` , že se položka přeskočí.
-
-> [!TIP]
-> Pro rychlejší spouštění dotazů vytvořte zásadu indexování, která používá typ indexu rozsahu pro všechny číselné vlastnosti nebo cesty, které jsou `BETWEEN` filtry klauzule.
 
 ## <a name="distinct"></a>DISTINCT
 
@@ -76,7 +73,7 @@ Výsledky jsou následující:
 ]
 ```
 
-KLAUZULE DISTINCT se dá použít taky v projekci v rámci poddotazu:
+`DISTINCT`lze také použít v projekci v rámci poddotazu:
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames

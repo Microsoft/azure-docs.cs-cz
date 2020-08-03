@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 07/27/2020
-ms.openlocfilehash: 00efa3ea6fcd299dcdc51b3002d6b0459edf2ec4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281153"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499173"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurace a Správa ověřování Azure AD pomocí Azure SQL
 
@@ -360,7 +360,7 @@ Protože spravovaná instance SQL podporuje objekty zabezpečení serveru Azure 
 Ověřování pomocí Azure Active Directory s SQL Database a Azure synapse ale vyžaduje používání uživatelů databáze s omezením na základě identity Azure AD. Uživatel databáze s omezením nemá přihlašovací údaje v hlavní databázi a mapuje se na identitu ve službě Azure AD, která je přidružená k databázi. Identitou Azure AD může být buď jednotlivý uživatelský účet, nebo skupina. Další informace o uživatelích databáze s omezením najdete v tématu databáze [uživatelů s omezením – vytvoření přenosné](https://msdn.microsoft.com/library/ff929188.aspx)databáze.
 
 > [!NOTE]
-> Uživatele databáze (s výjimkou správců) nelze vytvořit pomocí Azure Portal. Role RBAC se nešíří do databáze nástroje SQL Database, spravované instance SQL nebo Azure synapse. Role Azure RBAC se používají ke správě prostředků Azure a nevztahují se na oprávnění databáze. Například role **přispěvatel SQL Server** neuděluje přístup pro připojení k databázi v SQL Database, spravované instanci SQL nebo Azure synapse. Přístupové oprávnění musí být uděleno přímo v databázi pomocí příkazů jazyka Transact-SQL.
+> Uživatele databáze (s výjimkou správců) nelze vytvořit pomocí Azure Portal. Role Azure se nešíří do databáze nástroje SQL Database, spravované instance SQL nebo Azure synapse. Role Azure se používají ke správě prostředků Azure a nevztahují se na oprávnění databáze. Například role **přispěvatel SQL Server** neuděluje přístup pro připojení k databázi v SQL Database, spravované instanci SQL nebo Azure synapse. Přístupové oprávnění musí být uděleno přímo v databázi pomocí příkazů jazyka Transact-SQL.
 
 > [!WARNING]
 > Speciální znaky jako dvojtečka `:` nebo ampersand, `&` Pokud jsou zahrnuty jako uživatelská jména v příkazech T-SQL a, nejsou `CREATE LOGIN` `CREATE USER` podporovány.
@@ -544,4 +544,3 @@ Pokyny k řešení problémů s ověřováním Azure AD najdete na následujíc�
 [11]: ./media/authentication-aad-configure/active-directory-integrated.png
 [12]: ./media/authentication-aad-configure/12connect-using-pw-auth2.png
 [13]: ./media/authentication-aad-configure/13connect-to-db2.png
-

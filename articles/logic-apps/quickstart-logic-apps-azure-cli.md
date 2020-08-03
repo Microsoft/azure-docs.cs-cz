@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/09/2020
-ms.openlocfilehash: aabb42dc8d86e500875819cbfc169bcc86733219
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/30/2020
+ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102001"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499547"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Rychlý Start: vytváření a Správa aplikací logiky pomocí Azure CLI
 
@@ -21,7 +21,7 @@ V tomto rychlém startu se dozvíte, jak vytvářet a spravovat Logic Apps pomoc
 > [!WARNING]
 > Rozšíření Azure CLI Logic Apps v současné době *experimentální* a nezabývá se *zákaznickou podporou*. Toto rozšíření CLI používejte opatrně, zejména pokud se rozhodnete použít rozšíření v produkčním prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) nainstalované na místním počítači.
@@ -90,7 +90,7 @@ Váš příkaz musí zahrnovat tyto [povinné parametry](/cli/azure/ext/logic/lo
 | --------- | ----- | ----------- |
 | Definice pracovního postupu | `--definition` | Soubor JSON s [definicí pracovního postupu](#workflow-definition)vaší aplikace logiky |
 | Umístění | `--location -l` | Oblast Azure, ve které se nachází vaše aplikace logiky |
-| Název | `--name -n` | Název vaší aplikace logiky Název může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `()` ) a tečky ( `.` ). Název musí být také v různých oblastech jedinečný. |
+| Name | `--name -n` | Název vaší aplikace logiky Název může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `()` ) a tečky ( `.` ). Název musí být také v různých oblastech jedinečný. |
 | Název skupiny prostředků | `--resource-group -g` | [Skupina prostředků Azure](../azure-resource-manager/management/overview.md) , ve které chcete vytvořit aplikaci logiky. Než začnete, [vytvořte skupinu prostředků](#example---create-resource-group) , pokud ji ještě nemáte k dispozici pro vaši aplikaci logiky. |
 
 Můžete také zahrnout další [volitelné parametry](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-optional-parameters) pro konfiguraci ovládacích prvků přístupu aplikace logiky, koncových bodů, účtu integrace, prostředí integrační služby, stavu a značek prostředků.
@@ -271,3 +271,11 @@ K vašim příkazům můžete použít následující volitelné parametry glob�
 | Ladění | `--debug` | Zobrazí všechny protokoly ladění. |
 | Zpráva o nápovědě | `--help -h` | Zobrazit dialogové okno help. |
 | Dotaz | `--query` | Nastavte řetězec dotazu JMESPath pro výstup JSON. |
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace o Azure CLI najdete v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/?view=azure-cli-latest).
+
+Příklad, jak vytvořit základní aplikaci logiky prostřednictvím rozhraní příkazového řádku, najdete v [ukázkovém skriptu a definici pracovního postupu](sample-logic-apps-cli-script.md).
+
+Logic Apps Další ukázkové skripty rozhraní příkazového řádku najdete v [prohlížeči ukázek kódu Microsoftu](/samples/browse/?products=azure-logic-apps).

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 24c803bd94f56af551f3afa2cb7350219b4fa448
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 538f3f18e1c8889834b9ee6588b85c9094dfbebe
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124727"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496708"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Příprava k vytvoření Avere vFXT
 
@@ -32,7 +32,7 @@ Pokud chcete vytvořit nové předplatné Azure v Azure Portal:
 
 Uživatel s oprávněním vlastníka pro předplatné by měl vytvořit cluster vFXT. Vytvoření clusteru vyžaduje, aby vlastník přijal licenční podmínky služby a schvaloval změny prostředků sítě a úložiště.
 
-K dispozici je několik alternativních řešení, která umožňují vytvořit avere vFXT pro cluster Azure pomocí nevlastnictví. Tyto scénáře zahrnují omezení prostředků a přiřazování dalších rolí řízení přístupu na základě role (RBAC) tvůrci. Ve všech těchto případech by měl vlastník předplatného také [přijmout podmínky avere vFXT software](#accept-software-terms) před časem.
+K dispozici je několik alternativních řešení, která umožňují vytvořit avere vFXT pro cluster Azure pomocí nevlastnictví. Tyto scénáře zahrnují omezení prostředků a přiřazování dalších rolí Azure tvůrci. Ve všech těchto případech by měl vlastník předplatného také [přijmout podmínky avere vFXT software](#accept-software-terms) před časem.
 
 | Scénář | Omezení | Přístup k rolím vyžadovaným k vytvoření clusteru avere vFXT |
 |----------|--------|-------|

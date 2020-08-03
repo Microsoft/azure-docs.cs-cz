@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/30/2020
-ms.openlocfilehash: 9fe9a431d7bbc3b0d3b4b95d9883ed8b5a1f4704
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b5e408eeac024f63eb8e7ce47039dc4c0a6aa5b5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475426"
+ms.locfileid: "87501487"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Zabezpečení v Azure Kognitivní hledání – přehled
 
@@ -107,7 +107,7 @@ Způsob, jakým uživatel přistupuje k indexu a dalším objektům, je určen t
 
 Pokud pro výsledky hledání potřebujete podrobný ovládací prvek pro jednotlivé uživatele, můžete pro své dotazy vytvořit filtry zabezpečení a vracet dokumenty přidružené k dané identitě zabezpečení. Místo předdefinovaných rolí a přiřazení rolí se řízení přístupu na základě identity implementuje jako *Filtr* , který ořízne výsledky hledání dokumentů a obsahu na základě identit. Následující tabulka popisuje dva přístupy k oříznutí výsledků hledání neoprávněného obsahu.
 
-| Přístup | Popis |
+| Přístup | Description |
 |----------|-------------|
 |[Oříznutí zabezpečení na základě filtrů identity](search-security-trimming-for-azure-search.md)  | Dokumentuje základní pracovní postup pro implementaci řízení přístupu identity uživatele. Zahrnuje přidávání identifikátorů zabezpečení do indexu a pak vysvětluje filtrování na základě tohoto pole za účelem oříznutí výsledků zakázaného obsahu. |
 |[Oříznutí zabezpečení na základě Azure Active Directory identit](search-security-trimming-for-azure-search-with-aad.md)  | V tomto článku se rozbalí předchozí článek, který poskytuje kroky pro načtení identit z Azure Active Directory (AAD), jednu z [bezplatných služeb](https://azure.microsoft.com/free/) na cloudové platformě Azure. |
@@ -125,9 +125,11 @@ Naproti tomu práva správce k obsahu hostovanému na službě, jako je napřík
 
 Pro veřejný cloud i Azure Government byl v Azure Kognitivní hledání certifikovaný standard pro více globálních, regionálních a specifických standardů. Úplný seznam najdete v dokumentu [White paper o **kompatibilitě Microsoft Azure** ](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) na stránce oficiálních sestav auditu.
 
-V případě dodržování předpisů můžete použít [Azure Policy](../governance/policy/overview.md) , které vám pomůžou implementovat osvědčené postupy [zabezpečení Azure](../security/benchmarks/introduction.md)v rámci vysokého zabezpečení. Srovnávací test zabezpečení Azure je kolekcí doporučení zabezpečení, která se mapují na klíčové akce, které byste měli vzít v úvahu při zmírnění hrozeb pro služby a data. V současné době je k dispozici 11 kontrol zabezpečení, včetně [zabezpečení sítě](../security/benchmarks/security-control-network-security.md), [protokolování a monitorování](../security/benchmarks/security-control-logging-monitoring.md)a [ochrany dat](../security/benchmarks/security-control-data-protection.md) .
+V případě dodržování předpisů můžete pomocí [Azure Policy](../governance/policy/overview.md) implementovat osvědčené postupy pro [zabezpečení Azure](../security/benchmarks/introduction.md)v rámci vysokého zabezpečení. Srovnávací test zabezpečení Azure je kolekcí doporučení zabezpečení, která se mapují na klíčové akce, které byste měli vzít v úvahu při zmírnění hrozeb pro služby a data. V současné době je k dispozici 11 kontrol zabezpečení, včetně [zabezpečení sítě](../security/benchmarks/security-control-network-security.md), [protokolování a monitorování](../security/benchmarks/security-control-logging-monitoring.md)a [ochrany dat](../security/benchmarks/security-control-data-protection.md) .
 
-Azure Policy je funkce integrovaná do Azure, která vám pomůže spravovat dodržování předpisů pro několik standardů, včetně standardů Azure Security test. V případě dobře známých srovnávacích testů Azure Policy poskytuje předdefinované definice, abyste mohli snadněji vytvářet zásady. V případě Azure Kognitivní hledání existuje v současné době jedna integrovaná definice pro diagnostické protokolování, což znamená, že můžete přiřadit zásadu, která identifikuje a opravuje libovolnou vyhledávací službu, která není kompatibilní s řízením zabezpečení protokolování a monitorování. Další informace najdete v tématu [Azure Policy kontroly dodržování předpisů pro Azure kognitivní hledání](security-controls-policy.md).
+Azure Policy je funkce integrovaná do Azure, která vám pomůže spravovat dodržování předpisů pro několik standardů, včetně standardů Azure Security test. U dobře známých srovnávacích testů Azure Policy poskytuje předdefinované definice, které poskytují obě kritéria, i odpověď, která řeší nedodržování předpisů. 
+
+V případě Azure Kognitivní hledání existuje v současné době jedna integrovaná definice. Slouží k protokolování diagnostiky. Pomocí této integrované sady můžete přiřadit zásadu, která identifikuje libovolnou vyhledávací službu, která postrádá protokolování diagnostiky, a pak ji zapne. Další informace najdete v tématu [Azure Policy kontroly dodržování předpisů pro Azure kognitivní hledání](security-controls-policy.md).
 
 ## <a name="see-also"></a>Viz také
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bc0bcd4a978912dccc9f08802acbf2ec1151b3a1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a0d5b369e1c143b3df4157329bcf7d3a3f7142d7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170101"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489465"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Integrace Trusona s Azure Active Directory B2C
 
@@ -103,7 +103,7 @@ V tomto scénáři Trusona funguje jako zprostředkovatel identity pro Azure AD 
    | :--- | :--- |
    | Adresa URL metadat | `https://gateway.trusona.net/oidc/.well-known/openid-configuration`|
    | ID klienta | Pošle vám e-mail z Trusona |
-   | Obor | E-mail s profilem OpenID |
+   | Rozsah | E-mail s profilem OpenID |
    | Typ odpovědi | Id_token |
    | Režim odezvy  | Form_post |
 
@@ -116,7 +116,7 @@ V tomto scénáři Trusona funguje jako zprostředkovatel identity pro Azure AD 
    | Vlastnost | Hodnota  |
    | :--- | :--- |
    | UserID | Sub  |
-   | Zobrazovaný název | zdívek |
+   | Zobrazované jméno | zdívek |
    | Křestní jméno | given_name |
    | příjmení | Family_name |
    | Režim odezvy | e-mail |
@@ -125,25 +125,26 @@ V tomto scénáři Trusona funguje jako zprostředkovatel identity pro Azure AD 
 
 ### <a name="create-a-user-flow-policy"></a>Vytvoření zásady toku uživatele
 
-1. Teď byste měli vidět Trusona jako **nového poskytovatele identity OpenID Connect** uvedeného v rámci vašich poskytovatelů identity B2C.
+Teď byste měli vidět Trusona jako **nového poskytovatele identity OpenID Connect** uvedeného v rámci vašich poskytovatelů identity B2C.
 
-2. V levém navigačním panelu vyberte **toky uživatelů (zásady)** .
+1. Ve vašem tenantovi Azure AD B2C v části **zásady**vyberte **toky uživatelů**.
 
-3. Vyberte **Přidat**  >  **Nový tok uživatelů**  >  **registrace a přihlášení**.
+1. Vyberte **Nový tok uživatele**.
 
-### <a name="configure-the-policy"></a>Konfigurace zásad
+1. Vyberte **zaregistrovat, přihlaste**se, vyberte verzi a pak vyberte **vytvořit**.
 
-1. Pojmenujte zásady.
+1. Zadejte **název** zásady.
 
-2. Vyberte svého nově vytvořeného **poskytovatele identity Trusona**.
+1. V části **Zprostředkovatelé identit** vyberte svého nově vytvořeného **poskytovatele identity Trusona**.
 
-3. Vzhledem k tomu, že Trusona je v podstatě Multi-Factor, je nejlepší službu Multi-Factor Authentication ponechat zakázanou.
+   > [!NOTE]
+   > Vzhledem k tomu, že Trusona je v podstatě Multi-Factor, je nejlepší službu Multi-Factor Authentication ponechat zakázanou.
 
-4. Vyberte **Vytvořit**.
+1. Vyberte **Vytvořit**.
 
-5. V části **atributy a deklarace identity uživatele**vyberte **Zobrazit další**. Ve formuláři vyberte alespoň jeden atribut, který jste zadali při nastavení poskytovatele identity v předchozí části.
+1. V části **atributy a deklarace identity uživatele**vyberte **Zobrazit další**. Ve formuláři vyberte alespoň jeden atribut, který jste zadali při nastavení poskytovatele identity v předchozí části.
 
-6. Vyberte **OK**.  
+1. Vyberte **OK**.  
 
 ### <a name="test-the-policy"></a>Testování zásad
 

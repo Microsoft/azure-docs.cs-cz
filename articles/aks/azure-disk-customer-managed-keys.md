@@ -4,12 +4,12 @@ description: Přineste si vlastní klíče (BYOK) k šifrování AKS operačníh
 services: container-service
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: d8443c9c7a0af7bfb7f146904c913663d82786b8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f0b96b3f78adf4a7efb1d43626a5aaf82a5b5d43
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057295"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499615"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Přineste si vlastní klíče (BYOK) s disky Azure ve službě Azure Kubernetes Service (AKS).
 
@@ -161,8 +161,7 @@ kubectl apply -f byok-azure-disk.yaml
 
 ## <a name="limitations"></a>Omezení
 
-* Šifrování datových disků podporované s Kubernetes verzí 1,17 a vyšší   
-* K dispozici pouze v oblastech, kde je podporována podpora BYOK
+* Šifrování datových disků podporované s Kubernetes verzí 1,17 a vyšší
 * Šifrování pomocí klíčů spravovaných zákazníkem se momentálně používá jenom pro nové clustery AKS. stávající clustery nejde upgradovat.
 
 ## <a name="next-steps"></a>Další kroky

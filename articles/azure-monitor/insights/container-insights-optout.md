@@ -3,12 +3,13 @@ title: Postup zastavení monitorování clusteru služby Azure Kubernetes | Micr
 description: Tento článek popisuje, jak můžete zrušit monitorování clusteru Azure AKS pomocí Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 08/19/2019
-ms.openlocfilehash: caa932815ea46da2603c2621bef40e467fdf16c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: af5f49dfe5e668f39f105a62ad20858e273b34cb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499048"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489482"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Jak zastavit monitorování služby AKS (Azure Kubernetes Service) pomocí služby Azure Monitor pro kontejnery
 

@@ -15,18 +15,19 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 6f8d0bf40ac1a9c54796964b186f8871de58f201
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 539d11205ffead52d7f40526f2c712e8cf8b5cdd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291954"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501436"
 ---
 # <a name="azure-cli-samples-for-virtual-network"></a>Ukázky v Azure CLI pro virtuální síť
 
 Následující tabulka obsahuje odkazy na skripty Bash s příkazy Azure CLI:
 
-| Skript | Popis |
+| Skript | Description |
 |----|----|
 | [Vytvoření virtuální sítě pro vícevrstvé aplikace](./scripts/virtual-network-cli-sample-multi-tier-application.md) | Vytvoří virtuální síť s front-endovou a back-endovou podsítí. Provoz do front-endové podsítě je omezený na HTTP a SSH, zatímco provoz do back-endové podsítě je omezený na MySQL na portu 3306. |
 | [Vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi](./scripts/virtual-network-cli-sample-peer-two-virtual-networks.md) | Vytvoří a propojí dvě virtuální sítě ve stejné oblasti. |

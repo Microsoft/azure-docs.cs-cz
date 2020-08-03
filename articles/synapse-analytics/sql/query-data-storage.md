@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7ef7a771442dba5c7f82196a13b77cb28b0d1ed8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 93e6b373aa125facb3a3eddecc926438c919b335
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386652"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489737"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Dotazování souborů úložiště pomocí prostředků SQL na vyžádání (ve verzi Preview) v synapse SQL
 
@@ -90,7 +90,7 @@ WITH (
 ```
 
 U každého sloupce je třeba zadat název sloupce a `WITH` klauzuli Type.
-Ukázky najdete v tématu [čtení souborů CSV bez zadání všech sloupců](query-single-csv-file.md#returning-subset-of-columns).
+Ukázky najdete v tématu [čtení souborů CSV bez zadání všech sloupců](query-single-csv-file.md#return-a-subset-of-columns).
 
 ## <a name="schema-inference"></a>Odvození schématu
 
@@ -219,7 +219,7 @@ Můžete najít Ukázky dotazů pro přístup k elementům z opakujících se sl
 
 Můžete se dozvědět více o dotazování různých typů dat pomocí ukázkových dotazů.
 
-### <a name="tools"></a>Nástroje
+### <a name="tools"></a>nástroje
 
 Nástroje, které potřebujete k vydávání dotazů:
     - Azure synapse Studio (Preview)
@@ -248,7 +248,7 @@ Ukázková data obsahují následující sady dat:
 - Ukázkové soubory Parquet s vnořenými sloupci
 - Knihy ve formátu JSON
 
-| Cesta ke složce                                                  | Popis                                                  |
+| Cesta ke složce                                                  | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Formát                                                        | Nadřazená složka pro data ve formátu CSV                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Složky s datovými soubory populace v různých formátech CSV. |

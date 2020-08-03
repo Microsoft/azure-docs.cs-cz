@@ -4,12 +4,13 @@ description: Při prvním použití Language Understanding (LUIS) není nutné v
 services: cognitive-services
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: dfe5c416adeb4ff850dfe8f28ae4c61c8bb0844f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6bd8cc807a393d6c8027f5990b9897d93f2b78d2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144629"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496895"
 ---
 # <a name="create-luis-resources"></a>Vytvoření prostředků LUIS
 
@@ -58,7 +59,7 @@ Oblasti publikování se liší od oblastí vytváření obsahu. Ujistěte se, �
 
 Omezení využití jsou založená na cenové úrovni.
 
-Pokud překročíte kvótu transakcí za sekundu (TPS), zobrazí se chyba HTTP 429. Pokud překročíte kvótu transakcí za měsíc (TPS), zobrazí se chyba HTTP 403.
+Pokud překročíte kvótu počtu transakcí za sekundu, zobrazí se chyba HTTP 429. Pokud překročíte kvótu počtu transakcí za měsíc, zobrazí se chyba HTTP 403.
 
 
 ### <a name="reset-authoring-key"></a>Resetování klíčového obsahu
@@ -232,7 +233,7 @@ Pro účely automatizace, jako je například kanál CI/CD, možná budete chtí
 
     Toto rozhraní API pro POST vyžaduje následující nastavení:
 
-    |Hlavička|Hodnota|
+    |Záhlaví|Hodnota|
     |--|--|
     |`Authorization`|Hodnota `Authorization` je `Bearer {token}` . Všimněte si, že hodnota tokenu musí předcházet slovo `Bearer` a mezera.|
     |`Ocp-Apim-Subscription-Key`|Váš klíč pro vytváření obsahu.|
@@ -245,9 +246,9 @@ Pro účely automatizace, jako je například kanál CI/CD, možná budete chtí
 
     |Typ|Nastavení|Hodnota|
     |--|--|--|
-    |Hlavička|`Authorization`|Hodnota `Authorization` je `Bearer {token}` . Všimněte si, že hodnota tokenu musí předcházet slovo `Bearer` a mezera.|
-    |Hlavička|`Ocp-Apim-Subscription-Key`|Váš klíč pro vytváření obsahu.|
-    |Hlavička|`Content-type`|`application/json`|
+    |Záhlaví|`Authorization`|Hodnota `Authorization` je `Bearer {token}` . Všimněte si, že hodnota tokenu musí předcházet slovo `Bearer` a mezera.|
+    |Záhlaví|`Ocp-Apim-Subscription-Key`|Váš klíč pro vytváření obsahu.|
+    |Záhlaví|`Content-type`|`application/json`|
     |Dotaz|`appid`|ID aplikace LUIS.
     |Text||{"AzureSubscriptionId": "ddda2925-af7f-4b05-9ba1-2155c5fe8a8e";<br>"Znovu nasource": "Zdrojová položka-2",<br>"Account": "Luis-uswest-S0-2"}|
 

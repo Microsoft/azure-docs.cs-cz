@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 45da3ec95167cbb4fa087435e0e88f85c0eb6463
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 51582fd9aba8721b28f6fb18daec4d0009d0ac15
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461047"
+ms.locfileid: "87500653"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB rozhraní Java SDK v4 pro Core (SQL) API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -63,7 +63,30 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinuje asynchronní rozhraní API 
 
 ## <a name="release-history"></a>Historie verzí
 
+### <a name="440-beta1-unreleased"></a>4.4.0-beta. 1 (neuvolní se)
+
+### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29)
+#### <a name="new-features"></a>Nové funkce
+* Verze knihovny Reactor-Core se aktualizovala na `3.3.8.RELEASE` . 
+* Verze knihovny Reactor-síťoviny se aktualizovala na `0.9.10.RELEASE` . 
+* Aktualizovaná verze knihovny na `4.1.51.Final` . 
+* Byla přidána nová rozhraní API přetížení pro `upsertItem` pomocí `partitionKey` . 
+* Byla přidána podpora otevřeného trasování telemetrie. 
+#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
+* Opravili jsme problém, kdy se SSLException vyvolal v případě zrušení požadavků v režimu brány.
+* Pevná zásada opakování omezení prostředků při spuštění uložených procedur.
+* Opravili jsme problém, kdy sada SDK zamrzne do režimu ladění na úrovni protokolu. 
+* Pevné pravidelné špičky v přímém režimu v latenci. 
+* Byl opraven problém s vysokým časem inicializace klienta. 
+* Opravená chyba proxy serveru HTTP při přizpůsobování klienta s přímým režimem a režimem brány 
+* Opravený potenciální NPE v uživatelích předává možnosti null. 
+* Do diagnostického řetězce se přidalo timeUnit `requestLatency` .
+* Z diagnostického řetězce byl odebrán duplicitní řetězec identifikátoru URI. 
+* Pevný řetězec diagnostiky ve správném formátu JSON pro operace Point.
+* Opravili jsme problém s `.single()` operátorem, který způsobí, že se v případě výjimky v případě nenalezeného řetězu Vyvolá příkaz. 
+
 ### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14)
+#### <a name="new-features"></a>Nové funkce
 * Bylo přidáno rozhraní API s povoleným protokolováním skriptů do `CosmosStoredProcedureRequestOptions` .
 * Aktualizace `DirectConnectionConfig` Default `idleEndpointTimeout` na 1H a Default `connectTimeout` na 5.
 #### <a name="key-bug-fixes"></a>Opravy chyb klíčů
@@ -148,7 +171,7 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinuje asynchronní rozhraní API 
 * `ChangeFeedProcessor`Oprava chyby při synchronizaci aktualizací zapůjčení napříč různými vlákny.
 * Pevná podmínka časování způsobila `ArrayIndexOutOfBound` výjimku v StoreReader
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 4f1f6c60ef2e0ccdd3e166e2272fe917ead3ed2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6266248b817485562c7ed2643b3dda5f32cecc53
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735043"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489669"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Koncepce správy uživatelských účtů, hesel a správy v Azure Active Directory Domain Services
 
@@ -70,7 +70,7 @@ V Azure služba AD DS doménová struktura obsahuje jenom jednu doménu. Místn�
 
 Ve výchozím nastavení je spravovaná doména vytvořena jako doménová struktura *uživatelů* . Tento typ doménové struktury synchronizuje všechny objekty z Azure AD, včetně všech uživatelských účtů vytvořených v místním služba AD DS prostředí. Uživatelské účty se můžou přímo ověřovat proti spravované doméně, třeba pro přihlášení k virtuálnímu počítači připojenému k doméně. Doménová struktura uživatelů funguje, když je možné synchronizovat hodnoty hash hesla a uživatelé nepoužívají exkluzivní metody přihlašování, jako je ověřování pomocí čipové karty.
 
-V doménové struktuře *prostředků* Azure služba AD DS se uživatelé ověřují pomocí jednosměrné *důvěryhodnosti* doménové struktury ze své místní služba AD DS. S tímto přístupem se uživatelské objekty a hodnoty hash hesel nesynchronizují do Azure služba AD DS. Uživatelské objekty a přihlašovací údaje existují pouze v místních služba AD DS. Tento přístup umožňuje podnikům hostovat prostředky a aplikační platformy v Azure, které jsou závislé na klasických ověřováních, jako jsou protokoly LDAP, Kerberos nebo NTLM, ale všechny problémy s ověřováním nebo obavy se odeberou. Doménové struktury prostředků Azure služba AD DS jsou momentálně ve verzi Preview.
+V doménové struktuře *prostředků* Azure služba AD DS se uživatelé ověřují pomocí jednosměrné *důvěryhodnosti* doménové struktury ze své místní služba AD DS. S tímto přístupem se uživatelské objekty a hodnoty hash hesel nesynchronizují do Azure služba AD DS. Uživatelské objekty a přihlašovací údaje existují pouze v místních služba AD DS. Tento přístup umožňuje podnikům hostovat prostředky a aplikační platformy v Azure, které jsou závislé na klasických ověřováních, jako jsou protokoly LDAP, Kerberos nebo NTLM, ale všechny problémy s ověřováním nebo obavy se odeberou.
 
 Další informace o typech doménové struktury v Azure služba AD DS najdete v tématu [co jsou doménové struktury prostředků?][concepts-forest] a [jak vztahy důvěryhodnosti doménové struktury fungují v Azure služba AD DS?][concepts-trust]
 
@@ -102,7 +102,7 @@ Při zvýšení úrovně SKU se zvyšuje frekvence zálohování snímků. Zkont
 
 ### <a name="outbound-forest-trusts"></a>Vztahy důvěryhodnosti odchozích doménových struktur
 
-Předchozí část podrobná jednosměrná odchozí důvěryhodnost doménové struktury ze spravované domény do místního prostředí služba AD DS (aktuálně ve verzi Preview). SKU určuje maximální počet vztahů důvěryhodnosti doménové struktury, které můžete vytvořit pro spravovanou doménu. Zkontrolujte požadavky firmy a aplikace, abyste zjistili, kolik vztahů důvěryhodnosti skutečně potřebujete, a vyberte příslušnou SKLADOVOU položku Azure služba AD DS. Pokud se vaše obchodní požadavky změní a potřebujete vytvořit další vztahy důvěryhodnosti doménové struktury, můžete přejít na jinou SKU.
+Předchozí část podrobná jednosměrná odchozí důvěryhodnost doménové struktury ze spravované domény do místního prostředí služba AD DS. SKU určuje maximální počet vztahů důvěryhodnosti doménové struktury, které můžete vytvořit pro spravovanou doménu. Zkontrolujte požadavky firmy a aplikace, abyste zjistili, kolik vztahů důvěryhodnosti skutečně potřebujete, a vyberte příslušnou SKLADOVOU položku Azure služba AD DS. Pokud se vaše obchodní požadavky změní a potřebujete vytvořit další vztahy důvěryhodnosti doménové struktury, můžete přejít na jinou SKU.
 
 ## <a name="next-steps"></a>Další kroky
 

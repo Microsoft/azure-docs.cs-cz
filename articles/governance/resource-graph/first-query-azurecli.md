@@ -3,12 +3,13 @@ title: 'Rychlý Start: váš první dotaz rozhraní příkazového řádku Azure
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení rozšíření grafu prostředků pro Azure CLI a spuštění prvního dotazu.
 ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 1c7c3a37c2fc5b6aebaa42cacba71897684b2207
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 82e36027e5016554770fc9359f413c1fff6fe227
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871989"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500670"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Azure CLI
 

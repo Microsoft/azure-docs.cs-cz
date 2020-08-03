@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 556871b55de60ee592622f9f93c7b7123ba2ed32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c26951d5ab7552dc6c63288ce92cdb8134bd58ed
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731966"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498221"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Delegovat správu v Azure Active Directory
 
@@ -38,7 +38,7 @@ V organizaci roste, může být obtížné sledovat, kteří uživatelé mají k
 
 Na portálu Azure AD můžete [Zobrazit všechny členy jakékoli role](directory-manage-roles-portal.md), což vám umožní rychle kontrolovat oprávnění k nasazení a delegování.
 
-Pokud vás zajímá delegování přístupu k prostředkům Azure místo oprávnění správce ve službě Azure AD, přečtěte si téma [přiřazení role řízení přístupu na základě role (RBAC)](../../role-based-access-control/role-assignments-portal.md).
+Pokud vás zajímá delegování přístupu k prostředkům Azure místo oprávnění správce ve službě Azure AD, přečtěte si téma [přiřazení role Azure](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="delegation-planning"></a>Plánování delegování
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: e5daf318088cb71b6a1819db71e3c597a9fa94db
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3cd64de05c44729f1aa714849e12fc8f69998334
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421446"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498612"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
 
@@ -34,7 +34,7 @@ Komponenty zapojené do zotavení po havárii pro virtuální počítače Azure 
 **Účet úložiště mezipaměti** | V zdrojové síti potřebujete účet úložiště mezipaměti. Během replikace se změny virtuálních počítačů ukládají do mezipaměti, než se odešlou do cílového úložiště.  Účty úložiště mezipaměti musí být standardní.<br/><br/> Použití mezipaměti zajišťuje minimální dopad na provozní aplikace, které běží na virtuálním počítači.<br/><br/> [Další informace](azure-to-azure-support-matrix.md#cache-storage) o požadavcích na úložiště mezipaměti. 
 **Cílové prostředky** | Cílové prostředky se používají během replikace a když dojde k převzetí služeb při selhání. Site Recovery může nastavit cílový prostředek ve výchozím nastavení, nebo je můžete vytvořit nebo přizpůsobit.<br/><br/> V cílové oblasti ověřte, že můžete vytvářet virtuální počítače a že vaše předplatné má dostatek prostředků pro podporu velikostí virtuálních počítačů, které budou potřeba v cílové oblasti. 
 
-![Replikace zdroje a cíle](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
+![Diagram znázorňující replikaci zdrojové a cílové replikace](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>Cílové prostředky
 
@@ -116,7 +116,7 @@ Pokud povolíte replikaci pro virtuální počítač Azure, dojde k následujíc
 4. Site Recovery zpracuje data v mezipaměti a pošle je do cílového účtu úložiště nebo na spravované disky repliky.
 5. Po zpracování dat se body obnovení konzistentní vzhledem k chybě generují každých pět minut. Body obnovení konzistentní vzhledem k aplikacím se generují podle nastavení určeného v zásadách replikace.
 
-![Povolit proces replikace, krok 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
+![Diagram znázorňující proces replikace, krok 2.](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **Proces replikace**
 
@@ -191,7 +191,7 @@ Pokud povolíte konzistenci napříč několika virtuálními počítači, budou
 
 Když zahájíte převzetí služeb při selhání, vytvoří se virtuální počítače v cílové skupině prostředků, cílové virtuální síti, cílové podsíti a v cílové sadě dostupnosti. Během převzetí služeb při selhání můžete použít libovolný bod obnovení.
 
-![Proces převzetí služeb při selhání](./media/concepts-azure-to-azure-architecture/failover-v2.png)
+![Diagram znázorňující proces převzetí služeb při selhání se zdrojovým a cílovým prostředím](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>Další kroky
 

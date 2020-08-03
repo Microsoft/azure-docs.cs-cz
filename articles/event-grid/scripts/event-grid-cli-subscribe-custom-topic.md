@@ -4,12 +4,13 @@ description: Tento článek obsahuje ukázkový skript Azure CLI, který ukazuje
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: ab05de118793ae9f62fe483d59087873fb4cc151
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 80eff2853db1083fa2805cdd719f03a3235fccac
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460826"
+ms.locfileid: "87499020"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-azure-cli"></a>Přihlášení k odběru událostí vlastního tématu pomocí Azure CLI
 

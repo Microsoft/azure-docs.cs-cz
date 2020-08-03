@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 867babcf7160ce6e589197be0a3186e5a2156238
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4061d7a3d21b8c2db2bf161c422994cb2742b0b4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423571"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489873"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Obecně existují dva typy ověřování, které můžete používat s Azure Mac
 
 Bez ohledu na použitý typ ověřování se používá řízení přístupu na základě role (RBAC) k určení rozsahu úrovně přístupu k prostředkům. Například účet, který se používá k získání přístupového tokenu pro nasazený model, potřebuje jenom přístup pro čtení k pracovnímu prostoru. Další informace o RBAC najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vytvořte [pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 * [Nakonfigurujte vývojové prostředí](how-to-configure-environment.md) pro instalaci Azure Machine Learning sady SDK nebo použijte [virtuální počítač s Azure Machine Learningm poznámkovým blokem](concept-azure-machine-learning-architecture.md#compute-instance) , který už je nainstalovaný s SDK.
@@ -67,7 +67,7 @@ Většina příkladů v dokumentaci a vzorcích používá interaktivní ověřo
 
 ## <a name="service-principal-authentication"></a>Ověřování instančních objektů
 
-Chcete-li použít ověřování instančního objektu (SP), musíte nejprve vytvořit aktualizaci SP a udělit jí přístup k vašemu pracovnímu prostoru. Jak bylo zmíněno dříve, pro řízení přístupu se používá řízení přístupu na základě role (RBAC) Azure, takže musíte také rozhodnout, jaký přístup k této aktualizaci chcete udělit.
+Chcete-li použít ověřování instančního objektu (SP), musíte nejprve vytvořit aktualizaci SP a udělit jí přístup k vašemu pracovnímu prostoru. Jak bylo zmíněno dříve, pro řízení přístupu se používá řízení přístupu na základě role Azure (Azure RBAC), takže musíte také rozhodnout, jaký přístup k této aktualizaci chcete udělit.
 
 > [!IMPORTANT]
 > Při použití instančního objektu udělte mu __minimální přístup vyžadovaný pro úkol__ , ke kterému se používá. Například neudělíte vlastníkovi instančního objektu nebo přístup k přispěvateli, pokud se k němu používá přístup, který čte přístupový token pro nasazení webu.

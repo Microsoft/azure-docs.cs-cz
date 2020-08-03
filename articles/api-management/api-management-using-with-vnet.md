@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: e3acfb9552db9fa972b0a407e52cece014b45389
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ee23b2bc58f8c1f15a7e51b05dee954c1e584293
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025009"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489618"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Použití služby Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -32,7 +32,7 @@ Službu Azure API Management lze nasadit v rámci virtuální sítě (VNET), aby
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků popsaných v tomto článku musíte mít:
 
@@ -118,7 +118,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 | */1433                     | Odchozí           | TCP                | VIRTUAL_NETWORK/SQL                 | **Přístup k koncovým bodům SQL Azure**                           | Externí & interní  |
 | */5671, 5672, 443          | Odchozí           | TCP                | VIRTUAL_NETWORK/EventHub            | Závislost pro [protokolování do zásad centra událostí](api-management-howto-log-event-hubs.md) a agenta monitorování | Externí & interní  |
 | */445                      | Odchozí           | TCP                | VIRTUAL_NETWORK/úložiště             | Závislost na sdílené složce Azure pro [Git](api-management-configuration-repository-git.md)                      | Externí & interní  |
-| */443                     | Odchozí           | TCP                | VIRTUAL_NETWORK/AzureCloud            | Rozšíření stavu a monitorování         | Externí & interní  |
+| */443, 12000                     | Odchozí           | TCP                | VIRTUAL_NETWORK/AzureCloud            | Rozšíření stavu a monitorování         | Externí & interní  |
 | */1886, 443                     | Odchozí           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | Publikování [diagnostických protokolů a metrik](api-management-howto-use-azure-monitor.md), [Resource Health](../service-health/resource-health-overview.md) a [Application Insights](api-management-howto-app-insights.md)                   | Externí & interní  |
 | */25, 587, 25028                       | Odchozí           | TCP                | VIRTUAL_NETWORK/INTERNET            | Připojení k předávání SMTP pro odesílání e-mailů                    | Externí & interní  |
 | */6381 – 6383              | Příchozí & odchozí | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Přístup ke službě Redis pro zásady [mezipaměti](api-management-caching-policies.md) mezi počítači         | Externí & interní  |
@@ -167,7 +167,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
       - Předávání SMTP
       - Portál pro vývojáře CAPTCHA
 
-## <a name="troubleshooting"></a><a name="troubleshooting"> </a>Poradce při potížích
+## <a name="troubleshooting"></a><a name="troubleshooting"> </a>Řešení potíží
 * **Počáteční nastavení**: když počáteční nasazení služby API Management do podsítě neproběhne úspěšně, doporučuje se nejdřív nasadit virtuální počítač do stejné podsítě. Další Vzdálená plocha na virtuální počítač a ověřte, že existuje připojení k jednomu z prostředků níže v předplatném Azure.
     * Azure Storage objekt BLOB
     * Azure SQL Database
@@ -218,18 +218,18 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 | Veřejný partnerský vztah Azure| Západní Indie| 40.81.89.24|
 | Veřejný partnerský vztah Azure| East US| 52.224.186.99|
 | Veřejný partnerský vztah Azure| West Europe| 51.145.179.78|
-| Veřejný partnerský vztah Azure| Japan East| 52.140.238.179|
+| Veřejný partnerský vztah Azure| Japonsko – východ| 52.140.238.179|
 | Veřejný partnerský vztah Azure| Francie – střed| 40.66.60.111|
 | Veřejný partnerský vztah Azure| Kanada – východ| 52.139.80.117|
 | Veřejný partnerský vztah Azure| Spojené arabské emiráty sever| 20.46.144.85|
-| Veřejný partnerský vztah Azure| Brazil South| 191.233.24.179|
+| Veřejný partnerský vztah Azure| Brazílie – jih| 191.233.24.179|
 | Veřejný partnerský vztah Azure| Southeast Asia| 40.90.185.46|
 | Veřejný partnerský vztah Azure| Jižní Afrika – sever| 102.133.130.197|
 | Veřejný partnerský vztah Azure| Střední Kanada| 52.139.20.34|
 | Veřejný partnerský vztah Azure| Jižní Korea – jih| 40.80.232.185|
 | Veřejný partnerský vztah Azure| Indie – střed| 13.71.49.1|
 | Veřejný partnerský vztah Azure| USA – západ| 13.64.39.16|
-| Veřejný partnerský vztah Azure| Australia Southeast| 20.40.160.107|
+| Veřejný partnerský vztah Azure| Austrálie – jihovýchod| 20.40.160.107|
 | Veřejný partnerský vztah Azure| Austrálie – střed| 20.37.52.67|
 | Veřejný partnerský vztah Azure| Indie – jih| 20.44.33.246|
 | Veřejný partnerský vztah Azure| Střední USA| 13.86.102.66|

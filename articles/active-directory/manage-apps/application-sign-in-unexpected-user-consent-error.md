@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a7709cf0522727257025b2dddc495b20fe8448
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be99a673fe3d062e114f375891f3c821c118d76
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763750"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499496"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Neočekávaná chyba při provádění souhlasu s aplikací
 
@@ -38,6 +38,8 @@ Aby mohl uživatel udělit souhlas s oprávněními, které aplikace vyžaduje, 
 K této chybě dochází, když se uživatel, který není správcem společnosti, pokusí použít aplikaci požadující oprávnění, která může udělit jenom správce. Tuto chybu může vyřešit správce, který uděluje přístup k aplikaci jménem své organizace.
 
 K této chybě může dojít také v případě, že uživatel brání v souhlasu s aplikací kvůli tomu, že je žádost o oprávnění riskantní. V takovém případě se událost auditu bude protokolovat jako kategorie "ApplicationManagement", typ aktivity "souhlas s aplikací" a důvod stavu "riziková aplikace zjištěná".
+
+K této chybě může dojít v jiném scénáři, pokud je pro aplikaci vyžadováno přiřazení uživatele, ale nebyl poskytnut žádný souhlas správce. V takovém případě musí správce nejdřív poskytnout souhlas správce.   
 
 ## <a name="policy-prevents-granting-permissions-error"></a>Zásada zabraňuje udělení oprávnění k chybě.
 * **AADSTS90093:** Správce &lt; tenantDisplayName &gt; nastavil zásadu, která vám zabrání v udělení &lt; názvu aplikace oprávnění, která &gt; požaduje. Kontaktujte správce &lt; tenantDisplayName &gt; , který vám může udělit oprávnění k této aplikaci vaším jménem.

@@ -3,12 +3,13 @@ title: Poskytovatelé prostředků a typy prostředků
 description: Popisuje poskytovatele prostředků, kteří podporují Správce prostředků, jejich schémata a dostupné verze rozhraní API a oblasti, které mohou hostovat prostředky.
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: 82b8251006a1a2d4edd198eca843489d3720f8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 581b653c6d4769f7777b0ca56f136d25443c1ae4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702767"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500006"
 ---
 # <a name="azure-resource-providers-and-types"></a>Poskytovatelé a typy prostředků Azure
 
@@ -33,7 +34,7 @@ Seznam, který mapuje poskytovatele prostředků na služby Azure, najdete v té
 
 Pokud chcete zobrazit všechny poskytovatele prostředků a stav registrace pro vaše předplatné:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. V nabídce webu Azure Portal vyberte **Všechny služby**.
 
     ![vybrat odběry](./media/resource-providers-and-types/select-all-services.png)
@@ -50,7 +51,7 @@ Pokud chcete zobrazit všechny poskytovatele prostředků a stav registrace pro 
 
 Chcete-li zobrazit informace o konkrétním poskytovateli prostředků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. V nabídce webu Azure Portal vyberte **Všechny služby**.
 3. V poli **všechny služby** zadejte **Průzkumník prostředků**a potom vyberte **Průzkumník prostředků**.
 

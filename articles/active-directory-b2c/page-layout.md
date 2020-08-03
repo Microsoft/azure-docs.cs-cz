@@ -8,21 +8,29 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/26/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3d0cb06f84fdd96d099e05f55ba62c37cb1192c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4548b50e4168f260cb401c40dd4e61192cea1015
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78183971"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489533"
 ---
 # <a name="page-layout-versions"></a>Verze rozložení stránky
 
 Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly opravy a vylepšení jejich prvků stránky. Následující protokol změn určuje změny zavedené v každé verzi.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+## <a name="210"></a>2.1.0
+
+- Stránka s vlastním kontrolním výrazem ( `selfasserted` )
+  - Lokalizace a opravy usnadnění.
+- Sjednocená stránka SSP ( `unifiedssp` )
+  - Přidala se podpora pro více odkazů na registraci.
+  - Byla přidána podpora ověřování vstupu uživatele podle pravidel predikátů definovaných v zásadách.
 
 ## <a name="200"></a>2.0.0
 
@@ -40,6 +48,8 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
   - Podpora překladu pro Chrome
 - Sjednocené a samoobslužné stránky
   - Pole uživatelské jméno, e-mail a heslo nyní pomocí `form` elementu HTML povolí Edge a Internet Explorer (IE) pro správné uložení těchto informací.
+- Stránka s vlastním kontrolním výrazem
+  - Pro vylepšené uživatelské prostředí bylo přidáno zpoždění ověřování uživatelem (konfigurovatelného) vstupu uživatele.
 
 ## <a name="110"></a>1.1.0
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 4da024eb4eb3747b8e0d6b291ca5b00df12aaeab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 08a65ff8d276cd27c9f8fa07393600bc24e7b17f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367516"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500296"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Osvědčené postupy pro konfiguraci aplikací Azure
 
@@ -86,6 +86,10 @@ Nadměrné požadavky na konfiguraci aplikací můžou mít za následek omezen�
 ## <a name="importing-configuration-data-into-app-configuration"></a>Import konfiguračních dat do konfigurace aplikace
 
 Konfigurace aplikací nabízí možnost hromadného [importu](https://aka.ms/azconfig-importexport1) nastavení konfigurace z vašich aktuálních konfiguračních souborů pomocí Azure Portal nebo CLI. Můžete také použít stejné možnosti pro export hodnot z konfigurace aplikace, například mezi souvisejícími obchody. Pokud chcete nastavit průběžnou synchronizaci s úložištěm GitHub, můžete použít naši [akci GitHubu](https://aka.ms/azconfig-gha2) , abyste mohli nadále používat stávající postupy správy zdrojového kódu a přitom získat výhody konfigurace aplikace.
+
+## <a name="multi-region-deployment-in-app-configuration"></a>Nasazení ve více oblastech v konfiguraci aplikace
+
+Konfigurace aplikace je regionální služba. Pro aplikace s různými konfiguracemi v jednotlivých oblastech může ukládání těchto konfigurací v jedné instanci vytvořit jediný bod selhání. Nasazení jedné instance konfigurace aplikace na oblast napříč více oblastmi může být lepší volbou. Může pomáhat s regionálním zotavením po havárii, výkonem a silou zabezpečení. Konfigurace podle oblastí taky zlepšuje latenci a používá kvóty pro oddělené omezování, protože omezování je na instanci. Pokud chcete použít zmírnění zotavení po havárii, můžete použít [víc úložišť konfigurací](./concept-disaster-recovery.md). 
 
 ## <a name="next-steps"></a>Další kroky
 

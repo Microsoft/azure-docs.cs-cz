@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: b7ae2e3045b8f6e56b756ac1b2a4233ac8af9688
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: beda097733228dbb23ccb607747742d93d606933
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373449"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497609"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib a Azure synapse Analytics
 
@@ -148,7 +148,7 @@ plt.show()
  ![ krabicového ](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
  ![ grafu](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
 
-## <a name="preparing-the-data"></a>Příprava dat
+## <a name="prepare-the-data"></a>Příprava dat
 
 Data v jejich nezpracované podobě nejsou často vhodná pro přímý přenos modelu. Pro získání dat do stavu, ve kterém ho model může spotřebovat, je nutné provést sérii akcí.
 
@@ -278,7 +278,7 @@ plt.show()
 
 Po dokončení používání aplikace vypněte Poznámkový blok a uvolněte ho tak, že zavřete kartu nebo v dolní části poznámkového bloku vyberete **ukončit relaci** ze stavového panelu.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Přehled: Apache Spark ve službě Azure synapse Analytics](apache-spark-overview.md)
 

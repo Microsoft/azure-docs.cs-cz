@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5189a9dc8cd83877b4797fd828e9c9f6da8d1b93
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 405cb107711845a6699e09bc09a1d2d9f3005cd6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392832"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499972"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem na webu Azure Portal
 
 Virtuální počítače Azure je možné vytvářet na webu Azure Portal. Azure Portal je uživatelské rozhraní založené na prohlížeči pro vytváření prostředků Azure. V tomto rychlém startu se dozvíte, jak použít Azure Portal k nasazení virtuálního počítače se systémem Linux se systémem Ubuntu 18,04 LTS. Také se k virtuálnímu počítači připojíte přes SSH a nainstalujete na něj webový server NGINX, abyste virtuální počítač viděli v akci.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -32,11 +32,11 @@ Pokud jste to ještě neudělali, přihlaste se k [Azure Portal](https://portal.
 1. Na stránce **virtuální počítače** vyberte **Přidat**. Otevře se stránka **vytvořit virtuální počítač** .
 1. Přesvědčte se, že je na kartě **Základy** v části **Podrobnosti o projektu** vybrané správné předplatné a pak ve Skupině prostředků vyberte **Vytvořit nový**. Jako název zadejte *myResourceGroup* . *. 
 
-    ![Vytvoření nové skupiny prostředků pro virtuální počítač](./media/quick-create-portal/project-details.png)
+    ![Snímek obrazovky s oddílem Project Details s informacemi o tom, kde jste vybrali předplatné Azure a skupinu prostředků pro virtuální počítač](./media/quick-create-portal/project-details.png)
 
 1. V části **Podrobnosti o instanci**zadejte *MyVM* pro **název virtuálního počítače**, vyberte *východní USA* pro vaši **oblast**a jako **Obrázek**vyberte *Ubuntu 18,04 LTS* . Zbytek ponechte ve výchozím nastavení.
 
-    ![Část podrobnosti o instancích](./media/quick-create-portal/instance-details.png)
+    ![Snímek obrazovky s oddílem podrobností instance, kde můžete zadat název virtuálního počítače a vybrat jeho oblast, obrázek a velikost](./media/quick-create-portal/instance-details.png)
 
 1. V části **účet správce**vyberte **veřejný klíč SSH**.
 
@@ -44,11 +44,11 @@ Pokud jste to ještě neudělali, přihlaste se k [Azure Portal](https://portal.
 
 1. U **zdroje veřejného klíče SSH**ponechte výchozí hodnotu **Generovat novou dvojici klíčů**a potom jako **název páru klíčů**zadejte *myKey* .
 
-    ![Účet správce](./media/quick-create-portal/administrator-account.png)
+    ![Snímek obrazovky s oddílem účtu správce, kde můžete vybrat typ ověřování a zadat přihlašovací údaje správce](./media/quick-create-portal/administrator-account.png)
 
 1. V části **příchozí pravidla portů**  >  **veřejné příchozí porty**zvolte **Povolit vybrané porty** a v rozevíracím seznamu vyberte **SSH (22)** a **http (80)** . 
 
-    ![Otevřené porty pro protokoly RDP a HTTP](./media/quick-create-portal/inbound-port-rules.png)
+    ![Snímek obrazovky s částí pravidla portů pro příchozí spojení, kde můžete vybrat, na kterých portech jsou příchozí připojení povolena](./media/quick-create-portal/inbound-port-rules.png)
 
 1. Zbytek ponechte ve výchozím nastavení a potom v dolní části stránky vyberte tlačítko **Zkontrolovat a vytvořit**.
 
@@ -61,7 +61,7 @@ Pokud jste to ještě neudělali, přihlaste se k [Azure Portal](https://portal.
 1. Na stránce nového virtuálního počítače vyberte veřejnou IP adresu a zkopírujte ji do schránky.
 
 
-    ![Zkopírování veřejné IP adresy](./media/quick-create-portal/ip-address.png)
+    ![Snímek obrazovky ukazující, jak zkopírovat IP adresu pro virtuální počítač](./media/quick-create-portal/ip-address.png)
 
 ## <a name="connect-to-virtual-machine"></a>Připojení k virtuálnímu počítači
 
@@ -94,7 +94,7 @@ Až budete hotovi, zadáním příkazu `exit` ukončete relaci SSH.
 
 V libovolném webovém prohlížeči zobrazte výchozí úvodní stránku serveru NGINX. Jako webovou adresu zadejte veřejnou IP adresu virtuálního počítače. Veřejnou IP adresu najdete na stránce přehledu virtuálního počítače nebo v připojovacím řetězci SSH, který jste použili dříve.
 
-![Výchozí web NGINX](./media/quick-create-portal/nginx.png)
+![Snímek obrazovky s výchozím webem NGINX v prohlížeči](./media/quick-create-portal/nginx.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

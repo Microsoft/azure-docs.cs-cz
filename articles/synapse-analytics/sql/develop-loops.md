@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ec15f87bdbf381b71faa7cefd986dd5e55e17a19
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9db7f2016de01edbedfa9e7d7254561fea957d2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964987"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495297"
 ---
 # <a name="use-t-sql-loops-in-synapse-sql"></a>Použití smyček T-SQL v synapse SQL
 Tento článek vám poskytne základní tipy pro používání smyček T-SQL, nahrazení kurzorů a vývoj souvisejících řešení s fondem SQL ve synapse SQL.
@@ -26,7 +26,7 @@ Synapse SQL podporuje smyčku [while](https://docs.microsoft.com/sql/t-sql/langu
 
 Smyčky ve fondu SQL jsou užitečné pro nahrazování kurzorů definovaných v kódu SQL. Naštěstí jsou téměř všechny kurzory, které jsou napsány v kódu SQL, určeny pro rychlý posun, jen pro čtení. Takže smyčky [WHILe] jsou skvělou alternativou pro nahrazování kurzorů.
 
-## <a name="replacing-cursors-in-sql-pool"></a>Nahrazování kurzorů ve fondu SQL
+## <a name="replace-cursors-in-sql-pool"></a>Nahrazení kurzorů ve fondu SQL
 
 Před začnete v je třeba zvážit následující otázku: "Chcete-li tento kurzor přepsat, aby používal operace založené na nastavení?" V mnoha případech je odpověď ano a často se jedná o nejlepší přístup. Operace založená na sadě se často provádí rychleji než iterativní, řádek po řádku.
 

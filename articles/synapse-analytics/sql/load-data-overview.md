@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ca1f535c7f2d949e1f71a06ba9efab2818ee0201
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31e1eb952bb37f5864e296811ba6e61bb0e58320
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046783"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490281"
 ---
-# <a name="designing-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Návrh strategie načítání základních dat pro fond SQL Azure synapse
+# <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Návrh strategie načítání základních dat pro fond SQL Azure synapse
 
 Tradiční datové sklady SMP používají proces extrakce, transformace a načítání (ETL) pro načítání dat. Azure SQL Pool je rozsáhlá architektura paralelního zpracování (MPP), která využívá škálovatelnost a flexibilitu výpočetních prostředků a prostředků úložiště. Pomocí procesu extrakce, načítání a transformace (ELT) můžete využít funkci MPP a eliminovat prostředky potřebné k transformaci dat před jejich načtením.
 
@@ -25,7 +25,7 @@ I když fond SQL podporuje mnoho metod načítání, včetně nezákladních mo�
 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
-## <a name="what-is-elt"></a>Co je ELT?
+## <a name="extract-load-and-transform-elt"></a>Extrakce, načítání a transformace (ELT)
 
 Extrahování, načítání a transformace (ELT) je proces, při kterém jsou data extrahována ze zdrojového systému, načtena do datového skladu a následně transformována.
 

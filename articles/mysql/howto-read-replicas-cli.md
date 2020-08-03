@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 1df590bcec4dfed08dea81c60738a40ca9be8bee
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 41c12dcb2e4c5e3b280bb349e81bcb58a0bafd01
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108732"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495757"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Vytvoření a Správa replik pro čtení v Azure Database for MySQL pomocí rozhraní příkazového řádku Azure a REST API
 
@@ -41,7 +42,7 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 
 `az mysql server replica create`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Description  |
+| Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
 | name | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
@@ -70,7 +71,7 @@ az mysql server replica list --server-name mydemoserver --resource-group myresou
 
 `az mysql server replica list`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Description  |
+| Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
 | název-serveru | mydemoserver | Název nebo ID hlavního serveru. |
@@ -88,7 +89,7 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 
 `az mysql server replica stop`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Description  |
+| Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, ve které existuje server repliky.  |
 | name | mydemoreplicaserver | Název serveru repliky, na kterém má být replikace zastavena. |
@@ -113,7 +114,7 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 Repliky pro čtení můžete vytvářet a spravovat pomocí [REST API Azure](/rest/api/azure/).
 
 ### <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení

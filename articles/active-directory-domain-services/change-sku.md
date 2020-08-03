@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 51f277827ac0865eaede141e5817962b04d2bd49
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a9954b0ddd446c4e39d85ab6d3e37402176236d6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221427"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489635"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>Změna SKU pro existující Azure Active Directory Domain Services spravovanou doménu
 
-V Azure Active Directory Domain Services (Azure služba AD DS) je dostupný výkon a funkce na základě typu SKU. Tyto rozdíly mezi funkcemi zahrnují četnost zálohování nebo maximální počet jednosměrných odchozích vztahů důvěryhodnosti doménové struktury (aktuálně ve verzi Preview).
+V Azure Active Directory Domain Services (Azure služba AD DS) je dostupný výkon a funkce na základě typu SKU. Tyto rozdíly mezi funkcemi zahrnují četnost zálohování nebo maximální počet jednosměrných odchozích vztahů důvěryhodnosti doménové struktury.
 
 SKU vyberete při vytváření spravované domény a po nasazení spravované domény můžete přepínat nebo snížit skladové položky podle toho, jak se vaše firemní potřeby mění. Změny v obchodních požadavcích můžou zahrnovat nutnost častých záloh nebo vytváření dalších vztahů důvěryhodnosti doménové struktury. Další informace o limitech a cenách různých SKU najdete v tématu [Koncepty azure služba AD DS SKU][concepts-sku] a cenové stránky [Azure služba AD DS][pricing] .
 
@@ -38,9 +38,9 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 
 ## <a name="sku-change-limitations"></a>Omezení změny SKU
 
-Po nasazení spravované domény můžete skladové jednotky změnit nahoru nebo dolů. Pokud ale používáte doménovou strukturu prostředků (aktuálně ve verzi Preview) a vytvořili jste jednosměrnou odchozí důvěryhodnost doménové struktury z Azure služba AD DS do místního prostředí služba AD DS, existují určitá omezení operace změny SKU. SKU *Premium* a *Enterprise* definují limit počtu vztahů důvěryhodnosti, které můžete vytvořit. Nemůžete změnit na SKU s nižším maximálním limitem, než je aktuálně nakonfigurované.
+Po nasazení spravované domény můžete skladové jednotky změnit nahoru nebo dolů. Pokud ale používáte doménovou strukturu prostředků a vytvořili jste jednosměrnou odchozí důvěryhodnost doménové struktury z Azure služba AD DS do místního prostředí služba AD DS, existují určitá omezení operace změny skladové položky. SKU *Premium* a *Enterprise* definují limit počtu vztahů důvěryhodnosti, které můžete vytvořit. Nemůžete změnit na SKU s nižším maximálním limitem, než je aktuálně nakonfigurované.
 
-Například:
+Příklad:
 
 * Pokud jste vytvořili dvě vztahy důvěryhodnosti doménové struktury na SKU *Premium* , nemůžete přejít na standardní SKU *Standard* . *Standardní* SKU nepodporuje vztahy důvěryhodnosti doménové struktury.
 * Případně, pokud jste vytvořili sedm vztahů důvěryhodnosti na SKU *Premium* , nemůžete přejít na SKU *Enterprise* . SKU *Enterprise* podporuje maximálně pět vztahů důvěryhodnosti.
@@ -66,7 +66,7 @@ Změna typu SKU může trvat minutu nebo dvě.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte doménovou strukturu prostředků a chcete po změně SKU vytvořit další vztahy důvěryhodnosti, přečtěte si téma [Vytvoření vztahu důvěryhodnosti odchozí doménové struktury k místní doméně v Azure služba AD DS (Preview)][create-trust].
+Pokud máte doménovou strukturu prostředků a chcete po změně SKU vytvořit další vztahy důvěryhodnosti, přečtěte si téma [Vytvoření vztahu důvěryhodnosti odchozí doménové struktury k místní doméně v Azure služba AD DS][create-trust].
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

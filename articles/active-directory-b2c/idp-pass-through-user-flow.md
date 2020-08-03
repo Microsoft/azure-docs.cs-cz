@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0446dd9e316e145cf93c503ab9634d4eedbc299b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b834dda926b7da1241a325e1453143eccafaf30
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387826"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488767"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Předání přístupového tokenu prostřednictvím toku uživatele do aplikace v Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Azure AD B2C aktuálně podporuje pouze předávání přístupového tokenu zpr
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Vaše aplikace musí používat [uživatelský tok v2](user-flow-versions.md).
+* Vaše aplikace musí používat [doporučený tok uživatele](user-flow-versions.md).
 * Tok uživatele má nakonfigurovaný poskytovatele identity OAuth 2,0.
 
 ## <a name="enable-the-claim"></a>Povolit deklaraci identity

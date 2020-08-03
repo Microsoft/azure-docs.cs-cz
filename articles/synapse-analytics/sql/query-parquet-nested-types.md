@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 60f2a1992750950b50995fcf36513e44e377004d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: fb56c4da77ddeb87ebc3724a3b138994e4da98e7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386601"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489686"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotazování vnořených typů v souborech Parquet a JSON pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > V tomto příkladu se používá soubor z [COVID-19 Open Research DataSet](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/). Viz licence na tuto a struktura dat na této stránce.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Prvním krokem je **Vytvoření databáze** se zdrojem dat, který odkazuje na. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 
@@ -203,7 +203,7 @@ FROM
 
 Struktura `MapOfPersons` se vrátí jako `VARCHAR` sloupec a naformátuje jako řetězec JSON.
 
-## <a name="projecting-values-from-repeated-columns"></a>Projekce hodnot z opakujících se sloupců
+## <a name="project-values-from-repeated-columns"></a>Hodnoty projektu z opakujících se sloupců
 
 Pokud máte pole skalárních hodnot (například `[1,2,3]` ) v některých sloupcích, můžete je snadno rozšířit a připojit se k hlavnímu řádku pomocí následujícího skriptu:
 

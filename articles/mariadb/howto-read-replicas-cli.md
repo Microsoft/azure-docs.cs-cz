@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: aff8eb27b1488f06edbc3ebd8c91b0a777837f91
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0e63fe76c5ab5fe77f0dcb7f4903ee77dff208fd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121108"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498901"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Vytvoření a Správa replik pro čtení v Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure a REST API
 
@@ -41,7 +42,7 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 
 `az mariadb server replica create`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Description  |
+| Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
 | name | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
@@ -71,7 +72,7 @@ az mariadb server replica list --server-name mydemoserver --resource-group myres
 
 `az mariadb server replica list`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Description  |
+| Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
 | název-serveru | mydemoserver | Název nebo ID hlavního serveru. |
@@ -89,7 +90,7 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 
 `az mariadb server replica stop`Příkaz vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Description  |
+| Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, ve které existuje server repliky.  |
 | name | mydemoreplicaserver | Název serveru repliky, na kterém má být replikace zastavena. |
@@ -113,7 +114,7 @@ Pokud chcete odstranit hlavní server, můžete spustit příkaz **[AZ MariaDB S
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 Repliky pro čtení můžete vytvářet a spravovat pomocí [REST API Azure](/rest/api/azure/).
 
 ### <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení

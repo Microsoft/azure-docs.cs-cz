@@ -4,14 +4,14 @@ description: Přečtěte si o operátorech SQL, jako jsou rovnost, porovnání a
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80063562"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498833"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Operátory v Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Tento článek podrobně popisuje různé operátory podporované nástrojem Azu
 
 Následující tabulka ukazuje výsledek porovnání rovnosti v rozhraní SQL API mezi libovolnými dvěma typy JSON.
 
-| **Evřít** | **Nedefinované** | **Null** | **Logická hodnota** | **Číselná** | **Řetězec** | **Předmětů** | **Pole** |
+| **Evřít** | **Nedefinované** | **Null** | **Logická hodnota** | **Číselná** | **Řetězec** | **Předmětů** | **Skupin** |
 |---|---|---|---|---|---|---|---|
 | **Nedefinované** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované |
 | **Null** | Nedefinované | **Ok** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované |
@@ -29,11 +29,19 @@ Následující tabulka ukazuje výsledek porovnání rovnosti v rozhraní SQL AP
 | **Číselná** | Nedefinované | Nedefinované | Nedefinované | **Ok** | Nedefinované | Nedefinované | Nedefinované |
 | **Řetězec** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | **Ok** | Nedefinované | Nedefinované |
 | **Předmětů** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | **Ok** | Nedefinované |
-| **Pole** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | **Ok** |
+| **Skupin** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | **Ok** |
 
 Pro operátory porovnání, jako `>` například,, `>=` `!=` , `<` , a `<=` , porovnání mezi typy nebo mezi dvěma objekty nebo poli generuje `Undefined` .  
 
 Pokud je výsledek skalárního výrazu `Undefined` , položka není obsažena ve výsledku, protože se `Undefined` nerovná `true` .
+
+Například následující porovnání dotazu mezi číslem a hodnotou řetězce vytvoří `Undefined` . Proto filtr neobsahuje žádné výsledky.
+
+```sql
+SELECT *
+FROM c
+WHERE 7 = 'a'
+```
 
 ## <a name="logical-and-or-and-not-operators"></a>Operátory logických operátorů (AND, OR a NOT)
 
@@ -43,21 +51,21 @@ Logické operátory pracují s logickými hodnotami. V následujících tabulká
 
 Vrátí `true` , pokud je jedna z podmínek `true` .
 
-|  | **Podmínka** | **Chybné** | **Nedefinované** |
+|  | **True** | **False** | **Nedefinované** |
 | --- | --- | --- | --- |
-| **Podmínka** |True |True |True |
-| **Chybné** |True |False |Nedefinované |
-| **Nedefinované** |True |Nedefinované |Nedefinované |
+| **True** |Ano |Ano |Ano |
+| **False** |Ano |Ne |Nedefinované |
+| **Nedefinované** |Ano |Nedefinované |Nedefinované |
 
 **AND – operátor**
 
 Vrátí `true` , pokud jsou oba výrazy `true` .
 
-|  | **Podmínka** | **Chybné** | **Nedefinované** |
+|  | **True** | **False** | **Nedefinované** |
 | --- | --- | --- | --- |
-| **Podmínka** |True |False |Nedefinované |
-| **Chybné** |False |False |False |
-| **Nedefinované** |Nedefinované |False |Nedefinované |
+| **True** |Ano |Ne |Nedefinované |
+| **False** |Ne |Ne |Ne |
+| **Nedefinované** |Nedefinované |Ne |Nedefinované |
 
 **NOT – operátor**
 
@@ -65,8 +73,8 @@ Obrátí hodnotu libovolného logického výrazu.
 
 |  | **MĚNÍ** |
 | --- | --- |
-| **Podmínka** |False |
-| **Chybné** |True |
+| **True** |Ne |
+| **False** |Ano |
 | **Nedefinované** |Nedefinované |
 
 **Priorita operátorů**

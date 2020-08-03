@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: bb4c689da38606561c657a3e4d85fd9e391267bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b28507c072f338342dc1a936cb1ab5f3910eea1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056741"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498102"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Použití Azure RBAC pro autorizaci Kubernetes (Preview)
 
@@ -31,7 +31,7 @@ Možnost spravovat RBAC pro prostředky Kubernetes z Azure vám dává možnost 
 > - [Zásady podpory AKS](support-policies.md)
 > - [Nejčastější dotazy k podpoře Azure](faq.md)
 
-### <a name="prerequisites"></a>Předpoklady 
+### <a name="prerequisites"></a>Požadavky 
 - Zaregistrujte se do verze Preview <https://aka.ms/aad-rbac-sign-up-form> .
 - Ujistěte se, že máte `EnableAzureRBACPreview` povolený příznak funkce.
 - Ujistěte se, že máte `AAD-V2` povolený příznak funkce.
@@ -283,7 +283,7 @@ az group delete -n MyResourceGroup
 
 - Přečtěte si další informace o ověřování AKS, autorizaci [a RBAC.](concepts-identity.md)
 - Přečtěte si další informace o Azure RBAC [tady](../role-based-access-control/overview.md).
-- Přečtěte si další informace o všech akcích, které můžete použít k podrobnému definování vlastních rolí Azure RBAC [pro autorizaci](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)Kubernetes.
+- Přečtěte si další informace o všech akcích, které můžete použít k podrobnému definování vlastních rolí Azure [pro autorizaci](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)Kubernetes.
 
 
 <!-- LINKS - Internal -->

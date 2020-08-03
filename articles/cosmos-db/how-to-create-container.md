@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 761789b36e85b16f0b4482cef12645e673c73be7
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6e62e307b6c5f5de939505eae8850f0117782a69
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429711"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498357"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Vytvoření kontejneru Azure Cosmos
 
@@ -24,7 +25,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 ### <a name="sql-api"></a><a id="portal-sql"></a>SQL API
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet.
 
@@ -40,7 +41,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 ### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
@@ -56,7 +57,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Rozhraní Cassandra API
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-cassandra-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
@@ -75,7 +76,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 ### <a name="gremlin-api"></a><a id="portal-gremlin"></a>Rozhraní Gremlin API
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-graph-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
@@ -92,7 +93,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru Azure Cosmos (ko
 
 ### <a name="table-api"></a><a id="portal-table"></a>Rozhraní Table API
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-table-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
@@ -119,17 +120,17 @@ Seznam všech ukázek Azure CLI napříč všemi Azure Cosmos DB rozhraní API n
 * [Vytvoření grafu Gremlin pomocí Azure CLI](./scripts/cli/gremlin/create.md)
 * [Vytvoření tabulky rozhraní API pro tabulky pomocí Azure CLI](./scripts/cli/table/create.md)
 
-## <a name="create-a-container-using-powershella-idps-mongodba-idps-gremlin"></a>Vytvoření kontejneru pomocí PowerShellu<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"><a id="ps-table"></a>
+## <a name="create-a-container-using-powershell"></a>Vytvoření kontejneru pomocí PowerShellu
 
 Níže uvedené odkazy ukazují, jak vytvořit prostředky kontejneru pro Azure Cosmos DB pomocí prostředí PowerShell.
 
-Seznam všech ukázek PowerShellu pro všechna Azure Cosmos DB rozhraní API najdete v tématu rozhraní API [SQL](powershell-samples-sql.md), [rozhraní API Cassandra](powershell-samples-cassandra.md), [rozhraní MongoDB API](powershell-samples-mongodb.md), [rozhraní Gremlin API](powershell-samples-gremlin.md)a [rozhraní API pro tabulky](powershell-samples-table.md)
+Výpis všech ukázek PowerShellu napříč všemi Azure Cosmos DB rozhraní API najdete v tématu [ukázky PowerShellu](powershell-samples.md) .
 
 * [Vytvoření kontejneru pomocí PowerShellu](manage-with-powershell.md#create-container)
-* [Vytvoření kolekce pro Azure Cosmos DB rozhraní API MongoDB pomocí PowerShellu](./scripts/powershell/mongodb/ps-mongodb-create.md)
-* [Vytvoření tabulky Cassandra pomocí prostředí PowerShell](./scripts/powershell/cassandra/ps-cassandra-create.md)
-* [Vytvoření grafu Gremlin pomocí prostředí PowerShell](./scripts/powershell/gremlin/ps-gremlin-create.md)
-* [Vytvoření tabulky rozhraní API pro tabulky pomocí prostředí PowerShell](./scripts/powershell/table/ps-table-create.md)
+* [Vytvoření kolekce pro Azure Cosmos DB rozhraní API MongoDB pomocí PowerShellu](./scripts/powershell/mongodb/create.md)
+* [Vytvoření tabulky Cassandra pomocí prostředí PowerShell](./scripts/powershell/cassandra/create.md)
+* [Vytvoření grafu Gremlin pomocí prostředí PowerShell](./scripts/powershell/gremlin/create.md)
+* [Vytvoření tabulky rozhraní API pro tabulky pomocí prostředí PowerShell](./scripts/powershell/table/create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>Vytvoření kontejneru pomocí sady .NET SDK
 

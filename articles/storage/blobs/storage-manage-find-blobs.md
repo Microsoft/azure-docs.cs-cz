@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b41609ec2b7cc9880fb22a76b9e3b40c315bc3c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355654"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499870"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)
 
@@ -63,7 +63,7 @@ V objektu blob můžete použít více značek, aby byly výstižnější data.
 > "Priorita" = ' 01 ' 
 >
 
-Chcete-li upravit existující atributy značek indexu, je nutné nejprve načíst existující atributy značky, upravit atributy značky a nahradit ji operací SetBlobTags. Chcete-li odebrat všechny značky indexu z objektu blob, zavolejte operaci SetBlobTags bez zadaných atributů značek. Jelikož jsou značky indexu objektů BLOB dílčím prostředkem k obsahu dat objektů blob, SetBlobTags nemění žádný podkladový obsah a nemění čas poslední změny objektu BLOB nebo ETag (značka entity). Můžete vytvořit nebo upravit značky indexu pro všechny aktuální základní objekty BLOB a předchozí verze. značky pro snímky nebo obnovitelné odstraněné objekty blob však nelze upravovat. 
+Chcete-li upravit existující atributy značek indexu, je nutné nejprve načíst existující atributy značky, upravit atributy značky a nahradit ji operací SetBlobTags. Chcete-li odebrat všechny značky indexu z objektu blob, zavolejte operaci SetBlobTags bez zadaných atributů značek. Jelikož jsou značky indexu objektů BLOB dílčím prostředkem k obsahu dat objektů blob, SetBlobTags nemění žádný podkladový obsah a nemění čas poslední změny objektu BLOB nebo eTag (značka entity). Můžete vytvořit nebo upravit značky indexu pro všechny aktuální základní objekty BLOB a předchozí verze. značky pro snímky nebo obnovitelné odstraněné objekty blob však nelze upravovat. 
 
 Následující omezení se vztahují na značky indexu objektu BLOB:
 - Každý objekt BLOB může mít až 10 značek indexu objektu BLOB.
@@ -293,9 +293,10 @@ Tato část popisuje známé problémy a podmínky v aktuální verzi Public Pre
 -   Převzetí služeb při selhání účtu se v tuto chvíli nepodporuje. Index objektu BLOB se po převzetí služeb při selhání nemusí správně aktualizovat.
 -   Správa životního cyklu aktuálně podporuje jenom kontroly rovnosti se shodou indexu objektů BLOB.
 -   CopyBlob nekopíruje značky indexu objektů BLOB ze zdrojového objektu blob do nového cílového objektu BLOB. V průběhu operace kopírování můžete zadat značky, které chcete použít pro cílový objekt BLOB. 
+- CopyBlob (asynchronní kopírování) z jiného účtu úložiště s použitými značkami v cílovém objektu BLOB v současné době způsobí, že modul indexu objektů BLOB nevrátí objekt BLOB a jeho značky v sadě filtrů. Doporučuje se v provizorním použití CopyBlob z adresy URL (Synchronization Copy).
 -   Značky jsou při vytváření snímku trvalé; zvýšení úrovně snímku se ale v tuto chvíli nepodporuje a výsledkem může být prázdná sada značek.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="can-blob-index-help-me-filter-and-query-content-inside-my-blobs"></a>Může vám index objektu BLOB pomáhat při filtrování a dotazování obsahu uvnitř objektů BLOB? 
 Ne, značky indexu objektů BLOB vám pomůžou najít objekty blob, které hledáte. Pokud potřebujete hledat v rámci objektů blob, použijte akceleraci dotazu nebo Azure Search.
@@ -308,5 +309,7 @@ Ne, Azure Resource Manager značky usnadňují uspořádání prostředků říd
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na příklad využití indexu objektu BLOB. [Správa a hledání dat v tématu využití indexu objektů BLOB](storage-blob-index-how-to.md)
+Příklad použití indexu objektů BLOB najdete v tématu věnovaném [využití indexu objektů BLOB ke správě a hledání dat](storage-blob-index-how-to.md).
+
+Přečtěte si o [správě životního cyklu](storage-lifecycle-management-concepts.md) a nastavte pravidlo se shodou indexu objektů BLOB.
 

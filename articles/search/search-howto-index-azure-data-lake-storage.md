@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 880238558c03cca6a582960eef4e647c0e6875e8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fe05a474f4f6ee70c07e0e19621487d51d92966d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084105"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490622"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Indexování dokumentů v Azure Data Lake Storage Gen2
 
@@ -44,7 +44,7 @@ Indexování obsahu v Data Lake Storage Gen2 je stejné jako indexování obsahu
 
 ## <a name="access-control"></a>Řízení přístupu
 
-Azure Data Lake Storage Gen2 implementuje [model řízení přístupu](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) , který podporuje řízení přístupu na základě role (RBAC) Azure a seznamy řízení přístupu (ACL) typu POSIX. Při indexování obsahu z Data Lake Storage Gen2 Azure Kognitivní hledání z obsahu neextrahuje informace o RBAC a seznamu ACL. V důsledku toho tyto informace nebudou zahrnuty do indexu služby Azure Kognitivní hledání.
+Azure Data Lake Storage Gen2 implementuje [model řízení přístupu](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) , který podporuje řízení přístupu na základě role Azure (Azure RBAC) a seznamy řízení přístupu (ACL) typu POSIX. Při indexování obsahu z Data Lake Storage Gen2 Azure Kognitivní hledání z obsahu neextrahuje informace o RBAC a seznamu ACL. V důsledku toho tyto informace nebudou zahrnuty do indexu služby Azure Kognitivní hledání.
 
 Je-li udržování řízení přístupu u každého dokumentu v indexu důležité, je k implementaci [oříznutí zabezpečení](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)k dispozici vývojář aplikace.
 

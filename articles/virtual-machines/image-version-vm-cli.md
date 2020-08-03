@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 92660063a5699855b9ae2d745136327cf8bf287a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0a1083c1889fbd83a1b8bd119a71013b738d7f74
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494696"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499530"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Vytvoření verze image z virtuálního počítače v Azure pomocí rozhraní příkazového řádku Azure
 

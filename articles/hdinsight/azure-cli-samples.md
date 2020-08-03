@@ -7,25 +7,26 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
-ms.openlocfilehash: cbbb38c645e56b2e7b8c70b437b1e5158b09a50b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d0d621728ac1956b2c036c9a45202c5d75ee9153
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78207094"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499564"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: ukázky Azure CLI
 
 > [!div class="op_single_selector"]
-> [Příklady .NET](hdinsight-sdk-dotnet-samples.md)– příklady[jazyka Java v jazyce](hdinsight-sdk-java-samples.md) [Python](hdinsight-sdk-python-samples.md)
-> 
-> 
+> [Příklady .NET](hdinsight-sdk-dotnet-samples.md) 
+>  [Příklady](hdinsight-sdk-python-samples.md) 
+>  Pythonu [Příklady jazyka Java](hdinsight-sdk-java-samples.md)
 
 Tento článek poskytuje ukázkové skripty pro běžné úlohy. Pro každý příklad aktualizujte proměnné odpovídajícími hodnotami a potom spusťte příkaz.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Rozhraní příkazového řádku Azure Postup najdete v tématu věnovaném [instalaci rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+* Azure CLI Postup najdete v tématu věnovaném [instalaci rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
 * Volitelné: bash. V příkladech v tomto článku se používá prostředí bash ve Windows 10. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) .  Příklady budou fungovat z příkazového řádku systému Windows s některými drobnými úpravami.
 

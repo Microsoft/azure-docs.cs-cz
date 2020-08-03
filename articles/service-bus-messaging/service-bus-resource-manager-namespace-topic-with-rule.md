@@ -6,12 +6,13 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 1cfda37d0a6db5c4f354dc392900366f68a30e8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 01024ff7d6f152049acf7351313f11d1806d1b3b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336890"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496147"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů Service Bus s použitím tématu, předplatného a pravidla pomocí šablony Azure Resource Manager
 
@@ -28,7 +29,7 @@ Další informace o postupech a vzorcích pro zásady vytváření názvů prost
 > 
 > * [Vytvoření oboru názvů Service Bus s použitím fronty a autorizačního pravidla](service-bus-resource-manager-namespace-auth-rule.md)
 > * [Vytvoření oboru názvů Service Bus s využitím fronty](service-bus-resource-manager-namespace-queue.md)
-> * [Vytvoření oboru názvů Service Bus](service-bus-resource-manager-namespace.md)
+> * [Vytvoření oboru názvů Service Busu](service-bus-resource-manager-namespace.md)
 > * [Vytvoření oboru názvů Service Bus s tématem a předplatným](service-bus-resource-manager-namespace-topic.md)
 > 
 > Pokud chcete vyhledat nejnovější šablony, přejděte na galerii [šablon Azure pro rychlý Start][Azure Quickstart Templates] a vyhledejte Service Bus.

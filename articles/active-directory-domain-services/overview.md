@@ -10,18 +10,20 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 472ff9de069e7d95cb1753a6b05830649806d2fc
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 6efd33b9f8825b5b5699b6106dadafec851ed454
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734550"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488546"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Co je Azure Active Directory Domain Services?
 
 Azure Active Directory Domain Services (Azure služba AD DS) poskytují spravované doménové služby, jako je připojení k doméně, zásady skupiny, protokol LDAP (Lightweight Directory Access Protocol) a ověřování pomocí protokolu Kerberos/NTLM. Tyto doménové služby budete používat bez nutnosti nasazovat, spravovat a opravovat řadiče domény (DCs) v cloudu.
 
-Spravovaná doména je obor názvů DNS a odpovídajícího adresáře. Spravovaná doména se integruje s vaším stávajícím tenant Azure AD, který umožňuje uživatelům přihlásit se pomocí jejich stávajících přihlašovacích údajů. Pomocí existujících skupin a uživatelských účtů taky můžete zabezpečit přístup k prostředkům, což poskytuje plynulý přenos místních prostředků do Azure.
+Při vytváření spravované domény Azure služba AD DS definujete jedinečný obor názvů. Tento obor názvů je název domény, třeba *aaddscontoso.com*, a dva řadiče domény (DCS) se pak nasadí do vybrané oblasti Azure. Toto nasazení řadičů domény se označuje jako sada replik. Spravovaná doména se integruje s vaším stávajícím tenant Azure AD, který umožňuje uživatelům přihlásit se pomocí jejich stávajících přihlašovacích údajů. Pomocí existujících skupin a uživatelských účtů taky můžete zabezpečit přístup k prostředkům, což poskytuje plynulý přenos místních prostředků do Azure.
+
+Spravovanou doménu můžete rozšířit tak, aby měla více než jednu sadu replik na jeden tenant služby Azure AD. Sady replik se dají přidat do všech partnerských virtuálních sítí v libovolné oblasti Azure, která podporuje Azure služba AD DS. Další sady replik v různých oblastech Azure poskytují geografickou obnovu po havárii pro starší aplikace, pokud oblast Azure přejde do režimu offline. Sady replik jsou momentálně ve verzi Preview. Další informace najdete v tématu [Koncepty a funkce sady replik pro spravované domény][concepts-replica-sets].
 
 Služba Azure služba AD DS se integruje s vaším stávajícím tenant Azure AD. Tato integrace umožňuje uživatelům přihlásit se ke službě a aplikacím připojeným ke spravované doméně pomocí svých stávajících přihlašovacích údajů. K zabezpečení přístupu k prostředkům můžete použít taky existující skupiny a uživatelské účty. Tyto funkce poskytují plynulejší a posunutí místních prostředků do Azure.
 
@@ -150,3 +152,4 @@ Začněte [tím, že vytvoříte spravovanou doménu pomocí Azure Portal][tutor
 [forest-trusts]: concepts-resource-forest.md
 [administration-concepts]: administration-concepts.md
 [synchronization]: synchronization.md
+[concepts-replica-sets]: concepts-replica-sets.md

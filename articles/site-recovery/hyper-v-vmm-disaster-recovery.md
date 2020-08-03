@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 482a3808065bb2ec565bad7e760b9337b3db7007
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b2164f8927e5c3224f8b07c30d057f48fb7bbc32
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134002"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495963"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Nastavení zotavení po havárii do sekundární místní lokality pro virtuální počítače Hyper-V
 
@@ -80,7 +80,7 @@ Nainstalujte na servery VMM zprostředkovatele Azure Site Recovery a vyhledejte 
 4. Stáhněte si instalační soubor zprostředkovatele Azure Site Recovery.
 5. Stáhněte si registrační klíč. Budete ho potřebovat při instalaci zprostředkovatele. Klíč je platný pět dní od jeho vygenerování.
 
-    ![Nastavení zdroje](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
+    ![Snímek obrazovky s možnostmi stažení poskytovatele a registračního klíče](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
 
 6. Nainstalujte na oba servery VMM zprostředkovatele. Na hostitele Hyper-V není potřeba nic explicitně instalovat.
 
@@ -94,8 +94,8 @@ Nainstalujte na servery VMM zprostředkovatele Azure Site Recovery a vyhledejte 
 4. V části **Instalace** přijměte nebo změňte výchozí umístění instalace a klikněte na **Nainstalovat**.
 5. Po dokončení instalace klikněte na **Zaregistrovat**, aby se server zaregistroval v trezoru.
 
-    ![Umístění instalace](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
-6. V poli **Název trezoru** ověřte název trezoru, ve kterém bude server zaregistrovaný. Klikněte na **Další**.
+    ![Snímek obrazovky s instalací zprostředkovatele včetně umístění instalace](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
+6. V poli **Název trezoru** ověřte název trezoru, ve kterém bude server zaregistrovaný. Klikněte na **Next** (Další).
 7. V části **Připojení k proxy serveru** určete, jak se zprostředkovatel, který běží na serveru VMM, připojí k Azure.
    - Můžete určit, že se zprostředkovatel má k internetu připojit přímo nebo přes proxy server. Podle potřeby zadejte nastavení proxy serveru.
    - Pokud používáte proxy server, vytvoří se automaticky účet VMM RunAs (DRAProxyAccount) pomocí zadaných přihlašovacích údajů proxy serveru. Proxy server nakonfigurujte tak, aby tento účet bylo možné úspěšně ověřit. Nastavení účtu runas se dá upravit v konzole VMM > **Nastavení**  >  **zabezpečení**  >  **účty Spustit jako**.
@@ -115,7 +115,7 @@ Vyberte cílový server VMM a cloud:
 1. Klikněte na **připravit**  >  **cíl**infrastruktury a vyberte cílový server VMM.
 2. Zobrazí se cloudy VMM synchronizované se Site Recovery. Vyberte cílový cloud.
 
-   ![Cíl](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![Snímek obrazovky cílového serveru VMM a výběry cloudu](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>Nastavení zásady replikace
@@ -138,7 +138,7 @@ Než začnete, ujistěte se, že všichni hostitelé, na které se zásada vztah
 5. Výběrem možnosti **Odstranit repliku virtuálního počítače** určíte, že se má v případě, že zakážete ochranu zdrojového virtuálního počítače, odstranit jeho replika. Pokud povolíte toto nastavení, pak se v případě, že zakážete ochranu zdrojového virtuálního počítače, tento virtuální počítač odebere z konzoly Site Recovery, z konzoly VMM se odeberou nastavení Site Recovery pro VMM a odstraní se příslušná replika.
 6. Pokud provádíte replikaci přes síť, v části **Metoda počáteční replikace** určete, jestli se má spustit počáteční replikace, nebo ji naplánujte. Pokud chcete snížit využití šířky pásma, měli byste ji naplánovat na dobu mimo špičky. Pak klikněte na **OK**.
 
-     ![Zásady replikace](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
+     ![Snímek obrazovky s možnostmi zásad replikace](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
      
 7. Nová zásada se automaticky přidruží ke cloudu VMM. V části **Zásady replikace** klikněte na **OK**. 
 

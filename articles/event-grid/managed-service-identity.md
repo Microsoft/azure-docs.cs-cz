@@ -3,12 +3,12 @@ title: Doručování událostí s identitou spravované služby
 description: Tento článek popisuje, jak povolit identitu spravované služby pro téma Azure Event Grid. Použijte ji k přeposílání událostí do podporovaných cílů.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: c05eb2e78595e962494a60b1ffa8ead899aa0109
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b437d519a076104b64fb2df5cba1cd61a865b1fc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371256"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499819"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Doručování událostí se spravovanou identitou
 Tento článek popisuje, jak povolit [identitu spravované služby](../active-directory/managed-identities-azure-resources/overview.md) pro témata a domény služby Azure Event Grid. Slouží k přeposílání událostí do podporovaných cílů, jako jsou Service Bus fronty a témata, centra událostí a účty úložiště.
@@ -42,7 +42,7 @@ V předchozí části jste zjistili, jak povolit systémově spravovanou identit
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 Následující postup ukazuje, jak v tématu Povolit identitu spravovanou systémem. Postup pro povolení identity pro doménu je podobný. 
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 2. V horní části panelu hledání vyhledejte **témata Event gridu** .
 3. Vyberte **téma** , pro které chcete spravovanou identitu povolit. 
 4. Přepněte na kartu **Identita** . 
@@ -64,7 +64,7 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 Příkaz pro aktualizaci existující domény je podobný ( `az eventgrid domain update` ).
 
 ## <a name="supported-destinations-and-rbac-roles"></a>Podporované cíle a role RBAC
-Po povolení identity pro téma nebo doménu služby Event Grid Azure automaticky vytvoří v Azure Active Directory identitu. Přidejte tuto identitu do odpovídajících rolí řízení přístupu na základě role (RBAC), aby mohlo téma nebo doména překládat události do podporovaných cílů. Přidejte například identitu do role **odesilatele dat azure Event Hubs** pro obor názvů Azure Event Hubs, aby téma Event Grid mohl předávané události do Center událostí v daném oboru názvů. 
+Po povolení identity pro téma nebo doménu služby Event Grid Azure automaticky vytvoří v Azure Active Directory identitu. Přidejte tuto identitu do odpovídajících rolí Azure tak, aby téma nebo doména mohly předávané události do podporovaných cílů. Přidejte například identitu do role **odesilatele dat azure Event Hubs** pro obor názvů Azure Event Hubs, aby téma Event Grid mohl předávané události do Center událostí v daném oboru názvů. 
 
 V současné době Azure Event Grid podporuje témata nebo domény nakonfigurované pomocí spravované identity přiřazené systémem k přeposílání událostí do následujících cílů. Tato tabulka také poskytuje role, ve kterých by měla být identita, aby téma mohla přecházet mezi událostmi.
 

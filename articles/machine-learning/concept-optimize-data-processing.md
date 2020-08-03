@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: f95c4256f4a0a3fdf410efecf9c22d578d1963a2
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 6bb85ada5ab1cd443d47ed85024b45d98354e97f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461795"
+ms.locfileid: "87500959"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Optimalizujte zpracování dat pomocí Azure Machine Learning
 
@@ -64,7 +64,6 @@ Pokud předchozí doporučení nejsou dostatečná a nemůžete získat virtuál
 * Použijte rozhraní jako `Spark` nebo `Dask` ke zpracování dat z paměti. V této možnosti je datový rámec načten do oddílu RAM podle oddílů a zpracován, přičemž konečný výsledek bude shromážděn na konci.  
 
 * Horizontální navýšení kapacity na cluster pomocí distribuované architektury. V této možnosti jsou zatížení zpracování dat rozdělená a zpracovaná na více procesorech, které pracují paralelně, s konečným výsledkem shromážděným na konci.
-
 
 ### <a name="recommended-distributed-frameworks"></a>Doporučené distribuované architektury
 

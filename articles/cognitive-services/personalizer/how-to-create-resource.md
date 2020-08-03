@@ -3,12 +3,13 @@ title: Vytvořit prostředek přizpůsobeného pro přizpůsobování
 description: Konfigurace služby zahrnuje způsob, jakým služba zpracovává ceny, jak často se služba zkoumá, jak často se model překládá a kolik dat se ukládá.
 ms.topic: how-to
 ms.date: 03/26/2020
-ms.openlocfilehash: 8b56516b5555ca971d7ab1db3caf5b76f252729b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2ebd5496eb45ed007f47cd34761800f8b54e5a5a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344369"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501248"
 ---
 # <a name="create-a-personalizer-resource"></a>Vytvoření prostředku pro přizpůsobování
 
@@ -17,11 +18,11 @@ Prostředek přizpůsobeného přizpůsobování je stejný jako smyčka učení
 Pokud chcete, aby přidaný obsah vybral pro více než jednu oblast obsahu webové stránky, můžete pro každý z nich použít jinou výukovou smyčku.
 
 
-## <a name="create-a-resource-in-the-azure-portal"></a>Vytvoření prostředku v Azure Portal
+## <a name="create-a-resource-in-the-azure-portal"></a>Vytvoření prostředku na portálu Azure Portal
 
 Vytvořte prostředek pro přizpůsobení pro každou smyčku zpětné vazby.
 
-1. Přihlaste se k [portálu Azure](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Předchozí odkaz vás přesměruje na stránku pro **Vytvoření** služby pro přizpůsobení.
+1. Přihlaste se k [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Předchozí odkaz vás přesměruje na stránku pro **Vytvoření** služby pro přizpůsobení.
 1. Zadejte název služby, vyberte předplatné, umístění, cenovou úroveň a skupinu prostředků.
 
     > [!div class="mx-imgBorder"]
