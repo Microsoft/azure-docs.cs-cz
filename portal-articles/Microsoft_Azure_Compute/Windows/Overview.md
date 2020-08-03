@@ -1,5 +1,5 @@
 ---
-title: Přehled virtuálních počítačů s Windows | Dokumentace Microsoftu
+title: Přehled virtuálních počítačů s Windows | Microsoft Docs
 description: Přehled obsahu nápovědy pro virtuální počítače s Windows na webu Azure Portal
 services: virtual-machines-windows
 author: sewatson
@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 15a89a03e07deb02a812e54c01e857f972681931
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0fa1ff016ed787725ffde10ade67040a09c7e238
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "64710778"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285913"
 ---
 # <a name="windows-virtual-machines-documentation"></a>Dokumentace k virtuálním počítačům s Windows
 
@@ -23,9 +23,9 @@ Virtuální počítače s Windows v Azure poskytují vysoce škálovatelnou zabe
 
 Podívejte se, jak nasadit webový server IIS ve virtuálním počítači s Windows Serverem 2016:
 
-- [Azure Portal](/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-- [Azure PowerShell](/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-- [Azure CLI](/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- [Azure Portal](../../articles/virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- [Azure PowerShell](../../articles/virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- [Azure CLI](../../articles/virtual-machines/windows/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="step-by-step-tutorials"></a>Podrobné kurzy
 
@@ -48,7 +48,7 @@ Zjistěte, jak nasadit, spravovat a monitorovat virtuální počítače s Window
 
 - [Správce Azure](https://go.microsoft.com/fwlink/?linkid=2012827)
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>ukázky
 
 Nasazení první aplikace do Azure
 

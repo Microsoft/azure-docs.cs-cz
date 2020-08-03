@@ -3,23 +3,23 @@ title: 'Kurz: Vytváření a správa rozpočtů Azure'
 description: Tento kurz vám pomůže plánovat a zohledňovat náklady na služby Azure, které využíváte.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/27/2020
+ms.date: 07/15/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 384be4599abadaada31cfc5b4993fff6705ec71d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3572cbb3f8c4a4f20c0141ac1fae5f0aa6fbd216
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559326"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044997"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytváření a správa rozpočtů Azure
 
 Rozpočty ve službě Cost Management pomáhají plánovat a řídit odpovědnost v organizaci. Pomocí rozpočtů můžete zodpovídat za služby Azure, které využíváte nebo k jejichž odběru jste po určitou dobu přihlášení. Pomůžou vám informovat ostatní o jejich výdajích, aby mohli aktivně spravovat náklady, a umožní vám sledovat, jak se výdaje vyvíjejí v průběhu času. Při překročení vámi vytvořených prahových hodnot rozpočtu se aktivují pouze oznámení. Žádný z vašich prostředků není ovlivněný a vaše spotřeba není zastavena. Rozpočty můžete použít k porovnání a sledování výdajů při analýze nákladů.
 
-Data o nákladech a využití jsou obvykle k dispozici do 12–16 hodin a rozpočty se na základě těchto nákladů vyhodnocují každé čtyři hodiny. E-mailová oznámení jsou obvykle přijatá během 12–16 hodin.
+Data o nákladech a využití jsou obvykle k dispozici během 20 hodin a rozpočty se na základě těchto nákladů vyhodnocují vždy po 12 až 14 hodinách. Po dosažení prahové hodnoty rozpočtu se obvykle rozesílají e-mailová oznámení během jedné hodiny od vyhodnocení.
 
 Po výběru budoucího data vypršení platnosti se rozpočty automaticky obnoví na konci období (měsíčně, čtvrtletně nebo ročně) pro stejnou částku rozpočtu. Vzhledem k tomu, že dojde k obnovení se stejnou částkou rozpočtu, musíte vytvořit samostatné rozpočty, pokud se rozpočtované částky v budoucích obdobích liší.
 
@@ -101,11 +101,13 @@ Na základě dosud zvolených polí v rozpočtu se zobrazí graf, který vám po
 
 ![Příklad znázorňující tvorbu rozpočtu s údaji o měsíčních nákladech ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-Po konfiguraci částky rozpočtu vyberte **Další** a nakonfigurujte upozornění rozpočtu. Rozpočty vyžadují alespoň jednu prahovou hodnotu pro náklady (% rozpočtu) a odpovídající e-mailovou adresu. Do jednoho rozpočtu můžete volitelně zahrnout až pět prahových hodnot a pět e-mailových adres. Po dosažení prahové hodnoty rozpočtu jsou e-mailová oznámení obvykle přijímána za méně než 20 hodin.
+Po konfiguraci částky rozpočtu vyberte **Další** a nakonfigurujte upozornění rozpočtu. Rozpočty vyžadují alespoň jednu prahovou hodnotu pro náklady (% rozpočtu) a odpovídající e-mailovou adresu. Do jednoho rozpočtu můžete volitelně zahrnout až pět prahových hodnot a pět e-mailových adres. Po dosažení prahové hodnoty rozpočtu se obvykle rozesílají e-mailová oznámení během jedné hodiny od vyhodnocení.
 
 Pokud chcete dostávat e-maily, přidejte adresu azure-noreply@microsoft.com do seznamu schválených odesílatelů, aby e-maily nechodily do složky nevyžádané pošty. Další informace o oznámeních naleznete v tématu [Použití upozornění na náklady](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md).
 
 V následujícím příkladu se e-mailové upozornění vygeneruje při dosažení 90 % rozpočtu. Pokud vytvoříte rozpočet pomocí rozhraní API pro rozpočty, můžete také lidem přiřadit role pro příjem upozornění. Na webu Azure Portal není přiřazování rolí lidem podporováno. Další informace o rozhraní API pro rozpočty Azure najdete v tématu popisujícím [rozhraní API pro rozpočty](/rest/api/consumption/budgets).
+
+Limity upozornění podporují rozsah od 0,01 do 1000% zadané prahové hodnoty rozpočtu.
 
 ![Příklad znázorňující podmínky upozornění](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 

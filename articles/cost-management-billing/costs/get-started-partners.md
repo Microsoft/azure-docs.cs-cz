@@ -3,17 +3,17 @@ title: Začínáme se službou Azure Cost Management pro partnery
 description: V tomto článku je vysvětlené, jak partneři používají funkce služby Azure Cost Management a jak k ní umožní přístup svým zákazníkům.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 0b0b5eb8ec41eccf99c23b671cef42a9c1bc8859
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 25a64dd4d06c24b0f7e1f8433a1abf5f67fa6eba
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849862"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372140"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme se službou Azure Cost Management pro partnery
 
@@ -123,9 +123,9 @@ Pokud globální správci a agenti správy mají přístup k předplatnému a sk
 
 ### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Povolení zásady zobrazovat poplatky za použití Azure
 
-Partneři, kteří chtějí svým zákazníkům povolit zásadu, která umožňuje zobrazovat poplatky za používání Azure, můžou použít následující informace.
+Abyste mohli tyto zásady zobrazit a aktualizovat, musíte být členem skupiny **agentů pro správu**. Pokud chcete povolit zásady, které zákazníkům umožňují zobrazovat poplatky za používání Azure, použijte následující informace.
 
-Na webu Azure Portal se přihlaste k partnerskému tenantovi a vyberte **Správa nákladů a fakturace**. Vyberte příslušný fakturační účet smlouvy s partnerem Microsoftu a pak vyberte možnost **Zákazníci**. Seznam zákazníků se vztahuje k fakturačnímu účtu.
+Na webu Azure Portal se přihlaste k partnerskému tenantovi a vyberte **Správa nákladů a fakturace**. V oblasti Obor fakturace vyberte příslušný rozsah fakturace a potom vyberte **Zákazníci**. Seznam zákazníků se vztahuje k fakturačnímu účtu.
 
 V seznamu zákazníků vyberte zákazníka, kterému chcete povolit prohlížet náklady.
 

@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: b8693ea09ccbb6f0a3f8dfe0846a9b1b256872b6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2cd786304180369fee39c7b362f27a44728f3ad8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045140"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124336"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Správa rolí Azure Enterprise
 
@@ -32,7 +32,7 @@ První správce registrace, který je nastavený během zřizování registrace,
 
 Pokud je například jako původní typ ověřování nastavený typ Smíšený, EA se přidá jako účet Microsoft a fakturační kontakt bude mít oprávnění správce EA jen pro čtení. Pokud správce EA neschválí pro stávající fakturační kontakt nechválí ověřování pomocí účtu Microsoft, může správce EA dotčeného uživatele odstranit a požádat zákazníka, aby tohoto uživatele přidal znovu jako správce jen pro čtení s nastavením Pracovní nebo školní účet na úrovni registrace na webu EA Portal.
 
-Tyto role jsou specifické pro správu smluv Azure Enterprise a doplňují předdefinované role, pomocí kterých Azure řídí přístup k prostředkům. Další informace najdete v tématu [Předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
+Tyto role jsou specifické pro správu smluv Azure Enterprise a doplňují předdefinované role, pomocí kterých Azure řídí přístup k prostředkům. Další informace najdete v tématu [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md).
 
 Následující části popisují omezení a možnosti jednotlivých rolí.
 
@@ -121,4 +121,4 @@ Role správce smlouvy Enterprise a zásady zobrazování nákladů se nastavují
 
 - [Správa přístupu k fakturačním údajům v Azure](manage-billing-access.md)
 - [Správa přístupu pomocí RBAC a portálu Azure Portal](../../role-based-access-control/role-assignments-portal.md)
-- [Předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md)
+- [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md)

@@ -3,26 +3,25 @@ title: Samoobslužné výměny a vrácení peněz za rezervace Azure
 description: Přečtěte si, jak postupovat při vrácení peněz za rezervace Azure nebo při jejich výměně.
 author: yashesvi
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 07/01/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 4a25bb13bfa5b2e4f13ddf437bcd9577f9602aed
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 3f41f26e6934e156ab38340a74e2c070b26cefb4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807685"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287655"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a vrácení peněz za rezervace Azure
 
-Rezervace Azure vám dávají flexibilitu pro zvládání stále se vyvíjejících potřeb. Rezervaci můžete vyměnit za jinou rezervaci stejného typu. To znamená, že rezervace virtuálního počítače se dá vyměnit za nákup rezervace pro libovolnou oblast nebo velikost virtuálního počítače. Podobně se dá rezervace databáze SQL PaaS vyměnit za nákup rezervace databáze SQL PaaS libovolného typu a v libovolné oblasti. Rezervace se dají také refundovat, ale celkový objem zrušených rezervací za průběžné období 12 měsíců nesmí překročit 50 000 USD. Refundovat se nedá rezervovaná kapacita Azure Databricks, rezervace Řešení Azure VMware od CloudSimple, rezervace Azure Red Hat Open Shiftu, plány pro Red Hat a plány pro SUSE Linux.
+Rezervace Azure vám dávají flexibilitu pro zvládání stále se vyvíjejících potřeb. Rezervaci si můžete vyměnit za jinou rezervaci stejného typu. Rezervaci virtuálního počítače můžete například vyměnit a koupit jinou rezervaci pro libovolnou jinou velikost virtuálního počítače nebo oblast. Podobně se dá rezervace databáze SQL PaaS vyměnit za nákup rezervace databáze SQL PaaS libovolného typu a v libovolné oblasti. Rezervace se dají také refundovat, ale celkový objem zrušených rezervací ve vašem rozsahu fakturace (jako je EA, Smlouva s partnerem Microsoftu a Smlouva se zákazníkem Microsoftu) nesmí za průběžné období 12 měsíců překročit 50 000 USD. Refundovat se nedá rezervovaná kapacita Azure Databricks, rezervace Řešení Azure VMware od CloudSimple, rezervace Azure Red Hat Open Shiftu, plány pro Red Hat a plány pro SUSE Linux.
 
 Možnost samoobslužné výměny nebo zrušení není k dispozici pro zákazníky s předplatným US Government se smlouvou Enterprise. Podporují se i ostatní typy předplatného US Government, včetně předplatného s průběžnými platbami a CSP (Cloud Solution Provider).
 
-Pokud chcete vyměnit stávající rezervaci nebo za ni vrátit peníze, musíte mít přístup vlastníka k příslušné objednávce rezervace. Můžete [přidat nebo změnit uživatelů, kteří mohou spravovat rezervaci](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
-
 > [!NOTE]
-> Microsoft v současnosti u refundací rezervací neúčtuje poplatky za předčasné ukončení. Možná budeme účtovat poplatky za refundace provedené v budoucnu. Momentálně ale nemáme pro aktivaci tohoto poplatku stanovený žádný pevný termín.
+> - **Pokud chcete vyměnit stávající rezervaci nebo za ni vrátit peníze, musíte k příslušné objednávce rezervace mít přístup vlastníka.** Můžete [přidat nebo změnit uživatelů, kteří mohou spravovat rezervaci](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
+> - Microsoft v současnosti u refundací rezervací neúčtuje poplatky za předčasné ukončení. Možná budeme účtovat poplatky za refundace provedené v budoucnu. Momentálně ale nemáme pro aktivaci tohoto poplatku stanovený žádný pevný termín.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Postup při výměně nebo refundaci existující rezervace
 
@@ -76,7 +75,8 @@ Azure využívá při zrušení, výměně nebo refundaci následující zásady
 **Zásady pro refundace**
 
 - Za předčasné ukončení momentálně neúčtujeme žádný poplatek, ale v budoucnu se v případě zrušení bude za předčasné ukončení pravděpodobně účtovat poplatek 12 %.
-- Celková výše zrušeného závazku za průběžné období 12 měsíců nesmí překročit 50 000 USD. Příklad: Pro rezervaci na tři roky, která stojí 100 USD měsíčně a vymění se po 18. platbě, se zrušený závazek rovná 1 800 USD. Váš nový dostupný limit po provedení této refundace bude 48 200 USD. Za 365 dnů od provedení této refundace se limit 48 200 USD zvýší o 1 800 USD a znovu budete mít k dispozici 50 000 USD. Z tohoto fondu se odčítají všechny ostatní rezervace a platí pro ně stejná doplňovací logika.
+- Celkový zrušený závazek pro fakturační profil nebo jednu registraci nesmí za průběžné období 12 měsíců překročit 50 000 USD. Příklad: Pro rezervaci na tři roky, která stojí 100 USD měsíčně a vymění se po 18. platbě, se zrušený závazek rovná 1 800 USD. Váš nový dostupný limit po provedení této refundace bude 48 200 USD. Za 365 dnů od provedení této refundace se limit 48 200 USD zvýší o 1 800 USD a znovu budete mít k dispozici 50 000 USD. Z tohoto fondu se odčítají všechny ostatní zrušené rezervace pro fakturační profil nebo registraci EA a platí pro ně stejná doplňovací logika.
+- Azure nebude zpracovávat žádnou refundaci, která by pro fakturační profil nebo registraci EA za dobu 12 měsíců překročila limit 50 000 USD.
 - Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší.
 - Refundace můžou provádět pouze vlastníci objednávek rezervací. [Přečtěte si, jak přidávat nebo měnit uživatele, kteří mohou spravovat rezervaci](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 

@@ -4,19 +4,19 @@ description: Zjistěte, jak na webu Azure Portal zobrazit rezervace Azure.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 03/31/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 0635c21ee30a40344281f31c8f9aedf9d74a1284
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: fd5d4248e9b1e645628ac8b87df3b4b0a16e2049
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633858"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288960"
 ---
 # <a name="view-azure-reservations"></a>Zobrazení rezervací Azure
 
-Zakoupené rezervace můžete zobrazit a spravovat na webu Azure Portal.   
+Zakoupené rezervace můžete zobrazit a spravovat na webu Azure Portal.
 
 ## <a name="permissions-to-view-a-reservation"></a>Oprávnění k zobrazení rezervace
 
@@ -24,7 +24,7 @@ Pokud chcete zobrazit nebo spravovat rezervaci, musíte k ní mít oprávnění 
 
 Další informace najdete v tématu [Přidání nebo změna uživatelů, kteří můžou spravovat rezervaci](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 
-## <a name="view-reservation-and-utilization-in-azure-portal"></a>Zobrazení rezervace a informací o využití na webu Azure Portal
+## <a name="view-reservation-and-utilization-in-the-azure-portal"></a>Zobrazení rezervace a informací o využití na webu Azure Portal
 
 Zobrazení rezervace jako vlastník nebo čtenář
 

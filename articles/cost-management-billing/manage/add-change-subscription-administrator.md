@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 309016821eb13ef6332ba248a11593fec8da9f75
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 6d16e663626a1b19271b7d37b39202a0a9b605b9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267558"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126121"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Přidání nebo změna správců předplatného Azure
 
@@ -22,7 +22,7 @@ Pokud chcete spravovat přístup k prostředkům Azure, potřebujete mít odpov�
 
 Tento článek popisuje, jak pro uživatele přidat nebo změnit roli správce s využitím řízení přístupu na základě role (RBAC) v oboru předplatného.
 
-Microsoft doporučuje spravovat přístup k prostředkům pomocí řízení přístupu na základě role (RBAC). Pokud však stále používáte model nasazení Classic a ke správě klasických prostředků využíváte [modul PowerShellu pro správu služeb Azure](https://docs.microsoft.com/powershell/module/servicemanagement/azure), budete muset použít klasického správce.
+Microsoft doporučuje spravovat přístup k prostředkům pomocí řízení přístupu na základě role (RBAC). Pokud však stále používáte model nasazení Classic a ke správě klasických prostředků využíváte [modul PowerShellu pro správu služeb Azure](/powershell/module/servicemanagement/azure.service), budete muset použít klasického správce.
 
 > [!TIP]
 > Pokud ke správě klasických prostředků využíváte pouze Azure Portal, nebudete muset použít klasického správce.
@@ -69,7 +69,7 @@ Pokud si nejste jisti, kdo je správcem účtu předplatného, zjistíte to nás
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Co je řízení přístupu na základě role (RBAC)?](../../role-based-access-control/overview.md)
+* [Co je řízení přístupu na základě role v Azure (Azure RBAC)?](../../role-based-access-control/overview.md)
 * [Vysvětlení různých rolí v Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Přiřazení nebo přidání předplatného Azure do tenanta Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Oprávnění role správce v Azure Active Directory](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)

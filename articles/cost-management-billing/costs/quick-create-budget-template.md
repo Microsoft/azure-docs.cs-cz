@@ -6,14 +6,14 @@ ms.author: banders
 tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.topic: quickstart
-ms.date: 06/10/2020
+ms.date: 07/28/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 5bff8e6057475701a2e78835fb5a950dcb8c8fcb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 984f2d82e21344dd7e3bb8b7267e289832343e1b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252432"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385771"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>Rychlý start: Vytvoření rozpočtu s využitím šablony ARM
 
@@ -29,13 +29,31 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Šablona Azure Resource Manageru podporuje jenom předplatná Azure pro smlouvy Enterprise (EA). Jiné typy předplatného tato šablona nepodporuje.
-
-Chcete-li rozpočty vytvářet a spravovat, musíte mít oprávnění přispěvatele. Můžete vytvořit individuální rozpočty pro předplatná EA a skupiny prostředků. Nemůžete však vytvořit rozpočty pro fakturační účty EA. Pokud máte předplatná Azure EA, musíte mít oprávnění ke čtení, abyste si mohli rozpočty zobrazit.
-
-Pokud chcete rozpočet po vytvoření zobrazit, potřebujete přinejmenším oprávnění ke čtení pro váš účet Azure.
-
 Pokud máte nové předplatné, nemůžete rovnou vytvořit rozpočet ani využívat další funkce služby Cost Management. Může trvat až 48 hodin, než budete moct využívat všechny funkce služby Cost Management.
+
+Rozpočty se podporují pro následující typy rozsahů a účtů Azure:
+
+- Rozsahy řízení přístupu na základě role Azure
+    - Skupiny pro správu
+    - Předplatné
+- Rozsahy smlouvy Enterprise
+    - Fakturační účet
+    - Oddělení
+    - Registrační účet
+- Jednotlivé smlouvy
+    - Fakturační účet
+- Rozsahy smluv se zákazníky Microsoftu
+    - Fakturační účet
+    - Fakturační profil
+    - Oddíl faktury
+    - Zákazník
+- Rozsahy AWS
+    - Externí účet
+    - Externí předplatné
+
+Pokud chcete zobrazit rozpočty, potřebujete přinejmenším oprávnění ke čtení k vašemu účtu Azure.
+
+Pokud máte předplatná Azure EA, musíte mít oprávnění ke čtení, abyste si mohli rozpočty zobrazit. Chcete-li rozpočty vytvářet a spravovat, musíte mít oprávnění přispěvatele.
 
 Pro rozpočty se podporují následující oprávnění nebo obory Azure pro předplatná podle uživatelů a skupin. Další informace o oborech najdete v článku o [principech oborů a práci s nimi](understand-work-scopes.md).
 
@@ -49,7 +67,7 @@ Další informace o přiřazování oprávnění k datům služby Cost Managemen
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/create-budget).
 
-:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
+:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" :::
 
 V této šabloně je definovaný jeden prostředek Azure:
 
@@ -63,27 +81,29 @@ V této šabloně je definovaný jeden prostředek Azure:
 
 2. Vyberte nebo zadejte následující hodnoty.
 
-   [![Šablona Resource Manageru, vytvoření rozpočtu, portál pro nasazení](./media/quick-create-budget-template/create-budget-using-template-portal.png)](./media/quick-create-budget-template/create-budget-using-template-portal.png#lightbox)
-
+   :::image type="content" source="./media/quick-create-budget-template/create-budget-using-template-portal.png" alt-text="Šablona Resource Manageru, vytvoření rozpočtu, portál pro nasazení" lightbox="./media/quick-create-budget-template/create-budget-using-template-portal.png" :::
+   
     * **Předplatné:** Vyberte předplatné Azure.
-    * **Skupina prostředků:** Vyberte **Vytvořit nové**, zadejte jedinečný název pro skupinu prostředků a potom klikněte na **OK**, nebo vyberte existující skupinu prostředků.
-    * **Umístění:** Vyberte prosím umístění. Například **USA – střed**.
+    * **Skupina prostředků:** V případě potřeby vyberte existující skupinu prostředků nebo **vytvořte novou**.
+    * **Oblast:** Vyberte oblast Azure. Například **USA – střed**.
     * **Název rozpočtu:** Zadejte název pro váš rozpočet. Měl by být v rámci skupiny prostředků jedinečný. Povolují se jen alfanumerické znaky, podtržítka a spojovníky.
-    * **Částka:** Zadejte celkové náklady nebo využití, které se má pomocí rozpočtu sledovat.
-    * **Kategorie rozpočtu:** Vyberte kategorii rozpočtu – jestli rozpočet sleduje **náklady** nebo **využití**.
+    * **Částka:** Zadejte celkovou výši nákladů, které se mají pomocí rozpočtu sledovat.
     * **Agregační interval:** Zadejte dobu, pro kterou je rozpočet určený. Povolené hodnoty jsou Měsíčně, Čtvrtletně nebo Ročně. Rozpočet se na konci agregačního intervalu resetuje.
     * **Počáteční datum:** Zadejte počáteční datum (první den v měsíci ve formátu RRRR-MM-DD). Počáteční datum by nemělo být ode dneška za více než 3 měsíce. V rámci agregačního intervalu můžete zadat počáteční datum v minulosti.
-    * **Koncové datum:** Zadejte koncové datum rozpočtu ve formátu RRRR-MM-DD. Pokud není zadané, jako výchozí koncové datum se nastaví se 10 let od počátečního data.
-    * **Operátor:** : Vyberte operátor porovnání. Možné hodnoty jsou EqualTo, GreaterThan a GreaterThanOrEqualTo.
-    * **Prahová hodnota:** Zadejte prahovou hodnotu pro oznámení. Oznámení se odešle, když náklady překročí tuto prahovou hodnotu. Je to vždycky procentuální údaj a musí být v rozmezí od 0 do 1000.
-    * **Kontaktní e-maily:** Zadejte seznam e-mailových adres, na které se má odeslat oznámení při překročení prahové hodnoty rozpočtu. Očekávaný formát je `["user1@domain.com","user2@domain.com"]`.
+    * **Koncové datum:** Zadejte koncové datum rozpočtu ve formátu RRRR-MM-DD. 
+    * **První prahová hodnota:** Zadejte prahovou hodnotu pro první oznámení. Oznámení se odešle, když náklady překročí tuto prahovou hodnotu. Je to vždycky procentuální údaj a musí být v rozmezí od 0 do 1000.
+    * **Druhá prahová hodnota:** Zadejte prahovou hodnotu pro druhé oznámení. Oznámení se odešle, když náklady překročí tuto prahovou hodnotu. Je to vždycky procentuální údaj a musí být v rozmezí od 0 do 1000.
     * **Kontaktní role:** Zadejte seznam kontaktních rolí, na které se má odeslat oznámení při překročení prahové hodnoty rozpočtu. Výchozí hodnoty jsou Vlastník, Přispěvatel a Čtenář. Očekávaný formát je `["Owner","Contributor","Reader"]`.
+    * **Kontaktní e-maily:** Zadejte seznam e-mailových adres, na které se má odeslat oznámení při překročení prahové hodnoty rozpočtu. Očekávaný formát je `["user1@domain.com","user2@domain.com"]`.
     * **Kontaktní skupiny:** Zadejte seznam ID prostředků skupin akcí (ve formě kompletních identifikátorů URI prostředků), na které se má odeslat oznámení při překročení prahové hodnoty rozpočtu. Je možné zadat pole řetězců. Očekávaný formát je `["action group resource ID1","action group resource ID2"]`. Pokud nechcete používat skupiny akcí, zadejte `[]`.
-    * **Filtr prostředků:** Zadejte seznam filtrů pro prostředky. Očekávaný formát je `["Resource Filter Name1","Resource Filter Name2"]`. Pokud nechcete použít filtr, zadejte `[]`. Pokud zadáte filtr prostředků, musíte také zadat hodnoty **filtrů měřičů**.
-    * **Filtr měřičů:** Zadejte seznam filtrů pro měřiče. Pro rozpočty kategorie **Využití** je to povinné. Očekávaný formát je `["Meter Filter Name1","Meter Filter Name2"]`. Pokud jste nezadali **filtr prostředků**, zadejte `[]`.
-    * **Souhlasím s podmínkami a ujednáními uvedenými nahoře:** Toto políčko zaškrtněte.
+    * **Hodnoty filtru skupin prostředků:** Zadejte seznam názvů skupin prostředků pro filtrování. Očekávaný formát je `["Resource Group Name1","Resource Group Name2"]`. Pokud nechcete použít filtr, zadejte `[]`. 
+    * **Hodnoty filtru kategorií měřičů:** Zadejte seznam enter kategorií měřičů služeb Azure. Očekávaný formát je `["Meter Category1","Meter Category2"]`. Pokud nechcete použít filtr, zadejte `[]`.
+   
+3. V závislosti na typu předplatného Azure proveďte jednu z následujících akcí:
+   - Vyberte **Zkontrolovat a vytvořit**.
+   - Přečtěte si Podmínky a ujednání, vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře** a potom vyberte **Koupit**.
 
-3. Vyberte **Koupit**. Po úspěšném nasazení rozpočtu dostanete oznámení:
+4. Pokud jste vybrali **Zkontrolovat a vytvořit**, vaše šablona se ověří. Vyberte **Vytvořit**.  
 
    ![Šablona Resource Manageru, vytvoření rozpočtu, oznámení portálu nasazení](./media/quick-create-budget-template/resource-manager-template-portal-deployment-notification.png)
 

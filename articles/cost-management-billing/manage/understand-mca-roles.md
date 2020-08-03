@@ -3,19 +3,19 @@ title: Fakturační role pro smlouvy se zákazníkem Microsoftu – Azure
 description: Přečtěte si o fakturačních rolích pro fakturační účty smluv se zákazníky Microsoftu v Azure.
 author: amberbhargava
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/13/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 76aa21aea647e5096ba47fb691622ea5146d9901
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 84cb68c4cae962fd985a02a72cc85c6b2cf1aa1d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207211"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286576"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Vysvětlení rolí pro správu smluv se zákazníky Microsoftu v Azure
 
-Při správě fakturačního účtu smlouvy se zákazníkem Microsoftu používejte role popsané v následujících částech. Tyto role existují vedle předdefinovaných rolí, které v Azure slouží k řízení přístupu k prostředkům. Další informace najdete v tématu [Předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
+Při správě fakturačního účtu smlouvy se zákazníkem Microsoftu používejte role popsané v následujících částech. Tyto role existují vedle předdefinovaných rolí, které v Azure slouží k řízení přístupu k prostředkům. Další informace najdete v tématu [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md).
 
 Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu. Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu.
 

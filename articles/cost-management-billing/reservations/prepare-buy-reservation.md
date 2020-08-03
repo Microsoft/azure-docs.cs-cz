@@ -4,15 +4,15 @@ description: Seznamte se s důležitými body, které vám pomůžou s nákupem 
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 05/04/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 609ca56419ed14f3cf4e449e9b906a75a4ff20ab
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 68bcf725a6043b8ab19717845fa8005de2f88e35
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807777"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287642"
 ---
 # <a name="buy-a-reservation"></a>Nákup rezervace
 
@@ -34,9 +34,12 @@ Rozsah rezervace můžete vymezit na předplatné nebo na skupiny prostředků. 
 
 Při vymezování rozsahu rezervace máte v závislosti na vašich potřebách k dispozici tři možnosti:
 
-- Rozsah **Jedna skupina prostředků**: Sleva za rezervaci se uplatní jenom u odpovídajících prostředků ve vybrané skupině prostředků.
-- Rozsah **Jedno předplatné**: Sleva za rezervaci se uplatní u odpovídajících prostředků ve vybraném předplatném.
-- Rozsah **Sdílený**: Sleva za rezervaci se uplatní u odpovídajících prostředků v oprávněných předplatných v kontextu fakturace. U zákazníků se smlouvou Enterprise je kontextem fakturace příslušná registrace. U zákazníků se smlouvou se zákazníkem Microsoftu je rozsahem fakturace příslušný fakturační profil. U individuálních předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.
+- **Rozsah Jedna skupina prostředků:** Sleva za rezervaci se uplatní jenom u odpovídajících prostředků ve vybrané skupině prostředků.
+- **Rozsah Jedno předplatné:** Sleva za rezervaci se uplatní u odpovídajících prostředků ve vybraném předplatném.
+- Rozsah **Sdílený** – sleva za rezervaci se uplatní u odpovídajících prostředků v oprávněných předplatných v kontextu fakturace.
+    - U zákazníků se smlouvou Enterprise je kontextem fakturace příslušná registrace. Sdílený rozsah rezervace by zahrnoval několik tenantů služby Active Directory v rámci jedné registrace.
+    - U zákazníků se Smlouvou se zákazníkem Microsoftu je rozsahem fakturace jejich fakturační profil.
+    - U individuálních předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.
 
 Při uplatňování slev za používání Azure zpracovává rezervace v tomto pořadí:
 
