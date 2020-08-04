@@ -11,12 +11,12 @@ ms.date: 06/07/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fcebf66dba2fc13457ca359b81565fc5870032c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c634b4f7ac3aa1fe83e6ab3f863e998b8d25232c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213291"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533933"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Načtení dat z Azure Data Lake Storage SQL pro synapse
 
@@ -30,7 +30,7 @@ Tato příručka popisuje, jak pomocí [příkazu copy](https://docs.microsoft.c
 > * Vytvořte cílovou tabulku pro načtení dat z Azure Data Lake Storage.
 > * Vytvořte příkaz COPY pro načtení dat do datového skladu.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -39,7 +39,7 @@ Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi apl
 Pro spuštění tohoto kurzu budete potřebovat:
 
 * Fond SQL. Přečtěte si téma [Vytvoření fondu SQL a data dotazů](create-data-warehouse-portal.md).
-* Účet Data Lake Storage. Viz Začínáme [s Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Pro tento účet úložiště budete muset nakonfigurovat nebo zadat jedno z následujících přihlašovacích údajů, které se mají načíst: klíč účtu úložiště, klíč sdíleného přístupového podpisu (SAS), uživatel aplikace Azure Directory nebo uživatel AAD, který má příslušnou roli RBAC pro účet úložiště.
+* Účet Data Lake Storage. Viz Začínáme [s Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Pro tento účet úložiště budete muset nakonfigurovat nebo zadat jedno z následujících přihlašovacích údajů, které se mají načíst: klíč účtu úložiště, klíč sdíleného přístupového podpisu (SAS), uživatel aplikace Azure Directory nebo uživatel AAD, který má příslušnou roli Azure pro účet úložiště.
 
 ## <a name="create-the-target-table"></a>Vytvoření cílové tabulky
 

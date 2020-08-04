@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 4bdcb2b4008f54ff0d84594e6f3b5a7b76944e65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/03/2020
+ms.openlocfilehash: 9088b36acead9f47e94949ee102d66a8aff2d226
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987021"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529598"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Kopírování dat z SAP ECC pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "84987021"
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z SAP Enterprise Central Component (ECC). Další informace najdete v tématu [Přehled aktivit kopírování](copy-activity-overview.md).
 
 >[!TIP]
->Pokud chcete získat přehled o celkové podpoře pro integraci dat přes ADF, přečtěte si článek [integrace dat SAP pomocí Azure Data Factory dokumentu White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) s podrobnými pokyny k úvodu, comparsion a pokyny.
+>Pokud chcete získat přehled o celkové podpoře pro integraci dat v programu, přečtěte si článek [integrace dat SAP pomocí Azure Data Factory dokumentu White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) s podrobným úvodem na jednotlivé konektory SAP, comparsion a doprovodné materiály.
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -52,13 +52,11 @@ Konkrétně tento konektor SAP ECC podporuje:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Obecně SAP ECC zpřístupňuje entity prostřednictvím služby OData prostřednictvím brány SAP. Pokud chcete použít tento konektor SAP ECC, musíte:
+Chcete-li použít tento konektor SAP ECC, je nutné vystavit entity SAP ECC prostřednictvím služby OData prostřednictvím brány SAP. A konkrétně:
 
 - **Nastavte bránu SAP**. Pro servery s verzemi SAP NetWeaver novějšími než 7,4 je už nainstalovaná brána SAP. V případě starších verzí musíte nainstalovat vloženou bránu SAP nebo centrum brány SAP a teprve potom vystavit data SAP ECC prostřednictvím služeb OData. Informace o nastavení brány SAP najdete v [instalační příručce](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm).
 
 - **Aktivujte a nakonfigurujte službu SAP OData**. Službu OData můžete aktivovat prostřednictvím TCODE SICF během několika sekund. Můžete taky nakonfigurovat, které objekty je potřeba zveřejnit. Další informace najdete v [podrobných pokynech](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/).
-
-## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -72,7 +70,7 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu SAP ECC jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | `type` | `type`Vlastnost musí být nastavena na hodnotu `SapEcc` . | Yes |
 | `url` | Adresa URL služby SAP ECC OData. | Yes |
@@ -111,7 +109,7 @@ Chcete-li kopírovat data z SAP ECC, nastavte `type` vlastnost datové sady na `
 
 Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | `path` | Cesta k entitě SAP ECC OData | Yes |
 
@@ -144,10 +142,11 @@ Chcete-li kopírovat data z SAP ECC, nastavte `type` vlastnost v `source` část
 
 V části aktivity kopírování jsou podporovány následující vlastnosti `source` :
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | `type` | `type`Vlastnost oddílu aktivity kopírování `source` musí být nastavena na hodnotu `SapEccSource` . | Yes |
 | `query` | Možnosti dotazu OData pro filtrování dat Příklad:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Konektor SAP ECC kopíruje data z kombinované adresy URL:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Další informace najdete v tématu [komponenty adresy URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | No |
+| `sapDataColumnDelimiter` | Jeden znak, který se používá jako oddělovač předaný do SAP RFC pro rozdělení výstupních dat. | No |
 | `httpRequestTimeout` | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Pokud není zadaný, výchozí hodnota je **00:30:00** (30 minut). | No |
 
 ### <a name="example"></a>Příklad

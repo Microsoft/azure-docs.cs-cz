@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 06/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 73e1067a7d2d1ff9cc9e2086070c9cb9bf7a000a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6c2ef52669a0bc5cd29bdcebf920beb1f409e65d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504241"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533100"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS 
 
@@ -412,4 +412,6 @@ Až budete hotovi, a pokud chcete, můžete odstranit skupinu prostředků. Akce
 ## <a name="next-steps"></a>Další kroky  
 
 > [!div class="nextstepaction"]
-> [Správa svazků pomocí Azure NetApp Files](azure-netapp-files-manage-volumes.md)  
+> [Hierarchie úložiště Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)   
+> [Úrovně služeb pro Azure NetApp Files](azure-netapp-files-service-levels.md)   
+> [Vytvoření svazku NFS](azure-netapp-files-create-volumes.md)   

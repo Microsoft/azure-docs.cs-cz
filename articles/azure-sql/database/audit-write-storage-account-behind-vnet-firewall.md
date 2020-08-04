@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f6a64cf30ecc684e05675d366ff5c9fc6642126
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6ba0a599bcb0b058ce4902882df9459b177fb6b5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372157"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530375"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Zápis auditu do účtu úložiště za virtuální sítí a branou firewall
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -42,7 +42,7 @@ Aby mohl audit zapisovat do účtu úložiště za virtuální sítí nebo brán
 > * Účet úložiště pro obecné účely v2. Pokud máte účet úložiště pro obecné účely v1 nebo blob, [upgradujte na účet úložiště pro obecné účely v2](../../storage/common/storage-account-upgrade.md). Další informace najdete v tématu [typy účtů úložiště](../../storage/common/storage-account-overview.md#types-of-storage-accounts).
 > * Účet úložiště musí být ve stejném předplatném a ve stejném umístění jako [logický SQL Server](logical-servers.md).
 > * Účet Azure Storage vyžaduje `Allow trusted Microsoft services to access this storage account` . Nastavte tuto hodnotu na **brány firewall a virtuální sítě**v účtu úložiště.
-> * Musíte mít `Microsoft.Authorization/roleAssignments/write` oprávnění pro vybraný účet úložiště. Další informace najdete v tématu [předdefinované role Azure](../../role-based-access-control/built-in-roles.md).
+> * Musíte mít `Microsoft.Authorization/roleAssignments/write` oprávnění pro vybraný účet úložiště. Další informace najdete v tématu [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="configure-in-azure-portal"></a>Konfigurace na webu Azure Portal
 
@@ -117,7 +117,7 @@ Konfigurace auditu SQL pro zápis událostí do účtu úložiště za virtuáln
    }
    ```
 
-2. Otevřete [Azure Portal](https://portal.azure.com). Přejděte na svůj účet úložiště. Vyhledejte **Access Control (IAM)** a klikněte na **Přidat přiřazení role**. Přiřaďte roli RBAC **Přispěvatel dat objektů BLOB úložiště** k serveru, který je hostitelem databáze, kterou jste zaregistrovali v Azure Active Directory (Azure AD) jako v předchozím kroku.
+2. Otevřete [Azure Portal](https://portal.azure.com). Přejděte na svůj účet úložiště. Vyhledejte **Access Control (IAM)** a klikněte na **Přidat přiřazení role**. Přiřaďte roli Azure **Přispěvatel dat objektů BLOB úložiště** k serveru, který je hostitelem databáze, kterou jste zaregistrovali ve službě Azure Active Directory (Azure AD) jako v předchozím kroku.
 
    > [!NOTE]
    > Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích Azure najdete [v tématu předdefinované role Azure](../../role-based-access-control/built-in-roles.md).

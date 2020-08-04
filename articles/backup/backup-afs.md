@@ -3,31 +3,35 @@ title: Zálohování sdílených složek Azure v Azure Portal
 description: Naučte se používat Azure Portal k zálohování sdílených složek Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 58bcd7ecd7c6fac80f5b78fb2c8b568b63e3e1b2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0d9edbcb89dbdcac51893eb720da880a150bc7b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077132"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532649"
 ---
 # <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
 
-Tento článek vysvětluje, jak používat Azure Portal k zálohování [sdílených složek Azure](../storage/files/storage-files-introduction.md).
+Tento článek vysvětluje, jak zálohovat [sdílené složky Azure](../storage/files/storage-files-introduction.md) z Azure Portal.
 
 V tomto článku se dozvíte, jak:
 
 * Vytvořte trezor služby Recovery Services.
-* Zjistit sdílené složky a nakonfigurovat zálohy.
-* Spusťte úlohu zálohování na vyžádání a vytvořte bod obnovení.
+* Konfigurace zálohování z trezoru Recovery Services
+* Konfigurace zálohování v podokně sdílení souborů
+* Spuštění úlohy zálohování na vyžádání pro vytvoření bodu obnovení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Identifikujte nebo vytvořte [trezor Recovery Services](#create-a-recovery-services-vault) ve stejné oblasti jako účet úložiště, který hostuje sdílenou složku.
+* [Přečtěte si](azure-file-share-backup-overview.md) o řešení zálohování založeném na snímku Azure File Share.
 * Ujistěte se, že se sdílená složka nachází v jednom z [podporovaných typů účtů úložiště](azure-file-share-support-matrix.md).
+* Identifikujte nebo vytvořte [trezor Recovery Services](#create-a-recovery-services-vault) ve stejné oblasti jako účet úložiště, který hostuje sdílenou složku.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-## <a name="discover-file-shares-and-configure-backup"></a>Zjistit sdílené složky a nakonfigurovat zálohování
+## <a name="configure-backup-from-the-recovery-services-vault"></a>Konfigurace zálohování z trezoru Recovery Services
+
+Následující kroky vysvětlují, jak můžete v podokně trezoru služby Recovery Services nakonfigurovat zálohování pro víc sdílených složek:
 
 1. V [Azure Portal](https://portal.azure.com/)otevřete trezor Recovery Services, který chcete použít pro konfiguraci zálohování sdílené složky.
 
@@ -47,7 +51,7 @@ V tomto článku se dozvíte, jak:
 
           ![Vyberte zálohování pro přidružení sdílené složky Azure k trezoru.](./media/backup-afs/register-extension.png)
 
-1. Po výběru **zálohy**se otevře podokno **zálohování** . Pokud chcete vybrat účet úložiště, který hostuje sdílenou složku, kterou chcete chránit, klikněte na textové pole pro **Výběr** odkazu pod textovým polem **účtu úložiště** .
+1. Po výběru **zálohy**se otevře podokno **zálohování** . Pokud chcete vybrat účet úložiště, který hostuje sdílenou složku, kterou chcete chránit, vyberte v textovém poli **účtu úložiště** text odkazu **Vybrat** odkaz.
 
    ![Vybrat odkaz pro výběr](./media/backup-afs/choose-select-link.png)
 
@@ -57,7 +61,7 @@ V tomto článku se dozvíte, jak:
 
    ![Vyberte ze zjištěných účtů úložiště.](./media/backup-afs/select-discovered-storage-account.png)
 
-1. V dalším kroku vyberte sdílené složky, které chcete zálohovat. Klikněte na tlačítko **Přidat** v části **sdílené složky pro zálohování** .
+1. V dalším kroku vyberte sdílené složky, které chcete zálohovat. V části **sdílené složky pro zálohování** vyberte tlačítko **Přidat** .
 
    ![Vyberte sdílené složky, které chcete zálohovat.](./media/backup-afs/select-file-shares-to-back-up.png)
 
@@ -70,27 +74,27 @@ V tomto článku se dozvíte, jak:
 1. Pokud chcete pro sdílenou složku zvolit zásady zálohování, máte tři možnosti:
 
    * Vyberte výchozí zásadu.<br>
-   Tato možnost umožňuje povolit každodenní zálohování, které se bude uchovávat po dobu 30 dnů. Pokud v trezoru nemáte existující zásady zálohování, otevře se podokno zálohování s výchozími nastaveními zásad. Pokud chcete zvolit výchozí nastavení, můžete kliknout přímo na **Povolit zálohování**.
+   Tato možnost umožňuje povolit každodenní zálohování, které se bude uchovávat po dobu 30 dnů. Pokud v trezoru nemáte existující zásady zálohování, otevře se podokno zálohování s výchozími nastaveními zásad. Pokud chcete zvolit výchozí nastavení, můžete vybrat možnost **Povolit zálohování**přímo.
 
    * Vytvoření nové zásady <br>
 
-      1. Chcete-li vytvořit nové zásady zálohování pro sdílenou složku, klikněte na text odkazu pod rozevíracím seznamem v části **zásady zálohování** .<br>
+      1. Pokud chcete pro sdílenou složku vytvořit nové zásady zálohování, vyberte v části **zásady zálohování** text odkazu pod rozevíracím seznamem.<br>
 
          ![Vytvořit novou zásadu](./media/backup-afs/create-new-policy.png)
 
       1. Na pravé straně se otevře kontextový podokno **zásady zálohování** . Do textového pole zadejte název zásady a v závislosti na vašem požadavku zvolte dobu uchování. Ve výchozím nastavení je povolená jenom možnost denní uchování. Pokud chcete mít týdenní, měsíční nebo roční uchování, zaškrtněte příslušné políčko a zadejte požadovanou hodnotu pro uchování.
 
-      1. Po zadání hodnot uchování a platného názvu zásady klikněte na OK.<br>
+      1. Po zadání hodnot uchování a platného názvu zásady vyberte **OK**.<br>
 
          ![Zadejte název zásady a hodnoty uchování.](./media/backup-afs/policy-name.png)
 
    * Vyberte jednu z existujících zásad zálohování. <br>
 
-   Pokud chcete zvolit jednu ze stávajících zásad zálohování pro konfiguraci ochrany, vyberte požadovanou zásadu v rozevíracím seznamu **zásady zálohování** .<br>
+      Pokud chcete zvolit jednu ze stávajících zásad zálohování pro konfiguraci ochrany, vyberte požadovanou zásadu v rozevíracím seznamu **zásady zálohování** .<br>
 
-   ![Zvolit existující zásadu](./media/backup-afs/choose-existing-policy.png)
+      ![Zvolit existující zásadu](./media/backup-afs/choose-existing-policy.png)
 
-1. Kliknutím na **Povolit zálohování** zahajte ochranu sdílené složky.
+1. Chcete-li začít chránit sdílenou složku, vyberte možnost **Povolit zálohování** .
 
    ![Zvolit povolit zálohování](./media/backup-afs/enable-backup.png)
 
@@ -99,11 +103,72 @@ Po nastavení zásad zálohování se v naplánovaném čase povede snímek sdí
 >[!NOTE]
 >Azure Backup teď podporuje zásady s denním/týdenním/měsíčním/ročním uchováváním záloh sdílené složky Azure.
 
-## <a name="create-an-on-demand-backup"></a>Vytvoření zálohy na vyžádání
+## <a name="configure-backup-from-the-file-share-pane"></a>Konfigurace zálohování v podokně sdílení souborů
+
+Následující postup vysvětluje, jak můžete nakonfigurovat zálohování pro jednotlivé sdílené složky z příslušného podokna sdílení souborů:
+
+1. V [Azure Portal](https://portal.azure.com/)otevřete účet úložiště, který hostuje sdílenou složku, kterou chcete zálohovat.
+
+1. V účtu úložiště vyberte dlaždici s názvem **sdílené složky**. Můžete také přejít ke **sdíleným složkám souborů** prostřednictvím obsahu účtu úložiště.
+
+   ![Účet úložiště](./media/backup-afs/storage-account.png)
+
+1. V seznamu sdílení souborů byste měli vidět všechny sdílené složky, které jsou v účtu úložiště k dispozici. Vyberte sdílenou složku, kterou chcete zálohovat.
+
+   ![Seznam sdílených složek](./media/backup-afs/file-shares-list.png)
+
+1. V části **operace** v podokně sdílení souborů vyberte **zálohovat** . Napravo se načte podokno **Konfigurace zálohování** .
+
+   ![Konfigurovat podokno zálohování](./media/backup-afs/configure-backup.png)
+
+1. Pro výběr trezoru Recovery Services proveďte jednu z následujících akcí:
+
+    * Pokud už máte trezor, vyberte přepínač **Vybrat existující** trezor služby Recovery Services a z rozevírací nabídky **název trezoru** zvolte jednu z existujících trezorů.
+
+       ![Vybrat existující trezor](./media/backup-afs/select-existing-vault.png)
+
+    * Pokud nemáte trezor, vyberte přepínač **vytvořit nový** trezor služby Recovery Services. Zadejte název trezoru. Vytvoří se ve stejné oblasti jako sdílená složka. Ve výchozím nastavení se trezor vytvoří ve stejné skupině prostředků jako sdílená složka. Pokud chcete zvolit jinou skupinu prostředků, vyberte **vytvořit nový** odkaz pod rozevíracím tlačítkem **typ prostředku** a zadejte název skupiny prostředků. Pokračujte výběrem tlačítka **OK**.
+
+       ![Vytvořit nový trezor](./media/backup-afs/create-new-vault.png)
+
+      >[!IMPORTANT]
+      >Pokud je účet úložiště zaregistrovaný v trezoru nebo pokud je v rámci účtu úložiště hostující sdílená složka, kterou se pokoušíte chránit, název trezoru služby Recovery Services se předběžně vyplní a nebudete [ho moct dál upravovat.](backup-azure-files-faq.md#why-cant-i-change-the-vault-to-configure-backup-for-the-file-share)
+
+1. Pro výběr **zásad zálohování** proveďte jednu z následujících akcí:
+
+    * Ponechte výchozí zásadu. Naplánuje denní zálohy se uchováváním po dobu 30 dnů.
+
+    * Vyberte existující zásadu zálohování (pokud ji máte) z rozevírací nabídky **zásady zálohování** .
+
+       ![Zvolit zásady zálohování](./media/backup-afs/choose-backup-policy.png)
+
+    * Vytvořte novou zásadu s denním/týdenním/měsíčním a ročním uchováváním podle vašeho požadavku.  
+
+         1. Vyberte odkaz **vytvořit nový text zásady** .
+
+         2. Na pravé straně se otevře kontextový podokno **zásady zálohování** . Do textového pole zadejte název zásady a v závislosti na vašem požadavku zvolte dobu uchování. Ve výchozím nastavení je povolená jenom možnost denní uchování. Pokud chcete mít týdenní, měsíční nebo roční uchování, zaškrtněte příslušné políčko a zadejte požadovanou hodnotu pro uchování.
+
+         3. Po zadání hodnot uchování a platného názvu zásady vyberte **OK**.
+
+            ![Vytvořit nové zásady zálohování](./media/backup-afs/create-new-backup-policy.png)
+
+1. Chcete-li začít chránit sdílenou složku, vyberte možnost **Povolit zálohování** .
+
+   ![Vyberte povolit zálohování.](./media/backup-afs/select-enable-backup.png)
+
+1. Průběh konfigurace můžete sledovat v oznámeních na portálu nebo sledovat úlohy zálohování v trezoru, který používáte k ochraně sdílení souborů.
+
+   ![Oznámení na portálu](./media/backup-afs/portal-notifications.png)
+
+1. Po dokončení operace konfigurace zálohování vyberte v části **operace** v podokně sdílení souborů možnost **zálohování** . V kontextovém podokně se zobrazí **základy trezoru** , které se načtou napravo. Odtud můžete aktivovat operace zálohování a obnovení na vyžádání.
+
+   ![Základy trezoru](./media/backup-afs/vault-essentials.png)
+
+## <a name="run-an-on-demand-backup-job"></a>Spuštění úlohy zálohování na vyžádání
 
 V některých případech můžete chtít vytvořit snímek zálohy nebo bod obnovení mimo čas naplánovaný v zásadách zálohování. Běžným důvodem pro vygenerování zálohy na vyžádání je napravo od nakonfigurované zásady zálohování. Na základě plánu v zásadách zálohování může být hodiny nebo dny až do chvíle, kdy se snímek povede. Pokud chcete svá data chránit před zapojením zásady zálohování, vyvolejte zálohování na vyžádání. Vytvoření zálohy na vyžádání se často vyžaduje předtím, než provedete plánované změny sdílených složek.
 
-### <a name="create-a-backup-job-on-demand"></a>Vytvoření úlohy zálohování na vyžádání
+### <a name="from-the-recovery-services-vault"></a>Z trezoru služby Recovery Services
 
 1. Otevřete Recovery Services trezor, který jste použili k zálohování sdílené složky. V podokně **Přehled** vyberte **položky zálohování** v části **chráněné položky** .
 
@@ -129,6 +194,20 @@ V některých případech můžete chtít vytvořit snímek zálohy nebo bod obn
 
 1. Monitorujte oznámení na portálu, abyste měli přehled o dokončení spuštění úlohy zálohování. Průběh úlohy můžete monitorovat na řídicím panelu trezoru. Vyberte **probíhající úlohy zálohování**  >  **In progress**.
 
+### <a name="from-the-file-share-pane"></a>Z podokna sdílení souborů
+
+1. Otevřete podokno s **přehledem** sdílené složky, ve kterém chcete provést zálohování na vyžádání.
+
+1. V části **operace** vyberte **zálohování** . V kontextovém podokně se zobrazí **základy trezoru** , které se načtou napravo. Vyberte **Zálohovat nyní** a proveďte zálohování na vyžádání.
+
+   ![Vyberte zálohovat hned](./media/backup-afs/select-backup-now.png)
+
+1. Otevře se podokno **Zálohovat nyní** . Zadejte uchování bodu obnovení. Pro zálohování na vyžádání můžete mít maximálně 10 let.
+
+   ![Uchovat datum zálohování](./media/backup-afs/retain-backup-date.png)
+
+1. Vyberte **OK**. Tím akci potvrdíte.
+
 >[!NOTE]
 >Azure Backup uzamkne účet úložiště při konfiguraci ochrany pro jakoukoli sdílenou složku v příslušném účtu. Tato operace zajišťuje ochranu před náhodným odstraněním účtu úložiště s zálohovanými sdílenými složkami.
 
@@ -136,7 +215,7 @@ V některých případech můžete chtít vytvořit snímek zálohy nebo bod obn
 
 * Neodstraňujte snímky vytvořené pomocí Azure Backup. Odstranění snímků může způsobit ztrátu bodů obnovení nebo selhání obnovení.
 
-* Neodstraňujte zámek pořízený na účtu úložiště pomocí Azure Backup. Pokud zámek odstraníte, bude váš účet úložiště náchylný k nechtěnému odstranění a pokud je odstraněný, ztratíte snímky nebo zálohy.
+* Neodstraňujte zámek pořízený na účtu úložiště pomocí Azure Backup. Pokud zámek odstraníte, váš účet úložiště bude náchylný k nechtěnému odstranění a pokud je odstraněný, ztratíte snímky nebo zálohy.
 
 ## <a name="next-steps"></a>Další kroky
 

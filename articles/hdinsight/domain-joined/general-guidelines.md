@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 142fdf27fde100385140baacdeba9249b2e7989b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d97886232eecc369746e33df484cbfb9d40da72
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887901"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530261"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Obecné informace o podnikovém zabezpečení a pokyny v Azure HDInsight
 
@@ -20,7 +20,7 @@ Při nasazení zabezpečeného clusteru HDInsight existují osvědčené postupy
 
 ## <a name="use-of-secure-cluster"></a>Použití zabezpečeného clusteru
 
-### <a name="recommended"></a>Doporučené
+### <a name="recommended"></a>Doporučeno
 
 * Cluster bude používat více uživatelů současně.
 * Uživatelé mají různé úrovně přístupu ke stejným datům.
@@ -62,7 +62,7 @@ Při nasazení zabezpečeného clusteru HDInsight existují osvědčené postupy
 Pokud není povolen hierarchický obor názvů:
 
 * Žádná zděděná oprávnění nejsou k dispozici.
-* Přiřazovat uživateli přímo v Azure Portal pouze oprávnění systému souborů, které funguje jako role **úložiště dat xxxx** RBAC.
+* Přiřazovat uživateli přímo v Azure Portal pouze oprávnění systému souborů, která fungují jako **data úložiště xxxx** Azure role.
 
 ### <a name="default-hdfs-permissions"></a>Výchozí oprávnění HDFS
 

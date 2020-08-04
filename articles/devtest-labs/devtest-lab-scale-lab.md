@@ -3,12 +3,12 @@ title: Kvóty a limity škálování v testovacím prostředí v Azure DevTest L
 description: Tento článek popisuje, jak můžete škálovat testovací prostředí v Azure DevTest Labs. Zobrazení kvót a omezení využití a vyžádání zvýšení.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: dacc699a6f4e7663d0f314acfc2212bd69d46d18
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2166eaab073e2abc24ca24494ae13eb876db1fcf
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287320"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533950"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Kvóty a omezení škálování v DevTest Labs
 Při práci v DevTest Labs si můžete všimnout, že existují určitá výchozí omezení pro některé prostředky Azure, což může ovlivnit službu DevTest Labs. Tato omezení se označují jako **kvóty**.
@@ -20,12 +20,12 @@ Každý prostředek Azure můžete použít až do dosažení kvóty. Každé p�
 
 Například každé předplatné má výchozí kvótu 20 jader. Pokud tedy vytváříte virtuální počítače v testovacím prostředí se čtyřmi jádry, můžete vytvořit pouze pět virtuálních počítačů.
 
-[Omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md) uvádí některé z nejběžnějších kvót pro prostředky Azure. Prostředky nejčastěji používané v testovacím prostředí, u kterých se můžete setkat s kvótami, zahrnovat jádra virtuálních počítačů, veřejné IP adresy, síťové rozhraní, spravované disky, přiřazení role RBAC a okruhy ExpressRoute.
+[Omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md) uvádí některé z nejběžnějších kvót pro prostředky Azure. Prostředky nejčastěji používané v testovacím prostředí, pro které se můžete setkat s kvótami, zahrnovat jádra virtuálních počítačů, veřejné IP adresy, síťové rozhraní, spravované disky, přiřazení role Azure a okruhy ExpressRoute.
 
 ## <a name="view-your-usage-and-quotas"></a>Zobrazení využití a kvót
 Tyto kroky ukazují, jak zobrazit aktuální kvóty v předplatném pro konkrétní prostředky Azure a zjistit, jaké procento z každé používané kvóty jste použili.
 
-1. Přihlaste se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Vyberte **Další služby**a potom v seznamu vyberte **fakturace** .
 1. V okně fakturace vyberte předplatné.
 4. Vyberte **využití a kvóty**.

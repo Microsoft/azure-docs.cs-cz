@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 066118622f19d7efac71ddd66ac1abe058008b55
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cc39f8250ddc1b2fb1baaf073969f6aab5b1372c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126767"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531367"
 ---
 # <a name="secure-a-daemon-application"></a>Zabezpečení aplikace démona
 
@@ -109,7 +109,7 @@ V případě, že nejsou k dispozici spravované identity prostředí mimo Azure
 
 ### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Udělení přístupu na základě rolí pro aplikaci démona k Azure Maps
 
-*Řízení přístupu na základě role* (RBAC) udělíte přiřazením vytvořené spravované identity nebo instančního objektu k jedné nebo více definicím rolím řízení přístupu Azure Maps. Chcete-li zobrazit definice rolí RBAC, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)**. Vyberte **role**a potom vyhledejte role, které začínají na *Azure Maps*. Tyto role Azure Maps jsou role, kterým můžete udělit přístup.
+*Řízení přístupu na základě role* (RBAC) udělíte přiřazením vytvořené spravované identity nebo instančního objektu k jedné nebo více definicím rolím řízení přístupu Azure Maps. Pokud chcete zobrazit definice rolí Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)**. Vyberte **role**a potom vyhledejte role, které začínají na *Azure Maps*. Tyto role Azure Maps jsou role, kterým můžete udělit přístup.
 
 > [!div class="mx-imgBorder"]
 > ![Zobrazit dostupné role](./media/how-to-manage-authentication/how-to-view-avail-roles.png)

@@ -3,12 +3,12 @@ title: Přehled architektury
 description: Poskytuje přehled architektury, komponent a procesů, které používá služba Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: eab820c2a045c8602bfdbf77b5e2dba4cb2318af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 45e5634188b675198e0fc4c07a8a43964217f91a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514301"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532488"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -44,8 +44,8 @@ Recovery Services trezory mají následující funkce:
 - Zálohované položky můžete monitorovat v trezoru, včetně virtuálních počítačů Azure a místních počítačů.
 - Přístup k trezoru můžete spravovat pomocí [řízení přístupu na základě role (RBAC)](../role-based-access-control/role-assignments-portal.md)v Azure.
 - Určíte, jak se data v trezoru replikují pro redundanci:
-  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Přečtěte si další informace](../storage/common/storage-redundancy.md).
-  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Přečtěte si další informace](../storage/common/storage-redundancy.md).
+  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Další informace](../storage/common/storage-redundancy.md).
+  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Další informace](../storage/common/storage-redundancy.md).
   - Ve výchozím nastavení používají trezory Recovery Services GRS.
 
 ## <a name="backup-agents"></a>Agenti zálohování
@@ -95,8 +95,8 @@ Následující tabulka shrnuje podporované funkce pro různé typy zálohován�
 **Funkce** | **Přímé zálohování souborů a složek (pomocí agenta MARS)** | **Zálohování virtuálních počítačů Azure** | **Počítače nebo aplikace s DPM/MABS**
 --- | --- | --- | ---
 Zálohování do trezoru | ![Ano][green] | ![Ano][green] | ![Ano][green]
-Zálohování na disk DPM/MABS, potom do Azure | | | ![Ano][green]
-Komprimovat data odesílaná k zálohování | ![Ano][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Ano][green]
+Zálohování na disk DPM/MABS, potom do Azure | | | ![Yes][green]
+Komprimovat data odesílaná k zálohování | ![Yes][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Yes][green]
 Spustit přírůstkové zálohování |![Ano][green] |![Ano][green] |![Ano][green]
 Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][yellow]<br/><br/> Jenom pro servery DPM/MABS nasazené místně.
 
@@ -120,16 +120,15 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
 - Při vytvoření trezoru se vytvoří také "DefaultPolicy" a můžete ho použít k zálohování prostředků.
 - Všechny změny provedené v době uchování zásady zálohování se použijí zpět na všechny starší body obnovení z nových.
 
-### <a name="additional-reference"></a>Další referenční informace 
+### <a name="additional-reference"></a>Další referenční informace
 
--   Počítač Azure VM: jak [vytvářet](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) a [upravovat](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) zásady? 
--   SQL Server databáze na virtuálním počítači Azure: jak [vytvářet](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) a [upravovat](./manage-monitor-sql-database-backup.md#modify-policy) zásady? 
--   Sdílená složka Azure: jak [vytvářet](./backup-afs.md#discover-file-shares-and-configure-backup) a [upravovat](./manage-afs-backup.md#modify-policy) zásady? 
--   SAP HANA: jak [vytvářet](./backup-azure-sap-hana-database.md#create-a-backup-policy) a [upravovat](./sap-hana-db-manage.md#change-policy) zásady? 
--   MARS: jak [vytvářet](./backup-windows-with-mars-agent.md#create-a-backup-policy) a [upravovat](./backup-azure-manage-mars.md#modify-a-backup-policy) zásady? 
--   [Existují nějaká omezení pro plánování zálohování na základě typu úlohy?](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
-- [Co se stane se stávajícími body obnovení, když změním zásady uchovávání informací?](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
-
+- Počítač Azure VM: jak [vytvářet](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) a [upravovat](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) zásady.
+- SQL Server databáze na virtuálním počítači Azure: jak [vytvářet](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) a [upravovat](./manage-monitor-sql-database-backup.md#modify-policy) zásady.
+- Sdílená složka Azure: jak [vytvářet](./backup-afs.md) a [upravovat](./manage-afs-backup.md#modify-policy) zásady.
+- SAP HANA: jak [vytvářet](./backup-azure-sap-hana-database.md#create-a-backup-policy) a [upravovat](./sap-hana-db-manage.md#change-policy) zásady.
+- MARS: jak [vytvářet](./backup-windows-with-mars-agent.md#create-a-backup-policy) a [upravovat](./backup-azure-manage-mars.md#modify-a-backup-policy) zásady.
+- [Existují nějaká omezení pro plánování zálohování na základě typu úlohy?](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
+- [Co se stane s existujícími body obnovení, když změním zásady uchovávání informací?](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architektura: Integrovaná záloha virtuálního počítače Azure
 

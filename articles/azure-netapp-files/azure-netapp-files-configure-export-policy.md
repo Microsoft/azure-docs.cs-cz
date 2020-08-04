@@ -7,13 +7,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 07/24/2020
-ms.openlocfilehash: 6d990b94210383ba4b30569693f4471f43306ed2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.date: 07/27/2020
+ms.openlocfilehash: 4a20a223932f82c80ad5831ef3a02bad803e26e6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169837"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533192"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Konfigurace zásad exportu pro svazek NFS
 
@@ -43,14 +43,18 @@ Můžete vytvořit až pět pravidel zásad pro export.
         * Čtení a zápis
         * Jen pro čtení
 
+    * Jen **pro čtení** a **čtení a zápis**  
+        Pokud používáte šifrování protokolem Kerberos s NFSv 4.1, postupujte podle pokynů v části [Konfigurace šifrování protokolu Kerberos v nfsv 4.1](configure-kerberos-encryption.md).  Dopad na výkon protokolu Kerberos najdete v tématu [dopad na výkon protokolu Kerberos v nfsv 4.1](configure-kerberos-encryption.md#kerberos_performance). 
+
+        ![Možnosti zabezpečení protokolu Kerberos](../media/azure-netapp-files/kerberos-security-options.png) 
+
     * **Přístup ke kořenu**  
         Určete, jestli má `root` účet přístup ke svazku.  Ve výchozím nastavení je přístup root nastavený na **zapnuto**a `root` účet má přístup ke svazku.
 
-        ![Zásada exportu](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+![Zásada exportu](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
 
 
 ## <a name="next-steps"></a>Další kroky 
-* [Správa svazků](azure-netapp-files-manage-volumes.md)
 * [Připojování nebo odpojování svazku pro virtuální počítače](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Správa snímků](azure-netapp-files-manage-snapshots.md)

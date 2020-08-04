@@ -3,12 +3,12 @@ title: Doručování událostí s identitou spravované služby
 description: Tento článek popisuje, jak povolit identitu spravované služby pro téma Azure Event Grid. Použijte ji k přeposílání událostí do podporovaných cílů.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: b437d519a076104b64fb2df5cba1cd61a865b1fc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7eaa3ddd43cc68a99ad7c2bab66630f30d4960c9
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499819"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534239"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Doručování událostí se spravovanou identitou
 Tento článek popisuje, jak povolit [identitu spravované služby](../active-directory/managed-identities-azure-resources/overview.md) pro témata a domény služby Azure Event Grid. Slouží k přeposílání událostí do podporovaných cílů, jako jsou Service Bus fronty a témata, centra událostí a účty úložiště.
@@ -63,20 +63,20 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 
 Příkaz pro aktualizaci existující domény je podobný ( `az eventgrid domain update` ).
 
-## <a name="supported-destinations-and-rbac-roles"></a>Podporované cíle a role RBAC
+## <a name="supported-destinations-and-azure-roles"></a>Podporované cíle a role Azure
 Po povolení identity pro téma nebo doménu služby Event Grid Azure automaticky vytvoří v Azure Active Directory identitu. Přidejte tuto identitu do odpovídajících rolí Azure tak, aby téma nebo doména mohly předávané události do podporovaných cílů. Přidejte například identitu do role **odesilatele dat azure Event Hubs** pro obor názvů Azure Event Hubs, aby téma Event Grid mohl předávané události do Center událostí v daném oboru názvů. 
 
 V současné době Azure Event Grid podporuje témata nebo domény nakonfigurované pomocí spravované identity přiřazené systémem k přeposílání událostí do následujících cílů. Tato tabulka také poskytuje role, ve kterých by měla být identita, aby téma mohla přecházet mezi událostmi.
 
-| Cíl | Role RBAC | 
+| Cíl | Role Azure | 
 | ----------- | --------- | 
 | Service Bus fronty a témata | [Azure Service Bus odesílatel dat](../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus) |
 | Azure Event Hubs | [Odesilatel dat Event Hubs Azure](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
-| Azure Blob Storage | [Přispěvatel dat objektu BLOB služby Storage](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) |
-| Azure Queue Storage |[Odesílatel zprávy s daty ve frontě úložiště](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) | 
+| Azure Blob Storage | [Přispěvatel dat objektu BLOB služby Storage](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) |
+| Azure Queue Storage |[Odesílatel zprávy s daty ve frontě úložiště](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) | 
 
-## <a name="add-an-identity-to-rbac-roles-on-destinations"></a>Přidání identity do rolí RBAC v umístěních
-Tato část popisuje, jak přidat identitu pro vaše téma nebo doménu do role RBAC. 
+## <a name="add-an-identity-to-azure-roles-on-destinations"></a>Přidání identity do rolí Azure v umístěních
+Tato část popisuje, jak přidat identitu pro vaše téma nebo doménu do role Azure. 
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 Azure Portal můžete použít k přiřazení tématu nebo doménové identity k příslušné roli, aby mohlo téma nebo doména předávané události do cílového umístění. 
@@ -94,7 +94,7 @@ Následující příklad přidá spravovanou identitu pro téma Event gridu s n�
 Postup je podobný jako při přidání identity k jiným rolím uvedeným v tabulce. 
 
 ### <a name="use-the-azure-cli"></a>Použití Azure CLI
-V příkladu v této části se dozvíte, jak pomocí rozhraní příkazového řádku Azure přidat identitu do role RBAC. Ukázkové příkazy jsou k pro témata služby Event Grid. Příkazy pro domény služby Event Grid jsou podobné. 
+V příkladu v této části se dozvíte, jak pomocí rozhraní příkazového řádku Azure přidat identitu do role Azure. Ukázkové příkazy jsou k pro témata služby Event Grid. Příkazy pro domény služby Event Grid jsou podobné. 
 
 #### <a name="get-the-principal-id-for-the-topics-system-identity"></a>Získat ID objektu zabezpečení pro identitu systému tématu 
 Nejprve získejte hlavní ID identity spravovaného systémem v tématu a přiřaďte identitu k příslušným rolím.

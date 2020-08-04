@@ -5,14 +5,14 @@ description: Seznamte se s osvědčenými postupy pro použití pokročilých fu
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 5b003c9f0c3b47779bd7da92fb64c57830911fae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077843"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530057"
 ---
-# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro pokročilé funkce plánovače ve službě Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro pokročilé funkce plánování ve službě Azure Kubernetes Service (AKS)
 
 Při správě clusterů ve službě Azure Kubernetes (AKS) je často potřeba izolovat týmy a úlohy. Plánovač Kubernetes poskytuje pokročilé funkce, které vám umožní řídit, které lusky se můžou naplánovaly na určitých uzlech, nebo jak můžou být aplikace pro víc pod clusterem vhodně distribuované napříč clusterem. 
 
@@ -71,8 +71,6 @@ Pokud je nasazeno, jako je například použití `kubectl apply -f gpu-toleratio
 
 Když použijete chuti, pracujte s vývojáři vaší aplikace a vlastníky, abyste jim umožnili definovat požadovaná tolerovánost v jejich nasazeních.
 
-Další informace o chuti a jejich tolerovánosti najdete v tématu [použití chuti a tolerovánosti][k8s-taints-tolerations].
-
 Další informace o použití více fondů uzlů v AKS najdete v tématu [Vytvoření a Správa fondů více uzlů pro cluster v AKS][use-multiple-node-pools].
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Chování chuti a jejich tolerovánosti v AKS
@@ -80,6 +78,7 @@ Další informace o použití více fondů uzlů v AKS najdete v tématu [Vytvo�
 Když upgradujete fond uzlů v AKS, příchuti a tolerovánosti se řídí vzorem, který se použije pro nové uzly:
 
 - **Výchozí clustery, které používají Virtual Machine Scale Sets**
+  - [Nodepool][taint-node-pool] z rozhraní AKS API můžete nastavit tak, aby se nově škálované uzly dostaly do uzlů rozhraní API.
   - Předpokládejme, že máte dva uzly clusteru – *Uzel1* a *Uzel2*. Upgradujete fond uzlů.
   - Vytvoří se dva další uzly, *Uzel3* a *Uzel4*a v uvedeném pořadí se přenesou příchuti.
   - Původní *Uzel1* a *Uzel2* se odstraní.
@@ -198,3 +197,4 @@ Tento článek se zaměřuje na pokročilé funkce plánovače Kubernetes. Dalš
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[taint-node-pool]: use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool

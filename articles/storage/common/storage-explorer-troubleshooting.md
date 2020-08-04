@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 61a281e5fa9e8d360b9b6e52cda9c54db49d93d0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: b57a57f05853b9f8c291dc2ac352db7b1e679260
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406737"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534851"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumníkem služby Azure Storage
 
@@ -48,7 +48,7 @@ Musíte mít přiřazenou aspoň jednu roli, která uděluje přístup ke čten�
 
 Azure Storage má dvě vrstvy přístupu: _správu_ a _data_. K předplatným a účtům úložiště se dostanete prostřednictvím vrstvy správy. K kontejnerům, objektům blob a dalším datovým prostředkům se dostanete přes datovou vrstvu. Pokud například chcete získat seznam účtů úložiště z Azure, odešlete žádost do koncového bodu správy. Pokud chcete v účtu vytvořit seznam kontejnerů objektů blob, odešlete požadavek na příslušný koncový bod služby.
 
-Role RBAC vám můžou udělit oprávnění pro správu nebo přístup k datové vrstvě. Role čtenář například uděluje přístup jen pro čtení k prostředkům vrstvy správy.
+Role Azure vám můžou udělit oprávnění pro správu nebo přístup k datové vrstvě. Role čtenář například uděluje přístup jen pro čtení k prostředkům vrstvy správy.
 
 Výhradně řečeno, role čtenářů neposkytuje žádná oprávnění k datové vrstvě a není nutná pro přístup k datové vrstvě.
 

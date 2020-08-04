@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: 2f8406038be10ba3bdc207bf447fecb86a376fe8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86d4f82b70a6b6b3ceed262cf96fa291e26dd53c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418061"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534375"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopírování dat ze SAP Business Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -28,7 +28,7 @@ ms.locfileid: "81418061"
 Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z SAP Business Warehouse (ČERNOBÍLe). Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
 
 >[!TIP]
->Pokud chcete získat přehled o celkové podpoře pro integraci dat přes ADF, přečtěte si článek [integrace dat SAP pomocí Azure Data Factory dokumentu White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) s podrobnými pokyny k úvodu, comparsion a pokyny.
+>Pokud chcete získat přehled o celkové podpoře pro integraci dat v programu, přečtěte si článek [integrace dat SAP pomocí Azure Data Factory dokumentu White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) s podrobným úvodem na jednotlivé konektory SAP, comparsion a doprovodné materiály.
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -67,17 +67,17 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu SAP Business Warehouse (ČERNOBÍLe) jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **SapBw** . | Ano |
-| server | Název serveru, na kterém se nachází instance SAP BW. | Ano |
-| systemNumber | Číslo systému SAP BW systému<br/>Povolená hodnota: dvoumístné desetinné číslo reprezentované jako řetězec. | Ano |
-| clientId | ID klienta klienta v systému SAP W.<br/>Povolená hodnota: desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Ano |
-| userName | Jméno uživatele, který má přístup k serveru SAP. | Ano |
-| heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
+| typ | Vlastnost Type musí být nastavená na: **SapBw** . | Yes |
+| server | Název serveru, na kterém se nachází instance SAP BW. | Yes |
+| systemNumber | Číslo systému SAP BW systému<br/>Povolená hodnota: dvoumístné desetinné číslo reprezentované jako řetězec. | Yes |
+| clientId | ID klienta klienta v systému SAP W.<br/>Povolená hodnota: desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Yes |
+| userName | Jméno uživatele, který má přístup k serveru SAP. | Yes |
+| heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Yes |
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -108,7 +108,7 @@ Pro propojenou službu SAP Business Warehouse (ČERNOBÍLe) jsou podporovány n�
 
 Chcete-li kopírovat data z SAP BW, nastavte vlastnost Type datové sady na **SapBwCube**. Neexistují žádné vlastnosti specifické pro typ pro SAP BW datovou sadu relačních objektů typu.
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -135,12 +135,12 @@ Pokud jste používali `RelationalTable` typovou datovou sadu, je stále podporo
 
 Chcete-li kopírovat data z SAP BW, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SapBwSource** . | Ano |
-| query | Určuje dotaz MDX pro čtení dat z instance SAP BW. | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SapBwSource** . | Yes |
+| query | Určuje dotaz MDX pro čtení dat z instance SAP BW. | Yes |
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[
@@ -186,7 +186,7 @@ Při kopírování dat z SAP BW se z SAP BW datových typů používají násled
 | CURR | Desetinné číslo |
 | CUKY | Řetězec |
 | 18.12 | Desetinné číslo |
-| FLTP | Double |
+| FLTP | dvojité |
 | INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | Int |

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: daf4eb4492f723b049dc62a16351e04ffc252337
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3a45f185a20345dac00bd459789afc9d53bd48f7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289243"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534307"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Konfigurace anonymního veřejného přístupu pro čtení pro kontejnery a objekty blob
 
@@ -50,7 +50,9 @@ Nepovolení veřejného přístupu pro účet úložiště zabraňuje anonymním
 > [!IMPORTANT]
 > Nepovolení veřejného přístupu pro účet úložiště přepíše nastavení veřejného přístupu pro všechny kontejnery v tomto účtu úložiště. Pokud pro účet úložiště není povolený veřejný přístup, všechny budoucí anonymní požadavky na daný účet selžou. Před změnou tohoto nastavení nezapomeňte pochopit dopad na klientské aplikace, které můžou přistupovat k datům ve vašem účtu úložiště anonymně. Další informace najdete v tématu [zabránění anonymnímu veřejnému přístupu pro čtení kontejnerů a objektů BLOB](anonymous-read-access-prevent.md).
 
-Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště, nakonfigurujte vlastnost **blobPublicAccess** účtu pomocí Azure Portal nebo Azure CLI. Tato vlastnost je k dispozici pro všechny účty úložiště, které jsou vytvořeny pomocí modelu nasazení Azure Resource Manager. Další informace najdete v tématu [Přehled účtu úložiště](../common/storage-account-overview.md).
+Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště, nakonfigurujte vlastnost **AllowBlobPublicAccess** účtu. Tato vlastnost je k dispozici pro všechny účty úložiště, které jsou vytvořeny pomocí modelu nasazení Azure Resource Manager. Další informace najdete v tématu [Přehled účtu úložiště](../common/storage-account-overview.md).
+
+Vlastnost **AllowBlobPublicAccess** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště umožňuje veřejný přístup, pokud má vlastnost hodnotu **null** nebo je-li hodnota **true**.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -62,64 +64,118 @@ Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště v A
 
     :::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="Snímek obrazovky ukazující, jak povolit nebo zakázat veřejný přístup objektů BLOB pro účet":::
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště pomocí PowerShellu, nainstalujte [Azure PowerShell verze 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) nebo novější. Dále nakonfigurujte vlastnost **AllowBlobPublicAccess** pro nový nebo existující účet úložiště.
+
+Následující příklad vytvoří účet úložiště a explicitně nastaví vlastnost **AllowBlobPublicAccess** na **hodnotu true**. Pak aktualizuje účet úložiště, aby vlastnost **AllowBlobPublicAccess** byla nastavena na **hodnotu false**. Příklad také načte hodnotu vlastnosti v každém případě. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
+
+```powershell
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+$location = "<location>"
+
+# Create a storage account with AllowBlobPublicAccess set to true (or null).
+New-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -Location $location `
+    -SkuName Standard_GRS
+    -AllowBlobPublicAccess $false
+
+# Read the AllowBlobPublicAccess property for the newly created storage account.
+(Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).AllowBlobPublicAccess
+
+# Set AllowBlobPublicAccess set to false
+Set-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -AllowBlobPublicAccess $false
+
+# Read the AllowBlobPublicAccess property.
+(Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).AllowBlobPublicAccess
+```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště pomocí Azure CLI, nejdřív Získejte ID prostředku pro svůj účet úložiště voláním příkazu [AZ Resource show](/cli/azure/resource#az-resource-show) . Potom zavolejte příkaz [AZ Resource Update](/cli/azure/resource#az-resource-update) a nastavte vlastnost **allowBlobPublicAccess** pro účet úložiště. Pokud chcete povolit veřejný přístup, nastavte vlastnost **allowBlobPublicAccess** na hodnotu true. Pokud ho chcete zakázat, nastavte ho na **false**.
+Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště pomocí Azure CLI, nainstalujte Azure CLI verze 2.9.0 nebo novější. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Dále nakonfigurujte vlastnost **allowBlobPublicAccess** pro nový nebo existující účet úložiště.
 
-Následující příklad zakáže přístup k veřejnému objektu BLOB pro účet úložiště. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
+Následující příklad vytvoří účet úložiště a explicitně nastaví vlastnost **allowBlobPublicAccess** na **hodnotu true**. Pak aktualizuje účet úložiště, aby vlastnost **allowBlobPublicAccess** byla nastavena na **hodnotu false**. Příklad také načte hodnotu vlastnosti v každém případě. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
 ```azurecli-interactive
-storage_account_id=$(az resource show \
-    --name anonpublicaccess \
-    --resource-group storagesamples-rg \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query id \
-    --output tsv)
+az storage account create \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --kind StorageV2 \
+    --location <location> \
+    --allow-blob-public-access true
 
-az resource update \
-    --ids $storage_account_id \
-    --set properties.allowBlobPublicAccess=false
-    ```
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query allowBlobPublicAccess \
+    --output tsv
+
+az storage account update \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --allow-blob-public-access false
+
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query allowBlobPublicAccess \
+    --output tsv
 ```
+
+# <a name="template"></a>[Šablona](#tab/template)
+
+Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště se šablonou, vytvořte šablonu s vlastností **AllowBlobPublicAccess** nastavenou na **hodnotu true** nebo **false**. Následující postup popisuje, jak vytvořit šablonu v Azure Portal.
+
+1. V Azure Portal klikněte na možnost **vytvořit prostředek**.
+1. V **části Hledat na Marketplace**zadejte **šablonu Deployment**a potom stiskněte **ENTER**.
+1. Zvolte **template Deployment (nasadit pomocí vlastních šablon) (Preview)**, zvolte **vytvořit**a potom **v editoru zvolte sestavit vlastní šablonu**.
+1. V editoru šablon vložte následující JSON pro vytvoření nového účtu a nastavte vlastnost **AllowBlobPublicAccess** na **hodnotu true** nebo **false**. Nezapomeňte nahradit zástupné symboly v lomených závorkách vlastními hodnotami.
+
+    ```json
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {},
+        "variables": {
+            "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'template')]"
+        },
+        "resources": [
+            {
+            "name": "[variables('storageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "location": "<location>",
+            "properties": {
+                "allowBlobPublicAccess": false
+            },
+            "dependsOn": [],
+            "sku": {
+              "name": "Standard_GRS"
+            },
+            "kind": "StorageV2",
+            "tags": {}
+            }
+        ]
+    }
+    ```
+
+1. Uložte šablonu.
+1. Zadejte parametr skupiny prostředků a potom kliknutím na tlačítko **Revize + vytvořit** nasaďte šablonu a vytvořte účet úložiště s nakonfigurovanou vlastností **allowBlobPublicAccess** .
 
 ---
 
 > [!NOTE]
 > Nepovolení veřejného přístupu pro účet úložiště nemá vliv na žádné statické weby hostované v tomto účtu úložiště. Kontejner **$Web** je vždy veřejně přístupný.
+>
+> Po aktualizaci nastavení veřejného přístupu pro účet úložiště může trvat až 30 sekund, než se změna úplně rozšíří.
 
-## <a name="check-whether-public-access-is-allowed-for-a-storage-account"></a>Ověřte, jestli je pro účet úložiště povolený veřejný přístup.
+Povolení nebo zákaz veřejného přístupu objektu BLOB vyžaduje verzi 2019-04-01 nebo novější poskytovatele prostředků Azure Storage. Další informace najdete v tématu [REST API poskytovatele prostředků Azure Storage](/rest/api/storagerp/).
 
-Pokud chcete zjistit, jestli je pro účet úložiště povolený veřejný přístup, Získejte hodnotu vlastnosti **allowBlobPublicAccess** . Pokud chcete tuto vlastnost pro velké číslo účtů úložiště ověřit najednou, použijte Průzkumníka Azure Resource graphu.
-
-> [!IMPORTANT]
-> Vlastnost **allowBlobPublicAccess** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště umožňuje veřejný přístup, pokud hodnota vlastnosti má hodnotu **null** nebo je-li nastavena hodnota **true**.
-
-### <a name="check-whether-public-access-is-allowed-for-a-single-storage-account"></a>Ověřte, jestli je pro jeden účet úložiště povolený veřejný přístup.
-
-Pokud chcete ověřit, jestli je veřejný přístup pro jeden účet úložiště pomocí Azure CLI povolený, zavolejte příkaz [AZ Resource show](/cli/azure/resource#az-resource-show) a dotaz na vlastnost **allowBlobPublicAccess** :
-
-```azurecli-interactive
-az resource show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query properties.allowBlobPublicAccess \
-    --output tsv
-```
-
-### <a name="check-whether-public-access-is-allowed-for-a-set-of-storage-accounts"></a>Ověřte, jestli je pro sadu účtů úložiště povolený veřejný přístup.
-
-Pokud chcete zjistit, jestli je v rámci sady účtů úložiště s optimálním výkonem povolený veřejný přístup, můžete v Azure Portal použít Průzkumníka prostředků Azure. Další informace o používání Průzkumníka grafů prostředků najdete v tématu [rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu](/azure/governance/resource-graph/first-query-portal).
-
-Když spustíte následující dotaz, v Průzkumníku grafu prostředků se vrátí seznam účtů úložiště a zobrazí se hodnota vlastnosti **allowBlobPublicAccess** pro každý účet:
-
-```kusto
-resources
-| where type =~ 'Microsoft.Storage/storageAccounts'
-| extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
-| project subscriptionId, resourceGroup, name, allowBlobPublicAccess
-| order by subscriptionId, resourceGroup, name asc
-```
+Příklady v této části ukazují, jak si přečíst vlastnost **AllowBlobPublicAccess** pro účet úložiště, abyste zjistili, jestli je veřejný přístup aktuálně povolený nebo zakázaný. Další informace o tom, jak ověřit, že nastavení veřejného přístupu účtu je nakonfigurované tak, aby zabránilo anonymnímu přístupu, najdete v tématu věnovaném [napravení anonymního přístupu](anonymous-read-access-prevent.md#remediate-anonymous-public-access).
 
 ## <a name="set-the-public-access-level-for-a-container"></a>Nastavení úrovně veřejného přístupu pro kontejner
 
@@ -131,9 +187,7 @@ Pokud je pro účet úložiště povolen veřejný přístup, můžete nakonfigu
 - **Veřejný přístup pro čtení jenom pro objekty BLOB:** Objekty BLOB v kontejneru lze číst anonymním požadavkem, ale data kontejneru nejsou k dispozici anonymně. Anonymní klienti nemohou vytvořit výčet objektů BLOB v rámci kontejneru.
 - **Veřejný přístup pro čtení kontejneru a jeho objektů BLOB:** Data kontejneru a objektu BLOB může číst anonymní požadavek, s výjimkou nastavení oprávnění kontejneru a metadat kontejneru. Klienti mohou vytvořit výčet objektů BLOB v kontejneru anonymním požadavkem, ale nemohou vytvořit výčet kontejnerů v rámci účtu úložiště.
 
-Úroveň veřejného přístupu pro jednotlivý objekt BLOB se nedá změnit. Úroveň veřejného přístupu je nastavena pouze na úrovni kontejneru.
-
-Pokud chcete nastavit úroveň veřejného přístupu kontejneru, použijte Azure Portal nebo Azure CLI. Můžete nastavit úroveň veřejného přístupu kontejneru při vytváření kontejneru nebo aktualizovat toto nastavení v existujícím kontejneru.
+Úroveň veřejného přístupu pro jednotlivý objekt BLOB se nedá změnit. Úroveň veřejného přístupu je nastavena pouze na úrovni kontejneru. Úroveň veřejného přístupu kontejneru můžete nastavit při vytváření kontejneru, nebo můžete nastavení aktualizovat v existujícím kontejneru.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -151,44 +205,81 @@ Pokud je pro účet úložiště zakázaný veřejný přístup, nedá se nastav
 
 :::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Snímek obrazovky zobrazující, že nastavení úrovně veřejného přístupu kontejneru je blokované, když je veřejný přístup nepovolený":::
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Chcete-li aktualizovat úroveň veřejného přístupu pro jeden nebo více kontejnerů pomocí prostředí PowerShell, zavolejte příkaz [set-AzStorageContainerAcl](/powershell/module/az.storage/set-azstoragecontaineracl) . Autorizaci této operace provedete předáním klíče účtu, připojovacího řetězce nebo sdíleného přístupového podpisu (SAS). Operace [set ACL kontejneru](/rest/api/storageservices/set-container-acl) , která nastavuje úroveň veřejného přístupu kontejneru, nepodporuje autorizaci pomocí Azure AD. Další informace najdete v tématu [oprávnění pro volání operací s daty objektů BLOB a front](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+
+Následující příklad vytvoří kontejner s povoleným veřejným přístupem a pak aktualizuje nastavení veřejného přístupu kontejneru tak, aby povoloval anonymní přístup ke kontejneru a jeho objektům blob. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
+
+```powershell
+# Set variables.
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+
+# Get context object.
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+# Create a new container with public access setting set to Off.
+$containerName = "<container>"
+New-AzStorageContainer -Name $containerName -Permission Off -Context $ctx
+
+# Read the container's public access setting.
+Get-AzStorageContainerAcl -Container $containerName -Context $ctx
+
+# Update the container's public access setting to Container.
+Set-AzStorageContainerAcl -Container $containerName -Permission Container -Context $ctx
+
+# Read the container's public access setting.
+Get-AzStorageContainerAcl -Container $containerName -Context $ctx
+```
+
+Pokud je pro účet úložiště zakázaný veřejný přístup, nedá se nastavit úroveň veřejného přístupu kontejneru. Pokud se pokusíte nastavit úroveň veřejného přístupu kontejneru, Azure Storage vrátí chybu oznamující, že v účtu úložiště není povolený veřejný přístup.
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Chcete-li aktualizovat úroveň veřejného přístupu pro jeden nebo více kontejnerů pomocí rozhraní příkazového řádku Azure CLI, použijte příkaz [AZ Storage Container set Permission](/cli/azure/storage/container#az-storage-container-set-permission) . Autorizaci této operace provedete předáním klíče účtu, připojovacího řetězce nebo sdíleného přístupového podpisu (SAS). Operace [set ACL kontejneru](/rest/api/storageservices/set-container-acl) , která nastavuje úroveň veřejného přístupu kontejneru, nepodporuje autorizaci pomocí Azure AD. Další informace najdete v tématu [oprávnění pro volání operací s daty objektů BLOB a front](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
 
-Následující příklad nastaví nastavení veřejného přístupu pro kontejner, aby povoloval anonymní přístup ke kontejneru a jeho objektům blob. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
+Následující příklad vytvoří kontejner s povoleným veřejným přístupem a pak aktualizuje nastavení veřejného přístupu kontejneru tak, aby povoloval anonymní přístup ke kontejneru a jeho objektům blob. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
 ```azurecli-interactive
+az storage container create \
+    --name <container-name> \
+    --account-name <account-name> \
+    --resource-group <resource-group>
+    --public-access off \
+    --account-key <account-key> \
+    --auth-mode key
+
+az storage container show-permission \
+    --name <container-name> \
+    --account-name <account-name> \
+    --account-key <account-key> \
+    --auth-mode key
+
 az storage container set-permission \
     --name <container-name> \
     --account-name <account-name> \
     --public-access container \
     --account-key <account-key> \
     --auth-mode key
-```
 
-Pokud je pro účet úložiště zakázaný veřejný přístup, nedá se nastavit úroveň veřejného přístupu kontejneru. Pokud se pokusíte nastavit úroveň veřejného přístupu kontejneru, dojde k chybě, která značí, že v účtu úložiště není povolený veřejný přístup.
-
----
-
-## <a name="check-the-container-public-access-setting"></a>Ověřte nastavení veřejného přístupu ke kontejneru
-
-Pokud chcete zjistit nastavení veřejného přístupu pro jeden nebo více kontejnerů, můžete použít Azure Portal, PowerShell, rozhraní příkazového řádku Azure, jednu z klientských knihoven Azure Storage nebo poskytovatele prostředků Azure Storage. Následující části obsahují několik příkladů.  
-
-### <a name="check-the-public-access-setting-for-a-single-container"></a>Ověřte nastavení veřejného přístupu pro jeden kontejner.
-
-Pokud chcete pro jeden nebo více kontejnerů pomocí Azure CLI získat úroveň veřejného přístupu, zavolejte příkaz [AZ Storage Container show Permission](/cli/azure/storage/container#az-storage-container-show-permission) . Autorizaci této operace provedete předáním klíče účtu, připojovacího řetězce nebo sdíleného přístupového podpisu (SAS). Operace [získat seznam ACL kontejneru](/rest/api/storageservices/get-container-acl) , která vrací úroveň veřejného přístupu kontejneru, nepodporuje autorizaci se službou Azure AD. Další informace najdete v tématu [oprávnění pro volání operací s daty objektů BLOB a front](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
-
-Následující příklad přečte nastavení veřejného přístupu pro kontejner. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
-
-```azurecli-interactive
 az storage container show-permission \
     --name <container-name> \
     --account-name <account-name> \
-    --account-key <account-key>
+    --account-key <account-key> \
     --auth-mode key
 ```
 
-### <a name="check-the-public-access-setting-for-a-set-of-containers"></a>Podívejte se na nastavení veřejného přístupu pro sadu kontejnerů.
+Pokud je pro účet úložiště zakázaný veřejný přístup, nedá se nastavit úroveň veřejného přístupu kontejneru. Pokud se pokusíte nastavit úroveň veřejného přístupu kontejneru, Azure Storage vrátí chybu oznamující, že v účtu úložiště není povolený veřejný přístup.
+
+# <a name="template"></a>[Šablona](#tab/template)
+
+Není k dispozici.
+
+---
+
+## <a name="check-the-public-access-setting-for-a-set-of-containers"></a>Podívejte se na nastavení veřejného přístupu pro sadu kontejnerů.
 
 Je možné zkontrolovat, které kontejnery v jednom nebo více účtech úložiště jsou nakonfigurovány pro veřejný přístup, a to tak, že seznam kontejnerů a kontrola nastavení veřejného přístupu. Tento přístup je praktickou možností, když účet úložiště neobsahuje velký počet kontejnerů, nebo když kontrolujete nastavení v rámci malého počtu účtů úložiště. Výkon ale může být zhoršený, pokud se pokusíte vytvořit výčet velkého počtu kontejnerů.
 

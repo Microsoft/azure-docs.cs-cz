@@ -3,12 +3,12 @@ title: Azure Relay výjimky a jak je vyřešit | Microsoft Docs
 description: Seznam výjimek Azure Relay a navrhovaných akcí, které můžete provést, abyste je mohli vyřešit.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0bc8a399173331525d62b25929f65ad189ed219b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a644dfe80255c64980400866a5e3d197f75375bd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316879"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532964"
 ---
 # <a name="azure-relay-exceptions"></a>Výjimky Azure Relay
 
@@ -18,16 +18,16 @@ V tomto článku jsou uvedeny některé výjimky, které mohou být vygenerován
 
 Rozhraní API pro předávání generují výjimky, které mohou patřit do následujících kategorií. V seznamu jsou uvedené i navrhované akce, které můžete provést, abyste mohli výjimky vyřešit.
 
-*   **Chyba kódování uživatele**: [System. ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System. InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System. OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System. Runtime. Serialization. SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). 
+*   **Chyba kódování uživatele**: [System. ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1), [System. InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1), [System. OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1), [System. Runtime. Serialization. SerializationException](/dotnet/api/system.runtime.serialization.serializationexception?view=netcore-3.1). 
 
     **Obecná akce**: Zkuste opravit kód, než budete pokračovat.
-*   **Chyba nastavení/konfigurace**: [System. UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). 
+*   **Chyba nastavení/konfigurace**: [System. UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1). 
 
     **Obecná akce**: Zkontrolujte konfiguraci. V případě potřeby změňte konfiguraci.
 *   **Přechodné výjimky**: [Microsoft. ServiceBus. Messaging. MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft. ServiceBus. Messaging. výjimka serverbusyexception](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception), [Microsoft. ServiceBus. Messaging. MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). 
 
     **Obecná akce**: zkuste operaci zopakovat nebo upozorněte uživatele.
-*   **Další výjimky**: [System. Transactions. TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System. TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx). 
+*   **Další výjimky**: [System. Transactions. TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1), [System. TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1). 
 
     **Obecná akce**: specifická pro typ výjimky. Podívejte se na tabulku v následující části. 
 
@@ -37,11 +37,11 @@ V následující tabulce jsou uvedeny typy výjimek zasílání zpráv a jejich 
 
 | **Typ výjimky** | **Popis** | **Navrhovaná akce** | **Poznámka k automatickému nebo okamžitému opakování** |
 | --- | --- | --- | --- |
-| [Časový limit](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |Server neodpověděl na požadovanou operaci v zadaném čase, který je řízen [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout). Je možné, že server dokončil požadovanou operaci. K tomu může dojít v důsledku zpoždění sítě nebo jiné infrastruktury. |Zkontrolujte konzistenci stavu systému a v případě potřeby akci opakujte. Viz [TimeoutException](#timeoutexception). |V některých případech může být užitečné zkusit to znovu. Přidejte do kódu logiku opakování. |
-| [Neplatná operace](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |Požadovaná operace uživatele není povolena v rámci serveru nebo služby. Podrobnosti najdete ve zprávě výjimky. |Podívejte se na kód a dokumentaci. Ujistěte se, že požadovaná operace je platná. |Nemůžete to zkusit znovu. |
-| [Operace zrušena](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |Došlo k pokusu o vyvolání operace u objektu, který již byl uzavřen, přerušen nebo vyřazen. Ve výjimečných případech je ambientní transakce již uvolněna. |Zkontrolujte kód a ujistěte se, že nevyvolává operace u uvolněného objektu. |Nemůžete to zkusit znovu. |
-| [Neautorizovaný přístup](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |Objekt [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) nemohl získat token, token je neplatný nebo token neobsahuje deklarace požadované k provedení operace. |Ujistěte se, že Poskytovatel tokenů je vytvořený se správnými hodnotami. Ověřte konfiguraci služby Access Control. |V některých případech může být užitečné zkusit to znovu. Přidejte do kódu logiku opakování. |
-| [Výjimka argumentu](https://msdn.microsoft.com/library/system.argumentexception.aspx),<br /> [Argument null](https://msdn.microsoft.com/library/system.argumentnullexception.aspx),<br />[Argument je mimo rozsah.](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) |Došlo k jedné nebo více následujícím akcím:<br />Jeden nebo více argumentů dodaných metodě je neplatných.<br /> Identifikátor URI, který se zadal pro [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) , obsahuje jeden nebo více segmentů cesty.<br />Schéma identifikátoru URI zadané pro [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo [Vytvoření](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) je neplatné. <br />Hodnota vlastnosti je větší než 32 KB. |Zkontrolujte kód volajícího a ujistěte se, že jsou argumenty správné. |Nemůžete to zkusit znovu. |
+| [Prodlev](/dotnet/api/system.timeoutexception?view=netcore-3.1) |Server neodpověděl na požadovanou operaci v zadaném čase, který je řízen [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout). Je možné, že server dokončil požadovanou operaci. K tomu může dojít v důsledku zpoždění sítě nebo jiné infrastruktury. |Zkontrolujte konzistenci stavu systému a v případě potřeby akci opakujte. Viz [TimeoutException](#timeoutexception). |V některých případech může být užitečné zkusit to znovu. Přidejte do kódu logiku opakování. |
+| [Neplatná operace](/dotnet/api/system.invalidoperationexception?view=netcore-3.1) |Požadovaná operace uživatele není povolena v rámci serveru nebo služby. Podrobnosti najdete ve zprávě výjimky. |Podívejte se na kód a dokumentaci. Ujistěte se, že požadovaná operace je platná. |Nemůžete to zkusit znovu. |
+| [Operace zrušena](/dotnet/api/system.operationcanceledexception?view=netcore-3.1) |Došlo k pokusu o vyvolání operace u objektu, který již byl uzavřen, přerušen nebo vyřazen. Ve výjimečných případech je ambientní transakce již uvolněna. |Zkontrolujte kód a ujistěte se, že nevyvolává operace u uvolněného objektu. |Nemůžete to zkusit znovu. |
+| [Neautorizovaný přístup](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1) |Objekt [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) nemohl získat token, token je neplatný nebo token neobsahuje deklarace požadované k provedení operace. |Ujistěte se, že Poskytovatel tokenů je vytvořený se správnými hodnotami. Ověřte konfiguraci služby Access Control. |V některých případech může být užitečné zkusit to znovu. Přidejte do kódu logiku opakování. |
+| [Výjimka argumentu](/dotnet/api/system.argumentexception?view=netcore-3.1),<br /> [Argument null](/dotnet/api/system.argumentnullexception?view=netcore-3.1),<br />[Argument je mimo rozsah.](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1) |Došlo k jedné nebo více následujícím akcím:<br />Jeden nebo více argumentů dodaných metodě je neplatných.<br /> Identifikátor URI, který se zadal pro [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) , obsahuje jeden nebo více segmentů cesty.<br />Schéma identifikátoru URI zadané pro [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo [Vytvoření](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) je neplatné. <br />Hodnota vlastnosti je větší než 32 KB. |Zkontrolujte kód volajícího a ujistěte se, že jsou argumenty správné. |Nemůžete to zkusit znovu. |
 | [Zaneprázdněný Server](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) |Služba v tuto chvíli nemůže zpracovat požadavek. |Klient může počkat na určitou dobu a pak operaci zopakovat. |Klient se může po určitém intervalu opakovat. Pokud výsledkem opakování dojde k jiné výjimce, Projděte si chování opakování této výjimky. |
 | [Překročení kvóty](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |Entita zasílání zpráv dosáhla maximální povolené velikosti. |Přiřadíte místo v entitě příjem zpráv z entity nebo jejích podfront. Viz [QuotaExceededException](#quotaexceededexception). |Pokud se zprávy během této doby odstranily, může to zkusit znovu. |
 | [Překročení velikosti zprávy](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |Datová část zprávy překračuje limit 256 KB. Počítejte s tím, že limit 256-KB je celková velikost zprávy. Celková velikost zprávy může zahrnovat systémové vlastnosti a jakoukoli režii Microsoft .NET. |Snižte velikost datové části zprávy a potom operaci opakujte. |Nemůžete to zkusit znovu. |
@@ -50,17 +50,17 @@ V následující tabulce jsou uvedeny typy výjimek zasílání zpráv a jejich 
 
 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) indikuje, že došlo k překročení kvóty pro některou z entit.
 
-Pro Relay Tato výjimka zabalí [System. ServiceModel. QuotaExceededException](https://msdn.microsoft.com/library/system.servicemodel.quotaexceededexception.aspx), který indikuje, že pro tento koncový bod byl překročen maximální počet naslouchacího procesu. To je uvedeno v hodnotě **MaximumListenersPerEndpoint** zprávy o výjimce.
+Pro Relay Tato výjimka zabalí [System. ServiceModel. QuotaExceededException](/dotnet/api/system.servicemodel.quotaexceededexception?view=dotnet-plat-ext-3.1), který indikuje, že pro tento koncový bod byl překročen maximální počet naslouchacího procesu. To je uvedeno v hodnotě **MaximumListenersPerEndpoint** zprávy o výjimce.
 
 ## <a name="timeoutexception"></a>TimeoutException
-[TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) označuje, že operace iniciovaná uživatelem trvá déle, než je časový limit operace. 
+[TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1) označuje, že operace iniciovaná uživatelem trvá déle, než je časový limit operace. 
 
-Ověřte hodnotu vlastnosti [Třída ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) . Dosažení tohoto limitu může také způsobit [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx).
+Ověřte hodnotu vlastnosti [Třída ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit?view=netcore-3.1#System_Net_ServicePointManager_DefaultConnectionLimit) . Dosažení tohoto limitu může také způsobit [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1).
 
 U Relay se při prvním otevření připojení typu Relay pro předávání může zobrazit výjimka časového limitu. Existují dva běžné příčiny pro tuto výjimku:
 
-*   Hodnota [OpenTimeout](https://msdn.microsoft.com/library/wcf.opentimeout.aspx) může být příliš malá (Pokud dokonce ani zlomek sekundy).
-* Místní naslouchací proces přenosu může přestat reagovat (nebo může narazit na problémy s pravidly brány firewall, které znemožňují naslouchací proces přijímání nových připojení klientů) a hodnota [OpenTimeout](https://msdn.microsoft.com/library/wcf.opentimeout.aspx) je menší než přibližně 20 sekund.
+*   Hodnota [OpenTimeout](/previous-versions/) může být příliš malá (Pokud dokonce ani zlomek sekundy).
+* Místní naslouchací proces přenosu může přestat reagovat (nebo může narazit na problémy s pravidly brány firewall, které znemožňují naslouchací proces přijímání nových připojení klientů) a hodnota [OpenTimeout](/previous-versions/) je menší než přibližně 20 sekund.
 
 Příklad:
 
@@ -84,4 +84,3 @@ Tato chyba má dvě obvyklé příčiny:
 * [Vytvoření oboru názvů Relay](relay-create-namespace-portal.md)
 * [Začínáme s Azure Relay a .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Začínáme s Azure Relay a uzlem](relay-hybrid-connections-node-get-started.md)
-

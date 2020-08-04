@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 8e56c4da0eec3338de7863a2ee158e804cf406c0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7d92cbc25411f5cc2d528ccf6ecec4539494d380
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325555"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533270"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Role, oprávnění a zabezpečení v Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Mnoho týmů potřebuje výhradně regulovat přístup k datům a nastavením monitorování. Například pokud máte členy týmu, kteří pracují výhradně na monitorování (technici podpory, DevOps technici) nebo pokud používáte poskytovatele spravované služby, můžete jim udělit přístup pouze k monitorování dat a omezit tak jejich schopnost vytvářet, upravovat nebo odstraňovat prostředky. Tento článek ukazuje, jak rychle použít integrovanou roli RBAC pro monitorování pro uživatele v Azure nebo vytvořit vlastní roli pro uživatele, který potřebuje omezená oprávnění monitorování. Pak popisuje bezpečnostní požadavky pro vaše prostředky související s Azure Monitor a způsob, jakým můžete omezit přístup k datům, která obsahují.
+Mnoho týmů potřebuje výhradně regulovat přístup k datům a nastavením monitorování. Například pokud máte členy týmu, kteří pracují výhradně na monitorování (technici podpory, DevOps technici) nebo pokud používáte poskytovatele spravované služby, můžete jim udělit přístup pouze k monitorování dat a omezit tak jejich schopnost vytvářet, upravovat nebo odstraňovat prostředky. Tento článek ukazuje, jak rychle použít integrovanou roli monitorování Azure pro uživatele v Azure nebo vytvořit vlastní roli pro uživatele, který potřebuje omezená oprávnění monitorování. Pak popisuje bezpečnostní požadavky pro vaše prostředky související s Azure Monitor a způsob, jakým můžete omezit přístup k datům, která obsahují.
 
 ## <a name="built-in-monitoring-roles"></a>Předdefinované role monitorování
 Předdefinované role Azure Monitor jsou navržené tak, aby lépe omezily přístup k prostředkům v rámci předplatného, a zároveň umožňují uživatelům, kteří zodpovídají za monitorování infrastruktury, získat a nakonfigurovat potřebná data. Azure Monitor poskytuje dvě předem připravené role: čtečku monitorování a přispěvatel monitorování.
@@ -70,7 +70,7 @@ Lidé, kteří mají přiřazenou roli Přispěvatel monitorování, můžou zob
 ## <a name="monitoring-permissions-and-azure-custom-roles"></a>Oprávnění monitorování a vlastní role Azure
 Pokud výše uvedené předdefinované role nevyhovují přesně vašim potřebám vašeho týmu, můžete [vytvořit vlastní roli Azure](../../role-based-access-control/custom-roles.md) s podrobnějšími oprávněními. Níže jsou uvedené běžné operace Azure Monitor RBAC s jejich popisy.
 
-| Operace | Popis |
+| Operace | Description |
 | --- | --- |
 | Microsoft. Insights/ActionGroups/[čtení, zápis, odstranění] |Skupiny akcí čtení, zápisu a odstranění. |
 | Microsoft. Insights/Upozorněníprotokoluaktivit/[čtení, zápis, odstranění] |Čtení, zápis a odstraňování výstrah protokolu aktivit. |

@@ -7,17 +7,17 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c0008ab89f4599e2ada51b5637a9665a249bc1c4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 360af0406a816a02540881962ed8794d69ce3bbb
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340838"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531808"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Rychlý start: Vytvoření a správa sdílené složky Azure pomocí Azure PowerShellu 
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí PowerShellu. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -88,7 +88,7 @@ Ve většině případů budete se sdílenou složkou Azure pracovat přes proto
 - Využíváte bezserverové prostředky, jako je služba [Azure Functions](../../azure-functions/functions-overview.md). 
 - Vytváříte službu pro přidávání hodnot, která bude pracovat s mnoha sdílenými složkami Azure, jako je třeba zálohování nebo prohledávání antivirové ochrany.
 
-Následující příklady ukazují, jak používat modul Azure PowerShell k manipulaci s sdílenou složkou Azure pomocí protokolu File REST. `-Context`Parametr se používá k načtení klíče účtu úložiště, který provede označené akce proti sdílené složce. Pokud chcete načíst klíč účtu úložiště, musíte mít `Owner` v účtu úložiště roli RBAC.
+Následující příklady ukazují, jak používat modul Azure PowerShell k manipulaci s sdílenou složkou Azure pomocí protokolu File REST. `-Context`Parametr se používá k načtení klíče účtu úložiště, který provede označené akce proti sdílené složce. Pokud chcete načíst klíč účtu úložiště, musíte mít roli Azure `Owner` v účtu úložiště.
 
 #### <a name="create-directory"></a>Vytvoření adresáře
 Pokud chcete vytvořit nový adresář s názvem *myDirectory* v kořenovém adresáři sdílené složky Azure, použijte rutinu [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory) .

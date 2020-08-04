@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4c28299758150f56e3f47156382d8a6245a0cf52
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c1a5d302f63f57a142d014c8ef66d02405e119ea
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386210"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531162"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -38,16 +38,37 @@ Další informace o spravovaných identitách pro prostředky Azure najdete v t�
 
 Než budete pracovat s klíči, tajnými klíči a certifikáty ve vašem trezoru klíčů, vytvoříte a spravujete svůj Trezor klíčů prostřednictvím rozhraní příkazového řádku, PowerShellu, Správce prostředků šablon nebo REST, jak je popsáno v následujících článcích:
 
-- [Vytváření a Správa trezorů klíčů pomocí rozhraní příkazového řádku](../secrets/quick-create-cli.md)
-- [Vytváření a Správa trezorů klíčů pomocí PowerShellu](../secrets/quick-create-powershell.md)
-- [Vytváření a Správa trezorů klíčů pomocí Azure Portal](../secrets/quick-create-portal.md)
-- [Vytváření a Správa trezorů klíčů pomocí Pythonu](../secrets/quick-create-python.md)
-- [Vytváření a Správa trezorů klíčů pomocí Java](../secrets/quick-create-java.md)
-- [Vytváření a Správa trezorů klíčů pomocí Node.js](../secrets/quick-create-node.md)
-- [Vytváření a Správa trezorů klíčů pomocí .NET (v4 SDK)](../secrets/quick-create-net.md)
-- [Vytvoření trezoru klíčů a přidání tajného klíče pomocí šablony Azure Resource Manager](../secrets/quick-create-template.md)
-- [Vytváření a Správa trezorů klíčů pomocí REST](/rest/api/keyvault/)
+- [Vytváření a Správa trezorů klíčů pomocí rozhraní příkazového řádku](quick-create-cli.md)
+- [Vytváření a Správa trezorů klíčů pomocí PowerShellu](quick-create-powershell.md)
+- [Vytváření a Správa trezorů klíčů pomocí Azure Portal](quick-create-portal.md)
+- [Vytváření a Správa trezorů klíčů pomocí REST](/rest/api/keyvault/vaults/createorupdate)
 
+### <a name="set-and-retrieve-secrets"></a>Nastavení a načtení tajných kódů
+
+- [Nastavení a načtení tajného klíče pomocí rozhraní příkazového řádku](../secrets/quick-create-cli.md)
+- [Nastavení a načtení tajného klíče pomocí PowerShellu](../secrets/quick-create-powershell.md)
+- [Nastavení a načtení tajného klíče pomocí Azure Portal](../secrets/quick-create-portal.md)
+- [Operace s tajnými klíči s REST](/rest/api/keyvault/#secret-operations)
+- [Nastavení a načtení tajného klíče pomocí Pythonu](../secrets/quick-create-python.md)
+- [Nastavení a načtení tajného klíče pomocí Java](../secrets/quick-create-java.md)
+- [Nastavení a načtení tajného klíče pomocí Node.js](../secrets/quick-create-node.md)
+- [Nastavení a načtení tajného klíče pomocí .NET (v4 SDK)](../secrets/quick-create-net.md)
+- [Vytvoření trezoru klíčů a přidání tajného klíče pomocí šablony Azure Resource Manager](../secrets/quick-create-template.md)
+
+### <a name="set-and-retrieve-keys"></a>Nastavení a načtení klíčů
+
+- [Nastavení a načtení klíče pomocí rozhraní příkazového řádku](../keys/quick-create-cli.md)
+- [Nastavení a načtení klíče pomocí PowerShellu](../keys/quick-create-powershell.md)
+- [Nastavení a načtení klíče s Azure Portal](../keys/quick-create-portal.md)
+- [Operace s klíči s REST](/rest/api/keyvault/#key-operations)
+- [Nastavení a načtení klíče pomocí Pythonu](../secrets/quick-create-python.md)
+
+### <a name="set-and-retrieve-certificates"></a>Nastavení a načtení certifikátů
+- [Nastavení a načtení certifikátu pomocí rozhraní příkazového řádku](../certificates/quick-create-cli.md)
+- [Nastavení a načtení certifikátu pomocí PowerShellu](../certificates/quick-create-powershell.md)
+- [Nastavení a načtení certifikátu s Azure Portal](../certificates/quick-create-portal.md)
+- [Operace s klíči s REST](/rest/api/keyvault/#certificate-operations)
+- [Nastavení a načtení certifikátu pomocí Pythonu](../certificates/quick-create-python.md)
 
 ## <a name="coding-with-key-vault"></a>Kódování pomocí Key Vault
 
@@ -64,8 +85,6 @@ Všechny prostředky Key Vault jsou přístupné prostřednictvím rozhraní RES
 #### <a name="net"></a>.NET
 
 [Reference k rozhraní .NET API pro Key Vault](/dotnet/api/overview/azure/key-vault?view=azure-dotnet).
-
-Další informace o verzi sady .NET SDK 2. x najdete v [poznámkách k verzi](dotnet2api-release-notes.md).
 
 #### <a name="java"></a>Java
 
@@ -94,7 +113,6 @@ V Node.js jsou rozhraní API pro správu Key Vault a rozhraní Key Vault objekt�
 Kompletní příklady použití Key Vault s vašimi aplikacemi najdete v těchto tématech:
 
 - [Ukázky kódu Azure Key Vault](https://azure.microsoft.com/resources/samples/?service=key-vault) – ukázky kódu pro Azure Key Vault 
-- [Použití Azure Key Vault z webové aplikace](../secrets/quick-create-net.md) – kurz vám pomůžou naučit se používat Azure Key Vault z webové aplikace v Azure. 
 
 ## <a name="how-tos"></a>Postupy
 
@@ -124,7 +142,6 @@ Tyto články se týkají dalších scénářů a služeb, které používají n
 
 - [Key Vault chování při obnovitelném odstranění](soft-delete-overview.md)) popisuje funkci, která umožňuje obnovení odstraněných objektů bez ohledu na to, zda došlo k náhodnému nebo úmyslnému odstranění.
 - [Key Vault omezení klienta](overview-throttling.md) vás orientuje na základní koncepty omezování a nabízí přístup k vaší aplikaci.
-- [Přehled klíčů účtu úložiště Key Vault](../secrets/overview-storage-keys.md)) Popisuje klíče Key Vault Integration Azure Storage accounts.
 - [Key Vault Security světů](overview-security-worlds.md) popisuje vztahy mezi oblastmi a oblastmi zabezpečení.
 
 ## <a name="social"></a>Sociální sítě

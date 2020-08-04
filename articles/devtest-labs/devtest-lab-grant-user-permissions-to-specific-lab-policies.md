@@ -3,12 +3,12 @@ title: Udělení uživatelských oprávnění ke konkrétním zásadám testovac
 description: Naučte se, jak udělit uživatelům oprávnění ke konkrétním zásadám testovacího prostředí v DevTest Labs na základě potřeb jednotlivých uživatelů.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: cfacba2a7cdba20bd5a05c9ca5898194c31c2e68
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 1a0f46ed64bf360ceb990f1e91cb65ace76b5a9a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855775"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534545"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Udělení uživatelských oprávnění ke konkrétním zásadám testovacího prostředí
 ## <a name="overview"></a>Přehled
@@ -17,7 +17,7 @@ Tento článek ukazuje, jak pomocí PowerShellu udělit uživatelům oprávněn�
 ## <a name="policies-as-resources"></a>Zásady jako prostředky
 Jak je popsáno v článku [Access Control založeném na rolích Azure](../role-based-access-control/role-assignments-portal.md) , umožňuje RBAC přístup k prostředkům pro Azure v jemně odstupňované správě. Pomocí RBAC můžete oddělit povinnosti v rámci týmu DevOps a udělit jenom přístup uživatelům, kteří potřebují k provádění svých úloh.
 
-V DevTest Labs je zásada typem prostředku, který umožňuje akci RBAC **Microsoft. DevTestLab/Labs/policySets/policies**/. Každá zásada testovacího prostředí je prostředek v typu prostředku zásady a dá se přiřadit jako obor role RBAC.
+V DevTest Labs je zásada typem prostředku, který umožňuje akci RBAC **Microsoft. DevTestLab/Labs/policySets/policies**/. Každá zásada testovacího prostředí je prostředek v typu prostředku zásady a dá se přiřadit jako obor pro roli Azure.
 
 Pokud třeba chcete uživatelům udělit oprávnění ke čtení a zápisu pro zásady **povolených velikostí virtuálních počítačů** , vytvoříte vlastní roli, která bude fungovat s **Microsoft. DevTestLab/Labs/policySets/** actions/action, a pak těmto vlastním rolím přiřadíte příslušné uživatele v oboru **Microsoft. DevTestLab/Labs/PolicySets/** Policy/AllowedVmSizesInLab.
 

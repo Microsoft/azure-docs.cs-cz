@@ -4,12 +4,12 @@ description: Pomocí Access Control na základě rolí můžete spravovat přís
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 4c5a0a43efe7bda5fdc4b60d13b97f61565809bd
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 408e25b865c6d244118e505121492ccf22d19b64
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445316"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533457"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Pro správu Azure Backup bodů obnovení použít Access Control na základě rolí
 
@@ -28,9 +28,9 @@ Pokud chcete definovat vlastní role pro ještě více ovládacích prvků, pře
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Mapování předdefinovaných rolí zálohování na akce správy zálohování
 
-Následující tabulka zachycuje akce správy zálohování a odpovídající minimální roli RBAC potřebné k provedení této operace.
+Následující tabulka zachycuje akce správy zálohování a odpovídající minimální role Azure potřebné k provedení této operace.
 
-| Operace správy | Vyžaduje se minimální role RBAC. | Požadován rozsah |
+| Operace správy | Vyžaduje se minimální role Azure. | Požadován rozsah |
 | --- | --- | --- |
 | Vytvoření trezoru služby Recovery Services | Přispěvatel zálohování | Skupina prostředků obsahující trezor |
 | Povolení zálohování virtuálních počítačů Azure | Operátor zálohování | Skupina prostředků obsahující trezor |

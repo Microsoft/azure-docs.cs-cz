@@ -1,19 +1,18 @@
 ---
 title: Správa a sledování záloh virtuálních počítačů Azure
 description: Naučte se spravovat a monitorovat zálohy virtuálních počítačů Azure pomocí služby Azure Backup.
-ms.reviewer: sogup
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: 4e3fb05b054ea682c315654e6df262e49d592597
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/02/2020
+ms.openlocfilehash: cbe0ccef9df27af032cf849b302f6a6211383fe8
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054759"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531981"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Správa záloh virtuálních počítačů Azure pomocí služby Azure Backup
 
-Tento článek popisuje, jak spravovat virtuální počítače Azure, které se zálohují pomocí [služby Azure Backup](backup-overview.md). Tento článek také shrnuje informace o zálohování, které najdete na řídicím panelu trezoru.
+Tento článek popisuje, jak spravovat virtuální počítače Azure, které jsou zálohované ve [službě Azure Backup](backup-overview.md). Tento článek také shrnuje informace o zálohování, které najdete na řídicím panelu trezoru.
 
 Řídicí panel trezoru Recovery Services v Azure Portal poskytuje přístup k informacím o trezoru, včetně těchto:
 
@@ -30,25 +29,31 @@ Zálohy můžete spravovat pomocí řídicího panelu a přechodem k jednotlivý
 
 Postup zobrazení virtuálních počítačů na řídicím panelu trezoru:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
-2. V nabídce centra vyberte **Procházet**. V seznamu prostředků zadejte **Recovery Services**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **úložiště Recovery Services**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. V nabídce vlevo vyberte **všechny služby**.
 
-    ![Vytvoření trezoru Služeb zotavení](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
+    ![Vybrat všechny služby](./media/backup-azure-manage-vms/select-all-services.png)
 
-3. Pro snadné použití klikněte pravým tlačítkem na trezor a vyberte **Připnout na řídicí panel**.
-4. Otevřete řídicí panel trezoru.
+1. V dialogovém okně **všechny služby** zadejte *Recovery Services*. Seznam prostředků se filtruje podle vašeho zadání. V seznamu prostředků vyberte **Recovery Services trezory**.
+
+    ![Zadejte a vyberte trezory Recovery Services.](./media/backup-azure-manage-vms/all-services.png)
+
+    Zobrazí se seznam trezorů Recovery Services v předplatném.
+
+1. Pro snadné použití vyberte ikonu připnutí vedle názvu trezoru a vyberte **Připnout na řídicí panel**.
+1. Otevřete řídicí panel trezoru.
 
     ![Otevření řídicího panelu trezoru a podokna nastavení](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
-5. Na dlaždici **zálohované položky** vyberte **Azure Virtual Machines**.
+1. Na dlaždici **zálohované položky** vyberte **virtuální počítač Azure**.
 
-    ![Otevřít dlaždici zálohované položky](./media/backup-azure-manage-vms/contoso-vault-1606.png)
+    ![Otevřít dlaždici zálohované položky](./media/backup-azure-manage-vms/azure-virtual-machine.png)
 
-6. V podokně **zálohované položky** můžete zobrazit seznam chráněných virtuálních počítačů. V tomto příkladu trezor chrání jeden virtuální počítač: demobackup.  
+1. V podokně **zálohované položky** můžete zobrazit seznam chráněných virtuálních počítačů. V tomto příkladu trezor chrání jeden virtuální počítač: *myVMR1*.  
 
     ![Zobrazit podokno zálohované položky](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
-7. Z řídicího panelu položky trezoru upravte zásady zálohování, spusťte zálohování na vyžádání, zastavte nebo obnovte ochranu virtuálních počítačů, odstraňte data záloh, zobrazte body obnovení a spusťte obnovení.
+1. Z řídicího panelu položky trezoru můžete upravit zásady zálohování, spustit zálohování na vyžádání, zastavit nebo obnovit ochranu virtuálních počítačů, odstranit data záloh, Zobrazit body obnovení a spustit obnovení.
 
     ![Řídicí panel zálohované položky a podokno nastavení](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
@@ -58,19 +63,18 @@ Postup zobrazení virtuálních počítačů na řídicím panelu trezoru:
 
 Postup úpravy existujících zásad zálohování:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/). Otevřete řídicí panel trezoru.
-2. V části **Správa zásad zálohování >** vyberte zásady zálohování pro typ virtuálního počítače Azure.
-3.  Klikněte na Upravit a změňte nastavení.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Otevřete řídicí panel trezoru.
+2. V části **Správa zásad zálohování >** vyberte zásady zálohování pro typ **virtuálního počítače Azure**.
+3. Vyberte **Upravit** a změňte nastavení.
 
-
-### <a name="switch-backup-policy"></a>Přepnout zásadu zálohování 
+### <a name="switch-backup-policy"></a>Přepnout zásadu zálohování
 
 Správa zásad zálohování:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/). Otevřete řídicí panel trezoru.
-2. Na dlaždici **zálohované položky** vyberte **Azure Virtual Machines**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Otevřete řídicí panel trezoru.
+2. Na dlaždici **zálohované položky** vyberte **virtuální počítač Azure**.
 
-    ![Otevřít dlaždici zálohované položky](./media/backup-azure-manage-vms/contoso-vault-1606.png)
+    ![Otevřít dlaždici zálohované položky](./media/backup-azure-manage-vms/azure-virtual-machine.png)
 
 3. V podokně **zálohované položky** můžete zobrazit seznam chráněných virtuálních počítačů a stav posledního zálohování s časem poslední body obnovení.
 
@@ -162,11 +166,11 @@ Existují dva způsoby, jak odstranit data zálohy virtuálního počítače:
 
 * Z řídicího panelu položky trezoru vyberte Zastavit zálohování a postupujte podle pokynů pro možnost [Zastavit ochranu a odstranit data zálohy](#stop-protection-and-delete-backup-data) .
 
-  ![Vyberte Zastavit zálohování.](./media/backup-azure-manage-vms/stop-backup-buttom.png)
+  ![Vyberte Zastavit zálohování.](./media/backup-azure-manage-vms/stop-backup-button.png)
 
 * Z řídicího panelu položky trezoru vyberte Odstranit zálohovaná data. Tato možnost je povolená, pokud jste se rozhodli při zastavování ochrany virtuálního počítače [zastavit možnost Ochrana a zachovat data záloh](#stop-protection-and-retain-backup-data) .
 
-  ![Vyberte odstranit zálohu.](./media/backup-azure-manage-vms/delete-backup-buttom.png)
+  ![Vyberte odstranit zálohu.](./media/backup-azure-manage-vms/delete-backup-button.png)
 
   * Na [řídicím panelu položky trezoru](#view-vms-on-the-dashboard)vyberte **Odstranit zálohovaná data**.
   * Zadejte název zálohované položky, abyste potvrdili, že chcete body obnovení odstranit.
@@ -182,7 +186,7 @@ K ochraně dat Azure Backup zahrnuje funkci obnovitelného odstranění. Díky o
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Zálohovaná položka, ve které už primární zdroj dat neexistuje
 
-* Pokud jsou virtuální počítače Azure nakonfigurované pro službu Azure Backup buď odstraněny, nebo přesunuty bez zastavení ochrany, pak úlohy zálohování naplánované zálohovací úlohy i na vyžádání (ad-hoc) selžou s chybou UserErrorVmNotFoundV2. Předběžná kontroly zálohování se budou zobrazovat jako kritická jenom pro nezdařené úlohy zálohování na vyžádání (naplánované úlohy, které selhaly, se nezobrazují).
+* Pokud jsou virtuální počítače Azure nakonfigurované pro službu Azure Backup buď odstraněny, nebo přesunuty bez zastavení ochrany, pak úlohy zálohování naplánované zálohovací úlohy i na vyžádání (ad-hoc) selžou s chybou UserErrorVmNotFoundV2. Předběžná kontroly zálohování se budou zobrazovat jako kritická jenom pro neúspěšné úlohy zálohování na vyžádání (naplánované úlohy, které selhaly, se nezobrazují).
 * Tyto zálohované položky zůstávají aktivní v systému, který dodržuje zásady zálohování a uchovávání dat nastavené uživatelem. Zálohovaná data pro tyto virtuální počítače Azure se budou uchovávat podle zásad uchovávání informací. Body obnovení s vypršenou platností (s výjimkou posledního bodu obnovení) se vyčistí podle rozsahu uchování nastaveného v zásadách zálohování.
 * Uživatelům se doporučuje odstranit zálohované položky, kde primární zdroj dat už neexistuje, abyste se vyhnuli jakýmkoli dodatečným poplatkům, pokud se zálohovaná položka/data pro prostředky Delete už nevyžadují, protože poslední bod obnovení je trvale zachované a uživatel se účtuje podle platných cen zálohy.
 

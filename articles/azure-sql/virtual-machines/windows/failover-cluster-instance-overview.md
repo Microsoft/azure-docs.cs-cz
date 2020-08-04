@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 00c9482eab74003f6a667d52440d4cb6dd21fcfc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a5374bf15798fd7e53f0d93e69f2f40a2d57b94
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287366"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533814"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Instance clusteru s podporou převzetí služeb při selhání s SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,8 +51,8 @@ SQL Server na virtuálních počítačích Azure nabízí různé možnosti jako
 |**Minimální verze operačního systému**| Vše |Windows Server 2012|Windows Server 2016|
 |**Minimální verze SQL Server**|Vše|SQL Server 2012|SQL Server 2016|
 |**Podporovaná dostupnost virtuálního počítače** |Skupiny dostupnosti se skupinami umístění blízkých souborů |Skupiny dostupnosti a zóny dostupnosti|Skupiny dostupnosti |
-|**Podporuje FileStream**|Ano|Ne|Ano |
-|**Mezipaměť objektů BLOB v Azure**|Ne|Ne|Ano|
+|**Podporuje FileStream**|Ano|No|Ano |
+|**Mezipaměť objektů BLOB v Azure**|No|No|Ano|
 
 Zbytek této části obsahuje seznam výhod a omezení jednotlivých možností úložiště, které jsou dostupné pro SQL Server na virtuálních počítačích Azure. 
 
@@ -98,7 +98,7 @@ Pokud chcete začít, přečtěte si téma [SQL Server instance clusteru s podpo
 - Vysoká šířka pásma sítě je nutná k dosažení vysokého výkonu kvůli probíhající replikaci disku. 
 - Vyžaduje větší velikost virtuálního počítače a dvojí platbu za úložiště, protože úložiště je připojené ke každému virtuálnímu počítači. 
 
-Chcete-li začít, přečtěte si téma [SQL Server prostory úložiště s přímým přístupem instance clusteru s podporou převzetí služeb při selhání](failover-cluster-instance-azure-shared-disks-manually-configure.md) 
+Chcete-li začít, přečtěte si téma [SQL Server prostory úložiště s přímým přístupem instance clusteru s podporou převzetí služeb při selhání](failover-cluster-instance-storage-spaces-direct-manually-configure.md) 
 
 ### <a name="premium-file-share"></a>Zvýhodněná sdílení souborů
 
@@ -166,7 +166,7 @@ V Azure Virtual Machines není služba MSDTC podporovaná pro Windows Server 201
 
 Projděte si [osvědčené postupy konfigurace clusteru](hadr-cluster-best-practices.md)a potom můžete [připravit SQL Server virtuální počítač pro FCI](failover-cluster-instance-prepare-vm.md). 
 
-Další informace naleznete v tématu: 
+Další informace: 
 
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

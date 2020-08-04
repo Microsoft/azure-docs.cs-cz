@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b247b64d563bc2b12c5bffff6a460d77cb96207
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6bd09a24202b599c1f008e7b046ea5f93ff0323
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485599"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489788"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Povolení a používání služby Azure Multi-Factor Authentication se staršími aplikacemi pomocí hesel aplikací
 
@@ -81,13 +81,19 @@ V tomto scénáři použijete následující přihlašovací údaje:
 
 Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Funkce hesla aplikací musí být povolená, aby je uživatelé mohli používat. Pokud chcete uživatelům poskytnout možnost vytvářet hesla aplikací, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyhledejte a vyberte **Azure Active Directory**a pak zvolte **Uživatelé**.
 3. Na navigačním panelu v horní části okna *uživatele* vyberte **Multi-Factor Authentication** .
 4. V části Multi-Factor Authentication vyberte **nastavení služby**.
 5. Na stránce **nastavení služby** zaškrtněte políčko **dovolit uživatelům vytvářet hesla aplikací pro přihlášení k neprohlížečovým aplikacím** .
 
     ![Snímek obrazovky Azure Portal, který zobrazuje nastavení služby pro službu Multi-Factor Authentication, aby uživatel mohl použít hesla aplikací](media/concept-authentication-methods/app-password-authentication-method.png)
+    
+> [!NOTE]
+>
+> Když zakážete uživatelům vytvářet hesla aplikací, stávající hesla aplikací budou fungovat i nadále. Po zakázání této možnosti ale uživatelé nemůžou tato existující hesla aplikace spravovat ani odstranit.
+>
+> Když zakážete možnost vytvářet hesla aplikací, doporučujeme [vytvořit zásadu podmíněného přístupu, která zakáže použití starší verze ověřování](../conditional-access/block-legacy-authentication.md). Tento přístup zabraňuje stávajícím heslům aplikace v práci a vynucuje použití moderních metod ověřování.
 
 ## <a name="create-an-app-password"></a>Vytvoření hesla aplikace
 

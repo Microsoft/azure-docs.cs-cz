@@ -3,12 +3,12 @@ title: Přehled Azure Blueprints
 description: Pochopte, jak služba Azure Modrotiskys umožňuje vytvářet, definovat a nasazovat artefakty v prostředí Azure.
 ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 3a7cece81027bd8ac79250f2f2cd08da637b5f0b
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a8cec34bb5bdd52b22063a4109153c7f455aaa65
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970922"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530389"
 ---
 # <a name="what-is-azure-blueprints"></a>Co je Azure Blueprints?
 
@@ -27,19 +27,19 @@ Služba Azure Blueprints využívá globálně distribuovanou službu [Azure Cos
 
 Účelem této služby je pomáhat s _nastavením prostředí_. Tato instalace se často skládá ze sady skupin prostředků, zásad, přiřazení rolí a nasazení šablon ARM. Podrobný plán je balíček pro každý z těchto typů _artefaktů_ a umožňuje vytváření a verzi balíčku, včetně kanálu CI/CD. Nakonec se každý přiřadí k předplatnému v rámci jedné operace, kterou je možné auditovat a sledovat.
 
-Skoro všechno, co chcete zahrnout do nasazení v Azure modrotisky, se dá udělat pomocí šablony ARM. Šablona ARM je ale dokument, který v Azure neexistuje nativně – každý je uložený buď místně, nebo ve správě zdrojového kódu. Šablona se používá pro nasazení jednoho nebo více prostředků Azure, ale po nasazení těchto prostředků neexistuje s šablonou žádné aktivní propojení ani relace.
+Skoro všechno, co chcete zahrnout do nasazení v Azure modrotisky, se dá udělat pomocí šablony ARM. Šablona ARM je ale dokument, který v Azure neexistuje nativně – každý je uložený buď místně, nebo ve správě zdrojového kódu. Šablona se používá k nasazení jednoho nebo více prostředků Azure. Po jejich nasazení už ale neexistuje s šablonou žádné aktivní propojení ani relace.
 
-V Azure modrotisky se zachová vztah mezi definicí podrobného plánu (co _by měl být_ nasazený) a přiřazení podrobného plánu (co _se_ nasadilo). Toto připojení podporuje vylepšené sledování a auditování nasazení. Azure modrotisky můžou také upgradovat několik předplatných, která se řídí stejným plánem.
+V Azure modrotisky se zachová vztah mezi definicí podrobného plánu (co _by měl být_ nasazený) a přiřazení podrobného plánu (co _se_ nasadilo). Toto propojení podporuje vylepšené sledování a auditování nasazení. Azure modrotisky můžou také upgradovat několik předplatných, která se řídí stejným plánem.
 
 Není nutné volit mezi šablonou ARM a podrobným plánem. Každý podrobný plán se může skládat z nuly nebo více _artefaktů_šablon ARM. Tato podpora znamená, že předchozí úsilí pro vývoj a údržbu knihoven šablon ARM je možné znovu použít v plánech Azure.
 
-## <a name="how-its-different-from-azure-policy"></a>V čem se liší od Azure Policy
+## <a name="how-its-different-from-azure-policy"></a>Odlišnosti od Azure Policy
 
-Podrobný plán je balíček nebo kontejner pro sestavování sad standardů, vzorů a požadavků týkajících se implementace cloudových služeb, zabezpečení a návrhu Azure, které je možné opětovně použít k udržení konzistence a dodržování předpisů.
+Podrobný plán je balíček nebo kontejner pro sestavování sad standardů, vzorů a požadavků týkajících se implementace cloudových služeb, zabezpečení a návrhu Azure, který je možné opětovně používat a zajišťovat tak konzistenci a dodržování předpisů.
 
-[Zásady](../policy/overview.md) jsou systémem výchozích povolení a explicitních zamítnutí, který se zaměřuje na vlastnosti prostředků během nasazení a pro už existující prostředky. Podporují zásady správného řízení cloudu tím, že ověřují, jestli prostředky v rámci předplatného dodržují požadavky a standardy.
+[Zásady](../policy/overview.md) jsou systémem výchozích povolení a explicitních zamítnutí, který se zaměřuje na vlastnosti prostředků během nasazení a pro už existující prostředky. Podporují zásady správného řízení cloudu tím, že ověřují, jestli prostředky v rámci předplatného odpovídají požadavkům a standardům.
 
-Zahrnutí zásad do podrobného plánu umožňuje vytvořit správný vzor nebo návrh při přiřazování podrobného plánu. Zahrnutí zásad zajišťuje, že je možné provést jenom schválené nebo očekáváné změny prostředí, aby se zajistila ochrana trvalého dodržování záměru podrobného plánu.
+Zahrnutí zásad do podrobného plánu umožňuje během jeho přiřazování vytvořit správný vzor nebo návrh. Zahrnutí zásad zajišťuje, že je možné provést jenom schválené nebo očekáváné změny prostředí, aby se zajistila ochrana trvalého dodržování záměru podrobného plánu.
 
 V definici podrobného plánu může být zásada obsažena jako jeden z mnoha _artefaktů_ . Podrobné plány podporují také používání parametrů se zásadami a iniciativami.
 
@@ -47,7 +47,7 @@ V definici podrobného plánu může být zásada obsažena jako jeden z mnoha _
 
 Podrobný plán se skládá z _artefaktů_. Plány Azure v současné době podporují následující zdroje jako artefakty:
 
-|Prostředek  | Možnosti hierarchie| Popis  |
+|Prostředek  | Možnosti hierarchie| Description  |
 |---------|---------|---------|
 |Skupiny prostředků | Předplatné | Vytvořte novou skupinu prostředků pro použití jinými artefakty v rámci podrobného plánu.  Tyto zástupné skupiny prostředků umožňují organizovat prostředky přesně tak, jak chcete, aby byly strukturované a poskytovaly omezení oboru pro zahrnuté artefakty a přiřazení rolí a šablony ARM. |
 |Šablona ARM | Předplatné, skupina prostředků | Šablony, včetně vnořených a propojených šablon, slouží k vytváření složitých prostředí. Příklady prostředí: farma SharePointu, konfigurace stavu Azure Automation nebo pracovní prostor služby Log Analytics. |
@@ -103,7 +103,7 @@ Pokud chcete podrobný plán přiřadit nebo zrušit jeho přiřazení, váš ú
 
 K dispozici jsou následující předdefinované role:
 
-|Role RBAC | Popis |
+|Role Azure | Description |
 |-|-|
 |[Vlastník](../../role-based-access-control/built-in-roles.md#owner) | Kromě dalších oprávnění zahrnuje všechna Azure Blueprint související oprávnění. |
 |[Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) | Kromě dalších oprávnění může vytvořit a odstranit definice podrobného plánu, ale nemá oprávnění k přiřazení podrobného plánu. |

@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b5e75819fd018cda60bca4c992bc4c141b14a379
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 76b9b965ab7fb5ffda66bd77dba6d9ab5381e6fd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374180"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534358"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory
 
@@ -37,15 +37,15 @@ Pokud se objekt zabezpečení (uživatel, skupina nebo aplikace) pokusí o pří
 
 Krok ověřování vyžaduje, aby aplikace při běhu požadovala přístupový token OAuth 2,0. Pokud aplikace běží v rámci entity Azure, jako je třeba virtuální počítač Azure, sada škálování virtuálního počítače nebo aplikace Azure Functions, může pro přístup k objektům blob nebo frontám použít [spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md) . Informace o tom, jak autorizovat požadavky vytvořené spravovanou identitou do objektu BLOB nebo Služba front Azure, najdete v tématu [autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](storage-auth-aad-msi.md).
 
-Autorizační krok vyžaduje, aby se k objektu zabezpečení přiřadila jedna nebo více rolí RBAC. Azure Storage poskytuje role RBAC, které zahrnují společné sady oprávnění pro data objektů BLOB a front. Role, které jsou přiřazeny objektu zabezpečení, určují oprávnění, která bude mít objekt zabezpečení. Další informace o přiřazování rolí RBAC pro Azure Storage najdete v tématu [Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md).
+Autorizační krok vyžaduje, aby se k objektu zabezpečení přiřadila jedna nebo více rolí Azure. Azure Storage poskytuje role Azure, které zahrnují společné sady oprávnění pro data objektů BLOB a front. Role, které jsou přiřazeny objektu zabezpečení, určují oprávnění, která bude mít objekt zabezpečení. Další informace o přiřazování rolí Azure pro Azure Storage najdete v tématu [Správa přístupových práv k datům úložiště pomocí RBAC](storage-auth-aad-rbac.md).
 
 Nativní aplikace a webové aplikace, které vytvářejí požadavky na Azure Blob nebo Služba front, můžou taky autorizovat přístup pomocí Azure AD. Informace o tom, jak požádat o přístupový token a použít ho k autorizaci žádostí o data objektů BLOB nebo front, najdete v tématu [autorizace přístupu k Azure Storage pomocí Azure AD z aplikace Azure Storage](storage-auth-aad-app.md).
 
-## <a name="assign-rbac-roles-for-access-rights"></a>Přiřazení rolí RBAC pro přístupová práva
+## <a name="assign-azure-roles-for-access-rights"></a>Přiřazení rolí Azure pro přístupová práva
 
 Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md). Azure Storage definuje sadu předdefinovaných rolí Azure, které zahrnují společné sady oprávnění používané pro přístup k datům objektů BLOB a front. Můžete také definovat vlastní role pro přístup k datům objektů BLOB a front.
 
-Když je role RBAC přiřazená k objektu zabezpečení Azure AD, poskytuje Azure přístup k těmto prostředkům pro daný objekt zabezpečení. Přístup může být vymezený na úrovni předplatného, skupiny prostředků, účtu úložiště nebo jednotlivého kontejneru nebo fronty. Objekt zabezpečení Azure AD může být uživatelem, skupinou, instančním objektem služby nebo [spravovanou identitou pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+Když je role Azure přiřazená k objektu zabezpečení Azure AD, poskytuje Azure přístup k těmto prostředkům pro daný objekt zabezpečení. Přístup může být vymezený na úrovni předplatného, skupiny prostředků, účtu úložiště nebo jednotlivého kontejneru nebo fronty. Objekt zabezpečení Azure AD může být uživatelem, skupinou, instančním objektem služby nebo [spravovanou identitou pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
 ### <a name="azure-built-in-roles-for-blobs-and-queues"></a>Předdefinované role pro objekty BLOB a fronty Azure
 
@@ -73,9 +73,9 @@ Přístup k datům objektů BLOB nebo front pomocí Azure Portal, PowerShellu ne
 
 ### <a name="data-access-from-the-azure-portal"></a>Přístup k datům z Azure Portal
 
-Azure Portal může použít účet služby Azure AD nebo přístupové klíče účtu k přístupu k datům objektů BLOB a Queue v účtu úložiště Azure. Které autorizační schéma Azure Portal používá, závisí na rolích RBAC, které vám jsou přiřazeny.
+Azure Portal může použít účet služby Azure AD nebo přístupové klíče účtu k přístupu k datům objektů BLOB a Queue v účtu úložiště Azure. Které autorizační schéma, které Azure Portal používá, závisí na rolích Azure, které jsou vám přiřazeny.
 
-Při pokusu o přístup k datům objektu BLOB nebo front Azure Portal nejprve zkontroluje, zda byla přiřazena role RBAC s **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Pokud jste k této akci přiřadili roli, používá Azure Portal klíč účtu pro přístup k datům BLOB a Queue přes autorizaci pomocí sdíleného klíče. Pokud jste k této akci nepřiřadili roli, Azure Portal se pokusí získat přístup k datům pomocí účtu služby Azure AD.
+Když se pokusíte o přístup k datům objektů BLOB nebo front, Azure Portal nejprve zkontroluje, jestli vám byla přiřazena role Azure s **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Pokud jste k této akci přiřadili roli, používá Azure Portal klíč účtu pro přístup k datům BLOB a Queue přes autorizaci pomocí sdíleného klíče. Pokud jste k této akci nepřiřadili roli, Azure Portal se pokusí získat přístup k datům pomocí účtu služby Azure AD.
 
 Pokud chcete získat přístup k datům objektů BLOB nebo front z Azure Portal pomocí svého účtu služby Azure AD, potřebujete oprávnění pro přístup k datům objektů BLOB a Queue a Vy taky potřebujete oprávnění k procházení prostředků účtu úložiště v Azure Portal. Předdefinované role poskytované Azure Storage udělují přístup k prostředkům BLOB a Queue, ale neudělují oprávnění k prostředkům účtu úložiště. Z tohoto důvodu přístup k portálu vyžaduje taky přiřazení role Azure Resource Manager, jako je například role [Čtenář](../../role-based-access-control/built-in-roles.md#reader) , vymezená na úrovni účtu úložiště nebo vyšší. Role **Čtenář** uděluje nejvyšší omezení oprávnění, ale také je přijatelná jiná role Azure Resource Manager, která uděluje přístup k prostředkům správy účtu úložiště. Další informace o tom, jak přiřadit oprávnění uživatelům k přístupu k datům v Azure Portal s účtem služby Azure AD, najdete [v tématu udělení přístupu k datům objektů blob Azure a frontě pomocí RBAC v Azure Portal](storage-auth-aad-rbac-portal.md).
 

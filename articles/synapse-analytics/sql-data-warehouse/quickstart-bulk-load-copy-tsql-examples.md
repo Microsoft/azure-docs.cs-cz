@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1e44b58335bf90dbc0e97b58de7f878bc94c91c7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 05dd1f1d429b59c4d621b63c6b78a1fc00e8d4dd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371953"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528459"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Bezpečné načtení dat pomocí synapse SQL
 
@@ -70,9 +70,9 @@ Pokud je váš účet úložiště připojený k virtuální síti, vyžaduje se
 
 ### <a name="prerequisites"></a>Požadavky
 
-1. Pomocí této [příručky](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)nainstalujte Azure PowerShell.
-2. Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte nejdřív v této [příručce](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)upgradovat na obecné účely v2.
-3. Abyste měli přístup k tomuto účtu úložiště zapnutý, musíte mít **povolené důvěryhodné služby Microsoftu** v nabídce Azure Storage **brány firewall účtů a nastavení virtuálních sítí** . Další informace najdete v tomto [Průvodci](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) .
+1. Pomocí tohoto [průvodce](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) nainstalujte Azure PowerShell.
+2. Pokud máte účet úložiště pro obecné účely verze 1 nebo účet úložiště objektů blob, musíte nejprve pomocí tohoto [průvodce](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) upgradovat na účet úložiště pro obecné účely verze 2.
+3. Abyste měli přístup k tomuto účtu úložiště zapnutý, musíte mít **povolené důvěryhodné služby Microsoftu** v nabídce Azure Storage **brány firewall účtů a nastavení virtuálních sítí** . Další informace najdete v tomto [průvodci](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions).
 #### <a name="steps"></a>Kroky
 
 1. V PowerShellu **Zaregistrujte SQL Server** pomocí Azure Active Directory (AAD):
@@ -88,13 +88,13 @@ Pokud je váš účet úložiště připojený k virtuální síti, vyžaduje se
    > [!NOTE]
    > Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte **nejdřív upgradovat na verzi v2** pomocí této [příručky](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
-3. V části účet úložiště přejděte na **Access Control (IAM)** a vyberte **Přidat přiřazení role**. Přiřaďte roli správce **dat objektů BLOB úložiště, přispěvatele nebo čtenáře** k vašemu SQL serveru.
+3. V části účet úložiště přejděte na **Access Control (IAM)** a vyberte **Přidat přiřazení role**. K vašemu SQL serveru přiřaďte roli **vlastníka dat objektů BLOB úložiště, přispěvatele nebo čtenáře** .
 
    > [!NOTE]
    > Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích Azure najdete v tomto [Průvodci](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
    
     > [!IMPORTANT]
-    > Zadejte roli vlastníka **dat objektu BLOB** **úložiště** , přispěvatele nebo čtenáře. Tyto role se liší od předdefinovaných rolí vlastník, přispěvatel a čtenář v Azure. 
+    > Zadejte roli vlastníka **dat objektu BLOB** **úložiště** , přispěvatele nebo čtenáře Azure. Tyto role se liší od předdefinovaných rolí vlastník, přispěvatel a čtenář v Azure. 
 
     ![Udělení oprávnění RBAC k načtení](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
@@ -112,10 +112,10 @@ Pokud je váš účet úložiště připojený k virtuální síti, vyžaduje se
 ## <a name="d-azure-active-directory-authentication-aad"></a>D. Ověřování Azure Active Directory (AAD)
 #### <a name="steps"></a>Kroky
 
-1. V části účet úložiště přejděte na **Access Control (IAM)** a vyberte **Přidat přiřazení role**. Přiřaďte roli AAD, **přispěvateli nebo čtenáře dat objektů BLOB úložiště** k vašemu uživateli AAD. 
+1. V části účet úložiště přejděte na **Access Control (IAM)** a vyberte **Přidat přiřazení role**. K uživateli AAD přiřaďte roli Azure **data BLOB úložiště, přispěvatele nebo čtenáře** . 
 
     > [!IMPORTANT]
-    > Zadejte roli vlastníka **dat objektu BLOB** **úložiště** , přispěvatele nebo čtenáře. Tyto role se liší od předdefinovaných rolí vlastník, přispěvatel a čtenář v Azure.
+    > Zadejte roli vlastníka **dat objektu BLOB** **úložiště** , přispěvatele nebo čtenáře Azure. Tyto role se liší od předdefinovaných rolí vlastník, přispěvatel a čtenář v Azure.
 
     ![Udělení oprávnění RBAC k načtení](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 

@@ -1,14 +1,14 @@
 ---
-title: Role a oprávnění RBAC
+title: Role a oprávnění Azure
 description: Využijte řízení přístupu na základě role Azure (Azure RBAC) a správu identit a přístupu (IAM) k zajištění podrobných oprávnění k prostředkům v registru kontejnerů Azure.
 ms.topic: article
 ms.date: 12/02/2019
-ms.openlocfilehash: 0bf6059698191c975b212bee7f45d21977478b49
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 90546b96f081893d312e66aae04e2125c1c210e5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497745"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533304"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry role a oprávnění
 
@@ -85,7 +85,7 @@ Pokud chcete definovat vlastní roli, přečtěte si téma [Postup vytvoření v
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o přiřazení rolí RBAC k identitě Azure pomocí [Azure Portal](../role-based-access-control/role-assignments-portal.md), rozhraní příkazového [řádku Azure](../role-based-access-control/role-assignments-cli.md)nebo dalších nástrojů Azure.
+* Přečtěte si další informace o přiřazení rolí Azure k identitě Azure pomocí [Azure Portal](../role-based-access-control/role-assignments-portal.md), rozhraní příkazového [řádku Azure](../role-based-access-control/role-assignments-cli.md)nebo dalších nástrojů Azure.
 
 * Seznamte se s [možnostmi ověřování](container-registry-authentication.md) pro Azure Container Registry.
 

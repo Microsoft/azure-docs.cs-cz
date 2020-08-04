@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 3195c27351ba6110c784ddd8a10ea9ddfb0d903a
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447346"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533899"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 
@@ -78,7 +78,7 @@ Azure RBAC má tři základní role, které se vztahují na všechny typy prost�
 
 ![Řízení přístupu na základě role v Azure (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
 
-Zbývající role RBAC v Azure umožňují správu konkrétních prostředků Azure. Role Přispěvatel virtuálních počítačů například uživateli umožňuje vytvářet a spravovat virtuální počítače. Neuděluje jim přístup k Virtual Network Azure ani k podsíti, ke které se virtuální počítač připojuje.
+Zbývající role Azure v Azure umožňují správu konkrétních prostředků Azure. Role Přispěvatel virtuálních počítačů například uživateli umožňuje vytvářet a spravovat virtuální počítače. Neuděluje jim přístup k Virtual Network Azure ani k podsíti, ke které se virtuální počítač připojuje.
 
 [Předdefinované role RBAC](../../role-based-access-control/built-in-roles.md) uvádějí role dostupné v Azure. Určuje operace a rozsah, které jednotlivé předdefinované role udělují uživatelům. Pokud chcete definovat vlastní role pro ještě více ovládacích prvků, přečtěte si téma jak vytvořit [vlastní role v Azure RBAC](../../role-based-access-control/custom-roles.md).
 
@@ -219,7 +219,7 @@ Azure nabízí pro ochranu dat následující typy šifrování:
 - [Šifrování kabelů](../../storage/blobs/security-recommendations.md), jako je například šifrování SMB 3,0 pro sdílené složky Azure.
 - [Šifrování na straně klienta](../../storage/blobs/security-recommendations.md), aby se data zašifroval před přenosem do úložiště a dešifrují data poté, co se přenesou z úložiště.
 
-#### <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
+#### <a name="encryption-at-rest"></a>Šifrování v klidovém umístění
 
 V případě mnoha organizací je [šifrování dat v klidovém](isolation-choices.md) případě povinný krok k ochraně dat, dodržování předpisů a suverenity dat. Existují tři funkce Azure, které poskytují šifrování dat v klidovém znění:
 
@@ -273,7 +273,7 @@ Logické servery a databáze SQL jsou SQL Database specifických konceptech a js
 
 Servery v SQL Database nejsou fyzické nebo instance virtuálních počítačů, místo toho se jedná o kolekce databází, správu sdílení a zásady zabezpečení, které jsou uložené v, označované jako "logická hlavní" databáze.
 
-![Databáze SQL](./media/isolation-choices/azure-isolation-fig11.png)
+![SQL Database](./media/isolation-choices/azure-isolation-fig11.png)
 
 Mezi logické hlavní databáze patří:
 

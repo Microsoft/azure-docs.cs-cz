@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 6923bb31e53493dd01f41cb0b0449f2093bc7e91
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ad910823c4dd2430aeae085dd8e510fcd42c80f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092469"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532590"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -118,7 +118,7 @@ Vlastník účtu úložiště musí explicitně přidat role přispěvatele [ú�
 
 Můžete to provést předem nebo kliknutím na odkaz na stránce, kam přidáte cíl úložiště objektů BLOB. Mějte na paměti, že může trvat až pět minut, než se nastavení role rozšíří přes prostředí Azure, takže byste před vytvořením cíle úložiště měli počkat několik minut od přidání rolí.
 
-Postup přidání rolí RBAC:
+Postup přidání rolí Azure:
 
 1. Otevřete stránku **řízení přístupu (IAM)** pro účet úložiště. (Odkaz na stránce **Přidat cíl úložiště** automaticky otevře tuto stránku pro vybraný účet.)
 
@@ -220,9 +220,9 @@ Tato tabulka shrnuje rozdíly v modelu použití:
 
 | Model využití                   | Režim ukládání do mezipaměti | Ověření back-endu | Maximální zpoždění před zpětným zápisem |
 |-------------------------------|--------------|-----------------------|--------------------------|
-| Čtení těžkých, nečastých zápisů | Číst         | Nikdy                 | Žádné                     |
+| Čtení těžkých, nečastých zápisů | Číst         | Nikdy                 | Žádná                     |
 | Více než 15% zápisů       | Čtení/zápis   | Nikdy                 | 1 hodina                   |
-| Klienti obcházejí mezipaměť      | Číst         | 30 sekund            | Žádné                     |
+| Klienti obcházejí mezipaměť      | Číst         | 30 sekund            | Žádná                     |
 
 ### <a name="create-an-nfs-storage-target"></a>Vytvoření cíle úložiště NFS
 

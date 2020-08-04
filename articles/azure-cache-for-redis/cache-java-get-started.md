@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 3cd8b18358128c8566c0cde668c084a22dd261d0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 16a912b2530d567a11a81fc10e9e09eee572e7e6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320693"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528820"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Rychlý Start: použití mezipaměti Azure pro Redis s Java
 
@@ -30,12 +30,24 @@ V tomto rychlém startu zabezpečíte mezipaměť Azure pro Redis do aplikace Ja
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-Přidejte proměnné prostředí pro **NÁZEV HOSTITELE** a **primární** přístupový klíč. Tyto proměnné z kódu použijete místo citlivých informací, které byste zahrnuli přímo do kódu.
+## <a name="setting-up-the-working-environment"></a>Nastavení pracovního prostředí 
+
+V závislosti na vašem operačním systému přidejte proměnné prostředí pro **název hostitele** a **Primární přístupový klíč**. Otevřete příkazový řádek nebo okno terminálu a nastavte následující hodnoty:
 
 ```CMD 
-set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
-set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+set REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
+set REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
 ```
+
+```bash
+export REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
+export REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
+```
+
+Zástupné symboly nahraďte následujícími hodnotami:
+
+- `<YOUR_HOST_NAME>`: Název hostitele DNS získaný z oddílu Properties ( *vlastnosti* ) prostředku Azure cache for Redis na webu Azure Portal.
+- `<YOUR_PRIMARY_ACCESS_KEY>`: Primární přístupový klíč získaný z oddílu *přístupové klíče* v mezipaměti Azure pro prostředek Redis na webu Azure Portal.
 
 ## <a name="create-a-new-java-app"></a>Vytvoření nové aplikace Java
 

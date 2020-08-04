@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: fe9d4e5a981f9d626bb6086659593e1c3ce06469
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 96fb914b5dafe5eb818f2b491bbe2d856763bd02
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291130"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534732"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Verze Preview: přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory
 
@@ -113,7 +113,7 @@ az vm extension set \
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Konfigurace přiřazení rolí pro virtuální počítač
 
-Zásady řízení přístupu na základě role Azure (Azure RBAC) určují, kdo se může přihlásit k virtuálnímu počítači. K autorizaci přihlášení k virtuálnímu počítači se používají dvě role RBAC:
+Zásady řízení přístupu na základě role Azure (Azure RBAC) určují, kdo se může přihlásit k virtuálnímu počítači. K autorizaci přihlášení k virtuálnímu počítači se používají dvě role Azure:
 
 - **Přihlášení správce virtuálního počítače**: uživatelé s touto rolí se můžou přihlašovat k virtuálnímu počítači Azure pomocí oprávnění správce Windows nebo kořenového uživatele Linux.
 - **Přihlášení uživatele k virtuálnímu počítači**: uživatelé s touto rolí se můžou přihlašovat k virtuálnímu počítači Azure s pravidelnými uživatelskými oprávněními.
@@ -181,9 +181,9 @@ S tímto řádkem:
 
 ## <a name="troubleshoot-sign-in-issues"></a>Řešení potíží s přihlašováním
 
-Některé běžné chyby při pokusu o přihlášení SSH s přihlašovacími údaji služby Azure AD zahrnují nepřiřazené role RBAC a opakované výzvy k přihlášení. Tyto problémy opravíte pomocí následujících částí.
+Některé běžné chyby při pokusu o přihlášení SSH s přihlašovacími údaji služby Azure AD zahrnují žádné přiřazené role Azure a opakované výzvy k přihlášení. Tyto problémy opravíte pomocí následujících částí.
 
-### <a name="access-denied-rbac-role-not-assigned"></a>Přístup byl odepřen: role RBAC nebyla přiřazena.
+### <a name="access-denied-azure-role-not-assigned"></a>Přístup byl odepřen: role Azure nebyla přiřazena.
 
 Pokud se v příkazovém řádku SSH zobrazí následující chyba, ověřte, že jste pro virtuální počítač nakonfigurovali zásady RBAC, které udělí uživateli buď *přihlašovací jméno správce virtuálního počítače* , nebo roli *přihlášení uživatele virtuálního počítače* :
 

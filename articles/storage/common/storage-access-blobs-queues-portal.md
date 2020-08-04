@@ -10,12 +10,12 @@ ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9d4097e847417f56c9881a3e18237e97dfee465e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dcd1280dbe3a00a6a7cbdaaf59aa05326dfa8375
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501402"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534171"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Použití Azure Portal k přístupu k datům objektů BLOB nebo Queue
 
@@ -29,7 +29,7 @@ V závislosti na tom, jak chcete autorizovat přístup k datům objektů BLOB ne
 
 ### <a name="use-the-account-access-key"></a>Použití přístupového klíče účtu
 
-K přístupu k datům objektů BLOB a front pomocí přístupového klíče účtu musíte mít přiřazenou roli RBAC, která zahrnuje akci RBAC **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Tato role RBAC může být integrovaná nebo vlastní role. Předdefinované role, které podporují **Microsoft. Storage/storageAccounts/klíče listkey/Action** , zahrnují:
+Pokud chcete získat přístup k datům objektů BLOB a front pomocí přístupového klíče účtu, musíte mít přiřazenou roli Azure, která zahrnuje akci RBAC **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Tato role Azure může být integrovaná nebo vlastní role. Předdefinované role, které podporují **Microsoft. Storage/storageAccounts/klíče listkey/Action** , zahrnují:
 
 - Role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) Azure Resource Manager
 - Role [přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) Azure Resource Manager
@@ -47,7 +47,7 @@ Pokud chcete získat přístup k datům objektů BLOB nebo front z Azure Portal 
 - Je vám přiřazena minimálně role [čtenář](../../role-based-access-control/built-in-roles.md#reader) Azure Resource Manager, která je vymezená na úroveň účtu úložiště nebo vyšší. Role **Čtenář** uděluje nejvyšší omezení oprávnění, ale také je přijatelná jiná role Azure Resource Manager, která uděluje přístup k prostředkům správy účtu úložiště.
 - Přiřadili jste buď integrovanou, nebo vlastní roli, která poskytuje přístup k datům BLOB nebo Queue.
 
-Přiřazení role **Čtenář** nebo jiné Azure Resource Manager přiřazení role je nezbytné, aby uživatel mohl zobrazit a procházet prostředky správy účtu úložiště v Azure Portal. Role RBAC, které udělují přístup k datům BLOB nebo Queue, neudělují přístup k prostředkům správy účtu úložiště. Pro přístup k datům objektů BLOB nebo front na portálu potřebuje uživatel oprávnění k procházení prostředků účtu úložiště. Další informace o tomto požadavku najdete v tématu [přiřazení role čtenáře pro přístup k portálu](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access).
+Přiřazení role **Čtenář** nebo jiné Azure Resource Manager přiřazení role je nezbytné, aby uživatel mohl zobrazit a procházet prostředky správy účtu úložiště v Azure Portal. Role Azure, které udělují přístup k datům BLOB nebo Queue, neudělují přístup k prostředkům správy účtu úložiště. Pro přístup k datům objektů BLOB nebo front na portálu potřebuje uživatel oprávnění k procházení prostředků účtu úložiště. Další informace o tomto požadavku najdete v tématu [přiřazení role čtenáře pro přístup k portálu](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access).
 
 Mezi předdefinované role, které podporují přístup k datům objektů BLOB nebo Queue, patří:
 
@@ -82,7 +82,7 @@ Pokud ověřujete pomocí přístupového klíče účtu, zobrazí se na portál
 
 ![Aktuálně probíhá přístup k datům kontejneru s klíčem účtu.](media/storage-access-blobs-queues-portal/auth-method-access-key.png)
 
-Pokud chcete přepnout na používání účtu Azure AD, klikněte na odkaz zvýrazněný v imagi. Pokud máte příslušná oprávnění prostřednictvím rolí RBAC, které jsou vám přiřazeny, budete moct pokračovat. Pokud ale nemáte správná oprávnění, zobrazí se chybová zpráva podobná následující:
+Pokud chcete přepnout na používání účtu Azure AD, klikněte na odkaz zvýrazněný v imagi. Pokud máte příslušná oprávnění prostřednictvím rolí Azure, které jsou vám přiřazeny, budete moct pokračovat. Pokud ale nemáte správná oprávnění, zobrazí se chybová zpráva podobná následující:
 
 ![Pokud účet Azure AD nepodporuje přístup, zobrazí se chyba.](media/storage-access-blobs-queues-portal/auth-error-azure-ad.png)
 

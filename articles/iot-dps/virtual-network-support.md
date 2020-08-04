@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 97168c95893ffdea99180c997265f259176ed07f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8912ef907641367bda89d7c0e98f9da811c6e577
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531214"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534596"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Podpora Azure IoT Hub Device Provisioning Service (DPS) pro virtuální sítě
 
@@ -43,7 +43,7 @@ Zařízení, která pracují v místních sítích, můžou pomocí [virtuální
 Privátní koncový bod je privátní IP adresa přidělená v rámci virtuální sítě vlastněné zákazníkem, pomocí které je k dispozici prostředek Azure. Když budete mít privátní koncový bod pro prostředek DPS, budete moct povolit zařízením, která pracují v rámci vaší virtuální sítě, vyžádat si zřizování pomocí prostředku DPS bez povolení provozu do veřejného koncového bodu.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete pokračovat, ujistěte se, že jsou splněné následující předpoklady:
 
@@ -59,7 +59,7 @@ Při používání privátních koncových bodů Pamatujte na tato aktuální om
 
 * Pokud je prostředek DPS a propojené centrum v různých cloudech, nebudou privátní koncové body fungovat s DPS. Například [Azure Government a globální Azure](../azure-government/documentation-government-welcome.md).
 
-* V současné době [vlastní zásady přidělování s Azure Functions](how-to-use-custom-allocation-policies.md) pro DPS nebudou fungovat jako virtuální síť a soukromé koncové body. 
+* V současné době [vlastní zásady přidělování s Azure Functions](how-to-use-custom-allocation-policies.md) pro DPS nebudou fungovat, když je funkce Azure uzamčená na virtuální síť a soukromé koncové body. 
 
 * Aktuální podpora DPS pro virtuální sítě je jenom pro příchozí přenosy dat do DPS. Výstup dat, což je přenos z DPS do IoT Hub, používá interní mechanizmus služby pro službu, nikoli vyhrazenou virtuální síť. Podpora fulltextového uzamčení založeného na virtuální síti mezi DPS a IoT Hub není aktuálně k dispozici.
 

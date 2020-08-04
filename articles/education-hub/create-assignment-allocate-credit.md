@@ -7,18 +7,18 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: e0d0804ce1f43d246dc4e87e222cbfbaf7db58aa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a850e5ea851ee539c663b00ecc7f2053eae8dc34
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102003"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534086"
 ---
 # <a name="create-an-assignment-and-allocate-credit"></a>Vytvoření přiřazení a přidělení kreditu
 
 Po nastavení kurzu a vytvoření učebny v Microsoft Azure Centrum Education budete požádáni o vytvoření přiřazení, kde budete přidělovat kredit a pozvat vybrané studenty do vašeho kurzu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Akademické granty se schválenou kreditní výší
 - Učebna vytvořená v Azure Centrum Education
@@ -31,7 +31,7 @@ Azure Centrum Education přijímá všechny e-mailové adresy v _____ @___.___ f
 > [!IMPORTANT]
 > Pracovní a školní účty podléhají vlastním zásadám, včetně toho, jestli je povolená e-mailová adresa z jiné domény, než je organizace (například přidání student2@outlook.com do @school.edu domény). Nezapomeňte tyto zásady před přidáním nových uživatelů zkontrolovat.
 
-Když se pracovní nebo školní účet (například student1@school.edu ) přidá jako řízení přístupu na základě role (RBAC) na portálu sponzora Educator nebo [Azure Portal](https://portal.azure.com), Azure automaticky pošle e-mail příjemci. Tento e-mail vyžaduje, aby uživatel před přijetím přístupu k předplatnému přijal nový účet a roli RBAC. Pokud jste Pomocník pro vzdělávání výukových kurzů (TA) nebo profesor, nezapomeňte na studenty informovat, aby se jejich předplatné zobrazilo v Azure Portal podle očekávání. E-mail by měl vypadat nějak takto:
+Když se pracovní nebo školní účet (například student1@school.edu ) přidá jako řízení přístupu na základě role (RBAC) na portálu sponzora Educator nebo [Azure Portal](https://portal.azure.com), Azure automaticky pošle e-mail příjemci. Tento e-mail vyžaduje, aby uživatel před přijetím přístupu k předplatnému přijal nový účet a roli Azure. Pokud jste Pomocník pro vzdělávání výukových kurzů (TA) nebo profesor, nezapomeňte na studenty informovat, aby se jejich předplatné zobrazilo v Azure Portal podle očekávání. E-mail by měl vypadat nějak takto:
 
 :::image type="content" source="media/create-assignment-allocate-credit/azure-active-directory-get-started.png" alt-text="Azure Active Directory Začínáme" border="false":::
 

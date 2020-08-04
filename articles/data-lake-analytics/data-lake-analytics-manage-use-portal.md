@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 7761da75c16e2f89ae145bad3b04cc179f415751
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127532"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531205"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Správa Azure Data Lake Analytics pomocí webu Azure Portal
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -27,7 +27,7 @@ Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje 
 
 ### <a name="create-an-account"></a>Vytvoření účtu
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Klikněte na **vytvořit prostředek**  >  **Intelligence + Analytics**  >  **Data Lake Analytics**.
 3. Vyberte hodnoty pro následující položky: 
    1. **Název**: název účtu Data Lake Analytics.
@@ -95,7 +95,7 @@ Pokud se k účtu Data Lake Analytics připojí jiné služby Azure, například
 
 Stejně jako jiné služby Azure můžete použít Access Control na základě rolí (RBAC) k řízení interakce uživatelů se službou.
 
-Standardní role RBAC mají následující možnosti:
+Standardní role Azure mají tyto možnosti:
 * **Vlastník**: může odesílat úlohy, monitorovat úlohy, rušit úlohy od libovolného uživatele a nakonfigurovat účet.
 * **Přispěvatel**: může odesílat úlohy, monitorovat úlohy, rušit úlohy od libovolného uživatele a konfigurovat účet.
 * **Čtecí modul**: může monitorovat úlohy.

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: e30c4142232a2d695204f5c8f612eb44791c847c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f46a7927c149009eaf5baddbad2758732d4da758
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133159"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534262"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Zabránit anonymnímu veřejnému přístupu pro čtení kontejnerů a objektů BLOB
 
@@ -24,7 +24,7 @@ Ve výchozím nastavení jsou veřejný přístup k datům objektů BLOB vždyck
 
 Když zakážete přístup k veřejnému objektu BLOB pro účet úložiště, Azure Storage odmítne všechny anonymní požadavky na tento účet. Po povolení veřejného přístupu pro účet není možné kontejnery tohoto účtu následně nakonfigurovat pro veřejný přístup. Všechny kontejnery, které již byly nakonfigurovány pro veřejný přístup, již nebudou přijímat anonymní požadavky. Další informace najdete v tématu [Konfigurace anonymního veřejného přístupu pro čtení pro kontejnery a objekty blob](anonymous-read-access-configure.md).
 
-Tento článek popisuje, jak analyzovat anonymní požadavky na účet úložiště a jak zabránit anonymnímu přístupu pro celý účet úložiště nebo pro jednotlivé kontejnery.
+V tomto článku se dozvíte, jak pomocí architektury přetáhnout (detekce a napravit audit-audit) průběžně spravovat veřejný přístup k účtům úložiště.
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>Detekovat anonymní požadavky z klientských aplikací
 
@@ -157,6 +157,126 @@ $ctx = $storageAccount.Context
 
 New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 ```
+
+### <a name="check-the-public-access-setting-for-multiple-accounts"></a>Podívejte se na nastavení veřejného přístupu pro víc účtů.
+
+Pokud chcete zjistit nastavení veřejného přístupu v rámci sady účtů úložiště s optimálním výkonem, můžete použít Průzkumníka Azure Resource graphu v Azure Portal. Další informace o používání Průzkumníka grafů prostředků najdete v tématu [rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu](/azure/governance/resource-graph/first-query-portal).
+
+Když spustíte následující dotaz, v Průzkumníku grafu prostředků se vrátí seznam účtů úložiště a v každém účtu se zobrazí nastavení veřejného přístupu:
+
+```kusto
+resources
+| where type =~ 'Microsoft.Storage/storageAccounts'
+| extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
+| project subscriptionId, resourceGroup, name, allowBlobPublicAccess
+```
+
+## <a name="use-azure-policy-to-audit-for-compliance"></a>Auditovat dodržování předpisů pomocí Azure Policy
+
+Pokud máte velký počet účtů úložiště, možná budete chtít provést audit, abyste se ujistili, že tyto účty jsou nakonfigurované tak, aby se zabránilo přístupu k veřejnosti. Pokud chcete auditovat sadu účtů úložiště pro dodržování předpisů, použijte Azure Policy. Azure Policy je služba, kterou můžete použít k vytváření, přiřazování a správě zásad, které používají pravidla pro prostředky Azure. Azure Policy vám pomůže zajistit, aby tyto prostředky vyhovovaly vašim firemním standardům a smlouvám o úrovni služeb. Další informace najdete v tématu [přehled Azure Policy](../../governance/policy/overview.md).
+
+### <a name="create-a-policy-with-an-audit-effect"></a>Vytvoření zásady pomocí efektu auditu
+
+Azure Policy podporuje efekty, které určují, co se stane, když se pravidlo zásad vyhodnocuje proti prostředku. Při auditu se vytvoří upozornění, pokud prostředek není v souladu s předpisy, ale nezastaví požadavek. Další informace o účincích najdete v tématu [pochopení Azure Policy efektů](../../governance/policy/concepts/effects.md).
+
+Pokud chcete vytvořit zásadu s účinkem auditu pro nastavení veřejného přístupu pro účet úložiště s Azure Portal, postupujte takto:
+
+1. V Azure Portal přejděte do služby Azure Policy.
+1. V části **vytváření obsahu** vyberte **definice**.
+1. Pokud chcete vytvořit novou definici zásady, vyberte **Přidat definici zásady** .
+1. V poli **umístění definice** vyberte tlačítko **Další** a určete, kde se nachází prostředek zásad auditu.
+1. Zadejte název zásady. Volitelně můžete zadat popis a kategorii.
+1. V části **pravidlo zásad**přidejte do části **policyRule** následující definici zásady.
+
+    ```json
+    {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "not": {
+              "field":"Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+              "equals": "false"
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "audit"
+      }
+    }
+    ```
+
+1. Uložte zásady.
+
+### <a name="assign-the-policy"></a>Přiřazení zásady
+
+V dalším kroku přiřaďte zásadu k prostředku. Rozsah zásad odpovídá tomuto prostředku a jakýmkoli prostředkům pod ním. Další informace o přiřazení zásad najdete v tématu [Azure Policy struktura přiřazení](../../governance/policy/concepts/assignment-structure.md).
+
+Chcete-li přiřadit zásadu k Azure Portal, postupujte podle následujících kroků:
+
+1. V Azure Portal přejděte do služby Azure Policy.
+1. V části **vytváření obsahu** vyberte **přiřazení**.
+1. Vyberte **přiřadit zásadu** a vytvořte nové přiřazení zásady.
+1. V poli **obor** vyberte obor přiřazení zásady.
+1. V poli **definice zásady** vyberte tlačítko **Další** a pak v seznamu vyberte zásadu, kterou jste definovali v předchozí části.
+1. Zadejte název přiřazení zásady. Popis je volitelný.
+1. Nechte **vynucení zásad** nastavené na *povoleno*. Toto nastavení nemá žádný vliv na zásady auditu.
+1. Vyberte možnost **zkontrolovat + vytvořit** a vytvořte přiřazení.
+
+### <a name="view-compliance-report"></a>Zobrazit sestavu dodržování předpisů
+
+Po přiřazení zásady můžete zobrazit sestavu dodržování předpisů. Sestava dodržování předpisů pro zásady auditu poskytuje informace o tom, které účty úložiště nejsou v souladu se zásadami. Další informace najdete v tématu [získání dat o dodržování zásad](../../governance/policy/how-to/get-compliance-data.md).
+
+Po vytvoření přiřazení zásad může trvat několik minut, než se sestava dodržování předpisů stane dostupnou.
+
+Chcete-li zobrazit sestavu dodržování předpisů v Azure Portal, postupujte podle následujících kroků:
+
+1. V Azure Portal přejděte do služby Azure Policy.
+1. Vyberte možnost **dodržování předpisů**.
+1. Vyfiltrujte výsledky pro název přiřazení zásady, které jste vytvořili v předchozím kroku. V této sestavě se zobrazuje počet prostředků, které nejsou v souladu se zásadami.
+1. Můžete přejít k podrobnostem sestavy, kde najdete další podrobnosti, včetně seznamu účtů úložiště, které nedodržují předpisy.
+
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="Snímek obrazovky zobrazující sestavu dodržování předpisů pro zásady auditu pro veřejný přístup k objektu BLOB":::
+
+## <a name="use-azure-policy-to-enforce-authorized-access"></a>Použití Azure Policy k vymáhání oprávněného přístupu
+
+Azure Policy podporuje zásady správného řízení cloudu tím, že zajistí, že prostředky Azure vyhovují požadavkům a standardům. Pokud chcete zajistit, aby účty úložiště ve vaší organizaci povolovaly jenom autorizované požadavky, můžete vytvořit zásadu, která zabrání vytvoření nového účtu úložiště s nastavením veřejného přístupu, které umožňuje anonymní požadavky. Tato zásada taky zabrání všem změnám v konfiguraci existujícího účtu, pokud nastavení veřejného přístupu pro tento účet není kompatibilní se zásadami.
+
+Zásada vynucení používá efekt odepřít, který brání žádosti, která by vytvořila nebo upravila účet úložiště, aby povolovala veřejný přístup. Další informace o účincích najdete v tématu [pochopení Azure Policy efektů](../../governance/policy/concepts/effects.md).
+
+Chcete-li vytvořit zásadu s efektem odepření pro nastavení veřejného přístupu, které povoluje anonymní požadavky, postupujte podle kroků popsaných v tématu [použití Azure Policy k auditování dodržování předpisů](#use-azure-policy-to-audit-for-compliance), ale v části **policyRule** v definici zásady zadejte následující kód JSON:
+
+```json
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "not": {
+          "field":"Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+          "equals": "false"
+        }
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+```
+
+Když vytvoříte zásadu s použitím efektu odepřít a přiřadíte ji k oboru, uživatel nemůže vytvořit účet úložiště, který umožňuje veřejný přístup. Ani nemůže uživatel provádět změny konfigurace stávajícího účtu úložiště, který v současné době povoluje veřejný přístup. Při pokusu o provedení dojde k chybě. Nastavení veřejného přístupu pro účet úložiště musí být nastavené na **hodnotu false** , aby bylo možné pokračovat v vytváření nebo konfiguraci účtu.
+
+Následující obrázek ukazuje chybu, ke které dochází, když se pokusíte vytvořit účet úložiště, který umožňuje veřejný přístup (výchozí nastavení pro nový účet), když zásada s efektem odepření vyžaduje, aby byl veřejný přístup zakázán.
+
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="Snímek obrazovky znázorňující chybu při vytváření účtu úložiště při porušení zásad":::
 
 ## <a name="next-steps"></a>Další kroky
 

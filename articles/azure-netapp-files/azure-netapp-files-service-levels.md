@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: b-juche
-ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 639f1e09fdb5603965209e5b5ee6c224ad238b76
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75832584"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533117"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Úrovně služeb pro Azure NetApp Files
 Úrovně služeb jsou atributem fondu kapacit. Úrovně služeb jsou definované a rozlišené o povolenou maximální propustnost svazku ve fondu kapacity na základě kvóty, která je přiřazená ke svazku.
@@ -56,7 +56,8 @@ V příkladu 2 výše se ke skupině kapacity s úrovní úložiště úrovně P
 
 ## <a name="next-steps"></a>Další kroky
 
-- Ceny různých úrovní služeb najdete na [stránce s cenami Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/) .
-- Přečtěte si článek [cost model pro Azure NetApp Files](azure-netapp-files-cost-model.md) pro výpočet spotřeby kapacity ve fondu kapacit. 
+- [Stránka s cenami Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [Model nákladů pro Azure NetApp Files](azure-netapp-files-cost-model.md) 
 - [Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)
-- Azure NetApp Files najdete v tématu [smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/) .
+- [Smlouva SLA (SLA) pro Azure NetApp Files](https://azure.microsoft.com/support/legal/sla/netapp/)
+- [Dynamická změna úrovně služeb svazku](dynamic-change-volume-service-level.md) 

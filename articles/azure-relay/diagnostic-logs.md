@@ -3,12 +3,12 @@ title: Protokoly diagnostiky pro Hybrid Connections
 description: Tento článek poskytuje přehled všech protokolů aktivit a diagnostiky, které jsou k dispozici pro Azure Relay.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: f79e4aa21fcb9e592f431e252981dc0e7c02817f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 980f2f7a737d3f2460c17a84c472cbf56f5eb90f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314898"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532998"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Povolit protokoly diagnostiky pro Azure Relay Hybrid Connections
 Když začnete používat Hybrid Connections Azure Relay, možná budete chtít monitorovat, jak a kdy jsou posluchači a odesílatelé spuštěni a zavřeni a jak se budou vaše Hybrid Connections vytvářet a jsou odesílány zprávy. Tento článek poskytuje přehled protokolů aktivit a diagnostiky, které poskytuje služba Azure Relay. 
@@ -46,13 +46,13 @@ Chcete-li povolit diagnostické protokoly, proveďte následující kroky:
         ![Ukázka nastavení diagnostiky](./media/diagnostic-logs/sample-diagnostic-settings.png)
 1. Nastavení uložte kliknutím na **Uložit** na panelu nástrojů.
 
-Nové nastavení se projeví přibližně po 10 minutách. Protokoly se zobrazí v konfigurovaném cíli archivace v podokně **diagnostické protokoly** . Další informace o konfiguraci nastavení diagnostiky najdete v tématu [Přehled protokolů diagnostiky Azure](../azure-monitor/platform/diagnostic-logs-overview.md).
+Nové nastavení se projeví přibližně po 10 minutách. Protokoly se zobrazí v konfigurovaném cíli archivace v podokně **diagnostické protokoly** . Další informace o konfiguraci nastavení diagnostiky najdete v tématu [Přehled protokolů diagnostiky Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 
 ## <a name="schema-for-hybrid-connections-events"></a>Schéma pro události hybridních připojení
 Řetězce JSON protokolu událostí Hybrid Connections obsahují prvky uvedené v následující tabulce:
 
-| Name | Description |
+| Název | Popis |
 | ------- | ------- |
 | ResourceId | ID prostředku Azure Resource Manager |
 | ActivityId | Interní ID, které slouží k identifikaci zadané operace. Může být také známé jako "TrackingId" |

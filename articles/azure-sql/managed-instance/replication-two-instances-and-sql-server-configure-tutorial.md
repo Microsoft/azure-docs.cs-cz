@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: 8a6f21d6b02d555456bb70a16b353e5cdbd52fd4
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 680f8394ad1d10a564033ae5a2b9f59063589f73
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708514"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532522"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Kurz: Konfigurace transakční replikace mezi spravovanou instancí Azure SQL a SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -40,7 +40,7 @@ Chcete-li nakonfigurovat replikaci mezi vydavatelem spravované instance a odbě
 
 K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
-- [Předplatné Azure](https://azure.microsoft.com/free/).
+- [Předplatné Azure](https://azure.microsoft.com/free/)
 - Možnosti nasazení dvou spravovaných instancí v rámci stejné virtuální sítě.
 - Předplatitel SQL Server, buď místně, nebo na virtuálním počítači Azure. V tomto kurzu se používá virtuální počítač Azure.  
 - [SQL Server Management Studio (SSMS) 18,0 nebo vyšší](/sql/ssms/download-sql-server-management-studio-ssms).
@@ -78,7 +78,7 @@ Další informace o vytváření spravované instance najdete v tématu [Vytvoř
 
 Vytvořte virtuální počítač s SQL Server pomocí [Azure Portal](https://portal.azure.com). Virtuální počítač s SQL Server by měl mít následující vlastnosti:
 
-- Jméno:`sql-vm-sub`
+- Název: `sql-vm-sub`
 - Obrázek: SQL Server 2016 nebo vyšší
 - Skupina prostředků: stejná jako spravovaná instance
 - Virtuální síť:`sql-vm-sub-vnet`
@@ -142,7 +142,7 @@ Privátní zóna DNS umožňuje směrování DNS mezi spravovanými instancemi a
 
 ### <a name="create-a-private-dns-zone"></a>Vytvoření privátní zóny DNS
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Pokud chcete vytvořit nový prostředek Azure, vyberte **vytvořit prostředek** .
 1. Hledat `private dns zone` na Azure Marketplace.
 1. Zvolte prostředek **zóny privátní DNS** publikovaný Microsoftem a pak vyberte **vytvořit** a vytvořte zónu DNS.
@@ -247,6 +247,10 @@ Jakmile se naváže připojení a máte ukázkovou databázi, můžete nakonfigu
 1. Otevřete **nové okno dotazu** a spusťte následující kód Transact-SQL ke konfiguraci distribuce na spravované instanci distributora:
 
    ```sql
+   EXEC sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
+   
+   EXEC sp_adddistributiondb @database = N'distribution'
+   
    EXEC sp_adddistpublisher @publisher = 'sql-mi-publisher.b6bf57.database.windows.net', -- primary publisher
         @distribution_db = N'distribution',
         @security_mode = 0,
@@ -357,7 +361,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 
 Agent byl nakonfigurován s přihlášením systému Windows a musí místo něj použít SQL Server přihlášení. Pomocí stránky **zabezpečení agenta** ve **vlastnostech publikace** změňte přihlašovací údaje na SQL Server přihlašovací jméno.
 
-### <a name="failed-to-connect-to-azure-storage"></a>Nepovedlo se připojit k Azure Storage
+### <a name="failed-to-connect-to-azure-storage"></a>Selhání připojení ke službě Azure Storage
 
 `Connecting to Azure Files Storage '\\replstorage.file.core.windows.net\replshare' Failed to connect to Azure Storage '' with OS error: 53.`
 

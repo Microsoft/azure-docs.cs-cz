@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 07/29/2020
-ms.openlocfilehash: 968fe5a0f4999c25486189384186c23d1fcd5509
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 4189ea5fd0b2b52b5bf1e0614e4b43b9411df31d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430254"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530366"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopírování přetransakční kopie databáze v Azure SQL Database
 
@@ -133,7 +133,7 @@ Pomocí dotazu na zobrazení [Sys. databases](https://docs.microsoft.com/sql/rel
 > [!IMPORTANT]
 > Pokud potřebujete vytvořit kopii s podstatně menším cílem služby, než má zdroj, cílová databáze nemusí mít dostatek prostředků k dokončení procesu osazení a může způsobit selhání aplikace kopírování. V tomto scénáři použijte k vytvoření kopie na jiném serveru nebo jiné oblasti požadavek geografického obnovení. Další informace najdete v tématu [obnovení Azure SQL Database pomocí záloh databáze](recovery-using-backups.md#geo-restore) .
 
-## <a name="rbac-roles-to-manage-database-copy"></a>Role RBAC pro správu kopie databáze
+## <a name="azure-roles-to-manage-database-copy"></a>Role Azure pro správu kopie databáze
 
 Chcete-li vytvořit kopii databáze, budete muset být v následujících rolích.
 
@@ -155,7 +155,7 @@ Pokud chcete spravovat kopii databáze pomocí Azure Portal, budete potřebovat 
 
    Microsoft. Resources/Subscriptions/Resources/číst Microsoft. Resources/Subscriptions/Resources/Write Microsoft. Resources/nasazování/čtení Microsoft. Resources/Deployments/Write Microsoft. Resources/Deployments/
 
-Pokud chcete zobrazit operace v rámci nasazení ve skupině prostředků na portálu, operace napříč více zprostředkovateli prostředků, včetně operací SQL, budete potřebovat tyto další role RBAC:
+Pokud chcete zobrazit operace v rámci nasazení ve skupině prostředků na portálu, operace napříč více zprostředkovateli prostředků, včetně operací SQL, budete potřebovat tyto další role Azure:
 
    Microsoft. Resources/Subscriptions/ResourceGroups/nasazení/operace/čtení Microsoft. Resources/Subscriptions/ResourceGroups/Deployments/operationstatuses/Read
 

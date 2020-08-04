@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: f9552b82dc79e1edafb13fead5a07df3ecf1be3b
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 7c792ee9c56a044942bb2249a57f2615c72badee
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512954"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533134"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -97,11 +97,15 @@ MB/s můžete převést na IOPS pomocí následujícího vzorce:
 
 ### <a name="how-do-i-change-the-service-level-of-a-volume"></a>Návody změnit úroveň služby svazku?
 
-Změna úrovně služby svazku se momentálně nepodporuje.
+Úroveň služby existujícího svazku můžete změnit přesunutím svazku do jiného fondu kapacity, který využívá požadovanou [úroveň služby](azure-netapp-files-service-levels.md) pro daný svazek. Viz [dynamické změny úrovně služby svazku](dynamic-change-volume-service-level.md). 
 
 ### <a name="how-do-i-monitor-azure-netapp-files-performance"></a>Návody monitorovat výkon Azure NetApp Files?
 
 Azure NetApp Files poskytuje metriky výkonu svazku. K monitorování metrik využití pro Azure NetApp Files můžete použít taky Azure Monitor.  Seznam metrik výkonu pro Azure NetApp Files najdete v tématu [metriky pro Azure NetApp Files](azure-netapp-files-metrics.md) .
+
+### <a name="whats-the-performance-impact-of-kerberos-on-nfsv41"></a>Jaký je dopad na výkon protokolu Kerberos v NFSv 4.1?
+
+Informace o možnostech zabezpečení pro NFSv 4.1, testovaných vektorech výkonu a očekávaném dopadu na výkon najdete v části [vliv na výkon protokolu Kerberos v nfsv 4.1](configure-kerberos-encryption.md#kerberos_performance) . 
 
 ## <a name="nfs-faqs"></a>Nejčastější dotazy k systému souborů NFS
 
@@ -164,6 +168,15 @@ Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption
 
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
+
+## <a name="dual-protocol-faqs"></a>Nejčastější dotazy týkající se duálního protokolu
+
+### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>Byl proveden pokus o použití kořenového a místního uživatele pro přístup ke svazku se dvěma protokoly se stylem zabezpečení systému souborů NTFS v systému UNIX. Proč se mi stala chyba "oprávnění zamítnuto"?   
+
+Svazek s duálním protokolem podporuje protokoly NFS i SMB.  Když se pokusíte o přístup k připojenému svazku v systému UNIX, systém se pokusí mapovat uživatele systému UNIX, který použijete pro uživatele systému Windows. Pokud není nalezeno žádné mapování, dojde k chybě "oprávnění zamítnuto".  Tato situace platí také při použití kořenového uživatele pro přístup.    
+
+Abyste se vyhnuli problému "oprávnění zamítnuto", ujistěte se, že systém Windows Active Directory zahrnuje `pcuser` před přístupem k přípojnému bodu. Pokud přidáte `pcuser` po zjištění problému "oprávnění zamítnuto", počkejte 24 hodin, než se položka mezipaměti před dalším pokusem o přístup vymaže.
+
 
 ## <a name="capacity-management-faqs"></a>Nejčastější dotazy ke správě kapacity
 

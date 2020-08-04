@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3dcb3a74e9341981af7e6eddb4be7454aaf429b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2fcd1c3a9fd3e4be22e4057eb2cfc9a71d09d558
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419780"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529105"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -144,7 +144,7 @@ az vm extension set \
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Konfigurace přiřazení rolí pro virtuální počítač
 
-Teď, když jste vytvořili virtuální počítač, musíte nakonfigurovat zásadu Azure RBAC, abyste zjistili, kdo se může přihlásit k virtuálnímu počítači. K autorizaci přihlášení k virtuálnímu počítači se používají dvě role RBAC:
+Teď, když jste vytvořili virtuální počítač, musíte nakonfigurovat zásadu Azure RBAC, abyste zjistili, kdo se může přihlásit k virtuálnímu počítači. K autorizaci přihlášení k virtuálnímu počítači se používají dvě role Azure:
 
 - **Přihlášení správce virtuálního počítače**: uživatelé s touto rolí se můžou přihlašovat k virtuálnímu počítači Azure s oprávněními správce.
 - **Přihlášení uživatele k virtuálnímu počítači**: uživatelé s touto rolí se můžou přihlašovat k virtuálnímu počítači Azure s pravidelnými uživatelskými oprávněními.
@@ -208,7 +208,7 @@ Před autorizací přístupu k virtuálním počítačům s Windows v Azure, kte
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Přihlášení pomocí přihlašovacích údajů Azure AD k virtuálnímu počítači s Windows
 
 > [!IMPORTANT]
-> Vzdálené připojení k virtuálním počítačům připojeným ke službě Azure AD je povolené jenom z počítačů s Windows 10, které jsou buď registrované v Azure AD (vyžaduje se minimální 20H1 sestavení), nebo jste připojeni ke službě Azure AD nebo ke **stejnému** adresáři jako virtuální počítač připojili službu Azure AD. Navíc k protokolu RDP pomocí přihlašovacích údajů Azure AD musí uživatel patřit do jedné ze dvou rolí RBAC, přihlášení správce virtuálního počítače nebo přihlášení uživatele virtuálního počítače. Pokud používáte počítač s Windows 10 registrovaný v Azure AD, musíte zadat přihlašovací údaje ve formátu AzureAD\UPN (např. AzureAD\john@contoso.com ). V tuto chvíli se služba Azure bastionu nedá použít k přihlášení pomocí Azure Active Directory ověřování s rozšířením AADLoginForWindows. podporován je pouze přímý protokol RDP.
+> Vzdálené připojení k virtuálním počítačům připojeným ke službě Azure AD je povolené jenom z počítačů s Windows 10, které jsou buď registrované v Azure AD (vyžaduje se minimální 20H1 sestavení), nebo jste připojeni ke službě Azure AD nebo ke **stejnému** adresáři jako virtuální počítač připojili službu Azure AD. Navíc k protokolu RDP pomocí přihlašovacích údajů Azure AD musí uživatel patřit do jedné ze dvou rolí Azure, přihlášení správce virtuálních počítačů nebo přihlášení uživatele virtuálního počítače. Pokud používáte počítač s Windows 10 registrovaný v Azure AD, musíte zadat přihlašovací údaje ve formátu AzureAD\UPN (např. AzureAD\john@contoso.com ). V tuto chvíli se služba Azure bastionu nedá použít k přihlášení pomocí Azure Active Directory ověřování s rozšířením AADLoginForWindows. podporován je pouze přímý protokol RDP.
 
 Přihlášení k virtuálnímu počítači s Windows serverem 2019 pomocí Azure AD: 
 
@@ -315,13 +315,13 @@ V Public Preview je rozšíření AADLoginForWindows určeno pouze pro instalaci
 
 ### <a name="troubleshoot-sign-in-issues"></a>Řešení potíží s přihlašováním
 
-Některé běžné chyby při pokusu o připojení RDP s přihlašovacími údaji služby Azure AD zahrnují žádné role RBAC přiřazené, neautorizovaného klienta nebo 2FA Metoda přihlašování, která je povinná. Tyto problémy opravíte pomocí následujících informací.
+Některé běžné chyby při pokusu o připojení RDP s přihlašovacími údaji Azure AD zahrnují žádné přiřazené role Azure, neautorizovaný klient nebo 2FA Metoda přihlašování, která je povinná. Tyto problémy opravíte pomocí následujících informací.
 
 Stav zařízení a jednotného přihlašování se dá zobrazit tak, že se spustí `dsregcmd /status` . Cílem je stav zařízení, který se má zobrazit jako `AzureAdJoined : YES` a `SSO State` Zobrazit `AzureAdPrt : YES` .
 
 Přihlášení RDP pomocí účtů Azure AD se taky zachycuje v prohlížeči událostí v protokolech událostí AAD\Operational.
 
-#### <a name="rbac-role-not-assigned"></a>Role RBAC není přiřazená.
+#### <a name="azure-role-not-assigned"></a>Role Azure není přiřazená.
 
 Pokud se při inicializaci připojení ke vzdálené ploše na virtuální počítač zobrazí následující chybová zpráva: 
 

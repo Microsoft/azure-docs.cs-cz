@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2488bbded1b4d55f3c4cf21c63e9fcb90e9bfb4f
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: e12669609b21d23b775af27f95528c4b42e95e81
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475052"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533531"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -24,13 +24,13 @@ Azure Backup poskytuje možnost obnovení [virtuálních počítačů Azure a di
 
 Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuální počítač a vyberte požadovaný bod obnovení.
 
-1. Přihlaste se k [Azure Portal](https://portal.Azure.com) a v levém podokně klikněte na **virtuální počítače**. V seznamu virtuálních počítačů vyberte virtuální počítač a otevřete tak řídicí panel tohoto virtuálního počítače.
+1. Přihlaste se k [Azure Portal](https://portal.Azure.com) a v levém podokně vyberte **virtuální počítače**. V seznamu virtuálních počítačů vyberte virtuální počítač a otevřete tak řídicí panel tohoto virtuálního počítače.
 
-2. V nabídce virtuálního počítače klikněte na **zálohovat** a otevřete řídicí panel zálohování.
+2. V nabídce virtuálního počítače vyberte **zálohování** a otevřete řídicí panel zálohování.
 
     ![Otevřít zálohovanou položku trezoru Recovery Services](./media/backup-azure-restore-files-from-vm/open-vault-for-vm.png)
 
-3. V nabídce řídicího panelu zálohování klikněte na **obnovení souborů**.
+3. V nabídce řídicího panelu zálohování vyberte **obnovení souboru**.
 
     ![Tlačítko pro obnovení souboru](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
@@ -40,7 +40,7 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
 
 4. V rozevírací nabídce **Vyberte bod obnovení** vyberte bod obnovení, který obsahuje soubory, které chcete. Ve výchozím nastavení je již vybrán nejnovější bod obnovení.
 
-5. Pokud si chcete stáhnout software, který se používá ke kopírování souborů z bodu obnovení, klikněte na **stáhnout spustitelný soubor** (pro virtuální počítače s Windows Azure) nebo **stáhnout skript** (pro virtuální počítače Azure Linux se vygeneruje skript Pythonu).
+5. Pokud chcete stáhnout software, který se používá ke kopírování souborů z bodu obnovení, vyberte **stáhnout spustitelný soubor** (pro virtuální počítače s Windows Azure) nebo **stáhnout skript** (pro virtuální počítače se systémem Linux Azure se vygeneruje skript Pythonu).
 
     ![Generované heslo](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
@@ -50,7 +50,7 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
 
     Ke spuštění spustitelného souboru nebo skriptu jako správce doporučujeme uložit stažený soubor do počítače.
 
-6. Spustitelný soubor nebo skript je chráněn heslem a vyžaduje heslo. V nabídce **obnovení souborů** kliknutím na tlačítko Kopírovat načtěte heslo do paměti.
+6. Spustitelný soubor nebo skript je chráněn heslem a vyžaduje heslo. V nabídce **obnovení souboru** vyberte tlačítko Kopírovat a načtěte heslo do paměti.
 
     ![Generované heslo](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
@@ -78,7 +78,7 @@ V systému Linux jsou svazky bodu obnovení připojeny ke složce, ve které je 
 
 ## <a name="closing-the-connection"></a>Uzavírání připojení
 
-Po zjištění souborů a jejich jejich zkopírování do umístění místního úložiště odeberte (nebo odpojte) další jednotky. Chcete-li odpojit jednotky, v nabídce **obnovení souboru** v Azure Portal klikněte na možnost **Odpojit disky**.
+Po zjištění souborů a jejich jejich zkopírování do umístění místního úložiště odeberte (nebo odpojte) další jednotky. Chcete-li odpojit jednotky, vyberte v nabídce **obnovení souboru** v Azure Portal možnost **Odpojit disky**.
 
 ![Odpojit disky](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
@@ -162,11 +162,11 @@ PV         VG        Fmt  Attr PSize   PFree    VG UUID
   /dev/sdd   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
 ```
 
-1. sloupec (PV) zobrazuje fyzický svazek. následující sloupce zobrazují relevantní název skupiny svazků, formát, atributy, velikost, volné místo a jedinečné ID skupiny svazků. Výstup příkazu zobrazuje všechny fyzické svazky. Podívejte se na výstup skriptu a Identifikujte svazky související se zálohováním. Ve výše uvedeném příkladu by byl výstup skriptu zobrazený jako/dev/SDF a/dev/SDD.. A takže skupina svazků datavg_db patří do skriptu a skupina svazků Appvg_new patří do tohoto počítače. Posledním účelem je zajistit, aby měl jedinečný název skupiny svazků 1 jedinečné ID.
+První sloupec (PV) zobrazuje fyzický svazek. následující sloupce zobrazují relevantní název skupiny svazků, formát, atributy, velikost, volné místo a jedinečné ID skupiny svazků. Výstup příkazu zobrazuje všechny fyzické svazky. Podívejte se na výstup skriptu a Identifikujte svazky související se zálohováním. Ve výše uvedeném příkladu by byl výstup skriptu zobrazený jako/dev/SDF a/dev/SDD.. A takže skupina svazků *datavg_db* patří do skriptu a skupina svazků *Appvg_new* patří do tohoto počítače. Posledním účelem je zajistit, aby měl jedinečný název skupiny svazků jedno jedinečné ID.
 
 ###### <a name="duplicate-volume-groups"></a>Duplicitní skupiny svazků
 
-K dispozici jsou situace, kdy názvy skupin svazků můžou po spuštění skriptu obsahovat 2 identifikátory UUID. Znamená to, že názvy skupin svazků v počítači, ve kterém se skript spustí, a v zálohovaném virtuálním počítači jsou stejné. Pak musíme přejmenovat skupiny svazků zálohovaných virtuálních počítačů. Podívejte se na následující příklad.
+K dispozici jsou situace, kdy názvy skupin svazků můžou po spuštění skriptu obsahovat 2 identifikátory UUID. Znamená to, že názvy skupin svazků v počítači, kde je skript spuštěný, a v zálohovaném virtuálním počítači jsou stejné. Pak musíme přejmenovat skupiny svazků zálohovaných virtuálních počítačů. Podívejte se na následující příklad.
 
 ```bash
 PV         VG        Fmt  Attr PSize   PFree    VG UUID
@@ -184,9 +184,9 @@ PV         VG        Fmt  Attr PSize   PFree    VG UUID
   /dev/sdm2  rootvg    lvm2 a--  194.57g  127.57g efohjX-KUGB-ETaH-4JKB-MieG-EGOc-XcfLCt
 ```
 
-Výstup skriptu by zobrazil/dev/SDG,/dev/SDH,/dev/sdm2 jako připojený. Proto jsou odpovídající názvy VG Appvg_new a rootvg. Ale v seznamu VG počítače se taky nacházejí stejné názvy. Můžeme ověřit, že 1 VG název má 2 UUID.
+Výstup skriptu by zobrazil/dev/SDG,/dev/SDH,/dev/sdm2 jako připojený. Proto jsou odpovídající názvy VG Appvg_new a rootvg. Ale v seznamu VG počítače se taky nacházejí stejné názvy. Můžeme ověřit, že jeden VG název má dva identifikátory UUID.
 
-Teď je potřeba přejmenovat VG názvy pro svazky založené na skriptech, tj.,/dev/SDG,/dev/SDH,/dev/sdm2.. Pokud chcete přejmenovat skupinu svazků, použijte následující příkaz.
+Nyní musíme přejmenovat VG názvy pro svazky založené na skriptech, například:/dev/SDG,/dev/SDH,/dev/sdm2. Pokud chcete přejmenovat skupinu svazků, použijte následující příkaz.
 
 ```bash
 vgimportclone -n rootvg_new /dev/sdm2
@@ -265,7 +265,7 @@ V následující tabulce je uvedena kompatibilita mezi operačním systémem ser
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+| Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Pro Linux OS
 
@@ -296,7 +296,7 @@ Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečn
 
 ## <a name="access-requirements"></a>Požadavky na přístup
 
-Pokud skript spustíte na počítači s omezeným přístupem, ujistěte se, že je k dispozici:
+Pokud skript spustíte na počítači s omezeným přístupem, ujistěte se, že máte přístup k těmto akcím:
 
 - `download.microsoft.com`
 - Adresy URL služby obnovení (geografické názvy) odkazují na oblast, ve které se nachází trezor služby Recovery Services.
@@ -343,7 +343,7 @@ Vzhledem k tomu, že proces obnovy souborů připojí všechny disky ze zálohy,
     - Node. [0]. Timeo. noop_out_timeout = 5 na Node. Timeo. [0].. noop_out_timeout = 30
 - Po provedení změny výše spusťte skript znovu. U těchto změn je vysoce pravděpodobné, že obnovení souboru bude úspěšné.
 - Pokaždé, když uživatel stáhne skript, Azure Backup zahájí proces přípravy bodu obnovení ke stažení. U velkých disků bude tento proces trvat značnou dobu. Pokud dojde k následným nárůstům požadavků, cílová Příprava přejde ke stažení spirály. Proto se doporučuje stáhnout skript z portálu/PowerShell/CLI, počkat po 20-30 minut (Heuristická) a pak ji spustit. V tuto chvíli se očekává, že cíl bude připravený pro připojení ze skriptu.
-- Po obnovení souboru se vraťte na portál a klikněte na **Odpojit disky** pro body obnovení, ve kterých jste nedokázali připojit svazky. V podstatě tento krok vyčistí všechny existující procesy a relace a zvýší pravděpodobnost obnovení.
+- Po obnovení souboru se vraťte na portál a vyberte Odpojit **disky** pro body obnovení, ve kterých jste nedokázali připojit svazky. V podstatě tento krok vyčistí všechny existující procesy a relace a zvýší pravděpodobnost obnovení.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -357,7 +357,7 @@ Pokud máte při obnovování souborů z virtuálních počítačů problémy, d
 | V počítači, kde je spuštěný exe: po kliknutí na tlačítko Odpojit se nové svazky nepřipojí. | Iniciátor iSCSI na počítači neodpovídá/nereaguje na aktualizace připojení k cíli a údržbě mezipaměti. |  Po kliknutí na **Odpojit**počkejte několik minut. Pokud se nové svazky odpojeny, procházejte všemi svazky. Procházení všech svazků vynutí, aby iniciátor aktualizoval připojení, a svazek je odpojený s chybovou zprávou, že disk není k dispozici.|
 | Výstup z exe: skript se úspěšně spustí, ale ve výstupu skriptu se nezobrazí "nové svazky připojené". |    Toto je přechodná chyba    | Svazky budou již připojeny. Otevřete Průzkumníka, který chcete procházet. Pokud používáte stejný počítač ke spouštění skriptů pokaždé, zvažte restartování počítače a seznam by se měl zobrazit v dalších spuštěních exe. |
 | Specifické pro Linux: nemůžete zobrazit požadované svazky | OPERAČNÍ systém počítače, ve kterém je spuštěný skript, nemusí rozpoznat podkladový systém souborů chráněného virtuálního počítače. | Ověřte, zda je bod obnovení konzistentní nebo konzistentní se souborem. Pokud je konzistentní soubor, spusťte skript na jiném počítači, jehož operační systém rozpozná chráněný virtuální počítač. |
-| Specifické pro systém Windows: nemůžete zobrazit požadované svazky | Disky jsou možná připojené, ale svazky nejsou nakonfigurované. | Na obrazovce Správa disků Identifikujte další disky týkající se bodu obnovení. Pokud je některý z těchto disků v režimu offline, zkuste je převést do režimu online tak, že kliknete pravým tlačítkem na disk a kliknete na **online**.|
+| Specifické pro systém Windows: nemůžete zobrazit požadované svazky | Disky jsou možná připojené, ale svazky nejsou nakonfigurované. | Na obrazovce Správa disků Identifikujte další disky týkající se bodu obnovení. Pokud je některý z těchto disků v režimu offline, zkuste je převést do režimu online tak, že kliknete pravým tlačítkem na disk a vyberete **online**.|
 
 ## <a name="security"></a>Zabezpečení
 
@@ -383,7 +383,7 @@ Vygenerovaný skript je podepsaný oficiálním certifikátem společnosti Micro
 
 Pouze správce může spustit skript a měl by být spuštěn v režimu zvýšeného oprávnění. Skript spustí pouze předem vygenerovanou sadu kroků a nepřijímá vstup z žádného externího zdroje.
 
-Chcete-li spustit skript, je vyžadováno heslo, které se zobrazí pouze oprávněnému uživateli v době generování skriptu v Azure Portal nebo PowerShellu/CLI. K tomu je potřeba zajistit, že ověřený uživatel, který stáhne skript, zodpovídá také za spuštění skriptu.
+Chcete-li spustit skript, je vyžadováno heslo, které se zobrazí pouze oprávněnému uživateli v době generování skriptu v Azure Portal nebo PowerShellu/CLI. K tomu je potřeba zajistit, aby autorizovaný uživatel, který stáhl skript, byl zodpovědný také za spuštění skriptu.
 
 #### <a name="browse-files-and-folders"></a>Procházet soubory a složky
 

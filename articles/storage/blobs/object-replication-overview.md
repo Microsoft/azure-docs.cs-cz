@@ -77,7 +77,7 @@ Během období Preview se replikace dat mezi účty úložiště nevztahují na 
 ### <a name="prerequisites-for-object-replication"></a>Požadavky na replikaci objektů
 
 Replikace objektů vyžaduje, aby byly povolené následující funkce Azure Storage: 
-- [Změna kanálu](storage-blob-change-feed.md)
+- [Změnit kanál](storage-blob-change-feed.md)
 - [Správa verzí](versioning-overview.md)
 
 Před konfigurací replikace objektů povolte příslušné požadavky. Ve zdrojovém účtu musí být povolený kanál změn a na zdrojovém i cílovém účtu musí být povolená Správa verzí objektů BLOB. Další informace o povolení těchto funkcí najdete v těchto článcích:

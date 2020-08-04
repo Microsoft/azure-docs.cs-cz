@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: d72a80298be96d32547737a98e5279da0c5d8ef0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 801d3ca383ebde75d6590558638df6820e538249
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324824"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529938"
 ---
 # <a name="payout-policy-details"></a>Podrobnosti zásad plateb
 
@@ -20,7 +20,7 @@ Tento článek popisuje proces výběrů od společnosti Microsoft, plán výbě
 
 ## <a name="where-to-find-upcoming-payouts"></a>Kde najít nadcházející výběry
 
-V partnerském **centru vyberte výběr** v pravém horním rohu portálu:
+V partnerském centru vyberte **Výběr** v pravém horním rohu obrazovky:
 
 ![Ukazuje ikonu Výběr v pravém horním rohu portálu partnerského centra.](./media/payout-overview.png)
 
@@ -40,24 +40,24 @@ Od 1. května 2020 aktualizujeme zásady pro výběry, které se týkají produk
 > [!NOTE]
 > V tématu [postup pro zákazníky, kteří nejsou placeni](#process-for-customer-non-payment) níže, najdete akce, které provedeme, pokud se zákazníkovi nepovede platit, ale už vám byl vydaný výběr.
 
-| Událost  | Datum  | Viditelnost partnerů: sestava výběrů partnerského centra  |  Viditelnost partnerů: analýzy partnerského centra\* |
+| Událost  | Datum (UTC) | Viditelnost partnerů: sestava výběrů partnerského centra  |  Viditelnost partnerů: analýzy partnerského centra\* |
 | --- | --- | --- | --- |
 | Transakce nebo měsíc využití | 8/1/2020 – 8/31/2020 | – | **Sestava využití**: zobrazená nová spotřeba (Aktualizováno každé čtyři hodiny)<br>**Sestava objednávky**: není k dispozici |
 | Termín ukončení (měsíc) | 8/31/2020 | – | **Sestava využití**: zobrazená koncová spotřeba měsíce<br>**Sestava objednávky**: není k dispozici |
 | Vygenerované pořadí | 9/3/2020 – 9/7/2020 | – | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní |
 | Vypočítat výběr výpočtu | 9/4/2020 – 9/10/2020 | Označený jako **nezpracovaný** v historii transakce na řídicím panelu Výběr | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní |
 | Měsíční výběr | 10/5/2020 | Označeno jako **nadcházející** v historii transakce na řídicím panelu Výběr | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní |
-| Datum vyvýběru | 10/15/2020 | Označeno jako **odesláno** v historii transakce a v části platby na řídicím panelu Výběr | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní |
+| Datum vyvýběru\** | 10/15/2020 | Označeno jako **odesláno** v historii transakce a v části platby na řídicím panelu Výběr | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní |
 | Shromážděna faktura zákazníka | 12/1/2020 | Označeno jako **odesláno** v historii transakce a v části platby na řídicím panelu Výběr | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní  |
 |  |  |  |  |
 
-\*Sestavy využití a objednávek jsou dostupné v části analyzovat v partnerském centru.
+\*Sestavy využití a objednávek jsou dostupné v části analyzovat v partnerském centru.</br>\** Datum vyvýběru je v Tichomoří (běžný čas) (PST).
 
 ### <a name="customers-who-pay-using-credit-card-or-invoice"></a>Zákazníci, kteří platíte pomocí platební karty nebo faktury
 
 Všechny nákupy pomocí platební karty nebo měsíční faktury mají 30denní dobu skladování, aby se zajistilo, že se prostředky vymažou a že nehrozí vratek nebo podezření na podvod.
 
-| Událost  | Datum  | Viditelnost partnerů: sestava výběrů partnerského centra  |  Viditelnost partnerů: analýzy partnerského centra\*  |
+| Událost  | Datum (UTC) | Viditelnost partnerů: sestava výběrů partnerského centra  |  Viditelnost partnerů: analýzy partnerského centra\*  |
 | --- | --- | --- | --- |
 | Transakce nebo měsíc využití | 8/1/2019 - 8/31/2019 | – | **Sestava využití**: zobrazená nová spotřeba (Aktualizováno každé čtyři hodiny)<br>**Sestava objednávky**: není k dispozici |
 | Termín ukončení (měsíc) | 8/31/2019 | – | **Sestava využití**: zobrazená koncová spotřeba měsíce<br>**Sestava objednávky**: není k dispozici |
@@ -65,16 +65,16 @@ Všechny nákupy pomocí platební karty nebo měsíční faktury mají 30denní
 | Shromážděna faktura zákazníka | 9/7/2019 – 9/10/2019 | – | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní |
 | Vypočítat výběr | 9/8/2019 -9/12/2019 | Označení jako **nezpracované** v historii transakcí na řídicím panelu Výběr | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní |
 | Měsíční výběr | 11/5/2019\* | Označeno jako **nadcházející** v historii transakcí na řídicím panelu Výběr | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní |
-| Datum vyvýběru | 11/15/2019 | Označuje se jako **odeslaný** v historii transakcí a v části platby na řídicím panelu výběr. | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní |
+| Datum vyvýběru\** | 11/15/2019 | Označuje se jako **odeslaný** v historii transakcí a v části platby na řídicím panelu výběr. | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní |
 |  |  |  |  |
 
-\*Sestavy využití a objednávek jsou dostupné v části analyzovat v partnerském centru.
+\*Sestavy využití a objednávek jsou dostupné v části analyzovat v partnerském centru.</br>\** Datum vyvýběru je v Tichomoří (běžný čas) (PST).
 
 ### <a name="enterprise-agreement-transactions-prior-to-may-1-2020"></a>Transakce smlouva Enterprise před 1. května 2020
 
 Všechny nákupy, ke kterým dochází před tímto datem, se zpracovávají a účtují podle plánu uvedeného níže, poté, co společnost Microsoft shromáždila platbu od zákazníků a zpracovala poplatek za Marketplace.
 
-| Událost  | Datum  | Viditelnost partnerů: sestava výběrů partnerského centra  |  Viditelnost partnerů: analýzy partnerského centra\*  |
+| Událost  | Datum (UTC)  | Viditelnost partnerů: sestava výběrů partnerského centra  |  Viditelnost partnerů: analýzy partnerského centra\*  |
 | --- | --- | --- | --- |
 | Transakce nebo měsíc využití | 8/1/2019 – 8/31/2019 | – | **Sestava využití**: zobrazená nová spotřeba (Aktualizováno každé čtyři hodiny)<br>**Sestava objednávky**: není k dispozici |
 | Termín ukončení (měsíc) | 8/31/2019 | – | **Sestava využití**: zobrazená koncová spotřeba měsíce<br>**Sestava objednávky**: není k dispozici |
@@ -82,10 +82,10 @@ Všechny nákupy, ke kterým dochází před tímto datem, se zpracovávají a �
 | Shromážděna faktura zákazníka | 12/1/2019 | – | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní |
 | Vypočítat výběr | 12/5/2019 – 12/7/2019 | Označení jako **nezpracované** v historii transakcí na řídicím panelu Výběr | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní |
 | Měsíční výběr | 1/5/2019 | Označeno jako **nadcházející** v historii transakcí na řídicím panelu Výběr | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní |
-| Datum vyvýběru | 1/15/2019 | Označeno jako **odesláno** v historii transakce a v části platby na řídicím panelu Výběr | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní |
+| Datum vyvýběru\** | 1/15/2019 | Označeno jako **odesláno** v historii transakce a v části platby na řídicím panelu Výběr | **Sestava využití**: spotřeba zobrazená s ČísloObjednávky/OrderLineItemID<br>**Sestava objednávky**: objednávky zákazníka ZOBRAZENÉ jako aktivní |
 |  |  |  |  |
 
-\*Sestavy využití a objednávek jsou dostupné v části analyzovat v partnerském centru.
+\*Sestavy využití a objednávek jsou dostupné v části analyzovat v partnerském centru.</br>\** Datum vyvýběru je v Tichomoří (běžný čas) (PST).
 
 ## <a name="process-for-customer-non-payment"></a>Postup pro zákazníka bez platby
 
@@ -101,14 +101,27 @@ Následuje příklad plánu:
 | --- | --- | --- |
 | Příklad data pro výběr | 10/15/2020 | Označeno jako **odeslané** v části Historie transakcí a platby na řídicím panelu Výběr |
 | <font color="red">Pokud zákazník neplatí od Microsoftu</font> | 12/2/2020 – 12/5/2020 | Beze změny, stejné jako u výše |
-| Zákazník obdrží první pozdní e-mail s platbami. | 12/6/2020 | Žádné |
-| Zákazník obdrží běžné e-maily s rostoucí naléhavostí. | 12/7/2020 – 1/31/2021 | Žádné |
+| Zákazník obdrží první pozdní e-mail s platbami. | 12/6/2020 | Žádná |
+| Zákazník obdrží běžné e-maily s rostoucí naléhavostí. | 12/7/2020 – 1/31/2021 | Žádná |
 | Vydavatel je upozorněn na zápis, je nejspíš | 1/7/2021 | E-mailové oznámení odeslané vydavateli, že si zákazník ještě neposlal platby. Zahrnuje ID transakce a částku dolaru. |
-| Zákazník obdrží oznámení o ukončení. | 2/1/2021 | Žádné |
+| Zákazník obdrží oznámení o ukončení. | 2/1/2021 | Žádná |
 | Ukončení procesu shromažďování/fondů jsou odepsány | 2/15/2021 | E-mailové oznámení odeslané vydavateli, že prostředky byly odepsány. Zahrnuje ID transakce a částku dolaru. |
 | Výběr je odečtený. | 3/1/2021 | Vydavatel uvidí v příkazu výběr v partnerském centru negativní transakci. |
 | Výběr se zamítne. | 3/15/2021 | Budoucí výběry se zobrazí v příkazu pro výběr partnerského centra. Vydavatel neobdrží platbu, dokud zůstatek nebude záporný.  |
 |||
+
+## <a name="number-of-days-for-payments-to-reach-a-payout-account"></a>Počet dní, po které se mají platby oslovit k účtu typu výběr
+
+Na 15. den tohoto měsíce obvykle posíláme jakékoli platby splatné v daném měsíci, ale čas potřebný k tomu, aby platba dosáhla svého účtu, trvá ještě déle. Množství dnů závisí na způsobu platby, který používáme pro váš účet, jak je popsáno níže.
+
+> [!NOTE]
+> Níže uvedené dny jsou přibližné. jakákoli platba může trvat déle nebo kratší dobu, než se dostanou k vašemu účtu.
+
+| Způsob platby     | Počet dní, po které se má přejít k účtu typu výběr     |
+|--------------------|--------------------------------------------|
+| Paypal             | 1 pracovní den                             |
+| ACH/SEPA           | 2-3 pracovních dnů                          |
+| Přenos po drátě      | 7-10 pracovních dnů                         |
 
 ## <a name="next-step"></a>Další krok
 

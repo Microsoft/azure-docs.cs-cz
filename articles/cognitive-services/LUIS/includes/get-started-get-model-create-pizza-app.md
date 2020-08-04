@@ -19,7 +19,7 @@ ms.locfileid: "84466909"
 ---
 Vytvořte aplikaci Pizza.
 
-1. Vyberte [Pizza-App-for-Luis-v6. JSON](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) a zobrazte stránku GitHub pro daný `pizza-app-for-luis.json` soubor.
+1. Vyberte možnost [pizza-app-for-luis-v6.jszapnuto](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) a zobrazte stránku GitHub pro daný `pizza-app-for-luis.json` soubor.
 1. Klikněte pravým tlačítkem nebo dlouho klepněte na tlačítko **nezpracované** a vyberte **Uložit odkaz jako** a uložte `pizza-app-for-luis.json` ho do svého počítače.
 1. Přihlaste se k [portálu Luis](https://www.luis.ai).
 1. Vyberte [Moje aplikace](https://www.luis.ai/applications).
@@ -44,7 +44,7 @@ Měla by se zobrazit stránka **záměry** se seznamem záměrů v aplikaci Pizz
 ## <a name="add-an-authoring-resource-to-the-pizza-app"></a>Přidání prostředku pro vytváření do aplikace Pizza
 
 1. Vyberte **Spravovat**.
-1. Vyberte **prostředky Azure**.
+1. Vyberte **Azure Resources** (Prostředky Azure).
 1. Vyberte **prostředek pro vytváření obsahu**.
 1. Vyberte **změnit prostředek pro vytváření obsahu**.
 
@@ -65,7 +65,7 @@ Vyhledání těchto hodnot:
 
 1. Na stránce **záměry** vyberte **Spravovat**.
 1. Na stránce **nastavení aplikace** si poznamenejte **ID aplikace**.
-1. Vyberte **prostředky Azure**.
+1. Vyberte **Azure Resources** (Prostředky Azure).
 1. Vyberte **prostředek pro vytváření obsahu**.
 1. Na kartě **prostředek pro vytváření** záznamů zaznamenejte **primární klíč**. Tato hodnota je váš kód pro vytváření.
 1. Zaznamenejte **adresu URL koncového bodu**. Tato hodnota je vaším koncovým bodem pro vytváření obsahu.

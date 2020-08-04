@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: e4b4b6f21d158a758c2ff77db6660bbb44696d90
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b2d43e970012209acb6ed7fbbaafbb1719617280
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086683"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533865"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>Rychlý Start: vytvoření spravované instance spravované instance SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,9 +32,9 @@ Chcete-li vytvořit spravovanou instanci, postupujte podle těchto kroků:
 
 ### <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
+Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. V levé nabídce Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a pak do vyhledávacího pole zadejte **Azure SQL** .
 1. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o spravované instanci Azure SQL získáte tak, že na dlaždici **spravované instance SQL** vyberete **Zobrazit podrobnosti** .
 1. Vyberte **Vytvořit**.
@@ -56,7 +56,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
    | **Předplatné** | Vaše předplatné. | Předplatné, které vám poskytne oprávnění k vytváření nových prostředků. |
    | **Skupina prostředků** | Nová nebo existující skupina prostředků.|Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
    | **Název spravované instance** | Libovolný platný název.|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
-   | **Věřitel** |Oblast, ve které chcete vytvořit spravovanou instanci.|Informace o oblastech najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/).|
+   | **Oblast** |Oblast, ve které chcete vytvořit spravovanou instanci.|Informace o oblastech najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/).|
    | **Přihlašovací jméno správce spravované instance** | Jakékoli platné uživatelské jméno. | Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). Nepoužívejte "serveradmin", protože to je vyhrazená role na úrovni serveru.|
    | **Heslo** | Jakékoli platné heslo.| Heslo musí obsahovat nejméně 16 znaků a musí splňovat [zadané požadavky na složitost](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
 
@@ -98,7 +98,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
    | **Použít jako sekundární převzetí služeb při selhání** | Vyberte **Ano**. | Tuto možnost povolte, pokud chcete použít spravovanou instanci jako sekundární skupinu převzetí služeb při selhání.|
    | **Primární spravovaná instance SQL** (Pokud se **používá jako sekundární převzetí služeb při selhání,** je nastavená na **Ano**). | Vyberte existující primární spravovanou instanci, která bude připojena ke stejné zóně DNS se spravovanou instancí, kterou vytváříte. | Tento krok umožní konfiguraci po vytvoření skupiny převzetí služeb při selhání. Další informace najdete v tématu [kurz: Přidání spravované instance do skupiny převzetí služeb při selhání](failover-group-add-instance-tutorial.md).|
 
-## <a name="review--create"></a>Zkontrolovat a vytvořit
+## <a name="review--create"></a>Kontrola a vytvoření
 
 1. Vyberte možnost **zkontrolovat + vytvořit** kartu a zkontrolujte své volby ještě před vytvořením spravované instance.
 
@@ -124,7 +124,9 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 > 3. Vyberte probíhající operaci nasazení spravované instance SQL.
 
 > [!IMPORTANT]
-> Aby bylo možné získat stav vytváření spravované instance, je nutné mít **oprávnění ke čtení pro** skupinu prostředků. Pokud toto oprávnění nemáte nebo ho odvoláte, zatímco je spravovaná instance v procesu vytváření, může to způsobit, že se spravovaná instance SQL nebude zobrazovat v seznamu nasazení skupiny prostředků.
+> - Vytváření spravované instance SQL je dlouhodobá operace, kterou může trvat několik hodin v závislosti na konkrétních okolnostech. Běžné časy vytváření najdete v tématu [Doba trvání operací správy](management-operations-overview.md#management-operations-duration) .
+> - Spuštění vytváření spravované instance SQL může být zpožděno v případech, kdy existují jiné operace s vlivem na změny, například dlouhotrvající operace obnovení nebo škálování na jiné spravované instance ve stejné podsíti. Další informace najdete v tématu [různé operace správy](management-operations-overview.md#management-operations-cross-impact).
+> - Aby bylo možné získat stav vytváření spravované instance, je nutné mít **oprávnění ke čtení pro** skupinu prostředků. Pokud toto oprávnění nemáte nebo ho odvoláte, zatímco je spravovaná instance v procesu vytváření, může to způsobit, že se spravovaná instance SQL nebude zobrazovat v seznamu nasazení skupiny prostředků.
 >
 
 ## <a name="view-resources-created"></a>Zobrazení vytvořených prostředků

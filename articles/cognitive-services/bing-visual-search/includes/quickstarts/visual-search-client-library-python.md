@@ -17,7 +17,7 @@ ms.locfileid: "80549999"
 ---
 Pomocí tohoto rychlého startu můžete začít získávat přehledy imagí z Vizuální vyhledávání Bingu služby pomocí klientské knihovny Pythonu. I když Vizuální vyhledávání Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) . 
 
-[Reference documentation](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python) | [Ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/) balíčku[zdrojového kódu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch) | knihovny Referenční dokumentace[(PyPi)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/) | 
+[Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch)  |  [Balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -65,7 +65,7 @@ Pomocí tohoto rychlého startu můžete začít získávat přehledy imagí z V
 
 ## <a name="send-the-search-request"></a>Odeslat požadavek hledání
 
-1. S otevřeným souborem obrázku, proveďte `VisualSearchRequest()`serializaci a předejte jej `knowledge_request` jako parametr pro `visual_search()`.
+1. S otevřeným souborem obrázku, proveďte serializaci `VisualSearchRequest()` a předejte jej jako `knowledge_request` parametr pro `visual_search()` .
 
     ```python
     with open(image_path, "rb") as image_fd:

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 661d3845365778f7ef23cdd05b81b98c3bf84259
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a2410a5ccaa10867e94b3a2ec10228a006fbe20
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519277"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534630"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>Nastavení e-mailových oznámení pro výstrahy zabezpečení 
 
 Pokud chcete zajistit, aby se do vašeho prostředí zobrazovaly informace o výstrahách zabezpečení ve vaší organizaci, zadejte na stránce nastavení **e-mailových oznámení** jejich e-mailové adresy.
 
-Při nastavování oznámení můžete nakonfigurovat e-maily, které se mají posílat konkrétním jednotlivcům, nebo komukoli s určitou rolí RBAC pro předplatné. 
+Při nastavování oznámení můžete nakonfigurovat e-maily, které se mají posílat konkrétním jednotlivcům, nebo komukoli s určitou rolí Azure pro předplatné. 
 
 Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mailů. U každého předplatného Security Center odesílá:
 
@@ -41,7 +41,7 @@ Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mail�
 
 ## <a name="set-up-email-notifications-for-alerts"></a>Nastavení e-mailových oznámení pro výstrahy<a name="email"></a>
 
-Můžete posílat e-mailová oznámení jednotlivcům nebo všem uživatelům s konkrétními rolemi RBAC.
+Můžete posílat e-mailová oznámení jednotlivcům nebo všem uživatelům s konkrétními rolemi Azure.
 
 1. Z oblasti **Nastavení cenové &** Security Center, relevantní předplatné a vybrat **e-mailová oznámení**.
 

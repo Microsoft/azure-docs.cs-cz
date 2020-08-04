@@ -4,12 +4,12 @@ description: Jak nasadit a nakonfigurovat síť sdružení prostředků infrastr
 ms.date: 07/27/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: fe06af9364ceb1d97588cac88335cb39c45f0e0f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4bc55090234a4ab33125ba43b8416de1eadb702f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286049"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533423"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
 
@@ -26,7 +26,7 @@ Po přečtení tohoto článku:
 
 Než začnete používat šablonu řešení, porovnejte svůj scénář s běžnými případy použití dostupných možností Azure blockchain.
 
-Možnost | Model služby | Běžný případ použití
+Parametr | Model služby | Běžný případ použití
 -------|---------------|-----------------
 Šablony řešení | IaaS | Šablony řešení jsou Azure Resource Manager šablony, pomocí kterých můžete zřídit plně nakonfigurovanou topologii sítě blockchain. Šablony nasazují a konfigurují Microsoft Azure COMPUTE, sítě a služby úložiště pro daný typ sítě blockchain. Šablony řešení jsou poskytovány bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](/answers/topics/azure-blockchain-workbench.html) .
 [Služba Azure Blockchain](../service/overview.md) | PaaS | Služba Azure blockchain ve verzi Preview zjednodušuje vytváření, správu a řízení sítí konsorcia blockchain. Využijte Azure blockchain Service pro řešení, která vyžadují PaaS, správu konsorcia nebo jejich soukromí a transakce.
@@ -305,12 +305,12 @@ Z klienta partnerské organizace vydejte příkaz pro nastavení partnerských p
   - Nastavte `<anchorPeersList>` jako "peer1", pokud chcete nastavit pouze uzel peer1 jako kotvicího partnera.
   - Nastavte `<anchorPeersList>` jako "peer1" "peer3", pokud chcete jako kotvový partner nastavit uzel peer1 i peer3.
 
-### <a name="chaincode-management-commands"></a>Příkazy správy Chaincode
+## <a name="chaincode-management-commands"></a>Příkazy správy Chaincode
 
 >[!NOTE]
 > Před zahájením jakékoli operace chaincode zajistěte, aby byla provedena počáteční instalace klientské aplikace.  
 
-**Nastavení níže určených proměnných prostředí chaincode**
+### <a name="set-the-below-chaincode-specific-environment-variables"></a>Nastavení níže určených proměnných prostředí chaincode
 
 ```bash
 # peer organization name where chaincode operation is to be performed
@@ -329,14 +329,6 @@ CC_PATH=<chaincodePath>
 # Channel on which chaincode is to be instantiated/invoked/queried  
 CHANNEL_NAME=<channelName>  
 ```
-
-Níže uvedené operace chaincode lze provést:  
-
-- [Nainstalovat chaincode](#install-chaincode)  
-- [Vytvoření instance chaincode](#instantiate-chaincode)  
-- [Vyvolat chaincode](#invoke-chaincode)
-- [Chaincode dotazu](#query-chaincode)
-
 
 ### <a name="install-chaincode"></a>Nainstalovat chaincode  
 
@@ -358,13 +350,13 @@ Postupujte podle následujících kroků:
 Z klientské aplikace peere spusťte pod příkazem vytvoření instance chaincode na kanálu.  
 
 ```bash
-./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
 ```
+
 Název funkce instance a seznam argumentů, které jsou odděleny mezerou, v `<instantiateFunc>` a v `<instantiateFuncArgs>` uvedeném pořadí. Například v chaincode_example02. přejít chaincode, pokud chcete vytvořit instanci chaincode sady `<instantiateFunc>` na `init` a `<instantiateFuncArgs>` na "a" "2000" "b" "1000".
 
 > [!NOTE]
 > Spusťte příkaz pro jednu z libovolných partnerských organizací v kanálu. Po úspěšném odeslání transakce do objednávky bude objednávka distribuovat tuto transakci do všech partnerských organizací v kanálu. Proto je instance chaincode vytvořena na všech partnerských uzlech všech partnerských organizací v kanálu.  
-
 
 ### <a name="invoke-chaincode"></a>Vyvolat chaincode  
 

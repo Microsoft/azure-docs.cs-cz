@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/01/2019
-ms.openlocfilehash: e2c9da9c1a37b087a31d1910094f51a39288c192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/03/2020
+ms.openlocfilehash: e9c1651244eecb036ca18ad5dadfe23f48b2bce6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416712"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529258"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Kopírování dat z QuickBooks online pomocí Azure Data Factory (Preview)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,9 +36,7 @@ Tento konektor QuickBooks se podporuje pro následující činnosti:
 
 Data z QuickBooks online můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
-
-Tento konektor aktuálně podporuje pouze 1.0 a, což znamená, že potřebujete mít vývojářský účet s aplikacemi vytvořenými před 17. července 2017.
+Tento konektor podporuje ověřování QuickBooks OAuth 2,0.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -50,18 +48,19 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu QuickBooks jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **QuickBooks** . | Ano |
-| endpoint | Koncový bod serveru QuickBooks online. (tj. quickbooks.api.intuit.com)  | Ano |
-| companyId | ID společnosti společnosti QuickBooks, která má být autorizována. Informace o tom, jak najít ID společnosti, najdete v tématu [návody najít moje ID společnosti?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Ano |
-| consumerKey | Klíč příjemce pro ověřování OAuth 1,0. | Ano |
-| consumerSecret | Tajný klíč příjemce pro ověřování OAuth 1,0. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| accessToken | Přístupový token pro ověřování OAuth 1,0. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| accessTokenSecret | Tajný klíč přístupového tokenu pro ověřování OAuth 1,0. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
+| typ | Vlastnost Type musí být nastavená na: **QuickBooks** . | Yes |
+| connectionProperties | Skupina vlastností, která definuje, jak se připojit k QuickBooks | Yes |
+| ***V části `connectionProperties` :*** | | |
+| endpoint | Koncový bod serveru QuickBooks online. (tj. quickbooks.api.intuit.com)  | Yes |
+| companyId | ID společnosti společnosti QuickBooks, která má být autorizována. Informace o tom, jak najít ID společnosti, najdete v tématu [návody najít moje ID společnosti](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Yes |
+| consumerKey | Klíč příjemce pro ověřování OAuth 2,0. | Yes |
+| consumerSecret | Tajný klíč příjemce pro ověřování OAuth 2,0. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| Refreshtoken kontextového tokenu | Obnovovací token OAuth 2,0 přidružený k aplikaci QuickBooks. Další informace najdete [tady](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app). Platnost tokenu aktualizace se vyprší po 180 dnech. Zákazník musí pravidelně aktualizovat obnovovací token. <br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md).| Yes |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -69,22 +68,20 @@ Pro propojenou službu QuickBooks jsou podporovány následující vlastnosti:
     "properties": {
         "type": "QuickBooks",
         "typeProperties": {
-            "endpoint" : "quickbooks.api.intuit.com",
-            "companyId" : "<companyId>",
-            "consumerKey": "<consumerKey>",
-            "consumerSecret": {
-                "type": "SecureString",
-                "value": "<consumerSecret>"
-            },
-            "accessToken": {
-                 "type": "SecureString",
-                 "value": "<accessToken>"
-            },
-            "accessTokenSecret": {
-                 "type": "SecureString",
-                 "value": "<accessTokenSecret>"
-            },
-            "useEncryptedEndpoints" : true
+            "connectionProperties": {
+                "endpoint": "quickbooks.api.intuit.com",
+                "companyId": "<company id>",
+                "consumerKey": "<consumer key>", 
+                "consumerSecret": {
+                     "type": "SecureString",
+                     "value": "<clientSecret>"
+                },
+                "refreshToken": {
+                     "type": "SecureString",
+                     "value": "<refresh token>"
+                },
+                "useEncryptedEndpoints": true
+            }
         }
     }
 }
@@ -96,9 +93,9 @@ Pro propojenou službu QuickBooks jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z QuickBooks online, nastavte vlastnost Type datové sady na **QuickBooksObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **QuickBooksObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **QuickBooksObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -126,12 +123,12 @@ Chcete-li kopírovat data z QuickBooks online, nastavte vlastnost Type datové s
 
 Chcete-li kopírovat data z QuickBooks online, nastavte typ zdroje v aktivitě kopírování na **QuickBooksSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **QuickBooksSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **QuickBooksSource** . | Yes |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[

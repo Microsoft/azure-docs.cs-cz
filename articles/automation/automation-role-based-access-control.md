@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: c7051cca9029283b150eea0519aa7432d6a9c937
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 21742d2db6a7fde69568e5fd1e5eda98542faa47
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420477"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528664"
 ---
 # <a name="manage-role-permissions-and-security"></a>Správa oprávnění rolí a zabezpečení
 
@@ -19,7 +19,7 @@ ms.locfileid: "87420477"
 
 ## <a name="roles-in-automation-accounts"></a>Role v účtech Automation
 
-Ve službě Azure Automation se přístup uděluje přiřazením příslušné role RBAC uživatelům, skupinám a aplikacím v rozsahu účtu Automation. Níže jsou uvedené vestavěné role, které účet Automation podporuje:
+V Azure Automation se přístup uděluje přiřazením příslušné role Azure uživatelům, skupinám a aplikacím v oboru účtu Automation. Níže jsou uvedené vestavěné role, které účet Automation podporuje:
 
 | **Role** | **Popis** |
 |:--- |:--- |
@@ -319,7 +319,7 @@ Můžete odebrat přístupová oprávnění pro uživatele, který účet Automa
 
 Můžete také nakonfigurovat přístup na základě rolí k účtu Automation pomocí následujících [rutin Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
-[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) vypíše všechny role RBAC, které jsou k dispozici v Azure Active Directory. Pomocí této rutiny s `Name` parametrem můžete zobrazit seznam všech akcí, které může konkrétní role provádět.
+[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) vypíše všechny role Azure, které jsou k dispozici v Azure Active Directory. Pomocí této rutiny s `Name` parametrem můžete zobrazit seznam všech akcí, které může konkrétní role provádět.
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'

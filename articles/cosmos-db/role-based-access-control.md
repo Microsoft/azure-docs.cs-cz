@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 858e185a0e4fa406fb4645475673acc13a0d37f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6edf5de852ea836de8be02636dd8a971ccebb86d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086669"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530567"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Řízení přístupu na základě role ve službě Azure Cosmos DB
 
-Azure Cosmos DB poskytuje integrované řízení přístupu na základě role (RBAC) pro běžné scénáře správy v Azure Cosmos DB. Jednotlivec, který má profil v Azure Active Directory může přiřadit tyto role RBAC uživatelům, skupinám, instančním objektům nebo spravovaným identitám pro udělení nebo odepření přístupu k prostředkům a operacím na Azure Cosmos DBch prostředcích. Přiřazování rolí je vymezené jenom na úrovni řízení a přístup, což zahrnuje přístup k účtům Azure Cosmos, databázím, kontejnerům a nabídkám (propustnost).
+Azure Cosmos DB poskytuje integrované řízení přístupu na základě role (RBAC) pro běžné scénáře správy v Azure Cosmos DB. Jednotlivec, který má profil v Azure Active Directory může přiřadit tyto role Azure uživatelům, skupinám, instančním objektům nebo spravovaným identitám pro udělení nebo odepření přístupu k prostředkům a operacím na Azure Cosmos DBch prostředcích. Přiřazování rolí je vymezené jenom na úrovni řízení a přístup, což zahrnuje přístup k účtům Azure Cosmos, databázím, kontejnerům a nabídkám (propustnost).
 
 ## <a name="built-in-roles"></a>Vestavěné role
 
@@ -39,13 +39,13 @@ Podokno **řízení přístupu (IAM)** v Azure Portal slouží ke konfiguraci ř
 
 ## <a name="custom-roles"></a>Vlastní role
 
-Kromě předdefinovaných rolí můžou uživatelé také vytvářet [vlastní role](../role-based-access-control/custom-roles.md) v Azure a tyto role použít pro instanční objekty ve všech předplatných v rámci svého tenanta služby Active Directory. Vlastní role poskytují uživatelům způsob, jak vytvořit definice rolí RBAC s vlastní sadou operací poskytovatele prostředků. Informace o tom, které operace jsou k dispozici pro vytváření vlastních rolí pro Azure Cosmos DB najdete v tématu [Azure Cosmos DB operace poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb) .
+Kromě předdefinovaných rolí můžou uživatelé také vytvářet [vlastní role](../role-based-access-control/custom-roles.md) v Azure a tyto role použít pro instanční objekty ve všech předplatných v rámci svého tenanta služby Active Directory. Vlastní role poskytují uživatelům způsob, jak vytvořit definice rolí Azure s vlastní sadou operací poskytovatele prostředků. Informace o tom, které operace jsou k dispozici pro vytváření vlastních rolí pro Azure Cosmos DB najdete v tématu [Azure Cosmos DB operace poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb) .
 
 ## <a name="preventing-changes-from-the-azure-cosmos-db-sdks"></a><a id="prevent-sdk-changes"></a>Zabránění změnám z Azure Cosmos DB SDK
 
 Poskytovatel prostředků Azure Cosmos DB může být uzamčený, aby se zabránilo jakýmkoli změnám prostředků z klienta připojujícího se pomocí klíčů účtu (což jsou aplikace připojující se přes sadu Azure Cosmos SDK). To zahrnuje také změny provedené z Azure Portal. Tato funkce může být žádoucí pro uživatele, kteří mají vyšší úroveň řízení a zásad správného řízení pro produkční prostředí. Zabránění změnám v sadě SDK také umožňuje používat funkce, jako jsou zámky prostředků a diagnostické protokoly pro operace roviny řízení. Klientům, kteří se připojují z Azure Cosmos DB SDK, se nebude moct měnit žádná vlastnost pro účty, databáze, kontejnery a propustnost Azure Cosmos. Operace týkající se čtení a zápisu dat do kontejnerů Cosmos nejsou ovlivněny.
 
-Když je tato funkce povolená, můžou se změny libovolného prostředku provádět jenom od uživatele s pravou rolí RBAC a Azure Active Directory přihlašovacích údajů, včetně identit spravovaných služeb.
+Když je tato funkce povolená, můžou se změny libovolného prostředku udělat jenom od uživatele s napravou rolí Azure a Azure Active Directory přihlašovacích údajů, včetně identit spravovaných služeb.
 
 > [!WARNING]
 > Povolení této funkce může mít vliv na vaši aplikaci. Ujistěte se, že před povolením rozumíte dopadu.

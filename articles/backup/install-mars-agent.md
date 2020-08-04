@@ -3,12 +3,12 @@ title: Instalace agenta Microsoft Azure Recovery Services (MARS)
 description: Naučte se, jak nainstalovat agenta Microsoft Azure Recovery Services (MARS) pro zálohování počítačů s Windows.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: b9842f6b07621301a0a8a32f5eb7fae5ece153bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 715153d445acbc372f8305ca39f5276bf8a39773
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079362"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533474"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Instalace agenta Azure Backup MARS
 
@@ -155,7 +155,7 @@ Pokud jste už agenta nainstalovali na všechny počítače, ujistěte se, že p
 
     ![Přidání přihlašovacích údajů trezoru pomocí Průvodce registrací serveru](./media/backup-configure-vault/register1.png)
 
-1. Na stránce **nastavení šifrování** zadejte heslo, které se použije k šifrování a dešifrování záloh pro daný počítač.
+1. Na stránce **nastavení šifrování** zadejte heslo, které se použije k šifrování a dešifrování záloh pro daný počítač. Další informace o povolených znacích hesla [najdete tady](backup-azure-file-folder-backup-faq.md#what-characters-are-allowed-for-the-passphrase) .
 
     * Uložte heslo do zabezpečeného umístění. Budete ho potřebovat k obnovení zálohy.
     * Pokud heslo ztratíte nebo zapomenete, Microsoft vám nemůžete obnovit data záloh.

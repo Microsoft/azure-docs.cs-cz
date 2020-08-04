@@ -12,24 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: 2e1e6ad6625586e882551521111057a2a20f0fff
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: f176e8fceb4d3e2e07398e6cb878180c8fe2321b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513039"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533151"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Vytvoření svazku NFS pro Azure NetApp Files
 
-Azure NetApp Files podporuje systém souborů NFS (NFSv3 a NFSv 4.1) a svazky SMBv3. Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu. V tomto článku se dozvíte, jak vytvořit svazek NFS. Pokud chcete vytvořit svazek SMB, přečtěte si téma [vytvoření svazku SMB pro Azure NetApp Files](azure-netapp-files-create-volumes-smb.md). 
+Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS (NFSv3 a NFSv 4.1), SMBv3 nebo duálního protokolu (NFSv3 a SMB). Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu. V tomto článku se dozvíte, jak vytvořit svazek NFS. 
 
 ## <a name="before-you-begin"></a>Než začnete 
-Musíte mít už nastavený fond kapacity.   
-[Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)   
-Podsíť musí být delegovaná na Azure NetApp Files.  
-[Delegování podsítě na službu Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+* Musíte mít už nastavený fond kapacity.  
+    Viz [nastavení fondu kapacit](azure-netapp-files-set-up-capacity-pool.md).   
+* Podsíť musí být delegovaná na Azure NetApp Files.  
+    Viz [delegování podsítě na Azure NetApp Files](azure-netapp-files-delegate-subnet.md).
 
 ## <a name="considerations"></a>Požadavky 
 
@@ -44,22 +44,19 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
 ## <a name="best-practice"></a>Osvědčený postup
 
-* Měli byste se ujistit, že pro tento svazek používáte správné pokyny pro připojení.  Viz [připojení nebo odpojení svazku pro virtuální počítače se systémem Windows nebo Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md).
+* Ujistěte se, že používáte správné pokyny pro připojení ke svazku.  Viz [připojení nebo odpojení svazku pro virtuální počítače se systémem Windows nebo Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md).
 
 * Klient NFS by měl být ve stejné virtuální síti nebo virtuální síti s partnerským vztahem jako svazek Azure NetApp Files. Připojení mimo virtuální síť je podporované; Tím se ale zavádí další latence a sníží se celkový výkon.
 
-* Měli byste zajistit, aby byl klient systému souborů NFS aktuální a aby běžel nejnovější aktualizace operačního systému.
+* Zajistěte, aby byl klient systému souborů NFS aktuální a běžel nejnovější aktualizace operačního systému.
 
 ## <a name="create-an-nfs-volume"></a>Vytvoření svazku NFS
 
-1.  V okně fondy kapacit klikněte na okno **svazky** . 
+1.  V okně fondy kapacit klikněte na okno **svazky** . Kliknutím na **+ Přidat svazek** vytvořte svazek. 
 
-    ![Přejít na svazky](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
+    ![Přejít na svazky](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  Kliknutím na **+ Přidat svazek** vytvořte svazek.  
-    Zobrazí se okno vytvořit svazek.
-
-3.  V okně vytvořit svazek klikněte na **vytvořit** a zadejte informace pro následující pole:   
+2.  V okně vytvořit svazek klikněte na **vytvořit**a zadejte informace pro následující pole na kartě základy:   
     * **Název svazku**      
         Zadejte název svazku, který vytváříte.   
 
@@ -92,11 +89,11 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
     * Pokud chcete pro svazek použít existující zásadu snímku, rozbalte ji kliknutím na **Zobrazit Upřesnit oddíl** a v rozevírací nabídce vyberte zásadu snímku. 
 
-        Informace o vytváření zásad snímku najdete v tématu [Správa snímků](azure-netapp-files-manage-snapshots.md).
+        Informace o vytváření zásad snímku najdete v tématu [Správa zásad snímků](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
 
         ![Zobrazit rozšířený výběr](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-4. Klikněte na **protokol**a pak proveďte následující akce:  
+3. Klikněte na **protokol**a pak proveďte následující akce:  
     * Jako typ protokolu pro svazek vyberte **systém souborů NFS** .   
     * Zadejte **cestu k souboru** , která bude použita k vytvoření cesty pro export pro nový svazek. Cesta pro export slouží pro připojení svazku a přístup k němu.
 
@@ -105,11 +102,16 @@ Podsíť musí být delegovaná na Azure NetApp Files.
         Cesta k souboru musí být jedinečná v rámci každého předplatného a každé oblasti. 
 
     * Vyberte verzi systému souborů NFS (**NFSv3** nebo **nfsv 4.1**) pro svazek.  
+
+    * Pokud používáte NFSv 4.1, určete, jestli chcete pro tento svazek povolit šifrování **pomocí protokolu Kerberos** .  
+
+        Pokud používáte protokol Kerberos s NFSv 4.1, vyžadují se další konfigurace. Postupujte podle pokynů v části [Konfigurace šifrování protokolu Kerberos nfsv 4.1](configure-kerberos-encryption.md).
+
     * Volitelně můžete [nakonfigurovat zásady exportu pro svazek NFS](azure-netapp-files-configure-export-policy.md).
 
     ![Zadat protokol NFS](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
 
-5. Kliknutím na tlačítko **zkontrolovat + vytvořit** zkontrolujte podrobnosti o svazku.  Pak kliknutím na **vytvořit** vytvořte svazek NFS.
+4. Kliknutím na tlačítko **zkontrolovat + vytvořit** zkontrolujte podrobnosti o svazku.  Pak kliknutím na **vytvořit** vytvořte svazek.
 
     Svazek, který jste vytvořili, se zobrazí na stránce svazky. 
  
@@ -119,6 +121,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 ## <a name="next-steps"></a>Další kroky  
 
 * [Konfigurace výchozí domény NFSv4.1 pro Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
+* [Konfigurace šifrování protokolu Kerberos NFSv 4.1](configure-kerberos-encryption.md)
 * [Připojení nebo odpojení svazku pro virtuální počítače s Windows nebo Linuxem](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Konfigurace zásad exportu pro svazek NFS](azure-netapp-files-configure-export-policy.md)
 * [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)

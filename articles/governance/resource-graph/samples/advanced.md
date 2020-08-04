@@ -3,12 +3,12 @@ title: Ukázky dotazů pro pokročilé
 description: Pomocí Azure Resource graphu můžete spouštět některé rozšířené dotazy, včetně práce se sloupci, použitými značkami a porovnáním prostředků s regulárními výrazy.
 ms.date: 07/14/2020
 ms.topic: sample
-ms.openlocfilehash: 38013be583c74e968160cb7ec3a4dd32ede213b0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3277d904ebf955c9f924e60dbf6df12eac138a15
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087488"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534783"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Ukázky dotazů v rozšířeném grafu prostředků
 
@@ -30,7 +30,7 @@ Projdeme následující rozšířené dotazy:
 - [Kombinování výsledků ze dvou dotazů do jednoho výsledku](#unionresults)
 - [Zahrnutí názvů tenanta a předplatného do DisplayNames](#displaynames)
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
 ## <a name="language-support"></a>Podpora jazyků
 
@@ -322,7 +322,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 ## <a name="list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip"></a>Vypsat virtuální počítače s jejich síťovým rozhraním a veřejnou IP adresou
 
-Tento dotaz používá dva příkazy **LeftOuter** `join` k spojování virtuálních počítačů, jejich souvisejících síťových rozhraní a všech veřejných IP adres souvisejících s těmito síťovými rozhraními.
+Tento dotaz používá dva příkazy **LeftOuter** `join` k spojování virtuálních počítačů vytvořených pomocí modelu nasazení Správce prostředků, jejich souvisejících síťových rozhraní a všech veřejných IP adres souvisejících s těmito síťovými rozhraními.
 
 ```kusto
 Resources

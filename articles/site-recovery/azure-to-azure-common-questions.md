@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 52c7a4bfeddf808e5a714c7ad4ab164d65868940
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7bc8427a51a9931ca82155232569767f12a8e266
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201199"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534018"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Běžné otázky: zotavení po havárii z Azure do Azure
 
@@ -70,6 +70,10 @@ V době replikace nakonfigurujte v [rámci předplatných](https://azure.microso
 ### <a name="can-i-replicate-zone-pinned-azure-vms-to-another-region"></a>Můžu replikovat virtuální počítače Azure připojené k zóně do jiné oblasti?
 
 Ano, [virtuální počítače připnuté do zóny můžete replikovat](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region) do jiné oblasti.
+
+### <a name="can-i-replicate-vms-in-a-region-that-has-zones-from-non-zone-to-zonal-configuration"></a>Můžu replikovat virtuální počítače v oblasti, která má zóny z nezóny do konfigurace oblastí?
+
+Ne, tato podpora není dnes podporována. Alternativním řešením je, že virtuální počítač můžete replikovat pomocí ASR do konfigurace oblasti v jiné oblasti a pak zakázat replikaci. V dalším kroku znovu povolte replikaci z této oblasti do původní oblasti a vyberte konfiguraci oblasti pro převzetí služeb při selhání.
 
 ### <a name="can-i-exclude-disks"></a>Můžu vyloučit disky?
 

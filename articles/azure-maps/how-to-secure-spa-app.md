@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 5b7f26a03c117620be7c16abaf689763e370e5ba
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0aa688d6e56629ca376844ce2d0669197b1bb2b7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285692"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531341"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Jak zabezpečit jednostránkové aplikaci pomocí neinteraktivního přihlašování
 
@@ -102,7 +102,7 @@ Vytvořte zabezpečenou aplikaci webové služby, která je zodpovědná za ově
 
 ## <a name="grant-role-based-access"></a>Udělení přístupu na základě rolí
 
-*Řízení přístupu na základě role* (RBAC) udělíte přiřazením identity přiřazené systému k jedné nebo více definicím rolí Azure. Chcete-li zobrazit definice rolí RBAC, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)**. Vyberte **role**a potom vyhledejte role, které začínají na *Azure Maps*.
+*Řízení přístupu na základě role* (RBAC) udělíte přiřazením identity přiřazené systému k jedné nebo více definicím rolí Azure. Pokud chcete zobrazit definice rolí Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)**. Vyberte **role**a potom vyhledejte role, které začínají na *Azure Maps*.
 
 1. Přejít na **účet Azure Maps**. Vyberte přiřazení role **řízení přístupu (IAM)**  >  **Role assignment**.
 

@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/25/2019
 ms.author: mlottner
 ms.custom: references_regions
-ms.openlocfilehash: 19e4ea37aa10c90d15a2b7dcdf962c131c8e473d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ce903271accd3f63df7634dc5045932655ac2a7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193217"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531145"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>Azure Security Center pro požadavky IoT
 
@@ -30,7 +30,7 @@ Tento článek obsahuje vysvětlení různých komponent Azure Security Center p
 ## <a name="minimum-requirements"></a>Minimální požadavky
 
 - Úroveň Standard IoT Hub
-  - Oprávnění na úrovni **vlastníka** role RBAC
+  - Oprávnění na úrovni **vlastníka** role Azure
 - [Pracovní prostor Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 - Azure Security Center (doporučeno)
   - Použití Azure Security Center je doporučení, nikoli požadavek. Bez Azure Security Center nebudete moci zobrazit další prostředky Azure v rámci IoT Hub.
@@ -43,8 +43,8 @@ Azure Security Center pro IoT Insights a vytváření sestav jsou k dispozici po
 
 Azure Security Center pro IoT se v současné době podporují pro centra IoT v následujících oblastech Azure:
 
-- USA – střed
-- USA – východ
+- Střední USA
+- East US
 - USA – východ 2
 - USA – středozápad
 - USA – západ
@@ -58,14 +58,14 @@ Azure Security Center pro IoT se v současné době podporují pro centra IoT v 
 - Francie – střed
 - Spojené království – západ
 - Spojené království – jih
-- Západní Evropa
+- West Europe
 - Northern Europe
 - Japonsko – západ
 - Japonsko – východ
 - Austrálie – jihovýchod
 - Austrálie – východ
 - Východní Asie
-- Jihovýchodní Asie
+- Southeast Asia
 - Jižní Korea – střed
 - Jižní Korea – jih
 - Indie – střed

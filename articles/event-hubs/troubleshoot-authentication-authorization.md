@@ -3,12 +3,12 @@ title: Řešení potíží s ověřováním a autorizací – Azure Event Hubs
 description: Tento článek poskytuje informace o řešení potíží s ověřováním a autorizací pomocí Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6fca0c29c20e2bfe0c3ec64e3068b61bd5147bdb
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bed415c6180953b5a5728032a50d51618c084343
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502099"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533882"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Řešení potíží s ověřováním a autorizací – Azure Event Hubs
 Článek [Poradce při](troubleshooting-guide.md) potížích s připojením poskytuje tipy pro řešení potíží s připojením pomocí Azure Event Hubs. Tento článek poskytuje tipy a doporučení pro řešení problémů s ověřováním a autorizací pomocí Azure Event Hubs. 
@@ -16,13 +16,13 @@ ms.locfileid: "87502099"
 ## <a name="if-you-are-using-azure-active-directory"></a>Pokud používáte Azure Active Directory
 Pokud používáte Azure Active Directory (Azure AD) k ověřování a autorizaci se službou Azure Event Hubs, ověřte, že identita, která přistupuje k centru událostí, je členem správné **role Azure** v pravém **oboru prostředků** (skupina příjemců, centrum událostí, obor názvů, skupina prostředků nebo předplatné).
 
-### <a name="rbac-roles"></a>Role RBAC
+### <a name="azure-roles"></a>Role Azure
 - [Vlastník dat Event Hubs Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) pro úplný přístup k prostředkům Event Hubs.
 - [Odesilatel dat Azure Event Hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) pro přístup pro odesílání.
 - [Příjemce dat Event Hubs Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) pro přístup pro příjem.
 
 ### <a name="resource-scopes"></a>Obory prostředků
-- **Skupina příjemců**: v tomto oboru se přiřazení role vztahuje pouze na tuto entitu. V současné době Azure Portal nepodporuje přiřazení role RBAC objektu zabezpečení na této úrovni. 
+- **Skupina příjemců**: v tomto oboru se přiřazení role vztahuje pouze na tuto entitu. V současné době Azure Portal nepodporuje přiřazení role Azure k objektu zabezpečení na této úrovni. 
 - **Centrum událostí**: přiřazení role se vztahuje k entitě centra událostí a skupině příjemců.
 - **Obor názvů**: přiřazování rolí zahrnuje celou topologii Event Hubs pod oborem názvů a do skupiny uživatelů, které jsou k ní přidružené.
 - **Skupina prostředků**: přiřazení role se vztahuje na všechny prostředky Event Hubs v rámci skupiny prostředků.

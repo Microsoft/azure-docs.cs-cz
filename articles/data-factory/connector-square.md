@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/01/2019
-ms.openlocfilehash: ac968271685c66c8fab8d7723d994a446f49e85f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/03/2020
+ms.openlocfilehash: 2bfe9115f38c79618924379837dda8014ee31ed5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81410317"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529360"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Kopírování dat z čtverce pomocí Azure Data Factory (Náhled)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -34,7 +34,6 @@ Tato čtvercová spojnice je podporována pro následující činnosti:
 - [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 
-
 Data z čtverce můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
 Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
@@ -49,18 +48,28 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro čtvercovou propojenou službu jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **Square** . | Ano |
-| host | Adresa URL čtvercové instance (tj. mystore.mysquare.com)  | Ano |
-| clientId | ID klienta přidružené k vaší čtvercové aplikaci.  | Ano |
-| clientSecret | Tajný kód klienta přidružený ke své čtvercové aplikaci. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| redirectUri | Adresa URL pro přesměrování přiřazená v čtverci řídicího panelu aplikace (tj. http: \/ /localhost: 2 500)  | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| typ | Vlastnost Type musí být nastavená na: **Square** . | Yes |
+| connectionProperties | Skupina vlastností, která definuje, jak se připojit ke čtverci | Yes |
+| ***V části `connectionProperties` :*** | | |
+| Hostitel | Adresa URL čtvercové instance (tj. mystore.mysquare.com)  | Yes |
+| clientId | ID klienta přidružené k vaší čtvercové aplikaci.  | Yes |
+| clientSecret | Tajný kód klienta přidružený ke své čtvercové aplikaci. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| accessToken | Přístupový token získaný z čtverce. Udělí omezený přístup ke čtverci účtu tím, že požádá ověřeného uživatele o explicitní oprávnění. Přístupové tokeny OAuth vyprší 30 dnů po vystavení, ale aktualizace tokenů nekončí. Přístupové tokeny lze aktualizovat pomocí aktualizačního tokenu.<br>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md).  | Yes |
+| Refreshtoken kontextového tokenu | Obnovovací token získaný z čtverce. Používá se k získání nových přístupových tokenů, když vyprší platnost aktuálního.<br>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
+| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | No |
+| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
 
-**Příklad:**
+Čtvercová podpora dvou typů přístupového tokenu: **osobní** a **OAuth**.
+
+- Osobní přístupové tokeny slouží k získání neomezeného připojení rozhraní API pro přístup k prostředkům ve vašem vlastním čtvercovém účtu.
+- Přístupové tokeny OAuth slouží k získání přístupového ověřování a oboru připojení rozhraní API k jakémukoli čtverci účtu. Použijte je v případě, že vaše aplikace přistupuje k prostředkům v jiných čtvercových účtech jménem vlastníků účtů. Přístupové tokeny OAuth lze použít také pro přístup k prostředkům ve vašem vlastním čtvercovém účtu.
+
+V Data Factory potřebuje ověřování pomocí tokenu osobních přístupových oprávnění `accessToken` , zatímco ověřování prostřednictvím OAuth vyžaduje `accessToken` a `refreshToken` . Zjistěte, jak získat přístupový token z [tohoto místa](https://developer.squareup.com/docs/build-basics/access-tokens).
+
+**Případě**
 
 ```json
 {
@@ -68,13 +77,25 @@ Pro čtvercovou propojenou službu jsou podporovány následující vlastnosti:
     "properties": {
         "type": "Square",
         "typeProperties": {
-            "host" : "mystore.mysquare.com",
-            "clientId" : "<clientId>",
-            "clientSecret": {
-                 "type": "SecureString",
-                 "value": "<clientSecret>"
-            },
-            "redirectUri" : "http://localhost:2500"
+            "connectionProperties": {
+                "host": "<e.g. mystore.mysquare.com>", 
+                "clientId": "<client ID>", 
+                "clientSecrect": {
+                    "type": "SecureString",
+                    "value": "<clientSecret>"
+                }, 
+                "accessToken": {
+                    "type": "SecureString",
+                    "value": "<access token>"
+                }, 
+                "refreshToken": {
+                    "type": "SecureString",
+                    "value": "<refresh token>"
+                }, 
+                "useEncryptedEndpoints": true, 
+                "useHostVerification": true, 
+                "usePeerVerification": true 
+            }
         }
     }
 }
@@ -86,9 +107,9 @@ Pro čtvercovou propojenou službu jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z čtverce, nastavte vlastnost Type datové sady na **SquareObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **SquareObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **SquareObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -116,12 +137,12 @@ Chcete-li kopírovat data z čtverce, nastavte vlastnost Type datové sady na **
 
 Chcete-li kopírovat data z čtverce, nastavte typ zdroje v aktivitě kopírování na **SquareSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SquareSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SquareSource** . | Yes |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Business"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[

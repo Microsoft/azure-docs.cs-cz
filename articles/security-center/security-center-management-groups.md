@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 2ef2cc86b3e12149977fa819a7e54ee9a1c0d7ac
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 43a6c10c8c73e8fb5189b6f085a6969c0d776593
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423979"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534902"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Získání viditelnosti pro Azure Security Center v úrovni tenanta
 Tento článek vysvětluje, jak spravovat stav zabezpečení vaší organizace pomocí zásad zabezpečení pro všechna předplatná Azure propojená s vaším klientem Azure Active Directory.
@@ -39,7 +39,7 @@ Podrobný přehled skupin pro správu najdete v článku [uspořádání prostř
 Předplatná můžete uspořádat do skupin pro správu a použít zásady správného řízení pro skupiny pro správu. Všechna předplatná v rámci skupiny pro správu automaticky dědí zásady, které se vztahují na skupinu pro správu. I když skupiny pro správu nejsou vyžadovány k připojení Security Center, důrazně doporučujeme vytvořit alespoň jednu skupinu pro správu, aby bylo možné vytvořit kořenovou skupinu pro správu. Po vytvoření skupiny se na ni budou propojit všechna předplatná v rámci vašeho tenanta Azure AD. Pokyny pro PowerShell a další informace najdete v tématu [Vytvoření skupin pro správu pro správu prostředků a organizací](../azure-resource-manager/management-groups-create.md).
 
  
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny**  >  **skupiny pro správu**služeb.
 3. Na hlavní stránce vyberte **Nová skupina pro správu.** 
 
@@ -52,7 +52,7 @@ Předplatná můžete uspořádat do skupin pro správu a použít zásady sprá
 5.  Vyberte **Uložit**.
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>Zobrazení skupin pro správu v Azure Portal
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Pokud chcete zobrazit skupiny pro správu, vyberte **všechny služby** v hlavní nabídce Azure.
 3. V části **Obecné**vyberte **skupiny pro správu**.
 
@@ -60,10 +60,10 @@ Předplatná můžete uspořádat do skupin pro správu a použít zásady sprá
 
 ## <a name="grant-tenant-level-visibility-and-the-ability-to-assign-policies"></a>Udělení viditelnosti na úrovni tenanta a možnost přiřazování zásad
 
-Pokud chcete získat přehled o stav zabezpečení všech předplatných zaregistrovaných v tenantovi Azure AD, musí být pro kořenovou skupinu pro správu přiřazena role RBAC s dostatečným oprávněním ke čtení.
+Aby bylo možné získat přehled o stav zabezpečení všech předplatných registrovaných v tenantovi Azure AD, musí být pro kořenovou skupinu pro správu přiřazena role Azure s dostatečným oprávněním ke čtení.
 
 ### <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Zvýšení přístupu pro globálního správce v Azure Active Directory
-Správce tenanta Azure Active Directory nemá přímý přístup k předplatným Azure. Správci adresáře ale mají právo zvýšit úroveň na roli, která má přístup. Správce tenanta Azure AD musí zvýšit úroveň na správce přístupu uživatele na úrovni kořenové skupiny pro správu, aby mohl přiřadit role RBAC. Pokyny k prostředí PowerShell a další informace najdete v tématu [zvýšení přístupu pro globálního správce v Azure Active Directory](../role-based-access-control/elevate-access-global-admin.md). 
+Správce tenanta Azure Active Directory nemá přímý přístup k předplatným Azure. Správci adresáře ale mají právo zvýšit úroveň na roli, která má přístup. Správce tenanta Azure AD musí zvýšit úroveň na správce přístupu uživatele na úrovni kořenové skupiny pro správu, aby mohl přiřadit role Azure. Pokyny k prostředí PowerShell a další informace najdete v tématu [zvýšení přístupu pro globálního správce v Azure Active Directory](../role-based-access-control/elevate-access-global-admin.md). 
 
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) nebo [centru pro správu Azure Active Directory](https://aad.portal.azure.com).
@@ -87,13 +87,13 @@ Správce tenanta Azure Active Directory nemá přímý přístup k předplatným
 5. Proveďte úlohy, které potřebujete k zajištění přístupu se zvýšenými oprávněními. Až skončíte, nastavte přepínač zpět na **ne**.
 
 
-### <a name="assign-rbac-roles-to-users"></a>Přiřazení rolí RBAC uživatelům
-Aby mohli správci klientů získat přehled o všech předplatných, musí přiřadit příslušnou roli RBAC všem uživatelům, kteří chtějí udělit viditelnost celého tenanta, včetně samotného, na úrovni kořenové skupiny pro správu. Doporučené role k přiřazení jsou buď **Správce zabezpečení** , nebo **čtecí modul zabezpečení**. Obecně platí, že role správce zabezpečení je nutná k uplatnění zásad na kořenové úrovni, zatímco čtečka zabezpečení bude stačit k poskytování viditelnosti na úrovni tenanta. Další informace o oprávněních udělených těmito rolemi najdete v [popisu předdefinované role správce zabezpečení](../role-based-access-control/built-in-roles.md#security-admin) nebo v [popisu předdefinované role čtenáře zabezpečení](../role-based-access-control/built-in-roles.md#security-reader).
+### <a name="assign-azure-roles-to-users"></a>Přiřazení rolí Azure uživatelům
+Aby mohli správci klientů získat přehled o všech předplatných, musí přiřadit příslušnou roli Azure všem uživatelům, kteří chtějí udělit přístup v celé klientovi, včetně samotného, na úrovni kořenové skupiny pro správu. Doporučené role k přiřazení jsou buď **Správce zabezpečení** , nebo **čtecí modul zabezpečení**. Obecně platí, že role správce zabezpečení je nutná k uplatnění zásad na kořenové úrovni, zatímco čtečka zabezpečení bude stačit k poskytování viditelnosti na úrovni tenanta. Další informace o oprávněních udělených těmito rolemi najdete v [popisu předdefinované role správce zabezpečení](../role-based-access-control/built-in-roles.md#security-admin) nebo v [popisu předdefinované role čtenáře zabezpečení](../role-based-access-control/built-in-roles.md#security-reader).
 
 
-#### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Přiřaďte uživatelům role RBAC prostřednictvím Azure Portal: 
+#### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>Přiřaďte role Azure uživatelům prostřednictvím Azure Portal: 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 1. Pokud chcete zobrazit skupiny pro správu, vyberte v hlavní nabídce Azure možnost **všechny služby** a pak vyberte **skupiny pro správu**.
 1.  Vyberte skupinu pro správu a klikněte na **Podrobnosti**.
 
@@ -108,7 +108,7 @@ Aby mohli správci klientů získat přehled o všech předplatných, musí při
    ![Snímek obrazovky s přidáním role čtenář zabezpečení](./media/security-center-management-groups/asc-security-reader.png)
 
 
-#### <a name="assign-rbac-roles-to-users-with-powershell"></a>Přiřazení rolí RBAC uživatelům pomocí PowerShellu: 
+#### <a name="assign-azure-roles-to-users-with-powershell"></a>Přiřazení rolí Azure uživatelům pomocí PowerShellu: 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -140,7 +140,7 @@ Aby mohli správci klientů získat přehled o všech předplatných, musí při
 ### <a name="open-or-refresh-security-center"></a>Otevřít nebo aktualizovat Security Center
 Jakmile budete mít zvýšený přístup, otevřete nebo aktualizujte Azure Security Center a ověřte si, že máte přehled o všech předplatných v rámci vašeho tenanta Azure AD. 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 2. Ujistěte se, že jste vybrali všechna předplatná v selektoru předplatného, které chcete zobrazit v Security Center.
 
     ![Snímek obrazovky selektor odběrů](./media/security-center-management-groups/subscription-selector.png)
@@ -155,7 +155,7 @@ Jakmile budete mít zvýšený přístup, otevřete nebo aktualizujte Azure Secu
     ![Snímek obrazovky seznamu pokrytí předplatných](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>Odebrat vyšší úroveň přístupu 
-Po přiřazení rolí RBAC uživatelům by se správce klienta měl odebrat z role správce přístupu uživatele.
+Jakmile role Azure přiřadíte uživatelům, správce tenanta by se měl odebrat z role správce přístupu uživatele.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) nebo [centru pro správu Azure Active Directory](https://aad.portal.azure.com).
 
@@ -183,7 +183,7 @@ Můžete přidat odběry do skupiny pro správu, kterou jste vytvořili. Tyto kr
 4. Opakujte kroky 1 až 3, dokud nepřidáte všechna předplatná v oboru.
 
    > [!NOTE]
-   > Skupiny pro správu můžou obsahovat předplatné i podřízené skupiny pro správu. Když uživateli přiřadíte roli RBAC pro nadřazenou skupinu pro správu, zdědí se přístup k předplatným podřízené skupiny pro správu. Zásady nastavené v nadřazené skupině pro správu jsou také děděny podřízenými objekty. 
+   > Skupiny pro správu můžou obsahovat předplatné i podřízené skupiny pro správu. Když uživateli přiřadíte roli Azure pro nadřazenou skupinu pro správu, zdědí se přístup k předplatným podřízené skupiny pro správu. Zásady nastavené v nadřazené skupině pro správu jsou také děděny podřízenými objekty. 
 
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste se dozvěděli, jak získat Azure Security Center viditelnosti v úrovni tenanta. Další informace o službě Security Center najdete v následujících článcích:

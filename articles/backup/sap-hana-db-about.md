@@ -3,12 +3,12 @@ title: Informace o SAP HANA zálohování databáze na virtuálních počítač�
 description: V tomto článku se dozvíte o zálohování SAP HANA databází, které běží na virtuálních počítačích Azure.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 980278b3cdb9c97a5a483354a004a8278a745b3b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a6c4f627059a8d536e1d006103650dca5d2f5109
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503502"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533440"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Informace o SAP HANA zálohování databáze na virtuálních počítačích Azure
 
@@ -60,7 +60,7 @@ Kromě používání služby SAP HANA Backup v Azure, která poskytuje zálohov�
 
 [Řešení zálohování Backint Certified pro Azure SAP HANA](#backup-architecture) se dá použít k zálohování a obnovení databáze.
 
-[Zálohování virtuálních počítačů Azure](backup-azure-vms-introduction.md) se dá použít k zálohování operačního systému a dalších jiných nedatabázových disků. Zálohování virtuálního počítače se pokaždé denně vybere a zálohuje všechny disky (kromě **akcelerátor zápisu (WA) disků** a **UltraDisks**). Vzhledem k tomu, že se databáze zálohuje pomocí řešení zálohování Azure SAP HANA, můžete použít zálohování s konzistentními soubory jenom s operačním systémem a nedatabázovými disky pomocí funkce vyloučit disk, která je aktuálně ve verzi Preview.
+[Zálohování virtuálních počítačů Azure](backup-azure-vms-introduction.md) se dá použít k zálohování operačního systému a dalších jiných nedatabázových disků. Zálohování virtuálních počítačů se jednou denně povede a zálohuje všechny disky (kromě disků **akcelerátor zápisu (WA)** a disků **Ultra**. Vzhledem k tomu, že se databáze zálohuje pomocí řešení zálohování Azure SAP HANA, můžete pro virtuální počítače s využitím funkce [zálohování a obnovení pro virtuální počítače Azure](selective-disk-backup-restore.md) použít zálohování s konzistentními soubory jenom s operačním systémem a nedatabázovými disky.
 
 >[!NOTE]
 > Použití předzálohovacích skriptů se zálohováním virtuálního počítače Azure umožní zálohování datových svazků v databázi konzistentní vzhledem k aplikacím. Pokud se ale oblast protokolu nachází na discích s WA, nemusí mít snímek těchto disků zaručenou konzistenci oblasti protokolu. HANA má explicitní způsob generování záloh protokolů z tohoto přesného důvodu. Povolte ve svém SAP HANA stejné a můžou se zálohovat pomocí Azure SAP HANA Backup.

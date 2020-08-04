@@ -12,7 +12,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/20/2020
 ms.locfileid: "86544054"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Jediným předpokladem je předplatné služby Azure Speech. Pokud ho ještě nemáte, přečtěte si [příručku](../get-started.md#new-resource) k vytvoření nového předplatného.
 
