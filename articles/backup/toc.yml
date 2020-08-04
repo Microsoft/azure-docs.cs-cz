@@ -123,6 +123,8 @@
               href: backup-azure-vms-encryption.md
             - name: Konfigurace zálohování konzistentního vzhledem k aplikacím pro virtuální počítače Azure s Linuxem
               href: backup-azure-linux-app-consistent.md
+            - name: Selektivní zálohování disku
+              href: selective-disk-backup-restore.md
         - name: Obnovení
           items:
             - name: Informace o obnovení virtuálních počítačů Azure
