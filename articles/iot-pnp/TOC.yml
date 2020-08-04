@@ -37,6 +37,8 @@
       href: tutorial-multiple-components-node.md
     - name: Připojení zařízení s více komponentami (Python)
       href: tutorial-multiple-components-python.md
+    - name: Použití MQTT pro připojení zařízení
+      href: tutorial-use-mqtt.md
 - name: Koncepty
   items:
     - name: Architektura
