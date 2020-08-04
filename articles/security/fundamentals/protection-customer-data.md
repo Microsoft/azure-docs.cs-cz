@@ -1,6 +1,6 @@
 ---
 title: Ochrana zákaznických dat v Azure
-description: Tento článek popisuje, jak Azure chrání zákaznická data.
+description: Přečtěte si, jak Azure chrání zákaznická data prostřednictvím oddělení dat, redundance dat a zničení dat.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2020
 ms.author: terrylan
-ms.openlocfilehash: 4f3b4b5e26c8feab44a01d3714c194eee0fc98e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14589e4efe22d89468b069bf6ff7e3d9babcc714
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076298"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543788"
 ---
 # <a name="azure-customer-data-protection"></a>Ochrana zákaznických dat Azure   
 Přístup k zákaznickým datům podle operací Microsoftu a pracovníků podpory je ve výchozím nastavení zakázaný. Pokud je udělen přístup k datům souvisejícím s případem podpory, je mu uděleno pouze použití modelu JIT (just-in-time), který používá zásady, které jsou auditovány a prověřené proti zásadám dodržování předpisů a ochrany osobních údajů.  Požadavky na řízení přístupu jsou navázány následujícími zásadami zabezpečení Azure:

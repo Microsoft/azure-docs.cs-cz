@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 0e538299dfc9c9406b519d888d1a92c5c643bb03
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421735"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543448"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Řešení potíží s omezeními & Azure Cloud Shell
 
@@ -151,7 +151,8 @@ Azure Cloud Shell převezme vaše osobní údaje, budou se data zachycená a ulo
 ### <a name="export"></a>Export
 Chcete-li **exportovat** nastavení uživatele Cloud Shell Uložit pro vás, jako je preferované prostředí, velikost písma a typ písma, spusťte následující příkazy.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![Obrázek znázorňující tlačítko s názvem spuštění Azure Cloud Shell.](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. Spusťte následující příkazy v bash nebo PowerShellu:
 
 Bash
@@ -174,7 +175,8 @@ Chcete-li **Odstranit** nastavení uživatele Cloud Shell uloží, například u
 >[!Note]
 > Pokud odstraníte nastavení uživatele, skutečná sdílená složka souborů Azure se neodstraní. Tuto akci dokončete tak, že přejdete do svých souborů Azure.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![Obrázek znázorňující tlačítko s názvem spuštění Azure Cloud Shell.](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. Spusťte následující příkazy v bash nebo PowerShellu:
 
 Bash

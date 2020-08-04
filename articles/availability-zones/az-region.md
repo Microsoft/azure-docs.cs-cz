@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 2e337628542475c081a59bffd25368de313011f8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: b031b2a26f81c34f1699e530c8d0bb8839454c89
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206209"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543873"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Oblasti, které podporují Zóny dostupnosti v Azure
 
@@ -41,10 +41,10 @@ Služby, které jsou dostupné v jednotlivých oblastech, společně s nadcháze
 | VPN Gateway            | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       | &#10003;               |
 | Brána ExpressRoute   | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       | &#10003;               |
 | Application Gateway (v2)    | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       | &#10003;               |
-| Azure Firewall           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |                |
+| Brána Azure Firewall           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |                |
 | **Databáze**                     |            |              |           |           |                |              |          |             |            |                |                |
 | Průzkumník dat Azure                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;        | &#10003;       |                |
-| Databáze SQL                    | &#10003;   | &#10003;     | &#10003;  | &#10003; (Preview) | &#10003;       | &#10003; (Preview)     | &#10003; | &#10003;    | &#10003;       | &#10003;       |&#10003;        |
+| SQL Database                    | &#10003;   | &#10003;     | &#10003;  | &#10003; (Preview) | &#10003;       | &#10003; (Preview)     | &#10003; | &#10003;    | &#10003;       | &#10003;       |&#10003;        |
 | Azure Cache for Redis           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |                |
 | Azure Cosmos DB      | &#10003;   |  &#10003;  |  &#10003; | &#10003; |  &#10003;  | &#10003;    | &#10003; |  &#10003;   |     &#10003;       | &#10003;    | &#10003;  |
 | **Analýzy**                       |            |              |           |           |                |              |          |             |            |                |                |
@@ -63,7 +63,7 @@ Azure také nabízí podporu Zóny dostupnosti v následujících oblastech:
 - Středojižní USA
 - Střední Kanada
 
-Pokud chcete získat další informace o podpoře Zóny dostupnosti v těchto pěti oblastech, obraťte se na prodejce od Microsoftu nebo zákazníka.
+Pokud chcete získat další informace o podpoře Zóny dostupnosti v těchto pěti oblastech, obraťte se na zákaznickou podporu od Microsoftu nebo od zákazníka nebo otevřete žádost o technickou podporu.
 
 ## <a name="next-steps"></a>Další kroky
 

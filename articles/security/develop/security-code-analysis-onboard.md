@@ -1,6 +1,6 @@
 ---
 title: Průvodce registrací Microsoft Security Code Analysis
-description: Tento článek popisuje instalaci rozšíření Microsoft Security Code Analysis Extension.
+description: Naučte se, jak připojit a nainstalovat rozšíření pro analýzu kódu Microsoft Security. Viz předpoklady a zobrazení dalších prostředků.
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: fd0057c5f5e365d6c91ae221a7add813855bb1ec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5366da1048e7c6d9612ad8b6b1f1694068bb35fb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323583"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543023"
 ---
 # <a name="onboarding-and-installing"></a>Onboarding a instalace
 
@@ -78,7 +78,7 @@ Po instalaci rozšíření jsou úkoly sestavení pro bezpečné nasazení vidit
    - Nový kanál: vyberte **Nový** a pomocí podrobných kroků vytvořte nový kanál.
    - Upravit kanál: Vyberte existující kanál a pak výběrem **Upravit** zahajte úpravy kanálu.
 1. Vyberte **+** a přejít do podokna **Přidat úlohy** .
-1. Ze seznamu nebo pomocí vyhledávacího pole vyhledejte úkol sestavení, který chcete přidat. Vyberte možnost **Přidat**.
+1. Ze seznamu nebo pomocí vyhledávacího pole vyhledejte úkol sestavení, který chcete přidat. Vyberte **Přidat**.
 1. Zadejte parametry potřebné pro úlohu.
 1. Zařadit nové sestavení do fronty
    >[!NOTE]

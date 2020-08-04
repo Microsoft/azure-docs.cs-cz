@@ -1,5 +1,5 @@
 ---
-title: Zobrazení a hledání poslední přihlašovací aktivity na stránce moje přihlášení (Preview) – Azure Active Directory | Microsoft Docs
+title: Zobrazení a hledání poslední přihlašovací aktivity na stránce moje přihlášení – Azure Active Directory | Microsoft Docs
 description: Podrobnosti o tom, jak zobrazit a vyhledat poslední přihlašovací aktivitu na stránce moje přihlášení na portálu Můj účet.
 services: active-directory
 author: curtand
@@ -9,58 +9,64 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 08/03/2020
 ms.author: curtand
-ms.openlocfilehash: 738e6507a1642a1ab76938eeaf3294668bcea964
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1816170da0fb6e5120f8cec6b6dda68d2ea1c678
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422282"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543174"
 ---
-# <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Zobrazení a hledání poslední přihlašovací aktivity na stránce moje přihlášení (Preview)
+# <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>Zobrazení a hledání poslední přihlašovací aktivity na stránce moje přihlášení
 
 Můžete zobrazit veškerou aktivitu přihlášení k pracovnímu nebo školnímu účtu ze stránky **Moje přihlášení** na portálu **můj účet** . Projděte si historii přihlášení, která vám pomůže zkontrolovat neobvyklou aktivitu, která vám pomůže zobrazit:
 
 - Pokud se někdo pokusí uhodnout heslo.
-
 - Pokud se útočník úspěšně přihlásil k vašemu účtu a v jakém umístění.
-
 - K jakým aplikacím se útočník pokusil získat přístup.
 
 ## <a name="view-your-recent-sign-in-activity"></a>Zobrazení nedávné přihlašovací aktivity
 
 1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na https://myaccount.microsoft.com/ stránku.
 
-2. V levém navigačním podokně vyberte **Moje přihlášení (Preview)** nebo vyberte odkaz **zkontrolovat nedávné aktivity** z bloku **Moje přihlášení (Preview)** .
+2. V levém navigačním podokně vyberte **Moje přihlášení** nebo vyberte odkaz **zkontrolovat nedávné aktivity** z bloku **Moje přihlášení** .
 
     ![Stránka můj účet zobrazující zvýrazněné odkazy na nedávné aktivity](media/my-account-portal/my-account-portal-sign-ins.png)
 
-3. Rozbalíte a Prohlédněte si jednotlivé přihlašovací položky a ujistěte se, že každý z nich poznáte. Pokud najdete přihlašovací položku, která nevypadá dobře, důrazně doporučujeme, abyste změnili heslo, abyste mohli lépe chránit svůj účet v případě ohrožení.
+3. Rozbalíte a Prohlédněte si jednotlivé přihlašovací položky a ujistěte se, že každý z nich poznáte. Pokud najdete přihlašovací položku, která nevypadá dobře, změňte heslo pro ochranu účtu v případě ohrožení bezpečnosti.
 
-    ![Stránka nedávné aktivity s rozšířeným přihlašovacím údajem](media/my-account-portal/my-account-portal-sign-ins-page.png)
+    ![Stránka nedávné aktivity s rozšířeným přihlašovacím údajem](media/my-account-portal-sign-ins-page/recent-activity.png)
 
 ### <a name="if-you-see-a-successful-sign-in"></a>Pokud se zobrazí úspěšné přihlášení
 
-Své vlastní aktivity byste měli rozpoznat jako normální. Pokud si ale všimnete úspěšného přihlášení z neznámého umístění, prohlížeče nebo operačního systému, může to znamenat, že útočník získal přístup k vašemu účtu. V této situaci doporučujeme okamžitě změnit heslo a pak přejít na stránku [bezpečnostní údaje](https://mysignins.microsoft.com/security-info) a aktualizovat nastavení zabezpečení.
+Při kontrole vlastní běžné přihlašovací aktivity se někdy může zobrazit úspěšné přihlášení z neznámého umístění, prohlížeče nebo operačního systému. Neznámé přihlášení může znamenat, že útočník získal přístup k vašemu účtu. Pokud se zobrazí aktivita, kterou jste nepovolili, doporučujeme vám okamžitě změnit heslo a pak přejít na [informace o zabezpečení](https://mysignins.microsoft.com/security-info) a aktualizovat nastavení zabezpečení.
 
-Než zjistíte, že něco není správné, ujistěte se, že se nezobrazuje falešně pozitivní (kde položka vypadá s otázkou, ale je v pořádku). Například určíme vaše přibližné umístění a mapu na základě vaší IP adresy. Mobilní sítě jsou obzvláště obtížné přesně určit, protože někdy směrují provoz přes Vzdálená umístění. Pokud jste se tedy přihlásili pomocí svého mobilního zařízení ve státě Washington, umístění může ukazovat přihlášení z Brna. Z tohoto důvodu důrazně doporučujeme, abyste zkontrolovali více podrobností, než jenom umístění. Měli byste taky zajistit, aby měl operační systém, prohlížeč a aplikace smysl.
+Než zjistíte, že něco není správné, ujistěte se, že se nezobrazuje falešně pozitivní (kde položka vypadá s otázkou, ale je v pořádku). Například určíme vaše přibližné umístění a mapu na základě vaší IP adresy. Mobilní sítě jsou obzvláště obtížné přesně určit, protože někdy směrují provoz přes Vzdálená umístění. I když se přihlašujete pomocí svého mobilního zařízení ve státě Washington, umístění může zobrazit přihlášení z Brna. Důrazně doporučujeme, abyste zkontrolovali podrobnosti nad rámec pouze místa. Zajistěte, aby měl operační systém, prohlížeč a aplikace smysl.
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>Pokud se zobrazí neúspěšné přihlášení
 
-Neúspěšné přihlášení bez aktivity relace znamená, že se nezdařila vaše primární metoda ověřování (uživatelské jméno/heslo). To může znamenat, že jste zadali omylem uživatelské jméno nebo heslo, ale může to znamenat, že se útočník pokusil uhodnout heslo. Pokud se domníváte, že by se útočník snažil neúspěšně pokoušet uhodnout heslo, nemusíte měnit heslo, ale důrazně doporučujeme, abyste se zaregistrovali pro Azure Multi-Factor Authentication (MFA). V případě vícefaktorového ověřování, a to i v případě, že hacker nakonec odhadne heslo, nebude mít přístup k vašemu účtu dost.
+Pokud se zobrazí neúspěšné přihlášení, může to znamenat, že jste zadali přihlašovací údaje chybně. Může to také znamenat, že se útočník pokouší uhodnout heslo. Pokud chcete na toto riziko odpovědět, nemusíte měnit heslo, ale doporučujeme, abyste se zaregistrovali pro Azure Multi-Factor Authentication (MFA). Při ověřování pomocí služby Multi-Factor Authentication, a to i v případě, že počítačový podvodník heslo vymění, nebude pro přístup k účtu dost místa.
 
-Pokud se zobrazí neúspěšné přihlášení s poznámkami v části aktivita relace, která říká, že **se další ověření nepovedlo, neplatný kód**, znamená to, že vaše primární ověřování (uživatelské jméno/heslo) bylo úspěšné, ale vícefaktorové ověřování selhalo. V případě, že se jednalo o útočníka, správně vyvolalo heslo, ale stále nebylo možné úspěšně předat výzvu MFA. V takovém případě doporučujeme, abyste pořád změnili heslo, protože útočník získal tuto část napravo a pak přejdete na stránku [bezpečnostní údaje](https://mysignins.microsoft.com/security-info) , kde můžete aktualizovat nastavení zabezpečení.
+![Neúspěšná dlaždice přihlášení](media/my-account-portal-sign-ins-page/unsuccessful.png)
+
+Pokud se zobrazí neúspěšné přihlášení s poznámkou v **aktivitě relace** , znamená to, `Additional verification failed, invalid code` že vaše primární přihlašovací údaje se úspěšně provedly, ale ověřování službou Multi-Factor Authentication se nezdařilo. Tento stav může znamenat, že útočník správně vyvolal vaše heslo, ale nedokázal předat výzvu služby Multi-Factor Authentication. Doporučujeme, abyste si pořád změnili heslo, protože ho už mohl mít, a přejít na stránku [informace o zabezpečení](https://mysignins.microsoft.com/security-info) , kde můžete aktualizovat nastavení zabezpečení.
 
 ## <a name="search-for-specific-sign-in-activity"></a>Vyhledat konkrétní přihlašovací aktivitu
 
 Nedávné přihlašovací aktivitu můžete vyhledat pomocí libovolné dostupné informace. Můžete například vyhledat svou poslední přihlašovací aktivitu podle operačního systému, umístění, aplikace a tak dále.
 
-1. Na stránce **revidovat nedávné aktivity** zadejte informace, které chcete vyhledat, do panelu **hledání** . Můžete například zadat `My Account` hledání všech aktivit shromažďovaných aplikací můj účet.
+1. Na stránce **revidovat nedávné aktivity** zadejte informace, které chcete vyhledat, do panelu **hledání** . Zadejte například, pokud `Unsuccessful` chcete vyhledat veškerou neúspěšnou přihlašovací aktivitu shromážděnou aplikací můj účet.
 
 2. Hledání spustíte tak, že vyberete tlačítko **Hledat** .
 
-    ![Poslední stránka aktivity, která zobrazuje zvýrazněný panel hledání, tlačítko vyhledat a výsledky](media/my-account-portal/my-account-portal-sign-ins-page-search.png)
+    ![Poslední stránka aktivity, která zobrazuje zvýrazněný panel hledání, tlačítko vyhledat a výsledky](media/my-account-portal-sign-ins-page/sign-in-search.png)
+
+### <a name="confirm-unusual-activity"></a>Potvrdit neobvyklou aktivitu
+
+Přihlášení, která jsou označena jako neobvyklá aktivita, lze potvrdit na dlaždici pro danou aktivitu na stránce **Moje přihlášení** .
+
+![Neobvyklá přihlašovací dlaždice pro potvrzení, že jste provedli nebo jste se nepokusili o přihlášení](media/my-account-portal-sign-ins-page/this-wasnt-me.png)
 
 ## <a name="next-steps"></a>Další kroky
 

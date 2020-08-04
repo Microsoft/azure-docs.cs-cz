@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4ad0cdedfa28e5b46f77d5e87f5bd48e25f11cc4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f1517fd577c5e6bd7341e5dde0204456524ba976
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292406"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545209"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Vysvětlení restartování virtuálních počítačů – údržba vs. výpadek
 Existují tři scénáře, které mohou vést k ovlivnění virtuálního počítače v Azure: neplánovaná údržba hardwaru, neočekávané výpadky a plánovaná údržba.
@@ -53,7 +53,9 @@ Přečtěte si další informace o nasazení virtuálního počítače se [syst�
 Skupiny dostupnosti jsou další konfigurace datového centra, která poskytuje redundanci a dostupnost virtuálních počítačů. Tato konfigurace v rámci datového centra zajišťuje, že během plánované nebo neplánované události údržby je k dispozici aspoň jeden virtuální počítač a splňuje 99,95% Azure SLA. Další informace najdete v tématu [SLA pro virtuální počítače](https://azure.microsoft.com/support/legal/sla/virtual-machines/).
 
 > [!IMPORTANT]
-> Virtuální počítač s jednou instancí v samotné skupině dostupnosti by měl použít SSD úrovně Premium nebo Ultra disk pro všechny disky a datové disky operačního systému, aby bylo možné získat oprávnění SLA pro připojení k virtuálnímu počítači aspoň 99,9%.
+> Virtuální počítač s jednou instancí v samotné skupině dostupnosti by měl použít SSD úrovně Premium nebo Ultra disk pro všechny disky a datové disky operačního systému, aby bylo možné získat oprávnění SLA pro připojení k virtuálnímu počítači aspoň 99,9%. 
+> 
+> Virtuální počítač s jednou instancí s SSD úrovně Standard bude mít smlouvu SLA minimálně 99,5%, zatímco virtuální počítač s jednou instancí s HDD úrovně Standard bude mít smlouvu SLA aspoň 95%.  Přečtěte si [smlouvu SLA pro Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/)
 
 Základní platforma Azure každému virtuálnímu počítači ve skupině dostupnosti přiřadí **aktualizační doménu** a **doménu selhání**. Dané skupině dostupnosti se ve výchozím nastavení přiřadí pět aktualizačních domén (u nasazení podle modelu Resource Manager je pak možné počet aktualizačních domén navýšit až na 20), které uživatel nemůže konfigurovat a které představují skupiny virtuálních počítačů a základního fyzického hardwaru, které lze restartovat současně. Pokud je v rámci jedné skupiny dostupnosti nakonfigurováno více než 5 virtuálních počítačů, šestý virtuální počítač se umístí do stejné aktualizační domény jako první virtuální počítač, sedmý se umístí do stejné aktualizační domény jako druhý atd. Restartování aktualizačních domén během plánované údržby nemusí probíhat sekvenčně, ale vždycky se restartuje jenom jedna aktualizační doména. Restartovaná aktualizační doména má 30 minut na zotavení, než se zahájí údržba na jiné aktualizační doméně.
 

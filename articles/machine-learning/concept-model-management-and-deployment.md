@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 12d86f9415f7f5b813d2dce8eb3ad4bb63dec30c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82929753"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543380"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
@@ -74,7 +74,7 @@ Další informace naleznete v části model registru v tématu [nasazení model�
 ### <a name="profile-models"></a>Modely profilů
 
 Azure Machine Learning vám může pomáhat pochopit požadavky na procesor a paměť služby, která se vytvoří při nasazení modelu. Profilace testuje službu, která spouští váš model, a vrací informace, jako je využití CPU, využití paměti a latence odezvy. Poskytuje taky doporučení pro procesor a paměť na základě využití prostředků.
-Další informace najdete v části profilace v tématu [nasazení modelů](how-to-deploy-and-where.md#profilemodel).
+Další informace najdete v části profilace v tématu [nasazení modelů](how-to-deploy-profile-model.md).
 
 ### <a name="package-and-debug-models"></a>Modely balíčků a ladění
 
@@ -94,16 +94,16 @@ Další informace o ONNX s Azure Machine Learning najdete v článku o [Vytvoře
 
 Školené modely strojového učení se nasazují jako webové služby v cloudu nebo místně. Můžete také nasadit modely pro Azure IoT Edge zařízení. Nasazení používají pro Inferencing PROCESORy, GPU nebo pole s programovatelnými poli brány (FPGA). Můžete také použít modely z Power BI.
 
-Při použití modelu jako webové služby nebo zařízení IoT Edge zadejte následující položky:
+V případě použití modelu jako webové služby nebo pro zařízení IoT Edge poskytujete následující položky:
 
 * Model (y), které se používají k určení skóre dat odeslaných do služby nebo zařízení.
 * Vstupní skript. Tento skript přijímá požadavky, používá model (y) k vyhodnocení dat a vrací odpověď.
 * Azure Machine Learning prostředí popisující závislosti PIP a Conda, které vyžadují model (y) a skript vstupu.
 * Jakékoli další prostředky, například text, data atd., které jsou vyžadovány modelem (y) a vstupním skriptem.
 
-Také zadáte konfiguraci cílové platformy nasazení. Například typ rodiny virtuálních počítačů, dostupnou paměť a počet jader při nasazení do služby Azure Kubernetes.
+Poskytujete také konfiguraci cílové platformy, na kterou model nasazujete. Například typ rodiny virtuálních počítačů, dostupnou paměť a počet jader při nasazení do služby Azure Kubernetes.
 
-Při vytvoření bitové kopie jsou přidány také součásti požadované Azure Machine Learning. Například prostředky potřebné ke spuštění webové služby a interakci s IoT Edge.
+Do vytvořené image se dále přidají komponenty, které vyžaduje Azure Machine Learning. Může jít třeba o prostředky potřebné ke spuštění webové služby a interakci s IoT Edge.
 
 #### <a name="batch-scoring"></a>Dávkové vyhodnocování
 Dávkové vyhodnocování je podporováno prostřednictvím kanálů ML. Další informace najdete v tématu [Dávková předpovědi pro velké](how-to-use-parallel-run-step.md)objemy dat.

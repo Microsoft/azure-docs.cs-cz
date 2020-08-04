@@ -1,6 +1,6 @@
 ---
 title: Přehled šifrování Azure | Microsoft Docs
-description: Další informace o různých možnostech šifrování v Azure
+description: Přečtěte si o možnostech šifrování v Azure. Podívejte se na informace pro šifrování v klidovém umístění, šifrování v letu a správu klíčů pomocí Azure Key Vault.
 services: security
 author: msmbaldwin
 ms.assetid: ''
@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 14808016b627bc593d90ff88fc9bddf2449f6ee5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083952"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542955"
 ---
 # <a name="azure-encryption-overview"></a>Přehled šifrování v Azure
 
@@ -113,7 +113,7 @@ Azure nabízí řadu mechanismů pro zachování privátních dat při jejich p�
 
 ### <a name="data-link-layer-encryption-in-azure"></a>Šifrování vrstvy pro propojení dat v Azure
 
-Pokaždé, když se pohyb zákazníků Azure pohybuje mezi datovými centry – mimo fyzické hranice, která není řízená Microsoftem (nebo jménem Microsoftu) – šifrovací metoda vrstvy dat pomocí [standardů zabezpečení IEEE 802.1 AE Mac](https://1.ieee802.org/security/802-1ae/) (označované taky jako MACsec) se použije z Point-to-Point v rámci základního síťového hardwaru.  Před odesláním se pakety zašifrují a dešifrují na zařízeních, aby se zabránilo fyzickým útokům typu "man-in-the-middle" nebo "Snoop/wiretapping".  Vzhledem k tomu, že je tato technologie integrovaná na samotném síťovém hardwaru, zajišťuje na síťovém hardwaru přenosovou rychlost při nezvyšování latence spojení.  Toto šifrování MACsec je ve výchozím nastavení zapnuté pro všechny přenosy dat Azure na cestách v rámci oblasti nebo mezi oblastmi a na straně zákazníků není potřeba žádná akce, kterou by bylo možné povolit. 
+Pokaždé, když se pohyb zákazníků Azure pohybuje mezi datovými centry – mimo fyzické hranice, která není řízená Microsoftem (nebo jménem Microsoftu) – šifrovací metoda vrstvy dat pomocí [standardů zabezpečení IEEE 802.1 AE Mac](https://1.ieee802.org/security/802-1ae/) (označované taky jako MACsec) se použije z Point-to-Point v rámci základního síťového hardwaru. Před odesláním se pakety zašifrují a dešifrují na zařízeních, aby se zabránilo fyzickým útokům typu "man-in-the-middle" nebo "Snoop/wiretapping". Vzhledem k tomu, že je tato technologie integrovaná na samotném síťovém hardwaru, zajišťuje na síťovém hardwaru přenosovou rychlost při nezvyšování latence spojení. Toto šifrování MACsec je ve výchozím nastavení zapnuté pro všechny přenosy dat Azure na cestách v rámci oblasti nebo mezi oblastmi a na straně zákazníků není potřeba žádná akce, kterou by bylo možné povolit. 
 
 ### <a name="tls-encryption-in-azure"></a>Šifrování TLS v Azure
 
@@ -179,7 +179,7 @@ Připojení brány VPN typu Site-to-site můžete použít k připojení místn�
 
 Připojení VPN typu Site-to-site k virtuální síti můžete nakonfigurovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
-Další informace najdete tady:
+Další informace:
 
 [Vytvoření připojení typu Site-to-site v Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 

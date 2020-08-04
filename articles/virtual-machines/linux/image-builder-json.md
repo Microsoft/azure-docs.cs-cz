@@ -3,17 +3,17 @@ title: Vytvoření šablony Azure image Builder (Preview)
 description: Naučte se, jak vytvořit šablonu pro použití s nástrojem Azure image Builder.
 author: danielsollondon
 ms.author: danis
-ms.date: 07/09/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: fe4ddeaadedc14e7e3d92a8b185920bf18bd142b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 132e547fe2512676e4d8082744489f4719dcc0bf
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283295"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543601"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -142,12 +142,13 @@ Další informace o nasazení této funkce najdete v tématu [Konfigurace spravo
 
 ## <a name="properties-source"></a>Vlastnosti: zdroj
 
-`source`Část obsahuje informace o zdrojové imagi, kterou bude používat Tvůrce imagí.
+Nástroj image Builder v současné době podporuje jenom image a virtuální počítače Hyper-generace 1, `source` část obsahuje informace o zdrojové imagi, kterou bude používat Tvůrce imagí.
 
 Rozhraní API vyžaduje typ SourceType, který definuje zdroj pro sestavení image, v současné době existují tři typy:
 - PlatformImage – indikuje, že zdrojová Image je image na webu Marketplace.
 - ManagedImage – Toto použijte při spuštění z obyčejné spravované image.
 - SharedImageVersion – používá se, pokud používáte verzi image v galerii sdílených imagí jako zdroj.
+
 
 > [!NOTE]
 > Pokud používáte stávající vlastní image Windows, můžete spustit příkaz Sysprep až 8 časů na jedné imagi Windows, další informace najdete v dokumentaci k [nástroji Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) .
@@ -191,7 +192,10 @@ Můžete také zadat informace o plánu, například:
 ```
 ### <a name="managedimage-source"></a>ManagedImage zdroj
 
-Nastaví zdrojovou Image jako existující spravovanou bitovou kopii zobecněného virtuálního pevného disku nebo virtuálního počítače. Zdrojová image spravovaná musí být podporovaného operačního systému a musí být ve stejné oblasti jako šablona Azure image Builder. 
+Nastaví zdrojovou Image jako existující spravovanou bitovou kopii zobecněného virtuálního pevného disku nebo virtuálního počítače.
+
+> [!NOTE]
+> Zdrojová image spravovaná musí být podporovaného operačního systému a image musí mít stejnou oblast jako vaše šablona Azure image Builder. 
 
 ```json
         "source": { 
@@ -204,7 +208,11 @@ Nastaví zdrojovou Image jako existující spravovanou bitovou kopii zobecněné
 
 
 ### <a name="sharedimageversion-source"></a>SharedImageVersion zdroj
-Nastaví zdrojovou bitovou kopii existující verze image v galerii sdílených imagí. Verze bitové kopie musí být podporovaného operačního systému a bitová kopie musí být replikovaná do stejné oblasti jako šablona Azure image Builder. 
+Nastaví zdrojovou bitovou kopii existující verze image v galerii sdílených imagí.
+
+> [!NOTE]
+> Zdrojová bitová kopie musí být podporovaného operačního systému a image musí mít stejnou oblast jako vaše šablona Azure image Builder. Pokud ne, replikujte prosím verzi image do oblasti šablony tvůrce imagí.
+
 
 ```json
         "source": { 

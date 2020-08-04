@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: e1cc3bac56e659b9a020880a26fd3d539f987503
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 55e5290630185466ea0801b06ece71069fc94d89
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544058"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545266"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2 přiřazení přístupových oprávnění k identitě
 
@@ -28,7 +28,7 @@ Zavedli jsme tři předdefinované role Azure pro udělení oprávnění na úro
 > [!IMPORTANT]
 > Úplná Správa sdílené složky, včetně možnosti převzít vlastnictví souboru, vyžaduje použití klíče účtu úložiště. Pro přihlašovací údaje Azure AD se nepodporuje administrativní řízení.
 
-Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete přiřadit předdefinované role k identitě uživatele Azure AD pro udělení oprávnění na úrovni sdílené složky. Mějte na paměti, že přiřazení role RBAC na úrovni sdílené složky může nějakou dobu trvat. 
+Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete přiřadit předdefinované role k identitě uživatele Azure AD pro udělení oprávnění na úrovni sdílené složky. Mějte na paměti, že přiřazení role Azure na úrovni sdílené složky může nějakou dobu trvat. 
 
 > [!NOTE]
 > Pokud plánujete používat místní služba AD DS k ověřování, nezapomeňte [synchronizovat přihlašovací údaje služba AD DS do služby Azure AD](../articles/active-directory/hybrid/how-to-connect-install-roadmap.md) . Synchronizace hodnot hash hesel z služba AD DS do služby Azure AD je volitelná. Identitě služby Azure AD, která je synchronizovaná z vašich místních služba AD DS, se udělí oprávnění na úrovni sdílené složky.
@@ -36,7 +36,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
 Obecně doporučujeme použít oprávnění na úrovni sdílené složky pro správu přístupu na vysokou úroveň do skupiny AD reprezentující skupinu uživatelů a identit a pak využít oprávnění NTFS pro detailní řízení přístupu na úrovni adresářů a souborů. 
 
 #### <a name="azure-portal"></a>portál Azure
-K přiřazení role RBAC k identitě Azure AD použijte [Azure Portal](https://portal.azure.com)použijte následující postup:
+Pokud chcete přiřadit roli Azure k identitě Azure AD, použijte [Azure Portal](https://portal.azure.com)podle těchto kroků:
 
 1. V Azure Portal přejdete do sdílené složky nebo [vytvoříte sdílenou složku](../articles/storage/files/storage-how-to-create-file-share.md).
 2. Vyberte **Access Control (IAM)**.
@@ -46,7 +46,7 @@ K přiřazení role RBAC k identitě Azure AD použijte [Azure Portal](https://p
 
 #### <a name="powershell"></a>PowerShell
 
-Následující ukázka prostředí PowerShell ukazuje, jak přiřadit roli RBAC k identitě Azure AD na základě přihlašovacího jména. Další informace o přiřazování rolí RBAC pomocí PowerShellu najdete v tématu [Správa přístupu pomocí RBAC a Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
+Následující ukázka prostředí PowerShell ukazuje, jak přiřadit k identitě Azure AD roli Azure na základě přihlašovacího jména. Další informace o přiřazování rolí Azure pomocí PowerShellu najdete v tématu [Správa přístupu pomocí RBAC a Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
 
 Před spuštěním následujícího ukázkového skriptu Nezapomeňte nahradit hodnoty zástupných symbolů, včetně závorek, vlastními hodnotami.
 
@@ -61,7 +61,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 #### <a name="cli"></a>Rozhraní příkazového řádku
   
-Následující příkaz CLI 2,0 ukazuje, jak přiřadit roli RBAC k identitě Azure AD na základě přihlašovacího jména. Další informace o přiřazování rolí RBAC pomocí rozhraní příkazového řádku Azure najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../articles/role-based-access-control/role-assignments-cli.md). 
+Následující příkaz CLI 2,0 ukazuje, jak přiřadit roli Azure k identitě Azure AD na základě přihlašovacího jména. Další informace o přiřazování rolí Azure pomocí rozhraní příkazového řádku Azure najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../articles/role-based-access-control/role-assignments-cli.md). 
 
 Před spuštěním následujícího ukázkového skriptu Nezapomeňte nahradit hodnoty zástupných symbolů, včetně závorek, vlastními hodnotami.
 
@@ -130,7 +130,7 @@ Další informace o tom, jak pomocí icacls nastavit oprávnění NTFS a v různ
 
 ## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4 připojení sdílení souborů z virtuálního počítače připojeného k doméně
 
-Následující proces ověří, že se správně nastavila vaše sdílená složka a přístupová oprávnění a že máte přístup ke sdílené složce Azure z virtuálního počítače připojeného k doméně. Mějte na paměti, že přiřazení role RBAC na úrovni sdílené složky může nějakou dobu trvat. 
+Následující proces ověří, že se správně nastavila vaše sdílená složka a přístupová oprávnění a že máte přístup ke sdílené složce Azure z virtuálního počítače připojeného k doméně. Mějte na paměti, že přiřazení role Azure na úrovni sdílené složky může nějakou dobu trvat. 
 
 Přihlaste se k virtuálnímu počítači pomocí identity Azure AD, ke které jste udělili oprávnění, jak je znázorněno na následujícím obrázku. Pokud jste povolili místní ověřování služba AD DS pro soubory Azure, použijte přihlašovací údaje pro služba AD DS. Pro ověřování Azure služba AD DS Přihlaste se pomocí přihlašovacích údajů Azure AD.
 

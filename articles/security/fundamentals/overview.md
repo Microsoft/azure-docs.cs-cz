@@ -1,6 +1,6 @@
 ---
 title: Seznámení se službou Azure Security | Microsoft Docs
-description: Přečtěte si o zabezpečení Azure, jeho službách a o tom, jak funguje.
+description: Přečtěte si tento přehled a zaveďte sami sebe do zabezpečení Azure, jejich různé služby a jak to funguje.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 9c107789fe4a88b3cd73a2f290871016b95cae19
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7f78b5d0baff149fc687d2b4bb71d70186315def
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371392"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543822"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -142,12 +142,12 @@ V konzoli Application Diagnostics lze zobrazit události seskupené následují
 V části najdete další informace týkající se klíčových funkcí zabezpečení Azure Storage a souhrnné informace o těchto funkcích.
 
 ### <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
-Svůj účet úložiště můžete zabezpečit pomocí Access Control na základě rolí (RBAC). Omezení přístupu na základě [potřebných znalostí](https://en.wikipedia.org/wiki/Need_to_know) a [minimálních](https://en.wikipedia.org/wiki/Principle_of_least_privilege) principů zabezpečení oprávnění je nezbytné pro organizace, které chtějí vynutilit zásady zabezpečení pro přístup k datům. Tato přístupová práva jsou udělována přiřazením příslušné role RBAC do skupin a aplikací v určitém rozsahu. K přiřazení oprávnění uživatelům můžete použít [předdefinované role Azure](../../role-based-access-control/built-in-roles.md), jako je Přispěvatel účtu úložiště. Přístup k klíčům úložiště pro účet úložiště pomocí modelu [Azure Resource Manager](../../storage/blobs/security-recommendations.md) můžete ovládat pomocí Access Control na základě rolí (RBAC).
+Svůj účet úložiště můžete zabezpečit pomocí Access Control na základě rolí (RBAC). Omezení přístupu na základě [potřebných znalostí](https://en.wikipedia.org/wiki/Need_to_know) a [minimálních](https://en.wikipedia.org/wiki/Principle_of_least_privilege) principů zabezpečení oprávnění je nezbytné pro organizace, které chtějí vynutilit zásady zabezpečení pro přístup k datům. Tato přístupová práva jsou udělována přiřazením příslušné role Azure do skupin a aplikací v určitém oboru. K přiřazení oprávnění uživatelům můžete použít [předdefinované role Azure](../../role-based-access-control/built-in-roles.md), jako je Přispěvatel účtu úložiště. Přístup k klíčům úložiště pro účet úložiště pomocí modelu [Azure Resource Manager](../../storage/blobs/security-recommendations.md) můžete ovládat pomocí Access Control na základě rolí (RBAC).
 
 ### <a name="shared-access-signature"></a>Sdílený přístupový podpis
 [Sdílený přístupový podpis (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) poskytuje delegovaný přístup k prostředkům ve vašem účtu úložiště. SAS znamená, že můžete klientovi udělit omezená oprávnění k objektům ve vašem účtu úložiště po určitou dobu a se zadanou sadou oprávnění. Tato omezená oprávnění můžete udělit bez nutnosti sdílení přístupových klíčů k účtu.
 
-### <a name="encryption-in-transit"></a>Šifrování během přenosu
+### <a name="encryption-in-transit"></a>Šifrování při přenosu
 Šifrování při přenosu je mechanismus ochrany dat při přenosu mezi sítěmi. Pomocí Azure Storage můžete zabezpečit data pomocí:
 -   [Šifrování na úrovni přenosu](../../storage/blobs/security-recommendations.md), jako je například https při přenosu dat do nebo z Azure Storage.
 
@@ -239,10 +239,10 @@ Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HT
 
 Aplikace poskytuje mnoho funkcí kontroleru doručování aplikací (ADC), včetně vyrovnávání zatížení protokolu HTTP, spřažení relace na základě souborů cookie, [přesměrování zpracování TLS](../../application-gateway/tutorial-restrict-web-traffic-powershell.md), vlastních sond stavu, podpory více webů a mnoha dalších.
 
-### <a name="web-application-firewall"></a>Web Application Firewall (Brána firewall webových aplikací)
+### <a name="web-application-firewall"></a>Firewall webových aplikací
 Firewall webových aplikací je funkce služby [Azure Application Gateway](../../application-gateway/overview.md) , která poskytuje ochranu webových aplikací, které používají Aplikační bránu pro standardní funkce řízení doručování aplikací (ADC). Firewall webových aplikací chrání webové aplikace před většinou z 10 nejčastějších webových hrozeb podle OWASP.
 
-![Web Application Firewall (Brána firewall webových aplikací)](./media/overview/azure-security-fig1.png)
+![Firewall webových aplikací](./media/overview/azure-security-fig1.png)
 
 -   Ochrana před útoky prostřednictvím injektáže SQL.
 

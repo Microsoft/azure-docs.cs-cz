@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 01972ab02aa901af6144c02171efd36314e2f514
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 30164e1af1948f86c68e102f4d348674ea931e7b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091942"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544009"
 ---
 # <a name="streaming-policies"></a>Zásady streamování
 
@@ -40,7 +40,7 @@ Následující "rozhodovací strom" vám pomůže vybrat předdefinované zásad
 
 Kliknutím na obrázek zobrazíte jeho plnou velikost.  
 
-<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
+[![Diagram znázorňující rozhodovací strom, který je navržený tak, aby vám pomohly zvolit předdefinované zásady streamování pro váš scénář.](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
 Při šifrování obsahu je potřeba vytvořit [zásadu klíče obsahu](content-key-policy-concept.md), **zásady klíčů obsahu** není potřeba pro vymazání streamování nebo stahování. 
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 19b8e91ce85bb80f78ec75ab14332464d6331904
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2c79566f51647492118f307e1c9737b98b1be484
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078140"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543584"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Začínáme s doručováním obsahu na vyžádání pomocí sady SDK pro .NET  
 
@@ -31,10 +31,10 @@ Tento kurz vás provede jednotlivými kroky implementace základní aplikace pro
 
 K dokončení kurzu potřebujete následující:
 
-* Účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Účet Azure: Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
 * Rozhraní .NET 4.0 nebo novější.
-* Visual Studio.
+* Visual Studio
 
 Tento kurz sestává z následujících úloh:
 
@@ -57,7 +57,7 @@ Následující obrázek ukazuje některé z nejčastěji používaných objektů
 
 Kliknutím na obrázek zobrazíte jeho plnou velikost.  
 
-<a href="./media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
+[![Diagram znázorňující některé z nejčastěji používaných objektů v datovém modelu Azure Media Services objektů pro vývoj aplikací pro video na vyžádání.](./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png)](./media/media-services-dotnet-get-started/media-services-overview-object-model.png#lightbox)
 
 Celý model můžete zobrazit [zde](https://media.windows.net/API/$metadata?api-version=2.15).  
 

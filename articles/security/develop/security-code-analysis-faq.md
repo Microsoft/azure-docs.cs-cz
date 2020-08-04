@@ -1,6 +1,6 @@
 ---
 title: Dokumentace k analýze kódu zabezpečení společnosti Microsoft – nejčastější dotazy
-description: Tento článek obsahuje nejčastější dotazy týkající se rozšíření analýzy kódu zabezpečení společnosti Microsoft.
+description: Přečtěte si nejčastější dotazy a zjistěte informace o rozšíření Microsoft Security Code Analysis Extension.
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: df995f60867cb2062330e19a2ccfb8c29f173653
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f872159e538dc85121a7a6d4d6503fd18a263628
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071445"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543040"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 Máte nějaké otázky? Další informace najdete v následujících nejčastějších dotazech.
@@ -38,7 +38,7 @@ Pro jiné nástroje, jako je BinSkim, které analyzují artefakty po sestavení,
 
 ### <a name="can-i-break-my-build-when-results-are-found"></a>Je možné ukončit sestavení při nalezení výsledků?
 
-Yes. Můžete zavést přerušení sestavení, když kterýkoli nástroj ohlásí problém nebo problém v souboru protokolu. Stačí přidat úlohu sestavení po analýze a zaškrtnout políčko pro libovolný nástroj, pro který chcete sestavení přerušit.
+Ano. Můžete zavést přerušení sestavení, když kterýkoli nástroj ohlásí problém nebo problém v souboru protokolu. Stačí přidat úlohu sestavení po analýze a zaškrtnout políčko pro libovolný nástroj, pro který chcete sestavení přerušit.
 
 V uživatelském rozhraní úlohy po analýze můžete zvolit, aby se sestavení přerušit, když jakýkoli nástroj hlásí pouze chyby nebo chyby a upozornění.
 
@@ -67,7 +67,7 @@ Ne. Používání nástrojů pro bezpečné vývoj v různých úložištích v 
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Můžu sestavení zařadit do fronty a spustit tyto úlohy v hostovaném agentu sestavení? 
 
-Yes. Všechny úlohy a nástroje v rozšíření lze spustit u hostovaného agenta sestavení.
+Ano. Všechny úlohy a nástroje v rozšíření lze spustit u hostovaného agenta sestavení.
 
 >[!NOTE]
 > Úloha sestavení pro kontrolu proti malwaru vyžaduje, aby byl v programu Windows Defender povolen agent sestavení. Hostitelem sady Visual Studio 2017 a novějších je například agent. V hostovaném agentu sady Visual Studio 2015 se úloha sestavení nespustí.

@@ -1,6 +1,6 @@
 ---
 title: Kontrolní seznam zabezpečení Azure Database | Microsoft Docs
-description: Tento článek poskytuje sadu kontrolních seznamů pro zabezpečení Azure Database.
+description: Pomocí kontrolního seznamu zabezpečení Azure Database se ujistěte, že řešíte důležité problémy se zabezpečením cloud computingu.
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: fc79d7204ba360696b8d9411cd56efd09d1678dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad8f15f7d1cf69824bfb9298d7ccf097e4893ea8
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021836"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542972"
 ---
 # <a name="azure-database-security-checklist"></a>Kontrolní seznam zabezpečení Azure Database
 
 Pro lepší zabezpečení zahrnuje Azure Database řadu integrovaných ovládacích prvků zabezpečení, které můžete použít k omezení a řízení přístupu.
 
-Tady jsou některé z nich:
+Mezi ně patří:
 
 -    Bránu firewall, která umožňuje vytvářet [pravidla brány firewall](../../azure-sql/database/firewall-configure.md) s omezením připojení podle IP adresy,
 -    Brána firewall na úrovni serveru dostupná z Azure Portal
@@ -48,7 +48,7 @@ Doporučujeme, abyste si před kontrolou tohoto kontrolního seznamu přečetli 
 | ------------ | -------- |
 |**Ochrana dat**||
 | <br> Šifrování při pohybu nebo přenosu| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol)pro šifrování dat při přesunu dat do sítí.</li><li>Databáze vyžaduje zabezpečenou komunikaci od klientů založenou na protokolu [TDS (Tabular data Stream)](https://msdn.microsoft.com/library/dd357628.aspx) přes protokol TLS (Transport Layer Security).</li></ul> |
-|<br>Šifrování v klidovém stavu| <ul><li>[Transparentní šifrování dat](https://go.microsoft.com/fwlink/?LinkId=526242), když se neaktivní data ukládají fyzicky do libovolné digitální formy.</li></ul>|
+|<br>Šifrování neaktivních uložených dat| <ul><li>[Transparentní šifrování dat](https://go.microsoft.com/fwlink/?LinkId=526242), když se neaktivní data ukládají fyzicky do libovolné digitální formy.</li></ul>|
 |**Řízení přístupu**||  
 |<br> Přístup k databázi | <ul><li>[Ověřování (Azure Active Directory](../../azure-sql/database/logins-create-manage.md) ověřování) ověřování AD používá identity spravované pomocí Azure Active Directory.</li><li>[Autorizace](../../azure-sql/database/logins-create-manage.md) uděluje uživatelům nejnižší potřebná oprávnění.</li></ul> |
 |<br>Přístup k aplikaci| <ul><li>[Zabezpečení na úrovni řádků](https://msdn.microsoft.com/library/dn765131) (pomocí zásad zabezpečení zároveň omezuje přístup na úrovni řádků na základě identity, role nebo kontextu spuštění uživatele).</li><li>[Dynamické maskování dat](../../azure-sql/database/dynamic-data-masking-overview.md) (pomocí zásad & oprávnění, omezování ohrožení citlivých dat jejich maskování pro uživatele bez oprávnění)</li></ul>|

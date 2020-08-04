@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3e01d5c8d57752c11b2890c1d109b58a223d260f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d45d802456345eab857f571d2d52793c8be691eb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091924"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543057"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Transformace a úlohy v Media Services
 
@@ -74,7 +74,7 @@ Následující diagram znázorňuje **transformační** objekt a objekty, na kte
 
 Vyberte obrázek pro zobrazení celé velikosti.  
 
-<a href="./media/api-diagrams/transform-large.png" target="_blank"><img src="./media/api-diagrams/transform-small.png"></a>
+[![Diagram znázorňující transformační objekt a objekty, na které odkazuje, včetně vztahů odvození třídy mezi objekty.](./media/api-diagrams/transform-small.png)](./media/api-diagrams/transform-large.png#lightbox)
 
 ## <a name="jobs"></a>Úlohy
 
@@ -102,7 +102,7 @@ Následující diagram znázorňuje objekt **úlohy** a objekty, na které odkaz
 
 Kliknutím na obrázek zobrazíte jeho plnou velikost.  
 
-<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a>
+[![Diagram znázorňující objekt úlohy a objekty, na které odkazuje, včetně vztahů odvození třídy mezi objekty.](./media/api-diagrams/job-small.png)](./media/api-diagrams/job-large.png#lightbox)
 
 ## <a name="configure-media-reserved-units"></a>Konfigurace rezervovaných jednotek médií
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c5369d63c0937605cc288e3a90466e723e69d163
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 037e07a1d8a6a3b4016d00f1b5a68bffc9caf335
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255434"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543363"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Používání sítě kubenet s vlastními rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Díky [rozhraní CNI (Azure Container Networking Interface)][cni-networking]kaž
 
 V tomto článku se dozvíte, jak pomocí sítě *kubenet* vytvořit a použít podsíť virtuální sítě pro cluster AKS. Další informace o možnostech a požadavcích sítě najdete v tématu [Koncepty sítě pro Kubernetes a AKS][aks-network-concepts].
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Virtuální síť pro cluster AKS musí umožňovat odchozí připojení k Internetu.
 * Nevytvářejte více než jeden cluster AKS ve stejné podsíti.
@@ -47,6 +47,17 @@ V případě *kubenet*obdrží jenom uzly IP adresu v podsíti virtuální sít�
 Azure podporuje maximálně 400 tras v UDR, takže nemůžete mít cluster AKS větší než 400 uzlů. [Virtuální uzly][virtual-nodes] AKS a zásady sítě Azure nejsou podporované s *kubenet*.  Můžete použít [zásady sítě Calico][calico-network-policies], protože jsou podporované v kubenet.
 
 V případě *Azure CNI*každý pod tím obdrží IP adresu v podsíti protokolu IP a může přímo komunikovat s dalšími lusky a službami. Clustery můžou být tak velké jako rozsah IP adres, který zadáte. Rozsah IP adres se ale musí naplánovat předem a všechny IP adresy se spotřebovávají AKS uzly na základě maximálního počtu lusků, které můžou podporovat. *Azure CNI*podporuje pokročilé síťové funkce a scénáře, jako jsou [virtuální uzly][virtual-nodes] nebo zásady sítě (buď Azure nebo Calico).
+
+### <a name="limitations--considerations-for-kubenet"></a>Omezení & důležitých informací pro kubenet
+
+* V návrhu kubenet se vyžaduje další směrování, které přičítá k vedlejší latenci v rámci komunikace.
+* Směrovací tabulky a uživatelem definované trasy jsou vyžadovány pro použití kubenet, což přináší složitost na operace.
+* Přímé adresování pod není podporované pro kubenet z důvodu návrhu kubenet.
+* Na rozdíl od clusterů Azure CNI nemůže více clusterů kubenet sdílet podsíť.
+* Funkce, **které nejsou podporovány v kubenet** , zahrnují:
+   * [Zásady sítě Azure](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy), ale zásady sítě Calico jsou podporované v kubenet.
+   * [Fondy uzlů Windows](windows-node-limitations.md)
+   * [Doplněk virtuálních uzlů](virtual-nodes-portal.md#known-limitations)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>Dostupnost a vyčerpání IP adres
 

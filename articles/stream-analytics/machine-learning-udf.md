@@ -8,24 +8,24 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 30e70e56eb54815c26521829e4baf82dce574e43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: e2277e2088a8cb386d6f19799b235d96e08959b0
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432594"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543431"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrace Azure Stream Analytics s Azure Machine Learning (Preview)
 
 Modely strojového učení můžete implementovat jako uživatelsky definovanou funkci (UDF) ve svých úlohách Azure Stream Analytics, abyste v reálném čase provedli bodování a předpovědi se na vašich vstupních datech streamování. [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) vám umožňuje používat libovolný oblíbený open source nástroj, jako je Tensorflow, scikit-učení nebo PyTorch, pro přípravu, výuku a nasazení modelů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před přidáním modelu Machine Learning jako funkce do Stream Analytics úlohy proveďte následující kroky:
 
 1. K [nasazení modelu jako webové služby](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)použijte Azure Machine Learning.
 
-2. Váš skript bodování by měl mít [ukázkové vstupy a výstupy](../machine-learning/how-to-deploy-and-where.md#example-entry-script) , které Azure Machine Learning používá ke generování specifikace schématu. Stream Analytics používá schéma pro pochopení signatury funkce webové služby. Tuto [ukázkovou definici Swagger](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) můžete použít jako referenci, abyste měli jistotu, že je správně nastavená.
+2. Váš skript bodování by měl mít [ukázkové vstupy a výstupy](../machine-learning/how-to-deploy-and-where.md) , které Azure Machine Learning používá ke generování specifikace schématu. Stream Analytics používá schéma pro pochopení signatury funkce webové služby. Tuto [ukázkovou definici Swagger](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) můžete použít jako referenci, abyste měli jistotu, že je správně nastavená.
 
 3. Ujistěte se, že webová služba přijímá a vrací Serializovaná data JSON.
 
@@ -147,7 +147,7 @@ Následující kód JSON je příkladem požadavku z předchozího dotazu:
 
 ## <a name="optimize-the-performance-for-azure-machine-learning-udfs"></a>Optimalizujte výkon pro Azure Machine Learning UDF
 
-Při nasazení modelu do služby Azure Kubernetes můžete [profilovat model, abyste zjistili využití prostředků](../machine-learning/how-to-deploy-and-where.md#profilemodel). Službu [Application Insights pro vaše nasazení](../machine-learning/how-to-enable-app-insights.md) taky můžete povolit pro pochopení sazeb požadavků, dob odezvy a sazeb selhání.
+Při nasazení modelu do služby Azure Kubernetes můžete [profilovat model, abyste zjistili využití prostředků](../machine-learning/how-to-deploy-profile-model.md). Službu [Application Insights pro vaše nasazení](../machine-learning/how-to-enable-app-insights.md) taky můžete povolit pro pochopení sazeb požadavků, dob odezvy a sazeb selhání.
 
 Pokud máte scénář s vysokou propustností událostí, možná budete muset změnit následující parametry v Stream Analytics, abyste dosáhli optimálního výkonu s nižšími koncovými latencemi:
 

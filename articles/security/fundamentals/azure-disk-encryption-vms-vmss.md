@@ -1,20 +1,20 @@
 ---
-title: Azure Disk Encryption pro virtuální počítače a sady škálování virtuálních počítačů
-description: Tento článek poskytuje přehled Azure Disk Encryption
+title: Azure Disk Encryption pro virtuální počítače a škálovací sady virtuálních počítačů
+description: Přečtěte si o Azure Disk Encryption pro virtuální počítače a službu VM Scale Sets. Azure Disk Encryption funguje pro virtuální počítače se systémy Linux a Windows.
 author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c881b2b9743766e4d35e6cb05f6f3469803850bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21194bf2fe76a7eb0ee034d4a502c20ee3032dd9
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062130"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543669"
 ---
-# <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>Azure Disk Encryption pro virtuální počítače a sady škálování virtuálních počítačů
+# <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>Azure Disk Encryption pro virtuální počítače a škálovací sady virtuálních počítačů
 
 Azure Disk Encryption se dá použít pro virtuální počítače se systémem Linux i Windows i pro službu Virtual Machine Scale Sets. 
 
@@ -25,7 +25,7 @@ Následující články obsahují pokyny k šifrování virtuálních počítač
 ### <a name="current-version-of-azure-disk-encryption"></a>Aktuální verze Azure Disk Encryption
 
 - [Přehled služby Azure Disk Encryption pro virtuální počítače s Linuxem](../../virtual-machines/linux/disk-encryption-overview.md)
-- [Scénáře služby Azure Disk Encryption na virtuálních počítačích s Linuxem](../../virtual-machines/linux/disk-encryption-linux.md)
+- [Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux](../../virtual-machines/linux/disk-encryption-linux.md)
 - [Vytvoření a šifrování virtuálního počítače s Linuxem s využitím Azure CLI](../../virtual-machines/linux/disk-encryption-cli-quickstart.md)
 - [Vytvoření a šifrování virtuálního počítače s Linuxem s využitím Azure PowerShellu](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 - [Vytvoření a šifrování virtuálního počítače s Linuxem s využitím webu Azure Portal](../../virtual-machines/linux/disk-encryption-portal-quickstart.md)
@@ -77,6 +77,6 @@ Následující články obsahují pokyny k šifrování služby Virtual Machine 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled šifrování Azure](encryption-overview.md)
+- [Přehled šifrování v Azure](encryption-overview.md)
 - [Šifrování dat v klidovém stavu](encryption-atrest.md)
 - [Osvědčené postupy šifrování a zabezpečení dat](data-encryption-best-practices.md)

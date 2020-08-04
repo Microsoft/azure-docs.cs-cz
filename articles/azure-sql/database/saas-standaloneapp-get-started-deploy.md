@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
-ms.openlocfilehash: fd4b94f6a99241ffddd7ae359059c3a4a918934a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52dfc285deaa84792e37d0f012abd7702d856113
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042124"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544077"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Nasazení a prozkoumání samostatné aplikace pro jednoho tenanta, která používá Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,13 +43,17 @@ Budou vydány další kurzy. Umožní vám prozkoumat řadu scénářů správy 
 
 Nasazení aplikace pro tři poskytnuté klienty:
 
-1. Kliknutím na každé modré tlačítko **nasadit do Azure** otevřete šablonu nasazení v [Azure Portal](https://portal.azure.com). Každá šablona vyžaduje dvě hodnoty parametrů; název nové skupiny prostředků a uživatelské jméno, které toto nasazení odlišuje od ostatních nasazení aplikace. Další krok poskytuje podrobnosti o nastavení těchto hodnot.<br><br>
-    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>&nbsp; **Kohalace společnosti Contoso**
-<br><br>
-    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>&nbsp; **Dogwood Dojo**
-<br><br>
-    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>&nbsp; **Fabrikam jazz – klub**
+1. Kliknutím na každé modré tlačítko **nasadit do Azure** otevřete šablonu nasazení v [Azure Portal](https://portal.azure.com). Každá šablona vyžaduje dvě hodnoty parametrů; název nové skupiny prostředků a uživatelské jméno, které toto nasazení odlišuje od ostatních nasazení aplikace. Další krok poskytuje podrobnosti o nastavení těchto hodnot.
 
+   **Kohalace společnosti Contoso**   
+   [![Obrázek znázorňující tlačítko s názvem "nasadit do Azure".](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-contoso)
+
+   **Dogwood Dojo**   
+   [![Obrázek znázorňující tlačítko s názvem "nasadit do Azure".](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-dogwood)
+
+   **Fabrikam jazz – klub**   
+   [![Obrázek znázorňující tlačítko s názvem "nasadit do Azure".](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-fabrikam)
+ 
 2. Zadejte požadované hodnoty parametrů pro každé nasazení.
 
     > [!IMPORTANT]

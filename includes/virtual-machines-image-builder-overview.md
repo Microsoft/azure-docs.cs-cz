@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 05/15/2020
+ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 0a4dcf749a76623df7f46d77bf3e4877f2c41900
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ad191ca0d31abf317bab521dfbbc7c2567c3450
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83821492"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545281"
 ---
 Standardizované image virtuálních počítačů umožňují organizacím migrovat do cloudu a zajistit konzistenci nasazení. Obrázky obvykle zahrnují předdefinovaná nastavení zabezpečení a konfigurace a potřebný software. Nastavení vlastního kanálu pro vytváření imagí vyžaduje čas, infrastrukturu a instalaci, ale s nástrojem Azure VM Image Builder stačí jednoduše zadat jednoduchou konfiguraci popisující vaši image, odeslat ji do služby a image se sestaví a distribuuje.
  
@@ -20,7 +20,7 @@ Správce imagí virtuálních počítačů Azure (Azure image Builder) umožňuj
 > Azure image Builder je momentálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Funkce Preview
+## <a name="preview-features"></a>Funkce ve verzi Preview
 
 Pro verzi Preview jsou tyto funkce podporované:
 
@@ -35,13 +35,13 @@ Pro verzi Preview jsou tyto funkce podporované:
 
 ## <a name="regions"></a>Oblasti
 Služba Azure image Builder bude k dispozici pro verzi Preview v těchto oblastech. Obrázky lze distribuovat mimo tyto oblasti.
-- USA – východ
+- East US
 - USA – východ 2
 - USA – středozápad
 - USA – západ
-- USA – západ 2
+- Západní USA 2
 - Severní Evropa
-- Západní Evropa
+- West Europe
 
 ## <a name="os-support"></a>Podpora operačního systému
 AIB bude podporovat image základního operačního systému Azure Marketplace:
@@ -97,6 +97,9 @@ Během procesu vytváření imagí se soubory stahují a ukládají do `IT_<Dest
 Image Builder vytvoří virtuální počítač s použitím velikosti virtuálního počítače s D1v2 a úložiště a sítě, které potřebuje pro virtuální počítač. Tyto prostředky budou poslední po dobu trvání procesu sestavení a budou odstraněny po dokončení vytváření image tvůrcem imagí. 
  
 Azure image Builder rozšíří image do zvolených oblastí, což může způsobit poplatky za odchozí přenos v síti.
+
+## <a name="hyper-v-generation"></a>Generace technologie Hyper-V
+Nástroj image Builder aktuálně podporuje image a virtuální počítače Hyper-V generace 1.
  
 ## <a name="next-steps"></a>Další kroky 
  

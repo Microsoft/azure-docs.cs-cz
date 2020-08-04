@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 9cec3e3ad4934ce368baa44984d252dc981d5d81
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 135504ad4956836614bfc0f2cb107e610de17c0c
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088202"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543482"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Přiřazení více IP adres k virtuálním počítačům pomocí Azure Portal
 
@@ -48,7 +48,7 @@ K síťovému rozhraní Azure můžete přidat privátní a veřejné IP adresy,
 
 5. V podokně, které se zobrazí pro vybraný síťový adaptér, klikněte na **Konfigurace protokolu IP**. Klikněte na tlačítko **Přidat**, proveďte kroky v jedné z následujících částí podle typu IP adresy, kterou chcete přidat, a poté klikněte na tlačítko **OK**. 
 
-### <a name="add-a-private-ip-address"></a>**Přidat privátní IP adresu**
+### <a name="add-a-private-ip-address"></a>Přidat privátní IP adresu
 
 Chcete-li přidat novou privátní IP adresu, proveďte následující kroky:
 

@@ -1,6 +1,6 @@
 ---
 title: Produkční síť Azure
-description: Tento článek poskytuje obecný popis produkční sítě Azure.
+description: Přečtěte si informace o produkční síti Azure. Viz metody přístupu zabezpečení a mechanismy ochrany pro navázání připojení k síti.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 7c0748e4ff1531649274834cb1e602c228f102e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 724c2ee2d74ca9cab11280e92faac71c2cb2218e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68726694"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543805"
 ---
 # <a name="the-azure-production-network"></a>Produkční síť Azure
 Uživatelé produkční sítě Azure zahrnují externí zákazníky, kteří přistupují k vlastním aplikacím Azure a interním pracovníkům podpory Azure, kteří spravují produkční síť. Tento článek popisuje metody přístupu zabezpečení a mechanismy ochrany pro navázání připojení k produkční síti Azure.
