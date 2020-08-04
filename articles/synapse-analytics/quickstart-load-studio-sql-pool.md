@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7f840d4a75be72a4317860dcf4a6708642369a24
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: fb618f155e659ecd1fa5760117193a9045e6da35
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274216"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535123"
 ---
 # <a name="bulk-loading-with-synapse-sql"></a>Hromadné načítání pomocí synapse SQL
 
@@ -26,9 +26,9 @@ Teď můžete snadno hromadně načíst data pomocí fondů SQL, a to jednoduše
 
 - Soubor nebo složka z účtu služby Azure Storage připojeného k vašemu pracovnímu prostoru ![ kliknutím pravým tlačítkem myši na soubor nebo složku z účtu úložiště](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Tento průvodce vygeneruje příkaz COPY, který používá předávací průchod AAD pro authentcation. Váš [uživatel AAD musí mít přístup](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad) k pracovnímu prostoru s alespoň rolí RBAC úložiště dat objektů BLOB úložiště pro účet adls Gen2.
+- Tento průvodce vygeneruje příkaz COPY, který používá předávací průchod AAD pro authentcation. [Uživatel AAD musí mít přístup](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad) k pracovnímu prostoru, který má aspoň roli Azure data BLOB úložiště pro účet adls Gen2.
 
 - Pokud vytváříte novou tabulku, do které se načítají, musíte mít požadovaná [oprávnění pro použití příkazu Kopírovat](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#permissions) a oprávnění k vytváření tabulek.
 

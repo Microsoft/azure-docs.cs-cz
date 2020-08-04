@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: beda097733228dbb23ccb607747742d93d606933
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f31e238c705a4b03c400a38fa6eb5f42db7204b0
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497609"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535021"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib a Azure synapse Analytics
 
@@ -225,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 Teď, když existují dva datarámce, je dalším úkolem vytvořit vzor modelu a spustit ho v rámci školení dataframe a pak ověřit proti testovacímu datasnímku. Měli byste experimentovat s různými verzemi vzorce modelu, abyste viděli dopad různých kombinací.
 
 > [!Note]
-> Pokud chcete model uložit, budete potřebovat roli Azure Storage Blob role RBAC přispěvatele dat. V části účet úložiště přejděte na Access Control (IAM) a vyberte přidat přiřazení role. Přiřazení role RBAC Přispěvatel dat objektů BLOB úložiště k vašemu serveru SQL Database. Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích Azure najdete v tomto [Průvodci](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+> Pokud chcete model uložit, budete potřebovat roli Azure pro přispěvatele dat objektů BLOB úložiště. V části účet úložiště přejděte na Access Control (IAM) a vyberte přidat přiřazení role. Přiřaďte roli Azure Přispěvatel dat objektů BLOB úložiště k vašemu serveru SQL Database. Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích Azure najdete v tomto [Průvodci](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```python
 ## Create a new LR object for the model

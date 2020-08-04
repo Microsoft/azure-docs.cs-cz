@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 3335bfbed592c9e13d5be437e8013a89ae86e970
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16c8058da30821a53a20cf3ea6afdb0e4dbfcb77
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510632"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535089"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>Druhá část: přiřazení oprávnění na úrovni sdílení k identitě
 
@@ -38,11 +38,11 @@ Existují tři předdefinované role Azure pro udělení oprávnění na úrovni
 
 Pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure můžete přiřadit předdefinované role k identitě uživatele Azure AD pro udělení oprávnění na úrovni sdílené složky.
 
-## <a name="assign-an-rbac-role"></a>Přiřazení role RBAC
+## <a name="assign-an-azure-role"></a>Přiřazení role Azure
 
 ### <a name="azure-portal"></a>portál Azure
 
-K přiřazení role RBAC k identitě Azure AD použijte [Azure Portal](https://portal.azure.com)použijte následující postup:
+Pokud chcete přiřadit roli Azure k identitě Azure AD, použijte [Azure Portal](https://portal.azure.com)podle těchto kroků:
 
 1. V Azure Portal přejdete do sdílené složky nebo [vytvoříte sdílenou složku](storage-how-to-create-file-share.md).
 1. Vyberte **Access Control (IAM)**.
@@ -52,7 +52,7 @@ K přiřazení role RBAC k identitě Azure AD použijte [Azure Portal](https://p
 
 ### <a name="powershell"></a>PowerShell
 
-Následující ukázka prostředí PowerShell ukazuje, jak přiřadit roli RBAC k identitě Azure AD na základě přihlašovacího jména. Další informace o přiřazování rolí RBAC pomocí PowerShellu najdete v tématu [Správa přístupu pomocí RBAC a Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+Následující ukázka prostředí PowerShell ukazuje, jak přiřadit k identitě Azure AD roli Azure na základě přihlašovacího jména. Další informace o přiřazování rolí Azure pomocí PowerShellu najdete v tématu [Správa přístupu pomocí RBAC a Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 Před spuštěním následujícího ukázkového skriptu nahraďte hodnoty zástupných symbolů, včetně závorek.
 
@@ -67,7 +67,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 ### <a name="cli"></a>Rozhraní příkazového řádku
   
-Následující příkaz CLI 2,0 přiřadí roli RBAC identitě Azure AD na základě přihlašovacího jména. Další informace o přiřazování rolí RBAC pomocí rozhraní příkazového řádku Azure najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../../role-based-access-control/role-assignments-cli.md). 
+Následující příkaz CLI 2,0 přiřadí roli Azure AD identitě na základě přihlašovacího jména. Další informace o přiřazování rolí Azure pomocí rozhraní příkazového řádku Azure najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](../../role-based-access-control/role-assignments-cli.md). 
 
 Před spuštěním následujícího ukázkového skriptu Nezapomeňte nahradit hodnoty zástupných symbolů, včetně závorek, vlastními hodnotami.
 
