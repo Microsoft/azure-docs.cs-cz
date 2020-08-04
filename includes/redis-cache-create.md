@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2019
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: 3c064aa8e57a77b96161da06847f543816be1217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0557f8eb2fd120baeebee96acb4ef539344e3e7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73719108"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528819"
 ---
 1. Pokud chcete vytvořit mezipaměť, přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **vytvořit prostředek**. 
    
@@ -37,7 +37,10 @@ ms.locfileid: "73719108"
    
    ![Vytvoření mezipaměti Azure pro Redis](media/redis-cache-create/redis-cache-cache-create.png) 
    
-   Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled** služby Azure cache pro Redis. Pokud se **stav** zobrazuje jako **spuštěno**, mezipaměť je připravena k použití.
+   > [!NOTE]
+   > Můžete očekávat, že zřizování mezipaměti bude trvat přibližně 15 až 20 minut.   
+   
+   Průběh můžete sledovat na stránce **Přehled** služby Azure cache pro Redis. Pokud se **stav** zobrazuje jako **spuštěno**, mezipaměť je připravena k použití.
    
    ![Mezipaměť Azure pro Redis se vytvořila.](media/redis-cache-create/redis-cache-cache-created.png)
 
