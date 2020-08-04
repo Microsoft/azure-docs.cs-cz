@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa83e295460cc847647e83c7e4e8a9d7ee91f6f4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9e3b0b8ab4a432254835e43bff4893aaee81b04e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165766"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541868"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Plánování nasazení zařízení Azure Active Directory
 
@@ -226,10 +226,6 @@ Jakmile vaše zařízení zaregistrujete nebo připojíte k Azure AD, použijte 
 
 * [Konfigurace nastavení zařízení](device-management-azure-portal.md#configure-device-settings)
 * Abyste mohli spravovat zařízení s Windows, musíte být místním správcem. [Azure AD aktualizuje toto členství pro zařízení připojená k Azure AD](assign-local-admin.md)a automaticky je přidá do role Správce zařízení jako správci do všech připojených zařízení.
-
-* [Najít zařízení](device-management-azure-portal.md#locate-devices)
-
-* [Provádění úloh správy identit zařízení](device-management-azure-portal.md#device-identity-management-tasks)
 
 Ujistěte se, že prostředí vyčistíte tím, že budete [Spravovat zastaralá zařízení](manage-stale-devices.md)a Zaměřte se na prostředky na správu aktuálních zařízení.
 

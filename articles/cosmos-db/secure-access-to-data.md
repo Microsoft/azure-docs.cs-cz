@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 9c851a172fcfe89e6e7aa31c298a5b3d7931a528
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 3a9039470c32b89d398dd41e3df99e91c70d913c
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023580"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542632"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Zabezpečený přístup k datům ve službě Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Tento článek poskytuje přehled zabezpečení přístupu k datům uloženým v
 
 Azure Cosmos DB používá dva typy klíčů k ověřování uživatelů a poskytování přístupu k jeho datům a prostředkům. 
 
-|Typ klíče|Prostředky|
+|Typ klíče|Zdroje a prostředky|
 |---|---|
 |[Hlavní klíče](#master-keys) |Používá se pro prostředky pro správu: databázové účty, databáze, uživatele a oprávnění.|
 |[Tokeny prostředků](#resource-tokens)|Používá se pro prostředky aplikace: kontejnery, dokumenty, přílohy, uložené procedury, triggery a UDF.|
@@ -57,7 +57,7 @@ Proces otáčení hlavního klíče je jednoduchý.
 
 ### <a name="code-sample-to-use-a-master-key"></a>Ukázka kódu pro použití hlavního klíče
 
-Následující ukázka kódu ukazuje, jak použít koncový bod účtu Cosmos DB a hlavní klíč pro vytvoření instance objektu DocumentClient a vytvoření databáze.
+Následující ukázka kódu ukazuje, jak použít koncový bod účtu Cosmos DB a hlavní klíč pro vytvoření instance DocumentClient a vytvoření databáze:
 
 ```csharp
 //Read the Azure Cosmos DB endpointUrl and authorization keys from config.
@@ -69,6 +69,10 @@ private static readonly string authorizationKey = ConfigurationManager.AppSettin
 
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
+
+Následující ukázka kódu ukazuje, jak použít koncový bod účtu Azure Cosmos DB a hlavní klíč pro vytvoření instance `CosmosClient` objektu:
+
+:::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
 ## <a name="resource-tokens"></a>Tokeny prostředků<a id="resource-tokens"></a>
 

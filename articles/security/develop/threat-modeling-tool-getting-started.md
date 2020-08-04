@@ -1,6 +1,6 @@
 ---
 title: Začínáme – Microsoft Threat Modeling Tool – Azure | Microsoft Docs
-description: Toto je hlubší přehled, který zvýrazňuje Threat Modeling Tool v akci.
+description: Naučte se, jak začít používat Threat Modeling Tool. Vytvořte diagram, identifikujte hrozby, zmírňujte hrozby a ověřte jednotlivá rizika.
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 1454826095bcced9b20935405c0befd5a1ed1ddd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b8467a5983ae9d8928d14987bcee9d2aef094aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68728302"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539896"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Začínáme s Threat Modeling Tool
 
@@ -41,7 +41,7 @@ Když spustíte Threat Modeling Tool, všimnete si pár věcí, jak je vidět na
 
 ### <a name="threat-model-section"></a>Oddíl modelu hrozeb
 
-| Součást                                   | Podrobnosti                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Komponenta                                   | Podrobnosti                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Názory, tlačítko návrhy a problémy** | Přejdete na **[Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** pro všechny věci SDL. Nabízí vám možnost si přečíst si, co dělají jiní uživatelé, spolu s alternativními řešeními a doporučeními. Pokud stále nemůžete najít, co hledáte, pošlete tmtextsupport@microsoft.com nám e-mail pro náš tým podpory, který vám může pomoci                                                                                                                            |
 | **Vytvoření modelu**                          | Otevře prázdné plátno pro vykreslení diagramu. Ujistěte se, že jste vybrali šablonu, kterou chcete použít pro váš model.                                                                                                                                                                                                                                                                                                                                                                       |
@@ -51,7 +51,7 @@ Když spustíte Threat Modeling Tool, všimnete si pár věcí, jak je vidět na
 
 ### <a name="template-section"></a>Oddíl Template
 
-| Součást               | Podrobnosti                                                                                                                                                          |
+| Komponenta               | Podrobnosti                                                                                                                                                          |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Vytvořit novou šablonu** | Otevře prázdnou šablonu, na kterou se má vytvořit. Pokud nemáte rozsáhlé znalosti při vytváření šablon od začátku, doporučujeme, abyste si vytvořili z existujících. |
 | **Otevřít šablonu**       | Otevře existující šablony, abyste mohli provádět změny.                                                                                                              |

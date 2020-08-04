@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 76c4e2c5052e70c4c6cb8ff631151a5e6fc544e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3dc2990e810096310617e468a533a65626008ff
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706354"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542649"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Rychlý Start: konfigurace virtuálního počítače Azure pro připojení ke spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ Tento rychlý Start používá prostředky vytvořené v části [Vytvoření sp
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-new-subnet-vnet"></a>Vytvořit novou virtuální síť podsítě
 
@@ -54,7 +54,7 @@ Následující kroky vytvoří novou podsíť ve virtuální síti spravované i
    | **Název** | Libovolné platné jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
    | **Rozsah adres (blok CIDR)** | Platný rozsah | Výchozí hodnota je pro tento rychlý Start vhodná.|
    | **Skupina zabezpečení sítě** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
-   | **Tabulka směrování** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
+   | **Směrovací tabulka** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
    | **Koncové body služby** | Vybráno: 0 | Výchozí hodnota je pro tento rychlý Start vhodná.|
    | **Delegování podsítě** | Žádná | Výchozí hodnota je pro tento rychlý Start vhodná.|
 
@@ -74,7 +74,7 @@ Nejjednodušší způsob, jak vytvořit klientský virtuální počítač se vš
 
 1. Ujistěte se, že jste přihlášeni k Azure Portal na jiné kartě prohlížeče. Pak vyberte následující tlačítko a vytvořte klientský virtuální počítač a nainstalujte SQL Server Management Studio:
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   [![Obrázek znázorňující tlačítko s názvem "nasadit do Azure".](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json)
 
 2. Vyplňte formulář pomocí informací v následující tabulce:
 

@@ -4,19 +4,19 @@ description: Přečtěte si o úrovních služeb v modelu nákupu založeném na
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
+ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: b7354a921950daec5cc429fa07318213c8924264
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: fbf753436a259993f6869372ae3ba7272f2a181a
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382691"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541698"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služby v nákupním modelu založeném na DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,11 +39,11 @@ Výběr úrovně služeb závisí hlavně na požadavcích na provozní kontinui
 |**Cílové zatížení**|Vývoj a produkce|Vývoj a produkce|Vývoj a produkce|
 |**Smlouva SLA pro dobu provozu**|99,99 %|99,99 %|99,99 %|
 |**Maximální uchovávání záloh**|7 dní|35 dní|35 dní|
-|**Procesor**|Nízké|Nízká, střední, vysoká|Střední, vysoká|
+|**Procesor**|Nízká|Nízká, střední, vysoká|Střední, vysoká|
 |**Propustnost vstupně-výstupních operací (přibližná)** |1-5 IOPS na DTU| 1-5 IOPS na DTU | 25 IOPS na DTU|
 |**Latence v/v (přibližná)**|5 ms (čtení), 10 ms (zápis)|5 ms (čtení), 10 ms (zápis)|2 ms (čtení a zápis)|
 |**Indexování columnstore** |–|S3 a vyšší|Podporováno|
-|**OLTP v paměti**|–|–|Podporováno|
+|**OLTP v paměti**|N/A|N/A|Podporováno|
 
 > [!IMPORTANT]
 > Úrovně služeb Basic, Standard S0, S1 a S2 poskytují méně než jeden vCore (CPU).  Pro úlohy náročné na procesor se doporučuje úroveň služby S3 nebo vyšší. 
@@ -77,7 +77,7 @@ Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (D
 | **Maximální počet databází na fond** | 500  | 500 | 100 |
 
 > [!IMPORTANT]
-> Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správy USA – střed. V těchto oblastech je maximální velikost úložiště na úrovni Premium omezená na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
+> Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed a Německo – severovýchod. V těchto oblastech je maximální velikost úložiště na úrovni Premium omezená na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
 > [!IMPORTANT]
 > Za určitých okolností může být nutné zmenšit databázi a uvolnit nevyužité místo. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](file-space-manage.md).
 
@@ -109,7 +109,7 @@ Databáze má velikost na základě "faktoru škálování". Faktor škálován�
 
 Zatížení se skládá z devíti typů transakcí, jak je znázorněno v následující tabulce. Každá transakce je navržena k zdůraznění konkrétní sady systémových vlastností v databázovém stroji a na systémovém hardwaru s vysokým kontrastem od ostatních transakcí. Tento přístup usnadňuje vyhodnocení dopadu různých komponent na celkový výkon. Například transakce "Read těžký" vytváří velký počet operací čtení z disku.
 
-| Transaction Type (Typ transakce) | Popis |
+| Transaction Type (Typ transakce) | Description |
 | --- | --- |
 | Přečíst Lite |VYBRALI v paměti; jen pro čtení |
 | Přečíst médium |VYBRALI hlavně v paměti; jen pro čtení |

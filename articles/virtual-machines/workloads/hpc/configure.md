@@ -1,6 +1,6 @@
 ---
-title: Výpočty s vysokým výkonem – Azure Virtual Machines | Microsoft Docs
-description: Seznamte se s vysokým výpočetním výkonem v Azure.
+title: Konfigurace a optimalizace InfiniBand s povolenými aktualizacemi řady H-Series a N-Series Azure Virtual Machines
+description: Přečtěte si o konfiguraci a optimalizaci virtuálních počítačů s podporou InfiniBand a N-Series pro HPC.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -10,22 +10,50 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 08/01/2020
 ms.author: amverma
-ms.openlocfilehash: 723419b97dc024a700d860dd3fe61ff48073a587
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: cynthn
+ms.openlocfilehash: c49286f370691c39c3d14d589f2657d6e0bb3c04
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019994"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542327"
 ---
-# <a name="optimization-for-linux"></a>Optimalizace pro Linux
+# <a name="configure-and-optimize-vms"></a>Konfigurace a optimalizace virtuálních počítačů
 
-Tento článek ukazuje několik klíčových postupů pro optimalizaci image operačního systému. Přečtěte si další informace o [Povolení InfiniBand](enable-infiniband.md) a optimalizaci imagí operačního systému.
+Tento článek sdílí známé techniky pro konfiguraci a optimalizaci virtuálních počítačů řady [H-Series](../../sizes-hpc.md) s podporou InfiniBand a [N-Series](../../sizes-gpu.md) pro HPC.
 
-## <a name="update-lis"></a>Aktualizace LIS
+## <a name="vm-images"></a>Image virtuálních počítačů
+Na virtuálních počítačích s povolenou funkcí InfiniBand je nutné, aby byly k dispozici vhodné ovladače pro povolení RDMA. V systému Linux jsou image virtuálních počítačů CentOS-HPC na webu Marketplace předem nakonfigurované s příslušnými ovladači. Image virtuálních počítačů s Ubuntu se dají nakonfigurovat pomocí správných ovladačů podle [pokynů uvedených tady](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351). Doporučuje se také vytvořit [vlastní image virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) s příslušnými ovladači a konfigurací a znovu je použít.
 
-Pokud nasazujete pomocí vlastní image (například starší operační systém, například CentOS/RHEL 7,4 nebo 7,5), aktualizujte v aplikaci LIS na virtuálním počítači.
+### <a name="centos-hpc-vm-images"></a>Image virtuálních počítačů CentOS-HPC
+Pro [virtuální počítače](../../sizes-hpc.md#rdma-capable-instances)podporující technologii RDMA s podporou SR-IOV, CentOS-HPC verze 6,5 nebo novější, jsou vhodné až 7,5 na webu Marketplace. Například pro [virtuální počítače řady H16 úrovně-Series](../../h-series.md)se doporučuje verze 7,1 až 7,5. Tyto image virtuálních počítačů jsou předem načtené pomocí síťových přímých ovladačů pro RDMA a Intel MPI verze 5,1.
+
+  Pro [virtuální počítače podporující](../../sizes-hpc.md#rdma-capable-instances)rozhraní SR-IOV, které podporuje RDMA, jsou vhodné image [CentOS-HPC verze 7,6 nebo novější](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) verze virtuálních počítačů na webu Marketplace. Tyto image virtuálních počítačů přináší optimalizované a předem načtené ovladače OFED pro RDMA a různé běžně používané knihovny MPI a vědecké výpočetní balíčky a představují nejjednodušší způsob, jak začít.
+
+  Příklady skriptů použitých při vytváření imagí virtuálních počítačů CentOS-HPC verze 7,6 a novější z image základního CentOS na webu Marketplace jsou v [úložišti azhpc-images](https://github.com/Azure/azhpc-images/tree/master/centos).
+
+### <a name="rhelcentos-vm-images"></a>Image virtuálních počítačů s RHEL/CentOS
+Image virtuálních počítačů s RHEL nebo CentOS na webu Marketplace se dají nakonfigurovat tak, aby se používaly na [virtuálních počítačích](../../sizes-hpc.md#rdma-capable-instances)podporujících rozhraní SR-IOV s podporou RDMA. Přečtěte si další informace o [Povolení InfiniBand](enable-infiniband.md) a [Nastavení MPI](setup-mpi.md) na virtuálních počítačích.
+
+  Příklady skriptů použitých při vytváření imagí virtuálních počítačů CentOS-HPC verze 7,6 a novější z image základního CentOS na webu Marketplace jsou v [úložišti azhpc-images](https://github.com/Azure/azhpc-images/tree/master/centos).
+
+### <a name="ubuntu-vm-images"></a>Image virtuálních počítačů s Ubuntu
+Ubuntu Server 16,04 LTS, 18,04 LTS a 20,04 image virtuálních počítačů LTS na webu Marketplace se podporují pro [virtuální počítače podporující](../../sizes-hpc.md#rdma-capable-instances)rozhraní SR-IOV a non-SR-IOV RDMA. Přečtěte si další informace o [Povolení InfiniBand](enable-infiniband.md) a [Nastavení MPI](setup-mpi.md) na virtuálních počítačích.
+
+  Příklady skriptů, které se dají použít při vytváření imagí virtuálních počítačů HPC založených na Ubuntu 18,04 LTS, najdete v [úložišti azhpc-images](https://github.com/Azure/azhpc-images/tree/master/ubuntu/ubuntu-18.x/ubuntu-18.04-hpc).
+
+### <a name="suse-linux-enterprise-server-vm-images"></a>SUSE Linux Enterprise Server imagí virtuálních počítačů
+SLES 12 SP3 pro HPC, SLES 12 SP3 pro HPC (Premium), SLES 12 SP1 pro HPC, SLES 12 SP1 pro HPC (Premium), SLES 12 SP4 a SLES 15 image virtuálních počítačů na webu Marketplace se podporují. Tyto image virtuálních počítačů jsou předem načtené pomocí síťových přímých ovladačů pro RDMA a Intel MPI verze 5,1. Přečtěte si další informace o [Nastavení MPI](setup-mpi.md) na virtuálních počítačích.
+
+## <a name="optimize-vms"></a>Optimalizace virtuálních počítačů
+
+Toto jsou některá volitelná nastavení optimalizace pro zlepšení výkonu virtuálního počítače.
+
+### <a name="update-lis"></a>Aktualizace LIS
+
+V případě potřeby je možné nainstalovat nebo aktualizovat [ovladače služby Linux Integration Services (LIS)](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) v podporovaném operačním systému distribuce, zejména při nasazení pomocí vlastní image nebo starší verze operačního systému, jako je CentOS/RHEL 6. x nebo starší verze 7. x.
 
 ```bash
 wget https://aka.ms/lis
@@ -34,9 +62,9 @@ pushd LISISO
 ./upgrade.sh
 ```
 
-## <a name="reclaim-memory"></a>Uvolnit paměť
+### <a name="reclaim-memory"></a>Uvolnit paměť
 
-Vylepšete efektivitu tím, že automaticky uvolní paměť, aby nedocházelo k vzdálenému přístupu do paměti.
+Vylepšete výkon tím, že automaticky uvolní paměť, aby nedocházelo k vzdálenému přístupu do paměti.
 
 ```bash
 echo 1 >/proc/sys/vm/zone_reclaim_mode
@@ -48,9 +76,7 @@ Chcete-li toto zachovat po restartování virtuálního počítače:
 echo "vm.zone_reclaim_mode = 1" >> /etc/sysctl.conf sysctl -p
 ```
 
-## <a name="disable-firewall-and-selinux"></a>Zakázat bránu firewall a SELinux
-
-Zakáže bránu firewall a SELinux.
+### <a name="disable-firewall-and-selinux"></a>Zakázat bránu firewall a SELinux
 
 ```bash
 systemctl stop iptables.service
@@ -62,9 +88,7 @@ iptables -nL
 sed -i -e's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 ```
 
-## <a name="disable-cpupower"></a>Zakázat cpupower
-
-Zakáže cpupower.
+### <a name="disable-cpupower"></a>Zakázat cpupower
 
 ```bash
 service cpupower status
@@ -73,8 +97,18 @@ service cpupower stop
 sudo systemctl disable cpupower
 ```
 
+### <a name="configure-walinuxagent"></a>Konfigurace WALinuxAgent
+
+```bash
+sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
+```
+Volitelně může být WALinuxAgent zakázaný krok před úlohou a povolený back-Job pro maximální dostupnost prostředků virtuálního počítače pro úlohu HPC.
+
+
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [Povolení InfiniBand](enable-infiniband.md) a optimalizaci imagí operačního systému.
-
-* Přečtěte si další informace o [HPC](/azure/architecture/topics/high-performance-computing/) v Azure.
+- Přečtěte si další informace o [Povolení InfiniBand](enable-infiniband.md) na virtuálních počítačích s InfiniBand a [N-Series](../../sizes-gpu.md) [s podporou řady d-Series](../../sizes-hpc.md) .
+- Přečtěte si další informace o instalaci různých [podporovaných knihoven MPI](setup-mpi.md) a jejich optimálních konfiguracích na virtuálních počítačích.
+- Seznamte se s přehledem a [řadou HC](hc-series-overview.md) - [Series](hb-series-overview.md) – přehled s optimální konfigurací úloh pro zajištění výkonu a škálovatelnosti.
+- Přečtěte si o nejnovějších oznámeních a některých příkladech HPC a výsledcích na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Pro zobrazení architektury na vyšší úrovni pro spouštění úloh HPC si přečtěte téma věnované technologii [HPC (High Performance Computing) v Azure](/azure/architecture/topics/high-performance-computing/).

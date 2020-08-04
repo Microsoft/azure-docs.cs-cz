@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 0eec42c0703e7158b478b8297848dc2ee6735cb8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 81d1c86bc5130d616712d022efd4b111b8b939dd
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047559"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542374"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
 
@@ -49,7 +49,7 @@ Následující obrázek ukazuje některé z nejčastěji používaných objektů
 
 Kliknutím na obrázek zobrazíte jeho plnou velikost.  
 
-<a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
+[![Diagram znázorňující některé z nejčastěji používaných objektů při vývoji s datovým modelem Azure Media Services objektů.](./media/media-services-overview/media-services-overview-object-model-small.png)](./media/media-services-overview/media-services-overview-object-model.png#lightbox)
 
 Celý model můžete zobrazit [zde](https://media.windows.net/API/$metadata?api-version=2.15).  
 
@@ -177,7 +177,7 @@ Zákazníci Media Services si můžou zvolit koncový bod streamování **Standa
 
 #### <a name="availability"></a>Dostupnost
 
-|Název|Status|Datová centra
+|Name|Status|Datová centra
 |---|---|---|
 |Standard|GA|Vše|
 |Premium|GA|Vše|

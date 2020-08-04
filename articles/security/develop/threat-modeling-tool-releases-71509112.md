@@ -1,19 +1,19 @@
 ---
 title: Microsoft Threat Modeling Tool verze 9/12/2018
 titleSuffix: Azure
-description: Dokumentující poznámky k verzi pro nástroj pro modelování hrozeb
+description: Přečtěte si poznámky k verzi pro Microsoft Threat Modeling Tool vydané v 9/12/2018. Poznámky zahrnují změny funkcí a opravy chyb.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
-ms.openlocfilehash: a921310f14f0d48922165a46d750366e170ee374
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 780ddc614feef492dafa54862abbea9552496274
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78269919"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539811"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA Release 7.1.50911.2-9/12/2018
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4c224f40996625ead4592a3bf50e02f0877c76db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05283c02c2e5f95e22beb6fbeaad7a99e42ee6aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051315"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540831"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Jaké metody ověřování jsou k dispozici v Azure Active Directory?
 
@@ -74,7 +74,7 @@ Ověřovací aplikace může pomáhat zabránit neoprávněnému přístupu k ú
 ![Snímek obrazovky s ukázkovým dotazem na přihlašovací aplikaci webového prohlížeče pro dokončení procesu přihlašování](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> Pokud má vaše organizace zaměstnanci pracující v nebo na cestách na Čínu, *oznámení prostřednictvím metody mobilní aplikace* na zařízeních s Androidem nefunguje v dané zemi nebo oblasti. Pro tyto uživatele by měly být k dispozici alternativní metody ověřování.
+> Pokud má vaše organizace zaměstnanci pracující v nebo na cestách v Číně, *oznámení prostřednictvím metody mobilní aplikace* na zařízeních s Androidem nefunguje v dané zemi nebo oblasti jako služby Google Play (včetně nabízených oznámení) v této oblasti blokované. Oznámení pro iOS ale funguje. Pro zařízení s Androidem by se měli pro tyto uživatele zpřístupnit alternativní metody ověřování.
 
 ### <a name="verification-code-from-mobile-app"></a>Ověřovací kód z mobilní aplikace
 

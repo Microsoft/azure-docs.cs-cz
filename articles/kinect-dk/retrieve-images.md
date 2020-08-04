@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, načtení, senzor, kamera, sada SDK, Hloubka, RGB, obrázky, barva, zachycení, rozlišení, vyrovnávací paměť
-ms.openlocfilehash: 84e678993f94c17bf58fb134234afaee4139aad5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed5c7340d287d9103ba35f0fd3d80c0fff6e3ec
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277141"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538910"
 ---
 # <a name="retrieve-azure-kinect-image-data"></a>Načtení dat imagí Kinect Azure
 
-Tato stránka poskytuje podrobné informace o tom, jak načíst image z Azure Kinect. V tomto článku se dozvíte, jak zachytit a přistupovat k obrázkům koordinovaným mezi barevnými kamerami a hloubkou zařízení. Abyste měli přístup k imagí, musíte nejdřív otevřít a nakonfigurovat zařízení a pak můžete zachytit image.
+Tato stránka poskytuje podrobné informace o tom, jak načíst image z Azure Kinect. Tento článek ukazuje, jak zachytit a přistupovat k obrázkům koordinovaným mezi barvou a hloubkou zařízení. Abyste měli přístup k imagí, musíte nejdřív otevřít a nakonfigurovat zařízení a pak můžete zachytit image.
 Předtím, než nakonfigurujete a zachytíte image, je nutné [Najít a otevřít zařízení](find-then-open-device.md).
 
 Můžete se také podívat na [příklad streamování SDK](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/streaming) , který ukazuje, jak používat funkce v tomto článku.

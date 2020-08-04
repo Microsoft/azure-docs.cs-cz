@@ -7,12 +7,12 @@ ms.topic: article
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 07/29/2020
-ms.openlocfilehash: 3c5c86f89882654e44f924ce0a19d4d71713144d
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 2bc129fc37347bd108ad62409490c5ce31b7728f
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431663"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538927"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Získat identifikátor URI sdíleného přístupového podpisu pro vaši image virtuálního počítače
 
@@ -31,10 +31,10 @@ Při generování identifikátorů URI SAS pro vaše virtuální pevné disky po
 
 Existují dva běžné nástroje, které slouží k vytvoření adresy SAS (URL):
 
-* **Microsoft Průzkumník služby Storage** – grafický nástroj dostupný v Azure Portal.
+* **Průzkumník služby Microsoft Azure Storage** – grafický nástroj dostupný v Azure Portal.
 * **Microsoft Azure CLI** – doporučeno pro operační systémy jiné než Windows a automatizované nebo nepřetržité integrační prostředí.
 
-### <a name="use-microsoft-storage-explorer"></a>Použití Microsoft Průzkumník služby Storage
+### <a name="use-microsoft-azure-storage-explorer"></a>Použít Průzkumník služby Microsoft Azure Storage
 
 1. V Azure Portal přejít na svůj účet úložiště.
 2. V podokně Průzkumník na levé straně otevřete nástroj **Průzkumník služby Storage** (Preview).

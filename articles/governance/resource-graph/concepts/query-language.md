@@ -1,14 +1,14 @@
 ---
 title: Principy dotazovacího jazyka
 description: Popisuje tabulky grafů prostředků a dostupné Kusto datové typy, operátory a funkce použitelné pro Azure Resource Graph.
-ms.date: 06/29/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4c545a8a5113f800545660a3ea812b61711630c2
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: b59811ecd877b9b2e22a43c00329ed7d02dfb97d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970446"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541817"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Principy dotazovacího jazyka grafu prostředků Azure
 
@@ -19,6 +19,7 @@ Tento článek se zabývá jazykovými součástmi, které podporuje graf prost�
 - [Tabulky grafů prostředků](#resource-graph-tables)
 - [Prvky vlastního jazyka grafu prostředků](#resource-graph-custom-language-elements)
 - [Podporované prvky jazyka KQL](#supported-kql-language-elements)
+- [Rozsah dotazu](#query-scope)
 - [Řídicí znaky](#escape-characters)
 
 ## <a name="resource-graph-tables"></a>Tabulky grafů prostředků
@@ -27,7 +28,7 @@ Graf prostředků poskytuje několik tabulek pro data, která uchovává o Azure
 
 |Tabulky grafů prostředků |Description |
 |---|---|
-|Prostředky |Výchozí tabulka, pokud není v dotazu definována. Většina Správce prostředkůch typů prostředků a vlastností je tady. |
+|Zdroje a prostředky |Výchozí tabulka, pokud není v dotazu definována. Většina Správce prostředkůch typů prostředků a vlastností je tady. |
 |ResourceContainers |Zahrnuje předplatné (ve verzi Preview- `Microsoft.Resources/subscriptions` ) a `Microsoft.Resources/subscriptions/resourcegroups` typy prostředků a data skupiny prostředků (). |
 |AdvisorResources |Zahrnuje prostředky _související_ s `Microsoft.Advisor` . |
 |AlertsManagementResources |Zahrnuje prostředky _související_ s `Microsoft.AlertsManagement` . |
@@ -112,10 +113,35 @@ Tady je seznam KQL tabulkových operátorů podporovaných grafem prostředků s
 |[projekt – pryč](/azure/kusto/query/projectawayoperator) |[Odebrat sloupce z výsledků](../samples/advanced.md#remove-column) | |
 |[druhu](/azure/kusto/query/sortoperator) |[Vypsat prostředky seřazené podle názvu](../samples/starter.md#list-resources) |Synonymum`order` |
 |[Souhrn](/azure/kusto/query/summarizeoperator) |[Počet prostředků Azure](../samples/starter.md#count-resources) |Jenom zjednodušená první stránka |
-|[nezbytná](/azure/kusto/query/takeoperator) |[Seznam všech veřejných IP adres](../samples/starter.md#list-publicip) |Synonymum`limit` |
-|[vrchol](/azure/kusto/query/topoperator) |[Zobrazit prvních pět virtuálních počítačů podle názvu a jejich typu operačního systému](../samples/starter.md#show-sorted) | |
+|[take](/azure/kusto/query/takeoperator) |[Seznam všech veřejných IP adres](../samples/starter.md#list-publicip) |Synonymum`limit` |
+|[top](/azure/kusto/query/topoperator) |[Zobrazit prvních pět virtuálních počítačů podle názvu a jejich typu operačního systému](../samples/starter.md#show-sorted) | |
 |[sjednocovací](/azure/kusto/query/unionoperator) |[Kombinování výsledků ze dvou dotazů do jednoho výsledku](../samples/advanced.md#unionresults) |Povolena jedna tabulka: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _Table_. Omezení 3 `union` ramen v jednom dotazu. Přibližné rozlišení `union` tabulek nohy není povoleno. Dá se použít v jedné tabulce nebo mezi tabulkami _Resources_ a _ResourceContainers_ . |
 |[,](/azure/kusto/query/whereoperator) |[Zobrazit prostředky, které obsahují úložiště](../samples/starter.md#show-storage) | |
+
+## <a name="query-scope"></a>Rozsah dotazu
+
+Rozsah předplatných, ze kterých jsou vráceny prostředky, závisí na metodě přístupu ke grafu zdrojů. Azure CLI a Azure PowerShell naplní seznam předplatných, která se mají zahrnout do žádosti na základě kontextu oprávněného uživatele. Seznam předplatných lze pro každou z nich ručně definovat pomocí parametrů předplatné a **předplatného** **v uvedeném** pořadí.
+V REST API a všech ostatních sadách SDK musí být seznam předplatných, které mají být zahrnuté prostředky, explicitně definován jako součást požadavku.
+
+Ve verzi **Preview**verze REST API `2020-04-01-preview` přidá vlastnost pro určení oboru dotazu do [skupiny pro správu](../../management-groups/overview.md). Toto rozhraní API ve verzi Preview také umožňuje volitelnou vlastnost Subscription. Pokud není definována skupina pro správu ani seznam předplatných, obor dotazu je všechny prostředky, ke kterým má ověřený uživatel přístup. Nová `managementGroupId` vlastnost převezme ID skupiny pro správu, které se liší od názvu skupiny pro správu.
+`managementGroupId`Je-li parametr zadán, jsou zde zahrnuty prostředky z prvních 5000 předplatných v rámci nebo pod určenou hierarchií skupin pro správu. `managementGroupId`nelze použít ve stejnou dobu jako `subscriptions` .
+
+Příklad: dotazování všech prostředků v rámci hierarchie skupiny pro správu s názvem moje skupina pro správu s ID ' myMG '.
+
+- Identifikátor URI v REST API
+
+  ```http
+  POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2020-04-01-preview
+  ```
+
+- Text požadavku
+
+  ```json
+  {
+      "query": "Resources | summarize count()",
+      "managementGroupId": "myMG"
+  }
+  ```
 
 ## <a name="escape-characters"></a>Řídicí znaky
 

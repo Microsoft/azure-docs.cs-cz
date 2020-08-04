@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a2f8b69c8ef75be4f9190933969ed20404b5da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5f6e44aa89c1e2815d70bb4ba2ae5f5680252ac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252997"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541885"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
 
@@ -31,7 +31,7 @@ Pokud povolíte Enterprise State Roaming, vaše organizace vám automaticky udě
 ## <a name="to-enable-enterprise-state-roaming"></a>Postup povolení Enterprise State Roaming
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com/).
-1. Vyberte **Azure Active Directory** &gt; **zařízení** &gt; **Enterprise State Roaming**.
+1. Vyberte **Azure Active Directory**  >  **zařízení**  >  **Enterprise State Roaming**.
 1. Vyberte možnost **Uživatelé můžou synchronizovat nastavení a data aplikací napříč zařízeními**. Další informace najdete v tématu [Konfigurace nastavení zařízení](/azure/active-directory/device-management-azure-portal).
   
    ![Obrázek nastavení zařízení s označením uživatelé můžou synchronizovat nastavení a data aplikací napříč zařízeními.](./media/enterprise-state-roaming-enable/device-settings.png)
@@ -56,7 +56,7 @@ Hodnota země nebo oblast se nastaví jako součást procesu vytváření adres�
 Pomocí těchto kroků můžete zobrazit sestavu stavu synchronizace zařízení pro jednotlivé uživatele.
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com/).
-1. Vyberte **Azure Active Directory** &gt; **Uživatelé** &gt; **Všichni uživatelé**.
+1. Vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 1. Vyberte uživatele a pak vyberte **zařízení**.
 1. V části **Zobrazit**vyberte **zařízení, která synchronizují nastavení a data aplikací** , a zobrazte tak stav synchronizace.
   
@@ -78,7 +78,7 @@ Explicitní odstranění je v případě, že správce Azure odstraní uživatel
 * **Odstranění adresáře**: odstranění celého adresáře ve službě Azure AD je okamžitá operace. Všechna data nastavení přidružená k tomuto adresáři se odstraní po 90 až 180 dnů. 
 * Při **odstraňování žádosti**: Pokud chce správce Azure AD ručně odstranit data konkrétního uživatele nebo data nastavení, může správce odeslat lístek s [podporou Azure](https://azure.microsoft.com/support/). 
 
-### <a name="stale-data-deletion"></a>Zastaralé odstranění dat
+### <a name="stale-data-deletion"></a>Odstranění zastaralých dat
 
 Data, která se nezískala po dobu jednoho roku ("doba uchování"), budou považována za zastaralá a je možné je odstranit z cloudu Microsoftu. Doba uchovávání se může změnit, ale nebude nižší než 90 dní. Zastaralá data můžou být konkrétní sadou nastavení Windows/aplikace nebo všech nastavení pro uživatele. Příklad:
 

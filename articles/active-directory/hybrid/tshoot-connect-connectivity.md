@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: a329ec32e241d88a56fc7031904777888ac194ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7bc39e409d0ac10e41fae58c5e5216f386427e30
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356402"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541732"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Řešení potíží s připojením služby Azure AD
 Tento článek vysvětluje, jak funguje konektivita mezi Azure AD Connect a Azure AD a jak řešit problémy s připojením. Tyto problémy se pravděpodobně zobrazují v prostředí s proxy server.
@@ -32,7 +32,7 @@ Azure AD Connect používá moderní ověřování (pomocí knihovny ADAL) pro o
 
 V tomto článku se dozvíte, jak se Fabrikam připojuje k Azure AD prostřednictvím jeho proxy serveru. Proxy server má název fabrikamproxy a používá port 8080.
 
-Nejdřív je potřeba zajistit, aby byla [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) správně nakonfigurovaná.
+Nejdřív je potřeba zajistit, aby byla správně nakonfigurovaná [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) a **Microsoft Azure AD Synchronization Service** se po aktualizaci souboru machine.config znovu restartovala.
 ![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
@@ -44,7 +44,7 @@ Proxy server musí mít také otevřené požadované adresy URL. Oficiální se
 
 Z těchto adres URL je v následující tabulce absolutní minimum, které se může připojit ke službě Azure AD. Tento seznam neobsahuje žádné volitelné funkce, jako je třeba zpětný zápis hesla nebo Azure AD Connect Health. Najdete tady informace, které vám pomůžou při řešení potíží s počáteční konfigurací.
 
-| URL | Port | Description |
+| Adresa URL | Port | Description |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |Slouží ke stažení seznamů CRL. |
 | \*. verisign.com |HTTP/80 |Slouží ke stažení seznamů CRL. |
@@ -113,7 +113,7 @@ Tady je výpis z vlastního protokolu proxy serveru a stránky Průvodce instala
 
 **Připojení k Azure AD**
 
-| Čas | URL |
+| Čas | Adresa URL |
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
@@ -124,7 +124,7 @@ Tady je výpis z vlastního protokolu proxy serveru a stránky Průvodce instala
 
 **Konfigurace**
 
-| Čas | URL |
+| Čas | Adresa URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://*bba800 – kotva*. microsoftonline.com:443 |
@@ -140,7 +140,7 @@ Tady je výpis z vlastního protokolu proxy serveru a stránky Průvodce instala
 
 **Počáteční synchronizace**
 
-| Čas | URL |
+| Čas | Adresa URL |
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |

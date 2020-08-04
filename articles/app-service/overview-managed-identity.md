@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: e97671e9722051674e3760f11e784ab3291283c7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f3ec80b5d71bbdbf0f1b89606859dcc734d037e5
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415036"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542208"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -314,6 +314,9 @@ K získání tokenu v App Service a Azure Functions existuje jednoduchý protoko
 
 ### <a name="using-the-rest-protocol"></a>Použití protokolu REST
 
+> [!NOTE]
+> Starší verze tohoto protokolu, používající verzi rozhraní API "2017-09-01", používali `secret` hlavičku místo `X-IDENTITY-HEADER` a přijali vlastnost pouze pro uživatele, který je `clientid` přiřazen. Vrátil také `expires_on` ve formátu časového razítka. MSI_ENDPOINT lze použít jako alias pro IDENTITY_ENDPOINT a MSI_SECRET lze použít jako alias pro IDENTITY_HEADER. Tato verze protokolu se v současnosti vyžaduje pro plány hostování spotřeby Linux.
+
 Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 
 - IDENTITY_ENDPOINT – adresa URL místní služby tokenu.
@@ -321,11 +324,11 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 
 **IDENTITY_ENDPOINT** je místní adresa URL, ze které vaše aplikace může žádat o tokeny. Pokud chcete získat token pro prostředek, udělejte požadavek HTTP GET na tento koncový bod, včetně následujících parametrů:
 
-> | Název parametru    | V     | Popis                                                                                                                                                                                                                                                                                                                                |
+> | Název parametru    | V     | Description                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | prostředek          | Dotaz  | Identifikátor URI prostředku Azure AD prostředku, pro který by měl být získán token. Může to být jedna ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředku.    |
-> | verze-api       | Dotaz  | Verze rozhraní API tokenu, která se má použít. Použijte prosím "2019-08-01" nebo novější.                                                                                                                                                                                                                                                                 |
-> | X-IDENTITY – HLAVIČKA | Hlavička | Hodnota proměnné prostředí IDENTITY_HEADER. Tato hlavička se používá ke zmírnění útoků na straně serveru (SSRF).                                                                                                                                                                                                    |
+> | verze-api       | Dotaz  | Verze rozhraní API tokenu, která se má použít. Použijte prosím "2019-08-01" nebo novější (Pokud nepoužíváte spotřebu Linux, který aktuálně jenom nabízí "2017-09-01" – viz poznámku výše).                                                                                                                                                                                                                                                                 |
+> | X-IDENTITY – HLAVIČKA | Záhlaví | Hodnota proměnné prostředí IDENTITY_HEADER. Tato hlavička se používá ke zmírnění útoků na straně serveru (SSRF).                                                                                                                                                                                                    |
 > | client_id         | Dotaz  | Volitelné ID klienta, které má uživatel přiřazenou identitu použít. Nelze použít na žádost, která obsahuje `principal_id` , `mi_res_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                             |
 > | principal_id      | Dotaz  | Volitelné ID objektu zabezpečení přiřazené identity uživatele, která se má použít `object_id`je alias, který může být použit místo toho. Nelze použít pro požadavek, který obsahuje client_id, mi_res_id nebo object_id. Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem. |
 > | mi_res_id         | Dotaz  | Volitelné ID prostředku Azure pro uživatelem přiřazenou identitu, která se má použít. Nelze použít na žádost, která obsahuje `principal_id` , `client_id` nebo `object_id` . Pokud jsou vynechány všechny parametry ID ( `client_id` , `principal_id` , `object_id` a `mi_res_id` ), je použita identita přiřazená systémem.                                      |
@@ -335,7 +338,7 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 
 Úspěšná odpověď 200 OK zahrnuje tělo JSON s následujícími vlastnostmi:
 
-> | Název vlastnosti | Popis                                                                                                                                                                                                                                        |
+> | Název vlastnosti | Description                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | Požadovaný přístupový token Volající webová služba může tento token použít k ověření pro přijímající webovou službu.                                                                                                                               |
 > | client_id     | ID klienta použité identity.                                                                                                                                                                                                       |
@@ -345,9 +348,6 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 > | token_type    | Určuje hodnotu typu tokenu. Jediným typem, který Azure AD podporuje, je FBearer. Další informace o nosných tokenech najdete v části [autorizační rozhraní OAuth 2,0: použití nosných tokenů (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 
 Tato odpověď je stejná jako [odpověď pro žádost o přístup k tokenu služby Azure AD na službu](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
-
-> [!NOTE]
-> Starší verze tohoto protokolu, používající verzi rozhraní API "2017-09-01", používali `secret` hlavičku místo `X-IDENTITY-HEADER` a přijali vlastnost pouze pro uživatele, který je `clientid` přiřazen. Vrátil také `expires_on` ve formátu časového razítka. MSI_ENDPOINT lze použít jako alias pro IDENTITY_ENDPOINT a MSI_SECRET lze použít jako alias pro IDENTITY_HEADER.
 
 ### <a name="rest-protocol-examples"></a>Příklady protokolu REST
 

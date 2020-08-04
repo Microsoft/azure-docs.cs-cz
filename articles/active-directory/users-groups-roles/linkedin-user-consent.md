@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01ec7f8210df9e41b2620e639eddbc98d4bcb73d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4eaf0ab6cc412b7f5a02f898682e90fdde9de3a1
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448678"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542357"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>Účet LinkedIn připojení ke sdílení dat a jejich souhlas
 
@@ -41,7 +41,7 @@ Abyste mohli spravovat nastavení vaší organizace, musíte být správcem Azur
 1. Pokud chcete povolit nebo zakázat integraci, postupujte podle kroků v části [vyjádření souhlasu s integrací LinkedIn pro vaši organizaci Azure AD](linkedin-integration.md).
 2. Když oznamujete integraci LinkedInu ve vaší organizaci, nasměrujte uživatele na nejčastější dotazy týkající se [informací o LinkedInu v aplikacích a službách Microsoftu](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). Tento článek obsahuje informace o tom, kde se zobrazují informace o LinkedInu, [sdílení dat a ochraně osobních údajů](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400), [Jak propojit účty](https://support.microsoft.com/office/connect-your-linkedin-and-work-or-school-accounts-c7c245f2-fa56-4c9b-ba20-3fceb23c5772) a další.
 
-Je nutné oznámit integraci LinkedInu uživatelům, kteří jim poskytnou všechny informace týkající se sdílení a ochrany dat souvisejících s integrací LinkedInu. Aby uživatelé používali licence, aby mohli připojit účty v 
+Integraci LinkedInu musíte oznámit uživatelům, kteří jim poskytnou všechny informace týkající se [sdílení a ochrany dat s integrací LinkedInu](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400). 
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Souhlas uživatele s přístupem k datům v Microsoft a LinkedInu
 

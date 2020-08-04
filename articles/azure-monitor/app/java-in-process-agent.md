@@ -3,12 +3,12 @@ title: Monitorování aplikací Java v jakémkoli prostředí – Azure Monitor 
 description: Monitorování výkonu aplikací pro aplikace Java spuštěné v jakémkoli prostředí bez instrumentace aplikace Distribuované trasování a mapa aplikací
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 3ca6e7050b1c7649298d2417f9f7f66ef8898816
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f35d661761f1bea4dbd6b691fb0667c6dad3e72e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014333"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541851"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Monitorování aplikací nezaložených na kódu Java Azure Monitor Application Insights – Public Preview
 
@@ -126,7 +126,22 @@ Naším cílem v 3.0 + je umožnění odesílání vlastní telemetrie pomocí s
 
 Podporujeme mikroměřiče, rozhraní OpenTelemetry API a oblíbená rozhraní protokolování. Application Insights Java 3,0 automaticky zachytí telemetrii a koreluje je spolu se všemi automaticky shromážděnou telemetrie.
 
-Z tohoto důvodu neplánujeme v současnosti vydání sady SDK s Application Insights 3,0.
+### <a name="supported-custom-telemetry"></a>Podporovaná vlastní telemetrie
+
+Následující tabulka představuje aktuálně podporované vlastní typy telemetrie, které můžete povolit pro doplnění agenta Java 3,0. Pro sumarizaci jsou vlastní metriky podporovány prostřednictvím mikroměřiče, vlastní výjimky a trasování lze povolit prostřednictvím protokolovacích rozhraní a jakýkoli typ vlastní telemetrie je podporován prostřednictvím [Application Insights Java 2. x SDK](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#sending-custom-telemetry-using-application-insights-java-sdk-2x). 
+
+
+|                 | Mikrometr | Log4j, logback, červenec | 2. x SDK |
+|-----------------|------------|---------------------|---------|
+| Vlastní události   |            |                     |  Yes    |
+| Vlastní metriky  |  Ano       |                     |  Ano    |
+| Závislosti    |            |                     |  Yes    |
+| Výjimky      |            |  Ano                |  Ano    |   
+| Page Views      |            |                     |  Yes    |
+| Žádosti        |            |                     |  Yes    |
+| Trasování          |            |  Ano                |  Ano    |
+
+V tuto chvíli neplánujeme vydání sady SDK pomocí Application Insights 3,0.
 
 Application Insights Java 3,0 již naslouchá telemetrie, která je odeslána do Application Insights Java SDK 2. x. Tato funkce je důležitou součástí článku upgradu pro existující uživatele 2. x a vyplní důležitou mezeru v naší podpoře vlastní telemetrie, dokud není rozhraní OpenTelemetry API GA.
 

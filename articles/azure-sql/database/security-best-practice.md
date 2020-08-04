@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 6a3a52c90187920be13628a6d2fa44159e1109d7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6630b924decacc5ff59611c657e1d7e38b1813a7
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371783"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541715"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>PlayBook pro adresování běžných požadavků na zabezpečení pomocí Azure SQL Database a spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -241,7 +241,7 @@ Přiřaďte pouze potřebná [oprávnění](https://docs.microsoft.com/sql/relat
 
 - V Azure Resource Manager:
   - Pokud jsou k dispozici nebo vlastní role Azure a přiřadíte potřebná oprávnění, použijte předdefinované role.
-    - [Předdefinované role Azure](../../role-based-access-control/built-in-roles.md)
+    - [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md)
     - [Vlastní role Azure](../../role-based-access-control/custom-roles.md)
 
 **Osvědčené postupy**:
@@ -291,7 +291,7 @@ Oddělení povinností, označované také jako oddělení cel, popisuje nutnost
 - Identifikujte komplexní hierarchii uživatelů (a automatizovaných procesů), které přistupují k systému.
 
 - Vytvořte role podle potřeb uživatelů a přiřaďte k rolím oprávnění.
-  - Pro úlohy na úrovni správy v Azure Portal nebo prostřednictvím PowerShellu – automatizace používá role RBAC. Najít integrovanou roli, která odpovídá požadavku, nebo vytvořit vlastní roli Azure pomocí dostupných oprávnění
+  - Pro úlohy na úrovni správy v Azure Portal nebo prostřednictvím PowerShellu – automatizace používá role Azure. Najít integrovanou roli, která odpovídá požadavku, nebo vytvořit vlastní roli Azure pomocí dostupných oprávnění
   - Vytvořte role serveru pro úlohy na úrovni serveru (vytváření nových přihlašovacích údajů, databází) ve spravované instanci.
   - Vytváření databázových rolí pro úlohy na úrovni databáze.
 
@@ -318,7 +318,7 @@ Oddělení povinností, označované také jako oddělení cel, popisuje nutnost
 
 - Vytvoření a použití uživatelsky definovaných rolí, pokud předdefinované role udělují příliš mnoho oprávnění nebo nedostatečná oprávnění.
 
-- Přiřazení rolí se taky dá dělat dočasně, označované také jako dynamické oddělení povinností (DSD), a to v rámci kroků úloh agenta SQL v T-SQL nebo pomocí Azure PIM pro role RBAC.
+- Přiřazení rolí se taky dá dělat dočasně, označované také jako dynamické oddělení povinností (DSD), a to v rámci kroků úloh agenta SQL v T-SQL nebo pomocí Azure PIM pro role Azure.
 
 - Ujistěte se, že specializující nemá přístup k šifrovacím klíčům nebo k úložištím klíčů a že správci zabezpečení s přístupem ke klíčům nemají přístup k databázi. Použití [nástroje EKM (Extensible Key Management)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm) může usnadnit dosažení tohoto oddělení. K implementaci EKM se dá použít [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) .
 
@@ -342,7 +342,7 @@ Pro čtenáře, kteří chtějí podrobně hlouběji do SoD, doporučujeme násl
   - [Podepisování uložených procedur](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - Pro správu prostředků Azure:
-  - [Předdefinované role Azure](../../role-based-access-control/built-in-roles.md)
+  - [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md)
   - [Vlastní role Azure](../../role-based-access-control/custom-roles.md)
   - [Použití Azure AD Privileged Identity Management pro zvýšení úrovně přístupu](https://www.microsoft.com/itshowcase/using-azure-ad-privileged-identity-management-for-elevated-access)
 

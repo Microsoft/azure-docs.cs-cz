@@ -4,12 +4,12 @@ description: Naučte se vytvářet a spravovat fondy více uzlů pro cluster ve 
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 400e595d51f08428b01337e63f6c6e8ba5836794
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d007ec18a982d5327aa2ea0871bbe88f64786fce
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133091"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542021"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a správa více fondů uzlů pro cluster ve službě Azure Kubernetes Service (AKS)
 
@@ -489,6 +489,8 @@ V uzlech v *gpunodepool*se dají naplánovat jenom lusky, které mají tuto tole
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Určení značky, značky nebo značky pro fond uzlů
 
+### <a name="setting-nodepool-taints"></a>Nastavení nodepool chuti
+
 Při vytváření fondu uzlů můžete do tohoto fondu uzlů přidat značky, popisky nebo značky. Když přidáte značku, popisek nebo značku, budou mít všechny uzly v tomto fondu uzlů také tuto značku, popisek nebo značku.
 
 Chcete-li vytvořit fond uzlů s příchuti, použijte příkaz [AZ AKS nodepool Add][az-aks-nodepool-add]. Zadejte název *taintnp* a použijte `--node-taints` parametr k určení *SKU = GPU: inschedule* pro chuti.
@@ -532,6 +534,8 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 Informace o chuti jsou viditelné v Kubernetes pro zpracování pravidel plánování pro uzly.
 
+### <a name="setting-nodepool-labels"></a>Nastavení popisků nodepool
+
 Při vytváření fondu uzlů můžete do fondu uzlů přidat také popisky. Popisky nastavené ve fondu uzlů se přidají do každého uzlu ve fondu uzlů. Tyto [popisky jsou viditelné v Kubernetes][kubernetes-labels] pro zpracování pravidel plánování pro uzly.
 
 Chcete-li vytvořit fond uzlů s popiskem, použijte příkaz [AZ AKS nodepool Add][az-aks-nodepool-add]. Zadejte název *labelnp* a použijte `--labels` parametr pro určení *oddělení = IT* a *CostCenter = 9999* pro popisky.
@@ -574,7 +578,13 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
+### <a name="setting-nodepool-azure-tags"></a>Nastavení značek Azure nodepool
+
 V clusteru AKS můžete použít značku Azure na fondy uzlů. Značky použité pro fond uzlů se aplikují na každý uzel v rámci fondu uzlů a ukládají se prostřednictvím upgradů. Značky jsou také aplikovány na nové uzly přidané do fondu uzlů během operace škálování na více instancí. Přidání značky může pomáhat s úkoly, jako je sledování zásad nebo odhad nákladů.
+
+Značky Azure obsahují klíče, které rozlišují velká a malá písmena pro operace, jako je například při načítání značky, hledáním klíče. V takovém případě bude značka s daným klíčem aktualizována nebo načtena bez ohledu na velikost písmen. Hodnoty značek rozlišují velká a malá písmena.
+
+V AKS platí, že pokud je více značek nastaveno s identickými klíči, ale různými velikostmi písmen, použije se první tag v abecedním pořadí. Například výsledky se zadávají `{"Key1": "val1", "kEy1": "val2", "key1": "val3"}` `Key1` a `val1` nastavují.
 
 Vytvořte fond uzlů pomocí direktivy [AZ AKS nodepool Add][az-aks-nodepool-add]. Zadejte název *tagnodepool* a použijte `--tag` parametr pro určení *oddělení = IT* a *CostCenter = 9999* pro značky.
 

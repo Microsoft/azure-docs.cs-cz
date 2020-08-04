@@ -1,18 +1,18 @@
 ---
 title: Přehled funkcí Microsoft Threat Modeling Tool – Azure
-description: Přečtěte si o všech funkcích, které jsou k dispozici v Threat Modeling Tool
+description: Přečtěte si o všech funkcích, které jsou k dispozici v Threat Modeling Tool, jako je například zobrazení analýzy a sestavy.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
-ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e405ea35dcaa33ac7c8227385e4aaff86d9244cb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75552113"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539998"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Přehled funkcí Threat Modeling Tool
 
@@ -41,9 +41,9 @@ Prostředí je podobné ostatním produktům společnosti Microsoft. Pojďme si 
 
 | Popisek                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
-| **File** | <ul><li>Otevření, uložení a zavření souborů</li><li>Přihlaste se a odhlaste se z účtů OneDrive.</li><li>Sdílet odkazy (Zobrazit a upravit).</li><li>Zobrazit informace o souboru.</li><li>Použijte novou šablonu pro existující modely.</li></ul> |
+| **Soubor** | <ul><li>Otevření, uložení a zavření souborů</li><li>Přihlaste se a odhlaste se z účtů OneDrive.</li><li>Sdílet odkazy (Zobrazit a upravit).</li><li>Zobrazit informace o souboru.</li><li>Použijte novou šablonu pro existující modely.</li></ul> |
 | **Upravit** | Akce zpět a znovu a také kopírovat, vložit a odstranit. |
-| **Zobrazit** | <ul><li>Přepínání mezi zobrazeními pro **analýzu** a **Návrh**</li><li>Otevřete uzavřená okna (například vzorníky, vlastnosti prvku a zprávy).</li><li>Obnovit rozložení na výchozí nastavení.</li></ul> |
+| **Zobrazení** | <ul><li>Přepínání mezi zobrazeními pro **analýzu** a **Návrh**</li><li>Otevřete uzavřená okna (například vzorníky, vlastnosti prvku a zprávy).</li><li>Obnovit rozložení na výchozí nastavení.</li></ul> |
 | **Diagram** | Přidejte a odstraňte diagramy a přejděte na karty diagramů. |
 | **Sestavy** | Vytváření sestav HTML pro sdílení s ostatními. |
 | **Nápověda** | Najděte si příručky, které vám pomůžou nástroj používat. |
@@ -89,7 +89,7 @@ Na základě vámi vybrané šablony můžete najít všechny vzorníky, které 
 
 ### <a name="notesmessages"></a>Poznámky a zprávy
 
-| Součást                               | Podrobnosti      |
+| Komponenta                               | Podrobnosti      |
 | --------------------------------------- | ------------ |
 | **Zprávy** | Interní logika nástrojů, která upozorní uživatele vždy, když dojde k chybě, například bez toků dat mezi prvky. |
 | **Poznámky** | V rámci procesu návrhu a kontroly jsou do souboru přidány ruční poznámky. |
@@ -174,7 +174,7 @@ Po sestavení diagramu vyberte symbol **analýzy** (Lupa) na panelu nástrojů z
 
 Když vyberete hrozbu, můžete použít tři různé funkce:
 
-| Funkce                               | Informace      |
+| Příznak                               | Informace      |
 | --------------------------------------- | ------------ |
 | **Přečíst ukazatel** | <p>Hrozba je označena jako přečtená, která pomáhá sledovat položky, které jste zkontrolovali.</p><p>![Indikátor čtení a nepřečtené](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **Fokus interakce** | <p>Je zvýrazněna interakce v diagramu, která patří k hrozbě.</p><p>![Fokus interakce](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |

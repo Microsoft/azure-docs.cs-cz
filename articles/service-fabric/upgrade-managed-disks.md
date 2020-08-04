@@ -3,12 +3,12 @@ title: Upgrade uzlů clusteru pro používání služby Azure Managed disks
 description: Tady je postup, jak upgradovat existující Cluster Service Fabric tak, aby používal Azure Managed disks s malým nebo žádným výpadkem clusteru.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: cff0f99412f189f38f1b14d15c7285166a048c87
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 10863626945483e21aa264e2b05e94a6f08a22f6
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255893"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542843"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Upgrade uzlů clusteru pro používání služby Azure Managed disks
 
@@ -165,7 +165,7 @@ Tady je přehled úprav původní šablony nasazení clusteru pro přidání upg
 
 #### <a name="parameters"></a>Parametry
 
-Přidejte parametry pro název instance, počet a velikost nové sady škálování. Všimněte si, že `vmNodeType1Name` je jedinečný pro novou sadu škálování, zatímco hodnoty počtu a velikosti se shodují s původní sadou škálování.
+Přidejte parametr pro název instance nové sady škálování. Všimněte si, že `vmNodeType1Name` je jedinečný pro novou sadu škálování, zatímco hodnoty počtu a velikosti se shodují s původní sadou škálování.
 
 **Soubor šablony**
 
@@ -174,18 +174,7 @@ Přidejte parametry pro název instance, počet a velikost nové sady škálová
     "type": "string",
     "defaultValue": "NTvm2",
     "maxLength": 9
-},
-"nt1InstanceCount": {
-    "type": "int",
-    "defaultValue": 5,
-    "metadata": {
-        "description": "Instance count for node type"
-    }
-},
-"vmNodeType1Size": {
-    "type": "string",
-    "defaultValue": "Standard_D2_v2"
-},
+}
 ```
 
 **Soubor parametrů**
@@ -193,12 +182,6 @@ Přidejte parametry pro název instance, počet a velikost nové sady škálová
 ```json
 "vmNodeType1Name": {
     "value": "NTvm2"
-},
-"nt1InstanceCount": {
-    "value": 5
-},
-"vmNodeType1Size": {
-    "value": "Standard_D2_v2"
 }
 ```
 
@@ -216,13 +199,13 @@ V části šablona nasazení `variables` přidejte položku pro fond adres pří
 
 V části *prostředky* šablony nasazení přidejte novou sadu škálování virtuálního počítače. Pamatujte na tyto věci:
 
-* Nová sada škálování odkazuje na stejný typ uzlu jako původní:
+* Nová sada škálování odkazuje na nový typ uzlu:
 
     ```json
-    "nodeTypeRef": "[parameters('vmNodeType0Name')]",
+    "nodeTypeRef": "[parameters('vmNodeType1Name')]",
     ```
 
-* Nová sada škálování odkazuje na stejnou adresu back-end služby Vyrovnávání zatížení a podsíť (ale používá jiný fond NAT příchozího vyrovnávání zatížení):
+* Nová sada škálování odkazuje na stejnou adresu back-end nástroje pro vyrovnávání zatížení a podsíť jako původní, ale používá jiný fond NAT příchozího vyrovnávání zatížení:
 
    ```json
     "loadBalancerBackendAddressPools": [
@@ -253,6 +236,33 @@ V části *prostředky* šablony nasazení přidejte novou sadu škálování vi
         "storageAccountType": "[parameters('storageAccountType')]"
     }
     ```
+
+Dále přidejte položku do `nodeTypes` seznamu prostředků *Microsoft. ServiceFabric/Clusters* . Použijte stejné hodnoty jako původní položka typu uzlu s výjimkou `name` , která by měla odkazovat na nový typ uzlu (*vmNodeType1Name*).
+
+```json
+"nodeTypes": [
+    {
+        "name": "[parameters('vmNodeType0Name')]",
+        ...
+    },
+    {
+        "name": "[parameters('vmNodeType1Name')]",
+        "applicationPorts": {
+            "endPort": "[parameters('nt0applicationEndPort')]",
+            "startPort": "[parameters('nt0applicationStartPort')]"
+        },
+        "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
+        "durabilityLevel": "Silver",
+        "ephemeralPorts": {
+            "endPort": "[parameters('nt0ephemeralEndPort')]",
+            "startPort": "[parameters('nt0ephemeralStartPort')]"
+        },
+        "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
+        "isPrimary": true,
+        "vmInstanceCount": "[parameters('nt0InstanceCount')]"
+    }
+],
+```
 
 Po implementaci všech změn v šabloně a souborech parametrů přejděte k další části, kde získáte odkazy na Key Vault a nasazení aktualizací do clusteru.
 

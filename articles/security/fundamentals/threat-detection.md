@@ -1,6 +1,6 @@
 ---
 title: Rozšířená detekce hrozeb Azure | Microsoft Docs
-description: Přečtěte si o Azure AD Identity Protection a jeho funkcích.
+description: Seznamte se s integrovanou funkcí pokročilé detekce hrozeb pro Azure, jako je například služba Azure AD Identity Protection.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 93b63450d65f55e96897f91a5c0c9fae1b0b47f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1522d143f2837a57481a4d678911e7a3c44d084d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503281"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541018"
 ---
 # <a name="azure-advanced-threat-detection"></a>Rozšířená detekce hrozeb v Azure
 
@@ -342,7 +342,7 @@ Díky nástrojům, které usnadňují odhalení stínového IT, vyhodnocování 
 
 | Kategorie | Popis |
 | -------- | ----------- |
-| Nenechte si ujít | Odhalte pomocí Cloud App Security stínové IT. Získejte přehled díky zjišťování aplikací, aktivit, uživatelů, dat a souborů ve vašem cloudovém prostředí. Zjišťujte aplikace třetích stran, které jsou připojené k vašemu cloudu.|
+| Zjišťování | Odhalte pomocí Cloud App Security stínové IT. Získejte přehled díky zjišťování aplikací, aktivit, uživatelů, dat a souborů ve vašem cloudovém prostředí. Zjišťujte aplikace třetích stran, které jsou připojené k vašemu cloudu.|
 |Prověřování | Prošetřete cloudové aplikace pomocí cloudových forenzních nástrojů, které vám umožní zjistit podrobné informace o rizikových aplikacích, konkrétních uživatelích a souborech v síti. Najděte vzorce v datech shromážděných z cloudu. Generujte sestavy pro monitorování cloudu. |
 | Řízení | Nastavením zásad a upozornění můžete zmírnit rizika a dosáhnout tak maximální kontroly nad síťovými přenosy v cloudu. Pomocí Cloud App Security můžete svoje uživatele migrovat do bezpečných a schválených alternativních cloudových aplikací. |
 | Ochrana | Pomocí Cloud App Security můžete schvalovat nebo zakazovat aplikace, vymáhat ochranu před únikem informací, řídit oprávnění a sdílení a generovat vlastní sestavy a výstrahy. |

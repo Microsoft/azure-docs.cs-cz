@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: tracking-python
-ms.openlocfilehash: 6bd880806a4b067139c1f22a0e4d4e6df5c88451
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d68fc7b01e6204cb9ad00ea60e413c73856d758e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247060"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542442"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro SQL API: poznámky k verzi a prostředky
 
@@ -301,10 +301,8 @@ Verze 4.0.0 B1 je první náhled našeho úsilí o vytvoření uživatelsky př�
 
 Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady SDK z důvodu hladkého přechodu na novější/podporovanou verzi. Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK.
 
-Všechny žádosti o Azure Cosmos DB používání vyřazené sady SDK jsou službou odmítnuty.
-
 > [!WARNING]
-> Všechny verze sady Python SDK pro SQL API starší než verze **1.0.0** byly vyřazení od **29. února 2016**. A všechny verze 1. x a 2. x sady Python SDK pro SQL API budou vyřazení od 30. **srpna 2020**.
+> Po 31. srpna 2022 už Azure Cosmos DB neprovádí opravy chyb, přidávají nové funkce a poskytuje podporu pro verze 1. x nebo 2. x sady Azure Cosmos DB Python SDK pro SQL API. Pokud nechcete upgradovat, požadavky odeslané z verze 1. x a 2. x sady SDK budou nadále obsluhovány službou Azure Cosmos DB.
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
@@ -338,7 +336,7 @@ Všechny žádosti o Azure Cosmos DB používání vyřazené sady SDK jsou slu�
 | 0.9.1 – zapůjčení |23. září 2014 |29. února 2016 |
 | 0.9.0 – zapůjčení |21. srpna 2014 |29. února 2016 |
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

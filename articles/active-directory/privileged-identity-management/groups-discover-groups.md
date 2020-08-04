@@ -1,6 +1,6 @@
 ---
-title: Zjišťování rolí – přiřazení skupin pro správu v PIM – Azure AD | Microsoft Docs
-description: Naučte se zjišťovat skupiny s možností přiřazení rolí pro správu jako privilegovaných skupin přístupu v Privileged Identity Management (PIM).
+title: Určení skupiny pro správu v Privileged Identity Management – Azure AD | Microsoft Docs
+description: Naučte se integrovat skupiny role – přiřazení skupin pro správu jako privilegovaných přístupových skupin v Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -11,39 +11,39 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2020
+ms.date: 08/03/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8b66a41f0f1aa48433dac77fca56d5e2877989a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 76f7b61b6fb065409a2fe4b2ed8f599f321cd1db
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506001"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542268"
 ---
-# <a name="discover-privileged-access-groups-preview-to-manage-in-privileged-identity-management"></a>Seznamte se s privilegovanými přístupovými skupinami (Preview) pro správu v Privileged Identity Management
+# <a name="bring-a-privileged-access-groups-preview-into-privileged-identity-management"></a>Převedení privilegovaných přístupových skupin (Preview) do Privileged Identity Management
 
-V Azure Active Directory (Azure AD) můžete přiřadit předdefinované role Azure AD ke skupinám cloudu a zjednodušit tak správu přiřazení rolí. Nyní můžete použít Privileged Identity Management (PIM) k přiřazení nároků na členství nebo vlastnictví těchto skupin, k ochraně rolí Azure AD a k zabezpečení přístupu. Než budete moct spravovat roli Azure AD – přiřadit skupinu jako privilegovaný přístupovou skupinu v Privileged Identity Management, musíte ji zjistit a přenést pod správu v PIM.
+V Azure Active Directory (Azure AD) můžete přiřazovat předdefinované role Azure AD do skupin cloudu a zjednodušit tak správu přiřazení rolí. K ochraně rolí Azure AD a zabezpečení přístupu teď můžete pomocí Privileged Identity Management (PIM) spravovat přístup za běhu pro členy nebo vlastníky těchto skupin. Pokud chcete spravovat roli Azure AD – přiřadit skupinu jako privilegovaný přístupovou skupinu v Privileged Identity Management, je nutné ji přenést pod správu PIM.
 
-## <a name="discover-resources"></a>Zjišťování prostředků
+## <a name="identify-groups-to-manage"></a>Určení skupin pro správu
+
+Ve službě Azure AD můžete vytvořit skupinu s přiřazením rolí, jak je popsáno v tématu [Vytvoření skupiny s přiřazením rolí v Azure Active Directory](../users-groups-roles/roles-groups-create-eligible.md). Musíte být vlastníkem skupiny, aby ji bylo možné spravovat pomocí Privileged Identity Management.
 
 1. [Přihlaste se k Azure AD](https://aad.portal.azure.com) s oprávněními role správce privilegovaných rolí.
-1. Vytvořte skupinu s přiřazením role v Azure AD. Abyste mohli zjistit a spravovat pomocí Privileged Identity Management, musíte být vlastníkem skupiny.
-1. Otevřete **Privileged Identity Management**.
-1. Vyberte **privilegovaný přístup (Preview)**.
+1. Vyberte **skupiny** a pak vyberte skupinu role, kterou chcete spravovat v PIM. Seznam můžete vyhledat a filtrovat.
 
-    ![Vyhledat skupiny – příkaz pro první spuštění](./media/groups-discover-groups/groups-discover-groups.png)
+    ![vyhledání skupiny s možností přiřazení rolím ke správě v PIM](./media/groups-discover-groups/groups-list-in-azure-ad.png)
 
-1. Vyberte **zjišťování skupin**.
-1. Hledat podle názvu skupiny
-1. Vyberte skupinu a vyberte **Spravovat skupiny** , abyste ji mohli přenést pod správu PIM.
+1. Otevřete skupinu a vyberte **privilegovaný přístup (Preview)**.
 
-    ![Zjišťování skupin bez prostředků uvedených v prvním časovém intervalu](./media/groups-discover-groups/groups-bring-under-management.png)
+    ![Otevření Privileged Identity Managementho prostředí](./media/groups-discover-groups/groups-discover-groups.png)
 
-    > [!NOTE]
-    > Po správě privilegovaného přístupového ovládacího skupin ho nejde spravovat. Tím se zabrání jinému správci prostředků v odebrání nastavení Privileged Identity Management.
+1. Zahájení správy přiřazení v PIM
 
-1. Pokud se zobrazí zpráva, abyste potvrdili připojování vybraného prostředku ke správě, vyberte **Ano**.
+    ![Správa přiřazení v Privileged Identity Management](./media/groups-discover-groups/groups-bring-under-management.png)
+
+> [!NOTE]
+> Po správě privilegovaného přístupového ovládacího skupin ho nejde spravovat. Tím se zabrání jinému správci prostředků v odebrání nastavení Privileged Identity Management.
 
 ## <a name="next-steps"></a>Další kroky
 

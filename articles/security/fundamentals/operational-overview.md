@@ -1,6 +1,6 @@
 ---
 title: Přehled služby Azure Operational Security | Microsoft Docs
-description: Tento článek poskytuje přehled o provozním zabezpečení Azure.
+description: Další informace o provozním zabezpečení Azure najdete v tomto přehledu. Provozní zabezpečení odkazuje na služby, ovládací prvky a funkce ochrany Asset Protection.
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 00a71fec9c0bfc1db45eee7129b7c2a8adaef0fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50fb9c597a74a7aa08dfc3d8b7acd9b94760a9df
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83674239"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542887"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled služby Azure Operational Security
 
@@ -64,7 +64,7 @@ Další informace najdete v [tabulce Azure Backup komponenty](/azure/backup/back
 
 Azure AD zahrnuje také plnou sadu [funkcí pro správu identit](/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports), včetně těchto:
 
-- [Ověřování pomocí služby Multi-Factor Authentication](/azure/multi-factor-authentication/multi-factor-authentication)
+- [Vícefaktorové ověřování](/azure/multi-factor-authentication/multi-factor-authentication)
 - [Samoobslužná správa hesel](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [Samoobslužná správa skupin](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [Správa privilegovaných účtů](/azure/active-directory/active-directory-privileged-identity-management-configure)
