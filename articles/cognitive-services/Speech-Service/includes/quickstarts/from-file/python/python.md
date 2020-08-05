@@ -11,7 +11,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400475"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -25,8 +25,8 @@ Než začnete, nezapomeňte:
 ## <a name="support-and-updates"></a>Podpora a aktualizace
 
 Aktualizace balíčku Python sady Speech SDK jsou distribuovány prostřednictvím PyPI a oznámeny v [poznámkách k verzi](~/articles/cognitive-services/Speech-Service/releasenotes.md).
-Pokud je k dispozici nová verze, můžete na ni pomocí příkazu `pip install --upgrade azure-cognitiveservices-speech`aktualizovat.
-Zkontrolováním `azure.cognitiveservices.speech.__version__` proměnné zkontrolujte, kterou verzi aktuálně máte nainstalovanou.
+Pokud je k dispozici nová verze, můžete na ni pomocí příkazu aktualizovat `pip install --upgrade azure-cognitiveservices-speech` .
+Zkontrolováním proměnné zkontrolujte, kterou verzi aktuálně máte nainstalovanou `azure.cognitiveservices.speech.__version__` .
 
 Pokud máte problém nebo nemáte funkci, přečtěte si téma [Podpora a možnosti pomoci](~/articles/cognitive-services/Speech-Service/support.md).
 
@@ -89,7 +89,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 1. V počítači stáhněte a nainstalujte 64 verze [Pythonu](https://www.python.org/downloads/), 3,5 až 3,8.
 1. Stáhněte a nainstalujte [Visual Studio Code](https://code.visualstudio.com/Download).
-1. Otevřete Visual Studio Code a nainstalujte rozšíření Python. V nabídce vyberte**rozšíření** **předvoleb** >  **souborů** > . Vyhledejte **Python**.
+1. Otevřete Visual Studio Code a nainstalujte rozšíření Python. **File**  >  **Preferences**  >  V nabídce vyberte**rozšíření** předvoleb souborů. Vyhledejte **Python**.
 
    ![Instalace rozšíření Python](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)
 
@@ -98,7 +98,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
    ![Otevření složky](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-open-folder.png)
 
-1. Vytvořte nový zdrojový soubor Pythonu tak `speechsdk.py`, že vyberete ikonu Nový soubor.
+1. Vytvořte nový zdrojový soubor Pythonu `speechsdk.py` tak, že vyberete ikonu Nový soubor.
 
    ![Vytvoření souboru](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-newfile.png)
 

@@ -11,7 +11,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400518"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -36,7 +36,7 @@ Než začnete, nezapomeňte:
 > [!NOTE]
 > Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. informace o výběru zdrojového jazyka najdete v tématu [určení zdrojového jazyka pro převod řeči na text](../../../../how-to-specify-source-language.md) .
 
-## <a name="build-the-app"></a>Sestavení aplikace
+## <a name="build-the-app"></a>Vytvoření aplikace
 
 > [!NOTE]
 > Nezapomeňte zadat níže uvedené příkazy jako _jeden příkazový řádek_. Nejjednodušším způsobem, jak to udělat, je zkopírovat příkaz pomocí tlačítka **Kopírovat** vedle každého příkazu a vložit ho do příkazového řádku vašeho prostředí.
@@ -81,7 +81,7 @@ Než začnete, nezapomeňte:
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"
      ```
 
-1. Spusťte aplikaci.
+1. Aplikaci spusťte.
 
    ```sh
    ./helloworld

@@ -20,6 +20,6 @@ V tomto rychlém startu použijete [sadu Speech SDK](~/articles/cognitive-servic
 > [!div class="checklist"]
 > * Vytvořte `SpeechConfig` objekt z klíče a oblasti předplatného.
 > * Vytvořte `AudioConfig` objekt, který určuje. Název souboru WAV.
-> * Vytvořte `SpeechRecognizer` objekt pomocí objektů `SpeechConfig` a `AudioConfig` výše.
+> * Vytvořte `SpeechRecognizer` objekt pomocí `SpeechConfig` `AudioConfig` objektů a výše.
 > * Pomocí `SpeechRecognizer` objektu spusťte proces rozpoznávání pro jeden utterance.
 > * Zkontrolujte `SpeechRecognitionResult` vrácenou.

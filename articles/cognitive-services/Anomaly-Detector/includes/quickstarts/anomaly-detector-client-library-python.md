@@ -24,7 +24,7 @@ Použijte klientskou knihovnu detektoru anomálií pro Python:
 
 [Referenční dokumentace ke knihovně](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector)  |  [Balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/)  |  [Vyhledání ukázkového kódu na GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Python 3.x](https://www.python.org/)
 * [Knihovna analýzy dat PANDAS](https://pandas.pydata.org/)

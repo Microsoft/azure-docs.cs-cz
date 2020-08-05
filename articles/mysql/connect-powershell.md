@@ -1,0 +1,52 @@
+---
+title: Generování připojovacího řetězce pomocí PowerShellu Azure Database for MySQL
+description: V tomto rychlém startu najdete příklad Azure PowerShell pro vytvoření připojovacího řetězce pro připojení k Azure Database for MySQL.
+author: ajlam
+ms.author: andrela
+ms.service: mysql
+ms.custom: mvc, devx-track-azurepowershell
+ms.topic: quickstart
+ms.date: 8/3/2020
+ms.openlocfilehash: 9de569e09e1b8bcf29f47077cbe15f0a6c40ddd1
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544943"
+---
+# <a name="azure-database-for-mysql-generate-a-connection-string-with-powershell"></a>Azure Database for MySQL: vygenerování připojovacího řetězce pomocí PowerShellu
+
+Tento článek ukazuje, jak vygenerovat připojovací řetězec pro server Azure Database for MySQL. Připojovací řetězec můžete použít pro připojení k Azure Database for MySQL z mnoha různých aplikací.
+
+## <a name="requirements"></a>Požadavky
+
+Tento článek používá jako výchozí bod prostředky vytvořené v následující příručce:
+
+* [Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí prostředí PowerShell](quickstart-create-mysql-server-database-using-azure-powershell.md)
+
+## <a name="get-the-connection-string"></a>Získání připojovacího řetězce
+
+`Get-AzMySqlConnectionString`Rutina slouží k vygenerování připojovacího řetězce pro připojení aplikací k Azure Database for MySQL. Následující příklad vrátí připojovací řetězec pro klienta PHP z **mydemoserver**.
+
+```azurepowershell-interactive
+Get-AzMySqlConnectionString -Client PHP -Name mydemoserver -ResourceGroupName myresourcegroup
+```
+
+```Output
+$con=mysqli_init();mysqli_ssl_set($con, NULL, NULL, {ca-cert filename}, NULL, NULL); mysqli_real_connect($con, "mydemoserver.mysql.database.azure.com", "myadmin@mydemoserver", {your_password}, {your_database}, 3306);
+```
+
+Platné hodnoty pro `Client` parametr zahrnují:
+
+* ROZHRANÍ ADO&#46;NET
+* JDBC
+* Node.js
+* PHP
+* Python
+* Ruby
+* WebApp
+
+## <a name="next-steps"></a>Další kroky
+
+> [!div class="nextstepaction"]
+> [Návrh Azure Database for MySQL pomocí prostředí PowerShell](tutorial-design-database-using-powershell.md)

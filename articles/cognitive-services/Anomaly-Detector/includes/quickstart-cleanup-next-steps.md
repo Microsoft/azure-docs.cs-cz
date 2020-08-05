@@ -19,7 +19,7 @@ ms.locfileid: "74483026"
 
 Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků dojde také k odstranění všech dalších prostředků přidružených ke skupině prostředků.
 
-* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Další kroky

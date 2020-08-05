@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d5004dc48fe3052d6632573da67f4069eb6fac1c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 74ffb54b13783b4945376e1717777fa1da39ab44
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208174"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543312"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>List tahák pro Azure synapse Analytics (dřív SQL DW)
 
@@ -41,7 +41,7 @@ Nejdřív načtěte data do [Azure Data Lake Storage](../../data-factory/connect
 
 | Návrh | Doporučení |
 |:--- |:--- |
-| Distribuce | Kruhové dotazování. |
+| Distribuce | Kruhové dotazování |
 | Indexování | Halda |
 | Dělení | Žádné |
 | Třída prostředku | largerc nebo xlargerc |
@@ -52,11 +52,11 @@ Další informace o [migraci dat](https://blogs.msdn.microsoft.com/sqlcat/20../.
 
 Použijte následující strategie v závislosti na vlastnostech tabulek:
 
-| Typ | Skvěle se hodí pro...| Na co si dát pozor|
+| Typ | Skvěle se hodí pro tyto účely...| Na co si dát pozor|
 |:--- |:--- |:--- |
 | Replikované | * Malé tabulky dimenzí ve schématu hvězdičky s méně než 2 GB úložiště po kompresi (~ pětinásobné Compression) |* Mnoho transakcí zápisu je v tabulce (například vložení, Upsert, odstranit, aktualizovat).<br></br>* Často se zřizování jednotek datového skladu (DWU) mění.<br></br>* Používáte jenom 2-3 sloupců, ale tabulka má mnoho sloupců.<br></br>* Naindexuje replikovanou tabulku. |
 | Kruhové dotazování (výchozí) | * Dočasná/pracovní tabulka<br></br> * Žádný zjevně se nepřipojuje klíč ani sloupec s dobrým kandidátem |* Výkon je pomalý kvůli přesunu dat. |
-| Hodnota hash | * Tabulky faktů<br></br>* Velké tabulky dimenzí |* Distribuční klíč nelze aktualizovat |
+| Hodnoty hash | * Tabulky faktů<br></br>* Velké tabulky dimenzí |* Distribuční klíč nelze aktualizovat |
 
 **Tip**
 
@@ -65,7 +65,7 @@ Použijte následující strategie v závislosti na vlastnostech tabulek:
 * Nedistribuovat ve formátu varchar.
 * U tabulek dimenzí se společným klíčem hash jako tabulka faktů s častými operacemi spojení je možné provádět distribuci hodnot hash.
 * Pomocí *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* můžete analyzovat případné zkreslení dat.
-* Pomocí *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* můžete analyzovat přesuny dat vyvolané dotazy, monitorovat všesměrové vysílání času a prohazování prováděné operacemi. To je užitečné při kontrole distribuční strategie.
+* Pomocí *[Sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* můžete analyzovat pohyby dat na dotazech, sledovat čas vysílání a přebírat operace. To je užitečné při kontrole distribuční strategie.
 
 Další informace o [replikovaných tabulkách](design-guidance-for-replicated-tables.md) a [distribuovaných tabulkách](sql-data-warehouse-tables-distribute.md).
 
@@ -73,7 +73,7 @@ Další informace o [replikovaných tabulkách](design-guidance-for-replicated-t
 
 Indexování je užitečné pro rychlé čtení tabulek. Existuje jedinečná sada technologií, které můžete použít podle svých potřeb:
 
-| Typ | Skvěle se hodí pro... | Na co si dát pozor|
+| Typ | Skvěle se hodí pro tyto účely... | Na co si dát pozor|
 |:--- |:--- |:--- |
 | Halda | * Pracovní/dočasná tabulka<br></br>* Malé tabulky s malým vyhledáváním |* Jakékoli vyhledávání prohledává celou tabulku. |
 | Clusterovaný index | * Tabulky s až 100 000 000 řádky<br></br>* Velké tabulky (více než 100 000 000 řádků) s velkým využitím pouze 1-2 sloupců |* Používá se v replikované tabulce.<br></br>* Máte složité dotazy zahrnující vícenásobné operace JOIN a Group by<br></br>* Provedete aktualizace indexovaných sloupců: přebírá paměť. |
@@ -131,9 +131,7 @@ Klíčovou funkcí služby Azure synapse je schopnost [Spravovat výpočetní pr
 
 Automatické škálování teď můžete provádět kdykoli díky Azure Functions:
 
-<a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[![Obrázek znázorňující tlačítko s názvem "nasadit do Azure".](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json)
 
 ## <a name="optimize-your-architecture-for-performance"></a>Optimalizace výkonu architektury
 
@@ -143,6 +141,4 @@ Přečtěte si další informace o [typických architekturách, které využijí
 
 Nasazení proveďte v jednom z fondů SQL kliknutím na své paprsky v databázích SQL:
 
-<a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[![Obrázek znázorňující tlačítko s názvem "nasadit do Azure".](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json)

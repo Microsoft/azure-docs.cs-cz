@@ -11,7 +11,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400495"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -35,16 +35,16 @@ Než začnete, nezapomeňte:
 
 1. Nahraďte řetězec `whatstheweatherlike.wav` vlastním názvem souboru.
 
-1. V řádku nabídek vyberte **soubor** > **Uložit vše**.
+1. V řádku nabídek vyberte **soubor**  >  **Uložit vše**.
 
 > [!NOTE]
 > Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. informace o výběru zdrojového jazyka najdete v tématu [určení zdrojového jazyka pro převod řeči na text](../../../../how-to-specify-source-language.md) .
 
 ## <a name="build-and-run-the-application"></a>Sestavení a spuštění aplikace
 
-1. V řádku nabídek vyberte **sestavit** > **sestavení řešení** a sestavte aplikaci. Kód by se teď měl zkompilovat bez chyb.
+1. V řádku nabídek vyberte **sestavit**  >  **sestavení řešení** a sestavte aplikaci. Kód by se teď měl zkompilovat bez chyb.
 
-1. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci **HelloWorld** .
+1. Zvolte **ladění**  >  **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci **HelloWorld** .
 
 1. Váš zvukový soubor se přenáší do služby pro rozpoznávání řeči a první utterance v souboru je přepisu na text, který se zobrazí ve stejném okně.
 

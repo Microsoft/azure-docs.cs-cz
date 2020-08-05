@@ -11,7 +11,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400990"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -26,12 +26,12 @@ Než začnete, nezapomeňte:
 Prvním krokem je ujistit se, že máte projekt otevřený v zatmění.
 
 1. Spuštění Eclipse
-2. Načtěte projekt a otevřete `Main.java`.
+2. Načtěte projekt a otevřete `Main.java` .
 
 ## <a name="add-a-reference-to-gson"></a>Přidat odkaz na gson
 V tomto rychlém startu použijeme externí serializátor/deserializaci JSON. Pro Java jsme zvolili [gson](https://github.com/google/gson).
 
-Otevřete soubor pom. XML a přidejte následující odkaz.
+Otevřete pom.xml a přidejte následující odkaz.
 
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/pom.xml?range=19-25)]
 
@@ -48,7 +48,7 @@ Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 Jak REST API přijímá požadavky ve formátu JSON a také vrátí výsledky ve formátu JSON, můžeme s nimi pracovat jenom s řetězci, ale to se nedoporučuje.
 Aby bylo možné žádosti a odpovědi snadněji spravovat, deklarujeme několik tříd, které se použijí pro serializaci nebo deserializaci JSON.
 
-Pokračujte a uveďte jejich deklarace dřív `Main`.
+Pokračujte a uveďte jejich deklarace dřív `Main` .
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=15-93)]
 
 ## <a name="create-and-configure-an-http-client"></a>Vytvoření a konfigurace klienta http

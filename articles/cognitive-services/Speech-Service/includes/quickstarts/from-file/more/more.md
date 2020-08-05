@@ -20,7 +20,7 @@ Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovac�
 | C# | [Z MIC][1-mic], [od objektu BLOB][1-blob] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
 | C++ | [Z MIC][2-mic], [od objektu BLOB][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [MacOS][cpp-mac] |
 | Java | [Z MIC][3-mic], [od objektu BLOB][3-blob] | [Android][java-android], [JRE][java-jre] |
-| JavaScript | [Prohlížeč z MIC][js-browser], [Node. js ze souboru][js-node] | [Windows, Linux, macOS][js-code] |
+| JavaScript | [Prohlížeč z MIC][js-browser], [Node.js ze souboru][js-node] | [Windows, Linux, macOS][js-code] |
 | Objective-C | [iOS od mic][obj-iOS-qck], [MacOS od mic][obj-macOS-qck] | [iOS][obj-iOS], [MacOS][obj-macOS] |
 | Python | [Z MIC][4-mic], [od objektu BLOB][4-blob] | [Windows, Linux, macOS][python] |
 | Swift | [iOS od mic][swift-iOS-qck], [MacOS od mic][swift-macOS-qck] | [iOS][swift-iOS], [MacOS][swift-macOS] |

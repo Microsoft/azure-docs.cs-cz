@@ -18,7 +18,7 @@ ms.locfileid: "79136778"
 V tomto rychlém startu můžete začít vyhledávat entity pomocí Vyhledávání entit Bingu klientské knihovny pro jazyk C#. I když Vyhledávání entit Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
 * Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet.
@@ -48,13 +48,13 @@ Chcete-li přidat knihovnu klienta Vyhledávání entit Bingu do projektu aplika
 
 ## <a name="create-a-client-and-send-a-search-request"></a>Vytvoření klienta a odeslání žádosti o vyhledávání
 
-1. Vytvořit nového klienta vyhledávání. Přidejte svůj klíč předplatného tak, `ApiKeyServiceClientCredentials`že vytvoříte nový.
+1. Vytvořit nového klienta vyhledávání. Přidejte svůj klíč předplatného tak, že vytvoříte nový `ApiKeyServiceClientCredentials` .
 
     ```csharp
     var client = new EntitySearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
 
-1. K vyhledání dotazu použijte `Entities.Search()` funkci klienta:
+1. `Entities.Search()`K vyhledání dotazu použijte funkci klienta:
     
     ```csharp
     var entityData = client.Entities.Search(query: "Satya Nadella");
@@ -62,7 +62,7 @@ Chcete-li přidat knihovnu klienta Vyhledávání entit Bingu do projektu aplika
 
 ## <a name="get-and-print-an-entity-description"></a>Získání a tisk popisu entity
 
-1. Pokud rozhraní API vrátilo výsledky hledání, Získejte hlavní entitu `entityData`z.
+1. Pokud rozhraní API vrátilo výsledky hledání, Získejte hlavní entitu z `entityData` .
 
     ```csharp
     var mainEntity = entityData.Entities.Value.Where(thing => thing.EntityPresentationInfo.EntityScenario == EntityScenario.DominantEntity).FirstOrDefault();

@@ -22,6 +22,6 @@ V tomto rychlém startu použijete [sadu Speech SDK](~/articles/cognitive-servic
 > * Vytvořte ````SpeechTranslationConfig```` objekt z klíče a oblasti předplatného.
 > * Aktualizujte ````SpeechTranslationConfig```` objekt a určete zdrojové a cílové jazyky.
 > * Aktualizujte ````SpeechTranslationConfig```` objekt zadáním hlasového názvu výstupu řeči.
-> * Vytvořte ````TranslationRecognizer```` objekt pomocí výše uvedeného ````SpeechTranslationConfig```` objektu.
+> * Vytvořte ````TranslationRecognizer```` objekt pomocí ````SpeechTranslationConfig```` výše uvedeného objektu.
 > * Pomocí ````TranslationRecognizer```` objektu spusťte proces rozpoznávání pro jeden utterance.
 > * Zkontrolujte ````TranslationRecognitionResult```` vrácenou.

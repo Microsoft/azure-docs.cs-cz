@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: bf7bfa6ec405841934cd068cbc90c2b071fc0afc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f3c6364226288ffb6796664e89d0b7c2cc4dadf6
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022076"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543142"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Kurz: Vytvoření datové továrny pomocí sady Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -56,7 +56,7 @@ V rámci tohoto názorného postupu provedete tyto kroky:
 4. Vytvořte datovou továrnu s názvem **DataFactoryUsingVS**. Nasaďte objekt pro vytváření dat a všechny entity služby Data Factory (propojené služby, tabulky a kanál).
 5. Po publikování použijte okna na webu Azure Portal a aplikaci Monitorování a správa k monitorování kanálu. 
   
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -119,7 +119,7 @@ S využitím propojené služby HDInsight na vyžádání se cluster HDInsight a
 
     Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON:
 
-    Vlastnost | Description
+    Vlastnost | Popis
     -------- | ----------- 
     ClusterSize | Určuje velikost clusteru HDInsight Hadoop.
     TimeToLive | Určuje dobu nečinnosti před odstraněním clusteru HDInsight.
@@ -128,7 +128,7 @@ S využitím propojené služby HDInsight na vyžádání se cluster HDInsight a
     > [!IMPORTANT]
     > Cluster HDInsight vytvoří **výchozí kontejner** ve službě Blob Storage, kterou jste určili v kódu JSON (linkedServiceName). Při odstranění clusteru HDInsight neprovede odstranění tohoto kontejneru. Toto chování je záměrné. Díky propojené službě HDInsight na vyžádání se cluster HDInsight vytvoří pokaždé, když se zpracuje určitý řez, pokud neexistuje aktivní cluster (timeToLive). Po dokončení zpracování se cluster automaticky odstraní.
     > 
-    > Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: `adf<yourdatafactoryname>-<linkedservicename>-datetimestamp`. K odstranění kontejnerů ze služby Azure Blob Storage můžete použít nástroje, jako je třeba [Průzkumník úložišť od Microsoftu](https://storageexplorer.com/).
+    > Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: `adf<yourdatafactoryname>-<linkedservicename>-datetimestamp`. Pomocí nástrojů, jako je [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/) , odstraňte kontejnery ve službě Azure Blob Storage.
 
     Další informace o vlastnostech JSON najdete v tématu [Propojené služby Compute](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). 
 4. Uložte soubor **HDInsightOnDemandLinkedService1.json**.
@@ -168,7 +168,7 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
 
     Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON:
 
-    Vlastnost | Description |
+    Vlastnost | Popis |
     -------- | ----------- |
     typ |Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nachází ve službě Azure Blob Storage.
     linkedServiceName | Odkazuje na službu AzureStorageLinkedService1, kterou jste vytvořili předtím.
@@ -412,7 +412,7 @@ K monitorování kanálů můžete také použít aplikaci pro monitorování a 
 -  Pomocí výše uvedeného kódu JSON služba Data Factory vytvoří cluster HDInsight **se systémem Linux** za vás. Podrobnosti najdete v tématu [Propojená služba HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 - Cluster HDInsight vytvoří **výchozí kontejner** ve službě Blob Storage, kterou jste určili v kódu JSON (linkedServiceName). Při odstranění clusteru HDInsight neprovede odstranění tohoto kontejneru. Toto chování je záměrné. Díky propojené službě HDInsight na vyžádání se cluster HDInsight vytvoří pokaždé, když se zpracuje určitý řez, pokud neexistuje aktivní cluster (timeToLive). Po dokončení zpracování se cluster automaticky odstraní.
     
-    Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. K odstranění kontejnerů ze služby Azure Blob Storage můžete použít nástroje, jako je třeba [Průzkumník úložišť od Microsoftu](https://storageexplorer.com/).
+    Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Pomocí nástrojů, jako je [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/) , odstraňte kontejnery ve službě Azure Blob Storage.
 - V současnosti určuje plán výstupní datová sada, takže musíte výstupní datovou sadu vytvořit i v případě, že aktivita nevytváří žádný výstup. Pokud aktivita nemá žádný vstup, vstupní datovou sadu vytvářet nemusíte. 
 - Tento kurz neukazuje, jak kopírovat data pomocí Azure Data Factory. Kurz předvádějící způsoby kopírování dat pomocí Azure Data Factory najdete v tématu popisujícím [kurz kopírování dat z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
@@ -563,7 +563,7 @@ Dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením
 
 ## <a name="see-also"></a>Viz také
 
-| Téma | Description |
+| Téma | Popis |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení pracovních postupů založených na datech. |
 | [Datové sady](data-factory-create-datasets.md) |Tento článek vám pomůže pochopit datové sady ve službě Azure Data Factory. |

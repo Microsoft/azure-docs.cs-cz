@@ -11,7 +11,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400951"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -25,7 +25,7 @@ Než začnete, nezapomeňte:
 Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Studio.
 
 1. Spusťte Visual Studio 2019.
-2. Načtěte projekt a otevřete `helloworld.cpp`.
+2. Načtěte projekt a otevřete `helloworld.cpp` .
 
 ## <a name="add-a-references"></a>Přidat odkazy
 

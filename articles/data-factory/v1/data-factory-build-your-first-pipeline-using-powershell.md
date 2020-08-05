@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 6263e18ae541dd60dcd3455a00cdf58e371485f0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f388937c43c9c6a2b9e4700768d4af9cdcb39de
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023547"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543108"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí prostředí Azure PowerShell
 > [!div class="op_single_selector"]
@@ -168,7 +168,7 @@ V tomto kroku propojíte se svým objektem pro vytváření dat cluster HDInsigh
    * Místo používání clusteru HDInsight na vyžádání můžete použít **vlastní cluster HDInsight** . Podrobnosti najdete v tématu [Propojená služba HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service).
    * Cluster HDInsight vytvoří **výchozí kontejner** v úložišti objektů blob, které jste zadali ve formátu JSON (**linkedServiceName**). Při odstranění clusteru HDInsight neprovede odstranění tohoto kontejneru. Toto chování je záměrné. V případě propojené služby HDInsight na vyžádání se cluster HDInsight vytvoří pokaždé, když se zpracuje řez, pokud neexistuje aktivní cluster (**TimeToLive**). Po dokončení zpracování se cluster automaticky odstraní.
 
-       Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: "ADF**yourdatafactoryname** - **linkedservicename**-DateTimeStamp". K odstranění kontejnerů ze služby Azure Blob Storage můžete použít nástroje, jako je třeba [Průzkumník úložišť od Microsoftu](https://storageexplorer.com/).
+       Po zpracování dalších řezů se vám ve službě Azure Blob Storage objeví spousta kontejnerů. Pokud je nepotřebujete k řešení potíží s úlohami, můžete je odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: "ADF**yourdatafactoryname** - **linkedservicename**-DateTimeStamp". Pomocí nástrojů, jako je [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/) , odstraňte kontejnery ve službě Azure Blob Storage.
 
      Podrobnosti najdete v tématu [Propojená služba HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 2. Spusťte rutinu **New-AzDataFactoryLinkedService** , která vytvoří propojenou službu s názvem HDInsightOnDemandLinkedService.
@@ -396,7 +396,7 @@ V tomto kroku budete pomocí prostředí Azure PowerShell monitorovat, co se dě
 >
 >
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 V tomto kurzu jste vytvořili objekt pro zpracování dat Azure, který zpracovává data pomocí skriptu Hive v clusteru HDInsight Hadoop. Pomocí editoru služby Data Factory na webu Azure Portal jste provedli tyto kroky:
 
 1. Vytvořili jste **objekt pro vytváření dat** Azure.

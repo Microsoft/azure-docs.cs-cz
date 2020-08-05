@@ -11,7 +11,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400590"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!div class="checklist"]
 > * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
@@ -21,7 +21,7 @@ ms.locfileid: "81400590"
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Chcete-li do projektu Java přidat novou prázdnou třídu, vyberte možnost **soubor** > **Nová** > **Třída**.
+1. Chcete-li do projektu Java přidat novou prázdnou třídu, vyberte možnost **soubor**  >  **Nová**  >  **Třída**.
 
 1. V okně **New Java Class** (Nová třída Javy) zadejte do pole **Package** (Balíček) **speechsdk.quickstart** a do pole **Name** (Název) zadejte **Main** (Hlavní).
 
@@ -118,9 +118,9 @@ ms.locfileid: "81400590"
 > [!NOTE]
 > Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. informace o výběru zdrojového jazyka najdete v tématu [určení zdrojového jazyka pro převod řeči na text](../../../../how-to-specify-source-language.md) .
 
-## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
+## <a name="build-and-run-the-app"></a>Sestavte a spusťte aplikaci.
 
-Stiskněte klávesu F11 nebo vyberte **Spustit** > **ladění**.
+Stiskněte klávesu F11 nebo vyberte **Spustit**  >  **ladění**.
 V okně konzoly bude rozpoznáno a zaznamenáno prvních 15 sekund vstupu řeči ze zvukového souboru.
 
    ```text

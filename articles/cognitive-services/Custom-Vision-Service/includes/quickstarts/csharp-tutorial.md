@@ -12,7 +12,7 @@ ms.locfileid: "82134107"
 ---
 Tento článek obsahuje informace a vzorový kód, které vám pomůžou začít s vytvořením modelu klasifikace obrázků pomocí sady Custom Vision SDK a jazyka C#. Po jeho vytvoření můžete přidat značky, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Použijte tento příklad jako šablonu pro vytvoření vlastní aplikace .NET. Pokud chcete projít procesem sestavování a používání klasifikačního modelu _bez_ kódu, prostudujte si místo toho [pokyny založené na prohlížeči](../../getting-started-build-a-classifier.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
@@ -32,7 +32,7 @@ Tento projekt sady Visual Studio vytvoří nový projekt služby Custom Vision s
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-Otevřete soubor _Program.cs_ a prozkoumejte kód. [Vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro vaše školicí a předpovědní klíče `CUSTOM_VISION_TRAINING_KEY` s `CUSTOM_VISION_PREDICTION_KEY`názvem a v uvedeném pořadí. Skript bude hledat tyto proměnné.
+Otevřete soubor _Program.cs_ a prozkoumejte kód. [Vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro vaše školicí a předpovědní klíče s názvem `CUSTOM_VISION_TRAINING_KEY` a v `CUSTOM_VISION_PREDICTION_KEY` uvedeném pořadí. Skript bude hledat tyto proměnné.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_keys)]
 

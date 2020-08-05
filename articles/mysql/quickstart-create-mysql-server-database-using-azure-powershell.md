@@ -8,18 +8,18 @@ ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 04/28/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 55805402037edac230aa225b74ce2eeb731945b7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f32f6c4366aac1a39dbc1bc4af3b945e259b3280
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495399"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543533"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-powershell"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí prostředí PowerShell
 
 V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit Azure Database for MySQL server ve skupině prostředků Azure. PowerShell můžete použít k interaktivnímu vytváření a správě prostředků Azure nebo ve skriptech.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
@@ -61,7 +61,7 @@ Následující tabulka obsahuje seznam běžně používaných parametrů a uká
 
 |        **Nastavení**         | **Ukázková hodnota** |                                                                                                                                                             **Popis**                                                                                                                                                              |
 | -------------------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Name                       | mydemoserver     | V Azure vyberte globálně jedinečný název, který identifikuje Azure Database for MySQL server. Název serveru může obsahovat jenom písmena, číslice a znak spojovníku (-). Všechna zadaná velká písmena se během procesu vytváření automaticky převedou na malá písmena. Musí se skládat ze 3 až 63 znaků. |
+| Název                       | mydemoserver     | V Azure vyberte globálně jedinečný název, který identifikuje Azure Database for MySQL server. Název serveru může obsahovat jenom písmena, číslice a znak spojovníku (-). Všechna zadaná velká písmena se během procesu vytváření automaticky převedou na malá písmena. Musí se skládat ze 3 až 63 znaků. |
 | ResourceGroupName          | myresourcegroup  | Zadejte název skupiny prostředků Azure.                                                                                                                                                                                                                                                                                            |
 | Skladová jednotka (SKU)                        | GP_Gen5_2        | Název skladové položky. Postupuje podle konvence **cenové úrovně \_ COMPUTE – generace \_ virtuální jádra** ve zkráceném znění. Další informace o parametru SKU naleznete v informacích uvedených v této tabulce.                                                                                                                                           |
 | BackupRetentionDay         | 7                | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny. Rozsah je 7 až 35.                                                                                                                                                                                                                                                                       |
@@ -237,4 +237,4 @@ Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Návrh Azure Database for MySQL pomocí prostředí PowerShell](tutorial-design-database-using-powershell.md)
+> [Generování připojovacího řetězce pomocí PowerShellu Azure Database for MySQL](connect-powershell.md)

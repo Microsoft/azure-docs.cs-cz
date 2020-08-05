@@ -1,14 +1,14 @@
 ---
 title: Přehled služby Azure Resource Graph
 description: Seznamte se s tím, jak služba Azure Resource Graph umožňuje složitý dotazování na prostředky ve velkém rozsahu napříč předplatnými a klienty.
-ms.date: 06/29/2020
+ms.date: 07/25/2020
 ms.topic: overview
-ms.openlocfilehash: 9c15ff12f21c1d3d168828eae67de51069cdcada
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 5a2be5e65ecd5590d992e1883f432c173660e78d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970599"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541783"
 ---
 # <a name="what-is-azure-resource-graph"></a>Co je Azure Resource Graph?
 
@@ -62,6 +62,10 @@ Pokud chcete používat Resource Graph, musíte mít odpovídající oprávněn�
 > V grafu prostředků se při přihlášení používají předplatná, která jsou k objektu zabezpečení k dispozici. Chcete-li zobrazit prostředky nového předplatného přidaného během aktivní relace, objekt zabezpečení musí kontext aktualizovat. Tato akce se provádí automaticky při odhlašování a zpátky v.
 
 Azure CLI a Azure PowerShell používají předplatná, ke kterým má uživatel přístup. Při přímém použití REST API se seznam předplatných poskytuje uživateli. Pokud má uživatel přístup k jakémukoli předplatnému v seznamu, vrátí se výsledky dotazu pro předplatná, ke kterým má uživatel přístup. Toto chování je stejné jako při volání [skupin prostředků – seznam](/rest/api/resources/resourcegroups/list) \- , ke kterému se dostanete skupiny prostředků, ke kterým máte přístup, aniž by bylo nutné uvádět, že výsledek může být částečný. Pokud v seznamu odběrů nejsou žádná předplatná, ke kterým má uživatel příslušná práva, odpověď je _403_ (zakázáno).
+
+> [!NOTE]
+> V REST API verze **Preview** `2020-04-01-preview` může být seznam předplatných ommitted.
+> Pokud `subscriptions` `managementGroupId` v požadavku nejsou definovány vlastnosti a, je _obor_ nastaven na tenant. Další informace najdete v tématu [rozsah dotazu](./concepts/query-language.md#query-scope).
 
 ## <a name="throttling"></a>Throttling
 

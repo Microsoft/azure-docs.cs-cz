@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a594a754f33ae60d151215deb5a5ed57f87126c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 96a947a20a17c4dc08851824a392143ce162f186
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050645"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543553"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: mapování stávajícího vlastního názvu DNS na Azure App Service
 
@@ -95,7 +95,12 @@ Až se zobrazí následující oznámení, operace škálování je dokončená.
 
 ## <a name="get-domain-verification-id"></a>Získat ID ověření domény
 
-Pokud chcete do aplikace přidat vlastní doménu, musíte ověřit vlastnictví domény tím, že přidáte ID ověřování jako záznam TXT pro vašeho poskytovatele domény. V levém navigačním panelu na stránce aplikace klikněte v části **Nastavení**na **vlastní domény** . Sem zkopírujte hodnotu ID ověření vlastní domény. Toto ID ověření budete potřebovat pro další krok.
+Pokud chcete do aplikace přidat vlastní doménu, musíte ověřit vlastnictví domény tím, že přidáte ID ověřování jako záznam TXT pro vašeho poskytovatele domény. V levém navigačním panelu na stránce aplikace klikněte na **vlastní domény**. Na stránce **vlastní domény** pro další krok zkopírujte **ID vlastní ověření domény** .
+
+![Získat ID vlastní ověření domény](./media/app-service-web-tutorial-custom-domain/get-custom-domain-verification-id.png)
+
+> [!WARNING]
+> Přidání identifikátorů ověřování domény do vlastní domény může zabránit v dangling záznamech DNS a vyhnout se převzetí subdomény. Další informace o této společné hrozbě s vysokou závažností najdete v tématu [převzetí subdomény](../security/fundamentals/subdomain-takeover.md).
 
 ## <a name="map-your-domain"></a>Mapování domény
 
@@ -331,7 +336,7 @@ Po dokončení operace by vaše aplikace měla vrátit pravou stránku na kořen
 
 Správu vlastních domén můžete automatizovat pomocí skriptů s využitím [Azure CLI](/cli/azure/install-azure-cli) nebo [Azure PowerShellu](/powershell/azure/). 
 
-### <a name="azure-cli"></a>Azure CLI 
+### <a name="azure-cli"></a>Rozhraní příkazového řádku Azure 
 
 Následující příkaz přidá do aplikace App Service nakonfigurovaný vlastní název DNS. 
 

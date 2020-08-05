@@ -11,7 +11,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400552"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -26,7 +26,7 @@ Než začnete, nezapomeňte:
 Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Studio.
 
 1. Spusťte Visual Studio 2019.
-2. Načtěte projekt a otevřete `Program.cs`.
+2. Načtěte projekt a otevřete `Program.cs` .
 3. Stáhněte si soubor <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/whatstheweatherlike.wav" download="whatstheweatherlike" target="_blank">whatstheweatherlike. <span class="docon docon-download x-hidden-focus"></span> WAV</a> a přidejte ho do projektu.
     - Uložte soubor *whatstheweatherlike. wav* vedle `Program.cs` souboru.
     - V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte **Přidat > existující položku**.
@@ -36,7 +36,7 @@ Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Stu
 
 ## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
 
-Pojďme přidat kód, který funguje jako kostra pro náš projekt. Nezapomeňte, že jste vytvořili asynchronní metodu s názvem `RecognizeSpeechAsync()`.
+Pojďme přidat kód, který funguje jako kostra pro náš projekt. Nezapomeňte, že jste vytvořili asynchronní metodu s názvem `RecognizeSpeechAsync()` .
 
 ```csharp
 using System;
@@ -65,7 +65,7 @@ namespace HelloWorld
 Než budete moct inicializovat `SpeechRecognizer` objekt, musíte vytvořit konfiguraci, která používá váš klíč předplatného a oblast předplatného. Vložte tento kód do `RecognizeSpeechAsync()` metody.
 
 > [!NOTE]
-> Tato ukázka používá `FromSubscription()` metodu pro sestavení `SpeechConfig`. Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+> Tato ukázka používá `FromSubscription()` metodu pro sestavení `SpeechConfig` . Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
 > Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. informace o výběru zdrojového jazyka najdete v tématu [určení zdrojového jazyka pro převod řeči na text](../../../../how-to-specify-source-language.md) .
 
 ```csharp
@@ -85,7 +85,7 @@ using (var audioInput = AudioConfig.FromWavFileInput("whatstheweatherlike.wav"))
 
 ## <a name="initialize-a-speechrecognizer"></a>Inicializovat SpeechRecognizer
 
-Nyní vytvoříme `SpeechRecognizer` objekt pomocí dříve vytvořených objektů `SpeechConfig` a. `AudioConfig` Tento objekt je vytvořen také v rámci příkazu Using, aby bylo zajištěno správné vydání nespravovaných prostředků. Vložte tento kód do `RecognizeSpeechAsync()` metody uvnitř příkazu Using, který zabalí váš ```AudioConfig``` objekt.
+Nyní vytvoříme `SpeechRecognizer` objekt pomocí `SpeechConfig` `AudioConfig` dříve vytvořených objektů a. Tento objekt je vytvořen také v rámci příkazu Using, aby bylo zajištěno správné vydání nespravovaných prostředků. Vložte tento kód do `RecognizeSpeechAsync()` metody uvnitř příkazu Using, který zabalí váš ```AudioConfig``` objekt.
 
 ```csharp
 using (var recognizer = new SpeechRecognizer(config, audioInput))
@@ -108,7 +108,7 @@ var result = await recognizer.RecognizeOnceAsync();
 
 Když Služba rozpoznávání řeči vrátí výsledek rozpoznávání, budete s ním chtít něco dělat. My to Zjednodušme a vytiskneme výsledek do konzoly.
 
-V příkazu Using níže `RecognizeOnceAsync()`přidejte tento kód:
+V příkazu Using níže `RecognizeOnceAsync()` přidejte tento kód:
 
 ```csharp
 switch (result.Reason)
@@ -197,8 +197,8 @@ namespace HelloWorld
 
 Nyní jste připraveni sestavit aplikaci a otestovat rozpoznávání řeči pomocí služby Speech.
 
-1. Zkompilujte kód: z panelu nabídek aplikace *Visual Studio*vyberte **sestavení** > **řešení**sestavení.
-2. Spusťte aplikaci: z panelu nabídek zvolte **ladění** > **Spustit ladění** nebo stiskněte klávesu **F5**.
+1. Zkompilujte kód: z panelu nabídek aplikace *Visual Studio*vyberte **sestavení**  >  **řešení**sestavení.
+2. Spusťte aplikaci: z panelu nabídek zvolte **ladění**  >  **Spustit ladění** nebo stiskněte klávesu **F5**.
 3. Spustit rozpoznávání: váš zvukový soubor se pošle službě Speech, přepisu jako text a vykresluje se v konzole.
 
    ```console

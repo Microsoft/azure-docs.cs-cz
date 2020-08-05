@@ -11,7 +11,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400972"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -25,15 +25,15 @@ Než začnete, nezapomeňte:
 Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Studio.
 
 1. Spusťte Visual Studio 2019.
-2. Načtěte projekt a otevřete `Program.cs`.
+2. Načtěte projekt a otevřete `Program.cs` .
 
-## <a name="add-a-reference-to-newtonsoftjson"></a>Přidat odkaz na Newtonsoft. JSON
+## <a name="add-a-reference-to-newtonsoftjson"></a>Přidat odkaz na Newtonsoft.Jsna
 
 1. V Průzkumník řešení klikněte pravým tlačítkem myši na projekt **HelloWorld** a pak výběrem **možnosti spravovat balíčky NuGet** Zobrazte správce balíčků NuGet.
 1. V pravém horním rohu Najděte rozevírací seznam **zdroj balíčku** a ujistěte se, že **`nuget.org`** je vybraná možnost.
 1. V levém horním rohu vyberte **Procházet**.
-1. Do vyhledávacího pole zadejte *Newtonsoft. JSON* a vyberte **ENTER**.
-1. Ve výsledcích hledání vyberte balíček [**Newtonsoft. JSON**](https://www.nuget.org/packages/Newtonsoft.Json) a pak vyberte **instalovat** a nainstalujte nejnovější stabilní verzi.
+1. Do vyhledávacího pole zadejte *newtonsoft.js* a vyberte **ENTER**.
+1. Ve výsledcích hledání vyberte v balíčku [**Newtonsoft.Js**](https://www.nuget.org/packages/Newtonsoft.Json) a pak vyberte **instalovat** a nainstalujte nejnovější stabilní verzi.
 1. Přijetím všech smluv a licencí spusťte instalaci.
    Po instalaci balíčku se v okně **konzoly Správce balíčků** zobrazí potvrzení.
 
@@ -84,7 +84,7 @@ class Program
 Jak REST API přijímá požadavky ve formátu JSON a také vrátí výsledky ve formátu JSON, můžeme s nimi pracovat jenom s řetězci, ale to se nedoporučuje.
 Aby bylo možné žádosti a odpovědi snadněji spravovat, deklarujeme několik tříd, které se použijí pro serializaci nebo deserializaci JSON.
 
-Pokračujte a uveďte jejich deklarace po `TranscribeAsync`.
+Pokračujte a uveďte jejich deklarace po `TranscribeAsync` .
 
 ```csharp
 public class ModelIdentity
@@ -187,7 +187,7 @@ public class TranscriptionDefinition
 
 ## <a name="create-and-configure-an-http-client"></a>Vytvoření a konfigurace klienta http
 První věc, kterou budeme potřebovat, je klient http, který má správnou základní adresu URL a sadu ověřování.
-Vložte tento kód do `TranscribeAsync`.
+Vložte tento kód do `TranscribeAsync` .
 
 ```csharp
 var client = new HttpClient
@@ -202,7 +202,7 @@ var client = new HttpClient
 ```
 
 ## <a name="generate-a-transcription-request"></a>Generovat žádost o přepis
-Dále vygenerujeme žádost o přepis. Přidejte tento kód do `TranscribeAsync`.
+Dále vygenerujeme žádost o přepis. Přidejte tento kód do `TranscribeAsync` .
 
 ```csharp
 var transcriptionDefinition =
@@ -294,7 +294,7 @@ Console.ReadKey();
 
 ## <a name="display-the-transcription-results"></a>Zobrazení výsledků přepisu
 Po úspěšném dokončení přepisu budou výsledky uloženy v jiné adrese URL, kterou můžeme získat z odpovědi na stav. Tady vytvoříme požadavek na stažení těchto výsledků do dočasného souboru před čtením a deserializací.
-Po načtení výsledků je můžete vytisknout do konzoly. Do `case "Succeeded":` popisku přidejte následující kód.
+Po načtení výsledků je můžete vytisknout do konzoly. Do popisku přidejte následující kód `case "Succeeded":` .
 
 ```csharp
 completed = true;
@@ -551,8 +551,8 @@ namespace BatchClient
 
 Nyní jste připraveni sestavit aplikaci a otestovat rozpoznávání řeči pomocí služby Speech.
 
-1. **Zkompilujte kód** -z panelu nabídek v aplikaci Visual Studio, vyberte **sestavení** > **řešení**sestavení.
-2. **Spusťte aplikaci** – z řádku nabídek zvolte **ladění** > **Spustit ladění** nebo stiskněte klávesu **F5**.
+1. **Zkompilujte kód** -z panelu nabídek v aplikaci Visual Studio, vyberte **sestavení**  >  **řešení**sestavení.
+2. **Spusťte aplikaci** – z řádku nabídek zvolte **ladění**  >  **Spustit ladění** nebo stiskněte klávesu **F5**.
 3. **Spustit rozpoznávání** – zobrazí výzvu k vymluvenému vynechání fráze v angličtině. Váš hlas se odešle službě Speech, přepisu jako text a vykreslí se v konzole nástroje.
 
 ## <a name="next-steps"></a>Další kroky

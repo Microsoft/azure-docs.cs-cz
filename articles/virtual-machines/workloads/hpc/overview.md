@@ -8,12 +8,12 @@ ms-subservice: hpc
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 07/29/2020
-ms.openlocfilehash: e8bff2b08782dcced63b5eb35f1baac310a1d3ca
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: f9a672777fbc8a75cb6af10ba25232f8a274c894
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431937"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543720"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>Vysoce výkonné výpočetní prostředí na InfiniBand s povolenými virtuálními počítači řady H-Series a N-Series
 
@@ -27,8 +27,8 @@ Virtuální počítače řady H-Series a N-Series s podporou InfiniBand jsou nav
 
 ### <a name="rdma-and-infiniband"></a>RDMA a InfiniBand
 
-Virtuální počítače s podporou RDMA a řady N-Series komunikují přes InfiniBand síť s nízkou latencí a velkou šířkou pásma. Schopnost RDMA v takovém propojení je zásadní pro zvýšení škálovatelnosti a výkonu funkcí HPC a AI distribuovaných uzlů. Virtuální počítače s povoleným InfiniBand H-Series a N-Series se připojují v neblokujícím stromu FAT s návrhem s nízkým průměrem pro optimalizaci a konzistentní výkon RDMA.
-Další informace o schopnostech RDMA těchto virtuálních počítačů a jejich podporovaných operačních systémech podporovaných maticích, instalaci ovladačů InfiniBand, MPI podpoře atd. najdete v tématu [virtuální počítače s podporou RDMA](../../sizes-hpc.md#rdma-capable-instances) . Další informace o nastavení InfiniBand na virtuálních počítačích s podporou InfiniBand najdete v tématu [Povolení InfiniBand](enable-infiniband.md) .
+Virtuální [počítače s](../../sizes-hpc.md) [podporou RDMA](../../sizes-hpc.md#rdma-capable-instances) a [řady N-Series](../../sizes-gpu.md) komunikují přes InfiniBand síť s nízkou latencí a velkou šířkou pásma. Schopnost RDMA v takovém propojení je zásadní pro zvýšení škálovatelnosti a výkonu funkcí HPC a AI distribuovaných uzlů. Virtuální počítače s povoleným InfiniBand H-Series a N-Series se připojují v neblokujícím stromu FAT s návrhem s nízkým průměrem pro optimalizaci a konzistentní výkon RDMA.
+Další informace o nastavení InfiniBand na virtuálních počítačích s podporou InfiniBand najdete v tématu [Povolení InfiniBand](enable-infiniband.md) .
 
 ### <a name="message-passing-interface"></a>Rozhraní pro předávání zpráv
 
@@ -37,13 +37,14 @@ Další informace o instalaci různých podporovaných knihoven MPI a jejich opt
 
 ## <a name="get-started"></a>Začínáme
 
-Prvním krokem je výběr virtuálního počítače [řady H-Series](../../sizes-hpc.md) a [N-Series](../../sizes-gpu.md) optimálního pro úlohy na základě specifikací virtuálních počítačů a [Možnosti RDMA](../../sizes-hpc.md#rdma-capable-instances).
+Prvním krokem je výběr typu virtuálních počítačů [řady H-Series](../../sizes-hpc.md) a [N-Series](../../sizes-gpu.md) optimální pro úlohy na základě specifikací virtuálních počítačů a [Možnosti RDMA](../../sizes-hpc.md#rdma-capable-instances).
 Potom nakonfigurujte virtuální počítač tak, že povolíte InfiniBand. Existují různé metody, včetně použití optimalizovaných imagí virtuálních počítačů s vloženými ovladačů. Podrobnosti najdete v tématu [optimalizace pro Linux](configure.md) a [Povolení InfiniBand](enable-infiniband.md) .
 Pro úlohy distribuovaných uzlů, které jsou pro úlohy distribuovaného uzlu třetí, je důležité vybrat a nakonfigurovat MPI. Podrobnosti najdete v tématu [Nastavení MPI](setup-mpi.md) .
 Čtvrtá, z hlediska výkonu a škálovatelnosti můžete optimálně nakonfigurovat úlohy podle pokynů, které jsou specifické pro rodinu virtuálních počítačů, jako jsou například přehledy v rámci řady [7000](hb-series-overview.md) a [Přehled pro řady HC](hc-series-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 
+- Přečtěte si o [konfiguraci a optimalizaci](configure.md) virtuálních počítačů řady [H-Series](../../sizes-hpc.md) a [N-Series](../../sizes-gpu.md) s podporou InfiniBand.
 - Seznamte se s přehledem a [řadou HC](hc-series-overview.md) - [Series](hb-series-overview.md) – přehled s optimální konfigurací úloh pro zajištění výkonu a škálovatelnosti.
 - Přečtěte si o nejnovějších oznámeních a některých příkladech HPC a výsledcích na [blogu Azure COMPUTE tech Community](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - Pro zobrazení architektury na vyšší úrovni pro spouštění úloh HPC si přečtěte téma věnované technologii [HPC (High Performance Computing) v Azure](/azure/architecture/topics/high-performance-computing/).

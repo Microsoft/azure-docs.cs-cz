@@ -11,7 +11,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400910"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -26,14 +26,14 @@ Chcete-li spustit ukázku, je třeba vygenerovat knihovnu Python pro REST API, k
 
 Pro instalaci použijte tento postup:
 
-1. Přejděte do části https://editor.swagger.io (Soubor > Nový > Jiné).
+1. Přejděte na https://editor.swagger.io.
 1. Klikněte na **soubor**a pak na **importovat adresu URL**.
-1. Zadejte adresu URL Swagger, včetně oblasti pro předplatné služby Speech: `https://<your-region>.cris.ai/docs/v2.0/swagger`.
+1. Zadejte adresu URL Swagger, včetně oblasti pro předplatné služby Speech: `https://<your-region>.cris.ai/docs/v2.0/swagger` .
 1. Klikněte na **vygenerovat klienta** a vyberte **Python**.
 1. Uložte klientskou knihovnu.
-1. Extrahujte stažený soubor Python-Client-Generated. zip někam do systému souborů.
-1. Do prostředí Pythonu nainstalujte extrahovaný klientský modul Pythonu pomocí PIP: `pip install path/to/package/python-client`.
-1. Instalovaný balíček má název `swagger_client`. Pomocí příkazu `python -c "import swagger_client"`můžete ověřit, zda byla instalace úspěšná.
+1. Extrahujte stažený python-client-generated.zip někam do systému souborů.
+1. Do prostředí Pythonu nainstalujte extrahovaný klientský modul Pythonu pomocí PIP: `pip install path/to/package/python-client` .
+1. Instalovaný balíček má název `swagger_client` . Pomocí příkazu můžete ověřit, zda byla instalace úspěšná `python -c "import swagger_client"` .
 
 > [!NOTE]
 > Kvůli [známé chybě v modulu pro vytváření Swagger](https://github.com/swagger-api/swagger-codegen/issues/7541)může dojít k chybám při importu `swagger_client` balíčku.

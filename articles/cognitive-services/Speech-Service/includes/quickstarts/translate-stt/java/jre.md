@@ -17,7 +17,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "78925813"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -27,7 +27,7 @@ Než začnete, nezapomeňte:
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Chcete-li do projektu Java přidat novou prázdnou třídu, vyberte možnost **soubor** > **Nová** > **Třída**.
+1. Chcete-li do projektu Java přidat novou prázdnou třídu, vyberte možnost **soubor**  >  **Nová**  >  **Třída**.
 
 1. V okně **New Java Class** (Nová třída Javy) zadejte do pole **Package** (Balíček) **speechsdk.quickstart** a do pole **Name** (Název) zadejte **Main** (Hlavní).
 
@@ -126,9 +126,9 @@ Než začnete, nezapomeňte:
 
 1. Uložte změny do projektu.
 
-## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
+## <a name="build-and-run-the-app"></a>Sestavte a spusťte aplikaci.
 
-Stiskněte klávesu F11 nebo vyberte **Spustit** > **ladění**.
+Stiskněte klávesu F11 nebo vyberte **Spustit**  >  **ladění**.
 
 1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas ke službě rozpoznávání řeči, která překládá a transcribes text (v tomto případě do němčiny). Služba rozpoznávání řeči pak pošle text zpátky do aplikace k zobrazení.
 

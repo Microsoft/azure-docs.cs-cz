@@ -32,7 +32,7 @@ Tento projekt sady Visual Studio vytvoří nový projekt služby Custom Vision s
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-Otevřete soubor _Program.cs_ a prozkoumejte kód. [Vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro vaše školicí a předpovědní klíče `CUSTOM_VISION_TRAINING_KEY` s `CUSTOM_VISION_PREDICTION_KEY`názvem a v uvedeném pořadí. Skript bude hledat tyto proměnné.
+Otevřete soubor _Program.cs_ a prozkoumejte kód. [Vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro vaše školicí a předpovědní klíče s názvem `CUSTOM_VISION_TRAINING_KEY` a v `CUSTOM_VISION_PREDICTION_KEY` uvedeném pořadí. Skript bude hledat tyto proměnné.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_keys)]
 

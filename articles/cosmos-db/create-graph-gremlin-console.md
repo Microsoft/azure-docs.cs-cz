@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: lbosq
-ms.openlocfilehash: 0d8c153bb95ee4eda109d8d7d6ce8ae40dae19e1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e1ce632a04269704b498a69e1a0dd4fe72e00c87
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260725"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543771"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Rychlý start: Vytváření, zadávání dotazů a procházení grafové databáze Azure Cosmos DB v konzole Gremlin
 
@@ -81,7 +81,7 @@ Musíte si také nainstalovat [konzolu Gremlin](https://tinkerpop.apache.org/dow
    connectionPool: {
      enableSsl: true
    }
-   serializer: { className: org.apache.tinkerpop.gremlin.driver.   ser.GraphSONMessageSerializerV2d0, config: {    serializeResultToString: true }}
+   serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV2d0, config: { serializeResultToString: true }}
    ```
 
    Nezapomeňte zabalit parametr hodnota hostitelů do závorek []. 
@@ -309,7 +309,7 @@ g.E().drop()
 g.V().drop()
 ```
 
-Blahopřejeme! Dokončili jste kurz rozhraní Gremlin API služby Azure Cosmos DB.
+Gratulujeme! Dokončili jste kurz rozhraní Gremlin API služby Azure Cosmos DB.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření smluv SLA na webu Azure Portal
 

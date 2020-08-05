@@ -16,7 +16,7 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "78925738"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, nezapomeňte:
 
@@ -78,7 +78,7 @@ Než začnete, nezapomeňte:
 
 1. Řetězec `YourServiceRegion` nahraďte [oblastí](../../../../regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
-1. Uložte změny, které jste udělali v `quickstart.py`.
+1. Uložte změny, které jste udělali v `quickstart.py` .
 
 ## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 

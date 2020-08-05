@@ -12,7 +12,7 @@ ms.locfileid: "82134093"
 ---
 Tento článek poskytuje informace a ukázkový kód, který vám může pomoci začít používat sadu Custom Vision SDK s nástrojem přejít k sestavení modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v cestách.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Přejít 1.8 +](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
@@ -25,7 +25,7 @@ Pokud chcete nainstalovat sadu Custom Vision Service SDK pro přejít, spusťte 
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-nebo pokud používáte `dep`, v rámci vašeho spuštění úložiště:
+nebo pokud používáte `dep` , v rámci vašeho spuštění úložiště:
 ```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
