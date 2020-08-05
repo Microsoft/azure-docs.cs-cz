@@ -4,7 +4,7 @@ summary: Zabezpečení je integrované do všech oblastí Azure. Azure nabízí 
 brand: azure
 metadata:
   title: Dokumentace k zabezpečení Azure
-  description: Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečné výhody zabezpečení vycházející z inteligentních funkcí globálního zabezpečení, propracovaných ovládacích prvků pro uživatele a infrastruktury s posíleným zabezpečením. Tato účinná kombinace pomáhá chránit vaše aplikace a data, podporuje snahu o dodržování předpisů a poskytuje nákladově efektivní zabezpečení pro organizace všech velikostí.
+  description: Přečtěte si víc o zabezpečení v Azure. Projděte si informace o základech zabezpečení, osvědčených postupech a vzorech a službě Azure Security Center.
   services: security
   ms.service: security
   ms.subservice: na
@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: b3c5fb0dd15c1211132e627b507aa20a043f09ba
-  ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+  ms.openlocfilehash: de2b3baae0ab999c0e3eb8ed76194632e7b066e6
+  ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/10/2020
-  ms.locfileid: "81115365"
+  ms.lasthandoff: 08/03/2020
+  ms.locfileid: "87540848"
 highlightedContent:
   items:
   - title: Seznámení se zabezpečením Azure

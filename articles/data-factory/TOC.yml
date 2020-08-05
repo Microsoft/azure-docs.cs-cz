@@ -726,6 +726,8 @@
           href: pricing-concepts.md
     - name: Průvodci odstraňováním potíží
       items:
+        - name: Uživatelské rozhraní Data Factory
+          href: data-factory-ux-troubleshoot-guide.md
         - name: Aktivity
           href: data-factory-troubleshoot-guide.md
         - name: Konektory

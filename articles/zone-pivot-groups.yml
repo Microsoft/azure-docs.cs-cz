@@ -488,10 +488,18 @@ groups:
     title: Java
   - id: programming-language-python
     title: Python
+- id: aml-control-methods
+  title: Řídicí rovina Azure Machine Learningu
+  prompt: Volba rozhraní řídicí roviny Azure Machine Learningu
+  pivots:
+  - id: py-sdk
+    title: Python SDK
+  - id: cli
+    title: Azure CLI
 metadata:
-  ms.openlocfilehash: ec7beebb81bf6a96912ff43a1e071f85d0d8a108
-  ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+  ms.openlocfilehash: a16cb06637b777259e4e5115beb1299e8ed65a6b
+  ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87291854"
+  ms.lasthandoff: 08/03/2020
+  ms.locfileid: "87543516"

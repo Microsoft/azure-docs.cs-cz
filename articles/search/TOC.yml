@@ -335,6 +335,8 @@
           items:
             - name: Klíče spravované zákazníkem
               href: search-security-manage-encryption-keys.md
+            - name: Získání informací o klíčích
+              href: search-security-get-encryption-keys.md
         - name: Příchozí zabezpečení
           items:
             - name: Přístupové klíče rozhraní API

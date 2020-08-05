@@ -2,19 +2,19 @@
   items:
     - name: Přehled
       items:
-        - name: Prostředí HPC pro virtuální počítače řady H
+        - name: Prostředí HPC pro virtuální počítače řady H a N
           href: overview.md
     - name: Konfigurace
       items:
-        - name: Optimalizace pro Linux
+        - name: Konfigurace a optimalizace virtuálních počítačů
           href: configure.md
         - name: Povolení sítí Infiniband
           href: enable-infiniband.md
-    - name: Nastavení MPI
-      href: setup-mpi.md
+        - name: Nastavení MPI
+          href: setup-mpi.md
     - name: Škálování aplikací
       href: compiling-scaling-applications.md
-    - name: Virtual Machines
+    - name: Virtuální počítače
       items:
         - name: Řada HB
           items:
@@ -28,5 +28,5 @@
               href: hc-series-overview.md
             - name: Výkon
               href: hc-series-performance.md
-        - name: Známé problémy s virtuálními počítači řady HB a HC
+        - name: Známé problémy s virtuálními počítači řady H a N
           href: hb-hc-known-issues.md

@@ -51,6 +51,12 @@
   items:
     - name: Konfigurace Network Watcheru
       href: network-watcher-create.md
+    - name: Vytvoření funkce Monitorování připojení (Preview)
+      items:
+        - name: Pomocí webu Azure Portal
+          href: connection-monitor-preview-create-using-portal.md
+        - name: Pomocí ARMClienta
+          href: connection-monitor-preview-create-using-arm-client.md
     - name: Diagnostika potíží se sítí virtuálních počítačů
       items:
         - name: Instalace rozšíření virtuálních počítačů

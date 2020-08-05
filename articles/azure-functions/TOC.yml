@@ -345,8 +345,8 @@
       items:
         - name: Řešení potíží s úložištěm
           href: functions-recover-storage-account.md
-        - name: Řešení potíží se závislostmi Pythonu
-          href: recover-module-not-found.md
+        - name: Řešení potíží s funkcemi Pythonu
+          href: recover-python-functions.md
 - name: Referenční informace
   items:
     - name: Referenční informace k rozhraní API

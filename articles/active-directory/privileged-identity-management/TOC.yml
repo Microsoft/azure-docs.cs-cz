@@ -91,7 +91,7 @@
       items:
         - name: Přehled privilegovaného přístupu
           href: groups-features.md
-        - name: Zjišťování skupin
+        - name: Přenesení skupin pod správu
           href: groups-discover-groups.md
         - name: Přiřazení člena nebo vlastníka
           href: groups-assign-member-owner.md

@@ -15,28 +15,6 @@
 - name: Kurzy
   expanded: true
   items:
-    - name: Studio
-      expanded: true
-      items:
-        - name: Designer (přetahování)
-          items:
-            - name: 1. Trénování regresního modelu
-              displayName: studio
-              href: tutorial-designer-automobile-price-train-score.md
-            - name: 2. Nasazení tohoto modelu
-              displayName: studio
-              href: tutorial-designer-automobile-price-deploy.md
-        - name: Automatizované ML (uživatelské rozhraní)
-          items:
-            - name: Vytváření experimentů automatizovaného strojového učení
-              displayName: 'automl, automated, auto ml, portal, ui'
-              href: tutorial-first-experiment-automated-ml.md
-            - name: Prognóza poptávky (údaje o sdílení kol)
-              displayName: 'automl, automated, auto ml, portal, ui'
-              href: tutorial-automated-ml-forecast.md
-        - name: Označení dat obrázku
-          displayName: 'tag, tagging, images'
-          href: tutorial-labeling.md
     - name: Python SDK
       expanded: true
       items:
@@ -64,11 +42,33 @@
         - name: Příprava kódu pro produkci
           displayName: 'mlops, mlopspython, production'
           href: tutorial-convert-ml-experiment-to-production.md
+    - name: Studio
+      expanded: true
+      items:
+        - name: Automatizované ML (uživatelské rozhraní)
+          items:
+            - name: Vytváření experimentů automatizovaného strojového učení
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-first-experiment-automated-ml.md
+            - name: Prognóza poptávky (údaje o sdílení kol)
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-automated-ml-forecast.md
+        - name: Designer (přetahování)
+          items:
+            - name: 1. Trénování regresního modelu
+              displayName: studio
+              href: tutorial-designer-automobile-price-train-score.md
+            - name: 2. Nasazení tohoto modelu
+              displayName: studio
+              href: tutorial-designer-automobile-price-deploy.md
+        - name: Označení dat obrázku
+          displayName: 'tag, tagging, images'
+          href: tutorial-labeling.md
     - name: R SDK
       items:
         - name: Vytvoření prvního experimentu ML (R)
           href: tutorial-1st-r-experiment.md
-    - name: Machine Learning CLI
+    - name: Rozhraní příkazového řádku
       items:
         - name: Trénování a nasazení s využitím CLI
           href: tutorial-train-deploy-model-cli.md
@@ -226,9 +226,6 @@
         - name: Použití soukromých balíčků Pythonu
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-private-python-packages.md
-        - name: Povolit protokolování
-          displayName: 'troubleshoot, log, files, tracing'
-          href: how-to-enable-logging.md
         - name: Nastavení vstupních a výstupních adresářů
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
@@ -309,8 +306,12 @@
             - name: 'Spuštění, monitorování nebo zrušení běhů'
               displayName: 'cancel, fail, status, child run'
               href: how-to-manage-runs.md
-            - name: Protokolování metrik pro tréninková spuštění
+            - name: Povolení protokolů
+              displayName: 'troubleshoot, log, files, tracing'
               href: how-to-track-experiments.md
+            - name: Zobrazení protokolů
+              displayName: 'troubleshoot, log, files, tracing'
+              href: how-to-monitor-view-training-logs.md
             - name: Sledování experimentů s využitím MLflow
               displayName: 'log, monitor, metrics, Databricks'
               href: how-to-use-mlflow.md
@@ -363,7 +364,7 @@
         - name: Kde a jak nasadit
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: Scénáře nasazení
+        - name: Cíle nasazení
           items:
             - name: Použití existujících modelů
               displayName: publish existing model
@@ -394,19 +395,37 @@
               href: how-to-deploy-fpga-web-service.md
         - name: Řešení potíží a ladění
           href: how-to-troubleshoot-deployment.md
-        - name: Vytváření klientů
+        - name: Využívání webové služby
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: Monitorování modelů
+        - name: Aktualizace webové služby
+          displayName: update hot reload model mounting
+          href: how-to-deploy-update-web-service.md
+        - name: Vytváření pokročilých zaváděcích skriptů
+          displayName: swagger inference schema binary cors
+          href: how-to-deploy-advanced-entry-script.md
+        - name: Monitorování webových služeb
           items:
             - name: Shromažďování a vyhodnocování dat modelů
               displayName: track production
               href: how-to-enable-data-collection.md
             - name: Monitorování pomocí Application Insights
               href: how-to-enable-app-insights.md
+        - name: Průběžné nasazování modelů
+          displayName: ci cd azure devops models
+          href: how-to-deploy-continuously-deploy.md
         - name: Nasazení šifrované služby odvozování
           displayName: 'homomorhic,encryption,deployment'
           href: how-to-homomorphic-encryption-seal.md
+        - name: Modely profilů
+          displayName: profile resource requirement
+          href: how-to-deploy-profile-model.md
+        - name: (Preview) Bez nasazení kódu
+          displayName: no code
+          href: how-to-deploy-no-code-deployment.md
+        - name: Modely balíčků
+          displayName: docker file download
+          href: how-to-deploy-package-models.md
     - name: Vytváření a použití kanálů ML
       displayName: pipelines
       items:
@@ -423,6 +442,9 @@
           href: how-to-debug-pipelines.md
         - name: Ladění kanálů ve službě Application Insights
           href: how-to-debug-pipelines-application-insights.md
+        - name: Metriky protokolu designeru
+          displayName: 'designer, logging'
+          href: how-to-track-designer-experiments.md
         - name: Transformace dat designeru
           displayName: pipeline
           href: how-to-designer-transform-data.md
