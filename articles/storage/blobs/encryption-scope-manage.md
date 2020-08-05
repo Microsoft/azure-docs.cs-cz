@@ -1,20 +1,20 @@
 ---
 title: Vytváření a Správa oborů šifrování (Preview)
-description: ''
+description: Naučte se vytvořit rozsah šifrování pro izolaci dat objektů blob na úrovni kontejneru nebo objektu BLOB.
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 07/13/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f589f0108cf21e77be5103afcaa0242c6f191ab3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d4dd3f3ced8aac6852fe8516a4a5cadca2ebdc49
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531383"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564142"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Vytváření a Správa oborů šifrování (Preview)
 
@@ -24,7 +24,7 @@ Tento článek ukazuje, jak vytvořit rozsah šifrování. Také ukazuje, jak ur
 
 ## <a name="create-an-encryption-scope"></a>Vytvoření oboru šifrování
 
-Pokud chcete vytvořit rozsah šifrování, musíte nejdřív vytvořit Trezor klíčů Azure a přidat klíč, který chcete použít pro tento obor. Trezor klíčů musí mít povolené vlastnosti ochrany po **tichém odstranění** a **vyprázdnění** , ale musí být ve stejné oblasti jako účet úložiště. Další informace najdete v tématu [použití klíčů spravovaných zákazníkem a Azure Key Vault ke správě šifrování Azure Storage](../common/encryption-customer-managed-keys.md).
+Obory šifrování můžete vytvořit pomocí klíče spravovaného společností Microsoft nebo pomocí klíče spravovaného zákazníkem, který je uložený v Azure Key Vault. Pokud chcete vytvořit rozsah šifrování s klíčem spravovaným zákazníkem, musíte nejdřív vytvořit Trezor klíčů Azure a přidat klíč, který chcete použít pro tento obor. Trezor klíčů musí mít povolené vlastnosti ochrany po **tichém odstranění** a **vyprázdnění** , ale musí být ve stejné oblasti jako účet úložiště. Další informace najdete v tématu [použití klíčů spravovaných zákazníkem a Azure Key Vault ke správě šifrování Azure Storage](../common/encryption-customer-managed-keys.md).
 
 Rozsah šifrování je automaticky povolen při jeho vytváření. Po vytvoření oboru šifrování ho můžete zadat při vytváření objektu BLOB. Výchozí rozsah šifrování můžete zadat také při vytváření kontejneru, který se automaticky použije u všech objektů BLOB v kontejneru.
 

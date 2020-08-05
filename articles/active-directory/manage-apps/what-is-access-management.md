@@ -1,25 +1,21 @@
 ---
-title: Správa přístupu k aplikacím pomocí Azure AD | Microsoft Docs
+title: Správa přístupu k aplikacím pomocí Azure AD
 description: Popisuje, jak Azure Active Directory umožňuje organizacím určit aplikace, ke kterým mají jednotliví uživatelé přístup.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f49db0455af02449c3bd087d323d9972d18d96f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b19f4aae7bf7477dbe5950f2d4df31e2de81372
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479721"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562561"
 ---
 # <a name="managing-access-to-apps"></a>Správa přístupu k aplikacím
 

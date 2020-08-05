@@ -11,17 +11,17 @@ author: blackmist
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 88a122a9af4a5edac45a3189df5ffb78fb2ce271
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e12c22d56399ce1690bee678623c58288cf0163b
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423809"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552199"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorování a shromažďování dat z koncových bodů webové služby ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak shromažďovat data z a monitorovat modely nasazené do koncových bodů webové služby ve službě Azure Kubernetes Service (AKS) nebo Azure Container Instances (ACI) povolením Azure Application Insights přes 
+V tomto článku se dozvíte, jak shromažďovat data z a monitorovat modely nasazené do koncových bodů webové služby ve službě Azure Kubernetes (AKS) nebo v Azure Container Instances (ACI) pomocí dotazů na protokoly a povolením Azure Application Insights prostřednictvím 
 * [Azure Machine Learning Python SDK](#python)
 * [Azure Machine Learning Studio](#studio) vhttps://ml.azure.com
 
@@ -42,6 +42,18 @@ Kromě shromažďování výstupních dat a odpovědí koncového bodu můžete 
 
 * Školený model strojového učení, který se má nasadit do služby Azure Kubernetes (AKS) nebo Azure Container instance (ACI). Pokud ho nemáte, přečtěte si kurz pro [model klasifikace imagí v výukovém](tutorial-train-models-with-aml.md) programu.
 
+## <a name="query-logs-for-deployed-models"></a>Protokoly dotazů pro nasazené modely
+
+Chcete-li načíst protokoly z dříve nasazené webové služby, načtěte službu a použijte ji `get_logs()` . Protokoly mohou obsahovat podrobné informace o všech chybách, ke kterým došlo během nasazení.
+
+```python
+from azureml.core.webservice import Webservice
+
+# load existing web service
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+
 ## <a name="web-service-metadata-and-response-data"></a>Metadata a data odpovědi webové služby
 
 > [!IMPORTANT]
@@ -50,6 +62,7 @@ Kromě shromažďování výstupních dat a odpovědí koncového bodu můžete 
 Chcete-li protokolovat informace o požadavku na webovou službu, přidejte `print` do souboru Score.py příkazy. Každý `print` příkaz má za následek jednu položku v tabulce trasování v Application Insights v rámci zprávy `STDOUT` . Obsah `print` příkazu bude obsažen v části `customDimensions` a potom `Contents` v tabulce trasování. Pokud vytisknete řetězec JSON, vytvoří hierarchickou strukturu dat ve výstupu trasování v části `Contents` .
 
 Můžete se dotázat na Azure Application Insights přímo pro přístup k těmto datům nebo nastavit [průběžný export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) do účtu úložiště pro delší dobu uchovávání nebo dalšího zpracování. Data modelu se pak dají použít v Azure Machine Learning k nastavení označování, rekurze, vyjasnění, analýze dat nebo jiné použití. 
+
 
 <a name="python"></a>
 
@@ -164,7 +177,7 @@ Zobrazení:
 1. V [studiu](https://ml.azure.com/)přejdete do svého pracovního prostoru Azure Machine Learning.
 1. Vyberte **koncové body**.
 1. Vyberte nasazenou službu.
-1. Posuňte se dolů a vyhledejte **adresu url Application Insights** a klikněte na odkaz.
+1. Posuňte se dolů a vyhledejte **adresu url Application Insights** a vyberte odkaz.
 
     [![Najít adresu URL Application Insights](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 

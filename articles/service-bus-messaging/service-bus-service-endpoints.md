@@ -4,12 +4,12 @@ description: Tento článek poskytuje informace o tom, jak přidat koncový bod 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4518f7faedb44631c76c6d8b42ff9cca0dc3e08c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f902c77c3c7e614247abd4f8af50b8ed37b7e574
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422942"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552981"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Povolení přístupu k oboru názvů Azure Service Bus z konkrétních virtuálních sítí
 
@@ -32,6 +32,7 @@ Výsledkem je privátní a izolovaný vztah mezi úlohami vázanými na podsíť
 > Níže uvedené služby společnosti Microsoft musí být ve virtuální síti.
 > - Azure App Service
 > - Azure Functions
+> - Azure Monitor (nastavení diagnostiky)
 
 > [!IMPORTANT]
 > Virtuální sítě se podporují jenom v oborech názvů Service Bus [úrovně Premium](service-bus-premium-messaging.md) .

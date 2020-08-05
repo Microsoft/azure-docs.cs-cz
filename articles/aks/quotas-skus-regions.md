@@ -5,12 +5,12 @@ description: Přečtěte si o výchozích kvótách, omezených velikostech SKU 
 services: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.openlocfilehash: e3edbcf9603657ce0c747b01b3c59c2923bc0181
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9592b03f5bd9e9436db5665e040b4afd3b68b764
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208019"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562731"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kvóty, omezení velikosti virtuálních počítačů a dostupnost oblastí ve službě Azure Kubernetes Service (AKS)
 
@@ -56,5 +56,5 @@ Některé výchozí limity a kvóty je možné zvýšit. Pokud váš prostředek
 [region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 
 <!-- LINKS - Internal -->
-[vm-skus]: ../virtual-machines/linux/sizes.md
+[vm-skus]: ../virtual-machines/sizes.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

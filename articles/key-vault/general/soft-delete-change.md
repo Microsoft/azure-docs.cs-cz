@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: sudbalas
-ms.openlocfilehash: 91068bacee0bde9e11cc23816bd8e2a101854fb2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c75da4c27eae76df51836143c4fb383a1473159a
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388199"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564125"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>Obnovitelné odstranění bude povolené u všech trezorů klíčů.
 
@@ -48,7 +48,7 @@ Objekty zabezpečení, které potřebují přístup k trvale odstraněným tajn�
 
 Pokud máte v trezorech klíčů Azure Policy, že je vypnutí obnovitelného odstranění vypnuté, bude nutné tuto zásadu Zakázat.  Tento problém možná budete muset vyřešit u správce, který řídí zásady Azure použité pro vaše prostředí. Pokud tato zásada není zakázaná, může dojít ke ztrátě schopnosti vytvářet nové trezory klíčů v oboru použitých zásad.
 
-Pokud má vaše organizace právní požadavky na dodržování předpisů a nemůže odstranit odstraněné trezory klíčů a tajné klíče, aby zůstaly v obnovitelném stavu, budete po delší dobu muset upravit dobu uchování obnovitelného odstranění, která se dá nakonfigurovat mezi 7 až 90 dny, aby splňovala standardy vaší organizace.
+Pokud vaše organizace podléhá zákonným požadavkům na dodržování předpisů a neumožňuje odstraňovat trezory klíčů a tajné klíče, aby zůstaly v obnovitelném stavu, budete po delší dobu muset upravit dobu uchování obnovitelného odstranění, která se dá nakonfigurovat mezi 7 až 90 dny, aby splňovala standardy vaší organizace.
 
 ## <a name="procedures"></a>Procedury
 
@@ -66,14 +66,14 @@ Pokud má vaše organizace právní požadavky na dodržování předpisů a nem
 10. V okně Azure Policy klikněte na "dodržování předpisů".
 11. Vyberte zásadu, kterou jste použili.
 
-Nyní byste měli být schopni filtrovat a zjistit, které z vašich trezorů klíčů mají povolené obnovitelné odstranění (kompatibilní prostředky) a které trezory klíčů nemají povolené obnovitelné odstranění (nekompatibilní s jiným zdrojem).
+Nyní byste měli mít možnost filtrovat a zjistit, které z vašich trezorů klíčů mají povolené obnovitelné odstranění (kompatibilní prostředky) a které trezory klíčů nemají povolené obnovitelné odstranění (nekompatibilní prostředky).
 
 ### <a name="turn-on-soft-delete-for-an-existing-key-vault"></a>Zapnout obnovitelné odstranění pro existující Trezor klíčů
 
 1. Přihlaste se k webu Azure Portal.
 2. Vyhledejte Key Vault.
 3. V části nastavení vyberte vlastnosti.
-4. V části obnovitelné – odstranění vyberte přepínač, který odpovídá příkazu povolit obnovení. z tohoto trezoru a jeho objektů ".
+4. V části obnovitelné odstranění vyberte přepínač, který odpovídá příkazu "Povolit obnovení tohoto trezoru a jeho objektů".
 5. Nastavte dobu uchování pro obnovitelné odstranění.
 6. Vyberte Save (Uložit).
 

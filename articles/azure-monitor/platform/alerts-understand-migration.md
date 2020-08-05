@@ -6,12 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: c9696167d9addc3029a53f25e289d17bd3add263
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 533d114e08464ff95c654a6f071ea28a04caf510
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073615"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564091"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Princip fungování nástroje pro migraci
 
@@ -104,7 +104,7 @@ Výstrahy na metriky neúspěšných žádostí Mongo musí být rozdělené do 
 
 ### <a name="classic-compute-metrics"></a>Klasické výpočetní metriky
 
-Žádné výstrahy na klasických výpočetních metrikách nebudou migrovány pomocí nástroje pro migraci, protože klasické výpočetní prostředky se ještě nepodporují s novými výstrahami. Podpora nových výstrah u těchto typů prostředků se přidá do budoucna. Jakmile je tato skutečnost k dispozici, zákazníci musí znovu vytvořit nová ekvivalentní pravidla výstrah na základě jejich klasických pravidel upozornění do června 2020.
+Žádné výstrahy na klasických výpočetních metrikách nebudou migrovány pomocí nástroje pro migraci, protože klasické výpočetní prostředky se ještě nepodporují s novými výstrahami. Podpora nových výstrah na těchto typech prostředků je aktuálně ve verzi Public Preview a zákazníci mohou znovu vytvořit nová ekvivalentní pravidla upozornění na základě pravidel jejich klasických výstrah.
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>Pravidla pro klasické výstrahy na zastaralých metrikách
 

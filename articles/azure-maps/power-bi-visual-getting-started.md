@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: e840517934e77c96f1c19c3243ad2884d7ccce66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9f7f44e053cfb26cbf7d897b8a1df1ad2861fd07
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261732"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551995"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Začínáme s Azure Maps Power BI vizuál
 
@@ -35,6 +35,9 @@ Azure Maps vizuál se připojuje ke cloudové službě hostované v Azure a nač
 
 -   Podrobnosti o oblasti, na které je mapa soustředěna, jsou odesílány do Azure za účelem načtení imagí potřebných k vykreslení plátna mapy (označovaného také jako dlaždice mapy). 
 -   Data v kontejnerech umístění, zeměpisná šířka a zeměpisná délka se můžou odeslat do Azure a načíst souřadnice map (proces nazvaný geografické kódování). 
+-   Pokud je povolená možnost telemetrie v Power BI, můžou se shromažďovat data telemetrie ve stavu vizuálu (například zprávy o selhání).
+
+Kromě výše popsaných scénářů se na Azure Maps servery neodesílají žádná další data překrývající se na mapě. Veškerá vykreslování dat probíhá místně v rámci klienta.
 
 Vy nebo váš správce budete možná muset aktualizovat bránu firewall tak, aby povolovala přístup k Azure Maps platformě, která používá následující adresu URL.
 
@@ -127,12 +130,12 @@ Azure Maps vizuál je k dispozici v následujících službách a aplikacích:
 
 | Služba nebo aplikace                              | Dostupnost |
 |------------------------------------------|--------------|
-| Power BI Desktop                         | Yes          |
-| Služba Power BI (app.powerbi.com)       | Yes          |
+| Power BI Desktop                         | Ano          |
+| Služba Power BI (app.powerbi.com)       | Ano          |
 | Mobilní aplikace Power BI             | Ano          |
-| Publikování na web z Power BI                  | No           |
+| Publikování na web z Power BI                  | Ne           |
 | Power BI Embedded                        | No           |
-| Vkládání ve službě Power BI (PowerBI.com) | Yes          |
+| Vkládání ve službě Power BI (PowerBI.com) | Ano          |
 
 Podpora dalších Power BI služeb nebo aplikací se přidá v budoucích aktualizacích.
 

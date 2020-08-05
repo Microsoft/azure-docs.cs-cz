@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 8e3f33e8f453ffd6eedaeb75a041af7ec11b4e39
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 3b70590002e9c49f2f8711bb7fe90de79e1d2a73
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87457800"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554052"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -161,7 +161,7 @@ Další informace o regionální dostupnosti najdete v tématu [oblasti](regions
 |         |                                 | Female | `zh-CN-XiaoyouNeural`    | Dětský hlas, optimalizovaný pro mluvený popis scénáře |
 |         |                                 | Male   | `zh-CN-YunyangNeural`    | Optimalizováno pro čtení zpráv, je k dispozici více stylů hlasu |
 |         |                                 | Male   | `zh-CN-YunyeNeural`      | Optimalizováno pro mluvený popis scénáře |
-| `zh-HK` | Čínština (kantonština, tranditional)   | Female | `zh-HK-HiuGaaiNeural`| Obecné |
+| `zh-HK` | Čínština (kantonština, tradiční)   | Female | `zh-HK-HiuGaaiNeural`| Obecné |
 | `zh-TW` | Čínština (tchajwanský mandarinka)   | Female | `zh-TW-HsiaoYuNeural`    | Obecné |
 
 > [!IMPORTANT]

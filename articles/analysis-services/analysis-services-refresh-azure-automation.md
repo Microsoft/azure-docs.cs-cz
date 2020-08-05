@@ -2,16 +2,16 @@
 title: Aktualizovat Azure Analysis Services modely pomocí Azure Automation | Microsoft Docs
 description: Tento článek popisuje, jak model kódu aktualizuje pro Azure Analysis Services pomocí Azure Automation.
 author: chrislound
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 5314c933b01a1fb9c4ea9902a6fbb698c104d195
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31dc1973af42a1785a2a65cb1887f479e44af162
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025400"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553899"
 ---
 # <a name="refresh-with-azure-automation"></a>Aktualizace pomocí Azure Automation
 
@@ -19,7 +19,7 @@ Pomocí Azure Automation a PowerShellových runbooků můžete provádět operac
 
 Příklad v tomto článku používá [modul SQL SQLServer](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps). Ukázková sada Runbook PowerShellu, která demonstruje aktualizaci modelu, je k dispozici dále v tomto článku.  
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Ověřování uživatelů
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2).  Příklad v tomto článku používá k ověření Azure Analysis Services instanční objekt (SPN). Další informace najdete v tématu [Vytvoření instančního objektu pomocí služby Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -225,5 +225,5 @@ else
 
 ## <a name="next-steps"></a>Další kroky
 
-[Ukázky](analysis-services-samples.md)  
+[ukázky](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

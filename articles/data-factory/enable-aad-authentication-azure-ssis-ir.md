@@ -11,12 +11,12 @@ ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: fd9433c2482c4ddd907f7e30c0028dc2a15faed2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ffbb81fa56b87281199309d61ab3e2e59c1a5acd
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187672"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563989"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Povolení ověřování Azure Active Directory pro Azure-SSIS Integration Runtime
 
@@ -128,7 +128,7 @@ Pro tento další krok potřebujete [Microsoft SQL Server Management Studio](ht
 
    Příkaz by měl úspěšně doplňovat a udělit tak uživateli možnost vytvořit databázi (SSISDB).
 
-10. Pokud byl váš SSISDB vytvořen pomocí ověřování SQL a chcete použít ověřování Azure AD pro přístup k vašemu Azure-SSIS IR, klikněte pravým tlačítkem na databázi **SSISDB** a vyberte **Nový dotaz**.
+10. Pokud byl váš SSISDB vytvořen pomocí ověřování SQL a chcete pro přístup k tomuto Azure-SSIS IR použít ověřování Azure AD, nejprve se ujistěte, že kroky pro udělení oprávnění k **Hlavní** databázi byly úspěšně dokončeny. Pak klikněte pravým tlačítkem na databázi **SSISDB** a vyberte **Nový dotaz**.
 
 11. V okně dotazu zadejte následující příkaz T-SQL a na panelu nástrojů vyberte **Spustit** .
 
@@ -176,7 +176,7 @@ Pro tento další krok potřebujete [Microsoft SQL Server Management Studio](ht
     
     Příkaz by měl úspěšně doplňovat a udělit spravované identitě pro váš ADF, aby bylo možné vytvořit databázi (SSISDB).
 
-6.  Pokud byl váš SSISDB vytvořen pomocí ověřování SQL a chcete použít ověřování Azure AD pro přístup k vašemu Azure-SSIS IR, klikněte pravým tlačítkem na databázi **SSISDB** a vyberte **Nový dotaz**.
+6.  Pokud byl váš SSISDB vytvořen pomocí ověřování SQL a chcete pro přístup k tomuto Azure-SSIS IR použít ověřování Azure AD, nejprve se ujistěte, že kroky pro udělení oprávnění k **Hlavní** databázi byly úspěšně dokončeny. Pak klikněte pravým tlačítkem na databázi **SSISDB** a vyberte **Nový dotaz**.
 
 7.  V okně dotazu zadejte následující příkaz T-SQL a na panelu nástrojů vyberte **Spustit** .
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 31df880d9d6d586491d115d9b70de9f85bc980b2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8e3657128ddcff7f9436398ac4bcc6e220b86168
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502915"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552471"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurization v automatizovaném strojovém učení
 
@@ -161,7 +161,7 @@ text_transformations_used
 > [!NOTE]
 > Naše implementace BERT omezuje celkovou délku textu školicích ukázek na 128 tokeny. To znamená, že všechny textové sloupce, pokud jsou zřetězené, by ideálně měly mít maximálně 128 tokenů. V ideálním případě, pokud je k dispozici více sloupců, každý sloupec by měl být vyhodnocen tak, aby byl tento stav splněn. Například pokud existují dva textové sloupce v datech, měly by být oba textové sloupce vyřazeny na 64 tokeny (za předpokladu, že chcete, aby oba sloupce byly stejně reprezentovány v konečném zřetězeném textovém sloupci) předtím, než data dostanou do AutoML. Pro zřetězené sloupce délky >128 tokeny provádějících tokenizaci vrstva BERT zkrátí tento vstup na 128 tokeny.
 
-3. V kroku pro mazání funkcí AutoML porovnává BERT se směrným plánem (penalta slov obsahuje funkce + předpracované vkládání slov) na ukázku dat a určuje, jestli BERT by poskytovala vylepšení přesnosti. Pokud se zjistí, že BERT vykonává lepší hodnotu než standardní hodnoty, AutoML potom použije BERT pro text featurization jako optimální strategii featurization a pokračuje s featurizing celými daty. V takovém případě se v konečném modelu zobrazí "PretrainedTextDNNTransformer".
+3. V kroku pro mazání funkcí AutoML porovnává BERT proti směrnému plánu (sadu slov) na ukázce dat a určuje, jestli BERT by poskytovala vylepšení přesnosti. Pokud se zjistí, že BERT vykonává lepší hodnotu než standardní hodnoty, AutoML potom použije BERT pro text featurization jako optimální strategii featurization a pokračuje s featurizing celými daty. V takovém případě se v konečném modelu zobrazí "PretrainedTextDNNTransformer".
 
 BERT obvykle běží déle než většina ostatních featurizers. Dá se urychlitovat tím, že ve svém clusteru poskytnete víc výpočetních prostředků. AutoML bude distribuovat školení BERT napříč více uzly, pokud jsou k dispozici (až maximálně 8 uzlů). To se dá udělat nastavením [max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) na větší než 1. Pro lepší výkon doporučujeme použít skladové položky s možnostmi RDMA (například "STANDARD_NC24r" nebo "STANDARD_NC24rs_V3").
 

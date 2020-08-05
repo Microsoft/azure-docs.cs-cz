@@ -7,55 +7,85 @@ author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: 13ffd1eeb2df3c21a6167b056557b9141444f7c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: ed5d1f5b35bc9b6dee234678fa82af95e1d53bc7
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038575"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553988"
 ---
-# <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování v klidovém formátu obsahu v Azure Kognitivní hledání používání klíčů spravovaných zákazníkem v Azure Key Vault
+# <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat v Azure Kognitivní hledání
 
-Ve výchozím nastavení služba Azure Kognitivní hledání šifruje indexovaný obsah v klidovém stavu pomocí [klíčů spravovaných službou](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models). Výchozí šifrování můžete doplnit pomocí dalších vrstev šifrování s použitím klíčů, které vytvoříte a spravujete v Azure Key Vault. Tento článek vás provede jednotlivými kroky.
+Azure Kognitivní hledání automaticky šifruje indexovaný obsah v klidovém [provozu pomocí klíčů spravovaných službou](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models). Pokud potřebujete další ochranu, můžete výchozí šifrování doplnit o další vrstvu šifrování pomocí klíčů, které vytvoříte a spravujete v Azure Key Vault. Tento článek vás provede jednotlivými kroky nastavení šifrování CMK.
 
-Šifrování na straně serveru je podporováno prostřednictvím integrace s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview). Můžete vytvořit vlastní šifrovací klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování šifrovacích klíčů. Pomocí Azure Key Vault můžete také auditovat použití klíče. 
+Šifrování CMK závisí na [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview). Můžete vytvořit vlastní šifrovací klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování šifrovacích klíčů. Pomocí Azure Key Vault můžete také auditovat použití klíče, pokud [povolíte protokolování](../key-vault/general/logging.md).  
 
-Šifrování pomocí klíčů spravovaných zákazníkem se při vytváření těchto objektů konfiguruje na úrovni mapy index nebo synonym, a ne na úrovni vyhledávací služby. Nemůžete zašifrovat obsah, který už existuje. 
+Šifrování pomocí klíčů spravovaných zákazníkem se používá pro jednotlivé indexy nebo mapy synonym při vytváření těchto objektů a není zadáno na samotné úrovni služby vyhledávání. Šifrovat lze pouze nové objekty. Nemůžete zašifrovat obsah, který už existuje.
 
-Klíče nemusí být ve stejném Key Vault. Jedna vyhledávací služba může hostovat víc šifrovaných indexů nebo synonym, která se zašifrují vlastními šifrovacími klíči spravovanými zákazníky uloženými v různých trezorech klíčů.  Můžete mít také indexy a mapy synonym ve stejné službě, které nejsou šifrovány pomocí klíčů spravovaných zákazníkem. 
+Klíče nemusí být ve stejném trezoru klíčů. Jedna vyhledávací služba může hostovat několik šifrovaných indexů nebo map synonym, z nichž každý je zašifrovaný pomocí vlastních šifrovacích klíčů spravovaných zákazníkem, uložený v různých trezorech klíčů. Můžete mít také indexy a mapy synonym ve stejné službě, které nejsou šifrovány pomocí klíčů spravovaných zákazníkem. 
 
-> [!IMPORTANT] 
-> Tato funkce je k dispozici na [REST API](https://docs.microsoft.com/rest/api/searchservice/) a [.net SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md). V tuto chvíli není v Azure Portal žádná podpora ke konfiguraci šifrovacích klíčů spravovaných zákazníkem. Vyhledávací služba musí být vytvořená po 2019. lednu a nemůže být volná (sdílená) služba.
+## <a name="double-encryption"></a>Dvojité šifrování
+
+Pro služby vytvořené od 1. srpna 2020 a v určitých oblastech zahrnuje rozsah šifrování CMK dočasné disky a poskytuje [Úplné šifrování s dvojitou přesností](search-security-overview.md#double-encryption), které jsou aktuálně k dispozici v těchto oblastech: 
+
++ Západní USA 2
++ East US
++ Středojižní USA
++ USA (Gov) – Virginia
++ USA (Gov) – Arizona
+
+Pokud používáte jinou oblast nebo službu vytvořenou před 1. srpna, bude šifrování CMK omezené jenom na datový disk, a to s výjimkou dočasných disků, které služba používá.
 
 ## <a name="prerequisites"></a>Předpoklady
 
-V tomto příkladu se používají následující služby. 
+V tomto příkladu se používají následující služby a služby. 
 
-+ [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. 
++ [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). 
 
-+ [Vytvořte prostředek Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) nebo v rámci svého předplatného Najděte existující trezor.
++ [Vytvořte prostředek Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) nebo Najděte existující trezor ve stejném předplatném jako Azure kognitivní hledání. Tato funkce má stejný požadavek na předplatné.
 
 + Pro úlohy konfigurace se používá [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
-+ K volání REST API lze použít [post](search-get-started-postman.md), [Azure POWERSHELL](search-create-index-rest-api.md) a [.NET SDK Preview](https://aka.ms/search-sdk-preview) . V tuto chvíli není k dispozici žádná podpora portálu pro šifrování spravované zákazníkem.
++ [Post](search-get-started-postman.md), [Azure POWERSHELL](search-create-index-rest-api.md) a [.NET SDK preview](https://aka.ms/search-sdk-preview) lze použít k volání REST API, která vytvoří indexy a mapy synonym, které obsahují parametr šifrovacího klíče. V tuto chvíli není k dispozici žádná podpora portálu pro přidání klíče do indexů nebo map synonym.
 
 >[!Note]
-> Vzhledem k povaze šifrování s použitím klíčů spravovaných zákazníkem nebude Azure Kognitivní hledání moct načíst vaše data, pokud se odstraní klíč trezoru klíčů Azure. Aby nedošlo ke ztrátě dat způsobenému Key Vault náhodným odstraněním klíčů, **musíte** povolit ochranu před odstraněním a vyprázdněním v Key Vault, aby ji bylo možné použít. Další informace najdete v tématu [Azure Key Vault obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).   
+> Vzhledem k povaze šifrování s použitím klíčů spravovaných zákazníkem nebude Azure Kognitivní hledání moct načíst vaše data, pokud se odstraní klíč trezoru klíčů Azure. Aby nedošlo ke ztrátě dat způsobené náhodným odstraněním Key Vault klíčů, musí být v trezoru klíčů povolená ochrana před odstraněním a vymazáním. Možnost obnovitelného odstranění je ve výchozím nastavení povolená, takže dojde k problémům jenom v případě, že jste ho záměrně zakázali. Ve výchozím nastavení není ochrana vyprázdnění povolená, ale vyžaduje se pro šifrování Azure Kognitivní hledání CMK. Další informace najdete v tématu přehledy ochrany proti [tichému odstranění](../key-vault/key-vault-ovw-soft-delete.md) a [vyprázdnění](../key-vault/general/soft-delete-overview.md#purge-protection) .
 
 ## <a name="1---enable-key-recovery"></a>1 – povolit obnovení klíče
 
-Po vytvoření prostředku Azure Key Vault Povolte ochranu proti **odstranění** a **vyprázdnění** ve vybraném trezoru klíčů spuštěním následujících příkazů PowerShellu nebo rozhraní příkazového řádku Azure CLI:   
+V trezoru klíčů musí být povolená **Ochrana před** **příčtením a odstraněním** . Tyto funkce můžete nastavit pomocí portálu nebo následujících příkazů PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
-```powershell
-$resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
+### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
-$resource.Properties | Add-Member -MemberType NoteProperty -Name "enableSoftDelete" -Value 'true'
+1. Spusťte `Connect-AzAccount` a nastavte přihlašovací údaje Azure.
 
-$resource.Properties | Add-Member -MemberType NoteProperty -Name "enablePurgeProtection" -Value 'true'
+1. Spuštěním následujícího příkazu se připojte k trezoru klíčů a nahraďte ho `<vault_name>` platným názvem:
 
-Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
-```
+   ```powershell
+   $resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
+   ```
+
+1. Azure Key Vault se vytvoří s povolenou možnost obnovitelného odstranění. Pokud je v trezoru zakázaná, spusťte následující příkaz:
+
+   ```powershell
+   $resource.Properties | Add-Member -MemberType NoteProperty -Name "enableSoftDelete" -Value 'true'
+   ```
+
+1. Povolit ochranu vyprázdnění:
+
+   ```powershell
+   $resource.Properties | Add-Member -MemberType NoteProperty -Name "enablePurgeProtection" -Value 'true'
+   ```
+
+1. Uložte své aktualizace:
+
+   ```powershell
+   Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
+   ```
+
+### <a name="using-azure-cli"></a>Použití Azure CLI
 
 ```azurecli-interactive
 az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
@@ -65,7 +95,7 @@ az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --en
 
 Pokud k šifrování obsahu Azure Kognitivní hledání používáte existující klíč, přeskočte tento krok.
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com) a přejděte do řídicího panelu trezoru klíčů.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com) a otevřete stránku s přehledem trezoru klíčů.
 
 1. V levém navigačním podokně vyberte nastavení **klíče** a klikněte na **+ Generovat/importovat**.
 
@@ -89,7 +119,7 @@ Pokud je to možné, použijte spravovanou identitu. Je nejjednodušší způsob
 
  Obecně spravovaná identita umožňuje službě vyhledávání ověřovat Azure Key Vault bez uložení přihlašovacích údajů do kódu. Životní cyklus tohoto typu spravované identity je svázán s životním cyklem služby vyhledávání, který může mít pouze jednu spravovanou identitu. [Přečtěte si další informace o spravovaných identitách](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-1. Pokud chcete vytvořit spravovanou identitu, [Přihlaste se k portálu toAzure](https://portal.azure.com) a otevřete řídicí panel vyhledávací služby. 
+1. [Přihlaste se k Azure Portal](https://portal.azure.com) a otevřete stránku Přehled vyhledávací služby. 
 
 1. V levém navigačním podokně klikněte na **Identita** , změňte její stav na **zapnuto**a klikněte na **Uložit**.
 
@@ -121,6 +151,10 @@ Přístupová oprávnění by mohla být v daném okamžiku odvolána. Po odvol�
 
    ![Výběr oprávnění klíče zásad přístupu trezoru klíčů](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "Výběr oprávnění klíče zásad přístupu trezoru klíčů")
 
+1. V případě **oprávnění tajného klíče**vyberte *získat*.
+
+1. V případě **oprávnění certifikátu**vyberte *získat*.
+
 1. Klikněte na **OK** a **uložte** změny zásad přístupu.
 
 > [!Important]
@@ -128,11 +162,9 @@ Přístupová oprávnění by mohla být v daném okamžiku odvolána. Po odvol�
 
 ## <a name="5---encrypt-content"></a>5. šifrování obsahu
 
-Vytvoření mapy indexů nebo synonym šifrovaných pomocí klíče spravovaného zákazníkem zatím není možné pomocí Azure Portal. Pomocí služby Azure Kognitivní hledání REST API vytvořte takový index nebo mapu synonym.
+Chcete-li přidat klíč spravovaný zákazníkem na mapě nebo mapování synonym, je nutné použít [REST API vyhledávání](https://docs.microsoft.com/rest/api/searchservice/) nebo sadu SDK. Portál nevystavuje mapy synonym ani vlastnosti šifrování. Když použijete platné rozhraní API, indexy i mapy synonym podporují vlastnost **EncryptionKey** nejvyšší úrovně. 
 
-Index i mapa synonym podporují novou vlastnost **EncryptionKey** na nejvyšší úrovni, která se používá k zadání klíče. 
-
-Pomocí **identifikátoru URI trezoru klíčů**, **názvu klíče** a **verze** klíče trezoru klíčů můžeme vytvořit definici **EncryptionKey** :
+Pomocí **identifikátoru URI trezoru klíčů**, **názvu klíče** a **verze** klíče trezoru klíčů vytvořte definici **EncryptionKey** následujícím způsobem:
 
 ```json
 {
@@ -229,7 +261,20 @@ Vytvoření aplikace AAD na portálu:
 >[!Important]
 > Pokud se rozhodnete použít aplikaci AAD ověřování místo spravované identity, zvažte skutečnost, že Azure Kognitivní hledání nemá oprávnění ke správě vaší aplikace AAD vaším jménem, a je až do správy aplikace AAD, jako je například pravidelné otočení ověřovacího klíče aplikace.
 > Při změně aplikace AAD nebo jejího ověřovacího klíče se musí nejdřív aktualizovat index služby Azure Kognitivní hledání nebo mapa synonym, která tuto aplikaci používá, aby používala novou aplikaci ID\key **před** odstraněním předchozí aplikace nebo jejího autorizačního klíče a před tím, než odvoláte Key Vault přístup k ní.
-> Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné, protože po ztrátě přístupu ke klíči nebude moct obsah dešifrovat.   
+> Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné, protože po ztrátě přístupu ke klíči nebude moct obsah dešifrovat.
+
+## <a name="work-with-encrypted-content"></a>Práce s šifrovaným obsahem
+
+S šifrováním CMK zjistíte latenci pro indexování i dotazy z důvodu nadbytečného šifrování/dešifrování. Azure Kognitivní hledání neprotokoluje aktivitu šifrování, ale můžete monitorovat přístup k klíčům prostřednictvím protokolování trezoru klíčů. Doporučujeme [Povolit protokolování](../key-vault/general/logging.md) jako součást nastavení trezoru klíčů.
+
+V průběhu času se očekává, že dojde k rotaci klíčů. Při každém otočení klíčů je důležité postupovat podle tohoto pořadí:
+
+1. [Určete klíč používaný indexem nebo mapou synonym](search-security-get-encryption-keys.md).
+1. [V trezoru klíčů vytvořte nový klíč](../key-vault/keys/quick-create-portal.md), ale nechte k dispozici původní klíč.
+1. [Aktualizujte vlastnosti EncryptionKey](https://docs.microsoft.com/rest/api/searchservice/update-index) v indexu nebo v mapě synonym tak, aby používaly nové hodnoty. Pouze objekty, které byly vytvořeny pomocí této vlastnosti, lze aktualizovat tak, aby používaly jinou hodnotu.
+1. Zakáže nebo odstraní předchozí klíč v trezoru klíčů. Sledujte přístup k klíči a ověřte, že se používá nový klíč.
+
+Služba Search z důvodů výkonu ukládá do mezipaměti klíč po dobu až několik hodin. Pokud klíč zakážete nebo odstraníte bez zadání nového, budou dotazy dál fungovat na dočasném základě, dokud nevyprší platnost mezipaměti. Jakmile však služba vyhledávání nebude moci dešifrovat obsah, zobrazí se tato zpráva: "přístup byl zakázán. Použitý klíč dotazu byl pravděpodobně odvolán – zkuste to znovu. " 
 
 ## <a name="next-steps"></a>Další kroky
 

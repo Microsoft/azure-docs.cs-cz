@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: ac083f842bf10adcbb23e3e1c1157383e11f3af9
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432418"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563547"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Monitorování a Data Factory výstrah pomocí Azure Monitor
 
@@ -146,11 +146,11 @@ Tady jsou některé metriky vydávané Azure Data Factory verze 2:
 | TriggerCancelledRuns                  | Zrušené aktivační události spustí metriky            | Count    | Celkem                | Celkový počet spuštění triggerů, které byly zrušeny během minutového okna. |
 | TriggerFailedRuns                    | Neúspěšná aktivační událost spustí metriky              | Count    | Celkem                | Celkový počet spuštění triggerů, které selhaly během minutového okna. |
 | TriggerSucceededRuns                 | Úspěšná aktivační událost spustí metriky           | Count    | Celkem                | Celkový počet spuštěných aktivačních událostí, které byly úspěšně dokončeny během minutového okna. |
-| SSISIntegrationRuntimeStartCancelled  | Zrušené počáteční metriky SSIS IR           | Count    | Celkem                | Celkový počet SSIS pro infračervený začátek, které byly zrušeny během minutového okna. |
-| SSISIntegrationRuntimeStartFailed    | Neúspěšné SSIS počáteční metriky IR             | Count    | Celkem                | Celkový počet SSIS IR začíná během minutového okna, které selhalo. |
-| SSISIntegrationRuntimeStartSucceeded | Úspěšně se SSISy počáteční metriky IR          | Count    | Celkem                | Celkový počet SSIS IR začíná v průběhu minutového okna. |
-| SSISIntegrationRuntimeStopStuck      | Zablokované metriky stop SSIS IR               | Count    | Celkem                | Celkový počet SSIS, která byla zablokována v minutovém okně. |
-| SSISIntegrationRuntimeStopSucceeded  | Úspěšná SSIS metriky INFRAČERVENého zastavení           | Count    | Celkem                | Celkový počet SSISů IR se zastavilo v průběhu minutového okna. |
+| SSISIntegrationRuntimeStartCancelled  | Zrušené metriky spuštění SSIS Integration runtime           | Count    | Celkem                | Celkový počet spuštění SSIS Integration runtime, které byly zrušeny během minutového okna. |
+| SSISIntegrationRuntimeStartFailed    | Nepovedlo se spustit metriky spuštění SSIS Integration runtime             | Count    | Celkem                | Celkový počet SSIS Integration runtime se spustí v minutovém okně. |
+| SSISIntegrationRuntimeStartSucceeded | Úspěšná metriky spuštění SSIS Integration runtime          | Count    | Celkem                | Celkový počet SSIS Integration runtime se spustí v minutovém okně. |
+| SSISIntegrationRuntimeStopStuck      | Zastavení metriky SSIS Integration runtime               | Count    | Celkem                | Celkový počet SSIS Integration runtime se zastaví v minutovém okně. |
+| SSISIntegrationRuntimeStopSucceeded  | Úspěšné SSIS Integration runtime – metriky zastavení           | Count    | Celkem                | Celkový počet SSIS Integration runtime se zastaví v průběhu minutového okna. |
 | SSISPackageExecutionCancelled         | Zrušené metriky spuštění balíčku SSIS  | Count    | Celkem                | Celkový počet spuštěných SSIS balíčků, které byly zrušeny během minutového okna. |
 | SSISPackageExecutionFailed           | Neúspěšné metriky spuštění balíčku SSIS    | Count    | Celkem                | Celkový počet spuštěných SSIS balíčků, které selhaly během minutového okna. |
 | SSISPackageExecutionSucceeded        | Úspěšné metriky spuštění balíčku SSIS | Count    | Celkem                | Celkový počet spuštěných SSIS balíčků, které byly úspěšně dokončeny během minutového okna. |

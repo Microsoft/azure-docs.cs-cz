@@ -1,7 +1,7 @@
 ---
-title: Přizpůsobení deklarací identity tokenu SAML v aplikaci Azure AD
+title: Přizpůsobení deklarací identity tokenu SAML aplikace
 titleSuffix: Microsoft identity platform
-description: Naučte se přizpůsobit deklarace identity vydané v tokenu SAML pro podnikové aplikace v Azure AD.
+description: Naučte se přizpůsobit deklarace identity vydané platformou Microsoft Identity Platform v tokenu SAML pro podnikové aplikace.
 services: active-directory
 author: kenwith
 manager: CelesteDG
@@ -13,20 +13,20 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5cce985e3f63ade94fb626d18bded440caeff1fa
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f35e5971374f54940396f602a23ffa0ae3abd015
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274464"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552828"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
-V současné době Azure Active Directory (Azure AD) podporuje jednotné přihlašování (SSO) s většinou podnikových aplikací, včetně aplikací předem integrovaných v galerii aplikací Azure AD i ve vlastních aplikacích. Když se uživatel k aplikaci přes Azure AD ověřuje pomocí protokolu SAML 2,0, Azure AD pošle token do aplikace (prostřednictvím HTTP POST). A pak aplikace ověří a použije token k přihlášení uživatele místo výzvy k zadání uživatelského jména a hesla. Tyto tokeny SAML obsahují informace o uživateli označovaném jako *deklarace identity*.
+V současné době podporuje Microsoft Identity Platform jednotné přihlašování (SSO) s většinou podnikových aplikací, včetně předem integrovaných aplikací v galerii aplikací Azure AD i vlastních aplikací. Když se uživatel přihlásí k aplikaci prostřednictvím platformy Microsoft Identity Platform pomocí protokolu SAML 2,0, Microsoft Identity Platform do aplikace pošle token (prostřednictvím HTTP POST). A pak aplikace ověří a použije token k přihlášení uživatele místo výzvy k zadání uživatelského jména a hesla. Tyto tokeny SAML obsahují informace o uživateli označovaném jako *deklarace identity*.
 
 *Deklarace* identity představuje informace o tom, že poskytovatel identity uvádí informace o uživateli v tokenu, který tento uživatel vystavuje. V [tokenu SAML](https://en.wikipedia.org/wiki/SAML_2.0)jsou tato data obvykle obsažena v příkazu atributu SAML. Jedinečné ID uživatele je obvykle reprezentované v předmětu SAML označovaném také jako identifikátor názvu.
 
-Ve výchozím nastavení služba Azure AD vydá token SAML vaší aplikaci, který obsahuje `NameIdentifier` deklaraci identity s hodnotou uživatelského jména uživatele (označovanou také jako hlavní název uživatele) ve službě Azure AD, která může uživatele jednoznačně identifikovat. Token SAML obsahuje taky další deklarace identity, které obsahují e-mailovou adresu uživatele, jméno a příjmení.
+Ve výchozím nastavení služba Microsoft Identity Platform vydá token SAML do vaší aplikace, který obsahuje `NameIdentifier` deklaraci identity s hodnotou uživatelského jména uživatele (označovanou také jako hlavní název uživatele) ve službě Azure AD, která může uživatele jednoznačně identifikovat. Token SAML obsahuje taky další deklarace identity, které obsahují e-mailovou adresu uživatele, jméno a příjmení.
 
 Pokud chcete zobrazit nebo upravit deklarace identity vystavené v tokenu SAML pro aplikaci, otevřete aplikaci v Azure Portal. Pak otevřete oddíl **atributy uživatele & deklarace identity** .
 
@@ -48,19 +48,19 @@ Postup úpravy NameID (hodnota identifikátoru názvu):
 
 ### <a name="nameid-format"></a>Formát NameID
 
-Pokud požadavek SAML obsahuje element NameIDPolicy s určitým formátem, bude služba Azure AD respektovat formát v žádosti.
+Pokud požadavek SAML obsahuje element NameIDPolicy s určitým formátem, pak bude v žádosti v rámci platformy Microsoft Identity Platform dodržen formát.
 
-Pokud požadavek SAML neobsahuje element pro NameIDPolicy, bude Azure AD vystavovat NameID s vámi zadaným formátem. Pokud není zadaný žádný formát, Azure AD použije výchozí formát zdroje přidružený k vybranému zdroji deklarací.
+Pokud požadavek SAML neobsahuje element pro NameIDPolicy, bude platforma Microsoft Identity Platform vystavovat NameID s vámi zadaným formátem. Pokud není zadaný žádný formát, Microsoft Identity Platform použije výchozí formát zdroje přidružený k vybranému zdroji deklarací.
 
 V rozevíracím seznamu **zvolit formát identifikátoru názvu** můžete vybrat jednu z následujících možností.
 
 | Formát NameID | Popis |
 |---------------|-------------|
-| **Výchozí** | Azure AD bude používat výchozí formát zdroje. |
-| **Trvalý** | Služba Azure AD bude používat jako formát NameID jako trvalá. |
-| **EmailAddress** | Azure AD bude používat EmailAddress jako formát NameID. |
-| **Unspecified** | Azure AD použije nespecifikovaný formát NameID. |
-| **Kvalifikovaný název domény systému Windows** | Azure AD bude používat WindowsDomainQualifiedName jako formát NameID. |
+| **Výchozí** | Platforma Microsoft Identity Platform bude používat výchozí formát zdroje. |
+| **Trvalý** | Platforma Microsoft Identity Platform bude používat jako formát NameID jako trvalá. |
+| **EmailAddress** | Platforma Microsoft Identity Platform bude používat EmailAddress jako formát NameID. |
+| **Unspecified** | Platforma Microsoft Identity bude používat nespecifikovanou jako formát NameID. |
+| **Kvalifikovaný název domény systému Windows** | Platforma Microsoft Identity Platform bude používat WindowsDomainQualifiedName jako formát NameID. |
 
 Dočasná NameID je také podporována, ale v rozevíracím seznamu není k dispozici a nelze ji nakonfigurovat na straně Azure. Další informace o atributu NameIDPolicy najdete v tématu [protokol SAML jednotného přihlašování](single-sign-on-saml-protocol.md).
 
@@ -169,9 +169,9 @@ Přidání podmínky deklarace identity:
 
 Pořadí, ve kterém přidáte podmínky, je důležité. Azure AD vyhodnotí podmínky shora dolů a určí, která hodnota se má v deklaracích generovat. 
 
-Například Britta Simon je uživatel typu Host v tenantovi contoso. Patří do jiné organizace, která používá taky Azure AD. Když se Britta pokusí přihlásit k společnosti Fabrikam níže uvedená konfigurace, služba Azure AD bude podmínky vyhodnotit podle následujících pokynů.
+Například Britta Simon je uživatel typu Host v tenantovi contoso. Patří do jiné organizace, která používá taky Azure AD. Když se Britta pokusí přihlásit k společnosti Fabrikam níže uvedená konfigurace, aplikace Microsoft Identity Platform vyhodnotí podmínky následujícím způsobem.
 
-Služba Azure AD nejprve ověří, jestli je typ uživatele Britta `All guests` . Od toho je tato hodnota true, ale Azure AD přiřadí zdroji deklarace identity `user.extensionattribute1` . Za druhé Azure AD ověří, jestli je typ uživatele Britta `AAD guests` , protože to má taky hodnotu true, pak Azure AD přiřadí zdroji deklarace identity `user.mail` . Nakonec se deklarace identity vydává s hodnotou `user.mail` pro Britta.
+Nejdřív Microsoft Identity Platform ověří, jestli je typ uživatele Britta `All guests` . Od této chvíle platí, že Microsoft Identity Platform přiřadí zdroji deklarace identity `user.extensionattribute1` . Druhý Microsoft Identity Platform ověřuje, jestli je typ uživatele Britta `AAD guests` , protože to má taky hodnotu true, Microsoft Identity Platform přiřadí zdroji deklarace identity `user.mail` . Nakonec se deklarace identity vydává s hodnotou `user.mail` pro Britta.
 
 ![Podmíněné konfigurace deklarací identity](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

@@ -1,7 +1,7 @@
 ---
-title: Konfigurovatelné životnosti tokenů Azure AD
+title: Konfigurovatelné životnosti tokenů
 titleSuffix: Microsoft identity platform
-description: Přečtěte si, jak nastavit životnost pro tokeny vydané službou Azure AD.
+description: Naučte se nastavit životnost pro tokeny vydané platformou Microsoft identity.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 23283a44f78522d2b589993c11b494092352cbb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d25c2e2603f36ff090d01f235a4c8e4a1ae12605
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478361"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552845"
 ---
-# <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurovatelné životnosti tokenů v Azure Active Directory (Preview)
+# <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform (Preview)
 
-U tokenu vydaného službou Azure Active Directory (Azure AD) je možné určit dobu životnosti. Životnost tokenů je možné nastavit u všech aplikací ve vaší organizaci, u aplikace pro více tenantů nebo pro konkrétní objekt služby ve vaší organizaci.
+Můžete zadat dobu života tokenu vydaného Microsoft Identity Platform. Životnost tokenů je možné nastavit u všech aplikací ve vaší organizaci, u aplikace pro více tenantů nebo pro konkrétní objekt služby ve vaší organizaci.
 
 > [!IMPORTANT]
 > Po slyšení od zákazníků ve verzi Preview jsme implementovali [Možnosti správy relace ověřování](https://go.microsoft.com/fwlink/?linkid=2083106) ve službě Azure AD podmíněný přístup. Tuto novou funkci můžete použít ke konfiguraci životností tokenů aktualizace nastavením frekvence přihlášení. Po 30. května 2020 nebude moct žádný nový tenant použít konfigurovatelné zásady životnosti tokenů ke konfiguraci relace a obnovení tokenů. K vyřazení dojde během několika měsíců, což znamená, že přestanou dodržovat existující relaci a aktualizovat zásady tokenů. Po vyřazení můžete i po vyřazení nakonfigurovat životnosti přístupového tokenu.
@@ -68,12 +68,12 @@ Veřejné klienty nemohou bezpečně ukládat heslo klienta (tajný kód). Např
 > Vlastnost maximální stáří představuje dobu, po kterou lze použít jeden token. 
 
 ### <a name="id-tokens"></a>Tokeny ID
-Tokeny ID jsou předány webům a nativním klientům. Tokeny ID obsahují informace o profilu uživatele. Token ID je vázán na určitou kombinaci uživatele a klienta. Tokeny ID se považují za platné, dokud nevyprší jejich platnost. Obvykle webová aplikace odpovídá době životnosti relace uživatele v aplikaci až po dobu životnosti tokenu ID vydaného pro uživatele. Můžete upravit životnost tokenu ID, abyste mohli určit, jak často webová aplikace vyprší platnost relace aplikace, a jak často vyžaduje, aby byl uživatel znovu ověřen pomocí Azure AD (buď tiše, nebo interaktivně).
+Tokeny ID jsou předány webům a nativním klientům. Tokeny ID obsahují informace o profilu uživatele. Token ID je vázán na určitou kombinaci uživatele a klienta. Tokeny ID se považují za platné, dokud nevyprší jejich platnost. Obvykle webová aplikace odpovídá době životnosti relace uživatele v aplikaci až po dobu životnosti tokenu ID vydaného pro uživatele. Můžete upravit životnost tokenu ID, abyste mohli určit, jak často webová aplikace vyprší aplikační relaci, a jak často vyžaduje, aby se uživatel znovu ověřil s platformou Microsoft identity (ať už v tichém nebo interaktivním).
 
 ### <a name="single-sign-on-session-tokens"></a>Tokeny relace jednotného přihlašování
-Když se uživatel ověřuje pomocí Azure AD, vytvoří se v prohlížeči uživatele a v Azure AD relace jednotného přihlašování (SSO). Token jednotného přihlašování ve formě souboru cookie představuje tuto relaci. Token relace jednotného přihlašování není vázán na konkrétní prostředek nebo klientskou aplikaci. Tokeny relace jednotného přihlašování se dají odvolat a jejich platnost se kontroluje pokaždé, když se používají.
+Když se uživatel ověřuje pomocí platformy Microsoft Identity Platform, je k relaci jednotného přihlašování (SSO) s prohlížečem uživatele a platformou Microsoft identity. Token jednotného přihlašování ve formě souboru cookie představuje tuto relaci. Token relace jednotného přihlašování není vázán na konkrétní prostředek nebo klientskou aplikaci. Tokeny relace jednotného přihlašování se dají odvolat a jejich platnost se kontroluje pokaždé, když se používají.
 
-Azure AD používá dva druhy tokenů relace jednotného přihlašování: trvalá a netrvalá. Tokeny trvalé relace jsou v prohlížeči uloženy jako trvalé soubory cookie. Netrvalé tokeny relací se ukládají jako soubory cookie relace. (Soubory cookie relace budou zničeny při zavření prohlížeče.) Obvykle je uložen netrvalý token relace. Když ale při ověřování uživatel vybere zaškrtávací políčko **zůstat přihlášeni** , je uložený token trvalé relace.
+Platforma Microsoft Identity Platform používá dva druhy tokenů relace jednotného přihlašování: trvalá a netrvalá. Tokeny trvalé relace jsou v prohlížeči uloženy jako trvalé soubory cookie. Netrvalé tokeny relací se ukládají jako soubory cookie relace. (Soubory cookie relace budou zničeny při zavření prohlížeče.) Obvykle je uložen netrvalý token relace. Když ale při ověřování uživatel vybere zaškrtávací políčko **zůstat přihlášeni** , je uložený token trvalé relace.
 
 Netrvalá tokeny relace mají dobu životnosti 24 hodin. Trvalé tokeny mají životnost 90 dnů. Kdykoliv se token relace jednotného přihlašování používá v rámci období platnosti, doba platnosti se prodlouží o dalších 24 hodin nebo 90 dnů v závislosti na typu tokenu. Pokud se token relace jednotného přihlašování v rámci období platnosti nepoužívá, je považován za neplatný a už není přijatý.
 
@@ -83,7 +83,7 @@ Pomocí zásad můžete nastavit čas, kdy byl první token relace vydán, za kt
 Zásada životního cyklu tokenu je typ objektu zásad, který obsahuje pravidla životnosti tokenů. Pomocí vlastností zásady můžete řídit zadané životnosti tokenů. Pokud nejsou nastavené žádné zásady, systém vyhodnotí výchozí hodnotu doby života.
 
 ### <a name="configurable-token-lifetime-properties"></a>Konfigurovatelné vlastnosti životnosti tokenů
-| Vlastnost | Řetězec vlastnosti zásad | Ovlivňuje | Výchozí | Minimální | Maximum |
+| Vlastnost | Řetězec vlastnosti zásad | Ovlivňuje | Výchozí | Minimum | Maximum |
 | --- | --- | --- | --- | --- | --- |
 | Doba života přístupového tokenu |AccessTokenLifetime<sup>2</sup> |Přístupové tokeny, tokeny ID, tokeny typu Saml2 |1 hodina |10 minut |1 den |
 | Maximální neaktivní čas obnovovacího tokenu |MaxInactiveTime |Aktualizovat tokeny |90 dnů |10 minut |90 dnů |
@@ -102,7 +102,7 @@ Zásada životního cyklu tokenu je typ objektu zásad, který obsahuje pravidla
 | Maximální neaktivní čas obnovovacího tokenu (vydaný pro důvěrné klienty) |Aktualizovat tokeny (vydané pro důvěrné klienty) |90 dnů |
 | Maximální stáří obnovovacího tokenu (vydané pro důvěrné klienty) |Aktualizovat tokeny (vydané pro důvěrné klienty) |Do-neodvolán |
 
-* <sup>1</sup> Federované uživatele, kteří mají nedostatečné informace o odvolání, zahrnují všechny uživatele, kteří nemají atribut "LastPasswordChangeTimestamp" synchronizovaný. Těmto uživatelům se doručí krátký maximální stáří, protože AAD nemůže ověřit, jestli se mají odvolat tokeny, které jsou svázané se starým přihlašovacím údaji (třeba s heslem, které se změnilo), a musí se vrátit častěji, aby se zajistilo, že uživatel a přidružené tokeny jsou pořád v dobrém umístění. Aby bylo možné toto prostředí zlepšit, Správci klientů musí zajistit, aby synchronizoval tento atribut "LastPasswordChangeTimestamp" (dá se nastavit v objektu User pomocí PowerShellu nebo prostřednictvím AADSync).
+* <sup>1</sup> federované uživatele, kteří mají nedostatečné informace o odvolání, zahrnují všechny uživatele, kteří nemají atribut "LastPasswordChangeTimestamp" synchronizovaný. Těmto uživatelům se doručí krátký maximální stáří, protože AAD nemůže ověřit, jestli se mají odvolat tokeny, které jsou svázané se starým přihlašovacím údaji (třeba s heslem, které se změnilo), a musí se vrátit častěji, aby se zajistilo, že uživatel a přidružené tokeny jsou pořád v dobrém umístění. Aby bylo možné toto prostředí zlepšit, Správci klientů musí zajistit, aby synchronizoval tento atribut "LastPasswordChangeTimestamp" (dá se nastavit v objektu User pomocí PowerShellu nebo prostřednictvím AADSync).
 
 ### <a name="policy-evaluation-and-prioritization"></a>Vyhodnocení zásad a stanovení priorit
 Můžete vytvořit a následně přiřadit zásady životnosti tokenů ke konkrétní aplikaci, vaší organizaci a objektům služby. U konkrétní aplikace může platit více zásad. Zásada životního cyklu tokenu, která se projeví, se řídí těmito pravidly:
@@ -129,13 +129,13 @@ Všechny časové rozsahy, které jsou zde použity, jsou formátovány podle ob
 > * Webová aplikace A je běžné použití webové aplikace a není propojena s žádnými zásadami.
 > * Webová aplikace B se používá pro vysoce citlivé procesy. Jeho instanční objekt je propojený se zásadami životnosti tokenu 2, který má token relace maximální stáří 30 minut.
 >
-> V 12:00 PM uživatel spustí novou relaci prohlížeče a pokusí se získat přístup k webové aplikaci A. Uživatel se přesměruje do služby Azure AD a zobrazí se výzva k přihlášení. Tím se vytvoří soubor cookie s tokenem relace v prohlížeči. Uživatel je přesměrován zpět na webovou aplikaci A s tokenem ID, který umožňuje uživateli přístup k aplikaci.
+> V 12:00 PM uživatel spustí novou relaci prohlížeče a pokusí se získat přístup k webové aplikaci A. Uživatel se přesměruje na platformu Microsoft identity a zobrazí se výzva k přihlášení. Tím se vytvoří soubor cookie s tokenem relace v prohlížeči. Uživatel je přesměrován zpět na webovou aplikaci A s tokenem ID, který umožňuje uživateli přístup k aplikaci.
 >
-> V 12:15 PM se uživatel pokusí získat přístup k webové aplikaci B. Prohlížeč přesměruje na Azure AD, který zjistí soubor cookie relace. Instanční objekt webové aplikace B je propojen se zásadami životnosti tokenu 2, ale je také součástí nadřazené organizace s výchozí zásadou životnosti tokenů 1. Zásada životnosti tokenu 2 se projeví, protože zásady propojené s instančními objekty mají vyšší prioritu než výchozí zásady organizace. Token relace byl původně vydaný během posledních 30 minut, takže se považuje za platný. Uživatel je přesměrován zpět na webovou aplikaci B s tokenem ID, který jim udělí přístup.
+> V 12:15 PM se uživatel pokusí získat přístup k webové aplikaci B. Prohlížeč přesměruje na platformu Microsoft identity, která detekuje soubor cookie relace. Instanční objekt webové aplikace B je propojen se zásadami životnosti tokenu 2, ale je také součástí nadřazené organizace s výchozí zásadou životnosti tokenů 1. Zásada životnosti tokenu 2 se projeví, protože zásady propojené s instančními objekty mají vyšší prioritu než výchozí zásady organizace. Token relace byl původně vydaný během posledních 30 minut, takže se považuje za platný. Uživatel je přesměrován zpět na webovou aplikaci B s tokenem ID, který jim udělí přístup.
 >
-> V 1:00 PM se uživatel pokusí získat přístup k webové aplikaci A. Uživatel se přesměruje do služby Azure AD. Webová aplikace A není propojená s žádnými zásadami, ale vzhledem k tomu, že je v organizaci s výchozí zásadou životností tokenu 1, uplatní se tato zásada. Zjistil se soubor cookie relace, který byl původně vydaný během posledních osmi hodin. Uživatel je tiše přesměrován zpět na webovou aplikaci A s novým tokenem ID. Uživatel není vyžadován k ověření.
+> V 1:00 PM se uživatel pokusí získat přístup k webové aplikaci A. Uživatel se přesměruje na platformu Microsoft identity. Webová aplikace A není propojená s žádnými zásadami, ale vzhledem k tomu, že je v organizaci s výchozí zásadou životností tokenu 1, uplatní se tato zásada. Zjistil se soubor cookie relace, který byl původně vydaný během posledních osmi hodin. Uživatel je tiše přesměrován zpět na webovou aplikaci A s novým tokenem ID. Uživatel není vyžadován k ověření.
 >
-> Hned potom se uživatel pokusí získat přístup k webové aplikaci B. Uživatel se přesměruje do služby Azure AD. Stejně jako dřív se uplatní zásady životnosti tokenu 2. Vzhledem k tomu, že byl token vydán před více než 30 minutami, bude uživatel vyzván k opětovnému zadání přihlašovacích údajů pro přihlášení. Branding – vydávají se nové tokeny relace a tokeny ID. Uživatel pak může získat přístup k webové aplikaci B.
+> Hned potom se uživatel pokusí získat přístup k webové aplikaci B. Uživatel se přesměruje na platformu Microsoft identity. Stejně jako dřív se uplatní zásady životnosti tokenu 2. Vzhledem k tomu, že byl token vydán před více než 30 minutami, bude uživatel vyzván k opětovnému zadání přihlašovacích údajů pro přihlášení. Branding – vydávají se nové tokeny relace a tokeny ID. Uživatel pak může získat přístup k webové aplikaci B.
 >
 >
 
@@ -208,7 +208,7 @@ V příkladech se můžete dozvědět, jak:
 * Vytvoření zásady pro nativní aplikaci, která volá webové rozhraní API
 * Správa pokročilých zásad
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro aplikace, instanční objekty a celou organizaci. Pokud s Azure AD teprve začínáte, doporučujeme vám seznámit se s tím, [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md) , než budete pokračovat v těchto příkladech.  
 
 Začněte tím, že provedete následující kroky:

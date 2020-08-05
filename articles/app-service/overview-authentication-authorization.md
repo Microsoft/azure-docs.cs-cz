@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 1b537e57edd777d78ce40d0ac4c5c6a7acca7659
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c8e0b476c50378bde00e01a39985fbcc188f04ed
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068213"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562374"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Ověřování a autorizace v Azure App Service a Azure Functions
 
@@ -22,15 +22,20 @@ Zabezpečené ověřování a autorizace vyžadují důkladné porozumění zabe
 > [!IMPORTANT]
 > Tuto funkci nemusíte používat k ověřování a autorizaci. Ve vaší webové architektuře můžete použít sady funkcí zabezpečení, nebo můžete napsat vlastní nástroje. Mějte ale na paměti, že [Chrome 80 provádí zásadní změny v implementaci SameSite for soubory cookie](https://www.chromestatus.com/feature/5088147346030592) (Datum vydání v březnu 2020) a vlastní vzdálené ověřování nebo jiné scénáře, které se spoléhají na odesílání souborů cookie mezi weby, se můžou při aktualizaci prohlížečů klienta Chrome poškodit. Alternativní řešení je složité, protože potřebuje podporovat různá chování SameSite pro různé prohlížeče. 
 >
-> ASP.NET Core 2,1 a novější verze hostované pomocí App Service jsou již pro tuto zásadní změnu opraveny a odpovídajícím způsobem zpracovávat Chrome 80 a starší prohlížeče. Kromě toho se na App Service instance nasazuje stejná oprava pro ASP.NET Framework 4.7.2 v průběhu ledna 2020. Další informace, včetně informací o tom, jak zjistit, jestli vaše aplikace tuto opravu přijala, najdete v článku [aktualizace souborů cookie Azure App Service SameSite](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/).
+> ASP.NET Core 2,1 a novější verze hostované pomocí App Service jsou již pro tuto zásadní změnu opraveny a odpovídajícím způsobem zpracovávat Chrome 80 a starší prohlížeče. Kromě toho byla na App Service instance v průběhu ledna 2020 stejná oprava pro ASP.NET Framework 4.7.2. Další informace najdete v tématu [Azure App Service aktualizace souboru cookie SameSite](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/).
 >
 
 > [!NOTE]
 > Funkce ověřování/autorizace se také někdy označuje jako "snadné ověření".
 
+> [!NOTE]
+> Povolení této funkce způsobí, že **všechny** nezabezpečené požadavky HTTP na vaši aplikaci budou automaticky přesměrovány na https bez ohledu na nastavení konfigurace App Service pro [vymáhání protokolu HTTPS](configure-ssl-bindings.md#enforce-https). V případě potřeby ho můžete zakázat prostřednictvím `requireHttps` nastavení v [konfiguračním souboru nastavení ověřování](app-service-authentication-how-to.md#configuration-file-reference), ale je potřeba se ujistit, že se žádné tokeny zabezpečení nikdy nepřenášejí přes nezabezpečená připojení HTTP.
+
 Informace specifické pro nativní mobilní aplikace najdete v tématech [ověřování a autorizace uživatelů pro mobilní aplikace s Azure App Service](../app-service-mobile/app-service-mobile-auth.md).
 
 ## <a name="how-it-works"></a>Jak to funguje
+
+### <a name="on-windows"></a>V systému Windows
 
 Modul ověřování a autorizace se spouští ve stejném izolovaném prostoru jako váš kód aplikace. Pokud je povolena, každý příchozí požadavek HTTP projde před tím, než bude zpracován kódem vaší aplikace.
 
@@ -44,6 +49,10 @@ Tento modul zpracovává několik věcí pro vaši aplikaci:
 - Vloží informace o identitě do hlaviček požadavků.
 
 Modul se spouští odděleně od kódu aplikace a je nakonfigurovaný pomocí nastavení aplikace. Nevyžadují se žádné sady SDK, konkrétní jazyky ani změny kódu vaší aplikace. 
+
+### <a name="on-containers"></a>V kontejnerech
+
+Modul ověřování a autorizace se spouští v samostatném kontejneru izolovaném z kódu vaší aplikace. Pomocí toho, co je známo jako [vzorek velvyslanců](https://docs.microsoft.com/azure/architecture/patterns/ambassador), komunikuje s příchozím provozem, aby prováděl podobné funkce jako ve Windows. Protože se nespustí v procesu, není možné žádná přímá integrace s konkrétními jazykovými rozhraními. relevantní informace, které vaše aplikace potřebuje, se ale předávají pomocí hlaviček požadavků, jak je vysvětleno níže.
 
 ### <a name="userapplication-claims"></a>Deklarace identity uživatele nebo aplikace
 

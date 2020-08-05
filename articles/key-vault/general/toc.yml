@@ -6,6 +6,8 @@
       href: overview.md
     - name: 'Informace o klíčích, tajných kódech a certifikátech'
       href: about-keys-secrets-certificates.md
+    - name: Co je nového
+      href: whats-new.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -142,7 +144,7 @@
       href: versions.md
     - name: Azure PowerShell
       href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
-    - name: Azure CLI
+    - name: Rozhraní příkazového řádku Azure
       href: /cli/azure/keyvault
     - name: .NET
       href: /dotnet/api/overview/azure/keyvault/management?view=azure-dotnet

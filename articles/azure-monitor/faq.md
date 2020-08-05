@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: ff7472b764b0e65d69d9b694603e145440e89c0d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 211b7aedc901031e366c60a6c7a2cee396bbe124
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318109"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563836"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -121,7 +121,7 @@ Skupina akcí je kolekce oznámení a akcí, které mohou být aktivovány výst
 
 
 ### <a name="what-is-an-action-rule"></a>Co je pravidlo akce?
-Pravidlo akce umožňuje upravit chování sady výstrah, které odpovídají určitým kritériím. To vám umožní provádět takové požadavky jako zakázat akce výstrah během časového období údržby. Můžete také použít skupinu akcí pro sadu výstrah místo jejich použití přímo na pravidla výstrahy. Viz [pravidla akcí](platform/alerts-action-rules.md).
+Pravidlo akce umožňuje upravit chování sady výstrah, které odpovídají určitým kritériím. To vám umožní provádět tyto požadavky jako zakázat akce výstrah během časového období údržby. Můžete také použít skupinu akcí pro sadu výstrah místo jejich použití přímo na pravidla výstrahy. Viz [pravidla akcí](platform/alerts-action-rules.md).
 
 ## <a name="agents"></a>Agenti
 
@@ -137,7 +137,7 @@ Diagnostické rozšíření Azure je pro virtuální počítače Azure a shroma�
 Provoz do Azure Monitor využívá okruh ExpressRoute partnerského vztahu Microsoftu. Popis různých typů provozu ExpressRoute najdete v [dokumentaci k ExpressRoute](../expressroute/expressroute-faqs.md#supported-services) . 
 
 ### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>Jak potvrzuji, že agent Log Analytics může komunikovat s Azure Monitor?
-V části Ovládací panely na počítači agenta vyberte **nastavení zabezpečení &** **Microsoft Monitoring Agent** . Na kartě **Azure Log Analytics (OMS)** se ikona zeleného zaškrtnutí potvrdí, že agent může komunikovat s Azure monitor. Žlutá ikona upozornění znamená, že u agenta dochází k problémům. Jednou z běžných příčin je, že se služba **Microsoft Monitoring Agent** zastavila. Pro restartování služby použijte Správce řízení služeb.
+V části Ovládací panely na počítači agenta vyberte **nastavení zabezpečení &**, * * Microsoft Monitoring Agent. Na kartě **Azure Log Analytics (OMS)** se ikona zeleného zaškrtnutí potvrdí, že agent může komunikovat s Azure monitor. Žlutá ikona upozornění znamená, že u agenta dochází k problémům. Jednou z běžných příčin je, že se služba **Microsoft Monitoring Agent** zastavila. Pro restartování služby použijte Správce řízení služeb.
 
 ### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>Návody zastavit Log Analytics agenta komunikaci s Azure Monitor?
 Pro agenty připojené k Log Analytics přímo otevřete ovládací panely a vyberte **nastavení & zabezpečení** **Microsoft Monitoring Agent**. Na kartě **Azure Log Analytics (OMS)** odeberte všechny uvedené pracovní prostory. V System Center Operations Manager odeberte počítač ze seznamu spravovaných počítačů s Log Analytics. Operations Manager aktualizuje konfiguraci agenta tak, aby se už nehlásila Log Analytics. 
@@ -207,7 +207,7 @@ Návrhář zobrazení je k dispozici pouze pro uživatele, kteří jsou přiřaz
 * [Nastavení serveru ASP.NET](app/monitor-performance-live-website-now.md)
 * [Nastavení serveru Java](app/java-agent.md)
 
-*Kolik Application Insights mám nasadit?:*
+*Kolik prostředků Application Insights mám nasadit:*
 
 * [Jak navrhnout nasazení Application Insights: jeden versus mnoho prostředků Application Insights?](app/separate-resources.md)
 
@@ -272,7 +272,7 @@ Tuto metodu nedoporučujeme používat pro naplnění verze rozhraní API. Nejno
 
 Desktopová aplikace, kterou můžete použít na webovém serveru služby IIS a které vám pomůžou nakonfigurovat Application Insights ve webových aplikacích. Neshromažďuje telemetrii: když aplikaci nekonfigurujete, můžete ji zastavit. 
 
-[Přečtěte si další informace](app/monitor-performance-live-website-now.md#questions).
+[Další informace](app/monitor-performance-live-website-now.md#questions).
 
 ### <a name="what-telemetry-is-collected-by-application-insights"></a>Jaká telemetrie se shromažďuje pomocí Application Insights?
 
@@ -318,7 +318,7 @@ IP adresu (IPv4 nebo IPv6) webového klienta vyhledáme pomocí [GeoLite2](https
 * Další informace o tom, jak se shromažďují údaje o IP adrese a geografickém umístění v Application Insights najdete v tomto [článku](./app/ip-collection.md).
 
 
-Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP` . [Přečtěte si další informace](https://apmtips.com/posts/2016-07-05-client-ip-address/).
+Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP` . [Další informace](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 [Pomocí Power BI](app/export-power-bi.md ) můžete zobrazit telemetrii žádostí na mapě.
 
@@ -509,6 +509,15 @@ Většina dat Application Insights má latenci kratší než 5 minut. Některá 
 [start]: app/app-insights-overview.md
 [windows]: app/app-insights-windows-get-started.md
 
+### <a name="http-502-and-503-responses-are-not-always-captured-by-application-insights"></a>Odpovědi HTTP 502 a 503 nejsou vždy zachyceny Application Insights
+
+Application Insights se nezachycují chyby "502 špatné brány" a "503 služba nedostupná". Pokud se pro monitorování používá jenom JavaScript na straně klienta, je očekávané chování, protože odpověď na chybu se vrátí před stránku obsahující hlavičku HTML a vykresluje se fragment kódu jazyka JavaScript monitorování. 
+
+Pokud byla odpověď 502 nebo 503 odeslána ze serveru se zapnutým monitorováním na straně serveru, budou chyby shromažďovány Application Insights SDK. 
+
+Existují však i případy, kdy je na webovém serveru aplikace povoleno monitorování na straně serveru, že chyba 502 nebo 503 nebude zachycena Application Insights. Mnohé moderní webové servery neumožňují klientovi komunikovat přímo, ale místo toho používají řešení, jako jsou reverzní proxy, k předávání informací mezi klientem a front-end webovými servery. 
+
+V tomto scénáři by bylo možné klientovi vrátit odpověď 502 nebo 503 z důvodu problému ve vrstvě reverzního proxy serveru a to by nebylo zachyceno předem Application Insights. K detekci problémů v této vrstvě možná budete muset přesměrovat protokoly ze reverzního proxy serveru na Log Analytics a vytvořit vlastní pravidlo pro kontrolu odpovědí 502/503. Další informace o běžných příčinách chyb 502 a 503 najdete v [článku věnovaném řešení potíží s Azure App Service pro "502 Bad Gateway" a "503 Služba není k dispozici"](../app-service/troubleshoot-http-502-http-503.md).     
 
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor pro kontejnery
 

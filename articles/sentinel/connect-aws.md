@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: f8d296e62be9571bdedd5acf40d5547bae8c864e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e80f7d26fb7ab598651d08b4c1b6478b2ae75e3b
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564585"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563054"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Připojení Azure Sentinel k AWS CloudTrail
 
-Pomocí konektoru AWS můžete streamovat všechny události AWS CloudTrail do Azure Sentinel. Tento proces připojení deleguje delegáty přístupu pro Azure Sentinel do protokolů prostředků AWS a vytvoří vztah důvěryhodnosti mezi AWS CloudTrail a Azure Sentinel. To se provádí na AWS vytvořením role, která pro přístup k protokolům AWS uděluje oprávnění službě Azure Sentinel.
+Pomocí konektoru AWS můžete streamovat události správy AWS CloudTrail do Azure Sentinel. Tento proces připojení deleguje delegáty přístupu pro Azure Sentinel do protokolů prostředků AWS a vytvoří vztah důvěryhodnosti mezi AWS CloudTrail a Azure Sentinel. To se provádí na AWS vytvořením role, která pro přístup k protokolům AWS uděluje oprávnění službě Azure Sentinel.
 
 > [!NOTE]
 > AWS CloudTrail má ve svém LookupEvents API [vestavěná omezení](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) . Nepovoluje více než dvě transakce za sekundu (TPS) na účet a každý dotaz může vracet maximálně 50 záznamů. V důsledku toho by v případě, že jeden tenant neustále generuje více než 100 záznamů za sekundu v jedné oblasti, bude výsledkem nevyřízené položky a prodlevy při příjmu dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V pracovním prostoru Sentinel Azure musíte mít oprávnění k zápisu.
 
 > [!NOTE]
-> Sentinel Azure shromažďuje události CloudTrail ze všech oblastí. Doporučujeme nevytvářet streamování událostí z jedné oblasti do druhé.
+> Sentinel Azure shromažďuje události správy CloudTrail ze všech oblastí. Doporučujeme nevytvářet streamování událostí z jedné oblasti do druhé.
 
 ## <a name="connect-aws"></a>Připojení AWS 
 

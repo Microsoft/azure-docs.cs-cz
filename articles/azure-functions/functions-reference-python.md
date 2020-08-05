@@ -4,12 +4,12 @@ description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 3d3e313d464a8da8b62d5c22b5983c6458f42b5d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 6be225c1384892dfdb94da3375707351887c8344
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170373"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564006"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -235,7 +235,7 @@ def main(req: func.HttpRequest,
     return message
 ```
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 Přístup k protokolovacímu nástroji Azure Functions runtime je k dispozici prostřednictvím kořenové [`logging`](https://docs.python.org/3/library/logging.html#module-logging) obslužné rutiny ve vaší aplikaci Function App. Tento protokolovací nástroj je svázán s Application Insights a umožňuje označit upozornění a chyby, které byly zjištěny během provádění funkce.
 
@@ -434,8 +434,8 @@ Azure Pipelines můžete použít také k sestavení závislostí a publikován�
 
 ### <a name="remote-build"></a>Vzdálené sestavení
 
-Při použití vzdáleného sestavení se závislosti obnovené na serveru a nativní závislosti shodují s produkčním prostředím. Výsledkem je menší balíček pro nasazení, který se má nahrát. Používejte vzdálené sestavení při vývoji aplikací v jazyce Python ve Windows. Pokud má váš projekt vlastní závislosti, můžete [použít vzdálené sestavení s dodatečnou adresou URL indexu](#remote-build-with-extra-index-url). 
- 
+Při použití vzdáleného sestavení se závislosti obnovené na serveru a nativní závislosti shodují s produkčním prostředím. Výsledkem je menší balíček pro nasazení, který se má nahrát. Používejte vzdálené sestavení při vývoji aplikací v jazyce Python ve Windows. Pokud má váš projekt vlastní závislosti, můžete [použít vzdálené sestavení s dodatečnou adresou URL indexu](#remote-build-with-extra-index-url).
+
 Závislosti se získávají vzdáleně na základě obsahu souboru requirements.txt. Doporučenou metodou sestavení je [vzdálené sestavení](functions-deployment-technologies.md#remote-build) . Ve výchozím nastavení Azure Functions Core Tools požádá o vzdálené sestavení, když použijete následující příkaz [Func Azure functionapp Publish](functions-run-local.md#publish) pro publikování projektu v Pythonu do Azure.
 
 ```bash
@@ -456,7 +456,7 @@ func azure functionapp publish <APP_NAME> --build local
 
 Nezapomeňte nahradit `<APP_NAME>` názvem vaší aplikace Function App v Azure.
 
-Pomocí `--build local` Možnosti se závislosti projektu čtou ze souboru requirements.txt a tyto závislé balíčky se stahují a instalují místně. Soubory projektu a závislosti se nasazují z místního počítače do Azure. Výsledkem je větší balíček pro nasazení, který se nahrává do Azure. Pokud z nějakého důvodu nepůjde závislosti v souboru requirements.txt získat základními nástroji, musíte pro publikování použít možnost vlastní závislosti. 
+Pomocí `--build local` Možnosti se závislosti projektu čtou ze souboru requirements.txt a tyto závislé balíčky se stahují a instalují místně. Soubory projektu a závislosti se nasazují z místního počítače do Azure. Výsledkem je větší balíček pro nasazení, který se nahrává do Azure. Pokud z nějakého důvodu nepůjde závislosti v souboru requirements.txt získat základními nástroji, musíte pro publikování použít možnost vlastní závislosti.
 
 Při vývoji místně ve Windows nedoporučujeme používat místní buildy.
 
@@ -466,7 +466,7 @@ Pokud váš projekt obsahuje závislosti nenalezené v [indexu balíčku Pythonu
 
 #### <a name="remote-build-with-extra-index-url"></a>Vzdálené sestavení s dodatečnou adresou URL indexu
 
-Pokud jsou balíčky dostupné z dostupného vlastního indexu balíčku, použijte vzdálené sestavení. Před publikováním se ujistěte, že jste [vytvořili nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) s názvem `PIP_EXTRA_INDEX_URL` . Hodnota tohoto nastavení je adresa URL vašeho vlastního indexu balíčku. Pomocí tohoto nastavení se vzdálené sestavení spustí `pip install` pomocí `--extra-index-url` Možnosti. Další informace najdete v [dokumentaci k instalaci Python PIP](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format). 
+Pokud jsou balíčky dostupné z dostupného vlastního indexu balíčku, použijte vzdálené sestavení. Před publikováním se ujistěte, že jste [vytvořili nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) s názvem `PIP_EXTRA_INDEX_URL` . Hodnota tohoto nastavení je adresa URL vašeho vlastního indexu balíčku. Pomocí tohoto nastavení se vzdálené sestavení spustí `pip install` pomocí `--extra-index-url` Možnosti. Další informace najdete v [dokumentaci k instalaci Python PIP](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format).
 
 Můžete také použít přihlašovací údaje základního ověřování s dalšími adresami URL indexu balíčku. Další informace najdete v tématu [základní přihlašovací údaje pro ověřování](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials) v dokumentaci Pythonu.
 
@@ -658,11 +658,14 @@ Chcete-li zobrazit úplné podrobnosti o seznamu těchto knihoven, navštivte od
 
 Funkce Python Worker vyžaduje konkrétní sadu knihoven. Tyto knihovny můžete použít také ve svých funkcích, ale nejsou součástí standardu Pythonu. Pokud vaše funkce spoléhají na některé z těchto knihoven, nemusí být k dispozici pro váš kód při spuštění mimo Azure Functions. Podrobný seznam závislostí najdete v souboru [Setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282) v části **instalace \_ vyžaduje** .
 
+> [!NOTE]
+> Pokud vaše aplikace Function App requirements.txt obsahuje `azure-functions-worker` položku, odeberte ji. Pracovní proces Functions je automaticky spravovaný Azure Functions platformou a pravidelně ho aktualizuje novými funkcemi a opravami chyb. Ruční instalace staré verze pracovního procesu v requirements.txt může způsobit neočekávané problémy.
+
 ### <a name="azure-functions-python-library"></a>Azure Functions knihovna Pythonu
 
 Každá aktualizace pro Python Worker zahrnuje novou verzi [Azure Functions knihovny Python (Azure. Functions)](https://github.com/Azure/azure-functions-python-library). Tento přístup usnadňuje průběžnou aktualizaci aplikací funkcí Pythonu, protože každá aktualizace je zpětně kompatibilní. Seznam verzí této knihovny najdete v části [Azure-Functions PyPI](https://pypi.org/project/azure-functions/#history).
 
-Verze běhové knihovny je opravena v Azure a nemůže být přepsána requirements.txt. `azure-functions`Položka v requirements.txt je určena pouze pro linting a povědomí o zákaznících. 
+Verze běhové knihovny je opravena v Azure a nemůže být přepsána requirements.txt. `azure-functions`Položka v requirements.txt je určena pouze pro linting a povědomí o zákaznících.
 
 Použijte následující kód ke sledování skutečné verze knihovny funkcí Pythonu v modulu runtime:
 
@@ -689,13 +692,14 @@ CORS je plně podporovaná pro aplikace funkcí Pythonu.
 
 Následuje seznam průvodců odstraňováním potíží pro běžné problémy:
 
-* [ModuleNotFoundError a chyba při importu](recover-module-not-found.md)
+* [ModuleNotFoundError a chyba při importu](recover-python-functions.md#troubleshoot-modulenotfounderror)
+* [Nejde importovat ' cygrpc '.](recover-python-functions.md#troubleshoot-cannot-import-cygrpc)
 
 Všechny známé problémy a žádosti o funkce jsou sledovány pomocí seznamu [problémů na GitHubu](https://github.com/Azure/azure-functions-python-worker/issues) . Pokud narazíte na problém a nemůžete najít problém v GitHubu, otevřete nový problém a zahrňte podrobný popis problému.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících zdrojích:
 
 * [Dokumentace k rozhraní API balíčku Azure Functions](/python/api/azure-functions/azure.functions?view=azure-python)
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)

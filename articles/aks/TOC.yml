@@ -301,7 +301,7 @@
     - name: Vývoj a spouštění aplikací
       items:
         - name: Použití místního procesu s Kubernetes s využitím editoru Visual Studio Code (Preview)
-          href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
         - name: Instalace existujících aplikací s využitím Helmu
           href: kubernetes-helm.md
         - name: Použití OpenFaaS

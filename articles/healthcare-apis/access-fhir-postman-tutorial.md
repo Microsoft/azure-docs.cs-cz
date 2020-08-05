@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: mihansen
 author: hansenms
 ms.date: 02/07/2019
-ms.openlocfilehash: f6c3b1f4c24ad2bce68c1cff7b22f0059d3534a2
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 6e0851a55673792adc905d27fdd3f5c13d572032
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446052"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563955"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Přístup k rozhraní API Azure pro FHIR s využitím post
 
@@ -23,6 +23,7 @@ Klientská aplikace by měla přístup k rozhraní FHIR API prostřednictvím [R
 ## <a name="prerequisites"></a>Předpoklady
 
 - Koncový bod FHIR v Azure. Můžete ho nastavit pomocí spravovaného rozhraní API Azure pro FHIR nebo open source serveru FHIR pro Azure. Nastavte spravované rozhraní API Azure pro FHIR pomocí [Azure Portal](fhir-paas-portal-quickstart.md), [PowerShellu](fhir-paas-powershell-quickstart.md)nebo rozhraní příkazového [řádku Azure CLI](fhir-paas-cli-quickstart.md).
+- [Klientská aplikace](register-confidential-azure-ad-client-app.md) , kterou budete používat pro přístup ke službě FHIR
 - Po instalaci. Můžete si ho stáhnout z[https://www.getpostman.com](https://www.getpostman.com)
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR Server a podrobnosti ověřování

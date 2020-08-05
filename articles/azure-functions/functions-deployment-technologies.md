@@ -4,12 +4,12 @@ description: Seznamte se s různými způsoby, jak můžete nasadit kód pro Azu
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 1554469c59eb9931b6d8552f537328e440ec6aeb
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 754a3ea2a316878cc8c2bd918b99476a7194b545
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388012"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562935"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -37,7 +37,7 @@ Každý plán má jiné chování. Ne všechny technologie nasazení jsou k disp
 | Protokol FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Úpravy portálu |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
 
-<sup>1</sup> technologie nasazení, která vyžaduje [synchronizaci ručních triggerů](#trigger-syncing).  
+<sup>1</sup> technologie nasazení, která vyžaduje [synchronizaci ručních triggerů](#trigger-syncing).
 <sup>2</sup> úpravy portálu jsou povolené jenom pro aktivační události http a Timer pro funkce v systému Linux pomocí prémiových a vyhrazených plánů.
 
 ## <a name="key-concepts"></a>Klíčové koncepty
@@ -72,9 +72,9 @@ Pro povolení vzdáleného sestavení v systému Linux musí být nastavena nás
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-Ve výchozím nastavení obě [Azure Functions Core Tools](functions-run-local.md) a [rozšíření Azure Functions pro Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) provádějí vzdálená sestavení při nasazování do systému Linux. Z tohoto důvodu obě nástroje tato nastavení pro vás v Azure automaticky vytvoří. 
+Ve výchozím nastavení obě [Azure Functions Core Tools](functions-run-local.md) a [rozšíření Azure Functions pro Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) provádějí vzdálená sestavení při nasazování do systému Linux. Z tohoto důvodu obě nástroje tato nastavení pro vás v Azure automaticky vytvoří.
 
-Když se aplikace na platformě Linux vytváří vzdáleně, [spouštějí se z balíčku pro nasazení](run-functions-from-deployment-package.md). 
+Když se aplikace na platformě Linux vytváří vzdáleně, [spouštějí se z balíčku pro nasazení](run-functions-from-deployment-package.md).
 
 ##### <a name="consumption-plan"></a>Plán Consumption
 
@@ -92,7 +92,7 @@ V Azure Functions jsou k dispozici následující metody nasazení.
 
 Adresu URL externího balíčku můžete použít k odkazování na vzdálený soubor balíčku (. zip), který obsahuje vaši aplikaci Function App. Soubor se stáhne ze zadané adresy URL a aplikace se spustí v režimu [spuštění z balíčku](run-functions-from-deployment-package.md) .
 
->__Jak ji použít:__ Přidejte `WEBSITE_RUN_FROM_PACKAGE` do nastavení aplikace. Hodnota tohoto nastavení by měla být adresa URL (umístění konkrétního souboru balíčku, který chcete spustit). Nastavení můžete přidat buď [na portálu](functions-how-to-use-azure-function-app-settings.md#settings) , nebo [pomocí Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
+>__Jak ji použít:__ Přidejte `WEBSITE_RUN_FROM_PACKAGE` do nastavení aplikace. Hodnota tohoto nastavení by měla být adresa URL (umístění konkrétního souboru balíčku, který chcete spustit). Nastavení můžete přidat buď [na portálu](functions-how-to-use-azure-function-app-settings.md#settings) , nebo [pomocí Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
 >
 >Pokud používáte službu Azure Blob Storage, pomocí privátního kontejneru se [sdíleným přístupovým podpisem (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) udělte funkce přístup k balíčku. Pokaždé, když se aplikace restartuje, načte kopii obsahu. Váš odkaz musí být platný po dobu života aplikace.
 
@@ -104,7 +104,7 @@ Pomocí nástroje zip Deploy nahrajte soubor. zip, který obsahuje vaši aplikac
 
 >__Jak ji použít:__ Nasazení pomocí vašeho oblíbeného klientského nástroje: [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)nebo z příkazového řádku pomocí [Azure Functions Core Tools](functions-run-local.md#project-file-deployment). Ve výchozím nastavení tyto nástroje používají nasazení zip a [spouštějí se z balíčku](run-functions-from-deployment-package.md). Základní nástroje a rozšíření Visual Studio Code umožňují [vzdálené sestavení](#remote-build) při nasazení do systému Linux. Pokud chcete soubor. zip nasadit do aplikace Function App ručně, postupujte podle pokynů v tématu [nasazení ze souboru. zip nebo adresy URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
->Když nasadíte pomocí nasazení zip, můžete nastavit, aby se aplikace [spouštěla z balíčku](run-functions-from-deployment-package.md). Pro spuštění z balíčku nastavte `WEBSITE_RUN_FROM_PACKAGE` hodnotu nastavení aplikace na `1` . Doporučujeme nasazení zip. Poskytuje rychlejší načítání pro vaše aplikace a je výchozím nastavením pro VS Code, Visual Studio a Azure CLI. 
+>Když nasadíte pomocí nasazení zip, můžete nastavit, aby se aplikace [spouštěla z balíčku](run-functions-from-deployment-package.md). Pro spuštění z balíčku nastavte `WEBSITE_RUN_FROM_PACKAGE` hodnotu nastavení aplikace na `1` . Doporučujeme nasazení zip. Poskytuje rychlejší načítání pro vaše aplikace a je výchozím nastavením pro VS Code, Visual Studio a Azure CLI.
 
 >__Kdy ji použít:__ Nasazení zip je doporučená technologie nasazení pro Azure Functions.
 
@@ -167,7 +167,7 @@ Protokol FTP můžete použít k přímému přenosu souborů do Azure Functions
 
 V editoru založeném na portálu můžete přímo upravovat soubory, které jsou ve vaší aplikaci Function App (v podstatě se nasazují při každém uložení změn).
 
->__Jak ji použít:__ Aby bylo možné upravit funkce v Azure Portal, je nutné [vytvořit své funkce na portálu](functions-create-first-azure-function.md). Aby bylo možné zachovat jeden zdroj pravdy, může použití jakékoli jiné metody nasazení fungovat jen pro čtení a zabránit pokračování v úpravách portálu. Chcete-li se vrátit do stavu, ve kterém můžete upravovat soubory v Azure Portal, můžete ručně zapnout režim úprav zpátky `Read/Write` a odebrat všechna nastavení aplikace související s nasazením (například `WEBSITE_RUN_FROM_PACKAGE` ). 
+>__Jak ji použít:__ Aby bylo možné upravit funkce v Azure Portal, je nutné [vytvořit své funkce na portálu](functions-create-first-azure-function.md). Aby bylo možné zachovat jeden zdroj pravdy, může použití jakékoli jiné metody nasazení fungovat jen pro čtení a zabránit pokračování v úpravách portálu. Chcete-li se vrátit do stavu, ve kterém můžete upravovat soubory v Azure Portal, můžete ručně zapnout režim úprav zpátky `Read/Write` a odebrat všechna nastavení aplikace související s nasazením (například `WEBSITE_RUN_FROM_PACKAGE` ).
 
 >__Kdy ji použít:__ Portál je dobrým způsobem, jak začít s Azure Functions. Pro přesnější vývojovou práci doporučujeme použít jeden z následujících nástrojů klienta:
 >
@@ -196,7 +196,7 @@ Když nasadíte aplikaci Function App do Azure, můžete ji nasadit do samostatn
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o nasazení aplikací Function App najdete v těchto článcích: 
+Další informace o nasazení aplikací Function App najdete v těchto článcích:
 
 + [Průběžné nasazování se službou Azure Functions](functions-continuous-deployment.md)
 + [Průběžné doručování pomocí Azure DevOps](functions-how-to-azure-devops.md)

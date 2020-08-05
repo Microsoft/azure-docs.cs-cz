@@ -6,20 +6,52 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3719956df0dce62ee69d8e306ff2cad27197616d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4443c92fad2510b6bc4bc1214840aca5553556a5
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568399"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553457"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Scénář: vlastní izolace pro virtuální sítě
 
-Při práci s směrováním virtuálního rozbočovače WAN je k dispozici několik scénářů, které jsou v pořádku. Ve vlastním scénáři izolace pro virtuální sítě je cílem zabránit tomu, aby specifická sada virtuální sítě mohla být schopná oslovit jinou konkrétní sadu virtuální sítě. Virtuální sítě ale vyžaduje, aby se dosáhlo všech větví (VPN/ER/User VPN).
+Při práci s směrováním virtuálního rozbočovače WAN je k dispozici několik scénářů, které jsou v pořádku. Ve vlastním scénáři izolace pro virtuální sítě je cílem zabránit tomu, aby specifická sada virtuální sítě mohla být schopná oslovit jinou konkrétní sadu virtuální sítě. Virtuální sítě ale vyžaduje, aby se dosáhlo všech větví (VPN/ER/User VPN). Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
 
-V tomto scénáři jsou připojení VPN, ExpressRoute a User VPN (společně označované jako větve) přidružená ke stejné směrovací tabulce (výchozí směrovací tabulka). Všechna připojení VPN, ExpressRoute a VPN uživatele šíří trasy do stejné sady směrovacích tabulek. Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
+## <a name="scenario-design"></a><a name="design"></a>Návrh scénáře
+
+Aby bylo možné zjistit, kolik směrovacích tabulek bude potřeba, můžete vytvořit matici připojení. V tomto scénáři bude vypadat podobně jako v následujícím příkladu, kde každá buňka představuje, zda zdroj (řádek) může komunikovat s cílem (sloupec):
+
+| Z | Do:| *Modrý virtuální sítě* | *Červené virtuální sítě* | *Větve*|
+|---|---|---|---|---|
+| **Modrý virtuální sítě** |   &#8594;|      X        |               |       X      |
+| **Červené virtuální sítě**  |   &#8594;|              |       X       |       X      |
+| **Větve**   |   &#8594;|     X        |       X       |       X      |
+
+Každá z buněk v předchozí tabulce popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků v tabulce) učí předpona cíle (na straně toku, záhlaví sloupců v tabulce kurzíva) pro konkrétní tok přenosů.
+
+Počet různých vzorů řádků bude počet směrovacích tabulek, které v tomto scénáři budete potřebovat. V tomto případě tři směrovací tabulky tras, které budeme volat **RT_BLUE** a **RT_RED** pro virtuální sítě a **výchozí** pro větve. Nezapomeňte, že větve vždy musí být přidruženy k výchozí směrovací tabulce.
+
+Větve budou muset naučit předpony od červené i modré virtuální sítě, takže všechny virtuální sítě se musí rozšířit na výchozí hodnotu (kromě **RT_BLUE** nebo **RT_RED**). Modré a červené virtuální sítě se budou muset naučit předpony větví, takže větve se rozšíří do obou směrovacích tabulek **RT_BLUE** i **RT_RED** . V důsledku toho je to konečný návrh:
+
+* Modré virtuální sítě:
+  * Přidružená směrovací tabulka: **RT_BLUE**
+  * Rozšiřování do směrovacích tabulek: **RT_BLUE** a **výchozí**
+* Červené virtuální sítě:
+  * Přidružená směrovací tabulka: **RT_RED**
+  * Rozšiřování do směrovacích tabulek: **RT_RED** a **výchozí**
+* Zřizování
+  * Přidružená tabulka směrování: **výchozí**
+  * Rozšiřování do směrovacích tabulek: **RT_BLUE**, **RT_RED** a **výchozí**
+
+> [!NOTE]
+> Vzhledem k tomu, že jsou všechny větve nutné přidružit k výchozí směrovací tabulce a rozšířit na stejnou sadu směrovacích tabulek, budou mít všechny větve stejný profil připojení. Jinými slovy: koncept červeného/modrého pro virtuální sítě nelze použít na větve.
+
+> [!NOTE]
+> Pokud je vaše virtuální síť WAN nasazená v několika oblastech, bude potřeba vytvořit směrovací tabulky **RT_BLUE** a **RT_RED** v každém centru. trasy od každého připojení virtuální sítě je potřeba rozšířit do směrovacích tabulek v každém virtuálním centru pomocí popisků šíření.
+
+Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
 
 ## <a name="scenario-workflow"></a><a name="architecture"></a>Pracovní postup scénáře
 
@@ -31,8 +63,8 @@ Na **obrázku 1**jsou modrá a červená připojení k virtuální síti.
 Při nastavování směrování Vezměte v úvahu následující kroky.
 
 1. Vytvořte dvě vlastní směrovací tabulky v Azure Portal **RT_BLUE** a **RT_RED**.
-2. Pro směrovací tabulku **RT_BLUE**v části:
-   * **Asociace**: výběr všech modrých virtuální sítě
+2. Pro **RT_BLUE**směrovací tabulky pro následující nastavení:
+   * **Asociace**: vyberte všechny modré virtuální sítě.
    * **Šíření**: pro větve vyberte možnost pro větvení, což znamená, že připojení k síti (VPN/ER/P2S) šíří trasy do této směrovací tabulky.
 3. Opakujte stejný postup u **RT_RED** směrovací tabulky pro Red virtuální sítě a větví (VPN/ER/P2S).
 

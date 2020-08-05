@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: 1ea1bfdf2c3b2dcfd49f87a5a75597a464b07913
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d7aab7f5db6256d2f2525ff4a58c10ff5aa517f7
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999577"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553168"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Přehled – místní Active Directory Domain Services ověřování pomocí protokolu SMB pro sdílené složky Azure
 
@@ -46,6 +46,8 @@ Než povolíte služba AD DS ověřování sdílených složek Azure, ujistěte 
     Tuto funkci můžete povolit na novém nebo existujícím místním služba AD DS prostředí. Identity používané pro přístup se musí synchronizovat do Azure AD. Tenant služby Azure AD a sdílená složka, ke kterým přistupujete, musí být přidruženy ke stejnému předplatnému.
 
 - Připojte se k místnímu počítači nebo VIRTUÁLNÍmu počítači Azure k místnímu služba AD DS. Informace o tom, jak připojit k doméně, najdete v tématu [připojení počítače k doméně](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain).
+
+    Pokud počítač není připojený k doméně služba AD DS, může být pro ověřování stále možné využít přihlašovací údaje služby AD, pokud má váš počítač dohled nad řadičem domény služby AD.
 
 - Vyberte nebo vytvořte účet úložiště Azure.  Pro zajištění optimálního výkonu doporučujeme nasadit účet úložiště ve stejné oblasti jako klient, ze kterého plánujete přístup ke sdílené složce. Pak [připojte sdílenou složku Azure](storage-how-to-use-files-windows.md) k vašemu klíči účtu úložiště. Připojením k klíči účtu úložiště ověříte připojení.
 

@@ -2,17 +2,17 @@
 title: Aktualizace pomocí Logic Apps pro Azure Analysis Services modely | Microsoft Docs
 description: Tento článek popisuje, jak pomocí Azure Logic Apps kódovat asynchronní aktualizace pro Azure Analysis Services.
 author: chrislound
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: 9d8c3c7668da939227b3e8aaef002b4292c7d962
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7412a28b53f3b17fb888e3877ecbe50a19c4a3d3
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025315"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552233"
 ---
 # <a name="refresh-with-logic-apps"></a>Aktualizace pomocí Logic Apps
 
@@ -20,7 +20,7 @@ Pomocí Logic Apps a volání REST můžete provádět automatizované operace a
 
 Další informace o použití rozhraní REST API s Azure Analysis Services najdete v tématu [asynchronní aktualizace s REST API](analysis-services-async-refresh.md).
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Ověřování uživatelů
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2).  Příklady v tomto článku budou k ověření Azure Analysis Services použít instanční objekt (SPN). Další informace najdete v tématu [Vytvoření instančního objektu pomocí služby Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -67,9 +67,9 @@ Aktivitu HTTP nakonfigurujte následujícím způsobem:
 |---------|---------|
 |**Metoda**     |POST         |
 |**Identifikátor URI**     | https://*na server region*/Servers/*AAS název serveru*/Models/*název vaší databáze*/refreshes <br /> <br /> Příklad: https: \/ /westus.asazure.Windows.NET/Servers/MyServer/Models/AdventureWorks/refreshes|
-|**Hlavičky**     |   Content-Type, Application/JSON <br /> <br />  ![Hlavičky](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Záhlaví**     |   Content-Type, Application/JSON <br /> <br />  ![Hlavičky](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Text**     |   Další informace o vytváření textu žádosti najdete v tématu [asynchronní aktualizace pomocí REST API-post/refreshes](analysis-services-async-refresh.md#post-refreshes). |
-|**Ověřování**     |Protokol OAuth pro Active Directory         |
+|**Ověřování uživatelů**     |Protokol OAuth pro Active Directory         |
 |**Tenant**     |Vyplňte Azure Active Directory TenantId         |
 |**Cílová skupina**     |https://*. asazure. Windows. NET         |
 |**ID klienta**     |Zadejte své hlavní název služby ClientID.         |
@@ -116,5 +116,5 @@ Uložte aplikaci logiky.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Ukázky](analysis-services-samples.md)  
+[ukázky](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

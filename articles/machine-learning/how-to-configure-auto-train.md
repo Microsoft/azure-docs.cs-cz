@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 05/20/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 2d2eb9d95192e73d0a9bc4e7afbb993fccb17b94
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ec5776791f55a406b8015868dce83243b3f8efbd
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321509"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552380"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -342,7 +342,7 @@ Existuje několik možností, které můžete definovat pro ukončení experimen
 
 ### <a name="explore-model-metrics"></a>Prozkoumat metriky modelu
 
-Pokud se nacházíte v poznámkovém bloku, můžete zobrazit výsledky školení v widgetu nebo v případě potřeby. Další podrobnosti najdete v tématu [sledování a vyhodnocení modelů](how-to-track-experiments.md#view-run-details) .
+Pokud se nacházíte v poznámkovém bloku, můžete zobrazit výsledky školení v widgetu nebo v případě potřeby. Další podrobnosti najdete v tématu [sledování a vyhodnocení modelů](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs) .
 
 Podrobnosti o tom, jak stáhnout nebo zaregistrovat model pro nasazení do webové služby, najdete v tématu [jak a kde nasadit model](how-to-deploy-and-where.md).
 

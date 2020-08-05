@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529620"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554018"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlé zprovoznění: Vytvoření služby Azure Cognitive Search na portálu
 
@@ -29,9 +29,9 @@ Dáváte přednost prostředí PowerShell? Použijte [šablonu služby](https://
 
 Pro dobu života služby jsou opraveny následující vlastnosti služby – změna kterékoli z nich vyžaduje novou službu. Vzhledem k tomu, že jsou pevně dané, zvažte použití dopadu při vyplňování jednotlivých vlastností:
 
-* název služby se může nacházet v rámci koncového bodu adresy URL ([recenze tipů](#name-the-service) pro užitečné názvy služeb).
-* úroveň služby [má vliv na fakturaci](search-sku-tier.md) a nastavuje limit nahoru pro kapacitu.
-* oblast služby může určit dostupnost určitých scénářů. Pokud vás zajímá znalostní báze dolování a rozšíření AI, potřebujete Cognitive Services a případně Azure Machine Learning ve stejné oblasti jako Azure Kognitivní hledání.
+* Název služby se může nacházet v rámci koncového bodu adresy URL ([recenze tipů](#name-the-service) pro užitečné názvy služeb).
+* Úroveň služby [má vliv na fakturaci](search-sku-tier.md) a nastavuje limit nahoru pro kapacitu. Některé funkce nejsou dostupné na úrovni Free.
+* Oblast služby může určit dostupnost určitých scénářů. Pokud potřebujete [funkce s vysokým zabezpečením](search-security-overview.md) nebo [obohacení AI](cognitive-search-concept-intro.md), budete muset Azure kognitivní hledání umístit do stejné oblasti jako jiné služby nebo v oblastech, které zajišťují konkrétní funkci. 
 
 ## <a name="subscribe-free-or-paid"></a>Předplatné (bezplatné nebo placené)
 
@@ -41,7 +41,7 @@ Případně si můžete [aktivovat výhody pro předplatitele MSDN](https://azur
 
 ## <a name="find-azure-cognitive-search"></a>Najít Kognitivní hledání Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. V levém horním rohu klikněte na symbol plus (+ vytvořit prostředek).
 
@@ -51,7 +51,7 @@ Případně si můžete [aktivovat výhody pro předplatitele MSDN](https://azur
 
 ## <a name="choose-a-subscription"></a>Zvolit předplatné
 
-Pokud máte více než jedno předplatné, vyberte pro vyhledávací službu jednu.
+Pokud máte více než jedno předplatné, vyberte pro vyhledávací službu jednu. Pokud implementujete [dvojité šifrování](search-security-overview.md#double-encryption) nebo jiné funkce, které jsou závislé na identitách spravované služby, vyberte stejné předplatné, které se používá pro Azure Key Vault nebo jiné služby, pro které se používají spravované identity.
 
 ## <a name="set-a-resource-group"></a>Nastavení skupiny prostředků
 
@@ -89,6 +89,8 @@ Azure Kognitivní hledání je k dispozici ve většině oblastí. Seznam podpor
 
 > [!Note]
 > Střed Indie a Spojené arabské emiráty sever nejsou aktuálně k dispozici pro nové služby. Pro služby, které už jsou v těchto oblastech, můžete škálovat bez omezení a služba je v této oblasti plně podporovaná. Tato omezení jsou dočasná a omezená jenom na nové služby. Tato poznámka se odstraní, když už neplatí omezení.
+>
+> Dvojité šifrování je dostupné jenom v určitých oblastech. Další informace najdete v tématu [dvojité šifrování](search-security-overview.md#double-encryption).
 
 ### <a name="requirements"></a>Požadavky
 

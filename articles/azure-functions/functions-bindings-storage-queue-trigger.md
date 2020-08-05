@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: 920f53fa962cc30f2068d78c9d1907b93019fe34
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bc560f6a0048377f2174805d7e015b55240d7a71
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055847"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564040"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Aktivační událost služby Azure Queue Storage pro Azure Functions
 
@@ -163,7 +163,7 @@ Aktivační událost fronty úložiště je definována v *function.jsna* míst�
 }
 ```
 
-Kód * _ \_ init_ \_ . py* deklaruje parametr jako `func.ServiceBusMessage` , který umožňuje čtení zprávy fronty ve funkci.
+Kód * _ \_ init_ \_ . py* deklaruje parametr jako `func.QueueMessage` , který umožňuje čtení zprávy fronty ve funkci.
 
 ```python
 import logging

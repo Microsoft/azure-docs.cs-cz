@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 5b95ae3c7fcf52a732304bb835f91c52b015801e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: aa9a930195908671cc0e772fd9643dcbce9dbb1c
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128926"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562408"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -45,6 +45,10 @@ Ne, tento scénář se nepodporuje. Výchozí nastavení:
 - Microsoft AAD Application proxy Connector – WAPCSvc – síťová služba
 - Aktualizátor konektorů proxy aplikace služby Microsoft AAD-WAPCUpdaterSvc-NT Authority\System
 
+### <a name="can-a-guest-user-with-the-global-administrator-or-the-application-administrator-role-register-the-connector-for-the-guest-tenant"></a>Může uživatel typu host s globálním správcem nebo rolí správce aplikace registrovat konektor pro klienta (hosta)?
+
+Ne, v současné době to není možné. Pokus o registraci se vždy provádí v domovském tenantovi uživatele.
+
 ### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>Moje back-endové aplikace je hostována na více webových serverech a vyžaduje trvalost uživatelských relací (vytrvalost). Jak můžu dosáhnout trvalosti relace? 
 
 Doporučení najdete v tématu [Vysoká dostupnost a vyrovnávání zatížení konektorů a aplikací proxy aplikací](application-proxy-high-availability-load-balancing.md).
@@ -54,7 +58,7 @@ Doporučení najdete v tématu [Vysoká dostupnost a vyrovnávání zatížení 
 Konektor proxy aplikací provádí ověřování pomocí certifikátů v Azure. Ukončení protokolu TLS (kontrola TLS/HTTPS) ruší tuto metodu ověřování a není podporovaná. Přenos z konektoru do Azure musí obejít všechna zařízení, která provádějí ukončení protokolu TLS.  
 
 ### <a name="is-tls-12-required-for-all-connections"></a>Vyžaduje se TLS 1,2 pro všechna připojení?
-Yes. Aby služba proxy aplikací poskytovala zákazníkům nejlepší šifrování, omezí přístup jenom na protokoly TLS 1,2. Tyto změny byly postupně nasazeny a platit od 31. srpna 2019. Zajistěte, aby byly všechny kombinace klienta a serveru a prohlížeče a serveru aktualizovány tak, aby používaly protokol TLS 1,2 pro zachování připojení ke službě proxy aplikací. Mezi ně patří klienti, kteří uživatelé používají pro přístup k aplikacím, které jsou publikované prostřednictvím proxy aplikací. Užitečné odkazy a prostředky najdete v tématu Příprava pro [TLS 1,2 v sadě Office 365](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365) .
+Ano. Aby služba proxy aplikací poskytovala zákazníkům nejlepší šifrování, omezí přístup jenom na protokoly TLS 1,2. Tyto změny byly postupně nasazeny a platit od 31. srpna 2019. Zajistěte, aby byly všechny kombinace klienta a serveru a prohlížeče a serveru aktualizovány tak, aby používaly protokol TLS 1,2 pro zachování připojení ke službě proxy aplikací. Mezi ně patří klienti, kteří uživatelé používají pro přístup k aplikacím, které jsou publikované prostřednictvím proxy aplikací. Užitečné odkazy a prostředky najdete v tématu Příprava pro [TLS 1,2 v sadě Office 365](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365) .
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Můžu umístit dopředné proxy zařízení mezi servery konektoru a back-end aplikační server?
 Ano, tento scénář je podporován od verze konektoru 1.5.1526.0. Podívejte [se na téma práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md).
@@ -173,7 +177,7 @@ Funkce (události protokolu, PowerShell a Vzdálená plocha) v centru pro správ
 
 ### <a name="does-using-link-translation-affect-performance"></a>Má použití překladu odkazů vliv na výkon?
 
-Yes. Překlad propojení má vliv na výkon. Služba proxy aplikací vyhledá v aplikaci odkazy na pevně zakódované a nahradí je jejich příslušnými, publikovanými externími adresami URL. teprve potom je prezentuje uživateli. 
+Ano. Překlad propojení má vliv na výkon. Služba proxy aplikací vyhledá v aplikaci odkazy na pevně zakódované a nahradí je jejich příslušnými, publikovanými externími adresami URL. teprve potom je prezentuje uživateli. 
 
 Pro nejlepší výkon doporučujeme použít stejné interní a externí adresy URL konfigurací [vlastních domén](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain). Pokud není možné používat vlastní domény, můžete zlepšit výkon překladu propojení pomocí rozšíření zabezpečeného přihlašování k aplikacím nebo prohlížeče Microsoft Edge na mobilních zařízeních. Přečtěte si téma [přesměrování pevně zakódované odkazů pro aplikace publikované s Azure proxy aplikací služby AD](application-proxy-configure-hard-coded-link-translation.md).
 

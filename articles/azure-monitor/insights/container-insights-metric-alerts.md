@@ -2,13 +2,13 @@
 title: Výstrahy metriky od Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek kontroluje Doporučené výstrahy metriky, které jsou dostupné z Azure Monitor pro kontejnery ve verzi Public Preview.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: c8b75b0d9b22658253c4637bd6507144575934de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/04/2020
+ms.openlocfilehash: 1826896ad2d5c64d389219018f51238826c840d0
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096722"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563360"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Doporučené výstrahy metriky (Preview) z Azure Monitor pro kontejnery
 
@@ -33,7 +33,7 @@ Než začnete, zkontrolujte následující:
 
     Zobrazená hodnota by měla být verze novější než **ciprod05262020**. Pokud má cluster starší verzi, Stáhněte si nejnovější verzi podle pokynů v části [upgrade agent v AKS clusteru](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) .
     
-    Další informace týkající se vydání agenta najdete v tématu [Historie vydání verze agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod). Pokud chcete ověřit metriky, můžete použít Azure Monitor Průzkumníku metrik a ověřit z **oboru názvů metriky** , na které je **Přehled** uvedený. Pokud je, můžete pokračovat a začít nastavovat výstrahy.
+    Další informace týkající se vydání agenta najdete v tématu [Historie vydání verze agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod). Pokud chcete ověřit metriky, můžete použít Azure Monitor Průzkumníku metrik a ověřit z **oboru názvů metriky** , na které je **Přehled** uvedený. Pokud je, můžete pokračovat a začít nastavovat výstrahy. Pokud se nezobrazí žádná metrika, v instančním objektu nebo ve službě MSI chybí potřebná oprávnění. Pokud chcete ověřit, jestli je hlavní název služby (SPN) nebo MSI členem role **vydavatele metrik monitorování** , použijte postup popsaný v části [upgrade na cluster pomocí Azure CLI](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli) a potvrďte a nastavte přiřazení role.
 
 ## <a name="alert-rules-overview"></a>Přehled pravidel výstrah
 
@@ -106,7 +106,7 @@ Pomocí těchto kroků povolíte výstrahy metrik v Azure Monitor z Azure Portal
 
 Tato část vás provede povolením výstrahy metriky Azure Monitor pro kontejnery (Preview) z Azure Portal.
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Přístup k funkci upozornění na metriku Azure Monitor for Containers (Preview) je k dispozici přímo z clusteru AKS, a to tak, že v levém podokně v Azure Portal vyberete **přehledy** .
 

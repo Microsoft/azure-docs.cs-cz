@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 867c32203d8f780b307ede2ba2916ad4e82e1136
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5b83c60182c311d9b04a205da4ab0c3477dc9b9e
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373232"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563697"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -43,7 +43,7 @@ Rozhraní API roviny dat se používají ke správě prvků v instanci digitáln
 * **Dotaz** – kategorie dotazu umožňuje vývojářům [Najít sady digitálních vláken ve dvojitých grafech](how-to-query-graph.md) napříč relacemi.
 * **EventRoutes** – kategorie EventRoutes obsahuje rozhraní API pro [směrování dat](concepts-route-events.md)prostřednictvím systému a služeb pro příjem dat.
 
-Nejaktuálnější verze rozhraní API roviny dat pro verzi Public Preview je _**2020-05-31-Preview**_.
+Nejaktuálnější verze rozhraní API roviny dat pro verzi Public Preview je _**2020-05-31-Preview**_. Verze _2020-03-01-Preview_ rozhraní API pro operace roviny dat je nyní zastaralá.
 
 Použití rozhraní API roviny dat:
 * Můžete volat rozhraní API přímo, do...

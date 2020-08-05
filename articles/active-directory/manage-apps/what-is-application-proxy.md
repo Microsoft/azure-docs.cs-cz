@@ -6,18 +6,18 @@ author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: overview
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5c9ba026819a542ccd0a7ae41316c0f1d325004
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 94d120973939dd1efabee868fc75e9f6c1352bf3
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976502"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562629"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Použití Azure Proxy aplikací služby AD k publikování místních aplikací pro vzdálené uživatele
 
@@ -81,7 +81,7 @@ Po přihlášení mohou externí uživatelé přistupovat k místním webovým a
 
 ![Architektura Azure Proxy aplikací služby AD](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Ověřování uživatelů
 
 Existuje několik způsobů konfigurace aplikace pro jednotné přihlašování a vybraná metoda závisí na ověřování, které vaše aplikace používá. Proxy aplikace podporuje následující typy aplikací:
 
@@ -180,7 +180,7 @@ Další informace o výběru umístění pro instalaci konektorů a optimalizaci
 
 ## <a name="other-use-cases"></a>Jiné případy použití
 
-V tomto okamžiku se zaměřujeme na použití proxy aplikací k externímu publikování místních aplikací při povolování jednotného přihlašování ke všem cloudovým a místním aplikacím. Existují však i další případy použití pro proxy aplikace, které představují zmínku. Mezi ně patří:
+V tomto okamžiku se zaměřujeme na použití proxy aplikací k externímu publikování místních aplikací při povolování jednotného přihlašování ke všem cloudovým a místním aplikacím. Existují však i další případy použití pro proxy aplikace, které představují zmínku. Patří sem:
 
 * **Bezpečně zveřejňujte rozhraní REST API**. Pokud máte obchodní logiku nebo rozhraní API spuštěná místně nebo hostovaná na virtuálních počítačích v cloudu, proxy aplikací poskytuje veřejný koncový bod pro přístup k rozhraní API. Přístup ke koncovému bodu rozhraní API umožňuje řídit ověřování a autorizaci bez vyžadování příchozích portů. Poskytuje další zabezpečení prostřednictvím Azure AD Premiumch funkcí, jako jsou vícefaktorové ověřování a podmíněný přístup na základě zařízení pro stolní počítače, iOS, MAC a zařízení s Androidem pomocí Intune. Další informace najdete v tématu [Jak povolit nativním klientským aplikacím pracovat s proxy aplikacemi](application-proxy-configure-native-client-application.md) a [chránit rozhraní API pomocí protokolu OAuth 2,0 s Azure Active Directory a API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad).
 * **Služba Vzdálená plocha** **(RDS)**. Standardní nasazení služby RDS vyžaduje otevřená příchozí připojení. [Nasazení RDS s proxy aplikací](application-proxy-integrate-with-remote-desktop-services.md) má ale trvalé odchozí připojení ze serveru, na kterém je spuštěná služba konektoru. Tímto způsobem můžete koncovým uživatelům nabídnout další aplikace publikováním místních aplikací prostřednictvím služby Vzdálená plocha. Můžete také omezit plochu pro útok na nasazení s omezeným počtem dvou kroků ověřování a řízení podmíněného přístupu na RDS.

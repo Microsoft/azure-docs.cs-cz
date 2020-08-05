@@ -3,12 +3,12 @@ title: Agent Microsoft Azure Recovery Services (MARS) – nejčastější dotazy
 description: Řeší běžné otázky týkající se zálohování souborů a složek pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 5a4560499c56e4dcdf41c2e5c7920b415ceab6c5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c4494b09a5cf838aae3dde01c1268042929ef213
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533576"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563091"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Nejčastější dotazy – agent Microsoft Azure Recovery Services (MARS)
 
@@ -19,6 +19,12 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se zálohován�
 ### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>Kde můžu stáhnout nejnovější verzi agenta MARS?
 
 Nejnovější agent MARS, který se používá při zálohování počítačů s Windows serverem, aplikace System Center DPM a serveru Microsoft Azure Backup, je k dispozici ke [stažení](https://aka.ms/azurebackup_agent).
+
+### <a name="where-can-i-download-the-vault-credentials-file"></a>Kde můžu stáhnout soubor s přihlašovacími údaji trezoru?
+
+V Azure Portal přejděte na **vlastnosti** vašeho trezoru. V části **přihlašovací údaje pro zálohování**zaškrtněte políčko pro **použití nejnovějšího agenta Recovery Services**. Vyberte **Stáhnout**.
+
+![Stáhnout přihlašovací údaje](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
 
 ### <a name="how-long-are-vault-credentials-valid"></a>Jak dlouho jsou přihlašovací údaje trezoru platné?
 
@@ -169,12 +175,12 @@ Agent Azure Backup vyžaduje heslo (které jste zadali během registrace) k deš
 
 | Původní počítač <br> *(zdrojový počítač, ve kterém proběhlo zálohování)* | Hesel | Dostupné možnosti |
 | --- | --- | --- |
-| K dispozici |Ztráty |Pokud je váš původní počítač (kde bylo vygenerováno zálohování) dostupný a je stále zaregistrován ve stejném úložišti Recovery Services, můžete heslo znovu vygenerovat pomocí následujících [kroků](./backup-azure-manage-mars.md#re-generate-passphrase).  |
+| K dispozici. |Ztráty |Pokud je váš původní počítač (kde bylo vygenerováno zálohování) dostupný a je stále zaregistrován ve stejném úložišti Recovery Services, můžete heslo znovu vygenerovat pomocí následujících [kroků](./backup-azure-manage-mars.md#re-generate-passphrase).  |
 | Ztráty |Ztráty |Není možné obnovit data nebo data nejsou k dispozici. |
 
 Vezměte v úvahu následující podmínky:
 
-* Pokud agenta odinstalujete a znovu zaregistrujete na stejný původní počítač s Thee
+* Pokud agenta odinstalujete a znovu zaregistrujete na stejný původní počítač s
   * *Stejné heslo*, pak můžete zálohovaná data obnovit.
   * *Jiné heslo*, potom nemůžete obnovit zálohovaná data.
 * Pokud nainstalujete agenta na *jiný počítač* s
@@ -188,7 +194,7 @@ Pokud máte stejné heslo (které jste zadali během registrace) původního po�
 
 | Původní počítač | Hesel | Dostupné možnosti |
 | --- | --- | --- |
-| Ztráty |K dispozici |Agenta MARS můžete nainstalovat a zaregistrovat na jiném počítači se stejným heslem, které jste zadali během registrace původního počítače. **Recovery Option**  >  Chcete-li provést obnovení, vyberte možnost obnovení**jiné umístění** . Další informace najdete v tomto [článku](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
+| Ztráty |K dispozici. |Agenta MARS můžete nainstalovat a zaregistrovat na jiném počítači se stejným heslem, které jste zadali během registrace původního počítače. **Recovery Option**  >  Chcete-li provést obnovení, vyberte možnost obnovení**jiné umístění** . Další informace najdete v tomto [článku](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Ztráty |Ztráty |Není možné obnovit data nebo data nejsou k dispozici. |
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Úlohy zálohování se nezdařily nebo nejsou spuštěny po dlouhou dobu. Jsem po dobu uchování. Můžu I nadále obnovit?

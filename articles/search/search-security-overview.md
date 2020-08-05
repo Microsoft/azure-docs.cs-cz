@@ -7,19 +7,20 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: b5e408eeac024f63eb8e7ce47039dc4c0a6aa5b5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: 9e4181956d81ddbe0a385987689a8cb0248ac535
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501487"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553950"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Zabezpečení v Azure Kognitivní hledání – přehled
 
-Tento článek popisuje klíčové funkce zabezpečení v Azure Kognitivní hledání, které mohou chránit obsah a operace. 
+Tento článek popisuje klíčové funkce zabezpečení v Azure Kognitivní hledání, které mohou chránit obsah a operace.
 
-+ Ve vrstvě úložiště je šifrování v klidovém formátu uvedené na úrovni platformy, ale Kognitivní hledání také nabízí klíče spravované zákazníkem prostřednictvím Azure Key Vault pro další vrstvu šifrování.
++ Ve vrstvě úložiště je šifrování v klidovém umístění integrované pro veškerý obsah spravovaný službou uložený na disk, včetně indexů, map synonym a definic indexerů, zdrojů dat a dovednosti. Azure Kognitivní hledání také podporuje přidání klíčů spravovaných zákazníkem (CMK) pro další šifrování indexovaných obsahu. Pro služby vytvořené po 1 2020. srpna se šifrování CMK rozšíří na data na dočasných discích, aby bylo úplné šifrování indexovaného obsahu velmi dvojité.
 
 + Příchozí zabezpečení chrání koncový bod vyhledávací služby na rostoucí úrovni zabezpečení: od klíčů rozhraní API v žádosti až po příchozí pravidla v bráně firewall až po privátní koncové body, které plně chrání vaše služby před veřejným internetem.
 
@@ -29,29 +30,41 @@ Podívejte se na toto video s rychlým tempem, kde se dozvíte přehled architek
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Azure-Cognitive-Search-Whats-new-in-security/player]
 
+<a name="encryption"></a>
+
 ## <a name="encrypted-transmissions-and-storage"></a>Šifrované přenosy a úložiště
 
-Šifrování se Pervasive ve službě Azure Kognitivní hledání počínaje připojením a přenosy a rozšiřuje na obsah uložený na disku. Pro vyhledávací služby na veřejném Internetu Azure Kognitivní hledání naslouchá na portu HTTPS 443. Všechna připojení klient-služba používají šifrování TLS 1,2. Starší verze (1,0 nebo 1,1) nejsou podporovány.
+V Azure Kognitivní hledání začíná šifrování připojení a přenosů a rozšiřuje se na obsah uložený na disku. Pro vyhledávací služby na veřejném Internetu Azure Kognitivní hledání naslouchá na portu HTTPS 443. Všechna připojení klient-služba používají šifrování TLS 1,2. Starší verze (1,0 nebo 1,1) nejsou podporovány.
 
-### <a name="data-encryption-at-rest"></a>Šifrování neaktivních dat
+V následující tabulce jsou popsány datové [modely](../security/fundamentals/encryption-atrest.md#data-encryption-models)pro data, která jsou interně zpracovávána pomocí vyhledávací služby. Některé funkce, jako je znalostní báze, přírůstkové obohacení a indexování založené na indexerech, čtou nebo zapisují do datových struktur v jiných službách Azure. Tyto služby mají svou vlastní úroveň podpory šifrování, která je oddělená od Azure Kognitivní hledání.
 
-Azure Kognitivní hledání ukládá definice indexu a obsah, definice zdrojů dat, definice indexerů, definice dovednosti a mapování synonym.
+| Model | Klíče&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Požadavků&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Omezení | Platí pro |
+|------------------|-------|-------------|--------------|------------|
+| šifrování na straně serveru | Klíče spravované společností Microsoft | Žádný (integrovaný) | Žádná, k dispozici na všech úrovních ve všech oblastech pro obsah vytvořený po lednu 24 2018. | Obsah (indexy a mapy synonym) a definice (indexery, zdroje dat, dovednosti) |
+| šifrování na straně serveru | klíče spravované zákazníkem | Azure Key Vault | K dispozici pro Fakturovatelné úrovně pro obsah vytvořený po lednu 2019 ve všech oblastech. | Obsah (indexy a mapy synonym) na datových discích |
+| dvojité šifrování na straně serveru | klíče spravované zákazníkem | Azure Key Vault | K dispozici v fakturovaných úrovních ve vybraných oblastech ve službě Search po 1 2020. srpna. | Obsah (indexy a mapy synonym) na datových discích a na dočasných discích |
 
-Napříč vrstvou úložiště se data šifrují na disku pomocí klíčů spravovaných Microsoftem. Šifrování nelze zapnout nebo vypnout nebo zobrazit nastavení šifrování na portálu nebo programově. Šifrování je plně prohlášené bez měřitelného dopadu na indexování času na dokončení nebo velikost indexu. K tomu dochází automaticky při každém indexování, včetně přírůstkových aktualizací indexu, který není plně šifrovaný (vytvořený před lednem 2018).
+### <a name="service-managed-keys"></a>Klíče spravované službou
 
-Šifrování je interně založené na [šifrování Azure Storage služby](../storage/common/storage-service-encryption.md)pomocí 256 [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).
+Šifrování spravované službou je interní operace od Microsoftu, která je založená na [šifrování služby Azure Storage](../storage/common/storage-service-encryption.md)s využitím 256 [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard). K tomu dochází automaticky při každém indexování, včetně přírůstkových aktualizací indexů, které nejsou plně šifrované (vytvořené před lednem 2018).
 
-> [!NOTE]
-> Šifrování v klidovém umístění bylo oznámeno 24. ledna 2018 a vztahuje se na všechny úrovně služeb, včetně úrovně Free, ve všech oblastech. Pro úplné šifrování musí být indexy vytvořené před tímto datem vyřazeny a znovu sestaveny, aby mohlo dojít k šifrování. V opačném případě jsou zašifrována pouze nová data přidaná po 24. ledna.
+### <a name="customer-managed-keys-cmk"></a>Klíče spravované zákazníkem (CMK)
 
-### <a name="customer-managed-key-cmk-encryption"></a>Šifrování CMK (Customer-Managed Key)
+Klíče spravované zákazníkem vyžadují další fakturovatelnou službu, Azure Key Vault, která může být v jiné oblasti, ale v rámci stejného předplatného jako Azure Kognitivní hledání. Povolením šifrování CMK se zvýší velikost indexu a sníží se výkon dotazů. Na základě pozorování k datu můžete očekávat zvýšení 30% až 60% v době dotazu, přestože skutečný výkon se bude lišit v závislosti na definici indexu a typech dotazů. Z důvodu tohoto dopadu na výkon doporučujeme tuto funkci povolit pouze pro indexy, které ji skutečně vyžadují. Další informace najdete v tématu [Konfigurace šifrovacích klíčů spravovaných zákazníkem v Azure kognitivní hledání](search-security-manage-encryption-keys.md).
 
-Zákazníci, kteří chtějí další ochranu úložiště, můžou šifrovat data a objekty před jejich uložením a šifrováním na disk. Tento přístup je založený na uživatelem vlastněných klíčích, spravovaných a uložených prostřednictvím Azure Key Vault, nezávisle na Microsoftu. Šifrování obsahu před jeho šifrováním na disku se označuje jako "dvojité šifrování". V současné době můžete v současnosti dvakrát šifrovat indexy a mapy synonym. Další informace najdete v tématu [šifrovací klíče spravované zákazníkem v Azure kognitivní hledání](search-security-manage-encryption-keys.md).
+<a name="double-encryption"></a>
 
-> [!NOTE]
-> Šifrování CMK je všeobecně dostupné pro vyhledávací služby vytvořené po 2019. lednu. Nepodporuje se na bezplatných (sdílených) službách. 
->
->Povolením této funkce se zvýší velikost indexu a sníží se výkon dotazů. Na základě pozorování k datu můžete očekávat zvýšení 30% až 60% v době dotazu, přestože skutečný výkon se bude lišit v závislosti na definici indexu a typech dotazů. Z důvodu tohoto dopadu na výkon doporučujeme tuto funkci povolit pouze pro indexy, které ji skutečně vyžadují.
+### <a name="double-encryption"></a>Dvojité šifrování 
+
+V Azure Kognitivní hledání je dvojité šifrování rozšířením CMK. Považuje se za oboustranné šifrování (jednou pomocí CMK a znovu klíče spravované službou) a komplexní v oboru, včetně dlouhodobého úložiště, které se zapisuje na datový disk a krátkodobého úložiště zapsaného na dočasné disky. Rozdíl mezi CMK před srpna 1 2020 a po a s tím, jak CMK funkci šifrování v Azure Kognitivní hledání, je další šifrování dat na dočasných discích.
+
+Pro nové služby, které se v těchto oblastech vytvoří po 1. srpna, je momentálně k dispozici šifrování s dvojitým šifrováním:
+
++ Západní USA 2
++ East US
++ Středojižní USA
++ USA (Gov) – Virginia
++ USA (Gov) – Arizona
 
 <a name="service-access-and-authentication"></a>
 
@@ -107,7 +120,7 @@ Způsob, jakým uživatel přistupuje k indexu a dalším objektům, je určen t
 
 Pokud pro výsledky hledání potřebujete podrobný ovládací prvek pro jednotlivé uživatele, můžete pro své dotazy vytvořit filtry zabezpečení a vracet dokumenty přidružené k dané identitě zabezpečení. Místo předdefinovaných rolí a přiřazení rolí se řízení přístupu na základě identity implementuje jako *Filtr* , který ořízne výsledky hledání dokumentů a obsahu na základě identit. Následující tabulka popisuje dva přístupy k oříznutí výsledků hledání neoprávněného obsahu.
 
-| Přístup | Description |
+| Přístup | Popis |
 |----------|-------------|
 |[Oříznutí zabezpečení na základě filtrů identity](search-security-trimming-for-azure-search.md)  | Dokumentuje základní pracovní postup pro implementaci řízení přístupu identity uživatele. Zahrnuje přidávání identifikátorů zabezpečení do indexu a pak vysvětluje filtrování na základě tohoto pole za účelem oříznutí výsledků zakázaného obsahu. |
 |[Oříznutí zabezpečení na základě Azure Active Directory identit](search-security-trimming-for-azure-search-with-aad.md)  | V tomto článku se rozbalí předchozí článek, který poskytuje kroky pro načtení identit z Azure Active Directory (AAD), jednu z [bezplatných služeb](https://azure.microsoft.com/free/) na cloudové platformě Azure. |

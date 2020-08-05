@@ -3,12 +3,12 @@ title: Koncové body služby Virtual Network – Azure Event Hubs | Microsoft Do
 description: Tento článek poskytuje informace o tom, jak přidat koncový bod služby Microsoft. EventHub do virtuální sítě.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 15778c85f28300df3d5af34e2940b3854d814c66
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8c798efc21f5b846965f2247d7e76249177ef946
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420446"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554069"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Povolení přístupu k oborům názvů Azure Event Hubs z konkrétních virtuálních sítí 
 
@@ -31,6 +31,7 @@ Výsledkem je privátní a izolovaný vztah mezi úlohami vázanými na podsíť
 > Následující služby společnosti Microsoft musí být ve virtuální síti.
 > - Azure Web Apps
 > - Azure Functions
+> - Azure Monitor (nastavení diagnostiky)
 
 
 > [!IMPORTANT]

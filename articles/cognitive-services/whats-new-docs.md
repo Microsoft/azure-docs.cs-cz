@@ -1,116 +1,67 @@
 ---
-title: 'Cognitive Services: Novinky v dokumentaci pro 1. června 2020 – 30. června 2020'
-description: Co je nového v dokumentaci Cognitive Services pro 1. června 2020 – 30. června 2020.
+title: 'Cognitive Services Docs: novinky od 1. července 2020 – 31. července 2020'
+description: Novinky v dokumentaci Cognitive Services pro 1. července 2020 – 31. července 2020.
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 07/09/2020
-ms.openlocfilehash: 59d19bd2a1dca2a3bc3c6ec3aee9e63b8f12b5d3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/03/2020
+ms.openlocfilehash: eda90a430d96d43d052a603f82832aef6c0facdb
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075188"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553355"
 ---
-# <a name="cognitive-services-docs-whats-new-for-june-1-2020---june-30-2020"></a>Cognitive Services Docs: co je nového pro 1. června 2020 – 30. června 2020
+# <a name="cognitive-services-docs-whats-new-for-july-1-2020---july-31-2020"></a>Cognitive Services Docs: novinky od 1. července 2020 – 31. července 2020
 
-Vítá vás novinky v Cognitive Services docs od 1. června 2020 do 30. června 2020. V tomto článku jsou uvedené některé hlavní změny v dokumentaci v průběhu tohoto období.
+Vítá vás novinky v Cognitive Services dokumentaci od 1. července 2020 do 31. července 2020. V tomto článku jsou uvedené některé hlavní změny v dokumentaci v průběhu tohoto období.
 
-## <a name="computer-vision"></a>Počítačové zpracování obrazu
-
-### <a name="updated-articles"></a>Aktualizované články
-
-- [Rychlý Start: extrakce vytištěného textu a ručního textu pomocí Počítačové zpracování obrazu REST API a Java](/azure/cognitive-services/computer-vision/quickstarts/java-hand-text)
-- [Rychlý Start: extrakce vytištěného textu a ručního textu pomocí Počítačové zpracování obrazu REST API a Pythonu](/azure/cognitive-services/computer-vision/quickstarts/python-hand-text)
-
-## <a name="face"></a>Rozpoznávání tváře
-
-### <a name="updated-articles"></a>Aktualizované články
-
-- [Příklad: Analýza videí v reálném čase](/azure/cognitive-services/face/face-api-how-to-topics/howtoanalyzevideo_face)
-
-## <a name="immersive-reader"></a>Asistivní čtečka
+## <a name="form-recognizer"></a>Rozpoznávání formulářů
 
 ### <a name="new-articles"></a>Nové články
 
-- [Rychlý Start: použití klientské knihovny pro moderní čtenáře](/azure/cognitive-services/immersive-reader/quickstarts/client-libraries)
-
-## <a name="luis"></a>LUIS
-
-### <a name="new-articles"></a>Nové články
-
-- [Umělá inteligentní funkce v Language Understanding (LUIS)](/azure/cognitive-services/luis/artificial-intelligence)
-- [Pracovní postupy průběžné integrace a průběžného doručování pro LUIS DevOps](/azure/cognitive-services/luis/luis-concept-devops-automation)
-- [DevOps postupy pro LUIS](/azure/cognitive-services/luis/luis-concept-devops-sourcecontrol)
-- [Testování pro LUIS DevOps](/azure/cognitive-services/luis/luis-concept-devops-testing)
-- [Rychlý Start: použití oblé a REST k získání záměru](/azure/cognitive-services/luis/luis-get-started-rest-get-intent)
-- [Rychlý Start: použití kudrlinkou a REST ke změně modelu](/azure/cognitive-services/luis/luis-get-started-rest-get-model)
-- [Použití DevOps pro vývoj aplikací LUIS pomocí akcí GitHubu](/azure/cognitive-services/luis/luis-how-to-devops-with-github)
-
-### <a name="updated-articles"></a>Aktualizované články
-
-- [Funkce strojového učení](/azure/cognitive-services/luis/luis-concept-feature)
-- [Vytvoření prostředků LUIS](/azure/cognitive-services/luis/luis-how-to-azure-subscription)
-- [Migrace na klíč pro vytváření prostředků Azure](/azure/cognitive-services/luis/luis-migration-authoring)
-
-
-- [Kurz: použití robota webové aplikace s povolenou službou Language Understanding v Node.js](/azure/cognitive-services/luis/luis-nodejs-tutorial-bf-v4)
+- [Kurz: Vytvoření aplikace pro zpracování formulářů pomocí Tvůrce AI](/azure/cognitive-services/form-recognizer/tutorial-ai-builder)
 
 ## <a name="personalizer"></a>Personalizace
 
 ### <a name="new-articles"></a>Nové články
 
-- [Přidání přizpůsobení do webové aplikace .NET](/azure/cognitive-services/personalizer/tutorial-use-personalizer-web-app)
+- [Kurz: použití přizpůsobeného prostředí v rozhraní .NET chat bot](/azure/cognitive-services/personalizer/tutorial-use-personalizer-chat-bot)
+
+## <a name="qna-maker"></a>QnA Maker
+
+### <a name="new-articles"></a>Nové články
+
+- [Plánování aplikace QnA Maker](/azure/cognitive-services/qnamaker/concepts/plan)
 
 ## <a name="speech-service"></a>Speech Service
 
 ### <a name="new-articles"></a>Nové články
 
-- [Koncepce vlastních příkazů (Preview)](/azure/cognitive-services/speech-service/custom-commands-references)
-- [Přidání potvrzení do příkazu](/azure/cognitive-services/speech-service/how-to-custom-commands-add-interaction-rules#add-confirmations-to-a-command)
-- [Konfigurovat parametr jako entitu externího katalogu](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#configure-parameter-as-external-catalog-entity)
-- [Použití šablon generování jazyka pro odezvy řeči](/azure/cognitive-services/speech-service/how-to-custom-commands-add-language-generation-templates)
-- [Implementace oprav v příkazu](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration)
-- [Přidání parametrů do příkazů](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameters-to-commands)
-- [Přidat jednoduché příkazy](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands)
-- [Přidat ověření do vlastních parametrů příkazu](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#add-validation-to-parameters)
-- [Vytvoření vlastní aplikace příkazů](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands#create-empty-application)
-- [CI/CD pro Custom Speech](/azure/cognitive-services/speech-service/how-to-custom-speech-continuous-integration-continuous-deployment)
-- [Vytvoření hlasového asistenta end to-end pomocí vlastních příkazů](/azure/cognitive-services/speech-service/quickstart-custom-commands-application)
-- [Rychlý Start: testování modelu pomocí zvukového souboru v studiu řeči](/azure/cognitive-services/speech-service/quickstarts/speech-studio-test-model)
-- [Seznamte se se základy rozpoznávání mluvčího](/azure/cognitive-services/speech-service/speaker-recognition-basics)
-- [Co je služba Azure rozpoznávání mluvčího?](/azure/cognitive-services/speech-service/speaker-recognition-overview)
-- [Služba Speech: co je nového v docs](/azure/cognitive-services/speech-service/whats-new)
-
-### <a name="updated-articles"></a>Aktualizované články
-
-- [Co je Batch přepis?](/azure/cognitive-services/speech-service/batch-transcription)
-- [Podpora jazyka a hlasu pro službu rozpoznávání řeči](/azure/cognitive-services/speech-service/language-support)
+- [Šifrování vlastních příkazů pro neaktivní uložená data](/azure/cognitive-services/speech-service/custom-commands-encryption-of-data-at-rest)
+- [Základy vlastního klíčového slova](/azure/cognitive-services/speech-service/custom-keyword-basics)
+- [Použití aplikace Vlastní příkazy se službou Vlastní hlas](/azure/cognitive-services/speech-service/how-to-custom-commands-use-custom-voice)
+- [Sada Batch Processing Kit pro kontejnery řeči](/azure/cognitive-services/speech-service/speech-container-batch-processing)
 
 ## <a name="text-analytics"></a>Analýza textu
 
-### <a name="updated-articles"></a>Aktualizované články
+### <a name="new-articles"></a>Nové články
 
-- [Rychlý start: Volání rozhraní API pro analýzu textu ve službách Cognitive Services s využitím Go](/azure/cognitive-services/text-analytics/quickstarts/go)
-- [Rychlý Start: použití jazyka Java k volání služby pro rozpoznávání služby Azure Analýza textu](/azure/cognitive-services/text-analytics/quickstarts/java)
-- [Rychlý Start: použití Node.js k volání služby pro rozpoznávání Analýza textu](/azure/cognitive-services/text-analytics/quickstarts/nodejs)
-- [Rychlý start: Volání rozhraní API pro analýzu textu ve službách Cognitive Services pomocí PHP](/azure/cognitive-services/text-analytics/quickstarts/php)
-- [Rychlý Start: použití REST API Pythonu k volání služby Analýza textu rozpoznávání](/azure/cognitive-services/text-analytics/quickstarts/python)
-- [Rychlý start: Volání rozhraní API pro analýzu textu ve službách Cognitive Services s využitím jazyka Ruby](/azure/cognitive-services/text-analytics/quickstarts/ruby)
-
-## <a name="translator"></a>Translator
-
-### <a name="updated-articles"></a>Aktualizované články
-
-- [Podpora jazyků a oblastí pro převod textu a řeči](/azure/cognitive-services/translator/language-support)
+- [Postupy: použití Analýza textu pro stav (Preview)](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health)
 
 ## <a name="community-contributors"></a>Přispěvatelé komunity
 
-Následující lidé přispěli během tohoto období k dokumentaci Cognitive Services. Děkujeme! 
+Následující lidé přispěli během tohoto období k dokumentaci Cognitive Services. Děkujeme! Naučte se, jak přispívat pomocí odkazů v části " [postupovat" na úvodní stránce co je nového](index.yml).
 
-- [changeworld](https://github.com/changeworld) -Takashi Takebayashi (1)
-- [huaigulin](https://github.com/huaigulin) -Huaigu – čárka (1)
+- [milestonedev](https://github.com/milestonedev) -Justin mil. (2)
+- [felixvanleeuwen](https://github.com/felixvanleeuwen) (1)
+- [LoicB](https://github.com/LoicB) -Loic Beylot (1)
+- [nkgami](https://github.com/nkgami) -Hiroki Nakagami (1)
+- [RussellJQA](https://github.com/RussellJQA) -Russell Johnsonem (1)
+- [ryotokuro](https://github.com/ryotokuro) -Taiyue Tan (1)
+- [smorcuend](https://github.com/smorcuend) -Sergio Morcuende (1)
+- [swildermann](https://github.com/swildermann) -Sven Wildermann (1)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

@@ -13,4 +13,4 @@ ms.locfileid: "67175333"
 ---
 ## <a name="get-the-sample-images"></a>Získání ukázkových obrázků
 
-V tomto příkladu se používají image z Cognitive Services adresáře **Samples/customvision/images** úložiště [Samples. js SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/customvision/images) na GitHubu. Naklonujte nebo si stáhněte toto úložiště do svého vývojového prostředí.
+V tomto příkladu se používají obrázky z Cognitive Services adresáře **Samples/customvision/images** úložiště [Samples Node.js SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples/customvision/images) na GitHubu. Naklonujte nebo si stáhněte toto úložiště do svého vývojového prostředí.

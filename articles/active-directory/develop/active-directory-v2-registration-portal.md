@@ -13,12 +13,12 @@ ms.date: 08/13/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 910aaf84d3563d4410826d3c0bdfde3d2dfc75e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53a44ed270dc47725dddfd57d6a212e859d46bad
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885629"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552709"
 ---
 # <a name="app-registration-reference"></a>Reference k registraci aplikací
 
@@ -38,11 +38,11 @@ Tento seznam obsahuje všechny vaše aplikace zaregistrované pro použití výh
 
 ## <a name="application-secrets"></a>Tajné klíče aplikace
 
-Tajné klíče aplikace jsou přihlašovací údaje, které umožňují vaší aplikaci provádět spolehlivé [ověřování klientů](https://tools.ietf.org/html/rfc6749#section-2.3) pomocí Azure AD. V protokolu OAuth & OpenID Connect se klíč aplikace často označuje jako `client_secret` . V protokolu v 2.0 musí každá aplikace, která obdrží token zabezpečení v umístění web s adresou (pomocí `https` schématu), používat tajný klíč aplikace k identifikaci služby Azure AD při uplatnění tohoto tokenu zabezpečení. Kromě toho bude pro všechny nativní klienty, kteří přijímají tokeny na zařízení, zakázáno používat k ověřování klientů tajný klíč aplikace. Tím se nedoporučuje ukládání tajných klíčů v nezabezpečených prostředích.
+Tajné klíče aplikace jsou přihlašovací údaje, které umožňují vaší aplikaci provádět spolehlivé [ověřování klientů](https://tools.ietf.org/html/rfc6749#section-2.3) s platformou Microsoft identity. V protokolu OAuth & OpenID Connect se klíč aplikace často označuje jako `client_secret` . V protokolu v 2.0 musí každá aplikace, která obdrží token zabezpečení na webovém umístění s adresou (pomocí `https` schématu), používat tajný klíč aplikace k identifikaci platformy Microsoft identity na základě uplatnění tohoto tokenu zabezpečení. Kromě toho bude pro všechny nativní klienty, kteří přijímají tokeny na zařízení, zakázáno používat k ověřování klientů tajný klíč aplikace. Tím se nedoporučuje ukládání tajných klíčů v nezabezpečených prostředích.
 
 Každá aplikace může v daném okamžiku obsahovat dvě platné tajné klíče aplikace. Díky udržování dvou tajných kódů máte možnost provádět pravidelné výměny klíčů v celém prostředí vaší aplikace. Po dokončení migrace celé aplikace na nový tajný kód můžete odstranit starý tajný klíč a zřídit nový.
 
-V tuto chvíli jsou na portálu pro registraci aplikací povolené jenom dva typy tajných klíčů. Zvolením možnosti **Generovat nové heslo** vygenerujete a uložíte sdílený tajný klíč do příslušného úložiště dat, které můžete použít ve své aplikaci. Výběrem možnosti **generovat nový pár klíčů** se vytvoří nový pár veřejného a privátního klíče, který se dá stáhnout a použít pro ověřování klientů v Azure AD. Možnost **nahrát veřejný klíč** vám umožní používat vlastní pár veřejného a privátního klíče.
+V tuto chvíli jsou na portálu pro registraci aplikací povolené jenom dva typy tajných klíčů. Zvolením možnosti **Generovat nové heslo** vygenerujete a uložíte sdílený tajný klíč do příslušného úložiště dat, které můžete použít ve své aplikaci. Výběrem možnosti **generovat nový pár klíčů** se vytvoří nový pár veřejného a privátního klíče, který se dá stáhnout a použít k ověřování klientů na platformě Microsoft identity. Možnost **nahrát veřejný klíč** vám umožní používat vlastní pár veřejného a privátního klíče.
 Je nutné nahrát certifikát, který obsahuje veřejný klíč.
 
 ## <a name="profile"></a>Profil

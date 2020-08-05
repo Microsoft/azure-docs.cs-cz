@@ -1,7 +1,7 @@
 ---
 title: Poskytněte volitelné deklarace identity aplikacím Azure AD.
 titleSuffix: Microsoft identity platform
-description: Jak přidat vlastní nebo další deklarace k tokenům SAML 2,0 a JSON web tokens (JWT) vydaných Azure Active Directory.
+description: Jak přidat vlastní nebo další deklarace k tokenům SAML 2,0 a JSON webtokens (JWT) vydaným platformou Microsoft Identity Platform.
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
@@ -12,21 +12,21 @@ ms.date: 07/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: dd181e87305f3d32fb301c8b563b7330e09b43d6
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: f93e2b34c64ce4bd8cec7182c3e990f0e675dc11
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445582"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552862"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci Azure AD
+# <a name="how-to-provide-optional-claims-to-your-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci
 
 Vývojáři aplikací můžou ve svých aplikacích Azure AD použít volitelné deklarace identity a určit, které deklarace identity se mají v tokenech odeslaných do jejich aplikace.
 
 Volitelné deklarace identity můžete použít k těmto akcím:
 
 - Vyberte další deklarace identity, které chcete zahrnout do tokenů pro vaši aplikaci.
-- Změna chování určitých deklarací identity, které Azure AD vrací v tokenech
+- Změna chování určitých deklarací identity, které platforma Microsoft Identity Platform vrací v tokenech
 - Přidejte a získejte přístup k vlastním deklaracím pro vaši aplikaci.
 
 Seznam standardních deklarací identity najdete v dokumentaci [k tokenům](access-tokens.md) a [id_token](id-tokens.md) deklarací identity.
@@ -37,7 +37,7 @@ I když jsou volitelné deklarace identity podporované v tokenech formátu v 1.
 
 | Typ účtu               | tokeny v 1.0 | tokeny v 2.0 |
 |----------------------------|-------------|-------------|
-| Osobní účet Microsoft | Není k dispozici         | Podporováno   |
+| Osobní účet Microsoft | –         | Podporováno   |
 | Účet Azure AD           | Podporováno   | Podporováno   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>volitelná sada deklarací v 1.0 a v 2.0
@@ -125,7 +125,7 @@ Tento objekt OptionalClaims způsobí, že token ID se vrátil klientovi, aby za
 
 Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednictvím uživatelského rozhraní nebo manifestu aplikace.
 
-1. Přejděte na [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **Azure Active Directory**.
+1. Přejděte na web [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
 
@@ -137,7 +137,7 @@ Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednict
 1. Vyberte **přidat volitelnou deklaraci identity**.
 1. Vyberte typ tokenu, který chcete konfigurovat.
 1. Vyberte volitelné deklarace, které se mají přidat.
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 
 **Konfigurace volitelných deklarací pomocí manifestu aplikace:**
 
@@ -258,7 +258,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    - "Zabezpečení"
    - "DirectoryRole"
 
-   Příklad:
+   Zde je příklad:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"
@@ -399,7 +399,7 @@ V následujícím příkladu použijete uživatelské rozhraní **Konfigurace to
 
 **Konfigurace manifestu:**
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. V seznamu Najděte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity, a vyberte ji.

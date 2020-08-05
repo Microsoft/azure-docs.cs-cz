@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 71dcad908884351950c89b590523ffa91d6d47f9
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: cd21ef8d697570afb2109bb56d552284c03fd9a2
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424765"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552777"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>Použití atributů rozšíření schématu adresáře v deklaracích identity
 
@@ -41,7 +41,7 @@ Atributy rozšíření schématu adresáře lze registrovat a naplnit jedním ze
 Atributy rozšíření schématu adresáře vytvořené a synchronizované pomocí služby AD Connect jsou vždycky přidružené k ID aplikace používané službou AD Connect. Je možné je použít jako zdroj pro deklarace identity tím, že je nakonfigurujete jako deklarace identity v konfiguraci **podnikových aplikací** v uživatelském rozhraní portálu pro aplikace SAML zaregistrované v rámci **podnikových aplikací**pomocí Galerie nebo pomocí zásad mapování deklarací pro aplikace zaregistrované prostřednictvím prostředí pro registraci aplikací.  Jakmile se atribut rozšíření adresáře, který se vytvoří prostřednictvím služby AD Connect, nachází v adresáři, zobrazí se v uživatelském rozhraní konfigurace deklarací pro jednotné přihlašování SAML.
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-for-an-application-using-graph-or-powershell"></a>Generování deklarací identity s daty z atributů rozšíření schématu adresáře vytvořených pro aplikaci pomocí grafu nebo PowerShellu
-Pokud je atribut rozšíření schématu adresáře registrovaný pro aplikaci pomocí Microsoft Graph nebo PowerShellu (prostřednictvím počátečního instalačního programu nebo kroku zřizování pro instanci), můžete stejnou aplikaci nakonfigurovat v Azure Active Directory, aby přijímala data v daném atributu z uživatelského objektu deklarace identity, když se uživatel přihlásí.  Aplikace se dá nakonfigurovat tak, aby přijímala data v rozšířeních schématu adresáře, která jsou registrovaná na stejné aplikaci pomocí [volitelných deklarací identity](active-directory-optional-claims.md#configuring-directory-extension-optional-claims).  Ty lze nastavit v manifestu aplikace.  To umožňuje víceklientské aplikaci registrovat atributy rozšíření schématu adresáře pro vlastní použití. Když se aplikace zřídí do tenanta, budou se k dispozici přidružená rozšíření schématu adresáře pro uživatele v tomto tenantovi a budou se spotřebovávat.  Jakmile se nakonfiguruje v tenantovi a udělení souhlasu, dá se použít k ukládání a načítání dat pomocí grafu a k mapování deklarací identity v tokenech, které Azure AD generuje do aplikací.
+Pokud je atribut rozšíření schématu adresáře registrovaný pro aplikaci pomocí Microsoft Graph nebo PowerShellu (prostřednictvím počátečního instalačního programu nebo kroku zřizování pro instanci), můžete stejnou aplikaci nakonfigurovat v Azure Active Directory, aby přijímala data v daném atributu z uživatelského objektu deklarace identity, když se uživatel přihlásí.  Aplikace se dá nakonfigurovat tak, aby přijímala data v rozšířeních schématu adresáře, která jsou registrovaná na stejné aplikaci pomocí [volitelných deklarací identity](active-directory-optional-claims.md#configuring-directory-extension-optional-claims).  Ty lze nastavit v manifestu aplikace.  To umožňuje víceklientské aplikaci registrovat atributy rozšíření schématu adresáře pro vlastní použití. Když se aplikace zřídí do tenanta, budou se k dispozici přidružená rozšíření schématu adresáře pro uživatele v tomto tenantovi a budou se spotřebovávat.  Jakmile se nakonfiguruje v tenantovi a udělení souhlasu, dá se použít k ukládání a načítání dat pomocí grafu a k mapování deklarací identity v tokenech, které Microsoft Identity Platform generuje do aplikací.
 
 Atributy rozšíření schématu adresáře lze registrovat a naplnit pro libovolnou aplikaci.
 

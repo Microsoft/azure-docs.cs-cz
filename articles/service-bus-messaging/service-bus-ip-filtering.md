@@ -3,12 +3,12 @@ title: Konfigurace pravidel brány firewall protokolu IP pro Azure Service Bus
 description: Jak používat pravidla brány firewall k povolení Azure Service Bus Připojení z konkrétních IP adres.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 378f8a6331c18b2c99e3e08e83021878f7384c2b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e9b39f1b163a894bf4831662ac050463086133d5
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418507"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552913"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Povolení přístupu k oboru názvů Azure Service Bus z konkrétních IP adres nebo rozsahů
 Ve výchozím nastavení jsou Service Bus obory názvů přístupné z Internetu, pokud požadavek přichází s platným ověřováním a autorizací. Pomocí brány firewall protokolu IP je můžete omezit na více než jenom na sadu IPv4 adres nebo rozsahů IPv4 adres v [CIDR (směrování mezi doménami bez třídy)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -34,6 +34,7 @@ Pravidla brány firewall protokolu IP se používají na úrovni oboru názvů S
 > Následující služby společnosti Microsoft musí být ve virtuální síti.
 > - Azure App Service
 > - Azure Functions
+> - Azure Monitor (nastavení diagnostiky)
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
 V této části se dozvíte, jak pomocí Azure Portal vytvořit pravidla brány firewall protokolu IP pro Service Bus obor názvů. 

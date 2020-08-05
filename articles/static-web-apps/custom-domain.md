@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960295"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563342"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Nastavení vlastní domény ve službě Azure Static Web Apps ve verzi Preview
 
 Ve výchozím nastavení poskytuje Azure static Web Apps automaticky generovaný název domény. V tomto článku se dozvíte, jak namapovat vlastní název domény na statickou Web Apps aplikaci Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Název zakoupené domény
 - Přístup k vlastnostem konfigurace DNS pro vaši doménu
@@ -37,7 +37,7 @@ Pro aplikaci je k dispozici několik různých typů konfigurací služby DNS.
 
 ## <a name="map-a-cname-record"></a>Mapování záznamu CNAME
 
-Záznam CNAME mapuje jednu doménu do druhé. Záznam CNAME můžete použít k mapování `www.example.com` automaticky generované domény, kterou poskytuje služba Azure Static Web Apps.
+Záznam CNAME mapuje jednu doménu do druhé. Záznam CNAME můžete použít k mapování `www.example.com` , `blog.example.com` nebo jakékoli jiné subdomény na automaticky generovanou doménu, kterou poskytuje služba Azure static Web Apps.
 
 1. Otevřete [Azure Portal](https://portal.azure.com) a přihlaste se pomocí svého účtu Azure.
 
@@ -113,7 +113,7 @@ Někdy budete chtít, aby byl veškerý provoz odeslaný do subdomény směrová
     | Typ    | CNAME                  |
     | Hostitel    | \*                     |
     | Hodnota   | www.example.com        |
-    | Hodnota TTL     | Ponechat jako výchozí hodnotu |
+    | TTL     | Ponechat jako výchozí hodnotu |
 
 5. Uložte změny u svého poskytovatele DNS.
 

@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 12/05/2019
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: dff86176bac56063c9b588fb27e3549069ed380e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3c247e5aebde7bd10be092c358320348645e2172
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326354"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564057"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
 
@@ -32,9 +32,9 @@ Kanály ML, které vytvoříte, jsou viditelné pro členy [pracovního prostoru
 
 Kanály ML používají vzdálené výpočetní cíle pro výpočet a úložiště mezia konečných dat přidružených k tomuto kanálu. Můžou číst a zapisovat data do a z podporovaných [Azure Storage](https://docs.microsoft.com/azure/storage/) umístění.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vytvořte [pracovní prostor Azure Machine Learning](how-to-manage-workspace.md) pro uložení všech prostředků kanálu.
 
@@ -471,7 +471,7 @@ Koncový bod kanálu můžete vytvořit s několika publikovanými kanály. Tato
 ```python
 from azureml.pipeline.core import PipelineEndpoint
 
-published_pipeline = PublishedPipeline.get(workspace="ws", name="My_Published_Pipeline")
+published_pipeline = PipelineEndpoint.get(workspace=ws, name="My_Published_Pipeline")
 pipeline_endpoint = PipelineEndpoint.publish(workspace=ws, name="PipelineEndpointTest",
                                             pipeline=published_pipeline, description="Test description Notebook")
 ```

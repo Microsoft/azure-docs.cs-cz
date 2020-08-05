@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/10/2020
-ms.openlocfilehash: 4bd6c3dc1f3cd1ef553efc6ac3cd3c4e558afc97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/04/2020
+ms.openlocfilehash: 5bd78f2db8ea1f2a26d26269822ec78978a3cfde
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087658"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553304"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Kurz: migrace SQL Server do spravované instance Azure SQL online pomocí DMS
 
@@ -262,6 +262,9 @@ Po obnovení úplné zálohy databáze v cílové instanci spravované instance 
 4. Vyberte **Potvrdit** a pak **Použít**.
 
     ![Příprava na dokončení přímé migrace](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
+
+    > [!IMPORTANT]
+    > Po přímou migraci může být dostupnost spravované instance SQL s Pro důležité obchodní informaceou vrstvou služby jenom výrazně delší než Pro obecné účely, protože pro skupinu s vysokou dostupností AlwaysOn musí být osazené tři sekundární repliky. Tato operace trvá v závislosti na velikosti dat. Další informace najdete v tématu [Doba provozu operací správy](../azure-sql/managed-instance/management-operations-overview.md#management-operations-duration).
 
 5. Po **dokončení**stavu migrace databáze připojte své aplikace k nové cílové instanci SQL spravované instance.
 

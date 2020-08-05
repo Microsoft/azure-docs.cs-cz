@@ -4,13 +4,13 @@ ms.author: cynthn
 ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 8ad191ca0d31abf317bab521dfbbc7c2567c3450
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+manager: daberry
+ms.openlocfilehash: 6024dd595166afe24a75720d8c7593afd451b610
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87545281"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554894"
 ---
 Standardizované image virtuálních počítačů umožňují organizacím migrovat do cloudu a zajistit konzistenci nasazení. Obrázky obvykle zahrnují předdefinovaná nastavení zabezpečení a konfigurace a potřebný software. Nastavení vlastního kanálu pro vytváření imagí vyžaduje čas, infrastrukturu a instalaci, ale s nástrojem Azure VM Image Builder stačí jednoduše zadat jednoduchou konfiguraci popisující vaši image, odeslat ji do služby a image se sestaví a distribuuje.
  
@@ -56,6 +56,7 @@ AIB bude podporovat image základního operačního systému Azure Marketplace:
 - Systém Windows 2019
 
 Podpora RHEL soubory ISO už není podporovaná.
+
 ## <a name="how-it-works"></a>Jak to funguje
 
 

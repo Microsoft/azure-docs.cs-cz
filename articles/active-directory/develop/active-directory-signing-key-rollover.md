@@ -1,5 +1,5 @@
 ---
-title: Výměna podpisových klíčů ve službě Azure AD
+title: Výměna podpisových klíčů na platformě Microsoft identity
 description: Tento článek popisuje osvědčené postupy pro výměnu podpisových klíčů pro Azure Active Directory
 services: active-directory
 author: rwike77
@@ -12,20 +12,20 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f9fd27515e9ecda6e78ae16528a4956d3bf607
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537232"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552760"
 ---
-# <a name="signing-key-rollover-in-azure-active-directory"></a>Výměna podpisového klíče v Azure Active Directory
-Tento článek popisuje, co potřebujete znát o veřejných klíčích, které se používají v Azure Active Directory (Azure AD) k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto klíče se převezmou v pravidelných intervalech a v naléhavém případě by mohlo dojít k okamžitému zavedení. Všechny aplikace, které používají Azure AD, by měly být schopné programově zpracovat proces výměny klíčů nebo vytvořit pravidelný proces ručního zaměníní. Pokračujte ve čtení, abyste pochopili, jak klíče fungují, jak vyhodnotit dopad přechodu na aplikaci a jak aktualizovat aplikaci nebo vytvořit pravidelný ruční proces ručního zpracování, který v případě potřeby zabere v případě potřeby klíčovou výměnu.
+# <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Výměna podpisových klíčů na platformě Microsoft identity
+Tento článek popisuje, co potřebujete znát o veřejných klíčích, které používá platforma Microsoft Identity Platform k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto klíče se převezmou v pravidelných intervalech a v naléhavém případě by mohlo dojít k okamžitému zavedení. Všechny aplikace, které používají platformu Microsoft Identity Platform, by měly být schopné programově zpracovat proces výměny klíčů nebo vytvořit pravidelný proces ručního zpracování. Pokračujte ve čtení, abyste pochopili, jak klíče fungují, jak vyhodnotit dopad přechodu na aplikaci a jak aktualizovat aplikaci nebo vytvořit pravidelný ruční proces ručního zpracování, který v případě potřeby zabere v případě potřeby klíčovou výměnu.
 
-## <a name="overview-of-signing-keys-in-azure-ad"></a>Přehled podpisových klíčů ve službě Azure AD
-Azure AD používá kryptografii s veřejným klíčem postavenou na průmyslových standardech k navázání vztahu důvěryhodnosti mezi sebou samými a aplikacemi, které ho používají. V praktických případech to funguje následujícím způsobem: Azure AD používá podpisový klíč, který se skládá z páru veřejného a privátního klíče. Když se uživatel přihlásí k aplikaci, která používá Azure AD k ověřování, vytvoří Azure AD token zabezpečení, který obsahuje informace o uživateli. Tento token je podepsaný službou Azure AD pomocí jejího privátního klíče, než se pošle zpátky do aplikace. Pokud chcete ověřit, jestli je token platný a pochází z Azure AD, musí aplikace ověřit podpis tokenu pomocí veřejného klíče vystaveného službou Azure AD, který je obsažený v [dokumentu zjišťování OpenID Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) tenanta nebo v [dokumentu federačních METADAT](../azuread-dev/azure-ad-federation-metadata.md)SAML/WS.
+## <a name="overview-of-signing-keys-in-microsoft-identity-platform"></a>Přehled podpisových klíčů v platformě Microsoft Identity Platform
+Platforma Microsoft Identity Platform používá kryptografii s veřejným klíčem postavená na průmyslových standardech k navázání vztahu důvěryhodnosti mezi sebou samými a aplikacemi, které ho používají V praktických případech funguje takto: platforma Microsoft Identity Platform používá podpisový klíč, který se skládá z páru veřejného a privátního klíče. Když se uživatel přihlásí k aplikaci, která používá Microsoft Identity Platform pro ověřování, Microsoft Identity Platform vytvoří token zabezpečení, který obsahuje informace o uživateli. Tento token je podepsaný platformou Microsoft identity pomocí jeho privátního klíče, než se pošle zpátky do aplikace. Aby bylo možné ověřit, zda je token platný a pochází z platformy Microsoft Identity Platform, aplikace musí ověřit podpis tokenu pomocí veřejného klíče vystaveného platformou Microsoft identity, která je obsažena v [dokumentu zjišťování klienta OpenID Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) nebo v [dokumentu federačních METADAT](../azuread-dev/azure-ad-federation-metadata.md)SAML/WS.
 
-Z bezpečnostních důvodů se podpisový klíč služby Azure AD pravidelně zakládá a v případě nouze se dá okamžitě navrátit. Každá aplikace, která se integruje se službou Azure AD, by měla být připravená na zpracování události při výměně klíčů bez ohledu na to, jak často k ní může dojít. Pokud tomu tak není a vaše aplikace se pokusí použít klíč s vypršenou platností k ověření podpisu na tokenu, žádost o přihlášení selže.
+Z bezpečnostních důvodů se podpisový klíč platformy Microsoft Identity vystavuje pravidelně a v případě nouze se dá okamžitě navrátit. Každá aplikace, která se integruje s platformou Microsoft identity, by měla být připravená na zpracování události změny klíče bez ohledu na to, jak často k ní může dojít. Pokud tomu tak není a vaše aplikace se pokusí použít klíč s vypršenou platností k ověření podpisu na tokenu, žádost o přihlášení selže.
 
 V dokumentu zjišťování OpenID Connect a v dokumentu federačních metadat je vždy k dispozici více než jeden platný klíč. Vaše aplikace by měla být připravená použít některý z klíčů uvedených v dokumentu, protože jeden klíč může být brzy vyměněn, další může být nahrazena a tak dále.
 
@@ -148,7 +148,7 @@ Pokud jste vytvořili aplikaci webového rozhraní API v Visual Studio 2013 pomo
 
 Pokud jste ručně nakonfigurovali ověřování, postupujte podle pokynů níže, abyste se dozvěděli, jak nakonfigurovat webové rozhraní API tak, aby automaticky aktualizovalo své klíčové informace.
 
-Následující fragment kódu ukazuje, jak získat nejnovější klíče z dokumentu federačních metadat a pak pomocí [obslužné rutiny tokenu JWT](https://msdn.microsoft.com/library/dn205065.aspx) ověřit token. Fragment kódu předpokládá, že budete používat vlastní mechanismus ukládání do mezipaměti pro uchování klíče k ověřování budoucích tokenů z Azure AD, ať už se jedná o databázi, konfigurační soubor nebo jiné místo.
+Následující fragment kódu ukazuje, jak získat nejnovější klíče z dokumentu federačních metadat a pak pomocí [obslužné rutiny tokenu JWT](https://msdn.microsoft.com/library/dn205065.aspx) ověřit token. Fragment kódu předpokládá, že budete používat vlastní mechanismus ukládání do mezipaměti pro uchování klíče k ověřování budoucích tokenů z platformy Microsoft Identity Platform, ať už se jedná o databázi, konfigurační soubor nebo jiné místo.
 
 ```
 using System;
@@ -239,7 +239,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Webové aplikace chránící prostředky a vytvořené pomocí sady Visual Studio 2012
-Pokud byla vaše aplikace sestavena v aplikaci Visual Studio 2012, pravděpodobně jste pro konfiguraci aplikace použili nástroj identita a přístup. Je také možné, že používáte [ověřovací registr názvů vystavitele (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). VINR zodpovídá za údržbu informací o důvěryhodných zprostředkovatelích identity (Azure AD) a klíčích používaných k ověřování tokenů, které vydávají. VINR také usnadňuje automatické aktualizace informací o klíčích uložených v souboru Web.config stažením nejnovějšího dokumentu federačních metadat přidružených k vašemu adresáři, zkontrolováním, zda je konfigurace neaktuální s nejnovějším dokumentem, a aktualizujte aplikaci tak, aby používala nový klíč podle potřeby.
+Pokud byla vaše aplikace sestavena v aplikaci Visual Studio 2012, pravděpodobně jste pro konfiguraci aplikace použili nástroj identita a přístup. Je také možné, že používáte [ověřovací registr názvů vystavitele (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). VINR zodpovídá za údržbu informací o důvěryhodných zprostředkovatelích identity (Microsoft Identity Platform) a klíčů používaných k ověřování tokenů vydaných jimi. VINR také usnadňuje automatické aktualizace informací o klíčích uložených v souboru Web.config stažením nejnovějšího dokumentu federačních metadat přidružených k vašemu adresáři, zkontrolováním, zda je konfigurace neaktuální s nejnovějším dokumentem, a aktualizujte aplikaci tak, aby používala nový klíč podle potřeby.
 
 Pokud jste aplikaci vytvořili pomocí některého z ukázek kódu nebo pokynů v dokumentaci od Microsoftu, je logika přecházení mezi klíči již obsažena v projektu. Všimněte si, že níže uvedený kód již v projektu existuje. Pokud vaše aplikace ještě tuto logiku nemá, postupujte podle následujících kroků a ověřte, zda správně funguje.
 
@@ -282,7 +282,7 @@ Použijte následující postup, chcete-li ověřit, zda je logika výměny klí
           </keys>
    ```
 2. V **\<add thumbprint="">** nastavení změňte hodnotu kryptografického otisku tak, že nahradíte libovolný znak jiným. Uložte soubor **Web.config**.
-3. Sestavte aplikaci a potom ji spusťte. Pokud můžete dokončit proces přihlášení, aplikace úspěšně aktualizuje klíč stažením požadovaných informací z dokumentu federačních metadat vašeho adresáře. Pokud máte problémy s přihlášením, zajistěte, aby změny v aplikaci byly správné, a přečtěte si téma [přidání přihlášení k webové aplikaci pomocí Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) nebo stažení a kontrola následující ukázky kódu: [víceklientské cloudová aplikace pro Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
+3. Sestavte aplikaci a potom ji spusťte. Pokud můžete dokončit proces přihlášení, aplikace úspěšně aktualizuje klíč stažením požadovaných informací z dokumentu federačních metadat vašeho adresáře. Pokud máte problémy s přihlášením, ujistěte se, že změny v aplikaci jsou správné, a přečtěte si téma [Přidání přihlašování do webové aplikace pomocí platformy Microsoft Identity Platform](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) nebo stažení a kontrola následujícího příkladu kódu: [víceklientské cloudová aplikace pro Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>Webové aplikace chránící prostředky a vytvořené pomocí sady Visual Studio 2008 nebo 2010 a technologie Windows Identity Foundation (WIF) v 1.0 pro .NET 3,5
 Pokud jste vytvořili aplikaci v WIF v 1.0, není k dispozici žádný mechanismus pro automatickou aktualizaci konfigurace vaší aplikace, aby používal nový klíč.
@@ -301,10 +301,10 @@ Pokyny k aktualizaci konfigurace pomocí nástroje soubor FedUtil:
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Webové aplikace/rozhraní API chrání prostředky pomocí jiných knihoven nebo ručně implementují některé podporované protokoly.
 Pokud používáte jinou knihovnu nebo jste ručně implementovali některé z podporovaných protokolů, budete muset zkontrolovat knihovnu nebo implementaci, abyste se ujistili, že se klíč načítá buď z dokumentu zjišťování OpenID Connect, nebo z dokumentu federačních metadat. Jedním ze způsobů, jak tuto kontrolu provést, je hledání v kódu nebo kódu knihovny pro jakékoli volání buď do dokumentu OpenID Discovery, nebo do dokumentu federačních metadat.
 
-Pokud se klíč ukládá do vaší aplikace někam nebo pevně zakódované, můžete ho ručně načíst a podle pokynů provést ruční přechod podle pokynů na konci tohoto dokumentu s pokyny. **Důrazně doporučujeme, abyste aplikaci vylepšili tak, aby podporovala automatické přecházení** pomocí kterékoli z osnovy přístupů v tomto článku, aby nedocházelo k budoucímu výpadku a režii, pokud Azure AD zvyšuje tempoou výměnu, nebo má nouzové vzdálené přepnutí.
+Pokud se klíč ukládá do vaší aplikace někam nebo pevně zakódované, můžete ho ručně načíst a podle pokynů provést ruční přechod podle pokynů na konci tohoto dokumentu s pokyny. **Důrazně doporučujeme, abyste aplikaci vylepšili tak, aby podporovala automatické přecházení** pomocí některé z osnovy přístupů v tomto článku, aby nedocházelo k budoucímu výpadku a režii v případě, že se v rámci platformy Microsoft Identity zvyšuje tempo nebo má nouzové vzdálené přepnutí.
 
 ## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>Jak otestovat aplikaci, abyste zjistili, jestli bude ovlivněná
 Můžete ověřit, jestli vaše aplikace podporuje automatickou výměnu klíčů, a to stažením skriptů a podle pokynů v [tomto úložišti GitHubu.](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
 
 ## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>Jak provést ruční přecházení, pokud vaše aplikace nepodporuje automatickou výměnu
-Pokud vaše **aplikace nepodporuje automatickou** výměnu, budete muset vytvořit proces, který pravidelně monitoruje podpisové klíče služby Azure AD, a odpovídajícím způsobem provede ruční přesměrování. [Toto úložiště GitHub](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) obsahuje skripty a pokyny k tomu, jak to provést.
+Pokud vaše **aplikace nepodporuje automatickou** výměnu, budete muset vytvořit proces, který pravidelně monitoruje podpisové klíče platformy Microsoft Identity Platform a odpovídajícím způsobem provede ruční přesměrování. [Toto úložiště GitHub](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) obsahuje skripty a pokyny k tomu, jak to provést.

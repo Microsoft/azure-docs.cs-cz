@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/28/2020
 ms.author: baanders
-ms.openlocfilehash: 70ff1847548c1328a709cf17c02bba3dd25ba213
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 82639a19ef728c22a74381d24754992e0f647976
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486645"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562462"
 ---
 ## <a name="query-language-features"></a>Funkce jazyka dotazů
 
@@ -19,7 +19,7 @@ Digitální vlákna Azure poskytuje rozsáhlé možnosti dotazování pro dvojit
 > [!NOTE]
 > U všech operací dotazů na digitální vlákna Azure se rozlišují velká a malá písmena.
 
-Tady jsou dostupné operace v jazyce Azure pro úložiště dotazů v digitálních dotazech.
+Tady jsou dostupné operace v jazyce dotazů Azure Digital revlákens.
 
 Získejte digitální vlákna podle jejich...
 * Model ( `IS_OF_MODEL` operátor using)

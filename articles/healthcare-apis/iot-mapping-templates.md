@@ -6,14 +6,14 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: cc8b7d46e1018974c6a88cef9e4f4a9f9a09caa7
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: da5eb43f8bc2fc8b4ac213f6ff90464de5995a47
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513345"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553643"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Šablony mapování Azure IoT Connector pro FHIR (Preview)
 Tento článek podrobně popisuje, jak nakonfigurovat Azure IoT Connector pro FHIR * pomocí mapovacích šablon.
@@ -565,7 +565,7 @@ Představuje datový typ [CodeableConcept](http://hl7.org/fhir/datatypes.html#Co
 Přečtěte si nejčastější dotazy ke službě Azure IoT Connector pro FHIR (Preview).
 
 >[!div class="nextstepaction"]
->[Azure IoT Connector pro nejčastější dotazy k FHIR](fhir-faq.md#iot-connector-preview)
+>[Azure IoT Connector pro nejčastější dotazy k FHIR](fhir-faq.md#azure-iot-connector-for-fhir-preview)
 
 * V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview).
 

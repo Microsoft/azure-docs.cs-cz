@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 948ada46085d83c8cf453cdde23cb407ea2dd2d8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e78f4133e7f722870f6c84de2ab7e784cd151d79
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447715"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562680"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Základní hodnoty zabezpečení Azure pro automatizaci
 
@@ -34,7 +34,7 @@ Pokud chcete získat další izolaci pro své Runbooky, můžete použít hybrid
 
 Případně, pokud máte konkrétní požadavek, Azure Firewall mohou být použity také k jeho splnění.
 
-* [Virtuální sítě a virtuální počítače v Azure](../virtual-machines/windows/network-overview.md)
+* [Virtuální sítě a virtuální počítače v Azure](../virtual-machines/network-overview.md)
 
 * [Vytvoření Virtual Network](../virtual-network/quick-create-portal.md)
 
@@ -848,7 +848,7 @@ Adaptivní řízení aplikací je inteligentní, automatizované a ucelené ře�
 
 **Doprovodné**materiály: aplikace s vysokým rizikem nasazené ve vašem prostředí Azure mohou být izolované pomocí různých síťových a kontejnerů prostředků pomocí konstrukcí, jako jsou virtuální sítě, podsíť, předplatná, skupiny pro správu, můžou být dostatečně zabezpečené buď pomocí Azure firewall, firewallu webových aplikací (WAF) nebo skupiny zabezpečení sítě (NSG).
 
-* [Virtuální sítě a virtuální počítače v Azure](../virtual-machines/windows/network-overview.md)
+* [Virtuální sítě a virtuální počítače v Azure](../virtual-machines/network-overview.md)
 
 * [Přehled Azure Firewall](../firewall/overview.md)
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 48b8175ed5f753ffe7b62d3e97f4fe20f60da5ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f4d9811dc288222c0a2190805a8b052cb1ae47b
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061599"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563921"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -37,10 +37,10 @@ K vytvoření digitálního vlákna musíte zadat:
 
 Volitelně můžete zadat počáteční hodnoty pro všechny vlastnosti digitálního vlákna. 
 
-> [!TIP]
-> Po načtení vlákna s GetDigitalTwin jsou vráceny pouze vlastnosti, které byly nastaveny alespoň jednou.  
-
 Hodnoty modelů a počátečních vlastností jsou k dispozici prostřednictvím `initData` parametru, což je řetězec JSON obsahující relevantní data.
+
+> [!TIP]
+> Po vytvoření nebo aktualizaci vlákna může být latence až 10 sekund, než se změny projeví v [dotazech](how-to-query-graph.md). `GetDigitalTwin`Rozhraní API (popsané [dále v tomto článku) v](#get-data-for-a-digital-twin)této prodlevě nefunguje, proto použijte volání rozhraní API namísto dotazování, abyste viděli nově vytvořená vlákna, pokud potřebujete okamžitou reakci. 
 
 ### <a name="initialize-properties"></a>Inicializovat vlastnosti
 
@@ -90,6 +90,9 @@ object result = await client.GetDigitalTwin(id);
 ```
 
 Toto volání vrátí jako řetězec JSON dvojitá data. 
+
+> [!TIP]
+> Po načtení vlákna se vrátí pouze vlastnosti, které byly nastaveny alespoň jednou `GetDigitalTwin` .
 
 Chcete-li načíst více vláken pomocí jediného volání rozhraní API, přečtěte si příklady rozhraní API pro dotazování v tématu [*Postupy: vytvoření dotazu na nevlákenný graf*](how-to-query-graph.md).
 
@@ -174,7 +177,12 @@ Další informace o pomocných třídách serializace najdete v tématu [*Postup
 
 Chcete-li aktualizovat vlastnosti digitálního vlákna, zapište informace, které chcete nahradit ve formátu [opravy JSON](http://jsonpatch.com/) . Tímto způsobem můžete nahradit více vlastností najednou. Pak předáte dokument opravy JSON do `Update` metody:
 
-`await client.UpdateDigitalTwin(id, patch);`.
+```csharp
+await client.UpdateDigitalTwin(id, patch);
+```
+
+> [!TIP]
+> Po vytvoření nebo aktualizaci vlákna může být latence až 10 sekund, než se změny projeví v [dotazech](how-to-query-graph.md). `GetDigitalTwin`Rozhraní API (popsané [dříve v tomto článku) v](#get-data-for-a-digital-twin)této prodlevě nefunguje, proto použijte volání rozhraní API namísto dotazování, abyste viděli nově aktualizovaná vlákna, pokud potřebujete okamžitou reakci. 
 
 Tady je příklad kódu opravy JSON. Tento dokument nahrazuje hodnoty *mass* vlastností Replace a *poloměru* digitálního vlákna, na které se aplikuje.
 

@@ -3,12 +3,12 @@ title: Použití PowerShellu k zálohování Windows serveru do Azure
 description: V tomto článku se dozvíte, jak pomocí PowerShellu nastavit Azure Backup pro Windows Server nebo klienta Windows a spravovat zálohování a obnovení.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 116bdd6b5f48a9d5abc0f9f0d9ce61f857196fd2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0deccc49b82d4a8b81889c35174c3efa81b6d74d
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513723"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564023"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
 
@@ -111,7 +111,7 @@ MARSAgentInstaller.exe /?
 
 K dispozici jsou tyto možnosti:
 
-| Možnost | Podrobnosti | Výchozí |
+| Parametr | Podrobnosti | Výchozí |
 | --- | --- | --- |
 | /q |Tichá instalace |- |
 | /p: "umístění" |Cesta k instalační složce pro agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent |
@@ -148,7 +148,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -
 ```
 
 Na klientském počítači s Windows serverem nebo Windows spusťte rutinu [Start-OBRegistration](/powershell/module/msonlinebackup/start-obregistration) , která zaregistruje počítač do trezoru.
-Tato a další rutiny, které se používají pro zálohování, jsou z modulu MSONLINE, který AgentInstaller Mars přidal jako součást procesu instalace.
+Tato a další rutiny, které se používají pro zálohování, jsou z modulu MSONLINE, který AgentInstaller MARS přidal jako součást procesu instalace.
 
 Instalační program agenta neaktualizuje proměnnou $Env:P SModulePath. To znamená, že automatické načtení modulu se nezdařilo. K vyřešení tohoto problému můžete postupovat takto:
 

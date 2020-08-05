@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 00080322b4fa474e5095d40afb041134e1a85fe7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 93fb65fc7c7551635c49e33d0f626d72c2755a11
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519729"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553967"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Kognitivní hledání
 
@@ -25,7 +25,7 @@ Většina zákazníků začíná na bezplatné úrovni, takže může službu vy
 
 Následující tabulka popisuje omezení funkcí souvisejících s vrstvami.
 
-| Funkce | Omezení |
+| Příznak | Omezení |
 |---------|-------------|
 | [Indexery](search-indexer-overview.md) | Indexery nejsou k dispozici na S3 HD. |
 | [Obohacení AI](search-security-manage-encryption-keys.md) | Běží na bezplatné úrovni, ale nedoporučuje se. |
@@ -61,9 +61,18 @@ Další informace o různých úrovních najdete na [stránce s cenami](https://
 K řešení postavenému na Azure Kognitivní hledání může doplatit tyto náklady následujícími způsoby:
 
 + Náklady na samotnou službu, která běží nepřetržitě, při minimální konfiguraci (jeden oddíl a replika)
+
 + Přidání kapacity (repliky nebo oddíly)
-+ Poplatky za šířku pásma (odchozí přenos dat) 
-+ Služby doplňku, jako je například rozšíření AI (připojení Cognitive Services v dovednosti, které definují zpracování AI nebo použití Azure Storage pro znalostní bázi úložiště pro Store) nebo nasazení vyhledávací služby v privátní virtuální síti
+
++ Poplatky za šířku pásma (odchozí přenos dat)
+
++ Služby doplňku vyžadované pro konkrétní funkce nebo funkce:
+
+  + Rozšíření AI (vyžaduje [Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/))
+  + znalostní báze Knowledge Store (vyžaduje [Azure Storage](https://azure.microsoft.com/pricing/details/storage/))
+  + přírůstkové obohacení (vyžaduje [Azure Storage](https://azure.microsoft.com/pricing/details/storage/), platí pro rozšíření AI)
+  + klíče spravované zákazníkem a dvojité šifrování (vyžaduje [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/))
+  + privátní koncové body pro model bez přístupu k Internetu (vyžaduje [privátní odkaz Azure](https://azure.microsoft.com/pricing/details/private-link/))
 
 ### <a name="service-costs"></a>Náklady na službu
 

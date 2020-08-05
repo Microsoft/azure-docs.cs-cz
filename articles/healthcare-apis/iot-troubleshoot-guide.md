@@ -6,18 +6,18 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 08/03/2020
 ms.author: jasteppe
-ms.openlocfilehash: 8c372a865e34b2cbd1b5b3e6d8619c3ef0f438e0
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: b404fa5322d3afa8cbf71741382d44dd0433d49c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460418"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553678"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Azure IoT Connectorem pro FHIR (Preview)
 
-Tento článek popisuje kroky pro řešení běžných konektorů Azure IoT Connector pro FHIR chybové zprávy a podmínky.  
+Tento článek popisuje kroky pro řešení běžných konektorů Azure IoT Connector pro FHIR * chybové zprávy a podmínky.  
 
 Naučíte se také, jak vytvořit kopie služby Azure IoT Connector pro soubory mapování FHIR JSON pro úpravy a archivaci mimo Azure Portal nebo za účelem poskytování technické podpory Azure při otevření lístku podpory. 
 
@@ -72,7 +72,7 @@ Kopírování služby Azure IoT Connector pro soubory mapování FHIR může bý
 Přečtěte si nejčastější dotazy k Azure IoT Connectoru pro FHIR.
 
 >[!div class="nextstepaction"]
->[Nejčastější dotazy k Azure IoT Connectoru pro FHIR (Preview)](fhir-faq.md#iot-connector-preview)
+>[Azure IoT Connector pro nejčastější dotazy k FHIR](fhir-faq.md#azure-iot-connector-for-fhir-preview)
 
 * V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview).
 

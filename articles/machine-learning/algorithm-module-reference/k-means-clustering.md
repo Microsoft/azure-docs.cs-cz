@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/19/2020
-ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/04/2020
+ms.openlocfilehash: 94a2c9bf3f65897809edaf94fc01b442e02b46d9
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77921160"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552998"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K-znamená clustering
 
@@ -62,7 +62,7 @@ Při zpracovávání dat školení začíná algoritmus K, který začíná poč
   
 3.  Do pole **počet centroids**zadejte počet clusterů, se kterými má algoritmus začínat.  
   
-     Model není zaručený, aby vyprodukoval přesně tento počet clusterů. Algoritmus začíná tímto počtem datových bodů a provede iterace k nalezení optimální konfigurace.  
+     Model není zaručený, aby vyprodukoval přesně tento počet clusterů. Algoritmus začíná tímto počtem datových bodů a provede iterace k nalezení optimální konfigurace. Můžete se podívat na [zdrojový kód skriptu sklearn](https://github.com/scikit-learn/scikit-learn/blob/fd237278e/sklearn/cluster/_kmeans.py#L1069).
   
 4.  **Inicializace** vlastností slouží k určení algoritmu, který se používá k definování počáteční konfigurace clusteru.  
   

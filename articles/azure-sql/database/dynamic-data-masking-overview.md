@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 08/04/2020
 tags: azure-synpase
-ms.openlocfilehash: 4a6de0b2067cdc847b830fba7607be8cb8f265ab
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 14ae9103571d72b0a48ee8e1a9c9dc6bb008373b
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981384"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552123"
 ---
 # <a name="dynamic-data-masking"></a>Dynamické maskování dat 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -76,7 +76,7 @@ Pomocí REST API můžete programově spravovat zásady a pravidla maskování d
 
 ### <a name="data-masking-policies"></a>Zásady maskování dat
 
-- [Vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate): vytvoří nebo aktualizuje popisek citlivosti pro zadaný sloupec.
+- [Vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate): vytvoří nebo aktualizuje zásadu maskování dat databáze.
 - [Get](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get): Získá zásadu maskování dat databáze. 
 
 ### <a name="data-masking-rules"></a>Pravidla maskování dat

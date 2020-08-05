@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a88e30e85402f60489839b0a34b5a793fd7192df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0ae598fb9e4018369230de5fadcf173a3df9fb4c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502473"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551689"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -87,7 +87,7 @@ Uživatelé s touto rolí můžou pro některé uživatele nastavit nebo resetov
 Role [správce privilegovaného ověřování](#privileged-authentication-administrator) má oprávnění k vynucení opakované registrace a ověřování Multi-Factor Authentication pro všechny uživatele.
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Zde je příklad:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům ověřování. Prostřednictvím této cesty může správce ověřování předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -195,8 +195,7 @@ Uživatelé v této roli mohou číst základní informace o adresáři. Tato ro
 Nepoužívat. Tato role je automaticky přiřazena ke službě Azure AD Connect a není určena ani podporována pro jiné použití.
 
 ### <a name="directory-writers"></a>[Zapisovače adresářů](#directory-writers-permissions)
-
-Toto je starší role, která má být přiřazena aplikacím, které nepodporují [rámec souhlasu](../develop/quickstart-register-app.md). Neměl by být přiřazený žádnému uživateli.
+Uživatelé v této roli mohou číst a aktualizovat základní informace o uživatelích, skupinách a instančních objektech. Tuto roli přiřaďte pouze aplikacím, které nepodporují [rámec souhlasu](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app). Neměl by být přiřazený žádnému uživateli.
 
 ### <a name="dynamics-365-administrator--crm-administrator"></a>[Správce Dynamics 365/správce CRM](#crm-service-administrator-permissions)
 
@@ -274,7 +273,7 @@ Uživatelé s touto rolí můžou měnit hesla, zrušit platnost tokenů aktuali
 * Čtečka sestav
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Zde je příklad:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům helpdesku. Prostřednictvím této cesty může správce helpdesku předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -510,7 +509,7 @@ Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny asp
 | Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Správce skupin<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Správce hesel<li>Čtečka sestav<li>Správce uživatele|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Zde je příklad:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům uživatelů. Prostřednictvím této cesty může správce uživatelů předpokládat identitu vlastníka aplikace a pak dále předpokládat identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -1001,22 +1000,36 @@ Může číst & informace o adresáři Basic Write. Pro udělení přístupu k a
 
 | **Akce** | **Popis** |
 | --- | --- |
-| Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
-| Microsoft. Directory/Groups/createAsOwner | Vytvořte skupiny v Azure Active Directory. Tvůrce se přidá jako první vlastník a vytvořený objekt se počítá s kvótou vytvořenou pro objekty tvůrce 250. |
 | Microsoft. Directory/Groups/appRoleAssignments/Update | Aktualizuje vlastnost groups. appRoleAssignments v Azure Active Directory. |
-| Microsoft. Directory/Groups/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory. |
+| Microsoft. Directory/Groups/assignLicense | Spravujte licence na skupiny v Azure Active Directory. |
+| Microsoft. Directory/Groups/Basic/Update | Aktualizuje základní vlastnosti pro skupiny v Azure Active Directory.  |
+| Microsoft. Directory/Groups/klasifikací/Update | Aktualizuje vlastnost klasifikace skupiny v Azure Active Directory. |
+| Microsoft. Directory/Groups/Create | Vytvořte skupiny v Azure Active Directory. |
+| Microsoft. Directory/Groups/groupType/Update | Aktualizuje vlastnost groupType skupiny v Azure Active Directory. |
 | Microsoft. Directory/Groups/Members/Update | Aktualizuje vlastnost groups. Members v Azure Active Directory. |
 | Microsoft. Directory/Groups/Owners/Update | Aktualizuje vlastnost groups. Owners v Azure Active Directory. |
+| Microsoft. Directory/Groups/reprocessLicenseAssignment | Znovu zpracovat přiřazení licencí pro skupinu v Azure Active Directory. |
+| Microsoft. Directory/Groups/securityEnabled/Update | Aktualizuje vlastnost secutiryEnabled skupiny v Azure Active Directory. |
 | Microsoft. Directory/Groups/Settings/Update | Aktualizuje vlastnost groups. Settings v Azure Active Directory. |
+| Microsoft. Directory/Groups/Visibility/Update | Aktualizovat vlastnost viditelnosti skupiny |
 | Microsoft. Directory/groupSettings/Basic/Update | Aktualizuje základní vlastnosti v groupSettings v Azure Active Directory. |
-| Microsoft. Directory/groupSettings/Create | Vytvořte groupSettings v Azure Active Directory. |
+| Microsoft. Directory/groupSettings/Create | Vytvořit groupSettings v Azure Active Directory.. |
 | Microsoft. Directory/groupSettings/DELETE | Odstraní groupSettings v Azure Active Directory. |
+| Microsoft. Directory/oAuth2PermissionGrants/Basic/Update | Aktualizuje základní vlastnosti oAuth2PermissionGrants v Azure Active Directory. |
+| Microsoft. Directory/oAuth2PermissionGrants/Create | Vytvořte oAuth2PermissionGrants v Azure Active Directory. |
+| Microsoft. Directory/servicePrincipals/synchronizationCredentials/Manage | Správa tajných klíčů a přihlašovacích údajů pro zřizování aplikací |
+| Microsoft. Directory/servicePrincipals/synchronizationJobs/Manage | Spusťte, restartujte a pozastavte úlohy synchronizace zřizování aplikací. |
+| Microsoft. Directory/servicePrincipals/synchronizationSchema/Manage | Vytvářejte a spravujte synchronizace – úlohy a schéma zřizování aplikací. |
 | Microsoft. Directory/Users/appRoleAssignments/Update | Umožňuje aktualizovat vlastnost Users. appRoleAssignments v Azure Active Directory. |
 | Microsoft. Directory/Users/assignLicense | Spravujte licence na uživatele v Azure Active Directory. |
 | Microsoft. Directory/uživatelé/Basic/Update | Umožňuje aktualizovat základní vlastnosti pro uživatele v Azure Active Directory. |
-| Microsoft. Directory/Users/invalidateAllRefreshTokens | Zruší platnost všech tokenů aktualizace uživatele v Azure Active Directory. |
+| Microsoft. Directory/Users/Disable | Zakáže uživatelský účet v Azure Active Directory. |
+| Microsoft. Directory/uživatelé/povolit | Povolení uživatelského účtu v Azure Active Directory |
+| Microsoft. Directory/Users/invalidateAllRefreshTokens | Zrušení platnosti všech tokenů aktualizace uživatele v Azure Active Directory, vyžadování opětovného ověření uživatelů při příštím přihlášení |
 | Microsoft. Directory/uživatelé/správce/aktualizace | Umožňuje aktualizovat vlastnost Users. Manager v Azure Active Directory. |
-| Microsoft. Directory/uživatelé/userPrincipalName/Update | Umožňuje aktualizovat vlastnost Users. userPrincipalName v Azure Active Directory. |
+| Microsoft. Directory/Users/reprocessLicenseAssignment | Znovu zpracovat přiřazení licencí pro uživatele v Azure Active Directory. |
+| Microsoft. Directory/Users/userPrincipalName/Update | Aktualizujte vlastnost Users. userPrincipalName v Azure Active Directory. |
+
 
 ### <a name="exchange-service-administrator-permissions"></a>Oprávnění správce služby Exchange
 
@@ -1899,7 +1912,7 @@ Správci zařízení | Zastaralé | 2b499bcd-da44-4968-8aec-78e1674fa64d
 Uživatelé zařízení | Zastaralé | d405c6df-0af8-4e3b-95e4-4d06e542189e
 Čtečky adresářů | Čtečky adresářů | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 Účty synchronizace adresářů | Nezobrazeno, protože by neměl být použit | d29b2b05-8046-44ba-8758-1e26182fcf32
-Zapisovače adresářů | Nezobrazeno, protože by neměl být použit | 9360feb5-f418-4baa-8175-e2a00bac4301
+Zapisovače adresářů | Zapisovače adresářů | 9360feb5-f418-4baa-8175-e2a00bac4301
 Správce služby Exchange | Správce Exchange | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Správce toku externího ID uživatele | Správce toku externího ID uživatele | 6e591065-9bad-43ed-90f3-e9424366d2f0
 Správce atributů toku uživatele externího ID | Správce atributů toku uživatele externího ID | 0f971eea-41eb-4569-a71e-57bb8a3eff1e

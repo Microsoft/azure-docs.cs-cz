@@ -6,14 +6,14 @@ author: hansenms
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 02/07/2019
+ms.date: 08/03/2020
 ms.author: mihansen
-ms.openlocfilehash: af891935fd474e6f1f83ff1c2ce56ef71cd065c6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b3838c46dcd5515cca81f41a4b8ac55bc68ffe69
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536721"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552930"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Nejčastější dotazy k rozhraní Azure API pro FHIR
 
@@ -49,38 +49,37 @@ Z hlediska vývoje je každá funkce nasazená na Open Source Microsoft FHIR Ser
 Inteligentní (nahraditelné lékařské aplikace a opakovaně použitelná technologie) na FHIR je sada otevřených specifikací pro integraci partnerských aplikací se servery FHIR a dalšími systémy IT, jako jsou například elektronické záznamy o stavu a výměny informací o stavu. Když vytvoříte inteligentní aplikaci v FHIR, můžete zajistit, že k aplikaci bude možné přistupovat a využívat spoustu různých systémů.
 Ověřování a rozhraní Azure API pro FHIR. Další informace o INTELIGENTNÍch možnostech najdete v přehledu [inteligentního stavu](https://smarthealthit.org/).
 
-
-## <a name="iot-connector-preview"></a>IoT Connector (Preview)
+## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector pro FHIR (Preview)
 
 ### <a name="what-is-iomt"></a>Co je IoMT?
 IoMT se jeví pro Internet lékařských věcí a jedná se o kategorii zařízení IoT, která zachytí a vyměňují data o stavu a wellness s dalšími zdravotnickými systémy IT přes síť. Mezi příklady zařízení IoMT patří vhodnost a klinické wearables, sledovací senzory, sledování aktivit, veřejné terminály nebo dokonce inteligentní klid.
 
-### <a name="how-many-iot-connectors-do-i-need"></a>Kolik konektorů IoT potřebuji?
-Jeden konektor IoT se dá použít k ingestování dat z velkého počtu různých typů zařízení. V následujících případech se můžete rozhodnout použít různé konektory:
-- **Škálování**: ve verzi Public Preview je kapacita prostředků služby IoT Connector pevná a očekává se, že bude poskytovat propustnost přibližně 200 zpráv za sekundu. Pokud je potřeba vyšší propustnost, můžete přidat další konektory IoT.
-- **Typ zařízení**: můžete nastavit samostatný konektor IoT pro každý typ IoMT zařízení, která máte k dispozici pro správu zařízení.
+### <a name="how-many-azure-iot-connector-for-fhir-preview-do-i-need"></a>Kolik Azure IoT Connectoru pro FHIR (Preview) Potřebuji?
+Jeden konektor Azure IoT pro FHIR * se dá použít k ingestování dat z velkého počtu různých typů zařízení. V následujících případech se můžete rozhodnout použít různé konektory:
+- **Škálování**: ve verzi Public Preview je pro službu Azure IoT Connector pro kapacitu prostředků FHIR pevný a očekává se, že se bude poskytovat propustnost přibližně 200 zpráv za sekundu. Pokud potřebujete vyšší propustnost, můžete přidat další Azure IoT Connector pro FHIR.
+- **Typ zařízení**: můžete nastavit samostatný konektor Azure IoT pro FHIR pro každý typ zařízení IoMT, které máte k dispozici pro správu zařízení.
 
-### <a name="is-there-a-limit-on-number-of-iot-connectors-during-public-preview"></a>Existuje limit počtu konektorů IoT během veřejné verze Preview?
-Ano, můžete vytvořit pouze dvě konektory IoT na jedno předplatné a tato funkce je ve verzi Public Preview. Toto omezení existuje, aby nedocházelo k neočekávaným výdajům, protože funkce je dostupná zdarma ve verzi Preview. Na vyžádání může být tento limit vystoupl až do maximálního počtu pěti konektorů IoT.
+### <a name="is-there-a-limit-on-number-of-azure-iot-connector-for-fhir-preview-during-public-preview"></a>Je k dispozici limit počtu konektorů Azure IoT pro FHIR (Preview) ve verzi Public Preview?
+Ano, můžete vytvořit pouze dva konektory Azure IoT pro FHIR pro každé předplatné, zatímco funkce je ve verzi Public Preview. Toto omezení existuje, aby nedocházelo k neočekávaným výdajům, protože funkce je dostupná zdarma ve verzi Preview. Na vyžádání by tento limit mohl být vyvolán až pro maximálně pět Azure IoT Connector pro FHIR.
 
-### <a name="what-azure-regions-iot-connector-feature-is-available-during-public-preview"></a>Jaké funkce konektoru IoT pro oblasti Azure jsou dostupné ve verzi Public Preview?
-Konektor IoT je k dispozici ve všech oblastech Azure, kde je k dispozici rozhraní Azure API pro FHIR.
+### <a name="what-azure-regions-azure-iot-connector-for-fhir-preview-feature-is-available-during-public-preview"></a>Jaké oblasti Azure IoT Connector pro FHIR (Preview) jsou k dispozici ve verzi Public Preview?
+Azure IoT Connector pro FHIR je k dispozici ve všech oblastech Azure, kde je k dispozici rozhraní Azure API pro FHIR.
 
-### <a name="can-i-configure-scaling-capacity-for-iot-connector"></a>Můžu nakonfigurovat kapacitu škálování pro IoT Connector?
-Vzhledem k tomu, že konektor IoT je během veřejné verze Preview zdarma, jeho kapacita škálování je pevná a omezená. Očekává se konfigurace konektoru IoT, která je dostupná ve verzi Public Preview, aby poskytovala propustnost přibližně 200 zpráv za sekundu. K dispozici je určitá forma konfigurace kapacity prostředků ve všeobecné dostupnosti (GA).
+### <a name="can-i-configure-scaling-capacity-for-azure-iot-connector-for-fhir-preview"></a>Můžu nakonfigurovat kapacitu škálování pro Azure IoT Connector pro FHIR (Preview)?
+Vzhledem k tomu, že Azure IoT Connector pro FHIR je v rámci verze Public Preview zdarma, je kapacita škálování pevná a omezená. Pro konfiguraci služby Azure IoT Connector pro FHIR, která je dostupná ve verzi Public Preview, se očekává, že bude poskytovat propustnost přibližně 200 zpráv za sekundu. K dispozici je určitá forma konfigurace kapacity prostředků ve všeobecné dostupnosti (GA).
 
-### <a name="what-fhir-version-does-iot-connector-support"></a>Jakou verzi FHIR podporuje IoT Connector?
-Konektor IoT aktuálně podporuje pouze FHIR verze R4. Proto je tato funkce viditelná jenom v instancích R4 Azure API pro FHIR a Microsoft neplánuje v tomto okamžiku podporu verze STU3.
+### <a name="what-fhir-version-does-azure-iot-connector-for-fhir-preview-support"></a>Jakou verzi FHIR podporuje Azure IoT Connector pro FHIR (Preview)?
+Azure IoT Connector pro FHIR aktuálně podporuje jenom FHIR verze R4. Proto je tato funkce viditelná jenom v instancích R4 Azure API pro FHIR a Microsoft neplánuje v tomto okamžiku podporu verze STU3.
 
-### <a name="why-cant-i-install-iot-connector-when-private-link-is-enabled-on-azure-api-for-fhir"></a>Proč nejde nainstalovat konektor IoT, pokud je v rozhraní Azure API pro FHIR povolené privátní propojení?
-Konektor IoT Connector v tuto chvíli nepodporuje funkce privátního propojení. Proto pokud máte v rozhraní Azure API pro FHIR povolené privátní propojení, nemůžete nainstalovat službu IoT Connector ani naopak. Toto omezení se má vrátit, pokud je konektor IoT dostupný pro obecnou dostupnost (GA).
+### <a name="why-cant-i-install-azure-iot-connector-for-fhir-preview-when-private-link-is-enabled-on-azure-api-for-fhir"></a>Proč není možné nainstalovat Azure IoT Connector pro FHIR (Preview), pokud je v rozhraní Azure API pro FHIR povolené privátní propojení?
+Azure IoT Connector pro FHIR v tuto chvíli nepodporuje funkce privátního propojení. Proto pokud máte v rozhraní Azure API pro FHIR povolený privátní odkaz, nemůžete pro FHIR a naopak nainstalovat Azure IoT Connector. Toto omezení se očekává, když je Azure IoT Connector pro FHIR dostupný pro obecnou dostupnost (GA).
 
-### <a name="whats-the-difference-between-the-open-source-iomt-fhir-connector-for-azure-and-iot-connector-feature-of-azure-api-for-fhir-service"></a>Jaký je rozdíl mezi open source konektorem IoMT FHIR pro Azure a funkci IoT Connector služby Azure API pro FHIR?
-IoT Connector je hostovaná a spravovaná verze konektoru open-source IoMT FHIR pro Azure. Ve spravované službě poskytuje společnost Microsoft veškerou údržbu a aktualizace.
+### <a name="whats-the-difference-between-the-open-source-iomt-fhir-connector-for-azure-and-azure-iot-connector-for-fhir-preview-feature-of-azure-api-for-fhir-service"></a>Jaký je rozdíl mezi open source konektorem IoMT FHIR pro Azure a funkcí Azure IoT Connector pro FHIR (Preview) Azure API pro službu FHIR?
+Azure IoT Connector pro FHIR je hostovaná a spravovaná verze konektoru open-source IoMT FHIR pro Azure. Ve spravované službě poskytuje společnost Microsoft veškerou údržbu a aktualizace.
 
 Pokud používáte konektor IoMT FHIR pro Azure, máte přímý přístup k podkladovým prostředkům. I když ukládáte data FÍ, zodpovídáte i za údržbu a aktualizaci serveru a všech požadovaných dodržování předpisů.
 
-Z hlediska vývoje se každá funkce nasadí do Open Source konektoru IoMT FHIR pro Azure jako první. Po ověření v open source se uvolní do funkce PaaS IoT Connector služby Azure API pro službu FHIR. Doba mezi vydáním v open-source a PaaS závisí na složitosti funkce a dalších prioritách na mapě provozu.
+Z hlediska vývoje se každá funkce nasadí do Open Source konektoru IoMT FHIR pro Azure jako první. Po ověření v open source se uvolní do PaaS Azure IoT Connector pro FHIR funkce Azure API pro službu FHIR. Doba mezi vydáním v open-source a PaaS závisí na složitosti funkce a dalších prioritách na mapě provozu.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -88,3 +87,7 @@ V tomto článku jste si přečetli některé z nejčastějších dotazů k rozh
  
 >[!div class="nextstepaction"]
 >[Podporované funkce FHIR](fhir-features-supported.md)
+
+* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview).
+
+FHIR je registrovaná ochranná známka HL7 a používá se s povolením HL7.

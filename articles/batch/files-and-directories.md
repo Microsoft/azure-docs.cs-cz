@@ -2,23 +2,27 @@
 title: Soubory a adresáře v Azure Batch
 description: Přečtěte si o souborech a adresářích a o tom, jak se používají v Azure Batch pracovním postupu z hlediska vývoje.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: e7babb7e2cfdbbe78f61be766c549c1e80cacf98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/03/2020
+ms.openlocfilehash: eafea6c234c3b261521f8a791b7a03e25388f02a
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83791117"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552628"
 ---
 # <a name="files-and-directories-in-azure-batch"></a>Soubory a adresáře v Azure Batch
 
-V Azure Batch každý úkol má pracovní adresář, pod kterým se vytvoří nula nebo více souborů a adresářů. Tento pracovní adresář lze použít pro ukládání programu, který je spuštěn úkolem, dat, která zpracovává, a výstupu zpracování, které provádí. Všechny soubory a adresáře úkolu jsou vlastněné uživatelem úkolu.
+V Azure Batch každý úkol má pracovní adresář, pod kterým může vytvářet soubory a adresáře. Tento pracovní adresář lze použít pro ukládání programu, který je spuštěn úkolem, dat, která zpracovává, a výstupu zpracování, které provádí. Všechny soubory a adresáře úkolu jsou vlastněné uživatelem úkolu.
 
-Služba Batch zveřejňuje část systému souborů na uzlu jako *kořenový adresář*. Úkoly mohou získat přístup do kořenového adresáře odkazem na proměnnou prostředí `AZ_BATCH_NODE_ROOT_DIR`. Další informace o používání proměnných prostředí naleznete v tématu [Nastavení prostředí pro úkoly](jobs-and-tasks.md#environment-settings-for-tasks).
+Služba Batch zveřejňuje část systému souborů na uzlu jako *kořenový adresář*. Tento kořenový adresář se nachází na dočasné jednotce úložiště virtuálního počítače, ne přímo na jednotce operačního systému.
+
+Úkoly mohou získat přístup do kořenového adresáře odkazem na proměnnou prostředí `AZ_BATCH_NODE_ROOT_DIR`. Další informace o používání proměnných prostředí naleznete v tématu [Nastavení prostředí pro úkoly](jobs-and-tasks.md#environment-settings-for-tasks).
+
+## <a name="root-directory-structure"></a>Struktura kořenového adresáře
 
 Kořenový adresář obsahuje následující adresářovou strukturu:
 
-! [Adresářová struktura výpočetního uzlu] [media\files-and-directories\node-folder-structure.png]
+![Snímek obrazovky adresářové struktury výpočetního uzlu](media\files-and-directories\node-folder-structure.png)
 
 - **aplikace**: obsahuje informace o podrobnostech balíčků aplikací nainstalovaných na výpočetním uzlu. Úkoly mohou získat přístup do tohoto adresáře odkazem na proměnnou prostředí `AZ_BATCH_APP_PACKAGE`.
 
@@ -33,7 +37,7 @@ Kořenový adresář obsahuje následující adresářovou strukturu:
 - **pracovní položky**: Tento adresář obsahuje adresáře pro úlohy a jejich úkoly na výpočetním uzlu.
 
     V adresáři **pracovní položky** se vytvoří adresář **úkoly** pro každý úkol, který běží na uzlu. K tomuto adresáři se dá dostat odkazem na `AZ_BATCH_TASK_DIR` proměnnou prostředí.
-    
+
     Ve všech adresářích **úloh** vytvoří služba Batch pracovní adresář (), `wd` jehož jedinečná cesta je určena `AZ_BATCH_TASK_WORKING_DIR` proměnnou prostředí. Tento adresář poskytuje přístup pro čtení a zápis pro úkol. Úkol může vytvořit, číst, aktualizovat a odstranit soubory v tomto adresáři. Tento adresář je zachován podle pravidel omezení *RetentionTime*, které je zadáno pro úkol.
 
     `stdout.txt`Soubory a `stderr.txt` jsou zapsány do složky **úkoly** během provádění úlohy.

@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 2a1fc4de572fbb8634f8f58452ce5f9b632023a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1595354803b0625137dd1ac45d17962063ce4e0
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628789"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562442"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Přehled Azure App Service místní mezipaměti
 
@@ -105,10 +105,13 @@ Pokud používáte funkci místní mezipaměti s přípravnými prostředími, o
 ### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Právě jsem publikoval nové změny, ale moje aplikace je pravděpodobně nepoužívá. Proč?
 Pokud vaše aplikace používá místní mezipaměť, pak je potřeba restartovat web, aby se získaly nejnovější změny. Nechcete publikovat změny v produkčním webu? Podívejte se na možnosti slotu v předchozí části věnované osvědčeným postupům.
 
+> [!NOTE]
+> Možnost [Spustit z balíčku](deploy-run-package.md) nasazení není kompatibilní s místní mezipamětí.
+
 ### <a name="where-are-my-logs"></a>Kde se nacházejí moje protokoly?
 S místní mezipamětí vaše protokoly a složky dat vypadají trochu jinak. Struktura podsložek ale zůstane stejná, s tím rozdílem, že podsložky se Nestled pod podsložku s formátem "jedinečný identifikátor virtuálního počítače" + časové razítko.
 
-### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Je povolená místní mezipaměť, ale moje aplikace se pořád restartovala. Proč to tak je? Mysleli, že místní mezipaměť pomohla častým restartováním aplikací.
+### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Je povolená místní mezipaměť, ale moje aplikace se pořád restartovala. Proč tomu tak je? Mysleli, že místní mezipaměť pomohla častým restartováním aplikací.
 Místní mezipaměť zabraňuje restartování aplikace související s úložištěm. Vaše aplikace ale může i nadále podstoupit restartování během plánovaných upgradů virtuálního počítače. Celkový počet restartování aplikace, u kterých máte zapnutou místní mezipaměť, by neměl být menší.
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Vylučuje místní mezipaměť kopírování všech adresářů na rychlejší místní disk?

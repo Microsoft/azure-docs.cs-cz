@@ -3,18 +3,18 @@ title: Vytvoření aplikace Azure IoT Central | Microsoft Docs
 description: Vytvořte novou aplikaci Azure IoT Central. Vytvořte aplikaci pomocí cenového plánu zdarma nebo některého ze standardních cenových plánů.
 author: viv-liu
 ms.author: viviali
-ms.date: 02/12/2020
+ms.date: 07/30/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: b670776804c9758774bf216052254148f063e7da
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4b939505f807385f235def2606d0f29564f5d08f
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81758144"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552573"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Vytvoření aplikace Azure IoT Central
 
@@ -43,8 +43,11 @@ Vytvoření nové aplikace Azure IoT Central z **vlastní šablony aplikace** :
     ![Informace o fakturaci IoT Central Azure](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
 
     > [!NOTE]
-    > Pokud jste na předchozí stránce vybrali **vlastní aplikaci** , zobrazí se rozevírací nabídka **šablony aplikace** . Odsud můžete přepínat mezi vlastními a staršími šablonami. Můžete se také podívat na další šablony, které jsou pro vaši organizaci k dispozici.
+    > Pokud jste na předchozí stránce vybrali **vlastní aplikaci** , zobrazí se rozevírací nabídka **šablony aplikace** . Rozevírací seznam může zobrazit další šablony, které vám zpřístupnil vaše organizace. 
 
+    >[!IMPORTANT]
+    >**Vlastní aplikace (starší verze)** šablona (verze 2) byla vyřazena, protože všechny funkce dříve dostupné v šabloně starší verze aplikace jsou nyní k dispozici v nejnovější **vlastní šabloně aplikace** (V3). 
+    
 1. Tuto aplikaci můžete vytvořit pomocí cenového plánu bezplatné zkušební verze 7 dní, případně podle standardních cenových plánů:
 
     - Aplikace vytvořené pomocí *bezplatného* plánu jsou po dobu sedmi dnů zdarma a podporují až pět zařízení. Můžete je kdykoli převést na používání standardního cenového plánu, než vyprší jejich platnost.

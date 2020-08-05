@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 218c0bebee6ed1e36da747802ea5e94bcebf9d62
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 005fb194a5c1539b70ccb8e8ac7d938b190ee4f5
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026522"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563308"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Chráněné webové rozhraní API: ověření oborů a rolí aplikací
 
@@ -72,7 +72,7 @@ public class TodoListController : Controller
     [HttpGet]
     public IEnumerable<TodoItem> Get()
     {
-         HttpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi)
+         HttpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);
         // Do the work and return the result.
         // ...
     }
@@ -100,7 +100,7 @@ Pokud je vaše webové rozhraní API voláno [aplikací démona](scenario-daemon
 
 Teď musíte mít rozhraní API, abyste ověřili, že token, který obdrží, obsahuje `roles` deklaraci identity a že tato deklarace má očekávanou hodnotu. Ověřovací kód je podobný kódu, který ověřuje delegovaná oprávnění s tím rozdílem, že vaše akce kontroleru testuje role namísto oborů:
 
-### <a name="aspnet-core"></a>Výsledek akce
+### <a name="aspnet-core"></a>ASP.NET Core
 
 ```csharp
 [Authorize]
@@ -153,4 +153,4 @@ Kontrola inverzní podmínky umožňuje pouze aplikacím, které přihlásí už
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přesun do produkčního prostředí](scenario-protected-web-api-production.md)
+> [Přechod k produkčnímu prostředí](scenario-protected-web-api-production.md)

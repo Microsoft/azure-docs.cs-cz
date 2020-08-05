@@ -5,12 +5,12 @@ description: Naučte se vytvářet a používat statickou veřejnou IP adresu pr
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: f7ea25c3348b96ec6d8818e8e1db4660b308dabc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 81b99478358ec3d670e8d783fba27603483614ea
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517769"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563241"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Použití statické veřejné IP adresy pro odchozí přenosy se *základní* službou pro vyrovnávání zatížení ve službě Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak vytvořit a používat statickou veřejnou IP 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V tomto článku se předpokládá, že používáte Azure Basic Load Balancer.  Doporučujeme používat [Standard Load Balancer Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)a můžete využít pokročilejší funkce pro [řízení odchozího provozu AKS](https://docs.microsoft.com/azure/aks/limit-egress-traffic).
+V tomto článku se předpokládá, že používáte Azure Basic Load Balancer.  Doporučujeme používat [Standard Load Balancer Azure](../load-balancer/load-balancer-overview.md)a můžete využít pokročilejší funkce pro [řízení odchozího provozu AKS](./limit-egress-traffic.md).
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 

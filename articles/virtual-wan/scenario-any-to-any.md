@@ -6,22 +6,43 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: ecc2b3cf236cb2a78fd595189649e7f6b176d709
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 95fa7a8c6abd0ad65b367cacef15b8faa16da640
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568402"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553423"
 ---
 # <a name="scenario-any-to-any"></a>Scénář: Any-to-Any
 
-Při práci s směrováním virtuálního rozbočovače WAN je k dispozici několik scénářů, které jsou v pořádku. V jakémkoli scénáři je možné, že každý paprsek má přístup k jinému paprsku. Pokud existuje víc rozbočovačů, je ve výchozím nastavení Standard Virtual WAN povolené směrování centra (označované také jako u služby Inter-hub). 
+Při práci s směrováním virtuálního rozbočovače WAN je k dispozici několik scénářů, které jsou v pořádku. V jakémkoli scénáři je možné, že každý paprsek má přístup k jinému paprsku. Pokud existuje víc rozbočovačů, je ve výchozím nastavení Standard Virtual WAN povolené směrování centra (označované také jako u služby Inter-hub). Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
 
-V tomto scénáři jsou připojení VPN, ExpressRoute a User VPN přidružená ke stejné směrovací tabulce. Všechna připojení VPN, ExpressRoute a VPN uživatele šíří trasy do stejné sady směrovacích tabulek. Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
+## <a name="design"></a><a name="design"></a>Návrh
 
-## <a name="scenario-architecture"></a><a name="architecture"></a>Architektura scénáře
+Aby bylo možné zjistit, kolik směrovacích tabulek bude potřeba ve scénáři virtuální sítě WAN, můžete vytvořit matici připojení, kde každá buňka představuje, jestli zdroj (řádek) může komunikovat s cílovým sloupcem (sloupec). Matice připojení v tomto scénáři je triviální, ale je zahrnutá, aby byla konzistentní s jinými scénáři.
+
+| Z |   Záměr |  *Virtuální sítě* | *Větve* |
+| -------------- | -------- | ---------- | ---|
+| Virtuální sítě     | &#8594;|      X     |     X    |
+| Větve   | &#8594;|    X     |     X    |
+
+Každá z buněk v předchozí tabulce popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků v tabulce) učí předpona cíle (na straně toku, záhlaví sloupců v tabulce kurzíva) pro konkrétní tok přenosů.
+
+Vzhledem k tomu, že všechna připojení z virtuální sítě i větví (VPN, ExpressRoute a User VPN) mají stejné požadavky na připojení, vyžaduje se jedna směrovací tabulka. V důsledku toho budou všechna připojení přidružená a šířena ke stejné směrovací tabulce, výchozí směrovací tabulce:
+
+* Virtuální sítě:
+  * Přidružená tabulka směrování: **výchozí**
+  * Rozšiřování do směrovacích tabulek: **výchozí**
+* Zřizování
+  * Přidružená tabulka směrování: **výchozí**
+  * Rozšiřování do směrovacích tabulek: **výchozí**
+
+Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
+
+## <a name="architecture"></a><a name="architecture"></a>Architektura
 
 Na **obrázku 1**se může vzájemně navázat všechny virtuální sítě a větve (VPN, EXPRESSROUTE, P2S). Ve virtuálním rozbočovači fungují připojení následujícím způsobem:
 
@@ -35,7 +56,7 @@ Tato připojení (ve výchozím nastavení při vytváření) jsou přidružená
 
 :::image type="content" source="./media/routing-scenarios/any-any/figure-1.png" alt-text="Obrázek 1":::
 
-## <a name="scenario-workflow"></a><a name="workflow"></a>Pracovní postup scénáře
+## <a name="workflow"></a><a name="workflow"></a>Pracovní postup
 
 Tento scénář je ve výchozím nastavení povolený pro standard Virtual WAN. Pokud je nastavení pro větev mezi větvemi v konfiguraci sítě WAN zakázané, zakážete připojení mezi větvemi paprsků. VPN/ExpressRoute/Uživatelská síť VPN se považují za větvení ve virtuální síti WAN.
 
