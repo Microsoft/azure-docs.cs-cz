@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: b907fead145847d54b8b1de196586b65101b22ed
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7dded3b938444198e72d6eb87476f571dd3f4d78
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534001"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836764"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Oprávnění v Azure Sentinel
 
-Služba Azure Sentinel používá [Access Control na základě rolí (RBAC)](../role-based-access-control/role-assignments-portal.md) k poskytování [předdefinovaných rolí](../role-based-access-control/built-in-roles.md)   , které se dají přiřadit uživatelům, skupinám a službám v Azure.
+Služba Azure Sentinel používá [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) k poskytování [integrovaných rolí](../role-based-access-control/built-in-roles.md)   , které se dají přiřadit uživatelům, skupinám a službám v Azure.
 
 Pomocí RBAC vytvořte a přiřaďte role v rámci vašeho týmu zabezpečení provozu a udělte odpovídající přístup k Sentinel Azure. Různé role poskytují přesnější kontrolu nad tím, co můžou uživatelé Azure Sentinel zobrazit a dělat. Role Azure se dají přiřadit přímo v pracovním prostoru Azure Sentinel (viz poznámku níže) nebo v předplatném nebo skupině prostředků, do které pracovní prostor patří. to znamená, že Azure Sentinel zdědí.
 

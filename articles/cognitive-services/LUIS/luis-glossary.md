@@ -3,12 +3,12 @@ title: Glosář – LUIS
 description: Glosář vysvětluje výrazy, se kterými se můžete setkat při práci se službou LUIS API.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 44749648559994d986e4d84b06f38369850de6ca
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056374"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836407"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Jazyk porozumění běžným slovníkům a konceptům
 Glosář Language Understanding (LUIS) vysvětluje výrazy, se kterými se můžete setkat při práci se službou LUIS.
@@ -72,7 +72,7 @@ V dávkovém testování je přesnost (označovaná také jako kladná prediktiv
 
 Příkladem pro dávkový test zvířat je počet ovcí, které byly předpovězeny dělený celkovým počtem zvířat (ovce a non-ovce).
 
-### <a name="recall"></a>Úplnost
+### <a name="recall"></a>Recall
 
 Při dávkovém testování je možné LUIS zobecnit (označované také jako citlivost).
 
@@ -86,7 +86,7 @@ Hodnota true negativ je, pokud vaše aplikace správně nevyhovuje. Při dávkov
 
 Hodnota true pozitivní (TP) pravdivé kladné hodnoty je, když vaše aplikace správně odhadne shodu. Při dávkovém testování dojde k pravdivé kladné události, pokud vaše aplikace předpovídá záměr nebo entitu pro příklad, který byl označen tímto záměrem nebo entitou.
 
-## <a name="classifier"></a>Třídění
+## <a name="classifier"></a>Klasifikátor
 
 Klasifikátor je model strojového učení, který předpovídá, do jaké kategorie nebo třídy se vstup vejde.
 
@@ -94,11 +94,11 @@ Klasifikátor je model strojového učení, který předpovídá, do jaké kateg
 
 ## <a name="collaborator"></a>Spolupracovník
 
-Spolupracovníci je koncepčně stejné jako [Přispěvatel](#contributor). Spolupracovníka má udělený přístup, když vlastník přidá e-mailovou adresu spolupracovníka do aplikace, která není řízená přístupem na základě role (RBAC). Pokud stále používáte spolupracovníky, měli byste migrovat svůj účet LUIS a pomocí prostředků vytváření LUIS spravovat přispěvatele s RBAC.
+Spolupracovníci je koncepčně stejné jako [Přispěvatel](#contributor). Spolupracovníka má udělený přístup, když vlastník přidá e-mailovou adresu spolupracovníka do aplikace, která není řízená řízením přístupu na základě role Azure (Azure RBAC). Pokud stále používáte spolupracovníky, měli byste migrovat svůj účet LUIS a pomocí prostředků vytváření LUIS spravovat přispěvatele s RBAC.
 
 ## <a name="contributor"></a>Přispěvatel
 
-Přispěvatel není [vlastníkem](#owner) aplikace, ale má stejná oprávnění k přidávání, úpravám a odstraňování záměrů, entit a projevy. Přispěvatel poskytuje přístup na základě role (RBAC) k aplikaci LUIS.
+Přispěvatel není [vlastníkem](#owner) aplikace, ale má stejná oprávnění k přidávání, úpravám a odstraňování záměrů, entit a projevy. Přispěvatel poskytuje řízení přístupu na základě role Azure (Azure RBAC) do aplikace LUIS.
 
 Viz také:
 * [Postup](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource) přidání přispěvatelů
@@ -107,7 +107,7 @@ Viz také:
 
 Popisovač je termín, který se dřív používal pro [funkci](#features)strojového učení.
 
-## <a name="domain"></a>Domain (Doména)
+## <a name="domain"></a>Doména
 
 V kontextu LUIS je doména oblastí znalostí. Vaše doména je specifická pro váš scénář. Různé domény používají konkrétní jazyk a terminologii, které mají význam v souvislosti s doménou. Pokud například vytváříte aplikaci pro přehrávání hudby, budou mít vaše aplikace určité termíny a jazyky specifické pro hudbu – slova jako "skladba, sledování, album, texty, b-strana, Interpret". Příklady domén najdete v tématu [předem připravené domény](#prebuilt-domain).
 
@@ -200,7 +200,7 @@ Model A (strojové učení) je funkce, která provádí předpověď na vstupní
 
 Do entit [seznamu](#list-entity) přidáte hodnoty. Každá z těchto hodnot může mít seznam jednoho nebo více synonym. V odpovědi se vrátí jenom normalizovaná hodnota.
 
-## <a name="overfitting"></a>Přeučení
+## <a name="overfitting"></a>Přeurčení (overfitting)
 
 K překrytí dojde, když je model v konkrétních příkladech přizpůsobený a není schopný zobecnit správně.
 
@@ -228,7 +228,7 @@ Předem vytvořená entita je LUIS entit, která poskytuje běžné typy informa
 
 Předem sestavený záměr je záměrem, který LUIS poskytuje pro běžné typy informací a přináší vlastní popisky projevy.
 
-## <a name="prediction"></a>Prediction (Předpověď)
+## <a name="prediction"></a>Předpověď
 
 Předpovědi je žádost REST ke službě předpovědi Azure LUIS, která přebírá nové údaje (uživatel utterance), a pro tato data používá vyškolenou a publikovanou aplikaci k určení, jakého záměru a entit se najde.
 
@@ -254,7 +254,7 @@ Můžete například použít model, který určí, jestli některý z textů z�
 
 Přejmenováno na [klíč pro vytváření](#authoring-key).
 
-## <a name="publish"></a>Publikování
+## <a name="publish"></a>Publikovat
 
 [Publikování](luis-how-to-publish-app.md) znamená, že Luis aktivní verze je dostupná na pracovním nebo produkčním [koncovém bodu](#endpoint).
 
@@ -283,9 +283,9 @@ V LUIS [seznam entit](reference-entity-list.md)můžete vytvořit normalizovanou
 
 |Hodnota Nomalized| Synonyma|
 |--|--|
-|Malá| trochu jedna, 8 unce|
+|Malý| trochu jedna, 8 unce|
 |Střední| Regular, 12 unce|
-|Velká| velký, 16 unce|
+|Velký| velký, 16 unce|
 |Xtra velký| největší z nich, 24 unce|
 
 Model Vrátí normalizovanou hodnotu pro entitu, pokud se ve vstupu objeví kterákoli z synonym.
@@ -305,7 +305,7 @@ Podívejte se [na téma Změna časového pásma předem sestavené entity datet
 
 Pro **angličtinu**je token souvislým rozsahem písmen a číslic (bez mezer nebo interpunkčních znamének). Prostor není token.
 
-|Jedenkrát|Počet tokenů|Vysvětlení|
+|Fráze|Počet tokenů|Vysvětlení|
 |--|--|--|
 |`Dog`|1|Jedno slovo bez interpunkce nebo mezer.|
 |`RMT33W`|1|Číslo lokátoru záznamu. Může obsahovat čísla a písmena, ale nemá žádnou interpunkci.|

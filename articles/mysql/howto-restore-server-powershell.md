@@ -8,18 +8,18 @@ ms.devlang: azurepowershel
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0f85283ad90f219dfbf404c437a843e1191b19fa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5571d5a937fc48030c38ebe78c86ef27d6727a67
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498731"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837270"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Postup zálohování a obnovení serveru Azure Database for MySQL pomocí prostředí PowerShell
 
 Azure Database for MySQL servery se pravidelně zálohují, aby se povolily funkce obnovení. Pomocí této funkce můžete obnovit server a všechny jeho databáze k dřívějšímu bodu v čase na novém serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto průvodce budete potřebovat:
 
@@ -133,4 +133,4 @@ Nový server vytvořený během obnovy nemá koncové body služby virtuální s
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení parametrů Azure Database for MySQL serveru pomocí PowerShellu](howto-configure-server-parameters-using-powershell.md)
+> [Jak vygenerovat připojovací řetězec Azure Database for MySQL pomocí PowerShellu](howto-connection-string-powershell.md)

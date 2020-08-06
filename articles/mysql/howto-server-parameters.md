@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/11/2020
-ms.openlocfilehash: ce8a651fcdda657a1fffa523837181031e0bbc75
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f592d6fb8fed3f15bd11d5e6ebe6ee358953748c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119799"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837224"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Konfigurace parametrů serveru v Azure Database for MySQL pomocí Azure Portal
 
@@ -33,12 +33,12 @@ Azure Database for MySQL podporuje konfiguraci některých parametrů serveru. T
 
 Pokud parametr serveru, který chcete aktualizovat, není uveden v Azure Portal, můžete volitelně nastavit parametr na úrovni připojení pomocí `init_connect` . Tím se nastaví parametry serveru pro každého klienta, který se připojuje k serveru. 
 
-1. V části **Nastavení** klikněte na **parametry serveru** a otevřete stránku parametry serveru pro Azure Database for MariaDB Server.
+1. V části **Nastavení** klikněte na **parametry serveru** a otevřete stránku parametry serveru pro Azure Database for MySQL server.
 2. Hledat`init_connect`
 3. Přidejte parametry serveru ve formátu: `SET parameter_name=YOUR_DESIRED_VALUE` hodnota ve sloupci hodnota.
 
     Například můžete změnit znakovou sadu serveru nastavením `init_connect` na`SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
-4. Kliknutím na **Uložit** uložte změny.
+4. Kliknutím na **Uložit** změny uložte.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Práce s parametrem časového pásma
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 73b7171b89b26926992e95f77e376e7bb7731eff
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c7027f474c9ff5cbd90ed1800d74e3b4ebd60b3e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408319"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836934"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Nastavení instance a ověřování digitálních vláken Azure (portál)
 
@@ -62,7 +62,7 @@ Na následující stránce *vytvořit prostředek* vyplňte hodnoty uvedené ní
 
 Po dokončení vyberte _zkontrolovat + vytvořit_. Tím přejdete na stránku Souhrn, kde můžete zkontrolovat podrobnosti instance, které jste zadali, a _vytvořit_. 
 
-### <a name="verify-success"></a>Ověřit úspěch
+### <a name="verify-success-and-collect-important-values"></a>Ověřit úspěšné a shromažďovat důležité hodnoty
 
 Po nahrání *Vytvoření*můžete zobrazit stav nasazení vaší instance v oznámeních Azure na panelu ikon portálu. Oznámení bude označovat, že nasazení proběhlo úspěšně, a budete moci vybrat tlačítko _Přejít k prostředku_ a zobrazit vytvořenou instanci.
 

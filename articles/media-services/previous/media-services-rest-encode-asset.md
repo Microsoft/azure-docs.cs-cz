@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9320677e970d9194e2cccad07522d7a63b6353d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e9cf5a65c664df321e8cee1c867e637a4718c9ee
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999968"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837325"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Postup při kódování assetu pomocí Media Encoder Standard
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "86999968"
 
 Aby bylo možné doručovat digitální video přes Internet, je nutné médium zkomprimovat. Digitální video soubory jsou velké a můžou být moc velké, aby je bylo možné doručit přes Internet, nebo aby se zařízení vašich zákazníků zobrazovalo správně. Kódování je proces komprimace videa a zvuku, aby vaši zákazníci mohli zobrazit vaše média.
 
-Úlohy kódování jsou jednou z nejběžnějších operací zpracování v Azure Media Services. Vytvoříte úlohy kódování pro převod mediálních souborů z jednoho kódování na jiný. Při kódování můžete použít Media Services integrovaný kodér (Media Encoder Standard). Můžete také použít kodér poskytovaný Media Services partnerem. Kodéry třetích stran jsou k dispozici prostřednictvím Azure Marketplace. Můžete zadat podrobnosti o úlohách kódování pomocí přednastavených řetězců definovaných pro váš kodér nebo pomocí přednastavených konfiguračních souborů. Chcete-li zobrazit typy přednastavení, které jsou k dispozici, přečtěte si téma [Předvolby úloh pro Media Encoder Standard](/azure/media-services/previous/media-services-mes-presets-overview).
+Úlohy kódování jsou jednou z nejběžnějších operací zpracování v Azure Media Services. Vytvoříte úlohy kódování pro převod mediálních souborů z jednoho kódování na jiný. Při kódování můžete použít Media Services integrovaný kodér (Media Encoder Standard). Můžete také použít kodér poskytovaný Media Services partnerem. Kodéry třetích stran jsou k dispozici prostřednictvím Azure Marketplace. Můžete zadat podrobnosti o úlohách kódování pomocí přednastavených řetězců definovaných pro váš kodér nebo pomocí přednastavených konfiguračních souborů. Chcete-li zobrazit typy přednastavení, které jsou k dispozici, přečtěte si téma [Předvolby úloh pro Media Encoder Standard](./media-services-mes-presets-overview.md).
 
 Každá úloha může mít jeden nebo více úloh v závislosti na typu zpracování, které chcete provést. Pomocí REST API můžete vytvořit úlohy a jejich související úkoly jedním ze dvou způsobů:
 
@@ -65,7 +65,7 @@ Informace o tom, jak se připojit k rozhraní API AMS, najdete v tématu [přís
 >
 >
 
-Následující příklad ukazuje, jak vytvořit a publikovat úlohu s jednou nastavenou úlohou ke kódování videa v konkrétním rozlišení a kvalitě. Při kódování pomocí Media Encoder Standard můžete použít předvolby konfigurace úloh, které jsou [tady](/azure/media-services/previous/media-services-mes-presets-overview)uvedené.
+Následující příklad ukazuje, jak vytvořit a publikovat úlohu s jednou nastavenou úlohou ke kódování videa v konkrétním rozlišení a kvalitě. Při kódování pomocí Media Encoder Standard můžete použít předvolby konfigurace úloh, které jsou [tady](./media-services-mes-presets-overview.md)uvedené.
 
 Požadavek:
 

@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 47c3d1b4d603e2dde2de8d4a95fb953744d71409
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259015"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836730"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Přečtěte si o rozdílech mezi Cloud Services a Service Fabric před migrací aplikací.
 Microsoft Azure Service Fabric je cloudová aplikační platforma nové generace pro vysoce škálovatelné a vysoce spolehlivé distribuované aplikace. Zavádí mnoho nových funkcí pro balení, nasazování, upgradování a správu distribuovaných cloudových aplikací. 
@@ -81,7 +81,7 @@ Stejný komunikační model lze použít v Service Fabric. To může být užite
 ![Service Fabric přímá komunikace][8]
 
 ## <a name="parity"></a>Parity
-[Cloud Services je podobná Service Fabric ve stupni řízení a jednoduchosti použití, ale teď je to starší služba a Service Fabric se doporučuje pro nový vývoj](/azure/app-service/overview-compare). Toto je porovnání rozhraní API:
+[Cloud Services je podobná Service Fabric ve stupni řízení a jednoduchosti použití, ale teď je to starší služba a Service Fabric se doporučuje pro nový vývoj](/azure/architecture/guide/technology-choices/compute-decision-tree). Toto je porovnání rozhraní API:
 
 
 | **Rozhraní API cloudové služby** | **Rozhraní API pro Service Fabric** | **Poznámky** |

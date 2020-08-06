@@ -7,36 +7,36 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 108882fd9e585fadc98436c3404bd8945e80080f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: a3641994098834b47412598b25b3effb2be7d276
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460673"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836713"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Základní hodnoty zabezpečení Azure pro Service Fabric
 
 Základní plán zabezpečení Azure pro Service Fabric obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
-Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
+Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](../security/benchmarks/overview.md), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
 
-Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](../security/benchmarks/security-baselines-overview.md).
 
 
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](/azure/security/benchmarks/security-control-network-security).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Ochrana prostředků Azure v rámci virtuálních sítí
 
 **Pokyny**: Ujistěte se, že všechna nasazení Virtual Network podsítí mají skupinu zabezpečení sítě použitou pro řízení přístupu k síti specifická pro důvěryhodné porty a zdroje vaší aplikace.
 
-* [Nasazení brány Azure Firewall pomocí šablony](https://docs.microsoft.com/azure/firewall/deploy-template)
+* [Nasazení brány Azure Firewall pomocí šablony](../firewall/deploy-template.md)
 
-* [Vytváření hraničních sítí pomocí skupin zabezpečení sítě Azure (skupin zabezpečení sítě)](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices#use-network-isolation-and-security-with-azure-service-fabric)
+* [Vytváření hraničních sítí pomocí skupin zabezpečení sítě Azure (skupin zabezpečení sítě)](../security/fundamentals/service-fabric-best-practices.md#use-network-isolation-and-security-with-azure-service-fabric)
 
-* [Jak integrovat svůj cluster Azure Service Fabric se stávající virtuální sítí](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking)
+* [Jak integrovat svůj cluster Azure Service Fabric se stávající virtuální sítí](./service-fabric-patterns-networking.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -46,11 +46,11 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné**materiály: použijte Azure Security Center a opravte doporučení k ochraně sítě pro virtuální síť, podsíť a skupinu zabezpečení sítě, která se používá k zabezpečení clusteru Azure Service Fabric. Povolte protokoly toku NSG (Network Security Group) a odešlete protokoly do účtu Azure Storage k auditu provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Azure Log Analytics a používat Azure Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Azure Analýza provozu je schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
-* [Jak povolit protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [Jak povolit protokoly toku NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Jak povolit a používat Azure Analýza provozu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Jak povolit a používat Azure Analýza provozu](../network-watcher/traffic-analytics.md)
 
-* [Pochopení zabezpečení sítě, které poskytuje Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [Pochopení zabezpečení sítě, které poskytuje Azure Security Center](../security-center/security-center-network-recommendations.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -62,11 +62,11 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 Zvažte nasazení firewallu webových aplikací Azure (WAF) před kritickými webovými aplikacemi pro další kontrolu příchozího provozu. Povolte nastavení diagnostiky pro protokoly WAF a ingestování do účtu úložiště, centra událostí nebo Log Analytics pracovního prostoru.
 
-* [Service Fabric se službou Azure API Management – Přehled](https://docs.microsoft.com/azure/service-fabric/service-fabric-api-management-overview)
+* [Service Fabric se službou Azure API Management – Přehled](./service-fabric-api-management-overview.md)
 
-* [Integrace API Management v interní virtuální síti s Application Gateway](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Integrace API Management v interní virtuální síti s Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Jak nasadit Azure WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+* [Jak nasadit Azure WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -76,9 +76,9 @@ Zvažte nasazení firewallu webových aplikací Azure (WAF) před kritickými we
 
 **Pokyny**: u ochrany před útoky DDoS povolte službu Azure DDoS Standard Protection ve virtuální síti, ve které je nasazený cluster Azure Service Fabric. K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
 
-* [Jak nakonfigurovat DDoS Protection](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [Jak nakonfigurovat DDoS Protection](../virtual-network/manage-ddos-protection.md)
 
-* [Pochopení Azure Security Center integrované analýzy hrozeb](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/threat-protection.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -88,11 +88,11 @@ Zvažte nasazení firewallu webových aplikací Azure (WAF) před kritickými we
 
 **Pokyny**: povolení protokolu toku skupiny zabezpečení sítě (NSG) pro NSG připojené k podsíti používané k ochraně clusteru Azure Service Fabric. Zaznamenejte NSG Flow do účtu Azure Storage pro generování záznamů toků. Pokud se to vyžaduje pro prošetření aktivity neobvyklé, povolte zachytávání paketů služby Azure Network Watcher.
 
-* [Jak povolit protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [Jak povolit protokoly toku NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Postup povolení Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [Postup povolení Network Watcher](../network-watcher/network-watcher-create.md)
 
-* [Použití analýzy provozu k vizualizaci protokolů toku NSG](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Použití analýzy provozu k vizualizaci protokolů toku NSG](../network-watcher/traffic-analytics.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -100,15 +100,15 @@ Zvažte nasazení firewallu webových aplikací Azure (WAF) před kritickými we
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: nasazení systémů ochrany před internetovými útoky/systémy prevence vniknutí (ID/IP adresy)
 
-**Doprovodné**materiály: vyberte nabídku z Azure Marketplace, která podporuje funkce ID/IP adresy s možnostmi kontroly zatížení. Pokud zjišťování neoprávněných vniknutí nebo prevence na základě kontroly zatížení není požadavkem, je možné použít Azure Firewall s analýzou hrozeb. Azure Firewall filtrování na základě logiky hrozeb může upozorňovat a zamítnout provoz do a ze známých škodlivých IP adres a domén. IP adresy a domény se naúčtují z informačního kanálu Microsoft Threat Intelligence.
+**Doprovodné**materiály: vyberte nabídku z Azure Marketplace, která podporuje funkce ID/IP adresy s možnostmi kontroly zatížení. Pokud zjišťování neoprávněných vniknutí nebo prevence na základě kontroly zatížení není požadavkem, je možné použít Azure Firewall s analýzou hrozeb. Azure Firewall filtrování na základě logiky hrozeb může upozorňovat a zamítnout provoz do a ze známých škodlivých IP adres a domén. Zdrojem těchto IP adres a domén je kanál analýzy hrozeb Microsoftu.
 
 Nasaďte řešení brány firewall podle svého výběru na základě hranic sítě vaší organizace za účelem detekce nebo odepření škodlivého provozu.
 
 * [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-* [Postup nasazení Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Postup nasazení Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Postup konfigurace výstrah pomocí Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Postup konfigurace výstrah pomocí Azure Firewall](../firewall/threat-intel.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -118,11 +118,11 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 **Pokyny**: nasazení služby Azure Application Gateway pro webové aplikace s POVOLENým protokolem HTTPS/SSL u důvěryhodných certifikátů.
 
-* [Postup nasazení Application Gateway](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+* [Postup nasazení Application Gateway](../application-gateway/quick-create-portal.md)
 
-* [Postup konfigurace Application Gateway pro použití protokolu HTTPS](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+* [Postup konfigurace Application Gateway pro použití protokolu HTTPS](../application-gateway/create-ssl-portal.md)
 
-* [Princip vyrovnávání zatížení vrstvy 7 pomocí bran webových aplikací Azure](https://docs.microsoft.com/azure/application-gateway/overview)
+* [Princip vyrovnávání zatížení vrstvy 7 pomocí bran webových aplikací Azure](../application-gateway/overview.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -132,9 +132,9 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 **Pokyny**: pomocí značek služby virtuální sítě definujte řízení přístupu k síti u skupin zabezpečení sítě (NSG), které jsou připojené k podsíti, ve které je nasazený cluster Azure Service Fabric. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. ApiManagement) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 
-* [Značky služby virtuální sítě](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [Značky služby virtuální sítě](../virtual-network/service-tags-overview.md)
 
-* [Osvědčené postupy pro Service Fabric sítě](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-networking)
+* [Osvědčené postupy pro Service Fabric sítě](./service-fabric-best-practices-networking.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -146,11 +146,11 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, ovládací prvky RBAC a zásady, a to v jediné definici podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
 
-* [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Vytvoření Azure Blueprint](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Vytvoření Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -164,11 +164,11 @@ Použijte některou z předdefinovaných Azure Policy definic souvisejících s 
 
 Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můžete vyhledávat nebo provádět akce s prostředky na základě jejich značek.
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-* [Jak vytvořit virtuální síť](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Jak vytvořit virtuální síť](../virtual-network/quick-create-portal.md)
 
-* [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -178,9 +178,9 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s nasazeními Azure Service Fabric. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Vytváření výstrah v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -188,13 +188,13 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
 **Doprovodné**materiály: Společnost Microsoft udržuje časové zdroje pro součásti clusteru Azure Service Fabric, můžete aktualizovat synchronizaci času pro vaše výpočetní nasazení.
 
-* [Jak nakonfigurovat časovou synchronizaci pro výpočetní prostředky Azure](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [Jak nakonfigurovat časovou synchronizaci pro výpočetní prostředky Azure](../virtual-machines/windows/time-sync.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -204,11 +204,11 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 **Pokyny**: můžete připojit cluster Azure Service Fabric, aby Azure monitor agregovaná data zabezpečení generovaná clusterem. Podívejte se na příklady problémy s diagnostikou a řešení pomocí Service Fabric.
 
-* [Konfigurace Azure Monitor protokolů Integration s Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Konfigurace Azure Monitor protokolů Integration s Service Fabric](./service-fabric-diagnostics-oms-setup.md)
 
-* [Nastavení protokolů Azure Monitor pro kontejnery monitorování v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Nastavení protokolů Azure Monitor pro kontejnery monitorování v Azure Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [Diagnostikování běžných Service Fabric scénářů](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-common-scenarios)
+* [Diagnostikování běžných Service Fabric scénářů](./service-fabric-diagnostics-common-scenarios.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -218,13 +218,13 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 **Doprovodné**materiály: Povolte Azure monitor pro cluster Service Fabric a nasměrujte ho do pracovního prostoru Log Analytics. Tím se zaprotokolují relevantní informace o clusteru a metriky OS pro všechny uzly clusteru Azure Service Fabric.
 
-* [Konfigurace Azure Monitor protokolů Integration s Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Konfigurace Azure Monitor protokolů Integration s Service Fabric](./service-fabric-diagnostics-oms-setup.md)
 
-* [Nastavení protokolů Azure Monitor pro kontejnery monitorování v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Nastavení protokolů Azure Monitor pro kontejnery monitorování v Azure Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [Jak nasadit agenta Log Analytics do svých uzlů](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [Jak nasadit agenta Log Analytics do svých uzlů](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics prohledávání protokolu](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)
+* [Log Analytics prohledávání protokolu](../azure-monitor/log-query/log-query-overview.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -234,13 +234,13 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 **Doprovodné**materiály: připojení clusteru Azure Service Fabric k Azure monitor. Ujistěte se, že použitý pracovní prostor Log Analytics má dobu uchování protokolu nastavenou v souladu s předpisy pro dodržování předpisů vaší organizace.
 
-* [Konfigurace Azure Monitor protokolů Integration s Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Konfigurace Azure Monitor protokolů Integration s Service Fabric](./service-fabric-diagnostics-oms-setup.md)
 
-* [Nastavení protokolů Azure Monitor pro kontejnery monitorování v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Nastavení protokolů Azure Monitor pro kontejnery monitorování v Azure Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [Jak nasadit agenta Log Analytics do svých uzlů](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [Jak nasadit agenta Log Analytics do svých uzlů](./service-fabric-diagnostics-oms-agent.md)
 
-* [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)
+* [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../azure-monitor/platform/manage-cost-storage.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -250,13 +250,13 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 **Doprovodné**materiály: připojení clusteru Azure Service Fabric k Azure monitor. Ujistěte se, že použitý pracovní prostor Log Analytics má dobu uchování protokolu nastavenou v souladu s předpisy pro dodržování předpisů vaší organizace.
 
-* [Konfigurace Azure Monitor protokolů Integration s Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Konfigurace Azure Monitor protokolů Integration s Service Fabric](./service-fabric-diagnostics-oms-setup.md)
 
-* [Nastavení protokolů Azure Monitor pro kontejnery monitorování v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Nastavení protokolů Azure Monitor pro kontejnery monitorování v Azure Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [Jak nasadit agenta Log Analytics do svých uzlů](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [Jak nasadit agenta Log Analytics do svých uzlů](./service-fabric-diagnostics-oms-agent.md)
 
-* [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)
+* [Jak nakonfigurovat dobu uchování Log Analytics pracovního prostoru](../azure-monitor/platform/manage-cost-storage.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -266,7 +266,7 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 **Pokyny**: použití dotazů v pracovním prostoru Azure Log Analytics k dotazování protokolů služby Azure Service Fabric.
 
-* [Log Analytics prohledávání protokolu](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)
+* [Log Analytics prohledávání protokolu](../azure-monitor/log-query/log-query-overview.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -276,9 +276,9 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 **Pokyny**: pracovní prostor Azure Log Analytics slouží k monitorování a upozorňování na aktivity neobvyklé v protokolech zabezpečení a událostech souvisejících s vaším clusterem Azure Service Fabric.
 
-* [Správa výstrah v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Upozornění na data protokolu Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Upozornění na data protokolu Log Analytics](../azure-monitor/learn/tutorial-response.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -288,7 +288,7 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 **Doprovodné**materiály: ve výchozím nastavení je Windows Defender nainstalovaný na windows serveru 2016. Pokud nepoužíváte Windows Defender, přečtěte si dokumentaci k Antimaleware pro pravidla konfigurace. Program Windows Defender není podporován v systému Linux.
 
-* [Podrobnosti najdete v tématu antivirová ochrana v programu Windows Defender na Windows serveru 2016.](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
+* [Podrobnosti najdete v tématu antivirová ochrana v programu Windows Defender na Windows serveru 2016.](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -312,7 +312,7 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v tématu [řízení zabezpečení: identita a řízení přístupu](/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v tématu [řízení zabezpečení: identita a řízení přístupu](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
@@ -320,11 +320,11 @@ Pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure (CLI) můž
 
 Kromě toho můžete použít Azure Security Center doporučení pro správu identit a přístupu.
 
-* [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [Jak monitorovat identitu a přístup pomocí Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Jak monitorovat identitu a přístup pomocí Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -334,7 +334,7 @@ Kromě toho můžete použít Azure Security Center doporučení pro správu ide
 
 **Doprovodné**materiály: při zřizování clusteru vyžaduje Azure vytvořit nová hesla pro webový portál. Neexistují žádná výchozí hesla, která by bylo možné změnit, ale můžete zadat různá hesla pro přístup k webovému portálu.
 
-* [Vytvoření na webu Azure Portal](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
+* [Vytvoření na webu Azure Portal](./service-fabric-cluster-creation-via-portal.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -346,9 +346,9 @@ Kromě toho můžete použít Azure Security Center doporučení pro správu ide
 
 Kromě toho můžete použít Azure Security Center doporučení pro správu identit a přístupu.
 
-* [Nastavení ověřování klienta Azure Active Directory](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-windows-cluster#set-up-azure-active-directory-client-authentication)
+* [Nastavení ověřování klienta Azure Active Directory](./service-fabric-tutorial-create-vnet-and-windows-cluster.md#set-up-azure-active-directory-client-authentication)
 
-* [Jak monitorovat identitu a přístup pomocí Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Jak monitorovat identitu a přístup pomocí Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -358,7 +358,7 @@ Kromě toho můžete použít Azure Security Center doporučení pro správu ide
 
 **Doprovodné**materiály: kdykoli je to možné, použijte Azure Active Directory jednotného přihlašování (SSO) místo konfigurace jednotlivých samostatných přihlašovacích údajů pro každou službu. Použijte Azure Security Center doporučení pro správu identit a přístupu.
 
-* [Vysvětlení jednotného přihlašování pomocí Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [Vysvětlení jednotného přihlašování pomocí Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -368,9 +368,9 @@ Kromě toho můžete použít Azure Security Center doporučení pro správu ide
 
 **Doprovodné**materiály: Povolte Azure AD MFA a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
-* [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Jak monitorovat identitu a přístup v rámci Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -380,9 +380,9 @@ Kromě toho můžete použít Azure Security Center doporučení pro správu ide
 
 **Doprovodné**materiály: použití privilegovaným přístupem (privilegovaných pracovních stanic) se službou Multi-Factor Authentication (MFA) nakonfigurovaným pro přihlášení k a konfiguraci clusterů Azure Service Fabric a souvisejících prostředků.
 
-* [Další informace o pracovních stanicích s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -392,9 +392,9 @@ Kromě toho můžete použít Azure Security Center doporučení pro správu ide
 
 **Pokyny**: pomocí Azure Active Directory (AD) PRIVILEGED Identity Management (PIM) můžete generovat protokoly a výstrahy, když dojde k podezřelé nebo nebezpečné aktivitě v prostředí. Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a sestavy týkající se rizikového chování uživatelů.
 
-* [Postup nasazení Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Postup nasazení Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Vysvětlení zjišťování rizik Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Vysvětlení zjišťování rizik Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -404,7 +404,7 @@ Kromě toho můžete použít Azure Security Center doporučení pro správu ide
 
 **Pokyny**: pomocí pojmenovaných umístění podmíněného přístupu povolíte přístup jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
 
-* [Postup konfigurace pojmenovaných umístění v Azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Postup konfigurace pojmenovaných umístění v Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -414,9 +414,9 @@ Kromě toho můžete použít Azure Security Center doporučení pro správu ide
 
 **Doprovodné**materiály: jako centrální ověřování a autorizační systém použijte Azure Active Directory (AAD), abyste zabezpečený přístup ke koncovým bodům správy clusterů Azure Service Fabric. AAD chrání data pomocí silného šifrování pro data v klidovém umístění a při přenosu. AAD taky soli, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
 
-* [Postup vytvoření a konfigurace instance AAD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Postup vytvoření a konfigurace instance AAD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-* [Nastavení Azure Active Directory pro Service Fabric ověřování klientů](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-setup-aad)
+* [Nastavení Azure Active Directory pro Service Fabric ověřování klientů](./service-fabric-cluster-creation-setup-aad.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -426,7 +426,7 @@ Kromě toho můžete použít Azure Security Center doporučení pro správu ide
 
 **Doprovodné**materiály: použití ověřování pomocí Azure Active Directory (AAD) u vašeho clusteru Azure Service Fabric. AAD poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatele se může pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-* [Jak používat recenze Azure identity Access](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -438,7 +438,7 @@ Kromě toho můžete použít Azure Security Center doporučení pro správu ide
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty AAD, odesláním protokolů auditu a přihlašovacích protokolů do pracovního prostoru Azure Log Analytics. Nakonfigurujte požadované výstrahy v pracovním prostoru Azure Log Analytics.
 
-* [Jak integrovat protokoly aktivit Azure do Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Jak integrovat protokoly aktivit Azure do Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -448,11 +448,11 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné**materiály: použití funkcí rizika a ochrany identity v Azure AD ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se identit uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
 
-* [Jak zobrazit rizikové přihlašování Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Jak zobrazit rizikové přihlašování Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Jak nakonfigurovat a povolit zásady rizik ochrany identity](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -462,7 +462,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné**materiály: není k dispozici; Customer Lockbox pro Azure Service Fabric ještě nejsou podporované.
 
-* [Seznam podporovaných služeb Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Seznam podporovaných služeb Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -470,13 +470,13 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
 **Doprovodné**materiály: pomocí značek u prostředků souvisejících s nasazeními clusterů Azure Service Fabric můžete pomáhat při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -486,19 +486,19 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Prostředky by měly být oddělené podle virtuální sítě a podsítě, musí se vhodně označit a zabezpečit pomocí NSG nebo Azure Firewall. Prostředky, které ukládají nebo zpracovávají citlivá data, by měly být dostatečně izolované. Pokud Virtual Machines ukládáte nebo zpracováváte citlivá data, implementujte zásady a postupy pro jejich vypnutí, pokud se nepoužívají.
 
-* [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-* [Vytvoření Virtual Network](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Jak vytvořit virtuální síť](../virtual-network/quick-create-portal.md)
 
-* [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Postup nasazení Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Postup nasazení Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Jak nakonfigurovat výstrahu nebo upozornění a odepřít pomocí Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Jak nakonfigurovat výstrahu nebo upozornění a odepřít pomocí Azure Firewall](../firewall/threat-intel.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -512,7 +512,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 vestavěn.
 
-* [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -524,9 +524,9 @@ vestavěn.
 
 Pokud je to možné, postupujte podle Azure Security Center doporučení pro šifrování v klidovém režimu a šifrování.
 
-* [Pochopení šifrování při přenosu pomocí Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+* [Pochopení šifrování při přenosu pomocí Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Service Fabric scénáře zabezpečení clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)
+* [Service Fabric scénáře zabezpečení clusteru](./service-fabric-cluster-security.md)
 
 * [Průvodce odstraňováním potíží s Service Fabric pro konfiguraci TLS](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
@@ -540,7 +540,7 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-* [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -560,7 +560,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-* [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -570,13 +570,13 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Pokyny**: používejte pro všechny prostředky Azure šifrování v klidovém provozu. Microsoft doporučuje povolit správu šifrovacích klíčů v Azure, ale v některých případech je k dispozici možnost spravovat vlastní klíče.
 
-* [Vysvětlení šifrování v klidovém umístění v Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+* [Vysvětlení šifrování v klidovém umístění v Azure](../security/fundamentals/encryption-atrest.md)
 
-* [Postup konfigurace šifrovacích klíčů spravovaných zákazníkem](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
+* [Postup konfigurace šifrovacích klíčů spravovaných zákazníkem](../storage/common/storage-encryption-keys-portal.md)
 
-* [Povolení šifrování disku pro uzly clusteru Azure Service Fabric ve Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-enable-azure-disk-encryption-windows)
+* [Povolení šifrování disku pro uzly clusteru Azure Service Fabric ve Windows](./service-fabric-enable-azure-disk-encryption-windows.md)
 
-* [Povolení šifrování disku pro uzly clusteru Azure Service Fabric v systému Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-enable-azure-disk-encryption-linux)
+* [Povolení šifrování disku pro uzly clusteru Azure Service Fabric v systému Linux](./service-fabric-enable-azure-disk-encryption-linux.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -586,7 +586,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné**materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění, když se změny projeví u kritických prostředků Azure.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -594,7 +594,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](/azure/security/benchmarks/security-control-vulnerability-management)zabezpečení.*
+*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](../security/benchmarks/security-control-vulnerability-management.md)zabezpečení.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
@@ -604,11 +604,11 @@ Dodržujte doporučení od Azure Security Center při provádění posouzení oh
 
 K provádění posouzení ohrožení zabezpečení v síťových zařízeních a webových aplikacích použijte řešení třetí strany. Při provádění vzdálených kontrol nepoužívejte jediný, trvalá a administrativní účet. Zvažte implementaci metodologie zřizování JIT pro účet skenování. Přihlašovací údaje pro účet pro kontrolu by měly být chráněné, monitorované a používané jenom pro kontrolu ohrožení zabezpečení.
 
-* [Seznámení se službou Service Fabric analýzy chyb](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview)
+* [Seznámení se službou Service Fabric analýzy chyb](./service-fabric-testability-overview.md)
 
-* [NaChaos řízených v clusterech Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos)
+* [NaChaos řízených v clusterech Service Fabric](./service-fabric-controlled-chaos.md)
 
-* [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+* [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/security-center-vulnerability-assessment-recommendations.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -620,13 +620,13 @@ K provádění posouzení ohrožení zabezpečení v síťových zařízeních a
 
 K otestování oprav operačního systému nejdřív před tím, než budete pokračovat v produkčním prostředí, použijte ruční Trigger pro upgrady imagí operačního systému v sadě škálování. Všimněte si, že možnost ruční aktivace neposkytuje integrované vrácení zpět. Monitorujte opravy operačního systému pomocí Update Management z Azure Automation.
 
-* [Správa oprav pro uzly clusteru Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
+* [Správa oprav pro uzly clusteru Service Fabric](./service-fabric-best-practices-infrastructure-as-code.md#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
 
-* [Automatické upgrady imagí operačního systému pomocí Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)
+* [Automatické upgrady imagí operačního systému pomocí Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)
 
-* [Jak zajistit aktuálnost virtuálních počítačů pomocí nejnovějšího modelu sady škálování](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
+* [Jak zajistit aktuálnost virtuálních počítačů pomocí nejnovějšího modelu sady škálování](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
 
-* [Přehled Azure Automation Update Management](https://docs.microsoft.com/azure/automation/update-management/update-mgmt-overview)
+* [Přehled Azure Automation Update Management](../automation/update-management/update-mgmt-overview.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -636,11 +636,11 @@ K otestování oprav operačního systému nejdřív před tím, než budete pok
 
 **Doprovodné**materiály: povolení automatických upgradů bitových kopií operačního systému na službě Virtual Machine Scale Sets vašeho clusteru Azure Service Fabric. Aplikace orchestrace opravy (POA) je alternativní řešení určené pro Service Fabric clusterů hostovaných mimo Azure. POA se dá použít s clustery Azure s dalšími nároky na hostování.
 
-* [Správa oprav pro uzly clusteru Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
+* [Správa oprav pro uzly clusteru Service Fabric](./service-fabric-best-practices-infrastructure-as-code.md#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
 
-* [Automatické upgrady imagí operačního systému pomocí Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)
+* [Automatické upgrady imagí operačního systému pomocí Azure Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)
 
-* [Postup konfigurace plánu oprav operačního systému pro clustery Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-patch-orchestration-application)
+* [Postup konfigurace plánu oprav operačního systému pro clustery Service Fabric](./service-fabric-patch-orchestration-application.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -664,7 +664,7 @@ K otestování oprav operačního systému nejdřív před tím, než budete pok
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: použití řešení automatizovaného zjišťování prostředků
 
@@ -672,11 +672,11 @@ K otestování oprav operačního systému nejdřív před tím, než budete pok
 
 I když je možné zjistit klasické prostředky Azure pomocí grafu prostředků, důrazně doporučujeme vytvořit a používat prostředky Azure Resource Manager, které budou předány.
 
-* [Jak vytvářet dotazy pomocí Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-* [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -686,7 +686,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 **Doprovodné**materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -696,11 +696,11 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
-* [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -724,9 +724,9 @@ Povolené typy prostředků
 
 Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky v rámci předplatných. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Jak vytvářet dotazy pomocí Azure graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Jak vytvářet dotazy pomocí Azure graphu](../governance/resource-graph/first-query-portal.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -744,7 +744,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Pokyny**: pomocí Azure Resource graphu můžete v rámci svých předplatných dotazovat a zjišťovat všechny prostředky (například výpočetní prostředky, úložiště, síť, porty a protokoly atd.), včetně clusterů Azure Service Fabric. Odeberte všechny neschválené prostředky Azure, které zjistíte. Pro uzly clusteru Azure Service Fabric implementujte řešení třetí strany, které vám umožní odebrat nebo upozornit na neschválený software.
 
-* [Jak vytvářet dotazy pomocí Azure graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Jak vytvářet dotazy pomocí Azure graphu](../governance/resource-graph/first-query-portal.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -762,9 +762,9 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Doprovodné**materiály: použijte Azure Policy k omezení služeb, které můžete zřídit ve vašem prostředí.
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/index.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -782,7 +782,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů pracovat se správcem prostředků Azure tak, že nakonfigurujete "blokování přístupu" pro aplikaci "Microsoft Azure Management".
 
-* [Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manageru](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manageru](../role-based-access-control/conditional-access-azure-management.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -792,7 +792,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Pokyny**: pomocí konfigurací specifických pro operační systém nebo prostředků třetích stran omezte schopnost uživatelů spouštět skripty v rámci výpočetních prostředků Azure.
 
-* [Například způsob řízení spouštění skriptu prostředí PowerShell v prostředích systému Windows](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Například způsob řízení spouštění skriptu prostředí PowerShell v prostředích systému Windows](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -802,9 +802,9 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Doprovodné**materiály: software, který je potřeba pro obchodní operace, ale může pro organizaci zvýšit riziko, že by se měl izolovat v rámci vlastního virtuálního počítače nebo virtuální sítě a dostatečně zabezpečený pomocí Azure firewall nebo skupiny zabezpečení sítě.
 
-* [Jak vytvořit virtuální síť](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Jak vytvořit virtuální síť](../virtual-network/quick-create-portal.md)
 
-* [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -812,15 +812,15 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
 **Pokyny**: pomocí aliasů Azure Policy v oboru názvů Microsoft. ServiceFabric můžete vytvořit vlastní zásady pro auditování nebo vymáhání konfigurace sítě Service Fabric clusteru.
 
-* [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -838,9 +838,9 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Doprovodné**materiály: použijte Azure Policy [Deny] a [nasazení, pokud neexistuje], abyste vynutili zabezpečená nastavení pro clustery Azure Service Fabric a související prostředky.
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Pochopení Azure Policych efektů](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -858,9 +858,9 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Doprovodné**materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
 
-* [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Dokumentace k Azure Repos](/azure/devops/repos/index?view=azure-devops)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -870,11 +870,11 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Doprovodné**materiály: Pokud používáte vlastní image, zajistěte, aby k nim měli přístup jenom autorizovaní uživatelé. V případě imagí kontejnerů je uložte do Azure Container Registry a využijte RBAC, aby bylo zajištěno, že k imagí budou mít přístup jenom autorizovaní uživatelé.
 
-* [Princip RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Princip RBAC v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Vysvětlení RBAC pro Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [Vysvětlení RBAC pro Container Registry](../container-registry/container-registry-roles.md)
 
-* [Jak nakonfigurovat RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -884,7 +884,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Pokyny**: pomocí aliasů Azure Policy v oboru názvů Microsoft. ServiceFabric můžete vytvořit vlastní zásady pro upozornění, audit a prosazování konfigurace systému. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -902,9 +902,9 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Pokyny**: použijte aliasy Azure Policy v oboru názvů "Microsoft. ServiceFabric" k vytvoření vlastních zásad pro auditování nebo prosazování konfigurace Service Fabric clusteru.
 
-* [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -914,7 +914,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Pokyny**: použijte Azure Security Center k provedení kontrol směrného plánu pro nastavení operačního systému a Docker pro kontejnery.
 
-* [Porozumění doporučení týkajících se kontejnerů Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-container-recommendations)
+* [Porozumění doporučení týkajících se kontejnerů Azure Security Center](../security-center/container-security.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -924,13 +924,13 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Doprovodné**materiály: použití identita spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení správy tajných kódů pro vaše cloudové aplikace.
 
-* [Použití spravovaných identit pro Azure s Service Fabric](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
+* [Použití spravovaných identit pro Azure s Service Fabric](./concepts-managed-identity.md)
 
-* [Konfigurace podpory spravovaných identit pro nový cluster Service Fabric](https://docs.microsoft.com/azure/service-fabric/configure-new-azure-service-fabric-enable-managed-identity)
+* [Konfigurace podpory spravovaných identit pro nový cluster Service Fabric](./configure-new-azure-service-fabric-enable-managed-identity.md)
 
-* [Použití spravované identity s aplikací Service Fabric](https://docs.microsoft.com/azure/service-fabric/how-to-managed-identity-service-fabric-app-code)
+* [Použití spravované identity s aplikací Service Fabric](./how-to-managed-identity-service-fabric-app-code.md)
 
-* [Podpora KeyVaultReference pro aplikace Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references)
+* [Podpora KeyVaultReference pro aplikace Service Fabric](./service-fabric-keyvault-references.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -940,7 +940,7 @@ Pomocí Azure Resource graphu se můžete dotazovat nebo zjišťovat prostředky
 
 **Doprovodné**materiály: spravované identity se dají používat v clusterech Service Fabric nasazených v Azure a pro aplikace nasazené jako prostředky Azure. Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
 
-* [Použití spravovaných identit pro Azure s Service Fabric](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
+* [Použití spravovaných identit pro Azure s Service Fabric](./concepts-managed-identity.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -954,7 +954,7 @@ K automatickému střídání certifikátů clusteru Service Fabric použijte Az
 
 * [Jak nastavit skener přihlašovacích údajů](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-* [Správa certifikátů v Service Fabric clusterech](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#certificate-rotation)
+* [Správa certifikátů v Service Fabric clusterech](./cluster-security-certificate-management.md#certificate-rotation)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -962,7 +962,7 @@ K automatickému střídání certifikátů clusteru Service Fabric použijte Az
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
 
@@ -970,7 +970,7 @@ K automatickému střídání certifikátů clusteru Service Fabric použijte Az
 
 Pokud nepoužíváte Windows Defender, přečtěte si dokumentaci k antimalwaru pro pravidla konfigurace. Program Windows Defender není podporován v systému Linux.
 
-* [Vysvětlení antivirové ochrany v programu Windows Defender v systému Windows Server 2016](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
+* [Vysvětlení antivirové ochrany v programu Windows Defender v systému Windows Server 2016](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -994,13 +994,13 @@ Pokud nepoužíváte Windows Defender, přečtěte si dokumentaci k antimalwaru 
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
 **Pokyny**: Služba zálohování a obnovení v Service Fabric umožňuje snadné a automatické zálohování informací uložených ve stavových službách. Zálohování dat aplikací je v pravidelných intervalech zásadní pro ochranu před ztrátou dat a nedostupností služby. Service Fabric poskytuje volitelnou službu pro zálohování a obnovení, která umožňuje konfigurovat pravidelné zálohování stavových Reliable Services (včetně služeb actor) bez nutnosti psát další kód. Také usnadňuje obnovení dříve vytvořených záloh.
 
-* [Periodické zálohování a obnovení v clusteru Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)
+* [Periodické zálohování a obnovení v clusteru Azure Service Fabric](./service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1010,11 +1010,11 @@ Pokud nepoužíváte Windows Defender, přečtěte si dokumentaci k antimalwaru 
 
 **Doprovodné**materiály: povolení služby obnovení zálohování ve vašem clusteru Service Fabric a vytváření zásad zálohování pro pravidelné zálohování stavových služeb a na vyžádání. Zálohování klíčů spravovaných zákazníkem v rámci Azure Key Vault.
 
-* [Periodické zálohování a obnovení v clusteru Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)
+* [Periodické zálohování a obnovení v clusteru Azure Service Fabric](./service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 
-* [Princip pravidelné konfigurace zálohování v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-configure-periodic-backup)
+* [Princip pravidelné konfigurace zálohování v Azure Service Fabric](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 
-* [Postup zálohování klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1024,11 +1024,11 @@ Pokud nepoužíváte Windows Defender, přečtěte si dokumentaci k antimalwaru 
 
 **Doprovodné**materiály: Ujistěte se, že máte možnost provádět obnovení ze služby obnovení záloh tím, že pravidelně kontrolujete informace o konfiguraci zálohování a dostupné zálohy. Test obnovení zálohovaných klíčů spravovaných zákazníkem
 
-* [Princip pravidelné konfigurace zálohování v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-configure-periodic-backup)
+* [Princip pravidelné konfigurace zálohování v Azure Service Fabric](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 
-* [Obnovování zálohy v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-backup-restore-service-trigger-restore)
+* [Obnovování zálohy v Azure Service Fabric](./service-fabric-backup-restore-service-trigger-restore.md)
 
-* [Postup obnovení klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1040,9 +1040,9 @@ Pokud nepoužíváte Windows Defender, přečtěte si dokumentaci k antimalwaru 
 
 Pokud používáte spravované klíče zákazníka, zajistěte, aby se obnovitelné odstranění v Key Vault povolilo ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
-* [Šifrování neaktivních uložených dat ve službě Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+* [Šifrování neaktivních uložených dat ve službě Azure Storage](../storage/common/storage-service-encryption.md)
 
-* [Jak povolit obnovitelné odstranění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Jak povolit obnovitelné odstranění v Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1050,7 +1050,7 @@ Pokud používáte spravované klíče zákazníka, zajistěte, aby se obnovitel
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](/azure/security/benchmarks/security-control-incident-response).*
+*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
@@ -1072,9 +1072,9 @@ Pokud používáte spravované klíče zákazníka, zajistěte, aby se obnovitel
 
 Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenování k identifikaci a kategorizaci prostředků Azure, zejména těch, které zpracovávají citlivá data. Je vaše zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu.
 
-* [Výstrahy zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [Používání značek k uspořádání prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1094,7 +1094,7 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 **Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
-* [Jak nastavit kontakt zabezpečení Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1104,9 +1104,9 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 **Doprovodné**materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat ověřovací data výstrah.
 
-* [Postup konfigurace průběžného exportu](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Postup konfigurace průběžného exportu](../security-center/continuous-export.md)
 
-* [Jak streamovat výstrahy do Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Jak streamovat výstrahy do Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1116,7 +1116,7 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 **Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
 
-* [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1124,7 +1124,7 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
@@ -1140,5 +1140,5 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](/azure/security/benchmarks/overview)
-- Další informace o [plánech zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
+- Další informace o [plánech zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

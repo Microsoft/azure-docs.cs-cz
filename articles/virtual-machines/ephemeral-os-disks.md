@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 4fabaed28ca186f3ca091107e51ed3900168ba41
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f312170fd357e64e2fbd7d455987993cdad76123
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387723"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837104"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Dočasné disky s operačním systémem pro virtuální počítače Azure
 
@@ -51,7 +51,7 @@ Můžete nasadit image virtuálních počítačů a instancí až do velikosti m
 Dočasné disky také vyžadují, aby velikost virtuálního počítače podporovala službu Premium Storage. Velikosti obvykle mají v názvu (ale ne vždy) `s` název, jako je například DSv2 a EsV3. Další informace najdete v tématu [velikosti virtuálních počítačů Azure](sizes.md) pro podrobnosti o tom, které velikosti podporují Premium Storage.
 
 ## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>Preview – dočasné disky s operačním systémem se teď dají ukládat na dočasné disky.
-Dočasné disky s operačním systémem se teď dají ukládat na disk s dočasným/prostředkem virtuálního počítače navíc do mezipaměti virtuálních počítačů. Nyní můžete použít dočasné disky s operačním systémem s virtuálním počítačem, který nemá mezipaměť, nebo má nedostatečnou mezipaměť, ale má disk s dočasným/prostředkem k uložení dočasného disku s operačním systémem, jako je například Dav3, Dav4, Eav4 a Eav3. Pokud má virtuální počítač dostatek mezipaměti a dočasné místo, budete teď moct zadat, kam chcete uložit dočasný disk s operačním systémem pomocí nové vlastnosti s názvem [DiffDiskPlacement](https://docs.microsoft.com/rest/api/compute/virtualmachines/list#diffdiskplacement). Tato funkce je aktuálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Začněte tím, že [vyžádáte přístup](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u).
+Dočasné disky s operačním systémem se teď dají ukládat na disk s dočasným/prostředkem virtuálního počítače navíc do mezipaměti virtuálních počítačů. Nyní můžete použít dočasné disky s operačním systémem s virtuálním počítačem, který nemá mezipaměť, nebo má nedostatečnou mezipaměť, ale má disk s dočasným/prostředkem k uložení dočasného disku s operačním systémem, jako je například Dav3, Dav4, Eav4 a Eav3. Pokud má virtuální počítač dostatek mezipaměti a dočasné místo, budete teď moct zadat, kam chcete uložit dočasný disk s operačním systémem pomocí nové vlastnosti s názvem [DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement). Tato funkce je aktuálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Začněte tím, že [vyžádáte přístup](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u).
 
 ## <a name="powershell"></a>PowerShell
 

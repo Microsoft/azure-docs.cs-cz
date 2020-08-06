@@ -1,6 +1,6 @@
 ---
 title: Azure Storage monitorování | Microsoft Docs
-description: Naučte se monitorovat výkon a dostupnost Azure Storage.
+description: Naučte se monitorovat výkon a dostupnost Azure Storage. Monitorujte Azure Storage data, Naučte se konfiguraci a analyzujte data metrik a protokolů.
 author: normesta
 services: storage
 ms.service: storage
@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 2f6320bf4606dc9357ac676b3bc5d7421b24a36c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e1be9a7e543f8513f3b30182dfbc421dc38bdbce
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182708"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836662"
 ---
 # <a name="monitor-azure-storage"></a>Azure Storage monitorování
 
@@ -86,9 +86,9 @@ Musíte také zadat kategorie operací, pro které chcete shromažďovat protoko
 
 | Kategorie | Popis |
 |:---|:---|
-| StorageRead | Operace čtení objektů BLOB. |
-| StorageWrite | Operace zápisu objektů BLOB |
-| StorageDelete | Odstranění operací na objektech blob. |
+| StorageRead | Operace čtení u objektů |
+| StorageWrite | Operace zápisu pro objekty. |
+| StorageDelete | Odstraní operace s objekty. |
 
 ## <a name="analyze-metric-data"></a>Analýza dat metriky
 
@@ -327,7 +327,7 @@ Tady je příklad:
 
 Protokoly odeslané do centra událostí nejsou uloženy jako soubor, ale můžete ověřit, že centrum událostí obdrželo informace protokolu. V Azure Portal přejdete do centra událostí a ověříte, že počet **příchozích zpráv** je větší než nula. 
 
-![Protokoly auditování](media/monitor-storage/event-hub-log.png)
+![Protokoly auditu](media/monitor-storage/event-hub-log.png)
 
 Data protokolu, která se odesílají do centra událostí, můžete otevřít a číst pomocí nástrojů pro správu a správu událostí a monitorování událostí a informací o zabezpečení. Další informace najdete v tématu [co se dá dělat s daty monitorování odesílanými do mého centra událostí?](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub).
 
@@ -400,7 +400,7 @@ Tyto dotazy vám pomůžou monitorovat účty Azure Storage:
     | sort by count_ desc 
     | render piechart
     ```
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Podporuje Azure Storage metriky pro Managed Disks nebo nespravované disky?**
 

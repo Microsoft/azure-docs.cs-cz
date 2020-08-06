@@ -4,12 +4,12 @@ description: Poskytuje odpovědi na některé běžné dotazy týkající se ře
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: f160e617163f11c02e4d661cbf1c14f63a6772f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6bf8e924b0776ace282e94f62ae2b0a67439efd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003419"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836577"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Nejčastější dotazy týkající se řešení Azure VMware (AVS) Preview
 
@@ -25,7 +25,7 @@ Vzhledem k tomu, že podniky sledují strategie pro moderní účely, aby vylep�
 
 **Kde je tato funkci AVS k dispozici ještě dnes?**
 
-Ve verzi Preview je k dispozici v USA – východ v Severní Amerika a v Amsterdam v západní Evropě.
+Služba se neustále přidává do nových oblastí, proto si prohlédněte [nejnovější informace o dostupnosti služby](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware) , kde najdete další podrobnosti. 
 
 **Můžou úlohy spuštěné v instanci řešení Azure VMware (AVS) využívat nebo integrovat se službami Azure?**
 
@@ -33,7 +33,7 @@ K dispozici jsou všechny služby Azure, které budou dostupné pro zákazníky 
 
 **Používají se stejné nástroje, které teď používám ke správě prostředků privátního cloudu?**
 
-Yes. Azure Portal se používá pro nasazení a řadu operací správy. vCenter a NSX Manager se používají ke správě prostředků vSphere a NSX-T.
+Ano. Azure Portal se používá pro nasazení a řadu operací správy. vCenter a NSX Manager se používají ke správě prostředků vSphere a NSX-T.
 
 **Můžu pomocí místního serveru vCenter spravovat privátní cloud?**
 
@@ -45,7 +45,7 @@ Konkrétní integrace a případy použití mohou být vyhodnoceny případ od p
 
 **Můžu migrovat virtuální počítače s vSphere z místního prostředí do služby AVS Private cloudy?**
 
-Yes. Migrace virtuálních počítačů a vMotion se dají použít k přesunu virtuálních počítačů do privátního cloudu, pokud jsou splněné standardní systémy přes vCenter [požadavky] [ https://kb.vmware.com/s/article/210695 ].
+Ano. Migrace virtuálních počítačů a vMotion se dají použít k přesunu virtuálních počítačů do privátního cloudu, pokud jsou splněné standardní systémy přes vCenter [požadavky] [ https://kb.vmware.com/s/article/210695 ].
 
 **Vyžaduje se v místních prostředích konkrétní verze vSphere?**
 
@@ -65,7 +65,7 @@ Nedošlo k žádné změně stávajícího řešení Azure VMware pomocí CloudS
 
 **Můžu z řešení Azure VMware migrovat CloudSimple do tohoto nového řešení?**
 
-Ano, řešení Azure VMware podporuje migraci pomocí známých nástrojů VMware, jako je HCX. Pro zákazníky, kteří mají zájem o migraci na nové řešení, prosím Spolupracujte se svým týmem účet Microsoft a prozkoumejte možnosti a dostupnou podporu.
+Ano, řešení Azure VMware podporuje migraci pomocí známých nástrojů VMware, jako je HCX. Pro zákazníky, kteří mají zájem o migraci na nové řešení, spolupracujte se svým týmem účet Microsoft a prozkoumejte možnosti a dostupnou podporu.
 
 
 
@@ -89,7 +89,7 @@ Každý hostitel ESXi má dvě síti vSAN diskgroups s úrovní kapacity 15,2 TB
 
 **Kolik šířky pásma sítě je k dispozici na každém hostiteli ESXi?**
 
-Hostitelé ESXi podporují šířku pásma připojení až na 25 GB/s.
+U každého hostitele ESXi je konfigurace služby AVS nakonfigurovaná pomocí síťových adaptérů 4 25 GB/s, se dvěma síťovými kartami zřízenými pro přenos dat systému ESXi a pro provoz úloh. 
 
 **Jsou data uložená v úložišti datasíti vsans zašifrovaná v klidovém stavu?**
 
@@ -166,7 +166,7 @@ Ne. Příchozí síťový provoz z Internetu přímo do privátních cloudů nen
 
 **Je potřeba omezit přístup k Internetu z virtuálních počítačů v logických sítích na Internet?**
 
-Yes. Abyste mohli vytvořit bránu firewall, která omezuje přístup virtuálních počítačů k Internetu, budete muset použít Správce NSX-T.
+Ano. Abyste mohli vytvořit bránu firewall, která omezuje přístup virtuálních počítačů k Internetu, budete muset použít Správce NSX-T.
 
 ## <a name="accounts-and-privileges"></a>Účty a oprávnění
 
@@ -197,11 +197,11 @@ Faktura za službu AVS ve verzi Preview je měsíčně na základě průběžný
 
 **Jak budou během verze Preview funkce AVS strukturované ceny?**
 
-Obecné otázky týkající se cen najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/azure-vmware) řešení Azure VMware. Ceny verze Preview jsou dostupné na vyžádání, obraťte se prosím na svůj tým účtu nebo podle odkazu na stránce s cenami kontaktujte prodej.
+Obecné otázky týkající se cen najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/azure-vmware) řešení Azure VMware. Ceny verze Preview jsou k dispozici na vyžádání, obraťte se na tým účtu nebo použijte odkaz na stránce s cenami a kontaktujte prodej.
 
 **Kdo podporuje funkci AVS?**
 
-Společnost Microsoft doručuje podporu služby AVS. Poznamenejte si prosím naše pokyny pro verzi Preview a poskytneme vám podporu během 9 až 5 hodin PST v pracovní době od pondělí do pátku. Z [tohoto odkazu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) můžete vyvolat lístek podpory.
+Společnost Microsoft doručuje podporu služby AVS. Všimněte si, že podle našich pokynů pro verzi Preview budeme poskytovat podporu během 9 až 5 hodin PST v pracovní době od pondělí do pátku. Z [tohoto odkazu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) můžete vyvolat lístek podpory.
 
 **Jaké účty potřebuji k vytvoření privátního cloudu služby AVS?**
 

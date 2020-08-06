@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: f63bcbb26752dc787d508260cce0b0518cdc7c38
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6113ee61d4949649b65607c0f1bd606be4edb2ac
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080399"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837155"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Síťové služby pro škálovací sady virtuálních počítačů Azure
 
@@ -244,7 +244,7 @@ Příklad výstupu z [Azure Resource Exploreru](https://resources.azure.com) a r
 Každé síťové rozhraní připojené k virtuálnímu počítači ve škálovací sadě může mít přidruženu jednu nebo několik konfigurací IP. Každá konfigurace má přiřazenu jednu privátní IP adresu. Každá konfigurace také může mít přiřazen jeden prostředek veřejné IP adresy. Informace o tom, kolik IP adres může mít síťové rozhraní přiřazených a kolik veřejných IP adres můžete použít v předplatném Azure, najdete v [omezeních Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="multiple-nics-per-virtual-machine"></a>Několik síťových rozhraní na virtuální počítač
-Na jeden virtuální počítač můžete mít v závislosti na jeho velikosti až 8 síťových rozhraní. Maximální počet síťových rozhraní na počítač najdete v [článku o velikostech virtuálních počítačů](../virtual-machines/windows/sizes.md). Všechny síťové karty připojené k instanci virtuálního počítače musí být připojené ke stejné virtuální síti. Síťové karty se mohou připojovat k různým podsítím, ale všechny podsítě musí být součástí stejné virtuální sítě.
+Na jeden virtuální počítač můžete mít v závislosti na jeho velikosti až 8 síťových rozhraní. Maximální počet síťových rozhraní na počítač najdete v [článku o velikostech virtuálních počítačů](../virtual-machines/sizes.md). Všechny síťové karty připojené k instanci virtuálního počítače musí být připojené ke stejné virtuální síti. Síťové karty se mohou připojovat k různým podsítím, ale všechny podsítě musí být součástí stejné virtuální sítě.
 
 V následujícím příkladu je profil sítě škálovací sady ukazující několik záznamů síťových rozhraní a několik veřejných IP adres na virtuální počítač:
 

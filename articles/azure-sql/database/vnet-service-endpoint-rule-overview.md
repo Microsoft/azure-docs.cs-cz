@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 65ec92aeca44a514467a642de1dab06f06c220e9
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 880ec24c377091173202098a3c54b5776bf69a98
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533848"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836611"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Použití koncových bodů a pravidel služby virtuální sítě pro servery v Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -59,7 +59,7 @@ V rámci správy koncových bodů služby Virtual Network je oddělení rolí za
 
 Role správce sítě a správce databáze mají více možností, než je nutné ke správě pravidel virtuální sítě. Je potřeba jenom podmnožina jejich schopností.
 
-V Azure máte možnost použít [řízení přístupu na základě role (RBAC)][rbac-what-is-813s] a vytvořit jednu vlastní roli, která bude mít jenom nezbytnou podmnožinu funkcí. Vlastní roli můžete použít místo zapojení správce sítě nebo správce databáze. Pokud přidáte uživatele do vlastní role a přidáváte uživatele k ostatním dvěma hlavním rolím Správce, oblast Surface vašeho ohrožení zabezpečení je nižší.
+Máte možnost pomocí [řízení přístupu na základě role Azure (RBAC)][rbac-what-is-813s] v Azure vytvořit jednu vlastní roli, která bude mít jenom nezbytnou podmnožinu funkcí. Vlastní roli můžete použít místo zapojení správce sítě nebo správce databáze. Pokud přidáte uživatele do vlastní role a přidáváte uživatele k ostatním dvěma hlavním rolím Správce, oblast Surface vašeho ohrožení zabezpečení je nižší.
 
 > [!NOTE]
 > V některých případech je databáze v Azure SQL Database a virtuální podsíť v různých předplatných. V těchto případech je nutné zajistit následující konfigurace:
@@ -110,7 +110,7 @@ Ve službě Azure Storage je implementovaná stejná funkce, která umožňuje o
 
 Základ se běžně používá k načtení dat do služby Azure synapse Analytics z účtů Azure Storage. Pokud účet Azure Storage, ze kterého načítáte data, omezuje přístup jenom na sadu virtuálních sítí VNet, dojde k přerušení připojení od základu k účtu. Pokud chcete povolit jak základní scénáře importu i exportu, tak pomocí služby Azure synapse Analytics, která se připojuje k Azure Storage zabezpečená virtuální síti, postupujte podle kroků uvedených níže:
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 - Pomocí tohoto [průvodce](https://docs.microsoft.com/powershell/azure/install-az-ps) nainstalujte Azure PowerShell.
 - Pokud máte účet úložiště pro obecné účely verze 1 nebo účet úložiště objektů blob, musíte nejprve pomocí tohoto [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) upgradovat na účet úložiště pro obecné účely verze 2.
@@ -227,7 +227,7 @@ Rutiny PowerShellu pro akce virtuální sítě SQL volají interně volání roz
 
 - [Pravidla Virtual Network: operace][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *typu* koncového bodu služby, který je relevantní pro Azure SQL Database.
 
@@ -238,7 +238,7 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 
 ## <a name="azure-portal-steps"></a>Azure Portal kroky
 
-1. Přihlaste se k webu [Azure Portal][http-azure-portal-link-ref-477t].
+1. Přihlaste se na [Azure Portal][http-azure-portal-link-ref-477t].
 
 2. Vyhledejte a vyberte **SQL servery**a pak vyberte svůj server. V části **zabezpečení**vyberte možnost **brány firewall a virtuální sítě**.
 

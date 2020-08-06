@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 334c8128ab7869d38700668b6f46a6b2a6f96d28
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 86de6f94dc5bf44836fad37680a439d26d66ce6d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269355"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837070"
 ---
 # <a name="ev3-and-esv3-series"></a>Řada Ev3 a Esv3
 
@@ -97,7 +97,7 @@ jsou k dispozici <sup>1</sup> omezené základní velikosti.
 
 Cenová kalkulačka: [Cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 
-Další informace o typech disků: [typy disků](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+Další informace o typech disků: [typy disků](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Další kroky

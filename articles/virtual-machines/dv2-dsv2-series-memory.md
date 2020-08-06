@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a7b81dc18af15e0928582fd8c1414e3401297c3d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bcefe19183ea5f511ce8255914b3ea8edd4306e8
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291205"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837087"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Paměťově optimalizovaná Dv2 a Dsv2-Series
 
@@ -83,7 +83,7 @@ jsou k dispozici <sup>3</sup> omezené základní velikosti.
 
 Cenová kalkulačka: [Cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 
-Další informace o typech disků: [typy disků](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+Další informace o typech disků: [typy disků](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: f5218b2346b6ddebcee87a0e24f4924deafdb0f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e74dac779fc1eafaf33ffbc63bf997cf26b64954
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037184"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836798"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Ochrana před hrozbami v Azure Security Center
 
@@ -54,11 +54,15 @@ Azure Security Center se integruje se službami Azure za účelem monitorování
 
     Když ATP v programu Microsoft Defender zjistí hrozbu, aktivuje výstrahu. Výstraha se zobrazí na řídicím panelu Security Center. Z řídicího panelu se můžete překlopit do konzoly ATP v programu Microsoft Defender a provést podrobné šetření, které odhalí rozsah útoku. Další informace o ochraně ATP v programu Microsoft Defender najdete v tématu připojení [serverů ke službě Microsoft Defender ATP](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
-* Detekce útoků typu **soubor** <a name="windows-fileless"></a> – Jsou běžné útoky zaměřené na vaše koncové body. Aby nedocházelo k detekci, útoky bez souborů vkládají do paměti škodlivá datová data. V paměti napadených procesů a provádění široké škály škodlivých aktivit může dojít k trvalému uložení datových částí.
+* Detekce útoků typu **soubor** <a name="windows-fileless"></a> – Bezsouborová útoky vkládají do paměti škodlivá datová data, aby se zabránilo detekci pomocí technik prohledávání na základě disku. Datová část útočníka pak přetrvává v paměti napadených procesů a provádí široké spektrum škodlivých aktivit.
 
-    Díky detekci útoků bez souborů můžou automatizované techniky forenzní paměti identifikovat sady nástrojů, techniky a chování pro útoky bez souborů. Toto řešení pravidelně kontroluje počítač za běhu a extrahuje přehledy přímo z paměti důležitých procesů, které jsou kritické pro zabezpečení.
+    Díky detekci útoků bez souborů můžou automatizované techniky forenzní paměti identifikovat sady nástrojů, techniky a chování pro útoky bez souborů. Toto řešení pravidelně kontroluje počítač za běhu a extrahuje přehledy přímo z paměti procesů. Konkrétní přehledy pro Linux zahrnují identifikaci: 
 
-    Najde důkazy o zneužití, vkládání kódu a spuštění škodlivých datových částí. Detekce útoků bez souborů generuje podrobné výstrahy zabezpečení, které urychlují jejich třídění, korelace a dobu odezvy za provozu. Tento přístup doplňuje řešení EDR založené na událostech a zajišťuje větší pokrytí detekce.
+    - Dobře známé sady nástrojů a software pro dolování kryptografických softwaru 
+    - Skrytý spustitelný kód, což je malý kus kódu, který se obvykle používá jako datová část při využívání ohrožení zabezpečení softwaru.
+    - Vložený škodlivý spustitelný soubor v paměti procesu
+
+    Detekce útoků bez souborů generuje podrobné výstrahy zabezpečení obsahující popisy s dalšími metadaty procesu, například síťovou aktivitou. Tím se zrychluje jejich třídění, korelace a doba odezvy za příjem dat. Tento přístup doplňuje řešení EDR založené na událostech a poskytuje zvýšené pokrytí detekce.
 
     Podrobnosti o výstrahách detekce útoků bez souborů najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-windows).
 
@@ -134,7 +138,7 @@ Výstrahy se zobrazí, když dojde k podezřelým databázovým aktivitám, pote
 
 Rozšířená ochrana před internetovými útoky pro Azure SQL Database a SQL je součástí sjednoceného balíčku [zabezpečení dat (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) pro pokročilé funkce zabezpečení SQL, zahrnující Azure SQL Database, spravované instance Azure SQL, Azure SQL Data Warehouse databáze a SQL servery na Virtual Machines Azure.
 
-Další informace naleznete v tématech:
+Další informace:
 
 * [Jak povolit rozšířenou ochranu před internetovými útoky pro Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 * [Jak povolit rozšířenou ochranu před internetovými útoky pro SQL servery na Azure Virtual Machines](security-center-iaas-advanced-data.md)
@@ -185,7 +189,7 @@ Pokud je podezření, že se jedná o malware, Security Center zobrazí výstrah
 
 Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na stránce s [cenami Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
-Další informace naleznete v tématech:
+Další informace:
 
 * [Jak povolit rozšířenou ochranu před internetovými útoky pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Seznam výstrah ochrany před hrozbami pro Azure Storage](alerts-reference.md#alerts-azurestorage)
@@ -204,7 +208,7 @@ Další informace naleznete v tématech:
 
 Výstrahy Azure Cosmos DB jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k účtům Azure Cosmos DB nebo jejich zneužití.
 
-Další informace naleznete v tématech:
+Další informace:
 
 * [Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB (Preview)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
 * [Seznam výstrah ochrany před hrozbami pro Azure Cosmos DB (Preview)](alerts-reference.md#alerts-azurecosmos)

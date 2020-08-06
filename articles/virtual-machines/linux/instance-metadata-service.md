@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 0d31d982e7788970cbf7aad7dd64db9e6d4b9b10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4f0e9d057c92f1907bb77ee0767c7bb07f0f4c62
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502193"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836985"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Instance Metadata Service Azure (IMDS)
 
@@ -44,7 +44,7 @@ Další příklady dotazů na IMDS najdete v tématu [ukázky metadat instance A
 
 Níže je uvedený ukázkový kód pro načtení všech metadat pro instanci, pro přístup ke konkrétnímu zdroji dat, viz část [rozhraní API pro metadata](#metadata-apis) . 
 
-**Request**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
@@ -202,7 +202,7 @@ Pokud není zadána žádná verze, je vrácena chyba se seznamem nejnovějšíc
 > [!NOTE]
 > Odpověď je řetězec JSON. Následující příklad označuje chybový stav, pokud není zadána verze, odpověď je poměrně vytištěna pro čitelnost.
 
-**Request**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance"
@@ -261,14 +261,14 @@ tagsList | Značky formátované jako pole JSON pro snazší programovou analýz
 verze | Verze image virtuálního počítače | 2017-04-02
 vmId | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač | 2017-04-02
 vmScaleSetName | [Název sady škálování virtuálního počítače](../../virtual-machine-scale-sets/overview.md) pro sadu škálování virtuálního počítače | 2017-12-01
-vmSize | [Velikost virtuálního počítače](sizes.md) | 2017-04-02
+vmSize | [Velikost virtuálního počítače](../sizes.md) | 2017-04-02
 zóna | [Zóna dostupnosti](../../availability-zones/az-overview.md) virtuálního počítače | 2017-12-01
 
 ### <a name="sample-1-tracking-vm-running-on-azure"></a>Ukázka 1: sledování virtuálního počítače běžícího na Azure
 
 Jako poskytovatel služeb budete možná potřebovat sledovat počet virtuálních počítačů, na kterých běží váš software, nebo mít agenty, kteří potřebují ke sledování jedinečnosti virtuálního počítače. Aby bylo možné získat jedinečné ID pro virtuální počítač, použijte `vmId` pole z instance metadata Service.
 
-**Request**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
@@ -286,7 +286,7 @@ V některých scénářích je umístění různých replik dat primárním výz
 K provedení těchto rozhodnutí můžete použít také [zóny dostupnosti](../../availability-zones/az-overview.md) pro instance.
 Tato data můžete zadávat přímo prostřednictvím Instance Metadata Service.
 
-**Request**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
@@ -302,7 +302,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 
 Jako poskytovatel služeb můžete obdržet volání podpory, kde byste chtěli získat další informace o virtuálním počítači. Dotazování zákazníků na sdílení výpočetních metadat může poskytnout základní informace o tom, že profesionální pracovník podpory ví o typu virtuálního počítače v Azure.
 
-**Request**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
@@ -402,7 +402,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 
 Azure má různé cloudy svrchovan jako [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Někdy potřebujete prostředí Azure, abyste mohli provádět určitá rozhodnutí za běhu. Následující příklad ukazuje, jak lze dosáhnout tohoto chování.
 
-**Request**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
@@ -441,7 +441,7 @@ macAddress | Adresa MAC virtuálního počítače | 2017-04-02
 
 #### <a name="sample-1-retrieving-network-information"></a>Ukázka 1: načítání informací o síti
 
-**Request**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
@@ -536,7 +536,7 @@ writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAc
 
 Následující příklad ukazuje, jak zadat dotaz na informace o úložišti virtuálního počítače.
 
-**Request**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
@@ -608,7 +608,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 Značky virtuálních počítačů jsou součástí rozhraní API instancí pod koncovým bodem instance/výpočty/značky.
 Na VIRTUÁLNÍm počítači Azure možná byly aplikovány značky, aby je bylo možné logicky uspořádat do taxonomie. Značky přiřazené k virtuálnímu počítači se dají načíst pomocí níže uvedeného požadavku.
 
-**Request**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
@@ -622,7 +622,7 @@ Department:IT;Environment:Test;Role:WebRole
 
 `tags`Pole je řetězec, jehož značky jsou odděleny středníky. Tento výstup může být problémem, pokud se středníky používají v samotných značkách. Pokud je analyzátor napsán pro programové extrakci značek, měli byste spoléhat na `tagsList` pole. `tagsList`Pole je pole JSON bez oddělovačů, a proto je snazší ho analyzovat.
 
-**Request**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04"
@@ -656,7 +656,7 @@ Součástí scénáře, který obsluhuje Instance Metadata Service, je poskytnou
 > [!NOTE]
 > Všechny odpovědi rozhraní API jsou řetězce JSON. Následující příklad odpovědí je poměrně vytištěn z důvodu čitelnosti.
 
-**Request**
+**Žádost**
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
@@ -699,7 +699,7 @@ Dodavatelé na webu Marketplace chtějí zajistit, aby byl software licencován 
 > [!NOTE]
 > Vyžaduje instalaci JQ.
 
-**Request**
+**Žádost**
 
 ```bash
 # Get the signature

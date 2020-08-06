@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: db6a8965b6a0d03c3de95644d3d455ce3c950960
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5521e49c767a2510bf7c8c53cf6ac5e86b73b466
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080433"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837172"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Oznámení plánované údržby pro škálovací sady virtuálních počítačů
 
@@ -72,7 +72,7 @@ Je nejvhodnější použít samoobslužnou údržbu v následujících případe
 
 Po naplánování naplánovaných vln údržby můžete zobrazit seznam sad škálování virtuálních počítačů, na které se vztahuje nadcházející údržba Wave, a to pomocí Azure Portal. 
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny služby**a pak vyberte **Virtual Machine Scale Sets**.
 3. V části **Virtual Machine Scale Sets**vyberte **Upravit sloupce** a otevřete seznam dostupných sloupců.
 4. V části **Dostupné sloupce** vyberte **samoobslužná údržba**a pak ji přesuňte do seznamu **vybrané sloupce** . Vyberte **Použít**.  
@@ -84,14 +84,14 @@ Sloupec **samoobslužná údržba** se teď zobrazuje v seznamu služby Virtual 
 | Hodnota | Popis |
 |-------|-------------|
 | Ano | Aspoň jeden virtuální počítač v sadě škálování virtuálního počítače je v samoobslužném okně. Údržbu můžete kdykoli spustit během tohoto samoobslužného okna. | 
-| No | V rámci příslušné sady škálování virtuálních počítačů nejsou žádné virtuální počítače v okně samoobslužné služby. | 
+| Ne | V rámci příslušné sady škálování virtuálních počítačů nejsou žádné virtuální počítače v okně samoobslužné služby. | 
 | - | Vaše služby Virtual Machine Scale Sets nejsou součástí plánovaného formátu Wave pro údržbu.| 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Oznámení a výstrahy na portálu
 
 Azure komunikuje s plánem plánované údržby odesláním e-mailu vlastníkovi předplatného a spoluvlastníci. Do této komunikace můžete přidat příjemce a kanály tím, že vytvoříte výstrahy protokolu aktivit. Další informace najdete v tématu [monitorování aktivity předplatného pomocí protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md).
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **monitor**. 
 3. V podokně **monitor – výstrahy (Classic)** vyberte **+ Přidat upozornění protokolu aktivit**.
 4. Na stránce **Přidat upozornění protokolu aktivit** vyberte nebo zadejte požadované informace. V části **kritéria**ověřte, že jste nastavili následující hodnoty:
@@ -171,7 +171,7 @@ Následující volání inicializuje údržbu instance virtuálního počítače
 az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 ```
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Otázka: Proč potřebujete restartovat své virtuální počítače nyní?**
 
@@ -181,7 +181,7 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 **A:** Virtuální počítače nasazené ve skupině dostupnosti nebo v sadě Virtual Machine Scale Sets používají aktualizační domény. Při provádění údržby Azure respektuje omezení domény aktualizace a nerestartuje virtuální počítače z jiné aktualizační domény (ve stejné skupině dostupnosti). Azure také před přechodem na další skupinu virtuálních počítačů počká aspoň 30 minut. 
 
-Další informace o vysoké dostupnosti najdete v tématu [oblasti a dostupnost pro virtuální počítače v Azure](../virtual-machines/windows/availability.md).
+Další informace o vysoké dostupnosti najdete v tématu [oblasti a dostupnost pro virtuální počítače v Azure](../virtual-machines/availability.md).
 
 **Otázka: Jak mohu dostávat informace o plánované údržbě?**
 

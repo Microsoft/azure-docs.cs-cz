@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 07fde5a8e7e3d542ed3fa3bc54b761d5434ac710
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: eee32dc7edd4256dd2bd120609504042d7ab78ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284859"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836874"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Instalace MySQL na virtuálním počítači se systémem OpenSUSE Linux v Azure
 
@@ -32,7 +32,7 @@ Nejdřív vytvořte skupinu prostředků. V tomto příkladu má skupina prostř
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-Vytvořte virtuální počítač. V tomto příkladu je virtuální počítač pojmenovaný *myVM* a velikost virtuálního počítače je *Standard_D2s_v3*, ale měli byste si vybrat [Velikost virtuálního počítače](sizes.md) , kterou považujete za nejvhodnější pro vaše zatížení.
+Vytvořte virtuální počítač. V tomto příkladu je virtuální počítač pojmenovaný *myVM* a velikost virtuálního počítače je *Standard_D2s_v3*, ale měli byste si vybrat [Velikost virtuálního počítače](../sizes.md) , kterou považujete za nejvhodnější pro vaše zatížení.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -157,7 +157,3 @@ quit
 
 ## <a name="next-steps"></a>Další kroky
 Podrobnosti o MySQL najdete v [dokumentaci k MySQL](https://dev.mysql.com/doc).
-
-
-
-

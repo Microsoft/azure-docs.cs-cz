@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 12/18/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: bf55c1f7de751f03fb804eb263cf0810a48378e1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 32efde2cb2497fb8aab415d09a1063ff07c6b0f0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494883"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837189"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>Výběr správného počtu domén selhání pro škálovací sadu virtuálních počítačů
 Služba Virtual Machine Scale Sets se ve výchozím nastavení vytváří s pěti doménami selhání v oblastech Azure bez zón. Pro oblasti, které podporují nasazení geografických sad virtuálních počítačů a tuto možnost, je výchozí hodnota počtu domén selhání 1 pro každou z těchto zón. FD = 1 v tomto případě předpokládá, že instance virtuálních počítačů patřící do sady škálování budou rozloženy mezi mnoho skříní na nejvyšší úrovni.
@@ -41,4 +41,4 @@ az vmss create \
 Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních počítačů trvá několik minut.
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si další informace o [funkcích dostupnosti a redundance](../virtual-machines/windows/availability.md) pro prostředí Azure.
+- Přečtěte si další informace o [funkcích dostupnosti a redundance](../virtual-machines/availability.md) pro prostředí Azure.

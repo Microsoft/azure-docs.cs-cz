@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 975dcc357e244469f33385f84f2e15a89997597b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078214"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837376"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Migrace aplikací a řešení z BizTalk Services na Azure Logic Apps
 
@@ -35,7 +35,7 @@ Tato tabulka mapuje BizTalk Services možností Logic Apps.
 | BizTalk Services   | Logic Apps            | Účel                      |
 | ------------------ | --------------------- | ---------------------------- |
 | Konektor          | Konektor             | Odesílání a příjem dat   |
-| Most             | Aplikace logiky             | Procesor kanálu           |
+| Bridge             | Aplikace logiky             | Procesor kanálu           |
 | Ověřit fázi     | Akce ověřování XML | Ověření dokumentu XML proti schématu | 
 | Fáze obohacení       | Datové tokeny           | Zvýšení úrovně vlastností na zprávy nebo pro rozhodování o směrování |
 | Fáze transformace    | Akce transformace      | Převod zpráv XML z jednoho formátu na jiný |
@@ -79,7 +79,7 @@ V BizTalk Services můžete přijímat různé typy zpráv XML a určit, jaké s
 
 Logic Apps poskytuje podobné možnosti. Pomocí různých triggerů konektoru (systém souborů, FTP, HTTP atd.) obdržíte plochý soubor přes různé protokoly a pomocí akce [plochý dekódovat soubory](../logic-apps/logic-apps-enterprise-integration-flatfile.md) převeďte data do XML. Stávající schémata plochých souborů můžete přesunout přímo do Logic Apps bez jakýchkoli změn a pak do svého účtu pro integraci nahrát schémata.
 
-### <a name="validation"></a>Ověřování
+### <a name="validation"></a>Ověřování vstupů (validace)
 
 Poté, co jsou příchozí data převedena do formátu XML (nebo pokud byl XML přijat formátu zprávy), spustí ověřování a určí, zda zpráva dodržuje vaše schéma XSD. K provedení této úlohy v Logic Apps použijte akci [ověření XML](../logic-apps/logic-apps-enterprise-integration-xml-validation.md) . Můžete použít stejná schémata z BizTalk Services bez jakýchkoli změn.
 
@@ -103,7 +103,7 @@ Při zpracování BizTalk Services přidá fáze obohacení vlastnosti do kontex
 
 ### <a name="run-custom-code"></a>Spustit vlastní kód
 
-BizTalk Services umožňuje [Spustit vlastní kód](/previous-versions/azure/dn232389(v=azure.100)) , který se nahraje ve vlastních sestaveních. Tuto funkci implementuje rozhraní [IMessageInspector](/azure/logic-apps/logic-apps-move-from-mabs) . Každá fáze v mostu obsahuje dvě vlastnosti (při kontrole a při ukončení), které poskytují typ rozhraní .NET, který jste vytvořili, který implementuje toto rozhraní. Vlastní kód umožňuje provádět složitější zpracování dat a umožňuje znovu použít existující kód v sestaveních, která provádějí běžné obchodní logiky. 
+BizTalk Services umožňuje [Spustit vlastní kód](/previous-versions/azure/dn232389(v=azure.100)) , který se nahraje ve vlastních sestaveních. Tuto funkci implementuje rozhraní [IMessageInspector]() . Každá fáze v mostu obsahuje dvě vlastnosti (při kontrole a při ukončení), které poskytují typ rozhraní .NET, který jste vytvořili, který implementuje toto rozhraní. Vlastní kód umožňuje provádět složitější zpracování dat a umožňuje znovu použít existující kód v sestaveních, která provádějí běžné obchodní logiky. 
 
 Logic Apps poskytuje dva hlavní způsoby spouštění vlastního kódu: Azure Functions a API Apps. Azure Functions lze vytvořit a volat z Logic Apps. Přečtěte si téma [Přidání a spuštění vlastního kódu pro Logic Apps prostřednictvím Azure Functions](../logic-apps/logic-apps-azure-functions.md). K vytvoření vlastních triggerů a akcí použijte API Apps, součást Azure App Service. Přečtěte si další informace o [Vytvoření vlastního rozhraní API pro použití s Logic Apps](../logic-apps/logic-apps-create-api-app.md). 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/15/2020
-ms.openlocfilehash: dac67c6dae801d11866f7c4978a050a0cb2fa1dd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f408174b9a8dff925a9c834ea75bf725ec6f913
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065642"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837340"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>Průvodce publikováním pro nabídky virtuálních počítačů
 
@@ -29,7 +29,7 @@ Pokud chcete uživatelům zajistit, aby vaši nabídku otestovali, měli byste p
 
 Jeden nebo více virtuálních počítačů můžete nasadit prostřednictvím aplikací IaaS (infrastruktura jako služba) nebo softwaru jako služby (SaaS). Výhodou možnosti publikování *testovacích jednotek* je automatizovaná instalace virtuálního počítače nebo celého řešení, které vedlo průvodcem hostovaným partnerem. Testovací jednotka umožňuje zákazníkům vyhodnotit virtuální počítače bez dalších nákladů. Zákazník nemusí být stávající zákazník Azure, který by se mohl zapojit do zkušebního prostředí. 
 
-Pokud chcete začít, kontaktujte nás e-mailem na adrese [amp-testdrive](mailto:amp-testdrive@microsoft.com). 
+Další informace o testovacích jednotkách najdete v tématu [co je testovací jednotka?](what-is-test-drive.md) .
 
 |Požadavky  |Podrobnosti |
 |---------|---------|

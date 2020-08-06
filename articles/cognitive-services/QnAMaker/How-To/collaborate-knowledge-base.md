@@ -3,18 +3,18 @@ title: Spolupráce na znalostní bázi Knowledge Base – QnA Maker
 description: QnA Maker umožňuje více lidem spolupracovat na znalostní bázi. Tato funkce je k dispozici s řízením přístupu na základě role Azure (Azure RBAC).
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 20eb58f346322cb78bff85af3d6a0d366090763d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 86c8d919618b37223e51a23635a1322a4e0d780c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446943"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837427"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>Spolupráce s autory a editory
 
 Spolupráce je poskytována na úrovni prostředků QnA Maker, která umožňuje omezit přístup spolupracovníka na základě role spolupracovníka. Přečtěte si další informace o QnA Maker [konceptech](../Concepts/role-based-access-control.md)ověřování spolupracovníka.
 
-## <a name="add-role-based-access-rbac-to-your-qna-maker-resource"></a>Přidání přístupu na základě role (RBAC) do prostředku QnA Maker
+## <a name="add-azure-role-based-access-control-azure-rbac-to-your-qna-maker-resource"></a>Přidejte řízení přístupu na základě role Azure (Azure RBAC) do prostředku QnA Maker.
 
 QnA Maker umožňuje více lidem spolupracovat na všech základech znalostní báze ve stejném prostředku QnA Maker. Tato funkce je k dispozici u [Access Control na základě rolí](../../../active-directory/role-based-access-control-configure.md)Azure.
 
@@ -36,7 +36,7 @@ V následujících krocích se používá role spolupracovníka, ale kterákoli 
 
     ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 
     ![QnA Maker IAM – přidat](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 

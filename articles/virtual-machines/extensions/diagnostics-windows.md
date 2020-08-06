@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 9bb9b993b88b8f4b31bc56c6bb3fc16972bb6e41
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3b46ae07d4bbbcd02b9880a394b72c790553f95c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069814"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837019"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Použití PowerShellu k povolení Azure Diagnostics ve virtuálním počítači s Windows
 
@@ -212,4 +212,4 @@ Konfigurace se musí aktualizovat, aby obsahovala následující:
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o používání funkce Azure Diagnostics a dalších technik k řešení problémů najdete v tématu [Povolení diagnostiky v Azure Cloud Services a Virtual Machines](../../cloud-services/cloud-services-dotnet-diagnostics.md).
-* [Schéma konfigurací diagnostiky](/azure/azure-monitor/platform/diagnostics-extension-versions) vysvětluje různé možnosti konfigurace XML pro diagnostické rozšíření.
+* [Schéma konfigurací diagnostiky](../../azure-monitor/platform/diagnostics-extension-versions.md) vysvětluje různé možnosti konfigurace XML pro diagnostické rozšíření.

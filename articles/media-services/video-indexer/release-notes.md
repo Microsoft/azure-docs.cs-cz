@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 08/05/2020
 ms.author: juliako
-ms.openlocfilehash: d7667f7c5194762b227c3cddd5bea5ed9d50a96e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1b11dc0ee17fd0686776a7262c4bc99bd98bcc3e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042625"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837305"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -29,6 +29,28 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
+
+## <a name="july-2020"></a>Červenec 2020
+
+### <a name="ga-for-multi-language-identification"></a>GA pro identifikaci více jazyků
+
+Identifikace ve více jazycích je přesunutá z verze Preview na GA a připravená na využití v produktivním prostředí.
+
+Neexistuje žádný dopad na ceny související s přechodem "Preview na GA".
+
+### <a name="video-indexer-website-improvements"></a>Vylepšení Video Indexer webu
+
+#### <a name="adjustments-in-the-video-gallery"></a>Úpravy v galerii videí
+
+Byl přidán nový panel hledání pro hledání ve hloubkovém přehledu s dalšími možnostmi filtrování. Výsledky hledání se taky vylepšily.
+
+Nové zobrazení seznamu s možností seřadit a spravovat archiv videa s více soubory.
+
+#### <a name="new-panel-for-easy-selection-and-configuration"></a>Nový panel pro snadné výběr a konfiguraci
+
+Byl přidán postranní panel pro snadné výběr a konfiguraci uživatele, což umožňuje jednoduché a rychlé vytváření a sdílení účtů a také nastavení konfigurace.
+
+Postranní panel se používá také pro uživatelské preference a nápovědu.
 
 ## <a name="june-2020"></a>Červen 2020
 

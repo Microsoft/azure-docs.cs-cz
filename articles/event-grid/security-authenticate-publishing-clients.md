@@ -3,12 +3,12 @@ title: Ověřování klientů, kteří publikují události, aby Event Grid vlas
 description: Tento článek popisuje různé způsoby ověřování klientů, kteří publikují události, aby Event Grid vlastní témata.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1e147830a4b37a8603df8e4ce29953acab2345bd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8b08c46fdeadccfad0471ddfa4f9ba2762a951a0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115872"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837393"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a>Ověřování klientů publikování (Azure Event Grid)
 Tento článek poskytuje informace o ověřování klientů, které publikují události pro Azure Event Grid témat nebo domén pomocí **přístupového klíče** nebo tokenu **sdíleného přístupového podpisu (SAS)** . Doporučujeme použít token SAS, ale ověřování pomocí klíče poskytuje jednoduché programování a je kompatibilní s mnoha existujícími vydavateli webhooků.  
@@ -27,7 +27,7 @@ aeg-sas-key: XXXXXXXXXXXXXXXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
 Můžete také zadat `aeg-sas-key` jako parametr dotazu. 
 
 ```
-https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01&&aeg-sas-key=XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
+https://<yourtopic>.<region>.eventgrid.azure.net/api/events?aeg-sas-key=XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
 ```
 
 Pokyny k získání přístupových klíčů k tématu nebo doméně najdete v tématu [získání přístupových klíčů](get-access-keys.md).
@@ -35,7 +35,7 @@ Pokyny k získání přístupových klíčů k tématu nebo doméně najdete v t
 ## <a name="authenticate-using-a-sas-token"></a>Ověřování pomocí tokenu SAS
 Tokeny SAS pro prostředek Event Grid zahrnují prostředky, čas vypršení platnosti a signaturu. Formát tokenu SAS je: `r={resource}&e={expiration}&s={signature}` .
 
-Prostředek je cesta k tématu Event gridu, do kterého odesíláte události. Například platná cesta prostředku je: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01` . Pokud chcete zobrazit všechny podporované verze rozhraní API, přečtěte si téma [typy prostředků Microsoft. EventGrid](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions). 
+Prostředek je cesta k tématu Event gridu, do kterého odesíláte události. Například platná cesta prostředku je: `https://<yourtopic>.<region>.eventgrid.azure.net/api/events` . Pokud chcete zobrazit všechny podporované verze rozhraní API, přečtěte si téma [typy prostředků Microsoft. EventGrid](/azure/templates/microsoft.eventgrid/allversions). 
 
 Nejprve programově vygenerujte token SAS a pak použijte `aeg-sas-token` záhlaví nebo `Authorization SharedAccessSignature` hlavičku k ověření pomocí Event Grid. 
 
@@ -69,14 +69,14 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 Tady je příklad předání tokenu SAS jako hodnoty pro `aeg-sas-toke` hlavičku. 
 
 ```http
-aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
+aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ```
 
 ### <a name="using-authorization-header"></a>Používání autorizační hlavičky
 Tady je příklad předání tokenu SAS jako hodnoty pro `Authorization` hlavičku. 
 
 ```http
-Authorization: SharedAccessSignature r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
+Authorization: SharedAccessSignature r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ```
 
 ## <a name="next-steps"></a>Další kroky

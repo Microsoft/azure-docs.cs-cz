@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 6f2043b91f8345a638d6fc773230cd182fb0fead
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20add4859b272b6d121666cde9c56296119d41e4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84508841"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836526"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Privátní odkaz pro Azure Database for MariaDB
 
@@ -20,7 +20,7 @@ Privátní odkaz vám umožní vytvořit soukromé koncové body pro Azure Datab
 Seznam pro PaaS služby, které podporují funkce privátního propojení, najdete v [dokumentaci](https://docs.microsoft.com/azure/private-link/index)k privátním odkazům. Privátní koncový bod je privátní IP adresa v konkrétní [virtuální](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) síti a podsíti.
 
 > [!NOTE]
-> Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for MariaDB podporuje cenové úrovně optimalizované pro Pro obecné účely a paměť.
+> Funkce privátního odkazu je dostupná jenom pro Azure Database for MariaDB servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je databázový server v jedné z těchto cenových úrovní.
 
 ## <a name="data-exfiltration-prevention"></a>Prevence exfiltrace dat
 

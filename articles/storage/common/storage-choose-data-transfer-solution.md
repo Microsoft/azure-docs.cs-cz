@@ -8,14 +8,14 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 7094fffa1ea8ca2c2557e75fcb31b700abc43da5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 123fa86714ae3cefe7de5bebda9e0fccd385ecb4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514440"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836594"
 ---
-# <a name="choose-an-azure-solution-for-data-transfer"></a>Zvolit řešení Azure pro přenos dat
+# <a name="choose-an-azure-solution-for-data-transfer"></a>Výběr řešení Azure pro přenos dat
 
 Tento článek poskytuje přehled některých běžných řešení pro přenos dat Azure. Článek také odkazuje na Doporučené možnosti v závislosti na šířce pásma sítě ve vašem prostředí a velikosti dat, která chcete přenést.
 

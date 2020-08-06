@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 06/15/2020
-ms.openlocfilehash: 8bf1a19c8756e8c51b79ec63f10822efa7816d32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9bc5e91d45b75c47cee31c45b937f7d3f0118b8
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986967"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836679"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Transparentní šifrování dat pro SQL Database, spravovanou instanci SQL a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "84986967"
 
 TDE provádí šifrování v/v v reálném čase a dešifrování dat na úrovni stránky. Každá stránka se při načtení do paměti dešifruje a pak se před zápisem na disk zašifruje. TDE šifruje úložiště celé databáze pomocí symetrického klíče, který se nazývá šifrovací klíč databáze (klíč DEK). Při spuštění databáze se šifrované klíč DEK dešifrují a potom se používají k dešifrování a opětovnému šifrování souborů databáze v procesu SQL Server databázového stroje. KLÍČ DEK je chráněn ochranou TDE. TDE Protector je buď certifikát spravovaný službou (transparentní šifrování dat spravovaný službou), nebo asymetrický klíč uložený v [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) (transparentní šifrování dat spravované zákazníkem).
 
-Pro Azure SQL Database a Azure synapse se ochrana TDE nastaví na úrovni [serveru](logical-servers.md) a děděna všemi databázemi přidruženými k tomuto serveru. Pro spravovanou instanci Azure SQL (funkce BYOK ve verzi Preview) se ochrana TDE nastaví na úrovni instance a zděděná všemi šifrovanými databázemi v této instanci. Pojem *Server* v celém tomto dokumentu odkazuje na server i na instanci, pokud není uvedeno jinak.
+Pro Azure SQL Database a Azure synapse se ochrana TDE nastaví na úrovni [serveru](logical-servers.md) a děděna všemi databázemi přidruženými k tomuto serveru. U spravované instance Azure SQL je ochrana TDE nastavena na úrovni instance a zděděna všemi šifrovanými databázemi v této instanci. Pojem *Server* v celém tomto dokumentu odkazuje na server i na instanci, pokud není uvedeno jinak.
 
 > [!IMPORTANT]
 > Všechny nově vytvořené databáze v SQL Database jsou ve výchozím nastavení šifrované pomocí transparentního šifrování dat spravovaného službou. Existující databáze SQL vytvořené před 2017 a databáze SQL vytvořené prostřednictvím obnovení, geografické replikace a kopie databáze nejsou ve výchozím nastavení šifrované. Existující databáze spravované instance SQL vytvořené před únorem 2019 nejsou ve výchozím nastavení šifrované. Databáze spravované instance SQL vytvořené prostřednictvím obnovení dědí stav šifrování ze zdroje.
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat TDE prostřednictvím PowerShellu, musíte být při
 
 Pro Azure SQL Database a Azure synapse použijte následující rutiny:
 
-| Rutina | Description |
+| Rutina | Popis |
 | --- | --- |
 | [Set-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) |Povoluje nebo zakazuje transparentní šifrování dat pro databázi.|
 | [Get-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |Získá transparentní stav šifrování dat pro databázi. |
@@ -120,7 +120,7 @@ Spravujte TDE pomocí jazyka Transact-SQL.
 
 Připojte se k databázi pomocí přihlašovacího jména, které je správcem nebo členem role **dbmanager** v hlavní databázi.
 
-| Příkaz | Description |
+| Příkaz | Popis |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) | NASTAVENÍ šifrování ZAPNUTo nebo vypnuto šifrování nebo dešifrování databáze |
 | [sys. dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Vrátí informace o stavu šifrování databáze a přidružených šifrovacích klíčích databáze. |
@@ -136,7 +136,7 @@ Spravujte TDE pomocí REST API.
 Pokud chcete nakonfigurovat TDE prostřednictvím REST API, musíte být připojeni jako vlastník Azure, přispěvatel nebo správce zabezpečení SQL.
 Pro Azure SQL Database a Azure synapse použijte následující sadu příkazů:
 
-| Příkaz | Description |
+| Příkaz | Popis |
 | --- | --- |
 |[Vytvořit nebo aktualizovat server](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Přidá do serveru Azure Active Directoryovou identitu. (slouží k udělení přístupu k Key Vault)|
 |[Vytvořit nebo aktualizovat klíč serveru](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|Přidá do serveru Key Vault klíč.|

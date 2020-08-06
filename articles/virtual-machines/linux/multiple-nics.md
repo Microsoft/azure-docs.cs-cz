@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 8c6b6dcf748b0c6ef6162e9f20726123673abb33
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 86910ece57d8fb72ade0c67a9e6787023c4283f3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283261"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836917"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Vytvoření virtuálního počítače se systémem Linux v Azure s několika síťovými kartami
 
@@ -79,7 +79,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>Vytvoření virtuálního počítače a připojení síťových karet
-Když vytváříte virtuální počítač, zadejte síťové karty, pomocí kterých jste vytvořili `--nics` . Při výběru velikosti virtuálního počítače se také musíte postarat. Existují omezení pro celkový počet síťových adaptérů, které můžete přidat do virtuálního počítače. Přečtěte si víc o [velikostech virtuálních počítačů se systémem Linux](sizes.md).
+Když vytváříte virtuální počítač, zadejte síťové karty, pomocí kterých jste vytvořili `--nics` . Při výběru velikosti virtuálního počítače se také musíte postarat. Existují omezení pro celkový počet síťových adaptérů, které můžete přidat do virtuálního počítače. Přečtěte si víc o [velikostech virtuálních počítačů se systémem Linux](../sizes.md).
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač s názvem *myVM*:
 
@@ -97,7 +97,7 @@ az vm create \
 Přidejte směrovací tabulky do hostovaného operačního systému, a to provedením kroků v části [Konfigurace hostovaného operačního systému pro více síťových karet](#configure-guest-os-for-multiple-nics).
 
 ## <a name="add-a-nic-to-a-vm"></a>Přidání síťového rozhraní do virtuálního počítače
-Předchozí kroky vytvořily virtuální počítač s více síťovými kartami. Můžete taky přidat síťové karty do existujícího virtuálního počítače pomocí Azure CLI. Různé [velikosti virtuálních počítačů](sizes.md) podporují proměnlivý počet síťových adaptérů, proto si odpovídajícím způsobem nasaďte velikost svého virtuálního počítače. V případě potřeby můžete [změnit velikost virtuálního počítače](change-vm-size.md).
+Předchozí kroky vytvořily virtuální počítač s více síťovými kartami. Můžete taky přidat síťové karty do existujícího virtuálního počítače pomocí Azure CLI. Různé [velikosti virtuálních počítačů](../sizes.md) podporují proměnlivý počet síťových adaptérů, proto si odpovídajícím způsobem nasaďte velikost svého virtuálního počítače. V případě potřeby můžete [změnit velikost virtuálního počítače](change-vm-size.md).
 
 Vytvořte další síťovou kartu pomocí [AZ Network nic Create](/cli/azure/network/nic). Následující příklad vytvoří síťovou kartu s názvem *myNic3* připojenou k back-endové podsíti a skupině zabezpečení sítě vytvořenou v předchozích krocích:
 
@@ -242,6 +242,6 @@ ping bing.com -c 4 -I eth1
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Při pokusu o vytvoření virtuálního počítače s několika síťovými kartami si Projděte [velikost virtuálních počítačů se systémem Linux](sizes.md) . Věnujte pozornost maximálnímu počtu síťových adaptérů, které každá velikost virtuálního počítače podporuje.
+Při pokusu o vytvoření virtuálního počítače s několika síťovými kartami si Projděte [velikost virtuálních počítačů se systémem Linux](../sizes.md) . Věnujte pozornost maximálnímu počtu síťových adaptérů, které každá velikost virtuálního počítače podporuje.
 
 K lepšímu zabezpečení virtuálních počítačů použijte přístup k VIRTUÁLNÍmu počítači podle potřeby. Tato funkce otevře pravidla skupiny zabezpečení sítě pro provoz SSH v případě potřeby a v určeném časovém období. Další informace najdete v tématu popisujícím [správu přístupu k virtuálním počítačům pomocí metody právě včas](../../security-center/security-center-just-in-time.md).

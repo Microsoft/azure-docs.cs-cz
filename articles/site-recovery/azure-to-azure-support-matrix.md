@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: d4beec60a2cd705884ee79296c9afab2afc08c2e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 09b6bf6db5927c49950fc5b2a6d1753d53364380
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534494"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836645"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -170,7 +170,7 @@ SUSE Linux Enterprise Server 15 a 15 SP1 | 9,32 | Ve výchozím nastavení jsou 
 
 **Nastavení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-Velikost | Všechny velikosti virtuálních počítačů Azure s minimálně 2 jádry procesoru a 1 GB paměti RAM | Ověřte [velikosti virtuálních počítačů Azure](../virtual-machines/windows/sizes.md).
+Velikost | Všechny velikosti virtuálních počítačů Azure s minimálně 2 jádry procesoru a 1 GB paměti RAM | Ověřte [velikosti virtuálních počítačů Azure](../virtual-machines/sizes.md).
 Skupiny dostupnosti | Podporováno | Pokud povolíte replikaci pro virtuální počítač Azure s výchozími možnostmi, vytvoří se skupina dostupnosti automaticky na základě nastavení zdrojové oblasti. Tato nastavení můžete změnit.
 Zóny dostupnosti | Podporováno |
 Zvýhodněné hybridní využití (centrum) | Podporováno | Pokud má zdrojový virtuální počítač povolenou licenci na rozbočovač, používá testovací převzetí služeb při selhání nebo převzetí služeb při selhání virtuální počítač taky licenci centra.
@@ -205,7 +205,7 @@ Maximální velikost disku s operačním systémem | 2048 GB | [Přečtěte si d
 Dočasný disk | Nepodporováno | Dočasný disk je vždy vyloučen z replikace.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Další informace](../virtual-machines/windows/managed-disks-overview.md).
 Maximální velikost datového disku | 8192 GB pro Managed disks<br></br>4095 GB pro nespravované disky|
 Minimální velikost datového disku | Neexistují žádná omezení pro nespravované disky. 2 GB pro spravované disky |
-Maximální počet datových disků | Až 64, v souladu s podporou konkrétní velikosti virtuálního počítače Azure | [Přečtěte si další informace](../virtual-machines/windows/sizes.md) o velikostech virtuálních počítačů.
+Maximální počet datových disků | Až 64, v souladu s podporou konkrétní velikosti virtuálního počítače Azure | [Přečtěte si další informace](../virtual-machines/sizes.md) o velikostech virtuálních počítačů.
 Rychlost změny datového disku | Maximálně 20 MB/s na disk pro Premium Storage. Maximálně 2 MB/s na disk pro úložiště úrovně Standard. | Pokud je průměrná rychlost změny dat na disku nepřetržitě vyšší než maximální, replikace se nezachytí.<br/><br/>  Pokud je ale maximum překročeno zřídka, replikace může zachytit, ale mírně zpožděné body obnovení.
 Datový disk – standardní účet úložiště | Podporováno |
 Datový disk – účet Premium Storage | Podporováno | Pokud má virtuální počítač disky se systémem Premium a standardními účty úložiště, můžete pro každý disk vybrat jiný cílový účet úložiště, abyste měli jistotu, že máte stejnou konfiguraci úložiště v cílové oblasti.
@@ -219,7 +219,7 @@ Prostory úložiště | Podporováno |
 Šifrování v klidovém umístění (CMK) | Podporováno | U spravovaných disků se podporuje jak software, tak klíče HSM.
 Dvojité šifrování v klidovém umístění | Podporováno | Další informace o podporovaných oblastech pro [Windows](../virtual-machines/windows/disk-encryption.md) a [Linux](../virtual-machines/linux/disk-encryption.md)
 Azure Disk Encryption (ADE) pro operační systém Windows | Podporováno pro virtuální počítače se spravovanými disky. | Virtuální počítače používající nespravované disky se nepodporují. <br/><br/> Klíče chráněné HSM nejsou podporovány. <br/><br/> Šifrování jednotlivých svazků na jednom disku se nepodporuje. |
-Azure Disk Encryption (ADE) pro Linux OS | Podporováno pro virtuální počítače se spravovanými disky. | Virtuální počítače používající nespravované disky se nepodporují. <br/><br/> Klíče chráněné HSM nejsou podporovány. <br/><br/> Šifrování jednotlivých svazků na jednom disku se nepodporuje. <br><br> Známý problém s povolením replikace [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-troubleshoot-errors#enable-protection-failed-as-the-installer-is-unable-to-find-the--root-disk-error-code-151137) |
+Azure Disk Encryption (ADE) pro Linux OS | Podporováno pro virtuální počítače se spravovanými disky. | Virtuální počítače používající nespravované disky se nepodporují. <br/><br/> Klíče chráněné HSM nejsou podporovány. <br/><br/> Šifrování jednotlivých svazků na jednom disku se nepodporuje. <br><br> Známý problém s povolením replikace [Další informace](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137) |
 Střídání klíčů SAS | Nepodporuje se | Pokud je klíč SAS pro účty úložiště otočený, musí zákazník zakázat a znovu povolit replikaci. |
 Horké přidání    | Podporováno | Povolení replikace pro datový disk, který přidáte do replikovaného virtuálního počítače Azure, se podporuje pro virtuální počítače, které používají spravované disky. <br/><br/> Do virtuálního počítače Azure se dá po jednom okamžiku připojit jenom jeden disk. Paralelní přidávání více disků není podporováno. |
 Odstranit disk z provozu    | Nepodporováno | Pokud na virtuálním počítači odeberete datový disk, budete muset zakázat replikaci a znovu povolit replikaci pro virtuální počítač.
@@ -290,4 +290,3 @@ Přístup k Site Recovery službě přes soukromé odkazy | Podporováno | [Dal�
 
 - Přečtěte si [pokyny k síti](./azure-to-azure-about-networking.md) pro replikaci virtuálních počítačů Azure.
 - Nasazení zotavení po havárii [replikací virtuálních počítačů Azure](./azure-to-azure-quickstart.md).
-

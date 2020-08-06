@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: ddbd64049307dcfd9b27cde1418eef2378b4f6b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c03105326b6d189b3c6fde72ff959211b3009517
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085686"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837036"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití diagnostického rozšíření Linuxu k monitorování metrik a protokolů
 
@@ -580,7 +580,7 @@ Za předpokladu, že vaše chráněná nastavení jsou v souboru ProtectedSettin
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-Příkaz předpokládá, že používáte režim správy prostředků Azure v rozhraní příkazového řádku Azure CLI. Pokud chcete nakonfigurovat LAD pro virtuální počítače s modelem nasazení Classic, přepněte do režimu ASM ( `azure config mode asm` ) a vynechejte název skupiny prostředků v příkazu. Další informace najdete v dokumentaci k rozhraní příkazového [řádku pro více platforem](/azure/xplat-cli-connect).
+Příkaz předpokládá, že používáte režim správy prostředků Azure Azure CLI. Pokud chcete nakonfigurovat LAD pro virtuální počítače s modelem nasazení Classic, přepněte do režimu ASM ( `azure config mode asm` ) a vynechejte název skupiny prostředků v příkazu. Další informace najdete v dokumentaci k rozhraní příkazového [řádku pro více platforem](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
 ### <a name="powershell"></a>PowerShell
 
@@ -757,7 +757,7 @@ Data odesílaná do jímky JsonBlob se ukládají v objektech blob v účtu úlo
 Kromě toho můžete použít tyto nástroje uživatelského rozhraní pro přístup k datům v Azure Storage:
 
 * Průzkumník serveru sady Visual Studio.
-* [Průzkumník služby Microsoft Azure Storage](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
+* [Průzkumník služby Microsoft Azure Storage](https://azurestorageexplorer.codeplex.com/ "Průzkumník služby Azure Storage").
 
 Tento snímek relace Průzkumník služby Microsoft Azure Storage zobrazuje vygenerované Azure Storage tabulky a kontejnery ze správně nakonfigurovaného rozšíření LAD 3,0 na testovacím virtuálním počítači. Obrázek se přesně neshoduje s [ukázkovou konfigurací LAD 3,0](#an-example-lad-30-configuration).
 

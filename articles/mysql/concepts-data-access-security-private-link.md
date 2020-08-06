@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: f780bf946e81e9873a1828f9d697f69c81cef513
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6391b21faaf6cd2a61dbe84af50ae12e4289dff9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509317"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837285"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Privátní odkaz pro Azure Database for MySQL
 
@@ -20,7 +20,7 @@ Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure pr
 Seznam pro PaaS služby, které podporují funkce privátního propojení, najdete v [dokumentaci](https://docs.microsoft.com/azure/private-link/index)k privátním odkazům. Privátní koncový bod je privátní IP adresa v konkrétní [virtuální](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) síti a podsíti.
 
 > [!NOTE]
-> Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for MySQL podporuje cenové úrovně optimalizované pro Pro obecné účely a paměť.
+> Funkce privátního odkazu je dostupná jenom pro Azure Database for MySQL servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je databázový server v jedné z těchto cenových úrovní.
 
 ## <a name="data-exfiltration-prevention"></a>Prevence exfiltrace dat
 
