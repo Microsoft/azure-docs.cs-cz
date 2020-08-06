@@ -5,18 +5,18 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/23/2019
+ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom:
 - mvc
 - amqp
-ms.openlocfilehash: 105dbed66b67f16b305cea74b9761abbef64d5fd
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: ba438971f3499b0d4f34affee8b4e4d0051ff828
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439775"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809914"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: vývoj modulu C# IoT Edge pro zařízení s Windows
 

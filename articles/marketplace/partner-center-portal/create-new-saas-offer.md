@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 61592ee8ad5991c9540f5b418cafe2441ab4d3ea
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2b12eb88f0297c44fabb62e40d315517f3d3b954
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317709"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800332"
 ---
 # <a name="create-a-saas-offer"></a>Vytvoření nabídky SaaS
 
@@ -282,12 +282,16 @@ Toto pole je vyžadováno.
 #### <a name="files-and-images"></a>Soubory a image
 
 - **Dokumenty** (povinné) – přidejte související marketingové dokumenty pro vaši nabídku ve formátu PDF aspoň jeden a až tři dokumenty na nabídku.
-- **Obrázky** (volitelné) – existuje několik míst, kde se na webu Marketplace můžou zobrazit obrázky loga vaší nabídky, a to s vyžadováním následujících velikostí pixelů ve formátu PNG:
+- **Obrázky** (povinné) – existuje několik míst, kde se obrázky s logem vaší nabídky můžou zobrazit na webu Marketplace. Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije tuto hodnotu k vytvoření **malého** (48 x 48 pixelů) a **středníku** (90 x 90 pixelů). Volitelně je můžete nahradit různými obrázky. Přidání loga ve **světě** je volitelné.
 
-  - **Malý** (48 × 48, požadováno)
-  - **Střední** (90 × 90, požadováno)
-  - **Velký** (216 × 216, požadováno)
-  - **Roztažitelné** (255 × 115)
+    Pro použití na různých místech v seznamu jsou vyžadovány tři velikosti loga; jedna je volitelná:
+
+    - **Malé** (48 x 48)
+    - **Střední** (90 × 90)
+    - **Velký** (mezi 216 x 216 a 350 × 350)
+    - **Roztažitelné** (255 × 115), *volitelné*
+
+    [!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 - **Snímky obrazovky** (povinné) – přidejte maximálně pět snímků obrazovky, které demonstrují vaši nabídku. velikost je 1280 x 720 pixelů. Všechny obrázky musí být v. Formát PNG.
 - **Videa** (volitelné) – přidejte odkazy na videa, která demonstrují vaši nabídku. Můžete použít odkazy na videa YouTube nebo Vimeo, která se zobrazí spolu s vaší nabídkou pro zákazníky. Budete taky muset zadat miniaturu videa, ve formátu PNG se velikost nastaví na 1280 x 720 pixelů. Můžete zobrazit maximálně čtyři videa na jednu nabídku.

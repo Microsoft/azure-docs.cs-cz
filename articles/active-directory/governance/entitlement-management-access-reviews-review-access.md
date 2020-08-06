@@ -3,7 +3,7 @@ title: Kontrola přístupu k balíčku přístupu v Azure AD – Správa nárok�
 description: Naučte se, jak dokončit kontrolu přístupu balíčků pro přístup pro správu opravňujících k přístupu v Azure Active Directorych kontrolách přístupu (Preview).
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,18 +16,18 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d4de2ac3ee74d60eb532bd469b20523fa937db0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1115c08214db19227b4b8d7be671ce4da1cf2b1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078566"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798593"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Kontrola přístupu k balíčku přístupu v Azure AD – Správa nároků
 
 Správa nároků Azure AD zjednodušuje způsob, jakým podniky spravují přístup ke skupinám, aplikacím a webům SharePointu. Tento článek popisuje, jak provést kontroly přístupu pro jiné uživatele, kteří jsou přiřazeni k balíčku přístupu jako určený kontrolor.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li zkontrolovat přiřazení balíčku aktivních přístupů uživatelů, je nutné splnit požadavky na kontrolu přístupu:
 - Azure AD Premium P2

@@ -4,12 +4,12 @@ description: Obnovení virtuálního počítače Azure z bodu obnovení pomocí 
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 600979e56ac3e88b6530d833e930a9700fad2d9a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: a43e7d1d97196afdad0a1e451b0c1618f0ea3a16
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533641"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809179"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -195,7 +195,7 @@ K dispozici je řada běžných scénářů, ve kterých může být nutné obno
 **Scénář** | **Pokyny**
 --- | ---
 **Obnovení virtuálních počítačů pomocí zvýhodněné hybridní využití** | Pokud virtuální počítač s Windows používá [licencování programu zvýhodněné hybridní využití (centra)](../virtual-machines/windows/hybrid-use-benefit-licensing.md), obnovte disky a vytvořte nový virtuální počítač pomocí zadané šablony (s **typem licence** nastavenou na **Windows_Server**) nebo v PowerShellu.  Toto nastavení se dá použít i po vytvoření virtuálního počítače.
-**Obnovení virtuálních počítačů během havárie datacentra Azure** | Pokud trezor používá GRS a primární datacentrum pro virtuální počítač funguje, Azure Backup podporuje obnovení zálohovaných virtuálních počítačů do spárovaného datového centra. V spárovaném datovém centru vyberete účet úložiště a obnovíte ho jako normální. Azure Backup používá výpočetní službu v spárované oblasti k vytvoření obnoveného virtuálního počítače. [Přečtěte si další informace](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md) o odolnosti datového centra.<br><br> Pokud trezor používá GRS, můžete si vybrat novou funkci – [obnovení mezi oblastmi](#cross-region-restore). To vám umožňuje obnovení do druhé oblasti ve scénářích úplného nebo částečného výpadku, nebo i v případě, že vůbec nedochází k výpadku.
+**Obnovení virtuálních počítačů během havárie datacentra Azure** | Pokud trezor používá GRS a primární datacentrum pro virtuální počítač funguje, Azure Backup podporuje obnovení zálohovaných virtuálních počítačů do spárovaného datového centra. V spárovaném datovém centru vyberete účet úložiště a obnovíte ho jako normální. Azure Backup používá výpočetní službu v spárované oblasti k vytvoření obnoveného virtuálního počítače. [Přečtěte si další informace](/azure/architecture/resiliency/recovery-loss-azure-region) o odolnosti datového centra.<br><br> Pokud trezor používá GRS, můžete si vybrat novou funkci – [obnovení mezi oblastmi](#cross-region-restore). To vám umožňuje obnovení do druhé oblasti ve scénářích úplného nebo částečného výpadku, nebo i v případě, že vůbec nedochází k výpadku.
 **Obnovení virtuálního počítače s jedním řadičem domény v jedné doméně** | Obnovte virtuální počítač stejným způsobem jako jakýkoli jiný virtuální počítač. Poznámky:<br/><br/> V perspektivě služby Active Directory je virtuální počítač Azure podobně jako jakýkoli jiný virtuální počítač.<br/><br/> K dispozici je také režim obnovení adresářových služeb (DSRM), aby všechny scénáře obnovení služby Active Directory byly životaschopné. [Přečtěte si další](#post-restore-steps) informace o požadavcích na zálohování a obnovení u virtualizovaných řadičů domény.
 **Obnovení virtuálních počítačů s několika řadiči domény v jedné doméně** | Pokud je možné přes síť dosáhnout jiných řadičů domény ve stejné doméně, může být řadič domény obnovený jako libovolný virtuální počítač. Pokud se jedná o poslední zbývající řadič domény v doméně, nebo se provede obnovení v izolované síti, použijte [obnovení doménové struktury](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
 **Obnovení více domén v jedné doménové struktuře** | Doporučujeme [obnovení doménové struktury](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).

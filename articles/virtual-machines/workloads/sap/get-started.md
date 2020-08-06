@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/16/2020
+ms.date: 08/04/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7319adfc88eedb007677a78693ab0b2e514e646f
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: a882e3a21d5e1e99f6f9154fd2162071752b4499
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171664"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800344"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -104,6 +104,8 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 ## <a name="change-log"></a>Protokol změn
 
+- 08/04/2020: Změna [Nastavení Pacemaker v SLES v Azure](./high-availability-guide-suse-pacemaker.md) a [Nastavení Pacemaker v RHEL v Azure](./high-availability-guide-rhel-pacemaker.md) pro zdůraznění důležitosti spolehlivého překladu názvů pro clustery Pacemaker
+- 08/04/2020: Změna v [SAP NW ha v WFCS se sdílenou složkou](./sap-high-availability-installation-wsfc-file-share.md), [SAP NW ha v WFCS se sdíleným diskem](./sap-high-availability-installation-wsfc-shared-disk.md), [ha pro SAP NW na virtuálních počítačích Azure](./high-availability-guide.md), [ha pro SAP NW na virtuálních počítačích Azure v SLES](./high-availability-guide-suse.md), [ha pro SAP NW na virtuálních počítačích Azure v SLES s ANF](./high-availability-guide-suse-netapp-files.md), [ha pro SAP NW na virtuálních počítačích Azure v SLES průvodci pro více SID](./high-availability-guide-suse-multi-sid.md), [Vysoká dostupnost pro SAP NetWeaver na](./high-availability-guide-rhel.md)virtuálních počítačích Azure v RHEL, ha pro SAP NW na virtuálních počítačích Azure v RHEL [s ANF](./high-availability-guide-rhel-netapp-files.md) a [ha pro SAP NW na](./high-availability-guide-rhel-multi-sid.md) virtuálních počítačích Azure v RHEL – s využitím tohoto průvodce pro vysvětlení použití parametru`enque/encni/set_so_keepalive`
 - 07/23/2020: přidání [velké instance SAP HANA uložit v pomocí rezervovaného článku Azure](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md) – vysvětlení toho, co potřebujete znát, než si koupíte velké instance SAP HANA rezervaci a jak si koupit
 - 07/16/2020: Popište, jak použít Azure PowerShell k instalaci rozšíření nového virtuálního počítače pro SAP v [Průvodci nasazením](deployment-guide.md) .
 - 7/04/2020: vydání [služby Azure monitor pro řešení SAP (Preview)](./azure-monitor-overview.md)
@@ -130,7 +132,7 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 - 03/31/2020: Změna [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure na SLES](./sap-hana-high-availability.md) a [vysokou dostupnost SAP HANA na virtuálních počítačích Azure v RHEL](./sap-hana-high-availability-rhel.md) , aby se přidaly pokyny, jak určit velikost pruhu při vytváření prokládaných svazků.
 - 03/27/2020: Změna [vysoké dostupnosti pro SAP NW na virtuálních počítačích Azure v SLES s ANF pro aplikace SAP](./high-availability-guide-suse-netapp-files.md) pro zarovnávání možností připojení systému souborů k NetApp TR-4746 (odebrání možnosti připojení synchronizace)
 - 03/26/2020: Změna [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v průvodci SLES s více SID](./high-availability-guide-suse-multi-sid.md) pro přidání odkazu na NetApp TR-4746
-- 03/26/2020: Změna [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v SLES pro aplikace SAP](./high-availability-guide-suse.md), [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v SLES s Azure NETAPP Files pro aplikace SAP](./high-availability-guide-suse-netapp-files.md)vysoká dostupnost pro [systém souborů NFS na virtuálních počítačích Azure na SLES](./high-availability-guide-suse-nfs.md), [Vysoká dostupnost pro SAP NetWeaver na](./high-availability-guide-suse-multi-sid.md)virtuálních počítačích Azure v SLES, s vysokou dostupností pro SAP NetWeaver na virtuálních počítačích Azure v [RHEL pro aplikace](./high-availability-guide-rhel.md) SAP a pro zajištění [vysoké dostupnosti pro SAP NETWEAVER na virtuálních počítačích Azure v RHEL pomocí Azure NetApp Files pro aplikace SAP](./high-availability-guide-rhel-netapp-files.md) pro aktualizace diagramů a vysvětlení pokynů pro vytváření fondu back-endu Azure Load Balancer
+- 03/26/2020: Změna [vysoké dostupnosti pro SAP NetWeaver na virtuálních počítačích Azure v SLES pro aplikace SAP](./high-availability-guide-suse.md), [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v SLES s Azure NETAPP Files pro aplikace SAP](./high-availability-guide-suse-netapp-files.md)vysoká dostupnost pro [systém souborů NFS na virtuálních počítačích Azure na SLES](./high-availability-guide-suse-nfs.md), [Vysoká dostupnost pro SAP NetWeaver na](./high-availability-guide-suse-multi-sid.md)virtuálních počítačích Azure v RHEL, s vysokou dostupností pro SAP NetWeaver na virtuálních počítačích Azure v [RHEL pro aplikace](./high-availability-guide-rhel.md) SAP a pro zajištění [vysoké dostupnosti pro SAP NETWEAVER na virtuálních počítačích Azure v RHEL pomocí Azure NetApp Files pro aplikace SAP](./high-availability-guide-rhel-netapp-files.md) pro aktualizace diagramů a vysvětlení pokynů pro vytváření fondu back-endu Azure Load Balancer
 - 03/19/2020: hlavní revize dokumentu [rychlý Start: ruční instalace SAP HANA s jednou instancí v azure Virtual Machines](./hana-get-started.md) na [instalaci SAP HANA v Azure Virtual Machines](./hana-get-started.md)
 - 03/17/2020: při [nastavování Pacemaker v Azure na SUSE Linux Enterprise Server v Azure](./high-availability-guide-suse-pacemaker.md) odeberte nastavení konfigurace SBD, které už není potřeba.
 - 03/16/2020: vyjasnění scénáře certifikace sloupce v SAP HANA certifikované platformě IaaS, v [jakém softwaru SAP se podporuje nasazení Azure](./sap-supported-product-on-azure.md)

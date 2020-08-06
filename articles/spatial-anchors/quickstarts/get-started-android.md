@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3f794d1c70baee07b9ff3ed5d8299cf8ad3bf983
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b7f924c7f115e8eddda93ea0c096ab94411da72
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652500"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810390"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace pro Android pomocí prostorových kotev Azure
 
@@ -28,7 +28,7 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
@@ -86,7 +86,7 @@ Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte ho `Set me` klíčem úč
 
 Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte ho `Set me` identifikátorem účtu.
 
-Vyhledejte `public AzureSpatialAnchorsManager(Session arCoreSession)` a přidejte následující řádek, ve kterém nahradíte doménu účtu v minulosti: `spatialAnchorsSession.getConfiguration().setAccountDomain("MyAccountDomain");` .
+Vyhledejte `SpatialAnchorsAccountDomain` pole a nahraďte ho `Set me` doménou účtu.
 
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
@@ -96,7 +96,7 @@ Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte ho `Set me` klíčem úč
 
 Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte ho `Set me` identifikátorem účtu.
 
-Vyhledejte `AzureSpatialAnchorsApplication::StartCloudSession()` a přidejte následující řádek, ve kterém nahradíte doménu účtu v minulosti: `m_cloudSession->Configuration()->AccountDomain("MyAccountDomain");` .
+Vyhledejte `SpatialAnchorsAccountDomain` pole a nahraďte ho `Set me` doménou účtu.
 
 ---
 

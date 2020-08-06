@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 0a9eaeb9b77c7b4dd7e0b2347c66de3a325a66ee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ff0df654650bb1c32d5c3e9833ebde2a81e3d65c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505172"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799952"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Vytvoření nastavení diagnostiky pro odesílání protokolů a metrik platforem do různých umístění
 [Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. [Metriky platformy](data-platform-metrics.md) se ve výchozím nastavení shromažďují a obvykle se ukládají do databáze Azure monitor metrik. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání metrik platforem a protokolů platforem do různých umístění.
@@ -58,7 +58,7 @@ Všechna cílová umístění pro nastavení diagnostiky musí být vytvořena s
 [Vytvořte nový pracovní prostor](../learn/quick-create-workspace.md) , pokud ho ještě nemáte. Pracovní prostor nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným.
 
 ### <a name="event-hub"></a>Centrum událostí
-[Vytvořte centrum událostí](../../event-hubs/event-hubs-create.md) , pokud ho ještě nemáte. Obor názvů Event Hubs nemusí být ve stejném předplatném, jako je předplatné, které vysílá protokoly, pokud uživatel, který nastavení nakonfiguruje, má odpovídající přístup RBAC k oběma předplatným a oba odběry jsou ve stejném tenantovi AAD.
+[Vytvořte centrum událostí](../../event-hubs/event-hubs-create.md) , pokud ho ještě nemáte. Obor názvů Event Hubs nemusí být ve stejném předplatném jako odběr, který generuje protokoly, pokud uživatel, který nastavení nakonfiguruje, má odpovídající přístup RBAC k oběma předplatným a oba odběry jsou ve stejném tenantovi.
 
 Zásady sdíleného přístupu pro obor názvů definují oprávnění, která má mechanismus streamování. Streamování do Event Hubs vyžaduje oprávnění spravovat, odesílat a naslouchat. Zásady sdíleného přístupu můžete vytvořit nebo upravit na Azure Portal na kartě konfigurovat pro svůj obor názvů Event Hubs. Chcete-li aktualizovat nastavení diagnostiky tak, aby zahrnovalo streamování, musíte mít oprávnění ListKey k tomuto autorizačnímu pravidlu Event Hubs. 
 
@@ -182,7 +182,7 @@ V tématu [Správce prostředků ukázek šablon pro nastavení diagnostiky v Az
 Pokud chcete vytvořit nebo aktualizovat nastavení diagnostiky pomocí [REST API Azure monitor](/rest/api/monitor/), přečtěte si téma [nastavení diagnostiky](/rest/api/monitor/diagnosticsettings) .
 
 ## <a name="create-using-azure-policy"></a>Vytvořit pomocí Azure Policy
-Vzhledem k tomu, že pro každý prostředek Azure je třeba vytvořit diagnostické nastavení, Azure Policy lze použít k automatickému vytvoření nastavení diagnostiky při vytvoření každého prostředku. Podrobnosti najdete v tématu [nasazení Azure monitor ve velkém rozsahu pomocí Azure Policy](deploy-scale.md) .
+Vzhledem k tomu, že pro každý prostředek Azure je třeba vytvořit diagnostické nastavení, Azure Policy lze použít k automatickému vytvoření nastavení diagnostiky při vytvoření každého prostředku. Podrobnosti najdete v tématu [nasazení Azure monitor ve velkém rozsahu pomocí Azure Policy](../deploy-scale.md) .
 
 
 ## <a name="next-steps"></a>Další kroky

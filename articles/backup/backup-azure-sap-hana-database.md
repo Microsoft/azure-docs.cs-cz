@@ -3,12 +3,12 @@ title: Zálohování databáze SAP HANA do Azure s využitím Azure Backup
 description: V tomto článku se dozvíte, jak zálohovat databázi SAP HANA do virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 2f42b119c361eaddcb84dda738b50c8accc84f9c
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 0efd26272bbfc4c8f63f7f02a605d48e53577390
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439746"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809132"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Zálohování databází SAP HANA na virtuálních počítačích Azure
 
@@ -41,7 +41,7 @@ Pro všechny operace vyžaduje databáze SAP HANA běžící na virtuálním po�
 
 V následující tabulce jsou uvedeny různé alternativy, které můžete použít při navazování připojení:
 
-| **Možnost**                        | **Výhody**                                               | **Nevýhody**                                            |
+| **Parametr**                        | **Výhody**                                               | **Nevýhody**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Soukromé koncové body                 | Povolení zálohování přes privátní IP adresy uvnitř virtuální sítě  <br><br>   Podrobné řízení na straně sítě a trezoru | Má za následek standardní [náklady](https://azure.microsoft.com/pricing/details/private-link/) na soukromý koncový bod |
 | Značky služby NSG                  | Jednodušší Správa jako změny rozsahu se sloučí automaticky.   <br><br>   Žádné další náklady | Dá se použít jenom s skupin zabezpečení sítě  <br><br>    Poskytuje přístup k celé službě. |
@@ -63,11 +63,11 @@ Pokud používáte skupiny zabezpečení sítě (NSG), pomocí značky služby *
 
 1. V části **Nastavení**vyberte **odchozí pravidla zabezpečení** .
 
-1. Vyberte možnost **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](../virtual-network/manage-network-security-group.md#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na *příznak služby* a **cílová značka služby** je nastavená na *AzureBackup*.
+1. Vyberte **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](../virtual-network/manage-network-security-group.md#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na *příznak služby* a **cílová značka služby** je nastavená na *AzureBackup*.
 
 1. Kliknutím na **Přidat** uložte nově vytvořené odchozí pravidlo zabezpečení.
 
-Podobně můžete vytvořit NSG odchozí pravidla zabezpečení pro Azure Storage a Azure AD. Další informace o značkách služby najdete v [tomto článku](https://docs.microsoft.com/azure/virtual-network/service-tags-overview).
+Podobně můžete vytvořit NSG odchozí pravidla zabezpečení pro Azure Storage a Azure AD. Další informace o značkách služby najdete v [tomto článku](../virtual-network/service-tags-overview.md).
 
 #### <a name="azure-firewall-tags"></a>Značky Azure Firewall
 

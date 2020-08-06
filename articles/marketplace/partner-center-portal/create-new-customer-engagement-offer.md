@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: e90e45a0c96d8bbd2806a0ab6df70ef83e0cc9f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 650210ab965936de6e48b2ace3f2042857760053
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121924"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800003"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps
 
@@ -137,10 +137,10 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 4. Adresa podpory (odkaz)
 5. Adresa Podmínky použití (odkaz)
 6. Název nabídky
-7. Description
+7. Popis
 8. Snímky obrazovky a videa
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 
 Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole je předem vyplněno textem, který jste zadali pro možnost **alias nabídky** při vytváření nabídky, ale můžete tuto hodnotu změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
@@ -148,7 +148,7 @@ Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabíd
 
 Zadejte krátký popis vaší nabídky, maximálně 100 znaků. Tento popis se dá použít ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -195,10 +195,14 @@ Poskytněte loga a obrázky pro vaši nabídku. Všechny obrázky musí být ve 
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Poskytněte logo vaší nabídky ve třech velikostech v pixelech:
-- **Malý** (povinný; 48 × 48)
-- **Velký** (povinný; 216 × 216)
-- **Roztažitelné** (volitelné; 255 × 115)
+Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije toto k vytvoření **malého** loga velikosti (48 x 48 pixelů). Volitelně můžete tento text nahradit jiným obrázkem.
+
+Velikost loga se vyžaduje pro použití na různých místech v seznamu:
+
+- **Malé** (48 x 48)
+- **Velký** (mezi 216 x 216 a 350 × 350)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 
@@ -290,7 +294,7 @@ Nahrajte soubor PDF, ve kterém jsou uvedené klíčové scénáře použití va
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
-## <a name="publish"></a>Publikování
+## <a name="publish"></a>Publikovat
 
 ### <a name="submit-offer-to-preview"></a>Odeslat nabídku do verze Preview
 

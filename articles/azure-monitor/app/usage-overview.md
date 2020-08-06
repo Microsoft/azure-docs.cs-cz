@@ -3,16 +3,18 @@ title: Analýza využití pomocí Azure Application Insights | Dokumentace Micro
 description: Pochopte uživatele a to, co dělají s vaší aplikací.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: bd0b95fe92171d2c5a1515941dbf86a0e31e04be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4ace90b0893eed24227cadcb9a5b9fae7d502ff8
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323549"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800207"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
 Které funkce vaší webové nebo mobilní aplikace jsou nejoblíbenější? Dosáhnou vaši uživatelé své cíle s vaší aplikací? Vynechává se konkrétní body a později se vrátí?  [Azure Application Insights](./app-insights-overview.md) pomáhá získat výkonné přehledy o tom, jak uživatelé vaši aplikaci používají. Pokaždé, když aktualizujete aplikaci, můžete posoudit, jak dobře funguje pro uživatele. V tomto článku se seznámíte s tím, jak můžete provádět rozhodování o dalších cyklech vývoje na základě dat.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Cijb]
 
 ## <a name="send-telemetry-from-your-app"></a>Poslat telemetrii z vaší aplikace
 
@@ -174,7 +176,7 @@ Všechny nové TelemetryClients automaticky přidají hodnotu vlastnosti, kterou
    - [Uživatelé, relace, události](usage-segmentation.md)
    - [Trychtýře](usage-funnels.md)
    - [Uchovávání](usage-retention.md)
-   - [Toky uživatele](usage-flows.md)
+   - [Toky uživatelů](usage-flows.md)
    - [Workbooks](../platform/workbooks-overview.md)
    - [Přidat kontext uživatele](usage-send-user-context.md)
 

@@ -10,19 +10,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec0b3ef559abe1c65872d8ecf87f63e6ff3ed4b0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 422c174116bb6973993f5c6093a83f8bdb42a62a
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223903"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808231"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: odstranění aplikace z klienta služby Azure Active Directory (Azure AD)
 
 V tomto rychlém startu se pomocí Azure Portal odstraní aplikace, která se přidala do tenanta Azure Active Directory (Azure AD).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete odstranit aplikaci z tenanta Azure AD, budete potřebovat:
 
@@ -44,9 +43,15 @@ Odstranění aplikace z tenanta Azure AD:
 1. V části **Spravovat** v levém podokně vyberte možnost **vlastnosti**.
 1. Vyberte **Odstranit**a potom kliknutím na **Ano** potvrďte, že chcete aplikaci odstranit z tenanta Azure AD.
 
+> [!TIP]
+> Správu aplikací můžete automatizovat pomocí Graph API, přečtěte si téma [Automatizace správy aplikací pomocí rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Až budete s touto řadou rychlý Start hotovi, zvažte odstranění aplikace a vyčištění svého testovacího tenanta. Odstranění aplikace se pokrylo v tomto rychlém startu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Osvědčené postupy pro správu aplikací](application-management-fundamentals.md)
-- [Běžné scénáře správy aplikací](common-scenarios.md)
-- [Viditelnost a řízení správy aplikací](cloud-app-security.md)
+Dokončili jste řadu rychlý Start. V dalším kroku si přečtěte informace o osvědčených postupech při správě aplikací.
+> [!div class="nextstepaction"]
+> [Osvědčené postupy pro správu aplikací](application-management-fundamentals.md)

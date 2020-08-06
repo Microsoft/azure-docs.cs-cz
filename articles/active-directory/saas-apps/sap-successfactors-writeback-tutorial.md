@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/23/2020
+ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 5181cc0f6457c5eb98cca828ecb91c52f47f3fbe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f150d6abf2ac6a423a99d3347df9bf0adc9b294b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273504"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809927"
 ---
-# <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors-preview"></a>Kurz: Konfigurace zpětného zápisu atributu z Azure AD do SAP SuccessFactors (Preview)
+# <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Kurz: Konfigurace zpětného zápisu atributu z Azure AD do SAP SuccessFactors
 Cílem tohoto kurzu je Ukázat kroky pro atributy zpětného zápisu z Azure AD do SAP SuccessFactors Employee Central. 
 
 ## <a name="overview"></a>Přehled

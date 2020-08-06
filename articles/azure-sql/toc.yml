@@ -998,7 +998,7 @@
                       href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
                     - name: Vytvoření FCI s využitím
                       items:
-                        - name: Sdílené disky Azure (SQL2019+)
+                        - name: Sdílené disky Azure
                           href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
                         - name: Prostory úložiště s přímým přístupem (Win2016+)
                           href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
@@ -1018,7 +1018,7 @@
           items:
             - name: Azure PowerShell
               href: /powershell/azure/
-            - name: Rozhraní příkazového řádku Azure
+            - name: Azure CLI
               href: /cli/azure/
             - name: T-SQL
               href: 'https://docs.microsoft.com/sql/t-sql/language-reference'

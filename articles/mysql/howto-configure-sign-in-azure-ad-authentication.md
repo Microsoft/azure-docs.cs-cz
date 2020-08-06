@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
-ms.openlocfilehash: 6efe6392c32221f979a9ac319b4385b4b94b1235
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 0418785fe558503b716ff1e798446fb64db998b1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171317"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799834"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Použití Azure Active Directory k ověřování pomocí MySQL
 
@@ -57,7 +57,7 @@ Také jsme otestovali nejběžnější ovladače aplikací, na konci této strá
 
 Jedná se o kroky, které bude uživatel nebo aplikace potřebovat k ověření pomocí služby Azure AD popsané níže:
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Můžete postupovat podle pokynů v částech Azure Cloud Shell, virtuální počítač Azure nebo na místním počítači. Ujistěte se, že máte nainstalované rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 8148163dc969920b473f12a7162c6f317d85b3c8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ff2745a636d25c429a1a40644757c00b28e2668c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503221"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799170"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Vytvoření nabídky kontejneru Azure v Azure Marketplace
 
@@ -133,7 +133,7 @@ Tato stránka umožňuje definovat podrobnosti nabídky, které se zobrazí na k
 > [!NOTE]
 > Podrobnosti nabídky nejsou v anglickém jazyce nutné, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Také je v pořádku poskytnutí užitečného odkazu na nabídku obsahu v jazyce, který se liší od toho, který se používá v podrobnostech seznamu nabídky.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -151,7 +151,7 @@ Krátký popis vaší nabídky Může to být až 100 znaků dlouhé a použív�
 
 Podrobnější popis vaší nabídky. Může to být až 256 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -195,14 +195,15 @@ Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všech
 
 #### <a name="store-logos"></a>Ukládat loga
 
- Zadejte soubory PNG pro logo vaší nabídky v každé z následujících čtyř velikostí pixelů:
+Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije tuto hodnotu k vytvoření **malého** (48 x 48 pixelů) a **středníku** (90 x 90 pixelů). Volitelně je můžete nahradit různými obrázky.
+
+Všechny tři velikosti loga se vyžadují pro použití na různých místech v seznamu:
 
 - **Malé** (48 x 48)
 - **Střední** (90 × 90)
-- **Velký** (216 x 216)
-- **Roztažitelné** (255 × 115)
+- **Velký** (mezi 216 x 216 a 350 × 350)
 
-Všechny čtyři loga jsou povinná a používají se na různých místech v seznamu Marketplace.
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Snímky obrazovky (volitelné)
 

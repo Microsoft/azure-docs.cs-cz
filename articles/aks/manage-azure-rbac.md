@@ -4,15 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: Naučte se používat Azure RBAC pro autorizaci Kubernetes se službou Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 07/20/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 8b28507c072f338342dc1a936cb1ab5f3910eea1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 824146e7e0b1130b8e5f6c087dbf5ccbac2c8224
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498102"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799357"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Použití Azure RBAC pro autorizaci Kubernetes (Preview)
 
@@ -31,31 +31,27 @@ Možnost spravovat RBAC pro prostředky Kubernetes z Azure vám dává možnost 
 > - [Zásady podpory AKS](support-policies.md)
 > - [Nejčastější dotazy k podpoře Azure](faq.md)
 
-### <a name="prerequisites"></a>Požadavky 
+### <a name="prerequisites"></a>Předpoklady 
 - Zaregistrujte se do verze Preview <https://aka.ms/aad-rbac-sign-up-form> .
+- Ujistěte se, že máte Azure CLI verze 2.9.0 nebo novější.
 - Ujistěte se, že máte `EnableAzureRBACPreview` povolený příznak funkce.
-- Ujistěte se, že máte `AAD-V2` povolený příznak funkce.
 - Ujistěte se, že máte `aks-preview` nainstalovanou [příponu CLI][az-extension-add] v 0.4.55 nebo novější verzi.
 - Ujistěte se, že máte nainstalovanou verzi [kubectl v 1.18.3 +][az-aks-install-cli].
 
-#### <a name="register-enableazurerbacpreview-and-aad-v2-preview-features"></a>`EnableAzureRBACPreview`Funkce registrace a `AAD-V2` verze Preview
+#### <a name="register-enableazurerbacpreview-preview-feature"></a>`EnableAzureRBACPreview`Funkce Register Preview
 
-Pokud chcete vytvořit cluster AKS, který používá Azure RBAC pro autorizaci Kubernetes, musíte `EnableAzureRBACPreview` `AAD-V2` ve svém předplatném povolit příznaky funkcí a.
+Pokud chcete vytvořit cluster AKS, který používá Azure RBAC pro autorizaci Kubernetes, musíte `EnableAzureRBACPreview` u svého předplatného povolit příznak funkce.
 
-`EnableAzureRBACPreview` `AAD-V2` Pomocí příkazu [AZ Feature Register][az-feature-register] Zaregistrujte příznaky funkcí a, jak je znázorněno v následujícím příkladu:
+Zaregistrujte `EnableAzureRBACPreview` příznak funkce pomocí příkazu [AZ Feature Register][az-feature-register] , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
-
-az feature register --namespace "Microsoft.ContainerService"  --name "AAD-V2"
 ```
 
 Zobrazení stavu v *registraci*trvá několik minut. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
-
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
 ```
 
 Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Microsoft. ContainerService* pomocí příkazu [az Provider Register] [az-Provider-Register].

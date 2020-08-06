@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 6a7b24de860b543778d7e6ceabc95d10bf7c44c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077076"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800496"
 ---
 # <a name="azure-resource-logs"></a>Protokoly prostředků Azure
 Protokoly prostředků Azure jsou [protokoly platforem](platform-logs-overview.md) , které poskytují přehled o operacích provedených v rámci prostředku Azure. Obsah protokolů prostředků se liší podle typu prostředku a služby Azure. Protokoly prostředků nejsou ve výchozím nastavení shromažďovány. Musíte vytvořit nastavení diagnostiky pro každý prostředek Azure, abyste odesílali své protokoly prostředků do Log Analyticsho pracovního prostoru pro použití s [protokoly Azure monitor](data-platform-logs.md), Azure Event Hubs k posílání mimo Azure nebo Azure Storage k archivaci.
 
-V tématu [Vytvoření nastavení diagnostiky můžete odesílat protokoly a metriky platforem do různých cílů](diagnostic-settings.md) , kde najdete podrobné informace o vytváření nastavení diagnostiky a [nasazování Azure monitor ve velkém rozsahu pomocí Azure Policy](deploy-scale.md) podrobnější informace o použití Azure Policy k automatickému vytvoření nastavení diagnostiky pro každý prostředek Azure, který vytvoříte.
+V tématu [Vytvoření nastavení diagnostiky můžete odesílat protokoly a metriky platforem do různých cílů](diagnostic-settings.md) , kde najdete podrobné informace o vytváření nastavení diagnostiky a [nasazování Azure monitor ve velkém rozsahu pomocí Azure Policy](../deploy-scale.md) podrobnější informace o použití Azure Policy k automatickému vytvoření nastavení diagnostiky pro každý prostředek Azure, který vytvoříte.
 
 ## <a name="send-to-log-analytics-workspace"></a>Odeslání do pracovního prostoru služby Log Analytics
  Odešlete protokoly prostředků do pracovního prostoru Log Analytics, abyste povolili funkce [Azure monitor protokolů](data-platform-logs.md) , které zahrnují následující:

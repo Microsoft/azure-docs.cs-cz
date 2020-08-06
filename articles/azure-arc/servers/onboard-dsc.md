@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: f3dee468764f27d930081b5a3cd415c48bb79c0d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 02661ff3c21fa27367cc9f2c399341ed2b86db3f
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104006"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809608"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Postup instalace agenta připojeného počítače pomocí Windows PowerShell DSC
 
@@ -81,7 +81,7 @@ Níže jsou uvedené parametry, které předáte skriptu PowerShellu, který se 
 
 3. Tím se vytvoří `localhost.mof file` Nová složka s názvem `C:\dsc` .
 
-Po nainstalování agenta a jeho konfiguraci pro připojení k Azure ARC pro servery (Preview), navštivte Azure Portal a ověřte, že se server úspěšně připojil. Zobrazte počítače v [Azure Portal](https://aka.ms/hybridmachineportal).
+Po nainstalování agenta a jeho konfiguraci pro připojení k Azure ARC pro servery (Preview), navštivte Azure Portal a ověřte, že se server úspěšně připojil. Zobrazte si počítače na webu [Azure Portal](https://aka.ms/hybridmachineportal).
 
 ## <a name="adding-to-existing-configurations"></a>Přidávání do stávajících konfigurací
 
@@ -91,6 +91,6 @@ Modul [CompsiteResource](https://www.powershellgallery.com/packages/compositeres
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)a mnohem víc.
+- Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/insights/vminsights-enable-policy.md)a mnohem víc.
 
 - Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je nutný, pokud chcete aktivně monitorovat operační systém a úlohy běžící v počítači, spravovat je pomocí runbooků nebo řešení automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).

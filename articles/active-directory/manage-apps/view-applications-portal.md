@@ -12,19 +12,18 @@ ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249cdbef6214eb8c66da841d9eae817bcf794996
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: dce579596563855022f14bb2c07353b84d1e6127
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055388"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808367"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>Rychlý Start: zobrazení seznamu aplikací, které používají klienta služby Azure Active Directory (Azure AD) pro správu identit
 
 Začněte používat Azure AD jako systém pro správu identit a přístupu (IAM) pro aplikace, které vaše organizace používá. V tomto rychlém startu zobrazíte aplikace označované také jako aplikace, které už jsou nastavené tak, aby jako zprostředkovatele identity používaly tenanta Azure AD.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K zobrazení aplikací, které jsou zaregistrované ve vašem tenantovi Azure AD, potřebujete:
 
@@ -68,11 +67,17 @@ Hledání konkrétní aplikace:
 3. Zkuste zadat několik počátečních písmen názvu aplikace. Tento příklad ukazuje všechny aplikace začínající na **Sales**.
     ![Příklad zobrazí všechny aplikace, které začínají na prodej.](media/view-applications-portal/search-by-prefix.png)
 
+
+> [!TIP]
+> Správu aplikací můžete automatizovat pomocí Graph API, přečtěte si téma [Automatizace správy aplikací pomocí rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+V tomto rychlém startu jste nevytvořili žádné nové prostředky, takže nemusíte nic vyčistit.
+
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak zobrazit aplikace v tenantovi Azure AD. Zjistili jste, jak filtrovat seznam aplikací podle typu aplikace, stavu a viditelnosti. Také jste zjistili, jak vyhledat konkrétní aplikaci.
-
-- [Přidání aplikace](add-application-portal.md)
-- [Konfigurace aplikace](add-application-portal-configure.md)
-- [Nastavení jednotného přihlašování](add-application-portal-setup-sso.md)
-- [Odstranění aplikace](delete-application-portal.md)
+V dalším článku se dozvíte, jak používat Azure AD jako zprostředkovatele identity pro aplikaci.
+> [!div class="nextstepaction"]
+> [Přidání aplikace](add-application-portal.md)

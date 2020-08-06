@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/24/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: eed53725507325351dcf51fbe368331c2a4fd2f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1e097692eade956446b46782bca5ecf3a17de75
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065130"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800258"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Nastavení Pacemaker na Red Hat Enterprise Linux v Azure
 
@@ -125,7 +125,11 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 1. **[A]** nastavení rozlišení názvu hostitele
 
    Můžete buď použít server DNS, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
-   V následujících příkazech nahraďte IP adresu a název hostitele. Výhodou použití/etc/hosts je to, že váš cluster bude nezávislý na službě DNS, což může být jen jeden bod selhání.
+   V následujících příkazech nahraďte IP adresu a název hostitele.  
+
+   >[!IMPORTANT]
+   > Pokud používáte názvy hostitelů v konfiguraci clusteru, je důležité mít spolehlivé rozlišení názvu hostitele. Pokud názvy nejsou k dispozici a to může vést k prodlevám při převzetí služeb při selhání clusteru, komunikace clusteru selže.
+   > Výhodou použití/etc/hosts je to, že váš cluster bude nezávislý na službě DNS, což může být jen jeden bod selhání.  
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>

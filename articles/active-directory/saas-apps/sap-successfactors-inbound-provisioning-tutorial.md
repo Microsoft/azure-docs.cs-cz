@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2019
+ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 77b4336fd9430b523f4f9fa288b7451117f7e0c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95c46550570d579af7ab8107686ad20838a3a62e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016968"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809948"
 ---
-# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Kurz: Konfigurace zřizování SAP SuccessFactors pro uživatele služby Active Directory (Preview)
-Cílem tohoto kurzu je Ukázat kroky, které potřebujete k tomu, abyste uživatelům zřídili SuccessFactors zaměstnanci v rámci služby Active Directory (AD) a Azure AD s volitelným zpětným zápisem e-mailové adresy na SuccessFactors. Tato integrace je ve verzi Public Preview a podporuje načítání více než [70 a uživatelských atributů](../app-provisioning/sap-successfactors-attribute-reference.md) od SuccessFactors zaměstnanců od středníku.
+# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Kurz: Konfigurace zřizování SAP SuccessFactors pro uživatele služby Active Directory 
+Cílem tohoto kurzu je Ukázat kroky, které potřebujete k tomu, abyste uživatelům zřídili SuccessFactors zaměstnanci v rámci služby Active Directory (AD) a Azure AD s volitelným zpětným zápisem e-mailové adresy na SuccessFactors. 
 
 >[!NOTE]
 >Tento kurz použijte v případě, že uživatelé, které chcete zřídit z SuccessFactors, potřebují místní účet služby AD a volitelně účet Azure AD. Pokud uživatelé z SuccessFactors potřebují jenom účet Azure AD (jenom pro cloudové uživatele), přečtěte si prosím kurz [konfigurace SAP SuccessFactors na zřizování uživatelů Azure AD](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) . 
@@ -82,7 +82,7 @@ Konfigurace zřizování uživatelů cloudového prostředí s využitím cloudu
 * Počet SuccessFactors aplikací pro zřizování uživatelů služby AD pro nasazení
 * Porovnání ID, mapování atributů, transformace a rozsah filtru
 
-Podrobné pokyny k těmto tématům najdete v [plánu nasazení cloudového HR](../app-provisioning/plan-cloud-hr-provision.md) . 
+Podrobné pokyny k těmto tématům najdete v [plánu nasazení cloudového HR](../app-provisioning/plan-cloud-hr-provision.md) . Informace o podporovaných entitách, podrobnostech o zpracování a způsobu přizpůsobení integrace pro různé scénáře týkající se lidských zdrojů najdete v referenčních informacích k [integraci SAP SuccessFactors](../app-provisioning/sap-successfactors-integration-reference.md) . 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>Konfigurace SuccessFactors pro integraci
 

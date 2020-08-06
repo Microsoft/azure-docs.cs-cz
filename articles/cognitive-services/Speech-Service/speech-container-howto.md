@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: e120eb20d247ce2def7f7c322ead3066c1d4386e
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 4f14a5cf21a372c66378521fd293b7569b181653
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84974649"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808656"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Instalace a spuštění kontejnerů služby Speech (verze Preview)
 
@@ -33,13 +33,13 @@ Kontejnery řeči umožňují zákazníkům vytvořit architekturu aplikace pro 
 | Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.5.0 |
 | Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.5.0 |
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před použitím kontejnerů řeči je nutné splnit následující předpoklady:
 
-| Vyžadováno | Účel |
+| Povinné | Účel |
 |--|--|
 | Docker Engine | Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br> |
 | Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů. |
@@ -76,25 +76,25 @@ Následující tabulka popisuje minimální a doporučené přidělení prostře
 
 # <a name="speech-to-text"></a>[Převod řeči na text](#tab/stt)
 
-| Kontejner | Minimální | Doporučené |
+| Kontejner | Minimum | Doporučeno |
 |-----------|---------|-------------|
 | Převod řeči na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
 
 # <a name="custom-speech-to-text"></a>[Custom Speech na text](#tab/cstt)
 
-| Kontejner | Minimální | Doporučené |
+| Kontejner | Minimum | Doporučeno |
 |-----------|---------|-------------|
 | Custom Speech na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
 
 # <a name="text-to-speech"></a>[Převod textu na řeč](#tab/tts)
 
-| Kontejner | Minimální | Doporučené |
+| Kontejner | Minimum | Doporučeno |
 |-----------|---------|-------------|
 | Převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
 
 # <a name="custom-text-to-speech"></a>[Vlastní převod textu na řeč](#tab/ctts)
 
-| Kontejner | Minimální | Doporučené |
+| Kontejner | Minimum | Doporučeno |
 |-----------|---------|-------------|
 | Vlastní převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
 
@@ -263,7 +263,7 @@ Tento příkaz:
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Analýza mínění na výstup řeči na text 
 
-Počínaje v v 2.2.0 kontejneru převodu řeči na text můžete zavolat [rozhraní mínění Analysis V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) na výstup. K volání analýzy mínění budete potřebovat koncový bod prostředku rozhraní API pro analýzu textu. Například: 
+Počínaje v v 2.2.0 kontejneru převodu řeči na text můžete zavolat [rozhraní mínění Analysis V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) na výstup. K volání analýzy mínění budete potřebovat koncový bod prostředku rozhraní API pro analýzu textu. Příklad: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -354,7 +354,7 @@ ApiKey={API_KEY}
 Tento příkaz:
 
 * Spustí kontejner převodu *textu na řeč* z image kontejneru.
-* Přiděluje 2 jádra procesoru a 1 gigabajt (GB) paměti.
+* Přidělí 1 jádro procesoru a 2 gigabajty (GB) paměti.
 * Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
 
@@ -394,7 +394,7 @@ ApiKey={API_KEY}
 Tento příkaz:
 
 * Spustí z image kontejneru vlastní kontejner převodu *textu na řeč* .
-* Přiděluje 2 jádra procesoru a 1 gigabajt (GB) paměti.
+* Přidělí 1 jádro procesoru a 2 gigabajty (GB) paměti.
 * Načte vlastní model převodu *textu na řeč* ze vstupního připojení svazku, například *C:\CustomVoice*.
 * Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
 * Stáhne model na základě `ModelId` (pokud nebyl nalezen v připojení svazku).
@@ -406,12 +406,12 @@ Tento příkaz:
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Aby bylo možné spustit kontejner, musí být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
 
-## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncového bodu předpovědi kontejneru
+## <a name="query-the-containers-prediction-endpoint"></a>Zadání dotazu do prediktivního koncového bodu kontejneru
 
 > [!NOTE]
 > Pokud spouštíte více kontejnerů, použijte jedinečné číslo portu.
 
-| Kontejnery | Adresa URL hostitele sady SDK | Protocol (Protokol) |
+| Containers | Adresa URL hostitele sady SDK | Protokol |
 |--|--|--|
 | Převod řeči na text a Custom Speech textu na text | `ws://localhost:5000` | WS |
 | Převod textu na řeč a vlastní převod textu na řeč | `http://localhost:5000` | HTTP |

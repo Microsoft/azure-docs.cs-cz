@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3b377f87bdba40c90cb3af6caef2c089d7b7de49
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 12a15a2d0cd45207b4adefc7315e48c6d642c0f7
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77615471"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810159"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Kurz: sdílení prostorových kotev Azure napříč relacemi a zařízeními
 
@@ -34,7 +34,7 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-Je to všímáte, že i když v tomto kurzu budete používat Unity a webovou aplikaci ASP.NET Core, zobrazí se jenom příklad, jak sdílet identifikátory prostorových kotev Azure napříč ostatními zařízeními. Stejný cíl můžete dosáhnout pomocí dalších jazyků a back-endové technologie. Také webová aplikace ASP.NET Core použitá v tomto kurzu má závislost na sadě .NET Core 2,2 SDK. Při běžném Web Apps Azure (pro Windows) to funguje dobře, ale v tuto chvíli nebude fungovat na Azure Web Apps pro Linux.
+Je to všímáte, že i když v tomto kurzu budete používat Unity a webovou aplikaci ASP.NET Core, zobrazí se jenom příklad, jak sdílet identifikátory prostorových kotev Azure napříč ostatními zařízeními. Stejný cíl můžete dosáhnout pomocí dalších jazyků a back-endové technologie.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -54,9 +54,9 @@ Otevřete Visual Studio a otevřete projekt ve `Sharing\SharingServiceSample` sl
 
 Před nasazením služby v VS Code budete muset vytvořit skupinu prostředků a plán App Service.
 
-### <a name="sign-in-to-azure"></a>Přihlášení do Azure
+### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přejděte na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> a přihlaste se k předplatnému Azure.
+Přejděte na <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> a přihlaste se ke svému předplatnému Azure.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -82,19 +82,13 @@ V dialogovém okně **Konfigurovat plán hostování** použijte Tato nastavení
 
 Vyberte **OK**.
 
-Otevřete Visual Studio Code a otevřete projekt ve `Sharing\SharingServiceSample` složce. Pomocí <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">tohoto kurzu</a> nasaďte službu sdílení prostřednictvím Visual Studio Code. Můžete postupovat podle kroků uvedených v části otevření v Visual Studio Code. Nevytvářejte další projekt MVC, jak je vysvětleno výše v předchozím kroku, protože již máte projekt, který je třeba nasadit a publikovat – SharingServiceSample.
+Otevřete Visual Studio Code a otevřete projekt ve `Sharing\SharingServiceSample` složce. Pomocí <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">tohoto kurzu</a> nasaďte službu sdílení prostřednictvím Visual Studio Code. Můžete postupovat podle kroků uvedených v části otevření v Visual Studio Code. Nevytvářejte další projekt ASP.NET, jak je vysvětleno výše v předchozím kroku, protože již máte projekt, který je nutné nasadit a publikovat – SharingServiceSample.
 
 ---
 
 ## <a name="deploy-the-sample-app"></a>Nasazení ukázkové aplikace
 
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
-
-## <a name="troubleshooting"></a>Řešení potíží
-
-### <a name="unity-20193"></a>Unity 2019,3
-
-V důsledku zásadních změn se Unity 2019,3 aktuálně nepodporuje. Použijte prosím Unity 2019,1 nebo 2019,2.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

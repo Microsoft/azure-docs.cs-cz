@@ -2,7 +2,7 @@
 title: Výchozí uživatelská oprávnění – Azure Active Directory | Microsoft Docs
 description: Přečtěte si o různých uživatelských oprávněních, která jsou k dispozici v Azure Active Directory.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 227230f2d6f46fae27e2cec69d99390f5054c7db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bae802d8aa9378155bcca0713992a8cc041ea1a9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80366252"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799017"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Jaká jsou výchozí uživatelská oprávnění v Azure Active Directory?
 V Azure Active Directory (Azure AD) mají všichni uživatelé udělenou sadu výchozích oprávnění. Přístup uživatele se skládá z typu uživatel, [přiřazení jejich rolí](active-directory-users-assign-role-azure-portal.md)a jejich vlastnictví jednotlivých objektů. Tento článek popisuje tato výchozí oprávnění a obsahuje porovnání výchozích nastavení člena a uživatele typu host. Výchozí uživatelská oprávnění se dají změnit jenom v nastavení uživatele v Azure AD.
@@ -32,7 +32,7 @@ Výchozí oprávnění pro hosty jsou ve výchozím nastavení omezující. Host
 
 ## <a name="compare-member-and-guest-default-permissions"></a>Porovnání výchozích oprávnění pro členy a hosty
 
-**Oblast** | **Uživatelská oprávnění člena** | **Uživatelská oprávnění hosta**
+**Oblast** | **Oprávnění člena** | **Uživatelská oprávnění hosta**
 ------------ | --------- | ----------
 Uživatelé a kontakty | Čtení všech veřejných vlastností uživatelů a kontaktů<br>Zvaní hostů<br>Změna vlastního hesla<br>Správa vlastního čísla mobilního telefonu<br>Správa vlastní fotky<br>Zneplatnění vlastních obnovovacích tokenů | Čtení vlastních vlastností<br>Čtení zobrazovaného jména, e-mailu, přihlašovací jméno, fotografie, hlavní název uživatele a vlastnosti typu uživatele u dalších uživatelů a kontaktů<br>Změna vlastního hesla
 Skupiny | Vytváření skupin zabezpečení<br>Vytváření skupin Office 365<br>Čtení všech vlastností skupin<br>Čtení neskrytých členství ve skupinách<br>Čtení skrytých členství ve skupinách Office 365 u připojené skupiny<br>Správa vlastností, vlastnictví a členství ve skupinách, které uživatel vlastní<br>Přidávání hostů do vlastněných skupin<br>Správa nastavení dynamického členství<br>Odstranění vlastněných skupin<br>Obnovení vlastněných skupin Office 365 | Čtení všech vlastností skupin<br>Čtení neskrytých členství ve skupinách<br>Čtení skrytých členství ve skupinách Office 365 u připojených skupin<br>Správa vlastněných skupin<br>Přidávání hostů do vlastněných skupin (pokud je to povoleno)<br>Odstranění vlastněných skupin<br>Obnovení vlastněných skupin Office 365<br>Umožňuje číst vlastnosti skupin, do kterých patří, včetně členství.

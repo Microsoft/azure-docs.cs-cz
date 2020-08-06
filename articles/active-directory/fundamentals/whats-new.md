@@ -2,7 +2,7 @@
 title: Co je nového? Poznámky k verzi – Azure Active Directory | Microsoft Docs
 description: Přečtěte si, co je nového v Azure Active Directory, jako jsou například nejnovější poznámky k verzi, známé problémy, opravy chyb, zastaralé funkce a nadcházející změny.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 featureFlags:
 - clicktale
@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc316db0146943113b97b680229bd113f6fc1de5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6694043f083de30f3bca10051fc7012ef1471c37
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494804"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798813"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
@@ -49,7 +49,7 @@ Tato stránka se aktualizuje měsíčně, takže ji můžete pravidelně znovu n
  
 Při vydání podmínky klienta klientské aplikace v rámci podmíněného přístupu se ve výchozím nastavení použijí nové zásady pro všechny klientské aplikace, včetně starších ověřovacích klientů. Existující zásady zůstanou beze změny, ale přepínač *Konfigurovat ano/ne* se odebere z existujících zásad, aby bylo možné snadno zjistit, které klientské aplikace jsou zásadami aplikovány. 
 
-Při vytváření nové zásady se ujistěte, že vyloučíte uživatele a účty služeb, které pořád používají starší verze ověřování. Pokud to neuděláte, budou zablokovány. [Přečtěte si další informace](https://aka.ms/caclientapps).
+Při vytváření nové zásady se ujistěte, že vyloučíte uživatele a účty služeb, které pořád používají starší verze ověřování. Pokud to neuděláte, budou zablokovány. [Další informace](https://aka.ms/caclientapps).
  
 ---
 
@@ -59,7 +59,7 @@ Při vytváření nové zásady se ujistěte, že vyloučíte uživatele a účt
 **Kategorie služby:** Zřizování aplikací  
 **Schopnost produktu:** Správa životního cyklu identit
  
-Služba zřizování Azure AD využívá standard SCIM pro integraci s aplikacemi. Naše implementace standardu SCIM se vyvíjí a očekáváme, že provedeme změny v našem chování, jak provedeme operace opravy, a také nastavit vlastnost "aktivní" na prostředku. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility).
+Služba zřizování Azure AD využívá standard SCIM pro integraci s aplikacemi. Naše implementace standardu SCIM se vyvíjí a očekáváme, že provedeme změny v našem chování, jak provedeme operace opravy, a také nastavit vlastnost "aktivní" na prostředku. [Další informace](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility).
  
 ---
 
@@ -107,7 +107,7 @@ Správci teď můžou zjistit, jestli ověřování Windows používalo Windows 
 **Kategorie služby:** Zřizování aplikací  
 **Schopnost produktu:** Správa životního cyklu identit
  
-Když jste dřív změnili skupinu z "in-Scope" na "out-of-Scope" a správce klikl na restart před dokončením změny, objekt skupiny se neodstraní. Objekt skupiny se teď odstraní z cílové aplikace, když se dostane mimo rozsah (zakázaný, odstraněný, nepřiřazený nebo neprojde filtr oboru). [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#incremental-cycles).
+Když jste dřív změnili skupinu z "in-Scope" na "out-of-Scope" a správce klikl na restart před dokončením změny, objekt skupiny se neodstraní. Objekt skupiny se teď odstraní z cílové aplikace, když se dostane mimo rozsah (zakázaný, odstraněný, nepřiřazený nebo neprojde filtr oboru). [Další informace](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#incremental-cycles).
  
 ---
 
@@ -490,7 +490,7 @@ Pokud původní token pro přihlášení SAML používá jiný formát pro NameI
 **Kategorie služby:** Zřizování cloudu Azure AD  
 **Schopnost produktu:** Správa životního cyklu identit
  
-Správci IT můžou začít používat novou roli Hybrid admin jako nejnižší privilegovanou roli pro nastavení cloudového zřizování Azure ADConnect. U této nové role už nemusíte k instalaci a konfiguraci zřizování cloudu používat roli globálního správce. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-delegate-by-task#connect).
+Správci IT můžou začít používat novou roli Hybrid admin jako nejnižší privilegovanou roli pro nastavení cloudového zřizování Azure ADConnect. U této nové role už nemusíte k instalaci a konfiguraci zřizování cloudu používat roli globálního správce. [Další informace](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-delegate-by-task#connect).
  
 ---
 
@@ -1124,7 +1124,7 @@ S radostí sdílíme, že teď jsme na Microsoft Azure Government portálu naved
 **Kategorie služby:** Zřizování aplikací  
 **Schopnost produktu:** Správa životního cyklu identit
  
-Služba zřizování Azure AD poskytuje bohatou sadu možností konfigurace. Zákazníci musí mít možnost uložit svou konfiguraci, aby na ně mohli později odkazovat nebo se vrátit na známou správnou verzi. Přidali jsme možnost stáhnout si vaši konfiguraci zřizování jako soubor JSON a nahrát ho, až ho budete potřebovat. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration).
+Služba zřizování Azure AD poskytuje bohatou sadu možností konfigurace. Zákazníci musí mít možnost uložit svou konfiguraci, aby na ně mohli později odkazovat nebo se vrátit na známou správnou verzi. Přidali jsme možnost stáhnout si vaši konfiguraci zřizování jako soubor JSON a nahrát ho, až ho budete potřebovat. [Další informace](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration).
 
 ---
  
@@ -1136,7 +1136,7 @@ Služba zřizování Azure AD poskytuje bohatou sadu možností konfigurace. Zá
  
 Správci, kteří používají Samoobslužné resetování hesla (SSPR), dříve v Microsoft Azure pracovali pomocí samoobslužného resetování hesla () k resetování jejich identity, potřebují jenom jednu bránu (Challenge). Ve veřejných a dalších národních cloudech musí správci při použití SSPR vykazovat svoji identitu pomocí dvou bran. Protože ale nepodporujeme SMS nebo telefonní hovory v Azure Čína 21Vianet, povolili jsme správcům resetování hesla s jednou branou.
 
-Vytváříme paritu funkcí SSPR mezi Azure Čína 21Vianet a veřejným cloudem. Při použití SSPR musí správci používat dvě brány. Podporuje se SMS, telefonní hovory a ověřovací oznámení a kódy aplikace ověřovatele. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy#administrator-reset-policy-differences).
+Vytváříme paritu funkcí SSPR mezi Azure Čína 21Vianet a veřejným cloudem. Při použití SSPR musí správci používat dvě brány. Podporuje se SMS, telefonní hovory a ověřovací oznámení a kódy aplikace ověřovatele. [Další informace](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy#administrator-reset-policy-differences).
 
 ---
 
@@ -1185,7 +1185,7 @@ Abychom zákazníkům poskytli pružnější způsob vytváření skupin pro vš
  
 Plánujeme nahradit aktuální vlastní ovládací prvky jako v rámci přístupu, který umožňuje bezproblémovou funkčnost funkcí ověřování poskytovaných partnerem s Azure Active Directory správce a koncového uživatele. V dnešní době se Partnerská řešení MFA setkávají s následujícími omezeními: fungují až po zadání hesla; neslouží jako MFA pro podrobné ověřování v jiných klíčových scénářích. a neintegrují se do funkcí pro správu přihlašovacích údajů pro koncové uživatele nebo správce. Nová implementace umožní partnerským faktorům pro ověřování spolupracovat společně s integrovanými faktory pro klíčové scénáře, včetně registrace, využití, deklarací MFA, krokování ověřování, vytváření sestav a protokolování. 
 
-Vlastní ovládací prvky budou nadále podporovány ve verzi Preview vedle nového návrhu, dokud nedosáhne obecné dostupnosti. V tomto okamžiku zákazníkům poskytneme čas na migraci na nový návrh. Z důvodu omezení současného přístupu nebudeme nové poskytovatele připravujeme, dokud nebude nový návrh k dispozici. Úzce spolupracujeme se zákazníky a poskytovateli a pošle vám časovou osu, jak získáme blíž. [Přečtěte si další informace](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/upcoming-changes-to-custom-controls/ba-p/1144696#).
+Vlastní ovládací prvky budou nadále podporovány ve verzi Preview vedle nového návrhu, dokud nedosáhne obecné dostupnosti. V tomto okamžiku zákazníkům poskytneme čas na migraci na nový návrh. Z důvodu omezení současného přístupu nebudeme nové poskytovatele připravujeme, dokud nebude nový návrh k dispozici. Úzce spolupracujeme se zákazníky a poskytovateli a pošle vám časovou osu, jak získáme blíž. [Další informace](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/upcoming-changes-to-custom-controls/ba-p/1144696#).
 
 ---
 

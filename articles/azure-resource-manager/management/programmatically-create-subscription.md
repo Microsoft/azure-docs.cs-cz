@@ -7,12 +7,12 @@ ms.date: 07/09/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3097dcb0444bc8b73d89b42d73ad1f5b9306ab09
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1b4c16dd276f9f564963fdefe8d16dbc92c1303d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502813"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810441"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Programové vytváření předplatných Azure (Preview)
 
@@ -27,7 +27,7 @@ Když vytvoříte předplatné Azure programově, na toto předplatné se vztahu
 
 Informace v následujících částech použijte k vytvoření předplatných EA.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli vytvořit předplatné, musíte mít v účtu pro zápis roli vlastníka. Existují dva způsoby, jak získat roli:
 
@@ -157,7 +157,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 | `offerType`   | Ano      | Řetězec | Nabídka předplatného. Dvě možnosti pro EA jsou [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (produkční použití) a [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (vývoj/testování), které je potřeba [zapnout pomocí portálu EA](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
 | `owners`      | Ne       | Řetězec | ID objektu libovolného uživatele, který chcete přidat jako vlastníka RBAC v předplatném, když je vytvořen.  |
 
-V odpovědi jako součást hlavičky se `Location` vrátí adresa URL, na které se můžete dotazovat na stav operace vytvoření předplatného. Po dokončení vytváření předplatného vrátí URL GET na `Location` `subscriptionLink` objekt, který má ID předplatného. Další podrobnosti najdete v [dokumentaci k rozhraní API předplatného](https://docs.microsoft.com/rest/api/subscription/) .
+V odpovědi jako součást hlavičky se `Location` vrátí adresa URL, na které se můžete dotazovat na stav operace vytvoření předplatného. Po dokončení vytváření předplatného vrátí URL GET na `Location` `subscriptionLink` objekt, který má ID předplatného. Další podrobnosti najdete v [dokumentaci k rozhraní API předplatného](/rest/api/subscription/) .
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -214,7 +214,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 
 ## <a name="create-subscriptions-for-an-mca-account"></a>Vytvoření předplatných pro účet MCA
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli vytvářet předplatná, musíte mít roli vlastníka, přispěvatele nebo tvůrce předplatného Azure pro oddíl faktury nebo roli vlastníka nebo přispěvatele na fakturačním profilu nebo fakturačním účtu. Další informace najdete v tématu [Role a úlohy fakturace předplatného](../../cost-management-billing/manage/understand-mca-roles.md#subscription-billing-roles-and-tasks).
 
@@ -355,7 +355,7 @@ V odpovědi se vrátí `subscriptionCreationResult` objekt pro monitorování. P
 
 ## <a name="create-subscriptions-for-an-mpa-billing-account"></a>Vytvoření předplatných pro fakturační účet technologie MPA
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli vytvořit předplatné pro fakturační účet, musíte mít roli globálního správce nebo agenta správce v účtu poskytovatele Cloud Solution Provider vaší organizace. Další informace najdete v tématu [partner Center – přiřazení rolí a oprávnění uživatele](/partner-center/permissions-overview).
 

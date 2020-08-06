@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 46096e1f3f4266e9c070bd1d67f328241163126b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2a6f51f1c6901eaa18c1de9c1fc788ed583b7394
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004541"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809438"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Řešení potíží s připojením agenta připojeného počítače
 
@@ -90,7 +90,7 @@ V následující tabulce jsou uvedené některé známé chyby a návrhy, jak je
 
 Pokud tady nevidíte svůj problém nebo nemůžete problém vyřešit, zkuste další podporu vyzkoušet u některého z následujících kanálů:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-arc.html).
+* Získejte odpovědi od odborníků na Azure prostřednictvím [Microsoft Q&A](/answers/topics/azure-arc.html).
 
 * Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) oficiálního Microsoft Azure účtu pro zlepšení prostředí pro zákazníky. Podpora Azure spojuje komunitu Azure s odpověďmi, podporou a odborníky.
 

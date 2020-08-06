@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b8e6797d1dbbe4260f7a5b701ada887f68a88a7c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 32905383b046148893492640fe42fc721d1944dd
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079668"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810237"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Základní hodnoty zabezpečení Azure pro Azure Functions
 
@@ -787,7 +787,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/index.md)
 
 **Monitorování Azure Security Center**: nelze použít
 

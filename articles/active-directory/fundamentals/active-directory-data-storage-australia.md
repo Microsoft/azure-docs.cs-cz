@@ -2,7 +2,7 @@
 title: Úložiště dat identity pro australské zákazníky Austrálie a New Zéland – Azure AD
 description: Přečtěte si, kde Azure Active Directory ukládá data týkající se identit pro své australské zákazníky.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.author: ajburnle
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 850298719d5636e964b0c338d7a2a4cc9bb8aece
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97d651a1a6ce8ef412c148f16d0aa4412df94cb0
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77370290"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799544"
 ---
 # <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Úložiště dat identity pro zákazníky Austrálie a Nového Zélandu v Azure Active Directory
 
@@ -28,7 +28,7 @@ Data identity ukládá služba Azure AD v geografickém umístění na základě
 
 Pro zákazníky, kteří získali adresu v Austrálii nebo na Novém Zélandu, služba Azure AD uchovává data o identitě pro tyto služby v rámci Datacenter v australském centru: 
 - Správa adresáře služby Azure AD 
-- Authentication
+- Ověřování uživatelů
 
 Všechny ostatní služby Azure AD ukládají zákaznická data v globálních datových centrech. Pokud chcete najít datacentrum pro službu, přečtěte si téma [Azure Active Directory – kde se nacházejí vaše data?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
 

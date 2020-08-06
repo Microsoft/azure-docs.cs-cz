@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b7d62777f73a92768b1ede3fb9b7e0cb97951823
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 394752792d143a3712d0bb9c50189936f23062f1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537500"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800462"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Směrování událostí v rámci digitálních vláken Azure a mimo ně
 
@@ -77,7 +77,7 @@ await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<e
 
 * `endpoint-name`Identifikuje koncový bod, jako je například centrum událostí, Event Grid nebo Service Bus. Tyto koncové body je potřeba vytvořit v předplatném a připojit se k digitálním plochám Azure pomocí rozhraní API řídicích rovin před provedením tohoto volání registrace.
 
-Objekt trasy události předaný objektu `EventRoutes.Add` také převezme [parametr **filtru** ](./how-to-manage-routes.md#filter-events), který lze použít k omezení typů událostí, které následují po této trase.
+Objekt trasy události předaný objektu `EventRoutes.Add` také převezme [parametr **filtru** ](./how-to-manage-routes-apis-cli.md#filter-events), který lze použít k omezení typů událostí, které následují po této trase.
 
 Trasy je také možné vytvořit pomocí rozhraní příkazového [řádku Azure Digital zdvojené](how-to-use-cli.md).
 
@@ -90,7 +90,7 @@ Různé typy událostí v IoT Hub a digitálních Vlákenách Azure vytváří r
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si, jak nastavit a spravovat postup události:
-* [*Postupy: Správa koncových bodů a tras*](how-to-manage-routes.md)
+* [*Postupy: Správa koncových bodů a tras*](how-to-manage-routes-apis-cli.md)
 
 Nebo si přečtěte téma jak použít Azure Functions ke směrování událostí v rámci digitálních vláken Azure:
 * [*Postupy: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md)

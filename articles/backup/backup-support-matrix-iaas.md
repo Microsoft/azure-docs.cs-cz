@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování v
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3be5bdffd999907234fff64f8f88459d9c9b18b6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 9d7e3b4f565fac42d0a91d155846e672c7437f2d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531859"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810458"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -137,7 +137,7 @@ Obnovení virtuálního počítače v jiné virtuální síti |Podporuje se.<br/
 
 **Výpočetní služby** | **Podpora**
 --- | ---
-Velikost virtuálního počítače |Všechny velikosti virtuálních počítačů Azure s minimálně 2 jádry procesoru a 1 GB paměti RAM.<br/><br/> [Další informace](../virtual-machines/windows/sizes.md)
+Velikost virtuálního počítače |Všechny velikosti virtuálních počítačů Azure s minimálně 2 jádry procesoru a 1 GB paměti RAM.<br/><br/> [Další informace](../virtual-machines/sizes.md)
 Zálohování virtuálních počítačů ve [skupinách dostupnosti](../virtual-machines/availability.md#availability-sets) | Podporuje se.<br/><br/> Virtuální počítač nejde obnovit v dostupné sadě pomocí možnosti pro rychlé vytvoření virtuálního počítače. Místo toho můžete při obnovení virtuálního počítače obnovit disk a použít ho k nasazení virtuálního počítače nebo obnovení disku a použít ho k nahrazení stávajícího disku.
 Zálohování virtuálních počítačů nasazených s [využitím programu zvýhodněné hybridní využití (centrum)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) | Podporuje se.
 Zálohování virtuálních počítačů, které jsou nasazené v [sadě škálování](../virtual-machine-scale-sets/overview.md) |Podporuje se. Pro doménu selhání by měl být nastaven [režim orchestrace](../virtual-machine-scale-sets/orchestration-modes.md) na hodnotu 2. Skupina dostupnosti není podporovaná.
@@ -223,8 +223,8 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 --- | --- | ---
 Místní počítače s Windows bez DPM/MABS | Není k dispozici | ![Ano][green]
 Virtuální počítače Azure | Není k dispozici | Není k dispozici
-Místní nebo virtuální počítače Azure s DPM | ![Yes][green] | ![Yes][green]
-Místní nebo virtuální počítače Azure s MABS | ![Yes][green] | ![Ano][green]
+Místní nebo virtuální počítače Azure s DPM | ![Ano][green] | ![Ano][green]
+Místní nebo virtuální počítače Azure s MABS | ![Ano][green] | ![Ano][green]
 
 ## <a name="next-steps"></a>Další kroky
 

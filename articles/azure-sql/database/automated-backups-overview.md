@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: c24a78413b09de04a10266f883e11617bb7a2f27
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 205e99303cd53adf6aa952ccd65441b72471f3a2
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554035"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810260"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
 
@@ -26,22 +26,38 @@ ms.locfileid: "87554035"
 
 ## <a name="what-is-a-database-backup"></a>Co je zálohování databáze?
 
-Zálohy databází jsou důležitou součástí jakékoli strategie pro provozní kontinuitu a zotavení po havárii, protože chrání vaše data před poškozením nebo odstraněním.
+Zálohy databází jsou důležitou součástí jakékoli strategie pro provozní kontinuitu a zotavení po havárii, protože chrání vaše data před poškozením nebo odstraněním. Tyto zálohy umožňují obnovení databáze k určitému bodu v čase v rámci nakonfigurované doby uchování. Pokud vaše pravidla ochrany dat vyžadují, aby vaše zálohy byly dostupné po delší dobu (až 10 let), můžete nakonfigurovat [dlouhodobé uchovávání](long-term-retention-overview.md) pro databáze s jednou i ve fondu.
+
+### <a name="backup-frequency"></a>Frekvence zálohování
 
 SQL Database i spravované instance SQL používají SQL Server technologie k vytváření [úplných záloh](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) každý týden, [rozdílové zálohování](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) každých 12-24 hodin a [zálohování protokolů transakcí](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) každých 5 až 10 minut. Frekvence zálohování protokolu transakcí je založena na výpočetní velikosti a množství aktivity databáze.
 
 Při obnovení databáze služba Určuje, které zálohy úplného, rozdílového a transakčního protokolu se musí obnovit.
 
-Tyto zálohy umožňují obnovení databáze k určitému bodu v čase v rámci nakonfigurované doby uchování. Zálohy se ukládají jako [objekty blob úložiště RA-GRS](../../storage/common/storage-redundancy.md) , které se replikují do [spárované oblasti](../../best-practices-availability-paired-regions.md) , aby se zabránilo ochraně před výpadky, které mají vliv na úložiště zálohování v primární oblasti. 
+### <a name="backup-storage-redundancy"></a>Redundance úložiště zálohování
 
-Pokud vaše pravidla ochrany dat vyžadují, aby vaše zálohy byly dostupné po delší dobu (až 10 let), můžete nakonfigurovat [dlouhodobé uchovávání](long-term-retention-overview.md) pro databáze s jednou i ve fondu.
+> [!IMPORTANT]
+> Konfigurovatelná redundance úložiště pro zálohy je aktuálně dostupná jenom pro spravovanou instanci SQL a dá se zadat jenom během procesu vytváření spravované instance. Po zřízení prostředku nemůžete změnit možnost redundance úložiště zálohování.
+
+Možnost konfigurovat redundanci úložiště zálohy poskytuje flexibilitu pro výběr místně redundantních (LRS), ZRS () nebo geograficky redundantních [objektů BLOB úložiště](../../storage/common/storage-redundancy.md)(RA-GRS). Mechanismy redundance úložiště ukládají více kopií vašich dat, aby byly chráněné před plánovanými i neplánovanými událostmi, včetně přechodného selhání hardwaru, sítě nebo výpadků napájení nebo obrovského přirozeného katastrofy. Tato funkce je v tuto chvíli dostupná jenom pro spravovanou instanci SQL.
+
+Objekty blob úložiště RA-GRS se replikují do [spárované oblasti](../../best-practices-availability-paired-regions.md) a chrání proti výpadkům, které mají vliv na úložiště zálohování v primární oblasti a umožňují obnovit server do jiné oblasti v případě havárie. 
+
+V opačném případě objekty blob úložiště LRS a ZRS zajistí, že vaše data zůstanou ve stejné oblasti, ve které je nasazená vaše SQL Database nebo spravovaná instance SQL. Zóna – redundantní úložiště (ZRS) je v tuto chvíli dostupné jenom v [určitých oblastech](../../storage/common/storage-redundancy.md#zone-redundant-storage)).
+
+> [!IMPORTANT]
+> Ve spravované instanci SQL se nakonfigurovaná redundance zálohy používá pro nastavení krátkodobého uchovávání záloh, které se používá pro obnovení v časovém intervalu (PITR) a dlouhodobé zálohy uchovávání informací používané pro dlouhodobé zálohování (LTR).
+
+### <a name="backup-usage"></a>Využití zálohy
 
 Tyto zálohy rovněž umožňují:
 
-- [Obnovte stávající databázi k určitému bodu v čase v minulosti](recovery-using-backups.md#point-in-time-restore) v době uchování pomocí Azure Portal, Azure PowerShell, Azure CLI nebo REST API. Pro databáze typu Single a Pool Tato operace vytvoří novou databázi na stejném serveru jako původní databázi, ale pod jiným názvem, aby se předešlo přepsání původní databáze. Po dokončení obnovení můžete původní databázi odstranit nebo [Přejmenovat](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database) a přejmenovat obnovenou databázi tak, aby měla původní název databáze. Ve spravované instanci může tato operace podobně vytvořit kopii databáze ve stejné nebo jiné spravované instanci v rámci stejného předplatného a ve stejné oblasti.
-- [Obnovení odstraněné databáze do doby odstranění](recovery-using-backups.md#deleted-database-restore) nebo do libovolného bodu v čase v rámci doby uchování. Odstraněnou databázi lze obnovit pouze na stejném serveru nebo ve spravované instanci, kde byla vytvořena původní databáze. Při odstraňování databáze služba před odstraněním zabere v konečném zálohování protokolu transakcí, aby nedošlo ke ztrátě dat.
-- [Obnovte databázi do jiné geografické oblasti](recovery-using-backups.md#geo-restore). Geografické obnovení umožňuje obnovení z geografické havárie, když nemůžete získat přístup k databázi nebo zálohám v primární oblasti. Vytvoří novou databázi na jakémkoli existujícím serveru nebo spravované instanci v libovolné oblasti Azure.
-- [Obnovte databázi z určité dlouhodobé zálohy](long-term-retention-overview.md) izolované databáze nebo databáze ve fondu, pokud je databáze nakonfigurovaná s použitím dlouhodobých zásad uchovávání informací (LTR). LTR umožňuje obnovit starou verzi databáze pomocí [Azure Portal](long-term-backup-retention-configure.md#using-the-azure-portal) nebo [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) , aby splňovala požadavek na dodržování předpisů nebo spustil starou verzi aplikace. Další informace najdete v tématu [Dlouhodobé uchovávání](long-term-retention-overview.md).
+- **Obnovení existující databáze**  -  v daném časovém okamžiku [Obnovte stávající databázi k určitému bodu v čase v minulosti](recovery-using-backups.md#point-in-time-restore) v době uchování pomocí Azure Portal, Azure PowerShell, Azure CLI nebo REST API. V případě SQL Database Tato operace vytvoří novou databázi na stejném serveru jako původní databázi, ale používá jiný název, aby nedošlo k přepsání původní databáze. Po dokončení obnovení můžete původní databázi odstranit. Alternativně můžete [Přejmenovat](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database) původní databázi a pak znovu přejmenovat obnovenou databázi na původní název databáze. Podobně pro spravovanou instanci SQL Tato operace vytvoří kopii databáze na stejné nebo jiné spravované instanci v rámci stejného předplatného a stejné oblasti.
+- **Obnovení odstraněné databáze**  -  v okamžiku v čase [Obnovení odstraněné databáze do doby odstranění](recovery-using-backups.md#deleted-database-restore) nebo do libovolného bodu v čase v rámci doby uchování. Odstraněnou databázi lze obnovit pouze na stejném serveru nebo ve spravované instanci, kde byla vytvořena původní databáze. Při odstraňování databáze služba před odstraněním zabere v konečném zálohování protokolu transakcí, aby nedošlo ke ztrátě dat.
+- **Geografické obnovení**  -  [Obnovte databázi do jiné geografické oblasti](recovery-using-backups.md#geo-restore). Geografické obnovení umožňuje obnovení z geografické havárie, když nemůžete získat přístup k databázi nebo zálohám v primární oblasti. Vytvoří novou databázi na jakémkoli existujícím serveru nebo spravované instanci v libovolné oblasti Azure.
+   > [!IMPORTANT]
+   > Geografické obnovení je dostupné jenom pro spravované instance s nakonfigurovaným geograficky redundantním úložištěm záloh (RA-GRS).
+- **Obnovení z dlouhodobého zálohování**  -  [Obnovte databázi z určité dlouhodobé zálohy](long-term-retention-overview.md) izolované databáze nebo databáze ve fondu, pokud je databáze nakonfigurovaná s použitím dlouhodobých zásad uchovávání informací (LTR). LTR umožňuje obnovit starou verzi databáze pomocí [Azure Portal](long-term-backup-retention-configure.md#using-the-azure-portal) nebo [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) , aby splňovala požadavek na dodržování předpisů nebo spustil starou verzi aplikace. Další informace najdete v tématu [Dlouhodobé uchovávání](long-term-retention-overview.md).
 
 Chcete-li provést obnovení, přečtěte si téma [obnovení databáze ze zálohy](recovery-using-backups.md).
 
@@ -50,13 +66,13 @@ Chcete-li provést obnovení, přečtěte si téma [obnovení databáze ze zálo
 
 Operaci konfigurace zálohování a obnovení můžete vyzkoušet v následujících příkladech:
 
-| | Azure Portal | Azure PowerShell |
+| Operace | portál Azure | Azure PowerShell |
 |---|---|---|
-| **Změna uchovávání záloh** | [Samostatná databáze](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [Spravovaná instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [Samostatná databáze](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| **Změna dlouhodobého uchovávání záloh** | [Samostatná databáze](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance – není k dispozici  | [Samostatná databáze](long-term-backup-retention-configure.md)<br/>Spravovaná instance – není k dispozici  |
-| **Obnovení databáze z určitého bodu v čase** | [Samostatná databáze](recovery-using-backups.md#point-in-time-restore) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| **Obnovení odstraněné databáze** | [Samostatná databáze](recovery-using-backups.md) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| **Obnovení databáze ze služby Azure Blob Storage** | Izolovaná databáze – není k dispozici <br/>Spravovaná instance – není k dispozici  | Izolovaná databáze – není k dispozici <br/>[Spravovaná instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
+| **Změna uchovávání záloh** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [Spravovaná instance SQL](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[Spravovaná instance SQL](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **Změna dlouhodobého uchovávání záloh** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance SQL – N/A  | [SQL Database](long-term-backup-retention-configure.md)<br/>[Spravovaná instance SQL](../managed-instance/long-term-backup-retention-configure.md)  |
+| **Obnovení databáze z určitého bodu v čase** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[Spravovaná instance SQL](../managed-instance/point-in-time-restore.md) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Spravovaná instance SQL](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| **Obnovení odstraněné databáze** | [SQL Database](recovery-using-backups.md)<br>[Spravovaná instance SQL](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Spravovaná instance SQL](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| **Obnovení databáze ze služby Azure Blob Storage** | SQL Database – N/A <br/>Spravovaná instance SQL – N/A  | SQL Database – N/A <br/>[Spravovaná instance SQL](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="backup-scheduling"></a>Plánování zálohování
 
@@ -98,6 +114,7 @@ Využití úložiště zálohování až do maximální velikosti dat pro datab�
 - V případě operací s velkým objemem dat zvažte použití [clusterovaných indexů columnstore](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes) a následující související osvědčené [postupy](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)a nebo snižte počet neclusterovaných indexů.
 - Ve vrstvě služby Pro obecné účely zřízené úložiště dat je levnější než cena úložiště zálohování. Pokud máte průběžné vysoké náklady na úložiště záloh, můžete zvážit zvýšení úložiště dat pro uložení do úložiště zálohování.
 - Použijte databázi TempDB místo trvalých tabulek v aplikační logice pro ukládání dočasných výsledků nebo přechodných dat.
+- Pokud je to možné, používejte místně redundantní úložiště zálohování (například vývojové a testovací prostředí).
 
 ## <a name="backup-retention"></a>Uchování záloh
 
@@ -112,15 +129,13 @@ Uchovávání záloh pro účely PITR během posledních 1-35 dnů se někdy ozn
 
 ### <a name="long-term-retention"></a>Dlouhodobé uchovávání
 
-U databází typu Single a Pool a spravovaných instancí můžete v úložišti objektů BLOB v Azure nakonfigurovat dlouhodobou dobu uchovávání (LTR) úplných záloh po dobu až 10 let. Pokud povolíte zásadu LTR, budou se týdenní úplné zálohy automaticky kopírovat na jiný kontejner úložiště RA-GRS. Pro splnění různých požadavků na dodržování předpisů můžete pro týdenní, měsíční nebo roční úplné zálohování vybrat jiné doby uchování. Spotřeba úložiště závisí na zvolené četnosti záloh LTR a na době uchování nebo na období. Pomocí [cenové kalkulačky ltr](https://azure.microsoft.com/pricing/calculator/?service=sql-database) můžete odhadnout náklady na úložiště ltr.
-
-Podobně jako zálohy PITR jsou zálohy LTR chráněné pomocí geograficky redundantního úložiště. Další informace najdete v článku [Možnosti redundance Azure Storage](../../storage/common/storage-redundancy.md).
+V případě SQL Database i SQL spravované instance můžete v úložišti objektů BLOB v Azure nakonfigurovat dlouhodobé uchovávání po dobu až 10 let (LTR). Po nakonfigurování zásad LTR se všechny zálohy automaticky zkopírují do jiného kontejneru úložiště. Pro splnění různých požadavků na dodržování předpisů můžete pro týdenní, měsíční nebo roční úplné zálohování vybrat jiné doby uchování. Spotřeba úložiště závisí na zvolené četnosti a období uchovávání záloh LTR. Pomocí [cenové kalkulačky ltr](https://azure.microsoft.com/pricing/calculator/?service=sql-database) můžete odhadnout náklady na úložiště ltr.
 
 Další informace o LTR najdete v tématu [dlouhodobé uchovávání záloh](long-term-retention-overview.md).
 
 ## <a name="storage-costs"></a>Náklady na úložiště
 
-Cena za úložiště zálohování se liší v závislosti na tom, jestli používáte model DTU nebo model vCore, a také ve vaší oblasti. Úložiště zálohování se účtuje za GB za měsíc spotřebovaný. ceny najdete na stránce s cenami [Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/) a na stránce s [cenami Azure SQL Managed instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) .
+Cena za úložiště zálohování se liší a závisí na vašem nákupním modelu (DTU nebo vCore), zvolené možnosti redundance úložiště zálohování a také ve vaší oblasti. Úložiště zálohování se účtuje za GB za měsíc spotřebovaný. ceny najdete na stránce s cenami [Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/) a na stránce s [cenami Azure SQL Managed instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) .
 
 ### <a name="dtu-model"></a>Model DTU
 
@@ -153,6 +168,18 @@ Teď je to složitější příklad. Předpokládejme, že stejná databáze s n
 Skutečné scénáře fakturace ze zálohy jsou složitější. Vzhledem k tomu, že frekvence změn v databázi závisí na zatížení a je v průběhu času proměnná, velikost jednotlivých rozdílů a zálohování protokolů se budou lišit, což způsobí, že se odpovídajícím způsobem mění hodinová spotřeba úložiště zálohování. Kromě toho každá rozdílová záloha obsahuje všechny změny provedené v databázi od posledního úplného zálohování, takže celková velikost všech rozdílných záloh se postupně zvyšuje v průběhu týdne a pak se prudce rozrůstá, jakmile se uvolní starší sada úplných, rozdílových a záložních záloh protokolu. Například pokud je po dokončení úplného zálohování spuštěná operace silného zápisu, jako je třeba opětovné sestavení indexu, pak se změny provedené při opětovném sestavení indexu budou zahrnovat do záloh protokolu transakcí pořízených po dobu trvání opětovného sestavení, v další rozdílové záloze a v každé rozdílové záloze, dokud nedojde k dalšímu úplnému zálohování. Pro druhý scénář ve větších databázích vytvoří optimalizace ve službě úplnou zálohu místo rozdílového zálohování, pokud by rozdílové zálohování bylo příliš velké, jinak. Tím se zmenší velikost všech rozdílových záloh až do následujících úplných záloh.
 
 V průběhu času můžete monitorovat celkovou spotřebu úložiště zálohování pro každý typ zálohy (úplný, rozdílový a transakční protokol), jak je popsáno v tématu [monitorování spotřeby](#monitor-consumption).
+
+### <a name="backup-storage-redundancy"></a>Redundance úložiště zálohování
+
+Redundance záložního úložiště ovlivňuje náklady na zálohování následujícím způsobem:
+- LRS Price = x
+- ZRS Price = 1,25 ×
+- RA-GRS Price = 2x
+
+Další podrobnosti o cenách za úložiště zálohování najdete na stránce s cenami [Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/) a na [stránce s cenami Azure SQL Managed instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
+
+> [!IMPORTANT]
+> Konfigurovatelná redundance úložiště pro zálohy je aktuálně dostupná jenom pro spravovanou instanci SQL a dá se zadat jenom během procesu vytváření spravované instance. Po zřízení prostředku nemůžete změnit možnost redundance úložiště zálohování.
 
 ### <a name="monitor-costs"></a>Sledovat náklady
 
@@ -300,6 +327,54 @@ Stavový kód: 200
 ```
 
 Další informace najdete v tématu [REST API uchovávání záloh](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
+
+#### <a name="sample-request"></a>Ukázková žádost
+
+```http
+PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
+```
+
+#### <a name="request-body"></a>Text požadavku
+
+```json
+{
+  "properties":{
+    "retentionDays":28
+  }
+}
+```
+
+#### <a name="sample-response"></a>Ukázková odpověď
+
+Stavový kód: 200
+
+```json
+{
+  "id": "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default",
+  "name": "default",
+  "type": "Microsoft.Sql/resourceGroups/servers/databases/backupShortTermRetentionPolicies",
+  "properties": {
+    "retentionDays": 28
+  }
+}
+```
+
+Další informace najdete v tématu [REST API uchovávání záloh](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
+
+## <a name="configure-backup-storage-redundancy"></a>Konfigurace redundance úložiště zálohování
+
+> [!NOTE]
+> Konfigurovatelná redundance úložiště pro zálohy je aktuálně dostupná jenom pro spravovanou instanci SQL a dá se zadat jenom během procesu vytváření spravované instance. Po zřízení prostředku nemůžete změnit možnost redundance úložiště zálohování.
+
+Redundanci úložiště zálohy spravované instance lze nastavit pouze během vytváření instance. Výchozí hodnota je geograficky redundantní úložiště (RA-GRS). Pro rozdíly v cenách mezi místně redundantními (LRS), ZRS a geograficky redundantním úložištěm zálohování navštivte [stránku s cenami spravované instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
+
+### <a name="configure-backup-storage-redundancy-by-using-the-azure-portal"></a>Konfigurace redundance úložiště zálohování pomocí Azure Portal
+
+V Azure Portal se při vytváření spravované instance SQL na kartě základy v případě, že vytváříte spravovanou instanci SQL, v okně **COMPUTE a úložiště** , které je dostupné na kartě **základy** , **nachází možnost změnit** redundanci záložního úložiště.
+![Otevření konfigurace COMPUTE + úložiště – okno](./media/automated-backups-overview/open-configuration-blade-mi.png)
+
+V okně **COMPUTE + úložiště** Najděte možnost vybrat redundanci úložiště zálohování.
+![Konfigurace redundance úložiště zálohování](./media/automated-backups-overview/select-backup-storage-redundancy-mi.png)
 
 ## <a name="next-steps"></a>Další kroky
 

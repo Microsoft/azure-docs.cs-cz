@@ -2,16 +2,15 @@
 title: Použití Azure AD ve službě Azure Kubernetes
 description: Naučte se používat Azure AD ve službě Azure Kubernetes Service (AKS).
 services: container-service
-manager: gwallace
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 07/27/2020
 ms.author: thomasge
-ms.openlocfilehash: 896986775f0132ef08b17bdfefc00e5e06cf3d9f
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: afc20052680e7f3e5b7d3a6b7320b7ca3b10dbd5
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448125"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799853"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Integrace Azure Active Directory spravovaná v AKS
 
@@ -36,11 +35,6 @@ Integrace Azure Active Directory spravovaná v AKS je dostupná ve veřejných o
 * pro integraci AAD spravované v AKS se nepodporují clustery s podporou non RBAC.
 * Změna tenanta Azure AD přidruženého k integraci AAD spravovaného přes AKS se nepodporuje.
 
-> [!IMPORTANT]
-> Funkce AKS ve verzi Preview jsou k dispozici na samoobslužné službě, na základě souhlasu. Verze Preview jsou k dispozici "tak jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou na základě nejlepších úsilí. V takovém případě tyto funkce nejsou určeny pro použití v produkčním prostředí. Další informace najdete v následujících článcích podpory: 
-> - [Zásady podpory AKS](support-policies.md) 
-> - [Nejčastější dotazy k podpoře Azure](faq.md)
-
 ## <a name="prerequisites"></a>Předpoklady
 
 * Azure CLI verze 2.9.0 nebo novější
@@ -57,22 +51,6 @@ kubectl version --client
 ```
 
 [Tyto pokyny](https://kubernetes.io/docs/tasks/tools/install-kubectl/) použijte pro jiné operační systémy.
-
-```azurecli-interactive 
-az feature register --name AAD-V2 --namespace Microsoft.ContainerService    
-``` 
-
-Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) : 
-
-```azurecli-interactive 
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"    
-``` 
-
-Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :    
-
-```azurecli-interactive 
-az provider register --namespace Microsoft.ContainerService 
-``` 
 
 
 ## <a name="before-you-begin"></a>Než začnete

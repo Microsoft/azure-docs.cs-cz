@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79d80a5b94a753b43715c1ccd8fc2059ff84cfca
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 0818ab782710e6a102d2034790ff8d997cd54f8e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87338023"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808434"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: Přidání aplikace do tenanta Azure Active Directory (Azure AD)
 
@@ -58,8 +57,15 @@ Přidání aplikace do tenanta služby Azure AD:
 
 Dokončili jste přidávání aplikace. V dalším rychlém startu se dozvíte, jak změnit logo a upravit další vlastnosti aplikace.
 
+> [!TIP]
+> Správu aplikací můžete automatizovat pomocí Graph API, přečtěte si téma [Automatizace správy aplikací pomocí rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud nebudete pokračovat v sérii rychlých startů, zvažte odstranění aplikace a vyčištění svého testovacího tenanta. Odstranění aplikace se zabývá posledním rychlým startem v této sérii, najdete v tématu [odstranění aplikace](delete-application-portal.md).
+
 ## <a name="next-steps"></a>Další kroky
 
-- [Konfigurace aplikace](add-application-portal-configure.md)
-- [Nastavení jednotného přihlašování](add-application-portal-setup-sso.md)
-- [Odstranění aplikace](delete-application-portal.md)
+Přejděte k dalšímu článku, kde se dozvíte, jak nakonfigurovat aplikaci.
+> [!div class="nextstepaction"]
+> [Konfigurace aplikace](add-application-portal-configure.md)

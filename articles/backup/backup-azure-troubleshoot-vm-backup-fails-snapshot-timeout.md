@@ -4,12 +4,12 @@ description: Příznaky, příčiny a řešení chyb Azure Backup souvisejícíc
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 5bf52606e6fa5de6a122a65432da87de1491e17f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 188eef5471e93661041dadfc93f561d2173ba7f2
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324739"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809761"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -23,7 +23,7 @@ Většinu běžných selhání zálohování můžete vyřešit sami pomocí ná
 
 ### <a name="step-1-check-azure-vm-health"></a>Krok 1: ověření stavu virtuálního počítače Azure
 
-- Ujistěte se, že **stav zřizování virtuálních počítačů Azure je spuštěný**: Pokud [stav zřizování virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states) je ve stavu **Zastaveno/zrušeno přidělení/aktualizace** , bude v konfliktu s operací zálohování. Otevřete *Azure Portal > > přehled >* a zkontrolujte stav virtuálního počítače, abyste se ujistili, že je **spuštěný** , a zkuste operaci zálohování zopakovat.
+- Ujistěte se, že **stav zřizování virtuálních počítačů Azure je spuštěný**: Pokud [stav zřizování virtuálního počítače](../virtual-machines/windows/states-lifecycle.md#provisioning-states) je ve stavu **Zastaveno/zrušeno přidělení/aktualizace** , bude v konfliktu s operací zálohování. Otevřete *Azure Portal > > přehled >* a zkontrolujte stav virtuálního počítače, abyste se ujistili, že je **spuštěný** , a zkuste operaci zálohování zopakovat.
 - **Kontrola nedokončených aktualizací operačního systému nebo restartování**: Ujistěte se, že na virtuálním počítači nejsou žádné nevyřízené aktualizace operačního systému ani čekají na restartování.
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>Krok 2: ověření stavu služby agenta hosta virtuálního počítače Azure
@@ -31,18 +31,18 @@ Většinu běžných selhání zálohování můžete vyřešit sami pomocí ná
 - **Ujistěte se, že je spuštěná služba agenta hosta virtuálního počítače Azure a aktuální**:
   - Na virtuálním počítači s Windows:
     - Přejděte na **Services. msc** a ujistěte se, že je **Služba agenta hosta virtuálního počítače Windows Azure** spuštěná. Také se ujistěte, že je nainstalovaná [nejnovější verze](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) . Další informace najdete v tématu [problémy agenta hosta virtuálních počítačů s Windows](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms).
-    - Agent virtuálního počítače Azure se ve výchozím nastavení instaluje na jakýkoli virtuální počítač s Windows nasazený z Azure Marketplace image z portálu, PowerShellu, rozhraní příkazového řádku nebo šablony Azure Resource Manager. Pokud vytvoříte vlastní image virtuálního počítače, která je nasazená do Azure, může být potřeba [Ruční instalace agenta](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows#manual-installation) .
+    - Agent virtuálního počítače Azure se ve výchozím nastavení instaluje na jakýkoli virtuální počítač s Windows nasazený z Azure Marketplace image z portálu, PowerShellu, rozhraní příkazového řádku nebo šablony Azure Resource Manager. Pokud vytvoříte vlastní image virtuálního počítače, která je nasazená do Azure, může být potřeba [Ruční instalace agenta](../virtual-machines/extensions/agent-windows.md#manual-installation) .
     - Zkontrolujte matrici podpory a zkontrolujte, jestli je virtuální počítač spuštěný v [podporovaném operačním systému Windows](backup-support-matrix-iaas.md#operating-system-support-windows).
   - Na virtuálním počítači se systémem Linux
-    - Zajistěte, aby služba agenta hosta virtuálního počítače Azure běžela spuštěním příkazu `ps-e` . Také se ujistěte, že je nainstalovaná [nejnovější verze](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) . Další informace najdete v tématu [problémy agenta hosta virtuálních počítačů se systémem Linux](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms).
-    - Ujistěte se, že [závislosti agenta virtuálního počítače se systémem Linux u systémových balíčků](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) mají podporovanou konfiguraci. Příklad: podporovaná verze Pythonu je 2,6 a vyšší.
+    - Zajistěte, aby služba agenta hosta virtuálního počítače Azure běžela spuštěním příkazu `ps-e` . Také se ujistěte, že je nainstalovaná [nejnovější verze](../virtual-machines/extensions/update-linux-agent.md) . Další informace najdete v tématu [problémy agenta hosta virtuálních počítačů se systémem Linux](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms).
+    - Ujistěte se, že [závislosti agenta virtuálního počítače se systémem Linux u systémových balíčků](../virtual-machines/extensions/agent-linux.md#requirements) mají podporovanou konfiguraci. Příklad: podporovaná verze Pythonu je 2,6 a vyšší.
     - Zkontrolujte matrici podpory a zkontrolujte, jestli je virtuální počítač spuštěný v [podporovaném operačním systému Linux.](backup-support-matrix-iaas.md#operating-system-support-linux)
 
 ### <a name="step-3-check-azure-vm-extension-health"></a>Krok 3: ověření stavu rozšíření virtuálních počítačů Azure
 
 - **Zajistěte, aby byla všechna rozšíření virtuálních počítačů Azure ve stavu úspěšného zřizování**: Pokud je jakékoli rozšíření ve stavu selhání, může to narušit zálohování.
 - *Otevřete Azure Portal > > nastavení virtuálního počítače > rozšíření stav rozšíření >* a ověřte, jestli jsou všechna rozšíření ve stavu **úspěšné zřizování** .
-- Zajistěte, aby všechny [problémy s rozšířením](https://docs.microsoft.com/azure/virtual-machines/extensions/overview#troubleshoot-extensions) byly vyřešeny, a opakujte operaci zálohování.
+- Zajistěte, aby všechny [problémy s rozšířením](../virtual-machines/extensions/overview.md#troubleshoot-extensions) byly vyřešeny, a opakujte operaci zálohování.
 - Ujistěte se, že je **Systémová aplikace modelu COM+** spuštěná. **Služba DTC (Distributed Transaction Coordinator)** by měla také běžet jako **účet síťové služby**. [Při odstraňování problémů s com+ a MSDTC](backup-azure-vms-troubleshoot.md#extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error)postupujte podle kroků v tomto článku.
 
 ### <a name="step-4-check-azure-backup-vm-extension-health"></a>Krok 4: zkontrolování Azure Backup stavu rozšíření virtuálního počítače
@@ -57,9 +57,9 @@ Azure Backup používá rozšíření snímku virtuálního počítače k poří
   - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
-- **Zjistit, jestli je vyžadován síťový přístup**: balíčky rozšíření se stáhnou z úložiště rozšíření Azure Storage a nahrávání stavu rozšíření se publikují do Azure Storage. [Přečtěte si další informace](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows#network-access).
+- **Zjistit, jestli je vyžadován síťový přístup**: balíčky rozšíření se stáhnou z úložiště rozšíření Azure Storage a nahrávání stavu rozšíření se publikují do Azure Storage. [Další informace](../virtual-machines/extensions/features-windows.md#network-access).
   - Pokud jste v nepodporované verzi agenta, musíte z virtuálního počítače v této oblasti povolený odchozí přístup ke službě Azure Storage.
-  - Pokud jste zablokovali přístup k `168.63.129.16` použití brány firewall hosta nebo proxy serveru, rozšíření selžou bez ohledu na výše uvedené. Vyžadují se porty 80, 443 a 32526. [Další informace najdete tady](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows#network-access).
+  - Pokud jste zablokovali přístup k `168.63.129.16` použití brány firewall hosta nebo proxy serveru, rozšíření selžou bez ohledu na výše uvedené. Vyžadují se porty 80, 443 a 32526. [Další informace najdete tady](../virtual-machines/extensions/features-windows.md#network-access).
 
 - **Zajistěte, aby byl na virtuálním počítači hosta povolený protokol DHCP**: vyžaduje se k získání adresy hostitele nebo prostředků infrastruktury z protokolu DHCP, aby mohla záloha virtuálního počítače IaaS fungovat. Pokud potřebujete statickou privátní IP adresu, měli byste ji nakonfigurovat přes Azure Portal nebo PowerShell a ujistit se, že je ve virtuálním počítači povolená možnost DHCP, [Další informace](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken).
 

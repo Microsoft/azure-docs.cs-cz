@@ -4,12 +4,12 @@ description: 'Porovnání cloudových služeb Microsoftu, které jsou optimalizo
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 1e6d1462a4f94db424081ea1567e5926806d3e81
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2e0d8f356ec8da900b4a38399ba94434c3b1b93d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083000"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809965"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Volba správných služeb integrace a automatizace v Azure
 
@@ -57,7 +57,7 @@ Při sestavování orchestrace lze služby kombinovat, takže je možné volat f
 | **Připojení** | [O tucet vestavěných typů vazeb](functions-triggers-bindings.md#supported-bindings), psaní kódu pro vlastní vazby | [Velká kolekce konektorů](../connectors/apis-list.md), [Enterprise Integration Pack pro scénáře B2B](../logic-apps/logic-apps-enterprise-integration-overview.md), [sestavení vlastních konektorů](../logic-apps/custom-connector-overview.md) |
 | **Akce** | Každá aktivita je funkce Azure; zápis kódu pro funkce aktivity |[Rozsáhlá kolekce předdefinovaných akcí](../logic-apps/logic-apps-workflow-actions-triggers.md)|
 | **Monitorování** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [protokoly Azure monitor](../logic-apps/monitor-logic-apps.md)|
-| **správy** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](/rest/api/logic/), [PowerShell](/powershell/module/az.logicapp), [Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
+| **správy** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2019) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](/rest/api/logic/), [PowerShell](/powershell/module/az.logicapp), [Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
 | **Kontext spuštění** | Může běžet [místně](functions-runtime-overview.md) nebo v cloudu. | Spouští se jenom v cloudu.|
 
 <a name="function"></a>
@@ -90,7 +90,7 @@ Služba Azure Functions je postavená na sadě WebJobs SDK, takže sdílí řadu
 
 <sup>2</sup> webové úlohy (bez sady WebJobs SDK) podporují npm a NuGet.
 
-### <a name="summary"></a>Shrnutí
+### <a name="summary"></a>Souhrn
 
 Azure Functions nabízí větší produktivitu vývojářů než Azure App Service WebJobs. Nabízí také více možností pro programovací jazyky, vývojová prostředí, integraci služeb Azure a ceny. Pro většinu scénářů se jedná o nejlepší volbu.
 

@@ -12,16 +12,18 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 992ad40d343fcc85b6c7c8fe0ed8b083a5b08238
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b2324c480ef81ef241f4d639c22c2ed4dd1545b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344505"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808843"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Dlouhodobé uchovávání – Azure SQL Database a Azure SQL Managed instance
 
-Mnoho aplikací má zákonné, právní nebo jiné obchodní účely, které vyžadují, abyste zachovali zálohy databáze po 7-35 dnů poskytovaných Azure SQL Database a [automatickými zálohami](automated-backups-overview.md)spravované instance Azure SQL. Pomocí funkce dlouhodobá doba uchovávání (LTR) můžete ukládat zadané SQL Database a úplné zálohy spravované instance SQL do úložiště objektů BLOB v Azure s geograficky redundantním úložištěm s přístupem pro čtení po dobu až 10 let. Pak můžete obnovit jakoukoli zálohu jako novou databázi. Další informace o Azure Storage redundanci najdete v tématu [Azure Storage redundance](../../storage/common/storage-redundancy.md). 
+Mnoho aplikací má zákonné, právní nebo jiné obchodní účely, které vyžadují, abyste zachovali zálohy databáze po 7-35 dnů poskytovaných Azure SQL Database a [automatickými zálohami](automated-backups-overview.md)spravované instance Azure SQL. Pomocí funkce dlouhodobá doba uchovávání (LTR) můžete ukládat zadané SQL Database a úplné zálohy spravované instance SQL do úložiště objektů BLOB v Azure s geograficky redundantním úložištěm s přístupem pro čtení po dobu až 10 let. Pak můžete obnovit jakoukoli zálohu jako novou databázi.
+
+Kromě toho spravovaná instance SQL zavádí [konfigurovatelnou redundanci záložního úložiště](automated-backups-overview.md#backup-storage-redundancy) , která nabízí flexibilitu při výběru místně redundantních (LRS), ZRS () nebo geograficky redundantních [objektů BLOB úložiště](../../storage/common/storage-redundancy.md)(RA-GRS). Tato možnost je v tuto chvíli dostupná jenom během procesu vytváření spravované instance a nedá se po zřízení prostředku změnit.
 
 Je možné povolit dlouhou dobu uchovávání Azure SQL Database a je ve verzi Public Preview pro Azure SQL Managed instance. Tento článek obsahuje koncepční přehled dlouhodobého uchovávání. Pokud chcete nakonfigurovat dlouhodobé uchovávání, přečtěte si téma [konfigurace Azure SQL Database ltr](long-term-backup-retention-configure.md) a [Konfigurace spravované instance Azure SQL ltr](../managed-instance/long-term-backup-retention-configure.md). 
 

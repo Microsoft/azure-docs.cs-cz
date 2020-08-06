@@ -3,12 +3,12 @@ title: Běžné dotazy k zotavení po havárii technologie Hyper-V pomocí Azure
 description: Tento článek shrnuje běžné otázky týkající se nastavení zotavení po havárii pro místní virtuální počítače Hyper-V do Azure pomocí Azure Site Recovery lokality.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: b3d806908ce2274d07e6b508c8cc269b553e684f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c168ba9ff14e57f238069e8ca5b0c34a8fb58015
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132664"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799884"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Časté dotazy – Zotavení po havárii Hyper-V do Azure
 
@@ -156,6 +156,10 @@ Při replikaci do Azure dosáhne provoz replikace veřejné koncové body účtu
 ### <a name="what-are-the-replicated-vm-requirements"></a>Jaké jsou požadavky na replikovaný virtuální počítač?
 
 Pro replikaci musí na VIRTUÁLNÍm počítači s technologií Hyper-V běžet podporovaný operační systém. Virtuální počítač navíc musí splňovat požadavky na virtuální počítače Azure. [Další informace najdete](hyper-v-azure-support-matrix.md#replicated-vms) v části Support Matrix.
+
+### <a name="why-is-an-additional-standard-storage-account-required-if-i-replicate-my-virtual-machine-disks-to-premium-storage"></a>Proč je pro replikaci disků virtuálních počítačů do služby Premium Storage vyžadován další účet úložiště úrovně Standard?
+
+Při replikaci místních virtuálních počítačů nebo fyzických serverů do služby Premium Storage se všechna data umístěná na discích chráněného počítače replikují do účtu Premium Storage. Pro ukládání protokolů replikace se vyžaduje další účet úložiště úrovně Standard. Po dokončení počáteční fáze replikace dat disku se všechny změny v místních discích sledují průběžně a ukládají se jako protokoly replikace v tomto dodatečném účtu úložiště úrovně Standard.
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Jak často je možné replikovat do Azure?
 

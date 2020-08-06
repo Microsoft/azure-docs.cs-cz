@@ -3,7 +3,7 @@ title: Změna rolí prostředků pro balíček pro přístup ve správě nárok�
 description: Naučte se, jak změnit role prostředků pro existující balíček přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 800c3dbeb96dfb87c7b495909e21eca929bec726
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 006a79c91cd9bfb4c3bbf4a7e0ffb58314af49cc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550317"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798630"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Změna rolí prostředků pro balíček přístupu v Azure AD – Správa nároků
 
@@ -90,7 +90,7 @@ Další informace najdete v tématu věnovaném [porovnání skupin](https://doc
 
     Jakmile vyberete skupinu nebo tým, sloupec **Sub Type** zobrazí jeden z následujících podtypů:
 
-    | Dílčí typ | Description |
+    | Dílčí typ | Popis |
     | --- | --- |
     | Zabezpečení | Používá se pro udělení přístupu k prostředkům. |
     | Distribuce | Slouží k odesílání oznámení skupině lidí. |
@@ -103,7 +103,7 @@ Další informace najdete v tématu věnovaném [porovnání skupin](https://doc
 
     ![Přístup k balíčku – přidání role prostředku pro skupinu nebo tým](./media/entitlement-management-access-package-resources/group-role.png)
 
-1. Klikněte na tlačítko **Add** (Přidat).
+1. Klikněte na **Přidat**.
 
     Všichni uživatelé s existujícími přiřazeními k balíčku přístupu se při přidání automaticky stanou členy této skupiny nebo týmu.
 
@@ -134,7 +134,7 @@ Zde jsou některé předpoklady při výběru aplikace:
 
     ![Přístup k balíčku – přidání role prostředku pro aplikaci](./media/entitlement-management-access-package-resources/application-role.png)
 
-1. Klikněte na tlačítko **Add** (Přidat).
+1. Klikněte na **Přidat**.
 
     Všichni uživatelé s existujícími přiřazeními k balíčku pro přístup budou při přidání automaticky mít k této aplikaci přístup.
 
@@ -154,7 +154,7 @@ Azure AD může automaticky přiřadit uživatele k webu SharePointu Online nebo
 
     ![Přístup k balíčku – přidání role prostředku pro web SharePointu Online](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
 
-1. Klikněte na tlačítko **Add** (Přidat).
+1. Klikněte na **Přidat**.
 
     Všichni uživatelé s existujícími přiřazeními k balíčku pro přístup budou při přidání automaticky mít přístup k tomuto webu SharePointu Online.
 

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/06/2019
+ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 09501a80d6ddcbbc9fa6cc08e36f47beb13d1663
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97bda09870949846e333cc2845286512fd5d6386
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063218"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809897"
 ---
-# <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning-preview"></a>Kurz: Konfigurace zřizování SAP SuccessFactors pro uživatele Azure AD (Preview)
-Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zřizování pracovních dat od SuccessFactors zaměstnanců do Azure Active Directory, s volitelným zpětným zápisem e-mailové adresy SuccessFactors. Tato integrace je ve verzi Public Preview a podporuje načítání více než [70 a uživatelských atributů](../app-provisioning/sap-successfactors-attribute-reference.md) od SuccessFactors zaměstnanců od středníku. 
+# <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Kurz: Konfigurace zřizování SAP SuccessFactors pro uživatele Azure AD
+Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zřizování pracovních dat od SuccessFactors zaměstnanců do Azure Active Directory, s volitelným zpětným zápisem e-mailové adresy SuccessFactors. 
 
 >[!NOTE]
 >Tento kurz použijte v případě, že uživatelé, které chcete zřídit z SuccessFactors, jsou jenom uživatelé s podporou cloudu, kteří nepotřebují místní účet služby AD. Pokud uživatelé vyžadují jenom místní účet služby AD nebo účet AD i Azure AD, přečtěte si prosím kurz [konfigurace SAP SuccessFactors na zřizování uživatelů služby Active Directory](sap-successfactors-inbound-provisioning-tutorial.md#overview) . 
@@ -79,7 +79,7 @@ Konfigurace zřizování uživatelů cloudu s využitím cloudu z SuccessFactors
 * Transformace atributu 
 * Filtry oborů
 
-Podrobné pokyny k těmto tématům najdete v [plánu nasazení cloudového HR](../app-provisioning/plan-cloud-hr-provision.md) . 
+Podrobné pokyny k těmto tématům najdete v [plánu nasazení cloudového HR](../app-provisioning/plan-cloud-hr-provision.md) . Informace o podporovaných entitách, podrobnostech o zpracování a způsobu přizpůsobení integrace pro různé scénáře týkající se lidských zdrojů najdete v referenčních informacích k [integraci SAP SuccessFactors](../app-provisioning/sap-successfactors-integration-reference.md) . 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>Konfigurace SuccessFactors pro integraci
 

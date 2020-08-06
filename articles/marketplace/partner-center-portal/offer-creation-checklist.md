@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 11c1c307d00b9347081a313308ad2467086ec208
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e17edacf45583283d53c5484417f6a2dd7c6e012
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327391"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799918"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>Kontrolní seznam pro vytvoření nabídky SaaS v partnerském centru
 
@@ -79,9 +79,9 @@ Stránka vlastnosti je místo, kde můžete definovat kategorie a obory použív
 Stránka výpisu je místo, kde můžete zadat text a obrázky, které se zákazníkům zobrazí při zobrazení seznamu vaší nabídky na webu Marketplace. 
 
 | **Název pole**    | **Poznámky**   |
-| :---------------- | :-----------| 
+| :---------------- | :-----------|
 | Název  | Požadováno, max. 50 znaků. |
-| Souhrn  | Požadováno, max. 100 znaků. | 
+| Souhrn  | Požadováno, max. 100 znaků. |
 | Popis  | Požadováno, max. 3000 znaků. |
 | Pokyny pro Začínáme  | Požadováno, max. 3000 znaků. |
 | Pokyny pro Začínáme  | Požadováno, max. 3000 znaků. |
@@ -91,7 +91,7 @@ Stránka výpisu je místo, kde můžete zadat text a obrázky, které se zákaz
 | Název užitečného odkazu + adresa URL  | Nepovinný parametr. |
 | Název doprovodnéch dokumentů + soubor  | Požadováno, minimum 1 a max 3. Musí se jednat o formát souboru PDF. |
 | Screenshoty  | Požadováno, minimální počet 1 snímek obrazovky a maximální 5; doporučuje se čtyři nebo více. Ve formátu PNG musí být 1280 X 720. |
-| Ukládat loga (malá, střední, Velká, rozsáhlá)  | Malá (48 × 48) a velká (216 × 216); jiné velikosti volitelné, ale doporučené: střední (90 x 90), v šířce (255 × 115). Musí být v. Formát PNG. |
+| Ukládat loga (malá, střední, Velká)  | Je vyžadováno velké logo (216 x 216). Partnerské centrum použije tuto hodnotu k vytvoření malého (48 x 48 pixelů) a středníku (90 x 90 pixelů). Volitelně je můžete nahradit různými obrázky. Loga musí být ve formátu PNG. |
 | Název videa + adresa URL + Miniatura  | Volitelné, doporučené, maximální 4 videa. Miniatura musí být ve formátu PNG 1280 x 720. Video musí být hostované na YouTube nebo Vimeo. |
 | Kontakty (program CSP, strojírenství, podpora)  | Technické a podpůrné kontaktní požadavky (jméno, e-mail a telefonní číslo); Program CSP kontaktuje volitelnou, ale doporučuje se. |
 | Adresa URL podpory  | Povinná hodnota. |
@@ -100,11 +100,11 @@ Stránka výpisu je místo, kde můžete zadat text a obrázky, které se zákaz
 
 Stránka verze Preview je místo, kde můžete určit cílovou skupinu pro přístup k vaší nabídce Preview, abyste ověřili, že nabídka splňuje všechny vaše požadavky, než bude živá. 
 
-| **Název pole**    | **Poznámky**   | 
-| :---------------- | :-----------| 
+| **Název pole**    | **Poznámky**   |
+| :---------------- | :-----------|
 | AAD/MSA e-mail + popis | Požadováno, min 1 a Max 10 při zadání ručně nebo až 20 při nahrávání souboru CSV. |
 
-## <a name="technical-configuration-page"></a>Stránka technické konfigurace 
+## <a name="technical-configuration-page"></a>Stránka technické konfigurace
 
 Stránka technická konfigurace je místo, kde zadáte technické podrobnosti, které Microsoft používá pro připojení k vaší nabídce. Pokud se rozhodnete neprodávat přes Microsoft, Tato stránka není viditelná.
 

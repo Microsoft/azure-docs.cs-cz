@@ -4,12 +4,12 @@ description: Poskytuje seznam běžných limitů, kvót a omezení předplatnéh
 ms.topic: conceptual
 author: davidsmatlak
 ms.date: 06/04/2020
-ms.openlocfilehash: ffe0703fbbea75b221dfc6fd16f334dcf58e8ab3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 79aaa594a708fe775a2cdcc6e15b7c7f880f9f50
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515847"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810475"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -375,11 +375,11 @@ Další informace o omezeních souborů Azure najdete v tématu [škálovatelnos
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-Další informace najdete v tématu [velikosti virtuálních počítačů](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Další informace najdete v tématu [velikosti virtuálních počítačů](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 #### <a name="disk-encryption-sets"></a>Sady šifrování disků
 
-U každého předplatného je omezení 50 sad Disk Encryption pro jednotlivé oblasti. Další informace najdete v dokumentaci k šifrování pro virtuální počítače se systémem [Linux](/azure/virtual-machines/linux/disk-encryption#restrictions) nebo [Windows](/azure/virtual-machines/windows/disk-encryption#restrictions) . Pokud potřebujete tuto kvótu zvýšit, obraťte se na podporu Azure.
+U každého předplatného je omezení 50 sad Disk Encryption pro jednotlivé oblasti. Další informace najdete v dokumentaci k šifrování pro virtuální počítače se systémem [Linux](../../virtual-machines/linux/disk-encryption.md#restrictions) nebo [Windows](../../virtual-machines/windows/disk-encryption.md#restrictions) . Pokud potřebujete tuto kvótu zvýšit, obraťte se na podporu Azure.
 
 ### <a name="managed-virtual-machine-disks"></a>Spravované disky virtuálních počítačů
 
@@ -426,6 +426,6 @@ Pro nasazení prostředků pomocí galerií sdílených imagí existují omezen�
 ## <a name="see-also"></a>Viz také
 
 * [Pochopení omezení a zvýšení počtu Azure](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-* [Velikosti virtuálních počítačů a cloudových služeb pro Azure](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Velikosti virtuálních počítačů a cloudových služeb pro Azure](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Velikosti pro Azure Cloud Services](../../cloud-services/cloud-services-sizes-specs.md)
 * [Omezení a pravidla pojmenování prostředků Azure](resource-name-rules.md)

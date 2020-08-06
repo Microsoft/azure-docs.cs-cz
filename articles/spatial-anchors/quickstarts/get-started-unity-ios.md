@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 02/24/2019
+ms.date: 07/31/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 37a82c4001dd42a4cfbbb9dabec29f28359afd75
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1fbd7138c393809b279d780004ff476cea4735fe
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240587"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810322"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace Unity pro iOS pomocí prostorových kotev Azure
 
@@ -30,12 +30,12 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
-- MacOS počítač s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1 nebo 2019,2</a>, nejnovější verzí <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> nainstalovaného.
-- Git se nainstaloval přes HomeBrew. Do jednoho řádku terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Pak spusťte `brew install git` příkaz a `brew install git-lfs`.
+- MacOS počítač s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,4 (LTS)</a>, nejnovější verzí <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> nainstalované.
+- Git se nainstaloval přes HomeBrew. Do jednoho řádku terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` . Pak spusťte příkaz `brew install git` a `brew install git-lfs` .
 - Vývojářem podporujícím zařízení s iOS <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">kompatibilní s ARKit</a> .
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -48,13 +48,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 [!INCLUDE [iOS Unity Build Settings](../../../includes/spatial-anchors-unity-ios-build-settings.md)]
 
-## <a name="configure-account-identifier-and-key"></a>Konfigurace identifikátoru a klíče účtu
-
-V podokně **projekt** přejděte na `Assets/AzureSpatialAnchors.Examples/Scenes` a otevřete soubor `AzureSpatialAnchorsBasicDemo.unity` scény.
-
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
-
-Scénu uložte výběrem Uložit **soubor** -> **Save**.
 
 ## <a name="export-the-xcode-project"></a>Export projektu Xcode
 
@@ -82,13 +76,12 @@ brew install cocoapods --build-from-source
 brew link --overwrite cocoapods
 ```
 
-### <a name="unity-20193"></a>Unity 2019,3
-
-V důsledku zásadních změn se Unity 2019,3 aktuálně nepodporuje. Použijte prosím Unity 2019,1 nebo 2019,2.
-
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
 > [Kurz: sdílení prostorových ukotvení napříč zařízeními](../tutorials/tutorial-share-anchors-across-devices.md)
+
+> [!div class="nextstepaction"]
+> [Postupy: Konfigurace prostorových kotev Azure v projektu Unity](../how-tos/setup-unity-project.md)

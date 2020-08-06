@@ -3,23 +3,23 @@ title: Template deployment co-if (Preview)
 description: Než nasadíte šablonu Azure Resource Manager, určete, jaké změny se budou probíhat u vašich prostředků.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 08/05/2020
 ms.author: tomfitz
-ms.openlocfilehash: 1e2c83167e7ccc1e3e98b23711fba567ef11ac23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888739"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810067"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Operace nasazení šablony ARM – if (Preview)
 
-Před nasazením šablony Azure Resource Manager (ARM) můžete zobrazit náhled změn, ke kterým dojde. Azure Resource Manager poskytuje operaci citlivostní operace, která vám umožní zjistit, jak se prostředky změní, pokud šablonu nasadíte. Operace citlivosti neprovede žádné změny stávajících prostředků. Místo toho odhadne změny, pokud je zadaná šablona nasazena.
+Před nasazením šablony Azure Resource Manager (šablona ARM) můžete zobrazit náhled změn, ke kterým dojde. Azure Resource Manager poskytuje operaci citlivostní operace, která vám umožní zjistit, jak se prostředky změní, pokud šablonu nasadíte. Operace citlivosti neprovede žádné změny stávajících prostředků. Místo toho odhadne změny, pokud je zadaná šablona nasazena.
 
 > [!NOTE]
 > Operace citlivosti je aktuálně ve verzi Preview. Ve verzi Preview můžou výsledky někdy Ukázat, že se prostředek změní, když se ve skutečnosti žádná změna nestane. Pracujeme na tom, abychom tyto problémy snížili, ale potřebujeme vaši technickou podporu. Nahlaste tyto problémy na adrese [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 
-Můžete použít operaci s citlivostní operací s Azure PowerShell, Azure CLI nebo REST API operacemi. Co když je podporováno pro nasazení na úrovni skupiny prostředků a předplatného.
+Můžete použít operaci s citlivostní operací s Azure PowerShell, Azure CLI nebo REST API operacemi. Co když je podporováno pro nasazení skupiny prostředků, předplatného, skupiny pro správu a na úrovni tenanta.
 
 ## <a name="install-azure-powershell-module"></a>Nainstalovat modul Azure PowerShell
 
@@ -125,20 +125,23 @@ Předchozí příkazy vrátí textový souhrn, který můžete ručně zkontrolo
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Chcete-li zobrazit náhled změn před nasazením šablony, použijte příkaz [AZ Deployment Group Co-if](/cli/azure/deployment/group#az-deployment-group-what-if) nebo [AZ Deployment sub co if](/cli/azure/deployment/sub#az-deployment-sub-what-if).
+Chcete-li zobrazit náhled změn před nasazením šablony, použijte:
 
-* `az deployment group what-if`pro nasazení skupin prostředků
-* `az deployment sub what-if`pro nasazení na úrovni předplatného
+* [AZ Deployment Group Co-if](/cli/azure/deployment/group#az-deployment-group-what-if) pro nasazení skupin prostředků
+* [AZ Deployment sub a if](/cli/azure/deployment/sub#az-deployment-sub-what-if) on Deployment na úrovni předplatného
+* [AZ Deployment mg co-if](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if) pro nasazení skupin pro správu
+* [AZ Deployment tenant co-if](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if) pro nasazení klientů
 
-Můžete použít `--confirm-with-what-if` přepínač (nebo jeho krátký tvar `-c` ) k zobrazení náhledu změn a zobrazení výzvy k pokračování v nasazení. Přidejte tento přepínač na [AZ Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create) nebo [AZ Deployment sub Create](/cli/azure/deployment/sub#az-deployment-sub-create).
+Můžete použít `--confirm-with-what-if` přepínač (nebo jeho krátký tvar `-c` ) k zobrazení náhledu změn a zobrazení výzvy k pokračování v nasazení. Přidat tento přepínač do:
 
-* `az deployment group create --confirm-with-what-if`nebo `-c` pro nasazení skupin prostředků
-* `az deployment sub create --confirm-with-what-if`nebo `-c` pro nasazení na úrovni předplatného
+* [AZ Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create)
+* [AZ Deployment sub Create](/cli/azure/deployment/sub#az-deployment-sub-create).
+* [AZ Deployment g Create](/cli/azure/deployment/mg#az-deployment-mg-create)
+* [AZ Deployment tenant Create](/cli/azure/deployment/tenant#az-deployment-tenant-create)
 
-Předchozí příkazy vrátí textový souhrn, který můžete ručně zkontrolovat. Chcete-li získat objekt JSON, který můžete programově kontrolovat změny, použijte:
+Například použijte `az deployment group create --confirm-with-what-if` nebo `-c` pro nasazení skupiny prostředků.
 
-* `az deployment group what-if --no-pretty-print`pro nasazení skupin prostředků
-* `az deployment sub what-if --no-pretty-print`pro nasazení na úrovni předplatného
+Předchozí příkazy vrátí textový souhrn, který můžete ručně zkontrolovat. Chcete-li získat objekt JSON, který můžete programově kontrolovat změny, použijte `--no-pretty-print` přepínač. Použijte například `az deployment group what-if --no-pretty-print` pro nasazení skupiny prostředků.
 
 Pokud chcete vrátit výsledky bez barev, otevřete [konfigurační soubor Azure CLI](/cli/azure/azure-cli-configuration) . Nastavte **no_color** na **Ano**.
 
@@ -147,7 +150,9 @@ Pokud chcete vrátit výsledky bez barev, otevřete [konfigurační soubor Azure
 Pro REST API použijte:
 
 * [Nasazení – what if](/rest/api/resources/deployments/whatif) pro nasazení skupin prostředků
-* [Nasazení – what if v oboru předplatného](/rest/api/resources/deployments/whatifatsubscriptionscope) pro nasazení na úrovni předplatného
+* [Nasazení – what if v oboru předplatného](/rest/api/resources/deployments/whatifatsubscriptionscope) pro nasazení předplatných
+* [Nasazení – what if v oboru skupiny pro správu](/rest/api/resources/deployments/whatifatmanagementgroupscope) pro nasazení skupin pro správu
+* [Nasazení – what if v oboru tenanta](/rest/api/resources/deployments/whatifattenantscope) pro nasazení klientů.
 
 ## <a name="change-types"></a>Změnit typy
 
@@ -312,7 +317,7 @@ Resource changes: 1 to modify.
 
 V horní části výstupu si všimněte, že jsou definovány barvy, aby označovaly typ změn.
 
-V dolní části výstupu se zobrazí vlastník značky byl odstraněn. Předpona adresy se změnila z 10.0.0.0/16 na 10.0.0.0/15. Podsíť s názvem subnet001 se odstranila. Zapamatujte si, že tyto změny nebyly skutečně nasazeny. Zobrazí se náhled změn, ke kterým dojde, pokud šablonu nasadíte.
+V dolní části výstupu se zobrazí vlastník značky byl odstraněn. Předpona adresy se změnila z 10.0.0.0/16 na 10.0.0.0/15. Podsíť s názvem subnet001 se odstranila. Zapamatujte si, že tyto změny nebyly nasazeny. Zobrazí se náhled změn, ke kterým dojde, pokud šablonu nasadíte.
 
 Některé vlastnosti, které jsou uvedené jako odstraněné, se ve skutečnosti nezmění. Vlastnosti mohou být nesprávně hlášeny jako odstraněné, pokud nejsou v šabloně, ale budou automaticky nastaveny během nasazování jako výchozí hodnoty. Tento výsledek se považuje za "hluk" v reakci citlivosti. Konečný nasazený prostředek bude mít nastavené hodnoty pro vlastnosti. V případě, že se operace co-if dospěla, tyto vlastnosti se vyfiltrují z výsledku.
 

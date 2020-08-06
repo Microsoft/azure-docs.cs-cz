@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 5ead227d886805c0ed48ebb52c4c0e30ef13b851
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 779fc1cfc617e18eee4d84dcfd007f10ddb31f96
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320030"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808707"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Vytvoření nabídky modulu IoT Edge
 
@@ -48,12 +48,12 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a o tom, jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Například:
+Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Příklad:
 
-- Pokud je nabídka koncept – odstranění konceptu [nabídky](update-existing-offer.md#delete-a-draft-offer))
-- Pokud je nabídka živá, [přestanou prodávat nabídku](update-existing-offer.md#stop-selling-an-offer-or-plan).)
-- Pokud je nabídka ve verzi Preview – [Přejít na Live](publishing-status.md#publisher-approval))
-- Pokud jste nedokončili registraci vydavatele [, zrušte publikování.](update-existing-offer.md#cancel-publishing))
+- Pokud je nabídka nabídkou konceptu a [odstranění konceptu](update-existing-offer.md#delete-a-draft-offer)
+- Pokud je nabídka živá, [přestanou prodávat nabídku](update-existing-offer.md#stop-selling-an-offer-or-plan) .
+- Pokud je nabídka ve verzi Preview – [Přejít do provozu](publishing-status.md#publisher-approval)
+- Pokud jste nedokončili registraci vydavatele [, zrušte publikování.](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>Nastavení nabídky
 
@@ -199,14 +199,15 @@ Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všech
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Zadejte soubory PNG pro logo vaší nabídky v každé z následujících čtyř velikostí pixelů:
+Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije tuto hodnotu k vytvoření **malého** (48 x 48 pixelů) a **středníku** (90 x 90 pixelů). Volitelně je můžete nahradit různými obrázky.
 
-- **Malé (48 x 48)**
-- **Střední (90 × 90)**
-- **Velký (216 x 216)**
-- **Roztažitelné (255 × 115)**
+Všechny tři velikosti loga se vyžadují pro použití na různých místech v seznamu:
 
-Všechny čtyři loga jsou povinná a používají se na různých místech v seznamu Marketplace.
+- **Malé** (48 x 48)
+- **Střední** (90 × 90)
+- **Velký** (mezi 216 x 216 a 350 × 350)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Snímky obrazovky (volitelné)
 

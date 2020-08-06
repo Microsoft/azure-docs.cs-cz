@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: f1871871fa3a191c636a965977dba485d2c77f1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1cf29438d3785a3406aa8ce3b75929a5d5261121
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037504"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800365"
 ---
 # <a name="azure-spring-cloud-faq"></a>Nejčastější dotazy k jarnímu cloudu Azure
 
@@ -72,7 +72,7 @@ Azure jaře Cloud podporuje Exportování protokolů a metriky aplikace na jaře
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Podporuje Azure jaře Cloud distribuované trasování?
 
-Yes. Další informace najdete v tématu [kurz: použití distribuovaného trasování u jarního cloudu Azure](spring-cloud-tutorial-distributed-tracing.md).
+Ano. Další informace najdete v tématu [kurz: použití distribuovaného trasování u jarního cloudu Azure](spring-cloud-tutorial-distributed-tracing.md).
 
 ### <a name="what-resource-types-does-service-binding-support"></a>Jaké typy prostředků podporuje Service Binding?
 
@@ -83,7 +83,7 @@ V současné době jsou podporovány tři služby:
 
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Můžu v rámci svých aplikací zobrazit, přidat nebo přesunout trvalé svazky?
 
-Yes.
+Ano.
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Po odstranění nebo přesunutí instance služby Azure jaře Cloud Service se její prostředky pro rozšíření odstranily/přesunuly i?
 
@@ -137,7 +137,7 @@ Důležité opravy zabezpečení (CVE skore >= 9) použitelné pro jarní cloudy
 ## <a name="deployment"></a>Nasazení
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Podporuje nasazení s modrou zeleným cloudem Azure?
-Yes. Další informace najdete v tématu [Nastavení přípravného prostředí](spring-cloud-howto-staging-environment.md).
+Ano. Další informace najdete v tématu [Nastavení přípravného prostředí](spring-cloud-howto-staging-environment.md).
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Můžu získat přístup k Kubernetes, abyste mohli manipulovat s kontejnery aplikací?
 
@@ -145,7 +145,7 @@ Ne.  Azure jaře Cloud vyabstrakce vývojáře z základní architektury, což v
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Podporuje Azure jaře Cloud vytváření kontejnerů ze zdroje?
 
-Yes. Další informace najdete v tématu [spuštění vaší jarní cloudové aplikace ze zdrojového kódu](spring-cloud-launch-from-source.md).
+Ano. Další informace najdete v tématu [spuštění vaší jarní cloudové aplikace ze zdrojového kódu](spring-cloud-launch-from-source.md).
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Podporuje Azure jaře Cloud automatické škálování v instancích aplikací?
 
@@ -161,6 +161,21 @@ Při migraci stávajících mikroslužeb pro jarní Cloud do jarního cloudu Azu
 * Doporučujeme používat oficiální a stabilní Pivotické knihovny. Neoficiální, beta nebo rozvětvené verze kontingenčních knihoven Pivoter nemají podporu smlouvy o úrovni služeb (SLA).
 
 Po migraci monitorujte metriky procesoru/paměti RAM a síťový provoz, abyste měli jistotu, že jsou instance aplikace vhodně škálovatelné.
+
+## <a name="trouble-shooting"></a>Odstraňování potíží
+
+### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>Jaké dopady služby Service registry nejsou zřídka dostupné?
+
+V některých případech se může zobrazit několik chyb, jako např. 
+```
+RetryableEurekaHttpClient: Request execution failure with status code 401; retrying on another server if available
+```
+z vašich protokolů aplikací. Tento problém zavedla architektura pružiny s velmi nízkou mírou kvůli nestabilní síti nebo jiným problémům se sítí. 
+
+Nemělo by to mít žádný dopad na činnost koncového uživatele, protože klient Eureka má na starosti i zásady opakování. Je možné, že bude považována za jednu přechodnou chybu a bude bezpečně přeskočena.
+
+Tuto část vylepšíme a vyhnete se této chybě aplikacím uživatelů v krátké budoucnosti.
+
 
 ## <a name="next-steps"></a>Další kroky
 

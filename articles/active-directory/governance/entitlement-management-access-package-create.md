@@ -3,7 +3,7 @@ title: Vytvoření nového přístupového balíčku v rámci správy nároků �
 description: Naučte se, jak vytvořit nový balíček pro přístup k prostředkům, které chcete sdílet, v Azure Active Directory správu nároků.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d54c4e5980383c721629143910eafbd5ae6a527
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64f5c88de72bcd241f0cd42d338acbe707de6f34
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078952"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798779"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Vytvoření nového balíčku pro přístup ve správě nároků Azure AD
 
@@ -57,7 +57,7 @@ Tady je postup vysoké úrovně pro vytvoření nového přístupového balíčk
 
 **Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Klikněte na **Azure Active Directory** a pak na zásady **správného řízení identity**.
 
@@ -83,7 +83,7 @@ Na kartě **základy** udělíte přístupovému balíčku název a určíte, ke
 
     Balíček přístupu, který vytváříte, a všechny prostředky, které jsou v něm obsažené, se přidají do nového katalogu. Později můžete také přidat další vlastníky katalogu.
 
-1. Klikněte na **Další**.
+1. Klikněte na **Next** (Další).
 
 ## <a name="resource-roles"></a>Role prostředků
 
@@ -105,7 +105,7 @@ Na kartě **role prostředků** vyberte prostředky, které se mají zahrnout do
 
     ![Přístup k balíčku – výběr role prostředků](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
-1. Klikněte na **Další**.
+1. Klikněte na **Next** (Další).
 
 ## <a name="requests"></a>Žádosti
 
@@ -119,7 +119,7 @@ V závislosti na tom, kdo má být schopný požádat o přístup k tomuto balí
 
 [!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
-## <a name="review--create"></a>Zkontrolovat a vytvořit
+## <a name="review--create"></a>Kontrola a vytvoření
 
 Na kartě **Revize + vytvořit** můžete zkontrolovat nastavení a zkontrolovat chyby ověřování.
 

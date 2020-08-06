@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 07/20/2020
 ms.author: chmutali
-ms.openlocfilehash: 4aac13bf34394c359837ecd7a85abd78495bc4b4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ea47f8a6fc29571a27f8976bd0ad9bbd30ed0ad9
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283108"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808452"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Jak se Azure Active Directory zřizování integruje s SAP SuccessFactors 
 
@@ -33,7 +33,7 @@ Služba zřizování Azure AD používá základní ověřování pro připojen�
 K dalšímu zabezpečení připojení mezi službou zřizování Azure AD a SuccessFactors můžete přidat rozsahy IP adres Azure AD v seznamu povolených IP adres SuccessFactors pomocí kroků popsaných níže:
 
 1. Stáhněte si [nejnovější rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=56519) pro veřejný cloud Azure. 
-1. Otevřete soubor a vyhledejte značky **azureactivedirectory selhala** a **AzureActiveDirectoryDomainServices** . 
+1. Otevřete soubor a vyhledejte tag **azureactivedirectory selhala** 
 
    >[!div class="mx-imgBorder"] 
    >![Rozsah IP adres Azure AD](media/sap-successfactors-integration-reference/azure-active-directory-ip-range.png)

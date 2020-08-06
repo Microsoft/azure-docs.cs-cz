@@ -12,12 +12,12 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eeab9cbb68567b6af3b1381b8ec5e67e82461ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b0b0120a514591fb4fa23656906203acf443b4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763733"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799498"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Přiřazení uživatele nebo skupiny k podnikové aplikaci v Azure Active Directory
 
@@ -26,6 +26,9 @@ V tomto článku se dozvíte, jak přiřadit uživatele nebo skupiny k podnikov�
 Pro lepší kontrolu je možné nakonfigurovat určité typy podnikových aplikací tak, aby [vyžadovaly přiřazení uživatele](#configure-an-application-to-require-user-assignment). 
 
 Pokud chcete [přiřadit uživatele nebo skupinu k podnikové aplikaci](#assign-users-or-groups-to-an-app-via-the-azure-portal), musíte se přihlásit jako globální správce, správce aplikace, správce cloudové aplikace nebo přiřazený vlastník podnikové aplikace.
+
+> [!IMPORTANT]
+> Když přiřadíte skupinu k aplikaci, budou mít přístup jenom uživatelé ve skupině. Přiřazení se neprovádí kaskádovitě pro vnořené skupiny.
 
 > [!NOTE]
 > Přiřazení na základě skupin vyžaduje Azure Active Directory Premium edici P1 nebo P2. Přiřazení na základě skupin se podporuje jenom pro skupiny zabezpečení. Vnořené členství ve skupinách a skupiny Office 365 se aktuálně nepodporují. Další licenční požadavky na funkce popsané v tomto článku najdete na [stránce s cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory). 

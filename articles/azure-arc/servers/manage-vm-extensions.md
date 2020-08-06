@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: e04b2c63f782a4fcbb64273c08511ecb0bbc2bc3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb1de0c2a5b995231c2972fca7279195cbaea9e7
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84977686"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809625"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>Správa rozšíření virtuálních počítačů pomocí ARC Azure pro servery (Preview)
 
@@ -40,7 +40,7 @@ Funkce rozšíření virtuálních počítačů jsou k dispozici pouze v seznamu
 
 V této verzi Preview podporujeme následující rozšíření virtuálních počítačů na počítačích s Windows a Linux.
 
-|Linka |Operační systém |Publisher |Další informace |
+|Rozšíření |Operační systém |Publisher |Další informace |
 |----------|---|----------|-----------------------|
 |CustomScriptExtension |Windows |Microsoft.Compute |[Rozšíření vlastních skriptů pro Windows](../../virtual-machines/extensions/custom-script-windows.md)|
 |DSC |Windows |Microsoft. PowerShell|[Rozšíření Windows PowerShell DSC](../../virtual-machines/extensions/dsc-windows.md)|
@@ -55,7 +55,7 @@ Rozšíření virtuálních počítačů je možné spouštět pomocí šablon A
 
 Další informace o balíčku agenta připojeného počítače Azure a podrobnostech o komponentě agenta rozšíření najdete v tématu [Přehled agenta](agent-overview.md#agent-component-details).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tato funkce závisí na následujících poskytovatelích prostředků Azure v rámci vašeho předplatného:
 
@@ -727,6 +727,6 @@ Následující kroky pro řešení potíží se vztahují na všechna rozšíře
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)a mnohem víc.
+- Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/insights/vminsights-enable-policy.md)a mnohem víc.
 
 - Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je nutný, pokud chcete aktivně monitorovat operační systém a úlohy běžící v počítači, spravovat je pomocí runbooků nebo řešení automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).

@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - tracking-python
 - devx-track-azurecli
-ms.openlocfilehash: dfc7cf0a0d3b46020d94e86a3158b1e0cbf6ea5f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0ab19e538d2ffb97f9bb80c47f9ce5471bdb87a9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87485282"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799460"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: nasazení webové aplikace v Django s PostgreSQL v Azure App Service
 
@@ -31,6 +31,9 @@ V tomto kurzu provedete pomocí rozhraní příkazového řádku Azure CLI násl
 > * Aktualizace kódu a opětovné nasazení
 > * Zobrazit diagnostické protokoly
 > * Správa webové aplikace v Azure Portal
+
+Můžete také použít [Azure Portal verzi tohoto kurzu](/azure/developer/python/tutorial-python-postgresql-app-portal).
+
 
 ## <a name="set-up-your-initial-environment"></a>Nastavení počátečního prostředí
 

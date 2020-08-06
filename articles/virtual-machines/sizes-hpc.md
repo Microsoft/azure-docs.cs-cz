@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 08/01/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 122a3e243f314395ea7b1d32b88a5e20b0965eef
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: d0344247ba4dfffee275782bc2db83142d34cff3
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512002"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800241"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Vysoce výkonné výpočetní velikosti virtuálních počítačů
 
@@ -52,8 +52,7 @@ Toto rozhraní umožňuje, aby instance s podporou RDMA komunikovaly přes síť
 
    Pokud chcete přidat rozšíření virtuálního počítače do virtuálního počítače, můžete použít rutiny [Azure PowerShell](/powershell/azure/) . Další informace najdete v tématu [rozšíření a funkce virtuálních počítačů](./extensions/overview.md). Můžete také pracovat s rozšířeními pro virtuální počítače nasazené v [modelu nasazení Classic](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic).
 
-- **MPI** – velikosti virtuálních počítačů s povoleným rozhraním SR-IOV v Azure (HBv2,, HC, NCv3, NDv2) umožňují téměř jakýkoli charakter MPI pro použití s Mellanox OFED.
-V případě virtuálních počítačů s podporou SR-IOV podporované implementace MPI používají ke komunikaci mezi virtuálními počítači rozhraní Microsoft Network Direct (ND). Proto jsou podporovány pouze verze Microsoft MPI (MS-MPI) 2012 R2 nebo novější a Intel MPI 5. x. Novější verze (2017, 2018) běhové knihovny Intel MPI mohou nebo nemusí být kompatibilní s ovladači Azure RDMA.
+- **MPI** – velikosti virtuálních počítačů s povoleným rozhraním SR-IOV v Azure (HBv2,, HC, NCv3, NDv2) umožňují téměř jakýkoli charakter MPI pro použití s Mellanox OFED. V případě virtuálních počítačů s podporou SR-IOV podporované implementace MPI používají ke komunikaci mezi virtuálními počítači rozhraní Microsoft Network Direct (ND). Proto jsou podporovány pouze verze Microsoft MPI (MS-MPI) 2012 R2 nebo novější a Intel MPI 5. x. Novější verze (2017, 2018) běhové knihovny Intel MPI mohou nebo nemusí být kompatibilní s ovladači Azure RDMA. Další podrobnosti o nastavení MPI na virtuálních počítačích HPC v Azure najdete v tématu [Nastavení MPI pro HPC](./workloads/hpc/setup-mpi.md) .
 
 - **Adresní prostor síťového adres RDMA** – síť RDMA v Azure rezervuje adresní prostor 172.16.0.0/16. Pokud chcete spouštět aplikace MPI na instancích nasazených ve službě Azure Virtual Network, ujistěte se, že adresní prostor virtuální sítě nepřekrývá síť RDMA.
 

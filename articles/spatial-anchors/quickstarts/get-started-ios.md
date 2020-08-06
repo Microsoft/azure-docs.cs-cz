@@ -9,12 +9,12 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.custom: has-adal-ref
-ms.openlocfilehash: 99f3b5bc763c6ffb43fd143cf394be9157b2c83f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 2df66979d1e8f400f2630f5e531cd201244fdc6d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460265"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809982"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Rychlý Start: Vytvoření aplikace pro iOS pomocí prostorových kotev Azure v SWIFT nebo objektivní-C
 
@@ -101,7 +101,7 @@ Vyhledejte `spatialAnchorsAccountKey` pole a nahraďte ho `Set me` klíčem úč
 
 Vyhledejte `spatialAnchorsAccountId` pole a nahraďte ho `Set me` identifikátorem účtu.
 
-Vyhledejte `startSession()` a přidejte následující řádek, ve kterém nahradíte doménu účtu v minulosti: `cloudSession!.configuration.accountDomain = "MyAccountDomain";` .
+Vyhledejte `spatialAnchorsAccountDomain` pole a nahraďte ho `Set me` doménou účtu.
 
 # <a name="objective-c"></a>[Objective-C](#tab/openproject-objc)
 
@@ -111,7 +111,7 @@ Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte ho `Set me` klíčem úč
 
 Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte ho `Set me` identifikátorem účtu.
 
-Vyhledejte `startSession()` a přidejte následující řádek, ve kterém nahradíte doménu účtu v minulosti: `_cloudSession.configuration.accountDomain = @"MyAccountDomain";` .
+Vyhledejte `SpatialAnchorsAccountDomain` pole a nahraďte ho `Set me` doménou účtu.
 
 ---
 

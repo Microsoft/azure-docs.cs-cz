@@ -3,7 +3,7 @@ title: Samoobslužné přezkoumání balíčku přístupu v Azure AD – Správa
 description: Přečtěte si, jak zkontrolovat přístup uživatelů k balíčkům přístupu pro správu opravňujících k řízení přístupu ve Azure Active Directory (Preview).
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f8037ef1324cb10777511c4c363a62a2edab438
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31c44f2423cdc5c43638fe2515757bcb11a9814c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078415"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798439"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Samoobslužné přezkoumání balíčku přístupu v Azure AD – Správa nároků
 

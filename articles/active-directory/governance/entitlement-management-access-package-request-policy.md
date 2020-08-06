@@ -3,7 +3,7 @@ title: Nastavení žádosti o změnu a schválení pro balíček pro přístup v
 description: Naučte se, jak změnit nastavení žádostí a schválení pro balíček přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ef2faf2a1d1a131dc5f2a01d3fa46cc61a06fb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf38013efb14e412fbcd43e06dcf17e61c3bc4a
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078811"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798762"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Nastavení žádosti o změnu a schválení pro balíček přístupu v Azure AD – Správa nároků
 

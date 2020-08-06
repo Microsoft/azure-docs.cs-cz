@@ -4,12 +4,12 @@ description: Naučte se vyvíjet funkce pomocí Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 121a3263a28da5e17b1ab918529aa9f285089687
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372412"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810084"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions příručka pro vývojáře Java
 
@@ -19,7 +19,7 @@ Pokud se Azure Functions vývojářům v jazyce Java, zvažte prosím, že si ne
 
 | Začínáme | Koncepty| 
 | -- | -- |  
-| <ul><li>[Funkce jazyka Java pomocí Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)</li><li>[Funkce Java/Maven s terminálem nebo příkazovým řádkem](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)</li><li>[Funkce jazyka Java s použitím Gradle](functions-create-first-java-gradle.md)</li><li>[Funkce jazyka Java pomocí zatmění](functions-create-maven-eclipse.md)</li><li>[Funkce jazyka Java využívající IntelliJ nápad](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> |
+| <ul><li>[Funkce jazyka Java pomocí Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[Funkce Java/Maven s terminálem nebo příkazovým řádkem](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[Funkce jazyka Java s použitím Gradle](functions-create-first-java-gradle.md)</li><li>[Funkce jazyka Java pomocí zatmění](functions-create-maven-eclipse.md)</li><li>[Funkce jazyka Java využívající IntelliJ nápad](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> |
 
 ## <a name="java-function-basics"></a>Základní informace o funkcích jazyka Java
 

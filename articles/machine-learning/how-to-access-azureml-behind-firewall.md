@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 27b625dfa31b366d95922e1dd0bad7fda6e86ed4
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 23ec12daa2e5c236da482615228b7c44037282fb
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540066"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808112"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Pro Azure Machine Learning použít pracovní prostor za bránou firewall
 
@@ -34,7 +34,7 @@ V bráně firewall vytvořte síťové pravidlo umožňující provoz na a z adr
 > [!TIP]
 > Když přidáváte pravidlo sítě, nastavte __protokol__ na any a porty na `*` .
 >
-> Další informace o konfiguraci Azure Firewall najdete v tématu [nasazení a konfigurace Azure firewall](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule).
+> Další informace o konfiguraci Azure Firewall najdete v tématu [nasazení a konfigurace Azure firewall](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule).
 
 ## <a name="microsoft-hosts"></a>Hostitelé Microsoftu
 
@@ -57,7 +57,7 @@ Hostitelé v této části vlastní Microsoft a poskytují služby vyžadované 
 | **azurecr.io** | Azure Container Registry |
 | **mcr.microsoft.com** | Microsoft Container Registry pro základní image Docker |
 | **your-acr-server-name.azurecr.io** | Vyžaduje se jenom v případě, že je vaše Azure Container Registry za virtuální sítí. V této konfiguraci se privátní odkaz vytvoří z prostředí Microsoftu do instance ACR v rámci vašeho předplatného. Pro Azure Machine Learning pracovní prostor použijte název serveru ACR. |
-
+| **\*. notebooks.azure.net** | Vyžaduje poznámkové bloky v Azure Machine Learning Studiu. |
 ## <a name="python-hosts"></a>Hostitelé Pythonu
 
 Hostitelé v této části se používají k instalaci balíčků Pythonu. Jsou požadovány během vývoje, školení a nasazení. 

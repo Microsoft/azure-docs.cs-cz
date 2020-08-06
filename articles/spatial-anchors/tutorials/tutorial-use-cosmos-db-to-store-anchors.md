@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 71b3027d86400d6921895f86e257ddff2961f91f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8ff431c27dd53e82f9003b658c82ceb3efb5d320
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77615157"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810016"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Kurz: sdílení prostorových kotev Azure napříč relacemi a zařízeními pomocí back-endu Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Tento kurz je pokračováním v [sdílení prostorových kotev Azure napříč r
 
 ![OBRÁZEK, který ilustruje trvalost objektů](./media/persistence.gif)
 
-Je potřeba si všimnout, že i když v tomto kurzu budete používat Unity a Azure Cosmos DB, stačí vám poskytnout příklad, jak sdílet identifikátory prostorových kotev napříč zařízeními. Stejný cíl můžete dosáhnout i pro jiné jazyky a back-endové technologie uživatelů. Webová aplikace ASP.NET Core použitá v tomto kurzu také vyžaduje sadu .NET Core 2,2 SDK. Na Web Apps pro Windows běží správně, ale v tuto chvíli se v Web Apps pro Linux nespustí.
+Je potřeba si všimnout, že i když v tomto kurzu budete používat Unity a Azure Cosmos DB, stačí vám poskytnout příklad, jak sdílet identifikátory prostorových kotev napříč zařízeními. Stejný cíl můžete dosáhnout i pro jiné jazyky a back-endové technologie uživatelů.
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -33,23 +33,15 @@ Zkopírujte si `Connection String` ho, protože ho budete potřebovat.
 
 ## <a name="make-minor-changes-to-the-sharingservice-files"></a>Udělejte drobné změny v souborech SharingService.
 
-V **Průzkumník řešení**otevřete `SharingService\Startup.cs`.
+V **Průzkumník řešení**otevřete `SharingService\Startup.cs` .
 
 Vyhledejte `#define INMEMORY_DEMO` v horní části souboru a odkomentujte tento řádek. Uložte soubor.
 
-V **Průzkumník řešení**otevřete `SharingService\appsettings.json`.
+V **Průzkumník řešení**otevřete `SharingService\appsettings.json` .
 
-Vyhledejte `StorageConnectionString` vlastnost a nastavte ji jako `Connection String` hodnotu, která je stejná jako hodnota, kterou jste zkopírovali v [kroku vytvoření databázového účtu](#create-a-database-account). Uložte soubor.
+Vyhledejte `StorageConnectionString` vlastnost a nastavte ji jako `Connection String` hodnotu, která je stejná jako hodnota, kterou jste zkopírovali v [kroku vytvoření databázového účtu](#create-a-database-account). Soubor uložte.
 
 Službu sdílení můžete znovu publikovat a spustit ukázkovou aplikaci.
-
-## <a name="troubleshooting"></a>Řešení potíží
-
-### <a name="unity-20193"></a>Unity 2019,3
-
-V důsledku zásadních změn se Unity 2019,3 aktuálně nepodporuje. Použijte prosím Unity 2019,1 nebo 2019,2.
-
-[!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

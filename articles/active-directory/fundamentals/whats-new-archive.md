@@ -2,7 +2,7 @@
 title: Archivujte, co je nového v Azure Active Directory? | Dokumentace Microsoftu
 description: Poznámky k verzi s novinkami v části Přehled této sady obsahu obsahují 6 měsíců aktivity. Po 6 měsících budou položky odebrány z hlavního článku a vloženy do tohoto článku archivu.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d981bad30bf57fde64d1f6e903039dda5007e526
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e8b09293f80b5aee2dd76abba3f165a50a5eeee5
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87483905"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799136"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 

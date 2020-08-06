@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9c7c1000ed5229886d4a964161042eca6517c230
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d0bca2ad14216873836c751dc002ea915baa3a66
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367431"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800479"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Integrace digitálních vláken Azure s ostatními službami
 
@@ -33,7 +33,7 @@ Digitální vlákna Azure může posílat data do připojených **koncových bod
 * [Event Grid](../event-grid/overview.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-Koncové body jsou připojené k digitálním Vlákenám Azure pomocí rozhraní API pro správu nebo Azure Portal. Přečtěte si další informace o tom, jak připojit koncový bod k digitálním Vlákenám Azure v tématu [*Postupy: Správa koncových bodů a tras*](how-to-manage-routes.md).
+Koncové body jsou připojené k digitálním Vlákenám Azure pomocí rozhraní API pro správu nebo Azure Portal. Přečtěte si další informace o tom, jak připojit koncový bod k digitálním Vlákenám Azure v tématu [*Postupy: Správa koncových bodů a tras*](how-to-manage-routes-apis-cli.md).
 
 Existuje mnoho dalších služeb, kde můžete chtít data nakonec směrovat, například [Azure Storage](../storage/common/storage-introduction.md) nebo [Time Series Insights](../time-series-insights/time-series-insights-update-overview.md). Pokud chcete odesílat data do služeb, jako jsou, připojte cílovou službu ke koncovému bodu.
 

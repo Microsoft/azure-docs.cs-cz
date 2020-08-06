@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 07/19/2020
+ms.date: 08/05/2020
 ms.author: abnarain
-ms.openlocfilehash: 521756081db938e749849e6f3630dbd60700d24f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 49d173e0d0f2b96c385b4325335483d25e9a7c2d
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023814"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800591"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
@@ -20,7 +20,7 @@ ms.locfileid: "87023814"
 
 Tento článek popisuje běžné metody řešení potíží pro prostředí Integration runtime v místním prostředí v Azure Data Factory.
 
-## <a name="gather-self-hosted-integration-runtime-logs-from-azure-data-factory"></a>Shromažďování protokolů Integration runtime v místním prostředí z Azure Data Factory
+## <a name="gather-self-hosted-ir-logs-from-azure-data-factory"></a>Shromážděte místně hostované protokoly IR z Azure Data Factory
 
 Pro neúspěšné aktivity běžící v místním prostředí IR/Shared IR Azure Data Factory podporuje zobrazování a nahrávání protokolů chyb. Pomocí následujících kroků můžete získat ID zprávy o chybách a pak zadat ID sestavy, kde najdete související známé problémy.
 
@@ -46,11 +46,369 @@ Pro neúspěšné aktivity běžící v místním prostředí IR/Shared IR Azure
 > Žádosti o zobrazení a nahrání protokolu se spustí ve všech online autohostovaných instancích IR. Ujistěte se prosím, že všechny chybějící protokoly jsou online u všech místně hostovaných instancí IR. 
 
 
-## <a name="common-errors-and-resolutions"></a>Běžné chyby a jejich řešení
+## <a name="self-hosted-ir-general-failure-or-error"></a>Obecná vnitřní chyba nebo chyba IR v místním prostředí
 
-### <a name="error-message"></a>Chybová zpráva: 
+### <a name="tlsssl-certificate-issue"></a>Problém certifikátu TLS/SSL
 
-`Self-hosted integration runtime can't connect to cloud service`
+#### <a name="symptoms"></a>Příznaky
+
+Při pokusu o povolení certifikátu TLS/SSL (rozšířené) z místního prostředí **IR Configuration Manager**  ->  **vzdálený přístup z intranetu**po výběru certifikátu TLS/SSL se zobrazí tato chyba:
+
+`Remote access settings are invalid. Identity check failed for outgoing message. The expected DNS identity of the remote endpoint was ‘abc.microsoft.com’ but the remote endpoint provided DNS claim ‘microsoft.com’. If this is a legitimate remote endpoint, you can fix the problem by explicitly specifying DNS identity ‘microsoft.com’ as the Identity property of EndpointAddress when creating channel proxy.`
+
+Ve výše uvedeném případě uživatel jako poslední položku používá certifikát s názvem "microsoft.com".
+
+#### <a name="cause"></a>Příčina
+
+Jedná se o známý problém WCF: ověřování WCF TLS/SSL jenom kontroluje poslední DNSName v síti SAN. 
+
+#### <a name="resolution"></a>Řešení
+
+Certifikát se zástupným znakem se podporuje v prostředí IR pro místní hostování Azure Data Factory v2. K tomuto problému obvykle dochází, protože certifikát SSL není správný. Poslední DNSName v síti SAN by měl být platný. Použijte následující postup k ověření. 
+1.  Otevřete konzolu pro správu, v podrobnostech certifikátu překontrolujte *alternativní název* *subjektu i* předmět. V takovém případě není například poslední položka v *alternativním názvu předmětu*, která je "DNS Name = Microsoft.com.com", legitimní.
+2.  Požádejte společnost o problém s certifikátem, aby odstranila nesprávný název DNS.
+
+### <a name="concurrent-jobs-limit-issue"></a>Problém s limitem souběžných úloh
+
+#### <a name="symptoms"></a>Příznaky
+
+Při pokusu o zvýšení limitu souběžných úloh z Azure Data Factoryho uživatelského rozhraní se přestane reagovat, protože se *aktualizuje* trvale.
+Maximální hodnota souběžných úloh byla nastavena na 24 a chcete zvýšit počet, aby úlohy mohly běžet rychleji. Minimální hodnota, kterou můžete zadat, je 3 a maximální hodnota, kterou můžete zadat, je 32. Zvýšili jste hodnotu z 24 na 32 a kliknete na tlačítko *aktualizovat* v uživatelském rozhraní, které se zablokovalo při *aktualizaci* , jak vidíte níže. Po obnovení si zákazník tuto hodnotu ještě nezískal jako 24 a nikdy se neaktualizoval na 32.
+
+![Stav aktualizace](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
+
+#### <a name="cause"></a>Příčina
+
+Omezení nastavení závisí na tom, zda je tato hodnota závislá na logicCore počítače a paměti, můžete ji upravovat pouze na menší hodnotu, jako je například 24, a výsledek zobrazit.
+
+> [!TIP] 
+> - Podrobnosti o tom, co je počet logických jader a jak zjistit počet jader v našem počítači, najdete v [tomto článku](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/).
+> - Podrobnosti o výpočtu matematického protokolu. log najdete v [tomto článku](https://www.rapidtables.com/calc/math/Log_Calculator.html).
+
+
+### <a name="self-hosted-ir-ha-ssl-certificate-issue"></a>Problémy s certifikátem pro místní hostování IR HA SSL
+
+#### <a name="symptoms"></a>Příznaky
+
+Uzel v místním prostředí IR ohlásil chybu níže:
+
+`Failed to pull shared states from primary node net.tcp://abc.cloud.corp.Microsoft.com:8060/ExternalService.svc/. Activity ID: XXXXX The X.509 certificate CN=abc.cloud.corp.Microsoft.com, OU=test, O=Microsoft chain building failed. The certificate that was used has a trust chain that cannot be verified. Replace the certificate or change the certificateValidationMode. The revocation function was unable to check revocation because the revocation server was offline.`
+
+#### <a name="cause"></a>Příčina
+
+Když budeme zpracovávat případy související s metodou handshake SSL/TLS, můžeme se setkat s problémy souvisejícími s ověřováním řetězu certifikátů. 
+
+#### <a name="resolution"></a>Řešení
+
+- Tady je rychlý a intuitivní způsob řešení potíží při sestavení řetězu certifikátů X. 509.
+ 
+    1. Exportujte certifikát, který je třeba ověřit. Přejděte na Správa certifikátu počítače a Najděte certifikát, který chcete ověřit, a klikněte pravým tlačítkem na **všechny úkoly**  ->  **exportovat**.
+    
+        ![Exportovat úlohy](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
+
+    2. Zkopírujte exportovaný certifikát do klientského počítače. 
+    3. Na straně klienta spusťte pod příkazem CMD příkaz níže. Ujistěte se, že jste nahradili následující *\<certificate path>* a *\<output txt file path>* zástupné symboly souvisejícími cestami.
+    
+        ```
+        Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
+        ```
+
+        Příklad:
+
+        ```
+        Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
+        ```
+    4. Ověřte, zda výstupní soubor txt neobsahuje chybu. Souhrn chyb najdete na konci souboru txt.
+
+        Příklad: 
+
+        ![Souhrn chyb](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
+
+        Pokud se nezobrazí žádná chyba na konci souboru protokolu, jak je znázorněno níže, můžete v klientském počítači zvážit úspěšné sestavení řetězce certifikátů.
+        
+        ![V souboru protokolu není žádná chyba.](media/self-hosted-integration-runtime-troubleshoot-guide/log-file.png)      
+
+- Pokud je v souboru certifikátu nakonfigurován AIA, CDP a OCSP. Můžeme je vymezit intuitivnějším způsobem.
+ 
+    1. Tyto informace můžete získat tak, že zkontrolujete podrobnosti certifikátu.
+    
+        ![Podrobnosti certifikátu](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-detail.png)
+    1. Spusťte příkaz níže. Ujistěte se, že jste nahradili *\<certificate path>* zástupný symbol se související cestou certifikátu.
+    
+        ```
+          Certutil   -URL    <certificate path> 
+        ```
+    1. Pak se otevře **Nástroj pro načtení adresy URL** . Kliknutím na tlačítko **načíst** můžete ověřit certifikáty z AIA, CDP a protokolu OCSP.
+
+        ![Tlačítko pro načtení](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
+ 
+        Řetěz certifikátů se dá úspěšně sestavit, pokud je certifikát z AIA ověřený a certifikát z CDP nebo OCSP je ověřený.
+
+        Pokud se při načítání AIA, CDP, práce se síťovým týmem zobrazí chyba, aby byl klientský počítač připraven k připojení k cílové adrese URL. Bude stačit, pokud je možné ověřit cestu http nebo cestu protokolu LDAP.
+
+### <a name="self-hosted-ir-could-not-load-file-or-assembly"></a>Prostředí IR v místním prostředí nemůže načíst soubor nebo sestavení.
+
+#### <a name="symptoms"></a>Příznaky
+
+`Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
+ 
+Příklad: 
+
+`Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
+
+#### <a name="cause"></a>Příčina
+
+Pokud převezmete monitorování procesů, můžete zobrazit následující výsledek:
+
+[![Monitor procesů](media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png)](media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png#lightbox)
+
+> [!TIP] 
+> Filtr můžete nastavit tak, jak je znázorněno na obrázku obrazovky.
+> Oznamujeme, že knihovna DLL **System. ValueTuple** není umístěná ve složce v mezipaměti GAC nebo v adresáři *c:\Program Files\microsoft Integration Runtime\4.0\Gateway*nebo ve složce *c:\Program Files\Microsoft integr Runtime\4.0\Shared* .
+> V podstatě načte knihovnu DLL ze složky *GAC* a pak ze složky *Gateway* *Shared* a finally. Proto můžete umístit knihovnu DLL na libovolnou cestu, která může být užitečná.
+
+![Nastavení filtrů](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
+
+#### <a name="resolution"></a>Řešení
+
+Zjistíte, že **System.ValueTuple.dll** se nachází ve složce *C:\Program Files\Microsoft integr Runtime\4.0\Gateway\DataScan* Folder. Problém vyřešte tak, že zkopírujete **System.ValueTuple.dll** do složky *C:\Program Files\Microsoft Runtime\4.0\Gateway Integration* .
+
+Můžete použít stejnou metodu pro řešení chybějících potíží s jiným souborem nebo sestavením.
+
+#### <a name="more-information"></a>Další informace
+
+Důvodem, proč vidíte System.ValueTuple.dll pod *%windir%\Microsoft.NET\assembly* a *%windir%\assembly* je to, že se jedná o chování rozhraní .NET. 
+
+Z chyby níže můžete zřetelně zobrazit *systém sestavení. ValueTuple* není. Takže k tomuto problému dochází, když se aplikace pokusí ověřit *System.ValueTuple.dll*sestavení.
+ 
+`<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
+ 
+Další informace o globální mezipaměti sestavení (GAC) najdete v [tomto článku](https://docs.microsoft.com/dotnet/framework/app-domains/gac).
+
+
+### <a name="how-to-audit-self-hosted-ir-key-missing"></a>Jak auditovat chybějící místně hostovaný klíč IR
+
+#### <a name="symptoms"></a>Příznaky
+
+Prostředí Integration runtime v místním prostředí se náhle přepne do režimu offline bez klíče, v protokolu událostí se zobrazí chybová zpráva:`Authentication Key is not assigned yet`
+
+![Chybí ověřovací klíč.](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
+
+#### <a name="cause"></a>Příčina
+
+- Odstraní se místně hostovaný uzel IR nebo logické prostředí IR v místním prostředí (webhost) na portálu.
+- Je provedena čistá odinstalace.
+
+#### <a name="resolution"></a>Řešení
+
+Pokud se nepoužijí žádné z výše uvedených příčin, můžete přejít do složky: *%ProgramData%\Microsoft\Data Transfer\DataManagementGateway*a ověřit, zda je soubor s názvem **Konfigurace** odstraněn. Pokud se odstraní, postupujte podle pokynů uvedených [tady](https://www.netwrix.com/how_to_detect_who_deleted_file.html) a proveďte audit, který soubor odstraní.
+
+![Ověřit soubor konfigurací](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
+
+
+### <a name="cannot-use-self-hosted-ir-to-bridge-two-on-premises-data-stores"></a>Nejde použít místní prostředí IR k mostu dvou místních úložišť dat.
+
+#### <a name="symptoms"></a>Příznaky
+
+Po vytvoření samoobslužného úřadu pro ukládání zdrojového i cílového úložiště dat chcete, aby se tyto dvě finanční údaje připojovaly společně, aby se dokončila kopie. Pokud jsou úložiště dat nakonfigurovaná v různých virtuální sítě nebo nemůžou pochopit mechanismus brány, dojde k chybám, jako je: *ovladač zdroje nejde najít v cíli IR*; k *zdroji není přistupující cílovým IR*.
+ 
+#### <a name="cause"></a>Příčina
+
+Prostředí IR v místním prostředí je navrženo jako centrální uzel aktivity kopírování, nikoli klientského agenta, který je třeba nainstalovat pro každé úložiště dat.
+ 
+V takovém případě by měla být propojená služba pro každé úložiště dat vytvořena se stejným IR a má by mít přístup k úložišti dat prostřednictvím sítě. Bez ohledu na to, jestli je IR nainstalovaný se zdrojovým úložištěm dat, cílovým úložištěm dat nebo na třetím počítači, pokud se vytvoří dvě propojené služby s jiným finančním úřadem, ale používá se ve stejné aktivitě kopírování, použije se cílový IR a v cílovém počítači IR se musí nainstalovat ovladače pro úložiště dat.
+
+#### <a name="resolution"></a>Řešení
+
+Nainstalujte ovladače pro zdroj i cíl do cílového prostředí IR a ujistěte se, že mají přístup ke zdrojovému úložišti dat.
+ 
+Pokud přenos nemůže proběhnout přes síť mezi dvěma datovými úložišti (například jsou nakonfigurované ve dvou virtuální sítě), nesmíte kopii dokončit v jedné aktivitě, i když je nainstalovaná možnost IR. V takovém případě můžete vytvořit dvě aktivity kopírování se dvěma finančními autoritami, každý z nich: 1 IR ke zkopírování z úložiště dat 1 do Azure Blob Storage, druhý pro kopírování z Azure Blob Storage do úložiště dat 2. To může simulovat požadavek na použití infračerveného signálu k vytvoření mostu, který spojuje dvě odpojená úložiště dat.
+
+
+### <a name="credential-sync-issue-causes-credential-lost-from-ha"></a>Problémy s synchronizací přihlašovacích údajů způsobují ztráty přihlašovacích údajů z HA.
+
+#### <a name="symptoms"></a>Příznaky
+
+Přihlašovací údaj ke zdroji dat "XXXXXXXXXX" je odstraněn z aktuálního Integration Runtime uzlu s datovou částí "při odstranění služby propojení v Azure Portal nebo úloha má nesprávnou datovou část, vytvořte novou službu propojení znovu s přihlašovacími údaji".
+
+#### <a name="cause"></a>Příčina
+
+Místní prostředí IR je integrováno v režimu HA se dvěma uzly, ale nejsou ve stavu synchronizace přihlašovacích údajů, což znamená, že přihlašovací údaje uložené v uzlu Dispatcher nejsou synchronizované s ostatními pracovními uzly. Pokud dojde k převzetí služeb při selhání z uzlu dispečer na pracovní uzel, ale přihlašovací údaje existovaly pouze v předchozím uzlu Dispatcher, úloha selže při pokusu o přístup k přihlašovacím údajům a dojde k chybě.
+
+#### <a name="resolution"></a>Řešení
+
+Jediným způsobem, jak se tomuto problému vyhnout, je zajistit, aby byly dva uzly ve stavu synchronizace přihlašovacích údajů. V opačném případě musíte znovu zadat přihlašovací údaje pro nového dispečera.
+
+
+### <a name="cannot-choose-the-certificate-due-to-private-key-missing"></a>Nejde zvolit certifikát z důvodu chybějícího privátního klíče.
+
+#### <a name="symptoms"></a>Příznaky
+
+1.  Importujte soubor PFX do úložiště certifikátů.
+2.  Při výběru certifikátu prostřednictvím uživatelského rozhraní Configuration Manager IR se zobrazí chyba:
+
+    ![Chybí privátní klíč.](media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png)
+
+#### <a name="cause"></a>Příčina
+
+- Uživatelský účet je v nízkém oprávnění a nemůže získat přístup k privátnímu klíči.
+- Certifikát se vygeneroval jako signatura, ale ne jako výměna klíčů.
+
+#### <a name="resolution"></a>Řešení
+
+1.  Použijte privilegovaný účet, který má přístup k privátnímu klíči pro práci s uživatelským rozhraním.
+2.  Pro import certifikátu spusťte následující příkaz:
+    
+    ```
+    certutil -importpfx FILENAME.pfx AT_KEYEXCHANGE
+    ```
+
+
+## <a name="self-hosted-ir-setup"></a>Instalace prostředí IR pro místní hostování
+
+### <a name="the-integration-runtime-registration-error"></a>Chyba registrace Integration Runtime 
+
+#### <a name="symptoms"></a>Příznaky
+
+Někdy chceme v jiném účtu spustit prostředí IR v místním prostředí, a to z následujících důvodů:
+- Zásady společnosti nepovolují účet služby.
+- Vyžaduje se nějaké ověřování.
+
+Po změně účtu služby na panelu služby se může stát, že Integration Runtime přestane fungovat.
+
+![Chyba registrace IR](media/self-hosted-integration-runtime-troubleshoot-guide/ir-registration-error.png)
+
+#### <a name="cause"></a>Příčina
+
+K dispozici je celá řada prostředků, které jsou přiděleny pouze účtu služby. Při změně účtu služby na jiný účet zůstane oprávnění všech závislých prostředků stejné.
+
+#### <a name="resolution"></a>Řešení
+
+Chcete-li zjistit chybu, vyhledejte v protokolu událostí Integration Runtime.
+
+![Protokol událostí IR](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
+
+Pokud se chyba zobrazí jako výše *UnauthorizedAccessException*, postupujte podle následujících pokynů:
+
+
+1. Ověřte účet přihlašovací služby *DIAHostService* na panelu služby systému Windows.
+
+    ![Účet přihlašovací služby](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
+
+2. Ověřte, zda má účet přihlašovací služby oprávnění R/W pro složku: *%ProgramData%\Microsoft\DataTransfer\DataManagementGateway*.
+
+    - Ve výchozím nastavení platí, že pokud se účet přihlášení služby nezměnil, měl by mít oprávnění k R/W.
+
+        ![Oprávnění služby](media/self-hosted-integration-runtime-troubleshoot-guide/service-permission.png)
+
+    - Pokud jste změnili přihlašovací účet služby, postupujte podle následujících kroků a problém vyřešíte takto:
+        1. Vyčistit odinstalujte aktuálně místně hostovaný IR.
+        1. Nainstalujte prostředí IR pro místní hostování.
+        1. Chcete-li změnit účet služby, postupujte podle pokynů níže: 
+            1. Přejděte do složky selfhosted IR pro instalaci, přejděte do složky: *Microsoft Integration Runtime\4.0\Shared*.
+            1. Spusťte příkazový řádek s oprávněním vyšší úrovně. Nahraďte *\<user>* a *\<password>* vlastním uživatelským jménem a heslem a pak spusťte následující příkaz:
+                       
+                ```
+                dmgcmd.exe -SwitchServiceAccount "<user>" "<password>"
+                ```
+            1. Pokud chcete změnit účet LocalSystem, ujistěte se, že pro tento účet používáte správný formát. Níže je uveden příklad správného formátu:
+
+                ```
+                dmgcmd.exe -SwitchServiceAccount "NT Authority\System" ""
+                ```         
+                Nepoužívejte **Formát** , jak je znázorněno níže:
+
+                ```
+                dmgcmd.exe -SwitchServiceAccount "LocalSystem" ""
+                ```              
+            1. V případě alternativy, protože místní systém má vyšší oprávnění než správce, můžete ho také přímo změnit v části "služby".
+            1. Pro přihlašovací účet služby IR můžete použít místní/doménový uživatel.            
+        1. Zaregistrujte Integration Runtime.
+
+Pokud se chyba zobrazí jako: *služba Integration runtime služby (DIAHostService) se nepodařilo spustit. Ověřte, zda máte dostatečná oprávnění pro spouštění systémových služeb*, postupujte podle následujících pokynů:
+
+1. Ověřte účet přihlašovací služby *DIAHostService* na panelu služby systému Windows.
+   
+    ![Účet přihlašovací služby](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
+
+2. Ověřte, zda má účet přihlašovací služby oprávnění **Přihlásit se jako služba** pro spuštění služby systému Windows:
+
+    ![Přihlášení jako služba](media/self-hosted-integration-runtime-troubleshoot-guide/logon-as-service.png)
+
+#### <a name="more-information"></a>Další informace
+
+Pokud se ve vašem případě nepoužijí žádné z výše uvedených dvou vzorů, zkuste shromáždit níže uvedené protokoly událostí Windows: 
+- Protokoly aplikací a služeb – > Integration Runtime
+- Protokoly Windows – > aplikace
+
+### <a name="cannot-find-register-button-to-register-a-self-hosted-ir"></a>Nejde najít tlačítko registrovat pro registraci místního prostředí IR.    
+
+#### <a name="symptoms"></a>Příznaky
+
+Tlačítko **zaregistrovat** nebylo v uživatelském rozhraní Configuration Manager při registraci místního prostředí IR nalezeno.
+
+![Tlačítko pro registraci](media/self-hosted-integration-runtime-troubleshoot-guide/no-register-button.png)
+
+#### <a name="cause"></a>Příčina
+
+Od vydání *Integration Runtime 3,0*se odebralo tlačítko **registrace** na existujícím uzlu Integration runtime, aby se povolilo čištění a bezpečnější prostředí. Pokud byl uzel zaregistrován na některé Integration Runtime (bez ohledu na to, zda je online nebo ne), chcete-li jej znovu zaregistrovat do jiného Integration Runtime, je nutné odinstalovat předchozí uzel a poté nainstalovat a zaregistrovat uzel.
+
+#### <a name="resolution"></a>Řešení
+
+1. Chcete-li odinstalovat existující Integration Runtime, použijte ovládací panel.
+
+    > [!IMPORTANT] 
+    > V níže uvedeném procesu vyberte Ano. Neuchovávat data během procesu odinstalace.
+
+    ![Odstranění dat](media/self-hosted-integration-runtime-troubleshoot-guide/delete-data.png)
+
+1. Pokud nemáte instalační službu Integration runtime MSI, Stáhněte si nejnovější Integration Runtime na webu [Download Center](https://www.microsoft.com/en-sg/download/details.aspx?id=39717) .
+1. Nainstalujte soubor MSI a zaregistrujte Integration Runtime.
+
+
+### <a name="unable-to-register-the-self-hosted-ir-due-to-localhost"></a>Nepovedlo se zaregistrovat prostředí IR v místním prostředí v důsledku místního hostitele.    
+
+#### <a name="symptoms"></a>Příznaky
+
+Při get_LoopbackIpOrName nejde zaregistrovat prostředí IR v místním prostředí na novém počítači.
+
+**Ladění:** Došlo k chybě modulu runtime.
+Inicializační procedura typu Microsoft. DataTransfer. DIAgentHost. DataSourceCache způsobila výjimku.
+Při vyhledávání databáze došlo k neobnovitelná chybě.
+ 
+**Podrobnosti výjimky:** System. TypeInitializationException: inicializátor typu pro: Microsoft. DataTransfer. DIAgentHost. DataSourceCache vyvolal výjimku. ---> System .NET. Sockets. SocketException: došlo k neopravitelné chybě při vyhledávání databáze v System .NET. DNS. GetAddrInfo (název řetězce).
+
+#### <a name="cause"></a>Příčina
+
+K tomuto problému obvykle dochází při rozpoznávání localhost.
+
+#### <a name="resolution"></a>Řešení
+
+K hostování souboru použijte localhost 127.0.0.1 a tento problém vyřešte.
+
+
+### <a name="self-hosted-setup-failed"></a>Nepovedlo se nainstalovat samoobslužnou instalaci.    
+
+#### <a name="symptoms"></a>Příznaky
+
+Stávající infračervený přenos nelze odinstalovat, nebo můžete nainstalovat nový IR nebo upgradovat existující IR na nový IR.
+
+#### <a name="cause"></a>Příčina
+
+Instalace závisí na službě Instalační služba systému Windows. K dispozici jsou varianty, které můžou způsobit problém s instalací:
+- Nedostatek místa na disku
+- Nedostatečná oprávnění
+- Služba NT je z nějakého důvodu uzamčena.
+- Využití procesoru je příliš vysoké.
+- Soubor MSI je hostovaný v pomalém síťovém umístění.
+- Některé systémové soubory nebo registry byly neúmyslně změněny.
+
+
+## <a name="self-hosted-ir-connectivity-issues"></a>Problémy s připojením IR v místním prostředí
+
+### <a name="self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Místní prostředí Integration runtime se nemůže připojit ke cloudové službě.
+
+#### <a name="symptoms"></a>Příznaky
 
 ![Problém s připojením IR v místním prostředí](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
@@ -114,8 +472,7 @@ Očekává se následující odpověď:
 > *    Ověřte, jestli je certifikát TLS/SSL wu2.frontend.clouddatahub.net/na proxy server důvěryhodný.
 > *    Pokud na proxy serveru používáte ověřování pomocí služby Active Directory, změňte účet služby na uživatelský účet, který bude mít přístup k proxy serveru jako služba Integration Runtime.
 
-### <a name="error-message"></a>Chybová zpráva: 
-`Self-hosted integration runtime node/ logical SHIR is in Inactive/ "Running (Limited)" state`
+### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Chybová zpráva: uzel Integration runtime (v místním prostředí)/logický SHIR je v neaktivním stavu (s omezením).
 
 #### <a name="cause"></a>Příčina 
 
@@ -160,12 +517,11 @@ K tomuto chování dochází, když uzly nemůžou vzájemně komunikovat.
     - Vložte všechny uzly do stejné domény.
     - Přidejte IP adresu do mapování hostitele ve všech souborech hostitelů hostovaného virtuálního počítače.
 
-
-## <a name="troubleshoot-connectivity-issue"></a>Řešení potíží s připojením
-
-### <a name="troubleshoot-connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>Řešení potíží s připojením mezi místním prostředím IR a Data Factorym nebo místním prostředím IR a zdrojem dat/jímky
+### <a name="connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>Potíže s připojením mezi místním prostředím IR a Data Factorym nebo místním prostředím IR a zdrojem dat/jímky v místním prostředí
 
 Pokud chcete řešit potíže s připojením k síti, měli byste vědět, jak [shromažďovat trasování sítě](#how-to-collect-netmon-trace), pochopit, jak ho používat, a [analyzovat trasování Netmon](#how-to-analyze-netmon-trace) před použitím nástrojů Netmon v reálných případech z místního prostředí IR.
+
+#### <a name="symptoms"></a>Příznaky
 
 Při řešení potíží s připojením, jako je například níže mezi místním prostředím IR a Data Factory v místním prostředí, může dojít k potížím: 
 
@@ -173,13 +529,13 @@ Při řešení potíží s připojením, jako je například níže mezi místn�
 
 Nebo jeden mezi místním a datovým prostředím v místním prostředí – dojde k následujícím chybám:
 
-**Chybová zpráva:**
 `Copy failed with error:Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Cannot connect to SQL Server: ‘IP address’`
 
-**Chybová zpráva:**
 `One or more errors occurred. An error occurred while sending the request. The underlying connection was closed: An unexpected error occurred on a receive. Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. An existing connection was forcibly closed by the remote host Activity ID.`
 
-**Řešení:** Pokud se setkáte s výše uvedenými problémy, přečtěte si následující pokyny k řešení potíží:
+#### <a name="resolution"></a>Řešení:
+
+Pokud se setkáte s výše uvedenými problémy, přečtěte si následující pokyny k řešení potíží:
 
 Netmon trasování a proveďte další analýzu.
 - Za prvé můžete nastavit filtr tak, aby se na straně klienta zobrazily všechny resetované informace ze serveru. V níže uvedeném příkladu uvidíte stranu serveru Data Factory serveru.
@@ -301,13 +657,26 @@ Níže uvedený příklad ukazuje, jak dobrý scénář vypadá.
     ![Pracovní postup handshake protokolu TCP 4](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
 
 
+## <a name="self-hosted-ir-sharing"></a>Sdílení místního prostředí IR
+
+### <a name="share-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>Sdílení prostředí IR v místním prostředí v jiném tenantovi se nepodporuje. 
+
+#### <a name="symptoms"></a>Příznaky
+
+Můžete si všimnout jiných datových továren (v různých klientech) při pokusu o sdílení modulu IR v místním prostředí z Azure Data Factory uživatelského rozhraní, ale nemůžou sdílet místně hostované prostředí IR napříč datovými továrnami v různých klientech.
+
+#### <a name="cause"></a>Příčina
+
+Prostředí IR v místním prostředí nelze sdílet mezi klienty.
+
+
 ## <a name="next-steps"></a>Další kroky
 
 Další pomoc při řešení potíží najdete v následujících zdrojích informací:
 
 *  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
-*  [Videa Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Videa k Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Fórum přetečení zásobníku pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 1a349883c8144aaff4aed70ba46ad0eaab04fe69
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 402eda92d5cc8e5c2566345d31c9ae625b82695c
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388390"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809390"
 ---
-# <a name="troubleshooting-azure-digital-twins-with-diagnostics-logging"></a>Řešení potíží s digitálními dvojitými Vlákenami Azure pomocí diagnostického protokolování
+# <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Řešení potíží se službou Azure Digital nevláken: protokolování diagnostiky
 
-Digitální vlákna Azure shromažďuje [metriky](how-to-view-metrics.md) pro vaši instanci služby, která poskytuje informace o stavu vašich prostředků. Tyto metriky můžete použít k vyhodnocení celkového stavu služby digitálních vláken Azure a prostředků, které jsou k ní připojené. Tyto údaje zaměřené na uživatele vám pomůžou zjistit, co se týká vašich digitálních vláken Azure, a pomáhat s analýzou příčin potíží, aniž byste museli kontaktovat podporu Azure.
+Digitální vlákna Azure shromažďuje [metriky](troubleshoot-metrics.md) pro vaši instanci služby, která poskytuje informace o stavu vašich prostředků. Tyto metriky můžete použít k vyhodnocení celkového stavu služby digitálních vláken Azure a prostředků, které jsou k ní připojené. Tyto údaje zaměřené na uživatele vám pomůžou zjistit, co se týká vašich digitálních vláken Azure, a pomáhat s analýzou příčin potíží, aniž byste museli kontaktovat podporu Azure.
 
 V tomto článku se dozvíte, jak zapnout **protokolování diagnostiky** pro data metrik z instance digitálního vlákna Azure. Tyto protokoly můžete použít k řešení problémů se službou.
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak zapnout **protokolování diagnostiky** pro da
 
 2. V nabídce vyberte **nastavení diagnostiky** a pak **přidejte nastavení diagnostiky**.
 
-    :::image type="content" source="media/how-to-view-metrics/diagnostic-settings.png" alt-text="Snímek obrazovky zobrazující stránku nastavení diagnostiky a tlačítko, které se má přidat":::
+    :::image type="content" source="media/troubleshoot-metrics/diagnostic-settings.png" alt-text="Snímek obrazovky zobrazující stránku nastavení diagnostiky a tlačítko, které se má přidat":::
 
 3. Na následující stránce zadejte následující hodnoty:
      * **Název nastavení diagnostiky**: zadejte název diagnostického nastavení.
@@ -52,4 +52,4 @@ Nové nastavení se projeví přibližně po dobu 10 minut. Po této konfiguraci
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o konfiguraci diagnostiky najdete v tématu [*shromažďování a využívání dat protokolů z prostředků Azure*](../azure-monitor/platform/platform-logs-overview.md).
-* Informace o metrikách digitálních vláken Azure najdete v tématu [*Postup: zobrazení metrik pomocí Azure monitor*](how-to-view-metrics.md).
+* Informace o metrikách digitálních vláken Azure najdete v tématu [*řešení potíží: zobrazení metrik pomocí Azure monitor*](troubleshoot-metrics.md).

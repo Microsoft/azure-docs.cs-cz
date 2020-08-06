@@ -2,7 +2,7 @@
 title: Úložiště dat identity pro evropské zákazníky – Azure AD
 description: Přečtěte si, kde Azure Active Directory ukládá data týkající se identit pro své evropské zákazníky.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.author: ajburnle
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7360b11f41cc08c2beb3ffa227e1658881798502
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99d8ae8c5e3218959a483e78f70a6502bf7a5a47
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75423001"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799096"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Úložiště dat identity pro evropské zákazníky v Azure Active Directory
 Data identity ukládá služba Azure AD v geografickém umístění na základě adresy poskytnuté vaší organizací při přihlášení k odběru online služby Microsoftu, jako je třeba Office 365 a Azure. Informace o tom, kde jsou uložená data identity, můžete najít v části [umístění vašich dat?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v centru zabezpečení Microsoftu.

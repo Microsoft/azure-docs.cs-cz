@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 582bb3e0f98535ccdc7be059de904e152db6ac77
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: e6d728647bb654ee2645bb1e3eb5968dcab337a8
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870989"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810340"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Rychlý Start: Vytvoření aplikace HoloLens pomocí prostorových kotev Azure v C++/WinRT a DirectX
 
@@ -28,7 +28,7 @@ Dozvíte se, jak provést tyto akce:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 - Počítač s Windows se sadou <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> nainstalovaný s úlohou **vývoje Univerzální platforma Windows** a komponentou **Windows 10 SDK (10.0.18362.0 nebo novější)** . Musíte taky nainstalovat <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a> a <a href="https://git-lfs.github.com/">Git LFS</a>.
@@ -54,7 +54,7 @@ Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte ho `Set me` klíčem úč
 
 Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte ho `Set me` identifikátorem účtu.
 
-Vyhledejte `case DemoStep::ConfigSession:` a přidejte následující řádek, ve kterém nahradíte doménu účtu v minulosti: `configuration.AccountDomain("MyAccountDomain");` .
+Vyhledejte `SpatialAnchorsAccountDomain` pole a nahraďte ho `Set me` doménou účtu.
 
 ## <a name="deploy-the-app-to-your-hololens"></a>Nasazení aplikace do HoloLens
 

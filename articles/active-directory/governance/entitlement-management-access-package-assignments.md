@@ -3,7 +3,7 @@ title: Zobrazení, přidání a odebrání přiřazení balíčku pro přístup 
 description: Naučte se zobrazovat, přidávat a odebírat přiřazení pro balíček přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,18 +16,18 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55f17703060d19baebe55ef648cb182cb2c6d00a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78bed4f5c600bfa0218f924dc4444119e9729e28
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078822"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798745"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Zobrazení, přidání a odebrání přiřazení balíčku pro přístup ve správě nároků Azure AD
 
 V části Správa opravňujících k Azure AD se můžete podívat, kdo byl přiřazený k balíčkům, zásadám a stavům. Pokud má přístupový balíček odpovídající zásady, můžete také přímo přiřadit uživatele k balíčku pro přístup. Tento článek popisuje, jak zobrazit, přidat a odebrat přiřazení pro balíčky přístupu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat správu nároků Azure AD a přiřazovat uživatelům přístup k balíčkům, musíte mít jednu z těchto licencí:
 

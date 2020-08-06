@@ -171,10 +171,14 @@
         - name: Monitorování virtuálních počítačů Azure
           href: insights/monitor-vm-azure.md
           displayname: VM
+    - name: Nasazení
+      items:
+        - name: Nasazení Azure Monitoru
+          href: deploy.md
+        - name: Nasazení ve velkém
+          href: deploy-scale.md
     - name: Správa a konfigurace
       items:
-        - name: Nasazení ve velkém
-          href: platform/deploy-scale.md
         - name: Zabezpečení a oprávnění rolí
           href: platform/roles-permissions-security.md
         - name: IP adresy

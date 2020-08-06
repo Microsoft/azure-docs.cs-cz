@@ -263,7 +263,7 @@
         - name: Místní funkce
           href: functions-runtime-install.md
         - name: Nasazení s využitím modulu plug-in Jenkinse
-          href: /azure/jenkins/jenkins-azure-functions-deploy
+          href: /azure/developer/jenkins/deploy-to-azure-functions
           maintainContext: true
     - name: Konfigurace
       items:

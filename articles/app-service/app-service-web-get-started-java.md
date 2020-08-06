@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: ca3c7d6bc6621c4b82a44431ae313384c1653f79
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0ae304763718f649d7895394d67c2aec307f14af
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324229"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799986"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Rychlý start: Vytvoření aplikace Java v Azure App Service ve Windows
 
@@ -49,13 +49,19 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>Konfigurace modulu plug-in Maven
 
-Proces nasazení, který Azure App Service, může automaticky vyzvednutí přihlašovacích údajů Azure z Azure CLI. Pokud nemáte nainstalované rozhraní příkazového řádku Azure CLI, modul plug-in Maven vás přihlásí pomocí protokolu OAuth nebo přihlášení zařízení. Pokud potřebujete, Projděte si podrobné informace o [ověřování pomocí modulů plug-in Maven](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) .
+Proces nasazení, který Azure App Service, může automaticky z Azure CLI převzít vaše přihlašovací údaje Azure. Modul plug-in Maven vás přihlásí pomocí protokolu OAuth nebo přihlášení zařízení, pokud není rozhraní příkazového řádku Azure nainstalované místně. Pokud potřebujete, Projděte si podrobné informace o [ověřování pomocí modulů plug-in Maven](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) .
 
-Spuštěním následujícího příkazu Maven na příkazovém řádku můžete nakonfigurovat nasazení, vybrat **2** v operačním **systému Windows** v prvním kroku a pak přijmout výchozí konfigurace stisknutím klávesy **ENTER** , dokud nezískáte výzvu k **potvrzení (Y/N)** , stiskněte klávesu **Y** a konfigurace se provede. 
-
+Spuštěním následujícího příkazu Maven můžete nakonfigurovat nasazení.
 ```bash
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
+
+Zobrazí se výzva k výběru 
+* **Operační systém (výchozí: `linux` )**
+* **Java verze (výchozí: `1.8` )**
+* **Webový kontejner (výchozí: `tomcat 8.5` )** 
+
+Při **`2`** výběru operačního **systému Windows** v prvním kroku buďte opatrní. Ostatní konfigurace můžou být ponechány ve výchozím nastavení stisknutím klávesy **ENTER**. Nakonec stiskněte **`Y`** tlačítko **Potvrdit (a/N)** s výzvou k dokončení konfigurace.
 
 Vzorový proces vypadá takto:
 
@@ -135,7 +141,7 @@ Confirm (Y/N)? :
 > [!NOTE]
 > V tomto článku pracujeme jenom s aplikacemi Java zabalenými do souborů WAR. Modul plug-in podporuje také webové aplikace JAR. Pokud si to chcete vyzkoušet, přečtěte si téma věnované [nasazení souboru Java SE JAR do služby App Service v Linuxu](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
-Otevřete a `pom.xml` Zobrazte aktualizovanou konfiguraci.
+Otevřete `pom.xml` a zobrazte aktualizovanou konfiguraci.
 
 ```bash
 code pom.xml
@@ -153,8 +159,11 @@ Konfigurace pro App Service můžete v případě potřeby upravit přímo v sou
 `<runtime>` | true | Konfigurace běhového prostředí můžete zobrazit podrobnosti [zde](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0 +
 `<deployment>` | true | Konfigurace nasazení vám může [Zobrazit podrobnosti.](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) | 0.1.0 +
 
+Buďte opatrní na hodnoty `<appName>` a `<resourceGroup>` ( `helloworld-1590394316693` a `helloworld-1590394316693-rg` odpovídajícím způsobem v ukázce), budou použity později.
+
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=app-service-web-get-started-java&step=config)
+
 
 ## <a name="deploy-the-app"></a>Nasazení aplikace
 
@@ -169,13 +178,14 @@ Potom můžete aplikaci Java nasadit do Azure pomocí následujícího příkazu
 mvn package azure-webapp:deploy
 ```
 
-Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následující adresy URL, například `http://<webapp>.azurewebsites.net/`, do nasazené aplikace.
+Po dokončení nasazení bude vaše aplikace připravená na `http://<appName>.azurewebsites.net/` ( `http://helloworld-1590394316693.azurewebsites.net` v ukázce). Otevřete adresu URL v místním webovém prohlížeči, měli byste vidět
 
 ![Ukázková aplikace spuštěná v Azure App Service](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 **Blahopřejeme!** Nasadili jste svoji první aplikaci Java, abyste App Service ve Windows.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]

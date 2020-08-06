@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: bb1de5d51afd01cf0aa519f12aa3665bee804efd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1060cbf1b2204c3feba413b8c8ce0cba58941c6
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471672"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799119"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Podpora protokolů hlaviček protokolu HTTP v front-dveřích Azure
 Tento článek popisuje protokol, který přední dveře podporuje s částmi cesty volání (viz obrázek). V následujících částech najdete další informace o hlavičkách HTTP podporovaných předními dvířky.
@@ -44,6 +44,7 @@ Přední dvířka obsahují záhlaví z příchozího požadavku, pokud nejsou o
 | X-předávaný-Host | X-předaný-Host: contoso.azurefd.net </br> Pole hlavička protokolu HTTP předávaného serverem X je společná metoda používaná k identifikaci původního hostitele požadovaného klientem v hlavičce požadavku HTTP hostitele. Důvodem je to, že se název hostitele z front-endu může lišit pro back-end Server, který požadavek zpracovává. |
 | X-předáno – proto | X-předané – proto: http </br> Pole hlavičky HTTP s přesměrováním se často používá k identifikaci původního protokolu požadavku HTTP, protože přední dveře na základě konfigurace můžou komunikovat s back-endu pomocí protokolu HTTPS. To platí i v případě, že požadavek na reverzní proxy je HTTP. |
 | X-FD – HealthProbe | K identifikaci sondy stavu z předních dveří se používá pole hlaviček protokolu HTTP X-FD-HealthProbe. Pokud je tato hlavička nastavená na 1, je žádost sonda stavu. V případě, že chcete získat striktní přístup z konkrétních front a polí s hlavičkou předávaného přes X-host, můžete použít. |
+|X – Azure – FDID | X-Azure-FDID hlavička: 437c82cd-360A-4a54-94c3-5ff707647783 </br> Toto pole obsahuje frontdoorID, které se dá použít k identifikaci, ze kterého front-dveří je příchozí požadavek. Toto pole vyplní služba front-dveří. | 
 
 ## <a name="front-door-to-client"></a>Přední dveře klienta
 

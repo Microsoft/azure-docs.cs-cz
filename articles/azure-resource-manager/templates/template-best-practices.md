@@ -3,12 +3,12 @@ title: Osvědčené postupy pro šablony
 description: Popisuje doporučené přístupy k vytváření Azure Resource Manager šablon. Nabízí návrhy, aby se předešlo běžným problémům při používání šablon.
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 272c7e7f824eb193ed48d79c5256167f1dbbbce5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248913"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809251"
 ---
 # <a name="arm-template-best-practices"></a>Osvědčené postupy pro šablonu ARM
 
@@ -170,7 +170,7 @@ Při rozhodování, jaké [závislosti](define-resource-dependency.md) se mají 
 
 * Pokud je možné určit hodnotu před nasazením, zkuste prostředek nasadit bez závislosti. Pokud například hodnota konfigurace potřebuje název jiného prostředku, možná nebudete potřebovat závislost. Tyto pokyny nefungují vždycky, protože některé prostředky ověřují existenci druhého prostředku. Pokud se zobrazí chyba, přidejte závislost.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 Následující informace můžou být užitečné při práci s [prostředky](template-syntax.md#resources):
 
@@ -226,7 +226,7 @@ Následující informace můžou být užitečné při práci s [prostředky](te
    
      Další informace o připojení k virtuálním počítačům najdete v těchto tématech:
    
-   * [Spouštění virtuálních počítačů pro N-vrstvou architekturu v Azure](../../guidance/guidance-compute-n-tier-vm.md)
+   * [Spouštění virtuálních počítačů pro N-vrstvou architekturu v Azure](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
    * [Nastavení přístupu WinRM pro virtuální počítače v Azure Resource Manager](../../virtual-machines/windows/winrm.md)
    * [Povolení externího přístupu k VIRTUÁLNÍmu počítači pomocí Azure Portal](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [Povolení externího přístupu k VIRTUÁLNÍmu počítači pomocí PowerShellu](../../virtual-machines/windows/nsg-quickstart-powershell.md)

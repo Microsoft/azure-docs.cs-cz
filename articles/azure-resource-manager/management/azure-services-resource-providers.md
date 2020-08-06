@@ -3,12 +3,12 @@ title: Poskytovatelé prostředků podle služeb Azure
 description: Vypíše všechny obory názvů poskytovatele prostředků pro Azure Resource Manager a zobrazí službu Azure pro tento obor názvů.
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 1f57f5cd5822e9acf59462c9ecd6d0fda359b5a0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 6c57f3523ca8f3f4ad1565d18791d24c0e698ad6
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054368"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808333"
 ---
 # <a name="resource-providers-for-azure-services"></a>Poskytovatelé prostředků pro služby Azure
 
@@ -79,7 +79,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. DBforPostgreSQL | [Azure Database for PostgreSQL](../../postgresql/index.yml) |
 | Microsoft. DeploymentManager | [Deployment Manager Azure](../templates/deployment-manager-overview.md) |
 | Microsoft. DesktopVirtualization | [Windows Virtual Desktop](../../virtual-desktop/index.yml) |
-| Microsoft. Devices | [Azure IoT Hub](../../iot-hub/index.yml)<br />[Služba Azure IoT Hub Device Provisioning](../../iot-dps/index.yml) |
+| Microsoft.Devices | [Azure IoT Hub](../../iot-hub/index.yml)<br />[Služba Azure IoT Hub Device Provisioning](../../iot-dps/index.yml) |
 | Microsoft. DevOps | [Azure DevOps](/azure/devops/) |
 | Microsoft. DevSpaces | [Azure Dev Spaces](../../dev-spaces/index.yml) |
 | Microsoft. DevTestLab | [Azure Lab Services](../../lab-services/index.yml) |
@@ -92,7 +92,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. Features<sup>1</sup> | [Azure Resource Manager](../index.yml) |
 | Microsoft. GuestConfiguration | [Azure Policy](../../governance/policy/index.yml) |
 | Microsoft. HanaOnAzure | [SAP HANA ve velkých instancích Azure](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
-| Microsoft. HardwareSecurityModules | [Rezervované HSM Azure](../../dedicated-hsm/index.yml) |
+| Microsoft. HardwareSecurityModules | [Azure Dedicated HSM](../../dedicated-hsm/index.yml) |
 | Microsoft. HDInsight | [HDInsight](../../hdinsight/index.yml) |
 | Microsoft. HealthcareApis | [Azure API for FHIR](../../healthcare-apis/index.yml) |
 | Microsoft. HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
@@ -128,7 +128,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. OperationalInsights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft. OperationsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft. peering | [Azure Peering Service](../../peering-service/index.yml) |
-| Microsoft.PolicyInsights | [Azure Policy](../../governance/policy/index.yml) |
+| Microsoft. PolicyInsights | [Azure Policy](../../governance/policy/index.yml) |
 | Microsoft. Portal<sup>1</sup> | [Azure Portal](../../azure-portal/index.yml) |
 | Microsoft. PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Microsoft. PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
@@ -167,7 +167,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. VirtualMachineImages | [Azure Image Builder](../../virtual-machines/linux/image-builder-overview.md) |
 | Microsoft. VisualStudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
 | Microsoft. VMware | [Azure VMware Solution](../../azure-vmware/index.yml) |
-| Microsoft. VMwareCloudSimple | [Azure VMware Solution by CloudSimple](/azure/vmware-cloudsimple/) |
+| Microsoft. VMwareCloudSimple | [Azure VMware Solution by CloudSimple](../../vmware-cloudsimple/index.md) |
 | Microsoft. VSOnline | [Azure DevOps](/azure/devops/?view=azure-devops) |
 | Microsoft. Web | [App Service](../../app-service/index.yml)<br />[Azure Functions](../../azure-functions/index.yml) |
 | Microsoft. WindowsESU | Rozšířené aktualizace zabezpečení |
