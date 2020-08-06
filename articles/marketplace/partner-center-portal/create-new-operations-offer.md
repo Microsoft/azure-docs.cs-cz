@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 2c6c6b3fb4f863840b39de6f56fe473be693fe87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 657c41fbcda30ffb5af4c5a27d58ef17c02a46bc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001430"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798252"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Vytvoření nabídky Dynamics 365 for Operations
 
@@ -191,11 +191,14 @@ V této části můžete zadat loga a obrázky, které se použijí při zobraze
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Poskytněte logo vaší nabídky ve dvou velikostech v pixelech:
+Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije toto k vytvoření **malého** loga velikosti (48 x 48 pixelů). Volitelně můžete tento text nahradit jiným obrázkem.
+
+Velikost loga se vyžaduje pro použití na různých místech v seznamu:
 
 - **Malé** (48 x 48)
-- **Velký** (216 x 216)
+- **Velký** (mezi 216 x 216 a 350 × 350)
 
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 

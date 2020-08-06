@@ -2,7 +2,7 @@
 title: Správa přístupu k prostředkům & aplikací pomocí skupin – Azure AD
 description: Přečtěte si, jak spravovat přístup k cloudovým aplikacím, místním aplikacím a prostředkům vaší organizace pomocí Azure Active Directory skupin.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c4fa536994ecc8cecb50c907d43df2110be7df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25dace3ad7d467d6add236782c5e39f85d6462a6
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80982595"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797303"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Správa přístupu k aplikacím a prostředkům pomocí skupin služby Azure Active Directory
 Azure Active Directory (Azure AD) umožňuje používat skupiny ke správě přístupu ke cloudovým aplikacím, místním aplikacím a vašim prostředkům. Vaše prostředky můžou být součástí organizace Azure AD, například oprávnění ke správě objektů prostřednictvím rolí v Azure AD nebo externích organizacím, jako jsou například aplikace pro aplikace SaaS (software jako služba), služby Azure, weby SharePoint a místní prostředky.

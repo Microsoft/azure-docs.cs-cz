@@ -3,7 +3,7 @@ title: Žádosti o schválení nebo zamítnutí přístupu – Správa nároků 
 description: Naučte se, jak pomocí portálu pro přístup schvalovat nebo odmítat žádosti na balíček přístupu v Azure Active Directory správě nároků.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: mamtakumar
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78c3c177bfcd5ee969e1430306c7294f0a14b658
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4703a7d1928415d78eae63c42051542b035d3b1a
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078097"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798354"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Schválení nebo zamítnutí žádostí o přístup v Azure AD – Správa nároků
 

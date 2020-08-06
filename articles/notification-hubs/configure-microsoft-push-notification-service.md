@@ -4,34 +4,34 @@ description: Naučte se konfigurovat nastavení služby nabízených oznámení 
 services: notification-hubs
 author: sethmanheim
 manager: femila
-editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 08/04/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: 99f29e7910fe6070c6202f6a936173455f979732
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6784331dccd779390ace7dc632d54fe54aedc458
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80127327"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760987"
 ---
 # <a name="configure-microsoft-push-notification-service-mpns-settings-in-the-azure-portal"></a>Konfigurace nastavení MPNS (Microsoft Push Notification Service) v Azure Portal
 
-V tomto článku se dozvíte, jak nakonfigurovat nastavení MPNS (Microsoft Push Notification Service) pro Centrum oznámení Azure pomocí Azure Portal. 
+V tomto článku se dozvíte, jak nakonfigurovat nastavení MPNS (Microsoft Push Notification Service) pro Centrum oznámení Azure pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
-Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho hned teď. Další informace najdete v tématu [vytvoření centra oznámení Azure v Azure Portal](create-notification-hub-portal.md). 
+## <a name="prerequisites"></a>Předpoklady
+
+Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho hned teď. Další informace najdete v tématu [vytvoření centra oznámení Azure v Azure Portal](create-notification-hub-portal.md).
 
 ## <a name="configure-microsoft-push-notification-service-mpns"></a>Konfigurace služby nabízených oznámení Microsoftu (MPNS)
 
-Následující postup popisuje postup konfigurace nastavení MPNS (Microsoft Push Notification Service) pro Centrum oznámení: 
+Následující postup popisuje, jak nakonfigurovat nastavení MPNS (Microsoft Push Notification Service) pro Centrum oznámení:
 
 1. V Azure Portal na stránce **centra oznámení** vyberte v nabídce vlevo možnost **Windows Phone (MPNS)** .
-1. Povolit buď neověřené, nebo ověřené nabízené oznámení:
+2. Povolit buď neověřené, nebo ověřené nabízené oznámení:
 
    a. Pokud chcete povolit neověřená nabízená oznámení, vyberte **Povolit neověřené nabízené**oznámení  >  **Save**.
 
@@ -45,5 +45,5 @@ Následující postup popisuje postup konfigurace nastavení MPNS (Microsoft Pus
       * Na stránce **Windows Phone (MPNS)** vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
-Kurz s podrobnými pokyny pro doručování oznámení do zařízení Windows Phone pomocí Azure Notification Hubs a MPNS (Microsoft Push Notification Service) najdete v tématu [nabízená oznámení pro Windows Phone aplikace pomocí Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md).
 
+Kurz s podrobnými pokyny pro doručování oznámení do zařízení Windows Phone pomocí Azure Notification Hubs a MPNS (Microsoft Push Notification Service) najdete v tématu [Posílání nabízených oznámení do Windows Phone aplikací pomocí Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md).

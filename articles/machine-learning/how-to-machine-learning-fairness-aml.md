@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 5e6f241fcf30d4090a1af9a26441a5a10b939972
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 107b1103b5662decd8da0937ac84e0e8bab3f8eb
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307059"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760766"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Použití Azure Machine Learning s open source balíčkem Fairlearn k vyhodnocení spravedlivosti modelů ML (Preview)
 
@@ -142,7 +142,7 @@ Následující příklad ukazuje, jak použít balíček s přístejnou jistotou
         return registered_model.id
 
     # Call the register_model function 
-    lr_reg_id = register_model("fairness_linear_regression", unmitigated_predictor)
+    lr_reg_id = register_model("fairness_linear_regression", lr_predictor)
     ```
 
 3. Předvýpočetní metriky spravedlnosti.
@@ -152,7 +152,7 @@ Následující příklad ukazuje, jak použít balíček s přístejnou jistotou
     ```python
     #  Create a dictionary of model(s) you want to assess for fairness 
     sf = { 'Race': A_test.Race, 'Sex': A_test.Sex}
-    ys_pred = unmitigated_predictor.predict(X_test)
+    ys_pred = { lr_reg_id:lr_predictor.predict(X_test) }
     from fairlearn.metrics._group_metric_set import _create_group_metric_set
 
     dash_dict = _create_group_metric_set(y_true=Y_test,
@@ -207,7 +207,7 @@ Následující příklad ukazuje, jak použít balíček s přístejnou jistotou
 
     Další informace o řídicím panelu vizualizace a o tom, co obsahuje, najdete v [uživatelské příručce](https://fairlearn.github.io/user_guide/assessment.html#fairlearn-dashboard)pro Fairlearn.
 
-s # # odeslání přehledů o nerovnosti pro více modelů
+## <a name="upload-fairness-insights-for-multiple-models"></a>Nahrávání přehledů o nerovnosti pro více modelů
 
 Pokud vás zajímá porovnání více modelů a zjistíte, jak se jejich posouzení neprojeví, můžete do řídicího panelu vizualizace předat více než jeden model a přejít na jeho kompromis v souvislosti s výkonem.
 

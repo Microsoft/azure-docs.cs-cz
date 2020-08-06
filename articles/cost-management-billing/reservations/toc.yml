@@ -71,7 +71,7 @@
           href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: Koncepty
   items:
-    - name: Jak se vytvářejí doporučení pro rezervace
+    - name: Doporučení pro rezervace
       href: reserved-instance-purchase-recommendations.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Postup při využití slev
       items:
@@ -120,9 +120,9 @@
     - name: Rozhraní REST API pro rezervace
       href: reservation-apis.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Rezervace – Azure PowerShell
-      href: /powershell/module/azurerm.reservations
+      href: /powershell/module/az.reservations
     - name: Rezervace – rozhraní příkazového řádku
-      href: /cli/azure/reservations/reservation
+      href: /cli/azure/reservations
     - name: Cost Management – rozhraní REST API pro podrobnosti využití spotřeby
       href: /rest/api/consumption/usagedetails
     - name: Cost Management – rozhraní REST API pro podrobnosti rezervací spotřeby

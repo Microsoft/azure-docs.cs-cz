@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 11f4091489a8ef8c980ece0589945c8e1c7dc8b8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8dd0abb5c127d51a0feaf0c71188b7fc48e2fd69
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317769"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798218"
 ---
 # <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultačních služeb
 
@@ -101,7 +101,7 @@ Tato stránka umožňuje nastavit primární produkt, který vaše konzultační
     - Analýzy
     - Modernizace aplikací
     - Archiv
-    - AI a Machine Learning
+    - AI a strojové učení
     - Backup
     - Velký objem dat
     - Datová platforma
@@ -207,12 +207,14 @@ Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všech
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Zadejte soubory PNG pro logo vaší nabídky v každé z následujících velikostí pixelů:
+Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije toto k vytvoření **malého** loga velikosti (48 x 48 pixelů). Volitelně můžete tento text nahradit jiným obrázkem.
 
-- **Malé (48 x 48)**
-- **Velký (216 x 216)**
+Velikost loga se vyžaduje pro použití na různých místech v seznamu:
 
-Všechna loga jsou povinná a používají se na různých místech v seznamu Marketplace.
+- **Malé** (48 x 48)
+- **Velký** (mezi 216 x 216 a 350 × 350)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Snímky obrazovky (volitelné)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 07/07/2020
-ms.openlocfilehash: 8546e5fde51ddc8a29a852a2c5dbcd25fffad287
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: ae079fce02f58d6c6457d7fe6401526f4002662f
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405241"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798184"
 ---
 # <a name="create-a-managed-service-offer"></a>Vytvoření nabídky spravované služby
 
@@ -133,23 +133,17 @@ V této části můžete zadat loga a obrázky, které se použijí při zobraze
 >[!NOTE]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu používanou partnerským centrem.
 
-#### <a name="marketplace-logos"></a>Loga Marketplace
+#### <a name="store-logos"></a>Ukládat loga
 
-Poskytněte logo vaší nabídky ve velikosti čtyř pixelů:
+Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije tuto hodnotu k vytvoření **malého** (48 x 48 pixelů) a **středníku** (90 x 90 pixelů). Volitelně je můžete nahradit různými obrázky.
+
+Všechny tři velikosti loga se vyžadují pro použití na různých místech v seznamu:
 
 - **Malé** (48 x 48)
 - **Střední** (90 × 90)
-- **Velký** (216 x 216)
-- **Roztažitelné** (255 × 115)
+- **Velký** (mezi 216 x 216 a 350 × 350)
 
-Postupujte podle těchto pokynů pro vaše loga:
-
-- Design Azure má jednoduchou paletu barev. Omezte počet primárních a sekundárních barev ve vašem logu.
-- Barvami motivů na portálu jsou bílá a černá. Nepoužívejte tyto barvy jako barvu pozadí pro vaše logo. Použijte barvu, která vaše logo na portálu zvýrazní. Doporučujeme použít jednoduché primární barvy.
-- Pokud použijete průhledné pozadí, ujistěte se, že text ani logo nejsou bílé, černé nebo modré.
-- Logo by mělo působit plochým dojmem a nemělo by obsahovat barevné přechody. Nepoužívejte v logu pozadí s barevným přechodem.
-- Na logo neumisťujte žádný text, a to ani název vaší společnosti nebo název značky.
-- Zajistěte, aby logo nebylo roztažené.
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 

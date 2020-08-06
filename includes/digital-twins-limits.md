@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 64b3bf87df7d0b10f8a69e8303010f64b3e68f79
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 22b00b41c7fce0af57fd9f92b0f42bbd9412afda
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507596"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87771047"
 ---
 ### <a name="functional-limits"></a>Funkční omezení
 
@@ -31,7 +31,7 @@ Následující tabulka uvádí funkční omezení digitálních vláken Azure v 
 | Dotaz | Počet `AND`  /  `OR` výrazů v dotazu | 50 | Ano |
 | Dotaz | Počet položek pole v `IN`  /  `NOT IN` klauzuli | 50 | Ano |
 | Dotaz | Počet znaků v dotazu | 8 000 | Ano |
-| Dotaz | Počet `JOINS` v dotazu | 1 | Ano |
+| Dotaz | Počet `JOINS` v dotazu | 5 | Ano |
 
 ### <a name="rate-limits"></a>Omezení přenosové rychlosti
 

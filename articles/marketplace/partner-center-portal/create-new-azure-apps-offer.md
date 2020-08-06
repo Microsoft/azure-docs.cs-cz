@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: f9d7e88e78800df07dfe82d7336324eef38b92d5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7a0f04344d2e4213bbbabb63d57bdaf933154388
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326664"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797882"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -72,7 +72,7 @@ Vyberte jedno z následujících skriptovacích prostředí, které vám pomůž
 
 Do vývojového prostředí doporučujeme přidat následující nástroje:
 
-* [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Průzkumník služby Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Visual Studio Code](https://code.visualstudio.com/) s následujícími příponami:
     * Rozšíření: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * Přípona: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -247,14 +247,15 @@ Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všech
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Zadejte soubory PNG pro logo vaší nabídky v následujících třech velikostech v pixelech:
+Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije tuto hodnotu k vytvoření **malého** (48 x 48 pixelů) a **středníku** (90 x 90 pixelů). Volitelně je můžete nahradit různými obrázky.
+
+Všechny tři velikosti loga jsou vyžadovány pro použití na různých místech v seznamu:
 
 - **Malé** (48 x 48)
 - **Střední** (90 × 90)
-- **Velký** (216 x 216)
-- **Roztažitelné** (255 × 115)
+- **Velký** (mezi 216 x 216 a 350 × 350)
 
-Všechny tři loga jsou povinná a používají se na různých místech v seznamu.
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 
@@ -512,7 +513,7 @@ Určete, kdo má mít k této spravované aplikaci přístup pro správu v každ
 
 **Autorizace** – přidejte Azure Active Directory ID objektu uživatele, skupiny nebo aplikace, kterému chcete udělit oprávnění pro spravovanou skupinu prostředků. Identifikujte uživatele podle ID objektu zabezpečení, které najdete v okně [Azure Active Directory uživatelé na Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers).
 
-U každého objektu zabezpečení vyberte v seznamu (vlastník nebo přispěvatel) jednu z předdefinovaných rolí Azure AD. Vybraná role popisuje oprávnění, která bude mít objekt zabezpečení u prostředků v rámci předplatného zákazníka. Další informace najdete v tématu [předdefinované role Azure](../../role-based-access-control/built-in-roles.md). Další informace o řízení přístupu na základě role (RBAC) najdete v tématu [Začínáme s RBAC v Azure Portal](../../role-based-access-control/overview.md).
+U každého objektu zabezpečení vyberte v seznamu (vlastník nebo přispěvatel) jednu z předdefinovaných rolí Azure AD. Vybraná role popisuje oprávnění, která bude mít objekt zabezpečení u prostředků v rámci předplatného zákazníka. Další informace najdete v tématu [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md). Další informace o řízení přístupu na základě role (RBAC) najdete v tématu [Začínáme s RBAC v Azure Portal](../../role-based-access-control/overview.md).
 
 >[!Note]
 >I když můžete přidat až 100 autorizací pro každý Cloud, je obecně snazší vytvořit skupinu uživatelů služby Active Directory a zadat její ID v ID objektu zabezpečení. To vám umožní přidat další uživatele do skupiny pro správu po nasazení plánu a snížit nutnost aktualizace plánu jenom na přidání dalších autorizací.

@@ -4,14 +4,14 @@ description: Přečtěte si, jak nakonfigurovat a změnit výchozí zásady inde
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 08/04/2020
 ms.author: tisande
-ms.openlocfilehash: a335da61fac914368b4044a97582ef0060f5de4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3981e828e7ffe401be3b72f68185c272ab11645
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636321"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760817"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 
@@ -20,7 +20,7 @@ V Azure Cosmos DB má každý kontejner zásady indexování, které určují, j
 V některých situacích možná budete chtít toto automatické chování přepsat, aby lépe vyhovovalo vašim požadavkům. Zásady indexování kontejneru můžete přizpůsobit nastavením jeho *režimu indexování*a zahrnutí nebo vyloučení *cest k vlastnostem*.
 
 > [!NOTE]
-> Metoda aktualizace zásad indexování popsaná v tomto článku se týká jenom rozhraní API pro Azure Cosmos DB SQL (Core).
+> Metoda aktualizace zásad indexování popsaná v tomto článku se týká jenom rozhraní API pro Azure Cosmos DB SQL (Core). Další informace o indexování v [rozhraní Azure Cosmos DB API pro MongoDB](mongodb-indexing.md)
 
 ## <a name="indexing-mode"></a>Režim indexování
 
@@ -36,7 +36,7 @@ Ve výchozím nastavení je zásada indexování nastavena na `automatic` . Dos�
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Zahrnutí a vyloučení cest k vlastnostem
 
-Vlastní zásada indexování může určovat cesty vlastností, které jsou explicitně zahrnuté nebo vyloučené z indexování. Optimalizací počtu indexovaných cest můžete snížit velikost úložiště využitého vaším kontejnerem a zlepšit latenci operací zápisu. Tyto cesty jsou definovány podle [metody popsané v části Přehled indexování](index-overview.md#from-trees-to-property-paths) s následujícími přídavky:
+Vlastní zásada indexování může určovat cesty vlastností, které jsou explicitně zahrnuté nebo vyloučené z indexování. Optimalizací počtu indexovaných cest můžete významně snížit latenci a RU za operace zápisu. Tyto cesty jsou definovány podle [metody popsané v části Přehled indexování](index-overview.md#from-trees-to-property-paths) s následujícími přídavky:
 
 - Cesta vedoucí k skalární hodnotě (řetězec nebo číslo) končí na`/?`
 - prvky z pole jsou řešeny společně pomocí `/[]` zápisu (místo `/0` `/1` atd.)
@@ -129,7 +129,7 @@ Když v zásadách indexování definujete prostorovou cestu, měli byste defino
 
 * LineString
 
-Azure Cosmos DB ve výchozím nastavení nebudou vytvořeny žádné prostorové indexy. Pokud chcete použít integrované funkce prostorového SQL serveru, měli byste vytvořit prostorový index podle požadovaných vlastností. V [této části](geospatial.md) najdete příklady zásad indexování pro přidání prostorových indexů.
+Azure Cosmos DB ve výchozím nastavení nebudou vytvořeny žádné prostorové indexy. Pokud chcete použít integrované funkce prostorového SQL serveru, měli byste vytvořit prostorový index podle požadovaných vlastností. V [této části](sql-query-geospatial-index.md) najdete příklady zásad indexování pro přidání prostorových indexů.
 
 ## <a name="composite-indexes"></a>Složené indexy
 
@@ -259,16 +259,23 @@ Při vytváření složených indexů k optimalizaci dotazu pomocí filtru a kla
 
 ## <a name="modifying-the-indexing-policy"></a>Změna zásad indexování
 
-Zásadu indexování kontejneru lze kdykoli aktualizovat [pomocí Azure Portal nebo jedné z podporovaných sad SDK](how-to-manage-indexing-policy.md). Aktualizace zásad indexování spustí transformaci z původního indexu na novou, která je provedena online a na místě (takže se během operace nespotřebovává žádný další prostor úložiště). Index staré zásady se efektivně transformuje na nové zásady, aniž by to ovlivnilo dostupnost zápisu nebo propustnost zřízenou v kontejneru. Transformace indexu je asynchronní operace a čas potřebný k dokončení závisí na zřízené propustnosti, počtu položek a jejich velikosti.
+Zásadu indexování kontejneru lze kdykoli aktualizovat [pomocí Azure Portal nebo jedné z podporovaných sad SDK](how-to-manage-indexing-policy.md). Aktualizace zásad indexování spustí transformaci ze starého indexu do nového, který je proveden online a místně (takže během operace se nespotřebovává žádný další prostor úložiště). Index staré zásady se efektivně transformuje na nové zásady, aniž by to ovlivnilo dostupnost zápisu, dostupnost čtení nebo propustnost zajištěné v kontejneru. Transformace indexu je asynchronní operace a čas potřebný k dokončení závisí na zřízené propustnosti, počtu položek a jejich velikosti.
 
 > [!NOTE]
-> Při přidávání rozsahu nebo prostorového indexu nemusí dotazy vracet všechny výsledky, které odpovídají, a to tak, aby se nevrátily žádné chyby. To znamená, že výsledky dotazu nemusí být konzistentní, dokud se nedokončí transformace indexu. Je možné sledovat průběh transformace indexu [pomocí jedné ze sad SDK](how-to-manage-indexing-policy.md).
+> Je možné sledovat průběh transformace indexu [pomocí jedné ze sad SDK](how-to-manage-indexing-policy.md).
 
-Pokud je nový režim zásad indexování nastavený na konzistentní, při transformaci indexu se nedají použít žádné jiné změny zásad indexování. Spuštěnou transformaci indexu můžete zrušit tak, že nastavíte režim zásad indexování na žádný (který bude ihned index vyřadit).
+V žádném z transformací indexu není žádný vliv na dostupnost zápisu. Transformace indexu používá zřízené ru, ale s nižší prioritou než operace CRUD nebo dotazy.
+
+Při přidávání nového indexu nemá žádný vliv na dostupnost čtení. Po dokončení transformace indexu budou dotazy využívat pouze nové indexy. Při transformaci indexu bude modul dotazu dál používat stávající indexy, takže budete mít podobný výkon při čtení během transformace indexování na to, co jste předtím provedli při zahájení změny indexování. Při přidávání nových indexů nehrozí riziko neúplných nebo nekonzistentních výsledků dotazu.
+
+Při odebírání indexů a okamžitém spuštění dotazů, které filtrují na vyřazených indexech, není zaručeno konzistentní nebo úplné výsledky dotazu. Pokud odeberete více indexů a uděláte to v jedné změně zásady indexování, nástroj pro dotazování garantuje konzistenci a úplnost výsledků v celé transformaci indexu. Pokud ale odeberete indexy prostřednictvím několika změn zásad indexování, dotazovací modul nezaručuje konzistenci nebo úplnost výsledků, dokud se nedokončí všechny transformace indexu. Většina vývojářů nevynechává indexy a potom se okamžitě pokusí spustit dotazy, které tyto indexy využívají, takže v praxi je tato situace nepravděpodobná.
+
+> [!NOTE]
+> Pokud je to možné, měli byste vždycky zkusit seskupit více změn indexování do jedné změny zásad indexování.
 
 ## <a name="indexing-policies-and-ttl"></a>Indexování zásad a TTL
 
-[Funkce TTL (Time-to-Live)](time-to-live.md) vyžaduje, aby bylo indexování aktivní na kontejneru, ve kterém je zapnuté. To znamená, že:
+Použití [funkce TTL (Time-to-Live)](time-to-live.md) vyžaduje indexování. To znamená, že:
 
 - hodnotu TTL není možné aktivovat u kontejneru, ve kterém je režim indexování nastavený na None.
 - není možné nastavit režim indexování na žádný v kontejneru, kde je aktivována hodnota TTL.

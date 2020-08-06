@@ -2,7 +2,7 @@
 title: Rychlý Start – přístup & vytvoření nového tenanta – Azure AD
 description: Pokyny, jak najít Azure Active Directory a jak vytvořit nového tenanta pro vaši organizaci.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -12,19 +12,19 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f29d103ce1be426fb0b5c462cc1d831fefe87b6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f658b5670c42ab03770a3082f8eca740f6869dc3
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80049998"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797640"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Rychlý Start: vytvoření nového tenanta v Azure Active Directory
 Pomocí portálu Azure Active Directory (Azure AD) můžete provádět všechny úlohy správy, včetně vytvoření nového tenanta pro vaši organizaci. 
 
 V tomto rychlém startu se dozvíte, jak se dostat na web Azure Portal a do služby Azure Active Directory a jak vytvořit základního tenanta pro vaši organizaci.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-new-tenant-for-your-organization"></a>Vytvoření nového tenanta pro vaši organizaci
 Po přihlášení k webu Azure Portal můžete vytvořit nového tenanta pro svou organizaci. Váš nový tenant reprezentuje vaši organizaci a pomáhá vám spravovat konkrétní instanci cloudových služeb společnosti Microsoft pro vaše interní a externí uživatele.

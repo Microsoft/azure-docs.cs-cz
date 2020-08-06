@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 388fb7e36a823d7f6e9ee1d58220d3a1008d8cec
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b7bcdaf9e3935c01a0906ecfaa1570e4bc7caba9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498037"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798116"
 ---
 # <a name="offer-listing-best-practices"></a>Osvědčené postupy nabídky
 
@@ -119,9 +119,9 @@ Klíčová slova můžou zákazníkům pomáhat při hledání vaší nabídky. 
 ## <a name="storefront-marketing-details"></a>Podrobnosti o marketingu prezentace
 | Nastavení prezentace | Osvědčený postup |
 |:--- |:--- |  
-| Logo nabídky (formát PNG, 48 &nbsp; &times; &nbsp; 48): stránka hledání | Návrh a optimalizace loga pro digitální média:<br>Nahrajte logo ve formátu PNG na stránku vyhledávání vaší nabídky. |
-| Logo nabídky (formát PNG, 216 &nbsp; &times; &nbsp; 216): Stránka s podrobnostmi aplikace | Návrh a optimalizace loga pro digitální média:<br>Nahrajte logo ve formátu PNG na stránku se seznamem podrobností aplikace vaší nabídky. |
-| Dokumenty "Další informace" | Do části "Další informace" zahrňte podporu prodejních a marketingových prostředků: <ul> <li> dokumenty White Paper, </li> <li> brožury, </li> <li> kontrolní seznamy nebo </li> <li> Prezentace aplikace PowerPoint.</li> </ul>Uloží všechny soubory ve formátu PDF. Tady by měl být váš cíl informovat zákazníky a neprodávat jim. <br><br>Přidejte odkaz na cílovou stránku aplikace do všech dokumentů a přidejte parametry adresy URL, které vám pomohou sledovat návštěvníky a zkušební verze. |
+| Logo nabídky (formát PNG, mezi 216 × 216 a 350 × 350 pixelů): Stránka s podrobnostmi aplikace | Návrh a optimalizace loga pro digitální média:<br>Nahrajte logo ve formátu PNG na stránku se seznamem podrobností aplikace vaší nabídky. Partnerské centrum změní velikost na požadované velikosti loga. |
+| Logo nabídky (formát PNG, 48 × 48 pixelů): stránka hledání | Partnerské centrum vygeneruje toto logo z velkého loga, které jste nahráli. Volitelně můžete tento text nahradit jiným obrázkem. |
+| Dokumenty "Další informace" | Do části "Další informace" zahrňte podporu prodejních a marketingových prostředků:<ul><li>dokumenty White Paper</li><li> brožury</li><li>kontrolní seznamy nebo</li><li> Prezentace aplikace PowerPoint</li></ul><br>Uloží všechny soubory ve formátu PDF. Tady by měl být váš cíl informovat zákazníky a neprodávat jim.<br><br>Přidejte odkaz na cílovou stránku aplikace do všech dokumentů a přidejte parametry adresy URL, které vám pomohou sledovat návštěvníky a zkušební verze. |
 | Videa: AppSource, konzultační služby a SaaS nabídky | Nejsilnější videa sdělují hodnotu vaší nabídky ve formě mluveného komentáře:<ul> <li> Udělejte zákazníka, ne firmu, Hero příběh. </li> <li> Vaše video by mělo řešit hlavní výzvy a cíle vašeho cílového zákazníka. </li> <li> Doporučená délka: 60-90 sekund.</li> <li> Zahrňte klíčová slova pro hledání, která používají název videí. </li> <li> Zvažte přidání dalších videí, jako jsou postupy, začátky nebo zákaznické reference. </li> </ul> |
 | Snímky obrazovky (1280 &nbsp; &times; &nbsp; 720) | Přidat až pět snímků obrazovky:<br>Do názvů souborů zahrňte klíčová slova pro hledání klíčů. |
 

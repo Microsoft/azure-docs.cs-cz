@@ -8,27 +8,30 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: aschhab
 ms.custom: include file
-ms.openlocfilehash: e4b9925459463ff66685c797f0edaba13883f4d5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9030080d0b8c8e032cb2992a62275efcdb04aabc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076216"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798133"
 ---
 V následující tabulce jsou uvedené funkce JMS (Java Message Service), které Azure Service Bus aktuálně podporuje. Zobrazuje také funkce, které nejsou podporovány.
 
 
-| Funkce | Status |
-|---|---|
-| Fronty   | Podporováno |
-| Témata   | Podporováno |
-| Dočasné fronty | Podporováno |
-| Dočasná témata | Podporováno |
-| Selektory zpráv | Podporováno |
-| Prohlížeče front | Podporováno |
-| Sdílená trvalá předplatná | Podporováno|
-| Nesdílené trvalé odběry | Podporováno |
-| Sdílená netrvalá předplatná | Podporováno |
-| Nesdílené odběry, které nejsou trvalé | Podporováno |
-| Distribuované transakce | Nepodporováno |
-| Trvalé trvají | Nepodporováno |
+| Příznak | Rozhraní API |Status |
+|---|---|---|
+| Fronty   | <ul> <li> JMSContext. createQueue (řetězec ve frontě) </li> </ul>| **Podporováno** |
+| Témata   | <ul> <li> JMSContext. createTopic (řetězec v tématu String) </li> </ul>| **Podporováno** |
+| Dočasné fronty |<ul> <li> JMSContext.createTemporaryQueue() </li> </ul>| **Podporováno** |
+| Dočasná témata |<ul> <li> JMSContext.createTemporaryTopic() </li> </ul>| **Podporováno** |
+| Producent zprávy/<br/> JMSProducer |<ul> <li> JMSContext.createProducer() </li> </ul>| **Podporováno** |
+| Prohlížeče front |<ul> <li> JMSContext. createBrowser (fronta fronty) </li> <li> JMSContext. createBrowser (Queue Queue; String messageSelector) </li> </ul> | **Podporováno** |
+| Příjemce zprávy/ <br/> JMSConsumer | <ul> <li> JMSContext. createConsumer (cílový cíl) </li> <li> JMSContext. createConsumer (cílový cíl, String messageSelector) </li> <li> JMSContext. createConsumer (cílový cíl; String messageSelector; Boolean Local)</li> </ul>  <br/> Místní není momentálně podporovaná. | **Podporováno** |
+| Sdílená trvalá předplatná | <ul> <li> JMSContext. createSharedDurableConsumer (téma, název řetězce) </li> <li> JMSContext. createSharedDurableConsumer (téma, název řetězce, řetězec messageSelector) </li> </ul>| **Podporováno**|
+| Nesdílené trvalé odběry | <ul> <li> JMSContext. createDurableConsumer (téma, název řetězce) </li> <li> createDurableConsumer (téma téma; název řetězce; String messageSelector; Boolean Local) </li> </ul> <br/> Lokální není aktuálně podporován a měl by být nastaven na hodnotu false. | **Podporováno** |
+| Sdílená netrvalá předplatná |<ul> <li> JMSContext. createSharedConsumer (téma téma; String sharedSubscriptionName) </li> <li> JMSContext. createSharedConsumer (téma téma; String sharedSubscriptionName; String messageSelector) </li> </ul> | **Podporováno** |
+| Nesdílené odběry, které nejsou trvalé |<ul> <li> JMSContext. createConsumer (cílový cíl) </li> <li> JMSContext. createConsumer (cílový cíl, String messageSelector) </li> <li> JMSContext. createConsumer (cílový cíl; String messageSelector; Boolean Local) </li> </ul> <br/> Lokální není aktuálně podporován a měl by být nastaven na hodnotu false. | **Podporováno** |
+| Selektory zpráv | závisí na vytvořeném spotřebiteli. | **Podporováno** |
+| Zpoždění doručení (naplánované zprávy) | <ul> <li> JMSProducer. setDeliveryDelay (Long deliveryDelay) </li> </ul>|**Podporováno**|
+| Zpráva vytvořena |<ul> <li> JMSContext.createMessage() </li> <li> JMSContext.createBytesMessage() </li> <li> JMSContext.createMapMessage() </li> <li> JMSContext. createObjectMessage (serializovatelný objekt) </li> <li> JMSContext.createStreamMessage() </li> <li> JMSContext.createTextMessage() </li> <li> JMSContext. createTextMessage (text řetězce) </li> </ul>| **Podporováno** |
+| Distribuované transakce || Nepodporováno |

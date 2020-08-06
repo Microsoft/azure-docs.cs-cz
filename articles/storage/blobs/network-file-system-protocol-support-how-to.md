@@ -1,24 +1,24 @@
 ---
-title: Připojení služby Azure Blob Storage na platformě Linux pomocí protokolu NFS 3,0 (Preview) | Microsoft Docs
-description: Naučte se připojit kontejner v úložišti objektů BLOB z linuxového virtuálního počítače Azure nebo systému Linux, který běží místně, pomocí protokolu NFS 3,0.
+title: Připojení úložiště objektů BLOB v Azure pomocí protokolu NFS 3,0 (Preview) | Microsoft Docs
+description: Naučte se připojit kontejner v úložišti objektů BLOB z virtuálního počítače Azure nebo klienta, který běží místně pomocí protokolu NFS 3,0.
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: d3907967572b22e7a70316080b08a4368a9805ce
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2517a0ac8edf30ac041708a57b166af6eb36440a
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372905"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760786"
 ---
-# <a name="mount-blob-storage-on-linux-using-the-network-file-system-nfs-30-protocol-preview"></a>Připojení úložiště objektů BLOB v systému Linux pomocí protokolu NFS (Network File System) 3,0 (Preview)
+# <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Připojení úložiště objektů BLOB pomocí protokolu NFS (Network File System) 3,0 (Preview)
 
-Kontejner v úložišti objektů blob můžete připojit z virtuálního počítače Azure se systémem Linux nebo z operačního systému Linux, který je místně spuštěný pomocí protokolu NFS 3,0. Tento článek poskytuje podrobné pokyny. Další informace o podpoře protokolů NFS 3,0 v BLOB Storage najdete v tématu [Podpora protokolu NFS (Network File System) 3,0 v Azure Blob Storage (Preview)](network-file-system-protocol-support.md).
+Kontejner v úložišti objektů blob můžete připojit z virtuálního počítače Azure (VM) se systémem Windows nebo Linux nebo z systému Windows nebo Linux, který běží místně pomocí protokolu NFS 3,0. Tento článek poskytuje podrobné pokyny. Další informace o podpoře protokolů NFS 3,0 v BLOB Storage najdete v tématu [Podpora protokolu NFS (Network File System) 3,0 v Azure Blob Storage (Preview)](network-file-system-protocol-support.md).
 
 > [!NOTE]
 > Podpora protokolů NFS 3,0 ve službě Azure Blob Storage je ve verzi Public Preview a je dostupná v těchto oblastech: USA – východ, USA – střed a Kanada – střed.
@@ -107,15 +107,19 @@ Můžete přijmout výchozí hodnoty pro všechna ostatní nastavení.
 
 Vytvořte kontejner v účtu úložiště pomocí některé z těchto nástrojů nebo sad SDK:
 
-|nástroje|Sady SDK|
+|Nástroje|Sady SDK|
 |---|---|
-|[Azure Storage Explorer](data-lake-storage-explorer.md#create-a-container)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
+|[Průzkumník služby Azure Storage](data-lake-storage-explorer.md#create-a-container)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
 |[Azure CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
 |[Azure Portal](https://portal.azure.com)|[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
 
 ## <a name="step-7-mount-the-container"></a>Krok 7: připojení kontejneru
+
+Vytvořte v systému Windows nebo Linux adresář a pak připojte kontejner v účtu úložiště.
+
+### <a name="linux"></a>[Linux](#tab/linux)
 
 1. V systému Linux vytvořte adresář.
 
@@ -133,14 +137,33 @@ Vytvořte kontejner v účtu úložiště pomocí některé z těchto nástrojů
 
    - `<container-name>`Zástupný symbol nahraďte názvem vašeho kontejneru.
 
+
+### <a name="windows"></a>[Windows](#tab/windows)
+
+1. Otevřete dialogové okno **funkce systému Windows** a potom zapněte funkci **klient pro systém souborů NFS** . 
+
+   ![Funkce Client for Network File System](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
+
+2. Připojte kontejner pomocí příkazu [Mount](https://docs.microsoft.com/windows-server/administration/windows-commands/mount) .
+
+   ```
+   mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
+   ```
+
+   - `<storage-account-name>`Zástupný symbol, který se zobrazí v tomto příkazu, nahraďte názvem vašeho účtu úložiště.  
+
+   - `<container-name>`Zástupný symbol nahraďte názvem vašeho kontejneru.
+
+---
+
 ## <a name="resolve-common-issues"></a>Řešení běžných problémů
 
 |Problém/chyba | Řešení|
 |---|---|
-|`Access denied by server while mounting`|Ujistěte se, že váš klient běží v podporované podsíti. Podívejte se na [podporovaná síťová umístění](network-file-system-protocol-support.md#supported-network-connections).|
-|`No such file or directory`| Ujistěte se, že je kontejner, který připojujete, vytvořený po ověření, že byla funkce zaregistrovaná. Viz [Krok 2: ověření, zda je funkce zaregistrována](#step-2-verify-that-the-feature-is-registered). Nezapomeňte taky zadat příkaz Mount a jeho parametry přímo do terminálu. Pokud zkopírujete a vložíte jakoukoli část tohoto příkazu do terminálu z jiné aplikace, může to způsobit, že se tato chyba zobrazí v kopírovaných znacích v vkládaných informacích.|
+|`Access denied by server while mounting`|Ujistěte se, že je váš klient spuštěný v rámci podporované podsítě. Podívejte se na [podporovaná síťová umístění](network-file-system-protocol-support.md#supported-network-connections).|
+|`No such file or directory`| Ujistěte se, že se kontejner, který připojujete, vytvořil po ověření registrace funkce. Viz [Krok 2: ověření, zda je funkce zaregistrována](#step-2-verify-that-the-feature-is-registered). Nezapomeňte taky zadat příkaz Mount a jeho parametry přímo do terminálu. Pokud tento příkaz zkopírujete z jiné aplikace a vložíte do terminálu, skryté znaky ve vložených informacích můžou způsobit zobrazení této chyby.|
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 [Podpora protokolů systému souborů NFS (Network File System) 3,0 v úložišti objektů BLOB v Azure (Preview)](network-file-system-protocol-support.md)
 

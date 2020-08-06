@@ -4,38 +4,38 @@ description: Naučte se konfigurovat centrum oznámení Azure s nastavením clou
 services: notification-hubs
 author: sethmanheim
 manager: femila
-editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 08/04/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: 1adbce654bc5c057270df9a874911731a0135034
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0da103c11e2412108535ca322917632f5d95559d
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80127473"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760834"
 ---
 # <a name="configure-google-firebase-settings-for-a-notification-hub-in-the-azure-portal"></a>Konfigurace nastavení Google Firebase pro Centrum oznámení v Azure Portal
 
 V tomto článku se dozvíte, jak nakonfigurovat nastavení FCM (Google Firebase Cloud Messaging) pro Centrum oznámení Azure pomocí Azure Portal.  
 
-## <a name="prerequisites"></a>Požadavky
-Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho hned teď. Další informace najdete v tématu [vytvoření centra oznámení Azure v Azure Portal](create-notification-hub-portal.md). 
+## <a name="prerequisites"></a>Předpoklady
+
+Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho hned teď. Další informace najdete v tématu [vytvoření centra oznámení Azure v Azure Portal](create-notification-hub-portal.md).
 
 ## <a name="configure-google-firebase-cloud-messaging-fcm"></a>Konfigurace zasílání zpráv v cloudu Google Firebase (FCM)
 
-Následující postup vám poskytne postup konfigurace nastavení FCM (Google Firebase Cloud Messaging) pro Centrum oznámení: 
+Následující postup popisuje kroky pro konfiguraci nastavení FCM (Google Firebase Cloud Messaging) pro Centrum oznámení:
 
-1. V Azure Portal na stránce **centra oznámení** vyberte **Google (GCM/FCM)** v nabídce vlevo. 
-2. Vložte **klíč rozhraní API** pro projekt FCM, který jste předtím uložili. 
-3. Vyberte **Uložit**. 
+1. V Azure Portal na stránce **centra oznámení** vyberte **Google (GCM/FCM)** v nabídce vlevo.
+2. Vložte **klíč rozhraní API** pro projekt FCM, který jste předtím uložili.
+3. Vyberte **Uložit**.
 
    ![Snímek obrazovky, který ukazuje, jak nakonfigurovat Notification Hubs pro Google FCM](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 
 ## <a name="next-steps"></a>Další kroky
-Kurz s podrobnými pokyny pro doručování oznámení do zařízení s Androidem pomocí služby Azure Notification Hubs a zasílání zpráv v cloudu Google Firebase najdete v tématu [nabízená oznámení na zařízení s Androidem pomocí Notification Hubs a Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
+Kurz s podrobnými pokyny pro posílání oznámení na zařízení s Androidem pomocí služby Azure Notification Hubs a zasílání zpráv v cloudu Google Firebase najdete v tématu [Posílání nabízených oznámení na zařízení s Androidem pomocí Notification Hubs a Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md).

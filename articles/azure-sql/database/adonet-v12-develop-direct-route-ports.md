@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 06/11/2020
-ms.openlocfilehash: 85d8d288a8b2d0f256294b0c8975afc367e6e381
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5ddcd083dfae1d0d4b79cd534b6ae4d034903b9
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736046"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759304"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty nad 1433 pro ADO.NET 4.5
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,7 +77,7 @@ Tato část vysvětluje monikery, které odkazují na verze produktu. Obsahuje t
 * ADO.NET 4,5 byla vydána 15. srpna 2012. Oznámení na blogu od týmu .NET je k dispozici [zde](https://devblogs.microsoft.com/dotnet/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code/).
   * Blogový příspěvek o ADO.NET 4.5.1 je k dispozici [zde](https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-5-1-preview/).
 
-* Microsoft® ODBC Driver 17 pro SQL Server® – Windows, Linux & macOShttps://www.microsoft.com/download/details.aspx?id=56567
+* Microsoft ODBC Driver 17 pro SQL Serverhttps://aka.ms/downloadmsodbcsql
 
 * Připojení k Azure SQL Database V12 prostřednictvím přesměrováníhttps://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 

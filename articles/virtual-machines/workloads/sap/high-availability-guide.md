@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5b105bf6fea8b78a11f77d73918376670be9ac5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bf483d5a9b6a75ccad48908701d89d1c40206208
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052563"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759865"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure
 
@@ -701,7 +701,7 @@ _**Obrázek 11:** Nastavení Azure Resource Manager parametrů pro vysokou dostu
     * <*SAPSystemSID*>-nic-ASCS – *číslo* <>
     * <*SAPSystemSID*> – síťová karta-<*číslo*>
 
-  * **Účty úložiště Azure**
+  * **Účty služby Azure Storage**
 
   * **Skupiny dostupnosti** pro:
     * Virtuální počítače SAP aplikačního serveru: <*SAPSystemSID*>-avset-di
@@ -1449,7 +1449,7 @@ Je nutné přidat nový parametr profilu. Parametr Profile brání propojení me
 
 Postup úpravy profilu SAP instance ASCS/SCS:
 
-1. Přidejte tento parametr profilu do profilu instance SAP ASCS/SCS:
+1. Pokud používáte ENSA1, přidejte tento parametr profilu do profilu instance SAP ASCS/SCS.
 
    ```
    enque/encni/set_so_keepalive = true
@@ -1461,6 +1461,8 @@ Postup úpravy profilu SAP instance ASCS/SCS:
    Například na profil instance SAP SCS a odpovídající cestu:
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
+
+   Pro ENSA1 i ENSA2 se ujistěte, že `keepalive` jsou nastavené parametry operačního systému, jak je popsáno v tématu SAP note [1410736](https://launchpad.support.sap.com/#/notes/1410736).  
 
 2. Pokud chcete změny použít, restartujte instanci SAP ASCS/SCS.
 

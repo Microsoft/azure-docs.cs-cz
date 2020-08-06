@@ -3,7 +3,7 @@ title: Správa přístupu uživatelů pomocí revizí přístupu – Azure AD
 description: Zjistěte, jak spravovat přístup uživatelů jako členství ve skupině nebo přiřazení k aplikaci s využitím kontrol přístupu Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/21/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c307b349144974a4d38f937feeebb98f369d047
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 001adaff1fed901638276e548ac1d5fdb41bdc53
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75932403"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798303"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Správa přístupu uživatelů pomocí kontrol přístupu Azure AD
 
@@ -30,7 +30,7 @@ S Azure Active Directory (Azure AD) můžete snadno zajistit, že uživatelé ma
 > [!NOTE]
 > Pokud chcete kontrolovat přístup jenom u uživatelů typu host a nekontrolovat všechny typy uživatelského přístupu, přečtěte si téma věnované [správě přístupu uživatelů typu host s využitím kontroly přístupu](manage-guest-access-with-access-reviews.md). Pokud chcete kontrolovat členství uživatelů v rolích pro správu, jako je například globální správce, přečtěte si téma věnované [spuštění kontroly přístupu v Azure AD Privileged Identity Management](../privileged-identity-management/pim-how-to-start-security-review.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure AD Premium P2
 

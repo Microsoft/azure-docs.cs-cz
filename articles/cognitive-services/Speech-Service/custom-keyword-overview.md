@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
-ms.openlocfilehash: 60bcdac0d7e19c424b007980294898638814d586
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d7eea031e50a0f54a57d8a9c857d52ca137f3283
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044866"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760545"
 ---
 # <a name="what-is-a-keyword"></a>Co je klíčové slovo?
 
@@ -35,6 +35,23 @@ Díky funkcím pro přizpůsobení, výkon a integraci vlastního klíčového s
 
 * Základní klíčové slovo Basic pro základní použití a vzory návrhu najdete v tématu [základy vlastních klíčových slov](custom-keyword-basics.md) .
 * Jak [hlasově aktivovat svůj produkt pomocí sady Speech SDK, pomocí jazyka C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+
+## <a name="choose-an-effective-keyword"></a>Zvolit efektivní klíčové slovo
+
+Vytvoření efektivního klíčového slova je důležité pro zajištění, že zařízení bude konzistentně a přesně reagovat. Přizpůsobení klíčového slova je efektivní způsob, jak odlišit vaše zařízení a posílit vaše branding. Při volbě klíčového slova Vezměte v úvahu následující pokyny:
+
+> [!div class="checklist"]
+> * Klíčové slovo by mělo být anglické slovo nebo fráze.
+> * Řekněme, že by neměl trvat déle než dvě sekundy.
+> * Slova 4 až 7 slabiky fungují nejlépe. Například "Hey, Computer" je klíčové slovo dobrý. Pouze "Hey" je nekvalitní.
+> * Klíčová slova by měla dodržovat běžná pravidla pro výslovnost angličtiny.
+> * Jedinečné nebo dokonce zavedené slovo, které následuje po běžných pravidlech výslovnosti angličtiny, může snížit falešně pozitivní výsledky. Například "computerama" může být dobrým klíčovým slovem.
+> * Nevybírejte běžné slovo. Například "EAT" a "jít" jsou slova, která lidé v běžné konverzaci často říkají. Pro vaše zařízení můžou být triggery nepravdivé.
+> * Vyhněte se použití klíčového slova, které může mít alternativní výslovnost. Uživatelé by museli znát správné výslovnost, aby zařízení mohla reagovat. Například "509" lze vyslovit "5 0 9", "5 0 9" nebo "509". "R.E.I." lze vyslovit "r-e-i" nebo "Ray". "Živý" může být vyslovný jako "/līv/" nebo "/Liv/".
+> * Nepoužívejte speciální znaky, symboly a číslice. Například "jít #" a "20 + kočky" mohou být problematická klíčová slova. Může se ale stát, že "jít prudce" nebo "dvacet plus kočky". Můžete pořád používat symboly v brandingu a používat marketing a dokumentaci k posílení správné výslovnosti.
+
+> [!NOTE]
+> Pokud zvolíte klíčové slovo jako klíčové slovo, ujistěte se, že vlastníte tuto ochrannou známku nebo že máte oprávnění od vlastníka ochranné známky, abyste mohli toto slovo použít. Společnost Microsoft není odpovědná za žádné právní problémy, které mohou nastat podle vašeho výběru klíčového slova.
 
 ## <a name="see-samples-on-github"></a>Zobrazit ukázky na GitHubu
 

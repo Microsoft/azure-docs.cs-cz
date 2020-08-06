@@ -2,7 +2,7 @@
 title: Úprava informací o skupině – Azure Active Directory | Microsoft Docs
 description: Pokyny k úpravám informací o skupině pomocí Azure Active Directory.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 410570798e468244763c05b3275801427dc4b2fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e9b38208526ba83e0a0e31e2e139e340a3ee511
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604229"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797521"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Úprava informací o skupině pomocí Azure Active Directory
 
@@ -47,7 +47,7 @@ Pomocí Azure Active Directory (Azure AD) můžete upravit nastavení skupiny, v
 
     - **Název skupiny** Upravte název existující skupiny.
     
-    - **Popis skupiny**: Upravte popis existující skupiny.
+    - **Popis skupiny** Upravte popis existující skupiny.
 
     - **Typ skupiny** Po vytvoření skupiny nelze změnit její typ. Chcete-li změnit **typ skupiny**, je nutné odstranit skupinu a vytvořit novou.
     

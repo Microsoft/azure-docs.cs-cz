@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 44a51972e459f64f44a791ef1cf40825dddedf91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7417515d6f3c293368868e380ac53f0c524b872d
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85798149"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760868"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování ve službě Azure Cosmos DB – Přehled
 
@@ -174,7 +174,6 @@ Pokud jeden predikát filtru používá jeden z druhů indexů, nástroj pro dot
 
 * Můžete zrychlit dotazy a vyhnout se úplným kontrolám kontejnerů při použití funkcí, které nepoužívají index (např. obsahuje) přidáním dalších predikátů filtru, které používají index. Pořadí klauzulí filtru není důležité. Dotazovací modul zjistí, které predikáty jsou podrobněji selektivní a spustí dotaz odpovídajícím způsobem.
 
-
 ## <a name="querying-with-indexes"></a>Dotazování s indexy
 
 Cesty extrahované při indexování dat usnadňují vyhledání indexu při zpracování dotazu. Porovnáním `WHERE` klauzule dotazu se seznamem indexovaných cest je možné identifikovat položky, které odpovídají predikátu dotazu velmi rychle.
@@ -190,5 +189,5 @@ Zvažte například následující dotaz: `SELECT location FROM location IN comp
 
 Další informace o indexování najdete v následujících článcích:
 
-- [Zásady indexování](index-policy.md)
+- [Zásada indexování](index-policy.md)
 - [Jak spravovat zásady indexování](how-to-manage-indexing-policy.md)

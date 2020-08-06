@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/26/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: df8e4ab3b6e61b8cdc00a46512ea6e7ccc79189f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3ea8be2bbf3296f97ca0562a2d8e72bfe7a77d3b
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088270"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760477"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux
 
@@ -475,9 +475,11 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    #Restart_Program_01 = local $(_EN) pf=$(_PF)
    Start_Program_01 = local $(_EN) pf=$(_PF)
    
-   # Add the keep alive parameter
+   # Add the keep alive parameter, if using ENSA1
    enque/encni/set_so_keepalive = true
    </code></pre>
+
+   Pro ENSA1 i ENSA2 se ujistěte, že `keepalive` jsou nastavené parametry operačního systému, jak je popsáno v tématu SAP note [1410736](https://launchpad.support.sap.com/#/notes/1410736).    
 
    * Profil OLAJÍCÍCH
 
@@ -495,8 +497,6 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 1. **[A]** konfigurace Keep Alive
 
    Komunikace mezi aplikačním serverem SAP NetWeaver a ASCS/SCS je směrována prostřednictvím nástroje pro vyrovnávání zatížení softwaru. Nástroj pro vyrovnávání zatížení odpojí neaktivní připojení po konfigurovatelném časovém limitu. Abyste tomu předešli, musíte nastavit parametr v profilu SAP NetWeaver ASCS/SCS a změnit nastavení systému Linux. Další informace najdete v tématu [SAP Note 1410736][1410736] .
-
-   Parametr profilu ASCS/SCS enque/encni/set_so_keepalive byl již přidán v posledním kroku.
 
    <pre><code># Change the Linux system configuration
    sudo sysctl net.ipv4.tcp_keepalive_time=120

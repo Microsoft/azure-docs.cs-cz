@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: a0946da7ff516aa241a0c6d845723c43618ce70e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1b8c432673712b637d51a64ce87b4eb2131be7d
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809485"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760409"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy pro přední dveře Azure
 
@@ -30,7 +30,7 @@ Tento článek obsahuje odpovědi na běžné dotazy k funkcím a funkcím služ
 
 ### <a name="what-is-azure-front-door"></a>Co je Azure Front Door?
 
-Přední dvířka Azure je Application Delivery Network (a) jako služba, která nabízí různé možnosti vyrovnávání zatížení vrstvy 7 pro vaše aplikace. Poskytuje akceleraci dynamického webu (DSA) spolu s globálním vyrovnáváním zatížení téměř v reálném čase. Je to vysoce dostupná a škálovatelná služba, která je plně spravovaná pomocí Azure.
+Přední dvířka Azure je Application Delivery Network (a) jako služba, která nabízí různé možnosti vyrovnávání zatížení vrstvy 7 pro vaše aplikace. Poskytuje akceleraci dynamického webu (DSA) spolu s globálním vyrovnáváním zatížení s převzetím služeb při selhání v téměř reálném čase. Jedná se o vysoce dostupnou a škálovatelnou službu, kterou plně spravuje Azure.
 
 ### <a name="what-features-does-azure-front-door-support"></a>Jaké funkce nabízí podpora front Azure?
 
@@ -159,9 +159,12 @@ Pro možnost spravovaného certifikátu front-dveří se certifikáty připravuj
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Jaké jsou aktuální šifrovací sady, které jsou podporovány předními dvířky Azure?
 
-Pro protokol TLS 1.2 jsou podporovány následující šifrovací sady.
+Pro protokol TLS 1.2 jsou podporovány následující šifrovací sady: 
 
-TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 
 Při použití vlastních domén s povoleným protokolem TLS 1.0/1.1 jsou podporovány následující šifrovací sady:
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5d9d7c59244474c76e63271c0be92f835c2ed087
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3250e4c35f6b898f4431d0f2fe15f84d915c1c8e
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543346"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760392"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
@@ -172,7 +172,7 @@ Změny ve vaší instanci se projeví v dotazech až na 10 sekund. Například p
 Při používání ve verzi Preview jsou k dispozici další omezení `JOIN` .
 * V rámci příkazu nejsou podporovány žádné poddotazy `FROM` .
 * `OUTER JOIN`Sémantika není podporována, což znamená, že pokud má relace hodnotu nula, pak je celý "řádek" odstraněn z výstupní sady výsledků.
-* Ve verzi Public Preview je hloubka procházení grafu omezená: `JOIN` na dotaz je povolená jenom jedna.
+* Během období Preview je hloubka procházení grafu omezená na pět `JOIN` úrovní na jeden dotaz.
 * Zdroj pro `JOIN` operace je omezený: dotaz musí deklarovat vlákna, kde začíná dotaz.
 
 ## <a name="query-best-practices"></a>Osvědčené postupy pro dotazy

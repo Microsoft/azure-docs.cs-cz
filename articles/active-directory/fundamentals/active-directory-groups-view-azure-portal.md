@@ -2,7 +2,7 @@
 title: Rychlý Start – zobrazení skupin & členů – Azure AD
 description: Pokyny pro hledání a zobrazení skupin vaší organizace a jejich přiřazených členů.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d52c90db5414c39c4e916bbab19c43739d9ea904
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ddedd753eb98a8656006c9dddc412e44330e1a21
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75423021"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797487"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -29,7 +29,7 @@ V tomto rychlém startu zobrazíte všechny existující skupiny vaší organiza
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete, budete potřebovat:
 
 - Vytvořit tenanta služby Azure Active Directory. Další informace najdete v článku o [přístupu k portálu služby Azure Active Directory a vytvoření nového tenanta](active-directory-access-create-new-tenant.md).
@@ -61,14 +61,14 @@ Vytvořte nového uživatele se jménem _Alain Charon_. Uživatel musí existova
 
     - **Jméno:** Zadejte _Alain Charon_.
 
-    - **Uživatelské jméno:** Zadejte *alain\@contoso.com*.
+    - **Uživatelské jméno:** Zadejte *alain \@ contoso.com*.
 
 3. Zkopírujte automaticky vygenerované heslo v poli **Heslo** a pak vyberte **Vytvořit**.
 
 ## <a name="add-a-group-member"></a>Přidání člena skupiny
 Teď, když máte skupinu a uživatele, můžete _Alaina Charona_ přidat jako člena do skupiny _MDM policy – West_. Další informace o přidání členů skupiny najdete v článku [Přidání nebo odebrání členů skupin](active-directory-groups-members-azure-portal.md).
 
-1. Vyberte **Azure Active Directory** > **skupiny**.
+1. Vyberte **Azure Active Directory**  >  **skupiny**.
 
 2. Na stránce **Skupiny – Všechny skupiny** vyhledejte skupinu **MDM policy – West** a vyberte ji.
 
@@ -81,7 +81,7 @@ Teď, když máte skupinu a uživatele, můžete _Alaina Charona_ přidat jako �
 ## <a name="view-all-groups"></a>Zobrazení všech skupin
 Všechny skupiny vaší organizace si můžete prohlédnout na stránce **Skupiny – Všechny skupiny** webu Azure Portal.
 
-- Vyberte**skupiny**Azure **Active Directory** > .
+- Vyberte skupiny Azure **Active Directory**  >  **Groups**.
 
     Zobrazí se stránka **Skupiny – Všechny skupiny** se všemi aktivními skupinami.
 

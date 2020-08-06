@@ -5,26 +5,17 @@ author: austonli
 ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 02/07/2020
-ms.openlocfilehash: 977dcc71fd25b19e09cfa9126bf01d380f581aca
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/04/2020
+ms.openlocfilehash: 19fd1d064a3f106d7b770481d1e456c51cf1e166
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289119"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759423"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Průvodce přechodem Azure Monitor návrháře zobrazení na sešity
-[Návrhář zobrazení](view-designer.md) je funkce Azure monitor, která umožňuje vytvářet vlastní zobrazení, která vám pomohou vizualizovat data v pracovním prostoru Log Analytics s grafy, seznamy a časovými osami. Budou postupně vyladěny a nahrazeny sešity, které poskytují další funkce. Tento článek poskytuje přehled procesu převodu stávajících zobrazení do sešitů.
+[Návrhář zobrazení](view-designer.md) je funkce Azure monitor, která umožňuje vytvářet vlastní zobrazení, která vám pomohou vizualizovat data v pracovním prostoru Log Analytics s grafy, seznamy a časovými osami. Přecházejí na sešity, aby poskytovaly flexibilní plátno pro analýzu dat a vytváření bohatých vizuálních sestav v rámci Azure Portal. Tento článek vám pomůže udělat přechod z návrháře zobrazení do sešitů. 
 
-## <a name="retirement-schedule"></a>Plán vyřazení
-
-| Změnit | Co to znamená | Očekávané datum |
-|:---|:---|:---|
-| Zakáže vytváření nových zobrazení vytvořených prostřednictvím návrháře zobrazení. | V Azure Portal už nebudete moct vytvářet a ukládat nová vlastní zobrazení.| Listopadu 2020 |
-| Zakáže funkci Edit pro existující zobrazení v Návrháři zobrazení. | Již nebudete moci upravovat a ukládat změny ve stávajících vlastních zobrazeních. | Listopadu 2020 |
-| Zakázat nasazení zobrazení do Log Analytics pracovních prostorů | K Log Analytics pracovních prostorů už nebudete moct pomocí ARM nasazovat vlastní zobrazení. | Březen 2021 |
-| Návrhář zobrazení již není k dispozici v Azure Portal | Prostředí portálu už nebude podporovat návrháře zobrazení. | Červeně 2021 |
-| Souhrn vlastních zobrazení odebraných z pracovního prostoru | Už nebudete mít přístup k datům vlastních zobrazení. | Prosince 2021 |
 
 ## <a name="workbooks-overview"></a>Přehled sešitů
 [Sešity](../insights/vminsights-workbooks.md) kombinují text, [dotazy protokolů](../log-query/query-language.md), metriky a parametry do propracovaných interaktivních sestav. Členové týmu, kteří mají stejný přístup k prostředkům Azure, můžou upravovat i sešity.

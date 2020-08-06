@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: b3579d12981e2b0add916a280bac7b4f9392d8ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a25a40346d588f56028bf08294b070823b729e25
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80803139"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760137"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace ASP.NET Core
 
@@ -19,7 +19,7 @@ V tomto rychlém startu vytvoříte ucelenou implementaci správy funkcí v apli
 
 Knihovny pro správu funkcí .NET Core přesahují rámec s kompletní podporou příznaků funkcí. Tyto knihovny jsou postaveny na systému konfigurace .NET Core. Bez problémů se integrují s konfigurací aplikací prostřednictvím poskytovatele konfigurace .NET Core.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [.NET Core SDK](https://dotnet.microsoft.com/download).
@@ -28,12 +28,12 @@ Knihovny pro správu funkcí .NET Core přesahují rámec s kompletní podporou 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **správce** > funkcí **+ Přidat** a přidejte příznak funkce s názvem `Beta`.
+6. Vyberte **správce funkcí**  >  **+ Přidat** a přidejte příznak funkce s názvem `Beta` .
 
     > [!div class="mx-imgBorder"]
     > ![Povolit příznak funkce s názvem beta](media/add-beta-feature-flag.png)
 
-    Pro `label` teď nechte nedefinovaného. Výběrem **použít** uložte příznak nové funkce.
+    `label`Pro teď nechte nedefinovaného. Výběrem **použít** uložte příznak nové funkce.
 
 ## <a name="create-an-aspnet-core-web-app"></a>Vytvoření webové aplikace ASP.NET Core
 
@@ -49,14 +49,14 @@ K vytvoření nového projektu webové aplikace ASP.NET Core MVC použijte [rozh
 
 ## <a name="add-secret-manager"></a>Přidat správce tajných klíčů
 
-Chcete-li použít Správce tajných `UserSecretsId` klíčů, přidejte element do souboru *. csproj* .
+Chcete-li použít Správce tajných klíčů, přidejte `UserSecretsId` element do souboru *. csproj* .
 
 1. Otevřete soubor *. csproj* .
 
 1.  Přidejte `UserSecretsId` element, jak je znázorněno zde. Můžete použít stejný identifikátor GUID, nebo můžete tuto hodnotu nahradit vlastními.
 
     > [!IMPORTANT]
-    > `CreateHostBuilder`nahrazuje `CreateWebHostBuilder` v .net Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
+    > `CreateHostBuilder`nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -99,7 +99,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-1. Přidejte odkaz na balíčky `Microsoft.Azure.AppConfiguration.AspNetCore` a balíčky `Microsoft.FeatureManagement.AspNetCore` NuGet spuštěním následujících příkazů:
+1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` `Microsoft.FeatureManagement.AspNetCore` balíčky a balíčky NuGet spuštěním následujících příkazů:
 
     ```dotnetcli
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
@@ -114,7 +114,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
 
 1. Přidejte tajný klíč s názvem **connectionStrings: appconfig** do správce tajných klíčů.
 
-    Tento tajný klíč obsahuje připojovací řetězec pro přístup k úložišti konfigurace aplikace. `<your_connection_string>` Hodnotu v následujícím příkazu nahraďte připojovacím řetězcem pro úložiště konfigurace aplikace. Připojovací řetězec najdete v části **přístupové klíče** v Azure Portal.
+    Tento tajný klíč obsahuje připojovací řetězec pro přístup k úložišti konfigurace aplikace. `<your_connection_string>`Hodnotu v následujícím příkazu nahraďte připojovacím řetězcem pro úložiště konfigurace aplikace. Připojovací řetězec najdete v části **přístupové klíče** v Azure Portal.
 
     Tento příkaz se musí spustit ve stejném adresáři jako soubor *.csproj*.
 
@@ -126,10 +126,10 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
 
     K tomuto tajnému kódu můžete přistupovat pomocí rozhraní API konfigurace aplikace. Dvojtečka (:) funguje v názvu konfigurace s rozhraním API konfigurace aplikace na všech podporovaných platformách. Viz [Konfigurace podle prostředí](https://docs.microsoft.com/aspnet/core/fundamentals/configuration).
 
-1. V *program.cs*aktualizujte `CreateWebHostBuilder` metodu tak, aby používala konfiguraci aplikace, `config.AddAzureAppConfiguration()` voláním metody.
+1. V *program.cs*aktualizujte `CreateWebHostBuilder` metodu tak, aby používala konfiguraci aplikace, voláním `config.AddAzureAppConfiguration()` metody.
 
     > [!IMPORTANT]
-    > `CreateHostBuilder`nahrazuje `CreateWebHostBuilder` v .net Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
+    > `CreateHostBuilder`nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -171,7 +171,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     using Microsoft.FeatureManagement;
     ```
 
-1. Aktualizujte `ConfigureServices` metodu pro přidání podpory příznaků funkcí voláním `services.AddFeatureManagement()` metody. Volitelně můžete zahrnout jakýkoli filtr, který se má použít s příznaky funkcí voláním `services.AddFeatureFilter<FilterType>()`:
+1. Aktualizujte `ConfigureServices` metodu pro přidání podpory příznaků funkcí voláním `services.AddFeatureManagement()` metody. Volitelně můžete zahrnout jakýkoli filtr, který se má použít s příznaky funkcí voláním `services.AddFeatureFilter<FilterType>()` :
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
     ```csharp
@@ -186,7 +186,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllersWithViews();
-        services.AddFeatureManagement();
+        services.AddSingleton(Configuration).AddFeatureManagement();
     }
 
     ---
@@ -288,7 +288,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. Otevřete *_Layout. cshtml* ve sdíleném adresáři *views*\\*Shared* a `<nav>` nahraďte čárový kód `<body>`  >  `<header>` následujícím kódem:
+1. Otevřete *_Layout. cshtml* ve sdíleném adresáři *views* \\ *Shared* a nahraďte `<nav>` Čárový kód `<body>`  >  `<header>` následujícím kódem:
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -343,7 +343,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     dotnet run
     ```
 
-1. Otevřete okno prohlížeče a pro webovou aplikaci hostovanou místně použijte `https://localhost:5000`výchozí adresu URL.
+1. Otevřete okno prohlížeče a pro `https://localhost:5000` webovou aplikaci hostovanou místně použijte výchozí adresu URL.
     Pokud pracujete na Azure Cloud Shell, klikněte na tlačítko *Náhled webu* a potom na *Konfigurovat*.  Po zobrazení výzvy vyberte port 5000.
 
     ![Najít tlačítko Náhled webu](./media/quickstarts/cloud-shell-web-preview.png)
@@ -351,11 +351,11 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     V prohlížeči by se měla zobrazit stránka podobná následujícímu obrázku.
     ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**.
 
-1. Vraťte se do příkazového řádku a stisknutím klávesy `dotnet` `Ctrl-C`zrušte běžící proces.  Restartujte aplikaci pomocí `dotnet run`.
+1. Vraťte se do příkazového řádku a stisknutím klávesy zrušte běžící `dotnet` proces `Ctrl-C` .  Restartujte aplikaci pomocí `dotnet run` .
 
 1. Aktualizujte stránku prohlížeče, aby se zobrazilo nové nastavení konfigurace.
 

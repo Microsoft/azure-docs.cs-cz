@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a393c1ac09283f1570908cea72750ed5ae28f81e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a6d3d4c791cebdee02d7d2c739be3b32b8086ec
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617337"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760885"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Instalace vysoké dostupnosti SAP NetWeaver v clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složce pro instance SAP ASCS/SCS v Azure
 
@@ -199,7 +199,7 @@ ms.locfileid: "77617337"
 
 Tento článek popisuje, jak nainstalovat a nakonfigurovat systém SAP s vysokou dostupností v Azure, s clusterem Windows Server failover cluster (WSFC) a Souborový server se škálováním na více systémů jako možnost pro clusteringu instancí SAP ASCS/SCS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s instalací, přečtěte si následující články:
 
@@ -323,6 +323,7 @@ Aktualizujte parametry v profilu instance SAP ASCS/SCS \<SID> _ASCS/SCS \<Nr> _ 
 | enque/encni/set_so_keepalive  | **podmínka** |
 | Služba/ha_check_node | **1** |
 
+Parametr `enque/encni/set_so_keepalive` je vyžadován pouze v případě, že používáte ENSA1.  
 Restartujte instanci SAP ASCS/SCS. Nastavte `KeepAlive` parametry na uzlech clusteru SAP ASCS/SCS podle pokynů k [Nastavení položek registru v uzlech clusteru instance SAP ASCS/SCS][high-availability-guide]. 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Instalace instance systému DBMS a aplikačních serverů SAP

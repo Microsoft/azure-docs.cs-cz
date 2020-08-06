@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 07/28/2020
-ms.openlocfilehash: 9db6fbe002492c0db6e9e0e5e0a23ca1946759a5
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0adffbb9058141ea89daefc292b937841659c879
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386431"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798065"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Vytvoření nabídky virtuálních počítačů Azure na Azure Marketplace
 
@@ -41,7 +41,7 @@ Pokud jste to ještě neudělali, Projděte si [příručku pro publikování na
 - Kurzy
   - [Virtuální počítače s Linuxem](../../virtual-machines/linux/tutorial-manage-vm.md)
   - [Virtuální počítače s Windows](../../virtual-machines/windows/tutorial-manage-vm.md)
-- ukázky
+- Ukázky
   - [Ukázky v Azure CLI pro virtuální počítače se systémem Linux](../../virtual-machines/linux/cli-samples.md)
   - [Azure PowerShell pro virtuální počítače se systémem Linux](../../virtual-machines/linux/powershell-samples.md)
   - [Ukázky v Azure CLI pro virtuální počítače s Windows](../../virtual-machines/windows/cli-samples.md)
@@ -245,16 +245,17 @@ Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všech
 >[!NOTE]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu, kterou používá Partnerské centrum.
 
-#### <a name="azure-marketplace-logos"></a>Loga Azure Marketplace
+#### <a name="store-logos"></a>Ukládat loga
 
-Zadejte soubory PNG pro logo vaší nabídky s následujícími čtyřmi rozměry obrázků:
+Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije tuto hodnotu k vytvoření **malého** (48 x 48 pixelů) a **středníku** (90 x 90 pixelů). Volitelně je můžete nahradit různými obrázky.
 
-- **Malý** (48 &times; 48 pixelů)
-- **Střední** (90 &times; 90 pixelů)
-- **Velký** (216 &times; 216 pixelů)
-- **Roztažitelné** (255 &times; 115 pixelů)
+Všechny tři velikosti loga se vyžadují pro použití na různých místech v seznamu:
 
-Všechny čtyři loga jsou povinná a zobrazují se v různých Azure Marketplacech seznamech.
+- **Malé** (48 x 48)
+- **Střední** (90 × 90)
+- **Velký** (mezi 216 x 216 a 350 × 350)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 

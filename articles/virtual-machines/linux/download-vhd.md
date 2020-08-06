@@ -4,76 +4,47 @@ description: Stažení virtuálního pevného disku se systémem Linux pomocí r
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: how-to
-ms.date: 08/21/2019
+ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: 6254be55ae2a1ba6d178d330a41903585da2e50a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 897cae53e589f4058e5499c0e6e941d4f1d9bb2f
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289778"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761044"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Stažení virtuálního pevného disku se systémem Linux z Azure
 
-V tomto článku se dozvíte, jak stáhnout soubor virtuálního pevného disku (VHD) pro Linux z Azure pomocí rozhraní příkazového řádku Azure a Azure Portal. 
-
-Pokud jste to ještě neudělali, nainstalujte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-az-cli2).
+V tomto článku se dozvíte, jak stáhnout soubor virtuálního pevného disku (VHD) pro Linux z Azure pomocí Azure Portal. 
 
 ## <a name="stop-the-vm"></a>Zastavení virtuálního počítače
 
-Virtuální pevný disk se nedá stáhnout z Azure, pokud je připojený ke spuštěnému virtuálnímu počítači. Pro stažení virtuálního pevného disku je nutné zastavit virtuální počítač. Pokud chcete použít virtuální pevný disk jako [Image](tutorial-custom-images.md) k vytvoření dalších virtuálních počítačů s novými disky, musíte zrušit zřízení a zobecnit operační systém obsažený v souboru a zastavit virtuální počítač. Pokud chcete virtuální pevný disk použít jako disk pro novou instanci existujícího virtuálního počítače nebo datového disku, stačí zastavit a zrušit přidělení virtuálního počítače.
-
-Pokud chcete virtuální pevný disk použít jako image k vytvoření dalších virtuálních počítačů, proveďte tyto kroky:
-
-1. K připojení a zrušení zřízení použijte SSH, název účtu a veřejnou IP adresu virtuálního počítače. Veřejnou IP adresu najdete pomocí [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show). Parametr + uživatel odebere také naposledy zřízený uživatelský účet. Pokud jste k virtuálnímu počítači přihlásili přihlašovací údaje účtu, ponechte tento parametr uživatelem. Následující příklad odebere poslední zřízený účet uživatele:
-
-    ```bash
-    ssh azureuser@<publicIpAddress>
-    sudo waagent -deprovision+user -force
-    exit 
-    ```
-
-2. Přihlaste se ke svému účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
-3. Zastavte a zrušte přidělení virtuálního počítače.
-
-    ```azurecli
-    az vm deallocate --resource-group myResourceGroup --name myVM
-    ```
-
-4. Generalizujte virtuální počítač. 
-
-    ```azurecli
-    az vm generalize --resource-group myResourceGroup --name myVM
-    ``` 
-
-Pokud chcete virtuální pevný disk použít jako disk pro novou instanci existujícího virtuálního počítače nebo datového disku, proveďte tyto kroky:
+Virtuální pevný disk se nedá stáhnout z Azure, pokud je připojený ke spuštěnému virtuálnímu počítači. Pro stažení virtuálního pevného disku je nutné zastavit virtuální počítač. 
 
 1.  Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2.  V nabídce vlevo vyberte **Virtual Machines**.
 3.  V seznamu vyberte virtuální počítač.
 4.  Na stránce pro virtuální počítač vyberte **zastavit**.
 
-    ![Zastavení virtuálního počítače](./media/download-vhd/export-stop.png)
+    :::image type="content" source="./media/download-vhd/export-stop.PNG" alt-text="Zobrazuje tlačítko nabídky k zastavení virtuálního počítače.":::
 
 ## <a name="generate-sas-url"></a>Vygenerovat adresu URL SAS
 
 Pokud chcete stáhnout soubor VHD, musíte vygenerovat adresu URL [sdíleného přístupového podpisu (SAS)](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) . Po vygenerování adresy URL se adresa URL přiřadí čas vypršení platnosti.
 
-1.  V nabídce stránky pro virtuální počítač vyberte **disky**.
-2.  Vyberte disk s operačním systémem pro virtuální počítač a pak vyberte **exportovat disk**.
-3.  Vyberte **generovat adresu URL**.
-
-    ![Vygenerovat adresu URL](./media/download-vhd/export-generate.png)
-
+1. V nabídce stránky pro virtuální počítač vyberte **disky**.
+2. Vyberte disk s operačním systémem pro virtuální počítač a pak vyberte **exportovat disk**.
+1. V případě potřeby aktualizujte hodnotu adresy URL tak, že **vyprší za (sekundy)** a získáte tak dostatek času na dokončení stahování. Výchozí hodnota je 3600 sekund (jedna hodina).
+3. Vyberte **generovat adresu URL**.
+ 
+      
 ## <a name="download-vhd"></a>Stáhnout VHD
 
 1.  V části vygenerovaná adresa URL vyberte **Stáhnout soubor VHD**.
-**
-    ![Stáhnout VHD](./media/download-vhd/export-download.png)
+
+    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="Zobrazuje tlačítko ke stažení virtuálního pevného disku.":::
 
 2.  Možná budete muset vybrat **Uložit** v prohlížeči a zahájit stahování. Výchozí název souboru VHD je *abcd*.
-
-    ![V prohlížeči vyberte Save (Uložit).](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>Další kroky
 

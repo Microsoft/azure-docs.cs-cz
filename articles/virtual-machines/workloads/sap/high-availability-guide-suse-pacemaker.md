@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/24/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 28e53c5ca53f5be4aafc685445e67dcf4d558773
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073994"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797742"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -221,17 +221,17 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
    <pre><code>sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.17:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.17:3260</b>
-   sudo iscsiadm -m node -p <b>10.0.0.17:3260</b> --op=update --name=node.startup --value=automatic
+   sudo iscsiadm -m node -p <b>10.0.0.17:3260</b> -T <b>iqn.2006-04.nfs.local:nfs</b> --op=update --name=node.startup --value=automatic
    
    # If you want to use multiple SBD devices, also connect to the second iSCSI target server
    sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.18:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.18:3260</b>
-   sudo iscsiadm -m node -p <b>10.0.0.18:3260</b> --op=update --name=node.startup --value=automatic
+   sudo iscsiadm -m node -p <b>10.0.0.18:3260</b> -T <b>iqn.2006-04.nfs.local:nfs</b> --op=update --name=node.startup --value=automatic
    
    # If you want to use multiple SBD devices, also connect to the third iSCSI target server
    sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.19:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.19:3260</b>
-   sudo iscsiadm -m node -p <b>10.0.0.19:3260</b> --op=update --name=node.startup --value=automatic
+   sudo iscsiadm -m node -p <b>10.0.0.19:3260</b> -T <b>iqn.2006-04.nfs.local:nfs</b> --op=update --name=node.startup --value=automatic
    </code></pre>
 
    Ujistěte se, že jsou k dispozici zařízení iSCSI, a poznamenejte si název zařízení (v následujícím příkladu/dev/SDE).
@@ -447,9 +447,14 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 1. **[A]** nastavení rozlišení názvu hostitele
 
    Můžete buď použít server DNS, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
-   V následujících příkazech nahraďte IP adresu a název hostitele. Výhodou použití/etc/hosts je to, že váš cluster bude nezávislý na službě DNS, což může být jen jeden bod selhání.
+   V následujících příkazech nahraďte IP adresu a název hostitele.
 
+   >[!IMPORTANT]
+   > Pokud používáte názvy hostitelů v konfiguraci clusteru, je důležité mít spolehlivé rozlišení názvu hostitele. Pokud názvy nejsou k dispozici a to může vést k prodlevám při převzetí služeb při selhání clusteru, komunikace clusteru selže.
+   > Výhodou použití/etc/hosts je to, že váš cluster bude nezávislý na službě DNS, což může být jen jeden bod selhání.  
+     
    <pre><code>sudo vi /etc/hosts
+
    </code></pre>
 
    Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele tak, aby odpovídaly vašemu prostředí.   

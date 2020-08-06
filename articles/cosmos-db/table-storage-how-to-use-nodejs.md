@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 9404232533ae86e14f9b87c65fdd086f84e8aebb
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 6a9a3df1d200aae9e5ea401652752656ed9ff423
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413999"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760970"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
 
@@ -123,7 +123,7 @@ function (returnObject, finalCallback, next)
 
 V tomto zpětném volání a po zpracování `returnObject` (odpověď z požadavku na server) musí zpětné volání vyvolat, `next` Pokud existuje, aby pokračoval v zpracování jiných filtrů, nebo jednoduše vyvolat `finalCallback` jinak pro ukončení vyvolání služby.
 
-K dispozici jsou dva filtry, které implementují logiku opakování, do sady Azure SDK pro Node.js `ExponentialRetryPolicyFilter** and ` LinearRetryPolicyFilter `. The following creates a ` TableService ` object that uses the ` ExponentialRetryPolicyFilter:
+K dispozici jsou dva filtry, které implementují logiku opakování, do sady Azure SDK pro Node.js `ExponentialRetryPolicyFilter` a `LinearRetryPolicyFilter` . Následující vytvoří `TableService` objekt, který používá `ExponentialRetryPolicyFilter` :
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();

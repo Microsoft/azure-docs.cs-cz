@@ -9,17 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: fe05a474f4f6ee70c07e0e19621487d51d92966d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5862654dac99bea7755eab41cf3c1bd6cdd84526
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87490622"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760307"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Indexování dokumentů v Azure Data Lake Storage Gen2
 
 > [!IMPORTANT] 
-> Podpora Azure Data Lake Storage Gen2 je v současnosti ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Vyplněním [tohoto formuláře](https://aka.ms/azure-cognitive-search/indexer-preview)můžete požádat o přístup k náhledům. Tato funkce poskytuje [REST API verze 2020-06-30-Preview](search-api-preview.md) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
+> Podpora Azure Data Lake Storage Gen2 je v současnosti ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Vyplněním [tohoto formuláře](https://aka.ms/azure-cognitive-search/indexer-preview)můžete požádat o přístup k náhledům. Tuto funkci poskytuje [REST API verze 2020-06-30-Preview](search-api-preview.md) a na portálu. V tuto chvíli není podporovaná žádná podpora sady .NET SDK.
 
 
 Při nastavování účtu úložiště Azure máte možnost povolit [hierarchický obor názvů](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace). Díky tomu může být kolekce obsahu v účtu uspořádána do hierarchie adresářů a vnořených podadresářů. Povolením hierarchického oboru názvů povolíte [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
@@ -38,7 +38,7 @@ Zaregistrujte se do služby Data Lake Storage Gen2 indexer Preview vyplněním [
 
 Jakmile obdržíte potvrzení, že se vaše verze Preview úspěšně přihlásila, jste připraveni vytvořit kanál indexování.
 
-Obsah a metadata z Data Lake Storage Gen2 můžete indexovat pomocí [REST API verze 2020-06-30-Preview](search-api-preview.md). V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
+Obsah a metadata z Data Lake Storage Gen2 můžete indexovat pomocí [REST API verze 2020-06-30-Preview](search-api-preview.md) nebo na portálu. V tuto chvíli není dostupná žádná podpora sady .NET SDK.
 
 Indexování obsahu v Data Lake Storage Gen2 je stejné jako indexování obsahu v úložišti objektů BLOB v Azure. Proto si Pochopte, jak nastavit Data Lake Storage Gen2 zdroj dat, index a indexer, [v tématu Postup indexování dokumentů v azure BLOB Storage pomocí Azure kognitivní hledání](search-howto-indexing-azure-blob-storage.md). Článek o službě BLOB Storage také poskytuje informace o tom, jaké formáty dokumentů jsou podporovány, jaké vlastnosti metadat objektů BLOB jsou extrahovány, přírůstkové indexování a další. Tyto informace budou pro Data Lake Storage Gen2 stejné.
 

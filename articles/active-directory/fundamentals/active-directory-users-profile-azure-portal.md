@@ -2,7 +2,7 @@
 title: Přidání nebo aktualizace informací o profilu uživatele – Azure AD
 description: Pokyny k přidání informací do profilu uživatele v Azure Active Directory, včetně podrobností o obrázku a úloze.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 277f4c7016849fbdbac4b5070c2a4db681cc66a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63b716aa22954af51a9eb53a0d04a8299d348c71
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604008"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797233"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Přidání nebo aktualizace informací o profilu uživatele pomocí Azure Active Directory
 Přidejte informace o profilu uživatele, včetně profilového obrázku, informací specifických pro úlohu a některých nastavení pomocí Azure Active Directory (Azure AD). Další informace o přidání nových uživatelů najdete v tématu [Postup přidání nebo odstranění uživatelů v Azure Active Directory](add-users-azure-active-directory.md).

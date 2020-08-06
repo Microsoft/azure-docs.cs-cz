@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: bc53a243a58522a76be63536aa721f269ed4759a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9503abf147ee89ec03e7e1317df823426ea37b1c
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544043"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87758879"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,7 +45,7 @@ Cluster AKS a pracovní prostor AML můžou být v různých skupinách prostře
 >
 > Můžete se také podívat na Azure Machine Learning – [nasazení do místního poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -185,6 +185,9 @@ cluster_name = 'myexistingcluster'
 attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
 aks_target = ComputeTarget.attach(ws, 'myaks', attach_config)
+
+# Wait for the attach process to complete
+aks_target.wait_for_completion(show_output = True)
 ```
 
 Další informace o třídách, metodách a parametrech použitých v tomto příkladu naleznete v následujících referenčních dokumentech:
@@ -428,7 +431,7 @@ print(token)
 * [Zabezpečené experimentování a odvozování ve virtuální síti](how-to-enable-virtual-network.md)
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
-* [Aktualizovat webovou službu](how-to-deploy-update-web-service.md)
+* [Aktualizace webové služby](how-to-deploy-update-web-service.md)
 * [Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
 * [Využití modelu ML nasazeného jako webové služby](how-to-consume-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)

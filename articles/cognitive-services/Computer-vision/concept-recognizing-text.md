@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 83e76cd96e09b0e136d2bfbe2e5863b289724bdd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2b3f9b0a4bec76f1f5f9b1f42ec33fdf5e2678bf
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284247"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760154"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optické rozpoznávání znaků (OCR)
 
@@ -123,7 +123,7 @@ Nyní operace čtení podporuje extrakci rukopisného textu výhradně v anglič
 
 ### <a name="printed-text-in-supported-languages"></a>Vytištěný text v podporovaných jazycích
 
-Rozhraní API pro čtení 3,0 podporuje extrakci vytištěného textu v angličtině, španělštině, němčině, francouzštině, italštině, portugalštině a nizozemských jazycích. [Readme 3,1-Preview. 1 rozhraní API Public Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) přidává podporu pro zjednodušenou čínštinu. Pokud váš scénář vyžaduje podporu více jazyků, přečtěte si téma Přehled rozhraní OCR v tomto dokumentu. Podívejte se na seznam všech [jazyků podporovaných OCR](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) .
+Rozhraní API pro čtení 3,0 podporuje extrakci vytištěného textu v angličtině, španělštině, němčině, francouzštině, italštině, portugalštině a nizozemských jazycích. [Čtení verze Public preview 3,1 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) přidává podporu pro zjednodušenou čínštinu. Pokud váš scénář vyžaduje podporu více jazyků, přečtěte si téma Přehled rozhraní OCR v tomto dokumentu. Podívejte se na seznam všech [jazyků podporovaných OCR](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) .
 
 ![Otočení obrázku a jeho přečtení a vymezený text](./Images/supported-languages-example.png)
 
@@ -149,5 +149,5 @@ Stejně jako u všech služeb rozpoznávání by měli vývojáři, kteří pou�
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [REST API pro čtení 3,0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005).
-- Přečtěte si informace o [Read 3,1-Preview. 1 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) s přidanou podporou pro zjednodušenou čínštinu.
+- Přečtěte si o [REST API verze Public Preview pro čtení 3,1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005) s přidanou podporou pro zjednodušenou čínštinu.
 - Postupujte podle pokynů v rychlém startu pro [extrakci textu](./QuickStarts/CSharp-hand-text.md) a IMPLEMENTUJTE rozpoznávání OCR pomocí jazyků C#, Java, JavaScript nebo Python spolu s REST API.

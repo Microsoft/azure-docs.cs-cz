@@ -3,7 +3,7 @@ title: Najděte si pomoc a otevřete lístek podpory – Azure Active Directory 
 description: Pokyny k získání pomoci a otevření lístku podpory pro Azure Active Directory.
 services: active-directory
 documentationcenter: na
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c49d795b80ed5e9536740e0d8fe877d070da87a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e4d1490c4900c957a7dce7e632415823723f81b
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799359"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797283"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Najděte nápovědu a otevřete lístek podpory pro Azure Active Directory
 Microsoft poskytuje globální technickou, předprodejní, fakturační a předplacenou podporu pro Azure Active Directory (Azure AD). Podpora je k dispozici online a po telefonu Microsoft Azure placené a zkušební předplatné. V dalších jazycích je k dispozici podpora po telefonu a online podpora k fakturaci. 
@@ -98,6 +98,6 @@ Pokud chcete získat telefonní čísla podpory, přečtěte si stránku [kontak
 
 ##  <a name="next-steps"></a>Další kroky
 
-* [Technická komunita Microsoftu](https://techcommunity.microsoft.com/)
+* [Microsoft Tech Community](https://techcommunity.microsoft.com/)
 
 * [Technickou dokumentaci na adrese docs.microsoft.com](https://docs.microsoft.com/azure/active-directory/)

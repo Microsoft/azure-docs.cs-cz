@@ -1,24 +1,24 @@
 ---
 title: Podpora systému souborů sítě 3,0 ve službě Azure Blob Storage (Preview) | Microsoft Docs
-description: BLOB Storage teď podporuje protokol NFS (Network File System) 3,0. Tato podpora umožňuje klientům Linux připojit kontejner ve službě BLOB Storage z virtuálního počítače Azure nebo místního počítače.
+description: BLOB Storage teď podporuje protokol NFS (Network File System) 3,0. Tato podpora umožňuje klientům Windows a Linux připojit kontejner ve službě BLOB Storage z virtuálního počítače Azure nebo z počítače, který běží místně.
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: ab8d262e4eac08ce21b7ad01402c3608d52a1aab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 32eafc41451c42a9c929e94d30450b923e7eae83
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372888"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760919"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Podpora protokolů systému souborů NFS (Network File System) 3,0 v úložišti objektů BLOB v Azure (Preview)
 
-BLOB Storage teď podporuje protokol NFS (Network File System) 3,0. Tato podpora umožňuje klientům Linux připojit kontejner ve službě BLOB Storage z virtuálního počítače Azure nebo místního počítače. 
+BLOB Storage teď podporuje protokol NFS (Network File System) 3,0. Tato podpora umožňuje klientům systému Windows nebo Linux připojit kontejner v úložišti objektů BLOB z virtuálního počítače Azure nebo místního počítače. 
 
 > [!NOTE]
 > Podpora protokolů NFS 3,0 ve službě Azure Blob Storage je ve verzi Public Preview a je dostupná v těchto oblastech: USA – východ, USA – střed a Kanada – střed.
@@ -41,7 +41,7 @@ Pokud chcete připojit kontejner účtu úložiště, musíte provést tyto akce
 
 7. Připojte kontejner.
 
-Podrobné pokyny najdete v tématu věnovaném připojení služby [BLOB Storage na platformě Linux pomocí protokolu NFS (Network File System) 3,0 (Preview)](network-file-system-protocol-support-how-to.md).
+Podrobné pokyny najdete v tématu [připojení úložiště objektů BLOB pomocí protokolu NFS (Network File System) 3,0 (Preview)](network-file-system-protocol-support-how-to.md).
 
 > [!IMPORTANT]
 > Je důležité, abyste tyto úlohy dokončili v uvedeném pořadí. Předtím, než na svém účtu povolíte protokol NFS 3,0, nemůžete připojit kontejnery, které vytvoříte. Po povolení protokolu NFS 3,0 na účtu ho nemůžete zakázat.
@@ -113,7 +113,7 @@ Během období Preview není účtována transakce. Ceny za transakce se mohou z
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak začít, najdete v tématu [připojení úložiště objektů BLOB v systému Linux pomocí protokolu NFS (Network File System) 3,0 (Preview)](network-file-system-protocol-support-how-to.md).
+Informace o tom, jak začít, najdete v tématu [připojení úložiště objektů BLOB pomocí protokolu NFS (Network File System) 3,0 (Preview)](network-file-system-protocol-support-how-to.md).
 
 
 

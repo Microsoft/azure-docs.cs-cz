@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 22bfab5b9f00a392054fa1aef6a93195180fd968
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 30e57736d0b0e40eb01573d6acca2c618dcf6ee3
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373483"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759695"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,20 +26,23 @@ Zákazníci budou upozorňováni e-mailem a v Azure Portal předem o jakékoli z
 
 ## <a name="status-updates"></a>Aktualizace stavu
 
-# <a name="in-progress"></a>[Probíhá](#tab/in-progress-ip)
+# <a name="in-progress"></a>[Rozpracované](#tab/in-progress-ip)
 ### <a name="september-2020"></a>Září 2020
 
-Nové brány SQL se přidávají do následujících oblastí:
+Nové brány SQL se přidávají do následujících oblastí. Tyto brány SQL začnou přijímat provoz zákazníků 10. září 2020:
+
+- Středozápadní USA: 13.78.248.43 
+- Jižní Afrika sever: 102.133.120.2  
+
+Nové brány SQL se přidávají do následujících oblastí. Tyto brány SQL začnou přijímat provoz zákazníků dne 1. září 2020:
 
 - Severní Evropa: 13.74.104.113 
 - Západ USA 2:40.78.248.10 
 - Západní Evropa: 52.236.184.163 
 - Střed USA – jih: 20.45.121.1, 20.49.88.1 
 
-Stávající brány SQL začnou přijímat přenosy v následujících oblastech:
+Stávající brány SQL začnou přijímat přenosy v následujících oblastech. Tyto brány SQL začnou přijímat zákaznická data od 1. září 2020. :
 - Japonsko – východ: 40.79.184.8, 40.79.192.5
-
-Tyto brány SQL začnou přijímat zákaznická data od 1. září 2020. 
 
 ### <a name="august-2020"></a>Srpen 2020
 
@@ -82,7 +85,7 @@ Může to mít vliv na to, jestli:
 - Použít [redundantní konfiguraci zóny](high-availability-sla.md#zone-redundant-configuration) pro vaši databázi
 
 Nebudete mít vliv na tyto akce:
-
+ 
 - Přesměrování jako zásady připojení
 - Připojení k SQL Database v rámci Azure a používání značek služeb
 - Připojení pomocí podporovaných verzí ovladače JDBC pro SQL Server se nijak neprojeví. Podporované verze JDBC najdete v tématu [Stažení ovladače Microsoft JDBC Driver for SQL Server](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).

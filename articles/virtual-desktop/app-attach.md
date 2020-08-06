@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6f8e20f97ae19a33674631e4dee18901d54462b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 328f7bb8c03cb78f4b5375eb4f6e3d9891b83942
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291515"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760664"
 ---
 # <a name="set-up-msix-app-attach"></a>Nastavení připojení aplikace MSIX
 
@@ -202,19 +202,19 @@ Pokud vaše aplikace používá certifikát, který není veřejný nebo podepsa
 
 1. Klikněte pravým tlačítkem na balíček a vyberte **vlastnosti**.
 2. V zobrazeném okně vyberte kartu **digitální podpisy** . V seznamu na kartě by měla být pouze jedna položka, jak je znázorněno na následujícím obrázku. Vyberte tuto položku, chcete-li položku zvýraznit, a pak vyberte **Podrobnosti**.
-3. Po zobrazení okna podrobnosti digitálního podpisu vyberte kartu **Obecné** a pak vyberte **instalovat certifikát**.
+3. Když se zobrazí okno Podrobnosti digitálního podpisu, vyberte kartu **Obecné** a pak vyberte **Zobrazit certifikát**a pak vyberte **nainstalovat certifikát**.
 4. Jakmile se instalační program otevře, vyberte **místní počítač** jako umístění úložiště a pak vyberte **Další**.
 5. Pokud se instalační program zeptá, jestli chcete aplikaci umožnit, aby na svém zařízení provedla změny, vyberte **Ano**.
 6. Vyberte možnost **umístit všechny certifikáty do následujícího úložiště**a pak vyberte **Procházet**.
 7. Když se zobrazí okno vybrat úložiště certifikátů, vyberte **Důvěryhodné osoby**a pak vyberte **OK**.
-8. Vyberte **Dokončit**.
+8. Vyberte **Další** a **Dokončit**.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Příprava skriptů PowerShellu pro připojení aplikace MSIX
 
 Připojení aplikace MSIX má čtyři samostatné fáze, které je potřeba provést v uvedeném pořadí:
 
 1. Fáze
-2. Zaregistrovat
+2. Registrovat
 3. Zrušení registrace
 4. Depříprava
 

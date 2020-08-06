@@ -2,7 +2,7 @@
 title: Přidání brandingu na přihlašovací stránku vaší organizace – Azure AD
 description: Pokyny, jak přidat branding vaší organizace na přihlašovací stránku Azure Active Directory
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14e1e84fa96b1e6b686d039abedd38e080b5720e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f664f55f2870f4f0e06f3a96a3f2b7ae91e7a378
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603906"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796790"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidání brandingu na přihlašovací stránku Azure Active Directory vaší organizace
 Použijte logo vaší organizace a vlastní barevná schémata k zajištění konzistentního vzhledu na přihlašovacích stránkách Azure Active Directory (Azure AD). Přihlašovací stránky se zobrazí, když se uživatelé přihlásí k webovým aplikacím vaší organizace, jako je například Office 365, který jako zprostředkovatele identity používá službu Azure AD.
@@ -74,7 +74,7 @@ Vaše vlastní branding se okamžitě nezobrazí, když uživatelé přejdou na 
           
           > Podtržení``` ++text++ ``` 
 
-    - **Upřesnit nastavení**
+    - **Rozšířená nastavení**
             
         ![Stránka Konfigurace brandingu společnosti s dokončenými pokročilými nastaveními](media/customize-branding/configure-company-branding-advanced-settings.png)   
 

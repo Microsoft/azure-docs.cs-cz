@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 3af3134f715dc124b4aee3ac0a7bfbf11df6a462
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 5b516eb913bf9e7b8337a41483682e1201c58890
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801865"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759032"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Seznamte se se základy rozpoznávání řeči v rozhraní příkazového řádku
 
@@ -62,7 +62,7 @@ Příkazy v předchozí části jsou skvělé pro rychlé zobrazení fungování
 Pokud máte adresář se zvukovými soubory, je k dispozici pro rychlé rozpoznávání řeči pomocí funkce Speech CLI. Jednoduše spusťte následující příkaz, přejděte do adresáře pomocí `--files` příkazu. V tomto příkladu se připojíte `\*.wav` k adresáři, abyste porozpoznali všechny `.wav` soubory přítomné v adresáři dir. Kromě toho zadejte `--threads` argument pro spuštění rozpoznávání na 10 paralelních vláknech.
 
 > [!NOTE]
-> `--threads`Argument lze také použít v další části `spx synthesize` příkazů a dostupná vlákna budou záviset na procesoru a na aktuálním procentu zatížení.
+> `--threads`Argument lze také použít v další části `spx synthesize` příkazů a dostupná vlákna budou záviset na procesoru a jeho aktuálním procentu zatížení.
 
 ```shell
 spx recognize --files C:\your_wav_file_dir\*.wav --output file C:\output_dir\speech_output.tsv --threads 10

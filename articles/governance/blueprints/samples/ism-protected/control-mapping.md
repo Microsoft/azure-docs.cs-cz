@@ -1,14 +1,14 @@
 ---
 title: Přehled ukázkového podrobného plánu podrobného plánu australské vlády ISM
 description: Přehled ukázkového podrobného plánu podrobného plánu australské vlády ISM Tento ukázkový plán pomůže zákazníkům vyhodnotit konkrétní chráněné ovládací prvky ISM.
-ms.date: 03/10/2020
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: d82598498fa7eb24ec2ea3f591d08ce8f9503b54
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517095"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760426"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Mapování ovládacího prvku pro ukázkovou verzi plánu CHRÁNĚNÉho plánu australské vlády ISM
 
@@ -106,10 +106,10 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 
 - Auditování neomezeného síťového přístupu k účtům úložiště
 - Clustery Service Fabric by se měly používat jenom Azure Active Directory pro ověřování klientů.
-- \[Preview \] : Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
-- \[Verze Preview \] : nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
-- \[Preview \] : Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, které mají účty bez hesla
-- \[Verze Preview \] : nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které mají účty bez hesla
+- Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesel
+- Nasazení požadavků pro audit virtuálních počítačů Linux, které umožňují vzdálená připojení z účtů bez hesel
+- Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, které mají účty bez hesla
+- Nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které mají účty bez hesla
 
 ### <a name="0974-multi-factor-authentication-is-used-to-authenticate-standard-users"></a>pro ověřování standardních uživatelů se používá 0974 Multi-Factor Authentication.
 
@@ -122,8 +122,8 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 
 ### <a name="0421-passphrases-used-for-single-factor-authentication-are-a-minimum-of-14-characters-with-complexity-ideally-as-4-random-words"></a>0421 přístupových hesel používaných pro jednotné vícefaktorové ověřování je minimálně 14 znaků a složitá, v ideálním případě 4 náhodná slova.
 
-- \[Preview \] : Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v nastavení zabezpečení – Zásady účtů
-- \[Verze Preview \] : nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v nastavení zabezpečení – Zásady účtů
+- Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v nastavení zabezpečení – Zásady účtů
+- Nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v nastavení zabezpečení – Zásady účtů
 
 ## <a name="guidelines-for-system-management---system-administration"></a>Pokyny pro správu systému – Správa systému
 
@@ -147,7 +147,7 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 - Ohrožení zabezpečení vašich databází SQL by mělo být opraveno
 - Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení
 - Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení
-- \[Preview \] : posouzení ohrožení zabezpečení by mělo být povolené na Virtual Machines
+- Posouzení ohrožení zabezpečení by mělo být povoleno na počítačích
 - V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
 - Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.
 - Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
@@ -159,7 +159,7 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 - Ohrožení zabezpečení vašich databází SQL by mělo být opraveno
 - Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení
 - Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení
-- \[Preview \] : posouzení ohrožení zabezpečení by mělo být povolené na Virtual Machines
+- Posouzení ohrožení zabezpečení by mělo být povoleno na Virtual Machines
 - V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
 - Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.
 - Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
@@ -171,7 +171,7 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 - Ohrožení zabezpečení vašich databází SQL by mělo být opraveno
 - Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení
 - Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení
-- \[Preview \] : posouzení ohrožení zabezpečení by mělo být povolené na Virtual Machines
+- Posouzení ohrožení zabezpečení by mělo být povoleno na Virtual Machines
 - V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
 - Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.
 - Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
@@ -183,7 +183,7 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 - Ohrožení zabezpečení vašich databází SQL by mělo být opraveno
 - Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení
 - Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení
-- \[Preview \] : posouzení ohrožení zabezpečení by mělo být povolené na Virtual Machines
+- Posouzení ohrožení zabezpečení by mělo být povoleno na Virtual Machines
 - V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
 - Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.
 - Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
@@ -195,7 +195,7 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 - Ohrožení zabezpečení vašich databází SQL by mělo být opraveno
 - Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení
 - Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení
-- \[Preview \] : posouzení ohrožení zabezpečení by mělo být povolené na Virtual Machines
+- Posouzení ohrožení zabezpečení by mělo být povoleno na Virtual Machines
 - V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
 - Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.
 - Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
@@ -207,7 +207,7 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 - Ohrožení zabezpečení vašich databází SQL by mělo být opraveno
 - Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení
 - Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení
-- \[Preview \] : posouzení ohrožení zabezpečení by mělo být povolené na Virtual Machines
+- Posouzení ohrožení zabezpečení by mělo být povoleno na Virtual Machines
 - V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
 - Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.
 - Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
@@ -229,8 +229,8 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 ### <a name="0582-the-following-events-are-logged-for-operating-systems-access-to-important-data-and-processes-application-crashes-and-any-error-messages-attempts-to-use-special-privileges-changes-to-accounts-changes-to-security-policy-changes-to-system-configurations-domain-name-system-dns-and-hypertext-transfer-protocol-http-requests-failed-attempts-to-access-data-and-system-resources-service-failures-and-restarts-system-startup-and-shutdown-transfer-of-data-to-external-media-user-or-group-management-use-of-special-privileges"></a>0582 následující události jsou protokolovány pro operační systémy: přístup k důležitým datům a procesům, selháním aplikací a jakýmkoli chybovým zprávám, se pokusí použít zvláštní oprávnění, změny účtů, změny v zásadách zabezpečení, změny konfigurace systému, DNS (Domain Name System) a HTTP (Hypertext Transfer Protocol), neúspěšné pokusy o přístup k datům a systémovým prostředkům, spuštění a restartování systému , přenos dat na externí média, uživatele nebo správu skupin, použití zvláštních oprávnění
 
 - \[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
-- \[Preview \] : Audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
-- \[Preview \] : Audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestav
+- Audit Log Analytics nasazení agenta v VMSS-VM Image (OS) bez seznamu
+- Audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestavy
 - Auditování nastavení diagnostiky
 
 ### <a name="1537-the-following-events-are-logged-for-databases-access-to-particularly-important-information-addition-of-new-users-especially-privileged-users-any-query-containing-comments-any-query-containing-multiple-embedded-queries-any-query-or-database-alerts-or-failures-attempts-to-elevate-privileges-attempted-access-that-is-successful-or-unsuccessful-changes-to-the-database-structure-changes-to-user-roles-or-database-permissions-database-administrator-actions-database-logons-and-logoffs-modifications-to-data-use-of-executable-commands"></a>1537 pro databáze jsou protokolovány následující události: přístup k obzvláště důležitým informacím, přidání nových uživatelů, zvláště privilegovaných uživatelů, všech dotazech obsahujících komentáře, všech dotazech, které obsahují několik vložených dotazů, všech dotazech a výstrahách nebo selháních databáze, se pokusí o zvýšení oprávnění, pokus o přístup, který je úspěšný nebo neúspěšný, změny ve struktuře databáze, změny rolí uživatele nebo oprávnění databáze a akce správce databáze , přihlášení a odhlášení databáze, úpravy dat, použití spustitelných příkazů
@@ -246,7 +246,7 @@ Tento podrobný plán vám pomůže omezit umístění nasazení všech prostře
 - Ohrožení zabezpečení vašich databází SQL by mělo být opraveno
 - Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení
 - Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení
-- \[Preview \] : posouzení ohrožení zabezpečení by mělo být povolené na Virtual Machines
+- Posouzení ohrožení zabezpečení by mělo být povoleno na Virtual Machines
 - V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
 - Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.
 - Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno

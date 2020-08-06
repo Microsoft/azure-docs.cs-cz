@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/17/2020
+ms.date: 07/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13a11c74087731ddd3de4d6277e605ce06a8eea6
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: df9c55971d05efcdbf1300a8023285bd0c8f3e4f
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126261"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796866"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-raketa"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s raketa
 
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak integrovat raketa s Azure Active Directory (Azure
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -43,8 +43,7 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Raketa podporuje jednotné přihlašování iniciované v **SP**
-
+* Raketa podporuje jednotné přihlašování iniciované v **SP** .
 * Po nakonfigurování raketa můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-raketa-from-the-gallery"></a>Přidání raketa z Galerie
@@ -52,11 +51,21 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 Pokud chcete nakonfigurovat integraci raketa do služby Azure AD, musíte přidat raketa z Galerie do svého seznamu spravovaných aplikací SaaS.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
-1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **raketa** .
-1. Na panelu výsledků vyberte **raketa** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** [1].
+
+    ![rkt_1](./media/raketa-tutorial/azure-active-directory.png)
+
+1. Přejděte k **podnikovým aplikacím** [2] a pak vyberte **všechny aplikace** [3].
+
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** [4]. 
+
+    ![rkt_2](./media/raketa-tutorial/new-app.png)
+
+1. V části **Přidat z Galerie** [5] zadejte **raketa** do vyhledávacího pole [6].
+
+1. Vyberte **raketa** z panelu výsledků [7] a potom klikněte na tlačítko **Přidat** [8]. 
+
+    ![rkt_3](./media/raketa-tutorial/add-btn.png)
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-raketa"></a>Konfigurace a testování jednotného přihlašování Azure AD pro raketa
@@ -76,57 +85,88 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **raketa** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **raketa** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování** [9].
 
-   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+    ![rkt_4](./media/raketa-tutorial/manage-sso.png)
+
+1. Na stránce **metody výběru jednotného přihlašování** [9] vyberte **SAML** [10].
+
+    ![rkt_5](./media/raketa-tutorial/saml.png)
+
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** [11] a upravte nastavení.
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://raketa.travel/`
+    1. Do textového pole **identifikátor (ID entity)** [12] a **přihlašovací adresa URL** [14] zadejte adresu URL: `https://raketa.travel/` .
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://raketa.travel/sso/acs?clientId=<CLIENT_ID>`
+    1. Do textového pole **Adresa URL odpovědi** [13] zadejte adresu URL pomocí následujícího vzoru: `https://raketa.travel/sso/acs?clientId=<CLIENT_ID>` .  
+
+    ![rkt_6](./media/raketa-tutorial/enter-urls.png)
 
     > [!NOTE]
     > Hodnota adresy URL odpovědi není reálné číslo. Aktualizujte hodnotu skutečnou adresou URL odpovědi. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta raketa](mailto:help@raketa.travel) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
-
-    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** a vyberte **Stáhnout** [15] a Stáhněte certifikát a uložte ho do počítače.
 
 1. V části **Nastavení raketa** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+    1. Přihlašovací adresa URL [16] – Adresa URL autorizační webové stránky, která se používá k přesměrování uživatelů na ověřovací systém.
+
+    1. Identifikátor Azure AD [17] – identifikátor Azure AD.
+
+    1. Odhlašovací adresa URL [18] – Adresa URL webové stránky, která se používá k přesměrování uživatelů po odhlášení
+
+    ![rkt_7](./media/raketa-tutorial/copy-urls.png)
+
+
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. V horní části obrazovky vyberte **Nový uživatel** .
+1. V levém podokně Azure Portal vyberte **Azure Active Directory** [1], vyberte **uživatele** [19] a pak vyberte **Všichni uživatelé** [20].
+
+1. V horní části obrazovky vyberte **Nový uživatel** [21].
+
+    ![rkt_8](./media/raketa-tutorial/new-user.png)
+
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
-   1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
-   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+
+   1. Do pole **uživatelské jméno** [22] zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+
+   1. Do pole **název** [23] zadejte `B.Simon` .
+
+   1. Zaškrtněte políčko **Zobrazit heslo** [25] a pak zapište hodnotu, která se zobrazí v poli **heslo** [24].
+
+   1. Klikněte na **vytvořit** [26]. 
+
+    ![rkt_9](./media/raketa-tutorial/create-user.png)
+
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k raketa.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte **raketa**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. V Azure Portal vyberte **podnikové aplikace** [2] a pak vyberte **všechny aplikace** [3].
 
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+1. V seznamu aplikace vyberte **raketa** [27].  
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+    ![rkt_10](./media/raketa-tutorial/add-raketa.png)
 
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** [28]. 
 
-1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+    ![rkt_11](./media/raketa-tutorial/users-groups.png)
+
+1. Vyberte **Přidat uživatele** [29] a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** [30].
+
+    ![rkt_12](./media/raketa-tutorial/add-user-raketa.png)
+
+1. V dialogovém okně **Uživatelé a skupiny** vyberte **B. Simon** [31] ze seznamu uživatelů a pak klikněte na tlačítko **Vybrat** [32] v dolní části obrazovky.
+
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** [33]. 
+
+    ![rkt_13](./media/raketa-tutorial/assign-user.png)
 
 ## <a name="configure-raketa-sso"></a>Konfigurace jednotného přihlašování raketa
 
@@ -134,7 +174,7 @@ Ke konfiguraci jednotného přihlašování na straně **raketa** je potřeba od
 
 ### <a name="create-raketa-test-user"></a>Vytvořit testovacího uživatele raketa
 
-V této části vytvoříte uživatele s názvem B. Simon v raketa. Pokud chcete přidat uživatele na platformě raketa, pracujte s [týmem podpory raketa](mailto:help@raketa.travel) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v raketa. Pokud chcete přidat uživatele na platformě raketa, pracujte s [týmem podpory raketa](mailto:help@raketa.travel) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO
 
@@ -142,7 +182,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici raketa, měli byste se automaticky přihlásit k raketa, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -155,4 +195,3 @@ Když na přístupovém panelu kliknete na dlaždici raketa, měli byste se auto
 - [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [Jak chránit raketa pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 11/01/2019
+ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: 29138b4fc6716ae5361cc4d7f97ceba41b90c2da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 051737a9f5e0d4092cda26a3f7ce3df1d7f535ef
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259948"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760120"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Akce v modulu Standard rules pro Azure CDN
 
@@ -30,11 +30,11 @@ Pomocí této akce můžete přepsat hodnotu TTL (Time to Live) koncového bodu 
 
 #### <a name="required-fields"></a>Povinná pole
 
-Chování mezipaměti |  Description              
+Chování mezipaměti |  Popis              
 ---------------|----------------
 Vynechat mezipaměť | Pokud je vybrána tato možnost a pravidlo odpovídá, není obsah uložen do mezipaměti.
-Přepis | Pokud je vybrána tato možnost a pravidlo odpovídá, hodnota TTL vrácená z vašeho zdroje je přepsána hodnotou zadanou v akci.
-Nastavit, pokud chybí | Pokud je vybrána tato možnost a pravidlo se shoduje s tím, že se od počátku nevrátí žádná hodnota TTL, nastaví pravidlo hodnotu TTL na hodnotu zadanou v akci.
+Přepis | Pokud je vybrána tato možnost a pravidlo odpovídá, hodnota TTL vrácená z vašeho zdroje je přepsána hodnotou zadanou v akci. Toto chování bude použito pouze v případě, že odpověď bude možné ukládat do mezipaměti. Pro hlavičkovou odpověď Cache-Control s hodnotami "žádná mezipaměť", "Private", "No-Store" nebude tato akce platná.
+Nastavit, pokud chybí | Pokud je vybrána tato možnost a pravidlo se shoduje s tím, že se od počátku nevrátí žádná hodnota TTL, nastaví pravidlo hodnotu TTL na hodnotu zadanou v akci. Toto chování bude použito pouze v případě, že odpověď bude možné ukládat do mezipaměti. Pro hlavičkovou odpověď Cache-Control s hodnotami "žádná mezipaměť", "Private", "No-Store" nebude tato akce platná.
 
 #### <a name="additional-fields"></a>Další pole
 
@@ -48,12 +48,12 @@ Tuto akci použijte k úpravě klíče mezipaměti založeného na řetězcích 
 
 #### <a name="required-fields"></a>Povinná pole
 
-Chování | Description
+Chování | Popis
 ---------|------------
 Zařadit členy | Pokud je vybrána tato možnost a pravidlo odpovídá, budou řetězce dotazů zadané v parametrech zahrnuty při vygenerování klíče mezipaměti. 
 Ukládat do mezipaměti každou jedinečnou adresu URL | Pokud je vybrána tato možnost a pravidlo odpovídá, každá jedinečná adresa URL má svůj vlastní klíč mezipaměti. 
 Exclude | Pokud je vybrána tato možnost a pravidlo odpovídá, jsou při vygenerování klíče mezipaměti vyloučeny řetězce dotazů zadané v parametrech.
-Ignorovat řetězce dotazu | Když se vybere tato možnost a pravidlo se shoduje, řetězce dotazů se při vygenerování klíče mezipaměti neberou v úvahu. 
+Ignorovat řetězce dotazů | Když se vybere tato možnost a pravidlo se shoduje, řetězce dotazů se při vygenerování klíče mezipaměti neberou v úvahu. 
 
 ### <a name="modify-request-header"></a>Upravit hlavičku požadavku
 
@@ -85,10 +85,10 @@ Tuto akci použijte k přesměrování klientů na novou adresu URL.
 
 #### <a name="required-fields"></a>Povinná pole
 
-Pole | Description 
+Pole | Popis 
 ------|------------
 Typ | Vyberte typ odpovědi, který se má vrátit žadateli: Nalezeno (302), přesunuto (301), dočasné přesměrování (307) a trvalé přesměrování (308).
-Protocol (Protokol) | Požadavek shody, HTTP, HTTPS.
+Protokol | Požadavek shody, HTTP, HTTPS.
 Název hostitele | Vyberte název hostitele, na který chcete požadavek přesměrovat. Ponechte prázdné, pokud chcete zachovat příchozího hostitele.
 Cesta | Zadejte cestu, která se má použít v přesměrování. Ponechte prázdné, pokud chcete zachovat příchozí cestu.  
 Řetězec dotazu | Zadejte řetězec dotazu použitý v přesměrování. Ponechte prázdné, pokud chcete zachovat příchozí řetězec dotazu. 
@@ -102,7 +102,7 @@ Pomocí této akce přepište cestu k žádosti, která je v cestě k původním
 
 #### <a name="required-fields"></a>Povinná pole
 
-Pole | Description 
+Pole | Popis 
 ------|------------
 Zdrojový vzor | Definujte zdrojový vzor v cestě URL, která má být nahrazena. V současné době zdrojový vzor používá shodu na základě předpony. Pro vyhledání všech cest URL použijte lomítko ( **/** ) jako hodnotu zdrojového vzoru.
 Cíl | Zadejte cílovou cestu, která se má použít při přepisování. Cílová cesta přepíše zdrojový vzor.

@@ -494,10 +494,8 @@
       items:
         - name: Přehled vlastních klíčových slov
           href: custom-keyword-overview.md
-        - name: Vlastní pokyny pro pojmenovávání klíčových slov
-          href: speech-devices-sdk-kws-guidelines.md
-        - name: Rozpoznávání vlastních klíčových slov
-          href: speech-devices-sdk-create-kws.md
+        - name: Základy vlastních klíčových slov
+          href: custom-keyword-basics.md
 - name: Rozpoznávání mluvčího
   items:
     - name: Přehled
@@ -642,7 +640,7 @@
       href: how-to-migrate-from-bing-speech.md
     - name: Z rozhraní Translator Speech API
       href: how-to-migrate-from-translator-speech-api.md
-- name: Zdroje informací
+- name: Zdroje a prostředky
   items:
     - name: Podpora
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'

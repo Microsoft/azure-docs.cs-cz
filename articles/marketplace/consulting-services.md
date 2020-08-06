@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 5cea220b44618787e34ce2297921d715476b7f14
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 31bb6dd188786fda532bf85d071e119e69e5bccc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280949"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797861"
 ---
 # <a name="consulting-service-offers"></a>Konzultační nabídky služeb
 
@@ -86,12 +86,12 @@ Partneři se systémovým integrátorem mohou odesílat konzultační nabídky n
 Začněte tím, že [zaregistrujete](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) firemní informace na webu Marketplace. Úplný kontrolní seznam požadavků na registraci najdete v tématu [se stala vydavatelem na webu Marketplace](become-publisher.md). 
 
 ## <a name="prepare-your-publishing-artifacts"></a>Příprava publikovaných artefaktů
-Před registrací můžete začít shromažďovat a připravovat obsah, který vám pomůže vašemu seznamu vyjadřují hodnotu vaší služby a řešení cílovému zákazníkovi. 
+Před registrací můžete začít shromažďovat a připravovat obsah, který vám pomůže vašemu seznamu vyjadřují hodnotu vaší služby a řešení cílovému zákazníkovi.
 
 |Nastavení pro nové vydavatele  |
 |---------|
 |ID MPN     |
-|Loga společnosti (48 x 48, 216 × 216 pixelů)     |
+|Loga společnosti: 48 x 48 pixelů (volitelné), 216 x 216 pixelů – 350 x 350 pixelů (povinné)  |
 |Cíl zájemce     |
 ||
 

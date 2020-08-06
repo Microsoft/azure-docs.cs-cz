@@ -2,7 +2,7 @@
 title: Představení služby Azure Active Directory -Azure Active Directory | Microsoft Docs
 description: Přehled a koncepční informace o Azure Active Directory, včetně terminologie, jaké licence jsou k dispozici, a seznam přidružených funkcí s odkazy pro další informace.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddfb0343e925354a57a54e02f3eb98b7a1d01bcb
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bd63e82788856624c3babe078de52e698f190ce0
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495110"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796621"
 ---
 # <a name="what-is-azure-active-directory"></a>Představení služby Azure Active Directory
 
@@ -66,7 +66,7 @@ Po výběru licence Azure AD získáte přístup k některým nebo všem násled
 |Kategorie|Popis|
 |-------|-----------|
 |Správa aplikací|Spravujte své cloudové a místní aplikace pomocí proxy aplikací, jednotného přihlašování, portálu moje aplikace (označovaného také jako přístupový panel) a aplikací SaaS (software jako služba). Další informace najdete v tématu [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](../manage-apps/application-proxy.md) a [dokumentaci správy aplikací](../manage-apps/index.yml).|
-|Authentication|Spravujte Azure Active Directory Samoobslužné resetování hesla, Multi-Factor Authentication, vlastní seznam zakázaných hesel a inteligentní uzamčení. Další informace najdete v [dokumentaci k ověřování Azure AD](../authentication/index.yml).|
+|Ověřování uživatelů|Spravujte Azure Active Directory Samoobslužné resetování hesla, Multi-Factor Authentication, vlastní seznam zakázaných hesel a inteligentní uzamčení. Další informace najdete v [dokumentaci k ověřování Azure AD](../authentication/index.yml).|
 |Azure Active Directory pro vývojáře|Vytvářejte aplikace, které přihlásí všechny identity Microsoftu, získávají tokeny pro volání Microsoft Graph, dalších rozhraní API Microsoftu nebo vlastních rozhraní API. Další informace najdete v tématu [Microsoft Identity Platform (Azure Active Directory pro vývojáře)](../develop/index.yml).|
 |B2B (Business-to-Business)|Spravujte uživatele typu Host a externí partnery a udržujte si kontrolu nad vašimi podnikovými daty. Další informace najdete v tématu [Azure Active Directory dokumentaci B2B](../b2b/index.yml).|
 |B2C (Business-to-Customer)|Přizpůsobte a určete, jak se uživatelé při používání vašich aplikací přihlásí, přihlásí a spravují své profily. Další informace najdete v [dokumentaci Azure Active Directory B2C](../../active-directory-b2c/index.yml).|

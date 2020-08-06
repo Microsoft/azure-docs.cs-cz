@@ -7,20 +7,27 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 9ba0ad1414a09aec7ec2fb6b8c209b23f3f37050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6bbb2abe24eba96fd2c55b7aaf15ccd8ae33530
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82202209"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760939"
 ---
 # <a name="what-is-azure-private-link-service"></a>Co je služba privátního propojení Azure?
 
 Služba privátního propojení Azure je odkazem na vlastní službu, která využívá privátní propojení Azure. Služba, která je spuštěná za [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) , se dá povolit pro přístup k privátním odkazům, aby k nim uživatelé mohli přistupovat soukromě z vlastních virtuální sítě. Vaši zákazníci můžou ve své virtuální síti vytvořit privátní koncový bod a namapovat ho k této službě. Tento článek vysvětluje koncepty týkající se strany poskytovatele služeb. 
 
+:::image type="content" source="./media/private-link-service-overview/consumer-provider-endpoint.png" alt-text="Pracovní postup služby privátního propojení" border="true":::
+
+*Obrázek: služba privátního propojení Azure.*
+
 ## <a name="workflow"></a>Pracovní postup
 
 ![Pracovní postup služby privátního propojení](media/private-link-service-overview/private-link-service-workflow.png)
+
+
+*Obrázek: pracovní postup služby privátního propojení Azure.*
 
 ### <a name="create-your-private-link-service"></a>Vytvoření služby privátního propojení
 

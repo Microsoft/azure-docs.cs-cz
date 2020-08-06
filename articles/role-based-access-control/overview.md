@@ -1,5 +1,5 @@
 ---
-title: Co je řízení přístupu na základě role Azure (Azure RBAC)?
+title: Co je řízení přístupu na základě role v Azure (Azure RBAC)?
 description: Získejte přehled řízení přístupu na základě role v Azure (Azure RBAC). K řízení přístupu k prostředkům Azure použijte přiřazení rolí.
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.workload: identity
 ms.date: 07/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 45601e820bc03b263fbf664a43ce34266dc4a488
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.custom: azuread-video-2020
+ms.openlocfilehash: cb77bfb6173e94ea3cdaadf4456947de75676565
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171571"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761123"
 ---
-# <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Co je řízení přístupu na základě role Azure (Azure RBAC)?
+# <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Co je řízení přístupu na základě role v Azure (Azure RBAC)?
 
 Správa přístupu ke cloudovým prostředkům je velmi důležitou funkcí pro jakoukoli organizaci, která používá cloud. Řízení přístupu na základě role v Azure (Azure RBAC) pomáhá spravovat, kdo má přístup k prostředkům Azure, co s těmito prostředky může dělat a k jakým oblastem mají přístup.
 
@@ -84,7 +85,7 @@ V Azure můžete zadat obor na více úrovních: [skupina pro správu](../govern
 
 ![Obor přiřazení role](./media/overview/rbac-scope.png)
 
-Když udělíte přístup na úrovni nadřízeného oboru, podřízené obory zdědí příslušná oprávnění. Například:
+Když udělíte přístup na úrovni nadřízeného oboru, podřízené obory zdědí příslušná oprávnění. Příklad:
 
 - Pokud uživateli přiřadíte roli [Vlastník](built-in-roles.md#owner) na úrovni oboru skupiny pro správu, může tento uživatel spravovat vše ve všech předplatných v příslušné skupině pro správu.
 - Pokud přiřadíte roli [Čtenář](built-in-roles.md#reader) skupině v oboru předplatného, členové takové skupiny mohou zobrazit všechny skupiny prostředků a prostředky v daném předplatném.
@@ -136,7 +137,6 @@ Níže jsou uvedené kroky vysoké úrovně, které Azure RBAC používá k urč
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Rychlý Start: zobrazení přístupu uživatele k prostředkům Azure](check-access.md)
 - [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md)
 - [Vysvětlení různých rolí](rbac-and-directory-admin-roles.md)
 - [Architektura pro přijetí do cloudu: Správa přístupu k prostředkům v Azure](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

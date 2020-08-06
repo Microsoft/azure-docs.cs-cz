@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 94c5ee53b48aa1e373099614d1637d4b6da0088b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7494135cd4912ec8e59a32592ebcca0e0a6813b0
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502014"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797810"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Šifrování dat pro Azure Database for PostgreSQL jeden server pomocí Azure CLI
 
@@ -93,6 +93,25 @@ Po zašifrování Azure Database for PostgreSQL jednoho serveru pomocí spravova
 * [Vytvoření serveru repliky pro čtení](howto-read-replicas-cli.md)
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>Po obnovení serveru se znovu ověří šifrování dat obnoveného serveru.
+
+*   Přiřazení identity serveru repliky
+```azurecli-interactive
+az postgres server update --name  <server name>  -g <resoure_group> --assign-identity
+```
+
+*   Získat existující klíč, který se má použít pro obnovený server nebo server repliky
+
+```azurecli-interactive
+az postgres server key list --name  '<server_name>'  -g '<resource_group_name>'
+```
+
+*   Nastavte zásady pro novou identitu pro obnovený server nebo server repliky.
+
+```azurecli-interactive
+az keyvault set-policy --name <keyvault> -g <resoure_group> --key-permissions get unwrapKey wrapKey --object-id <principl id of the server returned by the step 1>
+```
+
+* Znovu ověřit obnovený server nebo server repliky pomocí šifrovacího klíče
 
 ```azurecli-interactive
 az postgres server key create –name  <server name> -g <resource_group> --kid <key url>

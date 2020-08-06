@@ -12,20 +12,20 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7832f2db73655d76cc29dc17dd823fc5e0e7fcb3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c8e2372e22c9db3aa5ea8b0bd953f18a2c01fbe2
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504258"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761021"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Rychlý Start: nastavení nabízených oznámení v centru oznámení
 
 Azure Notification Hubs poskytuje modul nabízených oznámení, který se snadno používá a který se škáluje. Pomocí Notification Hubs můžete odesílat oznámení na libovolnou platformu (iOS, Android, Windows, Baidu) a z libovolného back-endu (v cloudu nebo místně). Další informace najdete v tématu [co je Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
-V tomto rychlém startu použijete nastavení PNS (Platform Notification System) v Notification Hubs k nastavení nabízených oznámení na více platformách. V tomto rychlém startu se dozvíte o krocích, které je potřeba provést v Azure Portal.  [Zasílání zpráv v cloudu Google Firebase](?tabs=azure-cli#google-firebase-cloud-messaging-fcm) zahrnuje pokyny k používání rozhraní příkazového řádku Azure CLI.
+V tomto rychlém startu použijete nastavení PNS (Platform Notification System) v Notification Hubs k nastavení nabízených oznámení na více platformách. V tomto rychlém startu se dozvíte o krocích, které je potřeba provést v Azure Portal. [Zasílání zpráv v cloudu Google Firebase](?tabs=azure-cli#google-firebase-cloud-messaging-fcm) zahrnuje pokyny k používání rozhraní příkazového řádku Azure CLI.
 
-Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho hned teď. Další informace najdete v tématu [vytvoření centra oznámení Azure v Azure Portal](create-notification-hub-portal.md) nebo [vytvoření centra oznámení Azure pomocí Azure CLI](create-notification-hub-azure-cli.md) .
+Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho hned teď. Další informace najdete v tématu [vytvoření centra oznámení Azure v Azure Portal](create-notification-hub-portal.md) nebo [vytvoření centra oznámení Azure pomocí Azure CLI](create-notification-hub-azure-cli.md).
 
 ## <a name="apple-push-notification-service"></a>Apple Push Notification Service
 
@@ -67,7 +67,7 @@ Po dokončení těchto kroků výstraha indikuje, že centrum oznámení bylo ú
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte mít následující:
 
@@ -109,9 +109,7 @@ Než začnete, musíte mít následující:
 
 Reference k rozhraní příkazového řádku Azure CLI pro jiné platformy získáte pomocí příkazu [AZ Notification-hub Credential](/cli/azure/ext/notification-hub/notification-hub/credential) .
 
----
-
-Další informace o doručování oznámení do aplikace pro Android najdete v tématu [Posílání nabízených oznámení do zařízení se systémem Android pomocí Firebase](notification-hubs-android-push-notification-google-fcm-get-started.md).
+Další informace o odesílání oznámení do aplikace pro Android najdete v tématu [Posílání nabízených oznámení na zařízení s Androidem pomocí Firebase](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
 ## <a name="windows-push-notification-service"></a>Služba nabízených oznámení Windows
 

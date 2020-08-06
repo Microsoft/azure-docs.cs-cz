@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 799206ee08dc3b1cdac46a0e4e79d2c929138c31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d2262017b257e9d7540d8dc640123ab584223d6
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718593"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797147"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracoviště na Facebooku pro Automatické zřizování uživatelů
 
@@ -33,7 +33,9 @@ Tento kurz popisuje kroky, které je třeba provést na pracovišti na Facebooku
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a pracovištěm pomocí Facebooku
 > * [Jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial) k pracovní ploše na Facebooku (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+>[!VIDEO https://www.youtube.com/embed/oF7I0jjCfrY]
+
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -66,7 +68,7 @@ Než nakonfigurujete a povolíte službu zřizování, musíte určit, kteří u
 
 Přidejte pracovní plochu z Galerie aplikací Azure AD na Facebooku a začněte spravovat zřizování na pracovišti pomocí Facebooku. Pokud jste dříve nastavili pracovní plochu na webu Facebook pro jednotné přihlašování (SSO), můžete použít stejnou aplikaci. Doporučuje se ale při počátečním testování integrace vytvořit samostatnou aplikaci. Další informace o přidání aplikace z Galerie [najdete tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app).
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4. Definujte, kdo bude v oboru pro zřizování. 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4: Definujte, kdo bude v oboru pro zřizování. 
 
 Služba zřizování Azure AD umožňuje obor, který se zřídí na základě přiřazení do aplikace, nebo na základě atributů uživatele nebo skupiny. Pokud se rozhodnete určit rozsah, který se zřídí pro vaši aplikaci na základě přiřazení, můžete k přiřazení uživatelů a skupin k aplikaci použít následující [postup](../manage-apps/assign-user-or-group-access-portal.md) . Pokud se rozhodnete obor, který se zřídí výhradně na základě atributů uživatele nebo skupiny, můžete použít filtr oboru, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
@@ -74,7 +76,7 @@ Služba zřizování Azure AD umožňuje obor, který se zřídí na základě p
 
 * Začněte malým. Než se pustíte do všech uživatelů, testujte je s malou sadou uživatelů a skupin. Pokud je obor pro zřizování nastavený na přiřazené uživatele a skupiny, můžete to řídit přiřazením jednoho nebo dvou uživatelů nebo skupin k aplikaci. Pokud je obor nastavený na všechny uživatele a skupiny, můžete zadat [Filtr oboru založený na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -157,7 +159,7 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 ## <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 *  Pokud se uživateli zobrazí zpráva, že uživatel nebyl úspěšně vytvořen a existuje událost protokolu auditu s kódem "1789003", znamená to, že uživatel pochází z neověřené domény.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

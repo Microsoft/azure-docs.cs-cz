@@ -3,7 +3,7 @@ title: Delegování zásad správného řízení přístupu k tvůrcům katalogu
 description: Naučte se delegovat řízení přístupu od správců IT na tvůrce katalogu a vedoucích projektů, aby mohli spravovat přístup sami.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02f44543f78789284e7b8d39471d1346ca7b8e74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e41f372cd0105896765d5a267456b6bda767dd4d
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078369"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798422"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Delegování zásad správného řízení přístupu tvůrcům katalogu v Azure AD – Správa nároků
 

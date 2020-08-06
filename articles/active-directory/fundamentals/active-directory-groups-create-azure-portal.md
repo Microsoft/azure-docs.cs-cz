@@ -2,7 +2,7 @@
 title: Vytvoření základní skupiny a přidání členů – Azure Active Directory | Microsoft Docs
 description: Pokyny, jak vytvořit základní skupinu pomocí Azure Active Directory.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4539fe1d8f5fbfab8e73de3a9ac35baa154b142
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51b257eb833f6c270f2f1b79b2cccd247c8a2d42
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604348"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797657"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory
 Základní skupinu můžete vytvořit na portálu Azure Active Directory (Azure AD). Pro účely tohoto článku přidá základní skupinu do jednoho prostředku vlastník prostředku (správce) a skupina zahrnuje konkrétní členy (zaměstnance), kteří k danému prostředku potřebují přístup. Složitější scénáře, které zahrnují dynamická členství a vytváření pravidel, najdete v [dokumentaci ke správě uživatelů ve službě Azure Active Directory](../users-groups-roles/index.yml).
@@ -32,7 +32,7 @@ Existuje několik typů skupin a členství. Následující informace popisují 
 
 ### <a name="membership-types"></a>Typy členství:
 - **Přiřazení.** Umožňuje přidat konkrétní uživatele jako členy této skupiny s jedinečnými oprávněními. Pro účely tohoto článku používáme tuto možnost.
-- **Dynamický uživatel**: Umožňuje používat dynamická pravidla členství k automatickému přidávání a odebírání členů. Pokud se změní atributy člena, systém se podívá do pravidel dynamických skupin u adresáře a zjistí, zda člen splňuje požadavky pravidla (je přidán) nebo zda již požadavky pravidel nesplňuje (je odebrán).
+- **Dynamický uživatel.** Umožňuje používat dynamická pravidla členství k automatickému přidávání a odebírání členů. Pokud se změní atributy člena, systém se podívá do pravidel dynamických skupin u adresáře a zjistí, zda člen splňuje požadavky pravidla (je přidán) nebo zda již požadavky pravidel nesplňuje (je odebrán).
 - **Dynamické zařízení**: Umožňuje použít dynamická skupinová pravidla a automaticky tak přidávat a odebírat zařízení. Pokud se změní atributy zařízení, systém se podívá do pravidel dynamických skupin u adresáře a zjistí, zda zařízení splňuje požadavky pravidla (je přidáno) nebo zda již požadavky pravidel nesplňuje (je odebráno).
 
     > [!IMPORTANT]
@@ -59,7 +59,7 @@ Vytvořit základní skupinu a přidat do ní členy můžete současně. Chcete
 
 1. Přidejte **e-mailovou adresu skupiny** pro skupinu nebo nechte automaticky vyplněnou e-mailovou adresu.
 
-1. **Popis skupiny**: Volitelně můžete přidat také popis skupiny.
+1. **Popis skupiny** Volitelně můžete přidat také popis skupiny.
 
 1. Vyberte předem definovaný **typ členství (povinné).** Další informace o typech členství naleznete v tématu [Group and Membership Types](#membership-types).
 
