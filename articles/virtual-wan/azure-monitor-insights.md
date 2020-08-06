@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8553a809173d955a21e6730de35c70de5b69e81b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: e3316b4a2255652972a0b9deef813f894f993589
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87136148"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836067"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan-preview"></a>Azure Monitor Insights pro virtuální síť WAN (Preview)
 
@@ -21,7 +21,7 @@ ms.locfileid: "87136148"
 Metriky na úrovni prostředků virtuální sítě WAN se shromažďují a prezentují prostřednictvím předem zabaleného sešitu metriky virtuální sítě WAN, který zobrazuje metriky na úrovni virtuální sítě WAN, centra, brány a připojení. Tento článek vás provede kroky k použití služby Azure Monitor Insights pro virtuální síť WAN k zobrazení vaší virtuální sítě WAN a metriky na jednom místě.
 
 > [!NOTE]
-> V rámci této verze Preview se probíhá zavádění nabídky přehledů.
+> Možnost nabídky Insights na virtuálním portálu WAN se právě zavádí. Při zavádění nabídky přehledů pro virtuální síť WAN se k virtuální síti WAN a sešitu metrik se dá získat přímý pøístup pomocí Azure Montor pro sítě. Další informace najdete v tématu [Azure monitor Insights](../azure-monitor/insights/network-insights-overview.md) . 
 >
 
 ## <a name="before-you-begin"></a>Než začnete

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 10c9e2c3ecefedded393d6949be1480f2f02973b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: aae0ed4efa7f96ab6258dbf0ce4c34a6879ecbc2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131051"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832803"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -158,7 +158,7 @@ Azure nabízí několik způsobů použití kontejnerů ve vašich aplikacích.
   >
   > **Začínáme**: [použijte vlastní image docker pro App Service v systému Linux](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Ověřování uživatelů
 
 Je velmi důležité nejen zjistit, kdo používá vaše aplikace, ale také k tomu, aby se zabránilo neoprávněnému přístupu k prostředkům. Azure nabízí několik způsobů, jak ověřit klienty aplikace.
 
@@ -193,7 +193,7 @@ Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat p
 Bez ohledu na to, jestli je zřizování virtuálních počítačů nebo publikování vašich webových aplikací pomocí průběžné integrace, se Azure integruje s většinou oblíbených DevOps nástrojů. Můžete pracovat s nástroji, které už máte, a maximalizovat stávající prostředí s podporou nástrojů jako:
 
 * Jenkins
-* GitHub
+* GitHubu
 * Puppet
 * Chef
 * TeamCity
@@ -233,7 +233,7 @@ Azure poskytuje dva způsoby, jak spravovat aplikace a služby z příkazového 
 
 -   [Azure PowerShell](../../powershell-install-configure.md): poskytuje sadu modulů s rutinami, které vám umožní spravovat prostředky Azure pomocí Windows PowerShellu.
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 [Azure Portal](https://portal.azure.com) je webová aplikace. Pomocí Azure Portal můžete vytvářet, spravovat a odebírat prostředky a služby Azure. Obsahuje:
 
@@ -285,7 +285,7 @@ I definování individuálních identit účtů Azure, označovaných také jako
 
 ### <a name="manage-your-subscriptions"></a>Správa odběrů
 
-Předplatné je logické seskupení služeb Azure, které jsou propojené s účtem Azure. Jeden účet Azure může obsahovat několik předplatných. Fakturace služeb Azure se provádí na základě jednotlivých předplatných. Seznam dostupných nabídek pro předplatné podle typu najdete v tématu [informace o nabídce Microsoft Azure](https://azure.microsoft.com/support/legal/offer-details/). Předplatná Azure mají správce účtu, který má plnou kontrolu nad předplatným. Mají také správce služeb, který má kontrolu nad všemi službami v rámci předplatného. Informace o klasických správcích předplatných najdete v tématu [Přidání nebo změna správců předplatného Azure](../../cost-management-billing/manage/add-change-subscription-administrator.md). Pomocí [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md)je možné jednotlivým účtům udělit podrobnou kontrolu nad prostředky Azure.
+Předplatné je logické seskupení služeb Azure, které jsou propojené s účtem Azure. Jeden účet Azure může obsahovat několik předplatných. Fakturace služeb Azure se provádí na základě jednotlivých předplatných. Seznam dostupných nabídek pro předplatné podle typu najdete v tématu [informace o nabídce Microsoft Azure](https://azure.microsoft.com/support/legal/offer-details/). Předplatná Azure mají správce účtu, který má plnou kontrolu nad předplatným. Mají také správce služeb, který má kontrolu nad všemi službami v rámci předplatného. Informace o klasických správcích předplatných najdete v tématu [Přidání nebo změna správců předplatného Azure](../../cost-management-billing/manage/add-change-subscription-administrator.md). Jednotlivým účtům se dá udělit detailní řízení prostředků Azure pomocí [řízení přístupu založeného na rolích Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
 #### <a name="resource-groups"></a>Skupiny prostředků
 

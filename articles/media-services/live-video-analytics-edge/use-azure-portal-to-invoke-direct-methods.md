@@ -13,28 +13,28 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 763dd82c8263a5e180468f9fbd7f86526295a80d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d784e1697dfbcbfec509c1a51c9b832b533c97b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279283"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830746"
 ---
 # <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>Použití Azure Portal k vyvolání přímých metod
 
-IoT Hub poskytuje možnost vyvolat [přímé metody](/azure/iot-hub/iot-hub-devguide-direct-methods#method-invocation-for-iot-edge-modules) na hraničních zařízeních z cloudu. Modul Live video Analytics na IoT Edge (LVA) zveřejňuje několik [přímých metod](/azure/media-services/live-video-analytics-edge/direct-methods) , které se dají použít k definování, nasazení a vytvoření instance různých pracovních postupů pro analýzu živého videa.
+IoT Hub poskytuje možnost vyvolat [přímé metody](../../iot-hub/iot-hub-devguide-direct-methods.md#method-invocation-for-iot-edge-modules) na hraničních zařízeních z cloudu. Modul Live video Analytics na IoT Edge (LVA) zveřejňuje několik [přímých metod](./direct-methods.md) , které se dají použít k definování, nasazení a vytvoření instance různých pracovních postupů pro analýzu živého videa.
 
 V tomto článku se dozvíte, jak volat přímé volání metod na živé analýzy videí pro IoT Edge modul přes Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Máte živé video analýzy na IoT Edge modulu běžícím na hraničním zařízení, a to pomocí metod popsaných v tématu [rychlý Start: Live video Analytics na IoT Edge](/azure/media-services/live-video-analytics-edge/get-started-detect-motion-emit-events-quickstart) nebo pomocí [portálu.](/azure/media-services/live-video-analytics-edge/deploy-iot-edge-device)
+* Máte živé video analýzy na IoT Edge modulu běžícím na hraničním zařízení, a to pomocí metod popsaných v tématu [rychlý Start: Live video Analytics na IoT Edge](./get-started-detect-motion-emit-events-quickstart.md) nebo pomocí [portálu.](./deploy-iot-edge-device.md)
 
-* Porozumíte [Live video Analytics](/azure/media-services/live-video-analytics-edge/overview) a [koncept mediálního grafu](/azure/media-services/live-video-analytics-edge/media-graph-concept).
+* Porozumíte [Live video Analytics](./overview.md) a [koncept mediálního grafu](./media-graph-concept.md).
 
 ## <a name="invoking-direct-methods-via-azure-portal"></a>Vyvolání přímých metod prostřednictvím Azure Portal
 
-Každá z [přímých metod](/azure/media-services/live-video-analytics-edge/direct-methods) vystavených modulem lva může být vyvolána prostřednictvím Azure Portal. Následující postup obsahuje podrobné informace o jedné přímé metodě. Pomocí podobných kroků můžete vyvolat další přímé metody. Každá přímá metoda však vyžaduje konkrétní tělo JSON.
+Každá z [přímých metod](./direct-methods.md) vystavených modulem lva může být vyvolána prostřednictvím Azure Portal. Následující postup obsahuje podrobné informace o jedné přímé metodě. Pomocí podobných kroků můžete vyvolat další přímé metody. Každá přímá metoda však vyžaduje konkrétní tělo JSON.
 
 Použijte `GraphTopologyList` volání metody k načtení seznamu všech topologií grafů aktuálně nasazených ve službě Live video Analytics v modulu IoT Edge. K vyvolání této přímé metody použijte následující postup:
 
@@ -62,7 +62,7 @@ Použijte `GraphTopologyList` volání metody k načtení seznamu všech topolog
 1. V oblasti **výsledků** by se měla zobrazit zpráva o stavu 200.<br><br>
     ![časový limit připojení](media/use-azure-portal-to-invoke-directs-methods/connection-timeout.png)
 
-## <a name="responses"></a>Odpovědi
+## <a name="responses"></a>Odezvy
 
 | Podmínka             | Stavový kód | Podrobný kód chyby |
 |-----------------------|-------------|---------------------|
@@ -72,9 +72,9 @@ Použijte `GraphTopologyList` volání metody k načtení seznamu všech topolog
 
 ## <a name="next-steps"></a>Další kroky
 
-Další přímé metody lze nalézt na stránce [přímé metody](/azure/media-services/live-video-analytics-edge/direct-methods) .
+Další přímé metody lze nalézt na stránce [přímé metody](./direct-methods.md) .
 
 > [!NOTE]
 > Instance grafu vytvoří instanci konkrétní topologie, proto před vytvořením instance grafu zkontrolujte, zda máte nastavenou správnou topologii.
 
-[Rychlý Start: detekce událostí vygenerování pohybu](/azure/media-services/live-video-analytics-edge/get-started-detect-motion-emit-events-quickstart) je dobrým odkazem pro porozumění přesné sekvenci volání přímých metod, které se mají provést.
+[Rychlý Start: detekce událostí vygenerování pohybu](./get-started-detect-motion-emit-events-quickstart.md) je dobrým odkazem pro porozumění přesné sekvenci volání přímých metod, které se mají provést.

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: 2028cae4908214db28de2545f02f5f2997eeb8af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077482"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832514"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Konfigurace ověřování Azure Active Directory pro uživatele VPN
 
@@ -23,13 +23,13 @@ Tento typ připojení vyžaduje, aby byl na klientském počítači nakonfigurov
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření sítě WAN
-> * Vytvoření rozbočovače
-> * Vytvoření konfigurace P2S
-> * Stáhnout profil klienta VPN
-> * Použití konfigurace P2S na rozbočovač
-> * Připojení virtuální sítě k rozbočovači
-> * Stažení a použití konfigurace klienta VPN
+> * Vytvoření virtuální sítě WAN
+> * Vytvořit virtuální rozbočovač
+> * Vytvoření konfigurace sítě VPN uživatele
+> * Stažení profilu sítě VPN uživatele virtuální sítě WAN
+> * Použít konfiguraci VPN uživatele na virtuálním rozbočovači
+> * Připojení virtuální sítě k virtuálnímu rozbočovači
+> * Stažení a použití konfigurace klienta VPN uživatele
 > * Zobrazení virtuální sítě WAN
 
 ![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwanp2s.png)
@@ -81,9 +81,9 @@ V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a př
 3. Klikněte na **Zkontrolovat a vytvořit**.
 4. Na stránce **ověřování proběhlo úspěšně** klikněte na **vytvořit**.
 
-## <a name="create-a-new-p2s-configuration"></a><a name="site"></a>Vytvořit novou konfiguraci P2S
+## <a name="create-a-new-user-vpn-configuration"></a><a name="site"></a>Vytvořit novou konfiguraci sítě VPN uživatele
 
-Konfigurace P2S definuje parametry pro připojení vzdálených klientů.
+Konfigurace sítě VPN uživatele definuje parametry pro připojení vzdálených klientů.
 
 1. V části virtuální síť WAN vyberte **Konfigurace sítě VPN uživatele**.
 
@@ -93,7 +93,16 @@ Konfigurace P2S definuje parametry pro připojení vzdálených klientů.
 
    ![Nová konfigurace](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
 
-3. Zadejte informace a klikněte na **vytvořit** .
+3. Zadejte informace a klikněte na **vytvořit**.
+
+   * **Název konfigurace** – zadejte název, kterým chcete zavolat konfiguraci sítě VPN uživatele.
+   * **Typ tunelu** – vyberte OpenVPN.
+   * **Metoda ověřování** – vyberte Azure Active Directory.
+   * **Cílová skupina** – zadejte ID aplikace podnikové aplikace [Azure](openvpn-azure-ad-tenant.md) , která je zaregistrovaná ve vašem tenantovi Azure AD. 
+   * **Stavil** - `https://sts.windows.net/<your Directory ID>/`
+   * **Tenant AAD** - `https://login.microsoftonline.com/<your Directory ID>`
+  
+
 
    ![Nová konfigurace](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
@@ -111,7 +120,7 @@ Konfigurace P2S definuje parametry pro připojení vzdálených klientů.
 6. Klikněte na **Confirm** (Potvrdit).
 7. Dokončení operace může trvat až 30 minut.
 
-## <a name="download-vpn-profile"></a><a name="device"></a>Stažení profilu sítě VPN
+## <a name="download-user-vpn-profile"></a><a name="device"></a>Stáhnout profil VPN uživatele
 
 Pomocí profilu sítě VPN nakonfigurujte své klienty.
 
@@ -188,13 +197,12 @@ Pomocí tohoto [odkazu](https://www.microsoft.com/p/azure-vpn-client-preview/9np
 2. Na stránce Overview (Přehled) každý bod na mapě představuje jeden rozbočovač.
 3. V části Hubs and connections (Rozbočovače a připojení) můžete zjistit stav rozbočovače, lokalitu, oblast, stav připojení VPN a přijaté a odeslané bajty.
 
-
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>Vyčištění prostředků
 
-Pokud už tyto prostředky nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít rutinu [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup). Položku myResourceGroup nahraďte názvem vaší skupiny prostředků a spusťte následující příkaz PowerShellu:
+Pokud už tyto prostředky nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít [příkaz Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) . Položku myResourceGroup nahraďte názvem vaší skupiny prostředků a spusťte následující příkaz PowerShellu:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Další kroky

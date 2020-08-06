@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 27691d8fab3e7c8ccd60351dc0be83898ff984ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baa15b656f061d812b29ded99d55da13294f9800
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73622432"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835846"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Urychlené používání sítě pomocí zotavení po havárii virtuálních počítačů Azure
 
@@ -24,7 +24,7 @@ Akcelerované síťové služby umožňují virtuálnímu počítači pomocí ro
 
 Azure Site Recovery vám umožní využívat výhody akcelerované sítě pro virtuální počítače Azure, u kterých došlo k převzetí služeb při selhání do jiné oblasti Azure. Tento článek popisuje, jak můžete povolit akcelerované síťové služby pro virtuální počítače Azure replikované pomocí Azure Site Recovery.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že rozumíte:
 -   [Architektura replikace](azure-to-azure-architecture.md) virtuálních počítačů Azure
@@ -45,7 +45,7 @@ Akcelerované sítě se podporují na většině účelových a výpočetních i
 
 Na instancích, které podporují multithreading, se zrychluje síť pro instance virtuálních počítačů se 4 nebo více vCPU. Podporované řady: D/DSv3, E/ESv3, Fsv2 a MS/MMS
 
-Další informace o instancích virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů s Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Další informace o instancích virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů s Windows](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="accelerated-networking-with-linux-vms"></a>Urychlení sítě pomocí virtuálních počítačů se systémem Linux
 
@@ -66,7 +66,7 @@ Akcelerované sítě se podporují na většině účelových a výpočetních i
 
 Na instancích, které podporují multithreading, se zrychluje síť pro instance virtuálních počítačů se 4 nebo více vCPU. Podporované řady jsou: D/DSv3, E/ESv3, Fsv2 a MS/MMS.
 
-Další informace o instancích virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů se systémem Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Další informace o instancích virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů se systémem Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="enabling-accelerated-networking-for-replicated-vms"></a>Povolení akcelerovaných síťových služeb pro replikované virtuální počítače
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f119acc06883dc077218c56accd31c805092db85
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 293a0fcd1211739be07e58f414bd6861bf47eb76
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088287"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831103"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One ve službě Azure Virtual Machines
 Tento dokument poskytuje pokyny k nasazení SAP Business One na Azure Virtual Machines. Dokumentace není náhradou pro instalaci aplikace Business One for SAP. Dokumentace by se měla týkat základních pokynů pro plánování a nasazení infrastruktury Azure pro provozování obchodních aplikací v jednom.
@@ -149,7 +149,7 @@ Pokud SAP HANA strategie zálohování a obnovení, měli byste si přečíst [p
 ### <a name="business-one-client-server"></a>Podnikový jeden klientský server
 Pro tyto součásti se nejedná o zásadní obavy týkající se úložiště. Nicméně chcete mít spolehlivou platformu. Proto byste pro tento virtuální počítač měli použít Azure Premium Storage, a to i pro základní virtuální pevný disk. Velikost virtuálního počítače nastavujte pomocí dat uvedených v tématu [Průvodce požadavky SAP podniku na hardware](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). V případě Azure se musíte zaměřit a počítat s požadavky uvedenými v kapitole 2,4 dokumentu. Při výpočtu požadavků je třeba je porovnat s následujícími dokumenty a najít ideální virtuální počítač pro vás:
 
-- [Velikosti virtuálních počítačů s Windows v Azure](../../windows/sizes.md)
+- [Velikosti virtuálních počítačů s Windows v Azure](../../sizes.md)
 - [Poznámka ke SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 
 Porovnejte počet procesorů a paměti, které je třeba zdokumentovat od Microsoftu. Při volbě virtuálních počítačů si taky Pamatujte na propustnost sítě.

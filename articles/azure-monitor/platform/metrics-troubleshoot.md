@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b2f7e45c7f6092566314e6e4867bc0345683e4eb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4800234b55507b7c8d8a16d16ce4d2fef3365baa
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318381"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829590"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Řešení potíží s grafy metrik
 
@@ -42,7 +42,7 @@ Abyste mohli procházet metriky, ve vašem předplatném musí být zaregistrova
 
 ### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>Nemáte dostatečná přístupová práva ke svému prostředku
 
-V Azure se přístup k metrikám řídí prostřednictvím [řízení přístupu na základě role](../../role-based-access-control/overview.md). Abyste mohli procházet metriky prostředků, musíte být členem role [Čtenář monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader), [Přispěvatel monitorování](../../role-based-access-control/built-in-roles.md#monitoring-contributor) nebo [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor).
+V Azure se přístup ke metrikám řídí [řízením přístupu na základě role Azure (RBAC)](../../role-based-access-control/overview.md). Abyste mohli procházet metriky prostředků, musíte být členem role [Čtenář monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader), [Přispěvatel monitorování](../../role-based-access-control/built-in-roles.md#monitoring-contributor) nebo [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor).
 
 **Řešení:** Ujistěte se, že máte dostatečná oprávnění pro prostředek, ze kterého prozkoumáte metriky.
 
@@ -118,4 +118,3 @@ Metriky hostovaného operačního systému se ve výchozím nastavení ukládaj�
 * [Další informace o rozšířených funkcích Průzkumníka metrik](metrics-charts.md)
 * [Seznam dostupných metrik pro služby Azure](metrics-supported.md)
 * [Příklady nakonfigurovaných grafů](metric-chart-samples.md)
-

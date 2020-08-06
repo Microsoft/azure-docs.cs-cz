@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: c74713ac6ca2b90b20b4e3b2409e3a9761c9c3f2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6f7f2adb5c3e154c3910ee1082e9afad70de9758
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508436"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836169"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Běžné příkazy PowerShellu pro vytváření a správu virtuálních počítačů Azure
 
@@ -39,7 +39,7 @@ Tyto proměnné mohou být užitečné při spuštění více než jednoho z př
 
 | Úkol | Příkaz |
 | ---- | ------- |
-| Vytvořit konfiguraci virtuálního počítače |$vm = [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) -VMName $MyVM-VMSize "Standard_D1_v1"<BR></BR><BR></BR>Konfigurace virtuálního počítače se používá k definování nebo aktualizaci nastavení virtuálního počítače. Konfigurace se inicializuje s názvem virtuálního počítače a jeho [velikosti](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). |
+| Vytvořit konfiguraci virtuálního počítače |$vm = [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) -VMName $MyVM-VMSize "Standard_D1_v1"<BR></BR><BR></BR>Konfigurace virtuálního počítače se používá k definování nebo aktualizaci nastavení virtuálního počítače. Konfigurace se inicializuje s názvem virtuálního počítače a jeho [velikosti](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). |
 | Přidat nastavení konfigurace |$vm = [set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) -VM $VM-Windows-ComputerName $MyVM-Credential $Cred-ProvisionVMAgent-EnableAutoUpdate<BR></BR><BR></BR>Do objektu konfigurace, který jste dříve vytvořili pomocí New-AzVMConfig, se přidají nastavení operačního systému včetně [přihlašovacích údajů](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) . |
 | Přidat síťové rozhraní |$vm = [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) -VM $VM-ID $nic. Účet<BR></BR><BR></BR>Virtuální počítač musí mít [síťové rozhraní](./quick-create-powershell.md?toc=/azure/virtual-machines/windows/toc.json) pro komunikaci ve virtuální síti. K načtení stávajícího objektu síťového rozhraní můžete také použít [příkaz Get-AzNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) . |
 | Zadat image platformy |$vm = [set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) -VM $VM-Publisher "publisher_name"-nabídky "publisher_offer"-sku "product_sku"-Version "nejnovější"<BR></BR><BR></BR>Do objektu konfigurace, který jste dříve vytvořili pomocí New-AzVMConfig, se přidají [informace o imagi](cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Objekt vrácený z tohoto příkazu se používá jenom v případě, že jste nastavili disk s operačním systémem pro použití image platformy. |

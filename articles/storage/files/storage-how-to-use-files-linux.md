@@ -1,18 +1,18 @@
 ---
 title: Použití souborů Azure se systémem Linux | Microsoft Docs
-description: Zjistěte, jak připojit sdílenou složku Azure přes protokol SMB v systému Linux.
+description: Zjistěte, jak připojit sdílenou složku Azure přes protokol SMB v systému Linux. Podívejte se na seznam požadavků. Projděte si otázky zabezpečení protokolu SMB pro klienty se systémem Linux.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0270cebec21ca10327a86ea5efebef9a52455930
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bc0390ba9bf8d0f80d1533fe6e40b42df0cb5359
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089341"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835710"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v rámci distribucí systému Linux pomocí [klienta jádra protokolu SMB](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby, jak připojit sdílenou složku Azure: na vyžádání pomocí `mount` příkazu a po spuštění vytvořením položky v `/etc/fstab` .
@@ -248,22 +248,22 @@ Od verze Linux kernel 4,18 se modul jádra SMB, který se volá `cifs` z původn
 
 | Distribuce | Může zakázat protokol SMB 1. |
 |--------------|-------------------|
-| Ubuntu 14.04 – 16.04 | No |
-| Ubuntu 18.04 | Yes |
-| Ubuntu 19.04 + | Yes |
-| Debian 8-9 | No |
-| Debian 10 + | Yes |
-| Fedora 29 + | Yes |
-| CentOS 7 | No | 
-| CentOS 8 + | Yes |
-| Red Hat Enterprise Linux 6. x-7. x | No |
-| Red Hat Enterprise Linux 8 + | Yes |
-| openSUSE, přestupné 15,0 | No |
-| openSUSE přestupné 15.1 + | Yes |
-| openSUSE Tumbleweed | Yes |
-| SUSE Linux Enterprise 11. x-12. x | No |
-| SUSE Linux Enterprise 15 | No |
-| SUSE Linux Enterprise 15,1 | No |
+| Ubuntu 14.04 – 16.04 | Ne |
+| Ubuntu 18.04 | Ano |
+| Ubuntu 19.04 + | Ano |
+| Debian 8-9 | Ne |
+| Debian 10 + | Ano |
+| Fedora 29 + | Ano |
+| CentOS 7 | Ne | 
+| CentOS 8 + | Ano |
+| Red Hat Enterprise Linux 6. x-7. x | Ne |
+| Red Hat Enterprise Linux 8 + | Ano |
+| openSUSE, přestupné 15,0 | Ne |
+| openSUSE přestupné 15.1 + | Ano |
+| openSUSE Tumbleweed | Ano |
+| SUSE Linux Enterprise 11. x-12. x | Ne |
+| SUSE Linux Enterprise 15 | Ne |
+| SUSE Linux Enterprise 15,1 | Ne |
 
 Pomocí následujícího příkazu můžete zjistit, jestli vaše distribuce systému Linux podporuje `disable_legacy_dialects` parametr Module.
 

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: bfc22862bc40679644d7dc9eddedf45fbacccab1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ca2da842d9a2d529cf5ea01211efaff2047a9e9a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292885"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836016"
 ---
 # <a name="playback-with-azure-media-player"></a>Přehrávání pomocí Azure Media Player
 
@@ -47,7 +47,7 @@ Pomocí [stránky Azure Media Player demo](https://aka.ms/azuremediaplayer) mů�
 
 ## <a name="set-up-azure-media-player-in-your-html"></a>Nastavení Azure Media Player ve formátu HTML
 
-Nastavení Azure Media Player je snadné. Získání základního přehrávání mediálního obsahu z vašeho účtu Media Services trvá jenom chvíli. Podrobnosti o tom, jak nastavit a nakonfigurovat Azure Media Player, najdete v [dokumentaci k Azure Media Player](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview) .
+Nastavení Azure Media Player je snadné. Získání základního přehrávání mediálního obsahu z vašeho účtu Media Services trvá jenom chvíli. Podrobnosti o tom, jak nastavit a nakonfigurovat Azure Media Player, najdete v [dokumentaci k Azure Media Player](../azure-media-player/azure-media-player-overview.md) .
 
 ## <a name="additional-notes"></a>Další poznámky
 
@@ -55,5 +55,5 @@ Nastavení Azure Media Player je snadné. Získání základního přehrávání
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Dokumentace k Azure Media Playeru](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview)
+* [Dokumentace k Azure Media Playeru](../azure-media-player/azure-media-player-overview.md)
 * [Ukázky Azure Media Player](https://github.com/Azure-Samples/azure-media-player-samples)

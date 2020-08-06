@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/10/2017
 ms.author: cynthn
 ms.custom: storage accounts
-ms.openlocfilehash: 288a697339fc6f8b001b445840e3fa98ab92f9a4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d667ff3949fcf58affc72b5d75a40abd8ca0dcb6
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292259"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830304"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Nahrání a vytvoření virtuálního počítače se systémem Linux z vlastního disku pomocí Azure CLI
 
@@ -72,7 +72,7 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-Cílový účet úložiště musí být stejný jako místo, kam jste nahráli virtuální disk. Je také nutné zadat nebo odpovědět na výzvu pro všechny další parametry vyžadované příkazem **AZ VM Create** , jako je například virtuální síť, veřejná IP adresa, uživatelské jméno a klíč SSH. Můžete si přečíst další informace o [dostupných parametrech rozhraní příkazového řádku classic správce prostředků](../azure-cli-arm-commands.md#virtual-machines).
+Cílový účet úložiště musí být stejný jako místo, kam jste nahráli virtuální disk. Je také nutné zadat nebo odpovědět na výzvu pro všechny další parametry vyžadované příkazem **AZ VM Create** , jako je například virtuální síť, veřejná IP adresa, uživatelské jméno a klíč SSH. Můžete si přečíst další informace o [dostupných parametrech rozhraní příkazového řádku classic správce prostředků](/previous-versions/azure/virtual-machines/azure-cli-arm-commands#virtual-machines).
 
 ## <a name="requirements"></a>Požadavky
 K provedení následujících kroků potřebujete:

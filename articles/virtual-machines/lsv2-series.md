@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 4ca6d6647882e81dbf20a0dd39b1ae659b6a6ab6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 64f1de178e2b1e1692ddad316e6c1c1d20517b78
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432993"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835829"
 ---
 # <a name="lsv2-series"></a>Řada Lsv2
 
@@ -87,7 +87,7 @@ Aktualizace pro zachování paměti: nepodporováno
 
 Cenová kalkulačka: [Cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 
-Další informace o typech disků: [typy disků](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+Další informace o typech disků: [typy disků](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Další kroky

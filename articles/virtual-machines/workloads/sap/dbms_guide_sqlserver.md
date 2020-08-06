@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b1771b0b55301fe4beaf2049859ebf3b9642fdd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e217540b1dd3744da855c71e0add289dd1c9e18
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077336"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831052"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server nasazení Azure Virtual Machines DBMS pro SAP NetWeaver
 
@@ -336,7 +336,7 @@ V souladu s obecným popisem SQL Server spustitelné soubory, které by se měly
 
 
 * U všech typů virtuálních počítačů certifikovaných pomocí SAP (viz poznámku SAP – Poznámka [1928533]), s výjimkou virtuálních počítačů řady a-Series, dat tempdb a souborů protokolů, se dají umístit do netrvalého D:\u. disky. 
-* Doporučuje se však použít více datových souborů databáze tempdb. Buďte D:\ svazky jednotek se liší v závislosti na typu virtuálního počítače. Pro přesné velikosti D:\ na jednotce různých virtuálních počítačů se podívejte na [velikost článků pro virtuální počítače s Windows v Azure](../../windows/sizes.md).
+* Doporučuje se však použít více datových souborů databáze tempdb. Buďte D:\ svazky jednotek se liší v závislosti na typu virtuálního počítače. Pro přesné velikosti D:\ na jednotce různých virtuálních počítačů se podívejte na [velikost článků pro virtuální počítače s Windows v Azure](../../sizes.md).
 
 Tyto konfigurace umožňují, aby databáze tempdb využila více místa, než je systémová jednotka schopna poskytnout. Netrvalý D:\ jednotka také nabízí lepší latenci I/O a propustnost (s výjimkou virtuálních počítačů řady A-Series). Chcete-li určit správnou velikost databáze tempdb, můžete zjistit velikosti databáze tempdb ve stávajících systémech. 
 
@@ -379,7 +379,7 @@ SQL Server 2014 a novější verze si otevřou možnost ukládat soubory databá
 
 * Použitý účet úložiště musí být ve stejné oblasti Azure jako ta, která se používá k nasazení virtuálního počítače, SQL Server běží v.
 * V této metodě nasazení se vztahují i na výše uvedené požadavky týkající se distribuce VHD na různé Azure Storage účty. Znamená počet vstupně-výstupních operací na základě limitů Azure Storageho účtu.
-* Místo monitorování propustnosti vstupně-výstupních operací úložiště virtuálního počítače bude přenos dat objektů BLOB úložiště, které představují SQL Server data a soubory protokolů, zaúčtován do šířky pásma sítě určitého typu virtuálního počítače. Šířku pásma sítě a úložiště pro určitý typ virtuálního počítače najdete v článku [velikosti virtuálních počítačů s Windows v Azure](../../windows/sizes.md).
+* Místo monitorování propustnosti vstupně-výstupních operací úložiště virtuálního počítače bude přenos dat objektů BLOB úložiště, které představují SQL Server data a soubory protokolů, zaúčtován do šířky pásma sítě určitého typu virtuálního počítače. Šířku pásma sítě a úložiště pro určitý typ virtuálního počítače najdete v článku [velikosti virtuálních počítačů s Windows v Azure](../../sizes.md).
 * V důsledku nahrávání vstupně-výstupních operací se soubory přes kvótu sítě vytváříte hlavně kvótu úložiště, která využívá celkovou šířku pásma virtuálního počítače jenom částečně.
 * Cíle vstupně-výstupních operací za sekundu a vstupně-výstupní propustnosti, které Azure Premium Storage pro různé velikosti disků, už neplatí. I v případě, že se objekty blob, které jste vytvořili, nacházejí v Premium Storage Azure. Cíle jsou popsány v článku o [vysoce výkonném Premium Storage a spravovaných discích pro virtuální počítače](../../windows/disks-types.md#premium-ssd). V důsledku umístění SQL Server datových souborů a souborů protokolu přímo do objektů BLOB uložených v Azure Premium Storage se výkonnostní charakteristiky můžou v porovnání s virtuálními pevnými disky v Azure Premium Storage lišit.
 * Ukládání do mezipaměti, které je k dispozici pro Azure Premium Storage disky, není k dispozici při umísťování SQL Server datových souborů přímo do objektů blob Azure.

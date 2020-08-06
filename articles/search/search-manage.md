@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 721848b996bc4887370b77404e3d571975815624
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a623436cdeaac89d140b3834808fb975bd733f4e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421888"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835948"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Správa služeb pro Azure Kognitivní hledání v Azure Portal
 
@@ -56,7 +56,7 @@ Pro přístup ke koncovému bodu má přístup kdokoli s přístupem k adrese UR
 * Přístup k této službě je jen pro čtení. Jedná se o oprávnění, která jsou obvykle udělena klientské aplikaci, a to tak, že jí přidělíte adresu URL a klíč rozhraní API pro dotazování.
 * Přístup pro čtení i zápis nabízí možnost přidávat, odstraňovat a upravovat serverové objekty, včetně klíčů rozhraní API, indexů, indexerů, zdrojů dat a plánů. Přístup pro čtení i zápis je udělen poskytnutím adresy URL, klíče rozhraní API pro správu.
 
-Práva na zařízení pro zřizování služby se udělují prostřednictvím přiřazení rolí. [Řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) je autorizační systém založený na [Azure Resource Manager](../azure-resource-manager/management/overview.md) pro zřizování prostředků Azure. 
+Práva na zařízení pro zřizování služby se udělují prostřednictvím přiřazení rolí. [Řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md) je autorizační systém založený na [Azure Resource Manager](../azure-resource-manager/management/overview.md) pro zřizování prostředků Azure. 
 
 V kontextu Azure Kognitivní hledání určí [přiřazení rolí Azure](search-security-rbac.md) , kdo může provádět úlohy bez ohledu na to, jestli používají [portál](search-manage.md), [PowerShell](search-manage-powershell.md)nebo [rozhraní REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api):
 

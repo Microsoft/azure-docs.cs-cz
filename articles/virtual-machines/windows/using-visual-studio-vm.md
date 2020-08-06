@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: f1da7dabfb562ea32697745460d92ed27089878c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ec8e0f6448e725998628e41b917942966d3ef2a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525530"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836152"
 ---
 # <a name="visual-studio-images-on-azure"></a>Image sady Visual Studio v Azure
 Použití sady Visual Studio v předkonfigurovaném virtuálním počítači Azure je rychlý a snadný způsob, jak přejít z žádného nečinnosti do provozního vývojového prostředí. Systémové image s různými konfiguracemi sady Visual Studio jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).
@@ -77,7 +77,7 @@ Azure nabízí celou škálu velikostí virtuálních počítačů. Vzhledem k t
    * Standard_D2S_v2
    * Standard_D3_v2
     
-Další informace o nejnovějších velikostech počítačů najdete v tématu [velikosti virtuálních počítačů s Windows v Azure](./sizes.md).
+Další informace o nejnovějších velikostech počítačů najdete v tématu [velikosti virtuálních počítačů s Windows v Azure](../sizes.md).
 
 S Azure můžete svoji počáteční volbu znovu vyvážit změnou velikosti virtuálního počítače. Můžete buď zřídit nový virtuální počítač s vhodnější velikostí, nebo změnit velikost stávajícího virtuálního počítače na jiný základní hardware. Další informace najdete v tématu [Změna velikosti virtuálního počítače s Windows](./resize-vm.md).
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27b6e2e3cedcc8eca84644562639e0436e48245d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 58ea65e53f4a1262b448a3abd08807113d016fcb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035855"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833313"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Dostupnost SAP HANA v rámci jedné oblasti Azure
 Tento článek popisuje několik scénářů dostupnosti v rámci jedné oblasti Azure. Azure má spoustu oblastí a šíří se po celém světě. Seznam oblastí Azure najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/). Pro nasazení SAP HANA na virtuálních počítačích v rámci jedné oblasti Azure nabízí Microsoft nasazení jednoho virtuálního počítače s instancí HANA. Pro zvýšení dostupnosti můžete nasadit dva virtuální počítače se dvěma instancemi HANA v rámci [skupiny dostupnosti Azure](../../windows/tutorial-availability-sets.md) , která pro dostupnost používá replikaci systému Hana. 
@@ -82,7 +82,7 @@ Architektura vypadá takto:
 
 Toto nastavení není vhodné pro dosažení skvělého cíle bodu obnovení (RPO) a doby obnovení (RTO). RTOí času, zejména by znamenalo, že je potřeba plně obnovit úplnou databázi pomocí zkopírovaných záloh. Tato instalace se ale hodí pro obnovu nezamýšlených odstranění dat v hlavních instancích. Pomocí této instalace se můžete kdykoli vrátit k určitému časovému okamžiku, extrahovat data a importovat Odstraněná data do vaší hlavní instance. Proto může být vhodné použít metodu záložního kopírování v kombinaci s jinou funkcí vysoké dostupnosti. 
 
-Při kopírování záloh můžete použít menší virtuální počítač, než je hlavní virtuální počítač, na kterém je spuštěná instance SAP HANA. Mějte na paměti, že k menším virtuálním počítačům můžete připojit menší počet virtuálních pevných disků. Informace o omezeních jednotlivých typů virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače Linux v Azure](../../linux/sizes.md).
+Při kopírování záloh můžete použít menší virtuální počítač, než je hlavní virtuální počítač, na kterém je spuštěná instance SAP HANA. Mějte na paměti, že k menším virtuálním počítačům můžete připojit menší počet virtuálních pevných disků. Informace o omezeních jednotlivých typů virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače Linux v Azure](../../sizes.md).
 
 ### <a name="sap-hana-system-replication-without-automatic-failover"></a>Replikace systému SAP HANA bez automatického převzetí služeb při selhání
 

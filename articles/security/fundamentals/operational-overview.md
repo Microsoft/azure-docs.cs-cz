@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 50fb9c597a74a7aa08dfc3d8b7acd9b94760a9df
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: f09d2604a1dbf06caebb604ba2d63a09560fd33b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542887"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835914"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled služby Azure Operational Security
 
@@ -38,7 +38,7 @@ Provozní tým IT je zodpovědný za správu infrastruktury Datacenter, aplikac�
 
 Můžete konsolidovat data z nejrůznějších zdrojů a kombinovat data ze služeb Azure s existujícím místním prostředím. Protokoly Azure Monitor také jednoznačně oddělují shromažďování dat z akce provedené u těchto dat, takže všechny akce jsou k dispozici pro všechny druhy dat.
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Automatizace
 
 [Azure Automation](/azure/automation/automation-intro) poskytuje možnost automatizace ručních, dlouhotrvajících a často opakovaných úloh, které se běžně provádějí v cloudovém a podnikovém prostředí. Šetří čas a zvyšuje spolehlivost administrativních úloh. V pravidelných intervalech také plánuje automatické provádění těchto úkolů. Procesy můžete automatizovat pomocí runbooků nebo automatizovat správu konfigurace pomocí konfigurace požadovaného stavu.
 
@@ -87,7 +87,7 @@ Díky Azure Active Directory mají všechny aplikace publikované pro vaše part
 - Ověření šifrování disku.
 - Síťové útoky.
 
-Security Center používá [Access Control na základě rolí (RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC poskytuje [předdefinované role](../../role-based-access-control/built-in-roles.md) , které je možné přiřadit uživatelům, skupinám a službám v Azure.
+Security Center používá [řízení přístupu na základě role v Azure (Azure RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC poskytuje [předdefinované role](../../role-based-access-control/built-in-roles.md) , které je možné přiřadit uživatelům, skupinám a službám v Azure.
 
 Security Center posuzuje konfiguraci vašich prostředků pro identifikaci problémů a ohrožení zabezpečení. V Security Center se zobrazí informace týkající se prostředku pouze v případě, že máte přiřazenou roli vlastník, přispěvatel nebo čtenář pro předplatné nebo skupinu prostředků, do které prostředek patří.
 

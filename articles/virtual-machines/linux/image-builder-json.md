@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 132e547fe2512676e4d8082744489f4719dcc0bf
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 2f1db4e6c45602fb7fde84079e8ef78179a4ec6b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543601"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830338"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -116,7 +116,7 @@ Tento volitelný oddíl lze použít k zajištění, aby byly před pokračován
     "dependsOn": [],
 ```
 
-Další informace najdete v tématu [Definování závislostí prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson).
+Další informace najdete v tématu [Definování závislostí prostředků](../../azure-resource-manager/templates/define-resource-dependency.md#dependson).
 
 ## <a name="identity"></a>Identita
 
@@ -137,8 +137,8 @@ Podpora tvůrce imagí pro uživatelem přiřazenou identitu:
 * Podporuje jenom jedinou identitu.
 * Nepodporuje vlastní názvy domén.
 
-Další informace najdete v tématu [co jsou spravované identity pro prostředky Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
-Další informace o nasazení této funkce najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí Azure CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
+Další informace najdete v tématu [co jsou spravované identity pro prostředky Azure?](../../active-directory/managed-identities-azure-resources/overview.md).
+Další informace o nasazení této funkce najdete v tématu [Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity).
 
 ## <a name="properties-source"></a>Vlastnosti: zdroj
 
@@ -151,10 +151,10 @@ Rozhraní API vyžaduje typ SourceType, který definuje zdroj pro sestavení ima
 
 
 > [!NOTE]
-> Pokud používáte stávající vlastní image Windows, můžete spustit příkaz Sysprep až 8 časů na jedné imagi Windows, další informace najdete v dokumentaci k [nástroji Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) .
+> Pokud používáte stávající vlastní image Windows, můžete spustit příkaz Sysprep až 8 časů na jedné imagi Windows, další informace najdete v dokumentaci k [nástroji Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) .
 
 ### <a name="platformimage-source"></a>PlatformImage zdroj 
-Azure image Builder podporuje image Windows serveru a klienta a Azure Marketplace pro Linux. úplný seznam najdete [tady](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support) . 
+Azure image Builder podporuje image Windows serveru a klienta a Azure Marketplace pro Linux. úplný seznam najdete [tady](../windows/image-builder-overview.md#os-support) . 
 
 ```json
         "source": {
@@ -373,7 +373,7 @@ Přizpůsobení vlastností:
 - **validExitCodes** – volitelné, platné kódy, které lze vrátit z příkazu Script/inline, tím se vyhnete nahlášené chybě příkazu Script/inline.
 - **runElevated** – volitelná, logická hodnota, podpora spouštění příkazů a skriptů se zvýšenými oprávněními.
 - **sha256Checksum** -hodnota kontrolního součtu SHA256 souboru, vygenerujete ho místně a pak tvůrce imagí provede kontrolu kontrolního součtu a ověření.
-    * Vygenerování sha256Checksum pomocí prostředí PowerShell ve Windows [Get-hash](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
+    * Vygenerování sha256Checksum pomocí prostředí PowerShell ve Windows [Get-hash](/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
 
 
 ### <a name="file-customizer"></a>Úprav souborů
@@ -567,7 +567,7 @@ Galerie sdílených imagí se skládá z těchto součástí:
 - Definice obrázků – koncepční seskupení pro obrázky. 
 - Verze image – jedná se o typ image, který se používá k nasazení virtuálního počítače nebo sady škálování. Verze bitové kopie se dají replikovat do jiných oblastí, kde je potřeba nasadit virtuální počítače.
  
-Než budete moct distribuovat do galerie imagí, musíte vytvořit galerii a definici image, viz [sdílené image](shared-images.md). 
+Než budete moct distribuovat do galerie imagí, musíte vytvořit galerii a definici image, viz [sdílené image](../shared-images-cli.md). 
 
 ```json
 {

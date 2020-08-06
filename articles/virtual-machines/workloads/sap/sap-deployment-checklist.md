@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 98cad9a359a9a2807b1f1f3f2daba45759471718
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ea691ff42f9e5f214aa9987fae53732be844e034
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495654"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836339"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -63,7 +63,7 @@ V průběhu této fáze naplánujete migraci úlohy SAP na platformu Azure. V pr
         - Na základě RTO a RPO definujte, co má architektura vysoké dostupnosti a zotavení po havárii vypadat jako.
         - V případě vysoké dostupnosti v rámci zóny si přečtěte, co má požadovaný systém DBMS nabídnout v Azure. Většina balíčků DBMS nabízí synchronní metody synchronního aktivního pohotovostního režimu, které doporučujeme pro produkční systémy. Také si projděte dokumentaci týkající se SAP pro různé databáze a začněte s [důležitými informacemi o nasazení Azure Virtual Machines DBMS pro úlohy SAP](./dbms_guide_general.md) a související dokumenty.
            Použití clusteringu s podporou převzetí služeb při selhání Windows serveru s konfigurací sdíleného disku pro vrstvu DBMS, například [popsané pro SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017), není podporované. Místo toho použijte řešení jako:
-           - [AlwaysOn SQL Serveru](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
+           - [AlwaysOn SQL Serveru](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle Data Guard](../oracle/configure-oracle-dataguard.md)
            - [Replikace systému HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         - V případě zotavení po havárii napříč oblastmi Azure si Projděte řešení, která nabízí různí dodavatelé systému DBMS. Většina z nich podporuje asynchronní replikaci nebo přesouvání protokolů.
@@ -103,8 +103,8 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
         - Projděte si poznámky o podpoře SAP, v adresáři SAP HANA hardwaru a znovu v modulu PAM služby SAP. Ujistěte se, že neexistují žádné změny podporovaných virtuálních počítačů pro Azure, podporované verze operačního systému pro tyto typy virtuálních počítačů a podporované verze SAP a DBMS.
         - Znovu ověřte velikost vaší aplikace a infrastruktury, kterou jste nasadili v Azure. Pokud přesouváte stávající aplikace, můžete je často odvodit z používané infrastruktury a [webové stránky SAP benchmark](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd) a porovnat je s čísly SAP uvedenými v [poznámce SAP Support #1928533](https://launchpad.support.sap.com/#/notes/1928533). Tento článek také zapamatujte [na hodnocení SAP](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208) .
         - Vyhodnoťte a otestujte velikost vašich virtuálních počítačů Azure s ohledem na maximální propustnost úložiště a propustnost sítě u typů virtuálních počítačů, které jste zvolili během fáze plánování. Data můžete najít tady:
-           -  [Velikosti virtuálních počítačů s Windows v Azure](../../windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro určení velikosti je důležité zvážit *maximální propustnost disku* , který není v mezipaměti.
-           -  [Velikosti pro virtuální počítače se systémem Linux v Azure](../../linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro určení velikosti je důležité zvážit *maximální propustnost disku* , který není v mezipaměti.
+           -  [Velikosti virtuálních počítačů s Windows v Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro určení velikosti je důležité zvážit *maximální propustnost disku* , který není v mezipaměti.
+           -  [Velikosti pro virtuální počítače se systémem Linux v Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro určení velikosti je důležité zvážit *maximální propustnost disku* , který není v mezipaměti.
    2. Úložiště.
         - Minimálně použijte [úložiště Azure SSD úrovně Standard](../../windows/disks-types.md#standard-ssd) pro virtuální počítače, které reprezentují vrstvy aplikací SAP, a pro nasazení systémů DBMS, které nejsou citlivé na výkon.
         - Obecně nedoporučujeme používat [HDD úrovně Standard disky Azure](../../windows/disks-types.md#standard-hdd).
@@ -207,8 +207,8 @@ Během této fáze obvykle nasazujete vývojové systémy, systémy testování 
 11. Zajistěte, aby byly virtuální počítače nasazené do správné [skupiny umístění služby Azure Proximity](../../linux/co-location.md), jak je popsáno v tématu [skupiny umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
 11. Před použitím úlohy proveďte všechny další kontroly uvedené pro fázi ověření konceptu.
 12. Jak zatížení platí, zaznamenejte spotřebu prostředků systémů v Azure. Porovnejte tuto spotřebu se záznamy z vaší staré platformy. Pokud zjistíte, že máte velké rozdíly, upravte velikost virtuálních počítačů v budoucích nasazeních. Pamatujte na to, že když se klidnějších, úložiště a šířka pásma sítě virtuálních počítačů, sníží se i.
-    - [Velikosti virtuálních počítačů s Windows v Azure](../../windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    - [Sizes for Linux virtual machines in Azure](../../linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+    - [Velikosti virtuálních počítačů s Windows v Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    - [Sizes for Linux virtual machines in Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 13. Experimentujte s funkcí a procesy systémové kopie. Cílem je zjednodušit zkopírování vývojového systému nebo testovacího systému, takže projektové týmy můžou rychle získat nové systémy. Zvažte použití [SAP Lama](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) pro tyto úlohy.
 14. Optimalizujte a doladit přístup, oprávnění a procesy založené na rolích týmu do Azure, abyste se ujistili, že máte oddělení povinností. Ve stejnou chvíli se ujistěte, že všechny týmy můžou provádět své úkoly v infrastruktuře Azure.
 15. Cvičení, testování a dokumentace postupů vysoké dostupnosti a zotavení po havárii, které zaměstnancům umožní provádět tyto úlohy. Identifikujte nedostatky a přizpůsobte nové funkce Azure, které Integrujte do svých nasazení.

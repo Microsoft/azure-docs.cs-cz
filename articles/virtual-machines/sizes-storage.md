@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 8e99ebfe53763811a86c04c53381c502cb1c25a7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5af7b3373993dce1939ecd7534140e58db688579
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421072"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835574"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro úložiště
 
@@ -37,4 +37,4 @@ Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](
 
 Naučte se optimalizovat výkon virtuálních počítačů řady Lsv2-Series pro [Windows](windows/storage-performance.md) nebo [Linux](linux/storage-performance.md).
 
-Další informace o tom, jak Azure vyjmenovává své virtuální počítače, najdete v tématu zásady [vytváření názvů virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+Další informace o tom, jak Azure vyjmenovává své virtuální počítače, najdete v tématu zásady [vytváření názvů virtuálních počítačů Azure](./vm-naming-conventions.md).

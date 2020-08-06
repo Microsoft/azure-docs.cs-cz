@@ -3,12 +3,12 @@ title: Nastavení analýzy závislostí na základě agenta v serveru Azure Migr
 description: Tento článek popisuje, jak nastavit analýzu závislostí založenou na agentech v serveru Azure Migrate Assessment.
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 50061bead9b00ade0defba45691ea8a7c84625dd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c41f8eb82cf912fc566975f833fc73589f17be98
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321203"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829913"
 ---
 # <a name="set-up-dependency-visualization"></a>Nastavení Vizualizace závislostí
 
@@ -104,7 +104,7 @@ Instalace nástroje MMA do počítače se systémem Linux:
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- [Přečtěte si další informace](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) o tom, jak můžete pomocí skriptů nainstalovat agenta závislostí.
+- [Přečtěte si další informace](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent) o tom, jak můžete pomocí skriptů nainstalovat agenta závislostí.
 - [Přečtěte si další informace](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) o operačních systémech podporovaných agentem závislostí.
 
 
@@ -208,5 +208,3 @@ VMConnection
 ## <a name="next-steps"></a>Další kroky
 
 [Vytvořte posouzení](how-to-create-assessment.md) pro skupinu.
-
-

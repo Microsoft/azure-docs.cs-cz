@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 31755ea096724ffd314d970b2119f0d5ed31bf03
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 71bffacb3f865ffe487ebdd4bee0c0c229be332d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87268420"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830321"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Nejčastější dotazy týkající se Linux Virtual Machines
 Tento článek popisuje některé běžné otázky týkající se virtuálních počítačů s Linux vytvořenými v Azure pomocí modelu nasazení Správce prostředků. Verzi tohoto tématu pro Windows najdete v části [Nejčastější dotazy týkající se Windows Virtual Machines](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -21,7 +21,7 @@ Tento článek popisuje některé běžné otázky týkající se virtuálních 
 Všichni předplatitelé můžou na virtuálním počítači Azure spouštět serverový software. Další informace najdete v tématu věnovaném [distribucím v systému Linux v Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Kolik úložiště můžu využít s virtuálním počítačem?
-Každý datový disk může mít až 32 767 GiB. Počet datových disků, které můžete využít, závisí na velikosti virtuálního počítače. Podrobnosti najdete v článku [Velikosti služeb Virtual Machines](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Každý datový disk může mít až 32 767 GiB. Počet datových disků, které můžete využít, závisí na velikosti virtuálního počítače. Podrobnosti najdete v článku [Velikosti služeb Virtual Machines](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Azure Managed Disks jsou doporučené nabídky diskového úložiště pro použití s Azure Virtual Machines k trvalému ukládání dat. Pro každý virtuální počítač můžete použít více Managed Disks. Managed Disks nabízí dva typy trvalých možností úložiště: Premium a Standard Managed Disks. Informace o cenách najdete v tématu [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks).
 
@@ -36,7 +36,7 @@ Pokud máte problémy, podívejte se na [řešení potíží s připojením Secu
 Nepoužívejte dočasný disk (adresář/dev/sdb1) k ukládání dat. Pouze pro dočasné úložiště. Nehrozí riziko ztráty dat, která se nedají obnovit.
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>Můžu zkopírovat nebo naklonovat stávající virtuální počítač Azure?
-Yes. Pokyny najdete v tématu [Postup vytvoření kopie virtuálního počítače se systémem Linux v modelu nasazení Správce prostředků](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ano. Pokyny najdete v tématu [Postup vytvoření kopie virtuálního počítače se systémem Linux v modelu nasazení Správce prostředků](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Proč se mi nezobrazuje oblast Kanada – střed a Kanada – východní Azure Resource Manager?
 Pro vytváření virtuálních počítačů v existujících předplatných Azure se neregistrují automaticky dvě nové oblasti Kanady – střed a Kanada – východ. Tato registrace se provádí automaticky, když se virtuální počítač nasadí prostřednictvím Azure Portal do jakékoli jiné oblasti pomocí Azure Resource Manager. Po nasazení virtuálního počítače do jakékoli jiné oblasti Azure by měly být nové oblasti dostupné pro další virtuální počítače.
@@ -45,10 +45,10 @@ Pro vytváření virtuálních počítačů v existujících předplatných Azur
 Ano, teď je to možné. Nejdřív je potřeba zastavit navráceného virtuálního počítače. Pak můžete přidat nebo odebrat síťovou kartu (Pokud se nejedná o poslední síťovou kartu na VIRTUÁLNÍm počítači). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Existují nějaké požadavky na název počítače?
-Yes. Název počítače může mít délku maximálně 64 znaků. Další informace o pojmenování prostředků najdete v tématu [pravidla a omezení konvence pojmenování](/azure/architecture/best-practices/resource-naming) .
+Ano. Název počítače může mít délku maximálně 64 znaků. Další informace o pojmenování prostředků najdete v tématu [pravidla a omezení konvence pojmenování](/azure/architecture/best-practices/resource-naming) .
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Existují nějaké požadavky na název skupiny prostředků?
-Yes. Název skupiny prostředků může mít délku maximálně 90 znaků. Další informace o skupinách prostředků najdete v tématu [pravidla a omezení konvence pojmenování](/azure/architecture/best-practices/resource-naming) .
+Ano. Název skupiny prostředků může mít délku maximálně 90 znaků. Další informace o skupinách prostředků najdete v tématu [pravidla a omezení konvence pojmenování](/azure/architecture/best-practices/resource-naming) .
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Jaké jsou požadavky na uživatelské jméno při vytváření virtuálního počítače?
 

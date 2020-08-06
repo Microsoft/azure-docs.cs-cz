@@ -4,14 +4,14 @@ description: Naučte se konfigurovat klíče spravované zákazníkem pro účet
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: 989fbb123e39f85aeeb8eba9961f9aeab1e76c84
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9fa899e0f0de3b263baad7e44ed24d32d735b001
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092595"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836505"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurace klíčů spravovaných zákazníkem pro váš účet služby Azure Cosmos DB s využitím služby Azure Key Vault
 
@@ -64,6 +64,8 @@ Pokud používáte existující instanci Azure Key Vault, můžete ověřit, že
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="Vyberte objekt zabezpečení Azure Cosmos DB.":::
 
 1. Vyberte **Přidat** a přidejte nové zásady přístupu.
+
+1. Pokud chcete uložit všechny změny, vyberte **Uložit** na instanci Key Vault.
 
 ## <a name="generate-a-key-in-azure-key-vault"></a>Vygenerovat klíč v Azure Key Vault
 

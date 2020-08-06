@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: d6fb5c384d5e9489c4213277a43d5be0ed14afb6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 01c7d5610daa703e910fb485b5e9d945a6cdc940
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289703"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831290"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních počítačů
 
@@ -80,7 +80,7 @@ Každý grafický procesor v NVv2 instancích obsahuje licenci na MŘÍŽKu. Tat
 
 ## <a name="older-generations-of-virtual-machine-sizes"></a>Starší generace velikostí virtuálních počítačů
 
-Tato část poskytuje informace o starších generacích velikostí virtuálních počítačů. Tyto velikosti se pořád podporují, ale nezískají další kapacitu. K dispozici jsou novější nebo alternativní velikosti, které jsou všeobecně dostupné. Pokud chcete zvolit velikosti virtuálních počítačů, které budou nejlépe vyhovovat vašim potřebám, přečtěte si informace o [velikostech virtuálních počítačů se systémem Linux v Azure](linux/sizes.md) .  
+Tato část poskytuje informace o starších generacích velikostí virtuálních počítačů. Tyto velikosti se pořád podporují, ale nezískají další kapacitu. K dispozici jsou novější nebo alternativní velikosti, které jsou všeobecně dostupné. Pokud chcete zvolit velikosti virtuálních počítačů, které budou nejlépe vyhovovat vašim potřebám, přečtěte si informace o [velikostech virtuálních počítačů se systémem Linux v Azure](./sizes.md) .  
 
 Další informace o změně velikosti virtuálního počítače se systémem Linux najdete v tématu [Změna velikosti virtuálního počítače se systémem Linux](linux/change-vm-size.md).  
 

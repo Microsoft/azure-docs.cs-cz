@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3301667c0ee6ad739b6fb734c2cea3aef4889bd9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15838e1e9acf328a0deaa981d1227c22c08dbbdf
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051846"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832259"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení Azure Virtual Machines DBMS pro úlohy SAP
 
@@ -357,11 +357,11 @@ Podporovaná je jenom jedna instance Oracle, která používá disky formátovan
 
 Důrazně doporučujeme použít [Azure Managed disks](../../windows/managed-disks-overview.md). Důrazně doporučujeme pro nasazení Oracle Database použít [Premium SSD](../../windows/disks-types.md) .
 
-Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azure nejsou podporované pro Oracle Database soubory. Další informace najdete tady:
+Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azure nejsou podporované pro Oracle Database soubory. Další informace:
 
-- [Představujeme službu Microsoft Azure File](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+- [Představujeme službu Microsoft Azure File](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
-- [Nastavení trvalých připojení k Microsoft Azure Files](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [Nastavení trvalých připojení k Microsoft Azure Files](/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)
 
 
 Pokud používáte disky založené na Azure Page Storage nebo Managed Disks, příkazy v části [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) se vztahují i na nasazení s Oracle Database.
@@ -450,9 +450,9 @@ Používání [Azure Managed disks](../../windows/managed-disks-overview.md)se d
 
 Síťové jednotky nebo vzdálené sdílené složky jako souborové služby Azure nejsou podporované pro Oracle Database soubory. Další informace najdete v následujících článcích: 
 
-- [Představujeme službu Microsoft Azure File](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+- [Představujeme službu Microsoft Azure File](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
-- [Nastavení trvalých připojení k Microsoft Azure Files](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [Nastavení trvalých připojení k Microsoft Azure Files](/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)
 
 Pokud používáte disky založené na Azure Page Storage nebo Managed Disks, příkazy v části [požadavky na nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) se vztahují i na nasazení s Oracle Database.
 

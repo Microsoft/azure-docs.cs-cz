@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e50d6b6fe88cbad42d238ee2779abfe10e752f0e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 656161849ce8d48fb15cfac4024ec5b77adb5fee
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327272"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829505"
 ---
 # <a name="azure-activity-log-event-schema"></a>Schéma událostí protokolu aktivit Azure
 [Protokol aktivit Azure](platform-logs-overview.md) poskytuje přehled o všech událostech na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje kategorie protokolů aktivit a schéma pro každou z nich. 
@@ -796,7 +796,7 @@ Tato kategorie obsahuje záznamy všech operací akcí prováděných pomocí [A
 Při streamování protokolu aktivit Azure do účtu úložiště nebo centra událostí data následují po [schématu protokolu prostředků](./resource-logs-schema.md). Následující tabulka poskytuje mapování vlastností z výše uvedených schémat na schéma protokolů prostředků.
 
 > [!IMPORTANT]
-> Formát dat protokolu aktivit zapsaný do účtu úložiště se změnil na řádky JSON od 1. listopadu 2018. Podrobnosti o změně tohoto formátu najdete v článku [Příprava změny formátu Azure monitor archivované protokoly prostředků do účtu úložiště](/azure/azure-monitor/platform/resource-logs-blob-format) .
+> Formát dat protokolu aktivit zapsaný do účtu úložiště se změnil na řádky JSON od 1. listopadu 2018. Podrobnosti o změně tohoto formátu najdete v článku [Příprava změny formátu Azure monitor archivované protokoly prostředků do účtu úložiště](./resource-logs-blob-format.md) .
 
 
 | Vlastnost schématu pro protokoly prostředků | Vlastnost schématu REST API protokolu aktivit | Poznámky |
@@ -885,4 +885,3 @@ Následuje příklad události s použitím tohoto schématu..
 ## <a name="next-steps"></a>Další kroky
 * [Další informace o protokolu aktivit](platform-logs-overview.md)
 * [Vytvoření nastavení diagnostiky pro odesílání protokolu aktivit do Log Analytics pracovního prostoru, úložiště Azure nebo Center událostí](diagnostic-settings.md)
-

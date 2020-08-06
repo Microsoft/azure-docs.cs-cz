@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: how-to
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: b649a1b3c3dc0d8dd5f7056f36714f831509b82d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 908c258dab5625cda7f2fa020257b08e68102a1d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266856"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835557"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Nasazení virtuálního počítače Azure pomocí C# a šablony Správce prostředků
 
@@ -326,4 +326,4 @@ Spuštění této konzolové aplikace z začátku do konce by mělo trvat přibl
 ## <a name="next-steps"></a>Další kroky
 
 * V případě, že došlo k potížím s nasazením, je dalším krokem postup [při řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md).
-* Zjistěte, jak nasadit virtuální počítač a jeho podpůrné prostředky pomocí tématu [nasazení virtuálního počítače Azure pomocí jazyka C#](csharp.md).
+* Zjistěte, jak nasadit virtuální počítač a jeho podpůrné prostředky pomocí tématu [nasazení virtuálního počítače Azure pomocí jazyka C#](../../azure-resource-manager/templates/deploy-rest.md).

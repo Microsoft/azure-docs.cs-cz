@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 08/17/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: ace22a6896a121f5cd8af838c7b0e427bd0287dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b48e5e28b15d17796138d493a7d9c628791df2e6
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67174689"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830115"
 ---
-## <a name="enable-event-grid-resource-provider"></a>Povolit poskytovatele prostředků služby Event Grid
+## <a name="enable-the-event-grid-resource-provider"></a>Povolit poskytovatele prostředků Event Grid
 
-Pokud jste ve vašem předplatném Azure ještě službu Event Grid nepoužívali, budete možná muset zaregistrovat poskytovatele prostředků služby Event Grid. Spuštěním následujícího příkazu zaregistrujte poskytovatele:
+Pokud jste se dřív nepoužívali Event Grid ve vašem předplatném Azure, možná budete muset zaregistrovat poskytovatele prostředků Event Grid. Spuštěním následujícího příkazu zaregistrujte poskytovatele:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.EventGrid

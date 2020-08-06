@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 019c627743c344fc0f07c8954ebdfdf2eca0437b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ccaf44f733958bff461e954c78196f7376a59771
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87267043"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836203"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Hodnocení srovnávacích testů pro virtuální počítače s Windows
 Následující skóre srovnávacích testů SPECInt ukazují výpočetní výkon pro vybrané virtuální počítače Azure se systémem Windows Server. Pro [virtuální počítače se systémem Linux](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)jsou k dispozici také hodnocení srovnávacích testů.
@@ -30,7 +30,7 @@ Následující skóre srovnávacích testů SPECInt ukazují výpočetní výkon
 | Standard_A2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 14 | 28,9 | 0.6 | 
 | Standard_A2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 10 | 27,4 | 1.6 | 
 | Standard_A2_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 17 | 28,9 | 1.8 | 
-| Standard_A2m_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 14 | 29,0 | 0.5 | 
+| Standard_A2m_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 14 | 29,0 | 0,5 | 
 | Standard_A2m_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 11 | 26,3 | 0.8 | 
 | Standard_A2m_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 21 | 28,4 | 1.0 | 
 | Standard_A4_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 27 | 56,6 | 1.0 | 
@@ -60,7 +60,7 @@ Následující skóre srovnávacích testů SPECInt ukazují výpočetní výkon
 | Standard_B1ms | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 47 | 6.4 | 0.2 | 
 | Standard_B2ms | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 36 | 19,8 | 0.8 | 
 | Standard_B2s | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 2 | 13,0 | 0,0 | 
-| Standard_B2s | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 29 | 13,0 | 0.5 | 
+| Standard_B2s | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 29 | 13,0 | 0,5 | 
 | Standard_B4ms | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 6 | 27,1 | 1.0 | 
 | Standard_B4ms | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 43 | 28,3 | 0.7 | 
 | Standard_B8ms | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 3 | 42,0 | 0,0 | 
@@ -320,7 +320,7 @@ Následující skóre srovnávacích testů SPECInt ukazují výpočetní výkon
 | Standard_M16 – 4ms | 4 | 1 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 14 | 82,5 | 2.5 | 
 | Standard_M16 – 8ms | 8 | 1 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 20 | 157,2 | 6.0 | 
 | Standard_M32 – 8ms | 8 | 1 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 18 | 162,5 | 2.1 | 
-| Standard_M32 – 16MS | 16 | 1 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 12 | 306,5 | 0.5 | 
+| Standard_M32 – 16MS | 16 | 1 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 12 | 306,5 | 0,5 | 
 | Standard_M64 | 64 | 2 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 11 | 1010,9 | 5.4 | 
 | Standard_M64 – 16MS | 16 | 2 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 13 | 316,0 | 2,4 | 
 | Standard_M64 – 32ms | 32 | 2 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 12 | 586,8 | 5.4 | 
@@ -389,5 +389,4 @@ Následující skóre srovnávacích testů SPECInt ukazují výpočetní výkon
 Počty oken byly vypočítány spuštěním [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) na Windows serveru. SPECint se spustil pomocí možnosti základní sazba (SPECint_rate2006) s jednou kopií na vCPU. SPECint se skládá z 12 samostatných testů, každý se spouští třikrát a bere medián hodnoty z každého testu a vážením má tvořit složené skóre. Tyto testy byly potom spuštěny napříč několika virtuálními počítači za účelem zadání průměrného počtu zobrazených výsledků.
 
 ## <a name="next-steps"></a>Další kroky
-* Kapacitu úložiště, podrobnosti o disku a další požadavky pro výběr velikostí virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
+* Kapacitu úložiště, podrobnosti o disku a další požadavky pro výběr velikostí virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

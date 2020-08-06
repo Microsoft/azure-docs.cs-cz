@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a79db217c5444e59e35d4dfad9fbb98bbccbd251
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1945dc3b9fa03354ef447f813d95b6040a4b7b91
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079804"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833330"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Podporované scénáře pro úlohy SAP na virtuálních počítačích Azure
 Návrh architektury SAP NetWeaver, Business One `Hybris` nebo S/4HANA Systems v Azure otevírá spoustu různých příležitostí pro různé architektury a nástroje, které slouží k získání škálovatelného, efektivního a vysoce dostupného nasazení. I když závisí na operačním systému nebo používaném systému DBMS, existují omezení. Ne všechny podporované scénáře jsou také podporovány stejným způsobem v Azure. Tento dokument vás provede podporovanými konfiguracemi bez vysoké dostupnosti a konfigurací a architekturou s vysokou dostupností a s využitím výhradně virtuálních počítačů Azure. Scénáře podporované [velkými instancemi Hana](./hana-overview-architecture.md)najdete v článku [podporované scénáře pro velké instance Hana](./hana-supported-scenario.md). 
@@ -246,7 +246,7 @@ V oblasti zotavení po havárii se podporuje použití menšího virtuálního p
 - Změna velikosti napříč rodinou virtuálních počítačů může představovat problém, když se různé virtuální počítače shromažďují v jedné skupině dostupnosti Azure nebo když by se měla změnit Změna velikosti mezi řadou M-Series a Mv2 řadou virtuálních počítačů.
 - Využití CPU a paměti pro instanci databáze schopné získat datový proud se změnami s minimálním zpožděním a dostatečným množstvím PROCESORů a paměti, aby se tyto změny projevily s minimálním zpožděním na data  
 
-Další podrobnosti o omezeních různých velikostí virtuálních počítačů najdete [tady](../../linux/sizes.md) . 
+Další podrobnosti o omezeních různých velikostí virtuálních počítačů najdete [tady](../../sizes.md) . 
 
 Další podporovanou metodou nasazení cíle DR je nainstalovaná druhá instance systému DBMS na virtuálním počítači, na kterém běží neprodukční instance systému DBMS instance, která není produkčním prostředím SAP. To může být trochu náročnější, protože potřebujete zjistit, jaké jsou požadavky na paměť, prostředky procesoru, šířku pásma sítě a šířku pásma úložiště, pro konkrétní cílové instance, které by měly fungovat jako hlavní instance ve scénáři zotavení po havárii. Obzvláště v HANA se důrazně doporučuje nakonfigurovat instanci, která funguje jako cíl DR na sdíleném hostiteli, aby se data do cílové instance DR předem nenačítala.
 

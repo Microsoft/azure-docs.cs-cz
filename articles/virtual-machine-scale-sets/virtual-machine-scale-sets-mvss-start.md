@@ -9,12 +9,12 @@ ms.subservice: template
 ms.date: 04/26/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 6f47e07dcffd977121b4142924a77bdb93de3fc3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 55c826b4baf38732684aaa0465aeaab6a45564db
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503043"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831494"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Seznamte se se šablonami sady škálování virtuálních počítačů
 [Šablony Azure Resource Manageru](../azure-resource-manager/templates/overview.md#template-deployment-process) nabízí skvělou možnost pro nasazení skupin souvisejících prostředků. V této sérii kurzů se dozvíte, jak vytvořit šablonu základní sady škálování a jak tuto šablonu upravit tak, aby vyhovovala různým scénářům. Všechny příklady pocházejí z tohoto [úložiště GitHubu](https://github.com/gatneil/mvss).
@@ -115,7 +115,7 @@ V tomto případě existuje pouze jeden prvek v seznamu, virtuální síť z př
 ## <a name="specify-scale-set-properties"></a>Zadat vlastnosti sady škálování
 Sady škálování mají mnoho vlastností pro přizpůsobení virtuálních počítačů v sadě škálování. Úplný seznam těchto vlastností najdete v [referenčních informacích k šabloně](/azure/templates/microsoft.compute/virtualmachinescalesets). V tomto kurzu se nastaví jenom několik běžně používaných vlastností.
 ### <a name="supply-vm-size-and-capacity"></a>Zadejte velikost a kapacitu virtuálního počítače.
-Sada škálování musí znát, jakou velikost virtuálního počítače se má vytvořit ("název SKU") a kolik takových virtuálních počítačů se má vytvořit ("kapacita SKU"). Pokud chcete zjistit, jaké velikosti virtuálních počítačů jsou k dispozici, přečtěte si [dokumentaci velikosti virtuálních počítačů](../virtual-machines/windows/sizes.md).
+Sada škálování musí znát, jakou velikost virtuálního počítače se má vytvořit ("název SKU") a kolik takových virtuálních počítačů se má vytvořit ("kapacita SKU"). Pokud chcete zjistit, jaké velikosti virtuálních počítačů jsou k dispozici, přečtěte si [dokumentaci velikosti virtuálních počítačů](../virtual-machines/sizes.md).
 
 ```json
        "sku": {

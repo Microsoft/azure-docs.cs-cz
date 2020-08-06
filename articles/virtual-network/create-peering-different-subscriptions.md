@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 55993162c4ea3cd5bf60a9ee9acc869cc088a9d0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 79062ae45f04b290f6e4120906b98590ce95dbe1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085125"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833262"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Vytvoření partnerského vztahu virtuální sítě – Správce prostředků, různých předplatných a klientů Azure Active Directory
 
@@ -148,7 +148,7 @@ Místo instalace rozhraní příkazového řádku a jeho závislostí můžete p
           --name myVnetAToMyVnetB \
           --resource-group myResourceGroupA \
           --vnet-name myVnetA \
-          --remote-vnet-id /subscriptions/<SubscriptionB-Id>/resourceGroups/myResourceGroupB/providers/Microsoft.Network/VirtualNetworks/myVnetB \
+          --remote-vnet /subscriptions/<SubscriptionB-Id>/resourceGroups/myResourceGroupB/providers/Microsoft.Network/VirtualNetworks/myVnetB \
           --allow-vnet-access
     ```
 
@@ -287,7 +287,7 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
 ## <a name="delete-resources"></a><a name="delete"></a>Odstranění prostředků
 Po dokončení tohoto kurzu možná budete chtít odstranit prostředky, které jste v tomto kurzu vytvořili, takže se vám neúčtují poplatky za využití. Odstraněním skupiny prostředků se odstraní také všechny prostředky, které jsou ve skupině prostředků.
 
-### <a name="azure-portal"></a><a name="delete-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a><a name="delete-portal"></a>Azure Portal
 
 1. Přihlaste se k Azure Portal jako UserA.
 2. Do vyhledávacího pole portálu zadejte **myResourceGroupA**. Ve výsledcích hledání vyberte **myResourceGroupA**.

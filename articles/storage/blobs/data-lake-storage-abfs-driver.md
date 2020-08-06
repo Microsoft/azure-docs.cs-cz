@@ -1,6 +1,6 @@
 ---
 title: Ovladač systému souborů objektů BLOB v Azure pro Azure Data Lake Storage Gen2
-description: Ovladač systému souborů Hadoop ABFS
+description: Přečtěte si o ovladači systému souborů objektů BLOB v Azure (ABFS), vyhrazeném ovladače Azure Storage pro Hadoop. Přístup k datům v Azure Data Lake Storage Gen2 pomocí tohoto ovladače.
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 3db039d39ef532ea51143dc9cbdb6bd5f29d6225
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9c56f59d6dd64002632a5f74e9f39c51293caab
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75970278"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836356"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Ovladač systému souborů objektů BLOB v Azure (ABFS): vyhrazený ovladač Azure Storage pro Hadoop
 
@@ -42,7 +42,7 @@ hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows
 
 Ovladač ABFS interně překládá prostředky zadané v identifikátoru URI do souborů a adresářů a provádí volání REST API Azure Data Lake Storage s těmito odkazy.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování uživatelů
 
 Ovladač ABFS podporuje dvě formy ověřování, aby mohla aplikace Hadoop bezpečně přistupovat k prostředkům, které jsou obsaženy v účtu s podporou Data Lake Storage Gen2. Úplné podrobnosti o dostupných schématech ověřování jsou k dispozici v [Azure Storage příručce zabezpečení](security-recommendations.md). Jsou to tyto:
 

@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad84b8910e8d4f8af9845c33c22d128e317dedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 870027637d9c45d0d5150db12046e454146ff169
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74232110"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829625"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Plánování nasazení Azure Active Directory vytváření sestav a monitorování
 
@@ -97,9 +97,9 @@ Vytváření sestav a monitorování se používá ke splnění vašich obchodn�
 
 * Vyžadováno pro řešení pro splnění obchodních potřeb
 * Skvělé vyhovět potřebám podniku
-* Nelze použít
+* Neuvedeno
 
-|Oblast |Description |
+|Oblast |Popis |
 |-|-|
 |Uchovávání| **Protokolujte uchovávání více než 30 dní**. Vzhledem k právním nebo podnikovým požadavkům se vyžaduje ukládání protokolů auditu a přihlášení do protokolů služby Azure AD déle než 30 dní. |
 |Analýzy| **Protokoly musí být prohledávatelné**. Uložené protokoly musí být prohledávatelné pomocí analytických nástrojů. |
@@ -147,9 +147,9 @@ Sestavy služby Azure AD mohou číst následující role:
 
 * Správce zabezpečení
 
-* Čtecí modul zabezpečení
+* Čtenář zabezpečení
 
-* Čtečka sestav
+* Čtenář sestav
 
 Přečtěte si další informace o [rolích pro správu Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal).
 
@@ -193,6 +193,4 @@ V závislosti na tom, jaká rozhodnutí jste provedli dříve pomocí výše uve
 
 Zvažte implementaci [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) 
 
-Zvažte implementaci [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) .
-
- 
+Zvažte implementaci [řízení přístupu na základě role v Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) .

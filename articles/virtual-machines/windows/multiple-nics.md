@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 2667ff571070b2e62dcfa4af6e202f1851aa3e80
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ed1c5b749b778ef8334ea3b31ef17d3bf106484f
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525768"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835540"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Vytvoření a Správa virtuálního počítače s Windows s více síťovými kartami
-K virtuálním počítačům v Azure můžou být připojené několik síťových adaptérů (nic). Běžným scénářem je použití různých podsítí pro front-endové a back-endové připojení. K virtuálnímu počítači můžete přidružit více síťových adaptérů k několika podsítím, ale tyto podsítě se musí nacházet ve stejné virtuální síti (vNet). Tento článek podrobně popisuje, jak vytvořit virtuální počítač s připojenými více síťovými rozhraními. Naučíte se také, jak přidat nebo odebrat síťové karty z existujícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporují proměnlivý počet síťových adaptérů, proto si odpovídajícím způsobem nasaďte velikost svého virtuálního počítače.
+K virtuálním počítačům v Azure můžou být připojené několik síťových adaptérů (nic). Běžným scénářem je použití různých podsítí pro front-endové a back-endové připojení. K virtuálnímu počítači můžete přidružit více síťových adaptérů k několika podsítím, ale tyto podsítě se musí nacházet ve stejné virtuální síti (vNet). Tento článek podrobně popisuje, jak vytvořit virtuální počítač s připojenými více síťovými rozhraními. Naučíte se také, jak přidat nebo odebrat síťové karty z existujícího virtuálního počítače. Různé [velikosti virtuálních počítačů](../sizes.md) podporují proměnlivý počet síťových adaptérů, proto si odpovídajícím způsobem nasaďte velikost svého virtuálního počítače.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -73,7 +73,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
 Obvykle vytvoříte také [skupinu zabezpečení sítě](../../virtual-network/security-overview.md) pro filtrování síťového provozu do virtuálního počítače a [Nástroj pro vyrovnávání zatížení](../../load-balancer/load-balancer-overview.md) pro distribuci provozu napříč několika virtuálními počítači.
 
 ### <a name="create-the-virtual-machine"></a>Vytvoření virtuálního počítače
-Teď začněte sestavovat konfiguraci virtuálních počítačů. Velikost každého virtuálního počítače má omezení celkového počtu síťových adaptérů, které můžete přidat do virtuálního počítače. Další informace najdete v tématu [velikosti virtuálních počítačů s Windows](sizes.md).
+Teď začněte sestavovat konfiguraci virtuálních počítačů. Velikost každého virtuálního počítače má omezení celkového počtu síťových adaptérů, které můžete přidat do virtuálního počítače. Další informace najdete v tématu [velikosti virtuálních počítačů s Windows](../sizes.md).
 
 1. Přihlašovací údaje pro virtuální počítač nastavte na `$cred` proměnnou následujícím způsobem:
 
@@ -119,7 +119,7 @@ Teď začněte sestavovat konfiguraci virtuálních počítačů. Velikost každ
 6. Pomocí postupu v části [Konfigurace operačního systému pro více síťových adaptérů](#configure-guest-os-for-multiple-nics)přidejte trasy pro sekundární síťové karty do operačního systému.
 
 ## <a name="add-a-nic-to-an-existing-vm"></a>Přidání síťového rozhraní do existujícího virtuálního počítače
-Pokud chcete přidat virtuální síťovou kartu k existujícímu virtuálnímu počítači, nasaďte virtuální počítač, přidejte virtuální síťovou kartu a potom spusťte virtuální počítač. Různé [velikosti virtuálních počítačů](sizes.md) podporují proměnlivý počet síťových adaptérů, proto si odpovídajícím způsobem nasaďte velikost svého virtuálního počítače. V případě potřeby můžete [změnit velikost virtuálního počítače](resize-vm.md).
+Pokud chcete přidat virtuální síťovou kartu k existujícímu virtuálnímu počítači, nasaďte virtuální počítač, přidejte virtuální síťovou kartu a potom spusťte virtuální počítač. Různé [velikosti virtuálních počítačů](../sizes.md) podporují proměnlivý počet síťových adaptérů, proto si odpovídajícím způsobem nasaďte velikost svého virtuálního počítače. V případě potřeby můžete [změnit velikost virtuálního počítače](resize-vm.md).
 
 1. Zrušte přidělení virtuálního počítače pomocí [stop-AzVM](/powershell/module/az.compute/stop-azvm). Následující příklad zruší přidělení virtuálního počítače s názvem *myVM* v *myResourceGroup*:
 
@@ -288,4 +288,4 @@ Azure přiřadí výchozí bránu k prvnímu (primárnímu) síťovému rozhran�
     Trasa uvedená v části **Gateway** *je ve výchozím* nastavení trasa pro primární síťové rozhraní. Trasa s *192.168.2.1* pod **branou**je trasa, kterou jste přidali.
 
 ## <a name="next-steps"></a>Další kroky
-Zkontrolujte [velikosti virtuálních počítačů s Windows](sizes.md) , když se pokoušíte vytvořit virtuální počítač s více síťovými kartami. Věnujte pozornost maximálnímu počtu síťových adaptérů, které podporují jednotlivé velikosti virtuálních počítačů. 
+Zkontrolujte [velikosti virtuálních počítačů s Windows](../sizes.md) , když se pokoušíte vytvořit virtuální počítač s více síťovými kartami. Věnujte pozornost maximálnímu počtu síťových adaptérů, které podporují jednotlivé velikosti virtuálních počítačů. 

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: 0d1a6d5626e081ff50f65b3a4396e223b33f920d
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 85b1b6c56221deaa03057a7ccb658b4bf67124eb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433587"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830576"
 ---
 # <a name="how-to-create-an-overlay-with-media-encoder-standard"></a>Jak vytvořit překryv pomocí Media Encoder Standard
 
@@ -19,7 +19,7 @@ Media Encoder Standard umožňuje překrýt obrázek do existujícího videa. V 
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Shromážděte informace o účtu, které potřebujete ke konfiguraci *appsettings.js* v souboru v ukázce. Pokud si nejste jisti, jak to provést, přečtěte si téma [rychlý Start: registrace aplikace s platformou Microsoft Identity](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app). V *appsettings.js* souboru jsou očekávány následující hodnoty.
+* Shromážděte informace o účtu, které potřebujete ke konfiguraci *appsettings.js* v souboru v ukázce. Pokud si nejste jisti, jak to provést, přečtěte si téma [rychlý Start: registrace aplikace s platformou Microsoft Identity](../../active-directory/develop/quickstart-register-app.md). V *appsettings.js* souboru jsou očekávány následující hodnoty.
 
     ```json
     {
@@ -40,7 +40,7 @@ Pokud jste s transformací ještě neseznámili, doporučujeme, abyste dokončil
 
 * Číst [video a zvuk v kódování pomocí Media Services](encoding-concept.md)
 * Přečtěte si, [jak se zakódovat pomocí vlastní transformace – .NET](customize-encoder-presets-how-to.md). Postupujte podle kroků v tomto článku a nastavte rozhraní .NET potřebné pro práci s transformacemi a pak se vraťte sem, abyste si vyzkoušeli ukázku přednastavených překryvů.
-* Viz [referenční dokument transformací](https://docs.microsoft.com/rest/api/media/transforms).
+* Viz [referenční dokument transformací](/rest/api/media/transforms).
 
 Jakmile se seznámíte s transformacemi, Stáhněte si ukázku překryvů.
 

@@ -1,5 +1,5 @@
 ---
-title: Posouzení a zmírnění problémů s spravedlivými chybami v modelech strojového učení (Preview)
+title: Zmírnění rovnosti v modelech strojového učení (Preview)
 titleSuffix: Azure Machine Learning
 description: Přečtěte si o nespravedlivosti v modelech strojového učení a o tom, jak může balíček Pythonu Fairlearn pomáhat při vytváření spravedlivých modelů.
 services: machine-learning
@@ -8,22 +8,22 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 07/09/2020
-ms.openlocfilehash: 2cc3228c20fba322ec804a3bcc9ee322c7d37907
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/05/2020
+ms.openlocfilehash: 0d3e49fbb11af92d016910e91b0144f6de998238
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207291"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829369"
 ---
-# <a name="build-fairer-machine-learning-models-preview"></a>Sestavování modelem strojového učení pro sestavování (Preview)
+# <a name="mitigate-fairness-in-machine-learning-models-preview"></a>Zmírnění rovnosti v modelech strojového učení (Preview)
 
-Přečtěte si o nerovnosti ve strojovém učení a o tom, jak [Fairlearn](https://fairlearn.github.io/) Open Source balíček python vám může pomáhat při sestavování modelů, které jsou příznivější. Pokud se vám nesnažíte pochopit problémy s rovností a hodnotit spravedlivost při sestavování modelů strojového učení, můžete vytvářet modely, které vytvářejí nerovné výsledky. 
+Přečtěte si o nerovnosti ve strojovém učení a o tom, jak [Fairlearn](https://fairlearn.github.io/) Open Source balíček python vám může přispět k zmírnění problémů s spravedlivým používáním modelů strojového učení. Pokud se vám nesnažíte pochopit problémy s rovností a hodnotit spravedlivost při sestavování modelů strojového učení, můžete vytvářet modely, které vytvářejí nerovné výsledky.
 
 Následující souhrn [uživatelské příručky](https://fairlearn.github.io/user_guide/index.html) k Fairlearn Open Source balíčku popisuje, jak ho použít k vyhodnocení spravedlivého nastavování systémů AI.  Fairlearn Open Source balíček může také nabízet možnosti, které vám pomohou zmírnit a snižovat problémy.  V tématu [postupy](how-to-machine-learning-fairness-aml.md) a [ukázky poznámkových bloků](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) můžete v průběhu školení na Azure Machine Learning povolit posouzení nespravedlivosti systémů AI.
 
 
-## <a name="what-is-fairness-in-machine-learning-systems"></a>Jaké jsou spravedlivé v systémech Machine Learning?
+## <a name="what-is-fairness-in-machine-learning-models"></a>Jaké jsou v modelech strojového učení spravedlivé?
 
 >[!NOTE]
 > Spravedlivé je společenská a technická výzva. V kvantitativních metrikách spravedlivosti se nezachycují spousta aspektů spravedlnosti, jako je Soudní dvůr a řádný proces. Řadu kvantitativních metrik pro spravedlivost se navíc nedají splnit současně. Cílem s Fairlearn Open Source balíčkem je umožnit člověkům vyhodnotit různé strategie pro dopad na dopad a omezení rizik. V konečném případě se jedná o lidské uživatele, kteří vytvářejí umělá inteligentní funkce a modely strojového učení, které jsou vhodné pro jejich scénář.
@@ -38,7 +38,6 @@ Existují dva běžné typy AI, které způsobují poškození:
 
 Chcete-li omezit nerovné chování v systémech AI, je nutné tyto škody vyhodnotit a zmírnit.
 
-
 ## <a name="fairness-assessment-and-mitigation-with-fairlearn"></a>Posouzení a zmírnění spravedlnosti pomocí Fairlearn
 
 Fairlearn je open source balíček Pythonu, který vývojářům v systémech Machine Learning umožňuje vyhodnotit jeho neškodné dodržování předpisů a zmírnit pozorně zjištěné problémy s spravedlivou škodou.
@@ -50,7 +49,8 @@ Otevřený zdrojový balíček Fairlearn má dvě komponenty:
 
 Společně tyto komponenty umožňují odborníkům přes data a vedoucím pracovníkům proměňovat jakékoli kompromisy týkající se spravedlnosti a výkonu a vybrat strategii pro zmírnění rizik, která nejlépe vyhovuje jejich potřebám.
 
-## <a name="fairness-assessment"></a>Posouzení spravedlivosti
+## <a name="assess-fairness-in-machine-learning-models"></a>Posouzení spravedlivosti v modelech strojového učení
+
 V Fairlearnm Open Source balíčku se spravedlivě rozkládá i v případě, že se jedná o přizpůsobenou **skupinu**, na které se požádá: které skupiny jednotlivců jsou ohrožené poškozením? Příslušné skupiny, označované také jako podmnožiny, jsou definovány prostřednictvím **citlivých funkcí** nebo citlivých atributů. Citlivé funkce jsou předány do Estimator v Fairlearn Open Source balíčku jako vektor nebo matice s názvem `sensitive_features` . Pojem naznačuje, že při posuzování spravedlnosti skupin by měl být System Designer citlivý na tyto funkce. 
 
 Je třeba mít na vědomí, zda tyto funkce obsahují dopad na ochranu osobních údajů z důvodu soukromých dat. Ale slovo "citlivé" neznamená, že tyto funkce by neměly být použity pro předpovědi.
@@ -72,7 +72,7 @@ Během fáze hodnocení se spravedlivě kvantifikuje prostřednictvím metrik ne
 
 - Míra nekonzistence pro výběr: Tato metrika obsahuje rozdíl mezi různými podskupinami v sazbě výběru. Příkladem je neparita v míře schvalování půjček. Míra výběru znamená zlomky datapoints v každé třídě klasifikované jako 1 (v binární klasifikaci) nebo distribuci hodnot předpovědi (v regresi).
 
-## <a name="unfairness-mitigation"></a>Zmírnění nepoctivosti
+## <a name="mitigate-unfairness-in-machine-learning-models"></a>Zmírnění nespravedlivosti v modelech strojového učení
 
 ### <a name="parity-constraints"></a>Omezení parity
 

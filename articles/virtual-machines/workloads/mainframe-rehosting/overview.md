@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: d1ab9834d4bf25c7c18171ecb271f18b213d15b0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d754f27a1510d9db0837eabb96b3a7cf75f76fc1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507875"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835523"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Opětovné hostování sálového počítače na virtuálních počítačích Azure
 
@@ -72,7 +72,7 @@ Prostředí IBM DB2 pureScale poskytuje databázový cluster pro Azure. Není to
 
 Informace o tom, jak začít, najdete v článku [IBM DB2 pureScale v Azure](../../linux/ibm-db2-purescale-azure.md).
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu
+## <a name="considerations"></a>Požadavky
 
 Když migrujete sálové úlohy do infrastruktury Azure jako služby (IaaS), můžete si vybrat z několika typů škálovatelných výpočetních prostředků na vyžádání, včetně virtuálních počítačů Azure. Azure nabízí řadu virtuálních počítačů se systémy [Linux](../../linux/overview.md) a [Windows](../../windows/overview.md) .
 
@@ -90,7 +90,7 @@ V případě Azure IaaS, jako je třeba virtuální počítač, poskytují konkr
 
 ### <a name="scalability"></a>Škálovatelnost
 
-Při horizontálním navýšení kapacity cloudových prostředí se většinou škálují sálové počítače. Azure nabízí řadu velikostí pro [Linux](../../linux/sizes.md) a [Windows](../../windows/sizes.md) , které vyhovují vašim potřebám. Cloud se také škáluje nahoru nebo dolů, aby odpovídal přesně zadaným uživatelským specifikacím. Výpočetní výkon, úložiště a služby se [škálují](/azure/architecture/best-practices/auto-scaling) na vyžádání v rámci fakturačního modelu založeného na využití.
+Při horizontálním navýšení kapacity cloudových prostředí se většinou škálují sálové počítače. Azure nabízí řadu velikostí pro [Linux](../../sizes.md) a [Windows](../../sizes.md) , které vyhovují vašim potřebám. Cloud se také škáluje nahoru nebo dolů, aby odpovídal přesně zadaným uživatelským specifikacím. Výpočetní výkon, úložiště a služby se [škálují](/azure/architecture/best-practices/auto-scaling) na vyžádání v rámci fakturačního modelu založeného na využití.
 
 ### <a name="storage"></a>Storage
 
@@ -98,7 +98,7 @@ V cloudu máte řadu flexibilních a škálovatelných možností úložiště a
 
 Přečtěte si, jak [přesunout sálové úložiště do Azure](./concepts/mainframe-storage-azure.md).
 
-### <a name="backup-and-recovery"></a>Zálohování a obnova
+### <a name="backup-and-recovery"></a>Backup a obnovení
 
 Udržování vlastního webového serveru pro zotavení po havárii může být nákladným umístěním. Azure má snadno implementované a nákladově efektivní možnosti pro [zálohování](../../../backup/backup-overview.md), [obnovu](../../../site-recovery/site-recovery-overview.md)a [redundanci](../../../storage/common/storage-redundancy.md) v místní nebo regionální úrovni nebo prostřednictvím geografické redundance.
 

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 03c1d8e6d6b5b1d55fee964b509c1bc08537cf6b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 80bcac36271d86334e11cb3cd161cd96777e6fe5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088576"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832446"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Resetování služby Vzdálená plocha nebo jejího hesla správce ve virtuálním počítači s Windows
 Pokud se nemůžete připojit k virtuálnímu počítači s Windows (VM), můžete resetovat heslo místního správce nebo Resetovat konfiguraci služby Vzdálená plocha (nepodporuje se na řadičích domény se systémem Windows). Heslo můžete resetovat pomocí webu Azure Portal nebo rozšíření VMAccess v Azure PowerShellu. Po přihlášení k virtuálnímu počítači resetujte heslo příslušného místního správce.  
-Pokud používáte PowerShell, ujistěte se, že máte [nainstalovaný a nakonfigurovaný nejnovější modul prostředí PowerShell](/powershell/azure/) a že jste přihlášeni ke svému předplatnému Azure. Můžete také [provést tento postup určený pro virtuální počítače vytvořené pomocí modelu nasazení Classic](/azure/virtual-machines/windows/classic/reset-rdp).
+Pokud používáte PowerShell, ujistěte se, že máte [nainstalovaný a nakonfigurovaný nejnovější modul prostředí PowerShell](/powershell/azure/) a že jste přihlášeni ke svému předplatnému Azure. Můžete také [provést tento postup určený pro virtuální počítače vytvořené pomocí modelu nasazení Classic](/previous-versions/azure/virtual-machines/windows/classic/reset-rdp).
 
 Vzdálenou plochu a přihlašovací údaje můžete resetovat následujícími způsoby:
 

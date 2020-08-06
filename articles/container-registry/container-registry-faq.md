@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 5ee58f6a2058158308cab8ec49b1d79587998d39
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1c2330f1ba71e2a72a1a44df7af6444181f5f9ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247026"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836390"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
 
@@ -254,7 +254,9 @@ Karanténa obrázku je teď funkcí Preview ACR. Můžete povolit karanténní r
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>Návody povolit anonymní přístup pro vyžádání obsahu?
 
-Nastavení služby Azure Container registry pro anonymní (veřejné) zpřístupnění přístupu je aktuálně funkcí verze Preview. Pokud chcete povolit veřejný přístup, otevřete prosím na adrese lístek podpory https://aka.ms/acr/support/create-ticket . Podrobnosti najdete na [fóru názory Azure](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+Nastavení služby Azure Container registry pro anonymní (veřejné) zpřístupnění přístupu je aktuálně funkcí verze Preview. Pokud máte v registru nějaké [obory mapování (uživatelů) nebo prostředků tokenů](https://aka.ms/acr/repo-permissions) , odstraňte je prosím před vyvoláním lístku podpory (mapování oboru systému se dají ignorovat). Pokud chcete povolit veřejný přístup, otevřete prosím na adrese lístek podpory https://aka.ms/acr/support/create-ticket . Podrobnosti najdete na [fóru názory Azure](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+
+
 
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnostika a kontroly stavu
@@ -501,10 +503,10 @@ V tuto chvíli nepodporujeme GitLab pro aktivační události zdroje.
 
 | Služba Git | Zdrojový kontext | Ruční sestavení | Automatické sestavení prostřednictvím aktivační události potvrzení |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Yes |
-| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Ano | Yes |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | No |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Yes | No |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ano |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Ano | Ano |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ne |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ano | Ne |
 
 ## <a name="run-error-message-troubleshooting"></a>Řešení potíží s chybovou zprávou
 

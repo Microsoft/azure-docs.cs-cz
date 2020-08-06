@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7298e935da8b4c81bfb0a7b07d9f94f7c100b2b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c5b008b9771e636201f95f3a56f81d4e75b7ea2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038779"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831732"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Živé streamování pomocí Azure Media Services
 
@@ -27,7 +27,7 @@ ms.locfileid: "87038779"
 
 Microsoft Azure Media Services nabízí rozhraní API, která odesílají žádosti do Media Services spuštění operací (například: vytvoření, spuštění, zastavení nebo odstranění kanálu). Tyto operace jsou dlouhodobě spuštěné.
 
-Sada Media Services .NET SDK poskytuje rozhraní API, která odesílají požadavek a čekají na dokončení operace (interně se rozhraní API dotazuje na průběh operace v některých intervalech). Například při volání metody Channel. Start (), metoda se vrátí po spuštění kanálu. Můžete také použít asynchronní verzi: await kanál. StartAsync () (informace o asynchronním vzoru založeném na úlohách naleznete v tématu [klepněte](/azure/media-services/previous/media-services-mes-schema)). Rozhraní API, která odesílají požadavek operace a následně se dotazují na stav, dokud se operace nedokončí, se nazývají "metody cyklického dotazování". Tyto metody (obzvláště asynchronní verze) se doporučují pro rozšířené klientské aplikace a/nebo stavové služby.
+Sada Media Services .NET SDK poskytuje rozhraní API, která odesílají požadavek a čekají na dokončení operace (interně se rozhraní API dotazuje na průběh operace v některých intervalech). Například při volání metody Channel. Start (), metoda se vrátí po spuštění kanálu. Můžete také použít asynchronní verzi: await kanál. StartAsync () (informace o asynchronním vzoru založeném na úlohách naleznete v tématu [klepněte](./media-services-mes-schema.md)). Rozhraní API, která odesílají požadavek operace a následně se dotazují na stav, dokud se operace nedokončí, se nazývají "metody cyklického dotazování". Tyto metody (obzvláště asynchronní verze) se doporučují pro rozšířené klientské aplikace a/nebo stavové služby.
 
 K dispozici jsou situace, kdy aplikace nemůže čekat na dlouho běžící požadavek HTTP, a chce se dotazovat na průběh operace ručně. Typickým příkladem může být prohlížeč, který pracuje s bezstavovou webovou službou: když prohlížeč požaduje vytvoření kanálu, Webová služba spustí dlouhou běžící operaci a vrátí ID operace do prohlížeče. Prohlížeč pak může požádat webovou službu, aby získala stav operace na základě ID. Sada Media Services .NET SDK poskytuje rozhraní API, která jsou užitečná pro tento scénář. Tato rozhraní API se nazývají "metody bez cyklického dotazování".
 Metody "non-cyklického dotazování" mají následující vzor pojmenovávání:*operace Odeslat operaci*(například SendCreateOperation). Metody operace Send*operace*vrátí objekt **IOperation** ; vrácený objekt obsahuje informace, které lze použít ke sledování operace. Vrátí **úlohu \<IOperation> **metody OperationAsync*operace*odeslání.

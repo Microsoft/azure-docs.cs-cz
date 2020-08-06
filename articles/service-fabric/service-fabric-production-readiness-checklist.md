@@ -3,12 +3,12 @@ title: Kontrolní seznam připravenosti na produkci pro Azure Service Fabric
 description: Připravte svou Service Fabricovou aplikaci a produkční clustery podle osvědčených postupů.
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: cf5245b4b97706703d9f96e047ecb49786ff6266
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a03df40a8ce213c5de9ed7017d47713c4de3449d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282054"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835863"
 ---
 # <a name="production-readiness-checklist"></a>Kontrolní seznam připravenosti k produkci
 
@@ -35,7 +35,7 @@ Je vaše aplikace a cluster připravený přijmout provozní provoz? Spuštění
 1. Navažte cíl bodu obnovení (RPO) pro vaši službu a nastavte [proces zotavení po havárii](service-fabric-disaster-recovery.md) a otestujte ho.
 1. Naplánujte ruční nebo programové [škálování](service-fabric-cluster-scaling.md) clusteru.
 1. Naplánujte [opravy](service-fabric-patch-orchestration-application.md) vašich uzlů clusteru. 
-1. Vytvořte kanál CI/CD, abyste mohli průběžně testovat nejnovější změny. Například pomocí [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) nebo [Jenkinse](service-fabric-cicd-your-linux-applications-with-jenkins.md)
+1. Vytvořte kanál CI/CD, abyste mohli průběžně testovat nejnovější změny. Například pomocí [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) nebo [Jenkinse](/azure/developer/jenkins/deploy-to-service-fabric-cluster)
 1. Otestujte vývoj & přípravných clusterů pod zátěží pomocí [služby analýzy chyb](service-fabric-testability-overview.md) a [nachaos](service-fabric-controlled-chaos.md)řízených. 
 1. Naplánujte [škálování](service-fabric-concepts-scalability.md) aplikací. 
 

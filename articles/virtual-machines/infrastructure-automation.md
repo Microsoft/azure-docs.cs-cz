@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 5567274fd9ee2cfaf41f9ff4c6e71bb2faab7b1d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 36ac0058f8f2cf3ca106b30c86207e46d0712193
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292379"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830542"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Použití nástrojů pro automatizaci infrastruktury s virtuálními počítači v Azure
 
@@ -34,9 +34,9 @@ Aby bylo možné vytvářet a spravovat virtuální počítače Azure konzistent
 
 Naučte se:
 
-- [Nainstalujte a nakonfigurujte Ansible pro Linux pro použití s Azure](../ansible/ansible-install-configure.md).
-- [Vytvořte virtuální počítač se systémem Linux](../ansible/ansible-create-vm.md).
-- [Správa virtuálního počítače se systémem Linux](../ansible/ansible-manage-linux-vm.md).
+- [Nainstalujte a nakonfigurujte Ansible pro Linux pro použití s Azure](/azure/developer/ansible/install-on-linux-vm).
+- [Vytvořte virtuální počítač se systémem Linux](/azure/developer/ansible/vm-configure).
+- [Správa virtuálního počítače se systémem Linux](/azure/developer/ansible/vm-manage).
 
 
 ## <a name="chef"></a>Chef
@@ -45,7 +45,7 @@ Aplikace pro vzdálenou [správu je platforma](https://www.chef.io/) pro automat
 Naučte se:
 
 - [Nasaďte z Azure Marketplace automatizaci](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview).
-- [Nainstalujte si ho do Windows a vytvořte virtuální počítače Azure](../chef/chef-automation.md).
+- [Nainstalujte si ho do Windows a vytvořte virtuální počítače Azure](/azure/developer/chef/windows-vm-configure).
 
 
 ## <a name="puppet"></a>Puppet
@@ -81,7 +81,7 @@ Naučte se:
 
 
 ## <a name="azure-custom-script-extension"></a>Rozšíření Azure Custom Script
-Rozšíření vlastních skriptů Azure pro [Linux](./linux/extensions-customscript.md) nebo [Windows](./windows/extensions-customscript.md) stahuje a spouští skripty na virtuálních počítačích Azure. Rozšíření můžete použít při vytváření virtuálního počítače nebo kdykoli po použití virtuálního počítače.
+Rozšíření vlastních skriptů Azure pro [Linux](./extensions/custom-script-linux.md) nebo [Windows](./extensions/custom-script-windows.md) stahuje a spouští skripty na virtuálních počítačích Azure. Rozšíření můžete použít při vytváření virtuálního počítače nebo kdykoli po použití virtuálního počítače.
 
 Skripty si můžete stáhnout z Azure Storage nebo z libovolného veřejného umístění, jako je například úložiště GitHub. Pomocí rozšíření vlastních skriptů můžete psát skripty v jakémkoli jazyce, který běží na zdrojovém virtuálním počítači. Tyto skripty lze použít k instalaci aplikací nebo konfiguraci virtuálního počítače podle potřeby. Pro zabezpečení přihlašovacích údajů se můžou citlivé informace, jako jsou hesla, ukládat v chráněné konfiguraci. Tyto přihlašovací údaje se dešifrují jenom uvnitř virtuálního počítače.
 
@@ -116,7 +116,7 @@ Azure Automation taky poskytuje požadovanou službu Konfigurace stavu (DSC), kt
 
 Naučte se:
 
-- [Vytvořte powershellový Runbook](../automation/automation-first-runbook-textual-powershell.md).
+- [Vytvořte powershellový Runbook](../automation/learn/automation-tutorial-runbook-textual-powershell.md).
 - [Pomocí Hybrid Runbook Worker můžete spravovat místní prostředky](../automation/automation-hybrid-runbook-worker.md).
 - [Použijte Azure Automation DSC](../automation/automation-dsc-getting-started.md).
 
@@ -126,7 +126,7 @@ Naučte se:
 
 Přečtěte si další informace:
 
-- [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts).
+- [Azure DevOps Services](/azure/devops/user-guide/index?view=vsts).
 
 
 ## <a name="jenkins"></a>Jenkins
@@ -134,7 +134,7 @@ Přečtěte si další informace:
 
 Naučte se:
 
-- [Vytvořte vývojovou infrastrukturu na virtuálním počítači Linux v Azure pomocí Jenkinse, GitHubu a Docker](../jenkins/tutorial-jenkins-github-docker-cicd.md).
+- [Vytvořte vývojovou infrastrukturu na virtuálním počítači Linux v Azure pomocí Jenkinse, GitHubu a Docker](/azure/developer/jenkins/pipeline-with-github-and-docker).
 
 
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
@@ -149,4 +149,3 @@ Naučte se:
 
 ## <a name="next-steps"></a>Další kroky
 K dispozici je celá řada různých možností použití nástrojů pro automatizaci infrastruktury v Azure. Máte volnost v používání řešení, které nejlépe vyhovuje vašim potřebám a prostředí. Chcete-li začít a vyzkoušet některé z vestavěných nástrojů do Azure, přečtěte si téma Postup automatizace vlastního nastavení virtuálního počítače se systémem [Linux](./linux/tutorial-automate-vm-deployment.md) nebo [Windows](./windows/tutorial-automate-vm-deployment.md) .
-

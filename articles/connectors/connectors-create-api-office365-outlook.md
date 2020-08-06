@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: aa5be3d58ee1a0a40d0b817e1f5999ccd4bc423d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e0e152b3c0e10c34bc6213ddf867b79c58d1d767
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319231"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832973"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Správa e-mailů, kontaktů a kalendářů v Office 365 Outlooku s využitím Azure Logic Apps
 
@@ -27,7 +27,7 @@ Libovolný Trigger můžete použít ke spuštění pracovního postupu, napří
 > [!NOTE]
 > K automatizaci úloh pro @outlook.com @hotmail.com účet nebo použijte [konektor Outlook.com](../connectors/connectors-create-api-outlook.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
@@ -48,7 +48,7 @@ Libovolný Trigger můžete použít ke spuštění pracovního postupu, napří
 1. Pokud se zobrazí výzva k přihlášení, zadejte přihlašovací údaje pro Office 365, aby se vaše aplikace logiky mohla připojit k vašemu účtu. V opačném případě, pokud vaše připojení již existuje, zadejte informace o vlastnostech triggeru.
 
    > [!NOTE]
-   > Vaše připojení nevyprší, dokud nebude zrušeno, a to ani v případě, že změníte přihlašovací údaje pro přihlášení. Další informace najdete v tématu [konfigurovatelné životnosti tokenů v Azure Active Directory](../active-directory/active-directory-configurable-token-lifetimes.md).
+   > Vaše připojení nevyprší, dokud nebude zrušeno, a to ani v případě, že změníte přihlašovací údaje pro přihlášení. Další informace najdete v tématu [konfigurovatelné životnosti tokenů v Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md).
 
    V tomto příkladu se vybere kalendář, který Trigger kontroluje, například:
 
@@ -81,7 +81,7 @@ Teď přidejte akci, která se spustí po aktivování triggeru. Můžete např�
 1. Pokud se zobrazí výzva k přihlášení, zadejte přihlašovací údaje pro Office 365, aby se vaše aplikace logiky mohla připojit k vašemu účtu. V opačném případě, pokud vaše připojení již existuje, zadejte informace o vlastnostech akce.
 
    > [!NOTE]
-   > Vaše připojení nevyprší, dokud nebude zrušeno, a to ani v případě, že změníte přihlašovací údaje pro přihlášení. Další informace najdete v tématu [konfigurovatelné životnosti tokenů v Azure Active Directory](../active-directory/active-directory-configurable-token-lifetimes.md).
+   > Vaše připojení nevyprší, dokud nebude zrušeno, a to ani v případě, že změníte přihlašovací údaje pro přihlášení. Další informace najdete v tématu [konfigurovatelné životnosti tokenů v Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md).
 
    V tomto příkladu se vybere složka kontaktů, kde akce vytvoří nový kontakt, například:
 

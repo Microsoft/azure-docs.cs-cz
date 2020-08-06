@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 7f78b5d0baff149fc687d2b4bb71d70186315def
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d00b897f41ab00f0e3c23292eeb5f431bf5c070c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543822"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835931"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -336,7 +336,7 @@ Microsoft používá pro správu identit a přístupu více postupů a technolog
 
 -   [Ověřování na základě tokenu](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/) umožňuje ověřování prostřednictvím Azure Active Directory.
 
--   [Řízení přístupu na základě role (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) umožňuje udělit přístup na základě role přiřazené uživateli, což usnadňuje uživatelům přístup pouze k množství přístupu, který potřebují k provedení svých pracovních povinností. RBAC můžete přizpůsobit podle obchodního modelu a tolerance rizik vaší organizace.
+-   [Řízení přístupu na základě role v Azure (Azure RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) umožňuje udělit přístup na základě přiřazené role uživatele, což usnadňuje uživatelům poskytnout jenom množství přístupu, které potřebují k provedení svých pracovních povinností. RBAC můžete přizpůsobit podle obchodního modelu a tolerance rizik vaší organizace.
 
 -   [Integration Management (hybridní identita)](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/) umožňuje udržovat řízení přístupu uživatelů mezi interní datacentry a cloudové platformy a vytvořit jednu identitu uživatele pro ověřování a autorizaci pro všechny prostředky.
 

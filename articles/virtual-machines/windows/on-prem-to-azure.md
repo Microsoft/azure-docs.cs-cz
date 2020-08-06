@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc283d1845926b79fb541d8ccb011fe853f50484
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f363b8fc2fec659ee1b101c13d1ba6ac629f29d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870282"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835475"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrace z Amazon Web Services (AWS) a dalších platforem na Managed Disks v Azure
 
@@ -55,7 +55,7 @@ Vyberte umístění, kde jsou k dispozici Azure Managed Disks. Pokud migrujete n
 
 ### <a name="vm-sizes"></a>Velikost virtuálních počítačů
 
-Pokud migrujete na Premium Managed Disks, je nutné aktualizovat velikost virtuálního počítače na Premium Storage dostupné velikosti v oblasti, kde se nachází virtuální počítač. Zkontrolujte velikosti virtuálních počítačů, které jsou Premium Storage podporuje. Specifikace velikosti virtuálního počítače Azure jsou uvedené v části [velikosti pro virtuální počítače](sizes.md).
+Pokud migrujete na Premium Managed Disks, je nutné aktualizovat velikost virtuálního počítače na Premium Storage dostupné velikosti v oblasti, kde se nachází virtuální počítač. Zkontrolujte velikosti virtuálních počítačů, které jsou Premium Storage podporuje. Specifikace velikosti virtuálního počítače Azure jsou uvedené v části [velikosti pro virtuální počítače](../sizes.md).
 Přečtěte si výkonnostní charakteristiky virtuálních počítačů, které pracují se Premium Storage a vyberte nejvhodnější velikost virtuálního počítače, která nejlépe vyhovuje vašim úlohám. Ujistěte se, že je ve vašem VIRTUÁLNÍm počítači k dispozici dostatečná šířka pásma, aby bylo možné disk provozovat.
 
 ### <a name="disk-sizes"></a>Velikosti disků

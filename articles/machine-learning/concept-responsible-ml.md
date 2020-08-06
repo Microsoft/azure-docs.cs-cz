@@ -1,36 +1,39 @@
 ---
-title: Odpovědní za Machine Learning (ML) Preview
+title: Co je zodpovědné Machine Learning (Preview)
 titleSuffix: Azure Machine Learning
-description: Seznamte se s tím, co je odpovědné ML a jak ho používat v Azure Machine Learning
+description: Seznamte se s tím, co zodpovídá počítač Learning a jak ho používat v Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 07/09/2020
-ms.openlocfilehash: 4f14d4a9207b3bd0ba242973443b8e756527fd70
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/05/2020
+ms.openlocfilehash: 689b90fc1f45faad72640f47e5eebe936d2dc8b7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201944"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829386"
 ---
-# <a name="responsible-machine-learning-ml-preview"></a>Odpovědní za Machine Learning (ML) Preview
+# <a name="what-is-responsible-machine-learning-preview"></a>Co je zodpovědný strojové učení? (Preview)
 
-V tomto článku se dozvíte, co je odpovědná ML, a způsoby, kterými se dá dát do praxe Azure Machine Learning.
+V tomto článku se dozvíte, jaké jsou odpovědné počítačové učení (ML) a způsoby, kterými se dá v praxi Azure Machine Learning.
 
-V průběhu vývoje a používání systémů AI musí být vztah důvěryhodnosti v jádru. Vztah důvěryhodnosti v rámci platformy, procesu a modelů. V Microsoftu, který odpovídá na ML, zahrnuje následující hodnoty a principy:
+## <a name="responsible-machine-learning-principles"></a>Příslušné principy strojového učení
+
+V průběhu vývoje a používání systémů AI musí být vztah důvěryhodnosti v jádru. Vztah důvěryhodnosti v rámci platformy, procesu a modelů. V Microsoftu zodpovědné počítačové učení zahrnuje následující hodnoty a principy:
 
 - Principy modelů strojového učení
   - Interpretace a vysvětlení chování modelu
   - Posouzení a zmírnění nepoctivosti modelu
 - Ochrana uživatelů a jejich dat
-  - Zabránit expozici dat s rozdílovou ochranou soukromí  
+  - Zabránit expozici dat s rozdílovou ochranou soukromí
+  - Práce s šifrovanými daty pomocí šifrování homomorphic
 - Řízení kompletního procesu strojového učení
   - Zdokumentujte životní cyklus machine learningu pomocí datových listů
 
-:::image type="content" source="media/concept-responsible-ml/responsible-ml-pillars.png" alt-text="Zodpovědné pilíře ML":::
+:::image type="content" source="media/concept-responsible-ml/responsible-ml-pillars.png" alt-text="Odpovědní pilíře ML – výklad, rozdílové soukromí, šifrování homomorphic, Azure Machine Learning pro audit":::
 
 V případě umělých a autonomních systémů, které se integrují do prostředků infrastruktury společnosti, je důležité aktivně proaktivně odhadnout a zmírnit nezamýšlené důsledky těchto technologií.
 
@@ -40,7 +43,7 @@ Obtížně vysvětlené nebo neprůhledné systémy mohou být problematické, p
 
 K sestavení interpretované systémy AI použijte [InterpretML](https://github.com/interpretml/interpret), což je open source balíček sestavený Microsoftem. [InterpretML se dají použít v Azure Machine Learning](how-to-machine-learning-interpretability.md) k [interpretaci a vysvětlení modelů strojového učení](how-to-machine-learning-interpretability-aml.md), včetně [automatizovaných modelů strojového učení](how-to-machine-learning-interpretability-automl.md).
 
-## <a name="assess-and-mitigate-model-unfairness"></a>Posouzení a zmírnění nepoctivosti modelu
+## <a name="mitigate-fairness-in-machine-learning-models"></a>Zmírnění rovnosti v modelech strojového učení
 
 Vzhledem k tomu, že se systémy AI stanou více zapojenými do každodenního rozhodování společnosti, je mimořádně důležité, aby tyto systémy dobře fungovaly na zajištění korektních výsledků pro každého.
 
@@ -64,6 +67,16 @@ Implementace rozdílových privátních systémů je obtížná. [WhiteNoise](ht
 > [!NOTE]
 > Všimněte si, že přejmenováváme sadu nástrojů a zavádíme nové jméno do nadcházejících týdnů. 
 
+## <a name="work-on-encrypted-data-with-homomorphic-encryption"></a>Práce s šifrovanými daty pomocí šifrování homomorphic
+
+V tradičním cloudovém úložišti a výpočtovém řešení potřebuje Cloud mít nešifrovaný přístup k zákaznickým datům, která se na něj budou počítat. Tento přístup zpřístupňuje data cloudovým operátorům. Ochrana osobních údajů v datech se spoléhá na zásady řízení přístupu implementované cloudem a důvěryhodným zákazníkem.
+
+Homomorphic šifrování umožňuje provádět výpočty na šifrovaných datech bez nutnosti přístupu ke tajnému (dešifrovacímu) klíči. Výsledky výpočtů jsou zašifrované a dají se odhalet jenom vlastníkem tajného klíče. Při použití šifrování homomorphic nemají operátoři cloudu nikdy zašifrovaný přístup k datům, která ukládá a výpočetní výkon. Výpočty se provádějí přímo v šifrovaných datech. Ochrana osobních údajů dat se spoléhá na špičkovou kryptografii a vlastník dat kontroluje všechny verze informací. Další informace o šifrování homomorphic v Microsoftu najdete v tématu [Microsoft Research](https://www.microsoft.com/research/project/homomorphic-encryption/).
+
+Pokud chcete začít se šifrováním homomorphic v Azure Machine Learning, použijte k [Microsoft zapečetit](https://github.com/microsoft/SEAL)vazby Pythonu, která je [zašifrovaná](https://pypi.org/project/encrypted-inference/) . Microsoft SEAL je open source knihovna šifrování homomorphic, která umožňuje provádět přidávání a násobení u šifrovaných celých čísel nebo reálných čísel. Další informace o Microsoft SEAL najdete na stránce [cetrum architektury Azure](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) nebo [projektu Microsoft Research](https://www.microsoft.com/research/project/microsoft-seal/).
+
+V následující ukázce se dozvíte, [Jak nasadit šifrovanou webovou službu Inferencing v Azure Machine Learning](how-to-homomorphic-encryption-seal.md).
+
 ## <a name="document-the-machine-learning-lifecycle-with-datasheets"></a>Zdokumentujte životní cyklus machine learningu pomocí datových listů
 
 Dokumentování správných informací v procesu strojového učení je klíčem k rozhodování o příslušných rozhodnutích v jednotlivých fázích. Datové listy představují způsob, jak zdokumentovat assety strojového učení, které se používají a vytváří v rámci životního cyklu machine learningu.
@@ -83,5 +96,5 @@ V následující ukázce se dozvíte, jak použít sadu SDK Azure Machine Learni
 
 ## <a name="additional-resources"></a>Další zdroje informací
 
-- K [nasazení šifrované webové služby Inferencing](how-to-homomorphic-encryption-seal.md)použijte šifrování homomorphic.
+- Další informace o osvědčených postupech najdete v [příslušné sadě nástrojů pro inovace](https://docs.microsoft.com/azure/architecture/guide/responsible-innovation/) .
 - Přečtěte si další informace o pokynech pro dokumentaci k systému Machine Learning [o ml](https://www.partnershiponai.org/about-ml/) .

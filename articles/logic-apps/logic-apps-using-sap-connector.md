@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/21/2020
 tags: connectors
-ms.openlocfilehash: a8985f951b8ff37beb7a1f63e8200321fc706ce6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a0f6af706a81db537b9ed66dc49996282c4dbbaa
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086604"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833891"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
@@ -128,7 +128,7 @@ Tyto požadavky platí v případě, že aplikace logiky běží v [prostředí 
 
 * Ve výchozím nastavení instalační program SAP umístí soubory sestavení do výchozí instalační složky. Tyto soubory sestavení je nutné zkopírovat do jiného umístění na základě vašeho scénáře, a to takto:
 
-  Pro Logic Apps, které běží na ISE, postupujte podle kroků popsaných v tématu [předpoklady pro prostředí integrační služby](#sap-ise). Pro aplikace logiky, které běží ve víceklientské architektuře Azure a používají místní bránu dat, zkopírujte soubory sestavení z výchozí instalační složky do instalační složky brány dat. Pokud narazíte na problémy s bránou data Gateway, přečtěte si následující problémy:
+  * Pro Logic Apps, které běží na ISE, postupujte podle kroků popsaných v tématu [předpoklady pro prostředí integrační služby](#sap-ise). Pro aplikace logiky, které běží ve víceklientské architektuře Azure a používají místní bránu dat, zkopírujte soubory sestavení z výchozí instalační složky do instalační složky brány dat. Pokud narazíte na problémy s bránou data Gateway, přečtěte si následující problémy:
 
   * Pro klientskou knihovnu SAP je nutné nainstalovat 64 verzi, protože brána dat se spouští pouze v systémech 64. V opačném případě se zobrazí chyba "chybná image", protože hostitelská služba brány dat nepodporuje 32 bitových sestavení.
 
@@ -431,7 +431,7 @@ Když nastavíte filtr pole, aktivační událost přijímá jenom zprávy ze za
 
 Jakékoli filtrování akcí SAP se stane na úrovni adaptéru SAP pro vaši místní bránu dat. Další informace najdete v tématu [Jak odeslat testovací IDOCs do Logic Apps z SAP](#send-idocs-from-sap).
 
-Pokud nemůžete odesílat IDoc pakety z SAP do triggeru vaší aplikace logiky, přečtěte si zprávu o odmítnutí volání transakčního RFC (tRFC) v dialogovém okně SAP tRFC (T-Code SM58). V rozhraní SAP se může zobrazit následující chybové zprávy, které jsou oříznuté z důvodu omezení dílčího řetězce v **textovém poli Stav** .
+Pokud nemůžete odesílat IDoc pakety z SAP do triggeru vaší aplikace logiky, přečtěte si zprávu o odmítnutí volání transakčního RFC (tRFC) v dialogovém okně SAP tRFC (T-Code SM58). V rozhraní SAP se může zobrazit následující chybové zprávy, které jsou oříznuté z důvodu omezení podřetězců v **textovém poli Stav** .
 
 * `The RequestContext on the IReplyChannel was closed without a reply being`: K neočekávaným chybám dochází, když popisovač catch-All pro kanál ukončí kanál z důvodu chyby a znovu sestaví kanál pro zpracování dalších zpráv.
 
@@ -532,7 +532,7 @@ K odeslání IDocs z SAP do aplikace logiky potřebujete následující minimál
 
 1. Uložte provedené změny.
 
-1. Chcete-li otestovat připojení, vyberte možnost **Test připojení** .
+1. Chcete-li otestovat připojení, vyberte možnost **Test připojení**.
 
 #### <a name="create-receiver-port"></a>Vytvořit port přijímače
 
@@ -610,7 +610,7 @@ V produkčních prostředích musíte vytvořit dva profily partnerů. První pr
 
 1. Výběrem možnosti **pokračovat**potvrďte, **který typ IDOC?** zpráva.
 
-1. Vyberte uzel **EDIDC** . Zadejte odpovídající hodnoty pro port příjemce a odesilatele. Vyberte **Pokračovat**.
+1. Vyberte uzel **EDIDC** . Zadejte odpovídající hodnoty pro port příjemce a odesilatele. Vyberte **pokračovat**.
 
 1. Vyberte **standardní odchozí zpracování**.
 
@@ -727,7 +727,10 @@ V následujícím příkladu je volání RFC s parametrem tabulky, který má an
 
 ```
 
-Následující příklad obsahuje předpony pro obory názvů. Můžete deklarovat všechny předpony najednou nebo můžete deklarovat libovolné množství předpon jako atributy uzlu. Alias oboru názvů RFC `ns0` se používá jako kořenový adresář a parametry pro základní typ. Všimněte si, že komplexní typy jsou deklarovány v rámci jiného oboru názvů pro typy RFC s aliasem `ns3` namísto regulárního oboru názvů RFC s aliasem `ns0` .
+Následující příklad obsahuje předpony pro obory názvů. Můžete deklarovat všechny předpony najednou nebo můžete deklarovat libovolný počet předpon jako atributy uzlu. Alias oboru názvů RFC `ns0` se používá jako kořenový adresář a parametry pro základní typ.
+
+> [!NOTE]
+> komplexní typy jsou deklarovány v rámci jiného oboru názvů pro typy RFC s aliasem `ns3` namísto regulárního oboru názvů RFC s aliasem `ns0` .
 
 ```xml
 
@@ -883,7 +886,7 @@ Následující příklad je ukázkový datový záznam s prostými segmenty. V t
 
 ```
 
-Následující příklad je datový záznam se seskupenými segmenty. To zahrnuje nadřazený uzel skupiny, `E2EDKT1002GRP` a několik podřízených uzlů, včetně `E2EDKT1002` a `E2EDKT2001` . 
+Následující příklad je datový záznam se seskupenými segmenty. Záznam obsahuje nadřazený uzel skupiny, `E2EDKT1002GRP` a několik podřízených uzlů, včetně `E2EDKT1002` a `E2EDKT2001` . 
 
 ```xml
 
@@ -900,7 +903,7 @@ Následující příklad je datový záznam se seskupenými segmenty. To zahrnuj
 
 ```
 
-Doporučenou metodou je vytvořit identifikátor IDoc pro použití s tRFC. Tento identifikátor transakce můžete nastavit `tid` pomocí [operace Odeslat IDOC](https://docs.microsoft.com/connectors/sap/#send-idoc) v rozhraní SAP Connector API.
+Doporučenou metodou je vytvořit identifikátor IDoc pro použití s tRFC. Tento identifikátor transakce můžete nastavit `tid` pomocí [operace Odeslat IDOC](/connectors/sap/#send-idoc) v rozhraní SAP Connector API.
 
 Následující příklad je alternativní metoda pro nastavení identifikátoru transakce nebo `tid` . V tomto příkladu jsou zavřeny poslední uzel segment záznamu dat a IDoc data uzel. Pak identifikátor GUID `guid` je použit jako identifikátor tRFC k detekci duplicit. 
 

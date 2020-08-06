@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: ce8e8b083b108d24c11d828ae1cbd4e47e090fc0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: de1345fca418118e88929870cd2f4007dd36b3a4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963202"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835982"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Parametry serveru v Azure Database for MySQL
 
@@ -110,8 +110,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|262144|128|268435455|
 |Pro obecné účely|4|262144|128|536870912|
 |Pro obecné účely|8|262144|128|1073741824|
@@ -126,7 +126,7 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 ### <a name="max_connections"></a>max_connections
 
-|**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota**|**Minimální hodnota**|**Maximální hodnota**|
+|**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota**|**Min. hodnota**|**Max. hodnota**|
 |---|---|---|---|---|
 |Základní|1|50|10|50|
 |Základní|2|100|10|100|
@@ -159,8 +159,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|16777216|16384|268435455|
 |Pro obecné účely|4|16777216|16384|536870912|
 |Pro obecné účely|8|16777216|16384|1073741824|
@@ -184,8 +184,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|* * Maximální hodnota * *|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|0|0|16777216|
 |Pro obecné účely|4|0|0|33554432|
 |Pro obecné účely|8|0|0|67108864|
@@ -198,14 +198,29 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 |Optimalizováno pro paměť|16|0|0|134217728|
 |Optimalizováno pro paměť|32|0|0|134217728|
 
+### <a name="lower_case_table_names"></a>lower_case_table_names
+
+Ve výchozím nastavení je lower_case_table_name nastavená na hodnotu 1. Tento parametr můžete aktualizovat v MySQL 5,6 a MySQL 5,7.
+
+Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_lower_case_table_names) .
+
+> [!NOTE]
+> V MySQL 8,0 je ve výchozím nastavení lower_case_table_name nastavena na hodnotu 1 a nelze jej změnit.
+
+### <a name="innodb_strict_mode"></a>innodb_strict_mode
+
+Pokud se zobrazí chybová zpráva podobná velikosti řádku je moc velká (> 8126), můžete **innodb_strict_mode**parametru vypnout. Parametr serveru **innodb_strict_mode** není povoleno upravovat globálně na úrovni serveru, protože pokud je velikost dat řádku větší než 8k, data budou zkrácena, aniž by došlo k chybě, která by vedla k potenciální ztrátě dat. Doporučujeme schéma upravit tak, aby odpovídalo limitu velikosti stránky. 
+
+Tento parametr lze nastavit na úrovni relace pomocí `init_connect` . Pokud chcete nastavit **innodb_strict_mode** na úrovni relace, přečtěte si téma [Nastavení parametrů není uvedené](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed).
+
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 
 Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size) .
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|524288|32768|4194304|
 |Pro obecné účely|4|524288|32768|8388608|
 |Pro obecné účely|8|524288|32768|16777216|
@@ -224,8 +239,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|16777216|1024|67108864|
 |Pro obecné účely|4|16777216|1024|134217728|
 |Pro obecné účely|8|16777216|1024|268435456|

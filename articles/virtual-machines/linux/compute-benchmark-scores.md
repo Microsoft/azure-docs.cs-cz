@@ -5,12 +5,12 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: 61deac4c94902dc392a23f05674e2b1fb3f3cf87
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: efbd90eee8d072c1979565209c8c04a4ee5c55f9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373415"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830525"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Hodnocení srovnávacích testů pro virtuální počítače se systémem Linux
 Následující výsledky srovnávacích testů CoreMark ukazují výpočetní výkon pro vysoce výkonné virtuální počítače Azure seznamu se systémem Ubuntu. Pro [virtuální počítače s Windows](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)jsou k dispozici také hodnocení srovnávacích testů.
@@ -469,6 +469,5 @@ Následující výsledky srovnávacích testů CoreMark ukazují výpočetní v�
 Čísla Linux byla vypočítána spuštěním [CoreMark](https://www.eembc.org/coremark/faq.php) na Ubuntu. CoreMark byl nakonfigurován s počtem vláken nastaveným na počet virtuálních procesorů a souběžnost nastavenou na PThreads. Cílový počet iterací byl upraven na základě očekávaného výkonu za účelem poskytnutí modulu runtime nejméně 20 sekund (obvykle mnohem delší než). Konečný výsledek představuje počet dokončených iterací dělený počtem sekund, které trvalo spuštění testu. Každý test byl na každém virtuálním počítači spuštěn alespoň dvakrát. Data testovacího běhu uvedená výše. Testy běží na několika virtuálních počítačích napříč veřejnými oblastmi Azure. Tento virtuální počítač se v průběhu dne spuštění podporoval. Základní A a B (nefunkční) série se nezobrazuje, protože výkon je proměnná. Řada N není zobrazená, protože se jedná o střed GPU a CoreMark neměří výkon GPU.
 
 ## <a name="next-steps"></a>Další kroky
-* Kapacitu úložiště, podrobnosti o disku a další požadavky pro výběr velikostí virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Kapacitu úložiště, podrobnosti o disku a další požadavky pro výběr velikostí virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Pokud chcete spustit skripty CoreMark na virtuálních počítačích se systémem Linux, Stáhněte si [balíček CoreMark Script Pack](https://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip).
-

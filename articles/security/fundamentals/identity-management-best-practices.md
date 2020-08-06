@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 852a8c8eb7e6a87739c58967eefd6c18e996b225
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b354fda4d23d13b8defed4381335ab147bbece5d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367397"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835897"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy zabezpečení správy identit a řízení přístupu v Azure
 
@@ -195,7 +195,7 @@ Organizace, které neposkytují další vrstvy ochrany identity, jako je napří
 
 ## <a name="use-role-based-access-control"></a>Použití řízení přístupu na základě rolí
 
-Správa přístupu pro cloudové prostředky je kritická pro všechny organizace, které využívají cloud. [Řízení přístupu na základě role (RBAC)](/azure/role-based-access-control/overview)pomáhá spravovat, kdo má přístup k prostředkům Azure, co s těmito prostředky může dělat a k jakým oblastem mají přístup.
+Správa přístupu pro cloudové prostředky je kritická pro všechny organizace, které využívají cloud. [Řízení přístupu na základě role v Azure (Azure RBAC)](/azure/role-based-access-control/overview)pomáhá spravovat, kdo má přístup k prostředkům Azure, co s těmito prostředky může dělat a k jakým oblastem mají přístup.
 
 Označení skupin nebo jednotlivých rolí zodpovědných za konkrétní funkce v Azure pomáhá zabránit nejasnostem, které mohou vést k chybám lidského a automatizace, které vytvářejí bezpečnostní rizika. Omezení přístupu na základě [potřebných znalostí](https://en.wikipedia.org/wiki/Need_to_know) a [minimálních](https://en.wikipedia.org/wiki/Principle_of_least_privilege) principů zabezpečení oprávnění je nezbytné pro organizace, které chtějí vynutilit zásady zabezpečení pro přístup k datům.
 

@@ -3,12 +3,12 @@ title: Přehled architektury
 description: Poskytuje přehled architektury, komponent a procesů, které používá služba Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 45e5634188b675198e0fc4c07a8a43964217f91a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fc57f275d7693c9cf93adf04dc5dcc7524ba0567
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532488"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835727"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -42,7 +42,7 @@ Recovery Services trezory mají následující funkce:
 - Trezory usnadňují uspořádání zálohovaných dat a současně minimalizují nároky na správu.
 - V každém předplatném Azure můžete vytvořit až 500 trezorů.
 - Zálohované položky můžete monitorovat v trezoru, včetně virtuálních počítačů Azure a místních počítačů.
-- Přístup k trezoru můžete spravovat pomocí [řízení přístupu na základě role (RBAC)](../role-based-access-control/role-assignments-portal.md)v Azure.
+- Přístup k trezoru můžete spravovat pomocí [řízení přístupu na základě role Azure (RBAC)](../role-based-access-control/role-assignments-portal.md).
 - Určíte, jak se data v trezoru replikují pro redundanci:
   - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Další informace](../storage/common/storage-redundancy.md).
   - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Další informace](../storage/common/storage-redundancy.md).
@@ -95,8 +95,8 @@ Následující tabulka shrnuje podporované funkce pro různé typy zálohován�
 **Funkce** | **Přímé zálohování souborů a složek (pomocí agenta MARS)** | **Zálohování virtuálních počítačů Azure** | **Počítače nebo aplikace s DPM/MABS**
 --- | --- | --- | ---
 Zálohování do trezoru | ![Ano][green] | ![Ano][green] | ![Ano][green]
-Zálohování na disk DPM/MABS, potom do Azure | | | ![Yes][green]
-Komprimovat data odesílaná k zálohování | ![Yes][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Yes][green]
+Zálohování na disk DPM/MABS, potom do Azure | | | ![Ano][green]
+Komprimovat data odesílaná k zálohování | ![Ano][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Ano][green]
 Spustit přírůstkové zálohování |![Ano][green] |![Ano][green] |![Ano][green]
 Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][yellow]<br/><br/> Jenom pro servery DPM/MABS nasazené místně.
 

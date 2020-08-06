@@ -8,16 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: d86805975b082136879c0a98ce2817f4f491a9a0
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 16ca4ad1204301542ffaa0177d88b2c2800f13b4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461200"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836271"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migrace prostředků IaaS do Azure Resource Manager do 1. března 2023 
 
-V 2014 jsme na Azure Resource Manager spustili IaaS a vylepšili jsme možnosti, které se od verze nezměnily. Vzhledem k tomu, že [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) nyní má úplné možnosti IaaS a další zálohy, zakázali jsme správu virtuálních počítačů s IaaS prostřednictvím Azure Service Manager od 28. února 2020 a tato funkce bude plně vyřazena 1. března 2023. 
+V 2014 jsme na Azure Resource Manager spustili IaaS a vylepšili jsme možnosti, které se od verze nezměnily. Vzhledem k tomu, že [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) nyní má úplné možnosti IaaS a další zálohy, zakázali jsme správu virtuálních počítačů s IaaS prostřednictvím [Azure Service Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#what-is-azure-service-manager-and-what-does-it-mean-by-classic) od 28. února 2020 a tato funkce bude plně vyřazena 1. března 2023. 
 
 V dnešní době se o 90% virtuálních počítačů s IaaS používají Azure Resource Manager. Pokud používáte prostředky IaaS prostřednictvím služby Azure Service Manager (ASM), zahajte vám plánování migrace hned a od 1. března 2023, abyste mohli využít [Azure Resource Manager](../azure-resource-manager/management/index.yml).
 
@@ -25,9 +25,9 @@ Klasické virtuální počítače budou za [moderní zásady životního cyklu](
 
 ## <a name="how-does-this-affect-me"></a>Co to pro mě znamená? 
 
-1) Od 28. února 2020 zákazníci, kteří nevyužili virtuální počítače s IaaS prostřednictvím služby Azure Service Manager (ASM) v měsíci z února 2020, už nebudou moct vytvářet klasické virtuální počítače. 
-2) Od 1. března 2023 už zákazníci nebudou moct IaaS virtuální počítače s využitím Azure Service Manager a všechny, které jsou pořád spuštěné nebo přidělené, se zastaví a zruší její přidělení. 
-2) Od 1. března 2023 budou předplatná, která nebyla migrována do Azure Resource Manager, informována o časových osách pro odstranění všech zbývajících klasických virtuálních počítačů.  
+- Od 28. února 2020 zákazníci, kteří nevyužili virtuální počítače s IaaS prostřednictvím služby Azure Service Manager (ASM) v měsíci z února 2020, už nebudou moct vytvářet klasické virtuální počítače. 
+- Od 1. března 2023 už zákazníci nebudou moct IaaS virtuální počítače s využitím Azure Service Manager a všechny, které jsou pořád spuštěné nebo přidělené, se zastaví a zruší její přidělení. 
+- Od 1. března 2023 budou předplatná, která nejsou migrována na Azure Resource Manager, informována o časových osách pro odstranění všech zbývajících klasických virtuálních počítačů.  
 
 Tyto služby a funkce **Azure nebudou** ovlivněny tímto vyřazením: 
 - Cloud Services 
@@ -45,6 +45,17 @@ Tyto služby a funkce **Azure nebudou** ovlivněny tímto vyřazením:
 
 - V případě technických otázek, problémů a přidávání předplatných do seznamu povolených [kontaktů se obraťte na podporu](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"}).
 
-- Pokud potřebujete pomoc při migraci, obraťte se na [podporu migrace](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}) .
-
 - Další otázky nejsou součástí NEJČASTĚJŠÍch dotazů a zpětná vazba, komentář níže.
+
+- Dokončete migraci co nejdříve, abyste zabránili obchodním dopadům a využili lepší výkon, & zabezpečení nových funkcí poskytovaných Azure Resource Manager. 
+
+## <a name="what-resources-are-provided-to-me-for-this-migration"></a>Jaké prostředky jsou pro tuto migraci k dispozici?
+
+- [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-virtual-machines-migration.html): podpora Microsoft & Community pro migraci
+
+- [Podpora migrace do Azure](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"1135e3d0-20e2-aec5-4ef0-55fd3dae2d58"}): tým vyhrazené podpory pro technickou pomoc při migraci
+
+- [Rychlé sledování společnosti Microsoft](https://www.microsoft.com/fasttrack): tým Microsoftu pro rychlé sledování může poskytnout technickou pomoc při migraci na oprávněné zákazníky. 
+
+- Pokud vaše společnost nebo organizace spolupracuje s Microsoftem a/nebo spolupracuje s Microsoftem, jako je třeba (Cloud Solution Architect (CSA), správci technického účtu (TAMs)), pracujte s nimi pro další prostředky pro migraci. 
+

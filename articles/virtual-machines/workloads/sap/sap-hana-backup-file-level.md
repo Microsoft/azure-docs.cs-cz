@@ -12,12 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: b9d66dc4f0e2e637ac8512022336f257f5d585a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 183273e6f93bbfda8ed4e5fe913192994a0b6ce2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035736"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833381"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA Azure Backup na úrovni souborů
 
@@ -25,7 +25,7 @@ ms.locfileid: "87035736"
 
 V tomto článku se seznámíte s [příručkou pro zálohování SAP HANA v Azure Virtual Machines](./sap-hana-backup-guide.md), která poskytuje přehled a informace o tom, jak začít, a další podrobnosti o Azure Backupch služby a snímcích úložiště. 
 
-Různé typy virtuálních počítačů v Azure umožňují, aby byl připojený jiný počet virtuálních pevných disků. Přesné podrobnosti jsou popsány v části [velikosti pro virtuální počítače se systémem Linux v Azure](../../linux/sizes.md). Pro testy uvedené v této dokumentaci jsme použili GS5 virtuální počítač Azure, který umožňuje 64 připojených datových disků. V případě větších SAP HANA systémů už může být u souborů dat a protokolů, které jsou v kombinaci s softwarovým obložením pro optimální propustnost v/v, zavedený velký počet disků. Další podrobnosti o navrhovaných konfiguracích disků pro nasazení SAP HANA na virtuálních počítačích Azure najdete v článku [SAP HANA konfigurace úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md). Tato doporučení zahrnují taky doporučení na místo na disku pro místní zálohování.
+Různé typy virtuálních počítačů v Azure umožňují, aby byl připojený jiný počet virtuálních pevných disků. Přesné podrobnosti jsou popsány v části [velikosti pro virtuální počítače se systémem Linux v Azure](../../sizes.md). Pro testy uvedené v této dokumentaci jsme použili GS5 virtuální počítač Azure, který umožňuje 64 připojených datových disků. V případě větších SAP HANA systémů už může být u souborů dat a protokolů, které jsou v kombinaci s softwarovým obložením pro optimální propustnost v/v, zavedený velký počet disků. Další podrobnosti o navrhovaných konfiguracích disků pro nasazení SAP HANA na virtuálních počítačích Azure najdete v článku [SAP HANA konfigurace úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md). Tato doporučení zahrnují taky doporučení na místo na disku pro místní zálohování.
 
 Standardní způsob, jak spravovat zálohování nebo obnovení na úrovni souboru, je zálohování na základě souborů prostřednictvím SAP HANA studia nebo prostřednictvím příkazů SAP HANA SQL. Další informace najdete v článku [SAP HANA SQL a Přehled systémových zobrazení](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf).
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 4c6f4bbae180184c13041863a85e2a7025f06a6e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 826f47115d15b9c46476af711eddc5499afab419
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250442"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830253"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí zálohování a obnovení služby ve službě Azure API Management
 
@@ -55,7 +55,7 @@ Všechny úlohy, které provedete v prostředcích pomocí Azure Resource Manage
 
 ### <a name="create-an-azure-active-directory-application"></a>Vytvoření aplikace Azure Active Directory
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Pomocí předplatného, které obsahuje vaši instanci služby API Management, přejděte v **Azure Active Directory** na kartu **Registrace aplikací** (Azure Active Directory > spravovat/registrace aplikací).
 
     > [!NOTE]
@@ -68,7 +68,7 @@ Všechny úlohy, které provedete v prostředcích pomocí Azure Resource Manage
 4. Zadejte název aplikace.
 5. Jako typ aplikace vyberte **nativní**.
 6. Zadejte adresu URL zástupného symbolu `http://resources` , například pro **identifikátor URI přesměrování**, protože se jedná o povinné pole, ale hodnota se nepoužije později. Kliknutím na zaškrtávací políčko aplikaci uložíte.
-7. Klikněte na **Create** (Vytvořit).
+7. Klikněte na **Vytvořit**.
 
 ### <a name="add-an-application"></a>Přidání aplikace
 
@@ -169,19 +169,24 @@ Nastavte hodnotu `Content-Type` záhlaví požadavku na `application/json` .
 
 Zálohování je dlouhodobá operace, která může trvat déle než minutu. Pokud je požadavek úspěšný a proces zálohování začal, obdržíte `202 Accepted` kód stavu odpovědi s `Location` hlavičkou. Chcete-li zjistit stav operace, proveďte v hlavičce požadavky GET na adresu URL `Location` . I když probíhá zálohování, budete dál dostávat stavový kód 202. Kód odpovědi `200 OK` indikuje úspěšné dokončení operace zálohování.
 
-Při vytváření žádosti o zálohu nebo obnovení Pamatujte na následující omezení:
+#### <a name="constraints-when-making-backup-or-restore-request"></a>Omezení při vytváření žádosti o zálohování nebo obnovení
 
 -   **Kontejner** zadaný v těle požadavku **musí existovat**.
 -   Zatímco probíhá zálohování, **Vyhněte se změnám správy ve službě** , jako je například upgrade SKU nebo downgrading, změna v názvu domény a další.
 -   Obnovení **zálohy je zaručeno pouze po dobu 30 dnů** od okamžiku jejího vytvoření.
--   **Data o využití** používaná pro vytváření sestav Analytics **nejsou součástí** zálohy. Pomocí služby [Azure API Management REST API][azure api management rest api] pravidelně načítat analytické sestavy pro bezpečné používání.
--   Kromě toho následující položky nejsou součástí zálohovaných dat: vlastní certifikáty TLS/SSL a všechny zprostředkující nebo kořenové certifikáty nahrané zákazníkem, obsahem portálu pro vývojáře a nastavením integrace virtuální sítě.
--   Frekvence, se kterou provádíte zálohování služby, má vliv na cíl bodu obnovení. Pro minimalizaci doporučujeme, abyste implementovali pravidelné zálohování a prováděli zálohování na vyžádání po provedení změn ve službě API Management.
 -   **Změny** v konfiguraci služby, (například rozhraní API, zásady a vzhled portálu pro vývojáře) během procesu zálohování, **mohou být vyloučeny ze zálohy a budou ztraceny**.
--   **Povolit** přístup z řídicí roviny na účet Azure Storage, pokud má zapnutou [bránu firewall][azure-storage-ip-firewall] . Zákazník musí ve svém účtu úložiště otevřít sadu [IP adres řídicích ploch Azure API Management][control-plane-ip-address] pro zálohování nebo obnovení z. 
+-   **Povolit** přístup z řídicí roviny na účet Azure Storage, pokud má zapnutou [bránu firewall][azure-storage-ip-firewall] . Zákazník musí ve svém účtu úložiště otevřít sadu [IP adres řídicích ploch Azure API Management][control-plane-ip-address] pro zálohování nebo obnovení z. Důvodem je to, že požadavky na Azure Storage nejsou před jejich vstupem k veřejné IP adrese z výpočetních > (rovina řízení služby Azure API). Požadavek úložiště pro různé oblasti bude před jejich vstupem.
 
-> [!NOTE]
-> Pokud se pokusíte zálohovat nebo obnovit službu API Management pomocí účtu úložiště, který má zapnutou [bránu firewall][azure-storage-ip-firewall] , ve stejné oblasti Azure nebude tato akce fungovat. Důvodem je to, že požadavky na Azure Storage nejsou před jejich vstupem k veřejné IP adrese z výpočetních > (rovina řízení služby Azure API). Požadavek úložiště pro různé oblasti bude před jejich vstupem.
+#### <a name="what-is-not-backed-up"></a>Co se nezálohuje
+-   **Data o využití** používaná pro vytváření sestav Analytics **nejsou součástí** zálohy. Pomocí služby [Azure API Management REST API][azure api management rest api] pravidelně načítat analytické sestavy pro bezpečné používání.
+-   [Vlastní doména TLS/certifikáty SSL](configure-custom-domain.md)
+-   [Vlastní certifikát certifikační autority](api-management-howto-ca-certificates.md) , který zahrnuje zprostředkující nebo kořenové certifikáty nahrané zákazníkem
+-   Nastavení integrace [virtuální sítě](api-management-using-with-vnet.md) .
+-   Konfigurace [spravované identity](api-management-howto-use-managed-service-identity.md)
+-   [Diagnostika Azure monitor](api-management-howto-use-azure-monitor.md) Rozšířeného.
+-   Nastavení [protokolů a šifry](api-management-howto-manage-protocols-ciphers.md) .
+
+Frekvence, se kterou provádíte zálohování služby, má vliv na cíl bodu obnovení. Pro minimalizaci doporučujeme, abyste implementovali pravidelné zálohování a prováděli zálohování na vyžádání po provedení změn ve službě API Management.
 
 ### <a name="restore-an-api-management-service"></a><a name="step2"> </a>Obnovení služby API Management
 

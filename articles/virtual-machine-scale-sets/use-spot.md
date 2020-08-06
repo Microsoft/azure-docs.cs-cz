@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer, devx-track-azurecli
-ms.openlocfilehash: 2898364811616c16a0c33ea26dcaacace9c2c4ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de8cfa66d6d52fe16cc40c5df0f41a39fff134fd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491795"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832633"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Virtuální počítače Azure na místě pro Virtual Machine Scale Sets 
 
@@ -40,6 +40,11 @@ Pokud chcete, aby se vaše instance na škále vašich přímých škálování 
 
 Uživatelé se můžou přihlásit k přijímání oznámení v rámci virtuálního počítače prostřednictvím [Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md). To vám upozorní na to, jestli se virtuální počítače vyloučí a že budete mít 30 sekund na dokončení všech úloh a před vyřazením provést úlohy vypnutí. 
 
+## <a name="placement-groups"></a>Skupiny umístění
+Skupina umístění je konstrukce podobná sadě dostupnosti Azure s vlastními doménami selhání a upgradovacími doménami. Ve výchozím nastavení škálovací sada obsahuje jedinou skupinu umístění s maximální velikostí 100 virtuálních počítačů. Pokud je vlastnost Set stupnice nazvaná `singlePlacementGroup` nastavena na *false*, sada škálování se může skládat z více skupin umístění a má rozsah 0 až 1 000 virtuálních počítačů. 
+
+> [!IMPORTANT]
+> Pokud nepoužíváte InfiniBand se HPC, důrazně doporučujeme nastavit vlastnost sady škálování na `singlePlacementGroup` *hodnotu false* , aby bylo možné více skupin umístění pro lepší škálování napříč oblastí nebo zónou. 
 
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Nasazení virtuálních počítačů na místě v sadách škálování
 
@@ -64,6 +69,7 @@ az vmss create \
     --name myScaleSet \
     --image UbuntuLTS \
     --upgrade-policy-mode automatic \
+    --single-placement-group false \
     --admin-username azureuser \
     --generate-ssh-keys \
     --priority Spot \
@@ -89,19 +95,31 @@ $vmssConfig = New-AzVmssConfig `
 
 Proces vytvoření sady škálování, která používá bodové virtuální počítače, je stejný, jak je popsáno v článku Začínáme pro [Linux](quick-create-template-linux.md) nebo [Windows](quick-create-template-windows.md). 
 
-Pro nasazení šablon přímých `"apiVersion": "2019-03-01"` verzí použijte nebo novější. Přidejte do `priority` `evictionPolicy` `billingProfile` `"virtualMachineProfile":` části šablony a vlastnosti: 
+Pro nasazení šablon přímých `"apiVersion": "2019-03-01"` verzí použijte nebo novější. 
+
+Přidejte `priority` vlastnosti a `evictionPolicy` `billingProfile` do `"virtualMachineProfile":` oddílu a vlastnost do oddílu `"singlePlacementGroup": false,` `"Microsoft.Compute/virtualMachineScaleSets"` v šabloně:
 
 ```json
-                "priority": "Spot",
+
+{
+  "type": "Microsoft.Compute/virtualMachineScaleSets",
+  },
+  "properties": {
+    "singlePlacementGroup": false,
+    }
+
+        "virtualMachineProfile": {
+              "priority": "Spot",
                 "evictionPolicy": "Deallocate",
                 "billingProfile": {
                     "maxPrice": -1
                 }
+            },
 ```
 
 Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy` parametr na `Delete` .
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Otázka:** Po vytvoření je stejná jako instance stejné jako standardní instance?
 
@@ -156,11 +174,11 @@ Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy`
 
 | Kanály Azure               | Dostupnost virtuálních počítačů Azure       |
 |------------------------------|-----------------------------------|
-| Smlouva Enterprise         | Yes                               |
-| Pay As You Go                | Yes                               |
+| Smlouva Enterprise         | Ano                               |
+| Pay As You Go                | Ano                               |
 | Poskytovatel cloudových služeb (CSP) | [Obraťte se na svého partnera.](/partner-center/azure-plan-get-started) |
 | Výhody                     | Není k dispozici                     |
-| Financovan                    | Yes                               |
+| Financovan                    | Ano                               |
 | Bezplatná zkušební verze                   | Není k dispozici                     |
 
 

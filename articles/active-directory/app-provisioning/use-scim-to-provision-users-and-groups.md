@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8138f125c55e3b2d76cb680ea48366c5a3e05fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 38973e5484ece0b47e2f81ad78c716b5ee49cead
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051521"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829692"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD
 
@@ -224,7 +224,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="create-user"></a>Vytvořit uživatele
 
-###### <a name="request"></a>Request
+###### <a name="request"></a>Žádost
 
 *PO/Users*
 ```json
@@ -282,7 +282,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-user"></a>Získání uživatele
 
-###### <a name="request"></a><a name="request-1"></a>Request
+###### <a name="request"></a><a name="request-1"></a>Žádost
 *ZÍSKAT/Users/5d48a0a8e9f04aa38008* 
 
 ###### <a name="response-user-found"></a><a name="response-1"></a>Odpověď (uživatel se našla)
@@ -312,7 +312,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-###### <a name="request"></a>Request
+###### <a name="request"></a>Žádost
 *ZÍSKAT/Users/5171a35d82074e068ce2* 
 
 ###### <a name="response-user-not-found-note-that-the-detail-is-not-required-only-status"></a>Odpověď (uživatel nebyl nalezen. Všimněte si, že podrobnosti nejsou požadovány, pouze stav.)
@@ -329,7 +329,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-user-by-query"></a>Získat uživatele podle dotazu
 
-##### <a name="request"></a><a name="request-2"></a>Request
+##### <a name="request"></a><a name="request-2"></a>Žádost
 
 *ZÍSKAT/Users? Filter = userName EQ "Test_User_dfeef4c5-5681 -4387-B016-bdf221e82081"*
 
@@ -370,7 +370,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-user-by-query---zero-results"></a>Získat uživatele podle dotazů – žádné výsledky
 
-##### <a name="request"></a><a name="request-3"></a>Request
+##### <a name="request"></a><a name="request-3"></a>Žádost
 
 *ZÍSKAT/Users? Filter = userName EQ "neexistující uživatel"*
 
@@ -390,7 +390,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-user-multi-valued-properties"></a>Aktualizace uživatele [vlastnosti s více hodnotami]
 
-##### <a name="request"></a><a name="request-4"></a>Request
+##### <a name="request"></a><a name="request-4"></a>Žádost
 
 *Oprava/Users/6764549bef60420686bc HTTP/1.1*
 ```json
@@ -441,7 +441,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-user-single-valued-properties"></a>Aktualizace uživatele [vlastnosti s jednou hodnotou]
 
-##### <a name="request"></a><a name="request-5"></a>Request
+##### <a name="request"></a><a name="request-5"></a>Žádost
 
 *Oprava/Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
@@ -486,7 +486,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 ### <a name="disable-user"></a>Zakázání uživatele
 
-##### <a name="request"></a><a name="request-14"></a>Request
+##### <a name="request"></a><a name="request-14"></a>Žádost
 
 *Oprava/Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
@@ -540,7 +540,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 ```
 #### <a name="delete-user"></a>Odstranění uživatele
 
-##### <a name="request"></a><a name="request-6"></a>Request
+##### <a name="request"></a><a name="request-6"></a>Žádost
 
 *Odstranit/Users/5171a35d82074e068ce2 HTTP/1.1*
 
@@ -557,7 +557,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="create-group"></a>Vytvoření skupiny
 
-##### <a name="request"></a><a name="request-7"></a>Request
+##### <a name="request"></a><a name="request-7"></a>Žádost
 
 *POST/Groups HTTP/1.1*
 ```json
@@ -592,7 +592,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-group"></a>Získání skupiny
 
-##### <a name="request"></a><a name="request-8"></a>Request
+##### <a name="request"></a><a name="request-8"></a>Žádost
 
 *ZÍSKAT/Groups/40734ae655284ad3abcc? excludedAttributes = Members HTTP/1.1*
 
@@ -614,7 +614,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-group-by-displayname"></a>Získat Group by DisplayName
 
-##### <a name="request"></a><a name="request-9"></a>Request
+##### <a name="request"></a><a name="request-9"></a>Žádost
 *GET/Groups? excludedAttributes = Members&Filter = DisplayName EQ "DisplayName" HTTP/1.1*
 
 ##### <a name="response"></a><a name="response-9"></a>Základě
@@ -643,7 +643,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-group-non-member-attributes"></a>Aktualizovat skupinu [atributy nečlenské]
 
-##### <a name="request"></a><a name="request-10"></a>Request
+##### <a name="request"></a><a name="request-10"></a>Žádost
 
 *Oprava/Groups/fa2ce26709934589afc5 HTTP/1.1*
 ```json
@@ -663,7 +663,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 ### <a name="update-group-add-members"></a>Aktualizace skupiny [přidat členy]
 
-##### <a name="request"></a><a name="request-11"></a>Request
+##### <a name="request"></a><a name="request-11"></a>Žádost
 
 *Oprava/Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
@@ -686,7 +686,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-group-remove-members"></a>Skupina aktualizací [odebrat členy]
 
-##### <a name="request"></a><a name="request-12"></a>Request
+##### <a name="request"></a><a name="request-12"></a>Žádost
 
 *Oprava/Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
@@ -709,7 +709,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="delete-group"></a>Odstranění skupiny
 
-##### <a name="request"></a><a name="request-13"></a>Request
+##### <a name="request"></a><a name="request-13"></a>Žádost
 
 *Odstranit/Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
@@ -745,7 +745,7 @@ Minimální pruh šifrovacích sad TLS 1,2:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>Rozsahy IP adres
-Služba zřizování Azure AD teď může fungovat v jakémkoli rozsahu IP adres Azure. Práce probíhá pro konsolidaci sady rozsahů IP adres, na kterých služba funguje. Až se seznam rozsahů IP adres konsoliduje, tento dokument se aktualizuje. 
+Služba zřizování Azure AD aktuálně funguje pod rozsahy IP adres pro Azureactivedirectory selhala a AzureActiveDirectoryDomainServices, jak je uvedeno [tady](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all). Probíhající práce se konsoliduje jenom do rozsahů IP adres pod Azureactivedirectory selhala. 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Krok 3: Vytvoření koncového bodu SCIM
 
@@ -1187,7 +1187,7 @@ Postupujte podle níže uvedeného kontrolního seznamu a ujistěte se, že je v
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Autorizace pro zřizovací konektory v galerii aplikací
 Specifikace SCIM nedefinuje schéma specifické pro SCIM pro ověřování a autorizaci. Spoléhá se na použití stávajících oborových standardů. Klient zřizování Azure AD podporuje dvě autorizační metody pro aplikace v galerii. 
 
-|Autorizační metoda|Výhody|Nevýhody|Podpora|
+|Metoda autorizace|Výhody|Nevýhody|Podpora|
 |--|--|--|--|
 |Uživatelské jméno a heslo (nedoporučuje se ani nepodporuje služba Azure AD)|Snadná implementace|Nezabezpečené – [vaše PA $ $Word nezáleží](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Podporuje se pro aplikace v galerii případ od případu. Nepodporuje se pro aplikace mimo galerii.|
 |Dlouhý nosný token|Dlouhodobé tokeny nevyžadují, aby uživatel byl přítomen. Správci se můžou při nastavování zřizování snadno použít.|Dlouhotrvající tokeny může být obtížné sdílet se správcem bez použití nezabezpečených metod, jako je e-mailová adresa. |Podporováno pro galerie a aplikace mimo galerii. |

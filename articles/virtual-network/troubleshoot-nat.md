@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d75f13f6a0621158bdb9a2f1682d0c85eaacb59d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688277"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836101"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Řešení potíží s připojením služby Azure Virtual Network NAT
 
@@ -195,6 +195,14 @@ _**Řešení**_
 Pro prostředek brány NAT není nutné restartovat virtuální počítač s konfigurací podsítě.  Pokud je však virtuální počítač restartován, bude stav připojení vyprázdněn.  Po vyprázdnění stavu připojení budou všechna připojení začínat použitím IP adres prostředku brány NAT.  Jedná se ale o vedlejší účinek restartování virtuálního počítače, který není indikátorem, který vyžaduje restart.
 
 Pokud pořád máte potíže, otevřete případ podpory pro další řešení potíží.
+
+### <a name="connection-setup-time"></a>Čas nastavení připojení
+
+Vzhledem k tomu, že Load Balancer odchozí pravidla staticky přiřazují Fondy portů SNAT konkrétním virtuálním počítačům, vytváření nových odchozích toků je rychlejší než použití Virtual Network překladu adres (NAT). Proto když přepnete z Load Balancer odchozích pravidel, může se při vytváření nového odchozího připojení zobrazit zvýšené latence. Jak bylo vysvětleno dříve, aby se maximalizoval výkon aplikace, měli byste použít dlouhodobé toky (například znovu používané připojení TCP).
+
+_**Řešení**_
+
+Pokud se primárně zajímá latence nastavení minimálního připojení, použijte Load Balancer odchozí pravidla.
 
 ## <a name="next-steps"></a>Další kroky
 

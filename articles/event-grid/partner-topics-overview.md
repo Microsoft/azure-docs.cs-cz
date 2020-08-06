@@ -3,12 +3,12 @@ title: Témata Azure Event Grid partnerů
 description: Posílání událostí od partnerů Event Grid SaaS a PaaS od jiných výrobců přímo ke službám Azure pomocí Azure Event Grid.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 97829f262a00e2353624b2a3fa9df210518ad3a0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e56055c55a3b30c5d13736b9838257f3c0bbec10
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115991"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831902"
 ---
 # <a name="partner-topics-in-azure-event-grid-preview"></a>Témata o partnerech v Azure Event Grid (verze Preview)
 Pomocí témat partnerů můžete ke Azure Event Grid připojit zdroje událostí třetích stran přímo. Tato integrace vám umožní přihlásit se k odběru událostí od partnerů stejným způsobem, jakým se přihlašujete k odběru událostí ze služeb Azure. 
@@ -22,7 +22,7 @@ Pokud [to chcete vyzkoušet](auth0-how-to.md), přihlaste se ke svému účtu Au
 Tématům partnerů se účtují stejné provozní frekvence jako systémová témata.
 
 ## <a name="limits"></a>Omezení
-Témata partnerů jsou ve verzi Public Preview. V rámci veřejné verze Preview podléhají témata pro partnery [stejná omezení](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#event-grid-limits) jako systémová témata a vlastní témata.
+Témata partnerů jsou ve verzi Public Preview. V rámci veřejné verze Preview podléhají témata pro partnery [stejná omezení](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits) jako systémová témata a vlastní témata.
 
 ## <a name="how-do-i-become-an-event-grid-partner"></a>Návody se stanou Event Gridm partnerem?
 Infrastruktura vytvořená za účelem podpory tohoto spuštění umožňuje novým partnerům snadno a rychle integrovat své schopnosti události do Event Grid. Další informace najdete v dokumentaci k [připojování partnerů](partner-onboarding-overview.md).
