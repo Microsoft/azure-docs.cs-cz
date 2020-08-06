@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e50733c843dfd21e35572f00fc6690e1e84aba97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97da7428090935daf95ae28a54b8ff10bca2e546
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688887"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760902"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>Instalace SAP NetWeaver HA do clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro instanci SAP ASCS/SCS v Azure
 
@@ -148,7 +148,7 @@ ms.locfileid: "84688887"
 
 Tento článek popisuje, jak nainstalovat a nakonfigurovat systém SAP s vysokou dostupností v Azure pomocí clusteru s podporou převzetí služeb při selhání Windows serveru a sdíleného disku clusteru pro clustering instance SAP ASCS/SCS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s instalací, přečtěte si tyto dokumenty:
 
@@ -225,7 +225,7 @@ Nejdřív přidejte nový parametr profilu. Parametr Profile brání propojení 
 
 Postup úpravy profilu SAP instance ASCS/SCS:
 
-1. Přidejte tento parametr profilu do profilu instance SAP ASCS/SCS:
+1. Pokud používáte ENSA1, přidejte tento parametr profilu do profilu instance SAP ASCS/SCS.
 
    ```
    enque/encni/set_so_keepalive = true
@@ -237,6 +237,8 @@ Postup úpravy profilu SAP instance ASCS/SCS:
    Například na profil instance SAP SCS a odpovídající cestu:
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
+   
+   Pro ENSA1 i ENSA2 se ujistěte, že `keepalive` jsou nastavené parametry operačního systému, jak je popsáno v tématu SAP note [1410736](https://launchpad.support.sap.com/#/notes/1410736).   
 
 2. Chcete-li změny použít, restartujte instanci SAP ASCS/SCS.
 

@@ -3,12 +3,12 @@ title: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 description: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: b392af17a24b0a5aabdd245af236caa743762244
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 158ead7531b0b3da2e495e36e40e761961bea498
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448963"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761004"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 
@@ -120,7 +120,7 @@ Další informace najdete v následujícím článku: [jak upozornit na data pro
 *Další informace najdete v tématu [řízení zabezpečení: identita a Access Control](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
-**Doprovodné materiály:** Azure Active Directory (Azure AD) mají předdefinované role, které se musí explicitně přiřadit a jsou Queryable. Pomocí modulu Azure AD PowerShell můžete spustit dotazy ad hoc a zjistit účty, které jsou členy skupin pro správu.
+**Doprovodné materiály:** Azure Active Directory (Azure AD) mají předdefinované role, které se musí explicitně přiřadit a jsou Queryable. Pomocí modulu Azure AD PowerShell můžete spouštět dotazy ad hoc a zjišťovat účty, které jsou členy skupin pro správu.
 
 - [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 - [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
@@ -258,6 +258,110 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure
 
 **Zodpovědnost:** Zákazníka
 
+## <a name="data-protection"></a>Ochrana dat
+*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](../security/benchmarks/security-control-data-protection.md).*
+
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
+**Doprovodné materiály:** Pomocí značek můžete posloužit ke sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
+
+- [Vytváření a používání značek](../azure-resource-manager/resource-group-using-tags.md)
+
+**Monitorování Azure Security Center:** Nelze použít
+
+**Zodpovědnost:** Zákazníka
+
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
+**Doprovodné materiály:** Implementujte samostatné odběry nebo skupiny pro správu pro vývoj, testování a produkci. Instance Azure DevTest Labs by se měly oddělit pomocí virtuální sítě/podsítě a vhodně se označit příznakem. 
+
+- [Vytvoření dalších předplatných Azure](../billing/billing-create-subscription.md)
+- [Vytvoření skupin pro správu](../governance/management-groups/create.md)
+- [Jak nakonfigurovat virtuální síť pro DevTest Labs](devtest-lab-configure-vnet.md)
+- [Vytváření a používání značek](../azure-resource-manager/resource-group-using-tags.md)
+- [Vytváření a používání značek pro DevTest Labs](devtest-lab-add-tag.md)
+
+**Monitorování Azure Security Center:** Momentálně není k dispozici
+
+**Zodpovědnost:** Zákazníka
+
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: Sledujte a zablokujte neoprávněný přenos citlivých informací
+**Doprovodné materiály:** Ještě není k dispozici; pro Azure DevTest Labs ještě nejsou dostupné funkce pro identifikaci, klasifikaci a ochranu před únikem informací.
+
+Společnost Microsoft spravuje základní infrastrukturu pro Azure DevTest Labs a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
+
+- [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
+
+**Monitorování Azure Security Center:** Momentálně není k dispozici
+
+**Zodpovědnost:** Sdíleného
+
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
+**Doprovodné materiály:** Azure DevTest Labs vyžaduje ve výchozím nastavení komunikaci šifrovanou pomocí protokolu TLS. V tuto chvíli se podporuje TLS verze 1,2. Pokud vaše Klientská knihovna nebo nástroj nepodporuje protokol TLS, je možné povolit nešifrovaná připojení pomocí Azure Portal nebo rozhraní API pro správu. V takových případech, kde nejsou šifrovaná připojení možná, se doporučuje umístit testovací prostředí a klientské aplikace do virtuální sítě.
+
+[Vysvětlení šifrování ve scénáři přenosu pro DevTest Labs](https://techcommunity.microsoft.com/t5/azure-developer-community-blog/azure-devtest-labs-enforcing-tls-1-2-starting-may-01-2020/ba-p/1236279)
+
+**Monitorování Azure Security Center:** Ano
+
+**Zodpovědnost:** Sdíleného
+
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: k identifikaci citlivých dat použijte aktivní nástroj zjišťování.
+**Doprovodné materiály:** Pro Azure DevTest Labs ještě nejsou dostupné funkce pro identifikaci, klasifikaci a ochranu před únikem informací. Instance značek obsahující citlivé údaje jako takové a implementují řešení třetích stran, pokud je to nutné pro účely dodržování předpisů.
+
+Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
+
+- [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
+
+**Monitorování Azure Security Center:** Momentálně není k dispozici
+
+**Zodpovědnost:** Zákazníka
+
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
+**Doprovodné materiály:** Pro řízení přístupu k testovacím prostředím v Azure DevTest Labs použijte Azure Active Directory (Azure AD) řízení přístupu na základě role (RBAC).
+
+- [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/role-assignments-portal.md)
+- [Pochopení rolí v DevTest Labs](devtest-lab-add-devtest-user.md)
+
+**Monitorování Azure Security Center:** Nelze použít
+
+**Zodpovědnost:** Zákazníka
+
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: použití prevence ztráty dat na základě hostitele k vymáhání řízení přístupu
+**Doprovodné materiály:** Pokud je to nutné pro dodržování předpisů u výpočetních prostředků vytvořených jako součást DevTest Labs, implementujte nástroj třetí strany, například řešení ochrany před únikem informací na základě automatizovaného hostitele, abyste vynutili řízení přístupu k datům i v případě, že se data zkopírují mimo systém.
+
+Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
+
+- [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
+
+**Monitorování Azure Security Center:** Nelze použít
+
+**Zodpovědnost:** Nelze použít
+
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: šifrování citlivých informací v klidovém umístění
+**Doprovodné materiály:** Azure DevTest Labs ukládá následující zákaznická data:
+
+- [Výsledky artefaktů](add-artifact-vm.md) , které zahrnují protokoly nasazení a rozšíření vygenerované při použití artefaktů
+- [Dokumenty receptury](devtest-lab-manage-formulas.md) , které se používají k vytvoření virtuálních počítačů ze vzorců
+- Operační systém a datové disky pro virtuální počítače testovacího prostředí 
+
+Výsledky artefaktů a dokumenty vzorců se odesílají do účtu Azure Storage, který je vytvořený jako součást každého nasazení testovacího prostředí. Data v Azure Storage jsou šifrována a dešifrována transparentně pomocí 256 šifrování AES, je k dispozici jedna z nejúčinnějších šifrovacích šifr a je kompatibilní se standardem FIPS 140-2. Šifrování Azure Storage nelze zakázat. Pro šifrování účtu úložiště můžete spoléhat na klíče spravované Microsoftem, nebo můžete spravovat šifrování pomocí vlastních klíčů. Další informace najdete v tématu [šifrování pro účet úložiště testovacího prostředí](encrypt-storage.md).
+
+Ve výchozím nastavení jsou všechny operační systémy a datové disky testovacího prostředí šifrovány pomocí klíče spravovaného platformou. Všechny spravované disky, snímky, image a data zapsaná na stávající spravované disky se automaticky zašifrují bez použití klíčů spravovaných platformou. Jako vlastník testovacího prostředí můžete nakonfigurovat disky s operačním systémem testovacího prostředí pro šifrování pomocí spravovaného klíče zákazníka. Šifrování pomocí spravovaného klíče zákazníka pro datové disky testovacího prostředí se v současné době nedají konfigurovat prostřednictvím samotného testovacího prostředí. Správce předplatného ale může nakonfigurovat toto nastavení pro disky testovacího prostředí v rámci předplatného teď. Další informace najdete v tématu [šifrování disků s operačním systémem laboratoře DevTest Labs pomocí zákaznických spravovaných klíčů](encrypt-disks-customer-managed-keys.md).
+
+**Monitorování Azure Security Center:** Nelze použít
+
+**Zodpovědnost:** Sdíleného
+
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: protokolovat a upozornit na změny kritických prostředků Azure
+**Doprovodné materiály:** Pomocí Azure Monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny vznikne na instance DevTest Labs a další důležité nebo související prostředky.
+
+- [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
+- [Vytvoření upozornění pro události protokolu aktivit DevTest Labs](create-alerts.md)
+
+**Monitorování Azure Security Center:** Nelze použít
+
+**Zodpovědnost:** Zákazníka
+
+
+
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 *Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](../security/benchmarks/security-control-vulnerability-management.md)zabezpečení.*
 
@@ -273,7 +377,7 @@ Microsoft provádí správu ohrožení zabezpečení na podkladových zdrojích,
 **Zodpovědnost:** Sdíleného
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: nasazení automatizovaného řešení pro správu oprav operačního systému
-**Doprovodné materiály:** Pomocí Azure Update Management zajistěte, aby byly na virtuálních počítačích s Windows a Linux hostovaných v rámci DevTest Labs nainstalované nejnovější aktualizace zabezpečení. U virtuálních počítačů s Windows ověřte, že je povolená možnost web Windows Update a že se nastaví automatické aktualizace. Toto nastavení není aktuálně k dispozici pro konfiguraci prostřednictvím DevTest Labs, ale správce testovacího prostředí nebo správce předplatného může nakonfigurovat toto nastavení u základních výpočetních virtuálních počítačů ve svém předplatném. 
+**Doprovodné materiály:** Pomocí Azure Update Management zajistěte, aby byly na virtuálních počítačích s Windows a Linux hostovaných v rámci DevTest Labs nainstalované nejnovější aktualizace zabezpečení. U virtuálních počítačů s Windows ověřte, že je povolená možnost web Windows Update a že se nastaví automatické aktualizace. Toto nastavení není aktuálně k dispozici pro konfiguraci prostřednictvím DevTest Labs, ale správce testovacího prostředí/Správce předplatného může nakonfigurovat toto nastavení u základních výpočetních virtuálních počítačů ve svém předplatném. 
 
 - [Postup konfigurace Update Management pro virtuální počítače v Azure](../automation/update-management/update-mgmt-overview.md)
 - [Porozumění zásadám zabezpečení Azure monitorovaným Security Center](../security-center/security-center-policy-definitions.md)
@@ -372,7 +476,7 @@ K dotazování a zjišťování prostředků v rámci předplatných také použ
 **Zodpovědnost:** Zákazníka
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitorujte neschválené softwarové aplikace v rámci výpočetních prostředků.
-**Doprovodné materiály:** Azure Automation poskytuje úplnou kontrolu nad nasazením, provozem a vyřazením úloh a prostředků z provozu. Jako správce předplatného můžete využít inventář virtuálních počítačů Azure k automatizaci shromažďování informací o veškerém softwaru na virtuálních počítačích DevTest Labs v rámci vašeho předplatného. Z Azure Portal jsou k dispozici vlastnosti pro název softwaru, verze, Vydavatel a čas aktualizace. Aby bylo možné získat přístup k datu instalace a dalším informacím, musí zákazník vyžadovat diagnostiku na úrovni hosta a přenést protokoly událostí systému Windows do Log Analytics pracovního prostoru.
+**Doprovodné materiály:** Azure Automation poskytuje úplnou kontrolu nad nasazením, provozem a vyřazením úloh a prostředků z provozu. Jako správce předplatného můžete pomocí inventáře virtuálních počítačů Azure automatizovat shromažďování informací o veškerém softwaru na virtuálních počítačích DevTest Labs v rámci vašeho předplatného. Z Azure Portal jsou k dispozici vlastnosti pro název softwaru, verze, Vydavatel a čas aktualizace. Aby bylo možné získat přístup k datu instalace a dalším informacím, musí zákazník vyžadovat diagnostiku na úrovni hosta a přenést protokoly událostí systému Windows do Log Analytics pracovního prostoru.
 
 Kromě použití Change Tracking ke sledování softwarových aplikací, adaptivní řízení aplikací v Azure Security Center pomocí strojového učení můžete analyzovat aplikace běžící na vašich počítačích a vytvořit z tohoto inteligentního seznamu povolený seznam. Tato funkce značně zjednodušuje proces konfigurace a správy zásad seznamu povolených aplikací a umožňuje vyhnout se nechtěnému softwaru ve vašem prostředí. Můžete nakonfigurovat režim auditování nebo režim vymáhání. Režim auditování Audituje pouze aktivitu na chráněných virtuálních počítačích. Režim vynutilosti vynutil pravidla a zajišťuje, aby aplikace, které nejsou povolené ke spuštění, byly blokované. 
 
@@ -421,7 +525,7 @@ Viz následující články:
 
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: udržování inventáře schválených softwarových titulů
-**Doprovodné materiály:** Adaptivní řízení aplikací je inteligentní, automatizované a ucelené řešení z Azure Security Center, které vám pomůže určit, které aplikace se můžou spouštět na počítačích Azure a mimo Azure (Windows a Linux) hostované v DevTest Labs. Poznámka: musíte být správcem předplatného, abyste mohli nakonfigurovat toto nastavení pro základní výpočetní prostředky hostované v DevTest Labs. Implementujte řešení třetích stran, pokud toto nastavení nesplňuje požadavek vaší organizace.
+**Doprovodné materiály:** Adaptivní řízení aplikací je inteligentní, automatizované a ucelené řešení z Azure Security Center, které vám pomůže určit, které aplikace se můžou spouštět na počítačích Azure a mimo Azure (Windows a Linux) hostované v DevTest Labs. Poznámka: abyste mohli nakonfigurovat toto nastavení pro základní výpočetní prostředky hostované v DevTest Labs, musíte být správcem předplatného. Implementujte řešení třetích stran, pokud toto nastavení nesplňuje požadavek vaší organizace.
 
 - [Jak používat Azure Security Center Adaptivní řízení aplikací](../security-center/security-center-adaptive-application.md)
 
@@ -464,6 +568,156 @@ Viz následující články:
 
 **Zodpovědnost:** Zákazníka
 
+## <a name="secure-configuration"></a>Zabezpečená konfigurace
+**Další informace najdete v tématu řízení zabezpečení: zabezpečená konfigurace.**
+
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
+**Doprovodné materiály:** Pomocí aliasů Azure Policy můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace prostředků Azure vytvořených v rámci DevTest Labs. Můžete také použít předdefinované definice Azure Policy.
+
+Azure Resource Manager taky umožňuje exportovat šablonu do JavaScript Object Notation (JSON), která by se měla zkontrolovat, aby se zajistilo, že konfigurace splňují nebo překračují požadavky zabezpečení vaší organizace.
+
+Pro vaše prostředky Azure můžete také použít doporučení z Azure Security Center jako standardní hodnoty konfigurace zabezpečení.
+
+- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md)
+- [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
+- [Doporučení zabezpečení – referenční příručka](../security-center/recommendations-reference.md)
+
+**Monitorování Azure Security Center:** Nelze použít
+
+**Zodpovědnost:** Zákazníka
+
+### <a name="72-establish-secure-operating-system-configurations"></a>7,2: Vytvoření zabezpečených konfigurací operačního systému
+**Doprovodné materiály:** Použijte Azure Security Center doporučení k údržbě konfigurací zabezpečení u všech základních výpočetních prostředků vytvořených jako součást laboratoře DevTest Labs. Kromě toho můžete k vytvoření konfigurace zabezpečení operačního systému vyžadovaného vaší organizací použít vlastní image operačního systému nebo konfigurace stavu Azure Automation nebo artefakty DevTest Labs.
+
+- [Jak monitorovat Azure Security Center doporučení](../security-center/security-center-recommendations.md)
+- [Doporučení zabezpečení – referenční příručka](../security-center/recommendations-reference.md)
+- [Přehled konfigurace stavu Azure Automation](../automation/automation-dsc-overview.md)
+- [Nahrání virtuálního pevného disku a jeho použití k vytvoření nových virtuálních počítačů s Windows v Azure](../virtual-machines/windows/upload-generalized-managed.md)
+- [Vytvoření virtuálního počítače se systémem Linux z vlastního disku pomocí Azure CLI](../virtual-machines/linux/upload-vhd.md)
+- [Vytváření a distribuce vlastních imagí do několika DevTest Labs](image-factory-save-distribute-custom-images.md)
+
+**Monitorování Azure Security Center:** Nelze použít
+
+**Zodpovědnost:** Nelze použít
+
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: udržování zabezpečených konfigurací prostředků Azure
+**Doprovodné materiály:** **Pokud neexistují** pravidla pro vymáhání zabezpečených nastavení napříč prostředky Azure vytvořenými jako součást DevTest Labs, použijte Azure Policy **Odepřít** a nasadit. Můžete také použít šablony Azure Resource Manager k údržbě konfigurace zabezpečení vašich prostředků Azure, které vaše organizace vyžaduje.
+
+- [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
+- [Vytváření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md)
+- [Přehled šablon Azure Resource Manager](../azure-resource-manager/templates/overview.md)
+
+**Monitorování Azure Security Center:** Nelze použít
+
+**Zodpovědnost:** Zákazníka
+
+### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: udržování zabezpečených konfigurací operačního systému
+**Doprovodné materiály:** Dodržujte doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení vašich základních výpočetních prostředků Azure vytvořených v rámci testovacího prostředí. Kromě toho můžete použít šablony Azure Resource Manager, vlastní image operačního systému nebo konfiguraci stavu Azure Automation, abyste zachovali konfiguraci zabezpečení operačního systému, který vyžaduje vaše organizace. Můžete také použít řešení pro vytváření imagí, což je řešení konfigurace se stejným kódem, které sestaví a distribuuje image automaticky v pravidelných intervalech se všemi požadovanými konfiguracemi.
+
+Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou taky spravované a udržované Microsoftem.
+
+- [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Přehled konfigurace stavu Azure Automation](../automation/automation-dsc-overview.md)
+- [Ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Postup vytvoření objektu pro vytváření imagí v DevTest Labs](image-factory-create.md)
+
+**Monitorování Azure Security Center:** Ano
+
+**Zodpovědnost:** Sdíleného
+
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
+**Doprovodné materiály:** Využijte Azure DevOps k bezpečnému ukládání a správě kódu, jako jsou vlastní zásady Azure, Azure Resource Manager šablony a požadované konfigurační skripty stavu. Pokud chcete získat přístup k prostředkům, které spravujete v Azure DevOps, můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory (Azure AD), pokud jsou integrované s Azure DevOps.
+
+- [Kurz k Azure Repos Git](/devops/repos/git/gitworkflow?view=azure-devops)
+- [O oprávněních a skupinách](/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Integrace mezi Azure DevTest Labs a pracovním postupem Azure DevOps](devtest-lab-dev-ops.md)
+
+**Monitorování Azure Security Center:** Nelze použít
+
+**Zodpovědnost:** Zákazníka
+
+### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
+**Doprovodné materiály:** Pokud používáte vlastní image, použijte řízení přístupu na základě role (RBAC), abyste zajistili přístup k imagí jenom autorizovaným uživatelům. Pomocí Galerie sdílených imagí můžete sdílet své image s konkrétními laboratořemi, které ji potřebují. Pro Image kontejnerů je uložte do Azure Container Registry a pomocí RBAC zajistěte, aby k nim měli přístup jenom autorizovaní uživatelé.
+
+- [Princip RBAC v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [Konfigurace Galerie sdílených imagí pro DevTest Labs](configure-shared-image-gallery.md)
+- [Vysvětlení RBAC pro Container Registry](../container-registry/container-registry-roles.md)
+
+**Monitorování Azure Security Center:** Nelze použít
+
+**Zodpovědnost:** Zákazníka
+
+### <a name="77-deploy-system-configuration-management-tools"></a>7,7: nasazení nástrojů pro správu konfigurace systému
+**Doprovodné materiály:** Definování a implementace standardních konfigurací zabezpečení pro prostředky Azure pomocí Azure Policy. Pomocí aliasů Azure Policy můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace sítě vašich prostředků Azure vytvořených v DevTest Labs. Můžete také využít integrované definice zásad související s vašimi konkrétními prostředky. Kromě toho můžete k nasazení změn konfigurace použít Azure Automation.
+
+- [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+- [Jak používat aliasy](../governance/policy/concepts/definition-structure.md#aliases)
+
+**Monitorování Azure Security Center:** Nelze použít
+
+**Zodpovědnost:** Zákazníka
+
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: nasaďte nástroje pro správu konfigurace systému pro operační systémy.
+**Doprovodné materiály:** Konfigurace stavu Azure Automation je služba správy konfigurace pro požadované uzly Konfigurace stavu (DSC) v jakémkoli cloudu nebo v místním datacentru. Můžete snadno připojit počítače, přiřazovat je k deklarativním konfiguracím a zobrazovat sestavy, které zobrazují kompatibilitu jednotlivých počítačů s požadovaným stavem, který jste zadali. Můžete také napsat vlastní artefakt, který se dá nainstalovat na každý testovací počítač, abyste měli jistotu, že dodržují zásady organizace. 
+
+- [Připojování počítačů pro správu podle konfigurace stavu Azure Automation](../automation/automation-dsc-onboarding.md)
+- [Vytváření vlastních artefaktů pro virtuální počítače DevTest Labs](devtest-lab-artifact-author.md)
+
+**Monitorování Azure Security Center:** Nelze použít
+
+**Zodpovědnost:** Zákazníka
+
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Implementujte automatizované monitorování konfigurace pro služby Azure.
+**Doprovodné materiály:** Použijte Azure Security Center k provádění kontrol standardních hodnot vašich prostředků Azure vytvořených v rámci DevTest Labs. Kromě toho použijte Azure Policy k upozornění a auditování konfigurace prostředků Azure.
+
+- [Jak opravit doporučení v Azure Security Center](../security-center/security-center-remediate-recommendations.md)
+ 
+**Monitorování Azure Security Center:** Nelze použít
+
+**Zodpovědnost:** Zákazníka
+
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: Implementujte automatizované monitorování konfigurace pro operační systémy
+**Doprovodné materiály:** Pomocí Azure Security Center můžete provádět kontroly základní hodnoty pro kontejnery a nastavení Docker.
+
+- [Porozumění doporučení týkajících se kontejnerů Azure Security Center](../security-center/security-center-container-recommendations.md)
+
+**Monitorování Azure Security Center:** Nelze použít
+
+**Zodpovědnost:** Zákazníka
+
+### <a name="711-manage-azure-secrets-securely"></a>7,11: zabezpečená Správa tajných kódů Azure
+**Doprovodné materiály:** K zjednodušení a zabezpečení správy tajných kódů pro cloudové aplikace můžete použít Identita spravované služby ve spojení s Azure Key Vault.
+
+- [Konfigurace spravované identity pro nasazení Azure Resource Manager prostředí v DevTest Labs](use-managed-identities-environments.md)
+- [Konfigurace spravované identity pro nasazení virtuálních počítačů v DevTest Labs](enable-managed-identities-lab-vms.md)
+- [Vytvoření trezoru klíčů](../key-vault/quick-create-portal.md)
+- [Jak zajistit Key Vault ověřování pomocí spravované identity](../key-vault/managed-identity.md)
+
+**Monitorování Azure Security Center:** Ano
+
+**Zodpovědnost:** Zákazníka
+
+### <a name="712-manage-identities-securely-and-automatically"></a>7,12: bezpečně a automaticky spravujte identity
+**Doprovodné materiály:** Spravované identity použijte k poskytování služeb Azure s automaticky spravovanou identitou ve službě Azure AD. Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů ve vašem kódu.
+
+- [Konfigurace spravované identity pro nasazení Azure Resource Manager prostředí v DevTest Labs](use-managed-identities-environments.md)
+- [Konfigurace spravované identity pro nasazení virtuálních počítačů v DevTest Labs](enable-managed-identities-lab-vms.md)
+ 
+**Monitorování Azure Security Center:** Ano
+
+**Zodpovědnost:** Zákazníka
+
+### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: Eliminujte nezamýšlenou expozici přihlašovacích údajů
+**Doprovodné materiály:** Implementujte kontrolu přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.
+
+- Jak nastavit skener přihlašovacích údajů
+
+**Monitorování Azure Security Center:** Nelze použít
+
+**Zodpovědnost:** Zákazníka
+
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 *Další informace najdete v tématu řízení zabezpečení: obrana proti malwaru.*
@@ -480,7 +734,7 @@ Viz následující články:
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: předběžná kontrola souborů, které se mají nahrát do prostředků Azure, které nejsou COMPUTE
 **Doprovodné materiály:** Microsoft Antimalware je povolený na podkladovém hostiteli, který podporuje služby Azure (například Azure App Service hostované v testovacím prostředí), ale neběží na vašem obsahu.
-Předem Prohledejte všechny soubory nahrané do nevýpočetních prostředků Azure, například App Service, Data Lake Storage, Blob Storage atd.
+Předem Prohledejte všechny soubory nahrané do nevýpočetních prostředků Azure, jako jsou App Service, Data Lake Storage, Blob Storage a tak dále.
 
 K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Azure Security Center pro datové služby.
 
@@ -561,7 +815,7 @@ Pokud používáte Azure Disk Encryption, můžete virtuální počítač Azure 
 
 - [Pokyny k vytvoření vlastního procesu reakce na incidenty zabezpečení](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 - [Anatomie centra Microsoft Security Response Center](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
-- [Využijte příručku pro zpracování incidentů zabezpečení počítače NIST, která vám pomůže při vytváření vlastního plánu odpovědí na incidenty.](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
+- [Pomoc při tvorbě vlastního plánu odpovědí na incidenty najdete v příručce pro zpracování incidentů v počítači s NIST.](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
 **Monitorování Azure Security Center:** Nelze použít
 

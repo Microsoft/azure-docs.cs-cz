@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: 1f6624c454364ca19c8ce112cb1cbbef134f162d
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8547c07214e94176babe4909504b9292d45c06f9
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/04/2020
-ms.locfileid: "87567916"
+ms.locfileid: "87759610"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Konfigurace využití a dat diagnostiky Azure SQL Edge
 
@@ -87,7 +87,7 @@ Místní součást auditu využití Azure SQL Edge a shromažďování diagnosti
 
 Povolení místního auditu a dat diagnostiky na Azure SQL Edge
 
-1. Vytvořte cílový adresář pro nové místní úložiště protokolu auditu. Tento cílový adresář je potřeba vytvořit ve stejném připojovacím svazku, který je namapovaný na/var/opt/MSSQL/cestu na serveru SQL Edge.
+1. Vytvořte cílový adresář pro nové místní úložiště protokolu auditu. Tento cílový adresář může být buď na hostiteli, nebo v rámci kontejneru. V následujícím příkladu je cílový adresář vytvořen ve stejném připojeném svazku, který je namapován na/var/opt/MSSQL/cestu na serveru SQL Edge.
 
    ```bash
    sudo mkdir <host mount path>/audit
@@ -95,14 +95,14 @@ Povolení místního auditu a dat diagnostiky na Azure SQL Edge
 
 2. Nakonfigurujte audit dat využití a diagnostiky pomocí proměnných prostředí nebo souboru MSSQL. conf.
 
-   - Použití proměnných prostředí – přidejte následující proměnnou prostředí do nasazení SQL Edge.
+   - Použití proměnných prostředí – přidejte následující proměnnou prostředí do nasazení SQL Edge a určete cílový adresář pro soubory auditu.
    
-     `*MSSQL_TELEMETRY_DIR = /var/opt/mssql/audit*`
+     `*MSSQL_TELEMETRY_DIR = <host mount path>/audit*`
    
-   - Použití souboru MSSQL. conf – přidejte následující řádky do souboru MSSQL. conf.
+   - Použití souboru MSSQL. conf – přidejte následující řádky do souboru MSSQL. conf a určete cílový adresář pro soubory auditu.
        ```ini
        [telemetry]
-       userrequestedlocalauditdirectory  = /var/opt/mssql/audit
+       userrequestedlocalauditdirectory  = <host mount path>/audit
        ```  
 
 ## <a name="next-steps"></a>Další kroky

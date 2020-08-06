@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 08/04/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 473bc8677c5369833928eb4648f32bb146e83e65
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b8db9e2d8b58047ebe29865bb95d7f218732c88e
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420647"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761157"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Správa indexování v rozhraní Azure Cosmos DB API pro MongoDB
 
@@ -319,7 +319,12 @@ Podrobnosti o průběhu indexu zobrazují procento průběhu aktuální operace 
 
 Bez ohledu na hodnotu zadanou pro vlastnost index na **pozadí** jsou aktualizace indexu vždy prováděny na pozadí. Vzhledem k tomu, že aktualizace indexu spotřebovávají jednotky žádostí (ru) s nižší prioritou než jiné databázové operace, nebudou mít změny v indexu žádný výpadek pro zápisy, aktualizace nebo odstranění.
 
-Když přidáte nový index, budou dotazy okamžitě používat index. To znamená, že dotazy nevrátí všechny odpovídající výsledky a provede je, aniž by vrátily žádné chyby. Po dokončení transformace indexu budou výsledky dotazu konzistentní. [Průběh indexu můžete sledovat](#track-index-progress).
+Při přidávání nového indexu nemá žádný vliv na dostupnost čtení. Po dokončení transformace indexu budou dotazy využívat pouze nové indexy. Při transformaci indexu bude modul dotazu dál používat stávající indexy, takže budete mít podobný výkon při čtení během transformace indexování na to, co jste předtím provedli při zahájení změny indexování. Při přidávání nových indexů nehrozí riziko neúplných nebo nekonzistentních výsledků dotazu.
+
+Při odebírání indexů a okamžitém spuštění dotazů mají filtry na vyřazených indexech, výsledky mohou být nekonzistentní a nedokončené, dokud se nedokončí transformace indexu. Pokud odeberete indexy, dotazovací modul nezaručuje konzistenci nebo úplné výsledky při filtrování dotazů na těchto nově odebraných indexech. Většina vývojářů neprovádí vyřazení indexů a potom se okamžitě pokusí o dotazování, takže v praxi je tato situace nepravděpodobná.
+
+> [!NOTE]
+> [Průběh indexu můžete sledovat](#track-index-progress).
 
 ## <a name="migrate-collections-with-indexes"></a>Migrace kolekcí s indexy
 
