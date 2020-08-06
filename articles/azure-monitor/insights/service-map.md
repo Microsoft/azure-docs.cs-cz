@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 77684ffef6be988dbb6b7057ba8c56f5227007b6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e422b019dd17c8c56ba99b5826e9f6215459c382
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326065"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825357"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Používání řešení Service Map v Azure
 
@@ -35,7 +35,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 ## <a name="enable-service-map"></a>Povolit Service Map
 
 1. Povolte řešení Service Map z [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) nebo pomocí postupu popsaného v tématu [Přidání řešení monitorování z galerie řešení](solutions.md).
-1. [Nainstalujte agenta závislostí do systému Windows](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) nebo [nainstalujte agenta závislostí na Linux](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) do každého počítače, kde chcete získat data. Závislý agent dokáže monitorovat připojení k bezprostředním sousedům, takže nepotřebujete mít agenta na každém počítači.
+1. [Nainstalujte agenta závislostí do systému Windows](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-windows) nebo [nainstalujte agenta závislostí na Linux](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-linux) do každého počítače, kde chcete získat data. Závislý agent dokáže monitorovat připojení k bezprostředním sousedům, takže nepotřebujete mít agenta na každém počítači.
 
 Přístup k Service Map v Azure Portal z pracovního prostoru Log Analytics a v levém podokně vyberte **řešení** možností.<br><br> ![V pracovním prostoru vyberte možnost řešení ](./media/service-map/select-solution-from-workspace.png) .<br> V seznamu řešení vyberte **ServiceMap (pracovní prostor)** a na stránce přehled řešení Service map klikněte na dlaždici Service map souhrn.<br><br> ![Dlaždice souhrnu Service Map ](./media/service-map/service-map-summary-tile.png)
 
@@ -603,4 +603,3 @@ Podívejte se na `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log f
 ## <a name="suggestions"></a>Návrhy
 
 Máte pro nás informace o Service Map nebo této dokumentaci?  Navštivte naši [hlasovou stránku uživatele](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhovat funkce nebo hlasovat o stávajících návrzích.
-

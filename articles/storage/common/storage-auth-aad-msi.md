@@ -1,7 +1,7 @@
 ---
 title: Autorizace přístupu k datům pomocí spravované identity
 titleSuffix: Azure Storage
-description: Naučte se používat spravované identity pro prostředky Azure k autorizaci přístupu k objektům blob a frontám z aplikací běžících na virtuálních počítačích Azure, aplikacích Function App, virtuálních počítačích škálování a dalších.
+description: Pomocí spravovaných identit pro prostředky Azure můžete autorizovat přístup k objektům blob a frontám z aplikací běžících na virtuálních počítačích Azure, aplikacích Function App a dalších.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 17d19d0b87812ec1f38b43c1b26dbd5c19b4efc8
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8273be760b37c12f3db7a393e59ab8ead291ec02
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534205"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827992"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Autorizace přístupu k datům BLOB a Queue pomocí spravovaných identit pro prostředky Azure
 

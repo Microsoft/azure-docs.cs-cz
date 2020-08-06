@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.date: 07/09/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: dcb5277773be1fc45a3d2b0901cf9fda177b7054
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 7e99c9191e93562211f6294cf671f431a5db455d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512648"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825561"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Použití klíčů SSH s Windows v Azure
 
@@ -45,7 +45,7 @@ Poslední verze Windows 10 zahrnují [příkazy klienta OpenSSH](https://blogs.m
 
 K připojení k VIRTUÁLNÍmu počítači můžete použít také Bash v [Azure Cloud Shell](../../cloud-shell/overview.md) . Cloud Shell můžete použít ve [webovém prohlížeči](https://shell.azure.com/bash), v [Azure Portal](https://portal.azure.com)nebo jako terminál v Visual Studio Code pomocí [rozšíření účtu Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account).
 
-[Podsystém Windows pro Linux](https://docs.microsoft.com/windows/wsl/about) můžete také nainstalovat pro připojení k virtuálnímu počítači přes SSH a použít jiné nativní nástroje pro Linux v prostředí bash shell.
+[Podsystém Windows pro Linux](/windows/wsl/about) můžete také nainstalovat pro připojení k virtuálnímu počítači přes SSH a použít jiné nativní nástroje pro Linux v prostředí bash shell.
 
 ## <a name="create-an-ssh-key-pair"></a>Vytvoření páru klíčů SSH
 

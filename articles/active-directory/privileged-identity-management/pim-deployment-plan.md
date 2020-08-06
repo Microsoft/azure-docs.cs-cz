@@ -14,12 +14,12 @@ ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6597c268a2a017280d00f73366562de61b4781e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 82c0fbb62f411ccc3056d782518c6c3b570106d2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529785"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828621"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Nasazení Azure AD Privileged Identity Management (PIM)
 
@@ -59,7 +59,7 @@ Další informace najdete v tématu [licenční požadavky pro použití Privile
 
 ### <a name="key-terminology"></a>Klíčová terminologie
 
-| Termín nebo koncept | Description |
+| Termín nebo koncept | Popis |
 | --- | --- |
 | způsobil | Přiřazení role, které vyžaduje, aby uživatel prováděl jednu nebo více akcí pro použití role. Pokud uživatel nastavil nárok na roli, to znamená, že může roli aktivovat, když potřebují provádět privilegované úlohy. Neexistuje žádný rozdíl v přístupu pro někoho, kdo má trvalé přiřazení oprávnění oproti oprávněné roli. Jediným rozdílem je, že někteří lidé nepotřebují přístup ke všemu času. |
 | aktivovat | Proces provádění jedné nebo více akcí pro použití role, pro kterou má uživatel nárok. Akce můžou zahrnovat provádění kontroly vícefaktorového ověřování (MFA), poskytování obchodního odůvodnění nebo žádosti o schválení od určených schvalovatelů. |
@@ -82,7 +82,7 @@ Další informace najdete v tématu [co je Azure AD Privileged Identity Manageme
 
 **Role Azure AD** – tyto role jsou všechny v Azure Active Directory (například globální správce, správce Exchange a správce zabezpečení). Další informace o rolích a jejich funkci najdete v tématu [oprávnění role správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md). Nápovědu k určení rolí pro přiřazení správců najdete v tématu [nejméně privilegované role podle úkolu](../users-groups-roles/roles-delegate-by-task.md).
 
-**Role prostředků Azure** – tyto role jsou propojené s prostředkem Azure, skupinou prostředků, předplatným nebo skupinou pro správu. Privileged Identity Management poskytuje přístup za běhu k předdefinovaným rolím, jako je vlastník, správce přístupu uživatelů a přispěvatel, a také [vlastní role](../../role-based-access-control/custom-roles.md). Další informace o rolích prostředků Azure najdete v tématu [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md).
+**Role prostředků Azure** – tyto role jsou propojené s prostředkem Azure, skupinou prostředků, předplatným nebo skupinou pro správu. Privileged Identity Management poskytuje přístup za běhu k předdefinovaným rolím, jako je vlastník, správce přístupu uživatelů a přispěvatel, a také [vlastní role](../../role-based-access-control/custom-roles.md). Další informace o rolích prostředků Azure najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
 Další informace najdete v tématu [role, které nemůžete spravovat v Privileged Identity Management](pim-roles.md).
 
@@ -100,7 +100,7 @@ Následující část vám pomůže identifikovat všechny zúčastněné strany
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Zúčastněné strany: Privileged Identity Management pro role Azure AD
 
-| Name | Role | Akce |
+| Název | Role | Akce |
 | --- | --- | --- |
 | Jméno a e-mail | **Architekt identity nebo globální správce Azure**<br/>Zástupce z týmu pro správu identit, který má za následek definování způsobu, jakým se tato změna rovná, s hlavní infrastrukturou správy identit ve vaší organizaci. | TAKŽE/R/I |
 | Jméno a e-mail | **Vlastník služby/manažer line**<br/>Zástupce od vlastníků IT služby nebo skupiny služeb. Jsou klíčem k rozhodování a přispívání Privileged Identity Management pro svůj tým. | TAKŽE/R/I |
@@ -110,7 +110,7 @@ Následující část vám pomůže identifikovat všechny zúčastněné strany
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Zúčastněné strany: Privileged Identity Management pro role prostředků Azure
 
-| Name | Role | Akce |
+| Název | Role | Akce |
 | --- | --- | --- |
 | Jméno a e-mail | **Předplatné/vlastník prostředku**<br/>Zástupce od vlastníků IT každého předplatného nebo prostředku, který chcete nasadit Privileged Identity Management pro | TAKŽE/R/I |
 | Jméno a e-mail | **Vlastník zabezpečení**<br/>Zástupce bezpečnostního týmu, který se může odhlásit, že plán splňuje požadavky vaší organizace na zabezpečení. | SO/R |
@@ -244,16 +244,16 @@ Před implementací řešení Privileged Identity Management je vhodné koncepty
 | Role | Vyžadování MFA | Notification (Oznámení) | Lístek incidentu | Vyžadovat schválení | Uživatelem | Doba trvání aktivace | Trvalý správce |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Globální správce | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Jiní globální správci | 1 hodina | Účty pro nouzový přístup |
-| Správce Exchange | :heavy_check_mark: | :heavy_check_mark: | znak | znak | Žádná | 2 hodiny | Žádná |
-| Správce helpdesku | znak | znak | :heavy_check_mark: | znak | Žádná | 8 hodin | Žádná |
+| Správce Exchange | :heavy_check_mark: | :heavy_check_mark: | znak | znak | Žádné | 2 hodiny | Žádné |
+| Správce helpdesku | znak | znak | :heavy_check_mark: | znak | Žádné | 8 hodin | Žádné |
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>Nastavení Privileged Identity Management pro role prostředků Azure
 
 | Role | Vyžadování MFA | Notification (Oznámení) | Vyžadovat schválení | Uživatelem | Doba trvání aktivace | Aktivní správce | Aktivní doba platnosti | Nárok na vypršení platnosti |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Vlastník kritických předplatných | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Další vlastníci předplatného | 1 hodina | Žádná | Není k dispozici | 3 měsíce |
-| Správce přístupu uživatele s méně důležitými předplatnými | :heavy_check_mark: | :heavy_check_mark: | znak | Žádná | 1 hodina | Žádná | Není k dispozici | 3 měsíce |
-| Přispěvatel virtuálních počítačů | znak | :heavy_check_mark: | znak | Žádná | 3 hodiny | Žádná | Není k dispozici | 6 měsíců |
+| Vlastník kritických předplatných | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Další vlastníci předplatného | 1 hodina | Žádné | Není k dispozici | 3 měsíce |
+| Správce přístupu uživatele s méně důležitými předplatnými | :heavy_check_mark: | :heavy_check_mark: | znak | Žádné | 1 hodina | Žádné | Není k dispozici | 3 měsíce |
+| Přispěvatel virtuálních počítačů | znak | :heavy_check_mark: | znak | Žádné | 3 hodiny | Žádné | Není k dispozici | 6 měsíců |
 
 V následující tabulce jsou popsána jednotlivá nastavení.
 
@@ -351,7 +351,7 @@ Pokud se Privileged Identity Management nepovedlo v produkčním prostředí fun
 
 #### <a name="azure-ad-roles"></a>Role Azure AD
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Otevřete **Azure AD Privileged Identity Management**.
 1. Klikněte na **role Azure AD** a potom klikněte na **role**.
 1. U každé role, kterou jste nakonfigurovali, klikněte na tři tečky (**...**) pro všechny uživatele s oprávněným přiřazením.
@@ -359,7 +359,7 @@ Pokud se Privileged Identity Management nepovedlo v produkčním prostředí fun
 
 #### <a name="azure-resource-roles"></a>Role prostředků Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Otevřete **Azure AD Privileged Identity Management**.
 1. Klikněte na **prostředky Azure** a pak klikněte na předplatné nebo prostředek, který chcete vrátit zpět.
 1. Klikněte na **role**.
@@ -374,7 +374,7 @@ Pokud se Privileged Identity Management nepovedlo v produkčním prostředí fun
 
 K lepší ochraně vaší organizace byste měli využívat funkci integrovaného upozorňování Privileged Identity Management. Další informace najdete v tématu [výstrahy zabezpečení](pim-how-to-configure-security-alerts.md#security-alerts). Mezi tyto výstrahy patří: Správci nepoužívají privilegované role, role se přiřazují mimo Privileged Identity Management a role se aktivují příliš často a častěji. K zajištění plné ochrany vaší organizace byste měli pravidelně procházet seznam výstrah a opravovat problémy. Výstrahy můžete zobrazit a opravit následujícím způsobem:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Otevřete **Azure AD Privileged Identity Management**.
 1. Klikněte na **role Azure AD** a pak na **výstrahy**.
 

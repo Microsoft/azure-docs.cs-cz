@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 211b7aedc901031e366c60a6c7a2cee396bbe124
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: bd575eb5f646b749b431516670c64c764f4d4c9c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563836"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828502"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -394,7 +394,7 @@ Každá odeslaná položka nese `itemCount` vlastnost, která ukazuje, kolik pů
 ```
 
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Automatizace
 
 #### <a name="configuring-application-insights"></a>Konfigurace Application Insights
 
@@ -670,7 +670,7 @@ Pokud jsou vaše virtuální počítače už připojené k pracovnímu prostoru 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>Můžu se připojit k novému pracovnímu prostoru? 
 Pokud vaše virtuální počítače nejsou aktuálně připojené k existujícímu pracovnímu prostoru Log Analytics, je potřeba vytvořit nový pracovní prostor pro ukládání vašich dat. Vytvoření nového výchozího pracovního prostoru se provádí automaticky, pokud nakonfigurujete jeden virtuální počítač Azure pro Azure Monitor pro virtuální počítače prostřednictvím Azure Portal.
 
-Pokud se rozhodnete použít metodu založenou na skriptu, tyto kroky jsou pokryté v článku [povolení Azure monitor pro virtuální počítače pomocí Azure PowerShell nebo šablony Správce prostředků](insights/vminsights-enable-at-scale-powershell.md) . 
+Pokud se rozhodnete použít metodu založenou na skriptu, tyto kroky jsou pokryté v článku [povolení Azure monitor pro virtuální počítače pomocí Azure PowerShell nebo šablony Správce prostředků](./insights/vminsights-enable-powershell.md) . 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Jak mám dělat, když už můj virtuální počítač hlásí stávající pracovní prostor?
 Pokud už data z virtuálních počítačů shromažďujete, je možné, že jste ji už nakonfigurovali k nahlášení dat do existujícího pracovního prostoru Log Analytics.  Pokud je tento pracovní prostor v některé z našich podporovaných oblastí, můžete Azure Monitor pro virtuální počítače do tohoto existujícího pracovního prostoru povolit.  Pokud pracovní prostor, který už používáte, není v některé z našich podporovaných oblastí, nebudete moct Azure Monitor pro virtuální počítače v tuto chvíli zaregistrovat.  Aktivně pracujeme na podpoře dalších oblastí.
@@ -691,7 +691,7 @@ Pokud jste zahájili registraci a viděli zprávy indikující, že virtuální 
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>V grafech výkonu pro virtuální počítač nejsou vidět žádná nebo žádná data
 Naše grafy výkonu byly aktualizovány tak, aby používaly data uložená v tabulce *InsightsMetrics* .  Pokud chcete zobrazit data v těchto grafech, budete muset upgradovat, aby používala nové řešení VM Insights.  Další informace najdete v našich [dotazech GA](insights/vminsights-ga-release-faq.md) .
 
-Pokud nevidíte údaje o výkonu v tabulce disků nebo v některém z grafů výkonu, nemusí být v pracovním prostoru nakonfigurovány čítače výkonu. Pokud ho chcete vyřešit, spusťte následující [skript PowerShellu](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell).
+Pokud nevidíte údaje o výkonu v tabulce disků nebo v některém z grafů výkonu, nemusí být v pracovním prostoru nakonfigurovány čítače výkonu. Pokud ho chcete vyřešit, spusťte následující [skript PowerShellu](./insights/vminsights-enable-powershell.md).
 
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Jak se Azure Monitor pro virtuální počítače funkce map liší od Service Map?

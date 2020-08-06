@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: 00b7f675e7dd8fb347399ee7740318e129f12746
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d4398b2bf37ad5dcf60a931f5d4991a3ad00845a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504173"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826530"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -135,7 +135,7 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
   
 ## <a name="permissions"></a>Oprávnění
 
-Oprávnění pro skupinu převzetí služeb při selhání se spravují prostřednictvím [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md). Role [přispěvatel SQL Server](../../role-based-access-control/built-in-roles.md#sql-server-contributor) má všechna potřebná oprávnění ke správě skupin převzetí služeb při selhání.
+Oprávnění pro skupinu převzetí služeb při selhání se spravují prostřednictvím [řízení přístupu na základě role Azure (RBAC)](../../role-based-access-control/overview.md). Role [přispěvatel SQL Server](../../role-based-access-control/built-in-roles.md#sql-server-contributor) má všechna potřebná oprávnění ke správě skupin převzetí služeb při selhání.
 
 ### <a name="create-failover-group"></a>Vytvořit skupinu převzetí služeb při selhání
 
@@ -415,7 +415,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Příkaz | Description |
+| Příkaz | Popis |
 | --- | --- |
 | [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
 | [AZ SQL Failover-Group DELETE](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
@@ -425,7 +425,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="rest-api"></a>[Rozhraní REST API](#tab/rest-api)
 
-| Rozhraní API | Description |
+| Rozhraní API | Popis |
 | --- | --- |
 | [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Vytvoří nebo aktualizuje skupinu převzetí služeb při selhání. |
 | [Odstranit skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
@@ -453,7 +453,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Příkaz | Description |
+| Příkaz | Popis |
 | --- | --- |
 | [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
 | [AZ SQL Failover-Group DELETE](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
@@ -463,7 +463,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="rest-api"></a>[Rozhraní REST API](#tab/rest-api)
 
-| Rozhraní API | Description |
+| Rozhraní API | Popis |
 | --- | --- |
 | [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Vytvoří nebo aktualizuje konfiguraci skupiny převzetí služeb při selhání. |
 | [Odstranit skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Odebere skupinu převzetí služeb při selhání z instance. |

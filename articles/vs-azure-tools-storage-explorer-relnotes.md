@@ -1,6 +1,6 @@
 ---
 title: Zpráva k vydání verze Průzkumníka služby Microsoft Azure Storage
-description: Poznámky k verzi pro Průzkumník služby Microsoft Azure Storage
+description: Přečtěte si poznámky k verzi pro nejnovější verzi Průzkumník služby Microsoft Azure Storage. Zobrazují se také poznámky k verzi pro předchozí verze.
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 986da8980a569583ef454833957ace85dd1bfbb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80351056"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828774"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Průzkumníka služby Microsoft Azure Storage
 
@@ -46,7 +46,7 @@ Pokud si chcete stáhnout předchozí verze Průzkumník služby Storage, může
       * Kopírovat & vložení
       * Odstranit, včetně odstranění složky
    * Spravované disky
-      * Odeslat
+      * Nahrávání
       * Stáhnout
       * Kopírovat & vložení
 

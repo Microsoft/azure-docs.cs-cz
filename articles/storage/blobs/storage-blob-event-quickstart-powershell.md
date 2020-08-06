@@ -1,6 +1,6 @@
 ---
 title: Odeslání událostí služby Azure Blob Storage do webového koncového bodu – PowerShell | Microsoft Docs
-description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage.
+description: Pomocí Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage, aktivovat událost a zobrazit výsledek. K směrování událostí úložiště do koncového bodu webu použijte Azure PowerShell.
 author: normesta
 ms.author: normesta
 ms.reviewer: dastanfo
@@ -8,12 +8,12 @@ ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 809ab593d4d3f58fa3c91b896e5df3a0db7865f9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68847159"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824507"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Rychlý Start: směrování událostí úložiště do webového koncového bodu pomocí PowerShellu
 

@@ -1,7 +1,7 @@
 ---
 title: Data redundancy
 titleSuffix: Azure Storage
-description: Data v účtu Microsoft Azure Storage se replikují pro zajištění odolnosti a vysoké dostupnosti. Konfigurace redundance zahrnují místně redundantní úložiště (LRS), zónu – redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS), geograficky redundantní úložiště s přístupem pro čtení (RA-GRS), geograficky redundantní úložiště (GZRS) a geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS).
+description: Pochopení redundance dat v Azure Storage. Data v účtu Microsoft Azure Storage se replikují pro zajištění odolnosti a vysoké dostupnosti.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 07/21/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e4ec4925da40cf6051b88d77fbbc35d93ececf87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8fa775ab4d183d75fef41529a95555fe3bcdc91c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036722"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827839"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -164,9 +164,9 @@ Následující tabulka uvádí, zda jsou vaše data v daném scénáři odolná 
 | Scénář výpadku | LRS | ZRS | GRS/RA – GRS | GZRS/RA – GZRS |
 |:-|:-|:-|:-|:-|
 | Uzel v datovém centru nebude dostupný. | Ano | Ano | Ano | Ano |
-| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast). | No | Yes | Ano<sup>1</sup> | Yes |
-| V primární oblasti dojde k výpadku v rámci oblasti. | No | No | Ano<sup>1</sup> | Ano<sup>1</sup> |
-| Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | No | No | Ano (s RA-GRS) | Ano (s RA-GZRS) |
+| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast). | Ne | Ano | Ano<sup>1</sup> | Ano |
+| V primární oblasti dojde k výpadku v rámci oblasti. | Ne | Ne | Ano<sup>1</sup> | Ano<sup>1</sup> |
+| Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | Ne | Ne | Ano (s RA-GRS) | Ano (s RA-GZRS) |
 
 <sup>1</sup> převzetí služeb při selhání účtu se vyžaduje k obnovení dostupnosti pro zápis, pokud primární oblast nebude k dispozici. Další informace najdete v tématu [převzetí služeb při selhání při zotavení po havárii a účtu úložiště](storage-disaster-recovery-guidance.md).
 

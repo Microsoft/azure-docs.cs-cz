@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d979d2d0167a4398d31271bb896c812bbe86be73
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660756"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827856"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrace do sdílených složek Azure
 
@@ -81,7 +81,7 @@ Scénář bez propojení zatím nemá publikovaný Průvodce migrací. V této t
 | Zdroj | Cíl: </br>Hybridní nasazení | Cíl: </br>Pouze cloudové nasazení |
 |:---|:--|:--|
 | | Kombinace nástrojů:| Kombinace nástrojů: |
-| Windows Server 2012 R2 a novější | <ul><li>[Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync a Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>Azure File Sync a služba migrace úložiště</li></ul> | <ul><li>Synchronizace souborů Azure</li><li>Azure File Sync a Data Box</li><li>Azure File Sync a služba migrace úložiště</li><li>RoboCopy</li></ul> |
+| Windows Server 2012 R2 a novější | <ul><li>[Synchronizace souborů Azure](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync a Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>[Azure File Sync a předem vysazených souborů v cloudu](storage-sync-offline-data-transfer.md#azure-file-sync-and-pre-seeded-files-in-the-cloud)</li><li>Azure File Sync a služba migrace úložiště</li></ul> | <ul><li>Synchronizace souborů Azure</li><li>Azure File Sync a Data Box</li><li>Azure File Sync a služba migrace úložiště</li><li>RoboCopy</li></ul> |
 | Windows Server 2012 a starší | <ul><li>Azure File Sync a Data Box</li><li>Azure File Sync a služba migrace úložiště</li></ul> | <ul><li>Azure File Sync a služba migrace úložiště</li><li>RoboCopy</li></ul> |
 | Úložiště připojené k síti (NAS) | <ul><li>[Azure File Sync a Robocopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
 | Linux nebo Samba | <ul><li>[Azure File Sync a Robocopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
@@ -115,7 +115,7 @@ Je k dispozici několik nástrojů pro kopírování souborů od Microsoftu a da
 
 Následující tabulka klasifikuje nástroje Microsoftu a jejich aktuální vhodnost pro sdílené složky Azure:
 
-| Doporučené | Nástroj | Podpora sdílených složek Azure | Zachování věrnosti souborů |
+| Doporučeno | Nástroj | Podpora sdílených složek Azure | Zachování věrnosti souborů |
 | :-: | :-- | :---- | :---- |
 |![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | Podporuje se. Sdílené složky Azure je možné připojit jako síťové jednotky. | Plná přesnost. * |
 |![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| Synchronizace souborů Azure | Nativně integrovaná do sdílených složek Azure. | Plná přesnost. * |

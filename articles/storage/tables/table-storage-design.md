@@ -1,6 +1,6 @@
 ---
 title: Navrhněte škálovatelné a výkonné tabulky ve službě Azure Table Storage. | Dokumentace Microsoftu
-description: Navrhněte škálovatelné a výkonné tabulky ve službě Azure Table Storage.
+description: Naučte se navrhovat škálovatelné a výkonné tabulky ve službě Azure Table Storage. Zkontrolujte oddíly tabulky, transakce skupiny entit a požadavky na kapacitu a náklady.
 services: storage
 author: SnehaGunda
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 1dba3a6f3ebd7b6675e6d0d90d98a45625ad04ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59af13bcae14839a5b583ad7e063668b5305b30a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656902"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824405"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Návrh škálovatelných a výkonných tabulek
 
@@ -37,7 +37,7 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Časové razítko</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -49,7 +49,7 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -69,7 +69,7 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -106,7 +106,7 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>

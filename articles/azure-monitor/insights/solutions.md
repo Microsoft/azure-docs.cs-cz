@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: a2ece33974e5bb4d8cb6257d3ca68a258f9b8c81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 406991de2441836565c911ef8a8e1402f6398eb0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325997"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824779"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Monitorování řešení v Azure Monitor
 
@@ -21,7 +21,7 @@ Monitorování řešení využívajících služby v Azure k zajištění dalš�
 
 Otevřete stránku **Přehled** v Azure monitor pro zobrazení dlaždice pro každé nainstalované řešení v pracovním prostoru.
 
-1. Přejděte na [Azure Portal](https://ms.portal.azure.com). Vyhledejte a vyberte **monitor**.
+1. Přejděte na web [Azure Portal](https://ms.portal.azure.com). Vyhledejte a vyberte **monitor**.
 1. V nabídce **přehledy** vyberte **Další**.
 1. Pomocí rozevíracích seznamů v horní části obrazovky změňte pracovní prostor nebo časový rozsah použitý pro dlaždice.
 1. Klikněte na dlaždici pro řešení a otevřete jeho zobrazení, které obsahuje podrobnější analýzu shromážděných dat.
@@ -36,7 +36,7 @@ Otevřete stránku **Přehled** v Azure monitor pro zobrazení dlaždice pro ka�
 
 Pomocí následujícího postupu můžete zobrazit seznam řešení monitorování nainstalovaných ve vašem předplatném.
 
-1. Přejděte na [Azure Portal](https://ms.portal.azure.com). Vyhledejte a vyberte **řešení**.
+1. Přejděte na web [Azure Portal](https://ms.portal.azure.com). Vyhledejte a vyberte **řešení**.
 1. Jsou uvedena řešení nainstalovaná ve všech pracovních prostorech. Za názvem řešení následuje název pracovního prostoru, ve kterém je nainstalovaný.
 1. Pomocí rozevíracích seznamů v horní části obrazovky můžete filtrovat podle předplatného nebo skupiny prostředků.
 
@@ -192,7 +192,6 @@ az monitor log-analytics solution delete --name
 
 ## <a name="next-steps"></a>Další kroky
 
-* Získejte [seznam řešení monitorování od Microsoftu](/azure/azure-monitor/monitor-reference).
+* Získejte [seznam řešení monitorování od Microsoftu](../monitor-reference.md).
 * Naučte se [vytvářet dotazy](../log-query/log-query-overview.md) k analýze dat shromažďovaných monitorovacími řešeními.
 * Podívejte se [na všechny příkazy rozhraní příkazového řádku Azure pro Azure monitor](/cli/azure/azure-cli-reference-for-monitor).
-

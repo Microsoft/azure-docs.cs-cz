@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65fbd84a6fa4b03db9f5dfce81eeba23aceebbc9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae3851da1dbcc5f7ac37821a64cada20164c7661
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042301"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825000"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Typy služby Azure Storage pro úlohy SAP
 Azure má spoustu typů úložiště, které se v různých možnostech, propustnosti, latenci a cenách liší. Některé typy úložiště nejsou ani omezené možnosti použitelné pro scénáře SAP. Vzhledem k tomu, že některé typy úložiště Azure jsou vhodné nebo optimalizované pro konkrétní scénáře úloh SAP. Zejména u SAP HANA některé typy úložiště Azure získali certifikaci pro použití s SAP HANA. V tomto dokumentu procházíme mezi různými typy úložišť a popisujete jejich schopnost a použitelnost pomocí úloh SAP a komponent SAP.
@@ -146,7 +146,7 @@ Matrice schopností pro úlohu SAP vypadá takto:
 | Latence | nízké až střední | - |
 | SLA PRO IOPS | ANO | - |
 | IOPS lineární na kapacitu | poloviční lineární v závorkách  | [Ceny spravovaného disku](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| Maximální počet IOPS na disk | 20 000 [závislý na velikosti disku](https://azure.microsoft.com/pricing/details/managed-disks/) | Zvážit také [omezení počtu virtuálních počítačů](../../linux/sizes.md) |
+| Maximální počet IOPS na disk | 20 000 [závislý na velikosti disku](https://azure.microsoft.com/pricing/details/managed-disks/) | Zvážit také [omezení počtu virtuálních počítačů](../../sizes.md) |
 | Smlouva SLA pro propustnost | ANO | - |
 | Propustnost lineární pro kapacitu | poloviční lineární v závorkách | [Ceny spravovaného disku](https://azure.microsoft.com/pricing/details/managed-disks/) |
 | Certified HANA | ANO | [speciálně pro SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
@@ -335,11 +335,11 @@ V opačném případě se jedná o typ jednotlivého virtuálního počítače, 
 
 | Typ úložiště| Linux | Windows | Komentáře |
 | --- | --- | --- | --- |
-| HDD úrovně Standard | [Velikosti pro virtuální počítače se systémem Linux v Azure](../../linux/sizes.md) | [Velikosti virtuálních počítačů s Windows v Azure](../../windows/sizes.md) | Je nejspíš těžké dodotknout limity úložiště u středních nebo velkých virtuálních počítačů. |
-| SSD úrovně Standard | [Velikosti pro virtuální počítače se systémem Linux v Azure](../../linux/sizes.md) | [Velikosti virtuálních počítačů s Windows v Azure](../../windows/sizes.md) | Je nejspíš těžké dodotknout limity úložiště u středních nebo velkých virtuálních počítačů. |
-| Premium Storage | [Velikosti pro virtuální počítače se systémem Linux v Azure](../../linux/sizes.md) | [Velikosti virtuálních počítačů s Windows v Azure](../../windows/sizes.md) | Snadné navýšení IOPS nebo omezení propustnosti úložiště s konfigurací úložiště |
-| Úložiště Ultra disk | [Velikosti pro virtuální počítače se systémem Linux v Azure](../../linux/sizes.md) | [Velikosti virtuálních počítačů s Windows v Azure](../../windows/sizes.md) | Snadné navýšení IOPS nebo omezení propustnosti úložiště s konfigurací úložiště |
-| Azure NetApp Files | [Velikosti pro virtuální počítače se systémem Linux v Azure](../../linux/sizes.md) | [Velikosti virtuálních počítačů s Windows v Azure](../../windows/sizes.md) | Provoz úložiště používá šířku pásma propustnosti sítě a šířku pásma úložiště. |
+| HDD úrovně Standard | [Velikosti pro virtuální počítače se systémem Linux v Azure](../../sizes.md) | [Velikosti virtuálních počítačů s Windows v Azure](../../sizes.md) | Je nejspíš těžké dodotknout limity úložiště u středních nebo velkých virtuálních počítačů. |
+| SSD úrovně Standard | [Velikosti pro virtuální počítače se systémem Linux v Azure](../../sizes.md) | [Velikosti virtuálních počítačů s Windows v Azure](../../sizes.md) | Je nejspíš těžké dodotknout limity úložiště u středních nebo velkých virtuálních počítačů. |
+| Premium Storage | [Velikosti pro virtuální počítače se systémem Linux v Azure](../../sizes.md) | [Velikosti virtuálních počítačů s Windows v Azure](../../sizes.md) | Snadné navýšení IOPS nebo omezení propustnosti úložiště s konfigurací úložiště |
+| Úložiště Ultra disk | [Velikosti pro virtuální počítače se systémem Linux v Azure](../../sizes.md) | [Velikosti virtuálních počítačů s Windows v Azure](../../sizes.md) | Snadné navýšení IOPS nebo omezení propustnosti úložiště s konfigurací úložiště |
+| Azure NetApp Files | [Velikosti pro virtuální počítače se systémem Linux v Azure](../../sizes.md) | [Velikosti virtuálních počítačů s Windows v Azure](../../sizes.md) | Provoz úložiště používá šířku pásma propustnosti sítě a šířku pásma úložiště. |
 
 V případě omezení si můžete všimnout, že:
 

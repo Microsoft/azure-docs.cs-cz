@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c28fe96fe88a3b0744aaad72d49e8e2f52912fb6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082626"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829080"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření a funkce virtuálních počítačů pro Windows
 
@@ -36,7 +36,7 @@ K dispozici je několik různých rozšíření virtuálních počítačů Azure
 
 - Použijte konfiguraci požadovaného stavu PowerShellu na virtuální počítač s rozšířením DSC pro Windows. Další informace najdete v tématu [rozšíření konfigurace požadovaného stavu Azure](dsc-overview.md).
 - Nakonfigurujte monitorování virtuálního počítače pomocí rozšíření virtuálního počítače agenta Log Analytics. Další informace najdete v tématu [připojení virtuálních počítačů Azure k Azure monitor protokolů](../../azure-monitor/learn/quick-collect-azurevm.md).
-- Nakonfigurujte virtuální počítač Azure pomocí systému pro použití. Další informace najdete v tématu [Automatizace nasazení virtuálních počítačů Azure pomocí nástroje pro instalaci](../../chef/chef-automation.md).
+- Nakonfigurujte virtuální počítač Azure pomocí systému pro použití. Další informace najdete v tématu [Automatizace nasazení virtuálních počítačů Azure pomocí nástroje pro instalaci](/azure/developer/chef/windows-vm-configure).
 - Nakonfigurujte monitorování infrastruktury Azure pomocí rozšíření služby Datadog. Další informace najdete na [blogu služby Datadog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 
@@ -140,7 +140,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 Pomocí `Set-AzVMExtension` příkazu můžete spustit libovolné rozšíření virtuálního počítače. Další informace najdete v referenčních informacích k [set-AzVMExtension](/powershell/module/az.compute/set-azvmextension).
 
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Rozšíření virtuálních počítačů je možné použít pro existující virtuální počítač prostřednictvím Azure Portal. Vyberte virtuální počítač na portálu, klikněte na **rozšíření**a pak vyberte **Přidat**. V seznamu dostupných rozšíření vyberte požadované rozšíření a postupujte podle pokynů v průvodci.
 

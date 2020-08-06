@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 1e844934852f3eb45f665a67bbdb7087a8ba0202
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aca2c51ff14b99ba41b159cf32e59dc861de7a53
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039155"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826207"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Přesunutí prostředků aplikace logiky do jiných skupin prostředků Azure, oblastí nebo předplatných
 
@@ -31,7 +31,7 @@ K migraci aplikace logiky nebo souvisejících prostředků do jiné skupiny pro
 
 * Stejné předplatné Azure, které se použilo k vytvoření aplikace logiky nebo účtu pro integraci, který chcete přesunout
 
-* Oprávnění vlastníka prostředku pro přesun a nastavení prostředků, které chcete. Přečtěte si další informace o [řízení přístupu na základě role (RBAC)](../role-based-access-control/built-in-roles.md#owner).
+* Oprávnění vlastníka prostředku pro přesun a nastavení prostředků, které chcete. Přečtěte si další informace o [řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/built-in-roles.md#owner).
 
 <a name="move-subscription"></a>
 

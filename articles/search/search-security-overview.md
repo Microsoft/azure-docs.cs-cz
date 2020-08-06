@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9e4181956d81ddbe0a385987689a8cb0248ac535
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: fb265f8a8ab34972dac8529d267e41edaf0acb4c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553950"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829284"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Zabezpečení v Azure Kognitivní hledání – přehled
 
@@ -127,7 +127,7 @@ Pokud pro výsledky hledání potřebujete podrobný ovládací prvek pro jednot
 
 ## <a name="administrative-rights"></a>Práva správce
 
-[Řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) je autorizační systém založený na [Azure Resource Manager](../azure-resource-manager/management/overview.md) pro zřizování prostředků Azure. V Azure Kognitivní hledání se Správce prostředků používá k vytvoření nebo odstranění služby, správě klíčů rozhraní API a škálování služby. V takovém případě přiřazení rolí Azure určí, kdo může provádět tyto úlohy bez ohledu na to, jestli používají [portál](search-manage.md), [POWERSHELL](search-manage-powershell.md)nebo [rozhraní REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+[Řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md) je autorizační systém založený na [Azure Resource Manager](../azure-resource-manager/management/overview.md) pro zřizování prostředků Azure. V Azure Kognitivní hledání se Správce prostředků používá k vytvoření nebo odstranění služby, správě klíčů rozhraní API a škálování služby. V takovém případě přiřazení rolí Azure určí, kdo může provádět tyto úlohy bez ohledu na to, jestli používají [portál](search-manage.md), [POWERSHELL](search-manage-powershell.md)nebo [rozhraní REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
 
 Naproti tomu práva správce k obsahu hostovanému na službě, jako je například schopnost vytvořit nebo odstranit index, jsou odvozena prostřednictvím klíčů rozhraní API, jak je popsáno v [předchozí části](#index-access).
 

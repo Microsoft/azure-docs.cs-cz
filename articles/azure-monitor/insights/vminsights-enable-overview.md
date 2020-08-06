@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 96783955eac6ade90a155236891307720616ed20
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e3c5f6d7e04620cf36f6cd952467d47afd775b19
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323940"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824762"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Povolit Azure Monitor pro virtuální počítače – přehled
 
@@ -30,7 +30,7 @@ Nastavení Azure Monitor pro virtuální počítače:
 * Povolte několik virtuálních počítačů Azure, virtuálních počítačů ARC Azure, Azure VMSS nebo počítačů ARC Azure v rámci zadaného předplatného nebo skupiny prostředků pomocí PowerShellu.
 * Povolte Azure Monitor pro virtuální počítače k monitorování virtuálních počítačů nebo fyzických počítačů hostovaných ve vaší podnikové síti nebo jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že rozumíte informacím v následujících částech. 
 
@@ -174,10 +174,10 @@ Níže najdete několik metod pro nasazení těchto agentů.
 
 | Metoda | Popis |
 |:---|:---|
-| [Azure Portal](vminsights-enable-single-vm.md) | Nainstalujte oba agenty na jeden virtuální počítač, sadu škálování virtuálního počítače nebo hybridní virtuální počítače připojené pomocí Azure ARC. |
-| [Šablony Resource Manageru](vminsights-enable-powershell.md) | Nainstalujte oba agenty pomocí kterékoli z podporovaných metod pro nasazení Správce prostředků šablony, včetně CLI a PowerShellu. |
-| [Azure Policy](vminsights-enable-at-scale-policy.md) | Pokud se vytvoří virtuální počítač nebo sada škálování virtuálních počítačů, přiřaďte Azure Policy iniciativu k automatické instalaci agentů. |
-| [Ruční instalace](vminsights-enable-hybrid-cloud.md) | Nainstalujte agenty v hostovaném operačním systému do počítačů hostovaných mimo Azure, včetně ve vašem datovém centru nebo v jiných cloudových prostředích. |
+| [Azure Portal](./vminsights-enable-portal.md) | Nainstalujte oba agenty na jeden virtuální počítač, sadu škálování virtuálního počítače nebo hybridní virtuální počítače připojené pomocí Azure ARC. |
+| [Šablony Správce prostředků](vminsights-enable-powershell.md) | Nainstalujte oba agenty pomocí kterékoli z podporovaných metod pro nasazení Správce prostředků šablony, včetně CLI a PowerShellu. |
+| [Azure Policy](./vminsights-enable-policy.md) | Pokud se vytvoří virtuální počítač nebo sada škálování virtuálních počítačů, přiřaďte Azure Policy iniciativu k automatické instalaci agentů. |
+| [Ruční instalace](./vminsights-enable-hybrid.md) | Nainstalujte agenty v hostovaném operačním systému do počítačů hostovaných mimo Azure, včetně ve vašem datovém centru nebo v jiných cloudových prostředích. |
 
 
 
@@ -200,4 +200,3 @@ Další informace o shromažďování a používání dat naleznete v tématu [p
 ## <a name="next-steps"></a>Další kroky
 
 Informace o tom, jak používat funkci monitorování výkonu, najdete v tématu [zobrazení výkonu Azure monitor pro virtuální počítače](vminsights-performance.md). Pokud chcete zobrazit zjištěné závislosti aplikací, přečtěte si téma [zobrazení Azure monitor pro virtuální počítače mapa](vminsights-maps.md).
-

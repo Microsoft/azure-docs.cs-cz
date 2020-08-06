@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 9cb5a9aa782017075a58737f8cb94569c2cc6288
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 10f8c2a17c161d7e5622636b08b524932defe451
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373296"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826870"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Správa prostředků Azure pomocí Azure PowerShell
 
@@ -133,7 +133,7 @@ Označení pomáhá organizovat skupinu prostředků a prostředky logicky. Info
 
 ## <a name="manage-access-to-resources"></a>Správa přístupu k prostředkům
 
-[Řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 ## <a name="next-steps"></a>Další kroky
 

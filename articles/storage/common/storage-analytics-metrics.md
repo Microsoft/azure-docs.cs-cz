@@ -1,6 +1,6 @@
 ---
 title: Analýza úložiště Azure metriky (klasické)
-description: Naučte se používat Analýza úložiště metriky v Azure Storage.
+description: Naučte se používat Analýza úložiště metriky v Azure Storage. Seznamte se s metrikami transakcí a kapacity, o tom, jak se ukládají metriky, umožňují metriky a další.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: b4bb17fce7be7aeff2a6978177106201e4c80aee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d7db5a756e5d75cb4f9719f54d95f9cee1e8d2f
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087267"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828043"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Analýza úložiště Azure metriky (klasické)
 

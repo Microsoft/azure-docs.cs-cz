@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: c3c4c4ea25a8f8057a5830ad2207bb674d9cc011
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 919ff7474dd64cfe3005975beb4cab6f77c177ce
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501547"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825255"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Úspora nákladů pomocí rezervací vyhrazených hostitelů Azure
 
@@ -24,7 +24,7 @@ Po potvrzení do rezervované instance vyhrazených hostitelů Azure můžete u�
 
 Před nákupem rezervace byste měli určit, který vyhrazený hostitel potřebujete. SKU je definováno pro vyhrazeného hostitele reprezentujícího řadu a typ virtuálního počítače. 
 
-Začněte tím, že překročíte podporované velikosti pro [virtuální počítač s Windows](./windows/sizes.md) nebo [Linux](./linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a Identifikujte řadu virtuálních počítačů.
+Začněte tím, že překročíte podporované velikosti pro [virtuální počítač s Windows](./sizes.md) nebo [Linux](./sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a Identifikujte řadu virtuálních počítačů.
 
 Pak ověřte, jestli je ve vyhrazených hostitelích Azure podporovaná. Stránka s [cenami vyhrazené hostitele Azure](https://aka.ms/ADHPricing) obsahuje úplný seznam vyhrazených SKU pro vyhrazené hostitele, informace o procesoru a různé cenové možnosti (včetně rezervovaných instancí).
 
@@ -70,18 +70,18 @@ Pokud máte smlouvu EA, můžete k rychlému přidání dalších instancí pou�
 
 | **Pole**           | **Popis**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Předplatné        | Předplatné použité pro platbu za rezervaci. Platební metodou předplatného se účtují náklady na rezervaci. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P), zákaznická smlouva Microsoftu nebo jednotlivá předplatná s tarify průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). Poplatky se odečtou z bilance peněžního závazku, pokud je k dispozici, nebo se účtují jako nadlimitní využití. U předplatného s tarify průběžných plateb se poplatky účtují na základě platební karty nebo platby na faktuře v rámci předplatného. |
+| Předplatné        | Předplatné použité pro platbu za rezervaci. Náklady na kapacitu se účtují pomocí způsobu platby zvoleného pro toto předplatné. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P), zákaznická smlouva Microsoftu nebo jednotlivá předplatná s tarify průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). Poplatky se strhávají z peněžního zůstatku, pokud je k dispozici, nebo se účtují jako nadlimitní využití. U předplatného s tarify průběžných plateb se poplatky účtují na základě platební karty nebo platby na faktuře v rámci předplatného. |
 | Rozsah               | Rozsah rezervace může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | Oblast              | Oblast Azure, která je pokrytá rezervací.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Vyhrazená velikost hostitele | Velikost vyhrazených instancí hostitele.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| Termín                | Jeden rok nebo tři roky.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Označení                | Jeden rok nebo tři roky.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | Množství            | Počet instancí zakoupených v rámci rezervace. Množství je počet spuštěných vyhrazených instancí hostitele, které mohou získat fakturační slevu.                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 - Obor skupiny s **jedním prostředkem**   – Aplikuje slevu rezervace na vyhovující prostředky ve vybrané skupině prostředků.
 
 - Rozsah jednoho předplatného **Single subscription scope**   – Použije slevu rezervace na vyhovující prostředky ve vybraném předplatném.
 
-- **Sdílený rozsah**   – Použije slevu rezervace na odpovídající prostředky v oprávněných předplatných, která jsou v účetním kontextu. Pro zákazníky se smlouvou EA je účetním kontextem registrace. U jednotlivých předplatných s průběžnými platbami jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.
+- **Sdílený rozsah**   – Použije slevu rezervace na odpovídající prostředky v oprávněných předplatných, která jsou v účetním kontextu. Pro zákazníky se smlouvou EA je účetním kontextem registrace. U individuálních předplatných se sazbami pro průběžné platby jsou rozsahem fakturace všechna oprávněná předplatná vytvořená správcem účtu.
 
 ## <a name="usage-data-and-reservation-utilization"></a>Využití a data využití rezervací
 
@@ -105,7 +105,7 @@ Po nákupu nemůžete provést následující typy změn přímo:
 
 - Existující oblast rezervace
 
-- Skladová položka
+- SKU
 
 - Množství
 

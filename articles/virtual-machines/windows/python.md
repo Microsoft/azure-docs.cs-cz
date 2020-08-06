@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: tracking-python
-ms.openlocfilehash: 5bddb1d141b461eec794de0849b6234c6a5c6102
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 02a1db47a194f4604534f0b96eb836a33009be85
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284451"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827465"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Vytváření a správa virtuálních počítačů s Windows v Azure pomocí Pythonu
 
@@ -464,7 +464,7 @@ Můžete zastavit virtuální počítač a zachovat všechna jeho nastavení, al
 
 ### <a name="resize-the-vm"></a>Změna velikosti virtuálního počítače
 
-Při rozhodování o velikosti vašeho virtuálního počítače je třeba vzít v úvahu mnoho aspektů nasazení. Další informace najdete v tématu [velikosti virtuálních počítačů](sizes.md).
+Při rozhodování o velikosti vašeho virtuálního počítače je třeba vzít v úvahu mnoho aspektů nasazení. Další informace najdete v tématu [velikosti virtuálních počítačů](../sizes.md).
 
 1. Chcete-li změnit velikost virtuálního počítače, přidejte tuto funkci za proměnné v souboru. py:
 

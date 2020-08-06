@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 438fe490bb241cbc42e53d8502e9065454ebcc4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dda05331163d071a9a47c6f6af8c758a11ec7dd8
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514378"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827890"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Migrace hromadných dat do Azure File Sync s využitím Azure DataBoxu
 Hromadná data můžete migrovat do Azure File Sync dvěma způsoby:
@@ -88,6 +88,13 @@ Režim offline přenosu dat zakažte pouze v případě, že je stav **dokončen
 
 > [!IMPORTANT]
 > Když režim offline přenosu dat zakážete, nebudete ho moct znovu povolit, i když je stále dostupná pracovní sdílená složka z hromadné migrace.
+
+## <a name="azure-file-sync-and-pre-seeded-files-in-the-cloud"></a>Azure File Sync a předem vysazených souborů v cloudu
+
+Pokud ve sdílené složce Azure máte osazené soubory jiným způsobem než DataBox – například prostřednictvím AzCopy, Robocopy ze zálohy v cloudu nebo jakékoli jiné metody – pak byste měli postupovat i [Offline přenos dat proces](#process-for-offline-data-transfer) popsaný v tomto článku. DataBox budete muset jenom odvažovat za metodu, kterou soubory přesunete do cloudu. Je ale nejdůležitější, abyste se ujistili, že nadále probíhá proces osazení souborů do *pracovní sdílené složky* a nikoli do konečné, Azure File Sync připojené sdílené složky.
+
+> [!WARNING]
+> **Postupujte podle postupu osazení souborů do pracovní sdílené složky, nikoli z konečné**, Azure File Sync připojené sdílené složky. Pokud to neuděláte, může dojít ke konfliktům souborů (obě verze souborů budou uložené) i soubory odstraněné na živém serveru se můžou vrátit, pokud pořád existují ve starším, naočkované sadě souborů. Kromě toho se změny složek sloučí mezi sebou, takže je velmi obtížné oddělit obor názvů po takovém případě omylem.
 
 ## <a name="next-steps"></a>Další kroky
 - [Plánování nasazení Azure File Sync](storage-sync-files-planning.md)

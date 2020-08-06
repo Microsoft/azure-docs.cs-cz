@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
-ms.openlocfilehash: 30d665cc1d573ec47681599f2bde6a40864796c9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04536836c4d061249201c82f738aa41501f0847e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387706"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828859"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Principy využití virtuálních počítačů Azure
 Analýzou dat o využití Azure je možné získat výkonné přehledy o spotřebě – přehledy, které umožňují lepší správu nákladů a přidělování v celé organizaci. Tento dokument poskytuje podrobné podrobně k podrobnostem o spotřebě Azure Compute. Další informace o obecném využití Azure najdete v podrobnostech k [porozumění vaší faktuře](../../cost-management-billing/understand/review-individual-bill.md).
@@ -24,7 +24,7 @@ Analýzou dat o využití Azure je možné získat výkonné přehledy o spotře
 Začněte [stažením podrobností o použití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). Následující tabulka poskytuje definice a příklady hodnot použití Virtual Machines nasazených prostřednictvím Azure Resource Manager. Tento dokument neobsahuje podrobné informace o virtuálních počítačích nasazených prostřednictvím našeho klasického modelu.
 
 
-| Fields (Pole) | Význam | Příklady hodnot | 
+| Pole | Význam | Příklady hodnot | 
 |---|---|---|
 | Datum využití | Datum, kdy byl prostředek použit | `11/23/2017` |
 | Meter ID | Identifikuje službu nejvyšší úrovně, pro kterou toto použití patří.| `Virtual Machines`|
@@ -35,7 +35,7 @@ Začněte [stažením podrobností o použití](../../cost-management-billing/ma
 | Spotřebované| Množství prostředku spotřebovaného za tento den. U výpočetních prostředků účtujeme za každou minutu, po kterou se virtuální počítač spustil po určitou hodinu (až 6 desetinných míst přesnosti).| `1, 0.5`|
 | Resource Location  | Určuje datové centrum, ve kterém prostředek běží.| `JA East`|
 | Consumed Service | Služba platformy Azure, kterou jste použili.| `Microsoft.Compute`|
-| Skupina prostředků | Skupina prostředků, ve které nasazený prostředek běží. Další informace najdete v tématu [přehled Azure Resource Manager.](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)|`MyRG`|
+| Skupina prostředků | Skupina prostředků, ve které nasazený prostředek běží. Další informace najdete v tématu [přehled Azure Resource Manager.](../../azure-resource-manager/management/overview.md)|`MyRG`|
 | Instance ID | Identifikátor prostředku. Tento identifikátor obsahuje název prostředku, který jste zadali při jeho vytváření. Pro virtuální počítače bude ID instance obsahovat SubscriptionId, ResourceGroupName a VMName (nebo název sady škálování pro použití sady škálování).| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>– nebo –<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
 | Značky| Značka, kterou přiřadíte prostředku. Značky můžete použít k seskupení fakturačních záznamů. Naučte se, jak [označit Virtual Machines.](tag.md) To je dostupné jenom pro Správce prostředků virtuální počítače.| `{"myDepartment":"RD","myUser":"myName"}`|
 | Další informace | Metadata konkrétních služeb. V případě virtuálních počítačů v poli Další informace vyplníme následující data: <br><br> Obrázek konkrétního typu obrázku, který jste spustili. Úplný seznam podporovaných řetězců najdete níže v části typy imagí.<br><br> Typ služby: velikost, kterou jste nasadili.<br><br> VMName: název vašeho virtuálního počítače. Toto pole se naplní jenom pro virtuální počítače sady škálování. Pokud potřebujete název virtuálního počítače pro virtuální počítače sady škálování, najdete ho ve výše uvedeném řetězci ID instance.<br><br> Položku UsageType: Určuje typ použití, který představuje.<br><br> ComputeHR je využití výpočetních hodin pro příslušný virtuální počítač, jako je Standard_D1_v2.<br><br> ComputeHR_SW je poplatek za software Premium, pokud virtuální počítač používá software Premium, například Microsoft R Server. | Virtual Machines<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>Virtual Machine Scale Sets<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Software Premium<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |

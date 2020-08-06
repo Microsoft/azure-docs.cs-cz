@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: a6788651928b631d9298867a140f29b273f14734
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: feee3a0d6de97ac6aaa1f9a92f20860f3f461ae3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057547"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827227"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Správa Azure Resource Manager skupin prostředků pomocí Azure Portal
 
@@ -32,12 +32,12 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
 ## <a name="create-resource-groups"></a>Vytvoření skupin prostředků
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Výběr **skupin prostředků**
 
     ![Přidat skupinu prostředků](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
-3. Vyberte možnost **Přidat**.
-4. Zadejte následující hodnoty:
+3. Vyberte **Přidat**.
+4. Zadejte tyto hodnoty:
 
    - **Předplatné**: Vyberte své předplatné Azure. 
    - **Skupina prostředků**: zadejte nový název skupiny prostředků. 
@@ -52,7 +52,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
 ## <a name="list-resource-groups"></a>Seznam skupin prostředků
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Pokud chcete zobrazit seznam skupin prostředků, vyberte **skupiny prostředků** .
 
     ![Procházet skupiny prostředků](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -61,8 +61,8 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
 ## <a name="open-resource-groups"></a>Otevření skupin prostředků
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-2. Vyberte **Skupiny prostředků**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Vyberte **skupiny prostředků**.
 3. Vyberte skupinu prostředků, kterou chcete otevřít.
 
 ## <a name="delete-resource-groups"></a>Odstranění skupin prostředků
@@ -105,7 +105,7 @@ Informace o exportu šablon najdete v tématu [Export jednoho a více prostředk
 
 ## <a name="manage-access-to-resource-groups"></a>Správa přístupu ke skupinám prostředků
 
-[Řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Správa přístupu pomocí RBAC a webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md) je způsob, jakým můžete spravovat přístup k prostředkům v Azure. Další informace najdete v tématu [Správa přístupu pomocí RBAC a webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,16 +6,16 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: 6a03d5e67e859a29cb18e29223fe74134aef75fb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 7feb49266a10b7423121dc5362b0bd6bda4d0e08
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057615"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824473"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Udělení přístupu k vytvoření předplatných Azure Enterprise (Preview)
 
-Jako zákazník Azure on [smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)můžete jinému uživateli nebo instančnímu objektu udělit oprávnění k vytváření předplatných, která se fakturují k vašemu účtu. V tomto článku se dozvíte, jak pomocí [Access Control na základě rolí (RBAC)](../../role-based-access-control/role-assignments-portal.md) sdílet možnost vytvářet předplatná a jak auditovat vytváření předplatných. Na účtu, který chcete sdílet, musíte mít roli vlastníka.
+Jako zákazník Azure on [smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)můžete jinému uživateli nebo instančnímu objektu udělit oprávnění k vytváření předplatných, která se fakturují k vašemu účtu. V tomto článku se dozvíte, jak pomocí [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) sdílet možnost vytvářet předplatná a jak auditovat vytváření předplatných. Na účtu, který chcete sdílet, musíte mít roli vlastníka.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

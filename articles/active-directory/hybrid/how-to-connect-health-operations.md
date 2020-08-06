@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc7c256ca6866e5b981f8740c9953534d830316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e72e3cb3ccc6273a9b698475c5e5aa0bb87b8b7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359156"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828791"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health operace
 V tomto tématu najdete popis různých operací, které můžete provádět pomocí služby Azure Active Directory (Azure AD) Connect Health.
@@ -104,7 +104,7 @@ Při odstraňování instance služby mějte na paměti následující skutečno
 
 [//]: # (Začátek oddílu RBAC)
 ## <a name="manage-access-with-role-based-access-control"></a>Správa přístupu prostřednictvím řízení přístupu na základě role
-[Access Control na základě rolí (RBAC)](../../role-based-access-control/role-assignments-portal.md) pro Azure AD Connect Health poskytuje přístup k uživatelům a skupinám jiným než globálním správcům. RBAC přiřazuje role k určeným uživatelům a skupinám a poskytuje mechanismus pro omezení globálních správců v rámci vašeho adresáře.
+[Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) pro Azure AD Connect Health poskytuje přístup k uživatelům a skupinám jiným než globálním správcům. RBAC přiřazuje role k určeným uživatelům a skupinám a poskytuje mechanismus pro omezení globálních správců v rámci vašeho adresáře.
 
 ### <a name="roles"></a>Role
 Azure AD Connect Health podporuje následující předdefinované role:
@@ -133,7 +133,7 @@ Chcete-li uživateli dovolit přístup na úrovni *všech instancí služby* v r
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>Krok 2: Přidání uživatelů a skupin a přiřazení rolí
 1. V části **Konfigurace** klikněte na možnost **Uživatelé**.<br>
    ![Snímek obrazovky s postranním panelem Azure AD Connect Health prostředků](./media/how-to-connect-health-operations/startRBAC.png)
-2. Vyberte možnost **Přidat**.
+2. Vyberte **Přidat**.
 3. V podokně **Vybrat roli** vyberte roli (například **vlastník**).<br>
    ![Snímek obrazovky okna Azure AD Connect Health uživatelů RBAC](./media/how-to-connect-health-operations/RBAC_add.png)
 4. Zadejte název nebo identifikátor cílového uživatele nebo skupiny. Můžete vybrat jednoho nebo více uživatelů nebo skupin současně. Klikněte na **Vybrat**.

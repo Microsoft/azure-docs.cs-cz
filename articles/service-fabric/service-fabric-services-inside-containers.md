@@ -4,12 +4,12 @@ description: Naučte se kontejnerizace Service Fabric Reliable Services a Reliab
 ms.topic: conceptual
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 186afb87b4668ad575208beeeb19643e6a11cedd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75466183"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824541"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Kontejnerizace služeb Reliable Actors a Reliable Services služby Service Fabric ve Windows
 
@@ -93,7 +93,7 @@ Tento dokument poskytuje pokyny k tomu, abyste mohli spustit službu v kontejner
    </Policies>
    ```
 
-9. Informace o konfiguraci režimu izolace kontejnerů najdete v tématu [Konfigurace režimu izolace]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode). Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V. Následující fragmenty kódu ukazují, jak je určen režim izolace v souboru manifestu aplikace.
+9. Informace o konfiguraci režimu izolace kontejnerů najdete v tématu [Konfigurace režimu izolace]( ./service-fabric-get-started-containers.md#configure-isolation-mode). Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V. Následující fragmenty kódu ukazují, jak je určen režim izolace v souboru manifestu aplikace.
 
    ```xml
    <Policies>

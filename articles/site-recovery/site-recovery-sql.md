@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5fa591530e92682c582b5929240e74a5430fb559
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1b02b089fea7e883bdc6c58c7a2845af12b50a37
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534987"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824524"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Nastavení zotavení po havárii pro SQL Server
 
@@ -48,7 +48,7 @@ SQL Server na virtuálním počítači Azure IaaS nebo místně.| Replikace s Az
 > * Zajistěte, aby byla míra změny dat zjištěná na počítači v rámci [omezení Site Recovery](vmware-physical-azure-support-matrix.md#churn-limits). Rychlost změny se měří v bajtech zápisu za sekundu. V případě počítačů s Windows můžete tuto rychlost změny zobrazit výběrem karty **výkon** ve Správci úloh. Sledujte rychlost zápisu pro každý disk.
 > * Site Recovery podporuje replikaci instancí clusteru s podporou převzetí služeb při selhání na Prostory úložiště s přímým přístupem. Další informace najdete v tématu [Povolení replikace prostory úložiště s přímým přístupem](azure-to-azure-how-to-enable-replication-s2d-vms.md).
 > 
-> Při migraci úlohy SQL do Azure se doporučuje použít [pravidla výkonu pro SQL Server v azure Virtual Machines](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices).
+> Při migraci úlohy SQL do Azure se doporučuje použít [pravidla výkonu pro SQL Server v azure Virtual Machines](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md).
 
 ## <a name="disaster-recovery-of-an-application"></a>Zotavení po havárii aplikace
 

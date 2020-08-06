@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: reference
 ms.date: 07/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: b4a2329640387ab1c3cda93d18c6cb22c7d511cd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3e691e3f32404af792c852636a257659b629eef4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327476"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824558"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s výstrahami Azure Monitor metriky 
 
@@ -110,7 +110,7 @@ Výstrahy metriky jsou ve výchozím stavu stav, a proto se další výstrahy ne
 
 Při vytváření pravidla upozornění na metriky je název metriky ověřený proti [rozhraní API definice metriky](/rest/api/monitor/metricdefinitions/list) , aby se zajistilo, že existuje. V některých případech byste chtěli vytvořit pravidlo upozornění pro vlastní metriky, dokonce i před tím, než se vygeneruje. Například při vytváření (pomocí šablony ARM) Application Insights prostředek, který vygeneruje vlastní metriku spolu s pravidlem výstrahy, které monitoruje tuto metriku.
 
-Aby nedošlo k selhání nasazení při pokusu o ověření definice vlastní metriky, můžete použít parametr *skipMetricValidation* v části kritéria pro pravidlo výstrahy, což způsobí přeskočení ověření metriky. Podívejte se na následující příklad, jak použít tento parametr v šabloně ARM (pro vytváření pravidel upozornění metriky v tématu úplné ukázky šablon [ARM).]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)
+Aby nedošlo k selhání nasazení při pokusu o ověření definice vlastní metriky, můžete použít parametr *skipMetricValidation* v části kritéria pro pravidlo výstrahy, což způsobí přeskočení ověření metriky. Podívejte se na následující příklad, jak použít tento parametr v šabloně ARM (pro vytváření pravidel upozornění metriky v tématu úplné ukázky šablon [ARM).]( ./alerts-metric-create-templates.md)
 
 ```json
 "criteria": {
@@ -236,7 +236,7 @@ Při použití dimenzí v pravidle výstrahy, které obsahuje více podmínek, v
 - V rámci každé podmínky můžete vybrat jenom jednu hodnotu na dimenzi.
 - Nemůžete použít možnost vybrat všechny aktuální a budoucí hodnoty (vybrat \* ).
 - Pokud metriky, které jsou konfigurovány v různých podmínkách, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných podmínkách).
-Například:
+Příklad:
     - Vezměte v úvahu pravidlo upozornění metriky, které je definováno v účtu úložiště, a monitorujte dvě podmínky:
         * Celkový počet **transakcí** > 5
         * Průměrná **SuccessE2ELatency** > 250 ms
@@ -247,4 +247,3 @@ Například:
 ## <a name="next-steps"></a>Další kroky
 
 - Obecné informace o řešení potíží s výstrahami a oznámeními najdete v tématu [řešení potíží v Azure monitor výstrahy](alerts-troubleshoot.md).
-

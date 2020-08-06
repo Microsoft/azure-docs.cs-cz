@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: a66cb190309fb9e966392f57a251eff746bfa315
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d61e052b10b7255cac37531f889324075d596f3c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321101"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828451"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Řešení potíží s výstrahami protokolu v Azure Monitor  
 
@@ -190,7 +190,7 @@ Každé pravidlo upozornění protokolu vytvořené v Azure Monitor jako součá
 
 ## <a name="alert-rule-quota-was-reached"></a>Bylo dosaženo kvóty pravidla upozornění.
 
-Počet pravidel upozornění prohledávání protokolu na předplatné a prostředek podléhá limitům kvót, které jsou [zde](https://docs.microsoft.com/azure/azure-monitor/service-limits)popsané.
+Počet pravidel upozornění prohledávání protokolu na předplatné a prostředek podléhá limitům kvót, které jsou [zde](../service-limits.md)popsané.
 
 ### <a name="recommended-steps"></a>Doporučené kroky
     
@@ -201,7 +201,7 @@ Pokud jste dosáhli limitu kvóty, může vám tento problém vyřešit následu
 
     - ID předplatných, pro která potřebujete navýšit limit kvóty
     - Důvod zvýšení kvóty
-    - Typ prostředku pro zvýšení kvóty: **Log Analytics**, **Application Insights** ect.
+    - Typ prostředku pro zvýšení kvóty: **Log Analytics**, **Application Insights**atd.
     - Požadovaný limit kvóty
 
 
@@ -226,4 +226,3 @@ Pokud jste dosáhli limitu kvóty, může vám tento problém vyřešit následu
 - Přečtěte si informace o [upozorněních protokolu v Azure](./alerts-unified-log.md).
 - Přečtěte si další informace o [Application Insights](../log-query/log-query-overview.md).
 - Přečtěte si další informace o [dotazech protokolu](../log-query/log-query-overview.md).
-

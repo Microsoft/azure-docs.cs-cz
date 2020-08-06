@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 479222cc9b67775d359182740dc78865da8cee38
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 06e1abc4f863674cc67c1a78a9f2f626565d296f
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115920"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828927"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postup: Vytvoření aplikace Azure AD a instančního objektu s přístupem k prostředkům pomocí portálu
 
@@ -187,5 +187,5 @@ Mějte na paměti, že možná budete muset nakonfigurovat další oprávnění 
 
 ## <a name="next-steps"></a>Další kroky
 * Naučte se [používat Azure PowerShell k vytvoření instančního objektu](howto-authenticate-service-principal-powershell.md).
-* Další informace o zadávání zásad zabezpečení najdete v tématu [Access Control na základě rolí v Azure](../../role-based-access-control/role-assignments-portal.md).  
+* Další informace o zadávání zásad zabezpečení najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).  
 * Seznam dostupných akcí, které mohou uživatelé udělit nebo odepřít, najdete v tématu [Azure Resource Manager operací poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md).

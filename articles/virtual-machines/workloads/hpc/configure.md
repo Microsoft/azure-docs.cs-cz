@@ -13,19 +13,19 @@ ms.topic: article
 ms.date: 08/01/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: c49286f370691c39c3d14d589f2657d6e0bb3c04
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: dfa1c790dc0f2e229b3bfa19616e5760c3d3d02e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542327"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825136"
 ---
 # <a name="configure-and-optimize-vms"></a>Konfigurace a optimalizace virtuálních počítačů
 
 Tento článek sdílí známé techniky pro konfiguraci a optimalizaci virtuálních počítačů řady [H-Series](../../sizes-hpc.md) s podporou InfiniBand a [N-Series](../../sizes-gpu.md) pro HPC.
 
 ## <a name="vm-images"></a>Image virtuálních počítačů
-Na virtuálních počítačích s povolenou funkcí InfiniBand je nutné, aby byly k dispozici vhodné ovladače pro povolení RDMA. V systému Linux jsou image virtuálních počítačů CentOS-HPC na webu Marketplace předem nakonfigurované s příslušnými ovladači. Image virtuálních počítačů s Ubuntu se dají nakonfigurovat pomocí správných ovladačů podle [pokynů uvedených tady](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351). Doporučuje se také vytvořit [vlastní image virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) s příslušnými ovladači a konfigurací a znovu je použít.
+Na virtuálních počítačích s povolenou funkcí InfiniBand je nutné, aby byly k dispozici vhodné ovladače pro povolení RDMA. V systému Linux jsou image virtuálních počítačů CentOS-HPC na webu Marketplace předem nakonfigurované s příslušnými ovladači. Image virtuálních počítačů s Ubuntu se dají nakonfigurovat pomocí správných ovladačů podle [pokynů uvedených tady](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351). Doporučuje se také vytvořit [vlastní image virtuálních počítačů](../../linux/tutorial-custom-images.md) s příslušnými ovladači a konfigurací a znovu je použít.
 
 ### <a name="centos-hpc-vm-images"></a>Image virtuálních počítačů CentOS-HPC
 Pro [virtuální počítače](../../sizes-hpc.md#rdma-capable-instances)podporující technologii RDMA s podporou SR-IOV, CentOS-HPC verze 6,5 nebo novější, jsou vhodné až 7,5 na webu Marketplace. Například pro [virtuální počítače řady H16 úrovně-Series](../../h-series.md)se doporučuje verze 7,1 až 7,5. Tyto image virtuálních počítačů jsou předem načtené pomocí síťových přímých ovladačů pro RDMA a Intel MPI verze 5,1.
@@ -53,7 +53,7 @@ Toto jsou některá volitelná nastavení optimalizace pro zlepšení výkonu vi
 
 ### <a name="update-lis"></a>Aktualizace LIS
 
-V případě potřeby je možné nainstalovat nebo aktualizovat [ovladače služby Linux Integration Services (LIS)](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) v podporovaném operačním systému distribuce, zejména při nasazení pomocí vlastní image nebo starší verze operačního systému, jako je CentOS/RHEL 6. x nebo starší verze 7. x.
+V případě potřeby je možné nainstalovat nebo aktualizovat [ovladače služby Linux Integration Services (LIS)](../../linux/endorsed-distros.md) v podporovaném operačním systému distribuce, zejména při nasazení pomocí vlastní image nebo starší verze operačního systému, jako je CentOS/RHEL 6. x nebo starší verze 7. x.
 
 ```bash
 wget https://aka.ms/lis

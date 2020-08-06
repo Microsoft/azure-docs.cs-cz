@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f71e52fd1fd40015ff93e189495daef0e2c333e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a2cdcab08bba76cb385666956b7663324f32c669
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328165"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824575"
 ---
 # <a name="enable-azure-monitor-for-vms-using-powershell"></a>Povolení Azure Monitor pro virtuální počítače pomocí prostředí PowerShell
 Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače na virtuálních počítačích Azure pomocí PowerShellu. Tento postup lze použít pro následující:
@@ -19,7 +19,7 @@ Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače n
 - Virtuální počítač Azure
 - Sada škálování virtuálních počítačů Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](vminsights-configure-workspace.md).
 - V části [podporované operační systémy](vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
@@ -35,7 +35,7 @@ Pokud chcete povolit Azure Monitor pro virtuální počítače pro víc virtuál
 
 Pro každý virtuální počítač nebo sadu škálování virtuálního počítače skript ověří, jestli je už nainstalované rozšíření virtuálního počítače pro agenta Log Analytics a agenta závislostí. Pokud jsou obě rozšíření nainstalovaná, skript se ho pokusí znovu nainstalovat. Pokud nejsou obě rozšíření nainstalovaná, skript je nainstaluje.
 
-Ověřte, že používáte Azure PowerShell modul AZ verze 1.0.0 nebo novější s `Enable-AzureRM` povolenými aliasy kompatibility. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Pokud používáte prostředí PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Ověřte, že používáte Azure PowerShell modul AZ verze 1.0.0 nebo novější s `Enable-AzureRM` povolenými aliasy kompatibility. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte prostředí PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 Chcete-li získat seznam podrobností o argumentu skriptu a příklady použití, spusťte příkaz `Get-Help` .
 

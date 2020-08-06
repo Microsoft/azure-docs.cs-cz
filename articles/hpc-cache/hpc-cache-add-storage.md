@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7ad910823c4dd2430aeae085dd8e510fcd42c80f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 585ea3b5ddd16acb9af83c1c1e0e4aa6ca9e631a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532590"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826700"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -112,7 +112,7 @@ Po dokončení klikněte na tlačítko **OK** a přidejte tak cíl úložiště.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>Přidání rolí řízení přístupu ke svému účtu
 
-Mezipaměť HPC Azure používá [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) k autorizaci služby cache Service pro přístup k vašemu účtu úložiště pro cíle Azure Blob Storage.
+Azure HPC Cache používá [řízení přístupu na základě role Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) k autorizaci služby cache pro přístup k vašemu účtu úložiště pro cíle Azure Blob Storage.
 
 Vlastník účtu úložiště musí explicitně přidat role přispěvatele [účtu úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) a přispěvatel [dat objektů BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) pro uživatele "poskytovatel prostředků mezipaměti HPC".
 
@@ -147,7 +147,7 @@ Postup přidání rolí Azure:
 
 Před přidáním cíle služby Blob Storage ověřte, zda má mezipaměť správné role pro přístup k účtu úložiště, a zda nastavení brány firewall umožní vytvoření cíle úložiště.
 
-Mezipaměť HPC Azure používá [řízení přístupu na základě role (RBAC)](../role-based-access-control/index.yml) k autorizaci služby cache Service pro přístup k vašemu účtu úložiště pro cíle Azure Blob Storage.
+Azure HPC Cache používá [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/index.yml) k autorizaci služby cache pro přístup k vašemu účtu úložiště pro cíle Azure Blob Storage.
 
 Vlastník účtu úložiště musí explicitně přidat role přispěvatele [účtu úložiště](../role-based-access-control/built-in-roles.md#storage-account-contributor) a přispěvatel [dat objektů BLOB úložiště](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) pro uživatele "poskytovatel prostředků mezipaměti HPC".
 
@@ -220,9 +220,9 @@ Tato tabulka shrnuje rozdíly v modelu použití:
 
 | Model využití                   | Režim ukládání do mezipaměti | Ověření back-endu | Maximální zpoždění před zpětným zápisem |
 |-------------------------------|--------------|-----------------------|--------------------------|
-| Čtení těžkých, nečastých zápisů | Číst         | Nikdy                 | Žádná                     |
+| Čtení těžkých, nečastých zápisů | Číst         | Nikdy                 | Žádné                     |
 | Více než 15% zápisů       | Čtení/zápis   | Nikdy                 | 1 hodina                   |
-| Klienti obcházejí mezipaměť      | Číst         | 30 sekund            | Žádná                     |
+| Klienti obcházejí mezipaměť      | Číst         | 30 sekund            | Žádné                     |
 
 ### <a name="create-an-nfs-storage-target"></a>Vytvoření cíle úložiště NFS
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44a41f43aa31c15b71d7b35ebd29bf935c7df966
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525462"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827414"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -77,7 +77,7 @@ V celém dokumentu se používají tyto výrazy:
 
 Některá dokumentace Microsoftu popisuje různé scénáře různých scénářů, a to hlavně v případě konfigurací s vysokou dostupností systému DBMS. V případě dokumentů souvisejících s SAP se scénář mezi místními systémy doloží na připojení typu Site-to-site nebo Private [ExpressRoute](https://azure.microsoft.com/services/expressroute/) a na šířku SAP, která je distribuována mezi místními a Azure.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 V úlohách SAP v Azure jsou k dispozici další články. Začněte s [úlohou SAP v Azure:](./get-started.md) začněte a pak zvolte svou oblast zájmu.
 
 Následující poznámky SAP souvisejí s SAP v Azure v souvislosti s oblastí pokrytou v tomto dokumentu.
@@ -156,7 +156,7 @@ Jak už bylo uvedeno, pokud požadavek IOPS překročí, co může poskytnout je
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Pro vytvoření softwarového pole RAID v systému Linux jsou podporovány pouze MDADM a Správce logických svazků (LVM). Další informace najdete tady:
+> Pro vytvoření softwarového pole RAID v systému Linux jsou podporovány pouze MDADM a Správce logických svazků (LVM). Další informace:
 >
 > - [Konfigurace softwarového pole RAID v systému Linux](../../linux/configure-raid.md) pomocí MDADM
 > - [Konfigurace LVM na virtuálním počítači se systémem Linux v Azure](../../linux/configure-lvm.md) pomocí LVM
@@ -174,7 +174,7 @@ Jak už bylo uvedeno, pokud požadavek IOPS překročí, co může poskytnout je
 
 U úložiště úrovně Standard si pamatujte, že pro každý účet úložiště je limit IOPS. Podívejte se na řádek, který obsahuje **celkovou míru požadavků** v článku [Azure Storage škálovatelnost a výkonnostní cíle](../../../storage/common/scalability-targets-standard-account.md). U každého předplatného Azure je také počáteční limit počtu účtů úložiště. Vyvážit virtuální pevné disky pro větší kapacitu SAP napříč různými účty úložiště, abyste se vyhnuli překročení limitů těchto účtů úložiště. Jedná se o zdlouhavou práci, když mluvíte o několika stovkách virtuálních počítačů s více než tisíci VHD.
 
-Vzhledem k tomu, že použití standardního úložiště pro nasazení DBMS ve spojení s úlohou SAP se nedoporučuje, odkazy a doporučení na standardní úložiště jsou omezené na tento krátký [článek](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx) .
+Vzhledem k tomu, že použití standardního úložiště pro nasazení DBMS ve spojení s úlohou SAP se nedoporučuje, odkazy a doporučení na standardní úložiště jsou omezené na tento krátký [článek](/archive/blogs/mast/configuring-azure-virtual-machines-for-optimal-storage-performance) .
 
 Abychom se vyhnuli administrativní práci při plánování a nasazování virtuálních pevných disků napříč různými účty úložiště Azure, společnost Microsoft představila [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) v 2017. Služba Managed disks je dostupná pro úložiště úrovně Standard a Premium. Hlavní výhody spravovaných disků v porovnání s nespravovanými disky jsou:
 
@@ -205,16 +205,16 @@ Následující doporučení předpokládají tyto vstupně-výstupní charakteri
 
 Pro úložiště úrovně Standard jsou možné typy mezipaměti:
 
-* Žádný
-* Čtení
+* Žádné
+* Číst
 * Čtení/zápis
 
 Pro zajištění konzistentního a deterministického výkonu nastavte ukládání do mezipaměti na úrovni Standard pro všechny disky, které obsahují datové soubory související se systémem DBMS, soubory protokolů a opakování, a prostor tabulky do **žádného**. Ukládání základního virtuálního pevného disku do mezipaměti může zůstat ve výchozím nastavení.
 
 V případě služby Premium Storage existují následující možnosti ukládání do mezipaměti:
 
-* Žádný
-* Čtení
+* Žádné
+* Číst
 * Čtení/zápis
 * None + Akcelerátor zápisu, což je jenom pro virtuální počítače Azure M-Series
 * Čtení a Akcelerátor zápisu, který je určený jenom pro virtuální počítače Azure M-Series
@@ -327,7 +327,7 @@ Nástroj pro vyrovnávání zatížení nabízí možnost DirectServerReturn. Po
 
 Doporučujeme nakonfigurovat DirectServerReturn v kombinaci s nástroji pro vyrovnávání zatížení, které jsou umístěné mezi vrstvou aplikace SAP a vrstvou DBMS. Tato konfigurace snižuje latenci sítě mezi oběma vrstvami.
 
-Příklad nastavení této konfigurace pomocí funkce SQL Server Always On najdete v tématu [Konfigurace naslouchacího procesu interního nástroje pro skupiny dostupnosti Always On v Azure](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener).
+Příklad nastavení této konfigurace pomocí funkce SQL Server Always On najdete v tématu [Konfigurace naslouchacího procesu interního nástroje pro skupiny dostupnosti Always On v Azure](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener).
 
 Pokud jste jako referenci pro nasazení infrastruktury SAP v Azure použili publikované šablony JSON pro GitHub, prostudujte si tuto [šablonu pro systém SAP úrovně 3](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md). V této šabloně uvidíte také správná nastavení nástroje pro vyrovnávání zatížení.
 

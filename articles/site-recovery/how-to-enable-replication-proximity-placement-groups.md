@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: bd7619f000d16a55e1cfb31cc3b9cfb3b6d33502
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 7f9c5afbeed0c772f76e013a37dd870ed2185be7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432610"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827669"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Replikace virtuálních počítačů Azure běžících ve skupinách umístění s blízkými změnami do jiné oblasti
 
@@ -42,7 +42,7 @@ V typickém scénáři můžete mít virtuální počítače běžící ve skupi
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Nastavit Site Recovery pro Virtual Machines ve skupině umístění blízkosti
 
 > [!NOTE]
-> Ujistěte se, že máte jedinečné ID cílové skupiny umístění blízkosti. Pokud vytváříte novou skupinu umístění pro Proximity, zkontrolujte [následující](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#create-a-proximity-placement-group) příkaz a pokud používáte existující skupinu umístění do blízkosti, použijte tento [příkaz.](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#list-proximity-placement-groups)
+> Ujistěte se, že máte jedinečné ID cílové skupiny umístění blízkosti. Pokud vytváříte novou skupinu umístění pro Proximity, zkontrolujte [následující](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group) příkaz a pokud používáte existující skupinu umístění do blízkosti, použijte tento [příkaz.](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups)
 
 ### <a name="azure-to-azure"></a>Azure do Azure
 

@@ -7,17 +7,17 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 85366b8b3e3ba7d612373e6b754aa9805d00f8f5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8a1b38b9f673669adb0b5fcf67d9d560c24d5c2a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116960"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825952"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Vytváření uživatelů v Azure Database for PostgreSQL – Citus (škálování)
 
 > [!NOTE]
-> Pojem "uživatelé" odkazují na uživatele v rámci skupiny serverů Citus (). Pokud se chcete dozvědět víc o uživatelích předplatného Azure a jejich oprávnění, přečtěte si [článek o řízení přístupu na základě role (RBAC) Azure](../role-based-access-control/built-in-roles.md) nebo si přečtěte, [jak přizpůsobovat role](../role-based-access-control/custom-roles.md)
+> Pojem "uživatelé" odkazují na uživatele v rámci skupiny serverů Citus (). Pokud se chcete dozvědět víc o uživatelích předplatného Azure a jejich oprávnění, přejděte na [článek řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/built-in-roles.md) nebo si přečtěte, [jak přizpůsobit role](../role-based-access-control/custom-roles.md).
 
 ## <a name="the-server-admin-account"></a>Účet správce serveru
 

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d41a71ff5f97449968d82812119cfdfd4bc2ef44
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 09c56646ffa9bcadcec821bcd83411077d6a55ae
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261175"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824592"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Plánování kapacity a škálování pro Azure Service Fabric
 
@@ -18,8 +18,8 @@ Než začnete vytvářet libovolný cluster Azure Service Fabric nebo škálovat
 
 Kromě zvážení typu uzlu a vlastností clusteru byste měli očekávat, že operace škálování budou trvat déle než hodinu, než se dokončí pro produkční prostředí. Tato úvaha je pravdivá bez ohledu na počet virtuálních počítačů, které přidáváte.
 
-## <a name="autoscaling"></a>Automatického škálování
-Můžete provádět operace škálování prostřednictvím šablon Azure Resource Manager, protože je osvědčeným postupem, jak zacházet s [konfiguracemi prostředků jako s kódem]( https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code). 
+## <a name="autoscaling"></a>Automatické škálování
+Můžete provádět operace škálování prostřednictvím šablon Azure Resource Manager, protože je osvědčeným postupem, jak zacházet s [konfiguracemi prostředků jako s kódem](./service-fabric-best-practices-infrastructure-as-code.md). 
 
 Díky automatickému škálování přes služby Virtual Machine Scale Sets bude vaše verze Správce prostředků šablona nepřesná verze definovat počty instancí pro Virtual Machine Scale Sets. Nepřesná definice zvyšuje riziko, že budoucí nasazení způsobí nezamýšlené operace škálování. Automatické škálování byste měli použít, pokud:
 
@@ -166,7 +166,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> Při škálování v clusteru uvidíte, že odebraný uzel/instance virtuálního počítače se v Service Fabric Explorer zobrazí ve stavu není v pořádku. Vysvětlení tohoto chování najdete v tématu chování, [které můžete sledovat v Service Fabric Explorer](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer). Můžete:
+> Při škálování v clusteru uvidíte, že odebraný uzel/instance virtuálního počítače se v Service Fabric Explorer zobrazí ve stavu není v pořádku. Vysvětlení tohoto chování najdete v tématu chování, [které můžete sledovat v Service Fabric Explorer](./service-fabric-cluster-scale-in-out.md#behaviors-you-may-observe-in-service-fabric-explorer). Další možnosti:
 > * Zavolejte [příkaz Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) s odpovídajícím názvem uzlu.
 > * Nasaďte do clusteru [aplikaci pomocníka automatického škálování Service Fabric](https://github.com/Azure/service-fabric-autoscale-helper/) . Tato aplikace zajišťuje, aby se nezaškrtnuté uzly s horizontálním škálováním z Service Fabric Explorer.
 

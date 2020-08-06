@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 2989343a5cc9612ea0f4d3b177093fdef93f5d73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b9f0e824352126204c7a6f1cfe08d3e7c6c29a9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000665"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826054"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Indexování mediálních souborů pomocí Azure Media Indexer
 
@@ -45,7 +45,7 @@ Pro úlohy indexování můžete zadat více podrobností pomocí konfigurace ú
 
 Můžete také zpracovat více mediálních souborů najednou pomocí souboru manifestu.
 
-Další informace najdete v tématu [předvolba úlohy pro Azure Media Indexer](/azure/media-services/previous/media-services-analytics-overview).
+Další informace najdete v tématu [předvolba úlohy pro Azure Media Indexer](./media-services-analytics-overview.md).
 
 ## <a name="index-an-asset"></a>Indexace prostředku
 Následující metoda nahraje mediální soubor jako Asset a vytvoří úlohu, která indexuje Asset.
@@ -158,7 +158,7 @@ Pokud nejsou všechny vstupní mediální soubory úspěšně indexovány, úloh
 ## <a name="index-multiple-files"></a>Indexovat více souborů
 Následující metoda nahraje více mediálních souborů jako Asset a vytvoří úlohu pro indexování všech těchto souborů v dávce.
 
-Vytvoří se soubor manifestu s příponou. lst a nahraje se do assetu. Soubor manifestu obsahuje seznam všech souborů assetů. Další informace najdete v tématu [předvolba úlohy pro Azure Media Indexer](/azure/media-services/previous/media-services-analytics-overview).
+Vytvoří se soubor manifestu s příponou. lst a nahraje se do assetu. Soubor manifestu obsahuje seznam všech souborů assetů. Další informace najdete v tématu [předvolba úlohy pro Azure Media Indexer](./media-services-analytics-overview.md).
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -261,7 +261,7 @@ V případě chyby by Azure Media Indexer měla nahlásit jeden z následující
 | 2004 |Nepodporovaný protokol |Protokol adresy URL média není podporován. |
 | 2005 |Nepodporovaný typ souboru |Typ vstupního mediálního souboru se nepodporuje. |
 | 2006 |Příliš mnoho vstupních souborů |Vstupní manifest obsahuje více než 10 souborů. |
-| 3000 |Nepovedlo se dekódovat mediální soubor. |Nepodporovaný kodek multimédií <br/>nebo<br/> Poškozený mediální soubor <br/>nebo<br/> Ve vstupních médiích nejsou žádné zvukové streamy. |
+| 3000 |Nepovedlo se dekódovat mediální soubor. |Nepodporovaný kodek multimédií <br/>– nebo –<br/> Poškozený mediální soubor <br/>– nebo –<br/> Ve vstupních médiích nejsou žádné zvukové streamy. |
 | 4000 |Dávkové indexování bylo dokončeno částečně. |Některé ze vstupních mediálních souborů se nepovedlo indexovat. Další informace najdete v tématu <a href="#output_files">výstupní soubory</a>. |
 | ostatní |Vnitřní chyby |Obraťte se prosím na tým podpory. indexer@microsoft.com |
 

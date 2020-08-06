@@ -3,12 +3,12 @@ title: Připojení jako Azure Event Grid partner
 description: Připojte se jako typ tématu Azure Event Grid partner. Seznamte se s modelem prostředků a s průběhem publikování pro témata partnerů.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: bf4534849ae29d89524a877ca410d25c74637c94
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461251"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826785"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Připojení jako Azure Event Grid partner
 
@@ -91,7 +91,7 @@ Následující model prostředků je pro témata partnerů.
 ### <a name="partner-topic-types"></a>Typy partnerských témat
 * Partner`partnerTopicTypes`
 * Používá: zákazníci
-* Popis: typy partnerských témat jsou tenantwide typy prostředků, které zákazníkům umožňují vyhledat seznam schválených typů partnerských témat. Adresa URL vypadá takto.https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
+* Popis: typy partnerských témat jsou typy prostředků v rámci tenanta, které zákazníkům umožňují zjistit seznam schválených typů partnerských témat. Adresa URL vypadá takto.https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
 * Rozsah: globální
 
 ## <a name="publish-events-to-event-grid"></a>Publikovat události pro Event Grid
@@ -153,7 +153,7 @@ Po odeslání do koncového bodu partnerNamespace obdržíte odpověď. Odpově�
 ## <a name="references"></a>Odkazy
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
-  * [Šablona ARM](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
+  * [Šablona ARM](/azure/templates/microsoft.eventgrid/allversions)
   * [Schéma šablony ARM](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
   * [REST API](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
   * [Rozšíření CLI](/cli/azure/ext/eventgrid/?view=azure-cli-latest)
