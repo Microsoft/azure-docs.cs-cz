@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 2bd17e10e6123c48087116e947dc21f4cf788ef3
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 5dd5cd1ac0463c6c07496e4ea49edd08178a5a54
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987862"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834384"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: rozpoznání loga služeb Azure v obrázcích fotoaparátu
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak:
 > - Připojte svoji aplikaci k Azure Počítačové zpracování obrazu a Custom Vision.
 > - Vytvoření účtu instančního objektu Azure pro nasazení služeb Azure z aplikace
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/), ještě než začnete. 
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -67,7 +67,7 @@ V levém podokně nastavte **značky** na **označené** , aby se zobrazily obr�
 
 ![Web Custom Vision na kartě školicích imagí. Na tomto snímku obrazovky je tlačítko Výuka obrysové.](media/azure-logo-tutorial/train-model.png)
 
-## <a name="get-the-prediction-url"></a>Získat adresu URL předpovědi
+## <a name="get-the-prediction-url"></a>Získání adresy URL předpovědí
 
 Po vyškolení modelu jste připraveni ho integrovat do své aplikace. Budete muset získat adresu URL koncového bodu (adresu vašeho modelu, který bude aplikace dotazovat) a klíč předpovědi (pro udělení přístupu aplikace k požadavkům předpovědi). Na kartě **výkon** v horní části stránky vyberte tlačítko **Adresa URL předpovědi** .
 

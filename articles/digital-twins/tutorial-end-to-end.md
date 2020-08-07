@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131731"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827311"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Sestavení kompletního řešení
 
@@ -95,6 +95,20 @@ Dalším krokem je nastavení [aplikace Azure Functions](../azure-functions/func
 
 V této části publikujete předem napsanou aplikaci funkcí a zajistěte, aby aplikace Function App měla přístup k digitálním událostem Azure pomocí přiřazení Azure Active Directory (Azure AD). Dokončením těchto kroků umožníte zbývající část kurzu používat funkce uvnitř aplikace Function App. 
 
+Zpět v okně aplikace Visual Studio, kde je otevřen projekt _**AdtE2ESample**_ , aplikace Function App se nachází v souboru projektu _**SampleFunctionsApp**_ . Můžete ji zobrazit v podokně *Průzkumník řešení* .
+
+### <a name="update-dependencies"></a>Aktualizovat závislosti
+
+Před publikováním aplikace je vhodné se ujistit, že vaše závislosti jsou aktuální, a přitom se ujistěte, že máte nejnovější verzi všech zahrnutých balíčků.
+
+V podokně *Průzkumník řešení* rozbalte položku *SampleFunctionsApp > závislosti*. Klikněte pravým tlačítkem na položku *balíčky* a zvolte možnost *Spravovat balíčky NuGet...*.
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: Správa balíčků NuGet pro projekt SampleFunctionsApp" border="false":::
+
+Tím se otevře správce balíčků NuGet. Vyberte kartu *aktualizace* a pokud existují balíčky, které se mají aktualizovat, zaškrtněte políčko pro *Výběr všech balíčků*. Pak stiskněte *aktualizovat*.
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio: výběr aktualizace všech balíčků ve Správci balíčků NuGet":::
+
 ### <a name="publish-the-app"></a>Publikování aplikace
 
 Zpět v okně aplikace Visual Studio, kde je otevřen projekt _**AdtE2ESample**_ , v podokně *Průzkumník řešení* klikněte pravým tlačítkem myši na soubor projektu _**SampleFunctionsApp**_ a stiskněte **publikovat**.
@@ -134,19 +148,21 @@ V podokně *publikovat* , které se otevře zpátky v hlavním okně sady Visual
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Publikování funkce Azure v aplikaci Visual Studio: publikování":::
 
 > [!NOTE]
-> Může se zobrazit automaticky otevírané okno: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="publikovat funkci Azure v aplikaci Visual Studio: přihlašovací údaje pro publikování" border="false":::
-> Pokud ano, vyberte **pokus o načtení přihlašovacích údajů z Azure** a **uložte**je.
+> Pokud se zobrazí automaticky otevírané okno: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="publikovat funkci Azure v aplikaci Visual Studio: přihlašovací údaje pro publikování" border="false":::
+> Vyberte **pokus o načtení přihlašovacích údajů z Azure** a **uložte**ji.
 >
-> Pokud se zobrazí upozornění, že *vaše verze modulu runtime Functions neodpovídá verzi běžící v Azure*, postupujte podle pokynů pro upgrade na nejnovější verzi modulu runtime Azure Functions. K tomuto problému může dojít, pokud používáte starší verzi sady Visual Studio, než kterou jste doporučili v části *požadavky* na začátku tohoto kurzu.
+> Pokud se zobrazí upozornění na *Upgrade verze funkcí v Azure* nebo že *vaše verze modulu runtime Functions neodpovídá verzi běžící v Azure*:
+>
+> Postupujte podle pokynů a upgradujte na nejnovější verzi modulu runtime Azure Functions. K tomuto problému může dojít, pokud používáte starší verzi sady Visual Studio, než kterou jste doporučili v části *požadavky* na začátku tohoto kurzu.
 
 ### <a name="assign-permissions-to-the-function-app"></a>Přiřazení oprávnění k aplikaci Function App
 
-Chcete-li povolit aplikaci Function App přístup k digitálním událostem Azure, je dalším krokem konfigurace nastavení aplikace, přiřazení aplikace identitě spravované systémem a udělení této oprávnění *vlastníka* identity v instanci digitálních vláken Azure.
+Chcete-li povolit aplikaci Function App přístup k digitálním úlohám Azure, je dalším krokem konfigurace nastavení aplikace, přiřazení aplikace identitou spravované systémem a udělení této identity této identitě v instanci služby Azure Digital reinstances *vlastníka (Preview)* . Tato role se vyžaduje pro libovolného uživatele nebo funkci, která chce v instanci provést mnoho aktivit roviny dat. Další informace o zabezpečení a přiřazování rolí si můžete přečíst v tématu [*Koncepty: zabezpečení pro řešení digitálních vláken Azure*](concepts-security.md).
 
-V Azure Cloud Shell pomocí následujícího příkazu nastavte nastavení aplikace, které vaše aplikace Function App použije k odkazování na vaši instanci digitálního vlákna.
+V Azure Cloud Shell pomocí následujícího příkazu nastavte nastavení aplikace, které vaše aplikace Function App použije k odkazování na instanci digitálních vláken Azure.
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-digital-twin-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 Pomocí následujícího příkazu vytvořte identitu spravovanou systémem. Poznamenejte si pole *principalId* ve výstupu.
@@ -155,7 +171,7 @@ Pomocí následujícího příkazu vytvořte identitu spravovanou systémem. Poz
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-Pomocí hodnoty *principalId* v následujícím příkazu přiřaďte identitu aplikace Function App k roli *vlastníka* pro instanci digitálního vlákna Azure:
+Pomocí hodnoty *principalId* z výstupu v následujícím příkazu přiřaďte identitě aplikace funkcí roli vlastníka služby Azure Digital nepracovníci *(Preview)* pro vaši instanci digitálních vláken Azure:
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
@@ -339,7 +355,7 @@ Spuštěním následujícího příkazu můžete také ověřit, jestli se vytvo
 az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> 
 ```
 
-Vyhledejte `provisioningState` pole ve výstupu a zkontrolujte, zda je hodnota "úspěch".
+Vyhledejte `provisioningState` pole ve výstupu a zkontrolujte, zda je hodnota "úspěch". Může taky vyslovit "zřizování", což znamená, že se koncový bod pořád vytváří. V takovém případě počkejte několik sekund a spusťte příkaz znovu a ověřte, zda byl úspěšně dokončen.
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="Výsledek dotazu koncového bodu zobrazující koncový bod s provisioningStateem úspěšného":::
 
@@ -354,6 +370,9 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 ```
 
 Výstupem z tohoto příkazu jsou některé informace o trasách, které jste vytvořili.
+
+>[!NOTE]
+>Aby bylo možné nastavit trasu událostí, která je používá, je nutné zajistit zřízení koncových bodů (z předchozího kroku). Pokud se vytvoření trasy nepovede, protože koncové body nejsou připravené, počkejte pár minut a pak to zkuste znovu.
 
 #### <a name="connect-the-function-to-event-grid"></a>Připojení funkce k Event Grid
 

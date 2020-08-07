@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive,mvc, tracking-python
+ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 0dfdb324013a246010c12d36a50c80b4fbef503e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 0029761f8a1c48ab595dfa5bc2a87fca12d90e3d
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607087"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873921"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Kurz: Vytvoření aplikace Apache Spark Machine Learning ve službě Azure HDInsight
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="understand-the-data-set"></a>Vysvětlení datové sady
 
-Aplikace používá ukázková data **TVK. csv** , která jsou ve výchozím nastavení k dispozici ve všech clusterech. Soubor je umístěn v umístění `\HdiSamples\HdiSamples\SensorSampleData\hvac` . Data ukazují cílovou teplotu a skutečnou teplotu několika budov s nainstalovanými systémy HVAC. Sloupec **System** představuje ID systému a sloupec **SystemAge** představuje počet let, kolik je systém HVAC v budově umístěný. Můžete odhadnout, jestli bude budova Hotter nebo studená na základě cílové teploty, zadaného ID systému a stáří systému.
+Aplikace používá ukázková **HVAC.csv** data, která jsou ve výchozím nastavení k dispozici na všech clusterech. Soubor je umístěn v umístění `\HdiSamples\HdiSamples\SensorSampleData\hvac` . Data ukazují cílovou teplotu a skutečnou teplotu několika budov s nainstalovanými systémy HVAC. Sloupec **System** představuje ID systému a sloupec **SystemAge** představuje počet let, kolik je systém HVAC v budově umístěný. Můžete odhadnout, jestli bude budova Hotter nebo studená na základě cílové teploty, zadaného ID systému a stáří systému.
 
 ![Snímek dat používaných jako příklad strojového učení Spark](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Snímek dat používaných jako příklad strojového učení Spark")
 
@@ -192,7 +192,7 @@ Clustery Apache Spark ve službě HDInsight obsahují knihovny Anaconda. Jejich 
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster, který jste vytvořili, pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
 

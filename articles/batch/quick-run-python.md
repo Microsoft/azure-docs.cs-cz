@@ -6,13 +6,13 @@ ms.date: 11/27/2018
 ms.custom:
 - seo-python-october2019
 - mvc
-- tracking-python
-ms.openlocfilehash: 5c4f8a90a43d19f3bc94da04681d9d690dc33e70
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+- devx-track-python
+ms.openlocfilehash: 7cef08c81a4122fcbfcc18160ad8e6602f335569
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561782"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852561"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Rychlý Start: použití rozhraní Python API ke spuštění úlohy Azure Batch
 
@@ -178,7 +178,7 @@ job = batch.models.JobAddParameter(
 batch_service_client.job.add(job)
 ```
 
-### <a name="create-tasks"></a>Vytvoření úkolů
+### <a name="create-tasks"></a>Vytváření úloh
 
 Aplikace vytvoří seznam objektů úlohy pomocí třídy [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter). Každý úkol zpracovává vstupní objekt `resource_files` pomocí parametru `command_line`. Příkazový řádek v ukázce spustí příkaz prostředí Bash `cat`, který zobrazí textový soubor. Tento příkaz představuje jednoduchý příklad pro demonstrační účely. Při použití služby Batch se aplikace nebo skript zadávají právě na příkazovém řádku. Služba Batch poskytuje několik způsobů, jak nasazovat aplikace a skripty do výpočetních uzlů.
 

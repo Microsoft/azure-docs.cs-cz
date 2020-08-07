@@ -1,6 +1,6 @@
 ---
 title: Ukázkový skript Azure PowerShellu – Škálování instance služby | Microsoft Docs
-description: Ukázkový skript Azure PowerShellu – Škálování instance služby
+description: Naučte se škálovat a přidávat oblasti do instance služby API Management. Podívejte se na ukázkový skript a zobrazte další dostupné prostředky.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: a880bf617f4d1d81b73fda1fbe27d2dd803619a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec54f1dcf3f7f28415646a58c057453985d450f0
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008808"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902248"
 ---
 # <a name="scale-the-service-instance"></a>Škálování instance služby
 

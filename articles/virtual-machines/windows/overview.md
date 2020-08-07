@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4868db7df6209c620c5ae1bd9b1207072214ad35
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d2675a55133d405041be6e309e0cc4d1596084e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074217"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835476"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuální počítače s Windows v Azure
 
@@ -47,7 +47,7 @@ Tato tabulka ukazuje několik způsobů, jak můžete získat seznam dostupných
 
 | Metoda | Popis |
 | --- | --- |
-| Portál Azure Portal |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
+| portál Azure |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
 | Azure PowerShell |Použijte příkaz [Get-AzLocation](/powershell/module/az.resources/get-azlocation) . |
 | REST API |Použijte operaci [Vypsat umístění](/rest/api/resources/subscriptions). |
 | Azure CLI |Použijte operaci [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
@@ -57,7 +57,7 @@ Platforma Azure oznámila špičkovou smlouvu o úrovni služeb (SLA) s 99,9% do
 
 
 ## <a name="vm-size"></a>Velikost virtuálního počítače
-[Velikost](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) virtuálního počítače, který použijete, se určuje podle úlohy, kterou chcete spustit. Velikost, kterou vyberete, pak určuje další faktory, jako například výpočetní výkon, paměť a kapacitu úložiště. Azure nabízí širokou škálu velikostí, které podporují mnoho typů použití.
+[Velikost](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) virtuálního počítače, který použijete, se určuje podle úlohy, kterou chcete spustit. Velikost, kterou vyberete, pak určuje další faktory, jako například výpočetní výkon, paměť a kapacitu úložiště. Azure nabízí širokou škálu velikostí, které podporují mnoho typů použití.
 
 Azure účtuje [hodinovou cenu](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) na základě velikosti virtuálního počítače a operačního systému. V případě neúplných hodin Azure účtuje jenom využité minuty. Služba Storage je oceněna a účtována samostatně.
 
@@ -73,7 +73,7 @@ Tato tabulka ukazuje několik způsobů, jak můžete najít informace o imagi.
 
 | Metoda | Popis |
 | --- | --- |
-| Portál Azure Portal |Hodnoty se pro vás zadají automaticky, když vyberete image, která se má použít. |
+| portál Azure |Hodnoty se pro vás zadají automaticky, když vyberete image, která se má použít. |
 | Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) – umístění *umístění*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) *– umístění umístění –* Vydavatel *vydavatele*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) *– umístění umístění –* Vydavatel *vydavatele – nabídka* nabídky *offerName* |
 | Rozhraní REST API |[Vypsat vydavatele imagí](/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Vypsat nabídky imagí](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Vypsat skladové jednotky (SKU) imagí](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
 | Azure CLI |[AZ VM Image list-Publishers](/cli/azure/vm/image?view=azure-cli-latest) – *umístění umístění*<BR>[AZ VM Image list-nabídky](/cli/azure/vm/image?view=azure-cli-latest) -- *Location* Location--Publisher *Publisher*<BR>[AZ VM Image list-SKU](/cli/azure/vm?view=azure-cli-latest) - *-Location Location--* *Publisher--* Offer *offername*|
@@ -94,12 +94,12 @@ Prostředky v této tabulce používá virtuální počítač a je nutné, aby e
 
 | Prostředek | Povinné | Popis |
 | --- | --- | --- |
-| [Skupina prostředků](../../azure-resource-manager/management/overview.md) |Yes |Virtuální počítač musí být součástí skupiny prostředků. |
-| [Účet úložiště](../../storage/common/storage-account-create.md) |Yes |Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků. |
-| [Virtuální síť](../../virtual-network/virtual-networks-overview.md) |Yes |Virtuální počítač musí být členem virtuální sítě. |
-| [Veřejná IP adresa](../../virtual-network/public-ip-addresses.md) |No |Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu. |
-| [Síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) |Yes |Virtuální počítač potřebuje síťové rozhraní ke komunikaci v síti. |
-| [Datové disky](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |No |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
+| [Skupina prostředků](../../azure-resource-manager/management/overview.md) |Ano |Virtuální počítač musí být součástí skupiny prostředků. |
+| [Účet úložiště](../../storage/common/storage-account-create.md) |Ano |Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků. |
+| [Virtuální síť](../../virtual-network/virtual-networks-overview.md) |Ano |Virtuální počítač musí být členem virtuální sítě. |
+| [Veřejná IP adresa](../../virtual-network/public-ip-addresses.md) |Ne |Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu. |
+| [Síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) |Ano |Virtuální počítač potřebuje síťové rozhraní ke komunikaci v síti. |
+| [Datové disky](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Ne |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
 
 ## <a name="next-steps"></a>Další kroky
 
