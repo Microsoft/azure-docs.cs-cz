@@ -7,13 +7,15 @@
     - name: Porovnání služeb zasílání zpráv
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
+    - name: Použití služby Service Bus se službou Java Message Service (JMS) 2.0 (Preview)
+      href: how-to-use-java-message-service-20.md
 - name: Rychlé starty
   items:
     - name: Fronty služby Service Bus
       items:
         - name: Vytvoření fronty služby Service Bus
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -127,6 +129,8 @@
           items:
             - name: 'Fronty, témata a odběry'
               href: service-bus-queues-topics-subscriptions.md
+            - name: Entity služby Java Message Service (JMS) 2.0 (Preview)
+              href: java-message-service-20-entities.md
             - name: 'Zprávy, datové části a serializace'
               href: service-bus-messages-payloads.md
             - name: 'Přenosy zpráv, zámky a vyrovnání'
