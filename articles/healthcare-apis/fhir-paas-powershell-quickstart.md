@@ -2,24 +2,24 @@
 title: 'Rychlý Start: nasazení rozhraní Azure API pro FHIR pomocí PowerShellu'
 description: V tomto rychlém startu se dozvíte, jak nasadit Azure API pro FHIR pomocí PowerShellu.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 10/15/2019
-ms.author: mihansen
-ms.openlocfilehash: d7156543a66cdf50d7cfddec27e685429324f9e6
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.author: matjazl
+ms.openlocfilehash: 4b2772b449b3c398c8c8932db58b7078b7501824
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "84820238"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851966"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-powershell"></a>Rychlý Start: nasazení rozhraní Azure API pro FHIR pomocí PowerShellu
 
 V tomto rychlém startu se dozvíte, jak nasadit Azure API pro FHIR pomocí PowerShellu.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

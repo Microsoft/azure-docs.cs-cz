@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63f8440ca527a746f73574bc156037d85fc3599
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 84353dd3c8b803f27073d113d6946152f059d9be
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68988210"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873411"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Co je monitorování Azure Active Directory?
 
@@ -33,6 +33,8 @@ V současné době můžete směrovat protokoly do následujících umístění:
 - Účet úložiště Azure.
 - Centrum událostí Azure, takže můžete provést integraci s instancemi Splunk a SumoLogic.
 - Pracovní prostor služby Azure Log Analytics, kde můžete analyzovat data a vytvářet řídicí panely a upozornění na určité události.
+
+**Požadovaná role**: globální správce
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 

@@ -635,7 +635,7 @@
             - name: Nastavení průběžné integrace s využitím Azure Pipelines
               href: ./service-fabric-tutorial-deploy-app-with-cicd-vsts.md
             - name: Nasazení linuxové aplikace pomocí Jenkinse
-              href: service-fabric-cicd-your-linux-applications-with-jenkins.md
+              href: /azure/developer/jenkins/deploy-to-service-fabric-cluster
     - name: Nastavení a konfigurace reverzního proxy serveru
       items:
         - name: Nastavení a konfigurace reverzního proxy serveru
