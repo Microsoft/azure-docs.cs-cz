@@ -4,12 +4,12 @@ description: Naučte se konfigurovat sítě Azure CNI (pokročilé) ve službě 
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: d025bcddfdee25cddac311ac9a201b7f3afebd22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1bf459c530195b8855169123b8f496e4969403b
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416847"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872425"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurace sítě Azure CNI ve službě Azure Kubernetes Service (AKS)
 
@@ -63,7 +63,7 @@ Maximální počet lusků na uzel v clusteru AKS je 250. *Výchozí* maximální
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | Ano (až 250) |
 | Šablona Resource Manageru | 110 | 30 | Ano (až 250) |
-| Portál | 110 | 30 | No |
+| Portál | 110 | 30 | Ne |
 
 ### <a name="configure-maximum---new-clusters"></a>Konfigurace maximálního počtu nových clusterů
 
@@ -73,7 +73,7 @@ Pokud při vytváření nových fondů uzlů nezadáte maxPods, zobrazí se výc
 
 Minimální hodnota pro maximální počet lusků na uzel se vynutila tak, aby se zajistilo místo pro systémové lusky zásadní pro stav clusteru. Minimální hodnota, která se dá nastavit pro maximální počet lusků na uzel, je 10, pokud je a jenom v případě, že konfigurace každého fondu uzlů má prostor pro minimálně 30 lusků. Například nastavení maximálního počtu lusků na uzel na minimum na hodnotu 10 vyžaduje, aby každý fond jednotlivých uzlů měl minimálně 3 uzly. Tento požadavek platí také pro každý vytvořený fond uzlů, takže pokud je hodnota 10 definována jako maximální počet lusků na uzel, musí mít každý další fond uzlů aspoň 3 uzly.
 
-| Sítě | Minimální | Maximum |
+| Sítě | Minimum | Maximum |
 | -- | :--: | :--: |
 | CNI Azure | 10 | 250 |
 | Kubenet | 10 | 110 |
@@ -87,7 +87,7 @@ Minimální hodnota pro maximální počet lusků na uzel se vynutila tak, aby s
 
 ### <a name="configure-maximum---existing-clusters"></a>Konfigurace maximálního počtu existujících clusterů
 
-Nastavení maxPod na uzel lze definovat při vytváření nového fondu uzlů. Pokud potřebujete zvětšit nastavení maxPod na uzel v existujícím clusteru, přidejte nový fond uzlů s novým požadovaným počtem maxPod. Po migraci lusků do nového fondu odstraňte starší fond. Chcete-li odstranit všechny starší fondy v clusteru, ujistěte se, že nastavujete režimy fondu uzlů, jak jsou definovány v [fond systémových uzlů Document[System-Node-Pools].
+Nastavení maxPod na uzel lze definovat při vytváření nového fondu uzlů. Pokud potřebujete zvětšit nastavení maxPod na uzel v existujícím clusteru, přidejte nový fond uzlů s novým požadovaným počtem maxPod. Po migraci lusků do nového fondu odstraňte starší fond. Chcete-li odstranit všechny starší fondy v clusteru, ujistěte se, že nastavujete režimy fondu uzlů definované v [dokumentu fondy systémových uzlů][system-node-pools].
 
 ## <a name="deployment-parameters"></a>Parametry nasazení
 
@@ -214,4 +214,4 @@ Clustery Kubernetes vytvořené pomocí AKS Engine podporují moduly plug-in [ku
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models
-[fondy systémových uzlů]: use-system-pools.md
+[system-node-pools]: use-system-pools.md

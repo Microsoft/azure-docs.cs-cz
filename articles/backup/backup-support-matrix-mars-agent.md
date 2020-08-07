@@ -3,12 +3,12 @@ title: Matice podpory pro agenta MARS
 description: Tento článek shrnuje Azure Backup podporu při zálohování počítačů, na kterých běží agent služby Microsoft Azure Recovery Services (MARS).
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5ff9510dfa31bb947d50b1a91fb7f73c2d767471
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b719bd36c27336b3fe24cdb904715bf8194ed70
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538645"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872408"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -54,7 +54,7 @@ Změny umístění | Umístění mezipaměti můžete změnit zastavením záloh
 
 Agent MARS potřebuje přístup k těmto adresám URL:
 
-- <http://www.msftncsi.com/ncsi.txt>
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *. MicrosoftOnline.com
@@ -79,7 +79,7 @@ S veřejným partnerským vztahem: Zajistěte přístup k následujícím domén
 - `.microsoftonline.com`
 - `.windows.net`
 
-S partnerským vztahem Microsoftu vyberte prosím následující služby nebo oblasti a příslušné hodnoty komunity:
+S partnerským vztahem Microsoftu vyberte následující služby nebo oblasti a příslušné hodnoty komunity:
 
 - Azure Active Directory (12076:5060)
 - Oblast Microsoft Azure (podle umístění vašeho trezoru Recovery Services)
@@ -89,6 +89,16 @@ Další informace najdete v tématu [požadavky na směrování ExpressRoute](..
 
 >[!NOTE]
 >Veřejné partnerské vztahy se pro nové okruhy zastaraly.
+
+### <a name="private-endpoint-support"></a>Podpora privátních koncových bodů
+
+Pomocí privátních koncových bodů teď můžete bezpečně zálohovat data ze serverů do trezoru Recovery Services. Vzhledem k tomu, že Azure Active Directory v současné době nepodporuje privátní koncové body, IP adresy a plně kvalifikované názvy domény, které vyžaduje Azure Active Directory, bude nutné povolit odchozí přístup samostatně.
+
+Když použijete agenta MARS k zálohování místních prostředků, ujistěte se, že vaše místní síť (obsahující vaše prostředky, které se mají zálohovat) má partnerský vztah s virtuální sítí Azure, která obsahuje soukromý koncový bod pro trezor. Pak můžete pokračovat v instalaci agenta MARS a nakonfigurovat zálohování. Je však třeba zajistit, aby veškerá komunikace pro zálohování procházela pouze prostřednictvím partnerské sítě.
+
+Pokud po registraci agenta MARS pro trezor odeberete privátní koncové body, budete muset kontejner znovu zaregistrovat do trezoru. Nemusíte pro ně zastavovat ochranu.
+
+Přečtěte si další informace o [privátních koncových bodech pro Azure Backup](private-endpoints.md).
 
 ### <a name="throttling-support"></a>Podpora omezování
 
@@ -111,13 +121,13 @@ Operační systémy musí být 64 bitů a měly by být spuštěny nejnovější
 
 **Operační systém** | **Soubory/složky** | **Stav systému** | **Požadavky na software/modul**
 --- | --- | --- | ---
-Windows 10 (Enterprise, pro, Home) | Ano | No |  Ověřte odpovídající verzi serveru pro software/modul požadavky.
-Windows 8.1 (Enterprise, pro)| Ano |No | Ověřte odpovídající verzi serveru pro software/modul požadavky.
-Windows 8 (Enterprise, pro) | Ano | No | Ověřte odpovídající verzi serveru pro software/modul požadavky.
+Windows 10 (Enterprise, pro, Home) | Ano | Ne |  Ověřte odpovídající verzi serveru pro software/modul požadavky.
+Windows 8.1 (Enterprise, pro)| Ano |Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
+Windows 8 (Enterprise, pro) | Ano | Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
 Windows Server 2016 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2012 (Standard, Datacenter, základ) | Ano | Ano |– .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a Správa imagí nasazení (DISM.exe)
-Windows Storage Server 2016/2012 R2/2012 (Standard, pracovní skupina) | Ano | No | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
+Windows Storage Server 2016/2012 R2/2012 (Standard, pracovní skupina) | Ano | Ne | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2019 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 
 Další informace najdete v tématu [podporované MABS a operační systémy DPM](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
@@ -132,9 +142,9 @@ U místních nebo hostovaných prostředí, kde nemůžete upgradovat operační
 
 | **Operační systém**                                       | **Soubory/složky** | **Stav systému** | **Požadavky na software/modul**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
-| Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Ano               | No                 | Ověřte odpovídající verzi serveru pro software/modul požadavky. |
+| Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Ano               | Ne                 | Ověřte odpovídající verzi serveru pro software/modul požadavky. |
 | Windows Server 2008 R2 (Standard, Enterprise, Datacenter, základ) | Ano               | Ano                | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a Správa imagí nasazení (DISM.exe) |
-| Windows Server 2008 SP2 (Standard, Datacenter, základ)  | Ano               | No                 | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a Správa imagí nasazení (DISM.exe) <br>  – Virtual Server 2005 Base + KB KB948515 |
+| Windows Server 2008 SP2 (Standard, Datacenter, základ)  | Ano               | Ne                 | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a Správa imagí nasazení (DISM.exe) <br>  – Virtual Server 2005 Base + KB KB948515 |
 
 ## <a name="backup-limits"></a>Omezení zálohování
 
@@ -148,7 +158,7 @@ Windows Server 2012 nebo novější |54 400 GB
 Windows Server 2008 R2 SP1 |1 700 GB
 Windows Server 2008 SP2| 1 700 GB
 Windows 8 nebo novější| 54 400 GB
-Windows 7| 1 700 GB
+Windows 7| 1 700 GB
 
 ### <a name="other-limitations"></a>Další omezení
 

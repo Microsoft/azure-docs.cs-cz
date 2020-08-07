@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 2c292ee601114a58e38b9e509efa53be2d3c93d6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9bc323e0fafc576c5e75f46b3c38fdf140b1b0f4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328172"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799798"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Povolení Azure Monitor pro virtuální počítače pomocí Azure Policy
 Tento článek vysvětluje, jak povolit Azure Monitor pro virtuální počítače pro virtuální počítače Azure nebo k hybridnímu virtuálnímu počítači připojenému pomocí Azure ARC (Preview) pomocí Azure Policy. Azure Policy vám umožní přiřadit definice zásad, které budou instalovat požadované agenty pro Azure Monitor pro virtuální počítače v prostředí Azure a automaticky povolit monitorování pro virtuální počítače při vytvoření každého virtuálního počítače. Azure Monitor pro virtuální počítače poskytuje funkci, která umožňuje zjistit a opravit nekompatibilní virtuální počítače ve vašem prostředí. Místo toho, abyste pracovali přímo s Azure Policy, použijte tuto funkci.
 
-Pokud nejste obeznámeni s Azure Policy, získáte stručný úvod k [nasazení Azure monitor ve velkém měřítku pomocí Azure Policy](../platform/deploy-scale.md).
+Pokud nejste obeznámeni s Azure Policy, získáte stručný úvod k [nasazení Azure monitor ve velkém měřítku pomocí Azure Policy](../deploy-scale.md).
 
 > [!NOTE]
-> Pokud chcete používat Azure Policy se službou Azure Virtual Machine Scale Sets nebo pokud chcete pracovat s Azure Policy přímo k povolení virtuálních počítačů Azure, přečtěte si téma [nasazení Azure monitor se škálováním pomocí Azure Policy](../platform/deploy-scale.md#azure-monitor-for-vms-and-virtual-machine-agents).
+> Pokud chcete používat Azure Policy se službou Azure Virtual Machine Scale Sets nebo pokud chcete pracovat s Azure Policy přímo k povolení virtuálních počítačů Azure, přečtěte si téma [nasazení Azure monitor se škálováním pomocí Azure Policy](../deploy-scale.md#azure-monitor-for-vms).
 
 ## <a name="prerequisites"></a>Požadavky
 - [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](vminsights-configure-workspace.md).

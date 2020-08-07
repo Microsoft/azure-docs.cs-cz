@@ -3,12 +3,12 @@ title: Monitorování aplikací Java v jakémkoli prostředí – Azure Monitor 
 description: Monitorování výkonu aplikací pro aplikace Java spuštěné v jakémkoli prostředí bez instrumentace aplikace Distribuované trasování a mapa aplikací
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: f35d661761f1bea4dbd6b691fb0667c6dad3e72e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e1442d1b1fb1bf8fbef82354b8aa1d2354640aa9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541851"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902078"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Monitorování aplikací nezaložených na kódu Java Azure Monitor Application Insights – Public Preview
 
@@ -20,7 +20,7 @@ Přidání sady Application Insights Java SDK do vaší aplikace už není potř
 
 Z aplikace můžete stále odesílat vlastní telemetrie. Agent 3,0 bude sledovat a koreluje spolu se všemi všemi shromažďovanými telemetriemi.
 
-## <a name="quickstart"></a>Rychlé zprovoznění
+## <a name="quickstart"></a>Rychlý start
 
 **1. Stáhněte agenta.**
 
@@ -128,18 +128,17 @@ Podporujeme mikroměřiče, rozhraní OpenTelemetry API a oblíbená rozhraní p
 
 ### <a name="supported-custom-telemetry"></a>Podporovaná vlastní telemetrie
 
-Následující tabulka představuje aktuálně podporované vlastní typy telemetrie, které můžete povolit pro doplnění agenta Java 3,0. Pro sumarizaci jsou vlastní metriky podporovány prostřednictvím mikroměřiče, vlastní výjimky a trasování lze povolit prostřednictvím protokolovacích rozhraní a jakýkoli typ vlastní telemetrie je podporován prostřednictvím [Application Insights Java 2. x SDK](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#sending-custom-telemetry-using-application-insights-java-sdk-2x). 
+Následující tabulka představuje aktuálně podporované vlastní typy telemetrie, které můžete povolit pro doplnění agenta Java 3,0. Pro sumarizaci jsou vlastní metriky podporovány prostřednictvím mikroměřiče, vlastní výjimky a trasování lze povolit prostřednictvím protokolovacích rozhraní a jakýkoli typ vlastní telemetrie je podporován prostřednictvím [Application Insights Java 2. x SDK](#sending-custom-telemetry-using-application-insights-java-sdk-2x). 
 
-
-|                 | Mikrometr | Log4j, logback, červenec | 2. x SDK |
-|-----------------|------------|---------------------|---------|
-| Vlastní události   |            |                     |  Yes    |
-| Vlastní metriky  |  Ano       |                     |  Ano    |
-| Závislosti    |            |                     |  Yes    |
-| Výjimky      |            |  Ano                |  Ano    |   
-| Page Views      |            |                     |  Yes    |
-| Žádosti        |            |                     |  Yes    |
-| Trasování          |            |  Ano                |  Ano    |
+|                     | Mikrometr | Log4j, logback, červenec | 2. x SDK |
+|---------------------|------------|---------------------|---------|
+| **Vlastní události**   |            |                     |  Ano    |
+| **Vlastní metriky**  |  Ano       |                     |  Ano    |
+| **Závislosti**    |            |                     |  Ano    |
+| **Výjimky**      |            |  Ano                |  Ano    |
+| **Page Views**      |            |                     |  Ano    |
+| **Žádosti**        |            |                     |  Ano    |
+| **Trasování**          |            |  Ano                |  Ano    |
 
 V tuto chvíli neplánujeme vydání sady SDK pomocí Application Insights 3,0.
 

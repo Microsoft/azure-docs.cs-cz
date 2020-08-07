@@ -10,13 +10,13 @@ ms.subservice: anomaly-detector
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.custom: tracking-python
-ms.openlocfilehash: d872e4486bdc8fcd3629feb452b0d436872c70d8
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-python
+ms.openlocfilehash: b29fa17c21b2cdb2e764c905af3819142d8c341e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189420"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844061"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: prediktivní údržba s Cognitive Services pro velké objemy dat
 
@@ -28,7 +28,7 @@ Hypotetickým scénářem je napájecí závod, ve kterém zařízení IoT monit
 
 V datech v náhodných frekvencích by se mohlo jednat o odlehlé hodnoty. V těchto situacích budou hodnoty ot./min. až do vypínání a pro ochranu okruhu až MW. Nápadem je zobrazit data ve stejnou dobu, ale s různými signály.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/) .
 * [Pracovní prostor Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) nakonfigurovaný s [fondem Spark](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)
@@ -98,7 +98,7 @@ df_anomaly.select("timestamp","value","deviceId","anomalies.isAnomaly").show(3)
 
 Tato buňka by měla vracet výsledek, který vypadá takto:
 
-| časové razítko           |   hodnota | deviceId   | Anomálie   |
+| časové razítko           |   value | deviceId   | Anomálie   |
 |:--------------------|--------:|:-----------|:------------|
 | 2020-05-01 18:33:51 |    3174 | vývoj – 7      | Ne       |
 | 2020-05-01 18:33:52 |    2976 | vývoj – 7      | Ne       |

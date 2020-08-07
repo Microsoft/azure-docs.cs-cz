@@ -1,20 +1,20 @@
 ---
 title: Správa indexování v rozhraní Azure Cosmos DB API pro MongoDB
-description: Tento článek obsahuje přehled možností indexování Azure Cosmos DB pomocí rozhraní API pro MongoDB.
+description: Tento článek nabízí přehled možností indexování Azure Cosmos DB pomocí rozhraní API Azure Cosmos DB pro MongoDB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 08/06/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b8db9e2d8b58047ebe29865bb95d7f218732c88e
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: e47b8727eccd1b185f381ae3f8474fe13a406501
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761157"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843806"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Správa indexování v rozhraní Azure Cosmos DB API pro MongoDB
 
@@ -315,7 +315,7 @@ Podrobnosti o průběhu indexu zobrazují procento průběhu aktuální operace 
    }
    ```
 
-### <a name="background-index-updates"></a>Aktualizace indexu na pozadí
+## <a name="background-index-updates"></a>Aktualizace indexu na pozadí
 
 Bez ohledu na hodnotu zadanou pro vlastnost index na **pozadí** jsou aktualizace indexu vždy prováděny na pozadí. Vzhledem k tomu, že aktualizace indexu spotřebovávají jednotky žádostí (ru) s nižší prioritou než jiné databázové operace, nebudou mít změny v indexu žádný výpadek pro zápisy, aktualizace nebo odstranění.
 

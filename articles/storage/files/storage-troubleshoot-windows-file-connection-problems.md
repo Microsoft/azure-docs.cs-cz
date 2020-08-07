@@ -1,18 +1,18 @@
 ---
 title: Řešení potíží se soubory Azure v systému Windows | Microsoft Docs
-description: Řešení potíží se soubory Azure v systému Windows
+description: Řešení potíží se soubory Azure v systému Windows. Podívejte se na časté problémy související se soubory Azure při připojení z klientů Windows a podívejte se na možná řešení.
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e855ed169a0c4eca7dda696c03deedb9e519e9bf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ecd7b0bc34d532e7d748bc9468d3a155b9aa2ad2
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259977"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901738"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se službou Azure Files ve Windows
 

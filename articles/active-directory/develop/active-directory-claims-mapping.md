@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 08/06/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 29dc03d663d590c13a1948411ed597388750c1d7
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 82866daaf720fc6b1ea9ba823587c921fd438b9c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87427988"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902469"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -261,13 +261,15 @@ Chcete-li určit, jaké deklarace identity jsou emitovány a odkud data pocháze
 **Datový typ:** Objekt BLOB JSON s jednou nebo více položkami schématu deklarace identity
 
 **Shrnutí:** Tato vlastnost určuje, které deklarace identity jsou k dispozici v tokenech ovlivněných touto zásadou, kromě základní sady deklarací identity a základní sady deklarací identity.
-Pro každou položku schématu deklarace identity definovanou v této vlastnosti se vyžadují určité informace. Určete, odkud data pocházejí (dvojice**hodnota** nebo **identifikátor ID**) a která deklarace identity se vygenerovala jako (**typ deklarace**).
+Pro každou položku schématu deklarace identity definovanou v této vlastnosti se vyžadují určité informace. Určete, kam data přicházejí (**hodnota**, **dvojice identifikátoru zdroje/ID**nebo **ExtensionID**) a která deklarace identity se vygeneruje (**typ deklarace identity**).
 
 ### <a name="claim-schema-entry-elements"></a>Prvky položky schématu deklarace identity
 
 **Hodnota:** Element Value definuje statickou hodnotu jako data, která se mají v deklaraci identity vypouštět.
 
-**Dvojice ID a zdroje:** Prvky zdroje a ID definují, z nichž jsou data v deklaraci identity zdrojová. 
+**Dvojice ID a zdroje:** Prvky zdroje a ID definují, z nichž jsou data v deklaraci identity zdrojová.  
+
+**ExtensionID pár zdrojů:** Elementy source a ExtensionID definují atribut rozšíření schématu adresáře, ze kterého jsou zdrojová data v deklaraci identity. Další informace najdete v tématu [použití atributů rozšíření schématu adresáře v deklaracích identity](active-directory-schema-extensions.md).
 
 Nastavte zdrojový element na jednu z následujících hodnot: 
 
@@ -321,7 +323,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | othermail | Jiná pošta |
 | Uživatel | country | Země/oblast |
 | Uživatel | city | Město |
-| Uživatel | state | Stav |
+| Uživatel | state | State |
 | Uživatel | jobtitle | Název pozice |
 | Uživatel | zaměstnance | ID zaměstnance |
 | Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
@@ -439,7 +441,7 @@ V Azure AD je mnoho scénářů možné, když můžete přizpůsobit deklarace 
 > [!NOTE]
 > Při vytváření zásad mapování deklarací identity můžete také vygenerovat deklaraci identity z atributu rozšíření schématu adresáře v tokenech. Použijte *ExtensionID* pro atribut Extension namísto *ID* v `ClaimsSchema` elementu.  Další informace o atributech rozšíření najdete v tématu [použití atributů rozšíření schématu adresáře](active-directory-schema-extensions.md).
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro instanční objekty. Pokud s Azure AD teprve začínáte, doporučujeme vám seznámit se s tím, [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md) , než budete pokračovat v těchto příkladech.
 
@@ -528,7 +530,7 @@ V tomto příkladu vytvoříte zásadu, která emituje vlastní deklaraci identi
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - Informace o tom, jak přizpůsobit deklarace identity vydané v tokenu SAML prostřednictvím Azure Portal, najdete v tématu [How to: Customize Claims vydaných v tokenu SAML pro podnikové aplikace.](active-directory-saml-claims-customization.md)
 - Další informace o atributech rozšíření najdete v tématu [použití atributů rozšíření schématu adresáře v deklaracích identity](active-directory-schema-extensions.md).

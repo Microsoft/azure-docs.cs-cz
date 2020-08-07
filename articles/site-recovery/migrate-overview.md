@@ -1,23 +1,23 @@
 ---
-title: Migrace serverů a virtuálních počítačů do Azure pomocí Azure Site Recovery
-description: Popisuje, jak migrovat místní a virtuální počítače Azure IaaS do Azure pomocí služby Azure Site Recovery.
+title: Porovnání Azure Migrate a Site Recovery migrace do Azure
+description: Shrnuje výhody použití Azure Migrate k migraci místo Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 08/06/2020
 ms.author: raynew
-ms.openlocfilehash: aaf01dcd63c21e4741456f4f7fccaf22b8fbfffc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 358efaa1493aa08fb76c9bb83e0e4289950e0969
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281306"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844316"
 ---
-# <a name="about-migration"></a>Informace o migraci
+# <a name="migrating-to-azure"></a>Migrace do Azure
 
-Službu Azure Migrate můžete použít k migraci virtuálních počítačů a serverů do Azure místo služby Azure Site Recovery. [Přečtěte si další informace](../migrate/migrate-services-overview.md) o Azure Migrate.
+Pro migraci doporučujeme použít službu Azure Migrate k migraci virtuálních počítačů a serverů do Azure místo služby Azure Site Recovery. [Přečtěte si další informace](../migrate/migrate-services-overview.md) o Azure Migrate.
 
 
 ## <a name="why-use-azure-migrate"></a>Proč používat službu Azure Migrate?
@@ -29,8 +29,8 @@ Použití Azure Migrate pro migraci přináší několik výhod:
 - Použití Azure Migrate zajišťuje interoperabilitu a budoucí rozšiřitelnost pomocí nástrojů Azure Migrate, dalších služeb Azure a nástrojů třetích stran.
 - Azure Migrate: Nástroj pro migraci serveru je založený na účelu navržený pro migraci serveru do Azure. Je optimalizovaná pro migraci. Nemusíte se učit o konceptech a scénářích, které nejsou přímo důležité pro migraci. 
 - Pro migraci na 180 dní se neúčtují žádné poplatky za použití nástrojů od spuštění replikace pro virtuální počítač. Tím získáte čas na dokončení migrace. Platíte jenom za úložiště a síťové prostředky, které se používají při replikaci, a za poplatky za výpočetní výkon spotřebované během testovacích migrací.
-- Pro virtuální počítače VMware Azure Migrate poskytuje kromě migrace na základě agenta i migraci bez agenta.
-- Pro Azure Migrate nabízíme prioritní nové funkce, které nabízí jenom nástroj pro migraci serveru.
+- Azure Migrate podporuje všechny scénáře migrace podporované Site Recovery. Pro virtuální počítače VMware navíc Azure Migrate poskytuje možnost migrace bez agenta.
+- Pro Azure Migrate nabízíme prioritní nové funkce, které nabízí jenom nástroj pro migraci serveru. Tyto funkce nejsou cílené na Site Recovery.
 
 ## <a name="when-to-use-site-recovery"></a>Kdy použít Site Recovery?
 

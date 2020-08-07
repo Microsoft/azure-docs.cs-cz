@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 56a2246b4f1da51d9b18a34279eff04264530ef5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 770353f893762f0f35d744fe1e7a5e4de4a671ce
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82160081"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808758"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Front Dooru
 
 V tomto kurzu se dozvíte, jak povolit protokol HTTPS pro vlastní doménu přidruženou ke Front Dooru v části hostitelů front-endu. Použitím protokolu HTTPS pro vlastní doménu (například https:\//www.contoso.com) zajistíte zabezpečené doručování citlivých dat prostřednictvím šifrování TLS/SSL při posílání přes internet. Když se webový prohlížeč připojí k webu přes HTTPS, ověří certifikát zabezpečení webu a to, že je vydán legitimní certifikační autoritou. Tento proces zajišťuje zabezpečení a chrání vaše webové aplikace před útoky.
 
-Přední dveře Azure ve výchozím nastavení podporují protokol HTTPS pro výchozí název hostitele front-dveří. Například pokud vytvoříte přední dvířka (například `https://contoso.azurefd.net`), protokol HTTPS je automaticky povolen pro požadavky vytvořené na. `https://contoso.azurefd.net` Jakmile ale začleníte vlastní doménu „www.contoso.com“, bude potřeba pro tohoto hostitele front-endu povolit HTTPS dodatečně.   
+Přední dveře Azure ve výchozím nastavení podporují protokol HTTPS pro výchozí název hostitele front-dveří. Například pokud vytvoříte přední dvířka (například `https://contoso.azurefd.net` ), protokol HTTPS je automaticky povolen pro požadavky vytvořené na `https://contoso.azurefd.net` . Jakmile ale začleníte vlastní doménu „www.contoso.com“, bude potřeba pro tohoto hostitele front-endu povolit HTTPS dodatečně.   
 
 Mezi klíčové atributy vlastní funkce HTTPS patří mimo jiné:
 
@@ -68,6 +68,9 @@ Pokud chcete povolit HTTPS pro vlastní doménu, postupujte následovně:
 4. Klikněte na Uložit.
 
 5. Pokračujte k části [Ověření domény](#validate-the-domain).
+
+> [!NOTE]
+> U spravovaných certifikátů AFD se vynutilo omezení počtu znaků DigiCert 64. Pokud dojde k překročení tohoto limitu, ověření se nezdaří.
 
 
 ### <a name="option-2-use-your-own-certificate"></a>Možnost 2: Použití vlastního certifikátu

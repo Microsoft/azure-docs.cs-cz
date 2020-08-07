@@ -7,12 +7,12 @@ ms.author: v-lakast
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7786f970f612d2856948e2286ed234e2b0895072
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7d563c7706529c6f3e280f7d138c0d6ba0dfc849
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836954"
+ms.locfileid: "87902185"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Správa koncových bodů a tras v Azure Digital provlákna (portál)
 
@@ -24,7 +24,7 @@ Tento článek vás provede procesem vytvoření koncových bodů a tras pomocí
 
 Můžete také spravovat koncové body a trasy pomocí [rozhraní API EventRoutes](how-to-use-apis-sdks.md), [sady .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md). Verzi tohoto článku, která používá tyto mechanismy místo portálu, najdete v tématu [*How to: Manage Endpoints and Routes (API and CLI)*](how-to-manage-routes-apis-cli.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Budete potřebovat **účet Azure** (můžete [si ho nastavit zdarma).](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * V předplatném Azure budete potřebovat **instanci digitálního vlákna Azure** . Pokud instanci již nemáte, můžete ji vytvořit pomocí kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-scripted.md). Použijte následující hodnoty z instalačního programu užitečné pro pozdější použití v tomto článku:
@@ -129,44 +129,49 @@ Aby bylo možné ve skutečnosti odesílat data z digitálních vláken Azure do
 
 ### <a name="create-an-event-route"></a>Vytvoření trasy události 
 
-Definice trasy události může obsahovat tyto prvky:
-* ID trasy, kterou chcete použít
+Definice trasy události obsahuje tyto prvky:
+* Název trasy, kterou chcete použít
 * Název koncového bodu, který chcete použít
 * Filtr definující události odesílané do koncového bodu
+    - Pokud chcete zakázat trasu, aby se neodesílaly žádné události, použijte hodnotu filtru.`false`
+    - Pokud chcete povolit trasu, která nemá žádné konkrétní filtrování, použijte hodnotu filtru.`true`
+    - Podrobnosti o jakémkoli jiném typu filtru najdete v části [*události filtru*](#filter-events) níže.
 
-Pokud není k dispozici žádné ID trasy, nejsou směrovány žádné zprávy mimo digitální vlákna Azure.
-Pokud je k dispozici ID trasy a filtr je `true` , všechny zprávy budou směrovány do koncového bodu.
-Pokud je k dispozici ID trasy a je přidán jiný filtr, budou zprávy na základě filtru filtrovány.
-
-Jedna trasa by měla umožňovat výběr více oznámení a typů událostí.
+Jedna trasa může umožňovat výběr více oznámení a typů událostí.
 
 Pokud chcete vytvořit trasu události, na stránce s podrobnostmi pro instanci digitálních vláken Azure v [Azure Portal](https://portal.azure.com) (můžete najít instanci zadáním jejího názvu do panelu hledání na portálu).
 
 V nabídce instance vyberte možnost _trasy událostí_. Pak na stránce *trasy událostí* , která následuje, vyberte *+ vytvořit trasu události*. 
 
-Na stránce *vytvořit trasu události* , která se otevře, zvolte minimálně název trasy v poli _název_ a vyberte _koncový bod_ , který chcete použít k vytvoření trasy z rozevíracího seznamu.
+Na stránce *vytvořit trasu události* , která se otevře, vyberte minimálně:
+* Název trasy v poli _název_
+* _Koncový bod_ , který chcete použít k vytvoření trasy 
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Snímek obrazovky s vytvářením trasy události pro vaši instanci.":::
+Aby bylo možné trasu povolit, je nutné také **Přidat filtr trasy události** alespoň `true` . (Výchozí hodnota pole `false` vytvoří trasu, ale do ní nebudou odesílány žádné události.) Provedete to tak, že přepnete přepínač pro _Rozšířený editor_ a povolíte jeho zápis `true` do pole *filtru* .
+
+:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Snímek obrazovky s vytvářením trasy události pro vaši instanci." lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
 Po dokončení stiskněte tlačítko _Uložit_ a vytvořte tak trasu události.
 
 ### <a name="filter-events"></a>Události filtru
 
-Bez filtrování se koncovým bodům dostanou nejrůznější události z digitálních vláken Azure:
+Jak je popsáno výše, trasy mají pole **filtru** . Pokud je hodnota filtru v trase `false` , nebudou do koncového bodu odesílány žádné události. 
+
+Po povolení minimálního filtru `true` koncových bodů dostane z digitálních vláken Azure nejrůznější události:
 * Telemetrie aktivovaná pomocí [digitálních vláken](concepts-twins-graph.md) pomocí rozhraní API služby Azure Digital Service
 * Dvojitá oznámení o změně vlastností, která se aktivují při změnách vlastností u všech vláken v instanci digitálních vláken Azure
 * Události životního cyklu aktivované při vytváření nebo odstraňování vazeb
 * Přidané nebo odstraněné události změny modelu aktivované při přidání nebo odstranění [modelů](concepts-models.md) nakonfigurovaných v instanci digitálních vláken Azure
 
-Odesílaným událostem můžete omezit přidáváním **filtru** pro koncový bod do trasy události.
+Můžete omezit typy odesílaných událostí tak, že definujete konkrétnější filtr.
 
-Pokud chcete přidat filtr při vytváření trasy události, použijte část _Přidání filtru trasy události_ na stránce *vytvořit trasu* události. 
+Pokud chcete přidat filtr událostí při vytváření trasy události, použijte část _Přidání filtru tras událostí_ na stránce *vytvořit trasu* události. 
 
 Můžete buď vybrat některé z běžných možností filtru Basic, nebo použít rozšířené možnosti filtru k psaní vlastních filtrů.
 
 #### <a name="use-the-basic-filters"></a>Použít základní filtry
 
-Chcete-li použít základní filtry, rozbalte možnost _typy událostí_ a zaškrtněte políčka odpovídající událostem, které chcete filtrovat. 
+Chcete-li použít základní filtry, rozbalte možnost _typy událostí_ a zaškrtněte políčka odpovídající událostem, které chcete odeslat do koncového bodu. 
 
 :::row:::
     :::column:::

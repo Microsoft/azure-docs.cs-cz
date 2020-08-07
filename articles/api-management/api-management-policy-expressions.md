@@ -1,6 +1,6 @@
 ---
 title: Výrazy zásad Azure API Management | Microsoft Docs
-description: Přečtěte si o výrazech zásad v Azure API Management.
+description: Přečtěte si o výrazech zásad v Azure API Management. Podívejte se na příklady a zobrazte další dostupné prostředky.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 1713f2ca8fda0c768727ea12e682b373d644bcba
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249814"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844236"
 ---
 # <a name="api-management-policy-expressions"></a>API Management výrazy zásad
 Tento článek popisuje syntaxi výrazů zásad v jazyce C# 7. Každý výraz má přístup k implicitně zadané [kontextové](api-management-policy-expressions.md#ContextVariables) proměnné a povolené [podmnožině](api-management-policy-expressions.md#CLRTypes) typů .NET Framework.
@@ -156,7 +156,7 @@ Následující tabulka uvádí typy .NET Framework a jejich členy, které jsou 
 |System. Security. Cryptography. SymmetricAlgorithm|Vše|
 |System. Security. Cryptography. X509Certificates. PublicKey|Vše|
 |System. Security. Cryptography. X509Certificates. RSACertificateExtensions|Vše|
-|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Name|
+|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Název|
 |System. Security. Cryptography. X509Certificates. certifikátu x509|Vše|
 |System. Security. Cryptography. X509Certificates. X509Certificate2|Vše|
 |System. Security. Cryptography. X509Certificates. X509ContentType|Vše|

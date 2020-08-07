@@ -2,7 +2,7 @@
 title: Přidat informace o ochraně osobních údajů vaší organizace – Azure Active Directory | Microsoft Docs
 description: Pokyny k přidání informací o ochraně osobních údajů vaší organizace do oblasti vlastností Azure Active Directory.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03a8d1f3e541d61d515b28bf56964c0add3b390e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfc60eacd70576d9cfa79dbc03368c8e8c4a8636
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830634"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797389"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Přidání informací o ochraně osobních údajů vaší organizace pomocí Azure Active Directory
 Tento článek vysvětluje, jak může správce klienta přidávat informace týkající se ochrany osobních údajů do tenanta Azure Active Directory organizace (Azure AD) prostřednictvím Azure Portal.
