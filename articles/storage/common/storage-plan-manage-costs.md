@@ -9,18 +9,18 @@ ms.date: 08/03/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 90aa2b9504008783649662019179a5998d534746
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 75b464c140bfda6c3f3559d3bfdbe1e6bc2e7f24
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543091"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760732"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Plánování a Správa nákladů pro Azure Blob Storage
 
 Tento článek vám pomůže plánovat a spravovat náklady na službu Azure Blob Storage. Nejprve odhadujte náklady pomocí cenové kalkulačky Azure. Po vytvoření účtu úložiště Optimalizujte účet, abyste platíte jenom za to, co potřebujete. Pomocí funkcí pro správu nákladů můžete nastavit rozpočty a sledovat náklady. Můžete si také projít předpokládané náklady a monitorovat trendy útraty a identifikovat oblasti, kde byste mohli chtít působit.
 
-Pamatujte na to, že náklady na Azure Storage jsou jenom částí měsíčních nákladů na faktuře Azure. I když tento článek vysvětluje, jak odhadnout a spravovat náklady na Azure Storage, účtují se vám všechny služby a prostředky Azure, které se používají pro vaše předplatné Azure, včetně služeb třetích stran. Až budete obeznámeni se správou nákladů na Azure Storage, můžete použít podobné metody pro správu nákladů na všechny služby Azure používané ve vašem předplatném.
+Pamatujte, že náklady na úložiště objektů BLOB jsou jenom částí měsíčních nákladů na faktuře Azure. I když tento článek vysvětluje, jak odhadnout a spravovat náklady na úložiště objektů blob, účtují se vám všechny služby a prostředky Azure, které se používají pro vaše předplatné Azure, včetně služeb třetích stran. Až budete obeznámeni se správou nákladů na úložiště objektů blob, můžete použít podobné metody pro správu nákladů na všechny služby Azure používané ve vašem předplatném.
 
 ## <a name="estimate-costs"></a>Odhadněte náklady
 

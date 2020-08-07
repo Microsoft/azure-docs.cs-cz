@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: 011f94cf24c6148ee01275541b090ba28d697018
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6f8181568e5996bfb3c99ae25fb801fa62f3af1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052495"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904254"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -58,6 +58,13 @@ V tomto článku se dozvíte, jak nahrát a indexovat videa pomocí těchto mož
 
 Seznam formátů souborů, které můžete použít s Video Indexer, najdete v článku o [formátech vstupního kontejneru/souboru](../latest/media-encoder-standard-formats.md#input-containerfile-formats) .
 
+## <a name="video-files-storage"></a>Úložiště souborů videí
+
+- S placeným účtem Video Indexer vytvoříte Video Indexer účet, který je připojený k vašemu předplatnému Azure a účtu Azure Media Services. Další informace najdete v tématu [Vytvoření účtu video indexer připojeného k Azure](connect-to-azure.md).
+- Videosoubory se ukládají v Azure Storage pomocí Azure Media Services. Nejedná se o žádné časové omezení.
+- Videosoubory a zvukové soubory můžete vždycky odstranit, stejně jako veškerá metadata a přehledy z nich extrahovat Video Indexer. Po odstranění souboru z Video Indexer se soubor a jeho metadata a přehledy trvale odeberou z Video Indexer. Pokud jste ale ve službě Azure Storage implementovali vlastní řešení zálohování, zůstane soubor ve službě Azure Storage.
+- Průniku videa je identické, bez ohledu na to, jestli je nahrávání hotové, Video Indexer web nebo pomocí rozhraní API pro nahrání.
+   
 ## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a name="website"></a>Nahrávání a indexování videa pomocí Video Indexer webu
 
 > [!NOTE]
@@ -141,6 +148,9 @@ Parametr **priority** se podporuje jenom pro placené účty.
 Po nahrání videa na server ho Video Indexer volitelně zakóduje. Pak bude pokračovat k indexování a analýze videa. Když Video Indexer dokončí analýzu, dostanete oznámení s ID videa.  
 
 Při použití API [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) (Nahrát video) nebo [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) (Znovu indexovat video) je jedním z volitelných parametrů `streamingPreset`. Pokud nastavíte `streamingPreset` na `Default`, `SingleBitrate` nebo `AdaptiveBitrate`, aktivuje se proces kódování. Po dokončení úloh indexování a kódování se video publikuje, takže ho můžete také streamovat. Koncový bod streamování, ze kterého chcete video streamovat, musí být ve stavu **Spuštěno**.
+
+V případě SingleBitrate se náklady na kodér budou vztahovat na výstup. Pokud je výška videa větší nebo rovna 720, Video Indexer ji kódovat jako 1280 × 720. Jinak jako 640x468.
+Výchozím nastavením je [kódování zohledňující obsah](../latest/content-aware-encoding.md).
 
 Pokud chcete spustit úlohy indexování a kódování, [účet Azure Media Services připojený k vašemu účtu Video Indexer](connect-to-azure.md) vyžaduje rezervované jednotky. Další informace najdete v článku o [škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md). Protože jsou tyto úlohy náročné na výpočetní prostředky, důrazně doporučujeme typ jednotky S3. Počet rezervovaných jednotek určuje maximální počet úloh, které můžou běžet paralelně. Základní doporučení je 10 rezervovaných jednotek S3. 
 

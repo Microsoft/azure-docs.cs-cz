@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9f7f3e0dfd7da98cade0183825463c6b17f49dc1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 69d346d554ee6f30e4ef578bacf358aaba722b5b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077439"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825170"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Kurz: Správa disků v Azure pomocí Azure PowerShellu
 
@@ -40,7 +40,7 @@ Při vytvoření virtuálního počítače Azure se k němu automaticky připoj�
 
 **Disk s operačním systémem:** Disky s operačním systémem můžou mít velikost až 4 terabajty a hostují operační systém virtuálního počítače. Pokud vytvoříte nový virtuální počítač z bitové kopie [Azure Marketplace](https://azure.microsoft.com/marketplace/) , obvykle 127 GB (ale některé image mají menší velikosti disků s operačním systémem). Disku s operačním systémem je ve výchozím nastavení přiřazené písmeno jednotky *C*. Konfigurace ukládání do mezipaměti na disku je u disku s operačním systémem optimalizovaná s ohledem na výkon operačního systému. Disk s operačním systémem **by neměl** hostit aplikace nebo data. Pro aplikace a data použijte datový disk, který je podrobněji popsán dále v tomto článku.
 
-**Dočasný disk:** Dočasné disky používají jednotku SSD, která je umístěná na stejném hostiteli Azure jako virtuální počítač. Dočasné disky mají vysoký výkon a můžou se používat pro operace, jako je zpracování dočasných dat. V případě přesunutí virtuálního počítače na nového hostitele se ale všechna data uložená na dočasném disku odeberou. Velikost dočasného disku se určuje podle [velikosti virtuálního počítače](sizes.md). Dočasným diskům se ve výchozím nastavení přiřazuje písmeno jednotky *D*.
+**Dočasný disk:** Dočasné disky používají jednotku SSD, která je umístěná na stejném hostiteli Azure jako virtuální počítač. Dočasné disky mají vysoký výkon a můžou se používat pro operace, jako je zpracování dočasných dat. V případě přesunutí virtuálního počítače na nového hostitele se ale všechna data uložená na dočasném disku odeberou. Velikost dočasného disku se určuje podle [velikosti virtuálního počítače](../sizes.md). Dočasným diskům se ve výchozím nastavení přiřazuje písmeno jednotky *D*.
 
 ## <a name="azure-data-disks"></a>Datové disky Azure
 
@@ -57,7 +57,7 @@ Azure poskytuje dva typy disků.
 ### <a name="premium-disk-performance"></a>Výkon disků Premium
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
-V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekundu (IOPS), ale prokládáním více datových disků je možné dosáhnout i vyšší úrovně výkonu. Například k virtuálnímu počítači Standard_GS5 je možné připojit 64 datových disků. Pokud je velikost každého z těchto disků P30, můžete dosáhnout maximální hodnoty 80 000 IOPS. Podrobné informace o maximálních hodnotách IOPS u virtuálních počítačů najdete v článku o [velikostech a typech virtuálních počítačů](./sizes.md).
+V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekundu (IOPS), ale prokládáním více datových disků je možné dosáhnout i vyšší úrovně výkonu. Například k virtuálnímu počítači Standard_GS5 je možné připojit 64 datových disků. Pokud je velikost každého z těchto disků P30, můžete dosáhnout maximální hodnoty 80 000 IOPS. Podrobné informace o maximálních hodnotách IOPS u virtuálních počítačů najdete v článku o [velikostech a typech virtuálních počítačů](../sizes.md).
 
 ## <a name="create-and-attach-disks"></a>Vytvoření a připojení disků
 

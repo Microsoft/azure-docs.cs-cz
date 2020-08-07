@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 08/5/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6f52ddbfbdfa30108670b985fba5c5263ce517b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fc4de3ef934e2d1b9dcff46c78f45e7d0f3b6d8
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85551674"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845455"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Volání služeb pro službu, která používají delegovanou identitu uživatele v toku za jménem
 
@@ -51,7 +51,7 @@ Zaregistrujte jak službu střední vrstvy, tak klientskou aplikaci ve službě 
 
 ### <a name="register-the-middle-tier-service"></a>Registrace služby střední vrstvy
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V horním panelu vyberte svůj účet a v seznamu **adresář** vyberte klienta Active Directory pro vaši aplikaci.
 1. V levém podokně vyberte **Další služby** a zvolte **Azure Active Directory**.
 1. Vyberte **Registrace aplikací** a pak **novou registraci**.
@@ -59,17 +59,17 @@ Zaregistrujte jak službu střední vrstvy, tak klientskou aplikaci ve službě 
 1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 1. Nastavte identifikátor URI přesměrování na základní adresu URL.
 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
-1. Před ukončením Azure Portal vygenerujte tajný klíč klienta.
 1. V Azure Portal zvolte aplikaci a vyberte **certifikáty & tajné klíče**.
 1. Vyberte **nový tajný klíč klienta** a přidejte tajný klíč s dobou trvání jeden rok nebo dva roky.
 1. Když tuto stránku uložíte, Azure Portal zobrazí tajnou hodnotu. Zkopírujte a uložte tajnou hodnotu v bezpečném umístění.
+1. Vytvořte v aplikaci obor na stránce **vystavení rozhraní API** pro vaši aplikaci a klikněte na Přidat obor.  Portál může vyžadovat, abyste vytvořili taky identifikátor URI ID aplikace. 
 
 > [!IMPORTANT]
 > Ke konfiguraci nastavení aplikace v implementaci potřebujete tajný klíč. Tato hodnota tajného klíče se znovu nezobrazí a nedá se získat jakýmkoli jiným způsobem. Nahrajte ho hned tak, jak je vidět v Azure Portal.
 
 ### <a name="register-the-client-application"></a>Registrace klientské aplikace
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V horním panelu vyberte svůj účet a v seznamu **adresář** vyberte klienta Active Directory pro vaši aplikaci.
 1. V levém podokně vyberte **Další služby** a zvolte **Azure Active Directory**.
 1. Vyberte **Registrace aplikací** a pak **novou registraci**.
@@ -79,7 +79,7 @@ Zaregistrujte jak službu střední vrstvy, tak klientskou aplikaci ve službě 
 1. Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. Nakonfigurujte oprávnění pro vaši aplikaci. V okně **oprávnění rozhraní API**vyberte **Přidat oprávnění** a pak **Moje rozhraní API**.
 1. Do textového pole zadejte název služby střední vrstvy.
-1. Zvolte **vybrat oprávnění** a pak vyberte **přístup \<service name> **.
+1. Zvolte **vybrat oprávnění** a pak vyberte rozsah, který jste vytvořili v posledním kroku registrace střední vrstvy.
 
 ### <a name="configure-known-client-applications"></a>Konfigurovat známé klientské aplikace
 
@@ -105,7 +105,7 @@ Klientská aplikace je zabezpečená buď sdíleným tajným klíčem, nebo cert
 
 Při použití sdíleného tajného klíče obsahuje požadavek na přístupový token služby na službu následující parametry:
 
-| Parametr | Typ | Description |
+| Parametr | Typ | Popis |
 | --- | --- | --- |
 | grant_type |vyžadováno | Typ požadavku tokenu Požadavek OBO používá JSON Web Token (JWT), takže hodnota musí být **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
 | Neplatný |vyžadováno | Hodnota přístupového tokenu použitého v žádosti |
@@ -139,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Požadavek na přístupový token služby na službu s certifikátem obsahuje následující parametry:
 
-| Parametr | Typ | Description |
+| Parametr | Typ | Popis |
 | --- | --- | --- |
 | grant_type |vyžadováno | Typ požadavku tokenu Požadavek OBO používá přístupový token JWT, takže hodnota musí být **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
 | Neplatný |vyžadováno | Hodnota tokenu použitého v požadavku. |
@@ -249,7 +249,7 @@ Některé webové služby založené na protokolu OAuth potřebují přístup k 
 
 Požadavek služby na službu pro kontrolní výraz SAML obsahuje následující parametry:
 
-| Parametr | Typ | Description |
+| Parametr | Typ | Popis |
 | --- | --- | --- |
 | grant_type |vyžadováno | Typ požadavku tokenu Pro požadavek, který používá JWT, musí být hodnota **urn: IETF: params: OAuth: Grant-Type: JWT-nosič**. |
 | Neplatný |vyžadováno | Hodnota přístupového tokenu použitého v žádosti|
