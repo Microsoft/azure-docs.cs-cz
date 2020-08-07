@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 03/31/2020
-ms.openlocfilehash: 8f58fcef1a35494053803d98b43ce97fed7205e0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 08/06/2020
+ms.openlocfilehash: 23b749a45e130e99b660cd5bc56349732159e340
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373687"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905492"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží v Azure Machine Learning
 
@@ -131,7 +131,7 @@ V některých případech může být užitečné, pokud při dotazování na n�
 
     Případně můžete použít skripty init, pokud máte potíže s instalací v knihovně Python. Tento přístup není oficiálně podporován. Další informace najdete v tématu [skripty init v oboru clusteru](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-* **Chyba importu datacihly: název ' Timedelta ' nelze importovat z ' PANDAS. _libs. tslibs '**: Pokud se vám tato chyba zobrazí při použití automatizovaného strojového učení, spusťte na poznámkovém bloku tyto dva řádky:
+* **Chyba importu datacihly: `Timedelta` `pandas._libs.tslibs` název nelze importovat **: Pokud se při použití automatizovaného strojového učení zobrazí tato chyba, spusťte na poznámkovém bloku tyto dva řádky:
     ```
     %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
     %sh /databricks/python/bin/pip install pandas==0.23.4
@@ -219,7 +219,7 @@ Omezení a známé problémy pro sledování posunu dat:
     | Kategorické | String, bool, int, float | Počet jedinečných hodnot ve funkci je menší než 100 a menší než 5% počtu řádků. | Hodnota null se považuje za svou vlastní kategorii. | 
     | Číselné | int, float | Hodnoty ve funkci jsou číselného datového typu a nesplňují podmínky pro funkci kategorií. | Funkce byla vynechána, pokud >15% hodnot mají hodnotu null. | 
 
-* Když jste [vytvořili monitor](how-to-monitor-datasets.md) DataMarket, ale nevidíte data na stránce **monitorování datových sad** v Azure Machine Learning studiu, zkuste následující.
+* Když jste [vytvořili monitor pro posun dat](how-to-monitor-datasets.md) , ale nevidíte data na stránce **monitorování datových sad** v Azure Machine Learning studiu, zkuste následující.
 
     1. Ověřte, zda jste v horní části stránky vybrali rozsah dat vpravo.  
     1. Na kartě **monitorování datových sad** vyberte odkaz experiment pro kontrolu stavu spuštění.  Tento odkaz je na pravé straně tabulky.
@@ -283,7 +283,7 @@ time.sleep(600)
 
 ## <a name="automated-machine-learning"></a>Automatizované strojové učení
 
-* **TensorFlow**: od verze 1.5.0 sady SDK služba automatizovaného strojového učení neinstaluje modely TensorFlow ve výchozím nastavení. Pokud chcete nainstalovat tensorflow a používat ho s automatizovanými experimenty ML, nainstalujte tensorflow = = 1.12.0 prostřednictvím CondaDependecies. 
+* **TensorFlow**: od verze 1.5.0 sady SDK služba automatizovaného strojového učení neinstaluje modely TensorFlow ve výchozím nastavení. Pokud chcete nainstalovat TensorFlow a používat ho s automatizovanými experimenty ML, nainstalujte TensorFlow = = 1.12.0 prostřednictvím CondaDependecies. 
  
    ```python
    from azureml.core.runconfig import RunConfiguration
@@ -382,5 +382,5 @@ Další články týkající se řešení potíží najdete Azure Machine Learni
 * [Řešení potíží s nasazením Docker pomocí Azure Machine Learning](how-to-troubleshoot-deployment.md)
 * [Ladění kanálů strojového učení](how-to-debug-pipelines.md)
 * [Ladění třídy ParallelRunStep ze sady SDK Azure Machine Learning](how-to-debug-parallel-run-step.md)
-* [Interaktivní ladění výpočetní instance Machine Learning s VS Code](how-to-set-up-vs-code-remote.md)
+* [Interaktivní ladění výpočetní instance Machine Learning s VS Code](how-to-debug-visual-studio-code.md)
 * [Použití Application Insights k ladění kanálů strojového učení](how-to-debug-pipelines-application-insights.md)

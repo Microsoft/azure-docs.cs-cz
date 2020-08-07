@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
-ms.custom: tracking-python
-ms.openlocfilehash: 0f96cbd86921428a85aa69f3561252aeb7fd67b5
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-python
+ms.openlocfilehash: b927a0a64256283536a73002cc5915bcaddd2efc
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118215"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873139"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Rychlý Start: vytvoření databáze grafů v Azure Cosmos DB pomocí Pythonu a Azure Portal
 
@@ -186,7 +186,7 @@ Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobr
 
 5. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností. Všimněte si, že pro každou osobu v grafu můžete vytvořit jedinečné vlastnosti. Vyžaduje se pouze klíč id.
 
-    Klíč|hodnota|Poznámky
+    Klíč|value|Poznámky
     ----|----|----
     PK|/pk| 
     id|ashley|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
@@ -204,7 +204,7 @@ Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobr
 
 9. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností:
 
-    Klíč|hodnota|Poznámky
+    Klíč|value|Poznámky
     ----|----|----
     PK|/pk| 
     id|rakesh|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: f508974891266735c5c193baa116771f11dc40a7
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 2b99d032b953caecfca2b34d5eadafe94f45f307
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388097"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809369"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Správa instancí v Durable Functions v Azure
 
@@ -281,7 +281,7 @@ func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 
 Spíše než dotazování jedné instance orchestrace v čase, může být efektivnější dotazování na ně.
 
-Můžete použít metodu [ListInstancesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET), [getStatusAll](https://docs.microsoft.com/javascript/api/durable-functions/durableorchestrationclient?view=azure-node-latest#getstatusall--) (JavaScript) nebo `get_status_all` (Python) pro dotazování stavů všech instancí orchestrace. V rozhraní .NET můžete předat `CancellationToken` objekt pro případ, že ho chcete zrušit. Metoda vrátí seznam objektů, které reprezentují instance orchestrace odpovídající parametrům dotazu.
+Můžete použít metodu [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET), [getStatusAll](/javascript/api/durable-functions/durableorchestrationclient?view=azure-node-latest#getstatusall--) (JavaScript) nebo `get_status_all` (Python) pro dotazování stavů všech instancí orchestrace. V rozhraní .NET můžete předat `CancellationToken` objekt pro případ, že ho chcete zrušit. Metoda vrátí seznam objektů, které reprezentují instance orchestrace odpovídající parametrům dotazu.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -360,7 +360,7 @@ func durable get-instances
 
 Co když opravdu nepotřebujete všechny informace, které může dotaz standardní instance poskytnout? Například co když hledáte jenom čas vytvoření orchestrace, nebo běhový stav orchestrace? Dotaz můžete zúžit použitím filtrů.
 
-Použijte metodu [ListInstancesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET) nebo [getStatusBy](https://docs.microsoft.com/javascript/api/durable-functions/durableorchestrationclient?view=azure-node-latest#getstatusby-date---undefined--date---undefined--orchestrationruntimestatus---) (JavaScript) k získání seznamu instancí orchestrace, které odpovídají sadě předdefinovaných filtrů.
+Použijte metodu [ListInstancesAsync](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) (.NET) nebo [getStatusBy](/javascript/api/durable-functions/durableorchestrationclient?view=azure-node-latest#getstatusby-date---undefined--date---undefined--orchestrationruntimestatus---) (JavaScript) k získání seznamu instancí orchestrace, které odpovídají sadě předdefinovaných filtrů.
 
 # <a name="c"></a>[C#](#tab/csharp)
 

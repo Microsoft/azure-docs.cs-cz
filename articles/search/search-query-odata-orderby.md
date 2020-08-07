@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/05/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 68e6ec0af0b24771b21dac35c944fc7fa098b404
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 333e48ff963ec42dd2ee00956fa046a5a038c099
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203106"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903778"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Syntaxe $orderby OData v Azure Kognitivní hledání
 
  Pomocí [parametru **$OrderBy** OData](query-odata-filter-orderby-syntax.md) můžete pro výsledky hledání ve službě Azure kognitivní hledání použít vlastní pořadí řazení. V tomto článku se podrobně popisuje syntaxe **$OrderBy** . Obecnější informace o tom, jak používat **$OrderBy** při prezentaci výsledků hledání, najdete v tématu [jak pracovat s výsledky hledání v Azure kognitivní hledání](search-pagination-page-layout.md).
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 Parametr **$OrderBy** přijímá čárkami oddělený seznam až 32 **klauzulí ORDER by**. Syntaxe klauzule ORDER by je popsána následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)):
 
@@ -50,7 +50,9 @@ K dispozici je také diagram interaktivní syntaxe:
 > [!NOTE]
 > Kompletní EBNF najdete v článku [referenční informace k syntaxi výrazu OData pro Azure kognitivní hledání](search-query-odata-syntax-reference.md) .
 
-Každá klauzule má kritéria řazení, volitelně následované směrem řazení ( `asc` pro vzestupné nebo `desc` sestupné). Pokud nezadáte směr, výchozí hodnota je vzestupné. Kritéria řazení mohou být buď cesta k `sortable` poli, nebo volání [`geo.distance`](search-query-odata-geo-spatial-functions.md) [`search.score`](search-query-odata-search-score-function.md) funkcí nebo.
+Každá klauzule má kritéria řazení, volitelně následované směrem řazení ( `asc` pro vzestupné nebo `desc` sestupné). Pokud nezadáte směr, výchozí hodnota je vzestupné. Pokud jsou v poli hodnoty null, zobrazí se nejprve hodnoty null, pokud je řazení `asc` a poslední, pokud je řazení `desc` .
+
+Kritéria řazení mohou být buď cesta k `sortable` poli, nebo volání [`geo.distance`](search-query-odata-geo-spatial-functions.md) [`search.score`](search-query-odata-search-score-function.md) funkcí nebo.
 
 Pokud má více dokumentů stejné kritérium řazení a funkce se `search.score` nepoužívá (například pokud řadíte podle číselného `Rating` pole a tři dokumenty mají hodnocení 4), bude počet vazeb v sestupném pořadí rozdělen podle skóre dokumentu. Pokud jsou skóre dokumentu stejné (například když v žádosti není zadán dotaz fulltextového vyhledávání), relativní řazení vázaných dokumentů je neurčité.
 

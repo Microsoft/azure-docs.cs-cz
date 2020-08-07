@@ -1,6 +1,7 @@
 ---
-title: 'Rychlý Start: přístup k webovým rozhraním API pro aplikaci – Microsoft Identity Platform | Azure'
-description: V tomto rychlém startu nakonfigurujte aplikaci registrovanou na platformě Microsoft identity, aby zahrnovala identifikátory URI přesměrování, přihlašovací údaje nebo oprávnění pro přístup k webovým rozhraním API.
+title: 'Rychlý Start: Konfigurace aplikace pro přístup k webovému rozhraní API | Azure'
+titleSuffix: Microsoft identity platform
+description: V tomto rychlém startu nakonfigurujete aplikaci registrovanou na platformě Microsoft identity, která bude zahrnovat identifikátory URI přesměrování, přihlašovací údaje nebo oprávnění pro přístup k webovým rozhraním API.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 210ed5b8ad53fd59a46e160fe5fc72633d115d44
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c91c3dfc23c0a8a9dffb38788f3a8fea08096f5c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82082318"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825051"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Rychlý Start: Konfigurace klientské aplikace pro přístup k webovým rozhraním API
+# <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Rychlý Start: Konfigurace klientské aplikace pro přístup k webovému rozhraní API
 
 V tomto rychlém startu přidáte identifikátory URI přesměrování, přihlašovací údaje nebo oprávnění pro přístup k webovým rozhraním API vaší aplikace. Webová nebo důvěrná klientská aplikace musí vytvořit zabezpečené přihlašovací údaje, aby se účastnily autorizačního toku, který vyžaduje ověření. Výchozí metodou ověřování podporovanou webem Azure Portal je ID klienta a tajný klíč. Během tohoto procesu aplikace získá přístupový token.
 
@@ -27,9 +28,8 @@ Aby mohl klient získat přístup k webovému rozhraní API vystavenému pomocí
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Dokončení [rychlého startu: registrace aplikace s platformou Microsoft Identity](quickstart-register-app.md)
-* Kontrola [oprávnění a souhlasu v koncovém bodě Microsoft Identity Platform](v2-permissions-and-consent.md).
-* Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Dokončení [rychlého startu: Konfigurace aplikace k vystavení webového rozhraní API](quickstart-configure-app-expose-web-apis.md)
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Přihlášení k webu Azure Portal a výběr aplikace
 
@@ -50,7 +50,7 @@ Do své aplikace můžete přidat vlastní identifikátory URI pro přesměrová
 1. Zadejte URI pro přesměrování pro vaši aplikaci.
 
    * V případě webových aplikací zadejte základní adresu URL vaší aplikace. Například `http://localhost:31544` může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci.
-   * V případě veřejných aplikací zadejte identifikátor URI, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte hodnotu specifickou pro vaši aplikaci, například: `https://MyFirstApp`.
+   * V případě veřejných aplikací zadejte identifikátor URI, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte hodnotu specifickou pro vaši aplikaci, například: `https://MyFirstApp` .
 1. Vyberte **Uložit**.
 
 Pokud si chcete vybrat z navrhovaných identifikátorů URI pro přesměrování pro veřejné klienty, postupujte takto:
@@ -109,11 +109,11 @@ Při konfiguraci nastavení aplikace na základě platformy nebo zařízení cí
    |-------------------------|-----------------------------------|
    | **Web**              | Zadejte **identifikátor URI pro přesměrování** vaší aplikace. |
    | **iOS/macOS**              | Zadejte **ID sady prostředků**aplikace, které najdete v Xcode v souboru info. plist nebo nastavení sestavení. Přidání ID sady prostředků automaticky vytvoří identifikátor URI přesměrování pro aplikaci. |
-   | **Android**          | Zadejte **název balíčku**aplikace, který můžete najít v souboru souboru AndroidManifest. XML.<br/>Vygenerujte a zadejte **hodnotu hash podpisu**. Přidání hodnoty hash signatury automaticky vytvoří identifikátor URI přesměrování pro aplikaci.  |
-   | **Mobilní a desktopové aplikace**  | Nepovinný parametr. Pokud vytváříte aplikace pro stolní počítače a zařízení, vyberte jeden z doporučených **identifikátorů URI pro přesměrování** .<br/>Nepovinný parametr. Zadejte **vlastní identifikátor URI pro přesměrování**, který se používá jako umístění, kde Azure AD bude uživatele přesměrovat v reakci na žádosti o ověření. Například pro aplikace .NET Core, kde chcete interakce, použijte `http://localhost`. |
+   | **Android**          | Zadejte **název balíčku**aplikace, který můžete najít v souboru AndroidManifest.xml.<br/>Vygenerujte a zadejte **hodnotu hash podpisu**. Přidání hodnoty hash signatury automaticky vytvoří identifikátor URI přesměrování pro aplikaci.  |
+   | **Mobilní a desktopové aplikace**  | Nepovinný parametr. Pokud vytváříte aplikace pro stolní počítače a zařízení, vyberte jeden z doporučených **identifikátorů URI pro přesměrování** .<br/>Nepovinný parametr. Zadejte **vlastní identifikátor URI pro přesměrování**, který se používá jako umístění, kde Azure AD bude uživatele přesměrovat v reakci na žádosti o ověření. Například pro aplikace .NET Core, kde chcete interakce, použijte `http://localhost` . |
 
    > [!NOTE]
-   > V Active Directory Federation Services (AD FS) (AD FS) a Azure AD B2C musíte také zadat číslo portu.  Například: `http://localhost:1234`. 
+   > V Active Directory Federation Services (AD FS) (AD FS) a Azure AD B2C musíte také zadat číslo portu.  Například: `http://localhost:1234`.
 
    > [!IMPORTANT]
    > Pro mobilní aplikace, které nepoužívají nejnovější knihovnu Microsoft Authentication Library (MSAL) nebo nepoužívají zprostředkovatele, je nutné nakonfigurovat identifikátory URI přesměrování pro tyto aplikace v **desktopových a mobilních zařízeních**.
@@ -200,16 +200,7 @@ Výzva k vyjádření souhlasu nabízí možnost **přijmout** nebo **Zrušit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejděte k dalšímu článku, kde se dozvíte, jak vystavit webová rozhraní API.
+Přejděte k dalšímu rychlému startu v řadě, kde se dozvíte, jak nakonfigurovat typy účtů, které mají přístup k vaší aplikaci. Můžete například chtít omezit přístup jenom na uživatele ve vaší organizaci (jeden tenant) nebo dovolit uživatelům v jiných klientech Azure AD (víceklientské) a s osobními účty Microsoft (MSA).
+
 > [!div class="nextstepaction"]
-> [Rychlý Start: Konfigurace aplikace k vystavení webových rozhraní API](quickstart-configure-app-expose-web-apis.md)
-
-* Další informace o dvou objektech Azure AD, které představují zaregistrovanou aplikaci, a vztahu mezi nimi, najdete v článku o [objektech aplikací a instančních objektech](app-objects-and-service-principals.md).
-
-* Další informace o pokynech pro branding, kterými byste se měli řídit při vývoji aplikací s využitím Azure Active Directory, najdete v článku [Pokyny pro branding aplikací](howto-add-branding-in-azure-ad-apps.md).
-
-* [Rychlý Start: registrace aplikace s platformou Microsoft identity](quickstart-register-app.md)
-
-* [Rychlý Start: Změna účtů podporovaných aplikací](quickstart-modify-supported-accounts.md)
-
-* [Rychlý Start: odebrání aplikace registrované s platformou Microsoft identity](quickstart-remove-app.md)
+> [Úprava účtů podporovaných aplikací](quickstart-modify-supported-accounts.md)

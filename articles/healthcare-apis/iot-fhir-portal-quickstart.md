@@ -1,35 +1,35 @@
 ---
-title: 'Rychlý Start: nasazení konektoru IoT (Preview) pomocí Azure Portal'
-description: V tomto rychlém startu se dozvíte, jak nasadit, konfigurovat a používat funkci IoT Connector rozhraní API Azure pro FHIR pomocí Azure Portal.
+title: 'Rychlý Start: nasazení konektoru Azure IoT Connector pro FHIR (Preview) pomocí Azure Portal'
+description: V tomto rychlém startu se dozvíte, jak nasadit, konfigurovat a používat funkci Azure IoT Connector pro FHIR rozhraní API Azure pro FHIR pomocí Azure Portal.
 services: healthcare-apis
 author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
-ms.date: 05/11/2020
+ms.date: 08/04/2020
 ms.author: punagpal
-ms.openlocfilehash: 95f5b5f13401c224ccf67c5f013deedf00379de7
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 55d072492a1d90c6964935f2a79f73aacdceff21
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446808"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826768"
 ---
-# <a name="quickstart-deploy-iot-connector-preview-using-azure-portal"></a>Rychlý Start: nasazení konektoru IoT (Preview) pomocí Azure Portal
+# <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>Rychlý Start: nasazení konektoru Azure IoT Connector pro FHIR (Preview) pomocí Azure Portal
 
-Služba IoT Connector je volitelnou funkcí rozhraní Azure API pro FHIR, která poskytuje schopnost ingestovat data ze zařízení s IoMT (internetem lékařských věcí). Ve fázi Preview je funkce IoT Connector dostupná zdarma. V tomto rychlém startu se naučíte:
-- Nasazení a konfigurace konektoru IoT pomocí Azure Portal
-- Použití simulovaného zařízení k posílání dat do konektoru IoT
-- Zobrazení prostředků vytvořených službou IoT Connector v rozhraní Azure API pro FHIR
+Azure IoT Connector pro FHIR * je volitelná funkce Azure API pro FHIR, která poskytuje schopnost ingestovat data ze zařízení s IoMT (internetem lékařských věcí). Ve fázi Preview je funkce Azure IoT Connector for FHIR dostupná zdarma. V tomto rychlém startu se naučíte:
+- Nasazení a konfigurace konektoru Azure IoT pro FHIR pomocí Azure Portal
+- Použití simulovaného zařízení k posílání dat do služby Azure IoT Connector pro FHIR
+- Zobrazení prostředků vytvořených službou Azure IoT Connector pro FHIR v rozhraní API Azure pro FHIR
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Aktivní předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 - Rozhraní Azure API pro FHIR Resource – [nasazení rozhraní Azure API pro FHIR pomocí Azure Portal](fhir-paas-portal-quickstart.md)
 
 ## <a name="go-to-azure-api-for-fhir-resource"></a>Přejít na Azure API pro prostředek FHIR
 
-Otevřete [Azure Portal](https://portal.azure.com) a vyhledejte prostředek **Azure API for FHIR** , pro který byste chtěli vytvořit funkci IoT Connector.
+Otevřete [Azure Portal](https://portal.azure.com) a vyhledejte prostředek Azure **API for FHIR** , pro který chcete vytvořit službu Azure IoT Connector pro funkci FHIR.
 
 [![Azure API pro prostředek FHIR](media/quickstart-iot-fhir-portal/portal-azure-api-fhir.jpg)](media/quickstart-iot-fhir-portal/portal-azure-api-fhir.jpg#lightbox)
 
@@ -37,13 +37,13 @@ V navigační nabídce vlevo klikněte na **konektor IoT (Preview)** v části *
 
 [![Funkce konektoru IoT](media/quickstart-iot-fhir-portal/portal-iot-connectors.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connectors.jpg#lightbox)
 
-## <a name="create-new-iot-connector-preview"></a>Vytvořit nový konektor IoT (Preview)
+## <a name="create-new-azure-iot-connector-for-fhir-preview"></a>Vytvoření nového konektoru Azure IoT Connector pro FHIR (Preview)
 
 Kliknutím na tlačítko **Přidat** otevřete stránku **vytvořit konektor IoT Connector** .
 
 [![Přidat konektor IoT](media/quickstart-iot-fhir-portal/portal-iot-connectors-add.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connectors-add.jpg#lightbox)
 
-Zadejte nastavení pro nový konektor IoT. Klikněte na tlačítko **vytvořit** a očekává se nasazení IoT Connector.
+Zadejte nastavení pro nový konektor Azure IoT pro FHIR. Klikněte na tlačítko **vytvořit** a pro nasazení FHIR očekávat službu Azure IoT Connector.
 
 > [!NOTE]
 > Pro tuto instalaci musíte vybrat **vytvořit** jako hodnotu pro rozevírací seznam **typ řešení** . 
@@ -52,20 +52,20 @@ Zadejte nastavení pro nový konektor IoT. Klikněte na tlačítko **vytvořit**
 
 |Nastavení|Hodnota|Popis |
 |---|---|---|
-|Název konektoru|Jedinečný název|Zadejte název pro identifikaci vašeho konektoru IoT. Tento název by měl být jedinečný v rámci Azure API pro prostředek FHIR. Název může obsahovat jenom malá písmena, číslice a znak spojovníku (-). Musí začínat a končit písmenem nebo číslicí a musí mít délku 3-24 znaků.|
-|Typ řešení|Vyhledat nebo vytvořit|Pokud máte mimo IP síť, vyberte **Vyhledat** v případě, že máte v rozhraní API Azure pro FHIR vytvořit prostředky [zařízení](https://www.hl7.org/fhir/device.html) a [pacient](https://www.hl7.org/fhir/patient.html) FHIR. IoT Connector použije odkaz na tyto prostředky při vytváření FHIR prostředků pro [sledování](https://www.hl7.org/fhir/observation.html) , které reprezentují data zařízení. Vyberte **vytvořit** , když chcete, aby mohl konektor IoT vytvořit holé prostředky zařízení a pacienta v rozhraní API Azure pro FHIR pomocí odpovídajících hodnot identifikátorů přítomných v datech zařízení.|
+|Název konektoru|Jedinečný název|Zadejte název, který identifikuje váš konektor Azure IoT pro FHIR. Tento název by měl být jedinečný v rámci Azure API pro prostředek FHIR. Název může obsahovat jenom malá písmena, číslice a znak spojovníku (-). Musí začínat a končit písmenem nebo číslicí a musí mít délku 3-24 znaků.|
+|Typ řešení|Vyhledat nebo vytvořit|Pokud máte mimo IP síť, vyberte **Vyhledat** v případě, že máte v rozhraní API Azure pro FHIR vytvořit prostředky [zařízení](https://www.hl7.org/fhir/device.html) a [pacient](https://www.hl7.org/fhir/patient.html) FHIR. Azure IoT Connector pro FHIR použije odkaz na tyto prostředky při vytváření prostředku [pozorovacích](https://www.hl7.org/fhir/observation.html) FHIR, který bude reprezentovat data zařízení. Vyberte **vytvořit** , když chcete, aby Azure IoT Connector pro FHIR vytvářelo holé prostředky zařízení a pacienta v rozhraní API Azure pro FHIR pomocí odpovídajících hodnot identifikátorů přítomných v datech zařízení.|
 
-Po dokončení instalace se nově vytvořený konektor IoT Connector zobrazí na stránce **konektory IoT** .
+Po dokončení instalace se nově vytvořený konektor Azure IoT pro FHIR zobrazí na stránce **konektory IoT** .
 
 [![Vytvořil se konektor IoT.](media/quickstart-iot-fhir-portal/portal-iot-connector-created.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connector-created.jpg#lightbox)
 
-## <a name="configure-iot-connector-preview"></a>Konfigurace konektoru IoT (Preview)
+## <a name="configure-azure-iot-connector-for-fhir-preview"></a>Konfigurace Azure IoT Connectoru pro FHIR (Preview)
 
-Konektor IoT potřebuje ke transformaci zpráv zařízení do FHIR prostředků pro sledování v systému dvě šablony mapování: **mapování zařízení** a **mapování FHIR**. Váš konektor IoT nebude plně funkční, dokud se tato mapování neodešlou.
+Azure IoT Connector pro FHIR potřebuje dvě šablony mapování pro transformaci zpráv zařízení na prostředky sledování založené na FHIR: **mapování zařízení** a **mapování FHIR**. Váš konektor Azure IoT pro FHIR není plně funkční, dokud se tato mapování neodešlou.
 
 [![Chybějící mapování konektoru IoT Connector](media/quickstart-iot-fhir-portal/portal-iot-connector-missing-mappings.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connector-missing-mappings.jpg#lightbox)
 
-Pokud chcete nahrát šablony mapování, klikněte na nově nasazený konektor IoT a přejděte na stránku **IoT Connector** .
+Pokud chcete nahrát šablony mapování, klikněte na nově nasazený konektor Azure IoT pro FHIR a přejděte na stránku **IoT Connector** .
 
 [![Kliknutí na konektor IoT Connector](media/quickstart-iot-fhir-portal/portal-iot-connector-click.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connector-click.jpg#lightbox)
 
@@ -101,7 +101,6 @@ Na stránce **mapování zařízení** přidejte následující skript do editor
 ```
 
 [![Mapování zařízení IoT Connector](media/quickstart-iot-fhir-portal/portal-iot-device-mapping.jpg)](media/quickstart-iot-fhir-portal/portal-iot-device-mapping.jpg#lightbox)
-
 
 #### <a name="fhir-mapping"></a>Mapování FHIR
 
@@ -142,7 +141,7 @@ Na stránce **mapování FHIR** přidejte následující skript do editoru JSON 
 
 ## <a name="generate-a-connection-string"></a>Vygenerování připojovacího řetězce
 
-Zařízení IoMT potřebuje připojovací řetězec pro připojení a posílání zpráv do konektoru IoT. Na stránce **konektor IoT** pro nově nasazený konektor IoT vyberte tlačítko **Spravovat připojení klienta** . 
+Zařízení IoMT potřebuje připojovací řetězec pro připojení a posílání zpráv do služby Azure IoT Connector pro FHIR. Na stránce **konektor IoT** pro nově nasazený konektor Azure IoT Connector pro FHIR vyberte tlačítko **Spravovat připojení klienta** . 
 
 [![IoT Connector klikněte na Spravovat připojení klientů.](media/quickstart-iot-fhir-portal/portal-iot-connector-click-client-connections.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connector-click-client-connections.jpg#lightbox)
 
@@ -169,40 +168,42 @@ Nasaďte [šablonu aplikace pro monitorování nepřetržitého pacienta](https:
 > [!NOTE]
 > Až budou vaše skutečná zařízení připravená, můžete pomocí stejné aplikace IoT Central připojit [zařízení](https://docs.microsoft.com/azure/iot-central/core/howto-set-up-template) a vyměnit simulátory zařízení. Data zařízení se automaticky začnou přesměrovat do FHIR. 
 
-## <a name="connect-your-iot-data-with-the-iot-connector-preview"></a>Připojení dat IoT pomocí konektoru IoT (Preview)
-Po nasazení IoT Central aplikace začnou vaše dvě předem připravená simulovaná zařízení generovat telemetrii. V tomto kurzu budeme ingestovat telemetrii z *inteligentního* simulátoru opravy do FHIR prostřednictvím konektoru IoT. Chcete-li exportovat data IoT do konektoru IoT, chceme [v rámci IoT Central nastavit průběžný export dat](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#set-up-data-export). Na stránce průběžné exportu dat:
+## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>Připojení dat IoT k Azure IoT Connectoru pro FHIR (Preview)
+Po nasazení IoT Central aplikace začnou vaše dvě předem připravená simulovaná zařízení generovat telemetrii. V tomto kurzu budeme ingestovat telemetrii z *inteligentního* simulátoru opravy do FHIR prostřednictvím služby Azure IoT Connector pro FHIR. Chcete-li exportovat data IoT do služby Azure IoT Connector pro FHIR, chceme [v rámci IoT Central nastavit průběžný export dat](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#set-up-data-export). Na stránce průběžné exportu dat:
 - Jako cíl exportu vyberte *Azure Event Hubs* .
 - Vyberte *použít hodnotu připojovacího řetězce* pro **Event Hubs pole obor názvů** .
-- Zadejte připojovací řetězec konektoru IoT, který jste získali v předchozím kroku pro pole **připojovací řetězec** .
+- Poskytněte konektor Azure IoT Connector pro připojovací řetězec FHIR, který jste získali v předchozím kroku pro pole **připojovací řetězec** .
 - *Možnost zachování* **telemetrie** pro **data pro export** pole
 
 ## <a name="view-device-data-in-azure-api-for-fhir"></a>Zobrazení dat zařízení v rozhraní Azure API pro FHIR
 
-Prostředky pro sledování založené na FHIR, které vytvořila služba IoT Connector, můžete zobrazit v rozhraní Azure API pro FHIR pomocí post. Nastavte svého poskytovatele [pro přístup k rozhraní API Azure pro FHIR](access-fhir-postman-tutorial.md) a `GET` vyžádejte si požadavek na `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` zobrazení informací o prostředcích FHIR pro sledování pomocí hodnoty srdcových sazeb. 
+Můžete zobrazit prostředky pro sledování založené na FHIR, které vytvořila služba Azure IoT Connector pro FHIR v Azure API pro FHIR pomocí post. Nastavte svého poskytovatele [pro přístup k rozhraní API Azure pro FHIR](access-fhir-postman-tutorial.md) a `GET` vyžádejte si požadavek na `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` zobrazení informací o prostředcích FHIR pro sledování pomocí hodnoty srdcových sazeb. 
 
 > [!TIP]
 > Ujistěte se, že váš uživatel má odpovídající přístup k rozhraní Azure API pro rovinu dat FHIR. Pomocí [řízení přístupu na základě role Azure (Azure RBAC)](configure-azure-rbac.md) přiřaďte požadované role roviny dat.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete instanci služby IoT Connector odstranit odebráním přidružené skupiny prostředků nebo přidruženého rozhraní Azure API pro službu FHIR nebo samotné instance konektoru IoT. 
+Pokud už je nepotřebujete, můžete instanci Azure IoT Connectoru pro FHIR odstranit odebráním přidružené skupiny prostředků nebo přidruženého rozhraní Azure API pro službu FHIR nebo samotné instance Azure IoT Connectoru pro instanci FHIR. 
 
-Pokud chcete instanci služby IoT Connector odebrat přímo, vyberte stránku instance ze všech **konektorů IoT** a přejděte na stránku **IoT Connector** a klikněte na tlačítko **Odstranit** . Po zobrazení výzvy k potvrzení vyberte **Ano** . 
+Pokud chcete přímo odebrat službu Azure IoT Connector pro instanci FHIR, vyberte stránku instance ze služby **IoT** Connectors, přejděte na stránku **IoT Connector** a klikněte na tlačítko **Odstranit** . Po zobrazení výzvy k potvrzení vyberte **Ano** . 
 
 [![Odstranit instanci konektoru IoT](media/quickstart-iot-fhir-portal/portal-iot-connector-delete.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connector-delete.jpg#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto průvodci rychlým startem jste nasadili funkci IoT Connector do svého prostředku Azure API pro FHIR. Chcete-li získat další informace o službě IoT Connector, vyberte níže v následujících krocích:
+V tomto průvodci rychlým startem jste nasadili funkci Azure IoT Connector for FHIR do svého prostředku Azure API pro FHIR. Pokud chcete získat další informace o službě Azure IoT Connector pro FHIR, vyberte níže v následujících krocích:
 
-Pochopení různých fází toku dat v rámci služby IoT Connector.
+Pochopení různých fází toku dat v rámci služby Azure IoT Connector pro FHIR.
 
 >[!div class="nextstepaction"]
->[Tok dat konektoru IoT](iot-data-flow.md)
+>[Azure IoT Connector pro tok dat FHIR](iot-data-flow.md)
 
 Naučte se konfigurovat konektor IoT pomocí šablon pro mapování zařízení a FHIR.
 
 >[!div class="nextstepaction"]
->[Šablony mapování konektoru IoT](iot-mapping-templates.md)
+>[Azure IoT Connector pro šablony mapování FHIR](iot-mapping-templates.md)
+
+* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview).
 
 FHIR je registrovaná ochranná známka HL7 a používá se s povolením HL7.

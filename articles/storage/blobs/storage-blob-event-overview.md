@@ -1,6 +1,6 @@
 ---
 title: Reakce na události služby Azure Blob Storage | Microsoft Docs
-description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage.
+description: Pomocí Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage a reagovat na ně. Pochopení modelu událostí, filtrování událostí a postupů pro využívání událostí.
 author: normesta
 ms.author: normesta
 ms.date: 04/06/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: dineshm
-ms.openlocfilehash: 8f51b6f94ae8a245471757d256a923570582bb12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62cd31ab6f63aec5ddeb675bca3621a329ab1f2b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809074"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826564"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reakce na události služby Blob Storage
 

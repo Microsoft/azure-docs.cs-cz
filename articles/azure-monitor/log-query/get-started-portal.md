@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 522a13c6de87dd8074b76f95670baf79fc96d419
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075330"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874227"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Kurz: Začínáme s Log Analytics dotazy
 
@@ -32,7 +32,7 @@ Podrobný kurz týkající se psaní dotazů na protokoly najdete v tématu [Za�
 ## <a name="open-log-analytics"></a>Otevřít Log Analytics
 Pokud chcete použít Log Analytics, musíte být přihlášení k účtu Azure. Pokud nemáte účet Azure, [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-K dokončení většiny kroků v tomto kurzu můžete použít [toto ukázkové prostředí](https://portal.loganalytics.io/demo), které zahrnuje spoustu ukázkových dat. V ukázkovém prostředí nebudete moct ukládat dotazy nebo připnout výsledky na řídicí panel.
+K dokončení většiny kroků v tomto kurzu můžete použít [toto ukázkové prostředí](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), které zahrnuje spoustu ukázkových dat. V ukázkovém prostředí nebudete moct ukládat dotazy nebo připnout výsledky na řídicí panel.
 
 Pokud používáte Azure Monitor ke shromažďování dat protokolu aspoň na jednom prostředku Azure, můžete použít také vlastní prostředí. Chcete-li otevřít pracovní prostor Log Analytics, vyberte v Azure Monitor levém navigačním panelu možnost **protokoly**. 
 
@@ -120,7 +120,7 @@ Filtrování výsledků dotazu pro filtrování `Event` výsledků dotazu na **c
    
 1. Vyberte **Filtr**.
    
-   ![Filtrovat](media/get-started-portal/filter.png)
+   ![Filtr](media/get-started-portal/filter.png)
 
 ## <a name="sort-group-and-select-columns"></a>Řazení, seskupení a výběr sloupců
 Pokud chcete výsledky dotazu seřadit podle konkrétního sloupce, jako je například **TimeGenerated [UTC]**, vyberte záhlaví sloupce. Znovu vyberte záhlaví, které chcete přepínat mezi vzestupném a sestupným pořadím.

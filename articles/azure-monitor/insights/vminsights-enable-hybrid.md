@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: ccf4ad960abfd737a9a05d8fdc77a8bb1ea92d2d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3b30cefdd72286c15095828c409a87f173200a7b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417110"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828400"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Povolit Azure Monitor pro virtuální počítače pro hybridní virtuální počítač
 Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače pro virtuální počítač mimo Azure, včetně místních a dalších cloudových prostředí.
@@ -19,7 +19,7 @@ Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače p
 > [!IMPORTANT]
 > Doporučenou metodou povolení hybridních virtuálních počítačů je nejprve povolit [pro servery Azure ARC](../../azure-arc/servers/overview.md) , aby bylo možné virtuální počítače povolit Azure monitor pro virtuální počítače pomocí procesů podobných virtuálním počítačům Azure. Tento článek popisuje, jak připojit hybridní virtuální počítače, pokud se rozhodnete nepoužívat ARC Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte a nakonfigurujte Log Analytics pracovní prostor](vminsights-configure-workspace.md).
 - V části [podporované operační systémy](vminsights-enable-overview.md#supported-operating-systems) se ujistěte, že je podporovaný operační systém virtuálního počítače nebo sady škálování virtuálních počítačů, které chcete povolit. 
@@ -41,7 +41,7 @@ Požadavky na bránu firewall pro agenta Log Analytics jsou k dispozici v člán
 
 Agenta závislostí si můžete stáhnout z těchto umístění:
 
-| Soubor | Operační systém | Verze | SHA-256 |
+| File | Operační systém | Verze | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.4.10090 | B4E1FF9C1E5CD254AA709AEF9723A81F04EC0763C327567C582CE99C0C5A0BAE  |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.4.10090 | A56E310D297CE3B343AE8F4A6F72980F1C3173862D6169F1C713C2CA09660A9F |
@@ -158,7 +158,7 @@ Pokud se instalace agenta závislostí zdařila, ale váš počítač se na map�
 
     **Linux**: vyhledejte běžící proces Microsoft-Dependency-agent.
 
-2. Jste na [cenové úrovni bezplatné Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)? Bezplatný plán umožňuje až pět jedinečných počítačů. Žádné následné počítače se na mapě nezobrazí, i když už předchozí pět neposílá data.
+2. Jste na [cenové úrovni bezplatné Log Analytics](./solutions.md)? Bezplatný plán umožňuje až pět jedinečných počítačů. Žádné následné počítače se na mapě nezobrazí, i když už předchozí pět neposílá data.
 
 3. Odesílá počítač data protokolu a výkonu do Azure Monitor protokolů? Pro váš počítač proveďte následující dotaz:
 

@@ -3,14 +3,14 @@ title: 'Rychlý Start: získání odpovědi z znalostní báze – REST, Python-
 description: Tento rychlý Start založený na REST Python vás provede tím, že vám prostřednictvím programu získá odpověď z znalostní báze.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27, tracking-python
+ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: d985bafe3303acdaf8b47e70a9d5368e3b26335c
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 2d693a63360890b9f658baa1a37d251f311d5617
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610130"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875009"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Rychlý Start: získání odpovědí na otázku ze znalostní báze pomocí Pythonu
 

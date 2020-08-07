@@ -1,6 +1,7 @@
 ---
-title: Kurz jednoduché jednostránkové aplikace v JavaScriptu – Microsoft Identity Platform | Azure
-description: Jak aplikace JavaScript SPA můžou volat rozhraní API, které vyžaduje přístupové tokeny pomocí koncového bodu Azure Active Directory v 2.0
+title: Kurz pro jednostránkové aplikace v JavaScriptu | Azure
+titleSuffix: Microsoft identity platform
+description: V tomto kurzu se naučíte, jak můžou jednostránkové aplikace v JavaScriptu (jednostránkové) volat rozhraní API, které vyžaduje přístupové tokeny vydané platformou Microsoft identity.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: 745132284ee48270b46b6bd2f785d8bec19404fb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 303caf36b613e4bcd6a5c48317710b69a3ffbc0a
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129674"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875213"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA).
 
@@ -25,8 +26,8 @@ Tato příručka ukazuje, jak může jednostránková aplikace v JavaScriptu (SP
 - Získání přístupového tokenu
 - Volání rozhraní API Microsoft Graph nebo jiných rozhraní API, která vyžadují přístupové tokeny z *koncového bodu Microsoft Identity Platform*
 
->[!NOTE]
-> Pokud začínáte s platformou Microsoft identity, doporučujeme začít s [přihlašováním uživatelů a získat přístupový token v rychlém startu pro JavaScript Spa](quickstart-v2-javascript.md).
+>[!TIP]
+> V tomto kurzu se používá MSAL.js V1. x, která je omezená na použití implicitního toku udělení pro jednostránkové aplikace. Místo toho doporučujeme, aby všechny nové aplikace používaly [MSAL.js 2. x a tok autorizačního kódu s podporou PKCE a CORS](tutorial-v2-javascript-auth-code.md) .
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak ukázková aplikace vygenerovaná touto příručkou funguje
 
@@ -268,7 +269,7 @@ Teď máte k dispozici jednoduchý Server, který bude sloužit pro SPA. Zamýš
 
 Než budete pokračovat s ověřováním, zaregistrujte svou aplikaci na **Azure Active Directory**.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a pak nastavte relaci portálu na klienta služby Azure AD, kterého chcete použít.
 1. Přejít na stránku Microsoft Identity Platform for Developers [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
 1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.

@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 06/30/2020
+ms.date: 08/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0aac3d7a4bc2eb8bb83405155b345360f5d2c699
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 48178c2c0e4028cb913b2a07448652719a1f616d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407349"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844724"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>Partneři připojení ExpressRoute a umístění partnerského vztahu
 
@@ -44,14 +44,14 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | --- | --- | --- |
 | **Australská vláda** |Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 |
 | **Evropa** | Francie – střed, Francie – jih, Německo – sever, Německo – středozápad, Severní Evropa, Norsko – východ, Norsko – západ, Švýcarsko – sever, Švýcarsko – západ, Velká Británie – západ, Velká Británie – jih, Západní Evropa |Amsterdam, Amsterdam2, Berlín, Kodaň, Dublin, Frankfurt, Ženeva, Londýn, London2, Marseille, Milán, Mnichov, Newport (Wales), Oslo, Paříž, Stavanger, Stockholm, Curych |
-| **Severní Amerika** |USA – východ, USA – západ, USA – východ 2, USA – západ 2, USA – střed, USA – středojih, USA – středosever, USA – středozápad, Kanada – střed, Kanada – východ |Brno, Chicago, Praha, Denver, Las Vegas, Los Angeles, Miami, Minneapolis, New York, Queretaro (Mexiko), San Antonio, Seattle, Silicon sedl, Silicon Valley2, Washington DC, Washington DC2, Montrealský, Quebec City, Toronto, Vancouver |
+| **Severní Amerika** |USA – východ, USA – západ, USA – východ 2, USA – západ 2, USA – střed, USA – středojih, USA – středosever, USA – středozápad, Kanada – střed, Kanada – východ |Brno, Chicago, Praha, Denver, Las Vegas, Los Angeles, Los Angeles2, Miami, Minneapolis, New York, Queretaro (Mexiko), San Antonio, Seattle, Silicon sedla, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto, Vancouver |
 | **Asie** | Východní Asie, Jihovýchodní Asie | Bangkok, Hongkong, Hongkong, Kong2, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipei |
 | **Indie** | Indie – západ, Indie – střed, Indie – jih |Čennaj, Čennaj2, Bombaj, Bombaj2 |
 | **Japonsko** | Japonsko – západ, Japonsko – východ |Ósaka, Tokio, Tokyo2 |
 | **Oceánie** | Austrálie – jihovýchod, Austrálie – východ |Auckland, Melbourne, Perth, Sydney, Sydney2 |
 | **Jižní Korea** | Jižní Korea – střed, Jižní Korea – jih |Busan, Soul|
 | **Spojené arabské emiráty** | Spojené arabské emiráty Central, Spojené arabské emiráty sever | Dubaj, Dubai2 |
-| **Jihoafrická republika** | Jižní Afrika – západ, Jižní Afrika – sever |Kapské město, Johannesburg |
+| **Jižní Afrika** | Jižní Afrika – západ, Jižní Afrika – sever |Kapské město, Johannesburg |
 | **Jižní Amerika** | Brazil South |Sao Paulo |
 
 
@@ -105,7 +105,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **du dataměna** |Podporováno |Podporováno | Dubai2 |
 | **eir** |Podporováno |Podporováno |Dublin|
 | **[Epsilon globální komunikace](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Podporováno |Podporováno |Singapur, Singapur2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Podporováno |Podporováno |Amsterdam, Brno, Chicago, Praha, Dublin, Frankfurt, Ženeva, Hongkong – zvláštní správní oblast, Londýn, London2, Los Angeles, Melbourne, Miami, Milán, New York, Ósaka, Paříž, Svatý Paulo, Seattle, Silicon sedl, Singapur, Stockholm, Sydney, Tokio, Toronto, Washington DC |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Podporováno |Podporováno |Amsterdam, Brno, Chicago, Praha, Dublin, Frankfurt, Ženeva, Hongkong – zvláštní správní oblast, Londýn, London2, Los Angeles, Los Angeles2, Melbourne, Miami, Milán, New York, Ósaka, Paříž, Sao Paulo, Seattle, Silicon sedl, Singapur, Stockholm, Sydney, Tokio, Toronto, Washington DC |
 | **Etisalat Spojené arabské emiráty** |Podporováno |Podporováno |Dubaj|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Podporováno |Podporováno |Amsterdam, Amsterdam2, Dublin, Frankfurt, Londýn |
 | **FarEasTone** |Podporováno |Podporováno |WAN|

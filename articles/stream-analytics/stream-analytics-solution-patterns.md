@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: cb9c851ca33aa6eeb6d0fe0576f98ecb0693be02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999280"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903319"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Vzory řešení služby Azure Stream Analytics
 
@@ -86,17 +86,12 @@ Pokročilým uživatelům, kteří chtějí integrovat online školení a bodov�
 
 ![Aplikace ASA Machine Learning](media/stream-analytics-solution-patterns/machine-learning-app.png)
 
-## <a name="near-real-time-data-warehousing"></a>Datové sklady téměř v reálném čase
+## <a name="real-time-data-warehousing"></a>Datové sklady v reálném čase
 
-Dalším běžným vzorem jsou datové sklady v reálném čase, označované také jako streamování datového skladu. Kromě událostí přicházejících na Event Hubs a IoT Hub z vaší aplikace se [Azure Stream Analytics spuštěná na IoT Edge](stream-analytics-edge.md) dají použít ke splnění vyčištění dat, snížení počtu dat a uchování dat a potřebnou potřebu. Stream Analytics spuštěné v IoT Edge může řádně zvládnout omezení šířky pásma a problémy s připojením v systému. Výstupní adaptér SQL lze použít k výstupu do SQL Data Warehouse; maximální propustnost je však omezená na 10 MB/s.
+Dalším běžným vzorem jsou datové sklady v reálném čase, označované také jako streamování datového skladu. Kromě událostí přicházejících na Event Hubs a IoT Hub z vaší aplikace se [Azure Stream Analytics spuštěná na IoT Edge](stream-analytics-edge.md) dají použít ke splnění vyčištění dat, snížení počtu dat a uchování dat a potřebnou potřebu. Stream Analytics spuštěné v IoT Edge může řádně zvládnout omezení šířky pásma a problémy s připojením v systému. Stream Analytics může při zápisu do Azure synapse Analytics podporovat míry propustnosti 200 MB/s.
 
 ![Datové sklady ASA](media/stream-analytics-solution-patterns/data-warehousing.png)
 
-Jedním ze způsobů, jak zvýšit propustnost s určitou latencí, je archivace událostí do úložiště objektů BLOB v Azure a [jejich importování do SQL Data Warehouse s](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md)využitím základny. Musíte ručně spojovat výstup z Stream Analytics do úložiště objektů BLOB a vstupu z úložiště objektů blob do SQL Data Warehouse [Archivovat data podle časového razítka](stream-analytics-custom-path-patterns-blob-storage-output.md) a pravidelně importovat.
-
-V tomto vzoru použití se Azure Stream Analytics používá jako modul ETL pro ETL v reálném čase. Nově přicházející události jsou průběžně transformované a ukládají se pro využití služby analýzy pro příjem dat.
-
-![Datové sklady s vysokou propustností ASA](media/stream-analytics-solution-patterns/data-warehousing-high-throughput.png)
 
 ## <a name="archiving-real-time-data-for-analytics"></a>Archivace dat v reálném čase pro analýzy
 

@@ -1,18 +1,18 @@
 ---
 title: Přidat nebo odebrat koncový bod serveru Azure File Sync | Microsoft Docs
-description: Zjistěte, co je potřeba vzít v úvahu při plánování nasazení souborů Azure.
+description: Naučte se přidat nebo odebrat koncový bod serveru pomocí Azure File Sync. Koncový bod serveru je určité umístění na zaregistrovaném serveru, jako je třeba složka na svazku na serveru.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 70cdf01cb327d1be6b2ac4b9cae414f87e27964f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9273ca66c0304afc5df58ace5dd584c20c90abfd
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509468"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905053"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Přidat nebo odebrat koncový bod serveru Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to tak, že transformuje servery Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.

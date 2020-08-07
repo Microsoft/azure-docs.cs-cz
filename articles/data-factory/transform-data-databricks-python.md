@@ -11,13 +11,13 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
-ms.custom: tracking-python
-ms.openlocfilehash: 6ae42c9cb68b28e5d2f0b5a2ba3cf7eab74a74b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: a42c7d911793e1b4ef4183c5d1f02f8be7d4ded3
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84561128"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872289"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Transformujte data spuštěním aktivity Pythonu v Azure Databricks
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -64,15 +64,15 @@ Tady je ukázková definice JSON aktivity datacihly v Pythonu:
 
 Následující tabulka obsahuje popis vlastností JSON použitých v definici JSON:
 
-|Vlastnost|Popis|Vyžadováno|
+|Vlastnost|Popis|Povinné|
 |---|---|---|
-|name|Název aktivity v kanálu.|Yes|
-|description|Text popisující, co aktivita dělá.|No|
-|typ|Pro aktivitu Python datacihly je typ aktivity DatabricksSparkPython.|Yes|
-|linkedServiceName|Název propojené služby datacihly, na které běží aktivita Pythonu Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md)   .|Yes|
-|pythonFile|Identifikátor URI souboru Pythonu, který má být spuštěn. Jsou podporovány pouze DBFS cesty.|Yes|
-|parameters|Parametry příkazového řádku, které budou předány souboru Python. Toto je pole řetězců.|No|
-|Knihovna|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole <řetězec, objekt>|No|
+|name|Název aktivity v kanálu.|Ano|
+|description|Text popisující, co aktivita dělá.|Ne|
+|typ|Pro aktivitu Python datacihly je typ aktivity DatabricksSparkPython.|Ano|
+|linkedServiceName|Název propojené služby datacihly, na které běží aktivita Pythonu Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md)   .|Ano|
+|pythonFile|Identifikátor URI souboru Pythonu, který má být spuštěn. Jsou podporovány pouze DBFS cesty.|Ano|
+|parameters|Parametry příkazového řádku, které budou předány souboru Python. Toto je pole řetězců.|Ne|
+|Knihovna|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole <řetězec, objekt>|Ne|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Podporované knihovny pro aktivity datacihly
 

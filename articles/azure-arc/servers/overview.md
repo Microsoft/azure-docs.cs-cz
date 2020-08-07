@@ -7,14 +7,15 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
-ms.date: 03/24/2020
+ms.custom: references_regions
+ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: e775945526a5453085946ed4eea2a2e19761ba78
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 8c02b22d27fbae0465ed3b8c97622544256854e0
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85482186"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905614"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Co je Azure ARC pro servery (Preview)?
 
@@ -28,10 +29,15 @@ Aby bylo možné doručovat toto prostředí do vašich hybridních počítačů
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-Azure ARC pro servery (verze Preview) podporuje následující scénáře s připojenými počítači:
+Když počítač připojíte k Arc Azure pro servery (Preview), umožní vám provádět následující úlohy správy konfigurace:
 
 - Přiřaďte [Azure Policy konfigurace hostů](../../governance/policy/concepts/guest-configuration.md) stejným způsobem jako přiřazení zásad pro virtuální počítače Azure.
-- Data protokolu shromážděná agentem Log Analytics, která jsou uložená v pracovním prostoru Log Analytics, je počítač zaregistrovaný. Data protokolu z hybridního počítače nyní obsahují vlastnosti specifické pro daný počítač, například ID prostředku, které lze použít k podpoře přístupu k protokolu [kontextu prostředků](../../azure-monitor/platform/design-logs-deployment.md#access-mode) .
+
+- Monitorujte výkon hostovaného operačního systému a Prohlédněte si součásti aplikace a sledujte jejich procesy a závislosti s dalšími prostředky, které aplikace komunikuje pomocí [Azure monitor pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md).
+
+- Zjednodušte nasazení s ostatními službami Azure, jako je konfigurace stavu Azure Automation, a Azure Monitor Log Analytics pracovní prostor s využitím podporovaných [rozšíření virtuálních počítačů Azure](manage-vm-extensions.md) pro počítače se systémem Windows nebo Linux mimo Azure. To zahrnuje provádění konfigurace po nasazení nebo instalace softwaru pomocí rozšíření vlastních skriptů.
+
+Data protokolu shromážděná a uložená v Log Analytics pracovním prostoru z hybridního počítače teď obsahují vlastnosti specifické pro daný počítač, jako je ID prostředku. To lze použít pro podporu přístupu k protokolu [kontextu prostředků](../../azure-monitor/platform/design-logs-deployment.md#access-mode) .
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
@@ -42,7 +48,7 @@ U Azure ARC pro servery (Preview) jsou podporované jenom některé oblasti:
 - WestEurope
 - SoutheastAsia
 
-Ve většině případů umístění, které vyberete při vytváření instalačního skriptu, by mělo být oblast Azure geograficky nejblíže umístění vašeho počítače. Uložená data se uloží v rámci geografické oblasti Azure obsahující oblast, kterou zadáte, což může mít vliv i na výběr oblasti, pokud máte požadavky na umístění dat. Pokud je oblast Azure, ke které je počítač připojený, ovlivněná výpadkem, připojený počítač to neovlivní, ale operace správy používající Azure možná nebude možné dokončit. V případě pružnosti v případě výpadku v oblasti regionu, pokud máte více umístění, která poskytují geograficky redundantní službu, je nejlepší připojit počítače v každém umístění do jiné oblasti Azure.
+Ve většině případů umístění, které vyberete při vytváření instalačního skriptu, by mělo být oblast Azure geograficky nejblíže umístění vašeho počítače. Uložená data se uloží v rámci geografické oblasti Azure obsahující oblast, kterou zadáte, což může mít vliv i na výběr oblasti, pokud máte požadavky na umístění dat. Pokud je oblast Azure, ke které je počítač připojený, ovlivněná výpadkem, připojený počítač to neovlivní, ale operace správy používající Azure možná nebude možné dokončit. Pokud máte v případě regionálních výpadků více umístění, která poskytují geograficky redundantní službu, je nejlepší připojit počítače v každém umístění do jiné oblasti Azure.
 
 ### <a name="agent-status"></a>Stav agenta
 

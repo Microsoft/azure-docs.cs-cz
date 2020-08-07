@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3250e4c35f6b898f4431d0f2fe15f84d915c1c8e
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 1fdc6b79bf86272afac038d8f91e4663514830fe
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760392"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905584"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
@@ -130,6 +130,22 @@ AND R.reportedCondition = 'clean'
 ```
 
 V předchozím příkladu si všimněte, že *reportedCondition* je vlastnost samotného vztahu *servicedBy* (ne některé digitální vlákna, která má vztah *servicedBy* ).
+
+### <a name="query-with-multiple-joins"></a>Dotaz s více spojeními
+
+V současnosti ve verzi Preview `JOIN` jsou v jednom dotazu podporovány až pět s. To umožňuje procházet více úrovní vztahů najednou.
+
+Zde je příklad dotazu s vícenásobnými spojeními, který získá všechny žárovky obsažené na světelných panelech v místnostech 1 a 2.
+
+```sql
+SELECT LightBulb 
+FROM DIGITALTWINS Room 
+JOIN LightPanel RELATED Room.contains 
+JOIN LightBulb RELATED LightPanel.contains 
+WHERE IS_OF_MODEL(LightPanel, ‘dtmi:contoso:com:lightpanel;1’) 
+AND IS_OF_MODEL(LightBulb, ‘dtmi:contoso:com:lightbulb ;1’) 
+AND Room.$dtId IN [‘room1’, ‘room2’] 
+```
 
 ## <a name="run-queries-with-an-api-call"></a>Spouštění dotazů pomocí volání rozhraní API
 

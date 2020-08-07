@@ -2,24 +2,24 @@
 title: 'PowerShell: nasazení serveru FHIR pro Azure – Azure API pro FHIR'
 description: V tomto rychlém startu se dozvíte, jak nasadit server Microsoft Open Source FHIR pomocí prostředí PowerShell.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: f959b884f67f354599b99bb6dd24918b28d13382
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.author: matjazl
+ms.openlocfilehash: c133a309cc85ffcfb69be2ae7bbb614cbb540f2e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "84820178"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847104"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-powershell"></a>Rychlý Start: nasazení Open Source serveru FHIR pomocí prostředí PowerShell
 
 V tomto rychlém startu se dozvíte, jak nasadit Open Source Server Microsoft FHIR pro Azure pomocí PowerShellu.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

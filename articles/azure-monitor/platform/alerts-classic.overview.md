@@ -4,17 +4,17 @@ description: Klasické výstrahy jsou zastaralé. Výstrahy umožňují sledovat
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 56dd601e8d961d65ec21eefcc2dd5fed5c75f9fe
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c7dfbd60b7a668b849c3150bb16e40285c345634
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322359"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844109"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co jsou klasická upozornění v Microsoft Azure?
 
 > [!NOTE]
-> Tento článek popisuje, jak vytvořit starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](./alerts-overview.md). Klasické výstrahy jsou [vyřazeny](./monitoring-classic-retirement.md), i když jsou v omezeném rozsahu používány pro prostředky, které ještě nepodporují nové výstrahy. 
+> Tento článek popisuje, jak vytvořit starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](./alerts-overview.md). Klasické výstrahy jsou [vyřazeny](./monitoring-classic-retirement.md), i když jsou v omezeném rozsahu používány pro prostředky, které ještě nepodporují nové výstrahy.
 >
 
 Výstrahy umožňují konfigurovat podmínky pro data a budou oznámeny, když se podmínky shodují s nejnovějšími daty monitorování.

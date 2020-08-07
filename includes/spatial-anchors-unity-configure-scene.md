@@ -4,15 +4,19 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/2/2019
 ms.author: crtreasu
-ms.openlocfilehash: 7e7825e8247e78cbc0c0e9e22bdbd9326939e0a8
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 43e64dadc5e339d174d08788cc7a98506841ee88
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83998039"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810158"
 ---
-Dalším krokem je konfigurace aplikace tak, aby používala identifikátor účtu a klíč účtu. Při [nastavování prostředku prostorových ukotvení](#create-a-spatial-anchors-resource)jste je zkopírovali do textového editoru.
+## <a name="configure-the-account-information"></a>Konfigurace informací o účtu
 
-V podokně **projekt** přejděte na `Assets\AzureSpatialAnchors.SDK\Resources` . Vyberte `SpatialAnchorConfig`. Poté v podokně **inspektor** zadejte `Account Key` jako hodnotu pro `Spatial Anchors Account Key` a `Account ID` jako hodnotu pro `Spatial Anchors Account Id` .
+V podokně **projekt** přejdete na `Assets/AzureSpatialAnchors.Examples/Scenes` a otevřete `AzureSpatialAnchorsBasicDemo.unity` soubor scény.
 
-Pak otevřete `SpatialAnchorManager.cs` . Vyhledejte `CreateSessionAsync()` a přidejte následující řádek, ve kterém nahradíte doménu účtu v minulosti: `session.Configuration.AccountDomain = "MyAccountDomain";` . Tento řádek můžete přidat přímo před tento komentář `// Configure authentication` .
+Dalším krokem je konfigurace aplikace, aby používala informace o účtu. Při [nastavování prostředku prostorových ukotvení](#create-a-spatial-anchors-resource)jste je zkopírovali do textového editoru.
+
+V podokně **projekt** přejděte na `Assets\AzureSpatialAnchors.SDK\Resources` . Vyberte `SpatialAnchorConfig`. Poté v podokně **inspektor** zadejte jako hodnotu pro `Account Key` `Spatial Anchors Account Key` , `Account ID` jako hodnotu pro a `Spatial Anchors Account Id` `Account Domain` jako hodnotu pro `Spatial Anchors Account Domain` .
+
+Scénu uložte výběrem Uložit **soubor**  >  **Save**.

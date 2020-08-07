@@ -3,13 +3,13 @@ title: Kurz – vytvoření a spuštění poznámkového bloku Jupyter-Azure Not
 description: Naučte se, jak vytvořit a spustit Poznámkový blok Jupyter v Azure Notebooks Preview, který ukazuje proces lineární regrese v oblasti datové vědy.
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.custom: tracking-python
-ms.openlocfilehash: fd7fc324894595a991074c6d83ffc0f9fa3cff75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: f6480a93610761061462be8e83ce3e719f3e8bdf
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85834127"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846908"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Kurz: vytvoření a spuštění poznámkového bloku Jupyter pomocí Pythonu
 
@@ -154,7 +154,7 @@ Skupiny příkazů nabídky jsou následující:
 
 | Nabídka | Popis |
 | --- | --- |
-| Soubor | Příkazy pro správu souboru poznámkového bloku, včetně příkazů pro vytváření a kopírování poznámkových bloků, zobrazení náhledu tisku a stažení poznámkového bloku v nejrůznějších formátech. |
+| File | Příkazy pro správu souboru poznámkového bloku, včetně příkazů pro vytváření a kopírování poznámkových bloků, zobrazení náhledu tisku a stažení poznámkového bloku v nejrůznějších formátech. |
 | Upravit | Typické příkazy pro vyjímání, kopírování a vkládání buněk, hledání a nahrazování hodnot, správu příloh buněk a vkládání obrázků.  |
 | Zobrazit | Příkazy pro řízení viditelnosti různých částí uživatelského rozhraní Jupyter. |
 | Vložit | Příkazy pro vložení nové buňky nad nebo pod aktuální buňku. Tyto příkazy použijete často při vytváření poznámkového bloku. |

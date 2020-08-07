@@ -1,18 +1,17 @@
 ---
-title: Migrace místních počítačů pomocí Azure Site Recovery
-description: Tento článek popisuje migraci místních počítačů do Azure pomocí Azure Site Recovery.
-author: rayne-wiselman
+title: Migrace místních počítačů pomocí Azure Migrate
+description: Tento článek shrnuje, jak migrovat místní počítače do Azure a doporučuje Azure Migrate.
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
-ms.openlocfilehash: 3c421845d4e15ef13ce98d0de111270159f564fe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e0e60ee346d20113b2ec7970390d9874522cc770
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285352"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847308"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrace místních počítačů do Azure
 
@@ -20,7 +19,7 @@ Tento článek popisuje možnosti migrace místních počítačů do Azure.
 
 ## <a name="migrate-with-azure-migrate"></a>Migrace pomocí Azure Migrate
 
-K migraci počítačů do Azure doporučujeme použít službu [Azure Migrate](../migrate/migrate-services-overview.md) . Azure Migrate poskytuje centralizované centrum pro posuzování a migraci místních počítačů do Azure, použití Azure Migrate, dalších služeb Azure a nástrojů třetích stran.
+K migraci počítačů do Azure doporučujeme použít službu [Azure Migrate](../migrate/migrate-services-overview.md) . Azure Migrate je účelově sestavený pro migraci serveru. Azure Migrate poskytuje centralizované centrum pro zjišťování, posuzování a migraci místních počítačů do Azure.
 
 Pomocí těchto odkazů proveďte migraci s Azure Migrate:
 

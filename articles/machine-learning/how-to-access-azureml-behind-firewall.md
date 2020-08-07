@@ -10,22 +10,19 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 23ec12daa2e5c236da482615228b7c44037282fb
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 990a2d5279c796f354055328e6968ea705ea10b2
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808112"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873632"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Pro Azure Machine Learning použít pracovní prostor za bránou firewall
 
-V tomto článku se dozvíte, jak nakonfigurovat Azure Firewall pro použití s pracovním prostorem Azure Machine Learning.
+V tomto článku se dozvíte, jak nakonfigurovat Azure Firewall pro řízení přístupu k pracovnímu prostoru Azure Machine Learning a k veřejnému Internetu.   Další informace o zabezpečení Azure Machine Learning najdete v tématu [Enterprise Security for Azure Machine Learning](concept-enterprise-security.md)
 
-> [!IMPORTANT]
-> I když jsou informace v tomto dokumentu založené na použití Azure Firewall, měli byste ho používat s jinými produkty brány firewall. Pokud máte dotazy týkající se povolení komunikace přes bránu firewall, přečtěte si prosím dokumentaci pro bránu firewall, kterou používáte.
-
-Azure Firewall lze použít k řízení přístupu k pracovnímu prostoru Azure Machine Learning a k veřejnému Internetu. Pokud není správně nakonfigurovaný, může Brána firewall způsobovat problémy s vaším pracovním prostorem. K dispozici je celá řada názvů hostitelů, které jsou používány Azure Machine Learning pracovním prostorem, které jsou popsány v tomto článku.
+I když jsou informace v tomto dokumentu založené na použití [Azure firewall](../firewall/tutorial-firewall-deploy-portal.md), měli byste ho používat s jinými produkty brány firewall. Pokud máte dotazy týkající se povolení komunikace přes bránu firewall, přečtěte si prosím dokumentaci pro bránu firewall, kterou používáte.
 
 ## <a name="network-rules"></a>Pravidla sítě
 
@@ -37,6 +34,8 @@ V bráně firewall vytvořte síťové pravidlo umožňující provoz na a z adr
 > Další informace o konfiguraci Azure Firewall najdete v tématu [nasazení a konfigurace Azure firewall](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule).
 
 ## <a name="microsoft-hosts"></a>Hostitelé Microsoftu
+
+Pokud není správně nakonfigurovaný, může Brána firewall způsobovat problémy s vaším pracovním prostorem. K dispozici je celá řada názvů hostitelů, které používá Azure Machine Learning pracovní prostor.
 
 Hostitelé v této části vlastní Microsoft a poskytují služby vyžadované pro správné fungování pracovního prostoru.
 
@@ -58,6 +57,7 @@ Hostitelé v této části vlastní Microsoft a poskytují služby vyžadované 
 | **mcr.microsoft.com** | Microsoft Container Registry pro základní image Docker |
 | **your-acr-server-name.azurecr.io** | Vyžaduje se jenom v případě, že je vaše Azure Container Registry za virtuální sítí. V této konfiguraci se privátní odkaz vytvoří z prostředí Microsoftu do instance ACR v rámci vašeho předplatného. Pro Azure Machine Learning pracovní prostor použijte název serveru ACR. |
 | **\*. notebooks.azure.net** | Vyžaduje poznámkové bloky v Azure Machine Learning Studiu. |
+
 ## <a name="python-hosts"></a>Hostitelé Pythonu
 
 Hostitelé v této části se používají k instalaci balíčků Pythonu. Jsou požadovány během vývoje, školení a nasazení. 
@@ -79,7 +79,7 @@ Hostitelé v této části se používají k instalaci balíčků R. Jsou požad
 | ---- | ---- |
 | **cloud.r-project.org** | Používá se při instalaci balíčků CRAN. |
 
-Další kroky
+## <a name="next-steps"></a>Další kroky
 
-* [[Nasazení a konfigurace Azure firewall](../firewall/tutorial-firewall-deploy-portal.md)]
+* [Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal](../firewall/tutorial-firewall-deploy-portal.md)
 * [Zabezpečení experimentů s Azure ML a odvození úloh v rámci Azure Virtual Network](how-to-enable-virtual-network.md)

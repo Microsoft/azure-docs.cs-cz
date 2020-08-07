@@ -8,19 +8,19 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
-ms.custom: tracking-python
-ms.openlocfilehash: cd0cf3bb7df8efc944fabb8e236f32adb38749d4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-python
+ms.openlocfilehash: 0e106f3ea8a5de80f4961a1d591d31abdbe2ca86
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424120"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876287"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rychlý start: Spuštění pracovního postupu ve službě Microsoft Genomics
 
 V tomto rychlém startu nahrajete vstupní data do účtu služby Azure Blob Storage a spustíte pracovní postup prostřednictvím služby Microsoft Genomics pomocí klienta Pythonu s využitím genomiky. Microsoft Genomics je škálovatelná a bezpečná služba pro sekundární analýzu, která dokáže rychle analyzovat genom počínaje od nezpracovaných čtení a vytváří zarovnaná čtení a volání variant. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Python 2.7.12 +](https://www.python.org/downloads/release/python-2714/), s `pip` nainstalovaným a `python` v systémové cestě. Klient Microsoft Genomics není kompatibilní s Pythonem 3. 
