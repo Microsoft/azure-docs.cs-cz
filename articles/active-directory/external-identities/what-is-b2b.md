@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1fc665aec3aa8c08449815dbb255f87404e370f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: cfce0031d912b1611b6810310e56241857821579
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87906040"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926718"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Co je přístup uživatelů typu host při spolupráci B2B v Azure Active Directory?
 
@@ -98,4 +98,3 @@ Pomocí samoobslužného uživatelského toku registrace můžete vytvořit pros
 - [Pokyny k licencování spolupráce B2B v Azure AD](licensing-guidance.md)
 - [Přidání uživatelů typu host na portálu pro spolupráci B2B](add-users-administrator.md)
 - [Vysvětlení postupu při uplatnění pozvánky](redemption-experience.md)
-- A jako vždy se můžete spojit s naším produktovým týmem a sdělit mu své připomínky, diskutovat nebo posílat své návrhy prostřednictvím [technické komunity Microsoftu](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).

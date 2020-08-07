@@ -2,13 +2,13 @@
 title: Nejčastější dotazy ke službě Azure Kubernetes (AKS)
 description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure Kubernetes Service (AKS).
 ms.topic: conceptual
-ms.date: 07/31/2020
-ms.openlocfilehash: 6d30bc1faa6a896233d09f9247fe8c56f82371fa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/06/2020
+ms.openlocfilehash: 7a56756855319ee72bd5b3dc60ad1ae440afd7fe
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87485622"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927143"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy ohledně služby Azure Kubernetes Service (AKS)
 
@@ -193,7 +193,7 @@ I když AKS má mechanismy odolnosti k vyvýšení těchto konfigurací a obnove
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>Ukládá AKS data o zákaznících mimo oblast clusteru?
 
-Ne. Všechna data vytvořená v clusteru AKS se udržují v oblasti clusteru.
+Funkce pro ukládání zákaznických dat v jedné oblasti je v tuto chvíli dostupná jenom v oblasti jihovýchodní Asie (Singapur) Asie a Tichomoří geografické oblasti. Pro všechny ostatní oblasti jsou zákaznická data uložená v geograficky.
 
 <!-- LINKS - internal -->
 

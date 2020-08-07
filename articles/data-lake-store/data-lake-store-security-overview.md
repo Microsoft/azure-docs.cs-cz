@@ -7,18 +7,18 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: a6a6b0b15b8d2dc08f1581cb2ea0ea4c7e8036ca
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 4992be004a4b60b7b5fb591d834e8938cf03f34f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529972"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926276"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Zabezpečení v Azure Data Lake Storage Gen1
 
 Řada podniků využívá analýzu velkých objemů dat pro Business Insights, která jim usnadňuje rozhodování. Organizace může mít komplexní a regulované prostředí s rostoucím počtem různých uživatelů. Podnik má jistotu, že kritická podniková data se ukládají bezpečněji, se správnou úrovní přístupu uděleným pro jednotlivé uživatele. Azure Data Lake Storage Gen1 je navržena tak, aby pomohla splnit tyto požadavky na zabezpečení. V tomto článku se dozvíte o možnostech zabezpečení Data Lake Storage Gen1, včetně těchto:
 
-* Authentication
+* Ověřování
 * Autorizace
 * Izolace sítě
 * Ochrana dat
@@ -39,7 +39,7 @@ Každé předplatné Azure je možné přidružit k instanci Azure Active Direct
 
 Po Azure Active Directory ověří uživatele, aby uživatel měl přístup k Data Lake Storage Gen1, řízení autorizací přístup k oprávněním pro Data Lake Storage Gen1. Data Lake Storage Gen1 odděluje autorizaci pro aktivity vztahující se k účtu a k datům následujícím způsobem:
 
-* [Řízení přístupu na základě role](../role-based-access-control/overview.md) (RBAC) poskytované Azure pro správu účtů
+* [Řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md) pro správu účtů
 * Seznam ACL POSIX pro přístup k datům v úložišti
 
 ### <a name="rbac-for-account-management"></a>RBAC pro správu účtů
@@ -52,7 +52,7 @@ Mějte na paměti, že i když se role přiřazují pro správu účtů, někter
 
 | Role | Práva pro správu | Přístupová práva k datům | Vysvětlení |
 | --- | --- | --- | --- |
-| Není přiřazená žádná role. |Žádná |Řídí se ACL |Uživatel nemůže pomocí rutin Azure Portal ani Azure PowerShell Procházet Data Lake Storage Gen1. Uživatel může použít jenom nástroje příkazového řádku. |
+| Není přiřazená žádná role. |Žádné |Řídí se ACL |Uživatel nemůže pomocí rutin Azure Portal ani Azure PowerShell Procházet Data Lake Storage Gen1. Uživatel může použít jenom nástroje příkazového řádku. |
 | Vlastník |Vše |Vše |Role vlastníka je uživatel. Tato role může spravovat vše a má úplný přístup k datům. |
 | Čtenář |Jen pro čtení |Řídí se ACL |Role čtenář si může zobrazit všechno, co se týče správy účtů, například k tomu, ke kterému uživateli je přiřazena role. Role čtenáře nemůže provádět žádné změny. |
 | Přispěvatel |Všechny kromě rolí přidat a odebrat |Řídí se ACL |Role přispěvatele může spravovat některé aspekty účtu, například nasazení a vytváření a správu výstrah. Role přispěvatele nemůže přidávat ani odebírat role. |

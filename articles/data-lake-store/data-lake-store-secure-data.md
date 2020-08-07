@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 1ae93dad9a18c18e330b4ff65924dd1db7a1faf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1da644d8aca0b197e21ec03c7d0ac0b454f92a9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515259"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926293"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Zabezpečení dat uložených ve službě Azure Data Lake Storage Gen1
 Zabezpečení dat v Azure Data Lake Storage Gen1 je třístavový přístup.  Řízení přístupu na základě role (RBAC) a seznamy řízení přístupu (ACL) musí být nastavené tak, aby plně povolovaly přístup k datům pro uživatele a skupiny zabezpečení.
 
-1. Začněte vytvořením skupin zabezpečení v Azure Active Directory (AAD). Tyto skupiny zabezpečení slouží k implementaci řízení přístupu na základě role (RBAC) v Azure Portal. Další informace najdete v tématu [Access Control na základě rolí v Microsoft Azure](../role-based-access-control/role-assignments-portal.md).
+1. Začněte vytvořením skupin zabezpečení v Azure Active Directory (AAD). Tyto skupiny zabezpečení se používají k implementaci řízení přístupu na základě rolí Azure (Azure RBAC) v Azure Portal. Další informace najdete v tématu [Azure RBAC](../role-based-access-control/role-assignments-portal.md).
 2. Přiřaďte skupiny zabezpečení AAD k účtu Data Lake Storage Gen1. Tato kontrola řídí přístup k účtu Data Lake Storage Gen1 z portálu a operací správy z portálu nebo rozhraní API.
 3. Přiřaďte skupiny zabezpečení AAD jako seznamy řízení přístupu (ACL) v systému souborů Data Lake Storage Gen1.
 4. Kromě toho můžete také nastavit rozsah IP adres pro klienty, kteří budou mít přístup k datům v Data Lake Storage Gen1.
@@ -155,4 +155,3 @@ Když odeberete seznamy řízení přístupu (ACL) skupiny zabezpečení z Data 
 * [Začínáme se službou Data Lake Storage Gen1 s využitím PowerShellu](data-lake-store-get-started-powershell.md)
 * [Začínáme s Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Přístup k diagnostickým protokolům pro Data Lake Storage Gen1](data-lake-store-diagnostic-logs.md)
-

@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ef6ed74149f106b801049da429dfe7b79b984a70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e929463c33603c650bec2e9a49a13dde6965e39f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725240"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926650"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Vysvětlení rozšířených funkcí offline pro IoT Edge zařízení, moduly a podřízená zařízení
 
@@ -20,7 +20,7 @@ Azure IoT Edge podporuje taky rozšířené offline operace na zařízeních IoT
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Když IoT Edge zařízení přejde do offline režimu, bude Centrum IoT Edge trvat tři role. Nejdřív ukládá všechny zprávy, které by se přečetly do sebe, a uloží je, dokud se zařízení znovu nepřipojí. Za druhé funguje jménem IoT Hub ověřování modulů a podřízených zařízení, aby mohli i nadále fungovat. Třetí, umožňuje komunikaci mezi podřízenými zařízeními, která by normálně procházela IoT Hub.
+Když IoT Edge zařízení přejde do offline režimu, bude Centrum IoT Edge trvat tři role. Nejdřív ukládá všechny zprávy, které by se přečetly do sebe, a uloží je, dokud se zařízení znovu nepřipojí. Za druhé místo IoT Hubu ověřuje moduly a podřízená zařízení, aby mohly i nadále fungovat. Za třetí umožňuje komunikaci mezi podřízenými zařízeními, která by normálně procházela IoT Hubem.
 
 Následující příklad ukazuje, jak IoT Edge scénář pracuje v offline režimu:
 
@@ -95,7 +95,7 @@ az iot hub device-identity add-children \
 
 #### <a name="option-3-use-iot-hub-service-sdk"></a>Možnost 3: použití sady SDK služby IoT Hub
 
-Nakonec můžete spravovat nadřazené podřízené relace programově pomocí sady SDK pro C#, Java nebo Node.js IoT Hub Service. Tady je [příklad přiřazení podřízeného zařízení](https://aka.ms/set-child-iot-device-c-sharp) pomocí sady C# SDK.
+Nakonec můžete spravovat nadřazené podřízené relace programově pomocí sady SDK pro C#, Java nebo Node.js IoT Hub Service. Tady je [příklad přiřazení podřízeného zařízení](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/e2e/test/iothub/service/RegistryManagerE2ETests.cs) pomocí sady C# SDK.
 
 ### <a name="set-up-the-parent-device-as-a-gateway"></a>Nastavení nadřazeného zařízení jako brány
 

@@ -6,12 +6,12 @@ ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: a11cd001e33e52f9138d9b302c39e04ee3d984a5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 95ea8b61b01b17512d99d0316073835326e6d7bd
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503527"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927160"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Správa přístupu Site Recovery pomocí řízení přístupu na základě role (RBAC)
 
@@ -72,7 +72,7 @@ K dokončení replikace nového virtuálního počítače potřebuje uživatel n
 Zvažte použití [předdefinovaných rolí](../role-based-access-control/built-in-roles.md) Přispěvatel virtuálních počítačů a klasického přispěvatele virtuálních počítačů pro modely nasazení Správce prostředků a Classic.
 
 ## <a name="next-steps"></a>Další kroky
-* [Access Control založené na rolích](../role-based-access-control/role-assignments-portal.md): Začínáme s RBAC v Azure Portal.
+* [Řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Začněte s RBAC v Azure Portal.
 * Naučte se spravovat přístup pomocí:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)

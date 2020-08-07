@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: nastavení konfigurace'
-description: Přečtěte si o nastaveních VPN Gateway pro brány virtuální sítě Azure.
+description: Přečtěte si o konfiguraci připojení brány VPN v Azure, která spoléhá na více prostředků, z nichž každý obsahuje konfigurovatelné nastavení.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7a2040748d170b4e536df59947ea811f149d931
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fef54e4fff442f1c9eae523d7d278f193b84171
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708140"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926922"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informace o nastavení konfigurace VPN Gateway
 
@@ -49,7 +49,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -VpnType RouteBased
 ```
 
-## <a name="gateway-skus"></a><a name="gwsku"></a>SKU brány
+## <a name="gateway-skus"></a><a name="gwsku"></a>Skladové položky brány
 
 [!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
@@ -95,7 +95,7 @@ Pokud máte bránu VPN a chcete použít jinou SKU brány, vaše možnosti mají
 
 V modelu nasazení Správce prostředků Každá konfigurace vyžaduje konkrétní typ připojení brány virtuální sítě. Dostupné hodnoty prostředí PowerShell v Resource Manageru pro `-ConnectionType` jsou:
 
-* Protokol IPsec
+* IPsec
 * Vnet2Vnet
 * ExpressRoute
 * VPNClient
@@ -169,11 +169,11 @@ Někdy je potřeba upravit nastavení místní síťové brány. Například kdy
 
 Další technické materiály a specifické požadavky na syntaxi při použití rozhraní REST API, rutin PowerShellu nebo Azure CLI pro konfiguraci VPN Gateway najdete na následujících stránkách:
 
-| **Klasický** | **Resource Manager** |
+| **Standardním** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
-| Nepodporuje se | [Azure CLI](/cli/azure/network/vnet-gateway)|
+| Nepodporováno | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
 ## <a name="next-steps"></a>Další kroky
 

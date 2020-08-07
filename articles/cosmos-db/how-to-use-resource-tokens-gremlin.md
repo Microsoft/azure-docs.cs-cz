@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
-ms.openlocfilehash: 45bfba5b0ab25aa9930719f136428ccc0df5014d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 211dce8a2810d9eb07bf0f388753afd50add4945
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263557"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919952"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Použití Azure Cosmos DBch tokenů prostředků v sadě SDK pro Gremlin
 
@@ -102,5 +102,5 @@ S jedním účtem Gremlin můžete vystavit neomezený počet tokenů. V průbě
 Častá chyba, kterou aplikace, ke kterým dochází, když používají tokeny prostředků, jsou v autorizační hlavičce pro odpovídající požadavek nedostatečná oprávnění. Zkuste to prosím znovu s jinou autorizační hlavičkou. " Tato chyba se vrátí, když se Gremlin přecházení pokusí zapsat Edge nebo vrchol, ale token prostředku uděluje pouze oprávnění *ke čtení* . Zkontrolujte svůj průchod, abyste viděli, zda obsahuje některý z následujících kroků: *. addV ()*, *. addE ()*, *. drop ()* nebo *. Property ()*.
 
 ## <a name="next-steps"></a>Další kroky
-* [Řízení přístupu na základě role](role-based-access-control.md) v Azure Cosmos DB
+* [Řízení přístupu na základě role v Azure (Azure RBAC)](role-based-access-control.md) v Azure Cosmos DB
 * [Naučte se zabezpečit přístup k datům](secure-access-to-data.md) v Azure Cosmos DB

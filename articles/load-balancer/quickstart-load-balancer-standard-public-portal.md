@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 32838ba93f4f7b844cde7a1397e123d918d9d177
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 44c43505bb779c3e00af19bed3a3fd3844c16bfe
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844163"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923828"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
@@ -55,7 +55,7 @@ Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoří
     | ---                     | ---                                                |
     | Předplatné               | Vyberte předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte **myResourceGroupLB** .|
-    | Název                   | Zadejte **myLoadBalancer**                                   |
+    | Name                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
     | SKU           | Vybrat **Standard** |
@@ -166,7 +166,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | Předplatné     | Vyberte své předplatné Azure.                                  |
     | Skupina prostředků   | Vybrat **myResourceGroupLB** |
     | **Podrobnosti instance** |                                                                 |
-    | Název             | Zadejte **myVNet**                                    |
+    | Name             | Zadejte **myVNet**                                    |
     | Oblast           | Vyberte **západní Evropa** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
@@ -230,6 +230,8 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | Uživatelské jméno | Zadejte uživatelské jméno. |
     | Heslo | Zadat heslo |
     | Potvrzení hesla | Zadejte znovu heslo. |
+    | **Pravidla portů pro příchozí provoz** |  |
+    | Veřejné příchozí porty | Vybrat **žádné** |
 
 3. Vyberte kartu **síť** nebo vyberte **Další: disky**a **Další: síť**.
   
@@ -267,7 +269,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2| VIRTUÁLNÍ POČÍTAČ 3|
     | ------- | ----- |---|
-    | Název |  **myVM2** |**myVM3**|
+    | Name |  **myVM2** |**myVM3**|
     | Zóna dostupnosti | **2** |**3**|
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**| Vybrat existující **myNSG**|
 
@@ -334,7 +336,7 @@ Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoří
     | ---                     | ---                                                |
     | Předplatné               | Vyberte předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte **myResourceGroupLB** .|
-    | Název                   | Zadejte **myLoadBalancer**                                   |
+    | Name                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
     | SKU           | Vybrat **základní** |
@@ -372,7 +374,7 @@ V této části vytvoříte virtuální síť a podsíť.
     | Předplatné     | Vyberte své předplatné Azure.                                  |
     | Skupina prostředků   | Vybrat **myResourceGroupLB** |
     | **Podrobnosti instance** |                                                                 |
-    | Název             | Zadejte **myVNet**                                    |
+    | Name             | Zadejte **myVNet**                                    |
     | Oblast           | Vyberte **západní Evropa** |
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
@@ -549,7 +551,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2| VIRTUÁLNÍ POČÍTAČ 3|
     | ------- | ----- |---|
-    | Název |  **myVM2** |**myVM3**|
+    | Name |  **myVM2** |**myVM3**|
     | Skupina dostupnosti| Vybrat **myAvailabilitySet** | Vybrat **myAvailabilitySet**|
     | Skupina zabezpečení sítě | Vybrat existující **myNSG**| Vybrat existující **myNSG**|
 

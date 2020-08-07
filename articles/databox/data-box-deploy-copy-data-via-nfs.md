@@ -1,6 +1,6 @@
 ---
 title: Kurz kopírování dat do Azure Data Box přes systém souborů NFS | Microsoft Docs
-description: Informace o tom, jak kopírovat data do svého Azure Data Box přes systém souborů NFS
+description: V tomto kurzu se dozvíte, jak se připojit a kopírovat data z hostitelského počítače do Azure Data Box pomocí systému souborů NFS s místním webovým uživatelským rozhraním.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 2b5789acfbb088ca8dbeb731b1ce7748041233cb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 590a0a1ce474d48e95163081dcdcacb52233badf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960505"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926072"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Kurz: kopírování dat do Azure Data Box přes systém souborů NFS
 
@@ -48,7 +48,7 @@ Ve sdílených složkách objektů blob bloku a objektů blob stránky jsou enti
 
 Následující tabulka uvádí cestu UNC ke sdíleným složkám ve vašem Data Boxu a adresu URL cesty ke službě Azure Storage, ve které jsou data nahraná. Konečnou adresu URL cesty ke službě Azure Storage je možné odvodit z cesty UNC ke sdílené složce.
  
-| Typ Azure Storage| Data Box sdílené složky                                       |
+| Typ Azure Storage| Sdílené složky Data Boxů                                       |
 |-------------------|--------------------------------------------------------------------------------|
 | Objekty blob bloku Azure | <li>Cesta UNC ke sdíleným složkám: `//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Objekty blob stránky Azure  | <li>Cesta UNC ke sdíleným složkám: `//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -139,17 +139,17 @@ Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte p
 > [!IMPORTANT]
 > Následující typy souborů systému Linux nejsou podporovány: symbolické odkazy, soubory znaků, blokovat soubory, sokety a kanály. Tyto typy souborů budou mít za následek chyby během **Příprava k odeslání** kroku.
 
-Pokud dojde k chybám, zobrazí se během procesu kopírování oznámení.
+Pokud během procesu kopírování dojde k nějakým chybám, zobrazí se oznámení.
 
-![Stažení a zobrazení chyb při připojení a kopírování](media/data-box-deploy-copy-data/view-errors-1.png)
+![Stažení a zobrazení chyb pro operaci Připojit a kopírovat](media/data-box-deploy-copy-data/view-errors-1.png)
 
-Vyberte možnost **Stáhnout seznam problémů**.
+Vyberte **Stáhnout seznam problémů**.
 
-![Stažení a zobrazení chyb při připojení a kopírování](media/data-box-deploy-copy-data/view-errors-2.png)
+![Stažení a zobrazení chyb pro operaci Připojit a kopírovat](media/data-box-deploy-copy-data/view-errors-2.png)
 
-Otevřete seznam pro zobrazení podrobností o chybě a vyberte adresu URL řešení pro zobrazení doporučeného řešení.
+Otevřete tento seznam, projděte si podrobnosti o chybě a vyberte adresu URL pro zobrazení doporučeného řešení.
 
-![Stažení a zobrazení chyb při připojení a kopírování](media/data-box-deploy-copy-data/view-errors-3.png)
+![Stažení a zobrazení chyb pro operaci Připojit a kopírovat](media/data-box-deploy-copy-data/view-errors-3.png)
 
 Další informace najdete v tématu věnovaném [zobrazení protokolů chyb při kopírování dat do Data Boxu](data-box-logs.md#view-error-log-during-data-copy). Podrobný seznam chyb při kopírování dat najdete v tématu [Řešení potíží s Data Boxem](data-box-troubleshoot.md).
 

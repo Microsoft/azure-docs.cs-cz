@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
-ms.openlocfilehash: 9be1053600ab89a7879a04a7c08a44ddf3bc862a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7fc1655b94689808eb9855340ef20bb816ad515e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291234"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922536"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -41,7 +41,7 @@ Tady je tato změna pro vás:
 
 - Před touto aktualizací byste mohli jenom publikovat vzdálené aplikace RemoteApp a plochy pro jednotlivé uživatele. Pomocí Azure Resource Manager nyní můžete publikovat prostředky do skupin Azure Active Directory.
 
-- Starší verze virtuálního počítače s Windows obsahovaly čtyři předdefinované role správce, které můžete přiřadit k tenantovi nebo fondu hostitelů. Tyto role jsou teď v [řízení přístupu na základě role](../role-based-access-control/overview.md)v Azure. Tyto role můžete použít pro každý objekt Azure Resource Manager virtuální plochy Windows, který vám umožní plně funkční model delegování.
+- Starší verze virtuálního počítače s Windows obsahovaly čtyři předdefinované role správce, které můžete přiřadit k tenantovi nebo fondu hostitelů. Tyto role jsou teď v [řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md). Tyto role můžete použít pro každý objekt Azure Resource Manager virtuální plochy Windows, který vám umožní plně funkční model delegování.
 
 - V této aktualizaci už nemusíte spouštět Azure Marketplace nebo šablonu GitHubu opakovaně, abyste mohli rozšířit fond hostitelů. K rozšíření fondu hostitelů stačí přejít do fondu hostitelů v Azure Portal a vybrat **+ Přidat** pro nasazení dalších hostitelů relací.
 

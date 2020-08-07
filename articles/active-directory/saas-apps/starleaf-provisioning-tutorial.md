@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: 520373fc6a05bcaada973273e3553f9da623c669
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74e37bda28bed3ecd2c842c4659bcff3cb86eb6a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064287"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920683"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Kurz: Konfigurace StarLeaf pro Automatické zřizování uživatelů
 
@@ -36,7 +36,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v StarLeaf a 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * Tenanta Azure AD.
-* [Tenant StarLeaf](https://www.starleaf.com/solutions/)
+* [Tenant StarLeaf](https://starleaf.com/)
 * Uživatelský účet v StarLeaf s oprávněními správce.
 
 ## <a name="assign-users-to-starleaf"></a>Přiřazení uživatelů k StarLeaf
@@ -91,7 +91,7 @@ Pokud chcete nakonfigurovat StarLeaf pro Automatické zřizování uživatelů p
 
 V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v StarLeaf na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: df6de62eefc0971ece0e0035299425689af5f784
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c11de5daacfd0d0b3d12c38064dac704c98ce60b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307620"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924185"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -437,7 +437,7 @@ Pokud potřebujete přizpůsobit chování protokolu MQTT na straně cloudu, mě
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o protokolu MQTT najdete v [dokumentaci k MQTT](https://mqtt.org/documentation).
+Další informace o protokolu MQTT najdete v [dokumentaci k MQTT](https://mqtt.org/).
 
 Další informace o plánování nasazení IoT Hub najdete v tématech:
 

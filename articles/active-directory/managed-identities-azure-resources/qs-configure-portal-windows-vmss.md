@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e2d72ba63633d7c5d3da3094cfa00e076513af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d05ee1be18b315c63ccf9d564ea95391a163826e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609108"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924491"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Konfigurace spravovaných identit pro prostředky Azure v sadě škálování virtuálních počítačů pomocí Azure Portal
 
@@ -32,7 +32,7 @@ V tomto článku se naučíte, jak provádět následující spravované identit
 
 - Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md).
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- K provedení operací správy v tomto článku potřebuje váš účet následující přiřazení řízení přístupu na základě rolí Azure:
+- K provedení operací správy v tomto článku potřebuje váš účet následující přiřazení rolí Azure:
 
     > [!NOTE]
     > Nevyžadují se žádné další přiřazení role adresáře Azure AD.
@@ -105,5 +105,3 @@ V současné době Azure Portal nepodporuje přiřazení spravované identity p�
 ## <a name="next-steps"></a>Další kroky
 
 - Pomocí Azure Portal udělte [přístup k jinému prostředku Azure](howto-assign-access-portal.md)pomocí spravované identity sady škálování virtuálních počítačů Azure.
-
-

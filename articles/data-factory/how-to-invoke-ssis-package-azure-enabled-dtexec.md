@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94b581f677e370911a60db08276ff7dd0eb45486
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414327"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927075"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Spouštění balíčků služba SSIS (SQL Server Integration Services) pomocí nástroje DTExec s povoleným Azure
 
@@ -87,7 +87,7 @@ Vyvolání AzureDTExec nabízí podobné možnosti jako vyvolání DTExec. Dalš
 - **/F [soubor]**: načte balíček, který je uložený v systému souborů, v souborové sdílené složce nebo v souborech Azure. Jako hodnotu této možnosti můžete zadat cestu UNC pro soubor balíčku v systému souborů, sdílenou složku nebo soubory Azure s příponou. dtsx. Pokud zadaná cesta UNC obsahuje mezery, vložte kolem celé cesty uvozovky.
 - **/Conf [igFile]**: Určuje konfigurační soubor, ze kterého mají být extrahovány hodnoty. Pomocí této možnosti můžete nastavit konfiguraci za běhu pro balíček, který se liší od toho, který je zadaný v době návrhu. Můžete uložit různá nastavení do konfiguračního souboru XML a pak je načíst před spuštěním balíčku. Další informace najdete v tématu [konfigurace balíčků SSIS](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017). Pokud chcete zadat hodnotu pro tuto možnost, použijte cestu UNC pro konfigurační soubor v systému souborů, sdílenou složku nebo soubory Azure s jeho rozšířením dtsConfig. Pokud zadaná cesta UNC obsahuje mezery, vložte kolem celé cesty uvozovky.
 - **/Conn [ection]**: Určuje připojovací řetězce pro existující Správce připojení ve vašem balíčku. Pomocí této možnosti můžete nastavit připojovací řetězce pro modul runtime pro existující Správce připojení v balíčku, které se liší od těch, které jsou určeny v době návrhu. Zadejte hodnotu pro tuto možnost následujícím způsobem: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]` .
-- **/Set**: přepíše konfiguraci parametru, proměnné, vlastnosti, kontejneru, zprostředkovatele protokolů, enumerátoru foreach nebo připojení v balíčku. Tuto možnost lze zadat vícekrát. Zadejte hodnotu pro tuto možnost následujícím způsobem: `property_path;value` . Například `\package.variables[counter].Value;1` přepíše hodnotu `counter` proměnné jako 1. Průvodce **konfigurací balíčku** můžete použít k vyhledání, zkopírování a vložení hodnoty `property_path` pro položky v balíčku, jejichž hodnota má být popsána. Další informace najdete v tématu [Průvodce konfigurací balíčku](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014).
+- **/Set**: přepíše konfiguraci parametru, proměnné, vlastnosti, kontejneru, zprostředkovatele protokolů, enumerátoru foreach nebo připojení v balíčku. Tuto možnost lze zadat vícekrát. Zadejte hodnotu pro tuto možnost následujícím způsobem: `property_path;value` . Například `\package.variables[counter].Value;1` přepíše hodnotu `counter` proměnné jako 1. Průvodce **konfigurací balíčku** můžete použít k vyhledání, zkopírování a vložení hodnoty `property_path` pro položky v balíčku, jejichž hodnota má být popsána. Další informace najdete v tématu [Průvodce konfigurací balíčku](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis).
 - **/De [crypt]**: nastaví dešifrovací heslo balíčku, který je nakonfigurovaný s **EncryptAllWithPassword** / úrovní ochrany**EncryptSensitiveWithPassword** EncryptAllWithPassword.
 
 > [!NOTE]

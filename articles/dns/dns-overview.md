@@ -6,16 +6,16 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
-ms.openlocfilehash: 1543c0daae7d637730a5f8f9da2305423ba7f84e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d59f166897674e9dcff8086b8f5c906605155ee3
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76932409"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924270"
 ---
 # <a name="what-is-azure-dns"></a>Co je Azure DNS?
 
-Azure DNS je hostitelská služba určená pro domény DNS, která zajišťuje překlad názvů s využitím infrastruktury Microsoft Azure. Pokud své domény hostujete v Azure, můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
+Azure DNS je hostitelská služba pro domény DNS, která poskytuje překlad názvů na IP adresy pomocí infrastruktury Microsoft Azure. Pokud své domény hostujete v Azure, můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
 
 Azure DNS nelze použít k nákupu názvu domény. V případě ročního poplatku můžete koupit název domény pomocí [App Service domény](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain) nebo registrátora názvu domény třetí strany. Domény pak můžete hostovat v Azure DNS za účelem správy záznamů. Další informace najdete v tématu [delegování domény na Azure DNS](dns-domain-delegation.md).
 
@@ -29,7 +29,7 @@ DNS domény v Azure DNS jsou hostované na globální síti názvových serverů
 
  Služba Azure DNS je postavená na Azure Resource Manageru, který poskytuje například následující funkce:
 
-* [Řízení přístupu na základě role](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), abyste mohli určit, kdo má přístup ke konkrétním akcím v organizaci.
+* [Řízení přístupu na základě role Azure (Azure RBAC)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) k řízení, kdo má přístup ke konkrétním akcím pro vaši organizaci.
 
 * [Protokoly aktivit](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), abyste mohli monitorovat, jakým způsobem uživatel v organizaci upravil prostředek, nebo vyhledat chyby při řešení potíží.
 
@@ -41,13 +41,13 @@ Další informace najdete v tématu o [ochraně záznamů a zón DNS](dns-protec
 
 Azure DNS aktuálně nepodporuje DNSSEC. Ve většině případů můžete snížit nutnost rozšíření DNSSEC tím, že ve svých aplikacích konzistentně použijete HTTPS/TLS. Pokud je DNSSEC zásadním požadavkem pro zóny DNS, můžete tyto zóny hostovat s poskytovateli hostování DNS třetích stran.
 
-## <a name="ease-of-use"></a>Snadné používání
+## <a name="ease-of-use"></a>Jednoduché používání
 
  Azure DNS může spravovat záznamy DNS vašich služeb Azure a poskytovat DNS i externím prostředkům. Služba Azure DNS je integrovaná na webu Azure Portal a používá stejné přihlašovací údaje, smlouvu o podpoře i fakturaci jako ostatní služby Azure. 
 
 DNS se fakturuje na základě počtu zón DNS hostovaných v Azure a počtu přijatých dotazů DNS. Další informace o cenách najdete na stránce [Ceny za Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
 
-Své domény a záznamy můžete spravovat pomocí webu Azure Portal, rutin Azure PowerShellu nebo Azure CLI pro různé platformy. Aplikace, které vyžadují automatizovanou správu DNS, můžete do služby integrovat pomocí rozhraní REST API a sad SDK.
+Své domény a záznamy můžete spravovat pomocí webu Azure Portal, rutin Azure PowerShellu nebo Azure CLI pro různé platformy. Aplikace, které vyžadují automatizovanou správu DNS, se dají integrovat se službou pomocí rozhraní REST API a sad SDK.
 
 ## <a name="customizable-virtual-networks-with-private-domains"></a>Přizpůsobitelné virtuální sítě s privátními doménami
 
@@ -70,4 +70,3 @@ Další informace najdete v [přehledu záznamů aliasů Azure DNS](dns-alias.md
 * Informace o vytvoření zóny v Azure DNS najdete v tématu [Vytvoření zóny DNS](./dns-getstarted-create-dnszone-portal.md).
 
 * Odpovědi na nejčastější dotazy týkající se Azure DNS najdete v článku s [nejčastějšími dotazy k Azure DNS](dns-faq.md).
-

@@ -10,15 +10,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: 680f8394ad1d10a564033ae5a2b9f59063589f73
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d89bc33b0ddd0793a3c55dbd64bef9678bd723e7
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532522"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920139"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Kurz: Konfigurace transakční replikace mezi spravovanou instancí Azure SQL a SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
+
+Transakční replikace umožňuje replikovat data z jedné databáze do jiné, jejímž hostitelem je SQL Server nebo [Azure SQL Managed instance](sql-managed-instance-paas-overview.md). Spravovaná instance SQL může být Vydavatel, distributor nebo předplatitel v topologii replikace. V tématu [Konfigurace transakční replikace](replication-transactional-overview.md#common-configurations) pro dostupné konfigurace. 
+
+Transakční replikace je aktuálně ve verzi Public Preview pro spravovanou instanci SQL. 
 
 V tomto kurzu se naučíte:
 
@@ -30,11 +34,11 @@ V tomto kurzu se naučíte:
 
 ![Replikace mezi vydavatelem spravované instance, distributorem spravované instance a předplatitelem SQL Server](./media/replication-two-instances-and-sql-server-configure-tutorial/sqlmi-to-sql-replication.png)
 
-Tento kurz je určený pro zkušené publikum a předpokládá, že uživatel je obeznámen s nasazením a připojením ke spravovaným instancím a SQL Server virtuálním počítačům v rámci Azure. V takovém případě jsou některé kroky v tomto kurzu vyleskované.
+Tento kurz je určený pro zkušené publikum a předpokládá, že uživatel je obeznámen s nasazením a připojením ke spravovaným instancím a SQL Server virtuálním počítačům v rámci Azure. 
 
-Další informace najdete v článcích [Přehled spravované instance SQL Azure](sql-managed-instance-paas-overview.md) a [transakční replikace SQL](replication-transactional-overview.md) .
 
-Chcete-li nakonfigurovat replikaci mezi vydavatelem spravované instance a odběratelem spravované instance, přečtěte si téma [Konfigurace transakční replikace mezi dvěma spravovanými instancemi](replication-between-two-instances-configure-tutorial.md).
+> [!NOTE]
+> Tento článek popisuje použití [transakční replikace](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) ve spravované instanci Azure SQL. Nesouvisí se [skupinami převzetí služeb při selhání](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), což je funkce spravované instance Azure SQL, která umožňuje vytvářet kompletní čitelné repliky jednotlivých instancí. Při konfiguraci [replikace transakcí se skupinami převzetí služeb při selhání](replication-transactional-overview.md#with-failover-groups)jsou k dispozici další předpoklady.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -142,7 +146,7 @@ Privátní zóna DNS umožňuje směrování DNS mezi spravovanými instancemi a
 
 ### <a name="create-a-private-dns-zone"></a>Vytvoření privátní zóny DNS
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Pokud chcete vytvořit nový prostředek Azure, vyberte **vytvořit prostředek** .
 1. Hledat `private dns zone` na Azure Marketplace.
 1. Zvolte prostředek **zóny privátní DNS** publikovaný Microsoftem a pak vyberte **vytvořit** a vytvořte zónu DNS.
@@ -409,7 +413,7 @@ I když je možné, že tato chybová zpráva je přesná a na vydavateli, ke kt
 - [Funkce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
 - [Detekce hrozeb](threat-detection-configure.md)
 - [Dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking)
-- [Zabezpečení na úrovni řádku](/sql/relational-databases/security/row-level-security)
+- [Zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security)
 - [Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="sql-managed-instance-capabilities"></a>Možnosti spravované instance SQL

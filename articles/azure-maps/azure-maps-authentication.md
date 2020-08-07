@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3f9b4595be5af2477fdbef4e5f0a15224e8a93
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4aaa729ffd272c886bf5c545574d99c9de5842f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285828"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922247"
 ---
 # <a name="authentication-with-azure-maps"></a>Ověřování s využitím Azure Maps
 
@@ -80,7 +80,7 @@ Informace o zobrazení ID klienta najdete v tématu [zobrazení podrobností o o
 
 ## <a name="authorization-with-role-based-access-control"></a>Ověřování pomocí řízení přístupu na základě role
 
-Azure Maps podporuje přístup ke všem objektům zabezpečení pro [řízení přístupu na základě role](https://docs.microsoft.com/azure/role-based-access-control/overview) Azure, včetně: jednotlivých uživatelů Azure AD, skupin, aplikací, prostředků Azure a spravovaných identit Azure. Hlavním typům je udělena sada oprávnění, která se označuje také jako definice role. Definice role poskytuje oprávnění REST API akcí. Použití přístupu na jeden nebo více účtů Azure Maps se označuje jako obor. Při použití objektu zabezpečení, definice role a oboru se vytvoří přiřazení role. 
+Azure Maps podporuje přístup ke všem objektům zabezpečení pro [řízení přístupu na základě role Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) , včetně: jednotlivých uživatelů Azure AD, skupin, aplikací, prostředků Azure a spravovaných identit Azure. Hlavním typům je udělena sada oprávnění, která se označuje také jako definice role. Definice role poskytuje oprávnění REST API akcí. Použití přístupu na jeden nebo více účtů Azure Maps se označuje jako obor. Při použití objektu zabezpečení, definice role a oboru se vytvoří přiřazení role. 
 
 V dalších částech najdete koncepty a součásti Azure Maps integrace s řízením přístupu na základě role Azure AD. V rámci procesu nastavení účtu Azure Maps je adresář služby Azure AD přidružený k předplatnému Azure, ke kterému se nachází účet Azure Maps. 
 

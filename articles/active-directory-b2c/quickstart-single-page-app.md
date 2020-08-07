@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a754873aeafe8d4e7b48d49647469874ff40f7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: db18c71b09cd9beb58799ad4fbcbc944061153fb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80875865"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921754"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Rychlý start: Nastavení přihlášení pro jednostránkovou aplikaci pomocí služby Azure Active Directory B2C
 
@@ -47,7 +47,7 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje cloudovou správu identit, k
     npm start
     ```
 
-    Server spuštěný serverem *. js* zobrazuje port, na kterém naslouchá:
+    Server spuštěný nástrojem *server.js* zobrazuje port, na kterém naslouchá:
 
     ```console
     Listening on port 6420...
@@ -75,6 +75,10 @@ Vyberte **volání rozhraní API** , aby se vaše zobrazované jméno vrátilo z
 ![Ukázková aplikace v prohlížeči znázorňující odpověď webového rozhraní API](./media/quickstart-single-page-app/call-api-spa.png)
 
 Ukázková jednostránková aplikace do požadavku na chráněný prostředek webového rozhraní API zahrne přístupový token.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Svého tenanta Azure AD B2C můžete použít i k vyzkoušení dalších kurzů nebo rychlých startů pro Azure AD B2C. Jakmile už ho nebudete potřebovat, můžete [svého tenanta Azure AD B2C odstranit](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
 ## <a name="next-steps"></a>Další kroky
 

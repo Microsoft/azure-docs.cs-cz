@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d523aeff87b95aaea91df9ad5d3f44c73c871b71
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8132eb72b3e448d7ae830b29ccb7dc51528c1250
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528595"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921397"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph
 
@@ -60,7 +60,7 @@ Uživatel s účtem zákazníka se může přihlásit s více identitami. Např�
 
 V rozhraní Microsoft Graph API jsou místní i federované identity uloženy v `identities` atributu uživatele, který je typu [objectIdentity][graph-objectIdentity]. `identities`Kolekce představuje sadu identit, které se používají pro přihlášení k uživatelskému účtu. Tato kolekce umožňuje uživateli přihlásit se k uživatelskému účtu pomocí kterékoli z jeho přidružených identit.
 
-| Vlastnost   | Typ |Description|
+| Vlastnost   | Typ |Popis|
 |:---------------|:--------|:----------|
 |signInType|řetězec| Určuje typy přihlašování uživatelů v adresáři. Pro místní účet: `emailAddress` , `emailAddress1` , `emailAddress2` , `emailAddress3` , `userName` nebo jakýkoli jiný typ, který chcete. Účet sociálních sítí musí být nastavený na `federated` .|
 |issuer|řetězec|Určuje vystavitele identity. U místních účtů (kde **signInType** není `federated` ) Tato vlastnost je výchozí název domény místního B2C tenanta, například `contoso.onmicrosoft.com` . Pro sociální identity (kde **signInType** je `federated` ) hodnota je název vystavitele, například`facebook.com`|
@@ -117,13 +117,13 @@ Pokud účty, které chcete migrovat, mají slabší sílu hesla, než je [siln�
 
 Každá aplikace pro zákazníky má jedinečné požadavky na shromažďování informací. Váš tenant Azure AD B2C obsahuje integrovanou sadu informací uložených ve vlastnostech, jako je křestní jméno, příjmení, město a poštovní směrovací číslo. Pomocí Azure AD B2C můžete roztáhnout sadu vlastností uložených v každém účtu zákazníka. Další informace o definování vlastních atributů najdete v tématech [vlastní atributy (toky uživatelů)](user-flow-custom-attributes.md) a [vlastní atributy (vlastní zásady)](custom-policy-custom-attributes.md).
 
-Rozhraní Microsoft Graph API podporuje vytváření a aktualizaci uživatele s atributy rozšíření. Atributy rozšíření v Graph API jsou pojmenovány pomocí konvence `extension_ApplicationClientID_attributename` , kde `ApplicationClientID` je **ID aplikace (klienta)** `b2c-extensions-app` aplikace (nalezené v **Registrace aplikací**  >  **všech aplikací** v Azure Portal). Všimněte si, že **ID aplikace (klienta)** , jak je znázorněno v názvu atributu rozšíření, neobsahuje spojovníky. Příklad:
+Rozhraní Microsoft Graph API podporuje vytváření a aktualizaci uživatele s atributy rozšíření. Atributy rozšíření v Graph API jsou pojmenovány pomocí konvence `extension_ApplicationClientID_attributename` , kde `ApplicationClientID` je **ID aplikace (klienta)** `b2c-extensions-app` aplikace (nalezené v **Registrace aplikací**  >  **všech aplikací** v Azure Portal). Všimněte si, že **ID aplikace (klienta)** , jak je znázorněno v názvu atributu rozšíření, neobsahuje spojovníky. Například:
 
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
-## <a name="code-sample"></a>Ukázka kódu
+## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Ukázka kódu: jak programově spravovat uživatelské účty
 
 Tato ukázka kódu je Konzolová aplikace .NET Core, která používá [sadu SDK Microsoft Graph](https://docs.microsoft.com/graph/sdks/sdks-overview) k interakci s rozhraním API Microsoft Graph. Jeho kód ukazuje, jak volat rozhraní API pro programovou správu uživatelů v klientovi Azure AD B2C.
 Můžete [si stáhnout ukázkový archiv](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*. zip), [Procházet úložiště](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) na GitHubu nebo klonovat úložiště:

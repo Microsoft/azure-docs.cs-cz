@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 04993d36689c917db05a1b5f2132b107c7c9b412
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 38500edeca2241bfa9ab093e037af18159994b02
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535106"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920395"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Access Control na základě rolí pro StorSimple
 
@@ -163,7 +163,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 ## <a name="add-users-to-the-custom-role"></a>Přidat uživatele do vlastní role
 
-Přístup se uděluje z prostředku, skupiny prostředků nebo předplatného, které je v rozsahu platnosti přiřazení role. Při poskytování přístupu mějte na paměti, že podřízený objekt, který je udělený v nadřazeném uzlu, zdědí podřízená položka. Další informace najdete v [nastavení řízení přístupu na základě role](../role-based-access-control/overview.md).
+Přístup se uděluje z prostředku, skupiny prostředků nebo předplatného, které je v rozsahu platnosti přiřazení role. Při poskytování přístupu mějte na paměti, že podřízený objekt, který je udělený v nadřazeném uzlu, zdědí podřízená položka. Další informace najdete na webu [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md).
 
 1. Přejděte na **řízení přístupu (IAM)**. V okně řízení přístupu klikněte na **+ Přidat** .
 

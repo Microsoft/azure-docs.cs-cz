@@ -3,12 +3,12 @@ title: Možnosti ověřování v registru
 description: Možnosti ověřování privátního služby Azure Container Registry, včetně přihlašování pomocí Azure Active Directory identity, pomocí instančních objektů a použití volitelných přihlašovacích údajů správce.
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 0d44a97e01eef709dff47342e4503d1e0263a225
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 3d2379b2b2384342fb84ba1b610caa609300aa0c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760579"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926316"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Ověřování pomocí služby Azure Container Registry
 
@@ -44,7 +44,7 @@ Při přihlášení pomocí `az acr login` rozhraní příkazového řádku pou�
 
 V případě přístupu k registru je token používaný nástrojem `az acr login` platný po dobu **3 hodin**, proto doporučujeme, abyste se před spuštěním příkazu vždy přihlásili k registru `docker` . V případě vypršení platnosti tokenu ho můžete znovu aktualizovat pomocí `az acr login` příkazu znovu a ověřit. 
 
-Použití `az acr login` s identitami Azure zajišťuje [přístup založený na rolích](../role-based-access-control/role-assignments-portal.md). V některých scénářích se můžete chtít přihlásit k registru s vlastní individuální identitou v Azure AD nebo nakonfigurovat jiné uživatele Azure s konkrétními [rolemi a oprávněními RBAC](container-registry-roles.md). Pro scénáře mezi službami nebo pro zpracování potřeb pracovní skupiny nebo pracovního postupu vývoje, kde nechcete spravovat individuální přístup, se můžete také přihlásit pomocí [spravované identity pro prostředky Azure](container-registry-authentication-managed-identity.md).
+Použití `az acr login` s identitami Azure poskytuje [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). V některých scénářích se můžete chtít přihlásit k registru s vlastní individuální identitou v Azure AD nebo nakonfigurovat jiné uživatele Azure s konkrétními [rolemi a oprávněními Azure](container-registry-roles.md). Pro scénáře mezi službami nebo pro zpracování potřeb pracovní skupiny nebo pracovního postupu vývoje, kde nechcete spravovat individuální přístup, se můžete také přihlásit pomocí [spravované identity pro prostředky Azure](container-registry-authentication-managed-identity.md).
 
 ### <a name="az-acr-login-with---expose-token"></a>AZ ACR Login with--zpřístupnit-token
 
@@ -73,7 +73,7 @@ docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-0000000000
 
 ## <a name="service-principal"></a>Instanční objekt
 
-Pokud k registru přiřadíte [instanční objekt](../active-directory/develop/app-objects-and-service-principals.md) , vaše aplikace nebo služba ho můžou použít pro bezobslužné ověřování. Instanční objekty umožňují [přístup na základě rolí](../role-based-access-control/role-assignments-portal.md) k registru a k registru můžete přiřadit více instančních objektů. Několik instančních objektů vám umožní definovat různý přístup pro různé aplikace.
+Pokud k registru přiřadíte [instanční objekt](../active-directory/develop/app-objects-and-service-principals.md) , vaše aplikace nebo služba ho můžou použít pro bezobslužné ověřování. Instanční objekty umožňují [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) k registru a k registru můžete přiřadit více instančních objektů. Několik instančních objektů vám umožní definovat různý přístup pro různé aplikace.
 
 K dispozici jsou role pro registr kontejnerů:
 
@@ -97,7 +97,7 @@ Každý registr kontejnerů obsahuje účet uživatele správce, který je ve v�
 > Účet správce je navržený pro jednoho uživatele, který má přístup k registru, hlavně pro účely testování. Nedoporučujeme sdílení přihlašovacích údajů účtu správce mezi více uživateli. Všichni uživatelé, kteří se ověřují pomocí účtu správce, se zobrazí jako jednotliví uživatelé s přístupem push a pull do registru. Změna nebo zakázání tohoto účtu zakáže přístup k registru pro všechny uživatele, kteří používají své přihlašovací údaje. Pro uživatele a instanční objekty se doporučuje použít pro scénáře s doplňováním provozu individuální identitu.
 >
 
-Účet správce je k dispozici se dvěma hesly, z nichž lze znovu vygenerovat. Dvě hesla umožňují udržovat připojení k registru pomocí jednoho hesla při opětovném vygenerování. Pokud je povolen účet správce, můžete `docker login` při zobrazení výzvy k zadání základního ověřování do registru předat uživatelské jméno a heslo k příkazu. Příklad:
+Účet správce je k dispozici se dvěma hesly, z nichž lze znovu vygenerovat. Dvě hesla umožňují udržovat připojení k registru pomocí jednoho hesla při opětovném vygenerování. Pokud je povolen účet správce, můžete `docker login` při zobrazení výzvy k zadání základního ověřování do registru předat uživatelské jméno a heslo k příkazu. Například:
 
 ```
 docker login myregistry.azurecr.io 

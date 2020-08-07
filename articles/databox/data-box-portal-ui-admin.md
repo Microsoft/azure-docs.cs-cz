@@ -1,6 +1,6 @@
 ---
 title: Příručka pro správu Azure Data Box Disku pomocí portálu | Microsoft Docs
-description: Popisuje, jak spravovat Azure Data Box pomocí webu Azure Portal.
+description: Naučte se spravovat Data Box Disk pomocí Azure Portal. Spravujte objednávky, spravujte disky a sledujte stav objednávky při jejich průběhu.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4ac56a4d588071f599f62e6de94d9ec7367a1ae
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707731"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924749"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Správa Data Box Disku pomocí webu Azure Portal
 
@@ -119,7 +119,7 @@ Pokud chcete upravit podrobnosti o oznámení, proveďte následující kroky.
 
 ## <a name="view-order-status"></a>Zobrazení stavu objednávky
 
-|Stav objednávky |Description |
+|Stav objednávky |Popis |
 |---------|---------|
 |Objednáno     | Došlo k úspěšnému zadání objednávky. <br> Pokud disky nejsou k dispozici, obdržíte oznámení. <br>Pokud jsou disky dostupné, Microsoft určí disky k odeslání a připraví balíček s disky.        |
 |Zpracováno     | Proběhlo zpracování objednávky. <br> Během zpracování objednávky dochází k těmto akcím:<li>Disky se zašifrují pomocí šifrování AES-128 nástrojem BitLocker. </li> <li>Data Box Disk se uzamkne, aby se zabránilo neoprávněnému přístupu.</li><li>Během tohoto procesu se vygeneruje klíč k odemknutí disků.</li>        |

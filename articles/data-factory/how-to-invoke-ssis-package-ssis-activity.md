@@ -14,12 +14,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/20/2020
-ms.openlocfilehash: 2f8706fa8b272075ec64e2d36475509732914acf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0b6aba2b857a16631871d13f4a0fc14b682393e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003179"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926694"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Spuštění balíčku SSIS pomocí aktivity Spustit balíček SSIS ve službě Azure Data Factory
 
@@ -27,7 +27,7 @@ ms.locfileid: "87003179"
 
 Tento článek popisuje, jak spustit balíček služba SSIS (SQL Server Integration Services) (SSIS) v kanálu Azure Data Factory pomocí aktivity spustit balíček SSIS. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -97,7 +97,7 @@ Na kartě **Nastavení** aktivity spustit balíček SSIS proveďte následujíc�
 
 Pokud je vaše Azure-SSIS IR vytvořená pomocí katalogu SSIS (SSISDB) hostovaného serverem Azure SQL Database Server/spravovanou instancí, **SSISDB** při automatickém výběru umístění balíčku, nebo ho můžete vybrat sami. Pokud je vybraná, proveďte následující kroky.
 
-   1. Pokud je spuštěný Azure-SSIS IR a políčko **Ruční Ruční zadání** není zaškrtnuto, vyhledejte a vyberte existující složky, projekty, balíčky a prostředí z SSISDB. Vyberte **aktualizovat** a načtěte vaše nově přidané složky, projekty, balíčky nebo prostředí z SSISDB, aby byly dostupné pro procházení a výběr. Chcete-li procházet a vybírat prostředí pro provádění balíčků, je nutné nakonfigurovat vaše projekty předem, aby byla tato prostředí přidána jako odkazy ze stejných složek v SSISDB. Další informace najdete v tématu [Vytvoření a mapování SSIS prostředí](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014).
+   1. Pokud je spuštěný Azure-SSIS IR a políčko **Ruční Ruční zadání** není zaškrtnuto, vyhledejte a vyberte existující složky, projekty, balíčky a prostředí z SSISDB. Vyberte **aktualizovat** a načtěte vaše nově přidané složky, projekty, balíčky nebo prostředí z SSISDB, aby byly dostupné pro procházení a výběr. Chcete-li procházet a vybírat prostředí pro provádění balíčků, je nutné nakonfigurovat vaše projekty předem, aby byla tato prostředí přidána jako odkazy ze stejných složek v SSISDB. Další informace najdete v tématu [Vytvoření a mapování SSIS prostředí](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages).
 
    1. V části **úroveň protokolování**vyberte předdefinovaný rozsah protokolování pro spuštění balíčku. Pokud chcete místo toho zadat vlastní název protokolování, zaškrtněte políčko **vlastní** . 
 
@@ -269,7 +269,7 @@ Na kartě **přepsání vlastností** aktivity spustit balíček SSIS proveďte 
 
    1. Zadejte cesty k existujícím vlastnostem ve vybraném balíčku jeden po jednom, aby byly hodnoty přiřazeny ručně. Ujistěte se, že existují a jsou správně zadány pro spuštění balíčku, aby bylo úspěšné. Chcete-li například přepsat hodnotu proměnné uživatele, zadejte cestu v následujícím formátu: `\Package.Variables[User::<variable name>].Value` . 
 
-      Správnou **cestu vlastnosti** pro libovolnou vlastnost balíčku můžete získat otevřením balíčku, který ho obsahuje v SSDT. Po otevření balíčku vyberte jeho vlastnost tok a **Konfigurace** v okně **vlastnosti** SSDT. V dalším kroku vyberte tlačítko se třemi tečkami (**...**) vedle vlastnosti **Konfigurace** a otevřete tak **organizátor konfigurací balíčku** , který se obvykle používá k [Vytvoření konfigurací balíčku v modelu nasazení balíčku](https://docs.microsoft.com/sql/integration-services/create-package-configurations?view=sql-server-2014). 
+      Správnou **cestu vlastnosti** pro libovolnou vlastnost balíčku můžete získat otevřením balíčku, který ho obsahuje v SSDT. Po otevření balíčku vyberte jeho vlastnost tok a **Konfigurace** v okně **vlastnosti** SSDT. V dalším kroku vyberte tlačítko se třemi tečkami (**...**) vedle vlastnosti **Konfigurace** a otevřete tak **organizátor konfigurací balíčku** , který se obvykle používá k [Vytvoření konfigurací balíčku v modelu nasazení balíčku](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis#create-package-configurations). 
 
       ![Získat vlastnosti balíčku z SSDT – vlastnost Configurations](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
 

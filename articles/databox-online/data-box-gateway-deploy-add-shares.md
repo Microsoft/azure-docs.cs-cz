@@ -1,6 +1,6 @@
 ---
 title: Přenos dat pomocí služby Azure Data Box Gateway | Microsoft Docs
-description: Zjistěte, jak na zařízení Data Box Gateway přidat sdílené složky a připojit se k nim.
+description: Naučte se, jak přidat sdílené složky a připojit se k nim na Azure Data Box Gateway a že vaše zařízení Data Box Gateway může přenášet data do Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 4817db0ce9723f46ceac4f4720915a9bfddcf915
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 6db2d8fa6e957a63a4410f17b09a9f106bfba6e6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561706"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923471"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Kurz: přenos dat pomocí Azure Data Box Gateway
 

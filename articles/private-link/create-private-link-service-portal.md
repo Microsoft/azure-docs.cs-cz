@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: 125b70b389809c576d17d1c8de35290c1c402c4a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0d873401d377a03581a319769604f3d976f365be
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852884"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927234"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Rychlý Start: vytvoření služby privátního propojení pomocí Azure Portal
 
@@ -33,7 +33,7 @@ Nejdřív vytvořte virtuální síť. Dále vytvořte interní nástroj pro vyr
 
 V této části vytvoříte virtuální síť. Také vytvoříte podsíť pro hostování nástroje pro vyrovnávání zatížení, který přistupuje ke službě privátního propojení.
 
-V této části budete muset v krocích níže nahradit následující parametry:
+V této části budete muset v následujících krocích nahradit následující parametry následujícími informacemi:
 
 | Parametr                   | Hodnota                |
 |-----------------------------|----------------------|
@@ -173,7 +173,7 @@ V této části vytvoříte službu privátního propojení za standardním nás
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s použitím služby privátního propojení hotovi, odstraňte skupinu prostředků, abyste mohli vyčistit prostředky používané v tomto rychlém startu.
+Po dokončení používání služby privátního propojení odstraňte skupinu prostředků, abyste mohli vyčistit prostředky používané v tomto rychlém startu.
 
 1. Do vyhledávacího pole v horní části portálu zadejte **myResourceGroupLB** a ve výsledcích hledání vyberte **myResourceGroupLB** .
 1. Vyberte **Odstranit skupinu prostředků**.

@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování S
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4d197f8b3c1ed74ef45c1f7942ead52ccef0c14a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 41511abaa071bd0f64ee699c52486b71ec036a68
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513179"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926446"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Matice podpory pro zálohování SQL Server ve virtuálních počítačích Azure
 
@@ -25,21 +25,26 @@ Pomocí Azure Backup můžete zálohovat databáze SQL Server ve virtuálních p
 **Podporované verze SQL Server** | SQL Server 2019 SQL Server 2017 na [stránce prohledat životní cyklus produktu](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 a SPS, jak je podrobně popsán na [stránce hledání životního cyklu produktu](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, web, Developer, Express.
 **Podporované verze rozhraní .NET** | Na virtuálním počítači je nainstalovaný .NET Framework 4.5.2 nebo novější.
 
-## <a name="feature-consideration-and-limitations"></a>Aspekty a omezení funkcí
+## <a name="feature-considerations-and-limitations"></a>Hlediska a omezení funkcí
 
-* Zálohování SQL Server můžete nakonfigurovat v Azure Portal nebo **PowerShellu**. Rozhraní příkazového řádku nepodporujeme.
+|Nastavení  |Maximální omezení |
+|---------|---------|
+|Počet databází, které lze chránit na serveru (a v trezoru)    |   2000      |
+|Podporovaná velikost databáze (nad rámec této velikosti může dojít k problémům s výkonem)   |   2 TB      |
+|Počet souborů podporovaných v databázi    |   1000      |
+
+>[!NOTE]
+> [Stáhněte si podrobný Plánovač prostředků](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) a vypočítejte přibližný počet chráněných databází doporučených pro jednotlivé servery na základě prostředků virtuálních počítačů, šířky pásma a zásad zálohování.
+
+* Zálohování SQL Server můžete nakonfigurovat v Azure Portal nebo **PowerShellu**. Rozhraní příkazového řádku se nepodporuje.
 * Řešení je podporované v obou druzích [nasazení](../azure-resource-manager/management/deployment-models.md) – Azure Resource Manager virtuálních počítačů a klasických virtuálních počítačů.
-* Virtuální počítač se spuštěným SQL Server vyžaduje připojení k Internetu pro přístup k veřejným IP adresám Azure.
-* SQL Server **instance clusteru s podporou převzetí služeb při selhání (FCI)** se nepodporuje.
+* Podporují se všechny typy zálohování (úplný/rozdíl/protokol) a modely obnovení (jednoduché/úplné/hromadné protokolování).
+* Pro databáze **jen pro čtení** jsou podporovány úplné typy úplné zálohy a pouze kopírování.
+* Nativní komprese SQL je podporována, pokud je explicitně povolena uživatelem v zásadách zálohování. Azure Backup přepisuje výchozí hodnoty na úrovni instance pomocí klauzule COMPRESSION/NO_COMPRESSION v závislosti na hodnotě tohoto ovládacího prvku nastavené uživatelem.
+* Zálohování databáze s podporou TDE je podporováno. Chcete-li obnovit TDE šifrovanou databázi do jiné SQL Server, je nutné nejprve [obnovit certifikát na cílový server](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). Komprese záloh pro databáze s povoleným TDE pro SQL Server 2016 a novější verze je dostupná, ale v nižší velikosti přenosu, jak je popsáno [zde](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593).
 * Operace zálohování a obnovení pro databáze zrcadlení a snímky databáze nejsou podporovány.
-* Použití více než jednoho řešení zálohování k zálohování samostatné instance SQL Server nebo skupiny dostupnosti Always On SQL může způsobit selhání zálohování; upustí od tohoto postupu.
-* Zálohování dvou uzlů skupiny dostupnosti jednotlivě se stejnými nebo různými řešeními může také vést k chybě zálohování.
-* Pro databáze **jen pro čtení** podporuje Azure Backup jenom úplné typy úplné zálohy a jenom pro kopírování.
-* Databáze s velkým počtem souborů není možné chránit. Maximální podporovaný počet souborů je **~ 1000**.  
-* V trezoru můžete zálohovat až **~ 2000** SQL Server databází. Pro případ, že máte větší počet databází, můžete vytvořit více trezorů.
-* Zálohu můžete nakonfigurovat až na **50** databází v jednom přechodu; Toto omezení pomáhá optimalizovat zatížení zálohování.
-* Podporujeme databáze o velikosti až **2 TB** . velikost, která je větší, než může dojít k problémům s výkonem.
-* Aby bylo vhodné, aby bylo možné chránit mnoho databází na jeden server, zvažte faktory, jako je šířka pásma, velikost virtuálního počítače, četnost zálohování, velikost databáze a tak dále. [Stáhněte](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) si Plánovač prostředků, abyste mohli vypočítat přibližný počet databází, které můžete mít na serveru na základě prostředků virtuálních počítačů a zásad zálohování.
+* SQL Server **instance clusteru s podporou převzetí služeb při selhání (FCI)** se nepodporuje.
+* Použití více než jednoho řešení zálohování k zálohování samostatné instance SQL Server nebo skupiny dostupnosti Always On SQL může způsobit selhání zálohování. Upustí od tohoto postupu. Zálohování dvou uzlů skupiny dostupnosti jednotlivě se stejnými nebo různými řešeními může také vést k chybě zálohování.
 * Po nakonfigurování skupin dostupnosti jsou zálohy z různých uzlů odebírány na základě několika faktorů. Chování zálohování skupiny dostupnosti je shrnuto níže.
 
 ### <a name="back-up-behavior-with-always-on-availability-groups"></a>Chování zálohování v případě skupin dostupnosti AlwaysOn
@@ -55,7 +60,7 @@ V závislosti na předvolbách zálohování a typech zálohování (úplné/roz
 
 #### <a name="backup-preference-primary"></a>Předvolby zálohování: primární
 
-**Typ zálohování** | **Uzel**
+**Typ zálohování** | **Node**
 --- | ---
 Do bloku | Primární
 Diferenciál | Primární
@@ -64,7 +69,7 @@ Pouze kopírování je úplné |  Primární
 
 #### <a name="backup-preference-secondary-only"></a>Předvolby zálohování: jenom sekundární
 
-**Typ zálohování** | **Uzel**
+**Typ zálohování** | **Node**
 --- | ---
 Do bloku | Primární
 Diferenciál | Primární
@@ -73,7 +78,7 @@ Pouze kopírování je úplné |  Sekundární
 
 #### <a name="backup-preference-secondary"></a>Předvolby zálohování: sekundární
 
-**Typ zálohování** | **Uzel**
+**Typ zálohování** | **Node**
 --- | ---
 Do bloku | Primární
 Diferenciál | Primární
@@ -82,7 +87,7 @@ Pouze kopírování je úplné |  Sekundární
 
 #### <a name="no-backup-preference"></a>Žádná předvolba zálohování
 
-**Typ zálohování** | **Uzel**
+**Typ zálohování** | **Node**
 --- | ---
 Do bloku | Primární
 Diferenciál | Primární

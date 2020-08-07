@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15b96a8bb5460064d6f50f81809f7e3850b30a4c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281918"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921669"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technický přehled funkcí Azure Active Directory B2C
 
@@ -262,7 +262,4 @@ Další informace o analýze využití najdete v [Azure Active Directory B2C pou
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když máte hlubší přehled o funkcích a technických aspektech Azure Active Directory B2C, začněte používat službu vytvořením klienta B2C:
-
-> [!div class="nextstepaction"]
-> [Kurz: vytvoření >tenanta Azure Active Directory B2C](tutorial-create-tenant.md)
+Teď, když máte hlubší přehled o funkcích a technických aspektech Azure Active Directory B2C, začněte s naším [kurzem pro vytvoření tenanta Azure Active Directory B2C](tutorial-create-tenant.md).

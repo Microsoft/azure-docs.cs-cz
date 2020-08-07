@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2089fcd6e774fd735aa4709b072caafe092b46a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e563e53ad0d5ec90fb9b728c8ffe2d239cf0763
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669439"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920591"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatizované zálohování pro virtuální počítače s SQL Server 2014 (Správce prostředků)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -60,7 +60,7 @@ Pokud chcete používat automatizované zálohování, vezměte v úvahu násled
 
 Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro automatizované zálohování. Skutečné kroky konfigurace se liší v závislosti na tom, jestli používáte příkazy Azure Portal nebo Azure Windows PowerShellu.
 
-| Nastavení | Rozsah (výchozí) | Description |
+| Nastavení | Rozsah (výchozí) | Popis |
 | --- | --- | --- |
 | **Automatizované zálohování** | Povolit/zakázat (zakázáno) | Povolí nebo zakáže automatizované zálohování pro virtuální počítač Azure se systémem SQL Server 2014 Standard nebo Enterprise. |
 | **Doba uchování** | 1-30 dní (30 dní) | Počet dnů uchování zálohy. |
@@ -276,7 +276,7 @@ Další možností je využít integrované funkce Databázová pošta pro ozná
 
 ## <a name="next-steps"></a>Další kroky
 
-Automatizované zálohování konfiguruje spravovanou zálohu na virtuálních počítačích Azure. Proto je důležité [si projít dokumentaci pro spravovanou zálohu na SQL Server 2014](https://msdn.microsoft.com/library/dn449497(v=sql.120).aspx).
+Automatizované zálohování konfiguruje spravovanou zálohu na virtuálních počítačích Azure. Proto je důležité [si projít dokumentaci pro spravovanou zálohu na SQL Server 2014](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure).
 
 Další pokyny k zálohování a obnovení pro SQL Server na virtuálních počítačích Azure najdete v následujícím článku: [zálohování a obnovení pro SQL Server na virtuálních počítačích Azure](backup-restore.md).
 

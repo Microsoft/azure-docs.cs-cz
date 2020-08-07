@@ -3,12 +3,12 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá agenta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: bec0215d3f10aa9f6a20eea7258ec9d5081e8f98
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 8c0f5d4df640fa29f88b3c4c6c0403ad9de97dea
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901976"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921686"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -62,14 +62,14 @@ Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí 
 Zásady konfigurace hosta jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici ve Azure Marketplace, jsou vyloučené, pokud není agent konfigurace hosta kompatibilní.
 Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
 
-|Publisher|Název|Verze|
+|Publisher|Name|Verze|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 a novější|
 |Credativ|Debian|8 a novější|
 |Partnerský vztah Microsoftu|Windows Server|2012 a novější|
 |Partnerský vztah Microsoftu|Klient Windows|Windows 10|
 |OpenLogic|CentOS|7,3 a novější|
-|Red Hat|Red Hat Enterprise Linux|7,4-7,8, 9,0 a novější|
+|Red Hat|Red Hat Enterprise Linux|7,4 – 7,8|
 |SUSE|SLES|12 SP3 a novější|
 
 Vlastní image virtuálních počítačů jsou podporovány zásadami konfigurace hosta, pokud se jedná o jeden z operačních systémů uvedených v tabulce výše.

@@ -3,16 +3,16 @@ title: Oprávnění v Azure Advisor
 description: Oprávnění služby Advisor a jejich způsob, jak můžou zablokovat možnost konfigurovat předplatná nebo odložit nebo zrušit doporučení.
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 6b5dfdeb888b0577a40562536bd7a6dfc271cb19
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c7b42372ae6de5c2f519b69aec8a154a2f35a82
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057580"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927381"
 ---
 # <a name="permissions-in-azure-advisor"></a>Oprávnění v Azure Advisor
 
-Azure Advisor poskytuje doporučení v závislosti na využití a konfiguraci vašich předplatných a prostředků Azure. Služba Advisor používá [předdefinované role](../role-based-access-control/built-in-roles.md) poskytované [Access Control na základě rolí](../role-based-access-control/overview.md) (RBAC) ke správě přístupu k doporučením a funkcím poradce. 
+Azure Advisor poskytuje doporučení v závislosti na využití a konfiguraci vašich předplatných a prostředků Azure. Služba Advisor používá [předdefinované role](../role-based-access-control/built-in-roles.md) poskytované [řízením přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md) ke správě přístupu k doporučením a funkcím poradce. 
 
 ## <a name="roles-and-their-access"></a>Role a jejich přístup
 

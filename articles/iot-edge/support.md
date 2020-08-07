@@ -4,16 +4,16 @@ description: Zjistěte, které operační systémy mohou spustit démona Azure I
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/19/2020
+ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 097826a24cb2de17b603ff5fe3113d715e079697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccfd85c5976642d30b3f21d2d2afeb868ba49bf9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807396"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924610"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge podporované systémy
 
@@ -100,15 +100,15 @@ sudo apt-get install libssl1.0.2
 
 <sup>2</sup> balíčky Debian 9 z [úložiště Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases) by měly být ve Ubuntu 20,04 fungovat.
 
-## <a name="releases"></a>Verze
+## <a name="releases"></a>Vydání
 
 Iotedge vydání a poznámky k verzi jsou k dispozici na stránce [verze Azure-](https://github.com/Azure/azure-iotedge/releases) . IoT Edge V této části jsou uvedeny informace o těchto poznámkách k verzi, které vám pomůžou vizualizovat součásti každé verze snadněji.
 
 Součásti IoT Edge lze instalovat nebo aktualizovat jednotlivě a jsou zpětně kompatibilní s komponentami ze starších verzí. Následující tabulka uvádí komponenty zahrnuté v jednotlivých verzích:
 
-| Vydaná verze | Démon zabezpečení | Hraniční centrum<br>Agent Edge | Libiothsm | Moby |
+| Vydat | Démon zabezpečení | Hraniční centrum<br>Agent Edge | Libiothsm | Moby |
 |--|--|--|--|--|
-| **1.0.9** | 1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
+| **1.0.9** | 1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
 | **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
 | **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |

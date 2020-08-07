@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 630364a95c4ee427b71aa5e8b763b4447a41c962
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5b450254648cb253d6631397d703430401009f14
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489448"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925630"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Správa přístupu k datům protokolů a pracovním prostorům ve službě Azure Monitor
 
@@ -102,7 +102,7 @@ Pro konfiguraci režimu přístupu v šabloně Azure Resource Manager nastavte p
 
 ## <a name="manage-access-using-workspace-permissions"></a>Správa přístupu pomocí oprávnění k pracovnímu prostoru
 
-Ke každému pracovnímu prostoru může být přidruženo několik účtů a každý účet může mít přístup k několika pracovním prostorům. Přístup se spravuje pomocí [přístupu založeného na rolích Azure](../../role-based-access-control/role-assignments-portal.md).
+Ke každému pracovnímu prostoru může být přidruženo několik účtů a každý účet může mít přístup k několika pracovním prostorům. Přístup se spravuje pomocí [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 
 Následující aktivity také vyžadují oprávnění Azure:
 

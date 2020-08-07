@@ -12,29 +12,37 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: cd476d3210263268627541eb40c50048f0eddd1b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 114d4f41ad48af3d1e585fcb01eb0794a8e349b5
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422908"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920105"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Kurz: Konfigurace replikace mezi dvěma spravovanými instancemi
 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Transakční replikace umožňuje replikovat data z jedné databáze do jiné, jejímž hostitelem je SQL Server nebo [Azure SQL Managed instance](sql-managed-instance-paas-overview.md) (Public Preview). Spravovaná instance SQL může být Vydavatel, distributor nebo předplatitel v topologii replikace. V tématu [Konfigurace transakční replikace](replication-transactional-overview.md#common-configurations) pro dostupné konfigurace.
+Transakční replikace umožňuje replikovat data z jedné databáze do jiné, jejímž hostitelem je SQL Server nebo [Azure SQL Managed instance](sql-managed-instance-paas-overview.md). Spravovaná instance SQL může být Vydavatel, distributor nebo předplatitel v topologii replikace. V tématu [Konfigurace transakční replikace](replication-transactional-overview.md#common-configurations) pro dostupné konfigurace. 
 
-> [!NOTE]
-> Tento článek popisuje použití [transakční replikace](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) ve spravované instanci Azure SQL. Nesouvisí se [skupinami převzetí služeb při selhání](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), což je funkce spravované instance Azure SQL, která umožňuje vytvářet kompletní čitelné repliky jednotlivých instancí. Při konfiguraci [replikace transakcí se skupinami převzetí služeb při selhání](replication-transactional-overview.md#with-failover-groups)jsou k dispozici další předpoklady.
+Transakční replikace je aktuálně ve verzi Public Preview pro spravovanou instanci SQL. 
 
-V tomto kurzu se naučíte konfigurovat jednu spravovanou instanci jako vydavatele a distributora a pak druhou spravovanou instanci jako předplatitele.  
+V tomto kurzu se naučíte:
+
+> [!div class="checklist"]
+>
+> - Konfigurace spravované instance jako vydavatele a distributora replikace
+> - Nakonfigurujte spravovanou instanci jako distributora replikace.
 
 ![Replikace mezi dvěma spravovanými instancemi](./media/replication-between-two-instances-configure-tutorial/sqlmi-sqlmi-repl.png)
 
-  > [!NOTE]
-  > - Tento článek má sloužit jako vodítko pro pokročilé uživatele při konfiguraci replikace pomocí spravované instance SQL z koncového na konec, počínaje vytvořením skupiny prostředků. Pokud jste již nasadili spravované instance, přejděte k [kroku 4](#4---create-a-publisher-database) a vytvořte databázi vydavatele, nebo [Krok 6](#6---configure-distribution) , pokud již máte vydavatele a databázi odběratele a jste připraveni zahájit konfiguraci replikace.  
-  > - V tomto článku se nakonfiguruje váš Vydavatel a distributor na stejné spravované instanci. Pokud chcete distributora umístit na samostatnou spravovanou instanci, přečtěte si kurz [Konfigurace transakční replikace mezi službou Azure SQL Managed instance a SQL Server](replication-two-instances-and-sql-server-configure-tutorial.md). 
+Tento kurz je určený pro zkušené publikum a předpokládá, že uživatel je obeznámen s nasazením a připojením ke spravovaným instancím a SQL Server virtuálním počítačům v rámci Azure. 
+
+
+> [!NOTE]
+> - Tento článek popisuje použití [transakční replikace](/sql/relational-databases/replication/transactional/transactional-replication) ve spravované instanci Azure SQL. Nesouvisí se [skupinami převzetí služeb při selhání](../database/auto-failover-group-overview.md), což je funkce spravované instance Azure SQL, která umožňuje vytvářet kompletní čitelné repliky jednotlivých instancí. Při konfiguraci [replikace transakcí se skupinami převzetí služeb při selhání](replication-transactional-overview.md#with-failover-groups)jsou k dispozici další předpoklady.
+
+
 
 ## <a name="requirements"></a>Požadavky
 

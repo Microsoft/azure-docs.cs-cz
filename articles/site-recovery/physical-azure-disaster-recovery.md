@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 1fdfe57c2995628855ea8e068c4f8eb2f2ac466a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9b05d9952628e550beae5cedc49e051936a9d633
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500419"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927279"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Nastavení zotavení po havárii do Azure pro místní fyzické servery
 
@@ -59,7 +59,7 @@ Získejte účet Microsoft [Azure](https://azure.microsoft.com/).
 Ujistěte se, že váš účet Azure má oprávnění k replikaci virtuálních počítačů do Azure.
 
 - Zkontrolujte [oprávnění](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) , která potřebujete k replikaci počítačů do Azure.
-- Ověřte a upravte oprávnění [pro přístup na základě rolí](../role-based-access-control/role-assignments-portal.md) . 
+- Ověřte a upravte oprávnění [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) . 
 
 
 

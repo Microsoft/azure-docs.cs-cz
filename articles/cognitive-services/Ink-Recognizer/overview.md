@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 12/17/2019
+ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7bcda79403e021384fc987a67865441dd8732885
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448152"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927449"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Co je rozhraní API pro rozpoznávání rukopisu?
 
@@ -43,14 +43,14 @@ Rozhraní API pro rozpoznávání rukopisu je webová služba RESTful, která us
 
 Po registraci:
 
-1. Vybere data tahu perem a [naformátuje je](concepts/send-ink-data.md#sending-ink-data) na platný formát JSON.
+1. Vybere data tahu perem a [naformátuje je](concepts/send-ink-data.md#sending-ink-data) na platný formát JSON. Rozhraní API akceptuje až 1500 tahů perem na požadavek. 
 1. Odešlete požadavek na rozhraní API pro rozpoznávání rukopisu pomocí vašich dat.
 1. Zpracujte odpověď rozhraní API parsováním vrácené zprávy JSON.
 
 ## <a name="next-steps"></a>Další kroky
 
 Vyzkoušejte si rychlý Start v následujících jazycích, abyste mohli začít volat rozhraní API pro rozpoznávání rukopisu.
-* [R #](quickstarts/csharp.md)
+* [C#](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
 * [JavaScript](quickstarts/javascript.md)
 

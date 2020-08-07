@@ -2,15 +2,15 @@
 title: Přehled specifikací šablon
 description: Popisuje, jak vytvořit specifikace šablony a sdílet je s ostatními uživateli ve vaší organizaci.
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/06/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 829aaa41bc60b3dcbf78ef6083457fff3b794914
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f5151550b9f23ba63380688f53325f8976f14a51
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497796"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921874"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager specifikace šablon (Preview)
 
@@ -18,7 +18,7 @@ Specifikace šablony je nový typ prostředku pro uložení šablony Azure Resou
 
 **Microsoft. Resources/templateSpecs** je nový typ prostředku pro specifikace šablon. Skládá se z hlavní šablony a libovolného počtu propojených šablon. Azure bezpečně ukládá specifikace šablon do skupin prostředků. Specifikace šablon podporují [správu verzí](#versioning).
 
-K nasazení specifikace šablony použijte standardní nástroje Azure, jako je PowerShell, Azure CLI, Azure Portal, REST a další podporované sady SDK a klienti. Použijte stejné příkazy a předejte stejné parametry pro šablonu.
+K nasazení specifikace šablony použijte standardní nástroje Azure, jako je PowerShell, Azure CLI, Azure Portal, REST a další podporované sady SDK a klienti. Použijete stejné příkazy jako pro šablonu.
 
 > [!NOTE]
 > Specifikace šablony jsou momentálně ve verzi Preview. Pokud ho chcete použít, musíte se [zaregistrovat v seznamu čekání](https://aka.ms/templateSpecOnboarding).
@@ -37,21 +37,32 @@ Následující příklad ukazuje jednoduchou šablonu pro vytvoření účtu úl
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-    {
-      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-06-01",
-      "location": "[resourceGroup().location]",
-      "kind": "StorageV2",
-      "sku": {
-        "name": "Premium_LRS",
-        "tier": "Premium"
-      }
-    }
-  ]
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountType": {
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_ZRS",
+                "Premium_LRS"
+            ]
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "name": "[concat('store', uniquestring(resourceGroup().id))]",
+            "location": "[resourceGroup().location]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "[parameters('storageAccountType')]"
+            }
+        }
+    ]
 }
 ```
 
@@ -105,6 +116,42 @@ $id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -
 New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
   -ResourceGroupName demoRG
+```
+
+## <a name="parameters"></a>Parametry
+
+Předání parametrů šablony do specifikace šablony je přesně stejně jako předávání parametrů šabloně ARM. Přidejte hodnoty parametrů buď vloženou, nebo v souboru parametrů.
+
+Pokud chcete předat parametr jako vložený, použijte:
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -TemplateSpecId $id `
+  -ResourceGroupName demoRG `
+  -StorageAccountType Standard_GRS
+```
+
+Chcete-li vytvořit místní soubor parametrů, použijte:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "StorageAccountType": {
+      "value": "Standard_GRS"
+    }
+  }
+}
+```
+
+A předat tomuto souboru parametrů:
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -TemplateSpecId $id `
+  -ResourceGroupName demoRG `
+  -TemplateParameterFile ./mainTemplate.parameters.json
 ```
 
 ## <a name="create-a-template-spec-with-linked-templates"></a>Vytvoření specifikace šablony s propojenými šablonami

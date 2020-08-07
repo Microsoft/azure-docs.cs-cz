@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4b9ae0ed682d6b34099c8eff941f1d0b6cabad
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 8367ec2ece59ca8794bc1eeb2027eb6c14db12a0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461761"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925341"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -30,7 +30,7 @@ Přenosem zařízení do Azure AD maximalizujete produktivitu uživatelů díky 
 
 Pokud máte místní prostředí Active Directory (AD) a chcete se připojit k počítačům připojeným k doméně AD do služby Azure AD, můžete to provést pomocí hybridního připojení k Azure AD. Tento článek poskytuje související kroky pro implementaci hybridního připojení k Azure AD ve vašem prostředí. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že jste obeznámeni se [Seznámkou se správou identit zařízení v Azure Active Directory](../device-management-introduction.md).
 
@@ -123,7 +123,7 @@ Spravované prostředí se dá nasadit buď pomocí [synchronizace hodnot hash h
 Tyto scénáře nevyžadují konfiguraci federačního serveru pro ověřování.
 
 > [!NOTE]
-> [Cloudové ověřování pomocí připraveného zavedení](/hybrid/how-to-connect-staged-rollout) je podporované jenom při spuštění aktualizace Windows 10 1903.
+> [Cloudové ověřování pomocí připraveného zavedení](/azure/active-directory/hybrid/how-to-connect-staged-rollout) je podporované jenom při spuštění aktualizace Windows 10 1903.
 
 ### <a name="federated-environment"></a>Federované prostředí
 

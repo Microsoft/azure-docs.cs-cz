@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: registrace aplikace'
 titleSuffix: Azure AD B2C
-description: Naučte se, jak zaregistrovat webovou aplikaci v Azure Active Directory B2C pomocí Azure Portal.
+description: V tomto kurzu se dozvíte, jak zaregistrovat webovou aplikaci v Azure Active Directory B2C pomocí Azure Portal.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,12 +12,12 @@ ms.date: 04/10/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0f3ecb918aa1f830edeafbe57b365441e1e534f4
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 0fd062bd0e58ecc714e4f450c93384e47e743b65
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169324"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922009"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Kurz: registrace webové aplikace v Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud místo toho používáte nativní aplikaci (například iOS, Android, Mobile & Desktop), zjistěte, [jak zaregistrovat nativní klientskou aplikaci](add-native-application.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,7 +43,7 @@ K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové j
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
@@ -69,7 +69,7 @@ Po dokončení registrace aplikace povolte tok implicitního udělení:
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace (starší verze)** a pak vyberte **Přidat**.

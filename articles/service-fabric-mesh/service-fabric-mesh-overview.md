@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 10/1/2018
 ms.topic: overview
-ms.openlocfilehash: e64cc158a18e604cbd022be5c91350c95258272c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b7061a178a3f5a9d126afab3fc1f9aa77d5cc050
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257799"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927024"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Co je Service Fabric Mesh?
 
@@ -42,7 +42,7 @@ Služba Service Fabric Mesh umožňuje:
 
 - Nasazení a správu aplikací bez nutnosti explicitně zřizovat a spravovat infrastrukturu.  Service Fabric Mesh zřídí, aktualizuje, opravuje a udržuje potřebnou infrastrukturu za vás.
 - Nastavení nepřetržité integrace pomocí integrovaných nástrojů pro snadné balíčkování a nasazování aplikací.
-- Využijte všechny funkce prostředků Azure Resource Manager. Mezi příklady těchto funkcí patří záznam pro audit a [řízení přístupu na základě role](../role-based-access-control/overview.md)). Všechny prostředky, které nasadíte do služby Service Fabric sítě v Azure, jsou Azure Resource Manager prostředky. Mezi tyto prostředky patří aplikace, služby, tajné kódy a tak dále.
+- Využijte všechny funkce prostředků Azure Resource Manager. Mezi tyto funkce patří záznam pro audit a [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md)). Všechny prostředky, které nasadíte do služby Service Fabric sítě v Azure, jsou Azure Resource Manager prostředky. Mezi tyto prostředky patří aplikace, služby, tajné kódy a tak dále.
 - Nasazení a správu prostředků pomocí [webu Azure Portal](https://portal.azure.com), šablon Správce prostředků nebo knihoven Azure CLI/PowerShell.
 - Nastavení sledování provozu a upozorňování pomocí služby [Application Insights](/azure/application-insights/) (nebo jiného nástroje podle vašeho výběru) a zachycování provozních a diagnostických dat z platformy.
 - Přístup k informacím o diagnostice získaným z aplikačního modelu pomocí [Application Insights](/azure/application-insights/) nebo jiného nástroje podle vašeho výběru.

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 644184f5bb51d049d890655ada5be5ebd4c11bf7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 03d40dcaeaefe01fecbc201cf28dc20c8634af9d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908898"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926667"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade na Azure Kognitivní hledání .NET SDK verze 11
 
@@ -48,7 +48,7 @@ V případě potřeby následující tabulka mapuje klientské knihovny mezi tě
 | Klient používaný pro indexery, zdroje dat, dovednosti | [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**nové**)](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
-> Verze 11 přejmenuje verzi 10 `SearchIndexClient` na `SearchClient` a pak znovu použije název pro klienta, který pracuje s objekty map index, Analyzer a synonym. Při aktualizaci klientských referencí postupujte podle pokynů v části Postup [upgradu](#UpgradeSteps) , aby nedocházelo k omylům při hledání a nahrazování.
+> `SearchIndexClient`existuje v obou verzích, ale podporuje různé věci. Ve verzi 10 `SearchIndexClient` Vytvořte indexy a další objekty. Ve verzi 11 `SearchIndexClient` funguje se stávajícími indexy. Aby nedocházelo k nejasnostem při aktualizaci kódu, nezapomeňte na pořadí, ve kterém jsou odkazy na klienta aktualizovány. Po sekvencování [kroků k upgradu](#UpgradeSteps) by měl být možné zmírnit případné problémy s nahrazením řetězce.
 
 <a name="naming-differences"></a>
 
@@ -125,7 +125,7 @@ Verze 11 plně podporuje následující objekty a operace:
 
 Následující funkce verze 10 ještě nejsou k dispozici ve verzi 11. Pokud tyto funkce použijete, při migraci se držte, dokud se nepodporují.
 
-+ [geoprostorové typy](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.serialization.geojsonextensions)
++ geoprostorové typy
 + [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) (i když můžete použít [Toto alternativní řešení](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/tests/Samples/FieldBuilder/FieldBuilder.cs)).
 + [Knowledge Store](knowledge-store-concept-intro.md)
 

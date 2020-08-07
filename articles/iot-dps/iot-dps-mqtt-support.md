@@ -10,12 +10,12 @@ ms.author: ravokkar
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 213fc3412a2dfad77946e52a355a30774d6860c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7683f5d60c5d788707e2f89774cee42e7820db87
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81680675"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924202"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Komunikace s DPS pomocí protokolu MQTT
 
@@ -82,7 +82,7 @@ Při připojování přes protokol WebSocket zadejte jako dílčí protokol `mqt
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o protokolu MQTT najdete v [dokumentaci k MQTT](https://mqtt.org/documentation).
+Další informace o protokolu MQTT najdete v [dokumentaci k MQTT](https://mqtt.org/).
 
 Další zkoumání možností DPS najdete v těchto tématech:
 

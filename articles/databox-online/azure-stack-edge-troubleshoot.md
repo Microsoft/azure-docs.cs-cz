@@ -1,6 +1,6 @@
 ---
 title: Použití Azure Portal k řešení potíží s Azure Stack Edge | Microsoft Docs
-description: Popisuje, jak řešit problémy s Azure Stack hranami.
+description: Naučte se řešit problémy s Azure Stack hraničními počítači. Můžete spustit diagnostiku, shromažďovat informace pro podporu a k řešení potíží používat protokoly.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 03/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 00aae3386b3f648eafdef31dccb640d8120f7ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b80b47a1be67a9771d138c43178d50156a6f1a95
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563993"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926429"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-issues"></a>Řešení potíží s Azure Stack Edge
 

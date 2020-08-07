@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 01287f344d77dedade30892d76f5fdbd54481df1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 76be966d8202bb56a6762a261be5adeaf2d58d6b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042879"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926395"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Query Performance Insight vyžaduje, aby [úložiště dotazů](https://msdn.mic
 
 ## <a name="permissions"></a>Oprávnění
 
-K použití Query Performance Insight potřebujete následující oprávnění [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) :
+Pro použití Query Performance Insight potřebujete následující oprávnění [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md) :
 
 * Aby bylo možné zobrazit nejlepší dotazy a grafy náročné na prostředky, je nutné, aby byl **Čtenář**, **vlastník**, **Přispěvatel**, **Přispěvatel databáze SQL**nebo **SQL Server oprávnění přispěvatele** .
 * K zobrazení textu dotazu jsou nutná oprávnění **vlastník**, **Přispěvatel**, **Přispěvatel databáze SQL**nebo **SQL Server oprávnění přispěvatele** .

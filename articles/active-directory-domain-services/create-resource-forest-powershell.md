@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: d5eef553d0d3bf5acbcb61ef8f2dcfab88a53266
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: eb627b8069bcd9efd1d56adab5eda45dc34a1a10
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505767"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921992"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Vytvoření doménové struktury prostředků Azure Active Directory Domain Services a odchozího vztahu důvěryhodnosti doménové struktury do místní domény pomocí Azure PowerShell
 
@@ -112,7 +112,7 @@ Pokud chcete vytvořit doménovou strukturu prostředků spravované domény, po
 
     `New-AzureAaddsForest`Skript může vytvořit virtuální síť Azure a podsíť azure služba AD DS, pokud tyto prostředky ještě neexistují. Skript může volitelně vytvořit podsítě úloh, pokud jsou zadané:
 
-    | Name                              | Parametr skriptu                  | Description |
+    | Name                              | Parametr skriptu                  | Popis |
     |:----------------------------------|:----------------------------------|:------------|
     | Název virtuální sítě              | *-aaddsVnetName*                  | Název virtuální sítě pro spravovanou doménu.|
     | Adresní prostor                     | *-aaddsVnetCIDRAddressSpace*      | Rozsah adres virtuální sítě v zápisu CIDR (při vytváření virtuální sítě).|
@@ -148,8 +148,8 @@ Než začnete, ujistěte se, že rozumíte [hlediskům a doporučením sítě](t
 
 1. Vytvořte hybridní připojení k místní síti do Azure pomocí připojení Azure VPN nebo Azure ExpressRoute. Konfigurace hybridní sítě překračuje rozsah této dokumentace a ve vašem prostředí už možná existují. Podrobnosti o konkrétních scénářích najdete v následujících článcích:
 
-    * [Síť VPN typu Site-to-site](/vpn-gateway/vpn-gateway-about-vpngateways).
-    * [Přehled služby Azure ExpressRoute](/vpn-gateway/vpn-gateway-about-vpngateways).
+    * [Síť VPN typu Site-to-site](/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+    * [Přehled služby Azure ExpressRoute](/azure/expressroute/expressroute-introduction).
 
     > [!IMPORTANT]
     > Pokud vytvoříte připojení přímo k virtuální síti spravované domény, použijte samostatnou podsíť brány. Nevytvářejte bránu v podsíti spravované domény.
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Nyní zadejte skript následující informace:
 
-| Name                               | Parametr skriptu     | Description |
+| Name                               | Parametr skriptu     | Popis |
 |:-----------------------------------|:---------------------|:------------|
 | Název domény pro Azure služba AD DS            | *-ManagedDomainFqdn* | Plně kvalifikovaný název domény spravované domény, například *aaddscontoso.com* |
 | Název domény v místním služba AD DS      | *-TrustFqdn*         | Plně kvalifikovaný název domény důvěryhodné doménové struktury, například *OnPrem.contoso.com* |

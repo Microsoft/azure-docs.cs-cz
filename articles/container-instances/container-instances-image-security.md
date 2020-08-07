@@ -4,12 +4,12 @@ description: Doporučení pro zabezpečení imagí a tajných klíčů pro Azure
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: d339683c8864b85f7ccb1ac3c982f03aa7abf103
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907019"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922230"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Požadavky na zabezpečení pro Azure Container Instances
 
@@ -40,7 +40,7 @@ K dispozici jsou také řešení pro monitorování zabezpečení a kontrolu ima
 
 ### <a name="protect-credentials"></a>Ochrana přihlašovacích údajů
 
-Kontejnery se můžou rozdělit mezi několik clusterů a oblastí Azure. Proto je nutné zabezpečit pověření požadovaná pro přihlášení nebo přístup k rozhraní API, jako jsou hesla nebo tokeny. Ujistěte se, že k těmto kontejnerům mají přístup pouze uživatelé s oprávněním k přenosu a v klidovém provozu. Vytvořte inventář všech tajných kódů přihlašovacích údajů a pak vývojářům vyžadovat, aby používali nově vytvořené nástroje pro správu tajných klíčů, které jsou navržené pro kontejnery.  Ujistěte se, že vaše řešení zahrnuje šifrované databáze, šifrování TLS pro tajná data při přenosu a [řízení přístupu na základě role](../role-based-access-control/overview.md)s minimálním oprávněním. [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) je cloudová služba, která chrání šifrovací klíče a tajné kódy (například certifikáty, připojovací řetězce a hesla) pro kontejnerové aplikace. Vzhledem k tomu, že tato data jsou citlivá a důležitá pro podnikání, zabezpečený přístup k vašim trezorům klíčů, aby k nim měli přístup jenom autorizovaní aplikace a uživatelé.
+Kontejnery se můžou rozdělit mezi několik clusterů a oblastí Azure. Proto je nutné zabezpečit pověření požadovaná pro přihlášení nebo přístup k rozhraní API, jako jsou hesla nebo tokeny. Ujistěte se, že k těmto kontejnerům mají přístup pouze uživatelé s oprávněním k přenosu a v klidovém provozu. Vytvořte inventář všech tajných kódů přihlašovacích údajů a pak vývojářům vyžadovat, aby používali nově vytvořené nástroje pro správu tajných klíčů, které jsou navržené pro kontejnery.  Ujistěte se, že vaše řešení zahrnuje šifrované databáze, šifrování TLS pro data tajných klíčů a minimální oprávnění [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md). [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) je cloudová služba, která chrání šifrovací klíče a tajné kódy (například certifikáty, připojovací řetězce a hesla) pro kontejnerové aplikace. Vzhledem k tomu, že tato data jsou citlivá a důležitá pro podnikání, zabezpečený přístup k vašim trezorům klíčů, aby k nim měli přístup jenom autorizovaní aplikace a uživatelé.
 
 ## <a name="considerations-for-the-container-ecosystem"></a>Předpoklady pro ekosystém kontejnerů
 
@@ -117,7 +117,7 @@ Stejně jako u jakéhokoli IT prostředí byste měli konzistentně sledovat či
 
 * [Azure monitor for Containers](../azure-monitor/insights/container-insights-overview.md) monitoruje výkon úloh nasazených do prostředí Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS). Azure Monitor pro kontejnery poskytují přehled o výkonu tím, že shromažďují metriky paměti a procesoru z řadičů, uzlů a kontejnerů, které jsou k dispozici v Kubernetes prostřednictvím rozhraní API metrik. 
 
-* [Řešení Azure Container monitoring](../azure-monitor/insights/containers.md) vám pomůže zobrazit a spravovat další hostitele kontejnerů Docker a Windows v jednom umístění. Příklad:
+* [Řešení Azure Container monitoring](../azure-monitor/insights/containers.md) vám pomůže zobrazit a spravovat další hostitele kontejnerů Docker a Windows v jednom umístění. Například:
 
   * Zobrazí podrobné informace o auditu, které zobrazují příkazy používané s kontejnery. 
   * Řešení potíží s kontejnery zobrazením a prohledáváním centralizovaných protokolů bez nutnosti vzdáleného zobrazení hostitelů Docker nebo Windows.  

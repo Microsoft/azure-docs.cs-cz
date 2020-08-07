@@ -1,6 +1,6 @@
 ---
 title: Informace o branách redundantní virtuální sítě v zóně Zóny dostupnosti Azure
-description: Seznamte se s VPN Gateway a ExpressRoute branami v Zóny dostupnosti.
+description: Přečtěte si informace o branách VPN a ExpressRoute v Zóny dostupnosti Azure, čímž se přidávají brány virtuální sítě pro zajištění odolnosti, škálovatelnosti a vyšší dostupnosti.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -9,12 +9,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: f1bbaab99b6422de4053839e2099869d2d08db95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a0a3d59477511ebf019e2c2019786788a92ad70
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75864294"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922689"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Informace o branách redundantní virtuální sítě v zóně Zóny dostupnosti Azure
 
@@ -38,7 +38,7 @@ Chcete-li nasadit brány v určité zóně, můžete použít brány oblastí. K
 
 ![grafika v bráně oblast](./media/create-zone-redundant-vnet-gateway/zonal.png)
 
-## <a name="gateway-skus"></a><a name="gwskus"></a>SKU brány
+## <a name="gateway-skus"></a><a name="gwskus"></a>Skladové položky brány
 
 Brány redundantní a oblasti oblastí jsou k dispozici jako nové SKU brány. Přidali jsme nové skladové položky brány virtuální sítě v Azure v oblastech AZ. Tyto SKU jsou podobné odpovídajícím existujícím SKU pro ExpressRoute a VPN Gateway s tím rozdílem, že jsou specifické pro brány redundantní v zóně a oblasti. Tyto SKU můžete identifikovat pomocí příkazu AZ v názvu SKU.
 
@@ -63,7 +63,7 @@ Když vytvoříte veřejnou IP adresu pomocí **standardní** SKU veřejné IP a
 
 Když vytvoříte veřejnou IP adresu pomocí **základní** veřejné IP adresy (SKU), brána se nasadí jako místní brána a nebude mít do brány vestavěnou redundanci zón.
 
-## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a><a name="faq"></a>DOTAZ
 
 ### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Co se změní při nasazení těchto nových SKU?
 
