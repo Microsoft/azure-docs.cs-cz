@@ -6,21 +6,21 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
 ms.reviewer: dseven
-ms.author: mihansen
-author: hansenms
+ms.author: matjazl
+author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: 6e0851a55673792adc905d27fdd3f5c13d572032
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: f8b5e344fc963d466571e75ff16f17367dc32971
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563955"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844843"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Přístup k rozhraní API Azure pro FHIR s využitím post
 
 Klientská aplikace by měla přístup k rozhraní FHIR API prostřednictvím [REST API](https://www.hl7.org/fhir/http.html). Můžete také při sestavování aplikací pracovat přímo se serverem FHIR, například pro účely ladění. V tomto kurzu Vás provedeme kroky potřebnými k použití [metody post](https://www.getpostman.com/) pro přístup k serveru FHIR. Publikování je nástroj, který se často používá pro ladění při sestavování aplikací, které přistupují k rozhraním API.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Koncový bod FHIR v Azure. Můžete ho nastavit pomocí spravovaného rozhraní API Azure pro FHIR nebo open source serveru FHIR pro Azure. Nastavte spravované rozhraní API Azure pro FHIR pomocí [Azure Portal](fhir-paas-portal-quickstart.md), [PowerShellu](fhir-paas-powershell-quickstart.md)nebo rozhraní příkazového [řádku Azure CLI](fhir-paas-cli-quickstart.md).
 - [Klientská aplikace](register-confidential-azure-ad-client-app.md) , kterou budete používat pro přístup ke službě FHIR

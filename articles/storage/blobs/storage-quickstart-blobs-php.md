@@ -1,18 +1,18 @@
 ---
 title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí PHP | Microsoft Docs
-description: Rychle se naučíte, jak přenášet objekty do a z úložiště objektů blob v Azure pomocí PHP.
+description: Rychle se naučíte, jak přenášet objekty do a z úložiště objektů BLOB v Azure pomocí PHP. Nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů BLOB v Azure.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a19ff153ea0625a14401770de690dcfddeb74d88
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68726393"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835744"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Přenos objektů do a z úložiště objektů blob v Azure pomocí PHP
 V tomto rychlém startu zjistíte, jak pomocí PHP nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 

@@ -3,14 +3,14 @@ title: 'Rychlý Start: Language Understanding (LUIS) vytváření klientské kni
 description: Začněte s tímto rychlým startem pomocí klientské knihovny LUIS. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.
 ms.topic: quickstart
 ms.date: 07/28/2020
-ms.custom: tracking-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: e5fc21ed42d3704cf102a820cebb64c09aff23ab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 124cfbac897be76365710ffd505dee18af7adcec
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369413"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876967"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library"></a>Rychlý Start: Language Understanding (LUIS) vytváření klientské knihovny
 

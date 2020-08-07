@@ -5,16 +5,16 @@ services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: a6805fc686d0bc5bd0e2357828d59d40ba05f248
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1c64468a2e420734ca51a5b9308bb52e13712c51
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "84872603"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852918"
 ---
 # <a name="testing-the-fhir-api"></a>Testování rozhraní FHIR API
 V předchozích dvou krocích jste nasadili rozhraní Azure API pro FHIR a zaregistrovali jste klientskou aplikaci. Nyní jste připraveni otestovat, že vaše rozhraní Azure API pro FHIR je nastaveno pomocí klientské aplikace. 
@@ -22,11 +22,11 @@ V předchozích dvou krocích jste nasadili rozhraní Azure API pro FHIR a zareg
 ## <a name="retrieve-capability-statement"></a>Načíst příkaz schopnosti
 Nejdřív získáte příkaz Capability pro vaše rozhraní API Azure pro FHIR. 
 1. Otevřít po
-1. Pomocí příkazu GET https:// \< FHIR-Server-NAME>. azurehealthcareapis.com/metadata načtěte příkaz Capability. Na obrázku pod názvem FHIR serveru je **fhirserver**.
+1. Pomocí příkazu GET https://. azurehealthcareapis.com/metadata načtěte příkaz Capability \<FHIR-SERVER-NAME> . Na obrázku pod názvem FHIR serveru je **fhirserver**.
 
 ![Příkaz Capability](media/tutorial-web-app/postman-capability-statement.png)
 
-Pak se pokusíme načíst pacienta. Pokud chcete načíst pacienta, zadejte GET https:// \< FHIR-Server-NAME>. azurehealthcareapis.com/Patient. Zobrazí se chyba neautorizované na 401. Tato chyba je způsobená tím, že jste neprokázali, že byste měli mít přístup k datům pacientům.
+Pak se pokusíme načíst pacienta. Pokud chcete načíst pacienta, zadejte GET https:// \<FHIR-SERVER-NAME> . azurehealthcareapis.com/Patient. Zobrazí se chyba neautorizované na 401. Tato chyba je způsobená tím, že jste neprokázali, že byste měli mít přístup k datům pacientům.
 
 ## <a name="get-patient-from-fhir-server"></a>Získat pacienta ze serveru FHIR
 ![Neúspěšný pacient](media/tutorial-web-app/postman-patient-authorization-failed.png)
@@ -41,12 +41,12 @@ Aby bylo možné získat přístup, potřebujete přístupový token.
 |Název tokenu           |Název tokenu                                               |
 |Typ udělení           |Autorizační kód                                                  |
 |Adresa URL zpětného volání         |https://www.getpostman.com/oauth2/callback                          |
-|Ověřovací adresa URL             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/?resource=https://\<FHIR-SERVER-NAME>.azurehealthcareapis.com|
+|Ověřovací adresa URL             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/OAuth2/? Resource = https:// \<FHIR-SERVER-NAME> . azurehealthcareapis.com|
 |Adresa URL přístupového tokenu     |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/token|
 |ID klienta            |ID klienta, které jste zkopírovali během předchozích kroků             |
-|Tajný klíč klienta        |\<PRÁZDNÉ>                                                            |
-|Rozsah                |\<PRÁZDNÉ>                                                            |
-|Stav                |1 234                                                                |
+|Tajný klíč klienta        |\<BLANK>                                                            |
+|Rozsah                |\<BLANK>                                                            |
+|State                |1 234                                                                |
 |Ověření klienta|Poslat přihlašovací údaje klienta v těle                                     |
 
 4. Přihlaste se pomocí svých přihlašovacích údajů a vyberte **přijmout** .

@@ -1,7 +1,7 @@
 ---
 title: Autorizovat vývojářské účty pomocí OAuth 2,0 v API Management
 titleSuffix: Azure API Management
-description: Naučte se, jak autorizovat uživatele pomocí OAuth 2,0 v API Management.
+description: Naučte se, jak autorizovat uživatele pomocí OAuth 2,0 v API Management. OAuth 2,0 zabezpečuje rozhraní API, aby uživatelé mohli přistupovat jenom k prostředkům, ke kterým mají oprávnění.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7eb77b9ffae49c7d8d3e5612b685e5725829898f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4a0e8c6eb87b053c0e3ee524c60435dc45d81ff3
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499779"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902253"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Jak autorizovat vývojářské účty pomocí OAuth 2,0 v Azure API Management
 
@@ -27,7 +27,7 @@ Mnoho rozhraní API podporuje [OAuth 2,0](https://oauth.net/2/) k zabezpečení 
 > [!IMPORTANT]
 > Autorizace OAuth 2,0 není zatím k dispozici v interaktivní konzole nového portálu pro vývojáře.
 
-## <a name="prerequisites"></a><a name="prerequisites"> </a>Předpoklady
+## <a name="prerequisites"></a><a name="prerequisites"> </a>Požadavky
 
 V této příručce se dozvíte, jak nakonfigurovat instanci služby API Management, aby používala autorizaci OAuth 2,0 pro vývojářské účty, ale neukazuje, jak nakonfigurovat poskytovatele OAuth 2,0. Konfigurace pro každého poskytovatele OAuth 2,0 se liší, ale postup je podobný a požadované informace, které se používají při konfiguraci OAuth 2,0 ve vaší instanci služby API Management, jsou stejné. V tomto tématu se dozvíte o příkladech použití Azure Active Directory jako poskytovatele OAuth 2,0.
 

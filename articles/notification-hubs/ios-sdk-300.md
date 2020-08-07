@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: f43db986f70e64e55225465223b7e324450541a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bec4b771387854c40045f2b57afe7ead6c52f2c7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084332"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836033"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-300-preview1"></a>Kurz: odesílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs (verze 3.0.0-preview1)
 
@@ -28,7 +28,7 @@ Tento kurz se zabývá následujícími kroky:
 
 Kompletní kód pro tento kurz si můžete stáhnout [z GitHubu](https://github.com/Azure/azure-notificationhubs-ios/tree/v3-preview2/Samples).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu budete potřebovat následující požadavky:
 
@@ -317,7 +317,7 @@ Nabízená oznámení se většinou posílají ve službě back-end, jako je slu
 
 Tady je seznam některých dalších kurzů, které byste mohli chtít zkontrolovat při odesílání oznámení:
 
-- Azure Mobile Apps: Příklad odesílání oznámení z back-endu Mobile Apps, který je integrovaný do Notification Hubs, najdete v tématu [Přidání nabízených oznámení do vaší aplikace pro iOS](/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
+- Azure Mobile Apps: Příklad odesílání oznámení z back-endu Mobile Apps, který je integrovaný do Notification Hubs, najdete v tématu [Přidání nabízených oznámení do vaší aplikace pro iOS](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
 - ASP.NET: [použijte Notification Hubs k odesílání nabízených oznámení uživatelům](notification-hubs-aspnet-backend-ios-apple-apns-notification.md).
 - Sada SDK pro Azure Notification Hubs Java: Přečtěte si téma [použití Notification Hubs z Java](notification-hubs-java-push-notification-tutorial.md)   k odesílání oznámení z Java. Tato metoda prošla pro potřeby vývoje pro Android testováním v Eclipse.
 - PHP: [použití Notification Hubs z php](notification-hubs-php-push-notification-tutorial.md).

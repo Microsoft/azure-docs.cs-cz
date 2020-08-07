@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 43172cb08bb1e31c8cff891628ca6ef85cb8c864
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 68dd2ae09c5d6ad5e510fb3beb532b235f83fc8d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404417"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834690"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Kurz: použití Počítačové zpracování obrazu k vygenerování metadat imagí v Azure Storage
 
@@ -31,7 +31,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > * Připojení metadat k Azure Storage imagí
 > * Kontrolovat metadata imagí pomocí Průzkumník služby Azure Storage
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. 
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -61,7 +61,7 @@ Budete muset vytvořit prostředek Počítačové zpracování obrazu pro svůj 
 
 V dalším kroku přidáte požadovaná pověření do vaší aplikace, aby mohla přistupovat k Počítačové zpracování obrazum prostředkům.
 
-Otevřete webovou aplikaci v ASP.NET v aplikaci Visual Studio a přejděte do souboru **Web. config** v kořenovém adresáři projektu. Do `<appSettings>` části souboru přidejte následující příkazy, které nahradíte `VISION_KEY` klíčem, který jste zkopírovali v předchozím kroku, a `VISION_ENDPOINT` adresou URL, kterou jste v kroku předtím uložili.
+Otevřete webovou aplikaci v ASP.NET v aplikaci Visual Studio a přejděte do souboru **Web.config** v kořenovém adresáři projektu. Do části souboru přidejte následující příkazy `<appSettings>` , které nahradíte klíčem, `VISION_KEY` který jste zkopírovali v předchozím kroku, a `VISION_ENDPOINT` adresou URL, kterou jste v kroku předtím uložili.
 
 ```xml
 <add key="SubscriptionKey" value="VISION_KEY" />
@@ -81,7 +81,7 @@ Dále přidáte kód, který ve skutečnosti využívá službu Počítačové z
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
     ```
 
-1. Pak přejít na metodu **odeslání** ; Tato metoda převádí a nahrává obrázky do úložiště objektů BLOB. Přidejte následující kód hned za blok, který začíná `// Generate a thumbnail` (nebo na konci procesu vytváření objektů BLOB v obraze). Tento kód přebírá objekt BLOB obsahující obrázek (`photo`) a používá počítačové zpracování obrazu k vygenerování popisu pro tento obrázek. Rozhraní API pro počítačové zpracování obrazu také generuje seznam klíčových slov, která se vztahují na obrázek. Vygenerovaný popis a klíčová slova jsou uloženy v metadatech objektu blob, aby je bylo možné později načíst.
+1. Pak přejít na metodu **odeslání** ; Tato metoda převádí a nahrává obrázky do úložiště objektů BLOB. Přidejte následující kód hned za blok, který začíná `// Generate a thumbnail` (nebo na konci procesu vytváření objektů BLOB v obraze). Tento kód přebírá objekt BLOB obsahující obrázek ( `photo` ) a používá počítačové zpracování obrazu k vygenerování popisu pro tento obrázek. Rozhraní API pro počítačové zpracování obrazu také generuje seznam klíčových slov, která se vztahují na obrázek. Vygenerovaný popis a klíčová slova jsou uloženy v metadatech objektu blob, aby je bylo možné později načíst.
 
     ```csharp
     // Submit the image to Azure's Computer Vision API
@@ -105,7 +105,7 @@ Dále přidáte kód, který ve skutečnosti využívá službu Počítačové z
     await photo.SetMetadataAsync();
     ```
 
-1. Potom ve stejném souboru pokračujte na metodu **index** . Tato metoda vytvoří výčet uložených objektů BLOB imagí v cílovém kontejneru objektů BLOB (jako instance **položky ilistblobitem** ) a předává je do zobrazení aplikace. Nahraďte `foreach` blok v této metodě následujícím kódem. Tento kód volá **CloudBlockBlob. FetchAttributes** , aby získal všechna připojená metadata objektu BLOB. Extrahuje z metadat popis generovaný počítačem (`caption`) a přidá je do objektu **BlobInfo** , který se předává do zobrazení.
+1. Potom ve stejném souboru pokračujte na metodu **index** . Tato metoda vytvoří výčet uložených objektů BLOB imagí v cílovém kontejneru objektů BLOB (jako instance **položky ilistblobitem** ) a předává je do zobrazení aplikace. Nahraďte `foreach` blok v této metodě následujícím kódem. Tento kód volá **CloudBlockBlob. FetchAttributes** , aby získal všechna připojená metadata objektu BLOB. Extrahuje z metadat popis generovaný počítačem ( `caption` ) a přidá je do objektu **BlobInfo** , který se předává do zobrazení.
     
     ```csharp
     foreach (IListBlobItem item in container.ListBlobs())

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 01/21/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 01a5404100da6c669da4513ac9fd08c959df220e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 340b0ed02821fb98f271539ac39e0ccad8581082
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588628"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903999"
 ---
 # <a name="translator-30-breaksentence"></a>Překladatel 3,0: BreakSentence
 
@@ -37,7 +37,7 @@ Parametry žádosti předané řetězci dotazu jsou:
 | -------| ----------- |
 | verze-api <img width=200/>   | **Požadovaný parametr dotazu**.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0` . |
 | language | **Volitelný parametr dotazu**.<br/>Značka jazyka identifikující jazyk vstupního textu. Pokud není zadán kód, použije se automatické rozpoznávání jazyka. |
-| .    | **Volitelný parametr dotazu**.<br/>Značka skriptu identifikující skript používaný vstupním textem Pokud není zadán skript, předpokládá se výchozí skript jazyka.  | 
+| script    | **Volitelný parametr dotazu**.<br/>Značka skriptu identifikující skript používaný vstupním textem Pokud není zadán skript, předpokládá se výchozí skript jazyka.  | 
 
 Hlavičky požadavku zahrnují:
 
@@ -61,7 +61,7 @@ Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností �
 Platí následující omezení:
 
 * Pole může mít maximálně 100 prvků.
-* Textová hodnota prvku pole nesmí být delší než 10 000 znaků včetně mezer.
+* Textová hodnota prvku pole nesmí být delší než 50 000 znaků včetně mezer.
 * Celý text zahrnutý v požadavku nesmí být delší než 50 000 znaků včetně mezer.
 * `language`Je-li zadán parametr dotazu, všechny prvky pole musí být ve stejném jazyce. V opačném případě se automatické zjišťování jazyka aplikuje na každý prvek pole nezávisle.
 

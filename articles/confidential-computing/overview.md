@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 44006bdfd9ffe6e78380adefe9271f42c0a76f84
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 4e92f974ce7d6c03143276808c4ca4d09d607a84
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773275"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835812"
 ---
 # <a name="confidential-computing-on-azure"></a>Důvěrné výpočetní prostředí v Azure
 
@@ -52,7 +52,7 @@ Enclaves jsou zabezpečené části procesoru a paměti hardwaru. Neexistuje ž�
 
 Při vývoji aplikací můžete použít [softwarové nástroje](#oe-sdk) k ochraně částí kódu a dat v rámci enklávy. Tyto nástroje zajistí, že váš kód a data nebude moci zobrazit ani upravovat nikdo mimo důvěryhodné prostředí. 
 
-V podstatě si představte enklávy jako černý rámeček. Šifrovaný kód a data vložíte do boxu. Z vnějšku pole neuvidíte cokoli. Dáte enklávy klíč k dešifrování dat, data se pak znovu zpracovávají a šifrují, než se odešlou z enklávy.
+V podstatě si enklávy jako zabezpečené pole. Šifrovaný kód a data vložíte do boxu. Z vnějšku pole neuvidíte cokoli. Dáte enklávy klíč k dešifrování dat, data se pak znovu zpracovávají a šifrují, než se odešlou z enklávy.
 
 ### <a name="attestation"></a>Ověření
 
@@ -67,7 +67,7 @@ Ověření identity se musí implementovat pomocí služby zabezpečeného ově�
 
 Důvěrné výpočetní prostředí Azure umožňuje využívat důvěrné výpočetní funkce ve virtualizovaném prostředí. Nyní můžete používat nástroje, software a cloudovou infrastrukturu k sestavování nad zabezpečeným hardwarem. 
 
-### <a name="virtual-machines"></a>Virtuální počítače
+### <a name="virtual-machines"></a>Virtual Machines
 
 Azure je prvním poskytovatelem cloudu, který nabízí důvěrný výpočetní výkon ve virtualizovaném prostředí. Vyvinuli jsme virtuální počítače, které fungují jako abstrakcská vrstva mezi hardwarem a vaší aplikací. Můžete spouštět úlohy se škálováním a možnostmi redundance a dostupnost.  
 

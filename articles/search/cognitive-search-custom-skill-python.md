@@ -8,13 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 7945b3b0aeba7f5135665f4413d304eb225ac749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: aac184b9dc7eae8afcf796376d2f7dca684b4367
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84604690"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852782"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Příklad: Vytvoření vlastní dovednosti pomocí Pythonu
 
@@ -38,7 +38,7 @@ Vlastní dovednosti jsou jednoduché v návrhu (zřetězují dva řetězce), tak
 
 Tento příklad používá funkci Azure k předvedení konceptu hostování webového rozhraní API, ale je možné použít i jiné přístupy. Pokud splňujete [požadavky na rozhraní pro vnímání znalostí](cognitive-search-custom-skill-interface.md), je přístup, který převezmete, nemateriálný. Azure Functions však usnadňuje vytváření vlastních dovedností.
 
-### <a name="create-a-function-app"></a>Vytvoření Function App
+### <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
 Šablona projektu Azure Functions ve Visual Studio Code vytvoří projekt, který jde publikovat do aplikace funkcí v Azure. Aplikace funkcí umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků.
 
@@ -194,7 +194,7 @@ Až budete s chováním funkce spokojeni, můžete ho publikovat.
 
 1. Vyberte umístění pro nový prostředek (například Západní USA 2).
 
-V tomto okamžiku se v předplatném Azure vytvoří potřebné prostředky pro hostování nové funkce Azure v Azure. Počkejte, než se nasazení dokončí. V okně výstup se zobrazí stav procesu nasazení.
+V tomto okamžiku se v předplatném Azure vytvoří potřebné prostředky pro hostování nové funkce Azure v Azure. Počkejte, až se nasazení dokončí. V okně výstup se zobrazí stav procesu nasazení.
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na **všechny prostředky** a vyhledejte funkci, kterou jste publikovali pomocí jejího názvu. Pokud jste pojmenovali **zřetězený**, vyberte prostředek.
 
@@ -265,7 +265,7 @@ Teď, když máte novou vlastní dovednost, ji můžete přidat do svého dovedn
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Gratulujeme! Vytvořili jste svou první vlastní dovednost. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. Další informace získáte kliknutím na následující odkazy.
+Blahopřejeme vám. Vytvořili jste svou první vlastní dovednost. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. Další informace získáte kliknutím na následující odkazy.
 
 + [Dovednosti v Power: úložiště vlastních dovedností](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)

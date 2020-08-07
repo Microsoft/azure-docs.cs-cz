@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 1ece80ce5337304d1b0d51e5e334cd64cc133619
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: dc6ec5f440efef153273f8678bd1a55400a1235b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84984416"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835421"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Rychlý Start: analýza místní Image pomocí Počítačové zpracování obrazu REST API a C #
 
@@ -42,7 +42,7 @@ Když chcete vytvořit ukázku v sadě Visual Studio, postupujte takto:
     1. Vyberte **Newtonsoft.Jszapnuto**, potom klikněte na zaškrtávací políčko vedle názvu projektu a **nainstalujte**.
 1. Zkopírujte nebo vložte ukázkový fragment kódu níže do souboru Program.cs. Upravte název oboru názvů, pokud se liší od toho, který jste vytvořili.
 1. Přidejte obrázek výběru do složky bin/Debug/netcoreappX. X a pak přidejte název Image (s příponou) do proměnné ' imageFilePath '.
-1. Spusťte program.
+1. Spustíte program.
 
 ```csharp
 using Newtonsoft.Json.Linq;

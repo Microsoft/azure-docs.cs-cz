@@ -2,7 +2,7 @@
 title: Přidat nebo odebrat vlastníky skupiny – Azure Active Directory | Microsoft Docs
 description: Pokyny, jak přidat nebo odebrat vlastníky skupin pomocí Azure Active Directory.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd5fc389ccb52c4a5eeec0e0f544a17b011333a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e696ff576ffa8e788312344c4ebd103184173fa4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604518"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799578"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Přidat nebo odebrat vlastníky skupiny v Azure Active Directory
 Skupiny Azure Active Directory (Azure AD) jsou vlastněné a spravované vlastníky skupin. Vlastníci skupiny můžou být uživatelé nebo instanční objekty a můžou spravovat skupinu včetně členství. Vlastníci skupiny můžou přiřadit jenom existující vlastníci skupiny nebo skupiny – Správa správců. Vlastníci skupiny nemusí být členy skupiny.

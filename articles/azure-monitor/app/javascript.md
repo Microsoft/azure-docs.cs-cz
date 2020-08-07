@@ -2,14 +2,14 @@
 title: Azure Application Insights pro webové aplikace v JavaScriptu
 description: Získejte zobrazení stránky a počty relací, data webového klienta, jednostránkové aplikace (SPA) a sledujte vzorce používání. Zjištění výjimek a problémů s výkonem na webových stránkách v jazyce JavaScript.
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e0545660cbca68d41bc24b7266496b7912d408bc
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7c5abb109018bd8bc5b501fe728a3a0f422a3db7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531315"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905821"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -104,13 +104,13 @@ Každá možnost konfigurace je uvedená výše na novém řádku, pokud nechcet
 
 Dostupné možnosti konfigurace jsou 
 
-| Název | Typ | Description
+| Název | Typ | Popis
 |------|------|----------------
 | src | řetězec **[povinné]** | Úplná adresa URL, ze které se má načíst sada SDK Tato hodnota se používá pro atribut src dynamicky přidávaného &lt; skriptu nebo &gt; značky. Můžete použít veřejné umístění CDN nebo vlastní soukromý hostovaný.
-| name | řetězec *[nepovinné]* | Globální název inicializované sady SDK, výchozí hodnota je appInsights. Proto ```window.appInsights``` bude odkaz na inicializovaná instanci. Poznámka: Pokud zadáte hodnotu názvu nebo předchozí instanci, která má být přiřazena (prostřednictvím globálního názvu appInsightsSDK), bude tato hodnota názvu také definována v globálním oboru názvů jako ```window.appInsightsSDK=<name value>``` , to je vyžadováno inicializačním kódem sady SDK, aby bylo zajištěno, že se inicializuje a aktualizuje správné kostry fragmentů a metod proxy.
+| name | řetězec *[nepovinné]* | Globální název inicializované sady SDK, výchozí hodnota `appInsights` . Proto ```window.appInsights``` bude odkaz na inicializovaná instanci. Poznámka: Pokud zadáte hodnotu názvu nebo předchozí instanci, která má být přiřazena (prostřednictvím globálního názvu appInsightsSDK), bude tato hodnota názvu také definována v globálním oboru názvů jako ```window.appInsightsSDK=<name value>``` , to je vyžadováno inicializačním kódem sady SDK, aby bylo zajištěno, že se inicializuje a aktualizuje správné kostry fragmentů a metod proxy.
 | ld | číslo v MS *[nepovinné]* | Definuje zpoždění zátěže, které se má počkat, než se pokusí načíst sadu SDK. Výchozí hodnota je 0ms a jakákoliv záporná hodnota okamžitě Přidá značku skriptu do &lt; hlavní &gt; oblasti stránky. tím se pak zablokuje událost načtení stránky, dokud není načten skript (nebo selže).
 | useXhr | logická hodnota *[nepovinné]* | Toto nastavení se používá pouze při selhání načtení sady SDK pro generování sestav. Vytváření sestav se nejprve pokusí použít metodu Fetch (), je-li k dispozici a pak přechod na XHR, nastavení této hodnoty na hodnotu true pouze obchází kontrolu načtení. Použití této hodnoty se vyžaduje jenom v případě, že se vaše aplikace používá v prostředí, kde se při načítání nepodaří odeslat události selhání.
-| crossOrigin | řetězec *[nepovinné]* | Zahrnutím tohoto nastavení se značka skriptu přidaná ke stažení SDK bude týkat atributu crossOrigin s touto řetězcovou hodnotou. Pokud není definován (výchozí), není přidán žádný atribut crossOrigin. Doporučené hodnoty nejsou definovány (výchozí nastavení); ""; nebo "anonymní" (pro všechny platné hodnoty viz [atribut HTML: dokumentace crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) )
+| crossOrigin | řetězec *[nepovinné]* | Zahrnutím tohoto nastavení se značka skriptu přidaná ke stažení SDK bude týkat atributu crossOrigin s touto řetězcovou hodnotou. Pokud není definován (výchozí), není přidán žádný atribut crossOrigin. Doporučené hodnoty nejsou definovány (výchozí nastavení); ""; nebo "anonymní" (pro všechny platné hodnoty viz [atribut HTML: `crossorigin` ](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) dokumentace)
 | Priorita | objekt **[povinné]** | Konfigurace předaná do sady Application Insights SDK během inicializace.
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Posílání telemetrie do Azure Portal
@@ -153,7 +153,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfigurace
 Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s výjimkou `instrumentationKey` .
 
-| Name | Výchozí | Description |
+| Název | Výchozí | Popis |
 |------|---------|-------------|
 | instrumentationKey | null | **Požadováno**<br>Klíč instrumentace, který jste získali z Azure Portal. |
 | accountId | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
@@ -195,9 +195,9 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 | enableResponseHeaderTracking | false (nepravda) | Pokud je nastaveno na true, jsou sledovány hlavičky odpovědi požadavku načítající & AJAX, výchozí hodnota je false.
 | distributedTracingMode | `DistributedTracingModes.AI` | Nastaví režim distribuovaného trasování. Pokud je nastaven režim AI_AND_W3C nebo W3C, budou se vygenerovat hlavičky kontextu trasování W3C (traceparent/tracestate) a budou zahrnuty do všech odchozích požadavků. AI_AND_W3C se poskytuje kvůli zpětné kompatibilitě se všemi staršími službami Application Insights instrumentované služby. Viz příklad [zde](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps).
 | enableAjaxErrorStatusText | false (nepravda) | Výchozí hodnota je false. Pokud má hodnotu true, zahrňte text chyby odezvy v události závislosti u neúspěšných požadavků AJAX.
-| enableAjaxPerfTracking | false (nepravda) | Výchozí hodnota je false. Příznak pro povolení vyhledávání a zahrnutí dalšího okna prohlížeče. časování výkonu v hlášených metrikách AJAX (XHR a Fetch) ohlásilo metriky.
+| enableAjaxPerfTracking | false (nepravda) | Výchozí hodnota je false. Příznak pro povolení vyhledávání a zahrnutí dalšího okna prohlížeče. časování výkonu v hlášené `ajax` (XHR a Fetch) ohlásilo metriky.
 | maxAjaxPerfLookupAttempts | 3 | Výchozí hodnota je 3. Maximální počet pokusů, kolikrát se má okno Hledat. časování výkonu (Pokud je k dispozici) je vyžadováno, protože ne všechny prohlížeče naplní okno. výkon před ohlášením konce žádosti XHR a pro žádosti o načtení, které jsou přidány po dokončení.
-| ajaxPerfLookupDelay | 25 | Výchozí hodnota je 25 ms. Doba, po kterou se má počkat, než se znovu pokusí najít Windows. časování výkonu pro požadavek AJAX, čas je v milisekundách a je předán přímo do setTimeout ().
+| ajaxPerfLookupDelay | 25 | Výchozí hodnota je 25 ms. Doba, po kterou se má počkat, než se znovu pokusí najít Windows. časování výkonu pro `ajax` požadavek, čas je v milisekundách a předává se přímo do setTimeout ().
 | enableUnhandledPromiseRejectionTracking | false (nepravda) | V případě hodnoty true budou se Neošetřená zamítnutí slíbit shromažďovat a nahlásí se jako chyba JavaScriptu. Pokud má disableExceptionTracking hodnotu true (nesleduje výjimky), konfigurační hodnota se bude ignorovat a Neošetřená zamítnutí se nebudou hlásit.
 
 ## <a name="single-page-applications"></a>Jednostránkové aplikace
@@ -219,6 +219,38 @@ Nastavením se `autoTrackPageVisitTime: true` sleduje čas strávený uživateli
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+
+## <a name="correlation"></a>Korelace
+
+Korelace klienta na straně serveru je podporovaná pro:
+
+- XHR/AJAX – požadavky 
+- Načíst požadavky 
+
+Korelace klienta na straně serveru není pro žádosti a **podporovaná** `GET` `POST` .
+
+### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>Povolení korelace mezi komponentami mezi klientským AJAX a požadavky serveru
+
+Aby bylo možné povolit `CORS` korelaci, musí klient odeslat dvě další hlavičky žádosti `Request-Id` a `Request-Context` a na straně serveru musí být schopni přijmout připojení k těmto hlavičkám. Odesílání těchto hlaviček je povoleno nastavením `enableCorsCorrelation: true` v rámci konfigurace sady JavaScript SDK. 
+
+V závislosti na `Access-Control-Allow-Headers` konfiguraci na straně serveru je často potřeba rozšíření seznamu na straně serveru tím, že ručně přidáte `Request-Id` a `Request-Context` .
+
+Access-Control-Allow-Headers: `Request-Id` , `Request-Context` ,`<your header>`
+
+Pokud některý ze serverů jiných výrobců, které klient komunikuje, nemůže přijmout `Request-Id` hlavičky a a `Request-Context` nemůžete aktualizovat jejich konfiguraci, pak je budete muset vložit do seznamu vyloučení prostřednictvím `correlationHeaderExcludeDomains` Vlastnosti konfigurace. Tato vlastnost podporuje zástupné znaky.
+
+```javascript
+// excerpt of the config section of the JavaScript SDK snippet with correlation
+// between client-side AJAX and server requests enabled.
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    enableCorsCorrelation: true,
+    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
+    /* ...Other Configuration Options... */
+}});
+</script>
+
+``` 
 
 ## <a name="explore-browserclient-side-data"></a>Prozkoumat data v prohlížeči nebo na straně klienta
 

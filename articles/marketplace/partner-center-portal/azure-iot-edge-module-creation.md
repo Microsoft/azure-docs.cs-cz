@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 779fc1cfc617e18eee4d84dcfd007f10ddb31f96
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 52bb3e63ff436aa73aaaf43f2f87f904b27f70b6
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808707"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876627"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Vytvoření nabídky modulu IoT Edge
 
@@ -199,15 +199,14 @@ Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všech
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije tuto hodnotu k vytvoření **malého** (48 x 48 pixelů) a **středníku** (90 x 90 pixelů). Volitelně je můžete nahradit různými obrázky.
+Zadejte soubory PNG pro logo vaší nabídky v každé z následujících čtyř velikostí pixelů:
 
-Všechny tři velikosti loga se vyžadují pro použití na různých místech v seznamu:
+- **Malé (48 x 48)**
+- **Střední (90 × 90)**
+- **Velký (216 x 216)**
+- **Roztažitelné (255 × 115)**
 
-- **Malé** (48 x 48)
-- **Střední** (90 × 90)
-- **Velký** (mezi 216 x 216 a 350 × 350)
-
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Všechny čtyři loga jsou povinná a používají se na různých místech v seznamu Marketplace.
 
 #### <a name="screenshots-optional"></a>Snímky obrazovky (volitelné)
 

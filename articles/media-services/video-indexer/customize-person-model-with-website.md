@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 08/06/2020
 ms.author: kumud
-ms.openlocfilehash: 28cb73df2df91fc96d7ac19e25d7bd13f47df41e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6894eb783b990ebe98f9ebe5eb2fe112a59309a4
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047311"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904492"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Přizpůsobení modelu osoby pomocí Video Indexer webu
 
@@ -126,9 +126,20 @@ Pokud se chcete podívat na obsah některého z vašich osobních modelů, vyber
 
 ### <a name="manage-a-person"></a>Správa osoby
 
-Pokud vyberete možnost **Spravovat**, zobrazí se všechny plošky, ze kterých je tento IT model vyškolený. Tyto plošky pocházejí z výskytů této osoby ve videích, které používají tento model osoby, nebo z obrázků, které jste ručně nahráli.
+Pokud vyberete možnost **Spravovat**, zobrazí se v okně **Podrobnosti o uživateli** všechny plošky, ze kterých je tento IT model vyškolený. Tyto plošky pocházejí z výskytů této osoby ve videích, které používají tento model osoby, nebo z obrázků, které jste ručně nahráli.
+
+> [!TIP]
+> Kliknutím na jméno osoby nebo kliknutím na **Spravovat**, jak vidíte výše, se dostanete do okna **podrobností o osobě** .
+
+#### <a name="add-a-face"></a>Přidat obličej
 
 K osobě můžete přidat další plošky tak, že vyberete **Přidat obrázky**.
+
+#### <a name="delete-a-face"></a>Odstranit obličej
+
+Vyberte bitovou kopii, kterou chcete odstranit, a klikněte na **Odstranit**.
+
+#### <a name="rename-and-delete-the-person"></a>Přejmenovat a odstranit osobu 
 
 K přejmenování osoby můžete použít podokno Správa a odstranit osobu z modelu osoby.
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: f2af8dcb2460e4e95d29bd81e6994d145ac61a48
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4949a83ac2aac664c19be46a367fce2bbff4cb02
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247772"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904815"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric požadavky na plánování kapacity clusteru
 
@@ -155,7 +155,7 @@ Nároky na kapacitu vašeho clusteru se určí podle vašich konkrétních poža
 
 #### <a name="virtual-machine-sizing"></a>Velikost virtuálního počítače
 
-**U produkčních úloh je doporučená velikost virtuálního počítače (SKU) standardní D2_V2 (nebo ekvivalentní) s minimálně 50 GB místní jednotky SSD.** Doporučuje se minimálně 50 GB místní SSD, ale některé úlohy (například s kontejnery Windows) budou potřebovat větší disky. Při výběru jiných [velikostí virtuálních počítačů](../virtual-machines/sizes-general.md) pro produkční úlohy Pamatujte na následující omezení:
+**U produkčních úloh je doporučená velikost virtuálního počítače (SKU) [standardní D2_V2](../virtual-machines/dv2-dsv2-series.md) (nebo ekvivalentní) s minimálně 50 GB místní SSD, 2 jádry a 4 GiB paměti.** Doporučuje se minimálně 50 GB místní SSD, ale některé úlohy (například s kontejnery Windows) budou potřebovat větší disky. Při výběru jiných [velikostí virtuálních počítačů](../virtual-machines/sizes-general.md) pro produkční úlohy Pamatujte na následující omezení:
 
 - Částečné velikosti virtuálních počítačů, jako je standard a0, se nepodporují.
 - *Řada a-Series* Velikosti virtuálních počítačů se z důvodů výkonu nepodporují.

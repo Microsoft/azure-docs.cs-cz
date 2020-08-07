@@ -9,13 +9,13 @@ ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: c076ceafc35a11f172ff35b7ab5ce89d1bf99f17
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 351d52128660c25c557c536f2835e0e71c0115f7
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319554"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842956"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Plánování kanálů strojového učení pomocí sady Azure Machine Learning SDK pro Python
 
@@ -146,7 +146,7 @@ Pokud pak znovu spustíte `Schedule.list(ws)` , měli byste mít prázdný sezna
 
 V tomto článku jste použili sadu SDK Azure Machine Learning pro Python k naplánování kanálu dvěma různými způsoby. Jeden plán se opakuje na základě uplynulých časových taktů. Druhý plán se spustí, pokud je soubor změněn na zadaném `Datastore` nebo v adresáři v daném úložišti. Zjistili jste, jak použít portál k prohlédnutí kanálu a jednotlivých spuštění. Nakonec jste zjistili, jak zakázat plán, aby kanál přestal běžet.
 
-Další informace naleznete v tématu:
+Další informace:
 
 > [!div class="nextstepaction"]
 > [Použití Azure Machine Learningch kanálů pro dávkové vyhodnocování](tutorial-pipeline-batch-scoring-classification.md)

@@ -2,25 +2,25 @@
 title: 'Azure CLI: nasazení Open Source serveru FHIR pro Azure – Azure API pro Azure'
 description: V tomto rychlém startu se dozvíte, jak nasadit Open Source Server Microsoft FHIR pro Azure.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
-ms.author: mihansen
+ms.author: matjazl
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: dc65bedc8b008d9628d09ef3e4bfc7cc6ea12e95
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 10af71afd8843e75d5df3be57c909c56a7abca01
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495246"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843568"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-azure-cli"></a>Rychlý Start: nasazení Open Source serveru FHIR pomocí Azure CLI
 
 V tomto rychlém startu se dozvíte, jak nasadit otevřený zdrojový &reg; Server FHIR v Azure pomocí rozhraní příkazového řádku Azure CLI.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

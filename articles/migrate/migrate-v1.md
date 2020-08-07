@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2defb00827e6f3ccf49c336007198b7d9ac176f6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bb4cfcd48608f90898648450a20d246f9fde002b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306107"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835999"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Práce s předchozí verzí Azure Migrate
 
@@ -85,7 +85,7 @@ Počítač se přesune pouze do pozdější fáze, pokud předá předchozí. Na
 
 Zobrazení Připravenost pro Azure v posouzení zobrazuje stav připravenosti jednotlivých virtuálních počítačů.
 
-**Připravenosti** | **Stav** | **Podrobnosti**
+**Připravenosti** | **State** | **Podrobnosti**
 --- | --- | ---
 Připraveno pro Azure | Žádné problémy s kompatibilitou Počítač se dá migrovat tak, jak je, do Azure, a spustí se v Azure s plnou podporou Azure. | U virtuálních počítačů, které jsou pro migraci vhodné, doporučí Azure Migrate velikost virtuálního počítače v Azure.
 Připraveno pro Azure s podmínkou | Počítač se může spustit v Azure, ale nemusí mít plnou podporu Azure. Například počítač se starší verzí Windows serveru, který se v Azure nepodporuje. | Azure Migrate vysvětluje problémy s připraveností a poskytuje kroky k nápravě.
@@ -97,11 +97,11 @@ Připravenost neznámá | Azure Migrate nemůžou identifikovat připravenost Az
 Připravenost přihlíží k několika vlastnostem virtuálních počítačů, aby bylo možné zjistit, jestli virtuální počítač může běžet v Azure.
 
 
-**Vlastnost** | **Podrobnosti** | **Připravenosti**
+**Majetek** | **Podrobnosti** | **Připravenosti**
 --- | --- | ---
 **Typ spouštění** | Systém BIOS je podporován. Rozhraní UEFI se nepodporuje. | Podmíněně připravený, pokud je typ spouštění UEFI.
 **Cores** | Počítače Core <= maximální počet jader (128) podporovaných virtuálním počítačem Azure.<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využité jádra.<br/>Pokud je v nastavení hodnocení určen faktor komfortu, je počet využitých jader vynásoben faktorem pohodlí.<br/><br/> Pokud není k dispozici žádná historie výkonu, Azure Migrate používá přidělená jádra bez použití faktoru pohodlí. | Připraveno, pokud je omezení menší nebo rovno.
-**Paměť** | Velikost paměti počítače <= maximální paměť (3892 GB v Azure M Series Standard_M128m &nbsp; <sup>2</sup>) pro virtuální počítač Azure. [Přečtěte si další informace](../virtual-machines/windows/sizes.md).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využitou paměť.<br/><br/>Pokud je určen faktor komfortu, vyhodnotí se využitá paměť podle faktoru pohodlí.<br/><br/> Pokud není k dispozici žádná historie, je přidělená paměť použita bez použití faktoru pohodlí.<br/><br/> | V rámci omezení je připravený.
+**Paměť** | Velikost paměti počítače <= maximální paměť (3892 GB v Azure M Series Standard_M128m &nbsp; <sup>2</sup>) pro virtuální počítač Azure. [Další informace](../virtual-machines/sizes.md).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využitou paměť.<br/><br/>Pokud je určen faktor komfortu, vyhodnotí se využitá paměť podle faktoru pohodlí.<br/><br/> Pokud není k dispozici žádná historie, je přidělená paměť použita bez použití faktoru pohodlí.<br/><br/> | V rámci omezení je připravený.
 **Disk úložiště** | Přidělená velikost disku musí být 4 TB (4096 GB) nebo méně.<br/><br/> Počet disků připojených k počítači musí být 65 nebo méně, včetně disku s operačním systémem. | V rámci omezení je připravený.
 **Sítě** | K počítači musí být připojen 32 nebo méně síťových adaptérů. | V rámci omezení je připravený.
 
@@ -253,7 +253,7 @@ Instalace agenta na počítač se systémem Linux:
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Instalace agenta MMA na počítači monitorovaném nástrojem Operations Manager
 
-Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není potřeba instalovat agenta MMA. Service Map se integruje s Operations Manager MMA ke shromáždění potřebných dat závislostí. [Přečtěte si další informace](../azure-monitor/insights/service-map-scom.md#prerequisites). Je potřeba nainstalovat agenta závislostí.
+Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není potřeba instalovat agenta MMA. Service Map se integruje s Operations Manager MMA ke shromáždění potřebných dat závislostí. [Další informace](../azure-monitor/insights/service-map-scom.md#prerequisites). Je potřeba nainstalovat agenta závislostí.
 
 ### <a name="install-the-dependency-agent"></a>Instalace agenta závislostí
 
@@ -263,7 +263,7 @@ Pro počítače monitorované nástrojem System Center Operations Manager 2012 R
     ```sh InstallDependencyAgent-Linux64.bin```
 
 - Přečtěte si další informace o [podpoře agenta závislostí](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) pro operační systémy Windows a Linux.
-- [Přečtěte si další informace](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) o tom, jak můžete pomocí skriptů nainstalovat agenta závislostí.
+- [Přečtěte si další informace](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent) o tom, jak můžete pomocí skriptů nainstalovat agenta závislostí.
 
 >[!NOTE]
 > Článek Azure Monitor pro virtuální počítače, na který se odkazuje, obsahuje přehled systémových požadavků a metod nasazení agenta závislostí, které se vztahují také na řešení Service Map.

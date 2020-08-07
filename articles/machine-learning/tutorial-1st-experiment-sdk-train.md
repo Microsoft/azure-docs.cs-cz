@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: sgilley
 author: sdgilley
 ms.date: 02/10/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 821b11dc89a3479f7310770db84d0947390a3109
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-python
+ms.openlocfilehash: be8f0c85f62779dec9231a9f44155d4608e88b52
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520540"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852697"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Kurz: analýza prvního modelu ML
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte provádět následující úlohy:
 > * Zobrazit výsledky školení v studiu
 > * Načtení nejlepšího modelu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Jediným předpokladem je spuštění první části tohoto kurzu, [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 

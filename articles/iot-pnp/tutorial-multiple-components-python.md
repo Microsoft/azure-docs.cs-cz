@@ -7,12 +7,12 @@ ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 0cde9caa2f2b68b1e75eac635a81865cc4b6b33c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 571f0e0ceff0adfbf1814abc627fcab6b23acbe1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352760"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905852"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-python"></a>Kurz: připojení ukázkové IoT technologie Plug and Play ve verzi Preview aplikace zařízení s více komponentami pro IoT Hub (Python)
 
@@ -22,7 +22,7 @@ V tomto kurzu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plu
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete Python 3,7 na vašem vývojovém počítači. Nejnovější doporučenou verzi si můžete stáhnout z [Python.org](https://www.python.org/)na víc platforem. Verzi Pythonu si můžete ověřit pomocí následujícího příkazu:  
 
@@ -86,26 +86,26 @@ Otevřete soubor *pnp_temp_controller_with_thermostats. py* v editoru dle vašeh
 
 1. Importy `pnp_helper_preview_refresh.py` pro získání přístupu k podpůrným metodám.
 
-1. Definuje dva identifikátory digitálního vlákna modelu (DTMIs), které jednoznačně reprezentují dvě různá rozhraní definovaná v modelu DTDL. Komponenty v reálném teplotním adaptéru by měly implementovat tato dvě rozhraní. Tato dvě rozhraní jsou již publikována v centrálním úložišti. Tyto DTMIs musí být pro uživatele známé a mohou se lišit v závislosti na scénáři implementace zařízení. Pro aktuální ukázku tyto dvě rozhraní reprezentují:
+2. Definuje dva identifikátory digitálního vlákna modelu (DTMIs), které jednoznačně reprezentují dvě různá rozhraní definovaná v modelu DTDL. Komponenty v reálném teplotním adaptéru by měly implementovat tato dvě rozhraní. Tato dvě rozhraní jsou již publikována v centrálním úložišti. Tyto DTMIs musí být pro uživatele známé a mohou se lišit v závislosti na scénáři implementace zařízení. Pro aktuální ukázku tyto dvě rozhraní reprezentují:
 
   - Termostat
   - Informace o zařízení vyvinuté v Azure.
 
-. Definuje DTMI `model_id` pro zařízení, které je právě implementováno. DTMI je definován uživatelem a musí odpovídat DTMI v souboru modelu DTDL.
+3. Definuje DTMI `model_id` pro zařízení, které je právě implementováno. DTMI je definován uživatelem a musí odpovídat DTMI v souboru modelu DTDL.
 
-1. Definuje názvy dané součásti v souboru DTDL. V DTDL a jedné součásti informací o zařízení se nacházejí dva termostaty. `serial_number`V kořenovém rozhraní je také definována konstanta s názvem. `serial_number`U zařízení se nedá změnit.
+4. Definuje názvy dané součásti v souboru DTDL. V DTDL a jedné součásti informací o zařízení se nacházejí dva termostaty. `serial_number`V kořenovém rozhraní je také definována konstanta s názvem. `serial_number`U zařízení se nedá změnit.
 
-1. Definuje implementace obslužných rutin příkazů. Definují, co zařízení provede při přijímání požadavků na příkazy.
+5. Definuje implementace obslužných rutin příkazů. Definují, co zařízení provede při přijímání požadavků na příkazy.
 
-1. Definuje funkce pro vytvoření odezvy příkazu. Definují, jak zařízení reaguje na požadavky příkazu. Funkce odezvy příkazu vytvoříte, pokud příkaz potřebuje odeslat vlastní odpověď zpátky do centra IoT. Pokud není k dispozici funkce odpovědi pro příkaz, pošle se obecná odpověď. V této ukázce má pouze příkaz **getMaxMinReport** vlastní odpověď.
+6. Definuje funkce pro vytvoření odezvy příkazu. Definují, jak zařízení reaguje na požadavky příkazu. Funkce odezvy příkazu vytvoříte, pokud příkaz potřebuje odeslat vlastní odpověď zpátky do centra IoT. Pokud není k dispozici funkce odpovědi pro příkaz, pošle se obecná odpověď. V této ukázce má pouze příkaz **getMaxMinReport** vlastní odpověď.
 
-1. Definuje funkci pro odesílání telemetrie z tohoto zařízení. Jak termostat, tak i kořenové rozhraní odesílají telemetrii. Tato funkce přebírá volitelný parametr názvu komponenty, který umožňuje určit, která komponenta tuto telemetrii poslala.
+7. Definuje funkci pro odesílání telemetrie z tohoto zařízení. Jak termostat, tak i kořenové rozhraní odesílají telemetrii. Tato funkce přebírá volitelný parametr názvu komponenty, který umožňuje určit, která komponenta tuto telemetrii poslala.
 
-1. Definuje naslouchací proces pro žádosti příkazů.
+8. Definuje naslouchací proces pro žádosti příkazů.
 
-1. Definuje naslouchací proces pro požadované aktualizace vlastností.
+9. Definuje naslouchací proces pro požadované aktualizace vlastností.
 
-1. Má `main` funkci, která:
+10. Má `main` funkci, která:
 
     1. Pomocí sady SDK pro zařízení vytvořte klienta zařízení a připojte se ke službě IoT Hub. Zařízení pošle `model_id` , aby Centrum IoT mohl zařízení identifikovat jako zařízení IoT technologie Plug and Play.
 

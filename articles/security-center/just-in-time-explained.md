@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: dfdb717a27af8dc7f3186ac7afdff4d1eb3d79f5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9c77ed2bf0d764fbbbe24770cc70b3fbeec7f678
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420834"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833449"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Porozumění přístupu k virtuálnímu počítači JIT (just-in-time)
 
@@ -44,7 +44,7 @@ Když povolíte přístup k virtuálnímu počítači za běhu, můžete vybrat 
 
 Pokud pro vybrané porty už existují další pravidla, budou mít tato stávající pravidla přednost před novými pravidly odepřít všechna příchozí provoz. Pokud na vybraných portech neexistují žádná pravidla, nová pravidla budou mít v NSG a Azure Firewall nejvyšší prioritu.
 
-Když si uživatel požádá o přístup k virtuálnímu počítači, Security Center zkontroluje, jestli má uživatel pro tento virtuální počítač oprávnění [Access Control na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) . Pokud je žádost schválená, Security Center nakonfiguruje skupin zabezpečení sítě a Azure Firewall, aby povolovaly příchozí provoz na vybrané porty z příslušné IP adresy (nebo rozsahu) po určenou dobu. Po vypršení časového limitu Security Center obnoví skupin zabezpečení sítě do jejich předchozích stavů. Připojení, která jsou již navázána, nejsou přerušena.
+Když si uživatel požádá o přístup k virtuálnímu počítači, Security Center zkontroluje, jestli má uživatel oprávnění [řízení přístupu na základě role (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) pro tento virtuální počítač. Pokud je žádost schválená, Security Center nakonfiguruje skupin zabezpečení sítě a Azure Firewall, aby povolovaly příchozí provoz na vybrané porty z příslušné IP adresy (nebo rozsahu) po určenou dobu. Po vypršení časového limitu Security Center obnoví skupin zabezpečení sítě do jejich předchozích stavů. Připojení, která jsou již navázána, nejsou přerušena.
 
 > [!NOTE]
 > JIT nepodporuje virtuální počítače chráněné pomocí bran Azure firewall řízené nástrojem [Azure firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview).

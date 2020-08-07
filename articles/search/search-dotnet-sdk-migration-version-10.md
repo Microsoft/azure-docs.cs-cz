@@ -1,5 +1,5 @@
 ---
-title: Upgrade na Azure Kognitivní hledání .NET SDK verze 10
+title: Upgrade na .NET SDK verze 10
 titleSuffix: Azure Cognitive Search
 description: Migruje kód do Azure Kognitivní hledání .NET SDK verze 10 ze starších verzí. Zjistěte, co je nového a kdy se vyžadují změny kódu.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6ce4e308420fc3ea1928b44013a78d0ae57d2c35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61fee97323d110875cb05fb48157527a39c80f56
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562376"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905777"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Upgrade na Azure Kognitivní hledání .NET SDK verze 10
 
@@ -111,7 +111,7 @@ var webApiSkill = new WebApiSkill(
 
 Shaper dovednost teď může z vnořených kontextů umožňovat vstupní konsolidaci. Pro povolení této změny jsme změnili `InputFieldMappingEntry` tak, aby mohla být vytvořena instance zadáním pouze `Source` vlastnosti, nebo `SourceContext` `Inputs` vlastností a.
 
-Pravděpodobně nebudete muset dělat žádné změny kódu; Upozorňujeme však, že je povolena pouze jedna z těchto dvou kombinací. To znamená, že:
+Pravděpodobně nebudete muset dělat žádné změny kódu; Upozorňujeme však, že je povolena pouze jedna z těchto dvou kombinací. To znamená:
 
 - Vytváření je `InputFieldMappingEntry` platné pouze v případě, že je `Source` inicializována pouze inicializace.
 - Vytváření `InputFieldMappingEntry` je platné pouze v případě `SourceContext` , `Inputs` že jsou inicializovány.

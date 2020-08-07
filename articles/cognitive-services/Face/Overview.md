@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 6714a0c4b967d80ad683ef023b5811423bdcb022
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 061d6d1088358e5da0cb590fad5ed0a4cd9e422a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403456"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834214"
 ---
 # <a name="what-is-the-azure-face-service"></a>Co je služba Azure Face?
 
@@ -51,7 +51,7 @@ A tyto obrázky jsou kandidátské obličeje:
 
 ![Pět obrázků usmívajících se lidí. Obrázky a a b zobrazují stejnou osobu.](./Images/FaceFindSimilar.Candidates.jpg)
 
-Chcete-li najít čtyři podobné plošky, vrátí režim matchPerson a a b, který zobrazí stejnou osobu jako cílovou plochu. Režim matchFace vrací přesně čtyři kandidáty a, b, c&mdash;a d, a to i v případě, že někteří nejsou stejná osoba jako cíl nebo mají nízkou podobnost. Další informace najdete v příručce věnovaném koncepcím [rozpoznávání obličeje](concepts/face-recognition.md) nebo v dokumentaci [Najít podobné rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) .
+Chcete-li najít čtyři podobné plošky, vrátí režim matchPerson a a b, který zobrazí stejnou osobu jako cílovou plochu. Režim matchFace vrací přesně čtyři kandidáty a, b, c a d &mdash; , a to i v případě, že někteří nejsou stejná osoba jako cíl nebo mají nízkou podobnost. Další informace najdete v příručce věnovaném koncepcím [rozpoznávání obličeje](concepts/face-recognition.md) nebo v dokumentaci [Najít podobné rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) .
 
 ## <a name="face-grouping"></a>Seskupování tváří
 
@@ -61,7 +61,7 @@ Rozhraní API pro seskupování rozdělí sadu neznámých tváří do několika
 
 Identifikovatelné rozhraní API se používá k identifikaci zjištěné plochy proti databázi lidí. Tato funkce může být užitečná pro automatické označování obrázků v softwaru pro správu fotek. Databázi vytvoříte předem a můžete ji upravovat v průběhu času.
 
-Následující obrázek ukazuje příklad databáze s názvem `"myfriends"`. Každá skupina může obsahovat až 1 000 000 různých objektů Person. Každý objekt osob může registrovat až 248 tváří.
+Následující obrázek ukazuje příklad databáze s názvem `"myfriends"` . Každá skupina může obsahovat až 1 000 000 různých objektů Person. Každý objekt osob může registrovat až 248 tváří.
 
 ![Mřížka se třemi sloupci pro různé lidi, z nichž každý má tři řádky imagí obličeje](./Images/person.group.clare.jpg)
 

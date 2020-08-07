@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
-- tracking-python
+- devx-track-python
 ms.date: 01/09/2020
-ms.openlocfilehash: c03209413235b0d6fca22039756d6c19b643034b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 6a93410b40926904a8429b70522eb01ab02f80a7
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606475"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876457"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (Python)
 
@@ -40,7 +40,7 @@ V tomto rychlém startu použijete přímou metodu k řízení simulovaného za�
 
 ### <a name="add-azure-iot-extension"></a>Přidat rozšíření Azure IoT
 
-Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IoT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
+Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IoT přidá do Azure CLI příkazy specifické pro IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -54,7 +54,7 @@ Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických d
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-device"></a>Registrování zařízení
+## <a name="register-a-device"></a>Registrace zařízení
 
 Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-python.md), můžete tento krok přeskočit.
 
@@ -78,7 +78,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
     ```
 
-    Poznamenejte si připojovací řetězec zařízení, který vypadá nějak takto:
+    Poznamenejte si připojovací řetězec zařízení, který vypadá takto:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
 

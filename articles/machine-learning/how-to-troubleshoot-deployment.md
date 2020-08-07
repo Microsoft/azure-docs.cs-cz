@@ -8,15 +8,15 @@ ms.subservice: core
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 03/05/2020
+ms.date: 08/06/2020
 ms.topic: conceptual
-ms.custom: troubleshooting, contperfq4, tracking-python
-ms.openlocfilehash: 4741c6348c2a4077776d2d79bee56de26f62e2d1
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: troubleshooting, contperfq4, devx-track-python
+ms.openlocfilehash: 3f8a3c705878e212e6a26670e20b5a81a3f2a6ba
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540933"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904373"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Řešení potíží s nasazením v Docker modelů pomocí služby Azure Kubernetes a Azure Container Instances 
 
@@ -286,175 +286,7 @@ Stavový kód 504 označuje, že vypršel časový limit žádosti. Výchozí č
 
 ## <a name="advanced-debugging"></a>Pokročilé ladění
 
-V některých případech možná budete muset interaktivně ladit kód Pythonu obsažený v nasazení modelu. Například pokud se skript vstupu nezdařil a důvod nelze určit pomocí dalšího protokolování. Pomocí Visual Studio Code a Python Tools for Visual Studio (PTVSD) se můžete připojit ke kódu běžícímu uvnitř kontejneru Docker.
-
-> [!IMPORTANT]
-> Tato metoda ladění nefunguje při použití `Model.deploy()` a `LocalWebservice.deploy_configuration` k nasazení modelu místně. Místo toho je nutné vytvořit bitovou kopii pomocí metody [model. Package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) .
-
-Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovacího prostředí v místním systému. Další informace o používání Docker najdete v [dokumentaci k Docker](https://docs.docker.com/).
-
-### <a name="configure-development-environment"></a>Konfigurace vývojového prostředí
-
-1. Chcete-li nainstalovat Python Tools for Visual Studio (PTVSD) do místního vývojového prostředí VS Code, použijte následující příkaz:
-
-    ```
-    python -m pip install --upgrade ptvsd
-    ```
-
-    Další informace o použití PTVSD s VS Code najdete v tématu [vzdálené ladění](https://code.visualstudio.com/docs/python/debugging#_remote-debugging).
-
-1. Pokud chcete nakonfigurovat VS Code ke komunikaci s imagí Docker, vytvořte novou konfiguraci ladění:
-
-    1. Z VS Code vyberte nabídku __ladění__ a pak vyberte __otevřít konfigurace__. Soubor s názvem __launch.jspři__ otevření.
-
-    1. V __launch.jsv__ souboru vyhledejte řádek, který obsahuje `"configurations": [` , a vložte za něj následující text:
-
-        ```json
-        {
-            "name": "Azure Machine Learning: Docker Debug",
-            "type": "python",
-            "request": "attach",
-            "port": 5678,
-            "host": "localhost",
-            "pathMappings": [
-                {
-                    "localRoot": "${workspaceFolder}",
-                    "remoteRoot": "/var/azureml-app"
-                }
-            ]
-        }
-        ```
-
-        > [!IMPORTANT]
-        > Pokud již existují další položky v oddílu konfigurace, přidejte čárku (,) za kód, který jste vložili.
-
-        Tato část se připojuje k kontejneru Docker pomocí portu 5678.
-
-    1. Uložte __launch.jsdo__ souboru.
-
-### <a name="create-an-image-that-includes-ptvsd"></a>Vytvoření image, která zahrnuje PTVSD
-
-1. Upravte prostředí conda pro nasazení tak, aby zahrnovalo PTVSD. Následující příklad ukazuje přidání pomocí `pip_packages` parametru:
-
-    ```python
-    from azureml.core.conda_dependencies import CondaDependencies 
-
-
-    # Usually a good idea to choose specific version numbers
-    # so training is made on same packages as scoring
-    myenv = CondaDependencies.create(conda_packages=['numpy==1.15.4',            
-                                'scikit-learn==0.19.1', 'pandas==0.23.4'],
-                                 pip_packages = ['azureml-defaults==1.0.45', 'ptvsd'])
-
-    with open("myenv.yml","w") as f:
-        f.write(myenv.serialize_to_string())
-    ```
-
-1. Pokud chcete začít PTVSD a po spuštění služby počkat na připojení, přidejte na začátek `score.py` souboru následující:
-
-    ```python
-    import ptvsd
-    # Allows other computers to attach to ptvsd on this IP address and port.
-    ptvsd.enable_attach(address=('0.0.0.0', 5678), redirect_output = True)
-    # Wait 30 seconds for a debugger to attach. If none attaches, the script continues as normal.
-    ptvsd.wait_for_attach(timeout = 30)
-    print("Debugger attached...")
-    ```
-
-1. Vytvořte bitovou kopii založenou na definici prostředí a přetáhnout image do místního registru. Během ladění možná budete chtít provést změny v souborech v imagi, aniž byste je museli znovu vytvářet. Chcete-li nainstalovat textový editor (vim) v imagi Docker, použijte `Environment.docker.base_image` vlastnosti a `Environment.docker.base_dockerfile` :
-
-    > [!NOTE]
-    > V tomto příkladu se předpokládá, že `ws` odkazuje na váš pracovní prostor Azure Machine Learning a který `model` je modelem, který je nasazený. `myenv.yml`Soubor obsahuje závislosti conda vytvořené v kroku 1.
-
-    ```python
-    from azureml.core.conda_dependencies import CondaDependencies
-    from azureml.core.model import InferenceConfig
-    from azureml.core.environment import Environment
-
-
-    myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
-    myenv.docker.base_image = None
-    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04\nRUN apt-get update && apt-get install vim -y"
-    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-    package = Model.package(ws, [model], inference_config)
-    package.wait_for_creation(show_output=True)  # Or show_output=False to hide the Docker build logs.
-    package.pull()
-    ```
-
-    Po vytvoření a stažení Image se zobrazí cesta k imagi (včetně úložiště, názvu a značky, která v tomto případě je také její výtah), a to podobně jako v následující zprávě:
-
-    ```text
-    Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
-    ```
-
-1. Pro usnadnění práce s imagí použijte následující příkaz a přidejte značku. Nahraďte `myimagepath` hodnotou umístění z předchozího kroku.
-
-    ```bash
-    docker tag myimagepath debug:1
-    ```
-
-    V případě zbývajících kroků můžete `debug:1` místo hodnoty úplná cesta k imagi použít místní obrázek.
-
-### <a name="debug-the-service"></a>Ladění služby
-
-> [!TIP]
-> Pokud nastavíte časový limit pro připojení PTVSD v `score.py` souboru, je nutné před vypršením časového limitu připojit vs Code k ladicí relaci. Spusťte VS Code, otevřete místní kopii `score.py` , nastavte zarážku a před použitím kroků v této části Připravte ji na přechod.
->
-> Další informace o ladění a nastavení zarážek naleznete v tématu [ladění](https://code.visualstudio.com/Docs/editor/debugging).
-
-1. Pokud chcete spustit kontejner Docker pomocí Image, použijte následující příkaz:
-
-    ```bash
-    docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
-    ```
-
-1. Pokud chcete připojit VS Code k PTVSD uvnitř kontejneru, otevřete VS Code a použijte klávesu F5 nebo vyberte __ladit__. Po zobrazení výzvy vyberte __Azure Machine Learning: konfigurace ladění Docker__ . Můžete také vybrat ikonu ladění z bočního panelu, __Azure Machine Learning: položku ladění Docker__ z rozevírací nabídky ladění a potom použít zelenou šipku pro připojení ladicího programu.
-
-    ![Ikona ladění, tlačítko Spustit ladění a selektor konfigurace](./media/how-to-troubleshoot-deployment/start-debugging.png)
-
-V tomto okamžiku se VS Code připojí k PTVSD uvnitř kontejneru Docker a zastaví se na zarážce, kterou jste předtím nastavili. Nyní můžete krokovat kód při spuštění, zobrazit proměnné atd.
-
-Další informace o použití VS Code k ladění Pythonu najdete v tématu [ladění kódu Pythonu](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019).
-
-<a id="editfiles"></a>
-### <a name="modify-the-container-files"></a>Úprava souborů kontejneru
-
-Chcete-li provést změny v souborech v imagi, můžete se připojit ke spuštěnému kontejneru a spustit prostředí bash. Odtud můžete použít systémem VIM k úpravě souborů:
-
-1. Pokud se chcete připojit ke spuštěnému kontejneru a spustit prostředí bash v kontejneru, použijte následující příkaz:
-
-    ```bash
-    docker exec -it debug /bin/bash
-    ```
-
-1. Chcete-li najít soubory používané službou, použijte následující příkaz z prostředí bash v kontejneru, pokud je výchozí adresář jiný než `/var/azureml-app` :
-
-    ```bash
-    cd /var/azureml-app
-    ```
-
-    Odsud můžete soubor upravit pomocí služby vim `score.py` . Další informace o používání systému vim najdete v tématu [použití Editoru systému vim](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html).
-
-1. Změny v kontejneru nejsou obvykle trvalé. Pokud chcete uložit provedené změny, použijte následující příkaz před ukončením prostředí spuštěného v předchozím kroku (tj. v jiném prostředí):
-
-    ```bash
-    docker commit debug debug:2
-    ```
-
-    Tento příkaz vytvoří novou image s názvem `debug:2` , která obsahuje vaše úpravy.
-
-    > [!TIP]
-    > Budete muset zastavit aktuální kontejner a začít používat novou verzi, než se změny projeví.
-
-1. Zajistěte, aby byly změny provedené v souborech v kontejneru synchronizovány s místními soubory, které VS Code používá. V opačném případě nebude prostředí ladicího programu fungovat podle očekávání.
-
-### <a name="stop-the-container"></a>Zastavení kontejneru
-
-Chcete-li zastavit kontejner, použijte následující příkaz:
-
-```bash
-docker stop debug
-```
+V některých případech možná budete muset interaktivně ladit kód Pythonu obsažený v nasazení modelu. Například pokud se skript vstupu nezdařil a důvod nelze určit pomocí dalšího protokolování. Pomocí Visual Studio Code a debugpy můžete připojit k kódu běžícímu uvnitř kontejneru Docker. Další informace najdete [v příručce k interaktivnímu ladění v vs Code](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments).
 
 ## <a name="next-steps"></a>Další kroky
 

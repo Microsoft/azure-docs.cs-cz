@@ -1,0 +1,433 @@
+---
+title: Interaktivní ladění pomocí Visual Studio Code
+titleSuffix: Azure Machine Learning
+description: Interaktivní ladění Azure Machine Learning kódu, kanálů a nasazení pomocí Visual Studio Code
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: core
+ms.topic: troubleshooting
+author: luisquintanilla
+ms.author: luquinta
+ms.date: 08/06/2020
+ms.openlocfilehash: 73cb8396876a5baad74190ec9a86237362037c36
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87908390"
+---
+# <a name="interactive-debugging-with-visual-studio-code"></a>Interaktivní ladění pomocí Visual Studio Code
+
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+Přečtěte si, jak interaktivně ladit Azure Machine Learning kanály a nasazení pomocí Visual Studio Code (VS Code) a [depugpy](https://github.com/microsoft/debugpy/).
+
+## <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění kanálů strojového učení a řešení souvisejících potíží
+
+V některých případech možná budete muset interaktivně ladit kód Pythonu, který se používá v kanálu ML. Pomocí VS Code a debugpy se můžete ke kódu připojit při jeho spuštění ve školicím prostředí.
+
+### <a name="prerequisites"></a>Požadavky
+
+* __Azure Machine Learning pracovní prostor__ , který je nakonfigurován pro použití __Virtual Network Azure__.
+* __Kanál Azure Machine Learning__ , který jako součást postupu kanálu používá skripty Pythonu. Například PythonScriptStep.
+* Azure Machine Learning výpočetní cluster, který je __ve virtuální síti__ a který je __používán kanálem pro školení__.
+* __Vývojové prostředí__ , které je __ve virtuální síti__. Vývojové prostředí může mít jednu z těchto možností:
+
+  * Virtuální počítač Azure ve virtuální síti
+  * Výpočetní instance virtuálního počítače poznámkového bloku ve virtuální síti
+  * Klientský počítač, který má připojení privátní sítě k virtuální síti, a to buď pomocí sítě VPN, nebo přes ExpressRoute.
+
+Další informace o použití Virtual Network Azure s Azure Machine Learning najdete v tématu [zabezpečení experimentů s Azure ml a odvozování úloh v rámci služby Azure Virtual Network](how-to-enable-virtual-network.md).
+
+> [!TIP]
+> I když můžete pracovat s Azure Machine Learning prostředky, které nejsou za virtuální sítí, doporučuje se použít virtuální síť.
+
+### <a name="how-it-works"></a>Jak to funguje
+
+Postup kanálu ML spouští skripty Pythonu. Tyto skripty jsou upraveny tak, aby prováděly následující akce:
+
+1. Zaprotokolujte IP adresu hostitele, na kterém jsou spuštěná. Tuto IP adresu použijete k připojení ladicího programu ke skriptu.
+
+2. Spusťte ladicí komponentu debugpy a počkejte, než se ladicí program připojí.
+
+3. Ve vašem vývojovém prostředí budete monitorovat protokoly vytvořené procesem školení a zjistit tak IP adresu, na které je skript spuštěný.
+
+4. Určíte VS Code IP adresu pro připojení ladicího programu k nástroji pomocí `launch.json` souboru.
+
+5. Ladicí program můžete připojit a interaktivně krokovat prostřednictvím skriptu.
+
+### <a name="configure-python-scripts"></a>Konfigurace skriptů Pythonu
+
+Pokud chcete povolit ladění, proveďte následující změny ve skriptech Pythonu používaných kroky v kanálu ML:
+
+1. Přidejte následující výpisy importu:
+
+    ```python
+    import argparse
+    import os
+    import debugpy
+    import socket
+    from azureml.core import Run
+    ```
+
+1. Přidejte následující argumenty. Tyto argumenty umožňují povolit ladicí program podle potřeby a nastavit časový limit pro připojení ladicího programu:
+
+    ```python
+    parser.add_argument('--remote_debug', action='store_true')
+    parser.add_argument('--remote_debug_connection_timeout', type=int,
+                        default=300,
+                        help=f'Defines how much time the AML compute target '
+                        f'will await a connection from a debugger client (VSCODE).')
+    parser.add_argument('--remote_debug_client_ip', type=str,
+                        help=f'Defines IP Address of VS Code client')
+    parser.add_argument('--remote_debug_port', type=int,
+                        default=5678,
+                        help=f'Defines Port of VS Code client')
+    ```
+
+1. Přidejte následující příkazy. Tyto příkazy načtou aktuální kontext spuštění, takže můžete protokolovat IP adresu uzlu, na kterém je kód spuštěný:
+
+    ```python
+    global run
+    run = Run.get_context()
+    ```
+
+1. Přidejte `if` příkaz, který spustí debugpy a počká, až se ladicí program připojí. Pokud se žádný ladicí program nepřipojí před časovým limitem, skript pokračuje jako normální. Nezapomeňte nahradit `HOST` `PORT` hodnoty a hodnotou `listen` funkce vlastní.
+
+    ```python
+    if args.remote_debug:
+        print(f'Timeout for debug connection: {args.remote_debug_connection_timeout}')
+        # Log the IP and port
+        try:
+            ip = args.remote_debug_client_ip
+        except:
+            print("Need to supply IP address for VS Code client")
+        print(f'ip_address: {ip}')
+        debugpy.listen(address=(ip, args.remote_debug_port))
+        # Wait for the timeout for debugger to attach
+        debugpy.wait_for_client()
+        print(f'Debugger attached = {debugpy.is_client_connected()}')
+    ```
+
+Následující příklad Pythonu ukazuje základní `train.py` soubor, který umožňuje ladění:
+
+```python
+# Copyright (c) Microsoft. All rights reserved.
+# Licensed under the MIT license.
+
+import argparse
+import os
+import debugpy
+import socket
+from azureml.core import Run
+
+print("In train.py")
+print("As a data scientist, this is where I use my training code.")
+
+parser = argparse.ArgumentParser("train")
+
+parser.add_argument("--input_data", type=str, help="input data")
+parser.add_argument("--output_train", type=str, help="output_train directory")
+
+# Argument check for remote debugging
+parser.add_argument('--remote_debug', action='store_true')
+parser.add_argument('--remote_debug_connection_timeout', type=int,
+                    default=300,
+                    help=f'Defines how much time the AML compute target '
+                    f'will await a connection from a debugger client (VSCODE).')
+parser.add_argument('--remote_debug_client_ip', type=str,
+                    help=f'Defines IP Address of VS Code client')
+parser.add_argument('--remote_debug_port', type=int,
+                    default=5678,
+                    help=f'Defines Port of VS Code client')
+
+# Get run object, so we can find and log the IP of the host instance
+global run
+run = Run.get_context()
+
+args = parser.parse_args()
+
+# Start debugger if remote_debug is enabled
+if args.remote_debug:
+    print(f'Timeout for debug connection: {args.remote_debug_connection_timeout}')
+    # Log the IP and port
+    # ip = socket.gethostbyname(socket.gethostname())
+    try:
+        ip = args.remote_debug_client_ip
+    except:
+        print("Need to supply IP address for VS Code client")
+    print(f'ip_address: {ip}')
+    debugpy.listen(address=(ip, args.remote_debug_port))
+    # Wait for the timeout for debugger to attach
+    debugpy.wait_for_client()
+    print(f'Debugger attached = {debugpy.is_client_connected()}')
+
+print("Argument 1: %s" % args.input_data)
+print("Argument 2: %s" % args.output_train)
+
+if not (args.output_train is None):
+    os.makedirs(args.output_train, exist_ok=True)
+    print("%s created" % args.output_train)
+```
+
+### <a name="configure-ml-pipeline"></a>Konfigurovat kanál ML
+
+Aby bylo možné poskytnout balíčky Pythonu potřebné ke spuštění debugpy a získat kontext spuštění, vytvořte prostředí a nastavte `pip_packages=['debugpy', 'azureml-sdk==<SDK-VERSION>']` . Změňte verzi sady SDK tak, aby odpovídala hodnotě, kterou používáte. Následující fragment kódu ukazuje, jak vytvořit prostředí:
+
+```python
+# Use a RunConfiguration to specify some additional requirements for this step.
+from azureml.core.runconfig import RunConfiguration
+from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core.runconfig import DEFAULT_CPU_IMAGE
+
+# create a new runconfig object
+run_config = RunConfiguration()
+
+# enable Docker 
+run_config.environment.docker.enabled = True
+
+# set Docker base image to the default CPU-based image
+run_config.environment.docker.base_image = DEFAULT_CPU_IMAGE
+
+# use conda_dependencies.yml to create a conda environment in the Docker image for execution
+run_config.environment.python.user_managed_dependencies = False
+
+# specify CondaDependencies obj
+run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'],
+                                                                           pip_packages=['debugpy', 'azureml-sdk==<SDK-VERSION>'])
+```
+
+V části [Konfigurace skriptů v Pythonu](#configure-python-scripts) byly do skriptů používaných vaším postupem kanálu ml přidány nové argumenty. Následující fragment kódu ukazuje, jak použít tyto argumenty pro povolení ladění pro komponentu a nastavení časového limitu. Také ukazuje, jak použít prostředí vytvořené dříve nastavením `runconfig=run_config` :
+
+```python
+# Use RunConfig from a pipeline step
+step1 = PythonScriptStep(name="train_step",
+                         script_name="train.py",
+                         arguments=['--remote_debug', '--remote_debug_connection_timeout', 300,'--remote_debug_client_ip','<VS-CODE-CLIENT-IP>','--remote_debug_port',5678],
+                         compute_target=aml_compute,
+                         source_directory=source_directory,
+                         runconfig=run_config,
+                         allow_reuse=False)
+```
+
+Po spuštění kanálu vytvoří každý krok podřízený běh. Pokud je zapnuté ladění, změněné skripty protokolují informace podobné následujícímu textu v části `70_driver_log.txt` pro podřízený běh:
+
+```text
+Timeout for debug connection: 300
+ip_address: 10.3.0.5
+```
+
+Uložte `ip_address` hodnotu. Používá se v další části.
+
+> [!TIP]
+> IP adresu můžete najít také z protokolů spuštění pro tento krok kanálu pro podřízený běh. Další informace o tom, jak zobrazit tyto informace, najdete v tématu [monitorování běhů experimentů Azure ml a metrik](how-to-track-experiments.md).
+
+### <a name="configure-development-environment"></a>Konfigurace vývojového prostředí
+
+1. Pokud chcete nainstalovat debugpy do vývojového prostředí VS Code, použijte následující příkaz:
+
+    ```bash
+    python -m pip install --upgrade debugpy
+    ```
+
+    Další informace o použití debugpy s VS Code najdete v tématu [vzdálené ladění](https://code.visualstudio.com/docs/python/debugging#_debugging-by-attaching-over-a-network-connection).
+
+1. Chcete-li nakonfigurovat VS Code ke komunikaci s Azure Machine Learning výpočetní prostředí, které spouští ladicí program, vytvořte novou konfiguraci ladění:
+
+    1. Z VS Code vyberte nabídku __ladění__ a pak vyberte __otevřít konfigurace__. Soubor s názvem __launch.jspři__ otevření.
+
+    1. V __launch.jsv__ souboru vyhledejte řádek, který obsahuje `"configurations": [` , a vložte za něj následující text. Změňte `"host": "<IP-ADDRESS>"` položku na IP adresu vrácenou v protokolech z předchozí části. Změňte `"localRoot": "${workspaceFolder}/code/step"` položku na místní adresář, který obsahuje kopii laděného skriptu:
+
+        ```json
+        {
+            "name": "Azure Machine Learning Compute: remote debug",
+            "type": "python",
+            "request": "attach",
+            "port": 5678,
+            "host": "<IP-ADDRESS>",
+            "redirectOutput": true,
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/code/step1",
+                    "remoteRoot": "."
+                }
+            ]
+        }
+        ```
+
+        > [!IMPORTANT]
+        > Pokud již existují další položky v oddílu konfigurace, přidejte čárku (,) za kód, který jste vložili.
+
+        > [!TIP]
+        > Osvědčeným postupem je udržovat prostředky pro skripty v samostatných adresářích, aby kód byl relevantní jenom pro každý z těchto kroků. V tomto příkladu se `localRoot` odkazuje na příklad hodnoty `/code/step1` .
+        >
+        > Pokud ladíte více skriptů, v různých adresářích Vytvořte samostatný konfigurační oddíl pro každý skript.
+
+    1. Uložte __launch.jsdo__ souboru.
+
+### <a name="connect-the-debugger"></a>Připojit ladicí program
+
+1. Otevřete VS Code a otevřete místní kopii skriptu.
+2. Nastavte zarážky, u kterých chcete, aby se skript zastavil, jakmile se připojíte.
+3. I když je na podřízeném procesu spuštěn skript a v `Timeout for debug connection` protokolech se zobrazí, použijte klávesu F5 nebo vyberte __ladit__. Po zobrazení výzvy vyberte __Azure Machine Learning Compute: Konfigurace vzdáleného ladění__ . Můžete také vybrat ikonu ladění z bočního panelu, __Azure Machine Learning: položka vzdáleného ladění__ z rozevírací nabídky ladění a potom použít zelenou šipku pro připojení ladicího programu.
+
+    V tomto okamžiku se VS Code připojí k debugpy na výpočetním uzlu a zastaví se na zarážce, kterou jste předtím nastavili. Nyní můžete krokovat kód při spuštění, zobrazit proměnné atd.
+
+    > [!NOTE]
+    > Pokud se v protokolu zobrazí položka informující o tom `Debugger attached = False` , že vypršel časový limit a skript pokračuje bez ladicího programu. Odešlete kanál znovu a připojte ladicí program za `Timeout for debug connection` zprávu a před vypršením časového limitu.
+
+## <a name="debug-and-troubleshoot-deployments"></a>Ladění a řešení potíží s nasazeními
+
+V některých případech možná budete muset interaktivně ladit kód Pythonu obsažený v nasazení modelu. Například pokud se skript vstupu nezdařil a důvod nelze určit pomocí dalšího protokolování. Pomocí VS Code a debugpy můžete připojit k kódu běžícímu uvnitř kontejneru Docker.
+
+> [!IMPORTANT]
+> Tato metoda ladění nefunguje při použití `Model.deploy()` a `LocalWebservice.deploy_configuration` k nasazení modelu místně. Místo toho je nutné vytvořit bitovou kopii pomocí metody [model. Package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) .
+
+Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovacího prostředí v místním systému. Další informace o používání Docker najdete v [dokumentaci k Docker](https://docs.docker.com/). Všimněte si, že při práci s výpočetními instancemi je Docker již nainstalován.
+
+### <a name="configure-development-environment"></a>Konfigurace vývojového prostředí
+
+1. Pokud chcete nainstalovat debugpy na místní vývojové prostředí VS Code, použijte následující příkaz:
+
+    ```bash
+    python -m pip install --upgrade debugpy
+    ```
+
+    Další informace o použití debugpy s VS Code najdete v tématu [vzdálené ladění](https://code.visualstudio.com/docs/python/debugging#_debugging-by-attaching-over-a-network-connection).
+
+1. Pokud chcete nakonfigurovat VS Code ke komunikaci s imagí Docker, vytvořte novou konfiguraci ladění:
+
+    1. Z VS Code vyberte nabídku __ladění__ a pak vyberte __otevřít konfigurace__. Soubor s názvem __launch.jspři__ otevření.
+
+    1. V __launch.jsv__ souboru vyhledejte řádek, který obsahuje `"configurations": [` , a vložte za něj následující text:
+
+        ```json
+        {
+            "name": "Azure Machine Learning Deployment: Docker Debug",
+            "type": "python",
+            "request": "attach",
+            "connect": {
+                "port": 5678,
+                "host": "0.0.0.0",
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "/var/azureml-app"
+                }
+            ]
+        }
+        ```
+
+        > [!IMPORTANT]
+        > Pokud již existují další položky v oddílu konfigurace, přidejte čárku (,) za kód, který jste vložili.
+
+        Tato část se připojuje k kontejneru Docker pomocí portu 5678.
+
+    1. Uložte __launch.jsdo__ souboru.
+
+### <a name="create-an-image-that-includes-debugpy"></a>Vytvoření image, která zahrnuje debugpy
+
+1. Upravte prostředí conda pro nasazení tak, aby zahrnovalo debugpy. Následující příklad ukazuje přidání pomocí `pip_packages` parametru:
+
+    ```python
+    from azureml.core.conda_dependencies import CondaDependencies 
+
+
+    # Usually a good idea to choose specific version numbers
+    # so training is made on same packages as scoring
+    myenv = CondaDependencies.create(conda_packages=['numpy==1.15.4',
+                                'scikit-learn==0.19.1', 'pandas==0.23.4'],
+                                 pip_packages = ['azureml-defaults==1.0.83', 'debugpy'])
+
+    with open("myenv.yml","w") as f:
+        f.write(myenv.serialize_to_string())
+    ```
+
+1. Pokud chcete začít debugpy a po spuštění služby počkat na připojení, přidejte na začátek `score.py` souboru následující:
+
+    ```python
+    import debugpy
+    # Allows other computers to attach to debugpy on this IP address and port.
+    debugpy.listen(('0.0.0.0', 5678))
+    # Wait 30 seconds for a debugger to attach. If none attaches, the script continues as normal.
+    debugpy.wait_for_client()
+    print("Debugger attached...")
+    ```
+
+1. Vytvořte bitovou kopii založenou na definici prostředí a přetáhnout image do místního registru. 
+
+    > [!NOTE]
+    > V tomto příkladu se předpokládá, že `ws` odkazuje na váš pracovní prostor Azure Machine Learning a který `model` je modelem, který je nasazený. `myenv.yml`Soubor obsahuje závislosti conda vytvořené v kroku 1.
+
+    ```python
+    from azureml.core.conda_dependencies import CondaDependencies
+    from azureml.core.model import InferenceConfig
+    from azureml.core.environment import Environment
+
+
+    myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
+    myenv.docker.base_image = None
+    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04"
+    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
+    package = Model.package(ws, [model], inference_config)
+    package.wait_for_creation(show_output=True)  # Or show_output=False to hide the Docker build logs.
+    package.pull()
+    ```
+
+    Po vytvoření a stažení Image se zobrazí cesta k imagi (včetně úložiště, názvu a značky, která v tomto případě je také její výtah), a to podobně jako v následující zprávě:
+
+    ```text
+    Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
+    ```
+
+1. Pro usnadnění práce s imagí použijte následující příkaz a přidejte značku. Nahraďte `myimagepath` hodnotou umístění z předchozího kroku.
+
+    ```bash
+    docker tag myimagepath debug:1
+    ```
+
+    V případě zbývajících kroků můžete `debug:1` místo hodnoty úplná cesta k imagi použít místní obrázek.
+
+### <a name="debug-the-service"></a>Ladění služby
+
+> [!TIP]
+> Pokud nastavíte časový limit pro připojení debugpy v `score.py` souboru, je nutné před vypršením časového limitu připojit vs Code k ladicí relaci. Spusťte VS Code, otevřete místní kopii `score.py` , nastavte zarážku a před použitím kroků v této části Připravte ji na přechod.
+>
+> Další informace o ladění a nastavení zarážek naleznete v tématu [ladění](https://code.visualstudio.com/Docs/editor/debugging).
+
+1. Pokud chcete spustit kontejner Docker pomocí Image, použijte následující příkaz:
+
+    ```bash
+    docker run -it --name debug -p 8000:5001 -p 5678:5678 -v <my_path_to_score.py>:/var/azureml-apps/score.py debug:1 /bin/bash
+    ```
+
+    Tím se připojíte `score.py` místně k portálu v kontejneru. Proto se všechny změny provedené v editoru automaticky projeví v kontejneru.
+
+1. V rámci kontejneru spusťte následující příkaz v prostředí.
+
+    ```bash
+    runsvdir /var/runit
+    ```
+
+1. Pokud chcete připojit VS Code k debugpy uvnitř kontejneru, otevřete VS Code a použijte klávesu F5 nebo vyberte __ladit__. Po zobrazení výzvy vyberte __nasazení Azure Machine Learning: konfigurace ladění Docker__ . Můžete také vybrat ikonu ladění z bočního panelu, __nasazení Azure Machine Learning: položku ladění Docker__ z rozevírací nabídky ladění a potom použít zelenou šipku pro připojení ladicího programu.
+
+    ![Ikona ladění, tlačítko Spustit ladění a selektor konfigurace](./media/how-to-troubleshoot-deployment/start-debugging.png)
+
+V tomto okamžiku se VS Code připojí k debugpy uvnitř kontejneru Docker a zastaví se na zarážce, kterou jste předtím nastavili. Nyní můžete krokovat kód při spuštění, zobrazit proměnné atd.
+
+Další informace o použití VS Code k ladění Pythonu najdete v tématu [ladění kódu Pythonu](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019).
+
+### <a name="stop-the-container"></a>Zastavení kontejneru
+
+Chcete-li zastavit kontejner, použijte následující příkaz:
+
+```bash
+docker stop debug
+```
+
+## <a name="next-steps"></a>Další kroky
+
+Teď, když jste nastavili Visual Studio Code vzdálené, můžete použít výpočetní instanci jako vzdálenou výpočetní prostředky z Visual Studio Code k interaktivnímu ladění kódu. 
+
+[Kurz: analýza prvního modelu ml](tutorial-1st-experiment-sdk-train.md) ukazuje, jak používat výpočetní instanci s integrovaným poznámkovým blokem.

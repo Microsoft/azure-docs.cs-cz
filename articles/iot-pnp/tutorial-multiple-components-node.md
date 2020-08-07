@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 808d1ad522f6678ced54de334e7ea39fb60cd165
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d26179ab82f29ce8f937f5b444463c1308d92047
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420681"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904050"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-nodejs"></a>Kurz: připojení ukázkové IoT technologie Plug and Play ve verzi Preview aplikace zařízení s více součástmi pro IoT Hub (Node.js)
 
@@ -23,7 +23,7 @@ V tomto kurzu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plu
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete Node.js na svém vývojovém počítači. Nejnovější doporučenou verzi si můžete stáhnout z [NodeJS.org](https://nodejs.org)na víc platforem.
 
@@ -98,29 +98,29 @@ Otevřete soubor *pnpTemperatureController.js* v editoru kódu dle vašeho výb�
 
 1. Definujte, `modelId` který z nich je DTMI pro zařízení, které je právě implementováno. Tato DTMI je definovaná uživatelem a musí odpovídat DTMI [modelu DTDL řadiče teploty](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json).
 
-1. Implementujte komponenty definované v modelu DTDL řadiče teploty. Komponenty v reálném teplotním adaptéru by měly implementovat tato dvě rozhraní. Tato dvě rozhraní jsou již publikována v centrálním úložišti. V této ukázce jsou tato dvě rozhraní:
+2. Implementujte komponenty definované v modelu DTDL řadiče teploty. Komponenty v reálném teplotním adaptéru by měly implementovat tato dvě rozhraní. Tato dvě rozhraní jsou již publikována v centrálním úložišti. V této ukázce jsou tato dvě rozhraní:
   - Termostat
   - Informace o zařízeních vyvinutých v Azure
 
-1. Definujte názvy součástí. Tato ukázka má dvě termostaty a jednu komponentu informací o zařízení.
+3. Definujte názvy součástí. Tato ukázka má dvě termostaty a jednu komponentu informací o zařízení.
 
-1. Zadejte název příkazu. Toto jsou příkazy, na které zařízení reaguje.
+4. Zadejte název příkazu. Toto jsou příkazy, na které zařízení reaguje.
 
-1. Definujte `serialNumber` konstantu. Toto `serialNumber` zařízení je pevně dané.
+5. Definujte `serialNumber` konstantu. Toto `serialNumber` zařízení je pevně dané.
 
-1. Definujte obslužné rutiny příkazů.
+6. Definujte obslužné rutiny příkazů.
 
-1. Definujte funkce pro odeslání odpovědí na příkazy.
+7. Definujte funkce pro odeslání odpovědí na příkazy.
 
-1. Definujte pomocné funkce pro protokolování požadavků příkazu.
+8. Definujte pomocné funkce pro protokolování požadavků příkazu.
 
-1. Definujte pomocnou funkci pro vytvoření vlastností.
+9. Definujte pomocnou funkci pro vytvoření vlastností.
 
-1. Definujte naslouchací proces pro aktualizace vlastností.
+10. Definujte naslouchací proces pro aktualizace vlastností.
 
-1. Definujte funkci pro odeslání telemetrie z tohoto zařízení. Všechna termostaty i kořenové komponenty odesílají telemetrii. Tato funkce přijímá název komponenty jako parametr.
+11. Definujte funkci pro odeslání telemetrie z tohoto zařízení. Všechna termostaty i kořenové komponenty odesílají telemetrii. Tato funkce přijímá název komponenty jako parametr.
 
-1. Definujte `main` funkci, která:
+12. Definujte `main` funkci, která:
 
     1. Pomocí sady SDK pro zařízení vytvořte klienta zařízení a připojte se ke službě IoT Hub. Zařízení dodá `modelId` , aby IoT Hub mohl zařízení identifikovat jako zařízení technologie Plug and Play IoT.
 

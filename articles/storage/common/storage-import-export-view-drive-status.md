@@ -1,6 +1,6 @@
 ---
 title: Zobrazit stav úloh Azure import/export | Microsoft Docs
-description: Zjistěte, jak zobrazit stav úloh importu/exportu a využitých jednotek.
+description: Přečtěte si, jak zobrazit stav úloh importu a exportu Azure a použitých jednotek. Seznamte se s faktory, které mají vliv na to, jak dlouho trvá zpracování úlohy.
 author: alkohli
 services: storage
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 7a000ab4a465e3b19efe6f2853bcd19dca47e440
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c75c9a2d0b491cc00d0fc58054b9bb1e58a364b8
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514133"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905716"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Zobrazení stavu úloh služby Azure Import/Export
 
@@ -28,15 +28,15 @@ Stav úloh importu nebo exportu můžete sledovat z Azure Portal. Klikněte na k
 
 V závislosti na tom, kde se jednotka právě nachází, se zobrazí jedna z následujících stavů úlohy.
 
-| Stav úlohy | Description |
+| Stav úlohy | Popis |
 |:--- |:--- |
 | Vytváření | Po vytvoření úlohy se její stav nastaví na **vytvořit**. Když je úloha ve stavu **vytváření** , služba import/export předpokládá, že se jednotky nedodaly do datového centra. Úloha může zůstat v tomto stavu po dobu až dvou týdnů, po jejímž uplynutí je služba automaticky odstranila. |
 | Shipping | Po odeslání balíčku byste měli aktualizovat informace o sledování v Azure Portal.  Tím se úloha přepíná do stavu **expedice** . Úloha zůstane ve stavu **expedice** po dobu až dvou týdnů. 
 | Přijato | Po přijetí všech jednotek v datovém centru se stav úlohy nastaví na **přijato**. |
 | Pojování | Po zahájení zpracování aspoň jedné jednotky se stav úlohy nastaví na **přenos**. Další informace najdete v informacích o [stavu jednotky](#view-drive-status). |
-| Zabalení | Po dokončení zpracování všech jednotek se úloha umístí do stavu **balení** , dokud se jednotky nevrátí zpět. |
+| Balení | Po dokončení zpracování všech jednotek se úloha umístí do stavu **balení** , dokud se jednotky nevrátí zpět. |
 | Dokončeno | Po odeslání všech jednotek zpět do vás, pokud byla úloha dokončena bez chyb, je úloha nastavena na **dokončeno**. Tato úloha se automaticky odstraní po 90 dnech v **dokončeném** stavu. |
-| Zavřeno | Po odeslání všech jednotek zpět, pokud došlo k nějakým chybám během zpracování úlohy, je úloha nastavena na **Uzavřeno**. Tato úloha se automaticky odstraní po 90 dnech v **zavřeném** stavu. |
+| Uzavřená | Po odeslání všech jednotek zpět, pokud došlo k nějakým chybám během zpracování úlohy, je úloha nastavena na **Uzavřeno**. Tato úloha se automaticky odstraní po 90 dnech v **zavřeném** stavu. |
 
 ## <a name="view-drive-status"></a>Zobrazení stavu jednotky
 
@@ -44,7 +44,7 @@ Následující tabulka popisuje životní cyklus jednotlivé jednotky při přec
 
 V následující tabulce jsou popsány všechny stavy, které mohou jednotlivé jednotky v úloze Procházet.
 
-| Stav jednotky | Description |
+| Stav jednotky | Popis |
 |:--- |:--- |
 | Dané | Při vytvoření úlohy z Azure Portal se pro úlohu importu **zadá**počáteční stav jednotky. V případě úlohy exportu, protože při vytvoření úlohy není zadána žádná jednotka, je **přijat**počáteční stav jednotky. |
 | Přijato | Pokud služba import/export zpracovává jednotky, které byly přijaty od společnosti pro expedici pro úlohu importu, přejde do stavu **přijato** . V případě úlohy exportu je počáteční stav jednotky stav **přijato** . |
@@ -63,7 +63,7 @@ Následující tabulka popisuje stavy selhání jednotek a akce prováděné pro
 | Stav jednotky | Událost | Řešení/další krok |
 |:--- |:--- |:--- |
 | NeverReceived | Jednotka, která je označena jako **NeverReceived** (protože nebyla přijata jako součást dodávky úlohy), dorazí do jiné dodávky. | Provozní tým přesune jednotku k **přijetí**. |
-| Není k dispozici | Jednotka, která není součástí žádné úlohy, přijde v datovém centru jako součást jiné úlohy. | Jednotka je označena jako dodatečná jednotka a při dokončení úlohy přidružené k původnímu balíčku se vám vrátí. |
+| – | Jednotka, která není součástí žádné úlohy, přijde v datovém centru jako součást jiné úlohy. | Jednotka je označena jako dodatečná jednotka a při dokončení úlohy přidružené k původnímu balíčku se vám vrátí. |
 
 ## <a name="time-to-process-job"></a>Čas zpracování úlohy
 Doba potřebná ke zpracování úlohy importu/exportu se liší v závislosti na mnoha faktorech, jako například:

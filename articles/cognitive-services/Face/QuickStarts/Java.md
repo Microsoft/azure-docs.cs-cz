@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: c0ce166c571d54980e0703fd2891c173838a4674
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: df04a58a143833be8795ccbac2a94f6cf80beb19
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325504"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834044"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Javy
 
 V tomto rychlém startu použijete REST API Azure Face a Java k detekci lidských plošek v obraze.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -158,7 +158,7 @@ Přímo pod předchozím kódem přidejte následující blok, který převede v
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-Zkompilujte kód a spusťte jej. Úspěšná odpověď zobrazí tvářená data v snadno čitelném formátu JSON v okně konzoly. Například:
+Zkompilujte kód a spusťte jej. Úspěšná odpověď zobrazí tvářená data v snadno čitelném formátu JSON v okně konzoly. Příklad:
 
 ```json
 [{

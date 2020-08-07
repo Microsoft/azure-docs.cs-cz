@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 2171bbaea065ce1ab3a8d90f32e6ea6dc1f1e821
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3e83781a5ac8270cef37346b5850edd95a102f6a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404229"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834401"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Kurz: Moderování videí a přepisů
 
@@ -42,9 +42,9 @@ V tomto kurzu získáte informace o následujících postupech:
 
 ## <a name="enter-credentials"></a>Zadat přihlašovací údaje
 
-Upravte `App.config` soubor a přidejte název tenanta služby Active Directory, koncové body služeb a klíče předplatného, `#####`které uvádí. Potřebujete tyto informace:
+Upravte `App.config` soubor a přidejte název tenanta služby Active Directory, koncové body služeb a klíče předplatného, které uvádí `#####` . Potřebujete tyto informace:
 
-|Key|Popis|
+|Klíč|Popis|
 |-|-|
 |`AzureMediaServiceRestApiEndpoint`|Koncový bod pro rozhraní API služby Azure Media Services (AMS)|
 |`ClientSecret`|Klíč předplatného pro Azure Media Services|
@@ -359,7 +359,7 @@ Total Elapsed Time: 00:05:56.8420355
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu nastavíte aplikaci, která bude střední obsah&mdash;videa, včetně obsahu&mdash;přepisu, a v nástroji pro revize se vytvoří recenze. Další informace najdete v podrobnostech o moderování videa.
+V tomto kurzu nastavíte aplikaci, která bude střední obsah videa, &mdash; včetně obsahu přepisu, &mdash; a v nástroji pro revize se vytvoří recenze. Další informace najdete v podrobnostech o moderování videa.
 
 > [!div class="nextstepaction"]
 > [Moderování videa](./video-moderation-human-review.md)

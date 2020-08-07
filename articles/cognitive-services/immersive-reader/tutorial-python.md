@@ -10,13 +10,13 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
-ms.custom: tracking-python
-ms.openlocfilehash: 93a1ac9d6a82997ec7552341eb4829728e8471fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: 967e290af390ff4310de3e7d0fd844e340ac289d
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076905"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876559"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-python-sample-project"></a>Kurz: spuštění moderního čtečky pomocí ukázkového projektu Python
 
@@ -27,9 +27,9 @@ V tomto [přehledu](./overview.md)jste se dozvěděli o tom, co je moderní čte
 > * Získání přístupového tokenu
 > * Spusťte moderní čtečku s ukázkovým obsahem.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](./how-to-create-immersive-reader.md) si můžete nastavit. Když nakonfigurujete vlastnosti prostředí, budete potřebovat některé z hodnot, které jsou tady vytvořené. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
 * [Git](https://git-scm.com/).
@@ -217,7 +217,7 @@ sudo nano /etc/paths
 - Přejděte do dolní části souboru a zadejte cestu, kterou chcete přidat jako poslední položku seznamu, například `PATH=$PATH:/usr/local/bin` .
 - Pro ukončení vyberte **CTRL + X** .
 - Zadáním **Y** uložte upravenou vyrovnávací paměť.
-- A to je vše! Chcete-li ji otestovat, zadejte do nového okna terminálu `echo $PATH` .
+- A je to! Chcete-li ji otestovat, zadejte do nového okna terminálu `echo $PATH` .
 
 Nainstalovat baňce.
 

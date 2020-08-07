@@ -1,44 +1,33 @@
 ---
-title: Vysvětlení nástroje pro migraci Azure Monitor výstrahy
-description: Zjistěte, jak Nástroj pro migraci výstrah funguje a jak řešit problémy.
+title: Vysvětlení migrace pro výstrahy Azure Monitor
+description: Seznamte se s tím, jak funguje migrace výstrah a řešení problémů.
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 533d114e08464ff95c654a6f071ea28a04caf510
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564091"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852391"
 ---
-# <a name="understand-how-the-migration-tool-works"></a>Princip fungování nástroje pro migraci
+# <a name="understand-migration-options-to-newer-alerts"></a>Vysvětlení možností migrace s novějšími výstrahami
 
-Jak [už jsme oznámili](monitoring-classic-retirement.md), klasické výstrahy v Azure monitor jsou vyřazené z 31. srpna 2019 (původně od 30. června 2019). Nástroj pro migraci je k dispozici v Azure Portal zákazníkům, kteří používají pravidla pro klasické výstrahy a kteří chtějí aktivovat migraci sami.
+Klasické výstrahy jsou [vyřazeny](./monitoring-classic-retirement.md), i když jsou v omezeném rozsahu používány pro prostředky, které ještě nepodporují nové výstrahy. Nové datum bude brzy oznámeno pro migraci zbývajících výstrah, [Azure Government Cloud](../../azure-government/documentation-government-welcome.md)a [Azure Čína 21Vianet](https://docs.azure.cn/).
 
-Tento článek vysvětluje, jak nástroj k dobrovolné migraci funguje. Popisuje také nápravná opatření pro některé běžné problémy.
-
-> [!NOTE]
-> Vzhledem k prodlevám při zavádění migračního nástroje pro migraci se datum vyřazení pro migraci klasických výstrah [rozšířila na 31. srpna 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) od původně oznámeného dne 30. června 2019.
-
-## <a name="classic-alert-rules-that-will-not-be-migrated"></a>Klasická pravidla upozornění, která se nebudou migrovat
+Tento článek vysvětluje, jak funguje ruční migrace a dobrovolný migrační nástroj, který se použije k migraci zbývajících pravidel upozornění. Popisuje také nápravná opatření pro některé běžné problémy.
 
 > [!IMPORTANT]
 > Migrace neovlivní výstrahy protokolu aktivit (včetně upozornění na stav služby) a výstrahy protokolu. Migrace se vztahuje pouze na pravidla pro klasické výstrahy, která jsou popsaná [zde](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform).
 
-I když nástroj může migrovat téměř všechna [klasická pravidla výstrah](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform), existují výjimky. Následující pravidla upozornění nebudou migrována pomocí nástroje (nebo během automatické migrace od září 2019):
-
-- Klasická pravidla upozornění na metriky hostů virtuálních počítačů (Windows i Linux). Přečtěte si [pokyny k opětovnému vytvoření těchto pravidel upozornění v nových výstrahách metriky](#guest-metrics-on-virtual-machines) dále v tomto článku.
-- Klasická pravidla upozornění na klasických metrikách úložiště Podívejte se na [pokyny pro monitorování účtů klasického úložiště](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/).
-- Klasická pravidla výstrah pro některé metriky účtu úložiště. Další [informace najdete v části dále](#storage-account-metrics) v tomto článku.
-- Pravidla pro klasické výstrahy pro některé metriky Cosmos DB. Další [informace najdete v části dále](#cosmos-db-metrics) v tomto článku.
-- Klasická pravidla pro upozornění na všechny klasické virtuální počítače a metriky Cloud Services (Microsoft. ClassicCompute/virtualMachines a Microsoft. ClassicCompute/domainNames/sloty/role). Další [informace najdete v části dále](#classic-compute-metrics) v tomto článku.
-
-Pokud má vaše předplatné nějaká pravidla klasického modelu, je nutné je ručně migrovat. Vzhledem k tomu, že nemůžeme poskytnout automatickou migraci, všechny existující klasické výstrahy metriky těchto typů budou i nadále fungovat do června 2020. Toto rozšíření vám dává čas přejít na nové výstrahy. Můžete také nadále vytvářet nové klasické výstrahy na výše uvedených výjimkách až do června 2020. Pro všechno ostatní ale nemůžete žádné nové klasické výstrahy vytvořit po 2019. srpna.
-
 > [!NOTE]
-> Kromě výše uvedených výjimek platí, že pokud jsou pravidla pro vaše Klasická upozornění neplatná, tzn. jsou [zastaralé metriky](#classic-alert-rules-on-deprecated-metrics) nebo prostředky, které byly odstraněny, nebudou migrovány a nebudou k dispozici po vyřazení služby.
+> Pokud jsou pravidla vašich klasických výstrah neplatná, tj. jsou v [zastaralých metrikách](#classic-alert-rules-on-deprecated-metrics) nebo prostředky, které byly odstraněny, nebudou migrovány a nebudou k dispozici po vyřazení služby.
+
+## <a name="manually-migrating-classic-alerts-to-newer-alerts"></a>Ruční migrace klasických výstrah na novější výstrahy
+
+Zákazníci, kteří mají zájem o ruční migraci zbývajících výstrah, už můžou dělat pomocí následujících oddílů. Tyto oddíly také definují metriky, které jsou vyřazeny poskytovatelem prostředků a aktuálně se nedají migrovat přímo.
 
 ### <a name="guest-metrics-on-virtual-machines"></a>Metriky hostů na virtuálních počítačích
 

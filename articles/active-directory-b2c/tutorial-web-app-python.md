@@ -10,13 +10,13 @@ ms.date: 06/12/2020
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.custom: tracking-python
-ms.openlocfilehash: 331f38f899c77f451fd43b81d7e83d73b3d5bcc1
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.custom: devx-track-python
+ms.openlocfilehash: 6a113b3a3df475853f3690a0e932378bc0e2ab02
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782412"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844622"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>Kurz: povolení ověřování ve webové aplikaci Pythonu pomocí Azure AD B2C
 
@@ -53,7 +53,7 @@ Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete vy
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**, vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *WebApp1* .
@@ -63,7 +63,7 @@ Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete vy
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace (starší verze)** a pak vyberte aplikaci *WebApp1* .

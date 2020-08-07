@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 1a7cc37f297f902fb5de473303f1dc260cbea9ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 3fcf26670ec03b1d3a496574e58ae706acdf5c53
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559096"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853287"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
@@ -223,4 +223,4 @@ V následujícím příkladu je použita verze 1 z `functions-action` :
 Pokud chcete zobrazit úplný soubor Workflow. yaml, přečtěte si jeden ze souborů na webu [pracovní postup akcí Azure GitHubu](https://aka.ms/functions-actions-samples) , který má `functionapp` název. Tyto ukázky můžete použít jako výchozí bod pro pracovní postup.
 
 > [!div class="nextstepaction"]
-> [Další informace o akcích GitHubu](https://help.github.com/en/articles/about-github-actions)
+> [Další informace o GitHub Actions](https://help.github.com/en/articles/about-github-actions)

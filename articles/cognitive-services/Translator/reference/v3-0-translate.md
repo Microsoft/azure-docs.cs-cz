@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/17/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 512632faae453ebdf7cb7b279fe2d29b25d23d6b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a853a28cf7633b5e81bfec2865cc8dc91f2d2f40
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090854"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903982"
 ---
 # <a name="translator-30-translate"></a>Překladatel 3,0: překlad
 
@@ -136,7 +136,7 @@ Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností �
 Platí následující omezení:
 
 * Pole může mít maximálně 100 prvků.
-* Celý text zahrnutý v požadavku nesmí být delší než 5 000 znaků včetně mezer.
+* Celý text zahrnutý v požadavku nesmí být delší než 10 000 znaků včetně mezer.
 
 ## <a name="response-body"></a>Text odpovědi
 
