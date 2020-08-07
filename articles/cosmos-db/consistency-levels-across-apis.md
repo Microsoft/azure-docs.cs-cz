@@ -5,22 +5,25 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 08/6/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 2398e95d9a119fe24c97f3887d16aa5b86c6ac76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af777efda769315019ecee41d4053f5ab82f3047
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119303"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920428"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Úrovně konzistence a rozhraní API služby Cosmos DB
 
-Azure Cosmos DB poskytuje nativní podporu pro rozhraní API kompatibilní se síťovými protokoly pro oblíbené databáze. Patří mezi ně MongoDB, Apache Cassandra, Gremlin a Azure Table Storage. Tyto databáze pro úrovně konzistence nenabízejí přesně definované modely konzistence nebo záruky na základě smlouvy SLA. Obvykle poskytují pouze podmnožinu pěti modelů konzistence nabízených Azure Cosmos DB. 
+Azure Cosmos DB poskytuje nativní podporu pro rozhraní API kompatibilní se síťovými protokoly pro oblíbené databáze. Patří mezi ně MongoDB, Apache Cassandra, Gremlin a Azure Table Storage. Tyto databáze pro úrovně konzistence nenabízejí přesně definované modely konzistence nebo záruky na základě smlouvy SLA. Obvykle poskytují pouze podmnožinu pěti modelů konzistence nabízených Azure Cosmos DB.
 
 Při použití rozhraní API SQL, rozhraní Gremlin API a rozhraní API pro tabulky se používá výchozí úroveň konzistence nakonfigurovaná na účtu Azure Cosmos. 
 
 Pokud používáte rozhraní API Cassandra nebo rozhraní API Azure Cosmos DB pro MongoDB, aplikace získají úplnou sadu úrovní konzistence nabízených Apache Cassandra a MongoDB, a to ještě silnější konzistence a záruky trvanlivosti. Tento dokument zobrazuje odpovídající Azure Cosmos DB úrovně konzistence pro úrovně konzistence Apache Cassandra a MongoDB.
+
+> [!NOTE]
+> Výchozím modelem konzistence pro Azure Cosmos DB je relace. Relace je model konzistence orientovaný na klienta, který není nativně podporován buď Cassandra nebo MongoDB. Další informace o tom, jaký model konzistence se má zvolit, najdete [v tématu úrovně konzistence v Azure Cosmos DB](consistency-levels.md)
 
 ## <a name="mapping-between-apache-cassandra-and-azure-cosmos-db-consistency-levels"></a><a id="cassandra-mapping"></a>Mapování mezi úrovněmi konzistence Apache Cassandra a Azure Cosmos DB
 
@@ -36,14 +39,14 @@ Následující tabulka ukazuje, jak jsou nativní Cassandra úrovně konzistence
 
 ## <a name="mapping-between-mongodb-and-azure-cosmos-db-consistency-levels"></a><a id="mongo-mapping"></a>Mapování mezi MongoDB a Azure Cosmos DB úrovní konzistence
 
-Na rozdíl od Azure Cosmos DB nativní MongoDB neposkytuje přesně definované záruky konzistence. Místo toho nativní MongoDB umožňuje uživatelům konfigurovat následující záruky konzistence: informace o zápisu, problém týkající se čtení a direktiva The-Master – k nasměrování operací čtení do primární nebo sekundární repliky za účelem dosažení požadované úrovně konzistence. 
+Na rozdíl od Azure Cosmos DB nativní MongoDB neposkytuje přesně definované záruky konzistence. Místo toho nativní MongoDB umožňuje uživatelům konfigurovat následující záruky konzistence: informace o zápisu, problém týkající se čtení a direktiva The-Master – k nasměrování operací čtení do primární nebo sekundární repliky za účelem dosažení požadované úrovně konzistence.
 
 Pokud používáte rozhraní API Azure Cosmos DB pro MongoDB, ovladač MongoDB považuje vaši oblast zápisu za primární repliku a všechny ostatní oblasti jsou repliky čtení. Můžete zvolit, která oblast je přidružená k vašemu účtu Azure Cosmos, jako primární repliku. 
 
 Při použití rozhraní API Azure Cosmos DB pro MongoDB:
 
 * V části týkající se zápisu je namapována na výchozí úroveň konzistence nakonfigurovanou v účtu Azure Cosmos.
- 
+
 * Azure Cosmos DB bude k dis dynamicky mapovat obavy týkající se čtení určené ovladačem klienta MongoDB na jednu z Azure Cosmos DB úrovní konzistence nakonfigurovanou dynamicky pro žádost o čtení.  
 
 * Konkrétní oblast, která je přidružená k vašemu účtu Azure Cosmos, můžete označit jako "hlavní", a to tak, že ji nastavíte jako první zapisovatelnou oblast. 

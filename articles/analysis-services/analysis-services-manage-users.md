@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b1f848b5e6fa053d81754d441fd4845c1a24ee5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15ae1ca6902c27732812a591f492430150c84ecb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361485"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926174"
 ---
 # <a name="authentication-and-user-permissions"></a>Ověřování a uživatelská oprávnění
 
@@ -22,7 +22,7 @@ Azure Analysis Services podporuje [spolupráci Azure AD B2B](../active-directory
 
 ![Azure Analysis Services Architektura ověřování](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Všechny klientské aplikace a nástroje používají k připojení k serveru jednu nebo více Analysis Services [klientských knihoven](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (AMO, MSOLAP, ADOMD). 
 
@@ -68,7 +68,7 @@ Uživatelé Excelu se můžou připojit k serveru pomocí účtu systému Window
 
 ![Řízení přístupu v Azure Portal](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-Role na této úrovni se vztahují na uživatele nebo účty, které potřebují provádět úkoly, které je možné dokončit na portálu nebo pomocí Azure Resource Manager šablon. Další informace najdete v tématu [Access Control na základě rolí](../role-based-access-control/overview.md). 
+Role na této úrovni se vztahují na uživatele nebo účty, které potřebují provádět úkoly, které je možné dokončit na portálu nebo pomocí Azure Resource Manager šablon. Další informace najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="database-roles"></a>Databázové role
 
@@ -81,4 +81,4 @@ Role na této úrovni se vztahují na uživatele nebo účty, které potřebují
 [Správa přístupu k prostředkům pomocí skupin Azure Active Directory](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Správa databázových rolí a uživatelů](analysis-services-database-users.md)  
 [Správa správců serveru](analysis-services-server-admins.md)  
-[Access Control na základě rolí](../role-based-access-control/overview.md)  
+[Řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md)  

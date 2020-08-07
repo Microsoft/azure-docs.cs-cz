@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.openlocfilehash: d360b890023c1a14f80d9fc8efc703abd7544710
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/06/2020
+ms.openlocfilehash: 96e23c22568229ec5f5ba2365747e261b7e471ad
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328327"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921380"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Sestavení cílové stránky bezplatné nebo zkušební SaaS nabídky na komerčním webu Marketplace
 
@@ -53,7 +53,7 @@ Chcete-li začít, postupujte podle pokynů pro [registraci nové aplikace](http
 
 Pokud se chystáte zadat dotaz na rozhraní Microsoft Graph API, [nakonfigurujte novou aplikaci pro přístup k webovým rozhraním API](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis). Když vyberete oprávnění rozhraní API pro tuto aplikaci, výchozí nastavení **uživatel. čtení** je dostatečné pro shromáždění základních informací o uživateli, aby bylo možné proces připojování hladce a automatickým způsobem vytvořit. Nevyžadovat žádná oprávnění API s popiskem **vyžaduje souhlas správce**, protože to zabrání všem uživatelům bez oprávnění správce na návštěvě cílové stránky.
 
-Pokud v rámci procesu připojování nebo zřizování požadujete zvýšená oprávnění, zvažte použití funkcí [přírůstkového souhlasu](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#incremental-and-dynamic-consent) Azure AD, aby všichni uživatelé, kteří odesílají z webu Marketplace, mohli s cílovou stránkou interaktivně pracovat.
+Pokud v rámci procesu připojování nebo zřizování požadujete zvýšená oprávnění, zvažte použití funkcí [přírůstkového souhlasu](https://aka.ms/incremental-consent) Azure AD, aby všichni uživatelé, kteří odesílají z webu Marketplace, mohli s cílovou stránkou interaktivně pracovat.
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>Použití ukázky kódu jako počátečního bodu
 

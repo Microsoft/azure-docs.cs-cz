@@ -1,6 +1,6 @@
 ---
 title: Možnosti zapojení kabeláže Azure Data Boxu | Microsoft Docs
-description: Popisuje různé možnosti zapojení kabeláže Azure Data Boxu.
+description: Přečtěte si o různých způsobech, jak kabelovat Azure Data Box pro přenos dat pomocí portu pro správu nebo datového portu.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: ffabd917eff1c545bba734ab1621b947ee8d9ae9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a1ce22cd700368d630d70912ea266d16fd772bf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77920633"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925205"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Možnosti zapojení kabeláže Azure Data Boxu
 

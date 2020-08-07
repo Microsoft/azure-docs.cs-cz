@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c75c9a2d0b491cc00d0fc58054b9bb1e58a364b8
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: bf44b24b9222072bf5f1493b36b0dfcca24b5389
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905716"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923607"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Zobrazení stavu úloh služby Azure Import/Export
 
@@ -31,7 +31,7 @@ V závislosti na tom, kde se jednotka právě nachází, se zobrazí jedna z ná
 | Stav úlohy | Popis |
 |:--- |:--- |
 | Vytváření | Po vytvoření úlohy se její stav nastaví na **vytvořit**. Když je úloha ve stavu **vytváření** , služba import/export předpokládá, že se jednotky nedodaly do datového centra. Úloha může zůstat v tomto stavu po dobu až dvou týdnů, po jejímž uplynutí je služba automaticky odstranila. |
-| Shipping | Po odeslání balíčku byste měli aktualizovat informace o sledování v Azure Portal.  Tím se úloha přepíná do stavu **expedice** . Úloha zůstane ve stavu **expedice** po dobu až dvou týdnů. 
+| Expedice | Po odeslání balíčku byste měli aktualizovat informace o sledování v Azure Portal.  Tím se úloha přepíná do stavu **expedice** . Úloha zůstane ve stavu **expedice** po dobu až dvou týdnů. 
 | Přijato | Po přijetí všech jednotek v datovém centru se stav úlohy nastaví na **přijato**. |
 | Pojování | Po zahájení zpracování aspoň jedné jednotky se stav úlohy nastaví na **přenos**. Další informace najdete v informacích o [stavu jednotky](#view-drive-status). |
 | Balení | Po dokončení zpracování všech jednotek se úloha umístí do stavu **balení** , dokud se jednotky nevrátí zpět. |
@@ -73,7 +73,7 @@ Doba potřebná ke zpracování úlohy importu/exportu se liší v závislosti n
 -  Typ úlohy a velikost kopírovaných dat
 -  Počet disků v úloze. 
 
-Služba import/export nemá smlouvu SLA, ale služba se snaží dokončit kopírování 7 až 10 dní od přijetí těchto disků. Kromě stavu publikovaného na portálu Azure Portal je možné pomocí rozhraní REST API sledovat průběh úlohy. Procentuální hodnota parametru dokončení v volání rozhraní API [seznamu úloh](/previous-versions/azure/dn529083(v=azure.100)) poskytuje procentní průběh kopírování.
+Služba import/export nemá smlouvu SLA, ale služba se snaží dokončit kopírování 7 až 10 dní od přijetí těchto disků. Kromě stavu publikovaného v Azure Portal lze použít rozhraní REST API ke sledování průběhu úlohy. Procentuální hodnota parametru dokončení v volání rozhraní API [seznamu úloh](/previous-versions/azure/dn529083(v=azure.100)) poskytuje procentní průběh kopírování.
 
 
 ## <a name="next-steps"></a>Další kroky

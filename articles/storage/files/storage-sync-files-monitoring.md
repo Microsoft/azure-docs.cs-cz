@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9a4e4a30c5a84baf5a78d0a90f7302e2b31a5946
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 1d7b29bbd508223888c6f205e25008c0b29fecea
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903523"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922930"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
@@ -72,10 +72,12 @@ V následující tabulce jsou uvedeny příklady scénářů, které je třeba m
 
 | Scénář | Metrika, která se má použít pro upozornění |
 |-|-|
-| Stav koncového bodu serveru na portálu = chyba | Výsledek relace synchronizace |
+| Stav koncového bodu serveru ukazuje na portálu chybu. | Výsledek relace synchronizace |
 | Neúspěšné synchronizace souborů na koncový bod serveru nebo cloudu | Soubory se nesynchronizují |
 | U registrovaného serveru se nedaří komunikovat se službou synchronizace úložiště. | Online stav serveru |
 | Velikost volání vrstvení cloudu překročila 500GiB za den.  | Velikost odvolání při vyvolání vrstvy cloudu |
+
+Pokyny, jak vytvořit výstrahy pro tyto scénáře, naleznete v části [Příklady výstrah](#alert-examples) .
 
 ## <a name="storage-sync-service"></a>Služba synchronizace úložiště
 
@@ -110,7 +112,7 @@ Pokud chcete zobrazit registrovaný stav serveru, stav koncového bodu serveru a
 
 ## <a name="windows-server"></a>Windows Server
 
-Na Windows serveru můžete zobrazit vrstvení cloudu, zaregistrovaný Server a synchronizovat stav.
+Na Windows serveru s nainstalovaným agentem Azure File Sync můžete zobrazit vrstvy cloudu, zaregistrovaný Server a synchronizovat stav.
 
 ### <a name="event-logs"></a>Protokoly událostí
 
@@ -162,6 +164,100 @@ V nástroji Sledování výkonu jsou k dispozici následující čítače výkon
 | Soubory Operations\Downloaded synchronizace AFS Sync/s | Počet stažených souborů za sekundu |
 | Soubory Operations\Uploaded synchronizace AFS Sync/s | Počet odeslaných souborů za sekundu |
 | Operace synchronizace souborů Operations\Total synchronizace AFS za sekundu | Celkový počet synchronizovaných souborů (nahrání a stažení). |
+
+## <a name="alert-examples"></a>Příklady výstrah
+V této části najdete příklady výstrah pro Azure File Sync.
+
+  > [!Note]  
+  > Pokud vytvoříte výstrahu a je příliš hlučná, upravte prahovou hodnotu a logiku výstrahy.
+  
+### <a name="how-to-create-an-alert-if-the-server-endpoint-health-shows-an-error-in-the-portal"></a>Jak vytvořit výstrahu v případě, že stav koncového bodu serveru zobrazuje chybu na portálu
+
+1. V **Azure Portal**přejděte do příslušné **služby synchronizace úložiště**. 
+2. Přejděte do části **monitorování** a klikněte na **výstrahy**. 
+3. Kliknutím na **+ nové pravidlo výstrahy** vytvořte nové pravidlo výstrahy. 
+4. Kliknutím na **vybrat podmínku**nakonfigurujte podmínku.
+5. V okně **Konfigurovat logiku signálu** klikněte v části Název signálu na **výsledek synchronizace relace** .  
+6. Vyberte následující konfiguraci dimenzí: 
+    - Název dimenze: **název koncového bodu serveru**  
+    - Podnikatel**=** 
+    - Hodnoty dimenzí: **všechny aktuální a budoucí hodnoty**  
+7. Přejděte do **logiky výstrah** a proveďte následující: 
+    - Prahová hodnota nastavená na **static** 
+    - Operátor: **menší než** 
+    - Typ agregace: **Maximum**  
+    - Prahová hodnota: **1** 
+    - Vyhodnocováno podle: členitosti agregace = **24 hodin** | Frekvence vyhodnocení = **každou hodinu** 
+    - Klikněte na **Hotovo.** 
+8. Kliknutím na **Vybrat skupinu akcí** přidejte skupinu akcí (E-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
+9. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
+10. Klikněte na **Vytvořit pravidlo upozornění**. 
+
+### <a name="how-to-create-an-alert-if-files-are-failing-to-sync-to-a-server-or-cloud-endpoint"></a>Jak vytvořit výstrahu, pokud se soubory nedaří synchronizovat se serverem nebo koncovým bodem cloudu
+
+1. V **Azure Portal**přejděte do příslušné **služby synchronizace úložiště**. 
+2. Přejděte do části **monitorování** a klikněte na **výstrahy**. 
+3. Kliknutím na **+ nové pravidlo výstrahy** vytvořte nové pravidlo výstrahy. 
+4. Kliknutím na **vybrat podmínku**nakonfigurujte podmínku.
+5. V okně **Konfigurovat logiku signálu** klikněte v části Název signálu na **soubory, které se nesynchronizují** .  
+6. Vyberte následující konfiguraci dimenzí: 
+     - Název dimenze: **název koncového bodu serveru**  
+     - Podnikatel**=** 
+     - Hodnoty dimenzí: **všechny aktuální a budoucí hodnoty**  
+7. Přejděte do **logiky výstrah** a proveďte následující: 
+     - Prahová hodnota nastavená na **static** 
+     - Operátor: je **větší než** 
+     - Typ agregace: **celkem**  
+     - Prahová hodnota: **100** 
+     - Vyhodnoceno v závislosti na: členitosti agregace = **5 minut** | Frekvence vyhodnocení = **každých 5 minut** 
+     - Klikněte na **Hotovo.** 
+8. Kliknutím na **Vybrat skupinu akcí** přidejte skupinu akcí (E-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
+9. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
+10. Klikněte na **Vytvořit pravidlo upozornění**. 
+
+### <a name="how-to-create-an-alert-if-a-registered-server-is-failing-to-communicate-with-the-storage-sync-service"></a>Jak vytvořit výstrahu v případě, že se zaregistrovaným serverem nedaří komunikovat se službou synchronizace úložiště
+
+1. V **Azure Portal**přejděte do příslušné **služby synchronizace úložiště**. 
+2. Přejděte do části **monitorování** a klikněte na **výstrahy**. 
+3. Kliknutím na **+ nové pravidlo výstrahy** vytvořte nové pravidlo výstrahy. 
+4. Kliknutím na **vybrat podmínku**nakonfigurujte podmínku.
+5. V okně **Konfigurovat logiku signálu** klikněte v části Název signálu na **stav online server** .  
+6. Vyberte následující konfiguraci dimenzí: 
+     - Název dimenze: **název serveru**  
+     - Podnikatel**=** 
+     - Hodnoty dimenzí: **všechny aktuální a budoucí hodnoty**  
+7. Přejděte do **logiky výstrah** a proveďte následující: 
+     - Prahová hodnota nastavená na **static** 
+     - Operátor: **menší než** 
+     - Typ agregace: **Maximum**  
+     - Prahová hodnota (v bajtech): **1** 
+     - Vyhodnoceno na základě členitosti agregace = **1 hodina** | Frekvence vyhodnocení = **každých 30 minut** 
+     - Klikněte na **Hotovo.** 
+8. Kliknutím na **Vybrat skupinu akcí** přidejte skupinu akcí (E-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
+9. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
+10. Klikněte na **Vytvořit pravidlo upozornění**. 
+
+### <a name="how-to-create-an-alert-if-the-cloud-tiering-recall-size-has-exceeded-500gib-in-a-day"></a>Jak vytvořit výstrahu v případě, že velikost volání vrstev cloudu překročila 500GiB za den
+
+1. V **Azure Portal**přejděte do příslušné **služby synchronizace úložiště**. 
+2. Přejděte do části **monitorování** a klikněte na **výstrahy**. 
+3. Kliknutím na **+ nové pravidlo výstrahy** vytvořte nové pravidlo výstrahy. 
+4. Kliknutím na **vybrat podmínku**nakonfigurujte podmínku.
+5. V okně **Konfigurovat logiku signálu** klikněte v části Název signálu na možnost **navrácení úrovně cloudu na velikost** .  
+6. Vyberte následující konfiguraci dimenzí: 
+     - Název dimenze: **název serveru**  
+     - Podnikatel**=** 
+     - Hodnoty dimenzí: **všechny aktuální a budoucí hodnoty**  
+7. Přejděte do **logiky výstrah** a proveďte následující: 
+     - Prahová hodnota nastavená na **static** 
+     - Operátor: je **větší než** 
+     - Typ agregace: **celkem**  
+     - Prahová hodnota (v bajtech): **67108864000** 
+     - Vyhodnocováno podle: členitosti agregace = **24 hodin** | Frekvence vyhodnocení = **každou hodinu** 
+    - Klikněte na **Hotovo.** 
+8. Kliknutím na **Vybrat skupinu akcí** přidejte skupinu akcí (E-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
+9. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
+10. Klikněte na **Vytvořit pravidlo upozornění**. 
 
 ## <a name="next-steps"></a>Další kroky
 - [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)

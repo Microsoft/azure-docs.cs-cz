@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: ''
-ms.openlocfilehash: 4446eef481e8370f7457311f6eae6ce40f9e6727
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ab869fc8577d4d1934be96404ded5a2051237bbf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539257"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922724"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>Ukázky šablon Správce prostředků pro Azure Monitor
 
@@ -49,7 +49,7 @@ az deployment group create \
 - Výstrahy
   - [Pravidla upozornění protokolů](resource-manager-alerts-log.md) – výstrahy z log dotazů a protokolu aktivit Azure
   - [Pravidla upozornění metrik](resource-manager-alerts-metric.md) – výstrahy z metriky s využitím různých druhů logiky.
-- Application Insights – již brzy.
+- [Application Insights](resource-manager-app-resource.md)
 - [Nastavení diagnostiky](resource-manager-diagnostic-settings.md) – umožňuje vytvořit nastavení diagnostiky pro přeposílání protokolů a metrik z různých typů prostředků.
 - [Dotazy protokolu](resource-manager-log-queries.md) – vytvoření uložených dotazů protokolu v pracovním prostoru Log Analytics.
 - [Log Analytics pracovní prostor](resource-manager-workspace.md) – vytvořit pracovní prostor Log Analytics a nakonfigurovat kolekci různých zdrojů dat od agenta Log Analytics.

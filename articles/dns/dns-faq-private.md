@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: 0945f89e3c18ab20ece0b493a49ec9f7f31e4e13
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d6faf5bd42c90ea1510d454a2ab7939f121b3d0d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529190"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925001"
 ---
 # <a name="azure-private-dns-faq"></a>Nejčastější dotazy k Azure Private DNS
 
@@ -38,7 +38,7 @@ Ano. Můžete propojit privátní zónu DNS s tisíci virtuálních sítí. Dal�
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>Může být virtuální síť, která patří do jiného předplatného, propojená s privátní zónou?
 
-Ano. U virtuálních sítí a privátní zóny DNS musíte mít oprávnění k operaci zápisu. Oprávnění k zápisu je možné udělit několika rolím Azure. Například role Azure Přispěvatel klasických sítí má oprávnění k zápisu do virtuálních sítí a role přispěvatele Privátní DNSch zón má oprávnění k zápisu do privátních zón DNS. Další informace o rolích Azure najdete v tématu [řízení přístupu na základě role](../role-based-access-control/overview.md).
+Ano. U virtuálních sítí a privátní zóny DNS musíte mít oprávnění k operaci zápisu. Oprávnění k zápisu je možné udělit několika rolím Azure. Například role Azure Přispěvatel klasických sítí má oprávnění k zápisu do virtuálních sítí a role přispěvatele Privátní DNSch zón má oprávnění k zápisu do privátních zón DNS. Další informace o rolích Azure najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md).
 
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>Budou automaticky při odstranění virtuálního počítače automaticky odstraněny záznamy DNS virtuálního počítače v privátní zóně?
 

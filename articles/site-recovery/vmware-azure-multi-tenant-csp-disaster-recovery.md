@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 1b77eb136b8415e5a6e4596dc0b192ea426f378f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7cf0d35ae610c3f9fe477267e28e5449459148b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292829"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924576"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Nastavení zotavení po havárii VMware v prostředí s více tenantůmi pomocí programu Cloud Solution Provider (CSP)
 
@@ -98,7 +98,7 @@ Existují tři hlavní modely s více klienty:
 Nastavením předplatných tenantů, jak je popsáno v tomto článku, můžete rychle začít s povolením zákazníků v jakémkoli z příslušných modelů s více klienty. Další informace o různých modelech víceklientské architektury a povolení místních řízení přístupu najdete [tady](vmware-azure-multi-tenant-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si další informace o [řízení přístupu na základě rolí](site-recovery-role-based-linked-access-control.md) ke správě Azure Site Recovery nasazení.
+- Přečtěte si další informace o [řízení přístupu na základě role Azure (Azure RBAC)](site-recovery-role-based-linked-access-control.md) ke správě Azure Site Recovery nasazení.
 - Přečtěte si další informace o [architektuře replikace](vmware-azure-architecture.md)z VMware do Azure.
 - [Přečtěte si kurz](vmware-azure-tutorial.md) replikace virtuálních počítačů VMware do Azure.
 Přečtěte si další informace o [víceklientské prostředích](vmware-azure-multi-tenant-overview.md) pro replikaci virtuálních počítačů VMware do Azure.

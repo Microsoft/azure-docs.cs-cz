@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/02/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8a82b0b70b7be8897d8f85cabea2ee21ce84d913
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0a997733e015a9f65b59ffc99cc137dae3d2d62a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169608"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927432"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Nasazení ze služby Azure Container Registry do služby Azure Container Instances
 
@@ -25,7 +25,7 @@ ms.locfileid: "86169608"
 
 ## <a name="configure-registry-authentication"></a>Konfigurace ověřování registru
 
-V produkčním scénáři, kdy poskytujete přístup k "bezobslužným" službám a aplikacím, se doporučuje nakonfigurovat přístup k registru pomocí [instančního objektu](../container-registry/container-registry-auth-service-principal.md). Instanční objekt umožňuje poskytnout image kontejneru [řízení přístupu na základě rolí](../container-registry/container-registry-roles.md) . Můžete například nakonfigurovat instanční objekt s přístupem k registru pouze ke čtení.
+V produkčním scénáři, kdy poskytujete přístup k "bezobslužným" službám a aplikacím, se doporučuje nakonfigurovat přístup k registru pomocí [instančního objektu](../container-registry/container-registry-auth-service-principal.md). Instanční objekt umožňuje poskytnout vašim imagím kontejneru [řízení přístupu na základě role Azure (Azure RBAC)](../container-registry/container-registry-roles.md) . Můžete například nakonfigurovat instanční objekt s přístupem k registru pouze ke čtení.
 
 Azure Container Registry poskytuje další [Možnosti ověřování](../container-registry/container-registry-authentication.md).
 

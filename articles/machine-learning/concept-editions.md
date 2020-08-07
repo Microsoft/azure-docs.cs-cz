@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: 173ff8b638c40773ca2c4bdac5021f2ea4b84549
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa754868677802b7d0000045f22090fbca62d9b6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555539"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927415"
 ---
 # <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Edice Azure Machine Learning Enterprise a Basic 
 
@@ -112,7 +112,7 @@ Přečtěte si, jak [upgradovat základní pracovní prostor na edici Enterprise
 
 | Možnosti     | Edice                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| Podpora [Access Control na základě rolí](how-to-assign-roles.md) (RBAC)                                           | Vše                     |
+| Podpora [řízení přístupu na základě role Azure (Azure RBAC)](how-to-assign-roles.md)                                           | Vše                     |
 | Podpora [Virtual Network (VNET)](how-to-enable-virtual-network.md) pro výpočetní prostředky                                         | Vše                     |
 | Bodování ověřování koncového bodu                                                    | Vše                     |
 | [Privátní odkaz na pracovní prostor](how-to-configure-private-link.md)                                                            | Vše                     |

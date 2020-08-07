@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: d99a5feb344f970b10925b596726520b9dba9464
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5ca6e7fa6e02ff6c5e49185c2fb02f9bc5a16d9c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134029"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927296"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Přesun virtuálních počítačů Azure mezi oblastmi Azure Government a veřejnými oblastmi 
 
@@ -53,7 +53,7 @@ V tomto kurzu se dozvíte, jak přesunout virtuální počítače Azure mezi Azu
 Ujistěte se, že váš účet Azure má oprávnění k replikaci virtuálních počítačů do Azure.
 
 - Zkontrolujte [oprávnění](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) , která potřebujete k replikaci počítačů do Azure.
-- Ověřte a upravte oprávnění [pro přístup na základě rolí](../role-based-access-control/role-assignments-portal.md) . 
+- Ověřte a upravte oprávnění [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) . 
 
 ### <a name="set-up-an-azure-network"></a>Nastavení sítě Azure
 

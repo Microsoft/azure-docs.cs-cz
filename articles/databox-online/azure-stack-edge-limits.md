@@ -1,6 +1,6 @@
 ---
 title: Limity Azure Stack hran | Microsoft Docs
-description: Popisuje omezení systému a Doporučené velikosti pro Azure Stack Edge.
+description: Přečtěte si o omezeních a doporučených velikostech při nasazení a provozu Azure Stack Edge, včetně omezení služby, omezení zařízení a omezení úložiště.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 4f7800efb5d4382e8d73c819d950fdfafd10f296
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bbcf3f61121813b91cb951809992d10977a640c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82569833"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922706"
 ---
 # <a name="azure-stack-edge-limits"></a>Omezení služby Azure Stack Edge
 

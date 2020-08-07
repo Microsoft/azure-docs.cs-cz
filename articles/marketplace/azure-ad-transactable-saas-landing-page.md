@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 1ff366e24adb82a0d7d4660d4afaffa0bbca0b3c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 737e2fc682e630775b763dd2f22f904d895a120f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328209"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921262"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Sestavení cílové stránky pro SaaS nabídku s podporou transakcí na komerčním webu Marketplace
 
@@ -56,7 +56,7 @@ Chcete-li začít, postupujte podle pokynů pro [registraci nové aplikace](http
 
 Pokud se chystáte zadat dotaz na rozhraní Microsoft Graph API, [nakonfigurujte novou aplikaci pro přístup k webovým rozhraním API](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis). Když vyberete oprávnění rozhraní API pro tuto aplikaci, výchozí hodnota **User. Read** je dostatečná pro shromáždění základních informací o kupujícím, aby bylo možné proces zprovoznění hladký a automatický. Nevyžadovat žádná oprávnění API s popiskem **vyžaduje souhlas správce**, protože to zabrání všem uživatelům bez oprávnění správce na návštěvě cílové stránky.
 
-Pokud požadujete zvýšená oprávnění jako součást procesu připojování nebo zřizování, zvažte použití funkce [přírůstkového souhlasu](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis) Azure AD, aby všichni nákupčíé z webu Marketplace mohli nejprve interaktivně navzájem komunikovat s cílovou stránkou.
+Pokud požadujete zvýšená oprávnění jako součást procesu připojování nebo zřizování, zvažte použití funkce [přírůstkového souhlasu](https://aka.ms/incremental-consent) Azure AD, aby všichni nákupčíé z webu Marketplace mohli nejprve interaktivně navzájem komunikovat s cílovou stránkou.
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>Použití ukázky kódu jako počátečního bodu
 
@@ -90,16 +90,7 @@ K ověření aplikace pomocí rozhraní API pro plnění SaaS potřebujete pří
 
 ### <a name="call-the-resolve-endpoint"></a>Zavolejte koncový bod vyřešení
 
-Rozhraní API pro splnění SaaS implementují [koncový bod,](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) který lze volat k potvrzení platnosti tokenu Marketplace a vrácení informací o předplatném, včetně hodnot zobrazených v této tabulce.
-
-| Hodnota | Popis |
-| ------------ | ------------- |
-| Id | Jedinečný identifikátor (GUID) pro toto předplatné. Tuto hodnotu budete potřebovat v budoucích voláních rozhraní API pro plnění SaaS. |
-| subscriptionName | Název předplatného, které bylo nastaveno při přidání nabídky do partnerského centra. |
-| Hodnotami OfferId | Identifikátor konkrétní nabídky (nastavené při přidání nabídky) |
-| planId | Identifikátor pro konkrétní plán nabídky (nastavený při přidání nabídky) |
-| Množství | Množství vstupu kupujícího během nákupu. |
-|||
+Rozhraní API pro splnění SaaS implementují [koncový bod](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) , který lze volat k potvrzení platnosti tokenu Marketplace a vrácení informací o předplatném.
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>Načíst informace z deklarací identity kódovaných v tokenu ID
 

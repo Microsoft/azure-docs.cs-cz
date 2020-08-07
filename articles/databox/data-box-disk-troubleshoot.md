@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Disk – řešení potíží | Microsoft Docs
-description: Popisuje, jak řešit potíže s Azure Data Box Diskem.
+description: Naučte se používat protokoly k řešení problémů s ověřováním, které se můžou při nasazení Azure Data Box Disk nasadit.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 35b4b206de9c16d66387135b0ca75b6aaeb7c744
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c1b38c4021660b9f59098f8442d16bfd0ecc582
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565003"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925538"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Řešení potíží s ověřováním v Azure Data Box Disk pomocí protokolů
 
@@ -73,7 +73,7 @@ Pokud spustíte více relací pro ověření, je pro každou relaci vygenerován
 
 Chyby obsažené v *error.xml* s odpovídajícími doporučenými akcemi jsou shrnuty v následující tabulce.
 
-| Kód chyby| Description                       | Doporučené akce               |
+| Kód chyby| Popis                       | Doporučené akce               |
 |------------|--------------------------|-----------------------------------|
 | `None` | Data byla úspěšně ověřena. | Nevyžaduje se žádná akce. |
 | `InvalidXmlCharsInPath` |Nelze vytvořit soubor manifestu, protože cesta k souboru obsahuje neplatné znaky. | Chcete-li pokračovat, odeberte tyto znaky.  |

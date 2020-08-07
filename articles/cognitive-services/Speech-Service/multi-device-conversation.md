@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 7c30ee2ef4a6ab0cd4241cac921a59eeadf5ce17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15b69e664ae9a01635afb44d7b6b7c24d7551ce9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81401051"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921414"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>Co je konverzace s více zařízeními (Preview)?
 
@@ -60,7 +60,7 @@ Přepis a překlady v reálném čase můžou přispět k usnadnění přístupu
 Můžete také zadat titulky pro prezentace a přednášky na obrazovkách i na vlastních zařízeních členů cílové skupiny. Poté, co se cílová skupina připojí k kódu konverzace, uvidí přepis v upřednostňovaném jazyce na vlastním zařízení.
 
 > [!NOTE]
-> Příklad zobrazíte tak, že zaškrtnete [Překladatel prezentace](https://www.microsoft.com/translator/apps/presentation-translator/), doplněk aplikace PowerPoint, který používá službu pro konverzaci s více zařízeními. Můžete si ho stáhnout [tady](https://www.microsoft.com/download/details.aspx?id=55024).
+> Příklad zobrazíte tak, že zaškrtnete [Překladatel prezentace](https://www.microsoft.com/translator/apps/presentation-translator/), doplněk aplikace PowerPoint, který používá službu pro konverzaci s více zařízeními. Můžete si ho stáhnout [tady](https://download.cnet.com/s/powerpoint-add-in/).
 
 ## <a name="how-it-works"></a>Jak to funguje
 

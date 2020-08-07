@@ -10,15 +10,15 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 08/04/2020
+ms.date: 08/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 1b2d707569221a79ad53f04bcc379f5067ed9b04
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 210b2935cd2df81b0ff079c9a1c945fe770933f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905529"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926514"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>Nastavení rozhraní pro předávání zpráv pro HPC
 
@@ -95,11 +95,24 @@ Podívejte se na klíč oddílu, jak je uvedeno výše.
 
 ## <a name="intel-mpi"></a>Intel MPI
 
-[Stáhněte si Intel MPI](https://software.intel.com/mpi-library/choose-download).
+Stáhněte si svoji volbu verze [Intel MPI](https://software.intel.com/mpi-library/choose-download). Změňte proměnnou prostředí I_MPI_FABRICS v závislosti na verzi. Pro Intel MPI 2018 použijte `I_MPI_FABRICS=shm:ofa` a pro 2019 použijte `I_MPI_FABRICS=shm:ofi` .
 
-Změňte proměnnou prostředí I_MPI_FABRICS v závislosti na verzi. Pro Intel MPI 2018 použijte `I_MPI_FABRICS=shm:ofa` a pro 2019 použijte `I_MPI_FABRICS=shm:ofi` .
+### <a name="non-sr-iov-vms"></a>Virtuální počítače, které nejsou SR-IOV
+V případě virtuálních počítačů, které nejsou SR-IOV, je příklad stažení [verze zkušební verze](https://registrationcenter.intel.com/en/forms/?productid=1740) 5. x modulu runtime následující:
+```bash
+wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
+```
+Pokyny k instalaci najdete v [příručce k instalaci knihovny Intel MPI Library](https://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html).
+Volitelně můžete chtít povolit ptrace pro nekořenové procesy bez ladicího programu (nutné pro nejnovější verze Intel MPI).
+```bash
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+```
 
-Ve výchozím nastavení funguje připnutí procesu pro 15, 30 a 60 PPN správně.
+### <a name="suse-linux"></a>SUSE Linux
+Verze imagí SUSE Linux Enterprise Server VM – SLES 12 SP3 pro HPC, SLES 12 SP3 pro HPC (Premium), SLES 12 SP1 pro HPC, SLES 12 SP1 pro HPC (Premium), SLES 12 SP4 a SLES 15, jsou nainstalované ovladače RDMA a na virtuálním počítači jsou distribuované balíčky Intel MPI. Nainstalujte Intel MPI spuštěním následujícího příkazu:
+```bash
+sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
+```
 
 ## <a name="mpich"></a>MPICH
 

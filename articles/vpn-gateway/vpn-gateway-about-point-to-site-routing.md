@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: informace o směrování P2S'
-description: Tento článek vám pomůže pochopit, jak se chová směrování typu Point-to-Site VPN.
+description: Přečtěte si o chování směrování typu Point-to-Site VPN, které závisí na klientském operačním systému, protokolu používaném pro připojení a způsobu připojení virtuálních sítí.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: kumud
-ms.openlocfilehash: 536e1e57af16a87fba85323e9448bfb904d56384
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8ee75f80ea2e1ee379561b743c2b4add4ef1d7b9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027865"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926905"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Směrování VPN typu Point-to-Site
 

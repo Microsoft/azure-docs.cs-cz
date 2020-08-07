@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: kopírování dat do Azure Data Box BLOB Storage přes rozhraní REST API'
-description: Naučte se, jak kopírovat data do úložiště objektů blob Azure Data Box Heavy přes rozhraní REST API.
+description: V tomto kurzu se naučíte připojit se k Azure Data Box BLOB Storage pomocí rozhraní REST API přes protokol HTTP nebo https a pak kopírovat data z Azure Data Box Heavy.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: a57dc6c57e10c82f9548490c4c2e98fd87f677af
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f9134b57d8a3e76417283e5d863724651b4f6a6f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849428"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921159"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Kurz: kopírování dat do Azure Data Box BLOB Storage přes rozhraní REST API  
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [kurz: nastavte Azure Data box Heavy](data-box-heavy-deploy-set-up.md).
+1. Dokončili jste [Kurz: Nastavení Azure Data Boxu Heavy](data-box-heavy-deploy-set-up.md).
 2. Obdrželi jste Data Box Heavy a stav objednávky na portálu je **Doručeno**.
 3. Zkontrolovali jste [požadavky na systém pro úložiště objektů Blob data box](data-box-system-requirements-rest.md) a znáte podporované verze rozhraní API, sad SDK a nástrojů.
 4. Máte přístup k hostitelskému počítači, který obsahuje data, která chcete zkopírovat do Data Box Heavy. Hostitelský počítač musí splňovat tyto požadavky:
@@ -143,7 +143,7 @@ Několik, například Ubuntu a Debian, použijte `update-ca-certificates` přík
 Poslední verze RHEL, Fedora a CentOS používají `update-ca-trust` příkaz.
 
 - Zkopírujte soubor certifikátu do `/etc/pki/ca-trust/source/anchors` adresáře.
-- Spusťte `update-ca-trust`.
+- Spusťte příkaz `update-ca-trust`.
 
 Podrobnosti najdete v dokumentaci specifické pro vaši distribuci.
 

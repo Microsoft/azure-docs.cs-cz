@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3839c7b87e5d07368727d037b585965dce91303a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31374b851d90e43e7380024923c3ad025859b7a0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058097"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923726"
 ---
 # <a name="azure-ad-joined-devices"></a>Zařízení připojená k Azure AD
 
@@ -28,7 +28,7 @@ Služba Azure AD JOIN je určena pro organizace, které chtějí být pouze clou
 | **Primární cílová skupina** | Vhodné pro cloudové i hybridní organizace. |
 |   | Platí pro všechny uživatele v organizaci. |
 | **Vlastnictví zařízení** | Organizace |
-| **Operační systémy** | Všechna zařízení s Windows 10 |
+| **Operační systémy** | Všechna zařízení s Windows 10 s výjimkou Windows 10 Home |
 |   | [Windows Server 2019 Virtual Machines běžící v Azure](howto-vm-sign-in-azure-ad-windows.md) (jádro serveru se nepodporuje) |
 | **Zřizování** | Samoobslužná služba: Windows OOBE nebo nastavení |
 |   | Hromadná registrace |
@@ -62,7 +62,7 @@ Přestože je služba Azure AD Join primárně určená pro organizace, které n
 - Chcete spravovat skupinu uživatelů v Azure AD, a ne v Active Directory. Tento scénář může platit například pro sezónní pracovní procesy, dodavatele nebo studenty.
 - Chcete poskytnout možnosti připojení pracovníkům ve vzdálených pobočkách s omezenou místní infrastrukturou.
 
-Připojení zařízení k Azure AD můžete nakonfigurovat pro zařízení s Windows 10.
+Zařízení připojená k Azure AD můžete nakonfigurovat pro všechna zařízení s Windows 10 s výjimkou Windows 10 Home.
 
 Cílem zařízení připojených k Azure AD je zjednodušit:
 

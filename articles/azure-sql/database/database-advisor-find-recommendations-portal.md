@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 27fcbcec07012dc34c846f316fccf788a0d25329
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72f0d361f69232894df3a9131d173411614a2055
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041315"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921210"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení pro výkon
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,11 +25,11 @@ Pomocí Azure Portal můžete najít doporučení k výkonu, která můžou opti
 
 ## <a name="viewing-recommendations"></a>Zobrazení doporučení
 
-Chcete-li zobrazit a použít doporučení týkající se výkonu, budete potřebovat správné oprávnění [řízení přístupu na základě role](../../role-based-access-control/overview.md) v Azure. **Čtenář**, oprávnění **Přispěvatel SQL DB** jsou nutná k zobrazení doporučení a **vlastníka**, oprávnění **přispěvatele databáze SQL** jsou vyžadována ke spuštění všech akcí; vytvořit nebo vyřadit indexy a zrušit vytváření indexů.
+Pokud chcete zobrazit a použít doporučení pro výkon, budete potřebovat správné oprávnění [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md) v Azure. **Čtenář**, oprávnění **Přispěvatel SQL DB** jsou nutná k zobrazení doporučení a **vlastníka**, oprávnění **přispěvatele databáze SQL** jsou vyžadována ke spuštění všech akcí; vytvořit nebo vyřadit indexy a zrušit vytváření indexů.
 
 Pomocí následujících kroků můžete najít doporučení týkající se výkonu Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Přejít na **všechny služby**  >  **databáze SQL**a vyberte svou databázi.
 3. Přejděte do **doporučení ke zvýšení výkonu** a zobrazte dostupná doporučení pro vybranou databázi.
 
@@ -39,9 +39,9 @@ Doporučení týkající se výkonu se zobrazují v tabulce podobné tomu na ná
 
 Doporučení jsou seřazená podle jejich potenciálního dopadu na výkon do následujících kategorií:
 
-| Dopad | Description |
+| Dopad | Popis |
 |:--- |:--- |
-| Vysoká |Doporučení s vysokým dopadem by měla poskytovat nejvýznamnější dopad na výkon. |
+| Vysoké |Doporučení s vysokým dopadem by měla poskytovat nejvýznamnější dopad na výkon. |
 | Střední |Doporučení středně velkých dopadů by měla zlepšit výkon, ale ne podstatně. |
 | Nízká |Doporučení pro nízký dopad by měla poskytovat lepší výkon než bez, ale vylepšení nemusí být významná. |
 
@@ -129,10 +129,10 @@ Použití doporučení nemusí okamžitě probíhat. Portál poskytuje podrobné
 
 | Status | Popis |
 |:--- |:--- |
-| Čekající na vyřízení |Příkaz Apply doporučení byl přijat a je naplánován ke spuštění. |
+| Čekající |Příkaz Apply doporučení byl přijat a je naplánován ke spuštění. |
 | Zpracovávan |Doporučení se používá. |
 | Opětovné |Doporučení se úspěšně nastavilo a služba měří výhody. |
-| Úspěch |Doporučení se úspěšně použilo a byly měřeny výhody. |
+| Success |Doporučení se úspěšně použilo a byly měřeny výhody. |
 | Chyba |Během procesu použití doporučení došlo k chybě. Může to být přechodný problém nebo pravděpodobně Změna schématu tabulky a skript již není platný. |
 | Vrací |Doporučení bylo použito, ale bylo považováno za nevýkonné a automaticky se vrátí. |
 | Vrátit |Doporučení bylo vráceno. |
@@ -172,4 +172,4 @@ Sledujte vaše doporučení a pokračujte v jejich použití pro zlepšení výk
 
 * [Úložiště dotazů](https://msdn.microsoft.com/library/dn817826.aspx)
 * [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Řízení přístupu na základě role](../../role-based-access-control/overview.md)
+* [Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md)

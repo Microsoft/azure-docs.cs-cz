@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: f09d2604a1dbf06caebb604ba2d63a09560fd33b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f3ec284de3d43e75bd0832b1d98bb9d319a7ca0e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835914"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925307"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled služby Azure Operational Security
 
@@ -38,7 +38,7 @@ Provozní tým IT je zodpovědný za správu infrastruktury Datacenter, aplikac�
 
 Můžete konsolidovat data z nejrůznějších zdrojů a kombinovat data ze služeb Azure s existujícím místním prostředím. Protokoly Azure Monitor také jednoznačně oddělují shromažďování dat z akce provedené u těchto dat, takže všechny akce jsou k dispozici pro všechny druhy dat.
 
-### <a name="automation"></a>Automatizace
+### <a name="automation"></a>Automation
 
 [Azure Automation](/azure/automation/automation-intro) poskytuje možnost automatizace ručních, dlouhotrvajících a často opakovaných úloh, které se běžně provádějí v cloudovém a podnikovém prostředí. Šetří čas a zvyšuje spolehlivost administrativních úloh. V pravidelných intervalech také plánuje automatické provádění těchto úkolů. Procesy můžete automatizovat pomocí runbooků nebo automatizovat správu konfigurace pomocí konfigurace požadovaného stavu.
 
@@ -68,7 +68,7 @@ Azure AD zahrnuje také plnou sadu [funkcí pro správu identit](/azure/security
 - [Samoobslužná správa hesel](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [Samoobslužná správa skupin](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [Správa privilegovaných účtů](/azure/active-directory/active-directory-privileged-identity-management-configure)
-- [Řízení přístupu na základě role](/azure/role-based-access-control/overview)
+- [Řízení přístupu na základě role v Azure (Azure RBAC)](/azure/role-based-access-control/overview)
 - [Monitorování využití aplikací](/azure/active-directory/connect-health/active-directory-aadconnect-health)
 - [Rozšířené auditování](/azure/active-directory/active-directory-reporting-activity-audit-logs)
 - [Monitorování a upozorňování zabezpečení](/azure/operations-management-suite/oms-security-responding-alerts)

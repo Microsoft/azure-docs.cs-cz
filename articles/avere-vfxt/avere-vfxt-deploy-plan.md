@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 995ac2776f4197dac1c2ef73fd209833474be5a5
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80754396"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922672"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Plánování systému Avere vFXT
 
@@ -75,8 +75,8 @@ Při plánování síťové infrastruktury clusteru avere vFXT postupujte podle 
   |----------|-----------|----------|
   | Skupina prostředků | Ano, je-li prázdné | Musí být prázdné|
   | Účet úložiště | **Ano** , pokud se po vytvoření clusteru připojí existující kontejner objektů BLOB <br/>  **Ne** při vytváření nového kontejneru objektů BLOB během vytváření clusteru | Existující kontejner objektů BLOB musí být prázdný. <br/> &nbsp; |
-  | Virtuální síť | Yes | Musí zahrnovat koncový bod služby úložiště při vytváření nového kontejneru objektů blob Azure. |
-  | Podsíť | Yes | Nemůže obsahovat jiné prostředky. |
+  | Virtuální síť | Ano | Musí zahrnovat koncový bod služby úložiště při vytváření nového kontejneru objektů blob Azure. |
+  | Podsíť | Ano | Nemůže obsahovat jiné prostředky. |
 
 ## <a name="ip-address-requirements"></a>Požadavky na IP adresu
 
@@ -166,7 +166,7 @@ Při vytváření clusteru můžete zvolit, jestli se má na řadiči clusteru v
 
 ## <a name="vm-access-roles"></a>Role přístupu virtuálních počítačů
 
-Azure používá [řízení přístupu na základě role](../role-based-access-control/index.yml) (RBAC) k autorizaci virtuálních počítačů clusteru k provádění určitých úloh. Například řadič clusteru potřebuje autorizaci k vytvoření a konfiguraci virtuálních počítačů uzlů clusteru. Uzly clusteru musí být schopné přiřadit nebo změnit přiřazení IP adres jiným uzlům clusteru.
+Azure používá [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/index.yml) k autorizaci virtuálních počítačů clusteru k provádění určitých úloh. Například řadič clusteru potřebuje autorizaci k vytvoření a konfiguraci virtuálních počítačů uzlů clusteru. Uzly clusteru musí být schopné přiřadit nebo změnit přiřazení IP adres jiným uzlům clusteru.
 
 Pro virtuální počítače s avere vFXT se používají dvě předdefinované role Azure:
 

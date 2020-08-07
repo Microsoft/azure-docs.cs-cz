@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Disk řešení potíží s odemknutím disku | Microsoft Docs
-description: Popisuje, jak řešit potíže s Azure Data Box Diskem.
+description: Přečtěte si o pracovních postupech pro řešení potíží s nástrojem pro odemknutí pomocí Azure Data Box Disk. Informace o chybách nástrojů Data Box Disk odemkněte.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 08/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 61f6da7df09f9569af1746563dc3be2922f4e2c1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 866cf01243983863292ada0b086f8f5b2f94e412
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833563"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925557"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>Řešení potíží při odemykání disků v Azure Data Box Disk
 
@@ -51,7 +51,7 @@ Tato část podrobně popisuje některé hlavní problémy, na které čelí bě
 
 Heslo jste použili v dialogovém okně BitLocker a pokusíte se odemknout disk přes dialogové okno jednotky odemčení BitLockerem. Tato činnost nebude fungovat.
 
-**Rozlišení**
+**Řešení**
 
 Chcete-li odemknout Data Box disky, je nutné použít nástroj Data Box Disk Unlock a zadat heslo z Azure Portal. Další informace najdete v [kurzu: rozbalení, připojení a odemčení Azure Data box disk](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey).
  
@@ -65,7 +65,7 @@ V protokolu chyb se může zobrazit následující chyba a není možné odemkno
  
 To znamená, že na vašem klientovi Windows pravděpodobně chybí odpovídající verze Windows PowerShellu.
 
-**Rozlišení**
+**Řešení**
 
 Můžete nainstalovat [prostředí Windows PowerShell v 5,0](https://www.microsoft.com/download/details.aspx?id=54616) a operaci zopakovat.
  

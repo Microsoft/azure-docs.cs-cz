@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 670a38b48ee89930078078dc4a8ac1a2876648e2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ec5c98d90facf9458769f235880f17d14708e425
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503731"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923651"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Škálování Azure Cosmos DB propustnosti pomocí triggeru časovače Azure Functions
 
@@ -23,7 +23,7 @@ Propustnost můžete nastavit prostřednictvím [šablon Azure Resource Manager]
 
 Pro zjednodušení procesu škálování Azure Cosmos DB podle plánu jsme vytvořili ukázkový projekt s názvem [Plánovač propustnosti Azure Cosmos](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler). Tento projekt je Azure Functions aplikace se dvěma aktivačními událostmi časovače – "ScaleUpTrigger" a "ScaleDownTrigger". Aktivační události spouštějí skript prostředí PowerShell, který nastaví propustnost každého prostředku podle definice v `resources.json` souboru v každé aktivační události. ScaleUpTrigger je nakonfigurována tak, aby běžela v rozmezí času UTC, a ScaleDownTrigger je nakonfigurován tak, aby běžel v 6. UTC a tyto časy lze snadno aktualizovat v rámci `function.json` souboru pro každou Trigger.
 
-Tento projekt můžete klonovat místně, upravit ho a zadat Azure Cosmos DB prostředky pro horizontální navýšení a snížení kapacity a plán, který se má spustit. Později je můžete nasadit do předplatného Azure a zabezpečit ho pomocí identity spravované služby s oprávněními [Access Control na základě rolí](role-based-access-control.md) (RBAC) s rolí "Azure Cosmos DB operator" k nastavení propustnosti pro účty Azure Cosmos.
+Tento projekt můžete klonovat místně, upravit ho a zadat Azure Cosmos DB prostředky pro horizontální navýšení a snížení kapacity a plán, který se má spustit. Později je můžete nasadit do předplatného Azure a zabezpečit ho pomocí identity spravované služby s oprávněním [řízení přístupu na základě role Azure (RBAC)](role-based-access-control.md) s rolí "Azure Cosmos DB operator", abyste nastavili propustnost účtů Azure Cosmos.
 
 ## <a name="next-steps"></a>Další kroky
 
