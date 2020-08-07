@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: mialdrid
-ms.openlocfilehash: b4a83013d2cbeb2871a3963ec0c95144c02f4d66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 459a70c787dfdcd54fb3010655390787022c8f2e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77187013"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921618"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>Vývoj a integrace rozhraní ExpressRoute CrossConnnections API
 
@@ -30,7 +30,7 @@ Výhody přechodu na prostředek expressRouteCrossConnections:
 
 * Všechna budoucí vylepšení pro partnery ExpressRoute budou zpřístupněna v prostředku ExpressRouteCrossConnection.
 
-* Partneři můžou u prostředku expressRouteCrossConnection použít [Access Control na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/overview) . Tyto ovládací prvky mohou definovat oprávnění, pro které mohou uživatelské účty upravovat prostředek expressRouteCrossConnection a konfigurace partnerských vztahů Přidat/aktualizovat/odstranit.
+* Partneři můžou použít [řízení přístupu na základě role Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) na prostředek expressRouteCrossConnection. Tyto ovládací prvky mohou definovat oprávnění, pro které mohou uživatelské účty upravovat prostředek expressRouteCrossConnection a konfigurace partnerských vztahů Přidat/aktualizovat/odstranit.
 
 * Prostředek expressRouteCrossConnection zpřístupňuje rozhraní API, která můžou být užitečná při řešení potíží s připojením ExpressRoute. Patří sem tabulka ARP, Souhrn tabulky směrování BGP a podrobnosti tabulky směrování protokolu BGP. Tato schopnost není podporována rozhraními API pro nasazení Classic.
 

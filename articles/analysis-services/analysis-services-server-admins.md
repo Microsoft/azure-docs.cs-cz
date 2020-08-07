@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9edc43f9b2b62a3d9da9d6fba5ab52318e8b6427
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bc17d27837d5b96f06b5172fb019db873418db94
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077503"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922944"
 ---
 # <a name="manage-server-administrators"></a>Správa správců serveru
 
@@ -54,5 +54,4 @@ K určení vlastnosti asAdministrator při úpravách stávajícího serveru pou
 
 [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md)  
 [Správa databázových rolí a uživatelů](analysis-services-database-users.md)  
-[Access Control na základě rolí](../role-based-access-control/overview.md)  
-
+[Řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md)  

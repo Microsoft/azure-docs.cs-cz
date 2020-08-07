@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: Vytvoření brány založené na trasách: PowerShell'
-description: Rychlé vytvoření VPN Gateway založeného na trasách pomocí prostředí PowerShell
+description: Naučte se vytvořit službu Azure VPN Gateway založenou na směrování pomocí prostředí PowerShell. Pro připojení k místní síti použijte bránu VPN.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5cd0971b04d1bad140cf3aac29a8c153977cfa62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e6c8ec12927afbabd6c6d41ab348bad9814e82c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987640"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923199"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>Vytvoření brány sítě VPN založené na trasách pomocí prostředí PowerShell
 
@@ -20,7 +20,7 @@ Tento článek vám pomůže rychle vytvořit bránu Azure VPN Gateway založeno
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a bránu VPN založenou na směrování (bránu virtuální sítě). Po dokončení vytváření brány můžete vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a bránu VPN založenou na směrování (bránu virtuální sítě). Po dokončení vytváření brány můžete vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ### <a name="working-with-azure-powershell"></a>Práce s Azure PowerShell
 
@@ -101,7 +101,7 @@ $vnet = Get-AzVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 ```
-## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>Vytvoření brány VPN
+## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>Vytvoření brány sítě VPN
 
 Vytvoření brány VPN může trvat 45 minut nebo déle. Po dokončení brány můžete vytvořit připojení mezi vaší virtuální sítí a jinou virtuální sítí. Nebo vytvořte připojení mezi vaší virtuální sítí a místním umístěním. Pomocí rutiny [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) vytvořte bránu VPN.
 

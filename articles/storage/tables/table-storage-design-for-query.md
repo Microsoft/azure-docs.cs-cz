@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 1d157e7d2880761fb6559723bdc1d6c34baffb09
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 28a15541b9d706095bcd3d6d361bd7c983f195df
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903200"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926242"
 ---
 # <a name="design-for-querying"></a>Návrh pro dotazování
 Table service řešení mohou být náročná na čtení, náročné na zápis nebo kombinace těchto dvou. Tento článek se zaměřuje na postupy, které je potřeba mít na paměti při navrhování Table service, aby bylo možné efektivně podporovat operace čtení. Obecně platí, že návrh, který podporuje operace čtení efektivně, je také účinný pro operace zápisu. Existují však i další okolnosti, které byste měli mít na paměti při navrhování pro podporu operací zápisu popsaných v článku [Návrh pro úpravu dat](table-storage-design-for-modification.md).
@@ -88,7 +88,7 @@ Mnoho návrhů musí splňovat požadavky na povolení vyhledávání entit na z
 * [Index entity vzor](table-storage-design-patterns.md#index-entities-pattern) – Udržujte entity indexu, které umožňují efektivní hledání, které vrací seznam entit.  
 
 ## <a name="sorting-data-in-the-table-service"></a>Řazení dat v Table service
-Table service vrátí entity seřazené ve vzestupném pořadí podle **PartitionKey** a pak podle **RowKey**. Tyto klíče jsou řetězcové hodnoty a k zajištění správného seřazení číselných hodnot byste je měli převést na pevnou délku a doplnit je nulami. Pokud například hodnota ID zaměstnance, kterou použijete jako **RowKey** , je celočíselná hodnota, měli byste převést id zaměstnance **123** na **00000123**.  
+Table service vrátí entity seřazené ve vzestupném pořadí podle **PartitionKey** a pak podle **RowKey**. Tyto klíče jsou řetězcové hodnoty a k zajištění správného seřazení číselných hodnot byste je měli převést na pevnou délku a doplnit je nulami. Pokud například hodnota ID zaměstnance, kterou použijete jako **RowKey** , je celočíselná hodnota, měli byste převést ID zaměstnance **123** na **00000123**.  
 
 Mnoho aplikací má požadavky na použití dat seřazených v různých objednávkách: například řazení zaměstnanců podle názvu nebo připojení k datu. Následující vzory řeší alternativní pořadí řazení pro vaše entity:  
 

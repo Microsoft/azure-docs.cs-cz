@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c794cfb5f0d652e25007131d9ca39fb73e2218e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 98077209e8245753bb9dae79fafd6c6a10f3eafb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080671"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920717"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c"></a>Dotazování dat z prostředí Azure Time Series Insights Gen1 pomocí jazyka C #
 
@@ -25,7 +25,7 @@ Tento příklad v jazyce C# ukazuje, jak používat [rozhraní API pro dotazy Ge
 > [!TIP]
 > Prohlédněte si ukázky kódu C# Gen1 na adrese [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Vzorový kód níže znázorňuje následující funkce:
 
@@ -75,10 +75,11 @@ Případně přidejte balíčky pomocí [NuGet 2.12 +](https://www.nuget.org/):
 
 ## <a name="c-sample-code"></a>Ukázkový kód C#
 
-[!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs)]
+[!code-csharp[csharpquery-example](~/samples-tsi/gen1-sample/csharp-tsi-gen1-sample/Program.cs)]
 
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o dotazování najdete v referenčních informacích k [rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api).
 
 - Přečtěte si, jak [připojit aplikaci JavaScriptu pomocí klientské sady SDK](https://github.com/microsoft/tsiclient) pro Time Series Insights.
+Azure-Samples/Azure-Time-Series-Insights/Gen1-Sample/CSharp-TSI-Gen1-Sample/program. cs

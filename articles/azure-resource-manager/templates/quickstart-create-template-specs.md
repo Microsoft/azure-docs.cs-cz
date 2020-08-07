@@ -2,21 +2,21 @@
 title: Vytvoření a nasazení specifikace šablony
 description: Naučte se vytvořit specifikaci šablony ze šablony ARM. Pak nasaďte specifikaci šablony do skupiny prostředků v rámci vašeho předplatného.
 author: tfitzmac
-ms.date: 07/20/2020
+ms.date: 08/06/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: b2667e63f7cac5d1e3ad8475501ff909e8f6f3c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8fe9ec46050ad831430239b960a7f528af7f4dc2
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102017"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924321"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Rychlý Start: vytvoření a nasazení specifikace šablony (Preview)
 
 V tomto rychlém startu se dozvíte, jak zabalit šablonu Azure Resource Manager (šablonu ARM) do [specifikace šablony](template-specs.md) a pak nasadit tuto specifikaci šablony. Vaše specifikace šablony obsahuje šablonu ARM, která nasazuje účet úložiště.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -53,7 +53,7 @@ Níže jsou uvedené možnosti.
    New-AzTemplateSpec `
      -ResourceGroupName templateSpecRG `
      -Name storageSpec `
-     -Version "1.0.0.0" `
+     -Version "1.0" `
      -Location westus2 `
      -TemplateJsonFile "c:\Templates\azuredeploy.json"
    ```
@@ -86,7 +86,7 @@ Níže jsou uvedené možnosti.
                    {
                        "type": "versions",
                        "apiVersion": "2019-06-01-preview",
-                       "name": "1.0.0.1",
+                       "name": "1.0",
                        "location": "westus2",
                        "dependsOn": [ "storageSpec" ],
                        "properties": {
@@ -195,7 +195,7 @@ Nyní můžete nasadit specifikaci šablony. nasazení specifikace šablony je s
 1. Získejte ID prostředku specifikace šablony.
 
    ```azurepowershell
-   $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0.0.0").Version.Id
+   $id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name storageSpec -Version "1.0").Version.Id
    ```
 
 1. Nasaďte specifikaci šablony.
@@ -203,7 +203,16 @@ Nyní můžete nasadit specifikaci šablony. nasazení specifikace šablony je s
    ```azurepowershell
    New-AzResourceGroupDeployment `
      -TemplateSpecId $id `
-     -ResourceGroupName demoRG
+     -ResourceGroupName storageRG
+   ```
+
+1. Zadejte parametry přesně stejně jako u šablony ARM. Znovu nasaďte specifikaci šablony s parametrem pro typ účtu úložiště.
+
+   ```azurepowershell
+   New-AzResourceGroupDeployment `
+     -TemplateSpecId $id `
+     -ResourceGroupName storageRG `
+     -StorageAccountType Standard_GRS
    ```
 
 # <a name="arm-template"></a>[Šablona ARM](#tab/azure-resource-manager)
@@ -224,7 +233,7 @@ Nyní můžete nasadit specifikaci šablony. nasazení specifikace šablony je s
                "name": "demo",
                "properties": {
                    "templateLink": {
-                       "id": "[resourceId('templateSpecRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0.0.0')]"
+                       "id": "[resourceId('templateSpecRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0')]"
                    },
                    "parameters": {
                    },

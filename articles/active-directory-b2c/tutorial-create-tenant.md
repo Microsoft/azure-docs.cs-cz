@@ -1,6 +1,6 @@
 ---
 title: Kurz – vytvoření tenanta Azure Active Directory B2C
-description: Naučte se připravit registraci aplikací vytvořením klienta Azure Active Directory B2C pomocí Azure Portal.
+description: V tomto kurzu se dozvíte, jak připravit registraci aplikací vytvořením klienta Azure Active Directory B2C pomocí Azure Portal.
 services: B2C
 author: msmimart
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 044a2d2cb23e36234256b9b19363462e542176fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbccbcf1ac85b63c5610b9904a84e5e6e3fb6c63
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806846"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922189"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Kurz: Vytvoření tenanta Azure Active Directory B2C
 
@@ -31,11 +31,13 @@ V tomto článku získáte informace o těchto tématech:
 
 Naučíte se, jak zaregistrovat aplikaci v dalším kurzu.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+## <a name="prerequisites"></a>Požadavky
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Vytvoření tenanta Azure AD B2C
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/). Přihlaste se pomocí účtu Azure, kterému byla přiřazena alespoň role [Přispěvatel](../role-based-access-control/built-in-roles.md) v rámci předplatného nebo skupiny prostředků v rámci předplatného.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/). Přihlaste se pomocí účtu Azure, kterému byla přiřazena alespoň role [Přispěvatel](../role-based-access-control/built-in-roles.md) v rámci předplatného nebo skupiny prostředků v rámci předplatného.
 
 1. Vyberte adresář, který obsahuje vaše předplatné.
 
@@ -82,7 +84,7 @@ Místo hledání *Azure AD B2C* ve **všech službách** pokaždé, když chcete
 
 Tuto operaci je nutné provést pouze jednou. Před provedením tohoto postupu se ujistěte, že jste přešli do adresáře, který obsahuje Azure AD B2C tenanta, jak je popsáno v předchozí části, a [Vyberte svůj adresář TENANTA B2C](#select-your-b2c-tenant-directory).
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V nabídce Azure Portal vyberte **všechny služby**.
 1. Ve vyhledávacím poli **všechny služby** vyhledejte **Azure AD B2C**, najeďte myší na výsledek hledání a potom vyberte ikonu hvězdičky v popisku. **Azure AD B2C** se nyní zobrazí v Azure Portal v části **Oblíbené**.
 1. Pokud chcete změnit pozici vaší nové oblíbené položky, přejděte do nabídky Azure Portal, vyberte **Azure AD B2C**a přetáhněte ji nahoru nebo dolů na požadovanou pozici.

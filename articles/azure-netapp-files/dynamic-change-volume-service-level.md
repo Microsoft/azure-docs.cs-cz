@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/06/2020
 ms.author: b-juche
-ms.openlocfilehash: e19db61efbf93e3191d5780d07952f3d195c7a59
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e974fb51ac36083e6ed8934afaa7a3e36ab8c08e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533036"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923862"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Dynamická změna úrovně služeb svazku
 
@@ -33,8 +33,7 @@ Fond kapacit, na který chcete přesunout svazek, již existuje. Fond kapacit m�
 
 * Po přesunu svazku do jiného fondu kapacity už nebudete mít přístup k předchozím protokolům aktivit svazků a metrikám svazků. Svazek se spustí s novými protokoly aktivit a metrikami v rámci nového fondu kapacit.
 
-* Pokud přesunete svazek do fondu kapacity vyšší úrovně služby (například přesunete z úrovně služeb *Standard* na *Premium* nebo *Ultra* ), musíte počkat aspoň sedm dní, než budete moct svazek přesunout do fondu kapacity nižší úrovně služby (například přesun z *Ultra* na *Premium* nebo *Standard*).  
-Tato čekací doba se nevztahuje na případ, kdy svazek přesunete do fondu kapacit, který má stejnou úroveň služby nebo nižší úroveň služby.
+* Pokud přesunete svazek do fondu kapacity vyšší úrovně služby (například přesunete z úrovně služeb *Standard* na *Premium* nebo *Ultra* ), musíte počkat aspoň sedm dní, než budete moct tento svazek *znovu* přesunout do fondu kapacity nižší úrovně služby (například přesunutí z *Ultra* na *Premium* nebo *Standard*).  
 
 ## <a name="register-the-feature"></a>Zaregistrujte funkci.
 

@@ -1,24 +1,24 @@
 ---
 title: 'Vytvoření VPN Gateway Azure založeného na trasách: CLI'
-description: Rychlé informace o tom, jak vytvořit VPN Gateway pomocí rozhraní příkazového řádku
+description: Naučte se vytvořit službu Azure VPN Gateway založenou na směrování pomocí Azure CLI. Pro připojení k místní síti použijte bránu VPN.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0cb03f827c8174932f235ec8ea327225da76ef4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c207d2c5b2817bacd75ffcd12c9b4c43fe86f55
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987696"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923318"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>Vytvoření brány sítě VPN založené na trasách pomocí rozhraní příkazového řádku
 
 Tento článek vám pomůže rychle vytvořit bránu Azure VPN Gateway založenou na směrování pomocí Azure CLI. Brána sítě VPN se používá při vytváření připojení VPN k místní síti. K připojení virtuální sítě můžete použít taky bránu VPN.
 
-Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a bránu VPN založenou na směrování (bránu virtuální sítě). Brána virtuální sítě může vytvořit několik než 45 minut. Po dokončení vytváření brány můžete vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a bránu VPN založenou na směrování (bránu virtuální sítě). Brána virtuální sítě může vytvořit několik než 45 minut. Po dokončení vytváření brány můžete vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -70,7 +70,7 @@ az network public-ip create \
   --allocation-method Dynamic 
 ```
 
-## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>Vytvoření brány VPN
+## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>Vytvoření brány sítě VPN
 
 Vytvořte bránu VPN pomocí příkazu [az network vnet-gateway create](/cli/azure/group).
 

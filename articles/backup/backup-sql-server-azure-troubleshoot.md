@@ -3,18 +3,18 @@ title: Řešení potíží se zálohováním databáze SQL Server
 description: Informace o řešení potíží při zálohování SQL Server databází běžících na virtuálních počítačích Azure s Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 879a7edab77bad9671bea51e0e496f3eca96ee81
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f4049cca317d254bd5ee120e47cedc4cd42300e8
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538713"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926480"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
 Tento článek poskytuje informace o řešení potíží pro SQL Server databáze běžící na virtuálních počítačích Azure.
 
-Další informace o procesu zálohování a omezeních najdete v tématu [informace o SQL Server Backup ve virtuálních počítačích Azure](sql-support-matrix.md#feature-consideration-and-limitations).
+Další informace o procesu zálohování a omezeních najdete v tématu [informace o SQL Server Backup ve virtuálních počítačích Azure](sql-support-matrix.md#feature-considerations-and-limitations).
 
 ## <a name="sql-server-permissions"></a>SQL Server oprávnění
 
@@ -123,7 +123,7 @@ V některých případech se může stát, že při operacích zálohování a o
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Záloha protokolů použitá k obnovení obsahuje hromadně protokolované změny. Nedá se použít k zastavení v libovolném bodě v čase podle pokynů SQL. | Když je databáze v režimu hromadného obnovení, data mezi hromadně protokolovanými transakcemi a další transakce protokolu se nedají obnovit. | Vyberte jiný bod v čase pro obnovení. [Přečtěte si další informace](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15).
+| Záloha protokolů použitá k obnovení obsahuje hromadně protokolované změny. Nedá se použít k zastavení v libovolném bodě v čase podle pokynů SQL. | Když je databáze v režimu hromadného obnovení, data mezi hromadně protokolovanými transakcemi a další transakce protokolu se nedají obnovit. | Vyberte jiný bod v čase pro obnovení. [Další informace](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15).
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 

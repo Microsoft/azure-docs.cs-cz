@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/04/2020
-ms.openlocfilehash: 36b94f53d3a9113c3980c94c3b8eff0713f11814
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/06/2020
+ms.openlocfilehash: ff8bb1fea863c8ba08434df9c718199ad9f51652
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446538"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925783"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Log Analytics
 Agent Azure Log Analytics byl vyvinut pro komplexní správu napříč virtuálními počítači v jakémkoli cloudu, v místních počítačích a monitorované pomocí [System Center Operations Manager](/system-center/scom/). Agenti systému Windows a Linux odesílají shromážděná data z různých zdrojů do vašeho pracovního prostoru Log Analytics v Azure Monitor a také všechny jedinečné protokoly nebo metriky, jak jsou definovány v řešení monitorování. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitor, jako jsou [Azure monitor pro virtuální počítače](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)a [Azure Automation](../../automation/automation-intro.md).
@@ -122,11 +122,19 @@ Od verzí vydaných po srpna 2018 provedeme následující změny modelu podpory
  - Ubuntu, Debian:`apt-get install -y python2`
  - SUSE`zypper install -y python2`
 
-Spustitelný soubor python2 musí mít alias na Python, a to pomocí následujícího příkazu:
+Spustitelný soubor python2 musí mít alias na *Python* pomocí následujícího postupu:
 
-```
-alternatives --set python `which python2`
-```
+1. Spusťte následující příkaz, abyste zobrazili jakýkoli aktuální alias Pythonu, pokud nějaký existuje. Pokud tomu tak je, poznamenejte si prioritu pro další krok.
+ 
+    ```
+    sudo update-alternatives ––display python
+    ```
+
+2. Spusťte následující příkaz. Nahraďte *\<priority\>* číslem větším, než má jakákoli priorita stávající vazby, nebo 1, pokud žádné odkazy aktuálně neexistují.
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 <priority>
+    ```
 
 ### <a name="supported-distros"></a>Podporované distribuce
 
@@ -194,7 +202,7 @@ Následující tabulka uvádí informace o konfiguraci proxy serveru a brány fi
 |*.blob.core.windows.net |Port 443 |Odchozí|Ano |
 |*.azure-automation.net |Port 443 |Odchozí|Ano |
 
-Informace o bráně firewall požadované pro Azure Government najdete v tématu [správa Azure Government](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs). 
+Informace o bráně firewall požadované pro Azure Government najdete v tématu [správa Azure Government](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). 
 
 Pokud plánujete použít Azure Automation Hybrid Runbook Worker k připojení a registraci ve službě Automation pro použití sad Runbook nebo řešení správy ve vašem prostředí, musí mít přístup k číslu portu a adresám URL popsaným v tématu [Konfigurace sítě pro Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 

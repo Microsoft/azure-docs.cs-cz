@@ -3,19 +3,19 @@ title: Prostředky, role a řízení přístupu v Azure Application Insights | M
 description: Vlastníci, přispěvatelé a čtenáři přehledů vaší organizace.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 38c7d7bcbcf193149fd8ab5e632674b6f8530a44
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3d69ad7eeb7c8dd32c2e3cb286f9596bed7fe042
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325691"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926497"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Prostředky, role a řízení přístupu v Application Insights
 
-Pomocí [řízení přístupu na základě rolí v Microsoft Azure](../../role-based-access-control/role-assignments-portal.md)můžete řídit, kdo má ke svým datům přístup pro čtení a aktualizace dat v Azure [Application Insights][start].
+Pomocí [řízení přístupu založeného na rolích Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)můžete řídit, kdo má ke svým datům přístup pro čtení a aktualizace dat v Azure [Application Insights][start].
 
 > [!IMPORTANT]
-> Přiřaďte přístup uživatelům ve **skupině prostředků nebo předplatném** , ke kterému patří váš prostředek aplikace – ne do samotného prostředku. Přiřaďte roli **Přispěvatel komponent Application Insights** . Tím se zajistí jednotné řízení přístupu k webovým testům a výstrahám spolu s vaším prostředkem aplikace. [Přečtěte si další informace](#access).
+> Přiřaďte přístup uživatelům ve **skupině prostředků nebo předplatném** , ke kterému patří váš prostředek aplikace – ne do samotného prostředku. Přiřaďte roli **Přispěvatel komponent Application Insights** . Tím se zajistí jednotné řízení přístupu k webovým testům a výstrahám spolu s vaším prostředkem aplikace. [Další informace](#access).
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -101,7 +101,7 @@ Pokud požadovaný uživatel v adresáři není, můžete pozvat kohokoli s úč
 
 ## <a name="related-content"></a>Související obsah
 
-* [Řízení přístupu na základě role v Azure](../../role-based-access-control/role-assignments-portal.md)
+* [Řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="powershell-query-to-determine-role-membership"></a>Dotaz PowerShellu k určení členství v rolích
 
@@ -135,4 +135,3 @@ $resourceGroup = "RGNAME"
 [group]: ../../azure-resource-manager/management/overview.md
 [portal]: https://portal.azure.com/
 [start]: ./app-insights-overview.md
-

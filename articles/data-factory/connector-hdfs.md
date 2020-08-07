@@ -9,16 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/15/2020
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 8041ce07c08c3b6063e2a1b3c7b55b1cec59b19a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 43ab59f109e311d9d7312b77d34321fa98a952d6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087754"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926803"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Kopírování dat ze serveru HDFS pomocí Azure Data Factory
+
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-hdfs-connector.md)
 > * [Aktuální verze](connector-hdfs.md)
@@ -57,14 +58,14 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro propojenou službu HDFS jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost *Type* musí být nastavena na *HDFS*. | Yes |
-| url |Adresa URL k HDFS |Yes |
-| authenticationType | Povolené hodnoty jsou *anonymní* nebo *Windows*. <br><br> Pokud chcete nastavit místní prostředí, přečtěte si část [použití ověřování protokolem Kerberos pro konektor HDFS](#use-kerberos-authentication-for-the-hdfs-connector) . |Yes |
+| typ | Vlastnost *Type* musí být nastavena na *HDFS*. | Ano |
+| url |Adresa URL k HDFS |Ano |
+| authenticationType | Povolené hodnoty jsou *anonymní* nebo *Windows*. <br><br> Pokud chcete nastavit místní prostředí, přečtěte si část [použití ověřování protokolem Kerberos pro konektor HDFS](#use-kerberos-authentication-for-the-hdfs-connector) . |Ano |
 | userName |Uživatelské jméno pro ověřování systému Windows. Pro ověřování protokolem Kerberos zadejte ** \<username> @ \<domain> . com**. |Ano (pro ověřování systému Windows) |
 | heslo |Heslo pro ověřování systému Windows. Označte toto pole jako SecureString a bezpečně ho uložte do své datové továrny nebo [vytvořte odkaz na tajný kód uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). |Ano (pro ověřování systému Windows) |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud modul runtime integrace neurčíte, služba použije výchozí Azure Integration Runtime. |No |
+| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud modul runtime integrace neurčíte, služba použije výchozí Azure Integration Runtime. |Ne |
 
 **Příklad: použití anonymního ověřování**
 
@@ -118,11 +119,11 @@ Pro propojenou službu HDFS jsou podporovány následující vlastnosti:
 
 V části `location` nastavení v datové sadě založené na formátu jsou podporovány následující vlastnosti HDFS:
 
-| Vlastnost   | Popis                                                  | Vyžadováno |
+| Vlastnost   | Popis                                                  | Povinné |
 | ---------- | ------------------------------------------------------------ | -------- |
-| typ       | Vlastnost *Type* v rámci `location` datové sady musí být nastavená na *HdfsLocation*. | Yes      |
-| folderPath | Cesta ke složce Pokud chcete použít zástupný znak k filtrování složky, přeskočte toto nastavení a zadejte cestu v nastavení zdroje aktivity. | No       |
-| fileName   | Název souboru pod zadaným folderPath. Pokud chcete k filtrování souborů použít zástupný znak, přeskočte toto nastavení a zadejte název souboru v nastavení zdroje aktivity. | No       |
+| typ       | Vlastnost *Type* v rámci `location` datové sady musí být nastavená na *HdfsLocation*. | Ano      |
+| folderPath | Cesta ke složce Pokud chcete použít zástupný znak k filtrování složky, přeskočte toto nastavení a zadejte cestu v nastavení zdroje aktivity. | Ne       |
+| fileName   | Název souboru pod zadaným folderPath. Pokud chcete k filtrování souborů použít zástupný znak, přeskočte toto nastavení a zadejte název souboru v nastavení zdroje aktivity. | Ne       |
 
 **Příklad:**
 
@@ -160,23 +161,23 @@ V části `location` nastavení v datové sadě založené na formátu jsou podp
 
 Následující vlastnosti jsou podporovány pro HDFS v `storeSettings` nastavení ve zdroji kopírování založeném na formátu:
 
-| Vlastnost                 | Popis                                                  | Vyžadováno                                      |
+| Vlastnost                 | Popis                                                  | Povinné                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| typ                     | Vlastnost *Type* v poli `storeSettings` musí být nastavená na **HdfsReadSettings**. | Yes                                           |
+| typ                     | Vlastnost *Type* v poli `storeSettings` musí být nastavená na **HdfsReadSettings**. | Ano                                           |
 | ***Vyhledejte soubory ke zkopírování.*** |  |  |
 | MOŽNOST 1: statická cesta<br> | Zkopírujte ze složky nebo cesty k souboru, který je zadaný v datové sadě. Pokud chcete zkopírovat všechny soubory ze složky, zadejte také `wildcardFileName` jako `*` . |  |
-| MOŽNOST 2: zástupný znak<br>- wildcardFolderPath | Cesta ke složce se zástupnými znaky pro filtrování zdrojových složek. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). Použijte `^` k ukončení, jestli má vlastní název složky zástupný znak nebo tento řídicí znak uvnitř. <br>Další příklady najdete v tématu [příklady složek a filtru souborů](#folder-and-file-filter-examples). | No                                            |
-| MOŽNOST 2: zástupný znak<br>- wildcardFileName | Název souboru se zástupnými znaky v zadaném folderPath/wildcardFolderPath pro filtrování zdrojových souborů. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); použijte `^` k Escape, jestli má váš skutečný název složky zástupný znak nebo tento řídicí znak uvnitř.  Další příklady najdete v tématu [příklady složek a filtru souborů](#folder-and-file-filter-examples). | Yes |
-| MOŽNOST 3: seznam souborů<br>- fileListPath | Určuje, že se má zkopírovat zadaná sada souborů. Najeďte na textový soubor, který obsahuje seznam souborů, které chcete zkopírovat (jeden soubor na řádek, přičemž relativní cesta k cestě je nakonfigurovaná v datové sadě).<br/>Když použijete tuto možnost, nezadávejte název souboru v datové sadě. Další příklady najdete v tématu [Příklady seznamů souborů](#file-list-examples). |No |
+| MOŽNOST 2: zástupný znak<br>- wildcardFolderPath | Cesta ke složce se zástupnými znaky pro filtrování zdrojových složek. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). Použijte `^` k ukončení, jestli má vlastní název složky zástupný znak nebo tento řídicí znak uvnitř. <br>Další příklady najdete v tématu [příklady složek a filtru souborů](#folder-and-file-filter-examples). | Ne                                            |
+| MOŽNOST 2: zástupný znak<br>- wildcardFileName | Název souboru se zástupnými znaky v zadaném folderPath/wildcardFolderPath pro filtrování zdrojových souborů. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); použijte `^` k Escape, jestli má váš skutečný název složky zástupný znak nebo tento řídicí znak uvnitř.  Další příklady najdete v tématu [příklady složek a filtru souborů](#folder-and-file-filter-examples). | Ano |
+| MOŽNOST 3: seznam souborů<br>- fileListPath | Určuje, že se má zkopírovat zadaná sada souborů. Najeďte na textový soubor, který obsahuje seznam souborů, které chcete zkopírovat (jeden soubor na řádek, přičemž relativní cesta k cestě je nakonfigurovaná v datové sadě).<br/>Když použijete tuto možnost, nezadávejte název souboru v datové sadě. Další příklady najdete v tématu [Příklady seznamů souborů](#file-list-examples). |Ne |
 | ***Další nastavení*** |  | |
-| zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Když `recursive` je nastaveno na *hodnotu true* a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky. <br>Povolené hodnoty jsou *true* (výchozí) a *false*.<br>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . |No |
-| modifiedDatetimeStart    | Soubory jsou filtrovány na základě *Poslední změny*atributu. <br>Soubory jsou vybrány, pokud čas poslední změny spadá do rozsahu `modifiedDatetimeStart` až `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu *2018-12-01T05:00:00Z*. <br> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu není použit žádný filtr atributů souboru.  Když `modifiedDatetimeStart` má hodnotu DateTime, ale má hodnotu `modifiedDatetimeEnd` null, znamená, že jsou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Když `modifiedDatetimeEnd` má hodnotu DateTime, ale `modifiedDatetimeStart` je null, znamená to, že jsou vybrány soubory, jejichž atribut Last Modified je menší, než hodnota DateTime.<br/>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . | No                                            |
-| maxConcurrentConnections | Počet připojení, která se můžou souběžně připojit k úložišti úložiště. Zadejte hodnotu pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | No                                            |
+| zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Když `recursive` je nastaveno na *hodnotu true* a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky. <br>Povolené hodnoty jsou *true* (výchozí) a *false*.<br>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . |Ne |
+| modifiedDatetimeStart    | Soubory jsou filtrovány na základě *Poslední změny*atributu. <br>Soubory jsou vybrány, pokud čas poslední změny spadá do rozsahu `modifiedDatetimeStart` až `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu *2018-12-01T05:00:00Z*. <br> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu není použit žádný filtr atributů souboru.  Když `modifiedDatetimeStart` má hodnotu DateTime, ale má hodnotu `modifiedDatetimeEnd` null, znamená, že jsou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Když `modifiedDatetimeEnd` má hodnotu DateTime, ale `modifiedDatetimeStart` je null, znamená to, že jsou vybrány soubory, jejichž atribut Last Modified je menší, než hodnota DateTime.<br/>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . | Ne                                            |
+| maxConcurrentConnections | Počet připojení, která se můžou souběžně připojit k úložišti úložiště. Zadejte hodnotu pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | Ne                                            |
 | ***Nastavení DistCp*** |  | |
-| distcpSettings | Skupina vlastností, která se má použít při použití HDFS DistCp | No |
+| distcpSettings | Skupina vlastností, která se má použít při použití HDFS DistCp | Ne |
 | resourceManagerEndpoint | Nekonečný koncový bod (ještě jiný projednání prostředků) | Ano, pokud se používá DistCp |
 | tempScriptPath | Cesta ke složce, která se používá k uložení skriptu příkazu Temp DistCp Soubor skriptu je vygenerován nástrojem Data Factory a po dokončení úlohy kopírování bude odebrán. | Ano, pokud se používá DistCp |
-| distcpOptions | Další možnosti, které jsou k dispozici pro příkaz DistCp | No |
+| distcpOptions | Další možnosti, které jsou k dispozici pro příkaz DistCp | Ne |
 
 **Příklad:**
 
@@ -253,10 +254,10 @@ Pokud chcete pomocí DistCp kopírovat soubory z HDFS do úložiště objektů B
 
 * Služby MapReduce a PŘÍZ jsou povoleny.  
 * Verze PŘÍZe je 2,5 nebo novější.  
-* HDFS Server je integrovaný s vaším cílovým úložištěm dat: Azure Blob Storage nebo Azure Data Lake Store:  
+* HDFS Server je integrovaný s vaším cílovým úložištěm dat: **Azure Blob Storage** nebo **Azure Data Lake Store (adls Gen1)**: 
 
     - Systém souborů BLOB v Azure je nativně podporovaný od Hadoop 2,7. Stačí jenom zadat cestu JAR v konfiguraci prostředí Hadoop.
-    - Systém souborů Azure Data Lake Store je zabalený počínaje systémem Hadoop 3.0.0-Alpha1. Pokud je verze clusteru Hadoop starší než tato verze, bude nutné ručně naimportovat Azure Data Lake Storage Gen2 balíčky JAR (Azure-datalake-Store. jar) do clusteru z [tohoto místa](https://hadoop.apache.org/releases.html)a zadat cestu k souboru jar v konfiguraci prostředí Hadoop.
+    - Systém souborů Azure Data Lake Store je zabalený počínaje systémem Hadoop 3.0.0-Alpha1. Pokud je verze clusteru Hadoop starší než tato verze, bude nutné ručně naimportovat Azure Data Lake Store balíčky JAR (Azure-datalake-Store. jar) do clusteru z [tohoto místa](https://hadoop.apache.org/releases.html)a zadat cestu k souboru jar v konfiguraci prostředí Hadoop.
 
 * Připravte dočasnou složku v HDFS. Tato dočasná složka se používá k uložení skriptu prostředí DistCp, takže bude zabírat místo na úrovni KB.
 * Ujistěte se, že uživatelský účet, který je k dispozici v rámci propojené služby HDFS, má oprávnění k těmto akcím:
@@ -436,15 +437,15 @@ Informace o vlastnostech aktivity vyhledávání najdete v tématu [aktivita vyh
 
 ### <a name="legacy-dataset-model"></a>Model zastaralé sady dat
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost *Type* datové sady musí být nastavená na *Shared* . |Yes |
-| folderPath | Cesta ke složce Je podporován filtr zástupných znaků. Povolené zástupné znaky jsou `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). `^` Pokud má skutečný název souboru zástupný znak nebo tento řídicí znak v rámci, použijte k Escape. <br/><br/>Příklady: RootFolder/podsložce/, další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). |Yes |
-| fileName |  Název nebo zástupný filtr pro soubory v zadaném "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada bude ukazovat na všechny soubory ve složce. <br/><br/>Pro filtr je povolený zástupný znak `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá nule nebo jednomu znaku).<br/>-Příklad 1:`"fileName": "*.csv"`<br/>-Příklad 2:`"fileName": "???20180427.txt"`<br/>Použijte `^` k ukončení, jestli má vlastní název složky zástupný znak nebo tento řídicí znak uvnitř. |No |
-| modifiedDatetimeStart | Soubory jsou filtrovány na základě *Poslední změny*atributu. Soubory jsou vybrány, pokud čas poslední změny spadá do rozsahu `modifiedDatetimeStart` až `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu *2018-12-01T05:00:00Z*. <br/><br/> Počítejte s tím, že pokud chcete použít filtr souborů pro velký počet souborů, je nutné povolit toto nastavení, pokud bude mít vliv na celkový výkon přesunu dat. <br/><br/> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu není použit žádný filtr atributů souboru.  Když `modifiedDatetimeStart` má hodnotu DateTime, ale má hodnotu `modifiedDatetimeEnd` null, znamená, že jsou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Když `modifiedDatetimeEnd` má hodnotu DateTime, ale `modifiedDatetimeStart` je null, znamená to, že jsou vybrány soubory, jejichž atribut Last Modified je menší, než hodnota DateTime.| No |
-| modifiedDatetimeEnd | Soubory jsou filtrovány na základě *Poslední změny*atributu. Soubory jsou vybrány, pokud čas poslední změny spadá do rozsahu `modifiedDatetimeStart` až `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu *2018-12-01T05:00:00Z*. <br/><br/> Počítejte s tím, že pokud chcete použít filtr souborů pro velký počet souborů, je nutné povolit toto nastavení, pokud bude mít vliv na celkový výkon přesunu dat. <br/><br/> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu není použit žádný filtr atributů souboru.  Když `modifiedDatetimeStart` má hodnotu DateTime, ale má hodnotu `modifiedDatetimeEnd` null, znamená, že jsou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Když `modifiedDatetimeEnd` má hodnotu DateTime, ale `modifiedDatetimeStart` je null, znamená to, že jsou vybrány soubory, jejichž atribut Last Modified je menší, než hodnota DateTime.| No |
+| typ | Vlastnost *Type* datové sady musí být nastavená na *Shared* . |Ano |
+| folderPath | Cesta ke složce Je podporován filtr zástupných znaků. Povolené zástupné znaky jsou `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). `^` Pokud má skutečný název souboru zástupný znak nebo tento řídicí znak v rámci, použijte k Escape. <br/><br/>Příklady: RootFolder/podsložce/, další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). |Ano |
+| fileName |  Název nebo zástupný filtr pro soubory v zadaném "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada bude ukazovat na všechny soubory ve složce. <br/><br/>Pro filtr je povolený zástupný znak `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá nule nebo jednomu znaku).<br/>-Příklad 1:`"fileName": "*.csv"`<br/>-Příklad 2:`"fileName": "???20180427.txt"`<br/>Použijte `^` k ukončení, jestli má vlastní název složky zástupný znak nebo tento řídicí znak uvnitř. |Ne |
+| modifiedDatetimeStart | Soubory jsou filtrovány na základě *Poslední změny*atributu. Soubory jsou vybrány, pokud čas poslední změny spadá do rozsahu `modifiedDatetimeStart` až `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu *2018-12-01T05:00:00Z*. <br/><br/> Počítejte s tím, že pokud chcete použít filtr souborů pro velký počet souborů, je nutné povolit toto nastavení, pokud bude mít vliv na celkový výkon přesunu dat. <br/><br/> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu není použit žádný filtr atributů souboru.  Když `modifiedDatetimeStart` má hodnotu DateTime, ale má hodnotu `modifiedDatetimeEnd` null, znamená, že jsou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Když `modifiedDatetimeEnd` má hodnotu DateTime, ale `modifiedDatetimeStart` je null, znamená to, že jsou vybrány soubory, jejichž atribut Last Modified je menší, než hodnota DateTime.| Ne |
+| modifiedDatetimeEnd | Soubory jsou filtrovány na základě *Poslední změny*atributu. Soubory jsou vybrány, pokud čas poslední změny spadá do rozsahu `modifiedDatetimeStart` až `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu *2018-12-01T05:00:00Z*. <br/><br/> Počítejte s tím, že pokud chcete použít filtr souborů pro velký počet souborů, je nutné povolit toto nastavení, pokud bude mít vliv na celkový výkon přesunu dat. <br/><br/> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu není použit žádný filtr atributů souboru.  Když `modifiedDatetimeStart` má hodnotu DateTime, ale má hodnotu `modifiedDatetimeEnd` null, znamená, že jsou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Když `modifiedDatetimeEnd` má hodnotu DateTime, ale `modifiedDatetimeStart` je null, znamená to, že jsou vybrány soubory, jejichž atribut Last Modified je menší, než hodnota DateTime.| Ne |
 | formát | Pokud chcete kopírovat soubory mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát jak v definicích vstupní, tak i ve výstupní datové sadě.<br/><br/>Chcete-li analyzovat soubory s konkrétním formátem, jsou podporovány následující typy formátu souboru: *TextFormat*, *JsonFormat*, *AvroFormat*, *OrcFormat*, *ParquetFormat*. V části formát nastavte vlastnost *typ* na jednu z těchto hodnot. Další informace najdete v oddílech [Formát textu](supported-file-formats-and-compression-codecs-legacy.md#text-format), [formát JSON](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Formát Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format), formát [ORC](supported-file-formats-and-compression-codecs-legacy.md#orc-format)a formát [Parquet](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) . |Ne (jenom pro binární scénář kopírování) |
-| komprese | Zadejte typ a úroveň komprese dat. Další informace najdete v tématu [podporované formáty souborů a kompresní kodeky](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Podporované typy jsou: *gzip*, *Deflate*, *bzip2*a *ZipDeflate*.<br/>Podporované úrovně: *optimální* a *nejrychlejší*. |No |
+| komprese | Zadejte typ a úroveň komprese dat. Další informace najdete v tématu [podporované formáty souborů a kompresní kodeky](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Podporované typy jsou: *gzip*, *Deflate*, *bzip2*a *ZipDeflate*.<br/>Podporované úrovně: *optimální* a *nejrychlejší*. |Ne |
 
 >[!TIP]
 >Chcete-li zkopírovat všechny soubory ve složce, zadejte pouze **FolderPath** .<br>Chcete-li zkopírovat jeden soubor se zadaným názvem, zadejte **FolderPath** s částí **složky a názvem souboru s** názvem.<br>Chcete-li zkopírovat podmnožinu souborů ve složce, zadejte **FolderPath** s částí složky a **názvem souboru** s filtrem zástupných znaků.
@@ -481,15 +482,15 @@ Informace o vlastnostech aktivity vyhledávání najdete v tématu [aktivita vyh
 
 ### <a name="legacy-copy-activity-source-model"></a>Starší zdrojový model aktivity kopírování
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost *Type* zdroje aktivity kopírování musí být nastavená na *HdfsSource*. |Yes |
-| zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Pokud je rekurzivní nastavení nastaveno na *hodnotu true* a jímka je úložiště založené na souborech, prázdná složka nebo podsložka nebude kopírována ani vytvořena v jímky.<br/>Povolené hodnoty jsou *true* (výchozí) a *false*. | No |
-| distcpSettings | Skupina vlastností při použití HDFS DistCp. | No |
+| typ | Vlastnost *Type* zdroje aktivity kopírování musí být nastavená na *HdfsSource*. |Ano |
+| zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Pokud je rekurzivní nastavení nastaveno na *hodnotu true* a jímka je úložiště založené na souborech, prázdná složka nebo podsložka nebude kopírována ani vytvořena v jímky.<br/>Povolené hodnoty jsou *true* (výchozí) a *false*. | Ne |
+| distcpSettings | Skupina vlastností při použití HDFS DistCp. | Ne |
 | resourceManagerEndpoint | Správce prostředků koncový bod PŘÍZe | Ano, pokud se používá DistCp |
 | tempScriptPath | Cesta ke složce, která se používá k uložení skriptu příkazu Temp DistCp Soubor skriptu je vygenerován nástrojem Data Factory a po dokončení úlohy kopírování bude odebrán. | Ano, pokud se používá DistCp |
-| distcpOptions | Další možnosti jsou k dispozici pro příkaz DistCp. | No |
-| maxConcurrentConnections | Počet připojení, která se můžou souběžně připojit k úložišti úložiště. Zadejte hodnotu pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | No |
+| distcpOptions | Další možnosti jsou k dispozici pro příkaz DistCp. | Ne |
+| maxConcurrentConnections | Počet připojení, která se můžou souběžně připojit k úložišti úložiště. Zadejte hodnotu pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | Ne |
 
 **Příklad: HDFS zdroj v aktivitě kopírování pomocí DistCp**
 

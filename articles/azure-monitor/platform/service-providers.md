@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 766fb9fbe50f8a138eae020082680204872a653a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0869de4ccfe89cc3919ec2d2d80aa3e18749039a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87315441"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921084"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Protokoly Azure Monitor pro poskytovatele služeb
 
@@ -40,7 +40,7 @@ Existují dva způsoby, jak můžou správci poskytovatele služeb získat pří
 
 Mezi výhody distribuované architektury patří:
 
-* Zákazník může ověřit konkrétní úrovně oprávnění prostřednictvím [delegované správy prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md)nebo může spravovat přístup k protokolům pomocí vlastního [přístupu založeného na rolích](../../role-based-access-control/overview.md).
+* Zákazník může ověřit konkrétní úrovně oprávnění prostřednictvím [delegované správy prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md)nebo může spravovat přístup k protokolům pomocí vlastního [řízení přístupu založeného na rolích Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 * Protokoly je možné shromažďovat ze všech typů prostředků, nikoli jenom z dat virtuálních počítačů založených na agentech. Například protokoly auditu Azure.
 * Každý zákazník může mít různá nastavení pro svůj pracovní prostor, jako je například uchovávání a capping dat.
 * Izolace mezi zákazníky za zákonné a dodržování předpisů.
@@ -90,4 +90,3 @@ Existují dvě možnosti implementace protokolů v centrálním umístění:
 * Generování souhrnných sestav pomocí [Power BI](./powerbi.md)
 
 * Zaveďte zákazníky do [správy delegovaných prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md).
-

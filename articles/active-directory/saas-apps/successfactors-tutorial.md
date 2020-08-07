@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9b141f3722a722a57e5ec7c5662ded4b9a8c790
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 1de6af0f30453d40348e9e836b2a5989652f49f1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170424"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925052"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SuccessFactors
 
@@ -116,7 +116,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     - `https://<companyname>.sapsf.cn/<companyname>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta SuccessFactors](https://www.successfactors.com/content/ssf-site/en/support.html) .
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta SuccessFactors](https://www.sap.com/support.html) .
 
 4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -227,7 +227,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 Aby se uživatelé Azure AD mohli přihlašovat k SuccessFactors, musí se zřídit v SuccessFactors. V případě SuccessFactors je zřizování ručním úkolem.
 
-Pokud chcete získat uživatele vytvořené v SuccessFactors, musíte se obrátit na [tým podpory SuccessFactors](https://www.successfactors.com/content/ssf-site/en/support.html).
+Pokud chcete získat uživatele vytvořené v SuccessFactors, musíte se obrátit na [tým podpory SuccessFactors](https://www.sap.com/support.html).
 
 ## <a name="test-sso"></a>Test SSO 
 
