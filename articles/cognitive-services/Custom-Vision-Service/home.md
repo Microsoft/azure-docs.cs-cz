@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 79ecb801e1b4d0fa96ca7ae06223fc231cbf12e6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 86e2d54cfe7559675e5e878cbc8a0df4b4eb3d0b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129872"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834282"
 ---
 # <a name="what-is-custom-vision"></a>Co je Custom Vision?
 
@@ -35,7 +35,7 @@ Funkce služby Custom Vision je možné rozdělit do dvou funkcí. **Klasifikace
 
 Služba Custom Vision je optimalizovaná tak, aby rychle rozpoznala hlavní rozdíly mezi obrázky, takže můžete začít s vytvářením prototypů modelu s malým množstvím dat. 50 obrázků na popisek jsou obecně dobrým startem. Služba ale není optimální pro detekci drobných rozdílů v obrázcích (například rozpoznávání menších prasklin nebo odsazení ve scénářích zabezpečování kvality).
 
-Kromě toho si můžete vybrat z několika variant Custom Vision algoritmu, které jsou optimalizované pro obrázky s určitým materiálem&mdash;předmětu, například orientačních bodů nebo maloobchodních položek. Další informace naleznete v tématu [sestavování Průvodce tříděním](getting-started-build-a-classifier.md) .
+Kromě toho si můžete vybrat z několika variant Custom Vision algoritmu, které jsou optimalizované pro obrázky s určitým materiálem předmětu &mdash; , například orientačních bodů nebo maloobchodních položek. Další informace naleznete v tématu [sestavování Průvodce tříděním](getting-started-build-a-classifier.md) .
 
 ## <a name="what-it-includes"></a>Co zahrnuje
 

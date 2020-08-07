@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 34624358a26fbd52db5832cf3531a6f1d3b91e5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3bb4d70b4c4f3f9edc525ffe5973bca633ddd1be
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061749"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800411"
 ---
 # <a name="understand-event-data"></a>Pochopení dat událostí
 
@@ -300,7 +300,7 @@ Příslušné oznámení (Pokud synchronně vykonává služba, například digi
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si téma Vytvoření koncových bodů a tras pro doručování událostí:
-* [*Postupy: Správa koncových bodů a tras*](how-to-manage-routes.md)
+* [*Postupy: Správa koncových bodů a tras*](how-to-manage-routes-apis-cli.md)
 
 Nebo si přečtěte další informace o rozhraních API a možnostech sady SDK pro digitální vlákna Azure:
 * [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md)

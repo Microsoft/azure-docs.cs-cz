@@ -75,7 +75,7 @@
     - name: Zpracování událostí Apache Kafka pro Event Hubs s využitím Stream Analytics
       href: event-hubs-kafka-stream-analytics.md
     - name: Streamování dat do Azure Databricks pomocí služby Event Hubs
-      href: ../azure-databricks/databricks-stream-from-eventhubs.md
+      href: /azure/databricks/scenarios/databricks-stream-from-eventhubs
       maintainContext: true
 - name: ukázky
   items:

@@ -1,7 +1,7 @@
 ---
 title: Vytvoření uložené zásady přístupu pomocí .NET
 titleSuffix: Azure Storage
-description: Naučte se vytvářet uložené zásady přístupu pomocí klientské knihovny .NET.
+description: Pomocí Azure Storage a .NET vytvořte zásady uloženého přístupu. Využijte další úrovně kontroly nad signaturami sdíleného přístupu na úrovni služby na serveru.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f4a0d69f3687f0dcc174a2d8a1275a2bf55d9ecf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a08929c4affbd6eeb4d66a82d787ec5eba122e5b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504385"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903761"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>Vytvoření uložené zásady přístupu pomocí .NET
 
@@ -23,7 +23,7 @@ Zásady uloženého přístupu poskytují další úroveň kontroly nad škálov
   
 Uložené zásady přístupu podporují následující Azure Storage prostředky:  
   
-- Kontejnery objektů BLOB  
+- Kontejnery objektů blob  
 - Sdílené složky  
 - Fronty  
 - Tabulky  

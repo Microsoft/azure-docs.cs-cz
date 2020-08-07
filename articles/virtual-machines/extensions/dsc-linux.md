@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: a33d74c01771c2b60ac8667a1494ebe80271a8ac
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1a166d12ef753a7a6fc7225d0467ead08514f99
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494781"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876712"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozšíření DSC pro Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -29,25 +29,17 @@ Požadovaná konfigurace stavu (DSC) je platforma pro správu, kterou můžete p
 
 Rozšíření DSCForLinux je publikované a podporované Microsoftem. Rozšíření nainstaluje agenta OMI a DSC na virtuální počítače Azure. Rozšíření DSC může také provádět tyto akce:
 
-
 - Zaregistrujte virtuální počítač Linux do účtu Azure Automation pro vyžádání konfigurací ze služby Azure Automation (Register ExtensionAction).
 - Nahrajte konfigurace MOF do virtuálního počítače se systémem Linux (push ExtensionAction).
 - Pomocí konfigurace meta MOF na virtuálním počítači se systémem Linux nakonfigurujte server vyžádané replikace, aby bylo možné vyžádat konfiguraci uzlu (ExtensionAction pro vyžádání obsahu).
 - Nainstalujte vlastní moduly DSC do virtuálního počítače se systémem Linux (nainstalujte ExtensionAction).
 - Odeberte vlastní moduly DSC z virtuálního počítače se systémem Linux (odebrat ExtensionAction).
 
- 
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření DSC pro Linux podporuje všechny [distribuce systému Linux schválené v Azure](../linux/endorsed-distros.md) s výjimkou těchto:
-
-| Distribuce | Verze |
-|---|---|
-| Debian | Všechny verze |
-| Ubuntu| 18,04 |
+Pro uzly se systémem Linux podporuje rozšíření DSC Linux všechna distribuce systému Linux uvedená v [dokumentaci k prostředí POWERSHELL DSC](/powershell/scripting/dsc/getting-started/lnxgettingstarted).
  
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
@@ -410,7 +402,7 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstraňování potíží
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 

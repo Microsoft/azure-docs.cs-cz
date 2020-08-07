@@ -9,21 +9,22 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 8fcac761ab1f0805a3b2b75107e0119fbfb9db6e
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: 6f5df14d9488f8ccb1f93c2a16ba52998f25e268
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148085"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876576"
 ---
-# <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurace virtuálních sítí Azure Cognitive Services
+# <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurace virtuálních sítí služeb Azure Cognitive Services
 
-Azure Cognitive Services poskytuje vrstvený model zabezpečení. Tento model vám umožní zabezpečit účty Cognitive Services pro konkrétní podmnožinu sítí. Při konfiguraci síťových pravidel mají přístup k účtu jenom aplikace požadující data přes zadanou sadu sítí. Přístup k prostředkům můžete omezit pomocí filtrování požadavků. Povoluje se jenom požadavky pocházející ze zadaných IP adres, rozsahů IP adres nebo ze seznamu podsítí ve [virtuálních sítích Azure](../virtual-network/virtual-networks-overview.md). Pokud vás zajímá Tato nabídka, budete muset [požádat o přístup k verzi Preview](https://aka.ms/cog-svc-vnet-signup).
+Azure Cognitive Services poskytuje vrstvený model zabezpečení. Tento model umožňuje zabezpečit účty služeb Cognitive Services pro konkrétní podmnožinu sítí. Když jsou nakonfigurovaná pravidla sítě, můžou k účtu přistupovat pouze aplikace, které žádají o data přes zadanou sadu sítí. Přístup k prostředkům můžete omezit pomocí filtrování požadavků. Povoluje se jenom požadavky pocházející ze zadaných IP adres, rozsahů IP adres nebo ze seznamu podsítí ve [virtuálních sítích Azure](../virtual-network/virtual-networks-overview.md).
 
 Aplikace, která přistupuje k prostředku Cognitive Services, když jsou platná síťová pravidla, vyžaduje autorizaci. Autorizace se podporuje s přihlašovacími údaji služby [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) nebo s platným klíčem rozhraní API.
 
 > [!IMPORTANT]
 > Když zapnete pravidla brány firewall pro účet Cognitive Services, ve výchozím nastavení se zablokuje příchozí požadavky na data. Aby bylo možné podávat požadavky, je nutné splnit jednu z následujících podmínek:
+
 > * Požadavek by měl pocházet ze služby provozované v rámci Azure Virtual Network (VNet) na seznamu povolených podsítí cílového Cognitive Services účtu. Koncový bod v žádostech pocházejících z virtuální sítě je potřeba nastavit jako [vlastní subdoménu](cognitive-services-custom-subdomains.md) účtu Cognitive Services.
 > * Nebo požadavek by měl pocházet z povoleného seznamu IP adres.
 >
@@ -39,39 +40,39 @@ Síťová pravidla se vynutila na všech síťových protokolech do Azure Cognit
 
 ## <a name="supported-regions-and-service-offerings"></a>Podporované oblasti a nabídky služeb
 
-Podpora virtuální sítě pro Cognitive Services uvedená níže je omezená na *střed USA EUAP*, *střed USA – jih*, *východní USA*, *západní USA 2*, *Severní Evropa*, *Jižní afrika sever*, *západní Evropa*, *střed Indie*, *Austrálie – východ*, *západní USA*a *US gov – Virginie* oblasti Azure. Pokud zde není uvedena nabídka služeb, nepodporuje virtuální sítě.
+Níže uvedené Cognitive Services podporují virtuální sítě v komerčním cloudu a v cloudu US Gov. Pokud zde není uvedená služba, virtuální sítě ještě nepodporují.
 
 > [!div class="checklist"]
+
 > * [Detektor anomálií](./anomaly-detector/index.yml)
 > * [Počítačové zpracování obrazu](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
 > * [Custom Vision](./custom-vision-service/index.yml)
 > * [Rozpoznávání tváře](./face/index.yml)
 > * [Rozpoznávání formulářů](./form-recognizer/index.yml)
-> * [LUIS](./luis/index.yml)
+> * [Language Understanding](./luis/index.yml)
 > * [Personalizace](./personalizer/index.yml)
 > * [Analýza textu](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
-
-Podpora virtuální sítě pro Cognitive Services uvedená níže je omezená na oblasti Azure *střed USA EUAP*, *střed USA – jih*, *východní USA*, *západní USA 2*, *globální*a *US gov – Virginie* .
-> [!div class="checklist"]
 > * [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
 
 ## <a name="service-tags"></a>Značky služeb
-Kromě podpory koncových bodů služby virtuální sítě pro výše uvedené služby Cognitive Services také podporuje označení služby pro konfiguraci odchozích síťových pravidel. Ve značce služby CognitiveServicesManagement jsou zahrnuté následující služby.
+
+Cognitive Services podporuje značky služby pro konfiguraci pravidel sítě. Níže uvedené služby jsou součástí značky služby **CognitiveServicesManagement** .
 > [!div class="checklist"]
+
 > * [Detektor anomálií](./anomaly-detector/index.yml)
 > * [Počítačové zpracování obrazu](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
 > * [Custom Vision](./custom-vision-service/index.yml)
 > * [Rozpoznávání tváře](./face/index.yml)
 > * [Rozpoznávání formulářů](./form-recognizer/index.yml)
-> * [LUIS](./luis/index.yml)
+> * [Language Understanding (LUIS)](./luis/index.yml)
 > * [Personalizace](./personalizer/index.yml)
 > * [Analýza textu](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
 > * [Translator](./translator/index.yml)
-> * [Speech Service](./speech-service/index.yml)
+> * [Služba řeči](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Změna výchozího pravidla přístupu k síti
 
@@ -84,7 +85,7 @@ Ve výchozím nastavení Cognitive Services prostředky přijímají připojení
 
 Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete spravovat výchozí pravidla přístupu k síti pro Cognitive Services prostředky.
 
-# <a name="azure-portal"></a>[portál Azure](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Přejít na prostředek Cognitive Services, který chcete zabezpečit.
 
@@ -186,7 +187,7 @@ Cognitive Services prostředku a povolený přístup k virtuálním sítím mů�
 
 Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete spravovat pravidla virtuální sítě pro prostředky Cognitive Services.
 
-# <a name="azure-portal"></a>[portál Azure](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Přejít na prostředek Cognitive Services, který chcete zabezpečit.
 
@@ -330,6 +331,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
         -g "myresourcegroup" -n "myaccount" \
         --subnet $subnetid
     ```
+
 ***
 
 > [!IMPORTANT]
@@ -361,7 +363,7 @@ Pokud používáte místní [ExpressRoute](../expressroute/expressroute-introduc
 
 Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
 
-# <a name="azure-portal"></a>[portál Azure](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. Přejít na prostředek Cognitive Services, který chcete zabezpečit.
 
@@ -491,13 +493,13 @@ Pro prostředky Cognitive Services můžete použít [soukromé koncové body](.
 
 Soukromé koncové body pro Cognitive Services prostředky vám umožní:
 
-- Zabezpečte Cognitive Services prostředek tak, že nakonfigurujete bránu firewall tak, aby blokovala všechna připojení na veřejném koncovém bodu služby Cognitive Services.
-- Zvyšte zabezpečení virtuální sítě tím, že vám umožníte blokovat exfiltrace dat z virtuální sítě.
-- Bezpečně se připojte k Cognitive Services prostředkům z místních sítí, které se připojují k virtuální síti pomocí [sítě VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoutes](../expressroute/expressroute-locations.md) s privátním partnerským vztahem.
+* Zabezpečte Cognitive Services prostředek tak, že nakonfigurujete bránu firewall tak, aby blokovala všechna připojení na veřejném koncovém bodu služby Cognitive Services.
+* Zvyšte zabezpečení virtuální sítě tím, že vám umožníte blokovat exfiltrace dat z virtuální sítě.
+* Bezpečně se připojte k Cognitive Services prostředkům z místních sítí, které se připojují k virtuální síti pomocí [sítě VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoutes](../expressroute/expressroute-locations.md) s privátním partnerským vztahem.
 
-### <a name="conceptual-overview"></a>Koncepční přehled
+### <a name="conceptual-overview"></a>Základní přehled
 
-Privátní koncový bod je speciální síťové rozhraní pro službu Azure ve vaší [virtuální](../virtual-network/virtual-networks-overview.md)síti. Když vytvoříte privátní koncový bod pro prostředek Cognitive Services, zajistíte zabezpečené připojení mezi klienty ve vaší virtuální síti a vaším prostředkem. Privátnímu koncovému bodu je přiřazena IP adresa z rozsahu IP adres vaší virtuální sítě. Připojení mezi soukromým koncovým bodem a službou Cognitive Services používá zabezpečený privátní odkaz.
+Privátní koncový bod je speciální síťové rozhraní pro prostředek Azure ve vaší [virtuální](../virtual-network/virtual-networks-overview.md)síti. Vytvoření privátního koncového bodu pro prostředek Cognitive Services zajišťuje zabezpečené připojení mezi klienty ve vaší virtuální síti a vaším prostředkem. Privátnímu koncovému bodu je přiřazena IP adresa z rozsahu IP adres vaší virtuální sítě. Připojení mezi soukromým koncovým bodem a službou Cognitive Services používá zabezpečený privátní odkaz.
 
 Aplikace ve virtuální síti se můžou bez problémů připojit ke službě přes soukromý koncový bod pomocí stejných připojovacích řetězců a mechanismů autorizace, které by jinak používaly. Výjimkou je služba pro rozpoznávání řeči, která vyžaduje samostatný koncový bod. Podívejte se na část u [soukromých koncových bodů pomocí služby Speech](#private-endpoints-with-the-speech-service). Soukromé koncové body lze použít se všemi protokoly podporovanými prostředkem Cognitive Services, včetně REST.
 
@@ -509,11 +511,11 @@ Cognitive Services vlastníci prostředků mohou spravovat žádosti o souhlas a
 
 ### <a name="private-endpoints"></a>Soukromé koncové body
 
-Při vytváření privátního koncového bodu je nutné zadat prostředek Cognitive Services, ke kterému se připojuje. Další informace o vytváření privátního koncového bodu najdete v následujících článcích:
+Při vytváření privátního koncového bodu je nutné zadat prostředek Cognitive Services, ke kterému se připojuje. Další informace o vytváření privátního koncového bodu najdete v těchto tématech:
 
-- [Vytvoření privátního koncového bodu pomocí centra privátního spojení v Azure Portal](../private-link/create-private-endpoint-portal.md)
-- [Vytvoření privátního koncového bodu pomocí Azure CLI](../private-link/create-private-endpoint-cli.md)
-- [Vytvoření privátního koncového bodu pomocí Azure PowerShell](../private-link/create-private-endpoint-powershell.md)
+* [Vytvoření privátního koncového bodu pomocí centra privátního spojení v Azure Portal](../private-link/create-private-endpoint-portal.md)
+* [Vytvoření privátního koncového bodu pomocí Azure CLI](../private-link/create-private-endpoint-cli.md)
+* [Vytvoření privátního koncového bodu pomocí Azure PowerShell](../private-link/create-private-endpoint-powershell.md)
 
 ### <a name="connecting-to-private-endpoints"></a>Připojování k soukromým koncovým bodům
 
@@ -523,7 +525,7 @@ Ve výchozím nastavení vytvoříme [privátní ZÓNU DNS](../dns/private-dns-o
 
 ### <a name="private-endpoints-with-the-speech-service"></a>Soukromé koncové body pomocí služby Speech
 
-Při použití privátních koncových bodů se službou Speech je nutné použít vlastní koncový bod pro volání rozhraní API služby Speech. Nemůžete použít globální koncový bod. Měli byste použít koncový bod ve formátu {Account}. {STT | TTS | Voice | DLS}. Speech. Microsoft. com.
+Při použití privátních koncových bodů se službou Speech je nutné použít vlastní koncový bod pro volání služby řeči. Nemůžete použít globální koncový bod. Koncový bod musí splňovat tento vzor: `{account}.{stt|tts|voice|dls}.speech.microsoft.com` .
 
 ### <a name="dns-changes-for-private-endpoints"></a>Změny DNS u privátních koncových bodů
 
@@ -531,17 +533,17 @@ Při vytváření privátního koncového bodu se záznam prostředku CNAME DNS 
 
 Při překladu adresy URL koncového bodu mimo virtuální síť s privátním koncovým bodem se přeloží na veřejný koncový bod prostředku Cognitive Services. Při vyřešení z virtuální sítě hostující soukromý koncový bod adresa URL koncového bodu se přeloží na IP adresu privátního koncového bodu.
 
-Tento přístup umožňuje přístup k prostředku Cognitive Services pomocí stejného připojovacího řetězce pro klienty ve virtuální síti, která je hostitelem privátních koncových bodů, a taky klientů mimo virtuální síť.
+Tento přístup umožňuje přístup k prostředku Cognitive Services pomocí stejného připojovacího řetězce pro klienty ve virtuální síti hostující privátní koncové body a klienty mimo virtuální síť.
 
-Pokud ve vaší síti používáte vlastní server DNS, klienti musí být schopni přeložit plně kvalifikovaný název domény (FQDN) pro koncový bod prostředku Cognitive Services na IP adresu privátního koncového bodu. Server DNS byste měli nakonfigurovat tak, aby delegoval subdoménu privátního propojení s privátní zónou DNS pro virtuální síť.
+Pokud ve vaší síti používáte vlastní server DNS, klienti musí být schopni přeložit plně kvalifikovaný název domény (FQDN) pro koncový bod prostředku Cognitive Services na IP adresu privátního koncového bodu. Nakonfigurujte server DNS tak, aby delegoval subdoménu privátního propojení s privátní zónou DNS pro virtuální síť.
 
 > [!TIP]
 > Pokud používáte vlastní nebo místní server DNS, měli byste server DNS nakonfigurovat tak, aby přeložil Cognitive Services název prostředku v subdoméně ' privatelink ' na IP adresu privátního koncového bodu. Můžete to udělat tak, že delegujete subdoménu privatelink do privátní zóny DNS virtuální sítě nebo nakonfigurujete zónu DNS na serveru DNS a přidáte záznamy DNS a.
 
 Další informace o konfiguraci vlastního serveru DNS pro podporu privátních koncových bodů najdete v následujících článcích:
 
-- [Překlad názvů pro prostředky ve virtuálních sítích Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [Konfigurace DNS pro privátní koncové body](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+* [Překlad názvů pro prostředky ve virtuálních sítích Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+* [Konfigurace DNS pro privátní koncové body](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
 
 ### <a name="pricing"></a>Ceny
 

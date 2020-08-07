@@ -1,6 +1,6 @@
 ---
 title: Import rozhraní API protokolu SOAP a převod na REST pomocí webu Azure Portal | Microsoft Docs
-description: Zjistěte, jak pomocí služby API Management importovat rozhraní API protokolu SOAP a převést ho na REST.
+description: Přečtěte si, jak naimportovat rozhraní API protokolu SOAP, jak ho převést na API Management a pak otestujte rozhraní API na portálech Azure a vývojářích.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: a2bec6401ae3ac53f46e92e9be38abf57a92163d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a87f4d0748d14ab995f75279b6a192f350165d6f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74108098"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843823"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>Import rozhraní API protokolu SOAP a převod na REST
 

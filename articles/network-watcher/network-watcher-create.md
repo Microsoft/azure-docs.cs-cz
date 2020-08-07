@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6b7453a0100233896e3d01769897ed224a0b2618
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03fe71855c43ba831f4b7a4ab746f05bd3bbb4a3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737542"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846849"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Vytvoření instance služby Azure Network Watcher
 
@@ -101,6 +101,10 @@ $requestBody = @"
 armclient put "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
 ```
 
+## <a name="create-a-network-watcher-using-azure-quickstart-template"></a>Vytvoření Network Watcher pomocí šablony Azure pro rychlý Start
+
+Vytvoření instance Network Watcher odkazování na tuto [šablonu pro rychlý Start](https://azure.microsoft.com/resources/templates/101-networkwatcher-create/)
+
 ## <a name="delete-a-network-watcher-in-the-portal"></a>Odstranění Network Watcher na portálu
 
 Přejděte na **všechny služby**  >  **sítě**  >  **Network Watcher**.
@@ -126,9 +130,9 @@ Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup Networ
 Teď, když máte instanci Network Watcher, přečtěte si informace o dostupných funkcích:
 
 * [Topologie](network-watcher-topology-overview.md)
-* [Zachytávání paketů](network-watcher-packet-capture-overview.md)
+* [Zachycení paketů](network-watcher-packet-capture-overview.md)
 * [Ověření toku protokolu IP](network-watcher-ip-flow-verify-overview.md)
 * [Další směrování](network-watcher-next-hop-overview.md)
-* [Zobrazení skupin zabezpečení](network-watcher-security-group-view-overview.md)
+* [Zobrazení skupiny zabezpečení](network-watcher-security-group-view-overview.md)
 * [Protokolování toku NSG](network-watcher-nsg-flow-logging-overview.md)
 * [Řešení potíží s Virtual Networkovou bránou](network-watcher-troubleshoot-overview.md)

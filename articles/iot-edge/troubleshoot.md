@@ -8,12 +8,12 @@ ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9b6265bed138960a3839091ed1593413fc85710a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e4ec7127df288ec1818df307da1ea9824141309
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82858591"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902452"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Řešení potíží s IoT Edgem zařízením
 
@@ -141,7 +141,7 @@ Ve Windows:
   * Přidat proměnnou prostředí na úrovni systému:
 
       ```powershell
-      [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "edgelet=debug", [EnvironmentVariableTarget]::Machine)
+      [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "debug", [EnvironmentVariableTarget]::Machine)
       ```
 
   * Restartujte proces démona zabezpečení IoT Edge:
@@ -255,7 +255,7 @@ Azure IoT Edge umožňuje komunikaci z místního serveru do cloudu Azure pomoc�
 
 I když IoT Edge poskytuje rozšířenou konfiguraci pro zabezpečení Azure IoT Edge runtime a nasazených modulů, je stále závislý na základní konfiguraci počítače a sítě. Proto je nutné zajistit, aby byla pro zabezpečená komunikace s cloudovou komunikací nastavena správná pravidla sítě a brány firewall. Následující tabulku lze použít jako vodítko při konfiguraci pravidel brány firewall pro základní servery, kde je hostovaný Azure IoT Edge Runtime:
 
-|Protocol (Protokol)|Port|Příchozí|Odesílaná|Pokyny|
+|Protokol|Port|Příchozí|Odesílaná|Pokyny|
 |--|--|--|--|--|
 |MQTT|8883|BLOKOVÁNo (výchozí)|BLOKOVÁNo (výchozí)|<ul> <li>Konfigurace odchozího (odchozího), aby se otevírala při používání MQTT jako komunikačního protokolu<li>1883 pro MQTT není podporován IoT Edge. <li>Příchozí (příchozí) připojení by měla být blokovaná.</ul>|
 |AMQP|5671|BLOKOVÁNo (výchozí)|OTEVŘÍT (výchozí)|<ul> <li>Výchozí komunikační protokol pro IoT Edge. <li> Musí být nastavené tak, aby byly otevřené, pokud není Azure IoT Edge nakonfigurovaný pro jiné podporované protokoly nebo že AMQP je požadovaný komunikační protokol.<li>5672 pro AMQP není podporován IoT Edge.<li>Zablokovat tento port, když Azure IoT Edge používá jiný podporovaný protokol IoT Hub.<li>Příchozí (příchozí) připojení by měla být blokovaná.</ul></ul>|

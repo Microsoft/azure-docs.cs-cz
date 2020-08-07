@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: be04b690add70468335ac694e3be54fa55a94249
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 9a393e29c4b5b2faa48cbcd273c7bc7a46169ba3
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475647"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904186"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift 4
 
@@ -49,9 +49,9 @@ Tajný kód pro stažení Red Hat umožňuje vašemu clusteru přístup k regist
 
    Budete se muset přihlásit k účtu Red Hat nebo vytvořit nový účet Red Hat pomocí podnikového e-mailu a přijmout podmínky a ujednání.
 
-2. **Klikněte na Stáhnout tajný klíč pro vyžádání.**
+2. Pokud vytvoříte cluster poprvé, přejdete na [**stránku produktu OpenShift**](https://developers.redhat.com/products/codeready-containers) . Po registraci přejděte na [**stránku Správce clusteru Red Hat OpenShift**](https://cloud.redhat.com/openshift/), kde můžete kliknout na **Stáhnout tajný kód pro získání** a stáhnout tajný klíč pro použití s clusterem ARO.
 
-Uložte si uložený `pull-secret.txt` soubor na bezpečném místě, bude se používat při každém vytváření clusteru.
+Uložte si uložený `pull-secret.txt` soubor někam v bezpečí. Tento soubor se použije při vytváření clusteru, pokud potřebujete vytvořit cluster, který obsahuje ukázky nebo operátory pro Red Hat nebo certifikované partnery.
 
 Při spuštění `az aro create` příkazu můžete na svůj tajný kód pro vyžádání obsahu odkazovat pomocí `--pull-secret @pull-secret.txt` parametru. Spusťte `az aro create` z adresáře, kam jste uložili `pull-secret.txt` soubor. V opačném případě nahraďte parametrem `@pull-secret.txt` `@<path-to-my-pull-secret-file>` .
 

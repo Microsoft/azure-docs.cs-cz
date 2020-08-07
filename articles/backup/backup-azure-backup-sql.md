@@ -3,12 +3,12 @@ title: Zálohování SQL Server do Azure jako úlohy DPM
 description: Úvod k zálohování SQL Server databází pomocí služby Azure Backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: dd091f9446cafdb6ff91ae5679c703e07457169c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef8ffcb2445a7be27f7fd3da2115f76fe961fd74
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055386"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876304"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování SQL Server do Azure jako úlohy DPM
 
@@ -21,6 +21,9 @@ Zálohování databáze SQL Server do Azure a její obnovení z Azure:
 1. Vytvořte zásady zálohování pro ochranu SQL Serverch databází v Azure.
 1. Vytváření záložních kopií na vyžádání v Azure.
 1. Obnovte databázi z Azure.
+
+>[!NOTE]
+>DPM 2019 UR2 podporuje SQL Server instance clusterů s podporou převzetí služeb při selhání (FCI) pomocí sdílených svazků clusteru (CSV).
 
 ## <a name="prerequisites-and-limitations"></a>Požadavky a omezení
 

@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6fe9fdd68f9419a9f730ea64b5aea19f583d751c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f582159b0ce1355b34c42496dc7516264b62d365
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496742"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902027"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-postgresql-server-using-powershell"></a>Postup zálohování a obnovení serveru Azure Database for PostgreSQL pomocí prostředí PowerShell
 
@@ -78,7 +78,7 @@ Sada parametrů **PointInTimeRestore** `Restore-AzPostgreSqlServer` rutiny vyža
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
-| Name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
+| Název | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | RestorePointInTime | 2020-03-13T13:59:00Z | Vyberte bod v čase, který chcete obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete například použít vlastní místní časové pásmo, například **2020-03-13T05:59:00-08:00**. Můžete také použít formát Zulu UTC, například **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | K obnovení použijte režim bodu v čase. |
 
@@ -120,7 +120,7 @@ Sada **GeoRestore** parametrů pro dopředné obnovení `Restore-AzPostgreSqlSer
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Název skupiny prostředků, do které nový server patří|
-|Name | mydemoserver – geograficky obnovené | Název nového serveru. |
+|Název | mydemoserver – geograficky obnovené | Název nového serveru. |
 |Umístění | eastus | Umístění nového serveru. |
 |UseGeoRestore | `<SwitchParameter>` | K obnovení použijte geografický režim. |
 
@@ -133,4 +133,4 @@ Nový server vytvořený během obnovy nemá koncové body služby virtuální s
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení parametrů Azure Database for PostgreSQL serveru pomocí PowerShellu](howto-configure-server-parameters-using-powershell.md)
+> [Jak vygenerovat připojovací řetězec Azure Database for PostgreSQL pomocí PowerShellu](howto-connection-string-powershell.md)

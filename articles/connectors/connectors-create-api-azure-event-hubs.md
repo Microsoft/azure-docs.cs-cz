@@ -3,16 +3,16 @@ title: Připojení k Azure Event Hubs
 description: Vytváření automatizovaných úloh a pracovních postupů, které sledují a spravují události pomocí Azure Event Hubs a Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 7dab9753334a1f071d85d0d2bccbd88340e37634
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9e3bc4cdab62dd304c5266ff6c9cccf66600fb7b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284094"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848838"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Monitorování, příjem a odesílání událostí s využitím služby Azure Event Hubs a Azure Logic Apps
 
@@ -62,6 +62,9 @@ V Azure Logic Apps musí každá aplikace logiky začínat [triggerem](../logic-
 
 Tento příklad ukazuje, jak můžete spustit pracovní postup aplikace logiky při posílání nových událostí do centra událostí. 
 
+> [!NOTE]
+> Všechny triggery centra událostí jsou triggery *s dlouhým dotazem* , což znamená, že Trigger zpracuje všechny události a potom počká 30 sekund na oddíl, aby se v centru událostí zobrazily další události. Takže pokud je aktivační událost nastavená se čtyřmi oddíly, může zpoždění trvat až dvě minuty, než se Trigger dokončí dotazování všech oddílů. Pokud v rámci této prodlevy neobdrží žádné události, spuštění triggeru se přeskočí. V opačném případě aktivační událost pokračuje v čtení událostí, dokud vaše centrum událostí nebude prázdné. Následující dotaz na Trigger probíhá na základě intervalu opakování, který zadáte ve vlastnostech triggeru.
+
 1. V Azure Portal nebo Visual Studiu vytvořte prázdnou aplikaci logiky, která otevře návrháře Logic Apps. V tomto příkladu se používá Azure Portal.
 
 1. Do vyhledávacího pole zadejte jako filtr "centra událostí". V seznamu triggery vyberte tuto aktivační událost: **když jsou události k dispozici v centru událostí – Event Hubs**
@@ -100,11 +103,6 @@ Tento příklad ukazuje, jak můžete spustit pracovní postup aplikace logiky p
 1. Nyní pokračujte v přidávání jedné nebo více akcí do aplikace logiky pro úlohy, které chcete provést s výsledky triggeru. 
 
    Pokud například chcete filtrovat události na základě konkrétní hodnoty, jako je například kategorie, můžete přidat podmínku tak, aby akce **Odeslat událost** odeslala pouze události, které splňují vaši podmínku. 
-
-> [!NOTE]
-> Všechny triggery centra událostí jsou triggery *s dlouhým dotazem* , což znamená, že když se Trigger aktivuje, Trigger zpracuje všechny události a potom počká na 30 sekund, než se v centru událostí zobrazí další události.
-> Pokud se během 30 sekund neobdrží žádné události, spuštění triggeru se přeskočí. V opačném případě aktivační událost pokračuje v čtení událostí, dokud vaše centrum událostí nebude prázdné.
-> Následující dotaz na Trigger probíhá na základě intervalu opakování, který zadáte ve vlastnostech triggeru.
 
 <a name="add-action"></a>
 
@@ -158,7 +156,7 @@ V seznamu akce vyberte tuto akci: **Odeslat událost – Event Hubs**
    | **Obor názvů Event Hubs** | Ano | <*Event-Centers – obor názvů*> | Vyberte obor názvů Event Hubs, který chcete použít. |
    |||||  
 
-   Například:
+   Příklad:
 
    ![Vytvořit připojení centra událostí](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-1.png)
 

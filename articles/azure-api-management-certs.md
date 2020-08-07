@@ -1,6 +1,6 @@
 ---
 title: Nahrajte certifikát pro správu služeb Azure | Microsoft Docs
-description: Přečtěte si, jak nahrát certifikát správy služby pro Azure Portal.
+description: Přečtěte si, jak nahrát certifikát správy služby pro Azure Portal. Certifikáty pro správu umožňují ověřování pomocí modelu nasazení Classic.
 services: cloud-services
 documentationcenter: .net
 author: georgewallace
@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
-ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d2436b524ba6df68b12206bcb545e54a405b731
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78329115"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848549"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Nahrajte certifikát pro správu služeb Azure.
 Certifikáty pro správu umožňují ověřování pomocí modelu nasazení Classic, který poskytuje Azure. Mnoho programů a nástrojů (například Visual Studio nebo Azure SDK) používá tyto certifikáty k automatizaci konfigurace a nasazení různých služeb Azure. 

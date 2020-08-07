@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 0337abedbc5b592a0ae48fabd5bc7ecbb484def9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 73044f35b90fd3e5996899fd7c3b0a925056f8ed
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132785"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836867"
 ---
 # <a name="whats-new-in-qna-maker"></a>Co je nového v QnA Maker
 
 Zjistěte, co je nového ve službě. Tyto položky můžou vydávat poznámky, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
 
-## <a name="release-notes"></a>Zpráva k vydání verze
+## <a name="release-notes"></a>Poznámky k verzi
 
 Přečtěte si, co je nového v QnA Maker.
 
@@ -35,7 +35,7 @@ Přečtěte si, co je nového v QnA Maker.
 
 ### <a name="may-2020"></a>Květen 2020
 
-* [Řízení přístupu na základě role (RBAC)](concepts/role-based-access-control.md)
+* [Řízení přístupu na základě role v Azure (Azure RBAC)](concepts/role-based-access-control.md)
 * [Rozšířené úpravy textu](how-to/edit-knowledge-base.md#rich-text-editing-for-answer) pro odpovědi
 
 ### <a name="march-2020"></a>Březen 2020

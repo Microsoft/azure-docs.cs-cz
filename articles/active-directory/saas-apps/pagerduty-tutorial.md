@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 99d9988a02b046562c2517df8a81b8ef5c778ef2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 330066a950165d3424ca7900493ac89ce746b309
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81683523"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904526"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pagerduty"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s PagerDuty
 
@@ -38,6 +38,9 @@ Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 * PagerDuty odběr s povoleným jednotným přihlašováním (SSO).
+
+> [!NOTE]
+> Pokud se službou Azure AD používáte ověřování MFA nebo bez hesla, pak v žádosti SAML přepněte hodnotu AuthnContext. V opačném případě Azure AD vyvolá chybu na neshodu AuthnContext a nepošle token zpátky do aplikace.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -107,7 +110,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -180,7 +183,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k PagerDuty, musí se zřídit v
 
     a. Zadejte **jméno a příjmení uživatele,** jako je **B. Simon**. 
    
-    b. Zadejte **e-mailovou** adresu uživatele, jako je **b.\@Simon contoso.com**.
+    b. Zadejte **e-mailovou** adresu uživatele, jako je **b. Simon \@ contoso.com**.
    
     c. Klikněte na **Přidat**a pak klikněte na **Odeslat pozvánky**.
    
@@ -193,7 +196,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici PagerDuty, měli byste se automaticky přihlásit k PagerDuty, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

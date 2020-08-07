@@ -4,14 +4,14 @@ description: Přehled klíčových konceptů zpráv a připojení ve službě Az
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 08/05/2020
 ms.author: zhshang
-ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5483e10e817ce8a0a7e7c82d817b7bdbbdd9176b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75392815"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853445"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Zprávy a připojení ve službě Azure Signal Service
 
@@ -36,7 +36,13 @@ Pro účely fakturace se započítávají jenom odchozí zprávy ze služby Azur
 
 Zprávy větší než 2 KB se počítají jako různé zprávy o velikosti 2 KB. Graf počtu zpráv v Azure Portal se aktualizuje každých 100 zpráv na střed.
 
-Představte si například, že máte tři klienty a jeden aplikační server. Jeden klient pošle zprávu o 4 KB, aby mohl server vysílat všem klientům. Počet zpráv je 8: jedna zpráva od služby k aplikačnímu serveru a tři zprávy od služby ke klientům. Každá zpráva se počítá jako dvě zprávy o 2 KB.
+Představte si například, že máte jeden aplikační server a tři klienty:
+
+Aplikační server vysílá všem připojeným klientům zprávu od 1 KB. zpráva z aplikačního serveru do služby se považuje za bezplatnou příchozí zprávu. Jako odchozí zprávy se účtují jenom tři zprávy odesílané ze služby do každého klienta.
+
+Klient A pošle zprávu o 1 KB jinému klientovi B bez přechodu na aplikační server. Zpráva od klienta A do služby je volná příchozí zpráva. Zpráva ze služby na klienta B se účtuje jako odchozí zpráva.
+
+Pokud máte tři klienty a jeden aplikační server. Jeden klient pošle zprávu o 4 KB, aby mohl server vysílat všem klientům. Počet účtovaných zpráv je 8: jedna zpráva od služby k aplikačnímu serveru a tři zprávy od služby ke klientům. Každá zpráva se počítá jako dvě zprávy o 2 KB.
 
 ## <a name="how-connections-are-counted"></a>Jak se počítají připojení
 
@@ -44,15 +50,15 @@ K dispozici jsou připojení serveru a klientská připojení ke službě Azure 
 
 Počet připojení zobrazený v Azure Portal zahrnuje připojení serveru i připojení klientů.
 
-Předpokládejme například, že máte dva aplikační servery a že definujete pět rozbočovačů v kódu. Počet připojení k serveru bude 50:2 aplikační servery * 5 rozbočovačů * 5 připojení na centrum.
+Předpokládejme například, že máte dva aplikační servery a definujete pět rozbočovačů v kódu. Počet připojení k serveru bude 50:2 aplikační servery * 5 rozbočovačů * 5 připojení na centrum.
 
-ASP.NET Signal vypočítává připojení serveru jiným způsobem. Zahrnuje jedno výchozí centrum navíc k rozbočovačům, které definujete. Ve výchozím nastavení každý aplikační server potřebuje pět dalších počátečních připojení k serveru. Počáteční počet připojení pro výchozí centrum zůstane v souladu s nastavením ostatních Center.
+ASP.NET Signal vypočítává připojení serveru jiným způsobem. Zahrnuje jedno výchozí centrum navíc k rozbočovačům, které definujete. Ve výchozím nastavení každý aplikační server potřebuje pět dalších počátečních připojení k serveru. Počáteční počet připojení pro výchozí centrum zůstane v souladu s ostatními centry.
 
-Během životnosti aplikačního serveru udržuje služba a aplikační server stav připojení synchronizace a usnadňuje úpravy připojení serveru pro lepší výkon a stabilitu služeb. Takže se někdy může zobrazit číslo připojení k serveru od času.
+Služba a aplikační server udržují synchronizovaný stav připojení a provádí úpravy připojení serveru, aby dosáhly vyššího výkonu a stability služeb.  Takže se někdy může zobrazit číslo připojení k serveru od času.
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>Jak se počítají příchozí a odchozí přenosy
 
-Rozdíl mezi příchozím provozem a odchozím provozem je založený na perspektivě služby Azure Signal. Provoz se počítá v bajtech.
+Zpráva odeslaná do služby je příchozí zpráva. Zpráva odeslaná mimo službu je odchozí zpráva. Provoz se počítá v bajtech.
 
 ## <a name="related-resources"></a>Související prostředky
 
