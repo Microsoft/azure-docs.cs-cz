@@ -1,6 +1,6 @@
 ---
 title: Jak používat pojmenované hodnoty v zásadách Azure API Management
-description: Naučte se používat pojmenované hodnoty v zásadách Azure API Management.
+description: Naučte se používat pojmenované hodnoty v zásadách Azure API Management. Pojmenované hodnoty mohou obsahovat řetězce literálů a výrazy zásad.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 28a9f37f58a6c056bf23a85fcf2641f407988891
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3f317276ae92e6121d519553b7883677dab89705
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243473"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852187"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak používat pojmenované hodnoty v zásadách Azure API Management
 
@@ -29,14 +29,14 @@ Každá instance API Management služby má kolekci párů klíč/hodnota, kter�
 | -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
 | `Display name` | řetězec          | Používá se pro odkazování pojmenované hodnoty v zásadách. Řetězec o 1 až 256 znaků. Jsou povoleny pouze písmena, číslice, tečky a spojovníky. |
 | `Value`        | řetězec          | Skutečná hodnota. Nesmí být prázdný nebo obsahovat pouze prázdné znaky. Maximálně 4096 znaků.                                        |
-| `Secret`       | Boolean         | Určuje, zda je hodnota tajná a měla by být zašifrovaná.                                                               |
+| `Secret`       | boolean         | Určuje, zda je hodnota tajná a měla by být zašifrovaná.                                                               |
 | `Tags`         | pole řetězce | Slouží k filtrování seznamu pojmenovaných hodnot. Až 32 značek.                                                                                    |
 
 ![Pojmenované hodnoty](./media/api-management-howto-properties/named-values.png)
 
 Pojmenované hodnoty mohou obsahovat řetězce literálů a [výrazy zásad](./api-management-policy-expressions.md). Například hodnota `Expression` je výraz zásady, který vrací řetězec obsahující aktuální datum a čas. Pojmenovaná hodnota `Credential` je označena jako tajná, takže její hodnota se ve výchozím nastavení nezobrazí.
 
-| Name       | Hodnota                      | Tajný kód | Značky          |
+| Název       | Hodnota                      | Tajný kód | Značky          |
 | ---------- | -------------------------- | ------ | ------------- |
 | Hodnota      | 42                         | Ne  | důležitá – čísla |
 | Přihlašovací údaj | ••••••••••••••••••••••     | Ano   | security      |
@@ -55,7 +55,7 @@ Pojmenované hodnoty mohou obsahovat řetězce literálů a [výrazy zásad](./a
 
     Název a hodnota jsou požadované hodnoty. Pokud je hodnota tajná, zaškrtněte políčko _Toto je tajné_ . Zadejte jednu nebo více volitelných značek, které vám pomůžou s uspořádáním pojmenovaných hodnot, a klikněte na Uložit.
 
-4. Klikněte na **Create** (Vytvořit).
+4. Klikněte na **Vytvořit**.
 
 Jakmile je pojmenovaná hodnota vytvořena, můžete ji upravit kliknutím na ni. Změníte-li název pojmenované hodnoty, budou automaticky aktualizovány všechny zásady, které odkazují na tuto pojmenovanou hodnotu, aby používaly nový název.
 

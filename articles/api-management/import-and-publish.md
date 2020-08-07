@@ -1,6 +1,6 @@
 ---
 title: Import a publikování vašeho prvního rozhraní API v Azure API Management
-description: Naučte se importovat rozhraní OpenAPI Specification API do Azure API Management a otestovat rozhraní API v Azure Portal.
+description: Naučte se importovat rozhraní OpenAPI Specification API do Azure API Management a potom otestovat rozhraní API v Azure Portal.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 38b723cb823547d4737a68576575c2b629f5eb67
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 71a239393c61dccf39ed505aa2b08d7612b7e370
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206268"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905546"
 ---
 # <a name="import-and-publish-your-first-api"></a>Import a publikování vašeho prvního rozhraní API
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 ![Nové rozhraní API](./media/api-management-import-and-publish/created-api.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Vysvětlení [terminologie Azure API Management](api-management-terminology.md).
 - [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
@@ -62,7 +62,7 @@ V této části se dozvíte, jak importovat a publikovat rozhraní API pro back-
    |**Schéma URL**|**HTTPS**|Které protokoly je možné použít pro přístup k rozhraní API.|
    |**Přípona adresy URL rozhraní API**|*conference*|Přípona připojena k základní adrese URL služby API Management. API Management odlišuje rozhraní API jejich příponou, takže přípona musí být jedinečná pro každé rozhraní API pro daného vydavatele.|
    |**Značky**| |Značky pro uspořádání rozhraní API pro vyhledávání, seskupování nebo filtrování.|
-   |**Produkty**|**Unlimited**|Přidružení jednoho nebo více rozhraní API. Každá instance API Management obsahuje dva ukázkové produkty: **Start** a **Unlimited**. Rozhraní API publikujete pomocí přidružení rozhraní API k produktu, **neomezeně** v tomto příkladu.<br/>Do produktu můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. Pokud chcete toto rozhraní API přidat k jinému produktu, zadejte nebo vyberte název produktu. Opakováním tohoto kroku přidejte rozhraní API do více produktů. Rozhraní API můžete do produktů přidat také později ze stránky **Nastavení** .<br/>Přístup k rozhraní API získají vývojáři až po přihlášení k odběru produktu. Když se přihlásí k odběru, získá klíč předplatného, který je vhodný pro jakékoli rozhraní API v tomto produktu. <br/>Pokud jste vytvořili instanci API Management, jste už správce, takže jste přihlášeni k odběru všech produktů v instanci.|
+   |**Produktech**|**Unlimited**|Přidružení jednoho nebo více rozhraní API. Každá instance API Management obsahuje dva ukázkové produkty: **Start** a **Unlimited**. Rozhraní API publikujete pomocí přidružení rozhraní API k produktu, **neomezeně** v tomto příkladu.<br/>Do produktu můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. Pokud chcete toto rozhraní API přidat k jinému produktu, zadejte nebo vyberte název produktu. Opakováním tohoto kroku přidejte rozhraní API do více produktů. Rozhraní API můžete do produktů přidat také později ze stránky **Nastavení** .<br/>Přístup k rozhraní API získají vývojáři až po přihlášení k odběru produktu. Když se přihlásí k odběru, získá klíč předplatného, který je vhodný pro jakékoli rozhraní API v tomto produktu. <br/>Pokud jste vytvořili instanci API Management, jste už správce, takže jste přihlášeni k odběru všech produktů v instanci.|
    |**Brány**|**Spravované**|Brány rozhraní API, které zpřístupňují rozhraní API. Toto pole je dostupné jenom pro **vývojáře** a služby úrovně **Premium** .<br/>**Spravovaná** brána indikuje bránu, která je integrovaná do služby API Management a je hostovaná Microsoftem v Azure. Další brány jsou [samoobslužné brány](self-hosted-gateway-overview.md) a jsou dostupné jenom v úrovních služeb Premium a Developer. Můžete je nasadit místně nebo v jiných cloudech.<br/>Pokud nejsou vybrané žádné brány, rozhraní API nebude dostupné a požadavky rozhraní API nebudou úspěšné.|
    |**Chcete vytvořit verzi tohoto rozhraní API?**|Vybrat nebo zrušit výběr|Další informace o tom, jak se správou verzí, najdete v tématu [publikování několika verzí vašeho rozhraní API](api-management-get-started-publish-versions.md).|
 

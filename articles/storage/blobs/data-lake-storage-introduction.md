@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 Úvod
-description: Poskytuje přehled Azure Data Lake Storage Gen2
+description: Přečtěte si Úvod k Azure Data Lake Storage Gen2. Přečtěte si klíčové funkce. Přečtěte si podporované funkce služby Blob Storage, integrace služeb Azure a platformy.
 author: normesta
 ms.service: storage
 ms.topic: overview
@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: ee9f2f0366cc680c874c6748d27e02dcadb82e35
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: d85b0cd2f9fa7eb81f5c39bd5d163188e3cd7106
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673305"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835761"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Úvod do Azure Data Lake Storage Gen2
 
@@ -63,8 +63,8 @@ Níže jsou uvedené ekvivalentní entity, jak je popsáno v různých konceptec
 
 | Koncepce                                | Organizace nejvyšší úrovně | Organizace nižší úrovně                                            | Datový kontejner |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
-| Objekty blob – úložiště objektů pro obecné účely | Kontejner              | Virtuální adresář (pouze sada SDK) – neposkytuje atomickou manipulaci | Objekt blob           |
-| Azure Data Lake Storage Gen2 – analytické úložiště          | Kontejner            | Adresář                                                           | Soubor           |
+| Objekty blob – úložiště objektů pro obecné účely | Kontejner              | Virtuální adresář (pouze sada SDK) – neposkytuje atomickou manipulaci | Blob           |
+| Azure Data Lake Storage Gen2 – analytické úložiště          | Kontejner            | Adresář                                                           | File           |
 
 ## <a name="supported-blob-storage-features"></a>Podporované funkce Blob Storage
 

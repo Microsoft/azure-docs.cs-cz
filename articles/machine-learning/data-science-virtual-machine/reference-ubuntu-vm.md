@@ -5,16 +5,16 @@ description: Podrobnosti o nástrojích, které jsou součástí Data Science Vi
 author: gvashishtha
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.custom: tracking-python
+ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 34b4bbd9c2ed088aca10801c22c5f189264fdb1f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 247840fe4719dc83be8048826ac4defc76d7ef9d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955535"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852221"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Referenční informace: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -85,7 +85,7 @@ Torch je vědecky výpočetní prostředí s podporou nejrůznějších algoritm
 
 PyTorch je také k dispozici v kořenovém prostředí Anaconda. Příklady jsou v/dsvm/Samples/pytorch..
 
-## <a name="microsoft-machine-learning-server"></a>Server Microsoft Machine Learning
+## <a name="microsoft-machine-learning-server"></a>Microsoft Machine Learning Server
 
 R je jedním z nejoblíbenějších jazyků pro analýzu dat a strojové učení. Pokud pro analýzu chcete použít R, virtuální počítač se Microsoft Machine Learning Server s otevřenou a pomocí knihovny Microsoft R Open a matematického jádra. Knihovna Math kernel optimalizuje matematické operace běžné v analytických algoritmech. Microsoft R Open je 100 procent kompatibilního s CRAN R a kterákoli z knihoven R publikovaných v CRAN se dá nainstalovat do Microsoft R Open. 
 
@@ -255,7 +255,7 @@ Informace o tom, jak nasadit modely v R a Pythonu do Azure Machine Learning, naj
 
 ## <a name="machine-learning-tools"></a>Nástroje pro strojové učení
 
-Tento virtuální počítač přináší nástroje Machine Learning a algoritmy, které byly předem kompilovány a předinstalované místně. Tady jsou některé z nich:
+Tento virtuální počítač přináší nástroje Machine Learning a algoritmy, které byly předem kompilovány a předinstalované místně. Mezi ně patří:
 
 * **Pro dostupné**: rychlý online algoritmus pro učení.
 * **xgboost**: nástroj, který poskytuje optimalizované a zesílené stromové algoritmy.
@@ -332,7 +332,7 @@ Nyní se otevře grafické rozhraní se sadou karet. Pomocí následujících kr
 > [!NOTE]
 > Pokud nemáte přístup k instalaci balíčku do systémového adresáře (výchozí nastavení), může se zobrazit výzva v okně konzoly R, kde můžete balíčky nainstalovat do vaší osobní knihovny. Pokud se zobrazí tyto výzvy, odpovězte na **y** .
 
-1. Vyberte **Provést**.
+1. Vyberte **Execute** (Provést).
 1. Zobrazí se dialogové okno s dotazem, zda chcete použít ukázkovou sadu dat počasí. Vyberte **Ano** , pokud chcete příklad načíst.
 1. Vyberte kartu **model** .
 1. Vyberte **provést** a sestavte rozhodovací strom.

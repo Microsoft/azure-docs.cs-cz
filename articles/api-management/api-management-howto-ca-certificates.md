@@ -1,6 +1,6 @@
 ---
 title: Přidání vlastního certifikátu certifikační autority – Azure API Management | Microsoft Docs
-description: Přečtěte si, jak přidat vlastní certifikát certifikační autority do Azure API Management.
+description: Přečtěte si, jak přidat vlastní certifikát certifikační autority do Azure API Management. Můžete také zobrazit pokyny k odstranění certifikátu.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 21d5869f2bcdfb6383b6ef89869d8098135ea7ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e42e976e57dd69ffcbd9065cfb3aaf3af9c4b972
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70073609"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852068"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Postup přidání vlastního certifikátu certifikační autority do Azure API Management
 

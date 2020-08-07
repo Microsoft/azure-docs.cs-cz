@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.author: erhopf
-ms.custom: tracking-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 00b846eba8812ad3126f24ce5cf382b93253169e
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 887f92fd1b59a0249050021e1a058eef8bd28ea4
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405313"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876491"
 ---
 # <a name="quickstart-use-the-translator-to-transliterate-text"></a>Rychlý Start: použití překladatele k přepisu textu
 
@@ -45,7 +45,7 @@ Tento rychlý Start vyžaduje [účet Azure Cognitive Services](https://docs.mic
 [!INCLUDE [Python quickstart](includes/transliterate-python.md)]
 ::: zone-end
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Přeložení textu](quickstart-translate.md)
 * [Identifikace jazyka podle vstupu](quickstart-detect.md)

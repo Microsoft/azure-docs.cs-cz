@@ -174,7 +174,7 @@
     - name: Přehrávač médií Azure
       items:
         - name: Přehled Azure Media Playeru
-          href: 'https://docs.microsoft.com/en-us/azure/media-services/azure-media-player/azure-media-player-overview'
+          href: ../azure-media-player/azure-media-player-overview.md
     - name: Vývoj s využitím rozhraní API v3
       items:
         - name: Přehled
@@ -362,7 +362,7 @@
     - name: Použití přehrávačů médií
       items:
         - name: Kompletní nastavení Azure Media Playeru
-          href: 'https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup'
+          href: ../azure-media-player/azure-media-player-full-setup.md
         - name: Použití přehrávače Video.js
           href: how-to-video-js-player.md
         - name: Použití přehrávače videa Shaka
@@ -373,7 +373,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
       displayName: schema
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/media/'
+      href: /rest/api/media/
     - name: Azure CLI
       href: 'https://aka.ms/ams-v3-cli-ref'
     - name: Sady SDK
@@ -386,7 +386,7 @@
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Přejít
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.media/allversions

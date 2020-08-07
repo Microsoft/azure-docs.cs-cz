@@ -4,34 +4,36 @@ description: Naučte se používat hromadnou podporu Notification Hubs k provád
 services: notification-hubs
 author: sethmanheim
 manager: femila
-editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 08/04/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2019
-ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a7de1921732328fe4112de9b9171af3e21fe7e3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71212399"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832174"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Hromadné export a import registrací Azure Notification Hubs
-Existují scénáře, ve kterých je nutné vytvořit nebo upravit velký počet registrací v centru oznámení. Některé z těchto scénářů jsou aktualizace značky po výpočtech služby Batch nebo migrace stávající implementace nabízených oznámení na použití Notification Hubs.
+
+Existují scénáře, ve kterých je nutné vytvořit nebo upravit velký počet registrací v centru oznámení. Některé z těchto scénářů jsou aktualizace značky po výpočtech služby Batch nebo migrace stávající implementace nabízených oznámení na používání Azure Notification Hubs.
 
 Tento článek vysvětluje, jak provést velký počet operací v centru oznámení nebo exportovat všechny registrace hromadně.
 
 ## <a name="high-level-flow"></a>Tok na nejvyšší úrovni
+
 Podpora služby Batch je navržená tak, aby podporovala dlouhodobě běžící úlohy, které zahrnují miliony registrací. Pro dosažení tohoto škálování podpora dávky používá Azure Storage k ukládání podrobností a výstupu úlohy. Pro operace hromadné aktualizace musí uživatel vytvořit soubor v kontejneru objektů blob, jehož obsah je seznam operací aktualizace registrace. Při spuštění úlohy uživatel poskytne adresu URL vstupního objektu BLOB společně s adresou URL pro výstupní adresář (také v kontejneru objektů BLOB). Po zahájení úlohy může uživatel zjistit stav pomocí dotazu na umístění adresy URL zadané na začátku úlohy. Konkrétní úloha může provádět pouze operace určitého druhu (vytvoří, aktualizuje nebo odstraní). Operace exportu se provádějí obdobně.
 
 ## <a name="import"></a>Import
 
 ### <a name="set-up"></a>Nastavení
+
 V této části se předpokládá, že máte následující entity:
 
 - Zřízené centrum oznámení.
@@ -39,7 +41,8 @@ V této části se předpokládá, že máte následující entity:
 - Odkazuje na [balíček nuget Azure Storage](https://www.nuget.org/packages/windowsazure.storage/) a [Notification Hubs balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 ### <a name="create-input-file-and-store-it-in-a-blob"></a>Vytvořit vstupní soubor a uložit ho do objektu BLOB
-Vstupní soubor obsahuje seznam registrací serializovaných v XML, jeden pro každý řádek. Pomocí sady Azure SDK následující příklad kódu ukazuje, jak serializovat registrace a nahrát je do kontejneru objektů BLOB.
+
+Vstupní soubor obsahuje seznam registrací serializovaných v XML, jeden pro každý řádek. Pomocí sady Azure SDK následující příklad kódu ukazuje, jak serializovat registrace a nahrát je do kontejneru objektů BLOB:
 
 ```csharp
 private static void SerializeToBlob(CloudBlobContainer container, RegistrationDescription[] descriptions)
@@ -62,6 +65,7 @@ private static void SerializeToBlob(CloudBlobContainer container, RegistrationDe
 > Předchozí kód deserializace registrace v paměti a pak nahraje celý datový proud do objektu BLOB. Pokud jste nahráli soubor o více než několik megabajtů, přečtěte si téma pokyny k objektu blob Azure, jak provést tyto kroky. například [objekty blob bloku](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
 
 ### <a name="create-url-tokens"></a>Vytváření tokenů URL
+
 Po nahrání vstupního souboru vygenerujte adresy URL, které se poskytují do centra oznámení pro vstupní soubor i výstupní adresář. Pro vstup a výstup můžete použít dva různé kontejnery objektů BLOB.
 
 ```csharp
@@ -90,6 +94,7 @@ static Uri GetInputFileUrl(CloudBlobContainer container, string filePath)
 ```
 
 ### <a name="submit-the-job"></a>Odeslání úlohy
+
 Se dvěma vstupními a výstupními adresami URL teď můžete spustit dávkovou úlohu.
 
 ```csharp
@@ -131,6 +136,7 @@ Po dokončení úlohy můžete zkontrolovat výsledky zobrazením následující
 Tyto soubory obsahují seznam úspěšných a neúspěšných operací z dávky. Formát souboru je `.cvs` , ve kterém každý řádek obsahuje číslo řádku původního vstupního souboru a výstup operace (obvykle se jedná o vytvořený nebo aktualizovaný popis registrace).
 
 ### <a name="full-sample-code"></a>Úplný ukázkový kód
+
 Následující vzorový kód importuje registrace do centra oznámení.
 
 ```csharp
@@ -169,7 +175,7 @@ namespace ConsoleApplication1
                 new MpnsRegistrationDescription(@"http://dm2.notify.live.net/throttledthirdparty/01.00/12G9Ed13dLb5RbCii5fWzpFpAgAAAAADAQAAAAQUZm52OkJCMjg1QTg1QkZDMdUxREQFBlVTTkMwMQ"),
             };
 
-            //write to blob store to create an input file
+            // Write to blob store to create an input file
             var blobClient = new CloudBlobClient(STORAGE_ENDPOINT, new Microsoft.WindowsAzure.Storage.Auth.StorageCredentials(STORAGE_ACCOUNT, STORAGE_PASSWORD));
             var container = blobClient.GetContainerReference("testjobs");
             container.CreateIfNotExists();
@@ -181,7 +187,7 @@ namespace ConsoleApplication1
             var inputFileSasUri = GetInputFileUrl(container, INPUT_FILE_NAME);
 
 
-            //Lets import this file
+            // Import this file
             NotificationHubClient client = NotificationHubClient.CreateClientFromConnectionString(CONNECTION_STRING, HUB_NAME);
             var createTask = client.SubmitNotificationHubJobAsync(
                 new NotificationHubJob {
@@ -221,35 +227,35 @@ namespace ConsoleApplication1
 
         static Uri GetOutputDirectoryUrl(CloudBlobContainer container)
         {
-            //Set the expiry time and permissions for the container.
-            //In this case no start time is specified, so the shared access signature becomes valid immediately.
+            // Set the expiry time and permissions for the container.
+            // In this case no start time is specified, so the shared access signature becomes valid immediately.
             SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
             {
                 SharedAccessExpiryTime = DateTime.UtcNow.AddHours(4),
                 Permissions = SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.List | SharedAccessBlobPermissions.Read
             };
 
-            //Generate the shared access signature on the container, setting the constraints directly on the signature.
+            // Generate the shared access signature on the container, setting the constraints directly on the signature.
             string sasContainerToken = container.GetSharedAccessSignature(sasConstraints);
 
-            //Return the URI string for the container, including the SAS token.
+            // Return the URI string for the container, including the SAS token.
             return new Uri(container.Uri + sasContainerToken);
         }
 
         static Uri GetInputFileUrl(CloudBlobContainer container, string filePath)
         {
-            //Set the expiry time and permissions for the container.
-            //In this case no start time is specified, so the shared access signature becomes valid immediately.
+            // Set the expiry time and permissions for the container.
+            // In this case no start time is specified, so the shared access signature becomes valid immediately.
             SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
             {
                 SharedAccessExpiryTime = DateTime.UtcNow.AddHours(4),
                 Permissions = SharedAccessBlobPermissions.Read
             };
 
-            //Generate the shared access signature on the container, setting the constraints directly on the signature.
+            // Generate the shared access signature on the container, setting the constraints directly on the signature.
             string sasToken = container.GetBlockBlobReference(filePath).GetSharedAccessSignature(sasConstraints);
 
-            //Return the URI string for the container, including the SAS token.
+            // Return the URI string for the container, including the SAS token.
             return new Uri(container.Uri + "/" + filePath + sasToken);
         }
 
@@ -262,22 +268,24 @@ namespace ConsoleApplication1
 ```
 
 ## <a name="export"></a>Export
+
 Export registrace je podobný jako při importu, a to s těmito rozdíly:
 
 - Potřebujete jenom výstupní adresu URL.
 - Vytvoříte NotificationHubJob typu ExportRegistrations.
 
 ### <a name="sample-code-snippet"></a>Ukázka fragmentu kódu
-Tady je ukázkový fragment kódu pro export registrací v jazyce Java:
+
+Následuje ukázka fragmentu kódu pro export registrací v jazyce Java:
 
 ```java
-// submit an export job
+// Submit an export job
 NotificationHubJob job = new NotificationHubJob();
 job.setJobType(NotificationHubJobType.ExportRegistrations);
 job.setOutputContainerUri("container uri with SAS signature");
 job = hub.submitNotificationHubJob(job);
 
-// wait until the job is done
+// Wait until the job is done
 while(true){
     Thread.sleep(1000);
     job = hub.getNotificationHubJob(job.getJobId());
@@ -288,6 +296,7 @@ while(true){
 ```
 
 ## <a name="next-steps"></a>Další kroky
+
 Další informace o registracích najdete v následujících článcích:
 
 - [Správa registrací](notification-hubs-push-notification-registration-management.md)

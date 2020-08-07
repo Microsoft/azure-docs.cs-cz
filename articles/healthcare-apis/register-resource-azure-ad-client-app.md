@@ -2,18 +2,18 @@
 title: Registrace aplikace prostředků v Azure AD – Azure API pro FHIR
 description: Zaregistrujte aplikaci prostředků (nebo rozhraní API) v Azure Active Directory, aby klientské aplikace mohly při ověřování vyžadovat přístup k prostředku.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: 10b951300b8386b057744a980abd5d847b6b6907
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: matjazl
+ms.openlocfilehash: 3c5486e31dd3227cfcc8bd3b433602ce58cfa4fb
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871852"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852986"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Registrace aplikace prostředků v Azure Active Directory
 

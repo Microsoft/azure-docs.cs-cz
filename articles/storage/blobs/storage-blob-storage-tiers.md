@@ -1,6 +1,6 @@
 ---
 title: Horké, studené a archivní úrovně přístupu pro objekty blob – Azure Storage
-description: Přečtěte si o horké, studené a archivní úrovni přístupu pro úložiště objektů BLOB v Azure. Zkontrolujte účty úložiště, které podporují vrstvení. Porovnejte možnosti úložiště blogu blokovat.
+description: Přečtěte si o horké, studené a archivní úrovni přístupu pro úložiště objektů BLOB v Azure. Zkontrolujte účty úložiště, které podporují vrstvení. Porovná možnosti úložiště objektů blob bloku.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/23/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 17df78f846d8422c0200ce5fc75b4722d21d35df
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a46597087a3eee03f7c5b8d1c9746f968ea1980d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828268"
+ms.locfileid: "87849722"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: Horká, studená a archivní úroveň přístupu
 

@@ -1,7 +1,7 @@
 ---
 title: Správa vývojářských účtů pomocí skupin v Azure API Management
 titleSuffix: Azure API Management
-description: Naučte se spravovat účty pro vývojáře pomocí skupin v Azure API Management
+description: Naučte se spravovat účty pro vývojáře pomocí skupin v Azure API Management. Vytvořte skupiny a přidružte je k produktům nebo vývojářům.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 16ab72a67a021338bd8e186c32015c271240d224
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 517b70d798d8cdd1b361b244111a8b6781286207
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250528"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851218"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Vytváření skupin a jejich používání ke správě účtů vývojářů ve službě Azure API Management
 
@@ -38,7 +38,7 @@ Kromě vytváření a správy skupin na portálu vydavatele můžete vytvořit a
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Dokončení úloh v tomto článku: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 

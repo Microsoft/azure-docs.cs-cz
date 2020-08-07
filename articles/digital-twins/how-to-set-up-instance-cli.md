@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 287ee62acf3a078c4b47803060f61c9dd4134ab7
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: ba03acabb3325045a71d55f583343a26b4d121ca
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408256"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832317"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Nastavení instance a ověřování digitálních vláken Azure (CLI)
 
@@ -46,7 +46,7 @@ Pomocí těchto hodnot v následujícím příkazu vytvořte instanci:
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
 ```
 
-### <a name="verify-success"></a>Ověřit úspěch
+### <a name="verify-success-and-collect-important-values"></a>Ověřit úspěšné a shromažďovat důležité hodnoty
 
 Pokud se instance úspěšně vytvořila, výsledek Cloud Shell vypadá nějak takto a vypisuje informace o prostředku, který jste vytvořili:
 
@@ -71,12 +71,16 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 Výsledkem tohoto příkazu jsou informace o vytvořeném přiřazení role.
 
-> [!TIP]
-> Pokud se zobrazí chyba *400: důvodu chybného požadavku* , spusťte následující příkaz, který získá *identifikátor objectID* pro uživatele:
-> ```azurecli
-> az ad user show --id <Azure-AD-email-of-user-to-assign> --query objectId
-> ```
-> Pak opakujte příkaz přiřazení role pomocí *ID objektu* uživatele místo jejich e-mailu.
+> [!NOTE]
+> Pokud tento příkaz vrátí chybu s informací, že rozhraní příkazového řádku **nemůže najít uživatele nebo instanční objekt v databázi grafu**:
+>
+> Místo jejich e-mailu použijte *ID objektu* uživatele. Tato situace může nastat pro uživatele na osobních [účtech Microsoft (účty spravované služby)](https://account.microsoft.com/account). 
+>
+> Pomocí [stránky Azure Portal Azure Active Directory uživatelé](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) vyberte uživatelský účet a otevřete jeho podrobnosti. Zkopírujte *objectID*uživatele:
+>
+> :::image type="content" source="media/includes/user-id.png" alt-text="Zobrazení stránky uživatele v Azure Portal zvýrazňování identifikátoru GUID v poli ID objektu" lightbox="media/includes/user-id.png":::
+>
+> Pak opakujte příkaz seznamu přiřazení role pomocí *ID objektu* uživatele místo e-mailu.
 
 ### <a name="verify-success"></a>Ověřit úspěch
 
@@ -117,7 +121,7 @@ Přejděte na *manifest.js* právě vytvořeného a stiskněte tlačítko "otev�
 Potom spuštěním následujícího příkazu vytvořte registraci aplikace (podle potřeby nahraďte zástupné symboly):
 
 ```azurecli
-az ad app create --display-name <name-for-your-app> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
+az ad app create --display-name <name-for-your-app-registration> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
 ```
 
 Tady je ukázka výstupu z tohoto příkazu, ve kterém se zobrazují informace o registraci, kterou jste vytvořili:

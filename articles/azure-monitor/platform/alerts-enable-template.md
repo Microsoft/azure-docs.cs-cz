@@ -6,17 +6,17 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 380a1366994e970c208a6c3ad505414cb12bc0c2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d7d9f55bbd3d8060670008f321a77b2a28376e47
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324093"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849015"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
+
 > [!WARNING]
-> 
-> Tento článek popisuje vytvoření **klasických výstrah metrik** pomocí Správce prostředků šablon. Klasické výstrahy byly vyřazeny v srpnu 2019 a nastaveny tak, aby byly plně zastaralé v červnu 2020. Nemůžete vytvářet nové klasické výstrahy Public Azure. Některé regionální verze Azure můžou mít stále možnost, ale doporučujeme vám místo toho vytvořit [novější výstrahy metriky](./alerts-metric-near-real-time.md) pomocí šablon, pokud je to možné. V [tomto článku](alerts-metric-create-templates.md) najdete podrobnosti.
+> Tento článek popisuje, jak vytvořit starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](./alerts-overview.md). Klasické výstrahy jsou [vyřazeny](./monitoring-classic-retirement.md), i když jsou v omezeném rozsahu používány pro prostředky, které ještě nepodporují nové výstrahy.
 >
 
 V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) nakonfigurovat výstrahy metriky Azure Classic. To vám umožní automaticky nastavit výstrahy na svých prostředcích při jejich vytvoření, aby se zajistilo správné monitorování všech prostředků.

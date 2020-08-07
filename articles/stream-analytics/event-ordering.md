@@ -6,13 +6,13 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/12/2019
-ms.openlocfilehash: e9617018b06d4f62b49946ae5593bd51805355e0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 08/06/2020
+ms.openlocfilehash: b4e34befbf28de2b985ff49ce17a87a25842015e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044562"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901687"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Konfigurace zásad řazení událostí pro Azure Stream Analytics
 
@@ -75,6 +75,11 @@ Je-li kombinováno více oddílů ze stejného vstupního datového proudu, tole
 Tato zpráva vám informuje o tom, že minimálně jeden oddíl ve vstupu je prázdný a ve výstupu se dokončí prahová hodnota pozdního doručení. Chcete-li to překonat, doporučujeme buď:  
 1. Zajistěte, aby všechny oddíly centra událostí/IoT Hub přijímaly vstup. 
 2. Použijte v dotazu klauzuli partition by PartitionID. 
+
+## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>Proč se mi zobrazuje zpoždění 5 sekund, i když je zásada zpožděného doručení nastavená na 0?
+K tomu dojde, když je vstupní oddíl, který nikdy neobdržel žádný vstup. Pokud chcete toto chování ověřit, můžete ověřit vstupní metriky podle oddílu. 
+
+Pokud oddíl neobsahuje žádná data pro více než nakonfigurovanou prahovou hodnotu pro pozdní doručení, Stream Analytics bude v části požadavky na řazení událostí popsána časová razítka aplikace. To vyžaduje odhadovanou dobu doručení. Pokud oddíl nikdy nemá žádná data, Stream Analytics odhaduje čas doručení v *místním čase – 5 sekund*. Z důvodu těchto oddílů, které nikdy neobsahovaly žádná data, by mohla zobrazit zpoždění meze 5 sekund.  
 
 ## <a name="next-steps"></a>Další kroky
 * [Důležité informace o práci s časem](stream-analytics-time-handling.md)

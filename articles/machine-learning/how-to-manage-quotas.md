@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: a75a5942ad0aac39f2fe6afb9c62a254c4645d0a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4bd13adb9bb431749f1d0f52781ce22c832fc090
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372939"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846730"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Správa & zvýšení kvót pro prostředky pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,13 +46,9 @@ Tady je rozpis omezení kvót podle různých typů prostředků v rámci vašeh
 > Omezení se mohou změnit. Nejnovější lze vždy najít v [dokumentu](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) kvót na úrovni služby pro všechny Azure.
 
 ### <a name="virtual-machines"></a>Virtuální počítače
-U každého předplatného Azure existuje omezení počtu virtuálních počítačů, které můžete mít v rámci služeb nebo samostatně. Toto omezení je na úrovni oblasti v celkovém počtu jader a také na jednotlivých rodinách.
-
-V jádrech virtuálních počítačů je omezení regionálního celkového počtu a rozsah řady podle velikosti (Dv2, F atd.), které jsou samostatně vynutily. Představte si například předplatné s omezením celkového počtu 30 jader virtuálního počítače na oblast USA – východ, omezením počtu 30 jader na řadu A a 30 jader na řadu D. V tomto předplatném by bylo možné nasadit 30 virtuálních počítačů řady A1, 30 virtuálních počítačů řady D1 nebo jejich kombinaci, která nepřekročí celkový počet 30 jader (například 10 virtuálních počítačů řady A1 a 20 virtuálních počítačů řady D1).
+U každého předplatného Azure se omezuje počet virtuálních počítačů v rámci služeb nebo samostatně. V jádrech virtuálních počítačů je omezení regionálního celkového počtu a rozsah řady podle velikosti (Dv2, F atd.), které jsou samostatně vynutily. Představte si například předplatné s omezením celkového počtu 30 jader virtuálního počítače na oblast USA – východ, omezením počtu 30 jader na řadu A a 30 jader na řadu D. V tomto předplatném by bylo možné nasadit 30 virtuálních počítačů řady A1, 30 virtuálních počítačů řady D1 nebo jejich kombinaci, která nepřekročí celkový počet 30 jader (například 10 virtuálních počítačů řady A1 a 20 virtuálních počítačů řady D1).
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
-
-Podrobnější a aktuální seznam limitů kvót najdete v [článku o kvótě v rámci Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
 U [Azure Machine Learning COMPUTE](concept-compute-target.md#azure-machine-learning-compute-managed)je pro počet jader a počet jedinečných výpočetních prostředků v rámci předplatného povolená výchozí omezení. Tato kvóta je oddělená od výše uvedené kvóty virtuálních počítačů a omezení jádra nejsou sdílená mezi těmito dvěma typy prostředků, protože AmlCompute je spravovaná služba, která nasazuje prostředky v hostovaném modelu.
@@ -84,16 +80,10 @@ U [Azure Machine Learningch kanálů](concept-ml-pipelines.md)existuje kvótový
 - Maximální počet kroků povolených v kanálu je 30 000.
 - Maximální počet spuštění založených na plánech a přijetí změn objektů BLOB pro plány publikovaných kanálů publikovaných na blogu v rámci předplatného za měsíc je 100 000
 
-> [!NOTE]
-> Pokud chcete tento limit zvýšit, kontaktujte [Podpora Microsoftu](https://azure.microsoft.com/support/options/).
-
 ### <a name="container-instances"></a>Instance kontejnerů
 
 Existuje také omezení počtu instancí kontejnerů, které můžete v daném časovém období aktivovat (v rozsahu hodin) nebo napříč celým předplatným.
-
-[!INCLUDE [container-instances-limits](../../includes/container-instances-limits.md)]
-
-Podrobnější a aktuální seznam limitů [kvót najdete v článku o](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)kvótě v rámci Azure.
+Omezení najdete v tématu [omezení Container Instances](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits).
 
 ### <a name="storage"></a>Storage
 V daném předplatném je limit počtu účtů úložiště i jednotlivých oblastí. Výchozí limit je 250 a zahrnuje účty Standard a Premium Storage. Pokud v dané oblasti potřebujete více než 250 účtů úložiště, vytvořte žádost prostřednictvím [podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Tým Azure Storage zkontroluje váš firemní případ a může pro danou oblast schvalovat až 250 účtů úložiště.
@@ -126,7 +116,7 @@ Azure Machine Learning výpočetní prostředky se spravují odděleně od jiný
 1. Vyberte předplatné, pro které chcete zobrazit omezení kvóty. Nezapomeňte filtrovat na oblast, do které vás zajímáte.
 
 1. Nyní můžete přepínat mezi zobrazením na úrovni předplatného a zobrazením na úrovni pracovního prostoru:
-    + **Zobrazení odběru:** Díky tomu můžete zobrazit využití základní kvóty podle rodiny virtuálních počítačů, rozšířit je podle pracovního prostoru a dále je rozšířit o skutečné názvy clusterů. Toto zobrazení je optimální pro rychlé získání podrobností o základním využití konkrétní rodiny virtuálních počítačů, aby se zobrazilo rozdělení v pracovních prostorech a dále podle základních clusterů pro každý z těchto pracovních prostorů. Obecná konvence v tomto zobrazení je (využití/kvóta), kde využití je aktuální počet jader s horizontálním škálováním a kvóta představuje logický maximální počet jader, na které se může prostředek škálovat. U každého **pracovního prostoru**by kvóta byla kvóta na úrovni pracovního prostoru (jak je vysvětleno výše), která označuje maximální počet jader, na které se dá pro konkrétní rodinu virtuálních počítačů škálovat. Pro **cluster** podobně je kvóta ve skutečnosti jádry, které odpovídají maximálnímu počtu uzlů, které může cluster škálovat, aby byl definovaný vlastností max_nodes.
+    + **Zobrazení odběru:** Zobrazí vaše využití základní kvóty podle rodiny virtuálních počítačů, rozbalí je podle pracovního prostoru a bude je dál rozšiřovat podle skutečných názvů clusterů. Rychle se seznamte s podrobnostmi o základním využití konkrétní rodiny virtuálních počítačů, abyste viděli rozdělení podle pracovních prostorů a dále podle základních clusterů pro každý z těchto pracovních prostorů. Obecná konvence v tomto zobrazení je (využití/kvóta), kde využití je aktuální počet jader s horizontálním škálováním a kvóta představuje logický maximální počet jader, na které se může prostředek škálovat. U každého **pracovního prostoru**by kvóta byla kvóta na úrovni pracovního prostoru (jak je vysvětleno výše), která označuje maximální počet jader, na které se dá pro konkrétní rodinu virtuálních počítačů škálovat. Pro **cluster** podobně je kvóta ve skutečnosti jádry, které odpovídají maximálnímu počtu uzlů, které může cluster škálovat, aby byl definovaný vlastností max_nodes.
 
     + **Zobrazení pracovního prostoru:** Díky tomu můžete zobrazit využití základních kvót podle pracovního prostoru, rozšíříte je pomocí rodiny virtuálních počítačů a dále je rozšíříte pomocí skutečných názvů clusterů. Toto zobrazení je optimální pro rychlé získání podrobností o základním použití pro konkrétní pracovní prostor, aby se mohla zobrazit zaregistrované v rámci rodin virtuálních počítačů a dále podkladové clustery pro každou z těchto rodin.
 
@@ -149,8 +139,4 @@ Při žádosti o zvýšení kvóty musíte vybrat službu, pro kterou požadujet
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v těchto článcích:
-
 + [Plánování & správy nákladů Azure Machine Learning](concept-plan-manage-cost.md)
-
-+ [Jak zvýšit vaši kvótu](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors).

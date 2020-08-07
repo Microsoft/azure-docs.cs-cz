@@ -7,13 +7,13 @@ ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: msangapu
-ms.custom: mvc, seodec18, tracking-python
-ms.openlocfilehash: bfe1e9fd2532e308c474aee6983615e28a8081f5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, seodec18, devx-track-python
+ms.openlocfilehash: 1c1313c7333c20dac5e581025a571c6a733dafc6
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506827"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850895"
 ---
 # <a name="tutorial-run-a-custom-docker-image-in-app-service"></a>Kurz: spuštění vlastní image Docker v App Service
 

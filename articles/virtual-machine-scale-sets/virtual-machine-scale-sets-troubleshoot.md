@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 1ee4c8a52098bfa7c012e85f25371c306b106b86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5e786a64d7d9606a3a99a3f1b3f8c67c9869cd1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029429"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830678"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Řešení potíží s automatickým škálováním se škálovacími sadami virtuálních počítačů
 **Problém** – pomocí služby Virtual Machine Scale Sets jste v Azure Resource Manager vytvořili infrastrukturu automatického škálování – například nasazením šablony, jako je tato: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale – máte definovaná pravidla škálování a funguje Skvělé, ale bez ohledu na to, kolik dat jste do virtuálních počítačů umístili, nefunguje automatické škálování.
@@ -23,7 +23,7 @@ ms.locfileid: "87029429"
 Mezi ty, které je potřeba vzít v úvahu, patří:
 
 * Kolik vCPU má každý virtuální počítač a načítají se jednotlivé vCPUy?
-  Předchozí Ukázková šablona Azure pro rychlý Start obsahuje skript do_work. php, který načte jeden vCPU. Pokud používáte virtuální počítač, který je větší než vCPU velikost virtuálního počítače, jako je například Standard_A1 nebo D1, je nutné spustit toto zatížení několikrát. Kontrola [velikosti virtuálních počítačů s Windows v Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pomocí kontroly počtu vCPU pro vaše virtuální počítače
+  Předchozí Ukázková šablona Azure pro rychlý Start obsahuje skript do_work. php, který načte jeden vCPU. Pokud používáte virtuální počítač, který je větší než vCPU velikost virtuálního počítače, jako je například Standard_A1 nebo D1, je nutné spustit toto zatížení několikrát. Kontrola [velikosti virtuálních počítačů s Windows v Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) pomocí kontroly počtu vCPU pro vaše virtuální počítače
 * Kolik virtuálních počítačů v sadě škálování virtuálních počítačů je u každé z nich práce prováděno?
   
     Událost škálování na více instancí probíhá pouze v případě, že průměrný procesor napříč **všemi** virtuálními počítači v sadě škálování překračuje prahovou hodnotu v čase interní definovaném v pravidlech automatického škálování.

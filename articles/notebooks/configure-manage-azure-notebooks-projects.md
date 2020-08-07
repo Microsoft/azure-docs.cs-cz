@@ -3,13 +3,13 @@ title: Konfigurace a Správa Azure Notebooks ve verzi Preview
 description: Naučte se spravovat metadata projektu, soubory projektu, prostředí projektu a kroky nastavení prostřednictvím uživatelského rozhraní Azure Notebooks a přímého přístupového terminálu.
 ms.topic: how-to
 ms.date: 02/28/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 53acf7c916b402e291b9779948579761e79179ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 7674c2151922d26e069b5cd285cb311d7a18fa98
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85834076"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852799"
 ---
 # <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />Správa a konfigurace projektů v Azure Notebooks Preview
 
@@ -38,7 +38,7 @@ Ve výchozím nastavení jsou projekty spouštěny na **bezplatné výpočetní*
 
 Na řídicím panelu projekt vyberte **nastavení projektu**a pak vyberte kartu **informace** , která obsahuje metadata projektu, jak je popsáno v následující tabulce. Metadata projektu můžete kdykoli změnit.
 
-| Nastavení | Description |
+| Nastavení | Popis |
 | --- | --- |
 | Název projektu | Popisný název projektu, který Azure Notebooks používá pro účely zobrazení. Například "Hello World v Pythonu". |
 | ID projektu | Vlastní identifikátor, který se stal součástí adresy URL, kterou používáte pro sdílení projektu. Toto ID může obsahovat pouze písmena, číslice a spojovníky, které jsou omezeny na 30 znaků a nesmí se jednat o [REZERVOVANÉ ID projektu](create-clone-jupyter-notebooks.md#reserved-project-ids). Pokud si nejste jistí, co použít, obvyklá konvence je použití malé verze názvu projektu, kde jsou mezery převedeny na spojovníky, například "My-Poznámkový projekt" (zkráceně, pokud je to nutné pro přizpůsobení limitu délky). |
@@ -57,7 +57,7 @@ Na řídicím panelu projekt vyberte **nastavení projektu**a pak vyberte kartu 
 
 Příkaz **+ New** (Klávesová zkratka: n) vytvoří nové soubory nebo složky. Při použití příkazu nejdřív vyberte typ položky, kterou chcete vytvořit:
 
-| Typ položky | Description | Chování příkazu |
+| Typ položky | Popis | Chování příkazu |
 | --- | --- | --- |
 | **Poznámkový blok** | Jupyter Poznámkový blok | Zobrazí místní nabídku, ve které zadáte název souboru a jazyk poznámkového bloku. |
 | **Složka** | Podsložka | Vytvoří pole pro úpravy v seznamu souborů projektu, do kterého zadáte název složky. |
@@ -82,7 +82,7 @@ Jednotlivé položky v seznamu souborů projektu poskytují příkazy prostředn
 | Preview | p | Otevře náhled souboru HTML. pro poznámkové bloky je náhled vykreslování poznámkového bloku jen pro čtení. Další informace najdete v části [Preview](#preview) . |
 | Upravit soubor | Mohu | Otevře soubor pro úpravy. |
 | Stáhnout | d | Stáhne soubor zip, který obsahuje soubor nebo obsah složky. |
-| přejmenování | a | Zobrazí výzvu k zadání nového názvu souboru nebo složky. |
+| přejmenování | pro | Zobrazí výzvu k zadání nového názvu souboru nebo složky. |
 | Odstranit | x | Vyzve k potvrzení a pak trvale odstraní soubor z projektu. Odstranění nelze vrátit zpět. |
 | Přesunout | m | Přesune soubor do jiné složky ve stejném projektu. |
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: 38861ed941d49317e69bfab9afd17638a790bf7b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da583a1c884ddcae0815849c43dc0eb335005e53
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072422"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832735"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Vytváření map transformujících XML mezi formáty v Azure Logic Apps s využitím rozšíření Enterprise Integration Pack
 
@@ -30,13 +30,13 @@ Po nahrání transformace nebo mapy do účtu pro integraci ji můžete použít
 
 Následující **postup použijte k transformaci**:
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Vytvořit účet pro integraci a přidat k němu mapu  
 
 Teď, když jste se seznámili s požadavky, je čas vytvořit aplikaci logiky:  
 
-1. Vytvořte aplikaci logiky a [propojte ji s účtem pro integraci](../logic-apps/logic-apps-enterprise-integration-accounts.md "Naučte se propojit účet pro integraci s aplikací logiky.") , který obsahuje mapu.
+1. Vytvořte aplikaci logiky a [propojte ji s účtem pro integraci](./logic-apps-enterprise-integration-create-integration-account.md "Naučte se propojit účet pro integraci s aplikací logiky.") , který obsahuje mapu.
 2. Přidání triggeru **žádosti** do aplikace logiky  
    ![Snímek obrazovky s rozevíracím seznamem zobrazit rozhraní API spravovaná Microsoftem s vybraným triggerem žádosti Rozevírací seznam je v aplikaci logiky vytvořené pomocí sady Visual Studio Enterprise Integration SDK.](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
 3. Přidejte akci **transformace XML** , a to tak, že nejprve vyberete **přidat akci** .   
@@ -136,4 +136,3 @@ Ve výchozím nastavení se odpověď z transformace začíná znakem pořadí b
 ## <a name="learn-more"></a>Další informace
 * [Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informace o Enterprise Integration Pack")  
 * [Další informace o mapách](../logic-apps/logic-apps-enterprise-integration-maps.md "Další informace o službě Enterprise Integration Maps")  
-

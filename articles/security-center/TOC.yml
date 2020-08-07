@@ -63,6 +63,8 @@
           href: security-center-policy-definitions.md
         - name: Použití doporučení k vylepšení zabezpečení
           href: security-center-using-recommendations.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Ochrana před hrozbami a výstrahy zabezpečení
       items:
         - name: Přehled ochrany před hrozbami ve službě Security Center
