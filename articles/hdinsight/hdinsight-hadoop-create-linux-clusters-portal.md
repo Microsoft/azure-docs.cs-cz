@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 95756e9951b384c779f61651555482b3c8cb7321
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/06/2020
+ms.openlocfilehash: 1ba2f5e4b88ae6ae0ed15dbfbbc4fa5c55c45a77
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083368"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874023"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Vytváření clusterů se systémem Linux v HDInsight pomocí Azure Portal
 
@@ -25,13 +25,13 @@ Azure Portal je webový nástroj pro správu služeb a prostředků hostovaných
 
 Azure Portal zpřístupňuje většinu vlastností clusteru. Pomocí šablon Azure Resource Manager můžete skrýt mnoho podrobností. Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop ve službě HDInsight pomocí šablon Správce prostředků](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-clusters"></a>Vytváření clusterů
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. V horní nabídce vyberte **+ vytvořit prostředek**.
 
@@ -86,6 +86,9 @@ Volitelné: vyberte **přidat Azure Storage** pro další úložiště clusteru.
 
 Volitelné: Zadejte existující SQL Database pro ukládání Apache Hive, Apache Oozie a a Apache Ambari metadata mimo cluster. Azure SQL Database, který se používá pro metastore, musí umožňovat připojení k ostatním službám Azure, včetně Azure HDInsight. Při vytváření metastore Nejmenujte databázi s pomlčkami nebo pomlčkami. Tyto znaky můžou způsobit selhání procesu vytváření clusteru.
 
+> [!IMPORTANT]
+> Pro obrazce clusterů, které podporují metaúložiště, výchozí metastore poskytuje Azure SQL Database s **limitem DTU úrovně Basic 5 (není aktualizovatelný)**. Vhodné pro účely základního testování. U rozsáhlých nebo produkčních úloh doporučujeme migrovat na externí metastore.
+
 Vyberte **Další: zabezpečení + síťové >>** , abyste mohli přejít na další kartu.
 
 ## <a name="security--networking"></a>Zabezpečení a sítě
@@ -121,7 +124,7 @@ Na kartě **Konfigurace + ceny** zadejte následující informace:
 
 Vyberte **zkontrolovat + vytvořit >>** a ověřte konfiguraci clusteru a přejděte na finální kartu.
 
-## <a name="review--create"></a>Zkontrolovat a vytvořit
+## <a name="review--create"></a>Kontrola a vytvoření
 
 ![Shrnutí clusteru pro vytvoření HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "Zadat počet uzlů clusteru")
 
@@ -148,7 +151,7 @@ Některé ikony v okně jsou vysvětleny takto:
 
 Další informace najdete v tématu [odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového řádku Azure](./hdinsight-delete-cluster.md).
 
-## <a name="troubleshoot"></a>Odstranit potíže
+## <a name="troubleshoot"></a>Řešení potíží
 
 Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 

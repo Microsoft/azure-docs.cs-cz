@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 9ce2ea7da562372e5c1c25d4c0fe9ab410b02a1d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85561472"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903402"
 ---
 # <a name="request-limits-for-translator"></a>Omezení požadavků pro překladatele
 
@@ -23,18 +23,18 @@ Tento článek poskytuje omezení omezování pro překladatele. Služby zahrnuj
 
 ## <a name="character-and-array-limits-per-request"></a>Omezení počtu znaků a polí na požadavek
 
-Jednotlivé požadavky na překlad jsou omezeny na 5 000 znaků napříč všemi cílovými jazyky, na které překládáte. Například odeslání požadavku na překlad 1 500 znaků k převodu na 3 různé jazyky má za následek velikost požadavku 1, 500x3 = 4 500 znaků, který splňuje limit požadavků. Účtují se vám poplatky za jednotlivé znaky, nikoli počet požadavků. Doporučuje se posílat kratší požadavky.
+Jednotlivé požadavky na překlad jsou omezeny na 10 000 znaků napříč všemi cílovými jazyky, na které překládáte. Například odeslání požadavku na překlad 3 000 znaků k převodu na 3 různé jazyky má za následek velikost požadavku 3000x3 = 9 000 znaků, který splňuje limit požadavků. Účtují se vám poplatky za jednotlivé znaky, nikoli počet požadavků. Doporučuje se posílat kratší požadavky.
 
 Následující tabulka uvádí prvky pole a omezení znaků pro každou operaci překladatele.
 
 | Operace | Maximální velikost elementu pole |    Maximální počet prvků pole |    Maximální velikost požadavku (ve znacích) |
 |:----|:----|:----|:----|
-| Překlad | 5 000    | 100    | 5 000 |
-| Transliterace | 5 000    | 10    | 5 000 |
-| Zjišťování | 10 000 |    100 |    50,000 |
-| BreakSentence | 10 000    | 100 |    50,000 |
-| Slovníkové vyhledávání| 100 |    10    | 1 000 |
-| Příklady slovníku | 100 pro text a 100 pro překlad (200 celkem)| 10|    2 000 |
+| Překlad | 10 000    | 100   | 10 000 |
+| Transliterace | 5 000 | 10    | 5 000 |
+| Zjišťování | 10 000 | 100 |   50,000 |
+| BreakSentence | 50,000    | 100 | 50,000 |
+| Slovníkové vyhledávání| 100 |  10  | 1 000 |
+| Příklady slovníku | 100 pro text a 100 pro překlad (200 celkem)| 10|   2 000 |
 
 ## <a name="character-limits-per-hour"></a>Omezení počtu znaků za hodinu
 

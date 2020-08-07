@@ -7,15 +7,15 @@ ms.service: notification-hubs
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sethm
-ms.date: 05/15/2020
+ms.date: 08/04/2020
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/15/2020
-ms.openlocfilehash: a1e947c80ae48ae507d0712e62084538165918be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b9fe363da0fa5e451aaee83e895d539a0741a174
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022442"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830729"
 ---
 # <a name="quickstart-create-a-notification-hub-using-an-arm-template"></a>Rychlý Start: vytvoření centra oznámení pomocí šablony ARM
 
@@ -66,10 +66,10 @@ az notification-hub show --resource-group ContosoNotificationsGroup --namespace-
 az notification-hub namespace show --resource-group ContosoNotificationsGroup --name nhtestns123
 ```
 
-```
+---
 The output looks similar to: null
 ':::image type="content" source="media/create-notification-hub-template/verify-deploy.png" alt-text="Verify deployment"::': null
-```
+---
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

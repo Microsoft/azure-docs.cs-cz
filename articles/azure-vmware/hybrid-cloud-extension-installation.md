@@ -3,18 +3,18 @@ title: Instalace hybridního cloudového rozšíření (HCX)
 description: Nastavení řešení HCX (VMware Hybrid Cloud Extension) pro privátní cloud Azure VMware Solution (AVS)
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: ea968cb21812f7273af342763d307c2faba1eea6
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 84388c3ec53d9067df2580aabb21ca5885d154b8
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475443"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904989"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Nainstalovat HCX pro řešení VMware pro Azure
 
 V tomto článku se seznámíme s postupy pro nastavení řešení HCX (VMWare Hybrid Cloud Extension) pro privátní cloud řešení Azure VMWare (AVS). HCX umožňuje migrovat úlohy VMware do cloudu a další připojené lokality prostřednictvím různých integrovaných typů migrace HCX.
 
-HCX Advanced – výchozí instalace podporuje až tři servery vCenter. Pokud potřebujete víc než tři, zákazníci mají možnost povolit doplněk HCX Enterprise prostřednictvím podpory. HCX Enterprise Installation pro zákazníky přináší další poplatky za obecnou dostupnost (GA), ale poskytuje [Další funkce](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
+HCX Advanced – výchozí instalace podporuje až tři připojení lokality (v místním prostředí nebo cloudu do cloudu). Pokud potřebujete víc než tři připojení lokalit, zákazníci mají možnost povolit doplněk HCX Enterprise prostřednictvím podpory, která je aktuálně ve verzi Preview. HCX Enterprise přináší zákazníkům po obecné dostupnosti další poplatky (GA), ale poskytuje [Další funkce](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
 
 
 [Před zahájením, před začátkem](#before-you-begin), [požadavky na verzi softwaru](#software-version-requirements)a [požadavky nejprve důkladně](#prerequisites) prostudujte. 
@@ -22,7 +22,7 @@ HCX Advanced – výchozí instalace podporuje až tři servery vCenter. Pokud p
 Pak vás provedeme všemi potřebnými postupy:
 
 > [!div class="checklist"]
-> * Nasazení místní HCXé VAJÍČKy
+> * Nasazení místní HCX vajíček (konektor)
 > * Aktivace a konfigurace HCX
 > * Konfigurace sítě pro odchozí připojení a síť služby
 > * Dokončení instalace kontrolou stavu zařízení
@@ -36,11 +36,14 @@ Po dokončení instalace můžete postupovat podle doporučených dalších krok
 * Projděte si dokumentaci [k VMware s migrací Virtual Machines pomocí VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g).
 * Volitelně si přečtěte téma [požadavky na nasazení VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html).
 * Volitelně si můžete prohlédnout související materiály VMware na HCX, jako je například [série blogů](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) VMware VSPHERE v HCX. 
-* Seřazení služby AVS HCX Enterprise Activation prostřednictvím kanálů podpory služby AVS
+* Vyžádejte si funkci AVS HCX Enterprise Activation prostřednictvím kanálů podpory služby AVS.
 
-Přizpůsobení velikosti úloh na výpočetní prostředky a prostředky úložiště je zásadní krok plánování při přípravě na použití řešení HCX privátního cloudu. Vyřešte krok změny velikosti jako součást prvotního plánování prostředí privátního cloudu.   
+Změna velikosti úloh na výpočetní prostředky a prostředky úložiště je základním krokem plánování, když připravujete použití řešení HCX Private Cloud. Vyřešte krok změny velikosti jako součást prvotního plánování prostředí privátního cloudu. 
+
+Velikost úloh můžete také provádět provedením posouzení služby AVS na portálu Azure Migrate ( https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) .
 
 ## <a name="software-version-requirements"></a>Požadavky na verzi softwaru
+
 Na součástech infrastruktury musí běžet požadovaná minimální verze. 
                                                          
 | Typ součásti    | Požadavky na zdrojové prostředí    | Požadavky na cílové prostředí   |
@@ -50,7 +53,7 @@ Na součástech infrastruktury musí běžet požadovaná minimální verze.
 | NSX    | Pro HCX síťové rozšíření logických přepínačů ve zdroji: NSXv 6.2 + nebo NSX-T 2.4 +   | NSXv 6.2 + nebo NSX-T 2.4 +<br/><br/>Pro směrování blízkosti HCX: NSXv 6.4 + (pro NSX-T není podporováno směrování blízkosti). |
 | vCloud ředitel   | Nepožadováno – bez interoperability s vCloud ředitelem ve zdrojové lokalitě | Při integraci cílového prostředí s vCloud Directorem je minimum 9.1.0.2.  |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * ExpressRoute Global Reach by se měly konfigurovat mezi místními a SDDC ExpressRoute okruhy.
 
@@ -149,7 +152,7 @@ Po instalaci proveďte následující kroky.
 
     ![Vybrat služby](./media/hybrid-cloud-extension-installation/select-services.png)
 
-1. V části **vybrat prostředky služby**vyberte jeden nebo více prostředků služby, pro které by měly být povolené vybrané služby HCX. Vyberte **Pokračovat**.
+1. V části **vybrat prostředky služby**vyberte jeden nebo více prostředků služby, pro které by měly být povolené vybrané služby HCX. Vyberte **pokračovat**.
     
    ![Výběr prostředků služby](./media/hybrid-cloud-extension-installation/select-service-resources.png)
   
@@ -190,7 +193,7 @@ Po instalaci proveďte následující kroky.
     
    ![Vybrat profil sítě pro replikaci vSphere](./media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png)
 
-1. V části **Výběr distribuovaných přepínačů pro síťová rozšíření**vyberte Služba DVS, na které máte sítě, které budou integrované a připojené k virtuálním počítačům.  Vyberte **Pokračovat**.  
+1. V části **Výběr distribuovaných přepínačů pro síťová rozšíření**vyberte Služba DVS, na které máte sítě, které budou integrované a připojené k virtuálním počítačům.  Vyberte **pokračovat**.  
       
     ![Výběr distribuovaných virtuálních přepínačů](./media/hybrid-cloud-extension-installation/distributed-switches.png)
 

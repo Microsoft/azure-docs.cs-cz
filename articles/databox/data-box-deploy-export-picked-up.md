@@ -6,24 +6,24 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 07/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 7023d29bcb559f4edf11b374b9bfb959e968f626
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 332b4fdb6e0a26437edbf4309ee0b89b79f7eb23
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86210388"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845795"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>Kurz: návratová Azure Data Box (Preview)
-
 
 V tomto kurzu se dozvíte, jak vrátit Azure Data Box a když se zařízení obdrží v datech Azure, vymaže data.
 
 V tomto kurzu se seznámíte například s následujícími tématy:
 
 > [!div class="checklist"]
-> * Předpoklady
+>
+> * Požadavky
 > * Příprava k odeslání
 > * Odeslání Data Boxu do Microsoftu
 > * Vymazání dat z Data Boxu
@@ -34,8 +34,8 @@ V tomto kurzu se seznámíte například s následujícími tématy:
 
 Než začnete, ujistěte se, že:
 
-- Dokončili jste [kurz: kopírování dat z Azure Data box ](data-box-deploy-export-copy-data.md). 
-- Dokončily se úlohy kopírování. Pokud probíhají úlohy kopírování, nemůže proběhnout příprava k odeslání.
+* Dokončili jste [kurz: kopírování dat z Azure Data box](data-box-deploy-export-copy-data.md).
+* Dokončily se úlohy kopírování. Pokud probíhají úlohy kopírování, nemůže proběhnout příprava k odeslání.
 
 ## <a name="prepare-to-ship"></a>Příprava k odeslání
 
@@ -47,7 +47,7 @@ Další kroky závisí na tom, kam zařízení vracíte.
 
 Zajistěte, aby byla kopie dat ze zařízení dokončena a **Příprava k odeslání** spuštění proběhlo úspěšně. Postup se liší v závislosti na oblasti, kam zařízení odesíláte.
 
-## <a name="in-us-canada-europe"></a>[V USA, Kanadě a Evropě](#tab/in-us-canada-europe)
+## <a name="us-canada-europe"></a>[USA, Kanada, Evropa](#tab/in-us-canada-europe)
 
 Pokud zařízení vracíte v USA, Kanadě nebo Evropě, proveďte následující kroky.
 
@@ -63,19 +63,17 @@ Pokud zařízení vracíte v USA, Kanadě nebo Evropě, proveďte následující
     Místo naplánování vyzvednutí můžete také Data Box dovézt na nejbližší sběrné místo.
 4. Jakmile přepravce vyzvedne a naskenuje Data Box, stav objednávky na portálu se změní na **Vyzvednuto**. Zobrazí se také ID sledování.
 
-
-## <a name="in-australia"></a>[V Austrálii](#tab/in-australia)
+## <a name="australia"></a>[Austrálie](#tab/in-australia)
 
 Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny příchozí zásilky musí mít předchozí oznámení. Při odesílání v Austrálii proveďte následující kroky.
-
 
 1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
 2. Ujistěte se, že se dokončilo kopírování dat do zařízení a úspěšně proběhla **příprava k odeslání**.
 3. Vypněte zařízení a odpojte kabely.
 4. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
-5. Zarezervujte si vyzvednutí online pomocí [odkazu DHL](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference).
+5. Zarezervujte si vyzvednutí online na [odkazu DHL](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference).
 
-## <a name="in-japan"></a>[V Japonsku](#tab/in-japan) 
+## <a name="japan"></a>[Japonsko](#tab/in-japan)
 
 1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
 2. Vypněte zařízení a odpojte kabely.
@@ -83,8 +81,8 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
 4. Vyplňte název vaší společnosti a adresu do nákladního listu do části informací o odesílateli.
 5. Odešlete e-mail společnosti Quantium Solutions pomocí následující e-mailové šablony.
 
-    - V případě, že nákladní list japonské pošty Chakubarai nebyl obsažen nebo chybí, uveďte to v e-mailu. Společnost Quantium Solutions Japonsko požádá japonskou poštu, aby nákladní list při vyzvednutí přinesla.
-    - Pokud máte více objednávek, e-mailem zajistěte individuální vyzvednutí.
+    * V případě, že nákladní list japonské pošty Chakubarai nebyl obsažen nebo chybí, uveďte to v e-mailu. Společnost Quantium Solutions Japonsko požádá japonskou poštu, aby nákladní list při vyzvednutí přinesla.
+    * Pokud máte více objednávek, e-mailem zajistěte individuální vyzvednutí.
 
     ```
     To: Customerservice.JP@quantiumsolutions.com
@@ -98,25 +96,24 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
     d. 17：00-19：00 
     ```
 
-3. Po rezervaci vyzvednutí obdržíte e-mailové potvrzení od společnosti Quantium Solutions. E-mailové potvrzení obsahuje také informace o nákladním listu Chakubarai.
+6. Po rezervaci vyzvednutí obdržíte e-mailové potvrzení od společnosti Quantium Solutions. E-mailové potvrzení obsahuje také informace o nákladním listu Chakubarai.
 
 V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutions (v japonštině) následujícími způsoby: 
 
-- E-mailem：Customerservice.JP@quantiumsolutions.com 
-- Telefonicky: 03-5755-0150 
+* E-mailem：Customerservice.JP@quantiumsolutions.com
+* Telefonicky: 03-5755-0150
 
-
-## <a name="in-singapore"></a>[V Singapuru](#tab/in-singapore) 
+## <a name="singapore"></a>[Singapur](#tab/in-singapore)
 
 1. Ponechejte si původní obal, ve které jste zařízení obdrželi, pro zpáteční zásilku.
-2. Poznamenejte si sledovací číslo (je uvedené jako referenční číslo na stránce Připravit k odeslání v místním webovém uživatelském rozhraní Data Boxu). Je k dispozici po úspěšném dokončení přípravy k odeslání. Stáhněte si expediční štítek z této stránky a nalepte ho na obal. 
+2. Poznamenejte si sledovací číslo (je uvedené jako referenční číslo na stránce Připravit k odeslání v místním webovém uživatelském rozhraní Data Boxu). Je k dispozici po úspěšném dokončení přípravy k odeslání. Stáhněte si expediční štítek z této stránky a nalepte ho na obal.
 3. Vypněte zařízení a odpojte kabely.
 4. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení. 
 5. Oddělení péče o zákazníky společnosti SingPost odešlete následující e-mailovou šablonu, ve které uvedete sledovací číslo.
 
     ```
     To: kadcustcare@singpost.com
-    Subject: Microsoft Azure Pick-up - OrderName 
+    Subject: Microsoft Azure Pickup - OrderName 
     Body: 
         1. Requestor name  
         2. Requestor contact number
@@ -126,13 +123,60 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
 
    > [!NOTE]
    > Žádosti o rezervaci přijaté v pracovní den:
-   > - Před 15. hodinou: Vyzvednutí proběhne následující pracovní den od 9:00 do 13:00.
-   > - Po 15. hodině: Vyzvednutí proběhne následující den mezi 14:00 a 18:00.  
+   >
+   > * Před 15. hodinou: Vyzvednutí proběhne následující pracovní den od 9:00 do 13:00.
+   > * Po 15. hodině: Vyzvednutí proběhne následující den mezi 14:00 a 18:00.  
 
+## <a name="south-africa"></a>[Jižní Afrika](#tab/in-sa)
 
-## <a name="self-managed"></a>[V případě svépomoci](#tab/in-selfmanaged) 
+1. Uchová původní pole použité k balení zařízení pro odeslání zpětné zásilky.
+2. Poznamenejte si referenční číslo (číslo nákladového čísla) zobrazené v místním webovém uživatelském rozhraní zařízení. Toto číslo se zobrazí po úspěšném **spuštění Příprava k odeslání** .
+3. Stáhněte a tiskněte expediční štítek, který je k dispozici v místním webovém uživatelském rozhraní zařízení, a přihlaste se k balíčku dodávek.
+4. Pokud chcete vyrezervovat vyzvednutí pomocí DHL, vyberte jednu z následujících možností:
 
-Pokud používáte Data Box v Japonsku, Singapuru, Koreji a Západní Evropě a při vytváření objednávky jste vybrali možnost Expedice řízená svépomocí, postupujte podle těchto pokynů. 
+    * Zavolejte kontaktní centrum služby zákazníkům před 2:00. odp. na **+ 27 (0) 11 9213600**vyberte možnost 1 a pak zadejte číslo nákladového pole.
+    * Odeslat e-mail s [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) použitím následující šablony:
+
+    ```output
+    To: Priority.Support@dhl.com
+    Subject: Pickup request for Microsoft Azure
+    Body: Need pick up for the below shipment
+      *  DHL tracking number (reference number/waybill number)
+      *  Requested pickup date: yyyy/mm/dd;time:HH MM
+    ```
+
+    * Alternativně můžete balíček odpustit na nejbližším místě služby DHL.
+
+5. Pokud narazíte na nějaké problémy, pošlete e-mail [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) s podrobnostmi o problémech, se kterými jste se setkali, a vložte číslo poštovního pole do předmětu: řádek. Můžete také zavolat + 27 (0) 119213902.
+
+## <a name="hong-kong"></a>[Hongkong](#tab/in-hk)
+
+1. V původním poli zabalit odeslání do zařízení pro odeslání vratky.
+2. Poznamenejte si referenční číslo (sledovací číslo pro zpětnou expedici) zobrazené v místním webovém uživatelském rozhraní zařízení. Toto číslo se zobrazí po úspěšném **spuštění Příprava k odeslání** .
+3. Stáhněte a tiskněte expediční štítek, který je k dispozici v místním webovém uživatelském rozhraní zařízení, a přihlaste se k balíčku dodávek.
+4. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
+5. Volejte **Quantium Solutions** Link on **(852) 2318 1213** během hodin kanceláře (9:00 až 18:00, od pondělí do pátku).  
+6. Citace Microsoft Azure vyzvednutí a číslo odkazu a číslo sledování (nad čárovým kódem) na štítku pro návrat k uspořádání pro kolekci.
+7. Obdržíte ústní potvrzení naplánovaného vyzvednutí. Pokud Courier nepřijde ke kolekci, zavolejte na linku řešení Quantium pro alternativní opatření.
+8. Při rezervaci na vyzvednutí pomocí Quantiumu se pomocí této šablony sdílejte potvrzení s [Microsoft Data box Operations Asie](mailto:adbo@microsoft.com) :
+
+    ```output
+    To: adbo@microsoft.com
+    Subject: Microsoft Data Box Job: [order name] has completed copy
+    Body:
+    We have confirmed the pickup details with Quantium.
+
+       * Requestor name:
+       * Requestor contact number:
+       * Pickup Date:  
+       * Pickup time:
+    ```
+
+Pokud se vyskytnou nějaké problémy, pošlete e-mail Data Box operací Asie [adbo@microsoft.com](mailto:adbo@microsoft.com) a poskytněte název úlohy v hlavičce předmětu a nastaly potíže.
+
+## <a name="self-managed"></a>[V případě svépomoci](#tab/in-selfmanaged)
+
+Pokud používáte Data Box v Japonsku, Singapuru, Koreji a Západní Evropě a při vytváření objednávky jste vybrali možnost Expedice řízená svépomocí, postupujte podle těchto pokynů.
 
 1. Po úspěšném dokončení tohoto kroku si poznamenejte autorizační kód uvedený na stránce Připravit k odeslání v místním webovém uživatelském rozhraní Data Boxu.
 2. Vypněte zařízení a odpojte kabely. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.
@@ -146,6 +190,7 @@ Pokud používáte Data Box v Japonsku, Singapuru, Koreji a Západní Evropě a 
         2. Authorization code available after Prepare to Ship has completed [Yes/No]  
         3. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
     ```
+
 ---
 
 ## <a name="erasure-of-data-from-data-box"></a>Vymazání dat z Data Boxu
@@ -157,7 +202,7 @@ Jakmile zařízení dosáhne datacentra Azure, Data Box vymaže data na svých d
 V tomto kurzu jste se seznámili s tématy, jako například:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Příprava k odeslání
 > * Odeslání Data Boxu do Microsoftu
 > * Vymazání dat z Data Boxu

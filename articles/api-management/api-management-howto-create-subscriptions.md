@@ -1,6 +1,6 @@
 ---
 title: Vytváření předplatných v Azure API Management | Microsoft Docs
-description: Naučte se vytvářet předplatná v Azure API Management.
+description: Naučte se vytvářet předplatná v Azure API Management. Předplatné je potřeba k získání klíčů předplatného, které umožňují přístup k rozhraním API.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: f8b2238eb0fab9aeeb42d11b4176c0d681b5f8e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 191323a4c150c00c93245be35c9c8af381e26b42
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70073530"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904851"
 ---
 # <a name="create-subscriptions-in-azure-api-management"></a>Vytváření předplatných ve službě Azure API Management
 

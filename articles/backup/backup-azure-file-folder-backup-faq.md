@@ -3,12 +3,12 @@ title: Agent Microsoft Azure Recovery Services (MARS) – nejčastější dotazy
 description: Řeší běžné otázky týkající se zálohování souborů a složek pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: c4494b09a5cf838aae3dde01c1268042929ef213
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563091"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874618"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Nejčastější dotazy – agent Microsoft Azure Recovery Services (MARS)
 
@@ -32,7 +32,7 @@ Platnost přihlašovacích údajů trezoru vyprší po 10 dnech. Pokud platnost 
 
 ### <a name="what-characters-are-allowed-for-the-passphrase"></a>Jaké znaky jsou pro přístupové heslo povoleny?
 
-Přístupové heslo by mělo používat znaky ze znakové sady ASCII, přičemž hodnoty ASCII jsou menší nebo rovny 127.
+Přístupové heslo by mělo používat znaky ze znakové sady ASCII, přičemž [hodnoty ASCII jsou menší nebo rovny 127](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127).
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Z jakých jednotek můžu zálohovat soubory a složky?
 

@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync monitorování | Microsoft Docs
-description: Jak monitorovat Azure File Sync.
+description: Přečtěte si, jak monitorovat nasazení Azure File Sync pomocí Azure Monitor, služby synchronizace úložiště a Windows serveru.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 81224e0c055ad4a94bd57ebb3aa7c8a3b30c2dd7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9a4e4a30c5a84baf5a78d0a90f7302e2b31a5946
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832616"
+ms.locfileid: "87903523"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak monitorovat nasazení Azure File Sync pomocí Azure
 V této příručce jsou uvedené následující scénáře: 
 - Zobrazit Azure File Sync metriky v Azure Monitor.
 - Vytvoří výstrahy v Azure Monitor k proaktivnímu upozorňování na kritické podmínky.
-- Monitorujte stav nasazení Azure File Sync pomocí Azure Portal.
+- Zobrazte stav nasazení Azure File Sync pomocí Azure Portal.
 - Jak používat protokoly událostí a čítače výkonu na serverech Windows k monitorování stavu nasazení Azure File Sync. 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -34,7 +34,9 @@ Pomocí [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview)
 
 Metriky pro Azure File Sync jsou ve výchozím nastavení povolené a odesílají se Azure Monitor každých 15 minut.
 
-Pokud chcete v Azure Monitor zobrazit metriky Azure File Sync, vyberte typ prostředku **služby synchronizace úložiště** .
+**Jak zobrazit metriky Azure File Sync v Azure Monitor**
+- Přejděte do **služby synchronizace úložiště** v **Azure Portal** a klikněte na **metriky**.
+- Klikněte na rozevírací seznam **metrika** a vyberte metriku, kterou chcete zobrazit.
 
 V Azure Monitor jsou k dispozici následující metriky pro Azure File Sync:
 
@@ -82,7 +84,7 @@ Pokud chcete zobrazit registrovaný stav serveru, stav koncového bodu serveru a
 ### <a name="registered-server-health"></a>Stav registrovaného serveru
 
 - Pokud je stav **registrovaného serveru** **online**, server úspěšně komunikuje se službou.
-- Pokud je stav **registrovaného serveru** **zobrazený v režimu offline**, ověřte, zda je spuštěn proces sledování synchronizace úložiště (AzureStorageSyncMonitor.exe) na serveru. Pokud je server za bránou firewall nebo proxy, přečtěte si [Tento článek](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) , kde můžete nakonfigurovat bránu firewall a proxy server.
+- Pokud je stav **registrovaného serveru** **zobrazený v režimu offline**, proces monitorování synchronizace úložiště (AzureStorageSyncMonitor.exe) není spuštěný nebo Server nemůže získat přístup ke službě Azure File Sync. Pokyny najdete v [dokumentaci k řešení problémů](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity) .
 
 ### <a name="server-endpoint-health"></a>Stav koncového bodu serveru
 
@@ -121,11 +123,13 @@ Stav synchronizace:
   > [!Note]  
   > V některých případech se relace synchronizace nezdařila celkem nebo má nenulovou PerItemErrorCount. Pořád se ale dál dostanou a některé soubory se úspěšně synchronizují. Můžete to vidět v použitých polích, jako jsou AppliedFileCount, AppliedDirCount, AppliedTombstoneCount a AppliedSizeBytes. Tato pole vám sdělí, kolik relací bylo úspěšně dokončeno. Pokud vidíte, že se více relací synchronizace nedaří na řádku a že mají rostoucí počet použitých hodnot, podělte čas synchronizace, aby se mohl pokusit znovu před otevřením lístku podpory.
 
+- Událost s ID 9121 se zaznamená do protokolu pro každou položku chyby, jakmile se relace synchronizace dokončí. Tuto událost použijte k určení počtu souborů, u kterých se synchronizace s touto chybou nezdařila (**PersistentCount** a **TransientCount**). Trvalá chyba pro jednotlivé položky by se měla prozkoumat v tématu [návody zjistit, jestli nejsou nějaké konkrétní soubory nebo složky, které se nesynchronizují?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
+
 - Událost s ID 9302 se protokoluje každých 5 až 10 minut, pokud dojde k aktivní relaci synchronizace. Tuto událost použijte k určení, jestli aktuální relace synchronizace provádí průběh (**AppliedItemCount > 0**). Pokud synchronizace neprobíhá, relace synchronizace by se nakonec nezdařila a událost s ID 9102 bude protokolována s chybou. Další informace najdete v [dokumentaci průběh synchronizace](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
 Stav registrovaného serveru:
 
-- Událost s ID 9301 se protokoluje každých 30 sekund, když server dotazuje službu pro úlohy. Pokud se GetNextJob dokončí se **stavem = 0**, server může komunikovat se službou. Pokud GetNextJob skončí s chybou, najdete pokyny v [dokumentaci k řešení problémů](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) .
+- Událost s ID 9301 se protokoluje každých 30 sekund, když server dotazuje službu pro úlohy. Pokud se GetNextJob dokončí se **stavem = 0**, server může komunikovat se službou. Pokud GetNextJob skončí s chybou, najdete pokyny v [dokumentaci k řešení problémů](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity) .
 
 Stav vrstvení cloudu:
 

@@ -1,26 +1,29 @@
 ---
-title: Použití Azure Kognitivní hledání v .NET
+title: Použití Microsoft. Azure. Search (v10 za účelem) v .NET
 titleSuffix: Azure Cognitive Search
-description: Naučte se používat Azure Kognitivní hledání v aplikaci .NET pomocí jazyka C# a sady .NET SDK. Úkoly založené na kódu zahrnují připojení ke službě, indexování obsahu a dotazování indexu.
+description: Naučte se vytvářet a spravovat vyhledávací objekty aplikace .NET pomocí C# a verze 10 sady .NET SDK. Fragmenty kódu ukazují připojení ke službě, vytváření indexů a dotazy.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 929241d7bc5db5476bab84d00fde90d4db55aedc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 08/05/2020
+ms.openlocfilehash: 820ce3078b642f2cc672cd6906895f818c06f5b7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146910"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905419"
 ---
-# <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Jak používat Azure Kognitivní hledání z aplikace .NET
+# <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>Jak používat Microsoft. Azure. Search (v10 za účelem) v aplikaci .NET
 
-Tento článek je návod, který vám umožní začít pracovat se sadou [Azure kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search). Sadu .NET SDK můžete použít k implementaci prostředí s bohatým vyhledáváním v aplikaci pomocí Azure Kognitivní hledání.
+Tento článek vysvětluje, jak vytvořit a spravovat vyhledávací objekty pomocí jazyka C# a [sady Azure kognitivní hledání (v10 za účelem) .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search). Verze 10 je poslední verzí balíčku Microsoft. Azure. Search. V [Azure.Search.Documents](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme) od týmu Azure SDK se budou zavádět nové funkce.
 
-## <a name="whats-in-the-azure-cognitive-search-sdk"></a>Co je v sadě Azure Kognitivní hledání SDK
+Pokud máte existující nebo vývojové projekty pro vývoj, pokračujte v používání verze 10. Pro nové projekty nebo pro použití nových funkcí byste měli převést existující řešení hledání na novou knihovnu.
+
+## <a name="whats-in-version-10"></a>Verze 10
+
 Sada SDK se skládá z několika klientských knihoven, které vám umožní spravovat vaše indexy, zdroje dat, indexery a mapy synonym a také nahrávat a spravovat dokumenty a provádět dotazy, a to vše bez nutnosti zabývat se podrobnostmi o HTTP a JSON. Tyto klientské knihovny jsou distribuovány jako balíčky NuGet.
 
 Hlavní balíček NuGet je `Microsoft.Azure.Search` , což je meta balíček, který obsahuje všechny ostatní balíčky jako závislosti. Tento balíček použijte, pokud jste právě začali, nebo pokud víte, že vaše aplikace bude potřebovat všechny funkce služby Azure Kognitivní hledání.

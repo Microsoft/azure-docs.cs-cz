@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: cc270ebb12b27c6461b00a4f7042bc3c829d02ef
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 5e061e4d6f9e67cc7d92548f54add94097ede7d1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87812284"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905193"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Řešení potíží se službou Azure Digital autovlákna: metriky
 
@@ -32,9 +32,14 @@ Metriky jsou ve výchozím nastavení povolené. Z [Azure Portal](https://portal
 
     Tato stránka zobrazuje metriky pro instanci digitálních vláken Azure. Můžete také vytvořit vlastní zobrazení metriky tak, že vyberete ty, které chcete zobrazit v seznamu.
     
-3. Data metriky můžete odeslat do Event Hubsho koncového bodu nebo účtu Azure Storage kliknutím na **nastavení diagnostiky** v nabídce a pak na **Přidat nastavení diagnostiky**.
+3. Data metriky můžete odeslat do Event Hubsho koncového bodu nebo účet Azure Storage tak, že v nabídce vyberete **nastavení diagnostiky** a pak **přidáte nastavení diagnostiky**.
 
-    :::image type="content" source="media/troubleshoot-metrics/diagnostic-settings.png" alt-text="Snímek obrazovky zobrazující stránku nastavení diagnostiky a tlačítko, které se má přidat":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Snímek obrazovky zobrazující stránku nastavení diagnostiky a tlačítko, které se má přidat":::
+
+    Další informace o tomto procesu najdete v tématu [*řešení potíží: nastavení diagnostiky*](troubleshoot-diagnostics.md).
+
+4. Výstrahy pro data metriky si můžete nastavit tak, že v nabídce vyberete **výstrahy** a pak na **+ nové pravidlo výstrahy**.
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Snímek obrazovky se stránkou a tlačítkem pro upozornění, které se má přidat":::
 
     Další informace o tomto procesu najdete v tématu [*řešení potíží: nastavení diagnostiky*](troubleshoot-diagnostics.md).
 
@@ -93,7 +98,7 @@ Dimenze vám pomůžou identifikovat další podrobnosti o metrikách. Některé
 
 | Dimenze | Hodnoty |
 | --- | --- |
-| Ověřování uživatelů | OAuth |
+| Authentication | OAuth |
 | Operace (pro požadavky rozhraní API) | Microsoft. DigitalTwins/DigitalTwins/DELETE, <br>Microsoft. DigitalTwins/DigitalTwins/Write, <br>Microsoft. DigitalTwins/DigitalTwins/Read, <br>Microsoft. DigitalTwins/eventroutes/Read, <br>Microsoft. DigitalTwins/eventroutes/Write, <br>Microsoft. DigitalTwins/eventroutes/DELETE, <br>Microsoft. DigitalTwins/modely/číst, <br>Microsoft. DigitalTwins/modely/Write, <br>Microsoft. DigitalTwins/modely/DELETE, <br>Microsoft. DigitalTwins/dotaz/akce |
 | Operace (pro směrování) | Event Grid <br>Centrum událostí, <br>Service Bus |
 | Protokol | HTTPS |

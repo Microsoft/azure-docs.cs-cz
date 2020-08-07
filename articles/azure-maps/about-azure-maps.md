@@ -1,35 +1,36 @@
 ---
-title: Přehled | Mapy Microsoft Azure
+title: Přehled služby Microsoft Azure Maps
 description: Seznamte se se službami a možnostmi v Microsoft Azure Maps a jejich použití ve svých aplikacích.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/15/2020
+ms.date: 07/31/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
+manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 56dce7f52c172255ae316a9171555b8687b7c683
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 6933321ad402104fa5529af2b7fdf38e329e0168
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133414"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830917"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
-Azure Maps je kolekce geoprostorových služeb. Tyto služby používají aktuální data z map, aby webovým a mobilním aplikacím poskytovaly související geografické informace. Azure Maps poskytuje:
+Azure Maps je kolekce geoprostorových služeb a sad SDK, které používají data pro nové mapování k poskytování geografického kontextu pro webové a mobilní aplikace. Azure Maps poskytuje:
 
-* Rozhraní REST API pro vykreslování map v několika stylech a v satelitních proobrázcích.
+* Rozhraní REST API pro vykreslování vektorových a rastrových map v několika stylech a satelitních obrazových obrázcích.
+* Služba Creator Services umožňuje vytvářet a vykreslovat mapy na základě privátních dat vnitřní mapy.
 * Služba Search vám umožní najít adresy, místa a body zájmu po celém světě.
-* Různé možnosti směrování; jako je například Point-to-Point, MultiPoint, optimalizace pro MultiPoint, isochrone, komerční vozidlo, ovlivnění provozu a směrování matrice.
-* Zobrazení toku provozu a incidenty pro aplikace, které vyžadují informace o provozu.
-* Služba mobility, která vyžádá logistickou veřejnou tranzitní službu, plánuje trasy v reálném čase a požaduje informace pro alternativní režimy přepravy.
-* Časové pásmo a služby geografického umístění a převod umístění na časová pásma.
-* Služba geografických zón a mapování úložiště dat s informacemi o poloze hostované v Azure. 
-* Informace o poloze prostřednictvím geoprostorové analýzy. 
+* Různé možnosti směrování; například Point-to-Point, MultiPoint, optimalizace pro MultiPoint, isochrone, elektrické vozidlo, komerční vozidlo, ovlivněný provoz a směrování matrice.
+* Zobrazení toku a incidenty přenosu pro aplikace, které vyžadují informace o provozu v reálném čase.
+* Služba mobility, která si vyžádá informace o veřejném přenosu, plánuje trasy vymícháním různých režimů cestování a příchodů v reálném čase.
+* Časové pásmo a služby geografického umístění.
+* Služba geografických zón a mapování úložiště dat s informacemi o poloze hostované v Azure.
+* Informace o poloze prostřednictvím geoprostorové analýzy.
 
-Služba Azure Maps Services je navíc k dispozici prostřednictvím webové sady SDK nebo Android SDK. Tyto nástroje umožňují vývojářům rychle vyvíjet a škálovat řešení, která integrují informace o poloze do řešení Azure. 
+Služba Azure Maps Services je navíc k dispozici prostřednictvím webové sady SDK a Android SDK. Tyto nástroje umožňují vývojářům rychle vyvíjet a škálovat řešení, která integrují informace o poloze do řešení Azure.
 
 Můžete si zaregistrovat bezplatný [Azure Maps účet](https://azure.microsoft.com/services/azure-maps/) a začít vyvíjet.
 
@@ -43,104 +44,118 @@ Následující video vysvětluje Azure Maps do hloubky:
 
 ### <a name="web-sdk"></a>Sada Web SDK
 
-Sada Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy pomocí vlastního obsahu a snímků. Tuto interaktivní mapu můžete použít pro vaše webové i mobilní aplikace. Mapový ovládací prvek využívá WebGL, takže můžete vykreslit velké sady dat s vysokým výkonem. Vývoj pomocí sady SDK pomocí JavaScriptu nebo TypeScript
+Sada Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy pomocí vlastního obsahu a snímků. Tuto interaktivní mapu můžete použít pro vaše webové i mobilní aplikace. Mapový ovládací prvek využívá WebGL, takže můžete vykreslit velké sady dat s vysokým výkonem. Můžete vyvíjet pomocí sady SDK pomocí JavaScriptu nebo TypeScript.
 
-![Příklad mapy změny populace](media/about-azure-maps/intro_web_map_control.png)
+:::image type="content" source="./media/about-azure-maps/intro_web_map_control.png" alt-text="Ukázková mapa změny populace vytvořené pomocí Azure Maps Web SDK":::
 
 ### <a name="android-sdk"></a>Android SDK
 
-K vytváření aplikací pro mobilní mapování použijte Azure Maps Android SDK. 
+K vytváření aplikací pro mobilní mapování použijte Azure Maps Android SDK.
 
-![Příklady map na mobilním zařízení](media/about-azure-maps/android_sdk.png)
+:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="Příklady map na mobilním zařízení":::
 
 ## <a name="services-in-azure-maps"></a>Služby v rámci Azure Maps
 
-Azure Maps se skládá z následujících devíti služeb, které poskytují geografickou souvislost aplikacím Azure.
+Azure Maps sestávají z následujících služeb, které poskytují geografickou souvislost aplikacím Azure.
 
-### <a name="data-service"></a>Služba Data
+### <a name="data-service"></a>Datová služba
 
-Data jsou pro mapy naléhavá. Pomocí datové služby můžete nahrávat a ukládat geoprostorové data pro použití s prostorovou operací nebo kompozicí imagí.  Uvedení zákaznických dat blíže ke službě Azure Maps omezí latenci, zvýší produktivitu a vytvoří nové scénáře ve vašich aplikacích. Podrobnosti o této službě najdete v dokumentaci k [rozhraní API datové služby](https://docs.microsoft.com/rest/api/maps/data).
+Data jsou pro mapy naléhavá. Pomocí datové služby můžete nahrávat a ukládat geoprostorové data pro použití s prostorovou operací nebo kompozicí imagí.  Uvedení zákaznických dat blíže ke službě Azure Maps omezí latenci, zvýší produktivitu a vytvoří nové scénáře ve vašich aplikacích. Podrobnosti o této službě najdete v dokumentaci k [datové službě](https://docs.microsoft.com/rest/api/maps/data).
+
+### <a name="geolocation-service"></a>Služba geografické polohy
+
+Použijte službu geografického umístění k zobrazení náhledu načteného kódu země/oblasti se dvěma písmeny pro IP adresu. Tato služba vám může přispět k vylepšení uživatelského prostředí tím, že poskytuje přizpůsobený obsah aplikace založený na geografickém umístění.
+
+Další podrobnosti najdete v dokumentaci ke [službě geografického umístění](https://docs.microsoft.com/rest/api/maps/geolocation).
 
 ### <a name="mobility-service"></a>Služba Mobility
 
-Služba mobility Azure Maps umožňuje plánování cest v reálném čase. Vrátí nejlepší možné možnosti směrování a poskytuje různé druhy cestovních režimů. Pro oblasti metro (City) můžou tyto režimy zahrnovat procházení, cyklistice a veřejný tranzit. Můžete požadovat tranzitní itinerář, geometrii řádku, seznamy zastavení, plánované doručení, doručení v reálném čase a výstrahy služby.
+Služba Azure Maps mobility vylepšuje dobu vývoje pro aplikace s funkcemi veřejného přenosu, jako je například směrování přenosu a hledání v blízkosti veřejného přenosu. Uživatelé můžou získat podrobné informace o zastavení, řádcích a plánech přenosu. Služba mobility taky umožňuje uživatelům načítat geometrií a line, výstrahy na zastávky, řádky a oblasti služeb a oznámení o doručení veřejných dat v reálném čase a upozornění služby. Služba mobility navíc poskytuje možnosti směrování s možnostmi plánování služby Multimodal Trip. Plánování cest Multimodal zahrnuje možnosti procházení, cyklistice a veřejného přenosu, a to vše na jednu cestu. Uživatelé také mohou získat přístup k podrobným Multimodal krok za krokem cesty.
 
-Služba také umožňuje vyhledávat konkrétní typy objektů kolem umístění. Uživatelé můžou vyhledat sdílená kola, Scooters nebo auta v rámci určitého umístění. Uživatelé můžou požádat o počet dostupných kol v nejbližším Docku a vyhledat dostupná vozidla pro účely nasdílení. A uživatelé můžou najít podrobnosti, jako je budoucích dostupnosti vozidel a současná úroveň paliva.
-
-Další informace o této službě najdete v [dokumentaci k rozhraní API mobility](https://docs.microsoft.com/rest/api/maps/mobility).
+Další informace o této službě najdete v dokumentaci ke [službě mobility](https://docs.microsoft.com/rest/api/maps/mobility).
 
 ### <a name="render-service"></a>Služba Render
 
-Služba vykreslování pomáhá vývojářům vytvářet webové a mobilní aplikace s funkcemi mapování. Služba nabízí buď vysoce kvalitní rastrové podklady v 19 úrovních přiblížení, nebo plně přizpůsobitelné vektorové obrazy.
+[Služba vykreslování verze V2](https://docs.microsoft.com/est/api/maps/renderv2) , která je teď ve verzi Preview, zavádí novou verzi [rozhraní získat dlaždici mapy v2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). Rozhraní API pro dlaždici získat mapu verze 2 teď umožňuje zákazníkům požádat o Azure Mapsovou dlaždici, počasí a dlaždice map vytvořené pomocí Tvůrce Azure Maps. Doporučuje se použít novou dlaždici získat rozhraní API pro získání mapy.  
 
-![Příklad mapy ze služby vykreslování](media/about-azure-maps/intro_map.png)
+:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Příklad mapy ze služby vykreslení v2":::
 
-Služba Render teď nabízí rozhraní API ve verzi Preview, která umožňují vývojářům pracovat se satelitními snímky. Další podrobnosti najdete v [dokumentaci k rozhraní API pro vykreslování](https://docs.microsoft.com/rest/api/maps/render).
+Další podrobnosti najdete v dokumentaci ke [službě vykreslovat v2](https://docs.microsoft.com/rest/api/maps/renderv2).
+
+Další informace o službě vykreslování, která je v GA (Obecná dostupnost), najdete v [dokumentaci k vygenerování služby](https://docs.microsoft.com/rest/api/maps/render)vydaných verzí v1.  
 
 ### <a name="route-service"></a>Služba Route
 
-Služba Route obsahuje robustní výpočty geometrie na základě reálné infrastruktury a trasy pro různé způsoby dopravy. Služba umožňuje vývojářům vypočítat směry v různých režimech cestovních cest, jako je auto, nákladní kolo, kolo nebo procházení. Služba také bere v úvahu vstupy, jako jsou provozní podmínky, omezení hmotnosti nebo přenos nebezpečných látek.
+Služby směrování se dají použít k výpočtu předpokládaných časů doručení (ETAs) pro každou požadovanou trasu. Rozhraní API tras uvažují o faktorech, jako jsou informace o přenosech v reálném čase a historické údaje o provozu, jako je obvyklá rychlost provozu v požadovaném dni v týdnu a denní doba. Rozhraní API vrací nejkratší nebo nejrychlejší trasy, které jsou k dispozici více cílům v čase v pořadí nebo v optimalizovaném pořadí, na základě času nebo vzdálenosti. Služba umožňuje vývojářům vypočítat směry v různých režimech cestovních cest, jako je auto, nákladní kolo, kolo nebo procestování a elektrická vozidlo. Tato služba také zohledňuje vstupy, jako je čas odchodu, omezení váhy nebo přenos nebezpečných látek.
 
-![Příklad mapy ze služby směrování](media/about-azure-maps/intro_route.png)
+:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="Příklad mapy ze služby směrování":::
 
-Služba směrování nabízí verzi Preview pokročilých funkcí, jako například: 
+Služba směrování nabízí rozšířené funkce sady, jako například:
 
 * Dávkové zpracování více požadavků na směrování.
 * Matice doby cesty a vzdálenosti mezi sadou zdrojů a míst určení.
-* Hledání cest nebo vzdáleností, které mohou uživatelé cestovat na základě požadavků na čas nebo pohon. 
+* Hledání cest nebo vzdáleností, které mohou uživatelé cestovat na základě požadavků na čas nebo pohon.
 
-Podrobnosti o možnostech směrování najdete v [dokumentaci k rozhraní API pro směrování](https://docs.microsoft.com/rest/api/maps/route).
+Podrobnosti o možnostech směrování najdete v [dokumentaci ke službě Směrování](https://docs.microsoft.com/rest/api/maps/route).
 
 ### <a name="search-service"></a>Služba Search
 
-Vyhledávací služba pomáhá vývojářům vyhledávat adresy, místa, obchodní výpisy podle názvu nebo kategorie a dalších geografických informací. Služba vyhledávání může [přesměrovat](https://en.wikipedia.org/wiki/Reverse_geocoding) adresy zeměpisných a meziulic v závislosti na Latitudes a zeměpisných délkách.
+Vyhledávací služba pomáhá vývojářům vyhledávat adresy, místa, obchodní výpisy podle názvu nebo kategorie a dalších geografických informací. Služby také mohou v závislosti na Latitudes a zeměpisných délkách [přesměrovat](https://en.wikipedia.org/wiki/Reverse_geocoding) adresy zeměpisného kódu a meziulic.
 
-![Příklad hledání na mapě](media/about-azure-maps/intro_search.png)
+:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="Příklad hledání na mapě":::
 
 Vyhledávací služba také poskytuje pokročilé funkce, jako například:
 
 * Hledání v trase.
 * Hledejte v širší oblasti.
 * Dávkovat skupinu žádostí o hledání.
-* Místo bodu umístění vyhledejte větší oblast. 
+* Prohledejte čerpací stanice a data POI (Point of Interest) podle názvu značky.
 
-Rozhraní API pro dávkové hledání a hledání oblastí jsou aktuálně ve verzi Preview. Další podrobnosti o možnostech vyhledávání najdete v [dokumentaci rozhraní API pro hledání](https://docs.microsoft.com/rest/api/maps/search).
+Další informace o možnostech vyhledávání najdete v dokumentaci ke [službě Search Service](https://docs.microsoft.com/rest/api/maps/search).
 
-### <a name="spatial-operations-service"></a>Služba prostorových operací
+### <a name="spatial-service"></a>Služba Spatial
 
-Služba Azure Maps prostorových operací má informace o poloze. Rychle analyzuje informace o poloze, aby informovala zákazníky o probíhajících událostech, které probíhají v čase a prostoru. Umožňuje analýzu téměř v reálném čase a prediktivní modelování událostí. 
+Prostorová služba rychle analyzuje informace o poloze, aby pomohla informovat zákazníky o probíhajících událostech v čase a prostoru. Umožňuje analýzu téměř v reálném čase a prediktivní modelování událostí.
 
-Služba umožňuje zákazníkům zdokonalit své lokátory umístění pomocí knihovny běžných geoprostorovéch matematických výpočtů. Mezi běžné výpočty patří nejbližší bod, Skvělé kolečko a vyrovnávací paměti. Další informace o službě a různých funkcích najdete v [dokumentaci rozhraní API pro prostorové operace](https://docs.microsoft.com/rest/api/maps/spatial).
+Služba umožňuje zákazníkům zdokonalit své lokátory umístění pomocí knihovny běžných geoprostorovéch matematických výpočtů. Mezi běžné výpočty patří nejbližší bod, Skvělé kolečko a vyrovnávací paměti. Další informace o službě a různých funkcích si můžete přečíst v dokumentaci k [prostorové službě](https://docs.microsoft.com/rest/api/maps/spatial).
 
-### <a name="time-zone-service"></a>Služba Time Zone
+### <a name="timezone-service"></a>Služba Timezone
 
-Služba časového pásma umožňuje dotazovat se na aktuální, historické a budoucí informace o časovém pásmu. Můžete použít buď páry Zeměpisná šířka a délka, nebo [ID IANA](https://www.iana.org/). Služba časového pásma také umožňuje:
+Služba časového pásma umožňuje dotazovat se na aktuální, historické a budoucí informace o časovém pásmu. Jako vstup můžete použít páry Zeměpisná šířka a délka nebo [ID IANA](https://www.iana.org/) . Služba časového pásma také umožňuje:
 
 * Převod ID časových pásem Microsoft Windows na časová pásma IANA.
 * Načítají se posunutí časového pásma na čas UTC.
-* Získání aktuálního času ve vybraném časovém pásmu. 
+* Získání aktuálního času ve vybraném časovém pásmu.
 
 Typická odpověď JSON pro dotaz na službu časového pásma vypadá jako v následující ukázce:
 
 ```JSON
 {
-    "Version": "2017c",
-    "ReferenceUtcTimestamp": "2017-11-20T23:09:48.686173Z",
-    "TimeZones": [{
-        "Id": "America/Los_Angeles",
-        "ReferenceTime": {
-            "Tag": "PST",
-            "StandardOffset": "-08:00:00",
-            "DaylightSavings": "00:00:00",
-            "WallTime": "2017-11-20T15:09:48.686173-08:00",
-            "PosixTzValidYear": 2017,
-            "PosixTz": "PST+8PDT,M3.2.0,M11.1.0"
-        }
-    }]
+  "Version": "2020a",
+  "ReferenceUtcTimestamp": "2020-07-31T19:15:14.4570053Z",
+  "TimeZones": [
+    {
+      "Id": "America/Los_Angeles",
+      "Names": {
+        "ISO6391LanguageCode": "en",
+        "Generic": "Pacific Time",
+        "Standard": "Pacific Standard Time",
+        "Daylight": "Pacific Daylight Time"
+      },
+      "ReferenceTime": {
+        "Tag": "PDT",
+        "StandardOffset": "-08:00:00",
+        "DaylightSavings": "01:00:00",
+        "WallTime": "2020-07-31T12:15:14.4570053-07:00",
+        "PosixTzValidYear": 2020,
+        "PosixTz": "PST+8PDT,M3.2.0,M11.1.0"
+      }
+    }
+  ]
 }
 ```
 
-Podrobnosti o této službě najdete v [dokumentaci k rozhraní API pro časové pásmo](https://docs.microsoft.com/rest/api/maps/timezone).
+Podrobnosti o této službě najdete v dokumentaci ke [službě pro časové pásmo](https://docs.microsoft.com/rest/api/maps/timezone).
 
 ### <a name="traffic-service"></a>Služba Traffic
 
@@ -151,13 +166,33 @@ Přenosová služba je sada webových služeb, které můžou vývojáři použ�
 
 ![Příklad mapy s informacemi o provozu](media/about-azure-maps/intro_traffic.png)
 
-Další informace najdete v [dokumentaci rozhraní API pro přenos](https://docs.microsoft.com/rest/api/maps/traffic).
+Další informace najdete v [dokumentaci služby Traffic Service](https://docs.microsoft.com/rest/api/maps/traffic).
 
-### <a name="ip-to-location-service"></a>IP adresa – služba zjišťování polohy
+### <a name="weather-service"></a>Služba Weather
 
-Pomocí služby IP to Location Service můžete zobrazit náhled načteného kódu země/oblasti pro IP adresu s načteným dvěma písmeny. Tato služba vám může přispět k vylepšení uživatelského prostředí tím, že poskytuje přizpůsobený obsah aplikace založený na geografickém umístění.
+Služba počasí nabízí rozhraní API, pomocí kterých mohou vývojáři načíst informace o počasí pro konkrétní umístění. Informace obsahují podrobnosti, jako je například datum a čas pozorování, stručný popis povětrnostních podmínek, ikona počasí, příznaky indikátoru měření, teplota a informace o rychlosti větru. Vrátí se také další podrobnosti, jako je RealFeel™ teploty a UV index.
 
-Další podrobnosti o službě IP na umístění v REST API najdete v [dokumentaci k rozhraní API](https://docs.microsoft.com/rest/api/maps/geolocation)geografického umístění v Azure Maps.
+Vývojáři můžou k načtení informací o počasí v rámci konkrétní trasy využít [rozhraní Get počasí společně s rozhraním API pro směrování](https://docs.microsoft.com/rest/api/maps/weather/getweatheralongroutepreview) . Služba také podporuje generování oznámení o počasí pro waypoints, která jsou ovlivněná riziky počasí, jako je například zahlcení nebo těžkých deště.
+
+[Rozhraní API pro získání dlaždice získat mapu](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) umožňuje vyžádat si předchozí, aktuální a budoucí paprskové a satelitní dlaždice.
+
+![Příklad mapy s jedním z paprskových dlaždic počasí v reálném čase](media/about-azure-maps/intro_weather.png)
+
+### <a name="maps-creator-service"></a>Služba Maps Creator
+
+Služba Maps Creator je sada webových služeb, které můžou vývojáři použít k vytváření aplikací s funkcemi mapy založenými na vnitřních datech mapy.
+
+Tvůrce map nabízí tři základní služby:
+
+* [Služba DataSet](https://docs.microsoft.com/rest/api/maps/dataset) Pomocí služby DataSet Vytvořte datovou sadu z převedených dat balíčku vykreslování. Informace o požadavcích na sbalení balíčku najdete v tématu požadavky na balíčky pro vykreslování.
+
+* [Převodní služba](https://docs.microsoft.com/rest/api/maps/dataset). Pomocí převodní služby převeďte soubor návrhu DWG na data vykreslování balíčku pro mapy vnitřních souborů.
+
+* [Služba TILESET](https://docs.microsoft.com/rest/api/maps/tileset) Použijte službu TILESET k vytvoření vektorové reprezentace datové sady. Aplikace mohou používat TILESET k prezentaci vizuálního zobrazení na základě dlaždice datové sady.
+
+* [Stavová služba funkcí](https://docs.microsoft.com/rest/api/maps/featurestate). Použijte službu stavu funkce pro podporu stylů dynamické mapy. Styl dynamické mapy umožňuje aplikacím odrážet události v reálném čase na prostorech poskytovaných systémy IoT.
+
+* [Služba WFS](https://docs.microsoft.com/rest/api/maps/featurestate) Použijte službu WFS k dotazování na data mapy vnitřních dat. Služba WFS se řídí standardy [rozhraní API Open Geospatial Consortium](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) pro dotazování na jedinou datovou sadu.
 
 ## <a name="programming-model"></a>Programovací model
 
@@ -169,21 +204,23 @@ Azure Maps také nabízí pohodlný [mapový ovládací prvek JavaScriptu](https
 
 Azure Maps vizuál pro Power BI poskytuje bohatou sadu vizualizací dat pro prostorová data nad mapou. Odhaduje se, že více než 80% obchodních dat má kontext umístění. Azure Maps vizuál nabízí řešení bez kódu, které umožňuje získat přehled o tom, jak se tento kontext umístění týká a ovlivňuje vaše obchodní data.
 
-![Power BI plochu s Azure Maps vizuálním zobrazením obchodních dat](media/power-bi-visual/azure-maps-visual-hero.png)
+:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="Power BI plochu s Azure Maps vizuálním zobrazením obchodních dat":::
 
 Další informace najdete v tématu Začínáme s dokumentací k [aplikaci Azure Maps Power BI](power-bi-visual-getting-started.md) .
 
 ## <a name="usage"></a>Využití
 
-Přístup ke službám Azure Maps Services je podstatou [Azure Portal](https://portal.azure.com) a vytvořením účtu Azure Maps.
+Pokud chcete získat přístup k Azure Maps Services, přejděte na [Azure Portal](https://portal.azure.com) a vytvořte účet Azure Maps.
 
-V Azure Maps se používá schéma ověřování založeného na klíčích. Váš účet obsahuje dvě klíče, které jsou už vygenerované za vás, a to pomocí obou klíčů. Zahajte integraci těchto schopností umístění do vaší aplikace a vyžádejte si žádosti o služby Azure Maps Services.
+V Azure Maps se používá schéma ověřování založeného na klíčích. Při vytváření účtu se generují dva klíče. Pro ověření služby Azure Maps Services můžete použít kteroukoli z těchto kláves.
 
-Poznámka: Azure Maps pro účely mapování funkcí a dotazů na umístění ("dotazy") od jiných výrobců TomTom. Dotazy nejsou propojeny s žádným zákazníkem nebo koncovým uživatelem, pokud jsou sdíleny pomocí TomTom a nelze je použít k identifikaci jednotlivců. Microsoft v současné době v procesu přidávání TomTom do seznamu subdodavatelů služeb Online Services. Mějte na paměti, že mobilita a povětrnostní služby, které zahrnují integraci s Moovit a AccuWeather, jsou momentálně ve [verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Poznámka: Azure Maps pro účely mapování funkcí a dotazů na umístění ("dotazy") od jiných výrobců TomTom. Dotazy nejsou propojeny s žádným zákazníkem nebo koncovým uživatelem, pokud jsou sdíleny pomocí TomTom a nelze je použít k identifikaci jednotlivců. Mobilita a povětrnostní služby, které zahrnují integraci s Moovit a AccuWeather, jsou momentálně ve [verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Microsoft v současné době v procesu přidávání TomTom, Moovit a AccuWeather do seznamu subdodavatelů služeb Online Services.
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Rozhraní API pro Azure Maps jsou aktuálně k dispozici ve všech zemích a oblastech s výjimkou následujících:
+Služba Azure Maps Services je aktuálně dostupná kromě následujících zemí nebo oblastí:
 
 * Čína
 * Jižní Korea
@@ -197,7 +234,7 @@ Vyzkoušejte si ukázkovou aplikaci, která prezentuje Azure Maps:
 > [!div class="nextstepaction"]
 > [Rychlý Start: Vytvoření webové aplikace](quick-demo-map-app.md)
 
-Udržujte si přehled o Azure Maps: 
+Udržujte si přehled o Azure Maps:
 
 > [!div class="nextstepaction"]
 > [Blog Azure Maps](https://azure.microsoft.com/blog/topics/azure-maps/)

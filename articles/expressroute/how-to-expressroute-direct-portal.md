@@ -5,19 +5,26 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 06/12/2020
+ms.date: 08/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: f22f81d69d746764af43d9167874aabedbd56f51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 475b2aa99296995c3adb51eca2d6bdb53616670e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765439"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903591"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Vytvoření ExpressRoute s přímým přístupem pomocí Azure Portal
 
 V tomto článku se dozvíte, jak vytvořit ExpressRoute s přímým přístupem pomocí Azure Portal.
 ExpressRoute Direct umožňuje přímo se připojit k globální síti Microsoftu v umístěních partnerských vztahů, které jsou strategické distribuce na celém světě. Další informace najdete v článku o [ExpressRoute Direct](expressroute-erdirect-about.md).
+
+## <a name="before-you-begin"></a><a name="before"></a>Než začnete
+
+Ověřte, jestli je ve vašem předplatném zaregistrovaný poskytovatel prostředků **Microsoft. Network** . Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků.
+
+1. Přístup k nastavením předplatného, jak je popsáno v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md).
+1. V rámci vašeho předplatného pro **poskytovatele prostředků**ověřte, že poskytovatel **Microsoft. Network** zobrazuje **registrovaný** stav. Pokud poskytovatel prostředků Microsoft. Network není uveden v seznamu registrovaných zprostředkovatelů, přidejte ho.
 
 ## <a name="1-create-expressroute-direct"></a><a name="create-erdir"></a>1. vytvoření ExpressRoute Direct
 

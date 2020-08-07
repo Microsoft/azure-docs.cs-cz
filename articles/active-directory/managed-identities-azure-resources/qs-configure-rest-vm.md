@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c967e32836586c39131069407fc4808a5f91ae9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9db22c6876294c9ffba33eab3d27900bf294e886
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609102"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873836"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí volání REST API
 
@@ -84,7 +84,7 @@ Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
    
    **Text žádosti**
 
@@ -162,7 +162,7 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
    > Aby se zajistilo, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které jsou přiřazené k virtuálnímu počítači, musíte pomocí tohoto příkazu SLOŽENÉho příkazu Zobrazit seznam spravovaných identit přiřazených uživateli: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Pokud máte k virtuálnímu počítači přiřazené spravované identity přiřazené uživatelem, jak je identifikuje `identity` hodnota v odpovědi, přejděte ke kroku 3, který vám ukáže, jak uchovávat spravované identity přiřazené uživatelem a zároveň na svém virtuálním počítači povolit spravovanou identitu přiřazenou systémem.
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
@@ -173,7 +173,7 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
    
    **Text žádosti**
     
@@ -194,7 +194,7 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
    **ROZHRANÍ API VERZE 2018-06-01**
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
@@ -205,7 +205,7 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
 
    **Text žádosti**
 
@@ -228,7 +228,7 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
    **ROZHRANÍ API VERZE 2017-12-01**
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
@@ -240,7 +240,7 @@ Aby se povolila spravovaná identita přiřazená systémem na virtuálním poč
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
 
    **Text žádosti**
 
@@ -272,7 +272,7 @@ Aby se na virtuálním počítači zakázala spravovaná identita přiřazená s
    > Aby se zajistilo, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které jsou přiřazené k virtuálnímu počítači, musíte pomocí tohoto příkazu SLOŽENÉho příkazu Zobrazit seznam spravovaných identit přiřazených uživateli: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Pokud máte k virtuálnímu počítači přiřazené žádné spravované identity přiřazené uživatelem, jak je uvedeno v `identity` hodnotě odpovědi, přejděte ke kroku 3, který vám ukáže, jak zachovat uživatelem přiřazené spravované identity a zároveň na svém virtuálním počítači zablokovat spravovanou identitu přiřazenou systémem.
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
@@ -283,7 +283,7 @@ Aby se na virtuálním počítači zakázala spravovaná identita přiřazená s
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
 
    **Text žádosti**
 
@@ -342,7 +342,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
 
    **Text žádosti**
 
@@ -423,7 +423,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
 
    **Text žádosti**
 
@@ -513,7 +513,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
 
    |Hlavička požadavku  |Popis  |
    |---------|---------|
-   |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.
 
     Pokud máte ke svému virtuálnímu počítači přiřazenou nějaké spravované identity přiřazené uživatelem nebo systémem, které jsou identifikované v `identity` hodnotě odpovědi, přejděte na krok 5, který vám ukáže, jak zachovat spravovanou identitu přiřazenou systémem při přidávání uživatelem přiřazené spravované identity na virtuálním počítači.
 
@@ -524,7 +524,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    **ROZHRANÍ API VERZE 2018-06-01**
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{}}}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
@@ -535,7 +535,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        |
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        |
  
    **Text žádosti**
 
@@ -555,7 +555,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    **ROZHRANÍ API VERZE 2017-12-01**
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"userAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"userAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
@@ -567,7 +567,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
 
    **Text žádosti**
 
@@ -591,7 +591,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    Například pokud máte spravovanou identitu přiřazenou systémem a aktuálně přiřazenou spravovanou identitu přiřazenou `ID1` k vašemu virtuálnímu počítači, do které chcete přidat spravovanou identitu přiřazenou uživatelem `ID2` :
 
    ```bash
-   curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
@@ -603,7 +603,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
 
    **Text žádosti**
 
@@ -630,7 +630,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    Například pokud máte spravovanou identitu přiřazenou systémem a aktuálně přiřazenou spravovanou identitu přiřazenou `ID1` k vašemu virtuálnímu počítači, do které chcete přidat spravovanou identitu přiřazenou uživatelem `ID2` : 
 
    ```bash
-   curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned,UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned,UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
@@ -642,7 +642,7 @@ K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači po
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
 
    **Text žádosti**
 
@@ -683,7 +683,7 @@ K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyž
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.
  
    Pokud máte k virtuálnímu počítači přiřazené spravované identity, jsou uvedené v odpovědi v `identity` hodnotě.
 
@@ -694,7 +694,7 @@ K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyž
    Přidejte `null` do uživatelem přiřazené spravované identity, kterou chcete odebrat:
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":null}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":null}}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
@@ -706,7 +706,7 @@ K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyž
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
 
    **Text žádosti**
 
@@ -726,7 +726,7 @@ K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyž
    Zachovejte pouze uživatelsky přiřazené spravované identity, které chcete zachovat v `identityIds` poli:
 
    ```bash
-   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
    ```
 
    ```HTTP
@@ -738,7 +738,7 @@ K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyž
    |Hlavička požadavku  |Popis  |
    |---------|---------|
    |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-   |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
+   |*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        | 
 
    **Text žádosti**
 
@@ -756,7 +756,7 @@ K odebrání uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači vyž
 Pokud má váš virtuální počítač spravované identity přiřazené systémem i uživatelem, můžete odebrat všechny spravované identity přiřazené uživatelem tak, že přepnete na použití spravované identity přiřazené systémem, a to pomocí následujícího příkazu:
 
 ```bash
-curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
+curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H "Authorization:Bearer <ACCESS TOKEN>"
 ```
 
 ```HTTP
@@ -768,7 +768,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 |Hlavička požadavku  |Popis  |
 |---------|---------|
 |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-|*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. | 
+|*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token. | 
 
 **Text žádosti**
 
@@ -795,7 +795,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 |Hlavička požadavku  |Popis  |
 |---------|---------|
 |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
-|*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.| 
+|*Autorizace*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.| 
 
 **Text žádosti**
 

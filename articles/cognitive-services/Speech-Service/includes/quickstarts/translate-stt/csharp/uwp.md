@@ -1,21 +1,20 @@
 ---
 title: 'Rychlý Start: Převod řeči na text, C# (UWP) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
 services: cognitive-services
 author: lisaweixu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.date: 04/04/2020
-ms.author: erhopf
+ms.author: jhakulin
 ms.topic: include
-ms.openlocfilehash: 62993b2e553630edd228228b4faa82de44997063
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 08da79afa14d883c6fe21ead7b3bca5f1aac5538
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671447"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87771075"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
