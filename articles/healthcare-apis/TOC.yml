@@ -19,7 +19,7 @@
       href: fhir-oss-powershell-quickstart.md
     - name: Nasazení FHIR Serveru pro Azure – CLI
       href: fhir-oss-cli-quickstart.md
-    - name: Nasazení konektoru IoT – portál
+    - name: Nasazení konektoru Azure IoT pro FHIR (Preview) – portál
       href: iot-fhir-portal-quickstart.md
 - name: Kurzy
   expanded: false
@@ -86,7 +86,7 @@
       href: enable-diagnostic-logging.md
     - name: Získání tokenu pro rozhraní API služby Azure pro FHIR – rozhraní příkazového řádku
       href: get-healthcare-apis-access-token-cli.md
-    - name: Řešení chyb v konektoru IoT
+    - name: Řešení chyb v konektoru Azure IoT pro FHIR (Preview)
       href: iot-troubleshoot-guide.md
 - name: Koncepty
   expanded: false
@@ -97,12 +97,12 @@
       href: azure-ad-hcapi-token-validation.md
     - name: Použití vlastních hlaviček HTTP pro přidání dat do protokolů auditu
       href: use-custom-headers.md
-    - name: Činnosti konektoru IoT
+    - name: Činnosti konektoru Azure IoT pro FHIR (Preview)
       expanded: false
       items:
-        - name: Tok dat konektoru IoT
+        - name: Tok dat konektoru Azure IoT pro FHIR (Preview)
           href: iot-data-flow.md
-        - name: Šablony mapování konektoru IoT
+        - name: Šablony mapování konektoru Azure IoT pro FHIR (Preview)
           href: iot-mapping-templates.md
 - name: Zdroje a prostředky
   items:

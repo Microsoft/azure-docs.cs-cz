@@ -209,14 +209,14 @@
       items:
         - name: Vizuální vytváření datových továren
           href: author-visually.md
+        - name: Iterativní vývoj a ladění
+          href: iterative-development-debugging.md
         - name: Centrum správy
           href: author-management-hub.md
         - name: Správa zdrojového kódu
           href: source-control.md
         - name: Průběžná integrace a doručování
           href: continuous-integration-deployment.md
-        - name: Iterativní vývoj a ladění
-          href: iterative-development-debugging.md
     - name: Konektory
       items:
         - name: Přehled konektorů
@@ -562,6 +562,8 @@
       items:
         - name: Parametrizace propojených služeb
           href: parameterize-linked-services.md
+        - name: Globální parametry
+          href: author-global-parameters.md
         - name: Jazyk výrazů
           href: control-flow-expression-language-functions.md
         - name: Systémové proměnné

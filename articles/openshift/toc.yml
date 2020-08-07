@@ -28,6 +28,12 @@
           href: configure-azure-ad-cli.md
         - name: Konfigurace ověřování Azure Active Directory (portál)
           href: configure-azure-ad-ui.md
+    - name: Vytvoření zálohy a obnovení aplikace s využitím Velero
+      items:
+        - name: Vytvoření zálohy aplikace clusteru s využitím Velero
+          href: howto-create-a-backup.md
+        - name: Vytvoření obnovení aplikace clusteru s využitím Velero
+          href: howto-create-a-restore.md
     - name: Monitorování a protokolování pro Azure Red Hat OpenShift 4
       items:
         - name: Azure Monitor pro kontejnery v Azure Red Hat OpenShiftu 4 (Preview)

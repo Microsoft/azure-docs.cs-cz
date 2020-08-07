@@ -13,10 +13,10 @@
       items:
         - name: Registrace aplikace
           href: quickstart-register-app.md
-        - name: Konfigurace aplikace pro přístup k webovým rozhraním API
-          href: quickstart-configure-app-access-web-apis.md
-        - name: Konfigurace aplikace pro zveřejnění webových rozhraní API
+        - name: Konfigurace aplikace pro zveřejnění webového rozhraní API
           href: quickstart-configure-app-expose-web-apis.md
+        - name: Konfigurace aplikace pro přístup k webovému rozhraní API
+          href: quickstart-configure-app-access-web-apis.md
         - name: Úprava účtů podporovaných aplikací
           href: quickstart-modify-supported-accounts.md
         - name: Odebrání aplikace
@@ -34,7 +34,7 @@
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP.NET Core
+        - name: Jádro ASP.NET
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -460,7 +460,7 @@
       items:
         - name: Přehled
           href: authentication-national-cloud.md
-        - name: Ověřování
+        - name: Authentication
           href: msal-national-cloud.md
     - name: Automatické zřizování uživatelů (SCIM)
       items:

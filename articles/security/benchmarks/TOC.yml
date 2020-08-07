@@ -59,6 +59,8 @@
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Databricks
       href: ../../azure-databricks/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Firewall
+      href: ../../firewall/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Functions
       href: ../../azure-functions/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Policy
@@ -83,6 +85,8 @@
       href: ../fundamentals/customer-lockbox-security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Data Lake Analytics
       href: ../../data-lake-analytics/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro DDOS Protection
+      href: ../fundamentals/ddos-protection-security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Event Hubs
       href: ../../event-hubs/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro ExpressRoute
@@ -95,6 +99,8 @@
       href: ../../logic-apps/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Network Watcher
       href: ../../network-watcher/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Security Center
+      href: ../../security-center/security-baseline.md
     - name: Standardní hodnoty pro Service Fabric
       href: ../../service-fabric/security-baseline.md
     - name: Standardní hodnoty pro Stream Analytics

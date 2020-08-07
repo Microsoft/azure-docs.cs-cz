@@ -94,7 +94,7 @@
               href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
             - name: Data o využití pro podnikové zákazníky
               href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
-        - name: Terminologie fakturace
+        - name: Fakturace
           items:
             - name: Podmínky využití jednotlivých předplatných
               href: understand/understand-usage.md
@@ -108,6 +108,8 @@
               href: manage/mca-understand-pricesheet.md
             - name: Fakturační podmínky Smlouvy s partnerem Microsoftu
               href: understand/mpa-invoice-terms.md
+            - name: Změny aktualizovaného individuálního fakturačního účtu
+              href: understand/mosp-new-customer-experience.md
             - name: Fakturační účty pro smlouvu se zákazníkem Microsoftu
               href: understand/mca-overview.md
             - name: Fakturační účty pro smlouvu s partnerem Microsoftu

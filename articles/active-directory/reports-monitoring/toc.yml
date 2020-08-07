@@ -23,6 +23,8 @@
       href: tutorial-access-api-with-certificates.md
     - name: Streamování protokolů do centra událostí
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
+    - name: Průvodce analytikou protokolů
+      href: tutorial-log-analytics-wizard.md
 - name: Koncepty
   items:
     - name: Plánování nasazení sestav a monitorování

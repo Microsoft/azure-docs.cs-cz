@@ -7,6 +7,8 @@
 - name: Rychlé starty
   expanded: true
   items:
+    - name: Konfigurace protokolů toků NSG pomocí šablony ARM
+      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
     - name: Diagnostika potíží s filtrováním provozu virtuálních počítačů – portál
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: Diagnostika potíží s filtrováním provozu virtuálních počítačů – PowerShell
@@ -73,11 +75,11 @@
               href: diagnose-vm-network-routing-problem-cli.md
         - name: Diagnostika potíží s odchozím připojením
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: network-watcher-connectivity-portal.md
             - name: Azure PowerShell
               href: network-watcher-connectivity-powershell.md
-            - name: Rozhraní příkazového řádku Azure
+            - name: Azure CLI
               href: network-watcher-connectivity-cli.md
             - name: REST
               href: network-watcher-connectivity-rest.md
@@ -89,7 +91,7 @@
                   href: network-watcher-packet-capture-manage-portal.md
                 - name: Azure PowerShell
                   href: network-watcher-packet-capture-manage-powershell.md
-                - name: Rozhraní příkazového řádku Azure
+                - name: Azure CLI
                   href: network-watcher-packet-capture-manage-cli.md
                 - name: REST
                   href: network-watcher-packet-capture-manage-rest.md
@@ -109,7 +111,7 @@
           items:
             - name: Azure PowerShell
               href: network-watcher-nsg-flow-logging-powershell.md
-            - name: Rozhraní příkazového řádku Azure
+            - name: Azure CLI
               href: network-watcher-nsg-flow-logging-cli.md
             - name: REST
               href: network-watcher-nsg-flow-logging-rest.md
@@ -142,7 +144,7 @@
           items:
             - name: Azure PowerShell
               href: network-watcher-security-group-view-powershell.md
-            - name: Rozhraní příkazového řádku Azure
+            - name: Azure CLI
               href: network-watcher-security-group-view-cli.md
             - name: REST
               href: network-watcher-security-group-view-rest.md
@@ -154,7 +156,7 @@
           items:
             - name: Azure PowerShell
               href: network-watcher-troubleshoot-manage-powershell.md
-            - name: Rozhraní příkazového řádku Azure
+            - name: Azure CLI
               href: network-watcher-troubleshoot-manage-cli.md
             - name: REST
               href: network-watcher-troubleshoot-manage-rest.md

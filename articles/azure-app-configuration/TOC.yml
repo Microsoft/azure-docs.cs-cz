@@ -75,7 +75,7 @@
       href: ./policy-samples.md
 - name: Koncepty
   items:
-    - name: Ukládání hodnot klíče
+    - name: Klíče a hodnoty
       href: concept-key-value.md
     - name: Snímek k určitému časovému okamžiku
       href: concept-point-time-snapshot.md

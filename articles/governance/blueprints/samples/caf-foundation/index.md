@@ -3,12 +3,12 @@ title: Ukázka podrobného plánu Základy CAF – přehled
 description: Přehled a architektura přechodu na cloud pro Azure (CAF) pro ukázkový podrobný plán Základy CAF.
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 3291fdc299652d2b22bff89f5b1dadbdc064e561
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: b8bd0015d5f95fc61806197ca21fdaeeb3452700
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901306"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852340"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Přehled architektury přechodu na cloud pro Azure od Microsoftu pro ukázkový podrobný plán Základy
 
@@ -35,7 +35,7 @@ Tato implementace je tvořená několika službami Azure, které se využívají
   - Pro vyžadování šifrování zabezpečeného přenosu pro účet Azure Storage
   - Pro zamítnutí typů prostředků (volí se během nasazování)  
 - Iniciativy
-  - Povolení monitorování ve službě Azure Security Center (89 zásad)
+  - Povolení monitorování ve službě Azure Security Center (víc než 100 definic zásad)
 
 Všechny tyto prvky dodržují prověřené postupy publikované v článku zaměřeném na [Centrum architektury Azure – referenční architektury](/azure/architecture/reference-architectures/).
 

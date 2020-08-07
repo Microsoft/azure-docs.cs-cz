@@ -229,7 +229,7 @@
         - name: Nastavení vstupních a výstupních adresářů
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
-        - name: Interaktivní ladění
+        - name: Visual Studio Code
           displayName: 'Visual Studio Code, VSCode, debug, bugs, remote, compute, instance'
           href: how-to-set-up-vs-code-remote.md
         - name: Integrace Gitu
@@ -437,26 +437,28 @@
           href: how-to-schedule-pipelines.md
         - name: Aktivace kanálu
           href: how-to-trigger-published-pipeline.md
+        - name: Designer (přetahování)
+          items:
+            - name: Metriky protokolů
+              displayName: 'designer, logging'
+              href: how-to-track-designer-experiments.md
+            - name: Transformace dat
+              displayName: pipeline
+              href: how-to-designer-transform-data.md
+            - name: Přeučení pomocí publikovaných kanálů
+              displayName: 'retrain, designer, published pipeline'
+              href: how-to-retrain-designer.md
+            - name: Dávkové predikce
+              displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+              href: how-to-run-batch-predictions-designer.md
+            - name: Spouštění kódu v Pythonu
+              displayName: 'feature extraction, feature engineering'
+              href: how-to-designer-python.md
         - name: Ladění a řešení potíží s kanály
           displayName: designer
           href: how-to-debug-pipelines.md
         - name: Ladění kanálů ve službě Application Insights
           href: how-to-debug-pipelines-application-insights.md
-        - name: Metriky protokolu designeru
-          displayName: 'designer, logging'
-          href: how-to-track-designer-experiments.md
-        - name: Transformace dat designeru
-          displayName: pipeline
-          href: how-to-designer-transform-data.md
-        - name: Přetrénování designeru pomocí publikovaných kanálů
-          displayName: 'retrain, designer, published pipeline'
-          href: how-to-retrain-designer.md
-        - name: Dávkové predikce designeru
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
-        - name: Kód v Pythonu spouštěný v designeru
-          displayName: 'feature extraction, feature engineering'
-          href: how-to-designer-python.md
         - name: Použití kroku paralelního spuštění
           displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-use-parallel-run-step.md
@@ -475,6 +477,9 @@
     - name: Správa prostředků – VS Code
       displayName: 'vscode,resources'
       href: how-to-manage-resources-vscode.md
+    - name: Interaktivní ladění nástroje VS Code
+      displayName: 'vscode,remote,debug,pipelines,deployments,ssh'
+      href: how-to-debug-visual-studio-code.md
     - name: Export a odstranění dat
       displayName: GDPR
       href: how-to-export-delete-data.md

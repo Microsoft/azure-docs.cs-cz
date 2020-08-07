@@ -312,9 +312,15 @@
         - name: Seznam funkcí Preview
           href: search-api-preview.md
         - name: Vývoj v .NET
-          href: search-howto-dotnet-sdk.md
+          items:
+            - name: Použití Microsoft.Azure.Search (v10)
+              href: search-howto-dotnet-sdk.md
+            - name: Začínáme (v10)
+              href: search-get-started-dotnet-v10.md
         - name: Upgrade sady SDK
           items:
+            - name: .NET SDK 11.0
+              href: search-dotnet-sdk-migration-version-11.md
             - name: .NET SDK 10.0
               href: search-dotnet-sdk-migration-version-10.md
             - name: .NET SDK 9.0
@@ -349,7 +355,7 @@
           items:
             - name: Filtry zabezpečení
               href: search-security-trimming-for-azure-search.md
-            - name: Filtry na identity AAD
+            - name: Filtrování identit uživatelů
               href: search-security-trimming-for-azure-search-with-aad.md
     - name: Spravovat
       items:
