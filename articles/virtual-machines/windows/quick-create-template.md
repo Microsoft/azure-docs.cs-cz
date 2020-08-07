@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: d74994609799c155453f0c7cac887f2e033ea90b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 11e5d4e31f388dcffe7f1292afa223562d44b20a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087278"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832293"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>Rychlý Start: Vytvoření virtuálního počítače s Windows pomocí šablony ARM
 
@@ -21,17 +21,17 @@ V tomto rychlém startu se dozvíte, jak použít šablonu Azure Resource Manage
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
 
 :::code language="json" source="~/quickstart-templates/101-vm-simple-windows/azuredeploy.json" range="1-225" highlight="67-224":::
 
@@ -63,7 +63,7 @@ V šabloně je definováno několik prostředků:
     - **Heslo správce**: zadejte heslo, které se má použít pro účet správce. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](faq.md#what-are-the-password-requirements-when-creating-a-vm).
     - **Předpona popisku DNS**: Zadejte jedinečný identifikátor, který se použije jako součást popisku DNS.
     - **Verze operačního systému Windows**: vyberte verzi Windows, kterou chcete na virtuálním počítači spustit.
-    - **Velikost virtuálního počítače**: vyberte [Velikost](sizes.md) , která se má použít pro virtuální počítač.
+    - **Velikost virtuálního počítače**: vyberte [Velikost](../sizes.md) , která se má použít pro virtuální počítač.
     - **Umístění**: výchozí hodnota je stejné umístění jako skupina prostředků, pokud již existuje.
 1. Vyberte **Zkontrolovat a vytvořit**. Po dokončení ověření vyberte **vytvořit** a vytvořte a NASAĎTE virtuální počítač.
 

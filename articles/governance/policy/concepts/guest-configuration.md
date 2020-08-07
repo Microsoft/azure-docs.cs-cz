@@ -3,12 +3,12 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá agenta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: f2f07a3e88984a84ca1529052d5899ad8570a268
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bec0215d3f10aa9f6a20eea7258ec9d5081e8f98
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072823"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901976"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
@@ -74,7 +74,26 @@ Následující tabulka obsahuje seznam podporovaných operačních systémů pro
 
 Vlastní image virtuálních počítačů jsou podporovány zásadami konfigurace hosta, pokud se jedná o jeden z operačních systémů uvedených v tabulce výše.
 
-## <a name="guest-configuration-extension-network-requirements"></a>Síťové požadavky rozšíření konfigurace hosta
+## <a name="network-requirements"></a>Požadavky sítě
+
+Virtuální počítače v Azure můžou ke komunikaci se službou konfigurace hosta použít buď svůj místní síťový adaptér, nebo privátní odkaz.
+
+Počítače se systémem Azure Arc se připojují pomocí místní síťové infrastruktury, aby se dosáhlo služeb Azure a nahlásily stav dodržování předpisů.
+
+### <a name="communicate-over-virtual-networks-in-azure"></a>Komunikace přes virtuální sítě v Azure
+
+Virtuální počítače, které používají virtuální sítě pro komunikaci, budou vyžadovat odchozí přístup k datacentrům Azure na portu `443` . Pokud používáte privátní virtuální síť v Azure, která neumožňuje odchozí přenosy, nakonfigurujte výjimky s pravidly skupiny zabezpečení sítě. Označení služby "GuestAndHybridManagement" lze použít k odkazování na službu konfigurace hosta.
+
+### <a name="communicate-over-private-link-in-azure"></a>Komunikace prostřednictvím privátního propojení v Azure
+
+Virtuální počítače můžou používat [privátní propojení](../../../private-link/private-link-overview.md) ke komunikaci se službou konfigurace hosta. `EnablePrivateNeworkGC` `TRUE` Chcete-li povolit tuto funkci, použijte značku s názvem a hodnotou. Značku lze použít před nebo po použití zásad konfigurace hosta pro daný počítač.
+
+Provoz se směruje pomocí [virtuální veřejné IP adresy](../../../virtual-network/what-is-ip-address-168-63-129-16.md) Azure a vytvoří zabezpečený a ověřený kanál s prostředky platformy Azure.
+
+### <a name="azure-arc-connected-machines"></a>Počítače připojené k Azure ARC
+
+Uzly umístěné mimo Azure, které jsou připojené přes Azure ARC, vyžadují připojení ke službě konfigurace hosta.
+Podrobnosti o požadavcích sítě a proxy serveru, které jsou k dispozici v [dokumentaci k Azure ARC](../../../azure-arc/servers/overview.md).
 
 Aby počítače komunikovaly s poskytovatelem prostředků konfigurace hosta v Azure, vyžadují odchozí přístup k datacentrům Azure na portu **443**. Pokud síť v Azure nepovoluje odchozí přenosy, nakonfigurujte výjimky s pravidly [skupiny zabezpečení sítě](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) . [Označení služby](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" lze použít k odkazování na službu konfigurace hosta.
 

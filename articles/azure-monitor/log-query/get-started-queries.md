@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: dcb3afd14a7355a08291cd8553d5050d96919aec
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801423"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874057"
 ---
-# <a name="get-started-with-log-queries-in-azure-monitor"></a>Začínáme s dotazy protokolu v Azure Monitor
+# <a name="get-started-with-log-queries-in-azure-monitor"></a>Začínáme s dotazy protokolů v Azure Monitoru
 
 > [!NOTE]
-> Pokud shromažďujete data alespoň z jednoho virtuálního počítače, můžete toto cvičení použít ve vlastním prostředí. Pokud ne, použijte naše ukázkové [prostředí](https://portal.loganalytics.io/demo), které obsahuje spoustu ukázkových dat.  Pokud už víte, jak dotazovat v KQL, ale stačí rychle vytvořit užitečné dotazy založené na typech prostředků, Projděte si [podokno uložené Ukázkové dotazy](saved-queries.md).
+> Pokud shromažďujete data alespoň z jednoho virtuálního počítače, můžete toto cvičení použít ve vlastním prostředí. Pokud ne, použijte naše ukázkové [prostředí](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), které obsahuje spoustu ukázkových dat.  Pokud už víte, jak dotazovat v KQL, ale stačí rychle vytvořit užitečné dotazy založené na typech prostředků, Projděte si [podokno uložené Ukázkové dotazy](saved-queries.md).
 
 V tomto kurzu se naučíte psát dotazy protokolu v Azure Monitor. Naučíte se, jak:
 
@@ -111,8 +111,8 @@ Při psaní podmínek filtrování můžete použít následující výrazy:
 |:---|:---|:---|
 | == | Kontrolovat rovnost<br>(rozlišuje velká a malá písmena) | `Level == 8` |
 | =~ | Kontrolovat rovnost<br>(nerozlišuje velká a malá písmena) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| ! =,  <> | Kontrolovat nerovnost<br>(oba výrazy jsou identické) | `Level != 4` |
-| *a*, *nebo* | Požadováno mezi podmínkami| `Level == 16 or CommandLine != ""` |
+| !=, <> | Kontrolovat nerovnost<br>(oba výrazy jsou identické) | `Level != 4` |
+| *and*, *or* | Požadováno mezi podmínkami| `Level == 16 or CommandLine != ""` |
 
 Chcete-li filtrovat podle více podmínek, můžete buď použít **, a**:
 

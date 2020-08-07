@@ -6,17 +6,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 01/29/2020
-ms.openlocfilehash: 7041221b015465e9db2d67d8dd7760d644c34f0c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 07/29/2020
+ms.openlocfilehash: bf6215bd9225292f7b85ed6d4c4566cd4ee860b7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387434"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902095"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografická dostupnost a podpora měny pro komerční tržiště
 
-Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpisných oblastech, jak jsou definované fakturační adresou zákazníka, a transakce můžou být dokončené ve 17 měnách. V následující tabulce jsou uvedeny všechny podporované geografické polohy, jejich [kód ISO 3166 2-číslice alfa](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)a přiřazená měna.
+## <a name="supported-geographic-locations"></a>Podporovaná geografická umístění
+
+Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpisných oblastech, jak jsou definované fakturační adresou zákazníka, a transakce můžou být dokončené ve 17 měnách. V následující tabulce jsou uvedeny jednotlivé podporované geografické polohy, jejich [kód ISO 3166 2-číslice alfa](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)a přiřazená měna.
 
 |   Název země nebo oblasti               |   ISO-2   |   Měna   |
 |-------------------------------------|-----------|--------------|
@@ -167,3 +169,34 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 \*Pro zákazníky v Brazílii používá web Marketplace v rámci poskytovatelů cloudových řešení (CSP) USD.
 
 \** Jenom image virtuálních počítačů s bezplatným a BYOL.
+
+## <a name="how-we-convert-currency"></a>Jak převádíme měnu
+
+U všech placených typů nabídek má nezávislý výrobce softwaru možnost zadávat ceny v USD nebo odesílat ceny v místní měně. Ceny zadané v USD se automaticky převedou na místní měnu při uložení stránky. Sazby používané partnerským centrem se aktualizují každý den. ISV může exportovat ceny a zkontrolovat převedené ekvivalenty.
+
+Pokud chcete upravit jakoukoli cenu před publikováním, stačí exportovat tabulku cen, upravit ji a nahrát ji se změnami.
+
+> [!NOTE]
+> Po zveřejnění ceny za uvedení na trh ve vašem plánu ji nelze později změnit. Abyste měli jistotu, že jsou ceny před publikováním správné, exportujte tabulku s cenami a Prohlédněte si ceny na každém trhu.
+
+## <a name="rate-changes"></a>Změny rychlosti
+
+Sazby, které používáme k výpočtu místních cen, se aktualizují každý den. Tento výpočet se provede, když ISV uloží stránku a může zkontrolovat všechny sazby tím, že před publikováním vyexportuje a zkontroluje ceny.
+
+### <a name="retrieving-currency-information-by-api"></a>Načítání informací o měně pomocí rozhraní API
+
+Jednotlivé ceny (v závislosti na tom, jak byly nastaveny) mohou být ovlivněny směnnými sazbami v den, kdy byly uloženy), lze načíst pomocí rozhraní API. informace o měně se nedají.
+
+Podrobnosti o tom, jak zadat cenu za konkrétní typy nabídek, najdete v těchto článcích:
+
+- [Vytvoření nabídky aplikací Azure](partner-center-portal/create-new-azure-apps-offer.md)
+- [Vytvoření nabídky kontejneru Azure](partner-center-portal/create-azure-container-offer.md)
+- [Vytvoření nabídky virtuálních počítačů Azure](partner-center-portal/azure-vm-create-offer.md)
+- [Vytvoření nabídky konzultačních služeb](partner-center-portal/create-consulting-service-offer.md)
+- [365 vytvoření nabídky PowerApps pro Customer Engagement &](partner-center-portal/create-new-customer-engagement-offer.md)
+- [Vytvoření nabídky Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md)
+- [Vytvoření nabídky Dynamics 365 Business Central](partner-center-portal/create-new-business-central-offer.md)
+- [Vytvoření nabídky modulu IoT Edge](partner-center-portal/azure-iot-edge-module-creation.md)
+- [Vytvoření nabídky spravované služby](partner-center-portal/create-new-managed-service-offer.md)
+- [Vytvoření aplikace Power BI](partner-center-portal/create-power-bi-app-offer.md)
+- [Vytvoření nabídky SaaS](partner-center-portal/create-new-saas-offer.md)

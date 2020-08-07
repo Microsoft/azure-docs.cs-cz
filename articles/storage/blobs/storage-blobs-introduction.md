@@ -1,7 +1,7 @@
 ---
 title: Seznámení s úložištěm objektů BLOB (Object)
 titleSuffix: Azure Storage
-description: Do Azure Blob Storage můžete ukládat velké objemy dat nestrukturovaných objektových dat, jako jsou textová nebo binární data. Služba Azure Blob Storage je vysoce škálovatelná a dostupná. Klienti mají k datům objektů ve službě Blob Storage přístup z PowerShellu nebo Azure CLI, programově prostřednictvím klientských knihoven Azure Storage nebo přes REST.
+description: Úložiště objektů BLOB v Azure slouží k ukládání obrovských objemů nestrukturovaných dat objektů, jako jsou textová nebo binární data. Služba Azure Blob Storage je vysoce škálovatelná a dostupná.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/24/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 0d05e85a06ae1e893d5d7faa7e5389da78ad6389
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 55059f4edea19a1e559ea1ad99d9e7e60756cc96
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85559524"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836373"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Seznámení se službou Azure Blob Storage
 
@@ -44,7 +44,7 @@ http://mystorageaccount.blob.core.windows.net
 
 Informace o vytvoření účtu úložiště najdete v tématu [Vytvoření účtu úložiště](../common/storage-account-create.md). Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-### <a name="containers"></a>Kontejnery
+### <a name="containers"></a>Containers
 
 Kontejner uspořádá sadu objektů blob, podobně jako adresář v systému souborů. Účet úložiště může zahrnovat neomezený počet kontejnerů a v každém kontejneru může být neomezený počet objektů blob.
 
@@ -56,7 +56,7 @@ Kontejner uspořádá sadu objektů blob, podobně jako adresář v systému sou
 Azure Storage podporuje tři typy objektů BLOB:
 
 - **Objekty blob bloku** ukládají textová a binární data. Objekty blob bloku se skládají z bloků dat, které můžete spravovat jednotlivě. Objekty blob bloku se ukládají až do přibližně 4,75 TiB dat. Větší objekty blob bloku jsou dostupné ve verzi Preview, až do přibližně 190,7 TiB.
-- **Doplňovací objekty blob** se skládají z bloků, jako jsou objekty blob bloku, ale jsou optimalizované pro operace připojení. Doplňovací objekty blob jsou ideální pro scénáře, jako je protokolování dat z virtuálních počítačů.
+- **Doplňovací objekty blob** se skládají z bloků, jako jsou objekty blob bloku, ale jsou optimalizované pro operace připojení. Objekty blob připojení jsou ideální pro scénáře, jako je protokolování dat z virtuálních počítačů.
 - **Objekty blob stránky** ukládají soubory s náhodným přístupem až do velikosti 8 TB. Objekty blob stránky ukládají soubory virtuálního pevného disku (VHD) a slouží jako disky pro virtuální počítače Azure. Další informace o objektech blob stránky najdete v tématu [Přehled objektů blob stránky Azure](storage-blob-pageblob-overview.md) .
 
 Další informace o různých typech objektů BLOB najdete v tématu [Principy objektů blob bloku, doplňovacích objektů BLOB a objektů blob stránky](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).

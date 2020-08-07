@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: c6780d952b9ce6ea58fc6c8a2509a4526add7149
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: da9445b12ce6f35d249fc3af1a4a0ef560ba35de
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028264"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905087"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Sestavení sady školicích dat pro vlastní model
 
@@ -42,7 +42,7 @@ Ujistěte se, že vaše školicí data budou také postupovat podle požadavků 
 
 ## <a name="upload-your-training-data"></a>Nahrajte školicí data.
 
-Když se spojíte se sadou dokumentů formuláře, které budete používat pro školení, je nutné ji nahrát do kontejneru úložiště objektů BLOB v Azure. Pokud si nejste jisti, jak vytvořit účet služby Azure Storage pomocí kontejneru, postupujte podle pokynů [pro rychlý start Azure Storage pro Azure Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+Když se spojíte se sadou dokumentů formuláře, které budete používat pro školení, je nutné ji nahrát do kontejneru úložiště objektů BLOB v Azure. Pokud si nejste jisti, jak vytvořit účet služby Azure Storage pomocí kontejneru, postupujte podle pokynů [pro rychlý start Azure Storage pro Azure Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). Použijte standardní úroveň výkonu.
 
 Pokud chcete použít ručně označené údaje, budete také muset nahrát *.labels.js* a *.ocr.js* soubory, které odpovídají vašim školicím dokumentům. K vygenerování těchto souborů můžete použít [Nástroj pro označování ukázkových popisků](./quickstarts/label-tool.md) (nebo vlastní uživatelské rozhraní).
 

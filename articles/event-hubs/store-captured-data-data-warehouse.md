@@ -4,12 +4,12 @@ description: 'Kurz: v tomto kurzu se dozvíte, jak zachytit data z centra událo
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8d45681b53aa2dd8df8c2288fecdde1b45fb7bd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1a7030014a8926b1db11ad99ba031e51194ddfd9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039493"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833721"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Kurz: migrace zachycených Event Hubs dat do SQL Data Warehouse pomocí Event Grid a Azure Functions
 
@@ -31,7 +31,7 @@ V tomto kurzu provedete následující akce:
 > - Streamování ukázkových dat do centra událostí
 > - Ověření zachycených dat ve službě SQL Data Warehouse
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -130,7 +130,7 @@ Po publikování funkce můžete začít odebírat událost zachycení ze služb
 
 ## <a name="create-an-event-grid-subscription-from-the-functions-app"></a>Vytvoření odběru Event Gridu v aplikaci Functions
  
-1. Přejděte na [Azure Portal](https://portal.azure.com/). Vyberte skupinu prostředků a aplikaci funkcí.
+1. Přejděte na web [Azure Portal](https://portal.azure.com/). Vyberte skupinu prostředků a aplikaci funkcí.
 
    ![Zobrazení aplikace funkcí](./media/store-captured-data-data-warehouse/view-function-app.png)
 
@@ -178,4 +178,4 @@ Po několika minutách zadejte dotaz do tabulku ve službě SQL Data Warehouse. 
 ## <a name="next-steps"></a>Další kroky 
 Pomocí kombinace datového skladu s výkonnými nástroji pro vizualizaci dat můžete získat užitečné přehledy.
 
-V tomto článku se dozvíte, jak používat [Power BI se službou SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi).
+V tomto článku se dozvíte, jak používat [Power BI se službou SQL Data Warehouse](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect).

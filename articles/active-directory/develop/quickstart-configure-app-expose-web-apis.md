@@ -1,6 +1,7 @@
 ---
-title: Konfigurace aplikace k vystavování webových rozhraní API – Microsoft Identity Platform | Azure
-description: Zjistěte, jak nakonfigurovat aplikaci pro zveřejnění nového oprávnění nebo oboru a role a tím ji zpřístupnit klientským aplikacím.
+title: 'Rychlý Start: Konfigurace aplikace k vystavení webového rozhraní API | Azure'
+titleSuffix: Microsoft identity platform
+description: V tomto rychlém startu se dozvíte, jak nakonfigurovat aplikaci, aby vystavila nové oprávnění, obor a roli k zpřístupnění aplikace klientským aplikacím.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,30 +9,27 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 08/14/2019
+ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: e005ba9c5458849863bd4668ffde1e0f6fb4bf91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93b0c3392a32a6ff18a285d34fdaede6ceea6528
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76704217"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830287"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Rychlý Start: Konfigurace aplikace k vystavení webových rozhraní API
+# <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Rychlý Start: Konfigurace aplikace k vystavení webového rozhraní API
 
 Můžete vyvinout webové rozhraní API a zpřístupnit ho klientským aplikacím zveřejněním [oprávnění nebo oborů](developer-glossary.md#scopes) a [rolí](developer-glossary.md#roles). Správně nakonfigurované webové rozhraní API bude k dispozici stejně jako ostatní webová rozhraní API Microsoftu, včetně rozhraní Graph API a rozhraní API pro Office 365.
 
-V tomto rychlém startu se dozvíte, jak nakonfigurovat aplikaci pro zveřejnění nového oboru a tím ji zpřístupnit klientským aplikacím.
+V tomto rychlém startu se dozvíte, jak nakonfigurovat aplikaci, aby vystavila nový obor, který zpřístupní klientským aplikacím.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, musíte splnit následující požadavky:
-
-* Přečtěte si o podporovaných [oprávněních a souhlasu](v2-permissions-and-consent.md), kterým je důležité rozumět při vytváření aplikací, které budou používat jiní uživatelé či jiné aplikace.
-* Máte tenanta, ke kterému jsou zaregistrované aplikace.
-  * Pokud nemáte žádné zaregistrované aplikace, [přečtěte si o registraci aplikací na platformě Microsoft Identity Platform](quickstart-register-app.md).
+* Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Dokončení [rychlého startu: registrace aplikace s platformou Microsoft Identity](quickstart-register-app.md)
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Přihlášení k webu Azure Portal a výběr aplikace
 
@@ -75,17 +73,28 @@ Zveřejnění nového oboru prostřednictvím uživatelského rozhraní:
 
 1. Nastavte **Stav** a jakmile budete hotovi, vyberte **Přidat obor**.
 
+1. Volitelné Chcete-li potlačit zobrazení výzvy ke souhlasu uživatelů vaší aplikace s definovanými obory, můžete "předběžně autorizovat" klientská aplikace pro přístup k webovému rozhraní API. Měli byste předběžně autorizovat *jenom* ty klientské aplikace, kterým důvěřujete, protože uživatelé nebudou mít možnost odmítnout souhlas.
+    1. V části **autorizované klientské aplikace**vyberte **Přidat klientskou aplikaci** .
+    1. Zadejte **aplikaci (ID klienta)** klientské aplikace, kterou chcete předběžně autorizovat. Například u webové aplikace, kterou jste předtím zaregistrovali.
+    1. V části **autorizované obory**vyberte obory, pro které chcete potlačit zobrazování výzev k vyjádření souhlasu, a pak vyberte **Přidat aplikaci**.
+
+    Klientská aplikace je teď předem autorizovaná klientská aplikace (DPS) a uživatelé se při přihlašování k nim nebudou vyzváni k souhlasu.
+
 1. Postupujte podle pokynů a [ověřte, že je webové rozhraní API zveřejněné ostatním aplikacím](#verify-the-web-api-is-exposed-to-other-applications).
 
 ## <a name="expose-a-new-scope-or-role-through-the-application-manifest"></a>Zveřejnění nového oboru nebo role prostřednictvím manifestu aplikace
 
+Manifest aplikace slouží jako mechanismus pro aktualizaci entity aplikace definující atributy registrace aplikace služby Azure AD.
+
 [![Vystavení nového oboru pomocí kolekce oauth2Permissions v manifestu](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png#lightbox)
 
-Zveřejnění nového oboru prostřednictvím manifestu aplikace:
+K vystavení nového oboru úpravou manifestu aplikace:
 
 1. Na stránce **Přehled** aplikace vyberte část **Manifest**. Otevře se editor manifestu na webovém základu, který vám umožní na webu Azure Portal manifest **Upravit**. Volitelně můžete vybrat **Stáhnout**, upravit manifest místně a potom ho **Nahrát** zpět do aplikace.
-    
+
     Následující příklad ukazuje, jak v prostředku nebo rozhraní API zveřejnit nový obor `Employees.Read.All` přidáním následujícího elementu JSON do kolekce `oauth2Permissions`.
+
+    Vygenerujte `id` hodnotu programově nebo pomocí nástroje pro generování identifikátoru GUID, jako je například [Guidgen](https://www.microsoft.com/download/details.aspx?id=55984).
 
       ```json
       {
@@ -100,39 +109,41 @@ Zveřejnění nového oboru prostřednictvím manifestu aplikace:
       }
       ```
 
-   > [!NOTE]
-   > Hodnota `id` se musí vygenerovat programově nebo pomocí nástroje pro generování globálně jedinečných identifikátorů (GUID), jako je [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). Hodnota `id` představuje jedinečný identifikátor pro obor zveřejněný webovým rozhraním API. Jakmile se klient správně nakonfiguruje pomocí oprávnění pro přístup k webovému rozhraní API, Azure AD vydá přístupový token OAuth 2.0. Když klient volá webové rozhraní API, představí přístupový token, jehož deklarace identity oboru je nastavená na oprávnění vyžádaná v registraci aplikace.
-   >
-   > Další obory můžete podle potřeby zveřejnit později. Vezměte v úvahu, že webové rozhraní API může zveřejnit více oborů přidružených k celé řadě různých funkcí. Váš prostředek může za běhu řídit přístup k webovému rozhraní API tak, že bude vyhodnocovat deklaraci/deklarace identity oboru (`scp`) v přijatém přístupovém tokenu OAuth 2.0.
-
 1. Jakmile budete hotoví, klikněte na **Uložit**. Webové rozhraní API je teď nakonfigurované k použití jinými aplikacemi v adresáři.
 1. Postupujte podle pokynů a [ověřte, že je webové rozhraní API zveřejněné ostatním aplikacím](#verify-the-web-api-is-exposed-to-other-applications).
 
+Další informace o entitě aplikace a jejím schématu najdete v tématu Referenční dokumentace k typu prostředku [aplikace][ms-graph-application] Microsoft Graph.
+
+Další informace o manifestu aplikace, včetně referenčního schématu, najdete v tématu [Principy manifestu aplikace Azure AD](reference-app-manifest.md).
+
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>Ověření, že je webové rozhraní API zveřejněné ostatním aplikacím
 
-1. Vraťte se do svého tenanta Azure AD, vyberte **Registrace aplikací** a vyhledejte a vyberte klientskou aplikaci, kterou chcete nakonfigurovat.
+1. Vraťte se do tenanta služby Azure AD, vyberte **Registrace aplikací**a pak vyhledejte a vyberte klientskou aplikaci, kterou chcete nakonfigurovat.
 1. Zopakujte postup popsaný v části [Konfigurace klientské aplikace pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md).
-1. Když se dostanete k kroku [výběru rozhraní API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
-), vyberte prostředek. Měl by se zobrazit nový obor, který je k dispozici pro žádosti o oprávnění klientů.
+1. Když se dostanete k kroku [výběru rozhraní API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis), vyberte prostředek (registrace aplikace webového rozhraní API).
+    * Pokud jste vytvořili registraci aplikace webového rozhraní API pomocí Azure Portal, váš prostředek rozhraní API je uvedený na kartě **Moje rozhraní** API.
+    * Pokud jste aplikaci Visual Studio povolili vytvoření registrace aplikace webového rozhraní API během vytváření projektu, je váš prostředek rozhraní API uveden v části **rozhraní API moje organizace používá** kartu.
 
-## <a name="more-on-the-application-manifest"></a>Další informace o manifestu aplikace
+Po výběru prostředku webového rozhraní API byste měli vidět nový rozsah dostupný pro žádosti o oprávnění klienta.
 
-Manifest aplikace slouží jako mechanismus pro aktualizaci aplikační entity, která definuje všechny atributy konfigurace identity aplikace Azure AD. Další informace o aplikační entitě a jejím schéma najdete v [dokumentaci aplikační entity rozhraní Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity). Tento článek obsahuje úplné referenční informace o členech aplikační entity používaných k určení oprávnění u rozhraní API, včetně:  
+## <a name="using-the-exposed-scopes"></a>Použití vystavených oborů
 
-* Člena appRoles, který je kolekcí entit [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) používaných k definování [oprávnění aplikace](developer-glossary.md#permissions) u webového rozhraní API.
-* Člena oauth2Permissions, který je kolekcí entit [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) používaných k definování [delegovaných oprávnění](developer-glossary.md#permissions) u webového rozhraní API.
+Jakmile je klient vhodně nakonfigurovaný s oprávněními pro přístup k webovému rozhraní API, může ho Azure AD vystavit přístupový token OAuth 2,0. Když klient volá webové rozhraní API, prezentuje přístupový token, který má `scp` deklaraci identity () nastavenou na oprávnění požadovaná při registraci aplikace.
 
-Další informace o obecných konceptech manifestu aplikace najdete v tématu [Vysvětlení manifestu aplikace Azure Active Directory](reference-app-manifest.md).
+Další obory můžete podle potřeby zveřejnit později. Vezměte v úvahu, že webové rozhraní API může zveřejnit více oborů přidružených k celé řadě různých funkcí. Váš prostředek může za běhu řídit přístup k webovému rozhraní API tak, že bude vyhodnocovat deklaraci/deklarace identity oboru (`scp`) v přijatém přístupovém tokenu OAuth 2.0.
+
+V aplikacích je úplná hodnota oboru zřetězením **identifikátoru URI ID aplikace** webového rozhraní API (prostředku) a **názvu oboru**.
+
+Pokud je například identifikátor URI ID aplikace webového rozhraní API `https://contoso.com/api` a název vašeho oboru je `Employees.Read.All` , úplný rozsah je:
+
+`https://contoso.com/api/Employees.Read.All`
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v těchto rychlých startech souvisejících se správou aplikací:
+Teď, když jste nastavili své webové rozhraní API tak, že nakonfigurujete jeho obory, nakonfigurujte registraci klientské aplikace s oprávněním pro přístup k těmto oborům.
 
-* [Registrace aplikace na platformě Microsoft Identity Platform](quickstart-register-app.md)
-* [Konfigurace klientské aplikace pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md)
-* [Úprava účtů podporovaných aplikací](quickstart-modify-supported-accounts.md)
-* [Odebrání aplikace zaregistrované na platformě Microsoft Identity Platform](quickstart-remove-app.md)
+> [!div class="nextstepaction"]
+> [Konfigurace registrace aplikace pro přístup k webovému rozhraní API](quickstart-configure-app-access-web-apis.md)
 
-Další informace o dvou objektech Azure AD, které představují zaregistrovanou aplikaci, a vztahu mezi nimi, najdete v článku o [objektech aplikací a instančních objektech](app-objects-and-service-principals.md).
-
-Další informace o pokynech pro branding, kterými byste se měli řídit při vývoji aplikací s využitím Azure Active Directory, najdete v článku [Pokyny pro branding aplikací](howto-add-branding-in-azure-ad-apps.md).
+<!-- REF LINKS -->
+[ms-graph-application]: /graph/api/resources/application

@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: 8862de0ba36d0731fff0e47ab51f828ff69af201
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.date: 08/05/2020
+ms.openlocfilehash: 7296ec52f8bede86b73e7494af3a784526b639c3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220418"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849110"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopírování a transformace dat v úložišti objektů BLOB v Azure pomocí Azure Data Factory
 
@@ -76,7 +76,7 @@ Tato konektorová služba BLOB Storage podporuje následující typy ověřován
 
 Data Factory podporuje následující vlastnosti pro ověřování klíčů účtu úložiště:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** musí být nastavená na **AzureBlobStorage** (navrhovaná) nebo **AzureStorage** (viz následující poznámky). |Ano |
 | připojovací řetězec | Zadejte informace potřebné pro připojení k úložišti pro vlastnost **ConnectionString** . <br/> Klíč účtu můžete také vložit do Azure Key Vault a získat `accountKey` konfiguraci z připojovacího řetězce. Další informace najdete v následujících ukázkách a [přihlašovací údaje úložiště v článku Azure Key Vault](store-credentials-in-key-vault.md) . |Ano |
@@ -146,7 +146,7 @@ Další informace o sdílených přístupových podpisech najdete v tématu [sig
 
 Data Factory podporuje následující vlastnosti pro použití ověřování pomocí sdíleného přístupového podpisu:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** musí být nastavená na **AzureBlobStorage** (navrhovaný) nebo **AzureStorage** (viz následující poznámka). |Ano |
 | sasUri | Zadejte identifikátor URI sdíleného přístupového podpisu k prostředkům úložiště, jako je například objekt BLOB nebo kontejner. <br/>Označte toto pole jako **SecureString** a bezpečně ho uložte do Data Factory. Můžete také zadat token SAS v Azure Key Vault, aby se použilo automatické otočení a odebrala se část tokenu. Další informace najdete v následujících ukázkách a [přihlašovací údaje uložené v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
@@ -230,13 +230,14 @@ Chcete-li použít ověřování instančního objektu, postupujte takto:
 
 Tyto vlastnosti jsou podporované pro propojenou službu Azure Blob Storage:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** musí být nastavená na **AzureBlobStorage**. |Ano |
 | serviceEndpoint | Zadejte koncový bod služby Azure Blob Storage se vzorem `https://<accountName>.blob.core.windows.net/` . |Ano |
 | servicePrincipalId | Zadejte ID klienta aplikace. | Ano |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** a bezpečně ho uložte do Data Factory nebo [odkazujte na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | tenant | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Načtěte ho tak, že najedete myší do pravého horního rohu Azure Portal. | Ano |
+| azureCloudType | Pro ověřování instančního objektu zadejte typ cloudového prostředí Azure, do kterého se zaregistruje vaše aplikace AAD. <br/> Povolené hodnoty jsou **AzurePublic**, **AzureChina**, **AzureUsGovernment**a **AzureGermany**. Ve výchozím nastavení se používá cloudové prostředí pro datovou továrnu. | Ne |
 | connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud je vaše úložiště dat v privátní síti). Pokud tato vlastnost není zadaná, služba použije výchozí prostředí Azure Integration runtime. |Ne |
 
 >[!NOTE]
@@ -284,7 +285,7 @@ Obecné informace o ověřování Azure Storage najdete v tématu [ověření p�
 
 Tyto vlastnosti jsou podporované pro propojenou službu Azure Blob Storage:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** musí být nastavená na **AzureBlobStorage**. |Ano |
 | serviceEndpoint | Zadejte koncový bod služby Azure Blob Storage se vzorem `https://<accountName>.blob.core.windows.net/` . |Ano |
@@ -319,7 +320,7 @@ Tyto vlastnosti jsou podporované pro propojenou službu Azure Blob Storage:
 
 V části `location` nastavení v datové sadě založené na formátu jsou podporovány následující vlastnosti služby Azure Blob Storage:
 
-| Vlastnost   | Popis                                                  | Vyžadováno |
+| Vlastnost   | Popis                                                  | Povinné |
 | ---------- | ------------------------------------------------------------ | -------- |
 | typ       | Vlastnost **Type** umístění v datové sadě musí být nastavená na **AzureBlobStorageLocation**. | Ano      |
 | kontejner  | Kontejner objektů BLOB.                                          | Ano      |
@@ -363,7 +364,7 @@ V části `location` nastavení v datové sadě založené na formátu jsou podp
 
 V `storeSettings` nastaveních ve zdrojovém kopírování založeném na formátu jsou podporovány následující vlastnosti pro úložiště objektů BLOB v Azure:
 
-| Vlastnost                 | Popis                                                  | Vyžadováno                                      |
+| Vlastnost                 | Popis                                                  | Povinné                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | typ                     | Vlastnost **Type** v poli `storeSettings` musí být nastavená na **AzureBlobStorageReadSettings**. | Ano                                           |
 | ***Vyhledejte soubory ke zkopírování:*** |  |  |
@@ -429,7 +430,7 @@ V `storeSettings` nastaveních ve zdrojovém kopírování založeném na formá
 
 Následující vlastnosti jsou podporovány pro Azure Blob Storage v `storeSettings` nastavení v jímky kopírování na základě formátu:
 
-| Vlastnost                 | Popis                                                  | Vyžadováno |
+| Vlastnost                 | Popis                                                  | Povinné |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | typ                     | Vlastnost **Type** v poli `storeSettings` musí být nastavená na **AzureBlobStorageWriteSettings**. | Ano      |
 | copyBehavior             | Definuje chování kopírování, pokud je zdrojem soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>-PreserveHierarchy (výchozí)</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru ke zdrojové složce je shodná s relativní cestou cílového souboru k cílové složce.<br/><b>-FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>-MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název souboru nebo objektu blob, sloučený název souboru je zadaný název. V opačném případě se jedná o automaticky vygenerovaný název souboru. | Ne       |
@@ -616,7 +617,7 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu odstranit](delete
 
 ### <a name="legacy-dataset-model"></a>Model zastaralé sady dat
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** datové sady musí být nastavená na **azureblobu**. |Ano |
 | folderPath | Cesta ke kontejneru a složce v úložišti objektů BLOB <br/><br/>Pro cestu se podporuje filtr zástupných znaků s výjimkou názvu kontejneru. Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). Použijte `^` k ukončení, jestli má název složky zástupný znak nebo tento řídicí znak uvnitř. <br/><br/>Příklad: myblobcontainer/myblobfolder/. Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). |Ano pro aktivitu kopírování nebo vyhledávání, ne pro aktivitu GetMetadata |
@@ -661,7 +662,7 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu odstranit](delete
 
 ### <a name="legacy-source-model-for-the-copy-activity"></a>Starší zdrojový model pro aktivitu kopírování
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **BlobSource**. |Ano |
 | zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Všimněte si, že pokud je **rekurzivní** nastavení nastaveno na **hodnotu true** a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky.<br/>Povolené hodnoty jsou **true** (výchozí) a **false**. | Ne |
@@ -701,7 +702,7 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu odstranit](delete
 
 ### <a name="legacy-sink-model-for-the-copy-activity"></a>Starší model jímky pro aktivitu kopírování
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na **BlobSink**. |Ano |
 | copyBehavior | Definuje chování kopírování, pokud je zdrojem soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>-PreserveHierarchy (výchozí)</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru se zdrojovou složkou je shodná s relativní cestou cílového souboru do cílové složky.<br/><b>-FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>-MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název souboru nebo objektu blob, sloučený název souboru je zadaný název. V opačném případě se jedná o automaticky vygenerovaný název souboru. | Ne |

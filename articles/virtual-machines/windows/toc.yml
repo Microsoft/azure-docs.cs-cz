@@ -173,7 +173,7 @@
     - name: Velikosti a typy virtuálních počítačů
       items:
         - name: Velikost virtuálních počítačů
-          href: sizes.md
+          href: ../sizes.md
         - name: Virtuální počítače 2. generace
           href: generation-2.md
         - name: Obecné účely
@@ -385,7 +385,7 @@
             - name: Kódy chyb
               href: ../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Použití jazyka C#
-          href: csharp.md
+          href: ../../azure-resource-manager/templates/deploy-rest.md
         - name: Použití specializovaného disku
           items:
             - name: Portál
@@ -393,7 +393,7 @@
             - name: PowerShell
               href: create-vm-specialized.md
         - name: Vytvoření virtuálního počítače pomocí Chefu
-          href: ../../chef/chef-automation.md
+          href: /azure/developer/chef/windows-vm-configure
         - name: Použití Javy
           href: java.md
         - name: Použití Pythonu
@@ -669,7 +669,7 @@
           items:
             - name: Přehled
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: CLI
+            - name: Rozhraní příkazového řádku
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -707,7 +707,7 @@
                     - name: Historie verzí
                       href: ../../azure-monitor/platform/diagnostics-extension-versions.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: Formát protokolů prostředků řádků JSON
-                      href: ../../azure-monitor/platform/resource-logs-append-blobs.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
+                      href: ../../azure-monitor/platform/resource-logs-blob-format.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
                     - name: Řešení potíží
                       href: ../../azure-monitor/platform/diagnostics-extension-troubleshooting.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Agent Log Analytics
@@ -765,13 +765,13 @@
                 - name: Povolení přehledu monitorování
                   href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: Povolení pro jeden virtuální počítač Azure
-                  href: ../../azure-monitor/insights/vminsights-enable-single-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
                 - name: Povolení s využitím Azure Policy
-                  href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
                 - name: Povolení s využitím Azure Powershellu
-                  href: ../../azure-monitor/insights/vminsights-enable-at-scale-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
                 - name: Povolení pro hybridní prostředí
-                  href: ../../azure-monitor/insights/vminsights-enable-hybrid-cloud.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: Závislosti map
               href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Monitorování výkonu
@@ -809,7 +809,7 @@
         - name: Vlastní data
           href: ../custom-data.md
         - name: Chef
-          href: chef-automation.md
+          href: /azure/developer/chef/windows-vm-configure
         - name: Publikování webové aplikace ze sady Visual Studio
           href: publish-web-app-from-visual-studio.md
     - name: Spouštění aplikací
@@ -915,7 +915,7 @@
           href: ../../virtual-network/quick-create-portal.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: Otevření portů k virtuálnímu počítači
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: nsg-quickstart-portal.md
             - name: Azure PowerShell
               href: nsg-quickstart-powershell.md

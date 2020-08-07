@@ -145,7 +145,11 @@
         - name: Vytvoření uživatelů
           href: howto-create-users.md
         - name: Připojovací řetězce
-          href: howto-connection-string.md
+          items:
+            - name: Připojení aplikací
+              href: howto-connection-string.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: Konfigurace SSL
           href: howto-configure-ssl.md
         - name: Konfigurace TLS

@@ -7,26 +7,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: cedc400ac6659cf2b2d0e9c499bf8789a6311e32
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 234d6af25f37bf04d3240177142d5ef919e8dd2d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141887"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903472"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
 V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů REST API s ukázkovým nástrojem pro označování, pomocí kterého můžete vytvořit vlastní model s ručně označenými daty. Další informace o této funkci najdete v části [výuka s visačkami](../overview.md#train-with-labels) v přehledu.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu musíte mít:
 
-- Sada alespoň šest forem stejného typu. Tato data použijete ke školení modelu a testování formuláře. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) . Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage.
+- Sada alespoň šest forem stejného typu. Tato data použijete ke školení modelu a testování formuláře. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) . Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage úrovně Standard-Performance.
 
 ## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
 
@@ -43,7 +43,7 @@ Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. P
 
    Hostitelský počítač musí splňovat následující požadavky na hardware:
 
-    | Kontejner | Minimální | Doporučené|
+    | Kontejner | Minimum | Doporučeno|
     |:--|:--|:--|
     |Ukázkový nástroj pro popisky|2 jádra, 4 GB paměti|4 jádra, 8 GB paměti|
 
@@ -61,7 +61,7 @@ Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. P
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
 
-   Tento příkaz zpřístupní ukázkovou jmenovku nástroje prostřednictvím webového prohlížeče. Přejděte do části `http://localhost:3000` (Soubor > Nový > Jiné).
+   Tento příkaz zpřístupní ukázkovou jmenovku nástroje prostřednictvím webového prohlížeče. Přejděte na `http://localhost:3000`.
 
 > [!NOTE]
 > Můžete také označovat dokumenty a modely výuky pomocí REST API pro rozpoznávání formulářů. Chcete-li provést výuku a analýzu pomocí REST API, přečtěte si téma [výuka s popisky pomocí REST API a Pythonu](./python-labeled-data.md).
@@ -133,7 +133,7 @@ V dalším kroku vytvoříte značky (popisky) a použijete je na textové prvky
    1. Kliknutím **+** vytvoříte novou značku.
    1. Zadejte název značky.
    1. Stisknutím klávesy ENTER značku uložíte.
-1. V hlavním Editoru klikněte a tažením vyberte jedno nebo více slov z zvýrazněných textových prvků.
+1. V hlavním editoru kliknutím vyberte slova z zvýrazněných textových prvků.
 1. Klikněte na značku, kterou chcete použít, nebo stiskněte odpovídající klávesovou zkratku. Číselné klíče se přiřazují jako klávesové zkratky pro prvních 10 značek. Můžete změnit pořadí značek pomocí ikon šipky nahoru a dolů v podokně editor značek.
     > [!Tip]
     > Při označování formulářů mějte na paměti následující tipy.
@@ -192,7 +192,7 @@ V současné době jsou podporovány následující typy hodnot a variace:
 
 Kliknutím na ikonu výuka v levém podokně otevřete stránku školení. Potom kliknutím na tlačítko **výuka** začněte s modelem školení. Po dokončení procesu školení se zobrazí následující informace:
 
-* **ID modelu** – ID modelu, který byl vytvořen a vyškolený. Každý školicí hovor vytvoří nový model s vlastním ID. Zkopírujte tento řetězec do zabezpečeného umístění; budete ho potřebovat, pokud chcete provést prediktivní volání prostřednictvím REST API.
+* **ID modelu** – ID modelu, který byl vytvořen a vyškolený. Každý školicí hovor vytvoří nový model s vlastním ID. Zkopírujte tento řetězec do zabezpečeného umístění; budete ho potřebovat, pokud chcete provést prediktivní volání prostřednictvím [REST API](./curl-train-extract.md) nebo [klientské knihovny](./client-library.md).
 * **Průměrná přesnost** – Průměrná přesnost modelu Přesnost modelu můžete vylepšit tak, že si znovu označíte další formuláře a školení a vytvoříte nový model. Doporučujeme začít tím, že budete označovat pět forem a podle potřeby přidat další formuláře.
 * Seznam značek a předpokládaná přesnost na značku.
 

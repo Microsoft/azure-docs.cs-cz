@@ -3,12 +3,12 @@ title: IP adresy v Azure Functions
 description: Přečtěte si, jak najít příchozí a odchozí IP adresy pro aplikace Function App a jaké způsobují jejich změnu.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b99855d8cc28a41d9eb91bdcf691747910ed4a1
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656773"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874074"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP adresy v Azure Functions
 
@@ -25,7 +25,7 @@ IP adresy jsou spojené s aplikacemi Function App, ne s jednotlivými funkcemi. 
 
 Každá aplikace Function App má jednu příchozí IP adresu. Zjištění této IP adresy:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Přejděte do aplikace Function App.
 3. Vyberte **Funkce platformy**.
 4. Vyberte **vlastnosti**a v části **virtuální IP adresa**se zobrazí příchozí IP adresa.
@@ -49,12 +49,13 @@ K dispozici je alternativní způsob, jak najít dostupné odchozí IP adresy po
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
+
 > [!NOTE]
-> Když se škáluje aplikace Function App, která běží na [plánu spotřeby](functions-scale.md#consumption-plan) , může se přiřadit nový rozsah odchozích IP adres. Při spuštění plánu spotřeby možná budete muset povolit celé datové centrum.
+> Když se škáluje aplikace Function App, která běží na [plánu spotřeby](functions-scale.md#consumption-plan) , může se přiřadit nový rozsah odchozích IP adres. Při spuštění v plánu spotřeby možná budete muset přidat celé datové centrum do seznamu povolených.
 
 ## <a name="data-center-outbound-ip-addresses"></a>Odchozí IP adresy datového centra
 
-Pokud potřebujete povolit odchozí IP adresy používané vašimi aplikacemi Function App, je další možností seznam povolených datových center aplikace Function App (oblast Azure). Můžete [si stáhnout soubor JSON se seznamem IP adres pro všechna datová centra Azure](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Pak najděte fragment JSON, který se vztahuje na oblast, ve které běží vaše aplikace Function App.
+Pokud potřebujete přidat odchozí IP adresy používané vašimi aplikacemi Function App do seznamu povolených aplikací, je další možností přidání datového centra aplikace Function App (oblast Azure) do seznamu povolených. Můžete [si stáhnout soubor JSON se seznamem IP adres pro všechna datová centra Azure](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Pak najděte fragment JSON, který se vztahuje na oblast, ve které běží vaše aplikace Function App.
 
 Například to vypadá, že fragment JSON západní Evropa může vypadat takto:
 
@@ -115,7 +116,7 @@ Pokud potřebujete statické a vyhrazené IP adresy, doporučujeme [App Service 
 
 Pokud chcete zjistit, jestli vaše aplikace Function App běží na App Service Environment:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Přejděte do aplikace Function App.
 3. Vyberte kartu **Přehled**.
 4. Úroveň plánu App Service se zobrazí v části **App Service plán/cenová úroveň**. Cenová úroveň App Service Environment je **izolovaná**.

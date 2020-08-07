@@ -4,22 +4,36 @@ description: Seznamte se s různými způsoby, jak můžete nasadit kód pro Azu
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 754a3ea2a316878cc8c2bd918b99476a7194b545
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: bf8944952abf83837d05019bd783bec2fd43cefe
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562935"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905121"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
-K nasazení kódu Azure Functions projektu do Azure můžete použít několik různých technologií. Tento článek obsahuje vyčerpávající seznam těchto technologií, popisuje, které technologie jsou k dispozici pro které typy funkcí, vysvětluje, co se stane, když použijete jednotlivé metody, a poskytuje doporučení, jak nejlépe využít v různých scénářích. Různé nástroje, které podporují nasazení na Azure Functions, jsou vyladěny na správnou technologii na základě jejich kontextu. Obecně platí, že nasazení zip je doporučenou technologií nasazení pro Azure Functions.
+K nasazení kódu Azure Functions projektu do Azure můžete použít několik různých technologií. Tento článek poskytuje přehled metod nasazení, které máte k dispozici, a doporučení pro nejlepší způsob použití v různých scénářích. Poskytuje taky vyčerpávající seznam a klíčových podrobností o technologiích nasazení underlyng. 
+
+## <a name="deployment-methods"></a>Metody nasazení
+
+Technologie nasazení, kterou použijete k publikování kódu do Azure, je obecně určena způsobem, ve kterém publikujete aplikaci. Odpovídající metoda nasazení je určena konkrétními potřebami a bodem vývojového cyklu. Například během vývoje a testování můžete nasadit přímo z vývojového nástroje, jako je například Visual Studio Code. Pokud je vaše aplikace v produkčním prostředí, je pravděpodobnější publikovat průběžně ze správy zdrojového kódu nebo pomocí automatizovaného publikačního kanálu, který zahrnuje další ověřování a testování.  
+
+Následující tabulka popisuje dostupné metody nasazení pro projekt funkce.
+
+| &nbsp;Typ nasazení | Metody | Nejlepší pro... |
+| -- | -- | -- |
+| Založené na nástrojích | &bull;&nbsp;[&nbsp; &nbsp; Publikování kódu sady Visual Studio &nbsp;](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Publikování sady Visual Studio](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[Publikování základních nástrojů](functions-run-local.md#publish) | Nasazení během vývoje a dalších nasazení AD-Hock. Nasazení se spravují místně pomocí nástrojů. | 
+| Spravované App Service| &bull;&nbsp;[&nbsp;Centrum nasazení &nbsp; (CI/CD)](functions-continuous-deployment.md)<br/>&bull;&nbsp;[Nasazení kontejnerů &nbsp;](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |  Průběžné nasazování (CI/CD) ze správy zdrojového kódu nebo z registru kontejneru. Nasazení jsou spravovaná platformou App Service (Kudu).|
+| Externí kanály|&bull;&nbsp;[Kanály DevOps](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[Akce GitHubu](functions-how-to-github-actions.md) | Produkční a DevOps kanály, které zahrnují další ověřování, testování a další akce, se spouštějí jako součást automatizovaného nasazení. Nasazení se spravují pomocí kanálu. |
+
+Zatímco nasazení konkrétních funkcí používá nejlepší technologii na základě jejich kontextu, většina metod nasazení je založena na [nasazení zip](#zip-deploy).
 
 ## <a name="deployment-technology-availability"></a>Dostupnost technologie nasazení
 
 Azure Functions podporuje místní vývoj a hostování pro různé platformy v systémech Windows a Linux. V současné době jsou k dispozici tři plány hostování:
 
-+ [Využití](functions-scale.md#consumption-plan)
++ [Consumption](functions-scale.md#consumption-plan)
 + [Premium](functions-scale.md#premium-plan)
 + [Vyhrazeno (App Service)](functions-scale.md#app-service-plan)
 

@@ -13,18 +13,18 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5acfa98636f54f87facf9771beb7d94dbd2b324
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ed15f8096cae3113af3f9c65ccca8873ef6c0e2
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731728"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905682"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Rychlý Start: udělení oprávnění k vytvoření neomezených registrací aplikací
 
 V tomto rychlém startu vytvoříte vlastní roli s oprávněním k vytvoření neomezeného počtu registrací aplikací a potom tuto roli přiřadíte uživateli. Přiřazený uživatel pak může k vytváření registrací aplikací použít portál Azure AD, Azure AD PowerShell nebo rozhraní Microsoft Graph API. Na rozdíl od předdefinované role vývojář aplikace umožňuje tato vlastní role vytvářet neomezený počet registrací aplikací. Role vývojář aplikace uděluje možnost, ale celkový počet vytvořených objektů je omezen na 250, aby se zabránilo dosažení [kvóty objektu pro celé adresáře](directory-service-limits-restrictions.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisite"></a>Požadavek
 
@@ -66,29 +66,6 @@ Existují dvě oprávnění, která jsou k dispozici pro udělení možnosti vyt
 - Microsoft. Directory/Applications/createAsOwner: přiřadíte-li toto oprávnění, bude autor přičtený jako první vlastník vytvořené registrace aplikace a tato vytvořená registrace aplikace se bude počítat s kvótou vytvořených objektů autora 250.
 - Microsoft. Directory/applicationPolicies/Create: přiřadíte-li toto oprávnění, nepřidá se autor jako první vlastník vytvořené registrace aplikace a registrace vytvořené aplikace se nebude počítat s kvótou vytvořených objektů autora 250. Toto oprávnění používejte opatrně, protože nebrání žádnému neoprávněnému nabyvateli v vytváření registrací aplikací, dokud se nedosáhne kvóty na úrovni adresáře. Pokud jsou přiřazena obě oprávnění, má tato oprávnění přednost.
 
-## <a name="create-a-custom-role-using-azure-ad-powershell"></a>Vytvoření vlastní role pomocí Azure AD PowerShellu
-
-Pomocí následujícího skriptu PowerShellu vytvořte novou roli:
-
-``` PowerShell
-# Basic role information
-$description = "Application Registration Creator"
-$displayName = "Can create an unlimited number of application registrations."
-$templateId = (New-Guid).Guid
-
-# Set of permissions to grant
-$allowedResourceAction =
-@(
-    "microsoft.directory/applications/createAsOwner"
-)
-$resourceActions = @{'allowedResourceActions'= $allowedResourceAction}
-$rolePermission = @{'resourceActions' = $resourceActions}
-$rolePermissions = $rolePermission
-
-# Create new custom admin role
-$customRole = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
-```
-
 ### <a name="assign-the-custom-role-using-azure-ad-powershell"></a>Přiřazení vlastní role pomocí Azure AD PowerShellu
 
 #### <a name="prepare-powershell"></a>Příprava PowerShellu
@@ -108,27 +85,43 @@ get-module azureadpreview
   Binary     2.0.0.115    azureadpreview               {Add-AzureADAdministrati...}
 ```
 
-#### <a name="assign-the-custom-role"></a>Přiřazení vlastní role
+## <a name="create-a-custom-role-using-azure-ad-powershell"></a>Vytvoření vlastní role pomocí Azure AD PowerShellu
 
-Přiřaďte roli pomocí níže uvedeného skriptu prostředí PowerShell:
+Pomocí následujícího skriptu PowerShellu vytvořte novou roli:
 
-``` PowerShell
+```powershell
+
 # Basic role information
-$description = "Application Registration Creator"
-$displayName = "Can create an unlimited number of application registrations."
+$displayName = "Application Registration Creator"
+$description = "Can create an unlimited number of application registrations."
 $templateId = (New-Guid).Guid
 
 # Set of permissions to grant
 $allowedResourceAction =
 @(
     "microsoft.directory/applications/create"
+    "microsoft.directory/applications/createAsOwner"
 )
-$resourceActions = @{'allowedResourceActions'= $allowedResourceAction}
-$rolePermission = @{'resourceActions' = $resourceActions}
-$rolePermissions = $rolePermission
+$rolePermissions = @{'allowedResourceActions'= $allowedResourceAction}
 
 # Create new custom admin role
-$customRole = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
+$customRole = New-AzureAdMSRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
+```
+
+### <a name="assign-the-custom-role"></a>Přiřazení vlastní role
+
+Přiřaďte roli pomocí následujícího skriptu prostředí PowerShell:
+
+```powershell
+# Get the user and role definition you want to link
+$user = Get-AzureADUser -Filter "userPrincipalName eq 'Adam@contoso.com'"
+$roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Application Registration Creator'"
+
+# Get resource scope for assignment
+$resourceScope = '/'
+
+# Create a scoped role assignment
+$roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
 ### <a name="create-a-custom-role-using-microsoft-graph-api"></a>Vytvoření vlastní role pomocí rozhraní Microsoft Graph API
@@ -156,6 +149,7 @@ Text
                 "allowedResourceActions":
                 [
                     "microsoft.directory/applications/create"
+                    "microsoft.directory/applications/createAsOwner"
                 ]
             },
             "condition":null

@@ -3,14 +3,14 @@ title: Vytvoření funkce v Azure, která reaguje na požadavky HTTP
 description: Naučte se vytvořit funkci z příkazového řádku a pak publikovat místní projekt na hostování bez serveru v Azure Functions.
 ms.date: 03/30/2020
 ms.topic: quickstart
-ms.custom: tracking-python, devx-track-azurecli
+ms.custom: devx-track-python, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 4aa1a20109bb086229fae96015c5f29c72df6f22
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ba068ef00bcf1f671341ab00cabfe3c9bbb493ad
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497184"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847682"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce v Azure, která reaguje na požadavky HTTP
 

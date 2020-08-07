@@ -3,12 +3,12 @@ title: Zobrazení protokolů aktivit Azure pro monitorování prostředků
 description: Protokoly aktivit můžete použít ke kontrole akcí a chyb uživatele. Zobrazuje Azure Portal PowerShell, rozhraní příkazového řádku Azure a REST.
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 9511090099894fad6708843f106570ed029f0c1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b02865e4487a187d1296b2971918aa101d711b5b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75478133"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827057"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Zobrazení protokolů aktivit pro monitorování akcí u prostředků
 
@@ -191,7 +191,7 @@ Operace REST pro práci s protokolem aktivit jsou součástí [rozhraní REST AP
 ## <a name="next-steps"></a>Další kroky
 
 * Protokoly aktivit Azure se dají použít s Power BI k získání dalších přehledů o akcích ve vašem předplatném. Podívejte se [na téma zobrazení a analýza protokolů aktivit Azure v Power BI a dalších](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
-* Další informace o nastavení zásad zabezpečení najdete v tématu [Access Control na základě rolí v Azure](../../role-based-access-control/role-assignments-portal.md).
+* Další informace o nastavení zásad zabezpečení najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * Pokud chcete zobrazit další podrobnosti o změnách vašich aplikací z infrastruktury infrastruktury všech způsobů nasazení aplikace, přečtěte si téma [použití analýzy změn aplikace v Azure monitor](../../azure-monitor/app/change-analysis.md).
 * Další informace o příkazech pro zobrazení operací nasazení najdete v tématu [Zobrazení operací nasazení](../templates/deployment-history.md).
 * Informace o tom, jak zabránit odstranění prostředků pro všechny uživatele, najdete v tématu [uzamčení prostředků pomocí Azure Resource Manager](lock-resources.md).

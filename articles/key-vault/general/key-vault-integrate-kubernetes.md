@@ -6,12 +6,12 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: 7acdee98e5e433567a3d177400ee4e7043d0895c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e70ee75344a939ea1632df3549d796617c7596af
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921570"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901993"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Kurz: konfigurace a spuštění poskytovatele Azure Key Vault pro ovladač tajných klíčů úložiště pro Kubernetes
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 * Než začnete s tímto kurzem, nainstalujte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
 
@@ -71,7 +71,7 @@ Dokončete části Vytvoření skupiny prostředků, vytvoření clusteru AKS a 
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. Pokud chcete zobrazit metadata clusteru AKS, který jste vytvořili, použijte následující příkaz. Zkopírujte **principalId**, **ClientID**, **SubscriptionId**a **nodeResourceGroup** pro pozdější použití.
+1. Pokud chcete zobrazit metadata clusteru AKS, který jste vytvořili, použijte následující příkaz. Zkopírujte **principalId**, **ClientID**, **SubscriptionId**a **nodeResourceGroup** pro pozdější použití. Pokud se nevytvořil cluster s DOTAZem s povolenými spravovanými identitami, bude mít hodnota **principalId** a **ClientID** hodnotu null. 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup
@@ -166,7 +166,7 @@ Následující obrázek ukazuje výstup konzoly pro příkaz **AZ datatrezor sho
 
 ### <a name="assign-a-service-principal"></a>Přiřazení instančního objektu
 
-Pokud používáte instanční objekt, udělte mu oprávnění pro přístup k trezoru klíčů a načtení tajných kódů. Přiřaďte roli *Čtenář* a udělte instančnímu objektu oprávnění k *získání* tajných kódů z trezoru klíčů následujícím způsobem:
+Pokud používáte instanční objekt, udělte mu oprávnění pro přístup k trezoru klíčů a načtení tajných kódů. Přiřaďte roli *Čtenář* a udělte instančnímu objektu oprávnění k *získání* tajných kódů z trezoru klíčů pomocí následujícího příkazu:
 
 1. Přiřaďte instanční objekt k existujícímu trezoru klíčů. Parametr **$AZURE _CLIENT_ID** je identifikátor **appId** , který jste zkopírovali po vytvoření instančního objektu.
     ```azurecli
@@ -204,10 +204,10 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 
 Pokud používáte spravované identity, přiřaďte ke clusteru AKS, který jste vytvořili, konkrétní role. 
 
-1. Pokud chcete vytvořit, vypsat nebo načíst spravovanou identitu přiřazenou uživatelem, musí mít váš cluster AKS přiřazenou roli [Přispěvatel spravovaných identit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-contributor) . Ujistěte se, že **$ClientID** je ClientID clusteru Kubernetes.
+1. Pokud chcete vytvořit, vypsat nebo načíst spravovanou identitu přiřazenou uživatelem, musí mít váš cluster AKS přiřazenou roli [spravovaného operátoru identity](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Ujistěte se, že **$ClientID** je ClientID clusteru Kubernetes. V případě tohoto oboru se bude jednat o službu předplatného Azure, konkrétně skupinu prostředků uzlu, která byla vytvořena při vytvoření clusteru AKS. Tento rozsah zajistí, že role přiřazené níže mají vliv jenom na prostředky v této skupině. 
 
     ```azurecli
-    az role assignment create --role "Managed Identity Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     ```

@@ -1,6 +1,6 @@
 ---
 title: Jak protokolovat události do Azure Event Hubs v Azure API Management | Microsoft Docs
-description: Naučte se protokolovat události do Azure Event Hubs v Azure API Management.
+description: Naučte se protokolovat události do Azure Event Hubs v Azure API Management. Event Hubs je vysoce škálovatelná služba příchozího přenosu dat.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: e2bf63558b4bbd55262aa16f70bfba934a42c3ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4909dde8efd7125a60509bb86b28f069bf6dbb24
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024958"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903387"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak protokolovat události do Azure Event Hubs v Azure API Management
 Vysoce škálovatelná služba Azure Event Hubs slouží ke zpracování příchozích dat. Dokáže přijímat miliony událostí za sekundu a umožňuje zpracovávat a analyzovat masivní objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Event Hubs slouží jako "přední dveře" pro kanál událostí a jakmile se data shromažďují do centra událostí, je možné je transformovat a ukládat pomocí libovolného zprostředkovatele analýz v reálném čase nebo adaptérů pro dávkování/ukládání. Event Hubs oddělí vytvoření proudu událostí od spotřeby těchto události, aby spotřebitelé událostí mohli k událostem přistupovat podle svého vlastního plánu.

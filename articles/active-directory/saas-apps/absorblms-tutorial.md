@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 936de76d1117c56f5a9dec48b51f33b9afa15351
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d3d5dbd5c831b4e3cf2ab63796165dc6bad005a5
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67107503"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Kurz: Azure Active Directory integrace s absorpčním LMS
 
@@ -33,7 +33,7 @@ Integrování absorbovaného LMS pomocí Azure AD vám poskytne následující v
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,6 +41,9 @@ Ke konfiguraci integrace služby Azure AD s použitím nástroje pro zavedení s
 
 * Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
 * Povolit odběr jednotného přihlašování pro LMS
+
+> [!NOTE]
+> Tato integrace je taky dostupná pro použití z cloudového prostředí Azure AD USA. Tuto aplikaci můžete najít v galerii cloudových aplikací pro státní správu Azure AD USA a nakonfigurovat ji stejným způsobem jako ve veřejném cloudu.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -171,7 +174,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí programu
 
     f. Jako **typ podpisu**vyberte **SHA256** .
 
-    g. Do pole **Adresa URL pro přihlášení** vložte **adresu URL přístupu uživatele** ze stránky **vlastností** aplikace Azure Portal.
+    například Do pole **Adresa URL pro přihlášení** vložte **adresu URL přístupu uživatele** ze stránky **vlastností** aplikace Azure Portal.
 
     h. Do pole **Adresa URL pro odhlášení**vložte hodnotu **URL** pro odhlášení, kterou jste zkopírovali z okna **Konfigurace přihlášení** Azure Portal.
 
@@ -277,7 +280,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici pohlcená LMS na přístupovém panelu byste se měli automaticky přihlášeni k LMS, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

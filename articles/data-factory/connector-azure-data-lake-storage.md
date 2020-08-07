@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: 7a17e9b0de3e77b2f6b8bf3c6eb55503d34c359c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.date: 08/05/2020
+ms.openlocfilehash: 8a6d0a24ef7252e40bb170bd63a76e2bfce8caef
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223716"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852272"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopírování a transformace dat v Azure Data Lake Storage Gen2 pomocí Azure Data Factory
 
@@ -74,7 +74,7 @@ Konektor Azure Data Lake Storage Gen2 podporuje následující typy ověřován�
 
 Pokud chcete použít ověřování pomocí klíče účtu úložiště, podporují se tyto vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na **AzureBlobFS**. |Ano |
 | url | Koncový bod pro Data Lake Storage Gen2 se vzorem `https://<accountname>.dfs.core.windows.net` . | Ano |
@@ -126,13 +126,14 @@ Chcete-li použít ověřování instančního objektu, postupujte podle těchto
 
 Tyto vlastnosti jsou pro propojenou službu podporované:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na **AzureBlobFS**. |Ano |
 | url | Koncový bod pro Data Lake Storage Gen2 se vzorem `https://<accountname>.dfs.core.windows.net` . | Ano |
 | servicePrincipalId | Zadejte ID klienta aplikace. | Ano |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako `SecureString` pro bezpečné uložení v Data Factory. Nebo můžete [odkazovat na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | tenant | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Načtěte ho tak, že najedete myší v pravém horním rohu Azure Portal. | Ano |
+| azureCloudType | Pro ověřování instančního objektu zadejte typ cloudového prostředí Azure, do kterého se zaregistruje vaše aplikace AAD. <br/> Povolené hodnoty jsou **AzurePublic**, **AzureChina**, **AzureUsGovernment**a **AzureGermany**. Ve výchozím nastavení se používá cloudové prostředí pro datovou továrnu. | Ne |
 | connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud je vaše úložiště dat v privátní síti, můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime. Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. |Ne |
 
 **Případě**
@@ -180,7 +181,7 @@ Pokud chcete používat spravované identity pro ověřování prostředků Azur
 
 Tyto vlastnosti jsou pro propojenou službu podporované:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na **AzureBlobFS**. |Ano |
 | url | Koncový bod pro Data Lake Storage Gen2 se vzorem `https://<accountname>.dfs.core.windows.net` . | Ano |
@@ -212,7 +213,7 @@ Tyto vlastnosti jsou pro propojenou službu podporované:
 
 Následující vlastnosti jsou podporovány pro Data Lake Storage Gen2 v části `location` nastavení v datové sadě založené na formátu:
 
-| Vlastnost   | Popis                                                  | Vyžadováno |
+| Vlastnost   | Popis                                                  | Povinné |
 | ---------- | ------------------------------------------------------------ | -------- |
 | typ       | Vlastnost Type v rámci `location` datové sady musí být nastavená na **AzureBlobFSLocation**. | Ano      |
 | Systému souborů | Název systému souborů Data Lake Storage Gen2.                              | Ne       |
@@ -262,7 +263,7 @@ K kopírování dat z ADLS Gen2 máte několik možností:
 
 Následující vlastnosti jsou podporovány pro Data Lake Storage Gen2 v části `storeSettings` nastavení ve zdroji kopírování založeném na formátu:
 
-| Vlastnost                 | Popis                                                  | Vyžadováno                                      |
+| Vlastnost                 | Popis                                                  | Povinné                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | typ                     | Vlastnost Type v poli `storeSettings` musí být nastavená na **AzureBlobFSReadSettings**. | Ano                                           |
 | ***Vyhledejte soubory ke zkopírování:*** |  |  |
@@ -324,7 +325,7 @@ Následující vlastnosti jsou podporovány pro Data Lake Storage Gen2 v části
 
 Následující vlastnosti jsou podporovány pro Data Lake Storage Gen2 v části `storeSettings` nastavení v jímky kopírování na základě formátu:
 
-| Vlastnost                 | Popis                                                  | Vyžadováno |
+| Vlastnost                 | Popis                                                  | Povinné |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | typ                     | Vlastnost Type v poli `storeSettings` musí být nastavená na **AzureBlobFSWriteSettings**. | Ano      |
 | copyBehavior             | Definuje chování kopírování, pokud je zdrojem soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>-PreserveHierarchy (výchozí)</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru ke zdrojové složce je shodná s relativní cestou cílového souboru k cílové složce.<br/><b>-FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>-MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Je-li zadán název souboru, Název sloučeného souboru je zadaný název. V opačném případě se jedná o automaticky vygenerovaný název souboru. | Ne       |
@@ -520,7 +521,7 @@ Další informace o vlastnostech najdete v části [Odstranění aktivity](delet
 
 ### <a name="legacy-dataset-model"></a>Model zastaralé sady dat
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type datové sady musí být nastavená na **AzureBlobFSFile**. |Ano |
 | folderPath | Cesta ke složce v Data Lake Storage Gen2. Pokud není zadaný, odkazuje na kořen. <br/><br/>Filtr zástupných znaků je podporován. Povolené zástupné znaky jsou `*` (Porovná žádný nebo více znaků) a `?` (Porovná žádný nebo jeden znak). `^`Pokud má váš vlastní název složky zástupný znak nebo je tento řídicí znak uvnitř, použijte k tomu řídicí znak. <br/><br/>Příklady: systém souborů/složka/. Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). |Ne |
@@ -565,7 +566,7 @@ Další informace o vlastnostech najdete v části [Odstranění aktivity](delet
 
 ### <a name="legacy-copy-activity-source-model"></a>Starší zdrojový model aktivity kopírování
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AzureBlobFSSource**. |Ano |
 | zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Pokud je rekurzivní nastavení nastaveno na hodnotu true a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky.<br/>Povolené hodnoty jsou **true** (výchozí) a **false**. | Ne |
@@ -605,7 +606,7 @@ Další informace o vlastnostech najdete v části [Odstranění aktivity](delet
 
 ### <a name="legacy-copy-activity-sink-model"></a>Starší model jímky aktivity kopírování
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na **AzureBlobFSSink**. |Ano |
 | copyBehavior | Definuje chování kopírování, pokud je zdrojem soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>-PreserveHierarchy (výchozí)</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru ke zdrojové složce je shodná s relativní cestou cílového souboru k cílové složce.<br/><b>-FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>-MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Je-li zadán název souboru, Název sloučeného souboru je zadaný název. V opačném případě se jedná o automaticky vygenerovaný název souboru. | Ne |

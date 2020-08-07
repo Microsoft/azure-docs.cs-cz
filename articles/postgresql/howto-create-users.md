@@ -6,18 +6,18 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2019
-ms.openlocfilehash: f25bda1a450919264c7ddba3886554381009c546
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1ae627a7ee1a7e2a704cc17cc8ec9ccc9846c109
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119595"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829301"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Vytváření uživatelů v Azure Database for PostgreSQL – jeden server
 
 Tento článek popisuje, jak můžete vytvářet uživatele v rámci serveru Azure Database for PostgreSQL.
 
-Pokud chcete získat informace o tom, jak vytvořit a spravovat uživatele předplatného Azure a jejich oprávnění, můžete navštívit [článek o řízení přístupu na základě role (RBAC) Azure](../role-based-access-control/built-in-roles.md) nebo si přečtěte, [jak přizpůsobit role](../role-based-access-control/custom-roles.md).
+Pokud chcete získat informace o tom, jak vytvářet a spravovat uživatele předplatného Azure a jejich oprávnění, můžete navštívit [článek řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/built-in-roles.md) nebo si přečtěte, [jak přizpůsobit role](../role-based-access-control/custom-roles.md).
 
 ## <a name="the-server-admin-account"></a>Účet správce serveru
 

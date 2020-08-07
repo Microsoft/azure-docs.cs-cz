@@ -1,6 +1,6 @@
 ---
-title: Migrace serverů s Windows Serverem 2008 do Azure pomocí Azure Site Recovery
-description: Tento článek popisuje migraci místních počítačů s Windows Serverem 2008 do Azure pomocí Azure Site Recovery.
+title: Migrace serverů s Windows Serverem 2008 do Azure pomocí Azure Migrate/Site Recovery
+description: Tento článek popisuje, jak migrovat místní počítače s Windows Serverem 2008 do Azure a doporučuje Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8d672c1113f265f9fbbabc7caed8df071f548f2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d8cd8bf2e1a29b122fb4bac7a12454f102183fe3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503816"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845557"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrace serverů s Windows Serverem 2008 do Azure
 
@@ -31,9 +31,11 @@ V tomto kurzu se naučíte:
 
 ## <a name="migrate-with-azure-migrate"></a>Migrace pomocí Azure Migrate
 
-K migraci počítačů do Azure doporučujeme použít službu [Azure Migrate](../migrate/migrate-services-overview.md) . Azure Migrate poskytuje centralizované centrum pro posuzování a migraci místních počítačů do Azure, použití Azure Migrate, dalších služeb Azure a nástrojů třetích stran. Azure Site Recovery by se měly používat jenom pro zotavení po havárii, a ne na migraci.
+K migraci počítačů do Azure doporučujeme použít službu [Azure Migrate](../migrate/migrate-services-overview.md) . 
 
-Azure Migrate podporuje migraci serverů se systémem Windows Server 2008.
+- Azure Migrate je účelově sestavený pro migraci serveru.
+- Azure Migrate poskytuje centralizované centrum pro zjišťování, posuzování a migraci místních počítačů do Azure. Azure Site Recovery by se měly používat jenom pro zotavení po havárii, a ne na migraci.
+- Azure Migrate podporuje migraci serverů se systémem Windows Server 2008.
 
 
 ## <a name="migrate-with-site-recovery"></a>Migrace pomocí Site Recovery

@@ -1,6 +1,6 @@
 ---
 title: Importování rozhraní API SOAP pomocí portálu Azure Portal | Microsoft Docs
-description: Zjistěte, jak importovat rozhraní API SOAP pomocí API Managementu.
+description: Přečtěte si, jak importovat standardní reprezentace XML rozhraní SOAP API a pak otestovat rozhraní API na portálech Azure a vývojářích.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 7b1fd34824bec9641edc94ce278fa21a1b57b2c0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 583179c4678b43bef25174835ec2701d571b37b6
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202736"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905646"
 ---
 # <a name="import-soap-api"></a>Importování rozhraní API SOAP
 

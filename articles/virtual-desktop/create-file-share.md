@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c6b37cd8c127bf3c7643b39d54bfcdb8093c58c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: c9636a08b896cefdbec825e4979ad1ec89f8847b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027388"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842905"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Vytvoření kontejneru profilu se soubory Azure a služba AD DS
 
@@ -31,7 +31,7 @@ Nejdřív budete muset nastavit účet úložiště Azure Files.
 
 Nastavení účtu úložiště:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. Na panelu hledání vyhledejte **účet úložiště** .
 
@@ -39,7 +39,7 @@ Nastavení účtu úložiště:
 
 4. Do stránky **vytvořit účet úložiště** zadejte následující informace:
 
-    - Vytvořte novou skupinu prostředků.
+    - Vytvoříte novou skupinu prostředků.
     - Zadejte jedinečný název účtu úložiště.
     - Pro **umístění**doporučujeme vybrat stejné umístění jako fond hostitelů virtuálních počítačů s Windows.
     - **Výkon** – vyberte **Standard**. (V závislosti na požadavcích na IOPS. Další informace najdete v tématu [Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows](store-fslogix-profile.md).)
@@ -189,8 +189,6 @@ Konfigurace oprávnění systému souborů NTFS:
      icacls <mounted-drive-letter>: /remove "Authenticated Users"
      icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
-
-5. Vyberte **Použít**.
 
 ## <a name="configure-fslogix-on-session-host-vms"></a>Konfigurace FSLogix na virtuálních počítačích hostitele relací
 

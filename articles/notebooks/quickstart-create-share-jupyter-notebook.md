@@ -3,13 +3,13 @@ title: Vytvoření a sdílení poznámkového bloku Jupyter v Azure Notebooks Pr
 description: Rychle vytvořte a spusťte Poznámkový blok Jupyter Azure Notebooks ve verzi Preview a potom tento poznámkový blok sdílejte s ostatními.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.custom: tracking-python
-ms.openlocfilehash: ec1a03cb1c05248458a47ec4b22a0243b31bafcd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-python
+ms.openlocfilehash: 19773a6857d58f5b6af2a02ac28a3414c51fc917
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423282"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849395"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Rychlý Start: vytvoření a sdílení poznámkového bloku v Azure Notebooks Preview
 
@@ -17,7 +17,7 @@ ms.locfileid: "87423282"
 
 V tomto rychlém startu vytvoříte a spustíte na Azure Notebooks Poznámkový blok Jupyter a potom tento poznámkový blok nasdílíte s ostatními. Jupyter umožňuje snadno zkombinovat Markdownu text, spustitelný kód, trvalá data, grafiku a vizualizace na jednom plátně, poznámkovém bloku. Azure Notebooks je bezplatná hostovaná služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu, která nevyžaduje instalaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Žádné
 
 ## <a name="create-a-new-project-and-notebook"></a>Vytvořit nový projekt a Poznámkový blok

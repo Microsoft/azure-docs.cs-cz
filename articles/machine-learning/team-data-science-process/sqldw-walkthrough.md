@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
-ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d5a332acbf6550fcc3a4256e1bc0531b31dd6c6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 21bede74ee265ffbe530c7697817186ac0e8dd3b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012250"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845693"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Vědecké zpracování týmových dat v akci: používání Azure synapse Analytics
 V tomto kurzu Vás provedeme vytvořením a nasazením modelu strojového učení s využitím Azure synapse Analytics pro veřejně dostupnou datovou sadu, která je datovou sadou [NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/) . Model binární klasifikace vytváří předpověď bez ohledu na to, jestli je pro cestu placené nebo ne.  Mezi modely patří klasifikace s více třídami (bez ohledu na to, zda existuje Tip) a regrese (rozdělení pro placené částky Tip).
@@ -1006,13 +1006,13 @@ Na následujícím obrázku je k dispozici ukázkový experiment pro bodování.
 
 ![Publikování v Azure ML][11]
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Abyste rekapitulacei, co jsme udělali v tomto výukovém kurzu, vytvořili jste prostředí pro datové vědy v Azure, které pracovalo s velkou veřejnou datovou sadou, provedli jsme to prostřednictvím vědeckého procesu pro týmovou práci, veškerého způsobu získávání dat a následného nasazení Azure Machine Learning webové služby.
 
 ### <a name="license-information"></a>Informace o licenci
 Tento ukázkový návod a příslušné doprovodné skripty a IPython Poznámkový blok sdílí Microsoft v rámci licence MIT. Další podrobnosti najdete v souboru LICENSE.txt v adresáři ukázkového kódu na GitHubu.
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 - [Stránka stahování Andrés Monroy NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/)
 - [FÓLIE NYC data taxislužby na cestách pomocí Chrisho Whongu](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [NYC taxislužby a výzkum a statistika Komise Limousine](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

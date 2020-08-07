@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43538ec7fa17764e8d9d53aad305480bd3ab4f5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0dde9d8b50233c3c4033daf618e0e626c0174b0c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419797"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903149"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Identita zařízení a virtualizace plochy
 
@@ -77,7 +77,7 @@ Pokud se spoléháte na nástroj pro přípravu systému (sysprep.exe) a pokud p
 
 Pokud při vytváření dalších virtuálních počítačů spoléháte na snímek virtuálního počítače, ujistěte se, že snímek není z virtuálního počítače, který je už zaregistrovaný ve službě Azure AD, jako připojení k hybridní službě Azure AD.
 
-Při nasazování netrvalé infrastruktury virtuálních počítačů by správci IT měli věnovat velkou pozornost při správě zastaralých zařízení v Azure AD. Společnost Microsoft doporučuje, aby správci IT implementovali následující pokyny. V takovém případě bude mít váš adresář spoustu zastaralých zařízení připojených k hybridní službě Azure AD, která byla zaregistrována z vaší netrvalé platformy VDI.
+V současných verzích Windows není podporováno hybridní připojení k Azure AD pro netrvalou infrastrukturu virtuálních počítačů. Při nasazování netrvalé infrastruktury virtuálních počítačů (VDI) pro Windows na nižší úrovni by správci IT měli věnovat velkou pozornost správě zastaralých zařízení v Azure AD. Společnost Microsoft doporučuje, aby správci IT implementovali následující pokyny. V takovém případě bude mít váš adresář spoustu zastaralých zařízení připojených k hybridní službě Azure AD, která byla zaregistrována z vaší netrvalé platformy VDI.
 
 - Vytvořte a použijte předponu pro zobrazované jméno počítače, který označuje plochu jako na bázi VDI.
 - Jako součást skriptu pro odhlášení implementujte následující příkaz. Tento příkaz aktivuje nejlepší úsilí ve službě Azure AD za účelem odstranění tohoto zařízení.

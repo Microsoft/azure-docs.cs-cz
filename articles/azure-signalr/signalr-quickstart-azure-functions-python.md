@@ -7,13 +7,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
-ms.custom: tracking-python
-ms.openlocfilehash: d77faf8cf4f859c0ef933d28119bd024ace86ac8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 1a044569c39ae2667c83ac881f1908b1d7b27cab
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832487"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848362"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Rychlý Start: vytvoření chatovací místnosti pomocí Azure Functions a služby signalizace pomocí Pythonu
 
@@ -71,7 +71,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 1. Přejmenujte soubor *local.settings.sample.json* na *local.settings.json*.
 
-1. V souboru **local.settings.json** vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Uložte soubor.
+1. V souboru **local.settings.json** vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Soubor uložte.
 
 1. Funkce Pythonu jsou uspořádány do složek. V každé složce jsou dva soubory: *function.jsv* definuje vazby, které jsou používány ve funkci, a * \_ \_ init \_ \_ . py* je tělo funkce. Tato aplikace funkcí zahrnuje dvě funkce aktivované protokolem HTTP:
 

@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 7a0f04344d2e4213bbbabb63d57bdaf933154388
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 425ed63238c07ffcf53df10eeddfa0ac95679a2c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797882"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904509"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -56,11 +56,11 @@ Projděte si následující zdroje při přípravě nabídky aplikací Azure pro
 
 [Šablony řešení pro vytváření videí a spravované aplikace pro Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603) poskytují ucelený Úvod k typu nabídky aplikace Azure:
 
-* Jaké typy nabídek jsou k dispozici;
-* Jaké technické prostředky jsou požadovány;
-* Jak vytvořit šablonu Azure Resource Manager;
-* Vývoj a testování uživatelského rozhraní aplikace;
-* Jak publikovat nabídku aplikace;
+* Jaké typy nabídek jsou k dispozici
+* Jaké technické prostředky jsou požadovány
+* Jak vytvořit šablonu Azure Resource Manager
+* Vývoj a testování uživatelského rozhraní aplikace
+* Jak publikovat nabídku aplikace
 * Proces revize aplikace
 
 ### <a name="suggested-tools"></a>Navrhované nástroje
@@ -247,15 +247,14 @@ Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všech
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije tuto hodnotu k vytvoření **malého** (48 x 48 pixelů) a **středníku** (90 x 90 pixelů). Volitelně je můžete nahradit různými obrázky.
-
-Všechny tři velikosti loga jsou vyžadovány pro použití na různých místech v seznamu:
+Zadejte soubory PNG pro logo vaší nabídky v následujících třech velikostech v pixelech:
 
 - **Malé** (48 x 48)
 - **Střední** (90 × 90)
-- **Velký** (mezi 216 x 216 a 350 × 350)
+- **Velký** (216 x 216)
+- **Roztažitelné** (255 × 115)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Všechny tři loga jsou povinná a používají se na různých místech v seznamu.
 
 #### <a name="screenshots"></a>Screenshoty
 
@@ -283,7 +282,7 @@ Vaše cílová skupina Preview se identifikuje pomocí identifikátorů GUID př
 Přidejte aspoň jedno ID předplatného Azure, a to buď samostatně (až 10), nebo nahráním souboru CSV (až 100). Přidáním těchto ID předplatných určíte, kdo může zobrazit náhled vaší nabídky předtím, než se publikuje živě. Je-li již vaše nabídka živá, můžete i nadále definovat cílovou skupinu verze Preview pro testování nabídky změn nebo aktualizací vaší nabídky.
 
 > [!NOTE]
-> Cílová skupina verze Preview se liší od soukromé cílové skupiny. Cílová skupina verze Preview může mít přístup k vaší nabídce _před tím, než_ se publikuje živě na tržištích. Můžou zobrazit a ověřit všechny plány, včetně těch, které budou dostupné jenom pro soukromou cílovou skupinu po úplném publikování vaší nabídky na webu Marketplace. Privátní skupina (definovaná na kartě ceny plánu **a dostupnost** ) má výhradní přístup k určitému plánu.
+> Cílová skupina verze Preview se liší od soukromé cílové skupiny. Cílová skupina verze Preview může mít přístup k vaší nabídce *před tím, než* se publikuje živě na tržištích. Můžou zobrazit a ověřit všechny plány, včetně těch, které budou dostupné jenom pro soukromou cílovou skupinu po úplném publikování vaší nabídky na webu Marketplace. Privátní skupina (definovaná na kartě ceny plánu **a dostupnost** ) má výhradní přístup k určitému plánu.
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
@@ -335,7 +334,7 @@ Vyberte typ plánu pro vaši nabídku. Plán **šablony řešení** je spravová
 
 #### <a name="re-use-technical-configuration"></a>Znovu použít technickou konfiguraci
 
-Pokud máte více než jeden plán stejného typu a jsou mezi nimi stejné balíčky, můžete vybrat **Tento plán znovu používat balíčky z jiného plánu**.  Když vyberete tuto možnost, budete moci vybrat jeden z dalších plánů stejného typu, aby tato nabídka mohla znovu použít balíčky z. 
+Pokud máte více než jeden plán stejného typu a jsou mezi nimi stejné balíčky, můžete vybrat **Tento plán znovu používat balíčky z jiného plánu**.  Když vyberete tuto možnost, budete moci vybrat jeden z dalších plánů stejného typu, aby tato nabídka mohla znovu použít balíčky z.
 
 >[!Note]
 >Když znovu použijete balíčky z jiného plánu, z tohoto plánu zmizí karta s celou technickou konfigurací. Pro tento plán se použijí i podrobnosti technické konfigurace z druhého plánu, včetně všech aktualizací, které v budoucnu provedete.<br><br>Toto nastavení nelze po publikování tohoto plánu změnit.
@@ -416,9 +415,9 @@ Pokud jste už pro svůj plán nastavili ceny v USA dolary (USD) a přidáte dal
 
 Zadejte pro tento plán cenu za měsíc.  Tato cena se doplní na všechny infrastruktury Azure nebo náklady na software s průběžnými platbami, které vznikají prostředky nasazené tímto řešením.
 
-Kromě ceny za měsíc můžete také nastavit ceny za spotřebu nestandardních jednotek pomocí [měřených faktur](./azure-app-metered-billing.md).  V případě, že budete chtít, můžete nastavit cenu za měsíc na nulu a účtovat výhradně pomocí měřených faktur. 
+Kromě ceny za měsíc můžete také nastavit ceny za spotřebu nestandardních jednotek pomocí [měřených faktur](./azure-app-metered-billing.md).  V případě, že budete chtít, můžete nastavit cenu za měsíc na nulu a účtovat výhradně pomocí měřených faktur.
 
-Ceny stanovené v USD (USD = USA dolar) se v místní měně všech vybraných trhů převedou na základě aktuálních směnných kurzů při uložení. Před publikováním tyto ceny ověřte, a to tak, že vyexportujete tabulku cen a zkontrolujete cenu na každém trhu. Pokud chcete nastavit vlastní ceny v individuálním trhu, upravte a importujte tabulku s cenami. 
+Ceny stanovené v USD (USD = USA dolar) se v místní měně všech vybraných trhů převedou na základě aktuálních směnných kurzů při uložení. Před publikováním tyto ceny ověřte, a to tak, že vyexportujete tabulku cen a zkontrolujete cenu na každém trhu. Pokud chcete nastavit vlastní ceny v individuálním trhu, upravte a importujte tabulku s cenami.
 
 >[!Note]
 >Aby bylo možné exportovat data o cenách, musíte nejdřív Uložit změny cen.
@@ -442,8 +441,7 @@ Pokud nastavíte plán jako soukromý, zadejte **ID předplatného Azure** a jeh
 >[!Note]
 >Pro předplatná Azure vytvořená prostřednictvím prodejce programu Cloud Solution Provider (CSP) nejsou podporovány soukromé nabídky.
 
-
-### <a name="technical-configuration"></a>Technická konfigurace 
+### <a name="technical-configuration"></a>Technická konfigurace
 
 Tato karta vám umožní nahrát balíček pro nasazení, který zákazníkům umožní nasadit váš plán.
 
@@ -501,15 +499,15 @@ Zadejte koncový bod Webhooku HTTPS pro příjem oznámení o všech operacích 
 
 #### <a name="customize-allowed-customer-actions"></a>Přizpůsobení povolených akcí zákazníků
 
-Tuto možnost vyberte, pokud chcete určit, které akce můžou zákazníci provádět na spravovaných prostředcích, a to spolu s `*/read` akcemi, které jsou ve výchozím nastavení dostupné. 
+Tuto možnost vyberte, pokud chcete určit, které akce můžou zákazníci provádět na spravovaných prostředcích, a to spolu s `*/read` akcemi, které jsou ve výchozím nastavení dostupné.
 
-Seznamte se s dalšími akcemi, které chcete, aby mohl váš zákazník provádět, oddělený středníky.  Další informace najdete v tématu [Principy přiřazení zamítnutí pro prostředky Azure](../../role-based-access-control/deny-assignments.md).  Dostupné akce najdete v tématu [Azure Resource Manager operací poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md). Například pokud chcete, aby uživatelé mohli restartovat virtuální počítače, přidejte `Microsoft.Compute/virtualMachines/restart/action` do povolených akcí.
+Seznamte se s dalšími akcemi, které chcete, aby mohl váš zákazník provádět, oddělený středníky.  Další informace najdete v tématu [Principy přiřazení zamítnutí pro prostředky Azure](../../role-based-access-control/deny-assignments.md). Dostupné akce najdete v tématu [Azure Resource Manager operací poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md). Například pokud chcete, aby uživatelé mohli restartovat virtuální počítače, přidejte `Microsoft.Compute/virtualMachines/restart/action` do povolených akcí.
 
 #### <a name="global-azure--azure-government-cloud"></a>Globální cloud Azure/Azure Government
 
-Určete, kdo má mít k této spravované aplikaci přístup pro správu v každém podporovaném cloudu. Uživatelům, skupinám nebo aplikacím, kterým chcete udělit oprávnění pro spravovanou skupinu prostředků, se identifikuje pomocí identit Azure Active Directory (AAD).
+Určete, kdo má mít k této spravované aplikaci přístup pro správu v každém podporovaném cloudu. Uživatelům, skupinám nebo aplikacím, kterým chcete udělit oprávnění pro spravovanou skupinu prostředků, se identifikuje pomocí identit Azure Active Directory (AD).
 
-**Azure Active Directory ID tenanta** – ID tenanta AAD (označované také jako ID adresáře) obsahující identity uživatelů, skupin nebo aplikací, kterým chcete udělit oprávnění. ID tenanta AAD můžete najít na Azure Portal ve [vlastnostech Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
+**Azure Active Directory ID tenanta** – ID TENANTA Azure AD (označované taky jako ID adresáře) obsahující identity uživatelů, skupin nebo aplikací, kterým chcete udělit oprávnění. ID tenanta služby Azure AD najdete na Azure Portal v části [vlastnosti pro Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
 
 **Autorizace** – přidejte Azure Active Directory ID objektu uživatele, skupiny nebo aplikace, kterému chcete udělit oprávnění pro spravovanou skupinu prostředků. Identifikujte uživatele podle ID objektu zabezpečení, které najdete v okně [Azure Active Directory uživatelé na Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers).
 
@@ -579,8 +577,8 @@ Než budete pokračovat, vyberte **Uložit koncept** .
 Po dokončení všech požadovaných částí nabídky vyberte v pravém horním rohu portálu možnost **zkontrolovat a publikovat** .
 
 Zkontrolujte stav dokončení pro jednotlivé části nabídky.
-    - *Nespuštěno* – znamená, že se oddíl nedotkl a je potřeba ho dokončit.
-    - *Nedokončeno* – znamená, že oddíl obsahuje chyby, které je potřeba opravit, nebo vyžaduje, aby se poskytly další informace. Vraťte se k oddílům a aktualizujte je.
+    - *Nezahájeno* – znamená, že se oddíl nedotkl a musí se dokončit.
+    - *Nedokončeno* – znamená, že oddíl obsahuje chyby, které je třeba opravit, nebo vyžaduje, aby bylo k dispozici více informací. Vraťte se k oddílům a aktualizujte je.
     - *Complete* – znamená, že část je dokončena, byla zadána všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky v úplném stavu.
 
 Pokud tuto nabídku publikujete poprvé, můžete k certifikačnímu týmu poskytnout pokyny pro testování, abyste měli jistotu, že se vaše aplikace správně testuje, a to spolu s případnými doplňkovými poznámkami, které jsou užitečné pro porozumění vaší aplikaci.

@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: e7ebcf39c203f9956b23ef22754b38f32e9d9352
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 0a383e8e2c38dbd00e0a55f9debb9b4daf40fa9c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323024"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832752"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme s operátory IT Azure
 
@@ -156,7 +156,7 @@ Skupina prostředků Azure je kontejner, který obsahuje související prostřed
 
 Šablona Azure Resource Manager je soubor JavaScript Object Notation (JSON), který definuje jeden nebo více prostředků pro nasazení do skupiny prostředků. Definuje také závislosti mezi nasazenými prostředky. Šablony Správce prostředků jsou podrobněji popsány dále v této příručce.
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Automatizace
 
 Kromě vytváření, správy a odstraňování prostředků pomocí Azure Portal můžete automatizovat tyto aktivity pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure (CLI).
 
@@ -178,7 +178,7 @@ Správci mají přístup k Azure PowerShell a Azure CLI prostřednictvím prost�
 
 ## <a name="azure-subscriptions"></a>Předplatná Azure
 
-Předplatné je logické seskupení služeb Azure, které jsou propojené s účtem Azure. Jeden účet Azure může obsahovat několik předplatných. Fakturace služeb Azure se provádí na základě jednotlivých předplatných. Předplatná Azure mají správce účtu, který má plnou kontrolu nad předplatným, a správce služeb, který má kontrolu nad všemi službami v rámci předplatného. Informace o klasických správcích předplatných najdete v tématu [Přidání nebo změna správců předplatného Azure](../../cost-management-billing/manage/add-change-subscription-administrator.md). Kromě správců může být jednotlivým účtům přiděleno podrobné řízení prostředků Azure pomocí [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md).
+Předplatné je logické seskupení služeb Azure, které jsou propojené s účtem Azure. Jeden účet Azure může obsahovat několik předplatných. Fakturace služeb Azure se provádí na základě jednotlivých předplatných. Předplatná Azure mají správce účtu, který má plnou kontrolu nad předplatným, a správce služeb, který má kontrolu nad všemi službami v rámci předplatného. Informace o klasických správcích předplatných najdete v tématu [Přidání nebo změna správců předplatného Azure](../../cost-management-billing/manage/add-change-subscription-administrator.md). Kromě správců může být jednotlivým účtům přiděleno podrobné řízení prostředků Azure pomocí [řízení přístupu na základě role Azure (RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="select-and-enable-an-azure-subscription"></a>Výběr a povolení předplatného Azure
 
@@ -388,7 +388,7 @@ Vzhledem k tomu, že sdílená složka úložiště je standardní sdílená slo
 
 Další informace najdete v tématu Začínáme [se službou Azure File Storage ve Windows](../../storage/files/storage-how-to-use-files-windows.md) nebo [používání služby Azure File Storage se systémem Linux](../../storage/files/storage-how-to-use-files-linux.md).
 
-#### <a name="table-storage"></a>Table Storage
+#### <a name="table-storage"></a>Úložiště Table
 
 Azure Table Storage je služba, která ukládá strukturovaná data typu NoSQL v cloudu. Table Storage je úložiště klíčů/atributů s návrhem bez schématu. Vzhledem k tomu, že je tabulka úložiště bez schématu, je snadné přizpůsobit data, jak se vyvíjí vaše aplikace. Přístup k datům je rychlý a nákladově efektivní pro všechny typy aplikací. Využívání úložiště Table Storage obvykle znamená výrazně nižší náklady než tradiční SQL pro podobné objemy dat.
 

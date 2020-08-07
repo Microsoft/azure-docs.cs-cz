@@ -3,13 +3,13 @@ title: Vytvoření aplikace Azure Service Fabric Container
 description: Vytvoříte svou první aplikaci typu kontejner pro Windows na platformě Azure Service Fabric. Sestavte image Docker pomocí aplikace Pythonu, nahrajte image do registru kontejneru a potom Sestavte a nasaďte kontejner do Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.custom: tracking-python
-ms.openlocfilehash: c0baad5d2596de04b629c4cf9eb86c51b37b8cdc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-python
+ms.openlocfilehash: 6303e37eaa8fa7ad45677d551b89337d20b1b604
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247400"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844435"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 
@@ -25,7 +25,7 @@ Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vývojový počítač s:
   * Visual Studio 2015 nebo Visual Studio 2019.
@@ -127,7 +127,7 @@ REPOSITORY                    TAG                 IMAGE ID            CREATED   
 helloworldapp                 latest              8ce25f5d6a79        2 minutes ago       10.4 GB
 ```
 
-## <a name="run-the-application-locally"></a>Místní spuštění aplikace
+## <a name="run-the-application-locally"></a>Aplikaci spustíte místně.
 Než image nahrajete do registru kontejneru, ověřte ji místně. 
 
 Spusťte aplikaci:
@@ -321,7 +321,7 @@ Pokud chcete zakázat integraci **HEALTHCHECK** pro celý cluster Service Fabric
 ## <a name="deploy-the-container-application"></a>Nasazení aplikace typu kontejner
 Uložte všechny provedené změny a sestavte aplikaci. Pokud chcete aplikaci publikovat, klikněte pravým tlačítkem na **MyFirstContainer** v Průzkumníku řešení a vyberte **Publikovat**.
 
-Do pole **Koncový bod připojení** zadejte koncový bod správy pro příslušný cluster. Například `containercluster.westus2.cloudapp.azure.com:19000`. Koncový bod připojení klienta najdete na kartě Přehled pro váš cluster na webu [Azure Portal](https://portal.azure.com).
+Do pole **Koncový bod připojení** zadejte koncový bod správy pro příslušný cluster. Například, `containercluster.westus2.cloudapp.azure.com:19000`. Koncový bod připojení klienta najdete na kartě Přehled pro váš cluster na webu [Azure Portal](https://portal.azure.com).
 
 Klikněte na **Publikovat**.
 

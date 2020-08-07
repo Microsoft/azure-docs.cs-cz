@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f91c472184df88c14a9642837e10ee67a8f82539
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 4ce9e530f536893fe3d9753e43928cf53f9dde53
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987889"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835387"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Rychlý Start: extrakce vytištěného textu (OCR) pomocí Počítačové zpracování obrazu REST API a jazyka C #
 
@@ -43,7 +43,7 @@ Když chcete vytvořit ukázku v sadě Visual Studio, postupujte takto:
     1. V nabídce klikněte na **Nástroje** vyberte **Správce balíčků NuGet** a potom **Spravovat balíčky NuGet pro řešení**.
     1. Klikněte na kartu **Procházet** a do pole **Hledat** zadejte Newtonsoft.Json.
     1. Když se zobrazí, vyberte **Newtonsoft.Json**. Pak klikněte na zaškrtávací políčko vedle názvu vašeho projektu a na **Nainstalovat**.
-1. Spusťte program.
+1. Spustíte program.
 1. Do příkazového řádku zadejte cestu k místnímu obrázku.
 
 ```csharp

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: 1714fac465531a2d3a5829e7080132510ccd1ec4
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 2f10a6915a3edf673316ae9151b6052442678ef9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407434"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832316"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
@@ -24,7 +24,18 @@ Aby bylo možné dokončit všechny kroky v tomto článku, musíte být klasifi
 az role assignment list --assignee <your-Azure-email>
 ```
 
-Pokud jste vlastníkem, `roleDefinitionName` je hodnota ve výstupu *vlastníkem*:
+> [!NOTE]
+> Pokud tento příkaz vrátí chybu s informací, že rozhraní příkazového řádku **nemůže najít uživatele nebo instanční objekt v databázi grafu**:
+>
+> Pro zbývající část tohoto článku použijte *ID objektu* uživatele místo vašeho e-mailu. Tato situace může nastat pro uživatele na osobních [účtech Microsoft (účty spravované služby)](https://account.microsoft.com/account). 
+>
+> Pomocí [stránky Azure Portal Azure Active Directory uživatelé](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) vyberte svůj uživatelský účet a otevřete jeho podrobnosti. Zkopírujte *objectID*uživatele:
+>
+> :::image type="content" source="../articles/digital-twins/media/includes/user-id.png" alt-text="Zobrazení stránky uživatele v Azure Portal zvýrazňování identifikátoru GUID v poli ID objektu" lightbox="../articles/digital-twins/media/includes/user-id.png":::
+>
+> Pak opakujte příkaz seznamu přiřazení role pomocí *ID objektu* uživatele místo vašeho e-mailu.
+
+Pokud jste vlastníkem, je po spuštění příkazu seznamu přiřazení role vlastníkem `roleDefinitionName` hodnota ve výstupu: *Owner*
 
 :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/cloud-shell/owner-role.png" alt-text="Cloud Shell okno zobrazující výstup příkazu AZ role Assignment list":::
 

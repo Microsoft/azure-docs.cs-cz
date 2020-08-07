@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 86c2bc86a4eeea8b04c4f22c20edade2eac2a811
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: ef4b42b56ea3e9e73de6d5bc793b2f1b206f34f3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439040"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829981"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Kurz: vývoj modulu Java IoT Edge pro zařízení se systémem Linux
 
@@ -45,7 +45,7 @@ Následující tabulka vám pomůže pochopit možnosti pro vývoj a nasazován�
 | **Linux AMD64** | ![Použití VS Code pro moduly Java v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Použití VS Code pro moduly Java v systému Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení některého z těchto kurzů byste měli mít následující požadavky:
 
@@ -62,7 +62,7 @@ Pokud chcete vytvořit modul IoT Edge v jazyce Java, nainstalujte do vývojovéh
 * [Maven](https://maven.apache.org/)
 
    >[!TIP]
-   >Proměnné prostředí pro jazyky Java a Maven budou přidány během svých instalačních procesů. Při přidávání těchto proměnných prostředí budete chtít restartovat všechny instance Visual Studio Code terminálu, PowerShellu nebo příkazového řádku, které jste otevřeli. Tím se zajistí, že tyto nástroje přestanou příkazy Java a Maven rozpoznat.
+   >Instalační procesy Java a Maven přidávají do systému proměnné prostředí. Po dokončení instalace restartujte všechny instance otevřeného Visual Studio Code terminálu, PowerShellu nebo příkazového řádku. Tento krok zajistí, že tyto nástroje můžou rozpoznávat příkazy Java a Maven v popředí.
 
 ## <a name="create-a-module-project"></a>Vytvořit projekt modulu
 

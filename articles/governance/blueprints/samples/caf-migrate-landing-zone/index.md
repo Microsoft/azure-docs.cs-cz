@@ -3,12 +3,12 @@ title: Ukázka podrobného plánu Cílová zóna migrace CAF – přehled
 description: Přehled a architektura přechodu na cloud pro Azure (CAF) pro ukázkový podrobný plán Cílová zóna migrace.
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 45479fd6fa3a49d2639e587d3dba2aaaf567d0b1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6deb671070a742448560309b1b1a3572f5aa082d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044817"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852306"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Přehled architektury přechodu na cloud pro Azure od Microsoftu pro ukázkový podrobný plán Cílová zóna migrace
 
@@ -26,7 +26,6 @@ Toto prostředí je tvořené několika službami Azure, které se využívají 
 
 - Instance služby [Azure Key Vault](../../../../key-vault/general/overview.md), která slouží k hostování tajných kódů používaných pro certifikáty, klíče a tajné kódy nasazené v prostředí sdílených služeb.
 - Nasazení služby [Log Analytics](../../../../azure-monitor/overview.md) pro zajištění, že od okamžiku, kdy zahájíte migraci, se všechny akce a služby připojují k centrálnímu umístění.
-- Nasazení služby [Azure Security Center](../../../../security-center/security-center-intro.md) (standardní verze) zajišťující ochranu před hrozbami pro vaše migrované úlohy.
 - Nasazení služby [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md) poskytující izolovanou síť a podsítě pro váš virtuální počítač.
 - Nasazení [projektu Azure Migrate](../../../../migrate/migrate-services-overview.md) pro zjišťování a hodnocení. Přidáváme nástroje pro vyhodnocování serverů, migraci serverů, vyhodnocení databází a migraci databází.  
 

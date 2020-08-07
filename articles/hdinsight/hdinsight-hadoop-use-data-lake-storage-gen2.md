@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 2992324a1080b75a98264958f56ea28e93b54651
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 21b09e6b7a2be6b87288d973b40c566fb6217841
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534579"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849977"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
@@ -36,7 +36,7 @@ Pokud chcete vytvořit cluster HDInsight, který používá Data Lake Storage Ge
 
 Vytvořte spravovanou identitu přiřazenou uživatelem, pokud ji ještě nemáte.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V levém horním rohu klikněte na **vytvořit prostředek**.
 1. Do vyhledávacího pole zadejte **přiřazený uživatel** a klikněte na položku **spravovaná identita přiřazená uživateli**.
 1. Klikněte na **Vytvořit**.
@@ -51,7 +51,7 @@ Další informace o tom, jak spravované identity fungují ve službě Azure HDI
 
 Vytvořte účet úložiště Azure Data Lake Storage Gen2.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V levém horním rohu klikněte na **vytvořit prostředek**.
 1. Do vyhledávacího pole zadejte **Storage** a klikněte na **účet úložiště**.
 1. Klikněte na **Vytvořit**.
@@ -100,12 +100,13 @@ Přiřaďte spravovanou identitu k roli **vlastníka dat objektů BLOB úložiš
 
 Můžete [stáhnout ukázkový soubor šablony](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) a [stáhnout ukázkový soubor parametrů](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). Než použijete šablonu a fragment kódu Azure CLI níže, nahraďte následující zástupné symboly jejich správnými hodnotami:
 
-| Zástupný symbol | Description |
+| Zástupný symbol | Popis |
 |---|---|
 | `<SUBSCRIPTION_ID>` | ID vašeho předplatného Azure |
 | `<RESOURCEGROUPNAME>` | Skupina prostředků, ve které chcete vytvořit nový cluster a účet úložiště. |
 | `<MANAGEDIDENTITYNAME>` | Název spravované identity, kterému budou udělena oprávnění k vašemu Azure Data Lake Storage Gen2 účtu. |
 | `<STORAGEACCOUNTNAME>` | Nový účet Azure Data Lake Storage Gen2, který se vytvoří. |
+| `<FILESYSTEMNAME>`  | Název systému souborů, který by měl tento cluster používat v účtu úložiště. |
 | `<CLUSTERNAME>` | Název clusteru HDInsight. |
 | `<PASSWORD>` | Vaše zvolené heslo pro přihlášení ke clusteru pomocí SSH a řídicího panelu Ambari |
 
@@ -138,7 +139,8 @@ az storage account create --name <STORAGEACCOUNTNAME> \
 
 Potom se přihlaste k portálu. Přidejte do role **Přispěvatel dat objektů BLOB úložiště** v účtu úložiště novou spravovanou identitu přiřazenou uživatelem. Tento krok je popsaný v kroku 3 tématu [použití Azure Portal](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
-Po přiřazení role pro spravovanou identitu přiřazenou uživateli nasaďte šablonu pomocí následujícího fragmentu kódu.
+ > [!IMPORTANT]
+ > Ujistěte se, že váš účet úložiště má přiřazenou identitu role **Přispěvatel dat objektů BLOB úložiště** , jinak se vytvoření clusteru nezdaří.
 
 ```azurecli
 az group deployment create --name HDInsightADLSGen2Deployment \

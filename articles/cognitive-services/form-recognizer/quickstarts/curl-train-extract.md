@@ -9,24 +9,24 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: f89ab93820770eb8b5485bb7911c60fe2438454a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 94873a3ea1349a9dfac199d98fd109b1a97f72f9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026815"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904730"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s kudrlinkou
 
 V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů Azure REST API s kudrlinkou ke výukám a k extrakci formulářů a jejich skóre a k extrakci párů klíč-hodnota a tabulek.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu musíte mít:
 - byl nainstalován [oblý](https://curl.haxx.se/windows/) .
-- Sada alespoň šest forem stejného typu. Pro výuku modelu použijete pět z nich a potom ho otestujete s šestým formulářem. Formuláře mohou mít různé typy souborů, ale musí se jednat o stejný typ dokumentu. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) . Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage. Testovací soubory můžete umístit do samostatné složky.
+- Sada alespoň šest forem stejného typu. Pro výuku modelu použijete pět z nich a potom ho otestujete s šestým formulářem. Formuláře mohou mít různé typy souborů, ale musí se jednat o stejný typ dokumentu. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) . Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage úrovně Standard-Performance. Testovací soubory můžete umístit do samostatné složky.
 
 ## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
 

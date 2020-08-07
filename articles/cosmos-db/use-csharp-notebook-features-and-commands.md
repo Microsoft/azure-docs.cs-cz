@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.custom: tracking-python
-ms.openlocfilehash: d9d48e825adeecd54375ce13c612d4a0c6eaaa18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 6c095083f88c00f706d19d1c652e19da007c6542
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263411"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876423"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Používejte integrované příkazy a funkce poznámkového bloku v Azure Cosmos DB poznámkových blocích C# (Preview).
 

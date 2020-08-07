@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: f197dd5063f8584968277d8d55298c03d9d71ea6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 9388ef4aa320147815bec79c2fa4b90bce3cdac1
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558848"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846135"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: Konfigurace kódu
 
@@ -26,7 +26,7 @@ Teď, když jste vytvořili aplikaci, se dozvíte, jak nakonfigurovat kód pomoc
 
 Následující knihovny Microsoft Authentication Library (MSALs) podporují desktopové aplikace.
 
-  Identity a ověřování Microsoftu | Description
+  Identity a ověřování Microsoftu | Popis
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podporuje vytváření desktopových aplikací na různých platformách, jako jsou Linux, Windows a macOS.
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Podporuje vytváření desktopových aplikací na různých platformách.
