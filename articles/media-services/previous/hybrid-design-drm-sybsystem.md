@@ -99,9 +99,9 @@ Na základě vysvětlení v předchozí části používají následující pět
 |---|---|---|---|---|---|
 |AMS|AMS|AMS|Ano|Ano|Ukázka 1|
 |AMS|AMS|Třetí strana|Ano|Ano|Ukázka 2|
-|AMS|Třetí strana|AMS|Ano|Ne|Ukázka 3|
-|AMS|Třetí strana|Nenachází|Ne|Ne|Ukázka 4|
-|Třetí strana|Třetí strana|AMS|Ano|Ne|    
+|AMS|Třetí strana|AMS|Ano|No|Ukázka 3|
+|AMS|Třetí strana|Nenachází|No|No|Ukázka 4|
+|Třetí strana|Třetí strana|AMS|Ano|No|    
 
 V ukázkách funguje ochrana PlayReady pro PŘERUŠOVANé i hladké streamování. Níže uvedené adresy URL videa jsou vyhlazené adresy URL streamování. Chcete-li získat odpovídající POMLČKy URL, stačí připojit "(Format = MPD-Time-CSF)". K otestování v prohlížeči můžete použít [přehrávač Azure Media test Player](https://aka.ms/amtest) . Umožňuje vám nakonfigurovat, který protokol streamování se má použít, na kterém tech. IE11 a Microsoft Edge na Windows 10 podporují PlayReady prostřednictvím EME. Další informace najdete v [podrobnostech o testovacím nástroji](./offline-playready-streaming-windows-10.md).
 

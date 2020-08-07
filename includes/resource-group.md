@@ -15,4 +15,4 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "75370203"
 ---
-[Skupina prostředků](../articles/azure-resource-manager/management/overview.md#terminology) je logický kontejner, ve kterém se nasazují a spravují prostředky Azure, jako například webové aplikace, databáze a účty úložiště. Později se například můžete rozhodnout odstranit celou skupinu prostředků v jednom jednoduchém kroku.
+[Skupina prostředků](../articles/azure-resource-manager/management/overview.md#terminology) je logický kontejner, ve kterém se nasazují a spravují prostředky Azure, jako jsou webové aplikace, databáze a účty úložiště. Později se například můžete rozhodnout odstranit celou skupinu prostředků v jednom jednoduchém kroku.

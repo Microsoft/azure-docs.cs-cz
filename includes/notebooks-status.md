@@ -12,7 +12,7 @@ ms.lasthandoff: 07/09/2020
 ms.locfileid: "86181487"
 ---
 > [!IMPORTANT]
-> 9. října 2020 bude web Azure Notebooks Public Preview vyřazen a nahrazen integrovanými službami ze sady Visual Studio, Azure a GitHubu.
+> Dne 9. října 2020 se web Azure Notebooks verze Public Preview vyřadí z provozu a nahradí ho integrované služby ze sady Visual Studio, platformy Azure a GitHubu.
 > [Přečtěte si další informace](https://aka.ms/aznb-notebooks-at-msft/) o možnostech a našich dalších poznámkových blocích od Microsoftu.
 >
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.

@@ -103,7 +103,7 @@ Oznámení životního cyklu se aktivují v těchto případech:
 
 Tady jsou pole v těle oznámení o životním cyklu.
 
-| Název | Hodnota |
+| Name | Hodnota |
 | --- | --- |
 | `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id`je jedinečný pro každou událost DISTINCT. |
 | `source` | Název instance služby IoT Hub nebo instance digitálního vlákna Azure, jako je například *myhub.Azure-Devices.NET* nebo *mydigitaltwins.westus2.azuredigitaltwins.NET* |
@@ -189,7 +189,7 @@ Tady je další příklad digitálního vlákna. Tento model je založen na [mod
 
 Tady jsou pole v těle oznámení o změně hrany.
 
-| Název    | Hodnota |
+| Name    | Hodnota |
 | --- | --- |
 | `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id`je jedinečný pro každou událost DISTINCT |
 | `source` | Název instance digitálního vlákna Azure, jako je *mydigitaltwins.westus2.azuredigitaltwins.NET* |
@@ -245,7 +245,7 @@ Při aktualizaci digitálního vlákna se aktivují **oznámení o změně digit
 
 Tady jsou pole v těle oznámení o změně digitálního vlákna.
 
-| Název    | Hodnota |
+| Name    | Hodnota |
 | --- | --- |
 | `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id`je jedinečný pro každou událost DISTINCT |
 | `source` | Název instance služby IoT Hub nebo instance digitálního vlákna Azure, jako je například *myhub.Azure-Devices.NET* nebo *mydigitaltwins.westus2.azuredigitaltwins.NET*

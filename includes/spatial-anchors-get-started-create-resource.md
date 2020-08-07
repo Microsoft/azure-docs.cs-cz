@@ -13,7 +13,7 @@ ms.locfileid: "83638997"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Vytvoření prostředku prostorových kotev
 
-Přejít na <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
+Přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
 V levém navigačním podokně v Azure Portal vyberte **vytvořit prostředek**.
 
