@@ -4,12 +4,12 @@ description: Přečtěte si, jak povolit a nakonfigurovat disky Ultra v clusteru
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 540269c7ecf42a7e022aa2efb048df7b11587d1a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: f74da764f5a0b021199782dbad03e6e95cceb7f2
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926735"
+ms.locfileid: "87986827"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Použití disků Azure Ultra ve službě Azure Kubernetes (Preview)
 
@@ -49,11 +49,7 @@ Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Micr
 az provider register --namespace Microsoft.ContainerService
 ```
 
-> [!IMPORTANT]
-> Funkce služby AKS ve verzi Preview jsou samoobslužné přihlašovací. Verze Preview jsou k dispozici "tak jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou na základě nejlepšího úsilí. V takovém případě tyto funkce nejsou určeny pro použití v produkčním prostředí. Další informace najdete v následujících článcích podpory:
->
-> - [Zásady podpory AKS](support-policies.md)
-> - [Nejčastější dotazy k podpoře Azure](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření rozhraní příkazového řádku aks-preview
 
@@ -95,9 +91,8 @@ Pokud chcete vytvořit clustery bez podpory Ultra disk, můžete to udělat tak,
 
 Můžete povolit disky Ultra na existujících clusterech přidáním nového fondu uzlů do clusteru, který podporuje extrémně disky. Nakonfigurujte nový fond uzlů pro použití šifrování založeného na hostiteli pomocí `--aks-custom-headers` příznaku.
 
-
 ```azurecli
-az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
+az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
 ```
 
 Pokud chcete vytvořit nové fondy uzlů bez podpory pro disky Ultra, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` parametr.

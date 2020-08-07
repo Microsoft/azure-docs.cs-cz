@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: rohink
-ms.openlocfilehash: 97b266398b3ea46d09b04524dad34922f21b1a95
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 540c4d6f2dde64cef9b5795d635ac6259bfc69c3
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76939288"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985627"
 ---
 # <a name="what-is-azure-private-dns"></a>Co je Privátní DNS v Azure?
 
@@ -55,14 +55,14 @@ Azure DNS poskytuje následující možnosti:
 
 * **Zpětné vyhledávání DNS je podporované v rámci oboru virtuální sítě**. Zpětné vyhledávání DNS pro soukromou IP adresu v rámci virtuální sítě přiřazené k privátní zóně vrátí plně kvalifikovaný název domény, který obsahuje název hostitele nebo záznamu a název zóny jako příponu.
 
-## <a name="other-considerations"></a>Další aspekty
+## <a name="other-considerations"></a>Další důležité informace
 
 Azure DNS má následující omezení:
 
 * Pokud je povolená Automatická registrace záznamů DNS virtuálních počítačů, může být konkrétní virtuální síť propojená jenom s jednou privátní zónou. Můžete však propojit více virtuálních sítí s jednou zónou DNS.
 * Reverzní DNS funguje jenom pro privátní IP místo v propojené virtuální síti.
 * Reverzní DNS pro soukromou IP adresu pro propojenou virtuální síť vrátí jako výchozí příponu pro virtuální počítač *internal.cloudapp.NET* . U virtuálních sítí, které jsou propojeny se soukromou zónou s povolenou autoregistrací, vrátí reverzní DNS pro privátní IP adresu dva plně kvalifikované názvy domén (FQDN): jeden s výchozí příponou *internal.cloudapp.NET* a druhý s příponou privátní zóny.
-* Podmíněné předávání není aktuálně podporováno nativně. Aby bylo možné povolit řešení mezi Azure a místními sítěmi. Viz [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
+* Podmíněné předávání není aktuálně podporováno nativně. Pokud chcete povolit řešení mezi Azure a místními sítěmi, přečtěte si téma [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
  
 ## <a name="pricing"></a>Ceny
 

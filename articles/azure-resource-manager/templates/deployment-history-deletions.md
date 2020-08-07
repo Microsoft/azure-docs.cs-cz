@@ -2,24 +2,22 @@
 title: Odstranění historie nasazení
 description: Popisuje, jak Azure Resource Manager automaticky odstranit nasazení z historie nasazení. Nasazení se odstraní, když se historie blíží k překročení limitu 800.
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 8ec3291dc5e35689d4e2c614949e0328057fbfd3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/07/2020
+ms.openlocfilehash: 736a25a3c73f8f4c70c5fb6c686fa2b8bb86666d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248973"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986504"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatické odstraňování z historie nasazení
 
 Pokaždé, když nasadíte šablonu, informace o nasazení se zapisují do historie nasazení. Každá skupina prostředků je v historii nasazení omezená na 800 nasazení.
 
-Azure Resource Manager se brzy začnou automaticky odstraňovat nasazení z historie, protože se blíží limitu. Automatické odstranění je změna oproti dřívějšímu chování. Dřív jste museli ručně odstranit nasazení z historie nasazení, aby nedošlo k chybě. **Tato funkce ještě nebyla do Azure přidána. Oznamujeme vám tuto nadcházející změnu, pokud se chcete odhlásit.**
+Azure Resource Manager automaticky odstraní nasazení z historie, protože se blíží limitu. Automatické odstranění je změna oproti dřívějšímu chování. Dřív jste museli ručně odstranit nasazení z historie nasazení, aby nedošlo k chybě. **Tato změna byla implementována 6. srpna 2020.**
 
 > [!NOTE]
 > Odstranění nasazení z historie neovlivní žádné z nasazených prostředků.
->
-> Pokud máte [CanNotDelete zámek](../management/lock-resources.md) skupiny prostředků, nasazení pro tuto skupinu prostředků nejde odstranit. Abyste mohli využít automatické odstraňování v historii nasazení, musíte odebrat zámek.
 
 ## <a name="when-deployments-are-deleted"></a>Po odstranění nasazení
 
@@ -35,6 +33,24 @@ Nasazení se odstraní z historie při dosažení 775 nebo více nasazení. Azur
 Kromě nasazení se také aktivují odstranění při spuštění [operace citlivosti](template-deploy-what-if.md) nebo ověření nasazení.
 
 Když zadáte stejnému nasazení stejný název jako v historii, resetujete jeho místo v historii. Nasazení se přesune na nejnovější místo v historii. Také obnovíte místo nasazení v případě, že se vrátíte [k nasazení](rollback-on-error.md) po chybě.
+
+## <a name="remove-locks-that-block-deletions"></a>Odebrat zámky, které blokují odstranění
+
+Pokud máte [CanNotDelete zámek](../management/lock-resources.md) skupiny prostředků, nasazení pro tuto skupinu prostředků nejde odstranit. Abyste mohli využít automatické odstraňování v historii nasazení, musíte odebrat zámek.
+
+Pokud chcete pomocí PowerShellu odstranit zámek, spusťte následující příkazy:
+
+```azurepowershell-interactive
+$lockId = (Get-AzResourceLock -ResourceGroupName lockedRG).LockId
+Remove-AzResourceLock -LockId $lockId
+```
+
+Pokud chcete pomocí Azure CLI odstranit zámek, spusťte následující příkazy:
+
+```azurecli-interactive
+lockid=$(az lock show --resource-group lockedRG --name deleteLock --output tsv --query id)
+az lock delete --ids $lockid
+```
 
 ## <a name="opt-out-of-automatic-deletions"></a>Odhlásit automatické odstranění
 

@@ -5,22 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 07/06/2020
 author: jluk
-ms.openlocfilehash: 5677cb3d240381e06c76ed73354981f782bdb0dd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 18947f409ebcef570998671f9f421f8228e9692d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830219"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987354"
 ---
 # <a name="secure-pods-with-azure-policy-preview"></a>Zabezpečení lusků pomocí Azure Policy (Preview)
 
 Pokud chcete zlepšit zabezpečení clusteru AKS, můžete určit, jaké funkce se mají přidělovat, a pokud cokoli běží na zásadách společnosti. Tento přístup je definovaný prostřednictvím předdefinovaných zásad, které poskytuje [doplněk Azure Policy pro AKS][kubernetes-policy-reference]. Díky lepší kontrole nad aspekty zabezpečení specifikace vašeho zařízení, jako jsou například oprávnění ke kořenu, umožňuje přísnější dodržování zabezpečení a přehled o tom, co je ve vašem clusteru nasazené. Pokud parametr pod nesplňuje podmínky zadané v zásadě, Azure Policy může zakázat ovládacímu poli pod, aby mohl spustit nebo označit porušení. V tomto článku se dozvíte, jak pomocí Azure Policy omezit nasazení lusků v AKS.
 
-> [!IMPORTANT]
-> Funkce služby AKS ve verzi Preview jsou samoobslužné přihlašovací. Verze Preview jsou k dispozici "tak jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou na základě nejlepšího úsilí. V takovém případě tyto funkce nejsou určeny pro použití v produkčním prostředí. Další informace najdete v následujících článcích podpory:
->
-> * [Zásady podpory AKS][aks-support-policies]
-> * [Nejčastější dotazy k podpoře Azure][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -283,11 +279,11 @@ Níže je souhrn změn chování mezi zásadami zabezpečení a Azure Policy.
 |Instalace|Funkce zásady zabezpečení Povolit pod |Povolit Azure Policy doplněk
 |Nasadit zásady| Prostředek nasazení pod zásadou zabezpečení| Přiřaďte zásady Azure k oboru skupiny prostředků nebo předplatnému. Pro aplikace prostředků Kubernetes je vyžadován doplněk Azure Policy.
 | Výchozí zásady | Když je v AKS povolené zásady zabezpečení, aplikují se výchozí privilegované a neomezená zásada. | Povolením doplňku Azure Policy nepoužijete žádné výchozí zásady. Zásady musíte explicitně povolit v Azure Policy.
-| Kdo může vytvářet a přiřazovat zásady | Správce clusteru vytvoří prostředek zásad zabezpečení pod. | Uživatelé musí mít ve skupině prostředků clusteru AKS minimální roli oprávnění "vlastník" nebo "Přispěvatel zásad prostředků". -Prostřednictvím rozhraní API můžou uživatelé přiřazovat zásady v oboru prostředků clusteru AKS. Uživatel by měl mít minimálně oprávnění "vlastník" nebo "Přispěvatel zásad prostředků" na prostředku clusteru AKS. – Na portálu Azure Portal je možné přiřazovat zásady na úrovni skupiny pro správu nebo předplatného nebo skupiny prostředků.
+| Kdo může vytvářet a přiřazovat zásady | Správce clusteru vytvoří prostředek zásad zabezpečení pod. | Uživatelé musí mít ve skupině prostředků clusteru AKS minimální roli oprávnění "vlastník" nebo "Přispěvatel zásad prostředků". -Prostřednictvím rozhraní API můžou uživatelé přiřazovat zásady v oboru prostředků clusteru AKS. Uživatel by měl mít minimálně oprávnění "vlastník" nebo "Přispěvatel zásad prostředků" na prostředku clusteru AKS. -V Azure Portal lze zásady přiřadit na úrovni skupiny pro správu nebo předplatného nebo skupiny prostředků.
 | Autorizace zásad| Uživatelé a účty služeb vyžadují explicitní oprávnění k používání zásad zabezpečení pod. | K autorizaci zásad není nutné žádné další přiřazení. Až se zásady přiřadí v Azure, můžou tyto zásady používat všichni uživatelé clusteru.
 | Použitelnost zásad | Uživatel s rolí správce obchází vynucování zásad zabezpečení pod. | Všichni uživatelé (Správci & nepoužívají správce) uvidí stejné zásady. Na základě uživatelů neexistují žádná speciální velká písmena. Aplikaci zásad lze vyloučit na úrovni oboru názvů.
 | Rozsah zásad | Zásady zabezpečení pod oborem názvů nejsou. | Šablony omezení používané Azure Policy nejsou obor názvů.
-| Akce odepřít/audit/mutace | Zásady zabezpečení pod podporují jenom akce Deny. Pro žádosti o vytvoření se dá provést další provedení s výchozími hodnotami. Ověřování lze provést během požadavků na aktualizaci.| Azure Policy podporuje akce zakázat &. Mutace se ještě nepodporují, ale byly plánované.
+| Akce odepřít/audit/mutace | Zásady zabezpečení pod podporují jenom akce Deny. Mutace se dají udělat s výchozími hodnotami pro žádosti o vytvoření. Ověřování lze provést během požadavků na aktualizaci.| Azure Policy podporuje akce zakázat &. Mutace se ještě nepodporují, ale byly plánované.
 | Dodržování předpisů zásad zabezpečení pod | Neexistují žádné informace o dodržování předpisů lusky, které existovaly před povolením zásad zabezpečení. Neodpovídající lusky vytvořené po povolení zásad zabezpečení v případě odepření. | Neodpovídající lusky, které existovaly před použitím zásad Azure, se budou zobrazovat v porušení zásad. Neodpovídající lusky vytvořené po povolení zásad Azure se odepře, pokud jsou zásady nastavené s použitím efektu odepření.
 | Postup zobrazení zásad v clusteru | `kubectl get psp` | `kubectl get constrainttemplate`– Vrátí se všechny zásady.
 | Pod standardem zásady zabezpečení – privilegované | Při povolení této funkce se ve výchozím nastavení vytvoří prostředek zásad zabezpečení s oprávněním pod. | Privilegovaný režim nezahrnuje žádné omezení. Výsledkem je, že nemusíte mít žádné Azure Policy přiřazení.

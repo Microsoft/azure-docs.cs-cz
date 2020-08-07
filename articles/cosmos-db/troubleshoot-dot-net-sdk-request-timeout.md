@@ -3,16 +3,16 @@ title: Řešení potíží s Azure Cosmos DB HTTP 408 nebo vyžádat problémy s
 description: Jak diagnostikovat a opravit výjimku pro časový limit požadavku .NET SDK
 author: j82w
 ms.service: cosmos-db
-ms.date: 07/29/2020
+ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 3d6fed539581b2d1add87ade92e34bcf2e1913e8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a0469feed391025f8dd50a7f8b11b96265b0df29
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417603"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987405"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout"></a>Diagnostika a řešení potíží s Azure Cosmos DB časový limit požadavku .NET SDK
 K chybě HTTP 408 dojde v případě, že sada SDK nemohla dokončit požadavek předtím, než dojde k vypršení časového limitu.
@@ -45,9 +45,12 @@ Klientská aplikace, která používá sadu SDK, by měla škálovat nahoru nebo
 Při spuštění v Azure můžou klienti, kteří používají .NET SDK, dosáhnout vyčerpání portů Azure SNAT (PAT).
 
 #### <a name="solution-1"></a>1. řešení:
-Postupujte podle pokynů v [Průvodci vyčerpáním portů SNAT](troubleshoot-dot-net-sdk.md#snat).
+Pokud pracujete na virtuálních počítačích Azure, postupujte podle pokynů v [Průvodci vyčerpáním portů SNAT](troubleshoot-dot-net-sdk.md#snat).
 
 #### <a name="solution-2"></a>2. řešení:
+Pokud používáte v Azure App Service, postupujte podle pokynů pro [řešení potíží s chybami připojení](../app-service/troubleshoot-intermittent-outbound-connection-errors.md#cause) a [použijte diagnostiku App Service](https://azure.github.io/AppService/2018/03/01/Deep-Dive-into-TCP-Connections-in-App-Service-Diagnostics.html).
+
+#### <a name="solution-3"></a>Řešení 3:
 Pokud používáte proxy server HTTP, ujistěte se, že může podporovat počet připojení nakonfigurovaných v sadě SDK `ConnectionPolicy` .
 Jinak čelíte problémům s připojením.
 

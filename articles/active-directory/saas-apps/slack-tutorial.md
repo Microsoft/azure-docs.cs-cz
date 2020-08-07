@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 07/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ffc9d3f4feb003d537b52cde15356e756aa11c0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd5e3e2a0e6d50340954600c5a452b6d026e5afc
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500102"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987434"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s časovou rezervou
 
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak integrovat časovou rezervu pomocí Azure Active 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -106,7 +106,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše očekává aplikace s časovou rezervou v odpovědi SAML několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků. Také je nutné přidat `email` atribut. Pokud uživatel nemá e-mailovou adresu, namapujte **EmailAddress** na **User. userPrincipalName** a namapujte **e-mail** na **User. userPrincipalName**.
 
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     | -----|---------|
     | EmailAddress | User. userPrincipalName |
     | e-mail | User. userPrincipalName |
@@ -131,7 +131,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -159,15 +159,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Přejděte na **Microsoft Azure AD** a pak přejděte na **Nastavení týmu**.
 
-     ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial-slack-001.png)
+     ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial-slack-team-settings.png)
 
 3. V části **Nastavení týmu** klikněte na kartu **ověřování** a pak klikněte na **změnit nastavení**.
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial-slack-002.png)
+    ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial-slack-authentication.png)
 
 4. V dialogovém okně **nastavení ověřování SAML** proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial-slack-003.png)
+    ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial-slack-save-authentication.png)
 
     a.  Do textového pole **koncového bodu SAML 2,0 (http)** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal.
 
@@ -177,7 +177,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     d. Nakonfigurujte výše uvedená tři nastavení podle potřeby pro váš tým časové rezervy. Další informace o nastavení najdete tady v **příručce pro konfiguraci jednotného přihlašování k Zárezervám** . `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
-    ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial-slack-004.png)
+    ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial-slack-expand.png)
 
     e. Klikněte na **Rozbalit** a zadejte `https://slack.com` do textového pole **vystavitele poskytovatele služby** .
 

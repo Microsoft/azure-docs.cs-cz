@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/27/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 79a12505ccc7cea709a88818513ba95710989954
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 0dc79132ae75be511b53bf272e578ff0ce7a7775
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142363"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986810"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Omezení dat a přenosové rychlosti rozhraní API pro analýzu textu
 <a name="data-limits"></a>
@@ -38,10 +38,7 @@ Maximální počet dokumentů, které můžete poslat v rámci jedné žádosti,
 
 #### <a name="version-3"></a>[Verze 3](#tab/version-3)
 
-> [!NOTE]
-> Pokud vaše žádost rozhraní API V3 překročí tato omezení, ale spadá do omezení v2, vrátí se v odpovědi rozhraní API upozornění. Počínaje 7/15/2020 se místo toho vrátí kód chyby 400. 
-
-V v3 rozhraní API se změnila následující omezení. Překročení níže uvedených omezení vygeneruje upozornění v odpovědi rozhraní API.
+V v3 rozhraní API se změnila následující omezení. Překročení následujících omezení vygeneruje kód chyby HTTP 400.
 
 
 | Příznak | Maximální počet dokumentů na požadavek | 
@@ -64,7 +61,7 @@ V v3 rozhraní API se změnila následující omezení. Překročení níže uve
 
 ---
 
-## <a name="rate-limits"></a>Omezení rychlosti
+## <a name="rate-limits"></a>Omezení přenosové rychlosti
 
 Vaše omezení četnosti se bude lišit od [cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/). Tato omezení jsou stejná pro obě verze rozhraní API.
 

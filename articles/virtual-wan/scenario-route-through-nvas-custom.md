@@ -6,20 +6,82 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3fcad59bcfb75b8de6af14eae7e0bcb4962b17eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 5546fc63b01d1da6b4033e071ac071574ab9699a
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568470"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987190"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Scénář: směrování provozu prostřednictvím síťová virtuální zařízení-Custom (Preview)
 
-Při práci s směrováním virtuálního rozbočovače WAN je k dispozici několik scénářů, které jsou v pořádku. V tomto scénáři síťové virtuální zařízení (síťové virtuální zařízení) je cílem směrovat provoz přes síťové virtuální zařízení pro virtuální síť VNet <-> a použít jiný síťové virtuální zařízení pro přenosy vázané na Internet. Informace o směrování virtuálního rozbočovače najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
+Při práci s směrováním virtuálního rozbočovače WAN je k dispozici několik scénářů, které jsou v pořádku. V tomto scénáři síťové virtuální zařízení (síťové virtuální zařízení) je cílem směrovat provoz prostřednictvím síťové virtuální zařízení pro komunikaci mezi virtuální sítě a větvemi a použít jiný síťové virtuální zařízení pro přenosy vázané na Internet. Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
 
-## <a name="scenario-architecture"></a><a name="architecture"></a>Architektura scénáře
+## <a name="design"></a><a name="design"></a>Návrh
+
+V tomto scénáři použijeme konvenci pojmenování:
+
+* "Síť VNet" pro virtuální sítě, ve které uživatelé nasadili síťové virtuální zařízení (virtuální síť 4 na **obrázku 1**), aby zkontrolovaly provoz, který není v Internetu.
+* "DMZ VNet" pro virtuální sítě, ve kterých si uživatelé nasadili síťové virtuální zařízení, které se mají použít ke kontrole provozu vázaného na Internet (virtuální síť 5 na **obrázku 1**).
+* "Síťové virtuální zařízení paprsky" pro virtuální sítě připojené k virtuální síti síťové virtuální zařízení (virtuální síť 1, virtuální síť 2 a virtuální síť 3 na **obrázku 1**).
+* "Centra" pro virtuální sítě WAN spravovaná Microsoftem.
+
+Následující matice připojení shrnuje toky podporované v tomto scénáři:
+
+**Matice připojení**
+
+| Z          | Do:|*SÍŤOVÉ virtuální zařízení paprsky*|*Virtuální síť služby*|*Virtuální síť DMZ*|*Statické větve*|
+|---|---|---|---|---|---|
+| **SÍŤOVÉ virtuální zařízení paprsky**| &#8594;|      X |            X |   Partnerské vztahy |    Statická    |
+| **Virtuální síť služby**| &#8594;|    X |            X |      X    |      X       |
+| **Virtuální síť DMZ** | &#8594;|       X |            X |      X    |      X       |
+| **Větve** | &#8594;|  Statická |            X |      X    |      X       |
+
+Každá z buněk v matici připojení popisuje, jestli připojení k virtuální síti WAN (strana "od", záhlaví řádků) obsahuje předponu cíle (stranu "do" toku, záhlaví sloupců v kurzívě) pro konkrétní tok přenosů. Podívejme se na podrobnosti na různé řádky:
+
+* SÍŤOVÉ virtuální zařízení paprsky:
+  * Paprsky dostanou k ostatním paprskům přímý přístup k virtuálním rozbočovačům WAN.
+  * Paprsky získají připojení ke větvím přes statickou trasu ukazující na virtuální síť služby. Neměly by se učit konkrétní předpony z větví (jinak by byly konkrétnější a potlačit souhrn).
+  * Paprsky budou odesílat internetový provoz do virtuální sítě DMZ prostřednictvím přímého partnerského vztahu virtuálních sítí.
+* Zřizování
+  * Větve budou dostávat na paprsky prostřednictvím statického směrování směřujícího k virtuální síti služby. Neměly by se učit konkrétní předpony z virtuální sítě, které přepisují souhrnnou statickou trasu.
+* Virtuální síť služby bude podobná virtuální síti služby Shared Services, která musí být dosažitelná z každé virtuální sítě a každé větve.
+* Virtuální síť DMZ ve skutečnosti nemusí mít připojení přes virtuální síť WAN, protože jediný provoz, který bude podporovat, se bude nacházet prostřednictvím přímých partnerských vztahů virtuální sítě. Pro zjednodušení konfigurace ale použijeme stejný model připojení jako u virtuální sítě DMZ.
+
+Naše matrice připojení proto nabízí tři rozdílné vzory připojení, které se přeloží na tři směrovací tabulky. Přidružení k různým virtuální sítě budou následující:
+
+* SÍŤOVÉ virtuální zařízení paprsky:
+  * Přidružená směrovací tabulka: **RT_V2B**
+  * Rozšiřování do směrovacích tabulek: **RT_V2B** a **RT_SHARED**
+* SÍŤOVÉ virtuální zařízení virtuální sítě (interní a Internet):
+  * Přidružená směrovací tabulka: **RT_SHARED**
+  * Rozšiřování do směrovacích tabulek: **RT_SHARED**
+* Zřizování
+  * Přidružená tabulka směrování: **výchozí**
+  * Rozšiřování do směrovacích tabulek: **RT_SHARED** a **výchozí**
+
+Tyto statické trasy potřebujeme, abychom zajistili, že provoz VNet-to-VNet a propojení mezi virtuálními sítěmi prochází síťové virtuální zařízení ve virtuální síti služby (virtuální síť 4):
+
+| Popis | Tabulka směrování | Statická trasa              |
+| ----------- | ----------- | ------------------------- |
+| Větve    | RT_V2B      | 10.2.0.0/16 – > vnet4conn  |
+| SÍŤOVÉ virtuální zařízení paprsky  | Výchozí     | 10.1.0.0/16 – > vnet4conn  |
+
+Virtuální síť WAN teď ví, ke kterému připojení se mají odesílat pakety, ale připojení potřebuje vědět, co dělat při přijímání těchto paketů: v tomto umístění se používají tabulky směrování připojení.
+
+| Popis | Připojení | Statická trasa            |
+| ----------- | ---------- | ----------------------- |
+| VNet2Branch | vnet4conn  | 10.2.0.0/16 – > 10.4.0.5 |
+| Branch2VNet | vnet4conn  | 10.1.0.0/16 – > 10.4.0.5 |
+
+V tomto okamžiku by mělo probíhat vše.
+
+Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
+
+## <a name="architecture"></a><a name="architecture"></a>Architektura
 
 Na **obrázku 1**je jeden rozbočovač, **centrum 1**.
 
@@ -33,11 +95,11 @@ Na **obrázku 1**je jeden rozbočovač, **centrum 1**.
 
 :::image type="content" source="./media/routing-scenarios/nva-custom/figure-1.png" alt-text="Obrázek 1":::
 
-## <a name="scenario-workflow"></a><a name="workflow"></a>Pracovní postup scénáře
+## <a name="workflow"></a><a name="workflow"></a>Pracovní postup
 
 Pokud chcete nastavit směrování přes síťové virtuální zařízení, tady je postup, který je potřeba vzít v úvahu:
 
-1. Aby přenosy dat vázané na Internet procházejí přes síti VNET5, potřebujete virtuální sítě 1, 2 a 3 pro přímé připojení prostřednictvím partnerského vztahu virtuálních sítí k virtuální síti 5. Budete také potřebovat UDR sadu v virtuální sítě pro 0.0.0.0/0 a další segment směrování 10.5.0.5. Virtuální síť WAN v současné době neumožňuje síťové virtuální zařízení dalšího směrování ve virtuálním rozbočovači pro 0.0.0.0/0.
+1. Aby přenosy vázané na Internet byly přes virtuální síť 5, budete k přímému připojení prostřednictvím partnerského vztahu virtuálních sítí k virtuální síti 5 potřebovat virtuální sítě 1, 2 a 3. Budete také potřebovat UDR sadu v virtuální sítě pro 0.0.0.0/0 a další segment směrování 10.5.0.5. Virtuální síť WAN v současné době neumožňuje síťové virtuální zařízení dalšího směrování ve virtuálním rozbočovači pro 0.0.0.0/0.
 
 1. V Azure Portal přejděte do svého virtuálního centra a vytvořte vlastní směrovací tabulku **RT_Shared** , která se bude naučit trasy prostřednictvím šíření ze všech připojení virtuální sítě a větví. Na **obrázku 2**je znázorněno jako prázdná vlastní směrovací tabulka **RT_Shared**.
 
@@ -53,7 +115,7 @@ Pokud chcete nastavit směrování přes síťové virtuální zařízení, tady
 
    * **Přidružení:** Vyberte všechny virtuální sítě 1, 2 a 3. To znamená, že připojení k virtuální síti 1, 2 a 3 se přidruží k této tabulce směrování a budou schopna učit se trasy (statické a dynamické prostřednictvím šíření) v této směrovací tabulce.
 
-   * **Šíření:** Připojení šíří trasy do směrovacích tabulek. Když vyberete virtuální sítě 1, 2 a 3, umožníte šíření tras z virtuální sítě 1, 2 a 3 do této směrovací tabulky. Nemusíte šířit trasy z připojení větví do RT_V2B, protože provoz virtuální sítě VNet prochází přes síťové virtuální zařízení v VNET4.
+   * **Šíření:** Připojení šíří trasy do směrovacích tabulek. Když vyberete virtuální sítě 1, 2 a 3, umožníte šíření tras z virtuální sítě 1, 2 a 3 do této směrovací tabulky. Nemusíte šířit trasy z připojení větví do RT_V2B, protože provoz virtuální sítě VNet přechází přes síťové virtuální zařízení ve virtuální síti 4.
   
 1. Upravte výchozí směrovací tabulku **DefaultRouteTable**.
 
@@ -67,7 +129,7 @@ Pokud chcete nastavit směrování přes síťové virtuální zařízení, tady
 
 **Obrázek 2**
 
-:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Obrázek 2":::
+:::image type="content" source="./media/routing-scenarios/nva-custom/figure-2.png" alt-text="Obrázek 2" lightbox="./media/routing-scenarios/nva-custom/figure-2.png":::
 
 ## <a name="next-steps"></a>Další kroky
 

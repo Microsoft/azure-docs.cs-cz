@@ -2,20 +2,27 @@
 title: Překročila se kvóta nasazení.
 description: Popisuje, jak vyřešit chybu s více než 800 nasazeními v historii skupiny prostředků.
 ms.topic: troubleshooting
-ms.date: 06/25/2020
-ms.openlocfilehash: 1b0c3de6007964b487a13e71cd43bd984cd970f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/07/2020
+ms.openlocfilehash: 8996d7817eea2f8daf44fbc9b4416c884b05940f
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391175"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987048"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Vyřešit chybu, pokud je počet nasazení vyšší než 800
 
 Každá skupina prostředků je v historii nasazení omezená na 800 nasazení. Tento článek popisuje chybu, která se zobrazí, když se nasazení nepovede, protože by překročilo povolené nasazení 800. Chcete-li tuto chybu vyřešit, odstraňte nasazení z historie skupiny prostředků. Odstranění nasazení z historie neovlivní žádné z nasazených prostředků.
 
-> [!NOTE]
-> Azure Resource Manager se brzy začnou automaticky odstraňovat nasazení z historie, protože se blíží limitu. Tato chyba se může zobrazit i v případě, že jste se rozhodli automatické odstranění. Další informace najdete v tématu [Automatické odstraňování z historie nasazení](deployment-history-deletions.md).
+Azure Resource Manager automaticky odstraní nasazení z historie, protože se blíží limitu. Tato chyba se může zobrazit i v jednom z následujících důvodů:
+
+1. Pro skupinu prostředků máte zámek CanNotDelete, který brání odstranění z historie nasazení.
+1. Nejste si zvolili automatické odstranění.
+1. Máte současně spuštěný velký počet nasazení a automatické odstraňování se nezpracovávají rychle, aby se snížil celkový počet.
+
+Informace o odebrání zámku nebo jeho vypnutí do automatického odstranění najdete v tématu [Automatické odstraňování z historie nasazení](deployment-history-deletions.md).
+
+Tento článek popisuje, jak ručně odstranit nasazení z historie.
 
 ## <a name="symptom"></a>Příznak
 

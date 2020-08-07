@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b8a53ae598130086a9009dbec891052e863cdf0f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 64c7db4223fcb703272749b0bf8d5b1583fbb818
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281357"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987320"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -67,9 +67,7 @@ V rámci této metody můžete přejít na, abyste definovali modely pro nemocni
 
 ### <a name="validate-syntax"></a>Ověřit syntaxi
 
-Pro analýzu a ověření DTDL je k dispozici knihovna na straně klienta. Generuje model objektu C# DTDL obsahu, který lze použít v modelem řízených scénářů, jako je například generování prvků uživatelského rozhraní. Tuto knihovnu můžete také použít k tomu, abyste se ujistili, že vaše modely nemají žádné chyby syntaxe, než je nahrajete. 
-
-Další informace o této knihovně a přístup k předdefinovaným vzorům pro validátor DTDL naleznete v tématu [*How to: Analyze and Validate Models*](how-to-use-parser.md).
+[!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
 ## <a name="manage-models-with-apis"></a>Spravujte modely pomocí rozhraní API.
 
@@ -86,7 +84,7 @@ V následujících částech se dozvíte, jak provádět různé operace správy
 Po vytvoření modelů je můžete nahrát do instance digitálních vláken Azure.
 
 > [!TIP]
-> Před odesláním do instance digitálního vlákna Azure doporučujeme vaše modely ověřit offline. Můžete použít [knihovnu analyzátorů DTDL na straně klienta](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) a [ukázku validátoru DTDL](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) popsané v tématu [*Postupy: analýza a ověření modelů*](how-to-use-parser.md) pro kontrolu vašich modelů před jejich odesláním do služby.
+> Před odesláním do instance digitálního vlákna Azure doporučujeme vaše modely ověřit offline. Můžete použít [knihovnu analyzátorů DTDL na straně klienta](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) a [ukázku validátoru DTDL](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) popsané v tématu [*Postupy: analýza a ověření modelů*](how-to-parse-models.md) pro kontrolu vašich modelů před jejich odesláním do služby.
 
 Až budete připraveni k nahrání modelu, můžete použít následující fragment kódu:
 

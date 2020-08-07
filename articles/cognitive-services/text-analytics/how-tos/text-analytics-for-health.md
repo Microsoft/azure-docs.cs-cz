@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: dbd0699924268b38d69bc576a5886e8d31fa1208
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 9b76dac0734985b01a4a73ad4fc7f2a5f35838db
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373466"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986895"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Postupy: použití Analýza textu pro stav (Preview)
 
@@ -90,7 +90,7 @@ Azure [Web App for Containers](https://azure.microsoft.com/services/app-service/
 > [!NOTE]
 > Pomocí Azure Web App se automaticky získá doména ve formě`<appservice_name>.azurewebsites.net`
 
-Spuštěním tohoto skriptu PowerShellu pomocí Azure CLI vytvoříte Web App for Containers pomocí svého předplatného a image kontejneru přes HTTPS. Před odesláním první žádosti počkejte, než se skript dokončí (přibližně 20 minut).
+Spuštěním tohoto skriptu PowerShellu pomocí Azure CLI vytvoříte Web App for Containers pomocí svého předplatného a image kontejneru přes HTTPS. Před odesláním první žádosti počkejte, než se skript dokončí (přibližně 25-30 minut).
 
 ```bash
 $subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
@@ -120,7 +120,8 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 
 K jednoduššímu nasazení můžete použít také službu Azure Container instance (ACI). ACI je prostředek, který umožňuje spouštět kontejnery Docker na vyžádání ve spravovaném prostředí Azure bez serveru. 
 
-Postup nasazení prostředku ACI pomocí Azure Portal najdete v tématu [použití Azure Container Instances](text-analytics-how-to-use-container-instances.md) . Pomocí rozhraní příkazového řádku Azure můžete také použít skript prostředí PowerShell, který vytvoří ACI na vašem předplatném pomocí Image kontejneru.  Před odesláním první žádosti počkejte, než se skript dokončí (přibližně 20 minut).
+Postup nasazení prostředku ACI pomocí Azure Portal najdete v tématu [použití Azure Container Instances](text-analytics-how-to-use-container-instances.md) . Pomocí rozhraní příkazového řádku Azure můžete také použít skript prostředí PowerShell, který vytvoří ACI na vašem předplatném pomocí Image kontejneru.  Před odesláním první žádosti počkejte, než se skript dokončí (přibližně 25-30 minut).  V důsledku omezení maximálního počtu procesorů na prostředek ACI tuto možnost nevybírejte, pokud očekáváte, že budete odesílat více než 5 velkých dokumentů (přibližně 5000 znaků) na jednu žádost.
+Informace o dostupnosti najdete v článku věnovaném [místní podpoře ACI](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability) . 
 
 > [!NOTE] 
 > Azure Container Instances Nezahrnovat podporu protokolu HTTPS pro předdefinované domény. Pokud potřebujete protokol HTTPS, budete ho muset ručně nakonfigurovat, včetně vytvoření certifikátu a registrace domény. Pokyny k tomu, jak to udělat s NGINX, najdete níže.
@@ -143,7 +144,7 @@ $DOCKER_IMAGE_NAME = "containerpreview.azurecr.io/microsoft/cognitive-services-h
 
 az login
 az account set -s $subscription_name
-az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 5 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
+az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 4 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
 
 # Once deployment complete, the resource should be available at: http://<unique_dns_label>.<resource_group_region>.azurecontainer.io:5000
 ```
@@ -404,7 +405,7 @@ Následující JSON je příkladem Analýza textu pro tělo odpovědi rozhraní 
     ...
 ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Přehled analýzy textu](../overview.md)
 * [Kategorie pojmenovaných entit](../named-entity-types.md)

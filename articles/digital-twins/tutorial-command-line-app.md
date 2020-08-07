@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: ce3f775b7a72239fba7eb7c1538ec4f0831f1c74
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d02766d82690d2f546fdcbad76efcda043f54471
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124548"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986267"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Prozkoumejte digitální vlákna Azure pomocí ukázkové klientské aplikace
 
@@ -78,7 +78,7 @@ Před přechodem na. Nezapomeňte soubor uložit.
 > Pokud se chcete pokusit vytvořit vlastní model, můžete vložit kód modelu *Room* do nového souboru, který uložíte s příponou *. JSON* ve složce *AdtSampleApp\SampleClientApp\Models* . Pak se můžete pohybovat s přidáním vlastností a vztahů, které budou představovat cokoli, co byste chtěli. Můžete se také podívat na Další ukázkové modely v této složce, kde najdete nápady.
 
 > [!TIP] 
-> Je k dispozici [Ukázka validátoru](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) jazyka nezávislá DTDL, kterou můžete použít ke kontrole modelu dokumentů, abyste měli jistotu, že je DTDL platný. Je postaven na knihovně analyzátoru DTDL, kterou si můžete přečíst v tématu [*Postupy: analýza a ověření modelů*](how-to-use-parser.md).
+> Je k dispozici [Ukázka validátoru](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) jazyka nezávislá DTDL, kterou můžete použít ke kontrole modelu dokumentů, abyste měli jistotu, že je DTDL platný. Je postaven na knihovně analyzátoru DTDL, kterou si můžete přečíst v tématu [*Postupy: analýza a ověření modelů*](how-to-parse-models.md).
 
 ### <a name="get-started-with-the-command-line-app"></a>Začínáme s aplikací příkazového řádku
 

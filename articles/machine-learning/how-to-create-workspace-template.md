@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 06ab819065f96508bcc4ebd26371c743c89b9220
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5ddd4fc368a4e479d3d720698c7447d2b3cdf3cc
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87487798"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986558"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
@@ -750,6 +750,32 @@ Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících p�
 
     ```text
     /subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault
+    ```
+
+### <a name="virtual-network-not-linked-to-private-dns-zone"></a>Virtuální síť není propojená s privátní zónou DNS.
+
+Při vytváření pracovního prostoru s privátním koncovým bodem vytvoří šablona Privátní DNS zónu s názvem __privatelink.API.AzureML.MS__. __Propojení virtuální sítě__ je automaticky přidáno do této privátní zóny DNS. Odkaz se přidá jenom pro první pracovní prostor a soukromý koncový bod, který vytvoříte ve skupině prostředků. Pokud vytvoříte jinou virtuální síť a pracovní prostor s privátním koncovým bodem ve stejné skupině prostředků, druhá virtuální síť se nemusí přidat do privátní zóny DNS.
+
+Pokud chcete zobrazit odkazy virtuální sítě, které už existují pro privátní zónu DNS, použijte následující příkaz rozhraní příkazového řádku Azure:
+
+```azurecli
+az network private-dns link vnet list --zone-name privatelink.api.azureml.ms --resource-group myresourcegroup
+```
+
+Chcete-li přidat virtuální síť, která obsahuje jiný pracovní prostor a soukromý koncový bod, použijte následující postup:
+
+1. Chcete-li zjistit ID virtuální sítě pro síť, kterou chcete přidat, použijte následující příkaz:
+
+    ```azurecli
+    az network vnet show --name myvnet --resource-group myresourcegroup --query id
+    ```
+    
+    Tento příkaz vrátí hodnotu podobnou hodnotě "/subscriptions/GUID/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet". Uložte tuto hodnotu a použijte ji v dalším kroku.
+
+2. Pokud chcete přidat odkaz virtuální sítě do zóny Privátní DNS privatelink.api.azureml.ms, použijte následující příkaz. Pro `--virtual-network` parametr použijte výstup předchozího příkazu:
+
+    ```azurecli
+    az network private-dns link vnet create --name mylinkname --registration-enabled true --resource-group myresourcegroup --virtual-network myvirtualnetworkid --zone-name privatelink.api.azureml.ms
     ```
 
 ## <a name="next-steps"></a>Další kroky

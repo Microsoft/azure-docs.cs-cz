@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 824146e7e0b1130b8e5f6c087dbf5ccbac2c8224
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 064a62b030a1fd9f3c875fce646ad8553b75d513
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799357"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986623"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Použití Azure RBAC pro autorizaci Kubernetes (Preview)
 
@@ -25,13 +25,9 @@ Tento dokument popisuje nový přístup, který umožňuje jednotnou správu a �
 
 Možnost spravovat RBAC pro prostředky Kubernetes z Azure vám dává možnost spravovat RBAC pro prostředky clusteru, a to buď pomocí Azure, nebo nativních mechanismů Kubernetes. Pokud je povoleno, objekty zabezpečení Azure AD budou ověřovány výhradně pomocí Azure RBAC, zatímco pravidelné Kubernetes uživatele a účty služeb jsou exkluzivně ověřovány Kubernetes RBAC. Další podrobnosti o ověřování, autorizaci a RBAC na AKS najdete [tady](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview).
 
-> [!IMPORTANT]
-> Funkce AKS ve verzi Preview jsou k dispozici na samoobslužné službě, na základě souhlasu. Verze Preview jsou k dispozici "tak jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou na základě nejlepších úsilí. V takovém případě tyto funkce nejsou určeny pro použití v produkčním prostředí. Další informace najdete v následujících článcích podpory:
->
-> - [Zásady podpory AKS](support-policies.md)
-> - [Nejčastější dotazy k podpoře Azure](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-### <a name="prerequisites"></a>Předpoklady 
+### <a name="prerequisites"></a>Požadavky 
 - Zaregistrujte se do verze Preview <https://aka.ms/aad-rbac-sign-up-form> .
 - Ujistěte se, že máte Azure CLI verze 2.9.0 nebo novější.
 - Ujistěte se, že máte `EnableAzureRBACPreview` povolený příznak funkce.

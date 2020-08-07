@@ -5,12 +5,12 @@ services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: ce2871883300e9eb135b51fdb2f5566e451084f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbb003c287a18810c2c14c4f2ea401fa55cca427
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374606"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987286"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Preview – přidání fondu uzlů s přímým vložením do clusteru Azure Kubernetes Service (AKS)
 
@@ -26,17 +26,13 @@ Tento článek předpokládá základní znalost konceptů Kubernetes a Azure Lo
 
 Tato funkce je aktuálně ve verzi Preview.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Než začnete
 
 Když vytvoříte cluster pro použití fondu uzlů s přímým použitím, musí tento cluster také používat Virtual Machine Scale Sets pro fondy uzlů a *standardní* SKU pro vyrovnávání zatížení. Po vytvoření clusteru musíte také přidat další fond uzlů, aby bylo možné použít fond uzlů s přímým použitím. Přidání dalšího fondu uzlů je zahrnuto v pozdějším kroku, ale nejprve je nutné povolit funkci verze Preview.
 
-> [!IMPORTANT]
-> Funkce služby AKS ve verzi Preview jsou samoobslužné a výslovný souhlas. Jsou k dispozici za účelem shromažďování názorů a chyb od naší komunity. Ve verzi Preview nejsou tyto funkce určeny pro použití v produkčním prostředí. Funkce ve verzi Public Preview spadají pod podporu nejlepšího úsilí. Pomoc od týmů technické podpory AKS je k dispozici pouze během pracovní doby tichomořského časového pásma (PST). Další informace najdete v následujících článcích podpory:
->
-> * [Zásady podpory AKS][aks-support-policies]
-> * [Nejčastější dotazy k podpoře Azure][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="register-spotpoolpreview-preview-feature"></a>Funkce Register spotpoolpreview ve verzi Preview
 
@@ -60,7 +56,7 @@ Až budete připraveni, aktualizujte registraci poskytovatele prostředků *Micr
 az provider register --namespace Microsoft.ContainerService
 ```
 
-### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
+### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření rozhraní příkazového řádku aks-preview
 
 Pokud chcete vytvořit cluster AKS, který používá fond uzlů s přímým použitím, potřebujete rozšíření *AKS-Preview* CLI 0.4.32 nebo vyšší verze. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte, jestli nejsou dostupné aktualizace, pomocí příkazu [AZ Extension Update][az-extension-update] :
 
@@ -85,7 +81,7 @@ Při vytváření a správě clusterů AKS s přímým fondem uzlů platí násl
 * Fond uzlů s přímým popisem bude mít *Kubernetes.Azure.com/scalesetpriority:spot*jmenovku, *Kubernetes.Azure.com/scalesetpriority=spot:NoSchedule*a lusky v systému budou mít proti spřažení.
 * Je nutné přidat [odpovídající tolerování][spot-toleration] pro plánování úloh ve fondu uzlů s přímým cílem.
 
-## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>Přidání fondu uzlů s přímým vložením do clusteru AKS
+## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>Přidání fondu spotových uzlů do clusteru AKS
 
 Do existujícího clusteru, který má povolené více fondů uzlů, je nutné přidat fond bodových uzlů. Další podrobnosti o vytváření clusteru AKS s více fondy uzlů jsou k dispozici [zde][use-multiple-node-pools].
 

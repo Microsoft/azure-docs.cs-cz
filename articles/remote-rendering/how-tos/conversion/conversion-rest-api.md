@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 0a0feb6b638cb6e3a74fcd30baea5e8a04375699
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c638b434ceb31b57689b11971f48eb322b94726
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857803"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985610"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>Použití rozhraní REST API pro převod modelů
 
@@ -53,6 +53,8 @@ Vrátí ID průběžného převodu zabaleného v dokumentu JSON. Název pole je 
 
 #### <a name="request-body"></a>Text požadavku
 
+> [!NOTE]
+> Všechno `input.folderPath` , co se načte, se načte a provede převod na Azure. Pokud `input.folderPath` parametr není zadán, bude načten celý obsah kontejneru. Všechny objekty BLOB a složky, které získají načíst, musí mít [platné názvy souborů Windows](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions).
 
 ```json
 {
@@ -79,7 +81,7 @@ Pokud váš účet ARR není propojený s vaším účtem úložiště, umožňu
 |-----------|:-----------|
 | /V1/Accounts/**accountid**/Conversions/createWithSharedAccessSignature | POST |
 
-Vrátí ID průběžného převodu zabaleného v dokumentu JSON. Název pole je "conversionId".
+Vrátí ID průběžného převodu zabaleného v dokumentu JSON. Název pole je `conversionId` .
 
 #### <a name="request-body"></a>Text požadavku
 
@@ -88,6 +90,8 @@ Text žádosti je stejný jako ve výše uvedeném volání metody Create REST, 
 > [!NOTE]
 > Tyto tokeny identifikátoru URI SAS jsou řetězce dotazu, nikoli úplný identifikátor URI. 
 
+> [!NOTE]
+> Všechno `input.folderPath` , co se načte, se načte a provede převod na Azure. Pokud `input.folderPath` parametr není zadán, bude načten celý obsah kontejneru. Všechny objekty BLOB a složky, které získají načíst, musí mít [platné názvy souborů Windows](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions).
 
 ```json
 {

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 30fdc3c2b75d8ae567acfc612514ab080b929c5f
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9816ea7dd9f5aef9dcdd62319f8cc4408eff3fd8
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850261"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987252"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a .NET
 
@@ -149,7 +149,7 @@ Při práci na Azure Functions by instance měly také postupovat podle stávaj�
 
 **Zakažte odpověď obsahu při operacích zápisu.**
 
-Pro úlohy, které mají některá vytvořit datovou část, nastavte možnost žádosti EnableContentResponseOnWrite na hodnotu false (NEPRAVDA). Služba již nebude vracet vytvořený nebo aktualizovaný prostředek k sadě SDK. Normálně má aplikace vytvořen objekt, takže nepotřebuje službu, aby ji vrátil. Hodnoty hlaviček jsou stále přístupné, jako poplatek za požadavek. To může zvýšit výkon, protože sada SDK již nebude muset přidělovat paměť nebo serializovat tělo odpovědi. Tím se také snižuje využití šířky pásma sítě, aby bylo možné lépe zvýšit výkon.  
+Pro úlohy s velkým množstvím vytvoření datových částí nastavte možnost EnableContentResponseOnWrite Request na false (NEPRAVDA). Služba již nebude vracet vytvořený nebo aktualizovaný prostředek k sadě SDK. Normálně má aplikace vytvořen objekt, takže nepotřebuje službu, aby ji vrátil. Hodnoty hlaviček jsou stále přístupné, jako poplatek za požadavek. To může zvýšit výkon, protože sada SDK již nebude muset přidělovat paměť nebo serializovat tělo odpovědi. Tím se také snižuje využití šířky pásma sítě, aby bylo možné lépe zvýšit výkon.  
 
 ```csharp
 ItemRequestOption requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
@@ -199,7 +199,7 @@ readItemResponse.Diagnostics.ToString();
 
 Podívejte [se na téma zvýšení počtu vláken/úloh](#increase-threads) v části sítě v tomto článku.
 
-## <a name="indexing-policy"></a>Zásady indexování
+## <a name="indexing-policy"></a>Zásada indexování
  
 **Vyloučení nepoužívaných cest z indexování za účelem zrychlení zápisu**
 
