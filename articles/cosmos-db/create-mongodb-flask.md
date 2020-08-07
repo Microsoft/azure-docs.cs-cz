@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.custom: tracking-python
-ms.openlocfilehash: 211da48a08db948daac0257ff86f2c0b325efce9
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.custom: devx-track-python
+ms.openlocfilehash: 1ed15182e700f125072c69ba9bcf60caf4da5c88
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559816"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873037"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: Vytvoření aplikace v Pythonu pomocí rozhraní API Azure Cosmos DB pro MongoDB
 
@@ -91,7 +91,7 @@ Všechny následující fragmenty kódu jsou pořízeny ze souboru *App.py* a po
     heading = "ToDo Reminder"
     ```
     
-## <a name="run-the-web-app"></a>Spuštění webové aplikace
+## <a name="run-the-web-app"></a>Spusťte webovou aplikaci
 
 1. Zkontrolujte, jestli je spuštěný emulátor služby Azure Cosmos DB.
 

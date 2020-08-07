@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
-ms.openlocfilehash: 292f7b65528c13d23d4f2b72467538c43c6ad75e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d8c61c90456607d73fc0e8abc24709d901328ecf
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172492"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829522"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>Kurz: odeslání nabízených oznámení na zařízení s Androidem pomocí sady Firebase SDK verze 1.0.0-preview1
 
@@ -71,7 +71,7 @@ Prvním krokem je vytvoření projektu v Android Studio:
 
    2. Vyberte **Registrovat aplikaci**.
 
-4. Vyberte **Stáhnout Google-Services. JSON**, uložte soubor do složky **aplikace**   vašeho projektu a pak vyberte **Další**.
+4. Vyberte **stáhnout google-services.jsna**, uložte soubor do složky **aplikace**   projektu a pak vyberte **Další**.
 
    :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="Stáhnout službu Google":::
 
@@ -79,7 +79,7 @@ Prvním krokem je vytvoření projektu v Android Studio:
 
    :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="Nastavení projektu":::
 
-6. Pokud jste nestáhli soubor **Google-Services. JSON** do složky **aplikace**   Android Studio projektu, můžete to udělat na této stránce.
+6. Pokud jste nestáhli **google-services.js** do složky **aplikace**   projektu Android Studio, můžete to udělat na této stránce.
 
 7. Přepněte na kartu **Cloud Messaging**   .
 
@@ -228,7 +228,7 @@ Vaše centrum oznámení je teď nakonfigurované tak, aby fungovalo s Firebasem
    }
    ```
 
-3. V Android Studio na panelu nabídek vyberte **sestavení**a pak vyberte znovu **sestavit projekt**,   abyste se ujistili, že ve vašem kódu nejsou žádné chyby. Pokud se zobrazí chyba týkající se **ic_launcher**   ikony, odeberte následující příkaz ze souboru souboru AndroidManifest. XML:
+3. V Android Studio na panelu nabídek vyberte **sestavení**a pak vyberte znovu **sestavit projekt**,   abyste se ujistili, že ve vašem kódu nejsou žádné chyby. Pokud se zobrazí chyba s ikonou **ic_launcher**   , odeberte z AndroidManifest.xml souboru následující příkaz:
 
    ```xml
    android:icon="@mipmap/ic_launcher"
@@ -278,7 +278,7 @@ V tomto kurzu jste použili Firebase Cloud Messaging pro vysílání oznámení 
 
 Níže je seznam některých dalších kurzů pro posílání oznámení:
 
-- Azure Mobile Apps: Příklad odesílání oznámení z back-endu Mobile Apps, který je integrovaný do Notification Hubs, najdete v tématu [Přidání nabízených oznámení do vaší aplikace pro iOS](/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
+- Azure Mobile Apps: Příklad odesílání oznámení z back-endu Mobile Apps, který je integrovaný do Notification Hubs, najdete v tématu [Přidání nabízených oznámení do vaší aplikace pro iOS](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
 
 - ASP.NET: [použijte Notification Hubs k odesílání nabízených oznámení uživatelům](notification-hubs-aspnet-backend-ios-apple-apns-notification.md).
 

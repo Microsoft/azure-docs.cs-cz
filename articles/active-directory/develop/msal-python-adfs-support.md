@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 11/23/2019
 ms.author: abpati
 ms.reviewer: nacanuma
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 2e5df49ea681eefeccaf621739de185767c0aa16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: ad874a4b117b7a7ccecea0e1800ca18c6fce8aaa
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558635"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846203"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>Podpora Active Directory Federation Services (AD FS) v MSAL pro Python
 

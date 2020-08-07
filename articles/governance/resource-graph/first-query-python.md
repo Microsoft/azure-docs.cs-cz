@@ -3,13 +3,13 @@ title: 'Rychlý Start: váš první dotaz na Python'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení knihovny grafu prostředků pro Python a spuštění prvního dotazu.
 ms.date: 07/15/2020
 ms.topic: quickstart
-ms.custom: tracking-python
-ms.openlocfilehash: f7ca6ce5fab687e26007949898ad72c75d036782
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-python
+ms.openlocfilehash: a92eda343e8c0c38b9c9ebebb16d5c102d1b3f19
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511913"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873666"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Pythonu
 
@@ -17,7 +17,7 @@ Prvním krokem při použití Azure Resource graphu je ověření, že jsou nain
 
 Na konci tohoto procesu jste přidali knihovny do instalace Pythonu a spustili svůj první dotaz na graf prostředku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 

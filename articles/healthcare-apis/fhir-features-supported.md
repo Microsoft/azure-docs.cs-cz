@@ -2,18 +2,18 @@
 title: Podporované funkce FHIR v Azure – Azure API pro FHIR
 description: Tento článek vysvětluje, které funkce specifikace FHIR jsou implementované v Azure API pro FHIR.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: 7f92395f19d84f904493af458d1334f8013fd263
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: matjazl
+ms.openlocfilehash: 1cb3af32f1ad16218c82f91c3f28d4f4ab47e677
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85808025"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843500"
 ---
 # <a name="features"></a>Funkce
 
@@ -34,20 +34,20 @@ Předchozí verze, které jsou aktuálně podporované, zahrnují:`3.0.2`
 | update                         | Ano       | Ano       | Ano       |                                                     |
 | aktualizace s optimistické uzamykání | Ano       | Ano       | Ano       |                                                     |
 | aktualizovat (podmíněné)           | Ano       | Ano       | Ano       |                                                     |
-| použita                          | No        | No        | No        |                                                     |
-| delete                         | Ano       | Ano       | Ano       |                                                     |
-| Odstranit (podmíněné)           | No        | No        | No        |                                                     |
+| použita                          | Ne        | Ne        | Ne        |                                                     |
+| odstranění                         | Ano       | Ano       | Ano       |                                                     |
+| Odstranit (podmíněné)           | Ne        | Ne        | Ne        |                                                     |
 | vytvoření                         | Ano       | Ano       | Ano       | Podpora pro POST/PUT                               |
 | vytvořit (podmíněné)           | Ano       | Ano       | Ano       |                                                     |
 | search                         | Částečné   | Částečné   | Částečné   | Viz níže                                           |
-| zřetězené hledání                 | No        | Yes       | No        |                                           |
-| zpětné zřetězené hledání         | No        | No        | No        |                                            |
+| zřetězené hledání                 | Ne        | Ano       | Ne        |                                           |
+| zpětné zřetězené hledání         | Ne        | Ne        | Ne        |                                            |
 | možnosti                   | Ano       | Ano       | Ano       |                                                     |
 | dávka                          | Ano       | Ano       | Ano       |                                                     |
-| transakce                    | No        | Yes       | No        |                                                     |
+| transakce                    | Ne        | Ano       | Ne        |                                                     |
 | historie                        | Ano       | Ano       | Ano       |                                                     |
 | přenosu                         | Částečné   | Částečné   | Částečné   | `self`a `next` jsou podporovány                     |
-| prostředníci                 | No        | No        | No        |                                                     |
+| prostředníci                 | Ne        | Ne        | Ne        |                                                     |
 
 ## <a name="search"></a>Search
 
@@ -63,7 +63,7 @@ Všechny typy parametrů vyhledávání jsou podporovány.
 | Složený             | Ano       | Ano       | Ano       |         |
 | Množství              | Ano       | Ano       | Ano       |         |
 | Identifikátor URI                   | Ano       | Ano       | Ano       |         |
-| Speciální               | No        | No        | No        |         |
+| Speciální               | Ne        | Ne        | Ne        |         |
 
 
 | Modifikátory             | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
@@ -72,14 +72,14 @@ Všechny typy parametrů vyhledávání jsou podporovány.
 |`:exact`               | Ano       | Ano       | Ano       |         |
 |`:contains`            | Ano       | Ano       | Ano       |         |
 |`:text`                | Ano       | Ano       | Ano       |         |
-|`:in`klíčové          | No        | No        | No        |         |
-|`:below`klíčové       | No        | No        | No        |         |
-|`:above`klíčové       | No        | No        | No        |         |
-|`:not-in`klíčové      | No        | No        | No        |         |
-|`:[type]`odkaz  | No        | No        | No        |         |
+|`:in`klíčové          | Ne        | Ne        | Ne        |         |
+|`:below`klíčové       | Ne        | Ne        | Ne        |         |
+|`:above`klíčové       | Ne        | Ne        | Ne        |         |
+|`:not-in`klíčové      | Ne        | Ne        | Ne        |         |
+|`:[type]`odkaz  | Ne        | Ne        | Ne        |         |
 |`:below`identifikátor URI         | Ano       | Ano       | Ano       |         |
-|`:not`                 | No        | No        | No        |         |
-|`:above`identifikátor URI         | No        | No        | No        | Problém [#158](https://github.com/Microsoft/fhir-server/issues/158) |
+|`:not`                 | Ne        | Ne        | Ne        |         |
+|`:above`identifikátor URI         | Ne        | Ne        | Ne        | Problém [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | Společný parametr hledání | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
 |-------------------------| ----------| ----------| ----------|---------|
@@ -88,24 +88,24 @@ Všechny typy parametrů vyhledávání jsou podporovány.
 | `_tag`                  | Ano       | Ano       | Ano       |         |
 | `_profile`              | Ano       | Ano       | Ano       |         |
 | `_security`             | Ano       | Ano       | Ano       |         |
-| `_text`                 | No        | No        | No        |         |
-| `_content`              | No        | No        | No        |         |
-| `_list`                 | No        | Ano       | Ano       |         |
-| `_has`                  | No        | No        | No        |         |
+| `_text`                 | Ne        | Ne        | Ne        |         |
+| `_content`              | Ne        | Ne        | Ne        |         |
+| `_list`                 | Ne        | Ano       | Ano       |         |
+| `_has`                  | Ne        | Ne        | Ne        |         |
 | `_type`                 | Ano       | Ano       | Ano       |         |
-| `_query`                | No        | No        | No        |         |
+| `_query`                | Ne        | Ne        | Ne        |         |
 
 | Operace hledání       | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
 |-------------------------|-----------|-----------|-----------|---------|
-| `_filter`               | No        | No        | No        |         |
-| `_sort`                 | No        | No        | No        |         |
-| `_score`                | No        | No        | No        |         |
+| `_filter`               | Ne        | Ne        | Ne        |         |
+| `_sort`                 | Ne        | Ne        | Ne        |         |
+| `_score`                | Ne        | Ne        | Ne        |         |
 | `_count`                | Ano       | Ano       | Ano       |         |
 | `_summary`              | Částečné   | Částečné   | Částečné   | `_summary=count`je podporováno |
-| `_include`              | No        | Yes       | No        |         |
-| `_revinclude`           | No        | No        | No        |         |
-| `_contained`            | No        | No        | No        |         |
-| `_elements`             | No        | No        | No        |         |
+| `_include`              | Ne        | Ano       | Ne        |         |
+| `_revinclude`           | Ne        | Ne        | Ne        |         |
+| `_contained`            | Ne        | Ne        | Ne        |         |
+| `_elements`             | Ne        | Ne        | Ne        |         |
 
 ## <a name="persistence"></a>Uchování
 

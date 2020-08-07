@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 2a07480bf5b3defb4176437d99274e9ecfb4ba13
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: f1d439569f15d7680d54b35e7ec1c52ca7843af7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433023"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828961"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Kurz: Jak používat cloud-init k přizpůsobení virtuálního počítače s Linuxem v Azure při prvním spuštění počítače
 
@@ -41,7 +41,7 @@ Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak n
 
 S našimi partnery spolupracujeme na začlenění nástroje cloud-init, aby fungoval v imagích, které pro Azure poskytují. Následující tabulka popisuje aktuální dostupnost cloudu-init pro image platformy Azure:
 
-| Publisher | Nabídka | Skladová položka | Verze | Cloud-init připraven |
+| Publisher | Nabídka | SKU | Verze | Cloud-init připraven |
 |:--- |:--- |:--- |:--- |:--- |
 |Canonical |UbuntuServer |18,04 – LTS |nejnovější |ano | 
 |Canonical |UbuntuServer |16.04-LTS |nejnovější |ano | 
@@ -57,7 +57,7 @@ Pokud chcete cloud-init vidět v praxi, vytvořte virtuální počítač, který
 
 Na příkazovém řádku bash nebo v Cloud Shell vytvořte soubor s názvem *cloud-init.txt* a vložte následující konfiguraci. Zadejte například příkaz `sensible-editor cloud-init.txt` pro vytvoření souboru a zobrazení seznamu dostupných editorů. Ujistěte se, že se celý soubor cloud-init zkopíroval správně, zejména první řádek:
 
-```bash
+```yaml
 #cloud-config
 package_upgrade: true
 packages:

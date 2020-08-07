@@ -2,24 +2,24 @@
 title: 'Azure Portal: nasazení Open Source serveru FHIR pro Azure – Azure API pro FHIR'
 description: V tomto rychlém startu se dozvíte, jak nasadit server Microsoft Open Source FHIR pomocí Azure Portal.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: 5109c9a7c6432e42c6841b89cc28bde3e92c74aa
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.author: matjazl
+ms.openlocfilehash: 7fa119db0c974c93aff667060d153b21b8de16bb
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "84820184"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843483"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-azure-portal"></a>Rychlý Start: nasazení Open Source serveru FHIR pomocí Azure Portal
 
 V tomto rychlém startu se dozvíte, jak nasadit Open Source Server FHIR v Azure pomocí Azure Portal. V [úložišti Open Source](https://github.com/Microsoft/fhir-server) budeme používat odkazy pro snadné nasazení.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="github-open-source-repository"></a>Úložiště GitHub Open Source
 

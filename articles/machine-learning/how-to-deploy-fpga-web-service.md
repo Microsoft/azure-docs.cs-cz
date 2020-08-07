@@ -10,13 +10,13 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/03/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 9a2a40c97b67de7c76bff19cd0765618aaea42a0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, contperfq4, devx-track-python
+ms.openlocfilehash: 0c78245a64fa9bcb7faef2c07973d1d7b5080e76
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325810"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843092"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Co jsou pole – programovatelné pole brány (FPGA) a jak nasadit
 
@@ -24,7 +24,72 @@ ms.locfileid: "87325810"
 
 Tento článek obsahuje úvod do polí s programovatelné branou (FPGA) a ukazuje, jak nasadit vaše modely pomocí [Azure Machine Learning](overview-what-is-azure-ml.md) do Azure FPGA.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="what-are-fpgas"></a>Co jsou FPGA
+
+Pole FPGA obsahují pole programovatelných bloků logiky a hierarchii propojení, jejichž konfigurace se dá měnit. Propojení umožňují, aby tyto bloky byly po výrobě nakonfigurované různými způsoby. V porovnání s jinými čipy FPGA poskytuje kombinaci programovatelnosti a výkonu. 
+
+![Diagram porovnání Azure Machine Learning FPGA](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
+
+|Procesor| Zkratka |Popis|
+|---|:-------:|------|
+|Integrované okruhy specifické pro aplikaci|ASICs|Vlastní okruhy, například jednotky procesoru Google TensorFlow (TPU), poskytují nejvyšší efektivitu. Nedají se znovu nakonfigurovat, jak se vaše potřeby mění.|
+|Pole – programovatelné pole brány|FPGA|FPGA, jako jsou ty, které jsou k dispozici v Azure, poskytují výkon blízko ASICs. Jsou také flexibilní a znovu konfigurovatelné v čase, k implementaci nové logiky.|
+|Jednotky pro zpracování grafiky|Grafické procesory|Oblíbená volba pro výpočty AI. GPU nabízí možnosti paralelního zpracování, což urychluje vykreslování obrázků než CPU.|
+|Jednotky centrálního zpracování|CPUs|Procesory pro obecné účely, výkon, který není ideální pro zpracování grafiky a videa.|
+
+
+FPGA umožňuje dosáhnout nízké latence pro požadavky na odvození v reálném čase (nebo bodování modelu). Asynchronní požadavky (dávkování) nejsou potřeba. Dávkování může způsobit latenci, protože je potřeba zpracovat víc dat. Implementace jednotek zpracování neuronové nevyžadují dávkování; Proto latence může být v porovnání s procesorem a procesorem GPU mnohokrát nižší.
+
+FPGA můžete znovu nakonfigurovat pro různé typy modelů strojového učení. Tato flexibilita usnadňuje zrychlení aplikací na základě optimální číselné přesnosti a používaného modelu paměti. Vzhledem k tomu, že se FPGA znovu nakonfiguruje, můžete zůstat na aktuálním základě požadavky na rychlé změny algoritmů AI.
+
+### <a name="fpga-support-in-azure"></a>Podpora FPGA v Azure
+
+Microsoft Azure je celosvětová investice do cloudu v FPGA. Microsoft používá FPGA k vyhodnocení DNN, hodnocení vyhledávání Bingu a akceleraci softwarově definovaných sítí (SDN), aby se snížila latence, a přitom uvolňují procesory pro jiné úlohy.
+
+FPGA v Azure vychází ze zařízení s FPGA Intel, kteří odborníci přes data a vývojáři používají k urychlení výpočtů AI v reálném čase. Tato architektura s podporou FPGA nabízí výkon, flexibilitu a škálování a je dostupná v Azure.
+
+Azure FPGA jsou integrované s Azure Machine Learning. Azure může paralelizovat předem vyškolené neuronové sítě (DNN) napříč FPGA pro horizontální navýšení kapacity vaší služby. Hluboké může být předem vyškolená jako hluboká featurizer pro přenosové učení nebo doladitelné s aktualizovanými závažími.
+
+FPGA v Azure podporuje:
+
++ Klasifikace obrázků a scénáře rozpoznávání
++ Nasazení TensorFlow (vyžaduje Tensorflow 1. x)
++ Hardware Intel FPGA
+
+Tyto modely DNN jsou aktuálně k dispozici:
+
+  - ResNet 50
+  - ResNet 152
+  - DenseNet-121
+  - VGG-16
+  - SSD – VGG
+
+  
+FPGA jsou k dispozici v těchto oblastech Azure:
+  - East US
+  - Southeast Asia
+  - West Europe
+  - Západní USA 2
+
+Aby bylo možné optimalizovat latenci a propustnost, váš klient odesílající data do modelu FPGA by měl být v jedné z výše uvedených oblastí (ten, na který jste model nasadili).
+
+**Rodina služby PBS virtuálních počítačů Azure** obsahuje Intel Arria 10 FPGA. Po kontrole přidělení kvót Azure se zobrazí jako standardní rodina vCPU služby PBS. Virtuální počítač PB6 má šest vCPU a jeden FPGA a automaticky ho zřídí Azure ML v rámci nasazení modelu na FPGA. Používá se jenom s Azure ML a nemůže spustit libovolný bitstreams. Například nebudete moci zablikat FPGA pomocí bitstreams pro šifrování, kódování atd.
+
+
+## <a name="deploy-models-on-fpgas"></a>Nasazení modelů na FPGA
+
+Model můžete nasadit jako webovou službu v FPGA s využitím [Azure Machine Learning modely s hardwarovou akcelerací](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py). Použití FPGA poskytuje odvození nízké latence, a to i s jednou velikostí dávky. Odvození modelu nebo Bodové hodnocení je fáze, ve které se nasazený model používá pro předpověď, nejčastěji pro produkční data.
+
+Nasazení modelu do FPGA zahrnuje následující kroky:
+
+1. Definování modelu TensorFlow
+1. Převést model na ONNX
+1. Nasazení modelu do cloudu nebo hraničního zařízení
+1. Využití nasazeného modelu
+
+V této ukázce vytvoříte graf TensorFlow, abyste mohli předzpracovat vstupní image, vytvořit ji featurizer pomocí ResNet 50 na FPGA a pak tyto funkce spustit prostřednictvím klasifikátoru, který je vyškolený na ImageNet sadě dat. Model se pak nasadí do clusteru AKS.
+
+### <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ho nemáte, budete muset vytvořit účet s průběžnými [platbami](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go) (bezplatné účty Azure nejsou vhodné pro FPGA kvótu).
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -34,8 +99,6 @@ Tento článek obsahuje úvod do polí s programovatelné branou (FPGA) a ukazuj
     az vm list-usage --location "eastus" -o table --query "[?localName=='Standard PBS Family vCPUs']"
     ```
 
-    > [!TIP]
-    > Další možná umístění jsou ``southeastasia`` , ``westeurope`` a ``westus2`` .
 
     Příkaz vrátí text podobný následujícímu:
 
@@ -56,76 +119,7 @@ Tento článek obsahuje úvod do polí s programovatelné branou (FPGA) a ukazuj
     ```bash
     pip install --upgrade azureml-accel-models[cpu]
     ```
-
-## <a name="what-are-fpgas"></a>Co jsou FPGA
-
-Pole FPGA obsahují pole programovatelných bloků logiky a hierarchii propojení, jejichž konfigurace se dá měnit. Propojení umožňují, aby tyto bloky byly po výrobě nakonfigurované různými způsoby. V porovnání s jinými čipy FPGA poskytuje kombinaci programovatelnosti a výkonu. 
-
-Následující diagram a tabulka ukazují, jak FPGA porovnává s ostatními procesory.
-
-![Diagram porovnání Azure Machine Learning FPGA](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
-
-|Procesor| Zkratka |Popis|
-|---|:-------:|------|
-|Integrované okruhy specifické pro aplikaci|ASICs|Vlastní okruhy, například jednotky procesoru Google TensorFlow (TPU), poskytují nejvyšší efektivitu. Nedají se znovu nakonfigurovat, jak se vaše potřeby mění.|
-|Pole – programovatelné pole brány|FPGA|FPGA, jako jsou ty, které jsou k dispozici v Azure, poskytují výkon blízko ASICs. Jsou také flexibilní a znovu konfigurovatelné v čase, k implementaci nové logiky.|
-|Jednotky pro zpracování grafiky|Grafické procesory|Oblíbená volba pro výpočty AI. GPU nabízí možnosti paralelního zpracování, což urychluje vykreslování obrázků než CPU.|
-|Jednotky centrálního zpracování|CPUs|Procesory pro obecné účely, výkon, který není ideální pro zpracování grafiky a videa.|
-
-FPGA v Azure vychází ze zařízení s FPGA Intel, kteří odborníci přes data a vývojáři používají k urychlení výpočtů AI v reálném čase. Tato architektura s podporou FPGA nabízí výkon, flexibilitu a škálování a je dostupná v Azure.
-
-FPGA umožňuje dosáhnout nízké latence pro požadavky na odvození v reálném čase (nebo bodování modelu). Asynchronní požadavky (dávkování) nejsou potřeba. Dávkování může způsobit latenci, protože je potřeba zpracovat víc dat. Implementace jednotek zpracování neuronové nevyžadují dávkování; Proto latence může být v porovnání s procesorem a procesorem GPU mnohokrát nižší.
-
-### <a name="reconfigurable-power"></a>Nastavitelná energie
-
-FPGA můžete znovu nakonfigurovat pro různé typy modelů strojového učení. Tato flexibilita usnadňuje zrychlení aplikací na základě optimální číselné přesnosti a používaného modelu paměti. Vzhledem k tomu, že se FPGA znovu nakonfiguruje, můžete zůstat na aktuálním základě požadavky na rychlé změny algoritmů AI.
-
-### <a name="fpga-support-in-azure"></a>Podpora FPGA v Azure
-
-Microsoft Azure je celosvětová investice do cloudu v FPGA. Microsoft používá FPGA k vyhodnocení DNN, hodnocení vyhledávání Bingu a akceleraci softwarově definovaných sítí (SDN), aby se snížila latence, a přitom uvolňují procesory pro jiné úlohy.
-
-Azure FPGA jsou integrované s Azure Machine Learning. Azure může paralelizovat předem vyškolené neuronové sítě (DNN) napříč FPGA pro horizontální navýšení kapacity vaší služby. Hluboké může být předem vyškolená jako hluboká featurizer pro přenosové učení nebo doladitelné s aktualizovanými závažími.
-
-FPGA v Azure podporuje:
-
-+ Klasifikace obrázků a scénáře rozpoznávání
-+ Nasazení TensorFlow (vyžaduje Tensorflow 1. x)
-+ Hardware Intel FPGA
-
-Tyto modely DNN jsou aktuálně k dispozici:
-
-  - ResNet 50
-  - ResNet 152
-  - DenseNet-121
-  - VGG-16
-  - SSD – VGG
-
-FPGA jsou k dispozici v těchto oblastech Azure:
-
-  - East US
-  - Southeast Asia
-  - West Europe
-  - Západní USA 2
-
-> [!IMPORTANT]
-> Aby bylo možné optimalizovat latenci a propustnost, váš klient odesílající data do modelu FPGA by měl být v jedné z výše uvedených oblastí (ten, na který jste model nasadili).
-
-**Rodina služby PBS virtuálních počítačů Azure** obsahuje Intel Arria 10 FPGA. Po kontrole přidělení kvót Azure se zobrazí jako standardní rodina vCPU služby PBS. Virtuální počítač PB6 má šest vCPU a jeden FPGA a automaticky ho zřídí Azure ML v rámci nasazení modelu na FPGA. Používá se jenom s Azure ML a nemůže spustit libovolný bitstreams. Například nebudete moci zablikat FPGA pomocí bitstreams pro šifrování, kódování atd.
-
-## <a name="deploy-models-on-fpgas"></a>Nasazení modelů na FPGA
-
-Model můžete nasadit jako webovou službu v FPGA s využitím [Azure Machine Learning modely s hardwarovou akcelerací](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py). Použití FPGA poskytuje odvození nízké latence, a to i s jednou velikostí dávky. Odvození modelu nebo Bodové hodnocení je fáze, ve které se nasazený model používá pro předpověď, nejčastěji pro produkční data.
-
-Nasazení modelu do FPGA zahrnuje následující kroky:
-
-* Definování modelu TensorFlow
-* Převést model na ONNX
-* Nasazení modelu do cloudu nebo hraničního zařízení
-* Využití nasazeného modelu
-
-V této ukázce vytvoříte graf TensorFlow, abyste mohli předzpracovat vstupní image, vytvořit ji featurizer pomocí ResNet 50 na FPGA a pak tyto funkce spustit prostřednictvím klasifikátoru, který je vyškolený na ImageNet sadě dat. Model se pak nasadí do clusteru AKS.
-
-## <a name="1-define-the-tensorflow-model"></a>1. definování modelu TensorFlow
+### <a name="1-define-the-tensorflow-model"></a>1. definování modelu TensorFlow
 
 K vytvoření definice služby použijte [sadu SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . Definice služby je soubor popisující kanál grafů (vstup, featurizer a klasifikátor) založený na TensorFlow. Příkaz pro nasazení automaticky komprimuje definice a grafy do souboru ZIP a nahraje soubor ZIP do úložiště objektů BLOB v Azure. DNN je už nasazené pro běh na FPGA.
 
@@ -226,7 +220,7 @@ K vytvoření definice služby použijte [sadu SDK Azure Machine Learning pro Py
      output_tensors = ['ssd_300_vgg/block4_box/Reshape_1:0', 'ssd_300_vgg/block7_box/Reshape_1:0', 'ssd_300_vgg/block8_box/Reshape_1:0', 'ssd_300_vgg/block9_box/Reshape_1:0', 'ssd_300_vgg/block10_box/Reshape_1:0', 'ssd_300_vgg/block11_box/Reshape_1:0', 'ssd_300_vgg/block4_box/Reshape:0', 'ssd_300_vgg/block7_box/Reshape:0', 'ssd_300_vgg/block8_box/Reshape:0', 'ssd_300_vgg/block9_box/Reshape:0', 'ssd_300_vgg/block10_box/Reshape:0', 'ssd_300_vgg/block11_box/Reshape:0']
      ```
 
-## <a name="2-convert-the-model"></a>2. Převeďte model
+### <a name="2-convert-the-model"></a>2. Převeďte model
 
 Před nasazením modelu do FPGA je nutné ho převést na formát ONNX.
 
@@ -271,7 +265,7 @@ Před nasazením modelu do FPGA je nutné ho převést na formát ONNX.
          converted_model.id, converted_model.created_time, '\n')
    ```
 
-## <a name="3-containerize-and-deploy-the-model"></a>3. kontejnerizace a nasazení modelu
+### <a name="3-containerize-and-deploy-the-model"></a>3. kontejnerizace a nasazení modelu
 
 Vytvořte image Docker z převedeného modelu a všech závislostí.  Tuto image Docker je pak možné nasadit a vytvořit její instanci.  Mezi podporované cíle nasazení patří AKS do cloudu nebo hraničního zařízení, například [Azure Data box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview).  Můžete také přidat značky a popisy pro zaregistrovanou bitovou kopii Docker.
 
@@ -298,7 +292,7 @@ Vytvořte image Docker z převedeného modelu a všech závislostí.  Tuto image
            i.name, i.version, i.creation_state, i.image_location, i.image_build_log_uri))
    ```
 
-### <a name="deploy-to-aks-cluster"></a>Nasazení do clusteru AKS
+#### <a name="deploy-to-aks-cluster"></a>Nasazení do clusteru AKS
 
 1. K nasazení modelu jako vysoce škálovatelné produkční webové služby použijte službu Azure Kubernetes Service (AKS). Můžete vytvořit nový pomocí Azure Machine Learning SDK, CLI nebo [Azure Machine Learning studia](https://ml.azure.com).
 
@@ -345,12 +339,12 @@ Vytvořte image Docker z převedeného modelu a všech závislostí.  Tuto image
     aks_service.wait_for_deployment(show_output=True)
     ```
 
-### <a name="deploy-to-a-local-edge-server"></a>Nasazení na místní hraniční Server
+#### <a name="deploy-to-a-local-edge-server"></a>Nasazení na místní hraniční Server
 
 Všechna [Azure Data box Edge zařízení](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
 ) obsahují FPGA pro spuštění modelu.  V FPGA může být současně spuštěn pouze jeden model.  Pokud chcete spustit jiný model, stačí nasadit nový kontejner. Pokyny a ukázkový kód najdete v [této ukázce Azure](https://github.com/Azure-Samples/aml-hardware-accelerated-models).
 
-## <a name="4-consume-the-deployed-model"></a>4. využívání nasazeného modelu
+### <a name="4-consume-the-deployed-model"></a>4. využívání nasazeného modelu
 
 Image Docker podporuje gRPC a TensorFlow, které obsluhuje "předpověď" rozhraní API.  K získání předpovědi z modelu použijte ukázkový klient pro volání do image Docker.  Vzorový klientský kód je k dispozici:
 - [Python](https://github.com/Azure/aml-real-time-ai/blob/master/pythonlib/amlrealtimeai/client.py)
@@ -407,15 +401,12 @@ registered_model.delete()
 converted_model.delete()
 ```
 
-## <a name="secure-fpga-web-services"></a>Zabezpečené webové služby FPGA
-
-Chcete-li zabezpečit webové služby FPGA, přečtěte si dokument [zabezpečené webové služby](how-to-secure-web-service.md) .
-
 ## <a name="next-steps"></a>Další kroky
 
 Podívejte se na tyto poznámkové bloky, videa a blogy:
 
 + Několik [ukázkových poznámkových bloků](https://aka.ms/aml-accel-models-notebooks)
++ Chcete-li zabezpečit webové služby FPGA, přečtěte si dokument [zabezpečené webové služby](how-to-secure-web-service.md) .
 + [Hardware s škálovatelným škálováním: ML na škále nad Azure + FPGA: Build 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 + [V rámci konfigurovatelného cloudu založeného na Microsoft FPGA (video)](https://channel9.msdn.com/Events/Build/2017/B8063)
 + [Projekt Brainwave pro AI v reálném čase: Domovská stránka projektu](https://www.microsoft.com/research/project/project-brainwave/)

@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 921015d6aa7acd840a4a231a899217daafe3525b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 567bd0a34c1989403f29ea5a52fad258c2ffe825
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558550"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846152"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikace démona, která volá webovou rozhraní API – konfigurace kódu
 
@@ -26,7 +26,7 @@ Naučte se konfigurovat kód pro aplikaci démona, která volá webová rozhran�
 
 Tyto knihovny Microsoftu podporují aplikace démona:
 
-  Knihovna MSAL | Description
+  Knihovna MSAL | Popis
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Platformy .NET Framework a .NET Core jsou podporovány pro vytváření aplikací démona. (UWP, Xamarin. iOS a Xamarin. Android se nepodporují, protože tyto platformy slouží k sestavování veřejných klientských aplikací.)
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Podpora pro aplikace démona v Pythonu
@@ -239,7 +239,7 @@ ConfidentialClientApplication cca =
                 .build();
 ```
 
-nebo
+– nebo –
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */

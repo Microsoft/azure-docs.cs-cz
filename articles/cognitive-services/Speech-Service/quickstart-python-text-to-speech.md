@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 04/13/2020
 ms.author: trbye
-ms.custom: tracking-python
-ms.openlocfilehash: 525417bd83a1d30479fd3effbce690ed04d9af73
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: devx-track-python
+ms.openlocfilehash: 2c5469aba87fe06afc7308d6bd1e52cd4d87f22a
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607988"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873479"
 ---
 # <a name="convert-text-to-speech-using-python"></a>Převod textu na řeč pomocí Pythonu
 

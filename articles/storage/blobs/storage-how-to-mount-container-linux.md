@@ -1,6 +1,6 @@
 ---
 title: Postup připojení úložiště objektů BLOB v Azure jako systému souborů na platformě Linux | Microsoft Docs
-description: Připojení kontejneru úložiště objektů BLOB v Azure s pojistkou v systému Linux
+description: Naučte se připojit kontejner úložiště objektů BLOB v Azure pomocí blobfuse, ovladače virtuálního systému souborů na platformě Linux.
 author: rishabpoh
 ms.service: storage
 ms.subservice: blobs
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 3505cdaa009520f581e2ccf9f8bc60cbfb65586c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dc7c16b83816d2b408cef7ade06767bfe2a4582
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465469"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826544"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Postup připojení úložiště objektů BLOB jako systému souborů pomocí blobfuse
 

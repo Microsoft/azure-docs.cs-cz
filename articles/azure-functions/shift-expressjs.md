@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: cshoe
-ms.openlocfilehash: 3e38fae84f63f4867befbc3695242dc62dc8dbe8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 266df5371ff5f47526fa9d6567c62e31d51ebb05
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502643"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810220"
 ---
 # <a name="shifting-from-expressjs-to-azure-functions"></a>Přesunutí z Express.js do Azure Functions
 
@@ -27,7 +27,7 @@ Při migraci kódu na architekturu bez serveru ovlivňuje refaktoring Express.js
 - **Konfigurace a konvence**: aplikace Functions používá soubor _function.json_ k definování příkazů http, definování zásad zabezpečení a může nakonfigurovat [vstup a výstup](./functions-triggers-bindings.md)funkce. Ve výchozím nastavení název složky, která obsahuje soubory funkcí, definuje název koncového bodu, ale název můžete změnit prostřednictvím `route` vlastnosti v [function.js](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint) v souboru.
 
 > [!TIP]
-> Přečtěte si další informace v interaktivním kurzu [refaktoring Node.js a Express rozhraní API k rozhraním API bez serveru pomocí Azure Functions](https://docs.microsoft.com/learn/modules/shift-nodejs-express-apis-serverless/).
+> Přečtěte si další informace v interaktivním kurzu [refaktoring Node.js a Express rozhraní API k rozhraním API bez serveru pomocí Azure Functions](/learn/modules/shift-nodejs-express-apis-serverless/).
 
 ## <a name="example"></a>Příklad
 
@@ -138,4 +138,4 @@ Definováním `get` v poli `methods` je funkce k dispozici pro požadavky HTTP `
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o interaktivním kurzu [refaktoring Node.js a expresní rozhraní API k rozhraním API bez serveru pomocí Azure Functions](https://docs.microsoft.com/learn/modules/shift-nodejs-express-apis-serverless/)
+- Další informace o interaktivním kurzu [refaktoring Node.js a expresní rozhraní API k rozhraním API bez serveru pomocí Azure Functions](/learn/modules/shift-nodejs-express-apis-serverless/)

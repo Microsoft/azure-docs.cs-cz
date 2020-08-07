@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 385107f3bb5dd30a118d3a5f7a5f14213f0ad1c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c5015cb6328dba70fed40053bc234966572ae98
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554533"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873717"
 ---
 # <a name="what-are-security-defaults"></a>Co jsou výchozí nastavení zabezpečení?
 
-Správa zabezpečení může být obtížné díky běžným útokům souvisejícím s identitou, jako je například postřik hesla, přehrávání a útoky phishing, se stále blíží a jsou populární. Výchozí hodnoty zabezpečení usnadňují ochranu vaší organizace před těmito útoky pomocí předem nakonfigurovaných nastavení zabezpečení:
+Správa zabezpečení může být obtížné díky běžným útokům souvisejícím s identitou, jako je například postřik hesla, přehrávání a útoky phishing. Výchozí hodnoty zabezpečení usnadňují ochranu vaší organizace před těmito útoky pomocí předem nakonfigurovaných nastavení zabezpečení:
 
 - Vyžaduje se, aby se všichni uživatelé zaregistrovali pro Azure Multi-Factor Authentication.
 - Vyžadování správců k provádění vícefaktorového ověřování.
@@ -125,9 +125,9 @@ Tato bezplatná výchozí nastavení zabezpečení umožňují registraci a pou�
 | Metoda | Výchozí nastavení zabezpečení | Podmíněný přístup |
 | --- | --- | --- |
 | Oznámení prostřednictvím mobilní aplikace | X | X |
-| Ověřovací kód z mobilní aplikace nebo hardwarového tokenu | × * * | × |
-| Textová zpráva na telefon |   | × |
-| Zavolat na telefon |   | × |
+| Ověřovací kód z mobilní aplikace nebo hardwarového tokenu | × * * | X |
+| Textová zpráva na telefon |   | X |
+| Zavolat na telefon |   | X |
 | Hesla aplikací |   | × * * * |
 
 - * * Uživatelé můžou používat ověřovací kódy z aplikace Microsoft Authenticator, ale můžou se registrovat jenom pomocí možnosti oznámení.
@@ -145,9 +145,9 @@ Podmíněný přístup můžete použít ke konfiguraci zásad, které se podoba
 
 Tady jsou podrobné návody, jak pomocí podmíněného přístupu nakonfigurovat ekvivalentní zásady na tyto zásady povolené ve výchozím nastavení zabezpečení:
 
-- [Vyžadovat MFA pro správce](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
+- [Vyžadování MFA pro správce](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [Vyžadování MFA pro správu Azure](../conditional-access/howto-conditional-access-policy-azure-management.md)
-- [Blokovat starší verze ověřování](../conditional-access/howto-conditional-access-policy-block-legacy.md)
+- [Blokování starší verze ověřování](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [Vyžadování MFA pro všechny uživatele](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
 - [Vyžadovat registraci Azure MFA](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – vyžaduje Azure AD Identity Protection část Azure AD Premium P2.
 
@@ -177,4 +177,4 @@ Zakázání výchozích hodnot zabezpečení v adresáři:
 
 ## <a name="next-steps"></a>Další kroky
 
-[Společné zásady podmíněného přístupu](../conditional-access/concept-conditional-access-policy-common.md)
+[Běžné zásady podmíněného přístupu](../conditional-access/concept-conditional-access-policy-common.md)

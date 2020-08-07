@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: ad9eb95c9e3a21cd33a367cc864a4d791888afb9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3b68df1b3fc2f03d7659205fe03fdae09ecc3f7a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124546"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827308"
 ---
 ## <a name="configure-the-sample-project"></a>Konfigurace ukázkového projektu
 
@@ -18,7 +18,7 @@ Dále nastavte ukázkovou klientskou aplikaci, která bude pracovat s vaší ins
 
 Přejděte na stažený soubor na svém počítači a rozbalte ho.
 
-Jednou do složky getzip přejděte do _AdtSampleApp/_. Otevřete _**AdtE2ESample. sln**_ v aplikaci Visual Studio 2019. 
+Jednou do složky getzip přejděte do _AdtSampleApp_. Otevřete _**AdtE2ESample. sln**_ v aplikaci Visual Studio 2019. 
 
 V aplikaci Visual Studio použijte podokno *Průzkumník řešení* k vytvoření kopie _> SampleClientApp **serviceConfig.jsna. Soubor šablony** _ (k zkopírování a vložení můžete použít nabídky ze seznamu pravým tlačítkem myši). Přejmenujte *serviceConfig.jskopie na*. Tato akce bude sloužit jako předem nastavený soubor JSON s nezbytnými konfiguračními proměnnými pro spuštění projektu.
 
@@ -31,6 +31,8 @@ Vyberte *serviceConfig.jsv* souboru a otevřete ji v okně pro úpravy. Změňte
   "instanceUrl": "https://<your-Azure-Digital-Twins-instance-hostName>"
 }
 ```
+
+
 
 Uložte soubor a zavřete ho. 
 

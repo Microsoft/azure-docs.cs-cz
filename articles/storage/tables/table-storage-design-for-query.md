@@ -1,6 +1,6 @@
 ---
 title: Návrh Azure Table Storage pro dotazy | Microsoft Docs
-description: Navrhněte tabulky pro dotazy v úložišti tabulek Azure.
+description: Navrhněte tabulky pro dotazy v úložišti tabulek Azure. Vyberte vhodný klíč oddílu, optimalizujte dotazy a seřaďte data pro Table service.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 41a588ddc0c1be8014a84d8fe181013d8566f68d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d157e7d2880761fb6559723bdc1d6c34baffb09
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75457643"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903200"
 ---
 # <a name="design-for-querying"></a>Návrh pro dotazování
 Table service řešení mohou být náročná na čtení, náročné na zápis nebo kombinace těchto dvou. Tento článek se zaměřuje na postupy, které je potřeba mít na paměti při navrhování Table service, aby bylo možné efektivně podporovat operace čtení. Obecně platí, že návrh, který podporuje operace čtení efektivně, je také účinný pro operace zápisu. Existují však i další okolnosti, které byste měli mít na paměti při navrhování pro podporu operací zápisu popsaných v článku [Návrh pro úpravu dat](table-storage-design-for-modification.md).
@@ -40,8 +40,8 @@ V následujících příkladech se předpokládá, že služba Table Service ukl
 | **PartitionKey** (název oddělení) |Řetězec |
 | **RowKey** (ID zaměstnance) |Řetězec |
 | **FirstName** |Řetězec |
-| **Polím** |Řetězec |
-| **Věk** |Integer |
+| **LastName** |Řetězec |
+| **Stáří** |Integer |
 | **EmailAddress** |Řetězec |
 
 Článek [Přehled služby Azure Table Storage](table-storage-overview.md) popisuje některé klíčové funkce Table Service Azure, které mají přímý vliv na návrh pro dotazy. Výsledkem jsou následující obecné pokyny pro navrhování Table service dotazů. Všimněte si, že syntaxe filtru použitá v níže uvedených příkladech pochází z REST API Table service, další informace najdete v tématu věnovaném [dotazům v entitě](https://docs.microsoft.com/rest/api/storageservices/Query-Entities).  

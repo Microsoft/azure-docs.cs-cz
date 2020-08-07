@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: ef3c2161e5a032983a2cbc9e4ccdf60af6920a7d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 186d4c510b58e06fcb0b823ca0d5770a2684196e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323107"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824983"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Prostředky Application Insights založené na pracovním prostoru (Preview)
 
@@ -19,7 +19,7 @@ Prostředky založené na pracovním prostoru podporují úplnou integraci mezi 
 To také umožňuje běžné Access Control na základě rolí (RBAC) napříč vašimi prostředky a eliminuje nutnost dotazů mezi aplikacemi a pracovními prostory.
 
 > [!NOTE]
-> Ingestování a uchovávání dat pro prostředky Application Insights založené na pracovních prostorech se účtují prostřednictvím pracovního prostoru Log Analytics, kde se data nacházejí. [Přečtěte si další informace]( https://docs.microsoft.com/azure/azure-monitor/app/pricing#workspace-based-application-insights) o fakturaci pro prostředky Application Insights založené na pracovních prostorech.
+> Ingestování a uchovávání dat pro prostředky Application Insights založené na pracovních prostorech se účtují prostřednictvím pracovního prostoru Log Analytics, kde se data nacházejí. [Přečtěte si další informace]( ./pricing.md#workspace-based-application-insights) o fakturaci pro prostředky Application Insights založené na pracovních prostorech.
 
 Pokud chcete vyzkoušet nové prostředí, přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prostředek Application Insights:
 
@@ -204,4 +204,3 @@ Funkce starší verze průběžného exportu není u prostředků založených n
 [diagnostic]: ./diagnostic-search.md
 [metrics]: ../platform/metrics-charts.md
 [start]: ./app-insights-overview.md
-

@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 10c4f0ba4bfc88017304c228ca1afce4ba863118
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 40ff7bfe713f401a23dea0b3660be1b7728a1380
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328201"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828553"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Konfigurace pracovního prostoru Log Analytics pro Azure Monitor pro virtuální počítače
 Azure Monitor pro virtuální počítače shromažďuje data z jednoho nebo více Log Analytics pracovních prostorů v Azure Monitor. Před registrací agentů musíte vytvořit a nakonfigurovat pracovní prostor. Tento článek popisuje požadavky pracovního prostoru a jeho konfiguraci pro Azure Monitor pro virtuální počítače.
@@ -40,7 +40,7 @@ Nový pracovní prostor Log Analytics můžete vytvořit pomocí kterékoli z n�
 
 * [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
 ## <a name="supported-regions"></a>Podporované oblasti
