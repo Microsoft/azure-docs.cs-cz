@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 05/27/2020
+ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 348b353d9f7509836007ced70166f6a98bd419c5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6d7e9f37c794349e9f61b9c822e63a9b48984e91
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512928"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835268"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-go"></a>Rychlý Start: analýza vzdálené Image pomocí Počítačové zpracování obrazu REST API s nástrojem přejít
 
 V tomto rychlém startu analyzujete vzdáleně uloženou bitovou kopii pro extrakci vizuálních funkcí pomocí Počítačové zpracování obrazu REST API. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Přejít](https://golang.org/dl/)
@@ -37,10 +37,10 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
 1. Zkopírujte následující kód do textového editoru.
 1. Volitelně můžete hodnotu `imageUrl` nahradit adresou URL jiného obrázku, který chcete analyzovat.
-1. Uložte kód jako soubor s příponou `.go`. Například `analyze-image.go`.
+1. Uložte kód jako soubor s příponou `.go`. Například, `analyze-image.go`.
 1. Otevřete okno příkazového řádku.
-1. Na příkazovém řádku spusťte příkaz `go build`, aby se ze souboru zkompiloval balíček. Například `go build analyze-image.go`.
-1. Na příkazovém řádku spusťte zkompilovaný balíček. Například `analyze-image`.
+1. Na příkazovém řádku spusťte příkaz `go build`, aby se ze souboru zkompiloval balíček. Například, `go build analyze-image.go`.
+1. Na příkazovém řádku spusťte zkompilovaný balíček. Například, `analyze-image`.
 
 ```go
 package main

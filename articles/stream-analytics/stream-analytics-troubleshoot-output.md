@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: fc35e6a723afab3f230aa91e4b6895aead35e141
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 1fa9a8aa24cf6a8c8c2223836ae80b8b47807c81
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037065"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903183"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Řešení potíží s výstupy Azure Stream Analytics
 
@@ -24,7 +24,7 @@ Tento článek popisuje běžné problémy s Azure Stream Analyticsmi výstupní
 1. Ověřte připojení ke výstupům pomocí tlačítka **Testovat připojení** pro každý výstup.
 1. Podívejte se na [sledování metrik](stream-analytics-monitoring.md) na kartě **monitorování** . Vzhledem k tomu, že jsou hodnoty agregované, jsou metriky zpožděné o několik minut.
 
-   * Pokud je hodnota **vstupních událostí** větší než nula, může úloha číst vstupní data. Pokud hodnota **vstupních událostí** není větší než nula, dojde k problému se vstupem úlohy. Další informace najdete v tématu [řešení potíží se vstupními připojeními](stream-analytics-troubleshoot-input.md) .
+   * Pokud je hodnota **vstupních událostí** větší než nula, může úloha číst vstupní data. Pokud hodnota **vstupních událostí** není větší než nula, dojde k problému se vstupem úlohy. Další informace najdete v tématu [řešení potíží se vstupními připojeními](stream-analytics-troubleshoot-input.md) . Pokud má vaše úloha referenční datový vstup, použijte při prohlížení metriky **vstupních událostí** rozdělení podle logického názvu. Pokud neexistují žádné vstupní události ze samotného referenčního data, pak pravděpodobně znamená, že tento vstupní zdroj není správně nakonfigurovaný pro načtení pravé referenční datové sady.
    * Pokud je hodnota **chyby převodu dat** větší než nula a stoupání, přečtěte si část [Azure Stream Analytics chyby dat](data-errors.md) , kde najdete podrobné informace o chybách při převodu dat.
    * Pokud je hodnota **chyby běhového prostředí** větší než nula, úloha přijme data, ale při zpracování dotazu generuje chyby. Chcete-li najít chyby, klikněte na [protokoly auditu](../azure-resource-manager/management/view-activity-logs.md)a potom vyfiltrujte stav **selhání** .
    * Pokud je hodnota **vstupních událostí** větší než nula a **výstupní události** se rovná nule, jeden z následujících příkazů je pravdivý:
@@ -87,7 +87,7 @@ Při konfiguraci IGNORE_DUP_KEY pro několik typů indexů Pamatujte na následu
 
 Při použití původní úrovně kompatibility (1,0) Azure Stream Analytics změny názvů sloupců na malá písmena. Toto chování bylo opraveno v novějších úrovních kompatibility. Pokud chcete zachovat případ, přejděte na úroveň kompatibility 1,1 nebo novější. Další informace najdete v tématu [úroveň kompatibility pro úlohy Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level).
 
-## <a name="get-help"></a>Získání pomoci
+## <a name="get-help"></a>Podpora
 
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

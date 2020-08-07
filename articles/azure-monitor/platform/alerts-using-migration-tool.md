@@ -6,19 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: ab5c16995a2d2bad6e44f0f9d1187ca3d66be1b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e811e487856ea38f96b669ccb12cabda655a8cd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114252"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852119"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Migrace pravidel vašich klasických výstrah pomocí nástroje k dobrovolné migraci
 
-Jak [už jsme oznámili](monitoring-classic-retirement.md), klasické výstrahy v Azure monitor se v září 2019 (původně z července 2019). Nástroj pro migraci je k dispozici v Azure Portal zákazníkům, kteří používají pravidla pro klasické výstrahy a kteří chtějí aktivovat migraci sami. Tento článek vysvětluje, jak pomocí nástroje pro migraci dobrovolně migrovat pravidla vašich klasických výstrah, než začne automatické migrace v září 2019.
-
-> [!NOTE]
-> Vzhledem k prodlevám při zavádění migračního nástroje pro migraci se datum vyřazení pro migraci klasických výstrah [rozšířila na 31. srpna 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) od původně oznámeného dne 30. června 2019.
+Jak [už jsme oznámili](monitoring-classic-retirement.md), klasické výstrahy v Azure monitor jsou vyřazené, i když jsou pořád v omezeném rozsahu použití pro prostředky, které ještě nepodporují nové výstrahy. Nástroj pro migraci byl v Azure Portal k dispozici pro zákazníky, kteří použili pravidla pro klasických výstrah a chtějí spustit migraci sami. V tomto článku se dozvíte, jak používat nástroj pro migraci, který se taky použije pro zbývající výstrahy, které čekají na další oznámení.
 
 ## <a name="benefits-of-new-alerts"></a>Výhody nových výstrah
 
@@ -37,7 +34,7 @@ Proces migrace převede pravidla klasických výstrah na nová, ekvivalentní pr
 
 - Formát datové části oznámení i rozhraní API k vytváření a správě nových pravidel výstrah se liší od pravidel pro klasických výstrah, protože podporují více funkcí. [Přečtěte si, jak připravit na migraci](alerts-prepare-migration.md).
 
-- Některá z klasických pravidel upozornění nelze pomocí tohoto nástroje migrovat. [Zjistěte, která pravidla se nedají migrovat a co s nimi dělat](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated).
+- Některá z klasických pravidel upozornění nelze pomocí tohoto nástroje migrovat. [Zjistěte, která pravidla se nedají migrovat a co s nimi dělat](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts).
 
     > [!NOTE]
     > Proces migrace nebude mít vliv na hodnocení vašich klasických pravidel upozornění. Budou i nadále spouštět a odesílat výstrahy, dokud nebudou migrovány a nová pravidla upozornění vstoupí v platnost.

@@ -4,16 +4,16 @@ description: V tomto rychlém startu najdete ukázky kódu v Pythonu, které mů
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: mvc, devcenter, tracking-python
+ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 9bb94ee63873dea321af252a4380a7aab10df6ff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8cc081035c971f1864af5512a19c0ee2da3004ab
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071471"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852170"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití Pythonu k připojení a dotazování dat v Azure Database for PostgreSQL-Single server
 
@@ -23,7 +23,7 @@ V tomto rychlém startu pracujete s Azure Database for PostgreSQL s využitím P
 > Pokud chcete vytvořit aplikaci Django s PostgreSQL, pak ji vyřadíte [pomocí kurzu nasazení webové aplikace Django s](../app-service/containers/tutorial-python-postgresql-app.md) využitím PostgreSQL.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 

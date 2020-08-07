@@ -4,13 +4,13 @@ description: Přečtěte si, jak nakonfigurovat předem sestavený kontejner Pyt
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
-ms.custom: mvc, seodec18, tracking-python
-ms.openlocfilehash: 94398c90f820b0e08ea8d4f0a492d96ba8039631
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.custom: mvc, seodec18, devx-track-python
+ms.openlocfilehash: 0a0422dadd1c9b59e63da00b27a22fc7020bff93
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84905612"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849960"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
@@ -181,7 +181,7 @@ Oblíbená webová rozhraní umožňují přístup k `X-Forwarded-*` informacím
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 - **Výchozí aplikaci uvidíte po nasazení kódu vlastní aplikace.** Výchozí aplikace se zobrazí, protože buď nemáte nasazený kód aplikace App Service, nebo App Service se nepovedlo najít kód vaší aplikace a místo toho se spustila výchozí aplikace.
 - Restartujte službu App Service, počkejte 15-20 sekund a znovu zkontrolujte aplikaci.

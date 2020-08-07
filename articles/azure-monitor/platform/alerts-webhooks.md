@@ -6,14 +6,18 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 5561dfee3ede72f9cd28adbd47caf2db4e634360
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47ed723ecfc544673ac8aa6374c27ae5a7cf166b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073592"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852102"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Volání Webhooku s klasickou výstrahou metriky v Azure Monitor
+
+> [!WARNING]
+> Tento článek popisuje, jak používat starší klasické výstrahy metrik. Azure Monitor teď podporuje [novější výstrahy na metriky téměř v reálném čase a nové prostředí výstrah](./alerts-overview.md). Klasické výstrahy jsou [vyřazeny](./monitoring-classic-retirement.md), i když jsou v omezeném rozsahu používány pro prostředky, které ještě nepodporují nové výstrahy.
+>
 
 Webhooky můžete použít ke směrování oznámení o výstrahách Azure do jiných systémů pro následné zpracování nebo vlastní akce. Webhook na výstraze můžete použít ke směrování do služeb, které odesílají zprávy SMS, k protokolování chyb, k oznamování týmu prostřednictvím chatu nebo služby zasílání zpráv nebo pro různé další akce. 
 
@@ -75,7 +79,7 @@ Operace POST obsahuje následující datovou část a schéma JSON pro všechny 
 | časové razítko |Y | |Čas, kdy byla výstraha aktivována. |
 | id |Y | |Každé pravidlo výstrahy má jedinečné ID. |
 | name |Y | |Název výstrahy |
-| Popis |Y | |Popis výstrahy |
+| description |Y | |Popis výstrahy |
 | conditionType |Y |Metrika, událost |Podporují se dva typy výstrah: metrika a událost. Výstrahy metriky jsou založené na podmínce metriky. Výstrahy událostí jsou založené na události v protokolu aktivit. Tuto hodnotu použijte, chcete-li ověřit, zda je výstraha založena na metrikě nebo události. |
 | pomocné |Y | |Konkrétní pole, která se mají kontrolovat v závislosti na hodnotě **conditionType** |
 | metricName |Pro výstrahy metriky | |Název metriky, která definuje, co pravidlo monitoruje. |
@@ -84,7 +88,7 @@ Operace POST obsahuje následující datovou část a schéma JSON pro všechny 
 | mezí |Pro výstrahy metriky | |Prahová hodnota, při které je výstraha aktivována. |
 | windowSize |Pro výstrahy metriky | |Časové období, které se používá k monitorování aktivity výstrahy na základě prahové hodnoty. Hodnota musí být mezi 5 minutami a 1 dnem. Hodnota musí být ve formátu ISO 8601 Duration. |
 | timeAggregation |Pro výstrahy metriky |Průměr, poslední, maximum, minimum, žádné, celkem |Způsob, jakým budou shromážděná data v průběhu času kombinována. Výchozí hodnota je Average. Viz [Povolené hodnoty](/previous-versions/azure/reference/dn802410(v=azure.100)). |
-|  – operátor |Pro výstrahy metriky | |Operátor, který se používá k porovnání aktuálních dat metriky s prahovou hodnotou sady. |
+| operátor |Pro výstrahy metriky | |Operátor, který se používá k porovnání aktuálních dat metriky s prahovou hodnotou sady. |
 | subscriptionId |Y | |ID předplatného Azure. |
 | resourceGroupName |Y | |Název skupiny prostředků pro ovlivněný prostředek. |
 | resourceName |Y | |Název prostředku ovlivněného prostředku. |

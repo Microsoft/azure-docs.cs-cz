@@ -16,14 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8bbdf984311883006fcd6af16f42d7f7972cc169
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8c97710202a448c613ab685932cb335bbaed4953
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323311"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832650"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: nabízená oznámení na zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging (nepoužívané)
+# <a name="tutorial-send-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: odeslání nabízených oznámení na zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging (zastaralé)
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -98,6 +98,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
     implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
     implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
+
 2. Přidejte následující úložiště za část **závislosti**.
 
     ```gradle
@@ -121,6 +122,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
         </intent-filter>
     </service>
     ```
+
 2. Jakmile aplikace dostane z rozhraní API ID instance registrační token GCM, použije ho k [registraci do služby Azure Notification Hubs](notification-hubs-push-notification-registration-management.md). K registraci na pozadí slouží `IntentService` s názvem `RegistrationIntentService`. Tato služba také zodpovídá za [aktualizaci registračního tokenu GCM](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens).
 
     Přidejte následující definice služby do souboru AndroidManifest.xml uvnitř značky `<application>`. Nahraďte zástupný symbol `<your package>` skutečným názvem vašeho balíčku zobrazeného v horní části souboru `AndroidManifest.xml`.
@@ -131,6 +133,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
         android:exported="false">
     </service>
     ```
+
 3. Definujte příjemce oznámení. Přidejte následující definice příjemce do souboru AndroidManifest.xml uvnitř značky `<application>`. Nahraďte zástupný symbol `<your package>` skutečným názvem vašeho balíčku zobrazeného v horní části souboru `AndroidManifest.xml`.
 
     ```xml
@@ -142,9 +145,10 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
         </intent-filter>
     </receiver>
     ```
-4. Pod značku `</application>` přidejte následující oprávnění potřebné pro GCM. Nahraďte `<your package>` názvem balíčku, který je zobrazený nahoře v souboru `AndroidManifest.xml`.
 
-    Další informace o těchto oprávnění naleznete v tématu [Nastavení klientské aplikace GCM pro Android](https://developers.google.com/cloud-messaging/).
+4. Pod značku `<application>` přidejte následující oprávnění potřebné pro GCM. Nahraďte `<your package>` názvem balíčku, který je zobrazený nahoře v souboru `AndroidManifest.xml`.
+
+    Další informace o těchto oprávněních najdete v tématu [nastavení klientské aplikace GCM pro Android](https://developers.google.com/cloud-messaging/).
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -165,7 +169,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
     V následujícím kódu třídy `NotificationSettings` aktualizujte tyto tři zástupné symboly:
 
    * `SenderId`: Číslo projektu, které jste získali dříve v [konzole Google Cloud](https://cloud.google.com/console).
-   * `HubListenConnectionString`: `DefaultListenAccessSignature` Připojovací řetězec pro vaše centrum. Připojovací řetězec můžete zkopírovat tak, že na webu **Azure Portal** ve svém centru kliknete na stránce **Nastavení** na [Zásady přístupu].
+   * `HubListenConnectionString`: Připojovací řetězec **připojovací** pro vaše centrum. Připojovací řetězec můžete zkopírovat tak, že na webu **Azure Portal** ve svém centru kliknete na stránce **Nastavení** na [Zásady přístupu].
    * `HubName`: Použijte název centra oznámení, které se zobrazí na stránce centra v [Azure Portal].
 
      Kód `NotificationSettings`:
@@ -177,6 +181,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
         public static String HubListenConnectionString = "<Your default listen connection string>";
      }
      ```
+
 2. Přidejte další třídu pojmenovanou `MyInstanceIDService`. Tato třída představuje vaši implementaci naslouchací služby ID instance.
 
     Kód této třídy volá `IntentService`, aby na pozadí [aktualizoval token GCM](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens).
@@ -200,7 +205,8 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
         }
     };
     ```
-3. Přidejte další novou třídu do projektu s názvem, `RegistrationIntentService`. Tato třída implementuje rozhraní `IntentService`, které zajistí [aktualizaci tokenu GCM](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) a [registraci v centru oznámení](notification-hubs-push-notification-registration-management.md).
+
+3. Do projektu přidejte další novou třídu s názvem `RegistrationIntentService` . Tato třída implementuje rozhraní `IntentService`, které zajistí [aktualizaci tokenu GCM](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) a [registraci v centru oznámení](notification-hubs-push-notification-registration-management.md).
 
     Pro tuto třídu použijte následující kód.
 
@@ -270,6 +276,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
         }
     }
     ```
+
 4. Na začátek třídy `MainActivity` přidejte následující příkazy `import`.
 
     ```java
@@ -282,6 +289,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
     import android.widget.Toast;
     import android.content.Intent;
     ```
+
 5. Přidejte následující soukromé členy v horní části třídy. Tento kód [zkontroluje dostupnost Služeb Google Play podle doporučení společnosti Google](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk).
 
     ```java
@@ -291,6 +299,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private static final String TAG = "MainActivity";
     ```
+
 6. Ve své třídě `MainActivity` přidejte následující metodu pro dostupnost služeb Google Play.
 
     ```java
@@ -316,6 +325,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
         return true;
     }
     ```
+
 7. Do třídy `MainActivity` přidejte následující kód, který před voláním služby `IntentService` zkontroluje Služby Google Play, získá registrační token GCM a provede registraci v centru oznámení.
 
     ```java
@@ -330,6 +340,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
         }
     }
     ```
+
 8. Do metody `OnCreate` třídy `MainActivity` přidejte následující kód pro spuštění procesu registrace při vytvoření aktivity.
 
     ```java
@@ -343,6 +354,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
         registerWithNotificationHubs();
     }
     ```
+
 9. Přidejte  tyto další metody do `MainActivity` pro ověření stavu aplikace a stavu sestavy ve vaší aplikaci.
 
     ```java
@@ -381,12 +393,15 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
         });
     }
     ```
+
 10. Metoda `ToastNotify` používá ovládání *„Hello World“* `TextView` k trvalému hlášení stavu a oznámení v aplikaci. Do rozložení souboru activity_main.xml přidejte následující ID pro tento ovládací prvek.
 
     ```xml
     android:id="@+id/text_hello"
     ```
+
 11. Přidejte podtřídu příjemce definovanou v souboru AndroidManifest.xml. Přidejte další novou třídu do projektu s názvem `MyHandler`.
+
 12. Nad `MyHandler.java` přidejte následující příkazy pro import:
 
     ```java
@@ -400,7 +415,8 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
     import android.net.Uri;
     import android.media.RingtoneManager;
     ```
-13. Přidejte následující kód pro třídu `MyHandler` a vytvořte tak podtřídu `com.microsoft.windowsazure.notifications.NotificationsHandler`.
+
+13. Přidejte následující kód pro `MyHandler` třídu a vytvořte její podtřídu `com.microsoft.windowsazure.notifications.NotificationsHandler` .
 
     Tento kód přepíše metodu `OnReceive`, takže obslužná rutina ohlašuje přijatá oznámení. Obslužná rutina také odesílá nabízená oznámení správci oznámení Android pomocí metody `sendNotification()`. Metoda `sendNotification()` musí být spouštěna, když není aplikace spuštěna a není přijato oznámení.
 
@@ -447,6 +463,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
         }
     }
     ```
+
 14. V Android Studio na řádku nabídek klikněte na **sestavit znovu**  >  **sestavit projekt** , abyste se ujistili, že ve vašem kódu nejsou žádné chyby.
 
 ## <a name="testing-your-app"></a>Testování vaší aplikace
@@ -508,12 +525,14 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
     android:layout_marginBottom="42dp"
     android:hint="@string/notification_message_hint" />
     ```
+
 2. V zobrazení projektu Android Studio rozbalte možnost **App**  >  **Src**  >  **Main**  >  **res**  >  **Values**. Otevřete soubor `strings.xml` a přidejte řetězcové hodnoty, které jsou odkazovány pomocí nového `Button` a `EditText` ovládacími prvky. Na konec souboru (těsně před `</resources>`) přidejte následující řádky.
 
     ```xml
     <string name="send_button">Send Notification</string>
     <string name="notification_message_hint">Enter notification message text</string>
     ```
+
 3. Do souboru `NotificationSetting.java` přidejte následující nastavení na třídu `NotificationSettings`.
 
     Aktualizujte `HubFullAccess` pomocí připojovacího řetězce **DefaultFullSharedAccessSignature** pro centrum. Připojovací řetězec můžete zkopírovat z webu [Azure Portal] tak, že na stránce **Nastavení** kliknete u svého centra oznámení na **Zásady přístupu**.
@@ -521,6 +540,7 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
     ```java
     public static String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
     ```
+
 4. Na začátek souboru `MainActivity.java` přidejte následující příkazy `import`.
 
     ```java
@@ -537,6 +557,7 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
     import android.view.View;
     import android.widget.EditText;
     ```
+
 5. Do souboru `MainActivity.java` přidejte následující členy v horní části třídy `MainActivity`.
 
     ```java
@@ -544,7 +565,8 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
     private String HubSasKeyName = null;
     private String HubSasKeyValue = null;
     ```
-6. Vytvořte token SaS (Software Access Signature) pro ověření požadavku POST kvůli odeslání zpráv do centra oznámení. Parsujte data klíče připojovacího řetězce a vytvořte token SaS podle pokynů v referenční dokumentaci k rozhraní REST API v části [Základní pojmy](/previous-versions/azure/reference/dn495627(v=azure.100)). Následující kód představuje příklad implementace.
+
+6. Vytvořte token sdíleného přístupového podpisu (SaS), který ověří požadavek POST k odeslání zpráv do centra oznámení. Parsujte data klíče připojovacího řetězce a vytvořte token SaS podle pokynů v referenční dokumentaci k rozhraní REST API v části [Základní pojmy](/previous-versions/azure/reference/dn495627(v=azure.100)). Následující kód představuje příklad implementace.
 
     Do `MainActivity.java` přidejte následující metodu do třídy `MainActivity` k analýze připojovacího řetězce.
 
@@ -575,6 +597,7 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
         }
     }
     ```
+
 7. Do `MainActivity.java` přidejte následující metodu do třídy `MainActivity` k vytvoření ověřovacího tokenu SaS.
 
     ```java
@@ -630,6 +653,7 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
         return token;
     }
     ```
+
 8. Do `MainActivity.java` přidejte následující metodu do třídy `MainActivity` pro zajištění kliknutí na tlačítko **Odeslat oznámení** a odešlete zprávu nabízeného oznámení do centra pomocí předdefinovaného REST API.
 
     ```java
@@ -738,7 +762,7 @@ V tomto kurzu jste poslali oznámení všem zařízením s Androidem registrovan
 [31]: ./media/notification-hubs-android-get-started/notification-hubs-android-studio-add-ui.png
 
 <!-- URLs. -->
-[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md 
+[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

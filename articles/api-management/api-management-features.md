@@ -1,6 +1,6 @@
 ---
 title: Porovnání na základě funkcí na úrovních API Management Azure | Microsoft Docs
-description: Tento článek porovnává API Management vrstev na základě funkcí, které nabízí.
+description: Porovnejte API Management vrstev na základě funkcí, které nabízí. Podívejte se na tabulku, která shrnuje klíčové funkce, které jsou k dispozici v každé cenové úrovni.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: ef16339d9a584eb12c611a25d636a9287265953a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 262d12e1b0ff74570b44b7794f8b55619a9afa97
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284332"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905138"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Porovnání na základě funkcí API Management vrstev Azure
 
@@ -26,7 +26,7 @@ Každá API Management [cenová úroveň](https://aka.ms/apimpricing) nabízí s
 > [!IMPORTANT]
 > Všimněte si prosím, že úroveň pro vývojáře je určena pro případy neprodukčního použití a hodnocení. Nenabízí smlouvu SLA.
 
-| Funkce                                                                                      | Využití | Vývojář | Basic | Standard | Premium |
+| Příznak                                                                                      | Consumption | Vývojář | Basic | Standard | Premium |
 | -------------------------------------------------------------------------------------------- | ----------- | --------- | ----- | -------- | ------- |
 | Integrace Azure AD<sup>1</sup>                                                             | Ne          | Ano       | Ne    | Ano      | Ano     |
 | Podpora Virtual Network (VNet)                                                               | Ne          | Ano       | Ne    | Ne       | Ano     |

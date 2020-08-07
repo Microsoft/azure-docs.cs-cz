@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 04/30/2020
-ms.openlocfilehash: 2d6ebcd720a5cea8d41bf3c05f753f2e9d4775d1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/06/2020
+ms.openlocfilehash: 78c0526ac750977115a88e96bb5f7d5cb4e9803f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085901"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873088"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Použití externích úložišť metadat v Azure HDInsightu
 
@@ -38,10 +38,10 @@ Ve výchozím nastavení HDInsight vytvoří metastore s každým typem clusteru
 
 * Výchozí metastore nejde sdílet s ostatními clustery.
 
-* Výchozí metastore používá základní Azure SQL Database, která má pět jednotek DTU (databázové transakce).
-Tento výchozí metastore se obvykle používá pro relativně jednoduché úlohy. Úlohy, které nevyžadují více clusterů a nepotřebují metadata zachovaná nad rámec životního cyklu clusteru.
+* Výchozí metastore se doporučuje jenom pro jednoduché úlohy. Úlohy, které nevyžadují více clusterů a nepotřebují metadata zachovaná nad rámec životního cyklu clusteru.
 
-* Pro produkční úlohy doporučujeme migrovat na externí metastore. Další podrobnosti najdete v níže uvedené části.
+> [!IMPORTANT]
+> Výchozí metastore poskytuje Azure SQL Database s **limitem DTU úrovně Basic 5 (nelze aktualizovat)**! Vhodné pro účely základního testování. U rozsáhlých nebo produkčních úloh doporučujeme migrovat na externí metastore.
 
 ## <a name="custom-metastore"></a>Vlastní metastore
 
@@ -81,9 +81,8 @@ Cluster můžete kdykoli nasměrovat na dříve vytvořenou Azure SQL Database. 
 
 ## <a name="hive-metastore-guidelines"></a>Pokyny pro metastore Hive
 
-* Pokud je to možné, využijte vlastní metastore, abyste mohli oddělit výpočetní prostředky (váš běžící cluster) a metadata (uložené v metastore).
-
-* Začněte s vrstvou S2, která poskytuje 50 DTU a 250 GB úložiště. Pokud se zobrazí kritický bod, můžete databázi škálovat nahoru.
+> [!NOTE]
+> Pokud je to možné, využijte vlastní metastore, abyste mohli oddělit výpočetní prostředky (váš běžící cluster) a metadata (uložené v metastore). Začněte s vrstvou S2, která poskytuje 50 DTU a 250 GB úložiště. Pokud se zobrazí kritický bod, můžete databázi škálovat nahoru.
 
 * Pokud máte v úmyslu více clusterů HDInsight pro přístup k samostatným datům, použijte pro metastore na jednotlivých clusterech samostatnou databázi. Pokud sdílíte metastore napříč několika clustery HDInsight, znamená to, že clustery používají stejná metadata a základní soubory uživatelských dat.
 

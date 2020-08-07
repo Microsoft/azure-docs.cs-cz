@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: be4211d793c593dac50d5764d7a15e7daa21c3f4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 093f86f0373791326cf4658bdab7179fbca1307d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320149"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849654"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -77,7 +77,7 @@ Pro konfiguraci těchto výpočetních cílů použijte následující části:
 
 * [Místní počítač](#local)
 * [Azure Machine Learning výpočetní cluster](#amlcompute)
-* [Azure Machine Learning výpočetní instance](#instance)
+* [Výpočetní instance Azure Machine Learningu](#instance)
 * [Vzdálené virtuální počítače](#vm)
 * [Azure HDInsight](#hdinsight)
 
@@ -151,7 +151,7 @@ K určení virtuálního počítače s nízkou prioritou použijte libovolný z 
 
 
 
-### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Azure Machine Learning výpočetní instance
+### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Výpočetní instance Azure Machine Learningu
 
 [Výpočetní instance Azure Machine Learning](concept-compute-instance.md) je spravovaná výpočetní infrastruktura, která umožňuje snadno vytvořit jeden virtuální počítač. Výpočetní prostředí se vytvoří v rámci vaší oblasti pracovního prostoru, ale na rozdíl od výpočetního clusteru se instance nedá sdílet s ostatními uživateli v pracovním prostoru. Instance se také automaticky nezvětšuje.  Je nutné zastavit prostředek, aby nedocházelo k průběžným poplatkům.
 

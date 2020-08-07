@@ -58,6 +58,8 @@
       href: network-best-practices.md
     - name: DDoS Protection
       href: ddos-best-practices.md
+    - name: Standardní hodnoty zabezpečení pro DDoS Protection
+      href: ddos-protection-security-baseline.md
     - name: Visící záznam DNS a převzetí subdomény
       href: subdomain-takeover.md
     - name: Zabezpečení hybridní síťové architektury

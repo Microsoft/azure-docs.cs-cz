@@ -10,13 +10,13 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.custom: tracking-python, devx-track-javascript
-ms.openlocfilehash: b0a8a55b1e62c30ec7384b19b3e963054fee432b
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-python, devx-track-javascript
+ms.openlocfilehash: 6a81e52b833a59f51f6961a0bd41d52b040050b2
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407281"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876882"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Kurz: sestavení aplikace v baňce pomocí Azure Cognitive Services
 
@@ -45,7 +45,7 @@ Pro ty, které chcete podrobně po tomto kurzu, je zde několik užitečných od
 * [Dokumentace k baňce](http://flask.pocoo.org/)
 * [Baňka pro Dummies – příručka pro začátečníky do baňky](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pojďme si projít klíče softwaru a předplatného, které pro tento kurz budete potřebovat.
 

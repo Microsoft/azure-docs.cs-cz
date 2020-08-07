@@ -12,22 +12,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: 9085549486333968b98b4d34679c8616282d960f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb06f98d1a6e9b76c321e3d202043d656a2d94eb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097452"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829046"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>Rozšíření ovladače InfiniBand pro Linux
 
 Toto rozšíření nainstaluje ovladače InfiniBand OFED na InfiniBand a virtuální počítače s podporou SR-IOV (velikosti r) [H-Series](../sizes-hpc.md) a [N-Series](../sizes-gpu.md) s operačním systémem Linux. V závislosti na rodině virtuálních počítačů rozšíření nainstaluje příslušné ovladače pro síťovou kartu Connect-X.
 
-Pokyny k ruční instalaci ovladačů OFED jsou k dispozici [zde](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband#manually-install-mellanox-ofed).
+Pokyny k ruční instalaci ovladačů OFED jsou k dispozici [zde](../workloads/hpc/enable-infiniband.md#manual-installation).
 
 K dispozici je také rozšíření pro instalaci ovladačů InfiniBand pro [virtuální počítače s Windows](hpc-compute-infiniband-windows.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -149,7 +149,7 @@ Následující příklad nainstaluje nejnovější InfiniBandDriverLinux rozší
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstranit potíže
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell a Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz.
 

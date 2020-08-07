@@ -11,13 +11,13 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 03/26/2020
 ms.author: aahi
-ms.custom: tracking-python, devx-track-javascript
-ms.openlocfilehash: e4f542d522ff9f62ee8baa68743102369bebfe08
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-python, devx-track-javascript
+ms.openlocfilehash: d35d8edcb1b2e16a6d420d6accb43a2e6ab0ef8b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406996"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852012"
 ---
 # <a name="quickstart-use-the-bing-visual-search-client-library"></a>Rychlý Start: použití klientské knihovny Vizuální vyhledávání Bingu
 

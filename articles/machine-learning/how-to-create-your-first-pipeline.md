@@ -10,13 +10,13 @@ ms.author: nilsp
 author: NilsPohlmann
 ms.date: 12/05/2019
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 3c247e5aebde7bd10be092c358320348645e2172
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 0a8bb3ff3d1fc36d4213c6d1a8ea402833bd915e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564057"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852935"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
 
@@ -34,7 +34,7 @@ Kanály ML používají vzdálené výpočetní cíle pro výpočet a úložišt
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vytvořte [pracovní prostor Azure Machine Learning](how-to-manage-workspace.md) pro uložení všech prostředků kanálu.
 

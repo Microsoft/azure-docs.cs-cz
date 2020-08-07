@@ -2,14 +2,14 @@
 title: Monitorování výkonu Azure App Services | Microsoft Docs
 description: Sledování výkonu aplikací pro Azure App Services. Zatížení grafu a doba odezvy, informace o závislostech a nastavení výstrah pro výkon.
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f96d994f9f88a0debf110de2ca4f6da60e8ea3bc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6c0d99e89e17c2aad3c7dcfe0056b597aa88d2a2
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373160"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876389"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
@@ -396,6 +396,12 @@ Pokud používáte APPINSIGHTS_JAVASCRIPT_ENABLED = true v případech, kdy je o
 Důvodem je, že nastavení aplikace APPINSIGHTS_JAVASCRIPT_ENABLED nastavené na hodnotu true a kódování obsahu je současně přítomno. Tento scénář se ještě nepodporuje. Alternativním řešením je odebrat APPINSIGHTS_JAVASCRIPT_ENABLED z nastavení aplikace. To bohužel znamená, že pokud se pořád vyžaduje instrumentace JavaScriptu na straně klienta nebo prohlížeče, pro vaše webové stránky jsou nutné ruční odkazy na sadu SDK. Postupujte prosím podle [pokynů](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup) pro ruční instrumentaci pomocí sady JavaScript SDK.
 
 Nejnovější informace o Application Insights agenta nebo rozšíření najdete v [poznámkách k verzi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md).
+
+### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>Výchozí web nasazený pomocí Web Apps nepodporuje automatické monitorování na straně klienta.
+
+Při vytváření webové aplikace s `ASP.NET` `.NET Core` modulem runtime nebo v Azure App Services nasadí jednu STATICKOU stránku HTML jako úvodní web. Statická webová stránka také načte webovou část spravovanou rozhraním .NET ve službě IIS. To umožňuje testovat monitorování na straně serveru bez kódu, ale nepodporuje automatické monitorování na straně klienta.
+
+Pokud chcete testovat server bez kódu a monitorování na straně klienta pro ASP.NET nebo ASP.NET Core ve webové aplikaci Azure App Services, doporučujeme, abyste si vyzkoušeli oficiální Příručky k [vytvoření ASP.NET Core webové aplikace](../../app-service/app-service-web-get-started-dotnet.md) a [Vytvoření webové aplikace v ASP.NET Framework](../../app-service/app-service-web-get-started-dotnet-framework.md) , a pak pomocí pokynů v aktuálním článku povolíte monitorování.
 
 ### <a name="php-and-wordpress-are-not-supported"></a>PHP a WordPress nejsou podporované.
 

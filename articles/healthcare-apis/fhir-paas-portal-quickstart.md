@@ -2,24 +2,24 @@
 title: 'Rychlý Start: nasazení rozhraní Azure API pro FHIR pomocí Azure Portal'
 description: V tomto rychlém startu se dozvíte, jak nasadit rozhraní API Azure pro FHIR a nakonfigurovat nastavení pomocí Azure Portal.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
-ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: e729597e9d83c4e6096fe52b577b052d94ca4799
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.date: 03/15/2020
+ms.author: matjazl
+ms.openlocfilehash: 8c0448d31cd89e2ca969b81361b30bac3f9610e9
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "84820250"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851932"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>Rychlý Start: nasazení rozhraní Azure API pro FHIR pomocí Azure Portal
 
 V tomto rychlém startu se dozvíte, jak nasadit rozhraní API Azure pro FHIR pomocí Azure Portal.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-new-resource"></a>Vytvořit nový prostředek
 
@@ -31,34 +31,31 @@ Otevřete [Azure Portal](https://portal.azure.com) a klikněte na **vytvořit pr
 
 Rozhraní Azure API pro FHIR můžete najít zadáním "FHIR" do vyhledávacího pole:
 
-![Hledání rozhraní API pro zdravotní péči](media/quickstart-paas-portal/portal-search-healthcare-apis.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-search-healthcare-apis.png" alt-text="Hledání rozhraní API pro zdravotní péči":::
 
 ## <a name="create-azure-api-for-fhir-account"></a>Vytvoření Azure API pro účet FHIR
 
 Vyberte **vytvořit** a vytvořte nový Azure API pro účet FHIR:
 
-![Vytvoření Azure API pro účet FHIR](media/quickstart-paas-portal/portal-create-healthcare-apis.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Vytvoření Azure API pro účet FHIR":::
 
 ## <a name="enter-account-details"></a>Zadejte podrobnosti účtu.
 
 Vyberte existující skupinu prostředků nebo vytvořte novou, zvolte název účtu a nakonec klikněte na **zkontrolovat + vytvořit**:
 
-![Nové podrobnosti o rozhraní API pro zdravotnictví](media/quickstart-paas-portal/portal-new-healthcareapi-details.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Nové podrobnosti o rozhraní API pro zdravotnictví":::
 
 Potvrďte vytváření a očekává se nasazení rozhraní API FHIR.
 
-## <a name="additional-settings"></a>Další nastavení
+## <a name="additional-settings-optional"></a>Další nastavení (volitelné)
 
-Klikněte na **Další: Další nastavení** pro konfiguraci autority, cílové skupiny, ID objektů identity, která mají mít povolený přístup k tomuto rozhraní Azure API pro FHIR, v případě potřeby povolte inteligentní v FHIR a nakonfigurujte propustnost databáze:
+Můžete také kliknout na **Další: Další nastavení** a zobrazit nastavení ověřování. Výchozí konfigurací rozhraní API Azure pro FHIR je [použití služby Azure RBAC pro přiřazení rolí roviny dat](configure-azure-rbac.md). Při konfiguraci v tomto režimu bude "autorita" pro službu FHIR nastavena na tenanta Azure Active Directory předplatného:
 
-- **Autorita:** Můžete zadat jiného tenanta Azure AD z rozhraní, které jste přihlášeni jako ověřovací autoritu pro službu.
-- **Cílová skupina:** Osvědčeným postupem a výchozím nastavením je, že cílová skupina je nastavená na adresu URL FHIR serveru. Můžete to změnit tady. Cílová skupina identifikuje příjemce, pro kterého je token určen. V tomto kontextu by měl být nastaven na něco, co představuje samotný FHIR API.
-- **Povolená ID objektů:** Můžete zadat ID objektů identity, která by měla mít povolený přístup k tomuto rozhraní Azure API pro FHIR. Další informace o tom, jak vyhledat ID objektu pro uživatele a instanční objekty, najdete v tématu Průvodce [hledáním objektů identity s ID](find-identity-object-ids.md) .  
-- **Inteligentní na FHIR proxy serveru:** Můžete povolit SMART on FHIR proxy. Podrobnosti o tom, jak nakonfigurovat SMART on FHIR proxy, najdete v tématu kurz [Azure API pro FHIR Smart on FHIR proxy](https://docs.microsoft.com/azure/healthcare-apis/use-smart-on-fhir-proxy) .  
-- **Zajištěná propustnost (ru/s):** Tady můžete zadat nastavení propustnosti pro podkladovou databázi pro Azure API pro FHIR. Toto nastavení můžete později změnit v okně databáze. Další podrobnosti najdete na stránce [Konfigurace nastavení databáze](configure-database.md) .
+:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Výchozí nastavení ověřování":::
 
+Všimněte si, že pole pro zadání povolených ID objektů je šedé, protože používáme Azure RBAC pro konfiguraci přiřazení rolí v tomto případě.
 
-![Konfigurace povolených ID objektů](media/quickstart-paas-portal/configure-audience.png)
+Pokud chcete službu FHIR nakonfigurovat tak, aby používala externího nebo sekundárního tenanta Azure Active Directory, můžete změnit autoritu a zadat ID objektů pro uživatele a skupiny, kteří mají mít povolený přístup k serveru. Další informace najdete v tématu Průvodce [konfigurací místních RBAC](configure-local-rbac.md) .
 
 ## <a name="fetch-fhir-api-capability-statement"></a>Načíst příkaz schopnosti rozhraní API FHIR
 
