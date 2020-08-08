@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 74308ae79b899a55db4682474e3dcd9dab26db98
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: c51e67dcc3536a3083179451743b1c97cf618dae
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856928"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004866"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Správa mezipaměti Azure pro Redis s využitím Azure PowerShell
 > [!div class="op_single_selector"]
@@ -148,7 +148,7 @@ Následující tabulka obsahuje vlastnosti a popisy běžně používaných para
 | ShardCount |Počet horizontálních oddílů, které se mají vytvořit při vytváření mezipaměti Premium s povoleným clusteringem Platné hodnoty jsou: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. | |
 | SKU |Určuje SKLADOVOU položku mezipaměti. Platné hodnoty jsou: Basic, Standard, Premium. |Standard |
 | RedisConfiguration |Určuje nastavení konfigurace Redis. Podrobnosti o jednotlivých nastaveních najdete v následujících tabulkách [vlastností RedisConfiguration](#redisconfiguration-properties) . | |
-| EnableNonSslPort |Určuje, jestli je povolený port bez SSL. |False |
+| EnableNonSslPort |Určuje, jestli je povolený port bez SSL. |Ne |
 | MaxMemoryPolicy |Tento parametr je zastaralý – místo toho použijte RedisConfiguration. | |
 | StaticIP |Při hostování mezipaměti ve virtuální síti určuje jedinečná IP adresa v podsíti pro mezipaměť. Pokud tato možnost není k dispozici, je pro vás z podsítě zvolena jedna. | |
 | Podsíť |Při hostování mezipaměti ve virtuální síti Určuje název podsítě, do které se má mezipaměť nasadit. | |
@@ -156,7 +156,7 @@ Následující tabulka obsahuje vlastnosti a popisy běžně používaných para
 | KeyType |Určuje, který přístupový klíč se má znovu vygenerovat při obnovování přístupových klíčů. Platné hodnoty jsou: primární, sekundární | |
 
 ### <a name="redisconfiguration-properties"></a>Vlastnosti RedisConfiguration
-| Vlastnost | Description | Cenové úrovně |
+| Vlastnost | Popis | Cenové úrovně |
 | --- | --- | --- |
 | RDB – povoleno zálohování |Zda je povoleno [Trvalost dat Redis](cache-how-to-premium-persistence.md) |Jenom Premium |
 | RDB – Storage-Connection-String |Připojovací řetězec k účtu úložiště pro [Trvalost dat Redis](cache-how-to-premium-persistence.md) |Jenom Premium |
@@ -169,7 +169,7 @@ Následující tabulka obsahuje vlastnosti a popisy běžně používaných para
 | set-max-intset-Entries |Konfiguruje [optimalizaci paměti](https://redis.io/topics/memory-optimization) pro malé agregované datové typy. |Standard a Premium |
 | zset-Max-ZipList-Entries |Konfiguruje [optimalizaci paměti](https://redis.io/topics/memory-optimization) pro malé agregované datové typy. |Standard a Premium |
 | zset-Max-ZipList-Value |Konfiguruje [optimalizaci paměti](https://redis.io/topics/memory-optimization) pro malé agregované datové typy. |Standard a Premium |
-| databáze |Konfiguruje počet databází. Tato vlastnost se dá nakonfigurovat jenom při vytváření mezipaměti. |Standard a Premium |
+| V databázích |Konfiguruje počet databází. Tato vlastnost se dá nakonfigurovat jenom při vytváření mezipaměti. |Standard a Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Vytvoření mezipaměti Azure pro Redis
 Nová mezipaměť Azure pro instance Redis se vytvoří pomocí rutiny [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) .
@@ -655,7 +655,7 @@ V následujícím příkladu je mezipaměť s názvem `myCache` odebrána.
 Pomocí rutiny můžete importovat data do mezipaměti Azure pro instanci Redis `Import-AzRedisCache` .
 
 > [!IMPORTANT]
-> Import/Export je k dispozici jenom pro mezipaměti [úrovně Premium](cache-premium-tier-intro.md) . Další informace o importu a exportu najdete v tématu [Import a export dat v Azure cache pro Redis](cache-how-to-import-export-data.md).
+> Import/Export je k dispozici jenom pro mezipaměti [úrovně Premium](cache-overview.md#service-tiers) . Další informace o importu a exportu najdete v tématu [Import a export dat v Azure cache pro Redis](cache-how-to-import-export-data.md).
 > 
 > 
 
@@ -719,7 +719,7 @@ Následující příkaz importuje data z objektu BLOB určeného identifikátore
 Pomocí rutiny můžete exportovat data z mezipaměti Azure pro instanci Redis `Export-AzRedisCache` .
 
 > [!IMPORTANT]
-> Import/Export je k dispozici jenom pro mezipaměti [úrovně Premium](cache-premium-tier-intro.md) . Další informace o importu a exportu najdete v tématu [Import a export dat v Azure cache pro Redis](cache-how-to-import-export-data.md).
+> Import/Export je k dispozici jenom pro mezipaměti [úrovně Premium](cache-overview.md#service-tiers) . Další informace o importu a exportu najdete v tématu [Import a export dat v Azure cache pro Redis](cache-how-to-import-export-data.md).
 > 
 > 
 
@@ -784,7 +784,7 @@ Následující příkaz exportuje data z mezipaměti Azure pro instanci Redis do
 Pomocí rutiny můžete restartovat službu Azure cache pro instanci Redis `Reset-AzRedisCache` .
 
 > [!IMPORTANT]
-> Restart je dostupný jenom pro mezipaměti [úrovně Premium](cache-premium-tier-intro.md) . Další informace o restartování mezipaměti najdete v tématu [Správa mezipaměti – restart](cache-administration.md#reboot).
+> Restart je dostupný jenom pro mezipaměti [úrovně Premium](cache-overview.md#service-tiers) . Další informace o restartování mezipaměti najdete v tématu [Správa mezipaměti – restart](cache-administration.md#reboot).
 > 
 > 
 

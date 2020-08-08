@@ -1,19 +1,17 @@
 ---
 title: Integrace partnerů virtuálních počítačů s Windows – Azure
 description: Přečtěte si o partnerech virtuálních počítačů s Windows a dokumentaci k nim o tom, jak s nimi integrovat.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d78de3d8e7fadc4b6760fef85fb4b850cc25111e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5431a0844a418ddcdbd595546253c1d03fda35c0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075772"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006566"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -69,9 +67,9 @@ Automai umožňuje používat stejné skripty pro testování výkonu, funkční
 
 ![Logo Cloudhouse](./media/partners/cloudhouse.png)
 
-Cloudhouse je poskytovatel služeb s přidanými hodnotami pro virtuální počítače s Windows, který nabízí zákazníkům službu migrace aplikací klíč, která může přesunout všechny aplikace, včetně těch, které jsou nekompatibilní s moderními operačními systémy Windows, do prostředí virtuálních ploch Windows, které zákazníkům umožňuje skutečně využívat Windows 10 s více relacemi. 
+Cloudhouse je poskytovatel služeb s přidanými hodnotami pro virtuální počítače s Windows, který nabízí zákazníkům službu migrace aplikací klíč, která může přesunout všechny aplikace, včetně těch, které jsou nekompatibilní s moderními operačními systémy Windows, do prostředí virtuálních ploch Windows, které zákazníkům umožňuje skutečně využívat Windows 10 s více relacemi.
 
-Díky využití osvědčené techniky Cloudhouseování kontejnerů služba Cloudhouse převezme všechny aplikace, včetně těch, které jsou určené pro Windows XP, Windows 7 nebo Windows 8, a nasadí je na moderní virtuální počítače s Windows, aniž by museli měnit kód nebo ovlivnit činnost koncového uživatele. Cloudhouse dále přičítá k hodnotě virtuálního klienta Windows izolací aplikací z podkladového operačního systému, což umožňuje zavádět aktualizace údržby Windows beze změny, aniž by to ovlivnilo kontejnerové aplikace. 
+Díky využití osvědčené techniky Cloudhouseování kontejnerů služba Cloudhouse převezme všechny aplikace, včetně těch, které jsou určené pro Windows XP, Windows 7 nebo Windows 8, a nasadí je na moderní virtuální počítače s Windows, aniž by museli měnit kód nebo ovlivnit činnost koncového uživatele. Cloudhouse dále přičítá k hodnotě virtuálního klienta Windows izolací aplikací z podkladového operačního systému, což umožňuje zavádět aktualizace údržby Windows beze změny, aniž by to ovlivnilo kontejnerové aplikace.
 
 - [Přejít na web partnera](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
 
@@ -111,9 +109,9 @@ Wyse tenké klienty jsou navržené s ohledem na úroveň zabezpečení na omeze
 
 ![Logo deviceTRUST](./media/partners/devicetrust.png)
 
-deviceTRUST je poskytovatel služeb s hodnotou "Windows Virtual Desktop-added", který contextualizes podnikovou firmu. Umožňuje uživatelům volnost přístupu ke svému virtuálnímu počítači s Windows z libovolného místa na jakémkoli zařízení, přes jakoukoli síť a zároveň jim poskytnout informace a kontrolu, které potřebují ke splnění svých požadavků na zásady správného řízení. 
+deviceTRUST je poskytovatel služeb s hodnotou "Windows Virtual Desktop-added", který contextualizes podnikovou firmu. Umožňuje uživatelům volnost přístupu ke svému virtuálnímu počítači s Windows z libovolného místa na jakémkoli zařízení, přes jakoukoli síť a zároveň jim poskytnout informace a kontrolu, které potřebují ke splnění svých požadavků na zásady správného řízení.
 
-deviceTRUST rozšiřuje hodnotu virtuálního klienta Windows s jejich kontextovou technologií zabezpečení. deviceTRUST umožňuje podmíněný přístup pro zabezpečený přístup k virtuálním plochám Windows, podmíněný přístup k aplikacím v rámci virtuálních ploch Windows a k aplikování podmíněné zásady virtuálních počítačů s Windows bez jakékoli další infrastruktury. Použití deviceTRUST umožňuje mobilní a flexibilní pracovní prostor, který splňuje všechny požadavky na zabezpečení, dodržování předpisů a předpisy. 
+deviceTRUST rozšiřuje hodnotu virtuálního klienta Windows s jejich kontextovou technologií zabezpečení. deviceTRUST umožňuje podmíněný přístup pro zabezpečený přístup k virtuálním plochám Windows, podmíněný přístup k aplikacím v rámci virtuálních ploch Windows a k aplikování podmíněné zásady virtuálních počítačů s Windows bez jakékoli další infrastruktury. Použití deviceTRUST umožňuje mobilní a flexibilní pracovní prostor, který splňuje všechny požadavky na zabezpečení, dodržování předpisů a předpisy.
 
 - [Přejít na web partnera](https://devicetrust.com/wvd).
 
@@ -121,7 +119,7 @@ deviceTRUST rozšiřuje hodnotu virtuálního klienta Windows s jejich kontextov
 
 ![Logo systému Ekran](./media/partners/ekran.png)
 
-Ekran systém je hodnota pro virtuální počítače s Windows – přidejte partnera, který umožňuje týmům IT monitorovat všechny aktivity vzdálených uživatelů na Microsoft Azure virtuálních počítačích. V systému Ekran můžete zaznamenávat aktivitu na obrazovce pro každou relaci uživatele v publikovaných aplikacích nebo virtuálních plochách a současně shromažďovat širokou škálu kontextových metadat, jako jsou názvy aplikací, názvy aktivních oken, navštívené adresy URL a úhozy. Rozšířené funkce nabízejí hloubkovou a rychlou odezvu na incidenty, což Ekran systém efektivního řešení pro správu hrozeb a dodržování předpisů.  
+Ekran systém je hodnota pro virtuální počítače s Windows – přidejte partnera, který umožňuje týmům IT monitorovat všechny aktivity vzdálených uživatelů na Microsoft Azure virtuálních počítačích. V systému Ekran můžete zaznamenávat aktivitu na obrazovce pro každou relaci uživatele v publikovaných aplikacích nebo virtuálních plochách a současně shromažďovat širokou škálu kontextových metadat, jako jsou názvy aplikací, názvy aktivních oken, navštívené adresy URL a úhozy. Rozšířené funkce nabízejí hloubkovou a rychlou odezvu na incidenty, což Ekran systém efektivního řešení pro správu hrozeb a dodržování předpisů.
 
 Jedinečné licence na plovoucí koncové body Ekran systémových klientů je automatizovaná na podporu dynamické změny virtuálních ploch. Systém Ekran umožňuje automaticky zrušit přiřazení licencí od odstraněných netrvalých virtuálních ploch a odebrat je z databáze. Systém Ekran se bez problémů integruje s Azure Active Directory a službou Azure Sentinel.
 
@@ -144,7 +142,7 @@ Když se uživatel přihlásí ke svému virtuálnímu klientovi, FabulaTech sof
 ![Logo Flexxible](./media/partners/flexxible.png)
 
 Flexxible je to, že se jedná o virtuální plochu s Windows – přidat partnera, který nabízí organizacím možnost rychle škálovat, monitorovat a efektivně spravovat infrastrukturu virtuálních počítačů s Windows a Citrix v místním prostředí. Flexxible | SADA umožňuje správcům IT inteligentně zřizovat a spravovat úlohy virtuálních klientských počítačů s Windows místně a hostovat v Azure.
- 
+
 Flexxible IT technologie rozšiřuje hodnotu nativního virtuálního počítače s Windows i Citrix, protože automatizuje běžné procesy, které zjednodušují konfiguraci infrastruktury, zřizování počítačů a každodenní správu. SADA poskytuje škálovatelné nasazení plochy, rozsáhlé monitorování a vytváření sestav a zabezpečenou delegovanou správu, a to bez nutnosti složitých skriptů PowerShellu nebo časově náročných ručních procesů. Tyto funkce vám umožní zaměřit se na poskytování lepších úrovní služeb a kvality prostředí pro virtuální počítače s Windows pro vaše uživatele.
 
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7A).
@@ -165,7 +163,7 @@ Jako HP prohlédlo se o trendech v oboru, výzvách zákazníků a virtualizaci 
 ![Logo IGEL](./media/partners/igel.png)
 
 IGEL je schválený a ověřený partner služby Microsoft Azure a Windows Virtual Desktop. IGEL nabízí IGEL operační systém, což je další – gen hraniční operační systém pro cloudové pracovní prostory, které slouží k přístupu k virtuálním aplikacím, plochám a pracovním prostorům cloudu z jednoho nebo několika uživatelských zařízení s odlehčeným, jednoduchým a zabezpečeným koncovým bodem se systémem Linux. Softwarové řešení nezávislé na platformě, IGEL operační systém a jeho serverový software pro správu a řízení, IGEL Universal Management Suite (UMS), tvoří řešení pro správu a řízení koncového bodu, které podnikům uvolňuje kompletní výhody cloudových instancí a virtuálních počítačů s Windows, včetně úsporného virtuálního počítače s Windows pro více relací, a současně snižovat náklady na hardware a správu zařízení koncových bodů a provozní náklady.
- 
+
 IGEL OS podporuje všechny oblíbené virtuální aplikace, stolní počítače a klientské protokoly v cloudovém pracovním prostoru od Citrix, Microsoftu a VMware. Zahrnuje integrované technologie od partnerů periferních zařízení, rozhraní a protokolů 85, které organizacím umožňují rychle přijímat služby Windows Virtual Desktop Services do vlastních jedinečných uživatelských prostředí. IGEL OS je modulární koncový bod, který je jen pro čtení, který pomáhá chránit před manipulací. Teď také obsahuje úplný "řetězec důvěryhodnosti", který ověřuje integritu všech klíčových hlavních procesů spuštěných v koncovém bodu, od hardwaru koncového bodu (některé vybrané modely) nebo procesu UEFI až po služby Azure Cloud a Windows Virtual Desktop. S operačním systémem IGEL se podniky můžou přihlásit k odběru virtuálního klienta Windows z cloudu Azure s plnou jistotou v rámci integrity, zabezpečení a spravovatelnosti svých zařízení koncových bodů uživatelů.
 
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviO).
@@ -175,9 +173,9 @@ IGEL OS podporuje všechny oblíbené virtuální aplikace, stolní počítače 
 
 ![Logo Ivanti](./media/partners/ivanti.png)
 
-Správce pracovního prostoru uživatele Ivanti je služba s přidanou hodnotou pro virtuální počítače s Windows, která usnadňuje nasazení a správu stolních počítačů oddělením uživatelských dat z plochy pro bezproblémové přenositelnosti. Díky Ivanti můžou uživatelé poskytovat komplexní projekty, jako je migrace do Windows 10, přijímání Microsoft 365 nebo přesouvání služeb do cloudu rychleji. 
+Správce pracovního prostoru uživatele Ivanti je služba s přidanou hodnotou pro virtuální počítače s Windows, která usnadňuje nasazení a správu stolních počítačů oddělením uživatelských dat z plochy pro bezproblémové přenositelnosti. Díky Ivanti můžou uživatelé poskytovat komplexní projekty, jako je migrace do Windows 10, přijímání Microsoft 365 nebo přesouvání služeb do cloudu rychleji.
 
-Při použití s virtuálním počítačem s Windows Ivanti Správce pracovních prostorů uživatelů poskytuje jednoduchou kontextovou správu možností práce s počítačem, eliminují dlouhé časy přihlášení a eradikace Nightmares zásad skupiny. Předem připravené šablony pro uživatele Ivanti User Workspace zjednodušují instalaci pro uživatele prostřednictvím agentů a stávající konzoly. Správce pracovních prostorů uživatele Ivanti nabízí reagovat, zabezpečené plochy, které uživatelé chtějí, ušetřit peníze na serverech, efektivněji spravovat uživatele a snižovat riziko zabezpečení koncového bodu. 
+Při použití s virtuálním počítačem s Windows Ivanti Správce pracovních prostorů uživatelů poskytuje jednoduchou kontextovou správu možností práce s počítačem, eliminují dlouhé časy přihlášení a eradikace Nightmares zásad skupiny. Předem připravené šablony pro uživatele Ivanti User Workspace zjednodušují instalaci pro uživatele prostřednictvím agentů a stávající konzoly. Správce pracovních prostorů uživatele Ivanti nabízí reagovat, zabezpečené plochy, které uživatelé chtějí, ušetřit peníze na serverech, efektivněji spravovat uživatele a snižovat riziko zabezpečení koncového bodu.
 
 - [Přejít na web partnera](https://www.ivanti.com/products/user-workspace-manager).
 
@@ -237,9 +235,9 @@ Nerdio rozšiřuje hodnotu virtuálního klienta Windows tím, že usnadňuje z�
 
 ![Logo Numecent](./media/partners/numecent.png)
 
-Numecent je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který významně snižuje celkové provozní náklady díky rychlé registraci a migraci složitých nebo nekompatibilních aplikací pro Windows v prostředích virtuálních počítačů s Windows. Numecent také minimalizuje množství konfigurace, které uživatelé potřebují, zmenšuje aktualizace aplikací a zjednodušuje složité procesy. Vzhledem k tomu, že Numecent Cloudpaging podporuje více aplikací bez problémů s jakýmkoli jiným nástrojem pro doručování aplikací, zkracuje čas a pracovní zatížení v prostředích s různou sadou aplikací. 
+Numecent je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který významně snižuje celkové provozní náklady díky rychlé registraci a migraci složitých nebo nekompatibilních aplikací pro Windows v prostředích virtuálních počítačů s Windows. Numecent také minimalizuje množství konfigurace, které uživatelé potřebují, zmenšuje aktualizace aplikací a zjednodušuje složité procesy. Vzhledem k tomu, že Numecent Cloudpaging podporuje více aplikací bez problémů s jakýmkoli jiným nástrojem pro doručování aplikací, zkracuje čas a pracovní zatížení v prostředích s různou sadou aplikací.
 
-Při použití s virtuálním počítačem s Windows Cloudpaging dále snižuje náklady tím, že v nasazení dokončí životní cyklus softwarového assetu pro upgrade, měření a odebírání aplikací. Cloudpaging zjednodušuje správu imagí tím, že se v reálném čase dynamicky zřídí aplikace podle potřeby pro nasazení virtuálních ploch Windows. Cloudpaging pomáhá aplikacím běžet bez nutnosti správy nebo zásahu prostřednictvím pravidelných aktualizací Windows 10. Cloudpaging také snižuje náklady na náklad na nákladné aplikace tím, že umožňuje efektivnější nasazení a používání těchto aplikací. 
+Při použití s virtuálním počítačem s Windows Cloudpaging dále snižuje náklady tím, že v nasazení dokončí životní cyklus softwarového assetu pro upgrade, měření a odebírání aplikací. Cloudpaging zjednodušuje správu imagí tím, že se v reálném čase dynamicky zřídí aplikace podle potřeby pro nasazení virtuálních ploch Windows. Cloudpaging pomáhá aplikacím běžet bez nutnosti správy nebo zásahu prostřednictvím pravidelných aktualizací Windows 10. Cloudpaging také snižuje náklady na náklad na nákladné aplikace tím, že umožňuje efektivnější nasazení a používání těchto aplikací.
 
 - [Přejít na web partnera](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
 
@@ -247,9 +245,9 @@ Při použití s virtuálním počítačem s Windows Cloudpaging dále snižuje 
 
 ![Logo PolicyPak](./media/partners/policypak.png)
 
-PolicyPak software je partner s virtuálními počítači s Windows, který provádí celkovou správu nastavení pro aplikace, stolní počítače, prohlížeče, Java a nastavení zabezpečení. PolicyPak zachovává dodržování předpisů pro stolní počítače, systém a zabezpečení. PolicyPak vylepšuje hodnotu virtuální plochy Windows přidáním sady součástí pro vylepšení předdefinované správy Windows. Pomocí stávající služby Active Directory Zásady skupiny a/nebo Windows Intune dodávejte nastavení PolicyPak a zvyšte schopnost správců spravovat jejich počítače s Windows 10. 
+PolicyPak software je partner s virtuálními počítači s Windows, který provádí celkovou správu nastavení pro aplikace, stolní počítače, prohlížeče, Java a nastavení zabezpečení. PolicyPak zachovává dodržování předpisů pro stolní počítače, systém a zabezpečení. PolicyPak vylepšuje hodnotu virtuální plochy Windows přidáním sady součástí pro vylepšení předdefinované správy Windows. Pomocí stávající služby Active Directory Zásady skupiny a/nebo Windows Intune dodávejte nastavení PolicyPak a zvyšte schopnost správců spravovat jejich počítače s Windows 10.
 
-Hlavní případy použití pro PolicyPak jsou odebrání oprávnění místního správce a překonání výzev pro řízení uživatelských účtů, blokování ransomwarem, Správa více prohlížečů, Správa režimů podnikových a kompatibilních s Internet Explorerem, snížení počtu objektů zásad skupiny, Správa přidružení souborů Windows 10, Správa Windows 10 a hlavní panel a Správa funkcí Windows 10 a volitelných funkcí.  
+Hlavní případy použití pro PolicyPak jsou odebrání oprávnění místního správce a překonání výzev pro řízení uživatelských účtů, blokování ransomwarem, Správa více prohlížečů, Správa režimů podnikových a kompatibilních s Internet Explorerem, snížení počtu objektů zásad skupiny, Správa přidružení souborů Windows 10, Správa Windows 10 a hlavní panel a Správa funkcí Windows 10 a volitelných funkcí.
 
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviN).
 - [Přejít na web partnera](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
@@ -258,9 +256,9 @@ Hlavní případy použití pro PolicyPak jsou odebrání oprávnění místníh
 
 ![Logo PrinterLogic](./media/partners/printerlogic.png)
 
-PrinterLogic je platforma pro poskytovatele služeb s přidanou hodnotou pro virtuální počítače s Windows, která pomáhá odborníkům v oblasti IT eliminovat všechny tiskové servery a doručovat vysoce dostupnou tiskovou infrastrukturu bez serveru. PrinterLogic rozšiřuje hodnotu virtuálních počítačů s Windows a Azure tím, že usnadňuje správu centrálně a nasazují objekty tiskárny na všechny tiskárny nebo operační systémy koncových bodů. 
+PrinterLogic je platforma pro poskytovatele služeb s přidanou hodnotou pro virtuální počítače s Windows, která pomáhá odborníkům v oblasti IT eliminovat všechny tiskové servery a doručovat vysoce dostupnou tiskovou infrastrukturu bez serveru. PrinterLogic rozšiřuje hodnotu virtuálních počítačů s Windows a Azure tím, že usnadňuje správu centrálně a nasazují objekty tiskárny na všechny tiskárny nebo operační systémy koncových bodů.
 
-PrinterLogic platforma, která je k dispozici jako SaaS nebo jako webový zásobník ve vlastním privátním cloudu, zajišťuje, aby uživatelé měli vždy správné tiskárny, které potřebují ve svých virtuálních relacích na základě ID uživatele, názvu zařízení nebo umístění. Tato funkce je doplněná celou sadou funkcí správy tiskáren Enterprise, jako je sledování tisku, vytváření sestav, mobilní tisk a tisk přes bezpečnostní vydání. 
+PrinterLogic platforma, která je k dispozici jako SaaS nebo jako webový zásobník ve vlastním privátním cloudu, zajišťuje, aby uživatelé měli vždy správné tiskárny, které potřebují ve svých virtuálních relacích na základě ID uživatele, názvu zařízení nebo umístění. Tato funkce je doplněná celou sadou funkcí správy tiskáren Enterprise, jako je sledování tisku, vytváření sestav, mobilní tisk a tisk přes bezpečnostní vydání.
 
 - [Přejít na web partnera](https://www.printerlogic.com).
 
@@ -279,8 +277,8 @@ Tisk je základní úlohou v rámci každého kancelářského a malého podniko
 
 ![Logo RDPSoft](./media/partners/rdpsoft.png)
 
-RDPSoft je partner s virtuálními počítači s Windows, který poskytuje výkonné a levné řešení pro monitorování, správu a vytváření sestav. Nabídky pro správce vzdálených klientů umožňují odborníkům v oblasti IT získat přehled o stavu, výkonu, aktivitě uživatelů, licencování a zabezpečení nasazení virtuálních ploch v systému Windows. 
- 
+RDPSoft je partner s virtuálními počítači s Windows, který poskytuje výkonné a levné řešení pro monitorování, správu a vytváření sestav. Nabídky pro správce vzdálených klientů umožňují odborníkům v oblasti IT získat přehled o stavu, výkonu, aktivitě uživatelů, licencování a zabezpečení nasazení virtuálních ploch v systému Windows.
+
 Řešení pro RDPSoft Remote Desktop Commander zlepšují správu virtuálních ploch Windows. Funkce Premium Management zjednodušují delegování úloh správy virtuálních klientů Windows na pracovníky podpory, protože zajišťuje vzdálenou pomoc, relaci uživatelů a správu procesů. Sada Remote Desktop Commander zároveň shromažďuje bohatou metriku týkající se výkonu a zatížení jednotlivých uživatelů, aktivit uživatelů a auditování, kvality připojení k virtuálním plochám Windows (latence a šířka pásma), licencování a zabezpečení do instance centrálního Azure SQL Database pro kontrolu. Díky RDPSoft máte k dispozici bohatě historické sestavy a komplexní řídicí panely hned po kliknutí.
 
 - [Přejít na web partnera](https://www.rdpsoft.com/products/remote-desktop-commander/suite/).
@@ -322,7 +320,7 @@ ThinPrint řešení ezeep rozšiřuje hodnotu virtuální plochy Windows tím, �
 
 ![Logo Tricerat](./media/partners/tricerat.png)
 
-Tricerat nabízí vynikající řešení pro správu tisku pro virtuální počítače s Windows a další desktopové platformy. Tricerat software má robustní funkce a nabízí lepší možnosti pro uživatele i správce. Správci získají efektivitu prostřednictvím kompletní správy ovladačů, zjednodušeného nasazení tiskových front a konzistentní správy napříč hybridními platformami. Činnost koncového uživatele se zlepšuje s kratším počtem přihlášení, inteligentními tiskovými frontami založenými na uživateli, zařízení a umístění v síti a samoobslužnými možnostmi pro rychlý výběr tiskárny. 
+Tricerat nabízí vynikající řešení pro správu tisku pro virtuální počítače s Windows a další desktopové platformy. Tricerat software má robustní funkce a nabízí lepší možnosti pro uživatele i správce. Správci získají efektivitu prostřednictvím kompletní správy ovladačů, zjednodušeného nasazení tiskových front a konzistentní správy napříč hybridními platformami. Činnost koncového uživatele se zlepšuje s kratším počtem přihlášení, inteligentními tiskovými frontami založenými na uživateli, zařízení a umístění v síti a samoobslužnými možnostmi pro rychlý výběr tiskárny.
 
 V Tricerat je tisk na virtuálním počítači s Windows a mimo něj bezproblémové. Tricerat software umožňuje správcům snadno připojovat místní tiskárny ke cloudu a rozšiřovat správu podnikových tiskáren z tradičních prostředí na nové moderní pracovní prostory.
 
@@ -344,7 +342,7 @@ uberAgent je produkt pro monitorování a analýzu, který je navržený pro vý
 
 Pracovní prostor 365 jednotkám všech vašich informací (obchodních dat, dokumentů, komunikačních a mikroaplikací) a poskytuje přístup k libovolné místní, webové nebo hostované aplikaci v jednom pracovním prostoru. Automaticky se přizpůsobí vaší roli, umístění, zařízení, prohlížeči a dalším, aby poskytoval přizpůsobený pracovní prostor. Uživatelé získají zjednodušené a konzistentní prostředí bez ohledu na to, jaká technologie leží pod povrchem. Můžete integrovat aktuální řešení, jako jsou RDP, Citrix a starší aplikace, a přesunout je na virtuální plochu Windows a přitom zachovat stejné uživatelské prostředí. Kromě toho můžete integrovat všechna umístění souborů, jako jsou SharePoint, OneDrive, týmy a souborové servery, v jedné aplikaci pro správu dokumentů.
 
-Díky pracovnímu prostoru 365 můžou správci IT zpřístupnit aplikace s podporou virtuálních počítačů Windows pro uživatele, kteří jsou na základě oprávnění. Správce pak může tyto aplikace přidat do sdílené skupiny aplikací. Když je aplikace virtuální plochy Windows v pracovním prostoru 365 viditelná, můžou si ji uživatelé otevřít z pracovního prostoru, aniž by se museli znovu přihlašovat. 
+Díky pracovnímu prostoru 365 můžou správci IT zpřístupnit aplikace s podporou virtuálních počítačů Windows pro uživatele, kteří jsou na základě oprávnění. Správce pak může tyto aplikace přidat do sdílené skupiny aplikací. Když je aplikace virtuální plochy Windows v pracovním prostoru 365 viditelná, můžou si ji uživatelé otevřít z pracovního prostoru, aniž by se museli znovu přihlašovat.
 
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vARh).
 - [Přejít na web partnera](https://workspace365.net/product-tour/hybrid-workspace-365/).

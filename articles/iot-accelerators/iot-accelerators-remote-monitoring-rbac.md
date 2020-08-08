@@ -9,16 +9,16 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: e41d3b47408d29a0463eed5f23117801be107c27
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 397e7cfbc2599d2a259f55a5f465d51cd1fe54a8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920716"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008980"
 ---
-# <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurace řízení přístupu na základě rolí v akcelerátoru řešení vzdáleného monitorování
+# <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>Konfigurace řízení přístupu na základě role v akcelerátoru řešení vzdáleného monitorování
 
-Tento článek poskytuje informace o tom, jak nakonfigurovat řízení přístupu na základě rolí v akcelerátoru řešení vzdáleného monitorování. Řízení přístupu na základě rolí umožňuje omezit přístup pro jednotlivé uživatele na konkrétní funkce v řešení.
+Tento článek poskytuje informace o tom, jak nakonfigurovat řízení přístupu na základě role v akcelerátoru řešení vzdáleného monitorování. Řízení přístupu na základě rolí umožňuje omezit přístup pro jednotlivé uživatele na konkrétní funkce v řešení.
 
 ## <a name="default-settings"></a>Výchozí nastavení
 
@@ -26,22 +26,22 @@ Při prvním nasazení řešení vzdáleného monitorování jsou k dispozici dv
 
 Každý uživatel v roli **správce** má úplný přístup k řešení, včetně níže uvedených oprávnění. Uživatel v roli jen **pro čtení** bude mít přístup jenom k zobrazení řešení.
 
-| Oprávnění            | Správce | Jen pro čtení |
+| Oprávnění            | správce | Jen pro čtení |
 |----------------       |-------|-----------|
 | Zobrazit řešení         | Ano   | Ano       |
-| Aktualizovat alarmy         | Yes   | No        |
-| Odstranit alarmy         | Yes   | No        |
-| Vytváření zařízení        | Yes   | No        |
-| Aktualizace zařízení        | Yes   | No        |
-| Odstranit zařízení        | Yes   | No        |
-| Vytvoření skupin zařízení  | Yes   | No        |
-| Aktualizace skupin zařízení  | Yes   | No        |
-| Odstranění skupin zařízení  | Yes   | No        |
-| Vytvořit pravidla          | Yes   | No        |
-| Aktualizovat pravidla          | Yes   | No        |
-| Odstranit pravidla          | Yes   | No        |
-| Vytváření úloh           | Yes   | No        |
-| Aktualizace správy SIM | Yes   | No        |
+| Aktualizovat alarmy         | Ano   | Ne        |
+| Odstranit alarmy         | Ano   | Ne        |
+| Vytváření zařízení        | Ano   | Ne        |
+| Aktualizace zařízení        | Ano   | Ne        |
+| Odstranit zařízení        | Ano   | Ne        |
+| Vytvoření skupin zařízení  | Ano   | Ne        |
+| Aktualizace skupin zařízení  | Ano   | Ne        |
+| Odstranění skupin zařízení  | Ano   | Ne        |
+| Vytvořit pravidla          | Ano   | Ne        |
+| Aktualizovat pravidla          | Ano   | Ne        |
+| Odstranit pravidla          | Ano   | Ne        |
+| Vytváření úloh           | Ano   | Ne        |
+| Aktualizace správy SIM | Ano   | Ne        |
 
 Ve výchozím nastavení se uživateli, který toto řešení nasadí, automaticky přiřadí role **správce** a je vlastníkem aplikace Azure Active Directory. Jako vlastník aplikace můžete přiřadit role jiným uživatelům prostřednictvím Azure Portal. Pokud chcete, aby jiný uživatel přidělil role v řešení, musí být také nastaven jako vlastník aplikace v Azure Portal.
 
@@ -52,7 +52,7 @@ Ve výchozím nastavení se uživateli, který toto řešení nasadí, automatic
 
 Jako vlastník aplikace Azure Active Directory můžete pomocí Azure Portal přidat nebo odebrat uživatele k roli z řešení vzdáleného monitorování. Následující kroky používají [Azure Active Directory podnikovou aplikaci](../active-directory/manage-apps/view-applications-portal.md) , která byla vytvořena při nasazení řešení vzdáleného monitorování.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Ověřte, že se [uživatel nachází v adresáři](../active-directory/fundamentals/add-users-azure-active-directory.md) , který používáte. Zvolili jste adresář, který se má použít, když jste přihlášeni k webu [akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators) . Název adresáře je viditelný v pravém horním rohu [stránky](https://www.azureiotsolutions.com/Accelerators).
 
@@ -92,7 +92,7 @@ Následující postup popisuje, jak přidat roli do aplikace v Azure Active Dire
 
 1. Vyhledejte v Azure Portal **registraci aplikace** pro vaše řešení. Název aplikace je název vašeho řešení vzdáleného monitorování. Na následujícím snímku obrazovky jsou zobrazované názvy řešení a aplikace **Contoso-RM4**.
 
-    ![Registrace aplikace](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
+    ![Registrace aplikací](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
 1. Vyberte svou aplikaci a pak klikněte na **manifest**. Můžete si zobrazit dvě existující [role aplikace](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) definované pro aplikaci:
 
@@ -244,7 +244,7 @@ public async Task DeleteAsync(string id)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak jsou v akcelerátoru řešení vzdáleného monitorování implementovány řízení přístupu na základě rolí.
+V tomto článku jste zjistili, jak se v akcelerátoru řešení vzdáleného monitorování implementuje řízení přístupu na základě rolí.
 
 Informace o správě přístupu k Průzkumníkovi Time Series Insights v akcelerátoru řešení vzdáleného monitorování najdete v tématu věnovaném [konfiguraci ovládacích prvků přístupu pro průzkumníka Time Series Insights](iot-accelerators-remote-monitoring-rbac-tsi.md) .
 

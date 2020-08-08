@@ -3,46 +3,43 @@ title: Notification Hubs integrace s App Service Mobile Apps
 description: Přečtěte si, jak Azure Notification Hubs pracuje s Mobile Appsem Azure App Service.
 author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-documentationcenter: ''
-ms.assetid: 83132dff-a01d-4b31-a426-b57496852b81
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 08/06/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 647c5f40c7b02b8d9b488ce0812f27c0c0dde1a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e7042be7e407e8e0827e142ba6878dfff812e1f6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022136"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004064"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>Integrace s App Service Mobile Apps
 
-Pro zajištění plynulého a sjednocujícího prostředí napříč službami Azure nabízí [App Service Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) integrovanou podporu pro nabízená oznámení prostřednictvím služby Notification Hubs. Služba [App Service Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) nabízí vysoce škálovatelnou a globálně dostupnou platformu pro vývoj mobilních aplikací určenou pro vývojáře a integrátory systémů ve velkých firmách. Přináší bohatou sadu funkcí pro vývojáře pro mobilní zařízení.
+Pro usnadnění bezproblémového a sjednocení prostředí napříč službami Azure [App Service Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) má integrovaná podpora pro oznámení pomocí Azure Notification Hubs. [App Service Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) nabízí vysoce škálovatelnou a globálně dostupnou platformu pro vývoj mobilních aplikací, která umožňuje vývojářům a systémům v podnicích získat bohatou sadu funkcí pro mobilní vývojáře.
 
-Vývojáři v Mobile Apps mohou službu Notification Hubs využívat v rámci následujícího pracovního postupu:
+Mobile Apps mohou vývojáři používat Notification Hubs s následujícím pracovním postupem:
 
-1. Načtení popisovače systému PNS zařízení
-2. Registrace zařízení ve službě Notification Hubs se provádí pohodlně v registračním rozhraní API sady Mobile Apps Client SDK.
+1. Načtěte popisovač PNSa zařízení.
+2. Zaregistrujte zařízení pomocí Notification Hubs pomocí rozhraní API pro registraci Mobile Apps klientské sady SDK.
 
     > [!NOTE]
     > Mějte na paměti, že služba Mobile Apps odstraní z bezpečnostních důvodů při registraci všechny značky. Služba Notification Hubs vám umožní přiřadit značky k zařízením přímo z back-endu.
 
-3. Odesílání oznámení z back-endu aplikace pomocí Notification Hubs
+3. Odesílání oznámení z back-endu vaší aplikace pomocí Notification Hubs.
 
-Zde jsou některé výhody, které vývojáři získají díky této integraci:
+Tato integrace přináší některé výhody:
 
-- **Sady Mobile Apps Client SDK:** Tyto sady jsou univerzální pro všechny platformy. Nabízejí jednoduchá rozhraní API pro registraci a automatickou komunikaci s centrem oznámení automaticky propojeným s mobilní aplikací. Vývojáři se nemusí zabývat přihlašovacími údaji pro Notification Hubs a pracovat s další službou.
-  - *Zasílání nabízených oznámení uživatelům:* Sady SDK automaticky označí dané zařízení ověřeným ID funkce Mobile Apps, aby byl možný scénář nabízených oznámení pro uživatele.
-  - *Zasílání nabízených oznámení zařízením:* Sady SDK k registraci ve službě Notification Hubs automaticky používají instalační ID funkce Mobile Apps jako identifikátor GUID, aby vývojáři nemuseli spravovat identifikátory GUID různých služeb.
-- **Instalační model:** Funkce Mobile Apps pracuje s nejnovějším modelem nabízených oznámení služby Notification Hubs. Zastupuje všechny vlastnosti nabízených oznámení v instalaci JSON spojené se zařízením, aby vyhovovaly Službě nabízených oznámení a daly se snadno použít.
+- **Mobile Apps SDK klienta**: tyto sady SDK pro více platforem poskytují rozhraní API pro registraci a komunikují s centrem oznámení, které je propojeno s mobilní aplikací. Nepotřebujete Notification Hubs přihlašovací údaje nebo budete pracovat s další službou.
+  - *Odeslat uživateli*: sady SDK automaticky označí zadané zařízení s ID ověřeného uživatele Mobile Apps, aby bylo možné povolit vložení do uživatelského scénáře.
+  - *Odeslat do zařízení*: sady SDK automaticky používají Mobile Apps ID instalace jako identifikátor GUID k registraci v Notification Hubs, takže není nutné spravovat více identifikátorů GUID služby.
+- **Model instalace**: Mobile Apps pracuje s Notification Hubs nejnovějším modelem nabízených oznámení, který představuje všechny vlastnosti push přidružené k zařízení v instalaci JSON, které odpovídají službám nabízených oznámení a jsou snadno použitelné.
 - **Flexibilita:** Vývojáři se vždy mohou rozhodnout, že budou pracovat přímo se službou Notification Hubs, i když je tato služba integrovaná.
-- **Integrované prostředí [Azure Portal](https://portal.azure.com)**: Nabízená oznámení jsou v Mobile Apps vizuálně znázorněná jako funkce. Vývojáři mohou prostřednictvím Mobile Apps snadno pracovat s přidruženým centrem oznámení.
+- **Integrované prostředí [Azure Portal](https://portal.azure.com)**: nabízení jako funkce je vizuálně znázorněné v Mobile Apps a vývojáři můžou snadno pracovat s přidruženým centrem oznámení prostřednictvím Mobile Apps.

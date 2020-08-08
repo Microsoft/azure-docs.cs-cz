@@ -1,20 +1,18 @@
 ---
 title: Co je nového ve virtuálním počítači s Windows? – Azure
 description: Nové funkce a aktualizace produktů pro virtuální počítač s Windows
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 06/15/2020
+ms.date: 08/07/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
-ms.openlocfilehash: 7fc1655b94689808eb9855340ef20bb816ad515e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 8663fc3f016fadcd4f4c99acd800cd0ccf8844f8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922536"
+ms.locfileid: "88003536"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Co je nového ve virtuálním počítači s Windows?
 
@@ -27,13 +25,48 @@ Virtuální počítače s Windows se pravidelně aktualizují. V tomto článku 
 
 Tento článek se aktualizuje měsíčně. Nezapomeňte se podívat, jak často se budou zobrazovat nové aktualizace.
 
+## <a name="july-2020"></a>Červenec 2020  
+
+Červenec byla v době, kdy se integrace virtuálních počítačů s Windows s Azure Resource Management stala všeobecně dostupnou.
+
+Tato nová verze se změnila: 
+
+- "Verze 2019 Release" se teď označuje jako "virtuální plocha Windows (Classic)", zatímco vydaná verze pružiny 2020 je teď jenom "virtuální plocha Windows". Další informace najdete v [tomto blogovém příspěvku](https://azure.microsoft.com/blog/new-windows-virtual-desktop-capabilities-now-generally-available/). 
+
+Další informace o nových funkcích najdete v [tomto blogovém příspěvku](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245). 
+
+### <a name="autoscaling-tool-update"></a>Aktualizace nástroje automatického škálování
+
+Nejnovější verze nástroje pro automatické škálování, který je ve verzi Preview, je teď všeobecně dostupná. Tento nástroj používá účet Azure Automation a aplikaci logiky Azure k automatickému vypnutí a restartování virtuálních počítačů hostitele relace v rámci fondu hostitelů, což snižuje náklady na infrastrukturu. Další informace najdete v informacích o [škálování hostitelů relací pomocí Azure Automation](set-up-scaling-script.md).
+
+### <a name="azure-portal"></a>portál Azure
+
+Pomocí Azure Portal ve virtuální ploše Windows teď můžete provádět následující akce: 
+
+- Přímé přiřazování uživatelů k hostitelům relace na osobním počítači  
+- Změna nastavení prostředí ověřování pro fondy hostitelů 
+
+### <a name="diagnostics"></a>Diagnostika
+
+Vydali jsme některé nové předem připravené dotazy pro Log Analytics pracovní prostor. Pokud chcete získat přístup k dotazům, přejděte na **protokoly** a v části **kategorie**vyberte **virtuální klient Windows**. Další informace najdete v [části použití Log Analytics pro diagnostické funkce](diagnostics-log-analytics.md).
+
+### <a name="update-for-remote-desktop-client-for-android"></a>Aktualizace pro klienta vzdálené plochy pro Android
+
+[Klient služby Vzdálená plocha pro Android](https://play.google.com/store/apps/details?id=com.microsoft.rdc.androidx) teď podporuje připojení k virtuálním plochám Windows. Od verze 10.0.7 klient pro Android nabízí nové uživatelské rozhraní pro lepší uživatelské prostředí. Klient se taky integruje s Microsoft Authenticator na zařízeních s Androidem, aby se při přihlášení k odběru virtuálních počítačů s Windows virtuálními plochami povolil podmíněný přístup.  
+
+Předchozí verze klienta vzdálené plochy se teď nazývá "Vzdálená plocha 8". Všechna existující připojení, která jste v předchozí verzi klienta, budou bezproblémově převedena na nového klienta. Nový klient se přepsal do stejného základního modulu protokolu RDP Core jako klienti iOS a macOS, což je rychlejší vydání nových funkcí napříč všemi platformami. 
+
+### <a name="teams-update"></a>Aktualizace týmů
+
+Provedli jsme vylepšení Microsoft Teams pro virtuální počítače s Windows. Nejdůležitější je, že Windows Virtual Desktop teď podporuje optimalizaci zvuku a videa pro klienta Windows Desktop. Přesměrování vylepšuje latenci vytvořením přímých cest mezi uživateli při použití zvuku nebo videa v voláních a schůzkách. Menší vzdálenost znamená menší počet segmentů směrování, což způsobí, že volání budou vypadat a hladce zvuk. Další informace najdete v informacích [o používání týmů na virtuálním počítači s Windows](teams-on-wvd.md).
+
 ## <a name="june-2020"></a>Červen 2020
 
 Minulý měsíc představili jsme virtuální plochu Windows s Azure Resource Manager Integration ve verzi Preview. Tato aktualizace má spoustu zajímavých nových funkcí, o kterých vám řekneme. Tady je co je novinka v této verzi virtuálního klienta Windows.
 
-### <a name="windows-virtual-desktop-is-now-integrated-with-azure-resource-manager-preview"></a>Virtuální počítač s Windows je teď integrovaný do Azure Resource Manager (Preview).
+### <a name="windows-virtual-desktop-is-now-integrated-with-azure-resource-manager"></a>Virtuální plocha Windows je teď integrovaná s Azure Resource Manager
 
-Virtuální počítač s Windows je teď integrovaný do Azure Resource Manager. V nejnovější aktualizaci jsou nyní všechny objekty virtuálních klientů Windows Azure Resource Manager prostředky. Tato aktualizace je také integrovaná s řízení přístupu na základě role (RBAC) v Azure. Další informace najdete v tématu [co je Azure Resource Manager?](../azure-resource-manager/management/overview.md) .
+Virtuální počítač s Windows je teď integrovaný do Azure Resource Manager. V nejnovější aktualizaci jsou nyní všechny objekty virtuálních klientů Windows Azure Resource Manager prostředky. Tato aktualizace je také integrovaná s řízením přístupu na základě role Azure (Azure RBAC). Další informace najdete v tématu [co je Azure Resource Manager?](../azure-resource-manager/management/overview.md) .
 
 Tady je tato změna pro vás:
 
@@ -49,7 +82,7 @@ Tady je tato změna pro vás:
 
 - Funkce monitorování, které se použily k provedení prostřednictvím PowerShellu nebo webové aplikace diagnostické služby, se teď přesunuly na Log Analytics v Azure Portal. Nyní máte dvě možnosti vizualizace vašich sestav. Můžete spouštět dotazy Kusto a používat sešity k vytváření vizuálních sestav.
 
-- Už nebudete muset Azure Active Directory (Azure AD) vyjádřit souhlas s používáním virtuálního klienta Windows. V této aktualizaci tenant Azure AD v předplatném Azure ověřuje vaše uživatele a poskytuje pro správce ovládací prvky RBAC.
+- Už nebudete muset Azure Active Directory (Azure AD) vyjádřit souhlas s používáním virtuálního klienta Windows. V této aktualizaci tenant Azure AD v předplatném Azure ověřuje vaše uživatele a poskytuje pro správce ovládací prvky pro řízení přístupu na základě služby.
 
 
 ### <a name="powershell-support"></a>Podpora prostředí PowerShell
@@ -60,7 +93,7 @@ Pokud chcete modul nainstalovat, postupujte podle pokynů v části [nastavení 
 
 Seznam dostupných příkazů můžete zobrazit také v [Referenční příručce k AzWvd prostředí PowerShell](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization).
 
-Další informace o nových funkcích najdete v [našem blogovém příspěvku](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245). 
+Další informace o nových funkcích najdete v [našem blogovém příspěvku](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245).
 
 ### <a name="additional-gateways"></a>Další brány
 

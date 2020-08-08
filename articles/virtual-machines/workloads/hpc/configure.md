@@ -10,15 +10,15 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 08/01/2020
+ms.date: 08/07/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: dfa1c790dc0f2e229b3bfa19616e5760c3d3d02e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d4661c0819d214a2c750eb1582559f8d8a5959ed
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825136"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006600"
 ---
 # <a name="configure-and-optimize-vms"></a>Konfigurace a optimalizace virtuálních počítačů
 
@@ -27,9 +27,18 @@ Tento článek sdílí známé techniky pro konfiguraci a optimalizaci virtuáln
 ## <a name="vm-images"></a>Image virtuálních počítačů
 Na virtuálních počítačích s povolenou funkcí InfiniBand je nutné, aby byly k dispozici vhodné ovladače pro povolení RDMA. V systému Linux jsou image virtuálních počítačů CentOS-HPC na webu Marketplace předem nakonfigurované s příslušnými ovladači. Image virtuálních počítačů s Ubuntu se dají nakonfigurovat pomocí správných ovladačů podle [pokynů uvedených tady](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351). Doporučuje se také vytvořit [vlastní image virtuálních počítačů](../../linux/tutorial-custom-images.md) s příslušnými ovladači a konfigurací a znovu je použít.
 
+> [!NOTE]
+> U virtuálních počítačů s povoleným GPU [řady N-Series](../../sizes-gpu.md) se navíc vyžadují příslušné ovladače GPU, které je možné přidat pomocí [rozšíření virtuálních počítačů](../../extensions/hpccompute-gpu-linux.md) nebo [ručně](../../linux/n-series-driver-setup.md). Některé image virtuálních počítačů na webu Marketplace jsou také předem nainstalovány s ovladači GPU NVIDIA.
+
 ### <a name="centos-hpc-vm-images"></a>Image virtuálních počítačů CentOS-HPC
+
+#### <a name="non-sr-iov-enabled-vms"></a>Virtuální počítače s podporou nevyužívající rozhraní SR-IOV
 Pro [virtuální počítače](../../sizes-hpc.md#rdma-capable-instances)podporující technologii RDMA s podporou SR-IOV, CentOS-HPC verze 6,5 nebo novější, jsou vhodné až 7,5 na webu Marketplace. Například pro [virtuální počítače řady H16 úrovně-Series](../../h-series.md)se doporučuje verze 7,1 až 7,5. Tyto image virtuálních počítačů jsou předem načtené pomocí síťových přímých ovladačů pro RDMA a Intel MPI verze 5,1.
 
+> [!NOTE]
+> V těchto imagích HPC založených na CentOS pro virtuální počítače, které nejsou povolené SR-IOV, jsou aktualizace jádra v konfiguračním souboru **Yumu** zakázané. Důvodem je to, že ovladače RDMA pro NetworkDirect Linux jsou distribuované jako balíček ot./min. a aktualizace ovladačů nemusí fungovat, pokud je jádro aktualizované.
+
+#### <a name="sr-iov-enabled-vms"></a>Virtuální počítače s podporou SR-IOV
   Pro [virtuální počítače podporující](../../sizes-hpc.md#rdma-capable-instances)rozhraní SR-IOV, které podporuje RDMA, jsou vhodné image [CentOS-HPC verze 7,6 nebo novější](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) verze virtuálních počítačů na webu Marketplace. Tyto image virtuálních počítačů přináší optimalizované a předem načtené ovladače OFED pro RDMA a různé běžně používané knihovny MPI a vědecké výpočetní balíčky a představují nejjednodušší způsob, jak začít.
 
   Příklady skriptů použitých při vytváření imagí virtuálních počítačů CentOS-HPC verze 7,6 a novější z image základního CentOS na webu Marketplace jsou v [úložišti azhpc-images](https://github.com/Azure/azhpc-images/tree/master/centos).

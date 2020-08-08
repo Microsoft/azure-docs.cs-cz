@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: f07b71bf8996612798b87d32a21a15ec72db0b32
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 6271cb449b6bbc80269dd325bd5acd7edd2e0a6d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140911"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010928"
 ---
 Tato kategorie entit zahrnuje finanční informace a oficiální formy identifikace. K dispozici počínaje verzí modelu `2019-10-01` . Níže jsou uvedeny podtypy. 
 
@@ -39,28 +39,39 @@ Níže uvedené entity jsou seskupené podle země:
 Argentina
 * Číslo argentinské National identity (DNI)
 
+Rakousko
+* Karta identity v Rakousku
+* Daňové identifikační číslo v Rakousku
+* Číslo DPH přidané v hodnotě Rakousko
+
 Austrálie
-* Číslo služby Passport v Austrálii
-* Číslo daňového souboru v Austrálii
+* Číslo bankovního účtu Austrálie
+* Australské obchodní číslo
+* Číslo australské společnosti
 * Číslo licence ovladače Austrálie
 * Číslo zdravotního účtu Austrálie
-* Číslo bankovního účtu Austrálie
+* Číslo služby Passport v Austrálii
+* Číslo daňového souboru v Austrálii
 
 Belgie
 * Národní číslo v Belgii
+* Daňové číslo přidané hodnoty v Belgii
 
 Brazílie 
 * Brazílie – právní číslo entity (CNPJ)
 * Brazílie – CPF číslo
 * Karta National ID Brazílie (RG)
 
+Bulharsko
+* Bulharsko jednotné občanské číslo
+
 Kanada
-* Rodné číslo v Kanadě
-* Číslo licence ovladače Kanady
 * Číslo bankovního účtu v Kanadě
+* Číslo licence ovladače Kanady
+* Číslo Health Service pro Kanadu
 * Číslo služby Passport pro Kanadu
 * Kanada – osobní identifikační číslo zdravotního stavu (PHIN)
-* Číslo Health Service pro Kanadu
+* Rodné číslo v Kanadě
 
 Chile
 * Číslo karty identity 
@@ -70,7 +81,12 @@ Chile
 
 Chorvatsko
 * Chorvatsko číslo karty identity
+* Státní identifikační číslo na kartě Chorvatsko
 * Osobní identifikační číslo (OIB) Chorvatsku
+
+Kypr
+* Číslo karty Kypru identity
+* Daňové identifikační číslo Kypru
 
 Česká republika
 * Osobní identifikační číslo v češtině
@@ -78,34 +94,49 @@ Chorvatsko
 Dánsko
 * Dánsko – osobní identifikační číslo
 
+Estonsko
+* Estonsko – osobní identifikační kód
+
 Evropské unie (EU)
+* Číslo debetní karty v EU
+* Číslo licence ovladače EU
 * Národní identifikační číslo v EU
 * Číslo Passportu EU
-* Číslo licence ovladače EU
 * Číslo sociálního pojištění (SSN) nebo ekvivalentní ID pro EU
 * Daňové identifikační číslo (DIČ) EU
-* Číslo debetní karty v EU
 
 Finsko
+* Finsko – evropské číslo pojištění pro nákazy
 * Národní ID Finska
 * Číslo Finska služby Passport
 
 Francie
-* Karta National ID Francie (CNI)
-* Francouzský rodné číslo (INSEE)
-* Francouzský pas číslo
 * Číslo licence ovladače Francie
+* Číslo pojištění stavu Francie
+* Karta National ID Francie (CNI)
+* Francouzský pas číslo
+* Francouzský rodné číslo (INSEE)
+* Daňové identifikační číslo pro Francii (numéro SPI.)
+* Daňové číslo přidané hodnoty Francie
 
 Německo
+* Číslo licence německého ovladače
 * Číslo karty identity v Německu
 * Německé číslo služby Passport
-* Číslo licence německého ovladače
+* Daňové identifikační číslo pro Německo
+* Daňové číslo přidané hodnoty v Německu
 
 Řecko 
 * Číslo karty národního ID Řecka
+* Daňové identifikační číslo pro Řecko
 
 Hongkong
 * Číslo HKID (Hongkong – zvláštní identita)
+
+Maďarsko
+* Národní identifikační číslo Maďarska
+* Daňové identifikační číslo v Maďarsku
+* Daňové číslo přidané hodnoty v Maďarsku
 
 Indie
 * Indie – trvalé číslo účtu (PAN)
@@ -123,23 +154,47 @@ Izrael
 
 Itálie
 * ID licence ovladače Itálie
+* Fiskální kód Itálie
+* Daňové číslo přidané hodnoty v Itálii
 
 Japonsko
+* Číslo bankovního účtu Japonska
+* Číslo licence ovladače Japonska
+* Japonské číslo osobní
+* Moje číslo společnosti v japonštině
 * Registrační číslo rezidenta v japonštině
 * Číslo karty japonského pobytu
-* Číslo licence ovladače Japonska
-* Číslo sociálního pojištění (SIN)
+* Číslo sociálního pojištění Japonska (SIN)
 * Japonské číslo služby Passport
-* Číslo bankovního účtu Japonska
+
+Lotyšsko
+* Lotyšsko – osobní kód
+
+Litva
+* Osobní kód v Litvě
+
+Lucembursko
+* Lucembursko, národní identifikační číslo (fyzické osoby)
+* Lucembursko národní identifikační číslo (nefyzické osoby)
 
 Malajsie
 * Číslo karty identity Malajsie
 
+Malta
+* Malta číslo karty identity
+* Daňové identifikační číslo Malty
+
 Nizozemsko
 * Číslo služby (BSN) nizozemského občana
+* Nizozemské daňové identifikační číslo
+* Daňové číslo přidané hodnoty v Nizozemsku
 
 Nový Zéland
+* Číslo bankovního účtu Nového Zélandu
+* Číslo licence ovladače Nového Zélandu
+* Číslo Nového Zélandu v vnitrozemských výnosech
 * Nové ministerstvo, které má číslo zdravotního Zélandu
+* Číslo sociální péče na Novém Zélandu
 
 Norsko
 * Číslo identity Norska
@@ -150,16 +205,33 @@ Filipíny
 Polsko
 * Karta identity Polska
 * Mezinárodní ID Polska (PESEL)
-* Polsko Passport
+* Číslo Polska Passport
+* REGON číslo Polska
+* Daňové identifikační číslo Polska
 
 Portugalsko 
 * Číslo karty občanů v Portugalsku
+* Daňové identifikační číslo Portugalska
+
+Rumunsko
+* Rumunsko – osobní číselný kód (CNP)
+
+Rusko
+* Ruské Passport číslo (domácí)
+* Ruské Passport číslo (mezinárodní)
 
 Saúdská Arábie
 * Národní ID Saúdské Arábii
 
 Singapur
 * Číslo karty (NRIC) Singapuru (National registration ID)
+
+Slovensko 
+* Osobní číslo Slovenska
+
+Slovinsko
+* Daňové identifikační číslo pro Slovinsko
+* Jedinečné hlavní číslo občana Slovinsko
 
 Jižní Afrika
 * Identifikační číslo Jižní Afriky
@@ -168,11 +240,17 @@ Jižní Korea
 * Registrační číslo pro rezidentské Jižní Korea
 
 Španělsko 
+* Španělsko DNI
 * Rodné číslo (sociální zabezpečení)
+* Daňové identifikační číslo pro Španělsko
 
 Švédsko
 * Národní ID Švédska
 * Švédský pas číslo
+* Daňové identifikační číslo Švédska
+
+Švýcarsko
+* Švýcarský sociální rodné číslo AHV
 
 Tchaj-wan 
 * Mezinárodní ID pro Tchaj-wan
@@ -182,18 +260,25 @@ Tchaj-wan
 Thajsko
 * Thajský identifikační kód naplnění
 
+Turecko
+* Národní identifikační číslo v turečtině
+
+Ukrajina
+* Ukrajina (domácí) číslo služby Passport
+* Ukrajina – číslo pasu (mezinárodní)
+
 Spojené království
-* ID služby Passport
 * britské Číslo řidičského průkazu
-* britské Národní pojišťovací číslo (NINO)
-* britské Národní číslo Health Service
 * britské Číslo Shrnutí
-* USA A VELKÁ BRITÁNIE Číslo Passport
+* britské Národní číslo Health Service (NHS)
+* britské Národní pojišťovací číslo (NINO)
+* britské Číslo Passport
+* britské Jedinečné referenční číslo plátce
 
 USA
 * Číslo sociálního pojištění USA (SSN)
 * Číslo licence ovladače USA
-* USA A VELKÁ BRITÁNIE Číslo Passport
+* Číslo služby Passport pro USA
 * Jednotlivá daňové identifikační číslo (ITIN) USA
-* Číslo v úřadu pro vynucování drog (DEA)
+* Číslo DEA (USA) pro vynucovací orgány
 * Číslo účtu banky v USA

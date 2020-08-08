@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 3d9360a4b5c5f0ef080b3de2a9d425bcdf2b2e70
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: efe175e4086d5273471c1b0451e4cfb28449c236
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081895"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008929"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Řešení potíží s časovými limity služby Azure Cache for Redis
 
@@ -47,7 +47,7 @@ Tato chybová zpráva obsahuje metriky, které vám pomohou Ukázat příčinu a
 | qs |67 probíhajících operací bylo odesláno na server, ale odpověď zatím není k dispozici. Odpověď může být `Not yet sent by the server` nebo.`sent by the server but not yet processed by the client.` |
 | QC |počet probíhajících operací zaznamenal odpovědi, ale ještě nebyly označeny jako splněné, protože čekají na cyklus dokončení. |
 | radiační |Existuje aktivní zapisovač (to znamená, že 6 neodeslaných požadavků se Neignoruje) bajtů/activewriters |
-| se |Nejsou k dispozici žádná aktivní čtecí zařízení a v bajtech síťových adaptérů/activereaders je k dispozici nula bajtů. |
+| in |Nejsou k dispozici žádná aktivní čtecí zařízení a v bajtech síťových adaptérů/activereaders je k dispozici nula bajtů. |
 
 Pomocí následujících kroků můžete prozkoumat možné hlavní příčiny.
 
@@ -120,5 +120,5 @@ Pomocí následujících kroků můžete prozkoumat možné hlavní příčiny.
 
 - [Řešení potíží se službou Azure Cache for Redis na straně klienta](cache-troubleshoot-client.md)
 - [Řešení potíží se službou Azure Cache for Redis na straně serveru](cache-troubleshoot-server.md)
-- [Jak mohu srovnávací testy a testovat výkon své mezipaměti?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Jak mohu srovnávací testy a testovat výkon své mezipaměti?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [Jak monitorovat Azure cache pro Redis](cache-how-to-monitor.md)

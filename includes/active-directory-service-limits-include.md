@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 840357f51bbeeb877aba48fd8d04baad204cec1e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: ba0791108878dada5088428ce40d1af672d1892a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375185"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010912"
 ---
 Tady jsou omezení využití a další omezení služby Azure Active Directory (Azure AD).
 
@@ -30,4 +30,4 @@ Tady jsou omezení využití a další omezení služby Azure Active Directory (
 | Přístupový panel |Neexistuje žádné omezení počtu aplikací, které lze zobrazit na přístupovém panelu na uživatele bez ohledu na přiřazené licence.  |
 | Sestavy | V jednotlivých sestavách je možné zobrazit nebo stáhnout maximálně 1 000 řádků. Veškerá další data se oříznou. |
 | Jednotky pro správu | Prostředek služby Azure AD může být členem maximálně 30 jednotek pro správu. |
-| Oprávnění a role správce | <ul><li>Skupinu nelze přidat jako [vlastníka](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership).</li><li>Skupině nelze přiřadit [roli](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).</li><li>Možnost uživatelů číst informace o adresáři jiných uživatelů nejde omezit mimo přepínač pro celou organizaci Azure AD a zakázat přístup všem uživatelům bez oprávnění správce ke všem informacím v adresáři (nedoporučuje se). Další informace o výchozích oprávněních [najdete tady](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Může trvat až 15 minut nebo se odhlásit nebo přihlašovat před tím, než se projeví a odvolání členství v roli správce.</li></ul> |
+| Oprávnění a role správce | <ul><li>Skupinu nelze přidat jako [vlastníka](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership).</li><li>Možnost uživatelů číst informace o adresáři jiných uživatelů nejde omezit mimo přepínač pro celou organizaci Azure AD a zakázat přístup všem uživatelům bez oprávnění správce ke všem informacím v adresáři (nedoporučuje se). Další informace o výchozích oprávněních [najdete tady](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Může trvat až 15 minut nebo se odhlásit nebo přihlašovat před tím, než se projeví a odvolání členství v roli správce.</li></ul> |

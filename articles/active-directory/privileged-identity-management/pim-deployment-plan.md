@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/28/2020
+ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c0fbb62f411ccc3056d782518c6c3b570106d2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9e8250661fdbd6c67faade31caaed61ee8a399fe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828621"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008082"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Nasazení Azure AD Privileged Identity Management (PIM)
 
@@ -27,9 +27,9 @@ V tomto podrobném průvodci se dozvíte, jak naplánovat nasazení Privileged I
 
 > [!TIP]
 > V celém tomto článku se zobrazí položky označené jako:
-> 
+>
 > : heavy_check_mark: Společnost **Microsoft doporučuje**
-> 
+>
 > Toto jsou obecná doporučení a měli byste je implementovat jenom v případě, že se vztahují na vaše konkrétní podnikové potřeby.
 
 ## <a name="learn-about-privileged-identity-management"></a>Informace o Privileged Identity Management
@@ -100,7 +100,7 @@ Následující část vám pomůže identifikovat všechny zúčastněné strany
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Zúčastněné strany: Privileged Identity Management pro role Azure AD
 
-| Název | Role | Akce |
+| Name | Role | Akce |
 | --- | --- | --- |
 | Jméno a e-mail | **Architekt identity nebo globální správce Azure**<br/>Zástupce z týmu pro správu identit, který má za následek definování způsobu, jakým se tato změna rovná, s hlavní infrastrukturou správy identit ve vaší organizaci. | TAKŽE/R/I |
 | Jméno a e-mail | **Vlastník služby/manažer line**<br/>Zástupce od vlastníků IT služby nebo skupiny služeb. Jsou klíčem k rozhodování a přispívání Privileged Identity Management pro svůj tým. | TAKŽE/R/I |
@@ -110,7 +110,7 @@ Následující část vám pomůže identifikovat všechny zúčastněné strany
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Zúčastněné strany: Privileged Identity Management pro role prostředků Azure
 
-| Název | Role | Akce |
+| Name | Role | Akce |
 | --- | --- | --- |
 | Jméno a e-mail | **Předplatné/vlastník prostředku**<br/>Zástupce od vlastníků IT každého předplatného nebo prostředku, který chcete nasadit Privileged Identity Management pro | TAKŽE/R/I |
 | Jméno a e-mail | **Vlastník zabezpečení**<br/>Zástupce bezpečnostního týmu, který se může odhlásit, že plán splňuje požadavky vaší organizace na zabezpečení. | SO/R |
@@ -142,9 +142,9 @@ Postupujte podle těchto kroků, abyste vynutili princip nejnižších oprávně
 
 1. Přečtěte si o [dostupných rolích správce Azure AD](../users-groups-roles/directory-assign-admin-roles.md#available-roles)a pochopte si členitost rolí. Vy a váš tým by měl také odkazovat na [role správců podle identity ve službě Azure AD](../users-groups-roles/roles-delegate-by-task.md), která vysvětluje nejnižší privilegovaný roli pro konkrétní úkoly.
 
-1. Seznam obsahující privilegované role ve vaší organizaci. [Průvodce Privileged Identity Management](pim-security-wizard.md#run-the-wizard) můžete použít k získání stránky podobné následujícímu.
+1. Seznam obsahující privilegované role ve vaší organizaci. Pomocí nástroje Privileged Identity Management [Discovery and Insights (Preview)](pim-security-wizard.md) se dostanete na stránku, například následující.
 
-    ![Podokno zjistit privilegované role zobrazující, kdo má privilegované role](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![Stránka zjišťování a přehled (Preview), která umožňuje omezit expozici pomocí privilegovaných rolí](./media/pim-deployment-plan/new-preview-page.png)
 
 1. U všech globálních správců ve vaší organizaci Zjistěte, proč potřebují roli. V závislosti na tom, jestli je možné úlohu uživatele provést pomocí jedné nebo více podrobných rolí správce, je potřeba, abyste je odebrali z role globálního správce a v Azure Active Directory (jako odkaz), že Microsoft má v současnosti jenom zhruba 10 správců s rolí globálního správce. Další informace [o tom, jak Microsoft používá Privileged Identity Management](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access))
 

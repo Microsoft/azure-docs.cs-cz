@@ -1,19 +1,17 @@
 ---
 title: Osvědčené postupy zabezpečení virtuálních počítačů s Windows – Azure
 description: Osvědčené postupy pro zabezpečení prostředí virtuálních počítačů s Windows
-services: virtual-desktop
 author: heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 95f1027f4f5ace6963a38edf0dc028ddca351b7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736668"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002292"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
 
@@ -31,16 +29,16 @@ Tady jsou požadavky na zabezpečení, na které zodpovídáte při nasazení vi
 
 | Nutnost zabezpečení | Je zákazník zodpovědný za to? |
 |---------------|:-------------------------:|
-|Identita|Yes|
-|Zařízení uživatelů (mobilní zařízení a počítač)|Yes|
-|Zabezpečení aplikací|Yes|
-|Operační systém hostitele relace|Yes|
-|Konfigurace nasazení|Yes|
-|Správa sítě|Yes|
-|Rovina řízení virtualizace|No|
-|Fyzičtí hostitelé|No|
-|Fyzická síť|No|
-|Fyzické datacentrum|No|
+|Identita|Ano|
+|Zařízení uživatelů (mobilní zařízení a počítač)|Ano|
+|Zabezpečení aplikací|Ano|
+|Operační systém hostitele relace|Ano|
+|Konfigurace nasazení|Ano|
+|Správa sítě|Ano|
+|Rovina řízení virtualizace|Ne|
+|Fyzičtí hostitelé|Ne|
+|Fyzická síť|Ne|
+|Fyzické datacentrum|Ne|
 
 Zabezpečení vyžaduje, aby zákazník nezodpovědný za zpracování Microsoftem.
 
@@ -103,7 +101,7 @@ Hostitelé relací jsou virtuální počítače, které běží v rámci předpl
 
 ### <a name="enable-endpoint-protection"></a>Povolit službu Endpoint Protection
 
-Pro ochranu vašeho nasazení před známým škodlivým softwarem doporučujeme povolit službu Endpoint Protection na všech hostitelích relací. Můžete použít antivirovou ochranu v programu Windows Defender nebo program třetí strany. Další informace najdete v tématu [Průvodce nasazením antivirové ochrany v programu Windows Defender v prostředí VDI](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus). 
+Pro ochranu vašeho nasazení před známým škodlivým softwarem doporučujeme povolit službu Endpoint Protection na všech hostitelích relací. Můžete použít antivirovou ochranu v programu Windows Defender nebo program třetí strany. Další informace najdete v tématu [Průvodce nasazením antivirové ochrany v programu Windows Defender v prostředí VDI](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus).
 
 V případě profilových řešení, jako je FSLogix nebo jiná řešení, která připojovat soubory VHD, doporučujeme vyloučit přípony souborů VHD.
 

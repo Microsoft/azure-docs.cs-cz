@@ -1,19 +1,17 @@
 ---
 title: Vytvoření hostitelského fondu virtuálních počítačů s Windows (Classic) – Azure
 description: Postup vytvoření fondu hostitelů ve virtuální ploše Windows (Classic) pomocí rutin prostředí PowerShell.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7bc1e229711ef24b07641c5767f5f60c17a3b97c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c035a7fbafe9b3a42fbd16e3f8377014010ddd49
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291284"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003540"
 ---
 # <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>Vytvoření fondu hostitelů ve virtuální ploše Windows (Classic) pomocí PowerShellu
 

@@ -4,12 +4,12 @@ description: Kolekce operátoru clusteru a osvědčené postupy pro vývojáře 
 services: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.openlocfilehash: 627eeffd18a479486e5a682da06bf89cd5f8f0e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1278a03d3ffc7ccb11b0e3c4c84f6c213648440b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77596313"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008776"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Doporučené postupy pro vytváření a správu aplikací ve službě Azure Kubernetes (AKS) pro operátora clusteru a vývojáře
 
@@ -21,7 +21,7 @@ Tyto osvědčené postupy a koncepční články byly napsány ve spojení se sk
 
 Jako operátor clusteru můžete spolupracovat s vlastníky aplikací a vývojáři a pochopit jejich potřeby. Pak můžete pomocí následujících osvědčených postupů nakonfigurovat clustery AKS podle potřeby.
 
-**Víceklientská architektura**
+**Architektura s více tenanty**
 
 * [Osvědčené postupy pro izolaci clusteru](operator-best-practices-cluster-isolation.md)
     * Zahrnuje základní komponenty víceklientské architektury a logickou izolaci s obory názvů.
@@ -30,7 +30,7 @@ Jako operátor clusteru můžete spolupracovat s vlastníky aplikací a vývojá
 * [Osvědčené postupy pro pokročilé funkce plánovače](operator-best-practices-advanced-scheduler.md)
     * Zahrnuje použití chuti a tolerování, selektorů uzlů a spřažení a spřažení a proti spřažení.
 * [Osvědčené postupy pro ověřování a autorizaci](operator-best-practices-identity.md)
-    * Zahrnuje integraci s Azure Active Directory, použití řízení přístupu na základě rolí (RBAC) a identity pod.
+    * Zahrnuje integraci s Azure Active Directory, použití řízení přístupu na základě role (RBAC) a identity pod.
 
 **Zabezpečení**
 
@@ -68,7 +68,7 @@ Pro pochopení některých funkcí a součástí těchto osvědčených postupů
 
 * [Základní koncepty Kubernetes](concepts-clusters-workloads.md)
 * [Přístup a identita](concepts-identity.md)
-* [Koncepty zabezpečení](concepts-security.md)
+* [Koncepce zabezpečení](concepts-security.md)
 * [Koncepty sítě](concepts-network.md)
 * [Možnosti úložiště](concepts-storage.md)
 * [Možnosti škálování](concepts-scale.md)

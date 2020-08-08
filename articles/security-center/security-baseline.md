@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9bd0f1cbe1f4797a0187952b94ca48077bb3134c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0809c9eb1f64dc6a505ef50e25f973aa041d186d
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854299"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004487"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>Základní hodnoty zabezpečení Azure pro Security Center
 
@@ -190,7 +190,7 @@ Případně můžete povolit a začlenit data související s a vyprodukovanými
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Pokyny**: řízení přístupu na základě role (RBAC) v Azure umožňuje spravovat přístup k prostředkům Azure prostřednictvím přiřazení rolí. Tyto role můžete přiřadit uživatelům, skupinám instančních objektů a spravovaným identitám. Pro určité prostředky jsou předem definované předdefinované role a tyto role můžou být v inventáři nebo prostřednictvím nástrojů, jako je Azure CLI, Azure PowerShell nebo Azure Portal. Azure Security Center má předdefinované role pro nástroj Security Reader nebo Security admin, který umožňuje uživatelům číst nebo aktualizovat zásady zabezpečení a odpustit výstrahy a doporučení.
+**Pokyny**: řízení přístupu na základě role v Azure (Azure RBAC) umožňuje spravovat přístup k prostředkům Azure prostřednictvím přiřazení rolí. Tyto role můžete přiřadit uživatelům, skupinám instančních objektů a spravovaným identitám. Pro určité prostředky jsou předem definované předdefinované role a tyto role můžou být v inventáři nebo prostřednictvím nástrojů, jako je Azure CLI, Azure PowerShell nebo Azure Portal. Azure Security Center má předdefinované role pro nástroj Security Reader nebo Security admin, který umožňuje uživatelům číst nebo aktualizovat zásady zabezpečení a odpustit výstrahy a doporučení.
 
 - [Oprávnění ve službě Azure Security Center](security-center-permissions.md)
 
@@ -344,7 +344,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
-**Pokyny**: Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit pomocí Azure Active Directory RBAC.
+**Pokyny**: Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit prostřednictvím Azure RBAC.
 
 Ve výchozím nastavení se Azure Security Center data ukládají do back-endové služby Security Center. Pokud vaše organizace přidala požadavky na ukládání těchto dat ve vlastních zdrojích, můžete nakonfigurovat Log Analytics pracovní prostor pro ukládání Security Centerch dat, výstrah a doporučení. Při používání vlastního pracovního prostoru můžete přidat další oddělení konfigurací různých pracovních prostorů v závislosti na tom, ve kterém prostředí data pocházejí.
 
@@ -376,15 +376,15 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 **Odpovědnost**: sdílená
 
-### <a name="46-use-role-based-access-controls-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě rolí 
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC. 
 
-**Doprovodné**materiály: použití řízení přístupu na základě rolí Azure ke správě přístupu k datům a prostředkům souvisejícím s Azure Security Center. Azure Security Center má předdefinované role pro nástroj Security Reader nebo Security admin, který umožňuje uživatelům číst nebo aktualizovat zásady zabezpečení a odpustit výstrahy a doporučení. Pracovní prostor Log Analytics, ve kterém jsou uložena data shromážděná Security Center obsahuje také předdefinované role, které můžete přiřadit jako ' Log Analytics Reader ', ' Log Analytics Přispěvatel ' a další. Přiřaďte nejnižší povolující roli, kterou uživatelé potřebují k dokončení požadovaných úkolů. Přiřaďte například roli Čtenář uživatelům, kteří potřebují jenom zobrazit informace o stavu zabezpečení prostředku, ale neprovádějí akci, jako je třeba použití doporučení nebo úprav zásad.
+**Pokyny**: pomocí řízení přístupu na základě role Azure (Azure RBAC) můžete spravovat přístup k datům a prostředkům souvisejícím s Azure Security Center. Azure Security Center má předdefinované role pro nástroj Security Reader nebo Security admin, který umožňuje uživatelům číst nebo aktualizovat zásady zabezpečení a odpustit výstrahy a doporučení. Pracovní prostor Log Analytics, ve kterém jsou uložena data shromážděná Security Center obsahuje také předdefinované role, které můžete přiřadit jako ' Log Analytics Reader ', ' Log Analytics Přispěvatel ' a další. Přiřaďte nejnižší povolující roli, kterou uživatelé potřebují k dokončení požadovaných úkolů. Přiřaďte například roli Čtenář uživatelům, kteří potřebují jenom zobrazit informace o stavu zabezpečení prostředku, ale neprovádějí akci, jako je třeba použití doporučení nebo úprav zásad.
 
 - [Oprávnění pro pracovní prostor Azure Log Analytics](../role-based-access-control/built-in-roles.md#log-analytics-reader)
 
 - [Oprávnění ve službě Azure Security Center](security-center-permissions.md)
 
-- [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/role-assignments-portal.md)
+- [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 

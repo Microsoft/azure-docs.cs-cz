@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 02661ff3c21fa27367cc9f2c399341ed2b86db3f
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6448a2d449f86e93630d9d555e101291aa84c71e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809608"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003897"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Postup instalace agenta připojeného počítače pomocí Windows PowerShell DSC
 
@@ -49,7 +49,7 @@ Pomocí [Konfigurace požadovaného stavu Windows PowerShellu](/powershell/scrip
 
 Prostředky v tomto modulu jsou navržené tak, aby spravovaly konfiguraci agenta počítače připojeného k Azure. Součástí je také skript prostředí PowerShell `AzureConnectedMachineAgent.ps1` , který se nachází ve `AzureConnectedMachineDsc\examples` složce. Používá komunitní zdroje k automatizaci stahování a instalace a navázání připojení pomocí ARC Azure. Tento skript provádí podobné kroky popsané v tématu [připojení hybridních počítačů k Azure z Azure Portal](onboard-portal.md) .
 
-Pokud počítač potřebuje komunikovat prostřednictvím proxy server ke službě, po instalaci agenta musíte spustit příkaz, který je [zde](onboard-portal.md#configure-the-agent-proxy-setting)popsán. Tím se nastaví proměnná prostředí proxy server systému `https_proxy` . Místo ručního spuštění příkazu můžete tento krok provést s DSC pomocí modulu [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) .
+Pokud počítač potřebuje komunikovat prostřednictvím proxy server ke službě, po instalaci agenta musíte spustit příkaz, který je [zde](manage-agent.md#update-or-remove-proxy-settings)popsán. Tím se nastaví proměnná prostředí proxy server systému `https_proxy` . Místo ručního spuštění příkazu můžete tento krok provést s DSC pomocí modulu [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) .
 
 >[!NOTE]
 >Aby bylo možné spustit DSC, musí být systém Windows nakonfigurovaný tak, aby přijímal vzdálené příkazy PowerShellu i v případě, že používáte konfiguraci localhost. Pokud chcete prostředí snadno nakonfigurovat správně, stačí spustit `Set-WsManQuickConfig -Force` v terminálu PowerShellu se zvýšenými oprávněními.

@@ -1,25 +1,23 @@
 ---
 title: Latence připojení uživatele k virtuální ploše Windows – Azure
 description: Latence připojení pro uživatele virtuálních klientů Windows
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a60779fb045aa612a6ba0988c4635752f973f60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 403cf584c79bc0a166054ae36c9d2ea50e4b9d9e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82607397"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008725"
 ---
 # <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>Určení latence připojení uživatele ve virtuální ploše Windows
 
-Virtuální klient Windows je globálně dostupný. Správci můžou vytvářet virtuální počítače v libovolné oblasti Azure, které chtějí. Latence připojení se bude lišit v závislosti na umístění uživatelů a virtuálních počítačů. Služba Windows Virtual Desktop Service se průběžně zavede do nových geografických oblastí, aby se zlepšila latence. 
- 
-[Nástroj Estimator Experience pro virtuální počítače s Windows](https://azure.microsoft.com/services/virtual-desktop/assessment/) vám pomůže určit nejlepší umístění pro optimalizaci latence vašich virtuálních počítačů. Doporučujeme, abyste tento nástroj používali každých dvou až tří měsíců, abyste se ujistili, že se optimální umístění nezměnilo, protože se virtuální plocha Windows vyřadí do nových oblastí. 
+Virtuální klient Windows je globálně dostupný. Správci můžou vytvářet virtuální počítače v libovolné oblasti Azure, které chtějí. Latence připojení se bude lišit v závislosti na umístění uživatelů a virtuálních počítačů. Služba Windows Virtual Desktop Service se průběžně zavede do nových geografických oblastí, aby se zlepšila latence.
+
+[Nástroj Estimator Experience pro virtuální počítače s Windows](https://azure.microsoft.com/services/virtual-desktop/assessment/) vám pomůže určit nejlepší umístění pro optimalizaci latence vašich virtuálních počítačů. Doporučujeme, abyste tento nástroj používali každých dvou až tří měsíců, abyste se ujistili, že se optimální umístění nezměnilo, protože se virtuální plocha Windows vyřadí do nových oblastí.
 
 ## <a name="azure-traffic-manager"></a>Azure Traffic Manager
 

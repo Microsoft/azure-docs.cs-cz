@@ -1,19 +1,17 @@
 ---
 title: Co je Windows Virtual Desktop? – Azure
 description: Přehled virtuálního klienta Windows
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ff1f20314d79c507c696325d19c83e10ec4513f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 003662beefcb2ee8f99a5f565ed680d406421a62
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386568"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002383"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop?
 
@@ -139,7 +137,7 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 |Windows 7 Enterprise|Ano|Ano|Ne|Ne|
 |Windows Server 2019|Ano|Ano|Ne|Ne|
 |Windows Server 2016|Ano|Ano|Ano|Ano|
-|Windows Server 2012 R2|Ano|Ano|Ne|Ne|
+|Windows Server 2012 R2|Ano|Ano|Ne|No|
 
 ## <a name="next-steps"></a>Další kroky
 

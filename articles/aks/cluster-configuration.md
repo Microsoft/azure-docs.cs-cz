@@ -3,15 +3,15 @@ title: Konfigurace clusteru ve službě Azure Kubernetes Services (AKS)
 description: Informace o tom, jak nakonfigurovat cluster ve službě Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f1329aa056e8d1db951e01555634cf1ea709608b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c3123d22d2a13be9b9e5360e82990ba3a6320b1a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252007"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008793"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurace clusteru AKS
 
@@ -233,6 +233,67 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 
 Pokud chcete vytvořit regulární fondy uzlů Gen1, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku.
 
+
+## <a name="ephemeral-os-preview"></a>Dočasný operační systém (Preview)
+
+Ve výchozím nastavení se disk s operačním systémem pro virtuální počítač Azure automaticky replikuje do služby Azure Storage, aby se zabránilo ztrátě dat, aby se virtuální počítač mohl přeumístit na jiného hostitele. Vzhledem k tomu, že kontejnery nejsou navržené tak, aby měly trvalý místní stav, toto chování nabízí omezené hodnoty a zároveň poskytuje některé nevýhody, včetně pomalejšího zřizování uzlů a nižší latence čtení a zápisu.
+
+Naproti tomu jsou dočasné disky s operačním systémem uložené jenom na hostitelském počítači, stejně jako na dočasném disku. To zajišťuje nižší latenci čtení a zápisu společně s rychlejším škálováním uzlů a upgrady clusteru.
+
+Podobně jako na dočasném disku je dočasný disk s operačním systémem zahrnutý do ceny virtuálního počítače, takže nebudete mít k dispozici žádné další náklady na úložiště.
+
+Zaregistrujte `EnableEphemeralOSDiskPreview` funkci:
+
+```azurecli
+az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
+```
+
+Může trvat několik minut, než se stav zobrazí jako **zaregistrované**. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
+```
+
+Pokud se stav zobrazuje jako zaregistrované, aktualizujte registraci `Microsoft.ContainerService` poskytovatele prostředků pomocí příkazu [AZ Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+K instalaci rozšíření AKS-Preview rozhraní příkazového řádku použijte následující příkazy rozhraní příkazového řádku Azure:
+
+```azurecli
+az extension add --name aks-preview
+```
+
+Pokud chcete aktualizovat rozšíření CLI AKS-Preview, použijte následující příkazy rozhraní příkazového řádku Azure CLI:
+
+```azurecli
+az extension update --name aks-preview
+```
+
+### <a name="use-ephemeral-os-on-new-clusters-preview"></a>Použít dočasný operační systém pro nové clustery (Preview)
+
+Nakonfigurujte cluster, aby při vytvoření clusteru používal dočasné disky s operačním systémem. Pomocí `--aks-custom-headers` příznaku nastavte dočasný operační systém jako typ disku operačního systému pro nový cluster.
+
+```azure-cli
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+```
+
+Pokud chcete vytvořit běžný cluster pomocí disků s operačním systémem připojeného k síti, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku. Můžete se také rozhodnout přidat další dočasné fondy uzlů operačního systému podle níže uvedených pokynů.
+
+### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Použití dočasného operačního systému na existujících clusterech (Preview)
+Nakonfigurujte nový fond uzlů, aby používal dočasné disky s operačním systémem. Pomocí `--aks-custom-headers` příznaku pro tento fond uzlů nastavte jako typ disku s operačním systémem jako typ disku s operačním systémem.
+
+```azure-cli
+az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+```
+
+> [!IMPORTANT]
+> S dočasným operačním systémem můžete nasadit image virtuálních počítačů a instancí až do velikosti mezipaměti virtuálních počítačů. V případě AKS používá výchozí konfigurace disku s operačním systémem Node 100GiB, což znamená, že potřebujete velikost virtuálního počítače, která má mezipaměť větší než 100 GiB. Výchozí Standard_DS2_v2 má velikost mezipaměti 86 GiB, která není dostatečně velká. Standard_DS3_v2 má velikost mezipaměti 172 GiB, která je dostatečně velká. Výchozí velikost disku s operačním systémem můžete také snížit pomocí `--node-osdisk-size` . Minimální velikost pro Image AKS je 30GiB. 
+
+Pokud chcete vytvořit fondy uzlů s disky s operačním systémem připojené k síti, můžete to udělat tak, že vynecháte vlastní `--aks-custom-headers` značku.
+
 ## <a name="custom-resource-group-name"></a>Název vlastní skupiny prostředků
 
 Když v Azure nasadíte cluster služby Azure Kubernetes, vytvoří se pro pracovní uzly druhá skupina prostředků. Ve výchozím nastavení pojmenuje skupinu prostředků uzlu AKS `MC_resourcegroupname_clustername_location` , ale můžete zadat i vlastní název.
@@ -259,6 +320,7 @@ Při práci s skupinou prostředků uzlu Pamatujte na to, že nemůžete:
 - Přečtěte si téma [upgrade clusteru Azure Kubernetes Service (AKS)](upgrade-cluster.md) , kde se dozvíte, jak upgradovat cluster na nejnovější verzi Kubernetes.
 - Přečtěte si další informace o [ `containerd` a Kubernetes](https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/)
 - V seznamu [nejčastějších dotazů k AKS](faq.md) najdete odpovědi na některé běžné otázky týkající se AKS.
+- Přečtěte si další informace o [dočasných discích s operačním systémem](../virtual-machines/ephemeral-os-disks.md).
 
 
 <!-- LINKS - internal -->

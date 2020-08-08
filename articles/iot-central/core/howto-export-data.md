@@ -8,16 +8,17 @@ ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 6660f413c741b36f4dd28f6e1bcf83873e4f5c26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1428df124272816927c6bbbc4a242170c7f46c00
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483920"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008521"
 ---
-# <a name="export-iot-data-to-destinations-in-azure"></a>Export dat IoT do cílových umístění v Azure
+# <a name="export-iot-data-to-destinations-in-azure-using-data-export-legacy"></a>Export dat IoT do cílových umístění v Azure pomocí exportu dat (starší verze)
 
-*Toto téma se týká správců.*
+> [!Note]
+> Existuje nový způsob, jak exportovat data v IoT Central. K filtrování a obohacení exportovaných dat můžete použít nový export dat a vyexportovat ho do nových míst, jako jsou koncové body Webhooku. Informace o novém exportu dat najdete [tady](./howto-use-data-export.md). Další informace o rozdílech mezi novým exportem dat a exportem dat starší verze najdete v [srovnávací tabulce](./howto-use-data-export.md#comparison-of-legacy-data-export-and-new-data-export).
 
 Tento článek popisuje, jak používat funkci exportu dat v Azure IoT Central. Tato funkce umožňuje nepřetržitě exportovat data do **azure Event Hubs**, **Azure Service Bus**nebo instancí služby **Azure Blob Storage** . Export dat používá formát JSON a může zahrnovat telemetrii, informace o zařízení a informace o šabloně zařízení. Použít exportovaná data pro:
 

@@ -5,12 +5,12 @@ description: Seznamte se s osvědčenými postupy pro postup správy zabezpečen
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: c4f56cf4e04b9df31c8c4204d396ead8073ec526
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c2734aa8e4ebf0bdb693a49c3ba785dd134e8c83
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244204"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003062"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení a upgrady clusterů ve službě Azure Kubernetes Service (AKS)
 
@@ -19,7 +19,7 @@ Při správě clusterů ve službě Azure Kubernetes Service (AKS) je důležit�
 Tento článek se zaměřuje na zabezpečení clusteru AKS. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Přístup k zabezpečení serveru API pomocí Azure Active Directory a řízení přístupu na základě rolí
+> * Použití Azure Active Directory a řízení přístupu na základě role (RBAC) k zabezpečení přístupu k serveru rozhraní API
 > * Zabezpečený přístup k prostředkům uzlů v kontejneru
 > * Upgrade clusteru AKS na nejnovější verzi Kubernetes
 > * Udržování uzlů v aktuálním stavu a automatické použití oprav zabezpečení
@@ -53,7 +53,7 @@ Stejným způsobem, jako byste měli udělit uživatelům nebo skupinám nejmen�
 Pro podrobnější kontrolu nad akcemi kontejneru můžete použít také integrované funkce zabezpečení pro Linux, jako je *AppArmor* a *seccomp*. Tyto funkce jsou definovány na úrovni uzlu a následně implementovány prostřednictvím manifestu pod. Integrované funkce zabezpečení pro Linux jsou dostupné jenom v uzlech a luskech systému Linux.
 
 > [!NOTE]
-> Prostředí Kubernetes, v AKS nebo jinde, nejsou zcela bezpečná pro nepřátelský využití více tenantů. Další funkce zabezpečení, jako jsou *AppArmor*, *seccomp*, *pod, zásady zabezpečení*nebo podrobnější řízení přístupu na základě rolí (RBAC) pro uzly, se obtížně využívají. Pro skutečné zabezpečení při spouštění nepřátelských úloh s více klienty však je hypervisor jedinou úrovní zabezpečení, které byste měli důvěřovat. Doména zabezpečení pro Kubernetes se bude nacházet v celém clusteru, nikoli v jednotlivých uzlech. U těchto typů nepřátelských úloh s více klienty byste měli použít fyzicky izolované clustery.
+> Prostředí Kubernetes, v AKS nebo jinde, nejsou zcela bezpečná pro nepřátelský využití více tenantů. Další funkce zabezpečení, jako jsou *AppArmor*, *seccomp*, *pod, zásady zabezpečení*nebo podrobnější řízení přístupu na základě role (RBAC) pro uzly, jsou zneužití obtížnější. Pro skutečné zabezpečení při spouštění nepřátelských úloh s více klienty však je hypervisor jedinou úrovní zabezpečení, které byste měli důvěřovat. Doména zabezpečení pro Kubernetes se bude nacházet v celém clusteru, nikoli v jednotlivých uzlech. U těchto typů nepřátelských úloh s více klienty byste měli použít fyzicky izolované clustery.
 
 ### <a name="app-armor"></a>Obraně aplikace
 

@@ -4,12 +4,12 @@ description: Obnovení virtuálního počítače Azure z bodu obnovení pomocí 
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a43e7d1d97196afdad0a1e451b0c1618f0ea3a16
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: a006988049925d2d81c3f15fe24cfe60205b5789
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809179"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006328"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -45,7 +45,7 @@ Některé podrobnosti o účtech úložiště:
 
 ## <a name="before-you-start"></a>Než začnete
 
-Pokud chcete obnovit virtuální počítač (vytvořte nový virtuální počítač), ujistěte se, že máte správná [oprávnění](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) řízení přístupu na základě role (RBAC) pro operaci obnovení virtuálního počítače.
+Pokud chcete obnovit virtuální počítač (vytvořte nový virtuální počítač), ujistěte se, že máte správná [oprávnění](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) řízení přístupu na základě role Azure (Azure RBAC) pro operaci obnovení virtuálního počítače.
 
 Pokud nemáte oprávnění, můžete [disk obnovit](#restore-disks)a po obnovení disku můžete [použít šablonu](#use-templates-to-customize-a-restored-vm) , která byla vygenerována jako součást operace obnovení, a vytvořit tak nový virtuální počítač.
 
@@ -173,7 +173,7 @@ Funkce obnovení koncového uživatele v sekundární oblasti bude podobná prim
 >
 >- Po aktivaci obnovení a ve fázi přenosu dat nelze úlohu obnovení zrušit.
 >- Funkce obnovení v různých oblastech obnoví virtuální počítače Azure s povoleným CMK (klíče spravované zákazníky), které se nezálohují do úložiště s Recovery Services povoleným CMK, jako virtuální počítače, které nejsou povolené CMK v sekundární oblasti.
->- Role RBAC (řízení přístupu na základě role), které jsou potřebné k obnovení v sekundární oblasti, jsou stejné jako v primární oblasti.
+>- Role Azure potřebné k obnovení v sekundární oblasti jsou stejné jako v primární oblasti.
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>Monitorování úloh obnovení sekundární oblasti
 

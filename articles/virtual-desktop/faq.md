@@ -1,19 +1,17 @@
 ---
 title: Nejčastější dotazy k virtuálním plochám Windows – Azure
 description: Nejčastější dotazy a osvědčené postupy pro virtuální počítače s Windows
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6867d24d84f6dfb51b2ca7b86ec882102b96552b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e0e7084a00439fd9096367578f983e6b6acd1df5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504411"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007484"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop – nejčastější dotazy
 
@@ -25,7 +23,7 @@ Pokud chcete vytvořit fondy hostitelů a jiné objekty, musíte mít přiřazen
 
 Abyste mohli publikovat skupiny aplikací pro uživatele nebo skupiny uživatelů, musíte mít ve skupině aplikací přiřazenou roli správce přístupu uživatele.
 
-Chcete-li správce omezit pouze na správu uživatelských relací, jako je například odesílání zpráv uživatelům, odhlašování uživatelů a tak dále, můžete vytvořit vlastní role. Příklad: 
+Chcete-li správce omezit pouze na správu uživatelských relací, jako je například odesílání zpráv uživatelům, odhlašování uživatelů a tak dále, můžete vytvořit vlastní role. Například:
 
 ```powershell
 "actions": [
@@ -62,7 +60,7 @@ Pracovní prostory také musí být ve stejném umístění jako jejich skupiny 
 
 Když spustíte rutinu PowerShellu, zobrazí se jenom název a umístění prostředku.
 
-Příklad:
+Například:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg
@@ -74,7 +72,7 @@ westus   0224hp Microsoft.DesktopVirtualization/hostpools
 
 Chcete-li zobrazit všechny vlastnosti prostředku, přidejte buď `format-list` nebo `fl` na konec rutiny.
 
-Příklad:
+Například:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
@@ -82,7 +80,7 @@ Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
 
 Chcete-li zobrazit konkrétní vlastnosti, přidejte názvy specifických vlastností za `format-list` nebo `fl` .
 
-Příklad:
+Například:
 
 ```powershell
 Get-AzWvdHostPool -Name demohp -ResourceGroupName 0414rg |fl CustomRdpProperty
@@ -116,7 +114,7 @@ Po vytvoření fondu hostitelů nemůžete změnit jeho typ. Můžete ale přesu
 
 Omezení nebo kvóty v FSLogix závisí na prostředcích infrastruktury úložiště, které se používají k ukládání souborů VHD (X) profilů uživatele.
 
-Následující tabulka obsahuje příklad toho, jak všechny prostředky, které profil FSLogix potřebuje k podpoře jednotlivých uživatelů. Požadavky se můžou výrazně lišit v závislosti na uživateli, aplikacích a aktivitě na jednotlivých profilech. 
+Následující tabulka obsahuje příklad toho, jak všechny prostředky, které profil FSLogix potřebuje k podpoře jednotlivých uživatelů. Požadavky se můžou výrazně lišit v závislosti na uživateli, aplikacích a aktivitě na jednotlivých profilech.
 
 | Prostředek | Požadavek |
 |---|---|

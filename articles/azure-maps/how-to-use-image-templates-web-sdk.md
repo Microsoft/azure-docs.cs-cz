@@ -1,6 +1,6 @@
 ---
 title: Šablony obrázků v sadě Azure Maps Web SDK | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak používat šablony obrázků se značkami HTML a různými vrstvami v sadě Microsoft Azure Maps Web SDK.
+description: Naučte se, jak přidat ikony obrázků a vyplněné mnohoúhelníky do map pomocí Azure Maps webové sady SDK. Zobrazit dostupné šablony vzoru obrázku a výplně.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 2942ae25e3ac84ae6f91ebbba08581eb87bcd169
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ae3fa4684e4e71115d2d4ddce3c34ccb4f1cb703
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285675"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004652"
 ---
 # <a name="how-to-use-image-templates"></a>Používání šablon obrázků
 
@@ -119,7 +119,7 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>značku HTML
 
 Pokud vaše aplikace používá stejnou ikonu s různými ikonami nebo pokud vytváříte modul, který přidává další šablony obrázků, můžete tyto ikony snadno přidat a načíst z Azure Maps webové sady SDK. V oboru názvů použijte následující statické funkce `atlas` .
 
-| Název | Návratový typ | Popis | 
+| Name | Návratový typ | Popis | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Přidá do oboru názvů Atlas vlastní šablonu obrázku SVG. |
 |  `getImageTemplate(templateName: string, scale?: number)`| řetězec | Načte šablonu SVG podle názvu. |

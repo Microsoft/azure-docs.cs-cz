@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 6db83d17a9e6f3df6d691d6de616ead5407e3f5f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 89da86d753f746774737c248ee318c7a377dd7a0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133040"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007093"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Základní hodnoty zabezpečení Azure pro Virtual Machine Scale Sets
 
@@ -576,13 +576,13 @@ Microsoft používá protokol TLS (Transport Layer Security) k ochraně dat při
 
 **Zodpovědnost**: zákazník
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: použití řízení přístupu na základě role (RBAC), můžete oddělit povinnosti v rámci svého týmu a udělit uživatelům jenom přístup k vašemu virtuálnímu počítači (VM), který potřebují k provádění svých úloh. Místo udělení všech neomezených oprávnění na virtuálním počítači můžete použít jenom určité akce. Řízení přístupu pro virtuální počítač můžete nakonfigurovat v Azure Portal pomocí rozhraní příkazového řádku Azure nebo Azure PowerShell.
+**Doprovodné**materiály: použití řízení přístupu na základě role v Azure (Azure RBAC) umožňuje oddělení povinností v rámci týmu a udělení přístupu jenom uživatelům na virtuálním počítači (VM), které potřebují k provádění svých úloh. Místo udělení všech neomezených oprávnění na virtuálním počítači můžete použít jenom určité akce. Řízení přístupu pro virtuální počítač můžete nakonfigurovat v Azure Portal pomocí rozhraní příkazového řádku Azure nebo Azure PowerShell.
 
-* [Řízení přístupu k prostředkům Azure na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [Předdefinované role Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)
+* [Předdefinované role v Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -916,11 +916,11 @@ Pro většinu scénářů se může při schůzi a údržbě požadavků na zabe
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
-**Doprovodné**materiály: Pokud používáte vlastní image (např. virtuální pevný disk), použijte řízení přístupu na základě rolí v Azure, abyste zajistili, že k imagí budou mít přístup jenom autorizovaní uživatelé.
+**Doprovodné**materiály: Pokud používáte vlastní image (např. virtuální pevný disk), použijte řízení přístupu na základě role Azure (Azure RBAC) a zajistěte, aby k nim měli přístup jenom autorizovaní uživatelé.
 
-* [Princip RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-* [Jak nakonfigurovat RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Jak nakonfigurovat službu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 **Monitorování Azure Security Center**: nelze použít
 

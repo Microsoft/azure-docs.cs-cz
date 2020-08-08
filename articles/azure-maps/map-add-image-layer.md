@@ -1,6 +1,6 @@
 ---
 title: Přidat vrstvu obrázku do mapy | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak překrýt obrázek na mapě pomocí webové sady SDK Microsoft Azure Maps.
+description: Přečtěte si, jak přidat obrázky na mapu. Viz jak použít sadu Azure Maps Web SDK k přizpůsobení vrstev obrázků a překryvných obrázků v pevně stanovených sadách souřadnic.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 6ffec1afc44c6b920a64b4b92b384b6ce3829488
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4a804272a92d98156122397ee7427dcb467fbdf0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286957"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010221"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Přidat vrstvu obrázku do mapy
 

@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cc39f8250ddc1b2fb1baaf073969f6aab5b1372c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2b09163137bbfb6b8a7b0e2b8ddd6d7cccc52cc5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531367"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006634"
 ---
 # <a name="secure-a-daemon-application"></a>Zabezpečení aplikace démona
 
 Následující příručka je určena pro procesy na pozadí, časovače a úlohy, které jsou hostovány v důvěryhodném a zabezpečeném prostředí. Mezi příklady patří webové úlohy Azure, aplikace Azure Functions, služby systému Windows a jakákoli jiná služba Reliable na pozadí.
 
 > [!Tip]
-> Microsoft doporučuje pro produkční aplikace implementovat Azure Active Directory (Azure AD) a řízení přístupu na základě rolí (RBAC). Přehled konceptů najdete v tématu [Azure Maps Authentication](./azure-maps-authentication.md).
+> Microsoft doporučuje implementovat Azure Active Directory (Azure AD) a řízení přístupu na základě role Azure (Azure RBAC) pro produkční aplikace. Přehled konceptů najdete v tématu [Azure Maps Authentication](./azure-maps-authentication.md).
 
 [!INCLUDE [authentication details](./includes/view-authentication-details.md)]
 
@@ -46,7 +46,7 @@ Následující kroky popisují tento proces:
 > [!Tip]
 > Pokud je aplikace hostovaná v prostředí Azure, měli byste implementovat spravovanou identitu, abyste snížili náklady a složitost správy tajného kódu pro ověřování Azure Key Vault. Pokud [se chcete připojit prostřednictvím spravované identity](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app), Projděte si následující kurz Azure Key Vault.
 
-Aplikace démona zodpovídá za načtení sdíleného klíče ze zabezpečeného úložiště. Implementace s Azure Key Vault vyžaduje ověření prostřednictvím služby Azure AD pro přístup ke tajnému kódu. Místo toho doporučujeme přímé ověřování pomocí služby Azure AD RBAC pro Azure Maps v důsledku dalších složitostí a provozních požadavků pro použití ověřování pomocí sdíleného klíče.
+Aplikace démona zodpovídá za načtení sdíleného klíče ze zabezpečeného úložiště. Implementace s Azure Key Vault vyžaduje ověření prostřednictvím služby Azure AD pro přístup ke tajnému kódu. Místo toho doporučujeme přímé ověřování Azure AD pro Azure Maps v důsledku dalších složitosti a provozních požadavků použití ověřování pomocí sdíleného klíče.
 
 > [!IMPORTANT]
 > Pro zjednodušení opětovného generování klíčů doporučujeme, aby aplikace používaly vždy jeden klíč. Aplikace potom můžou znovu vygenerovat nepoužitý klíč a nasadit nový znovu vygenerovaný klíč do zabezpečeného úložiště tajného kódu, jako je Azure Key Vault.
@@ -107,9 +107,9 @@ V případě, že nejsou k dispozici spravované identity prostředí mimo Azure
         > [!div class="mx-imgBorder"]
         > ![Přidat tajný klíč klienta](./media/how-to-manage-authentication/add-key.png)
 
-### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Udělení přístupu na základě rolí pro aplikaci démona k Azure Maps
+### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Udělení přístupu na základě role pro aplikaci démona k Azure Maps
 
-*Řízení přístupu na základě role* (RBAC) udělíte přiřazením vytvořené spravované identity nebo instančního objektu k jedné nebo více definicím rolím řízení přístupu Azure Maps. Pokud chcete zobrazit definice rolí Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)**. Vyberte **role**a potom vyhledejte role, které začínají na *Azure Maps*. Tyto role Azure Maps jsou role, kterým můžete udělit přístup.
+*Řízení přístupu na základě role Azure (Azure RBAC)* udělíte tak, že do jedné nebo víc Azure Maps definic rolí přiřadíte vytvořenou spravovanou identitu nebo instanční objekt. Pokud chcete zobrazit definice rolí Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)**. Vyberte **role**a potom vyhledejte role, které začínají na *Azure Maps*. Tyto role Azure Maps jsou role, kterým můžete udělit přístup.
 
 > [!div class="mx-imgBorder"]
 > ![Zobrazit dostupné role](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
@@ -117,7 +117,7 @@ V případě, že nejsou k dispozici spravované identity prostředí mimo Azure
 1. Přejít na **účet Azure Maps**. Vyberte **Řízení přístupu (IAM)** > **Přiřazení rolí**.
 
     > [!div class="mx-imgBorder"]
-    > ![Udělit RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+    > ![Udělení přístupu pomocí Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. Na kartě **přiřazení rolí** **přidejte** přiřazení role. 
     
