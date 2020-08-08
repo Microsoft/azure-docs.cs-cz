@@ -7,14 +7,14 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Konfigurace protokolů toků NSG pomocí šablony ARM
-      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
     - name: Diagnostika potíží s filtrováním provozu virtuálních počítačů – portál
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: Diagnostika potíží s filtrováním provozu virtuálních počítačů – PowerShell
       href: diagnose-vm-network-traffic-filtering-problem-powershell.md
     - name: Diagnostika potíží s filtrováním provozu virtuálních počítačů – Azure CLI
       href: diagnose-vm-network-traffic-filtering-problem-cli.md
+    - name: Konfigurace protokolů toků NSG pomocí šablony ARM
+      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
 - name: Kurzy
   items:
     - name: Diagnostika potíží se směrováním virtuálních počítačů

@@ -9,12 +9,12 @@ metadata:
   author: yegu-ms
   ms.author: yegu
   ms.date: 12/16/2019
-  ms.openlocfilehash: fad78db361927a14f393066fb088354552d880a9
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: cbf495563a6d3a9000778d8980a506b6726fb658
+  ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75470028"
+  ms.lasthandoff: 08/07/2020
+  ms.locfileid: "88006005"
 landingContent:
 - title: Informace o službě Azure Cache for Redis
   linkLists:
@@ -22,8 +22,6 @@ landingContent:
     links:
     - text: Co je Azure Cache for Redis?
       url: cache-overview.md
-    - text: Další informace o úrovni Premium služby Azure Cache for Redis
-      url: cache-premium-tier-intro.md
   - linkListType: video
     links:
     - text: Možnosti správy
@@ -32,7 +30,7 @@ landingContent:
       url: https://azure.microsoft.com/resources/videos/azure-redis-security-cacheing/
     - text: Osvědčené postupy
       url: https://azure.microsoft.com/resources/videos/azure-redis-cache-best-practices/
-    - text: Zvýšení výkonu
+    - text: Vylepšení výkonu
       url: https://azure.microsoft.com/resources/videos/increase-performance-through-redis-cluster-in-azure-redis-cache/
   - linkListType: whats-new
     links:
@@ -64,7 +62,7 @@ landingContent:
       url: cache-web-app-cache-aside-leaderboard.md
   - linkListType: get-started
     links:
-    - text: ukázky
+    - text: Ukázky
       url: cache-redis-samples.md
 - title: Sady SDK a příkazové řádky
   linkLists:

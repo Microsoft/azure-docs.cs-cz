@@ -55,7 +55,7 @@
         - name: Správa vlastních modelů
           href: how-to-manage-model.md
         - name: Parsování a ověření modelů
-          href: how-to-use-parser.md
+          href: how-to-parse-models.md
         - name: Přidání značek
           href: how-to-use-tags.md
     - name: Použití živého spouštěcího prostředí

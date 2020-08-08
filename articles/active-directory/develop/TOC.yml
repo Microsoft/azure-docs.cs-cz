@@ -298,6 +298,9 @@
               displayName: 'firstline worker, frontline worker, flw'
             - name: Veřejné klientské aplikace s jedním a více účty
               href: single-multi-account.md
+            - name: Zpracování chyb a výjimek
+              href: msal-android-handling-exceptions.md
+              displayName: 'android, mobile'
             - name: Protokolování
               href: msal-logging.md?tabs=android
         - name: iOS a macOS
@@ -460,7 +463,7 @@
       items:
         - name: Přehled
           href: authentication-national-cloud.md
-        - name: Authentication
+        - name: Ověřování
           href: msal-national-cloud.md
     - name: Automatické zřizování uživatelů (SCIM)
       items:
