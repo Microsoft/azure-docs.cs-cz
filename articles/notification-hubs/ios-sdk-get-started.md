@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 94e930c996710c2b25d4114c7cfcb17129c5177d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fde142c76c71aa7155fd39d90f7a6c8120538141
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022425"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008657"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Kurz: odesílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs
 
@@ -27,7 +27,7 @@ Spuštění tohoto kurzu je předpokladem pro následné kurzy C a SWIFT iOS a z
 - Vytvoříte centrum oznámení.
 - Nakonfigurujte centrum oznámení s informacemi o službě APN.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/free/).
 
@@ -102,6 +102,9 @@ Pokud chcete odesílat nabízená oznámení do aplikace pro iOS, Zaregistrujte 
 4. Na stránce **certifikáty, identifikátory & profily**v   části **identifikátory**Najděte položku řádku ID aplikace, kterou jste právě vytvořili, a výběrem jejího řádku ZOBRAZTE obrazovku pro **úpravu konfigurace ID aplikace**   .
 
 ## <a name="create-a-certificate-for-notification-hubs"></a>Vytvoření certifikátu pro Notification Hubs
+
+> [!NOTE]
+> Z důvodu vydání iOS 13 můžete přijímat jenom tichá oznámení pomocí ověřování založeného na tokenech. Pokud pro přihlašovací údaje APNS používáte ověřování na základě certifikátů, musíte přepnout na použití ověřování založeného na tokenech.
 
 K tomu, aby Centrum oznámení fungovalo s **APNs**, se vyžaduje certifikát. To lze provést jedním ze dvou způsobů:
 

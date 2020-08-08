@@ -6,12 +6,13 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: yegu
-ms.openlocfilehash: 3f5cfccd1f85f68c619192496c62bf80ea8d4785
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4e867f28209230cf33b0f94e7cc8ca12d015ff15
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170181"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008555"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis-deprecated"></a>Migrace z Managed Cache Service do mezipaměti Azure pro Redis (zastaralé)
 Migrace aplikací používajících Azure Managed Cache Service do mezipaměti Azure pro Redis se dá udělat s minimálními změnami vaší aplikace, a to v závislosti na funkcích Managed Cache Service používaných vaší aplikací pro ukládání do mezipaměti. I když rozhraní API nejsou přesně stejná, jsou podobná a většina vašeho stávajícího kódu, který používá Managed Cache Service pro přístup do mezipaměti, může být použita s minimálními změnami. V tomto článku se dozvíte, jak provést potřebné změny konfigurace a aplikace pro migraci aplikací Managed Cache Service pro použití Azure cache pro Redis a ukazuje, jak se některé funkce mezipaměti Azure pro Redis dají použít k implementaci funkcí mezipaměti Managed Cache Service.
@@ -39,7 +40,7 @@ Azure Managed Cache Service a Azure cache pro Redis jsou podobné, ale implement
 
 | Managed Cache Service funkce | Podpora Managed Cache Service | Podpora Azure cache pro Redis |
 | --- | --- | --- |
-| Pojmenované mezipaměti |V případě potřeby je nakonfigurovaná výchozí mezipaměť a v nabídkách mezipaměti Standard a Premium můžete nakonfigurovat až devět dalších pojmenovaných mezipamětí. |Mezipaměť Azure pro Redis má konfigurovatelný počet databází (výchozí hodnota je 16), které lze použít k implementaci podobných funkcí do pojmenovaných mezipamětí. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration). |
+| Pojmenované mezipaměti |V případě potřeby je nakonfigurovaná výchozí mezipaměť a v nabídkách mezipaměti Standard a Premium můžete nakonfigurovat až devět dalších pojmenovaných mezipamětí. |Mezipaměť Azure pro Redis má konfigurovatelný počet databází (výchozí hodnota je 16), které lze použít k implementaci podobných funkcí do pojmenovaných mezipamětí. Další informace najdete v tématu [Co jsou databáze Redis?](cache-development-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration). |
 | Vysoká dostupnost |Poskytuje vysokou dostupnost pro položky v mezipaměti v nabídkách mezipaměti Standard a Premium. Pokud dojde ke ztrátě položek z důvodu chyby, jsou záložní kopie položek v mezipaměti stále k dispozici. Zápisy do mezipaměti repliky jsou prováděny synchronně. |Vysoká dostupnost je dostupná v nabídkách mezipaměti Standard a Premium, které mají konfiguraci se dvěma primárními a replikami uzlů (každý horizontálních oddílů v mezipaměti Premium má dvojici primárního/repliky). Zápisy do repliky se provádějí asynchronně. Další informace najdete v tématu [ceny služby Azure cache pro Redis](https://azure.microsoft.com/pricing/details/cache/). |
 | Oznámení |Umožňuje klientům přijímat asynchronní oznámení v případě, že dojde k různým operacím mezipaměti v pojmenované mezipaměti. |Klientské aplikace mohou používat oznámení Redis k publikování a [podprostorům](cache-configure.md#keyspace-notifications-advanced-settings) a k dosažení podobných funkcí oznámení. |
 | Místní mezipaměť |Ukládá kopii objektů uložených v mezipaměti lokálně na klientovi, aby bylo velmi rychlém přístupu. |Klientské aplikace by musely tuto funkci implementovat pomocí slovníku nebo podobné struktury dat. |
@@ -47,7 +48,7 @@ Azure Managed Cache Service a Azure cache pro Redis jsou podobné, ale implement
 | Zásady vypršení platnosti |Výchozí zásady vypršení platnosti jsou absolutní a výchozí interval vypršení platnosti je 10 minut. K dispozici jsou také pozvolna a nikdy žádné zásady. |Ve výchozím nastavení se položky v mezipaměti nevypršení platnosti, ale vypršení platnosti je možné nakonfigurovat na základě zápisu pomocí přetížení sady mezipaměti. |
 | Oblasti a označování |Oblasti jsou podskupiny pro položky v mezipaměti. Oblasti také podporují poznámky k položkám uloženým v mezipaměti s dalšími popisnými řetězci s názvem Tags. Oblasti podporují možnost provádět operace hledání u všech označených položek v této oblasti. Všechny položky v rámci oblasti jsou umístěny v jednom uzlu clusteru mezipaměti. |Mezipaměť Azure pro Redis se skládá z jednoho uzlu (Pokud není povolený cluster Redis), takže koncept Managed Cache Service oblasti neplatí. Redis podporuje vyhledávání a zástupné operace při načítání klíčů, takže popisné značky mohou být vloženy do názvů klíčů a použity pro pozdější načtení položek. Příklad implementace označení řešení pomocí Redis naleznete v tématu [implementace označování mezipaměti pomocí Redis](https://stackify.com/implementing-cache-tagging-redis/). |
 | Serializace |Spravovaná mezipaměť podporuje NetDataContractSerializer, BinaryFormatter a použití vlastních serializátorů. Výchozí hodnota je NetDataContractSerializer. |Je zodpovědností klientské aplikace o serializaci objektů .NET před jejich vložením do mezipaměti s možností volby serializátoru až po vývojáře klientské aplikace. Další informace a ukázkový kód naleznete v tématu [práce s objekty .NET v mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache). |
-| Emulátor mezipaměti |Spravovaná mezipaměť poskytuje emulátor místní mezipaměti. |Mezipaměť Azure pro Redis neobsahuje emulátor, ale můžete [Spustit MSOpenTech build redis-server.exe místně](cache-faq.md#cache-emulator) a poskytnout tak prostředí emulátoru. |
+| Emulátor mezipaměti |Spravovaná mezipaměť poskytuje emulátor místní mezipaměti. |Mezipaměť Azure pro Redis neobsahuje emulátor, ale můžete ji [spustit místně Redis](cache-development-faq.md#is-there-a-local-emulator-for-azure-cache-for-redis) a zajistit tak prostředí emulátoru. |
 
 ## <a name="choose-a-cache-offering"></a>Výběr nabídky mezipaměti
 Microsoft Azure cache pro Redis je k dispozici na následujících úrovních:
@@ -58,7 +59,7 @@ Microsoft Azure cache pro Redis je k dispozici na následujících úrovních:
 
 Každá úroveň se liší z hlediska funkcí a cen. Tyto funkce jsou uvedené dále v této příručce a další informace o cenách najdete v tématu [Podrobnosti o cenách mezipaměti](https://azure.microsoft.com/pricing/details/cache/).
 
-Výchozím bodem migrace je výběr velikosti, která odpovídá velikosti předchozí mezipaměti Managed Cache Service, a pak horizontální navýšení nebo snížení kapacity v závislosti na požadavcích vaší aplikace. Další informace o výběru správné mezipaměti Azure pro nabídku Redis najdete v tématu [co mám použít v mezipaměti Azure pro nabídku a velikost služby Redis](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
+Výchozím bodem migrace je výběr velikosti, která odpovídá velikosti předchozí mezipaměti Managed Cache Service, a pak horizontální navýšení nebo snížení kapacity v závislosti na požadavcích vaší aplikace. Další informace o výběru správné mezipaměti Azure pro nabídku Redis najdete v tématu [Volba správné úrovně](cache-overview.md#choosing-the-right-tier).
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]

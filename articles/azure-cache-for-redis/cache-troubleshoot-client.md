@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: 7d5ab5c125a8a395d1bc0139421ec804e1221e12
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 122c96c95aea794fbba9cab8a9a5b867f9f34b48
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506430"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008963"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Řešení potíží se službou Azure Cache for Redis na straně klienta
 
@@ -53,7 +53,7 @@ V předchozí výjimce je k dispozici několik problémů, které jsou zajímav�
 - Všimněte si, že v `IOCP` části a v `WORKER` oddílu máte `Busy` hodnotu, která je větší než `Min` hodnota. Tento rozdíl znamená, že je `ThreadPool` potřeba upravit nastavení.
 - Můžete také zobrazit `in: 64221` . Tato hodnota označuje, že 64 211 bajtů bylo přijato na soketové vrstvě jádra klienta, ale aplikace ji nečetla. Tento rozdíl obvykle znamená, že vaše aplikace (například StackExchange. Redis) nečte data ze sítě, a to tak rychle, jak ji server posílá.
 
-Můžete [nakonfigurovat `ThreadPool` Nastavení](cache-faq.md#important-details-about-threadpool-growth) , abyste se ujistili, že se váš fond vláken rychle škáluje v rámci shlukových scénářů.
+Můžete [nakonfigurovat `ThreadPool` Nastavení](cache-management-faq.md#important-details-about-threadpool-growth) , abyste se ujistili, že se váš fond vláken rychle škáluje v rámci shlukových scénářů.
 
 ## <a name="high-client-cpu-usage"></a>Vysoké využití CPU klienta
 
@@ -109,4 +109,4 @@ Rozlišení pro velké velikosti odpovědí se liší, ale zahrnují:
 ## <a name="additional-information"></a>Další informace
 
 - [Řešení potíží se službou Azure Cache for Redis na straně serveru](cache-troubleshoot-server.md)
-- [Jak mohu srovnávací testy a testovat výkon své mezipaměti?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Jak mohu srovnávací testy a testovat výkon své mezipaměti?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)

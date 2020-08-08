@@ -6,15 +6,15 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/23/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: bc9bc034abce789046803bbcad5b750984c905cb
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: f88fc4a1fd5c44b515ab44b604ebf9a885165ddc
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809523"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007995"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Připojení hybridních počítačů k Azure z Azure Portal
 
@@ -50,7 +50,9 @@ Skript pro automatizaci stahování a instalace a navázání připojení pomoc�
 1. Na stránce **vygenerovat skript** v rozevíracím seznamu **operační systém** vyberte operační systém, ve kterém bude skript spuštěn.
 
 1. Pokud počítač komunikuje prostřednictvím proxy server pro připojení k Internetu, vyberte **Další: proxy server**.
+
 1. Na kartě **proxy server** zadejte proxy server IP adresu nebo název a číslo portu, které bude počítač používat ke komunikaci s proxy server. Zadejte hodnotu ve formátu `http://<proxyURL>:<proxyport>` .
+
 1. Vyberte **zkontrolovat a generovat**.
 
 1. Na kartě **Revize + generovat** zkontrolujte souhrnné informace a pak vyberte **Stáhnout**. Pokud stále potřebujete dělat změny, vyberte **Předchozí**.
@@ -65,7 +67,7 @@ Agenta připojeného počítače můžete nainstalovat ručně spuštěním bal�
 >* Chcete-li nainstalovat nebo odinstalovat agenta, je nutné mít oprávnění *správce* .
 >* Nejdřív musíte stáhnout a zkopírovat instalační balíček do složky na cílovém serveru nebo ze sdílené síťové složky. Pokud spustíte instalační balíček bez jakýchkoli možností, spustí se Průvodce instalací nástroje, který můžete použít k interaktivní instalaci agenta.
 
-Pokud počítač potřebuje komunikovat prostřednictvím proxy server ke službě, po instalaci agenta musíte spustit příkaz, který je popsán dále v článku. Tím se nastaví proměnná prostředí proxy server systému `https_proxy` .
+Pokud počítač potřebuje komunikovat prostřednictvím proxy server ke službě, po instalaci agenta musíte spustit příkaz, který je popsaný v následujících krocích. Tento příkaz nastaví proměnnou prostředí proxy server systému `https_proxy` .
 
 Pokud neznáte možnosti příkazového řádku pro Instalační služba systému Windows balíčky, Projděte si možnosti příkazového řádku nástroje [msiexec Standard](/windows/win32/msi/standard-installer-command-line-options) a [Možnosti příkazového](/windows/win32/msi/command-line-options)řádku programu Msiexec.
 
@@ -75,13 +77,32 @@ Například spusťte instalační program s `/?` parametrem, abyste si mohli pro
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
 ```
 
-Chcete-li nainstalovat agenta tiše a vytvořit soubor protokolu instalace ve `C:\Support\Logs` složce, která existuje, spusťte následující příkaz.
+1. Chcete-li nainstalovat agenta tiše a vytvořit soubor protokolu instalace ve `C:\Support\Logs` složce, která existuje, spusťte následující příkaz.
 
-```dos
-msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
-```
+    ```dos
+    msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
+    ```
 
-Pokud se agent po dokončení instalace nepovede spustit, podívejte se do protokolů, kde najdete podrobnější informace o chybě. Adresář protokolu je *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
+    Pokud se agent po dokončení instalace nepovede spustit, podívejte se do protokolů, kde najdete podrobnější informace o chybě. Adresář protokolu je *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
+
+2. Pokud počítač potřebuje komunikovat prostřednictvím proxy server, nastavte proměnnou prostředí proxy server spuštěním následujícího příkazu:
+
+    ```powershell
+    [Environment]::SetEnvironmentVariable("https_proxy", "http://{proxy-url}:{proxy-port}", "Machine")
+    $env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
+    # For the changes to take effect, the agent service needs to be restarted after the proxy environment variable is set.
+    Restart-Service -Name himds
+    ```
+
+    >[!NOTE]
+    >Agent nepodporuje nastavení ověřování proxy serveru v této verzi Preview.
+    >
+
+3. Po instalaci agenta je třeba ho nakonfigurovat, aby komunikoval se službou Azure ARC, a to spuštěním tohoto příkazu:
+
+    ```dos
+    "%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"
+    ```
 
 ### <a name="install-with-the-scripted-method"></a>Instalace pomocí skriptované metody
 
@@ -97,34 +118,13 @@ Pokud se agent po dokončení instalace nepovede spustit, podívejte se do proto
 
 Pokud se agent po dokončení instalace nepovede spustit, podívejte se do protokolů, kde najdete podrobnější informace o chybě. Adresář protokolu je *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
 
-### <a name="configure-the-agent-proxy-setting"></a>Konfigurace nastavení proxy agenta
-
-Chcete-li nastavit proměnnou prostředí proxy server, spusťte následující příkaz:
-
-```powershell
-# If a proxy server is needed, execute these commands with the proxy URL and port.
-[Environment]::SetEnvironmentVariable("https_proxy", "http://{proxy-url}:{proxy-port}", "Machine")
-$env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
-# For the changes to take effect, the agent service needs to be restarted after the proxy environment variable is set.
-Restart-Service -Name himds
-```
-
->[!NOTE]
->Agent nepodporuje nastavení ověřování proxy serveru v této verzi Preview.
->
-
-### <a name="configure-agent-communication"></a>Konfigurace komunikace agenta
-
-Po instalaci agenta je nutné nakonfigurovat agenta, aby komunikoval se službou Azure ARC, spuštěním následujícího příkazu:
-
-`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
-
 ## <a name="install-and-validate-the-agent-on-linux"></a>Instalace a ověření agenta v systému Linux
 
 Agent připojeného počítače pro Linux je k dispozici v preferovaném formátu balíčku pro distribuci (. Ot./min. nebo. DEB), která je hostovaná v [úložišti balíčků](https://packages.microsoft.com/)Microsoftu. [ `Install_linux_azcmagent.sh` Sada skriptu prostředí](https://aka.ms/azcmagent) provádí následující akce:
 
 - Nakonfiguruje hostitelský počítač ke stažení balíčku agenta z packages.microsoft.com.
 - Nainstaluje balíček hybridního poskytovatele prostředků.
+- Registrace počítače pomocí ARC Azure
 
 Volitelně můžete agenta nakonfigurovat s vašimi informacemi o proxy serveru, včetně `--proxy "{proxy-url}:{proxy-port}"` parametru.
 
@@ -149,15 +149,6 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 # Install the connected machine agent. 
 bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 ```
-
-### <a name="configure-the-agent-communication"></a>Konfigurace komunikace agenta
-
-Když nainstalujete agenta, nakonfigurujte ho tak, aby komunikoval se službou Azure ARC, spuštěním následujícího příkazu:
-
-`azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
-
->[!NOTE]
->Aby bylo možné spustit **azcmagent**, musíte mít oprávnění *root* Access pro počítače se systémem Linux.
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Ověření připojení k Azure Arcu
 

@@ -1,19 +1,17 @@
 ---
 title: Prostředí virtuálních počítačů s Windows – Azure
 description: Seznamte se se základními prvky prostředí virtuálních počítačů s Windows, jako jsou fondy hostitelů a skupiny aplikací.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e382c1d52130d44479e94378da895c6add7ba3ee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 99a07dd1791b539ea44fcbab250aa9c227ee1705
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283414"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002616"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Prostředí Windows Virtual Desktop
 
@@ -49,7 +47,7 @@ Pokud chcete publikovat prostředky uživatelům, musíte je přiřadit ke skupi
 
 ## <a name="workspaces"></a>Pracovní prostory
 
-Pracovní prostor je logické seskupení skupin aplikací ve virtuálním počítači s Windows. Každá skupina aplikací virtuálních klientů Windows musí být přidružena k pracovnímu prostoru pro uživatele, aby viděli vzdálené aplikace a počítače, které jsou do nich publikovány.  
+Pracovní prostor je logické seskupení skupin aplikací ve virtuálním počítači s Windows. Každá skupina aplikací virtuálních klientů Windows musí být přidružena k pracovnímu prostoru pro uživatele, aby viděli vzdálené aplikace a počítače, které jsou do nich publikovány.
 
 ## <a name="end-users"></a>Koncoví uživatelé
 

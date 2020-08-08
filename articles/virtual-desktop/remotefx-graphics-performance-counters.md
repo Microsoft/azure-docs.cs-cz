@@ -1,19 +1,17 @@
 ---
 title: Diagnostika problémů s výkonem grafiky Vzdálená plocha – Azure
 description: Tento článek popisuje, jak pomocí čítačů grafiky RemoteFX v relacích protokolu vzdálené plochy diagnostikovat problémy s výkonem grafiky na virtuálním počítači s Windows.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 84cee86dbddff77f6142925eec01889cf793a466
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc5c6499fa47a1e32a517032d5cc2a97b3f2677f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79127549"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007162"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnostika problémů s výkonem grafiky na vzdálené ploše
 

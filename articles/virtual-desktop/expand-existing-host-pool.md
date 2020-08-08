@@ -1,19 +1,17 @@
 ---
 title: Rozbalení stávajícího fondu hostitelů s novými hostiteli relací – Azure
 description: Postup rozšíření stávajícího fondu hostitelů s novými hostiteli relací na virtuálním počítači s Windows
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 69237c2e4404793ce239710407ed10f02bf07d50
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 339fe25a5a75ca8bc5cc0af7c4d96651e90c7eb6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288737"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002437"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Rozšíření existujícího fondu hostitelů s novými hostiteli relací
 

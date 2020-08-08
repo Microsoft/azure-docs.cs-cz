@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 5d525824039c276d0bc8a63256b32afa9cb25445
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7c5164a032e77d85c995384473935b134ff528e5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851812"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009303"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB (verze 3.2): Podporované funkce a syntax
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Pomocí libovolného z open source [ovladačů](https://docs.mongodb.org/ecosystem/drivers)klientů MongoDB můžete komunikovat s rozhraním API Azure Cosmos DB pro MongoDB. Rozhraní API pro Azure Cosmos DB pro MongoDB umožňuje použití existujících ovladačů klientů, které dodržuje MongoDB [síťový protokol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Pomocí libovolného z open source [ovladačů](https://docs.mongodb.org/ecosystem/drivers)klientů MongoDB můžete komunikovat s rozhraním API Azure Cosmos DB pro MongoDB. Rozhraní API služby Azure Cosmos DB pro MongoDB umožňuje použití existujících klientských ovladačů dodržováním [přenosového protokolu](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol) MongoDB.
 
 Díky rozhraní API Azure Cosmos DB pro MongoDB můžete využívat výhody MongoDB, ke kterému jste se přihlásili, se všemi podnikovými funkcemi, které Cosmos DB poskytuje: [globální distribuce](distribute-data-globally.md), [Automatické horizontálního dělení](partition-data.md), dostupnost a záruky latence, automatické indexování každého pole, místnímu šifrování v klidovém umístění, zálohování a mnoho dalšího.
 
@@ -288,7 +288,7 @@ Operátor „|“ se chová jako funkce „nebo“ – dotaz ```find({x:{$regex:
 
 ### <a name="geospatial-operators"></a>Geoprostorové operátory
 
-Operátor | Příklad | Podporuje se |
+Operátor | Příklad | Podporováno |
 --- | --- | --- |
 $geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Ano |
 $geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ano |
@@ -314,7 +314,7 @@ $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |
 $size | ```{ "Location.coordinates": { $size: 2 } }``` |
 $comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` |
-$text |  | Není podporováno. Použijte místo toho $regex.
+$text |  | Nepodporováno Použijte místo toho $regex.
 
 ## <a name="unsupported-operators"></a>Nepodporované operátory
 
@@ -342,7 +342,7 @@ Cosmos DB podporuje hodnotu TTL (Time-to-Live) na základě časového razítka 
 
 ## <a name="user-and-role-management"></a>Správa uživatelů a rolí
 
-Cosmos DB ještě nepodporuje uživatele a role. Cosmos DB však podporuje řízení přístupu na základě role (RBAC) a hesla pro čtení a zápis a hesla nebo klíče jen pro čtení, které lze získat pomocí [Azure Portal](https://portal.azure.com) (stránka připojovací řetězec).
+Cosmos DB ještě nepodporuje uživatele a role. Cosmos DB však podporuje řízení přístupu na základě role Azure (Azure RBAC) a hesla pro čtení i zápis a hesla/klíče jen pro čtení, které lze získat pomocí [Azure Portal](https://portal.azure.com) (stránka připojovací řetězec).
 
 ## <a name="replication"></a>Replikace
 

@@ -1,19 +1,17 @@
 ---
 title: Řešení potíží s hostitelem relace virtuálních počítačů s Windows (Classic) – Azure
 description: Jak vyřešit problémy při konfiguraci virtuálních počítačů hostitelů relací Windows Virtual Desktop (Classic)
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0155c9cf6b5d9df8a6a8831896093c4c6b074cd6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 90b4c574a03d8dee50beff60304fb5c1f3b52945
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291261"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008623"
 ---
 # <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace virtuálních počítačů s Windows (Classic)
 
@@ -311,7 +309,7 @@ Pokud se přihlásíte k používání více relací s Windows 10 Enterprise pom
 
 Pokud časový limit vyprší, zobrazí se chybová zpráva oznamující, že Vzdálená relace byla odpojena, protože pro tento počítač nejsou k dispozici žádné licence pro klientský přístup k vzdálené ploše.
 
-Pokud se zobrazí některá z těchto zpráv, znamená to, že bitová kopie nemá nainstalované nejnovější aktualizace systému Windows nebo že nastavujete režim licencování vzdálené plochy prostřednictvím zásad skupiny. Postupujte podle kroků v následujících částech a ověřte nastavení zásad skupiny, identifikujte verzi Windows 10 Enterprise multi-session a nainstalujte odpovídající aktualizaci.  
+Pokud se zobrazí některá z těchto zpráv, znamená to, že bitová kopie nemá nainstalované nejnovější aktualizace systému Windows nebo že nastavujete režim licencování vzdálené plochy prostřednictvím zásad skupiny. Postupujte podle kroků v následujících částech a ověřte nastavení zásad skupiny, identifikujte verzi Windows 10 Enterprise multi-session a nainstalujte odpovídající aktualizaci.
 
 >[!NOTE]
 >Virtuální desktop Windows vyžaduje jenom licenci CAL pro klientský přístup (CAL), pokud fond hostitelů obsahuje hostitele relací Windows serveru. Informace o tom, jak nakonfigurovat licence VP CAL, najdete v článku o [licenci nasazení služby Vzdálená plocha pomocí licencí pro klientský přístup](/windows-server/remote/remote-desktop-services/rds-client-access-license/).

@@ -1,19 +1,17 @@
 ---
 title: Odstranit fond hostitelů virtuálních ploch Windows – Azure
 description: Jak odstranit fond hostitelů na virtuálním počítači s Windows
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ced0d7513524758975919fad90f19581d15d95f4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dfc9858bea468389d8ce90677f048e5d1fd3bb82
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097566"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007585"
 ---
 # <a name="delete-a-host-pool"></a>Odstranění fondu hostitelů
 
@@ -39,7 +37,7 @@ Tato rutina odebere všechny existující uživatelské relace na hostiteli rela
 
 Postup odstranění fondu hostitelů v Azure Portal:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Vyhledejte a vyberte **virtuální počítač s Windows**.
 

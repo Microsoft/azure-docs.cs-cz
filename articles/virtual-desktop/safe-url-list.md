@@ -1,19 +1,17 @@
 ---
 title: Seznam bezpečných adres URL pro virtuální počítače s Windows – Azure
 description: Seznam adres URL, které byste měli odblokovat, aby bylo zajištěno, že nasazení virtuálních klientů Windows funguje tak, jak má.
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9f7a3b51afa11562123a280da8634e100a22e6b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9ac147eec7004f109687a6bb0888e25d0db84448
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075616"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009473"
 ---
 # <a name="safe-url-list"></a>Seznam bezpečných adres URL
 
@@ -73,7 +71,7 @@ Všichni klienti vzdálené plochy, které použijete, musí mít přístup k n�
 |*.servicebus.windows.net|443|Řešení potíží s daty|Vše|
 |go.microsoft.com|443|Microsoft odkazy fwlinks|Vše|
 |aka.ms|443|Zkrácení adresy URL Microsoftu|Vše|
-|docs.microsoft.com|443|Dokumentace|Vše|
+|docs.microsoft.com|443|Documentation|Vše|
 |privacy.microsoft.com|443|Prohlášení o ochraně osobních údajů|Vše|
 |query.prod.cms.rt.microsoft.com|443|Aktualizace klienta|Windows Desktop|
 

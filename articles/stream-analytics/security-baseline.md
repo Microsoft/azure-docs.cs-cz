@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9d085ba494ea6bb6e9e80490d85e50f100fc0908
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03b1d43eeaffe4449d85d384e669ba0950442ab9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485648"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003382"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Základní hodnoty zabezpečení Azure pro Stream Analytics
 
@@ -248,7 +248,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: Změna výchozích hesel tam, kde je to možné
 
-**Doprovodné**materiály: Stream Analytics nemá koncept výchozích hesel, protože ověřování je zajištěno Azure Active Directory a zabezpečené řízení přístupu na základě role (RBAC) ke správě služby. V závislosti na službě streamování pro vkládání a výstupní služby je potřeba otočit přihlašovací údaje nakonfigurované v úlohách.
+**Doprovodné**materiály: Stream Analytics nemá koncept výchozích hesel, protože ověřování je zajištěno Azure Active Directory a zabezpečené řízením přístupu na základě role (RBAC) ke správě služby. V závislosti na službě streamování pro vkládání a výstupní služby je potřeba otočit přihlašovací údaje nakonfigurované v úlohách.
 
 * [Otočit přihlašovací údaje pro vstupy a výstupy Stream Analytics úlohy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-login-credentials-inputs-outputs)
 
@@ -442,11 +442,11 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Zodpovědnost**: zákazník
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: použití řízení přístupu na základě role (RBAC) k řízení způsobu interakce uživatelů se službou.
+**Pokyny**: použití řízení přístupu na základě role Azure (Azure RBAC) k řízení interakce uživatelů se službou.
 
-* [Jak nakonfigurovat RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Jak nakonfigurovat službu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -565,7 +565,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování Azure Stream Analyticsch prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
 Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných zákazníka pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 * [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
@@ -589,7 +589,7 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování prostředků v rámci předplatných.
@@ -629,7 +629,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 * [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)

@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 8cff5ec6886c0aceff5270418f9feeb145f6fd17
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c2203fec71430840e547115d24330b661bda50f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836543"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002221"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru Azure Machine Learning
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -66,7 +66,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="azure-machine-learning-operations"></a>Azure Machine Learning operace
 
-Azure Machine Learning integrovaných akcí pro mnoho operací a úloh. Úplný seznam najdete v tématu [operace poskytovatelů prostředků Azure](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
+Azure Machine Learning integrovaných akcí pro mnoho operací a úloh. Úplný seznam najdete v tématu [operace poskytovatele prostředků Azure](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
 
 ## <a name="create-custom-role"></a>Vytvoření vlastní role
 
@@ -382,9 +382,9 @@ Tady je několik věcí, na kterých je potřeba vědět, když používáte ř�
 K přiřazení identity přiřazené uživateli v clusterech Amlcompute musí mít jeden oprávnění k zápisu, aby bylo možné vytvořit výpočetní prostředky a mít [roli spravovaného operátora identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Pokud chcete získat další informace o RBAC se spravovanými identitami, přečtěte si téma [Správa identity přiřazené uživatelem](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) .
 
 
-### <a name="q-do-we-support-role-based-access-controls-on-the-studio-portal"></a>Otázka: Podporujeme na portálu Studio řízení přístupu na základě rolí?
+### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>Otázka: Podporujeme na portálu Studio řízení přístupu na základě rolí?
 
-Azure Machine Learning Studio podporuje řízení přístupu na základě rolí. 
+Azure Machine Learning Studio podporuje řízení přístupu na základě role Azure (Azure RBAC). 
 
 > [!IMPORTANT]
 > Po přiřazení vlastní role s konkrétními oprávněními pro odborníky na data v pracovním prostoru jsou odpovídající akce (například přidání výpočetního tlačítka) automaticky skryty od uživatelů. Skrytím těchto položek zabráníte jakýmkoli nejasnostem v zobrazení ovládacích prvků, které při použití vrátí oznámení neoprávněného přístupu ze služby.

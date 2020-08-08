@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: 113808a3e2bab6c4cb9d2ea5f155a027abf1b5bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33e7a97f4b82bd3d7e82532fe2f0a5e3d80c73f5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086332"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006787"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualizace stávající nabídky na komerčním marketplace
 
@@ -43,7 +43,7 @@ Chcete-li přidat nový plán v rámci existující nabídky, kterou jste již p
 
 1. Na stránce s **přehledem nabídky** pro existující nabídku otevřená klikněte na stránku **Přehled plánu** a pak vyberte **vytvořit nový plán**.
 1. Vytvořte nový plán podle [pokynů](./create-new-saas-offer.md#plan-overview) s použitím **stávajícího cenového modelu plánů**.
-1. Po změně názvu plánu vyberte **Uložit koncept** . 
+1. Po změně názvu plánu vyberte **Uložit koncept** .
 1. Až budete připraveni publikovat aktualizace, vyberte **publikovat** . Otevře se stránka **[Kontrola a publikování](#review-and-publish-an-updated-offer)** a zobrazí se stav dokončení vašich aktualizací.
 
 ## <a name="update-a-plan-within-an-existing-offer"></a>Aktualizace plánu v rámci stávající nabídky
@@ -55,6 +55,24 @@ Chcete-li provést změny v plánu v rámci stávající nabídky, kterou jste j
 1. Po provedení změn v názvu plánu, popisu nebo dostupnosti cílové skupiny vyberte **Uložit koncept** .
 1. Až budete připraveni publikovat aktualizace, vyberte **zkontrolovat a publikovat** . Otevře se stránka **[Kontrola a publikování](#review-and-publish-an-updated-offer)** a zobrazí se stav dokončení vašich aktualizací.
 1. Odešlete aktualizovaný plán pro publikování kliknutím na **publikovat**. Po zpřístupnění verze Preview aktualizované nabídky vám pošleme e-mail, abyste mohli zkontrolovat a odhlásit.
+
+## <a name="offer-a-virtual-machine-plan-at-a-new-price"></a>Nabídka plánu virtuálních počítačů za novou cenu
+
+Po publikování plánu virtuálního počítače se jeho cena nedá změnit. Pokud chcete stejný plán nabízet za jinou cenu, musíte plán skrýt a vytvořit nový s aktualizovanou cenou. Nejprve skryjte plán s cenou, kterou chcete změnit:
+
+1. Na stránce s **přehledem nabídky** pro existující nabídku otevřené vyberte plán, který chcete změnit. Pokud plán není dostupný ze seznamu **Přehled plánů** , vyberte **Zobrazit všechny plány**.
+1. Zaškrtněte políčko **Skrýt plán** . Než budete pokračovat, uložte si koncept.
+
+Teď, když jste plán skryli se starou cenou, vytvoříte kopii tohoto plánu s aktualizovanou cenou:
+
+1. V partnerském centru se vraťte na **Přehled plánu**.
+2. Vyberte **vytvořit nový plán**. Zadejte **ID plánu** a **název plánu**a pak vyberte **vytvořit**.
+1. Pokud chcete znovu použít technickou konfiguraci z plánu, který jste skryli, zaškrtněte políčko **znovu použít technickou konfiguraci** . Přečtěte si [Přehled plánu](azure-vm-create-offer.md#plan-overview) a získejte další informace.
+    > [!IMPORTANT]
+    > Pokud vyberete tento plán, který znovu **použije technickou konfiguraci z jiného plánu**, nebudete moct později svůj nadřazený plán přestat prodávat. Tuto možnost nepoužívejte, pokud chcete ukončit prodej nadřazeného plánu.
+3. Dokončete všechny požadované části nového plánu, včetně nové ceny.
+1. Vyberte **Uložit koncept**.
+1. Po dokončení všech požadovaných sekcí pro nový plán vyberte **zkontrolovat a publikovat**. Tím se vaše nabídka pošle na kontrolu a publikování. Další podrobnosti najdete na [stránce věnované kontrole a publikování nabídky na komerčním webu Marketplace](../review-publish-offer.md) .
 
 ## <a name="compare-changes-to-marketplace-offers"></a>Porovnat změny nabídek Marketplace
 

@@ -1,23 +1,21 @@
 ---
 title: Kontejner profilu úložiště FSLogix virtuální plocha Windows – Azure
 description: Možnosti ukládání profilu FSLogix virtuálního počítače s Windows na Azure Storage.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3dfa5d6bc5707679bbe5dada9f28046202e7aae5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4702c68dcda0c794aef34d3c0675e2fd158e6d4f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808522"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009405"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows
 
-Azure nabízí několik řešení úložiště, která můžete použít k uložení kontejneru profilu FSLogix. Tento článek porovnává řešení úložiště, které Azure nabízí pro kontejnery profilů uživatelů FSLogix virtuálních počítačů s Windows. Pro většinu našich zákazníků doporučujeme ukládat do souborů Azure kontejnery profilů FSLogix. 
+Azure nabízí několik řešení úložiště, která můžete použít k uložení kontejneru profilu FSLogix. Tento článek porovnává řešení úložiště, které Azure nabízí pro kontejnery profilů uživatelů FSLogix virtuálních počítačů s Windows. Pro většinu našich zákazníků doporučujeme ukládat do souborů Azure kontejnery profilů FSLogix.
 
 Virtuální počítač s Windows nabízí kontejnery profilů FSLogix jako doporučené řešení profilace uživatele. Řešení FSLogix je určené k přesouvání profilů ve vzdálených výpočetních prostředích, jako je Windows Virtual Desktop. Při přihlašování se tento kontejner dynamicky připojuje k výpočetnímu prostředí pomocí nativně podporovaného virtuálního pevného disku (VHD) a virtuálního pevného disku Hyper-V (VHDX). Profil uživatele je hned dostupný a zobrazí se v systému přesně jako nativní profil uživatele.
 

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 01/10/2020
+ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d931206e99516e0320d0cbedd0812389ee41aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74c9cd1c55f1b0dde173a7ffbeac92e5518db81e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742160"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005798"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Licenční požadavky pro použití Privileged Identity Management
 
@@ -32,19 +32,19 @@ Aby bylo možné používat Azure Active Directory (Azure AD) Privileged Identit
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-## <a name="how-many-licenses-must-you-have"></a>Kolik licencí potřebujete?
+## <a name="licenses-you-must-have"></a>Licence, které musíte mít
 
 Zajistěte, aby měl váš adresář aspoň tolik licencí Azure AD Premium P2, protože máte zaměstnance, kteří budou provádět následující úlohy:
 
-- Uživatelé přiřazení k rolím služby Azure AD, které jsou spravovány pomocí PIM
+- Uživatelé přiřazení k Azure AD nebo rolím Azure spravovaným pomocí PIM
+- Uživatelé, kteří jsou přiřazeni jako oprávnění členové nebo vlastníci privilegovaných skupin přístupu
 - Uživatelé mohou schvalovat nebo odmítat žádosti o aktivaci v PIM
-- Uživatelé přiřazení k roli prostředku Azure pomocí přiřazení za běhu nebo přímo (podle času)  
 - Uživatelé přiřazení k recenzi přístupu
 - Uživatelé, kteří provádějí kontroly přístupu
 
 Licence Azure AD Premium P2 nejsou **požadovány** pro následující úlohy:
 
-- Pro uživatele s rolemi správce globálního správce nebo privilegované role, kteří nastavili PIM, konfigurují zásady, dostanou výstrahy a nastavují kontroly přístupu, nejsou potřeba žádné licence.
+- Pro uživatele, kteří nastavili PIM, konfigurují zásady, přijímat výstrahy a nastavují kontroly přístupu, nejsou potřeba žádné licence.
 
 Další informace o licencích najdete v tématu [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
 
@@ -58,7 +58,7 @@ Tady je několik ukázkových scénářů licencí, které vám pomůžou určit
 | Graphics design Institute má 25 správců, z nichž 14 spravuje PIM. Aktivace role vyžaduje schválení a v organizaci existují tři různé uživatele, kteří můžou schvalovat aktivace. | 14 licencí na opravňující role a tři schvalovatele | 17 |
 | Společnost Contoso má 50 správců, které 42 spravuje PIM. Aktivace role vyžaduje schválení a v organizaci existuje pět různých uživatelů, kteří můžou schvalovat aktivace. Společnost Contoso také provádí měsíční přezkoumání uživatelů přiřazených rolím Správce a kontrolorům, kteří nejsou v rolích správce spravovaných pomocí PIM. | 42 licencí na opravňující role + pět schvalovatelů + šest revidujících | 53 |
 
-## <a name="what-happens-when-a-license-expires"></a>Co se stane, když platnost licence vyprší?
+## <a name="when-a-license-expires"></a>Po vypršení platnosti licence
 
 Pokud vyprší platnost Azure AD Premium P2, EMS E5 nebo zkušební licence, nebudou ve vašem adresáři k dispozici Privileged Identity Management funkce:
 

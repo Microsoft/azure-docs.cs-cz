@@ -4,12 +4,12 @@ description: Přenos kolekcí imagí nebo jiných artefaktů z jednoho registru 
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: 7f63936ad8f2a97bae6ff63e783e38c15db35e13
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0bbdfc8d1586b7d71daf6d4cbfdc4288357aa45b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259458"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009150"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Přenos artefaktů do jiného registru
 
@@ -30,7 +30,7 @@ Tato funkce je k dispozici na úrovni služby Registry kontejneru **Premium** . 
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * **Registry kontejnerů** – potřebujete existující zdrojový registr s artefakty pro přenos a cílový registr. Přenos ACR je určený pro pohyb mezi fyzicky odpojenými cloudy. Pro účely testování můžou být zdrojové a cílové Registry ve stejném nebo jiném předplatném Azure, tenantovi služby Active Directory nebo cloudu. Pokud potřebujete vytvořit registr, přečtěte si téma [rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md). 
 * **Účty úložiště** – vytvoření zdrojového a cílového účtu úložiště v předplatném a umístění dle vašeho výběru. Pro účely testování můžete použít stejné předplatné nebo odběry jako zdrojové a cílové Registry. V případě scénářů mezi cloudy obvykle vytvoříte samostatný účet úložiště v každém cloudu. V případě potřeby vytvořte účty úložiště pomocí rozhraní příkazového [řádku Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) nebo jiných nástrojů. 
@@ -162,7 +162,7 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
-Ve výstupu příkazu si poznamenejte ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Příklad:
+Ve výstupu příkazu si poznamenejte ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Například:
 
 ```azurecli
 EXPORT_RES_ID=$(az group deployment show \
@@ -208,7 +208,7 @@ az deployment group create \
   --name importPipeline
 ```
 
-Pokud máte v úmyslu spustit import ručně, poznamenejte si ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Příklad:
+Pokud máte v úmyslu spustit import ručně, poznamenejte si ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Například:
 
 ```azurecli
 IMPORT_RES_ID=$(az group deployment show \
@@ -233,6 +233,8 @@ Do souboru zadejte následující hodnoty parametrů `azuredeploy.parameters.jso
 |pipelineResourceId     |  ID prostředku kanálu exportu<br/>Příklad: `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/exportPipelines/myExportPipeline`|
 |targetName     |  Název, který zvolíte pro objekt BLOB artefaktů exportovaný do vašeho zdrojového účtu úložiště, například *myblob*
 |artefakty | Pole zdrojových artefaktů, které se mají přenést, jako značky nebo výtahy manifestů<br/>Příklad: `[samples/hello-world:v1", "samples/nginx:v1" , "myrepository@sha256:0a2e01852872..."]` |
+
+Pokud se znovu nasadí prostředek PipelineRun se stejnými vlastnostmi, musíte použít také vlastnost [forceUpdateTag](#redeploy-pipelinerun-resource) .
 
 Spuštěním [AZ Deployment Group Create vytvořte][az-deployment-group-create] prostředek PipelineRun. Následující příklad pojmenuje *exportPipelineRun*nasazení.
 
@@ -291,6 +293,8 @@ Do souboru zadejte následující hodnoty parametrů `azuredeploy.parameters.jso
 |pipelineResourceId     |  ID prostředku kanálu importu.<br/>Příklad: `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/importPipelines/myImportPipeline`       |
 |sourceName     |  Název existujícího objektu BLOB pro exportované artefakty ve vašem účtu úložiště, například *myblob*
 
+Pokud se znovu nasadí prostředek PipelineRun se stejnými vlastnostmi, musíte použít také vlastnost [forceUpdateTag](#redeploy-pipelinerun-resource) .
+
 Spusťte příkaz [AZ Deployment Group Create][az-deployment-group-create] a spusťte prostředek.
 
 ```azurecli
@@ -304,6 +308,23 @@ Po úspěšném dokončení nasazení ověřte import artefaktů, a to tak, že 
 
 ```azurecli
 az acr repository list --name <target-registry-name>
+```
+
+## <a name="redeploy-pipelinerun-resource"></a>Znovu nasadit prostředek PipelineRun
+
+Pokud se znovu nasadí prostředek PipelineRun se *stejnými vlastnostmi*, je nutné využít vlastnost **forceUpdateTag** . Tato vlastnost označuje, že prostředek PipelineRun by měl být znovu vytvořen i v případě, že se konfigurace nezměnila. Ujistěte se prosím, že forceUpdateTag je pokaždé, když znovu nasadíte prostředek PipelineRun. Následující příklad znovu vytvoří PipelineRun pro export. Aktuální hodnota DateTime slouží k nastavení forceUpdateTag, čímž je zajištěno, že tato vlastnost je vždy jedinečná.
+
+```console
+CURRENT_DATETIME=`date +"%Y-%m-%d:%T"`
+```
+
+```azurecli
+az deployment group create \
+  --resource-group $SOURCE_RG \
+  --template-file azuredeploy.json \
+  --name exportPipelineRun \
+  --parameters azuredeploy.parameters.json \
+  --parameters forceUpdateTag=$CURRENT_DATETIME
 ```
 
 ## <a name="delete-pipeline-resources"></a>Odstranění prostředků kanálu

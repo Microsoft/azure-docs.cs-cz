@@ -5,17 +5,17 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
-ms.openlocfilehash: 230304677b78f00b2d1288c846f8bf704cd8a497
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c2668bdda5002ebd2a34b8a2ffa5885263aec0c9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407433"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009635"
 ---
-Je možné, že vaše organizace vyžaduje další akce od vlastníků předplatného, aby úspěšně nastavila registraci aplikace (a proto dokončila nastavení použitelné instance digitálního vlákna Azure). Požadované kroky se můžou lišit v závislosti na konkrétním nastavení vaší organizace.
+Je možné, že vaše organizace vyžaduje další akce od vlastníků nebo správců předplatného, aby úspěšně nastavila registraci aplikace (a proto dokončila nastavení použitelné instance digitálních vláken Azure). Požadované kroky se můžou lišit v závislosti na konkrétním nastavení vaší organizace.
 
-Tady jsou některé běžné potenciální aktivity, které může vlastník potřebovat udělat. Tyto a jiné operace lze provést ze stránky [*aplikace Azure AD registrace*](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) v Azure Portal.
-* Udělení souhlasu správce k registraci aplikace Pro všechny registrace aplikací v rámci vašeho předplatného může být ve službě Azure AD ve vaší organizaci globálně zapnutý *souhlas správce* . Pokud ano, bude muset vlastník vybrat toto tlačítko pro vaši společnost na stránce *oprávnění API* pro registraci aplikace, aby byla platná pro registraci aplikace:
+Tady jsou některé běžné potenciální aktivity, které může být potřeba udělat s vlastníkem nebo správcem. Tyto a jiné operace lze provést ze stránky [*aplikace Azure AD registrace*](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) v Azure Portal.
+* Udělení souhlasu správce k registraci aplikace Pro všechny registrace aplikací v rámci vašeho předplatného může být ve službě Azure AD ve vaší organizaci globálně zapnutý *souhlas správce* . Pokud ano, bude muset vlastník nebo správce vybrat toto tlačítko pro vaši společnost na stránce *oprávnění rozhraní API* pro registraci aplikace, aby byla platná pro registraci aplikace:
 
     :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/grant-admin-consent.png" alt-text="Zobrazení portálu pro tlačítko udělení souhlasu správce v části oprávnění rozhraní API":::
   - Pokud byl souhlas udělen úspěšně, měla by položka pro digitální vlákna Azure zobrazit hodnotu *stavu* _udělenou pro **(vaše společnost)** _ .

@@ -3,12 +3,12 @@ title: Spravované identity pro prostředky Azure s Service Bus
 description: Tento článek popisuje, jak používat spravované identity pro přístup k Azure Service Bus entit (fronty, témata a předplatná).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2e1c6127f3705adbf05cbfd8a92740651efe9048
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a3458d7d160317e383da6217252e3dd7ed52e90f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835659"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008895"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus
 [Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) je funkce mezi Azure, která umožňuje vytvořit zabezpečenou identitu přidruženou k nasazení, ve kterém se spouští kód aplikace. Tuto identitu pak můžete přidružit k rolím řízení přístupu, které udělují vlastní oprávnění pro přístup ke konkrétním prostředkům Azure, které vaše aplikace potřebuje.
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečen�
 Když je role Azure přiřazená k objektu zabezpečení Azure AD, poskytuje Azure přístup k těmto prostředkům pro daný objekt zabezpečení. Přístup může být vymezen na úrovni předplatného, skupiny prostředků nebo oboru názvů Service Bus. Objekt zabezpečení Azure AD může být uživatelem, skupinou, instančním objektem služby nebo spravovanou identitou pro prostředky Azure.
 
 ## <a name="azure-built-in-roles-for-azure-service-bus"></a>Předdefinované role Azure pro Azure Service Bus
-Pro Azure Service Bus už je Správa oborů názvů a všech souvisejících prostředků prostřednictvím Azure Portal a rozhraní API pro správu prostředků Azure chráněná pomocí modelu *řízení přístupu na základě role* (RBAC). Azure poskytuje následující předdefinované role Azure pro autorizaci přístupu k oboru názvů Service Bus:
+Pro Azure Service Bus už je Správa oborů názvů a všech souvisejících prostředků prostřednictvím Azure Portal a rozhraní API pro správu prostředků Azure chráněná pomocí modelu Azure RBAC. Azure poskytuje následující předdefinované role Azure pro autorizaci přístupu k oboru názvů Service Bus:
 
 - [Azure Service Bus vlastník dat](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner): povoluje přístup k datům Service Bus oboru názvů a jeho entit (fronty, témata, odběry a filtry).
 - [Azure Service Bus odesílatel dat](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): Tato role slouží k poskytnutí přístupu pro přístup k oboru názvů Service Bus a jeho entitám.
@@ -72,7 +72,7 @@ Než budete moct použít spravované identity pro prostředky Azure k autorizac
 - [Klientské knihovny Azure Resource Manager](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Udělení oprávnění spravované identitě v Azure AD
-Pokud chcete autorizovat požadavek na službu Service Bus ze spravované identity ve vaší aplikaci, nejdřív nakonfigurujte nastavení řízení přístupu na základě role (RBAC) pro tuto spravovanou identitu. Azure Service Bus definuje role Azure, které zahrnují oprávnění k posílání a čtení z Service Bus. Když se role Azure přiřadí spravované identitě, udělí se spravované identitě přístup k entitám Service Bus v příslušném oboru.
+Pokud chcete autorizovat požadavek na službu Service Bus ze spravované identity ve vaší aplikaci, nejdřív nakonfigurujte nastavení řízení přístupu na základě role v Azure (Azure RBAC) pro tuto spravovanou identitu. Azure Service Bus definuje role Azure, které zahrnují oprávnění k posílání a čtení z Service Bus. Když se role Azure přiřadí spravované identitě, udělí se spravované identitě přístup k entitám Service Bus v příslušném oboru.
 
 Další informace o přiřazování rolí Azure najdete v tématu [ověřování a autorizace pomocí Azure Active Directory pro přístup k prostředkům Service Bus](authenticate-application.md#azure-built-in-roles-for-azure-service-bus).
 

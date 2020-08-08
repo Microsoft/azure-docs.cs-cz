@@ -1,19 +1,17 @@
 ---
 title: Instalace jazykových sad na virtuální počítače s Windows 10 na virtuálním počítači s Windows – Azure
 description: Jak nainstalovat jazykové sady pro virtuální počítače s Windows 10 s více relacemi na virtuálním počítači s Windows
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70592d940e3766597475f4a7b90a3902a53406d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 542163511a1b4fc0acde9b44d73be6ffc042d5d3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361298"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008759"
 ---
 # <a name="install-language-packs"></a>Instalace jazykových sad
 
@@ -41,7 +39,7 @@ Instalace jazykových sad:
 
 5. Potom vyberte **jazyk**a pak vyberte **Přidat jazyk**. V seznamu vyberte jazyk, který chcete nainstalovat, a pak vyberte **Další**.
 6. Když se otevře okno **instalovat jazykové funkce** , zaškrtněte políčko **nainstalovat jazykovou sadu a nastavte možnost jazyk zobrazení systému Windows**.
-7. Vyberte **Nainstalovat**.
+7. Vyberte **Install** (Nainstalovat).
 8. Chcete-li přidat více jazyků najednou, vyberte možnost **Přidat jazyk**a poté opakujte postup, chcete-li přidat jazyk v krocích 5 a 6. Tento postup opakujte pro každý jazyk, který chcete nainstalovat. V jednom okamžiku však můžete nastavit pouze jeden jazyk jako jazyk zobrazení.
 
     Pojďme si projít rychlou vizuální ukázkou. Následující obrázky ukazují, jak nainstalovat francouzské a holandské jazykové sady a pak jako jazyk zobrazení nastavit francouzštinu.

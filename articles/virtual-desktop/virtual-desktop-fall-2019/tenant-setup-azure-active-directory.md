@@ -1,19 +1,17 @@
 ---
 title: Vytvoření tenanta ve virtuální ploše Windows (Classic) – Azure
 description: Popisuje, jak nastavit klienty virtuálních počítačů s Windows (Classic) v Azure Active Directory.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a1f2dbf1f7cfc8fbb6a29129c7e445ffef87b070
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e2858daaa834552da5a85063fd9973d2c35209d7
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286355"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005614"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>Kurz: vytvoření tenanta ve virtuální ploše Windows (Classic)
 
@@ -82,12 +80,12 @@ Přiřazení role aplikace TenantCreator:
    > ![Snímek obrazovky s vyhledáváním podnikových aplikací v Azure Portal](../media/azure-portal-enterprise-applications.png)
 
 2. V rámci **podnikových aplikací**vyhledejte **virtuální počítač s Windows**. V předchozí části uvidíte dvě aplikace, které jste zadali jako souhlas. Z těchto dvou aplikací vyberte **virtuální klient Windows**.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky s výsledky hledání při hledání "virtuální plochy Windows" v "podnikových aplikacích" Zvýrazní se aplikace s názvem virtuální plocha Windows.](../media/tenant-enterprise-app.png)
 
 3. Vyberte **Uživatelé a skupiny**. Může se stát, že správce, který udělil souhlas s aplikací, je již uveden s přiřazenou **výchozí rolí přístupu** . Nestačí vytvořit klienta virtuální plochy Windows. Pokračujte podle těchto pokynů a přidejte roli **TenantCreator** uživateli.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky uživatelů a skupin přiřazený ke správě podnikové aplikace "virtuální plocha Windows" Snímek obrazovky zobrazuje pouze jedno přiřazení, které je pro "výchozí přístup".](../media/tenant-default-access.png)
 
@@ -126,13 +124,13 @@ Zjištění ID tenanta Azure Active Directory (nebo **ID adresáře**):
 
 Pokud chcete zjistit ID vašeho předplatného Azure:
 1. Ve stejné [Azure Portal](https://portal.azure.com) relaci vyhledejte a vyberte **odběry**.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky s výsledky hledání "Azure Active Directory" v Azure Portal. Výsledek hledání v části služby je zvýrazněný.](../media/tenant-search-subscription.png)
 
 2. Vyberte předplatné Azure, které chcete použít pro příjem oznámení služby Windows Virtual Desktop.
 3. Vyhledejte **ID předplatného**a umístěte ukazatel myši na hodnotu, dokud se nezobrazí ikona schránky. Vyberte ikonu schránky a vložte ji do užitečného umístění, abyste ji mohli použít později jako hodnotu **AzureSubscriptionId** .
-   
+
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky vlastností předplatného Azure Myš najede myší na ikonu schránky pro "ID předplatného" ke zkopírování a vložení.](../media/tenant-subscription-id.png)
 

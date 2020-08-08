@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9f5fcbda93e4a31b4d328bffe4689a47a4eb89ff
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4882fadcc2f05e4047366d8d097a3918091035bb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281561"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005308"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro vývojáře aplikací pro správu prostředků ve službě Azure Kubernetes Service (AKS)
 
@@ -74,7 +74,7 @@ Další informace o měřeních a přiřazeních prostředků najdete v tématu 
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>Vývoj a ladění aplikací v clusteru AKS
 
-**Doprovodné materiály k osvědčeným postupům** – vývojové týmy by měly nasadit a LADIT cluster AKS pomocí vývojových prostorů. Tento model vývoje zajišťuje, aby se před nasazením aplikace do produkčního prostředí implementovaly požadavky řízení přístupu na základě role, sítě nebo úložiště.
+**Doprovodné materiály k osvědčeným postupům** – vývojové týmy by měly nasadit a LADIT cluster AKS pomocí vývojových prostorů. Tento model vývoje zajišťuje, aby byly požadavky na řízení přístupu na základě role (RBAC), síť nebo úložiště implementovány před nasazením aplikace do produkčního prostředí.
 
 Při Azure Dev Spaces vyvíjíte, ladíte a testujete aplikace přímo na clusteru AKS. Vývojáři v týmu spolupracují na sestavování a testování v celém životním cyklu aplikace. Můžete dál používat existující nástroje, jako je například Visual Studio nebo Visual Studio Code. Rozšíření je nainstalované pro vývojové prostory, které poskytuje možnost spustit a ladit aplikaci v clusteru AKS.
 

@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop (Classic) Diagnostika problémů – Azure
 description: Jak používat diagnostické funkce pro virtuální počítače s Windows (Classic) k diagnostice problémů.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 257ad5aa11bfaece70f676b452119d7800e2d1e2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7e652f04b42b132e7c1307503b1764dda7b2036b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285046"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009337"
 ---
 # <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>Identifikace a Diagnostika problémů s virtuálním počítačem s Windows (Classic)
 
@@ -25,7 +23,7 @@ Virtuální plocha Windows nabízí diagnostické funkce, které správci umož�
 * Aktivity předplatného informačního kanálu: koncový uživatel tyto aktivity aktivuje pokaždé, když se pokusí připojit k informačnímu kanálu prostřednictvím Vzdálená plocha Microsoftch aplikací.
 * Aktivity připojení: koncový uživatel tyto aktivity aktivuje pokaždé, když se pokusí připojit k desktopu nebo k vzdálené aplikaci RemoteApp prostřednictvím aplikace Vzdálená plocha Microsoft.
 * Správcovské aktivity: správce tyto aktivity aktivuje při provádění operací správy v systému, jako je vytváření fondů hostitelů, přiřazování uživatelů ke skupinám aplikací a vytváření přiřazení rolí.
-  
+
 Připojení, která nedosáhnou virtuálního klienta Windows, se nezobrazí ve výsledcích diagnostiky, protože samotná služba role diagnostiky je součástí virtuálního klienta Windows. Problémy s připojením k virtuálnímu počítači s Windows se můžou vyskytnout, když koncový uživatel dochází k problémům se síťovým připojením.
 
 Pokud jste to ještě neudělali, [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/) , který chcete použít v relaci PowerShellu. Potom spuštěním následující rutiny se přihlaste ke svému účtu:
@@ -39,7 +37,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Diagnostika virtuálních počítačů s Windows používá jenom jednu rutinu prostředí PowerShell, ale obsahuje mnoho volitelných parametrů, které vám pomůžou zúžit a izolovat problémy. V následujících částech jsou uvedeny rutiny, které můžete spustit pro diagnostiku problémů. Většinu filtrů lze použít společně. Hodnoty uvedené v závorkách, například `<tenantName>` , by měly být nahrazeny hodnotami, které se vztahují na vaši situaci.
 
 >[!IMPORTANT]
->Funkce diagnostiky je určena pro řešení potíží s jedním uživatelem. Všechny dotazy, které používají PowerShell, musí zahrnovat parametry *-username* nebo *-ActivityId* . Pro možnosti monitorování použijte Log Analytics. Další informace o tom, jak odesílat diagnostická data do vašeho pracovního prostoru, najdete v tématu [použití Log Analytics pro diagnostickou funkci](diagnostics-log-analytics-2019.md) . 
+>Funkce diagnostiky je určena pro řešení potíží s jedním uživatelem. Všechny dotazy, které používají PowerShell, musí zahrnovat parametry *-username* nebo *-ActivityId* . Pro možnosti monitorování použijte Log Analytics. Další informace o tom, jak odesílat diagnostická data do vašeho pracovního prostoru, najdete v tématu [použití Log Analytics pro diagnostickou funkci](diagnostics-log-analytics-2019.md) .
 
 ### <a name="filter-diagnostic-activities-by-user"></a>Filtrovat diagnostické aktivity podle uživatele
 

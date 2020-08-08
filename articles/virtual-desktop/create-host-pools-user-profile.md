@@ -1,19 +1,17 @@
 ---
 title: Sdílená složka kontejneru profilu FSLogix virtuálního počítače s Windows – Azure
 description: Postup nastavení kontejneru profilu FSLogix pro fond hostitelů virtuálních klientů s Windows pomocí sdílené složky na základě virtuálního počítače.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bac0047c1eb151f38ff09092b45ca7fd86fcc65a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35b692033cc16f276b48bc6d973b27d994c1082a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211829"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002584"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Vytvoření kontejneru profilů pro fond hostitelů s využitím sdílené složky
 
@@ -66,7 +64,7 @@ Pokud chcete nakonfigurovat virtuální počítače s FSLogix softwarem, udělej
 6. Vytvořte klíč s názvem **Profiles**.
 7. Pro klíč profilů vytvořte následující hodnoty:
 
-| Name                | Typ               | Data/hodnota                        |
+| Název                | Typ               | Data/hodnota                        |
 |---------------------|--------------------|-----------------------------------|
 | Povoleno             | DWORD              | 1                                 |
 | VHDLocations        | Hodnota s více řetězci | "Síťová cesta pro sdílenou složku"     |

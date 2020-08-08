@@ -6,17 +6,15 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: 84a5b4784a36fb22ae50a7a1ec4fcb7e5ef5b7c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaee1c07f0fc8d5b0bba03550986291aea814fcb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80245272"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004795"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat Trvalost dat pro mezipaměť Azure Premium pro Redis
 Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu pro výběr velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Tento článek popisuje, jak nakonfigurovat trvalost v mezipaměti Azure úrovně Premium pro instanci Redis.
-
-Informace o dalších funkcích mezipaměti Premium najdete v tématu [Úvod do mezipaměti Azure pro Redis úrovně Premium](cache-premium-tier-intro.md).
 
 ## <a name="what-is-data-persistence"></a>Co je trvalost dat?
 [Redis Persistence](https://redis.io/topics/persistence) umožňuje zachovat data uložená v Redis. Můžete také pořizovat snímky a zálohovat data, která můžete načíst v případě selhání hardwaru. Jedná se o obrovský přínos oproti úrovni Basic nebo Standard, kde jsou všechna data uložená v paměti a může dojít ke ztrátě dat v případě selhání, kde jsou uzly mezipaměti mimo provoz. 
@@ -179,9 +177,9 @@ Po přepisování existují v úložišti dvě sady souborů AOF. Přepisy se vy
 
 
 ## <a name="next-steps"></a>Další kroky
-Naučte se používat víc funkcí mezipaměti Premium.
+Přečtěte si další informace o funkcích Azure cache pro Redis.
 
-* [Seznámení s mezipamětí Azure pro Redis úrovně Premium](cache-premium-tier-intro.md)
+* [Mezipaměť Azure pro úrovně služeb Redis Premium](cache-overview.md#service-tiers)
 
 <!-- IMAGES -->
 

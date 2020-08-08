@@ -3,16 +3,16 @@ title: 'Kurz: Správa dotazů v Azure Portal'
 description: V tomto kurzu vytvoříte dotaz na diagram prostředku a nasdílíte nový dotaz s ostatními uživateli v Azure Portal.
 ms.date: 06/29/2020
 ms.topic: tutorial
-ms.openlocfilehash: c3da623e8bea44cc49e4ef46517ce461459405a9
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970582"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005186"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Kurz: vytvoření a sdílení dotazu na graf Azure Resource v Azure Portal
 
-Průzkumník prostředků Azure vám umožňuje uložit dotazy na zdrojové grafy přímo do Azure Portal. Existují dva typy dotazů: _Private_ a _Shared_. Privátní dotaz je uložený v nastaveních Azure Portal. Vzhledem k tomu, že sdílený dotaz je Azure Resource Manager prostředek, který je možné spravovat pomocí řízení přístupu na základě role (RBAC) a chráněný pomocí zámků prostředků. Oba typy dotazů jsou v klidovém stavu šifrované.
+Průzkumník prostředků Azure vám umožňuje uložit dotazy na zdrojové grafy přímo do Azure Portal. Existují dva typy dotazů: _Private_ a _Shared_. Privátní dotaz je uložený v nastaveních Azure Portal. Vzhledem k tomu, že sdílený dotaz je prostředek Azure Resource Manager, který se dá spravovat pomocí řízení přístupu na základě role Azure (Azure RBAC) a je chráněný pomocí zámků prostředků. Oba typy dotazů jsou v klidovém stavu šifrované.
 
 Uložením dotazů v Azure Portal ušetříte čas, který byste jinak strávili hledáním oblíbených nebo běžně používaných dotazů. Když sdílíte dotazy, pomůžete týmu realizovat cíle konzistence a efektivity prostřednictvím opakování.
 
@@ -60,7 +60,7 @@ Soukromé dotazy jsou přístupné a viditelné pouze pro účet, který je vytv
 
 ## <a name="create-a-shared-query"></a>Vytvořit sdílený dotaz
 
-Na rozdíl od privátního dotazu je sdílený dotaz Správce prostředkůým prostředkem. Tato skutečnost znamená, že dotaz se uložil do skupiny prostředků, dá se spravovat a řídit pomocí RBAC a může se dokonce chránit pomocí zámků prostředků. Jako prostředek může zobrazit a používat kdokoli, kdo má příslušná oprávnění.
+Na rozdíl od privátního dotazu je sdílený dotaz Správce prostředkůým prostředkem. Tato skutečnost znamená, že dotaz se uloží do skupiny prostředků, dá se spravovat a řídit pomocí Azure RBAC a může být i chráněný pomocí zámků prostředků. Jako prostředek může zobrazit a používat kdokoli, kdo má příslušná oprávnění.
 Chcete-li vytvořit nový sdílený dotaz, postupujte podle následujících kroků:
 
 1. V nabídce portálu vyberte **všechny služby**, nebo pomocí pole Azure Search v horní části všech stránek vyhledejte a vyberte **Průzkumník diagramů prostředků**.

@@ -1,19 +1,17 @@
 ---
 title: Vytvoření fondu hostitelů tenanta pro Windows Virtual Desktop (Classic) – Azure
 description: Řešení potíží a řešení problémů s fondem klientů a hostitelů během instalace klientského prostředí pro virtuální počítače s Windows (Classic)
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bd9a6dd5d11ab69635d610eee3f92a90e942b576
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269593"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009252"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Vytvoření fondu tenanta a hostitele ve virtuální ploše Windows (Classic)
 
@@ -43,9 +41,9 @@ Příklad nezpracované chyby:
 
 ```Error
 AADSTS650052 Message The app needs access to a service(\"{name}\") that your organization
-\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the 
+\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the
 configuration of your service subscriptions.650052 Message The app needs access to a service
-(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled. 
+(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled.
 Contact your IT Admin to review the configuration of your service subscriptions.
 ```
 
@@ -124,12 +122,12 @@ Zobrazení chyby v protokolu aktivit:
 1. Ukončí aktuální nabídku nasazení Azure Marketplace.
 2. V horním panelu vyhledávání vyhledejte a vyberte **Protokol aktivit**.
 3. Vyhledejte aktivitu s názvem **ověřit nasazení** , která má stav **selhání** a vyberte aktivitu.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky jednotlivých * * ověřit aktivitu nasazení * * s * * neúspěšným * * stavem](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
 
 4. Vyberte JSON a potom se posuňte dolů k dolní části obrazovky, dokud se nezobrazí pole "statusMessage".
-   
+
    > [!div class="mx-imgBorder"]
    > ![Snímek obrazovky s neúspěšnou aktivitou s červeným polem kolem vlastnosti statusMessage textu JSON](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
 
@@ -260,7 +258,7 @@ Příklad nezpracované chyby:
    "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
-         { "code": "Conflict",  
+         { "code": "Conflict",
          "message": "{\r\n \"status\": \"Failed\",\r\n \"error\": {\r\n \"code\":
          \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource
          operation completed with terminal provisioning state 'Failed'.\",\r\n

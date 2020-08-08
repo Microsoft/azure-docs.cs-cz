@@ -1,19 +1,17 @@
 ---
 title: Nastavení Multi-Factor Authentication Azure pro virtuální počítače s Windows – Azure
 description: Jak nastavit Azure Multi-Factor Authentication pro zvýšení zabezpečení na virtuálním počítači s Windows
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a8f5cb792f524354754b4368c0b68d5f9d40699
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5e42ca0a0d0ff9d9df3dc42f1e165d1035d56d6a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291383"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009456"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Povolení služby Azure Multi-Factor Authentication pro službu Windows Virtual Desktop
 
@@ -59,7 +57,7 @@ Tady je postup, jak vytvořit zásadu podmíněného přístupu, která při př
 
    >[!IMPORTANT]
    > Klientské aplikace virtuálních ploch Windows se používají pro webového klienta. Nevybírejte ale aplikaci s názvem Windows Virtual Desktop Azure Resource Manager Provider (50e95039-B200-4007-bc97-8d5790743a63). Tato aplikace se používá jenom pro načtení uživatelského kanálu a neměla by mít MFA.
-  
+
 1. Po výběru aplikace zvolte **Vybrat**a potom vyberte **Hotovo**.
 
    > [!div class="mx-imgBorder"]

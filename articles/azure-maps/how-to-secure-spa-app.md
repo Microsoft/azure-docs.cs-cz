@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0aa688d6e56629ca376844ce2d0669197b1bb2b7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 83fbf6fa9190953d902ab60a8a5ce131f1fd8a0e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531341"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006413"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Jak zabezpečit jednostránkové aplikaci pomocí neinteraktivního přihlašování
 
@@ -100,14 +100,14 @@ Vytvořte zabezpečenou aplikaci webové služby, která je zodpovědná za ově
         });
     ```
 
-## <a name="grant-role-based-access"></a>Udělení přístupu na základě rolí
+## <a name="grant-role-based-access"></a>Udělení přístupu na základě role
 
-*Řízení přístupu na základě role* (RBAC) udělíte přiřazením identity přiřazené systému k jedné nebo více definicím rolí Azure. Pokud chcete zobrazit definice rolí Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)**. Vyberte **role**a potom vyhledejte role, které začínají na *Azure Maps*.
+Přístup k *řízení přístupu na základě role Azure udělujete (Azure RBAC)* tím, že přiřadíte identitu přiřazenou systémem k jedné nebo více definicím rolí Azure. Pokud chcete zobrazit definice rolí Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)**. Vyberte **role**a potom vyhledejte role, které začínají na *Azure Maps*.
 
 1. Přejít na **účet Azure Maps**. Vyberte přiřazení role **řízení přístupu (IAM)**  >  **Role assignment**.
 
     > [!div class="mx-imgBorder"]
-    > ![Udělit RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+    > ![Udělení přístupu pomocí Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. Na kartě **přiřazení rolí** v části **Role**vyberte předdefinované Azure Maps definice role, jako je **Azure Maps data Reader** nebo **Azure Maps Přispěvatel dat**. V části **přiřadit přístup k**vyberte **Function App**. Vyberte objekt zabezpečení podle názvu. Potom vyberte **Uložit**.
 

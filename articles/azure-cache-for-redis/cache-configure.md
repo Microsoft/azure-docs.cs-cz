@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7459d674cde123bc45544322347bc4c1fe89e820
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010303"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009609"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
 Toto téma popisuje konfigurace dostupné pro instance Redis v mezipaměti Azure. Toto téma také popisuje výchozí konfiguraci serveru Redis pro Azure cache pro instance Redis.
@@ -37,9 +37,9 @@ Pomocí **nabídky prostředků**můžete zobrazit a nakonfigurovat následujíc
 * [Diagnóza a řešení problémů](#diagnose-and-solve-problems)
 * [Nastavení](#settings)
     * [Přístupové klíče](#access-keys)
-    * [Upřesnit nastavení](#advanced-settings)
+    * [Rozšířená nastavení](#advanced-settings)
     * [Mezipaměť Azure pro poradce Redis](#azure-cache-for-redis-advisor)
-    * [Měřítko](#scale)
+    * [Škálování](#scale)
     * [Velikost clusteru](#cluster-size)
     * [Trvalost dat](#redis-data-persistence)
     * [Plán aktualizací](#schedule-updates)
@@ -89,9 +89,9 @@ Klikněte na **Diagnostika a řešení problémů** , které se budou poskytovat
 Část **Nastavení** vám umožní získat přístup k následujícím nastavením pro mezipaměť a nakonfigurovat je.
 
 * [Přístupové klíče](#access-keys)
-* [Upřesnit nastavení](#advanced-settings)
+* [Rozšířená nastavení](#advanced-settings)
 * [Mezipaměť Azure pro poradce Redis](#azure-cache-for-redis-advisor)
-* [Měřítko](#scale)
+* [Škálování](#scale)
 * [Velikost clusteru](#cluster-size)
 * [Trvalost dat](#redis-data-persistence)
 * [Plán aktualizací](#schedule-updates)
@@ -109,7 +109,7 @@ Kliknutím na **přístupové klíče** zobrazíte nebo znovu vygenerujete pří
 
 ![Mezipaměť Azure pro přístupové klíče Redis](./media/cache-configure/redis-cache-manage-keys.png)
 
-### <a name="advanced-settings"></a>Upřesnit nastavení
+### <a name="advanced-settings"></a>Rozšířená nastavení
 V okně **Upřesnit nastavení** jsou nakonfigurovaná následující nastavení.
 
 * [Přístupové porty](#access-ports)
@@ -185,12 +185,12 @@ Každá cenová úroveň má odlišná omezení pro připojení klientů, pamě�
 
 | Mezipaměť Azure pro metriku Redis | Další informace |
 | --- | --- |
-| Využití šířky pásma sítě |[Výkon mezipaměti – dostupná šířka pásma](cache-faq.md#cache-performance) |
+| Využití šířky pásma sítě |[Výkon mezipaměti – dostupná šířka pásma](cache-planning-faq.md#azure-cache-for-redis-performance) |
 | Připojení klienti |[Výchozí konfigurace serveru Redis – maxclients](#maxclients) |
 | Zatížení serveru |[Grafy využití – zatížení serveru Redis](cache-how-to-monitor.md#usage-charts) |
-| Využití paměti |[Výkon mezipaměti – velikost](cache-faq.md#cache-performance) |
+| Využití paměti |[Výkon mezipaměti – velikost](cache-planning-faq.md#azure-cache-for-redis-performance) |
 
-Pokud chcete upgradovat mezipaměť, klikněte na **upgradovat** , aby se změnila cenová úroveň a [škálovat](#scale) mezipaměť. Další informace o volbě cenové úrovně najdete v tématu [co mám použít Azure cache pro nabídku Redis a velikost mám použít?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+Pokud chcete upgradovat mezipaměť, klikněte na **upgradovat** , aby se změnila cenová úroveň a [škálovat](#scale) mezipaměť. Další informace o volbě cenové úrovně najdete v tématu [Volba správné úrovně](cache-overview.md#choosing-the-right-tier) .
 
 
 ### <a name="scale"></a>Měřítko
@@ -386,7 +386,7 @@ Nová mezipaměť Azure pro instance Redis je nakonfigurovaná s následujícím
 >
 >
 
-| Nastavení | Výchozí hodnota | Description |
+| Nastavení | Výchozí hodnota | Popis |
 | --- | --- | --- |
 | `databases` |16 |Výchozí počet databází je 16, ale můžete na základě cenové úrovně nakonfigurovat jiné číslo. <sup>1</sup> výchozí databáze je DB 0. pro jednotlivá připojení můžete vybrat jiný, `connection.GetDatabase(dbid)` a to pomocí, kde `dbid` je číslo mezi `0` a `databases - 1` . |
 | `maxclients` |Závisí na cenové úrovni<sup>2</sup> . |Tato hodnota je maximální povolený počet připojených klientů ve stejnou dobu. Po dosažení limitu Redis ukončí všechna nová připojení a vrátí chybu maximální počet klientů, které se dosáhly. |
@@ -414,7 +414,7 @@ Nová mezipaměť Azure pro instance Redis je nakonfigurovaná s následujícím
   * P4 (53 GB až 530 GB) – až 64 databází
   * Všechny mezipaměti úrovně Premium s povoleným clusterem Redis – cluster Redis podporuje jenom použití databáze 0, takže `databases` limit pro jakoukoliv mezipaměť Premium s povoleným clusterem Redis je efektivně 1 a příkaz [Select](https://redis.io/commands/select) není povolený. Další informace najdete v tématu musím dělat [změny v klientské aplikaci, aby používaly clustering?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
-Další informace o databázích najdete v tématu [co jsou databáze Redis?](cache-faq.md#what-are-redis-databases)
+Další informace o databázích najdete v tématu [co jsou databáze Redis?](cache-development-faq.md#what-are-redis-databases)
 
 > [!NOTE]
 > `databases`Nastavení se dá nakonfigurovat jenom během vytváření mezipaměti a jenom pomocí PowerShellu, rozhraní příkazového řádku nebo jiných klientů pro správu. Příklad konfigurace `databases` během vytváření mezipaměti pomocí prostředí PowerShell najdete v části [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases).
@@ -505,4 +505,4 @@ Mezipaměť můžete přesunout do nového předplatného kliknutím na **přesu
 Informace o přesunu prostředků z jedné skupiny prostředků do jiné a z jednoho předplatného na jiný najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o práci s Redis příkazy najdete v tématu [Jak můžu spustit příkazy Redis?](cache-faq.md#how-can-i-run-redis-commands)
+* Další informace o práci s Redis příkazy najdete v tématu [Jak můžu spustit příkazy Redis?](cache-development-faq.md#how-can-i-run-redis-commands)

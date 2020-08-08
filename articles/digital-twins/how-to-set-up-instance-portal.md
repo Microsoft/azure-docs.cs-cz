@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c7027f474c9ff5cbd90ed1800d74e3b4ebd60b3e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 33772d46f363b161c1faa5c953f48a702ae2b8bf
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836934"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009638"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Nastavení instance a ověřování digitálních vláken Azure (portál)
 
@@ -24,27 +24,13 @@ Tato verze tohoto článku prochází těmito kroky ručně, jednou po jednom, p
 * Pokud chcete projít tyto kroky ručně pomocí rozhraní příkazového řádku, přečtěte si verzi rozhraní příkazového řádku tohoto článku: [*Postupy: nastavení instance a ověřování (CLI)*](how-to-set-up-instance-cli.md).
 * Chcete-li provést automatickou instalaci pomocí skriptu nasazení, přečtěte si skriptovaná verze tohoto článku: [*Postupy: nastavení instance a ověřování (skriptované)*](how-to-set-up-instance-scripted.md).
 
-[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
- 
-Pak se přihlaste k [Azure Portal](https://ms.portal.azure.com/) pomocí svých přihlašovacích údajů.
-
-## <a name="prerequisites-permission-requirements"></a>Požadavky: požadavky na oprávnění
-
-Aby bylo možné dokončit všechny kroky v tomto článku, musíte být klasifikováni jako vlastník v rámci vašeho předplatného Azure. 
-
-Úroveň oprávnění můžete zkontrolovat na [stránce Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) v Azure Portal (můžete použít tento odkaz nebo vyhledat *předplatná* pomocí panelu hledání na portálu). Vyhledejte název předplatného, které používáte, a zobrazte jeho roli ve sloupci *Moje role* . Pokud jste vlastníkem, je tato hodnota *vlastníkem*:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/subscriptions-role.png" alt-text="Zobrazení stránky odběry v Azure Portal zobrazující uživatele jako vlastníka" lightbox="media/how-to-set-up-instance/portal/subscriptions-role.png":::
-
-Pokud zjistíte, že hodnota je *Přispěvatel* nebo jiná než *vlastník*, můžete pokračovat jedním z následujících způsobů:
-* Obraťte se na vlastníka předplatného a požádejte ho o dokončení kroků v tomto článku vaším jménem.
-* Obraťte se na vlastníka předplatného nebo na uživatele s rolí správce přístupu uživatele v daném předplatném a požádejte ho, aby vám přistoupili k předplatnému, abyste měli oprávnění, abyste mohli pokračovat sami. To, jestli je to vhodné, závisí na vaší organizaci a vaší roli.
+[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>Vytvoření instance digitálních vláken Azure
 
-V této části **vytvoříte novou instanci digitálních vláken Azure** pomocí Azure Portal.
+V této části **vytvoříte novou instanci digitálních vláken Azure** pomocí [Azure Portal](https://ms.portal.azure.com/). Přejděte na portál a přihlaste se pomocí svých přihlašovacích údajů.
 
-Po přihlášení k [Azure Portal](https://ms.portal.azure.com/)Začněte výběrem možnosti _vytvořit prostředek_ v nabídce domovské stránky služeb Azure.
+Na portálu Začněte výběrem možnosti _vytvořit prostředek_ v nabídce domovské stránky služeb Azure.
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
@@ -87,7 +73,7 @@ Nejdřív otevřete stránku pro instanci digitálních vláken Azure v Azure Po
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Výběr přidání přiřazení role ze stránky řízení přístupu (IAM)":::
 
-Na následující stránce *Přidat přiřazení role* vyplňte hodnoty (musí být dokončená vlastníkem předplatného Azure):
+Na následující stránce *Přidat přiřazení role* vyplňte hodnoty (musí být dokončené uživatelem s [dostatečnými oprávněními](#prerequisites-permission-requirements) v předplatném Azure):
 * **Role**: v rozevírací nabídce vyberte *vlastníka digitálních vláken Azure (Preview)* .
 * **Přiřadit přístup k**: vyberte *uživatele, skupinu nebo INSTANČNÍ objekt Azure AD* z rozevírací nabídky.
 * **Vyberte**: Vyhledejte jméno nebo e-mailovou adresu uživatele, který chcete přiřadit. Když vyberete výsledek, uživatel se zobrazí v části *Vybrané členy* .

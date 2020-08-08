@@ -1,19 +1,17 @@
 ---
 title: Správa skupin aplikací pro virtuální desktopový portál Windows – Azure
 description: Správa skupin aplikací virtuálních počítačů s Windows pomocí Azure Portal.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5b0269b80cb879923f9f00861494915b6abe103e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6baada4c3b376b936f693d45e39e5887e77ef54b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283397"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010085"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Kurz: Správa skupin aplikací pomocí Azure Portal
 
@@ -49,16 +47,16 @@ Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Port
     > ![Snímek obrazovky karty základy v Azure Portal.](media/basics-tab.png)
 
 6. Pokud chcete přidat skupiny aplikací do fondu hostitelů, vyberte v nabídce na levé straně obrazovky **fondy hostitelů** .
-   
+
     Pak vyberte název fondu hostitelů, do kterého chcete přidat skupiny aplikací.
-   
+
     Potom v nabídce na levé straně obrazovky vyberte **skupiny aplikací** a pak vyberte **+ Přidat**.
 
     Nakonec vyberte skupinu předplatných a skupinu prostředků, ve které chcete vytvořit skupinu aplikací. Můžete buď vybrat název existující skupiny prostředků z rozevírací nabídky, nebo vybrat **vytvořit nové** a vytvořit novou.
 
       >[!NOTE]
       >Když do fondu hostitelů přidáte skupiny aplikací, fond hostitelů, který souvisí se skupinou aplikací, je už vybraný, protože jste na něj přešli.
-      > 
+      >
       > [!div class="mx-imgBorder"]
       >![Snímek obrazovky s kartou základy s předvybraným fondem hostitelů.](media/host-pool-selected.png)
 
@@ -80,7 +78,7 @@ Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Port
 
 12.  Vyberte kartu **aplikace** a pak vyberte **+ Přidat aplikace**.
 
-13.  Přidání aplikace z nabídky Start: 
+13.  Přidání aplikace z nabídky Start:
 
       - Přejděte do části **zdroj aplikace** a v rozevírací nabídce vyberte **Nabídka Start** . Potom přejděte na **aplikace** a z rozevírací nabídky vyberte aplikaci.
 
@@ -111,7 +109,7 @@ Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Port
 16.  Pokud chcete zaregistrovat skupinu aplikací k pracovnímu prostoru, klikněte na **zaregistrovat skupinu aplikací** a vyberte **Ano**. Pokud místo toho chcete skupinu aplikací zaregistrovat později, vyberte možnost **ne**.
 
 17.  Pokud vyberete **Ano**, můžete vybrat existující pracovní prostor, do kterého se má skupina aplikací zaregistrovat.
-       
+
        >[!NOTE]
        >Skupinu aplikací můžete zaregistrovat jenom k pracovním prostorům vytvořeným ve stejném umístění jako fond hostitelů. Lze. Pokud jste předtím zaregistrovali jinou skupinu aplikací ze stejného fondu hostitelů jako novou skupinu aplikací k pracovnímu prostoru, bude vybraná a nebude možné ji upravit. Všechny skupiny aplikací z fondu hostitelů musí být zaregistrované do stejného pracovního prostoru.
 

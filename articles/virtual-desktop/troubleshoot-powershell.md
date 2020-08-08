@@ -1,19 +1,17 @@
 ---
 title: Prostředí PowerShell pro virtuální počítače s Windows – Azure
 description: Řešení potíží s PowerShellem při nastavování prostředí virtuálních počítačů s Windows
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cd34fa2bc4c1083d4bd4dda7d118e0348a1a7fd0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 03b6da1d35247749d8ec2c6459c8ddee69bfccb6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288729"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002276"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>PowerShell pro Windows Virtual Desktop
 
@@ -33,10 +31,10 @@ Tato část obsahuje seznam příkazů PowerShellu, které se obvykle používaj
 ### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>Chyba: New-AzRoleAssignment: poskytnuté informace nejsou namapovány na ID objektu služby AD.
 
 ```powershell
-New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
-**Příčina:** Uživatele zadaného parametrem *-SignInName* nelze nalézt v Azure Active Directory vázaných na prostředí virtuálních počítačů s Windows. 
+**Příčina:** Uživatele zadaného parametrem *-SignInName* nelze nalézt v Azure Active Directory vázaných na prostředí virtuálních počítačů s Windows.
 
 **Oprava:** Ujistěte se, že máte následující věci.
 
@@ -46,7 +44,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 
 ### <a name="error-new-azroleassignment-the-client-with-object-id-does-not-have-authorization-to-perform-action-over-scope-code-authorizationfailed"></a>Chyba: New-AzRoleAssignment: "klient s ID objektu nemá autorizaci k provedení akce nad oborem (kód: AuthorizationFailed).
 
-**Příčina 1:** Účet, který používáte, nemá oprávnění vlastníka k tomuto předplatnému. 
+**Příčina 1:** Účet, který používáte, nemá oprávnění vlastníka k tomuto předplatnému.
 
 **Oprava 1:** Uživatel s oprávněním vlastníka musí spustit přiřazení role. Případně musí být uživatel přiřazen k roli správce přístupu uživatele, aby mohl přiřadit uživatele ke skupině aplikací.
 
@@ -57,7 +55,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 ### <a name="error-new-azwvdhostpool----the-location-is-not-available-for-resource-type"></a>Chyba: New-AzWvdHostPool--umístění není k dispozici pro typ prostředku.
 
 ```powershell
-New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'. 
+New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'.
 ```
 
 Příčina: virtuální plocha Windows podporuje výběr umístění fondů hostitelů, skupin aplikací a pracovních prostorů k ukládání metadat služby v určitých umístěních. Možnosti jsou omezeny na místo, kde je tato funkce k dispozici. Tato chyba znamená, že tato funkce není k dispozici v umístění, které jste zvolili.

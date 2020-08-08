@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: d26861c9d3a98c219389cde76ecd30c3d58da4c3
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e066f810dca9c1b824c5eb30bb9f938df856a819
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902129"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002706"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -116,14 +116,14 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Montreal** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | Není k dispozici | 10G, 100G | Zvon Kanada, Cologix, Megaport, Telus, Zayo |
 | **Bombaj** | Tata Communications | 2 | Západní Indie | 10G | DE-CIX, Global CloudXchange (GCX), spoléhá se na jio, Sify, Tata Communications, Verizon |
 | **Bombaj2** | Airtel | 2 | Západní Indie | Není k dispozici | Airtel, Sify, Vodafone Idea |
-| **Mnichov** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/) | 1 | Není k dispozici | 10G | DE-CIX |
+| **Mnichov** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/munich/) | 1 | Není k dispozici | 10G | DE-CIX |
 | **New York** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | Není k dispozici | 10G, 100G | CenturyLink Cloud Connect, Colt, Coresite, DE-CIX, Equinix, spolucloud, Megaport, Packet, Zayo |
 | **Newport (Wales)** | [Next Generation Data](https://www.nextgenerationdata.co.uk) | 1 | Spojené království – západ | Není k dispozici | British Telecom, Colt, Level 3 Communications, data nové generace |
 | **Ósaka** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | Japonsko – západ | 10G, 100G | V Brně, Colt, Equinix, Internet Initiative Japonsko, Inc. – IIJ, Megaport, NTT Communications, NTT SmartConnect, Softbank |
 | **Oslo** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1 | Norsko – východ | 10G, 100G | Global Connect, Megaport, Telenor, Telia dopravce |
 | **Paříž** | [Interxion PAR5](https://www.interxion.com/Locations/paris/) | 1 | Francie – střed | 10G, 100G | CenturyLink Cloud Connect, Colt, Equinix, spolucloud, Interxion, oranžová, Telia Carrier, Zayo |
 | **Perth** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | 2 | Není k dispozici | 10G | Megaport, NextDC |
-| **Phoenix** | [EdgeConnext PHX01](https://www.edgeconnex.com/locations/north-america/phoenix-az/) | 1 | Není k dispozici | 10G | |
+| **Phoenix** | [EdgeConneX PHX01](https://www.edgeconnex.com/locations/north-america/phoenix-az/) | 1 | Není k dispozici | 10G | |
 | **Québec** | [Vantage](https://vantage-dc.com/data_centers/quebec-city-data-center-campus/) | 1 | Kanada – východ | Není k dispozici | Bell Canada, Megaport |
 | **Queretaro (Mexiko)** | [KIO sítě QR01](https://www.kionetworks.com/es-mx/) | 4 | Není k dispozici | 10G | Transtelco|
 | **Quincy** | [Sabey Datacenter – sestavení](https://sabeydatacenters.com/data-center-locations/central-washington-data-centers/quincy-data-center) | 1 | Západní USA 2 | 10G, 100G | | 

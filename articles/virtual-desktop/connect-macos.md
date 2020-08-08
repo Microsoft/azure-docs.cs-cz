@@ -1,19 +1,17 @@
 ---
 title: Připojení k virtuálnímu počítači s Windows z macOS – Azure
 description: Jak se připojit k virtuálnímu počítači s Windows pomocí klienta macOS.
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 80d75357baeb3f8afd910e22abca8b11af2d80b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 649176a363b1a721fede68c5db2a736d5304f485
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285162"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007630"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-macos-client"></a>Připojení k virtuálnímu počítači s Windows pomocí klienta macOS
 
@@ -38,7 +36,7 @@ Přihlášení k odběru informačního kanálu:
 2. Zadejte adresu URL informačního kanálu. Může se jednat o adresu URL nebo e-mailovou adresu:
    - Pokud použijete adresu URL, použijte tu, kterou vám správce poskytl. Obvykle je adresa URL <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> .
    - Pokud chcete používat e-mail, zadejte svou e-mailovou adresu. To klientovi oznamuje, aby vyhledal adresu URL přidruženou k vaší e-mailové adrese, pokud váš správce nakonfiguroval server tímto způsobem.
-3. Vyberte možnost **Přidat**.
+3. Vyberte **Přidat**.
 4. Po zobrazení výzvy se přihlaste pomocí svého uživatelského účtu.
 
 Po přihlášení by se měl zobrazit seznam dostupných prostředků.

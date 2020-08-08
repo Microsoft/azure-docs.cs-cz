@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3a8b271a030de2ddd3aa40b5bb0af871319c0e1f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d2ef76a054642807f0d72a758ae084a19557caf8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171801"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008997"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>Směrný plán zabezpečení Azure Resource graphu pro Azure Security test
 
@@ -26,7 +26,7 @@ Tyto základní hodnoty zabezpečení se týkají pokynů z [Azure Security srov
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
-**Doprovodné**materiály: Azure Resource Graph poskytuje přístup k typům a vlastnostem prostředků na základě řízení přístupu na základě role (RBAC). Pravidelně provádějte audit a zkontrolujte přístup k objektům zabezpečení (uživatelům, skupinám a účtům služeb), abyste se ujistili, že dotazy vrátí výsledky pro příslušné prostředky.
+**Doprovodné**materiály: Azure Resource Graph poskytuje přístup k typům a vlastnostem prostředků na základě řízení přístupu na základě role Azure (RBAC). Pravidelně provádějte audit a zkontrolujte přístup k objektům zabezpečení (uživatelům, skupinám a účtům služeb), abyste se ujistili, že dotazy vrátí výsledky pro příslušné prostředky.
 
 * [Oprávnění v Azure Resource Graph](../overview.md#permissions-in-azure-resource-graph)
 

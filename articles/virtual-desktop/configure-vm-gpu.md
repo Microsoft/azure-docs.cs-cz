@@ -1,18 +1,16 @@
 ---
 title: Konfigurace GPU pro virtuální počítače s Windows – Azure
 description: Jak povolit urychlené vykreslování a kódování GPU na virtuálním počítači s Windows
-services: virtual-desktop
 author: gundarev
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: a80e9940aff69d351fde7512cfc38a12d6029f74
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: dd5eb8acb76fe5901149d90a6d551d8d14d363cc
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291486"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007772"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurace akcelerace GPU (Graphics Processing Unit) pro virtuální počítače s Windows
 
@@ -58,7 +56,7 @@ Ve výchozím nastavení se aplikace a počítače běžící v konfiguracích s
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>Konfigurace kódování rámce akcelerovaného GPU
 
 Vzdálená plocha zakóduje všechny grafiky vygenerované aplikacemi a plochami (ať už vygenerované pomocí GPU nebo s využitím procesoru) pro přenos do klientů vzdálené plochy. Pokud se část obrazovky často aktualizuje, Tato část obrazovky se zakóduje pomocí kodeku videa (H. 264/AVC). Ve výchozím nastavení Vzdálená plocha nevyužívá k tomuto kódování dostupné GPU. Nakonfigurujte Zásady skupiny pro hostitele relací, aby bylo možné povolit kódování rámce GPU. Pokračuje se výše uvedenými kroky:
- 
+
 >[!NOTE]
 >Pro virtuální počítače řady NVv4-series není k dispozici kódování rámců podporující GPU.
 

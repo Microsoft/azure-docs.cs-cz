@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 224436c155f1133621abede21878b49ebc9b3331
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c9da97607961a7d701851c6892393cdf537b9a32
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185196"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008028"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Jak spravovat službu Azure cache pro Redis
 Toto téma popisuje, jak provádět úlohy správy, jako je třeba [restartování](#reboot) a [Plánování aktualizací](#schedule-updates) pro instance Redis v mezipaměti Azure.
@@ -98,5 +98,7 @@ Ano, naplánované aktualizace můžete spravovat pomocí následujících rutin
 * [Remove-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/remove-azrediscachepatchschedule)
 
 ## <a name="next-steps"></a>Další kroky
-* Prozkoumejte více funkcí [Azure cache pro Redis úrovně Premium](cache-premium-tier-intro.md) .
+Přečtěte si další informace o funkcích Azure cache pro Redis.
+
+* [Mezipaměť Azure pro úrovně služeb Redis](cache-overview.md#service-tiers)
 

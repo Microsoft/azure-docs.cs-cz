@@ -10,16 +10,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0f5bc9827919c18e327dc263384f0d4b6a01c5bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530164"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004170"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Kurz: odeslání nabízených oznámení konkrétním uživatelům pomocí Azure Notification Hubs
 
@@ -38,7 +38,7 @@ V tomto kurzu provedete následující kroky:
 > * Úprava aplikace pro iOS
 > * Testování aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali centrum oznámení, jak je popsáno v tématu [Posílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs](ios-sdk-get-started.md). Tento kurz je také předpokladem pro kurz [zabezpečeného nabízení oznámení (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) .
 Pokud chcete jako back-end službu použít Mobile Apps, přečtěte si téma [Mobile Apps Začínáme s nabízenými oznámeními](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
@@ -50,7 +50,7 @@ Pokud chcete jako back-end službu použít Mobile Apps, přečtěte si téma [M
 1. Otevřete aplikaci pro zobrazení jedné stránky, kterou jste vytvořili v části [Posílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs](ios-sdk-get-started.md) kurzu.
 
    > [!NOTE]
-   > V této části se předpokládá, že váš projekt je nakonfigurovaný s prázdným názvem organizace. V takovém případě musíte název vaší organizace předřadit do všech názvů tříd.
+   > V této části se předpokládá, že váš projekt je nakonfigurovaný s prázdným názvem organizace. Pokud ne, přiřaďte název vaší organizace všem názvům tříd.
 
 2. V `Main.storyboard` souboru přidejte komponenty zobrazené na snímku obrazovky z knihovny objektů.
 
@@ -66,7 +66,7 @@ Pokud chcete jako back-end službu použít Mobile Apps, přečtěte si téma [M
 
      Některé součásti byly přidány do [aplikací pro iOS pomocí služby Azure Notification Hubs kurz pro posílání nabízených oznámení do aplikací pro iOS](ios-sdk-get-started.md) .
 
-3. **CTRL** přetáhněte z komponent v zobrazení na `ViewController.h` a přidejte tyto nové.
+3. **CTRL** přetáhněte ze součástí zobrazení na `ViewController.h` a přidejte tyto nové možnosti:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -86,13 +86,13 @@ Pokud chcete jako back-end službu použít Mobile Apps, přečtěte si téma [M
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. V aplikaci `ViewController.h` přidejte následující `#define` po příkazech import. `<Enter Your Backend Endpoint>`Zástupný symbol nahraďte cílovou adresou URL, kterou jste použili k nasazení back-endu aplikace v předchozí části. Například `http://your_backend.azurewebsites.net`.
+4. V aplikaci `ViewController.h` přidejte následující `#define` po příkazech import. `<Your backend endpoint>`Zástupný symbol nahraďte cílovou adresou URL, kterou jste použili k nasazení back-endu aplikace v předchozí části. Například `http://your_backend.azurewebsites.net` :
 
     ```objc
-    #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
+    #define BACKEND_ENDPOINT @"<Your backend endpoint>"
     ```
 
-5. V projektu vytvořte novou třídu pro kakaový touch s názvem `RegisterClient` k rozhraní s back-end ASP.NET, který jste vytvořili. Vytvoří třídu děděnou z `NSObject` . Pak přidejte následující kód do `RegisterClient.h` .
+5. V projektu vytvořte novou třídu pro kakaový touch s názvem `RegisterClient` k rozhraní s back-end ASP.NET, který jste vytvořili. Vytvoří třídu děděnou z `NSObject` . Pak přidejte následující kód do `RegisterClient.h` :
 
     ```objc
     @interface RegisterClient : NSObject
@@ -494,7 +494,7 @@ Pokud chcete jako back-end službu použít Mobile Apps, přečtěte si téma [M
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak posílat nabízená oznámení konkrétním uživatelům, k jejichž registracím jsou přidružené značky. V dalším kurzu se dozvíte, jak posílat nabízená oznámení na základě polohy: 
+V tomto kurzu jste zjistili, jak posílat nabízená oznámení konkrétním uživatelům, k jejichž registracím jsou přidružené značky. V dalším kurzu se dozvíte, jak posílat nabízená oznámení na základě polohy:
 
 > [!div class="nextstepaction"]
 >[Odesílání oznámení na základě polohy](notification-hubs-push-bing-spatial-data-geofencing-notification.md)

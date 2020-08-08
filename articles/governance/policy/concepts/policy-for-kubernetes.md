@@ -1,14 +1,14 @@
 ---
 title: Preview – informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí. Tato funkce je ve verzi Preview.
-ms.date: 06/12/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dc81d22677eeab16ae06e782c5ae47c121af04c6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373755"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003521"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Vysvětlení Azure Policy pro clustery Kubernetes (Preview)
 
@@ -130,10 +130,16 @@ Po dokončení výše uvedených požadovaných kroků nainstalujte doplněk Azu
 
   1. Na hlavní stránce vyberte tlačítko **Povolit doplněk** .
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="Povolení Azure Policy pro doplněk AKS" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="Povolení Azure Policy pro doplněk AKS":::
 
+     <a name="migrate-from-v1"></a>
      > [!NOTE]
-     > Pokud se tlačítko **Povolit doplněk** zobrazí šedě, předplatné ještě není přidané do verze Preview. Pokud je povoleno tlačítko **zakázat doplněk** a zobrazí se zpráva s upozorněním na migraci do verze v2, je Gatekeepver v2 stále nainstalován a je třeba jej odebrat.
+     > Pokud se tlačítko **Povolit doplněk** zobrazí šedě, předplatné ještě není přidané do verze Preview. Pokud je povolené tlačítko **zakázat doplněk** a zobrazí se zpráva s upozorněním na migraci v2, nainstaluje se doplněk V1 a před přiřazením definic zásad v2 se musí odebrat. _Nepoužívané_ doplňky V1 se automaticky nahradí doplňkem v2 od 24. srpna 2020. Je potřeba přiřadit nové verze V2 definic zásad. Chcete-li upgradovat nyní, postupujte následovně:
+     > 
+     > 1. Ověřte, jestli má cluster AKS nainstalovaný doplněk V1 na stránce **zásady (Preview)** v clusteru AKS a jestli má "aktuální cluster používá Azure Policy doplněk v1...". Zpráva.
+     > 1. [Odeberte doplněk](#remove-the-add-on-from-aks).
+     > 1. Kliknutím na tlačítko **Povolit doplněk** nainstalujete verzi v2 doplňku.
+     > 1. [Přiřaďte verze V2 předdefinovaných zásad zásad v1.](#assign-a-built-in-policy-definition)
 
 - Azure CLI
 
@@ -430,7 +436,7 @@ Každých 15 minut doplněk volá úplnou kontrolu clusteru. Po shromáždění 
 > [!NOTE]
 > Každá sestava dodržování předpisů v Azure Policy pro clustery Kubernetes zahrnuje všechna porušení během posledních 45 minut. Časové razítko indikuje, kdy došlo k porušení.
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 Jako Kubernetes Controller nebo kontejner se v clusteru Kubernetes udržují protokoly _Azure-Policy_ i _gatekeeper_ . Protokoly se dají zveřejnit na stránce **Přehled** v clusteru Kubernetes.
 Další informace najdete v tématu [monitorování výkonu clusteru Kubernetes s využitím Azure monitor pro kontejnery](../../../azure-monitor/insights/container-insights-analyze.md).

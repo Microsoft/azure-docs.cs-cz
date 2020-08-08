@@ -8,18 +8,18 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/05/2020
-ms.openlocfilehash: 34e56e5d92526cbf46408c670127e87781e342cd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9c05753b44b0c644b121eb3ccd3316633f9e5964
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119731"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009524"
 ---
-# <a name="review-and-publish-an-offer-to-commercial-marketplace"></a>Kontrola a publikování nabídky na komerčním webu Marketplace
+# <a name="review-and-publish-an-offer-to-the-commercial-marketplace"></a>Kontrola a publikování nabídky na komerčním webu Marketplace
 
 V tomto článku se dozvíte, jak pomocí partnerského centra odeslat nabídku do verze Preview, zobrazit náhled nabídky a potom ji publikovat na komerčním webu Microsoft Marketplace. Také pokryjeme, jak kontrolovat stav publikování během postupu publikování. Musíte již mít vytvořenou nabídku, kterou chcete publikovat.
 
-## <a name="go-to-your-offer-in-commercial-marketplace"></a>Přejít na nabídku na komerčním webu Marketplace
+## <a name="go-to-your-offer-in-the-commercial-marketplace"></a>Přejít na nabídku na komerčním webu Marketplace
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
 1. V navigační nabídce vlevo vyberte **obchodní Marketplace**  >  **Přehled**.
@@ -53,13 +53,13 @@ V tomto článku se dozvíte, jak pomocí partnerského centra odeslat nabídku 
 
 Po výběru **publikovat**budou procesy ověřování a publikování pokračovat v uvedeném pořadí. Nejběžnější proces publikování je zobrazen v této tabulce:
 
-| Fáze | Co se stane | 
+| Fáze | Změna | 
 | ------------ | ------------- | ------------- |
 | Automatizované ověřování | Zpracováváme sadu automatizovaných ověření. | 
 | Certifikace | Provádíme Ruční ověřování. | 
 | Vytváření náhledu | Stránka výpisu pro vaši nabídku Preview je k dispozici všem uživatelům, kteří mají odkaz ve verzi Preview. Pokud bude vaše nabídka prodávána prostřednictvím Microsoft (s podporou transakcí), může koupit a získat přístup k této nabídce pro účely testování jenom ta cílová skupina, kterou jste zadali na stránce **verze Preview** vaší nabídky. | 
 | Schvalování vydavatele | Pošleme vám e-mail s žádostí o náhled a schválení vaší nabídky. | 
-| Publikování | Spuštěním série kroků ověříte, že nabídka Preview je publikovaná živě na komerčním webu Marketplace. | 
+| Publikovat | Spuštěním série kroků ověříte, že nabídka Preview je publikovaná živě na komerčním webu Marketplace. | 
 |||
 
 ## <a name="automated-validation-phase"></a>Fáze automatizovaného ověřování

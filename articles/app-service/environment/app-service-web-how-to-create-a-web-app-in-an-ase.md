@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ba94f15f21696c87b336dc1f17b6f9f9def75c6c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 0407bde00c703663227230a0b6ff2de287f6650c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220690"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007059"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Vytvoření webové aplikace ve App Service Environment v1
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak vytvořit plány Web Apps a App Service v [App Se
 > 
 > 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto kurzu se předpokládá, že jste vytvořili App Service Environment. Pokud jste to ještě neudělali, přečtěte si téma [vytvoření App Service Environment](app-service-web-how-to-create-an-app-service-environment.md). 
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
@@ -40,7 +40,7 @@ V tomto kurzu se předpokládá, že jste vytvořili App Service Environment. Po
     Pokud máte více předplatných, abyste si mohli ve svém App Service Environment vytvořit aplikaci, musíte použít stejné předplatné, které jste použili při vytváření prostředí. 
 3. Vyberte nebo vytvořte skupinu prostředků.
    
-    *Skupiny prostředků* umožňují spravovat související prostředky Azure jako jednotku a jsou užitečné při vytváření pravidel *řízení přístupu na základě rolí* (RBAC) pro vaše aplikace. Další informace naleznete v tématu [Přehled Azure Resource Manager][ResourceGroups]. 
+    *Skupiny prostředků* umožňují spravovat související prostředky Azure jako jednotku a jsou užitečné při vytváření pravidel *řízení přístupu na základě role Azure (Azure RBAC)* pro vaše aplikace. Další informace najdete v článku [Přehled Azure Resource Manageru][ResourceGroups]. 
 4. Vyberte nebo vytvořte plán služby App Service.
    
     *Plány App Service* jsou spravované sady webových aplikací.  Po výběru ceny se za normálních podmínek místo individuálních aplikací použije cena za App Service plán. V rámci služby řízení přihlašování platíte za výpočetní instance přidělené k pomocnému programu místo toho, co jste vystavili pomocí ASP.  Pro horizontální navýšení kapacity webové aplikace můžete škálovat instance App Serviceho plánu a ovlivňují všechny webové aplikace v tomto plánu.  Některé funkce, jako jsou například sloty webu nebo Integrace virtuální sítě, mají také omezení množství v rámci plánu.  Další informace najdete v tématu [Přehled plánů Azure App Service](../overview-hosting-plans.md) .

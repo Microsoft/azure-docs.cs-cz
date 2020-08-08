@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: 96fb914b5dafe5eb818f2b491bbe2d856763bd02
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fef1870c396055cb9121aa5d8c7859440d107f98
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534732"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002320"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Verze Preview: přihlášení k virtuálnímu počítači se systémem Linux v Azure pomocí ověřování Azure Active Directory
 
@@ -35,7 +35,7 @@ K přihlášení k virtuálním počítačům se systémem Linux v Azure využí
   - K dalšímu zabezpečení přihlášení k virtuálním počítačům Azure můžete nakonfigurovat službu Multi-Factor Authentication.
   - Možnost přihlášení k virtuálním počítačům Linux pomocí Azure Active Directory funguje taky pro zákazníky, kteří používají [federační služby](../../active-directory/hybrid/how-to-connect-fed-whatis.md).
 
-- **Bezproblémová spolupráce:** Díky Access Controlům na základě rolí (RBAC) můžete určit, kdo se může přihlásit k danému virtuálnímu počítači jako běžný uživatel nebo s oprávněními správce. Když se uživatelé připojí nebo odejdou z týmu, můžete aktualizovat zásadu RBAC pro virtuální počítač a podle potřeby tak udělit přístup. Toto prostředí je mnohem jednodušší než nutnosti odstraňovat virtuální počítače, aby nedošlo k odebrání nepotřebných veřejných klíčů SSH. Když zaměstnanci odejdou z vaší organizace a jejich uživatelský účet je v Azure AD zakázaný nebo odebraný, už nebudou mít přístup k vašim prostředkům.
+- **Bezproblémová spolupráce:** Díky řízení přístupu na základě role Azure (Azure RBAC) můžete určit, kdo se může přihlásit k danému virtuálnímu počítači jako běžný uživatel nebo s oprávněními správce. Když se uživatelé připojí nebo odejdou z týmu, můžete podle potřeby aktualizovat zásady Azure RBAC pro virtuální počítač a udělit tak přístup. Toto prostředí je mnohem jednodušší než nutnosti odstraňovat virtuální počítače, aby nedošlo k odebrání nepotřebných veřejných klíčů SSH. Když zaměstnanci odejdou z vaší organizace a jejich uživatelský účet je v Azure AD zakázaný nebo odebraný, už nebudou mít přístup k vašim prostředkům.
 
 ## <a name="supported-azure-regions-and-linux-distributions"></a>Podporované oblasti Azure a distribuce Linux
 
@@ -121,7 +121,7 @@ Zásady řízení přístupu na základě role Azure (Azure RBAC) určují, kdo 
 > [!NOTE]
 > Pokud chcete uživateli dovolit, aby se přihlásil k VIRTUÁLNÍmu počítači přes SSH, musíte přiřadit buď roli *přihlášení správce virtuálního počítače* , nebo *přihlašovací údaje uživatele virtuálního počítače* . Uživatel Azure s rolemi *vlastník* nebo *Přispěvatel* přiřazený k virtuálnímu počítači nemá automaticky oprávnění k přihlášení k virtuálnímu počítači přes SSH.
 
-V následujícím příkladu se pomocí funkce [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create) přiřadí k virtuálnímu počítači role *přihlášení správce virtuálního počítače* pro aktuálního uživatele Azure. Uživatelské jméno vašeho aktivního účtu Azure se získá pomocí [AZ Account show](/cli/azure/account#az-account-show)a *obor* se nastaví na virtuální počítač vytvořený v předchozím kroku pomocí [AZ VM show](/cli/azure/vm#az-vm-show). Obor se taky dá přiřadit na úrovni skupiny prostředků nebo předplatného a použít normální oprávnění dědičnosti RBAC. Další informace najdete v tématu [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) .
+V následujícím příkladu se pomocí funkce [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create) přiřadí k virtuálnímu počítači role *přihlášení správce virtuálního počítače* pro aktuálního uživatele Azure. Uživatelské jméno vašeho aktivního účtu Azure se získá pomocí [AZ Account show](/cli/azure/account#az-account-show)a *obor* se nastaví na virtuální počítač vytvořený v předchozím kroku pomocí [AZ VM show](/cli/azure/vm#az-vm-show). Obor se taky dá přiřadit na úrovni skupiny prostředků nebo předplatného a platí normální oprávnění dědičnosti Azure RBAC. Další informace najdete v tématu [Azure RBAC](../../role-based-access-control/overview.md) .
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -136,7 +136,7 @@ az role assignment create \
 > [!NOTE]
 > Pokud se vaše doména AAD a doména přihlašovacího jména uživatele neshodují, je nutné zadat ID objektu vašeho uživatelského účtu pomocí *--zmocněnce-Object-ID*, nikoli jenom pomocí uživatelského jména pro- *-nabyvatele*. ID objektu pro svůj uživatelský účet můžete získat pomocí [seznamu AZ AD User list](/cli/azure/ad/user#az-ad-user-list).
 
-Další informace o tom, jak pomocí RBAC spravovat přístup k prostředkům předplatného Azure, najdete v tématu použití rozhraní příkazového [řádku Azure](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)nebo [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+Další informace o tom, jak pomocí Azure RBAC spravovat přístup k prostředkům předplatného Azure, najdete v tématu použití rozhraní příkazového [řádku Azure](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)nebo [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 Službu Azure AD můžete také nakonfigurovat tak, aby vyžadovala službu Multi-Factor Authentication pro konkrétního uživatele, aby se přihlásil k virtuálnímu počítači se systémem Linux. Další informace najdete v tématu [Začínáme s Azure Multi-Factor Authentication v cloudu](../../active-directory/authentication/howto-mfa-getstarted.md).
 
@@ -185,7 +185,7 @@ Některé běžné chyby při pokusu o přihlášení SSH s přihlašovacími ú
 
 ### <a name="access-denied-azure-role-not-assigned"></a>Přístup byl odepřen: role Azure nebyla přiřazena.
 
-Pokud se v příkazovém řádku SSH zobrazí následující chyba, ověřte, že jste pro virtuální počítač nakonfigurovali zásady RBAC, které udělí uživateli buď *přihlašovací jméno správce virtuálního počítače* , nebo roli *přihlášení uživatele virtuálního počítače* :
+Pokud se v příkazovém řádku SSH zobrazí následující chyba, ověřte, že jste pro virtuální počítač nakonfigurovali zásady Azure RBAC, které udělí uživateli buď *přihlašovací jméno správce virtuálního počítače* , nebo roli *přihlášení uživatele virtuálního počítače* :
 
 ```output
 login as: azureuser@contoso.onmicrosoft.com

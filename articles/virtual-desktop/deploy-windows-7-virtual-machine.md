@@ -1,19 +1,17 @@
 ---
 title: Nasazení virtuálního počítače se systémem Windows 7 – Azure
 description: Jak nakonfigurovat a nasadit virtuální počítač se systémem Windows 7 na virtuálním počítači s Windows
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6cb4a31e3360f3f9f8c9ed4684c30295489d27d8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0dcf21190b52f966dafb9caa9ae28fdf9b99ba86
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285149"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007569"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Nasazení virtuálního počítače s Windows 7 do Windows Virtual Desktopu
 
@@ -24,7 +22,7 @@ Proces nasazení virtuálního počítače s Windows 7 na virtuálním počíta�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, vytvořte fond hostitelů podle pokynů v tématu [Vytvoření fondu hostitelů s prostředím PowerShell](create-host-pools-powershell.md) . Pokud používáte portál, postupujte podle pokynů v krocích 1 až 9 tématu [Vytvoření fondu hostitelů pomocí Azure Portal](create-host-pools-azure-marketplace.md). Potom vyberte **zkontrolovat + vytvořit** a vytvořte prázdný fond hostitelů. 
+Než začnete, vytvořte fond hostitelů podle pokynů v tématu [Vytvoření fondu hostitelů s prostředím PowerShell](create-host-pools-powershell.md) . Pokud používáte portál, postupujte podle pokynů v krocích 1 až 9 tématu [Vytvoření fondu hostitelů pomocí Azure Portal](create-host-pools-azure-marketplace.md). Potom vyberte **zkontrolovat + vytvořit** a vytvořte prázdný fond hostitelů.
 
 ## <a name="configure-a-windows-7-virtual-machine"></a>Konfigurace virtuálního počítače s Windows 7
 
@@ -49,9 +47,9 @@ Postup nastavení virtuálního počítače se systémem Windows 7 na virtuáln�
      ```
 
 12. Pokud chcete získat registrační token, postupujte podle pokynů uvedených [tady](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0) .
-      
+
       - Pokud místo toho chcete Azure Portal použít, můžete také přejít na stránku Přehled fondu hostitelů, do kterého chcete virtuální počítač přidat, a vytvořit token.
-  
+
 13. [Stáhněte si agenta virtuální plochy Windows pro Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
 14. [Stáhněte správce agenta virtuálních počítačů s Windows pro Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
 15. Spusťte instalační program agenta virtuálních počítačů s Windows a postupujte podle pokynů. Po zobrazení výzvy zadejte registrační klíč, který jste vytvořili v kroku 12.
