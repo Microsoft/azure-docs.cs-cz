@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce816b74c12333477203cce690c955d5aaf1cda
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a197c879e4c091c9b421c194e1f6a50b91d24bb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101461"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007357"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egress"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s odchozím výstupem
 
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak integrovat výstup pomocí Azure Active Directory
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -45,7 +45,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Výstup podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování
 * Odchozí přenos dat podporuje **jenom v čase** zřizování uživatelů.
-* Po konfiguraci odchozího přenosu dat můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování odchozího přenosu dat můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-egress-from-the-gallery"></a>Přidávání výstupů z Galerie
 
@@ -130,7 +130,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Na následující stránce proveďte následující kroky.
 
-    ![Konfigurace odchozího přenosu dat](./media/egress-tutorial/configure1.PNG)
+    ![Konfigurace odchozího přenosu dat](./media/egress-tutorial/configure-1.PNG)
 
     a. V nabídce na levé straně klikněte na **Konfigurace jednotného přihlašování**.
 
@@ -150,11 +150,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Kliknutím na **pozvat uživatele** v nabídce vlevo a kliknutím na **pozvat jednoho uživatele** přidejte uživatele.
 
-    ![Výstup – vytvořit testovacího uživatele](./media/egress-tutorial/createuser1.PNG)
+    ![Výstup – vytvořit testovacího uživatele](./media/egress-tutorial/create-user-1.PNG)
 
 1. Vyplňte požadovaná pole a klikněte na **pozvat**.
 
-    ![Výstup – vytvořit testovacího uživatele](./media/egress-tutorial/createuser2.PNG)
+    ![Výstup – vytvořit testovacího uživatele](./media/egress-tutorial/create-user-2.PNG)
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -162,7 +162,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici výstup na přístupovém panelu, měli byste se automaticky přihlásit k odchozímu přenosu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1e8fd08a22d5d243f404a12ff96c1a8797b97f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1cf4af12b9ef912d37014215e422d5b9c73903f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485669"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007875"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>Základní hodnoty zabezpečení Azure pro Customer Lockbox pro Microsoft Azure
 
@@ -222,13 +222,13 @@ Připojte protokoly aktivit generované Customer Lockbox do Azure Sentinel nebo 
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Doprovodné**materiály: udržování inventáře uživatelských účtů, které mají přístup pro správu k vašim požadavkům na Customer Lockbox. Ke konfiguraci řízení přístupu na základě role (RBAC) můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity v Azure Active Directory.
+**Doprovodné**materiály: udržování inventáře uživatelských účtů, které mají přístup pro správu k vašim požadavkům na Customer Lockbox. K nakonfigurování řízení přístupu na základě role Azure (Azure RBAC) můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity v Azure Active Directory.
 
 V organizaci zákazníka obdrží uživatel, který má roli vlastníka pro předplatné Azure, e-mail od Microsoftu a upozorní je na všechny žádosti, které čekají na přístup. U žádostí o Customer Lockbox je tato osoba určeným schvalovatelem.
 
 * [Porozumění vlastním rolím](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
-* [Jak nakonfigurovat RBAC pro sešity](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [Jak nakonfigurovat službu Azure RBAC pro sešity](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
 
 * [Pochopení oprávnění pro žádosti o přístup v Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
@@ -527,7 +527,7 @@ I když je možné zjistit klasické prostředky Azure prostřednictvím Azure R
 
 * [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Principy řízení přístupu na základě rolí v Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Pochopení řízení přístupu na základě role v Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -546,7 +546,7 @@ I když je možné zjistit klasické prostředky Azure prostřednictvím Azure R
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků Azure. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
 Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných zákazníka pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 * [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
@@ -608,7 +608,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných, pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 * [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)

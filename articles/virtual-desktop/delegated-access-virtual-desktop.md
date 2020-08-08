@@ -1,19 +1,17 @@
 ---
 title: Delegovaný přístup na virtuálním počítači s Windows – Azure
 description: Jak delegovat možnosti správy pro nasazení virtuálních klientů s Windows, včetně příkladů.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4e63ec864da9a6e7ce5448b322e0452503e2493c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f2aa2c74704cf89c082d2837b39e82902efa0a62
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853428"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010051"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Delegovaný přístup ve Windows Virtual Desktop
 
@@ -40,18 +38,18 @@ Delegovaný přístup k virtuálním plochám Windows podporuje následující h
 
 Než začnete, nezapomeňte postupovat podle pokynů v tématu [nastavení modulu PowerShellu](powershell-module.md) pro nastavení modulu PowerShellu pro virtuální počítače s Windows, pokud jste to ještě neudělali.
 
-Virtuální počítač s Windows používá řízení přístupu na základě role v Azure (Azure RBAC) při publikování skupin aplikací uživatelům nebo skupinám uživatelů. Role uživatele virtualizace plochy je přiřazena uživateli nebo skupině uživatelů a oborem je skupina aplikací. Tato role poskytuje uživateli speciální přístup k datům ve skupině aplikací.  
+Virtuální počítač s Windows používá řízení přístupu na základě role v Azure (Azure RBAC) při publikování skupin aplikací uživatelům nebo skupinám uživatelů. Role uživatele virtualizace plochy je přiřazena uživateli nebo skupině uživatelů a oborem je skupina aplikací. Tato role poskytuje uživateli speciální přístup k datům ve skupině aplikací.
 
 Spuštěním následující rutiny přidejte Azure Active Directory uživatele do skupiny aplikací:
 
 ```powershell
-New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'  
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 Spuštěním následující rutiny přidejte Azure Active Directory skupinu uživatelů do skupiny aplikací:
 
 ```powershell
-New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 ## <a name="next-steps"></a>Další kroky

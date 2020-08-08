@@ -1,6 +1,6 @@
 ---
 title: Data bodu clusteringu na mapě | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak pomocí webové sady SDK služby Microsoft Azure Maps vykreslit data bodu clusteru a vykreslovat je na mapě.
+description: Naučte se, jak odkazovat na data v clusterech na mapách. Podívejte se, jak použít Azure Maps webové sady SDK pro data v clusteru, reagovat na události myši clusteru a zobrazit agregované clustery.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 05e21e63b104a21757c63b9ad8d2954ed778d4b8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 207106d8daab4d5d2a6d8d681aad5a20923a5a48
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285743"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009048"
 ---
 # <a name="clustering-point-data"></a>Data bodu clusteringu
 

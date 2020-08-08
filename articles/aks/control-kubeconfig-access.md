@@ -4,16 +4,16 @@ description: Naučte se řídit přístup ke konfiguračnímu souboru Kubernetes
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 5ed2f74d9de30b5fbdeaeb38316831db0777a0d6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c73c4a0ae46c3d2ac3a64543473bd6639d03b434
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501623"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009286"
 ---
-# <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Použití řízení přístupu na základě role v Azure k definování přístupu ke konfiguračnímu souboru Kubernetes ve službě Azure Kubernetes Service (AKS)
+# <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Použití řízení přístupu na základě role v Azure k definování přístupu ke konfiguračnímu souboru Kubernetes ve službě Azure Kubernetes Service (AKS)
 
-Pomocí nástroje můžete pracovat s clustery Kubernetes `kubectl` . Rozhraní příkazového řádku Azure nabízí snadný způsob, jak získat přihlašovací údaje pro přístup a informace o konfiguraci pro připojení k vašim clusterům AKS pomocí nástroje `kubectl` . Pokud chcete omezit, kdo může získat informace o konfiguraci Kubernetes (*kubeconfig*) a omezit oprávnění, která pak mají, můžete použít řízení přístupu na základě role (RBAC) v Azure.
+Pomocí nástroje můžete pracovat s clustery Kubernetes `kubectl` . Rozhraní příkazového řádku Azure nabízí snadný způsob, jak získat přihlašovací údaje pro přístup a informace o konfiguraci pro připojení k vašim clusterům AKS pomocí nástroje `kubectl` . Pokud chcete omezit, kdo může získat informace o konfiguraci Kubernetes (*kubeconfig*) a omezit oprávnění, která pak mají, můžete použít řízení přístupu na základě role Azure (Azure RBAC).
 
 V tomto článku se dozvíte, jak přiřadit role RBAC, které omezují, kdo může získat informace o konfiguraci pro cluster AKS.
 
@@ -27,7 +27,7 @@ Tento článek také vyžaduje, abyste spustili Azure CLI verze 2.0.65 nebo nov�
 
 Při interakci s clusterem AKS pomocí `kubectl` nástroje je použit konfigurační soubor, který definuje informace o připojení ke clusteru. Tento konfigurační soubor je obvykle uložený v souboru *~/.Kube/config*. V tomto souboru *kubeconfig* lze definovat více clusterů. Mezi clustery přepínáte pomocí příkazu [kubectl config use-Context][kubectl-config-use-context] .
 
-Příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] vám umožní získat přihlašovací údaje pro cluster AKS a sloučí je do souboru *kubeconfig* . K řízení přístupu k těmto přihlašovacím údajům můžete použít řízení přístupu na základě role (RBAC) Azure. Tyto role Azure umožňují definovat, kdo může načíst soubor *kubeconfig* a jaká oprávnění mají v rámci clusteru.
+Příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] vám umožní získat přihlašovací údaje pro cluster AKS a sloučí je do souboru *kubeconfig* . K řízení přístupu k těmto přihlašovacím údajům můžete použít řízení přístupu na základě role Azure (Azure RBAC). Tyto role Azure umožňují definovat, kdo může načíst soubor *kubeconfig* a jaká oprávnění mají v rámci clusteru.
 
 Tyto dvě předdefinované role:
 

@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 9de31ba30c4599393d9127c7852cb567cf0258ef
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: c9483363dcf6b4a5c05d71daa75d680dd25b8308
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542072"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002682"
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení služby Azure Identity Management
 
@@ -41,7 +41,7 @@ Cílem tohoto článku je poskytnout přehled základních funkcí zabezpečení
 * Jednotné přihlašování
 * Reverzní proxy server
 * Multi-Factor Authentication
-* Řízení přístupu na základě role (RBAC)
+* Řízení přístupu na základě role v Azure (Azure RBAC)
 * Monitorování zabezpečení, výstrahy a sestavy založené na strojovém učení
 * Správa identit a přístupu uživatelů
 * Registrace zařízení
@@ -87,9 +87,9 @@ Další informace:
 * [Co je Azure Multi-Factor Authentication?](/azure/active-directory/authentication/multi-factor-authentication)
 * [Jak funguje Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
 
-## <a name="rbac"></a>RBAC
+## <a name="azure-rbac"></a>Azure RBAC
 
-RBAC je systém autorizace založený na Azure Resource Manageru, který poskytuje přesnou správu přístupu k prostředkům v Azure. RBAC umožňuje podrobné řízení úrovně přístupu uživatelů. Můžete například omezit uživatele tak, aby spravovali jenom virtuální sítě a jiného uživatele a spravovali všechny prostředky ve skupině prostředků. Azure obsahuje několik předdefinovaných rolí, které můžete využít. V následujícím seznamu najdete čtyři základní předdefinované role. První tři se vztahují ke všem typům prostředků.
+Azure RBAC je autorizační systém založený na Azure Resource Manager, který poskytuje jemně odstupňovanou správu přístupu k prostředkům v Azure. Azure RBAC umožňuje detailní kontrolu úrovně přístupu uživatelů. Můžete například omezit uživatele tak, aby spravovali jenom virtuální sítě a jiného uživatele a spravovali všechny prostředky ve skupině prostředků. Azure obsahuje několik předdefinovaných rolí, které můžete využít. V následujícím seznamu najdete čtyři základní předdefinované role. První tři se vztahují ke všem typům prostředků.
 
 - [Owner (vlastník](/azure/role-based-access-control/built-in-roles#owner) ) – má úplný přístup ke všem prostředkům, včetně práva delegovat přístup ostatním uživatelům. 
 - [Přispěvatel](/azure/role-based-access-control/built-in-roles#contributor) – může vytvářet a spravovat všechny typy prostředků Azure, ale nemůže udělovat přístup jiným uživatelům.

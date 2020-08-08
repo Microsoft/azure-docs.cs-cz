@@ -9,16 +9,16 @@ ms.topic: include
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 8dfc3714362b082168c32ba73e234e9b5fb43525
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 816e4e439bb98ced8bbc5b5d8a7d38ef65aee33f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87545158"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88011026"
 ---
 ## <a name="grant-role-based-access-for-users-to-azure-maps"></a>Udělení přístupu na základě role uživatelům Azure Maps
 
-*Řízení přístupu na základě role* (RBAC) udělíte přiřazením skupiny nebo objektů zabezpečení Azure AD k jedné nebo více definicím role řízení přístupu Azure Maps. Pokud chcete zobrazit definice rolí Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)**. Vyberte **role**a potom vyhledejte role, které začínají na *Azure Maps*.
+*Řízení přístupu na základě role Azure (Azure RBAC)* udělíte pomocí skupiny Azure AD nebo objektů zabezpečení pro jednu nebo víc Azure Maps definic rolí. Pokud chcete zobrazit definice rolí Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)**. Vyberte **role**a potom vyhledejte role, které začínají na *Azure Maps*.
 
 * Pokud chcete efektivně spravovat velké množství přístupu uživatelů k Azure Maps, přečtěte si téma [skupiny Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups).
 * Aby se uživatelé mohli k aplikaci ověřit, musí se v Azure AD vytvořit. Viz téma [Přidání nebo odstranění uživatelů pomocí Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory).
@@ -27,7 +27,7 @@ Další informace najdete v tématu [Azure AD](https://docs.microsoft.com/azure/
 
 1. Přejít na **účet Azure Maps**. Vyberte přiřazení role **řízení přístupu (IAM)**  >  **Role assignment**.
 
-    ![Udělit RBAC](../media/how-to-manage-authentication/how-to-grant-rbac.png)
+    ![Udělení přístupu pomocí Azure RBAC](../media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. Na kartě **přiřazení rolí** v části **Role**vyberte předdefinované Azure Maps definice role, jako je **Azure Maps data Reader** nebo **Azure Maps Přispěvatel dat**. V části **přiřadit přístup k**vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD**. Vyberte objekt zabezpečení podle názvu. Potom vyberte **Uložit**.
 

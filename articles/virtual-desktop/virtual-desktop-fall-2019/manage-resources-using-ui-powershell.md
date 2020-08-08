@@ -1,19 +1,17 @@
 ---
 title: Nasazení nástroje pro správu pro virtuální plochu Windows (Classic) pomocí instančního objektu – Azure
 description: Postup nasazení nástroje pro správu pro virtuální plochu Windows (Classic) pomocí prostředí PowerShell.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6947e5ebf91ee65145c7a5042fb1ee6968c19c9b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 08366735308e8b3c6fb79efd1adca469272dd053
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284961"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005767"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>Nasazení nástroje pro správu virtuálních ploch Windows (Classic) pomocí PowerShellu
 

@@ -1,19 +1,17 @@
 ---
 title: Azure Portal fondu hostitelů virtuálních počítačů s Windows – Azure
 description: Postup vytvoření fondu hostitelů virtuálních počítačů s Windows pomocí Azure Portal.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e27bbdcec9b0c9e2bcabf4228a19d87e263d60f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c9a421e15f3561bb4de7f528ab1c707a0251dfe5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291444"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002659"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Portal
 
@@ -61,7 +59,7 @@ Chcete-li začít vytvářet nový fond hostitelů:
 6. Zadejte jedinečný název fondu hostitelů.
 
 7. V poli umístění vyberte oblast, ve které chcete vytvořit fond hostitelů z rozevírací nabídky.
-   
+
    Oblast Azure, která je přidružená k oblastem, kterou jste vybrali, je místo, kde se budou ukládat metadata pro tento fond hostitelů a příslušné objekty. Ujistěte se, že jste vybrali oblasti v zeměpisné oblasti, do kterých chcete ukládat metadata služby.
 
      > [!div class="mx-imgBorder"]
@@ -140,7 +138,7 @@ Nastavení virtuálního počítače v rámci procesu nastavení fondu hostitel�
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky se stránkou skupiny zabezpečení, která zobrazuje seznam dostupných portů v rozevírací nabídce.](media/available-ports.png)
-    
+
     Pokud zvolíte možnost **Upřesnit**, vyberte existující skupinu zabezpečení sítě, kterou jste již nakonfigurovali.
 
 10. Pak vyberte, jestli chcete virtuální počítače připojit k určité doméně a organizační jednotce. Pokud zvolíte **Ano**, zadejte doménu, ke které se chcete připojit. Můžete také přidat konkrétní organizační jednotku, ve které chcete virtuální počítače.
@@ -153,7 +151,7 @@ V takovém případě jsme připraveni zahájit další fázi nastavení fondu h
 
 ## <a name="workspace-information"></a>Informace o pracovním prostoru
 
-Proces nastavení fondu hostitelů vytvoří ve výchozím nastavení skupinu desktopových aplikací. Aby fond hostitelů fungoval podle očekávání, budete muset tuto skupinu aplikací publikovat pro uživatele nebo skupiny uživatelů a tuto skupinu aplikací musíte zaregistrovat do pracovního prostoru. 
+Proces nastavení fondu hostitelů vytvoří ve výchozím nastavení skupinu desktopových aplikací. Aby fond hostitelů fungoval podle očekávání, budete muset tuto skupinu aplikací publikovat pro uživatele nebo skupiny uživatelů a tuto skupinu aplikací musíte zaregistrovat do pracovního prostoru.
 
 Chcete-li zaregistrovat skupinu desktopových aplikací do pracovního prostoru:
 
@@ -167,10 +165,10 @@ Chcete-li zaregistrovat skupinu desktopových aplikací do pracovního prostoru:
 
     Tady můžete přidat značky, abyste mohli objekty s metadaty seskupovat, aby bylo snazší pro vaše správce.
 
-4. Až budete hotovi, vyberte **zkontrolovat + vytvořit**. 
+4. Až budete hotovi, vyberte **zkontrolovat + vytvořit**.
 
      >[!NOTE]
-     >Proces kontroly a vytváření ověření nekontroluje, jestli vaše heslo splňuje standardy zabezpečení, nebo jestli je vaše architektura správná, takže budete muset vyhledat jakékoli problémy s některou z těchto věcí sami. 
+     >Proces kontroly a vytváření ověření nekontroluje, jestli vaše heslo splňuje standardy zabezpečení, nebo jestli je vaše architektura správná, takže budete muset vyhledat jakékoli problémy s některou z těchto věcí sami.
 
 5. Zkontrolujte informace o nasazení a ujistěte se, že vše vypadá správně. Po dokončení vyberte **Vytvořit**. Tím se spustí proces nasazení, který vytvoří následující objekty:
 

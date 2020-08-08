@@ -5,27 +5,24 @@ documentationcenter: android
 keywords: nabízené oznámení, nabízená oznámení, nabízené zprávy, nabízená oznámení Android
 author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: daf3de1c-f6a9-43c4-8165-a76bfaa70893
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.custom: devx-track-java
-ms.openlocfilehash: 3f31c9786a8310779d71ab0c54bddc4687f765be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f2d5d618fabbe7400ce825f984ace1622a524f05
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325232"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004016"
 ---
-# <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Posílání zabezpečených nabízených oznámení pomocí Azure Notification Hubs
+# <a name="send-secure-push-notifications-with-azure-notification-hubs"></a>Posílání zabezpečených nabízených oznámení pomocí Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Univerzální pro Windows](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -43,28 +40,28 @@ V důsledku regulativních nebo bezpečnostních omezení někdy může aplikace
 
 Tok je na vysoké úrovni následující:
 
-1. Back-end aplikace:
-   * Ukládá zabezpečenou datovou část do back-endové databáze.
-   * Odešle ID tohoto oznámení na zařízení s Androidem (nejsou posílány žádné zabezpečené informace).
-2. Aplikace v zařízení při příjmu oznámení:
-   * Zařízení s Androidem kontaktuje back-end požadující zabezpečenou datovou část.
-   * Aplikace může datovou část zobrazit jako oznámení na zařízení.
+- Back-end aplikace:
+  * Ukládá zabezpečenou datovou část do back-endové databáze.
+  * Odešle ID tohoto oznámení na zařízení s Androidem (nejsou posílány žádné zabezpečené informace).
+- Aplikace v zařízení při příjmu oznámení:
+  * Zařízení s Androidem kontaktuje back-end požadující zabezpečenou datovou část.
+  * Aplikace může datovou část zobrazit jako oznámení na zařízení.
 
 Je důležité si uvědomit, že v předchozím toku (a v tomto kurzu) se předpokládá, že zařízení po přihlášení uživatele uloží ověřovací token do místního úložiště. Tento přístup zaručuje bezproblémové prostředí, protože zařízení může načíst zabezpečenou datovou část oznámení pomocí tohoto tokenu. Pokud vaše aplikace neukládá ověřovací tokeny na zařízení nebo pokud tyto tokeny můžou být prošlé, aplikace zařízení po přijetí nabízeného oznámení by měla zobrazit obecné oznámení s výzvou, aby uživatel spustil aplikaci. Aplikace pak uživatele ověří a zobrazí datovou část oznámení.
 
-V tomto kurzu se dozvíte, jak odesílat zabezpečená nabízená oznámení. Vychází z kurzu [informování uživatelů](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) . proto byste měli kroky v tomto kurzu provést jako první, pokud jste to ještě neudělali.
+V tomto kurzu se dozvíte, jak odesílat zabezpečená nabízená oznámení. Vychází z kurzu [informování uživatelů](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) , takže byste nejdřív měli provést kroky v tomto kurzu.
 
 > [!NOTE]
-> V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali centrum oznámení, jak je popsáno v tématu [Začínáme with Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).
+> V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali centrum oznámení, jak je popsáno v tématu [Začínáme s Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## <a name="modify-the-android-project"></a>Úprava projektu pro Android
 
-Teď, když jste změnili back-end aplikace tak, aby odesílaly jenom *ID* nabízeného oznámení, musíte změnit aplikaci pro Android, aby zpracovala toto oznámení a volala back-end k načtení zabezpečené zprávy, která se má zobrazit.
+Teď, když jste změnili back-end aplikace, abyste poslali jenom ID nabízeného oznámení, musíte změnit aplikaci pro Android, aby zpracovala toto oznámení, a volat se zpátky do back-endu, aby se načetla zabezpečená zpráva, která se má zobrazit.
 Aby bylo možné dosáhnout tohoto cíle, je nutné zajistit, aby vaše aplikace pro Android věděla, jak se k back-endu při přijímání nabízených oznámení ověřuje.
 
-Teď upravte tok *přihlášení* , aby se uložila hodnota hlavičky ověřování ve sdílených preferencích vaší aplikace. Obdobná mechanismy se dají použít k uložení jakéhokoli ověřovacího tokenu (například tokeny OAuth), který musí aplikace používat, aniž by museli vyžadovat přihlašovací údaje uživatele.
+Teď upravte tok přihlášení, aby se uložila hodnota hlavičky ověřování ve sdílených preferencích vaší aplikace. Obdobná mechanismy se dají použít k uložení jakéhokoli ověřovacího tokenu (například tokeny OAuth), který musí aplikace používat, aniž by museli vyžadovat přihlašovací údaje uživatele.
 
 1. V projektu aplikace pro Android přidejte do horní části třídy následující konstanty `MainActivity` :
 
@@ -72,6 +69,7 @@ Teď upravte tok *přihlášení* , aby se uložila hodnota hlavičky ověřová
     public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
     public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
     ```
+
 2. Stále ve `MainActivity` třídě aktualizujte `getAuthorizationHeader()` metodu tak, aby obsahovala následující kód:
 
     ```java
@@ -87,6 +85,7 @@ Teď upravte tok *přihlášení* , aby se uložila hodnota hlavičky ověřová
         return basicAuthHeader;
     }
     ```
+
 3. `import`Na začátek souboru přidejte následující příkazy `MainActivity` :
 
     ```java
@@ -104,6 +103,7 @@ Nyní Změňte obslužnou rutinu, která je volána při přijetí oznámení.
         retrieveNotification(secureMessageId);
     }
     ```
+
 2. Pak přidejte `retrieveNotification()` metodu a nahraďte zástupný symbol koncovým `{back-end endpoint}` bodem back-end získaným při nasazení back-endu:
 
     ```java

@@ -1,19 +1,17 @@
 ---
 title: Správa skupin aplikací pro prostředí Windows Virtual Desktop PowerShell – Azure
 description: Správa skupin aplikací virtuálních počítačů s Windows pomocí PowerShellu
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 186c6e455fa4d2ab578d6ab2a37f8f8f0d038e02
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a6f24dea00a174aa0276a9b30add0854c3694056
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291418"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008640"
 ---
 # <a name="manage-app-groups-using-powershell"></a>Správa skupin aplikací pomocí PowerShellu
 

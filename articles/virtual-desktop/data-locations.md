@@ -1,19 +1,17 @@
 ---
 title: Umístění dat pro virtuální počítače s Windows – Azure
 description: Stručný přehled, ve kterém jsou uložená data a metadata virtuálních počítačů s Windows v.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b1a061b2dfcdd212178a3f534a1a951697940685
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e626b7e729e394b1012848904f5ce12279c3ef24
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292618"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010068"
 ---
 # <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>Data a umístění metadat pro virtuální počítače s Windows
 

@@ -1,6 +1,6 @@
 ---
 title: Přidat bublinovou vrstvu do mapy | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak přidat bublinovou vrstvu k mapě pomocí webové sady SDK Microsoft Azure Maps.
+description: Naučte se vykreslovat body na mapách jako kruhy s pevnými velikostmi. Postup pro přidání a přizpůsobení bublinových vrstev pro tento účel najdete v tématu How to use the Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 1a86c1ef12a4cae4132e79a742b99c1b95ee4cd5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 47ee9e67c6885829e3cb0082aea63367da4aa626
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287026"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006175"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Přidání bublinové vrstvy do mapy
 

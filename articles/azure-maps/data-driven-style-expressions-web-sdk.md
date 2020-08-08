@@ -1,6 +1,6 @@
 ---
 title: Výrazy stylu řízené daty v sadě Azure Maps Web SDK | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak používat výrazy stylu řízené daty v sadě Microsoft Azure Maps Web SDK.
+description: Přečtěte si o výrazech stylu založených na datech. Informace o tom, jak pomocí těchto výrazů v sadě Azure Maps Web SDK upravovat styly v mapách.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 54477bd74df660edb12f6daffbaa2a7390f9516a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c8de7148e91f8fafa4a2b1f8a661964a77ead215
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285709"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009133"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Výrazy stylu řízené daty (webová sada SDK)
 
@@ -85,11 +85,11 @@ Datové výrazy poskytují přístup k datům vlastností ve funkci.
 |------------|-------------|-------------|
 | `['at', number, array]` | object | Načte položku z pole. |
 | `['geometry-type']` | řetězec | Získá typ geometrie funkce: Point, MultiPoint, LineString, MultiLineString, mnohoúhelník, promnohoúhelník. |
-| `['get', string]` | hodnota | Získá hodnotu vlastnosti z vlastností aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
-| `['get', string, object]` | hodnota | Získá hodnotu vlastnosti z vlastností poskytnutého objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
+| `['get', string]` | value | Získá hodnotu vlastnosti z vlastností aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
+| `['get', string, object]` | value | Získá hodnotu vlastnosti z vlastností poskytnutého objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
 | `['has', string]` | boolean | Určuje, zda vlastnosti funkce mají zadanou vlastnost. |
 | `['has', string, object]` | boolean | Určuje, zda vlastnosti objektu mají zadanou vlastnost. |
-| `['id']` | hodnota | Získá ID funkce, pokud má jednu. |
+| `['id']` | value | Získá ID funkce, pokud má jednu. |
 | `['length', string | array]` | číslo | Získá délku řetězce nebo pole. |
 | `['in', boolean | string | number, array]` | boolean | Určuje, jestli položka existuje v poli. |
 | `['in', substring, string]` | boolean | Určuje, zda podřetězec existuje v řetězci. |

@@ -1,24 +1,24 @@
 ---
-title: Postup vytvoření imagí virtuálních počítačů s Windows pomocí balíčku
-description: Naučte se používat balíček k vytváření imagí virtuálních počítačů s Windows v Azure.
+title: PowerShell – postup vytvoření imagí virtuálních počítačů pomocí balírny
+description: Naučte se používat balíčky a PowerShell k vytváření imagí virtuálních počítačů v Azure.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 02/22/2019
+ms.date: 08/05/2020
 ms.author: cynthn
-ms.openlocfilehash: 1597d249899756ac0d43d2dcd90019179b81bb3b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 176aa925e4662731342ec3269e61ce9c7f71cf30
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284655"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003842"
 ---
-# <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Použití balíčku k vytváření imagí virtuálních počítačů s Windows v Azure
+# <a name="powershell-how-to-use-packer-to-create-virtual-machine-images-in-azure"></a>PowerShell: jak používat balíček k vytváření imagí virtuálních počítačů v Azure
 Každý virtuální počítač (VM) v Azure se vytvoří z image, která definuje distribuci Windows a verzi operačního systému. Obrázky můžou zahrnovat předem nainstalované aplikace a konfigurace. Azure Marketplace poskytuje mnoho prvních a imagí jiných výrobců pro většinu běžných prostředí operačního systému a aplikací, nebo můžete vytvořit vlastní image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak používat open source [sadu](https://www.packer.io/) nástrojů k definování a vytváření vlastních imagí v Azure.
 
-Tento článek byl naposledy testován na 2/21/2019 pomocí [rutiny AZ PowerShell Module](/powershell/azure/install-az-ps) verze 1.3.0 a [Pack](https://www.packer.io/docs/install) verze 1.3.4.
+Tento článek byl naposledy testován na 8/5/2020 pomocí [balíčku](https://www.packer.io/docs/install) verze 1.6.1.
 
 > [!NOTE]
 > Azure teď má službu, Azure image Builder (Preview) pro definování a vytváření vlastních imagí. Azure image Builder je postavená na balíčku, takže můžete s ním dokonce používat i existující skripty sestavovatele prostředí pro vytváření balíčků. Informace o tom, jak začít s Azure image Builder, najdete v tématu [Vytvoření virtuálního počítače s Windows pomocí Azure image Builder](image-builder.md).
@@ -26,10 +26,10 @@ Tento článek byl naposledy testován na 2/21/2019 pomocí [rutiny AZ PowerShel
 ## <a name="create-azure-resource-group"></a>Vytvoření skupiny prostředků Azure
 Během procesu sestavování vytvoří balíček dočasné prostředky Azure při sestavení zdrojového virtuálního počítače. Pokud chcete zachytit zdrojový virtuální počítač pro použití jako image, musíte definovat skupinu prostředků. Výstup procesu sestavení balíčku je uložený v této skupině prostředků.
 
-Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
+Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myPackerGroup* v umístění *eastus* :
 
 ```azurepowershell
-$rgName = "myResourceGroup"
+$rgName = "myPackerGroup"
 $location = "East US"
 New-AzResourceGroup -Name $rgName -Location $location
 ```
@@ -37,13 +37,12 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>Vytvoření přihlašovacích údajů Azure
 Balíček se ověřuje pomocí instančního objektu pomocí služby Azure. Instanční objekt Azure je identita zabezpečení, kterou můžete používat s aplikacemi, službami a nástroji pro automatizaci, jako je například nástroj Pack. Oprávnění můžete řídit a definovat podle toho, jaké operace může instanční objekt v Azure provádět.
 
-Vytvořte instanční objekt pomocí [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) a přiřaďte oprávnění pro instanční objekt k vytváření a správě prostředků pomocí [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment). Hodnota pro `-DisplayName` musí být jedinečná; podle potřeby nahraďte vlastní hodnotou.  
+Vytvořte instanční objekt pomocí [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal). Hodnota pro `-DisplayName` musí být jedinečná; podle potřeby nahraďte vlastní hodnotou.  
 
 ```azurepowershell
-$sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
+$sp = New-AzADServicePrincipal -DisplayName "PackerSP$(Get-Random)"
 $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret)
 $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
-New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
 Pak vytvořte výstup hesla a ID aplikace.
@@ -112,7 +111,6 @@ Vytvořte soubor s názvem *windows.js* a vložte následující obsah. Zadejte 
     "inline": [
       "Add-WindowsFeature Web-Server",
       "while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
-      "while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }",
       "while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
       "& $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit",
       "while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 10  } else { break } }"

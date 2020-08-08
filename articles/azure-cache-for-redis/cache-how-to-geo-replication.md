@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 9a2ec2e60ae38506d716a244872baddbbdf570e7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 956e3e83686677f3eb9895354a008783df5f7dcd
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184969"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003703"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Jak nastavit geografickou replikaci pro Azure cache pro Redis
 
@@ -24,7 +24,7 @@ Geografická replikace poskytuje mechanismus pro propojení dvě mezipaměti Azu
 
 Chcete-li konfigurovat geografickou replikaci mezi dvěma mezipamětmi, musí být splněny následující předpoklady:
 
-- Obě mezipaměti jsou mezipaměti [úrovně Premium](cache-premium-tier-intro.md) .
+- Obě mezipaměti jsou mezipaměti [úrovně Premium](cache-overview.md#service-tiers) .
 - Obě mezipaměti jsou ve stejném předplatném Azure.
 - Sekundární propojená mezipaměť má buď stejnou velikost mezipaměti, nebo větší velikost mezipaměti než primární propojená mezipaměť.
 - Obě mezipaměti jsou vytvořeny a ve stavu spuštěno.
@@ -186,5 +186,6 @@ Automatické převzetí služeb při selhání napříč oblastmi Azure se u geo
 Pokud chcete zahájit převzetí služeb při selhání iniciované zákazníkem, nejdřív odpojte mezipaměti. Pak změňte svého klienta Redis na použití koncového bodu připojení (dříve propojené) sekundární mezipaměti. Pokud jsou dvě mezipaměti odpojování, sekundární mezipaměť se znovu vytvoří do běžné mezipaměti pro čtení a zápis a přijímá požadavky přímo od klientů Redis.
 
 ## <a name="next-steps"></a>Další kroky
+Přečtěte si další informace o funkcích Azure cache pro Redis.
 
-Přečtěte si další informace o [Azure cache pro Redis úrovně Premium](cache-premium-tier-intro.md).
+* [Mezipaměť Azure pro úrovně služeb Redis](cache-overview.md#service-tiers)

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: 84abbe8d9958bf41768f3706a700ae0ecad6b44f
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: a89acb73ea5c78c9f82758e0a322fb9001698c24
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856999"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004334"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Import a export dat v Azure cache pro Redis
 Import/Export je mezipaměť Azure pro operaci správy dat Redis, která umožňuje importovat data do mezipaměti Azure pro Redis nebo exportovat data z mezipaměti Azure pro Redis tím, že importuje a exportuje snímek Azure cache for Redis Database (RDB) z mezipaměti Premium do objektu BLOB v účtu Azure Storage.
@@ -24,7 +24,7 @@ Import/export umožňuje migrovat mezi různými Azure cache pro instance Redis 
 Tento článek obsahuje průvodce pro import a export dat pomocí Azure cache pro Redis a poskytuje odpovědi na nejčastější dotazy.
 
 > [!IMPORTANT]
-> Import/Export je k dispozici jenom pro mezipaměti [úrovně Premium](cache-premium-tier-intro.md) .
+> Import/Export je k dispozici jenom pro mezipaměti [úrovně Premium](cache-overview.md#service-tiers) .
 >
 >
 
@@ -152,6 +152,6 @@ Chcete-li tento problém vyřešit, spusťte operaci importu nebo exportu ješt�
 Export funguje pouze s soubory RDB uloženými jako objekty blob stránky. Jiné typy objektů BLOB se momentálně nepodporují, včetně účtů BLOB Storage s horkou a studenou úrovní. Další informace najdete v tématu [Přehled účtu Azure Storage](../storage/common/storage-account-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
-Naučte se používat víc funkcí mezipaměti Premium.
+Přečtěte si další informace o funkcích Azure cache pro Redis.
 
-* [Seznámení s mezipamětí Azure pro Redis úrovně Premium](cache-premium-tier-intro.md)
+* [Mezipaměť Azure pro úrovně služeb Redis](cache-overview.md#service-tiers)

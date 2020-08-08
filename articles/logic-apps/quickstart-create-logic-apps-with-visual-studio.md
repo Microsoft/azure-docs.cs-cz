@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/22/2020
-ms.openlocfilehash: cd46821b74803d62be0361346166ed78a5f53286
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 08/07/2020
+ms.openlocfilehash: cc38210690c88fec826dc727775d01884dedd997
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132360"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008878"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rychlé zprovoznění: Vytváření automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio
 
@@ -26,9 +26,9 @@ V tomto rychlém startu vytvoříte stejnou aplikaci logiky pomocí sady Visual 
 
 <a name="prerequisites"></a>
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
+* Účet a předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). Pokud máte předplatné Azure Government, postupujte podle těchto dalších kroků a [nastavte sadu Visual Studio pro Azure Government Cloud](#azure-government).
 
 * Pokud je ještě nemáte, stáhněte a nainstalujte tyto nástroje:
 
@@ -51,12 +51,6 @@ V tomto rychlém startu vytvoříte stejnou aplikaci logiky pomocí sady Visual 
   
     Azure Logic Apps Tools můžete stáhnout a nainstalovat přímo z Visual Studio Marketplace nebo si můžete přečíst, [jak toto rozšíření nainstalovat v rámci sady Visual Studio](/visualstudio/ide/finding-and-using-visual-studio-extensions). Po dokončení instalace nezapomeňte sadu Visual Studio restartovat.
 
-  * Chcete-li použít předplatná Azure Government se sadou Visual Studio, přečtěte si následující témata pro další nastavení:
-
-    * Visual Studio 2019: [rychlý Start: připojení k Azure Government pomocí sady Visual Studio](../azure-government/documentation-government-connect-vs.md)
-
-    * Visual Studio 2017: [Představujeme rozšíření sady Visual Studio pro selektory prostředí Azure](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/), které si můžete stáhnout a nainstalovat z [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector).
-
 * Přístup k webu při používání vloženého Návrháře aplikace logiky
 
   Návrhář potřebuje připojení k Internetu, aby mohl vytvářet prostředky v Azure a číst vlastnosti a data z konektorů ve vaší aplikaci logiky.
@@ -65,6 +59,34 @@ V tomto rychlém startu vytvoříte stejnou aplikaci logiky pomocí sady Visual 
 
   > [!IMPORTANT]
   > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+
+<a name="azure-government"></a>
+
+## <a name="set-up-visual-studio-for-azure-government"></a>Nastavení sady Visual Studio pro Azure Government
+
+### <a name="visual-studio-2017"></a>Visual Studio 2017
+
+Můžete použít rozšíření sady [Visual Studio pro selektory prostředí Azure](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/), které si můžete stáhnout a nainstalovat z [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector).
+
+### <a name="visual-studio-2019"></a>Visual Studio 2019
+
+Pokud chcete pracovat s předplatnými Azure Government v Azure Logic Apps, musíte [do sady Visual Studio přidat koncový bod zjišťování pro Azure Government Cloud](../azure-government/documentation-government-connect-vs.md). *Před přihlášením k aplikaci Visual Studio pomocí účtu Azure Government*je však nutné přejmenovat soubor JSON, který je generován po přidání koncového bodu zjišťování pomocí následujících kroků:
+
+1. Zavřete Visual Studio.
+
+1. Najděte vygenerovaný soubor JSON s názvem `Azure U.S. Government-A3EC617673C6C70CC6B9472656832A26.Configuration` v tomto umístění:
+
+   `%localappdata%\.IdentityService\AadConfigurations`
+ 
+1. Přejmenujte soubor JSON na `AadProvider.Configuration.json` .
+
+1. Restartujte Visual Studio.
+
+1. Pokračujte postupem pro přihlašování pomocí účtu Azure Government.
+
+Pokud chcete toto nastavení vrátit zpět, odstraňte soubor JSON v následujícím umístění a restartujte Visual Studio:
+
+`%localappdata%\.IdentityService\AadConfigurations\AadProvider.Configuration.json`
 
 <a name="create-resource-group-project"></a>
 

@@ -2,13 +2,14 @@
 title: Použití privátních koncových bodů s účty Azure Batch
 description: Naučte se připojit soukromě k účtu Azure Batch pomocí soukromých koncových bodů.
 ms.topic: how-to
-ms.date: 06/12/2020
-ms.openlocfilehash: 04f52c8c58668b2978b38c65a94533a38c593888
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/07/2020
+ms.custom: references_regions
+ms.openlocfilehash: fac9523dc2ecabaec5d1c108e0ddd7536f01f077
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84754480"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004251"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Použití privátních koncových bodů s účty Azure Batch
 
@@ -16,16 +17,11 @@ Ve výchozím nastavení mají [účty Azure Batch](accounts.md) veřejný konco
 
 Pomocí [privátního propojení Azure](../private-link/private-link-overview.md)se můžete k účtu Azure Batch připojit prostřednictvím [privátního koncového bodu](../private-link/private-endpoint-overview.md). Soukromý koncový bod je sada privátních IP adres v podsíti v rámci vaší virtuální sítě. Pak můžete omezit přístup k účtu Azure Batch pomocí privátních IP adres.
 
-Privátní odkaz umožňuje uživatelům přístup k účtu Azure Batch z virtuální sítě nebo z jakékoli partnerské virtuální sítě. Prostředky namapované na soukromé odkazy jsou k dispozici i místně přes privátní partnerský vztah prostřednictvím sítě VPN nebo [Azure ExpressRoute](../expressroute/expressroute-introduction.md).
+Privátní odkaz umožňuje uživatelům přístup k účtu Azure Batch z virtuální sítě nebo z jakékoli partnerské virtuální sítě. Prostředky namapované na soukromé odkazy jsou k dispozici i místně přes privátní partnerský vztah prostřednictvím sítě VPN nebo [Azure ExpressRoute](../expressroute/expressroute-introduction.md). K účtu Azure Batch nakonfigurovanému pomocí privátního propojení se můžete připojit pomocí [metody automatického nebo ručního schválení](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow).
 
-K účtu Azure Batch nakonfigurovanému pomocí privátního propojení se můžete připojit pomocí [metody automatického nebo ručního schválení](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow).
+Podpora pro privátní připojení v Azure Batch je aktuálně dostupná v následujících oblastech Azure: Středozápadní USA, Západní USA 2, Východní USA, Střed USA – jih, US Gov – Virginie, US Gov – Arizona, Východní Asie, Francii a Velká Británie – jih.
 
 Tento článek popisuje kroky pro vytvoření privátního účtu Batch a přístup k němu pomocí privátního koncového bodu.
-
-> [!IMPORTANT]
-> Podpora privátního připojení v Azure Batch je v současnosti ve verzi Public Preview pro oblasti Středozápadní USA, Západní USA 2, Východní USA, Střed USA – jih, US Gov – Virginie a US Gov – Arizona.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="azure-portal"></a>portál Azure
 

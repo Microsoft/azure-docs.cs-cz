@@ -6,17 +6,15 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: 4f200457bd327a6f2ce74794bb28dd16c38e6fdd
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: d37aa275a07586738bf7416cee6611bdc8284df3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856314"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004777"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Postup konfigurace clusteringu Redis pro mezipaměť Azure úrovně Premium pro Redis
 Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Tento článek popisuje, jak nakonfigurovat clustering v mezipaměti Azure Premium pro instanci Redis.
-
-Informace o dalších funkcích mezipaměti Premium najdete v tématu [Úvod do mezipaměti Azure pro Redis úrovně Premium](cache-premium-tier-intro.md).
 
 ## <a name="what-is-redis-cluster"></a>Co je cluster Redis?
 Azure cache for Redis nabízí cluster Redis, jak je [implementován v Redis](https://redis.io/topics/cluster-tutorial). S clusterem Redis získáte následující výhody: 
@@ -26,7 +24,7 @@ Azure cache for Redis nabízí cluster Redis, jak je [implementován v Redis](ht
 * Větší propustnost: propustnost se při zvýšení počtu horizontálních oddílů zvyšuje lineárně. 
 * Větší velikost paměti: při zvýšení počtu horizontálních oddílů se zvyšuje lineárně.  
 
-Clustering nezvyšuje počet připojení dostupných pro clusterovou mezipaměť. Další informace o velikosti, propustnosti a šířce pásma pomocí prémiových mezipamětí najdete v tématu [co je to Azure cache pro nabídku Redis a velikost mám použít?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+Clustering nezvyšuje počet připojení dostupných pro clusterovou mezipaměť. Další informace o velikosti, propustnosti a šířce pásma pomocí prémiových mezipamětí najdete v tématu [Volba správné úrovně](cache-overview.md#choosing-the-right-tier) .
 
 V Azure se cluster Redis nabízí jako model primární/repliky, kde každý horizontálních oddílů má dvojici primárního/repliky s replikací, kde je replikace spravovaná službou Azure cache pro službu Redis. 
 
@@ -91,7 +89,7 @@ Následující seznam obsahuje odpovědi na nejčastější dotazy týkající s
   Další informace najdete v části [Redis cluster Specification – implementovaná podmnožina](https://redis.io/topics/cluster-spec#implemented-subset).
 * Pokud používáte [stackexchange. Redis](https://www.nuget.org/packages/StackExchange.Redis/), musíte použít 1.0.481 nebo novější. K mezipaměti se připojíte pomocí stejných [koncových bodů, portů a klíčů](cache-configure.md#properties) , které použijete při připojování k mezipaměti, u které není povolený clusteringu. Jediným rozdílem je, že všechny operace čtení a zápisu musí být provedeny do databáze 0.
   
-  * Ostatní klienti mohou mít různé požadavky. Viz téma [podpora clusteringu u všech klientů Redis?](#do-all-redis-clients-support-clustering)
+  Ostatní klienti mohou mít různé požadavky. Viz téma [podpora clusteringu u všech klientů Redis?](#do-all-redis-clients-support-clustering)
 * Pokud vaše aplikace používá více klíčových operací dávkování do jednoho příkazu, všechny klíče musí být umístěny ve stejném horizontálních oddílů. Pokud chcete najít klíče ve stejném horizontálních oddílů, přečtěte si téma [jak jsou klíče distribuované v clusteru?](#how-are-keys-distributed-in-a-cluster)
 * Pokud používáte poskytovatele stavu relace ASP.NET Redis, musíte použít 2.0.1 nebo vyšší. Viz téma [můžu použít clusteringu se stavem relace Redis ASP.NET a poskytovateli ukládání výstupu do mezipaměti?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 
@@ -156,9 +154,9 @@ Clustering je k dispozici jenom pro mezipaměti úrovně Premium.
 Pokud používáte StackExchange. Redis a `MOVE` při použití clusteringu přijímají výjimky, ujistěte se, že používáte [stackexchange. Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) nebo novější. Pokyny ke konfiguraci aplikací .NET pro použití StackExchange. Redis najdete v tématu [Konfigurace klientů mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
 ## <a name="next-steps"></a>Další kroky
-Naučte se používat víc funkcí mezipaměti Premium.
+Přečtěte si další informace o funkcích Azure cache pro Redis.
 
-* [Seznámení s mezipamětí Azure pro Redis úrovně Premium](cache-premium-tier-intro.md)
+* [Mezipaměť Azure pro úrovně služeb Redis Premium](cache-overview.md#service-tiers)
 
 <!-- IMAGES -->
 

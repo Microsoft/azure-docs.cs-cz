@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 6bbdd3eb62229c3f8f180d2618dd25062ff0c1e9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 235b7946fbcfc2322878428cce72e77ecceb9cfc
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86062688"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88011044"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Ověřování pomocí Azure Active Directory
 
@@ -17,7 +17,7 @@ ms.locfileid: "86062688"
 > 1. V současné době platí **pouze** rozhraní API pro počítačové zpracování obrazu, Face API, rozhraní API pro analýzu textu, moderní čtečka, funkce pro rozpoznávání formulářů, detektor anomálií a všechny služby Bing s výjimkou vlastní vyhledávání Bingu ověřování pomocí Azure Active Directory (AAD).
 > 2. Ověřování AAD se musí vždycky používat společně s názvem vlastní subdomény vašeho prostředku Azure. [Regionální koncové body](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) nepodporují ověřování AAD.
 
-V předchozích částech jsme vám ukázali, jak ověřit službu Azure Cognitive Services pomocí klíče předplatného s jednou službou nebo více službami. I když tyto klíče poskytují rychlou a jednoduchou cestu k zahájení vývoje, jsou v složitějších scénářích, které vyžadují řízení přístupu na základě rolí. Pojďme se podívat na to, co je potřeba k ověřování pomocí Azure Active Directory (AAD).
+V předchozích částech jsme vám ukázali, jak ověřit službu Azure Cognitive Services pomocí klíče předplatného s jednou službou nebo více službami. I když tyto klíče poskytují rychlou a jednoduchou cestu k zahájení vývoje, jsou v složitějších scénářích, které vyžadují řízení přístupu na základě role v Azure (Azure RBAC). Pojďme se podívat na to, co je potřeba k ověřování pomocí Azure Active Directory (AAD).
 
 V následujících částech budete pomocí prostředí Azure Cloud Shell nebo Azure CLI vytvářet subdomény, přiřazovat role a získat nosný token pro volání Cognitive Services Azure. Pokud se zablokuje, jsou odkazy v jednotlivých oddílech k dispozici se všemi dostupnými možnostmi pro každý příkaz v Azure Cloud Shell/Azure CLI.
 
@@ -45,7 +45,7 @@ Prvním krokem je vytvoření vlastní subdomény. Pokud chcete použít existuj
 Teď, když máte přidruženou vlastní subdoménu k vašemu prostředku, budete muset přiřadit roli instančnímu objektu.
 
 > [!NOTE]
-> Mějte na paměti, že rozšíření role AAD může trvat až pět minut.
+> Mějte na paměti, že rozšíření přiřazení rolí Azure může trvat až pět minut.
 
 1. Nejdřív si zaregistrujeme [aplikaci AAD](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0).
 

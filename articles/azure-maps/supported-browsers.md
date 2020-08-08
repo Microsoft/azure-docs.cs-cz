@@ -1,6 +1,6 @@
 ---
 title: Prohlížeče podporované v sadě web SDK | Mapy Microsoft Azure
-description: V tomto článku se dozvíte o podporovaných prohlížečích pro sadu Microsoft Azure Maps Web SDK a o tom, jak zjistit, jestli je prohlížeč podporovaným prohlížečem.
+description: Zjistěte, jak ověřit, jestli Azure Maps webová sada SDK podporuje prohlížeč. Zobrazí seznam podporovaných prohlížečů. Naučte se používat mapy služby se staršími prohlížeči.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: e81b15b974469d319384a67b08512130b7876a30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6d4ea19e5547adb7bee25f4bdce295eb9a76d44
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76988783"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002928"
 ---
 # <a name="web-sdk-supported-browsers"></a>Podporované prohlížeče pro sadu Web SDK
 

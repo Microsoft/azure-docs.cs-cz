@@ -6,36 +6,72 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 64bb4c85399f811c0ab7ff84b297b64734efc491
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 6045c491ea68d759b2a1739e20aa2f12b8520c87
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568468"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006481"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>Scénář: Route to Shared Services virtuální sítě
 
-Při práci s směrováním virtuálního rozbočovače WAN je k dispozici několik scénářů, které jsou v pořádku. V tomto scénáři je cílem nastavit směrování pro přístup k virtuální síti **sdílené služby** s úlohou, kterou chcete použít pro každou virtuální síť a větev (VPN/ER/P2S). Informace o směrování virtuálního rozbočovače najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
+Při práci s směrováním virtuálního rozbočovače WAN je k dispozici několik scénářů, které jsou v pořádku. V tomto scénáři je cílem nastavit směrování pro přístup ke sdílené virtuální síti **služby** s úlohami, které chcete použít pro každou virtuální síť a větev (VPN/ER/P2S). Příklady těchto sdílených úloh můžou zahrnovat Virtual Machines se službami, jako jsou řadiče domény nebo sdílené složky, nebo služby Azure exponované interně prostřednictvím [privátních koncových bodů Azure](../private-link/private-endpoint-overview.md).
 
-## <a name="scenario-workflow"></a><a name="workflow"></a>Pracovní postup scénáře
+Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
 
-Chcete-li nakonfigurovat tento scénář, proveďte následující kroky:
+## <a name="design"></a><a name="design"></a>Návrh
+
+K sumarizaci požadavků tohoto scénáře můžeme použít matrici připojení. V matici každá buňka popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků v tabulce) učí předpona cíle (na straně toku, záhlaví sloupců v tabulce kurzíva) pro konkrétní tok přenosů.
+
+**Matice připojení**
+
+| Z             | Do:   |*Izolované virtuální sítě*|*Sdílená virtuální síť*|*Větve*|
+|---|---|---|---|---|
+|**Izolované virtuální sítě**|&#8594;|                |        X        |       X      |
+|**Sdílené virtuální sítě**  |&#8594;|       X        |        X        |       X      |
+|**Větve**      |&#8594;|       X        |        X        |       X      |
+
+Podobně jako u [scénáře izolované virtuální](scenario-isolate-vnets.md)sítě poskytuje tato matice připojení dva různé vzory řádků, které se převádějí do dvou směrovacích tabulek (virtuální sítě sdílených služeb a větve mají stejné požadavky na připojení). Virtuální síť WAN už má výchozí směrovací tabulku, takže budeme potřebovat další vlastní směrovací tabulku, která v tomto příkladu budeme volat **RT_SHARED** .
+
+Virtuální sítě se bude přidružit k směrovací tabulce **RT_SHARED** . Vzhledem k tomu, že potřebují připojení k větvím a ke sdílené službě virtuální sítě, musí být virtuální síť a větve sdílené služby předávány na **RT_SHARED** (jinak virtuální sítě se neučí pro větve a sdílené předpony virtuální sítě). Vzhledem k tomu, že jsou větve vždy přidružené k výchozí směrovací tabulce a požadavky na připojení jsou pro sdílené služby virtuální sítě stejné, přidružíme virtuální sítě sdílené služby k výchozí tabulce směrování.
+
+V důsledku toho je to konečný návrh:
+
+* Izolované virtuální sítě:
+  * Přidružená směrovací tabulka: **RT_SHARED**
+  * Rozšiřování do směrovacích tabulek: **výchozí**
+* Virtuální sítě sdílených služeb:
+  * Přidružená tabulka směrování: **výchozí**
+  * Rozšiřování do směrovacích tabulek: **RT_SHARED** a **výchozí**
+* Zřizování
+  * Přidružená tabulka směrování: **výchozí**
+  * Rozšiřování do směrovacích tabulek: **RT_SHARED** a **výchozí**
+
+> [!NOTE]
+> Pokud je vaše virtuální síť WAN nasazená v několika oblastech, bude potřeba vytvořit směrovací tabulku **RT_SHARED** v každém centru. trasy od každé virtuální sítě a připojení k síti sdílené služby je potřeba rozšířit do směrovacích tabulek v každém virtuálním centru pomocí popisků šíření.
+
+Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
+
+## <a name="workflow"></a><a name="workflow"></a>Pracovní postup
+
+Při konfiguraci scénáře Vezměte v úvahu následující postup:
 
 1. Identifikujte virtuální síť **sdílených služeb** .
-2. Vytvořte vlastní směrovací tabulku. V tomto příkladu odkazujeme na tuto směrovací tabulku jako na **RT_SHARED**. Postup vytvoření směrovací tabulky najdete v tématu [Jak konfigurovat směrování virtuálního rozbočovače](how-to-virtual-hub-routing.md). Jako vodítko použijte následující hodnoty:
+2. Vytvořte vlastní směrovací tabulku. V tomto příkladu odkazujeme na tabulku směrování jako na **RT_SHARED**. Postup vytvoření směrovací tabulky najdete v tématu [Jak konfigurovat směrování virtuálního rozbočovače](how-to-virtual-hub-routing.md). Jako vodítko použijte následující hodnoty:
 
    * **Řídí**
      * Pro **virtuální sítě *s výjimkou* virtuální sítě sdílených služeb**vyberte virtuální sítě, který chcete izolovat. To znamená, že všechny tyto virtuální sítě (s výjimkou virtuální sítě sdílené služby) budou mít přístup k cíli na základě tras RT_SHARED směrovací tabulky.
 
    * **Šíření**
-      * V případě **větví**šíří trasy do této směrovací tabulky kromě dalších směrovacích tabulek, které jste už vybrali. V důsledku tohoto kroku se RT_SHARED směrovací tabulce dozvíte o trasách ze všech připojení větví (VPN/ER/User VPN).
-      * Pro **virtuální sítě**vyberte **virtuální síť sdílených služeb**. V důsledku tohoto kroku se RT_SHARED směrovací tabulce seznámí s trasami z připojení virtuální sítě Shared Services.
+      * V případě **větví**šíří trasy do této směrovací tabulky kromě dalších směrovacích tabulek, které jste už vybrali. Z důvodu tohoto kroku se v tabulce směrování v RT_SHARED dozvíte o trasách ze všech připojení větví (VPN/ER/User VPN).
+      * Pro **virtuální sítě**vyberte **virtuální síť sdílených služeb**. Z důvodu tohoto kroku se RT_SHARED směrovací tabulce dozvíte o trasách z připojení virtuální sítě Shared Services.
 
-     Výsledkem bude, že se změní konfigurace směrování, jak je vidět na následujícím obrázku.
+Výsledkem bude konfigurace směrování, která je znázorněna na následujícím obrázku:
 
-   :::image type="content" source="./media/routing-scenarios/shared-service-vnet/shared-services.png" alt-text="Virtuální síť sdílených služeb":::
+   :::image type="content" source="./media/routing-scenarios/shared-service-vnet/shared-services.png" alt-text="Virtuální síť sdílených služeb" lightbox="./media/routing-scenarios/shared-service-vnet/shared-services.png":::
 
 ## <a name="next-steps"></a>Další kroky
 

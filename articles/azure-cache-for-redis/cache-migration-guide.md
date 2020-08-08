@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 554724c334cb6c51b8744de0eedd4d6815d707b5
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 2a95aa9e9fccdb7047c2c0901f4349fecfbab672
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172578"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009575"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Migrace na Azure Cache for Redis
 Tento článek popisuje několik přístupů k migraci stávající mezipaměti Redis spuštěné v místním prostředí nebo v jiné cloudové službě do mezipaměti Azure pro Redis.
@@ -51,7 +51,7 @@ K implementaci této možnosti slouží obecné kroky:
 
 ### <a name="export-data-to-an-rdb-file-and-import-it-into-azure-cache-for-redis"></a>Export dat do souboru RDB a jejich import do Azure cache pro Redis
 
-Open Source Redis definuje standardní mechanismus pro pořízení snímku datové sady v paměti mezipaměti a jejich uložení do souboru. Tento soubor nazvaný RDB může být čten jinou Redis Cache. [Azure cache pro Redis úrovně Premium](cache-premium-tier-intro.md) podporuje import dat do instance mezipaměti pomocí souborů RDB. Soubor RDB můžete použít k přenosu dat z existující mezipaměti do Azure cache pro Redis.
+Open Source Redis definuje standardní mechanismus pro pořízení snímku datové sady v paměti mezipaměti a jejich uložení do souboru. Tento soubor nazvaný RDB může být čten jinou Redis Cache. [Azure cache pro Redis úrovně Premium](cache-overview.md#service-tiers) podporuje import dat do instance mezipaměti pomocí souborů RDB. Soubor RDB můžete použít k přenosu dat z existující mezipaměti do Azure cache pro Redis.
 
 > [!IMPORTANT]
 > Formát souboru RDB se může mezi Redis verzemi měnit a nemusí udržet zpětnou kompatibilitu. Verze Redis mezipaměti, ze které exportujete, by měla být stejná nebo nižší než verze poskytovaná službou Azure cache pro Redis.
@@ -114,5 +114,5 @@ K implementaci této možnosti slouží obecné kroky:
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o funkcích Azure cache pro Redis.
 
-* [Seznámení s mezipamětí Azure pro Redis úrovně Premium](cache-premium-tier-intro.md)
+* [Mezipaměť Azure pro úrovně služeb Redis](cache-overview.md#service-tiers)
 * [Importovat data](cache-how-to-import-export-data.md#import)

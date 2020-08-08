@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/16/2020
+ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 32a1440bb641f0cbe8e3f3b8ada42e0841d9aa67
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4672c5cab5977b000bd5095f3868864ae0c267ed
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922485"
+ms.locfileid: "88005750"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Migrace aplikací do knihovny Microsoft Authentication Library (MSAL)
 
@@ -52,13 +52,13 @@ Následující články vám pomůžou s migrací na MSAL:
 ## <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
 __Otázka: je ADAL zastaralá?__  
-Odpověď: Ano. Od 30. června 2020 už nebudeme přidávat nové funkce do ADAL. Do 30. června 2022 budeme dál přidávat důležité opravy zabezpečení do knihovny ADAL. Po této době budou vaše aplikace používající ADAL fungovat, ale doporučujeme upgradovat na MSAL, abyste mohli využívat nejnovější funkce a zůstat v bezpečí.
+Odpověď: Ano. Od 30. června 2020 už nebudeme přidávat nové funkce do ADAL. Do 30. června 2022 budeme dál přidávat důležité opravy zabezpečení do knihovny ADAL. Po tomto datu budou vaše aplikace, které používají ADAL, fungovat i nadále, ale doporučujeme upgradovat na MSAL a využít tak výhody nejnovějších funkcí a zajistit, aby zůstaly v bezpečí.
+
+__Otázka: budou moje existující aplikace ADAL přestat fungovat?__  
+Odpověď: Ne. Stávající aplikace budou i nadále fungovat bez úprav. Pokud plánujete, že byste je měli po dobu od 30. června 2022, měli byste zvážit aktualizaci vašich aplikací na MSAL, aby byly zabezpečené, ale migrace na MSAL není nutná k zachování stávajících funkcí.
 
 __Otázka: Návody víte, které moje aplikace používají ADAL?__  
 O: Pokud máte zdrojový kód aplikace, můžete odkazovat na výše uvedené příručky migrace, které vám pomůžou určit, kterou knihovnu aplikace používá a jak ji migrovat do MSAL. Pokud jste spolupracujete se svým nezávislým výrobcem softwaru, doporučujeme vám, abyste se na ně dostali přímo a pochopili cestu k migraci na MSAL. Pokud nemáte přístup ke zdrojovému kódu vaší aplikace, můžete [otevřít žádost o podporu](developer-support-help-options.md#open-a-support-request) a získat tak seznam registrovaných aplikací a knihovny, které aplikace používá.
-
-__Otázka: budou mé stávající aplikace ADAL nadále fungovat?__  
-Odpověď: vaše existující aplikace budou i nadále fungovat bez úprav. Pokud plánujete, že byste je měli po dobu od 30. června 2022, měli byste zvážit jejich aktualizaci na MSAL, aby byly zabezpečené, ale migrace na MSAL není nutná k zachování stávajících funkcí.
 
 __Otázka: Proč investovat do MSAL?__  
 Odpověď: MSAL obsahuje nové funkce, které nejsou v ADAL, včetně přírůstkového souhlasu, jednotné přihlašování a správy mezipaměti tokenů. I na rozdíl od ADAL bude MSAL nadále získávat opravy zabezpečení i po 30. června 2022. [Další informace](msal-overview.md).

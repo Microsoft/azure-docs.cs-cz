@@ -10,29 +10,29 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c17847546ace558d367aed6d935db0fed6d817f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95f8991d5ba9efb8e3223dd44a8d037acf2de849
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742194"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009558"
 ---
-# <a name="grant-access-to-other-administrators-to-manage-privileged-identity-management"></a>Udělte ostatním správcům přístup ke správě Privileged Identity Management
+# <a name="delegate-access-to-privileged-identity-management"></a>Delegovat přístup k Privileged Identity Management
 
-Globální správce, který umožňuje Privileged Identity Management (PIM) pro organizaci, automaticky získá přiřazení rolí a přístup k Privileged Identity Management. Nikdo jiný ve vaší Azure Active Directory (Azure AD) nezíská ve výchozím nastavení přístup pro zápis, včetně jiných globálních správců. Jiní globální správci, správci zabezpečení a čtenáři zabezpečení mají přístup jen pro čtení k Privileged Identity Management. Pokud chcete udělit přístup Privileged Identity Management, může první uživatel přiřadit jiné roli **správce privilegované role** .
+Pokud chcete delegovat přístup k Privileged Identity Management (PIM), globální správce může přiřadit jiné uživatele k roli správce privilegovaných rolí. Ve výchozím nastavení mají správci zabezpečení a čtenáři zabezpečení přístup jen pro čtení k Privileged Identity Management. Pokud chcete udělit přístup Privileged Identity Management, může první uživatel přiřadit jiné roli **správce privilegované role** . Role správce privilegované role se vyžaduje jenom pro správu rolí Azure AD. Oprávnění správce privilegované role nejsou nutná ke správě nastavení prostředků Azure.
 
 > [!NOTE]
 > Správa Privileged Identity Management vyžaduje Azure Multi-Factor Authentication. Vzhledem k tomu, že účty Microsoft se nemůžou registrovat pro Azure Multi-Factor Authentication, uživatel, který se přihlásí pomocí účet Microsoft, nemá přístup k Privileged Identity Management.
 
 Zajistěte, aby v roli správce privilegované role existovaly vždycky aspoň dva uživatelé, pokud je jeden uživatel uzamčený nebo se jeho účet odstraní.
 
-## <a name="grant-access-to-manage-pim"></a>Udělení přístupu ke správě PIM
+## <a name="delegate-access-to-manage-pim"></a>Delegovat přístup pro správu PIM
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. V Azure AD otevřete **Privileged Identity Management**.
 
@@ -46,9 +46,9 @@ Zajistěte, aby v roli správce privilegované role existovaly vždycky aspoň d
 
     ![Správce privilegovaných rolí – členové](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
 
-1. Vyberte **Přidat člena** a otevřete tak podokno přidat spravované členy.
+1. Vyberte **Přidat člena** a otevřete tak podokno **Přidat spravované členy** .
 
-1. Vyberte **Vybrat členy** a otevřete tak podokno vybrat členy.
+1. Vyberte **Vybrat členy** a otevřete tak podokno **Vybrat členy** .
 
     ![Správce privilegovaných rolí – výběr členů](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
 
@@ -70,7 +70,7 @@ Zajistěte, aby v roli správce privilegované role existovaly vždycky aspoň d
 
 Než odeberete někoho z role správce privilegované role, ujistěte se, že se k němu pořád přiřadí aspoň dva uživatelé.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 

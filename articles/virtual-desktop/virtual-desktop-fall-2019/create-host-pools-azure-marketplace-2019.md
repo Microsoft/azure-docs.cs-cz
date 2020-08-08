@@ -1,19 +1,17 @@
 ---
 title: Azure Marketplace fondu hostitelů Windows Virtual Desktop (Classic) – Azure
 description: Postup vytvoření fondu hostitelů pro virtuální počítače s Windows (Classic) pomocí Azure Marketplace.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3f0db05459b8e81764915c5dffb373e7f19edbc4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291299"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008589"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Kurz: Vytvoření fondu hostitelů ve virtuální ploše Windows (Classic)
 
@@ -52,7 +50,7 @@ Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 Spuštění nabídky Azure Marketplace pro zřízení nového fondu hostitelů:
 
-1. V nabídce webu Azure Portal nebo na **domovské** stránce vyberte **Vytvořit prostředek**.
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 1. V okně hledání na Marketplace zadejte **Windows Virtual Desktop** .
 1. Vyberte **virtuální počítač s Windows – zřídit fond hostitelů**a pak vyberte **vytvořit**.
 
