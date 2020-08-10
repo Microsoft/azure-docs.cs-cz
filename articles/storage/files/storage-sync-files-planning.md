@@ -1,18 +1,18 @@
 ---
 title: Plánování nasazení Azure File Sync | Microsoft Docs
-description: Zjistěte, co je potřeba vzít v úvahu při plánování nasazení souborů Azure.
+description: Naplánujte nasazení pomocí Azure File Sync služby, která vám umožní ukládat do mezipaměti několik sdílených složek Azure na místním nebo cloudovém virtuálním počítači s Windows serverem.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f09e84d20b1a3c568eea015d92b93a99b8cf024e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: acdf830c9bf0eaedcca5bf0ffe1b2bd373750276
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036790"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030655"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -147,7 +147,7 @@ Podporovány jsou pouze svazky NTFS. ReFS, FAT, FAT32 a jiné systémy souborů 
 
 V následující tabulce je uveden stav spolupráce funkcí systému souborů NTFS: 
 
-| Funkce | Stav podpory | Poznámky |
+| Příznak | Stav podpory | Poznámky |
 |---------|----------------|-------|
 | Seznamy ACL | Plně podporováno | Windows – volitelné seznamy řízení přístupu se uchovávají Azure File Sync a vynutily Windows Server na koncových bodech serveru. Seznamy ACL je taky možné vyhovět při přímém připojení sdílené složky Azure, ale to vyžaduje další konfiguraci. Další informace najdete v [části Identita](#identity) . |
 | Pevné odkazy | Přeskočeno | |
@@ -314,7 +314,7 @@ Azure File Sync je k dispozici v následujících oblastech:
 | Veřejný | Evropa | West Europe | `westeurope` |
 | Veřejný | Francie | Francie – střed | `francecentral` |
 | Veřejný | Francie | Francie – jih * | `francesouth` |
-| Veřejný | Indie | Indie – střed | `centralindia` |
+| Veřejný | Indie | Central India | `centralindia` |
 | Veřejný | Indie | Indie – jih | `southindia` |
 | Veřejný | Japonsko | Japan East | `japaneast` |
 | Veřejný | Japonsko | Japonsko – západ | `japanwest` |

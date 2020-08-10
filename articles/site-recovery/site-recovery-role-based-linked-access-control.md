@@ -43,7 +43,7 @@ K dokončení replikace nového virtuálního počítače potřebuje uživatel n
 
 | **Typ prostředku** | **Model nasazení** | **Oprávnění** |
 | --- | --- | --- |
-| Compute | Resource Manager | Microsoft. COMPUTE/availabilitySets/Read |
+| Výpočetní prostředky | Resource Manager | Microsoft. COMPUTE/availabilitySets/Read |
 |  |  | Microsoft. COMPUTE/virtualMachines/Read |
 |  |  | Microsoft. COMPUTE/virtualMachines/Write |
 |  |  | Microsoft. COMPUTE/virtualMachines/DELETE |

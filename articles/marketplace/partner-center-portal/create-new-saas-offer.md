@@ -3,18 +3,18 @@ title: Vytvoření nabídky SaaS, Azure Marketplace a Microsoft AppSource
 description: Postup vytvoření nabídky software jako služba (SaaS) pro výpis nebo prodej v Microsoft AppSource, Azure Marketplace nebo prostřednictvím programu Cloud Solution Provider (CSP) pomocí programu Microsoft Commercial Marketplace v partnerském centru Microsoftu.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 07/22/2020
+ms.topic: how-to
+ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 2b12eb88f0297c44fabb62e40d315517f3d3b954
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 7fbb50308f14acbcec98c562fe72763341538df2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800332"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031026"
 ---
-# <a name="create-a-saas-offer"></a>Vytvoření nabídky SaaS
+# <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>Vytvoření nabídky SaaS na komerčním webu Marketplace
 
 Pokud chcete začít vytvářet nabídky software jako služba (SaaS) na komerčním webu Marketplace, ujistěte se, že jste nejdřív [vytvořili účet partnerského centra](./create-account.md) a otevřete [řídicí panel komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)s vybraným **přehledem** .
 
@@ -62,7 +62,7 @@ Nabídka **Přehled** nabídky obsahuje seznam odkazů pro provádění operací
 
 Na této stránce se zobrazí informace o následujících informacích.
 
-- **Chtěli byste prodávat přes Microsoft?** (Ano/ne)
+- **Chtěli byste prodávat přes Microsoft?** (Ano/Ne)
   - **Ano**, chci prodávat přes Microsoft a mít za ně hostitelské transakce Microsoftu
   - **Ne**, chtěl bych jenom zobrazit nabídku moje nabídka prostřednictvím Marketplace a zpracovávat transakce nezávisle.
 
@@ -83,7 +83,7 @@ S SaaS řešeními, která běží v předplatném Azure vydavatele, zahrnují l
 
 SaaS nabízí podporu měsíčních nebo ročních faktur na základě paušálního poplatku za uživatele nebo poplatků za využití pomocí účtované fakturační služby. Komerční tržiště Microsoftu pracuje na modelu agentury, na kterém vydavatelé nastavili ceny, zákazníky s Microsoftem a společnost Microsoft za to, že vystavuje poplatky za platební poplatek, účtuje.
 
-Toto je ukázkový rozpis nákladů a výběrů za účelem předvedení modelu agentury (všechny uvedené ceny jsou například pouze pro účely a nejsou určeny k tomu, aby odrážely skutečné náklady):
+Toto je ukázkový rozpis nákladů a výběrů za účelem předvedení modelu agentury (všechny uvedené ceny jsou například jenom pro účely a nejsou určené k tomu, aby odrážely skutečné náklady):
 
 |**Náklady na licenci**|**$100 za měsíc**|
 |:---|:---|
@@ -282,16 +282,18 @@ Toto pole je vyžadováno.
 #### <a name="files-and-images"></a>Soubory a image
 
 - **Dokumenty** (povinné) – přidejte související marketingové dokumenty pro vaši nabídku ve formátu PDF aspoň jeden a až tři dokumenty na nabídku.
-- **Obrázky** (povinné) – existuje několik míst, kde se obrázky s logem vaší nabídky můžou zobrazit na webu Marketplace. Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije tuto hodnotu k vytvoření **malého** (48 x 48 pixelů) a **středníku** (90 x 90 pixelů). Volitelně je můžete nahradit různými obrázky. Přidání loga ve **světě** je volitelné.
+- **Obrázky** – nahrajte obrázky loga ve formátu PNG:
 
-    Pro použití na různých místech v seznamu jsou vyžadovány tři velikosti loga; jedna je volitelná:
+  - **Malý** (48 x 48 pixelů, požadováno)
+  - **Střední** (90 × 90 pixelů, požadováno)
+  - **Velký** (216 x 216 pixelů, požadováno)
+  - **Roztažitelné** (255 x 115 pixelů) (volitelné)
 
-    - **Malé** (48 x 48)
-    - **Střední** (90 × 90)
-    - **Velký** (mezi 216 x 216 a 350 × 350)
-    - **Roztažitelné** (255 × 115), *volitelné*
+   Tyto tři velikosti loga se používají na různých místech v prodejní místa:
 
-    [!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+   -   Malé logo (48 x 48 pixelů) se zobrazí ve výsledcích hledání Azure Marketplace a na stránce Microsoft AppSource hlavní stránka a výsledky hledání. 
+   -   Při vytváření nového prostředku v Microsoft Azure se zobrazí logo střední (90 x 90 pixelů).
+   -   Velké logo (mezi 216 x 216 a 350 × 350 pixelů) se zobrazí na stránce se seznamem nabídek v Azure Marketplace a Microsoft AppSource.
 
 - **Snímky obrazovky** (povinné) – přidejte maximálně pět snímků obrazovky, které demonstrují vaši nabídku. velikost je 1280 x 720 pixelů. Všechny obrázky musí být v. Formát PNG.
 - **Videa** (volitelné) – přidejte odkazy na videa, která demonstrují vaši nabídku. Můžete použít odkazy na videa YouTube nebo Vimeo, která se zobrazí spolu s vaší nabídkou pro zákazníky. Budete taky muset zadat miniaturu videa, ve formátu PNG se velikost nastaví na 1280 x 720 pixelů. Můžete zobrazit maximálně čtyři videa na jednu nabídku.

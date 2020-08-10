@@ -1,7 +1,7 @@
 ---
 title: Správa souběžnosti
 titleSuffix: Azure Storage
-description: Naučte se spravovat souběžnost pro služby objektů blob, front, tabulek a souborů.
+description: Naučte se spravovat souběžnost v Azure Storage pro objekty blob, front, tabulek a souborové služby. Seznamte se s využitím tří hlavních strategií souběžnosti dat.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 099711bf09fc29a1168ca8ce73ea6ae93f810a08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1ec7661bc2823932328bd994ec7bc7f6167f13a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504283"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030380"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Správa souběžnosti v Microsoft Azure Storage
 
@@ -90,15 +90,15 @@ Následující tabulka shrnuje operace kontejneru, které přijímají podmíně
 
 | Operace | Vrátí hodnotu ETag kontejneru. | Akceptuje podmíněná záhlaví |
 |:--- |:--- |:--- |
-| Vytvoření kontejneru |Yes |No |
-| Získat vlastnosti kontejneru |Yes |No |
-| Získat metadata kontejneru |Yes |No |
+| Vytvoření kontejneru |Ano |Ne |
+| Získat vlastnosti kontejneru |Ano |Ne |
+| Získat metadata kontejneru |Ano |Ne |
 | Nastavení metadat kontejneru |Ano |Ano |
-| Získat seznam ACL kontejneru |Yes |No |
-| Nastavení seznamu ACL kontejneru |Yes |Ano (*) |
-| Odstranění kontejneru |No |Yes |
+| Získat seznam ACL kontejneru |Ano |Ne |
+| Nastavení seznamu ACL kontejneru |Ano |Ano (*) |
+| Odstranění kontejneru |Ne |Ano |
 | Kontejner zapůjčení |Ano |Ano |
-| Výpis objektů BLOB |No |No |
+| Výpis objektů BLOB |Ne |Ne |
 
 (*) Oprávnění definovaná pomocí SetContainerACL jsou uložená v mezipaměti a aktualizace těchto oprávnění trvá 30 sekund, než se rozšíří, protože aktualizace nejsou zaručené jako konzistentní.  
 
@@ -114,12 +114,12 @@ Následující tabulka shrnuje operace objektů blob, které přijímají podmí
 | Nastavení metadat objektu BLOB |Ano |Ano |
 | Objekt BLOB zapůjčení (*) |Ano |Ano |
 | Pořízení snímku objektu blob |Ano |Ano |
-| Zkopírování objektu blob |Yes |Ano (pro zdrojový a cílový objekt BLOB) |
-| Přerušit kopii objektu BLOB |No |No |
-| Odstranění objektu blob |No |Yes |
-| Blok vložení |No |No |
+| Zkopírování objektu blob |Ano |Ano (pro zdrojový a cílový objekt BLOB) |
+| Přerušit kopii objektu BLOB |Ne |Ne |
+| Odstranění objektu blob |Ne |Ano |
+| Blok vložení |Ne |Ne |
 | Seznam blokovaných umístění |Ano |Ano |
-| Získat seznam blokovaných webů |Yes |No |
+| Získat seznam blokovaných webů |Ano |Ne |
 | Vložit stránku |Ano |Ano |
 | Získat rozsahy stránek |Ano |Ano |
 
@@ -195,7 +195,7 @@ Následující operace kontejneru můžou použít zapůjčení ke správě pesi
 * Nastavení seznamu ACL kontejneru
 * Kontejner zapůjčení  
 
-Další informace naleznete v tématech:  
+Další informace:  
 
 * [Určení hlaviček podmínek pro operace Blob service](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Kontejner zapůjčení](https://msdn.microsoft.com/library/azure/jj159103.aspx)
@@ -244,19 +244,19 @@ Následující tabulka shrnuje, jak operace entity tabulky používají hodnoty 
 
 | Operace | Vrátí hodnotu ETag. | Vyžaduje hlavičku požadavku If-Match. |
 |:--- |:--- |:--- |
-| Entity dotazu |Yes |No |
-| Vložit entitu |Yes |No |
+| Entity dotazu |Ano |Ne |
+| Vložit entitu |Ano |Ne |
 | Aktualizovat entitu |Ano |Ano |
 | Sloučit entitu |Ano |Ano |
-| Odstranit entitu |No |Yes |
-| Vložit nebo nahradit entitu |Yes |No |
-| Vložit nebo sloučit entitu |Yes |No |
+| Odstranit entitu |Ne |Ano |
+| Vložit nebo nahradit entitu |Ano |Ne |
+| Vložit nebo sloučit entitu |Ano |Ne |
 
 Všimněte si, že operace **vložení nebo nahrazení entit** a **vložení nebo sloučení entit** *neprovede žádné* kontroly souběžnosti, protože neodesílají hodnotu ETag do služby Table Service.  
 
 V obecných vývojářích, kteří používají tabulky, by měly při vývoji škálovatelných aplikací spoléhat na optimistickou souběžnost. Pokud je potřeba pesimistické zamykání, můžou při přístupu k tabulkám podniknout vývojáři, kteří přiřadí určený objekt BLOB pro každou tabulku a před tím, než bude v tabulce pracovat, se pokusí o objekt BLOB převzít zapůjčení. Tento přístup vyžaduje aplikaci, aby se zajistilo, že všechny cesty k datům získají zapůjčení před tím, než se v tabulce začne pracovat. Je také potřeba si uvědomit, že minimální doba zapůjčení je 15 sekund, což vyžaduje pečlivou pozornost škálovatelnosti.  
 
-Další informace naleznete v tématech:  
+Další informace:  
 
 * [Operace s entitami](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
@@ -266,7 +266,7 @@ Jedním z scénářů, ve kterých je souběžnost ve frontě ve službě Queuei
 
 Služba front nemá podporu pro optimistickou ani pesimistickou souběžnost a z tohoto důvodu klienti zpracovávající zprávy načtené z fronty mají jistotu, že se zprávy zpracovávají idempotentní způsobem. Pro operace aktualizace, jako je SetQueueServiceProperties, SetQueueMetaData, SetQueueACL a UpdateMessage, se používá poslední strategie zapisovače WINS.  
 
-Další informace naleznete v tématech:  
+Další informace:  
 
 * [Rozhraní REST API služby Queue Service](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Získat zprávy](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
@@ -277,7 +277,7 @@ K Souborové službě se dá dostat pomocí dvou různých koncových bodů prot
 
 Když klient SMB otevře soubor pro odstranění, označí soubor jako nedokončený, dokud nebudou všechny ostatní otevřené popisovače protokolu SMB v tomto souboru zavřeny. Když je soubor označený jako čeká na odstranění, všechny operace REST na tomto souboru vrátí stavový kód 409 (konflikt) s kódem chyby SMBDeletePending. Stavový kód 404 (Nenalezeno) se nevrátí, protože klient SMB může před zavřením souboru odstranit příznak nedokončeného odstranění. Jinými slovy, stavový kód 404 (Nenalezeno) se očekává jenom v případě, že byl soubor odebraný. Všimněte si, že když je soubor ve stavu čekání na odstranění protokolu SMB, nebude zahrnutý do výsledků souborů seznamu. Všimněte si také, že operace odstranění souboru REST a odstranění adresáře REST jsou potvrzeny atomicky a nevedou k nedokončenému stavu odstranění.  
 
-Další informace naleznete v tématech:  
+Další informace:  
 
 * [Správa zámků souborů](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 

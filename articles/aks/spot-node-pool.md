@@ -26,7 +26,7 @@ Tento článek předpokládá základní znalost konceptů Kubernetes a Azure Lo
 
 Tato funkce je aktuálně ve verzi Preview.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="before-you-begin"></a>Než začnete
 

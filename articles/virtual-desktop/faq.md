@@ -23,7 +23,7 @@ Pokud chcete vytvořit fondy hostitelů a jiné objekty, musíte mít přiřazen
 
 Abyste mohli publikovat skupiny aplikací pro uživatele nebo skupiny uživatelů, musíte mít ve skupině aplikací přiřazenou roli správce přístupu uživatele.
 
-Chcete-li správce omezit pouze na správu uživatelských relací, jako je například odesílání zpráv uživatelům, odhlašování uživatelů a tak dále, můžete vytvořit vlastní role. Například:
+Chcete-li správce omezit pouze na správu uživatelských relací, jako je například odesílání zpráv uživatelům, odhlašování uživatelů a tak dále, můžete vytvořit vlastní role. Příklad:
 
 ```powershell
 "actions": [
@@ -60,7 +60,7 @@ Pracovní prostory také musí být ve stejném umístění jako jejich skupiny 
 
 Když spustíte rutinu PowerShellu, zobrazí se jenom název a umístění prostředku.
 
-Například:
+Příklad:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg
@@ -72,7 +72,7 @@ westus   0224hp Microsoft.DesktopVirtualization/hostpools
 
 Chcete-li zobrazit všechny vlastnosti prostředku, přidejte buď `format-list` nebo `fl` na konec rutiny.
 
-Například:
+Příklad:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
@@ -80,7 +80,7 @@ Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
 
 Chcete-li zobrazit konkrétní vlastnosti, přidejte názvy specifických vlastností za `format-list` nebo `fl` .
 
-Například:
+Příklad:
 
 ```powershell
 Get-AzWvdHostPool -Name demohp -ResourceGroupName 0414rg |fl CustomRdpProperty

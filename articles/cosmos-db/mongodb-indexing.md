@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 08/07/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e47b8727eccd1b185f381ae3f8474fe13a406501
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: fb90390814af39b240c9a157f490ee9390afeb8f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843806"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030499"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Správa indexování v rozhraní Azure Cosmos DB API pro MongoDB
 
@@ -40,7 +40,7 @@ Jeden dotaz používá více indexů s jedním polem, kde je k dispozici. Pro ka
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>Složené indexy (MongoDB Server verze 3,6)
 
-Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje složené indexy pro účty, které používají síťový protokol verze 3,6. Do složeného indexu můžete zahrnout až osm polí. Na rozdíl od MongoDB byste měli vytvořit složený index pouze v případě, že je nutné dotaz efektivně seřadit ve více polích najednou. Pro dotazy s více filtry, které není nutné řadit, je třeba vytvořit více indexů jednoho pole namísto jednoho složeného indexu.
+Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje složené indexy pro účty, které používají síťový protokol verze 3,6. Do složeného indexu můžete zahrnout až osm polí. **Na rozdíl od MongoDB byste měli vytvořit složený index pouze v případě, že je nutné dotaz efektivně seřadit ve více polích najednou.** Pro dotazy s více filtry, které není nutné řadit, je třeba vytvořit více indexů jednoho pole namísto jednoho složeného indexu.
 
 Následující příkaz vytvoří složený index pro pole `name` a `age` :
 
@@ -57,6 +57,9 @@ Můžete také použít předchozí složený index a efektivně tak řadit dota
 Nicméně sekvence cest ve složeném indexu se musí přesně shodovat s dotazem. Tady je příklad dotazu, který by vyžadoval další složený index:
 
 `db.coll.find().sort({age:1,name:1})`
+
+> [!NOTE]
+> Nelze vytvořit složené indexy pro vnořené vlastnosti nebo pole.
 
 ### <a name="multikey-indexes"></a>Multikey indexy
 

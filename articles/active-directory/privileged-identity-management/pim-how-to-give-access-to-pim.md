@@ -32,7 +32,7 @@ Zajistěte, aby v roli správce privilegované role existovaly vždycky aspoň d
 
 ## <a name="delegate-access-to-manage-pim"></a>Delegovat přístup pro správu PIM
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. V Azure AD otevřete **Privileged Identity Management**.
 
@@ -70,7 +70,7 @@ Zajistěte, aby v roli správce privilegované role existovaly vždycky aspoň d
 
 Než odeberete někoho z role správce privilegované role, ujistěte se, že se k němu pořád přiřadí aspoň dva uživatelé.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 

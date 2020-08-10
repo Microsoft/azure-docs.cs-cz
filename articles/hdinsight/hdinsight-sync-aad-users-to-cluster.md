@@ -146,7 +146,7 @@ Otevřete [webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manag
 Když se nový uživatel (nebo jiný uživatel domény) přihlásí k Ambari, použije své úplné uživatelské jméno a přihlašovací údaje domény služby Azure AD.  Ambari zobrazí alias uživatele, což je zobrazované jméno uživatele ve službě Azure AD.
 Nový ukázkový uživatel má uživatelské jméno `hiveuser3@contoso.com` . V Ambari se tento nový uživatel zobrazuje jako, `hiveuser3` ale uživatel se do Ambari přihlašuje jako `hiveuser3@contoso.com` .
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Konfigurace zásad Apache Hive ve službě HDInsight pomocí protokolu ESP](hdinsight-domain-joined-run-hive.md)
 * [Správa clusterů HDInsight pomocí protokolu ESP](hdinsight-domain-joined-manage.md)

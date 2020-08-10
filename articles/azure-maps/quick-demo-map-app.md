@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý Start: interaktivní vyhledávání map pomocí Azure Maps'
-description: Naučte se vytvářet ukázkovou webovou aplikaci pro interaktivní vyhledávání v mapě pomocí webové sady SDK služby Microsoft Azure Maps.
+description: Naučte se vytvářet interaktivní a prohledávatelné mapy. Podívejte se, jak vytvořit účet Azure Maps, získat primární klíč a pomocí webové sady SDK nastavit aplikace mapy.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 7/10/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: bb6c5ee48e22e0c913e7fc6150d3986af805a08f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fa5cab35416f2629d39ec04803f90fae1a2e5f6d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004598"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031042"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>Rychlý Start: vytvoření interaktivní vyhledávací mapy pomocí Azure Maps
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak pomocí Azure Maps vytvořit mapu, která uži
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+* Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 <a id="createaccount"></a>
 

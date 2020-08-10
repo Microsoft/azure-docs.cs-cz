@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1d7b29bbd508223888c6f205e25008c0b29fecea
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 8b2b62ac4d79964c0a597f40d8154e5f57350f0b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922930"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031077"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
@@ -81,17 +81,32 @@ Pokyny, jak vytvořit výstrahy pro tyto scénáře, naleznete v části [Přík
 
 ## <a name="storage-sync-service"></a>Služba synchronizace úložiště
 
-Pokud chcete zobrazit registrovaný stav serveru, stav koncového bodu serveru a metriky, přečtěte si v Azure Portal službu synchronizace úložiště. Stav registrovaného serveru můžete zobrazit v okně **registrované servery** a stavu koncového bodu serveru v okně **synchronizace skupin** .
+Chcete-li zobrazit stav nasazení Azure File Sync v **Azure Portal**, přejděte do **služby synchronizace úložiště** a k dispozici jsou následující informace:
+
+- Stav registrovaného serveru
+- Stav koncového bodu serveru
+    - Soubory se nesynchronizují
+    - Aktivita synchronizace
+    - Efektivita vrstev cloudu
+    - Nevrstvení souborů
+    - Chyby odvolání
+- Metriky
 
 ### <a name="registered-server-health"></a>Stav registrovaného serveru
+
+Chcete-li zobrazit **registrovaný stav serveru** na portálu, přejděte do části **registrované servery** **služby synchronizace úložiště**.
 
 - Pokud je stav **registrovaného serveru** **online**, server úspěšně komunikuje se službou.
 - Pokud je stav **registrovaného serveru** **zobrazený v režimu offline**, proces monitorování synchronizace úložiště (AzureStorageSyncMonitor.exe) není spuštěný nebo Server nemůže získat přístup ke službě Azure File Sync. Pokyny najdete v [dokumentaci k řešení problémů](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity) .
 
 ### <a name="server-endpoint-health"></a>Stav koncového bodu serveru
 
-- Stav koncového bodu serveru na portálu je založen na událostech synchronizace zaznamenaných v protokolu událostí telemetrie na serveru (ID 9102 a 9302). Pokud relace synchronizace není úspěšná kvůli přechodné chybě, třeba zrušení změn, může se synchronizace pořád zobrazovat na portálu, pokud aktuální relace synchronizace probíhá. K určení, jestli se soubory používají, se používá událost s ID 9302. Další informace najdete v tématu [synchronizace stavu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) a [průběhu synchronizace](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
-- Pokud se v portálu zobrazuje chyba synchronizace, protože synchronizace neprobíhá, přečtěte si pokyny v [dokumentaci k řešení potíží](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) .
+Pokud chcete zobrazit stav **koncového bodu serveru** na portálu, přejděte do části **skupiny synchronizace** **služby synchronizace úložiště** a vyberte **skupinu synchronizace**.
+
+- Aktivita **stav koncového bodu serveru** a **synchronizace** na portálu je založena na událostech synchronizace, které jsou zaznamenány do protokolu událostí TELEMETRIE na serveru (ID 9102 a 9302). Pokud relace synchronizace selže kvůli přechodné chybě, například při zrušení chyby, synchronizace bude na portálu stále zobrazena, pokud aktuální relace synchronizace probíhá (soubory jsou aplikovány). Událost s ID 9302 je událost průběhu synchronizace a ID události 9102 se protokoluje po dokončení relace synchronizace.  Další informace najdete v tématu [synchronizace stavu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) a [průběhu synchronizace](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session). Pokud se na portálu zobrazí chyba, protože synchronizace neprobíhá, přečtěte si pokyny v [dokumentaci k řešení potíží](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) .
+- Počet **souborů, které nejsou synchronizované** na portálu, vychází z ID události 9121, které se zaznamená do protokolu událostí telemetrie na serveru. Tato událost se zaznamená do protokolu pro každou položku chyby, jakmile se relace synchronizace dokončí. Chcete-li vyřešit chyby jednotlivých položek, přečtěte si téma [návody v tématu, zda existují konkrétní soubory nebo složky, které se nesynchronizují?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
+- Pokud chcete na portálu zobrazit **efektivitu vrstev cloudu** , přejděte do části **Vlastnosti koncového bodu serveru** a přejděte do části **vrstvení cloudu** . Data poskytnutá pro efektivitu vrstvení cloudu vycházejí z ID události 9071, které se zaznamená do protokolu událostí telemetrie na serveru. Další informace najdete v tématu [Přehled vrstvení cloudu](https://docs.microsoft.com/azure/storage/files/storage-sync-cloud-tiering).
+- Pokud chcete zobrazit soubory, které **nejsou vrstvení** a **navrácení chyb** na portálu, přejděte do části **Vlastnosti koncového bodu serveru** a přejděte do části **vrstvení cloudu** . **Soubory, které nejsou vrstvení** , jsou založené na id události 9003, které se zaznamená do protokolu událostí telemetrie na serveru, a **chyby odvolání** vycházejí z ID události 9006. Chcete-li prozkoumat soubory, které se nedaří navrátit do vrstvy nebo se odvolat, přečtěte si téma [Postup řešení potíží se soubory, které se nepodařilo](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-tier) [vyzvat a jak řešit problémy se selháním](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled).
 
 ### <a name="metric-charts"></a>Grafy metrik
 
@@ -112,13 +127,13 @@ Pokud chcete zobrazit registrovaný stav serveru, stav koncového bodu serveru a
 
 ## <a name="windows-server"></a>Windows Server
 
-Na Windows serveru s nainstalovaným agentem Azure File Sync můžete zobrazit vrstvy cloudu, zaregistrovaný Server a synchronizovat stav.
+Na **Windows serveru** s nainstalovaným agentem Azure File Sync můžete zobrazit stav koncových bodů serveru na tomto serveru pomocí **protokolů událostí** a **čítačů výkonu**.
 
 ### <a name="event-logs"></a>Protokoly událostí
 
 Pomocí protokolu událostí telemetrie na serveru můžete monitorovat stav zaregistrovaných serverů, synchronizace a vrstvení cloudu. Protokol událostí telemetrie se nachází v Prohlížeč událostí v části *aplikace a Services\Microsoft\FileSync\Agent*.
 
-Stav synchronizace:
+Synchronizovat stav
 
 - Po dokončení relace synchronizace se protokoluje událost s ID 9102. Tuto událost použijte k určení, jestli jsou relace synchronizace úspěšné (**HRESULT = 0**), a pokud dojde k chybám synchronizace pro jednotlivé položky. Další informace najdete v dokumentaci ke [stavu synchronizace](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) a [chybách jednotlivých položek](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) .
 
@@ -129,11 +144,11 @@ Stav synchronizace:
 
 - Událost s ID 9302 se protokoluje každých 5 až 10 minut, pokud dojde k aktivní relaci synchronizace. Tuto událost použijte k určení, jestli aktuální relace synchronizace provádí průběh (**AppliedItemCount > 0**). Pokud synchronizace neprobíhá, relace synchronizace by se nakonec nezdařila a událost s ID 9102 bude protokolována s chybou. Další informace najdete v [dokumentaci průběh synchronizace](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
-Stav registrovaného serveru:
+Stav registrovaného serveru
 
 - Událost s ID 9301 se protokoluje každých 30 sekund, když server dotazuje službu pro úlohy. Pokud se GetNextJob dokončí se **stavem = 0**, server může komunikovat se službou. Pokud GetNextJob skončí s chybou, najdete pokyny v [dokumentaci k řešení problémů](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity) .
 
-Stav vrstvení cloudu:
+Stav vrstvení cloudu
 
 - Pokud chcete monitorovat aktivitu vrstvení na serveru, použijte ID události 9003, 9016 a 9029 v protokolu událostí telemetrie, který je umístěný v Prohlížeč událostí v části *aplikace a Services\Microsoft\FileSync\Agent*.
 

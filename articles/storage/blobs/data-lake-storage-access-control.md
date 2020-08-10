@@ -1,6 +1,6 @@
 ---
 title: Přehled řízení přístupu v Azure Data Lake Storage Gen2 | Microsoft Docs
-description: Informace o tom, jak řízení přístupu funguje v Azure Data Lake Storage Gen2
+description: Pochopte, jak řízení přístupu funguje v Azure Data Lake Storage Gen2. Podporují se řízení přístupu na základě role v Azure (Azure RBAC) a seznamy ACL typu POSIX.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 54867278b583124473b5b41c164714bf91f2f631
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9edf348c856de5c75c95d8a8f1957dcf73fc8ec1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543295"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030482"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu ve službě Azure Data Lake Storage Gen2
 
@@ -95,7 +95,7 @@ Přístupové seznamy ACL a výchozí seznamy ACL mají stejnou strukturu.
 
 Oprávnění pro objekt kontejneru jsou **čtení**, **zápis**a **spouštění**a lze je použít u souborů a adresářů, jak je znázorněno v následující tabulce:
 
-|            |    File     |   Adresář |
+|            |    Soubor     |   Adresář |
 |------------|-------------|----------|
 | **Číst (R)** | Může číst obsah souboru | K vypsání obsahu adresáře vyžaduje **čtení** a **provedení** . |
 | **Zapisovat (W)** | Může zapisovat do souboru nebo k němu připojovat data | Pro vytváření podřízených položek v adresáři vyžaduje **zápis** a **provedení** . |
@@ -347,6 +347,6 @@ Seznamy ACL nedědí. Výchozí seznamy ACL je ale možné použít k nastavení
 * [POSIX ACL na Ubuntu](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL: Using Access Control Lists on Linux (Seznamy ACL: Používání seznamů řízení přístupu v Linuxu)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Přehled Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)

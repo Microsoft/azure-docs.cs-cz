@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: d1012a2afa84270089ae44b1c5d224e65a2e01ae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 8/7/2020
+ms.openlocfilehash: dbf3a13ed5a544406950dbcfb5ea8796eceb03c1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118558"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030539"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace Azure Database for MySQL Replikace vstupních dat
 
@@ -37,11 +37,11 @@ Před provedením kroků v tomto článku zkontrolujte [omezení a požadavky](c
    > Azure Database for MySQL server musí být vytvořený v cenové úrovni optimalizované pro Pro obecné účely nebo paměť.
    > 
 
-2. Vytváření stejných uživatelských účtů a odpovídajících oprávnění
+1. Vytváření stejných uživatelských účtů a odpovídajících oprávnění
 
    Uživatelské účty se nereplikují z hlavního serveru na server repliky. Pokud plánujete poskytnout uživatelům přístup k serveru repliky, budete muset ručně vytvořit všechny účty a odpovídající oprávnění na tomto nově vytvořeném serveru Azure Database for MySQL.
 
-3. Přidejte IP adresu hlavního serveru k pravidlům brány firewall repliky. 
+1. Přidejte IP adresu hlavního serveru k pravidlům brány firewall repliky. 
 
    Pomocí webu [Azure Portal](howto-manage-firewall-using-portal.md) nebo [Azure CLI](howto-manage-firewall-using-cli.md) aktualizujte pravidla brány firewall.
 
@@ -55,7 +55,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
    
    Otestujte připojení k hlavnímu serveru tím, že se pokusíte připojit z nástroje, jako je například příkaz MySQL hostovaný na jiném počítači nebo [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) k dispozici v Azure Portal.
 
-2. Zapnout binární protokolování
+1. Zapnout binární protokolování
 
    Spuštěním následujícího příkazu zkontrolujte, jestli je v hlavní části povolené binární protokolování. 
 
@@ -67,7 +67,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
 
    Pokud `log_bin` se vrátí s hodnotou "off" (vypnuto), zapněte binární protokolování úpravou souboru my. CNF tak, aby se změna projevila, `log_bin=ON` a restartujte server.
 
-3. Nastavení hlavního serveru
+1. Nastavení hlavního serveru
 
    Replikace vstupních dat vyžaduje, `lower_case_table_names` aby byl parametr konzistentní mezi hlavním serverem a serverem repliky. Tento parametr ve výchozím nastavení ve Azure Database for MySQL je 1. 
 
@@ -75,7 +75,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-4. Vytvoření nové role replikace a nastavení oprávnění
+1. Vytvoření nové role replikace a nastavení oprávnění
 
    Vytvořte uživatelský účet na hlavním serveru, který je nakonfigurovaný s oprávněními replikace. To se dá udělat prostřednictvím příkazů SQL nebo nástroje jako MySQL Workbench. Zvažte, jestli plánujete replikaci s protokolem SSL, protože při vytváření uživatele je potřeba zadat. V dokumentaci MySQL najdete informace o tom, jak [Přidat uživatelské účty](https://dev.mysql.com/doc/refman/5.7/en/user-names.html) na hlavní server. 
 
@@ -115,8 +115,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
 
    ![Replikace podřízených](./media/howto-data-in-replication/replicationslave.png)
 
-
-5. Nastavení hlavního serveru na režim jen pro čtení
+1. Nastavení hlavního serveru na režim jen pro čtení
 
    Než začnete s vypsáním paměti v databázi, musí být server umístěn v režimu jen pro čtení. V režimu jen pro čtení nebude hlavním serverem možné zpracovat žádné transakce zápisu. V případě potřeby vyhodnoťte dopad na vaši firmu a v případě potřeby Naplánujte okno jen pro čtení v době mimo špičku.
 
@@ -125,7 +124,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
    SET GLOBAL read_only = ON;
    ```
 
-6. Získat název a posun binárního souboru protokolu
+1. Získat název a posun binárního souboru protokolu
 
    Spusťte [`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) příkaz a určete aktuální binární název a posun souboru protokolu.
     
@@ -138,11 +137,11 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
  
 ## <a name="dump-and-restore-master-server"></a>Výpis a obnovení hlavního serveru
 
-1. Vypsat všechny databáze z hlavního serveru
+1. Určete databáze a tabulky, které chcete replikovat, do Azure Database for MySQL a proveďte výpis z hlavního serveru.
+ 
+    Pomocí mysqldump můžete vypsat databáze z hlavní větve. Podrobnosti najdete v tématu věnovaném [výpisu & obnovení](concepts-migrate-dump-restore.md). Není nutné vypsat knihovnu MySQL a knihovnu testů.
 
-   Pomocí mysqldump můžete vypsat databáze z hlavní větve. Podrobnosti najdete v tématu věnovaném [výpisu & obnovení](concepts-migrate-dump-restore.md). Není nutné vypsat knihovnu MySQL a knihovnu testů.
-
-2. Nastavení hlavního serveru na režim pro čtení a zápis
+1. Nastavení hlavního serveru na režim pro čtení a zápis
 
    Jakmile je databáze v režimu dumpingu, změňte hlavní server MySQL zpátky na režim pro čtení/zápis.
 
@@ -151,7 +150,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
    UNLOCK TABLES;
    ```
 
-3. Obnovit soubor s výpisem paměti na nový server
+1. Obnovit soubor s výpisem paměti na nový server
 
    Obnovte soubor s výpisem paměti na server vytvořený ve službě Azure Database for MySQL. Informace o tom, jak obnovit soubor s výpisem paměti na server MySQL, najdete v tématu [výpis & obnovení](concepts-migrate-dump-restore.md) . Pokud je soubor s výpisem paměti velký, nahrajte ho do virtuálního počítače v Azure ve stejné oblasti jako server repliky. Obnovte ji na Azure Database for MySQL server z virtuálního počítače.
 
@@ -175,33 +174,39 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
    - master_ssl_ca: kontext certifikátu certifikační autority. Pokud nepoužíváte protokol SSL, předejte prázdný řetězec.
        - Doporučuje se tento parametr předat jako proměnnou. Další informace najdete v následujících příkladech.
 
-> [!NOTE]
-> Pokud je hlavní server hostovaný na virtuálním počítači Azure, nastavte "povolení přístupu ke službám Azure" na "ZAPNUTo", aby mohly servery hlavní a repliky komunikovat mezi sebou. Toto nastavení se dá změnit z možností **zabezpečení připojení** . Další informace najdete [v tématu Správa pravidel brány firewall pomocí portálu](howto-manage-firewall-using-portal.md) .
-
+   > [!NOTE]
+   > Pokud je hlavní server hostovaný na virtuálním počítači Azure, nastavte "povolení přístupu ke službám Azure" na "ZAPNUTo", aby mohly servery hlavní a repliky komunikovat mezi sebou. Toto nastavení se dá změnit z možností **zabezpečení připojení** . Další informace najdete [v tématu Správa pravidel brány firewall pomocí portálu](howto-manage-firewall-using-portal.md) .
+      
    **Příklady**
-
+   
    *Replikace s protokolem SSL*
-
+   
    Proměnná `@cert` je vytvořena spuštěním následujících příkazů MySQL: 
-
-   ```sql
-   SET @cert = '-----BEGIN CERTIFICATE-----
-   PLACE YOUR PUBLIC KEY CERTIFICATE'`S CONTEXT HERE
-   -----END CERTIFICATE-----'
-   ```
-
+   
+      ```sql
+      SET @cert = '-----BEGIN CERTIFICATE-----
+      PLACE YOUR PUBLIC KEY CERTIFICATE'`S CONTEXT HERE
+      -----END CERTIFICATE-----'
+      ```
+   
    Replikace s protokolem SSL je nastavená mezi hlavním serverem hostovaným v doméně "companya.com" a serverem repliky hostovaným v Azure Database for MySQL. Tato uložená procedura se spouští na replice. 
-
-   ```sql
-   CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
-   ```
+   
+      ```sql
+      CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
+      ```
    *Replikace bez SSL*
-
+   
    Replikace bez protokolu SSL je nastavená mezi hlavním serverem hostovaným v doméně "companya.com" a serverem repliky hostovaným v Azure Database for MySQL. Tato uložená procedura se spouští na replice.
+   
+      ```sql
+      CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
+      ```
 
-   ```sql
-   CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
-   ```
+1. Filtrování 
+ 
+   Pokud chcete přeskočit replikaci některých tabulek z hlavní větve, aktualizujte `replicate_wild_ignore_table` parametr serveru na serveru repliky. Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) .
+    
+    Pokud chcete aktualizovat parametr, můžete použít [Azure Portal](howto-server-parameters.md) nebo [Azure CLI](howto-configure-server-parameters-using-cli.md).
 
 1. Spustit replikaci
 

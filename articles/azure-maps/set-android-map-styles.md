@@ -1,6 +1,6 @@
 ---
 title: Nastavení stylu mapy pomocí Azure Maps Android SDK | Mapy Microsoft Azure
-description: V tomto článku se dozvíte o funkcích, které se týkají Android SDK Microsoft Azure Maps.
+description: Přečtěte si dva způsoby nastavení stylu mapy. Chcete-li upravit styl, přečtěte si téma jak použít Azure Maps Android SDK v souboru rozložení nebo třídě Activity.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 81f89a4b5aa758d506ecdb9cf7b4f510e333ef25
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 4e37ae82b46ce06162d0a67d74af54cddaf3f6eb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131255"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030941"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Nastavení stylu mapy pomocí Azure Maps Android SDK
 
 Tento článek ukazuje dva způsoby, jak nastavit styly mapy pomocí Azure Maps Android SDK. Azure Maps má šest různých stylů mapy, ze kterých si můžete vybrat. Další informace o podporovaných stylech map najdete [v tématu Podporované styly mapy v Azure Maps](./supported-map-styles.md).
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li dokončit proces v tomto článku, je nutné nainstalovat [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) , aby se načetla mapa.
 

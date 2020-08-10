@@ -1,6 +1,6 @@
 ---
 title: 'Ukázkový skript Azure PowerShellu: Konfigurace sítě VPN typu VNet-to-VNet | Microsoft Docs'
-description: Tento skript PowerShellu propojuje dvě virtuální sítě Azure pomocí typu připojení VNet-to-VNet. Přečtěte si o všech rutinách ve skriptu.
+description: Naučte se používat skript prostředí PowerShell ke konfiguraci připojení brány VPN typu Site-to-VNet k virtuální síti.
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: kumudD
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: 9f35f4e097f6b7848c19d1d926e0896d870f3f64
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 949c2b7810bc6b4f5a80b9932427f4aa3565794e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926939"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030347"
 ---
 # <a name="use-powershell-to-configure-a-vnet-to-vnet-vpn-gateway-connection"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí PowerShellu
 
