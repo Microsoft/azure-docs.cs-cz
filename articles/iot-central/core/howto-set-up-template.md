@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1f5e1347850c038386d32b52378674ac20316e4c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 3e4b44c8f784524b4cd363a2f4531c5bf0a70e0d
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337207"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041591"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definování nového typu zařízení IoT v aplikaci Azure IoT Central
 
 *Tento článek se týká tvůrců řešení a vývojářů zařízení.*
 
-Šablona zařízení je podrobný plán, který definuje vlastnosti a chování typu zařízení, které se připojuje k aplikaci Azure IoT Central.
+Šablona zařízení je podrobný plán, který definuje charakteristiky a chování typu zařízení, které se připojuje k [aplikaci Azure IoT Central](concepts-app-templates.md).
 
 Tvůrce může například vytvořit šablonu zařízení pro připojený ventilátor, která má následující vlastnosti:
 
@@ -31,17 +31,21 @@ Tvůrce může například vytvořit šablonu zařízení pro připojený ventil
 - Poskytuje příkaz k restartování zařízení.
 - Poskytuje celkový přehled o zařízení prostřednictvím řídicího panelu.
 
-Z této šablony zařízení může operátor vytvářet a připojovat reálné ventilátory. Všechny tyto ventilátory mají měření, vlastnosti a příkazy, které operátory používají pro monitorování a správu. Operátory používají řídicí panely a formuláře zařízení k interakci se zařízeními ventilátoru.
+Z této šablony zařízení může operátor vytvářet a připojovat reálné ventilátory. Všechny tyto ventilátory mají měření, vlastnosti a příkazy, které operátory používají pro monitorování a správu. Operátory používají [řídicí panely](#add-dashboards) a formuláře zařízení k interakci se zařízeními ventilátoru. Vývojář zařízení používá šablonu k pochopení, jak zařízení komunikuje s aplikací. Další informace najdete v tématu [telemetrie, vlastnosti a datové části příkazů](concepts-telemetry-properties-commands.md).
 
 > [!NOTE]
 > Šablony zařízení můžou vytvářet, upravovat a odstraňovat jenom tvůrci a správci. Každý uživatel může vytvořit zařízení na stránce **zařízení** z existujících šablon zařízení.
 
 V aplikaci IoT Central používá šablona zařízení model schopností zařízení k popisu možností zařízení. Jako tvůrce máte k dispozici několik možností pro vytváření šablon zařízení:
 
-- Navrhněte šablonu zařízení v IoT Central a potom v kódu zařízení implementujte svůj model schopností zařízení.
+- Navrhněte šablonu zařízení v IoT Central a potom [v kódu zařízení implementujte svůj model schopností zařízení](concepts-telemetry-properties-commands.md).
 - Importujte model schopností zařízení z [katalogu zařízení Azure Certified for IoT](https://aka.ms/iotdevcat). Pak přidejte libovolné vlastnosti cloudu, přizpůsobení a řídicí panely, které vaše aplikace IoT Central potřebuje.
 - Vytvořte model schopností zařízení pomocí Visual Studio Code. Implementujte kód zařízení z modelu. Model schopností zařízení naimportujte ručně do aplikace IoT Central a pak přidejte všechny vlastnosti cloudu, přizpůsobení a řídicí panely, které aplikace IoT Central potřebuje.
 - Vytvořte model schopností zařízení pomocí Visual Studio Code. Naimplementujte kód zařízení z modelu a připojte skutečné zařízení k vaší IoT Central aplikaci pomocí připojení zařízení, které se používá jako první. IoT Central najde a naimportuje model schopností zařízení z veřejného úložiště za vás. Pak můžete přidat libovolné vlastnosti cloudu, vlastní nastavení a řídicí panely, které vaše aplikace IoT Central potřebuje k šabloně zařízení.
+
+Můžete také přidat šablony zařízení do aplikace IoT Central pomocí [REST API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/) nebo rozhraní příkazového [řádku](howto-manage-iot-central-from-cli.md).
+
+Některé [šablony aplikací](concepts-app-templates.md) již obsahují šablony zařízení, které jsou užitečné ve scénáři, který podporuje šablona aplikace. Například viz [Analytická architektura v úložišti](../retail/store-analytics-architecture.md).
 
 ## <a name="create-a-device-template-from-the-device-catalog"></a>Vytvoření šablony zařízení z katalogu zařízení
 
@@ -121,7 +125,7 @@ Následující tabulka ukazuje nastavení konfigurace pro schopnost telemetrie:
 | Typ funkce | Telemetrie. |
 | Sémantický typ | Sémantický typ telemetrie, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
 | Schéma | Datový typ telemetrie, například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. Schéma není k dispozici pro sémantické typy události a stavu. |
-| Severity | K dispozici pouze pro sémantický typ události. Závažnosti jsou **chyby**, **informace**nebo **Upozornění**. |
+| Závažnost | K dispozici pouze pro sémantický typ události. Závažnosti jsou **chyby**, **informace**nebo **Upozornění**. |
 | Hodnoty stavu | K dispozici pouze pro sémantický typ State. Definujte hodnoty možných stavů, z nichž každá má zobrazované jméno, název, Výčtový typ a hodnotu. |
 | Jednotka | Jednotka pro hodnotu telemetrie, například **mph**, **%** nebo ** &deg; C**. |
 | Zobrazit jednotku | Zobrazovací jednotka pro použití na řídicích panelech a formulářích. |
@@ -142,7 +146,7 @@ Následující tabulka ukazuje nastavení konfigurace pro schopnost vlastnosti:
 | Sémantický typ | Sémantický typ vlastnosti, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
 | Schéma | Datový typ vlastnosti, například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. Schéma není k dispozici pro sémantické typy události a stavu. |
 | Writeable | Pokud vlastnost není zapisovatelná, může zařízení nahlásit hodnoty vlastností IoT Central. Pokud je vlastnost zapisovatelná, může zařízení nahlásit hodnoty vlastností IoT Central a IoT Central může odesílat aktualizace vlastností do zařízení.
-| Severity | K dispozici pouze pro sémantický typ události. Závažnosti jsou **chyby**, **informace**nebo **Upozornění**. |
+| Závažnost | K dispozici pouze pro sémantický typ události. Závažnosti jsou **chyby**, **informace**nebo **Upozornění**. |
 | Hodnoty stavu | K dispozici pouze pro sémantický typ State. Definujte hodnoty možných stavů, z nichž každá má zobrazované jméno, název, Výčtový typ a hodnotu. |
 | Jednotka | Jednotka pro hodnotu vlastnosti, například **mph**, **%** nebo ** &deg; C**. |
 | Zobrazit jednotku | Zobrazovací jednotka pro použití na řídicích panelech a formulářích. |

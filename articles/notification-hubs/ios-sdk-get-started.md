@@ -3,17 +3,17 @@ title: Posílání nabízených oznámení do systému iOS pomocí Azure Notific
 description: V tomto kurzu se naučíte používat Azure Notification Hubs a službu Apple Push Notification Service k odesílání nabízených oznámení do zařízení se systémem iOS.
 author: sethmanheim
 ms.author: sethm
-ms.date: 06/19/2020
+ms.date: 08/10/2020
 ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: fde142c76c71aa7155fd39d90f7a6c8120538141
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008657"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042441"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Kurz: odesílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs
 
@@ -104,7 +104,7 @@ Pokud chcete odesílat nabízená oznámení do aplikace pro iOS, Zaregistrujte 
 ## <a name="create-a-certificate-for-notification-hubs"></a>Vytvoření certifikátu pro Notification Hubs
 
 > [!NOTE]
-> Z důvodu vydání iOS 13 můžete přijímat jenom tichá oznámení pomocí ověřování založeného na tokenech. Pokud pro přihlašovací údaje APNS používáte ověřování na základě certifikátů, musíte přepnout na použití ověřování založeného na tokenech.
+> S vydáním iOS 13 můžete přijímat jenom tichá oznámení pomocí ověřování založeného na tokenech. Pokud pro přihlašovací údaje APNS používáte ověřování na základě certifikátů, musíte přepnout na použití ověřování založeného na tokenech.
 
 K tomu, aby Centrum oznámení fungovalo s **APNs**, se vyžaduje certifikát. To lze provést jedním ze dvou způsobů:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 5a2410a5ccaa10867e94b3a2ec10228a006fbe20
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c09dca8b5927e417714ef89393950cfb58c89020
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534630"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042271"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>Nastavení e-mailových oznámení pro výstrahy zabezpečení 
 
@@ -34,9 +34,15 @@ Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mail�
 
 ## <a name="availability"></a>Dostupnost
 
-- Stav verze: **všeobecně dostupné**
-- Požadované role: **Správce zabezpečení** nebo **vlastník předplatného** 
-- Cloudy: komerční cloudy ✔ ✔ US Gov (částečně) ✘ National/svrchovaná (Čína gov, ostatní gov)
+|Aspekt|Podrobnosti|
+|----|:----|
+|Stav vydaných verzí:|Všeobecně dostupné|
+|Stanov|Úroveň Free|
+|Požadované role a oprávnění:|**Správce zabezpečení**<br>**Vlastník předplatného** |
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov (částečný)<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
+|||
+
+
 
 
 ## <a name="set-up-email-notifications-for-alerts"></a>Nastavení e-mailových oznámení pro výstrahy<a name="email"></a>
@@ -53,7 +59,7 @@ Můžete posílat e-mailová oznámení jednotlivcům nebo všem uživatelům s 
 1. Pokud chcete u svého předplatného použít kontaktní informace zabezpečení, vyberte **Uložit**.
 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 Další informace o výstrahách zabezpečení najdete v následujících tématech:
 
 * [Výstrahy zabezpečení – referenční průvodce](alerts-reference.md) – Přečtěte si o výstrahách zabezpečení, které se můžou zobrazit v modulu Azure Security Center ochrany před internetovými útoky.

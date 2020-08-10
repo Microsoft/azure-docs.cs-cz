@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0eac72832d75c0c26addaef283015155c09b3935
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19fcefdfd163bcbd9cd2adfcba6bf6711b9bee18
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529365"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041663"
 ---
 # <a name="workflow-automation"></a>Automatizace pracovního postupu
 
@@ -28,19 +28,14 @@ Tento článek popisuje funkci automatizace pracovního postupu Azure Security C
 
 ## <a name="availability"></a>Dostupnost
 
-- Stav verze: **všeobecně dostupné**
-- Požadované role a oprávnění:
-    - **Čtenář** v předplatném, který obsahuje konfiguraci exportu
-    - **Role správce zabezpečení** ve skupině prostředků (nebo **vlastníkovi**)
-    - Musí mít taky oprávnění k zápisu pro cílový prostředek.
-    - Aby bylo možné pracovat s Azure Logic Apps pracovními postupy, musíte mít následující Logic Apps role/oprávnění:
-        - Jsou vyžadována oprávnění [operátora aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) nebo přístup pro čtení/aktivaci aplikace logiky (Tato role nemůže vytvářet ani upravovat aplikace logiky. *spouštějte* pouze existující)
-        - Pro vytváření a úpravu aplikace logiky se vyžadují oprávnění [Přispěvatel aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) .
-        - Pokud chcete používat konektory aplikací logiky, budete možná potřebovat další přihlašovací údaje pro přihlášení ke svým příslušným službám (například k instancím aplikace Outlook/Teams nebo časové rezervy).
-- Cloud 
-    - ✔ Komerční cloudy
-    - ✔ Cloud pro státní správu USA
-    - ✘ Čína – Cloud pro státní správu, další gov cloudy
+|Aspekt|Podrobnosti|
+|----|:----|
+|Stav vydaných verzí:|Všeobecně dostupné|
+|Stanov|Úroveň Free|
+|Požadované role a oprávnění:|**Čtenář** v předplatném, který obsahuje konfiguraci exportu<br>**Role správce zabezpečení** nebo **vlastník** skupiny prostředků<br>Musí mít taky oprávnění k zápisu pro cílový prostředek.<br><br>Pokud chcete pracovat s Azure Logic Apps pracovními postupy, musíte mít také následující Logic Apps role/oprávnění:<br> - Jsou vyžadována oprávnění [operátora aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) nebo přístup pro čtení/aktivaci aplikace logiky (Tato role nemůže vytvářet ani upravovat aplikace logiky. *spouštějte* pouze existující)<br> - Pro vytváření a úpravu aplikace logiky se vyžadují oprávnění [Přispěvatel aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) .<br>Pokud chcete používat konektory aplikací logiky, budete možná potřebovat další přihlašovací údaje pro přihlášení ke svým příslušným službám (například k instancím aplikace Outlook/Teams nebo časové rezervy).|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
+|||
+
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Vytvoření aplikace logiky a definování jejího automatického spuštění 

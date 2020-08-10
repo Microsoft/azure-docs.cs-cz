@@ -4,14 +4,14 @@ description: Naučte se, jak pomocí Azure Portal nebo CLI vytvářet, zobrazova
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 08/10/2020
 ms.subservice: alerts
-ms.openlocfilehash: c040958d9518485bc5d583fc01aedd50d5c6e57a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8afe62173dc0e90783c494fa51994e9ebac506f3
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321118"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042730"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor
 
@@ -88,6 +88,7 @@ Pravidla upozornění na metriky můžete zobrazit a spravovat pomocí okna spra
 
 6. Kliknutím na **Hotovo** uložte úpravy.
 
+
 ## <a name="with-azure-cli"></a>S využitím rozhraní příkazového řádku Azure
 
 Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla upozornění metrik pomocí Azure Portal. V této části se dozvíte, jak to samé provést pomocí [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)pro různé platformy. Nejrychlejší způsob, jak začít používat Azure CLI, je prostřednictvím [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest). V tomto článku použijeme Cloud Shell.
@@ -133,6 +134,14 @@ Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla u
     ```azurecli
     az monitor metrics alert delete -g {ResourceGroup} -n {AlertRuleName}
     ```
+
+## <a name="with-powershell"></a>S využitím PowerShellu
+
+Pravidla upozornění na metriky mají k dispozici vyhrazené rutiny PowerShellu:
+
+- [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2): vytvoří nové pravidlo výstrahy metriky nebo aktualizuje stávající.
+- [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2): získá jedno nebo více pravidel upozornění metrik.
+- [Remove-AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2): odebere pravidlo upozornění metriky.
 
 ## <a name="next-steps"></a>Další kroky
 

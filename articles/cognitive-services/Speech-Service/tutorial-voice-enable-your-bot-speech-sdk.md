@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 38a2dd42c010e5b213fd89aa046c7c5b1e1d0a7f
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 7a5e6bd262a1772356653eaaff7688ade9b4bfb7
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87758932"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041780"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: hlas – povolení robota pomocí sady Speech SDK
 
@@ -38,6 +38,7 @@ Robot v konverzaci s podporou hlasu, který uděláte v tomto kurzu, se skládá
 1. Rozpoznaný text se předává do robota echo jako aktivity bot Frameworku.
 1. Text odpovědi je převedený na zvuk ve službě převod textu na mluvené slovo (TTS) a streamuje se zpět do klientské aplikace pro přehrávání.
 
+<!-- svg src in User Story 1754106 -->
 ![Diagram – značka](media/tutorial-voice-enable-your-bot-speech-sdk/diagram.png "Tok kanálu řeči")
 
 > [!NOTE]
@@ -52,7 +53,7 @@ V tomto kurzu se dozvíte, co tento kurz popisuje:
 > * Přidat vlastní aktivaci klíčového slova
 > * Naučte se změnit jazyk rozpoznaného a mluveného řeči.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tady je postup, který budete potřebovat k dokončení tohoto kurzu:
 
@@ -73,7 +74,7 @@ Klientská aplikace, kterou vytvoříte v tomto kurzu, používá několik služ
    * Zadejte název vaší **skupiny prostředků**. Doporučujeme **SpeechEchoBotTutorial-Resource**.
    * V rozevíracím seznamu **oblast** vyberte možnost **západní USA**.
 1. Klikněte na **Zkontrolovat a vytvořit**. Měla by se zobrazit informační zpráva s **potvrzením**, že čtení bylo úspěšné.
-1. Klikněte na **Vytvořit**. Vytvoření skupiny prostředků může trvat několik minut.
+1. Klikněte na možnost **Vytvořit**. Vytvoření skupiny prostředků může trvat několik minut.
 1. Stejně jako u prostředků, které vytvoříte později v tomto kurzu, je vhodné Připnout tuto skupinu prostředků na řídicí panel a získat tak snadný přístup. Pokud byste chtěli Připnout tuto skupinu prostředků, klikněte na ikonu připnutí vpravo od názvu skupiny prostředků.
 
 ### <a name="choosing-an-azure-region"></a>Výběr oblasti Azure
@@ -123,7 +124,7 @@ Dalším krokem je vytvoření plánu App Service. Plán služby App Service def
    * V **oblasti oblast**vyberte **západní USA**.
    * V případě **cenové úrovně**se ujistěte, že je vybraná **úroveň Standard S1** . Mělo by se jednat o výchozí hodnotu. Pokud ne, ujistěte se, že jste nastavili **operační systém** na **Windows** , jak je popsáno výše.
 5. Klikněte na **Zkontrolovat a vytvořit**. Měla by se zobrazit informační zpráva s **potvrzením**, že čtení bylo úspěšné.
-6. Klikněte na **Vytvořit**. Vytvoření skupiny prostředků může trvat několik minut.
+6. Klikněte na možnost **Vytvořit**. Vytvoření skupiny prostředků může trvat několik minut.
 
 V tomto okamžiku ověřte, že vaše skupina prostředků (**SpeechEchoBotTutorial-resourceName**) má dva prostředky:
 
@@ -200,7 +201,7 @@ Dalším krokem je nasazení nástroje echo bot do Azure. Existuje několik způ
    * U **předplatného**nastavte na **bezplatnou zkušební verzi** .
    * V případě **skupiny prostředků**vyberte **SpeechEchoBotTutorial-Resource** .
    * V případě **plánu hostování**vyberte **SpeechEchoBotTutorial-AppServicePlan**
-1. Klikněte na **Vytvořit**. Na obrazovce finálního průvodce klikněte na **Dokončit**.
+1. Klikněte na možnost **Vytvořit**. Na obrazovce finálního průvodce klikněte na **Dokončit**.
 1. Na pravé straně obrazovky publikování klikněte na **publikovat** . Visual Studio nasadí robot do Azure.
 1. V okně výstupu sady Visual Studio by se měla zobrazit zpráva o úspěchu, která vypadá takto:
 
@@ -471,7 +472,7 @@ Pokud nebudete nadále používat službu echo-bot nasazenou v tomto kurzu, mů�
 > [!div class="nextstepaction"]
 > [Vytvoření vlastní klientské aplikace pomocí sady Speech SDK](quickstart-voice-assistant-csharp-uwp.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * Nasazení do [oblasti Azure v blízkosti,](https://azure.microsoft.com/global-infrastructure/locations/) abyste viděli vylepšení doby odezvy robota
 * Nasazení do [oblasti Azure, která podporuje hlasy vysoké kvality neuronové TTS](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)

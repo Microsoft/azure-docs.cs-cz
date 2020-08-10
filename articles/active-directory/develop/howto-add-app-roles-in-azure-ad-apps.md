@@ -13,12 +13,12 @@ ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0ec314e6b5abde60102dacfc81c9303cef16e887
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da697ad6fac5c75faacbfb20b768a4ec96528881
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058618"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041455"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Postupy: Přidání rolí aplikace do aplikace a jejich přijetí v tokenu
 
@@ -34,7 +34,7 @@ Tyto aplikační role jsou definovány v [Azure Portal](https://portal.azure.com
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Deklarace rolí aplikace pomocí Azure Portal
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů portálu vyberte ikonu **adresář + předplatné** .
 1. V seznamu **Oblíbené** nebo **všechny adresáře** vyberte tenanta služby Active Directory, do kterého chcete aplikaci zaregistrovat.
 1. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
@@ -74,7 +74,7 @@ Následující příklad ukazuje `appRoles` , který lze přiřadit k `users` .
 ```
 
 > [!NOTE]
->`displayName`Nesmí obsahovat mezery.
+>`displayName`Může obsahovat mezery.
 
 Můžete definovat aplikační role pro cílení `users` , `applications` nebo obojí. Pokud je k dispozici pro `applications` , role aplikací se zobrazí jako oprávnění aplikace v části **spravovat** oddíl > **oprávnění rozhraní api > přidat oprávnění > moje rozhraní API > zvolit oprávnění rozhraní API > aplikace**. Následující příklad ukazuje aplikační roli, která je zacílená směrem k `Application` .
 

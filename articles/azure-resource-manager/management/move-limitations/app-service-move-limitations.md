@@ -2,13 +2,13 @@
 title: Přesunout Azure App Service prostředky
 description: K přesunutí prostředků App Service do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 12/13/2019
-ms.openlocfilehash: d0ecd117bdcda9238e310a3020dba19a6871a3fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/10/2020
+ms.openlocfilehash: 45f04cad27e175b471f4d6e07426787ca678e369
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80655774"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042053"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>Pokyny pro přesun App Servicech prostředků
 
@@ -23,7 +23,8 @@ Při přesunu webové aplikace v rámci předplatných platí následující pok
     - Plány služby App Service
     - Nahrané nebo importované certifikáty TLS/SSL
     - Prostředí App Service
-- Všechny prostředky App Service ve skupině prostředků je potřeba přesunout společně. Všimněte si, že App Service prostředí nejde přesunout do nové skupiny prostředků ani do nového předplatného.
+- Všechny prostředky App Service ve skupině prostředků je potřeba přesunout společně.
+- App Service prostředí nejde přesunout do nové skupiny prostředků nebo předplatného. Webovou aplikaci a plán služby App Service však můžete přesunout do nového předplatného bez přesunutí App Service Environment. Po přesunutí už nebude webová aplikace hostována v App Service Environment.
 - Certifikát vázaný na web můžete přesunout bez odstranění vazeb TLS, pokud se certifikát přesune se všemi ostatními prostředky ve skupině prostředků.
 - Prostředky App Service lze přesunout pouze ze skupiny prostředků, ve které byly původně vytvořeny. Pokud prostředek App Service už není v původní skupině prostředků, přesuňte ho zpátky do původní skupiny prostředků. Pak přemístěte prostředek napříč předplatnými.
 

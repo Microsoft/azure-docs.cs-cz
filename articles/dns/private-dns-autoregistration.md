@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 9d1854b459e799d5cbb401de9ac717dd7d0fde1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9da94f80f9a9c1b3cba7b8e3ac4fef7e717918c9
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71961210"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042747"
 ---
 # <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>Funkce autoregistrování Azure DNS privátních zón
 
@@ -29,6 +29,7 @@ Automatickou registraci můžete povolit výběrem možnosti Povolit automaticko
 
 * Automatická registrace funguje jenom pro virtuální počítače. Pro všechny ostatní prostředky, jako jsou interní nástroje pro vyrovnávání zatížení atd., můžete ručně vytvořit záznamy DNS v privátní zóně DNS připojené k virtuální síti.
 * Záznamy DNS se vytvoří automaticky jenom pro primární síťovou kartu virtuálního počítače. Pokud vaše virtuální počítače mají více než jednu síťovou kartu, můžete ručně vytvořit záznamy DNS pro další síťová rozhraní.
+* Záznamy DNS se vytvoří automaticky jenom v případě, že primární síťová karta virtuálního počítače používá protokol DHCP. Pokud jsou nakonfigurovány statické IP adresy (například pro použití [více IP adres v Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-multiple-ip-addresses-portal#os-config)), nevytvoří Automatická registrace záznamy pro tento virtuální počítač.
 * Automatická registrace pro protokol IPv6 (záznamy AAAA) není podporována.
 
 ## <a name="next-steps"></a>Další kroky

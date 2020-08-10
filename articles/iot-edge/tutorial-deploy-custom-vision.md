@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5d4b87c14422744fd62d42a4d8e5b1ca0f34ffac
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 07945926600163a3fca228ef6d848b50efc4318d
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439730"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042798"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Kurz: Provádění klasifikace obrázků na hraničních zařízeních s využitím služby Custom Vision
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 >[!TIP]
 >Tento kurz je zjednodušenou verzí [Custom Vision a Azure IoT Edge v projektu s](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) ukázkovým projektem malin. PI 3. Tento kurz byl navržený tak, aby se spouštěl v cloudovém virtuálním počítači a pomocí statických imagí dokázal naučit a testovat třídění imagí. to je užitečné pro někoho, co začne hodnotit Custom Vision IoT Edge. Ukázkový projekt používá fyzický hardware a nastavuje živý kanál kamery ke školení a testování klasifikátoru obrázků, který je užitečný pro někoho, kdo chce vyzkoušet podrobnější scénář pro reálný život.
@@ -433,9 +433,9 @@ Na svém zařízení si prohlédněte protokoly modulu cameraCapture, kde uvidí
 V Visual Studio Code klikněte pravým tlačítkem myši na název vašeho zařízení IoT Edge a vyberte **Spustit sledování integrovaného koncového bodu události**. 
 
 > [!NOTE]
-> Ve výstupu se může zpočátku zobrazit chyba připojení z modulu cameraCapture. Důvodem je zpoždění mezi moduly nasazenými a spuštěnými.
+> Zpočátku se vám ve výstupu můžou zobrazit chyby připojení z modulu cameraCapture. Důvodem je zpoždění mezi moduly nasazenými a spuštěnými.
 >
-> Modul cameraCapture se automaticky pokusí o připojení, dokud neproběhne úspěšně. Následně byste měli začít zobrazovat očekávané zprávy o klasifikaci imagí popsané níže.
+> Modul cameraCapture se automaticky pokusí o připojení, dokud nebylo úspěšné. Po úspěšném připojení se zobrazí očekávané zprávy klasifikace imagí popsané níže.
 
 Výsledky z modulu služby Custom Vision, které se odesílají jako zprávy z modulu cameraCapture, zahrnují pravděpodobnost, s jakou se jedná o obrázek jedlovce nebo sakury. Vzhledem k tomu, že se jedná o obrázek jedlovce, měla by se zobrazit pravděpodobnost 1.0.
 

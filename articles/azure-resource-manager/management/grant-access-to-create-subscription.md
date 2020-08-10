@@ -6,12 +6,12 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: 7feb49266a10b7423121dc5362b0bd6bda4d0e08
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: aef9c6781c87ff4e84e46de711308319755e4630
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824473"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042058"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Udělení přístupu k vytvoření předplatných Azure Enterprise (Preview)
 
@@ -180,7 +180,7 @@ Aby bylo možné [v rámci účtu pro registraci vytvořit předplatná](program
 
 Pokud chcete sledovat odběry vytvořené přes toto rozhraní API, použijte [rozhraní API protokolu aktivit klienta](/rest/api/monitor/tenantactivitylogs). V současné době není možné pomocí PowerShellu, CLI ani Azure Portal sledovat vytváření předplatného.
 
-1. Jako správce tenanta Azure AD [zvyšte úroveň přístupu](../../role-based-access-control/elevate-access-global-admin.md) uživateli provádějícímu audit a pak mu přiřaďte roli Čtenář v oboru `/providers/microsoft.insights/eventtypes/management`.
+1. Jako správce tenanta Azure AD [zvyšte úroveň přístupu](../../role-based-access-control/elevate-access-global-admin.md) uživateli provádějícímu audit a pak mu přiřaďte roli Čtenář v oboru `/providers/microsoft.insights/eventtypes/management`. Tento přístup je k dispozici v roli [Čtenář](../../role-based-access-control/built-in-roles.md#reader) , roli [Přispěvatel monitorování](../../role-based-access-control/built-in-roles.md#monitoring-contributor) nebo [vlastní roli](../../role-based-access-control/custom-roles.md).
 1. Jako uživatel s auditem zavolejte [rozhraní API protokolu aktivit tenanta](/rest/api/monitor/tenantactivitylogs) , abyste viděli aktivity vytváření předplatných. Příklad:
 
     ```

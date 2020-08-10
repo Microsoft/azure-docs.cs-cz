@@ -4,12 +4,12 @@ description: Naučte se přizpůsobit funkci ověřování a autorizace v App Se
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 747729b7cbb3dcce72eb36704b5965e8427b59e1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 32b7db234cd91aaf9fa5fcfa9b35679d32561474
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424252"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042611"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené použití ověřování a autorizace v Azure App Service
 
@@ -468,6 +468,67 @@ Následující vyčerpání možných možností konfigurace v souboru:
     }
 }
 ```
+
+## <a name="pin-your-app-to-a-specific-authentication-runtime-version"></a>Připnutí aplikace ke konkrétní verzi modulu runtime ověřování
+
+Pokud povolíte ověřování/autorizaci, middleware platformy se vloží do kanálu požadavků HTTP, jak je popsáno v [přehledu funkcí](overview-authentication-authorization.md#how-it-works). Tento middleware platformy se pravidelně aktualizuje novými funkcemi a vylepšeními v rámci rutiny rutinní aktualizace platforem. Ve výchozím nastavení se webová nebo aplikace Function App spustí na nejnovější verzi tohoto middlewaru platformy. Tyto automatické aktualizace jsou vždycky zpětně kompatibilní. Nicméně v vzácných událostech, které tato funkce Automatické aktualizace představuje pro vaši webovou aplikaci nebo aplikaci Function App problém, můžete se dočasně vrátit k předchozí verzi middlewaru. Tento článek vysvětluje, jak dočasně připnout aplikaci na konkrétní verzi middleware pro ověřování.
+
+### <a name="automatic-and-manual-version-updates"></a>Automatické a ruční aktualizace verze 
+
+Aplikaci můžete připnout do konkrétní verze middlewaru platformy nastavením `runtimeVersion` nastavení pro aplikaci. Vaše aplikace se vždycky spouští na nejnovější verzi, pokud se nerozhodnete ji explicitně připnout zpátky na konkrétní verzi. V tuto chvíli se podporuje několik verzí. Pokud připnete připnutí na neplatnou verzi, která už není podporovaná, bude místo toho použita nejnovější verze aplikace. Pokud chcete vždycky spustit nejnovější verzi, nastavte `runtimeVersion` na ~ 1. 
+
+### <a name="view-and-update-the-current-runtime-version"></a>Zobrazení a aktualizace aktuální verze modulu runtime
+
+Můžete změnit verzi modulu runtime, kterou používá vaše aplikace. Nová verze modulu runtime by se měla projevit po restartování aplikace. 
+
+#### <a name="view-the-current-runtime-version"></a>Zobrazit aktuální verzi modulu runtime
+
+Aktuální verzi middlewaru pro ověření platformy můžete zobrazit buď pomocí Azure CLI, nebo přes jeden z koncových bodů HTTP verze built0 ve vaší aplikaci.
+
+##### <a name="from-the-azure-cli"></a>Z Azure CLI
+
+Pomocí Azure CLI zobrazte aktuální verzi middlewaru pomocí příkazu [AZ WebApp auth show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) .
+
+```azurecli-interactive
+az webapp auth show --name <my_app_name> \
+--resource-group <my_resource_group>
+```
+
+V tomto kódu nahraďte `<my_app_name>` názvem vaší aplikace. Nahraďte také `<my_resource_group>` názvem skupiny prostředků vaší aplikace.
+
+Zobrazí se `runtimeVersion` pole ve výstupu rozhraní příkazového řádku. Bude vypadat podobně jako v následujícím příkladu výstupu, který byl zkrácen pro přehlednost: 
+```output
+{
+  "additionalLoginParams": null,
+  "allowedAudiences": null,
+    ...
+  "runtimeVersion": "1.3.2",
+    ...
+}
+```
+
+##### <a name="from-the-version-endpoint"></a>Z koncového bodu verze
+
+K zobrazení aktuální verze middlewaru, na které je aplikace spuštěná, můžete také v aplikaci stisknout/.auth/Version koncový bod. Bude vypadat podobně jako v následujícím příkladu výstupu:
+```output
+{
+"version": "1.3.2"
+}
+```
+
+#### <a name="update-the-current-runtime-version"></a>Aktualizace aktuální verze modulu runtime
+
+Pomocí Azure CLI můžete `runtimeVersion` v aplikaci aktualizovat nastavení pomocí příkazu [AZ WebApp auth Update](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) .
+
+```azurecli-interactive
+az webapp auth update --name <my_app_name> \
+--resource-group <my_resource_group> \
+--runtime-version <version>
+```
+
+Nahraďte `<my_app_name>` názvem vaší aplikace. Nahraďte také `<my_resource_group>` názvem skupiny prostředků vaší aplikace. Nahraďte také `<version>` platnou verzí modulu runtime 1. x nebo `~1` nejnovější verzí. Poznámky k verzi najdete v různých verzích modulu runtime [zde] (aby bylo možné https://github.com/Azure/app-service-announcements) určit verzi, ke které se má připnout).
+
+Tento příkaz můžete spustit z [Azure Cloud Shell](../cloud-shell/overview.md) výběrem možnosti **vyzkoušet** v předchozím příkladu kódu. Pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) můžete také spustit tento příkaz po provedení příkazu [AZ Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) pro přihlášení.
 
 ## <a name="next-steps"></a>Další kroky
 

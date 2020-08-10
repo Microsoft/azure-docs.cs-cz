@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 4d0ed9826326256e3b91815746e43d34b6934ba0
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 1f6fc7bff31faa62c290a4c02be3e80fee6fa200
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985869"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042628"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Principy dvojitých modelů v digitálních prozdvojeních Azure
 
@@ -36,8 +36,8 @@ Digitální vlákna Azure používá **DTDL _verze 2_**. Další informace o té
 V rámci definice modelu je položka kódu nejvyšší úrovně **rozhraní**. Tím se zapouzdřuje celý model a zbytek modelu je definovaný v rámci rozhraní. 
 
 Rozhraní modelu DTDL může obsahovat nula, jednu nebo mnoho z následujících polí:
-* **Vlastnost** -Properties jsou datová pole, která představují stav entity (jako jsou vlastnosti v mnoha objektově orientovaných programovacích jazycích). Na rozdíl od telemetrie, což je událost dat svázaných s časovým limitem, vlastnosti mají záložní úložiště a lze je kdykoli přečíst.
-* **Telemetrie** – pole telemetrie představují měření nebo události a často se používají k popisu čtení snímačů zařízení. Telemetrie není uložená na digitálním vlákna; je větší jako datový proud událostí dat, které jsou připraveny k odeslání někam. 
+* **Vlastnost** -Properties jsou datová pole, která představují stav entity (jako jsou vlastnosti v mnoha objektově orientovaných programovacích jazycích). Vlastnosti mají záložní úložiště a dají se číst kdykoli.
+* **Telemetrie** – pole telemetrie představují měření nebo události a často se používají k popisu čtení snímačů zařízení. Na rozdíl od vlastností telemetrie není uložená na digitálním vlákna; Jedná se o řadu událostí s datovou vazbou, které je potřeba zpracovat při jejich výskytu. Další informace o rozdílech mezi vlastnostmi a telemetrie najdete níže v části [*vlastnosti vs. telemetrie*](#properties-vs-telemetry) .
 * **Komponenta** – komponenty umožňují sestavit rozhraní modelu jako sestavení jiných rozhraní, pokud chcete. Příkladem součásti je rozhraní FrontCamera (a další *frontCamera* *rozhraní komponenty),* které se používají při definování modelu pro *telefon*. Nejdřív musíte definovat rozhraní pro *frontCamera* , jako by šlo o svůj vlastní model, a pak na něj můžete odkazovat při definování *telefonu*.
 
     Pomocí komponenty popište něco, co je nedílnou součástí vašeho řešení, ale nepotřebujete samostatnou identitu, a nemusíte ho vytvářet, odstraňovat ani uspořádávat v nezávisle grafu. Pokud chcete, aby entity měly nezávislou existenci v dodaném grafu, reprezentujte je jako samostatné digitální vlákna různých modelů propojených *vztahy* (viz další odrážka).
@@ -47,7 +47,25 @@ Rozhraní modelu DTDL může obsahovat nula, jednu nebo mnoho z následujících
 * Relace **Relationship** vám umožní vyjádřit, jak se může digitální vlákna zapojit do jiných digitálních vláken. Relace mohou představovat různé sémantické významy, jako je například *Contains* ("podlaha obsahuje místnost"), *studená* ("TVK studená místnost"), *isBilledTo* ("kompresor se účtuje uživateli") atd. Relace umožňují řešení poskytovat graf vzájemně souvisejících entit.
 
 > [!NOTE]
-> Specifikace DTDL také definuje **příkazy**, které jsou metody, které lze provést na digitálního vlákna (například příkaz reset nebo příkaz pro přepnutí nebo vypnutí ventilátoru). V případě *digitálních vláken Azure se ale příkazy aktuálně nepodporují.*
+> [Specifikace DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) také definuje **příkazy**, které jsou metody, které lze provést na digitálního vlákna (například příkaz reset nebo příkaz pro přepnutí nebo vypnutí ventilátoru). V případě *digitálních vláken Azure se ale příkazy aktuálně nepodporují.*
+
+### <a name="properties-vs-telemetry"></a>Vlastnosti vs. telemetrie
+
+Tady jsou některé další doprovodné materiály týkající se rozlišení mezi poli **vlastností** DTDL a **telemetrie** v oblasti digitálních vláken Azure.
+
+Rozdíl mezi vlastnostmi a telemetrie pro modely digitálních vláken Azure je následující:
+* Očekává se, že **vlastnosti** mají záložní úložiště. To znamená, že můžete kdykoli číst vlastnost a načíst její hodnotu. Pokud je vlastnost zapisovatelná, můžete také uložit hodnotu do vlastnosti.  
+* **Telemetrii** je více podobná jako datový proud událostí. Jedná se o sadu datových zpráv, které mají krátké životnosti. Pokud nenastavíte naslouchání pro událost a akce, které se mají provést, když k ní dojde, neexistuje žádné trasování události v pozdějším čase. Nemůžete se vrátit a později si ho přečíst. 
+  - V terminologii jazyka C# je telemetrie jako událost jazyka C#. 
+  - Ve výrazech IoT je telemetrie obvykle jediná měření odesílaná zařízením.
+
+**Telemetrie** se často používá se zařízeními IoT, protože spousta zařízení není schopná ani zajímat a ukládá vygenerované hodnoty měření. Pouze je odesílají jako proud událostí telemetrie. V takovém případě se v zařízení nemůžete kdykoli dotazovat na nejnovější hodnotu pole telemetrie. Místo toho budete muset naslouchat zprávy ze zařízení a provádět akce, když přijdete o zprávy. 
+
+Výsledkem je, že při navrhování modelu v digitálních proobjektech Azure budete pravděpodobně ve většině případů používat **vlastnosti** pro modelování vláken. To vám umožní mít k dispozici záložní úložiště a možnost číst datová pole a dotazovat se na ně.
+
+Telemetrii a vlastnosti často spolupracují na zpracování dat ze zařízení. Vzhledem k to, že všechny příchozí přenosy dat do Azure jsou prostřednictvím [rozhraní API](how-to-use-apis-sdks.md), obvykle použijete funkci příchozího přenosu dat ke čtení telemetrie nebo událostí vlastností ze zařízení a nastavíte vlastnost v ADT v reakci. 
+
+Můžete také publikovat událost telemetrie z rozhraní API digitálních vláken Azure. Stejně jako u jiné telemetrie, jedná se o krátkodobou událost, která vyžaduje, aby naslouchací proces zpracoval.
 
 ### <a name="azure-digital-twins-dtdl-implementation-specifics"></a>Azure Digital DTDLs – specifické implementace
 

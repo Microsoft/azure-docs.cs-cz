@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: aa9a930195908671cc0e772fd9643dcbce9dbb1c
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 78a0cb6217d8c1d25f08801066a970d6bc94e1b0
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562408"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042101"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -31,6 +31,9 @@ Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se proxy 
 ### <a name="what-license-is-required-to-use-azure-ad-application-proxy"></a>Jaká licence je nutná k používání Azure Proxy aplikací služby AD?
 
 Pokud chcete používat Proxy aplikací služby AD Azure, musíte mít licenci Azure AD Premium P1 nebo P2. Další informace o licencování najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/) .
+
+### <a name="what-happens-to-azure-ad-application-proxy-in-my-tenant-if-my-license-expires"></a>Co se stane s Azure Proxy aplikací služby AD v mém tenantovi, pokud platnost Moje licence vyprší?
+Pokud platnost vaší licence vyprší, proxy aplikace se automaticky zakáže. Informace o vaší aplikaci budou uloženy až po dobu jednoho roku.
 
 ### <a name="why-is-the-enable-application-proxy-button-grayed-out"></a>Proč je tlačítko "Povolit proxy aplikací zobrazeno šedě?"
 

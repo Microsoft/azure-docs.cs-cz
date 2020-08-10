@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: c8cd789b16f839c60249b36f570ca1c945ef4e01
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 1af549feb551eca02bb1ef8df6481eceb959f6d1
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337173"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042713"
 ---
 # <a name="what-is-azure-iot-central"></a>Co je Azure IoT Central?
 
@@ -34,10 +34,10 @@ Tento článek popisuje, jak IoT Central:
 
 Dokumentace IoT Central odkazuje na čtyři osobyy, které komunikují s aplikací IoT Central:
 
-- _Tvůrce řešení_ zodpovídá za definování typů zařízení, která se připojují k aplikaci, a přizpůsobení aplikace pro operátor.
-- _Operátor_ spravuje zařízení připojená k aplikaci.
+- _Tvůrce řešení_ zodpovídá za [Definování typů zařízení](howto-set-up-template.md) , která se připojují k aplikaci, a přizpůsobení aplikace pro operátor.
+- _Operátor_ [spravuje zařízení](howto-manage-devices.md) připojená k aplikaci.
 - _Správce_ zodpovídá za úlohy správy, jako je například Správa [rolí uživatelů a oprávnění](howto-administer.md) v rámci aplikace.
-- _Vývojář zařízení_ vytvoří kód, který běží na zařízení nebo IoT Edge modul připojený k vaší aplikaci.
+- _Vývojář zařízení_ [vytvoří kód, který běží na zařízení](concepts-telemetry-properties-commands.md) nebo [IoT Edge modul](concepts-iot-edge.md) připojený k vaší aplikaci.
 
 ## <a name="create-your-iot-central-application"></a>Vytvoření aplikace IoT Central
 
@@ -55,7 +55,7 @@ Jako tvůrce řešení můžete pomocí webových nástrojů vytvořit _šablonu
 - Vlastnosti zařízení nastavené zařízením, které jsou v aplikaci jen pro čtení
 - Vlastnosti, které jsou nastaveny jako operátor, které určují chování zařízení.
 
-Tato šablona zařízení zahrnuje:
+Tato [Šablona zařízení](howto-set-up-template.md) zahrnuje:
 
 - _Model schopností zařízení_ , který popisuje možnosti, které by zařízení mělo implementovat, jako je například telemetrie, kterou posílá, a vlastnosti, které vystavuje.
 - Vlastnosti cloudu, které nejsou uložené na zařízení.
@@ -83,13 +83,13 @@ Jako tvůrce řešení můžete také přizpůsobit uživatelské rozhraní apli
 
 ## <a name="manage-your-devices"></a>správu zařízení
 
-Jako operátor můžete použít aplikaci IoT Central ke správě zařízení v řešení IoT Central. Obsluha provede úkoly, jako například:
+Jako operátor můžete použít aplikaci IoT Central ke [správě zařízení](howto-manage-devices.md) v řešení IoT Central. Obsluha provede úkoly, jako například:
 
 - Monitorovat zařízení připojená k aplikaci
 - Řešit potíže a opravovat problémy se zařízeními
 - Zřizovat nová zařízení
 
-Jako tvůrce řešení můžete definovat vlastní pravidla a akce, které provozují streamování dat z připojených zařízení. Operátor může tato pravidla povolit nebo zakázat na úrovni zařízení za účelem řízení a automatizace úloh v rámci aplikace.
+Jako tvůrce řešení můžete [definovat vlastní pravidla a akce](howto-configure-rules.md) , které provozují streamování dat z připojených zařízení. Operátor může tato pravidla povolit nebo zakázat na úrovni zařízení za účelem řízení a automatizace úloh v rámci aplikace.
 
 U všech řešení IoT navržených pro provoz ve velkém měřítku je důležité strukturovaný přístup ke správě zařízení. Nestačí, abyste svá zařízení připojili ke cloudu, je potřeba zajistit, aby byla vaše zařízení připojená a v pořádku. Operátor může pomocí následujících možností IoT Central spravovat zařízení během životního cyklu aplikace:
 

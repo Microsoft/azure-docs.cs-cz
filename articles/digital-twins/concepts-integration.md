@@ -7,16 +7,18 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d0bca2ad14216873836c751dc002ea915baa3a66
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: ca500401a6bff8a00dd9c51eecb29aa93fdbc82b
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800479"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042645"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Integrace digitálních vláken Azure s ostatními službami
 
-Digitální vlákna Azure se obvykle používají společně s jinými službami. Pomocí [**tras událostí**](concepts-route-events.md)přijímá digitální vlákna Azure data z nadřazených služeb, jako je [IoT Hub](../iot-hub/about-iot-hub.md), které slouží k poskytování telemetrie a oznámení. Digitální vlákna Azure taky můžou směrovat data na služby pro ukládání dat, integraci pracovních postupů, analýzy a další použití prostřednictvím služeb pro příjem dat. 
+Digitální vlákna Azure se obvykle používají společně s jinými službami. Pomocí [**tras událostí**](concepts-route-events.md)přijímá digitální vlákna Azure data z nadřazených služeb, jako je [IoT Hub](../iot-hub/about-iot-hub.md), které slouží k poskytování telemetrie a oznámení. 
+
+Služba Azure Digital může také směrovat data na služby pro příjem dat, jako je například Azure Maps (postupy),[*pomocí digitálních vláken Azure aktualizovat mapu Azure Maps interiéru*](how-to-integrate-maps.md)a Time Series Insights ([*Postupy: integrace s Time Series Insights*](how-to-integrate-time-series-insights.md)), pro úložiště, integraci pracovního postupu, analýzu a další. 
 
 ## <a name="data-ingress"></a>Příchozí datové přenosy
 

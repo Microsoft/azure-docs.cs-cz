@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 7b0fbb7c4f680f9d732a63fff7b0b317c6cf1511
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3bfaa9f2961dca2b8b717b1506d112943910485a
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519693"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042313"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Export doporučení a výstrah zabezpečení
 
@@ -31,12 +31,14 @@ Pomocí těchto nástrojů můžete:
 
 ## <a name="availability"></a>Dostupnost
 
-- Stav verze: **všeobecně dostupné**
-- Požadované role a oprávnění:
-    - **Čtenář** v předplatném, který obsahuje konfiguraci exportu
-    - **Role správce zabezpečení** ve skupině prostředků (nebo **vlastníkovi**)
-    - Musí mít taky oprávnění k zápisu pro cílový prostředek.
-- Cloudy: komerční cloudy ✔ ✔ US Gov ✘ Čína gov, ostatní gov
+|Aspekt|Podrobnosti|
+|----|:----|
+|Stav vydaných verzí:|Všeobecně dostupné|
+|Stanov|Úroveň Free|
+|Požadované role a oprávnění:|**Čtenář** v předplatném, který obsahuje konfiguraci exportu<br>**Role správce zabezpečení** ve skupině prostředků (nebo **vlastníkovi**)<br>Musí mít taky oprávnění k zápisu pro cílový prostředek.|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
+|||
+
 
 
 ## <a name="setting-up-a-continuous-export"></a>Nastavení průběžného exportu

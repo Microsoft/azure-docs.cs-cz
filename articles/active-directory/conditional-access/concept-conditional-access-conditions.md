@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b887c91a289730c3d92efe753a2df162f36a047
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032117"
+ms.locfileid: "88042475"
 ---
 # <a name="conditional-access-conditions"></a>Podmíněný přístup: podmínky
 
@@ -68,7 +68,7 @@ Ve výchozím nastavení se všechny nově vytvořené zásady podmíněného p�
 > Chování podmínky klientských aplikací bylo aktualizováno v srpnu 2020. Pokud máte existující zásady podmíněného přístupu, zůstanou beze změny. Pokud ale kliknete na existující zásadu, odebere se přepínač konfigurace a budou vybrány klientské aplikace, pro které zásada platí.
 
 > [!IMPORTANT]
-> Přihlášení od starších klientů ověřování nepodporují MFA a nedávají informace o stavu zařízení službě Azure AD, takže se zablokují prostřednictvím ovládacích prvků pro udělení podmíněného přístupu, jako je třeba vyžadování zařízení s MFA nebo dodržování předpisů. Pokud máte účty, které musí používat starší verze ověřování, vylučte tyto účty ze zásad nebo nakonfigurujte zásady tak, aby se používaly jenom pro klienty moderních ověřování.
+> Přihlášení od starších klientů ověřování nepodporují MFA a nedávají informace o stavu zařízení službě Azure AD, takže se zablokují prostřednictvím ovládacích prvků pro udělení podmíněného přístupu, jako je třeba vyžadování zařízení s MFA nebo dodržování předpisů. Pokud máte účty, které musí používat starší verze ověřování, musíte tyto účty buď vyloučit ze zásady, nebo nakonfigurovat zásady tak, aby se použily jenom pro klienty moderních ověřování.
 
 Přepínač **Konfigurovat** , pokud je nastaveno na **hodnotu Ano** , se vztahuje na kontrolované položky, pokud je nastavena hodnota **ne** pro všechny klientské aplikace, včetně moderních a starších ověřovacích klientů. Tento přepínač se nezobrazuje v zásadách vytvořených před srpna 2020.
 

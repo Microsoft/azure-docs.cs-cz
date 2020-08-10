@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: e74dac779fc1eafaf33ffbc63bf997cf26b64954
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d049538653ea345935d40bd965afd7d2453b2aa2
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836798"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041982"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Ochrana před hrozbami v Azure Security Center
 
@@ -114,12 +114,13 @@ Další informace o plánech App Service najdete v tématu [plány App Service](
 
 ### <a name="availability"></a>Dostupnost
 
-- Stav vydání: **Obecná dostupnost**
-- Požadované role: **Správce zabezpečení** může zrušit výstrahy. **Čtenář zabezpečení** může zobrazit zjištění.
-- Cloud<br>
-    ✔ Komerční cloudy<br>
-    ✘ US Gov<br>
-    ✘ Čína gov, ostatní gov
+|Aspekt|Podrobnosti|
+|----|:----|
+|Stav vydaných verzí:|Všeobecně dostupné|
+|Stanov|Úroveň Standard|
+|Požadované role a oprávnění:|**Správce zabezpečení** může zrušit výstrahy.<br>**Čtenář zabezpečení** může zobrazit zjištění.|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
@@ -150,14 +151,13 @@ Další informace:
 
 ### <a name="availability"></a>Dostupnost
 
-- Stav vydaných verzí:
-    - [BLOB Storage](https://azure.microsoft.com/services/storage/blobs/) (Obecná dostupnost)
-    - [Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (Preview)
-    - [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (Preview)
-- Cloud<br>
-    ✔ Komerční cloudy<br>
-    ✔ US Gov<br>
-    ✘ Čína gov, ostatní gov
+|Aspekt|Podrobnosti|
+|----|:----|
+|Stav vydaných verzí:|[BLOB Storage](https://azure.microsoft.com/services/storage/blobs/) (Obecná dostupnost)<br>[Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (Preview)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (Preview)|
+|Stanov|Úroveň Standard|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
+|||
+
 
 ### <a name="whats-protected"></a>Co je chráněno?
 

@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 2dce179365b2640ade3675f19dbacf6fc27b26c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 341373c9a8429f335f3064db7a94973d34e0ca1c
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089936"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042496"
 ---
 # <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Potlačit výstrahy z Azure Security Center ochrany před hrozbami
 
@@ -21,9 +21,15 @@ Tato stránka vysvětluje, jak můžete pomocí pravidel potlačení výstrah po
 
 ## <a name="availability"></a>Dostupnost
 
-- Stav verze: verze **Preview**
-- Požadované role: **Správce zabezpečení** a **vlastník** můžou pravidla vytvořit nebo odstranit. **Čtenáři zabezpečení** a **čtenáři** můžou zobrazit pravidla.
-- Cloudy: ✔ komerční cloudy ✔ National/Svrchovan (US Gov, Čína gov, jiné gov)
+|Aspekt|Podrobnosti|
+|----|:----|
+|Stav vydaných verzí:|Preview|
+|Stanov|Úroveň Free<br>(Většina výstrah zabezpečení je jenom pro úroveň Standard)|
+|Požadované role a oprávnění:|**Správce zabezpečení** a **vlastník** můžou pravidla vytvářet a odstraňovat.<br>**Čtenáři zabezpečení** a **čtenáři** můžou zobrazit pravidla.|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|||
+
+
 
 
 ## <a name="what-are-suppression-rules"></a>Jaká jsou pravidla pro potlačení?
@@ -32,9 +38,9 @@ Součásti ochrany před hrozbami pro Azure Security Center zjišťují hrozby v
 
 Pokud není jedna výstraha zajímavá nebo nerelevantní, můžete ji ručně zavřít. Případně můžete pomocí funkce pravidla potlačení automaticky v budoucnu odstranit podobné výstrahy. Obvykle byste pravidlo potlačení používali k těmto akcím:
 
-- potlačit výstrahy, které jste identifikovali jako falešně pozitivní
+- Potlačit výstrahy, které jste identifikovali jako falešně pozitivní
 
-- potlačit výstrahy, které se spouštějí příliš často, aby byly užitečné
+- Potlačit výstrahy, které se spouštějí příliš často, aby byly užitečné
 
 Pravidla potlačení definují kritéria, pro která se mají automaticky odkládat výstrahy.
 

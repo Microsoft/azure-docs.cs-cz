@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 07/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 39dbf7d9ad933dd47f0a566f02b5e276e4b615a3
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 17ab7ee75e335d686bf308c4b15a53dc4e2e6b0e
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87514324"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041744"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>Generování a ukládání klíčů SSH v Azure Portal
 
@@ -22,17 +22,17 @@ Klíče SSH můžete vytvořit při prvním vytvoření virtuálního počítač
 
 Pokud máte existující klíče a chcete je zjednodušit při jejich použití na portálu, můžete je nahrát a uložit v Azure pro opakované použití.
 
-Podrobnější informace o vytváření a používání klíčů SSH s virtuálními počítači se systémem Linux najdete v tématu (použití klíčů SSH pro připojení k virtuálním počítačům se systémem Linux) [./Linux/SSH-from-Windows.MD].
+Podrobnější informace o vytváření a používání klíčů SSH s virtuálními počítači se systémem Linux najdete v tématu [použití klíčů ssh pro připojení k virtuálním počítačům se systémem Linux](./linux/ssh-from-windows.md).
 
 ## <a name="generate-new-keys"></a>Generovat nové klíče
 
-1. Otevřete [Azure Portal] ( https://portal.azure.com .
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 
 1. V horní části stránky zadejte *SSH* pro hledání. V části **Marketplace*vyberte **klíče SSH**.
 
 1. Na stránce **klíč SSH** vyberte **vytvořit**.
 
-:::image type="content" source="./media/ssh-keys/portal-sshkey.png" alt-text="Vytvořte novou skupinu prostředků a vygenerujte pár klíčů SSH.":::
+   :::image type="content" source="./media/ssh-keys/portal-sshkey.png" alt-text="Vytvořte novou skupinu prostředků a vygenerujte pár klíčů SSH.":::
 
 1. V **skupiny prostředků** vyberte **vytvořit novou** a vytvořte novou skupinu prostředků pro uložení klíčů. Zadejte název vaší skupiny prostředků a vyberte **OK**.
 
@@ -48,7 +48,7 @@ Podrobnější informace o vytváření a používání klíčů SSH s virtuáln
 
 1. Zobrazí se automaticky otevírané okno, vyberte **Stáhnout privátní klíč a vytvořit prostředek**. Tím se stáhne klíč SSH jako soubor. pem.
 
-:::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Stažení privátního klíče jako souboru. pem":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="Stažení privátního klíče jako souboru. pem":::
 
 1. Po stažení souboru. pem můžete ho chtít přesunout někam do počítače, kde se snadno odkazuje na klienta SSH.
 
@@ -66,15 +66,15 @@ Zadejte například:`ssh -i /Downloads/mySSHKey.pem azureuser@123.45.67.890`
 
 ## <a name="upload-an-ssh-key"></a>Nahrajte klíč SSH.
 
-Můžete také nahrát veřejný klíč SSH pro uložení v Azure. Informace o tom, jak vytvořit pár klíčů SSH, najdete v tématu [použití klíčů ssh pro připojení k virtuálním počítačům se systémem Linux ](./linux/ssh-from-windows.md).
+Můžete také nahrát veřejný klíč SSH pro uložení v Azure. Informace o tom, jak vytvořit pár klíčů SSH, najdete v tématu [použití klíčů ssh pro připojení k virtuálním počítačům se systémem Linux](./linux/ssh-from-windows.md).
 
-1. Otevřete [Azure Portal] ( https://portal.azure.com .
+1. Otevřete web [Azure Portal](https://portal.azure.com).
 
 1. V horní části stránky zadejte *SSH* pro hledání. V části **Marketplace*vyberte **klíče SSH**.
 
 1. Na stránce **klíč SSH** vyberte **vytvořit**.
 
-:::image type="content" source="./media/ssh-keys/upload.png" alt-text="Nahrajte veřejný klíč SSH, který se uloží v Azure.":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="Nahrajte veřejný klíč SSH, který se uloží v Azure.":::
 
 1. V **skupiny prostředků** vyberte **vytvořit novou** a vytvořte novou skupinu prostředků pro uložení klíčů. Zadejte název vaší skupiny prostředků a vyberte **OK**.
 
@@ -92,4 +92,4 @@ Po nahrání klíče se můžete rozhodnout použít při vytváření virtuáln
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o použití klíčů SSH s virtuálními počítači Azure najdete v tématu (použití klíčů SSH pro připojení k virtuálním počítačům se systémem Linux) [./Linux/SSH-from-Windows.MD].
+Další informace o použití klíčů SSH s virtuálními počítači Azure najdete v tématu [použití klíčů ssh pro připojení k virtuálním počítačům se systémem Linux](./linux/ssh-from-windows.md).

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1875c9147f62619d8961096adb6a0f3986496b41
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 172824a2215e8a102ad4c284c847072960344549
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459437"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041523"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu RESTful ve vlastní zásadě Azure Active Directory B2C
 
@@ -117,7 +117,7 @@ Technický profil také vrací deklarace identity, které nejsou vraceny zprost�
 | ServiceUrl | Ano | Adresa URL koncového bodu REST API. |
 | AuthenticationType | Ano | Typ ověřování prováděného zprostředkovatelem deklarací RESTful. Možné hodnoty: `None` , `Basic` , `Bearer` , nebo `ClientCertificate` . `None`Hodnota označuje, že REST API je anonymní. `Basic`Hodnota označuje, že REST API je zabezpečeno pomocí ověřování HTTP Basic. K rozhraní API můžou přistupovat jenom ověření uživatelé, včetně Azure AD B2C. `ClientCertificate`Hodnota (doporučeno) znamená, že REST API omezuje přístup pomocí ověřování klientského certifikátu. K vašemu rozhraní API můžou mít přístup jenom služby, které mají příslušné certifikáty, například Azure AD B2C. `Bearer`Hodnota označuje, že REST API omezí přístup pomocí tokenu nosiče klienta OAuth2. |
 | AllowInsecureAuthInProduction| Ne| Určuje, zda `AuthenticationType` lze nastavit na hodnotu `none` v produkčním prostředí ( `DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md) je nastaven na `Production` nebo není určen). Možné hodnoty: true nebo false (výchozí). |
-| SendClaimsIn | Ne | Určuje, jakým způsobem se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful. Možné hodnoty: `Body` (výchozí), `Form` , `Header` nebo `QueryString` . `Body`Hodnota je vstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. `Form`Hodnota je vstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty oddělovače & znaku. `Header`Hodnota je vstupní deklarace, která je odeslána v hlavičce požadavku. `QueryString`Hodnota je vstupní deklarace, která je odeslána v řetězci dotazu požadavku. Příkazy HTTP, které jsou vyvolány pomocí obou, jsou následující:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`QueryString`: GET</li></ul> |
+| SendClaimsIn | Ne | Určuje, jakým způsobem se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful. Možné hodnoty: `Body` (výchozí), `Form` , `Header` `Url` nebo `QueryString` . `Body`Hodnota je vstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. `Form`Hodnota je vstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty oddělovače & znaku. `Header`Hodnota je vstupní deklarace, která je odeslána v hlavičce požadavku. `Url`Hodnota je vstupní deklarace, která se pošle v adrese URL, třeba https://{claim1}. example. com/{claim2}/{claim3}? { claim4} = {claim5}. `QueryString`Hodnota je vstupní deklarace, která je odeslána v řetězci dotazu požadavku. Příkazy HTTP, které jsou vyvolány pomocí obou, jsou následující:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`Url`: GET</li><li>`QueryString`: GET</li></ul> |
 | ClaimsFormat | Ne | Aktuálně se nepoužívá, může být ignorováno. |
 | ClaimUsedForRequestPayload| Ne | Název deklarace identity řetězce, která obsahuje datovou část, která se má odeslat do REST API. |
 | DebugMode | Ne | Spustí technický profil v režimu ladění. Možné hodnoty: `true` , nebo `false` (výchozí). V režimu ladění může REST API vrátit více informací. Přečtěte si část [vracení chybové zprávy](#returning-validation-error-message) . |
