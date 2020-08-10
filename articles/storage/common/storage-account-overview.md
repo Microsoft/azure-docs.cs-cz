@@ -1,7 +1,7 @@
 ---
 title: Přehled účtu úložiště
 titleSuffix: Azure Storage
-description: Seznamte se s možnostmi pro vytvoření a použití účtu Azure Storage.
+description: Přečtěte si přehled účtů úložiště v Azure Storage. Zkontrolujte pojmenování účtů, úrovně výkonu, úrovně přístupu, redundanci, šifrování, koncové body a další.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 6ae5f4ba88880a53db765ab0ad9fde5bd9a4e4f9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 8342ffc122f56f4e2a3a41e249007b2ceaad22a6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043630"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034647"
 ---
 # <a name="storage-account-overview"></a>Přehled účtu úložiště
 

@@ -1,6 +1,6 @@
 ---
 title: Změna stylu Azure Maps webového Ovládací prvek Mapa
-description: V tomto článku se dozvíte o funkcích stylu Azure Maps Web Ovládací prvek Mapa
+description: Naučte se, jak změnit styl a možnosti mapy. Viz postup přidání ovládacího prvku pro výběr stylu na mapu v Azure Maps tak, aby uživatelé mohli přepínat mezi různými styly.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/27/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a4c1629302c72d6f59f7f1fd10dc850d46cea5a7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15224afac33a3e236c2d1ed9f60515bdc2f34c4f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285783"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036789"
 ---
 # <a name="change-the-style-of-the-map"></a>Změna stylu mapy
 
@@ -118,7 +118,7 @@ Následující kód ukazuje, jak přepsat výchozí `mapStyles` seznam základn�
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)

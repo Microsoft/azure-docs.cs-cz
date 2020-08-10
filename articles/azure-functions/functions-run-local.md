@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: ae83d8f68b78a3b13f9ebafe3c7cedd18a29de53
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5c6761b083200556314d7133d5040f7811066e30
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449130"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037027"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -39,7 +39,7 @@ Existují tři verze Azure Functions Core Tools. Použitá verze závisí na va�
 
 Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 3. x.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Azure Functions Core Tools v současné době závisí na Azure CLI pro ověřování pomocí účtu Azure. To znamená, že musíte [Azure CLI nainstalovat místně](/cli/azure/install-azure-cli) , aby bylo možné [publikovat do Azure](#publish) z Azure Functions Core Tools. 
 
@@ -205,7 +205,23 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 > [!IMPORTANT]
 > Ve výchozím nastavení používají verze 2. x a novější verze základních nástrojů k vytváření projektů aplikací Function App pro modul runtime .NET jako [projekty tříd C#](functions-dotnet-class-library.md) (. csproj). Tyto projekty C#, které lze použít se sadou Visual Studio nebo Visual Studio Code, jsou kompilovány během testování a při publikování do Azure. Pokud chcete vytvořit a pracovat se stejnými soubory skriptu C# (. csx), které byly vytvořeny ve verzi 1. x a na portálu, je nutné `--csx` při vytváření a nasazování funkcí použít parametr.
 
-[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
+## <a name="register-extensions"></a>Registrovat rozšíření
+
+S výjimkou aktivačních událostí protokolu HTTP a časovače jsou vazby funkcí v modulu runtime verze 2. x a vyšší implementovány jako balíčky rozšíření. Vazby HTTP a triggery časovače nevyžadují rozšíření. 
+
+Pro snížení nekompatibility mezi různými balíčky rozšíření vám funkce umožní odkazovat na sadu rozšíření v host.jssouboru projektu. Pokud se rozhodnete nepoužívat sady rozšíření, budete také muset nainstalovat sadu .NET Core 2. x SDK místně a udržovat rozšíření. csproj pomocí projektu Functions.  
+
+Ve verzi 2. x a mimo Azure Functions runtime musíte explicitně zaregistrovat rozšíření pro typy vazeb používané ve vašich funkcích. Můžete zvolit instalaci rozšíření vazby jednotlivě nebo můžete přidat odkaz na balíček rozšíření na host.jsv souboru projektu. Sady rozšíření odstraňují možnost mít problémy s kompatibilitou balíčků při použití více typů vazeb. Je doporučený postup pro registraci rozšíření vazby. Sady rozšíření také odstraňují požadavek na instalaci sady .NET Core 2. x SDK. 
+
+### <a name="use-extension-bundles"></a>Použití sad rozšíření
+
+[!INCLUDE [Register extensions](../../includes/functions-extension-bundles.md)]
+
+Další informace najdete v tématu [Registrace rozšíření vazby Azure Functions](functions-bindings-register.md#extension-bundles). Než přidáte vazby do function.jsv souboru, měli byste do host.jspřidat balíčky rozšíření.
+
+### <a name="explicitly-install-extensions"></a>Explicitní instalace rozšíření
+
+[!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 

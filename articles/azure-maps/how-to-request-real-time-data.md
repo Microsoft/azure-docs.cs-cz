@@ -1,6 +1,6 @@
 ---
 title: Vyžádat data veřejného přenosu v reálném čase | Mapy Microsoft Azure
-description: Vyžádejte si data veřejného přenosu v reálném čase pomocí služby mobility Microsoft Azure Maps.
+description: Naučte se, jak vyžádat data veřejného přenosu v reálném čase, jako jsou například doručení při přenosu. Podívejte se, jak používat službu Azure Maps mobility pro tento účel.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/06/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 784d6a94562e8b5a709d65abdadef46ca71de395
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 71dc67d4c142f6fb84458cd6cd0b33452f2217b3
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505954"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037282"
 ---
 # <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>Vyžádání dat veřejného přenosu v reálném čase pomocí služby Azure Maps mobility
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak používat [službu Azure Maps mobility](https
 
 V tomto článku se dozvíte, jak požádat o další doručení v reálném čase pro všechny řádky přicházející v daném zastavení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Nejprve musíte mít účet Azure Maps a klíč předplatného, aby bylo možné volat rozhraní API pro veřejné průjezdy Azure Maps. Informace najdete v pokynech v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-azure-maps-account) pro vytvoření účtu Azure Maps. Použijte k získání primárního klíče pro váš účet postup uvedený v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) . Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 

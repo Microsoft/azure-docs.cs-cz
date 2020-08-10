@@ -1,18 +1,18 @@
 ---
 title: Ukázky Azure PowerShellu pro VPN Gateway
-description: Pomocí těchto Azure PowerShell skriptů můžete vytvořit brány sítě VPN založené na trasách, připojení typu VNet-to-VNet a stáhnout šablonu zařízení VPN.
+description: Použijte tyto skripty Azure PowerShell pro vytváření bran VPN, vytváření připojení typu Site-to-site a VNET-to-VNet a stahování šablon zařízení VPN.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: sample
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: c92e3bad0e8e49ff07997dd37ed7098087c39d5e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 84aa01722a9be078f361bd482c8c95be675e6ef9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921550"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035328"
 ---
 # <a name="azure-powershell-samples-for-vpn-gateway"></a>Ukázky Azure PowerShellu pro VPN Gateway
 

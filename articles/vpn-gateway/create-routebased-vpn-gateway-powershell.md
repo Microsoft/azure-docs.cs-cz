@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: Vytvoření brány založené na trasách: PowerShell'
-description: Naučte se vytvořit službu Azure VPN Gateway založenou na směrování pomocí prostředí PowerShell. Pro připojení k místní síti použijte bránu VPN.
+description: Pomocí PowerShellu můžete rychle vytvořit bránu Azure VPN Gateway založenou na směrování pro připojení VPN k místní síti nebo k propojení virtuálních sítí.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5e6c8ec12927afbabd6c6d41ab348bad9814e82c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 686732716b26e8e82aa98d445cd04b0d311cf23a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923199"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035531"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>Vytvoření brány sítě VPN založené na trasách pomocí prostředí PowerShell
 
@@ -20,7 +20,7 @@ Tento článek vám pomůže rychle vytvořit bránu Azure VPN Gateway založeno
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a bránu VPN založenou na směrování (bránu virtuální sítě). Po dokončení vytváření brány můžete vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a bránu VPN založenou na směrování (bránu virtuální sítě). Po dokončení vytváření brány můžete vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ### <a name="working-with-azure-powershell"></a>Práce s Azure PowerShell
 

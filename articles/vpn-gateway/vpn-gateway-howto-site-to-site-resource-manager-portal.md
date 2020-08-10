@@ -1,6 +1,6 @@
 ---
 title: 'Připojení místní sítě k virtuální síti Azure: síť VPN typu Site-to-site: portál'
-description: Postup vytvoření připojení IPsec z vaší místní sítě k virtuální síti Azure přes veřejný internet. Tyto kroky vám pomůžou vytvořit připojení VPN Gateway typu Site-to-Site mezi různými místy pomocí portálu.
+description: Vytvořte připojení Site-to-Site VPN Gateway s protokolem IPsec z místní sítě k virtuální síti Azure přes veřejný Internet pomocí portálu.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 601e31cde22942abd6d2bc7c5bdcbc5d97f5a591
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebfd03935f5189a544f11e5b8bbdd4b46e2aa989
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987655"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037061"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Vytvoření připojení typu Site-to-Site na webu Azure Portal
 

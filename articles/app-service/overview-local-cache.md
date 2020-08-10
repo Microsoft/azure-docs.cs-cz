@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: d1595354803b0625137dd1ac45d17962063ce4e0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 739eb4e7968cb140e49f1baee777b48140811936
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562442"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034953"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Přehled Azure App Service místní mezipaměti
 
@@ -36,7 +36,7 @@ Funkce místní mezipaměti Azure App Service poskytuje zobrazení webové role 
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Způsob změny chování App Service v místní mezipaměti
 * _D:\home_ odkazuje na místní mezipaměť, která se vytvoří v instanci virtuálního počítače při spuštění aplikace. _D:\Local_ i nadále odkazuje na dočasné úložiště specifické pro virtuální počítače.
-* Místní mezipaměť obsahuje jednorázovou kopii složek _site_ a _/siteextensions_ sdíleného úložiště obsahu, a to v _D:\home\site_ a _D:\home\siteextensions_v uvedeném pořadí. Soubory se při spuštění aplikace zkopírují do místní mezipaměti. Velikost obou složek pro každou aplikaci je ve výchozím nastavení omezená na 1 GB, ale dá se zvýšit na 2 GB. Počítejte s tím, že se při zvýšení velikosti mezipaměti trvá načtení mezipaměti déle. Pokud zkopírované soubory překračují velikost místní mezipaměti, App Service bezobslužně ignoruje místní mezipaměť a přečte se ze vzdálené sdílené složky.
+* Místní mezipaměť obsahuje jednorázovou kopii složek _site_ a _/siteextensions_ sdíleného úložiště obsahu, a to v _D:\home\site_ a _D:\home\siteextensions_v uvedeném pořadí. Soubory se při spuštění aplikace zkopírují do místní mezipaměti. Velikost obou složek pro každou aplikaci je ve výchozím nastavení omezená na 1 GB, ale dá se zvýšit na 2 GB. Počítejte s tím, že se při zvýšení velikosti mezipaměti trvá načtení mezipaměti déle. Pokud jste zvýšili limit místní mezipaměti na 2 GB a zkopírované soubory překračují maximální velikost 2 GB, App Service bezobslužně ignoruje místní mezipaměť a přečte se ze vzdálené sdílené složky. Pokud není definováno žádné omezení nebo je limit nastaven na hodnotu nižší než 2 GB a zkopírované soubory překračují limit, může nasazení nebo swap selhat s chybou.
 * Místní mezipaměť je určena pro čtení i zápis. Jakákoli změna se ale zruší, když aplikace přesune virtuální počítače nebo se restartuje. Pro aplikace, které ukládají klíčová data v úložišti obsahu, nepoužívejte místní mezipaměť.
 * _D:\home\LogFiles_ a _D:\home\Data_ obsahují soubory protokolu a data aplikací. Dvě podsložky se ukládají místně na instanci virtuálního počítače a zkopírují se do sdíleného úložiště obsahu pravidelně. Aplikace mohou uchovávat soubory protokolu a data jejich zápisem do těchto složek. Kopírování do sdíleného úložiště obsahu je ale nejlepší, takže je možné soubory protokolů a data ztratit z důvodu náhlého selhání instance virtuálního počítače.
 * [Streamování protokolů](troubleshoot-diagnostic-logs.md#stream-logs) je ovlivněno nejlepší kopií. V protokolech streamování můžete sledovat zpoždění v délce jedné minuty.

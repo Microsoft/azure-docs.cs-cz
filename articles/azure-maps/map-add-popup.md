@@ -1,6 +1,6 @@
 ---
 title: Přidat automaticky otevírané okno do bodu na mapě | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak přidat automaticky otevíraná okna do bodu pomocí webové sady SDK Microsoft Azure Maps.
+description: Seznamte se s automaticky otevíraných oken, automaticky otevíraných šablon a automaticky otevíraných událostí v Azure Maps. Přečtěte si téma jak přidat automaticky otevírané okno do bodu na mapě a jak znovu použít a přizpůsobit automaticky otevíraná okna.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/27/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 298e05d6527129a20c92b8bacf08cb3090b162c6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5235b273ab45a2ece011f38bf363b33230101396
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286897"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036500"
 ---
 # <a name="add-a-popup-to-the-map"></a>Přidat místní nabídku na mapu
 

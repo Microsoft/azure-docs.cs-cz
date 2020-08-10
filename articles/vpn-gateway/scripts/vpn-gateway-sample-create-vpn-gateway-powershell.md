@@ -1,6 +1,6 @@
 ---
 title: Ukázka skriptu Azure PowerShell – vytvoření VPN Gateway | Microsoft Docs
-description: Tento skript PowerShellu vytvoří VPN Gateway na základě trasy v Azure. Přečtěte si o všech rutinách ve skriptu.
+description: Naučte se, jak pomocí skriptu PowerShellu vytvořit virtuální síť, podsíť sítě a bránu sítě VPN založenou na trasách.
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: kumudD
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: 8cc4fa7dd8d5a3df4fbc6c42eaed0b5d97ac421f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 1fc8339b3d5d5f02611c750e8016c2fc3df1d8a3
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927330"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035344"
 ---
 # <a name="create-a-vpn-gateway-with-powershell"></a>Vytvoření brány sítě VPN pomocí PowerShellu
 

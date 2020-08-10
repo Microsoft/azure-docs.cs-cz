@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: hledání blízkých míst na mapě | Mapy Microsoft Azure'
-description: V tomto kurzu se naučíte hledat body zájmu na mapě pomocí Microsoft Azurech map.
+description: Naučte se hledat body zájmu na mapě. Podívejte se, jak pomocí Azure Maps Web SDK přidat možnosti vyhledávání a interaktivní automaticky otevíraná okna do mapy.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 1/15/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 4e16c4e88d749f6dbc4f6271a7ceaf77661a208c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8dc430febb25283ab5bd32496bb2f71ba19c895b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281527"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035854"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Kurz: hledání okolních bodů zájmu pomocí Azure Maps
 
@@ -26,11 +26,11 @@ V tomto kurzu se dozvíte, jak nastavit účet s Azure Maps a pak pomocí rozhra
 > * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
 > * Vyhledání okolního bodu zájmu pomocí vyhledávací služby Maps
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 <a id="createaccount"></a>
 

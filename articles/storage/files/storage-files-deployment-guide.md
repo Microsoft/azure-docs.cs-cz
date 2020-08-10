@@ -1,18 +1,18 @@
 ---
 title: Jak nasadit soubory Azure | Microsoft Docs
-description: Přečtěte si, jak nasadit soubory Azure ze začátku do konce.
+description: Přečtěte si, jak nasadit soubory Azure ze začátku do konce. Přeneste data do souborů Azure. Automaticky připojit k potřebným počítačům nebo serverům.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b9df9375dee59df987cea01a4142a22a78eb533e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08bcb41dd8d9f4643b03d855960d8632b778ff84
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510804"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034494"
 ---
 # <a name="how-to-deploy-azure-files"></a>Nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní průmyslový protokol SMB. V tomto článku se dozvíte, jak prakticky nasadit soubory Azure v rámci vaší organizace.

@@ -1,6 +1,6 @@
 ---
 title: Formát dat geografického JSON pro geografickou plot | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak připravit data o geografickosti, která je možné použít ve službě Microsoft Azure Maps GET a POST API pro geografické rozvržení.
+description: Přečtěte si o Azure Maps dat o geograficky. Přečtěte si, jak používat rozhraní API pro monitorování geografických zón a při načítání umístění souřadnic vzhledem k geograficky.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/14/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 924c23f0fb0156ff585872dded72932a1574a12d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131301"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037401"
 ---
 # <a name="geofencing-geojson-data"></a>Geografická data geografických zón
 
@@ -34,7 +34,7 @@ Data pro geografickou nebo množinu geografických plotů jsou reprezentována `
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datum a čas  | true | Datum a čas zahájení období platnosti. |
 | endTime   | Datum a čas  | true |  Datum a čas konce období platnosti. |
-| recurrenceType | řetězec | false (nepravda) |   Typ opakování období. Hodnota může být `Daily` , `Weekly` , `Monthly` nebo `Yearly` . Výchozí hodnota je `Daily` .|
+| recurrenceType | string | false (nepravda) |   Typ opakování období. Hodnota může být `Daily` , `Weekly` , `Monthly` nebo `Yearly` . Výchozí hodnota je `Daily` .|
 | businessDayOnly | Logická hodnota | false (nepravda) |  Určuje, jestli jsou data platná jenom během pracovních dnů. Výchozí hodnota je `false` .|
 
 

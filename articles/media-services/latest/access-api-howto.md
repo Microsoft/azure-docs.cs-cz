@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 33c762e2f2a9bed90991f7b85e0fb83fbb43765c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a039e1d4442490d3747a302754d521f1f3402bcf
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090157"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035787"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Získání přihlašovacích údajů pro přístup k rozhraní Media Services API  
 
@@ -33,7 +33,7 @@ Když použijete ověřování Azure AD pro přístup k rozhraní Azure Media Se
 
 Tento článek popisuje kroky pro získání přihlašovacích údajů pro přístup k rozhraní Media Services API. Vyberte z následujících karet.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure: Pokud účet nemáte, začněte s [bezplatnou zkušební verzí Azure](https://azure.microsoft.com/pricing/free-trial/). 
 - Účet Media Services. Další informace najdete v tématu [Vytvoření účtu Azure Media Services pomocí Azure Portal](create-account-howto.md).
@@ -45,7 +45,7 @@ Tento článek popisuje kroky pro získání přihlašovacích údajů pro pří
 Stránka **přístup přes rozhraní API** umožňuje vybrat metodu ověřování, kterou chcete použít pro připojení k rozhraní API. Stránka také poskytuje hodnoty, které potřebujete pro připojení k rozhraní API.
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj účet Media Services.
-2. Vyberte, jak se připojit k rozhraní Media Services API.
+2. V levém navigačním panelu vyberte okno **přístup k rozhraní API (nové)** .
 3. V části **připojit k Media Services rozhraní API**vyberte verzi rozhraní API Media Services, ke které se chcete připojit (verze v3 je nejnovější verze služby).
 
 ### <a name="service-principal-authentication--recommended"></a>Ověřování instančního objektu (doporučeno)

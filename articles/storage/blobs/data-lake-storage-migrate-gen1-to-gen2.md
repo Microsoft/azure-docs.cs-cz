@@ -1,6 +1,6 @@
 ---
 title: Migrace Azure Data Lake Storage z Gen1 na Gen2
-description: Migrujte Azure Data Lake Storage z Gen1 na Gen2.
+description: Migrujte Azure Data Lake Storage z Gen1 na Gen2, která je postavená na službě Azure Blob Storage a poskytuje sadu funkcí vyhrazených pro analýzy velkých objemů dat.
 author: normesta
 ms.topic: how-to
 ms.author: normesta
@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 2cfe5f763b3dedd68c5180f5a0a3c7a3f4ea3e93
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 25879178930c80f1265470645808d9ee81acafa8
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496419"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035123"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Migrace Azure Data Lake Storage z Gen1 na Gen2
 
@@ -97,7 +97,7 @@ Tato tabulka porovnává možnosti Gen1 s Gen2.
 |---|---|---|
 |Organizace dat|[Hierarchický obor názvů](data-lake-storage-namespace.md)<br>Podpora souborů a složek|[Hierarchický obor názvů](data-lake-storage-namespace.md)<br>Podpora kontejnerů, souborů a složek |
 |Geografická redundance| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
-|Authentication|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Sdílený přístupový klíč](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
+|Ověřování|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Sdílený přístupový klíč](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
 |Autorizace|Správa – [RBAC](../../role-based-access-control/overview.md)<br>Data – [seznamy ACL](data-lake-storage-access-control.md)|Správa – [RBAC](../../role-based-access-control/overview.md)<br>Data- [seznamy řízení přístupu](data-lake-storage-access-control.md)( [RBAC](../../role-based-access-control/overview.md) ) |
 |Šifrování – neaktivní neaktivní data|Strana serveru – s použitím klíčů spravovaných [Microsoftem](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) nebo [zákazníky](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|Strana serveru – s použitím klíčů spravovaných [Microsoftem](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) nebo [zákazníky](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Podpora virtuální sítě|[Integrace virtuální sítě](../../data-lake-store/data-lake-store-network-security.md)|[Koncové body služby](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [privátní koncové body](../common/storage-private-endpoints.md)|

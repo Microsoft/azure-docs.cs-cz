@@ -3,16 +3,16 @@ title: Vytvoření nabídky spravované služby na komerčním webu Microsoft Ma
 description: Postup vytvoření nové nabídky spravované služby pro výpis v Azure Marketplace pomocí portálu komerčního tržiště v partnerském centru.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.date: 07/07/2020
-ms.openlocfilehash: ae079fce02f58d6c6457d7fe6401526f4002662f
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.date: 08/07/2020
+ms.openlocfilehash: f58ec53d1c4f3ad95993fd2faff44f7164c4beeb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798184"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036602"
 ---
 # <a name="create-a-managed-service-offer"></a>Vytvoření nabídky spravované služby
 
@@ -130,20 +130,23 @@ Pokud máte weby podpory pro **globální zákazníky Azure** a/nebo **Azure Gov
 
 V této části můžete zadat loga a obrázky, které se použijí při zobrazení vaší nabídky zákazníkovi. Všechny obrázky musí být ve formátu. png.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu používanou partnerským centrem.
 
-#### <a name="store-logos"></a>Ukládat loga
+#### <a name="marketplace-logos"></a>Loga Marketplace
 
-Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije tuto hodnotu k vytvoření **malého** (48 x 48 pixelů) a **středníku** (90 x 90 pixelů). Volitelně je můžete nahradit různými obrázky.
-
-Všechny tři velikosti loga se vyžadují pro použití na různých místech v seznamu:
+Poskytněte logo vaší nabídky ve velikosti čtyř pixelů:
 
 - **Malé** (48 x 48)
 - **Střední** (90 × 90)
-- **Velký** (mezi 216 x 216 a 350 × 350)
+- **Velký** (216 x 216)
+- **Roztažitelné** (255 × 115)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Tato loga se používají na různých místech Azure Marketplace:
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 

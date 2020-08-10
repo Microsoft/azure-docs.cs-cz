@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: nastavení konfigurace'
-description: Přečtěte si o konfiguraci připojení brány VPN v Azure, která spoléhá na více prostředků, z nichž každý obsahuje konfigurovatelné nastavení.
+description: Seznamte se s VPN Gateway prostředky a nastavení pro virtuální síť vytvořenou v modelu nasazení Správce prostředků.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5fef54e4fff442f1c9eae523d7d278f193b84171
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6f801b94a16ae6fcee6896dd70510469c5e20098
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926922"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036908"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informace o nastavení konfigurace VPN Gateway
 

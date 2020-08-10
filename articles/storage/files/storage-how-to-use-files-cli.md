@@ -1,6 +1,6 @@
 ---
 title: Rychlý start pro správu sdílených složek Azure pomocí Azure CLI
-description: V tomto rychlém startu zjistíte, jak pomocí Azure CLI spravovat službu Soubory Azure.
+description: V tomto rychlém startu se dozvíte, jak pomocí Azure CLI spravovat soubory Azure. Vytvořte skupinu prostředků a účet úložiště a pak vytvořte a použijte sdílenou složku Azure.
 author: roygara
 ms.service: storage
 ms.topic: quickstart
@@ -8,12 +8,12 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0d9d0bad982a12e3b96bdbe4f680f2501b33ec67
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 149481f9cae535fa53f94a876e1f52e813b3838b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495785"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034562"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rychlý start: Vytváření a správa sdílených složek Azure pomocí Azure CLI
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí Azure CLI. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
@@ -323,4 +323,4 @@ Další možností je odebrat prostředky jednotlivě.
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Co je služba Soubory Azure?](storage-files-introduction.md)
+> [Co je Azure Files?](storage-files-introduction.md)

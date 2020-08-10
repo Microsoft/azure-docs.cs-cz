@@ -1,7 +1,7 @@
 ---
 title: Vytvoření, změna nebo odstranění předpony veřejných IP adres Azure
 titlesuffix: Azure Virtual Network
-description: Přečtěte si o předponách veřejných IP adres a o tom, kde najdete další informace, pokud s nimi nejste obeznámeni. Naučíte se také, jak ho vytvořit, změnit nebo odstranit.
+description: Přečtěte si o předponách veřejných IP adres a o tom, jak je vytvořit, změnit nebo odstranit. Podívejte se, kde najít další informace.
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: 85e649944b155fc9e51fe01c282fc7f34f8a00d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c844b25394d865453e653bfc3ac6bff396d97a47
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283159"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035055"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Vytvoření, změna nebo odstranění předpony veřejné IP adresy
 
@@ -58,7 +58,7 @@ Předpony veřejných IP adres mají poplatek. Podrobnosti najdete v tématu [ce
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ Network Public-IP prefix Create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
+|CLI|[AZ Network Public-IP prefix Create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
 |PowerShell|[New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix)|
 
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>Vytvoření statické veřejné IP adresy z předpony
@@ -79,7 +79,7 @@ Alternativně můžete použít příkazy CLI a PS níže s parametry--Public-IP
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
+|CLI|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
 
 ## <a name="view-or-delete-a-prefix"></a>Zobrazení nebo odstranění předpony
@@ -94,7 +94,7 @@ Alternativně můžete použít příkazy CLI a PS níže s parametry--Public-IP
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ Network Public-IP prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) k vypsání veřejných IP adres, [AZ Network Public-IP prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) k zobrazení nastavení; [AZ Network Public-IP prefix Update](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) to Update; [AZ Network Public-IP prefix Delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) to Delete|
+|CLI|[AZ Network Public-IP prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) k vypsání veřejných IP adres, [AZ Network Public-IP prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) k zobrazení nastavení; [AZ Network Public-IP prefix Update](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) to Update; [AZ Network Public-IP prefix Delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) to Delete|
 |PowerShell|[Get-AzPublicIpPrefix](/powershell/module/az.network/get-azpublicipprefix) pro načtení objektu veřejné IP adresy a zobrazení jeho nastavení [nastavte-AzPublicIpPrefix](/powershell/module/az.network/set-azpublicipprefix) na aktualizovat nastavení; [Remove-AzPublicIpPrefix](/powershell/module/az.network/remove-azpublicipprefix) k odstranění|
 
 ## <a name="permissions"></a>Oprávnění

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/05/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 072beb4f6bd8f823b150a6e81f4308bdd6b29402
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0d1845c06c1f0373ffd4be43c104889a7327c3ac
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852238"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035769"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB rozhraní Java SDK v4 pro Core (SQL) API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinuje asynchronní rozhraní API 
 |---|---|
 |**Stažení sady SDK**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
 |**Dokumentace k rozhraní API** | [Referenční dokumentace k rozhraní Java API](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
-|**Přispívání do sady SDK** | [Azure SDK pro centrální úložiště Java na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) | 
+|**Přispívání do sady SDK** | [Azure SDK pro centrální úložiště Java na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) | 
 |**Začínáme** | [Rychlý Start: Vytvoření aplikace Java pro správu Azure Cosmos DB dat rozhraní SQL API](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) <br> [Úložiště GitHub s kódem pro rychlý Start](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
 |**Ukázky základních kódů** | [Azure Cosmos DB: příklady v Javě pro rozhraní SQL API](sql-api-java-sdk-samples.md) <br> [Úložiště GitHub s ukázkovým kódem](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
 |**Konzolová aplikace se změněným kanálem**| [Ukázka změny kanálu – Java SDK v4](create-sql-api-java-changefeed.md) <br> [Úložiště GitHub s ukázkovým kódem](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 

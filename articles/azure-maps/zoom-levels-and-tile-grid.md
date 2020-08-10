@@ -1,6 +1,6 @@
 ---
 title: Úrovně přiblížení a mřížka dlaždic ve Microsoft Azure Maps
-description: V tomto článku se dozvíte o úrovních přiblížení a mřížce dlaždic v mapách Microsoft Azure.
+description: Přečtěte si, jak nastavit úrovně přiblížení v Azure Maps. Přečtěte si, jak převést geografické souřadnice na souřadnice pixelů, souřadnice dlaždice a quadkeys. Zobrazení ukázek kódu.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/14/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9493ad21847cca230606ff1641c9ac02c3355f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ced524080df87468116a538d9b7c8e91fb178a41
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093047"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035871"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Úrovně přiblížení a mřížka dlaždic
 
@@ -58,7 +58,7 @@ V následující tabulce je uveden úplný seznam hodnot pro úroveň přiblíž
 |17|1.2|307,2|
 |18|0.6|152,8|
 |19|0.3|76,4|
-|20|0.15|38,2|
+|20|0,15|38,2|
 |21|0,075|19,1|
 |22|0,0375|9,55|
 |23|0,01875|4,775|

@@ -8,12 +8,12 @@ ms.date: 08/04/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 737fe4b334e60f1b51e8f60f39e8821588a6841c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f51630154b77233aeb2587ac3a2d603c1da6fa4f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010287"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036551"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-preview"></a>Export dat IoT do cílů cloudu pomocí exportu dat (Preview)
 
@@ -33,7 +33,7 @@ Tento článek popisuje, jak používat nové funkce pro export dat ve verzi Pre
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte být správce aplikace IoT Central, nebo mít oprávnění k exportu dat.
+Pokud chcete použít export dat (Preview), musíte mít aplikaci v3 a musíte mít oprávnění pro export dat.
 
 ## <a name="set-up-export-destination"></a>Nastavit cíl exportu
 
@@ -150,15 +150,22 @@ Vytvořte nový cíl nebo přidejte cíl, který jste již vytvořili.
 
 ## <a name="export-contents-and-format"></a>Exportovat obsah a formát
 
-V případě Event Hubs a Service Busch míst se data exportují prakticky v reálném čase. Data jsou v těle zprávy a jsou ve formátu JSON kódovaném jako UTF-8. Příklady najdete níže.
+### <a name="azure-blob-storage-destination"></a>Cíl Azure Blob Storage
 
-Pro úložiště objektů BLOB se data exportují jednou za minutu a každý soubor, který obsahuje dávku změn od posledního exportovaného souboru. Exportovaná data jsou umístěna ve formátu JSON ve třech složkách. Výchozí cesty v účtu úložiště jsou:
+Data se exportují jednou za minutu a každý soubor, který obsahuje dávku změn od posledního exportovaného souboru. Exportovaná data jsou umístěna ve formátu JSON ve třech složkách. Výchozí cesty v účtu úložiště jsou:
 
 - Telemetrie: _{Container}/{app-id}/{partition_id}/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
 - Změny vlastností: _{Container}/{app-id}/{partition_id}/{yyyy}/{MM}/{DD}/{hh}/{mm}/{filename}_
 
 Chcete-li procházet exportované soubory v Azure Portal, přejděte do souboru a vyberte kartu **Upravit objekt BLOB** .
 
+### <a name="azure-event-hubs-and-azure-service-bus-destinations"></a>Cíle Azure Event Hubs a Azure Service Bus
+
+Data se exportují prakticky v reálném čase. Data jsou v těle zprávy a jsou ve formátu JSON kódovaném jako UTF-8. 
+
+V kontejneru poznámky nebo vlastnosti systému zprávy můžete najít `iotcentral-device-id` , `iotcentral-application-id` , `iotcentral-message-source` a, `iotcentral-message-type` které mají stejné hodnoty jako odpovídající pole v těle zprávy.
+
+### <a name="webhook-destination"></a>Cíl Webhooku
 V případě míst pro Webhooky se data exportují taky téměř v reálném čase. Data jsou v textu zprávy ve stejném formátu jako pro Event Hubs a Service Bus.
 
 
@@ -254,6 +261,7 @@ Toto je tabulka, která zvýrazňuje rozdíly mezi exportem starších dat a nov
 | Filtrování | Žádné | Závisí na typu exportovaného dat. Pro telemetrii, filtrování podle telemetrie, vlastností zpráv a hodnot vlastností |
 | Obohacení | Žádné | Obohacení vlastním řetězcem nebo hodnotou vlastnosti v zařízení |
 | Cíle | Azure Event Hubs, Azure Service Bus fronty a témata, Azure Blob Storage | Stejné jako pro export a Webhooky dat starší verze| 
+| Podporované aplikace | V2, V3 | Jenom V3 |
 | Významné limity | 5 exportů na aplikaci, 1 cíl na export | 10 EXPORTS – cílová připojení na aplikaci | 
 
 ## <a name="next-steps"></a>Další kroky

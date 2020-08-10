@@ -7,20 +7,20 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 93366bf963350bf9cbdbda15ec4070c21a1dc975
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20c82793726221515ad4d1019f4d8f4754b3ae08
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090140"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036568"
 ---
-# <a name="common-questions-about-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
+# <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se komerčního tržiště.
 
 ## <a name="general"></a>Obecné
 
-### <a name="what-is-microsoft-commercial-marketplace"></a>Co je komerční tržiště Microsoftu?
+### <a name="what-is-the-microsoft-commercial-marketplace"></a>Co je komerční tržiště Microsoftu?
 
 Komerční tržiště spojuje obchodní a státní úřady s řešeními vytvořenými našimi partnery. Naši partneři vytvářejí a spravují nabídky v partnerském centru a zákazníci můžou vyhledat a koupit řešení prostřednictvím prostředí v rámci produktu, jako jsou Microsoft AppSource, Azure Marketplace, prodejci v programu Cloud Solution Provider a naši prodejní týmy prostřednictvím programu společného prodeje.
 
@@ -60,7 +60,7 @@ Způsoby použití vaší komerční nabídky na webu Marketplace závisí na to
 
 - Pro řešení, která poskytujete automaticky, ať už jsou placené, vlastní licence (BYOL) nebo bezplatné, se zákazníkům doporučuje *hned ho získat*.
 - Nabídky, které podporují testovací jednotku (demo), požadují od zákazníka *testování jednotky*. 
-- Software jako služba (SaaS) nabízí *bezplatnou zkušební verzi*, která poskytuje zkušební verzi mimo naše komerční tržiště.
+- Software jako služba (SaaS) nabízí *bezplatnou zkušební verzi*, která poskytuje zkušební verzi mimo komerční web Marketplace.
 - Jednoduché výpisy umožňují zákazníkovi požádat o *kontaktování*.
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>Návody vytvořit nabídky pro komerční tržiště?
@@ -77,7 +77,7 @@ Pokud se chcete dozvědět o osvědčených postupech a sdílet informace, můž
 
 ### <a name="what-analytics-are-available-to-my-organization-from-the-commercial-marketplace"></a>Jaké analýzy jsou k dispozici pro moji organizaci z komerčního tržiště?
 
-Poskytujeme vytváření sestav o vašich nabídkách v rámci našeho komerčního tržiště. Pokud chcete získat přístup k datům na zákaznících, objednávkách, zapojení do Storu a další, přejděte na [Web Analytics pro komerční tržiště v partnerském centru](partner-center-portal/analytics.md).
+Poskytujeme vytváření sestav o vašich nabídkách v rámci komerčního tržiště. Pokud chcete získat přístup k datům na zákaznících, objednávkách, zapojení do Storu a další, přejděte na [Web Analytics pro komerční tržiště v partnerském centru](partner-center-portal/analytics.md).
 
 ### <a name="what-is-microsofts-relationship-with-my-customers"></a>Co je vztah Microsoftu k mým zákazníkům?
 
@@ -124,7 +124,7 @@ Abychom mohli dokončit nákup za velmi nízkou cenu, doporučujeme publikovat s
 
 ### <a name="what-are-leads-from-the-commercial-marketplace-and-what-should-i-do-with-them"></a>Co dělají zákazníci z komerčního tržiště a co s nimi mám dělat?
 
-Když zákazníci použijí vaše nabídky na Microsoft AppSource a Azure Marketplace prodejní místa, zachytí se informace. Jakmile si zákazníci dokáže dostatek zájmů, vytvoří se zájemce a příležitost se pošle do systému podle vašeho výběru. Vydavatelé, kteří mají k naší komerčnímu tržišti přístup, často využívají zájemce, vyvíjí vztahy a zajímají zájem o obchody.
+Když zákazníci použijí vaše nabídky na Microsoft AppSource a Azure Marketplace prodejní místa, zachytí se informace. Jakmile si zákazníci dokáže dostatek zájmů, vytvoří se zájemce a příležitost se pošle do systému podle vašeho výběru. Vydavatelé, kteří jsou na komerčním tržišti, často sledují zájemce, vyvíjí vztahy a zavedou zájem o obchody.
 
 Další informace najdete v tématu [zájemci zákazníků z vaší nabídky na webu Marketplace](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
@@ -285,7 +285,7 @@ Další informace najdete v tématu [prahové hodnoty pro platby, metody a časo
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>V jakých zemích nebo oblastech jsou daně spravovány mým jménem?
 
-Zákazníci můžou najít řešení z našeho komerčního tržiště po celém světě a spravovat daně v mnoha umístěních. 
+Zákazníci můžou najít řešení z komerčního tržiště po celém světě a spravovat daně v mnoha umístěních. 
 
 Pokud si chcete projít úplný seznam umístění, přečtěte si [informace o zdanění pro komerční vydavatele na webu Marketplace](partner-center-portal/tax-details-paid-transactions.md).
 
@@ -305,7 +305,7 @@ Další informace najdete na webu [Výběr účtu a daňové formuláře](partne
 
 Zákazníci můžou v rámci určeného časového období zrušit odběry, aby mohli získat refundaci. U měsíčních předplatných je to 24 hodin a pro roční předplatné je 14 dní. Nabídky, které se účtují podle spotřeby po použití řešení, nejsou způsobilé k refundaci.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 ### <a name="where-can-i-find-more-information-about-the-commercial-marketplace"></a>Kde můžu najít další informace o komerčním tržišti?
 

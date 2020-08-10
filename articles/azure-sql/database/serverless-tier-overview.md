@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 7/9/2020
-ms.openlocfilehash: 38ca6528b77d9f36c84f5aacaa34a64d113b5978
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 8/7/2020
+ms.openlocfilehash: 518d3880a740de2cda4f01e362d8a5ef7865b361
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206940"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037299"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -67,7 +67,7 @@ Následující tabulka shrnuje rozdíly mezi výpočetní a zřízenou výpočet
 | | **Bezserverové výpočetní prostředí** | **Zřízené výpočetní prostředky** |
 |:---|:---|:---|
 |**Vzor využití databáze**| Občasné, nepředvídatelné využití s nižším průměrem využití výpočetních prostředků v průběhu času. | Efektivnější vzorce použití s vyšším průměrem využití výpočetních prostředků v průběhu času nebo více databází pomocí elastických fondů.|
-| **Úsilí řízení výkonu** |Lower|Vyšší|
+| **Úsilí řízení výkonu** |Nižší|Vyšší|
 |**Škálování na výpočetní výkon**|Automaticky|Ruční|
 |**Výpočetní rychlost odezvy**|Nižší po neaktivních obdobích|Projev|
 |**Členitost fakturace**|Za sekundu|Za hodinu|
@@ -76,7 +76,7 @@ Následující tabulka shrnuje rozdíly mezi výpočetní a zřízenou výpočet
 
 SQL Database bez serveru se aktuálně podporuje jenom v Pro obecné účely vrstvě na hardwaru generace 5 v modelu nákupu vCore.
 
-## <a name="autoscaling"></a>Automatického škálování
+## <a name="autoscaling"></a>Automatické škálování
 
 ### <a name="scaling-responsiveness"></a>Škálování rychlosti odezvy
 
@@ -88,7 +88,7 @@ Paměť pro databáze bez serveru se uvolní častěji než u zřízených výpo
 
 #### <a name="cache-reclamation"></a>Recyklace mezipaměti
 
-Na rozdíl od zřízených výpočetních databází je paměť z mezipaměti SQL uvolněna z databáze bez serveru, pokud je nízká úroveň využití procesoru nebo aktivní mezipaměti.  Všimněte si, že pokud je využití procesoru nízké, může využití aktivní mezipaměti zůstat vysoké v závislosti na způsobu použití a zabránit recyklaci paměti.
+Na rozdíl od zřízených výpočetních databází je paměť z mezipaměti SQL uvolněna z databáze bez serveru, pokud je nízká úroveň využití procesoru nebo aktivní mezipaměti.
 
 - Využití aktivní mezipaměti se považuje za nepatrné, pokud celková velikost naposledy použitých položek mezipaměti klesne pod prahovou hodnotu po určitou dobu.
 - Při aktivaci opětovného získání mezipaměti se cílová velikost mezipaměti zmenší přírůstkově na zlomek její předchozí velikosti a obnovení bude pokračovat pouze v případě, že je využití nízké.
@@ -96,6 +96,8 @@ Na rozdíl od zřízených výpočetních databází je paměť z mezipaměti SQ
 - Velikost mezipaměti se nikdy nesnižuje pod minimálním limitem paměti definovaným min virtuální jádra, který se dá nakonfigurovat.
 
 V neserverových a zřízených výpočetních databázích se můžou položky mezipaměti vyřadit, pokud se použije veškerá dostupná paměť.
+
+Všimněte si, že pokud je využití procesoru nízké, může využití aktivní mezipaměti zůstat vysoké v závislosti na způsobu použití a zabránit recyklaci paměti.  V důsledku pravidelného zpracování na pozadí reaguje na předchozí činnost uživatele může také docházet k dalšímu zpoždění po zastavení aktivity uživatele před tím, než dojde k opakovanému získávání paměti.  Například operace delete generují opuštěné záznamy, které jsou označené k odstranění, ale nejsou fyzicky odstraněny, dokud nebude spuštěn proces čištění Ghost, který může zahrnovat čtení datových stránek do mezipaměti.
 
 #### <a name="cache-hydration"></a>Vysazování mezipaměti
 
@@ -125,9 +127,9 @@ Při nasazování některých aktualizací služby, které vyžadují databázi 
 
 Automatické obnovení se aktivuje, pokud platí kterákoli z následujících podmínek v libovolnou dobu:
 
-|Funkce|Aktivační událost autoresume|
+|Příznak|Aktivační událost autoresume|
 |---|---|
-|Ověřování a autorizace|Přihlášení|
+|Ověřování a autorizace|Přihlásit|
 |Detekce hrozeb|Povolení nebo zakázání nastavení detekce hrozeb na úrovni databáze nebo serveru.<br>Úprava nastavení detekce hrozeb na úrovni databáze nebo serveru.|
 |Zjišťování a klasifikace dat|Přidávání, úpravy, odstraňování nebo zobrazování popisků citlivosti|
 |Auditování|Zobrazení záznamů auditu.<br>Probíhá aktualizace nebo zobrazení zásad auditování.|

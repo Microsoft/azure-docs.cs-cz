@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 657c41fbcda30ffb5af4c5a27d58ef17c02a46bc
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 553fd4e49d274fcf4c25356764182d54b91149e4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798252"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036636"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Vytvoření nabídky Dynamics 365 for Operations
 
@@ -186,19 +186,19 @@ Poskytněte aspoň jeden (a až tři) související marketingové dokumenty, jak
 
 V této části můžete zadat loga a obrázky, které se použijí při zobrazení vaší nabídky zákazníkovi. Všechny obrázky musí být ve formátu. png.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu používanou partnerským centrem.
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije toto k vytvoření **malého** loga velikosti (48 x 48 pixelů). Volitelně můžete tento text nahradit jiným obrázkem.
-
-Velikost loga se vyžaduje pro použití na různých místech v seznamu:
+Poskytněte logo vaší nabídky ve dvou velikostech v pixelech:
 
 - **Malé** (48 x 48)
-- **Velký** (mezi 216 x 216 a 350 × 350)
+- **Velký** (216 x 216)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 07/31/2020
-ms.openlocfilehash: 339926fbd3c96f6f6c279d29676950b9915b4256
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/09/2020
+ms.openlocfilehash: 82a66d88b3c7c3492e7cb90116ff8ff8e61ca1b0
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87484155"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036585"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Poznámky k verzi Azure HDInsight
 
@@ -23,9 +23,9 @@ Tento článek poskytuje informace **o nejnovějších aktualizacích vydaných*
 
 Azure HDInsight je jednou z nejoblíbenějších služeb pro podnikové zákazníky, kteří se týkají Open Source analýz v Azure.
 
-## <a name="release-date-07302020"></a>Datum vydání: 07/30/2020
+## <a name="release-date-08092020"></a>Datum vydání: 08/09/2020
 
-Tato verze platí pro HDInsight 3,6 a 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
+Tato verze se vztahuje jenom na HDInsight 4,0. Vydání HDInsight je zpřístupněno pro všechny oblasti více než několik dní. Datum vydání znamená datum vydání první oblasti. Pokud nevidíte níže uvedené změny, počkejte, až bude verze ve vaší oblasti v průběhu několika dnů živá.
 
 ## <a name="new-features"></a>Nové funkce
 ### <a name="support-for-sparkcruise"></a>Podpora pro SparkCruise
@@ -64,6 +64,11 @@ Pod JIRAs jsou pro podregistr back-Transported:
 * [PODREGISTR-22121](https://issues.apache.org/jira/browse/HIVE-22121)
 * [PODREGISTR-22136](https://issues.apache.org/jira/browse/HIVE-22136)
 * [PODREGISTR-18786](https://issues.apache.org/jira/browse/HIVE-18786)
+
+Pod JIRAs jsou pro adaptéry HBA back-Transported:
+* [HBA – 21458](https://issues.apache.org/jira/browse/HBASE-21458)
+* [HBA – 24208](https://issues.apache.org/jira/browse/HBASE-24208)
+* [HBA – 24205](https://issues.apache.org/jira/browse/HBASE-24205)
 
 ## <a name="component-version-change"></a>Změna verze součásti
 Pro tuto verzi se nezměnila žádná verze součásti. V [tomto dokumentu](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)najdete aktuální verze komponent pro HDInsight 4,0 a HDInsight 3,6.

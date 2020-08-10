@@ -1,7 +1,7 @@
 ---
 title: Autorizace přístupu k objektům blob a frontám pomocí služby Active Directory
 titleSuffix: Azure Storage
-description: Udělte přístup k objektům blob a frontám Azure pomocí Azure Active Directory.
+description: Udělte přístup k objektům blob a frontám Azure pomocí Azure Active Directory (Azure AD). Přiřaďte role Azure pro přístupová práva. Přístup k datům pomocí účtu Azure AD.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 3b29c5b4b1bf682e0f43a0bf9b0c8fcb40d70433
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a098d4bab4ea8cb083658b205dcb73da619fdbde
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827873"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035701"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory
 

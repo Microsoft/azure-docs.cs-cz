@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: mingshen
-ms.date: 07/28/2020
-ms.openlocfilehash: 0adffbb9058141ea89daefc292b937841659c879
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.date: 08/07/2020
+ms.openlocfilehash: 8d27594b33db72303c71ceb39de92b1d4340b9be
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798065"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037265"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Vytvoření nabídky virtuálních počítačů Azure na Azure Marketplace
 
@@ -38,10 +38,10 @@ Pokud jste to ještě neudělali, Projděte si [příručku pro publikování na
 - Průvodci rychlým startem
   - [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/)
   - [Šablony Azure pro rychlý Start pro GitHub](https://github.com/azure/azure-quickstart-templates)
-- Kurzy
+- Výukové kurzy
   - [Virtuální počítače s Linuxem](../../virtual-machines/linux/tutorial-manage-vm.md)
   - [Virtuální počítače s Windows](../../virtual-machines/windows/tutorial-manage-vm.md)
-- Ukázky
+- ukázky
   - [Ukázky v Azure CLI pro virtuální počítače se systémem Linux](../../virtual-machines/linux/cli-samples.md)
   - [Azure PowerShell pro virtuální počítače se systémem Linux](../../virtual-machines/linux/powershell-samples.md)
   - [Ukázky v Azure CLI pro virtuální počítače s Windows](../../virtual-machines/windows/cli-samples.md)
@@ -242,20 +242,23 @@ Poskytněte kontaktní informace Microsoftu pro použití v případě problém�
 
 Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všechny obrázky musí být ve formátu PNG. Rozmazaný obraz způsobí odmítnutí odeslání.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu, kterou používá Partnerské centrum.
 
-#### <a name="store-logos"></a>Ukládat loga
+#### <a name="azure-marketplace-logos"></a>Loga Azure Marketplace
 
-Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije tuto hodnotu k vytvoření **malého** (48 x 48 pixelů) a **středníku** (90 x 90 pixelů). Volitelně je můžete nahradit různými obrázky.
+Zadejte soubory PNG pro logo vaší nabídky s následujícími čtyřmi rozměry obrázků:
 
-Všechny tři velikosti loga se vyžadují pro použití na různých místech v seznamu:
+- **Malý** (48 &times; 48 pixelů)
+- **Střední** (90 &times; 90 pixelů)
+- **Velký** (216 &times; 216 pixelů)
+- **Roztažitelné** (255 &times; 115 pixelů)
 
-- **Malé** (48 x 48)
-- **Střední** (90 × 90)
-- **Velký** (mezi 216 x 216 a 350 × 350)
+Všechny čtyři loga jsou povinná a zobrazují se v různých Azure Marketplacech seznamech.
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 

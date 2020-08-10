@@ -1,6 +1,6 @@
 ---
 title: 'Připojení místní sítě k virtuální síti Azure: síť VPN typu Site-to-site: PowerShell'
-description: Postup vytvoření připojení IPsec z vaší místní sítě k virtuální síti Azure přes veřejný internet. Tyto kroky vám pomůžou vytvořit připojení VPN Gateway typu Site-to-Site mezi různými místy pomocí PowerShellu.
+description: Vytvořte připojení Site-to-Site VPN Gateway s protokolem IPsec z místní sítě k virtuální síti Azure přes veřejný Internet pomocí PowerShellu.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: dd246e4e6a59637c720cbaddf1258b6e01f709b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2abbab0d6a0fd39b2adf0eade77d355c18b3cc03
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986111"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036075"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Vytvoření virtuální sítě pomocí připojení VPN Site-to-Site s použitím prostředí PowerShell
 

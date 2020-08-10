@@ -1,6 +1,6 @@
 ---
 title: Přidat dlaždicovou vrstvu do map pro Android | Mapy Microsoft Azure
-description: V tomto článku se naučíte, jak vykreslit vrstvu dlaždice na mapě pomocí Android SDK Microsoft Azure Maps.
+description: Naučte se, jak přidat vrstvu dlaždice na mapu. Podívejte se na příklad, který používá Android SDK Azure Maps k přidání překrytí paprsků počasí na mapu.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e7480ba3befaf560eace2cae4ef4a822012373a2
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bae1d06f1b5a96ad99d970613d957ce75a0c1393
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126971"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037350"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Přidání vrstvy dlaždice na mapu pomocí Azure Maps Android SDK
 
@@ -37,7 +37,7 @@ Adresa URL dlaždice předaná do vrstvy dlaždice musí být adresa URL protoko
 * `{bbox-epsg-3857}`– Řetězec ohraničujícího pole ve formátu `{west},{south},{east},{north}` v prostorovém referenčním systému EPSG 3857.
 * `{subdomain}`– Zástupný symbol pro hodnoty subdomény, pokud je zadána hodnota subdomény.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li dokončit proces v tomto článku, je nutné nainstalovat [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) , aby se načetla mapa.
 

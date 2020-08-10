@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 923b3fbb617f46ba0551f6b21c384331559da2f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40fa6bce67aa6c5643e4a153da610dce65907b56
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263241"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036332"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role a oprávnění pro službu Azure Data Factory
 
@@ -26,17 +26,17 @@ Tento článek popisuje role potřebné k vytváření a správě Azure Data Fac
 
 ## <a name="roles-and-requirements"></a>Role a požadavky
 
-Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem role *přispěvatel* nebo *vlastník* nebo *správcem* předplatného Azure. Pokud chcete zobrazit oprávnění, která máte v předplatném, na webu Azure Portal v pravém horním rohu vyberte své uživatelské jméno a potom **Oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. 
+Pokud chcete vytvořit Data Factory instance, uživatelský účet, který použijete pro přihlášení k Azure, musí být členem role *Přispěvatel* , role *vlastníka* nebo *správce* předplatného Azure. Pokud chcete zobrazit oprávnění, která máte v předplatném, na webu Azure Portal v pravém horním rohu vyberte své uživatelské jméno a potom **Oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. 
 
 Při vytváření a správě podřízených prostředků pro službu Data Factory, včetně datových sad, propojených služeb, kanálů, triggerů a prostředí Integration Runtime, platí následující požadavky:
-- Pokud chcete vytvářet a spravovat podřízené prostředky na webu Azure Portal, je potřeba, abyste patřili do role **Přispěvatel Data Factory** na úrovni skupiny prostředků nebo vyšší.
+- K vytváření a správě podřízených prostředků v Azure Portal musíte patřit do role **přispěvatel Data Factory** na úrovni **skupiny prostředků** nebo výše.
 - Pro vytváření a správu podřízených prostředků pomocí PowerShellu nebo sady SDK na úrovni prostředku nebo vyšší je dostatečná role **Přispěvatel**.
 
 Ukázku pokynů pro přidání uživatele do role najdete v článku věnovaném [přidávání rolí](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
 ## <a name="set-up-permissions"></a>Nastavení oprávnění
 
-Po vytvoření Data Factory možná budete chtít umožnit ostatním uživatelům pracovat s datovou továrnou. Pokud chcete tento přístup ostatním uživatelům udělit, musíte je přidat do předdefinované role **přispěvatele Data Factory** ve skupině prostředků, která obsahuje datovou továrnu.
+Po vytvoření Data Factory možná budete chtít umožnit ostatním uživatelům pracovat s datovou továrnou. Pokud chcete tento přístup ostatním uživatelům udělit, musíte je přidat do předdefinované role **přispěvatele Data Factory** ve **skupině prostředků** , která obsahuje data Factory.
 
 ### <a name="scope-of-the-data-factory-contributor-role"></a>Rozsah role Přispěvatel Data Factory
 
@@ -50,7 +50,7 @@ Další informace o této roli najdete v tématu [Data Factory role přispěvate
 
 ### <a name="resource-manager-template-deployment"></a>Nasazení šablony Správce prostředků
 
-Role **přispěvatel Data Factory** na úrovni skupiny prostředků nebo výše umožňuje uživatelům nasadit správce prostředků šablony. V důsledku toho mohou členové role použít šablony Správce prostředků k nasazení datových továren a jejich podřízených prostředků, včetně datových sad, propojených služeb, kanálů, triggerů a prostředí Integration runtime. Členství v této roli ale neumožňuje uživateli vytvářet další prostředky.
+Role **přispěvatel Data Factory** na úrovni skupiny prostředků nebo výše umožňuje uživatelům nasadit správce prostředků šablony. V důsledku toho mohou členové role použít šablony Správce prostředků k nasazení datových továren a jejich podřízených prostředků, včetně datových sad, propojených služeb, kanálů, triggerů a prostředí Integration runtime. Členství v této roli neumožňuje uživateli vytvářet další prostředky.
 
 Oprávnění pro Azure Repos a GitHub jsou nezávislá na oprávněních Data Factory. V důsledku toho uživatel s oprávněními úložiště, který je členem role čtenář, může upravovat Data Factory podřízených prostředků a potvrdit změny v úložišti, ale nemůže tyto změny publikovat.
 

@@ -1,18 +1,18 @@
 ---
 title: Rychlý start pro správu sdílených složek Azure pomocí webu Azure Portal
-description: V tomto rychlém startu zjistíte, jak pomocí webu Azure Portal spravovat službu Soubory Azure.
+description: Přečtěte si téma jak vytvořit a spravovat sdílené složky Azure v Azure Portal. Vytvořte účet úložiště, vytvořte sdílenou složku Azure a použijte sdílenou složku Azure.
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fef3daf6e9e535736002e309e3d27491364dc553
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f68d9f620b686ab20e93584bdd7c024d8a943577
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71260292"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036534"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Rychlý start: Vytváření a správa sdílených složek Azure pomocí webu Azure Portal 
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systémech Windows, Linux a macOS. Tato příručka vás provede základy práce se sdílenými složkami Azure pomocí webu [Azure Portal](https://portal.azure.com/).
@@ -84,4 +84,4 @@ Kliknutím pravým tlačítkem na soubor, který jste nahráli, můžete stáhno
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Co je služba Soubory Azure?](storage-files-introduction.md)
+> [Co je Azure Files?](storage-files-introduction.md)

@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 4e7828810a069756d1a0cde55ab47915ad11acc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2bd404d59b57eae111ba969fb7dcf20a98de35
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249682"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036364"
 ---
 # <a name="monitor-copy-activity"></a>Monitorování aktivity kopírování
 
@@ -50,12 +50,14 @@ Dolní **Podrobnosti a trvání spuštění** popisují klíčové kroky, který
 
 V části výstup **výsledků spuštění aktivity kopírování**  >  **Output** , která se používá k vykreslování zobrazení monitorování uživatelského rozhraní, se také vrátí podrobnosti o spuštění aktivity kopírování a výkonnostní charakteristiky. Následuje úplný seznam vlastností, které mohou být vráceny. Uvidíte jenom vlastnosti, které se vztahují k vašemu scénáři kopírování. Informace o tom, jak programově monitorovat spuštění aktivit prostřednictvím kódu programu, najdete v tématu [programové sledování služby Azure Data Factory](monitor-programmatically.md).
 
-| Název vlastnosti  | Description | Jednotka ve výstupu |
+| Název vlastnosti  | Popis | Jednotka ve výstupu |
 |:--- |:--- |:--- |
 | Čtení z | Skutečné množství dat načtených ze zdroje. | Hodnota Int64, v bajtech |
 | Napsáno | Skutečná připojená Data zapsaná nebo potvrzená do jímky. Velikost může být jiná než `dataRead` velikost, protože souvisí s tím, jak jednotlivé úložiště dat data ukládají. | Hodnota Int64, v bajtech |
 | filesRead | Počet souborů načtených ze zdroje založeného na souboru. | Hodnota Int64 (žádná jednotka) |
 | filesWritten | Počet souborů zapsaných nebo potvrzených do jímky založené na souborech. | Hodnota Int64 (žádná jednotka) |
+| filesSkipped | Počet souborů, které byly vynechány ze zdroje založeného na souboru. | Hodnota Int64 (žádná jednotka) |
+| dataConsistencyVerification | Podrobnosti ověření konzistence dat, kde můžete zjistit, zda byla zkopírovaná data ověřena pro zajištění konzistence mezi zdrojovým a cílovým úložištěm. Další informace najdete v [tomto článku](copy-activity-data-consistency.md#monitoring). | Pole |
 | sourcePeakConnections | Nejvyšší počet souběžných připojení navázaných ke zdrojovému úložišti dat během spuštění aktivity kopírování. | Hodnota Int64 (žádná jednotka) |
 | sinkPeakConnections | Nejvyšší počet souběžných připojení navázaných na úložiště dat jímky během spuštění aktivity kopírování. | Hodnota Int64 (žádná jednotka) |
 | rowsRead | Počet načtených řádků ze zdroje Tato metrika se nevztahuje na kopírování souborů tak, jak jsou, bez jejich analýzy, například když jsou datové sady typu binární a jímka v binárním formátu nebo jiný typ formátu se shodným nastavením. | Hodnota Int64 (žádná jednotka) |
@@ -71,9 +73,11 @@ V části výstup **výsledků spuštění aktivity kopírování**  >  **Output
 | effectiveIntegrationRuntime | Prostředí Integration runtime (IR) nebo modulu runtime, které slouží k napájení spuštění aktivity, ve formátu `<IR name> (<region if it's Azure IR>)` . | Text (String) |
 | usedDataIntegrationUnits | Efektivní jednotky integrace dat během kopírování. | Hodnota Int32 |
 | usedParallelCopies | Efektivní parallelCopies během kopírování. | Hodnota Int32 |
-| redirectRowPath | Cesta k protokolu vynechaných nekompatibilních řádků v úložišti objektů blob, které konfigurujete ve `redirectIncompatibleRowSettings` Vlastnosti. Podívejte se na odolnost [proti chybám](copy-activity-overview.md#fault-tolerance). | Text (String) |
+| logPath | Cesta k protokolu relace vynechaných dat v úložišti objektů BLOB Podívejte se na odolnost [proti chybám](copy-activity-overview.md#fault-tolerance). | Text (String) |
 | executionDetails | Další podrobnosti o fázích, které aktivita kopírování prochází, a o příslušných krocích, trváních, konfiguracích a tak dále. Nedoporučujeme tuto část analyzovat, protože by se mohla změnit. Abyste lépe pochopili, jak vám pomůže pochopit a řešit potíže s kopírováním, přečtěte si téma [monitorování vizuálně](#monitor-visually) . | Pole |
 | perfRecommendation | Kopírování tipů pro ladění výkonu. Podrobnosti najdete v tématu [tipy pro ladění výkonu](copy-activity-performance-troubleshooting.md#performance-tuning-tips) . | Pole |
+| billingReference | Spotřeba fakturace pro daný běh. Další informace o [monitorování spotřeby na úrovni spuštění aktivit](plan-manage-costs.md#monitor-consumption-at-activity-run-level). | Objekt |
+| durationInQueue | Doba zařazení do fronty v sekundách, než se začne spouštět aktivita kopírování. | Objekt |
 
 **Příklad:**
 
@@ -83,6 +87,7 @@ V části výstup **výsledků spuštění aktivity kopírování**  >  **Output
     "dataWritten": 1180089300500,
     "filesRead": 110,
     "filesWritten": 110,
+    "filesSkipped": 0,
     "sourcePeakConnections": 640,
     "sinkPeakConnections": 1024,
     "copyDuration": 388,
@@ -92,6 +97,11 @@ V části výstup **výsledků spuštění aktivity kopírování**  >  **Output
     "usedDataIntegrationUnits": 128,
     "billingReference": "{\"activityType\":\"DataMovement\",\"billableDuration\":[{\"Managed\":11.733333333333336}]}",
     "usedParallelCopies": 64,
+    "dataConsistencyVerification": 
+    { 
+        "VerificationResult": "Verified", 
+        "InconsistentData": "None" 
+    },
     "executionDetails": [
         {
             "source": {

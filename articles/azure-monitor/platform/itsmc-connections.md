@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 2df7d8273b2b25cd0171b38e5cc0ada557ea9a2d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bf1721b45ff63c225c378e50bff9040948820c8b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325351"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035021"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů nebo služeb ITSM s využitím ITSM konektoru
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](./itsmc-overview.md).
@@ -179,13 +179,14 @@ Následující části obsahují podrobné informace o tom, jak připojit produk
 ### <a name="prerequisites"></a>Požadavky
 Ujistěte se, že jsou splněné následující předpoklady:
 - ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- Podporované verze ServiceNow: New York, Madrid, Londýn, Kingston, Jakarta, Istanbul, Helsinky, Ženeva.
+- Podporované verze ServiceNow: Orlandu, New York, Madrid, Londýn, Kingston, Jakarta, Istanbul, Helsinky, Ženeva.
 > [!NOTE]
 > ITSMC podporuje nyní jenom oficiální nabídku SaaS ze služby. Soukromá nasazení služby teď nejsou podporovaná. 
 
 **Správci ServiceNow musí v rámci své instance ServiceNow provádět následující**:
 - Vygenerujte ID klienta a tajný klíč klienta pro produkt ServiceNow. Informace o tom, jak vygenerovat ID a tajný kód klienta, najdete v následujících informacích:
 
+    - [Nastavení OAuth pro Orlandu](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Nastavit OAuth pro New York](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Nastavte OAuth pro Madrid.](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Nastavení OAuth pro Londýn](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
@@ -206,7 +207,7 @@ Ujistěte se, že jsou splněné následující předpoklady:
 > ![SNĚH – definice OAuth systému](media/itsmc-connections/snow-system-oauth.png)
 > 3. Klikněte na odvolat přístup a než na odvolat.
 
-- Nainstalujte uživatelskou aplikaci pro Microsoft Log Analytics Integration (aplikace ServiceNow). [Přečtěte si další informace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
+- Nainstalujte uživatelskou aplikaci pro Microsoft Log Analytics Integration (aplikace ServiceNow). [Další informace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Vytvoření role uživatele integrace pro uživatelskou aplikaci nainstalovanou. [Tady najdete](#create-integration-user-role-in-servicenow-app)informace o tom, jak vytvořit roli uživatele Integration.
 
 ### <a name="connection-procedure"></a>**Postup připojení**

@@ -2,15 +2,15 @@
 title: Vytvořit šablonu – Visual Studio Code
 description: Při práci na šablonách Resource Manageru můžete použít Visual Studio Code a rozšíření Nástroje Azure Resource Manageru.
 author: neilpeterson
-ms.date: 04/17/2020
+ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 06e7d3f291d32cecdcbf4d1f22ff9976d8970109
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040524"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034973"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Rychlý Start: vytvoření šablon Azure Resource Manager pomocí Visual Studio Code
 
@@ -26,7 +26,7 @@ Vytvořte a otevřete pomocí Visual Studio Code nový soubor s názvem *azurede
 
 Tuto možnost vyberte `arm!` , pokud chcete vytvořit šablonu vymezenou pro nasazení skupiny prostředků Azure.
 
-![Obrázek znázorňující Azure Resource Manager generování uživatelského rozhraní](./media/quickstart-create-templates-use-visual-studio-code/1.png)
+![Obrázek znázorňující Azure Resource Manager fragmenty uživatelského rozhraní](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
 Tento fragment kódu vytvoří základní stavební bloky pro šablonu ARM.
 
@@ -68,7 +68,7 @@ Chcete-li použít možnosti dokončování, odstraňte `megaStorage` kurzor do 
 
 Nyní vytvořte a použijte parametr pro zadání názvu účtu úložiště.
 
-Umístěte kurzor do bloku Parameters, přidejte návratový znak, zadejte `par` a potom vyberte `arm-param-value` fragment. Tato akce přidá obecný parametr do šablony.
+Umístěte kurzor do bloku Parameters, přidejte návratový znak, zadejte `"` a potom vyberte `new-parameter` fragment. Tato akce přidá obecný parametr do šablony.
 
 ![Obrázek znázorňující parametr přidaný do šablony ARM](./media/quickstart-create-templates-use-visual-studio-code/9.png)
 

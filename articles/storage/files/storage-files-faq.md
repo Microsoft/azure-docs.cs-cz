@@ -1,18 +1,18 @@
 ---
 title: Nejčastější dotazy týkající se souborů Azure | Microsoft Docs
-description: Přečtěte si odpovědi na nejčastější dotazy týkající se služby Azure Files.
+description: Získejte odpovědi na nejčastější dotazy k souborům Azure. Sdílené složky Azure můžete připojit souběžně v cloudových nebo místních nasazeních Windows, Linux nebo macOS.
 author: roygara
 ms.service: storage
 ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 87c1aa4d65b313f4c068ef11c9d2209e9318ef02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bdc9451f0dbc32e14197cde48a3613196b864c0
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482866"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037129"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
@@ -425,7 +425,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 **Návody používat soubory Azure s IBM MQ?**  
     Společnost IBM vydala dokument, který pomáhá zákazníkům IBM MQ nakonfigurovat soubory Azure pomocí služby IBM. Další informace najdete v tématu [jak nastavit správce front více instancí IBM MQ pomocí služby Microsoft Azure Files](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 * [Řešení potíží se soubory Azure v systému Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Řešení potíží se soubory Azure v systému Linux](storage-troubleshoot-linux-file-connection-problems.md)
-* [Řešení problémů se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)
+* [Řešit problémy se Synchronizací souborů Azure](storage-sync-files-troubleshoot.md)

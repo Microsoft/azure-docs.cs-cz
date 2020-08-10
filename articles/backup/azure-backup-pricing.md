@@ -3,12 +3,12 @@ title: Ceny služby Azure Backup
 description: Naučte se odhadnout náklady na rozpočtování Azure Backup cen.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 274a61ff5a98fa1291f9d8917af9ab1d1b3da2fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cdb3dc756e1ee7e32453acd7246952c84abebaf7
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391107"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035752"
 ---
 # <a name="azure-backup-pricing"></a>Ceny služby Azure Backup
 
@@ -38,7 +38,7 @@ Pokud chcete odhadnout náklady na zálohování virtuálních počítačů Azur
 - Počet serverů s touto velikostí
 
 - Jaké jsou očekávané množství změn dat na těchto serverech?<br>
-  Změny odkazují na množství změn v datech. Pokud byste například měli virtuální počítač s 200 GB dat, která se mají zálohovat, a pokud se každý den změní 10 GB, denní změna je 5%.
+  Změny odkazují na množství změn v datech. Pokud byste například měli virtuální počítač s 200 GB dat, která se mají zálohovat, a 10 GB změn se každý den změní, denní změna je 5%.
 
   - Vyššími změnami bude znamenat, že zálohujete další data.
 
@@ -58,7 +58,7 @@ Pokud chcete odhadnout náklady na zálohování virtuálních počítačů Azur
 
   - Jak dlouho očekáváte, že se mají zachovat snímky pro okamžité obnovení? (1-5 dní)
 
-    - Tato možnost umožňuje rychlé obnovení z hlediska až sedmi dnů pomocí snímků uložených na discích.
+    - Tato možnost umožňuje rychlé obnovení z až sedmi dnů pomocí snímků uložených na discích.
 
 - **Volitelné** – selektivní zálohování disku
 
@@ -129,6 +129,7 @@ Pokud chcete odhadnout náklady na zálohování SAP HANA serverů běžících 
 - Celková velikost SAP HANAch databází, které se pokoušíte zálohovat Mělo by se jednat o součet velikosti úplných záloh každé databáze, jak je uvedeno SAP HANA.
 - Počet SAP HANA serverů s výše uvedenou velikostí
 - Jaká je očekávaná velikost záloh protokolu?
+  
   - % Udává průměrnou velikost denního protokolu jako% celkové velikosti SAP HANA databází, které zálohujete na SAP HANA serveru.
 - Jaké je očekávané množství každodenních změn dat na těchto serverech?
   - % Indikuje průměrnou velikost denních změn jako% celkové velikosti SAP HANA databází, které zálohujete na SAP HANA serveru.
@@ -144,9 +145,37 @@ Pokud chcete odhadnout náklady na zálohování SAP HANA serverů běžících 
   - Jak dlouho očekáváte zachování "měsíčních" záloh? (v měsících)
   - Jak dlouho očekáváte, že se mají uchovávat roční zálohy? (v letech)
 - **Volitelné** – redundance záložního úložiště
+  
   - To indikuje redundanci účtu úložiště, do kterého se data zálohují. K nejvyšší dostupnosti doporučujeme používat **GRS** . Vzhledem k tomu, že je kopie zálohovaných dat uchována v jiné oblasti, pomáhá splnit několik standardů dodržování předpisů. Pokud zálohujete vývojové nebo testovací prostředí, která nepotřebují zálohování na podnikové úrovni, změňte redundanci na **LRS** .
 - **Volitelné** – změňte regionální ceny nebo použijte zvýhodněné sazby.
+  
   - Pokud chcete kontrolovat odhady pro jinou oblast nebo zlevněné sazby, vyberte u **odhadů vyzkoušet pro jinou oblast** možnost **Ano** a zadejte sazby, u kterých chcete spustit odhady.
+  
+## <a name="estimate-costs-for-backing-up-azure-file-shares"></a>Odhadované náklady na zálohování sdílených složek Azure
+
+Pokud chcete odhadnout náklady na zálohování sdílených složek Azure pomocí [řešení zálohování založeného na snímku](azure-file-share-backup-overview.md) , které nabízí Azure Backup, budete potřebovat následující parametry:
+
+- Velikost (**v GB**) sdílených složek souborů, které chcete zálohovat.
+
+- Pokud chcete zálohovat sdílené složky mezi několika účty úložiště, určete počet účtů úložiště, které hostují sdílené složky s výše uvedenou velikostí.
+
+- U sdílených složek, které chcete zálohovat, se očekávalo množství změn dat. <br>Změny odkazují na množství změn v datech a přímo ovlivní velikost úložiště snímků. Například pokud máte sdílenou složku s 200 GB dat, která se mají zálohovat, a 10 GB změn se každý den změní, denní změna je 5%.
+  - Vyšší změna znamená, že množství změn dat v obsahu sdílené složky každý den je vysoké, takže přírůstkový snímek (zachytávání pouze změn dat) by měl být také větší.
+  - Vyberte nízká (1%), střední (3%) nebo vysoká (5%) podle vlastností a využití sdílené složky.
+  - Pokud **znáte přesnou** variantu pro sdílenou složku, můžete v rozevíracím seznamu vybrat možnost **zadat vlastní%** . Zadejte hodnoty (v%) pro denní, týdenní, měsíční a roční změny.
+
+- Zadejte účet úložiště (Standard nebo Premium) a nastavení redundance úložiště účtu úložiště hostujícího zálohovanou sdílenou složku. <br>V aktuálním řešení zálohování pro sdílené složky Azure se snímky ukládají do stejného účtu úložiště jako zálohovaná sdílená složka. Takže náklady na úložiště spojené s snímky se účtují jako součást služby soubory Azure, a to na základě cen snímků pro typ účtu a nastavení redundance účtu úložiště hostujícího zálohovanou sdílenou složku a snímky.
+
+- Uchovávání pro různé zálohy
+  - Jak dlouho očekáváte uchovávání každodenních záloh? (ve dnech)
+  - Jak dlouho očekáváte, že se mají uchovat zálohy "týdně"? (v týdnech)
+  - Jak dlouho očekáváte zachování "měsíčních" záloh? (v měsících)
+  - Jak dlouho očekáváte, že se mají uchovávat roční zálohy? (v letech)
+
+  Maximální podporované hodnoty uchování v každé kategorii najdete v [matici podpory Azure File Share support](azure-file-share-support-matrix.md#retention-limits) .
+
+- **Volitelné** – změňte regionální ceny nebo použijte zvýhodněné sazby.
+  - Výchozí hodnoty nastavené pro náklady na úložiště snímků za GB a náklady na chráněnou instanci ve Estimator jsou pro oblast Východní USA. Pokud chcete kontrolovat své odhady pro jinou oblast nebo zlevněné sazby, vyberte u možnosti **vyzkoušet odhady pro jinou oblast?** možnost **Ano** a zadejte sazby, u kterých chcete odhady spustit.
 
 ## <a name="next-steps"></a>Další kroky
 

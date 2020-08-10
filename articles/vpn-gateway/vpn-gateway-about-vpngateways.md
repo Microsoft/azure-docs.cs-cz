@@ -1,6 +1,6 @@
 ---
 title: O službě Azure VPN Gateway
-description: Zjistěte, co je brána VPN a jak se pomocí ní můžete připojit k virtuálním sítím Azure. Zahrnuje řešení IPSec/IKE typu Site-to-Site mezi místními sítěmi a IPSec/IKE typu VNet-to-VNet a sítě VPN typu Point-to-Site.
+description: Přečtěte si, co je VPN Gateway a jak používat VPN Gateway pro připojení k virtuálním sítím VPN typu Site-to-site, VNet-to-VNet a VPN typu Point-to-site s protokolem IPsec.
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 06/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ec008fa97c75f5ae7c79e2b98efc9005df1014f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c195fd3c6d3de518a70070327de5c12d5d210b6a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300043"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036874"
 ---
 # <a name="what-is-vpn-gateway"></a>Co je VPN Gateway?
 
@@ -37,7 +37,7 @@ Připojení brány VPN se spoléhá na několik prostředků nakonfigurovaných 
 
 Je důležité vědět, že pro připojení brány VPN jsou dostupné různé konfigurace. Musíte určit, která konfigurace bude nejlépe vyhovovat vašim potřebám. Například připojení Point-to-site, Site-to-site a souběžná existující ExpressRoute/site-to-site mají různé pokyny a požadavky na konfiguraci. Informace o diagramech návrhu a topologie připojení najdete v tématu [design](design.md).
 
-### <a name="settings"></a><a name="settings"></a>Nastavení
+### <a name="settings"></a><a name="settings"></a>Možnost
 
 Nastavení, která jste pro jednotlivé zdroje zvolili, jsou pro vytvoření úspěšného připojení zásadní. Informace o jednotlivých prostředcích a nastaveních služby VPN Gateway najdete v tématu [Informace o nastavení služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md). Tento článek obsahuje informace, které vám pomůžou pochopit typy bran, skladové položky bran, typy sítí VPN, typy připojení, podsítě brány, místní síťové brány a různá další nastavení prostředků, o kterých možná uvažujete.
 
@@ -51,7 +51,7 @@ Následující tabulka vám může pomoci se zvolením nejlepší možnosti při
 
 [!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
-## <a name="gateway-skus"></a><a name="gwsku"></a>SKU brány
+## <a name="gateway-skus"></a><a name="gwsku"></a>Skladové položky brány
 
 Při vytváření brány virtuální sítě zadáváte jednotku SKU brány, kterou chcete použít. Vyberte jednotku SKU, která splňuje vaše požadavky na základě typů úloh, propustnosti, funkcí a SLA.
 

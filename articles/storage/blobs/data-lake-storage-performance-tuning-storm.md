@@ -1,6 +1,6 @@
 ---
 title: 'Ladění výkonu: zaplavení, HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
-description: Pokyny pro ladění výkonu Azure Data Lake Storage Gen2
+description: Seznamte se s pokyny pro optimalizaci výkonu topologie Azure v clusteru Azure HDInsight a Azure Data Lake Storage Gen2.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 60e0d3fc22fdfc158110e9936748cc0bda280853
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85499839992f872896153e360507d7d1ba7fea38
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465911"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037197"
 ---
 # <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>Ladění výkonu: zaplavení, HDInsight & Azure Data Lake Storage Gen2
 

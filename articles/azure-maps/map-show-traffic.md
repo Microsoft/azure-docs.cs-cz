@@ -1,6 +1,6 @@
 ---
 title: Zobrazit provoz na mapě | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak zobrazit data o přenosech na mapě pomocí webové sady SDK Microsoft Azure Maps.
+description: Zjistěte, jak přidat data o provozu do map. Přečtěte si o datech toku a podívejte se, jak pomocí Azure Maps webové sady SDK přidat data incidentů a data toků do map.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 5bb088c4650cfdfec59383a7bcf8f340952e5d55
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 063fbd2ad4f2f5d427fd2cb39b8ce9b231eba374
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273010"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036421"
 ---
 # <a name="show-traffic-on-the-map"></a>Zobrazit provoz na mapě
 
@@ -58,7 +58,7 @@ Projděte si <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>Možnosti přek
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [TrafficOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions)

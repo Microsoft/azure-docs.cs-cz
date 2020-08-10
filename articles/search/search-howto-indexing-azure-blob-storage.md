@@ -1,7 +1,7 @@
 ---
 title: Hledání v obsahu služby Azure Blob Storage
 titleSuffix: Azure Cognitive Search
-description: Naučte se indexovat Blob Storage Azure a extrahovat text z dokumentů pomocí Azure Kognitivní hledání.
+description: Naučte se indexovat dokumenty v Azure Blob Storage a extrahovat text z dokumentů pomocí Azure Kognitivní hledání.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 29e123666b35e4659e68a1a925047267f8519940
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6295dfbbee2d44b61b5dc832163adc8d643ab0f1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496447"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036143"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Postup indexování dokumentů v Azure Blob Storage s využitím Azure Kognitivní hledání
 
@@ -148,7 +148,7 @@ V závislosti na [konfiguraci indexeru](#PartsOfBlobToIndex)může indexer objek
 
   * ** \_ \_ název úložiště metadat** (EDM. String) – název souboru objektu BLOB. Pokud máte například objekt BLOB/my-Container/My-Folder/subfolder/resume.pdf, hodnota tohoto pole je `resume.pdf` .
   * ** \_ \_ cesta úložiště metadat** (EDM. String) – úplný identifikátor URI objektu blob, včetně účtu úložiště. Například `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`.
-  * ** \_ \_ \_ typ obsahu úložiště metadat** (EDM. String) – typ obsahu určený kódem, který jste použili k nahrání objektu BLOB. Například `application/octet-stream`.
+  * ** \_ \_ \_ typ obsahu úložiště metadat** (EDM. String) – typ obsahu určený kódem, který jste použili k nahrání objektu BLOB. Například, `application/octet-stream`.
   * ** \_ \_ naposledy \_ upravená metadata úložiště** (EDM. DateTimeOffset) – poslední změněné časové razítko pro objekt BLOB. Azure Kognitivní hledání používá toto časové razítko k identifikaci změněných objektů blob, aby nedocházelo k přeindexování všeho po počátečním indexování.
   * ** \_ \_ velikost úložiště metadat** (EDM. Int64) – velikost objektu BLOB v bajtech
   * **Metadata \_ úložiště \_ \_ MD5** (EDM. String) – hash MD5 obsahu objektů blob, pokud je k dispozici.

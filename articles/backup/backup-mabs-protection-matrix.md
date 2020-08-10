@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) v3 UR1 Protection Matrix
 description: Tento článek obsahuje matrici podpory obsahující všechny úlohy, datové typy a instalace, které Azure Backup Server chrání.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 974820389e84f727a9aab284716b3be9020c6dd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cdbe874baf45d9858acbf891af3c0aae4bd0c2d2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032591"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036721"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) v3 UR1 Protection Matrix
 
@@ -23,6 +23,9 @@ Pro MABS V3 UR1 použijte následující matrici:
 * Instalace MABS – počítač/umístění, kam chcete nainstalovat MABS.
 
 * Ochrana a obnovení – vypíše podrobné informace o úlohách, jako je například podporovaný kontejner úložiště nebo podporované nasazení.
+
+>[!NOTE]
+>Podpora agenta 32 ochrany je zastaralá s MABS V3 UR1. Viz vyřazení [agenta ochrany 32-bit](backup-mabs-whats-new-mabs.md#32-bit-protection-agent-deprecation).
 
 ## <a name="protection-support-matrix"></a>Přehled funkcí pro podporu ochrany
 

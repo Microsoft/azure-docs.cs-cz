@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 650210ab965936de6e48b2ace3f2042857760053
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 000413267d09f5f51ffdb50ccc5aeaab78a18b5e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800003"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036653"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps
 
@@ -190,19 +190,19 @@ Poskytněte aspoň jeden (a až tři) související marketingové dokumenty, jak
 
 Poskytněte loga a obrázky pro vaši nabídku. Všechny obrázky musí být ve formátu PNG.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu používanou partnerským centrem.
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije toto k vytvoření **malého** loga velikosti (48 x 48 pixelů). Volitelně můžete tento text nahradit jiným obrázkem.
+Poskytněte logo vaší nabídky ve třech velikostech v pixelech:
+- **Malý** (povinný; 48 × 48)
+- **Velký** (povinný; 216 × 216)
+- **Roztažitelné** (volitelné; 255 × 115)
 
-Velikost loga se vyžaduje pro použití na různých místech v seznamu:
-
-- **Malé** (48 x 48)
-- **Velký** (mezi 216 x 216 a 350 × 350)
-
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 

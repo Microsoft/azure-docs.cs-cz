@@ -9,19 +9,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: 706635e019f77fe31c5efb609c6f4028a0304446
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 98bb4cb54b9e26de9f38efdb554461f265f69aa9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874296"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036891"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Velikosti virtuálních počítačů pro obecné účely
 
 Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený poměr PROCESORů k paměti. Tato možnost je ideální pro testování a vývoj, malé až střední databáze a webové servery s nízkým až středním provozem. Tento článek poskytuje informace o nabídkách pro obecné účely výpočtu.
-
-
-Přidání řádku pro testování. Přidání [odkazu](https://aka.ms/computecontentrequest) pro testování. Přidání **tučného** příkazu pro testování
 
 - Virtuální počítače [řady Av2-Series](av2-series.md) je možné nasadit na nejrůznější typy hardwaru a procesory. Virtuální počítače řady a-Series mají pro úlohy na vstupní úrovni, jako je vývoj a testování, nejvhodnější konfigurace výkonu a paměti procesoru. Velikost je omezována v závislosti na použitém hardwaru a nabízí konzistentní výkon procesoru pro spuštěné instance bez ohledu na hardware. Pokud chcete zjistit fyzický hardware, na kterém je virtuální počítač dané velikosti nasazený, zadejte dotaz na virtuální hardware přímo z virtuálního počítače. Příklady případů použití zahrnují vývojové a testovací servery, webové servery s nízkým provozem, malé až střední databáze, testování konceptů a úložiště kódu.
 

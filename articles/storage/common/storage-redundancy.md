@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/08/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8fa775ab4d183d75fef41529a95555fe3bcdc91c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 556d3df41b7ee66bfb2b32b8a566d7172f45e313
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827839"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034460"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -51,11 +51,13 @@ LRS je dobrou volbou pro následující scénáře:
 
 Zóna – redundantní úložiště (ZRS) replikuje data Azure Storage synchronně v rámci tří zón dostupnosti Azure v primární oblasti. Každá zóna dostupnosti je samostatné fyzické místo nezávislé na napájení, chlazení a síti. ZRS nabízí odolnost pro Azure Storage datových objektů nejméně 99,9999999999% (12 9) v průběhu daného roku.
 
-Pomocí ZRS jsou vaše data stále přístupná pro operace čtení i zápisu i v případě, že zóna nebude k dispozici. Pokud se zóna bude nedostupná, Azure si neuvolní síťové aktualizace, jako je třeba přesměrování DNS. Tyto aktualizace mohou ovlivnit vaši aplikaci, pokud přistupujete k datům před dokončením aktualizací. Při navrhování aplikací pro ZRS se řiďte postupy pro zpracování přechodných chyb, včetně implementace zásad opakování pomocí exponenciálního zálohování.
+Pomocí ZRS jsou vaše data stále přístupná pro operace čtení i zápisu i v případě, že zóna nebude k dispozici. Pokud se zóna neuvolní, Azure si z nich vybere aktualizace sítě, jako je třeba nasměrování DNS. Tyto aktualizace mohou ovlivnit vaši aplikaci, pokud přistupujete k datům před dokončením aktualizací. Při navrhování aplikací pro ZRS se řiďte postupy pro zpracování přechodných chyb, včetně implementace zásad opakování pomocí exponenciálního zálohování.
 
 Požadavek na zápis do účtu úložiště, který používá ZRS, proběhne synchronně. Operace zápisu se úspěšně vrátí až po zápisu dat do všech replik ve třech zónách dostupnosti.
 
-Microsoft doporučuje používat ZRS v primární oblasti pro scénáře, které vyžadují konzistenci, odolnost a vysokou dostupnost. ZRS poskytuje vynikající výkon, nízkou latenci a odolnost pro vaše data, pokud je dočasně nedostupná. ZRS sám o sobě však nemusí chránit vaše data před regionální havárií, při které je trvale ovlivněno více zón. V případě ochrany před místními katastrofami Microsoft doporučuje použití [geograficky redundantního úložiště](#geo-zone-redundant-storage) (GZRS), které používá ZRS v primární oblasti a také geograficky replikuje vaše data do sekundární oblasti.
+Microsoft doporučuje používat ZRS v primární oblasti pro scénáře, které vyžadují konzistenci, odolnost a vysokou dostupnost. Doporučujeme také používat ZRS, pokud chcete omezit aplikaci na replikaci dat pouze v zemi nebo oblasti z důvodu požadavků na zásady správného řízení dat.
+
+ZRS poskytuje vynikající výkon, nízkou latenci a odolnost pro vaše data, pokud je dočasně nedostupná. ZRS sám o sobě však nemusí chránit vaše data před regionální havárií, při které je trvale ovlivněno více zón. V případě ochrany před místními katastrofami Microsoft doporučuje použití [geograficky redundantního úložiště](#geo-zone-redundant-storage) (GZRS), které používá ZRS v primární oblasti a také geograficky replikuje vaše data do sekundární oblasti.
 
 Následující tabulka uvádí, které typy účtů úložiště podporují ZRS, ve kterých oblastech:
 
@@ -189,7 +191,7 @@ Informace o cenách pro jednotlivé možnosti redundance najdete v tématu [Azur
 
 Azure Storage pravidelně ověřuje integritu dat uložených pomocí redundantních kontrol redundance (CRCs). Pokud je zjištěno poškození dat, je opraveno pomocí redundantních dat. Azure Storage taky vypočítává kontrolní součty pro veškerý síťový provoz, aby se zjistilo poškození datových paketů při ukládání nebo načítání dat.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Podívejte se na vlastnost čas poslední synchronizace pro účet úložiště.](last-sync-time-get.md)
 - [Změna možnosti redundance pro účet úložiště](redundancy-migration.md)

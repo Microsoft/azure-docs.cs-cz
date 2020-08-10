@@ -1,6 +1,6 @@
 ---
 title: Přidat vrstvu symbolů do map pro Android | Mapy Microsoft Azure
-description: V tomto článku se naučíte, jak vykreslovat data bodů na mapě přidáním vrstvy symbolů pomocí Android SDK Microsoft Azure Maps.
+description: Naučte se, jak přidat značku k mapě. Podívejte se na příklad, který používá Android SDK Azure Maps k přidání vrstvy symbolu, která obsahuje data založená na bodech ze zdroje dat.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 528c5a5ba4314e44334548334e312d1111768cf5
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 99a4f69a814314b233a3129ed31d18ffa1682d8d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127073"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037384"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Přidání vrstvy symbolů na mapu pomocí Azure Maps Android SDK
 
 V tomto článku se dozvíte, jak vykreslovat data bodů ze zdroje dat jako vrstvu symbolů na mapě pomocí Android SDK Azure Maps.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li provést úplné provedení kroků v tomto článku, je nutné nainstalovat [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) , aby se načetla mapa.
 

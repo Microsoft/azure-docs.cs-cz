@@ -1,6 +1,6 @@
 ---
 title: Vykreslovat vlastní data na rastrové mapě | Mapy Microsoft Azure
-description: V tomto článku se naučíte, jak vykreslovat vlastní data na rastrové mapě pomocí služby mapy statických imagí ve službě Microsoft Azure Maps.
+description: Přečtěte si, jak přidat špendlíky, popisky a geometrické obrazce do rastrové mapy. V této části najdete informace o použití služby statické bitové kopie v Azure Maps.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/23/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6eae060b2ed2b0f7d6de5ac54d92677c95fc8a89
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d5dcc2701a0b77509868471ec97c45917b2ccf42
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126869"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037367"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Vykreslovat vlastní data na rastrové mapě
 
@@ -25,7 +25,7 @@ Chcete-li vykreslit vlastní špendlíky, popisky a překryvy geometrie, můžet
 > [!Tip]
 > Použití Azure Maps webové sady SDK je často mnohem výhodnější k zobrazení jednoduché mapy na webové stránce, než aby používala službu statických imagí. Webová sada SDK používá dlaždice mapy a pokud uživatel neposouvá a nezvětšuje mapu, často generuje pouze zlomek transakce na zatížení mapy. Všimněte si, že Azure Maps Web SDK obsahuje možnosti pro vypnutí posouvání a zvětšování. Azure Maps webová sada SDK navíc poskytuje bohatší sadu možností vizualizace dat než webová služba statické mapy.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps
 

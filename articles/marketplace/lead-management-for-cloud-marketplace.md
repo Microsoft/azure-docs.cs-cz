@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 2abbef88ed7bac41b84eb06c8c0ec9c8a906b2f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d0aea0594a97990c7c89434e73fcd4982b01e20f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119442"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035174"
 ---
-# <a name="lead-management-for-commercial-marketplace"></a>Správa zájemců pro komerční tržiště
+# <a name="lead-management-for-the-commercial-marketplace"></a>Správa zájemců pro komerční tržiště
 
 Zákazníci jsou centrem jakékoli dobré firmy. V transformaci dnešního nákupu produktů se pracovníky marketingu musí soustředit na přímé připojení k zákazníkům a vytváření relací. Z tohoto důvodu je generování vysoce kvalitních potenciálních zákazníků důležitým nástrojem pro váš prodejní cyklus. Po výpisu vaší nabídky v [partnerském centru](https://partner.microsoft.com/)jsou k dispozici nástroje, které vám umožní programově získat kontaktní informace zákazníka hned, co zákazník vyjádří zájem, nebo nasadí váš produkt na webu Marketplace. 
 
