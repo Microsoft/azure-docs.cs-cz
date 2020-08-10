@@ -290,8 +290,8 @@
           href: windows-container-powershell.md
         - name: Vzdálené připojení
           href: rdp.md
-        - name: Známá omezení
-          href: windows-node-limitations.md
+        - name: Nejčastější dotazy ke kontejnerům s Windows Serverem
+          href: windows-faq.md
         - name: Použití řídicího panelu Kubernetes
           href: kubernetes-dashboard.md
         - name: Vytvoření kontejnerů Dockerfile pro Windows Server

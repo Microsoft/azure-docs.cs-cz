@@ -12,10 +12,10 @@
   items:
     - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení – portál
       href: quickstart-load-balancer-standard-public-portal.md
+    - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení – PowerShell
+      href: quickstart-create-standard-load-balancer-powershell.md
     - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení – Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení – Azure PowerShell
-      href: quickstart-create-standard-load-balancer-powershell.md
     - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení – šablona ARM
       href: quickstart-load-balancer-standard-public-template.md
     - name: Vytvoření interního nástroje pro vyrovnávání zatížení – portál
@@ -142,7 +142,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=load-balancer'
     - name: Azure PowerShell
       href: /powershell/module/az.network
-    - name: Rozhraní příkazového řádku Azure
+    - name: Azure CLI
       href: /cli/azure/network/lb
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.network.models

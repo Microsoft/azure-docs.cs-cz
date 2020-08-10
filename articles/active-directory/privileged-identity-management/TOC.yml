@@ -8,7 +8,7 @@
   items:
     - name: Licenční požadavky
       href: subscription-requirements.md
-    - name: 'Role, které nelze spravovat'
+    - name: 'Role, které nemůžete spravovat pomocí PIM'
       href: pim-roles.md
     - name: Zabezpečení privilegovaného přístupu
       href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
@@ -18,7 +18,7 @@
       href: pim-resource-roles-overview-dashboards.md
     - name: E-mailová oznámení
       href: pim-email-notifications.md
-    - name: Rozhraní Microsoft Graph API
+    - name: Microsoft Graph API a PIM
       href: pim-apis.md
 - name: Návody
   expanded: true
@@ -33,7 +33,7 @@
           href: pim-security-wizard.md
         - name: Zjišťování prostředků Azure
           href: pim-resource-roles-discover-resources.md
-        - name: Udělení přístupu ke správě PIM ostatním
+        - name: Delegování přístupu k PIM
           href: pim-how-to-give-access-to-pim.md
         - name: Zvýšení úrovně přístupu pro správu všech předplatných
           href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json

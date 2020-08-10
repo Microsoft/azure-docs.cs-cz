@@ -105,8 +105,10 @@
           href: howto-run-a-job.md
     - name: Transformace
       items:
-        - name: Export dat do cílových umístění v Azure
+        - name: Export dat do cílových umístění v Azure (starší verze)
           href: howto-export-data.md
+        - name: Export dat do cílových umístění v cloudu (Preview)
+          href: howto-use-data-export.md
         - name: Vytváření webhooků pro pravidla
           href: howto-create-webhooks.md
         - name: Použití pracovních postupů pro integraci s ostatními službami

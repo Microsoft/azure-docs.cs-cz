@@ -3,12 +3,12 @@ title: 'Ukázka podrobného plánu ISO 27001: Sdílené služby – přehled'
 description: 'Přehled a architektura ukázky podrobného plánu ISO 27001: Sdílené služby Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly ISO 27001.'
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 0ef39a4e409320d08529904239dc17fc563c2044
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 09309fe05200cf8c7a958324f3412967296a8dc9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072878"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927347"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Přehled ukázky podrobného plánu ISO 27001: Sdílené služby
 
@@ -25,7 +25,7 @@ VDC je prověřená sada referenčních architektur, nástrojů pro automatizaci
 
 Toto prostředí je tvořené několika službami Azure, které se využívají k zajištění zabezpečené a plně monitorované infrastruktury sdílených služeb na podnikové úrovni, která je založená na standardech ISO 27001. Toto prostředí tvoří:
 
-- Role [řízení přístupu na základě role](../../../../role-based-access-control/overview.md) (RBAC) využívaná k oddělení povinností od roviny kontrol Před nasazením libovolné infrastruktury jsou definované tři role:
+- [Role Azure](../../../../role-based-access-control/overview.md) využívané k oddělení povinností od roviny kontrol Před nasazením libovolné infrastruktury jsou definované tři role:
   - Role NetOps má oprávnění spravovat síťové prostředí, včetně nastavení brány firewall, nastavení NSG, směrování a dalších síťových funkcí
   - Role SecOps má nezbytná oprávnění k nasazení a správě služby [Azure Security Center](../../../../security-center/security-center-intro.md), definování [zásad Azure](../../../policy/overview.md) a další oprávnění související se zabezpečením
   - Role SysOps má nezbytná oprávnění k definování [zásad Azure](../../../policy/overview.md) v rámci předplatného, správě služby [Log Analytics](../../../../azure-monitor/overview.md) pro celé prostředí a další provozní práva

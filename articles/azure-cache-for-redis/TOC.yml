@@ -39,11 +39,11 @@
       items:
         - name: Použití aplikace Spring Boot Initializer
           href: cache-java-spring-boot-initializer-with-redis-cache.md
-    - name: Použití ukládání do mezipaměti s tabulkami výsledků
+    - name: Vytváření tabulek výsledků
       href: cache-web-app-cache-aside-leaderboard.md
-    - name: Azure PowerShell
+    - name: Správa pomocí Azure PowerShellu
       href: cache-how-to-manage-redis-cache-powershell.md
-    - name: Azure CLI
+    - name: Správa pomocí Azure CLI
       href: cli-samples.md
 - name: Koncepty
   items:
@@ -65,7 +65,7 @@
     - name: Plánování
       items:
         - name: Volba úrovně mezipaměti
-          href: cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use
+          href: cache-overview.md#choosing-the-right-tier
         - name: Distribuovaná mezipaměť pomocí clusterování
           href: cache-how-to-premium-clustering.md
         - name: Zachování mezipaměti pomocí trvalosti dat Redis
@@ -82,6 +82,12 @@
           href: cache-migration-guide.md
         - name: Migrace ze služby Managed Cache Service (zastaralá)
           href: cache-migrate-to-redis.md
+        - name: Nejčastější dotazy k plánování
+          href: cache-planning-faq.md
+    - name: Sestavení
+      items:
+        - name: Nejčastější dotazy k vývoji
+          href: cache-development-faq.md
     - name: Automatizace
       items:
         - name: Nasazení a správa s využitím Azure PowerShellu
@@ -106,12 +112,22 @@
           href: cache-how-to-redis-cli-tool.md
         - name: Odebrání TLS 1.0 a 1.1
           href: cache-remove-tls-10-11.md
+        - name: Nejčastější dotazy ke správě
+          href: cache-management-faq.md
     - name: Monitorování
       items:
         - name: Monitorování na webu Azure Portal
           href: cache-how-to-monitor.md
         - name: Nastavení výstrah pro výjimky
           href: cache-how-to-monitor.md#operations-and-alerts
+        - name: Nejčastější dotazy k monitorování
+          href: cache-monitor-troubleshoot-faq.md
+    - name: Měřítko
+      items:
+        - name: "Aktualizace na jinou velikost a\_úroveň"
+          href: cache-how-to-scale.md
+        - name: Použití clusteru Redis pro škálování na méně nebo více instancí
+          href: cache-how-to-premium-clustering.md
     - name: Diagnostika a řešení potíží
       items:
         - name: Řešení potíží se serverem Redis
@@ -122,12 +138,8 @@
           href: cache-troubleshoot-timeouts.md
         - name: Řešení potíží se ztrátou dat
           href: cache-troubleshoot-data-loss.md
-    - name: Měřítko
-      items:
-        - name: "Aktualizace na jinou velikost a\_úroveň"
-          href: cache-how-to-scale.md
-        - name: Použití clusteru Redis pro škálování na méně nebo více instancí
-          href: cache-how-to-premium-clustering.md
+        - name: Nejčastější dotazy k řešení problémů
+          href: cache-monitor-troubleshoot-faq.md
 - name: Referenční informace
   items:
     - name: Ukázky služby Azure Cache for Redis

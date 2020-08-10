@@ -620,6 +620,8 @@
           href: create-shared-self-hosted-integration-runtime-powershell.md
         - name: Skripty pro automatizaci místního prostředí Integration Runtime
           href: self-hosted-integration-runtime-automation-scripts.md
+        - name: Spuštění místního prostředí Integration Runtime v kontejneru Windows
+          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: Spouštění balíčků služby SSIS v Azure
       items:
         - name: Spouštění balíčků služby SSIS v Azure z SSDT
