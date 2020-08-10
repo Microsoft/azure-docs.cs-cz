@@ -1,17 +1,17 @@
 ---
 title: Samoobslužné výměny a vrácení peněz za rezervace Azure
-description: Přečtěte si, jak postupovat při vrácení peněz za rezervace Azure nebo při jejich výměně.
+description: Přečtěte si, jak postupovat při vrácení peněz za rezervace Azure nebo při jejich výměně. Pokud chcete provést výměnu nebo refundaci rezervace, musíte mít přístup vlastníka k příslušné objednávce rezervace.
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 3f41f26e6934e156ab38340a74e2c070b26cefb4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f1323d21ee59386220a35cc31b17cab3441f0e0d
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287655"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87457630"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a vrácení peněz za rezervace Azure
 

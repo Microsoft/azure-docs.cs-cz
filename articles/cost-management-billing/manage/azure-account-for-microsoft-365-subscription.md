@@ -1,6 +1,6 @@
 ---
 title: Registrace pro Microsoft 365 pomocí účtu Azure
-description: Zjistěte, jak vytvořit předplatné Microsoftu 365 s využitím účtu Azure.
+description: Zjistěte, jak vytvořit předplatné Microsoft 365 s využitím účtu Azure. Můžete k sobě také přidružit stávající účty Azure a Microsoft 365.
 author: JiangChen79
 ms.reviewer: adwise
 tags: billing,top-support-issue
@@ -8,14 +8,14 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: banders
-ms.openlocfilehash: 006f8edc81ec19647ff6173a4c786c6d7e93fadc
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 050bd9c420ccecdb91a6c438782d9be1c6c23b88
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84810376"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461880"
 ---
-# <a name="sign-up-for-a-microsoft--365-subscription-with-your-azure-account"></a>Registrace předplatného Microsoftu 365 s využitím účtu Azure
+# <a name="sign-up-for-a-microsoft-365-subscription-with-your-azure-account"></a>Registrace předplatného Microsoft 365 s využitím účtu Azure
 
 Pokud jste předplatitelem Azure, můžete k registraci předplatného Microsoftu 365 použít svůj účet Azure. Pokud jste součástí organizace, která má předplatné Azure, můžete předplatná Microsoftu 365 vytvořit pro uživatele ve vašem stávajícím tenantovi Azure Active Directory (Azure AD). Zaregistrujte si Microsoft 365 pomocí účtu, který má ve vašem tenantovi Azure Active Directory oprávnění globálního správce nebo správce fakturace. Další informace najdete v tématech [Kontrola oprávnění účtu v Azure AD](#RoleInAzureAD) a [Přiřazování rolí správců v Azure Active Directory](../../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 

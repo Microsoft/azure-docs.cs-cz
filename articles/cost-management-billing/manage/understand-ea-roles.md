@@ -1,18 +1,18 @@
 ---
 title: Principy rolí správce smlouvy Enterprise v Azure
-description: Přečtěte si informace o rolích správce smlouvy Enterprise v Azure.
+description: Přečtěte si informace o rolích správce smlouvy Enterprise v Azure. Můžete přiřadit pět různých rolí správce.
 author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: 2cd786304180369fee39c7b362f27a44728f3ad8
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8a4705a68b0b96a8f95cc2356cda454fdef65054
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124336"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531485"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Správa rolí Azure Enterprise
 
@@ -103,9 +103,9 @@ V závislosti na vaší roli pro správu a na tom, jak podnikový správce nasta
 
 Informace o tom, jak tyto zásady nastavit, najdete v tématu [Správa přístupu k fakturačním informacím v Azure](manage-billing-access.md).
 
-V následující tabulce je uveden vztah mezi rolemi správce smlouvy Enterprise, zásadami zobrazování nákladů, rolí řízení přístupu na základě role (RBAC) na webu Azure Portal a cenami, které se zobrazují na webu Azure Portal. Podnikovému správci se vždycky zobrazují podrobnosti o využití na základě cen EA v organizaci. Správci oddělení a vlastníkovi účtu se ale zobrazují různé ceny podle nastavení zásad zobrazování nákladů a jejich role RBAC. Role Správce oddělení uvedená v následující tabulce se týká role Správce oddělení i role Správce oddělení (jen pro čtení).
+V následující tabulce je uvedený vztah mezi rolemi správce smlouvy Enterprise, zásadami zobrazování poplatků, rolí Azure na webu Azure Portal a cenami, které se zobrazují na webu Azure Portal. Podnikovému správci se vždycky zobrazují podrobnosti o využití na základě cen EA v organizaci. Správci oddělení a vlastníkovi účtu se ale zobrazují různé ceny v závislosti na nastavení zásad zobrazování poplatků a jejich role Azure. Role Správce oddělení uvedená v následující tabulce se týká role Správce oddělení i role Správce oddělení (jen pro čtení).
 
-|Role správce smlouvy Enterprise|Zásady zobrazování nákladů pro roli|Role RBAC|Zobrazení cen|
+|Role správce smlouvy Enterprise|Zásady zobrazování nákladů pro roli|Role Azure|Zobrazení cen|
 |---|---|---|---|
 |Vlastník účtu nebo Správce oddělení|✔ Povoleno|Vlastník|Ceny EA v organizaci|
 |Vlastník účtu nebo Správce oddělení|✘ Zakázáno|Vlastník|Maloobchodní ceny|
@@ -113,7 +113,7 @@ V následující tabulce je uveden vztah mezi rolemi správce smlouvy Enterprise
 |Vlastník účtu nebo Správce oddělení|✘ Zakázáno |Žádná|Žádné ceny|
 |Žádná|Neuvedeno |Vlastník|Maloobchodní ceny|
 
-Role správce smlouvy Enterprise a zásady zobrazování nákladů se nastavují na webu Enterprise Portal. Role RBAC se dá aktualizovat na webu Azure Portal. Další informace najdete v tématu [Správa přístupu pomocí RBAC a webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Role správce smlouvy Enterprise a zásady zobrazování nákladů se nastavují na webu Enterprise Portal. Roli Azure je možné aktualizovat na webu Azure Portal. Další informace najdete v tématu [Správa přístupu pomocí RBAC a webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 
 

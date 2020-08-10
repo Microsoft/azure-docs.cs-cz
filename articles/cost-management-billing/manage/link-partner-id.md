@@ -7,28 +7,28 @@ ms.author: banders
 ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.topic: how-to
-ms.openlocfilehash: 343db06ba658f31c258d2a63c4a52aa86993c1cd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5f50c63fa95018c13c48e9769f9e4049b2a81021
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281782"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529905"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojení ID partnera s účty Azure
 
 Partneři Microsoftu poskytují služby, které zákazníkům pomáhají dosahovat podnikatelských a organizačních cílů pomocí produktů Microsoftu. Když při správě, konfiguraci a podpoře služeb Azure jednají uživatelé z partnerských společností jménem zákazníka, potřebují přístup k prostředí daného zákazníka. Při použití odkazu na správce partnera (Partner Admin Link, PAL) mohou partneři přidružit svoje ID partnerské sítě k přihlašovacím údajům, které se používají k doručování služeb.
 
-PAL umožňuje Microsoftu identifikovat a rozpoznávat partnery, kteří posilují úspěchy zákazníků Azure. Microsoft může vaší organizaci zajistit vliv a příjmy související s využitím Azure, a to na základě oprávnění účtu (role RBAC) a rozsahu (předplatné, skupina prostředků, prostředek).
+PAL umožňuje Microsoftu identifikovat a rozpoznávat partnery, kteří posilují úspěchy zákazníků Azure. Microsoft může vaší organizaci zajistit vliv a příjmy související s využitím Azure, a to na základě oprávnění účtu (role Azure) a rozsahu (předplatné, skupina prostředků, prostředek).
 
 ## <a name="get-access-from-your-customer"></a>Získání přístupu od zákazníka
 
 Před propojením vašeho ID partnera vám zákazník musí udělit přístup k prostředkům Azure pomocí jedné z následujících možností:
 
-- **Uživatel typu host**: Zákazník vás může přidat jako uživatele typu host a přiřadit nějaké role řízení přístupu na základě role (RBAC). Další informace najdete v tématu [Přidání uživatelů typu host z jiného adresáře](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- **Uživatel typu host**: Zákazník vás může přidat jako uživatele typu host a přiřadit nějaké role Azure. Další informace najdete v tématu [Přidání uživatelů typu host z jiného adresáře](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 
-- **Účet v adresáři**: Zákazník vám může vytvořit uživatelský účet ve svém vlastním adresáři a přiřadit nějakou roli RBAC.
+- **Účet v adresáři**: Zákazník vám může vytvořit uživatelský účet ve svém vlastním adresáři a přiřadit nějakou roli Azure.
 
-- **Instanční objekt**: Zákazník může přidat aplikaci nebo skript z vaší organizace do svého adresáře a přiřadit nějakou roli RBAC. Identita aplikace nebo skriptu se označuje jako instanční objekt.
+- **Instanční objekt**: Zákazník může přidat aplikaci nebo skript z vaší organizace do svého adresáře a přiřadit nějakou roli Azure. Identita aplikace nebo skriptu se označuje jako instanční objekt.
 
 - **Azure Lighthouse:** Zákazník může delegovat předplatné (nebo skupinu prostředků), takže v něm uživatelé mohou pracovat z vašeho tenanta. Další informace najdete v tématu [Správa delegovaných prostředků Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
 
@@ -168,9 +168,8 @@ PAL (Partner Admin Link) umožňuje Microsoftu identifikovat a rozpoznávat part
 
 **Jaká data shromažďuje PAL?**
 
-Přidružení PAL k existujícím přihlašovacím údajům neposkytuje Microsoftu žádná nová zákaznická data. Microsoftu jednoduše poskytuje telemetrické údaje, kde je partner aktivně zapojený do prostředí Azure zákazníka. Microsoft může partnerské organizaci zajistit vliv a příjmy související s využitím Azure v prostředích zákazníků, a to na základě oprávnění účtu (role RBAC) a rozsahu (skupina pro správu, předplatné, skupina prostředků, prostředek), které partnerovi poskytuje zákazník. 
+Přidružení PAL k existujícím přihlašovacím údajům neposkytuje Microsoftu žádná nová zákaznická data. Microsoftu jednoduše poskytuje telemetrické údaje, kde je partner aktivně zapojený do prostředí Azure zákazníka. Microsoft může partnerské organizaci zajistit vliv a příjmy související s využitím Azure v prostředích zákazníků, a to na základě oprávnění účtu (role Azure) a rozsahu (skupina pro správu, předplatné, skupina prostředků, prostředek), které partnerovi poskytuje zákazník. 
 
 **Má to vliv na zabezpečení prostředí Azure u zákazníka?**
 
-Přidružení PAL jenom přidá MPN ID partnera k již zřízeným přístupovým oprávněním a nemění žádná oprávnění (role RBAC) a partnerovi ani Microsoftu neposkytuje další údaje o službách Azure. 
-
+Přidružení PAL jenom přidá MPN ID partnera k již zřízeným přístupovým oprávněním a nemění žádná oprávnění (role Azure) a partnerovi ani Microsoftu neposkytuje další údaje o službách Azure. 

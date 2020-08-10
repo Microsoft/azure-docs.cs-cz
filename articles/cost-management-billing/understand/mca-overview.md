@@ -1,18 +1,18 @@
 ---
 title: Začínáme s fakturačním účtem pro smlouvu se zákazníkem Microsoftu – Azure
-description: Seznamte se se svým fakturačním účtem pro smlouvu se zákazníkem Microsoftu
+description: Seznamte se se svým fakturačním účtem Smlouvy se zákazníkem Microsoftu, včetně fakturačních profilů a způsobů platby faktur.
 author: bandersmsft
 ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: banders
-ms.openlocfilehash: df54109010c694934dda005d6e8f1c219ec49efc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adbb8f9aae7eb05ac3c4955beb71dba003ddacd0
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371008"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461897"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Začínáme s fakturačními účty pro smlouvu se zákazníkem Microsoftu
 

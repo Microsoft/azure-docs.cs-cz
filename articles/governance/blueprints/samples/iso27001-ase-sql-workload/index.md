@@ -3,12 +3,12 @@ title: Ukázka podrobného plánu úlohy ASE/SQL ISO 27001 – přehled
 description: Přehled a architektura ukázky podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 71044ae1754cf4bdfc42be7b6585a1905dce426c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76177efcac8b32907c60cecac41404a3834d0fb8
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536829"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926089"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Přehled ukázky podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database
 
@@ -28,7 +28,7 @@ Ukázka podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database
 
 Toto prostředí je tvořené několika službami Azure, které se využívají k zajištění zabezpečené a plně monitorované infrastruktury úloh na podnikové úrovni, která je založená na standardech ISO 27001. Toto prostředí tvoří:
 
-- Role [řízení přístupu na základě role](../../../../role-based-access-control/overview.md) (RBAC) nazvaná DevOps, která má oprávnění nasazovat a spravovat prostředky v p[prostředích Azure App Service Environment](../../../../app-service/environment/intro.md) nasazených ukázkou podrobného plánu
+- [Role Azure](../../../../role-based-access-control/overview.md) nazvaná DevOps, která má oprávnění nasazovat a spravovat prostředky v p[prostředích Azure App Service Environment](../../../../app-service/environment/intro.md) nasazených ukázkou podrobného plánu
 - [Zásady Azure](../../../policy/overview.md) k pevnému určení služeb, které je možné v tomto prostředí nasadit, a zamítnutí vytváření libovolných prostředků veřejných IP adres (PIP)
 - Virtuální síť obsahující jednu podsíť, která je propojená k předem připravenému prostředí [sdílených služeb](../iso27001-shared/index.md) a vynucuje průchod veškerého provozu bránou firewall [sdílených služeb](../iso27001-shared/index.md). Tato virtuální síť je hostitelem pro tyto prostředky:
   - [Prostředí Azure App Service Environment](../../../../app-service/environment/intro.md), která se dají využít k hostování jedné nebo několika webových aplikací, webových rozhraní API nebo služeb

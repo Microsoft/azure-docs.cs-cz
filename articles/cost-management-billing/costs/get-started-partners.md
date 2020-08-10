@@ -3,17 +3,17 @@ title: Začínáme se službou Azure Cost Management pro partnery
 description: V tomto článku je vysvětlené, jak partneři používají funkce služby Azure Cost Management a jak k ní umožní přístup svým zákazníkům.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/28/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 25a64dd4d06c24b0f7e1f8433a1abf5f67fa6eba
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b5f00ee67803819b4d13cdc630bed3de26ac1be9
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372140"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563938"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme se službou Azure Cost Management pro partnery
 
@@ -140,7 +140,7 @@ Pokud je zásada nastavená na **Ne**, nebudou mít uživatelé předplatného, 
 
 Pokud je nákladová zásada nastavená na **Ano**, můžou uživatelé předplatného přidružení k zákaznickému tenantovi zobrazovat poplatky za využití podle tarifů s průběžnými platbami.
 
-Pokud je zásada viditelnosti nákladů povolená, zobrazí se u všech služeb, které využívají předplatné, náklady podle tarifů s průběžnými platbami. U využitých rezervací se zobrazí nulové poplatky, a to jak u skutečných, tak u amortizovaných nákladů. Nákupy a nároky nejsou přidružené ke konkrétnímu předplatnému. To znamená, že se nákupy v rozsahu předplatného nezobrazují.
+Pokud je zásada viditelnosti nákladů povolená, zobrazí se u všech služeb, které využívají předplatné, náklady podle tarifů s průběžnými platbami. U využitých rezervací se zobrazí nulové poplatky, a to jak u skutečných, tak u amortizovaných nákladů. Nákupy a nároky nejsou přidružené ke konkrétnímu předplatnému. To znamená, že se nákupy v rozsahu předplatného nezobrazují. Globální správce nebo agent pro správu přímého partnera nebo nepřímého poskytovatele může k nastavení zásad viditelnosti nákladů jednotlivých zákazníků ve velkém využít také [rozhraní API pro aktualizaci zákazníků](/rest/api/billing/2019-10-01-preview/policies/updatecustomer).
 
 ### <a name="view-subscription-costs-in-the-customer-tenant"></a>Zobrazení nákladů na předplatná v tenantovi zákazníka
 

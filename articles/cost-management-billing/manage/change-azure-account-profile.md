@@ -6,15 +6,15 @@ ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/03/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 449f1e50bda2991db8eec15464a32d295a054c6f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cb7978dfa2c3ded2ae8e8c621bcb679f19620a2c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286593"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553474"
 ---
 # <a name="change-the-contact-information-for-your-azure-account"></a>Změna kontaktních informací pro účet Azure
 
@@ -24,7 +24,7 @@ Tento článek vám pomůže aktualizovat kontaktní informace pro váš účet 
 
 *Fakturační adresa:* Fakturační adresa jsou adresa a kontaktní informace organizace nebo jednotlivce, který zodpovídá faktury vygenerované pro fakturační účet. Pro fakturační účet MOSP (Microsoft Online Service Program, MOSP) existuje jedna fakturační adresa, která je uvedená na všech fakturách vygenerovaných pro tento účet. Pro fakturační účet MCA (Microsoft Customer Agreement, Smlouva se zákazníkem Microsoftu) existuje fakturační adresa pro každý fakturační profil, která je uvedená na všech fakturách vygenerovaných pro tento profil.
 
-*Kontaktní e-mailová adresa pro oznámení služeb a marketingové e.maily:* Můžete zadat e-mailovou adresu (která se liší od e-mailové adresy, pomocí které jste se přihlásili) pro získání důležitých oznámení týkajících se fakturace, služeb a doporučení v souvislosti s vaším účtem Azure.  
+*Kontaktní e-mailová adresa pro oznámení služeb a marketingové e-maily:* Můžete zadat e-mailovou adresu (která se liší od e-mailové adresy, pomocí které jste se přihlásili), na kterou budete dostávat důležitá oznámení týkající se fakturace, služeb a doporučení v souvislosti s vaším účtem Azure. E-maily s oznámeními služeb, například o naléhavých problémech se zabezpečením, změnách cen nebo zásadních změnách služeb používaných ve vašem účtu, se vždy posílají na vaši přihlašovací adresu.
 
 ## <a name="update-an-mosp-billing-account-address"></a>Aktualizace adresy fakturačního účtu MOSP
 

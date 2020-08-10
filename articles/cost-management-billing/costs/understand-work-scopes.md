@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: ae6205db4e120f0496fa47be6788887b155361b0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ecc442049ba63b64f951335940c312dc71985453
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077154"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501521"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
@@ -93,8 +93,8 @@ I když jsou rozsahy zásad správného řízení vázané na jeden adresář, r
 
 Rozsahy fakturace EA podporují následující role:
 
-- **Podnikový správce** – může spravovat nastavení fakturačního účtu a přístup, může zobrazit všechny náklady a může spravovat konfiguraci nákladů. Jde například o rozpočty a exporty. Z hlediska funkce je rozsah fakturace EA stejný jako [role Přispěvatel Cost Management v Azure RBAC](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Podnikový uživatel s přístupem jen pro čtení** – může zobrazit nastavení fakturačního účtu, data nákladů a konfiguraci nákladů. Jde například o rozpočty a exporty. Z hlediska funkce je rozsah fakturace EA stejný jako [role Čtenář Cost Management v Azure RBAC](../../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Podnikový správce** – může spravovat nastavení fakturačního účtu a přístup, může zobrazit všechny náklady a může spravovat konfiguraci nákladů. Jde například o rozpočty a exporty. Z hlediska funkce je rozsah fakturace EA stejný jako [role Přispěvatel služby Cost Management v Azure](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Podnikový uživatel s přístupem jen pro čtení** – může zobrazit nastavení fakturačního účtu, data nákladů a konfiguraci nákladů. Jde například o rozpočty a exporty. Z hlediska funkce je rozsah fakturace EA stejný jako [role Čtenář služby Cost Management v Azure](../../role-based-access-control/built-in-roles.md#cost-management-reader).
 - **Správce oddělení** – může spravovat nastavení oddělení, například nákladové středisko, může mít přístup ke všem nákladům a zobrazovat je a spravovat konfiguraci nákladů. Jde například o rozpočty a exporty.  Aby viděli správci oddělení a uživatelé s přístupem jen pro čtení náklady, musí pro ně být povolené nastavení fakturačního účtu **Správce oddělení může zobrazit náklady**. Pokud je nastavení **Správce oddělení může zobrazit náklady** zakázané, nevidí uživatelé oddělení žádné náklady na žádné úrovni, i když jsou vlastníky účtu nebo předplatného.
 - **Uživatel oddělení s přístupem jen pro čtení** – může zobrazit nastavení oddělení, data nákladů a konfiguraci nákladů. Jde například o rozpočty a exporty. Pokud je nastavení **Správce oddělení může zobrazit náklady** zakázané, nevidí uživatelé oddělení žádné náklady na žádné úrovni, i když jsou vlastníky účtu nebo předplatného.
 - **Vlastník účtu** – může spravovat nastavení účtu pro registraci (například nákladové středisko), zobrazit všechny náklady a spravovat konfiguraci nákladů (jako jsou rozpočty a exporty) pro účet registrace. Aby viděli vlastníci účtů a uživatelé RBAC náklady, musí pro ně být povolené nastavení fakturačního účtu **Vlastník účtu může zobrazit náklady**.
@@ -141,10 +141,10 @@ Rozsahy fakturace zákaznických smluv se nevztahují na partnery. Role a opráv
 
 Rozsahy fakturace zákaznických smluv podporují tyto role:
 
-- **Vlastník** – může spravovat nastavení fakturace a přístup, zobrazit všechny náklady a spravovat konfiguraci nákladů. Jde například o rozpočty a exporty. Z hlediska funkce je rozsah fakturace zákaznické smlouvy stejný jako [role Přispěvatel Cost Management v Azure RBAC](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Přispěvatel** – může spravovat nastavení fakturace kromě přístupu, zobrazit všechny náklady a spravovat konfiguraci nákladů. Jde například o rozpočty a exporty. Z hlediska funkce je rozsah fakturace zákaznické smlouvy stejný jako [role Přispěvatel Cost Management v Azure RBAC](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Čtenář** – může zobrazit nastavení fakturace, data nákladů a konfiguraci nákladů. Jde například o rozpočty a exporty. Z hlediska funkce je rozsah fakturace zákaznické smlouvy stejný jako [role Čtenář Cost Management v Azure RBAC](../../role-based-access-control/built-in-roles.md#cost-management-reader).
-- **Správce faktur** – může zobrazit a zaplatit faktury a může zobrazit data a konfiguraci nákladů. Jde například o rozpočty a exporty. Z hlediska funkce je rozsah fakturace zákaznické smlouvy stejný jako [role Čtenář Cost Management v Azure RBAC](../../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Vlastník** – může spravovat nastavení fakturace a přístup, zobrazit všechny náklady a spravovat konfiguraci nákladů. Jde například o rozpočty a exporty. Z hlediska funkce je rozsah fakturace Smlouvy se zákazníkem stejný jako [role Přispěvatel služby Cost Management v Azure](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Přispěvatel** – může spravovat nastavení fakturace kromě přístupu, zobrazit všechny náklady a spravovat konfiguraci nákladů. Jde například o rozpočty a exporty. Z hlediska funkce je rozsah fakturace Smlouvy se zákazníkem stejný jako [role Přispěvatel služby Cost Management v Azure](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Čtenář** – může zobrazit nastavení fakturace, data nákladů a konfiguraci nákladů. Jde například o rozpočty a exporty. Z hlediska funkce je rozsah fakturace Smlouvy se zákazníkem stejný jako [role Čtenář služby Cost Management v Azure](../../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Správce faktur** – může zobrazit a zaplatit faktury a může zobrazit data a konfiguraci nákladů. Jde například o rozpočty a exporty. Z hlediska funkce je rozsah fakturace Smlouvy se zákazníkem stejný jako [role Čtenář služby Cost Management v Azure](../../role-based-access-control/built-in-roles.md#cost-management-reader).
 - **Tvůrce předplatného Azure** – může vytvářet předplatná Azure, zobrazovat náklady a spravovat konfiguraci nákladů. Jde například o rozpočty a exporty. Z hlediska funkce je tento rozsah fakturace zákaznické smlouvy stejný jako role vlastníka účtu registrace EA.
 
 Předplatná Azure jsou vnořená v oddílech faktury, podobně jako například v účtech registrace EA. Uživatelé fakturace mají přístup k datům nákladů na předplatná a skupiny prostředků, která jsou obsažena v příslušných rozsazích. Nemají ale přístup pro zobrazení nebo správu prostředků na portálu Azure Portal. Uživatelé fakturace můžou náklady zobrazit tak, že v seznamu služeb na portálu Azure Portal přejdou na **Cost Management a fakturace**. Pak mohou filtrovat náklady na konkrétní předplatná a skupiny prostředků, u kterých potřebují vytvořit sestavy.

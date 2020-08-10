@@ -1,18 +1,18 @@
 ---
 title: Vysvětlení slev za rezervaci ve službě Azure SQL Database | Microsoft Docs
-description: Zjistěte, jak se na spuštěné služby Azure SQL Database uplatňuje sleva za rezervaci.
+description: Zjistěte, jak se na spuštěné služby Azure SQL Database uplatňuje sleva za rezervaci. Sleva se na tyto databáze uplatňuje po hodinách.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: 736e046b5254de9aa18c898994d7df11efc98a9a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9398a68d384eb7acba15fb64e27d7a2672006bc6
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037983"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461285"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>Způsob uplatňování slev za rezervaci na služby Azure SQL Database
 

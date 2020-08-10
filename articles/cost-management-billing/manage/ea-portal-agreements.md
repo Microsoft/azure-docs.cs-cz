@@ -3,16 +3,16 @@ title: Smlouvy k Azure EA a jejich změny
 description: Tento článek vysvětluje, jak smlouvy k Azure EA a jejich změny ovlivňují vaše používání portálu Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4d40ffb04882e9809fc818ab492a4c97260d1ff4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bc1749ba8246aa2181890c4c846f9159a0557aff
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537795"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563479"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Smlouvy k Azure EA a jejich změny
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak mohou smlouvy Azure EA a jejich změny ovlivnit vá
 
 ## <a name="enrollment-provisioning-status"></a>Stav zřízení registrace
 
-Počáteční datum nové zálohy na Azure vyplývá z data, kdy ji regionální operační centrum zpracovalo. Vzhledem k tomu, že objednávky zálohy na Azure prostřednictvím portálu Azure EA na se zpracovávají v časovém pásmu UTC, může dojít ke zpoždění v případě, že se nákupní objednávka zálohy na Azure zpracovávala v jiné oblasti. Začátek zálohy na Azure uvádí počáteční datum pokrytí v nákupní objednávce na webu https://www.explore.ms. Počáteční datum pokrytí představuje den, kdy se záloha na Azure zobrazí na portálu Azure EA.
+Počáteční datum nové zálohy na Azure vyplývá z data, kdy ji regionální operační centrum zpracovalo. Vzhledem k tomu, že objednávky zálohy na Azure prostřednictvím portálu Azure EA na se zpracovávají v časovém pásmu UTC, může dojít ke zpoždění v případě, že se nákupní objednávka zálohy na Azure zpracovávala v jiné oblasti. Začátek zálohy na Azure uvádí počáteční datum pokrytí v nákupní objednávce. Počáteční datum pokrytí představuje den, kdy se záloha na Azure zobrazí na portálu Azure EA.
 
 ## <a name="support-for-enterprise-customers"></a>Podpora pro podnikové zákazníky
 
@@ -43,7 +43,7 @@ Registrace má jednu z následujících hodnot stavu. Každá hodnota určuje, j
 
 **Platnost vypršela:** Když registrace EA dosáhne koncového data smlouvy Enterprise, její platnost vyprší. Zákazník EA je výslovně vyřazen z období prodloužení a všechny jeho služby se deaktivují.
 
-Od 1. srpna 2019 nepřijímáme žádné další žádosti o výslovné vyřazení u komerčních zákazníků Azure. Místo toho budou všechny registrace přecházet do neurčeného období prodloužení. Pokud chcete služby Azure přestat používat, uzavřete své předplatné na webu [Azure Portal](https://portal.azure.com). Nebo může žádost o ukončení podat partner na adrese https://www.explore.ms. U zákazníků s typy smluv pro státní instituce se nic nemění.
+Od 1. srpna 2019 nepřijímáme žádné další žádosti o výslovné vyřazení u komerčních zákazníků Azure. Místo toho budou všechny registrace přecházet do neurčeného období prodloužení. Pokud chcete služby Azure přestat používat, uzavřete své předplatné na webu [Azure Portal](https://portal.azure.com). Nebo může žádost o ukončení podat váš partner. U zákazníků s typy smluv pro státní instituce se nic nemění.
 
 **Přesunuto:** Stav Přesunuto se použije u registrací, jejichž přidružené účty a služby byly přesunuty do nové registrace. Registrace se nepřesouvají automaticky, pokud se při prodloužení vygeneruje nové číslo registrace. Aby mohl proběhnout automatický přenos, je třeba do žádosti zákazníka o prodloužení zahrnout předchozí číslo registrace.
 

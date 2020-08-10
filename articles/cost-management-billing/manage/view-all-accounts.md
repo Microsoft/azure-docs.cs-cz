@@ -1,18 +1,18 @@
 ---
 title: Zobrazení fakturačních účtů na webu Azure Portal
-description: Přečtěte si, jak na webu Azure Portal zobrazit fakturační účty.
+description: Zjistěte, jak na webu Azure Portal zobrazit fakturační účty. Projděte si informace o rozsahu pro smlouvu Enterprise, Smlouvu se zákazníkem Microsoftu a Smlouvu s partnerem Microsoftu.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: banders
-ms.openlocfilehash: 8afa0b1b068aa03bb1add7f029c731b4fc9a4724
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7763340831f1ffbc5ae33b5cc7bff5696d7a9b96
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039677"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461693"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Rozsahy a fakturační účty na webu Azure Portal
 

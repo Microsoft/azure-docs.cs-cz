@@ -1,18 +1,18 @@
 ---
 title: Nastavení fakturace pro smlouvu se zákazníkem Microsoftu – Azure
-description: Přečtěte si, jak nastavit fakturační účet pro smlouvu se zákazníkem Microsoftu.
+description: Přečtěte si, jak nastavit fakturační účet pro smlouvu se zákazníkem Microsoftu. Projděte si požadavky na nastavení a další dostupné zdroje informací.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 81b6b8a7024de9ff3361e24cb14190d479e50681
-ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
+ms.openlocfilehash: 2b8ef67366df7c8a6ba76d2cdc693b36229b861b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80258052"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461846"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Nastavení fakturačního účtu pro smlouvu se zákazníkem Microsoftu
 

@@ -1,17 +1,17 @@
 ---
 title: Vytvoření dalšího předplatného Azure
-description: Naučte se, jak na webu Azure Portal přidat nové předplatné Azure.
+description: Naučte se, jak na webu Azure Portal přidat nové předplatné Azure. Projděte si informace o formulářích fakturačního účtu a další dostupné zdroje informací.
 author: amberbhargava
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: d6a8196816aaaa61458050334f605cb41afa16b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d27120f6bd0978b69d664ab3ab2e86bfee4f1755
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200842"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460962"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Vytvoření dalšího předplatného Azure
 

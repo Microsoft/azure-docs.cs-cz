@@ -1,6 +1,6 @@
 ---
 title: Zobrazení a stažení informací o využití a poplatcích za Azure
-description: Vysvětluje, jak stáhnout nebo zobrazit informace o denním využití a poplatcích za Azure.
+description: Zjistěte, jak stáhnout nebo zobrazit informace o denním využití Azure a poplatcích, a projděte si další dostupné zdroje informací.
 keywords: billing usage, usage charges, usage download, view usage, azure invoice, azure usage
 author: bandersmsft
 ms.author: banders
@@ -8,12 +8,12 @@ tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: bf9a98d6484e7f78a80a4e3018afdec00df51337
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d09f792e784c89e704691975d44cb3cbfa753cf4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322022"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460503"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Zobrazení a stažení informací o využití a poplatcích za Azure
 

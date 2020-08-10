@@ -1,18 +1,18 @@
 ---
 title: Monitorování a sledování využití bezplatných služeb Azure
-description: Zjistěte, jak zkontrolovat využití bezplatných služeb na webu Azure Portal.
+description: Zjistěte, jak zkontrolovat využití bezplatných služeb na webu Azure Portal. Za služby, které jsou součástí bezplatného účtu, se neúčtují žádné poplatky, pokud nepřekročíte jejich limity.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 0a62deecc6f70bb21059ae3ddda9eea173de65fe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 03efb7e4d0aa06e4c33a94f15621d58330e52e50
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199802"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461863"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Kontrola využití bezplatných služeb, které jsou součástí bezplatného účtu Azure
 

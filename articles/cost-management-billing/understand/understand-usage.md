@@ -1,6 +1,6 @@
 ---
 title: Vysvětlení podrobných informací o využití a poplatcích | Microsoft Docs
-description: Naučte se číst podrobné informace o využití a poplatcích a rozumět jim.
+description: Naučte se číst soubor s podrobnými informacemi o využití a poplatcích a rozumět jim. Projděte si seznam termínů používaných v tomto souboru a jejich popisů.
 author: bandersmsft
 ms.reviewer: micflan
 tags: billing
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1b53869c9ef90dd0edf3ab9a3120e65db8f16e8a
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065644"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460282"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Vysvětlení termínů v souboru s využitím a poplatky Azure
 

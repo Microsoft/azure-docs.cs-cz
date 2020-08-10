@@ -1,18 +1,18 @@
 ---
 title: Uspořádání faktury podle vašich potřeb – Azure
-description: Naučte se uspořádat náklady ve vaší faktuře.
+description: Zjistěte, jak uspořádat náklady na faktuře. Fakturační účet si můžete přizpůsobit vytvořením fakturačních profilů a oddílů faktury.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 553263ebac3c64e27a7711b4407a7d4ba573998c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200740"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460027"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Uspořádání nákladů přizpůsobením fakturačního účtu
 
@@ -72,7 +72,7 @@ Pokud chcete vytvořit oddíl faktury, musíte být **vlastníkem fakturačního
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte položku **Správa nákladů a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/mca-section-invoice/search-cmb.png)
 
@@ -88,7 +88,7 @@ Pokud chcete vytvořit oddíl faktury, musíte být **vlastníkem fakturačního
 
    [![Snímek obrazovky, který zobrazuje stránku pro vytvoření oddílu faktury](./media/mca-section-invoice/mca-create-invoice-section.png)](./media/mca-section-invoice/mca-create-invoice-section-zoomed-in.png#lightbox)
 
-6. Vyberte **Create** (Vytvořit).
+6. Vyberte **Vytvořit**.
 
 ## <a name="create-a-new-billing-profile"></a>Vytvoření nového fakturačního profilu
 
@@ -100,7 +100,7 @@ Pokud chcete vytvořit fakturační profil, musíte být **vlastníkem fakturač
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte položku **Správa nákladů a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/mca-section-invoice/search-cmb.png)
 
@@ -123,7 +123,7 @@ Pokud chcete vytvořit fakturační profil, musíte být **vlastníkem fakturač
     |Fakturační adresa   | Fakturační adresa se zobrazí na fakturách vygenerovaných pro fakturační profil. |
     |Poslat fakturu e-mailem   | Zaškrtněte pole pro poslání faktury e-mailem, abyste faktury pro tento fakturační profil dostávali e-mailem. Pokud s tím nesouhlasíte, můžete si faktury zobrazit a stáhnout na webu Azure Portal.|
 
-5. Vyberte **Create** (Vytvořit).
+5. Vyberte **Vytvořit**.
 
 ## <a name="link-charges-to-invoice-sections-and-billing-profiles"></a>Propojení poplatků s oddíly faktury a fakturačními profily
 
@@ -163,7 +163,7 @@ Pokud máte existující předplatná Azure nebo jiné produkty, například Azu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte položku **Správa nákladů a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky, který zobrazuje hledání předplatného na portálu](./media/mca-section-invoice/search-cmb.png)
 
@@ -177,7 +177,7 @@ Pokud máte existující předplatná Azure nebo jiné produkty, například Azu
 
     [![Snímek obrazovky znázorňující výběr nového oddílu faktury](./media/mca-section-invoice/mca-select-new-invoice-section.png)](./media/mca-section-invoice/mca-select-new-invoice-section-zoomed-in.png#lightbox)
 
-6. Vyberte **Save** (Uložit).
+6. Vyberte **Uložit**.
 
 ## <a name="things-to-consider-when-adding-new-billing-profiles"></a>Aspekty, které je potřeba vzít v úvahu při přidávání nových fakturačních profilů
 
@@ -229,7 +229,7 @@ Rezervace Azure se sdíleným oborem se používají u předplatných v jednom f
 
 Na výše uvedeném obrázku má společnost Contoso dvě předplatná. Výhoda rezervace Azure se používá různě v závislosti na tom, jak je fakturační účet strukturovaný. Ve scénáři na levé straně se výhoda rezervace použije u obou předplatných, která se účtují do technického fakturačního profilu. Ve scénáři na pravé straně se výhoda rezervace použije pouze u předplatného 1, protože se jedná o jediné předplatné, které se účtuje do technického fakturačního profilu.
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Ověření přístupu ke smlouvě se zákazníkem Microsoftu
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
