@@ -1,17 +1,17 @@
 ---
 title: Rychlý Start – vytvoření registru na portálu
-description: Rychle se naučíte, jak vytvořit privátní registr Docker v Azure Container Registry pomocí Azure Portal.
+description: Rychle se naučíte, jak vytvořit privátní službu Azure Container Registry pomocí Azure Portal.
 ms.topic: quickstart
-ms.date: 06/11/2020
+ms.date: 08/04/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 82f9a6b02832b718d5b4e7b662c590f1992af595
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752805"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031774"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure Portal
+# <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Container Registry pomocí Azure Portal
 
 Registr kontejnerů Azure je privátní registr Docker v Azure, kde můžete ukládat a spravovat soukromé image kontejneru Docker a související artefakty. V tomto rychlém startu vytvoříte registr kontejnerů pomocí webu Azure Portal. Pak pomocí příkazů Docker nahrajte image kontejneru do registru a nakonec si vydejte a spusťte image z registru.
 
@@ -23,7 +23,7 @@ Je také nutné mít Docker nainstalovaný místně. Docker nabízí balíčky p
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
 Vyberte **vytvořit**  >  **kontejnery**prostředků  >  **Container Registry**.
 
@@ -41,14 +41,20 @@ Po zobrazení zprávy o **úspěšném nasazení** vyberte v portálu registr ko
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="Přehled registru kontejnerů na portálu":::
 
-Poznamenejte si hodnotu **přihlašovacího serveru**. Tuto hodnotu použijete v následujících krocích při doručování a vyžádání imagí pomocí Docker.
+Poznamenejte si název registru a hodnotu **přihlašovacího serveru**. Tyto hodnoty použijete v následujících krocích při doručování a vyžádání imagí pomocí Docker.
 
 ## <a name="log-in-to-registry"></a>Přihlášení k registru
 
-Před vložením a stažením imagí kontejneru se musíte přihlásit k instanci registru. [Přihlaste se k Azure CLI][get-started-with-azure-cli] na svém místním počítači a spusťte příkaz [AZ ACR Login][az-acr-login] . (Při přihlášení pomocí Azure CLI zadejte jenom název registru. Nezahrnovat příponu ' azurecr.io '.)
+Před vložením a stažením imagí kontejneru se musíte přihlásit k instanci registru. [Přihlaste se k Azure CLI][get-started-with-azure-cli] na svém místním počítači a spusťte příkaz [AZ ACR Login][az-acr-login] . (Při přihlášení pomocí Azure CLI zadejte jenom název registru. Nezahrnovat příponu domény ' azurecr.io '.)
 
 ```azurecli
 az acr login --name <registry-name>
+```
+
+Příklad:
+
+```azurecli
+az acr login --name mycontainerregistry
 ```
 
 Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo úspěšné). 

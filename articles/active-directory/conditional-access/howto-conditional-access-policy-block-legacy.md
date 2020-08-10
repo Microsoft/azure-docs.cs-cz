@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15e3c5ba72ff7b97e03cd7aa2b68eeffb2aa7882
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7a4693dabc62ec03897ccc46398bdff77118fe4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283006"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032080"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Podmíněný přístup: blokovat starší verze ověřování
 
@@ -36,8 +36,8 @@ Následující kroky vám pomůžou vytvořit zásady podmíněného přístupu,
    1. Vyberte **Hotovo**.
 1. V části **cloudové aplikace nebo akce**vyberte **všechny cloudové aplikace**.
    1. Vyberte **Hotovo**.
-1. V části **podmínky**  >  **klientské aplikace (Preview)** v části **Vyberte klientské aplikace, na které se bude tato zásada vztahovat**:
-   1. Zaškrtněte políčka pouze **mobilní aplikace a klienti klasické pracovní plochy**  >  **ostatní klienti**.
+1. V části **podmínky**  >  **klientských aplikací**nastavte **Konfigurovat** na **Ano**.
+   1. Zaškrtněte pouze políčka **klienti Exchange ActiveSync** a **Další klienti**.
    1. Vyberte **Hotovo**.
 1. V části **řízení přístupu**  >  **udělit**vyberte **blokovat přístup**.
    1. Vyberte **Vybrat**.

@@ -1,18 +1,18 @@
 ---
 title: Resetování služby Azure VPN Gateway pro opětovné vytvoření tunelu IPsec
-description: Tento článek vás provede resetováním VPN Gateway Azure, aby se znovu navázaly tunely IPsec. Tento článek se týká bran VPN v modelu nasazení Classic i Správce prostředků.
+description: Resetujte VPN Gateway Azure a znovu navažte tunely IPsec pro brány VPN v modelu nasazení Classic i Správce prostředků.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 90a01e4ee3ddf7b100ef51e55b9917c709a05864
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f78b33a95001639abfeaecb381b597f5273c0fc
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982879"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033049"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetování brány VPN Gateway
 
@@ -50,7 +50,7 @@ Správce prostředků VPN Gateway můžete resetovat pomocí Azure Portal. Pokud
    ![Resetovat okno VPN Gateway](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
 3. V okně Reset klikněte na tlačítko **obnovit** .
 
-## <a name="powershell"></a><a name="ps"></a>PowerShell
+## <a name="powershell"></a><a name="ps"></a>Prostředí
 
 ### <a name="resource-manager-deployment-model"></a>Model nasazení Resource Manager
 

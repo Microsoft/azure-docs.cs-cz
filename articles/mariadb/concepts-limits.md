@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: fc5557c1b20d87d2f96559e1d41efa4576045f09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51aff856aa5bdeb042493d47f100be0ca32dfbbb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392773"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032675"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Omezení Azure Database for MariaDB
 Následující části popisují kapacitu, podporu modulu úložiště, podporu oprávnění, podporu příkazů pro manipulaci s daty a funkční omezení v databázové službě.
@@ -27,7 +27,7 @@ Při počátečním nasazení zahrnuje server Azure pro MariaDB systémové tabu
 
 ## <a name="storage-engine-support"></a>Podpora modulu úložiště
 
-### <a name="supported"></a>Podporuje se
+### <a name="supported"></a>Podporováno
 - [InnoDB](https://mariadb.com/kb/en/library/xtradb-and-innodb/)
 - [REZIDENT](https://mariadb.com/kb/en/library/memory-storage-engine/)
 
@@ -42,10 +42,11 @@ Při počátečním nasazení zahrnuje server Azure pro MariaDB systémové tabu
 - Role DBA: mnoho parametrů serveru a nastavení může nechtěně snížit výkon serveru nebo vlastnosti s nezápornou KYSELINou systému DBMS. Za účelem zachování integrity služby a smlouvy SLA na úrovni produktu Tato služba nevystavuje roli DBA. Výchozí uživatelský účet, který je vytvořen při vytvoření nové instance databáze, umožňuje tomuto uživateli provádět většinu příkazů DDL a DML v instanci spravované databáze.
 - Superuživatele (SUPER Privileged Privilege) je taky omezené [oprávnění Super](https://mariadb.com/kb/en/library/grant/#global-privileges) .
 - DEFINe: vyžaduje pro vytvoření a omezení superuživatele oprávnění. Pokud importujete data pomocí zálohy, odeberte `CREATE DEFINER` příkazy ručně nebo pomocí `--skip-definer` příkazu při provádění mysqldump.
+- Systémové databáze: v Azure Database for MariaDB je [databáze systému MySQL](https://mariadb.com/kb/en/the-mysql-database-tables/) určena jen pro čtení, protože slouží k podpoře různých funkcí služby PaaS. Všimněte si, že nemůžete změnit žádnou z `mysql` systémových databází.
 
 ## <a name="data-manipulation-statement-support"></a>Podpora příkazů manipulace s daty
 
-### <a name="supported"></a>Podporuje se
+### <a name="supported"></a>Podporováno
 - `LOAD DATA INFILE`je podporováno, ale `[LOCAL]` musí být zadán parametr a směrován na cestu UNC (úložiště Azure připojené prostřednictvím protokolu SMB).
 
 ### <a name="unsupported"></a>Nepodporované

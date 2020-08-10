@@ -3,16 +3,16 @@ title: Vytvoření nabídky modulu Azure IoT Edge s partnerským centrem v Azure
 description: Naučte se, jak vytvořit, nakonfigurovat a publikovat nabídku IoT Edge modulu v Azure Marketplace pomocí partnerského centra.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: keferna
 ms.author: keferna
-ms.date: 07/22/2020
-ms.openlocfilehash: 52bb3e63ff436aa73aaaf43f2f87f904b27f70b6
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.date: 08/07/2020
+ms.openlocfilehash: a44e7835b90ca88460d2045a5494420c6d47921b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876627"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032828"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Vytvoření nabídky modulu IoT Edge
 
@@ -194,6 +194,8 @@ Další informace o vytváření seznamů nabídek najdete v tématu [nabídky D
 
 Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všechny obrázky musí být ve formátu PNG. Rozmazaný obraz se odmítne.
 
+[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu používanou partnerským centrem.
 
@@ -207,6 +209,8 @@ Zadejte soubory PNG pro logo vaší nabídky v každé z následujících čtyř
 - **Roztažitelné (255 × 115)**
 
 Všechny čtyři loga jsou povinná a používají se na různých místech v seznamu Marketplace.
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots-optional"></a>Snímky obrazovky (volitelné)
 

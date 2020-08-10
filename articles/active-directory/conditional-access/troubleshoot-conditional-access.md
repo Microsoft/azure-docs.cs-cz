@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9a2ab4b1ebc1c958be9dc4bd07a010f7fef8afc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6778b556795f4e079100f1a7bcbb8b9465e9e315
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610500"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032964"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Řešení potíží s přihlášením s využitím podmíněného přístupu
 
@@ -55,11 +55,16 @@ Pokud chcete zjistit, které zásady nebo zásady podmíněného přístupu se n
    1. Informace na kartě **Poradce při potížích a podpoře** můžou mít jasný důvod, proč se nezdařilo přihlášení jako zařízení, které nevyhovělo požadavkům na dodržování předpisů.
    1. Pokud chcete prozkoumat další postup, přejděte k podrobnostem o konfiguraci zásad kliknutím na **název zásady**. Kliknutím na **název zásady** zobrazíte uživatelské rozhraní konfigurace zásad pro vybranou zásadu pro kontrolu a úpravy.
    1. Podrobnosti **o uživateli** a **zařízení** klienta, které byly použity pro vyhodnocení zásad podmíněného přístupu, jsou k dispozici také na kartách **základní informace**, **umístění**, **informace o zařízení**, **Podrobnosti o ověřování**a další karty **podrobností** události přihlášení.
-   1. Když vyberete tři tečky na pravé straně zásady, zobrazí se podrobnosti o zásadách. To správcům poskytuje další informace o tom, proč se zásada úspěšně použila.
+
+### <a name="policy-details"></a>Podrobnosti zásady
+
+Výběr tří teček na pravé straně zásady v události přihlášení přináší podrobnosti o zásadách. To správcům poskytuje další informace o tom, proč se zásada úspěšně použila.
 
    ![Karta pro podmíněný přístup události přihlášení](./media/troubleshoot-conditional-access/image5.png)
 
    ![Podrobnosti zásady (Preview)](./media/troubleshoot-conditional-access/policy-details.png)
+
+Na levé straně najdete podrobnosti shromážděné při přihlášení a na pravé straně najdete podrobnosti o tom, jestli tyto podrobnosti splňují požadavky na použité zásady podmíněného přístupu. Zásady podmíněného přístupu se použijí jenom v případě, že jsou splněné nebo nejsou nakonfigurované všechny podmínky.
 
 Pokud informace v události nestačí pro pochopení výsledků přihlášení nebo úpravou zásad za účelem získání požadovaných výsledků, může být otevřen incident podpory. Přejděte na kartu pro **odstraňování potíží a podporu** přihlašovací události a vyberte **vytvořit novou žádost o podporu**.
 

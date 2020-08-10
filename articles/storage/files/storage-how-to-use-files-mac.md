@@ -1,18 +1,18 @@
 ---
 title: Připojení sdílené složky Azure přes protokol SMB v systému macOS | Microsoft Docs
-description: Zjistěte, jak připojit sdílenou složku Azure přes protokol SMB v systému macOS.
+description: Naučte se, jak připojit sdílenou složku Azure přes protokol SMB s macOS pomocí vyhledávačů nebo terminálu. Služba Soubory Azure je snadno použitelný cloudový systém souborů od Microsoftu.
 author: RenaShahMSFT
 ms.service: storage
 ms.topic: how-to
 ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 87271cfc602ff81a65a63426360f3bc0a8a8f030
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cddf8a7d3dbc7abcc25fb76aba8a0af1790fe4d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509825"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034443"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Připojení sdílené složky Azure přes protokol SMB v systému macOS
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systému macOS El Capitan 10.11 a novějším s použitím standardního protokolu SMB 3. Tento článek ukazuje dva různé způsoby připojení sdílené složky Azure v systému macOS: pomocí uživatelského rozhraní Finder a pomocí Terminálu.

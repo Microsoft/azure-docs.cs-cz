@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: fb0a5c06c8b7bdbb62e937e865e6bb2fd4000f2d
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 1ec3eaac90e1d2bc24608f6cb4546d5bed859b5e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87462472"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033236"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
 Začněte s Azure Load Balancer pomocí Azure Portal k vytvoření interního nástroje pro vyrovnávání zatížení a dvou virtuálních počítačů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -51,20 +51,56 @@ Privátní IP adresa ve virtuální síti je ve výchozím nastavení pro nástr
 
 IP adresa front-endu může být **statická** nebo **Dynamická**.
 
-## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
+## <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
 
-V této části nahradíte parametry v krocích níže uvedenými informacemi:
+V této části vytvoříte virtuální síť a podsíť.
 
-| Parametr                   | Hodnota                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupLB |
-| **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | West Europe      |
-| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
-| **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
+1. V levém horním rohu obrazovky vyberte **vytvořit prostředek > síť > virtuální síť** nebo ve vyhledávacím poli vyhledejte **virtuální síť** .
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+2. V části **vytvořit virtuální síť**zadejte nebo vyberte tyto informace na kartě **základy** :
+
+    | **Nastavení**          | **Hodnota**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Podrobnosti o projektu**  |                                                                 |
+    | Předplatné     | Vyberte své předplatné Azure.                                  |
+    | Skupina prostředků   | Vybrat **myResourceGroupLB** |
+    | **Podrobnosti instance** |                                                                 |
+    | Název             | Zadejte **myVNet**                                    |
+    | Oblast           | Vyberte **západní Evropa** |
+
+3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
+
+4. Na kartě **IP adresy** zadejte tyto informace:
+
+    | Nastavení            | Hodnota                      |
+    |--------------------|----------------------------|
+    | Adresní prostor IPv4 | Zadejte **10.1.0.0/16** |
+
+5. V části **název podsítě**vyberte slovo **výchozí**.
+
+6. V **Upravit podsíť**zadejte tyto informace:
+
+    | Nastavení            | Hodnota                      |
+    |--------------------|----------------------------|
+    | Název podsítě | Zadejte **myBackendSubnet** |
+    | Rozsah adres podsítě | Zadejte **10.1.0.0/24** |
+
+7. Vyberte **Uložit**.
+
+8. Vyberte kartu **zabezpečení** .
+
+9. V části **BastionHost**vyberte **Povolit**. Zadejte tyto informace:
+
+    | Nastavení            | Hodnota                      |
+    |--------------------|----------------------------|
+    | Název bastionu | Zadejte **myBastionHost** |
+    | Adresní prostor AzureBastionSubnet | Zadejte **10.1.1.0/24** |
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název**zadejte **myBastionIP**. </br> Vyberte **OK**. |
+
+
+8. Vyberte kartu **Revize + vytvořit** nebo vyberte tlačítko **Revize + vytvořit** .
+
+9. Vyberte **Vytvořit**.
 
 ## <a name="create-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
@@ -165,6 +201,9 @@ V této části vytvoříte pravidlo nástroje pro vyrovnávání zatížení:
 
 4. Ponechte zbytek výchozích hodnot a pak vyberte **OK**.
 
+>[!NOTE]
+>Virtuální počítače ve fondu back-end nebudou mít odchozí připojení k Internetu s touto konfigurací. </br> Další informace o poskytování odchozího připojení najdete v těchto tématech: </br> **[Odchozí připojení v Azure](load-balancer-outbound-connections.md)**</br> Možnosti pro poskytování připojení: </br> **[Konfigurace nástroje pro vyrovnávání zatížení jen pro odchozí](egress-only.md)** </br> **[Co je Virtual Network NAT?](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
+
 ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
 V této části:
@@ -225,7 +264,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     
     | Nastavení | Hodnota |
     |-|-|
-    | **Sledování** |  |
+    | **Monitorování** |  |
     | Diagnostika spouštění | Vybrat **vypnuto** |
    
 7. Vyberte **Zkontrolovat a vytvořit**. 
@@ -256,20 +295,56 @@ Privátní IP adresa ve virtuální síti je ve výchozím nastavení pro nástr
 
 IP adresa front-endu může být **statická** nebo **Dynamická**.
 
-## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
+## <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
 
-V této části nahradíte parametry v krocích níže uvedenými informacemi:
+V této části vytvoříte virtuální síť a podsíť.
 
-| Parametr                   | Hodnota                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupLB |
-| **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | West Europe      |
-| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
-| **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
+1. V levém horním rohu obrazovky vyberte **vytvořit prostředek > síť > virtuální síť** nebo ve vyhledávacím poli vyhledejte **virtuální síť** .
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+2. V části **vytvořit virtuální síť**zadejte nebo vyberte tyto informace na kartě **základy** :
+
+    | **Nastavení**          | **Hodnota**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Podrobnosti o projektu**  |                                                                 |
+    | Předplatné     | Vyberte své předplatné Azure.                                  |
+    | Skupina prostředků   | Vybrat **myResourceGroupLB** |
+    | **Podrobnosti instance** |                                                                 |
+    | Název             | Zadejte **myVNet**                                    |
+    | Oblast           | Vyberte **západní Evropa** |
+
+3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
+
+4. Na kartě **IP adresy** zadejte tyto informace:
+
+    | Nastavení            | Hodnota                      |
+    |--------------------|----------------------------|
+    | Adresní prostor IPv4 | Zadejte **10.1.0.0/16** |
+
+5. V části **název podsítě**vyberte slovo **výchozí**.
+
+6. V **Upravit podsíť**zadejte tyto informace:
+
+    | Nastavení            | Hodnota                      |
+    |--------------------|----------------------------|
+    | Název podsítě | Zadejte **myBackendSubnet** |
+    | Rozsah adres podsítě | Zadejte **10.1.0.0/24** |
+
+7. Vyberte **Uložit**.
+
+8. Vyberte kartu **zabezpečení** .
+
+9. V části **BastionHost**vyberte **Povolit**. Zadejte tyto informace:
+
+    | Nastavení            | Hodnota                      |
+    |--------------------|----------------------------|
+    | Název bastionu | Zadejte **myBastionHost** |
+    | Adresní prostor AzureBastionSubnet | Zadejte **10.1.1.0/24** |
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název**zadejte **myBastionIP**. </br> Vyberte **OK**. |
+
+
+8. Vyberte kartu **Revize + vytvořit** nebo vyberte tlačítko **Revize + vytvořit** .
+
+9. Vyberte **Vytvořit**.
 
 ## <a name="create-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
@@ -321,7 +396,7 @@ Vytvořte fond back-end adres **myBackendPool** , který bude zahrnovat virtuál
     | Virtuální síť | Vyberte **myVNet**. |
     | Přidruženo k | Vybrat **virtuální počítače** |
 
-4. Vyberte možnost **Přidat**.
+4. Vyberte **Přidat**.
 
 ### <a name="create-a-health-probe"></a>Vytvoření sondy stavu
 
@@ -434,9 +509,10 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
 5. Vyberte kartu **Správa** nebo vyberte možnost **Další**  >  **Správa**.
 
 6. Na kartě **Správa** vyberte nebo zadejte:
+    
     | Nastavení | Hodnota |
     |-|-|
-    | **Sledování** | |
+    | **Monitorování** |  |
     | Diagnostika spouštění | Vybrat **vypnuto** |
 
 7. Vyberte **Zkontrolovat a vytvořit**. 
@@ -465,7 +541,7 @@ Virtuální počítače vytvořené v předchozích krocích se musí přidat do
 
 5. Zaškrtněte políčka vedle **myVM1** a **myVM2**.
 
-6. Vyberte možnost **Přidat**.
+6. Vyberte **Přidat**.
 
 7. Vyberte **Uložit**.
 ---
@@ -487,7 +563,6 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
     | Název virtuálního počítače | Zadejte **myTestVM** |
     | Oblast | Vyberte **západní Evropa** |
     | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury** . |
-    | Zóna dostupnosti | Vybrat **zónu redundantní** |
     | Image | Vyberte **Windows Server 2019 Datacenter** |
     | Instance Azure Spot | Vybrat **ne** |
     | Velikost | Vyberte velikost virtuálního počítače nebo použijte výchozí nastavení. |
@@ -505,7 +580,7 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
     | **Síťové rozhraní** |  |
     | Virtuální síť | **myVNet** |
     | Podsíť | **myBackendSubnet** |
-    | Veřejná IP adresa | Přijměte výchozí hodnotu **myTestVM-IP**. |
+    | Veřejná IP adresa | Vyberte **Žádná**. |
     | Skupina zabezpečení sítě NIC | Výběr **Možnosti Upřesnit**|
     | Konfigurovat skupinu zabezpečení sítě | Vyberte **MyNSG** vytvořené v předchozím kroku.|
     
@@ -515,7 +590,7 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
     
     | Nastavení | Hodnota |
     |-|-|
-    | **Sledování** |  |
+    | **Monitorování** |  |
     | Diagnostika spouštění | Vybrat **vypnuto** |
    
 7. Vyberte **Zkontrolovat a vytvořit**. 
@@ -526,15 +601,15 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
 
 1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředky vyberte **myVM1** , která je umístěná ve skupině prostředků **myResourceGroupLB** .
 
-2. Na stránce **Přehled** vyberte **připojit** a Stáhněte soubor RDP pro virtuální počítač.
+2. Na stránce **Přehled** vyberte **připojit**a pak **bastionu**.
 
-3. Otevřete soubor RDP.
+4. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
-4. Přihlaste se k virtuálnímu počítači pomocí přihlašovacích údajů, které jste zadali při vytváření tohoto virtuálního počítače.
+5. Vyberte **Připojit**.
 
-5. Na ploše serveru přejděte do části **Nástroje pro správu Windows** > **Windows PowerShell**.
+6. Na ploše serveru přejděte do části **Nástroje pro správu Windows**  >  **Windows PowerShell**.
 
-6. V okně PowerShellu spusťte následující příkazy pro:
+7. V okně PowerShellu spusťte následující příkazy pro:
 
     * Instalace serveru služby IIS
     * Odebrat výchozí soubor iisstart.htm
@@ -546,14 +621,15 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
     
     # remove default htm file
-    remove-item  C:\inetpub\wwwroot\iisstart.htm
+     remove-item  C:\inetpub\wwwroot\iisstart.htm
     
     # Add a new htm file that displays server name
-    Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
    ```
-7. Zavřete relaci RDP pomocí **myVM1**.
+8. Zavřete relaci bastionu s **myVM1**.
 
-8. Opakováním kroků 1 až 6 nainstalujte službu IIS a aktualizovaný soubor iisstart.htm na **myVM2**.
+9. Opakováním kroků 1 až 6 nainstalujte službu IIS a aktualizovaný soubor iisstart.htm na **myVM2**.
+
 
 ## <a name="test-the-load-balancer"></a>Testování Load Balanceru
 
@@ -563,15 +639,13 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
 
 3. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředky vyberte **myTestVM** , která je umístěná ve skupině prostředků **myResourceGroupLB** .
 
-4. Na stránce **Přehled** vyberte **připojit** a Stáhněte soubor RDP pro virtuální počítač.
+4. Na stránce **Přehled** vyberte **připojit**a pak **bastionu**.
 
-5. Otevřete soubor RDP.
-
-6. Přihlaste se k virtuálnímu počítači pomocí přihlašovacích údajů, které jste zadali při vytváření tohoto virtuálního počítače.
+6. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
 7. Otevřete **Internet Explorer** v **myTestVM**.
 
-4. Zkopírujte privátní IP adresu a vložte ji do adresního řádku prohlížeče. V prohlížeči se zobrazí výchozí stránka webového serveru služby IIS.
+8. Zadejte IP adresu z předchozího kroku do panelu Adresa v prohlížeči. V prohlížeči se zobrazí výchozí stránka webového serveru služby IIS.
 
     :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Vytvoření standardního interního nástroje pro vyrovnávání zatížení" border="true":::
    
@@ -591,4 +665,5 @@ V tomto rychlém startu:
 
 Chcete-li získat další informace o Azure Load Balancer, pokračujte v [Azure Load Balancer?](load-balancer-overview.md) a [Load Balancer Nejčastější dotazy](load-balancer-faqs.md).
 
-Přečtěte si další informace o [Load Balancer a zónách dostupnosti](load-balancer-standard-availability-zones.md).
+* Přečtěte si další informace o [Load Balancer a zónách dostupnosti](load-balancer-standard-availability-zones.md).
+* Přečtěte si další informace o [Azure bastionu](https://docs.microsoft.com/azure/bastion/bastion-overview).

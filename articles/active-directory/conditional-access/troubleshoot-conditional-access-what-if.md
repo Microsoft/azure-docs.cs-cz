@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 07/03/2019
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9aaab58acb00305f76b10847a0417d91d724ba8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46d3b8d94148e3db163411c21cccf39c7630c6b3
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83737635"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032902"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Řešení potíží s podmíněným přístupem pomocí nástroje What If
 
@@ -67,7 +67,7 @@ V tomto seznamu se zobrazí zásady podmíněného přístupu, které se nepouž
 
 Aby bylo možné ověřit, zda byla konfigurace patřičně provedena, správce může použít nástroj What If k napodobení přístupu, z umístění, které by mělo být povoleno a z umístění, které by mělo být odepřeno.
 
-![What If nástroj zobrazující výsledky s přístupem blok](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)
+[![What If nástroj zobrazující výsledky s přístupem blok](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png#lightbox)
 
 V této instanci by měl uživatel zablokován přístup k libovolné cloudové aplikaci na cestě k Severní Korea, protože společnost Contoso zablokovala přístup z tohoto umístění.
 

@@ -5,14 +5,14 @@ services: load-balancer
 author: irenehua
 ms.service: load-balancer
 ms.topic: how-to
-ms.date: 02/23/2020
+ms.date: 08/07/2020
 ms.author: irenehua
-ms.openlocfilehash: 801f57c8d5b67e31bd6b3ac25d845dc2e13e365c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10a0c186bb1a0d9f974d485e7d2d1d7326bd849c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809321"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033151"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Upgradovat interní Load Balancer Azure – nevyžaduje se žádné odchozí připojení.
 [Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](https://docs.microsoft.com/azure/load-balancer/skus#skus).
@@ -48,7 +48,7 @@ K dispozici je skript Azure PowerShell, který provede následující akce:
 
 ## <a name="download-the-script"></a>Stáhnout skript
 
-Stáhněte si skript migrace z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureILBUpgrade/3.0).
+Stáhněte si skript migrace z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureILBUpgrade/4.0).
 ## <a name="use-the-script"></a>Použití skriptu
 
 V závislosti na nastaveních a preferencích místního prostředí PowerShellu jsou k dispozici dvě možnosti:

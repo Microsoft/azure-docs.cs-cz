@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d9ca806a7ddaf7d6ba657d8224d312a6aae33b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5f75ce20d24f98e5fcefde49b95a545281f8066
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253133"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032879"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Řešení potíží pomocí nástroje What If v podmíněném přístupu
 
@@ -76,7 +76,7 @@ Toto nastavení napodobuje [stav platforem zařízení](concept-conditional-acce
 
 ### <a name="client-apps"></a>Klientské aplikace
 
-Toto nastavení napodobuje [stav klientských aplikací](concept-conditional-access-conditions.md#client-apps-preview).
+Toto nastavení napodobuje [stav klientských aplikací](concept-conditional-access-conditions.md#client-apps).
 Ve výchozím nastavení toto nastavení způsobí vyhodnocení všech zásad s **prohlížečem** nebo **mobilními aplikacemi a desktopových klientů** buď jednotlivě, nebo podle obou vybraných. Také detekuje zásady, které vynutily **protokol Exchange ActiveSync (EAS)**. Toto nastavení můžete zúžit výběrem možnosti:
 
 - **Prohlížeč** pro vyhodnocení všech zásad s aspoň vybraným **prohlížečem** . 
@@ -86,7 +86,7 @@ Ve výchozím nastavení toto nastavení způsobí vyhodnocení všech zásad s 
 
 Toto nastavení napodobuje [rizikové podmínky přihlášení](concept-conditional-access-conditions.md#sign-in-risk).   
 
-## <a name="evaluation"></a>Posouzení 
+## <a name="evaluation"></a>Hodnocení 
 
 Kliknutím na **What If**spustíte vyhodnocení. Výsledek vyhodnocení obsahuje sestavu, která se skládá z těchto součástí: 
 

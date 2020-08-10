@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 425ed63238c07ffcf53df10eeddfa0ac95679a2c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: c5d52a78dec31dd796929b141556d6da10044099
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904509"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031482"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -72,7 +72,7 @@ Vyberte jedno z následujících skriptovacích prostředí, které vám pomůž
 
 Do vývojového prostředí doporučujeme přidat následující nástroje:
 
-* [Průzkumník služby Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Visual Studio Code](https://code.visualstudio.com/) s následujícími příponami:
     * Rozšíření: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * Přípona: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -242,6 +242,8 @@ Zadejte jméno, e-mail a telefonní číslo pro **kontakt podpory**, **technick�
 
 Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všechny obrázky musí být ve formátu PNG. Rozmazaný obraz způsobí odmítnutí odeslání.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu používanou partnerským centrem.
 
@@ -255,6 +257,8 @@ Zadejte soubory PNG pro logo vaší nabídky v následujících třech velikoste
 - **Roztažitelné** (255 × 115)
 
 Všechny tři loga jsou povinná a používají se na různých místech v seznamu.
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 

@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/14/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: ab729d34219c05ee76a2a14832f41342d29eab21
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c5fc239c32037354547c6818fd507a7a8cfd3657
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065796"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031281"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Obchodní partneři na webu Marketplace a přidělení zákaznického využití
 
@@ -45,7 +45,7 @@ Identifikátor GUID je jedinečný referenční identifikátor, který obsahuje 
 
 Pro každou nabídku a distribuční kanál pro každý produkt doporučujeme vytvořit jedinečný identifikátor GUID. Pokud nechcete, aby vytváření sestav bylo rozděleno, můžete použít jeden identifikátor GUID pro více distribučních kanálů produktu.
 
-Pokud nasadíte produkt pomocí šablony a je k dispozici na Azure Marketplace i na GitHubu, můžete vytvořit a zaregistrovat dva jedinečné identifikátory GUID:
+Pokud nasadíte produkt pomocí šablony a je dostupný jak na Azure Marketplace, tak i na GitHubu, můžete vytvořit a zaregistrovat dva jedinečné identifikátory GUID:
 
 - Produkt A v Azure Marketplace
 - Produkt A na GitHubu
@@ -61,7 +61,7 @@ Identifikátory GUID musí být zaregistrované v partnerském centru, aby bylo 
 Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a registraci identifikátoru GUID v partnerském centru jsou sledována budoucí nasazení.
 
 > [!NOTE]
-> Pokud nabídku [aplikace Azure](./partner-center-portal/create-new-azure-apps-offer.md) publikujete do Azure Marketplace prostřednictvím partnerského centra, všechny nové GUID používané v šabloně se při nahrání šablony automaticky zaregistrují do vašeho profilu partnerského centra.  
+> Pokud publikujete nabídku [aplikace Azure](./partner-center-portal/create-new-azure-apps-offer.md) , která Azure Marketplace prostřednictvím partnerského centra, všechny nové GUID používané v šabloně se při nahrání šablony automaticky zaregistrují do vašeho profilu partnerského centra.  
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard).
 
@@ -82,7 +82,7 @@ Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a reg
 1. Vyberte **Uložit**.
 
 ## <a name="use-resource-manager-templates"></a>Použití šablon Resource Manageru
-Mnohé z partnerských řešení se nasazují pomocí Azure Resource Manager šablon. Pokud máte šablonu Správce prostředků, která je k dispozici v Azure Marketplace, na GitHubu nebo v rychlém startu, proces změny šablony tak, aby bylo možné přičíst zákazníky rovnou.
+Mnohé z partnerských řešení se nasazují pomocí Azure Resource Manager šablon. Pokud máte šablonu Správce prostředků, která je k dispozici v Azure Marketplace, na GitHubu nebo jako rychlý Start, proces změny šablony tak, aby bylo možné označení zákaznického využívání rovného dopřed.
 
 > [!NOTE]
 > Další informace o vytváření a publikování šablon řešení najdete v tématu.
@@ -275,7 +275,7 @@ Pokud potřebujete pomoc s registrací na tržišti a/nebo s uvedením údajů o
 
 1. Vyberte možnost **Spustit požadavek**.
 
-1. Na další stránce zadejte požadované hodnoty. Vyberte **Pokračovat**.
+1. Na další stránce zadejte požadované hodnoty. Vyberte **pokračovat**.
 
 1. Na další stránce zadejte požadované hodnoty.
 
@@ -305,7 +305,7 @@ Prohlédněte si podrobné pokyny k snímkům obrazovky s [použitím služeb te
 
 Obraťte se na partnera Microsoftu, který vám poskytne odborného technického konzultanta k nastavení volání podle rozsahu vašich potřeb.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Jaké jsou výhody přidání identifikátoru GUID do šablony?**
 

@@ -1,25 +1,25 @@
 ---
 title: 'Vytvoření brány sítě VPN založené na trasách: portál'
 titleSuffix: Azure VPN Gateway
-description: Naučte se vytvořit službu Azure VPN Gateway založenou na směrování pomocí Azure Portal. Pro připojení k místní síti použijte bránu VPN.
+description: Pomocí Azure Portal můžete rychle vytvořit bránu Azure VPN Gateway založenou na směrování pro připojení VPN k vaší místní síti nebo k propojení virtuálních sítí.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: d78dff60c08a67305824139ba11f336380b0a018
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e6d44c9a92ad239c37620ee2e19efcc1777ec3de
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923370"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032625"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Vytvoření brány sítě VPN založené na trasách pomocí Azure Portal
 
 Tento článek vám pomůže rychle vytvořit bránu Azure VPN založenou na směrování pomocí Azure Portal.  Brána sítě VPN se používá při vytváření připojení VPN k místní síti. K připojení virtuální sítě můžete použít taky bránu VPN. 
 
-Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a bránu VPN založenou na směrování (bránu virtuální sítě). Po dokončení vytváření brány můžete vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a bránu VPN založenou na směrování (bránu virtuální sítě). Po dokončení vytváření brány můžete vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="create-a-virtual-network"></a><a name="vnet"></a>Vytvoření virtuální sítě
 

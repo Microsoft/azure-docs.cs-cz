@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: kryptografické požadavky'
-description: Přečtěte si, jak nakonfigurovat brány VPN Azure tak, aby splňovaly kryptografické požadavky pro tunelové propojení VPN mezi místními sítěmi a připojení typu VNet-to-VNet v rámci Azure.
+description: Naučte se nakonfigurovat brány VPN Azure tak, aby splňovaly kryptografické požadavky pro tunelové propojení VPN mezi různými místy a připojení Azure VNet-to-VNet.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: b591baa3fd942eb46cc7351a15c8849c44fe0d12
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 499d184d373b896ba7bffcf990693ef5e6ac466b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926957"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032420"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>O kryptografických požadavcích a branách Azure VPN Gateway
 

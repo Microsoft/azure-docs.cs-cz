@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 08/08/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 567bd0a34c1989403f29ea5a52fad258c2ffe825
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 2e7a0657949a2addbf895666682feee7fd0eb595
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846152"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033355"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikace démona, která volá webovou rozhraní API – konfigurace kódu
 
@@ -54,6 +54,9 @@ Konfigurační soubor definuje:
 - Autorita nebo instance cloudu a ID tenanta.
 - ID klienta, které jste získali z registrace aplikace.
 - Buď tajný klíč klienta, nebo certifikát.
+
+> [!NOTE]
+> Fragmenty kódu .NET ve zbývající části článku referenční [Konfigurace](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs) najdete v ukázce [Active-Directory-dotnetcore-démon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) .
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -239,7 +242,7 @@ ConfidentialClientApplication cca =
                 .build();
 ```
 
-– nebo –
+nebo
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
@@ -286,7 +289,7 @@ X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithAuthority(new Uri(config.Authority))
                                           .WithClientClaims(certificate, claims)
-                                          .Build();```
+                                          .Build();
 ```
 
 Další podrobnosti najdete v tématu [kontrolní výrazy klienta](msal-net-client-assertions.md).

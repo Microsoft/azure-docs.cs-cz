@@ -1,6 +1,6 @@
 ---
 title: Ukázka skriptu Azure Powershellu – stažení šablony konfigurace zařízení | Microsoft Docs
-description: Tento skript PowerShellu stáhne šablonu zařízení VPN pro připojení v Azure. Přečtěte si o všech rutinách ve skriptu.
+description: Naučte se, jak pomocí skriptu PowerShellu stáhnout šablonu konfigurace zařízení VPN pro připojení.
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: yushwang
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: yushwang
-ms.openlocfilehash: 77e5291010767368600ef3032306867556181373
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 283ddb12e497c242f1843840fe1f1ff208712626
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926225"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031706"
 ---
 # <a name="download-vpn-device-template-using-powershell"></a>Stažení šablony zařízení VPN pomocí PowerShellu
 

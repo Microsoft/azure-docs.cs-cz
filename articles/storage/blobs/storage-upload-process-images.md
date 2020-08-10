@@ -1,6 +1,6 @@
 ---
 title: Odeslání dat obrázků do cloudu v Azure Storage | Microsoft Docs
-description: Použití úložiště objektů BLOB v Azure s webovou aplikací k ukládání dat aplikací
+description: Pomocí služby Azure Blob Storage s webovými aplikacemi můžete ukládat data aplikací do účtu úložiště. V tomto kurzu vytvoříte webovou aplikaci, která ukládá a zobrazuje obrázky z Azure Storage.
 author: mhopkins-msft
 ms.service: storage
 ms.subservice: blobs
@@ -9,12 +9,12 @@ ms.date: 06/24/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 15d18372b9123602e6d6f05b9259e50a74f7eb39
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 3ac1855c0cc72a3c4afc20598d023f0adce2bd76
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433273"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034137"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Kurz: nahrání obrazových dat v cloudu pomocí Azure Storage
 
@@ -41,7 +41,7 @@ V první části tohoto kurzu se naučíte:
 > * Konfigurace nastavení aplikace
 > * Interakce s webovou aplikací
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete předplatné Azure. Než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
 
@@ -395,7 +395,7 @@ module.exports = router;
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>Kontrola zobrazení obrázku v účtu úložiště
 
-Přihlaste se na [Azure Portal](https://portal.azure.com). V nabídce vlevo vyberte **Účty úložiště** a potom vyberte název svého účtu úložiště. Vyberte **kontejnery**a pak vyberte kontejner **imagí** .
+Přihlaste se k webu [Azure Portal](https://portal.azure.com). V nabídce vlevo vyberte **Účty úložiště** a potom vyberte název svého účtu úložiště. Vyberte **kontejnery**a pak vyberte kontejner **imagí** .
 
 Zkontrolujte, jestli se obrázek v kontejneru zobrazuje.
 
@@ -405,7 +405,7 @@ Zkontrolujte, jestli se obrázek v kontejneru zobrazuje.
 
 Chcete-li otestovat zobrazení miniatur, Nahrajte obrázek do kontejneru **miniatury** , abyste zkontrolovali, jestli aplikace může číst kontejner **miniatur** .
 
-Přihlaste se na [Azure Portal](https://portal.azure.com). V nabídce vlevo vyberte **Účty úložiště** a potom vyberte název svého účtu úložiště. Vyberte **kontejnery**a pak vyberte kontejner **miniatury** . Výběrem položky **Nahrát** otevřete podokno **Nahrát objekt blob**.
+Přihlaste se k webu [Azure Portal](https://portal.azure.com). V nabídce vlevo vyberte **Účty úložiště** a potom vyberte název svého účtu úložiště. Vyberte **kontejnery**a pak vyberte kontejner **miniatury** . Výběrem položky **Nahrát** otevřete podokno **Nahrát objekt blob**.
 
 Zvolte soubor pomocí nástroje pro výběr souborů a vyberte **Odeslat**.
 

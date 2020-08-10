@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 20be34191355e6ade40e0f3b218818bfa5345a28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/7/2020
+ms.openlocfilehash: a9d6c1b2438f20a06062842b96b147e094760238
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79533228"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031213"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replikovat data do Azure Database for MySQL
 
@@ -30,6 +30,11 @@ Pro scénáře migrace použijte [Azure Database Migration Service](https://azur
 ### <a name="data-not-replicated"></a>Nereplikovaná data
 [*Systémová databáze MySQL*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) na hlavním serveru se nereplikuje. Změny účtů a oprávnění na hlavním serveru se nereplikují. Pokud vytvoříte účet na hlavním serveru a tento účet potřebuje přístup k serveru repliky, ručně vytvořte stejný účet na straně serveru repliky. Informace o tom, jaké tabulky jsou obsaženy v systémové databázi, najdete v [příručce k MySQL](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html).
 
+### <a name="filtering"></a>Filtrování
+Pokud chcete přeskočit replikaci tabulek z vašeho hlavního serveru (hostovaných místně, na virtuálních počítačích nebo v databázové službě hostované jinými poskytovateli cloudu), je tento `replicate_wild_ignore_table` parametr podporovaný. Volitelně můžete tento parametr aktualizovat na serveru repliky hostovaném v Azure pomocí [Azure Portal](howto-server-parameters.md) nebo [Azure CLI](howto-configure-server-parameters-using-cli.md).
+
+Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) .
+
 ### <a name="requirements"></a>Požadavky
 - Verze hlavního serveru musí být aspoň MySQL verze 5,6. 
 - Verze hlavního serveru a serveru repliky musí být stejné. Musí být například MySQL verze 5,6 nebo musí být MySQL verze 5,7.
@@ -41,7 +46,7 @@ Pro scénáře migrace použijte [Azure Database Migration Service](https://azur
 - Ujistěte se, že počítač, který je hostitelem hlavního serveru, umožňuje příchozí i odchozí provoz na portu 3306.
 - Ujistěte se, že hlavní server má **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN).
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Další
 - Replikace dat je podporovaná jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
 - Identifikátory globálních transakcí (GTID) se nepodporují.
 

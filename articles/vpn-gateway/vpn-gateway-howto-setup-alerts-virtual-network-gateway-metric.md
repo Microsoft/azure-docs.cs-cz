@@ -1,18 +1,18 @@
 ---
 title: Nastavení výstrah pro Azure VPN Gateway metriky
-description: Přečtěte si, jak nastavit výstrahy pro Azure VPN Gateway metriky. Pomocí Azure Monitor můžete nastavit výstrahy pro brány virtuální sítě typu VPN.
+description: Naučte se používat Azure Portal k nastavení výstrah Azure Monitor na základě metrik pro brány VPN virtuální sítě.
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: 3819f653cba80854a65a08f92a10f82057abb0fd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 14bb407cb12e24ca789085e954aaabff2333da7b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923063"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033491"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Nastavení výstrah pro VPN Gateway metriky
 

@@ -1,18 +1,18 @@
 ---
 title: Řešení potíží s Azure File Sync | Microsoft Docs
-description: Řešení běžných potíží s Azure File Sync.
+description: Řešení běžných problémů v nasazení na Azure File Sync, které můžete použít k transformaci Windows serveru na rychlou mezipaměť sdílené složky Azure.
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 17c8f846201553d3cfa9a2d68b8b4a7ab655c378
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: d268358f2f80cc9d347fa722d5027e1a87894b20
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232374"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034392"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -1290,7 +1290,7 @@ Pro agenta verze V10 za účelem a starší:
 5. Reprodukujte problém. Až skončíte, zadejte **D**.
 6. Soubor. zip, který obsahuje protokoly a trasovací soubory, je uložen do výstupního adresáře, který jste zadali.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 - [Sledování služby Synchronizace souborů Azure](storage-sync-files-monitoring.md)
 - [Nejčastější dotazy k souborům Azure](storage-files-faq.md)
 - [Řešení potíží se službou Azure Files ve Windows](storage-troubleshoot-windows-file-connection-problems.md)

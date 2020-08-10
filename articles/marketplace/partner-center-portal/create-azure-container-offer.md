@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: ff2745a636d25c429a1a40644757c00b28e2668c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 77cc63945e5cfc612c074e75e38365ada26073ea
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799170"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032777"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Vytvoření nabídky kontejneru Azure v Azure Marketplace
 
@@ -190,20 +190,23 @@ Další informace o vytváření seznamů nabídek najdete v tématu věnovaném
 
 Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všechny obrázky musí být ve formátu PNG. Rozmazaný obraz se odmítne.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu používanou partnerským centrem.
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije tuto hodnotu k vytvoření **malého** (48 x 48 pixelů) a **středníku** (90 x 90 pixelů). Volitelně je můžete nahradit různými obrázky.
-
-Všechny tři velikosti loga se vyžadují pro použití na různých místech v seznamu:
+ Zadejte soubory PNG pro logo vaší nabídky v každé z následujících čtyř velikostí pixelů:
 
 - **Malé** (48 x 48)
 - **Střední** (90 × 90)
-- **Velký** (mezi 216 x 216 a 350 × 350)
+- **Velký** (216 x 216)
+- **Roztažitelné** (255 × 115)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Všechny čtyři loga jsou povinná a používají se na různých místech v seznamu Marketplace.
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots-optional"></a>Snímky obrazovky (volitelné)
 

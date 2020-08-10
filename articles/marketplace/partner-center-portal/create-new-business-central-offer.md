@@ -1,18 +1,18 @@
 ---
 title: Vytvoření nabídky Business Central v Dynamics 365 – Microsoft Commercial Marketplace
-description: Přečtěte si postup a požadavky pro vytvoření nové nabídky Business Central v Dynamics 365 na portálu pro komerční tržišti v partnerském centru. Nabídku můžete vypsat nebo prodávat v Azure Marketplace nebo prostřednictvím programu Cloud Solution Provider (CSP).
+description: Přečtěte si postup a požadavky pro vytvoření nové nabídky Business Central v Dynamics 365 v partnerském centru Microsoftu na komerčním webu Microsoft Marketplace. Nabídku můžete vypsat nebo prodávat v Azure Marketplace nebo prostřednictvím programu Cloud Solution Provider (CSP).
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 06/17/2020
-ms.openlocfilehash: 5ec8949d1ba614ca947f9848182ae2c94e044fc3
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.date: 08/07/2020
+ms.openlocfilehash: ff93a336b50ceac1106b31726d865ed3e0b41108
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800394"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031468"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Vytvoření nabídky Dynamics 365 Business Central
 
@@ -180,19 +180,21 @@ V části **kontakt podpory** je také nutné zadat **adresu URL podpory** , kde
 
 Poskytněte aspoň jeden (a až tři) související marketingové dokumenty, jako jsou dokumenty White Paper, brožury, kontrolní seznamy nebo prezentace. Tyto dokumenty musí být ve formátu. PDF.
 
-### <a name="store-logos"></a>Ukládat loga
+### <a name="marketplace-images"></a>Image Marketplace
 
-Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije toto k vytvoření **malého** loga velikosti (48 x 48 pixelů). Volitelně můžete tento text nahradit jiným obrázkem.
+Poskytněte loga a obrázky pro vaši nabídku. Všechny obrázky musí být ve formátu PNG. 
 
-Velikost loga se vyžaduje pro použití na různých místech v seznamu:
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
-- **Malé** (48 x 48)
-- **Velký** (mezi 216 x 216 a 350 × 350)
+Nahrajte logo vaší nabídky ve dvou velikostech:
+
+* **Malý** (48 x 48 pixelů)
+* **Velký** (216 x 216 pixelů)
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 >[!NOTE]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje `https://upload.xboxlive.com` službu používanou partnerským centrem.
-
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshoty
 

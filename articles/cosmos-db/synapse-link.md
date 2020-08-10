@@ -1,18 +1,18 @@
 ---
 title: Odkaz na Azure synapse pro Azure Cosmos DB, výhody a kdy ji použít
 description: Přečtěte si o Azure Cosmos DB odkaz na službu Azure synapse. Synapse Link umožňuje spouštět analýzy v reálném čase (HTAP) s využitím Azure synapse Analytics pro provozní data v Azure Cosmos DB.
-author: srchi
-ms.author: srchi
+author: Rodrigossz
+ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: ff64f3f4891aac27a32b642b50ebd51dea9bd34a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9e8dd4b7d7e6f0de1f3ce19238e4ab1e3cf958e1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025773"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034174"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Co je Azure synapse Link pro Azure Cosmos DB (Preview)?
 

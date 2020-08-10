@@ -4,12 +4,12 @@ description: Naučte se škálovat Cluster Service Fabric přidáním typu uzlu.
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: 01f6c90f9f7d7679f5b108138e2d2318eb6b9e18
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5cabe7e377c29812252074336d7c5e9c9d3ba259
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010816"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031963"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Vertikální navýšení kapacity primárního typu uzlu clusteru Service Fabric
 Tento článek popisuje, jak škálovat typ primárního uzlu clusteru Service Fabric tak, že do clusteru přidáte další typ uzlu. Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Sady škálování virtuálních počítačů jsou výpočetním prostředkem Azure, který můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definovaný v clusteru Azure, je [nastavený jako samostatná sada škálování](service-fabric-cluster-nodetypes.md). Každý typ uzlu se pak dá spravovat samostatně.
@@ -62,9 +62,6 @@ New-AzResourceGroupDeployment `
 ### <a name="add-a-new-primary-node-type-to-the-cluster"></a>Přidat do clusteru nový typ primárního uzlu
 > [!Note]
 > Po dokončení operace škálování se prostředky vytvořené v následujících krocích stanou novým typem primárního uzlu ve vašem clusteru. Ujistěte se, že používáte názvy, které jsou jedinečné od počáteční podsítě, veřejné IP adresy, Load Balancer, sady škálování virtuálních počítačů a typu uzlu. 
-
-> [!Note]
-> Pokud jste už používali veřejnou IP adresu Standard SKU a standardní SKU SKU, možná nebudete muset vytvářet nové síťové prostředky. 
 
 Šablonu obsahující všechny následující kroky jsou dokončené tady: [Service Fabric-nový cluster typu Node](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-2.json). Následující kroky obsahují částečné fragmenty prostředků, které zvýrazní změny v nových prostředcích.  
 
@@ -162,7 +159,40 @@ Po dokončení nasazení budou mít Cluster Service Fabric nyní dva typy uzlů.
 ### <a name="remove-the-existing-node-type"></a>Odebrat existující typ uzlu 
 Po dokončení nasazení prostředků můžete začít s zakázáním uzlů v původním typu primárního uzlu. Po zakázání uzlů budou systémové služby migrovány na nový typ primárního uzlu, který byl nasazen v kroku výše.
 
-1. Zakáže uzly v typu uzlu 0. 
+1. Nastavte vlastnost typ primárního uzlu v prostředku clusteru Service Fabric na hodnotu false (NEPRAVDA). 
+```json
+{
+    "name": "[variables('vmNodeType0Name')]",
+    "applicationPorts": {
+        "endPort": "[variables('nt0applicationEndPort')]",
+        "startPort": "[variables('nt0applicationStartPort')]"
+    },
+    "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
+    "durabilityLevel": "Bronze",
+    "ephemeralPorts": {
+        "endPort": "[variables('nt0ephemeralEndPort')]",
+        "startPort": "[variables('nt0ephemeralStartPort')]"
+    },
+    "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
+    "isPrimary": false,
+    "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
+    "vmInstanceCount": "[parameters('nt0InstanceCount')]"
+}
+```
+2. Nasaďte šablonu s aktualizovanou primární vlastností na původním typu uzlu. Šablonu s primárním příznakem nastaveným na hodnotu false v původním typu uzlu můžete najít tady: [Service Fabric-Primary Node Type false](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-3.json).
+
+```powershell
+# deploy the updated template files to the existing resource group
+$templateFilePath = "C:\AzureDeploy-3.json"
+$parameterFilePath = "C:\AzureDeploy.Parameters.json"
+
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateFile $templateFilePath `
+    -TemplateParameterFile $parameterFilePath `
+```
+
+3. Zakáže uzly v typu uzlu 0. 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterConnectionEndpoint `
     -KeepAliveIntervalInSec 10 `
@@ -196,7 +226,7 @@ foreach($node in $nodes)
 > [!Note]
 > Dokončení tohoto kroku může chvíli trvat. 
 
-2. Zastavuje data na uzlu typu 0. 
+4. Zastavuje data na uzlu typu 0. 
 ```powershell
 foreach($node in $nodes)
 {
@@ -208,62 +238,18 @@ foreach($node in $nodes)
   }
 }
 ```
-3. Zruší přidělení uzlů v původní sadě škálování virtuálního počítače. 
+5. Zruší přidělení uzlů v původní sadě škálování virtuálního počítače. 
 ```powershell
 $scaleSetName="nt1vm"
 $scaleSetResourceType="Microsoft.Compute/virtualMachineScaleSets"
 
 Remove-AzResource -ResourceName $scaleSetName -ResourceType $scaleSetResourceType -ResourceGroupName $resourceGroupName -Force
 ```
+> [!Note]
+> Kroky 6 a 7 jsou volitelné, pokud jste již používali veřejnou IP adresu Standard SKU a službu Load Balancer Standard SKU. V takovém případě můžete mít v rámci stejného nástroje pro vyrovnávání zatížení více typů uzlů nebo uzlů pro škálování virtuálního počítače. 
 
-4. Odebere stav uzlu z uzlu typu 0.
-```powershell
-foreach($node in $nodes)
-{
-  if ($node.NodeType -eq $nodeType)
-  {
-    $node.NodeName
+6. Nyní můžete odstranit původní IP adresy a prostředky Load Balancer. V tomto kroku si taky aktualizujete název DNS. 
 
-    Remove-ServiceFabricNodeState -NodeName $node.NodeName -Force
-  }
-}
-```
-5. Nastavte vlastnost typ primárního uzlu v prostředku clusteru Service Fabric na hodnotu false (NEPRAVDA). 
-
-```json
-{
-    "name": "[variables('vmNodeType0Name')]",
-    "applicationPorts": {
-        "endPort": "[variables('nt0applicationEndPort')]",
-        "startPort": "[variables('nt0applicationStartPort')]"
-    },
-    "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
-    "durabilityLevel": "Bronze",
-    "ephemeralPorts": {
-        "endPort": "[variables('nt0ephemeralEndPort')]",
-        "startPort": "[variables('nt0ephemeralStartPort')]"
-    },
-    "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
-    "isPrimary": false,
-    "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
-    "vmInstanceCount": "[parameters('nt0InstanceCount')]"
-}
-```
-
-5. Nasaďte šablonu s aktualizovanou primární vlastností na původním typu uzlu. Šablonu s primárním příznakem nastaveným na hodnotu false v původním typu uzlu můžete najít tady: [Service Fabric-Primary Node Type false](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-3.json).
-
-```powershell
-# deploy the updated template files to the existing resource group
-$templateFilePath = "C:\AzureDeploy-3.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
-
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateFile $templateFilePath `
-    -TemplateParameterFile $parameterFilePath `
-```
-
-7. Nyní můžete odstranit původní IP adresy a prostředky Load Balancer. V tomto kroku si taky aktualizujete název DNS. 
 ```powershell
 $lbname="LB-cluster-name-nt1vm"
 $lbResourceType="Microsoft.Network/loadBalancers"
@@ -283,11 +269,24 @@ $PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
 $PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
 Set-AzPublicIpAddress -PublicIpAddress $PublicIP
 ``` 
-6. Aktualizujte koncový bod správy v clusteru, aby odkazoval na novou IP adresu. 
+
+7. Aktualizujte koncový bod správy v clusteru, aby odkazoval na novou IP adresu. 
 ```json
   "managementEndpoint": "[concat('https://',reference(concat(variables('lbIPName'),'-',variables('vmNodeType1Name'))).dnsSettings.fqdn,':',variables('nt0fabricHttpGatewayPort'))]",
 ```
-7. Odeberte odkaz na typ původního uzlu z prostředku Service Fabric v šabloně ARM. 
+8. Odebere stav uzlu z uzlu typu 0.
+```powershell
+foreach($node in $nodes)
+{
+  if ($node.NodeType -eq $nodeType)
+  {
+    $node.NodeName
+
+    Remove-ServiceFabricNodeState -NodeName $node.NodeName -Force
+  }
+}
+```
+9. Odeberte odkaz na typ původního uzlu z prostředku Service Fabric v šabloně ARM. 
 ```json
 "name": "[variables('vmNodeType0Name')]",
 "applicationPorts": {
@@ -338,13 +337,10 @@ V případě vysoké a vyšší odolnosti clusterů aktualizujte prostředek clu
  } 
 }
 ```
+10. Odeberte všechny ostatní prostředky související s typem původního uzlu ze šablony ARM. V tématu [Service Fabric – nový cluster typů uzlů](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) pro šablonu, ze které byly odebrány všechny původní prostředky.
 
-8. Odeberte všechny ostatní prostředky související s typem původního uzlu ze šablony ARM. V tématu [Service Fabric – nový cluster typů uzlů](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) pro šablonu, ze které byly odebrány všechny původní prostředky.
-
-9. Nasaďte upravenou šablonu Azure Resource Manager. * * Tento krok může trvat delší dobu, obvykle až dvě hodiny. Tento upgrade změní nastavení na InfrastructureService, a proto je nutné restartovat uzel. V tomto případě se forceRestart ignoruje. Parametr upgradeReplicaSetCheckTimeout určuje maximální dobu, po kterou Service Fabric čeká na vystavení oddílu v bezpečném stavu, pokud ještě není v bezpečném stavu. Jakmile kontroly bezpečnosti projde pro všechny oddíly v uzlu, Service Fabric pokračuje s upgradem v tomto uzlu. Hodnota parametru upgradeTimeout může být snížena na 6 hodin, ale v případě maximálního zabezpečení 12 hodin by se měla použít.
-Pak ověřte, že:
-
-* Service Fabric prostředek na portálu se zobrazuje jako připravený.
+11. Nasaďte upravenou šablonu Azure Resource Manager. * * Tento krok může trvat delší dobu, obvykle až dvě hodiny. Tento upgrade změní nastavení na InfrastructureService, a proto je nutné restartovat uzel. V tomto případě se forceRestart ignoruje. Parametr upgradeReplicaSetCheckTimeout určuje maximální dobu, po kterou Service Fabric čeká na vystavení oddílu v bezpečném stavu, pokud ještě není v bezpečném stavu. Jakmile kontroly bezpečnosti projde pro všechny oddíly v uzlu, Service Fabric pokračuje s upgradem v tomto uzlu. Hodnota parametru upgradeTimeout může být snížena na 6 hodin, ale v případě maximálního zabezpečení 12 hodin by se měla použít.
+Pak ověřte, že se prostředek Service Fabric na portálu zobrazuje jako připravený. 
 
 ```powershell
 # deploy the updated template files to the existing resource group

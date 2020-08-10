@@ -1,6 +1,6 @@
 ---
 title: Datové struktury služby mobility v Azure Maps | Mapy Microsoft Azure
-description: V tomto článku se seznámíte se společnými poli a datovými strukturami vrácenými prostřednictvím služby Microsoft Azure Maps mobility.
+description: Seznamte se s tím, jak se data uspořádají do oblastí Metro v Azure Maps služby mobility. Podívejte se, která pole obsahují informace o zastavení a řádcích veřejného přenosu.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5c2033557d14a25c786f3f6b08dc5bd54956f7e1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 02d89226bd2df4bfe5d11897199c50c702e7bc1c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131272"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033219"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Datové struktury ve službě Azure Maps mobility
 

@@ -1,6 +1,6 @@
 ---
 title: Vzory návrhu tabulky Azure Storage | Microsoft Docs
-description: Používejte vzory pro řešení Azure Table Service.
+description: Projděte si vzory návrhu, které jsou vhodné pro použití s Table service řešení v Azure. Vyřešte problémy a kompromisy, které jsou popsány v jiných článcích.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: cbafe7c3e3b76ea13a8ca7a82b2968662b43685a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 32904044cf6dcecf19b1a78eb4236dc02555bb86
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081226"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034192"
 ---
 # <a name="table-design-patterns"></a>Způsoby návrhu tabulek
 Tento článek popisuje některé vzory vhodné pro použití s Table service řešení. Také se dozvíte, jak můžete prakticky vyřešit některé problémy a kompromisy popsané v dalších článcích o návrhu úložiště tabulek. Následující diagram shrnuje vztahy mezi různými vzory:  
@@ -82,7 +82,7 @@ V samostatných oddílech nebo v samostatných tabulkách můžete ukládat víc
 ### <a name="context-and-problem"></a>Kontext a problém
 Table service automaticky indexuje entity pomocí hodnot **PartitionKey** a **RowKey** . To umožňuje klientské aplikaci efektivně načíst entitu pomocí těchto hodnot. Například pomocí struktury tabulky zobrazené níže může klientská aplikace použít dotaz na bod k načtení konkrétní entity zaměstnance pomocí názvu oddělení a ID zaměstnance (hodnoty **PartitionKey** a **RowKey** ). Klient může také načíst entity seřazené podle ID zaměstnance v rámci každého oddělení.  
 
-![Identifikační číslo zaměstnance](media/storage-table-design-guide/storage-table-design-IMAGE09.png)
+![ID zaměstnance](media/storage-table-design-guide/storage-table-design-IMAGE09.png)
 
 Pokud chcete také vyhledat entitu zaměstnance na základě hodnoty jiné vlastnosti, jako je například e-mailová adresa, je třeba použít méně efektivní kontrolu oddílů a vyhledat shodu. Důvodem je, že služba Table Service neposkytuje sekundární indexy. Kromě toho neexistuje možnost požadovat seznam zaměstnanců seřazených v jiném pořadí než **RowKey** objednávka.  
 
@@ -729,7 +729,7 @@ Table service je úložiště tabulek *bez schématu* , což znamená, že jedna
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Časové razítko</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -741,7 +741,7 @@ Table service je úložiště tabulek *bez schématu* , což znamená, že jedna
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -761,7 +761,7 @@ Table service je úložiště tabulek *bez schématu* , což znamená, že jedna
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -798,7 +798,7 @@ Table service je úložiště tabulek *bez schématu* , což znamená, že jedna
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -821,7 +821,7 @@ Každá entita musí mít stále hodnoty **PartitionKey**, **RowKey**a **timesta
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Časové razítko</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -834,7 +834,7 @@ Každá entita musí mít stále hodnoty **PartitionKey**, **RowKey**a **timesta
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -856,7 +856,7 @@ Každá entita musí mít stále hodnoty **PartitionKey**, **RowKey**a **timesta
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -897,7 +897,7 @@ Každá entita musí mít stále hodnoty **PartitionKey**, **RowKey**a **timesta
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Věk</th>
+<th>Stáří</th>
 <th>E-mail</th>
 </tr>
 <tr>

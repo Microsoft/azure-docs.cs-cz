@@ -1,6 +1,6 @@
 ---
 title: Správa prostředků Azure Blob Storage s využitím Průzkumník služby Storage | Microsoft Docs
-description: Správa kontejnerů a objektů BLOB v Azure pomocí Průzkumník služby Storage
+description: Správa prostředků Azure Blob Storage pomocí Průzkumník služby Storage Vytvoření kontejneru objektů blob, zobrazení obsahu kontejneru objektů blob, odstranění nebo zkopírování kontejneru objektů BLOB a dalších.
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
-ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07652f2ac88475664f30e8189204b5649f966d16
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298119"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033610"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Správa prostředků služby Azure Blob Storage pomocí Průzkumníka služby Storage
 

@@ -1,6 +1,6 @@
 ---
 title: 'Ukázkový skript Azure PowerShellu: Konfigurace sítě VPN typu Site-to-Site | Microsoft Docs'
-description: Tento skript PowerShellu vytvoří VPN Gateway založený na směrování a přidá konfiguraci typu Site-to-site. Přečtěte si o všech rutinách ve skriptu.
+description: Pomocí PowerShellu vytvořte bránu sítě VPN založenou na trasách a nakonfigurujte zařízení VPN tak, aby se přidalo připojení typu Site-to-site.
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: kumudD
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 04/30/2018
 ms.author: alzam
-ms.openlocfilehash: e3629fd605b74edc0a274fa887f56295dcb0ab77
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: fab1f4862cd1f2907d9bdc9f989fe24f1730002c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926946"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032437"
 ---
 # <a name="create-a-vpn-gateway-and-add-a-site-to-site-connection-using-powershell"></a>Vytvoření brány sítě VPN a přidání připojení typu Site-to-Site pomocí PowerShellu
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 8dd0abb5c127d51a0feaf0c71188b7fc48e2fd69
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f020d3e98a5c13848a67ed4d8c9ded485b2f9450
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798218"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032590"
 ---
 # <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultačních služeb
 
@@ -101,7 +101,7 @@ Tato stránka umožňuje nastavit primární produkt, který vaše konzultační
     - Analýzy
     - Modernizace aplikací
     - Archiv
-    - AI a strojové učení
+    - AI a Machine Learning
     - Backup
     - Velký objem dat
     - Datová platforma
@@ -202,19 +202,22 @@ Přidejte až tři (ale alespoň jednu) podporu dokumentů PDF pro vaši nabídk
 
 Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všechny obrázky musí být ve formátu. png. Rozmazaný obraz se odmítne.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu používanou partnerským centrem.
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Zadejte soubor PNG pro logo **velké** velikosti (mezi 216 x 216 a 350 × 350 pixelů). Partnerské centrum použije toto k vytvoření **malého** loga velikosti (48 x 48 pixelů). Volitelně můžete tento text nahradit jiným obrázkem.
+Zadejte soubory PNG pro logo vaší nabídky v každé z následujících velikostí pixelů:
 
-Velikost loga se vyžaduje pro použití na různých místech v seznamu:
+- **Malé (48 x 48)**
+- **Velký (216 x 216)**
 
-- **Malé** (48 x 48)
-- **Velký** (mezi 216 x 216 a 350 × 350)
+Všechna loga jsou povinná a používají se na různých místech v seznamu Marketplace.
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+-   Malé logo (48 x 48 pixelů) se zobrazí ve výsledcích hledání Azure Marketplace a na stránce Microsoft AppSource hlavní stránka a výsledky hledání. 
+-   Velké logo (mezi 216 x 216 a 350 × 350 pixelů) se zobrazí na stránce se seznamem nabídek v Azure Marketplace a Microsoft AppSource.
 
 #### <a name="screenshots-optional"></a>Snímky obrazovky (volitelné)
 

@@ -1,18 +1,18 @@
 ---
 title: Principy Azure File Sync vrstvení cloudu | Microsoft Docs
-description: Další informace o funkcích clouding funkcí Azure File Sync
+description: Přečtěte si o vrstvení cloudu, volitelné funkci Azure File Sync. Často používané soubory jsou ukládány do mezipaměti místně na serveru. ostatní jsou vrstveny na soubory Azure.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 74887e6ee4656091aa647b481bc406dcc23b9c12
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 6678f64802dc497de6cf0a70ba5ff0bbcaf44e1c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460078"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033117"
 ---
 # <a name="cloud-tiering-overview"></a>Přehled vrstvení cloudu
 Vrstvení cloudu je volitelná funkce Azure File Sync, ve které jsou často používané soubory ukládány do mezipaměti místně na serveru, zatímco všechny ostatní soubory jsou vrstveny do souborů Azure na základě nastavení zásad. Když je soubor vrstvený, Azure File Sync filtr systému souborů (StorageSync.sys) nahradí soubor místně s ukazatelem nebo bodem rozboru. Bod rozboru představuje adresu URL souboru ve službě soubory Azure. Vrstvený soubor má atribut offline i atribut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastavený v systému souborů NTFS, aby aplikace třetích stran mohli bezpečně identifikovat vrstvené soubory.

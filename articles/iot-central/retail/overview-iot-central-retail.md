@@ -8,23 +8,20 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 9427b007bc047e2f01db2dad02e06bf0ab0f5dea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c060b87b24d7467097d06adecb9f34acb4993779
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000613"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032281"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Sestavování řešení pro maloobchod s využitím služby Azure IoT Central
-
-
 
 Azure IoT Central je aplikační platforma IoT, která snižuje zatížení a náklady spojené s vývojem, správou a údržbou řešení IoT na podnikové úrovni. Když zvolíte sestavení pomocí Azure IoT Central, získáte možnost zaměřit se na vaše podnikání, peníze a energii při transformaci vaší firmy na data IoT, a ne jenom zachovat a aktualizovat složitou a nepřetržitou vývojovou infrastrukturu IoT.
 
 Tento článek popisuje několik šablon aplikací IoT Central specifických pro maloobchodní prodej. Jako tvůrce řešení můžete tyto šablony použít k sestavování řešení IoT, která optimalizují dodavatelské řetězce, vylepšit prostředí v obchodě pro zákazníky a efektivněji sledovat inventář.
 
-> [!div class="mx-imgBorder"]
-> ![Maloobchodní přehled Azure IoT](./media/overview-iot-central-retail/retail-app-templates.png)
+:::image type="content" source="media/overview-iot-central-retail/retail-app-templates.png" alt-text="Maloobchodní přehled Azure IoT":::
 
 Následující části popisují možnosti těchto šablon aplikací:
 
@@ -44,19 +41,17 @@ Mezi výhody připojeného logistického řešení patří:
 
 Následující snímky obrazovky zobrazují předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení:
 
-> [!div class="mx-imgBorder"]
-> ![Řídicí panel připojené logistiky](./media/overview-iot-central-retail/connected-logistics-dashboard1.png)
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Řídicí panel připojené logistiky":::
 
-> [!div class="mx-imgBorder"]
-> ![Řídicí panel připojené logistiky](./media/overview-iot-central-retail/connected-logistics-dashboard2.png)
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Řídicí panel připojené logistiky":::
 
 Další informace najdete v kurzu [nasazení a Projděte si článek s připojenou logistickou aplikací](./tutorial-iot-central-connected-logistics.md) .
 
 ## <a name="digital-distribution-center"></a>Digitální distribuční centrum
 
-Výrobci a prodejci si naváží celosvětové prostředí a jejich dodavatelské řetězy vystaví a stanou se složitějšími. Příjemci teď očekávají velké výběry produktů, které jsou dostupné, a pro tyto předměty dorazí do jednoho nebo dvou dnů od nákupu. Distribuční centra se musí přizpůsobit těmto trendům a přitom přejdou stávající neefektivity. 
+Výrobci a prodejci si naváží celosvětové prostředí a jejich dodavatelské řetězy vystaví a stanou se složitějšími. Příjemci teď očekávají velké výběry produktů, které jsou dostupné, a pro tyto předměty dorazí do jednoho nebo dvou dnů od nákupu. Distribuční centra se musí přizpůsobit těmto trendům a přitom přejdou stávající neefektivity.
 
-V současné době spoléhá na ruční práci, což znamená, že účty pro výdej a balení 55-65% nákladů služby Distribution Center. Ruční výdej a balení jsou také obvykle pomalejší než automatizované systémy a rychlé kolísání potřeb zaměstnanců je ještě obtížnější, aby se objemy přenosu splňovaly. Tato sezónní kolísání vede k dosažení vysokého počtu zaměstnanců a zvyšuje pravděpodobnost nákladných chyb.
+V současné době se spoléhá na ruční práci, což znamená, že účty pro výdej a balení 55-65% nákladů služby Distribution Center. Ruční výdej a balení jsou také obvykle pomalejší než automatizované systémy a rychlé kolísání potřeb zaměstnanců je ještě obtížnější, aby se objemy přenosu splňovaly. Tato sezónní kolísání vede k dosažení vysokého počtu zaměstnanců a zvyšuje pravděpodobnost nákladných chyb.
 
 Řešení založená na fotoaparátech s podporou IoT můžou poskytovat transformační výhody tím, že umožňují smyčku digitální zpětné vazby. Data z v rámci distribučního centra vede k užitečným přehledům, které naopak mají za následek lepší data.
 
@@ -69,8 +64,7 @@ K výhodám digitálního distribučního centra patří:
 
 Následující snímek obrazovky ukazuje předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení: 
 
-> [!div class="mx-imgBorder"]
-> ![Řídicí panel Digital Distribution Center](./media/overview-iot-central-retail/digital-distribution-center-dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Řídicí panel Digital Distribution Center":::
 
 Další informace najdete v kurzu [nasazení a procházení prostřednictvím šablony aplikace digitálního distribučního centra](./tutorial-iot-central-digital-distribution-center.md) .
 
@@ -82,8 +76,8 @@ Jako tvůrce řešení můžete použít šablonu aplikace monitorování podmí
 
 Použijte šablonu aplikace k těmto akcím:
 
-* Připojte celou řadu senzorů IoT k instanci aplikace IoT Central.
-* Monitorujte a spravujte stav sítě snímačů a také všechna zařízení brány v daném prostředí.
+* Připojte různé druhy senzorů IoT k instanci aplikace IoT Central.
+* Monitorujte a spravujte stav sítě snímačů a všech zařízení brány v prostředí.
 * Vytvořte si vlastní pravidla týkající se podmínek prostředí v rámci obchodu, abyste mohli aktivovat výstrahy pro správce Storu.
 * Transformujte podmínky prostředí v obchodě na přehledy, které může tým maloobchodního obchodu využít ke zlepšení prostředí pro zákazníky.
 * Exportujte agregované poznatky do stávajících nebo nových obchodních aplikací a poskytněte jim užitečné informace pro maloobchodní pracovníky.
@@ -92,8 +86,7 @@ Použijte šablonu aplikace k těmto akcím:
 
 Následující snímek obrazovky ukazuje předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení: 
 
-> [!div class="mx-imgBorder"]
-> ![Monitorování podmínek analýzy v úložišti](./media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="Monitorování podmínek analýzy v úložišti":::
 
 Další informace najdete v kurzu [Vytvoření analytické aplikace v rámci úložiště v Azure IoT Central](./tutorial-in-store-analytics-create-app.md) .
 
@@ -105,8 +98,8 @@ Jako tvůrce řešení můžete použít šablonu aplikace pro rezervaci IoT Cen
 
 Použijte šablonu aplikace k těmto akcím:
 
-* Připojte celou řadu senzorů IoT k instanci aplikace IoT Central.
-* Monitorujte a spravujte stav sítě snímačů a také všechna zařízení brány v daném prostředí.
+* Připojte různé druhy senzorů IoT k instanci aplikace IoT Central.
+* Monitorujte a spravujte stav sítě snímačů a všech zařízení brány v prostředí.
 * Vytvořte vlastní pravidla týkající se podmínky rezervace v rámci obchodu, která aktivuje výstrahy pro pracovníky v maloobchodě.
 * Transformujte podmínky rezervace v rámci Storu na přehledy, které může tým maloobchodního obchodu využít ke zlepšení prostředí pro zákazníky.
 * Exportujte agregované poznatky do stávajících nebo nových obchodních aplikací a poskytněte jim užitečné informace pro maloobchodní pracovníky.
@@ -115,8 +108,7 @@ Použijte šablonu aplikace k těmto akcím:
 
 Následující snímek obrazovky ukazuje předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení: 
 
-> [!div class="mx-imgBorder"]
-> ![Rezervace analýz v úložišti](./media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="Rezervace analýz v úložišti":::
 
 Další informace najdete v kurzu [Vytvoření analytické aplikace v rámci úložiště v Azure IoT Central](./tutorial-in-store-analytics-create-app.md) .
 
@@ -136,8 +128,7 @@ Tato šablona aplikace se zaměřuje na připojení zařízení a konfiguraci a 
 
 Následující snímek obrazovky ukazuje předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení:
 
-> [!div class="mx-imgBorder"]
-> ![Řídicí panel pro správu inteligentního inventáře](./media/overview-iot-central-retail/smart-inventory-management-dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Řídicí panel pro správu inteligentního inventáře":::
 
 Další informace najdete v kurzu [nasazení a procházení pomocí šablony aplikace pro správu inteligentního inventáře](./tutorial-iot-central-smart-inventory-management.md) .
 
@@ -157,10 +148,32 @@ Ve stále rostoucí maloobchodní konkurenci mají maloobchodníci nepřetržit�
 
 Následující snímek obrazovky ukazuje předem připravený řídicí panel v šabloně aplikace. Řídicí panel je plně přizpůsobitelný tak, aby splňoval konkrétní požadavky řešení:
 
-> [!div class="mx-imgBorder"]
-> ![Centrum Micro-vyplňování](./media/overview-iot-central-retail/MFC-Dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Centrum Micro-vyplňování":::
 
 Další informace najdete v kurzu [nasazení a procházení pomocí šablony aplikace centra vyplňování](./tutorial-micro-fulfillment-center.md) .
+
+## <a name="video-analytics---object-and-motion-detection"></a>Video Analytics – detekce objektů a pohybů
+
+Šablona aplikace *IoT Central video Analytics – objekt a detekce pohybu* vám umožní rychle se naučit, jak nasadit, spravovat a monitorovat řešení, které využívá inteligentní hraniční fotoaparáty ke zjišťování objektů a pohybu.
+
+Aplikace video Analytics používá modul [lva (Live video Analytics)](#live-video-analytics) běžící v IoT Edge. Modul LVA poskytuje platformu pro sestavování inteligentních aplikací pro video, které přesahují hranice a Cloud. Platformu můžete použít ke zlepšení řešení IoT, jako je například aplikace video Analytics, s detekcí objektů a pohybů.
+
+Šablona aplikace zahrnuje čtyři řídicí panely aplikace:
+
+* **Instalační program** poskytuje informace o návrhu aplikace a umožňuje přidat a odstranit kamery.
+* **Správa** vám umožní spravovat kamery. Můžete například nakonfigurovat kamery, zobrazit informace o stavu a spustit kamery spuštěné.
+* **Reálné kamery** vám umožní zobrazovat informace ze skutečných fotoaparátů, jako jsou počty detekce a události kamery.
+* **Monitor** vám umožní zobrazit podrobné informace ze všech vašich kamer.
+
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Video Analytics – detekce objektů a pohybů":::
+
+Další informace o architektuře řešení najdete v tématu [Architektura aplikace pro video Analytics](architecture-video-analytics.md).
+
+Informace o tom, jak nasadit řešení, najdete v kurzu [Vytvoření aplikace video Analytics v Azure IoT Central](tutorial-video-analytics-create-app.md) .
+
+### <a name="live-video-analytics"></a>Analýza živých videí
+
+Live video Analytics nabízí platformu pro vytváření inteligentních aplikací pro video, které přesahují hranice a Cloud. Platforma nabízí možnost zachytit, nahrávat, analyzovat živé video a publikovat výsledky, což může být video nebo video Analytics, ke službám Azure. Služby Azure by mohly běžet v cloudu nebo na hraničních zařízeních. Platformu můžete použít ke zlepšení řešení IoT pomocí analýzy videí.
 
 ## <a name="next-steps"></a>Další kroky
 

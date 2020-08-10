@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a74fe2bf6b326dac782ac75418a7f4960e66501a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4b887c91a289730c3d92efe753a2df162f36a047
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274999"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032117"
 ---
 # <a name="conditional-access-conditions"></a>Podmíněný přístup: podmínky
 
 V rámci zásad podmíněného přístupu může správce využít signály z podmínek, jako je riziko, platforma zařízení nebo umístění, a zvýšit tak jejich rozhodování o zásadách. 
 
-![Definování zásad podmíněného přístupu a určení podmínek](./media/concept-conditional-access-conditions/conditional-access-conditions.png)
+[![Definování zásad podmíněného přístupu a určení podmínek](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
 
 K vytvoření podrobných a specifických zásad podmíněného přístupu lze kombinovat více podmínek.
 
@@ -60,21 +60,28 @@ Některé organizace například mohou zvolit, že nevyžadují vícefaktorové 
 
 Další informace o umístěních najdete v článku [co je to podmínka umístění v Azure Active Directory podmíněný přístup](location-condition.md).
 
-## <a name="client-apps-preview"></a>Klientské aplikace (Preview)
+## <a name="client-apps"></a>Klientské aplikace
 
-Zásady podmíněného přístupu se standardně používají pro aplikace založené na prohlížeči a aplikace, které využívají moderní ověřovací protokoly. Kromě těchto aplikací můžou správci zvolit zahrnutí klientů Exchange ActiveSync a dalších klientů využívajících starší protokoly.
+Ve výchozím nastavení se všechny nově vytvořené zásady podmíněného přístupu použijí na všechny typy klientských aplikací, i když není podmínka pro klientské aplikace nakonfigurovaná. 
 
 > [!NOTE]
-> Přepínač konfigurace ano/ne v podmínce klientských aplikací byl odebrán, aby bylo snazší zjistit, které klientské aplikace jsou vybrány. To nemá vliv na to, na které klientské aplikace se vztahují existující zásady.
+> Chování podmínky klientských aplikací bylo aktualizováno v srpnu 2020. Pokud máte existující zásady podmíněného přístupu, zůstanou beze změny. Pokud ale kliknete na existující zásadu, odebere se přepínač konfigurace a budou vybrány klientské aplikace, pro které zásada platí.
 
-- Prohlížeč
-   - Mezi ně patří webové aplikace, které používají protokoly jako SAML, WS-Federation, OpenID Connect nebo služby registrované jako důvěrného klienta OAuth.
-- Mobilní aplikace a klienti klasické pracovní plochy
-   - Klienti moderních ověřování
-      - Tato možnost zahrnuje aplikace jako desktopové a telefonní aplikace Office.
+> [!IMPORTANT]
+> Přihlášení od starších klientů ověřování nepodporují MFA a nedávají informace o stavu zařízení službě Azure AD, takže se zablokují prostřednictvím ovládacích prvků pro udělení podmíněného přístupu, jako je třeba vyžadování zařízení s MFA nebo dodržování předpisů. Pokud máte účty, které musí používat starší verze ověřování, vylučte tyto účty ze zásad nebo nakonfigurujte zásady tak, aby se používaly jenom pro klienty moderních ověřování.
+
+Přepínač **Konfigurovat** , pokud je nastaveno na **hodnotu Ano** , se vztahuje na kontrolované položky, pokud je nastavena hodnota **ne** pro všechny klientské aplikace, včetně moderních a starších ověřovacích klientů. Tento přepínač se nezobrazuje v zásadách vytvořených před srpna 2020.
+
+- Klienti moderních ověřování
+   - Prohlížeč
+      - Mezi ně patří webové aplikace, které používají protokoly jako SAML, WS-Federation, OpenID Connect nebo služby registrované jako důvěrného klienta OAuth.
+   - Mobilní aplikace a klienti klasické pracovní plochy
+      -  Tato možnost zahrnuje aplikace jako desktopové a telefonní aplikace Office.
+- Klienti starší verze ověřování
    - Klienti Exchange ActiveSync
-      - Ve výchozím nastavení to zahrnuje veškeré použití protokolu Exchange ActiveSync (EAS). Výběr možnosti **použít zásady jenom na podporované platformy** se omezí na podporované platformy, jako je iOS, Android a Windows.
+      - To zahrnuje veškeré použití protokolu Exchange ActiveSync (EAS).
       - Když zásada zablokuje použití protokolu Exchange ActiveSync, bude se ovlivněný uživatel zobrazovat v jednom e-mailu o karanténě. Tento e-mail s informacemi o tom, proč jsou blokované, a obsahuje pokyny k nápravě, pokud je to možné.
+      - Správci můžou zásady použít jenom pro podporované platformy (například iOS, Android a Windows) prostřednictvím podmíněného přístupu Graph API.
    - Ostatní klienti
       - Tato možnost zahrnuje klienty, kteří používají základní a starší ověřovací protokoly, které nepodporují moderní ověřování.
          - Ověřený protokol SMTP, pomocí kterého klient POP a IMAP odesílá e-mailové zprávy.
@@ -99,7 +106,7 @@ Toto nastavení funguje ve všech prohlížečích. Pokud ale chcete splnit zás
 | :-- | :-- |
 | Windows 10 | Microsoft Edge, Internet Explorer, Chrome |
 | Windows 8/8,1 | Internet Explorer, Chrome |
-| Windows 7 | Internet Explorer, Chrome |
+| Windows 7 | Internet Explorer, Chrome |
 | iOS | Microsoft Edge, Intune Managed Browser, Safari |
 | Android | Microsoft Edge, Intune Managed Browser, Chrome |
 | telefon se systémem Windows | Microsoft Edge, Internet Explorer |

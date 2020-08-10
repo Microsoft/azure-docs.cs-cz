@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 08/05/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0da42ef51646f7775234ed870e59c442d54933c1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: df9b417b6387a44004b6c363f4e8b12a6f692a94
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170553"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032267"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datasite"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k datasiteu
 
@@ -87,17 +87,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://auth.<ENVIRONMENT>.com/sp/ACS.saml2`
 
     > [!NOTE]
-    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory pro klienta DataSite](mailto:applicationsupport@datasite.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
-
-1. Aplikace dataweb očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
-
-    ![image](common/default-attributes.png)
-
-1. Kromě výše, aplikace DataSite očekává, že se v odpovědi SAML vrátí zpátky několik atributů, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
-    
-    | Název | Zdrojový atribut |
-    | -------------| --------- |
-    | organizationId | < organizationId > |
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory pro klienta DataSite](mailto:service@datasite.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -117,7 +107,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -139,11 +129,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-datasite-sso"></a>Konfigurace jednotného přihlašování k dataweb
 
-Chcete-li konfigurovat jednotné přihlašování na straně **serveru WWW** , je třeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory pro datasites](mailto:applicationsupport@datasite.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Chcete-li konfigurovat jednotné přihlašování na straně **serveru WWW** , je třeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory pro datasites](mailto:service@datasite.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-datasite-test-user"></a>Vytvořit testovacího uživatele pro DataSite
 
-V této části vytvoříte uživatele s názvem B. Simon v DataSite. Práce s [týmem podpory pro datalokalitu](mailto:applicationsupport@datasite.com) umožňuje přidat uživatele na platformě dataweb. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v DataSite. Práce s [týmem podpory pro datalokalitu](mailto:service@datasite.com) umožňuje přidat uživatele na platformě dataweb. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
