@@ -4,14 +4,14 @@ description: zahrnout soubor
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/23/2020
+ms.date: 08/07/2020
 ms.author: dacoulte
-ms.openlocfilehash: 08183cc2cbe2fce83bc7347da22308931b99dcc1
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e22594a50a9c0d814ef7d66443f8253f5832cb1d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010983"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88038504"
 ---
 Pro každý typ objektu Azure Policy existuje maximální počet. Položka _Scope_ znamená buď předplatné, nebo [skupinu pro správu](../articles/governance/management-groups/overview.md).
 
@@ -26,4 +26,4 @@ Pro každý typ objektu Azure Policy existuje maximální počet. Položka _Scop
 | Definice iniciativy | Parametry | 100 |
 | Přiřazení zásad nebo iniciativ | Vyloučení (notScopes) | 400 |
 | Pravidlo zásad | Vnořené podmíněné výrazy | 512 |
-| Úloha nápravy | Zdroje a prostředky | 500 |
+| Úloha nápravy | Zdroje a prostředky | 1000 |

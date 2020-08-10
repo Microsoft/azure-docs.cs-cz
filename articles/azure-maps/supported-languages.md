@@ -1,6 +1,6 @@
 ---
 title: Podpora lokalizace | Mapy Microsoft Azure
-description: V tomto článku se dozvíte o podporovaných jazycích pro služby v Microsoft Azure Maps.
+description: Podívejte se, které oblasti Azure Maps podporuje se službami, jako jsou mapy, hledání, směrování, počasí a incidenty provozu. Přečtěte si, jak nastavit parametr zobrazení.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0d3adc4bc49379a9ec3408ab76b913a096840dbb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127889"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037690"
 ---
 # <a name="localization-support-in-azure-maps"></a>Podpora lokalizace v Azure Maps
 
@@ -25,7 +25,7 @@ Azure Maps podporuje různé jazyky a zobrazení založené na zemi nebo oblasti
 Azure Maps byly lokalizovány do různých jazyků v rámci svých služeb. Následující tabulka uvádí podporované kódy jazyků pro každou službu.  
   
 
-| ID         | Název                   |  Mapy | Hledat | Směrování | Počasí | Incidenty provozu | JS – ovládací prvek mapy |
+| ID         | Název                   |  Maps | Hledat | Směrování | Počasí | Incidenty provozu | JS – ovládací prvek mapy |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | AF-ZA      | Afrikánština              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabština                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -110,44 +110,44 @@ Azure Maps byly lokalizovány do různých jazyků v rámci svých služeb. Nás
 > Od 1. srpna 2019 bude parametr **zobrazení** definovat vrácený obsah mapy pro nové oblasti nebo země uvedené výše. Azure Maps parametr **zobrazení** (také označovaný jako "parametr oblasti uživatele") je dvě číslice země ISO-3166, která zobrazí správná mapování pro danou zemi nebo oblast, která určuje, která sada geopoliticky sporného obsahu se vrátí prostřednictvím služby Azure Maps, včetně ohraničení a popisků zobrazených na mapě. 
 
 Ujistěte se, že jste nastavili parametr **zobrazení** požadovaný pro rozhraní REST API a sady SDK, které vaše služby používají.
->  
->
->  **Rozhraní REST API:**
->  
->  Ujistěte se, že jste nastavili parametr zobrazení podle potřeby. Parametr zobrazení určuje, která sada geopolitického obsahu je vrácena prostřednictvím služby Azure Maps Services. 
->
->  Ovlivněné služby Azure Maps REST:
->    
->    * Získat dlaždici mapy
->    * Získat obrázek mapy 
->    * Získat hledání přibližné
->    * Získat POI hledání
->    * Získat kategorii hledání POI
->    * Získat hledání v okolí
->    * Získat adresu pro hledání
->    * Získat strukturované adresy hledání
->    * Získat reverzní adresu pro hledání
->    * Získat opačnou ulici v adrese hledání
->    * Po vyhledání v geometrii
->    * Adresa pro vystavení dávky ve verzi Preview
->    * Adresa pro zpětný náhled dávky
->    * Vyhledávejte po trase
->    * Vyúčtování přibližné dávky ve verzi Preview
->
->    
->  **Sady SDK**
->
->  Ujistěte se, že jste nastavili parametr **zobrazení** podle potřeby a máte nejnovější verzi sady web SDK a Android SDK. Ovlivněné sady SDK:
->
->    * Azure Maps Web SDK
->    * Azure Maps Android SDK
+  
+
+### <a name="rest-apis"></a>Rozhraní REST API
+  
+Ujistěte se, že jste nastavili parametr zobrazení podle potřeby. Parametr zobrazení určuje, která sada geopolitického obsahu je vrácena prostřednictvím služby Azure Maps Services. 
+
+Ovlivněné služby Azure Maps REST:
+    
+ * Získat dlaždici mapy
+ * Získat obrázek mapy 
+ * Získat hledání přibližné
+ * Získat POI hledání
+ * Získat kategorii hledání POI
+ * Získat hledání v okolí
+ * Získat adresu pro hledání
+ * Získat strukturované adresy hledání
+ * Získat reverzní adresu pro hledání
+ * Získat opačnou ulici v adrese hledání
+ * Po vyhledání v geometrii
+ * Adresa pro vystavení dávky ve verzi Preview
+ * Adresa pro zpětný náhled dávky
+ * Vyhledávejte po trase
+ * Vyúčtování přibližné dávky ve verzi Preview
+
+ 
+### <a name="sdks"></a>Sady SDK
+
+Ujistěte se, že jste nastavili parametr **zobrazení** podle potřeby a máte nejnovější verzi sady web SDK a Android SDK. Ovlivněné sady SDK:
+
+ * Azure Maps Web SDK
+ * Azure Maps Android SDK
 
 Ve výchozím nastavení je parametr zobrazení nastavený na **sjednocené**, i když jste ho v žádosti nedefinovali. Určete umístění vašich uživatelů. Potom nastavte pro toto umístění parametr **zobrazení** správně. Případně můžete nastavit možnost zobrazit = automaticky, která vrátí data mapy na základě IP adresy žádosti.  Parametr **zobrazení** v Azure Maps musí být používán v souladu s platnými zákony, včetně zákonů o mapování země nebo oblasti, kde jsou k dispozici mapy, obrázky a další data a obsah třetích stran, ke kterým máte oprávnění pro přístup prostřednictvím Azure Maps.
 
 
 Následující tabulka poskytuje podporovaná zobrazení.
 
-| Zobrazit         | Popis                            |  Mapy | Hledat | Ovládací prvek Mapa JS |
+| Zobrazit         | Popis                            |  Maps | Hledat | Ovládací prvek Mapa JS |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Spojené arabské emiráty (pohled na arabské písmo)    |   ✓   |        |     ✓          |
 | AR           | Argentina (pohled z argentinského)           |   ✓   |    ✓   |     ✓          |

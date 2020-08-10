@@ -1,6 +1,6 @@
 ---
 title: Rozšířená geometriía pro injson | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak Microsoft Azure Maps rozšiřuje specifikaci geometrií tak, aby představovala určitá.
+description: Přečtěte si, jak Azure Maps rozšiřuje specifikace pro injson tak, aby zahrnovala další geometrické obrazce. Podívejte se na příklady, které nastaví kružnice a obdélníky pro použití v mapách.
 author: sataneja
 ms.author: sataneja
 ms.date: 05/17/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6cfbef3751a7b4256f689af0e5b3524ae6fa878
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687493"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037452"
 ---
 # <a name="extended-geojson-geometries"></a>Rozšířená geometriía pro injson
 

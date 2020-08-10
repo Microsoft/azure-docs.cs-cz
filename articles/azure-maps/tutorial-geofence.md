@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: vytvoření geografického a sledovacího zařízení na mapě Microsoft Azure'
-description: Naučte se, jak nastavit geografickou a sledovací zařízení relativní vzhledem k geografickým záznamům pomocí služby Microsoft Azure Maps (prostorová služba).
+description: Přečtěte si, jak nastavit geografickou ochranu. Podívejte se, jak sledovat zařízení vzhledem k geografickým záznamům pomocí Azure Maps prostorové služby.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 7/15/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 775d98b992f2bca4441c868873ceaeb2389db81a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1044348e50f4208038739975e7355fb6f4873454
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517337"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037639"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Kurz: Nastavení monitorované geografické zóny pomocí Azure Maps
 
@@ -30,7 +30,7 @@ Azure Maps poskytuje řadu služeb pro podporu sledování zařízení, které z
 > * Pomocí [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) se můžete přihlásit k odběru Azure Maps události zadání a ukončení geografické zóny. Nastavíme dva odběry událostí webového zavěšení, které budou volat koncové body HTTP definované ve dvou Logic Apps. Logic Apps pak pošle příslušná e-mailová oznámení o přemístění nebo zapisování geografického zařízení.
 > * Využijte [Hledat geografické ploty získat rozhraní API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) pro příjem oznámení v případě, že se nějaké zařízení ukončí a pak vstoupí do oblastí geografické oblasti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
@@ -188,7 +188,7 @@ V tomto kurzu pošleme data geografického uložení geografických zón, která
 
 V této části vytvoříme dva koncové body [Aplikace logiky](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) , které budou aktivovat e-mailové oznámení. Ukážeme vám, jak vytvořit první aktivační událost, která pošle e-mailová oznámení pokaždé, když se zavolá její koncový bod.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 
 2. V levém horním rohu webu [Azure Portal](https://portal.azure.com) klikněte na **Vytvořit prostředek**.
 
@@ -254,7 +254,7 @@ Pomocí následujících kroků vytvořte odběr událostí pro události zadán
 
     :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Podrobnosti předplatného Azure Mapsch událostí":::
 
-4. Klikněte na **Vytvořit**.
+4. Klikněte na možnost **Vytvořit**.
 
 5. Opakujte kroky 1-4 pro koncový bod ukončení aplikace logiky, který jste vytvořili v předchozí části. V kroku 3 se ujistěte, že jste zvolili `Geofence Exited` Typ události.
 

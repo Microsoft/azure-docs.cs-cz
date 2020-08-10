@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
-ms.openlocfilehash: 2d6f667b6a49520dfe210fd797a828328899b634
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2f5a8a87d4ac4936f25e7ece2a34b518c09a063
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83674592"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037622"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -76,7 +76,7 @@ Obě metody otevřou podokno konfigurace nastavení úložiště.
 
 Podokno konfigurace zobrazuje následující Azure Repos nastavení úložiště kódu:
 
-| Nastavení | Description | Hodnota |
+| Nastavení | Popis | Hodnota |
 |:--- |:--- |:--- |
 | **Typ úložiště** | Typ úložiště kódu Azure Repos.<br/> | Azure DevOps Git nebo GitHub |
 | **Azure Active Directory** | Název vašeho tenanta Azure AD. | `<your tenant name>` |
@@ -211,11 +211,11 @@ Otevře se boční podokno, kde ověříte, že je větev publikování a nedoko
 
 ### <a name="permissions"></a>Oprávnění
 
-Obvykle nechcete, aby každý člen týmu měl oprávnění k aktualizaci objektu pro vytváření. Doporučuje se následující nastavení oprávnění:
+Obvykle nechcete, aby každý člen týmu měl oprávnění k aktualizaci Data Factory. Doporučuje se následující nastavení oprávnění:
 
-*   Všichni členové týmu by měli mít oprávnění ke čtení objektu pro vytváření dat.
-*   K publikování do továrny by měla být povolena pouze vybraná sada osob. Aby to bylo možné, musí mít roli **přispěvatel Data Factory** ve skupině prostředků, ve které je továrna. Další informace o oprávněních najdete v tématu [role a oprávnění pro Azure Data Factory](concepts-roles-permissions.md).
-   
+*   Všichni členové týmu by měli mít oprávnění ke čtení Data Factory.
+*   Pro publikování do Data Factory by mělo být povoleno pouze vybrat sadu osob. Aby to bylo možné, musí mít roli **přispěvatel Data Factory** ve **skupině prostředků** , která obsahuje data Factory. Další informace o oprávněních najdete v tématu [role a oprávnění pro Azure Data Factory](concepts-roles-permissions.md).
+
 Doporučuje se nepovoluje přímá vrácení se změnami do větve pro spolupráci. Toto omezení může zabránit chybám, protože každé vrácení se změnami projde procesem revize žádosti o přijetí změn popsaným v [tématu vytváření větví funkcí](source-control.md#creating-feature-branches).
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Používání hesel z Azure Key Vault

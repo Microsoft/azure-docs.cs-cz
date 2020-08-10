@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Vytvoření aplikace lokátoru úložiště pomocí Azure Maps | Mapy Microsoft Azure'
-description: V tomto kurzu se naučíte, jak vytvořit webovou aplikaci lokátoru úložiště pomocí webu Microsoft Azure Maps Web SDK.
+description: Naučte se vytvářet webové aplikace lokátoru úložiště. Pomocí sady Azure Maps Web SDK můžete vytvořit webovou stránku, zadat dotaz na vyhledávací službu a zobrazit výsledky na mapě.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/14/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 4bb0a4a0a621881fe1d9a59585476baa2ce05f8e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d6ab05d92ec209e10bfc4aec4e4fe2b6ea150099
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289553"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037656"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Kurz: vytvoření lokátoru úložiště pomocí Azure Maps
 

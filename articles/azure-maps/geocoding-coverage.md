@@ -1,6 +1,6 @@
 ---
 title: Pokrytí geografické kódování ve službě Microsoft Azure Maps Search Service
-description: V tomto článku se dozvíte o Microsoft Azure mapování rozsahu geografického kódování v různých zemích nebo oblastech.
+description: Podívejte se, které oblasti Azure Maps hledání pokrývá. Kategorie geografického kódování zahrnují adresní body, čísla domů, úroveň ulice, úroveň města a body zájmu.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/28/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6014cb4dda18a68b9149206adf034536161eb08e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386907"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037435"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps pokrytí geografické kódování
 

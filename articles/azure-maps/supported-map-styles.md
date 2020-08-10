@@ -1,6 +1,6 @@
 ---
 title: Podporované integrované styly Azure Maps mapy
-description: V tomto článku se seznámíte s různými typy integrovaných map, které podporuje Microsoft Azure Maps.
+description: Seznamte se s vestavěnými styly map, které Azure Maps podporuje, jako je například Road, blank_accessible, satelitní, satellite_road_labels, road_shaded_relief a noční.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/24/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b9641fe647eebae020ee67ee19a9cc131a487a7c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f6ce2966d7e91bd0fc6a23ad2605316da4e2342e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286879"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037724"
 ---
 # <a name="azure-maps-supported-built-in-map-styles"></a>Azure Maps podporují předdefinované styly map.
 

@@ -1,6 +1,6 @@
 ---
 title: Vyhledat umístění pomocí služby Azure Maps Search Services
-description: V tomto článku se dozvíte, jak vyhledat umístění pomocí rozhraní API pro vyhledávání Microsoft Azurech map pro geografické kódování, zpětného vyhledávání, přibližného hledání a reverzní hledání v různých ulici.
+description: Přečtěte si o službě Azure Maps Search. Podívejte se, jak používat tuto sadu rozhraní API pro účely geografického kódování, reverzního geografického kódování, přibližného vyhledávání a obráceného hledání mezi ulice.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/21/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 51ee2bb66adedc310f65b2d3b430023ae7767df6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 48dd0168f878a16e2eabe47151d0b09993d9f5f9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126597"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037775"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Vyhledat umístění pomocí služby Azure Maps Search Services
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak:
 * Chcete-li přeložit polohu souřadnic na ulici, proveďte [hledání zpětného překladu adres](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) .
 * Přeloží umístění souřadnic do uživatelsky srozumitelnější meziulice pomocí [hledané adresy rozhraní API pro reverzní meziulici](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet).  Nejčastěji to je potřeba při sledování aplikací, které přijímají informační kanál GPS ze zařízení nebo z assetu, a chcete zjistit, kde se nachází souřadnice.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
