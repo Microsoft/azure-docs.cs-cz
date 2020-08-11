@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/13/2020
+ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f517eb5bd113d8d54714b75bea4c8436882d0f9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: a3c22a46d22ef4eb717eb686fa295c820c78c934
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924423"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067252"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -44,7 +44,8 @@ V průběhu této fáze naplánujete migraci úlohy SAP na platformu Azure. V pr
     - Principy zabezpečení pro provoz obchodních dat s vysokým dopadem v Azure. Pokud se chcete dozvědět o zabezpečení dat, začněte s [dokumentací k zabezpečení Azure](../../../security/index.yml).
 2.  Technický návrh dokumentu. Tento dokument by měl obsahovat:
     - Blokový diagram pro řešení.
-    - Určení velikosti výpočetních, úložných a síťových komponent v Azure. Informace o velikosti pro SAP virtuálních počítačů Azure najdete v [poznámkách k podpoře sap #1928533](https://launchpad.support.sap.com/#/notes/1928533).
+    - Určení velikosti výpočetních, úložných a síťových komponent v Azure. Velikost pro SAP pro virtuální počítače Azure najdete v tématu [SAP 
+    -  Poznámka #1928533] ( https://launchpad.support.sap.com/#/notes/1928533) .
     - Provozní kontinuita a architektura zotavení po havárii.
     - Podrobné informace o verzích sad support pack operačního systému, DB, jádra a SAP Nemusí nutně platit, že všechny verze operačního systému podporované SAP NetWeaver nebo S/4HANA se podporují na virtuálních počítačích Azure. Totéž platí pro verze DBMS. Zkontrolujte následující zdroje a zarovnejte je a v případě potřeby upgradujte verze SAP, verze DBMS a vydané verze operačních systémů, aby se zajistila podpora SAP a Azure. Aby bylo možné získat plnou podporu pro SAP a Microsoft, musíte mít k dispozici kombinace vydaných verzí, které podporuje SAP a Azure. V případě potřeby musíte naplánovat upgrade některých softwarových součástí. Další podrobnosti o podporovaném softwaru SAP, OS a DBMS jsou popsané tady:
         - [Poznámka k podpoře SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533). Tato poznámka definuje minimální verze operačního systému podporované na virtuálních počítačích Azure. Definuje také minimální verze databází, které jsou požadovány pro většinu databází, které nejsou HANA. Nakonec poskytuje určení velikosti SAP pro typy virtuálních počítačů Azure podporovaných v SAP.
@@ -56,9 +57,11 @@ V průběhu této fáze naplánujete migraci úlohy SAP na platformu Azure. V pr
         - [Poznámka k podpoře SAP #2555629 – SAP HANA 2,0 dynamické vrstvení – podpora hypervisoru a cloudu](https://launchpad.support.sap.com/#/notes/2555629)
         - [Poznámka k podpoře SAP #1662610 – podrobnosti o podpoře pro sadu s ochranou Suite pro Linux](https://launchpad.support.sap.com/#/notes/1662610)
         - Poznámky SAP pro jiné produkty specifické pro SAP.     
-    - Pro produkční systémy SAP doporučujeme použít striktní tři návrhy. Na jednom virtuálním počítači nedoporučujeme kombinovat ASCS ani DBMS nebo aplikační servery. Použití konfigurace clusteru s více identifikátory SID pro služby SAP Central Services je podporované v hostovaných operačních systémech Windows v Azure. Tato konfigurace ale není podporovaná pro služby SAP Central v operačních systémech Linux v Azure. Dokumentaci k scénáři operačního systému Windows hosta najdete v těchto článcích:
+    - Použití konfigurace clusteru s více identifikátory SID pro služby SAP Central Services je podporované v hostovaných operačních systémech Windows, SLES a RHEL v Azure. Mějte na paměti, že poloměr vysokého počtu ASCS/SCS se dá zvýšit na takový cluster s více identifikátory SID. Dokumentaci k příslušnému scénáři hostujícího operačního systému najdete v těchto článcích:
         - [Vysoká dostupnost ASCS/SCS instance SAP pomocí clusteringu s podporou převzetí služeb při selhání Windows serveru a sdíleného disku v Azure](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
         - [Vysoká dostupnost ASCS/SCS instance SAP s Clustering s podporou převzetí služeb při selhání Windows serveru a sdílenou složkou v Azure](./sap-ascs-ha-multi-sid-wsfc-file-share.md)
+        - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v SUSE Linux Enterprise Server pro Průvodce pro aplikace SAP s více SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
+        - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v Red Hat Enterprise Linux pro Průvodce pro aplikace SAP s více SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
     - Architektura vysoké dostupnosti a zotavení po havárii.
         - Na základě RTO a RPO definujte, co má architektura vysoké dostupnosti a zotavení po havárii vypadat jako.
         - V případě vysoké dostupnosti v rámci zóny si přečtěte, co má požadovaný systém DBMS nabídnout v Azure. Většina balíčků DBMS nabízí synchronní metody synchronního aktivního pohotovostního režimu, které doporučujeme pro produkční systémy. Také si projděte dokumentaci týkající se SAP pro různé databáze a začněte s [důležitými informacemi o nasazení Azure Virtual Machines DBMS pro úlohy SAP](./dbms_guide_general.md) a související dokumenty.
@@ -78,7 +81,7 @@ V průběhu této fáze naplánujete migraci úlohy SAP na platformu Azure. V pr
     - Topologie skupiny prostředků.
     - [Strategie označování](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing).
     - Zásady vytváření názvů pro virtuální počítače a další součásti infrastruktury nebo logické názvy.
-5.  Kontrakt Microsoft Premier Support. Identifikujte svého zástupce TAM (Technical Account Manager) společnosti Microsoft. Požadavky na podporu SAP najdete v [poznámkách k podpoře sap #2015553](https://launchpad.support.sap.com/#/notes/2015553).
+5.  Kontrakt Microsoft Professional nebo Premier Support. Pokud máte s Microsoftem uzavřenou smlouvu o podpoře Premier, identifikujte svého zástupce TAM (Technical Account Manager) společnosti Microsoft. Požadavky na podporu SAP najdete v [poznámkách k podpoře sap #2015553](https://launchpad.support.sap.com/#/notes/2015553).
 6.  Počet předplatných Azure a kvóta jádra pro odběry. [Otevřete žádosti o podporu pro zvýšení kvót předplatných Azure](../../../azure-portal/supportability/resource-manager-core-quotas-request.md) podle potřeby.
 7.  Omezení dat a plán migrace dat pro migraci dat SAP do Azure. Pro systémy SAP NetWeaver má SAP pokyny, jak omezit objem velkých objemů dat. Viz [Tato příručka](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2) pro systém SAP o správě dat v systému SAP ERP. Část obsahu platí i pro systémy NetWeaver a S/4HANA obecně.
 8.  Přístup k automatizovanému nasazení. Cílem automatizace nasazení infrastruktury v Azure je nasadit deterministický způsob a získat deterministické výsledky. Spousta zákazníků používá PowerShell nebo skripty založené na rozhraní příkazového řádku. Existují však různé Open Source technologie, které můžete použít k nasazení infrastruktury Azure pro SAP a dokonce i k instalaci softwaru SAP. Příklady najdete na GitHubu:
@@ -106,6 +109,7 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
            -  [Velikosti virtuálních počítačů s Windows v Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro určení velikosti je důležité zvážit *maximální propustnost disku* , který není v mezipaměti.
            -  [Velikosti pro virtuální počítače se systémem Linux v Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro určení velikosti je důležité zvážit *maximální propustnost disku* , který není v mezipaměti.
    2. Úložiště.
+        - Podívejte se na dokument [Azure Storage typy pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) .
         - Minimálně použijte [úložiště Azure SSD úrovně Standard](../../windows/disks-types.md#standard-ssd) pro virtuální počítače, které reprezentují vrstvy aplikací SAP, a pro nasazení systémů DBMS, které nejsou citlivé na výkon.
         - Obecně nedoporučujeme používat [HDD úrovně Standard disky Azure](../../windows/disks-types.md#standard-hdd).
         - [Azure Premium Storage](../../windows/disks-types.md#premium-ssd) použít pro všechny virtuální počítače s DBMS, na kterých je vzdáleně citlivý výkon.

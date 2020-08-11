@@ -3,12 +3,12 @@ title: Začínáme se službou Live video Analytics v IoT Edge – Azure
 description: V tomto rychlém startu se dozvíte, jak začít pracovat se službou Live video Analytics na IoT Edge. Naučte se detekovat pohyb v živém streamu videa.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: ccdbbffb3da240aab7897dd93a6c4ae85c550eba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 16c3c849e7d936c6e94539176d8f171f52bd15de
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090072"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067663"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Rychlý Start: Začínáme – Live video Analytics na IoT Edge
 
@@ -18,7 +18,7 @@ Po dokončení kroků nastavení budete moct spustit simulovaný živý datový 
 
 ![Analýza živých videí na základě detekce pohybu](./media/analyze-live-video/motion-detection.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure, který má aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Visual Studio Code](https://code.visualstudio.com/) ve vývojovém počítači. Ujistěte se, že máte [rozšíření Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
@@ -84,7 +84,7 @@ Pokud je připojení úspěšné, zobrazí se seznam hraničních zařízení. M
 
 ![lva – uzel Sample-Device](./media/quickstarts/lva-sample-device-node.png)
 
-## <a name="use-direct-methods"></a>Použití přímých metod
+## <a name="use-direct-method-calls"></a>Použití volání přímých metod
 
 Pomocí modulu můžete analyzovat živé streamy videa vyvoláním přímých metod. Další informace najdete v tématu [přímé metody analýzy živých videí v IoT Edge](direct-methods.md). 
 

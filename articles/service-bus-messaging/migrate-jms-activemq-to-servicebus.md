@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
-ms.openlocfilehash: 35e2e86f68e1f53febabc75fcc537dbdd4481882
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369029"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067150"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Migrujte stávající aplikace JMS (Java Message Service) 2,0 z Apache ActiveMQ na Azure Service Bus
 
@@ -70,7 +70,7 @@ V rámci migrace a změny klientských aplikací pro interakci s Azure Service B
 
 Při psaní aplikací JMS používáte následující komponenty a verze: 
 
-| Komponenta | Verze |
+| Součást | Verze |
 |---|---|
 | Rozhraní API pro JMS (Java Message Service) | 1,1 nebo vyšší |
 | Protokol AMQP | 1.0 |
@@ -84,7 +84,7 @@ Service Bus podporuje komunikaci přes protokol AMQP. Pro tento účel povolte k
 
 ### <a name="set-up-enterprise-configurations"></a>Nastavení podnikových konfigurací
 
-Service Bus umožňuje různé funkce pro podnikové zabezpečení a vysokou dostupnost. Další informace naleznete v tématu: 
+Service Bus umožňuje různé funkce pro podnikové zabezpečení a vysokou dostupnost. Další informace: 
 
   * [Koncové body služby pro virtuální síť](service-bus-service-endpoints.md)
   * [Brána firewall](service-bus-ip-filtering.md)
@@ -272,7 +272,7 @@ Teď, když jste aplikaci změnili tak, aby spouštěla odesílání a příjem 
 
 ## <a name="next-steps"></a>Další kroky
 
-K bezproblémové integraci s Service Bus použijte [pružinový spouštěcí Starter pro Azure Service Bus JMS](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus) .
+K bezproblémové integraci s Service Bus použijte [pružinový spouštěcí Starter pro Azure Service Bus JMS](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus) .
 
 Další informace o Service Bus zasílání zpráv a JMS najdete v tématech:
 

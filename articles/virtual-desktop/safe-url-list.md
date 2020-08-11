@@ -3,15 +3,15 @@ title: Seznam bezpečných adres URL pro virtuální počítače s Windows – A
 description: Seznam adres URL, které byste měli odblokovat, aby bylo zajištěno, že nasazení virtuálních klientů Windows funguje tak, jak má.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9ac147eec7004f109687a6bb0888e25d0db84448
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 37fb5ccf121fed6e772dc1cd3dcba2345d62c66f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009473"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067201"
 ---
 # <a name="safe-url-list"></a>Seznam bezpečných adres URL
 
@@ -71,9 +71,11 @@ Všichni klienti vzdálené plochy, které použijete, musí mít přístup k n�
 |*.servicebus.windows.net|443|Řešení potíží s daty|Vše|
 |go.microsoft.com|443|Microsoft odkazy fwlinks|Vše|
 |aka.ms|443|Zkrácení adresy URL Microsoftu|Vše|
-|docs.microsoft.com|443|Documentation|Vše|
+|docs.microsoft.com|443|Dokumentace|Vše|
 |privacy.microsoft.com|443|Prohlášení o ochraně osobních údajů|Vše|
 |query.prod.cms.rt.microsoft.com|443|Aktualizace klienta|Windows Desktop|
 
 >[!IMPORTANT]
->Otevírání těchto adres URL je nezbytné pro spolehlivé klientské prostředí. Blokování přístupu k těmto adresám URL není podporováno a bude mít vliv na funkčnost služby. Tyto adresy URL odpovídají pouze klientským webům a prostředkům a nezahrnují adresy URL pro jiné služby, například Azure Active Directory.
+>Otevírání těchto adres URL je nezbytné pro spolehlivé klientské prostředí. Blokování přístupu k těmto adresám URL není podporováno a bude mít vliv na funkčnost služby.
+>
+>Tyto adresy URL odpovídají pouze klientským webům a prostředkům. Tento seznam neobsahuje adresy URL pro jiné služby, například Azure Active Directory. Adresy URL Azure Active Directory najdete pod položkou ID 56 v [adresách URL a rozsahech IP adres Office 365](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online).

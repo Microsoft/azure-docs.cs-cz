@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: d74e3f196e58e522eb9377ca9f18fd05ec8460ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca164b6ad6b5333c662a6632b27f658ab479231c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023989"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067626"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -224,7 +224,7 @@ Jedná se o aktuální omezení úrovně služby škálování na úrovni služe
 | Spravovaná instance SQL | Spravovaná instance Azure SQL se v současné době nepodporuje u databází s podporou škálování na více instancí. |
 | Elastické fondy |  Elastické fondy se v současné době nepodporují s měřítkem.|
 | Migrace do škálování je momentálně jednosměrnou operací. | Jakmile se databáze migruje do škálování, nejde ji migrovat přímo na úroveň služby, která není na úrovni služby. V současné době jediný způsob, jak migrovat databázi z velkého měřítka do neškálovatelného škálování, je exportovat a importovat pomocí souboru BacPac nebo jiných technologií pro přesun dat (hromadné kopírování, Azure Data Factory, Azure Databricks, SSIS atd.). BacPac exportujte/Azure Portal importujte z prostředí PowerShell pomocí rutiny [New-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) nebo [New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport)z Azure CLI pomocí příkazového řádku [AZ SQL DB export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) a [AZ SQL DB import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import)a z [REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) se nepodporuje. Import/export BacPac pro menší databáze s více škálováními (až 200 GB) se podporuje pomocí SSMS a [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) verze 18,4 a novější. Pro větší databáze může BacPac export/import trvat delší dobu a může dojít k selhání z různých důvodů.|
-| Migrace databází s trvalými OLTP objekty v paměti | Pro škálování podporuje pouze netrvalé objekty OLTP v paměti (typy tabulek, nativní aktualizace SPs a funkce).  Trvalé tabulky OLTP v paměti a další objekty je nutné vyřadit a znovu vytvořit jako objekty založené na discích před migrací databáze na úroveň služby s velkým měřítkem.|
+| Migrace databází s objekty OLTP v paměti | Měřítko podporuje podmnožinu objektů OLTP v paměti, včetně paměťově optimalizovaných typů tabulek, proměnných tabulky a nativně kompilovaných modulů. Pokud se ale v databázi, kterou migrujete, nachází libovolný druh objektů OLTP v paměti, migrace z úrovní služeb Premium a Pro důležité obchodní informace na škálování není podporovaná. Chcete-li migrovat takovou databázi do škálování, je nutné vyřadit všechny objekty OLTP v paměti a jejich závislosti. Po migraci databáze je možné tyto objekty znovu vytvořit. Odolné a netrvanlivé paměťově optimalizované tabulky se v současné době nepodporují a musí se znovu vytvořit jako diskové tabulky.|
 | Geografická replikace  | Pro Azure SQL Database škálování na úrovni služby ještě nemůžete konfigurovat geografickou replikaci. |
 | Kopie databáze | Ještě nemůžete použít kopii databáze k vytvoření nové databáze ve službě Azure SQL s škálovatelným škálováním. |
 | Integrace TDE/integrace | Transparentní šifrování databáze pomocí Azure Key Vault (obvykle označované jako vlastní klíč nebo BYOK) je aktuálně ve verzi Preview. |

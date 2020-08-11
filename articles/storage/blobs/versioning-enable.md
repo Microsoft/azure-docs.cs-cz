@@ -1,24 +1,28 @@
 ---
 title: Povolení a správa verzí objektů BLOB (Preview)
 titleSuffix: Azure Storage
-description: Naučte se povolit správu verzí objektů BLOB ve Azure Portal nebo pomocí Azure Resource Manager šablony.
+description: Naučte se povolit správu verzí objektů BLOB (Preview) v Azure Portal nebo pomocí Azure Resource Manager šablony.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7ff0bb6d593a199bd249441cf484d1f0580774ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 85e8ccd03bd20ed9bb572d482dbc7a06b8af725c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086043"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067269"
 ---
-# <a name="enable-and-manage-blob-versioning"></a>Povolení a správa verzí objektů BLOB
+# <a name="enable-and-manage-blob-versioning-preview"></a>Povolení a správa verzí objektů BLOB (Preview)
 
-Můžete povolit nebo zakázat správu verzí objektů BLOB (Preview) pro účet úložiště kdykoli pomocí Azure Portal nebo šablony Azure Resource Manager.
+Chcete-li automaticky zachovat předchozí verze objektu, můžete povolit správu verzí služby Blob Storage (Preview).  Pokud je povolená Správa verzí objektů blob, můžete obnovit předchozí verzi objektu blob, aby se data obnovila v případě, že se omylem změnila nebo odstranila.
+
+Tento článek popisuje, jak povolit nebo zakázat správu verzí objektů BLOB pro účet úložiště pomocí šablony Azure Portal nebo Azure Resource Manager.
+
+Než povolíte správu verzí objektů blob, musíte si zaregistrovat verzi Preview. Další informace o tom, jak se zaregistrují verze objektů blob, včetně toho, jak se zaregistrovat ve verzi Preview, najdete v tématu [Správa verzí objektů BLOB (Preview)](versioning-overview.md).
 
 ## <a name="enable-blob-versioning"></a>Povolení správy verzí objektů blob
 

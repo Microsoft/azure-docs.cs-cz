@@ -11,12 +11,12 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 8422d6978c21744696e3d37c34fdd867b014a19e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03e906d448790be8c7494e8172d02b3fc0603673
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84655745"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067949"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Vytvoření sdíleného prostředí Integration runtime v místním prostředí v Azure Data Factory
 
@@ -55,9 +55,9 @@ Pokud chcete vytvořit sdílený prostředí IR v místním prostředí pomocí 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. 
+- **Předplatné Azure**. Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/). 
 
-- **Azure PowerShell**. Postupujte podle pokynů v tématu [instalace Azure PowerShell ve Windows pomocí PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps). Pomocí PowerShellu spustíte skript pro vytvoření prostředí Integration runtime v místním prostředí, které je možné sdílet s jinými datovými továrnami. 
+- **Azure PowerShell.** Postupujte podle pokynů v tématu [instalace Azure PowerShell ve Windows pomocí PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps). Pomocí PowerShellu spustíte skript pro vytvoření prostředí Integration runtime v místním prostředí, které je možné sdílet s jinými datovými továrnami. 
 
 > [!NOTE]  
 > Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
@@ -155,7 +155,7 @@ Odpověď obsahuje ověřovací klíč pro tento modul runtime integrace v míst
 #### <a name="create-another-data-factory"></a>Vytvoření jiné datové továrny
 
 > [!NOTE]  
-> Tento krok je volitelný. Pokud již máte datovou továrnu, kterou chcete sdílet, přeskočte tento krok.
+> Tento krok je volitelný. Pokud již máte datovou továrnu, kterou chcete sdílet, přeskočte tento krok. Ale v oder Pokud chcete přidat nebo odebrat přiřazení rolí do jiné datové továrny, musíte `Microsoft.Authorization/roleAssignments/write` mít `Microsoft.Authorization/roleAssignments/delete` oprávnění a, jako je například správce nebo [vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) [přístupu uživatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) .
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `

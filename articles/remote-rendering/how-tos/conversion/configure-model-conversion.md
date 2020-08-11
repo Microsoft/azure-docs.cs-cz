@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 9ddf4641cfba2fb9704c2354e01299df368eb2ac
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432024"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067167"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurace převodu modelů
 
@@ -49,6 +49,12 @@ Obsah souboru by měl vyhovovat následujícímu schématu JSON:
             },
             "minItems": 3,
             "maxItems": 3
+        },
+        "metadataKeys": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "additionalProperties" : false
@@ -130,6 +136,12 @@ V `none` režimu je minimální režie za běhu a také mírně lepší doba na�
 ### <a name="coordinate-system-overriding"></a>Přepisování systému souřadnic
 
 * `axis`– Pro přepsání souřadnic systémových jednotek-vektory. Výchozí hodnoty jsou `["+x", "+y", "+z"]` . Teoreticky má formát FBX hlavičku, kde jsou tyto vektory definovány, a převod používá tyto informace k transformaci scény. Formát glTF definuje také pevný systém souřadnic. V praxi některé prostředky mají buď nesprávné informace v hlavičce nebo byly uloženy s jinou konvencí souřadnicového systému. Tato možnost umožňuje přepsat souřadnicový systém pro kompenzaci. Například: `"axis" : ["+x", "+z", "-y"]` vyměňuje osu Z a osu Y a zachová změnu hodnoty pera systému tím, že se obrátí směr osy Y.
+
+### <a name="node-meta-data"></a>Meta data uzlu
+
+* `metadataKeys`– Umožňuje zadat klíče vlastností metadat uzlu, které chcete zachovat ve výsledku převodu. Můžete zadat přesné klíče nebo zástupné znaky. Zástupné klíče mají formát "ABC *" a odpovídají libovolnému klíči, který začíná "ABC". Podporované typy hodnot metadat jsou `bool` , `int` , `float` a `string` .
+
+    Pro soubory GLTF tato data pocházejí z [objektu Extras na uzlech](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras). Pro soubory FBX data pocházejí z `Properties70` dat `Model nodes` . Další podrobnosti najdete v dokumentaci k nástroji 3D Asset.
 
 ### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::formátovat
 

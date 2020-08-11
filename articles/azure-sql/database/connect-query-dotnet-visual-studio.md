@@ -11,22 +11,22 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: 497de36d63a909d2c53374482dfe09d1f19dfded
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/10/2020
+ms.openlocfilehash: ed0ad6c5597d63c411eeb323cf00dcb7f044f667
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033102"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067813"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití .NET a C# v aplikaci Visual Studio k připojení a dotazování databáze ve službě Azure SQL Database nebo Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 V tomto rychlém startu se dozvíte, jak používat kód [.NET Framework](https://www.microsoft.com/net/) a C# v aplikaci Visual Studio k dotazování databáze v Azure SQL Database s příkazy jazyka Transact-SQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu je potřeba:
+Co budete potřebovat k dokončení tohoto rychlého startu:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Databáze v Azure SQL Database. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
@@ -51,7 +51,7 @@ K dokončení tohoto rychlého startu je potřeba:
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
 
@@ -62,17 +62,17 @@ Získejte informace o připojení, které potřebujete pro připojení k databá
 
 ## <a name="create-code-to-query-the-database-in-azure-sql-database"></a>Vytvořte kód pro dotazování databáze v Azure SQL Database
 
-1. V aplikaci Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**. 
+1. V aplikaci Visual Studio vytvořte nový projekt. 
    
-1. V dialogovém okně **Nový projekt** vyberte **Visual C#** a pak vyberte **Konzolová aplikace (.NET Framework)**.
+1. V dialogovém okně **Nový projekt** vyberte **Visual C#**, **Konzolová aplikace (.NET Framework)**.
    
 1. Jako název projektu zadejte *sqltest* a pak vyberte **OK**. Vytvoří se nový projekt. 
    
 1. Vyberte **projekt**  >  **Spravovat balíčky NuGet**. 
    
-1. Ve **Správci balíčků NuGet**vyberte kartu **Procházet** a pak vyhledejte a vyberte **System. data. SqlClient**.
+1. Ve **Správci balíčků NuGet**vyberte kartu **Procházet** , vyhledejte a vyberte **Microsoft. data. SqlClient**.
    
-1. Na stránce **System. data. SqlClient** vyberte **nainstalovat**. 
+1. Na stránce **Microsoft. data. SqlClient** vyberte **instalovat**. 
    - Pokud se zobrazí výzva, vyberte **OK** a pokračujte v instalaci. 
    - Pokud se zobrazí okno pro **přijetí licence** , vyberte **Souhlasím**.
    
@@ -85,7 +85,7 @@ Získejte informace o připojení, které potřebujete pro připojení k databá
    
    ```csharp
    using System;
-   using System.Data.SqlClient;
+   using Microsoft.Data.SqlClient;
    using System.Text;
    
    namespace sqltest

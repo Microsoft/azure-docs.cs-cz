@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: trbye
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ab019250e03feb9a776d628c06e792b884252260
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6b852186834fba858e8a049a8230b38f3d69164d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501810"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067422"
 ---
 # <a name="what-is-the-speech-cli"></a>Co je CLI služby Speech?
 
 Rozpoznávání řeči je nástroj příkazového řádku pro používání služby Speech bez psaní kódu. Rozhraní příkazového řádku pro rozpoznávání řeči vyžaduje minimální nastavení a je snadné začít experimentovat se základními funkcemi služby Speech Service, abyste viděli, jestli se můžou vaše případy použití splnit. Během několika minut můžete spustit jednoduché testovací pracovní postupy, jako je rozpoznávání řeči Batch z adresáře souborů, nebo převod textu na řeč pro kolekci řetězců ze souboru. Mimo jednoduché pracovní postupy je rozpoznávání řeči pro rozpoznávání řeči připravené k provozu a dá se škálovat až ke spouštění větších procesů pomocí automatizovaných `.bat` skriptů nebo skriptů prostředí.
 
-Většina primárních funkcí v sadě Speech SDK je k dispozici v rozhraní příkazového řádku, ale v rozhraní příkazového řádku je zjednodušeno několik pokročilých funkcí a úprav. Při rozhodování, kdy používat rozpoznávání řeči nebo sadu Speech SDK, vezměte v úvahu následující pokyny.
+Většina primárních funkcí v sadě Speech SDK je k dispozici v rozhraní příkazového řádku CLI a některé pokročilé funkce a přizpůsobení jsou zjednodušeny v rozhraní příkazového řádku pro rozpoznávání řeči. Při rozhodování, kdy používat rozpoznávání řeči nebo sadu Speech SDK, vezměte v úvahu následující pokyny.
 
 Rozhraní příkazového řádku pro rozpoznávání řeči použijte v těchto případech:
 * Chcete experimentovat s funkcemi služby Speech s minimálním nastavením a bez kódu
@@ -38,13 +38,13 @@ Sadu Speech SDK použijte v těchto případech:
 
 * Syntéza řeči – převod textu na řeč pomocí vstupu z textových souborů nebo zadání přímo z příkazového řádku Přizpůsobte charakteristiky výstupů řeči pomocí [konfigurací SSML](speech-synthesis-markup.md)a buď [standardních, nebo neuronové hlasů](speech-synthesis-markup.md#standard-neural-and-custom-voices).
 
-* Překlad řeči – přeloží zvuk ve zdrojovém jazyce na text v cílovém jazyce.
+* Překlad řeči – přeloží zvuk ve zdrojovém jazyce na text nebo zvuk v cílovém jazyce.
 
-* Spuštění na výpočetních prostředcích Azure – odeslání příkazů SPX pro spuštění na vzdáleném výpočetním prostředku Azure pomocí `spx webjob` .
+* Spuštění na výpočetních prostředcích Azure – odeslání příkazů rozhraní příkazového řádku pro spuštění na vzdáleném výpočetním prostředku Azure pomocí `spx webjob` .
 
 ## <a name="get-started"></a>Začínáme
 
-Pokud chcete začít pracovat s rozhraním příkazového řádku, přečtěte si [článek Základy](spx-basics.md). V tomto článku se dozvíte, jak spustit některé základní příkazy s protokolem SPX, a navíc se zobrazuje ještě mírně pokročilejší příkazy pro spouštění operací Batch pro převod řeči na text a převod textu na řeč. Po přečtení článku Základy byste měli mít dost znalostí syntaxe SPX, aby bylo možné začít psát některé vlastní příkazy nebo automatizovat jednoduché operace řeči.
+Pokud chcete začít pracovat s rozhraním příkazového řádku, přečtěte si [článek Základy](spx-basics.md). V tomto článku se dozvíte, jak spustit některé základní příkazy, a také o dalších pokročilejších příkazech pro spouštění operací Batch pro převod řeči na text a převod textu na řeč. Po přečtení článku Základy byste měli mít dost znalostí syntaxe, abyste mohli začít psát některé vlastní příkazy nebo automatizovat jednoduché operace hlasové služby.
 
 ## <a name="next-steps"></a>Další kroky
 

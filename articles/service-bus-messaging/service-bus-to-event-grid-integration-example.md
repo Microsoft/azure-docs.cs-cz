@@ -6,19 +6,19 @@ author: spelluru
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 8f947489c2298e580ae455763709df1734687130
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 0909fd95238051a6a50e582cb2543dd3bdd307bf
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85337056"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067286"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Kurz: reakce na události Azure Service Bus přijatých prostřednictvím Azure Event Grid pomocí Azure Functions a Azure Logic Apps
 V tomto kurzu se naučíte reagovat na události Azure Service Bus přijímané prostřednictvím Azure Event Grid pomocí Azure Functions a Azure Logic Apps. 
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Vytvoření oboru názvů Service Bus
+> * Vytvoření oboru názvů Service Busu
 > * Příprava ukázkové aplikace pro odesílání zpráv
 > * Odeslání zprávy do tématu Service Bus
 > * Příjem zpráv pomocí Logic Apps
@@ -33,7 +33,7 @@ Před tímto kurzem se ujistěte, že máte nainstalované tyto položky:
 - [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](https://www.visualstudio.com/vs) nebo novější.
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
 
-## <a name="create-a-service-bus-namespace"></a>Vytvoření oboru názvů Service Bus
+## <a name="create-a-service-bus-namespace"></a>Vytvoření oboru názvů Service Busu
 Postupujte podle pokynů v tomto kurzu: [rychlý Start: pomocí Azure Portal vytvořte Service Bus téma a odběry k tématu](service-bus-quickstart-topics-subscriptions-portal.md) , abyste mohli provádět následující úlohy:
 
 - Vytvořte obor názvů **premium** Service Bus. 
@@ -355,10 +355,10 @@ V této části zjistíte, jak po přijetí události přijímat a zpracovávat 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o službě [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/).
-* Další informace o službě [Azure Functions](https://docs.microsoft.com/azure/azure-functions/).
-* Další informace o [funkci Logic Apps služby Azure App Service](https://docs.microsoft.com/azure/logic-apps/).
-* Další informace o službě [Azure Service Bus](https://docs.microsoft.com/azure/service-bus/).
+* Další informace o službě [Azure Event Grid](../event-grid/index.yml).
+* Další informace o službě [Azure Functions](../azure-functions/index.yml).
+* Další informace o [funkci Logic Apps služby Azure App Service](../logic-apps/index.yml).
+* Další informace o službě [Azure Service Bus](/azure/service-bus/).
 
 
 [2]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid2.png

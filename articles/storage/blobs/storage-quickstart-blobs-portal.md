@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 04/16/2020
 ms.author: tamram
-ms.openlocfilehash: a9a048801c6bea74e6b5318eeedf76f92709bee6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f2e18b060aabcb849fb8e17722c530d199ebdbb8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535161"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067739"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí webu Azure Portal
 
@@ -45,7 +45,7 @@ Pokud chcete do nového kontejneru na webu Azure Portal nahrát objekt blob blok
 
 1. Na webu Azure Portal přejděte do kontejneru, který jste vytvořili v předchozí části.
 1. Vyberte tento kontejner. Zobrazí se seznam objektů blob, které obsahuje. Tento kontejner je nový, takže zatím neobsahuje žádné objekty blob.
-1. Kliknutím na tlačítko **nahrát** otevřete okno Odeslat a vyhledejte soubor, který se má nahrát jako objekt blob bloku, a přejděte do místního systému souborů. Volitelně můžete rozšířit oddíl Upřesnit a nakonfigurovat další nastavení operace nahrávání.
+1. Kliknutím na tlačítko **nahrát** otevřete okno Odeslat a vyhledejte soubor, který se má nahrát jako objekt blob bloku, a přejděte do místního systému souborů. Volitelně můžete rozšířit oddíl **Upřesnit** a nakonfigurovat další nastavení operace nahrávání.
 
     ![Snímek obrazovky ukazující, jak nahrát objekt blob z místního disku](media/storage-quickstart-blobs-portal/upload-blob.png)
 
@@ -59,9 +59,18 @@ Objekt blob bloku si můžete si stáhnout a zobrazit v prohlížeči nebo ulož
 1. Přejděte k seznamu objektů blob, které jste nahráli v předchozí části.
 1. Klikněte pravým tlačítkem na objekt blob, který chcete stáhnout, a vyberte **Stáhnout**.
 
+    ![Snímek obrazovky znázorňující stažení objektu BLOB](media/storage-quickstart-blobs-portal/download-blob.png)
+
+## <a name="delete-a-block-blob"></a>Odstranění objektu blob bloku
+
+Objekt blob bloku si můžete si stáhnout a zobrazit v prohlížeči nebo uložit do místního systému souborů. Pokud chcete stáhnout objekt blob bloku, postupujte takto:
+
+1. Přejděte k seznamu objektů blob, které jste nahráli v předchozí části.
+1. Vyberte objekty blob, které chcete odstranit, a vyberte v horním panelu akcí možnost **Odstranit** .
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete odebrat prostředky, které jste vytvořili v tomto rychlém startu, můžete odstranit příslušný kontejner. Všechny objekty blob v kontejneru se také odstraní.
+Chcete-li odebrat všechny prostředky, které jste vytvořili v rámci tohoto rychlého startu, můžete kontejner jednoduše odstranit. Všechny objekty blob v kontejneru se také odstraní.
 
 Odstranění kontejneru:
 

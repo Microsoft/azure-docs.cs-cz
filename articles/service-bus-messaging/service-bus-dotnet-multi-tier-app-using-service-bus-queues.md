@@ -4,12 +4,12 @@ description: Kurz .NET, který vám pomůže vytvořit vícevrstvou aplikaci v A
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 183f3b6e1231c843c04290024a89c270f0dd0026
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 044d0698f1ea181e8f508f92ad2c30ec29b6490b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083935"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067830"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Vícevrstvá aplikace .NET, která používá fronty Azure Service Bus
 
@@ -24,7 +24,7 @@ Naučíte se:
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-V tomto kurzu sestavíte a spustíte vícevrstvou aplikaci v cloudové službě Azure. Front-endem je webová role ASP.NET MVC a back-endem je role pracovního procesu, která používá frontu Service Bus. Můžete vytvořit stejnou vícevrstvou aplikaci s front-endem jako webový projekt, který není nasazený do cloudové služby, ale na web Azure. Taky můžete vyzkoušet kurz [Hybridní lokální/cloudová aplikace .NET](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md).
+V tomto kurzu sestavíte a spustíte vícevrstvou aplikaci v cloudové službě Azure. Front-endem je webová role ASP.NET MVC a back-endem je role pracovního procesu, která používá frontu Service Bus. Můžete vytvořit stejnou vícevrstvou aplikaci s front-endem jako webový projekt, který není nasazený do cloudové služby, ale na web Azure. Taky můžete vyzkoušet kurz [Hybridní lokální/cloudová aplikace .NET](../azure-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md).
 
 Následující snímek obrazovky ukazuje dokončenou aplikaci.
 

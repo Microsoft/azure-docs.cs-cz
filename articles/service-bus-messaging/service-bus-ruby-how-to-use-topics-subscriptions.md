@@ -6,12 +6,12 @@ documentationcenter: ruby
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: ef4bb8ba724a8ae1f708ab80a770a521f7879685
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: aba326a63558632bee3bf0c48d34e471bbe30886
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85336734"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067558"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Rychlý Start: jak používat Service Bus témata a předplatná s Ruby
  
@@ -62,7 +62,7 @@ Odběry témat se také vytvářejí pomocí objektu **Azure:: ServiceBusService
 
 Ve výchozím nastavení jsou předplatná trvalá. Budou i nadále existovat, dokud je neodstraní ani v tématu, ke kterému jsou přidruženy. Pokud vaše aplikace obsahuje logiku pro vytvoření předplatného, měli byste nejdřív ověřit, jestli předplatné už existuje, pomocí metody getsubscription.
 
-Odběry můžete nechat automaticky odstranit nastavením [vlastnosti AutoDeleteOnIdle](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle).
+Odběry můžete nechat automaticky odstranit nastavením [vlastnosti AutoDeleteOnIdle](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle).
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Vytvoření odběru s výchozím filtrem (MatchAll).
 Pokud při vytvoření nového předplatného není zadaný žádný filtr, použije se filtr **MatchAll** (výchozí). Když se použije filtr **MatchAll** , všechny zprávy publikované v tématu se umístí do virtuální fronty odběru. Následující příklad vytvoří odběr s názvem All-Messages a použije výchozí filtr **MatchAll** .
@@ -150,7 +150,7 @@ Je také časový limit přidružený ke zprávě uzamčený v rámci předplatn
 V případě, že dojde k chybě aplikace po zpracování zprávy, ale před `delete_subscription_message()` zavoláním metody, bude zpráva doručena do aplikace při restartu. Často se nazývá *alespoň po zpracování*; To znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může být stejná zpráva doručena znovu. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. Tato logika se často dosahuje pomocí `message_id` vlastnosti zprávy, která zůstává konstantní při pokusůch o doručení.
 
 ## <a name="delete-topics-and-subscriptions"></a>Odstranění témat a odběrů
-Témata a odběry jsou trvalé, pokud není nastavena [vlastnost AutoDeleteOnIdle](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) . Je možné je odstranit pomocí [Azure Portal][Azure portal] nebo programově. Následující příklad ukazuje, jak odstranit téma s názvem `test-topic` .
+Témata a odběry jsou trvalé, pokud není nastavena [vlastnost AutoDeleteOnIdle](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) . Je možné je odstranit pomocí [Azure Portal][Azure portal] nebo programově. Následující příklad ukazuje, jak odstranit téma s názvem `test-topic` .
 
 ```ruby
 azure_service_bus_service.delete_topic("test-topic")

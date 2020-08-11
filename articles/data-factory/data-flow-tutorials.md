@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 05/25/2020
-ms.openlocfilehash: 87bfd505edcb394bafd70a975b5b3d6bde341cb9
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 08/11/2020
+ms.openlocfilehash: 809011df3c8cd6dbc1ee2a2129a261102adb43c0
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848868"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067847"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videokurzy mapování toku dat
 
@@ -36,6 +36,8 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 [Monitorování a Správa výkonu toku dat mapování](https://www.youtube.com/watch?v=fktIWdJiqTk)
 
 [Časování srovnávacích testů](http://youtu.be/6CSbWm4lRhw?hd=1)
+
+[Ladění pracovních postupů pro toky dat](https://youtu.be/y3suL7UsWVw)
 
 ## <a name="transformation-overviews"></a>Přehledy transformace
 
@@ -118,6 +120,8 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 [Dynamicky optimalizuje velikost clusteru toku dat za běhu.](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
 [Optimalizace časů spuštění toku dat](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
+
+[Prostředí Azure Integration runtime pro toky dat](https://mssqldude.wordpress.com/)
 
 ## <a name="mapping-data-flow-scenarios"></a>Mapování scénářů toku dat
 

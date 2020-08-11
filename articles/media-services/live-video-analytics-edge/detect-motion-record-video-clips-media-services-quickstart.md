@@ -3,12 +3,12 @@ title: Detekce pohybu, nahrávání videa do Azure Media Services
 description: V tomto rychlém startu se dozvíte, jak používat Live video Analytics na IoT Edge k detekci pohybů v živém datovém streamu a k nahrávání videoklipů do Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 24bf958c7a6af25d64d8c2884b9fa259c67e39c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 972b85c00aa29cc39dafd03b9945e489680dd9a5
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074395"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067646"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Rychlý Start: zjištění pohybu, nahrání videa do Media Services
 
@@ -16,7 +16,7 @@ Tento článek vás provede kroky k použití živé analýzy videí v IoT Edge 
 
 Tento článek se sestavuje na začátku [Začínáme rychlý Start](get-started-detect-motion-emit-events-quickstart.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Visual Studio Code](https://code.visualstudio.com/) na počítači pomocí [rozšíření Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
@@ -29,13 +29,13 @@ Tento článek se sestavuje na začátku [Začínáme rychlý Start](get-started
 
 V rámci výše uvedeného postupu pro nastavení prostředků Azure se do virtuálního počítače Linux v Azure, který se používá jako zařízení IoT Edge, zkopíruje (krátké) video o zaparkované dávce. Tento videosoubor se použije k simulaci živého datového proudu pro tento kurz.
 
-Můžete použít aplikaci, jako je [VLC Player](https://www.videolan.org/vlc/), spustit ji, stisknout CTRL + N a vložit [Tento](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) odkaz na video o zaparkované dávce. tím spustíte přehrávání. V symbolech 5 sekund se bílá Auto pohybuje přes sérii parkovacích míst.
+Můžete použít aplikaci, jako je [VLC Player](https://www.videolan.org/vlc/), spustit ji, stisknout `Ctrl+N` a vložit [ukázkový odkaz ukázka](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) rádiového videa pro spuštění přehrávání. V symbolech 5 sekund se bílá Auto pohybuje přes sérii parkovacích míst.
 
 Po dokončení níže uvedeného postupu budete pro detekci pohybu auta používat Live video Analytics na IoT Edge a zaznamenáte si video klip počínaje kolem této 5 sekundové značky. Diagram níže je vizuální znázornění celkového toku.
 
 ![Nahrávání videa založeného na událostech na prostředky na základě událostí pohybu](./media/quickstarts/topology.png)
 
-## <a name="use-direct-methods"></a>Použití přímých metod
+## <a name="use-direct-method-calls"></a>Použití volání přímých metod
 
 Pomocí modulu můžete analyzovat živé streamy videa vyvoláním přímých metod. Přečtěte si [přímé metody pro Live video Analytics na IoT Edge](direct-methods.md) , abyste pochopili všechny přímé metody poskytované modulem. 
 
@@ -46,35 +46,35 @@ Tento krok vytvoří výčet všech [topologií grafu](media-graph-concept.md#me
 1. V horní části okna Visual Studio Code se zobrazí okno pro úpravu. Do pole pro úpravy zadejte "GraphTopologyList" a stiskněte klávesu ENTER.
 1. V dalším kroku zkopírujte a vložte níže uvedenou datovou část JSON do pole pro úpravy a stiskněte klávesu ENTER.
     
-    ```
-    {
-        "@apiVersion" : "1.0"
-    }
-    ```
+```
+{
+    "@apiVersion" : "1.0"
+}
+```
 
-    Během několika sekund se zobrazí okno výstup v Visual Studio Code automaticky otevírané okno s následující odpovědí.
+Během několika sekund se zobrazí okno výstup v Visual Studio Code automaticky otevírané okno s následující odpovědí.
     
-    ```
-    [DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
-    [DirectMethod] Response from [lva-sample-device/lvaEdge]:
-    {
-      "status": 200,
-      "payload": {
-        "value": []
-      }
-    }
-    ```
+```
+[DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
+[DirectMethod] Response from [lva-sample-device/lvaEdge]:
+{
+  "status": 200,
+  "payload": {
+    "value": []
+  }
+}
+```
     
-    Výše uvedená odpověď se očekává, že se nevytvořily žádné topologie grafů.
+Výše uvedená odpověď se očekává, že se nevytvořily žádné topologie grafů.
 
 ### <a name="invoke-graphtopologyset"></a>Vyvolat GraphTopologySet
 
-Pomocí stejných kroků, jako jsou ty, které jsou popsané pro vyvolání GraphTopologyList, můžete vyvolat GraphTopologySet pro nastavení [topologie grafu](media-graph-concept.md#media-graph-topologies-and-instances) pomocí následujícího JSON jako datové části. Vytvoří se topologie grafu s názvem "EVRtoAssetsOnMotionDetecion".
+Pomocí stejných kroků, jako jsou ty, které jsou popsané pro vyvolání GraphTopologyList, můžete vyvolat GraphTopologySet pro nastavení [topologie grafu](media-graph-concept.md#media-graph-topologies-and-instances) pomocí následujícího JSON jako datové části. Vytvoří se topologie grafu s názvem "EVRtoAssetsOnMotionDetection".
 
 ```
 {
     "@apiVersion": "1.0",
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
       "parameters": [
@@ -195,7 +195,7 @@ Během několika sekund se v okně výstup zobrazí následující odpověď.
       "createdAt": "2020-05-12T22:05:31.603Z",
       "lastModifiedAt": "2020-05-12T22:05:31.603Z"
     },
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to assets based on motion events",
       "parameters": [
@@ -312,7 +312,7 @@ Vrácený stav je 201, což značí, že se vytvořila nová topologie grafu. Vy
 
 * Znovu zavolejte GraphTopologySet a ověřte, že vrácený kód stavu je 200. Stavový kód 200 označuje, že existující topologie grafu byla úspěšně aktualizována.
 * Znovu vyvolat GraphTopologySet, ale změňte řetězec popisu. Ověřte, zda je stavový kód v odpovědi 200 a zda je popis aktualizován na novou hodnotu.
-* Vyvolejte GraphTopologyList, jak je uvedeno v předchozí části, a zkontrolujte, že se teď v vracené datové části zobrazuje topologie grafu "EVRtoAssetsOnMotionDetecion".
+* Vyvolejte GraphTopologyList, jak je uvedeno v předchozí části, a zkontrolujte, že se teď v vracené datové části zobrazuje topologie grafu "EVRtoAssetsOnMotionDetection".
 
 ### <a name="invoke-graphtopologyget"></a>Vyvolat GraphTopologyGet
 
@@ -321,7 +321,7 @@ Nyní volejte GraphTopologyGet s následující datovou částí
 
 {
     "@apiVersion" : "1.0",
-    "name" : "EVRtoAssetsOnMotionDetecion"
+    "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
 
@@ -337,7 +337,7 @@ Během několika sekund by se měla v okně výstup zobrazit následující odpo
       "createdAt": "2020-05-12T22:05:31.603Z",
       "lastModifiedAt": "2020-05-12T22:05:31.603Z"
     },
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
       "parameters": [
@@ -466,7 +466,7 @@ Nyní volejte metodu GraphInstanceSet Direct s následující datovou částí:
     "@apiVersion" : "1.0",
     "name" : "Sample-Graph-2",
     "properties" : {
-        "topologyName" : "EVRtoAssetsOnMotionDetecion",
+        "topologyName" : "EVRtoAssetsOnMotionDetection",
         "description" : "Sample graph description",
         "parameters" : [
             { "name" : "rtspUrl", "value" : "rtsp://rtspsim:554/media/lots_015.mkv" }
@@ -477,7 +477,7 @@ Nyní volejte metodu GraphInstanceSet Direct s následující datovou částí:
 
 Všimněte si, že:
 
-* Výše uvedená datová část určuje název topologie grafu (EVRtoAssetsOnMotionDetecion), pro který je nutné vytvořit instanci grafu.
+* Výše uvedená datová část určuje název topologie grafu (EVRtoAssetsOnMotionDetection), pro který je nutné vytvořit instanci grafu.
 * Datová část obsahuje hodnotu parametru "rtspUrl", která v datové části topologie nemá výchozí hodnotu.
 
 Během několika sekund se v okně výstup zobrazí následující odpověď:
@@ -496,7 +496,7 @@ Během několika sekund se v okně výstup zobrazí následující odpověď:
     "properties": {
       "state": "Inactive",
       "description": "Sample graph description",
-      "topologyName": "EVRtoAssetsOnMotionDetecion",
+      "topologyName": "EVRtoAssetsOnMotionDetection",
       "parameters": [
         {
           "name": "rtspUrl",
@@ -531,13 +531,13 @@ Vytvořené médium používá uzel procesoru detekce pohybu k detekci pohybu a 
     
     Během několika sekund se v okně výstup zobrazí následující zprávy:
 
-    ```
-    [IoTHubMonitor] Start monitoring message arrived in built-in endpoint for all devices ...
-    [IoTHubMonitor] Created partition receiver [0] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [1] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [2] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [3] for consumerGroup [$Default]
-    ```
+```
+[IoTHubMonitor] Start monitoring message arrived in built-in endpoint for all devices ...
+[IoTHubMonitor] Created partition receiver [0] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [1] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [2] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [3] for consumerGroup [$Default]
+```
 
 ### <a name="invoke-graphinstanceactivate"></a>Vyvolat GraphInstanceActivate
 
@@ -590,7 +590,7 @@ Během několika sekund by se měla v okně výstup zobrazit následující odpo
     "properties": {
       "state": "Active",
       "description": "Sample graph description",
-      "topologyName": "EVRtoAssetsOnMotionDetecion",
+      "topologyName": "EVRtoAssetsOnMotionDetection",
       "parameters": [
         {
           "name": "rtspUrl",
@@ -738,7 +738,7 @@ Pokud necháte instanci grafu pokračovat v běhu, zobrazí se tato zpráva.
 
 Pokud necháte instanci grafu pořád spuštěnou, simulátor RTSP dosáhne konce videosouboru a zastaví nebo odpojí. Uzel zdroje RTSP se pak znovu připojí k simulátoru a proces se zopakuje.
     
-## <a name="invoke-additional-direct-methods-to-clean-up"></a>Vyvolání dalších přímých metod k vyčištění
+## <a name="invoke-additional-direct-method-calls-to-clean-up"></a>Vyvolat další volání přímé metody k vyčištění
 
 Nyní volejte přímé metody deaktivace a odstranění instance grafu (v tomto pořadí).
 
@@ -801,7 +801,7 @@ Vyvolat metodu GraphTopologyDelete Direct s následující datovou částí:
 ```
 {
     "@apiVersion" : "1.0",
-    "name" : "EVRtoAssetsOnMotionDetecion"
+    "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
 

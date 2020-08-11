@@ -7,16 +7,16 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 6bcbdbb72f3d26522790b769a8185138c1207a98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b7aafca331170100ce99c084a11c96c97df7781
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336839"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067388"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů Service Bus pomocí šablony Azure Resource Manager
 
-Naučte se, jak nasadit šablonu Azure Resource Manager pro vytvoření oboru názvů Service Bus. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky. Další informace o vytváření šablon naleznete v [dokumentaci Azure Resource Manager](/azure/azure-resource-manager/).
+Naučte se, jak nasadit šablonu Azure Resource Manager pro vytvoření oboru názvů Service Bus. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky. Další informace o vytváření šablon naleznete v [dokumentaci Azure Resource Manager](../azure-resource-manager/index.yml).
 
 K dispozici jsou také následující šablony pro vytváření Service Bus oborů názvů:
 
@@ -27,7 +27,7 @@ K dispozici jsou také následující šablony pro vytváření Service Bus obor
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-service-bus-namespace"></a>Vytvoření oboru názvů služby Service Bus
 

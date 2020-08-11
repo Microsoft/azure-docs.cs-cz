@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 4c5d6bf83d9aa9c3717b0f8e08785b0fc897577d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5fe674fa7ab6a6a3f222a215ebc6912549776fee
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244442"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067354"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Přizpůsobení výstupů clusteru pomocí uživatelsky definované trasy
 
@@ -19,7 +19,7 @@ Odchozí přenos dat z clusteru AKS se dá přizpůsobit tak, aby vyhovoval spec
 
 Tento článek vás seznámí s postupem přizpůsobení odchozí trasy clusteru pro podporu vlastních síťových scénářů, jako jsou například ty, které nepovolují veřejné IP adresy a vyžadují, aby se cluster zacházel za virtuálním síťovým zařízením (síťové virtuální zařízení).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * Azure CLI verze 2.0.81 nebo vyšší
 * Verze rozhraní API `2020-01-01` nebo vyšší
 
@@ -60,7 +60,7 @@ Níže je síťová topologie nasazená v clusterech AKS ve výchozím nastaven�
 
 Pokud `userDefinedRouting` je nastavená, AKS nebude automaticky konfigurovat výstupní cesty. Nastavení výstupů se musí udělat sami.
 
-Cluster AKS musí být nasazený do existující virtuální sítě s dříve nakonfigurovanou podsítí, protože při použití architektury služby Load Balancer úrovně Standard (SLB) je nutné vytvořit explicitní výstup. Tato architektura proto vyžaduje explicitní odeslání odchozího provozu do zařízení, jako je brána firewall, brána, proxy server, nebo povolení překladu adres (NAT) veřejnou IP adresou přiřazenou ke službě Load Balancer úrovně Standard nebo zařízením.
+Cluster AKS musí být nasazený do existující virtuální sítě s dříve nakonfigurovanou podsítí, protože pokud nepoužívá architekturu služby Load Balancer úrovně Standard (SLB), musíte nastavit explicitní výstup. Tato architektura proto vyžaduje explicitní odeslání odchozího provozu do zařízení, jako je brána firewall, brána, proxy server, nebo povolení překladu adres (NAT) veřejnou IP adresou přiřazenou ke službě Load Balancer úrovně Standard nebo zařízením.
 
 Poskytovatel prostředků AKS nasadí standardní nástroj pro vyrovnávání zatížení (SLB). Služba Vyrovnávání zatížení není nakonfigurovaná s žádným pravidlem a [neúčtuje poplatek, dokud se pravidlo neuloží](https://azure.microsoft.com/pricing/details/load-balancer/). AKS **nebude** automaticky ZŘIZOVAT veřejnou IP adresu pro službu SLB front-end ani automaticky nekonfiguruje back-end fond nástroje pro vyrovnávání zatížení.
 

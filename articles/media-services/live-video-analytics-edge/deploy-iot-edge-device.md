@@ -3,19 +3,19 @@ title: Nasazení Live video Analytics na zařízení IoT Edge – Azure
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: ea7a1026f42cd3d8745559bc195a89b7fbcb69a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f031f679d8fe8e1c14b6a4086f5e1c37f15c7855
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074455"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067880"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Nasazení Live video Analytics na zařízení IoT Edge
 
 V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Počítač se systémem Linux, který splňuje omezení HW a SW pro Live video Analytics
 * Předplatné Azure, ke kterému máte [oprávnění vlastníka](../../role-based-access-control/built-in-roles.md#owner)
@@ -86,8 +86,8 @@ Live video Analytics na IoT Edge zveřejňuje moduly s dvojitou vlastností, kte
 
 ### <a name="deploy-using-the-azure-portal"></a>Nasazení pomocí webu Azure Portal
 
-Azure Portal vás provede vytvořením manifestu nasazení a vložením nasazení do IoT Edgeho zařízení.
-Vyberte své zařízení.
+Azure Portal vás provede vytvořením manifestu nasazení a vložením nasazení do IoT Edgeho zařízení.  
+#### <a name="select-your-device-and-set-modules"></a>Vyberte zařízení a nastavte moduly.
 
 1. Přihlaste se k [Azure Portal](https://ms.portal.azure.com/) a přejděte do služby IoT Hub.
 1. V nabídce vyberte **IoT Edge** .
@@ -112,23 +112,12 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
     > [!TIP]
     > Nevybírejte možnost **Přidat** , dokud neurčíte hodnoty v **nastavení modulu**, **možnosti vytvoření kontejneru**a **Dvojitá nastavení modulu** , jak je popsáno v tomto postupu.
     
-    > [!IMPORTANT]
+    > [!WARNING]
     > Azure IoT Edge rozlišuje velká a malá písmena, když provádíte volání modulů. Poznamenejte si přesný řetězec, který použijete jako název modulu.
 
 1. Otevřete kartu **proměnné prostředí** .
    
-   Zkopírujte a vložte následující JSON do pole, abyste zadali ID uživatele a ID skupiny, které se použije k uložení dat aplikace a výstupů videa.
-    ```   
-   {
-        "LOCAL_USER_ID": 
-        {
-            "value": "1010"
-        },
-        "LOCAL_GROUP_ID": {
-            "value": "1010"
-        }
-    }
-     ``` 
+   Přidejte do vstupních polí následující hodnoty, které vidíte ![ proměnné prostředí.](./media/deploy-iot-edge-device/environment-variables.png) 
 
 1. Otevřete kartu **možnosti vytvoření kontejneru** .
 
@@ -201,8 +190,8 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
     "armEndpoint": "https://management.azure.com/",
     "allowUnsecuredEndpoints": true
     ```
-   [!Note]
-   Dvojitá vlastnost **allowUnsecuredEndpoints** je nastavena na hodnotu true pro účely kurzů a rychlých startů.   
+   > [!Note]
+   > Dvojitá vlastnost **allowUnsecuredEndpoints** je nastavena na hodnotu true pro účely kurzů a rychlých startů.   
    Tuto vlastnost byste měli nastavit na **hodnotu false** při spuštění v produkčním prostředí. Tím se zajistí, že aplikace bude blokovat všechny nezabezpečené koncové body, a aby se daly spustit topologie grafu, budou potřeba platné přihlašovací údaje pro připojení.  
    
     Vyberte Přidat a přidejte do něj vlastnosti modulu.
@@ -258,5 +247,7 @@ Dále umožňuje otestovat ukázku vyvoláním přímé metody. Přečtěte si [
     ![Stavová zpráva 200](./media/deploy-iot-edge-device/connection-timeout.png) 
 
 ## <a name="next-steps"></a>Další kroky
+Vyzkoušejte [rychlý Start: Začínáme – Live video Analytics na IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
-[Rychlý Start: Začínáme – Live video Analytics na IoT Edge](get-started-detect-motion-emit-events-quickstart.md)
+> [!TIP]
+> V příkazu se spustí další, `device-id` místo výchozí použijte `lva-sample-device` .

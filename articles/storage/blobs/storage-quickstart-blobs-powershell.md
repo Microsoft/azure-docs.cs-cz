@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: d84867e598110c5d9a59b477d92a2c8e021358db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ea03b1ff2e2a1e9b7d5256a0f1417c5ac113e0e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087335"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067320"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Rychlý Start: nahrání, stažení a výpis objektů BLOB pomocí PowerShellu
 
@@ -22,7 +22,7 @@ Pomocí modulu Azure PowerShell můžete vytvářet a spravovat prostředky Azur
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete získat přístup k Azure Storage, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -52,23 +52,32 @@ Pokud chcete nahrát soubor do objektu blob bloku, získejte odkaz na kontejner 
 Následující příklady nahrají soubory *Image001.jpg* a *Image002.png* ze složky *D:\\_TestImages* na místním disku do kontejneru, který jste vytvořili.
 
 ```powershell
-# upload a file
-Set-AzStorageBlobContent -File "D:\_TestImages\Image001.jpg" `
+# upload a file to the default account (inferred) access tier
+Set-AzStorageBlobContent -File "D:\_TestImages\Image000.jpg" `
   -Container $containerName `
   -Blob "Image001.jpg" `
   -Context $ctx 
 
-# upload another file
+# upload a file to the Hot access tier
+Set-AzStorageBlobContent -File "D:\_TestImages\Image001.jpg" `
+  -Container $containerName `
+  -Blob "Image001.jpg" `
+  -Context $ctx 
+  -StandardBlobTier Hot
+
+# upload another file to the Cool access tier
 Set-AzStorageBlobContent -File "D:\_TestImages\Image002.png" `
   -Container $containerName `
   -Blob "Image002.png" `
   -Context $ctx
+  -StandardBlobTier Cool
 
-# upload a file to a folder
+# upload a file to a folder to the Archive access tier
 Set-AzStorageBlobContent -File "D:\_TestImages\foldername\Image003.jpg" `
   -Container $containerName `
   -Blob "Foldername/Image003.jpg" `
   -Context $ctx 
+  -StandardBlobTier Archive
 ```
 
 Než budete pokračovat, můžete nahrát libovolné množství souborů.

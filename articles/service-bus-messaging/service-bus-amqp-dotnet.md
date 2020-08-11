@@ -3,12 +3,12 @@ title: Azure Service Bus s .NET a AMQP 1,0 | Microsoft Docs
 description: Tento článek popisuje, jak použít Azure Service Bus z aplikace .NET pomocí AMQP (rozšířený protokol řízení front zpráv).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d969607a28759af3b6ee36d79638bb27d0d53808
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340179"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067099"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Použití Service Bus z rozhraní .NET s AMQP 1,0
 
@@ -52,7 +52,7 @@ Pro usnadnění interoperability s klienty non-.NET používejte pouze typy .NET
 
 | Typ objektu textu .NET | Mapovaný typ AMQP | Typ oddílu textu AMQP |
 | --- | --- | --- |
-| bool |Boolean |Hodnota AMQP |
+| bool |boolean |Hodnota AMQP |
 | byte |ubyte |Hodnota AMQP |
 | ushort |ushort |Hodnota AMQP |
 | uint |uint |Hodnota AMQP |
@@ -70,7 +70,7 @@ Pro usnadnění interoperability s klienty non-.NET používejte pouze typy .NET
 | Byte [] |binární |Hodnota AMQP |
 | řetězec |řetězec |Hodnota AMQP |
 | System. Collections. IList |list |AMQP hodnota: položky obsažené v kolekci mohou být pouze ty, které jsou definovány v této tabulce. |
-| System. Array |pole |AMQP hodnota: položky obsažené v kolekci mohou být pouze ty, které jsou definovány v této tabulce. |
+| System. Array |array |AMQP hodnota: položky obsažené v kolekci mohou být pouze ty, které jsou definovány v této tabulce. |
 | System. Collections. IDictionary |mapa |AMQP hodnota: položky obsažené v kolekci mohou být pouze ty, které jsou definovány v této tabulce. Poznámka: podporovány jsou pouze řetězcové klíče. |
 | Identifikátor URI |Popis řetězce (viz následující tabulka) |Hodnota AMQP |
 | DateTimeOffset |Popsaná dlouho (viz následující tabulka) |Hodnota AMQP |
@@ -109,7 +109,7 @@ Jste připraveni na další informace? Navštivte následující odkazy:
 * [Průvodce protokolem AMQP 1.0]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
-[DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
+[DataContractSerializer]: /dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azureservicebus-4.0.0
 [Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
 [OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
@@ -117,4 +117,3 @@ Jste připraveni na další informace? Navštivte následující odkazy:
 [Azure portal]: https://portal.azure.com
 [Přehled Service Bus AMQP]: service-bus-amqp-overview.md
 [Průvodce protokolem AMQP 1.0]: service-bus-amqp-protocol-guide.md
-

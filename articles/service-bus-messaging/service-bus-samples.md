@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: article
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: beafd0d49e8fccaef4ccc043d198875b9f1b1ebd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 750ee2f05e81fe18560a20227aefb52ca343e07b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341013"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067524"
 ---
 # <a name="service-bus-messaging-samples"></a>Ukázky Service Bus zasílání zpráv
 Ukázky Service Bus zasílání zpráv ukazují klíčové funkce v [Service Bus zasílání zpráv](https://azure.microsoft.com/services/service-bus/). V současné době můžete najít ukázky v následujících umístěních:
@@ -30,5 +30,4 @@ Kromě toho je [Service Bus Explorer](https://github.com/paolosalvatori/ServiceB
 V následujících tématech najdete koncepční přehledy Service Bus.
 
 * [Přehled Service Busho zasílání zpráv](service-bus-messaging-overview.md)
-* [Architektura služby Service Bus](service-bus-architecture.md)
-
+* [Architektura služby Service Bus](./service-bus-messaging-overview.md)

@@ -3,12 +3,12 @@ title: Detekce událostí pohybu a vygenerování – Azure
 description: V tomto rychlém startu se dozvíte, jak pomocí nástroje Live video Analytics na IoT Edge detekovat události pohybu a vysílat programově voláním přímých metod.
 ms.topic: quickstart
 ms.date: 05/29/2020
-ms.openlocfilehash: fca773d0583bee3bef4e7254bcca95866b2205e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fdc80c4d734902309e8b6dc5a6bfee38514fcdb7
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091908"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067796"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>Rychlý Start: detekce událostí pohybu a vygenerování
 
@@ -18,7 +18,7 @@ V tomto rychlém startu se dozvíte, jak začít se službou Live video Analytic
 
 Tento článek je založen na [vzorovém kódu](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp) napsaném v jazyce C#.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure, který má aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Visual Studio Code](https://code.visualstudio.com/) s následujícími příponami:
@@ -48,11 +48,11 @@ Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostř
 
 1. Spusťte následující příkaz.
 
-    ```
-    bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
-    ```
+```
+bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
+```
 
-    Pokud se skript úspěšně dokončí, měli byste vidět všechny požadované prostředky v rámci vašeho předplatného.
+Pokud se skript úspěšně dokončí, měli byste vidět všechny požadované prostředky v rámci vašeho předplatného.
 
 1. Po dokončení skriptu vyberte složené závorky a vystavte strukturu složek. V adresáři *~/clouddrive/lva-Sample* se zobrazí několik souborů. V tomto rychlém startu jsou důležité tyto:
 
@@ -72,30 +72,30 @@ Tyto soubory budete potřebovat při nastavení vývojového prostředí v Visua
 
     Text by měl vypadat jako následující výstup.
 
-    ```
-    {  
-        "IoThubConnectionString" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",  
-        "deviceId" : "lva-sample-device",  
-        "moduleId" : "lvaEdge"  
-    }
-    ```
-1. Přejít do složky *Src/Edge* a vytvořit soubor s názvem *. env*.
+```
+{  
+    "IoThubConnectionString" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",  
+    "deviceId" : "lva-sample-device",  
+    "moduleId" : "lvaEdge"  
+}
+```
+5. Přejít do složky *Src/Edge* a vytvořit soubor s názvem *. env*.
 1. Zkopírujte obsah souboru */clouddrive/lva-Sample/Edge-Deployment/.env* . Text by měl vypadat jako následující kód.
 
-    ```
-    SUBSCRIPTION_ID="<Subscription ID>"  
-    RESOURCE_GROUP="<Resource Group>"  
-    AMS_ACCOUNT="<AMS Account ID>"  
-    IOTHUB_CONNECTION_STRING="HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=xxx"  
-    AAD_TENANT_ID="<AAD Tenant ID>"  
-    AAD_SERVICE_PRINCIPAL_ID="<AAD SERVICE_PRINCIPAL ID>"  
-    AAD_SERVICE_PRINCIPAL_SECRET="<AAD SERVICE_PRINCIPAL ID>"  
-    INPUT_VIDEO_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
-    OUTPUT_VIDEO_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"
-    APPDATA_FOLDER_ON_DEVICE="/var/local/mediaservices"
-    CONTAINER_REGISTRY_USERNAME_myacr="<your container registry username>"  
-    CONTAINER_REGISTRY_PASSWORD_myacr="<your container registry username>"      
-    ```
+```
+SUBSCRIPTION_ID="<Subscription ID>"  
+RESOURCE_GROUP="<Resource Group>"  
+AMS_ACCOUNT="<AMS Account ID>"  
+IOTHUB_CONNECTION_STRING="HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=xxx"  
+AAD_TENANT_ID="<AAD Tenant ID>"  
+AAD_SERVICE_PRINCIPAL_ID="<AAD SERVICE_PRINCIPAL ID>"  
+AAD_SERVICE_PRINCIPAL_SECRET="<AAD SERVICE_PRINCIPAL ID>"  
+INPUT_VIDEO_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
+OUTPUT_VIDEO_FOLDER_ON_DEVICE="/var/media"
+APPDATA_FOLDER_ON_DEVICE="/var/local/mediaservices"
+CONTAINER_REGISTRY_USERNAME_myacr="<your container registry username>"  
+CONTAINER_REGISTRY_PASSWORD_myacr="<your container registry password>"      
+```
 
 ## <a name="examine-the-sample-files"></a>Kontrola ukázkových souborů
 
@@ -141,6 +141,15 @@ Pomocí těchto kroků vygenerujte manifest ze souboru šablony a potom ho nasa�
 
 Modul simulátoru RTSP simuluje živý Stream videa pomocí videosouboru, který jste zkopírovali do hraničního zařízení, když jste spustili [skript pro nastavení prostředků Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup). 
 
+> [!NOTE]
+> Pokud místo toho, které jste zřídili pomocí našeho skriptu pro instalaci, používáte vlastní hraniční zařízení, přečtěte si příslušné hraniční zařízení a spusťte následující příkazy s **právy správce**, abyste mohli načíst a uložit ukázkový videosoubor, který se používá pro tento rychlý Start:  
+
+```
+mkdir /home/lvaadmin/samples      
+mkdir /home/lvaadmin/samples/input    
+curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+chown -R lvaadmin /home/lvaadmin/samples/  
+```
 V této fázi jsou moduly nasazeny, ale nejsou aktivní žádné mediální grafy.
 
 ## <a name="prepare-to-monitor-events"></a>Příprava na monitorování událostí
@@ -168,55 +177,54 @@ Pomocí těchto kroků spusťte vzorový kód:
 1. Spusťte ladicí relaci, a to tak, že vyberete klávesu F5. V okně **terminálu** se zobrazí některé zprávy.
 1. *operations.jsv* souboru se spouští s voláními `GraphTopologyList` a `GraphInstanceList` . Pokud jste vyčistili prostředky po dokončení předchozích rychlých startů, pak tento proces vrátí prázdné seznamy a potom se pozastaví. Chcete-li pokračovat, vyberte klávesu ENTER.
 
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-        "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-        "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
+```
+--------------------------------------------------------------------------
+Executing operation GraphTopologyList
+-----------------------  Request: GraphTopologyList  --------------------------------------------------
+{
+    "@apiVersion": "1.0"
+}
+---------------  Response: GraphTopologyList - Status: 200  ---------------
+{
+    "value": []
+}
+--------------------------------------------------------------------------
+Executing operation WaitForInput
+Press Enter to continue
+```
 
-    V okně **terminálu** se zobrazí další sada volání přímých metod:
+V okně **terminálu** se zobrazí další sada volání přímých metod:
+ * Volání `GraphTopologySet` , které používá předchozí`topologyUrl`
+ * Volání `GraphInstanceSet` , které používá následující tělo:
      
-     * Volání `GraphTopologySet` , které používá předchozí`topologyUrl`
-     * Volání `GraphInstanceSet` , které používá následující tělo:
+```
+{
+  "@apiVersion": "1.0",
+  "name": "Sample-Graph",
+  "properties": {
+    "topologyName": "MotionDetection",
+    "description": "Sample graph description",
+    "parameters": [
+      {
+        "name": "rtspUrl",
+        "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+      },
+      {
+        "name": "rtspUserName",
+        "value": "testuser"
+      },
+      {
+        "name": "rtspPassword",
+        "value": "testpassword"
+      }
+    ]
+  }
+}
+```
      
-         ```
-         {
-           "@apiVersion": "1.0",
-           "name": "Sample-Graph",
-           "properties": {
-             "topologyName": "MotionDetection",
-             "description": "Sample graph description",
-             "parameters": [
-               {
-                 "name": "rtspUrl",
-                 "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
-               },
-               {
-                 "name": "rtspUserName",
-                 "value": "testuser"
-               },
-               {
-                 "name": "rtspPassword",
-                 "value": "testpassword"
-               }
-             ]
-           }
-         }
-         ```
-     
-     * Volání `GraphInstanceActivate` , které spustí instanci grafu a tok videa
-     * Druhé volání, které `GraphInstanceList` ukazuje, že instance grafu je ve stavu spuštěno
-1. Výstup v okně **terminálu** pozastaví `Press Enter to continue` . Ještě nevybírejte ENTER. Posuňte se nahoru, abyste viděli datové části odpovědi JSON pro přímé metody, které jste vyvolali.
+ * Volání `GraphInstanceActivate` , které spustí instanci grafu a tok videa
+ * Druhé volání, které `GraphInstanceList` ukazuje, že instance grafu je ve stavu spuštěno
+6. Výstup v okně **terminálu** pozastaví `Press Enter to continue` . Ještě nevybírejte ENTER. Posuňte se nahoru, abyste viděli datové části odpovědi JSON pro přímé metody, které jste vyvolali.
 1. Přepněte do okna **výstup** v Visual Studio Code. Zobrazí se zprávy, které modul analýza videa v IoT Edge posílá do služby IoT Hub. Následující část tohoto rychlého startu popisuje tyto zprávy.
 1. Mediální graf bude nadále spouštět a tisknout výsledky. Simulátor RTSP zachovává smyčku zdrojového videa. Chcete-li zastavit graf médií, vraťte se do okna **terminálu** a vyberte Enter. 
 

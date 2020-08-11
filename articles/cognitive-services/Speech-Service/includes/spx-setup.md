@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: abfb4f6ba9452581811db1f462089cbafc771266
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c92d6569e3c92d3bad3575599283c7796bd78225
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544054"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88068616"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -51,6 +51,58 @@ Pomocí těchto kroků nainstalujete rozhraní příkazového řádku pro rozpoz
 
 Zadáním `spx` zobrazíte nápovědu k rozhraní příkazového řádku pro rozpoznávání řeči.
 
+#### <a name="docker-install"></a>[Instalace Docker](#tab/dockerinstall)
+
+Pomocí těchto kroků nainstalujete rozhraní příkazového řádku rozpoznávání řeči v kontejneru Docker:
+
+1. Nainstalujte a spusťte [Docker Desktop pro vaši platformu](https://www.docker.com/get-started).
+1. Do nového příkazového řádku nebo terminálu zadejte tento příkaz:`docker pull msftspeech/spx`
+1. Zadejte tento příkaz. Měli byste vidět informace o nápovědě pro rozhraní příkazového řádku pro rozpoznávání řeči:`docker run -it --rm msftspeech/spx help`
+
+### <a name="mount-a-directory-in-the-container"></a>Připojit adresář v kontejneru
+
+Nástroj Speech CLI ukládá nastavení konfigurace do souborů a při provádění libovolného příkazu (kromě příkazů Help) tyto soubory načte.
+Pokud používáte funkci rozpoznávání řeči v kontejneru Docker, je nutné připojit místní adresář z kontejneru, aby nástroj mohl uložit nebo najít nastavení konfigurace a také tak, aby nástroj mohl číst nebo zapisovat jakékoli soubory, které příkaz vyžaduje, například zvukové soubory řeči.
+
+V systému Windows zadejte tento příkaz pro vytvoření místního adresáře. rozhraní příkazového řádku pro rozpoznávání řeči může používat v rámci kontejneru:
+
+`mkdir c:\spx-data`
+
+Případně můžete v systému Linux nebo Mac zadat tento příkaz v terminálu a vytvořit adresář a zobrazit jeho absolutní cestu:
+
+```bash
+mkdir ~/spx-data
+cd ~/spx-data
+pwd
+```
+
+Při volání funkce Speech CLI budete používat absolutní cestu.
+
+### <a name="run-speech-cli-in-the-container"></a>Spuštění rozhraní příkazového řádku pro rozpoznávání řeči v kontejneru
+
+Tato dokumentace ukazuje příkaz rozpoznávání řeči, který se `spx` používá v instalacích bez Docker.
+Při volání `spx` příkazu v kontejneru Docker musíte připojit adresář v kontejneru k systému souborů, kde může rozhraní příkazového řádku pro rozpoznávání řeči ukládat a vyhledávat konfigurační hodnoty a číst a zapisovat soubory.
+V systému Windows budou vaše příkazy začínat takto:
+
+`docker run -it -v c:\spx-data:/data --rm msftspeech/spx`
+
+V systému Linux nebo Mac se příkazy začnou podobat této:
+
+`sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx`
+
+> [!NOTE]
+> Nahraďte `/ABSOLUTE_PATH` absolutní cestou zobrazenou `pwd` příkazem v předchozí části.
+
+Chcete-li použít `spx` příkaz nainstalovaný v kontejneru, vždy zadejte úplný příkaz, následovaný parametry vaší žádosti.
+Například v systému Windows tento příkaz nastaví klíč:
+
+`docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY`
+
+> [!NOTE]
+> Při spuštění funkce Speech CLI v kontejneru Docker nemůžete použít mikrofon ani mluvčí počítač.
+> Pokud chcete tato zařízení používat, předejte zvukové soubory do a z rozhraní příkazového řádku pro záznam/přehrávání mimo kontejner Docker.
+> Nástroj Speech CLI má přístup k místnímu adresáři, který jste nastavili v předchozích krocích.
+
 ***
 
 ## <a name="create-subscription-config"></a>Vytvořit konfiguraci předplatného
@@ -58,8 +110,8 @@ Zadáním `spx` zobrazíte nápovědu k rozhraní příkazového řádku pro roz
 Pokud chcete začít používat rozhraní příkazového řádku, musíte nejdřív zadat klíč předplatného pro rozpoznávání řeči a informace o oblasti. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) . Jakmile budete mít svůj klíč předplatného a identifikátor oblasti (např. `eastus`, `westus` ) spusťte následující příkazy.
 
 ```shell
-spx config @key --set YOUR-SUBSCRIPTION-KEY
-spx config @region --set YOUR-REGION-ID
+spx config @key --set SUBSCRIPTION-KEY
+spx config @region --set REGION
 ```
 
 Ověřování předplatného je nyní uloženo pro budoucí požadavky SPX. Pokud potřebujete některou z těchto uložených hodnot odebrat, spusťte `spx config @region --clear` nebo `spx config @key --clear` .

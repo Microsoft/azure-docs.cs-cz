@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 3806135b7ed212e6eb5ea458c015ebc5810e0e80
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8468d733756ef92ffc9078e945dc46d23e1ab54a
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86034868"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067490"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Šifrování s dvojitou infrastrukturou Azure Database for PostgreSQL
 
@@ -36,7 +36,7 @@ Implementace na vrstvách infrastruktury také podporuje různorodost klíčů. 
 
 Dvojité šifrování infrastruktury pro Azure Database for PostgreSQL přináší následující výhody:
 
-1. **Přidání rozmanitosti implementace kryptografie** – plánované přesunutí na hardwarové šifrování bude dále rozrůznit implementace tím, že v rámci softwarové implementace doplní implementaci na základě hardwaru.
+1. **Další různorodost implementace kryptografie** – plánované přesunutí na hardwarové šifrování bude dále rozrůznit implementace poskytnutím hardwarové implementace společně s softwarovou implementací.
 2. **Chyby implementace** – dvě vrstvy šifrování v infrastruktuře vrstev chrání před chybami při ukládání do mezipaměti nebo ve správě paměti ve vyšších vrstvách, které zpřístupňují data v prostém textu. Kromě toho dvě vrstvy také zajišťují proti chybám v implementaci šifrování obecně.
 
 Kombinace těchto možností poskytuje silnou ochranu před běžnými hrozbami a slabinami, které se používají k útoku na kryptografii.
@@ -45,7 +45,7 @@ Kombinace těchto možností poskytuje silnou ochranu před běžnými hrozbami 
 
 Možnosti šifrování, které poskytuje Azure Database for PostgreSQL, lze použít společně. Níže najdete souhrn různých scénářů, které můžete použít:
 
-|  ##   | Výchozí šifrování | Šifrování s dvojitou infrastrukturou | Šifrování dat pomocí klíčů spravovaných zákazníkem  |
+|  ##   | Výchozí šifrování | Dvojité šifrování infrastruktury | Šifrování dat pomocí klíčů spravovaných zákazníkem  |
 |:------|:------------------:|:--------------------------------:|:--------------------------------------------:|
 | 1     | *Ano*              | *Ne*                             | *Ne*                                         |
 | 2     | *Ano*              | *Ano*                            | *Ne*                                         |
@@ -54,7 +54,7 @@ Možnosti šifrování, které poskytuje Azure Database for PostgreSQL, lze pou�
 |       |                    |                                  |                                              |
 
 > [!Important]
-> - Scénář 2 a 4 bude mít významný dopad na výkon serveru Azure Database for PostgreSQL z důvodu další vrstvy šifrování infrastruktury.
+> - Scénář 2 a 4 bude mít vliv na Azure Database for PostgreSQL Server z důvodu další vrstvy šifrování infrastruktury.
 > - Konfigurace dvojitého šifrování infrastruktury pro Azure Database for PostgreSQL je povolená jenom během vytváření serveru. Po zřízení serveru nelze šifrování úložiště změnit. Přesto ale můžete povolit šifrování dat pomocí klíčů spravovaných zákazníkem pro server, který se vytvořil s nebo bez šifrování infrastruktury.
 
 ## <a name="limitations"></a>Omezení
