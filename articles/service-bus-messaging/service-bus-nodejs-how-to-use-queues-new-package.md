@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 5037a7a68b86828b7a96fc99222c55f0bf896380
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: c082eff4f70b0255b7701340ac6e8b377223c0b5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065688"
+ms.locfileid: "88076859"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Rychlý Start: jak používat Service Bus fronty s Node.js a balíčkem Azure/Service-Bus
 V tomto kurzu se naučíte psát program NodeJS, který odesílá zprávy do fronty Service Bus a přijímá je pomocí nového [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) balíčku. Tento balíček používá rychlejší [Protokol AMQP 1,0](service-bus-amqp-overview.md) , zatímco starší balíček [Azure-SB](https://www.npmjs.com/package/azure-sb) používaný [Service Bus rozhraní API pro běh REST](/rest/api/servicebus/service-bus-runtime-rest). Ukázky jsou napsány v jazyce JavaScript.
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte psát program NodeJS, který odesílá zprávy do fro
 - Pokud nemáte frontu, ve které byste mohli pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření fronty Service Bus](service-bus-quickstart-portal.md) . Poznamenejte si připojovací řetězec pro vaši instanci Service Bus a název fronty, kterou jste vytvořili. Tyto hodnoty použijeme v ukázkách.
 
 > [!NOTE]
-> - Tento kurz funguje s ukázkami, které můžete zkopírovat a spustit pomocí [NodeJS](https://nodejs.org/). Pokyny k vytvoření Node.js aplikace najdete v tématu [Vytvoření a nasazení Node.js aplikace na web Azure](../app-service/app-service-web-get-started-nodejs.md)nebo [Node.js cloudovou službu pomocí Windows PowerShellu](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
+> - Tento kurz funguje s ukázkami, které můžete zkopírovat a spustit pomocí [NodeJS](https://nodejs.org/). Pokyny k vytvoření Node.js aplikace najdete v tématu [Vytvoření a nasazení Node.js aplikace na web Azure](../app-service/quickstart-nodejs.md)nebo [Node.js cloudovou službu pomocí Windows PowerShellu](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
 > - Nový [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) balíček ještě nepodporuje vytváření front. [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus)Pokud je chcete programově vytvořit, použijte prosím balíček.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Instalace balíčku pomocí Node Package Manageru (NPM)
@@ -76,7 +76,7 @@ Interakce s Service Bus frontou začíná vytvořením instance třídy [Service
 3. Do výše uvedeného kódu zadejte připojovací řetězec a název vaší fronty.
 4. Potom spuštěním příkazu na `node send.js` příkazovém řádku spusťte tento soubor.
 
-Gratulujeme! Právě jste odeslali zprávy do fronty Service Bus.
+Blahopřejeme! Právě jste odeslali zprávy do fronty Service Bus.
 
 Zprávy obsahují některé standardní vlastnosti `label` , například a `messageId` , které můžete nastavit při odesílání. Pokud chcete nastavit jakékoli vlastní vlastnosti, použijte `userProperties` , což je objekt JSON, který může uchovávat páry klíč-hodnota vašich vlastních dat.
 
@@ -117,7 +117,7 @@ Interakce s Service Bus frontou začíná vytvořením instance třídy [Service
 3. Do výše uvedeného kódu zadejte připojovací řetězec a název vaší fronty.
 4. Potom spuštěním příkazu na `node receiveMessages.js` příkazovém řádku spusťte tento soubor.
 
-Gratulujeme! Právě jste přijali zprávy z fronty Service Bus.
+Blahopřejeme! Právě jste přijali zprávy z fronty Service Bus.
 
 Metoda [createReceiver](/javascript/api/@azure/service-bus/queueclient#createreceiver-receivemode-) přebírá v typu, `ReceiveMode` který je výčtem s hodnotami [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) a [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Nezapomeňte [vyrovnávat zprávy](message-transfers-locks-settlement.md#settling-receive-operations) , pokud použijete `PeekLock` režim pomocí kterékoli z `complete()` `abandon()` metod,, `defer()` nebo `deadletter()` ve zprávě.
 

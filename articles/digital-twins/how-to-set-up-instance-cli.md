@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 50a7fe866d236a7edb30b3cae5ef076d3ebbca56
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 3c7e4887610f30113b81421396500416d04c5e5e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009711"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078491"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Nastavení instance a ověřování digitálních vláken Azure (CLI)
 
@@ -63,10 +63,10 @@ Teď máte k dispozici instanci digitálních vláken Azure, která je připrave
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-Pomocí následujícího příkazu přiřaďte roli (musí být spuštěná uživatelem s [dostatečnými oprávněními](#prerequisites-permission-requirements) v předplatném Azure):
+Pomocí následujícího příkazu přiřaďte roli (musí být spuštěná uživatelem s [dostatečnými oprávněními](#prerequisites-permission-requirements) v předplatném Azure). Příkaz vyžaduje, abyste předali *hlavní název uživatele* v účtu Azure AD pro uživatele, kterému by se měla přiřadit role. Ve většině případů to bude odpovídat e-mailu uživatele v účtu služby Azure AD.
 
 ```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-email-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
 Výsledkem tohoto příkazu jsou informace o vytvořeném přiřazení role.
@@ -74,13 +74,13 @@ Výsledkem tohoto příkazu jsou informace o vytvořeném přiřazení role.
 > [!NOTE]
 > Pokud tento příkaz vrátí chybu s informací, že rozhraní příkazového řádku **nemůže najít uživatele nebo instanční objekt v databázi grafu**:
 >
-> Místo jejich e-mailu použijte *ID objektu* uživatele. Tato situace může nastat pro uživatele na osobních [účtech Microsoft (účty spravované služby)](https://account.microsoft.com/account). 
+> Místo toho přiřaďte roli pomocí *ID objektu* uživatele. Tato situace může nastat pro uživatele na osobních [účtech Microsoft (účty spravované služby)](https://account.microsoft.com/account). 
 >
 > Pomocí [stránky Azure Portal Azure Active Directory uživatelé](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) vyberte uživatelský účet a otevřete jeho podrobnosti. Zkopírujte *objectID*uživatele:
 >
 > :::image type="content" source="media/includes/user-id.png" alt-text="Zobrazení stránky uživatele v Azure Portal zvýrazňování identifikátoru GUID v poli ID objektu" lightbox="media/includes/user-id.png":::
 >
-> Pak opakujte příkaz seznamu přiřazení role pomocí *ID objektu* uživatele místo e-mailu.
+> Pak opakujte příkaz seznamu přiřazení role pomocí *ID objektu* uživatele pro `assignee` parametr uvedený výše.
 
 ### <a name="verify-success"></a>Ověřit úspěch
 

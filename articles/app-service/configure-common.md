@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4ebb33333dc59432fd269c4847abdeab91d935c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9371b39bd37ba2514256a3b2fa90812f45c7ce5e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389767"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077369"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurace aplikace App Service v Azure Portal
 
@@ -33,13 +33,13 @@ V případě vývojářů ASP.NET a ASP.NET Core je nastavení aplikace v App Se
 
 Další jazykové zásobníky také získají nastavení aplikace jako proměnné prostředí za běhu. Postup pro konkrétní jazykový zásobník najdete v těchto tématech:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [Vlastní kontejnery](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [Vlastní kontejnery](configure-custom-container.md#configure-environment-variables)
 
 Nastavení aplikace jsou při ukládání vždy zašifrovaná (zašifrovaná po klidové době).
 
@@ -104,13 +104,13 @@ V době běhu jsou připojovací řetězce k dispozici jako proměnné prostřed
 
 Například připojovací řetězec MySql s názvem *ConnectionString1* je k dispozici jako proměnná prostředí `MYSQLCONNSTR_connectionString1` . Postup pro konkrétní jazykový zásobník najdete v těchto tématech:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [Vlastní kontejnery](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [Vlastní kontejnery](configure-custom-container.md#configure-environment-variables)
 
 Připojovací řetězce jsou při uložení vždy zašifrované (zašifrované – při REST).
 
@@ -176,7 +176,7 @@ Tady můžete nakonfigurovat některá společná nastavení aplikace. Některá
     > [!NOTE]
     > Většina moderních prohlížečů podporuje protokol HTTP/2 jenom přes TLS, zatímco nešifrovaný provoz dál používá protokol HTTP/1.1. Pokud chcete zajistit, aby se prohlížeče klienta připojovaly k vaší aplikaci pomocí protokolu HTTP/2, zabezpečte si vlastní název DNS. Další informace najdete v tématu [zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service](configure-ssl-bindings.md).
     - **Spřažení ARR**: v nasazení s více instancemi zajistěte, aby byl klient směrován do stejné instance po dobu životnosti relace. Tuto možnost můžete nastavit na **vypnuto** u bezstavových aplikací.
-- **Ladění**: Povolte vzdálené ladění pro aplikace [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)nebo [Node.js](containers/configure-language-nodejs.md#debug-remotely) . Tato možnost se automaticky vypne po 48 hodinách.
+- **Ladění**: Povolte vzdálené ladění pro aplikace [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)nebo [Node.js](configure-language-nodejs.md#debug-remotely) . Tato možnost se automaticky vypne po 48 hodinách.
 - **Příchozí klientské certifikáty**: vyžadují klientské certifikáty při [vzájemném ověřování](app-service-web-configure-tls-mutual-auth.md).
 
 ## <a name="configure-default-documents"></a>Konfigurovat výchozí dokumenty
@@ -215,7 +215,7 @@ Chcete-li konfigurovat virtuální aplikace a adresáře, zadejte každý virtu�
 
 ### <a name="containerized-apps"></a>Kontejnerové aplikace
 
-Můžete [Přidat vlastní úložiště pro svou kontejnerovou aplikaci](containers/how-to-serve-content-from-azure-storage.md). Kontejnerové aplikace zahrnují všechny aplikace pro Linux a také vlastní kontejnery pro Windows a Linux běžící na App Service. Klikněte na **nový Azure Storage připojit** a nakonfigurujte vlastní úložiště následujícím způsobem:
+Můžete [Přidat vlastní úložiště pro svou kontejnerovou aplikaci](configure-connect-to-azure-storage.md). Kontejnerové aplikace zahrnují všechny aplikace pro Linux a také vlastní kontejnery pro Windows a Linux běžící na App Service. Klikněte na **nový Azure Storage připojit** a nakonfigurujte vlastní úložiště následujícím způsobem:
 
 - **Název**: zobrazovaný název.
 - **Možnosti konfigurace**: **základní** nebo **Rozšířené**.
@@ -228,22 +228,22 @@ Můžete [Přidat vlastní úložiště pro svou kontejnerovou aplikaci](contain
 - **Přístupový klíč**: pro pokročilou konfiguraci se jedná o přístupový klíč.
 - **Cesta pro připojení**: absolutní cesta ve vašem kontejneru pro připojení vlastního úložiště.
 
-Další informace najdete v článku [Obsluha obsahu z Azure Storage v App Service na Linuxu](containers/how-to-serve-content-from-azure-storage.md).
+Další informace najdete v tématu věnovaném [přístupu Azure Storage jako sdílené síťové složky z kontejneru v App Service](configure-connect-to-azure-storage.md).
 
 ## <a name="configure-language-stack-settings"></a>Konfigurovat nastavení zásobníku jazyka
 
 Pro aplikace pro Linux se podívejte na:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md)
-- [Node.js](containers/configure-language-nodejs.md)
-- [PHP](containers/configure-language-php.md)
-- [Python](containers/how-to-configure-python.md)
-- [Java](containers/configure-language-java.md)
-- [Ruby](containers/configure-language-ruby.md)
+- [ASP.NET Core](configure-language-dotnetcore.md)
+- [Node.js](configure-language-nodejs.md)
+- [PHP](configure-language-php.md)
+- [Python](configure-language-python.md)
+- [Java](configure-language-java.md)
+- [Ruby](configure-language-ruby.md)
 
 ## <a name="configure-custom-containers"></a>Konfigurace vlastních kontejnerů
 
-Další informace najdete v tématu [Konfigurace vlastního kontejneru Linux pro Azure App Service](containers/configure-custom-container.md) .
+Další informace najdete v tématu [Konfigurace vlastního kontejneru Linux pro Azure App Service](configure-custom-container.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

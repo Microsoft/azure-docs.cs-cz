@@ -10,21 +10,21 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/10/2020
+ms.date: 8/11/2020
 ms.author: yohaddad
-ms.openlocfilehash: e14295842413464ed9faced59c8bb897f192a511
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: a8755c593f4009d4cacc3d411eb1bc1cb8ddc50d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067014"
+ms.locfileid: "88079154"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
 
 ## <a name="july-2020-guest-os"></a>Z července 2020 hostovaný operační systém
 >[!NOTE]
->V tuto chvíli probíhá navýšení hostovaného operačního systému pro virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. Následující opravy jsou součástí hostovaného operačního systému v dubnu. Tento seznam se může změnit.
+>V tuto chvíli probíhá navýšení hostovaného operačního systému pro virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. Následující opravy jsou součástí v červenci hostovaného operačního systému. Tento seznam se může změnit.
 
 
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |

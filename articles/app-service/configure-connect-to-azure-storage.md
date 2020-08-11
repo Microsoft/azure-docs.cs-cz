@@ -1,31 +1,49 @@
 ---
-title: Přidání vlastního úložiště (kontejner Windows)
-description: Přečtěte si, jak připojit vlastní sdílenou síťovou složku ve vlastním kontejneru Windows v Azure App Service. Sdílet soubory mezi aplikacemi, spravovat statický obsah vzdáleně a přistupovat místně atd.
+title: Přidat Azure Storage (kontejner)
+description: Přečtěte si, jak připojit vlastní sdílenou síťovou složku v aplikaci s kontejnery v Azure App Service. Sdílet soubory mezi aplikacemi, spravovat statický obsah vzdáleně a přistupovat místně atd.
 author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+zone_pivot_groups: app-service-containers-windows-linux
+ms.openlocfilehash: 8ced35f30966a96061792ad2171afe19599ed22c
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77120683"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077250"
 ---
-# <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Konfigurace služby soubory Azure v kontejneru Windows na App Service
+# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Přístup Azure Storage jako sdílené síťové složky z kontejneru v App Service
 
-> [!NOTE]
-> Tento článek se týká vlastních kontejnerů Windows. Pokud chcete nasadit nástroj na App Service v systému _Linux_, přečtěte si téma [obsluha obsahu z Azure Storage](./containers/how-to-serve-content-from-azure-storage.md).
->
+::: zone pivot="container-windows"
 
-Tato příručka ukazuje, jak získat přístup k Azure Storage v kontejnerech Windows. Podporují se jenom [sdílené složky souborů Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli) a [sdílené složky Premium](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-premium-fileshare) . V tomto postupu použijete sdílené složky Azure Files. Mezi výhody patří zabezpečený obsah, přenositelnost obsahu, přístup k více aplikacím a více metod přenosu.
+V této příručce se dozvíte, jak připojit Azure Storage soubory jako sdílenou síťovou složku pro kontejner Windows v App Service. Podporují se jenom [sdílené složky souborů Azure](../storage/files/storage-how-to-use-files-cli.md) a [sdílené složky Premium](../storage/files/storage-how-to-create-premium-fileshare.md) . Mezi výhody patří zabezpečený obsah, přenositelnost obsahu, přístup k více aplikacím a více metod přenosu.
+
+::: zone-end
+
+::: zone pivot="container-linux"
+
+Tato příručka ukazuje, jak připojit Azure Storage k App Service kontejneru Linux. K výhodám patří zabezpečený obsah, přenositelnost obsahu, trvalé úložiště, přístup k více aplikacím a více metod přenosu.
+
+::: zone-end
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 nebo novější).
-- [Existující aplikace s kontejnerem Windows v Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container)
-- [Vytvoření sdílené složky Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli)
-- [Nahrání souborů do sdílené složky Azure](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide)
+::: zone pivot="container-windows"
+
+- [Existující aplikace s kontejnerem Windows v Azure App Service](quickstart-custom-container.md)
+- [Vytvoření sdílené složky Azure](../storage/files/storage-how-to-use-files-cli.md)
+- [Nahrání souborů do sdílené složky Azure](../storage/files/storage-files-deployment-guide.md)
+
+::: zone-end
+
+::: zone pivot="container-linux"
+
+- Existující [App Service v aplikaci pro Linux](index.yml).
+- [Účet Azure Storage](../storage/common/storage-account-create.md?tabs=azure-cli)
+- [Sdílená složka Azure a adresář](../storage/files/storage-how-to-use-files-cli.md).
+
+::: zone-end
 
 > [!NOTE]
 > Soubory Azure jsou jiné než výchozí úložiště a účtují se odděleně, nejsou součástí webové aplikace. V důsledku omezení infrastruktury nepodporuje konfiguraci brány firewall.
@@ -33,32 +51,79 @@ Tato příručka ukazuje, jak získat přístup k Azure Storage v kontejnerech W
 
 ## <a name="limitations"></a>Omezení
 
-- Azure Storage v kontejnerech Windows je **ve verzi Preview** a **nepodporuje** se v **produkčních scénářích**.
-- Azure Storage v kontejnerech Windows podporuje pouze připojování **kontejnerů souborů Azure** (čtení a zápis).
-- Azure Storage v kontejnerech Windows se v současné době **nepodporují** v plánech Windows App Service pro vlastní scénáře kódu.
-- Azure Storage v kontejnerech Windows **nepodporuje** použití konfigurace **brány firewall úložiště** kvůli omezením infrastruktury.
-- Azure Storage v kontejnerech Windows umožňuje zadat **až pět** přípojných bodů na jednu aplikaci.
+::: zone pivot="container-windows"
+
+- Azure Storage v App Service jsou **ve verzi Preview** a **nepodporují** se v **produkčních scénářích**.
+- Azure Storage v App Service se v současné době **nepodporují** pro scénáře přináší vlastní kód (aplikace pro Windows bez kontejneru).
+- Azure Storage v App Service v důsledku omezení infrastruktury **nepodporuje** použití konfigurace **brány firewall úložiště** .
+- Azure Storage s App Service vám umožní zadat **až pět** přípojných bodů na jednu aplikaci.
 - Azure Storage připojená k aplikaci není přístupná prostřednictvím koncových bodů App Service FTP/FTPs. Použijte [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
-- Azure Storage se fakturuje nezávisle a **nejsou součástí** vaší webové aplikace. Přečtěte si další informace o [cenách Azure Storage](https://azure.microsoft.com/pricing/details/storage).
 
-## <a name="link-storage-to-your-web-app-preview"></a>Připojení úložiště k webové aplikaci (Preview)
+::: zone-end
 
- Pokud chcete připojit sdílenou složku souborů Azure do adresáře ve vaší aplikaci App Service, použijte [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) příkaz. Typ úložiště musí být AzureFiles.
+::: zone pivot="container-linux"
+
+- Azure Storage v App Service je **ve verzi Preview** pro App Service v systémech Linux a Web App for Containers. Nepodporují **not supported** se v **produkčních scénářích**.
+- Azure Storage v App Service podporuje připojování **kontejnerů souborů Azure** (čtení a zápis) a **kontejnerů objektů blob Azure** (jen pro čtení).
+- Azure Storage v App Service v důsledku omezení infrastruktury **nepodporuje** použití konfigurace **brány firewall úložiště** .
+- Azure Storage v App Service umožňuje zadat **až pět** přípojných bodů na jednu aplikaci.
+- Azure Storage připojená k aplikaci není přístupná prostřednictvím koncových bodů App Service FTP/FTPs. Použijte [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+
+::: zone-end
+
+## <a name="link-storage-to-your-app"></a>Propojení úložiště s aplikací
+
+::: zone pivot="container-windows"
+
+Po vytvoření [účtu Azure Storage, sdílené složky a adresáře](#prerequisites)teď můžete aplikaci nakonfigurovat pomocí Azure Storage.
+
+Pokud chcete připojit sdílenou složku souborů Azure do adresáře ve vaší aplikaci App Service, použijte [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) příkaz. Typ úložiště musí být AzureFiles.
 
 ```azurecli
-az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureFiles --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory of form c:<directory name> >
+az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory of form c:<directory name> >
 ```
 
 To byste měli udělat pro všechny ostatní adresáře, které chcete propojit se sdílenou složkou souborů Azure.
 
-## <a name="verify"></a>Ověřit
+::: zone-end
 
-Jakmile je sdílená složka souborů Azure propojená s webovou aplikací, můžete to ověřit spuštěním následujícího příkazu:
+::: zone pivot="container-linux"
+
+Po vytvoření [účtu Azure Storage, sdílené složky a adresáře](#prerequisites)teď můžete aplikaci nakonfigurovat pomocí Azure Storage.
+
+Pokud chcete účet úložiště připojit k adresáři v aplikaci App Service, použijte [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) příkaz. Typ úložiště může být Azureblobu nebo AzureFiles. V tomto příkladu se používá AzureFiles. Nastavení cesty připojení odpovídá složce, kterou chcete připojit z Azure Storage. Nastavení na/připojí celou Azure Storage.
+
+
+> [!CAUTION]
+> Adresář zadaný jako cesta pro připojení ve vaší webové aplikaci by měl být prázdný. Veškerý obsah uložený v tomto adresáři bude odstraněn při přidání externího připojení. Pokud migrujete soubory pro existující aplikaci, vytvořte před zahájením zálohování své aplikace a jejího obsahu.
+>
 
 ```azurecli
-az webapp config storage-account list --resource-group <resource_group> --name <app_name>
+az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory>
+```
+
+To byste měli udělat pro všechny ostatní adresáře, které chcete propojit s účtem úložiště.
+
+::: zone-end
+
+## <a name="verify-linked-storage"></a>Ověřit propojené úložiště
+
+Jakmile je sdílená složka propojená s aplikací, můžete to ověřit spuštěním následujícího příkazu:
+
+```azurecli
+az webapp config storage-account list --resource-group <resource-group> --name <app-name>
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Migrujte aplikaci ASP.NET, aby se Azure App Service pomocí kontejneru Windows (Preview)](app-service-web-tutorial-windows-containers-custom-fonts.md).
+::: zone pivot="container-windows"
+
+- [Migrace vlastního softwaru na Azure App Service pomocí vlastního kontejneru](tutorial-custom-container.md?pivots=container-windows).
+
+::: zone-end
+
+::: zone pivot="container-linux"
+
+- [Konfigurace vlastního kontejneru](configure-custom-container.md?pivots=platform-linux).
+
+::: zone-end

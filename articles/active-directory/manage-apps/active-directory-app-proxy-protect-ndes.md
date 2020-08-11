@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 0798b7674828b14a37f20921e05820d995bff6a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a385a339122197b7055ef6f54b8e37edea8eae4a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760792"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078933"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integrace se službou Azure Proxy aplikací služby AD na serveru služby zápisu síťových zařízení (NDES)
 
@@ -89,10 +89,10 @@ Azure Proxy aplikací služby AD je postavená na Azure. Nabízí obrovské mno�
 
 1. Měla by se zobrazit **Chyba HTTP 403 – zakázaná** odpověď.
 
-1. Změňte poskytnutou adresu URL NDES (prostřednictvím Microsoft Intune) na zařízení. Tato změna by mohla být v centru konfigurace Microsoft Endpoint nebo v cloudu Intune.
+1. Změňte adresu URL služby NDES (prostřednictvím Microsoft Intune) na zařízení. Tato změna může být buď ve službě Microsoft Endpoint Configuration Manager, nebo v centru pro správu Microsoft Endpoint Manager.
 
-   * V části Configuration Center přejděte k bodu registrace certifikátu (CRP) a upravte adresu URL. Tato adresa URL je ta, která zařízení volají a prezentují své výzvy.
-   * Jenom pro Cloud Intune, označované taky jako samostatné Intune, buď upravte, nebo vytvořte novou zásadu SCEP a přidejte novou adresu URL.
+   * V případě Configuration Manager přejděte k bodu registrace certifikátu a upravte adresu URL. Tato adresa URL je ta, která zařízení volají a prezentují své výzvy.
+   * Pro samostatnou Intune buď upravte, nebo vytvořte novou zásadu SCEP a přidejte novou adresu URL.
 
 ## <a name="next-steps"></a>Další kroky
 

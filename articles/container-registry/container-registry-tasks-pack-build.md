@@ -4,12 +4,12 @@ description: Pomocí příkazu AZ ACR Pack Build sestavíte image kontejneru z a
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 1892f4c20eb75e5e95140c829c49a708a81c2184
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: f99175165e01a9287a66c59957fc7a239b00393a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408012"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077216"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Sestavení a vložení obrázku z aplikace pomocí cloudového nativního Buildpacku
 
@@ -96,7 +96,7 @@ Pokud `localhost:8080` si chcete prohlédnout ukázkovou webovou aplikaci, přej
 
 ## <a name="next-steps"></a>Další kroky
 
-Po sestavení a vložení image kontejneru s nástrojem je `az acr pack build` můžete nasadit jako libovolný obrázek do cíle podle vašeho výběru. Možnosti nasazení do Azure zahrnují spouštění IT ve službě [App Service](../app-service/containers/tutorial-custom-docker-image.md) nebo [Azure Kubernetes](../aks/tutorial-kubernetes-deploy-cluster.md), a to mimo jiné.
+Po sestavení a vložení image kontejneru s nástrojem je `az acr pack build` můžete nasadit jako libovolný obrázek do cíle podle vašeho výběru. Možnosti nasazení do Azure zahrnují spouštění IT ve službě [App Service](../app-service/tutorial-custom-container.md) nebo [Azure Kubernetes](../aks/tutorial-kubernetes-deploy-cluster.md), a to mimo jiné.
 
 Další informace o funkcích úloh ACR najdete v tématu [Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR](container-registry-tasks-overview.md).
 

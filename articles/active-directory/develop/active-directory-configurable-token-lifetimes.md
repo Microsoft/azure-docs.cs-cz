@@ -13,16 +13,17 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: d25c2e2603f36ff090d01f235a4c8e4a1ae12605
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: d6b6e300a3bd799e94405af143d84cf9fdd8d4c1
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552845"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077131"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform (Preview)
 
-Můžete zadat dobu života tokenu vydaného Microsoft Identity Platform. Životnost tokenů je možné nastavit u všech aplikací ve vaší organizaci, u aplikace pro více tenantů nebo pro konkrétní objekt služby ve vaší organizaci.
+Můžete zadat dobu života tokenu vydaného Microsoft Identity Platform. Životnost tokenů je možné nastavit u všech aplikací ve vaší organizaci, u aplikace pro více tenantů nebo pro konkrétní objekt služby ve vaší organizaci. 
+> Všimněte si, že v současné době nepodporujeme konfiguraci životností tokenů pro spravované objekty služby identity.
 
 > [!IMPORTANT]
 > Po slyšení od zákazníků ve verzi Preview jsme implementovali [Možnosti správy relace ověřování](https://go.microsoft.com/fwlink/?linkid=2083106) ve službě Azure AD podmíněný přístup. Tuto novou funkci můžete použít ke konfiguraci životností tokenů aktualizace nastavením frekvence přihlášení. Po 30. května 2020 nebude moct žádný nový tenant použít konfigurovatelné zásady životnosti tokenů ke konfiguraci relace a obnovení tokenů. K vyřazení dojde během několika měsíců, což znamená, že přestanou dodržovat existující relaci a aktualizovat zásady tokenů. Po vyřazení můžete i po vyřazení nakonfigurovat životnosti přístupového tokenu.
@@ -208,7 +209,7 @@ V příkladech se můžete dozvědět, jak:
 * Vytvoření zásady pro nativní aplikaci, která volá webové rozhraní API
 * Správa pokročilých zásad
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro aplikace, instanční objekty a celou organizaci. Pokud s Azure AD teprve začínáte, doporučujeme vám seznámit se s tím, [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md) , než budete pokračovat v těchto příkladech.  
 
 Začněte tím, že provedete následující kroky:

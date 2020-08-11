@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/06/2020
 ms.author: b-juche
-ms.openlocfilehash: e974fb51ac36083e6ed8934afaa7a3e36ab8c08e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e5d7f30f26be999ae43ce13aa31fc5393d049529
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923862"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078950"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Dynamická změna úrovně služeb svazku
 
@@ -48,7 +48,7 @@ Funkce pro přesunutí svazku do jiného fondu kapacity je momentálně ve verzi
 2. Ověřte stav registrace funkce: 
 
     > [!NOTE]
-    > **RegistrationState** může být ve `Registering` stavu několik minut, než se změní na `Registered` . Než budete pokračovat, počkejte, než se stav **zaregistruje** .
+    > **RegistrationState** může být ve `Registering` stavu až 60 minut, než se změní na `Registered` . Než budete pokračovat, počkejte, než se stav **zaregistruje** .
 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange

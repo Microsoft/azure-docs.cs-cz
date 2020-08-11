@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c93938db4632f6509e386d440c9be75596ea254f
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: fb62d4d2ca22b6043e63645006c2d60cf0b7859b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597891"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078627"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service
 
-V tomto článku se dozvíte, jak zabezpečit [vlastní doménu](app-service-web-tutorial-custom-domain.md) ve vaší [aplikaci App Service](https://docs.microsoft.com/azure/app-service/) nebo [aplikaci Function App](https://docs.microsoft.com/azure/azure-functions/) vytvořením vazby certifikátu. Až budete hotovi, můžete k aplikaci App Service přistupovat na `https://` koncový bod pro vlastní název DNS (například `https://www.contoso.com`). 
+V tomto článku se dozvíte, jak zabezpečit [vlastní doménu](app-service-web-tutorial-custom-domain.md) ve vaší [aplikaci App Service](https://docs.microsoft.com/azure/app-service/) nebo [aplikaci Function App](https://docs.microsoft.com/azure/azure-functions/) vytvořením vazby certifikátu. Až budete hotovi, můžete k aplikaci App Service přistupovat na `https://` koncový bod pro vlastní název DNS (například `https://www.contoso.com` ). 
 
 ![Webová aplikace s vlastním certifikátem TLS/SSL](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
@@ -52,12 +52,12 @@ Postup při použití tohoto průvodce:
 
 Proveďte následující kroky:
 
-V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services** > **\<název aplikace>**.
+V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services**  >  **\<app-name>** .
 
 V levém navigačním panelu aplikace spusťte dialog **vazby TLS/SSL** :
 
-- Výběr **vlastních domén** > **Přidání vazby**
--  > Výběr **Nastavení TLS/SSL****Přidání vazby TLS/SSL**
+- Výběr **vlastních domén**  >  **Přidání vazby**
+- Výběr **Nastavení TLS/SSL**  >  **Přidání vazby TLS/SSL**
 
 ![Přidat vazbu k doméně](./media/configure-ssl-bindings/secure-domain-launch.png)
 
@@ -102,15 +102,15 @@ K dispozici jsou dvě změny, které byste si měli udělat, možná:
 
     Stránka **vlastní doména** vaší aplikace se aktualizuje o novou vyhrazenou IP adresu. [Zkopírujte tuto IP adresu](app-service-web-tutorial-custom-domain.md#info) a pak [přemapujte záznam A](app-service-web-tutorial-custom-domain.md#map-an-a-record) na tuto novou IP adresu.
 
-- Pokud máte vazbu sni SSL `<app-name>.azurewebsites.net`k, [přemapujte všechna mapování CNAME](app-service-web-tutorial-custom-domain.md#map-a-cname-record) tak, aby odkazovala na `sni.<app-name>.azurewebsites.net` místo toho `sni` (přidejte předponu).
+- Pokud máte vazbu SNI SSL k `<app-name>.azurewebsites.net` , [přemapujte všechna mapování CNAME](app-service-web-tutorial-custom-domain.md#map-a-cname-record) tak, aby odkazovala na `sni.<app-name>.azurewebsites.net` místo toho (přidejte `sni` předponu).
 
 ## <a name="test-https"></a>Test HTTPS
 
-V různých prohlížečích vyhledejte `https://<your.custom.domain>` a ověřte, jestli funguje v aplikaci.
+V různých prohlížečích vyhledejte a `https://<your.custom.domain>` Ověřte, jestli funguje v aplikaci.
 
 ![Přechod do aplikace Azure na portálu](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
-Kód aplikace může zkontrolovat protokol přes hlavičku "x-AppService-proto". Záhlaví bude mít hodnotu `http` nebo. `https` 
+Kód aplikace může zkontrolovat protokol přes hlavičku "x-AppService-proto". Záhlaví bude mít hodnotu `http` nebo `https` . 
 
 > [!NOTE]
 > Pokud vaše aplikace poskytuje chyby ověřování certifikátů, pravděpodobně používáte certifikát podepsaný svým držitelem.
@@ -133,7 +133,7 @@ V levém navigačním panelu na stránce aplikace vyberte **Nastavení SSL**. Pa
 
 ![Vynucení protokolu HTTPS](./media/configure-ssl-bindings/enforce-https.png)
 
-Po dokončení operace přejděte na jakoukoli adresu URL HTTP odkazující na vaši aplikaci. Příklad:
+Po dokončení operace přejděte na jakoukoli adresu URL HTTP odkazující na vaši aplikaci. Například:
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
@@ -153,7 +153,7 @@ Po dokončení operace bude vaše aplikace odmítat všechna připojení využí
 
 V App Service dojde k [ukončení protokolu TLS](https://wikipedia.org/wiki/TLS_termination_proxy) v nástrojích pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS dosáhnou vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje, aby zkontrolovala, jestli jsou požadavky uživatele zašifrované, zkontrolujte `X-Forwarded-Proto` záhlaví.
 
-Konfigurační příručky specifické pro jazyk, jako je například Průvodce [konfigurací Node. js pro Linux](containers/configure-language-nodejs.md#detect-https-session) , ukazují, jak detekovat relaci HTTPS v kódu aplikace.
+Konfigurační příručky specifické pro konkrétní jazyk, jako je například Příručka [konfigurace Node.js pro Linux](configure-language-nodejs.md#detect-https-session) , ukazují, jak zjistit relaci HTTPS v kódu aplikace.
 
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 

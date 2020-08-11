@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 33006463ed826d1efe32f8beee361eb211e9d709
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 489025d9cfdd6f1bdbc950e2bd1e7e4d835a4fff
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386550"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079205"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Sestavení a nasazení aplikace Node.js ve službě Azure Cloud Service
 
@@ -32,7 +32,7 @@ Jedná se o jednoduchou aplikaci "hello world":
 
 ![A web browser displaying the Hello World web page][A web browser displaying the Hello World web page]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 > [!NOTE]
 > Tento kurz používá prostředí Azure PowerShell, které vyžaduje systém Windows.
 
@@ -178,7 +178,7 @@ Další informace najdete ve [Středisku pro vývojáře Node.js].
 <!-- URL List -->
 
 [Porovnání webů Azure, služby Cloud Services a služby Virtual Machines]: /azure/architecture/guide/technology-choices/compute-decision-tree
-[Použití jednoduché webové aplikace]: ../app-service/app-service-web-get-started-nodejs.md
+[Použití jednoduché webové aplikace]: ../app-service/quickstart-nodejs.md
 [Azure PowerShell]: /powershell/azure/
 [Azure SDK pro .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
 [připojení PowerShellu]: /powershell/azure/

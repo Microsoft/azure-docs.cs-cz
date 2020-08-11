@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 32fc57e720f9c23f6ef26f02b2cd4a82c4266984
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f547f60bf6c67b757f2e12f06f1e39100c3e76cb
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957031"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077148"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Nasazení aplikace pro Azure App Service pomocí souboru ZIP nebo WAR
 
@@ -40,7 +40,7 @@ K dokončení kroků v tomto článku [vytvořte aplikaci App Service](/azure/ap
 [!INCLUDE [Create a project ZIP file](../../includes/app-service-web-deploy-zip-prepare.md)]
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
-Výše uvedený koncový bod nefunguje v současnosti pro Linux App Services. Zvažte místo toho použití FTP nebo [rozhraní API pro nasazení zip](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#continuous-integration-and-deployment) .
+Výše uvedený koncový bod nefunguje v současnosti pro Linux App Services. Zvažte místo toho použití FTP nebo [rozhraní API pro nasazení zip](faq-app-service-linux.md#continuous-integration-and-deployment) .
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>Nasazení souboru ZIP pomocí Azure CLI
 

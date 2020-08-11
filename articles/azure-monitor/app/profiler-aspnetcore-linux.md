@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f01eaf879e70406c6dbe17e6fc544f7aed367e8b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a21d48787a39c491a2ab1ace1bf42ff85bd34993
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324110"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078083"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core webové aplikace Azure Linux pomocí Application Insights Profiler
 
@@ -106,7 +106,7 @@ Následující pokyny platí pro všechna prostředí pro vývoj pro Windows, Li
 
     ![Nastavení úložiště Git](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-Další možnosti nasazení najdete v [tomto článku](../../app-service/containers/choose-deployment-type.md).
+Další možnosti nasazení najdete v [dokumentaci App Service](https://docs.microsoft.com/azure/app-service).
 
 ## <a name="deploy-your-project"></a>Nasazení projektu
 

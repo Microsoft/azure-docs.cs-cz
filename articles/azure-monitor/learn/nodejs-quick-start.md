@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: af75afb2840d2bc14e1fa46310f76f662efa2a54
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 17e01894ac3d26720b1e74be9d0fd7fc193c463f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384782"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077301"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Rychlý Start: zahájení monitorování webové aplikace v Node.js s využitím Azure Application Insights
 
@@ -20,7 +20,7 @@ V tomto rychlém startu přidáte sadu Application Insights SDK verze 0,22 pro N
 
 Služba Azure Application Insights umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. Pomocí sady SDK verze 0.20 a novější můžete monitorovat běžné balíčky třetích stran, včetně MongoDB, MySQL a Redis.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Funkční aplikace Node.js.
@@ -29,7 +29,7 @@ Služba Azure Application Insights umožňuje monitorovat webové aplikace z hle
 
 Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace připojené k Internetu, ať už běží místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **vytvořit prostředek pro**  >  **vývojáře**  >  **Application Insights**.
 
@@ -60,7 +60,7 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
    npm install applicationinsights --save
    ```
 
-3. Upravte první soubor *. js* aplikace a přidejte dva řádky níže do nejvyšší části skriptu. Pokud používáte [aplikaciNode.js pro rychlý Start](../../app-service/app-service-web-get-started-nodejs.md), upravili byste soubor *index.js* . Nahraďte `<instrumentation_key>` klíčem instrumentace vaší aplikace. 
+3. Upravte první soubor *. js* aplikace a přidejte dva řádky níže do nejvyšší části skriptu. Pokud používáte [aplikaciNode.js pro rychlý Start](../../app-service/quickstart-nodejs.md), upravili byste soubor *index.js* . Nahraďte `<instrumentation_key>` klíčem instrumentace vaší aplikace. 
 
    ```JavaScript
    const appInsights = require('applicationinsights');

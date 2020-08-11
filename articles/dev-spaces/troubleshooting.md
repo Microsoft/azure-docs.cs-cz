@@ -1,16 +1,16 @@
 ---
-title: Řešení potíží
+title: Poradce při potížích
 services: azure-dev-spaces
 ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Naučte se řešit problémy a řešit běžné problémy při povolování a používání Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: 1efaa178c2abda316cfad3e375dfdd38b41d75e0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7696cc8eaeef9ba5e2e0955bad6f17d28e95b5e5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835693"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077029"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Řešení potíží s Azure Dev Spaces
 
@@ -60,13 +60,13 @@ Opětovné vytvoření kontroleru se dá provést z rozhraní příkazového ř�
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>Řadič se nepodařilo vytvořit kvůli délce názvu kontroleru.
 
-Název kontroleru Azure Dev Spaces nemůže být delší než 31 znaků. Pokud je název řadiče v clusteru AKS nebo vytvoření kontroleru delší než 31 znaků, dojde k chybě. Příklad:
+Název kontroleru Azure Dev Spaces nemůže být delší než 31 znaků. Pokud je název řadiče v clusteru AKS nebo vytvoření kontroleru delší než 31 znaků, dojde k chybě. Například:
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-Chcete-li tento problém vyřešit, vytvořte kontrolér s alternativním názvem. Příklad:
+Chcete-li tento problém vyřešit, vytvořte kontrolér s alternativním názvem. Například:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
@@ -170,7 +170,7 @@ Předpokládejme například, že použijete příkaz Helm ke spuštění celé 
 
 Azure Dev Spaces lze nakonfigurovat tak, aby odkazovaly na konkrétní _souboru Dockerfile_ v projektu. Pokud se zobrazí Azure Dev Spaces nepoužívá _souboru Dockerfile_ , kterou očekáváte k sestavování kontejnerů, možná budete muset explicitně sdělit Azure dev Spaces které souboru Dockerfile se mají použít. 
 
-Chcete-li tento problém vyřešit, otevřete soubor _azds. yaml_ , který Azure dev Spaces vygeneroval v projektu. *Konfigurace aktualizací: vývoj: sestavení: souboru Dockerfile* odkazuje na souboru Dockerfile, který chcete použít. Příklad:
+Chcete-li tento problém vyřešit, otevřete soubor _azds. yaml_ , který Azure dev Spaces vygeneroval v projektu. *Konfigurace aktualizací: vývoj: sestavení: souboru Dockerfile* odkazuje na souboru Dockerfile, který chcete použít. Například:
 
 ```yaml
 ...
@@ -217,7 +217,7 @@ install:
 
 Tato chyba se může zobrazit, když se kód služby nepovede spustit. Příčinou je často v uživatelském kódu. Pokud chcete získat další diagnostické informace, při spouštění služby povolte podrobnější protokolování.
 
-Z příkazového řádku, použijte `--verbose` k povolení podrobnějšího protokolování. Výstupní formát můžete zadat také pomocí `--output` . Příklad:
+Z příkazového řádku, použijte `--verbose` k povolení podrobnějšího protokolování. Výstupní formát můžete zadat také pomocí `--output` . Například:
 
 ```cmd
 azds up --verbose --output json
@@ -284,7 +284,7 @@ Chcete-li například zastavit a zakázat službu *Windows BranchCache* :
 
 Když spustíte službu s Azure Dev Spaces v clusteru AKS s nainstalovanou spravovanými [identitami spravované identity](../aks/use-managed-identity.md) a [pod](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) , proces může po kroku *instalace grafu* přestat reagovat. Pokud provedete kontrolu *azds-injektor-Webhooku* v prostoru názvů *azds* , může se zobrazit tato chyba.
 
-Služby Azure Dev Spaces v clusteru používají spravovanou identitu clusteru ke komunikaci se službami back-endu Azure Dev Spaces mimo cluster. Když je nainstalovaná spravovaná identita pod, na uzlech clusteru se nakonfigurují Síťová pravidla, která budou přesměrovat všechna volání pro spravovaná pověření identity na [NMI (Node Managed identity) DaemonSet nainstalovanou v clusteru](https://github.com/Azure/aad-pod-identity#node-managed-identity). Tento NMI DaemonSet identifikuje volající a zajistí, že pod ním byl označen odpovídajícím způsobem přístup k požadované spravované identitě. Azure Dev Spaces nemůže zjistit, jestli je v clusteru nainstalovaná spravovaná identita, a nemůže provést potřebnou konfiguraci, aby služby Azure Dev Spaces mohly přistupovat ke spravované identitě clusteru. Vzhledem k tomu, že služba Azure Dev Spaces Services nebyla nakonfigurovaná pro přístup ke spravované identitě clusteru, DaemonSet NMI jim neumožní získat token AAD pro spravovanou identitu a nebude komunikovat se službami Azure Dev Spaces back-end.
+Služby Azure Dev Spaces v clusteru používají spravovanou identitu clusteru ke komunikaci se službami back-endu Azure Dev Spaces mimo cluster. Když je nainstalovaná spravovaná identita pod, na uzlech clusteru se nakonfigurují Síťová pravidla, která budou přesměrovat všechna volání pro spravovaná pověření identity na [NMI (Node Managed identity) DaemonSet nainstalovanou v clusteru](https://github.com/Azure/aad-pod-identity#node-managed-identity). Tento NMI DaemonSet identifikuje volající a zajistí, že pod ním byl označen odpovídajícím způsobem přístup k požadované spravované identitě. Azure Dev Spaces nemůže zjistit, jestli je v clusteru nainstalovaná spravovaná identita, a nemůže provést potřebnou konfiguraci, aby služby Azure Dev Spaces mohly přistupovat ke spravované identitě clusteru. Vzhledem k tomu, že služba Azure Dev Spaces Services není nakonfigurovaná pro přístup ke spravované identitě clusteru, DaemonSet NMI jim neumožní získat token Azure AD pro spravovanou identitu a nebude komunikovat se službami Azure Dev Spaces back-endu.
 
 Pokud chcete tento problém vyřešit, použijte pro přístup ke spravované identitě [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md) pro *azds-injektor – Webhook* a Update lusks instrumentované Azure dev Spaces.
 
@@ -328,7 +328,7 @@ Chcete-li zobrazit podrobnosti o spravované identitě, spusťte následující 
 az aks show -g <resourcegroup> -n <cluster> -o json --query "{clientId: identityProfile.kubeletidentity.clientId, resourceId: identityProfile.kubeletidentity.resourceId}"
 ```
 
-Výše uvedený příkaz vypíše *ClientID* a *ResourceID* pro spravovanou identitu. Příklad:
+Výše uvedený příkaz vypíše *ClientID* a *ResourceID* pro spravovanou identitu. Například:
 
 ```json
 {
@@ -369,7 +369,7 @@ kubectl apply -f clusteridentity.yaml
 kubectl apply -f clusteridentitybinding.yaml
 ```
 
-Až nasadíte objekty *AzureIdentity* a *AzureIdentityBinding* , budou mít všechny úlohy s jmenovkou *aadpodidbinding: My-Label-Value* přístup ke spravované identitě clusteru. Přidejte tento popisek a znovu nasaďte všechny úlohy spuštěné v jakémkoli vývojovém prostoru. Příklad:
+Až nasadíte objekty *AzureIdentity* a *AzureIdentityBinding* , budou mít všechny úlohy s jmenovkou *aadpodidbinding: My-Label-Value* přístup ke spravované identitě clusteru. Přidejte tento popisek a znovu nasaďte všechny úlohy spuštěné v jakémkoli vývojovém prostoru. Například:
 
 ```yaml
 apiVersion: apps/v1
@@ -416,7 +416,7 @@ Chcete-li tento problém vyřešit, nainstalujte [rozšíření vs Code pro jazy
 
 Tato chyba se může zobrazit při spuštění ladicího programu Visual Studio Code. Možná nemáte rozšíření VS Code pro Azure Dev Spaces ve vývojovém počítači nainstalované.
 
-Chcete-li tento problém vyřešit, nainstalujte [rozšíření vs Code pro Azure dev Spaces](get-started-netcore.md).
+Chcete-li tento problém vyřešit, nainstalujte rozšíření VS Code pro Azure Dev Spaces.
 
 ### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Chyba "neplatná" hodnota "CWD"/src ". Systém nemůže najít zadaný soubor. nebo "Launch: program"/src/[cesta k binárnímu souboru projektu] "neexistuje"
 
@@ -453,7 +453,7 @@ Pokud chcete tento problém vyřešit:
 
 ### <a name="authorization-error-microsoftdevspacesregisteraction"></a>Chyba autorizace "Microsoft. DevSpaces/Register/Action"
 
-Ke správě Azure Dev Spaces potřebujete ve svém předplatném Azure přístup *vlastníka* nebo *přispěvatele* . Pokud se pokoušíte spravovat vývojové prostory a nemáte oprávnění *vlastníka* nebo *přispěvatele* k přidruženému předplatnému Azure, může se zobrazit chyba autorizace. Příklad:
+Ke správě Azure Dev Spaces potřebujete ve svém předplatném Azure přístup *vlastníka* nebo *přispěvatele* . Pokud se pokoušíte spravovat vývojové prostory a nemáte oprávnění *vlastníka* nebo *přispěvatele* k přidruženému předplatnému Azure, může se zobrazit chyba autorizace. Například:
 
 ```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.

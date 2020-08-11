@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e2c60e851d61a5f33e1b050412b0e91b81e20a16
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3fd9a013eb3318abc48745e163d9ee0118b52b1d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169975"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077471"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace uzlů v Azure App Service Windows
 
-V tomto článku se seznámíte s osvědčenými postupy a kroky při řešení potíží pro [aplikace uzlů](app-service-web-get-started-nodejs.md) běžící na Azure App Service (s [iisnode](https://github.com/azure/iisnode)).
+V tomto článku se seznámíte s osvědčenými postupy a kroky při řešení potíží pro [aplikace Windows Node.js](quickstart-nodejs.md?pivots=platform-windows) spuštěné v Azure App Service (s [iisnode](https://github.com/azure/iisnode)).
 
 > [!WARNING]
 > Při použití kroků pro řešení potíží na provozním webu buďte opatrní. Doporučujeme, abyste aplikaci nastavili na neprodukční instalaci, například na přípravném slotu a po vyřešení problému, zahodíte si pracovní slot k produkčnímu slotu.
@@ -273,7 +273,7 @@ NODE.exe má nastavení s názvem `NODE_PENDING_PIPE_INSTANCES` . V Azure App Se
 
 Pomocí těchto odkazů se dozvíte více o node.js aplikacích v Azure App Service.
 
-* [Začínáme s webovými aplikacemi Node.js ve službě Azure App Service](app-service-web-get-started-nodejs.md)
+* [Začínáme s webovými aplikacemi Node.js ve službě Azure App Service](quickstart-nodejs.md)
 * [Postup ladění webové aplikace Node.js ve službě Azure App Service](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
 * [Používání modulů Node.js s aplikacemi Azure](../nodejs-use-node-modules-azure-apps.md)
 * [Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)

@@ -4,12 +4,12 @@ description: Naučte se přizpůsobit funkci ověřování a autorizace v App Se
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 32b7db234cd91aaf9fa5fcfa9b35679d32561474
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d69a75092f4ede5d5467357a7ac254be6e7c379b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042611"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078389"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené použití ověřování a autorizace v Azure App Service
 
@@ -17,8 +17,7 @@ V tomto článku se dozvíte, jak přizpůsobit integrované [ověřování a au
 
 Pokud chcete rychle začít, přečtěte si jedno z následujících kurzů:
 
-* [Kurz: ověřování a autorizace uživatelů na konci Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)
-* [Kurz: ověřování a autorizace uživatelů na konci Azure App Service pro Linux](containers/tutorial-auth-aad.md)
+* [Kurz: Komplexní ověřování a autorizace uživatelů v Azure App Service](tutorial-auth-aad.md)
 * [Konfigurace aplikace pro použití přihlášení Azure Active Directory](configure-authentication-provider-aad.md)
 * [Konfigurace aplikace pro použití přihlášení k Facebooku](configure-authentication-provider-facebook.md)
 * [Konfigurace aplikace pro použití přihlášení ke Googlu](configure-authentication-provider-google.md)
@@ -34,7 +33,7 @@ Nejprve na stránce **ověřování/autorizace** v Azure Portal nakonfigurujte k
 
 V **akci, která se má provést, když se žádost neověřuje**, vyberte možnost **povoluje anonymní žádosti (bez akce)**.
 
-Na přihlašovací stránce nebo v navigačním panelu nebo jakémkoli jiném umístění aplikace přidejte odkaz pro přihlášení ke každému poskytovateli, který jste povolili ( `/.auth/login/<provider>` ). Příklad:
+Na přihlašovací stránce nebo v navigačním panelu nebo jakémkoli jiném umístění aplikace přidejte odkaz pro přihlášení ke každému poskytovateli, který jste povolili ( `/.auth/login/<provider>` ). Například:
 
 ```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -56,7 +55,7 @@ Pokud chcete přesměrovat uživatele po přihlášení na vlastní adresu URL, 
 
 V přihlašování klienta se aplikace přihlásí k poskytovateli ručně a poté odešle ověřovací token k App Service k ověření (viz [tok ověřování](overview-authentication-authorization.md#authentication-flow)). Toto ověření sama o sobě neuděluje přístup k požadovaným prostředkům aplikace, ale úspěšné ověření vám poskytne token relace, který můžete použít pro přístup k prostředkům aplikace. 
 
-Pokud chcete ověřit token poskytovatele, App Service aplikace musí být nejdřív nakonfigurované s požadovaným poskytovatelem. Po načtení tokenu ověřování od poskytovatele za běhu vystavte token `/.auth/login/<provider>` pro ověření. Příklad: 
+Pokud chcete ověřit token poskytovatele, App Service aplikace musí být nejdřív nakonfigurované s požadovaným poskytovatelem. Po načtení tokenu ověřování od poskytovatele za běhu vystavte token `/.auth/login/<provider>` pro ověření. Například: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -87,7 +86,7 @@ V případě úspěšného ověření tokenu poskytovatele vrátí rozhraní API
 }
 ```
 
-Po vytvoření tohoto tokenu relace můžete získat přístup k prostředkům chráněných aplikací přidáním `X-ZUMO-AUTH` hlavičky do požadavků HTTP. Příklad: 
+Po vytvoření tohoto tokenu relace můžete získat přístup k prostředkům chráněných aplikací přidáním `X-ZUMO-AUTH` hlavičky do požadavků HTTP. Například: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -108,7 +107,7 @@ Tady je jednoduchý odkaz na odhlášení z webové stránky:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Ve výchozím nastavení se při úspěšném odhlášení přesměruje klient na adresu URL `/.auth/logout/done` . Stránku přesměrování po odhlášení můžete změnit přidáním `post_logout_redirect_uri` parametru dotazu. Příklad:
+Ve výchozím nastavení se při úspěšném odhlášení přesměruje klient na adresu URL `/.auth/logout/done` . Stránku přesměrování po odhlášení můžete změnit přidáním `post_logout_redirect_uri` parametru dotazu. Například:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -270,7 +269,7 @@ V případě jakékoli aplikace pro Windows můžete definovat chování webové
 
 ### <a name="identity-provider-level"></a>Úroveň poskytovatele identity
 
-Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. Příklad:
+Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. Například:
 
 - Pro [Azure App Service](configure-authentication-provider-aad.md)můžete [spravovat přístup na podnikové úrovni](../active-directory/manage-apps/what-is-access-management.md) přímo ve službě Azure AD. Pokyny najdete v tématu [Postup odebrání přístupu uživatele k aplikaci](../active-directory/manage-apps/methods-for-removing-user-access.md).
 - Pro [Google](configure-authentication-provider-google.md)jsou projekty Google API, které patří do [organizace](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) , možné nakonfigurovat tak, aby povolovaly přístup jenom uživatelům ve vaší organizaci (viz [Stránka podpory **OAuth 2,0 s nastavením** Google](https://support.google.com/cloud/answer/6158849?hl=en)).
@@ -533,5 +532,4 @@ Tento příkaz můžete spustit z [Azure Cloud Shell](../cloud-shell/overview.md
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: ověřování a autorizace uživatelů v konečném cíli (Windows)](app-service-web-tutorial-auth-aad.md) 
->  [Kurz: ověřování a autorizace uživatelů v konečném cíli (Linux)](containers/tutorial-auth-aad.md)
+> [Kurz: Komplexní ověřování a autorizace uživatelů](tutorial-auth-aad.md)

@@ -5,19 +5,19 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: e38711cbb5ccd9fe4cc8584a9229a1c57550d618
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 206da4e7fe92846352120d604cd8bee578eb45dc
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021224"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077726"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Kurz: Zabezpečení připojení ke službě Azure SQL Database ze služby App Service s využitím spravované identity
 
 [App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů v Azure. Poskytuje také [spravovanou identitu](overview-managed-identity.md) pro vaši aplikaci, což je řešení na klíč pro zabezpečení přístupu ke službě [Azure SQL Database](/azure/sql-database/) a dalším službám Azure. Spravované identity ve službě App Service zvyšují zabezpečení vaší aplikace tím, že z aplikace odstraňují tajné kódy, jako jsou přihlašovací údaje v připojovacích řetězcích. V tomto kurzu přidáte spravovanou identitu do ukázkové webové aplikace, kterou jste vytvořili v jednom z následujících kurzů: 
 
 - [Kurz: Vytvoření aplikace ASP.NET se službou SQL Database v Azure](app-service-web-tutorial-dotnet-sqldatabase.md)
-- [Kurz: Vytvoření aplikace ASP.NET Core a SQL Database v Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
+- [Kurz: Vytvoření aplikace ASP.NET Core a SQL Database v Azure App Service](tutorial-dotnetcore-sqldb-app.md)
 
 Až budete hotovi, vaše ukázková aplikace se bezpečně připojí ke službě SQL Database bez potřeby uživatelského jména a hesla.
 
@@ -43,7 +43,7 @@ Co se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek pokračuje tam, kde jste skončili v [kurzu: sestavení aplikace v ASP.NET v Azure pomocí SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) nebo [kurzu: sestavení ASP.NET Core a SQL Database aplikace v Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md). Pokud jste to ještě neudělali, Projděte si jeden ze dvou kurzů jako první. Alternativně můžete upravit postup pro vlastní aplikaci .NET pomocí SQL Database.
+Tento článek pokračuje tam, kde jste skončili v [kurzu: sestavení aplikace v ASP.NET v Azure pomocí SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) nebo [kurzu: sestavení ASP.NET Core a SQL Database aplikace v Azure App Service](tutorial-dotnetcore-sqldb-app.md). Pokud jste to ještě neudělali, Projděte si jeden ze dvou kurzů jako první. Alternativně můžete upravit postup pro vlastní aplikaci .NET pomocí SQL Database.
 
 Pokud chcete aplikaci ladit pomocí SQL Database jako back-end, ujistěte se, že jste povolili připojení klienta z počítače. V takovém případě přidejte IP adresu klienta podle kroků v části [Správa pravidel brány firewall na úrovni serveru pomocí Azure Portal](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
 
@@ -74,14 +74,14 @@ Další informace o přidání správce služby Active Directory najdete v téma
 
 ## <a name="set-up-visual-studio"></a>Nastavit Visual Studio
 
-### <a name="windows"></a>Windows
+### <a name="windows-client"></a>Klient Windows
 Visual Studio pro Windows je integrované s ověřováním Azure AD. Pokud chcete povolit vývoj a ladění v aplikaci Visual Studio, přidejte uživatele služby Azure AD v aplikaci Visual **File**Studio tak, že v nabídce vyberete  >  **nastavení účet** soubor a kliknete na **Přidat účet**.
 
 Pokud chcete nastavit uživatele Azure AD pro ověřování služby Azure, v **Tools**  >  nabídce vyberte**Možnosti** nástrojů a pak vyberte výběr **účtu ověřování služby Azure**  >  **Account Selection**. Vyberte uživatele Azure AD, kterého jste přidali, a klikněte na **OK**.
 
 Nyní jste připraveni vyvíjet a ladit svou aplikaci pomocí SQL Database jako back-endu pomocí ověřování Azure AD.
 
-### <a name="macos"></a>MacOS
+### <a name="macos-client"></a>Klient pro macOS
 
 Visual Studio pro Mac není integrovaný s ověřováním Azure AD. Knihovna [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) , kterou použijete později, ale může používat tokeny z Azure CLI. Aby bylo možné povolit vývoj a ladění v aplikaci Visual Studio, nejprve je třeba nainstalovat rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) do místního počítače.
 
@@ -107,7 +107,7 @@ V aplikaci Visual Studio otevřete konzolu Správce balíčků a přidejte balí
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-V souboru *Web. config*pracujete v horní části souboru a proveďte následující změny:
+V *Web.config*pracujete z horní části souboru a proveďte následující změny:
 
 - V `<configSections>` přidejte do něj následující deklaraci oddílu:
 
@@ -142,7 +142,7 @@ V aplikaci Visual Studio otevřete konzolu Správce balíčků a přidejte balí
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-V [kurzu ASP.NET Core a SQL Database](app-service-web-tutorial-dotnetcore-sqldb.md)se `MyDbConnection` připojovací řetězec vůbec nepoužívá, protože místní vývojové prostředí používá soubor databáze sqlite a produkční prostředí Azure používá připojovací řetězec z App Service. Při ověřování pomocí služby Active Directory chcete, aby obě prostředí používala stejný připojovací řetězec. V souboru *appSettings. JSON*nahraďte hodnotu `MyDbConnection` připojovacího řetězce:
+V [kurzu ASP.NET Core a SQL Database](tutorial-dotnetcore-sqldb-app.md)se `MyDbConnection` připojovací řetězec vůbec nepoužívá, protože místní vývojové prostředí používá soubor databáze sqlite a produkční prostředí Azure používá připojovací řetězec z App Service. Při ověřování pomocí služby Active Directory chcete, aby obě prostředí používala stejný připojovací řetězec. V *appsettings.jsna*nahraďte hodnotu `MyDbConnection` připojovacího řetězce hodnotou:
 
 ```json
 "Server=tcp:<server-name>.database.windows.net,1433;Database=<database-name>;"
@@ -210,7 +210,7 @@ Ve službě Cloud Shell se přihlaste ke službě SQL Database pomocí příkazu
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
-V příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy, abyste udělili oprávnění, která vaše aplikace potřebuje. Třeba 
+V příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy, abyste udělili oprávnění, která vaše aplikace potřebuje. Příklad: 
 
 ```sql
 CREATE USER [<identity-name>] FROM EXTERNAL PROVIDER;
@@ -229,7 +229,7 @@ Zadáním `EXIT` se vraťte do příkazového řádku služby Cloud Shell.
 
 ### <a name="modify-connection-string"></a>Úprava připojovacího řetězce
 
-Pamatujte, že stejné změny, které jste provedli v *souboru Web. config* nebo *appSettings. JSON* , fungují se spravovanou identitou, takže jediným krokem je odebrání stávajícího připojovacího řetězce v App Service, který Visual Studio vytvořilo první nasazení vaší aplikace. Použijte následující příkaz, ale nahraďte *\<app-name>* názvem vaší aplikace.
+Mějte na paměti, že stejné změny, které jste provedli v *Web.config* nebo *appsettings.jsv* sadě Works se spravovanými identitami, tak stačí k odebrání stávajícího připojovacího řetězce v App Service, který Visual Studio vytvořila poprvé nasazení vaší aplikace. Použijte následující příkaz, ale nahraďte *\<app-name>* názvem vaší aplikace.
 
 ```azurecli-interactive
 az webapp config connection-string delete --resource-group myResourceGroup --name <app-name> --setting-names MyDbConnection
@@ -245,7 +245,7 @@ Teď už stačí jen publikovat provedené změny do Azure.
 
 Na stránce publikování klikněte na **Publikovat**. 
 
-**Pokud jste pocházeli z [kurzu: vytvoření aplikace ASP.NET Core a SQL Database v Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)**, publikování změn pomocí Gitu s následujícími příkazy:
+**Pokud jste pocházeli z [kurzu: vytvoření aplikace ASP.NET Core a SQL Database v Azure App Service](tutorial-dotnetcore-sqldb-app.md)**, publikování změn pomocí Gitu s následujícími příkazy:
 
 ```bash
 git commit -am "configure managed identity"

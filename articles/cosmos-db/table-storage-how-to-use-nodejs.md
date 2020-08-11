@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6a9a3df1d200aae9e5ea401652752656ed9ff423
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: cfcb5645a6284214e233758705537486f32967c6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760970"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079293"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
 
@@ -81,7 +81,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 
 ### <a name="add-an-azure-cosmos-db-connection"></a>Přidání připojení ke službě Azure Cosmos DB
 
-Pokud chcete přidat Azure Cosmos DB připojení, vytvořte `TableService` objekt a zadejte název svého účtu, primární klíč a koncový bod. Tyto hodnoty můžete zkopírovat z **Nastavení**  >  **připojovací řetězec** v Azure Portal pro účet Cosmos DB. Příklad:
+Pokud chcete přidat Azure Cosmos DB připojení, vytvořte `TableService` objekt a zadejte název svého účtu, primární klíč a koncový bod. Tyto hodnoty můžete zkopírovat z **Nastavení**  >  **připojovací řetězec** v Azure Portal pro účet Cosmos DB. Například:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -211,7 +211,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > Ve výchozím nastavení se při aktualizaci entity nekontroluje, jestli se aktualizovaná data dříve neupravila jiným procesem. Zajištění podpory souběžných aktualizací:
 >
 > 1. Získejte značku entity aktualizovaného objektu. Ta se vrací jako součást `response` pro všechny operace související s entitou a je možné ji načíst prostřednictvím příkazu `response['.metadata'].etag`.
-> 2. Při provádění operace aktualizace entity přidejte do nové entity dříve načtené informace o značce entity. Příklad:
+> 2. Při provádění operace aktualizace entity přidejte do nové entity dříve načtené informace o značce entity. Například:
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. Proveďte operaci aktualizace. Pokud se od načtení hodnoty značky entity daná entita upravila, například jinou instancí aplikace, vrátí se `error` oznamující, že nebyla splněná podmínka aktualizace zadaná v požadavku.
@@ -484,5 +484,5 @@ Další informace najdete v následujících materiálech.
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
 * Úložiště [sady SDK služby Azure Storage pro Node.js](https://github.com/Azure/azure-storage-node) na GitHubu
 * [Azure pro vývojáře v Node.js](https://docs.microsoft.com/azure/developer/javascript/)
-* [Vytvoření webové aplikace Node.js v Azure](../app-service/app-service-web-get-started-nodejs.md)
+* [Vytvoření webové aplikace Node.js v Azure](../app-service/quickstart-nodejs.md)
 * [Sestavení a nasazení aplikace Node.js v cloudové službě Azure](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (pomocí Windows PowerShellu)

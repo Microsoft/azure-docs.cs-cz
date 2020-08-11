@@ -3,12 +3,12 @@ title: Azure Service Bus – pozastavení entit zasílání zpráv
 description: Tento článek vysvětluje, jak dočasně pozastavit a znovu aktivovat entity Azure Service Bus zpráv (fronty, témata a odběry).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: da7c25c8ef9f3daa32984ac26aa62710ab775951
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2dad0b774f271ed719ca09b1e749559d5e1868bd
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038133"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078852"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Pozastavení a opětovná aktivace entit zasílání zpráv (zakázat)
 
@@ -18,9 +18,11 @@ Pozastavení entity se obvykle provádí z naléhavých důvodů správy. Jední
 
 Přerušení nebo opětovnou aktivaci může provést buď uživatel, nebo systém. Systém pozastavuje jenom entity z důvodu neznačných administrativních důvodů, jako je například dosažení limitu útraty pro předplatné. Uživatelem zakázané entity nelze znovu aktivovat, ale budou obnoveny, pokud byla příčina pozastavení vyřešena.
 
-Na portálu umožňuje oddíl **vlastnosti** příslušné entity změnit stav; na následujícím snímku obrazovky vidíte přepínač pro frontu:
+V části **Přehled** pro příslušnou entitu se na portálu povoluje Změna stavu. aktuální stav se zobrazí v části **stav** jako hypertextový odkaz.
 
-![Snímek obrazovky funkce Service Bus s zvýrazněným nastavením vlastností a možností stavu fronty nastavenou na aktivní a popsaný červeně.][1]
+Následující snímek obrazovky znázorňuje dostupné stavy, na které se entita dá změnit, a to tak, že vyberete hypertextový odkaz: 
+
+![Snímek obrazovky funkce Service Bus v rámci přehledu, aby se změnila možnost stavu entity][1]
 
 Portál povoluje pouze úplné zakazování front. Operace odesílání a přijímání můžete také zakázat samostatně pomocí Service Bus rozhraní API [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) v sadě .NET Framework SDK nebo se šablonou Azure Resource Manager prostřednictvím Azure CLI nebo Azure PowerShell.
 
@@ -55,5 +57,5 @@ Další informace o Service Bus zasílání zpráv najdete v následujících t�
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
-[1]: ./media/entity-suspend/queue-disable.png
+[1]: ./media/entity-suspend/entity-state-change.png
 

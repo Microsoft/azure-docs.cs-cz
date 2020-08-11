@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
-ms.openlocfilehash: c59ff344cc3e24387c764ba2f23bc3fe0065b371
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 78d44310420558d2f57d2b652f8453028b20c433
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559806"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077648"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Kurz: Hostování rozhraní RESTful API s CORS v Azure App Service
 
@@ -142,7 +142,7 @@ Dále pro své rozhraní API povolíte integrovanou podporu CORS v App Service.
 
 V místním úložišti otevřete soubor _wwwroot/index.html_.
 
-Na řádku 51 nastavte proměnnou `apiEndpoint` na adresu URL vašeho nasazeného rozhraní API (`http://<app_name>.azurewebsites.net`). Položku _ \<AppName>_ nahraďte názvem vaší aplikace v App Service.
+Na řádku 51 nastavte proměnnou `apiEndpoint` na adresu URL vašeho nasazeného rozhraní API (`http://<app_name>.azurewebsites.net`). Nahraďte _\<appname>_ názvem vaší aplikace v App Service.
 
 V místním okně terminálu znovu spusťte ukázkovou aplikaci.
 
@@ -150,7 +150,7 @@ V místním okně terminálu znovu spusťte ukázkovou aplikaci.
 dotnet run
 ```
 
-Přejděte do aplikace v prohlížeči na adrese `http://localhost:5000`. Otevřete okno vývojářské nástroje v prohlížeči`Ctrl` + `Shift` + `i` (v Chrome pro Windows) a prozkoumejte kartu **Konzola** . Nyní by se měla zobrazit chybová zpráva `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
+Přejděte do aplikace v prohlížeči na adrese `http://localhost:5000`. Otevřete okno vývojářské nástroje v prohlížeči ( `Ctrl` + `Shift` + `i` v Chrome pro Windows) a prozkoumejte kartu **Konzola** . Nyní by se měla zobrazit chybová zpráva `No 'Access-Control-Allow-Origin' header is present on the requested resource` .
 
 ![Chyba CORS v prohlížeči](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
@@ -160,7 +160,7 @@ V produkčním prostředí by vaše aplikace v prohlížeči měla místo adresy
 
 ### <a name="enable-cors"></a>Povolení CORS 
 
-V Cloud Shell pomocí [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) příkazu povolte CORS pro adresu URL vašeho klienta. Nahraďte zástupný symbol _ &lt;>název aplikace_ .
+V Cloud Shell pomocí příkazu povolte CORS pro adresu URL vašeho klienta [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) . Nahraďte zástupný symbol _ &lt;>název aplikace_ .
 
 ```azurecli-interactive
 az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-origins 'http://localhost:5000'
@@ -169,7 +169,7 @@ az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-
 Ve vlastnosti `properties.cors.allowedOrigins` můžete nastavit více než jednu adresu URL klienta (`"['URL1','URL2',...]"`). Můžete také povolit všechny adresy URL klientů pomocí `"['*']"`.
 
 > [!NOTE]
-> Pokud vaše aplikace vyžaduje odeslání přihlašovacích údajů, jako jsou soubory cookie nebo ověřovací tokeny, může prohlížeč `ACCESS-CONTROL-ALLOW-CREDENTIALS` vyžadovat hlavičku odpovědi. Pokud to chcete v App Service povolit, `properties.cors.supportCredentials` nastavte `true` v konfiguraci CORS. Tato možnost se nedá povolit `allowedOrigins` , `'*'`Pokud zahrnuje.
+> Pokud vaše aplikace vyžaduje odeslání přihlašovacích údajů, jako jsou soubory cookie nebo ověřovací tokeny, může prohlížeč vyžadovat `ACCESS-CONTROL-ALLOW-CREDENTIALS` hlavičku odpovědi. Pokud to chcete v App Service povolit, `properties.cors.supportCredentials` nastavte `true` v konfiguraci CORS. Tato možnost se nedá povolit `allowedOrigins` , pokud zahrnuje `'*'` .
 
 ### <a name="test-cors-again"></a>Opětovný test CORS
 
@@ -203,4 +203,4 @@ Naučili jste se:
 V dalším kurzu se dozvíte, jak ověřovat a autorizovat uživatele.
 
 > [!div class="nextstepaction"]
-> [Kurz: Komplexní ověřování a autorizace uživatelů](app-service-web-tutorial-auth-aad.md)
+> [Kurz: Komplexní ověřování a autorizace uživatelů](tutorial-auth-aad.md)

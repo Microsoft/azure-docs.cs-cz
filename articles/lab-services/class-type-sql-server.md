@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: a3601010eae614049b4af5aa2ddbcdc6acda21cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fc0a965869207ba8d1b4eb6f45e878ae4b93c3a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444875"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079018"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>Nastavení testovacího prostředí pro správu a vývoj pomocí SQL Server
 
@@ -20,7 +20,7 @@ V tomto článku si ukážeme, jak nastavit šablonu virtuálního počítače v
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
-K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete. Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v [kurzu nastavení účtu testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account). Můžete použít i existující účet testovacího prostředí.
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/). Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v [kurzu nastavení účtu testovacího prostředí](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account). Můžete použít i existující účet testovacího prostředí.
 
 ### <a name="lab-account-settings"></a>Nastavení účtu testovacího prostředí
 
@@ -65,7 +65,7 @@ Teď, když je strana věcí v síti zpracována, umožňuje vytvořit databázi
 24. Klikněte na **Další: Další nastavení**.
 25. V nastavení **použít existující data** vyberte možnost **Ukázka**.  Data z databáze AdventureWorksLT budou použita při vytvoření databáze.
 26. Klikněte na **Zkontrolovat a vytvořit**.
-27. Klikněte na **Vytvořit**.
+27. Klikněte na možnost **Vytvořit**.
 
 Po úspěšném dokončení nasazení SQL Database můžeme vytvořit testovací prostředí a nainstalovat software do počítače šablony testovacího prostředí.
 
@@ -86,7 +86,7 @@ Výše zvolená image zahrnuje [Visual Studio 2019 Community](https://visualstud
 
 Sada Visual Studio obsahuje sadu nástrojů pro **ukládání a zpracování dat** , která zahrnuje nástroje SQL Server Data Tools (SSDT).  Další informace o schopnostech SSDT najdete v tématu [Přehled nástrojů SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/sql-server-data-tools?view=sql-server-ver15).  Chcete-li ověřit připojení ke sdíleným SQL Server pro třídu, přečtěte si téma [připojení k databázi a procházení existujících objektů](https://docs.microsoft.com/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects?view=sql-server-ver15). Pokud se zobrazí výzva, přidejte do [seznamu povolených počítačů](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure) , které se můžou připojit k vaší instanci SQL Server, IP adresa počítače šablony.
 
-Visual Studio podporuje několik úloh, včetně **webových & cloudových** a **desktopových &ch** úloh.  Oba tyto úlohy podporují SQL Server jako zdroj dat. Další informace o použití ASP.NET Core k SQL Server najdete [v tématu vytvoření ASP.NET Core a SQL Database aplikace v Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb) kurzu.  Pomocí knihovny [System. data. SqlClient](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) se můžete připojit k SQL Database z aplikace [Xamarin](https://docs.microsoft.com/xamarin) .
+Visual Studio podporuje několik úloh, včetně **webových & cloudových** a **desktopových &ch** úloh.  Oba tyto úlohy podporují SQL Server jako zdroj dat. Další informace o použití ASP.NET Core k SQL Server najdete [v tématu vytvoření ASP.NET Core a SQL Database aplikace v Azure App Service](https://docs.microsoft.com/azure/app-service/tutorial-dotnetcore-sqldb-app) kurzu.  Pomocí knihovny [System. data. SqlClient](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) se můžete připojit k SQL Database z aplikace [Xamarin](https://docs.microsoft.com/xamarin) .
 
 ## <a name="install-azure-data-studio"></a>Nainstalovat Azure Data Studio
 

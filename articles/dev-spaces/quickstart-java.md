@@ -7,12 +7,12 @@ description: V tomto rychlém startu se dozvíte, jak pomocí Azure Dev Spaces a
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Java, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
 ms.custom: devx-track-java
-ms.openlocfilehash: c0fd035a0341e5e92b2706d833b24d5e5b87e018
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 53d7b602166ae463ddb821f5a9992de39f6e1644
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371562"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078712"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>Rychlý Start: ladění a iterace v Kubernetes pomocí Visual Studio Code a Java-Azure Dev Spaces
 
@@ -163,10 +163,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace napříč více kontejnery a jak zjednodušit vývoj díky práci s různými verzemi nebo větvemi kódu v různých prostorech.
+Přečtěte si další informace o tom, jak Azure Dev Spaces funguje.
 
 > [!div class="nextstepaction"]
-> [Práce s více kontejnery a týmový vývoj](multi-service-java.md)
+> [Jak Azure Dev Spaces funguje](how-dev-spaces-works.md)
 
 
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

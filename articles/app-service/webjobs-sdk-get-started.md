@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 287b58f85cad0082ac782a20cdfb0b9b9ea810e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3b3e52b8386f212521f0fa1ca97cbd658374209
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83743617"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078304"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme s událostmi řízeným zpracováním na pozadí pomocí sady Azure WebJobs SDK
 
@@ -185,7 +185,7 @@ Počínaje verzí 3. x musíte explicitně nainstalovat rozšíření vazby úlo
 
    `message`Parametr nemusí být řetězec. Můžete také vytvořit propojení s objektem JSON, bajtovým polem nebo objektem [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) . [Viz Použití triggeru fronty](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage). Každý typ vazby (například fronty, objekty blob nebo tabulky) má jinou sadu typů parametrů, které lze svázat.
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Emulátor Azure Storage, který se spouští místně, nemá všechny funkce, které vyžaduje Sada WebJobs SDK. Takže v této části vytvoříte účet úložiště v Azure a nakonfigurujete ho tak, aby ho používal. Pokud už máte účet úložiště, přeskočte dolů na krok 6.
 
@@ -310,7 +310,7 @@ V této části provedete následující úlohy, abyste nastavili protokolován�
 
 ### <a name="create-app-service-app-and-application-insights-instance"></a>Vytvoření instance App Service aplikace a Application Insights
 
-1. Pokud ještě nemáte aplikaci App Service, kterou můžete použít, [vytvořte ji](app-service-web-get-started-dotnet-framework.md). Když vytváříte aplikaci, můžete také vytvořit prostředek připojené Application Insights. Když to uděláte, `APPINSIGHTS_INSTRUMENTATIONKEY` nastaví se pro vás ve vaší aplikaci.
+1. Pokud ještě nemáte aplikaci App Service, kterou můžete použít, [vytvořte ji](quickstart-dotnet-framework.md). Když vytváříte aplikaci, můžete také vytvořit prostředek připojené Application Insights. Když to uděláte, `APPINSIGHTS_INSTRUMENTATIONKEY` nastaví se pro vás ve vaší aplikaci.
 
 1. Pokud ještě nemáte prostředek Application Insights, který můžete použít, [vytvořte ho](../azure-monitor/app/create-new-resource.md ). Nastavte **Typ aplikace** na **Obecné**a přeskočte oddíly, které následují **po zkopírování klíče instrumentace**.
 
@@ -326,13 +326,13 @@ V této části provedete následující úlohy, abyste nastavili protokolován�
 
 1. Do pole **připojovací řetězce** přidejte následující položku.
 
-   |Name  |připojovací řetězec  |Typ databáze|
+   |Název  |připojovací řetězec  |Typ databáze|
    |---------|---------|------|
    |AzureWebJobsStorage | {připojovací řetězec úložiště, který jste zkopírovali dříve}|Vlastní|
 
 1. Pokud pole **nastavení aplikace** nemá klíč instrumentace Application Insights, přidejte jej, který jste zkopírovali dříve. (Klíč instrumentace už může být v závislosti na tom, jak jste aplikaci App Service vytvořili.)
 
-   |Name  |Hodnota  |
+   |Název  |Hodnota  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {instrumentace klíče} |
 

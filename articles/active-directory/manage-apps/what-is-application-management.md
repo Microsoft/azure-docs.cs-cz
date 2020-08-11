@@ -1,5 +1,5 @@
 ---
-title: Správa aplikací pomocí služby Azure Active Directory | Microsoft Docs
+title: Co je Správa aplikací v Azure Active Directory
 description: Přehled použití Azure Active Directory (AD) jako systému správy identit a přístupu (IAM) pro vaše cloudové a místní aplikace.
 services: active-directory
 author: kenwith
@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28b04828bc778a2b9076c9ea1970ce80f231fbe3
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: dafd3d7805924d92354c3de6ded50f17598f80f6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386006"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078066"
 ---
 # <a name="what-is-application-management"></a>Co je správa aplikací?
 

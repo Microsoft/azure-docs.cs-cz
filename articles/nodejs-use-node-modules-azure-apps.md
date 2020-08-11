@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
-ms.openlocfilehash: 7e78a8dfdf902c4c2548e0521a79d67716987791
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c1bbe48ca5205cf1db49d67a711e9a7523e1845
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832079"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077114"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Používání modulů Node.js s aplikacemi Azure
 Tento dokument poskytuje pokyny k používání Node.jsch modulů s aplikacemi hostovanými v Azure. Poskytuje pokyny, jak zajistit, aby vaše aplikace používala konkrétní verzi modulu a aby používala nativní moduly s Azure.
@@ -85,7 +85,7 @@ Když je vaše aplikace připravená na produkční prostředí, můžete uzamkn
 >
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste pochopili, jak používat Node.js moduly s Azure, se naučíte, jak [určit Node.js verzi](https://github.com/squillace/nodejs-microservice), [sestavit a nasadit Node.js webovou aplikaci](app-service/app-service-web-get-started-nodejs.md)a [Jak používat rozhraní příkazového řádku Azure pro Mac a Linux](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
+Teď, když jste pochopili, jak používat Node.js moduly s Azure, se naučíte, jak [určit Node.js verzi](https://github.com/squillace/nodejs-microservice), [sestavit a nasadit Node.js webovou aplikaci](app-service/quickstart-nodejs.md)a [Jak používat rozhraní příkazového řádku Azure pro Mac a Linux](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
 
 Další informace najdete ve [Středisku pro vývojáře Node.js](/azure/developer/javascript/).
 

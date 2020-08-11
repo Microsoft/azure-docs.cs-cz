@@ -3,12 +3,12 @@ title: Matice podpory pro zotavení po havárii VMware/fyzický v Azure Site Rec
 description: Shrnuje podporu pro zotavení po havárii virtuálních počítačů VMware a fyzického serveru do Azure pomocí Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 595f12f9204dff58af0bfebb60402cc89ffb386a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7bb4422eb17353dc4e1895de8dcb2c427c6d0d15
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826241"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079395"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -169,6 +169,9 @@ BTRFS | BTRFS se podporuje z [kumulativní aktualizace 34](https://support.micro
 Změna velikosti disku na replikovaném virtuálním počítači | Podporováno ve zdrojovém virtuálním počítači před převzetím služeb při selhání přímo ve vlastnostech virtuálního počítače. Není nutné zakázat nebo znovu povolit replikaci.<br/><br/> Pokud po převzetí služeb při selhání změníte zdrojový virtuální počítač, změny se nezachytí.<br/><br/> Pokud změníte velikost disku na virtuálním počítači Azure po převzetí služeb při selhání, Site Recovery při navrácení služeb po obnovení vytvoří nový virtuální počítač s aktualizacemi.
 Přidat disk na replikovaný virtuální počítač | Nepodporováno<br/> Zakažte replikaci pro virtuální počítač, přidejte disk a pak znovu povolte replikaci.
 
+> [!NOTE]
+> Žádná změna identity disku není podporovaná. Pokud se například disk změnil z GPT na MBR nebo naopak, změna identity disku se změní. V takovém případě bude replikace přerušena a bude nutné provést nové nastavení. 
+
 ## <a name="network"></a>Síť
 
 **Komponenta** | **Podporováno**
@@ -201,7 +204,7 @@ Zachovat zdrojovou IP adresu | Ano
 Koncové body služby virtuální sítě Azure<br/> | Ano
 Urychlení sítě | Ne
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 **Komponenta** | **Podporováno**
 --- | ---
 Dynamický disk | Disk s operačním systémem musí být základní disk. <br/><br/>Datové disky můžou být dynamické disky.

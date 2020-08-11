@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/25/2020
+ms.date: 08/11/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 14f9ab0b1c3b8b437e46a7b6a2d8b87f03442a02
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b8d3472eeedab72644456b4278d3b9f3625c5850
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290500"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078175"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování prostředí Integration Runtime ve službě Azure Data Factory
 
@@ -48,7 +48,7 @@ Následující tabulka uvádí popis vlastností vrácených rutinou pro prostř
 | Vlastnost | Popis |
 -------- | ------------- | 
 | Název | Název prostředí Azure Integration runtime. |  
-| Stav | Stav prostředí Azure Integration runtime. | 
+| State | Stav prostředí Azure Integration runtime. | 
 | Umístění | Umístění prostředí Azure Integration runtime. Podrobnosti o umístění prostředí Azure Integration runtime najdete v tématu [Úvod do prostředí Integration runtime](concepts-integration-runtime.md). |
 | DataFactoryName | Název objektu pro vytváření dat, ke kterému patří Azure Integration runtime | 
 | ResourceGroupName | Název skupiny prostředků, do které patří objekt pro vytváření dat.  |
@@ -161,7 +161,7 @@ Ukázkový výstup (předpokládá, že jsou k tomuto prostředí Integration ru
 
 ## <a name="azure-ssis-integration-runtime"></a>Prostředí Azure-SSIS Integration Runtime
 
-Azure-SSIS IR je plně spravovaný cluster virtuálních počítačů Azure (neboli uzlů) vyhrazených ke spouštění balíčků SSIS. Spouštění balíčků SSIS můžete vyvolat na Azure-SSIS IR pomocí různých metod, například prostřednictvím nástroje Azure-SQL Server Data Tools (SSDT), nástroje příkazového řádku AzureDTExec, T-SQL on SQL Server Management Studio (SSMS)/SQL serveru a provádět aktivity balíčku SSIS v kanálech ADF. Azure-SSIS IR nespouští žádné jiné aktivity ADF. Po zřízení můžete monitorovat jeho celkové vlastnosti a stavy specifické pro uzel prostřednictvím Azure PowerShell, Azure Portal a Azure Monitor.
+Azure-SSIS IR je plně spravovaný cluster virtuálních počítačů Azure (virtuálních počítačů nebo uzlů) vyhrazených ke spouštění balíčků SSIS. Spouštění balíčků SSIS můžete vyvolat na Azure-SSIS IR pomocí různých metod, například prostřednictvím nástroje Azure-SQL Server Data Tools (SSDT), nástroje příkazového řádku AzureDTExec, T-SQL on SQL Server Management Studio (SSMS)/SQL serveru a provádět aktivity balíčku SSIS v kanálech ADF. Azure-SSIS IR nespouští žádné jiné aktivity ADF. Po zřízení můžete monitorovat jeho celkové vlastnosti a stavy specifické pro uzel prostřednictvím Azure PowerShell, Azure Portal a Azure Monitor.
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-powershell"></a>Monitorování prostředí Azure-SSIS Integration runtime pomocí Azure PowerShell
 
@@ -181,7 +181,7 @@ Následující tabulka uvádí popisy vlastností vrácených výše uvedenou ru
 | Uzly                        | Přidělené nebo dostupné uzly vašeho Azure-SSIS IR se stavem specifickým pro uzel (spuštění/k dispozici/recyklace/nedostupné) a chybami, které lze provést. |
 | OtherErrors                  | Chyby, které nejsou specifické pro uzel v Azure-SSIS IR. |
 | LastOperation                | Výsledek poslední operace spuštění/zastavení ve vašem Azure-SSIS IR s chybami, pokud se nezdařila. |
-| Stav                        | Celkový stav vašeho Azure-SSIS IR (počáteční/počáteční/spuštěný/zastavný/zastavený/zastavený). |
+| State                        | Celkový stav vašeho Azure-SSIS IR (počáteční/počáteční/spuštěný/zastavný/zastavený/zastavený). |
 | Umístění                     | Umístění vašeho Azure-SSIS IR. |
 | NodeSize                     | Velikost každého uzlu v Azure-SSIS IR. |
 | NodeCount                    | Počet uzlů v Azure-SSIS IR. |
@@ -206,7 +206,7 @@ Následující tabulka uvádí možné stavy Azure-SSIS IR uzlu:
 | Stav specifický pro uzel | Popis |
 | -------------------- | ----------- | 
 | Spouštění             | Připravuje se tento uzel. |
-| K dispozici            | Tento uzel je připravený na nasazení/spouštění balíčků SSIS. |
+| K dispozici.            | Tento uzel je připravený na nasazení/spouštění balíčků SSIS. |
 | Recyklován            | Probíhá oprava/restartování tohoto uzlu. |
 | Neaktivní          | Tento uzel není připravený na nasazení/spouštění balíčků SSIS a má možné chyby nebo problémy, které byste mohli vyřešit. |
 
@@ -228,31 +228,55 @@ Pokud chcete monitorovat Azure-SSIS IR v Azure Portal, přejděte na stránku **
 
 ![Monitorovat všechny prostředí Integration runtime](media/monitor-integration-runtime/monitor-integration-runtimes.png)
 
-V dalším kroku vyberte název Azure-SSIS IR a otevřete jeho stránku monitorování, kde můžete zobrazit jeho celkové vlastnosti a stavy specifické pro uzel.
+V dalším kroku vyberte název Azure-SSIS IR a otevřete jeho stránku monitorování, kde můžete zobrazit jeho celkové vlastnosti a stavy specifické pro uzel. Na této stránce najdete v závislosti na tom, jak nakonfigurujete obecné, nasazování a pokročilé nastavení svého Azure-SSIS IR, najdete různé informativní a funkční dlaždice.  Informační dlaždice **typ** a **oblast** zobrazují typ a oblast Azure-SSIS IR, v uvedeném pořadí. Informační dlaždice **Velikost uzlu** zobrazuje skladovou položku (SSIS edition_VM tier_VM Series), počet jader procesoru a velikost paměti RAM na uzel pro vaši Azure-SSIS IR. **Běžící/požadované uzly** porovnává počet aktuálně spuštěných uzlů na celkový počet uzlů, které byly pro vaši Azure-SSIS IR dříve požadovány. Funkční dlaždice jsou podrobněji popsané v následujících podrobnostech.
 
 ![Monitorování Azure-SSIS IR](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime.png)
 
-Na dlaždici **stav** na stránce monitorování Azure-SSIS IR můžete zobrazit celkový stav, například **spuštění** nebo **zastavení**. Když vyberete stav **spuštění** , zobrazí se okno s tlačítkem **zastavit** v reálném čase, které zastaví vaše Azure-SSIS IR. Když vyberete stav **Zastaveno** , zobrazí se okno s živým **startem** , ve kterém se spustí Azure-SSIS IR. Automaticky otevírané okno má také tlačítko **spustit balíček SSIS** k automatickému vygenerování kanálu ADF s aktivitou spuštění balíčku SSIS, která běží na vašem Azure-SSIS IR (viz [spouštění balíčků SSIS jako provádění aktivit balíčku SSIS v kanálech ADF](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)) a v textovém poli **ID prostředku** . z nich můžete zkopírovat ID prostředku Azure-SSIS IR ( `/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR` ), které se dá použít k nákupu dalších komponent služby Premium/licencovaných SSIS od nezávislých dodavatelů softwaru (isv) a vytvořit jejich propojení s Azure-SSIS IR (Další informace najdete [v tématu Instalace prémiových a licencovaných komponent na vaše Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-develop-azure-ssis-ir-licensed-components)).
+#### <a name="status-tile"></a>Dlaždice stavu
+
+Na dlaždici **stav** na stránce monitorování Azure-SSIS IR můžete zobrazit celkový stav, například **spuštění** nebo **zastavení**. Když vyberete stav **spuštění** , zobrazí se okno s tlačítkem **zastavit** v reálném čase, které zastaví vaše Azure-SSIS IR. Když vyberete stav **Zastaveno** , zobrazí se okno s živým **startem** , ve kterém se spustí Azure-SSIS IR. Automaticky otevírané okno má také tlačítko **spustit balíček SSIS** k automatickému vygenerování kanálu ADF s aktivitou spuštění balíčku SSIS, která běží na vašem Azure-SSIS IR (viz [spouštění balíčků SSIS jako spouštění aktivit balíčku SSIS v kanálech ADF](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)) a v textovém poli **ID prostředku** , ze kterého můžete zkopírovat ID prostředku Azure-SSIS IR ( `/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR` ). Přípona ID Azure-SSIS IR prostředku, která obsahuje vaše identifikátory ADF a Azure-SSIS IR, vytvoří ID clusteru, které se dá použít k nákupu dalších komponent SSIS úrovně Premium/licencované od nezávislých dodavatelů softwaru (ISV) a jejich navázání na Azure-SSIS IR (Další informace najdete [v tématu Instalace prémiových a licencovaných komponent na Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-develop-azure-ssis-ir-licensed-components)).
 
 ![Monitorovat dlaždici Azure-SSIS IR – stav](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-status.png)
+
+#### <a name="ssisdb-server-endpoint-tile"></a>Dlaždice KONCOVÉho bodu serveru SSISDB
 
 Pokud používáte model nasazení projektu, kde jsou balíčky uložené v SSISDB hostovaném serverem Azure SQL Database nebo spravované instance, zobrazí se na stránce monitorování Azure-SSIS IR dlaždice **koncového bodu serveru SSISDB** (viz téma [konfigurace nastavení nasazení Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)). Na této dlaždici můžete vybrat odkaz s označením serveru Azure SQL Database nebo spravované instance, který bude zobrazovat okno, kde můžete zkopírovat koncový bod serveru z textového pole a použít ho při připojování z SSMS k nasazení, konfiguraci, spuštění a správě balíčků. V automaticky otevíraném okně můžete také vybrat odkaz **zobrazit Azure SQL Database nebo nastavení spravované instance** a znovu nakonfigurovat nebo změnit velikost SSISDB v Azure Portal.
 
 ![Monitorovat dlaždici Azure-SSIS IR – SSISDB](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-ssisdb.png)
 
+#### <a name="proxy--staging-tile"></a>Dlaždice PROXY/přípravy
+
+Pokud si stáhnete, nainstalujete a nakonfigurujete Azure-SSIS IR místní prostředí IR (SHIR) jako proxy serveru pro přístup k datům v místním prostředí, na stránce monitorování Azure-SSIS IR se zobrazí dlaždice **proxy/fázování** (viz téma [Konfigurace SHIR jako proxy serveru pro Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)). Na této dlaždici můžete vybrat odkaz, který určí SHIR, aby se otevřela jeho stránka monitorování. Můžete také vybrat jiný odkaz určením Blob Storage služby Azure pro přípravu a znovu nakonfigurovat její propojenou službu.
+
+#### <a name="validate-vnet--subnet-tile"></a>Dlaždice ověřit virtuální síť/podsíť
+
 Pokud připojíte Azure-SSIS IR k virtuální síti, zobrazí se na stránce monitorování Azure-SSIS IR dlaždice **ověřit virtuální síť nebo podsíť** (podívejte se do tématu [připojení k vaší Azure-SSIS IR do virtuální](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)sítě). Na této dlaždici můžete vybrat odkaz, který určí vaši virtuální síť a podsíť pro otevření okna, kde můžete zkopírovat ID prostředku virtuální `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/virtualNetworks/YourARMVNet` sítě () a název podsítě z textových polí a také ověřit konfiguraci virtuálních sítí a podsítí, abyste zajistili, že požadované příchozí a odchozí síťové přenosy a správu Azure-SSIS IR nejsou překážky.
 
 ![Monitorovat dlaždici Azure-SSIS IR – ověřit](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-validate.png)
+
+#### <a name="diagnose-connectivity-tile"></a>Dlaždice pro DIAGNOSTIKu připojení
 
 Na dlaždici **Diagnostika připojení** na stránce monitorování Azure-SSIS IR můžete vybrat odkaz **Test připojení** , který se zobrazí v okně, kde můžete zkontrolovat připojení mezi Azure-SSIS IR a relevantními údaji balíčku/konfigurace/úložiště dat, stejně jako služby pro správu, prostřednictvím jejich plně kvalifikovaného názvu domény (FQDN)/IP a určeného portu (viz [Testování připojení z vašeho Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq)).
 
 ![Monitorování Azure-SSIS IR – dlaždice DIAGNOSTIKy](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
 
+#### <a name="static-public-ip-addresses-tile"></a>Dlaždice STATICKÝch veřejných IP adres
+
+Pokud přenesete vlastní statické veřejné IP adresy pro Azure-SSIS IR, zobrazí se na stránce monitorování Azure-SSIS IR dlaždice **statické veřejné** IP adresy (Další informace najdete v tématu [zavedení vlastních statických veřejných ip adres pro Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#publicIP)). Na této dlaždici můžete vybrat odkazy, které určí vaše první/druhé statické veřejné IP adresy pro Azure-SSIS IR pro otevření okna, kde můžete zkopírovat ID prostředku ( `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress` ) z textového pole. V automaticky otevíraném okně můžete také vybrat odkaz **Zobrazit nastavení statické veřejné IP adresy** , abyste mohli spravovat svoji první/druhou statickou IP adresu v Azure Portal.
+
+![Monitorování Azure-SSIS IR – dlaždice DIAGNOSTIKy](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
+
+#### <a name="package-stores-tile"></a>Dlaždice úložiště balíčků
+
 Pokud používáte model nasazení balíčku, ve kterém jsou balíčky uložené v systému souborů/Azure soubory/SQL Server databázi (MSDB) hostované vaší spravovanou instancí Azure SQL a spravujete prostřednictvím Azure-SSIS IRch úložišť balíčků, uvidíte na stránce monitorování Azure-SSIS IR dlaždici **úložiště balíčků** (viz [konfigurace nastavení nasazení Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)). Na této dlaždici můžete vybrat odkaz, který určí počet úložišť balíčků připojených k vašemu Azure-SSIS IR. otevře se okno, kde můžete změnit konfiguraci relevantních propojených služeb pro vaše úložiště balíčků Azure-SSIS IR nad systémem souborů/soubory Azure/MSDB hostované vaší spravovanou instancí Azure SQL.
 
 ![Monitorovat dlaždici Azure-SSIS IR – balíček](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-package.png)
 
+#### <a name="errors-tile"></a>Chyba (y) dlaždice
+
 Pokud dojde k problémům s zahájením/zastavením/údržbou nebo upgradem Azure-SSIS IR, zobrazí se na stránce monitorování Azure-SSIS IR další **chybová zpráva (y)** . Na této dlaždici můžete vybrat odkaz, který určí počet chyb generovaných vaším Azure-SSIS IR, aby se zobrazilo okno, kde můžete zobrazit tyto chyby podrobněji a zkopírovat je, abyste našli doporučená řešení v našem průvodci odstraňováním potíží (viz [Poradce při potížích s Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot)).
+
+![Monitorování Azure-SSIS IR – dlaždice DIAGNOSTIKy](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-error.png)
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-monitor"></a>Monitorování prostředí Azure-SSIS Integration runtime pomocí Azure Monitor
 
@@ -262,11 +286,11 @@ Pokud chcete monitorovat Azure-SSIS IR pomocí Azure Monitor, přečtěte si té
 
 Další informace o prostředí Azure-SSIS Integration runtime najdete v následujících článcích:
 
-- [Azure-SSIS Integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Tento článek obsahuje koncepční informace o integračních modulech Integration obecně včetně Azure-SSIS IR. 
-- [Kurz: Nasazení balíčků SSIS do Azure](tutorial-create-azure-ssis-runtime-portal.md) Tento článek obsahuje podrobné pokyny k vytvoření Azure-SSIS IR a používá SQL Database k hostování katalogu SSIS. 
-- [Postup: Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md) Tento článek se rozbalí v tomto kurzu a poskytne pokyny k použití spravované instance SQL a připojení IR k virtuální síti. 
-- [Správa Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). Tento článek ukazuje, jak zastavit, spustit nebo odebrat Azure-SSIS IR. Ukazuje také postup horizontálního navýšení kapacity Azure-SSIS IR přidáním více uzlů. 
-- [Připojení Azure-SSIS IR k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md). Tento článek obsahuje koncepční informace o připojení Azure-SSIS IR k virtuální síti Azure. Poskytuje také postup Azure Portal pro konfiguraci virtuální sítě, aby se Azure-SSIS IR mohl připojit k virtuální síti. 
+- [Azure-SSIS Integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Tento článek obsahuje koncepční informace o obecných modulech Integration runtime, včetně Azure-SSIS IR. 
+- [Kurz: Nasazení balíčků SSIS do Azure](tutorial-create-azure-ssis-runtime-portal.md) Tento článek poskytuje podrobné pokyny k vytvoření Azure-SSIS IR a použití Azure SQL Database k hostování katalogu SSIS (SSISDB). 
+- [Postup: Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md) Tento článek se rozbalí v tomto kurzu a poskytne pokyny k použití spravované instance Azure SQL k hostování SSISDB. 
+- [Správa Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). V tomto článku se dozvíte, jak spustit, zastavit nebo odstranit Azure-SSIS IR. Ukazuje také způsob horizontálního navýšení kapacity přidáním dalších uzlů. 
+- [Připojení Azure-SSIS IR k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md). Tento článek poskytuje pokyny k připojení Azure-SSIS IR k virtuální síti.
 
 ## <a name="next-steps"></a>Další kroky
 Projděte si následující články pro monitorování kanálů různými způsoby: 

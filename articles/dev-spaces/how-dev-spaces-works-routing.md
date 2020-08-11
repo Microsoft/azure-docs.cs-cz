@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: V této části najdete popis procesů, které Azure Dev Spaces výkonu a způsobu fungování směrování.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 8677284d61a0a08a3262c26d6307399922dab4be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19a55f37725464da73e93877d9c5238f3ebaced1
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512465"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077661"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Jak funguje směrování s Azure Dev Spaces
 
@@ -49,13 +49,13 @@ Všechny ostatní přenosy TCP, které neprošly protokolem HTTP, prostřednictv
 
 ## <a name="sharing-a-dev-space"></a>Sdílení prostoru pro vývoj
 
-Při práci s týmem můžete [sdílet vývojové místo v celém týmu](how-to/share-dev-spaces.md) a vytvářet odvozené vývojové prostory. Místo pro vývoj může použít kdokoli s přístupem přispěvatele ke skupině prostředků vývojového prostoru.
+Při práci s týmem můžete sdílet vývojové místo v celém týmu a vytvářet odvozené vývojové prostory. Místo pro vývoj může použít kdokoli s přístupem přispěvatele ke skupině prostředků vývojového prostoru.
 
 Můžete také vytvořit nové vývojové místo, které je odvozeno z jiného vývojového prostoru. Při vytváření odvozeného vývojového prostoru je popisek *azds.IO/Parent-Space=Parent-Space-Name* přidán do oboru názvů odvozeného vývojového prostoru. Všechny aplikace z nadřazeného vývojového prostoru jsou také sdíleny s odvozeným místem pro vývoj. Pokud nasadíte aktualizovanou verzi aplikace do odvozeného vývojového prostoru, bude existovat pouze v odvozeném vývojovém prostoru a nadřazené vývojové místo zůstane neovlivněno. Můžete mít maximálně tři úrovně odvozených vývojových prostorů nebo *prarodičů* .
 
 Odvozené místo pro vývoj také inteligentně směruje požadavky mezi vlastní aplikace a aplikace sdílené z jejího nadřazeného objektu. Směrování funguje tak, že se pokusí směrovat požadavek do aplikace v odvozeném vývojovém prostoru a vrátit se do sdílené aplikace z nadřazeného vývojového prostoru. Směrování se vrátí do sdílené aplikace v prostoru No, pokud aplikace není v nadřazeném prostoru.
 
-Příklad:
+Například:
 * *Výchozí* místo pro vývoj má aplikace *Service* a *serviceB*.
 * Vývojové místo *azureuser* je odvozeno od *výchozího nastavení*.
 * Do *azureuser*se nasadí aktualizovaná verze *služby Service* .

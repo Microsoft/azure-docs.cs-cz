@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/09/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: fa1f6738628ed96e386186a579569170bfaac3ee
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 8a86a1bd9a312f3b1c6d94914d426422687b25a6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066946"
+ms.locfileid: "88077012"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Rychlý Start: jak používat Service Bus témata a předplatná s Node.js a balíčkem Azure-Sb
 V tomto kurzu se naučíte vytvářet Node.js aplikace pro odesílání zpráv do Service Bus tématu a příjem zpráv z Service Bus předplatného pomocí balíčku [Azure-SB](https://www.npmjs.com/package/azure-sb) . Ukázky jsou napsané v JavaScriptu a používají Node.js [modul Azure](https://www.npmjs.com/package/azure) , který interně používá `azure-sb` balíček.
@@ -40,7 +40,7 @@ Další informace o tématech a předplatných najdete v části [Další kroky]
     > V tomto rychlém startu vytvoříte **téma** a **předplatné** k tématu pomocí **Node.js** . 
 
 ## <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
-Vytvořte prázdnou Node.jsovou aplikaci. Pokyny k vytvoření Node.js aplikace najdete v tématu [Vytvoření a nasazení Node.js aplikace na web Azure], [Node.js cloudovou službu][Node.js Cloud Service] pomocí Windows PowerShellu nebo webu s WebMatrix.
+Vytvořte prázdnou Node.jsovou aplikaci. Pokyny k vytvoření Node.js aplikace najdete v tématu [vytvoření a nasazení Node.js aplikace na web Azure], [Node.js cloudové služby][Node.js Cloud Service] pomocí prostředí Windows PowerShell nebo webu s WebMatrix.
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití Service Bus
 Pokud chcete použít Service Bus, Stáhněte si balíček Azure Node.js. Tento balíček obsahuje sadu knihoven, které komunikují se službou Service Bus REST.
@@ -343,5 +343,6 @@ Teď, když jste se seznámili se základy Service Bus témata, získáte dalš�
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /javascript/api/@azure/arm-servicebus/sqlfilter?view=azure-node-latest
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Vytvoření a nasazení Node.js aplikace na web Azure]: ../app-service/app-service-web-get-started-nodejs.md
+[Create and deploy a Node.js application to Azure App Service]: ../app-service/quickstart-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
+

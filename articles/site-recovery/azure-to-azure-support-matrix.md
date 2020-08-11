@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 09b7fe1cc4f871d1f94844a8551479fabc0e22ff
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c8890afcdab1b6247fe072f2e34437d790185e58
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008844"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076924"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -163,7 +163,9 @@ SUSE Linux Enterprise Server 15 a 15 SP1 | 9,32 | Ve výchozím nastavení jsou 
 
 * Souborové systémy: ext3, EXT4, XFS, BTRFS
 * Správce svazků: LVM2
-* Multipath software: Mapovač zařízení
+
+> [!NOTE]
+> Multipath software není podporován. 
 
 
 ## <a name="replicated-machines---compute-settings"></a>Replikované počítače – nastavení výpočtů
