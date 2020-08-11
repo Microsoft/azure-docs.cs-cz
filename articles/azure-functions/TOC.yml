@@ -103,6 +103,7 @@
           href: functions-bindings-example.md
         - name: Registrace rozšíření vazeb
           href: functions-bindings-register.md
+          displayName: 'bundles, extension bundles'
         - name: Vzory výrazů vazeb
           href: functions-bindings-expressions-patterns.md
         - name: Použití návratových hodnot vazeb
@@ -272,8 +273,6 @@
           displayName: 'app setting, application setting'
         - name: Nastavení verze modulu runtime
           href: set-runtime-version.md
-        - name: Ruční registrace rozšíření
-          href: install-update-binding-extensions-manual.md
         - name: Vypnutí funkce
           href: disable-function.md
         - name: Geografické zotavení po havárii
