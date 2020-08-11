@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 5b454c324d475eb4f692e1715cb2ea45105f78e1
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: afffdd0267cde8ffc841587748e51dd27e021369
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056920"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079582"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru Azure Machine Learning
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -142,7 +142,7 @@ Následující tabulka představuje souhrn Azure Machine Learningch aktivit a op
 | Odeslání libovolného typu běhu | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
 | Publikování koncového bodu kanálu | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | Nasazení registrovaného modelu do prostředku AKS/ACI | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
-| Bodování před nasazeným koncovým bodem AKS | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role umožňující: `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (Pokud nepoužíváte ověřování AAD) nebo `"/workspaces/read"` (Pokud používáte ověřování pomocí tokenu) |
+| Bodování před nasazeným koncovým bodem AKS | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role umožňující: `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (Pokud nepoužíváte Azure Active Directory ověřování) nebo `"/workspaces/read"` (Pokud používáte ověřování tokenů) |
 | Přístup k úložišti pomocí interaktivních poznámkových bloků | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
 | Vytvořit novou vlastní roli | Povolení vlastníka, přispěvatele nebo vlastní role`Microsoft.Authorization/roleDefinitions/write` | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`/workspaces/computes/write` |
 
@@ -374,10 +374,14 @@ Můžou se taky najít v seznamu [operací poskytovatele prostředků](/azure/ro
 Tady je několik věcí, na kterých je potřeba vědět, když používáte řízení přístupu na základě role Azure (Azure RBAC):
 
 - Když vytvoříte prostředek v Azure, řekněme, že nejste přímo vlastníkem tohoto pracovního prostoru. Vaše role se zdědí z nejvyšší role oboru, ke které jste v tomto předplatném udělili autorizaci. Příklad: Pokud jste správce sítě a máte oprávnění k vytvoření pracovního prostoru Machine Learning, bude vám přiřazena role správce sítě v daném pracovním prostoru, nikoli role vlastníka.
-- Když ke stejnému uživateli AAD s konfliktními oddíly akcí/NotActions existují dvě přiřazení rolí, operace uvedené v NotActions z jedné role se nemusí projevit, pokud jsou uvedené i jako akce v jiné roli. Další informace o tom, jak Azure analyzuje přiřazení rolí, najdete v článku [jak Azure RBAC určuje, jestli má uživatel přístup k prostředku](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) .
-- K nasazení výpočetních prostředků v rámci virtuální sítě musíte pro daný prostředek virtuální sítě explicitně mít oprávnění "Microsoft. Network/virtualNetworks/JOIN/Action".
-- Může někdy trvat až 1 hodinu, než se vaše nové přiřazení role projeví u oprávnění uložených v mezipaměti napříč zásobníkem.
+- Pokud existují dvě přiřazení rolí stejného Azure Active Directoryho uživatele s konfliktními oddíly akcí/NotActions, operace uvedené v NotActions z jedné role se nemusí projevit, pokud jsou také uvedeny jako akce v jiné roli. Další informace o tom, jak Azure analyzuje přiřazení rolí, najdete v článku [jak Azure RBAC určuje, jestli má uživatel přístup k prostředku](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource) .
+- K nasazení výpočetních prostředků v rámci virtuální sítě musíte explicitně mít oprávnění k těmto akcím:
+    - "Microsoft. Network/virtualNetworks/JOIN/Action" na prostředku virtuální sítě.
+    - "Microsoft. Network/virtualNetworks/podsíť/JOIN/Action" na prostředku podsítě.
+    
+    Další informace o RBAC pomocí sítě najdete v tématu [předdefinované role sítě](/azure/role-based-access-control/built-in-roles#networking).
 
+- Může někdy trvat až 1 hodinu, než se vaše nové přiřazení role projeví u oprávnění uložených v mezipaměti napříč zásobníkem.
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>Otázka: Jaká oprávnění potřebuji k použití spravované identity přiřazené uživatelem v mých clusterech Amlcompute?
 

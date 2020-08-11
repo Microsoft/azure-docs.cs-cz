@@ -7,18 +7,18 @@ description: V tomto rychlém startu se dozvíte, jak pomocí Azure Dev Spaces a
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
 ms.custom: devx-track-javascript
-ms.openlocfilehash: c27718cc87a1c9401b31ff8c3c77c7b7a8c52292
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7fcb60d3f020d911157735ce9632ed4157e2da4e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420375"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080415"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Rychlý Start: ladění a iterace v Kubernetes pomocí Visual Studio Code a Node.js-Azure Dev Spaces
 
 V tomto rychlém startu jste nastavili Azure Dev Spaces pomocí spravovaného clusteru Kubernetes a pomocí Node.js aplikace v Visual Studio Code mohli iterativní vývoj a ladění kódu v kontejnerech. Azure Dev Spaces umožňuje ladit a testovat všechny komponenty vaší aplikace ve službě Azure Kubernetes Service (AKS) s minimálním nastavením vývojového počítače. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Nejnovější verzi Node.js](https://nodejs.org/download/).
@@ -109,7 +109,7 @@ Vyberte **ladit** a pak **Zastavit ladění** , aby se ladicí program zastavil.
 
 ## <a name="update-code"></a>Aktualizace kódu
 
-Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit **spouštěcí Server**. Příklad:
+Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit **spouštěcí Server**. Například:
 
 1. Pokud je vaše aplikace pořád spuštěná, **Debug** vyberte ladění **a zastavte** ji.
 1. Aktualizujte [řádek 13 `server.js` v](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) :
@@ -147,7 +147,7 @@ Tento příkaz vytvoří a spustí vaši službu v Azure Dev Spaces. Také spust
 
 Po spuštění služby přejděte k ní pomocí prohlížeče a s ním můžete pracovat.
 
-Když je služba spuštěná, vraťte se do VS Code a aktualizujte řádek 13 v *server.js*. Příklad:
+Když je služba spuštěná, vraťte se do VS Code a aktualizujte řádek 13 v *server.js*. Například:
 ```javascript
     res.send('Hello from webfrontend in Azure while debugging!');
 ```
@@ -164,10 +164,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace napříč více kontejnery a jak zjednodušit vývoj díky práci s různými verzemi nebo větvemi kódu v různých prostorech.
+Přečtěte si další informace o tom, jak Azure Dev Spaces funguje.
 
 > [!div class="nextstepaction"]
-> [Práce s více kontejnery a týmový vývoj](multi-service-nodejs.md)
+> [Jak Azure Dev Spaces funguje](how-dev-spaces-works.md)
 
 
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

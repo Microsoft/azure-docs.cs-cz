@@ -3,12 +3,12 @@ title: Použití DevTest Labs v kanálech sestavování a vydávání verzí Azu
 description: Naučte se používat Azure DevTest Labs v Azure Pipelines vytváření a vydávání kanálů.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 71af1e0dfe205fe1028f7b82b41f3ed38ebefd3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d04ed5dd7bebac0c8f24deb9145c3d2e4b77122e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483070"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080330"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Použití DevTest Labs v kanálech sestavování a vydávání verzí Azure Pipelines
 Tento článek poskytuje informace o tom, jak se DevTest Labs dají použít v Azure Pipelines kanálech sestavení a vydání. 
@@ -26,7 +26,7 @@ Po úspěšném dokončení sestavení bude **kanál verze** používat artefakt
 
 Jedním z nezbytných míst je, že všechny informace potřebné k opětovnému vytvoření testovaného ekosystému jsou k dispozici v rámci artefaktů sestavení, včetně konfigurace prostředků Azure. Jelikož se prostředky Azure účtují při použití, mají společnosti možnost řídit nebo sledovat používání těchto prostředků. V některých situacích se Azure Resource Manager šablon používaných k vytváření a konfiguraci prostředků dá spravovat přes jiné oddělení, jako je IT. A tyto šablony mohou být uloženy v jiném úložišti. Vede na zajímavou situaci, kdy se vytvoří a otestuje sestavení, a jak kód, tak konfigurace budou muset být uloženy v rámci artefaktů sestavení, aby bylo možné správně znovu vytvořit systém v produkčním prostředí. 
 
-Pomocí DevTest Labs během fáze sestavení/testování můžete přidat šablony Azure Resource Manager a podpůrné soubory do zdrojů sestavení tak, aby během fáze vydání byla přesná konfigurace, která se pro testování používala, nasadila v produkčním prostředí. Úloha **vytvoření Azure DevTest Labs prostředí** se správnou konfigurací uloží šablony Správce prostředků v rámci artefaktů sestavení. V tomto příkladu budete používat kód z [kurzu: Vytvoření webové aplikace .NET Core a SQL Database v Azure App Service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)pro nasazení a testování webové aplikace v Azure.
+Pomocí DevTest Labs během fáze sestavení/testování můžete přidat šablony Azure Resource Manager a podpůrné soubory do zdrojů sestavení tak, aby během fáze vydání byla přesná konfigurace, která se pro testování používala, nasadila v produkčním prostředí. Úloha **vytvoření Azure DevTest Labs prostředí** se správnou konfigurací uloží šablony Správce prostředků v rámci artefaktů sestavení. V tomto příkladu budete používat kód z [kurzu: Vytvoření webové aplikace .NET Core a SQL Database v Azure App Service](../app-service/tutorial-dotnetcore-sqldb-app.md)pro nasazení a testování webové aplikace v Azure.
 
 ![Celkový tok](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
 
@@ -40,7 +40,7 @@ Existuje několik položek, které je potřeba vytvořit předem:
 Kanál sestavení vytvoří prostředí DevTest Labs a nasadí kód pro testování.
 
 ## <a name="set-up-a-build-pipeline"></a>Nastavení kanálu sestavení
-V Azure Pipelines vytvořte kanál sestavení pomocí kódu z [kurzu: Vytvoření webové aplikace .NET Core a SQL Database v Azure App Service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md). Použijte šablonu **ASP.NET Core** , která naplní nezbytný úkol pro sestavení, testování a publikování kódu.
+V Azure Pipelines vytvořte kanál sestavení pomocí kódu z [kurzu: Vytvoření webové aplikace .NET Core a SQL Database v Azure App Service](../app-service/tutorial-dotnetcore-sqldb-app.md). Použijte šablonu **ASP.NET Core** , která naplní nezbytný úkol pro sestavení, testování a publikování kódu.
 
 ![Vybrat šablonu ASP.NET](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 

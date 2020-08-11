@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 0e6229e38674651f3db068d30f68ef4c7e293c0a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 7f5ce25edfc4c3afd8a30528396f1f285b9af571
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386839"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080690"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Co je Synchronizace dat SQL pro Azure?
 
@@ -131,6 +131,7 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 ### <a name="general-limitations"></a>Obecná omezení
 
 - Tabulka nemůže mít sloupec identity, který není primárním klíčem.
+- Tabulka musí obsahovat clusterovaný index, aby bylo možné použít synchronizaci dat.
 - Primární klíč nemůže mít následující datové typy: sql_variant, binary, varbinary, image, XML.
 - Buďte opatrní při použití následujících datových typů jako primárního klíče, protože podporovaná přesnost je pouze sekundy: Time, DateTime, datetime2, DateTimeOffset.
 - Názvy objektů (databáze, tabulky a sloupce) nesmí obsahovat tečky tisknutelné znaky (.), levou hranatou závorku ([) nebo pravou hranatou závorku (]).
@@ -148,7 +149,7 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 
 #### <a name="unsupported-column-types"></a>Nepodporované typy sloupců
 
-Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Příklad:
+Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Například:
 
 - Vypočítané sloupce.
 - Systémem generované sloupce pro dočasné tabulky.
@@ -193,7 +194,7 @@ Synchronizace dat SQL je k dispozici ve všech oblastech.
 
 ### <a name="is-a-sql-database-account-required"></a>Je vyžadován účet SQL Database
 
-Yes. Pro hostování databáze centra musíte mít účet SQL Database.
+Ano. Pro hostování databáze centra musíte mít účet SQL Database.
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-server-databases-only"></a>Můžu použít synchronizaci dat pro synchronizaci mezi SQL Servermi databázemi
 
@@ -201,18 +202,18 @@ Ne přímo. Je možné synchronizovat mezi SQL Servermi databázemi nepřímo, a
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>Můžu použít synchronizaci dat pro synchronizaci mezi databázemi v SQL Database, které patří do různých předplatných.
 
-Yes. Můžete synchronizovat mezi databázemi patřícími do skupin prostředků vlastněných různými předplatnými.
+Ano. Můžete synchronizovat mezi databázemi patřícími do skupin prostředků vlastněných různými předplatnými.
 
 - Pokud předplatná patří ke stejnému tenantovi a máte oprávnění ke všem předplatným, můžete skupinu synchronizace nakonfigurovat v Azure Portal.
 - V opačném případě je nutné použít PowerShell k přidání členů synchronizace, kteří patří do různých předplatných.
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Můžu použít synchronizaci dat pro synchronizaci mezi databázemi v SQL Database, které patří do různých cloudů (například veřejný cloud Azure a Azure Čína 21Vianet).
 
-Yes. Můžete synchronizovat mezi databázemi, které patří do různých cloudů. K přidání členů synchronizace, kteří patří do různých předplatných, musíte použít PowerShell.
+Ano. Můžete synchronizovat mezi databázemi, které patří do různých cloudů. K přidání členů synchronizace, kteří patří do různých předplatných, musíte použít PowerShell.
 
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Můžu použít synchronizaci dat k osazení dat z mé provozní databáze do prázdné databáze a pak je synchronizovat
 
-Yes. Vytvořte schéma ručně v nové databázi skriptováním z původní. Po vytvoření schématu přidejte tabulky do skupiny synchronizace a zkopírujte data a udržujte je synchronizovaná.
+Ano. Vytvořte schéma ručně v nové databázi skriptováním z původní. Po vytvoření schématu přidejte tabulky do skupiny synchronizace a zkopírujte data a udržujte je synchronizovaná.
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Mám použít Synchronizace dat SQL k zálohování a obnovení mých databází
 
@@ -227,7 +228,7 @@ Jednu z doporučených postupů zálohování najdete [v tématu kopírování d
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>Je kolace podporovaná v Synchronizace dat SQL
 
-Yes. Synchronizace dat SQL podporuje kolaci v následujících scénářích:
+Ano. Synchronizace dat SQL podporuje kolaci v následujících scénářích:
 
 - Pokud vybrané tabulky schématu synchronizace ještě nejsou ve vašich hub nebo členských databázích, služba při nasazení skupiny synchronizace automaticky vytvoří odpovídající tabulky a sloupce s nastavením řazení vybraným v prázdných cílových databázích.
 - Pokud tabulky, které mají být synchronizovány, již existují v databázi hub i členské databáze, Synchronizace dat SQL vyžaduje, aby sloupce primárního klíče měly stejnou kolaci mezi databázemi hub a Members k úspěšnému nasazení skupiny synchronizace. Pro jiné sloupce než sloupce primárního klíče neexistují žádná omezení kolace.

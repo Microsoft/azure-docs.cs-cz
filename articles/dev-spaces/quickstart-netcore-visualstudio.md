@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, 
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 8279a32ece16209c1dd5bca13d08e22b283677ee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1855fd201d7963fdf2f1b3fa292643908bbb05a0
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006999"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079599"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Rychlý Start: ladění a iterace na Kubernetes: Visual Studio & .NET Core – Azure Dev Spaces
 
@@ -28,7 +28,7 @@ Azure Dev Spaces taky umožňuje ladění a iteraci pomocí:
 - [Node.js a Visual Studio Code](quickstart-nodejs.md)
 - [.NET Core a Visual Studio Code](quickstart-netcore.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - Visual Studio 2019 ve Windows s nainstalovanou úlohou vývoj pro Azure Pokud nemáte nainstalované Visual Studio, Stáhněte si ho [tady](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
@@ -78,7 +78,7 @@ Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready 
 1. Pojmenujte svůj projekt *webendu* a klikněte na *vytvořit*.
 1. Po zobrazení výzvy vyberte možnost *Webová aplikace (model-zobrazení-kontroler)* pro šablonu.
 1. V horní části vyberte *.NET Core* a *ASP.NET Core 2,1* .
-1. Klikněte na *Vytvořit*.
+1. Klikněte na možnost *Vytvořit*.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>Připojte svůj projekt k prostoru pro vývoj
 
@@ -150,8 +150,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Další kroky
 
+Přečtěte si další informace o tom, jak Azure Dev Spaces funguje.
+
 > [!div class="nextstepaction"]
-> [Práce s více kontejnery a týmový vývoj](multi-service-netcore-visualstudio.md)
+> [Jak Azure Dev Spaces funguje](how-dev-spaces-works.md)
 
 [ingress-update]: how-dev-spaces-works-up.md#how-running-your-code-is-configured
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 739eb4e7968cb140e49f1baee777b48140811936
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034953"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080707"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Přehled Azure App Service místní mezipaměti
 
 > [!NOTE]
-> Místní mezipaměť není podporovaná v aplikacích Function App ani v kontejnerech App Servicech aplikacích, jako je například v [kontejnerech Windows](app-service-web-get-started-windows-container.md) nebo v [App Service na systému Linux](containers/app-service-linux-intro.md).
+> Místní mezipaměť není podporovaná v aplikacích Function App ani v kontejnerech App Servicech aplikacích, jako je například v [kontejnerech Windows](quickstart-custom-container.md?pivots=container-windows) nebo v [App Service na systému Linux](overview.md#app-service-on-linux).
 
 
 Obsah Azure App Service je uložený v Azure Storage a je povrchový způsobem odolný jako sdílený obsah. Tento návrh je určený pro práci s nejrůznějšími aplikacemi a má následující atributy:  

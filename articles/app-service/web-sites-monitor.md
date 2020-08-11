@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d83aae778c940958d545a9402b09d24a55b1c5a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5507e6f97211f209eb559ff7491f22bdf1a00e54
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482679"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079667"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorování aplikací v Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované funkce monitorování pro webové aplikace, mobilní aplikace a aplikace API v [Azure Portal](https://portal.azure.com).
@@ -31,7 +31,7 @@ Pokud je aplikace hostována v plánu *Basic*, *Standard*nebo *Premium* , omezen
 
 Kvóty pro bezplatné nebo sdílené aplikace jsou:
 
-| Kvóta | Description |
+| Kvóta | Popis |
 | --- | --- |
 | **PROCESOR (krátký)** | Počet PROCESORů povolených pro tuto aplikaci v intervalu 5 minut. Tato kvóta se resetuje každých pět minut. |
 | **CPU (den)** | Celková velikost procesoru povoleného pro tuto aplikaci za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
@@ -64,11 +64,15 @@ Můžete zvýšit nebo odebrat kvóty z aplikace tím, že upgradujete plán App
 > [!IMPORTANT]
 > **Průměrná doba odezvy** bude zastaralá, aby nedocházelo k záměně s agregacemi metrik. Použijte **dobu odezvy** jako náhradu.
 
+> [!NOTE]
+> Metriky pro aplikaci zahrnují požadavky na web SCM aplikace (Kudu).  To zahrnuje požadavky na zobrazení logstream webu pomocí Kudu.  Žádosti Logstream můžou zahrnovat několik minut, což bude mít vliv na metriky času požadavku.  Uživatelé by měli být vědomi tohoto vztahu při použití těchto metrik s logikou automatického škálování.
+> 
+
 Metriky poskytují informace o chování aplikace nebo naplánování App Service.
 
 V případě aplikace jsou dostupné metriky:
 
-| Metric | Popis |
+| Metrika | Popis |
 | --- | --- |
 | **Doba odezvy** | Doba, kterou aplikace bude obsluhovat požadavky (v sekundách). |
 | **Průměrná doba odezvy (nepoužívané)** | Průměrná doba, jakou trvalo, aby aplikace sloužila požadavkům (v sekundách) |
@@ -112,7 +116,7 @@ V případě plánu App Service jsou dostupné metriky:
 > Metriky plánu App Service jsou dostupné jenom pro plány v úrovních *Basic*, *Standard*a *Premium* .
 > 
 
-| Metric | Popis |
+| Metrika | Popis |
 | --- | --- |
 | **Procento využití procesoru** | Průměrně využitý procesor napříč všemi instancemi plánu. |
 | **Procento paměti** | Průměrná paměť využitá ve všech instancích plánu. |

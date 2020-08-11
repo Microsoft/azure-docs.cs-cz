@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: d6ab05d92ec209e10bfc4aec4e4fe2b6ea150099
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e69385d174cfb2ea3aa37867d65e0ac9eb5eaff0
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037656"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080792"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Kurz: vytvoření lokátoru úložiště pomocí Azure Maps
 
@@ -950,7 +950,7 @@ V tomto kurzu se naučíte, jak vytvořit základní Lokátor úložiště pomoc
 > * Umožní uživateli [filtrovat umístění podél trasy](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
 > * Přidejte možnost [nastavení filtrů](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property). 
 > * Přidejte podporu pro určení počáteční hodnoty vyhledávání pomocí řetězce dotazu. Když zahrnete tuto možnost do svého lokátoru úložiště, můžou uživatelé hledat v záložek a sdílet je. Poskytuje také snadnou metodu, jak můžete předat vyhledávání na této stránce z jiné stránky.  
-> * Nasaďte svůj Lokátor úložiště jako [Azure App Service webovou aplikaci](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html). 
+> * Nasaďte svůj Lokátor úložiště jako [Azure App Service webovou aplikaci](https://docs.microsoft.com/azure/app-service/quickstart-html). 
 > * Uložte svá data do databáze a vyhledejte umístění v okolí. Další informace najdete v tématu [Přehled typů prostorových dat SQL Server](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) a [dotazování prostorových dat pro nejbližší sousední uzel](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017).
 
 > [!div class="nextstepaction"]

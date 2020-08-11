@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Připojení clusteru Kubernetes s povoleným ARC Azure pomocí ARC Azure
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
 ms.custom: references_regions
-ms.openlocfilehash: 2c5e697f3dd67087582118fb6a6e083feecf549f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 761263a4cb8c83475142c2afcc39695bb84d46cd
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050097"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080486"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
 
@@ -172,6 +172,41 @@ Tento prostředek můžete zobrazit také na [Azure Portal](https://portal.azure
 > [!NOTE]
 > Po připojení clusteru trvá přibližně 5 až 10 minut, než se na stránce Přehled v prostředku Kubernetes s povoleným Azure Portal prostředkem Azure ARC na ploše zobrazí stránka s přehledem.
 
+## <a name="connect-using-an-outbound-proxy-server"></a>Připojení pomocí odchozí proxy server
+
+Pokud je váš cluster za odchozím proxy server, Azure CLI a agenti Kubernetes s povoleným obloukem musí směrovat své žádosti přes odchozí proxy server. Tato konfigurace pomáhá dosáhnout těchto akcí:
+
+1. `connectedk8s`Spuštěním tohoto příkazu ověřte verzi rozšíření nainstalovanou na počítači:
+
+    ```bash
+    az -v
+    ```
+
+    `connectedk8s`K nastavení agentů s odchozím proxy serverem potřebujete rozšíření >= 0.2.3. Pokud máte na svém počítači verzi < 0.2.3, postupujte podle [kroků aktualizace](#before-you-begin) a získejte na svém počítači nejnovější verzi rozšíření.
+
+2. Nastavte proměnné prostředí potřebné pro Azure CLI:
+
+    ```bash
+    export HTTP_PROXY=<proxy-server-ip-address>:<port>
+    export HTTPS_PROXY=<proxy-server-ip-address>:<port>
+    export NO_PROXY=<cluster-apiserver-ip-address>:<port>
+    ```
+
+3. Spusťte příkaz Connect se zadanými parametry proxy serveru:
+
+    ```bash
+    az connectedk8s connect -n <cluster-name> -g <resource-group> \
+    --proxy-https https://<proxy-server-ip-address>:<port> \
+    --proxy-http http://<proxy-server-ip-address>:<port> \
+    --proxy-skip-range <excludedIP>,<excludedCIDR>
+    ```
+
+> [!NOTE]
+> 1. Zadání excludedCIDR pod položkou--proxy-Skip-Range je důležité, aby se zajistilo, že komunikace v clusteru není pro agenty poškozená.
+> 2. Výše uvedená specifikace proxy serveru se momentálně používá jenom pro agenty ARC a ne pro tok lusků používaných v sourceControlConfiguration. Kubernetes tým s povoleným obloukem aktivně pracuje na této funkci a brzy bude k dispozici.
+
+## <a name="azure-arc-agents-for-kubernetes"></a>Agenti Azure ARC pro Kubernetes
+
 Kubernetes s povoleným obloukem Azure nasadí několik operátorů do `azure-arc` oboru názvů. Tato nasazení a lusky můžete zobrazit tady:
 
 ```console
@@ -199,8 +234,6 @@ pod/flux-logs-agent-7c489f57f4-mwqqv            2/2     Running  0       16h
 pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
-
-## <a name="azure-arc-agents-for-kubernetes"></a>Agenti Azure ARC pro Kubernetes
 
 Kubernetes s povoleným ARC Azure se skládá z několika agentů (operátorů), které běží v clusteru nasazeném do `azure-arc` oboru názvů.
 

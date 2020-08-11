@@ -7,16 +7,16 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7a250eaeb8ac4d0c8cacfb1748855700c9986bf5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76939097"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079446"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Kurz: Vytvoření vlastních záznamů DNS ve vlastní doméně pro webovou aplikaci 
 
-Azure DNS můžete nakonfigurovat na hostování vlastní domény pro vaše webové aplikace. Můžete například vytvořit webovou aplikaci Azure, která uživatelům přistupují pomocí webové\.contoso.com nebo contoso.com jako plně kvalifikovaného názvu domény (FQDN).
+Azure DNS můžete nakonfigurovat na hostování vlastní domény pro vaše webové aplikace. Můžete například vytvořit webovou aplikaci Azure, která uživatelům přistupují pomocí webové \. contoso.com nebo contoso.com jako plně kvalifikovaného názvu domény (FQDN).
 
 > [!NOTE]
 > V tomto kurzu se jako příklad používá doména contoso.com. Doménu contoso.com nahraďte vlastním názvem domény.
@@ -48,7 +48,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Musíte mít k dispozici název domény pro testování, který můžete hostovat v Azure DNS. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
-* [Vytvořit plán služby App Service](../app-service/app-service-web-get-started-html.md) nebo použít aplikaci, kterou jste vytvořili pro účely jiného kurzu.
+* [Vytvořit plán služby App Service](../app-service/quickstart-html.md) nebo použít aplikaci, kterou jste vytvořili pro účely jiného kurzu.
 
 * Vytvořte v Azure DNS zónu DNS a prostřednictvím svého registrátora ji delegujte na Azure DNS.
 
@@ -175,7 +175,7 @@ Otevřete prohlížeč a přejděte na `http://www.<your domainname>` a `http://
 > [!NOTE]
 > Ujistěte se, že jste `http://` předponu zahrnuli, jinak se může váš prohlížeč pokusit předpovědět adresu URL.
 
-Pro obě adresy URL by se vám měla zobrazit stejná stránka. Příklad:
+Pro obě adresy URL by se vám měla zobrazit stejná stránka. Například:
 
 ![Služba aplikace Contoso](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

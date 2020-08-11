@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a198456412c3146db2bc3e2a2483377e387f452d
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: b957ea9131c5124925b74576fd78665522afd8dc
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513328"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080228"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Kurz: použití spravované identity pro připojení Key Vault k webové aplikaci Azure pomocí .NET
 
@@ -140,7 +140,7 @@ Po vytvoření plánu služby App Service se v rozhraní příkazového řádku 
 
 ### <a name="create-a-remote-web-app"></a>Vytvoření vzdálené webové aplikace
 
-Vytvořte [webovou aplikaci Azure](../../app-service/containers/app-service-linux-intro.md) v `myAppServicePlan` plánu App Service. 
+Vytvořte [webovou aplikaci Azure](../../app-service/overview.md#app-service-on-linux) v `myAppServicePlan` plánu App Service. 
 
 > [!Important]
 > Podobně jako u Key Vault musí mít webová aplikace Azure jedinečný název. \<your-webapp-name\>V následujících příkladech nahraďte názvem vaší webové aplikace.

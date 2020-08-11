@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: addc4edba734c350a1e0e4246203c64315f345dd
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770697"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88081047"
 ---
 # <a name="deployment-best-practices"></a>Osvědčené postupy nasazení
 
@@ -69,7 +69,7 @@ App Service má [integrované průběžné doručování](deploy-continuous-depl
 
 ### <a name="use-github-actions"></a>Použití akcí GitHubu
 
-Nasazení kontejnerů můžete také automatizovat [pomocí akcí GitHubu](containers/deploy-container-github-action.md).  Níže uvedený soubor pracovního postupu sestaví a označí kontejner s ID potvrzení, nabídne ho do registru kontejneru a aktualizuje zadaný slot webu novou značkou image.
+Nasazení kontejnerů můžete také automatizovat [pomocí akcí GitHubu](deploy-container-github-action.md).  Níže uvedený soubor pracovního postupu sestaví a označí kontejner s ID potvrzení, nabídne ho do registru kontejneru a aktualizuje zadaný slot webu novou značkou image.
 
 ```yaml
 name: Build and deploy a container image to Azure Web Apps

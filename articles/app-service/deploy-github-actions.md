@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python
-ms.openlocfilehash: 51a340c2fb32de60f20c678e0bc23f2420261e44
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 713f4228bc2ba968fc96668d4d5c568f33b7e786
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849875"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080279"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Nasazení do App Service pomocí akcí GitHubu
 
@@ -28,49 +28,76 @@ V případě pracovního postupu Azure App Service má soubor tři části:
 
 |Sekce  |Úlohy  |
 |---------|---------|
-|**Authentication** | 1. definování instančního objektu <br /> 2. vytvoření tajného kódu GitHubu |
-|**Sestavení** | 1. nastavení prostředí <br /> 2. sestavení webové aplikace |
-|**Nasazení** | 1. nasazení webové aplikace |
+|**Ověřování uživatelů** | 1. Definujte instanční objekt. <br /> 2. Vytvořte tajný klíč GitHubu. |
+|**Sestavení** | 1. Nastavte prostředí. <br /> 2. Sestavte webovou aplikaci. |
+|**Nasazení** | 1. Nasaďte webovou aplikaci. |
 
-## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
+## <a name="generate-deployment-credentials"></a>Generovat přihlašovací údaje nasazení
+
+# <a name="user-level-credentials"></a>[Přihlašovací údaje na úrovni uživatele](#tab/userlevel)
 
 [Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) v rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/). Tento příkaz můžete spustit pomocí [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo tak, že vyberete tlačítko **vyzkoušet** .
 
 ```azurecli-interactive
-az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> --sdk-auth
+az ad sp create-for-rbac --name "myApp" --role contributor \
+                            --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> \
+                            --sdk-auth
 ```
 
-V tomto příkladu Nahraďte zástupné symboly v prostředku ID vašeho předplatného, název skupiny prostředků a název aplikace. Výstupem jsou přihlašovací údaje přiřazení role, které poskytují přístup k vaší aplikaci App Service. Zkopírujte tento objekt JSON, který můžete použít k ověření z GitHubu.
+V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho předplatného, názvem skupiny prostředků a názvem aplikace. Výstupem je objekt JSON s přihlašovacími údaji přiřazení role, které poskytují přístup k vaší App Service aplikaci, která je podobná níže. Zkopírujte tento objekt JSON pro pozdější verzi.
 
-> [!NOTE]
-> Pokud se rozhodnete použít profil publikování pro ověřování, nemusíte vytvářet instanční objekt.
+```output 
+  {
+    "clientId": "<GUID>",
+    "clientSecret": "<GUID>",
+    "subscriptionId": "<GUID>",
+    "tenantId": "<GUID>",
+    (...)
+  }
+```
 
 > [!IMPORTANT]
-> Je vždy dobrým zvykem udělit minimální přístup. To je důvod, proč je obor v předchozím příkladu omezený na konkrétní App Service aplikaci, a ne na celou skupinu prostředků.
+> Je vždy dobrým zvykem udělit minimální přístup. Obor v předchozím příkladu je omezený na konkrétní App Service aplikaci, a ne na celou skupinu prostředků.
+
+# <a name="app-level-credentials"></a>[Přihlašovací údaje na úrovni aplikace](#tab/applevel)
+
+Přihlašovací údaje na úrovni aplikace můžete použít pomocí profilu publikování aplikace. Na portálu přejdete na stránku správy vaší aplikace. Na stránce **Přehled** klikněte na možnost **získat profil publikování** .
+
+Obsah souboru budete potřebovat později.
+
+---
 
 ## <a name="configure-the-github-secret"></a>Konfigurace tajného kódu GitHubu
 
-Můžete také použít přihlašovací údaje na úrovni aplikace, tj. profil publikování pro nasazení. Použijte postup konfigurace tajného klíče:
+# <a name="user-level-credentials"></a>[Přihlašovací údaje na úrovni uživatele](#tab/userlevel)
 
-1. Stáhněte si profil publikování pro aplikaci App Service z portálu pomocí možnosti **získat profil publikování** .
+V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných kódů > přidejte nový tajný kód**.
 
-2. V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných klíčů > přidat nový tajný kód** .
+Pokud chcete použít [přihlašovací údaje na úrovni uživatele](#generate-deployment-credentials), vložte celý výstup JSON z příkazu Azure CLI do pole hodnota tajného klíče. Zadejte tajný kód jako název `AZURE_CREDENTIALS` .
 
-    ![záleží](media/app-service-github-actions/secrets.png)
+Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
 
-3. Do pole hodnota tajného klíče vložte obsah pro stažený soubor publikačního profilu.
+```yaml
+- uses: azure/login@v1
+  with:
+    creds: ${{ secrets.AZURE_CREDENTIALS }}
+```
 
-4. Nyní v souboru pracovního postupu ve větvi: `.github/workflows/workflow.yml` nahraďte tajný klíč pro vstup `publish-profile` akce nasazení webové aplikace Azure.
+# <a name="app-level-credentials"></a>[Přihlašovací údaje na úrovni aplikace](#tab/applevel)
+
+V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných kódů > přidejte nový tajný kód**.
+
+Pokud chcete použít [přihlašovací údaje na úrovni aplikace](#generate-deployment-credentials), vložte obsah staženého souboru publikačního profilu do pole hodnota tajného klíče. Zadejte tajný kód jako název `azureWebAppPublishProfile` .
+
+Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `publish-profile` akce nasazení webové aplikace Azure. Například:
     
-    ```yaml
-        - uses: azure/webapps-deploy@v2
-          with:
-            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-    ```
+```yaml
+- uses: azure/webapps-deploy@v2
+  with:
+    publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+```
 
-5. Po definování se zobrazí tajný klíč, jak je znázorněno níže.
-
-    ![záleží](media/app-service-github-actions/app-service-secrets.png)
+---
 
 ## <a name="set-up-the-environment"></a>Nastavení prostředí
 
@@ -192,43 +219,9 @@ K nasazení kódu do aplikace App Service použijte `azure/webapps-deploy@v2` ak
 | **balíček** | Volitelné Cesta k balíčku nebo složce *. zip, *. War, *. jar nebo složka, která se má nasadit |
 | **název slotu** | Volitelné Zadejte jinou existující patici, než je produkční slot. |
 
-### <a name="deploy-using-publish-profile"></a>Nasadit pomocí profilu publikování
+# <a name="user-level-credentials"></a>[Přihlašovací údaje na úrovni uživatele](#tab/userlevel)
 
-Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node.js do Azure pomocí profilu publikování.
-
-```yaml
-# File: .github/workflows/workflow.yml
-
-on: push
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    # checkout the repo
-    - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
-    
-    - name: Setup Node 10.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
-    - name: 'npm install, build, and test'
-      run: |
-        npm install
-        npm run build --if-present
-        npm run test --if-present
-       
-    - name: 'Run Azure webapp deploy action using publish profile credentials'
-          uses: azure/webapps-deploy@v2
-          with: 
-            app-name: node-rn
-            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-```
-
-### <a name="deploy-using-azure-service-principal"></a>Nasazení s použitím instančního objektu Azure
-
-Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node.js do Azure pomocí instančního objektu Azure.
+Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node.js do Azure pomocí instančního objektu Azure. Všimněte si `creds` , jak vstup odkazuje na `AZURE_CREDENTIALS` tajný kód, který jste vytvořili dříve.
 
 ```yaml
 on: [push]
@@ -269,11 +262,47 @@ jobs:
         az logout
 ```
 
+# <a name="app-level-credentials"></a>[Přihlašovací údaje na úrovni aplikace](#tab/applevel)
+
+Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node.js do Azure pomocí profilu publikování aplikace. Všimněte si `publish-profile` , jak vstup odkazuje na `azureWebAppPublishProfile` tajný kód, který jste vytvořili dříve.
+
+```yaml
+# File: .github/workflows/workflow.yml
+
+on: push
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    # checkout the repo
+    - name: 'Checkout GitHub Action' 
+      uses: actions/checkout@master
+    
+    - name: Setup Node 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - name: 'npm install, build, and test'
+      run: |
+        npm install
+        npm run build --if-present
+        npm run test --if-present
+       
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+          uses: azure/webapps-deploy@v2
+          with: 
+            app-name: node-rn
+            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+```
+
+---
+
 ## <a name="next-steps"></a>Další kroky
 
 Můžete najít naši sadu akcí seskupených do různých úložišť na GitHubu. Každá z nich obsahuje dokumentaci a příklady, které vám pomůžou používat GitHub pro CI/CD a nasazovat aplikace do Azure.
 
-- [Pracovní postup akcí k nasazení do Azure](https://github.com/Azure/actions-workflow-samples)
+- [Akce pracovních postupů k nasazení do Azure](https://github.com/Azure/actions-workflow-samples)
 
 - [Přihlášení k Azure](https://github.com/Azure/login)
 

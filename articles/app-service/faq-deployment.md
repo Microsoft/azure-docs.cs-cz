@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 25f43051f11d42c4f8565039d3168f2ae162eb37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 163a6940e50d1f8beacc23855fd1e6f9daad0085
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74671692"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080469"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy k Web Apps v Azure
 
@@ -40,7 +40,7 @@ Chcete-li tuto chybu vyřešit, upgradujte na [nejnovější sadu SDK](https://a
 ## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>Návody nasadit aplikaci ASP.NET ze sady Visual Studio do App Service?
 <a id="deployasp"></a>
 
-Kurz [Vytvoření první webové aplikace v ASP.NET v Azure během pěti minut](app-service-web-get-started-dotnet.md) vám ukáže, jak nasadit webovou aplikaci v ASP.NET do webové aplikace v App Service pomocí sady Visual Studio.
+Kurz [Vytvoření první webové aplikace v ASP.NET v Azure během pěti minut](quickstart-dotnetcore.md) vám ukáže, jak nasadit webovou aplikaci v ASP.NET do webové aplikace v App Service pomocí sady Visual Studio.
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>Jaké jsou různé typy přihlašovacích údajů pro nasazení?
 

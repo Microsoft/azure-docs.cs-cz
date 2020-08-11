@@ -1,29 +1,32 @@
 ---
-title: Konfigurace aplikací pro Windows Node.js
-description: Naučte se konfigurovat aplikaci Node.js v nativních instancích systému Windows App Service. Tento článek ukazuje nejběžnější konfigurační úlohy.
+title: Konfigurace aplikací Node.js
+description: Naučte se konfigurovat aplikaci Node.js v nativních instancích systému Windows nebo v předem sestaveném kontejneru Linux v Azure App Service. Tento článek ukazuje nejběžnější konfigurační úlohy.
 ms.custom: devx-track-javascript
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 0fc6ed5cb090653e381d82f484d355a514520c62
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+zone_pivot_groups: app-service-platform-windows-linux
+ms.openlocfilehash: e6daf176504427c96f8dce0a4e9a6b6d5e999a0a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170910"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080109"
 ---
-# <a name="configure-a-windows-nodejs-app-for-azure-app-service"></a>Konfigurace aplikace Node.js pro Windows pro Azure App Service
+# <a name="configure-a-nodejs-app-for-azure-app-service"></a>Konfigurace aplikace Node.js pro Azure App Service
 
-Node.js aplikace musí být nasazeny se všemi požadovanými závislostmi NPM. Modul pro nasazení App Service se automaticky spustí `npm install --production` při nasazení [úložiště Git](deploy-local-git.md)nebo [balíčku zip](deploy-zip.md) s povoleným automatizací sestavení. Pokud nasadíte soubory pomocí [FTP/S](deploy-ftp.md), budete muset požadované balíčky nahrát ručně. Informace o aplikacích pro Linux najdete v tématu [Konfigurace aplikace typu php pro Linux pro Azure App Service](containers/configure-language-nodejs.md).
+Node.js aplikace musí být nasazeny se všemi požadovanými závislostmi NPM. Modul pro nasazení App Service se automaticky spustí `npm install --production` při nasazení [úložiště Git](deploy-local-git.md)nebo [balíčku zip](deploy-zip.md) s povoleným automatizací sestavení. Pokud nasadíte soubory pomocí [FTP/S](deploy-ftp.md), budete muset požadované balíčky nahrát ručně.
 
-Tato příručka poskytuje klíčové koncepty a pokyny pro Node.js vývojářů, kteří nasazují do App Service. Pokud jste Azure App Service nikdy nepoužili, postupujte jako první v kurzu [Node.js rychlý Start](app-service-web-get-started-nodejs.md) a [Node.js s MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md) .
+Tato příručka poskytuje klíčové koncepty a pokyny pro Node.js vývojářů, kteří nasazují do App Service. Pokud jste Azure App Service nikdy nepoužili, postupujte jako první v kurzu [Node.js rychlý Start](quickstart-nodejs.md) a [Node.js s MongoDB](tutorial-nodejs-mongodb-app.md) .
 
 ## <a name="show-nodejs-version"></a>Zobrazit verzi Node.js
+
+::: zone pivot="platform-windows"  
 
 Chcete-li zobrazit aktuální verzi Node.js, spusťte v [Cloud Shell](https://shell.azure.com)následující příkaz:
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION'].value"
+az webapp config appsettings list --name <app-name> --resource-group <resource-group-name> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION'].value"
 ```
 
 Pokud chcete zobrazit všechny podporované verze Node.js, spusťte v [Cloud Shell](https://shell.azure.com)následující příkaz:
@@ -32,7 +35,27 @@ Pokud chcete zobrazit všechny podporované verze Node.js, spusťte v [Cloud She
 az webapp list-runtimes | grep node
 ```
 
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+Chcete-li zobrazit aktuální verzi Node.js, spusťte v [Cloud Shell](https://shell.azure.com)následující příkaz:
+
+```azurecli-interactive
+az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
+```
+
+Pokud chcete zobrazit všechny podporované verze Node.js, spusťte v [Cloud Shell](https://shell.azure.com)následující příkaz:
+
+```azurecli-interactive
+az webapp list-runtimes --linux | grep NODE
+```
+
+::: zone-end
+
 ## <a name="set-nodejs-version"></a>Nastavit verzi Node.js
+
+::: zone pivot="platform-windows"  
 
 Chcete-li nastavit aplikaci na [podporovanou verzi Node.js](#show-nodejs-version), spusťte následující příkaz v [Cloud Shell](https://shell.azure.com) nastavte `WEBSITE_NODE_DEFAULT_VERSION` na podporovanou verzi:
 
@@ -45,6 +68,135 @@ Toto nastavení určuje Node.js verzi, která se má použít, za běhu i během
 > [!NOTE]
 > Měli byste nastavit verzi Node.js v projektu `package.json` . Modul pro nasazení běží v samostatném procesu, který obsahuje všechny podporované verze Node.js.
 
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+Chcete-li nastavit aplikaci na [podporovanou verzi Node.js](#show-nodejs-version), spusťte v [Cloud Shell](https://shell.azure.com)následující příkaz:
+
+```azurecli-interactive
+az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "NODE|10.14"
+```
+
+Toto nastavení určuje Node.js verzi, která se má použít, za běhu i při automatickém obnovení balíčků v Kudu.
+
+> [!NOTE]
+> Měli byste nastavit verzi Node.js v projektu `package.json` . Modul pro nasazení běží v samostatném kontejneru, který obsahuje všechny podporované verze Node.js.
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+## <a name="customize-build-automation"></a>Přizpůsobení automatizace sestavení
+
+Pokud nasadíte aplikaci s použitím balíčků Git nebo zip se zapnutou možností automatizace sestavení, App Service sestavování kroků automatizace pomocí následujícího postupu:
+
+1. Spusťte vlastní skript, pokud je určen `PRE_BUILD_SCRIPT_PATH` .
+1. Spusťte `npm install` bez příznaků, které zahrnují npm `preinstall` a `postinstall` skripty a také nainstaluje `devDependencies` .
+1. Spustit, `npm run build` Pokud je v *package.js*zadán skript sestavení.
+1. Spustit, `npm run build:azure` Pokud je ve vašem *package.jsv*systému zadaný Build: Azure Script.
+1. Spusťte vlastní skript, pokud je určen `POST_BUILD_SCRIPT_PATH` .
+
+> [!NOTE]
+> Jak je popsáno v [dokumentaci npm docs](https://docs.npmjs.com/misc/scripts), skripty s názvem `prebuild` a `postbuild` spouštěné před a za `build` , v uvedeném pořadí, pokud jsou zadány. `preinstall`a `postinstall` spusťte před a za v `install` uvedeném pořadí.
+
+`PRE_BUILD_COMMAND`a `POST_BUILD_COMMAND` jsou proměnné prostředí, které jsou ve výchozím nastavení prázdné. Chcete-li spustit příkazy před sestavením, definujte `PRE_BUILD_COMMAND` . Chcete-li spustit příkazy po sestavení, definujte `POST_BUILD_COMMAND` .
+
+Následující příklad určuje dvě proměnné pro řadu příkazů, které jsou odděleny čárkami.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+Další proměnné prostředí pro přizpůsobení automatizace sestavení naleznete v tématu [Oryx Configuration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+
+Další informace o tom, jak App Service spouští a sestavuje Node.js aplikace v systému Linux, najdete v [dokumentaci k Oryx: jak se zjišťují a vytváří aplikace Node.js](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/nodejs.md).
+
+## <a name="configure-nodejs-server"></a>Konfigurace serveru Node.js
+
+Kontejnery Node.js jsou dodávány s [konfiguračního PM2](https://pm2.keymetrics.io/)a správcem produkčního procesu. Aplikaci můžete nakonfigurovat tak, aby začínala konfiguračního PM2, nebo s NPM, nebo pomocí vlastního příkazu.
+
+- [Spustit vlastní příkaz](#run-custom-command)
+- [Spustit npm Start](#run-npm-start)
+- [Spustit s konfiguračního PM2](#run-with-pm2)
+
+### <a name="run-custom-command"></a>Spustit vlastní příkaz
+
+App Service může aplikaci spustit pomocí vlastního příkazu, jako je například spustitelný soubor, například *Run.sh*. Pokud třeba chcete spustit `npm run start:prod` , spusťte v [Cloud Shell](https://shell.azure.com)následující příkaz:
+
+```azurecli-interactive
+az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
+```
+
+### <a name="run-npm-start"></a>Spustit npm Start
+
+Pokud chcete aplikaci spustit pomocí `npm start` , stačí, když zajistěte, aby `start` byl skript v *package.js* souboru. Například:
+
+```json
+{
+  ...
+  "scripts": {
+    "start": "gulp",
+    ...
+  },
+  ...
+}
+```
+
+Chcete-li použít vlastní *package.js* v projektu, spusťte v [Cloud Shell](https://shell.azure.com)následující příkaz:
+
+```azurecli-interactive
+az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filename>.json"
+```
+
+### <a name="run-with-pm2"></a>Spustit s konfiguračního PM2
+
+Kontejner automaticky spustí vaši aplikaci s konfiguračního PM2, když se v projektu najde jeden ze běžných Node.js souborů:
+
+- *přihrádka/webová*
+- *server.js*
+- *app.js*
+- *index.js*
+- *hostingstart.js*
+- Jeden z následujících [souborů konfiguračního PM2](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.jsv* a *ecosystem.config.js*
+
+Můžete také nakonfigurovat vlastní spouštěcí soubor s následujícími příponami:
+
+- Soubor *. js*
+- [Soubor konfiguračního PM2](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) s příponou *. JSON*, *.config.js*, *. yaml*nebo *. yml*
+
+Chcete-li přidat vlastní spouštěcí soubor, spusťte následující příkaz v [Cloud Shell](https://shell.azure.com):
+
+```azurecli-interactive
+az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filname-with-extension>"
+```
+
+## <a name="debug-remotely"></a>Vzdálené ladění
+
+> [!NOTE]
+> Vzdálené ladění je aktuálně ve verzi Preview.
+
+Aplikaci Node.js můžete vzdáleně ladit v [Visual Studio Code](https://code.visualstudio.com/) Pokud ji nakonfigurujete tak, aby [běžela s konfiguračního PM2](#run-with-pm2), s výjimkou případů, kdy ji spustíte pomocí * .config.js, *. yml nebo *. yaml*.
+
+Ve většině případů není pro vaši aplikaci nutná žádná další konfigurace. Pokud je vaše aplikace spuštěná s *process.jsv* souboru (výchozí nebo vlastní), musí mít `script` v kořenu JSON vlastnost. Například:
+
+```json
+{
+  "name"        : "worker",
+  "script"      : "./index.js",
+  ...
+}
+```
+
+Chcete-li nastavit Visual Studio Code pro vzdálené ladění, nainstalujte [App Service rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). Postupujte podle pokynů na stránce rozšíření a přihlaste se k Azure v Visual Studio Code.
+
+V Průzkumníku Azure Najděte aplikaci, kterou chcete ladit, klikněte na ni pravým tlačítkem myši a vyberte **Spustit vzdálené ladění**. Klikněte na **Ano** a povolte ji pro vaši aplikaci. App Service spustí proxy server tunelu za vás a připojí ladicí program. Pak můžete v aplikaci předávat žádosti a sledovat, že se ladicí program pozastavuje v bodech přerušení.
+
+Po dokončení ladění ukončete ladicí program výběrem možnosti **Odpojit**. Po zobrazení výzvy klikněte na **Ano** , pokud chcete zakázat vzdálené ladění. Pokud ho chcete později zakázat, klikněte znovu pravým tlačítkem myši na aplikaci v Průzkumníkovi Azure a vyberte **Zakázat vzdálené ladění**.
+
+::: zone-end
+
 ## <a name="access-environment-variables"></a>Přístup k proměnným prostředí
 
 V App Service můžete [nastavit nastavení aplikace](configure-common.md) mimo kód vaší aplikace. Pak k nim můžete přistupovat pomocí standardního Node.jsho vzoru. Chcete-li například získat přístup k nastavení aplikace s názvem `NODE_ENV` , použijte následující kód:
@@ -55,7 +207,7 @@ process.env.NODE_ENV
 
 ## <a name="run-gruntbowergulp"></a>Spustit grunt/Bower/Gulp
 
-Ve výchozím nastavení se App Service Automation Build spustí, `npm install --production` když rozpozná Node.js aplikace nasazené prostřednictvím Gitu (nebo pomocí nasazení zip s povolenou automatizací buildu). Pokud vaše aplikace vyžaduje některé z oblíbených nástrojů pro automatizaci, jako je grunt, Bower nebo Gulp, je potřeba pro její spuštění zadáním [vlastního skriptu nasazení](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) .
+Ve výchozím nastavení se App Service Automation Build spustí, `npm install --production` když rozpozná Node.js aplikace nasazené prostřednictvím nasazení Git nebo zip s povolenou automatizací sestavení. Pokud vaše aplikace vyžaduje některé z oblíbených nástrojů pro automatizaci, jako je grunt, Bower nebo Gulp, je potřeba pro její spuštění zadáním [vlastního skriptu nasazení](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) .
 
 Pokud chcete vašemu úložišti povolit spouštění těchto nástrojů, musíte je přidat k závislostem v *package.jsna.* Například:
 
@@ -148,9 +300,19 @@ if (req.secure) {
 
 ## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
 
+::: zone pivot="platform-windows"  
+
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="troubleshooting"></a>Řešení potíží
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+[!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-linux-no-h.md)]
+
+::: zone-end
+
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se pracovní Node.js aplikace chová jinak v App Service nebo obsahuje chyby, zkuste následující:
 
@@ -161,8 +323,21 @@ Pokud se pracovní Node.js aplikace chová jinak v App Service nebo obsahuje chy
     - Při spuštění v produkčním režimu mohou některé webové architektury používat vlastní spouštěcí skripty.
 - Spusťte aplikaci v App Service v režimu pro vývoj. Například v [MEAN.js](https://meanjs.org/)můžete nastavit aplikaci do vývojového režimu v modulu runtime nastavením [ `NODE_ENV` nastavení aplikace](configure-common.md).
 
+::: zone pivot="platform-linux"
+
+[!INCLUDE [robots933456](../../includes/app-service-web-configure-robots933456.md)]
+
+::: zone-end
+
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: Node.js aplikace pomocí MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md)
+> [Kurz: Node.js aplikace pomocí MongoDB](tutorial-nodejs-mongodb-app.md)
+
+::: zone pivot="platform-linux"
+
+> [!div class="nextstepaction"]
+> [Nejčastější dotazy k App Service Linux](faq-app-service-linux.md)
+
+::: zone-end
 

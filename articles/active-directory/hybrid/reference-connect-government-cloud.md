@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0120bf3f2bd347ae60677b89ec658f08140af49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39acc0373f5748f57f4fef5a5cee5fb038071523
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356351"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080177"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Požadavky na hybridní identitu pro cloud Azure Government
 
@@ -42,7 +42,7 @@ Před nasazením předávacího agenta pro ověřování ověřte, zda existuje 
 |-----|-----|
 |&#42;. msappproxy.us</br>&#42;.servicebus.usgovcloudapi.net|Agent používá tyto adresy URL ke komunikaci s cloudovou službou Azure AD. |
 |`mscrl.microsoft.us:80` </br>`crl.microsoft.us:80` </br>`ocsp.msocsp.us:80` </br>`www.microsoft.us:80`| Agent používá tyto adresy URL k ověření certifikátů.|
-|login.windows.us </br>secure.aadcdn.microsoftonline-p.com </br>&#42;. microsoftonline.us </br>&#42;. microsoftonline-p.us </br>&#42;. msauth.net </br>&#42;. msauthimages.net </br>&#42;. msecnd.net</br>&#42;. msftauth.net </br>&#42;. msftauthimages.net</br>&#42;. phonefactor.net </br>enterpriseregistration.windows.net</br>management.azure.com </br>policykeyservice.dc.ad.msft.net</br>ctdl.windowsupdate.us:80| Agent tyto adresy URL používá během procesu registrace.
+|login.windows.us </br>secure.aadcdn.microsoftonline-p.com </br>&#42;. microsoftonline.us </br>&#42;. microsoftonline-p.us </br>&#42;. msauth.net </br>&#42;. msauthimages.net </br>&#42;. msecnd.net</br>&#42;. msftauth.net </br>&#42;. msftauthimages.net</br>&#42;. phonefactor.net </br>enterpriseregistration.windows.net</br>management.azure.com </br>policykeyservice.dc.ad.msft.net</br>ctldl.windowsupdate.us:80| Agent tyto adresy URL používá během procesu registrace.
 
 ### <a name="install-the-agent-for-the-azure-government-cloud"></a>Instalace agenta pro Azure Government Cloud
 

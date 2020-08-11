@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 26746a477da301eb352f002e105e883f992aaf0a
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f7c35fa2d69df9c900eb64f10da1948fade02b5f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857208"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079803"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikací v Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
@@ -29,7 +29,7 @@ Naučíte se:
 Pokud máte Visual Studio Ultimate, můžete použít také [IntelliTrace](/visualstudio/debugger/intellitrace) pro ladění. IntelliTrace se v tomto kurzu nezabývá.
 
 ## <a name="prerequisites"></a><a name="prerequisites"></a>Požadavky
-Tento kurz spolupracuje s vývojovým prostředím, webovým projektem a App Service aplikaci, kterou jste nastavili v části [Vytvoření aplikace v ASP.NET v Azure App Service](app-service-web-get-started-dotnet-framework.md). V sekcích WebJobs budete potřebovat aplikaci, kterou vytvoříte v části [Začínáme s Azure WEBJOBS SDK][GetStartedWJ].
+Tento kurz spolupracuje s vývojovým prostředím, webovým projektem a App Service aplikaci, kterou jste nastavili v části [Vytvoření aplikace v ASP.NET v Azure App Service](quickstart-dotnet-framework.md). V sekcích WebJobs budete potřebovat aplikaci, kterou vytvoříte v části [Začínáme s Azure WEBJOBS SDK][GetStartedWJ].
 
 Ukázky kódu zobrazené v tomto kurzu jsou pro webovou aplikaci v jazyce C# MVC, ale postupy řešení potíží jsou stejné pro aplikace Visual Basic a webových formulářů.
 
@@ -51,7 +51,7 @@ Sada Visual Studio poskytuje přístup k podmnožině funkcí správy aplikací 
 
     Další informace o připojení k prostředkům Azure ze sady Visual Studio najdete v tématu [Správa účtů, předplatných a rolí pro správu](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert).
 2. V **Průzkumník serveru**rozbalte položku **Azure** a rozbalte položku **App Service**.
-3. Rozbalte skupinu prostředků, která obsahuje aplikaci, kterou jste vytvořili v části [vytvoření Azure App Service aplikace v ASP.NET](app-service-web-get-started-dotnet-framework.md), a pak klikněte pravým tlačítkem myši na uzel aplikace a pak klikněte na **Zobrazit nastavení**.
+3. Rozbalte skupinu prostředků, která obsahuje aplikaci, kterou jste vytvořili v části [vytvoření Azure App Service aplikace v ASP.NET](quickstart-dotnet-framework.md), a pak klikněte pravým tlačítkem myši na uzel aplikace a pak klikněte na **Zobrazit nastavení**.
 
     ![Zobrazit nastavení v Průzkumník serveru](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
@@ -108,9 +108,9 @@ Pokud podrobná chybová zpráva neposkytne dostatek informací a chyba se nedá
 
 Vzdálené ladění nefunguje v edicích Express sady Visual Studio.
 
-V této části se dozvíte, jak vzdáleně ladit pomocí projektu, který jste vytvořili v tématu [Vytvoření aplikace ASP.NET v Azure App Service](app-service-web-get-started-dotnet-framework.md).
+V této části se dozvíte, jak vzdáleně ladit pomocí projektu, který jste vytvořili v tématu [Vytvoření aplikace ASP.NET v Azure App Service](quickstart-dotnet-framework.md).
 
-1. Otevřete webový projekt, který jste vytvořili v části [Vytvoření aplikace ASP.NET v Azure App Service](app-service-web-get-started-dotnet-framework.md).
+1. Otevřete webový projekt, který jste vytvořili v části [Vytvoření aplikace ASP.NET v Azure App Service](quickstart-dotnet-framework.md).
 
 1. Otevřete *souboru controllers\homecontroller.cs*.
 
@@ -129,7 +129,7 @@ V této části se dozvíte, jak vzdáleně ladit pomocí projektu, který jste 
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a klikněte na **publikovat**.
 
-1. V rozevíracím seznamu **profil** vyberte stejný profil, který jste použili v části [vytvoření aplikace v ASP.NET v Azure App Service](app-service-web-get-started-dotnet-framework.md). Pak klikněte na nastavení.
+1. V rozevíracím seznamu **profil** vyberte stejný profil, který jste použili v části [vytvoření aplikace v ASP.NET v Azure App Service](quickstart-dotnet-framework.md). Pak klikněte na nastavení.
 
 1. V dialogovém okně **publikovat** klikněte na kartu **Nastavení** a pak změňte **konfiguraci** na **ladit**a pak klikněte na **Uložit**.
 
@@ -264,7 +264,7 @@ Protokoly se zapisují do souborů ve složce *Logfiles* v systému souborů va�
 ## <a name="create-and-view-application-trace-logs"></a><a name="apptracelogs"></a>Vytvoření a zobrazení protokolů trasování aplikace
 V této části provedete následující úlohy:
 
-* Přidejte příkazy trasování do webového projektu, který jste vytvořili v části Začínáme [s Azure a ASP.NET](app-service-web-get-started-dotnet-framework.md).
+* Přidejte příkazy trasování do webového projektu, který jste vytvořili v části Začínáme [s Azure a ASP.NET](quickstart-dotnet-framework.md).
 * Zobrazit protokoly při místním spuštění projektu.
 * Zobrazit protokoly, které jsou generovány aplikací běžícími v Azure.
 
@@ -645,7 +645,7 @@ K dispozici nejsou žádná důkladná a aktuální Úvod k ASP.NET trasování 
   Kapitola E-knihy s doporučeními pro trasování v cloudových aplikacích Azure.
 * [ASP.NET trasování](/previous-versions/dotnet/articles/ms972204(v=msdn.10))<br/>
   Old, ale ještě dobrý prostředek pro základní Úvod k předmětu.
-* [Moduly naslouchání trasování](/dotnet/framework/debug-trace-profile/trace-listeners)<br/>
+* [Naslouchací procesy trasování](/dotnet/framework/debug-trace-profile/trace-listeners)<br/>
   Informace o posluchačích trasování, ale nezmiňuje [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener).
 * [Návod: Integrace trasování ASP.NET pomocí trasování System. Diagnostics](/previous-versions/b0ectfxd(v=vs.140))<br/>
   Tento článek je také starý, ale obsahuje několik dalších informací, které úvodní článek nezabývá.
@@ -686,5 +686,5 @@ Další informace o analýze protokolů webového serveru najdete v následujíc
 ### <a name="analyzing-failed-request-tracing-logs"></a>Analýza protokolů pro trasování neúspěšných požadavků
 Web Microsoft TechNet obsahuje část použití funkce pro [trasování chybných požadavků](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing) , která může být užitečná pro porozumění způsobu použití těchto protokolů. Tato dokumentace se ale zaměřuje hlavně na konfiguraci trasování chybných požadavků ve službě IIS, které nemůžete dělat v Azure App Service.
 
-[GetStarted]: app-service-web-get-started-dotnet.md
+[GetStarted]: quickstart-dotnetcore.md?pivots=platform-windows
 [GetStartedWJ]: https://github.com/Azure/azure-webjobs-sdk/wiki

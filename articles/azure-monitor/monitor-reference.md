@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: c59e8c9e4c756a44d7507fca328aa691ecb184da
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 48eb8674a7d3f0fbeb8cc012debfc8a08752d5ff
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447319"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080860"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co je monitorované pomocí Azure Monitor?
 Tento článek popisuje různé aplikace a služby, které jsou monitorované pomocí Azure Monitor. 
@@ -71,7 +71,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |AppConfig | Ne | Ne | Ne |  |
 |Application Gateway | Ano | Ano | Ne |  |
 |Služba ověření identity | Ne | Ne | Ne |  |
-|Automatizace | Ano | Ano | Ne |  |
+|Automation | Ano | Ano | Ne |  |
 |Azure Service Manager (RDFE) | Ne | Ne | Ne |  |
 |Backup | Ne | Ano | Ne |  |
 |Bastion | Ne | Ne | Ne |  |
@@ -109,7 +109,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Event Grid | Ano | Ne | Ne |  |
 |Event Hubs | Ano | Ano | Ne |  |
 |ExpressRoute | Ano | Ano | Ne |  |
-|Firewall | Ano | Ano | Ne |  |
+|Brána firewall | Ano | Ano | Ne |  |
 |Front Door | Ano | Ano | Ne |  |
 |Functions | Ano | Ano | Ne |  |
 |HDInsight | Ne | Ano | Ne |  |
@@ -124,7 +124,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Logic Apps | Ano | Ano | Ne |  |
 |Machine Learning Service | Ne | Ne | Ne |  |
 |Managed Applications  | Ne | Ne | Ne |  |
-|Maps  | Ne | Ne | Ne |  |
+|Mapy  | Ne | Ne | Ne |  |
 |Media Services | Ano | Ano | Ne |  |
 |Microsoft Flow | Ne | Ne | Ne |  |
 |Microsoft Managed Desktop | Ne | Ne | Ne |  |
@@ -136,7 +136,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Network Watcher | Ano | Ano | Ne |  |
 |Notification Hubs | Ano | Ne | Ne |  |
 |Open Datasets | Ne | Ne | Ne |  |
-|Zásada | Ne | Ne | Ne |  |
+|Zásady | Ne | Ne | No |  |
 |Power BI Embedded | Ano | Ano | Ne |  |
 |Privátní propojení | Ne | Ne | Ne |  |
 |Komunikační platforma pro zařazování projektu | Ne | Ne | Ne |  |
@@ -155,7 +155,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Databáze SQL | Ano | Ano | Ne |  |
 |SQL Server Stretch Database | Ano | Ano | Ne |  |
 |Zásobník | Ne | Ne | Ne |  |
-|Storage | Ano | Ne | [Ano](insights/storage-insights-overview.md) |  |
+|Úložiště | Ano | Ne | [Ano](insights/storage-insights-overview.md) |  |
 |Mezipaměť úložiště | Ne | Ne | Ne |  |
 |Služby synchronizace úložiště | Ne | Ne | Ne |  |
 |Stream Analytics | Ano | Ano | Ne |  |
@@ -164,7 +164,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Traffic Manager | Ano | Ano | Ne |  |
 |Univerzální tisk | Ne | Ne | Ne |  |
 |Virtual Machine Scale Sets | Ne | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
-|Virtuální počítače | Ano | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
+|Virtual Machines | Ano | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
 |Virtual Network | Ano | Ano | [Ano](insights/network-insights-overview.md) |  |
 |Protokoly toku Virtual Network – NSG | Ne | Ano | Ne |  |
 |VPN Gateway | Ano | Ano | Ne |  |
@@ -220,7 +220,7 @@ Azure Monitor mohou shromažďovat data z prostředků mimo Azure pomocí metod 
 | Prostředek | Metoda |
 |:---|:---|
 | Aplikace | Monitorujte webové aplikace mimo Azure pomocí Application Insights. Podívejte [se, co je Application Insights?](./app/app-insights-overview.md). |
-| Virtuální počítače | Pomocí agenta Log Analytics můžete shromažďovat data z hostovaného operačního systému virtuálních počítačů v jiných cloudových prostředích nebo místních. Viz [shromáždění dat protokolu pomocí agenta Log Analytics](platform/log-analytics-agent.md). |
+| Virtuální počítače | Pomocí agentů můžete shromažďovat data z hostovaného operačního systému virtuálních počítačů v jiných cloudových prostředích nebo místních. Přečtěte si téma [přehled Azure Monitorch agentů](platform/agents-overview.md). |
 | Klient REST API | K dispozici jsou samostatná rozhraní API pro zápis dat, která Azure Monitor protokoly a metriky z libovolného klienta REST API. V tématu [odeslání dat protokolu pro Azure monitor s rozhraním API kolekce dat http](platform/data-collector-api.md) pro protokoly a [odeslání vlastních metrik pro prostředek Azure do úložiště metrik Azure monitor pomocí REST API](platform/metrics-store-custom-rest-api.md) pro metriky. |
 
 

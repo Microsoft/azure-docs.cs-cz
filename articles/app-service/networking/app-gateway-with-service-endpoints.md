@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 5e32baa10e98f0f57a861f8cebfb7506ad615631
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bedd8d9ab0b879886042de3dc2fcff7f7b36f2f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74980059"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080928"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Integrace Application Gateway s koncovými body služby
 Existují tři variace App Service, které vyžadují mírně odlišnou konfiguraci integrace s Azure Application Gateway. Mezi varianty patří běžné App Service – také označované jako víceklientské, interní Load Balancer (interního nástroje) App Service Environment (pomocného mechanismu) a externí pomocný modul pro čtení. Tento článek vás seznámí s postupem, jak ho nakonfigurovat App Service (multi-tenant) a diskuze o požadavcích na interního nástroje a externím pomocném mechanismem.
@@ -33,7 +33,7 @@ Existují dvě části této konfigurace, kromě vytvoření App Service a Appli
 
 ## <a name="using-azure-portal"></a>Pomocí webu Azure Portal
 V Azure Portal budete postupovat podle čtyř kroků, kterými instalaci zřídíte a nakonfigurujete. Pokud máte existující prostředky, můžete vynechat první kroky.
-1. Vytvořte App Service pomocí jednoho z rychlých startů v dokumentaci k App Service, například [.NET Core rychlý Start](../../app-service/app-service-web-get-started-dotnet.md) .
+1. Vytvořte App Service pomocí jednoho z rychlých startů v dokumentaci k App Service, například [.NET Core rychlý Start](../quickstart-dotnetcore.md) .
 2. Pomocí rychlého startu na [portálu](../../application-gateway/quick-create-portal.md)vytvořte Application Gateway, ale přeskočte část přidat cíle back-endu.
 3. Nakonfigurujte [App Service jako back-end v Application Gateway](../../application-gateway/configure-web-app-portal.md), ale přeskočte část omezení přístupu.
 4. Nakonec vytvořte [omezení přístupu pomocí koncových bodů služby](../../app-service/app-service-ip-restrictions.md#service-endpoints).

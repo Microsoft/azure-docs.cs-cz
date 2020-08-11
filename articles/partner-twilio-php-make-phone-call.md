@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: fb1623c4a409f1c6cba94bad56d773e166d2b182
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e75b5a265ba85813581e39a548d897ea57a33da6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69637325"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080554"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Jak uskutečnit telefonní hovor pomocí Twilio v aplikaci PHP v Azure
 Následující příklad ukazuje, jak můžete pomocí Twilio uskutečnit volání z webové stránky PHP hostované v Azure. Výsledná aplikace zobrazí uživateli výzvu k zadání hodnot telefonních hovorů, jak je znázorněno na následujícím snímku obrazovky.
@@ -105,10 +105,10 @@ Kromě toho, že **MakeCall. php** , zobrazuje některá metadata volání, jak 
 ![Odpověď volání Azure pomocí Twilio a PHP][twilio_php_response]
 
 ## <a name="run-the-application"></a>Spuštění aplikace
-Dalším krokem je [nasazení vaší aplikace do Azure Web Apps v Gitu](app-service/app-service-web-get-started-php.md) (ale ne všechny informace, které jsou relevantní). 
+Dalším krokem je [nasazení vaší aplikace do Azure Web Apps v Gitu](app-service/quickstart-php.md) (ale ne všechny informace, které jsou relevantní). 
 
 ## <a name="next-steps"></a>Další kroky
-Tento kód vám poskytne základní funkce využívající Twilio v PHP v Azure. Před nasazením do Azure v produkčním prostředí budete možná chtít přidat další zpracování chyb nebo jiné funkce. Příklad:
+Tento kód vám poskytne základní funkce využívající Twilio v PHP v Azure. Před nasazením do Azure v produkčním prostředí budete možná chtít přidat další zpracování chyb nebo jiné funkce. Například:
 
 * Místo používání webového formuláře můžete použít objekty blob služby Azure Storage nebo SQL Database k ukládání telefonních čísel a volání textu. Informace o použití objektů BLOB služby Azure Storage v PHP najdete v tématu [použití Azure Storage s aplikacemi php][howto_blob_storage_php]. Informace o použití SQL Database v PHP najdete v tématu [použití SQL Database s aplikacemi php][howto_sql_azure_php].
 * Kód **MakeCall. php** používá Twilio adresu URL ( [https://twimlets.com/message][twimlet_message_url] ) k poskytnutí odpovědi Twilio Markup Language (TwiML), která informuje Twilio, jak pokračovat v volání. Například vrácený TwiML může obsahovat `<Say>` příkaz, který je výsledkem mluveného textu pro příjemce volání. Místo použití adresy URL poskytnuté v Twilio můžete vytvořit vlastní službu, která bude reagovat na žádost Twilio. Další informace najdete v tématu [použití Twilio pro hlasové a SMS funkce v php][howto_twilio_voice_sms_php]. Další informace o TwiML najdete na adrese a [https://www.twilio.com/docs/api/twiml][twiml] Další informace o `<Say>` a dalších příkazech Twilio najdete na adrese [https://www.twilio.com/docs/api/twiml/say][twilio_say] .

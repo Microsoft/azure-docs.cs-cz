@@ -3,12 +3,12 @@ title: Hybridní místní/cloudová aplikace (.NET) přenosu Azure Windows Commu
 description: Přečtěte si, jak vystavit místní službu WCF pro webovou aplikaci v cloudu pomocí Azure Relay
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 78d250eb2572f137df4bcfd40c5c85cee9fb61dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9ac01beb28b1246122f437bcf1c7a7be7a1dfd9
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314404"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079956"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Vystavení místní služby WCF pro webovou aplikaci v cloudu pomocí Azure Relay
 
@@ -244,7 +244,7 @@ V této části vytvoříte jednoduchou aplikaci ASP.NET, která zobrazuje data 
     ![Zadat ověřování][18]
 
 1. Zpátky v části **vytvořit novou webovou aplikaci v ASP.NET**vyberte **vytvořit** a vytvořte aplikaci MVC.
-1. Konfigurace prostředků Azure pro novou webovou aplikaci Postupujte podle kroků v části [publikování webové aplikace](../app-service/app-service-web-get-started-dotnet-framework.md#launch-the-publish-wizard). Pak se vraťte k tomuto kurzu a pokračujte k dalšímu kroku.
+1. Konfigurace prostředků Azure pro novou webovou aplikaci Postupujte podle kroků v části [publikování webové aplikace](../app-service/quickstart-dotnet-framework.md#launch-the-publish-wizard). Pak se vraťte k tomuto kurzu a pokračujte k dalšímu kroku.
 1. V **Průzkumník řešení**klikněte pravým tlačítkem na **modely** a pak vyberte **Přidat**  >  **třídu**.
 1. Pojmenujte třídu *Product.cs*a pak vyberte **Přidat**.
 
@@ -427,7 +427,7 @@ Než budete pokračovat k další části, zavřete obě aplikace.
 
 Dalším krokem je opětovné publikování webu Azure Web App **ProductsPortal** front-end:
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt **ProductsPortal** a vyberte **publikovat**. Na stránce **publikovat** vyberte **publikovat**.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt **ProductsPortal** a vyberte **publikovat**. Na stránce **Publikovat** vyberte **Publikovat**.
 
    > [!NOTE]
    > V okně prohlížeče se při automatickém spuštění webového projektu **ProductsPortal** po nasazení může objevit chybová zpráva. To je v pořádku a děje se to, protože aplikace **ProductsServer** ještě neběží.

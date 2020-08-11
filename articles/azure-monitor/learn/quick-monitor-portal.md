@@ -7,18 +7,18 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 074010a2f3b1f4f4a58b3c4727bf4eed28402e0a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed7cec34b4bca1882d069997d4f89677cda32447
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82142623"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080945"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Zahájení monitorování webové aplikace v ASP.NET
 
 Služba Azure Application Insights umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití.  Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé.  Na základě informací o výkonu a efektivitu vaší aplikace, které získáte ze služby Application Insights, můžete informovaně rozhodovat o údržbě a vylepšení vaší aplikace.
 
-V tomto kurzu Rychlý start se dozvíte, jak přidat Application Insights do už existující webové aplikace v ASP.NET a začít analyzovat živé statistiky. Je to jedna z řady různých metod, které můžete využít k analýze vaší aplikace. Pokud nemáte webovou aplikaci ASP.NET, můžete si ji vytvořit v [rychlém startu vytvoření webové aplikace ASP.NET](../../app-service/app-service-web-get-started-dotnet-framework.md).
+V tomto kurzu Rychlý start se dozvíte, jak přidat Application Insights do už existující webové aplikace v ASP.NET a začít analyzovat živé statistiky. Je to jedna z řady různých metod, které můžete využít k analýze vaší aplikace. Pokud nemáte webovou aplikaci ASP.NET, můžete si ji vytvořit v [rychlém startu vytvoření webové aplikace ASP.NET](../../app-service/quickstart-dotnet-framework.md).
 
 ## <a name="prerequisites"></a>Požadavky
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
@@ -28,7 +28,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
     - Vývoj pro Azure
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
@@ -44,7 +44,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 4. Vyberte své předplatné a klikněte na **Zaregistrovat**.
 
-5. Vyberte **projekt** > **Spravovat balíčky balíčků** > NuGet**Zdroj: NuGet.org** > **aktualizujte** balíček sady SDK Application Insights na nejnovější stabilní verzi.
+5. Vyberte **projekt**  >  **Spravovat balíčky balíčků NuGet**  >  **Zdroj: NuGet.org**  >  **aktualizujte** balíček sady SDK Application Insights na nejnovější stabilní verzi.
 
 6. Aplikaci spusťte výběrem příkazu **Spustit ladění** z nabídky **Ladit** nebo stisknutím klávesy F5.
 
@@ -52,7 +52,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 Application Insights shromažďuje telemetrická data pro vaši aplikaci bez ohledu na to, kde je spuštěná. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
-1. Otevřete Application Insights kliknutím na tlačítko **Zobrazit** -> **ostatní Application Insights Windows** -> **Search**.  Zobrazí se telemetrie z aktuální relace.<BR><br>![Telemetrie v sadě Visual Studio](./media/quick-monitor-portal/telemetry-in-vs.png)
+1. Otevřete Application Insights kliknutím na tlačítko **Zobrazit**  ->  **ostatní**  ->  **Application Insights Windows Search**.  Zobrazí se telemetrie z aktuální relace.<BR><br>![Telemetrie v sadě Visual Studio](./media/quick-monitor-portal/telemetry-in-vs.png)
 
 2. Klikněte na první požadavek v seznamu list (v tomto příkladu GET Home/Index). Zobrazí se podrobné informace o tomto požadavku. Všimněte si, že se kromě dalších cenných informací o požadavku zobrazí také stavový kód a doba odezvy.<br><br>![Podrobnosti o odpovědi v sadě Visual Studio](media/quick-monitor-portal/request-details.png)
 
@@ -68,7 +68,7 @@ Teď můžete otevřít Application Insights na webu Azure Portal a prohlédnout
 
     ![Mapa aplikace](media/quick-monitor-portal/05-appmap.png)
 
-3. ![Klikněte na ikonu **analýzy aplikace** zobrazení mapa](media/quick-monitor-portal/app-viewinlogs-icon.png) aplikace **v části protokoly (Analytics)** na jednu z komponent aplikace. Tím se otevře **protokol (Analytics)**, který poskytuje bohatý dotazovací jazyk pro analýzu všech dat shromážděných v Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
+3. Klikněte na ikonu **analýzy aplikace** ![ zobrazení mapa aplikace ](media/quick-monitor-portal/app-viewinlogs-icon.png) **v části protokoly (Analytics)** na jednu z komponent aplikace. Tím se otevře **protokol (Analytics)**, který poskytuje bohatý dotazovací jazyk pro analýzu všech dat shromážděných v Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
 
     ![Analýzy](media/quick-monitor-portal/6viewanalytics.png)
 
@@ -76,7 +76,7 @@ Teď můžete otevřít Application Insights na webu Azure Portal a prohlédnout
 
     ![Live Stream](media/quick-monitor-portal/7livemetrics.png)
 
-    Pokud jste připraveni hostovat vaši aplikace v Azure, můžete ji teď publikovat. Postupujte podle kroků popsaných v [kurzu Rychlý start pro vytvoření webové aplikace v ASP.NET](../../app-service/app-service-web-get-started-dotnet.md#update-the-app-and-redeploy).
+    Pokud jste připraveni hostovat vaši aplikace v Azure, můžete ji teď publikovat. Postupujte podle kroků popsaných v [kurzu Rychlý start pro vytvoření webové aplikace v ASP.NET](../../app-service/quickstart-dotnetcore.md#update-the-app-and-redeploy).
 
 5. Pokud k přidání monitorování pomocí Application Insights použijete sadu Visual Studio, můžete automaticky přidat monitorování na straně klienta. Pokud chcete do aplikace přidat monitorování na straně klienta ručně, přidejte do aplikace následující kód JavaScriptu:
 

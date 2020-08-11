@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: aae0ed4efa7f96ab6258dbf0ce4c34a6879ecbc2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d91fd15d7f1f5d2bb1bd97b5a28ef56f09797140
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832803"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080313"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -64,7 +64,7 @@ Stávající aplikace můžete migrovat na App Service pomocí [Nástroje pro on
 
 > **Kdy použít**: Použijte App Service, když migrujete existující webové aplikace do Azure a potřebujete plně spravovanou hostující platformu pro vaše webové aplikace. App Service můžete použít také v případě, že potřebujete podporovat mobilní klienty nebo zveřejnit rozhraní REST API s vaší aplikací.
 >
-> **Začínáme**: App Service usnadňuje vytvoření a nasazení první [webové aplikace](../../app-service/app-service-web-get-started-dotnet.md), [mobilní aplikace](../../app-service-mobile/app-service-mobile-ios-get-started.md)nebo [aplikace API](../../app-service/app-service-web-tutorial-rest-api.md).
+> **Začínáme**: App Service usnadňuje vytvoření a nasazení první [webové aplikace](../../app-service/quickstart-dotnetcore.md), [mobilní aplikace](../../app-service-mobile/app-service-mobile-ios-get-started.md)nebo [aplikace API](../../app-service/app-service-web-tutorial-rest-api.md).
 >
 > **Vyzkoušejte**si to: App Service umožňuje zřídit krátkodobou aplikaci pro vyzkoušení platformy bez nutnosti registrace účtu Azure. Vyzkoušejte si platformu a [vytvořte aplikaci Azure App Service](https://tryappservice.azure.com/).
 
@@ -193,7 +193,7 @@ Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat p
 Bez ohledu na to, jestli je zřizování virtuálních počítačů nebo publikování vašich webových aplikací pomocí průběžné integrace, se Azure integruje s většinou oblíbených DevOps nástrojů. Můžete pracovat s nástroji, které už máte, a maximalizovat stávající prostředí s podporou nástrojů jako:
 
 * Jenkins
-* GitHubu
+* GitHub
 * Puppet
 * Chef
 * TeamCity

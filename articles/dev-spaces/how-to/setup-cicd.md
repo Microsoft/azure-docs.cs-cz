@@ -8,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Přečtěte si, jak nastavit průběžnou integraci a průběžné nasazování pomocí Azure DevOps s využitím Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: 3a5f232111bd01f707080cc1638970f8dc51e6fa
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229325"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080262"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Použití CI/CD s Azure Dev Spaces
 
@@ -23,8 +23,8 @@ Tento článek vás provede nastavením služby průběžná integrace/průběž
 
 I když vás tento článek provede s Azure DevOps, stejné koncepty by se měly vztahovat na systémy CI/CD, jako je Jenkinse, TeamCity atd.
 
-## <a name="prerequisites"></a>Předpoklady
-* [Cluster služby Azure Kubernetes (AKS) s povoleným Azure Dev Spaces](../get-started-netcore.md)
+## <a name="prerequisites"></a>Požadavky
+* Cluster služby Azure Kubernetes (AKS) s povoleným Azure Dev Spaces
 * [Nainstalované rozhraní příkazového řádku Azure Dev Spaces](upgrade-tools.md)
 * [Organizace Azure DevOps s projektem](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
 * [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
@@ -77,7 +77,7 @@ Vytvoření kanálu z tohoto souboru:
 1. Vyberte možnost pro vytvoření **nového** kanálu sestavení.
 1. Jako zdroj vyberte **GitHub** , v případě potřeby proveďte autorizaci s vaším účtem GitHub a vyberte větev _azds_updates_ z větvené verze úložiště ukázkové aplikace pro _vývoj a prostory_ .
 1. Jako šablonu vyberte **Konfigurace jako kód**nebo **YAML**.
-1. Nyní se zobrazí stránka konfigurace pro váš kanál sestavení. Jak bylo zmíněno výše, přejděte k cestě k **souboru YAML** pomocí tlačítka **...** v konkrétní jazyku. Například `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
+1. Nyní se zobrazí stránka konfigurace pro váš kanál sestavení. Jak bylo zmíněno výše, přejděte k cestě k **souboru YAML** pomocí tlačítka **...** v konkrétní jazyku. Například, `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
 1. Přejít na kartu **proměnné** .
 1. Ručně přidejte _dockerId_ jako proměnnou, která je uživatelské jméno [účtu správce Azure Container Registry](../../container-registry/container-registry-authentication.md#admin-account). (Zmíněné v článku požadavky)
 1. Ručně přidejte _dockerPassword_ jako proměnnou, což je heslo [účtu správce Azure Container Registry](../../container-registry/container-registry-authentication.md#admin-account). Nezapomeňte zadat _dockerPassword_ jako tajný kód (výběrem ikony zámku) z bezpečnostních důvodů.
@@ -119,7 +119,7 @@ Teď máte řešení CI, které bude automaticky vytvářet *mywebapi* a *webend
 1. Klikněte na **Uložit** v pravém horním rohu a pak na **OK**.
 1. Klikněte na **+ release** (vedle tlačítka Uložit) a **vytvořte vydání**.
 1. V části **artefakty**ověřte, zda je vybráno nejnovější sestavení z kanálu sestavení.
-1. Klikněte na **Create** (Vytvořit).
+1. Klikněte na možnost **Vytvořit**.
 
 Nyní začne proces automatizované verze, nasazování grafů *mywebapi* a *webendu* do clusteru Kubernetes v _prostoru nejvyšší úrovně_ . Průběh vydaných verzí můžete monitorovat na webovém portálu Azure DevOps:
 
@@ -185,5 +185,7 @@ Tady je příklad struktury oboru názvů, která podporuje vývoj funkcí, pros
 
 ## <a name="next-steps"></a>Další kroky
 
+Přečtěte si další informace o tom, jak Azure Dev Spaces funguje.
+
 > [!div class="nextstepaction"]
-> [Další informace o vývoji týmu pomocí Azure Dev Spaces](../team-development-netcore.md)
+> [Jak Azure Dev Spaces funguje](../how-dev-spaces-works.md)

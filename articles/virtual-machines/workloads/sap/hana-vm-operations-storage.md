@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 074171d658eb4e1e029652c9c0851e082ba043fe
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: d5497f50f9e868338541143a18ab0c83f32c1d1b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053435"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080520"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -133,7 +133,7 @@ Obzvláště na menších systémech DBMS, kde vaše úloha zpracovává jenom n
 > SAP HANA certifikace pro virtuální počítače Azure M-Series je výhradně ve službě Azure Akcelerátor zápisu pro svazek **/Hana/log** . V důsledku toho se očekává, že produkční scénář SAP HANA nasazení na virtuálních počítačích Azure řady M-Series se pro svazek **/Hana/log** nakonfiguruje s využitím Azure akcelerátor zápisu.  
 
 > [!NOTE]
-> Ve scénářích, které zahrnují Azure Premium Storage, implementujeme do konfigurace možnosti shlukování. Pokud používáte testovací nástroje pro úložiště bez ohledu na tvar nebo formu, mějte na paměti, jak funguje [Azure Premium disking](../../linux/disk-bursting.md) . Při spuštění testů úložiště dodaných prostřednictvím nástroje SAP HWCCT nebo HCMT neočekáváme, že všechny testy budou kritéria předávat, protože některé testy překročí kredity, které můžete nashromáždit. Hlavně v případě, že všechny testy běží sekvenčně bez přerušení.
+> Ve scénářích, které zahrnují Azure Premium Storage, implementujeme do konfigurace možnosti shlukování. Pokud používáte testovací nástroje pro úložiště bez ohledu na tvar nebo formu, mějte na paměti, jak [funguje Azure Premium disking](../../linux/disk-bursting.md) . Při spuštění testů úložiště dodaných prostřednictvím nástroje SAP HWCCT nebo HCMT neočekáváme, že všechny testy budou kritéria předávat, protože některé testy překročí kredity, které můžete nashromáždit. Hlavně v případě, že všechny testy běží sekvenčně bez přerušení.
 
 
 > [!NOTE]

@@ -4,12 +4,12 @@ description: Naučte se konfigurovat aplikaci ASP.NET v Azure App Service. Tento
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 1aeb243b3ff4a1e6bd2ae984510d2ec709776fa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53654520ea20bd8ee797de61449a616eadd001a5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84908078"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080143"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Konfigurace aplikace ASP.NET pro Azure App Service
 
@@ -18,7 +18,7 @@ ms.locfileid: "84908078"
 
 ASP.NET aplikace musí být nasazené, aby se Azure App Service jako zkompilované binární soubory. Nástroj pro publikování sady Visual Studio sestaví řešení a potom nasadí zkompilované binární soubory přímo, zatímco modul nasazení App Service nasadí úložiště kódu jako první a potom zkompiluje binární soubory.
 
-Tato příručka poskytuje klíčové koncepty a pokyny pro vývojáře v ASP.NET. Pokud jste nikdy Azure App Service nepoužili, postupujte jako první v kurzu [rychlý start ASP.NET](app-service-web-get-started-dotnet-framework.md) a [ASP.NET s SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) .
+Tato příručka poskytuje klíčové koncepty a pokyny pro vývojáře v ASP.NET. Pokud jste nikdy Azure App Service nepoužili, postupujte jako první v kurzu [rychlý start ASP.NET](quickstart-dotnet-framework.md) a [ASP.NET s SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) .
 
 ## <a name="show-supported-net-framework-runtime-versions"></a>Zobrazit podporované verze modulu runtime .NET Framework
 
@@ -82,7 +82,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="get-detailed-exceptions-page"></a>Získat podrobné stránky výjimek
 
-Když aplikace ASP.NET generuje výjimku v ladicím programu sady Visual Studio, prohlížeč zobrazí stránku podrobností o výjimce, ale v App Service tuto stránku nahradí obecná chybová zpráva. Chcete-li zobrazit stránku podrobností o výjimce v App Service, otevřete soubor *Web.config* a přidejte `<customErrors mode="Off"/>` prvek pod `<system.web>` element. Příklad:
+Když aplikace ASP.NET generuje výjimku v ladicím programu sady Visual Studio, prohlížeč zobrazí stránku podrobností o výjimce, ale v App Service tuto stránku nahradí obecná chybová zpráva. Chcete-li zobrazit stránku podrobností o výjimce v App Service, otevřete soubor *Web.config* a přidejte `<customErrors mode="Off"/>` prvek pod `<system.web>` element. Například:
 
 ```xml
 <system.web>
@@ -94,7 +94,7 @@ Znovu nasaďte aplikaci s aktualizovaným *Web.config*. Teď byste měli vidět 
 
 ## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
 
-Můžete přidat diagnostické zprávy do kódu aplikace pomocí [System. Diagnostics. Trace](https://docs.microsoft.com/dotnet/api/system.diagnostics.trace). Příklad: 
+Můžete přidat diagnostické zprávy do kódu aplikace pomocí [System. Diagnostics. Trace](https://docs.microsoft.com/dotnet/api/system.diagnostics.trace). Například: 
 
 ```csharp
 Trace.TraceError("Record not found!"); // Error trace

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 18054e47a987a7e79e9083b6f7a2f20b059c7f28
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 470324799cd157c8b33311e1cae8b5b698433e1f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81254607"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079905"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Kurz: Přidání Azure CDN do webové aplikace služby Azure App Service
 
@@ -43,13 +43,13 @@ Naučíte se:
 Pro absolvování tohoto kurzu potřebujete:
 
 - [Nainstalovat Git](https://git-scm.com/).
-- [Instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-web-app"></a>Vytvoření webové aplikace
 
-Při vytváření webové aplikace, se kterou budete pracovat, postupujte podle [rychlého úvodu ke statickému HTML](../app-service/app-service-web-get-started-html.md) až do kroku **Přechod do aplikace**.
+Při vytváření webové aplikace, se kterou budete pracovat, postupujte podle [rychlého úvodu ke statickému HTML](../app-service/quickstart-html.md) až do kroku **Přechod do aplikace**.
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -60,7 +60,7 @@ Pokud chcete koncový bod CDN optimalizovat pro akceleraci dynamického webu (DS
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>Vytvoření koncového bodu a profilu CDN
 
-Na levém navigačním panelu vyberte **App Services** a pak vyberte aplikaci, kterou jste vytvořili v [rychlém úvodu ke statickému HTML](../app-service/app-service-web-get-started-html.md).
+Na levém navigačním panelu vyberte **App Services** a pak vyberte aplikaci, kterou jste vytvořili v [rychlém úvodu ke statickému HTML](../app-service/quickstart-html.md).
 
 ![Výběr aplikace App Service na portálu](media/cdn-add-to-web-app/portal-select-app-services.png)
 
@@ -75,8 +75,8 @@ Na stránce **Azure Content Delivery Network** zadejte pro **Nový koncový bod*
 | Nastavení | Navrhovaná hodnota | Popis |
 | ------- | --------------- | ----------- |
 | **Profil CDN** | myCDNProfile | Profil CDN je kolekce koncových bodů CDN se stejnou cenovou úrovní. |
-| **Cenová úroveň** | Akamai Standard | [Cenová úroveň](cdn-features.md) určuje poskytovatele a dostupné funkce. Tento kurz používá *Akamai úrovně Standard*. |
-| **Název koncového bodu CDN** | Libovolný název, který je jedinečný v doméně azureedge.net | K prostředkům uloženým v mezipaměti přistupujete v doméně * &lt;koncového bodu&gt;*. azureedge.NET.
+| **Cenová úroveň** | Akamai úrovně Standard | [Cenová úroveň](cdn-features.md) určuje poskytovatele a dostupné funkce. Tento kurz používá *Akamai úrovně Standard*. |
+| **Název koncového bodu CDN** | Libovolný název, který je jedinečný v doméně azureedge.net | K prostředkům uloženým v mezipaměti přistupujete v doméně * &lt; koncového bodu &gt; *. azureedge.NET.
 
 Vyberte **Vytvořit** a vytvořte profil CDN.
 
@@ -196,8 +196,8 @@ Další informace najdete v tématu [Vyprázdnění koncového bodu Azure CDN](.
 
 Azure CDN nabízí následující možnosti chování při ukládání do mezipaměti:
 
-* Ignorovat řetězce dotazu
-* Nepoužívat ukládání do mezipaměti pro řetězce dotazu
+* Ignorovat řetězce dotazů
+* Nepoužívat ukládání do mezipaměti pro řetězce dotazů
 * Ukládat do mezipaměti každou jedinečnou adresu URL 
 
 Výchozí je první z těchto možností, to znamená, že existuje pouze jedna verze prostředku uložená do mezipaměti bez ohledu na řetězec dotazu v adrese URL. 

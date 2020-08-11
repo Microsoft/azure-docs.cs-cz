@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 6f5df14d9488f8ccb1f93c2a16ba52998f25e268
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: db1b88b9c22012cb4e6b5025dda31432c9278ff8
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876576"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080894"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurace virtuálních sítí služeb Azure Cognitive Services
 
@@ -40,10 +40,9 @@ Síťová pravidla se vynutila na všech síťových protokolech do Azure Cognit
 
 ## <a name="supported-regions-and-service-offerings"></a>Podporované oblasti a nabídky služeb
 
-Níže uvedené Cognitive Services podporují virtuální sítě v komerčním cloudu a v cloudu US Gov. Pokud zde není uvedená služba, virtuální sítě ještě nepodporují.
+Virtuální sítě (virtuální sítě) jsou podporované v [oblastech, kde jsou k dispozici Cognitive Services](https://azure.microsoft.com/global-infrastructure/services/). Pokud není uvedená Služba rozpoznávání, aktuálně nepodporuje virtuální sítě.
 
 > [!div class="checklist"]
-
 > * [Detektor anomálií](./anomaly-detector/index.yml)
 > * [Počítačové zpracování obrazu](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)
@@ -59,8 +58,8 @@ Níže uvedené Cognitive Services podporují virtuální sítě v komerčním c
 ## <a name="service-tags"></a>Značky služeb
 
 Cognitive Services podporuje značky služby pro konfiguraci pravidel sítě. Níže uvedené služby jsou součástí značky služby **CognitiveServicesManagement** .
-> [!div class="checklist"]
 
+> [!div class="checklist"]
 > * [Detektor anomálií](./anomaly-detector/index.yml)
 > * [Počítačové zpracování obrazu](./computer-vision/index.yml)
 > * [Content Moderator](./content-moderator/index.yml)

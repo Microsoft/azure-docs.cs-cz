@@ -5,18 +5,18 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74671615"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080194"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkce operačního systému na Azure App Service
 Tento článek popisuje běžné funkce operačního systému pro základní hodnoty, které jsou k dispozici pro všechny aplikace pro Windows běžící na [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tato funkce zahrnuje přístup k souboru, k síti a k registru a diagnostické protokoly a události. 
 
 > [!NOTE] 
-> [Aplikace pro Linux](containers/app-service-linux-intro.md) v App Service spustit ve svých vlastních kontejnerech. Není povolený žádný přístup k hostitelskému operačnímu systému, máte ke kontejneru přístup rootem. Stejně tak pro [aplikace spuštěné v kontejnerech Windows](app-service-web-get-started-windows-container.md)máte k kontejneru přístup pro správu, ale k hostitelskému operačnímu systému nemáte přístup. 
+> [Aplikace pro Linux](overview.md#app-service-on-linux) v App Service spustit ve svých vlastních kontejnerech. Není povolený žádný přístup k hostitelskému operačnímu systému, máte ke kontejneru přístup rootem. Stejně tak pro [aplikace spuštěné v kontejnerech Windows](quickstart-custom-container.md?pivots=container-windows)máte k kontejneru přístup pro správu, ale k hostitelskému operačnímu systému nemáte přístup. 
 >
 
 <a id="tiers"></a>
@@ -51,7 +51,7 @@ App Service je služba, která běží nad infrastrukturou Azure PaaS (platforma
 - Jednotka aplikace, která obsahuje soubory cspkg balíčku Azure, používané výhradně App Service (a nepřístupné pro zákazníky)
 - "Uživatelská" jednotka (C:\ jednotka), jejíž velikost se liší v závislosti na velikosti virtuálního počítače. 
 
-Při zvětšování vaší aplikace je důležité monitorovat využití disku. Pokud je dosažena kvóta disku, může to mít nepříznivý vliv na vaši aplikaci. Příklad: 
+Při zvětšování vaší aplikace je důležité monitorovat využití disku. Pokud je dosažena kvóta disku, může to mít nepříznivý vliv na vaši aplikaci. Například: 
 
 - Aplikace může vyvolat chybu oznamující, že na disku není dostatek místa.
 - Při procházení konzoly Kudu se může zobrazit chyba disku.
@@ -60,7 +60,7 @@ Při zvětšování vaší aplikace je důležité monitorovat využití disku. 
 
 <a id="NetworkDrives"></a>
 
-### <a name="network-drives-aka-unc-shares"></a>Síťové jednotky (neboli sdílené složky UNC)
+### <a name="network-drives-unc-shares"></a>Síťové jednotky (sdílené složky UNC)
 Jedním z jedinečných aspektů App Service, které usnadňuje nasazení a údržbu aplikací, je, že veškerý obsah uživatele je uložený v sadě sdílených složek UNC. Tento model se dobře mapuje na společný vzor úložiště obsahu používaného místními prostředími pro hostování webů s více servery s vyrovnáváním zatížení. 
 
 V rámci App Service je v každém datovém centru vytvořeno několik sdílených složek UNC. Procentuální podíl obsahu uživatele pro všechny zákazníky v každém datovém centru je přidělen všem sdíleným složkám UNC. Kromě toho všechen obsah souborů pro předplatné jednoho zákazníka je vždycky umístěný ve stejné sdílené složce UNC. 

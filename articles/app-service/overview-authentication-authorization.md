@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: c8e0b476c50378bde00e01a39985fbcc188f04ed
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8362cc3b8f8477f77d8ec672144e7c68d2e3434d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562374"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080724"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Ověřování a autorizace v Azure App Service a Azure Functions
 
@@ -56,7 +56,7 @@ Modul ověřování a autorizace se spouští v samostatném kontejneru izolovan
 
 ### <a name="userapplication-claims"></a>Deklarace identity uživatele nebo aplikace
 
-Pro všechny jazykové architektury App Service vytvoří deklarace v příchozím tokenu (ať už jsou z ověřeného koncového uživatele nebo klientské aplikace), a to tak, že je vloží do hlaviček požadavku. Pro App Service aplikace ASP.NET 4,6 naplní [ClaimsPrincipal. Current](/dotnet/api/system.security.claims.claimsprincipal.current) deklarací identity ověřeného uživatele, takže můžete postupovat podle standardního vzoru kódu .NET, včetně `[Authorize]` atributu. Podobně pro aplikace PHP App Service naplní `_SERVER['REMOTE_USER']` proměnnou. Pro aplikace Java jsou deklarace identity [dostupné z servlet Tomcat](containers/configure-language-java.md#authenticate-users-easy-auth).
+Pro všechny jazykové architektury App Service vytvoří deklarace v příchozím tokenu (ať už jsou z ověřeného koncového uživatele nebo klientské aplikace), a to tak, že je vloží do hlaviček požadavku. Pro App Service aplikace ASP.NET 4,6 naplní [ClaimsPrincipal. Current](/dotnet/api/system.security.claims.claimsprincipal.current) deklarací identity ověřeného uživatele, takže můžete postupovat podle standardního vzoru kódu .NET, včetně `[Authorize]` atributu. Podobně pro aplikace PHP App Service naplní `_SERVER['REMOTE_USER']` proměnnou. Pro aplikace Java jsou deklarace identity [dostupné z servlet Tomcat](configure-language-java.md#authenticate-users-easy-auth).
 
 Pro [Azure Functions](../azure-functions/functions-overview.md)není `ClaimsPrincipal.Current` vyplněno pro kód .NET, ale stále můžete najít deklarace identity uživatelů v hlavičce požadavku nebo získat `ClaimsPrincipal` objekt z kontextu požadavku nebo dokonce prostřednictvím parametru vazby. Další informace najdete v tématu [Working with identity klientů](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) .
 
@@ -149,7 +149,7 @@ Pomocí této možnosti nemusíte v aplikaci psát žádný ověřovací kód. P
 
 ## <a name="more-resources"></a>Další zdroje informací
 
-[Kurz: ověřování a autorizace uživatelů na konci Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)  
+[Kurz: ověřování a autorizace uživatelů na konci Azure App Service (Windows)](tutorial-auth-aad.md)  
 [Kurz: ověřování a autorizace uživatelů na konci Azure App Service pro Linux](containers/tutorial-auth-aad.md)  
 [Přizpůsobení ověřování a autorizace v App Service](app-service-authentication-how-to.md) 
  [Integrace .NET Core pro Azure AppService EasyAuth (třetí strana)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 

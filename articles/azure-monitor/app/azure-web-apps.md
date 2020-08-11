@@ -4,12 +4,12 @@ description: Sledování výkonu aplikací pro Azure App Services. Zatížení g
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6c0d99e89e17c2aad3c7dcfe0056b597aa88d2a2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: d30d5fa8532b9bdec2b231daf9a59732dc1ebce8
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876389"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079684"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
@@ -169,7 +169,7 @@ Aby bylo možné povolit shromažďování telemetrie s Application Insights, je
 |Název nastavení aplikace |  Definice | Hodnota |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | Hlavní rozšíření, které řídí monitorování za běhu. | `~2` |
-|XDT_MicrosoftApplicationInsights_Mode |  Jenom ve výchozím režimu jsou k dispozici základní funkce, aby se zajistil optimální výkon. | `default` nebo `recommended`. |
+|XDT_MicrosoftApplicationInsights_Mode |  Jenom ve výchozím režimu jsou k dispozici základní funkce, aby se zajistil optimální výkon. | `default` nebo `recommended`: |
 |InstrumentationEngine_EXTENSION_VERSION | Určuje, zda bude modul binárního zápisu `InstrumentationEngine` zapnutý. Toto nastavení má vliv na výkon a má vliv na čas spuštění a spuštění. | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | Ovládací prvky, pokud se v SQL & text tabulky Azure bude zachytávat spolu s voláními závislostí. Upozornění na výkon: bude to mít vliv na počáteční čas spuštění aplikace. Toto nastavení vyžaduje `InstrumentationEngine` . | `~1` |
 
@@ -349,7 +349,7 @@ Počínaje verzí 2.8.9 se používá předem nainstalovaná rozšíření webu.
 
 Pokud je upgrade proveden z verze před aplikací 2.5.1, zkontrolujte, zda jsou knihovny DLL ApplicationInsigths odebrány ze složky bin aplikace, [v tématu Postup řešení potíží](#troubleshooting).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorování rozšíření/na základě agentů pro aplikace založené na platformě .NET a .NET Core běžící na Azure App Services.
 
@@ -401,7 +401,7 @@ Nejnovější informace o Application Insights agenta nebo rozšíření najdete
 
 Při vytváření webové aplikace s `ASP.NET` `.NET Core` modulem runtime nebo v Azure App Services nasadí jednu STATICKOU stránku HTML jako úvodní web. Statická webová stránka také načte webovou část spravovanou rozhraním .NET ve službě IIS. To umožňuje testovat monitorování na straně serveru bez kódu, ale nepodporuje automatické monitorování na straně klienta.
 
-Pokud chcete testovat server bez kódu a monitorování na straně klienta pro ASP.NET nebo ASP.NET Core ve webové aplikaci Azure App Services, doporučujeme, abyste si vyzkoušeli oficiální Příručky k [vytvoření ASP.NET Core webové aplikace](../../app-service/app-service-web-get-started-dotnet.md) a [Vytvoření webové aplikace v ASP.NET Framework](../../app-service/app-service-web-get-started-dotnet-framework.md) , a pak pomocí pokynů v aktuálním článku povolíte monitorování.
+Pokud chcete testovat server bez kódu a monitorování na straně klienta pro ASP.NET nebo ASP.NET Core ve webové aplikaci Azure App Services, doporučujeme, abyste si vyzkoušeli oficiální Příručky k [vytvoření ASP.NET Core webové aplikace](../../app-service/quickstart-dotnetcore.md) a [Vytvoření webové aplikace v ASP.NET Framework](../../app-service/quickstart-dotnet-framework.md) , a pak pomocí pokynů v aktuálním článku povolíte monitorování.
 
 ### <a name="php-and-wordpress-are-not-supported"></a>PHP a WordPress nejsou podporované.
 

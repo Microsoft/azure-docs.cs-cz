@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0407bde00c703663227230a0b6ff2de287f6650c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9359fe07818b3c5fbc08082cdf1f96195a7836ab
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007059"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080605"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Vytvoření webové aplikace ve App Service Environment v1
 
@@ -24,7 +24,7 @@ ms.locfileid: "88007059"
 V tomto kurzu se dozvíte, jak vytvořit plány Web Apps a App Service v [App Service Environment v1](app-service-app-service-environment-intro.md) (pomocného programu). 
 
 > [!NOTE]
-> Pokud se chcete dozvědět, jak vytvořit webovou aplikaci, ale nemusíte ji provádět v App Service Environment, přečtěte si téma [Vytvoření webové aplikace .NET](../app-service-web-get-started-dotnet.md) nebo některého z souvisejících kurzů pro jiné jazyky a rozhraní.
+> Pokud se chcete dozvědět, jak vytvořit webovou aplikaci, ale nemusíte ji provádět v App Service Environment, přečtěte si téma [Vytvoření webové aplikace .NET](../quickstart-dotnetcore.md) nebo některého z souvisejících kurzů pro jiné jazyky a rozhraní.
 > 
 > 
 

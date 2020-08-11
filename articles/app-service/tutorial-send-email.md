@@ -4,12 +4,12 @@ description: Naučte se volat obchodní procesy z aplikace App Service. Posílá
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 2b478ae75c8be978ea93a493b65dafdc7756c4b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 874c67b0d8d29c163fa5f36b3d100f1d2a013d53
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083238"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080962"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Kurz: odesílání e-mailů a vyvolání dalších obchodních procesů z App Service
 
@@ -32,23 +32,23 @@ Nasaďte aplikaci s použitím jazykové architektury podle vašeho výběru na 
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-[Kurz: Vytvoření aplikace ASP.NET Core a SQL Database v Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
+[Kurz: Vytvoření aplikace ASP.NET Core a SQL Database v Azure App Service](tutorial-dotnetcore-sqldb-app.md)
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
-[Kurz: Vytvoření aplikace Node.js a MongoDB v Azure](app-service-web-tutorial-nodejs-mongodb-app.md)
+[Kurz: Vytvoření aplikace Node.js a MongoDB v Azure](tutorial-nodejs-mongodb-app.md)
 
 ### <a name="php"></a>[PHP](#tab/php)
 
-[Kurz: sestavení aplikace PHP a MySQL v Azure](app-service-web-tutorial-php-mysql.md)
+[Kurz: sestavení aplikace PHP a MySQL v Azure](tutorial-php-mysql-app.md)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-[Kurz: spuštění webové aplikace v Pythonu (Django) s PostgreSQL v Azure App Service](containers/tutorial-python-postgresql-app.md)
+[Kurz: spuštění webové aplikace v Pythonu (Django) s PostgreSQL v Azure App Service](tutorial-python-postgresql-app.md)
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-[Vytvoření aplikace Ruby a Postgres v Azure App Service v systému Linux](containers/tutorial-ruby-postgres-app.md)
+[Vytvoření aplikace Ruby a Postgres v Azure App Service v systému Linux](tutorial-ruby-postgres-app.md)
 
 ---
 
@@ -152,7 +152,7 @@ Příklad zobrazíte kliknutím na kartu preferovaný jazyk/rozhraní.
 
 ### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-V ASP.NET můžete odeslat příspěvek HTTP pomocí třídy [System .NET. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) . Příklad:
+V ASP.NET můžete odeslat příspěvek HTTP pomocí třídy [System .NET. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) . Například:
 
 ```csharp
 // requires using System.Net.Http;
@@ -177,7 +177,7 @@ Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření aplikace
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-V ASP.NET Core můžete odeslat příspěvek HTTP pomocí třídy [System .NET. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) . Příklad:
+V ASP.NET Core můžete odeslat příspěvek HTTP pomocí třídy [System .NET. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) . Například:
 
 ```csharp
 // requires using System.Net.Http;
@@ -191,7 +191,7 @@ var jsonData = JsonSerializer.Serialize(new
 });
 
 HttpResponseMessage result = await client.PostAsync(
-    // Requires DI configuration to access app settings. See https://docs.microsoft.com/azure/app-service/containers/configure-language-dotnetcore#access-environment-variables
+    // Requires DI configuration to access app settings. See https://docs.microsoft.com/azure/app-service/configure-language-dotnetcore#access-environment-variables
     _configuration["LOGIC_APP_URL"],
     new StringContent(jsonData, Encoding.UTF8, "application/json"));
     
@@ -201,11 +201,11 @@ var statusCode = result.StatusCode.ToString();
 > [!NOTE]
 > Tento kód je zapsán z důvodu jednoduchosti ukázky. V praxi nevytvářejte instanci `HttpClient` objektu pro každý požadavek. Pokud [chcete implementovat odolné požadavky HTTP](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests), postupujte podle pokynů v části použití IHttpClientFactory.
 
-Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření aplikace ASP.NET Core a SQL Database v Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md), můžete ji použít k odeslání e-mailového potvrzení v [akci vytvořit](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)po `Todo` Přidání položky.
+Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření aplikace ASP.NET Core a SQL Database v Azure App Service](tutorial-dotnetcore-sqldb-app.md), můžete ji použít k odeslání e-mailového potvrzení v [akci vytvořit](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)po `Todo` Přidání položky.
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
-V Node.js můžete odeslat příspěvek HTTP snadno pomocí balíčku NPM, jako je [axios](https://www.npmjs.com/package/axios). Příklad:
+V Node.js můžete odeslat příspěvek HTTP snadno pomocí balíčku NPM, jako je [axios](https://www.npmjs.com/package/axios). Například:
 
 ```javascript
 // Requires npm install --save axios
@@ -228,11 +228,11 @@ var jsonData = {
 
 ```
 
-Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření aplikace Node.js a MongoDB v Azure](app-service-web-tutorial-nodejs-mongodb-app.md), můžete ji použít k odeslání e-mailového potvrzení ve [funkci Create](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)po [úspěšném uložení článku](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24).
+Pokud testujete tento kód v ukázkové aplikaci pro [kurz: Vytvoření aplikace Node.js a MongoDB v Azure](tutorial-nodejs-mongodb-app.md), můžete ji použít k odeslání e-mailového potvrzení ve [funkci Create](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)po [úspěšném uložení článku](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24).
 
 ### <a name="php"></a>[PHP](#tab/php)
 
-V PHP můžete snadno odeslat příspěvek HTTP pomocí [Guzzle](http://docs.guzzlephp.org/en/stable/index.html). Příklad:
+V PHP můžete snadno odeslat příspěvek HTTP pomocí [Guzzle](http://docs.guzzlephp.org/en/stable/index.html). Například:
 
 ```php
 // Requires composer require guzzlehttp/guzzle:~6.0
@@ -260,11 +260,11 @@ $response = $promise->wait();
 Log::info(print_r($response, TRUE));
 ```
 
-Pokud tento kód testujete v ukázkové aplikaci pro [kurz: sestavte aplikaci PHP a MySQL v Azure](app-service-web-tutorial-php-mysql.md), můžete ji použít k odeslání e-mailového potvrzení ve [funkci Route::p OST](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)těsně před příkazem Return.
+Pokud tento kód testujete v ukázkové aplikaci pro [kurz: sestavte aplikaci PHP a MySQL v Azure](tutorial-php-mysql-app.md), můžete ji použít k odeslání e-mailového potvrzení ve [funkci Route::p OST](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)těsně před příkazem Return.
 
 ### <a name="python"></a>[Python](#tab/python)
 
-V Pythonu můžete pomocí [požadavků](https://pypi.org/project/requests/)snadno odeslat příspěvek http. Příklad:
+V Pythonu můžete pomocí [požadavků](https://pypi.org/project/requests/)snadno odeslat příspěvek http. Například:
 
 ```python
 # Requires pip install requests && pip freeze > requirements.txt
@@ -291,11 +291,11 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
     print(await resp.status())
 ``` -->
 
-Pokud testujete tento kód v ukázkové aplikaci pro [kurz: spuštění webové aplikace Python (Django) s PostgreSQL v Azure App Service](containers/tutorial-python-postgresql-app.md)můžete použít k odeslání e-mailového potvrzení ve [funkci Route::p OST](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)těsně před příkazem Return.
+Pokud testujete tento kód v ukázkové aplikaci pro [kurz: spuštění webové aplikace Python (Django) s PostgreSQL v Azure App Service](tutorial-python-postgresql-app.md)můžete použít k odeslání e-mailového potvrzení ve [funkci Route::p OST](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)těsně před příkazem Return.
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-V Ruby můžete odeslat příspěvek HTTP snadno pomocí [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient). Příklad:
+V Ruby můžete odeslat příspěvek HTTP snadno pomocí [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient). Například:
 
 ```ruby
 clnt = JSONClient.new
@@ -308,7 +308,7 @@ body = {
 connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 ```
 
-Pokud testujete tento kód v ukázkové aplikaci pro [Vytvoření aplikace Ruby a Postgres v Azure App Service v systému Linux](containers/tutorial-ruby-postgres-app.md), můžete ji použít k odeslání e-mailového potvrzení v akci [vytvořit](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) , pokud bude [ @task.save úspěšná](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30).
+Pokud testujete tento kód v ukázkové aplikaci pro [Vytvoření aplikace Ruby a Postgres v Azure App Service v systému Linux](tutorial-ruby-postgres-app.md), můžete ji použít k odeslání e-mailového potvrzení v akci [vytvořit](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) , pokud bude [ @task.save úspěšná](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30).
 
 ---
 
