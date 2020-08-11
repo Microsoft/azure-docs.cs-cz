@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d268358f2f80cc9d347fa722d5027e1a87894b20
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d266583a2bd73c92a58fad1882a1c572ed4f3769
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034392"
+ms.locfileid: "88056257"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -47,7 +47,7 @@ Po vytvoření koncového bodu serveru v systému Windows Server 2012 R2 dojde k
 Písmeno_jednotky: \ není k dispozici.  
 Parametr je nesprávný.
 
-Chcete-li řešení vyřešit, nainstalujte nejnovější aktualizace pro systém Windows Server 2012 R2 a restartujte server.
+Pokud chcete tento problém vyřešit, nainstalujte [KB2919355](https://support.microsoft.com/help/2919355/windows-rt-8-1-windows-8-1-windows-server-2012-r2-update-april-2014) a restartujte server. Pokud se tato aktualizace nenainstaluje, protože už je nainstalovaná novější aktualizace, otevřete web Windows Update, nainstalujte nejnovější aktualizace pro Windows Server 2012 R2 a restartujte server.
 
 <a id="server-registration-missing-subscriptions"></a>**Registrace serveru nezobrazuje seznam všech předplatných Azure.**  
 Při registraci serveru pomocí ServerRegistration.exe po kliknutí na rozevírací seznam předplatné Azure chybí předplatná.
@@ -338,7 +338,7 @@ Pokud se chcete podívat na tyto chyby, spusťte skript **FileSyncErrorsReport.p
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Soubor nelze synchronizovat, protože byl dosažen maximální počet souborů konfliktů. Azure File Sync podporuje soubory konfliktů 100 na jeden soubor. Další informace o konfliktech souborů najdete v tématu Azure File Sync [Nejčastější dotazy](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution). | Chcete-li tento problém vyřešit, snižte počet konfliktních souborů. Soubor se synchronizuje, jakmile bude počet konfliktních souborů menší než 100. |
 
 #### <a name="handling-unsupported-characters"></a>Zpracování nepodporovaných znaků
-Pokud skript **FileSyncErrorsReport.ps1** PowerShellu zobrazuje selhání z důvodu nepodporovaných znaků (kód chyby 0x8007007B nebo 0x80c80255), měli byste odebrat nebo přejmenovat znaky při chybě z příslušných názvů souborů. PowerShell pravděpodobně vytiskne tyto znaky jako otazníky nebo prázdné obdélníky, protože většina těchto znaků nemá standardní vizuální kódování. [Nástroj pro vyhodnocení](storage-sync-files-planning.md#evaluation-cmdlet) lze použít k identifikaci nepodporovaných znaků.
+Pokud skript **FileSyncErrorsReport.ps1** PowerShellu v důsledku nepodporovaných znaků (kód chyby 0x8007007B nebo 0x80c80255) zobrazí chyby synchronizace jednotlivých položek, měli byste odebrat nebo přejmenovat znaky při chybě z příslušných názvů souborů. PowerShell pravděpodobně vytiskne tyto znaky jako otazníky nebo prázdné obdélníky, protože většina těchto znaků nemá standardní vizuální kódování. [Nástroj pro vyhodnocení](storage-sync-files-planning.md#evaluation-cmdlet) lze použít k identifikaci nepodporovaných znaků. Pokud vaše datová sada obsahuje několik souborů s neplatnými znaky, použijte skript [ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars) k přejmenování souborů obsahujících nepodporované znaky.
 
 Následující tabulka obsahuje všechny znaky Unicode, které Azure File Sync ještě nepodporují.
 

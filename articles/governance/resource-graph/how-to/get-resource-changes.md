@@ -1,14 +1,14 @@
 ---
 title: Získání změn prostředků
 description: Pochopte, jak zjistit, kdy byl prostředek změněn, získat seznam vlastností, které se změnily, a vyhodnotit rozdíly.
-ms.date: 05/20/2020
+ms.date: 08/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 3d65b5d7e968fda17f80d790ae3171398e2cb73b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 02dfd2b8b66cd09be39a44166a0fd62bb13c8395
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135541"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056563"
 ---
 # <a name="get-resource-changes"></a>Získání změn prostředků
 

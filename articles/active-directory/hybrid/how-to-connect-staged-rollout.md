@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d582db4bd7ef99d86602f49bc9046aadb8c3e8f0
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: e260ff55c3039b7943137ff1656068e9b5b9cb28
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460605"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053215"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí připraveného zavedení (Preview)
 
@@ -33,7 +33,7 @@ Přehled této funkce najdete v tomto tématu Azure Active Directory: co je post
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 -   Máte tenanta Azure Active Directory (Azure AD) se federovanémi doménami.
 
@@ -84,7 +84,7 @@ Následující scénáře nejsou podporovány pro fáze zavedení:
 
 - Když poprvé přidáte skupinu zabezpečení pro dvoufázové zavedení, budete omezeni na 200 uživatelů, aby nedocházelo k vypršení časového limitu uživatelského prostředí. Po přidání skupiny můžete podle potřeby přidat do ní další uživatele přímo.
 
-- I když jsou uživatelé ve fázi zavedení, jsou zásady vypršení platnosti hesla nastavené na 90 dnů bez možnosti přizpůsobení. 
+- I když jsou uživatelé v dvoufázové zavedení, pokud je povolená možnost EnforceCloudPasswordPolicyForPasswordSyncedUsers, zásada vypršení platnosti hesla je nastavená na 90 dní bez možnosti vlastního nastavení. 
 
 
 ## <a name="get-started-with-staged-rollout"></a>Začínáme s fází uvedení do provozu
@@ -207,7 +207,7 @@ Povolili jsme události auditu pro různé akce, které provedeme pro připraven
 
   ![Karta cíle v podokně Přidat uživatele do funkce – cíl (s)](./media/how-to-connect-staged-rollout/sr12.png)
 
-## <a name="validation"></a>Ověřování
+## <a name="validation"></a>Ověřování vstupů (validace)
 
 Pokud chcete otestovat přihlášení pomocí *synchronizace hodnot hash hesel* nebo *předávacího ověřování* (uživatelské jméno a heslo), udělejte toto:
 

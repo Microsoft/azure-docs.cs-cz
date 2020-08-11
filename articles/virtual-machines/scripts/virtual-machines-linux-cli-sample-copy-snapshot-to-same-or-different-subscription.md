@@ -1,6 +1,6 @@
 ---
-title: Kopírování snímku spravovaného disku do předplatného – ukázka CLI
-description: Ukázkový skript Azure CLI – kopírování (nebo přesun) snímku spravovaného disku do stejného nebo jiného předplatného pomocí rozhraní příkazového řádku
+title: Kopírování snímku spravovaného disku do předplatného – ukázka CLI – virtuální počítač se systémem Linux
+description: Ukázkový skript Azure CLI – kopírování (nebo přesun) snímku spravovaného disku do stejného nebo jiného předplatného pomocí rozhraní příkazového řádku (CLI) na virtuálním počítači se systémem Linux
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: c17773da09b51e135e855002de7b35628c21508f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 637c8c3a2f6ba90a7a16fa375d99a7463be71270
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509749"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056070"
 ---
-# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>Kopírování snímku spravovaného disku do stejného nebo jiného předplatného pomocí rozhraní příkazového řádku
+# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli-on-a-linux-vm"></a>Kopírování snímku spravovaného disku do stejného nebo jiného předplatného pomocí rozhraní příkazového řádku na virtuálním počítači se systémem Linux
 
 Tento skript zkopíruje snímek spravovaného disku do stejného nebo jiného předplatného. Tento skript použijte pro následující scénáře:
 

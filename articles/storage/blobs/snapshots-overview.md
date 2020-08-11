@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cd8771afdc9c4462faaff758ffdd073382f69f53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24118e6ae5c31399ce5d33361dd60e3a08424681
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550976"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055764"
 ---
 # <a name="blob-snapshots"></a>Snímky objektů BLOB
 
@@ -33,7 +33,7 @@ Snímek objektu BLOB je stejný jako základní objekt BLOB s tím rozdílem, ž
 > Všechny snímky sdílí identifikátor URI základního objektu BLOB. Jediným rozdílem mezi základním objektem BLOB a snímkem je připojená hodnota **DateTime** .
 >
 
-Objekt BLOB může mít libovolný počet snímků. Snímky zůstanou zachované, dokud se explicitně neodstraní, což znamená, že snímek nemůže být živý základní objekt BLOB. Můžete vytvořit výčet snímků přidružených k základnímu objektu BLOB a sledovat aktuální snímky.
+Objekt BLOB může mít libovolný počet snímků. Snímky zůstanou zachované, dokud se explicitně neodstraní, ať už nezávisle, nebo jako součást operace odstranění objektu BLOB pro základní objekt BLOB. Můžete vytvořit výčet snímků přidružených k základnímu objektu BLOB a sledovat aktuální snímky.
 
 Když vytvoříte snímek objektu blob, vlastnosti systému objektu BLOB se zkopírují do snímku se stejnými hodnotami. Metadata základního objektu BLOB se také zkopírují do snímku, pokud při vytváření snímku neurčíte samostatná metadata. Až snímek vytvoříte, můžete ho číst, kopírovat nebo odstranit, ale nemůžete ho upravovat.
 

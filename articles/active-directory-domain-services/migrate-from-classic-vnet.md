@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/09/2020
+ms.date: 08/10/2020
 ms.author: iainfou
-ms.openlocfilehash: f77d9cd72476f9f2c30ca22bb2296efe1fd6cf9d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: de27ee713caae0310f185cd717d5db2095feff32
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051666"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054285"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrace Azure Active Directory Domain Services z modelu klasických virtuálních sítí do Správce prostředků
 
@@ -145,7 +145,7 @@ Migrace na model nasazení Správce prostředků a virtuální síť je rozděle
 
 | Krok    | Provedeno prostřednictvím  | Odhadovaný čas  | Výpadek  | Vrátit zpět a obnovit? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [Krok 1 – aktualizace a vyhledání nové virtuální sítě](#update-and-verify-virtual-network-settings) | Portál Azure Portal | 15 minut | Nepožaduje se žádný výpadek | – |
+| [Krok 1 – aktualizace a vyhledání nové virtuální sítě](#update-and-verify-virtual-network-settings) | portál Azure | 15 minut | Nepožaduje se žádný výpadek | – |
 | [Krok 2 – Příprava spravované domény na migraci](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 minut v průměru | Výpadek služby Azure služba AD DS začíná po dokončení tohoto příkazu. | Vrácení zpět a obnovení k dispozici. |
 | [Krok 3 – přesunutí spravované domény do existující virtuální sítě](#migrate-the-managed-domain) | PowerShell | 1 – 3 hodiny v průměru | Po dokončení tohoto příkazu je k dispozici jeden řadič domény, výpadek skončí. | Při selhání jsou k dispozici obě vrácení zpět (Samoobslužná služba) i obnovení. |
 | [Krok 4 – testování a čekání na repliku řadiče domény](#test-and-verify-connectivity-after-the-migration)| PowerShell a Azure Portal | 1 hodina nebo více, v závislosti na počtu testů | Oba řadiče domény jsou k dispozici a měly by fungovat normálně. | Není k dispozici. Po úspěšné migraci prvního virtuálního počítače není k dispozici možnost vrácení nebo obnovení. |
@@ -197,6 +197,12 @@ K přípravě spravované domény pro migraci proveďte následující kroky:
     ```powershell
     $creds = Get-Credential
     ```
+    
+1. Definujte proměnnou pro ID předplatného Azure. V případě potřeby můžete pomocí rutiny [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) zobrazit seznam a zobrazit ID vašich předplatných. V následujícím příkazu zadejte vlastní ID předplatného:
+
+   ```powershell
+   $subscriptionId = 'yourSubscriptionId'
+   ```
 
 1. Nyní spusťte `Migrate-Aadds` rutinu pomocí parametru *-Prepare* . Zadejte *ManagedDomainFqdn* pro vlastní spravovanou doménu, jako je například *aaddscontoso.com*:
 
@@ -204,7 +210,8 @@ K přípravě spravované domény pro migraci proveďte následující kroky:
     Migrate-Aadds `
         -Prepare `
         -ManagedDomainFqdn aaddscontoso.com `
-        -Credentials $creds
+        -Credentials $creds `
+        -SubscriptionId $subscriptionId
     ```
 
 ## <a name="migrate-the-managed-domain"></a>Migrace spravované domény
@@ -224,7 +231,8 @@ Migrate-Aadds `
     -VirtualNetworkResourceGroupName myResourceGroup `
     -VirtualNetworkName myVnet `
     -VirtualSubnetName DomainServices `
-    -Credentials $creds
+    -Credentials $creds `
+    -SubscriptionId $subscriptionId
 ```
 
 Jakmile skript ověří, že je spravovaná doména připravená pro migraci, zadejte *Y* a spusťte proces migrace.
@@ -310,7 +318,8 @@ Migrate-Aadds `
     -Abort `
     -ManagedDomainFqdn aaddscontoso.com `
     -ClassicVirtualNetworkName myClassicVnet `
-    -Credentials $creds
+    -Credentials $creds `
+    -SubscriptionId $subscriptionId
 ```
 
 ### <a name="restore"></a>Obnovení
@@ -319,7 +328,7 @@ Jako poslední možnost se Azure AD Domain Services dá obnovit z poslední dost
 
 Chcete-li obnovit spravovanou doménu ze zálohy, [otevřete lístek podpory případu pomocí Azure Portal][azure-support]. Zadejte ID adresáře, název domény a důvod pro obnovení. Dokončení procesu podpory a obnovení může trvat několik dní.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud máte po migraci do modelu nasazení Správce prostředků problémy, přečtěte si některé z následujících běžných oblastí pro odstraňování potíží:
 

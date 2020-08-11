@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 06/25/2020
-ms.openlocfilehash: b7d7ec95d2227076ff7b7a95ce6e72fffc840975
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7194e4553386c25691bb3ede8096da7fb63c5dc0
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073350"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055195"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Co je spravovaná instance Azure SQL?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Součástí produktové řady Azure SQL je spravovaná instance Azure SQL, která je inteligentní a Škálovatelná cloudová databázová služba, která kombinuje nejširší SQL Server kompatibilitu databázového stroje se všemi výhodami plně spravované a doručoval platformy jako služby. SQL Managed instance má téměř 100% kompatibilitu s nejnovějším databázovým strojem SQL Server (Enterprise Edition), zajišťuje implementaci nativní [virtuální sítě (VNET)](../../virtual-network/virtual-networks-overview.md) , která řeší běžné bezpečnostní obavy, a [obchodní model](https://azure.microsoft.com/pricing/details/sql-database/) , který je pro stávající zákazníky SQL Server příznivý. Spravovaná instance SQL umožňuje stávajícím zákazníkům SQL Server překládat a přesouvat místní aplikace do cloudu s minimálními změnami aplikace a databáze. Ve stejnou dobu zachovává spravovaná instance SQL všechny možnosti PaaS (automatické opravy a aktualizace verzí, [automatizované zálohování](../database/automated-backups-overview.md)a [vysokou dostupnost](../database/high-availability-sla.md)), které výrazně snižují režijní náklady na správu a celkové náklady na vlastnictví.
+Spravovaná instance Azure SQL je inteligentní, Škálovatelná cloudová databázová služba, která kombinuje nejširší SQL Server kompatibility databázového stroje se všemi výhodami plně spravované a doručoval platformy jako služby. SQL Managed instance má téměř 100% kompatibilitu s nejnovějším databázovým strojem SQL Server (Enterprise Edition), zajišťuje implementaci nativní [virtuální sítě (VNET)](../../virtual-network/virtual-networks-overview.md) , která řeší běžné bezpečnostní obavy, a [obchodní model](https://azure.microsoft.com/pricing/details/sql-database/) , který je pro stávající zákazníky SQL Server příznivý. Spravovaná instance SQL umožňuje stávajícím zákazníkům SQL Server překládat a přesouvat místní aplikace do cloudu s minimálními změnami aplikace a databáze. Ve stejnou dobu zachovává spravovaná instance SQL všechny možnosti PaaS (automatické opravy a aktualizace verzí, [automatizované zálohování](../database/automated-backups-overview.md)a [vysokou dostupnost](../database/high-availability-sla.md)), které výrazně snižují režijní náklady na správu a celkové náklady na vlastnictví.
 
 > [!IMPORTANT]
 > Seznam oblastí, ve kterých je aktuálně dostupná spravovaná instance SQL, najdete v tématu [podporované oblasti](resource-limits.md#supported-regions).
@@ -53,15 +53,15 @@ Klíčové funkce spravované instance SQL jsou uvedené v následující tabulc
 |Funkce | Popis|
 |---|---|
 | Verze SQL Server/Build | Databázový stroj SQL Server (nejnovější stabilní) |
-| Spravované automatizované zálohy | Yes |
-| Integrovaná instance a monitorování databáze a metriky | Yes |
-| Automatické opravy softwaru | Yes |
-| Nejnovější funkce databázového stroje | Yes |
+| Spravované automatizované zálohy | Ano |
+| Integrovaná instance a monitorování databáze a metriky | Ano |
+| Automatické opravy softwaru | Ano |
+| Nejnovější funkce databázového stroje | Ano |
 | Počet datových souborů (řádků) na databázi | Několik |
 | Počet souborů protokolu (protokol) na databázi | 1 |
-| Nasazení VNet-Azure Resource Manager | Yes |
-| Model nasazení sítě VNet – klasický | No |
-| Podpora portálu | Yes|
+| Nasazení VNet-Azure Resource Manager | Ano |
+| Model nasazení sítě VNet – klasický | Ne |
+| Podpora portálu | Ano|
 | Integrovaná integrační služba (SSIS) | No-SSIS je součástí [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Integrovaná služba Analysis Service (SSAS) | No-SSAS je samostatný [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Integrovaná služba vytváření sestav (SSRS) | Nepoužívejte místo toho [Power BI stránkované sestavy](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) nebo Hostujte službu SSRS na virtuálním počítači Azure. I když spravovaná instance SQL nemůže službu SSRS spustit jako službu, může hostovat [databáze katalogu SSRS](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) pro server sestav nainstalovaný na virtuálním počítači Azure pomocí SQL Server ověřování. |

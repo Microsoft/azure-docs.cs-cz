@@ -1,14 +1,14 @@
 ---
 title: Práce s rozsáhlými datovými sadami
 description: Seznamte se s tím, jak ve velkých datových sadách získat záznamy, které se mají při práci se službou Azure Resource Graph získávat, formátovat, stránkovat a přeskakovat.
-ms.date: 03/20/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4b45a28a5dbd2ebc233bcf9a6808cb7d7cd6d8c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77ec7cc342672becddcbca7e6173eb1968519f02
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681069"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056402"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Práce s velkými sadami dat prostředků Azure
 
@@ -63,10 +63,10 @@ V [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/reso
 
 ## <a name="paging-results"></a>Výsledky stránkování
 
-Pokud je nutné rozdělit sadu výsledků na menší sady záznamů ke zpracování nebo protože sada výsledků by překročila maximální povolenou hodnotu _1000_ vrácených záznamů, použijte stránkování. [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **QueryResponse** poskytuje hodnoty pro indikaci sady výsledků byla rozdělena: **resultTruncated** a **$skipToken**.
-**resultTruncated** je logická hodnota, která informuje příjemce, pokud v odpovědi nejsou vráceny další záznamy. Tato podmínka se dá identifikovat také v případě, že vlastnost **Count** je menší než vlastnost **totalRecords** . **totalRecords** definuje počet záznamů, které odpovídají dotazu.
+Pokud je nutné rozdělit sadu výsledků na menší sady záznamů ke zpracování nebo protože sada výsledků by překročila maximální povolenou hodnotu _1000_ vrácených záznamů, použijte stránkování. [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 
+ **QueryResponse** poskytuje hodnoty pro indikaci sady výsledků byla rozdělena: **resultTruncated** a **$skipToken**. **resultTruncated** je logická hodnota, která informuje příjemce, pokud v odpovědi nejsou vráceny další záznamy. Tato podmínka se dá identifikovat také v případě, že vlastnost **Count** je menší než vlastnost **totalRecords** . **totalRecords** definuje počet záznamů, které odpovídají dotazu.
 
- **resultTruncated** má **hodnotu true** , pokud je buď zakázáno stránkování, nebo není možné, protože není k `id` dispozici žádný sloupec, nebo pokud je k dispozici méně prostředků, než vyžaduje dotaz. Pokud **resultTruncated** má resultTruncated **hodnotu true**, vlastnost **$skipToken** není nastavena.
+ **resultTruncated** má **hodnotu true** , pokud je buď zakázáno stránkování, nebo není možné, protože není `id` k dispozici žádný sloupec, nebo pokud je k dispozici méně prostředků, než dotaz požaduje. Pokud **resultTruncated** má resultTruncated **hodnotu true**, vlastnost **$skipToken** není nastavena.
 
 Následující příklady ukazují, jak **Přeskočit** prvních 3000 záznamů a vracet **prvních** 1000 záznamů po přeskočení těchto záznamů pomocí Azure CLI a Azure PowerShell:
 

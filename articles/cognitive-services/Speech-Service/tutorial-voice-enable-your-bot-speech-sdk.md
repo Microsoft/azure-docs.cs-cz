@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 7a5e6bd262a1772356653eaaff7688ade9b4bfb7
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 47448a97c89b1feddfc43da300cb53fd65eaff05
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041780"
+ms.locfileid: "88056648"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: hlas – povolení robota pomocí sady Speech SDK
 
@@ -60,7 +60,7 @@ Tady je postup, který budete potřebovat k dokončení tohoto kurzu:
 - POČÍTAČ s Windows 10 s pracovním mikrofonem a reproduktory (nebo sluchátka)
 - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) nebo novější s nainstalovanou úlohou **vývoj pro ASP.NET a web**
 - [.NET Framework runtime 4.6.1](https://dotnet.microsoft.com/download) nebo vyšší
-- Účet Azure: [Zaregistrujte se zdarma](https://azure.microsoft.com/free/ai/).
+- Účet Azure: [Zaregistrujte se zdarma](https://azure.microsoft.com/free/cognitive-services/)
 - Účet [GitHub](https://github.com/)
 - [Git pro Windows](https://git-scm.com/download/win)
 
@@ -83,7 +83,6 @@ Pokud chcete pro tento kurz použít jinou oblast, můžou tyto faktory omezit v
 
 * Ujistěte se, že používáte [podporovanou oblast Azure](regions.md#voice-assistants).
 * Kanál Direct line Speech používá službu pro převod textu na mluvené slovo, která má standardní a neuronové hlasy. Hlasy neuronové jsou [omezené na konkrétní oblasti Azure](regions.md#standard-and-neural-voices).
-* Bezplatné zkušební klíče můžou být omezené na konkrétní oblast.
 
 Další informace o oblastech najdete v tématu věnovaném [umístěním Azure](https://azure.microsoft.com/global-infrastructure/locations/).
 

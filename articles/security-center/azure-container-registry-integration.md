@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2020
 ms.author: memildin
-ms.openlocfilehash: 767ad928779743ec28dbe3da8be6154a1fe0b0ab
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 718f9a29b70dab34269c959ccd62452e56a32d72
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042305"
+ms.locfileid: "88056597"
 ---
 # <a name="azure-container-registry-image-scanning-by-security-center"></a>Azure Container Registry skenování imagí Security Center
 
@@ -31,7 +31,7 @@ Pokud pracujete na úrovni Standard Azure Security Center, můžete přidat sadu
 |----|:----|
 |Stav vydaných verzí:|Všeobecná dostupnost|
 |Stanov|Úroveň Standard|
-|Podporované registry a Image:|![Ano ](./media/icons/yes-icon.png) . ACR Registry hostované pro Linux, které jsou přístupné z veřejného Internetu a poskytují přístup k prostředí.<br>![Žádné ](./media/icons/yes-icon.png) Registry ACR hostované v systému Windows.<br>![Žádné ](./media/icons/yes-icon.png) ' privátní ' Registry-Security Center vyžaduje, aby vaše registry byly přístupné z veřejného Internetu. Security Center se aktuálně nemůže připojit k registrům s přístupem, které jsou omezené pomocí brány firewall, koncového bodu služby nebo privátních koncových bodů, jako je například privátní odkaz Azure.<br>![Žádné ](./media/icons/yes-icon.png) Image minimalist, jako jsou [pomocné image Docker](https://hub.docker.com/_/scratch/) , nebo Image "Distroless", které obsahují jenom aplikaci a její závislosti modulu runtime bez správce balíčků, prostředí nebo operačního systému.|
+|Podporované registry a Image:|![Ano ](./media/icons/yes-icon.png) . ACR Registry hostované pro Linux, které jsou přístupné z veřejného Internetu a poskytují přístup k prostředí.<br>![Žádné ](./media/icons/no-icon.png) Registry ACR hostované v systému Windows.<br>![Žádné ](./media/icons/no-icon.png) ' privátní ' Registry-Security Center vyžaduje, aby vaše registry byly přístupné z veřejného Internetu. Security Center se aktuálně nemůže připojit k registrům s přístupem, které jsou omezené pomocí brány firewall, koncového bodu služby nebo privátních koncových bodů, jako je například privátní odkaz Azure.<br>![Žádné ](./media/icons/no-icon.png) Image minimalist, jako jsou [pomocné image Docker](https://hub.docker.com/_/scratch/) , nebo Image "Distroless", které obsahují jenom aplikaci a její závislosti modulu runtime bez správce balíčků, prostředí nebo operačního systému.|
 |Požadované role a oprávnění:|Role **Čtenář zabezpečení** a [Azure Container Registry Reader](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
 |Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||

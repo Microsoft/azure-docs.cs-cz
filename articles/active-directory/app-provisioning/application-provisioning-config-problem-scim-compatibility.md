@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: c54478282cb1106ae95fe1c9e3fbb15e9c37bbf9
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: da458b8aaf1ace7b87e98ded59a4bf90e4158e0f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808571"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054082"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení s dodržováním předpisů protokolu SCIM 2,0 ve službě Azure AD pro zřizování uživatelů
 
@@ -50,36 +50,102 @@ Pomocí příznaků níže v adrese URL klienta aplikace můžete změnit výcho
 
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM příznaky na pozdější chování.":::
 
-* Aktualizace chování opravy pro zajištění dodržování předpisů
+* Pomocí následující adresy URL aktualizujte chování opravy a ujistěte se, že SCIM dodržování předpisů. Toto chování je nyní k dispozici pouze při použití příznaku, ale během několika následujících měsíců se stane výchozím chováním.
+  * **Adresa URL (kompatibilní s SCIM):** AzureAdScimPatch062020
   * **Odkazy na dokumenty RFC SCIM:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2
-  * **Adresa URL (kompatibilní s SCIM):** AzureAdScimPatch062020
   * **Předvídatelně**
-    * Odebrání odpovídajících členství ve skupině:
   ```json
+   PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
    {
-     "schemas":
-      ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
-     "Operations":[{
-       "op":"remove",
-       "path":"members[value eq \"2819c223-7f76-...413861904646\"]"
-     }]
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "remove",
+            "path": "members[value eq \"16b083c0-f1e8-4544-b6ee-27a28dc98761\"]"
+        }
+    ]
    }
+
+    PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
+    {
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "add",
+            "path": "members",
+            "value": [
+                {
+                    "value": "10263a6910a84ef9a581dd9b8dcc0eae"
+                }
+            ]
+        }
+    ]
+    } 
+
+    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
+    {
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "replace",
+            "path": "emails[type eq \"work\"].value",
+            "value": "someone@contoso.com"
+        },
+        {
+            "op": "replace",
+            "path": "emails[type eq \"work\"].primary",
+            "value": true
+        },
+        {
+            "op": "replace",
+            "value": {
+                "active": false,
+                "userName": "someone"
+            }
+        }
+    ]
+    }
+
+    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
+    {
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "replace",
+            "path": "active",
+            "value": false
+        }
+    ]
+    }
+
+    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
+    {
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "add",
+            "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department",
+            "value": "Tech Infrastructure"
+        }
+    ]
+    }
+   
   ```
-  * **Adresa URL (není kompatibilní s SCIM):** AzureAdScimPatch2017
-  * **Předvídatelně**
-    * Nevyhovující odebrání členství ve skupině:
-   ```json
-   {
-     "schemas":
-     ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
-     "Operations":[{
-       "op":"Remove",  
-       "path":"members",
-       "value":[{"value":"2819c223-7f76-...413861904646"}]
-     }]
-   }
-   ```
+
+  * **Adresa URL downgradu:** Jakmile se nové chování kompatibilní s SCIM nastaví jako výchozí v aplikaci mimo galerii, můžete pomocí následující adresy URL vrátit se k původnímu chování, které nedodržuje předpisy SCIM: AzureAdScimPatch2017
+  
+
 
 ## <a name="upgrading-from-the-older-customappsso-job-to-the-scim-job"></a>Upgrade ze starší úlohy customappsso na úlohu SCIM
 Následující postup odstraní existující úlohu customappsso a vytvoří novou úlohu SCIM. 
@@ -139,4 +205,3 @@ Následující postup odstraní existující úlohu customappsso a vytvoří nov
 
 ## <a name="next-steps"></a>Další kroky
 [Další informace o zřizování a zrušení zřizování pro aplikace SaaS](user-provisioning.md)
-

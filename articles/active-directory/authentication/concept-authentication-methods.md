@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 05283c02c2e5f95e22beb6fbeaad7a99e42ee6aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: b6111529d1a3d37f08b29fb5c0751fb6a49acea5
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540831"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054064"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Jaké metody ověřování jsou k dispozici v Azure Active Directory?
 
@@ -35,16 +35,16 @@ Následující tabulka popisuje, jaké metody jsou k dispozici pro primární ne
 
 | Metoda | Primární ověření | Sekundární ověřování |
 | --- | --- | --- |
-| [Heslo](#password) | Yes | |
+| [Heslo](#password) | Ano | |
 | [Aplikace Microsoft Authenticator](#microsoft-authenticator-app) | Ano (Preview) | MFA a SSPR |
-| [FIDO2 klíče zabezpečení (Preview)](#fido2-security-keys) | Yes | Jenom MFA |
-| [Tokeny softwaru OATH](#oath-software-tokens) | No | VÍCEFAKTOROVÉHO |
-| [Hardwarové tokeny OATH (Preview)](#oath-hardware-tokens-preview) | Yes | VÍCEFAKTOROVÉHO |
+| [FIDO2 klíče zabezpečení (Preview)](#fido2-security-keys) | Ano | Jenom MFA |
+| [Tokeny softwaru OATH](#oath-software-tokens) | Ne | VÍCEFAKTOROVÉHO |
+| [Hardwarové tokeny OATH (Preview)](#oath-hardware-tokens-preview) | Ne | VÍCEFAKTOROVÉHO |
 | [SMS](#phone-options) | Ano (Preview) | MFA a SSPR |
-| [Hlasový hovor](#phone-options) | No | MFA a SSPR |
-| [Bezpečnostní otázky](#security-questions) | No | Jenom SSPR |
-| [E-mailová adresa](#email-address) | No | Jenom SSPR |
-| [Hesla aplikací](#app-passwords) | No | Vícefaktorové ověřování pouze v určitých případech |
+| [Hlasový hovor](#phone-options) | Ne | MFA a SSPR |
+| [Bezpečnostní otázky](#security-questions) | Ne | Jenom SSPR |
+| [E-mailová adresa](#email-address) | Ne | Jenom SSPR |
+| [Hesla aplikací](#app-passwords) | Ne | Vícefaktorové ověřování pouze v určitých případech |
 
 Tento článek popisuje tyto různé metody ověřování a ověření dostupné ve službě Azure AD a veškerá konkrétní omezení nebo omezení.
 

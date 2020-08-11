@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9658175b0d42db9acfc94d39e4ab226bfe2cfc4b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ee49ae905622b4b76d782f6a31e0c2333b6d54be
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187315"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055288"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Správa proměnných v Azure Automation
 
@@ -30,7 +30,7 @@ Proměnné automatizace jsou užitečné pro následující scénáře:
 
 Azure Automation uchovává proměnné a zpřístupňuje je i v případě, že dojde k chybě Runbooku nebo konfigurace DSC. Toto chování umožňuje, aby jedna konfigurace sady Runbook nebo DSC nastavila hodnotu, kterou používá jiná sada Runbook nebo stejná sada Runbook nebo konfigurace DSC při příštím spuštění.
 
-Azure Automation ukládá každou šifrovanou proměnnou bezpečně. Při vytváření proměnné můžete zadat její šifrování a úložiště Azure Automation jako zabezpečený prostředek. 
+Azure Automation ukládá každou šifrovanou proměnnou bezpečně. Když vytvoříte proměnnou, můžete její šifrování a úložiště zadat Azure Automation jako zabezpečený prostředek. Po vytvoření proměnné nemůžete změnit její stav šifrování, aniž byste museli znovu vytvořit proměnnou. Azure Security Center doporučení je šifrovat všechny Azure Automation proměnné, jak je popsané v tématu [proměnné účtu Automation by měly být šifrované](../../security-center/recommendations-reference.md#recs-computeapp). 
 
 >[!NOTE]
 >Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou zašifrované a uložené v Azure Automation pomocí jedinečného klíče, který se generuje pro každý účet Automation. Azure Automation ukládá klíč do Key Vault spravovaném systémem. Před uložením zabezpečeného assetu Automation načte klíč z Key Vault a pak ho použije k zašifrování prostředku. 

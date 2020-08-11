@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: váš první dotaz na PowerShell'
 description: V tomto rychlém startu budete postupovat podle pokynů pro povolení modulu Resource Graph pro Azure PowerShell a spuštění prvního dotazu.
-ms.date: 05/20/2020
+ms.date: 08/10/2020
 ms.topic: quickstart
-ms.openlocfilehash: e98ca5974ba46d4d908cfe6dd8c04d3f6ba33a2a
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 4cc7eb524060f2a797077f38321ae9ce6c9cf267
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872003"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056393"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rychlý Start: spuštění prvního dotazu na diagram prostředku pomocí Azure PowerShell
 
@@ -18,7 +18,7 @@ Na konci tohoto procesu budete mít za sebou přidání modulu k vybrané instal
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -103,7 +103,7 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 ```
 
 > [!NOTE]
-> Tím se neodstraní dříve stažený soubor s modulem. Pouze ho odebere ze spuštěného relace PowerShell.
+> Tím se neodstraní dříve stažený soubor modulu. Pouze ho odebere ze spuštěného relace PowerShell.
 
 ## <a name="next-steps"></a>Další kroky
 

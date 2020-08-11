@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 59f66b88c998a78f5bd3ccf3757cb791aea2521b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fe909ba25191aa21e8a5bfa51c72690fd9c402eb
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279300"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056546"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Nejčastější dotazy týkající se přechodu z portál partnerů cloudu do partnerského centra
 
@@ -143,7 +143,7 @@ Aktualizace, které nepublikujete, se ukládají jako koncepty. Pokračujte v po
 
 ### <a name="enhanced-preview-options"></a>Rozšířené možnosti náhledu
 
-Partnerské centrum zahrnuje [funkci porovnání](partner-center-portal/update-existing-offer.md#compare-changes-to-marketplace-offers) s vylepšenými možnostmi filtrování. To vám umožní porovnat verze této nabídky s verzí Preview a živými verzemi.
+Partnerské centrum zahrnuje [funkci porovnání](partner-center-portal/update-existing-offer.md#compare-changes-to-commercial-marketplace-offers) s vylepšenými možnostmi filtrování. To vám umožní porovnat verze této nabídky s verzí Preview a živými verzemi.
 
 [![Snímek obrazovky s funkcí porovnání partnerského centra](media/cpp-pc-faq/compare.png "Zobrazuje funkci Compare centra pro porovnání.")](media/cpp-pc-faq/compare.png#lightbox)
 

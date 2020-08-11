@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: c01e543b251020581d96d61434d0b3309535ef0c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 19f4e7b340f0b1ceb64d04a2704a4f6667e1e14a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902041"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053571"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -361,20 +361,20 @@ V následující tabulce najdete podporované jazyky pro různá rozhraní API r
 | Národní prostředí | Jazyk | Ověřování závislé na textu | Ověřování nezávislé na textu | Identifikace nezávislá na textu |
 |----|----|----|----|----|
 | cs-CZ | Angličtina (USA) | ano | ano | ano |
-|zh-CN  |Čínština (Mandarin, zjednodušená)|    Není k dispozici|    ano|    ano|
-|de-DE  |němčina (Německo)   |Není k dispozici    |ano    |ano|
-|en-GB  |Angličtina (Spojené království)   |Není k dispozici    |ano    |ano|
-|fr-FR  |francouzština (Francie)    |Není k dispozici    |ano    |ano|
-|EN-AU  |Angličtina (Austrálie)    |Není k dispozici    |ano    |ano|
-|en-CA  |Angličtina (Kanada)   |Není k dispozici|   ano|    ano|
-|fr – CA  |Francouzština (Kanada)    |Není k dispozici    |ano|   ano|
-|it-IT  |Italština|   Není k dispozici |ano|   ano|
-|es-ES| Španělština (Španělsko) |Není k dispozici    |ano|   ano|
-|ES – MX  |Španělština (Mexiko)   |Není k dispozici|   ano|    ano|
-|ja-JP| Japonština    |Není k dispozici    |ano    |ano|
-|pt-BR| Portugalština (Brazílie)|    Není k dispozici|    ano|    ano|
+|zh-CN    |Čínština (Mandarin, zjednodušená)|    Není k dispozici|    ano|    ano|
+|de-DE    |němčina (Německo)    |Není k dispozici    |ano    |ano|
+|en-GB    |Angličtina (Spojené království)    |Není k dispozici    |ano    |ano|
+|fr-FR    |francouzština (Francie)    |Není k dispozici    |ano    |ano|
+|EN-AU    |Angličtina (Austrálie)    |Není k dispozici    |ano    |ano|
+|en-CA    |Angličtina (Kanada)    |Není k dispozici|    ano|    ano|
+|fr – CA    |Francouzština (Kanada)    |Není k dispozici    |ano|    ano|
+|it-IT    |Italština|    Není k dispozici    |ano|    ano|
+|es-ES|    Španělština (Španělsko)    |Není k dispozici    |ano|    ano|
+|ES – MX    |Španělština (Mexiko)    |Není k dispozici|    ano|    ano|
+|ja-JP|    Japonština    |Není k dispozici    |ano    |ano|
+|pt-BR|    Portugalština (Brazílie)|    Není k dispozici|    ano|    ano|
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+* [Vytvoření bezplatného účtu Azure](https://azure.microsoft.com/free/cognitive-services/)
 * [Přečtěte si téma rozpoznávání řeči v jazyce C. #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

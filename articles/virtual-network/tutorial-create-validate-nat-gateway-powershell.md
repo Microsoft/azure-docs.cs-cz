@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: vytvoření a otestování brány NAT – Azure PowerShell'
+title: Vytvoření a otestování brány NAT – Azure PowerShell
 titlesuffix: Azure Virtual Network NAT
 description: V tomto kurzu se dozvíte, jak vytvořit bránu NAT pomocí Azure PowerShell a testovat službu NAT.
 services: virtual-network
@@ -10,17 +10,17 @@ Customer intent: I want to test a NAT gateway for outbound connectivity for my v
 ms.service: virtual-network
 ms.subservice: nat
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2020
 ms.author: allensu
-ms.openlocfilehash: 059d1f99bafe656aaaf4dbab69e437728b9afdfb
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 3eaade678142a26be562d6c216f9932bcbaf2c39
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735298"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054020"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell-and-test-the-nat-service"></a>Kurz: Vytvoření brány NAT pomocí Azure PowerShell a testování služby NAT
 

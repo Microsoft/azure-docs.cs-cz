@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaeaa8625a5bdb5bbf8ce76a68e616a913da5655
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c2b65f8cd22e72e0ba90918121a02d66fe6bf3e7
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146992"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053044"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Synchronizace Azure AD Connect: Plánovač
 Toto téma popisuje integrovaný Plánovač v Azure AD Connect Sync (synchronizační modul).
@@ -171,7 +171,7 @@ Když je spuštěný cyklus synchronizace, nemůžete provádět změny konfigur
 Plánovač je stále aktivní a při další příležitosti se znovu spustí.
 
 ## <a name="custom-scheduler"></a>Vlastní Plánovač
-Rutiny popsané v této části jsou dostupné jenom v sestavách [1.1.130.0](reference-connect-version-history.md#111300) a novějších.
+Rutiny popsané v této části jsou dostupné jenom v sestavách [1.1.130.0](reference-connect-version-history.md) a novějších.
 
 Pokud předdefinovaný Plánovač nesplňuje vaše požadavky, můžete konektory naplánovat pomocí PowerShellu.
 

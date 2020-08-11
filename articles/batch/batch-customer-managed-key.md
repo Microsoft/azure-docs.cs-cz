@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 77c0489838685d65d7579f37d6a6cb922af509f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2af82233013f064b185aefde3f2e1710bd86ed43
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062540"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053741"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Konfigurace klíčů spravovaných zákazníkem pro účet Azure Batch s využitím Azure Key Vault a spravované identity
 
@@ -25,7 +25,7 @@ Klíče, které zadáte, musí být vygenerované v [Azure Key Vault](../key-vau
 
 ## <a name="create-a-batch-account-with-system-assigned-managed-identity"></a>Vytvoření účtu Batch se spravovanou identitou přiřazenou systémem
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 V [Azure Portal](https://portal.azure.com/)při vytváření účtů Batch vyberte v poli Typ identity na kartě **Upřesnit** příkaz **systém přiřazený** .
 
@@ -82,7 +82,7 @@ V poli **Vybrat** v části **hlavní**název zadejte, `principalId` které jste
 
 ### <a name="generate-a-key-in-azure-key-vault"></a>Vygenerovat klíč v Azure Key Vault
 
-V Azure Portal v části **klíč** klikněte na instance Key Vault a vyberte **Generovat/importovat**. Vyberte **typ klíče** , který má být `RSA` a **Velikost klíče** `2048` .
+V Azure Portal v části **klíč** klikněte na instance Key Vault a vyberte **Generovat/importovat**. Vyberte **typ klíče** , který má být `RSA` a **Velikost klíče RSA** , která má být alespoň `2048` bitů. `EC`typy klíčů nejsou aktuálně podporovány jako klíč spravovaný zákazníkem na účtu Batch.
 
 ![Vytvoření klíče](./media/batch-customer-managed-key/create-key.png)
 
@@ -90,7 +90,7 @@ Po vytvoření klíče klikněte na nově vytvořený klíč a aktuální verzi 
 
 ## <a name="enable-customer-managed-keys-on-azure-batch-account"></a>Povolit pro účet Azure Batch klíče spravované zákazníkem
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 V [Azure Portal](https://portal.azure.com/)přejdete na stránku účtu Batch. V části **šifrování** povolte **klíč spravovaný zákazníkem**. Můžete použít přímo identifikátor klíče, nebo můžete vybrat Trezor klíčů a potom kliknout na **Vybrat Trezor klíčů a klíč**.
 
@@ -110,7 +110,7 @@ az batch account set \
 
 ## <a name="update-the-customer-managed-key-version"></a>Aktualizace verze klíče spravovaného zákazníkem
 
-Když vytváříte novou verzi klíče, aktualizujte účet Batch tak, aby používal novou verzi. Postupujte takto:
+Když vytváříte novou verzi klíče, aktualizujte účet Batch tak, aby používal novou verzi. Postupujte následovně:
 
 1. V Azure Portal přejděte na účet Batch a zobrazte nastavení šifrování.
 2. Zadejte identifikátor URI pro novou verzi klíče. Alternativně můžete vybrat Trezor klíčů a klíč znovu pro aktualizaci verze.
@@ -142,6 +142,7 @@ az batch account set \
 ```
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
   * **Jsou podporovány klíče spravované zákazníkem pro existující účty Batch?** Ne. Klíče spravované zákazníkem jsou podporovány pouze pro nové účty Batch.
+  * **Můžu vybrat velikosti klíčů RSA větší než 2048 bitů?** Ano, `3072` podporují se taky velikosti klíčů RSA a `4096` bitů.
   * **Jaké operace jsou k dispozici po odvolání klíče spravovaného zákazníkem?** Jediná povolená operace je účet pro odstranění, pokud Batch ztratí přístup k klíči spravovanému zákazníkem.
   * **Jak mám obnovit přístup k účtu Batch, pokud omylem odstraníte Key Vault klíč?** Vzhledem k tomu, že je povolená ochrana vyprázdnění a obnovitelné odstranění, můžete obnovit existující klíče. Další informace najdete v tématu [obnovení Azure Key Vault](../key-vault/general/soft-delete-cli.md#recovering-a-key-vault).
   * **Můžu zakázat klíče spravované zákazníkem?** Typ šifrování účtu Batch můžete kdykoli nastavit zpět na hodnotu spravovaný klíč společnosti Microsoft. Potom můžete tento klíč odstranit nebo změnit.

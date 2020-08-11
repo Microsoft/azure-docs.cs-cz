@@ -6,23 +6,23 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 08/10/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: d22b83e1f3464f6d87d2bc3821682b25e05d947b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ef205a9a94ef7b40ed271387df617a5d96a78307
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142547"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054302"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
 
 V tomto článku se dozvíte, jak pomocí PowerShellu vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají povolený hierarchický obor názvů (HNS). 
 
-Mapování Gen1 na [Gen2](#gen1-gen2-map)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-powershell/issues)
+[Referenční informace](https://docs.microsoft.com/powershell/module/Az.Storage/?view=azps-4.5.0)  |  Mapování Gen1 na [Gen2](#gen1-gen2-map)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-powershell/issues)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
 > * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -422,7 +422,7 @@ Následující tabulka ukazuje, jak rutiny používané pro Data Lake Storage Ge
 |Set-AzDataLakeStoreItemOwner<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Update – AzDataLakeGen2Item|Rutina Update-AzDataLakeGen2Item aktualizuje jenom jednu položku, a ne rekurzivně. Pokud chcete rekurzivně aktualizovat, vypište položky pomocí rutiny Get-AzDataLakeStoreChildItem a pak vytvořte kanál rutiny Update-AzDataLakeGen2Item.|
 |Test – AzDataLakeStoreItem|Get-AzDataLakeGen2Item|Rutina Get-AzDataLakeGen2Item oznámí chybu, pokud položka neexistuje.|
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Rutiny PowerShellu pro úložiště](/powershell/module/az.storage)

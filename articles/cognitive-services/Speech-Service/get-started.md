@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 4604bfe7c815f79733f99a1a3727e4c68527e7ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dc1f8ed31c8d7199a31643a76e611d828da77ac
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80656132"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056461"
 ---
-# <a name="try-the-speech-service-for-free"></a>Vyzkoušejte si službu Speech Service zdarma.
+# <a name="try-the-speech-service-for-free"></a>Vyzkoušejte si službu Speech zdarma
 
 V tomto článku zvolíte možnost snadného testování služby Speech Service zdarma, abyste mohli zjistit, co služba může dělat, a rozhodnout se, jestli je pro vaše potřeby nejvhodnější. V závislosti na vaší situaci a případu použití vyberte jednu z těchto dvou možností:
 
@@ -52,7 +52,7 @@ Jakmile budete mít účet Microsoft, navštivte [stránku registrace do Azure](
 
 Postup přidání prostředku služby řeči (bezplatná nebo placená úroveň) do účtu Azure:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účet Microsoft.
+1. Přihlaste se na webu [Azure Portal](https://portal.azure.com/) pomocí svého účtu Microsoft.
 
 1. V levém horním rohu portálu vyberte **vytvořit prostředek** . Pokud se vám nepovede **vytvořit prostředek**, můžete ho vždycky najít tak, že v levém horním rohu vyberete sbalenou nabídku:
 
@@ -87,7 +87,7 @@ Pokud chcete přejít z jednoho předplatného do jiného, například když vyp
 
 ## <a name="about-regions"></a>O oblastech
 
-- Pokud vaše aplikace používá [sadu Speech SDK](speech-sdk.md), při vytváření konfigurace řeči zadáte kód oblasti `westus`, například.
+- Pokud vaše aplikace používá [sadu Speech SDK](speech-sdk.md), při vytváření konfigurace řeči zadáte kód oblasti, například `westus` .
 - Pokud vaše aplikace používá jedno z [rozhraní REST API](rest-apis.md)služby pro rozpoznávání řeči, je tato oblast součástí identifikátoru URI koncového bodu, který používáte při provádění požadavků.
 - Klíče vytvořené pro oblast jsou platné pouze v této oblasti. Při pokusu o jejich použití s ostatními oblastmi dojde k chybám ověřování.
 
@@ -96,5 +96,5 @@ Pokud chcete přejít z jednoho předplatného do jiného, například když vyp
 Projděte si jeden z našich rychlých startů po deseti minutách nebo se podívejte na naše ukázky sady SDK:
 
 > [!div class="nextstepaction"]
-> [Rychlý Start: rozpoznání řeči v C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> [ukázky sady SDK pro řeč](speech-sdk.md#sample-source-code)
+> [Rychlý Start: rozpoznávání řeči pomocí funkce Speech CLI](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programmer-tool-spx) 
+>  [Ukázky sady Speech SDK](speech-sdk.md#sample-source-code)

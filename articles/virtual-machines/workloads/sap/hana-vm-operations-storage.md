@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/30/2020
+ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1e0efc2c64a1cbdcc2c83c019f7743406054afe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 074171d658eb4e1e029652c9c0851e082ba043fe
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074029"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053435"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -323,7 +323,45 @@ Proto byste měli zvážit, jak nasadit podobnou propustnost pro ANF svazky, jak
 Dokumentace k nasazení SAP HANA konfigurace škálování na více instancí s pohotovostním uzlem pomocí systému souborů NFS v 4.1, který je hostovaný v ANF, se zveřejňuje v SAP HANA škálování na více instancích [s pohotovostním uzlem na virtuálních počítačích Azure s Azure NetApp Files na SUSE Linux Enterprise Server](./sap-hana-scale-out-standby-netapp-files-suse.md).
 
 
+## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Řešení na vědomí nákladů pomocí služby Azure Premium Storage
+Zatím řešení Azure Premium Storage popsané v tomto dokumentu najdete v části [řešení s využitím služby Premium Storage a azure akcelerátor zápisu pro virtuální počítače řady Azure M-Series](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) , která se týkají SAP HANA produkčních scénářů. Jedna z vlastností produkčních konfigurací, které podporují, je oddělení svazků pro SAP HANAá data a znovu se přihlaste do dvou různých svazků. Důvodem takového oddělení je to, že charakteristiky zatížení na svazcích se liší. A že u navrhovaných produkčních konfigurací může být potřeba jiný typ ukládání do mezipaměti nebo dokonce jiné typy úložiště bloků Azure. Produkční podporované konfigurace pomocí Azure blokového úložiště musí být v souladu s smlouvou [SLA s jedním virtuálním počítačem pro Azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/) také.  V případě neprodukčních scénářů se některé z doporučení pro produkční systémy nemusí vztahovat na více systémů, které nejsou v produkčním prostředí. V důsledku toho může být Kombinovaný objem dat HANA a protokolu. I když s některými culprits, jako je například, že nesplňuje určitou propustnost nebo klíčové ukazatele výkonu, které jsou požadovány pro produkční systémy. Dalším aspektem snížení nákladů v takových prostředích může být využití [úložiště Azure SSD úrovně Standard](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#azure-standard-ssd-storage). I když volba neověřuje [smlouvu SLA pro jeden virtuální počítač pro Azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/). 
+
+Méně nákladná alternativa takových konfigurací by mohla vypadat takto:
+
+
+| Skladová položka virtuálního počítače | Paměť RAM | Max. VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | /Hana/data a/Hana/log<br /> prokládaný pomocí LVM nebo MDADM | /hana/shared | Rozsah/root | /usr/sap | vyjádření |
+| --- | --- | --- | --- | --- | --- | --- | -- |
+| DS14v2 | 112 GiB | 768 MB/s | 4 x P6 | 1 × E10 | 1 × E6 | 1 × E6 | Nedosáhne méně než 1 MS latence úložiště<sup>1</sup> . |
+| E16v3 | 128 GiB | 384 MB/s | 4 x P6 | 1 × E10 | 1 × E6 | 1 × E6 | Typ virtuálního počítače není certifikovaný pro HANA <br /> Nedosáhne méně než 1 MS latence úložiště<sup>1</sup> . |
+| M32ts | 192 GiB | 500 MB/s | 3 x P10 | 1 × E15 | 1 × E6 | 1 × E6 | Při použití Akcelerátor zápisu pro kombinované objemy dat a svazků protokolu se omezí frekvence IOPS na 5 000<sup>2</sup> . |
+| E20ds_v4 | 160 GiB | 480 MB/s | 4 x P6 | 1 × E15 | 1 × E6 | 1 × E6 | Nedosáhne méně než 1 MS latence úložiště<sup>1</sup> . |
+| E32v3 | 256 GB | 768 MB/s | 4 x P10 | 1 × E15 | 1 × E6 | 1 × E6 | Typ virtuálního počítače není certifikovaný pro HANA <br /> Nedosáhne méně než 1 MS latence úložiště<sup>1</sup> . |
+| E32ds_v4 | 256 GB | 768 MB/s | 4 x P10 | 1 × E15 | 1 × E6 | 1 × E6 | Nedosáhne méně než 1 MS latence úložiště<sup>1</sup> . |
+| M32ls | 256 GB | 500 MB/s | 4 x P10 | 1 × E15 | 1 × E6 | 1 × E6 | Při použití Akcelerátor zápisu pro kombinované objemy dat a svazků protokolu se omezí frekvence IOPS na 5 000<sup>2</sup> . |
+| E48ds_v4 | 384 GiB | 1 152 MB/s | 6 × P10 | 1 × E20 | 1 × E6 | 1 × E6 | Nedosáhne méně než 1 MS latence úložiště<sup>1</sup> . |
+| E64v3 | 432 GiB | 1 200 MB/s | 6 × P10 | 1 × E20 | 1 × E6 | 1 × E6 | Nedosáhne méně než 1 MS latence úložiště<sup>1</sup> . |
+| E64ds_v4 | 504 GiB | 1200 MB/s |  7 x P10 | 1 × E20 | 1 × E6 | 1 × E6 | Nedosáhne méně než 1 MS latence úložiště<sup>1</sup> . |
+| M64ls | 512 GiB | 1 000 MB/s | 7 x P10 | 1 × E20 | 1 × E6 | 1 × E6 | Při použití Akcelerátor zápisu pro kombinované objemy dat a svazků protokolu se omezí frekvence IOPS na 10 000<sup>2</sup> . |
+| M64s | 1 000 GiB | 1 000 MB/s | 7 x P15 | 1 × E30 | 1 × E6 | 1 × E6 | Při použití Akcelerátor zápisu pro kombinované objemy dat a svazků protokolu se omezí frekvence IOPS na 10 000<sup>2</sup> . |
+| M64ms | 1 750 GiB | 1 000 MB/s | 6 × P20 | 1 × E30 | 1 × E6 | 1 × E6 | Při použití Akcelerátor zápisu pro kombinované objemy dat a svazků protokolu se omezí frekvence IOPS na 10 000<sup>2</sup> . |
+| M128s | 2 000 GiB | 2 000 MB/s |6 × P20 | 1 × E30 | 1 × E10 | 1 × E6 | Při použití Akcelerátor zápisu pro kombinované objemy dat a svazků protokolu se omezí frekvence IOPS na 20 000<sup>2</sup> . |
+| M208s_v2 | 2 850 GiB | 1 000 MB/s | 4 x P30 | 1 × E30 | 1 × E10 | 1 × E6 | Při použití Akcelerátor zápisu pro kombinované objemy dat a svazků protokolu se omezí frekvence IOPS na 10 000<sup>2</sup> . |
+| M128ms | 3 800 GiB | 2 000 MB/s | 5 × P30 | 1 × E30 | 1 × E10 | 1 × E6 | Při použití Akcelerátor zápisu pro kombinované objemy dat a svazků protokolu se omezí frekvence IOPS na 20 000<sup>2</sup> . |
+| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 4 x P40 | 1 × E30 | 1 × E10 | 1 × E6 | Při použití Akcelerátor zápisu pro kombinované objemy dat a svazků protokolu se omezí frekvence IOPS na 10 000<sup>2</sup> . |
+| M416s_v2 | 5 700 GiB | 2 000 MB/s | 4 x P40 | 1 × E30 | 1 × E10 | 1 × E6 | Při použití Akcelerátor zápisu pro kombinované objemy dat a svazků protokolu se omezí frekvence IOPS na 20 000<sup>2</sup> . |
+| M416ms_v2 | 11400 GiB | 2 000 MB/s | 7 x P40 | 1 × E30 | 1 × E10 | 1 × E6 | Při použití Akcelerátor zápisu pro kombinované objemy dat a svazků protokolu se omezí frekvence IOPS na 20 000<sup>2</sup> . |
+
+
+<sup>1</sup> službu [Azure akcelerátor zápisu](../../linux/how-to-enable-write-accelerator.md) nelze použít se rodinou virtuálních počítačů Ev4 a Ev4. V důsledku použití služby Azure Premium Storage nebude latence vstupu/výstupu menší než 1 ms.
+
+<sup>2</sup> rodina virtuálních počítačů podporuje [Azure akcelerátor zápisu](../../linux/how-to-enable-write-accelerator.md), ale je možné, že limit IOPS pro zápis akcelerátoru může omezit možnosti IOPS konfigurace disku.
+
+V případě kombinace dat a svazku protokolu pro SAP HANA by disky vytvářející prokládaný svazek neměly mít povolenou mezipaměť pro čtení nebo mezipaměť pro čtení/zápis.
+
+V seznamu jsou uvedené typy virtuálních počítačů, které nejsou certifikované pro SAP, a to tak, aby se nezobrazovaly jako [SAP HANAý hardwarový adresář](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Připomínky zákazníků bylo, že tyto neuvedené typy virtuálních počítačů byly úspěšně použity pro některé nevýrobní úkoly.
+
+
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete tady:
+Další informace:
 
 - [SAP HANA Průvodce vysokou dostupností pro virtuální počítače Azure](./sap-hana-availability-overview.md).

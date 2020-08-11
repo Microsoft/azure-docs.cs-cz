@@ -10,18 +10,21 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: c6999b67a5c0a0f4ca7cb943ae8de3afd8b6a11e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41085ee629189c32c1bc7196f23805c9c48d154a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097009"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056274"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>Informace o Azure Key Vault obnovení certifikátu
 
 Azure Key Vault umožňuje snadno zřídit, spravovat a nasazovat digitální certifikáty pro vaši síť a povolit zabezpečenou komunikaci pro aplikace. Obecnější informace o certifikátech najdete v tématu [Azure Key Vault certifikátů](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) .
 
 U krátkodobého nepracovního certifikátu nebo zvýšení frekvence rotace certifikátů omezuje nežádoucí osoba rozsah škod.
+
+## <a name="certificate-expiration-notifications"></a>Oznámení o vypršení platnosti certifikátu
+Nejdřív nezapomeňte přidat do svého Key Vault kontakt s certifikátem, abyste mohli dostávat oznámení, když brzy vyprší platnost certifikátů. (např. pomocí rutiny prostředí PowerShell [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0)) nakonfigurujete, kdy se má zobrazit oznámení o vypršení platnosti certifikátu. Pokud chcete nakonfigurovat akci životního cyklu, postupujte podle [zde](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate) .
 
 V trezoru klíčů existují tři kategorie vytvoření certifikátu. Tato příručka vám pomůže pochopit, jak lze dosáhnout obnovení certifikátů.
 -   Certifikáty vytvořené s integrovanou certifikační autoritou (DigiCert nebo GlobalSign)
@@ -53,8 +56,12 @@ Postup je podobný jako při vytváření nového certifikátu a je [tady]( http
 
 Dobrá zpráva. Trezory klíčů Azure se také postará o automatické obnovení certifikátů podepsaných svým držitelem pro své uživatele. Další informace o tom, jak změnit zásady vystavování a aktualizovat atributy akce životního cyklu certifikátu, si můžete přečíst [tady](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate).
 
-### <a name="troubleshoot"></a>Odstranit potíže
+### <a name="troubleshoot"></a>Řešení potíží
 Pokud je certifikát vystavený ve Azure Portal stav zakázáno, přejděte k části zobrazení certifikátu a zobrazte chybovou zprávu pro tento certifikát.
+
+### <a name="frequently-asked-questions"></a>Nejčastější dotazy
+Budou značky replikovány po automatickém obnovení certifikátu?
+Ne, značky nebudou replikovány, pokud uživatel ručně nezkopíruje samotné značky.
 
 ### <a name="see-also"></a>Viz také
 *   [Integrace služby Key Vault s certifikační autoritou DigiCert](how-to-integrate-certificate-authority.md)

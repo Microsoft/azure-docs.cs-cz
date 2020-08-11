@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bc0390ba9bf8d0f80d1533fe6e40b42df0cb5359
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d00b0558f85e18dfb53736d89fead953cc01ee60
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835710"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053163"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v rámci distribucí systému Linux pomocí [klienta jádra protokolu SMB](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby, jak připojit sdílenou složku Azure: na vyžádání pomocí `mount` příkazu a po spuštění vytvořením položky v `/etc/fstab` .
@@ -26,7 +26,7 @@ Doporučený způsob, jak připojit sdílenou složku Azure v systému Linux, je
 | CentOS | 7 + |  7.5 + |
 | Debian | 8 + | 10+ |
 | openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12+ | 12 SP3 + |
+| SUSE Linux Enterprise Server | 12+ | 12 SP2 + |
 
 Pokud používáte distribuci systému Linux, která není uvedená v předchozí tabulce, můžete zjistit, jestli vaše distribuce systému Linux podporuje protokol SMB 3,0 se šifrováním, a to kontrolou verze jádra systému Linux. SMB 3,0 se šifrováním bylo přidáno do jádra Linux verze 4,11. `uname`Příkaz vrátí verzi používaného jádra systému Linux:
 
@@ -34,7 +34,7 @@ Pokud používáte distribuci systému Linux, která není uvedená v předchoz�
 uname -r
 ```
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**Ujistěte se, že je nainstalovaný balíček CIFS-util.**  

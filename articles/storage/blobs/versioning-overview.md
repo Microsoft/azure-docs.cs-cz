@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2085f0e8a148e27914b517f25e48894009592dd2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 494c1fc1c1c91538240258ab0517c7ff79bdfa74
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498595"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056529"
 ---
 # <a name="blob-versioning-preview"></a>Správa verzí objektů BLOB (Preview)
 
@@ -24,6 +24,8 @@ Chcete-li automaticky zachovat předchozí verze objektu, můžete povolit sprá
 Správa verzí objektů BLOB je povolená v účtu úložiště a platí pro všechny objekty BLOB v účtu úložiště. Po povolení správy verzí objektů BLOB pro účet úložiště Azure Storage automaticky zachovává verze všech objektů BLOB v účtu úložiště.
 
 Microsoft doporučuje používat správu verzí objektů BLOB k údržbě předchozích verzí objektu BLOB pro zajištění ochrany dat ve vynikajícím formátu. Pokud je to možné, použijte místo snímků objektů BLOB vytváření verzí objektů blob, abyste zachovali předchozí verze. Snímky objektů BLOB poskytují podobné funkce v tom, že udržují dřívější verze objektu blob, ale snímky musí být v aplikaci zachované ručně.
+
+Informace o tom, jak povolit správu verzí objektů blob, najdete v tématu [povolení a správa verzí objektů BLOB](versioning-enable.md).
 
 > [!IMPORTANT]
 > Správa verzí objektů BLOB vám neumožňuje obnovit z náhodného odstranění účtu úložiště nebo kontejneru. Pokud chcete zabránit nechtěnému odstranění účtu úložiště, nakonfigurujte na prostředku účtu úložiště zámek **CannotDelete** . Další informace o uzamykání prostředků Azure najdete v tématu [uzamčení prostředků, aby se zabránilo neočekávaným změnám](../../azure-resource-manager/management/lock-resources.md).
@@ -177,9 +179,9 @@ Správa verzí objektů BLOB je navržená tak, aby chránila vaše data před n
 
 Následující tabulka uvádí, které akce RBAC podporují odstranění objektu BLOB nebo verze objektu BLOB.
 
-| Description | Operace Blob service | Vyžaduje se akce s daty RBAC. | Integrovaná podpora rolí RBAC |
+| Popis | Operace Blob service | Vyžaduje se akce s daty RBAC. | Integrovaná podpora rolí RBAC |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| Odstraňuje se aktuální verze objektu BLOB. | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE** | Přispěvatel dat objektu BLOB služby Storage |
+| Odstraňuje se aktuální verze objektu BLOB. | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE** | Přispěvatel dat v objektech blob služby Storage |
 | Odstraňuje se verze | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/deleteBlobVersion/Action** | Vlastník dat objektu BLOB služby Storage |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Parametry sdíleného přístupového podpisu (SAS)
@@ -204,7 +206,8 @@ Správa verzí objektů BLOB je dostupná ve verzi Preview v následujících ob
 - Kanada – východ
 - Střední Kanada
 
-Verze Preview je určena pouze pro neprodukční použití.
+> [!IMPORTANT]
+> Verze Preview objektu BLOB je určená jenom pro neprodukční použití. Smlouvy o úrovni produkčních služeb (SLA) nejsou aktuálně k dispozici.
 
 Verze 2019-10-10 a vyšší z Azure Storage REST API podporuje správu verzí objektů BLOB.
 
@@ -226,7 +229,7 @@ Pokud se chcete zaregistrovat ve verzi Preview, použijte PowerShell nebo Azure 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Pokud se chcete zaregistrovat v prostředí PowerShell, zavolejte příkaz [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) .
+Pokud se chcete zaregistrovat v prostředí PowerShell, zavolejte příkaz [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) .
 
 ```powershell
 # Register for blob versioning (preview)
@@ -242,8 +245,8 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 Pokud se chcete zaregistrovat v Azure CLI, zavolejte příkaz [AZ Feature Register](/cli/azure/feature#az-feature-register) .
 
 ```azurecli
-az feature register --namespace Microsoft.Storage \
-    --name Versioning
+az feature register --namespace Microsoft.Storage --name Versioning
+az provider register --namespace 'Microsoft.Storage'
 ```
 
 ---
@@ -266,8 +269,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 Pokud chcete zjistit stav registrace pomocí Azure CLI, zavolejte příkaz [AZ Feature](/cli/azure/feature#az-feature-show) .
 
 ```azurecli
-az feature show --namespace Microsoft.Storage \
-    --name Versioning
+az feature show --namespace Microsoft.Storage --name Versioning
 ```
 
 ---
@@ -318,7 +320,7 @@ Ve scénáři 4 byl základní objekt BLOB zcela aktualizován a neobsahuje žá
 
 ![Prostředky Azure Storage](./media/versioning-overview/versions-billing-scenario-4.png)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Povolení správy verzí objektů blob](versioning-enable.md)
 - [Vytvoření snímku objektu BLOB](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 53b1c22e93c342373cae2bbb14958f4810a79630
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bb2a7d8ef55e993726b185e5652c8dff9e96b23e
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092316"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056359"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Kurz: použití R k vytvoření modelu Machine Learning (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ V tomto kurzu provedete následující úlohy:
 > * Nasazení koncového bodu předpovědi
 > * Testování modelu z R
 
-Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
@@ -102,22 +102,15 @@ Nastavení pro vývojovou práci v tomto kurzu zahrnuje následující akce:
 * Vytvoření vzdáleného výpočetního cíle pro použití pro školení
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
-
- * Nainstalujte nejnovější verzi z CRAN.
-
-    ```R
-    # install the latest version from CRAN
-    install.packages("azuremlsdk")
-    azuremlsdk::install_azureml(envname = 'r-reticulate')
-    ```
+Instance COMPUTE už má nainstalovanou nejnovější verzi R SDK z CRAN. Pokud chcete místo toho nainstalovat vývojovou verzi z GitHubu, použijte následující příkaz:
     
-* Nebo nainstalujte vývojovou verzi z GitHubu.
+```R
+remotes::install_github('https://github.com/Azure/azureml-sdk-for-r')
+azuremlsdk::install_azureml()
+```
 
-    ```R
-    # or install the development version from GitHub
-    remotes::install_github('https://github.com/Azure/azureml-sdk-for-r')
-    azuremlsdk::install_azureml(envname = 'r-reticulate')
-    ```
+> [!WARNING]
+> Pokud se během procesu instalace zobrazí výzva " `Would you like to install Miniconda? [Y/n]:` ", Odpovězte prosím na "", `n` protože výpočetní instance už je Anaconda nainstalovaná a instalace Miniconda není potřeba.
 
 Nyní pokračujte a naimportujte balíček **azuremlsdk** .
 

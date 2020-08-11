@@ -9,18 +9,18 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 95fd62584ef73f3f2f198c84913652f460fc5b1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465537"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053622"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Mapování vlastní domény na koncový bod Azure Blob Storage
 
 Můžete namapovat vlastní doménu na koncový bod služby BLOB Service nebo na koncový bod [statického webu](storage-blob-static-website.md) . 
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > Toto mapování funguje pouze pro subdomény (například: `www.contoso.com` ). Pokud chcete, aby byl váš webový koncový bod dostupný v kořenové doméně (například: `contoso.com` ), budete muset použít Azure CDN. Pokyny najdete v části [Mapování vlastní domény s povoleným protokolem HTTPS](#enable-https) v tomto článku. Vzhledem k tomu, že v této části tohoto článku je umožněna kořenová doména vlastní domény, je krok v této části pro povolení protokolu HTTPS volitelný. 

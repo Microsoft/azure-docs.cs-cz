@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0ee138ac41557554ae4b8fde8c9178336fd8d5db
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 85ec94ccf853d4f8b02a14ba08e9515170b36b5e
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387774"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054796"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Plánování nasazení jednotného přihlašování
 
@@ -324,3 +324,5 @@ Následující odkazy představují scénáře řešení potíží. Možná bude
 [Přístup s jednotným přihlašováním](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 [Kurz jednotného přihlašování k aplikacím](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+
+[Stažení dokumentu White Paper – plán nasazení s jednotným přihlašováním](https://aka.ms/SSODeploymentPlan)

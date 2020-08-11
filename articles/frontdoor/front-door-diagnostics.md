@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: f57c0353989cfcf924042d202bd80a57b476507b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 249b2406f048709fd7e4f76f8272b3158708e5bb
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322309"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056427"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Monitorování metrik a protokolů v frontách Azure na předních dveřích
 
@@ -29,16 +29,16 @@ Pomocí front-dveří Azure můžete monitorovat prostředky následujícími zp
 
 Metriky jsou funkce pro určité prostředky Azure, které umožňují zobrazit čítače výkonu na portálu. K dispozici jsou následující metriky front dveří:
 
-| Metrika | Zobrazovaný název metriky | Jednotka | Dimenze | Description |
+| Metrika | Zobrazovaný název metriky | Jednotka | Dimenze | Popis |
 | --- | --- | --- | --- | --- |
-| RequestCount | Počet požadavků | Počet | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet požadavků klientů poskytovaných předními dveřmi.  |
+| RequestCount | Počet požadavků | Count | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet požadavků klientů poskytovaných předními dveřmi.  |
 | RequestSize | Velikost požadavku | Bajty | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet bajtů odeslaných jako požadavek od klientů do předních dveří. |
 | ResponseSize | Velikost odpovědi | Bajty | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Počet bajtů odeslaných jako odpověď z front-dveří klientům. |
 | TotalLatency | Celková latence | Milisekund | Stavu protokolu http</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Čas vypočítaný z požadavku klienta obdrženého předními dvířky, dokud klient nepotvrdí poslední bajt odpovědi z předních dveří. |
-| BackendRequestCount | Počet požadavků back-endu | Počet | Stavu protokolu http</br>HttpStatusGroup</br>Back-end | Počet požadavků odeslaných z předních dveří do back-endu. |
+| BackendRequestCount | Počet požadavků back-endu | Count | Stavu protokolu http</br>HttpStatusGroup</br>Back-end | Počet požadavků odeslaných z předních dveří do back-endu. |
 | BackendRequestLatency | Latence žádosti back-endu | Milisekund | Back-end | Čas vypočítaný z doby, kdy byla žádost odeslána přes dvířka do back-endu, dokud přední dveře nedostaly poslední bajt odezvy z back-endu. |
 | BackendHealthPercentage | Procento stavu back-endu | Procento | Back-end</br>Problémových | Procento úspěšných sond stavu z předních dveří do back-endu. |
-| WebApplicationFirewallRequestCount | Počet požadavků firewallu webových aplikací | Počet | PolicyName</br>RuleName</br>Akce | Počet požadavků klientů zpracovaných zabezpečením aplikační vrstvy předních dveří. |
+| WebApplicationFirewallRequestCount | Počet požadavků firewallu webových aplikací | Count | PolicyName</br>RuleName</br>Akce | Počet požadavků klientů zpracovaných zabezpečením aplikační vrstvy předních dveří. |
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>Protokoly aktivit
 
@@ -91,7 +91,7 @@ Přední dveře aktuálně poskytují protokoly diagnostiky (v dávce po hodiná
 | RulesEngineMatchNames | Názvy pravidel, která požadavek odpovídá. |
 | Tato SecurityProtocol | Verze protokolu TLS/SSL používaná požadavkem nebo hodnotou null, pokud není šifrování. |
 | SentToOriginShield | Logické pole představující, zda v prvním prostředí chyběla mezipaměť a žádost byla odeslána do místní mezipaměti. Ignorujte toto pole, pokud je pravidlo směrování přesměrování nebo když nemá povoleno ukládání do mezipaměti. |
-| TimeTaken | Doba, kterou trvala akce, v milisekundách. |
+| TimeTaken | Doba od prvního bajtu žádosti do posledního bajtu odpovědi v sekundách. |
 | TrackingReference | Jedinečný referenční řetězec, který identifikuje požadavek, který je obsluhován předními dvířky, je také odeslán jako hlavička X-Azure-ref na klienta. Vyžaduje se pro hledání podrobností v protokolech přístupu pro konkrétní požadavek. |
 | UserAgent | Typ prohlížeče, který klient použil. |
 
@@ -99,8 +99,8 @@ Přední dveře aktuálně poskytují protokoly diagnostiky (v dávce po hodiná
 
 | Scénáře | Počet položek protokolu | POP | BackendHostname | SentToOriginShield | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Pravidlo směrování bez povoleného ukládání do mezipaměti | 1 | Hraniční kód POP | Back-end, kde byl požadavek předán | False | CONFIG_NOCACHE |
-| Pravidlo směrování s povoleným ukládáním do mezipaměti. Přístup do mezipaměti na hraničním okně Edge | 1 | Hraniční kód POP | Obsahovat | False | KLEPNUTÍ |
+| Pravidlo směrování bez povoleného ukládání do mezipaměti | 1 | Hraniční kód POP | Back-end, kde byl požadavek předán | Ne | CONFIG_NOCACHE |
+| Pravidlo směrování s povoleným ukládáním do mezipaměti. Přístup do mezipaměti na hraničním okně Edge | 1 | Hraniční kód POP | Obsahovat | Ne | KLEPNUTÍ |
 | Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na hraničním zařízení POP, ale přístupy do mezipaměti v nadřazené mezipaměti | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. prázdné | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. PARTIAL_HIT |
 | Pravidlo směrování s povoleným ukládáním do mezipaměti. Neúspěšné přístupy do mezipaměti na úrovni POP hraničních i nadřazených cache | 2 | 1. hraniční kód POP</br>2. kód POP nadřazené mezipaměti | 1. název hostitele POP nadřazené mezipaměti</br>2. back-end, který pomáhá naplnit mezipaměť | 1. true</br>2. false | 1. NEÚSPĚŠNÉ</br>2. NEÚSPĚŠNÉ |
 

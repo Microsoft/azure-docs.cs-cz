@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 091555bac780f3abc7089d6214d0f9a8cfbf98cd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518432"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055373"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Použití podmínky umístění v zásadách podmíněného přístupu 
 
@@ -190,7 +190,7 @@ Při vytváření nebo aktualizaci pojmenovaných umístění můžete pro hroma
 
 Pokud používáte cloudové proxy hostované nebo řešení sítě VPN, IP adresa Azure AD používá při vyhodnocování zásad je IP adresa proxy serveru. Záhlaví X-předané (XFF), které obsahuje veřejnou IP adresu uživatele, se nepoužívá, protože neexistuje žádné ověření, které pochází z důvěryhodného zdroje, takže by mohla představovat metodu pro Faking IP adresu.
 
-Pokud je cloudový proxy server, je možné použít zásadu, která vyžaduje zařízení připojené k doméně, nebo Corpnet deklaraci identity v rámci AD FS.
+Pokud je cloudový proxy server, můžete použít zásadu, která vyžaduje, aby bylo možné použít hybridní zařízení připojené k Azure AD, nebo Corpnet deklaraci identity v rámci služby AD FS.
 
 ### <a name="api-support-and-powershell"></a>Podpora rozhraní API a prostředí PowerShell
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: vytvoření a otestování brány NAT – Azure CLI'
+title: Vytvoření a otestování brány NAT – Azure CLI
 titlesuffix: Azure Virtual Network NAT
 description: V tomto kurzu se dozvíte, jak vytvořit bránu NAT pomocí Azure CLI a testovat službu NAT.
 services: virtual-network
@@ -10,17 +10,17 @@ Customer intent: I want to test a NAT gateway for outbound connectivity for my v
 ms.service: virtual-network
 ms.subservice: nat
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/11/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1cd3f9aa429e02bd3666e47acf2f4c58761b0d81
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7d4467e557105100fc32940c05fa349722689867
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494651"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054353"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Kurz: Vytvoření brány NAT pomocí Azure CLI a testování služby NAT
 

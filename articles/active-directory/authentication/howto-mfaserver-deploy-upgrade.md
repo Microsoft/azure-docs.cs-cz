@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f242b4a7e984ceeb183547cb3a949927f3c91da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebe40cd68074d4857b9869f29173ec3e6f78379d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653100"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053996"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Upgrade na nejnovější server Azure Multi-Factor Authentication
 
@@ -41,7 +41,7 @@ Postup upgradu na první pohled:
 4. Spusťte nový instalační program na každém serveru MFA. Nejprve upgradujte podřízené servery, protože mohou číst starý datový soubor, který je replikován hlavním serverem.
 
    > [!NOTE]
-   > Při upgradu serveru by se měl odebrat z libovolného LoadBalancing nebo sdílení provozu s jinými MFA servery.
+   > Při upgradu serveru by se měl odebrat z jakéhokoli vyrovnávání zatížení nebo sdílení přenosů s jinými MFA servery.
    >
    > Před spuštěním instalačního programu nemusíte odinstalovat aktuální MFA Server. Instalační program provede místní upgrade. Instalační cesta je převzata z registru z předchozí instalace, takže se nainstaluje do stejného umístění (například C:\Program Files\Multi-Factor Authentication Server).
   

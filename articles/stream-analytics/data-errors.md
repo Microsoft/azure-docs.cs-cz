@@ -5,17 +5,17 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.date: 03/27/2020
-ms.openlocfilehash: 725d1cf38a0c7f6de02addc62577e397a935af94
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 08/07/2020
+ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041043"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053146"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Chyby Azure Stream Analytics dat
 
-Chyby dat jsou chyby, ke kterým došlo při zpracování dat.  K těmto chybám dochází nejčastěji během operací zrušení serializace, serializace a zápisu dat.  Pokud dojde k chybám dat, Stream Analytics zapisuje podrobné informace a ukázkové události do protokolů prostředků.  V některých případech je souhrn těchto informací k dispozici také prostřednictvím oznámení na portálu.
+Chyby dat jsou chyby, ke kterým došlo při zpracování dat.  K těmto chybám dochází nejčastěji během operací zrušení serializace, serializace a zápisu dat.  Pokud dojde k chybám dat, Stream Analytics zapisuje podrobné informace a ukázkové události do protokolů prostředků. Pokud chcete získat další podrobnosti, povolte v úloze diagnostické protokoly. V některých případech je souhrn těchto informací k dispozici také prostřednictvím oznámení na portálu.
 
 Tento článek popisuje různé typy chyb, příčiny a podrobnosti o chybách vstupních a výstupních dat v protokolu prostředků.
 

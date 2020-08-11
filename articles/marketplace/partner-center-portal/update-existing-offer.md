@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: 33e7a97f4b82bd3d7e82532fe2f0a5e3d80c73f5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ca106625acf28aded0009fd09022843f1016faf3
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006787"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056138"
 ---
-# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualizace stávající nabídky na komerčním marketplace
+# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualizace stávající nabídky na komerčním webu Marketplace
 
 Stávající nabídky si můžete prohlédnout na kartě **Přehled** na [portálu komerčního webu Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) v partnerském centru.
 
-Aktualizace stávající nabídky, která je aktuálně živá na webu Marketplace:
+Aktualizace stávající nabídky, která je v současnosti živá na komerčním webu Marketplace:
 
 1. Vyberte název nabídky, kterou chcete aktualizovat. Stav nabídky může být uveden jako **Náhled**, **Live**, **publikování probíhá**, **koncept**, **nutná pozornost**nebo **není k dispozici** (Pokud jste se předtím rozhodli tuto nabídku přestat prodávat). Po výběru se otevře stránka s **přehledem nabídky** pro tuto nabídku.
 2. Vyberte možnost **aktualizovat** na kartě na stránce Přehled nabídky nebo položku nabídky na levém navigačním panelu pro oblast, kterou chcete aktualizovat. Můžete chtít aktualizovat **nastavení nabídek**, **vlastnosti**, **seznam nabídek**, **Náhled**, **technickou konfiguraci**, **Přehled plánu**nebo **testovací jednotku**.
@@ -74,7 +74,7 @@ Teď, když jste plán skryli se starou cenou, vytvoříte kopii tohoto plánu s
 1. Vyberte **Uložit koncept**.
 1. Po dokončení všech požadovaných sekcí pro nový plán vyberte **zkontrolovat a publikovat**. Tím se vaše nabídka pošle na kontrolu a publikování. Další podrobnosti najdete na [stránce věnované kontrole a publikování nabídky na komerčním webu Marketplace](../review-publish-offer.md) .
 
-## <a name="compare-changes-to-marketplace-offers"></a>Porovnat změny nabídek Marketplace
+## <a name="compare-changes-to-commercial-marketplace-offers"></a>Porovnání změn na komerčních nabídkách Marketplace
 
 Změny, které provedete v nabídce [Publikováno](#compare-changes-to-published-offer) nebo ve [verzi Preview](#compare-changes-to-a-preview-offer) , můžete auditovat ještě před tím, než je provedete pomocí **porovnání**.
 
@@ -161,11 +161,13 @@ Pokud chcete nabídku publikovat později, budete muset spustit proces publikov�
 
 ## <a name="stop-selling-an-offer-or-plan"></a>Zastavení prodeje nabídky nebo plánu
 
+Z různých důvodů se můžete rozhodnout odebrat seznam nabídek z komerčního tržiště Microsoftu. Odebrání nabídky zajišťuje, že noví zákazníci už nebudou moct koupit nebo nasadit vaši nabídku, ale nemá žádný vliv na stávající zákazníky.
+
 Pokud chcete ukončit prodej nabídky po jejím publikování, vyberte možnost **ukončit prodej** na stránce s **přehledem nabídky** .
 
-Jakmile ověříte, že chcete ukončit prodej této nabídky, už během několika hodin se na webu Marketplace nebude zobrazovat a žádní noví zákazníci je nebudou moct stáhnout.
+Po potvrzení, že chcete ukončit prodej této nabídky, už během několika hodin nebude vidět na komerčním webu Marketplace a žádní noví zákazníci je nebudou moct stáhnout.
 
-Pokud chcete ukončit prodej plánu, vyberte **zastavit prodej** na stránce **Přehled plánu** . Možnost ukončit prodej plánu je dostupná jenom v případě, že nabídka obsahuje víc než jeden plán. Můžete zvolit, že chcete ukončit prodej jednoho plánu, aniž by to mělo vliv na jiné plány v rámci vaší nabídky. Po potvrzení, že chcete ukončit prodej plánu, je nutné znovu publikovat nabídku, aby se změna projevila. Po opětovném publikování nabídky už se plán na webu Marketplace nebude zobrazovat a žádní noví zákazníci je nebudou moct stáhnout.
+Pokud chcete ukončit prodej plánu, vyberte **zastavit prodej** na stránce **Přehled plánu** . Možnost ukončit prodej plánu je dostupná jenom v případě, že nabídka obsahuje víc než jeden plán. Můžete zvolit, že chcete ukončit prodej jednoho plánu, aniž by to mělo vliv na jiné plány v rámci vaší nabídky. Po potvrzení, že chcete ukončit prodej plánu, je nutné znovu publikovat nabídku, aby se změna projevila. Po opětovném publikování nabídky se plán už nebude zobrazovat na komerčním webu Marketplace a žádní noví zákazníci je nebudou moct stáhnout.
 
 Všichni zákazníci, kteří si nabídku nebo plán dříve získali, ho můžou dál používat. Můžou je znovu stáhnout, ale nebudou dostávat aktualizace, pokud nabídku aktualizujete a znovu publikujete nebo naplánujete později.
 

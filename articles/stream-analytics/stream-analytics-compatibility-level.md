@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087861"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056512"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
 
@@ -142,11 +142,11 @@ V úrovni kompatibility 1,1 jsou představeny tyto hlavní změny:
 
 **úroveň 1,1:** CREATE TABLE umožňuje zadat silné schéma. Modul Stream Analytics ověří, že data odpovídají tomuto schématu. Pomocí tohoto modelu může příkaz Filtrovat události s hodnotami NaN.
 
-### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>Zakázat automatické přetypování pro řetězce DateTime ve formátu JSON
+### <a name="disable-automatic-conversion-of-datetime-strings-to-datetime-type-at-ingress-for-json"></a>Zakázat automatický převod řetězců DateTime na typ DateTime v příchozím přenosu pro JSON
 
-**úroveň 1,0:** Analyzátor JSON automaticky přesměruje řetězcové hodnoty s informacemi o datu a času nebo zóně na typ DateTime a pak je převede na UTC. Výsledkem tohoto chování je ztráta informací o časovém pásmu.
+**úroveň 1,0:** Analyzátor JSON automaticky převede hodnoty řetězců s informacemi o datu a času nebo zóně na typ DATETIME při příchozím přenosu, takže hodnota okamžitě ztratí původní formátování a informace o časovém pásmu. Vzhledem k tomu, že se jedná o vstup, i když se toto pole v dotazu nepoužilo, je převedeno na UTC DateTime.
 
-**úroveň 1,1:** Neexistují žádné další automatické přetypování řetězcových hodnot s informacemi o datu a času nebo zóně k typu DateTime. V důsledku toho se uchovávají informace o časovém pásmu.
+**úroveň 1,1:** Neexistuje žádný automatický převod řetězcových hodnot s informacemi o datu a čase nebo zóně na typ DATETIME. V důsledku toho jsou uchovávány informace o časovém pásmu a původní formátování. Pokud je však pole NVARCHAR (MAX) použito v dotazu jako součást výrazu DATETIME (například funkce DATEADD), je převedeno na typ DATETIME pro provedení výpočtu a ztratí původní formulář.
 
 ## <a name="next-steps"></a>Další kroky
 

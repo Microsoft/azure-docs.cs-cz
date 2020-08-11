@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření brány NAT – šablona Správce prostředků'
+title: Vytvoření brány NAT – šablona Správce prostředků
 titleSuffix: Azure Virtual Network NAT
 description: V tomto rychlém startu se dozvíte, jak vytvořit bránu NAT pomocí šablony Azure Resource Manager.
 services: load-balancer
@@ -10,26 +10,26 @@ Customer intent: I want to create a NAT gateway by using an Azure Resource Manag
 ms.service: virtual-network
 ms.subservice: nat
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: fbc8b48f4ff6a6df687d45a53008a159c5322084
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: fc4804070e0fa4ca6e9e54dcf6e04aafcc17f91a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84703566"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053894"
 ---
-# <a name="tutorial-create-a-nat-gateway---resource-manager-template"></a>Kurz: Vytvoření brány NAT – šablona Správce prostředků
+# <a name="create-a-nat-gateway---resource-manager-template"></a>Vytvoření brány NAT – šablona Správce prostředků
 
 Začněte používat službu Virtual Network NAT pomocí Azure Resource Manager šablony.  Tato šablona nasadí virtuální síť, prostředek brány NAT a virtuální počítač s Ubuntu. Virtuální počítač Ubuntu je nasazený do podsítě, která je přidružená k prostředku brány NAT.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="create-a-nat-gateway-and-supporting-resources"></a>Vytvoření brány NAT a podpůrných prostředků
 
@@ -101,7 +101,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
 ```
 
-**portál Azure**
+**Azure Portal**
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
 
@@ -136,7 +136,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech
 Remove-AzResourceGroup -Name myResourceGroupNAT
 ```
 
-**portál Azure**
+**Azure Portal**
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, bránu NAT a všechny související prostředky. Vyberte skupinu prostředků **myResourceGroupNAT** , která obsahuje bránu NAT, a pak vyberte **Odstranit**.
 

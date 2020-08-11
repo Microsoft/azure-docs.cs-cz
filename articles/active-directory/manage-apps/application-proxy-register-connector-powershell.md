@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea90c80d9edbefe9df05a5d64da612a89c3b251f
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: a5fc1b84e624828d7feb64bd53e8fe8ffff2a7ff
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850818"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054830"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Vytvoření skriptu bezobslužné instalace pro konektor Azure Proxy aplikací služby AD
 
@@ -37,6 +37,9 @@ Tato funkce je užitečná v případě, že chcete:
 Aby [konektor proxy aplikací](application-proxy-connectors.md) fungoval, musí být zaregistrovaný v adresáři služby Azure AD pomocí správce aplikace a hesla. Tyto informace se obvykle zadávají při instalaci konektoru v automaticky otevíraném dialogovém okně, ale k automatizaci tohoto procesu můžete použít PowerShell.
 
 Existují dva kroky pro bezobslužnou instalaci. Nejdřív nainstalujte konektor. Za druhé Zaregistrujte konektor u služby Azure AD.
+
+> [!IMPORTANT]
+> Pokud instalujete konektor pro Azure Government Cloud zkontrolujte [požadavky](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) a [kroky instalace](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud). K tomu je potřeba povolit přístup k jiné sadě adres URL a další parametr ke spuštění instalace.
 
 ## <a name="install-the-connector"></a>Instalace konektoru
 K instalaci konektoru bez jeho registrace použijte následující postup:

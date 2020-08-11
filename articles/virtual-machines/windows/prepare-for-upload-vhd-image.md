@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: 6010c67b531d0f1ebb0ed836062cd5e323e5474c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b5124a0336773412ae9c36a32a0f6f86da62a31
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083510"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056240"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava disku VHD nebo VHDX s Windows pro nahrání do Azure
 
@@ -421,7 +421,7 @@ V ideálním případě byste měli udržovat počítač aktualizovaný na *úro
 
 <br />
 
-|        Komponenta        |     Binární     | Windows 7 SP1, Windows Server 2008 R2 SP1 |       Windows 8, Windows Server 2012        | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 |      Windows 10 v1703      | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
+|        Součást        |     Binární     | Windows 7 SP1, Windows Server 2008 R2 SP1 |       Windows 8, Windows Server 2012        | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 |      Windows 10 v1703      | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 | ----------------------- | -------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- | ------------------------------------------- | -------------------------- | ------------------------------------------- | ------------------------------------------- |
 | Storage                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061          | -                                           | -                          | -                                           | -                                           |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.332             | -                                           | -                                           |
@@ -488,6 +488,7 @@ Nástroj Sysprep vyžaduje, aby před provedením plně dešifroval jednotky. Po
 
 1. Přihlaste se k virtuálnímu počítači s Windows.
 1. Spusťte relaci PowerShellu jako správce.
+1. Odstraňte adresář Panther (C:\Windows\Panther).
 1. Změňte adresář na `%windir%\system32\sysprep` . Potom spusťte `sysprep.exe`.
 1. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost **Zadejte systém při spuštění uživatelského rozhraní (OOBE)** a ujistěte se, že je zaškrtnuté políčko **generalizace** .
 

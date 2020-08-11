@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: c811240beea896683f891d9513a657b0689b8824
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0b857cb853add1920e6933a9f1ebfd7a0f61b57f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87488648"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054268"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Požadavky na návrh virtuální sítě a možnosti konfigurace pro Azure Active Directory Domain Services
 
@@ -91,7 +91,7 @@ Překlad adres IP můžete povolit pomocí podmíněného přeposílání DNS na
 
 Spravovaná doména vytvoří během nasazení některé síťové prostředky. Tyto prostředky jsou nutné pro úspěšnou operaci a správu spravované domény a neměli byste je konfigurovat ručně.
 
-| Prostředek Azure                          | Description |
+| Prostředek Azure                          | Popis |
 |:----------------------------------------|:---|
 | Síťová karta                  | Azure služba AD DS hostuje spravovanou doménu na dvou řadičích domény (DCs), které běží na Windows serveru jako virtuální počítače Azure. Každý virtuální počítač má virtuální síťové rozhraní, které se připojuje k podsíti virtuální sítě. |
 | Dynamická standardní veřejná IP adresa      | Azure služba AD DS komunikuje se službou synchronizace a správy pomocí veřejné IP adresy standardní SKU. Další informace o veřejných IP adresách najdete v tématu [typy IP adres a metody přidělování v Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md). |
@@ -110,9 +110,9 @@ Aby mohla spravovaná doména poskytovat služby ověřování a správy, vyžad
 
 | Číslo portu | Protokol | Zdroj                             | Cíl | Akce | Vyžadováno | Účel |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Yes      | Synchronizace s vaším klientem služby Azure AD. |
-| 3389        | TCP      | CorpNetSaw                         | Všechny         | Povolit  | Yes      | Správa vaší domény. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Yes      | Správa vaší domény. |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Ano      | Synchronizace s vaším klientem služby Azure AD. |
+| 3389        | TCP      | CorpNetSaw                         | Všechny         | Povolit  | Ano      | Správa vaší domény. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Všechny         | Povolit  | Ano      | Správa vaší domény. |
 
 Vytvoří se standardní nástroj pro vyrovnávání zatížení Azure, který vyžaduje, aby se tato pravidla mohla umístit. Tato skupina zabezpečení sítě zabezpečuje službu Azure služba AD DS a je potřeba, aby správně fungovala spravovaná doména. Tuto skupinu zabezpečení sítě neodstraňujte. Nástroj pro vyrovnávání zatížení nebude bez něj správně fungovat.
 
@@ -142,6 +142,10 @@ Vytvoří se standardní nástroj pro vyrovnávání zatížení Azure, který v
 
 > [!NOTE]
 > Pokud se pokusíte upravit toto pravidlo skupiny zabezpečení sítě, nemůžete ručně vybrat značku služby *CorpNetSaw* z portálu. Pokud chcete ručně nakonfigurovat pravidlo, které používá značku služby *CorpNetSaw* , musíte použít Azure PowerShell nebo rozhraní příkazového řádku Azure CLI.
+>
+> Pomocí následujícího skriptu můžete například vytvořit pravidlo povolující protokol RDP: 
+>
+> `Get-AzureRmNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzureRmNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "" -DestinationPortRange "3389" -DestinationAddressPrefix "" | Set-AzureRmNetworkSecurityGroup`
 
 ### <a name="port-5986---management-using-powershell-remoting"></a>Port 5986 – Správa pomocí vzdálené komunikace PowerShellu
 

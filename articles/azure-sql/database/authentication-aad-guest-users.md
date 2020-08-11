@@ -9,12 +9,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 07/27/2020
-ms.openlocfilehash: b3abda9787654734b24cc27987921ef40d8070fc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2c8aa39b6819e135181e2d153825e89686359538
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294063"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053758"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>Vytvoření uživatelů Azure AD typu host a nastavení jako správce Azure AD
 
@@ -133,9 +133,9 @@ Postupujte podle těchto kroků a nastavte uživatele hosta Azure AD jako správ
 
 ## <a name="limitations"></a>Omezení
 
-Existuje omezení Azure Portal, které brání výběru uživatele hosta Azure AD jako správce Azure AD pro SQL Database, spravovanou instanci SQL a Azure synapse. Pro účty hostů mimo vaši službu Azure AD, jako je * \@ Outlook.com*, * \@ hotmail.com*, * \@ Live.com*nebo * \@ gmail.com*, se v selektoru pro správu služby AD zobrazí tyto účty, ale jejich zobrazení je šedé a nedá se vybrat. Pomocí výše uvedených [příkazů PowerShellu nebo rozhraní příkazového řádku](#setting-a-guest-user-as-an-azure-ad-admin) nastavte správce Azure AD. Případně skupinu Azure AD obsahujícího uživatele typu Host můžete nastavit jako správce Azure AD pro logický server SQL.
+Existuje omezení Azure Portal, které brání výběru uživatele typu Host služby Azure AD jako spravované instance Azure AD admin pro SQL. Pro účty hostů mimo vaši službu Azure AD, jako je * \@ Outlook.com*, * \@ hotmail.com*, * \@ Live.com*nebo * \@ gmail.com*, se v selektoru pro správu služby AD zobrazí tyto účty, ale jejich zobrazení je šedé a nedá se vybrat. Pomocí výše uvedených [příkazů PowerShellu nebo rozhraní příkazového řádku](#setting-a-guest-user-as-an-azure-ad-admin) nastavte správce Azure AD. Případně skupinu Azure AD obsahujícího uživatele typu Host můžete nastavit jako správce Azure AD pro spravovanou instanci SQL.
 
-Tato funkce bude povolená pro SQL Database a Azure synapse před obecnou dostupností této funkce.
+Tato funkce bude pro spravovanou instanci SQL povolena před všeobecnou dostupností této funkce.
 
 ## <a name="next-steps"></a>Další kroky
 

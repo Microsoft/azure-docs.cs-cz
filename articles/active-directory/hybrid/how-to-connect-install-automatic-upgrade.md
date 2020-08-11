@@ -16,15 +16,15 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 749c97549661f2b2d647f8f7ba718d7696ef8355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcc6de1ce50e86f177023a0a66c436633c8d502c
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359003"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053282"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatický upgrade
-Tato funkce byla představena s [1.1.105.0EM buildu (vydáno 2016. února)](reference-connect-version-history.md#111050).  Tato funkce se aktualizovala v [Build 1.1.561](reference-connect-version-history.md#115610) a teď podporuje další scénáře, které se dřív nepodporovaly.
+Tato funkce byla představena s [1.1.105.0EM buildu (vydáno 2016. února)](reference-connect-version-history.md).  Tato funkce se aktualizovala v [Build 1.1.561](reference-connect-version-history.md) a teď podporuje další scénáře, které se dřív nepodporovaly.
 
 ## <a name="overview"></a>Přehled
 Ujistěte se, že je instalace Azure AD Connect vždycky aktuální, a to díky funkci **automatického upgradu** nikdy jednodušší. Tato funkce je ve výchozím nastavení povolená pro Expresní instalace a upgrady DirSync. Po vydání nové verze se vaše instalace automaticky upgraduje.
@@ -37,7 +37,7 @@ Automatický upgrade je ve výchozím nastavení povolený pro následující:
 
 Aktuální stav automatického upgradu můžete zobrazit pomocí rutiny PowerShellu `Get-ADSyncAutoUpgrade` . Má následující stavy:
 
-| Stav | Komentář |
+| State | Komentář |
 | --- | --- |
 | Povoleno |Automatický upgrade je povolen. |
 | Dočasně blokován. |Nastaveno pouze systémem. Systém nemá v **současné době** nárok na příjem automatických upgradů. |
@@ -71,15 +71,15 @@ Teď můžete zobrazit události související se stavem pro automatický upgrad
 
 Kód výsledku obsahuje předponu s přehledem stavu.
 
-| Předpona kódu výsledku | Description |
+| Předpona kódu výsledku | Popis |
 | --- | --- |
-| Úspěch |Instalace byla úspěšně upgradována. |
+| Success |Instalace byla úspěšně upgradována. |
 | UpgradeAborted |Upgrade zastavil dočasnou podmínku. Bude znovu opakován a očekává se, že bude později úspěšné. |
 | UpgradeNotSupported |Systém má konfiguraci blokující automatickou aktualizaci systému. Zkusí se znovu zjistit, jestli se stav mění, ale očekává se, že je potřeba upgradovat systém ručně. |
 
 Tady je seznam nejběžnějších zpráv, které najdete. Neobsahuje žádné výpisy, ale zpráva výsledku by měla být nejasná s obsahem problému.
 
-| Zpráva výsledku | Description |
+| Zpráva výsledku | Popis |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Do registru nejde zapisovat. |

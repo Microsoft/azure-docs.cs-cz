@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c6cdde3ae63a2f816db7a978557f72b4b60d2677
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439141"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056223"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Kurz: vývoj IoT Edgech modulů pro zařízení se systémem Linux
 
@@ -57,7 +57,7 @@ V následující tabulce jsou uvedeny podporované vývojové scénáře pro **k
 
 V tomto kurzu se naučíte postup vývoje Visual Studio Code. Pokud místo toho chcete použít aplikaci Visual Studio, přečtěte si pokyny v tématu [použití sady Visual studio 2019 k vývoji a ladění modulů pro Azure IoT Edge](how-to-visual-studio-develop-module.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vývojový počítač:
 
@@ -151,6 +151,9 @@ Jakmile se nové řešení načte v okně Visual Studio Code, Seznamte se se sou
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>Zadejte přihlašovací údaje registru pro agenta IoT Edge.
 
 V souboru prostředí jsou uložené přihlašovací údaje pro registr kontejneru, které soubor sdílí s modulem runtime IoT Edge. Modul runtime potřebuje tyto přihlašovací údaje pro vyžádání imagí kontejneru do zařízení IoT Edge.
+
+>[!NOTE]
+>Pokud jste nenahradili hodnotu **localhost: 5000** hodnotou přihlašovacího serveru z služby Azure Container Registry, v kroku [**Vytvoření šablony projektu**](#create-a-project-template) se zobrazí soubor **. env** a oddíl registryCredentials manifestu nasazení. 
 
 Rozšíření IoT Edge se pokusí načíst přihlašovací údaje registru kontejneru z Azure a naplnit je do souboru prostředí. Zkontrolujte, jestli jsou vaše přihlašovací údaje už zahrnuté. Pokud ne, přidejte je nyní:
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 19e02012c31246b3b6b4636ef61154fbade347ce
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 48e3f895fb123429f1bedd106bd92113533c84ae
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494617"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055798"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury řešení s využitím Azure NetApp Files
 Tento článek poskytuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití Azure NetApp Files.  
@@ -44,8 +44,8 @@ Tato část poskytuje odkazy na aplikace systému Windows a SQL Server řešení
 
 ### <a name="file-sharing-and-global-file-caching"></a>Sdílení souborů a globální ukládání souborů do mezipaměti
 
-* [Nasazení Talon/Azure NetApp Files](https://youtu.be/91LKb1qsLIM)
 * [Sestavte si vlastní Azure NFS? Sdílené složky wrestling Linux do cloudu](https://cloud.netapp.com/blog/ma-anf-blg-build-your-own-linux-nfs-file-shares)
+* [Nasazení globální souborové mezipaměti/Azure NetApp Files nasazení](https://youtu.be/91LKb1qsLIM)
 
 ### <a name="sql-server"></a>SQL Server
 

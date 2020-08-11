@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
-ms.openlocfilehash: 5bc6ca30b9dff3686b16fe5237f815f16f849e9e
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: f75731fab9a238ffcac2e620235c9d8c5da97549
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85558479"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053486"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Kurz: nastavení automatických odpovědí na hrozby v Azure Sentinel
 
@@ -60,7 +60,7 @@ Playbooky zabezpečení je možné spustit ručně nebo automaticky. Ruční spo
 Pomocí těchto kroků vytvořte nové PlayBook zabezpečení v Azure Sentinel:
 
 1. Otevřete řídicí panel **Azure Sentinel** .
-2. V části **Správa**vyberte **playbooky**.
+2. V části **Konfigurace**vyberte **playbooky**.
 
    ![Aplikace logiky](./media/tutorial-respond-threats-playbook/playbookimg.png)
 

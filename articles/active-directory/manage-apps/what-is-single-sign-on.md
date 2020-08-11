@@ -1,6 +1,6 @@
 ---
 title: Co je jednotné přihlašování Azure (SSO)?
-description: Naučte se, jak zvolit metodu jednotného přihlašování při konfiguraci aplikací v Azure Active Directory (Azure AD). Používejte jednotné přihlašování, aby uživatelé nemuseli pamatovat hesla pro každou aplikaci a zjednodušili správu správy účtů.
+description: Přečtěte si, jak jednotné přihlašování (SSO) funguje s Azure Active Directory. Použijte jednotné přihlašování, aby uživatelé nemuseli pamatovat hesla pro každou aplikaci. K zjednodušení správy správy účtů taky používejte jednotné přihlašování.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,22 +12,31 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0928cb264dcff43cc0a3e45a8417dcd1e23a1ed3
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 5446d945a81d2630d788a866bda00eb118382b93
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042594"
+ms.locfileid: "88053775"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Co je jednotné přihlašování (SSO)?
 
-Jednotné přihlašování (SSO) přináší zabezpečení a pohodlí, když se uživatelé přihlásí k aplikacím v Azure Active Directory (Azure AD). Tento článek popisuje metody jednotného přihlašování a při konfiguraci aplikací vám pomůže vybrat nejvhodnější metodu jednotného přihlašování.
+Jednotné přihlašování znamená, že se uživatel nemusí přihlašovat ke každé aplikaci, kterou používají. Uživatel se přihlásí jednou a přihlašovací údaje se používají i pro jiné aplikace.
+
+Pokud jste koncový uživatel, pravděpodobně nezáleží na podrobnostech jednotného přihlašování. Chcete používat jenom aplikace, které vám pomůžou být produktivní bez nutnosti zadávat heslo. Své aplikace můžete najít na adrese: https://myapps.microsoft.com .
+ 
+Pokud jste správcem nebo IT specialistem, přečtěte si článek, kde najdete další informace o tom, jak je jednotné přihlašování v Azure implementované.
+
+## <a name="single-sign-on-basics"></a>Základy jednotného přihlašování
+Jednotné přihlašování poskytuje obří přestupnější informace o tom, jak se uživatelé přihlásí a používají aplikace. Systémy ověřování založené na jednotném přihlašování se často nazývají moderní ověřování. Pokud chcete pochopit, co je možné jednotné přihlašování, podívejte se na toto video.
+> [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4]
+
+
+## <a name="choosing-a-single-sign-on-method"></a>Výběr metody jednotného přihlašování
 
 - **S jednotným přihlašováním**se uživatelé přihlásí jednou z účtu pro přístup k zařízením připojeným k doméně, prostředkům společnosti, aplikacím SaaS (software jako služba) a webovým aplikacím. Po přihlášení může uživatel spouštět aplikace z portálu Office 365 nebo z přístupového panelu Azure AD Mojeapl. Správci mohou centralizovat správu uživatelských účtů a automaticky přidávat nebo odebírat přístup uživatelů k aplikacím na základě členství ve skupinách.
 
 - **Bez jednotného přihlašování**si uživatelé musí pamatovat hesla pro konkrétní aplikace a přihlašovat se ke každé aplikaci. Pracovníci IT potřebují vytvořit a aktualizovat uživatelské účty pro každou aplikaci, například Office 365, box a Salesforce. Uživatelé si musí pamatovat hesla a zasílat čas na přihlášení ke každé aplikaci.
-
-## <a name="choosing-a-single-sign-on-method"></a>Výběr metody jednotného přihlašování
 
 Existuje několik způsobů, jak nakonfigurovat aplikaci pro jednotné přihlašování. Výběr metody jednotného přihlašování závisí na tom, jak je aplikace nakonfigurovaná pro ověřování.
 
@@ -197,10 +206,5 @@ Vzhledem k tomu, že tento scénář je nabízený prostřednictvím partnerstv�
 
 Další informace najdete v tématu [Azure Active Directory edice](../fundamentals/active-directory-whatis.md).
 
-## <a name="related-articles"></a>Související články
+## <a name="next-steps"></a>Další kroky
 * [Série rychlý Start při správě aplikací](view-applications-portal.md)
-* [Kurzy integrace aplikací SaaS s Azure Active Directory](../saas-apps/tutorial-list.md)
-* [Konfigurace jednotného přihlašování založeného na heslech](configure-password-single-sign-on-non-gallery-applications.md)
-* [Konfigurace propojených přihlášení](configure-linked-sign-on.md)
-* [Seznámení se správou přístupu k aplikacím](what-is-access-management.md)
-* Odkaz ke stažení: [plán nasazení jednotného přihlašování](https://aka.ms/SSODeploymentPlan).

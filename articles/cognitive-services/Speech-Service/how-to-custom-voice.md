@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 2aacf8881a57f0677177cd341a0ddc63224b26b6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 272367d5311952b45c73febe0e05b1ec2d225261
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402057"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056682"
 ---
 # <a name="get-started-with-custom-voice"></a>Začínáme se službou Custom Voice
 
@@ -56,7 +56,7 @@ Po vytvoření účtu Azure a předplatného služby pro rozpoznávání řeči 
 4. Pokud byste chtěli přepnout na jiné předplatné řeči, použijte ikonu ozubeného kola umístěnou v horním navigačním panelu.
 
 > [!NOTE]
-> Vlastní hlasová služba nepodporuje 30denní bezplatný zkušební klíč. Předtím, než budete moci službu používat, musíte mít v Azure vytvořený klíč F0 nebo S0.
+> Předtím, než budete moci službu používat, musíte mít v Azure vytvořený klíč F0 nebo S0.
 
 ## <a name="how-to-create-a-project"></a>Jak vytvořit projekt
 

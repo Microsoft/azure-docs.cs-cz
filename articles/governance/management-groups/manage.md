@@ -1,14 +1,14 @@
 ---
 title: Jak pracovat se skupinami pro správu – zásady správného řízení Azure
 description: Naučte se zobrazovat, udržovat, aktualizovat a odstraňovat hierarchii skupin pro správu.
-ms.date: 04/15/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: c5a0269935daedb3be478cc27d5ecaf87f3c97f7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 43837dcaed9b9628573ee92244ede542107155f9
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535004"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055135"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa prostředků pomocí skupin pro správu
 
@@ -65,9 +65,7 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 Chcete-li odstranit skupinu pro správu, musí být splněny následující požadavky:
 
-1. Ve skupině pro správu nejsou žádné podřízené skupiny pro správu ani předplatná.
-
-   - Chcete-li přesunout předplatné nebo skupinu pro správu do jiné skupiny pro správu, přečtěte si téma [Přesun skupin pro správu a odběrů v hierarchii](#moving-management-groups-and-subscriptions).
+1. Ve skupině pro správu nejsou žádné podřízené skupiny pro správu ani předplatná. Chcete-li přesunout předplatné nebo skupinu pro správu do jiné skupiny pro správu, přečtěte si téma [Přesun skupin pro správu a odběrů v hierarchii](#moving-management-groups-and-subscriptions).
 
 1. Pro skupinu pro správu musíte mít oprávnění k zápisu (vlastník, přispěvatel nebo přispěvatel skupiny pro správu). Chcete-li zjistit, jaká oprávnění máte, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o rolích Azure najdete v tématu.  
    [Spravujte přístup a oprávnění pomocí RBAC](../../role-based-access-control/overview.md).
@@ -200,7 +198,7 @@ az account management-group show --name 'Contoso' -e -r
 
 Jedním z důvodů, proč vytvořit skupinu pro správu, je seskupit odběry dohromady. Podřízené položky jiné skupiny pro správu lze vytvořit pouze pro skupiny pro správu a odběry. Předplatné, které se přesune do skupiny pro správu, zdědí všechny uživatelské přístupy a zásady z nadřazené skupiny pro správu.
 
-Když přesunete skupinu pro správu nebo předplatné jako podřízenou položku jiné skupiny pro správu, je nutné vyhodnotit hodnotu true.
+Při přesunu skupiny pro správu nebo předplatného, která bude podřízená jiné skupině pro správu, je třeba vyhodnotit tři pravidla jako true.
 
 Pokud provádíte akci přesunutí, budete potřebovat: 
 

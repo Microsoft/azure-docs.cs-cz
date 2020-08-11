@@ -1,71 +1,64 @@
 ---
 title: Monitorování Azure Automation runbooků s upozorněními na metriky
-description: Tento článek popisuje, jak monitorovat Runbooky na základě metrik.
+description: Tento článek popisuje, jak nastavit výstrahu metriky na základě stavu dokončení sady Runbook.
 services: automation
-ms.date: 11/01/2018
+ms.date: 08/10/2020
 ms.topic: article
-ms.openlocfilehash: 20aaee5b699e9721bf9083030604df1385da1915
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8767687f0b72d3469bef570770ac81fa8300097f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828742"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055920"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>Monitorování runbooků s upozorněními metrik
 
-V tomto článku se dozvíte, jak vytvořit výstrahy na základě stavu dokončení runbooků.
+V tomto článku se dozvíte, jak vytvořit [výstrahu metriky](../azure-monitor/platform/alerts-metric-overview.md) na základě stavu dokončování sady Runbook.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k Azure na adrese https://portal.azure.com.
+Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-alert"></a>Vytvoření upozornění
 
 Výstrahy umožňují definovat podmínku, kterou chcete monitorovat, a akci, která se má provést při splnění této podmínky.
 
-V Azure Portal přejděte do svého účtu Automation. V části **monitorování**vyberte **výstrahy** a klikněte na **+ nové pravidlo výstrahy**. Obor pro cíl je již definován pro váš účet Automation.
+1. Spusťte službu Azure Automation v Azure Portal tak, že kliknete na **všechny služby**a pak vyhledáte a vyberete **účty Automation**.
+
+2. V seznamu účtů Automation vyberte účet, pro který chcete vytvořit výstrahu. 
+
+3. V části **monitorování**vyberte **výstrahy** a pak vyberte **+ nové pravidlo výstrahy**. Obor pro cíl je již definován a přidružen k vašemu účtu Automation.
 
 ### <a name="configure-alert-criteria"></a>Konfigurace kritérií výstrahy
 
-1. Klikněte na **+ Přidat kritéria**. Vyberte **metriky** pro **typ signálu**a v tabulce zvolte **Celkový počet úloh** .
+1. Klikněte na **vybrat podmínku**. Vyberte **metriky** pro **typ signálu**a v seznamu zvolte **Celkový počet úloh** .
 
 2. Na stránce **Konfigurovat logiku signálu** je místo, kde můžete definovat logiku, která aktivuje výstrahu. V rámci historického grafu se zobrazí dvě dimenze, název a **stav** **Runbooku** . Dimenze jsou různé vlastnosti metriky, které lze použít k filtrování výsledků. V části **název Runbooku**vyberte sadu Runbook, na které chcete upozornit, nebo ponechte pole prázdné, aby se zobrazila výstraha pro všechny Runbooky. V rozevíracím seznamu **stav**vyberte stav, pro který chcete monitorovat. Název sady Runbook a hodnoty stavu, které se zobrazí v rozevíracím seznamu, jsou pouze pro úlohy, které byly spuštěny v minulém týdnu.
 
-   Pokud chcete upozornit na stav nebo Runbook, který není zobrazen v rozevíracím seznamu, klikněte na **\+** vedle dimenze. Tato akce otevře dialogové okno, které vám umožní zadat vlastní hodnotu, která se v poslední době negenerovala pro tuto dimenzi. Pokud zadáte hodnotu, která pro vlastnost neexistuje, vaše výstraha se neaktivuje.
+   Pokud chcete upozornit na stav nebo sadu Runbook, které nejsou zobrazeny v rozevíracím seznamu, klikněte na možnost **Přidat vlastní hodnotu** vedle dimenze. Tato akce otevře dialogové okno, které vám umožní zadat vlastní hodnotu, která se v poslední době negenerovala pro tuto dimenzi. Pokud zadáte hodnotu, která pro vlastnost neexistuje, vaše výstraha se neaktivuje.
 
    > [!NOTE]
-   > Pokud nepoužijete název pro dimenzi **RunbookName** , pokud existují Runbooky, které splňují kritéria stavu, což zahrnuje skryté systémové Runbooky, zobrazí se upozornění.
+   > Pokud neurčíte název pro dimenzi **název Runbooku** , pokud existují nějaké Runbooky, které splňují kritéria stavu, což zahrnuje skryté systémové Runbooky, zobrazí se upozornění.
+
+    Například pro upozornění, když sada Runbook vrátí stav _selhání_ , kromě určení názvu Runbooku **se nepovedlo**zadat název sady Runbook pro dimenzi **stav** přidat vlastní hodnotu dimenze.
+
+    :::image type="content" source="./media/automation-alert-metric/specify-dimension-custom-value.png" alt-text="Zadat vlastní hodnotu dimenze" border="false":::
 
 3. V části **logika výstrahy**Definujte podmínku a prahovou hodnotu pro výstrahu. V části se zobrazí náhled definované podmínky.
 
-4. Pod položkou **vyhodnoceno na základě**vyberte časové rozpětí pro dotaz a jak často chcete dotaz spuštěn. Pokud například zvolíte za **posledních 5 minut** za **období** a **každou 1 minutu** pro **frekvenci**, výstraha vyhledá počet sad Runbook, které splnily kritéria za posledních 5 minut. Tento dotaz se spouští každou minutu a jakmile se kritéria výstrahy, která jste definovali, už v okně 5 minut nenaleznou, výstraha se vyřeší sám. Jakmile budete hotovi, klikněte na **Hotovo**.
+4. Pod položkou **vyhodnoceno na základě**vyberte časové rozpětí pro dotaz a jak často se má dotaz spouštět. Pokud například zvolíte **dobu**v intervalu **5 minut** za období a **každou 1 minutu** pro **frekvenci**, výstraha vyhledá počet sad Runbook, které splnily kritéria za posledních 5 minut. Tento dotaz se spouští každou minutu a jakmile se kritéria výstrahy, která jste definovali, už v okně 5 minut nenaleznou, výstraha se vyřeší sám. Jakmile budete hotovi, klikněte na **Hotovo**.
 
    ![Vyberte prostředek pro výstrahu.](./media/automation-alert-activity-log/configure-signal-logic.png)
 
-### <a name="define-alert-details"></a>Definice podrobností o upozornění
-
-1. V části **2. Zadejte podrobnosti výstrahy**, zadejte popisný název a popis výstrahy. Nastavte **závažnost** tak, aby odpovídala vaší podmínce upozornění. Existuje pět závažností od 0 do 5. Výstrahy se považují za nezávisle na závažnosti, ale můžete se shodovat se závažností, aby odpovídala vaší obchodní logice.
-
-1. V dolní části oddílu je tlačítko, které umožňuje po dokončení Povolit pravidlo. Ve výchozím nastavení jsou pravidla povolena při vytváření. Pokud vyberete Ne, můžete vytvořit upozornění a vytvoří se v **zakázaném** stavu. Na stránce **pravidla** v Azure monitor můžete vybrat ho a kliknutím na **Povolit** povolit upozornění, až budete připraveni.
-
 ### <a name="define-the-action-to-take"></a>Definujte akci, která se má provést.
 
-1. V části **3. Definujte skupinu akcí**, klikněte na **+ Nová skupina akcí**. Skupina akcí je skupina akcí, které lze použít v rámci více než jedné výstrahy. Ty můžou zahrnovat, ale nejsou omezené, e-mailová oznámení, Runbooky, Webhooky a spousta dalších. Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../azure-monitor/platform/action-groups.md).
+1. V části **Skupina akcí**vyberte **zadat skupinu akcí**. Skupina akcí je skupina akcí, které lze použít v rámci více než jedné výstrahy. Ty můžou zahrnovat, ale nejsou omezené, e-mailová oznámení, Runbooky, Webhooky a spousta dalších. Další informace o skupinách akcí a postupu při jejich vytvoření, které odesílají e-mailové oznámení, najdete v tématu [Vytvoření a Správa skupin akcí](../azure-monitor/platform/action-groups.md).
 
-1. Do pole **Název skupiny akcí** zadejte popisný a krátký název. Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
+### <a name="define-alert-details"></a>Definice podrobností o upozornění
 
-1. V části **Akce** v části **typ akce**vyberte **e-mail/SMS/Push/Voice**.
+1. V části **Podrobnosti pravidla výstrahy**zadejte popisný název a popis výstrahy. Nastavte **závažnost** tak, aby odpovídala vaší podmínce upozornění. Existuje pět závažností od 0 do 5. Výstrahy se považují za nezávisle na závažnosti, ale můžete se shodovat se závažností, aby odpovídala vaší obchodní logice.
 
-1. Na stránce **E-mailové/SMS/nabízené/hlasové oznámení** zadejte název. Zaškrtněte políčko **E-mail** a zadejte platnou e-mailovou adresu, která se má použít.
-
-   ![Konfigurace e-mailové skupiny akcí](./media/automation-alert-activity-log/add-action-group.png)
-
-1. Kliknutím na **OK** zavřete stránku **E-mailové/SMS/nabízené/hlasové oznámení** a kliknutím na **OK** zavřete stránku **Přidat skupinu akcí**. Název zadaný na této stránce je uložen jako **název akce**.
-
-1. Jakmile budete hotovi, klikněte na **Uložit**. Tato akce vytvoří pravidlo, které vás upozorní, když se sada Runbook dokončí s určitým stavem.
-
-> [!NOTE]
-> Když přidáváte e-mailovou adresu do skupiny akcí, pošle se e-mail s oznámením, že se adresa přidala do skupiny akcí.
+1. Ve výchozím nastavení jsou pravidla povolena při vytváření, pokud nevyberete možnost **ne** pro možnost **Povolit pravidlo upozornění při vytvoření**. Pro výstrahy vytvořené v zakázaném stavu je můžete v budoucnu povolit, až budete připraveni. Vyberte **vytvořit pravidlo upozornění** a uložte provedené změny.
 
 ## <a name="receive-notification"></a>Doručení oznámení
 

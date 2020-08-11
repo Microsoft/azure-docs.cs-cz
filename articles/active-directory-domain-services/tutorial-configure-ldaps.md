@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 61e2d4607ebe1b688b2874220a170b2539a2226e
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1164d838a45496a075d356995a60beb967cdfcca
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404170"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054336"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Konfigurace zabezpečeného protokolu LDAP pro Azure Active Directory Domain Services spravovanou doménu
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -265,7 +265,7 @@ Pokud se chcete připojit ke spravované doméně a prohledat ji přes LDAP, pou
 V dalším kroku se připojte ke spravované doméně. Uživatelé (a účty služeb) nemůžou provádět jednoduché vazby LDAP, pokud jste v spravované doméně zakázali synchronizaci hodnot hash hesel protokolu NTLM. Další informace o zakázání synchronizace hodnot hash hesel protokolu NTLM najdete v tématu [zabezpečení spravované domény][secure-domain].
 
 1. Vyberte možnost nabídky **připojení** a pak zvolte **BIND...**.
-1. Zadejte přihlašovací údaje uživatelského účtu patřícího do skupiny *správců řadiče domény AAD* , například *contosoadmin*. Zadejte heslo uživatelského účtu a pak zadejte svoji doménu, například *aaddscontoso.com*.
+1. Zadejte přihlašovací údaje uživatelského účtu, který patří do spravované domény. Zadejte heslo uživatelského účtu a pak zadejte svoji doménu, například *aaddscontoso.com*.
 1. Pro **typ vazby**vyberte možnost *BIND s přihlašovacími údaji*.
 1. Vyberte **OK** , aby se navázala vaše spravovaná doména.
 

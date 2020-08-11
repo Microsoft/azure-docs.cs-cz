@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/05/2020
-ms.openlocfilehash: d169c638869cd9488605117552c9017dfd10c911
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.date: 08/05/2020
+ms.openlocfilehash: 31bdcd9994ebfcea77b25422997463cc6a9bfddc
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118317"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053503"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Rychlý Start: vytvoření účtu, databáze, kontejneru a položek Azure Cosmos z Azure Portal
 
 > [!div class="op_single_selector"]
-> * [portál Azure](create-cosmosdb-resources-portal.md)
+> * [Azure Portal](create-cosmosdb-resources-portal.md)
 > * [.NET](create-sql-api-dotnet.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
@@ -42,22 +42,22 @@ Předplatné Azure nebo bezplatný zkušební účet služby Azure Cosmos DB
 
 Azure Cosmos DB účet vytvoříte tak, že přejdete na [Azure Portal](https://portal.azure.com/) . Vyhledejte a vyberte **Azure Cosmos DB**.
 
-   :::image type="content" source="./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png" alt-text="Podokno databází portálu Azure Portal":::
+   :::image type="content" source="./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png" alt-text="Podokno Databáze na webu Azure Portal":::
 
-1. Vyberte možnost **Přidat**.
+1. Vyberte **Přidat**.
 1. Na stránce **vytvořit Azure Cosmos DB účet** zadejte základní nastavení pro nový účet Azure Cosmos. 
 
-    |Nastavení|Hodnota|Description |
+    |Nastavení|Hodnota|Popis |
     |---|---|---|
     |Předplatné|Název předplatného|Vyberte předplatné Azure, které chcete použít pro tento účet Azure Cosmos. |
     |Skupina prostředků|Název skupiny prostředků|Vyberte skupinu prostředků nebo vyberte **vytvořit nové**a zadejte jedinečný název nové skupiny prostředků. |
     |Account Name|Jedinečný název|Zadejte název, který identifikuje váš účet Azure Cosmos. Vzhledem k tomu, že *Documents.Azure.com* je připojen k názvu, který zadáte k vytvoření identifikátoru URI, použijte jedinečný název.<br><br>Název může obsahovat jenom malá písmena, číslice a znak spojovníku (-). Musí mít délku 3-31 znaků.|
     |Rozhraní API|Typ účtu, který se má vytvořit|Vyberte **Core (SQL)** pro vytvoření databáze dokumentů a dotaz pomocí syntaxe SQL. <br><br>Rozhraní API určuje typ účtu, který se má vytvořit. Azure Cosmos DB poskytuje pět rozhraní API: Core (SQL) a MongoDB pro data dokumentů, Gremlin pro data grafu, tabulku Azure a Cassandra. V současné době musíte pro každé rozhraní API vytvořit samostatný účet. <br><br>[Přečtěte si další informace o rozhraní SQL API](introduction.md).|
-    |Použít slevu úrovně Free|Použít nebo nepoužít|U Azure Cosmos DB úrovně Free získáte v účtu první 400 RU/s a 5 GB úložiště zdarma. Přečtěte si další informace o [bezplatné úrovni](https://azure.microsoft.com/pricing/details/cosmos-db/).|
+    |Použít slevu založenou na bezplatné úrovni|Použít nebo nepoužít|U Azure Cosmos DB úrovně Free získáte v účtu první 400 RU/s a 5 GB úložiště zdarma. Přečtěte si další informace o [bezplatné úrovni](https://azure.microsoft.com/pricing/details/cosmos-db/).|
     |Umístění|Oblast nejbližší vašim uživatelům|Vyberte zeměpisné umístění, ve kterém chcete účet služby Azure Cosmos DB hostovat. Použijte umístění, které je nejblíže vašim uživatelům, a poskytněte jim tak nejrychlejší přístup k datům.|
     |Typ účtu|Produkční nebo neprodukční|Vyberte možnost **produkce** , pokud se účet bude používat pro produkční úlohy. Vyberte **neprodukční** , pokud se účet bude používat pro neprodukční, třeba pro vývoj, testování, kontrolu kvality nebo přípravu. Toto je nastavení značky prostředku Azure, které vystavuje možnosti portálu, ale nemá vliv na příslušný účet Azure Cosmos DB. Tuto hodnotu můžete kdykoli změnit.|
     |Geografická redundance|Povolit nebo zakázat|Povolte nebo zakažte globální distribuci na účtu spárováním oblasti s oblastí dvojice. Později můžete do svého účtu přidat další oblasti.|
-    |Zápisy pro více oblastí|Povolit nebo zakázat|Funkce pro zápis ve více oblastech vám umožní využít zřízené propustnosti pro vaše databáze a kontejnery po celém světě.|
+    |Zápisy do více oblastí|Povolit nebo zakázat|Funkce pro zápis ve více oblastech vám umožní využít zřízené propustnosti pro vaše databáze a kontejnery po celém světě.|
     |Zóny dostupnosti|Povolit nebo zakázat|Zóny dostupnosti vám pomůžou lépe zlepšit dostupnost a odolnost vaší aplikace.|
 
 
@@ -85,7 +85,7 @@ K vytvoření databáze a kontejneru můžete použít Průzkumník dat v Azure 
     
     Možná se budete muset posunout doprava, aby se zobrazilo okno **Přidat kontejner** .
     
-    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png" alt-text="Průzkumník dat na portálu Azure Portal – podokno Přidat kontejner":::
+    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png" alt-text="Průzkumník dat na webu Azure Portal s podoknem Přidat kontejner":::
     
 1.  V podokně **Přidat kontejner** zadejte nastavení pro nový kontejner.
     
@@ -93,7 +93,7 @@ K vytvoření databáze a kontejneru můžete použít Průzkumník dat v Azure 
     |---|---|---|
     |**ID databáze**|ToDoList|Jako název nové databáze zadejte *ToDoList* . Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat ani mezeru `/, \\, #, ?` . Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
     |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.| 
-    |**ID kontejneru**|Items (Položky)|Jako název nového kontejneru zadejte *položky* . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.|
+    |**ID kontejneru**|Položky|Jako název nového kontejneru zadejte *položky* . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.|
     |**Klíč oddílu**| /kategorie| Ukázka popsaná v tomto článku používá jako klíč oddílu */Category* .|
 
     
