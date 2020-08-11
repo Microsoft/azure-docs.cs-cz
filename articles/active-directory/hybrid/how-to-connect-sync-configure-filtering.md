@@ -16,17 +16,17 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 753e00ef5f015c554e49d7326120d29f5c5da4a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1879df40122549ddc4c57557017fa2c84c883368
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357762"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88061502"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
 Pomocí filtrování můžete určit, které objekty se zobrazí v Azure Active Directory (Azure AD) z místního adresáře. Výchozí konfigurace přebírá všechny objekty ve všech doménách v konfigurovaných doménových strukturách. Obecně platí, že se jedná o doporučenou konfiguraci. Uživatelé, kteří používají úlohy Office 365, jako je Exchange Online a Skype pro firmy, můžou využít kompletní globální seznam adres, aby mohli posílat e-maily a volat všechny. S výchozí konfigurací by měly stejné prostředí jako při místní implementaci Exchange nebo Lyncu.
 
-V některých případech ale potřebujete udělat změny ve výchozí konfiguraci. Tady je pár příkladů:
+V některých případech ale potřebujete udělat změny ve výchozí konfiguraci. Tady je několik příkladů:
 
 * Plánujete používání [topologie adresářů služby Multi-Azure AD](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant). Pak je nutné použít filtr k řízení, které objekty jsou synchronizovány do konkrétního adresáře služby Azure AD.
 * Spustíte pilotní projekt pro Azure nebo Office 365 a budete chtít jenom podmnožinu uživatelů v Azure AD. V případě malého pilotního projektu není důležité mít úplný globální seznam adres k předvedení funkce.
@@ -47,7 +47,7 @@ Vzhledem k tomu, že filtrování může odebrat více objektů najednou, chcete
 
 Chcete-li chránit před odstraněním více objektů havárií, je ve výchozím nastavení zapnuta funkce "[zabránit nechtěnému odstranění](how-to-connect-sync-feature-prevent-accidental-deletes.md)". Pokud odstraníte mnoho objektů z důvodu filtrování (standardně 500), je nutné postupovat podle kroků v tomto článku, které umožní, aby se odstranění procházela do služby Azure AD.
 
-Pokud použijete Build před 2015. listopadu ([1.0.9125](reference-connect-version-history.md#1091250)), proveďte změnu konfigurace filtru a použijte synchronizaci hodnot hash hesel, pak budete muset po dokončení konfigurace aktivovat úplnou synchronizaci všech hesel. Postup, jak spustit úplnou synchronizaci s heslem, najdete v tématu [Aktivace úplné synchronizace všech hesel](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Pokud jste na Build 1.0.9125 nebo novějším, pak pravidelná akce **úplné synchronizace** také vypočítá, jestli se mají hesla synchronizovat, a pokud už tento další krok nepotřebujete.
+Pokud použijete Build před 2015. listopadu ([1.0.9125](reference-connect-version-history.md)), proveďte změnu konfigurace filtru a použijte synchronizaci hodnot hash hesel, pak budete muset po dokončení konfigurace aktivovat úplnou synchronizaci všech hesel. Postup, jak spustit úplnou synchronizaci s heslem, najdete v tématu [Aktivace úplné synchronizace všech hesel](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Pokud jste na Build 1.0.9125 nebo novějším, pak pravidelná akce **úplné synchronizace** také vypočítá, jestli se mají hesla synchronizovat, a pokud už tento další krok nepotřebujete.
 
 Pokud se **uživatelské** objekty ve službě Azure AD omylem odstranily kvůli chybě filtrování, můžete objekty uživatelů v Azure AD znovu vytvořit odebráním konfigurací filtrování. Potom můžete adresáře znovu synchronizovat. Tato akce obnoví uživatele z odpadkového koše ve službě Azure AD. Nemůžete však zrušit odstranění jiných typů objektů. Pokud například omylem odstraníte skupinu zabezpečení a použijete ji k prostředku ACL, skupinu a její seznamy ACL nelze obnovit.
 
@@ -202,7 +202,7 @@ Po dokončení konfigurace filtrování můžete nakonfigurovat synchronizační
 V této konfiguraci není synchronizovaná nová organizační jednotka vytvořená v rámci ManagedObjects.
 
 ## <a name="attribute-based-filtering"></a>Filtrování na základě atributů
-Ujistěte se, že k práci s těmito kroky používáte Build 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) nebo novější.
+Ujistěte se, že k práci s těmito kroky používáte Build 2015 ([1.0.9125](reference-connect-version-history.md)) nebo novější.
 
 > [!IMPORTANT]
 >Společnost Microsoft doporučuje, abyste nezměnili výchozí pravidla vytvořená nástrojem **Azure AD Connect**. Pokud chcete pravidlo upravit, naklonujte ho a zakažte původní pravidlo. Proveďte změny klonovaného pravidla. Počítejte s tím, že pokud to uděláte (zakážete původní pravidlo), nebudete mít k dispozici žádné opravy chyb nebo funkce povolené prostřednictvím tohoto pravidla.
@@ -299,9 +299,9 @@ Proveďte následující kroky:
 Po synchronizaci jsou všechny změny připravené k exportu. Než skutečně provedete změny ve službě Azure AD, budete chtít ověřit, že jsou všechny tyto změny správné.
 
 1. Spusťte příkazový řádek a pokračujte na `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
-2. Spusťte `csexport "Name of Connector" %temp%\export.xml /f:x`.  
+2. Spusťte příkaz `csexport "Name of Connector" %temp%\export.xml /f:x`.  
    Název konektoru je v synchronizační službě. Má název podobný řetězci "contoso.com – AAD" pro Azure AD.
-3. Spusťte `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`.
+3. Spusťte příkaz `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`.
 4. Nyní máte soubor v% Temp% s názvem export.csv, který lze prozkoumat v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
 5. Proveďte potřebné změny dat nebo konfigurace a znovu spusťte tyto kroky (import, synchronizace a ověření), dokud nebudou změny, které se chystáte exportovat, odpovídat na to, co očekáváte.
 

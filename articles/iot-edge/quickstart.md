@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 748e31499a4aa8f1ddd2cea4e918b688426338fa
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 73d9eed757acb4c58052a34811c490a70d306995
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117252"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88061485"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rychlý Start: nasazení prvního IoT Edge modulu do virtuálního zařízení s Windows
 
@@ -47,7 +47,7 @@ Přidejte rozšíření Azure IoT do instance Cloud Shell.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Cloudové prostředky:
 
@@ -65,7 +65,9 @@ Zařízení IoT Edge:
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
   ```
 
-  Vytvoření a spuštění nového virtuálního počítače může trvat několik minut. Pak můžete stáhnout soubor RDP pro použití při připojování k virtuálnímu počítači:
+  Vytvoření a spuštění nového virtuálního počítače může trvat několik minut.
+
+  Po spuštění virtuálního počítače si můžete stáhnout soubor RDP pro použití při připojování k virtuálnímu počítači:
 
   1. V Azure Portal přejděte na nový virtuální počítač s Windows.
   1. Vyberte **Připojit**.
@@ -74,11 +76,13 @@ Zařízení IoT Edge:
   Otevřete tento soubor s Připojení ke vzdálené ploše pro připojení k virtuálnímu počítači s Windows pomocí jména správce a hesla, které jste zadali pomocí `az vm create` příkazu.
 
 > [!NOTE]
+> Virtuální počítač s Windows začíná na Windows verze 1809 (Build 17763), což je nejnovější [dlouhodobé sestavení podpory Windows](https://docs.microsoft.com/windows/release-information/). Systém Windows ve výchozím nastavení automaticky vyhledává aktualizace každých 22 hodin. Po kontrole virtuálního počítače Windows nabídne aktualizaci verze, která není kompatibilní s IoT Edge pro Windows, což zabrání dalšímu použití IoT Edge funkcí pro Windows. Doporučujeme omezit použití virtuálního počítače na do 22 hodin nebo [dočasně pozastavit aktualizace Windows](https://support.microsoft.com/help/4028233/windows-10-manage-updates).
+>
 > V tomto rychlém startu se k jednoduchosti používá virtuální počítač s Windows Desktop. Informace o tom, které operační systémy Windows jsou všeobecně dostupné pro produkční scénáře, najdete v tématu [Azure IoT Edge podporovaných systémech](support.md).
 >
 > Pokud jste připraveni ke konfiguraci vlastního zařízení s Windows pro IoT Edge, včetně zařízení se systémem IoT Core, postupujte podle kroků v části [Instalace modulu runtime Azure IoT Edge v systému Windows](how-to-install-iot-edge-windows.md).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 Začněte s rychlým startem vytvořením služby IoT Hub pomocí Azure CLI.
 
