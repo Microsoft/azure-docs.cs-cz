@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e521711cdf488f00b56e2805ee0aaa6ee8412958
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471740"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056954"
 ---
 # <a name="caching-with-azure-front-door"></a>Ukládání do mezipaměti s předními dvířky Azure
 Následující dokument určuje chování před dveřmi pomocí pravidel směrování s povoleným ukládáním do mezipaměti. Přední dvířka jsou moderní Content Delivery Network (CDN), a to společně s akcelerací a vyrovnáváním zatížení na dynamickém webu, ale také podporuje chování ukládání do mezipaměti stejně jako jakékoli jiné CDN.
@@ -111,6 +111,12 @@ Hlavičky odpovědí, které určují, že odpověď nebude ukládána do mezipa
 Následující hlavičky žádosti nebudou předány do back-endu při použití ukládání do mezipaměti.
 - Délka obsahu
 - Přenos – kódování
+
+## <a name="cache-duration"></a>Doba uložení mezipaměti
+
+Doba trvání mezipaměti se dá nakonfigurovat jak v aplikaci, tak i v modulu pravidel. Doba trvání mezipaměti nastavená v Návrháři Frontdoor je minimální doba ukládání do mezipaměti. Toto přepsání nebude fungovat, pokud má záhlaví řízení mezipaměti od počátku větší hodnotu TTL než hodnota přepsání. 
+
+Hodnota doba trvání mezipaměti nastavená pomocí stroje pravidel je hodnota true přepsání mezipaměti, což znamená, že bude používat hodnotu přepisu bez ohledu na to, co je záhlaví odpovědi původu.
 
 ## <a name="next-steps"></a>Další kroky
 

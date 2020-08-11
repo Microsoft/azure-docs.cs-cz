@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.date: 04/04/2020
-ms.author: erhopf
+ms.author: jhakulin
 ms.topic: include
-ms.openlocfilehash: 08001aabd279b2df64635719e9ef3e0772df62e9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2af0d0eb2411c5ffe9f80498a3e93d48fe0a769b
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671108"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88057706"
 ---
 ## <a name="prerequisites"></a>Požadavky
 

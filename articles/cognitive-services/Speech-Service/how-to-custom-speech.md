@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 5401957cb527d43e041345ac9e67e7f7a69ed0d0
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: b9ac473c3864b4be06c978e7d6a3555bb4550d2a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725529"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056835"
 ---
 # <a name="what-is-custom-speech"></a>Co je Custom Speech?
 
@@ -48,7 +48,7 @@ Tento diagram zvýrazňuje části, které tvoří [portál Custom Speech](https
 Aby bylo možné použít [portál Custom Speech](https://speech.microsoft.com/customspeech) k vytvoření vlastního modelu, je nutné předplatné služby Speech Service. Podle těchto pokynů vytvořte standardní předplatné služby Speech: [Vytvořit předplatné pro rozpoznávání řeči](get-started.md#new-resource).
 
 > [!NOTE]
-> Nezapomeňte prosím vytvořit standardní předplatné (S0), odběry bezplatné zkušební verze (F0) se nepodporují.
+> Ujistěte se prosím, že jste vytvořili standardní odběry (S0), bezplatné předplatné (F0) se nepodporuje.
 
 Po vytvoření účtu Azure a předplatného služby Speech se budete muset přihlásit k [portálu Custom Speech](https://speech.microsoft.com/customspeech) a připojit své předplatné.
 
@@ -71,5 +71,5 @@ Pokud chcete vytvořit svůj první projekt, vyberte **Speech-to-text/Custom Spe
 * [Příprava a testování dat](how-to-custom-speech-test-data.md)
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)
 * [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
-* [Trénování vašeho modelu](how-to-custom-speech-train-model.md)
+* [Trénování modelu](how-to-custom-speech-train-model.md)
 * [Nasazení modelu](how-to-custom-speech-deploy-model.md)

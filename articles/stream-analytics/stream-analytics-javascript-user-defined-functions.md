@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-javascript
 ms.date: 06/16/2020
-ms.openlocfilehash: ff4af372fa0ec1b6b24698184eb3f52449e28d46
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6540b35925a92ebd6a8bcced427b5457785603db
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430819"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056903"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics
  
@@ -130,6 +130,60 @@ INTO
     output
 FROM
     input PARTITION BY PARTITIONID
+```
+
+### <a name="cast-string-to-json-object-to-process"></a>Přetypování řetězce na objekt JSON, který se má zpracovat
+
+Máte-li pole řetězce, které je JSON a chcete ho převést na objekt JSON pro zpracování v jazyce JavaScript UDF, můžete použít funkci **JSON. Parse ()** pro vytvoření objektu JSON, který se pak dá použít.
+
+**Definice uživatelem definované funkce jazyka JavaScript:**
+
+```javascript
+function main(x) {
+var person = JSON.parse(x);  
+return person.name;
+}
+```
+
+**Vzorový dotaz:**
+```SQL
+SELECT
+    UDF.getName(input) AS Name
+INTO
+    output
+FROM
+    input
+```
+
+### <a name="use-trycatch-for-error-handling"></a>Pro zpracování chyb použít try/catch
+
+Bloky try/catch vám pomůžou identifikovat problémy se špatnými vstupními daty, která se předávají do JavaScriptu UDF.
+
+**Definice uživatelem definované funkce jazyka JavaScript:**
+
+```javascript
+function main(input, x) {
+    var obj = null;
+
+    try{
+        obj = JSON.parse(x);
+    }catch(error){
+        throw input;
+    }
+    
+    return obj.Value;
+}
+```
+
+**Vzorový dotaz: předejte celý záznam jako první parametr, aby se mohl vrátit, pokud dojde k chybě.**
+```SQL
+SELECT
+    A.context.company AS Company,
+    udf.getValue(A, A.context.value) as Value
+INTO
+    output
+FROM
+    input A
 ```
 
 ## <a name="next-steps"></a>Další kroky

@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: 581587382c3bfd03ed329672e5c6ca065554d1c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c196d48d22a2bd714c4b6252ad927d18790f4674
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83727638"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056767"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Vytvoření privátního clusteru Azure Red Hat OpenShift 4
 
@@ -23,24 +23,9 @@ V tomto článku připravíte své prostředí, aby se vytvořily privátní clu
 > * Nastavení požadavků a vytvoření požadované virtuální sítě a podsítí
 > * Nasazení clusteru s privátním koncovým bodem serveru API a privátním adaptérem příchozího přenosu dat
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.75 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="before-you-begin"></a>Než začnete
-
-### <a name="install-the-az-aro-extension"></a>Instalace rozšíření AZ ARO
-`az aro`Rozšíření umožňuje vytvořit, otevřít a odstranit clustery Azure Red Hat OpenShift přímo z příkazového řádku pomocí Azure CLI.
-
-Spusťte následující příkaz pro instalaci `az aro` rozšíření.
-
-```azurecli-interactive
-az extension add -n aro --index https://az.aroapp.io/stable
-```
-
-Pokud už máte rozšíření nainstalované, můžete ho aktualizovat spuštěním následujícího příkazu.
-
-```azurecli-interactive
-az extension update -n aro --index https://az.aroapp.io/stable
-```
 
 ### <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
 
@@ -48,21 +33,6 @@ Dál je potřeba zaregistrovat `Microsoft.RedHatOpenShift` poskytovatele prostř
 
 ```azurecli-interactive
 az provider register -n Microsoft.RedHatOpenShift --wait
-```
-
-Ověřte, zda je rozšíření registrováno.
-
-```azurecli-interactive
-az -v
-```
-
-  Měl by se zobrazit výstup podobný následujícímu.
-
-```output
-...
-Extensions:
-aro                                1.0.0
-...
 ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Získání tajného kódu pro vyžádání Red Hat (volitelné)
@@ -270,7 +240,7 @@ oc login $apiServer -u kubeadmin -p <kubeadmin password>
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku byl nasazen cluster Azure Red Hat OpenShift se systémem OpenShift 4. Naučili jste se tyto postupy:
+V tomto článku byl nasazen cluster Azure Red Hat OpenShift se systémem OpenShift 4. Naučili jste se:
 
 > [!div class="checklist"]
 > * Nastavení požadavků a vytvoření požadované virtuální sítě a podsítí

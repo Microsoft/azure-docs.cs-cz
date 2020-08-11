@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78656b4789ea03601bc12579c391292e2f9ead9a
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: c0ab2b2f61c4aa7a83d82b0300bb28cae91992d2
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856376"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056886"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globální přenosová architektura sítě a virtuální síť WAN
 
@@ -132,6 +132,9 @@ Rozbočovače Azure Virtual WAN propojování všech koncových bodů sítě v r
 ![zabezpečené virtuální centrum s Azure Firewall](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
 **Obrázek 5: zabezpečené virtuální centrum s Azure Firewall**
+
+> [!NOTE]
+> Mezi centrem s bránou firewall se aktuálně nepodporují. Provoz mezi rozbočovači se přesune přímo z Azure Firewall v každém centru.
 
 Azure Firewall k virtuální síti WAN podporuje následující cesty globálního připojení pro zabezpečené průjezdy. Písmena v závorkách se mapují na obrázek 5.
 

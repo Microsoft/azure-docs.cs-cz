@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 5dc0a7fc9797948e834b8b3cb802bb92fce0eb59
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 79f7924b021de9426eeb66adf2ec12f8033efcea
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610757"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056852"
 ---
 # <a name="about-the-speech-sdk"></a>Informace o sadě Speech SDK
 
@@ -125,5 +125,5 @@ Vlastní převod textu na řeč, označovaný také jako vlastní hlas, je sada 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+* [Vytvoření bezplatného účtu Azure](https://azure.microsoft.com/free/cognitive-services/)
 * [Přečtěte si téma rozpoznávání řeči v jazyce C. #](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

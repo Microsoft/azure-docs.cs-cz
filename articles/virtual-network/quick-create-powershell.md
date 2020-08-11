@@ -14,17 +14,18 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: e547da3d1a26a7dcc110a8349dbae3c7e3f29e0b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f469256841bf81f5e35ebf9c4a0fe322b513153d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291931"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056971"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Rychlý start: Vytvoření virtuální sítě pomocí PowerShellu
 
 Virtuální síť umožňuje prostředkům Azure, jako jsou virtuální počítače, komunikovat soukromě mezi sebou a s internetem. V tomto rychlém startu zjistíte, jak vytvořit virtuální síť. Po vytvoření virtuální sítě do ní nasadíte dva virtuální počítače. Pak se k virtuálním počítačům připojíte z Internetu a soukromě komunikujte přes virtuální síť.
 
+## <a name="prerequisites"></a>Požadavky
 Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -219,6 +220,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili výchozí virtuální síť a dva virtuální počítače. K jednomu virtuálnímu počítači jste se připojili z internetu a navázali jste soukromou komunikaci mezi tímto a druhým virtuálním počítačem. Další informace o nastavení virtuální sítě najdete v tématu [Správa virtuální sítě](manage-virtual-network.md).
-
-Azure umožňuje neomezenou soukromou komunikaci mezi virtuálními počítači. Ve výchozím nastavení Azure umožňuje příchozí připojení vzdálené plochy k virtuálním počítačům s Windows z Internetu. Další informace o konfiguraci různých typů síťových komunikací virtuálních počítačů najdete v kurzu [filtrování síťového provozu](tutorial-filter-network-traffic.md) .
+V tomto rychlém startu jste vytvořili výchozí virtuální síť a dva virtuální počítače. Připojili jste se k jednomu virtuálnímu počítači z Internetu a komunikovali soukromě mezi těmito dvěma virtuálními počítači.
+Azure umožňuje neomezenou soukromou komunikaci mezi virtuálními počítači. Azure ve výchozím nastavení umožňuje pouze příchozí připojení vzdálené plochy k virtuálním počítačům s Windows z Internetu. V dalším článku se dozvíte víc o konfiguraci různých typů síťových komunikací virtuálních počítačů:
+> [!div class="nextstepaction"]
+> [Filtrování síťového provozu](tutorial-filter-network-traffic.md)

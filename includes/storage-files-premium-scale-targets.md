@@ -2,14 +2,14 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 06/07/2019
+ms.date: 08/10/2020
 ms.author: rogarana
-ms.openlocfilehash: c2bd10ab4c98fe2e77332c3cc2566ab2f0c7ad42
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d704c6026e9d007a7365a3b72649ca509585da4d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87841815"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88057692"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>Další omezení úrovně sdílení souborů Premium
 
@@ -23,11 +23,11 @@ ms.locfileid: "87841815"
 
 #### <a name="file-level-limits"></a>Omezení na úrovni souborů
 
-|Oblast  |Soubor úrovně Premium  |Standardní soubor |
+|Oblast  |Standardní soubor  |Soubor úrovně Premium  |
 |---------|---------|---------|
-|Velikost                  |4 TiB         |1 TiB|
-|Maximální počet vstupně-výstupních operací na soubor     |5 000         |1 000|
-|Souběžné popisovače    |2 000         |2 000|
-|Výchozí přenos dat  |300 MiB/s|      Zobrazit standardní hodnoty propustnosti souboru|
-|Příchozí přenos dat  |200 MiB/s| Zobrazit standardní hodnoty propustnosti souboru|
-|Propustnost| Viz hodnoty vstupně-výstupních souborů Premium| Až 60 MiB/s|
+|Velikost     |1 TiB         |4 TiB         |
+|Maximální počet vstupně-výstupních operací na soubor      |1 000         |5 000         |
+|Souběžné popisovače     |2 000         |2 000         |
+|Výchozí přenos dat     |Zobrazit standardní hodnoty propustnosti souboru         |300 MiB/s         |
+|Příchozí přenos dat     |Zobrazit standardní hodnoty propustnosti souboru         |200 MiB/s         |
+|Propustnost     |Až 60 MiB/s         |Viz hodnoty vstupně-výstupních souborů Premium         |

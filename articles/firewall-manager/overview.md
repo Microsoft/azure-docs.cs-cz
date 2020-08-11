@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/30/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 37cbc3737b826060e96524528b065bc8d711bd8b
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0fcf1c8a3800a52e8fa8659fe4bf97e83103c79d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384765"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056988"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Co je Azure Firewall Manager?
 
@@ -25,7 +25,7 @@ Správce brány firewall může poskytovat správu zabezpečení pro dva typy s�
    [Azure Virtual WAN hub](../virtual-wan/virtual-wan-about.md#resources) je prostředek spravovaný Microsoftem, který umožňuje snadno vytvářet architektury hub a paprsků. Pokud jsou zásady zabezpečení a směrování přidruženy k takovému centru, označuje se jako *[zabezpečené virtuální rozbočovač](secured-virtual-hub.md)*. 
 - **Virtuální síť centra**
 
-   Toto je standardní virtuální síť Azure, kterou vytváříte a spravujete sami. Pokud jsou zásady zabezpečení přidružené k takovému centru, označuje se jako *virtuální síť rozbočovače*. V tuto chvíli se podporují jenom zásady Azure Firewall. Můžete vytvořit partnerský paprsek virtuálních sítí, které obsahují vaše servery a služby pro úlohy. Brány firewall můžete spravovat i v samostatných virtuálních sítích, které nejsou partnerského vztahu k žádnému rozbočovači.
+   Toto je standardní virtuální síť Azure, kterou vytváříte a spravujete sami. Pokud jsou zásady zabezpečení přidružené k takovému centru, označuje se jako *virtuální síť rozbočovače*. V tuto chvíli se podporují jenom zásady Azure Firewall. Můžete vytvořit partnerský paprsek virtuálních sítí, které obsahují vaše servery a služby pro úlohy. Brány firewall můžete spravovat i v samostatných virtuálních sítích, které nesousedí s žádnými partnerskými servery.
 
 Podrobné porovnání *zabezpečeného virtuálního rozbočovače* a architektury *virtuální sítě rozbočovače* najdete v tématu [co jsou možnosti architektury Azure firewall Manageru?](vhubs-and-vnets.md).
 
@@ -78,10 +78,12 @@ Azure Firewall Manager má následující známé problémy:
 
 |Problém  |Popis  |Omezení rizik  |
 |---------|---------|---------|
-|Rozdělení provozu není v současné době podporováno.|Rozdělování provozu Office 365 a Azure Public PaaS se v tuto chvíli nepodporuje. V takovém případě je třeba vybrat poskytovatele třetí strany pro V2I nebo B2I také odeslat veškerý provoz Azure Public PaaS a Office 365 prostřednictvím partnerské služby.|Zkoumání rozdělení provozu v centru.
-|Jeden zabezpečený virtuální rozbočovač na oblast.|Pro každou oblast nemůžete mít více než jedno zabezpečené virtuální rozbočovače.|Vytvoření více virtuálních sítí WAN v určité oblasti.|
-|Základní zásady musí být ve stejné oblasti jako místní zásady.|Vytvořte všechny místní zásady ve stejné oblasti jako základní zásady. Můžete přesto použít zásadu, která byla vytvořena v jedné oblasti v zabezpečeném centru z jiné oblasti.|Prověřování|
-|Komunikace mezi rozbočovači, která neprojde zabezpečeným virtuálním rozbočovačem|Zabezpečené virtuální rozbočovače na zabezpečenou komunikaci virtuálního rozbočovače ještě není podporovaná, ale komunikace rozbočovače s rozbočovačem bude pořád fungovat.|Prověřování|
+|Rozdělení provozu|Rozdělování provozu Office 365 a Azure Public PaaS se v tuto chvíli nepodporuje. V takovém případě je třeba vybrat poskytovatele třetí strany pro V2I nebo B2I také odeslat veškerý provoz Azure Public PaaS a Office 365 prostřednictvím partnerské služby.|Zkoumání rozdělení provozu v centru.
+|Jeden zabezpečený virtuální rozbočovač na oblast|Pro každou oblast nemůžete mít více než jedno zabezpečené virtuální rozbočovače.|Vytvoření více virtuálních sítí WAN v určité oblasti.|
+|Základní zásady musí být ve stejné oblasti jako místní zásada.|Vytvořte všechny místní zásady ve stejné oblasti jako základní zásady. Můžete přesto použít zásadu, která byla vytvořena v jedné oblasti v zabezpečeném centru z jiné oblasti.|Prověřování|
+|Filtrování provozu mezi rozbočovači v nasazeních zabezpečených virtuálních rozbočovačů|Zabezpečené virtuální rozbočovače na zabezpečené filtrování komunikace virtuálního rozbočovače se ještě nepodporuje. Nicméně komunikace centra s centrem funguje i v případě, že filtrování privátních přenosů prostřednictvím Azure Firewall není povolené.|Prověřování|
+|Paprsky v jiné oblasti než virtuální rozbočovač|Paprsky v jiné oblasti, než je virtuální rozbočovač, nejsou podporovány.|Prověřování<br><br>Vytvořte rozbočovač na oblast a partnerský virtuální sítě ve stejné oblasti jako centrum.|
+|Provoz větví do větvení s povoleným filtrováním privátních přenosů|Komunikace větví s větví není podporovaná, pokud je povolené filtrování privátních přenosů. |Zkoumání.<br><br>Nezabezpečte privátní provoz, pokud je připojení větví k pobočce kritické.|
 |Všechna zabezpečená virtuální centra, která sdílejí stejnou virtuální síť WAN, musí být ve stejné skupině prostředků.|Toto chování je v současné době zarovnané na virtuální rozbočovače WAN.|Vytvořte více virtuálních sítí WAN, aby bylo možné vytvořit zabezpečené virtuální rozbočovače v různých skupinách prostředků.|
 
 ## <a name="next-steps"></a>Další kroky

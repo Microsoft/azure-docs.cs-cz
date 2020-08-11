@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 8c2203fec71430840e547115d24330b661bda50f
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5b454c324d475eb4f692e1715cb2ea45105f78e1
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002221"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056920"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru Azure Machine Learning
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -146,6 +146,8 @@ Následující tabulka představuje souhrn Azure Machine Learningch aktivit a op
 | Přístup k úložišti pomocí interaktivních poznámkových bloků | Nevyžadováno | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
 | Vytvořit novou vlastní roli | Povolení vlastníka, přispěvatele nebo vlastní role`Microsoft.Authorization/roleDefinitions/write` | Nevyžadováno | Vlastník, přispěvatel nebo vlastní role povolují:`/workspaces/computes/write` |
 
+> [!TIP]
+> Pokud při prvním pokusu o vytvoření pracovního prostoru dojde k chybě, ujistěte se, že vaše role povoluje `Microsoft.MachineLearningServices/register/action` . Tato akce vám umožní zaregistrovat poskytovatele prostředků Azure Machine Learning s vaším předplatným Azure.
 
 ### <a name="q-are-we-publishing-azure-built-in-roles-for-the-machine-learning-service"></a>Otázka: Publikují se pro službu Machine Learning předdefinované role Azure?
 
