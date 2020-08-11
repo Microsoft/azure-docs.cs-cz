@@ -158,8 +158,10 @@
           items:
             - name: Správa verzí
               href: versioning-overview.md
-            - name: Obnovitelné odstranění
-              href: soft-delete-overview.md
+            - name: Obnovitelné odstranění pro objekty blob
+              href: soft-delete-blob-overview.md
+            - name: Obnovitelné odstranění pro kontejnery
+              href: soft-delete-container-overview.md
             - name: Snímky
               href: snapshots-overview.md
             - name: Změna kanálu
@@ -423,8 +425,10 @@
           items:
             - name: Povolení správy verzí objektů blob
               href: versioning-enable.md
-            - name: Povolení obnovitelného odstranění
-              href: soft-delete-enable.md
+            - name: Povolení obnovitelného odstranění pro objekty blob
+              href: soft-delete-blob-enable.md
+            - name: Povolení obnovitelného odstranění pro kontejnery
+              href: soft-delete-container-enable.md
             - name: Vytváření snímků (.NET)
               href: snapshots-manage-dotnet.md
             - name: Zpracování protokolů kanálu změn

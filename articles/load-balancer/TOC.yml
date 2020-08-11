@@ -128,6 +128,8 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: Interní nástroj pro vyrovnávání zatížení – PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
+    - name: Konfigurace nástroje pro vyrovnávání zatížení – pouze odchozí
+      href: egress-only.md
 - name: Řešení potíží
   items:
     - name: Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
