@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/21/2020
+ms.date: 8/10/2020
 ms.author: yohaddad
-ms.openlocfilehash: 04e75d108b9f518311ad19b2f9027dd0ad7e9e88
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e14295842413464ed9faced59c8bb897f192a511
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002875"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067014"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
@@ -76,24 +76,22 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 
 ## <a name="june-2020-guest-os"></a>Operační systém hosta červen 2020
->[!NOTE]
->V tuto chvíli se hostuje hostovaný operační systém pro virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. Následující opravy jsou součástí hostovaného operačního systému v dubnu. Tento seznam se může změnit.
 
 
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 20-06  |  [4561603]  |  Internet Explorer  |  2,99, 3,86, 4,79  |  9. června 2020  |
-|  Rel. 20-06  |  [4561616]  |  Nejnovější kumulativní aktualizace (LCU)  |  5,44  |  9. června 2020  |
-|  Rel. 20-06  |  [4561608]  |  Nejnovější kumulativní aktualizace (LCU)  |  6,20  |  9. června 2020  |
-|  Rel. 20-06  |  [4562030]  |  Aktualizace servisního zásobníku  |  2,99  |  9. června 2020  |
-|  Rel. 20-06  |  [4561643]  |  Měsíční souhrn  |  2,99  |  9. června 2020  |
-|  Rel. 20-06  |  [4562252]  |  Aktualizace servisního zásobníku  |  3,86  |  9. června 2020  |
-|  Rel. 20-06  |  [4561612]  |  Měsíční souhrn  |  3,86  |  9. června 2020  |
-|  Rel. 20-06  |  [4561600]  |  Blikající  |  3,86, 4,79, 5,44, 6,20  |  9. června 2020  |
-|  Rel. 20-06  |  [4562253]  |  Aktualizace servisního zásobníku  |  4,79  |  9. června 2020  |
-|  Rel. 20-06  |  [4561666]  |  Měsíční souhrn  |  4,79  |  9. června 2020  |
-|  Rel. 20-06  |  [4562561]  |  Aktualizace servisního zásobníku  |  5,44  |  9. června 2020  |
-|  Rel. 20-06  |  [4562562]  |  Aktualizace servisního zásobníku  |  6,20  |  9. června 2020  |
+|  Rel. 20-06  |  [4561603]  |  Internet Explorer  |  [2,99], [3,86], [4,79]  |  9. června 2020  |
+|  Rel. 20-06  |  [4561616]  |  Nejnovější kumulativní aktualizace (LCU)  |  [5,44]  |  9. června 2020  |
+|  Rel. 20-06  |  [4561608]  |  Nejnovější kumulativní aktualizace (LCU)  |  [6,20]  |  9. června 2020  |
+|  Rel. 20-06  |  [4562030]  |  Aktualizace servisního zásobníku  |  [2,99]  |  9. června 2020  |
+|  Rel. 20-06  |  [4561643]  |  Měsíční souhrn  |  [2,99]  |  9. června 2020  |
+|  Rel. 20-06  |  [4562252]  |  Aktualizace servisního zásobníku  |  [3,86]  |  9. června 2020  |
+|  Rel. 20-06  |  [4561612]  |  Měsíční souhrn  |  [3,86]  |  9. června 2020  |
+|  Rel. 20-06  |  [4561600]  |  Blikající  |  [3,86], [4,79], [5,44], [6,20]  |  9. června 2020  |
+|  Rel. 20-06  |  [4562253]  |  Aktualizace servisního zásobníku  |  [4,79]  |  9. června 2020  |
+|  Rel. 20-06  |  [4561666]  |  Měsíční souhrn  |  [4,79]  |  9. června 2020  |
+|  Rel. 20-06  |  [4562561]  |  Aktualizace servisního zásobníku  |  [5,44]  |  9. června 2020  |
+|  Rel. 20-06  |  [4562562]  |  Aktualizace servisního zásobníku  |  [6,20]  |  9. června 2020  |
 
 
 
@@ -109,6 +107,11 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4561666]: https://support.microsoft.com/kb/4561666
 [4562561]: https://support.microsoft.com/kb/4562561
 [4562562]: https://support.microsoft.com/kb/4562562
+[2,99]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,86]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,79]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,44]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,20]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="may-2020-guest-os"></a>Květen 2020 hostovaného operačního systému
@@ -1193,7 +1196,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | Rel. 17-09 | [4038779], [4038786], [4038793] |Pouze zabezpečení systému Windows |2,66, 3,53, 4,46 |12. září 2017 |
 | Rel. 17-09 | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|Aktualizace z září na platformě .NET |2,66, 3,53, 4,46 |12. září 2017 |
 | Rel. 17-09 | [4036586] |Internet Explorer |2,66, 3,53, 4,46 |12. září 2017 |
-| CVE-2017-8704 | [4038782] |Útok DoS |5.11 |12. září 2017 |
+| CVE-2017-8704 | [4038782] |Odepření služby |5.11 |12. září 2017 |
 | – | [4034664] |Souhrn nesouvisející se zabezpečením. srpna  |2,66 |8. srpna 2017 |
 | – | [4034665] |Souhrn nesouvisející se zabezpečením. srpna |5.11 |8. srpna 2017 |
 | – | [4034681] |Souhrn nesouvisející se zabezpečením. srpna |4,46 |8. srpna 2017 |
@@ -1664,8 +1667,8 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 | MS15 – 011 |[3000483] |Ohrožení zabezpečení v Zásady skupiny může umožňovat vzdálené spuštění kódu. |4,17, 3,24, 2,36 |– |
 | MS15 – 014 |[3004361] |Chyba zabezpečení v protokolu SMB by mohla dovolit obejít funkci zabezpečení |4,17, 3,24, 2,36 |– |
 | MS15 – 015 |[3031432] |Ohrožení zabezpečení v systému Microsoft Windows může umožnit zvýšení oprávnění |4,17, 3,24, 2,36 |– |
-| MS15 – 016 |[3029944] |Ohrožení zabezpečení v součásti Microsoft Graphics může umožnit vyzrazení informací. |4,17, 3,24, 2,36 |– |
-| – |[3004375] |Aktualizace pro zlepšení auditování příkazového řádku systému Windows<p/>**Poznámka**: Tato možnost je nainstalovaná, ale klíč registru, který ho povolí, je vypnutý. |4,17, 3,24, 2,36 |– |
+| MS15 – 016 |[3029944] |Ohrožení zabezpečení v součásti Microsoft Graphics může umožnit vyzrazení informací. |4,17, 3,24, 2,36 |N/A |
+| N/A |[3004375] |Aktualizace pro zlepšení auditování příkazového řádku systému Windows<p/>**Poznámka**: Tato možnost je nainstalovaná, ale klíč registru, který ho povolí, je vypnutý. |4,17, 3,24, 2,36 |– |
 
 ## <a name="january-2015-guest-os"></a>Leden 2015 hostovaný operační systém
 | ID bulletinu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |

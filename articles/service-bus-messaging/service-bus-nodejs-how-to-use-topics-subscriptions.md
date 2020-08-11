@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/09/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: fc8b1be387446b26fca86b344a203c103068db52
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fa1f6738628ed96e386186a579569170bfaac3ee
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036024"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066946"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Rychlý Start: jak používat Service Bus témata a předplatná s Node.js a balíčkem Azure-Sb
 V tomto kurzu se naučíte vytvářet Node.js aplikace pro odesílání zpráv do Service Bus tématu a příjem zpráv z Service Bus předplatného pomocí balíčku [Azure-SB](https://www.npmjs.com/package/azure-sb) . Ukázky jsou napsané v JavaScriptu a používají Node.js [modul Azure](https://www.npmjs.com/package/azure) , který interně používá `azure-sb` balíček.
@@ -20,7 +20,7 @@ V tomto kurzu se naučíte vytvářet Node.js aplikace pro odesílání zpráv d
 > [!IMPORTANT]
 > Balíček [Azure-SB](https://www.npmjs.com/package/azure-sb) používá [Service Bus rozhraní REST runtime API](/rest/api/servicebus/service-bus-runtime-rest). Pomocí nového [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) balíčku, který používá rychlejší [protokol AMQP 1,0](service-bus-amqp-overview.md), můžete získat rychlejší prostředí. 
 > 
-> Další informace o novém balíčku najdete v tématu [Jak používat Service Bus témata a odběry s Node.js a @azure/service-bus balíčkem](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package). Další informace o použití balíčku [Azure](https://www.npmjs.com/package/azure) najdete v tématu o tom, jak pokračovat v čtení.
+> Další informace o novém balíčku najdete v tématu [Jak používat Service Bus témata a odběry s Node.js a @azure/service-bus balíčkem](./service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md). Další informace o použití balíčku [Azure](https://www.npmjs.com/package/azure) najdete v tématu o tom, jak pokračovat v čtení.
 
 Zde uvedené scénáře zahrnují:
 
@@ -142,7 +142,7 @@ Odběry témat jsou také vytvořeny s objektem **ServiceBusService** . Odběry 
 > [!NOTE]
 > Ve výchozím nastavení jsou odběry trvalé, dokud je neodstraní ani v tématu, ke kterému jsou přidruženy. Pokud vaše aplikace obsahuje logiku pro vytvoření předplatného, měli byste nejdřív ověřit, jestli předplatné existuje, pomocí `getSubscription` metody.
 >
-> Odběry můžete nechat automaticky odstranit nastavením [vlastnosti AutoDeleteOnIdle](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle).
+> Odběry můžete nechat automaticky odstranit nastavením [vlastnosti AutoDeleteOnIdle](/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle).
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Vytvoření odběru s výchozím filtrem (MatchAll).
 Filtr **MatchAll** je výchozí filtr, který se používá při vytváření předplatného. Když použijete filtr **MatchAll**, všechny zprávy publikované do tématu se umístí do virtuální fronty odběru. Následující příklad vytvoří předplatné s názvem AllMessages a použije výchozí filtr **MatchAll** .
@@ -306,7 +306,7 @@ K uzamčené zprávě v rámci předplatného je také přiřazen časový limit
 V případě, že dojde k chybě aplikace po zpracování zprávy, ale před `deleteMessage` zavoláním metody, bude zpráva doručena do aplikace při restartu. Toto chování se často nazývá *alespoň po zpracování*. To znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích se může stejná zpráva znovu doručovat. Pokud scénář nemůže tolerovat duplicitní zpracování, pak byste měli do aplikace přidat logiku pro zpracování duplicitního doručování zpráv. Můžete použít vlastnost **MessageID** zprávy, která zůstává v rámci pokusů o doručení konstantní.
 
 ## <a name="delete-topics-and-subscriptions"></a>Odstranění témat a odběrů
-Témata a odběry jsou trvalé, pokud není nastavena [vlastnost autoDeleteOnIdle](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) a je nutné ji explicitně odstranit buď pomocí [Azure Portal][Azure portal] nebo programově.
+Témata a odběry jsou trvalé, pokud není nastavena [vlastnost AutoDeleteOnIdle](/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) a je nutné ji explicitně odstranit buď pomocí [Azure Portal][Azure portal] nebo programově.
 Následující příklad ukazuje, jak odstranit téma s názvem `MyTopic` :
 
 ```javascript
@@ -345,4 +345,3 @@ Teď, když jste se seznámili se základy Service Bus témata, získáte dalš�
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Vytvoření a nasazení Node.js aplikace na web Azure]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-

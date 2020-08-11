@@ -3,12 +3,12 @@ title: Azure Service Bus filtry témat | Microsoft Docs
 description: Tento článek vysvětluje, jak můžou předplatitelé definovat, které zprávy chce přijímat z tématu zadáním filtrů.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b722c040248c199782f6c8dea020ae582762e102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5df343ff63c01a7cf10315b758e3d6fba8ac5674
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339956"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066742"
 ---
 # <a name="topic-filters-and-actions"></a>Akce a filtry témat
 
@@ -62,6 +62,4 @@ Podívejte se na následující ukázky:
 
 - [Kurz pro odesílání a přijímání v rámci .NET Basic s filtry](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
 - [.NET – filtry témat](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
-- [Šablona Azure Resource Manageru](https://docs.microsoft.com/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
-
-
+- [Šablona Azure Resource Manageru](/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)

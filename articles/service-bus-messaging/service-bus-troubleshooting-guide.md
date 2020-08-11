@@ -3,12 +3,12 @@ title: Průvodce odstraňováním potíží pro Azure Service Bus | Microsoft Do
 description: Tento článek poskytuje seznam výjimek zasílání zpráv Azure Service Bus a navrhovaných akcí, které se mají učinit, když dojde k výjimce.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 6071aae85daa1852c9384656d7caf5e2deffd84e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 822a97a230a8646ddadde21eedc6c23d5e3efbd6
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071302"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067048"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Průvodce odstraňováním potíží pro Azure Service Bus
 V tomto článku najdete tipy a doporučení pro odstraňování problémů s několika problémy, které se můžou zobrazit při použití Azure Service Bus. 
@@ -80,7 +80,7 @@ Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perfor
 Identita nemá oprávnění pro přístup k Service Busmu tématu. 
 
 ### <a name="resolution"></a>Řešení
-Pokud chcete tuto chybu vyřešit, nainstalujte knihovnu [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) .  Další informace najdete v tématu [ověřování místního vývoje](..\key-vault\service-to-service-authentication.md#local-development-authentication). 
+Pokud chcete tuto chybu vyřešit, nainstalujte knihovnu [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) .  Další informace najdete v tématu [ověřování místního vývoje](../key-vault/general/service-to-service-authentication.md#local-development-authentication). 
 
 Informace o tom, jak přiřadit oprávnění k rolím, najdete v tématu [ověřování spravované identity pomocí Azure Active Directory pro přístup k prostředkům Azure Service Bus](service-bus-managed-service-identity.md).
 
@@ -101,5 +101,4 @@ Pro odeslání dalších zpráv otevřete nové připojení k Service Busmu obor
 Viz následující články: 
 
 - [Azure Resource Manager výjimky](service-bus-resource-manager-exceptions.md). Vygeneruje výjimky vygenerované při interakci s Azure Service Bus pomocí Azure Resource Manager (prostřednictvím šablon nebo přímých volání).
-- [Výjimky zasílání zpráv](service-bus-messaging-exceptions.md). Poskytuje seznam výjimek generovaných .NET Framework pro Azure Service Bus. 
-
+- [Výjimky zasílání zpráv](service-bus-messaging-exceptions.md). Poskytuje seznam výjimek generovaných .NET Framework pro Azure Service Bus.

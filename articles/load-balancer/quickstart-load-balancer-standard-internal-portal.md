@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 1ec3eaac90e1d2bc24608f6cb4546d5bed859b5e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 1a7511ed0e7bb1d9032331efa87f0d61a99cf5dc
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033236"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065229"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
@@ -202,7 +202,7 @@ V této části vytvoříte pravidlo nástroje pro vyrovnávání zatížení:
 4. Ponechte zbytek výchozích hodnot a pak vyberte **OK**.
 
 >[!NOTE]
->Virtuální počítače ve fondu back-end nebudou mít odchozí připojení k Internetu s touto konfigurací. </br> Další informace o poskytování odchozího připojení najdete v těchto tématech: </br> **[Odchozí připojení v Azure](load-balancer-outbound-connections.md)**</br> Možnosti pro poskytování připojení: </br> **[Konfigurace nástroje pro vyrovnávání zatížení jen pro odchozí](egress-only.md)** </br> **[Co je Virtual Network NAT?](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
+>Virtuální počítače ve fondu back-end nebudou mít odchozí připojení k Internetu s touto konfigurací. </br> Další informace o poskytování odchozího připojení najdete v těchto tématech: </br> **[Odchozí připojení v Azure](load-balancer-outbound-connections.md)**</br> Možnosti pro poskytování připojení: </br> **[Konfigurace nástroje pro vyrovnávání zatížení – pouze odchozí](egress-only.md)** </br> **[Co je Virtual Network NAT?](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
 
 ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
@@ -500,7 +500,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     | **Síťové rozhraní** |  |
     | Virtuální síť | Vybrat **myVNet** |
     | Podsíť | Vybrat **myBackendSubnet** |
-    | Veřejná IP adresa | Vyberte **vytvořit novou** . </br> Do názvu zadejte **myVM-IP** . </br> Vybrat **OK** |
+    | Veřejná IP adresa | Vybrat **žádné** |
     | Skupina zabezpečení sítě NIC | Výběr **Možnosti Upřesnit**|
     | Konfigurovat skupinu zabezpečení sítě | Vyberte, že chcete **vytvořit novou** IP adresu. </br> V části **vytvořit skupinu zabezpečení sítě**zadejte **MyNSG** do **pole název**. </br> Vybrat **OK** |
     | **Vyrovnávání zatížení**  |

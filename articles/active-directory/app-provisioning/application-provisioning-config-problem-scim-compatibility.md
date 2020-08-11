@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: da458b8aaf1ace7b87e98ded59a4bf90e4158e0f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 39a4cbd5ffd04aa3346b1ce4f3b73576b92c4d3b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054082"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065484"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení s dodržováním předpisů protokolu SCIM 2,0 ve službě Azure AD pro zřizování uživatelů
 
@@ -43,14 +43,14 @@ V následující tabulce je jakákoli položka označená jako pevná, což znam
 | Atributy rozšíření používají tečku "." před názvy atributů namísto dvojtečky ":" Notation. |  Ano  | 18. prosince 2018  | downgrade na customappSSO |
 | Žádosti o opravu atributů s více hodnotami obsahují neplatnou syntaxi filtru cesty. | Ano  |  18. prosince 2018  | downgrade na customappSSO |
 | Žádosti o vytvoření skupiny obsahují neplatný identifikátor URI schématu. | Ano  |  18. prosince 2018  |  downgrade na customappSSO |
-| Aktualizace chování opravy pro zajištění dodržování předpisů | Ne | Bude doplněno| použít příznak náhledu |
+| Aktualizace chování opravy, aby se zajistilo dodržování předpisů (např. aktivní jako logická a správná odebrání členství ve skupině) | Ne | Bude doplněno| použít příznak náhledu |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>Příznaky pro změnu chování SCIM
 Pomocí příznaků níže v adrese URL klienta aplikace můžete změnit výchozí chování klienta SCIM.
 
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM příznaky na pozdější chování.":::
 
-* Pomocí následující adresy URL aktualizujte chování opravy a ujistěte se, že SCIM dodržování předpisů. Toto chování je nyní k dispozici pouze při použití příznaku, ale během několika následujících měsíců se stane výchozím chováním.
+* Pomocí následující adresy URL aktualizujte chování opravy a zajistěte, aby SCIM dodržování předpisů (třeba aktivní jako logická a správná odebrání členství ve skupině). Toto chování je nyní k dispozici pouze při použití příznaku, ale během několika následujících měsíců se stane výchozím chováním.
   * **Adresa URL (kompatibilní s SCIM):** AzureAdScimPatch062020
   * **Odkazy na dokumenty RFC SCIM:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2

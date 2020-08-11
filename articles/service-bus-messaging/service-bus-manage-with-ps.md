@@ -3,12 +3,12 @@ title: Použití PowerShellu ke správě Azure Service Busch prostředků | Micr
 description: Tento článek vysvětluje, jak používat modul Azure PowerShell k vytváření a správě entit Service Bus (obory názvů, fronty, témata, odběry).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7ff79d8cf2aac09a0b8d2f04ade0b3d1d9b2e74e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6439deb2b86c2ea5b50fe3bdbad89a0875b2acc
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341757"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065739"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Použití PowerShellu ke správě Service Busch prostředků
 
@@ -159,8 +159,8 @@ K zřizování jiných entit, jako jsou témata a předplatná, můžete použí
 
 Existuje několik alternativních způsobů, jak spravovat Service Bus entit, jak je popsáno v těchto blogových příspěvcích:
 
-* [Postup vytvoření Service Bus front, témat a odběrů pomocí skriptu PowerShellu](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
-* [Postup vytvoření oboru názvů Service Bus a centra událostí pomocí skriptu PowerShellu](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
+* [Postup vytvoření Service Bus front, témat a odběrů pomocí skriptu PowerShellu](/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
+* [Postup vytvoření oboru názvů Service Bus a centra událostí pomocí skriptu PowerShellu](/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
 * [Service Bus skripty PowerShellu](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 200a6b1bc2f960555fae1d910dfebde66628d13a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cd03814e1590abebb74db490a2692d492a9207d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045645"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064940"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Nasazení služby dělení a slučování pro přesun dat mezi databázemi horizontálně dělené
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Soubory jsou umístěny v adresáři s názvem **Microsoft. Azure. SqlDatabase. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Vytvořte databázi Azure SQL Database, která bude použita jako databáze stavu rozdělení a sloučení. Přejít na [Azure Portal](https://portal.azure.com). Vytvoří nový **SQL Database**. Zadejte název databáze a vytvořte nového správce a heslo. Nezapomeňte si název a heslo zaznamenat pro pozdější použití.
+1. Vytvořte databázi Azure SQL Database, která bude použita jako databáze stavu rozdělení a sloučení. Přejděte na [Azure Portal](https://portal.azure.com). Vytvoří nový **SQL Database**. Zadejte název databáze a vytvořte nového správce a heslo. Nezapomeňte si název a heslo zaznamenat pro pozdější použití.
 
 1. Ujistěte se, že váš server umožňuje připojení služeb Azure. Na portálu v **nastavení brány firewall**ověřte, že nastavení **povolený přístup ke službám Azure** je nastavené na **zapnuto**. Klikněte na ikonu Uložit.
 
@@ -74,7 +74,7 @@ Podrobné pokyny ke konfiguraci zabezpečení služby najdete v tématu [Konfigu
 
 Pro účely jednoduchého testovacího nasazení pro účely tohoto kurzu se provede minimální sada kroků konfigurace, která zajistí zprovoznění služby. Tyto kroky umožňují, aby se ke službě komunikovaly jenom jeden počítač nebo účet, který je spouští.
 
-### <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+### <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
 Vytvořte nový adresář a z tohoto adresáře spusťte pomocí okna [Developer Command Prompt pro aplikaci Visual Studio](https://msdn.microsoft.com/library/ms229859.aspx) následující příkaz:
 
@@ -108,7 +108,7 @@ Spusťte následující příkaz ze stejného okna, ve kterém bylo provedeno Ma
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>Nahrání souboru PFX do cloudové služby
 
-1. Přejít na [Azure Portal](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. Vyberte **Cloud Services**.
 3. Vyberte cloudovou službu, kterou jste vytvořili výše pro službu dělení a sloučení.
 4. V horní nabídce klikněte na **certifikáty** .
@@ -173,6 +173,9 @@ Určete webový koncový bod služby pro dělení a slučování. Můžete to na
 ### <a name="test-with-powershell-scripts"></a>Testování pomocí skriptů PowerShellu
 
 Nasazení a vaše prostředí je možné otestovat spuštěním zahrnutých ukázkových skriptů PowerShellu.
+
+> [!IMPORTANT]
+> Ukázkové skripty se spouští v prostředí PowerShell 5,1. Aktuálně se nespouštějí v PowerShellu 6 nebo novějším.
 
 K dispozici jsou tyto soubory skriptu:
 

@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak migrovat virtuální počítače s AWS
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 61a7bee52179ac525b42ad696d118f4f753f6931
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 9aad6993af4a90acb41316da0056da84f2e95f70
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534821"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066640"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Zjišťování, posouzení a migrace virtuálních počítačů Amazon Web Services (AWS) do Azure
 
@@ -99,7 +99,7 @@ Azure Migrate: Migrace serveru používá pro replikaci počítačů do Azure za
 Připravte se na nasazení zařízení následujícím způsobem:
 
 - Nastavte samostatný virtuální počítač EC2 pro hostování replikačního zařízení. V této instanci musí být spuštěný systém Windows Server 2012 R2 nebo Windows Server 2016. [Zkontrolujte](./migrate-replication-appliance.md#appliance-requirements) požadavky na hardware, software a síť pro dané zařízení.
-- Zařízení by nemělo být nainstalované na zdrojovém virtuálním počítači, který chcete replikovat. Měla by být nasazená na jiném virtuálním počítači.
+- Zařízení by nemělo být nainstalované na zdrojovém virtuálním počítači, který chcete replikovat, nebo na zařízení pro zjišťování a hodnocení Azure Migrate, které jste mohli nainstalovat dřív. Měla by být nasazená na jiném virtuálním počítači.
 - AWS virtuální počítače, které se mají migrovat, by měly mít síťovou řadu, která by měla být v zařízení replikace. Nakonfigurujte potřebná pravidla skupiny zabezpečení, aby bylo možné tuto možnost povolit. Doporučuje se, aby bylo zařízení replikace nasazené ve stejném VPC jako zdrojové virtuální počítače, které se mají migrovat. Pokud musí být zařízení replikace v jiném VPC, musí se VPCs připojit prostřednictvím partnerského vztahu VPC.
 - Zdrojové virtuální počítače s AWS komunikují se zařízením replikace na portech HTTPS 443 (orchestrace řídicích kanálů) a TCP 9443 (přenos dat) pro správu replikace a přenos dat replikace. Zařízení replikace v nástroji dále orchestruje a odesílá data replikace do Azure přes odchozí port HTTPS 443. Pokud chcete tato pravidla nakonfigurovat, upravte pravidla příchozí/odchozí skupiny zabezpečení o příslušné porty a zdrojové informace IP.
 

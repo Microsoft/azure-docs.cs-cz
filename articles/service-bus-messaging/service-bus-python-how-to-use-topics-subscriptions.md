@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-python
-ms.openlocfilehash: 01ed3df547a7dc02e0ca29028876eddb8be21c77
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f6d1b25cb502b8cb208ba5b59c91667e03c77778
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852442"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064379"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Rychlý Start: použití témat Service Bus a předplatných v Pythonu
 
@@ -176,7 +176,7 @@ Odstraněním tématu se odstraní všechna předplatná v tématu. Odběry mů�
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
 
-Ve výchozím nastavení jsou témata a odběry trvalé a existují, dokud je neodstraníte. K automatickému odstranění předplatných po uplynutí určitého časového období můžete nastavit parametr [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) v předplatném. 
+Ve výchozím nastavení jsou témata a odběry trvalé a existují, dokud je neodstraníte. K automatickému odstranění předplatných po uplynutí určitého časového období můžete nastavit parametr [auto_delete_on_idle](/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) v předplatném. 
 
 > [!TIP]
 > Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer vám umožní připojit se k Service Busmu oboru názvů a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, a možnost testovat témata, fronty, odběry, služby přenosu, centra oznámení a centra událostí. 
@@ -192,4 +192,4 @@ Teď, když jste se seznámili se základy Service Bus témata, další informac
 [Azure Python package]: https://pypi.python.org/pypi/azure
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter.SqlExpression]: service-bus-messaging-sql-filter.md
-[Service Bus quotas]: service-bus-quotas.md 
+[Service Bus quotas]: service-bus-quotas.md

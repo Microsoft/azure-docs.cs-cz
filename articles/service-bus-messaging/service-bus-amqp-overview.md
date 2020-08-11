@@ -3,15 +3,15 @@ title: Přehled AMQP 1,0 v Azure Service Bus
 description: Přečtěte si, jak Azure Service Bus podporuje rozšířený protokol řízení front zpráv (AMQP) (AMQP), což je otevřený standardní protokol.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1113ffd268c991ba8a9c8f574b90d555a81ae840
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c91c7965b94216f3f3bcb47e0cb652ce22a0217a
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083867"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066334"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Podpora AMQP 1,0 v Service Bus
-Azure Service Bus cloudová služba i místní [Service Bus pro Windows Server (Service Bus 1,1)](https://msdn.microsoft.com/library/dn282144.aspx) podporují protokol AMQP (Advanced Message Queueing Protocol) 1,0. AMQP umožňuje sestavovat hybridní aplikace pro různé platformy s využitím otevřeného standardního protokolu. Můžete sestavovat aplikace pomocí komponent sestavených pomocí různých jazyků a platforem, které běží v různých operačních systémech. Všechny tyto komponenty se mohou připojit k Service Bus a hladce si vyměňovat strukturované obchodní zprávy efektivně a s plnou věrností.
+Azure Service Bus cloudová služba i místní [Service Bus pro Windows Server (Service Bus 1,1)](/previous-versions/service-bus-archive/dn282144(v=azure.100)) podporují protokol AMQP (Advanced Message Queueing Protocol) 1,0. AMQP umožňuje sestavovat hybridní aplikace pro různé platformy s využitím otevřeného standardního protokolu. Můžete sestavovat aplikace pomocí komponent sestavených pomocí různých jazyků a platforem, které běží v různých operačních systémech. Všechny tyto komponenty se mohou připojit k Service Bus a hladce si vyměňovat strukturované obchodní zprávy efektivně a s plnou věrností.
 
 ## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>Úvod: co je AMQP 1,0 a proč je důležité?
 Aplikace middleware zaměřené na zprávy používají pro komunikaci mezi klientskými aplikacemi a zprostředkovateli speciální protokoly. To znamená, že po výběru zprostředkovatele zasílání zpráv určitého dodavatele je nutné použít knihovny tohoto dodavatele k připojení klientských aplikací k tomuto zprostředkovateli. Výsledkem je míra závislosti u tohoto dodavatele, protože portování aplikace pro jiný produkt vyžaduje změny kódu ve všech připojených aplikacích. 
@@ -43,7 +43,7 @@ V říjnu 2011 se vývojová práce převedla na technický výbor v rámci orga
 Mezi běžně citované výhody otevřených standardů patří:
 
 * Menší pravděpodobnost uzamčení dodavatele
-* Vzájemná funkční spolupráce
+* Interoperabilita
 * Široká dostupnost knihoven a nástrojů
 * Ochrana proti obsolescence
 * Dostupnost znalostních zaměstnanců
@@ -70,7 +70,7 @@ V tuto chvíli jsou známy následující klientské knihovny pro práci s Servi
 
 **Obrázek 2: tabulka klientských knihoven AMQP 1,0**
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 * AMQP 1,0 je otevřený a spolehlivý protokol pro zasílání zpráv, který můžete použít k vytváření hybridních aplikací pro různé platformy. AMQP 1,0 je OASIS Standard.
 * Podpora AMQP 1,0 je teď k dispozici v Azure Service Bus a také Service Bus pro Windows Server (Service Bus 1,1). Ceny jsou stejné jako u existujících protokolů.
 
@@ -84,6 +84,6 @@ Jste připraveni na další informace? Navštivte následující odkazy:
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [Použití Service Bus z rozhraní .NET s AMQP]: service-bus-amqp-dotnet.md
-[Použití Service Bus z Java s AMQP]: service-bus-amqp-java.md
-[Instalace Apache Qpid Proton-C na virtuální počítač Azure Linux]: service-bus-amqp-apache.md
-[AMQP v Service Bus pro Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
+[Použití Service Bus z Java s AMQP]: ./service-bus-java-how-to-use-jms-api-amqp.md
+[Instalace Apache Qpid Proton-C na virtuální počítač Azure Linux]: 
+[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

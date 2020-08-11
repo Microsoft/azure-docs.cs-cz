@@ -3,12 +3,12 @@ title: AMQP 1,0 v Azure Service Bus a průvodci protokolem Event Hubs | Microsof
 description: Průvodce protokolem pro výrazy a popis AMQP 1,0 v Azure Service Bus a Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5957e2d36b57be7db1af279736e8859d1a69b66b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ffccd49d37dbf2a8fc404e9895b648e53007675c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511309"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064532"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 v Azure Service Bus a průvodci protokolem Event Hubs
 
@@ -73,7 +73,7 @@ Připojení, kanály a relace jsou dočasné. Pokud se základní připojení sb
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP požadavky na Odchozí porty
 
-Klienti, kteří používají připojení AMQP přes protokol TCP, vyžadují, aby byly v místní bráně firewall otevřené porty 5671 a 5672. Spolu s těmito porty může být potřeba otevřít další porty, pokud je povolená funkce [EnableLinkRedirect](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) . `EnableLinkRedirect`je nová funkce zasílání zpráv, která pomáhá při přijímání zpráv přeskočit jedno směrování, což pomáhá zvýšit propustnost. Klient by začal komunikovat přímo s back-end službou přes rozsah portů 104XX, jak je znázorněno na následujícím obrázku. 
+Klienti, kteří používají připojení AMQP přes protokol TCP, vyžadují, aby byly v místní bráně firewall otevřené porty 5671 a 5672. Spolu s těmito porty může být potřeba otevřít další porty, pokud je povolená funkce [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) . `EnableLinkRedirect`je nová funkce zasílání zpráv, která pomáhá při přijímání zpráv přeskočit jedno směrování, což pomáhá zvýšit propustnost. Klient by začal komunikovat přímo s back-end službou přes rozsah portů 104XX, jak je znázorněno na následujícím obrázku. 
 
 ![Seznam cílových portů][4]
 
@@ -223,7 +223,7 @@ Jakákoli vlastnost, kterou musí aplikace definovat, by měla být namapována 
 | ID zprávy |Identifikátor volného formátu definovaného aplikací pro tuto zprávu. Používá se pro detekci duplicit. |[Parametr](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Identifikátor uživatele definovaný aplikací, není interpretován pomocí Service Bus. |Nedostupné prostřednictvím rozhraní Service Bus API. |
 | na |Identifikátor cíle definovaného aplikací, není interpretován pomocí Service Bus. |[Schopn](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| závislosti |Identifikátor účelu zprávy definované aplikací, není interpretován pomocí Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| subject |Identifikátor účelu zprávy definované aplikací, není interpretován pomocí Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | odpovědět na |Indikátor odpovědi na cestu definovaný aplikací, není interpretován pomocí Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |Identifikátor korelace definovaný aplikací, není interpretován pomocí Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | typ obsahu |Indikátor typu obsahu definovaného aplikací pro tělo, které není interpretováno Service Bus. |[Třída](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -357,11 +357,11 @@ Gesto protokolu je výměna požadavků a odpovědí definovaná specifikací sp
 
 Zpráva požadavku má následující vlastnosti aplikace:
 
-| Key | Volitelné | Typ hodnoty | Obsah hodnoty |
+| Klíč | Volitelné | Typ hodnoty | Obsah hodnoty |
 | --- | --- | --- | --- |
-| NázevOperace |No |řetězec |**token Put** |
-| typ |No |řetězec |Typ vytvářeného tokenu. |
-| name |No |řetězec |Cílová skupina, na kterou se vztahuje token. |
+| NázevOperace |Ne |řetězec |**token Put** |
+| typ |Ne |řetězec |Typ vytvářeného tokenu. |
+| name |Ne |řetězec |Cílová skupina, na kterou se vztahuje token. |
 | vypršení platnosti |Ano |časové razítko |Čas vypršení platnosti tokenu. |
 
 Vlastnost *Name* určuje entitu, ke které je token přidružen. V Service Bus se jedná o cestu k frontě nebo k tématu nebo předplatnému. Vlastnost *Type* určuje typ tokenu:
@@ -376,9 +376,9 @@ Tokeny udělují práva. Service Bus ví o třech základních právech: "Odesla
 
 Zpráva s odpovědí obsahuje následující hodnoty *vlastností aplikace* .
 
-| Key | Volitelné | Typ hodnoty | Obsah hodnoty |
+| Klíč | Volitelné | Typ hodnoty | Obsah hodnoty |
 | --- | --- | --- | --- |
-| Stavový kód |No |int |Kód odpovědi HTTP **[RFC2616]**. |
+| Stavový kód |Ne |int |Kód odpovědi HTTP **[RFC2616]**. |
 | Popis stavu |Ano |řetězec |Popis stavu |
 
 Klient může opakovaně volat *tokeny Put* a pro každou entitu v infrastruktuře zasílání zpráv. Tokeny jsou vymezeny na aktuálního klienta a ukotveny k aktuálnímu připojení, což znamená, že server při poklesu připojení vyřazuje všechny zachované tokeny.
@@ -419,5 +419,5 @@ Další informace o AMQP najdete na následujících odkazech:
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
 [Přehled Service Bus AMQP]: service-bus-amqp-overview.md
-[Podpora AMQP 1,0 pro dělené fronty a témata pro Service Bus]: service-bus-partitioned-queues-and-topics-amqp-overview.md
-[AMQP v Service Bus pro Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
+[Podpora AMQP 1,0 pro dělené fronty a témata pro Service Bus]: 
+[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

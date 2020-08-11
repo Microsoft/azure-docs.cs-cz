@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte používat Azure Service Bus témata a o
 ms.devlang: PHP
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: f2161d39961cc52bc0f0da509abec3ed6377cc07
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 706f523fdfb3c710bb16b048cfc68ce98875adb1
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341091"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066198"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Rychlý Start: jak používat Service Bus témata a odběry pomocí PHP
 
@@ -261,13 +261,13 @@ for($i = 0; $i < 5; $i++){
 Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv držených v tématu není omezený, ale celková velikost zpráv držených v tématu omezená je. Tento horní limit velikosti tématu je 5 GB. Další informace o kvótách najdete v tématu [Service Bus kvóty][Service Bus quotas].
 
 ## <a name="receive-messages-from-a-subscription"></a>Přijímání zpráv z předplatného
-Nejlepším způsobem, jak přijímat zprávy z předplatného, je použití `ServiceBusRestProxy->receiveSubscriptionMessage` metody. Zprávy mohou být přijímány ve dvou různých režimech: [ *ReceiveAndDelete* a *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode). Výchozí hodnota je **PeekLock**.
+Nejlepším způsobem, jak přijímat zprávy z předplatného, je použití `ServiceBusRestProxy->receiveSubscriptionMessage` metody. Zprávy mohou být přijímány ve dvou různých režimech: [ *ReceiveAndDelete* a *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode). Výchozí hodnota je **PeekLock**.
 
-Při použití režimu [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) je přijetí jednorázová operace – tzn. když Service Bus přijme požadavek na čtení zprávy v odběru, označí zprávu jako spotřebovávanou a vrátí ji do aplikace. [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) * režim je nejjednodušší model a funguje nejlépe ve scénářích, ve kterých aplikace může tolerovat nezpracovávání zprávy, když dojde k selhání. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se. Vzhledem k tomu, že Service Bus označila zprávu jako spotřebovaná, pak když se aplikace znovu spustí a začne znovu přijímat zprávy, vynechala zprávu, která byla spotřebována před selháním.
+Při použití režimu [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) je přijetí jednorázová operace – tzn. když Service Bus přijme požadavek na čtení zprávy v odběru, označí zprávu jako spotřebovávanou a vrátí ji do aplikace. [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) * režim je nejjednodušší model a funguje nejlépe ve scénářích, ve kterých aplikace může tolerovat nezpracovávání zprávy, když dojde k selhání. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se. Vzhledem k tomu, že Service Bus označila zprávu jako spotřebovaná, pak když se aplikace znovu spustí a začne znovu přijímat zprávy, vynechala zprávu, která byla spotřebována před selháním.
 
-Ve výchozím režimu [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) se příjem zprávy stane dvě operace fáze, která umožňuje podporovat aplikace, které nemůžou tolerovat chybějící zprávy. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu příjmu tím, že se přijatá zpráva pošle do `ServiceBusRestProxy->deleteMessage` . Když Service Bus uvidí `deleteMessage` volání, označí zprávu jako spotřebou a odebere ji z fronty.
+Ve výchozím režimu [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) se příjem zprávy stane dvě operace fáze, která umožňuje podporovat aplikace, které nemůžou tolerovat chybějící zprávy. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu příjmu tím, že se přijatá zpráva pošle do `ServiceBusRestProxy->deleteMessage` . Když Service Bus uvidí `deleteMessage` volání, označí zprávu jako spotřebou a odebere ji z fronty.
 
-Následující příklad ukazuje, jak přijmout a zpracovat zprávu pomocí režimu [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) (výchozí režim). 
+Následující příklad ukazuje, jak přijmout a zpracovat zprávu pomocí režimu [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) (výchozí režim). 
 
 ```php
 require_once 'vendor/autoload.php';

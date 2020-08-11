@@ -3,16 +3,16 @@ title: Azure Service Bus – migrace na autorizaci sdíleného přístupového p
 description: Přečtěte si o migraci z Azure Active Directory Access Control Service na autorizaci sdíleného přístupového podpisu.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9ef6eda205af150a20236da68e1b6b1dbf91059e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8cd12ac97020417f9958beded1fd198dd485fff
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340119"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064617"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus – migrace z Azure Active Directory Access Control Service na autorizaci sdíleného přístupového podpisu
 
-Aplikace Service Bus dříve používaly dva různé autorizační modely: model tokenu [sdíleného přístupového podpisu (SAS)](service-bus-sas.md) poskytovaný přímo Service Bus a federovaný model, ve kterém je spravována Správa autorizačních pravidel v rámci [Azure Active Directory](/azure/active-directory/) Access Control Service (ACS), a tokeny získané ze služby ACS jsou předány Service Bus pro autorizaci přístupu k požadovaným funkcím.
+Aplikace Service Bus dříve používaly dva různé autorizační modely: model tokenu [sdíleného přístupového podpisu (SAS)](service-bus-sas.md) poskytovaný přímo Service Bus a federovaný model, ve kterém je spravována Správa autorizačních pravidel v rámci [Azure Active Directory](../active-directory/index.yml) Access Control Service (ACS), a tokeny získané ze služby ACS jsou předány Service Bus pro autorizaci přístupu k požadovaným funkcím.
 
 Autorizační model služby ACS byl v současnosti nahrazen [autorizací SAS](service-bus-authentication-and-authorization.md) jako preferovaným modelem a všechny dokumentace, pokyny a ukázky používají výhradně SAS ještě dnes. Kromě toho již není možné vytvářet nové obory názvů Service Bus, které jsou spárovány se službou ACS.
 
@@ -56,4 +56,3 @@ Další informace o ověřování Service Bus najdete v následujících témate
 
 * [Ověřování a autorizace Service Bus](service-bus-authentication-and-authorization.md)
 * [Service Bus ověřování pomocí sdílených přístupových podpisů](service-bus-sas.md)
-

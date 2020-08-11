@@ -3,12 +3,12 @@ title: Ověření aplikace pro přístup k Azure Service Bus entit
 description: Tento článek poskytuje informace o ověřování aplikace s Azure Active Directory pro přístup k Azure Service Bus entit (fronty, témata atd.).
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 1d18772dfa9cf444dc55d5e4cef6f31dd6c0d669
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b12f2f294a66159a7035240c361ab93f9f84718e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006260"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064821"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Ověřování a autorizace aplikace s Azure Active Directory pro přístup k Azure Service Busm entitám
 Azure Service Bus podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Service Bus entit (fronty, témata, odběry nebo filtry). Pomocí Azure AD můžete použít řízení přístupu na základě role Azure (Azure RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt aplikace. Další informace o rolích a přiřazení rolí najdete v tématu [Principy různých rolí](../role-based-access-control/overview.md).
@@ -102,7 +102,7 @@ Po zaregistrování aplikace se v části **Nastavení**zobrazí **ID aplikace (
 
 ![ID aplikace registrované aplikace](./media/authenticate-application/application-id.png)
 
-Další informace o registraci aplikace v Azure AD najdete v tématu [integrování aplikací pomocí Azure Active Directory](../active-directory/develop/quickstart-v2-register-an-app.md).
+Další informace o registraci aplikace v Azure AD najdete v tématu [integrování aplikací pomocí Azure Active Directory](../active-directory/develop/quickstart-register-app.md).
 
 > [!IMPORTANT]
 > Poznamenejte si **TenantId** a **ApplicationId**. Tyto hodnoty budete potřebovat ke spuštění aplikace.

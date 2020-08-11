@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ffbd23dccd7bac03e849241866416ac07af4a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5734cb76e4ed018778c6858597ec8efe3019bf9
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035413"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065977"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Ochrana uživatelských účtů před útoky pomocí Azure Active Directory inteligentní uzamčení
 
@@ -24,7 +24,7 @@ Inteligentní uzamčení pomáhá uzamknout chybné aktéry, které se snaží o
 
 ## <a name="how-smart-lockout-works"></a>Jak funguje inteligentní zamykání
 
-Ve výchozím nastavení zamkne inteligentní zámek účet z pokusů o přihlášení po jednu minutu po 10 neúspěšných pokusech. Po každém následném neúspěšném pokusu o přihlášení se účet zamkne znovu po dobu 1 minuty a v dalších pokusech.
+Ve výchozím nastavení zamkne inteligentní zámek účet z pokusů o přihlášení po jednu minutu po 10 neúspěšných pokusech. Po každém následném neúspěšném pokusu o přihlášení se účet zamkne znovu po dobu 1 minuty a v dalších pokusech. Abychom minimalizovali, jak by mohl útočník tento problém obejít, neuzavřeme rychlost, s jakou se období uzamčení šíří nad dalšími neúspěšnými pokusy o přihlášení.
 
 Inteligentní uzamykání sleduje poslední tři chybné hodnoty hash hesla, aby nedošlo k vyššímu zvýšení čítače uzamčení pro stejné heslo. Pokud někdo několikrát zadá stejné chybné heslo, toto chování nezpůsobí, že se účet zamkne.
 
@@ -69,7 +69,7 @@ Na základě požadavků vaší organizace můžete přizpůsobit hodnoty inteli
 
 Chcete-li kontrolovat nebo upravovat hodnoty inteligentního uzamknutí pro vaši organizaci, proveďte následující kroky:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Vyhledejte a vyberte *Azure Active Directory*a pak vyberte **Security**  >  **metody ověřování**zabezpečení  >  **ochrana heslem**.
 1. Nastavte **prahovou hodnotu uzamčení**na základě toho, kolik neúspěšných přihlášení na účtu je před prvním uzamčením povolené.
 

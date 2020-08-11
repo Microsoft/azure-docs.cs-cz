@@ -8,12 +8,12 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: f056f685c999895e793af3eb3c6e2047c5b6dc09
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 238cd5e79fe749052206cfdf25d576f88f1020e8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88043010"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065433"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>Bezpečné vytvoření dvou webových aplikací s privátním koncovým bodem a integrací virtuální sítě
 
@@ -27,11 +27,11 @@ Tento článek ukazuje příklad použití [privátního koncového bodu](https:
 - Vytvoření back-end webové aplikace
 - Vytvoření privátní zóny DNS s názvem zóny privátního propojení pro webovou aplikaci privatelink.azurewebsites.net
 - Propojit tuto zónu s virtuální sítí
-- Vytvořte privátní koncový bod pro back-end webovou aplikaci v podsíti koncového bodu a zaregistrujte názvy DNS v dříve vytvořené privátní zóně DNS.
+- Vytvořte privátní koncový bod pro back-end webovou aplikaci v podsíti koncového bodu a zaregistrujte názvy DNS (Web a SCM) v dříve vytvořené privátní zóně DNS.
 
 ## <a name="how-to-use-terraform-in-azure"></a>Jak používat terraformu v Azure
 
-Přejděte na [Azure Portal](https://docs.microsoft.com/azure/developer/terraform/) a Naučte se, jak používat Terraformu s Azure.
+Přejděte k [dokumentaci Azure](https://docs.microsoft.com/azure/developer/terraform/) , kde se dozvíte, jak používat Terraformu s Azure.
 
 ## <a name="the-complete-terraform-file"></a>Úplný soubor terraformu
 

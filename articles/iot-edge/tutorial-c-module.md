@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4bed27654b3482300d3d102d545b44373c53dde0
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: cf9fb8a95be9a5ba025534508139a0e300036542
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439794"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064838"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Kurz: vývoj modulu C IoT Edge pro zařízení se systémem Linux
 
@@ -44,7 +44,7 @@ Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modu
 | **Linux AMD64** | ![Použití VS Code pro moduly jazyka C v systému Linux AMD64](./media/tutorial-c-module/green-check.png) | ![Použití VS pro moduly C v systému Linux AMD64](./media/tutorial-c-module/green-check.png) |
 | **Linux ARM32** | ![Použití VS Code pro moduly jazyka C v systému Linux ARM32](./media/tutorial-c-module/green-check.png) | ![Použití VS pro moduly C v ARM32 pro Linux](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastavení vývojového prostředí pro vývoj kontejnerů pro Linux: [vývoj IoT Edgech modulů pro zařízení se systémem Linux](tutorial-develop-for-linux.md). Po dokončení tohoto kurzu byste měli mít následující požadavky:
 
@@ -57,6 +57,8 @@ Před zahájením tohoto kurzu byste si měli projít předchozí kurz nastaven�
 Chcete-li vytvořit modul IoT Edge v jazyce C, nainstalujte na svém vývojovém počítači následující další požadavky:
 
 * [Rozšíření C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) pro Visual Studio Code.
+
+Instalace sady Azure IoT C SDK není pro tento kurz nutná, ale může poskytovat užitečné funkce, jako je IntelliSense a čtení definic programu. Informace o instalaci najdete v tématu sady [SDK a knihovny Azure IoT C](https://github.com/Azure/azure-iot-sdk-c).
 
 ## <a name="create-a-module-project"></a>Vytvořit projekt modulu
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: 076233c52074bca646c072e9a1abe63b15412c1b
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: cebbab4045b3f8af061bfececff1af9ed70c50de
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430639"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065121"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Rychlý Start: použití Service Busch front v Azure s využitím Node.js a balíčku Azure-Sb
 V tomto kurzu se naučíte vytvářet Node.js aplikace pro posílání zpráv a příjem zpráv z fronty Azure Service Bus pomocí balíčku [Azure-SB](https://www.npmjs.com/package/azure-sb) . Ukázky jsou napsané v JavaScriptu a používají Node.js [modul Azure](https://www.npmjs.com/package/azure) , který interně používá balíček Azure-Sb.
@@ -20,9 +20,9 @@ V tomto kurzu se naučíte vytvářet Node.js aplikace pro posílání zpráv a 
 > [!IMPORTANT]
 > Balíček [Azure-SB](https://www.npmjs.com/package/azure-sb) používá [Service Bus rozhraní REST runtime API](/rest/api/servicebus/service-bus-runtime-rest). Můžete získat rychlejší práci pomocí nového, [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) který používá rychlejší [protokol AMQP 1,0](service-bus-amqp-overview.md). 
 > 
-> Další informace o novém balíčku najdete v tématu [použití Service Bus front s Node.js a @azure/service-bus balíčkem](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package). Další informace o použití balíčku [Azure](https://www.npmjs.com/package/azure) najdete v tématu o tom, jak pokračovat v čtení.
+> Další informace o novém balíčku najdete v tématu [použití Service Bus front s Node.js a @azure/service-bus balíčkem](./service-bus-nodejs-how-to-use-queues-new-package.md). Další informace o použití balíčku [Azure](https://www.npmjs.com/package/azure) najdete v tématu o tom, jak pokračovat v čtení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Pokud nemáte frontu, ve které byste mohli pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření fronty Service Bus](service-bus-quickstart-portal.md) .
     1. Přečtěte si rychlý **přehled** Service Busch **front**. 

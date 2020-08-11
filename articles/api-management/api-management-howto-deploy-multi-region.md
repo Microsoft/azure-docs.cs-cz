@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 427ebfe865002612be2f9aeb9db416f5c2f41e52
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790475"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065450"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Postup při nasazení instance služby Azure API Management do několika oblastí Azure
 
@@ -28,6 +28,9 @@ Nová služba Azure API Management zpočátku obsahuje jenom jednu [jednotku][un
 
 > [!NOTE]
 > Do všech oblastí je nasazená jenom součást brány API Management. Komponenta správy služby a portál pro vývojáře se hostují jenom v primární oblasti. Proto se v případě výpadku primární oblasti přístup k portálu pro vývojáře a možnosti změny konfigurace (např. Přidání rozhraní API, použití zásad) ztratí, dokud se primární oblast znovu nevrátí do režimu online. I když je primární oblast offline dostupná, sekundární oblasti budou dál obsluhovat přenosy rozhraní API, a to pomocí nejnovější konfigurace, která je pro ně dostupná.
+
+>[!IMPORTANT]
+> Funkce pro ukládání zákaznických dat v jedné oblasti je v tuto chvíli dostupná jenom v oblasti jihovýchodní Asie (Singapur) Asie a Tichomoří geografické oblasti. Pro všechny ostatní oblasti jsou zákaznická data uložená v geograficky.
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 

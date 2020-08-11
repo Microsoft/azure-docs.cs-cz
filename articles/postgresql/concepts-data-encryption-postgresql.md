@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 965118345a003aface0373bda7496243bcab8429
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f444ff4e884e50ed75b02328bfbe4d4117bc4cc9
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290169"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064787"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem
 
@@ -26,7 +26,7 @@ Key Vault je cloudový externí systém pro správu klíčů. Je vysoce dostupn�
 
 ## <a name="benefits"></a>Výhody
 
-Šifrování dat pro Azure Database for PostgreSQL jeden server přináší následující výhody:
+Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for PostgreSQL jeden server přináší následující výhody:
 
 * Přístup k datům je plně řízen možností odebrání klíče a zpřístupnění databáze. 
 *    Úplná kontrola nad životním cyklem klíčů, včetně rotace klíče, který se má zarovnat k podnikovým zásadám
@@ -48,8 +48,8 @@ DEKs šifrované pomocí KEK se ukládají samostatně. Pouze entita s přístup
 Aby mohl server PostgreSQL používat pro šifrování klíč DEK klíče, které jsou uložené v Key Vault, správce Key Vault poskytuje následující přístupová práva k serveru:
 
 * **Get**: pro načtení veřejné části a vlastností klíče v trezoru klíčů.
-* **wrapKey**: aby bylo možné zašifrovat klíč dek.
-* **unwrapKey**: aby bylo možné dešifrovat klíč dek.
+* **wrapKey**: aby bylo možné zašifrovat klíč dek. Šifrovaný klíč DEK je uložený v Azure Database for PostgreSQL.
+* **unwrapKey**: aby bylo možné dešifrovat klíč dek. Azure Database for PostgreSQL potřebuje dešifrovací klíč DEK k šifrování nebo dešifrování dat.
 
 Správce trezoru klíčů může také [Povolit protokolování událostí auditu Key Vault](../azure-monitor/insights/key-vault-insights-overview.md), aby se mohly auditovat později.
 
@@ -59,16 +59,16 @@ Když je server nakonfigurovaný tak, aby používal klíč spravovaný zákazn�
 
 Níže jsou uvedené požadavky na konfiguraci Key Vault:
 
-* Key Vault a Azure Database for PostgreSQL jeden server musí patřit do stejného tenanta Azure Active Directory (Azure AD). Interakce mezi Key Vault klienty a servery nejsou podporovány. Přesunutí prostředků poté vyžaduje překonfigurování šifrování dat.
+* Key Vault a Azure Database for PostgreSQL jeden server musí patřit do stejného tenanta Azure Active Directory (Azure AD). Interakce mezi Key Vault klienty a servery nejsou podporovány. Přesunutí prostředku Key Vault pak vyžaduje překonfigurování šifrování dat.
 * Povolí funkci obnovitelného odstranění v trezoru klíčů, aby se chránila před ztrátou dat v případě, že dojde k odstranění náhodného klíče (nebo Key Vault). Obnovitelné odstraněné prostředky se uchovávají po dobu 90 dnů, pokud je uživatel neobnoví nebo neodstraní. Akce obnovit a odstranit mají vlastní oprávnění přidružená v zásadách přístupu Key Vault. Funkce obnovitelného odstranění je ve výchozím nastavení vypnutá, ale můžete ji povolit prostřednictvím PowerShellu nebo rozhraní příkazového řádku Azure CLI (Všimněte si, že ji nemůžete povolit prostřednictvím Azure Portal).
-* Udělte jednomu serveru Azure Database for PostgreSQL přístup k trezoru klíčů s oprávněními Get, wrapKey a unwrapKey pomocí jeho jedinečné spravované identity. V Azure Portal se jedinečná identita automaticky vytvoří, když je na jednom serveru PostgreSQL povolené šifrování dat. Podrobné pokyny pro použití Azure Portal najdete v tématu [šifrování dat pro Azure Database for PostgreSQL jeden server pomocí Azure Portal](howto-data-encryption-portal.md) .
+* Udělte jednomu serveru Azure Database for PostgreSQL přístup k trezoru klíčů s oprávněními Get, wrapKey a unwrapKey pomocí jeho jedinečné spravované identity. V Azure Portal se jedinečná identita služby automaticky vytvoří, když je na jednom serveru PostgreSQL povolené šifrování dat. Podrobné pokyny pro použití Azure Portal najdete v tématu [šifrování dat pro Azure Database for PostgreSQL jeden server pomocí Azure Portal](howto-data-encryption-portal.md) .
 
 Níže jsou uvedené požadavky na konfiguraci klíče spravovaného zákazníkem:
 
 * Klíč spravovaný zákazníkem, který se má použít k šifrování klíč DEK, může být jenom asymetrická, RSA 2048.
 * Datum aktivace klíče (Pokud je nastaveno) musí být datum a čas v minulosti. Datum vypršení platnosti (Pokud je nastaveno) musí být budoucí datum a čas.
 * Klíč musí být v *povoleném* stavu.
-* Pokud importujete existující klíč do trezoru klíčů, nezapomeňte ho zadat v podporovaných formátech souborů ( `.pfx` , `.byok` , `.backup` ).
+* Pokud [importujete existující klíč](https://docs.microsoft.com/rest/api/keyvault/ImportKey/ImportKey) do trezoru klíčů, nezapomeňte ho zadat v podporovaných formátech souborů ( `.pfx` , `.byok` , `.backup` ).
 
 ## <a name="recommendations"></a>Doporučení
 

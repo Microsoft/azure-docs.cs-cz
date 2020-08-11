@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: e066f810dca9c1b824c5eb30bb9f938df856a819
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 6fb065e48b744a31bcce2ca3249d0d6bd0216049
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002706"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066419"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -88,7 +88,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Canberra2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Austrálie – střed 2| 10G, 100G | CDC |
 | **Kapské město** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | Jižní Afrika – západ | 10G | BCX, Internet Solutions – Cloud Connect, Liquid Telecom, teraco |
 | **Čennaj** | Tata Communications | 2 | Indie – jih | 10G | Global CloudXchange (GCX), SIFY, Tata Communications |
-| **Čennaj2** | Airtel | 2 | Indie – jih | Není k dispozici | Airtel |
+| **Čennaj2** | Airtel | 2 | Indie – jih | 10G | Airtel |
 | **Chicago** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | 1 | USA – středosever | 10G, 100G | Aryaka Networks sítě, v&T NetBond, CenturyLink Cloud Connect, Cologix, Colt, Comcastu, Coresite, Equinix, spolucloud, Internet2, Level 3 Communications, Megaport, PacketFabric, PCCW Globaled, Sprint, Telia dopravce, Verizon, Zayo |
 | **Kodaňských** | [Interxion CPH1](https://www.interxion.com/Locations/copenhagen/) | 1 | Není k dispozici | 10G | Interxion |
 | **Dallas** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | 1 | Není k dispozici | 10G, 100G | Aryaka Networks sítě, v&T NetBond, Cologix, Equinix, Internet2, Level 3 Communications, Megaport, Neutrona Networks, Telmex Uninet, Telia Carrier, Transtelco, Verizon, Zayo|
@@ -115,7 +115,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Minneapolis** | [Cologix MIN1](https://www.cologix.com/data-centers/minneapolis/min1/) | 1 | Není k dispozici | 10G, 100G | Cologix |
 | **Montreal** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | Není k dispozici | 10G, 100G | Zvon Kanada, Cologix, Megaport, Telus, Zayo |
 | **Bombaj** | Tata Communications | 2 | Západní Indie | 10G | DE-CIX, Global CloudXchange (GCX), spoléhá se na jio, Sify, Tata Communications, Verizon |
-| **Bombaj2** | Airtel | 2 | Západní Indie | Není k dispozici | Airtel, Sify, Vodafone Idea |
+| **Bombaj2** | Airtel | 2 | Západní Indie | 10G | Airtel, Sify, Vodafone Idea |
 | **Mnichov** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/munich/) | 1 | Není k dispozici | 10G | DE-CIX |
 | **New York** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | Není k dispozici | 10G, 100G | CenturyLink Cloud Connect, Colt, Coresite, DE-CIX, Equinix, spolucloud, Megaport, Packet, Zayo |
 | **Newport (Wales)** | [Next Generation Data](https://www.nextgenerationdata.co.uk) | 1 | Spojené království – západ | Není k dispozici | British Telecom, Colt, Level 3 Communications, data nové generace |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0d9c9c061e31ac4d3eba8d31352253bb25b62a9b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 641cae751b0b87d93235e1272bc5f46f7797d834
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503289"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065110"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Přehled integrace služby Azure Service Bus do služby Event Grid
 
@@ -41,9 +41,9 @@ Service Bus v současné době odesílá události pro dva scénáře:
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
 * DeadletterMessagesAvailable
 
-Kromě toho využívá Service Bus standardní [mechanismy ověřování](https://docs.microsoft.com/azure/event-grid/security-authentication) a zabezpečení služby Event Grid.
+Kromě toho využívá Service Bus standardní [mechanismy ověřování](../event-grid/security-authentication.md) a zabezpečení služby Event Grid.
 
-Další informace najdete v tématu [Schémata událostí služby Azure Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema).
+Další informace najdete v tématu [Schémata událostí služby Azure Event Grid](../event-grid/event-schema.md).
 
 #### <a name="active-messages-available-event"></a>Událost Active Messages Available (Jsou k dispozici aktivní zprávy)
 
@@ -132,7 +132,7 @@ Nový odběr služby Event Grid vytvoříte následovně:
 
 ## <a name="azure-cli-instructions"></a>Pokyny pro Azure CLI
 
-Nejprve se ujistěte, že máte nainstalované Azure CLI verze 2.0 nebo novější. [Stáhněte instalační program](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Vyberte **Windows + X**a pak otevřete novou konzolu PowerShellu s oprávněními správce. Případně může použít příkazové prostředí na webu Azure Portal.
+Nejprve se ujistěte, že máte nainstalované Azure CLI verze 2.0 nebo novější. [Stáhněte instalační program](/cli/azure/install-azure-cli?view=azure-cli-latest). Vyberte **Windows + X**a pak otevřete novou konzolu PowerShellu s oprávněními správce. Případně může použít příkazové prostředí na webu Azure Portal.
 
 Spusťte následující kód:
 
@@ -150,7 +150,7 @@ Pokud používáte BASH
 
 ## <a name="powershell-instructions"></a>Pokyny pro PowerShell
 
-Ujistěte se, že máte nainstalovaný Azure PowerShell. [Stáhněte instalační program](https://docs.microsoft.com/powershell/azure/install-Az-ps). Stiskněte **Windows + X** a pak otevřete novou konzolu PowerShellu s oprávněními správce. Případně může použít příkazové prostředí na webu Azure Portal.
+Ujistěte se, že máte nainstalovaný Azure PowerShell. [Stáhněte instalační program](/powershell/azure/install-Az-ps). Stiskněte **Windows + X** a pak otevřete novou konzolu PowerShellu s oprávněními správce. Případně může použít příkazové prostředí na webu Azure Portal.
 
 ```powershell-interactive
 Connect-AzAccount
@@ -171,10 +171,10 @@ Teď můžete prozkoumat další možnosti instalace nebo otestovat tok událost
 ## <a name="next-steps"></a>Další kroky
 
 * [Příklady](service-bus-to-event-grid-integration-example.md) pro službu Service Bus a Event Grid.
-* Další informace o službě [Event Grid](https://docs.microsoft.com/azure/event-grid/).
-* Další informace o službě [Azure Functions](https://docs.microsoft.com/azure/azure-functions/).
-* Další informace o [Logic Apps](https://docs.microsoft.com/azure/logic-apps/).
-* Další informace o službě [Service Bus](https://docs.microsoft.com/azure/service-bus/).
+* Další informace o službě [Event Grid](../event-grid/index.yml).
+* Další informace o službě [Azure Functions](../azure-functions/index.yml).
+* Další informace o [Logic Apps](../logic-apps/index.yml).
+* Další informace o službě [Service Bus](/azure/service-bus/).
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [čl]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png

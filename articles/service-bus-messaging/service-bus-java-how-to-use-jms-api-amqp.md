@@ -4,12 +4,12 @@ description: Jak používat službu JMS (Java Message Service) s Azure Service B
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 935579bdcb142969d9baf7ca24cf03268620bf46
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: be6b5de7946fc54ab58087fccabed9f5ed09251d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799680"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065773"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Použití JMS (Java Message Service) s Azure Service Bus a AMQP 1,0
 
@@ -29,7 +29,7 @@ Podpora AMQP 1,0 v Azure Service Bus znamená, že můžete používat funkce ř
 V tomto průvodci se předpokládá, že už máte obor názvů Service Bus obsahující frontu s názvem `basicqueue` . Pokud to neuděláte, můžete [vytvořit obor názvů a frontu](service-bus-create-namespace-portal.md) pomocí [Azure Portal](https://portal.azure.com). Další informace o tom, jak vytvořit Service Bus obory názvů a fronty, najdete v tématu Začínáme [s Service Bus fronty](service-bus-dotnet-get-started-with-queues.md).
 
 > [!NOTE]
-> Dělené fronty a témata také podporují AMQP. Další informace najdete v tématech [rozdělené entity zasílání zpráv](service-bus-partitioning.md) a [Podpora AMQP 1,0 pro Service Bus dělené fronty a témata](service-bus-partitioned-queues-and-topics-amqp-overview.md).
+> Dělené fronty a témata také podporují AMQP. Další informace najdete v tématech [rozdělené entity zasílání zpráv](service-bus-partitioning.md) a [Podpora AMQP 1,0 pro Service Bus dělené fronty a témata](./service-bus-amqp-protocol-guide.md).
 > 
 > 
 
@@ -380,7 +380,7 @@ Service Bus AMQP 1,0 můžete také použít z jiných jazyků, včetně .NET, C
 
 ## <a name="next-steps"></a>Další kroky
 * [Podpora AMQP 1,0 v Azure Service Bus](service-bus-amqp-overview.md)
-* [Jak používat AMQP 1,0 s rozhraním API Service Bus .NET](service-bus-dotnet-advanced-message-queuing.md)
+* [Jak používat AMQP 1,0 s rozhraním API Service Bus .NET](./service-bus-amqp-dotnet.md)
 * [Příručka pro vývojáře Service Bus AMQP 1,0](service-bus-amqp-dotnet.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 * [Středisko pro vývojáře Java](https://azure.microsoft.com/develop/java/)

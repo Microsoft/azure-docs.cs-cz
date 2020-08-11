@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: cf21030fbf1aaa9f36e4d34aac918c4604066ec2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 373629c86f2d842ad2e02dd2b66739f3963bf7ed
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071630"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064549"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>Integrace RabbitMQ s Azure Service Bus
 
@@ -20,7 +20,7 @@ V této příručce se dozvíte, jak odesílat zprávy z RabbitMQ do Azure Servi
 
 Tady je několik scénářů, ve kterých můžeme využít tyto možnosti:
 
-- **Nastavení Edge**: máme nastavení Edge, kde posíláme zprávy do RabbitMQ, ale chceme tyto zprávy přeposílat do [Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview) pro další zpracování, takže můžeme použít spoustu [funkcí Azure pro velké](https://docs.microsoft.com/azure/architecture/guide/architecture-styles/big-data)objemy dat.
+- **Nastavení Edge**: máme nastavení Edge, kde posíláme zprávy do RabbitMQ, ale chceme tyto zprávy přeposílat do [Azure Service Bus](./service-bus-messaging-overview.md) pro další zpracování, takže můžeme použít spoustu [funkcí Azure pro velké](/azure/architecture/guide/architecture-styles/big-data)objemy dat.
 - **Hybridní cloud**: vaše společnost právě získala třetí stranu, která pro potřeby zasílání zpráv používá RabbitMQ. Jsou na jiném cloudu. Při přechodu na Azure už můžete začít sdílet data přemostěním RabbitMQ s Azure Service Bus.
 - **Integrace třetích stran**: třetí strana používá RabbitMQ jako zprostředkovatele a chce odesílat data do nás, ale jsou mimo naši organizaci. Můžeme jim poskytnout klíč SAS, který jim poskytne přístup k omezené sadě Azure Service Bus frontám, do kterých mohou předávat své zprávy.
 
@@ -28,7 +28,7 @@ V seznamu se nachází, ale většinu těchto případů můžete vyřešit pře
 
 Nejdřív je potřeba vytvořit si bezplatný účet Azure tak, že se [sem](https://azure.microsoft.com/free/) zaregistrujete.
 
-Jakmile se přihlásíte ke svému účtu, přejdete na [Azure Portal](https://portal.azure.com/) a vytvoříte nový [obor názvů](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal)Azure Service Bus. Obory názvů jsou oborové kontejnery, ve kterých se naše součásti zasílání zpráv budou živě, jako jsou fronty a témata.
+Jakmile se přihlásíte ke svému účtu, přejdete na [Azure Portal](https://portal.azure.com/) a vytvoříte nový [obor názvů](./service-bus-create-namespace-portal.md)Azure Service Bus. Obory názvů jsou oborové kontejnery, ve kterých se naše součásti zasílání zpráv budou živě, jako jsou fronty a témata.
 
 ## <a name="adding-a-new-azure-service-bus-namespace"></a>Přidává se nový obor názvů Azure Service Bus.
 
@@ -40,7 +40,7 @@ Pak vyberte integrace a kliknutím na Azure Service Bus vytvořte obor názvů p
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="Výběr služby Azure Service Bus":::
 
-Zobrazí se výzva k zadání informací o oboru názvů. Vyberte předplatné Azure, které chcete použít. Pokud [skupinu prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)nemáte, můžete vytvořit novou.
+Zobrazí se výzva k zadání informací o oboru názvů. Vyberte předplatné Azure, které chcete použít. Pokud [skupinu prostředků](../azure-resource-manager/management/manage-resource-groups-portal.md)nemáte, můžete vytvořit novou.
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="Vytvoření oboru názvů":::
 
@@ -76,7 +76,7 @@ Teď je čas získat přihlašovací údaje potřebné pro připojení RabbitMQ 
 
 ## <a name="connecting-rabbitmq-to-azure-service-bus"></a>Připojení RabbitMQ k Azure Service Bus
 
-Pro vaši frontu budete muset vytvořit [zásadu sdíleného přístupu](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) (SAS), takže RabbitMQ může do ní publikovat zprávy. Zásady SAS umožňují určit, co externí strana může s vaším prostředkem dělat. Účelem je, aby RabbitMQ mohl odesílat zprávy, ale neposlouchal ani nespravuje fronty.
+Pro vaši frontu budete muset vytvořit [zásadu sdíleného přístupu](../storage/common/storage-sas-overview.md) (SAS), takže RabbitMQ může do ní publikovat zprávy. Zásady SAS umožňují určit, co externí strana může s vaším prostředkem dělat. Účelem je, aby RabbitMQ mohl odesílat zprávy, ale neposlouchal ani nespravuje fronty.
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="Přidat zásady SAS":::
 

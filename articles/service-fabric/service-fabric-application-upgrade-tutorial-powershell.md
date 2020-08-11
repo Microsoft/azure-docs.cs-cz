@@ -2,13 +2,13 @@
 title: Service Fabric upgrade aplikace pomocí PowerShellu
 description: Tento článek vás provede nasazením aplikace Service Fabric, změnou kódu a zavedením upgradu pomocí prostředí PowerShell.
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: d277df6959ea3e7985514f81faed520f163c6012
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/5/2020
+ms.openlocfilehash: 2bd74d071d5dfb3385d4203704eacd5ba685917e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195880"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064583"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric upgrade aplikace pomocí PowerShellu
 > [!div class="op_single_selector"]
@@ -24,6 +24,21 @@ Nejčastěji používaným a doporučeným přístupem k upgradu je monitorovan�
 Upgrade monitorovaných aplikací se dá provést pomocí spravovaných nebo nativních rozhraní API, PowerShellu, Azure CLI, Java nebo REST. Pokyny k provedení upgradu pomocí sady Visual Studio naleznete v tématu [Upgrade aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md).
 
 Díky Service Fabric sledovaných upgradů může správce aplikace nakonfigurovat zásady hodnocení stavu, které Service Fabric používá k určení, jestli je aplikace v pořádku. Kromě toho může správce nakonfigurovat akci, která se má provést, když se vyhodnocení stavu nepovede (například provedení automatického vrácení zpět). Tato část vás provede monitorovaným upgradem pro jeden ze vzorků sady SDK, které používají PowerShell. 
+
+> [!NOTE]
+> [ApplicationParameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s se nezachovají v rámci upgradu aplikace. Aby bylo možné zachovat aktuální parametry aplikace, uživatel by měl nejprve načíst parametry a předat je do volání rozhraní API pro upgrade, jak je znázorněno níže:
+```powershell
+$myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
+$appParamCollection = $myApplication.ApplicationParameters
+
+$applicationParameterMap = @{}
+foreach ($pair in $appParamCollection)
+{
+    $applicationParameterMap.Add($pair.Name, $pair.Value);
+}
+
+Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/myApplication -ApplicationTypeVersion 2.0.0 -ApplicationParameter $applicationParameterMap -Monitored -FailureAction Rollback
+```
 
 ## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>Krok 1: sestavení a nasazení ukázky vizuálních objektů
 Sestavte a publikujte aplikaci kliknutím pravým tlačítkem na projekt aplikace, **VisualObjectsApplication** a výběrem příkazu **publikovat** .  Další informace najdete v tématu [Service Fabric kurzu upgradu aplikace](service-fabric-application-upgrade-tutorial.md).  Alternativně můžete použít PowerShell k nasazení aplikace.

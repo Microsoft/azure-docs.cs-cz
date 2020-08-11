@@ -3,12 +3,12 @@ title: Analýza živého videa pomocí vlastního modelu – Azure
 description: V tomto rychlém startu použijete počítačovou vizi k analýze živého kanálu videa z (simulované) kamery IP.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: dc8c2d1f0620a92a13cb1f4c0b83c2452f964fd6
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 75e18917b0d44dc33999d17360cd66a538c83d2b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170612"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065195"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>Rychlý Start: Analýza živého videa pomocí vlastního modelu
 
@@ -16,7 +16,7 @@ V tomto rychlém startu se dozvíte, jak používat Live video Analytics na IoT 
 
 Tento rychlý Start používá virtuální počítač Azure jako zařízení IoT Edge a používá simulovaný živý Stream videa. Vychází z ukázkového kódu napsaného v jazyce C# a sestavuje se v rychlém startu pro [detekci pohybů a generování událostí](detect-motion-emit-events-quickstart.md) . 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure, který zahrnuje aktivní předplatné. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * [Visual Studio Code](https://code.visualstudio.com/)s následujícími příponami:
@@ -31,7 +31,7 @@ Tento rychlý Start používá virtuální počítač Azure jako zařízení IoT
 ## <a name="review-the-sample-video"></a>Kontrola ukázkového videa
 Při nastavování prostředků Azure se krátké video provozního provozu zkopíruje do virtuálního počítače Linux v Azure, který používáte jako zařízení IoT Edge. V tomto rychlém startu se k simulaci živého streamu používá videosoubor.
 
-Otevřete aplikaci, jako je [VLC Media Player](https://www.videolan.org/vlc/). Vyberte CTRL + N a pak vložte odkaz na [video](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) a začněte přehrávání. Vidíte, že se v provozu na dálnicích pohybuje záběr řady vozidel.
+Otevřete aplikaci, jako je [VLC Media Player](https://www.videolan.org/vlc/). Vyberte `Ctrl+N` a potom vložte odkaz na [ukázkové video s mezioddílem na dálnici](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) a začněte přehrávat. Vidíte, že se v provozu na dálnicích pohybuje záběr řady vozidel.
 
 V tomto rychlém startu budete používat Live video Analytics na IoT Edge k detekci objektů, jako jsou například vozidla a osoby. Do centra IoT Edge publikujete přidružené události odvození.
 
@@ -107,9 +107,18 @@ Jako součást požadavků jste stáhli vzorový kód do složky. Pomocí těcht
 1. Až budete vyzváni k výběru zařízení IoT Hub, vyberte **lva-Sample-Device**.
 1. Po přibližně 30 sekundách se v levém dolním rohu okna aktualizují Azure IoT Hub. Hraniční zařízení nyní zobrazuje následující nasazené moduly:
 
-    * Modul Live video Analytics s názvem **lvaEdge**
-    * Modul **rtspsim** , který simuluje Server RTSP a funguje jako zdroj živého kanálu videa
-    * Modul **yolov3** , což je model detekce objektu yolov3, který aplikuje počítač na image a vrací více tříd typů objektů.
+    * Modul Live video Analytics s názvem`lvaEdge`
+    * `rtspsim`Modul, který simuluje Server RTSP a funguje jako zdroj živého informačního kanálu
+    > [!NOTE]
+    > Pokud místo toho, které jste zřídili pomocí našeho skriptu pro instalaci, používáte vlastní hraniční zařízení, přečtěte si příslušné hraniční zařízení a spusťte následující příkazy s **právy správce**, abyste mohli načíst a uložit ukázkový videosoubor, který se používá pro tento rychlý Start:  
+
+    ```
+    mkdir /home/lvaadmin/samples
+    mkdir /home/lvaadmin/samples/input    
+    curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+    chown -R lvaadmin /home/lvaadmin/samples/  
+    ```
+    * `yolov3`Modul, což je model detekce objektu YoloV3, který aplikuje počítač na image a vrací více tříd typů objektů.
  
       ![Moduly, které jsou nasazené na hraničním zařízení](./media/quickstarts/yolov3.png)
 
@@ -284,7 +293,7 @@ Pokud máte v úmyslu vyzkoušet další rychlé starty, ponechte prostředky, k
 
 ## <a name="next-steps"></a>Další kroky
 
-* Vyzkoušejte [zabezpečenou verzi modelu YOLOv3](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md) a nasaďte ji do zařízení IoT Edge. 
+* Vyzkoušejte [zabezpečenou verzi modelu YoloV3](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md) a nasaďte ji do zařízení IoT Edge. 
 
 Přečtěte si další výzvy pro pokročilé uživatele:
 

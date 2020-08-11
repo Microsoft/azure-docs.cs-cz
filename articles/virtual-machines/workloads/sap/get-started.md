@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a882e3a21d5e1e99f6f9154fd2162071752b4499
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 6151bb915298cc4f771b6d49628f39c8d27b62b4
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800344"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064362"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -45,6 +45,7 @@ Pokud máte konkrétní otázky, budeme v této části úvodní stránky ukazov
     - [Podporované scénáře pro velkou instanci HANA](./hana-supported-scenario.md)
 - Které služby Azure, typy virtuálních počítačů Azure a služby Azure Storage jsou k dispozici v různých oblastech Azure, Prohlédněte si [Dostupné produkty](https://azure.microsoft.com/global-infrastructure/services/) v lokalitě v oblasti 
 - Funguje rámec HA třetí strany, kromě Windows a Pacemaker? Zkontrolujte dolní část [poznámky k podpoře SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533)
+- Co je Azure Storage pro můj scénář nejvhodnější? Číst [Azure Storage typy pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA v Azure (velké instance)
@@ -59,23 +60,7 @@ Tato část dokumentace obsahuje různé aspekty SAP HANA. V rámci předpoklad�
  
 
 ## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>SAP NetWeaver nasazené na virtuálních počítačích Azure
-Tato část obsahuje dokumentaci pro plánování a nasazení pro SAP NetWeaver a firmy One na Azure. Dokumentace se zaměřuje na základy a používání databází jiných než HANA s úlohou SAP v Azure. Dokumenty a články pro vysokou dostupnost představují také základ vysoké dostupnosti pro HANA v Azure, například:
-
-- [Průvodce plánováním Azure](./planning-guide.md). 
-- [SAP Business One na virtuálních počítačích Azure](./business-one-azure.md)
-- [Ochrana nasazení aplikace s více vrstvami SAP NetWeaver pomocí Site Recovery](../../../site-recovery/site-recovery-sap.md)
-- [Konektor SAP LaMa pro Azure](./lama-installation.md)
-
-Informace o databázích, které nejsou HANA v rámci úlohy SAP v Azure, najdete v těchto tématech:
-
-- [Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](./dbms_guide_general.md)
-- [SQL Server nasazení Azure Virtual Machines DBMS pro SAP NetWeaver](./dbms_guide_sqlserver.md)
-- [Nasazení DBMS v počítačích Azure Virtual Machines s Oraclem pro úlohy SAP](./dbms_guide_oracle.md)
-- [Nasazení IBM DB2 Azure Virtual Machines DBMS pro úlohy SAP](./dbms_guide_ibm.md)
-- [Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP](./dbms_guide_sapase.md)
-- [MaxDB SAP, živá mezipaměť a nasazení obsahu serveru na virtuálních počítačích Azure](./dbms_guide_maxdb.md)
-
-Informace o SAP HANA databázích v Azure najdete v části SAP HANA na virtuálních počítačích Azure.
+Tato část obsahuje dokumentaci pro plánování a nasazení pro SAP NetWeaver a firmy One na Azure. Dokumentace se zaměřuje na základy a používání databází jiných než HANA s úlohou SAP v Azure. Dokumenty a články pro vysokou dostupnost představují taky základ vysoké dostupnosti pro HANA v Azure.
 
 Informace o vysoké dostupnosti úlohy SAP v Azure najdete v těchto tématech:
 
@@ -104,6 +89,7 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 ## <a name="change-log"></a>Protokol změn
 
+- 08/10/2020: představení nákladů SAP HANA konfigurací úložiště v [SAP HANA konfiguracích úložiště virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) a provádění některých aktualizací pro [úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
 - 08/04/2020: Změna [Nastavení Pacemaker v SLES v Azure](./high-availability-guide-suse-pacemaker.md) a [Nastavení Pacemaker v RHEL v Azure](./high-availability-guide-rhel-pacemaker.md) pro zdůraznění důležitosti spolehlivého překladu názvů pro clustery Pacemaker
 - 08/04/2020: Změna v [SAP NW ha v WFCS se sdílenou složkou](./sap-high-availability-installation-wsfc-file-share.md), [SAP NW ha v WFCS se sdíleným diskem](./sap-high-availability-installation-wsfc-shared-disk.md), [ha pro SAP NW na virtuálních počítačích Azure](./high-availability-guide.md), [ha pro SAP NW na virtuálních počítačích Azure v SLES](./high-availability-guide-suse.md), [ha pro SAP NW na virtuálních počítačích Azure v SLES s ANF](./high-availability-guide-suse-netapp-files.md), [ha pro SAP NW na virtuálních počítačích Azure v SLES průvodci pro více SID](./high-availability-guide-suse-multi-sid.md), [Vysoká dostupnost pro SAP NetWeaver na](./high-availability-guide-rhel.md)virtuálních počítačích Azure v RHEL, ha pro SAP NW na virtuálních počítačích Azure v RHEL [s ANF](./high-availability-guide-rhel-netapp-files.md) a [ha pro SAP NW na](./high-availability-guide-rhel-multi-sid.md) virtuálních počítačích Azure v RHEL – s využitím tohoto průvodce pro vysvětlení použití parametru`enque/encni/set_so_keepalive`
 - 07/23/2020: přidání [velké instance SAP HANA uložit v pomocí rezervovaného článku Azure](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md) – vysvětlení toho, co potřebujete znát, než si koupíte velké instance SAP HANA rezervaci a jak si koupit

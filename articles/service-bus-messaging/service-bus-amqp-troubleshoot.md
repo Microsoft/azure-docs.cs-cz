@@ -3,12 +3,12 @@ title: Řešení chyb AMQP v Azure Service Bus | Microsoft Docs
 description: Poskytuje seznam AMQPch chyb, které se mohou zobrazit při použití Azure Service Bus, a příčině těchto chyb.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9680e930dd8c1cb8cbd062f029af9d674d62c0e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88b10940e0b910f50e6ccf7f8c53134fa7f0ba2f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337825"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064345"
 ---
 # <a name="amqp-errors-in-azure-service-bus"></a>AMQP chyby v Azure Service Bus
 Tento článek popisuje některé chyby, které obdržíte při použití AMQP s Azure Service Bus. Jsou to všechna standardní chování služby. Můžete se jim vyhnout tím, že v připojení nebo propojení vytvoříte volání pro odesílání a přijímání, které automaticky znovu vytvoří připojení nebo propojení.
@@ -44,4 +44,4 @@ Další informace o AMQP a Service Bus najdete na následujících odkazech:
 
 [Přehled Service Bus AMQP]: service-bus-amqp-overview.md
 [Průvodce protokolem AMQP 1.0]: service-bus-amqp-protocol-guide.md
-[AMQP v Service Bus pro Windows Server]: https://docs.microsoft.com/previous-versions/service-bus-archive/dn282144(v=azure.100)
+[AMQP v Service Bus pro Windows Server]: /previous-versions/service-bus-archive/dn282144(v=azure.100)

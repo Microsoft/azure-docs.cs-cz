@@ -4,12 +4,12 @@ description: Tento článek vysvětluje, jak pomocí Azure Service Bus knihovny 
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63a8f0f8ef299f9d27d3c1be2746052536c4e5e8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341716"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066164"
 ---
 # <a name="service-bus-management-libraries"></a>Knihovny pro správu služby Service Bus
 
@@ -26,11 +26,11 @@ Knihovny pro správu Azure Service Bus můžou dynamicky zřizovat Service Bus o
 
 Pokud chcete začít používat Service Bus knihovny pro správu, musíte se ověřit pomocí služby Azure Active Directory (Azure AD). Azure AD vyžaduje, abyste se ověřili jako instanční objekt, který poskytuje přístup k prostředkům Azure. Informace o vytváření instančního objektu najdete v jednom z těchto článků:  
 
-* [Použití Azure Portal k vytvoření aplikace služby Active Directory a instančního objektu, který má přístup k prostředkům](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
-* [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure CLI](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [Použití Azure Portal k vytvoření aplikace služby Active Directory a instančního objektu, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md)
+* [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
 
-Tyto kurzy vám poskytnou `AppId` (ID klienta), `TenantId` a `ClientSecret` (ověřovací klíč), které se používají k ověřování pomocí knihoven pro správu. Pro skupinu prostředků, na které chcete spustit, musíte mít minimálně [**Azure Service Bus oprávnění vlastníka dat**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) nebo [**přispěvatele**](/azure/role-based-access-control/built-in-roles#contributor) .
+Tyto kurzy vám poskytnou `AppId` (ID klienta), `TenantId` a `ClientSecret` (ověřovací klíč), které se používají k ověřování pomocí knihoven pro správu. Pro skupinu prostředků, na které chcete spustit, musíte mít minimálně [**Azure Service Bus oprávnění vlastníka dat**](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) nebo [**přispěvatele**](../role-based-access-control/built-in-roles.md#contributor) .
 
 ## <a name="programming-pattern"></a>Programovací model
 

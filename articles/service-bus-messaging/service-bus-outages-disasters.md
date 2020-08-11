@@ -3,12 +3,12 @@ title: Izolování Azure Service Bus aplikací proti výpadkům a katastrofám
 description: V tomto článku najdete techniky ochrany aplikací proti možnému výpadku Azure Service Bus.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e6dba5e6cf4700dfab354a434ac4d48f9a95b76a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339660"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065620"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Osvědčené postupy pro ochranu aplikací před haváriemi a výpadky služby Service Bus
 
@@ -72,7 +72,7 @@ Při použití pasivní replikace mohou být zprávy v následujících scéná�
 Ukázka [geografické replikace s Service Bus standardní vrstva][Geo-replication with Service Bus Standard Tier] demonstruje pasivní replikaci entit zasílání zpráv.
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Ochrana koncových bodů Relay proti výpadkům Datacenter nebo haváriím
-Geografická replikace koncových bodů [Azure Relay](../service-bus-relay/relay-what-is-it.md) umožňuje službě, která zpřístupňuje koncový bod přenosu, dosažitelná v přítomnosti Service Bus výpadků. Aby bylo možné zajistit geografickou replikaci, musí služba vytvořit dva koncové body přenosu v různých oborech názvů. Obory názvů se musí nacházet v různých datových centrech a dva koncové body musí mít jiné názvy. Například primární koncový bod je možné dosáhnout v rámci **contosoPrimary.ServiceBus.Windows.NET/myPrimaryService**, zatímco jeho sekundární protějšek je možné dosáhnout v rámci **contosoSecondary.ServiceBus.Windows.NET/mySecondaryService**.
+Geografická replikace koncových bodů [Azure Relay](../azure-relay/relay-what-is-it.md) umožňuje službě, která zpřístupňuje koncový bod přenosu, dosažitelná v přítomnosti Service Bus výpadků. Aby bylo možné zajistit geografickou replikaci, musí služba vytvořit dva koncové body přenosu v různých oborech názvů. Obory názvů se musí nacházet v různých datových centrech a dva koncové body musí mít jiné názvy. Například primární koncový bod je možné dosáhnout v rámci **contosoPrimary.ServiceBus.Windows.NET/myPrimaryService**, zatímco jeho sekundární protějšek je možné dosáhnout v rámci **contosoSecondary.ServiceBus.Windows.NET/mySecondaryService**.
 
 Služba pak naslouchá oběma koncovým bodům a klient může službu vyvolat prostřednictvím libovolného koncového bodu. Klientská aplikace náhodně vybere jeden z přenosů jako primární koncový bod a pošle svůj požadavek do aktivního koncového bodu. Pokud operace selže s kódem chyby, znamená to, že koncový bod Relay není k dispozici. Aplikace otevře kanál na koncový bod zálohy a znovu vydá požadavek. V tomto okamžiku role přepínače aktivní a koncové body zálohování: klientská aplikace považuje starý aktivní koncový bod za nový koncový bod zálohy a starý koncový bod zálohy bude novým aktivním koncovým bodem. Pokud operace odeslání selže, role dvou entit zůstanou beze změny a vrátí se chyba.
 

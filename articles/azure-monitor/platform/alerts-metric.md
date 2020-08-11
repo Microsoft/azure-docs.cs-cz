@@ -4,14 +4,14 @@ description: Naučte se, jak pomocí Azure Portal nebo CLI vytvářet, zobrazova
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/11/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8afe62173dc0e90783c494fa51994e9ebac506f3
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042730"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065858"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor
 
@@ -139,9 +139,18 @@ Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla u
 
 Pravidla upozornění na metriky mají k dispozici vyhrazené rutiny PowerShellu:
 
-- [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2): vytvoří nové pravidlo výstrahy metriky nebo aktualizuje stávající.
-- [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2): získá jedno nebo více pravidel upozornění metrik.
-- [Remove-AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2): odebere pravidlo upozornění metriky.
+- [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2): vytvořte nové pravidlo výstrahy metriky nebo aktualizujte stávající.
+- [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2): získá jedno nebo víc pravidel upozornění metrik.
+- [Remove-AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2): odstranění pravidla upozornění na metriku.
+
+## <a name="with-rest-api"></a>S využitím rozhraní REST API
+
+- [Vytvořit nebo aktualizovat](/rest/api/monitor/metricalerts/createorupdate): vytvořit nové pravidlo výstrahy metriky nebo aktualizovat stávající.
+- [Get](/rest/api/monitor/metricalerts/get): Získá konkrétní pravidlo výstrahy metriky.
+- [Seznam podle skupiny prostředků](/rest/api/monitor/metricalerts/listbyresourcegroup): Získejte seznam pravidel upozornění metrik v konkrétní skupině prostředků.
+- [Seznam podle předplatného](/rest/api/monitor/metricalerts/listbysubscription): Získejte seznam pravidel upozornění metrik v určitém předplatném.
+- [Aktualizace](/rest/api/monitor/metricalerts/update): aktualizujte pravidlo výstrahy metriky.
+- [Odstranit](/rest/api/monitor/metricalerts/delete): odstraní pravidlo upozornění metriky.
 
 ## <a name="next-steps"></a>Další kroky
 

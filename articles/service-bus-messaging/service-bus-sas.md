@@ -3,12 +3,12 @@ title: Řízení přístupu Azure Service Bus pomocí sdílených přístupovýc
 description: Přehled řízení přístupu Service Bus pomocí podpisů sdíleného přístupu najdete v podrobnostech o autorizaci SAS pomocí Azure Service Bus.
 ms.topic: article
 ms.date: 07/30/2020
-ms.openlocfilehash: b75f1ec3a1aac36124287523140c24d468329aaa
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 8e48858fd76bcf4667cfff1237f49597a477b3e8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460690"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066181"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu Service Bus pomocí sdílených přístupových podpisů
 
@@ -27,7 +27,7 @@ SAS chrání přístup k Service Bus na základě autorizačních pravidel. Ty j
 
 Sdílené přístupové podpisy jsou mechanizmus ověřování založeného na deklaracích využívajících jednoduché tokeny. Pomocí SAS se klíče nikdy nepředávají na lince. Klíče se používají pro kryptografické podepisování informací, které může služba později ověřit. SAS se dá použít podobně jako uživatelské jméno a schéma hesla, kde je klient v bezprostředním vlastnictví názvu autorizačního pravidla a odpovídajícího klíče. SAS se taky dá použít podobně jako model federovaného zabezpečení, kde klient obdrží token zabezpečení s omezeným přístupem od služby tokenů zabezpečení, aniž by musel mít k dispozici podpisový klíč.
 
-Ověřování SAS v Service Bus je nakonfigurované s pojmenovanými [autorizačními pravidly přístupu](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) , která mají přidružená přístupová práva, a pár primárních a sekundárních kryptografických klíčů. Klíče jsou 256 hodnoty v reprezentaci base64. Pravidla můžete konfigurovat na úrovni oboru [názvů, při Service Busch](../service-bus-relay/relay-what-is-it.md)přenosech, [frontách](service-bus-messaging-overview.md#queues)a [tématech](service-bus-messaging-overview.md#topics).
+Ověřování SAS v Service Bus je nakonfigurované s pojmenovanými [autorizačními pravidly přístupu](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) , která mají přidružená přístupová práva, a pár primárních a sekundárních kryptografických klíčů. Klíče jsou 256 hodnoty v reprezentaci base64. Pravidla můžete konfigurovat na úrovni oboru [názvů, při Service Busch](../azure-relay/relay-what-is-it.md)přenosech, [frontách](service-bus-messaging-overview.md#queues)a [tématech](service-bus-messaging-overview.md#topics).
 
 Token [sdíleného přístupového podpisu](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) obsahuje název zvoleného autorizačního pravidla, identifikátor URI prostředku, ke kterému se má získat přístup, okamžitá platnost a kryptografický podpis HMAC-SHA256 počítaný přes tato pole pomocí primárního nebo sekundárního kryptografického klíče zvoleného autorizačního pravidla.
 
@@ -84,7 +84,7 @@ Token obsahuje hodnoty, které nejsou hash, aby příjemce mohl znovu vypočíta
 
 Identifikátor URI prostředku je úplný identifikátor URI Service Bus prostředku, ke kterému je nárok na přístup. Například `http://<namespace>.servicebus.windows.net/<entityPath>` nebo `sb://<namespace>.servicebus.windows.net/<entityPath>` ; to znamená `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3` . 
 
-**Identifikátor URI musí být [kódovaný v procentech](https://msdn.microsoft.com/library/4fkewx0t.aspx).**
+**Identifikátor URI musí být [kódovaný v procentech](/dotnet/api/system.web.httputility.urlencode?view=netcore-3.1).**
 
 Autorizační pravidlo sdíleného přístupu použité pro podepisování musí být nakonfigurováno pro entitu určenou tímto identifikátorem URI nebo jedním z jeho hierarchických nadřazených prvků. Například `http://contoso.servicebus.windows.net/contosoTopics/T1` nebo `http://contoso.servicebus.windows.net` v předchozím příkladu.
 
@@ -256,7 +256,7 @@ Následující tabulka uvádí přístupová práva požadovaná pro různé ope
 
 | Operace | Požadovaná deklarace identity | Rozsah deklarací identity |
 | --- | --- | --- |
-| **Obor názvů** | | |
+| **Hosting** | | |
 | Konfigurace autorizačního pravidla pro obor názvů |Spravovat |Libovolná adresa oboru názvů |
 | **Registr služby** | | |
 | Zobrazení výčtu privátních zásad |Spravovat |Libovolná adresa oboru názvů |
@@ -276,7 +276,7 @@ Následující tabulka uvádí přístupová práva požadovaná pro různé ope
 | Získání stavu přidruženého k relaci fronty zpráv |Naslouchat |Libovolná platná adresa fronty |
 | Nastavení stavu přidruženého k relaci fronty zpráv |Naslouchat |Libovolná platná adresa fronty |
 | Naplánování zprávy pro pozdější doručení; například [ScheduleMessageAsync ()](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) |Naslouchat | Libovolná platná adresa fronty
-| **Téma** | | |
+| **Výklad** | | |
 | Vytvoření tématu |Spravovat |Libovolná adresa oboru názvů |
 | Odstranění tématu |Spravovat |Jakákoli platná adresa tématu |
 | Vyčíslení výčtu témat |Spravovat |/Topics $Resources |

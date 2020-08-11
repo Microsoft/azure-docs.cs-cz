@@ -3,12 +3,12 @@ title: Ověřování a autorizace Azure Service Bus | Microsoft Docs
 description: Ověřování aplikací pro Service Bus s ověřováním pomocí sdíleného přístupového podpisu (SAS).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 56461c13cf6589b5f66f05837e1bcaa6a49a58c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5d0ed03c869bd574e4cfaa52ac7b62e8cb7fb98
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337725"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066857"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Ověřování a autorizace Service Bus
 Existují dva způsoby, jak ověřit a autorizovat přístup k prostředkům Azure Service Bus: Azure Activity Directory (Azure AD) a signatury sdíleného přístupu (SAS). Tento článek obsahuje podrobné informace o použití těchto dvou typů mechanismů zabezpečení. 
@@ -30,7 +30,7 @@ Další informace o ověřování ve službě Azure AD najdete v následujícíc
 ## <a name="shared-access-signature"></a>Sdílený přístupový podpis
 [Ověřování SAS](service-bus-sas.md) umožňuje udělit uživateli přístup k prostředkům Service Bus s konkrétními právy. Ověřování SAS v Service Bus zahrnuje konfiguraci kryptografického klíče s přidruženými právy pro prostředek Service Bus. Klienti pak mohou získat přístup k tomuto prostředku předložením tokenu SAS, který se skládá z přistupového identifikátoru URI prostředku a jeho vypršení platnosti podepsaného pomocí konfigurovaného klíče.
 
-Klíče pro SAS můžete nakonfigurovat na Service Bus oboru názvů. Klíč se vztahuje na všechny entity zasílání zpráv v rámci tohoto oboru názvů. Můžete také nakonfigurovat klíče pro Service Bus fronty a témata. SAS je také podporován v [Azure Relay](../service-bus-relay/relay-authentication-and-authorization.md).
+Klíče pro SAS můžete nakonfigurovat na Service Bus oboru názvů. Klíč se vztahuje na všechny entity zasílání zpráv v rámci tohoto oboru názvů. Můžete také nakonfigurovat klíče pro Service Bus fronty a témata. SAS je také podporován v [Azure Relay](../azure-relay/relay-authentication-and-authorization.md).
 
 Chcete-li použít SAS, můžete nakonfigurovat objekt [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) v oboru názvů, ve frontě nebo tématu. Toto pravidlo se skládá z následujících prvků:
 
@@ -46,7 +46,7 @@ Pro přístup k entitě vyžaduje klient token SAS generovaný pomocí konkrétn
 Podpora ověřování SAS pro Service Bus je obsažená v sadě Azure .NET SDK verze 2,0 a novější. SAS zahrnuje podporu pro [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule). Všechna rozhraní API, která přijímají připojovací řetězec jako parametr, zahrnují podporu připojovacích řetězců SAS.
 
 > [!IMPORTANT]
-> Pokud používáte Azure Active Directory Access Control (označované také jako Access Control Service nebo ACS) se Service Bus, pamatujte, že podpora této metody je nyní omezená a že byste měli [aplikaci migrovat na používání SAS](service-bus-migrate-acs-sas.md) nebo ověřování pomocí protokolu OAuth 2,0 s Azure AD (doporučeno). Další informace o vyřazení služby ACS najdete v [tomto blogovém příspěvku](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/).
+> Pokud používáte Azure Active Directory Access Control (označované také jako Access Control Service nebo ACS) se Service Bus, pamatujte, že podpora této metody je nyní omezená a že byste měli [aplikaci migrovat na používání SAS](service-bus-migrate-acs-sas.md) nebo ověřování pomocí protokolu OAuth 2,0 s Azure AD (doporučeno). Další informace o vyřazení služby ACS najdete v [tomto blogovém příspěvku](/archive/blogs/servicebus/upcoming-changes-to-acs-enabled-namespaces).
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o ověřování ve službě Azure AD najdete v následujících článcích:
