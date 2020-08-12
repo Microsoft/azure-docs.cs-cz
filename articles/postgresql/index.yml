@@ -8,12 +8,12 @@ metadata:
   ms.date: 08/30/2019
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 4deeec3686d2e3b0a150b74a222f7f1eab0a93fd
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 432dfe4e7907d8599dd9655a3e3eb67987ea6f39
+  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73932231"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88078015"
 landingContent:
 - title: Informace o službě Azure Database for PostgreSQL
   linkLists:
@@ -23,7 +23,7 @@ landingContent:
       url: overview.md
   - linkListType: whats-new
     links:
-    - text: Podívejte se na náš blog.
+    - text: Přechod na náš blog
       url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
 - title: Vytvoření jednoho serveru
   linkLists:
@@ -54,7 +54,7 @@ landingContent:
     - text: Návrh databáze s využitím Azure CLI
       url: tutorial-design-database-using-azure-cli.md
     - text: Vytvoření webové aplikace s využitím Pythonu a rozhraní příkazového řádku
-      url: /azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json
+      url: ../app-service/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
     - text: Monitorování a vyladění služby
       url: tutorial-monitor-and-tune.md
 - title: Vytvoření clusteru Hyperscale (Citus)

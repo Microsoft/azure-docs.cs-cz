@@ -468,13 +468,13 @@
     - name: Automatické zřizování uživatelů (SCIM)
       items:
         - name: Co je automatické zřizování uživatelů?
-          href: /azure/active-directory/app-provisioning/user-provisioning
+          href: ../app-provisioning/user-provisioning.md
         - name: Vývoj a integrace koncového bodu SCIM
-          href: /azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups
+          href: ../app-provisioning/use-scim-to-provision-users-and-groups.md
         - name: Běžné scénáře zřizování
-          href: /azure/active-directory/app-provisioning/scim-graph-scenarios
+          href: ../app-provisioning/scim-graph-scenarios.md
         - name: Automatizace konfigurace s využitím MS Graphu
-          href: /azure/active-directory/app-provisioning/application-provisioning-configure-api
+          href: ../app-provisioning/application-provisioning-configure-api.md
     - name: Články nápovědy pro Azure Portal
       items:
         - name: Výchozí nastavení životnosti tokenů pro aplikaci vyvinutou na míru
@@ -630,7 +630,7 @@
         - name: Publikování v galerii aplikací Azure AD
           href: v2-howto-app-gallery-listing.md
         - name: Publikování na řídicí panel prodejce Office 365
-          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
+          href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
 - name: Referenční informace
   items:
     - name: Manifest aplikace
@@ -642,7 +642,7 @@
       displayName: 'MSAL, auth library, SDK'
       href: reference-v2-libraries.md
     - name: Rozhraní API identity a přístupu v Microsoft Graphu
-      href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview'
+      href: /graph/api/resources/azure-ad-overview
     - name: Kódy chyb autorizace a ověřování
       displayName: AADSTS
       href: reference-aadsts-error-codes.md
@@ -663,7 +663,7 @@
     - name: Vyzkoušejte si funkci Přihlásit se účtem Microsoft
       href: 'https://azure.microsoft.com/develop/identity/signin/'
     - name: Spravované identity pro prostředky Azure
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
+      href: ../managed-identities-azure-resources/overview.md
     - name: Získání nápovědy
       displayName: 'support, help options'
       href: developer-support-help-options.md

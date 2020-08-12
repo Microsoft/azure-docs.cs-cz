@@ -49,6 +49,8 @@
       items:
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
+    - name: Rezidence dat
+      href: data-residency.md
 - name: Návody
   items:
     - name: Konfigurace Network Watcheru
