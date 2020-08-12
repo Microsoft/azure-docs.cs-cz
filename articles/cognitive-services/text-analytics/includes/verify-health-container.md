@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 5c598807f36000a18211e32eba53220bfbeea2f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1a8ce0bc94c61a0cfe6cdad11375763ba954957d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108702"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88122263"
 ---
 ### <a name="verify-that-a-container-is-running"></a>Ověření, že je kontejner spuštěný
 
@@ -37,4 +37,4 @@ K dispozici je několik adres URL, které můžete použít také k ověření, 
 |`http://localhost:5000/swagger`|Prostřednictvím této adresy URL kontejner poskytuje úplnou sadu dokumentace pro koncové body a `Try it now` funkci. Pomocí této funkce můžete zadat nastavení do webového formuláře HTML a vytvořit dotaz bez nutnosti psát jakýkoli kód. Jakmile se dotaz vrátí, je k dispozici vzorový příkaz SLOŽENÉho příkazu, který předvádí hlavičku protokolu HTTP a požadovaný formát textu. |
 |`http://localhost:5000/demo`| Tato funkce, která se požaduje prostřednictvím prohlížeče, poskytuje interaktivní vizualizaci výsledků dotazů na ukázky vstupních textů nebo tu, kterou zadáte.  |
 
-Pomocí této adresy URL žádosti můžete `http://localhost:5000/text/analytics/v3.0-preview.1/domains/health` Odeslat dotaz do kontejneru.
+Pomocí této adresy URL žádosti můžete `http://localhost:5000/text/analytics/v3.2-preview.1/entities/health` Odeslat dotaz do kontejneru.

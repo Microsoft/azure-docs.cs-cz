@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bdacee476fbc25154fe225700730f1b8f7f872ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b89add55a060c7ba0ef9488f1f6438090b8d3d2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682270"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121166"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikací pro platformu Microsoft Identity Platform
 
@@ -83,7 +83,7 @@ Identitu uživatele můžete zajistit ověřením tokenu ID pomocí veřejného 
 
 Pokud chcete tento scénář zobrazit v akci, zkuste jednu z ukázek přihlašovacích kódů webové aplikace v části [Začínáme s platformou Microsoft Identity](v2-overview.md#getting-started) .
 
-Kromě jednoduchého přihlašování může aplikace webového serveru vyžadovat přístup k jiné webové službě, jako je například REST API. V takovém případě se aplikace webového serveru zavazuje do kombinovaného toku OpenID Connect a OAuth 2,0 pomocí [toku autorizačního kódu oauth 2,0](v2-oauth2-auth-code-flow.md). Další informace o tomto scénáři najdete v článku [Začínáme s webovými aplikacemi a webovými rozhraními API](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
+Kromě jednoduchého přihlašování může aplikace webového serveru vyžadovat přístup k jiné webové službě, jako je například REST API. V takovém případě se aplikace webového serveru zavazuje do kombinovaného toku OpenID Connect a OAuth 2,0 pomocí [toku autorizačního kódu oauth 2,0](v2-oauth2-auth-code-flow.md). Další informace o tomto scénáři najdete v článku [Začínáme s webovými aplikacemi a webovými rozhraními API](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIDConnect-DotNet).
 
 
 ## <a name="web-apis"></a>Webová rozhraní API

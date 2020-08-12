@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: de259daa7fd27cc4f138c294a7f347502ca482a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75b6559117420ad75b79c58b219400690b25b4cb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77185829"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117868"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Migrace aplikací pro iOS, které používají Microsoft Authenticator z ADAL.NET na MSAL.NET
 
@@ -38,7 +38,7 @@ Umožňují:
 
 - Jednotné přihlašování
 - Identifikace zařízení, která je vyžadována některými [zásadami podmíněného přístupu](../conditional-access/overview.md). Další informace najdete v tématu [Správa zařízení](../conditional-access/concept-conditional-access-conditions.md#device-platforms).
-- Ověřování totožnosti aplikace, které je také vyžadováno v některých podnikových scénářích. Další informace najdete v tématu [Správa mobilních aplikací (MAM) v Intune](https://docs.microsoft.com/intune/mam-faq).
+- Ověřování totožnosti aplikace, které je také vyžadováno v některých podnikových scénářích. Další informace najdete v tématu [Správa mobilních aplikací (MAM) v Intune](/intune/mam-faq).
 
 ## <a name="migrate-from-adal-to-msal"></a>Migrace z ADAL na MSAL
 
@@ -118,7 +118,7 @@ V MSAL.NET provedete dvě věci pro nastavení okna objektu pro iOS:
 1. V `AppDelegate.cs` nastavte `App.RootViewController` na nový `UIViewController()` . Toto přiřazení zajišťuje, že existuje UIViewController se voláním zprostředkovatele. Pokud není správně nastavená, může se zobrazit tato chyba:`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 1. Na volání AcquireTokenInteractive použijte `.WithParentActivityOrWindow(App.RootViewController)` a předejte odkaz na okno objektu, které použijete.
 
-**Příklad:**
+**Například:**
 
 V `App.cs`:
 ```csharp
@@ -151,7 +151,7 @@ ADAL.NET a MSAL.NET používají adresy URL k vyvolání zprostředkovatele a vr
 <tr><td>
 Schéma adresy URL je pro vaši aplikaci jedinečné.
 </td><td>
-Rozhraní 
+Prostředek 
 
 `CFBundleURLSchemes`Název musí zahrnovat 
 
@@ -241,4 +241,4 @@ Další informace o tom, jak zaregistrovat identifikátor URI přesměrování n
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si o [otázkách specifických pro Xamarin iOS pomocí MSAL.NET](msal-net-xamarin-ios-considerations.md). 
+Přečtěte si o [otázkách specifických pro Xamarin iOS pomocí MSAL.NET](msal-net-xamarin-ios-considerations.md).

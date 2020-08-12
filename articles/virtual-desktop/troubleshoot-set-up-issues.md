@@ -3,15 +3,15 @@ title: Vytvoření fondu hostitelů prostředí virtuálních počítačů s Win
 description: Řešení potíží a řešení problémů s fondem klientů a hostitelů během instalace prostředí virtuálních počítačů s Windows
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 01/08/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 064cdc0189f6b85fa0e5872f49759c2ec67472e6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006158"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121370"
 ---
 # <a name="host-pool-creation"></a>Vytvoření fondu hostitelů
 
@@ -252,6 +252,12 @@ the VM.\\\"
 **Příčina:** Příčinou této chyby je statická trasa, pravidlo brány firewall nebo NSG blokující stažení souboru ZIP svázaného se šablonou Azure Resource Manager.
 
 **Oprava:** Odebere blokující statickou trasu, pravidlo brány firewall nebo NSG. Případně můžete otevřít soubor JSON šablony Azure Resource Manager v textovém editoru, vytvořit odkaz na soubor zip a stáhnout prostředek do povoleného umístění.
+
+### <a name="error-cant-delete-a-session-host-from-the-host-pool-after-deleting-the-vm"></a>Chyba: po odstranění virtuálního počítače nejde odstranit hostitele relace z fondu hostitelů.
+
+**Příčina:** Před odstraněním virtuálního počítače je nutné odstranit hostitele relace.
+
+**Oprava:** Vložte hostitele relace do režimu vyprázdnění, odhlaste všechny uživatele z hostitele relace a pak odstraňte hostitele.
 
 ## <a name="next-steps"></a>Další kroky
 

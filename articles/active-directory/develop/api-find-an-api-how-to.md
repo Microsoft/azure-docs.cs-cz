@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.openlocfilehash: cd3b21050c6a442284647212fdf7c5707943ffc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c3d79211ce594ec4c175aa6f6b5f8df3a7c4ba8
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885612"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115539"
 ---
 # <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>Vyhledání konkrétního rozhraní API, které je potřeba pro aplikaci vytvořenou pro vlastní použití
 
@@ -31,4 +31,4 @@ Když přidáváte oprávnění k registraci vaší aplikace, můžete **Přidat
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Princip Azure Active Directory manifestu aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)
+- [Princip Azure Active Directory manifestu aplikace](./reference-app-manifest.md)

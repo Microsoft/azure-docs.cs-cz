@@ -12,12 +12,12 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b2f74d2d441007f195abd38ca26ca7fa73605318
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f49a5703b19a76095c8eafe358742b442725d3d0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886428"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118242"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Kurz: použití režimu sdíleného zařízení v aplikaci pro Android
 
@@ -28,11 +28,11 @@ ms.locfileid: "80886428"
 
 ## <a name="developer-guide"></a>Příručka pro vývojáře
 
-Tato příručka poskytuje pokyny pro vývojáře k implementaci režimu sdíleného zařízení v aplikaci pro Android pomocí knihovny Microsoft Authentication Library (MSAL). Podívejte se na [kurz k MSAL Androidu](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android) , kde najdete informace o integraci MSAL s aplikací pro Android, přihlášení uživatele, volání Microsoft graphu a odhlášení uživatele.
+Tato příručka poskytuje pokyny pro vývojáře k implementaci režimu sdíleného zařízení v aplikaci pro Android pomocí knihovny Microsoft Authentication Library (MSAL). Podívejte se na [kurz k MSAL Androidu](./tutorial-v2-android.md) , kde najdete informace o integraci MSAL s aplikací pro Android, přihlášení uživatele, volání Microsoft graphu a odhlášení uživatele.
 
 ### <a name="download-the-sample"></a>Stažení ukázky
 
-Naklonujte [ukázkovou aplikaci](https://github.com/Azure-Samples/ms-identity-android-java/) z GitHubu. Ukázka nabízí možnost pracovat v [režimu jednoho nebo více účtů](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account).
+Naklonujte [ukázkovou aplikaci](https://github.com/Azure-Samples/ms-identity-android-java/) z GitHubu. Ukázka nabízí možnost pracovat v [režimu jednoho nebo více účtů](./single-multi-account.md).
 
 ### <a name="add-the-msal-sdk-to-your-local-maven-repository"></a>Přidání sady MSAL SDK do místního úložiště Maven
 
@@ -46,13 +46,13 @@ dependencies{
 
 ### <a name="configure-your-app-to-use-shared-device-mode"></a>Konfigurace aplikace tak, aby používala režim sdíleného zařízení
 
-Další informace o nastavení konfiguračního souboru najdete v [dokumentaci ke konfiguraci](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration) .
+Další informace o nastavení konfiguračního souboru najdete v [dokumentaci ke konfiguraci](./msal-configuration.md) .
 
-V `"shared_device_mode_supported"` KONFIGURAČNÍM `true` souboru MSAL nastavte na.
+`"shared_device_mode_supported"` `true` V KONFIGURAČNÍM souboru MSAL nastavte na.
 
-Možná neplánujete podporovat režim více účtů. To může být v případě, že nepoužíváte sdílené zařízení a uživatel se může přihlásit k aplikaci s více než jedním účtem ve stejnou dobu. Pokud ano, nastavte `"account_mode"` na `"SINGLE"`. To zaručuje, že vaše aplikace bude vždycky `ISingleAccountPublicClientApplication`získávat a významně zjednodušuje integraci MSAL. Výchozí hodnota `"account_mode"` je `"MULTIPLE"`, takže je důležité změnit tuto hodnotu v konfiguračním souboru, pokud používáte `"single account"` režim.
+Možná neplánujete podporovat režim více účtů. To může být v případě, že nepoužíváte sdílené zařízení a uživatel se může přihlásit k aplikaci s více než jedním účtem ve stejnou dobu. Pokud ano, nastavte `"account_mode"` na `"SINGLE"` . To zaručuje, že vaše aplikace bude vždycky získávat `ISingleAccountPublicClientApplication` a významně zjednodušuje integraci MSAL. Výchozí hodnota `"account_mode"` je `"MULTIPLE"` , takže je důležité změnit tuto hodnotu v konfiguračním souboru, pokud používáte `"single account"` režim.
 
-Tady je příklad souboru auth_config. JSON, který je součástí **aplikace**>**Main**>**res**>**holý** adresář ukázkové aplikace:
+Tady je příklad auth_config.jsv souboru zahrnutém do hlavního umístění v **aplikaci** > **main** > **res** > **raw** ukázkové aplikace:
 
 ```json
 {
@@ -80,7 +80,7 @@ Režim sdíleného zařízení umožňuje nakonfigurovat zařízení s Androidem
 
 Použijte `isSharedDevice()` k určení, jestli je aplikace spuštěná na zařízení, které je v režimu sdíleného zařízení. Vaše aplikace by mohla pomocí tohoto příznaku určit, jestli má odpovídajícím způsobem upravit uživatelské rozhraní.
 
-Zde je fragment kódu, který ukazuje, jak můžete použít `isSharedDevice()`.  Je z `SingleAccountModeFragment` třídy v ukázkové aplikaci:
+Zde je fragment kódu, který ukazuje, jak můžete použít `isSharedDevice()` .  Je z `SingleAccountModeFragment` třídy v ukázkové aplikaci:
 
 ```Java
 deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Shared");
@@ -88,7 +88,7 @@ deviceModeTextView.setText(mSingleAccountApp.isSharedDevice() ?"Shared" :"Non-Sh
 
 ### <a name="initialize-the-publicclientapplication-object"></a>Inicializovat objekt PublicClientApplication
 
-Pokud jste nastavili `"account_mode":"SINGLE"` v KONFIGURAČNÍM souboru MSAL, můžete objekt vrácené aplikace bezpečně přetypovat jako `ISingleAccountPublicCLientApplication`.
+Pokud jste nastavili `"account_mode":"SINGLE"` v konfiguračním souboru MSAL, můžete objekt vrácené aplikace bezpečně přetypovat jako `ISingleAccountPublicCLientApplication` .
 
 ```java
 private ISingleAccountPublicClientApplication mSingleAccountApp;
@@ -129,7 +129,7 @@ private IPublicClientApplication mApplication;
 
 ### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>Získá přihlášeného uživatele a určí, jestli se na zařízení změnil nějaký uživatel.
 
-`loadAccount` Metoda načte účet přihlášeného uživatele. `onAccountChanged` Metoda určuje, zda se přihlášený uživatel změnil, a pokud ano, vyčištění:
+`loadAccount`Metoda načte účet přihlášeného uživatele. `onAccountChanged`Metoda určuje, zda se přihlášený uživatel změnil, a pokud ano, vyčištění:
 
 ```java
 private void loadAccount()
@@ -202,20 +202,20 @@ Následující kroky popisují nastavení aplikace v Azure Portal a vložení za
 
 ### <a name="register-your-application-in-azure-active-directory"></a>Registrace aplikace v Azure Active Directory
 
-Nejdřív Zaregistrujte svoji aplikaci v tenantovi vaší organizace. Poté zadejte následující hodnoty do auth_config. JSON, aby vaše aplikace běžela správně.
+Nejdřív Zaregistrujte svoji aplikaci v tenantovi vaší organizace. Pak zadejte následující hodnoty níže v auth_config.jspro, aby vaše aplikace běžela správně.
 
-Informace o tom, jak to provést, najdete v tématu [Registrace aplikace](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#register-your-application).
+Informace o tom, jak to provést, najdete v tématu [Registrace aplikace](./tutorial-v2-android.md#register-your-application).
 
 > [!NOTE]
-> Při registraci aplikace prosím použijte příručku pro rychlý Start na levé straně a pak vyberte **Android**. Tím přejdete na stránku, kde budete požádáni o zadání **názvu balíčku** a **hodnoty hash podpisu** pro vaši aplikaci. To je velmi důležité, abyste zajistili, že konfigurace vaší aplikace bude fungovat. Potom obdržíte objekt konfigurace, který můžete použít pro vaši aplikaci, kterou vyjmete a vložíte do souboru auth_config. JSON.
+> Při registraci aplikace prosím použijte příručku pro rychlý Start na levé straně a pak vyberte **Android**. Tím přejdete na stránku, kde budete požádáni o zadání **názvu balíčku** a **hodnoty hash podpisu** pro vaši aplikaci. To je velmi důležité, abyste zajistili, že konfigurace vaší aplikace bude fungovat. Pak získáte objekt konfigurace, který můžete použít pro vaši aplikaci, kterou vyjmete a vložíte do svého auth_config.jsdo souboru.
 
-![Obrazovka](media/tutorial-v2-shared-device-mode/register-app.png) pro registraci aplikace byste měli vybrat **provést tuto změnu pro mě** a pak zadat hodnoty, na které se rychlý Start zeptá v Azure Portal. Až to bude hotové, vygenerujeme všechny konfigurační soubory, které potřebujete.
+![Obrazovka pro registraci aplikace ](media/tutorial-v2-shared-device-mode/register-app.png) byste měli vybrat **provést tuto změnu pro mě** a pak zadat hodnoty, na které se rychlý start zeptá v Azure Portal. Až to bude hotové, vygenerujeme všechny konfigurační soubory, které potřebujete.
 
 ![Obrazovka informace o konfiguraci aplikace](media/tutorial-v2-shared-device-mode/config-info.png)
 
 ## <a name="set-up-a-tenant"></a>Nastavení tenanta
 
-Pro účely testování nastavte ve vašem tenantovi následující: aspoň dva zaměstnance, jednoho správce cloudového zařízení a jednoho globálního správce. V Azure Portal nastavte správce cloudového zařízení úpravou organizačních rolí. V Azure Portal přejděte k rolím organizace tak, že vyberete **Azure Active Directory** > **role a správci** > **cloudového zařízení správce**. Přidejte uživatele, kteří můžou umístit zařízení do sdíleného režimu.
+Pro účely testování nastavte ve vašem tenantovi následující: aspoň dva zaměstnance, jednoho správce cloudového zařízení a jednoho globálního správce. V Azure Portal nastavte správce cloudového zařízení úpravou organizačních rolí. V Azure Portal přejděte k rolím organizace tak, že vyberete **Azure Active Directory**  >  **role a správci**  >  **cloudového zařízení správce**. Přidejte uživatele, kteří můžou umístit zařízení do sdíleného režimu.
 
 ## <a name="set-up-an-android-device-in-shared-mode"></a>Nastavení zařízení s Androidem ve sdíleném režimu
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 005fb194a5c1539b70ccb8e8ac7d938b190ee4f5
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 204bc7dd8cc31f48fdc09eae6b00247023de64f3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563308"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120962"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Chráněné webové rozhraní API: ověření oborů a rolí aplikací
 
@@ -88,7 +88,7 @@ public class TodoListController : Controller
 
 #### <a name="verify-the-scopes-more-globally"></a>Ověřování oborů efektivněji
 
-Definování podrobných oborů pro vaše webové rozhraní API a ověření oborů v každé akci kontroleru je doporučený postup. Je ale také možné ověřit obory na úrovni aplikace nebo řadiče pomocí ASP.NET Core. Podrobnosti najdete v dokumentaci k ASP.NET Core v dokumentaci k [ověřování na základě deklarací identity](https://docs.microsoft.com/aspnet/core/security/authorization/claims) .
+Definování podrobných oborů pro vaše webové rozhraní API a ověření oborů v každé akci kontroleru je doporučený postup. Je ale také možné ověřit obory na úrovni aplikace nebo řadiče pomocí ASP.NET Core. Podrobnosti najdete v dokumentaci k ASP.NET Core v dokumentaci k [ověřování na základě deklarací identity](/aspnet/core/security/authorization/claims) .
 
 ### <a name="net-mvc"></a>.NET MVC
 
@@ -96,11 +96,11 @@ V případě ASP.NET jenom nahraďte `HttpContext.User` `ClaimsPrincipal.Current
 
 ## <a name="verify-app-roles-in-apis-called-by-daemon-apps"></a>Ověření aplikačních rolí v rozhraní API volaných aplikacemi démona
 
-Pokud je vaše webové rozhraní API voláno [aplikací démona](scenario-daemon-overview.md), měla by tato aplikace vyžadovat oprávnění aplikace pro vaše webové rozhraní API. Jak je znázorněno v vystavování [oprávnění aplikace (aplikační role)](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles), vaše rozhraní API zpřístupňuje taková oprávnění. Jedním z příkladů je `access_as_application` aplikační role.
+Pokud je vaše webové rozhraní API voláno [aplikací démona](scenario-daemon-overview.md), měla by tato aplikace vyžadovat oprávnění aplikace pro vaše webové rozhraní API. Jak je znázorněno v vystavování [oprávnění aplikace (aplikační role)](./scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles), vaše rozhraní API zpřístupňuje taková oprávnění. Jedním z příkladů je `access_as_application` aplikační role.
 
 Teď musíte mít rozhraní API, abyste ověřili, že token, který obdrží, obsahuje `roles` deklaraci identity a že tato deklarace má očekávanou hodnotu. Ověřovací kód je podobný kódu, který ověřuje delegovaná oprávnění s tím rozdílem, že vaše akce kontroleru testuje role namísto oborů:
 
-### <a name="aspnet-core"></a>ASP.NET Core
+### <a name="aspnet-core"></a>Jádro ASP.NET
 
 ```csharp
 [Authorize]

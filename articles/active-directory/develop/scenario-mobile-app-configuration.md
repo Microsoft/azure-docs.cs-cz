@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 78e3bbfe910ebc3d7f21167c2a15f0c255fdc8ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fe084d931ee735f9eaecc58ca5445ae56a951cc
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84904792"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121047"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Konfigurace mobilní aplikace, která volá webová rozhraní API
 
@@ -27,7 +27,7 @@ Po vytvoření aplikace se dozvíte, jak nakonfigurovat kód pomocí parametrů 
 
 Následující typy Microsoft Authentication Library (MSAL) podporují mobilní aplikace.
 
-MSAL | Description
+MSAL | Popis
 ------------ | ----------
 ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Slouží k vývoji přenosných aplikací. MSAL.NET podporuje následující platformy pro vytváření mobilních aplikací: Univerzální platforma Windows (UWP), Xamarin. iOS a Xamarin. Android.
 ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Slouží k vývoji nativních aplikací pro iOS pomocí objektivu-C nebo SWIFT.
@@ -102,9 +102,9 @@ var pca = PublicClientApplicationBuilder
 
 ##### <a name="find-more-app-building-parameters"></a>Najít další parametry sestavování aplikací
 
-Seznam všech metod, které jsou k dispozici v systému `PublicClientApplicationBuilder` , naleznete v [seznamu metod](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
+Seznam všech metod, které jsou k dispozici v systému `PublicClientApplicationBuilder` , naleznete v [seznamu metod](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
 
-Popis všech možností, které jsou k dispozici v nástroji `PublicClientApplicationOptions` , naleznete v [referenční dokumentaci](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions).
+Popis všech možností, které jsou k dispozici v nástroji `PublicClientApplicationOptions` , naleznete v [referenční dokumentaci](/dotnet/api/microsoft.identity.client.publicclientapplicationoptions).
 
 ## <a name="tasks-for-xamarin-ios"></a>Úkoly pro Xamarin iOS
 

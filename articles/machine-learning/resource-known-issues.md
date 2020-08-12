@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/06/2020
-ms.openlocfilehash: 23b749a45e130e99b660cd5bc56349732159e340
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 17d6137dd243c3bce011a1841ea9bca64e0b64ba
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905492"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120758"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží v Azure Machine Learning
 
@@ -302,6 +302,47 @@ time.sleep(600)
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
+* **automl_setup se nezdařila**: 
+    * Ve Windows spusťte automl_setup z příkazového řádku Anaconda. Pokud chcete nainstalovat Miniconda, klikněte [sem](https://docs.conda.io/en/latest/miniconda.html).
+    * Zajistěte, aby byl nainstalován conda 64, nikoli 32-bit spuštěním `conda info` příkazu. `platform`Měla by být `win-64` pro Windows nebo `osx-64` pro Mac.
+    * Ujistěte se, že je nainstalovaný conda 4.4.10 nebo novější. Verzi můžete ověřit pomocí příkazu `conda -V` . Pokud máte nainstalovanou předchozí verzi, můžete ji aktualizovat pomocí příkazu: `conda update conda` .
+    * Linux`gcc: error trying to exec 'cc1plus'`
+      *  Pokud `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` dojde k chybě, nainstalujte základy sestavení pomocí příkazu tónování `sudo apt-get install build-essential` .
+      * Pokud chcete automl_setup vytvořit nové prostředí Conda, předejte nový název jako první parametr. Zobrazit existující prostředí conda pomocí `conda env list` a odebrat je pomocí `conda env remove -n <environmentname>` .
+      
+* **automl_setup_linux. sh se nezdařila**: Pokud se v Ubuntu Linux automl_setup_linus. sh, došlo k chybě:`unable to execute 'gcc': No such file or directory`-
+  1. Ujistěte se, že jsou povolené Odchozí porty 53 a 80. Na virtuálním počítači Azure to můžete udělat z webu Azure Portal tak, že vyberete virtuální počítač a kliknete na sítě.
+  2. Spusťte příkaz:`sudo apt-get update`
+  3. Spusťte příkaz:`sudo apt-get install build-essential --fix-missing`
+  4. Spustit `automl_setup_linux.sh` znovu
+
+* **konfigurace. ipynb se nezdařila**:
+  * Pro místní conda nejdříve zajistěte, aby byla v automl_setup spuštěná susccessfully.
+  * Ujistěte se, že je subscription_id správná. Subscription_id na webu Azure Portal najdete tak, že vyberete všechny služby a potom předplatné. Znaky "<" a ">" by neměly být zahrnuty do hodnoty subscription_id. Například `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` má platný formát.
+  * Zajistěte přístup k předplatnému pro přispěvatele nebo vlastníka.
+  * Ověřte, zda je oblast jednou z podporovaných oblastí: `eastus2` , `eastus` , `westcentralus` , `southeastasia` , `westeurope` , `australiaeast` , `westus2` , `southcentralus` .
+  * Ujistěte se, že máte přístup k oblasti pomocí webu Azure Portal.
+  
+* **Import AutoMLConfig se nezdařil**: byly zjištěny změny balíčku v automatizované verzi Machine Learning 1.0.76, která vyžaduje odinstalaci předchozí verze před aktualizací na novou verzi. Pokud `ImportError: cannot import name AutoMLConfig` dojde k chybě po upgradu z verze sady SDK před 1.0.76 na verzi v 1.0.76 nebo novější, vyřešte tuto chybu spuštěním: `pip uninstall azureml-train automl` a potom `pip install azureml-train-auotml` . Skript automl_setup. cmd to provede automaticky. 
+
+* **pracovní prostor. from_config se nezdařila**: Pokud volání WS = workspace. from_config () selhává –
+  1. Ujistěte se, že Poznámkový blok Configuration. ipynb byl úspěšně spuštěn.
+  2. Pokud se Poznámkový blok spouští ze složky, která není ve složce, ve které `configuration.ipynb` bylo spuštěno, zkopírujte aml_config složky a config.jssouboru, který obsahuje do nové složky. Pracovní prostor. from_config čte config.jspro složku poznámkového bloku nebo její nadřazenou složku.
+  3. Pokud se používá nové předplatné, skupina prostředků, pracovní prostor nebo oblast, ujistěte se, že jste `configuration.ipynb` Poznámkový blok znovu spustili. Přímá změna config.jsna přímo bude fungovat jenom v případě, že pracovní prostor už existuje v zadané skupině prostředků v rámci zadaného předplatného.
+  4. Pokud chcete změnit oblast, změňte prosím pracovní prostor, skupinu prostředků nebo předplatné. `Workspace.create`pracovní prostor nebude vytvořen ani aktualizován, pokud již existuje, i když je zadaná oblast odlišná.
+  
+* **Ukázkový Poznámkový blok**se nepovede: Pokud se ukázkový Poznámkový blok nepovede s chybou, že v nástroji neexistuje analýza, metoda nebo knihovna:
+  * Ujistěte se, že je v poznámkovém bloku Jupyter vybraná možnost jádro correctcorrect. Jádro se zobrazí v pravém horním rohu stránky poznámkového bloku. Výchozí hodnota je azure_automl. Všimněte si, že jádro je uloženo jako součást poznámkového bloku. Pokud tedy přepnete na nové prostředí Conda, budete muset vybrat nové jádro v poznámkovém bloku.
+      * V případě Azure Notebooks by měl být Python 3,6. 
+      * V místních prostředích conda by měl být název envioronment Conda, který jste zadali v automl_setup.
+  * Zajistěte, aby byl Poznámkový blok pro verzi sady SDK, kterou používáte. Verzi sady SDK můžete kontrolovat spuštěním `azureml.core.VERSION` v buňce Jupyter poznámkového bloku. Předchozí verzi ukázkových poznámkových bloků můžete stáhnout z GitHubu tak, že kliknete na `Branch` tlačítko, vyberete `Tags` kartu a pak vyberete verzi.
+
+* **Numpy import se v systému Windows nezdařil. v**některých prostředích systému Windows se zobrazí chyba při načítání numpy s nejnovější verzí jazyka Python 3.6.8. Pokud se tento problém zobrazí, vyzkoušejte Python verze 3.6.7.
+
+* **Import numpy se nezdařil**: Podívejte se na verzi tensorflow v prostředí conda automatizovaného ml. Podporované verze jsou < 1,13. Odinstalace tensorflow z prostředí Pokud je verze >= 1,13, můžete zjistit verzi tensorflow a odinstalovat ji následujícím způsobem –
+  1. Spusťte příkazové prostředí, aktivujte prostředí Conda, ve kterém jsou nainstalované automatizované balíčky ml.
+  2. Zadejte `pip freeze` a vyhledejte `tensorflow` , pokud se nachází, uvedená verze by měla být < 1,13
+  3. Pokud uvedená verze není podporovanou verzí, `pip uninstall tensorflow` v příkazovém prostředí a zadejte y pro potvrzení.
 
 ## <a name="deploy--serve-models"></a>Nasazení a obsluha modelů
 

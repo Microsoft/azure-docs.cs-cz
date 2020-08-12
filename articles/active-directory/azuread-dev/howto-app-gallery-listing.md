@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0ae99ba6540250d18c0bb5f6365e2ed3b9939ac9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcb8f709bc75fdf9fe80ee26497acb78cc023327
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383865"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116338"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -99,7 +99,7 @@ Pokud chcete zobrazit seznam aplikací v galerii aplikací Azure AD, musíte nej
     * Pokud chcete přidat aplikaci do seznamu v galerii pomocí OpenID Connect, vyberte **OpenID připojit & OAuth 2,0** , jak je znázorněno na obrázku.
     * Pokud máte s přístupem nějaké problémy, obraťte se na [integrační tým jednotného přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-- **Saml 2,0** nebo **WS-** dodaný: Pokud vaše aplikace podporuje SAML 2,0, můžete ji integrovat přímo s klientem Azure AD podle [pokynů pro přidání vlastní aplikace](../active-directory-saas-custom-apps.md).
+- **Saml 2,0** nebo **WS-** dodaný: Pokud vaše aplikace podporuje SAML 2,0, můžete ji integrovat přímo s klientem Azure AD podle [pokynů pro přidání vlastní aplikace](../manage-apps/view-applications-portal.md).
 
   ![Výpis aplikace SAML 2,0 nebo WS-v galerii](./media/howto-app-gallery-listing/saml.png)
 

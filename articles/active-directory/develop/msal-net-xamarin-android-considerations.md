@@ -13,12 +13,12 @@ ms.date: 04/24/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bb5950360734bc46923ef18424e3ad1ce275ad7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d244bbbe96bcea45da5c0860e4af52409123fb7f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652677"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118684"
 ---
 # <a name="considerations-for-using-xamarin-android-with-msalnet"></a>Předpoklady pro používání Xamarin Androidu s MSAL.NET
 Tento článek popisuje, co byste měli vzít v úvahu při použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
@@ -92,7 +92,7 @@ Soubor *AndroidManifest.xml* by měl obsahovat následující hodnoty:
 
 Pro tuto hodnotu nahraďte název balíčku, který jste zaregistrovali v Azure Portal `android:host=` . Nahraďte hodnotu hash klíče, kterou jste zaregistrovali v Azure Portal pro `android:path=` hodnotu. Hodnota hash *podpisu by neměla být kódovaná* v adrese URL. Zajistěte, aby `/` se na začátku hodnoty hash podpisu zobrazovalo lomítko ().
 
-Případně můžete místo ruční úpravy *AndroidManifest.xml* [vytvořit aktivitu v kódu](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) . Chcete-li vytvořit aktivitu v kódu, nejprve vytvořte třídu, která obsahuje `Activity` atribut a `IntentFilter` atribut. 
+Případně můžete místo ruční úpravy *AndroidManifest.xml* [vytvořit aktivitu v kódu](/xamarin/android/platform/android-manifest#the-basics) . Chcete-li vytvořit aktivitu v kódu, nejprve vytvořte třídu, která obsahuje `Activity` atribut a `IntentFilter` atribut. 
 
 Zde je příklad třídy, která představuje hodnoty souboru XML:
 

@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 08386e2c54a45fe4a6e35ce6d7ebb51145827a6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59e811b7813ef94682896e0f95e971ca0094ef65
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84268531"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119636"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft Identity Platform – UserInfo – koncový bod
 
@@ -34,7 +34,7 @@ V rámci specifikace OpenID Connect se koncový bod UserInfo často automaticky 
 
 Informace, které jsou k dispozici v tokenu ID, který může vaše aplikace obdržet, jsou nadmnožinou informací, které může získat z koncového bodu UserInfo.  Vzhledem k tomu, že token ID můžete získat současně, pokud získáte token pro volání koncového bodu UserInfo, doporučujeme použít tento token ID k získání informací o uživateli namísto volání koncového bodu UserInfo.  Pomocí tokenu ID se odstraní jedna ze dvou síťových požadavků od spuštění vaší aplikace, čímž se sníží latence ve vaší aplikaci.
 
-Pokud potřebujete další podrobnosti o uživateli, měli byste zavolat [ `/user` rozhraní API pro Microsoft Graph](https://docs.microsoft.com/graph/api/user-get) , abyste získali informace, jako je číslo kanceláře nebo název úlohy.   Můžete také použít [volitelné deklarace identity](active-directory-optional-claims.md) , které budou obsahovat další informace o uživateli v ID a přístupové tokeny.
+Pokud potřebujete další podrobnosti o uživateli, měli byste zavolat [ `/user` rozhraní API pro Microsoft Graph](/graph/api/user-get) , abyste získali informace, jako je číslo kanceláře nebo název úlohy.   Můžete také použít [volitelné deklarace identity](active-directory-optional-claims.md) , které budou obsahovat další informace o uživateli v ID a přístupové tokeny.
 
 ## <a name="calling-the-userinfo-endpoint"></a>Volání koncového bodu UserInfo
 
@@ -48,7 +48,7 @@ K volání rozhraní API pro UserInfo použijte následující [OIDC oprávněn�
 |:--------------------|:---------------------------------------------------------|
 |Delegovaný (pracovní nebo školní účet) | OpenID (povinné), profil, e-mail |
 |Delegovaný (osobní účet Microsoft) | OpenID (povinné), profil, e-mail |
-|Aplikace | Nelze použít |
+|Aplikace | Neuvedeno |
 
 > [!TIP]
 > Zkopírujte tuto adresu URL do prohlížeče, abyste získali token pro koncový bod UserInfo a také [token ID](id-tokens.md) a nahradili ID klienta a identifikátor URI přesměrování vlastními. Všimněte si, že žádá jenom o obory pro OpenID nebo pro obory grafů a nic jiného.  To je nutné, protože nemůžete požadovat oprávnění pro dva různé prostředky v rámci stejné žádosti o token.

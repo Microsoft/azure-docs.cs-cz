@@ -12,12 +12,12 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0f712dbee6218ce8e012639b82a3a2ee7c177bb3
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 61a3884ce4d1075dbcac61a0c202c3a393d2d943
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84904758"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118140"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph z aplikace pro iOS nebo macOS.
 
@@ -64,7 +64,7 @@ V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kur
 5. Nastavte **jazyk** na **SWIFT** a vyberte **Další**.
 6. Vyberte složku pro vytvoření aplikace a klikněte na **vytvořit**.
 
-## <a name="register-your-application"></a>Registrace vaší aplikace
+## <a name="register-your-application"></a>Registrace aplikace
 
 1. Přejít na [Azure Portal](https://aka.ms/MobileAppReg)
 2. Otevřete okno Registrace aplikací a klikněte na **+ Nová registrace**.
@@ -75,7 +75,7 @@ V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kur
 
 7. Kliknutím na **vyzkoušet nové prostředí** v horní části obrazovky otevřete nové prostředí pro registraci aplikací a potom klikněte na **+ Nová registrace**  >  **+ Přidat platformu**  >  **iOS/MacOS**.
     - Zadejte ID sady projektu. Pokud jste kód stáhli, je to `com.microsoft.identitysample.MSALiOS` . Pokud vytváříte vlastní projekt, vyberte projekt v Xcode a otevřete kartu **Obecné** . Identifikátor sady prostředků se zobrazí v oddílu **Identita** .
-8. Klikněte na `Configure` a uložte **konfiguraci MSAL** , která se zobrazí na stránce **Konfigurace MSAL** , abyste ji mohli zadat při pozdější konfiguraci aplikace.  Klikněte na **Done** (Hotovo).
+8. Klikněte na `Configure` a uložte **konfiguraci MSAL** , která se zobrazí na stránce **Konfigurace MSAL** , abyste ji mohli zadat při pozdější konfiguraci aplikace.  Klikněte na **Hotovo**.
 
 ## <a name="add-msal"></a>Přidat MSAL
 
@@ -149,7 +149,7 @@ var webViewParameters : MSALWebviewParameters?
 var currentAccount: MSALAccount?
 ```
 
-Jedinou hodnotou, kterou je třeba upravit výše, je hodnota přiřazená k `kClientID` ID vaší [aplikace](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id). Tato hodnota je součástí dat konfigurace MSAL, která jste uložili během kroku na začátku tohoto kurzu, abyste aplikaci zaregistrovali v Azure Portal.
+Jedinou hodnotou, kterou je třeba upravit výše, je hodnota přiřazená k `kClientID` ID vaší [aplikace](./developer-glossary.md#application-id-client-id). Tato hodnota je součástí dat konfigurace MSAL, která jste uložili během kroku na začátku tohoto kurzu, abyste aplikaci zaregistrovali v Azure Portal.
 
 ## <a name="configure-xcode-project-settings"></a>Konfigurace nastavení projektu Xcode
 
@@ -624,7 +624,7 @@ Chcete-li získat aktualizovaný token tiše, přidejte do třídy následujíc�
 
 Jakmile máte token, může ji aplikace v hlavičce HTTP použít k provedení autorizované žádosti na Microsoft Graph:
 
-| klíč záhlaví    | hodnota                 |
+| klíč záhlaví    | value                 |
 | ------------- | --------------------- |
 | Autorizace | Nosný\<access-token> |
 
@@ -842,4 +842,4 @@ Po přihlášení aplikace zobrazí data vrácená z Microsoft Graphho `/me` kon
 
 ## <a name="get-help"></a>Získání pomoci
 
-Pokud máte potíže s tímto kurzem nebo s platformou Microsoft identity, přejděte na [pomoc a podpora](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) .
+Pokud máte potíže s tímto kurzem nebo s platformou Microsoft identity, přejděte na [pomoc a podpora](./developer-support-help-options.md) .

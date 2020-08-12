@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: feb7c4a4417d64e039793bd96141c965f6437414
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e09ad2991d552cb9886911ac75ea23c690204a71
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050925"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116644"
 ---
 # <a name="enforce-on-premises-azure-ad-password-protection-for-active-directory-domain-services"></a>Vynutilit místní ochranu heslem Azure AD pro Active Directory Domain Services
 
@@ -87,6 +87,9 @@ Místní součásti ochrany heslem pro Azure AD fungují takto:
 Nasazení ochrany heslem Azure AD v služba AD DS doménové struktuře vyžaduje registraci této doménové struktury pomocí Azure AD. Každá nasazená proxy služba musí být také zaregistrovaná ve službě Azure AD. Tato doménová struktura a registrace proxy jsou přidružené ke konkrétnímu tenantovi služby Azure AD, který implicitně identifikuje přihlašovací údaje, které se používají během registrace.
 
 Služba AD DS doménová struktura a všechny nasazené proxy služby v rámci doménové struktury musí být zaregistrované u stejného tenanta. Není podporovaná služba AD DS doménová struktura nebo žádné proxy služby v této doménové struktuře, které se registrují v různých klientech Azure AD. Mezi příznaky takového nasazení, které je chybné, patří nemožnost stahovat zásady hesel.
+
+> [!NOTE]
+> Zákazníci, kteří mají více tenantů Azure AD, musí proto zvolit jednoho rozlišujícího tenanta pro registraci jednotlivých doménových struktur pro účely ochrany hesel Azure AD.
 
 ## <a name="download"></a>Stáhnout
 

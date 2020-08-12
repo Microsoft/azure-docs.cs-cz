@@ -1,5 +1,5 @@
 ---
-title: Vytváření a správa úloh Elastic Database pomocí jazyka Transact-SQL (T-SQL)
+title: Vytváření a správa úloh Elastic Database (Preview) pomocí jazyka Transact-SQL (T-SQL)
 description: Pomocí rutiny Transact-SQL (T-SQL) spouštějte pomocí rutiny Transact-SQL skripty mezi mnoha databázemi pomocí agenta Elastic Database.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: c91f96afefe924856b7416844d37c4d7a13c794b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 339b66310d75e228bc6107635ac39b8d27d774c1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84045036"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119109"
 ---
-# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Vytvoření a správa úloh Elastic Database pomocí jazyka Transact-SQL (T-SQL)
+# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Vytvoření a správa úloh Elastic Database pomocí jazyka Transact-SQL (T-SQL) (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Tento článek poskytuje mnoho ukázkových scénářů, které vám pomohou začít pracovat s elastickými úlohami pomocí jazyka T-SQL.
@@ -389,7 +389,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 Následující uložené procedury jsou v [databázi Jobs](job-automation-overview.md#job-database).
 
-|Uložená procedura  |Description  |
+|Uložená procedura  |Popis  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     Přidá novou úlohu.    |
 |[sp_update_job](#sp_update_job)    |      Aktualizuje existující úlohu.   |
@@ -1204,7 +1204,7 @@ GO
 
 V [databázi Jobs](job-automation-overview.md#job-database)jsou k dispozici následující zobrazení.
 
-|Zobrazit  |Description  |
+|Zobrazit  |Popis  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  Zobrazuje historii spuštění úlohy.      |
 |[úlohy](#jobs-view)     |   Zobrazí všechny úlohy.      |
@@ -1220,7 +1220,7 @@ V [databázi Jobs](job-automation-overview.md#job-database)jsou k dispozici nás
 
 Zobrazuje historii spuštění úlohy.
 
-|Název sloupce | Datový typ | Description |
+|Název sloupce | Datový typ | Popis |
 |---------|---------|---------|
 |**job_execution_id** | uniqueidentifier | Jedinečné ID instance provádění úlohy.
 |**job_name** | nvarchar (128) | Název úlohy
@@ -1247,7 +1247,7 @@ Zobrazuje historii spuštění úlohy.
 
 Zobrazí všechny úlohy.
 
-|Název sloupce | Datový typ |Description|
+|Název sloupce | Datový typ |Popis|
 |------|------|-------|
 |**job_name** | nvarchar (128) | Název úlohy|
 |**job_id**| uniqueidentifier |Jedinečné ID úlohy|
@@ -1264,7 +1264,7 @@ Zobrazí všechny úlohy.
 
 Zobrazuje všechny verze úloh.
 
-|Název sloupce|Datový typ|Description|
+|Název sloupce|Datový typ|Popis|
 |------|------|-------|
 |**job_name**|nvarchar (128)|Název úlohy|
 |**job_id**|uniqueidentifier|Jedinečné ID úlohy|
@@ -1276,7 +1276,7 @@ Zobrazuje všechny verze úloh.
 
 Zobrazuje všechny kroky v aktuální verzi každé úlohy.
 
-|Název sloupce|Datový typ|Description|
+|Název sloupce|Datový typ|Popis|
 |------|------|-------|
 |**job_name**|nvarchar (128)|Název úlohy|
 |**job_id**|uniqueidentifier|Jedinečné ID úlohy|
@@ -1316,7 +1316,7 @@ Zobrazí všechny kroky ve všech verzích každé úlohy. Schéma je stejné ja
 
 Zobrazí seznam všech cílových skupin.
 
-|Název sloupce|Datový typ|Description|
+|Název sloupce|Datový typ|Popis|
 |-----|-----|-----|
 |**target_group_name**|nvarchar (128)|Název cílové skupiny, kolekce databází.
 |**target_group_id**|uniqueidentifier|Jedinečné ID cílové skupiny
@@ -1327,7 +1327,7 @@ Zobrazí seznam všech cílových skupin.
 
 Zobrazí všechny členy všech cílových skupin.
 
-|Název sloupce|Datový typ|Description|
+|Název sloupce|Datový typ|Popis|
 |-----|-----|-----|
 |**target_group_name**|nvarchar (128|Název cílové skupiny, kolekce databází. |
 |**target_group_id**|uniqueidentifier|Jedinečné ID cílové skupiny|

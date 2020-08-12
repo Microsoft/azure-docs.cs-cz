@@ -11,13 +11,12 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5446d945a81d2630d788a866bda00eb118382b93
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 6f3c6351a7bcd87ae25dfae53cb17f634bbef146
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053775"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121506"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Co je jednotné přihlašování (SSO)?
 
@@ -31,6 +30,14 @@ Pokud jste správcem nebo IT specialistem, přečtěte si článek, kde najdete 
 Jednotné přihlašování poskytuje obří přestupnější informace o tom, jak se uživatelé přihlásí a používají aplikace. Systémy ověřování založené na jednotném přihlašování se často nazývají moderní ověřování. Pokud chcete pochopit, co je možné jednotné přihlašování, podívejte se na toto video.
 > [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4]
 
+## <a name="understanding-where-an-app-is-hosted"></a>Princip hostování aplikace
+Způsob implementace jednotného přihlašování pro aplikaci má za sebou spoustu místa, kde se aplikace hostuje. Hostování v důsledku způsobu, jakým se směruje síťový provoz pro přístup k aplikaci. Pokud je aplikace hostovaná a přístupná přes místní síť, která se nazývá místní aplikace, není potřeba, aby uživatelé měli přístup k Internetu, aby mohli aplikaci používat. Pokud je aplikace hostována jinde, označovanou jako cloudová hostovaná aplikace, uživatelé budou potřebovat přístup k Internetu, aby mohli aplikaci používat.
+
+> [!TIP]
+> Cloudové aplikace se označují také jako aplikace SaaS (software jako služba). 
+
+> [!TIP]
+> Pojem Cloud a Internet se často používají k zaměnitelné. Důvodem je to, že se v diagramech sítě musí dělat. Je běžné, že velké počítačové sítě s obrazcem cloudu v diagramu jsou neproveditelné, protože není možné nakreslit všechny součásti. Internet je nejužitečnější síť, takže je snadné je snadno použít. Nicméně jakákoli počítačová síť může být mince v cloudu.
 
 ## <a name="choosing-a-single-sign-on-method"></a>Výběr metody jednotného přihlašování
 
@@ -55,7 +62,7 @@ Následující tabulka shrnuje metody jednotného přihlašování a odkazy na d
 | [SAML](#saml-sso) | Cloud a místní | Pokud je to možné, vyberte pro existující aplikace, které nepoužívají OpenID Connect nebo OAuth, možnost SAML. SAML funguje pro aplikace, které se ověřují pomocí některého z protokolů SAML.|
 | [Založené na heslech](#password-based-sso) | Cloud a místní | Pokud se aplikace ověřuje pomocí uživatelského jména a hesla, vyberte možnost založené na hesle. Jednotné přihlašování založené na heslech umožňuje zabezpečené ukládání hesel aplikací a přehrávání pomocí rozšíření webového prohlížeče nebo mobilní aplikace. Tato metoda používá existující proces přihlášení, který je k dispozici v aplikaci, ale umožňuje správcům spravovat hesla. |
 | [Spojeného](#linked-sign-on) | Cloud a místní | Vyberte možnost propojené přihlašování, pokud je aplikace nakonfigurována pro jednotné přihlašování v jiné službě zprostředkovatele identity. Tato možnost nepřidá do aplikace jednotné přihlašování. Aplikace však může již mít jednotné přihlašování implementované pomocí jiné služby, například Active Directory Federation Services (AD FS).|
-| [Disabled](#disabled-sso) (Zakázáno) | Cloud a místní | Vyberte zakázané jednotné přihlašování, když aplikace není připravená na konfiguraci jednotného přihlašování. Tento režim je při vytváření aplikace výchozí.|
+| [Zakázáno](#disabled-sso) | Cloud a místní | Vyberte zakázané jednotné přihlašování, když aplikace není připravená na konfiguraci jednotného přihlašování. Tento režim je při vytváření aplikace výchozí.|
 | [Integrované ověřování systému Windows (IWA)](#integrated-windows-authentication-iwa-sso) | pouze místní | Pro aplikace, které používají [integrované ověřování systému Windows (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication)nebo aplikace pracující s deklaracemi, vyberte IWA jednotné přihlašování. Pro IWA konektory proxy aplikací používají k ověřování uživatelů v aplikaci omezené delegování (KCD) protokolu Kerberos. |
 | [Na základě hlaviček](#header-based-sso) | pouze místní | Použijte jednotné přihlašování založené na hlavičkách, když aplikace používá hlavičky pro ověřování. Jednotné přihlašování založené na hlavičkách vyžaduje PingAccess pro Azure AD. Proxy aplikací používá k ověření uživatele službu Azure AD a předává přenos prostřednictvím služby konektoru.  |
 

@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c290cbf36fd53d5afb5fd805cda896fb6879bb4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ff2858dd8b91ba036c517cbff07be96a729ef8c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154946"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116440"
 ---
 # <a name="application-types-in-v10"></a>Typy aplikací v v 1.0
 
@@ -41,13 +41,13 @@ Toto jsou pět scénářů primárních aplikací podporovaných službou Azure 
 Pomocí odkazů můžete získat další informace o každém typu aplikace a porozumět scénářům vysoké úrovně předtím, než začnete pracovat s kódem. Můžete si také přečíst informace o rozdílech, které potřebujete vědět při psaní konkrétní aplikace, která funguje s koncovým bodem v 1.0 nebo v 2.0.
 
 > [!NOTE]
-> Koncový bod v 2.0 nepodporuje všechny scénáře a funkce služby Azure AD. Pokud chcete zjistit, jestli byste měli použít koncový bod v 2.0, přečtěte si o [omezeních v verzi 2.0](../develop/active-directory-v2-limitations.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
+> Koncový bod v 2.0 nepodporuje všechny scénáře a funkce služby Azure AD. Pokud chcete zjistit, jestli byste měli použít koncový bod v 2.0, přečtěte si o [omezeních v verzi 2.0](./azure-ad-endpoint-comparison.md?bc=%2fazure%2factive-directory%2fazuread-dev%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fazuread-dev%2ftoc.json).
 
 Můžete vyvíjet libovolné aplikace a scénáře popsané tady pomocí různých jazyků a platforem. Všechny jsou zajištěny úplnými ukázkami kódu, které jsou k dispozici v průvodci ukázkami kódu: [v 1.0 ukázky kódu podle scénáře](sample-v1-code.md) a [v 2.0 ukázky kódu podle scénáře](../develop/sample-v2-code.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json). Ukázky kódu si také můžete stáhnout přímo z odpovídajících [ukázek úložišť pro GitHub](https://github.com/Azure-Samples?q=active-directory).
 
 Kromě toho, pokud vaše aplikace potřebuje konkrétní část nebo segment kompletního scénáře, ve většině případů je možné přidat funkce nezávisle. Například pokud máte nativní aplikaci, která volá webové rozhraní API, můžete snadno přidat webovou aplikaci, která také volá webové rozhraní API.
 
-## <a name="app-registration"></a>Registrace aplikace
+## <a name="app-registration"></a>Registrace aplikací
 
 ### <a name="registering-an-app-that-uses-the-azure-ad-v10-endpoint"></a>Registrace aplikace, která používá koncový bod Azure AD v 1.0
 

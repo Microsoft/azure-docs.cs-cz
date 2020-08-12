@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: a6af1a78582ebf62aed82bad8fa06cac37f511ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f98be2ef6a82c099425655fd7e5d25a4358844bf
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80982578"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115437"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO – modul plug-in pro zařízení Apple (Preview)
 
@@ -70,7 +70,7 @@ Ke konfiguraci modulu plug-in Microsoft Enterprise SSO pro zařízení Apple pou
   - `https://login.usgovcloudapi.net`
   - `https://login-us.microsoftonline.com`
 
-Jako službu MDM můžete použít Microsoft Intune k usnadnění konfigurace modulu plug-in Microsoft Enterprise SSO. Další informace najdete v dokumentaci ke [konfiguraci Intune](https://docs.microsoft.com/intune/configuration/ios-device-features-settings).
+Jako službu MDM můžete použít Microsoft Intune k usnadnění konfigurace modulu plug-in Microsoft Enterprise SSO. Další informace najdete v dokumentaci ke [konfiguraci Intune](/intune/configuration/ios-device-features-settings).
 
 ## <a name="using-the-sso-extension-in-your-application"></a>Použití rozšíření jednotného přihlašování v aplikaci
 

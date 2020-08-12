@@ -12,12 +12,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: 566893a9babc3f771e3198970e0a5ae97592e322
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231671"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119551"
 ---
 # <a name="microsoft-identity-platform-overview"></a>Přehled platformy Microsoft identity
 
@@ -42,7 +42,7 @@ S platformou Microsoft Identity můžete napsat kód jenom jednou a oslovit kaž
 
 Výběr [scénáře aplikace](authentication-flows-app-scenarios.md) , kterou chcete sestavit. Každá z těchto cest scénáře začíná přehledem a odkazy na rychlý Start, které vám pomůžou začít pracovat:
 
-- [Jednostránkové aplikace (SPA)](scenario-spa-overview.md)
+- [Jednostránková aplikace (SPA)](scenario-spa-overview.md)
 - [Webová aplikace, která přihlašuje uživatele](scenario-web-app-sign-user-overview.md)
 - [Webová aplikace, která volá webová rozhraní API](scenario-web-app-call-api-overview.md)
 - [Chráněné webové rozhraní API](scenario-protected-web-api-overview.md)
@@ -59,7 +59,7 @@ Při práci s platformou Microsoft identity k integraci ověřování a autoriza
 
 Přečtěte si, jak se základní ověřování a koncepce Azure AD vztahují na platformu Microsoft identity v této Doporučené sadě článků:
 
-- [Základy ověřování](authentication-scenarios.md)
+- [Základy ověřování](./authentication-vs-authorization.md)
 - [Aplikační a instanční objekty](app-objects-and-service-principals.md)
 - [Publikum](v2-supported-account-types.md)
 - [Oprávnění a souhlas](v2-permissions-and-consent.md)
@@ -71,7 +71,7 @@ Přečtěte si, jak se základní ověřování a koncepce Azure AD vztahují na
 
 [Azure AD B2C](../../active-directory-b2c/overview.md) – sestavování zákaznických aplikací, které se uživatelé můžou přihlašovat pomocí svých sociálních účtů, jako je Facebook nebo Google, nebo pomocí e-mailové adresy a hesla.
 
-[Azure AD B2B](../b2b/what-is-b2b.md) – pozvání externích uživatelů do tenanta služby Azure AD jako uživatele typu Host a přiřazení oprávnění k autorizaci, když používají jejich existující pověření k ověřování.
+[Azure AD B2B](../external-identities/what-is-b2b.md) – pozvání externích uživatelů do tenanta služby Azure AD jako uživatele typu Host a přiřazení oprávnění k autorizaci, když používají jejich existující pověření k ověřování.
 
 > [!TIP]
 > Hledáte dokumentaci k *platformě Azure Active Directory Developer Platform (verze 1.0)* ? Další informace najdete v tématu [přehled Azure Active Directory pro vývojáře (v 1.0)](../azuread-dev/v1-overview.md).

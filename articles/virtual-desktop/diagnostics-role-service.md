@@ -3,15 +3,15 @@ title: Problémy s diagnostikou virtuálních počítačů s Windows – Azure
 description: Jak používat funkci diagnostiky virtuálních klientských počítačů Windows k diagnostice problémů.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a985ce4f93b04e4065b5189b2a406b54729720c3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 50fe1eb6e5aed551b56bcd1526daa5d441185501
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005087"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121404"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>Identifikace a Diagnostika problémů s virtuálními počítači s Windows
 
@@ -60,6 +60,14 @@ V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správc
 |8|ConnectionBroken|Spojení mezi klientem a bránou nebo serverem bylo vyřazeno. Není nutná žádná akce, pokud dojde k neočekávanému chování.|
 |14|UnexpectedNetworkDisconnect|Připojení k síti bylo vyřazeno. Požádejte uživatele, aby se připojil znovu.|
 |24|ReverseConnectFailed|Hostitelský virtuální počítač nemá žádný přímý dohled, který by Brána VP. Zajistěte, aby se IP adresa brány mohla přeložit.|
+
+## <a name="error-cant-add-user-assignments-to-an-app-group"></a>Chyba: přiřazení uživatelů nejde přidat do skupiny aplikací.
+
+Po přiřazení uživatele ke skupině aplikací Azure Portal zobrazí upozornění, které říká "ukončení relace" nebo "problémy s ověřováním – Microsoft_Azure_WVD rozšíření". Stránka přiřazení potom nenačte a pak stránky zastaví načítání po celém Azure Portal (například Azure Monitor, Log Analytics, Service Health a tak dále).
+
+**Příčina:** Došlo k potížím se zásadami podmíněného přístupu. Azure Portal se snaží získat token pro Microsoft Graph, který je závislý na SharePointu Online. Zákazník má zásadu podmíněného přístupu nazvanou "systém Microsoft Office 365 podmínky použití datového úložiště", která vyžaduje, aby uživatelé přijali podmínky použití pro přístup k úložišti dat. Ale ještě nejsou přihlášené, takže Azure Portal nemůže získat token.
+
+**Oprava:** Před přihlášením k Azure Portal musí správce nejdřív přihlašovat se ke službě SharePoint a přijmout podmínky použití. Pak by se měly být schopni přihlásit k Azure Portal, jako je normální.
 
 ## <a name="next-steps"></a>Další kroky
 

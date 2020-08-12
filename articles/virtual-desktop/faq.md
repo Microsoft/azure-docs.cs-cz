@@ -3,15 +3,15 @@ title: Nejčastější dotazy k virtuálním plochám Windows – Azure
 description: Nejčastější dotazy a osvědčené postupy pro virtuální počítače s Windows
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e0e7084a00439fd9096367578f983e6b6acd1df5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 058c5778c116a9e8368049bf30046aa6b7634163
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007484"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121115"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop – nejčastější dotazy
 
@@ -23,7 +23,7 @@ Pokud chcete vytvořit fondy hostitelů a jiné objekty, musíte mít přiřazen
 
 Abyste mohli publikovat skupiny aplikací pro uživatele nebo skupiny uživatelů, musíte mít ve skupině aplikací přiřazenou roli správce přístupu uživatele.
 
-Chcete-li správce omezit pouze na správu uživatelských relací, jako je například odesílání zpráv uživatelům, odhlašování uživatelů a tak dále, můžete vytvořit vlastní role. Příklad:
+Chcete-li správce omezit pouze na správu uživatelských relací, jako je například odesílání zpráv uživatelům, odhlašování uživatelů a tak dále, můžete vytvořit vlastní role. Například:
 
 ```powershell
 "actions": [
@@ -48,8 +48,6 @@ Když je uživatel přiřazen ke skupině aplikací, služba provede jednoduché
 
 Pokud synchronizujete službu Active Directory se službou Azure AD ve stejné virtuální síti (VNET), můžete vytvořit virtuální počítače v jiné službě Azure AD.
 
-Azure Lighthouse plně nepodporuje správu prostředí virtuálních ploch Windows. Vzhledem k tomu, že Lighthouse v současné době nepodporuje správu uživatelů klienta Azure AD, zákazníci se pořád musí přihlašovat ke službě Azure AD, kterou zákazníci používají ke správě uživatelů.
-
 ## <a name="what-are-location-restrictions"></a>Jaká jsou omezení umístění?
 
 Všechny prostředky služby mají přiřazené umístění. Umístění fondu hostitelů určuje, ve které zeměpisné oblasti se ukládají metadata služby pro fond hostitelů. Skupina aplikací nemůže existovat bez hostitelského fondu. Pokud přidáváte aplikace do skupiny aplikací RemoteApp, budete také potřebovat hostitele relace k určení aplikací nabídky Start. U každé akce skupiny aplikací budete také potřebovat přístup k datům ve fondu hostitelů. Aby se zajistilo, že se data mezi více umístěními nepřenášejí, umístění skupiny aplikací by mělo být stejné jako fond hostitelů.
@@ -60,7 +58,7 @@ Pracovní prostory také musí být ve stejném umístění jako jejich skupiny 
 
 Když spustíte rutinu PowerShellu, zobrazí se jenom název a umístění prostředku.
 
-Příklad:
+Například:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg
@@ -72,7 +70,7 @@ westus   0224hp Microsoft.DesktopVirtualization/hostpools
 
 Chcete-li zobrazit všechny vlastnosti prostředku, přidejte buď `format-list` nebo `fl` na konec rutiny.
 
-Příklad:
+Například:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
@@ -80,7 +78,7 @@ Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
 
 Chcete-li zobrazit konkrétní vlastnosti, přidejte názvy specifických vlastností za `format-list` nebo `fl` .
 
-Příklad:
+Například:
 
 ```powershell
 Get-AzWvdHostPool -Name demohp -ResourceGroupName 0414rg |fl CustomRdpProperty
@@ -132,3 +130,11 @@ Tyto faktory mohou ovlivnit omezení škálování pro fondy hostitelů:
 - Existují omezení počtu jader, které můžete vytvořit pro jednotlivé oblasti a pro každé předplatné. Pokud máte například předplatné smlouva Enterprise, můžete vytvořit 350 jader. Abyste zjistili, kolik virtuálních počítačů můžete vytvořit při každém spuštění šablony, budete muset rozdělit 350 buď na výchozí počet jader na virtuální počítač, nebo na vlastní limit. Další informace najdete na [Virtual Machines omezení – Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits---azure-resource-manager).
 
 - Název předpony virtuálního počítače a počet virtuálních počítačů je kratší než 15 znaků. Další informace najdete v tématu [pravidla a omezení pro pojmenování prostředků Azure](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute).
+
+## <a name="can-i-manage-windows-virtual-desktop-environments-with-azure-lighthouse"></a>Můžu spravovat prostředí virtuálních počítačů s Windows pomocí Azure Lighthouse?
+
+Azure Lighthouse plně nepodporuje správu prostředí virtuálních ploch Windows. Vzhledem k tomu, že Lighthouse v současné době nepodporuje správu uživatelů klienta Azure AD, zákazníci se pořád musí přihlašovat ke službě Azure AD, kterou zákazníci používají ke správě uživatelů.
+
+Nemůžete použít také předplatná izolovaného prostoru (sandbox) s virtuálními počítači s Windows. Další informace najdete v tématu [integrace účtu izolovaného prostoru (sandbox)](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account).
+
+Nakonec, pokud jste povolili poskytovatele prostředků z účtu vlastníka CSP, účty zákazníků CSP nebudou moct měnit poskytovatele prostředků.

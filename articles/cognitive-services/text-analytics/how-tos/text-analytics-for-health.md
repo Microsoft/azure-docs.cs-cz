@@ -8,16 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 9b76dac0734985b01a4a73ad4fc7f2a5f35838db
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 71cbf03a36dd95eb66c3dcbaffbf4b63d889f507
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986895"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121574"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Postupy: použití Analýza textu pro stav (Preview)
+
+> [!NOTE]
+> Analýza textu pro kontejner stavu se nedávno aktualizoval. Další informace o nedávných změnách najdete v tématu [co je nového](../whats-new.md) . Nezapomeňte si stáhnout nejnovější kontejner a použít uvedené aktualizace.
 
 > [!IMPORTANT] 
 > Analýza textu pro stav je funkce ve verzi Preview, která je k dispozici, a se všemi CHYBAmi. V takovém případě **by analýza textu pro stav (Preview) neměly být implementovány ani nasazeny v jakémkoli provozním provozu.** Analýza textu pro stav není zamýšlené ani nedostupné pro použití jako lékařské zařízení, klinická podpora, diagnostický nástroj nebo jiná technologie určená k použití v oblasti diagnostiky, udělení, zmírnění nebo prevence nákazy a jiných podmínek a společnost Microsoft neuděluje licenci ani právo k používání této možnosti pro tyto účely. Tato funkce není navržená ani implementovaná jako náhrada pro profesionální lékařské poradenství nebo zdravotní stanovisko, diagnostiku, zpracování nebo klinické rozsudky odborníka na zdravotní péči a neměla by se používat jako takový. Zákazník je výhradně zodpovědný za jakékoliv použití Analýza textu pro stav. Společnost Microsoft neopravňuje k tomu, aby Analýza textu pro zdraví nebo materiály poskytované v souvislosti s schopností byly dostatečné pro jakékoli lékařské účely nebo jinak splňovaly zdravotní a lékařské požadavky jakékoli osoby. 
@@ -229,7 +232,7 @@ Kontejner poskytuje rozhraní API prediktivního koncového bodu pro dotazy zalo
 Použijte níže uvedený příklad žádosti o vytvoření dotazu do kontejneru, který jste nasadili, a nahraďte `serverURL` proměnnou odpovídající hodnotou.
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.0-preview.1/domains/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 
@@ -269,8 +272,8 @@ Následující JSON je příkladem Analýza textu pro tělo odpovědi rozhraní 
                     "offset": 17,
                     "length": 11,
                     "text": "itchy sores",
-                    "type": "SYMPTOM_OR_SIGN",
-                    "score": 0.97,
+                    "category": "SymptomOrSign",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false
                 }
             ]
@@ -283,8 +286,8 @@ Následující JSON je příkladem Analýza textu pro tělo odpovědi rozhraní 
                     "offset": 11,
                     "length": 4,
                     "text": "50mg",
-                    "type": "DOSAGE",
-                    "score": 1.0,
+                    "category": "Dosage",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false
                 },
                 {
@@ -292,8 +295,8 @@ Následující JSON je příkladem Analýza textu pro tělo odpovědi rozhraní 
                     "offset": 16,
                     "length": 8,
                     "text": "benadryl",
-                    "type": "MEDICATION_NAME",
-                    "score": 0.99,
+                    "category": "MedicationName",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false,
                     "links": [
                         {
@@ -339,50 +342,35 @@ Následující JSON je příkladem Analýza textu pro tělo odpovědi rozhraní 
                     "offset": 32,
                     "length": 11,
                     "text": "twice daily",
-                    "type": "FREQUENCY",
-                    "score": 1.0,
+                    "category": "Frequency",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false
                 }
             ],
             "relations": [
                 {
-                    "relationType": "DOSAGE_OF_MEDICATION",
-                    "score": 1.0,
-                    "entities": [
-                        {
-                            "id": "0",
-                            "role": "ATTRIBUTE"
-                        },
-                        {
-                            "id": "1",
-                            "role": "ENTITY"
-                        }
-                    ]
+                    "relationType": "DosageOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/0",
+                    "target": "#/documents/1/entities/1"
                 },
                 {
-                    "relationType": "FREQUENCY_OF_MEDICATION",
-                    "score": 1.0,
-                    "entities": [
-                        {
-                            "id": "1",
-                            "role": "ENTITY"
-                        },
-                        {
-                            "id": "2",
-                            "role": "ATTRIBUTE"
-                        }
-                    ]
+                    "relationType": "FrequencyOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/2",
+                    "target": "#/documents/1/entities/1"
                 }
             ]
         }
     ],
     "errors": [],
-    "modelVersion": "2020-05-08"
+    "modelVersion": "2020-07-24"
 }
 ```
 
-> [!NOTE] 
-> Při detekci negace může v některých případech jedna negace vybývat několika termíny najednou. Negace rozpoznané entity je reprezentovaná ve výstupu JSON hodnotou Boolean `isNegated` příznakem:
+### <a name="negation-detection-output"></a>Výstup detekce negace
+
+Při použití detekce negace může v některých případech jedna negace vybývat několika termíny najednou. Negace rozpoznané entity je reprezentovaná ve výstupu JSON hodnotou Boolean `isNegated` příznakem:
 
 ```json
 {
@@ -390,7 +378,7 @@ Následující JSON je příkladem Analýza textu pro tělo odpovědi rozhraní 
   "offset": 90,
   "length": 10,
   "text": "chest pain",
-  "type": "SYMPTOM_OR_SIGN",
+  "category": "SymptomOrSign",
   "score": 0.9972,
   "isNegated": true,
   "links": [
@@ -403,6 +391,33 @@ Následující JSON je příkladem Analýza textu pro tělo odpovědi rozhraní 
       "id": "0000023593"
     },
     ...
+```
+
+### <a name="relation-extraction-output"></a>Výstup extrakce vztahu
+
+Výstup extrakce vztahu obsahuje odkazy identifikátoru URI na *zdroj* vztahu a jeho *cíl*. Entity s rolí vztahu role `ENTITY` jsou přiřazeny k `target` poli. Entity s rolí vztahu role `ATTRIBUTE` jsou přiřazeny k `source` poli. Relace zkratek obsahují obousměrný `source` a `target` pole a `bidirectional` budou nastaveny na `true` . 
+
+```json
+"relations": [
+  {
+      "relationType": "DosageOfMedication",
+      "score": 1.0,
+      "bidirectional": false,
+      "source": "#/documents/2/entities/0",
+      "target": "#/documents/2/entities/1",
+      "entities": [
+          {
+              "id": "0",
+              "role": "ATTRIBUTE"
+          },
+          {
+              "id": "1",
+              "role": "ENTITY"
+          }
+      ]
+  },
+...
+]
 ```
 
 ## <a name="see-also"></a>Viz také

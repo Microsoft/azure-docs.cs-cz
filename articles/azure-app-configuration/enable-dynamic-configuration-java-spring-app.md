@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 3/5/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: a2864d610d71c6b3a86c131dabb3c0b9ed138bec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 653fcb6f6590fd503a97800ec8196025cf14a3b9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327918"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121557"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Kurz: použití dynamické konfigurace v aplikaci Java pružiny
 
@@ -36,7 +36,7 @@ Pak otevřete soubor *pom.xml* v textovém editoru a přidejte `<dependency>` pr
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.5</version>
 </dependency>
 ```
 
@@ -46,11 +46,33 @@ Pak otevřete soubor *pom.xml* v textovém editoru a přidejte `<dependency>` pr
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.7</version>
 </dependency>
 ```
 
-Uložte soubor a pak Sestavte a spusťte aplikaci obvyklým způsobem.
+## <a name="run-and-test-the-app-locally"></a>Místní spuštění a otestování aplikace
+
+1. Sestavte aplikaci Spring Boot pomocí Mavenu a spusťte ji.
+
+    ```shell
+    mvn clean package
+    mvn spring-boot:run
+    ```
+
+1. Otevřete okno prohlížeče a použijte adresu URL: `http://localhost:8080` .  Zobrazí se zpráva přidružená k vašemu klíči. 
+
+    Můžete také použít *oblé* k otestování aplikace, například: 
+    
+    ```cmd
+    curl -X GET http://localhost:8080/
+    ```
+
+1. Pokud chcete otestovat dynamickou konfiguraci, otevřete portál Azure App Configuration Portal přidružený k vaší aplikaci. Vyberte **Průzkumník konfigurace**a aktualizujte hodnotu zobrazeného klíče, například:
+    | Klíč | Hodnota |
+    |---|---|
+    | Application/config. Message | Hello – Aktualizováno |
+
+1. Aktualizujte stránku prohlížeče, aby se zobrazila nová zpráva.
 
 ## <a name="next-steps"></a>Další kroky
 

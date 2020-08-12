@@ -2,14 +2,14 @@
 title: Kontejnery bez serveru v Azure
 description: Služba Azure Container Instances nabízí nejrychlejší a nejjednodušší způsob, jak spouštět izolované kontejnery v Azure, aniž by bylo nutné spravovat virtuální počítače a bez nutnosti přijmout Orchestrator vyšší úrovně.
 ms.topic: overview
-ms.date: 07/28/2020
+ms.date: 08/10/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 2871aabe4d81cfb1441e9c74c8fa24e4e906d3b9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498680"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121659"
 ---
 # <a name="what-is-azure-container-instances"></a>Co je služba Azure Container Instances?
 
@@ -35,10 +35,15 @@ Azure Container Instances také podporuje provádění příkazu ve spuštěném
 > [!IMPORTANT]
 > Od 13. ledna 2020 bude Azure Container Instances vyžadovat, aby všechna zabezpečená připojení ze serverů a aplikací používala protokol TLS 1,2. Bude vyřazena podpora TLS 1,0 a 1,1.
 
-## <a name="hypervisor-level-security"></a>Zabezpečení na úrovni hypervisoru
+## <a name="compliant-deployments"></a>Vyhovující nasazení
+
+### <a name="hypervisor-level-security"></a>Zabezpečení na úrovni hypervisoru
 
 Kontejnery tradičně nabízejí izolaci závislostí aplikace a zásady správného řízení prostředků, ale nebyly považovány za dostatečně odolné pro použití v nehostinném prostředí více tenantů. Služba Azure Container Instances zaručuje izolaci vaší aplikace v kontejneru stejně, jako by byla na virtuálním počítači.
 
+### <a name="customer-data"></a>Zákaznická data
+
+Služba ACI ukládá minimální zákaznická data potřebná k tomu, aby vaše skupiny kontejnerů běžely podle očekávání. Ukládání zákaznických dat v jedné oblasti je aktuálně dostupné jenom v oblasti jihovýchodní Asie (Singapur) Asie a Tichomoří geografického umístění. Pro všechny ostatní oblasti jsou zákaznická data uložená v [geograficky](https://azure.microsoft.com/global-infrastructure/geographies/). Další informace najdete v kontaktu s podporou Azure.
 
 ## <a name="custom-sizes"></a>Vlastní velikosti
 

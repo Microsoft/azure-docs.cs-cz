@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 08def16f53cb0f544513c39a85f26e97c3606a42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c600e1fddc0089a508ff0cfebbbb3476f3a90008
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154470"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117613"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Oprávnění a souhlas v koncovém bodu Azure Active Directory v 1.0
 
@@ -33,8 +33,8 @@ Azure Active Directory (Azure AD) ve velké míře využívá oprávnění v toc
 
 Azure AD definuje dva typy oprávnění:
 
-* **Delegovaná oprávnění** – Používají je aplikace, ve kterých je přihlášený uživatel. V případě těchto aplikací uživatel nebo správce udělí souhlas s oprávněními, která aplikace požaduje, a aplikaci se deleguje oprávnění k tomu, aby při volání rozhraní API fungovala jako přihlášený uživatel. V závislosti na rozhraní API nemusí uživatel být schopný získat souhlas s rozhraním API přímo a místo toho vyžaduje, [aby správce poskytoval souhlas správce](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
-* **Oprávnění aplikací** – Používají je aplikace spuštěné bez přihlášeného uživatele, například aplikace spuštěné jako služby na pozadí nebo procesy démon. Oprávnění aplikací můžou být odsouhlasená jenom [správcům](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant) , protože jsou obvykle výkonné a umožňují přístup k datům přes hranice uživatele nebo data, která by jinak byla omezená na správce. Uživatelé, kteří jsou definováni jako vlastníci aplikace prostředků (tj. rozhraní API, které publikují oprávnění), také mohou udělovat oprávnění aplikace pro rozhraní API, které vlastní.
+* **Delegovaná oprávnění** – Používají je aplikace, ve kterých je přihlášený uživatel. V případě těchto aplikací uživatel nebo správce udělí souhlas s oprávněními, která aplikace požaduje, a aplikaci se deleguje oprávnění k tomu, aby při volání rozhraní API fungovala jako přihlášený uživatel. V závislosti na rozhraní API nemusí uživatel být schopný získat souhlas s rozhraním API přímo a místo toho vyžaduje, [aby správce poskytoval souhlas správce](../develop/howto-convert-app-to-be-multi-tenant.md).
+* **Oprávnění aplikací** – Používají je aplikace spuštěné bez přihlášeného uživatele, například aplikace spuštěné jako služby na pozadí nebo procesy démon. Oprávnění aplikací můžou být odsouhlasená jenom [správcům](../develop/v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) , protože jsou obvykle výkonné a umožňují přístup k datům přes hranice uživatele nebo data, která by jinak byla omezená na správce. Uživatelé, kteří jsou definováni jako vlastníci aplikace prostředků (tj. rozhraní API, které publikují oprávnění), také mohou udělovat oprávnění aplikace pro rozhraní API, které vlastní.
 
 Efektivní oprávnění jsou oprávnění, která bude mít vaše aplikace při posílání požadavků do rozhraní API. 
 
@@ -75,12 +75,12 @@ Aplikace ve službě Azure AD získávají přístup k potřebným prostředkům
 * **Statický souhlas uživatele** – Uděluje se automaticky v rámci [autorizačního toku OAuth 2.0](v1-protocols-oauth-code.md#request-an-authorization-code) při zadávání prostředků, se kterými chce vaše aplikace pracovat. Ve scénáři využívajícím statický souhlas uživatele musí vaše aplikace již mít zadaná všechna potřebná oprávnění v konfiguraci aplikace na webu Azure Portal. Pokud uživatel (případně správce) neudělil souhlas pro tuto aplikaci, Azure AD v tuto chvíli zobrazí uživateli výzvu k poskytnutí souhlasu. 
 
     Další informace o registraci aplikace Azure AD, která vyžaduje přístup k statické sadě rozhraní API.
-* **Dynamický souhlas uživatele** – Jedná se o funkci modelu aplikace Azure AD v2. V tomto scénáři vaše aplikace vyžaduje sadu potřebných oprávnění v [autorizačním toku OAuth 2.0 pro aplikace v2](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent). Pokud uživatel ještě neudělil souhlas, v tuto chvíli se zobrazí výzva k vyjádření souhlasu. [Další informace o dynamickém souhlasu](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent).
+* **Dynamický souhlas uživatele** – Jedná se o funkci modelu aplikace Azure AD v2. V tomto scénáři vaše aplikace vyžaduje sadu potřebných oprávnění v [autorizačním toku OAuth 2.0 pro aplikace v2](../develop/v2-permissions-and-consent.md#requesting-individual-user-consent). Pokud uživatel ještě neudělil souhlas, v tuto chvíli se zobrazí výzva k vyjádření souhlasu. [Další informace o dynamickém souhlasu](./azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
 
     > [!IMPORTANT]
     > Dynamický souhlas může být praktický, ale představuje velkou výzvu pro oprávnění vyžadující souhlas správce, protože prostředí pro udělení souhlasu správce v době vyjádření souhlasu nemá informace o těchto oprávněních. Pokud požadujete oprávnění správce nebo pokud vaše aplikace používá dynamický souhlas, musíte zaregistrovat všechna oprávnění v Azure Portal (ne jenom podmnožinu oprávnění, která vyžaduje souhlas správce). To správcům tenanta umožňuje vyjádřit souhlas jménem všech uživatelů.
   
-* **Souhlas správce** – Vyžaduje se v případě, že vaše aplikace potřebuje přístup k určitým vysoce privilegovaným oprávněním. Souhlas správce zajistí, aby správci měli k dispozici několik dalších ovládacích prvků, než autorizují přístup aplikací nebo uživatelů k vysoce privilegovaným datům organizace. [Další informace o udělování souhlasu správce](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+* **Souhlas správce** – Vyžaduje se v případě, že vaše aplikace potřebuje přístup k určitým vysoce privilegovaným oprávněním. Souhlas správce zajistí, aby správci měli k dispozici několik dalších ovládacích prvků, než autorizují přístup aplikací nebo uživatelů k vysoce privilegovaným datům organizace. [Další informace o udělování souhlasu správce](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint).
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
@@ -102,7 +102,7 @@ Aplikace ve službě Azure AD získávají přístup k potřebným prostředkům
   - `Permission`odpovídá akci, kterou uživatel může na těchto datech použít.
   - `Modifier`se používá volitelně k popisu specializací jiného oprávnění.
     
-    Příklad:
+    Například:
   - Mail.Read – Umožňuje uživatelům číst poštu.
   - Mail.ReadWrite – Umožňuje uživatelům číst nebo psát poštu.
   - Mail.ReadWrite.All – Umožňuje správci nebo uživateli přístup k poště v organizaci.

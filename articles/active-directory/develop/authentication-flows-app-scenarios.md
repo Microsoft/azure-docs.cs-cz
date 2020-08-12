@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: d6cb8cf4b97ed3882d41a4eb179f11bf05f42118
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99d16407d1cfadcb7d3a79968fae4436e7c631e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82593161"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115641"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Toky ověřování a scénáře aplikací
 
@@ -154,9 +154,9 @@ Některé scénáře, například ty, které zahrnují podmíněný přístup t�
 Další informace najdete v tématu [mobilní aplikace, která volá webová rozhraní API](scenario-mobile-overview.md).
 
 > [!NOTE]
-> Mobilní aplikace, která používá MSAL. iOS, MSAL. Pro Android nebo MSAL.NET na Xamarin můžou být na ni aplikovány zásady ochrany aplikací. Zásady mohou například zabránit uživateli v kopírování chráněného textu. Mobilní aplikace je spravovaná pomocí Intune a jako spravovaná aplikace ji rozpozná Intune. Další informace najdete v tématu [Microsoft Intune App SDK Overview](https://docs.microsoft.com/intune/app-sdk).
+> Mobilní aplikace, která používá MSAL. iOS, MSAL. Pro Android nebo MSAL.NET na Xamarin můžou být na ni aplikovány zásady ochrany aplikací. Zásady mohou například zabránit uživateli v kopírování chráněného textu. Mobilní aplikace je spravovaná pomocí Intune a jako spravovaná aplikace ji rozpozná Intune. Další informace najdete v tématu [Microsoft Intune App SDK Overview](/intune/app-sdk).
 >
-> [Intune App SDK](https://docs.microsoft.com/intune/app-sdk-get-started) je oddělená od knihoven MSAL a komunikuje s Azure AD sám o sobě.
+> [Intune App SDK](/intune/app-sdk-get-started) je oddělená od knihoven MSAL a komunikuje s Azure AD sám o sobě.
 
 ### <a name="protected-web-api"></a>Chráněné webové rozhraní API
 
@@ -198,7 +198,7 @@ Scénáře, které zahrnují získání tokenů, jsou také mapovány na toky ov
   <tr>
    <td><a href="scenario-spa-overview.md"><img alt="Single-Page App" src="media/scenarios/spa-app.svg"></a></td>
    <td><a href="scenario-spa-overview.md">Jednostránková aplikace</a></td>
-   <td><a href="v2-oauth2-implicit-grant-flow.md">Nepřímo</a></td>
+   <td><a href="v2-oauth2-implicit-grant-flow.md">Implicitní</a></td>
    <td>Pracovní nebo školní účty, osobní účty a Azure Active Directory B2C (Azure AD B2C)</td>
  </tr>
 
@@ -297,7 +297,7 @@ Ve sloupci Windows v následující tabulce se pokaždé, když je uvedeno rozhr
 | [Webová aplikace, která přihlašuje uživatele](scenario-web-app-sign-user-overview.md) <br/>[![Webová aplikace, která přihlásí uživatele](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![Jádro ASP.NET](media/sample-v2-code/small_logo_NETcore.png)<br/>Jádro ASP.NET | ![Jádro ASP.NET](media/sample-v2-code/small_logo_NETcore.png)<br/>Jádro ASP.NET | ![Jádro ASP.NET](media/sample-v2-code/small_logo_NETcore.png)<br/>Jádro ASP.NET
 | [Webová aplikace, která volá webová rozhraní API](scenario-web-app-call-api-overview.md) <br/> <br/>[![Webová aplikace, která volá webová rozhraní API](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![Jádro ASP.NET](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png) <br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Baňka + MSAL Python| ![Jádro ASP.NET](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Baňka + MSAL Python| ![Jádro ASP.NET](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/> ![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Baňka + MSAL Python
 | [Desktopová aplikace, které volá webová rozhraní API](scenario-desktop-overview.md) <br/> <br/>[ ![ Aplikace klasické pracovní plochy, která volá webová rozhraní API](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md) ![ Tok kódu zařízení](media/scenarios/device-code-flow-app.svg) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/> ![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python <br/> ![iOS/objektivní C nebo SWIFT](media/sample-v2-code/small_logo_iOS.png) MSAL. objc |
-| [Mobilní aplikace, která volá webová rozhraní API](scenario-mobile-overview.md) <br/> [![Mobilní aplikace, která volá webová rozhraní API](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UPW](media/sample-v2-code/small_logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/small_logo_xamarin.png) MSAL.NET | | | ![iOS/objektivní C nebo SWIFT](media/sample-v2-code/small_logo_iOS.png) MSAL. objc | ![Telefon](media/sample-v2-code/small_logo_Android.png) MSAL. Svém
+| [Mobilní aplikace, která volá webová rozhraní API](scenario-mobile-overview.md) <br/> [![Mobilní aplikace, která volá webová rozhraní API](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UPW](media/sample-v2-code/small_logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/small_logo_xamarin.png) MSAL.NET | | | ![iOS/objektivní C nebo SWIFT](media/sample-v2-code/small_logo_iOS.png) MSAL. objc | ![Android](media/sample-v2-code/small_logo_Android.png) MSAL. Svém
 | [Aplikace démona](scenario-daemon-overview.md) <br/> [![Aplikace démona](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png) MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 | [Webové rozhraní API, které volá webová rozhraní API](scenario-web-api-call-api-overview.md) <br/><br/> [![Webové rozhraní API, které volá webová rozhraní API](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![Jádro ASP.NET](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL v Javě](media/sample-v2-code/small_logo_java.png)<br/>MSAL v Javě<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 
@@ -305,5 +305,5 @@ Další informace najdete v tématu [knihovny podporované Microsoftem podle ope
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [základech ověřování](authentication-scenarios.md) a [přístupových tokenech na platformě Microsoft Identity](access-tokens.md).
+* Přečtěte si další informace o [základech ověřování](./authentication-vs-authorization.md) a [přístupových tokenech na platformě Microsoft Identity](access-tokens.md).
 * Přečtěte si další informace o [zabezpečení přístupu k aplikacím IoT](/azure/architecture/example-scenario/iot-aad/iot-aad).

@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 28ace84f9a80b71209d7963d02b66317292b151b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1a7407c947c1c5bae1eed00acb0f216722f3d09
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882535"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121030"
 ---
 # <a name="prepare-mobile-apps-for-production"></a>Příprava mobilních aplikací na produkci
 
@@ -36,7 +36,7 @@ Pro každý typ knihovny Microsoft Authentication Library (MSAL) můžete najít
 
 ## <a name="mitigate-and-investigate-issues"></a>Zmírnění a zkoumání problémů
 
-Pro lepší diagnostiku problémů ve vaší aplikaci Shromážděte data. Informace o typech dat, která můžete shromažďovat, najdete v tématu [protokolování v aplikacích MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-logging).
+Pro lepší diagnostiku problémů ve vaší aplikaci Shromážděte data. Informace o typech dat, která můžete shromažďovat, najdete v tématu [protokolování v aplikacích MSAL](./msal-logging.md).
 
 Zde jsou některé návrhy pro shromažďování dat:
 

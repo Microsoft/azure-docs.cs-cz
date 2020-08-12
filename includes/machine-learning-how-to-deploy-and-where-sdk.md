@@ -6,12 +6,12 @@ ms.subservice: core
 ms.topic: include
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 624824f5b6b8f7154ccd7b50da49f3f4bb179bb9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 97f0412141f15ad0a72c02b92cfcf089b61db0cf
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542764"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120336"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -100,12 +100,11 @@ Další informace naleznete v dokumentaci k [třídě modelu](https://docs.micro
 
 Další informace o práci s modely poučenými mimo Azure Machine Learning najdete v tématu [Jak nasadit existující model](../articles/machine-learning/how-to-deploy-existing-model.md).
 
-
 ## <a name="define-an-entry-script"></a>Definování skriptu pro zadávání
 
 [!INCLUDE [write entry script](machine-learning-entry-script.md)]
 
-## <a name="define-an-inference-configuration"></a>Definovat odvozenou konfiguraci
+## <a name="define-an-inferenceconfig"></a>Definování InferenceConfig
 
 Konfigurace odvození popisuje, jak nastavit webovou službu, která obsahuje váš model. Používá se později při nasazení modelu.
 
@@ -162,12 +161,9 @@ Další informace o konfiguraci odvození naleznete v dokumentaci třídy [Infer
 
 ## <a name="choose-a-compute-target"></a>Zvolit cíl výpočetní technologie
 
-
 [!INCLUDE [aml-compute-target-deploy](aml-compute-target-deploy.md)]
 
-
-
-## <a name="define-a-deployment-configuration"></a>Definování konfigurace nasazení
+## <a name="define-a-deploymentconfiguration"></a>Definovat DeploymentConfiguration
 
 Před nasazením modelu je nutné definovat konfiguraci nasazení. *Konfigurace nasazení je specifická pro výpočetní cíl, který bude hostitelem webové služby.* Pokud například nasadíte model místně, je nutné zadat port, kam služba přijímá požadavky. Konfigurace nasazení není součástí vašeho skriptu pro vložení. Slouží k definování charakteristik výpočetního cíle, který bude hostovat model a vstupní skript.
 
@@ -187,7 +183,6 @@ Třídy pro místní, Azure Container Instances a webové služby AKS lze import
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-
 ## <a name="deploy-your-model"></a>Nasazení modelu
 
 Teď jste připraveni nasadit svůj model. Následující příklad ukazuje místní nasazení. Syntaxe se bude lišit v závislosti na cílovém výpočetním cíli, který jste zvolili v předchozím kroku.
@@ -203,11 +198,9 @@ print(service.state)
 
 Další informace najdete v dokumentaci pro [LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py), [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)a [WebService](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py).
 
-
 ## <a name="delete-resources"></a>Odstranění prostředků
 
 Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()` .
 Pokud chcete odstranit registrovaný model, použijte `model.delete()` .
 
 Další informace najdete v dokumentaci pro [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) a [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
-

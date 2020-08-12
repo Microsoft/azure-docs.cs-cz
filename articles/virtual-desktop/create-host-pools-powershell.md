@@ -3,15 +3,15 @@ title: Vytvoření PowerShellového fondu virtuálních počítačů s Windows �
 description: Postup vytvoření fondu hostitelů na virtuálním počítači s Windows pomocí rutin prostředí PowerShell.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a3e4b326b5a78f4b14bdd87e842d8ca485f56831
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002588"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121149"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Vytvoření fondu hostitelů virtuálních počítačů s Windows pomocí PowerShellu
 
@@ -116,6 +116,32 @@ Pokud chcete zaregistrovat agenty virtuálních počítačů s Windows, udělejt
 
 >[!IMPORTANT]
 >Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na svých virtuálních počítačích neotevírat port 3389 pro příchozí spojení. Virtuální počítač s Windows nevyžaduje pro přístup k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389. Pokud musíte pro účely řešení potíží otevřít port 3389, doporučujeme použít [přístup k virtuálnímu počítači za běhu](../security-center/security-center-just-in-time.md). Doporučujeme také nepřiřazovat virtuální počítače k veřejné IP adrese.
+
+## <a name="update-the-agent"></a>Aktualizace agenta
+
+Agenta budete muset aktualizovat, pokud jste v některé z následujících situací:
+
+- Chcete migrovat dříve registrovanou relaci do nového fondu hostitelů.
+- Po aktualizaci se hostitel relace nezobrazí ve fondu hostitelů.
+
+Aktualizace agenta:
+
+1. Přihlaste se k virtuálnímu počítači jako správce.
+2. Vyhledejte **služby**a pak zastavte procesy **Rdagent** a **Remote Desktop agent Loader** .
+3. Dále vyhledejte agenta a MSIs zaváděcího programu. Budou umístěny buď ve složce **C:\DeployAgent** , nebo podle umístění, do kterého jste ho uložili při instalaci.
+4. Vyhledejte následující soubory a odinstalujte je:
+     
+     - Microsoft. RDInfra. RDAgent. Installer-x64-verx. x. x
+     - Microsoft. RDInfra. RDAgentBootLoader. Installer-x64
+
+   Pokud chcete tyto soubory odinstalovat, klikněte pravým tlačítkem na každý název souboru a vyberte **odinstalovat**.
+5. Volitelně můžete také odebrat následující nastavení registru:
+     
+     - Počítač \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDInfraAgent
+     - Počítač \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDAgentBootLoader
+
+6. Po odinstalaci těchto položek by se měla odebrat všechna přidružení s původním fondem hostitelů. Pokud chcete tohoto hostitele znovu zaregistrovat ke službě, postupujte podle pokynů v části [registrace virtuálních počítačů do fondu hostitelů virtuálních počítačů s Windows](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool).
+
 
 ## <a name="next-steps"></a>Další kroky
 

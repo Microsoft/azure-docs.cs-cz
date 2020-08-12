@@ -1,14 +1,14 @@
 ---
 title: Sledování změn delegování ve vašem tenantovi pro správu
 description: Přečtěte si, jak monitorovat aktivitu delegování z klientů zákazníka do vašeho spravovaného tenanta.
-ms.date: 07/10/2020
+ms.date: 08/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 63b19f56538f060a158fd665a9bef3bf43a9d087
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9842ad91c059fe4da70221d8c7c5570084bcc6b9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252279"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119007"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Sledování změn delegování ve vašem tenantovi pro správu
 
@@ -23,7 +23,7 @@ Toto téma vysvětluje oprávnění potřebná ke sledování aktivity delegová
 
 ## <a name="enable-access-to-tenant-level-data"></a>Povolit přístup k datům na úrovni tenanta
 
-Aby bylo možné získat přístup k datům protokolu aktivit na úrovni tenanta, musí být k účtu přiřazená integrovaná role [čtecího modulu monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader) v kořenovém oboru (/). Toto přiřazení musí provést uživatel, který má roli globálního správce s dalšími oprávněními vyšší úrovně přístupu.
+Aby bylo možné získat přístup k datům protokolu aktivit na úrovni tenanta, musí být k účtu přiřazená integrovaná role Azure [monitoring Reader](../../role-based-access-control/built-in-roles.md#monitoring-reader) v kořenovém oboru (/). Toto přiřazení musí provést uživatel, který má roli globálního správce s dalšími oprávněními vyšší úrovně přístupu.
 
 ### <a name="elevate-access-for-a-global-administrator-account"></a>Zvýšení přístupu pro účet globálního správce
 
@@ -31,16 +31,18 @@ Pokud chcete přiřadit roli v kořenovém oboru (/), budete muset mít roli glo
 
 Podrobné pokyny k přidání a odebrání zvýšení oprávnění najdete v tématu [zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu](../../role-based-access-control/elevate-access-global-admin.md).
 
-Po zvýšení úrovně přístupu bude mít váš účet roli správce přístupu uživatele v Azure v kořenovém oboru. Toto přiřazení role vám umožní zobrazit všechny prostředky a přiřadit přístup v rámci předplatného nebo skupiny pro správu v adresáři a taky dělat přiřazení rolí v kořenovém oboru. 
+Po zvýšení úrovně přístupu bude mít váš účet roli správce přístupu uživatele v Azure v kořenovém oboru. Toto přiřazení role vám umožní zobrazit všechny prostředky a přiřadit přístup v rámci předplatného nebo skupiny pro správu v adresáři a taky dělat přiřazení rolí v kořenovém oboru.
 
 ### <a name="create-a-new-service-principal-account-to-access-tenant-level-data"></a>Vytvořit nový účet instančního objektu pro přístup k datům na úrovni tenanta
 
-Po zvýšení úrovně přístupu můžete účtu přiřadit příslušná oprávnění, aby se mohl dotazovat na data protokolu aktivit na úrovni tenanta. Tento účet bude potřebovat přiřazenou předdefinovanou roli [Čtenář monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader) v kořenovém oboru vašeho tenanta pro správu.
+Po zvýšení úrovně přístupu můžete účtu přiřadit příslušná oprávnění, aby se mohl dotazovat na data protokolu aktivit na úrovni tenanta. Tento účet bude muset mít integrovanou roli Azure [monitoring Reader](../../role-based-access-control/built-in-roles.md#monitoring-reader) , která je přiřazená v kořenovém oboru vašeho tenanta správy.
 
 > [!IMPORTANT]
 > Udělení přiřazení role v kořenovém oboru znamená, že stejná oprávnění budou platit pro všechny prostředky v tenantovi.
 
-Vzhledem k tomu, že se jedná o širokou úroveň přístupu, doporučujeme přiřadit tuto roli k hlavnímu účtu služby a nikoli jednotlivým uživatelům nebo skupinám. Kromě toho doporučujeme následující osvědčené postupy:
+Vzhledem k tomu, že se jedná o širokou úroveň přístupu, doporučujeme přiřadit tuto roli k hlavnímu účtu služby a nikoli jednotlivým uživatelům nebo skupinám.
+
+ Kromě toho doporučujeme následující osvědčené postupy:
 
 - [Vytvoří nový účet instančního objektu](../../active-directory/develop/howto-create-service-principal-portal.md) , který se bude používat jenom pro tuto funkci, a ne přiřazení této role k existujícímu instančnímu objektu, který se používá pro jiné služby Automation.
 - Ujistěte se, že tento instanční objekt nemá přístup k žádným delegovaným zákaznickým prostředkům.
@@ -65,13 +67,16 @@ New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName 
 az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role "Monitoring Reader" --scope "/"
 ```
 
+> [!NOTE]
+> Můžete také přiřadit integrovanou roli Azure Monitoring Reader v kořenovém oboru pro jednotlivé uživatele nebo skupiny uživatelů. To může být užitečné, pokud chcete, aby uživatel mohl [Zobrazit informace o delegování přímo v Azure Portal](#view-delegation-changes-in-the-azure-portal). Pokud to uděláte, uvědomte si, že se jedná o širokou úroveň přístupu, která by se měla omezit na nejmenší možný počet uživatelů.
+
 ### <a name="remove-elevated-access-for-the-global-administrator-account"></a>Odebrání zvýšeného přístupu pro účet globálního správce
 
 Až vytvoříte účet instančního objektu a přiřadíte roli Čtenář monitorování v kořenovém oboru, nezapomeňte [Odebrat oprávnění vyšší](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access) úrovně přístupu pro účet globálního správce, protože tato úroveň přístupu už nebude potřeba.
 
 ## <a name="query-the-activity-log"></a>Dotazování protokolu aktivit
 
-Po vytvoření nového účtu instančního objektu s přístupem ke čtečce monitorování ke kořenovému oboru spravovaného tenanta ho můžete použít k dotazování a hlášení aktivity delegování ve vašem tenantovi. 
+Po vytvoření nového účtu instančního objektu s přístupem ke čtečce monitorování ke kořenovému oboru spravovaného tenanta ho můžete použít k dotazování a hlášení aktivity delegování ve vašem tenantovi.
 
 [Tento skript Azure PowerShell](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) lze použít k dotazování na poslední 1 den aktivity a sestavy na všech přidaných nebo odebraných delegováních (nebo pokusůch, které nebyly úspěšné). Dotazuje data [protokolu aktivit tenanta](/rest/api/monitor/TenantActivityLogs/List) a pak vytvoří následující hodnoty, které se budou hlásit na přidaných nebo odebraných delegováních:
 
@@ -85,7 +90,7 @@ Při dotazování na tato data Pamatujte:
 
 - Pokud je v jednom nasazení delegovaných víc skupin prostředků, pro každou skupinu prostředků se vrátí samostatné položky.
 - Změny provedené v předchozím delegování (například aktualizace struktury oprávnění) budou protokolovány jako přidané delegování.
-- Jak je uvedeno výše, účet musí mít integrovanou roli Čtenář monitorování v kořenovém oboru (/), aby bylo možné získat přístup k těmto datům na úrovni tenanta.
+- Jak je uvedeno výše, účet musí mít integrovanou roli Azure Monitoring Reader v kořenovém oboru (/), aby bylo možné získat přístup k těmto datům na úrovni tenanta.
 - Tato data můžete použít ve svých vlastních pracovních postupech a vytváření sestav. Můžete například použít [rozhraní API kolekce dat http (Public Preview)](../../azure-monitor/platform/data-collector-api.md) k protokolování dat do Azure monitor z klienta REST API a pak pomocí [skupin akcí](../../azure-monitor/platform/action-groups.md) vytvořit oznámení nebo výstrahy.
 
 ```azurepowershell-interactive
@@ -159,6 +164,15 @@ else {
     Write-Output "No new delegation events for tenant: $($currentContext.Tenant.TenantId)"
 }
 ```
+
+## <a name="view-delegation-changes-in-the-azure-portal"></a>Zobrazit změny delegování v Azure Portal
+
+Uživatelé, kterým byla přiřazena integrovaná role Azure Monitoring Reader v kořenovém oboru, mohou zobrazit změny delegování přímo v Azure Portal.
+
+1. Přejděte na stránku **moji zákazníci** a potom v navigační nabídce vlevo vyberte **Protokol aktivit** .
+1. Ujistěte se, že je ve filtru v horní části obrazovky vybraná **aktivita adresáře** .
+
+Zobrazí se seznam změn delegování. Můžete vybrat **Upravit sloupce** a zobrazit nebo skrýt **stav**, **kategorii události**, **čas**, **časové razítko**, **předplatné**, **událost iniciované**, **skupinu prostředků**, **typ prostředku**a hodnoty **prostředků** .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 01ea22af472877abe34236ec82a7750eccfcdfb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80884269"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115760"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do Azure AD
 
@@ -74,7 +74,7 @@ Podobně jako aplikační objekty lze instanční objekty vytvořit také prost�
   * Když se přihlásíte k odběru sady Office 365 nebo zahájíte zkušební období, v adresáři představujících různé služby, které se používají k doručování všech funkcí přidružených k sadě Office 365, se vytvoří jeden nebo více instančních objektů.
   * Některé služby Office 365, jako je SharePoint, vytvářejí instanční objekty průběžně a umožňují zabezpečenou komunikaci mezi součástmi včetně pracovních postupů.
 * Když správce přidá aplikaci z Galerie aplikací (tím se vytvoří také základní objekt aplikace)
-* Přidání aplikace pro použití [proxy aplikací služby AD Azure](/azure/active-directory/manage-apps/application-proxy)
+* Přidání aplikace pro použití [proxy aplikací služby AD Azure](../manage-apps/application-proxy.md)
 * Připojení aplikace pro jednotné přihlašování pomocí protokolu SAML nebo jednotného přihlašování k heslu (SSO)
 * Prostřednictvím kódu programu Microsoft Graph rozhraní API nebo PowerShell
 
@@ -104,8 +104,8 @@ Aplikace, které přidáte sami (v diagramu jsou reprezentovány jako **aplikace
   * Pravidla transformace deklarací identity
   * Mapování atributů (zřizování uživatelů)
 * Podrobnější informace o instančním objektu a objektech aplikace najdete v referenční dokumentaci k rozhraní Microsoft Graph API:
-  * [Aplikace](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
-  * [Instanční objekt](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
+  * [Aplikace](/graph/api/resources/application?view=graph-rest-1.0)
+  * [Instanční objekt](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Proč se aplikace integrují s Azure AD?
 
