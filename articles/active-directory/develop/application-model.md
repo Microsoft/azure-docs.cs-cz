@@ -13,12 +13,12 @@ ms.date: 04/28/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 774822eae5ab327f57da3eca4499ca14d3e0c7a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aca96a9c3bc4e8f1061f677e316565b10014ac9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82584308"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117477"
 ---
 # <a name="application-model"></a>Aplikační model
 
@@ -86,4 +86,4 @@ Další informace o modelu aplikace:
 
 * Podívejte se [, jak a proč se aplikace přidávají do služby Azure AD](active-directory-how-applications-are-added.md) , kde najdete další informace o objektech aplikace a instančních objektech v platformě Microsoft identity.
 * Další informace o aplikacích pro jediné klienty a víceklientské aplikace najdete v tématu tenant [v Azure Active Directory](single-and-multi-tenant-apps.md) .
-* Další informace o tom, jak Azure AD poskytuje Azure Active Directory B2C, najdete v [dokumentaci Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c) , aby se organizace mohli přihlašovat uživatelům, obvykle zákazníkům, pomocí sociálních identit, jako je například účet Google.
+* Další informace o tom, jak Azure AD poskytuje Azure Active Directory B2C, najdete v [dokumentaci Azure Active Directory B2C](../../active-directory-b2c/index.yml) , aby se organizace mohli přihlašovat uživatelům, obvykle zákazníkům, pomocí sociálních identit, jako je například účet Google.

@@ -11,17 +11,17 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 093214241757bdc3973d88d5a0e6f3157c6178c7
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 84f3bbc01d7161dd6d7002102cc006dfae3ce3e4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251127"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118157"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Vytvoření agenta elastických úloh pomocí PowerShellu
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Elastické úlohy](job-automation-overview.md#elastic-database-jobs-preview) umožňují paralelní spouštění jednoho nebo více skriptů Transact-SQL (T-SQL) napříč mnoha databázemi.
+[Elastické úlohy (Preview)](job-automation-overview.md#elastic-database-jobs-preview) umožňují paralelní spuštění jednoho nebo více skriptů jazyka Transact-SQL (T-SQL) paralelně napříč mnoha databázemi.
 
 V tomto kurzu se seznámíte s kroky potřebnými ke spuštění dotazu napříč více databázemi:
 
@@ -280,9 +280,9 @@ V následující tabulce jsou uvedené možné stavy provádění úloh:
 |**Vytvořeno** | Provádění úlohy bylo právě vytvořeno a ještě neprobíhá.|
 |**InProgress** | Právě probíhá provádění úlohy.|
 |**WaitingForRetry** | Provádění úlohy nedokázalo dokončit svoji akci a čeká na opakování.|
-|**Úspěch** | Provádění úlohy bylo úspěšně dokončeno.|
+|**Úspěšný** | Provádění úlohy bylo úspěšně dokončeno.|
 |**SucceededWithSkipped** | Provádění úlohy se úspěšně dokončilo, ale některé z jejích podřízených objektů se přeskočily.|
-|**Failed** | Provádění úlohy selhalo a vyčerpalo své opakované pokusy.|
+|**Neúspěšný** | Provádění úlohy selhalo a vyčerpalo své opakované pokusy.|
 |**Vypršel časový limit** | Vypršel časový limit pro provedení úlohy.|
 |**Zrušeno** | Provádění úlohy bylo zrušeno.|
 |**Přeskočeno** | Provádění úlohy bylo přeskočeno, protože na stejném cíli již běželo jiné provedení stejného kroku úlohy.|

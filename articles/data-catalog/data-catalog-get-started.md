@@ -1,17 +1,17 @@
 ---
-title: Vytvoření Azure Data Catalogu
+title: 'Rychlý Start: vytvoření Azure Data Catalog'
 description: V tomto rychlém startu se dozvíte, jak vytvořit Azure Data Catalog pomocí Azure Portal.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e37bd22e0bd0f750ef7b4ae9cc8465ed5292883e
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: e08527ae530b7b5ed5e5293a3af9e2d8dd3f795a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860983"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118786"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Rychlý Start: vytvoření Azure Data Catalog
 
@@ -28,7 +28,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Abyste mohli začít, musíte mít:
 
-* [Microsoft Azure](https://azure.microsoft.com/) předplatné.
+* Předplatné [Microsoft Azure](https://azure.microsoft.com/)
 * Musíte mít vlastního [klienta Azure Active Directory](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
 Pokud chcete nastavit Data Catalog, musíte být vlastníkem nebo spoluvlastníkem předplatného Azure.
@@ -41,7 +41,7 @@ Můžete zřídit pouze jeden katalog dat na organizaci (doména Azure Active Di
 
     ![Azure Data Catalog tlačítko vytvořit](media/data-catalog-get-started/data-catalog-create.png)
 
-2. Zadejte **název** katalogu dat, **předplatné** , které chcete použít, **umístění** katalogu a **cenovou úroveň**. Pak vyberte **vytvořit**.
+2. Zadejte **název** katalogu dat, **předplatné** , které chcete použít, **umístění** katalogu a **cenovou úroveň**. Potom vyberte **Vytvořit**.
 
 3. Přejděte na [domovskou stránku služby Azure Data Catalog](http://azuredatacatalog.com) a klikněte na tlačítko **Publikovat data**.
 

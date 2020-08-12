@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: yushwang
-ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5d66e79e79edd98f3192d0187d6f0454c3aeffa
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708922"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121472"
 ---
 # <a name="vpn-gateway-faq"></a>Nejčastější dotazy k branám VPN
 
@@ -126,6 +126,10 @@ Ověřování je omezeno na použití předsdílených klíčů (PSK).
 ### <a name="can-i-configure-force-tunneling"></a>Je možné konfigurovat vynucené tunelování?
 
 Ano. Informace najdete v tématu [Konfigurace vynuceného tunelování](vpn-gateway-about-forced-tunneling.md).
+
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>Můžu na mých připojeních k síti VPN použít překlad adres (NAT-T)?
+
+Ano, podporuje se procházení NAT (NAT-T). Azure VPN Gateway nebude provádět žádné funkce podobné překladu adres (NAT) na vnitřních paketech a z tunelů IPsec.  V této konfiguraci zajistěte, aby místní zařízení spouštěla tunel IPSec.
 
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>Je možné nastavit v Azure vlastní server VPN a používat ho pro připojování k místní síti?
 

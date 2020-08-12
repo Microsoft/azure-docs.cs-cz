@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c27938227a13934de11dd6e88d58138c46c3f58e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60c61ff4753413d2241820400dcbc899e925eecc
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204622"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120945"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>Zpracování výjimek a chyb MSAL
 
@@ -76,7 +76,7 @@ MSAL zpřístupňuje `Classification` pole, které si můžete přečíst a zaji
 | UserPasswordExpired | Vypršela platnost hesla uživatele. | Zavolejte AcquireTokenInteractively (), aby uživatel mohl resetovat svoje heslo. |
 | PromptNeverFailed| Interaktivní ověřování bylo voláno s parametrem Prompt = nikdy, což MSAL vynutí spoléhání na soubory cookie prohlížeče, a ne pro zobrazení prohlížeče. Tato operace se nezdařila. | Volat AcquireTokenInteractively () bez výzvy. None |
 | AcquireTokenSilentFailed | Sada MSAL SDK nemá dostatek informací pro načtení tokenu z mezipaměti. To může být způsobeno tím, že v mezipaměti nejsou žádné tokeny, nebo nebyl nalezen žádný účet. Chybová zpráva obsahuje další podrobnosti.  | Zavolejte AcquireTokenInteractively (). |
-| Žádná    | Nejsou k dispozici žádné další podrobnosti. Podmínku může vyřešit interakce uživatele během toku interaktivního ověřování. | Zavolejte AcquireTokenInteractively (). |
+| Žádné    | Nejsou k dispozici žádné další podrobnosti. Podmínku může vyřešit interakce uživatele během toku interaktivního ověřování. | Zavolejte AcquireTokenInteractively (). |
 
 ## <a name="net-code-example"></a>Příklad kódu .NET
 
@@ -236,7 +236,7 @@ V MSAL pro Python je většina chyb přenášena jako návratová hodnota z vol�
 * Úspěšná odpověď obsahuje `"access_token"` klíč. Formát odpovědi je definován protokolem OAuth2. Další informace najdete v tématu [5,1 úspěšná odezva](https://tools.ietf.org/html/rfc6749#section-5.1) .
 * Chybná odpověď obsahuje `"error"` a obvykle `"error_description"` . Formát odpovědi je definován protokolem OAuth2. Další informace najdete v tématu [5,2 chybová odezva](https://tools.ietf.org/html/rfc6749#section-5.2) .
 
-Když se vrátí chyba, `"error_description"` klíč obsahuje zprávu, která je čitelná pro čtení, která zase obvykle obsahuje kód chyby platformy Microsoft identity. Podrobnosti o různých kódech chyb najdete v tématu [kódy chyb ověřování a autorizace](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes).
+Když se vrátí chyba, `"error_description"` klíč obsahuje zprávu, která je čitelná pro čtení, která zase obvykle obsahuje kód chyby platformy Microsoft identity. Podrobnosti o různých kódech chyb najdete v tématu [kódy chyb ověřování a autorizace](./reference-aadsts-error-codes.md).
 
 V MSAL pro Python jsou výjimky zřídka, protože většina chyb je zpracována vrácením hodnoty chyby. `ValueError`Výjimka je vyvolána pouze v případě, že dojde k potížím s postupem, jak se pokoušíte použít knihovnu – například pokud jsou parametry rozhraní API poškozeny.
 

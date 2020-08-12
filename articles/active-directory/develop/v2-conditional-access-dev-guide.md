@@ -14,18 +14,18 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 6b31a03a6367c9c6f2025c1544b59c95b3f69175
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1bfefb3b72c151e7a61068b3c0ad9f3e2bc4a6f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83771073"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120622"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Pokyny pro vývojáře týkající se podmíněného přístupu ke službě Azure Active Directory
 
 Funkce podmíněného přístupu v Azure Active Directory (Azure AD) nabízí jeden z několika způsobů, jak můžete použít k zabezpečení aplikace a ochraně služby. Podmíněný přístup umožňuje vývojářům a podnikovým zákazníkům chránit služby mnoha různými způsoby, včetně těchto:
 
-* [Ověřování pomocí služby Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Vícefaktorové ověřování](../authentication/concept-mfa-howitworks.md)
 * Povoluje přístup ke konkrétním službám jenom zařízením zaregistrovaným v Intune.
 * Omezení umístění uživatelů a rozsahů IP adres
 
@@ -33,7 +33,7 @@ Další informace o úplných funkcích podmíněného přístupu najdete v čl�
 
 Pro vývojáře, kteří sestavují aplikace pro Azure AD, Tento článek ukazuje, jak můžete použít podmíněný přístup, a Vy se dozvíte o dopadu na přístup k prostředkům, u kterých nemáte kontrolu nad tím, že je možné použít zásady podmíněného přístupu. Tento článek také zkoumá důsledky podmíněného přístupu v toku, Web Apps, přístup k Microsoft Graph a volání rozhraní API.
 
-Předpokládá se znalost [jednotlivých](quickstart-register-app.md) a [víceklientské](howto-convert-app-to-be-multi-tenant.md) aplikací a [běžných vzorů ověřování](authentication-scenarios.md) .
+Předpokládá se znalost [jednotlivých](quickstart-register-app.md) a [víceklientské](howto-convert-app-to-be-multi-tenant.md) aplikací a [běžných vzorů ověřování](./authentication-vs-authorization.md) .
 
 > [!NOTE]
 > Použití této funkce vyžaduje licenci Azure AD Premium P1. Pokud chcete najít správnou licenci pro vaše požadavky, přečtěte si [porovnání obecně dostupných funkcí edic Free, Basic a Premium](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -52,7 +52,7 @@ Konkrétně následující scénáře vyžadují kód pro zpracování výzev po
 * Jednostránkové aplikace používající MSAL.js
 * Web Apps volání prostředku
 
-Zásady podmíněného přístupu se dají použít pro aplikaci, ale dají se použít i pro webové rozhraní API, ke kterému přistupuje aplikace. Další informace o tom, jak nakonfigurovat zásady podmíněného přístupu, najdete v tématu [rychlý Start: vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](../conditional-access/app-based-mfa.md).
+Zásady podmíněného přístupu se dají použít pro aplikaci, ale dají se použít i pro webové rozhraní API, ke kterému přistupuje aplikace. Další informace o tom, jak nakonfigurovat zásady podmíněného přístupu, najdete v tématu [rychlý Start: vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](../authentication/tutorial-enable-azure-mfa.md).
 
 V závislosti na scénáři může podnikový zákazník kdykoli použít a odebrat zásady podmíněného přístupu. Aby vaše aplikace pokračovala v provozu při použití nové zásady, je nutné implementovat zpracování výzvy. Následující příklady ilustrují zpracování výzvy.
 
@@ -93,7 +93,7 @@ Vývojáři můžou tuto výzvu přijmout a připojit ji k nové žádosti do Az
 
 ### <a name="prerequisites"></a>Požadavky
 
-Podmíněný přístup Azure AD je funkce, která je součástí [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Zákazníci s [licencemi Microsoft 365 Business](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) mají taky přístup k funkcím podmíněného přístupu.
+Podmíněný přístup Azure AD je funkce, která je součástí [Azure AD Premium](../fundamentals/active-directory-whatis.md). Zákazníci s [licencemi Microsoft 365 Business](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) mají taky přístup k funkcím podmíněného přístupu.
 
 ### <a name="considerations-for-specific-scenarios"></a>Předpoklady pro konkrétní scénáře
 
@@ -180,7 +180,7 @@ Pokud si chcete vyzkoušet tento scénář, přečtěte si náš [kód pro ukáz
 
 ## <a name="see-also"></a>Viz také
 
-* Další informace o možnostech najdete [v tématu podmíněný přístup v Azure Active Directory](/azure/active-directory/conditional-access/overview).
+* Další informace o možnostech najdete [v tématu podmíněný přístup v Azure Active Directory](../conditional-access/overview.md).
 * Další ukázky kódu Azure AD najdete v tématu [ukázky](sample-v2-code.md).
 * Další informace o sadě MSAL SDK a o přístupu k referenční dokumentaci najdete v tématu [Přehled knihovny Microsoft Authentication Library](msal-overview.md).
 * Další informace o scénářích s více klienty najdete v tématu [Postup přihlášení uživatelů pomocí vzoru s více klienty](howto-convert-app-to-be-multi-tenant.md).

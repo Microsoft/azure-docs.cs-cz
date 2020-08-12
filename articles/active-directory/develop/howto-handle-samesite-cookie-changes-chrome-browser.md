@@ -13,12 +13,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: df0caf3ae029353742b4b1060ca5241ac9cbb5bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5742ddf9553c3ac9187dbef93fc7927564cbc095
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477800"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116967"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Zpracování změn souborů cookie SameSite v prohlížeči Chrome
 
@@ -59,7 +59,7 @@ V následující tabulce jsou uvedeny žádosti o přijetí změn, které pracov
 
 Podrobnosti o tom, jak zpracovávat soubory cookie SameSite v ASP.NET a ASP.NET Core, najdete v tématu také:
 
-- [Práce s SameSite soubory cookie v ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/samesite) .
+- [Práce s SameSite soubory cookie v ASP.NET Core](/aspnet/core/security/samesite) .
 - [ASP.NET blog na SameSite problém](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
 
 # <a name="python"></a>[Python](#tab/python)

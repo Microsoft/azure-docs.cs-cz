@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: 51052994a4d00995910a85546cce57867b6143f6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 93a2fd89e21dbf4edee29a27bd18f63f2b835aae
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324773"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121217"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace s pružinou v jazyce Java pomocí konfigurace aplikace Azure
 
@@ -69,7 +69,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
-        <version>1.1.2</version>
+        <version>1.1.5</version>
     </dependency>
     ```
 
@@ -79,7 +79,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
-        <version>1.2.2</version>
+        <version>1.2.7</version>
     </dependency>
     ```
 
@@ -191,4 +191,4 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho v aplikaci Java pružiny. Další informace najdete v tématu [pružina v Azure](https://docs.microsoft.com/java/azure/spring-framework/). Další informace o tom, jak povolit aplikaci v jazyce Java, aby dynamicky aktualizovala nastavení konfigurace, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
-> [Povolit dynamickou konfiguraci](./enable-dynamic-configuration-java-spring-app.md)
+> [Povolení dynamické konfigurace](./enable-dynamic-configuration-java-spring-app.md)

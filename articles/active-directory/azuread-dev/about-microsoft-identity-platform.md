@@ -12,12 +12,12 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv, marsma
 ms.custom: aaddev
-ms.openlocfilehash: 504caffe0505a4e8a66608fcad528130630a5cc8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 23ab8c5092a546a7b66b93900c6c083ac8e84394
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86236298"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117766"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Rozvoj platformy Microsoft Identity Platform
 
@@ -49,7 +49,7 @@ Prostředí Azure Portal **[Registrace aplikací](https://go.microsoft.com/fwlin
 
 Pro integraci s Azure AD B2C (při ověřování sociálních nebo místních identit) budete muset aplikaci zaregistrovat v tenantovi Azure AD B2C. Toto prostředí je také součástí Azure Portal.
 
-Pomocí [rozhraní API pro aplikace](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0) můžete programově nakonfigurovat aplikace integrované s platformou Microsoft identity pro ověřování jakékoli identity Microsoftu.
+Pomocí [rozhraní API pro aplikace](/graph/api/resources/application?view=graph-rest-1.0) můžete programově nakonfigurovat aplikace integrované s platformou Microsoft identity pro ověřování jakékoli identity Microsoftu.
 
 ### <a name="msal-libraries"></a>Knihovny MSAL
 
@@ -57,7 +57,7 @@ Pomocí knihovny MSAL můžete sestavovat aplikace, které ověřují všechny i
 
 Pomocí knihoven MSAL můžete také integrovat aplikaci s Azure AD B2C.
 
-Jsou všeobecně dostupné knihovny na straně serveru pro vytváření webových aplikací a webových rozhraní API: [ASP.NET](https://docs.microsoft.com/aspnet/overview) a [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.2)
+Jsou všeobecně dostupné knihovny na straně serveru pro vytváření webových aplikací a webových rozhraní API: [ASP.NET](/aspnet/overview) a [ASP.NET Core](/aspnet/core/?view=aspnetcore-2.2)
 
 ### <a name="microsoft-identity-platform-endpoint"></a>Koncový bod platformy Microsoft identity
 

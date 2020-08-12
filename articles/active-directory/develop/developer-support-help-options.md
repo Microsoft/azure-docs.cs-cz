@@ -12,12 +12,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af363bb30d6515ce969afe146c780baa4b31cd83
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885527"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117205"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti pomoci a podpory pro vývojáře
 
@@ -30,7 +30,7 @@ Pokud se teprve začínáte integrovat s Azure Active Directory (Azure AD), Micr
 > * Pokud narazíte na problém s jednou z našich knihoven pro ověřování, vyvolejte problém *GitHubu* .
 > * Nakonec, pokud potřebujete mluvit s někým, možná budete chtít otevřít žádost o podporu.
 
-## <a name="search"></a>Search
+## <a name="search"></a>Hledat
 
 Pokud máte dotazy související s vývojem, možná budete moci najít odpověď v dokumentaci, [ukázkách GitHubu](https://github.com/azure-samples)nebo odpovědích na [Stack Overflow](https://www.stackoverflow.com) otázky.
 
@@ -46,7 +46,7 @@ Kde *{vaše hledané výrazy}* odpovídají vašim klíčovým slovům pro hled�
 
 ## <a name="use-the-development-support-tools"></a>Použití nástrojů pro podporu vývoje
 
-| Nástroj  | Description  |
+| Nástroj  | Popis  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | Vložte ID nebo přístupový token k dekódování názvů a hodnot deklarací identity. |
 | [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Nástroj, který umožňuje vytvářet žádosti a zobrazovat odpovědi na rozhraní Microsoft Graph API. |
@@ -62,7 +62,7 @@ Pokud nemůžete najít odpověď na svůj dotaz pomocí hledání, odešlete no
 | Knihovna ADAL | [modulu](https://stackoverflow.com/questions/tagged/adal) |
 | Knihovna MSAL     | [msal](https://stackoverflow.com/questions/tagged/msal) |
 | Middleware OWIN  | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
-| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[Azure-AD-B2B]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
+| [Azure B2B](../external-identities/what-is-b2b.md)  | [[Azure-AD-B2B]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
 | [B2C Azure](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
 | [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Microsoft-Graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
 | Jakákoli další oblast související s ověřováním nebo autorizačními tématy | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |

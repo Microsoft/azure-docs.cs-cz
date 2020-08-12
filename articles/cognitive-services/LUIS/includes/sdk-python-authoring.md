@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: aa55a3550fbb4fcdcd97c26fca425b11ba589fcc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 464fc5a2861287ca1d39fcd8f5062cad1e7d6902
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369414"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88122517"
 ---
 Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro Python:
 
@@ -112,6 +112,10 @@ Metody vytváření entit jsou součástí třídy [ModelOperations](https://doc
 [!code-python[Create LUIS client app](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/application_quickstart.py?name=addEntities)]
 
 ## <a name="add-example-utterance-to-intent"></a>Přidat příklad utterance k záměru
+
+Definování pomocné funkce pro vytváření struktury dat utterance
+
+[!code-python[Create Utterance](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/application_quickstart.py?name=createUtterance)]
 
 Aby bylo možné určit záměr utterance a extrahovat entity, aplikace potřebuje příklady projevy. Příklady musí cílit na konkrétní, jediný záměr a označit všechny vlastní entity. Předem připravené entity není nutné označit.
 

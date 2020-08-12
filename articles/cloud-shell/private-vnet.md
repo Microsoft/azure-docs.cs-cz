@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 5abc10d149cdb2c054f4122cd805ec22b2e37e2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1cb5716e2f02a99e4d39a4041a2e54e87cf43568
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096925"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114655"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Nasazení Cloud Shell do služby Azure Virtual Network
 > [!NOTE]
@@ -103,7 +103,7 @@ Přejděte do přenosu vytvořeného pomocí výše uvedené šablony, v nastave
 > [!NOTE]
 > Tento krok je nutné provést pro každého správce, který bude používat Cloud Shell.
 
-Po nasazení výše uvedeného postupu přejděte na Cloud Shell v Azure Portal nebo na https://shell.azure.com .
+Po nasazení výše uvedeného postupu přejděte na Cloud Shell v Azure Portal nebo na https://shell.azure.com . Jedno z těchto prostředí je nutné použít pokaždé, když se chcete připojit k izolovanému Cloud Shellmu prostředí.
 
 > [!NOTE]
 > Pokud byl v minulosti použit Cloud Shell, musí být stávající clouddrive odpojeny. Pokud chcete tento postup spustit `clouddrive unmount` z aktivní relace Cloud Shell, aktualizujte svou stránku.

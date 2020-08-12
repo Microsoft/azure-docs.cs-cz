@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 1caddf2fba8544bfbb1108865a459f4166af680b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c394a3e84982db31b5727d170c143e9c07636d62
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846067"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121064"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: získání tokenu
 
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>Povinné parametry
 
-`AcquireTokenInteractive`má pouze jeden povinný parametr, ``scopes`` , který obsahuje výčet řetězců definujících obory, pro které je vyžadován token. Pokud je token pro Microsoft Graph, požadované obory najdete v referenčních informacích k rozhraní API každého Microsoft Graph API v části s názvem "oprávnění". Pokud například chcete [Zobrazit seznam kontaktů uživatele](https://docs.microsoft.com/graph/api/user-list-contacts), je nutné použít rozsah "User. Read", "Contacts. Read". Další informace najdete v tématu informace o [Microsoft Graph oprávnění](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+`AcquireTokenInteractive`má pouze jeden povinný parametr, ``scopes`` , který obsahuje výčet řetězců definujících obory, pro které je vyžadován token. Pokud je token pro Microsoft Graph, požadované obory najdete v referenčních informacích k rozhraní API každého Microsoft Graph API v části s názvem "oprávnění". Pokud například chcete [Zobrazit seznam kontaktů uživatele](/graph/api/user-list-contacts), je nutné použít rozsah "User. Read", "Contacts. Read". Další informace najdete v tématu informace o [Microsoft Graph oprávnění](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
 V systému Android je také nutné zadat nadřazenou aktivitu pomocí `.WithParentActivityOrWindow` , jak je znázorněno, aby se token vrátil zpět k této nadřazené aktivitě po interakci. Pokud ho nezadáte, vyvolá se při volání výjimka `.ExecuteAsync()` .
 
@@ -278,7 +278,7 @@ Tým MSAL.NET přepsal testy uživatelského rozhraní pro použití tohoto mech
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>Zajištění skvělých zkušeností s SystemWebViewOptions
 
-Z MSAL.NET 4,1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) můžete zadat:
+Z MSAL.NET 4,1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) můžete zadat:
 
 - Identifikátor URI, který má jít na ( `BrowserRedirectError` ) nebo fragment HTML pro zobrazení ( `HtmlMessageError` ) v případě chyb přihlášení nebo souhlasu v systémovém webovém prohlížeči.
 - Identifikátor URI, který se má `BrowserRedirectSuccess` `HtmlMessageSuccess` v případě úspěšného přihlášení nebo vyjádření souhlasu zobrazit () nebo FRAGMENTu HTML
@@ -433,13 +433,13 @@ Pokud se chcete přihlásit k doméně uživatele v doméně nebo počítači p�
   - Nebo je nutné, aby správce tenanta předtím souhlasil se všemi uživateli v tenantovi, aby mohli aplikaci používat.
   - Jinými slovy:
     - Vy jako vývojář jste vybrali tlačítko **udělit** v Azure Portal pro sebe.
-    - Nebo správce tenanta na kartě **oprávnění API** registrace pro aplikaci vybral tlačítko **udělení a odvolání souhlasu správce pro {tenant Domain}** . Další informace najdete v tématu [Přidání oprávnění pro přístup k webovým rozhraním API](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis).
-    - Nebo jste poskytli způsob, jak uživatelům udělit souhlas s aplikací. Další informace najdete v tématu [vyžádání souhlasu jednotlivých uživatelů](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent).
-    - Nebo jste poskytli způsob, jak správci tenanta udělit souhlas s aplikací. Další informace najdete v tématu [souhlas správce](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant).
+    - Nebo správce tenanta na kartě **oprávnění API** registrace pro aplikaci vybral tlačítko **udělení a odvolání souhlasu správce pro {tenant Domain}** . Další informace najdete v tématu [Přidání oprávnění pro přístup k webovým rozhraním API](./quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+    - Nebo jste poskytli způsob, jak uživatelům udělit souhlas s aplikací. Další informace najdete v tématu [vyžádání souhlasu jednotlivých uživatelů](./v2-permissions-and-consent.md#requesting-individual-user-consent).
+    - Nebo jste poskytli způsob, jak správci tenanta udělit souhlas s aplikací. Další informace najdete v tématu [souhlas správce](./v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
 - Tento tok je povolený pro aplikace .NET Desktop, .NET Core a UWP.
 
-Další informace o souhlasu najdete v tématu [oprávnění a souhlas platformy Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent).
+Další informace o souhlasu najdete v tématu [oprávnění a souhlas platformy Microsoft Identity Platform](./v2-permissions-and-consent.md).
 
 ### <a name="learn-how-to-use-it"></a>Naučte se používat
 

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: 4ac65e85e05f408b8d2f37a1d6845dc9e28e2bab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6880391fb54791fe5f597de2305d24f8c0e47ec6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373062"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88122498"
 ---
 ## <a name="health-entity-categories"></a>Kategorie entit stavu:
 
@@ -23,46 +23,55 @@ ms.locfileid: "87373062"
 
 |Kategorie  |Popis   |
 |----------|--------------|
-| VĚKEM | Ve věku. |
-| BODY_STRUCTURE | Části lidského těla, včetně orgánů a dalších struktur. | 
-| CONDITION_QUALIFIER | Úrovně podmínek, jako je *mírná*, *Rozšířená*nebo *difúze*. | 
-| STANOVENÍ | Lékařské podmínky. Například " *mikronapětí* . | 
-| SMĚR | Pokyny, jako je *Left* nebo *anterior*. | 
-| DÁVKOVAČ | Velikost nebo množství léků.  | 
-| EXAMINATION_NAME | Metoda nebo procedura kontroly. | 
-| EXAMINATION_RELATION | přidružení mezi měrnou jednotkou a prohlídkou.  | 
-| EXAMINATION_UNIT | Měrná jednotka pro zkoušku. | 
-| EXAMINATION_VALUE | Hodnota jednotky měření prověřování. | 
-| FAMILY_RELATION | Familial vztah, jako je například " *sesterské*".  | 
-| OPAKOVÁNÍ | Opakování.   | 
-| POHLAVÍ | Pohlaví. | 
-| GENŮ | Entita genu, jako je *TP53*.   | 
-| MEDICATION_CLASS | Třídy léků Například *antibiotika*.  | 
-| MEDICATION_NAME  | Obecná a značka s názvem medications.| 
-| ROUTE_OR_MODE  | Způsob správy léků | 
-| SYMPTOM_OR_SIGN  | Příznaky nemoci. | 
-| ČAS  | Časový. Například "8 let" nebo "2:10:30 this ráno" |
-| TREATMENT_NAME  | Názvy ošetření. | 
-| VARIANT  | Genetická varianta entity genů | 
+| Stáří | Ve věku. Například *staré 30 let*. |
+| AdministrativeEvent | Událost správy. |
+| BodyStructure | Části lidského těla, včetně orgánů a dalších struktur. Například *ARM*nebo *srdce*. | 
+| CareEnvironment | Prostředí, kde je spravována péče nebo zpracování. Například *záchranná místnost* | 
+| ConditionQualifier | Úrovně podmínek. Například *mírné*, *Rozšířené*nebo *rozptýlené*. | 
+| Stanovení | Lékařské podmínky. Například " *mikronapětí*. | 
+| Směr | Značení. Například *Left* nebo *anterior*. | 
+| Dávkovač | Velikost nebo množství léků. Například *25mg*.  | 
+| Prověřování | Metoda nebo procedura kontroly. Například *X-ray*. | 
+| RelationalOperator | Operátor, který definuje vztah mezi dvěma entitami. Například *menší než*nebo `>=` .  | 
+| MeasurementUnit | Měrná jednotka (jako procento). | 
+| MeasurementValue | Číselná hodnota měrné jednotky. | 
+| FamilyRelation | Familial vztah. Například: *sesterské*.  | 
+| Frequency | Opakování.   | 
+| Pohlaví | Pohlaví. | 
+| Genů | Entita genu, jako je *TP53*.   | 
+| HealthcareProfession | Způsob správy léků Například *orální Správa*. | 
+| MedicationClass | Třídy léků Například *antibiotika*.  | 
+| MedicationForm | Forma léků Například *kapsle*. | 
+| MedicationName  | Obecná a značka s názvem medications. Například *ibuprofen*. | 
+| MedicationRoute | Způsob správy léků Například *orální Správa*. | 
+| SymptomOrSign  | Příznaky nemoci. Například *sore Throat*. | 
+| Čas | Časový. Například *8 let* nebo *2:10:30 tuto ráno* |
+| Prokládání  | Názvy ošetření. Například pro *léčbu*. | 
+| Variantní | Genetická varianta entity genu | 
 
 ### <a name="relation-extraction"></a>Extrakce vztahu
 
 Extrakce relace identifikuje smysluplná připojení mezi koncepty uvedenými v textu. Například relace "čas podmínky" je nalezena přidružením názvu podmínky k času. Analýza textu pro stav mohou identifikovat následující vztahy:
 
-* DIRECTION_OF_BODY_STRUCTURE  
-* TIME_OF_CONDITION
-* QUALIFIER_OF_CONDITION  
-* DOSAGE_OF_MEDICATION 
-* FORM_OF_MEDICATION  
-* ROUTE_OR_MODE_OF_MEDICATION   
-* STRENGTH_OF_MEDICATION 
-* ADMINISTRATION_RATE_OF_MEDICATION   
-* FREQUENCY_OF_MEDICATION 
-* TIME_OF_MEDICATION 
-* TIME_OF_TREATMENT 
-* FREQUENCY_OF_TREATMENT  
-* VALUE_OF_EXAMINATION
-* UNIT_OF_EXAMINATION 
-* RELATION_OF_EXAMINATION 
-* TIME_OF_EXAMINATION  
-* ZKRATKA 
+|Kategorie  |Popis   |
+|----------|--------------|
+| DirectionOfBodyStructure | Směr struktury těla. |
+| DirectionOfCondition | Směr podmínky. |
+| DirectionOfExamination | Směr kontroly. |
+| DirectionOfTreatment | Směr ošetření. |
+| TimeOfCondition | Čas přidružený k začátku podmínky. |
+| QualifierOfCondition | Přidružený kvalifikátor pro podmínku. |
+| DosageOfMedication | Dávkou léků. |
+| FormOfMedication | Forma léků |
+| RouteOfMedication | Trasa nebo režim využívání lékařství. Například *orální*. |
+| FrequencyOfMedication | Frekvence, s jakou se léků spotřebované. | 
+| ValueOfCondition | Číselná hodnota přidružená k podmínce. |
+| UnitOfCondition | Jednotka (například čas) spojená s podmínkou. |
+| TimeOfMedication | Čas, kdy se léků spotřeboval |
+| TimeOfTreatment | Čas, kdy byla úprava spravována. | 
+| FrequencyOfTreatment | Frekvence, s jakou je spravováno ošetření. |
+| ValueOfExamination | Číselná hodnota přidružená k prozkoumání. | 
+| UnitOfExamination | Jednotka (například procento) přidružená k prozkoumání. |
+| RelationOfExamination | Vztah mezi entitou a prohlídkou. | 
+| TimeOfExamination | Čas přidružený k vyšetření. |
+| Zkratka | Zkratka.  | 

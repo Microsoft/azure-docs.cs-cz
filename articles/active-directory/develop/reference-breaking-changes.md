@@ -12,12 +12,12 @@ ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2fe41cdc6fa1adef96568981df5bb13129fe900f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026726"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115029"
 ---
 # <a name="whats-new-for-authentication"></a>Co je nového pro ověřování?
 
@@ -49,7 +49,7 @@ V tuto chvíli není naplánováno žádné.  Níže najdete informace o změná
 
 Od 1. června 2018 se oficiální autorita Azure Active Directory (AAD) pro Azure Government změnila z `https://login-us.microsoftonline.com` na `https://login.microsoftonline.us` . Tato změna se taky aplikuje na Microsoft 365e vysoké a DoD, které Azure Government AAD i služby. Pokud vlastníte aplikaci v rámci tenanta státní správy USA, je nutné aplikaci aktualizovat, aby se uživatelé v `.us` koncovém bodě mohli podepisovat.  
 
-Od 5. května Azure AD zahájí vynucování změny koncového bodu a zablokuje uživatelům státní správy, aby se přihlásili k aplikacím hostovaným v klientech státní správy USA pomocí veřejného koncového bodu ( `microsoftonline.com` ).  Ovlivněné aplikace začnou vidět chybu `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` . Tato chyba označuje, že se aplikace pokouší přihlásit se k veřejnému koncovému bodu veřejného cloudu na uživatele státní správy USA. Pokud je vaše aplikace ve veřejném cloudu a je určená pro podporu pro státní správu USA, budete muset [aplikaci aktualizovat, aby se podporovala explicitně](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud). To může vyžadovat vytvoření nové registrace aplikace v cloudu pro státní správu USA. 
+Od 5. května Azure AD zahájí vynucování změny koncového bodu a zablokuje uživatelům státní správy, aby se přihlásili k aplikacím hostovaným v klientech státní správy USA pomocí veřejného koncového bodu ( `microsoftonline.com` ).  Ovlivněné aplikace začnou vidět chybu `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` . Tato chyba označuje, že se aplikace pokouší přihlásit se k veřejnému koncovému bodu veřejného cloudu na uživatele státní správy USA. Pokud je vaše aplikace ve veřejném cloudu a je určená pro podporu pro státní správu USA, budete muset [aplikaci aktualizovat, aby se podporovala explicitně](./authentication-national-cloud.md). To může vyžadovat vytvoření nové registrace aplikace v cloudu pro státní správu USA. 
 
 Vynucování této změny se provádí postupným zavedením na základě toho, jak často se uživatelé z cloudu pro státní správu USA přihlásí k aplikaci – aplikace, které se přihlašují uživatelům z oblasti státní správy USA zřídka, uvidí vynucování jako první a aplikace, které často používají uživatelé státní správy USA, budou platit jako poslední. Očekáváme, že se vynucení dokončí napříč všemi aplikacemi v červnu 2020. 
 
@@ -98,7 +98,7 @@ Když se pošle odpověď na ověření z login.microsoftonline.com do aplikace 
 
 **Ovlivněné koncové body**: v 1.0 i v 2.0
 
-**Ovlivněný protokol**: použití příspěvku odkudkoli ([přihlašovací údaje klienta](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow), [uplatnění autorizačního kódu](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow), [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc), [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)a [uplatnění aktualizačního tokenu](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token))
+**Ovlivněný protokol**: použití příspěvku odkudkoli ([přihlašovací údaje klienta](./v2-oauth2-client-creds-grant-flow.md), [uplatnění autorizačního kódu](./v2-oauth2-auth-code-flow.md), [ROPC](./v2-oauth-ropc.md), [OBO](./v2-oauth2-on-behalf-of-flow.md)a [uplatnění aktualizačního tokenu](./v2-oauth2-auth-code-flow.md#refresh-the-access-token))
 
 Od týdne 9/2 budou žádosti o ověření, které používají metodu POST, ověřeny pomocí přísnějších standardů protokolu HTTP.  Konkrétně mezery a dvojité uvozovky (") již nebudou odebrány z hodnot formuláře žádosti. Tyto změny se neočekávají pro přerušení stávajících klientů a zajistí, že požadavky odeslané do služby Azure AD budou spolehlivě zpracovávány pokaždé. V budoucnu (viz výše) plánujeme také odmítat duplicitní parametry a ignorovat v rámci požadavků.
 
@@ -113,9 +113,9 @@ Dnes `?e=    "f"&g=h` se analyzuje stejně jako `?e=f&g=h` `e`  ==  `f` .  Tato 
 
 **Datum účinnosti**: 26. července 2019
 
-**Ovlivněné koncové body**: [v 1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) i [v 2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+**Ovlivněné koncové body**: [v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md) i [v 2.0](./v2-oauth2-client-creds-grant-flow.md)
 
-**Ovlivněný protokol**: [přihlašovací údaje klienta (tokeny jenom pro aplikace)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+**Ovlivněný protokol**: [přihlašovací údaje klienta (tokeny jenom pro aplikace)](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)
 
 Změna zabezpečení 26a v reálném čase, která mění způsob, jakým jsou vydávány tokeny jenom pro aplikace (prostřednictvím udělení přihlašovacích údajů klienta). Dříve byly aplikacím dovoleno získat tokeny pro volání jakékoli jiné aplikace bez ohledu na přítomnost v tenantovi nebo rolích, které jsou pro tuto aplikaci přijaté.  Toto chování bylo aktualizováno, aby pro prostředky (někdy nazývané webová rozhraní API) bylo nastaveno na jeden tenant (výchozí), klientská aplikace musí existovat v tenantovi prostředku.  Počítejte s tím, že stávající souhlas mezi klientem a rozhraním API ještě není nutný a aplikace by měly i nadále provádět vlastní kontroly autorizace, aby se zajistilo, že `roles` je přítomná deklarace identity a že obsahuje očekávanou hodnotu pro rozhraní API.
 

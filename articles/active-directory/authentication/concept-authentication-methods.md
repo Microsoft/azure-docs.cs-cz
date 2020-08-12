@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: b6111529d1a3d37f08b29fb5c0751fb6a49acea5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 40ea8c3d070d8895a6da063789279895f52189e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054064"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116763"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Jaké metody ověřování jsou k dispozici v Azure Active Directory?
 
@@ -45,6 +45,8 @@ Následující tabulka popisuje, jaké metody jsou k dispozici pro primární ne
 | [Bezpečnostní otázky](#security-questions) | Ne | Jenom SSPR |
 | [E-mailová adresa](#email-address) | Ne | Jenom SSPR |
 | [Hesla aplikací](#app-passwords) | Ne | Vícefaktorové ověřování pouze v určitých případech |
+
+Tyto metody ověřování se dají nakonfigurovat v Azure Portal a stále používají [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
 
 Tento článek popisuje tyto různé metody ověřování a ověření dostupné ve službě Azure AD a veškerá konkrétní omezení nebo omezení.
 
@@ -297,6 +299,8 @@ Informace o tom, jak začít, najdete v [kurzu samoobslužného resetování hes
 Další informace o konceptech SSPR najdete v tématu [Jak funguje Samoobslužné resetování hesla služby Azure AD][concept-sspr].
 
 Další informace o principech vícefaktorového ověřování najdete v tématu [Jak funguje Azure Multi-Factor Authentication][concept-mfa].
+
+Přečtěte si další informace o konfiguraci metod ověřování pomocí [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

@@ -13,12 +13,12 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
-ms.openlocfilehash: 1dabadfe30a28fdae409f8452aac2cca4b765418
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 404ffbc09a69b623a421bd0c01550d72e5c03158
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313485"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115981"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Účty a profily tenantů (Android)
 
@@ -69,7 +69,7 @@ Ve výše uvedeném diagramu:
   - `tom@live.com`V každém z těchto tenantů se nachází profil tenanta.
 - Informace o tom, kdo a Bob v jiných klientech, se můžou lišit od záznamů v systému. Můžou se lišit podle atributů, jako je název úlohy, umístění kanceláře a tak dále. Můžou být členy skupin nebo rolí v rámci každé organizace (Azure Active Directory tenant). Tyto informace odkazujeme jako bob@contoso.com profil tenanta.
 
-V diagramu bob@contoso.com a tom@live.com mít přístup k prostředkům v různých Azure Active Directory klientech. Další informace najdete v tématu [přidání Azure Active Directory uživatelů spolupráce B2B v Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
+V diagramu bob@contoso.com a tom@live.com mít přístup k prostředkům v různých Azure Active Directory klientech. Další informace najdete v tématu [přidání Azure Active Directory uživatelů spolupráce B2B v Azure Portal](../external-identities/add-users-administrator.md).
 
 ## <a name="accounts-and-single-sign-on-sso"></a>Účty a jednotné přihlašování (SSO)
 
@@ -118,10 +118,10 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 ```
 
 > [!TIP]
-> Pokud chcete zobrazit seznam deklarací identity dostupných z objektu účtu, přečtěte si [deklarace identity ve id_token](https://docs.microsoft.com/azure/active-directory/develop/id-tokens#claims-in-an-id_token) .
+> Pokud chcete zobrazit seznam deklarací identity dostupných z objektu účtu, přečtěte si [deklarace identity ve id_token](./id-tokens.md#claims-in-an-id_token) .
 
 > [!TIP]
-> Pokud chcete do svého id_token zahrnout další deklarace identity, přečtěte si volitelnou dokumentaci k deklaracím identity v tématu [Postupy: poskytnutí volitelných deklarací identity vaší aplikaci Azure AD.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)
+> Pokud chcete do svého id_token zahrnout další deklarace identity, přečtěte si volitelnou dokumentaci k deklaracím identity v tématu [Postupy: poskytnutí volitelných deklarací identity vaší aplikaci Azure AD.](./active-directory-optional-claims.md)
 
 ### <a name="access-tenant-profile-claims"></a>Přístup k deklaracím profilů tenanta
 

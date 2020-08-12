@@ -3,16 +3,12 @@ title: Správa rozšíření virtuálních počítačů pomocí ARC Azure pro se
 description: Azure ARC pro servery (verze Preview) může spravovat nasazení rozšíření virtuálních počítačů, které poskytuje konfiguraci po nasazení a úlohy automatizace s virtuálními počítači mimo Azure.
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
-ms.openlocfilehash: eb1de0c2a5b995231c2972fca7279195cbaea9e7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 0319420fe528d41a23ee8fae90c4ad8c326f35a0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809625"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121302"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>Správa rozšíření virtuálních počítačů pomocí ARC Azure pro servery (Preview)
 
@@ -55,7 +51,7 @@ Rozšíření virtuálních počítačů je možné spouštět pomocí šablon A
 
 Další informace o balíčku agenta připojeného počítače Azure a podrobnostech o komponentě agenta rozšíření najdete v tématu [Přehled agenta](agent-overview.md#agent-component-details).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tato funkce závisí na následujících poskytovatelích prostředků Azure v rámci vašeho předplatného:
 
@@ -711,7 +707,7 @@ Chcete-li použít rozšíření agenta závislosti Azure Monitor, je k dispozic
 }
 ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal.
 
