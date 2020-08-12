@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 13e4c7a981124aba22dcb324d60e075d1d552bf8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1bf080ad4c4dc665e61d1075cf22c84d4cd66648
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526795"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121387"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
 
@@ -83,7 +83,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
   - Tabulka směrování sítě
   - Otevřené porty a stav
 
-- Storage
+- Úložiště
   - Seznam blokovaných zařízení
   - Seznam oddílů
   - Seznam přípojných bodů
@@ -99,6 +99,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
   - /var/log/boot.log
   - /var/log/yum.log
   - /var/log/dpkg.log
+  - /var/log/sysstat nebo/var/log/SA [ `**` ]
   - /var/log/cloud-init.log
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
@@ -112,7 +113,9 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
 - [Metadata instance virtuálního počítače Azure](../windows/instance-metadata-service.md)
 
 >[!Note]
->[ `*` ] Informace o PCI ještě nejsou shromážděny v Debian a SLES distribucích
+>[ `*` ] Informace o PCI ještě nejsou shromažďovány v Debian a SLES distribucích.
+> 
+>[ `**` ]/var/log/sysstat nebo/var/log/SA obsahuje soubory sestavy aktivity systému (správní oblast), které jsou shromažďovány balíčkem sysstat. Pokud balíček sysstat není na virtuálním počítači nainstalovaný, poskytuje nástroj PerfInsights doporučení k jeho instalaci.
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>Spuštění PerfInsights Linux na vašem VIRTUÁLNÍm počítači
 
@@ -121,7 +124,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
 #### <a name="tool-requirements"></a>Požadavky na nástroj
 
 - Tento nástroj se musí spustit na virtuálním počítači, který má problém s výkonem.
-- Na virtuálním počítači musí být nainstalovaný Python 2,7.
+- Na virtuálním počítači musí být nainstalovaný Python 3. x nebo Python 2,7.
 
 - V současné době jsou podporovány následující distribuce:
 

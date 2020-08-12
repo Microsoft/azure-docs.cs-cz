@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: reference
 ms.date: 08/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5ea28a7a4669fd000800bf62b7b940abefcf7551
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c6b7d1fb28e81957ded56662a06946e56c3dc00e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030958"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114893"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s výstrahami Azure Monitor metriky 
 
@@ -108,9 +108,9 @@ Výstrahy metriky jsou ve výchozím stavu stav, a proto se další výstrahy ne
 
 ## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>Definovat pravidlo výstrahy pro vlastní metriku, která ještě nebyla vygenerována
 
-Při vytváření pravidla upozornění na metriky je název metriky ověřený proti [rozhraní API definice metriky](/rest/api/monitor/metricdefinitions/list) , aby se zajistilo, že existuje. V některých případech byste chtěli vytvořit pravidlo upozornění pro vlastní metriky, dokonce i před tím, než se vygeneruje. Například při vytváření (pomocí šablony ARM) Application Insights prostředek, který vygeneruje vlastní metriku spolu s pravidlem výstrahy, které monitoruje tuto metriku.
+Při vytváření pravidla upozornění na metriky je název metriky ověřený proti [rozhraní API definice metriky](/rest/api/monitor/metricdefinitions/list) , aby se zajistilo, že existuje. V některých případech byste chtěli vytvořit pravidlo upozornění pro vlastní metriky, dokonce i před tím, než se vygeneruje. Například při vytváření (pomocí šablony Správce prostředků) Application Insights prostředek, který vygeneruje vlastní metriku spolu s pravidlem výstrahy, které monitoruje tuto metriku.
 
-Aby nedošlo k selhání nasazení při pokusu o ověření definice vlastní metriky, můžete použít parametr *skipMetricValidation* v části kritéria pro pravidlo výstrahy, což způsobí přeskočení ověření metriky. Podívejte se na následující příklad, jak použít tento parametr v šabloně ARM (pro vytváření pravidel upozornění metriky v tématu úplné ukázky šablon [ARM).]( ./alerts-metric-create-templates.md)
+Aby nedošlo k selhání nasazení při pokusu o ověření definice vlastní metriky, můžete použít parametr *skipMetricValidation* v části kritéria pro pravidlo výstrahy, což způsobí přeskočení ověření metriky. Pokud chcete použít tento parametr v šabloně Správce prostředků, podívejte se na následující příklad. Další informace najdete v tématu [kompletní ukázky šablon Správce prostředků pro vytváření pravidel upozornění metrik](./alerts-metric-create-templates.md).
 
 ```json
 "criteria": {
@@ -245,7 +245,7 @@ Při použití dimenzí v pravidle výstrahy, které obsahuje více podmínek, v
 - V rámci každé podmínky můžete vybrat jenom jednu hodnotu na dimenzi.
 - Nemůžete použít možnost vybrat všechny aktuální a budoucí hodnoty (vybrat \* ).
 - Pokud metriky, které jsou konfigurovány v různých podmínkách, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných podmínkách).
-Příklad:
+Například:
     - Vezměte v úvahu pravidlo upozornění metriky, které je definováno v účtu úložiště, a monitorujte dvě podmínky:
         * Celkový počet **transakcí** > 5
         * Průměrná **SuccessE2ELatency** > 250 ms

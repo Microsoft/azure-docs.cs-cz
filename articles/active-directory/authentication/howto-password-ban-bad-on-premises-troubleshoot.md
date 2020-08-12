@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 25199aeb7a3ed6332e74ad05835a8c4fca763c00
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035481"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116457"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Řešení potíží: místní ochrana heslem Azure AD
 
@@ -72,7 +72,20 @@ Ochrana heslem Azure AD má kritickou závislost na funkci šifrování a dešif
 
    Oprava zabezpečení KDS byla představena ve Windows serveru 2016, která mění formát KDS šifrovaných vyrovnávacích pamětí; v některých případech se v systému Windows Server 2012 a Windows Server 2012 R2 nezdaří dešifrování těchto vyrovnávacích pamětí. Obrácený směr je v pořádku – vyrovnávací paměti, které jsou zašifrované KDS na Windows Serveru 2012 a Windows Server 2012 R2, se vždycky úspěšně dešifrují v systému Windows Server 2016 a novějším. Pokud na řadičích domény v doménách služby Active Directory běží kombinace těchto operačních systémů, můžou se nahlásit občasné chyby dešifrování ochrany heslem Azure AD. Není možné přesně předpovědět časování nebo příznaky těchto selhání s ohledem na povahu opravy zabezpečení a s tím, že je nedeterministické, ke kterému řadiči domény Azure AD s ochranou hesel se v daný okamžik zašifruje data.
 
-   Microsoft zkoumá opravu tohoto problému, ale zatím není k dispozici žádné ETA. Mezitím není k dispozici žádné alternativní řešení pro tento problém, jiné než spuštění kombinace těchto nekompatibilních operačních systémů ve vašich doménách služby Active Directory. Jinými slovy, měli byste spustit pouze řadiče domény se systémem Windows Server 2012 a Windows Server 2012 R2 nebo byste měli spustit pouze systém Windows Server 2016 a vyšší řadiče domény.
+   Pro tento problém není k dispozici žádné alternativní řešení, než aby se nespouštěla kombinace těchto nekompatibilních operačních systémů ve vašich doménách služby Active Directory. Jinými slovy, měli byste spustit pouze řadiče domény se systémem Windows Server 2012 a Windows Server 2012 R2 nebo byste měli spustit pouze systém Windows Server 2016 a vyšší řadiče domény.
+
+## <a name="dc-agent-thinks-the-forest-has-not-been-registered"></a>Agent DC se domnívá, že doménová struktura není zaregistrovaná.
+
+Příznakem tohoto problému jsou 30016 události, které se zaznamenávají do Agent\Admin kanálu DC, který uvádí část:
+
+```text
+The forest has not been registered with Azure. Password policies cannot be downloaded from Azure unless this is corrected.
+```
+
+Existují dva možné příčiny tohoto problému.
+
+1. Doménová struktura není zaregistrovaná. Pokud chcete tento problém vyřešit, spusťte prosím příkaz Register-AzureADPasswordProtectionForest, jak je popsáno v tématu [požadavky na nasazení](howto-password-ban-bad-on-premises-deploy.md).
+1. Byla zaregistrována doménová struktura, ale agent řadiče domény nemůže dešifrovat registrační data doménové struktury. Tento případ má stejnou hlavní příčinu jako problém #2 uvedený výše v části [Agent DC není schopen šifrovat nebo dešifrovat soubory zásad hesel](howto-password-ban-bad-on-premises-troubleshoot.md#dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files). Snadným způsobem, jak tuto teoretickou potvrdit, je to, že se tato chyba zobrazí jenom v agentech DC, které běží na řadičích domény s Windows Serverem 2012 nebo Windows server 2012R2, zatímco agenti DC spuštěné v systému Windows Server 2016 a novějších řadičích domény jsou přesné. Alternativní řešení je stejné: Upgradujte všechny řadiče domény na Windows Server 2016 nebo novější.
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Jsou přijímána slabá hesla, ale neměla by být
 

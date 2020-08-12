@@ -13,12 +13,12 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8895e52209622025f943aaa6a4261b68a7e2899c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034835"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116291"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Pokyny pro vývojáře funkce podmíněného přístupu Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "87034835"
 
 Funkce podmíněného přístupu v Azure Active Directory (Azure AD) nabízí jeden z několika způsobů, jak můžete použít k zabezpečení aplikace a ochraně služby. Podmíněný přístup umožňuje vývojářům a podnikovým zákazníkům chránit služby mnoha různými způsoby, včetně těchto:
 
-* Vícefaktorové ověřování
+* Ověřování pomocí služby Multi-Factor Authentication
 * Povoluje přístup ke konkrétním službám jenom zařízením zaregistrovaným v Intune.
 * Omezení umístění uživatelů a rozsahů IP adres
 
@@ -88,9 +88,9 @@ Vývojáři můžou tuto výzvu přijmout a připojit ji k nové žádosti do Az
 
 ## <a name="scenarios"></a>Scénáře
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
-Podmíněný přístup Azure AD je funkce, která je součástí [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Další informace o licenčních požadavcích najdete v [sestavě používání bez licenčního využití](../active-directory-conditional-access-unlicensed-usage-report.md). Vývojáři se můžou připojit ke [službě Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx), která zahrnuje bezplatné předplatné sady Enterprise mobility, které zahrnuje Azure AD Premium.
+Podmíněný přístup Azure AD je funkce, která je součástí [Azure AD Premium](../fundamentals/active-directory-whatis.md). Další informace o licenčních požadavcích najdete v [sestavě používání bez licenčního využití](../reports-monitoring/overview-reports.md). Vývojáři se můžou připojit ke [službě Microsoft Developer Network](/), která zahrnuje bezplatné předplatné sady Enterprise mobility, které zahrnuje Azure AD Premium.
 
 ### <a name="considerations-for-specific-scenarios"></a>Předpoklady pro konkrétní scénáře
 
@@ -177,7 +177,7 @@ Pokud si chcete vyzkoušet tento scénář, přečtěte si náš [kód pro ukáz
 
 ## <a name="see-also"></a>Viz také
 
-* Další informace o možnostech najdete [v tématu podmíněný přístup v Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
+* Další informace o možnostech najdete [v tématu podmíněný přístup v Azure Active Directory](../conditional-access/overview.md).
 * Další ukázky kódu Azure AD najdete v tématu [úložiště GitHub ukázek kódu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory).
 * Další informace o sadě ADAL SDK a přístup k referenční dokumentaci najdete v tématu [Průvodce knihovnou](active-directory-authentication-libraries.md).
 * Další informace o scénářích s více klienty najdete v tématu [Postup přihlášení uživatelů pomocí vzoru s více klienty](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).

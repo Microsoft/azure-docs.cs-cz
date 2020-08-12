@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 9a1f86a78eaac96f2a6202b4ec29e99a0a978ff1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036c40395e5da5ebc09a87e420893d7dbd2ec668
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554376"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116797"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Osvědčené postupy a doporučení pro Microsoft Identity Platform
 
@@ -25,7 +25,7 @@ Tento článek popisuje osvědčené postupy, doporučení a běžné přehledy 
 
 Pokud teprve začínáte, podívejte se na dokumentaci k [platformě Microsoft Identity](index.yml) , kde najdete informace o základech ověřování, scénářích aplikací v platformě Microsoft identity a dalších.
 
-Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikace efektivně integrovaná s [platformou Microsoft Identity](https://docs.microsoft.com/azure/active-directory/develop/).
+Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikace efektivně integrovaná s [platformou Microsoft Identity](./index.yml).
 
 > [!TIP]
 > *Pomocník pro integraci* v Azure Portal vám může pomáhat při použití řady osvědčených postupů a doporučení. V Azure Portal vyberte libovolnou [registraci vaší aplikace](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a pak vyberte položku nabídky **Průvodce integrací (Preview)** , abyste mohli začít používat pomocníka.
@@ -38,7 +38,7 @@ Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikac
 
 ![zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) Ujistěte se, že informace přidružené k účtu, který jste použili k registraci a správě aplikací, jsou aktuální.
 
-## <a name="branding"></a>Branding
+## <a name="branding"></a>Značka
 
 ![zaškrtávací políčko ](./media/active-directory-integration-checklist/checkbox-two.svg) se řídí [pokyny pro aplikace](howto-add-branding-in-azure-ad-apps.md).
 
@@ -58,9 +58,9 @@ Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikac
 
 ![zaškrtávací políčko se ](./media/active-directory-integration-checklist/checkbox-two.svg) přesune mimo uživatelské jméno a heslo. Nepoužívejte [tok přihlašovacích údajů k heslům vlastníka prostředků (ROPC)](v2-oauth-ropc.md), který přímo zpracovává hesla uživatelů. Tento tok vyžaduje vysoký stupeň důvěry a ohrožení uživatele a měl by se používat jenom v případě, že se nedají použít jiné, bezpečnější toky. Tento tok je stále potřeba v některých scénářích (například DevOps), ale Upozorňujeme, že jeho použití způsobí omezení pro vaši aplikaci.  Pro moderní přístupy si můžete přečíst [toky ověřování a scénáře použití aplikací](authentication-flows-app-scenarios.md).
 
-![políčko ](./media/active-directory-integration-checklist/checkbox-two.svg) chránit a spravovat přihlašovací údaje důvěrných aplikací pro webové aplikace, webová rozhraní API a aplikace démona. Použijte [přihlašovací údaje certifikátu](active-directory-certificate-credentials.md), nikoli přihlašovací údaje hesla (tajné klíče klienta). Pokud je nutné použít přihlašovací údaje hesla, nenastavte ji ručně. Neukládejte přihlašovací údaje v kódu nebo konfiguraci a nikdy je nepovolíte, aby je lidé nepoužívali. Pokud je to možné, využijte [spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) nebo [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) k ukládání a pravidelnému střídání přihlašovacích údajů.
+![políčko ](./media/active-directory-integration-checklist/checkbox-two.svg) chránit a spravovat přihlašovací údaje důvěrných aplikací pro webové aplikace, webová rozhraní API a aplikace démona. Použijte [přihlašovací údaje certifikátu](active-directory-certificate-credentials.md), nikoli přihlašovací údaje hesla (tajné klíče klienta). Pokud je nutné použít přihlašovací údaje hesla, nenastavte ji ručně. Neukládejte přihlašovací údaje v kódu nebo konfiguraci a nikdy je nepovolíte, aby je lidé nepoužívali. Pokud je to možné, využijte [spravované identity pro prostředky Azure](../managed-identities-azure-resources/overview.md) nebo [Azure Key Vault](../../key-vault/general/basic-concepts.md) k ukládání a pravidelnému střídání přihlašovacích údajů.
 
-![zaškrtávací políčko zajistěte ](./media/active-directory-integration-checklist/checkbox-two.svg) , aby vaše aplikace požádala o nejnižší oprávnění. Zeptejte se jenom na oprávnění, která vaše aplikace naprosto potřebuje, a jenom když je potřebujete. Pochopení různých [typů oprávnění](v2-permissions-and-consent.md#permission-types) V případě potřeby použijte pouze oprávnění aplikace; Pokud je to možné, použijte delegovaná oprávnění. Úplný seznam oprávnění Microsoft Graph najdete v tématu s [odkazem](https://docs.microsoft.com/graph/permissions-reference)na tato oprávnění.
+![zaškrtávací políčko zajistěte ](./media/active-directory-integration-checklist/checkbox-two.svg) , aby vaše aplikace požádala o nejnižší oprávnění. Zeptejte se jenom na oprávnění, která vaše aplikace naprosto potřebuje, a jenom když je potřebujete. Pochopení různých [typů oprávnění](v2-permissions-and-consent.md#permission-types) V případě potřeby použijte pouze oprávnění aplikace; Pokud je to možné, použijte delegovaná oprávnění. Úplný seznam oprávnění Microsoft Graph najdete v tématu s [odkazem](/graph/permissions-reference)na tato oprávnění.
 
 ![zaškrtávací políčko](./media/active-directory-integration-checklist/checkbox-two.svg) Pokud zabezpečujete rozhraní API s využitím platformy Microsoft identity, pečlivě si promyslete oprávnění, která by měla zveřejnit. Zvažte, jaké jsou správné členitosti řešení a které oprávnění vyžadují souhlas správce. Před provedením jakýchkoli autorizačních rozhodnutí ověřte, zda jsou v příchozích tokenech očekávaná oprávnění.
 
@@ -68,7 +68,7 @@ Pomocí následujícího kontrolního seznamu se ujistěte, že je vaše aplikac
 
 ![zaškrtávací políčko ](./media/active-directory-integration-checklist/checkbox-two.svg) používá řešení pro moderní ověřování (OAuth 2,0, [OpenID Connect](v2-protocols-oidc.md)) k bezpečnému přihlášení uživatelů.
 
-![zaškrtávací políčko ](./media/active-directory-integration-checklist/checkbox-two.svg) Neprogramuje přímo proti protokolům, jako je OAuth 2,0 a Open ID. Místo toho využijte [Microsoft Authentication Library (MSAL)](msal-overview.md). Knihovny MSAL bezpečně zabalí protokoly zabezpečení do snadno použitelné knihovny a získáte integrovanou podporu pro scénáře [podmíněného přístupu](/azure/active-directory/conditional-access/overview) , [jednotné přihlašování (SSO) v rámci jednotného přihlašování (SSO)](/azure/active-directory/manage-apps/what-is-single-sign-on)a integrovanou podporu ukládání tokenů do mezipaměti. Další informace najdete v seznamu podporovaných [klientských knihoven](reference-v2-libraries.md#microsoft-supported-client-libraries) a [knihoven middlewaru](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) od Microsoftu a v seznamu [kompatibilních klientských knihoven třetích stran](reference-v2-libraries.md#compatible-client-libraries).<br/><br/>Pokud potřebujete pro ověřovací protokoly rukou, měli byste postupovat podle metodologie, jako je například [Microsoft SDL](https://www.microsoft.com/sdl/default.aspx). Věnujte velkou pozornost hlediskům zabezpečení v specifikacích standardů pro jednotlivé protokoly.
+![zaškrtávací políčko ](./media/active-directory-integration-checklist/checkbox-two.svg) Neprogramuje přímo proti protokolům, jako je OAuth 2,0 a Open ID. Místo toho využijte [Microsoft Authentication Library (MSAL)](msal-overview.md). Knihovny MSAL bezpečně zabalí protokoly zabezpečení do snadno použitelné knihovny a získáte integrovanou podporu pro scénáře [podmíněného přístupu](../conditional-access/overview.md) , [jednotné přihlašování (SSO) v rámci jednotného přihlašování (SSO)](../manage-apps/what-is-single-sign-on.md)a integrovanou podporu ukládání tokenů do mezipaměti. Další informace najdete v seznamu podporovaných [klientských knihoven](reference-v2-libraries.md#microsoft-supported-client-libraries) a [knihoven middlewaru](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) od Microsoftu a v seznamu [kompatibilních klientských knihoven třetích stran](reference-v2-libraries.md#compatible-client-libraries).<br/><br/>Pokud potřebujete pro ověřovací protokoly rukou, měli byste postupovat podle metodologie, jako je například [Microsoft SDL](https://www.microsoft.com/sdl/default.aspx). Věnujte velkou pozornost hlediskům zabezpečení v specifikacích standardů pro jednotlivé protokoly.
 
 ![zaškrtávací políčko ](./media/active-directory-integration-checklist/checkbox-two.svg) migruje stávající aplikace z [knihovny Azure Active Directory Authentication Library (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) do [knihovny Microsoft Authentication Library](msal-overview.md). MSAL je řešení nejnovější platformy od Microsoftu a upřednostňuje se pro ADAL. Je k dispozici pro .NET, JavaScript, Android, iOS, macOS a je také ve verzi Public Preview pro Python a Java. Přečtěte si další informace o migraci aplikací [ADAL.NET](msal-net-migration.md), [ADAL.js](msal-compare-msal-js-and-adal-js.md)a [ADAL.NET a zprostředkovatelů iOS](msal-net-migration-ios-broker.md) .
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 6c5e0779ce0dfe2730a60873316c66184e038a35
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 50cf58f83115cfb8c84fe7b2a37b6664c2d9c567
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039870"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116678"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Zakázání slabých šifr a synchronizace hodnot hash hesel k zabezpečení Azure Active Directory Domain Services spravované domény
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak zakázat šifry protokolu NTLM V1 a TLS V1 a v
 
 K dokončení tohoto článku potřebujete tyto prostředky:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
@@ -74,6 +74,11 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySetti
 ```
 
 Použití nastavení zabezpečení pro spravovanou doménu chvíli trvá.
+
+> [!IMPORTANT]
+> Po zakázání protokolu NTLM proveďte úplnou synchronizaci hodnot hash hesel v Azure AD Connect, abyste ze spravované domény odebrali všechny hodnoty hash hesel. Pokud zakážete protokol NTLM, ale nevynutíte synchronizaci hodnoty hash hesla, budou hodnoty hash hesla protokolu NTLM pro uživatelský účet odebrány pouze při další změně hesla. Toto chování může uživateli dovolit, aby se mohli i nadále přihlašovat, pokud mají přihlašovací údaje uložené v mezipaměti v systému, ve kterém se jako metoda ověřování používá protokol NTLM.
+>
+> Jakmile je hodnota hash hesla protokolu NTLM odlišná od hodnoty hash hesla protokolu Kerberos, záložní hodnota NTLM nebude fungovat. Přihlašovací údaje uložené v mezipaměti také nebudou fungovat, pokud má virtuální počítač připojení ke spravovanému řadiči domény.  
 
 ## <a name="next-steps"></a>Další kroky
 

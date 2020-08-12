@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e440628526dada7655cc71f63fc9fff006cc5ef5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7319aacabd2c479c578fbb71ae0bc9fbb2dee9f2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885442"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119126"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Aplikace démona, která volá webové rozhraní API – volání webového rozhraní API z aplikace
 
@@ -70,16 +70,16 @@ Pro aplikace démona musí být webová rozhraní API, která zavoláte, předem
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Aplikace démon – přesun do produkčního prostředí](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
+> [Aplikace démon – přesun do produkčního prostředí](./scenario-daemon-production.md?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Aplikace démon – přesun do produkčního prostředí](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
+> [Aplikace démon – přesun do produkčního prostředí](./scenario-daemon-production.md?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Aplikace démon – přesun do produkčního prostředí](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
+> [Aplikace démon – přesun do produkčního prostředí](./scenario-daemon-production.md?tabs=java)
 
 ---

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: e96442be50a075ebf2cd81bf1b6fb0f58f883bad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e768c1e938006afd62fc097a80f8ebc3ea0f3e6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885578"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115471"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Prostředí vyjádření souhlasu s aplikací Azure AD
 
@@ -28,10 +28,10 @@ Přečtěte si další informace o uživatelském prostředí souhlasu aplikace 
 
 Souhlas je proces uživatele, který uděluje oprávnění k přístupu k chráněným prostředkům jménem uživatele. Správce nebo uživatel může požádat o souhlas s povolením přístupu k jejich organizaci nebo individuálním datům.
 
-Skutečné uživatelské prostředí udělování souhlasu se bude lišit v závislosti na zásadách nastavených v tenantovi uživatele, rozsahu uživatele autority (nebo roli) a typu [oprávnění](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent) , které klientská aplikace požaduje. To znamená, že vývojáři aplikací a Správci klientů mají kontrolu nad tím, jakým způsobem se bude jednat o používání souhlasu. Správci mají flexibilitu nastavení a zakázání zásad v tenantovi nebo aplikaci, aby mohli řídit možnosti souhlasu ve svém tenantovi. Vývojáři aplikací mohou určovat, jaké typy oprávnění jsou požadovány, a pokud chtějí uživatele pořídit pomocí toku souhlasu uživatele nebo toku souhlasu správce.
+Skutečné uživatelské prostředí udělování souhlasu se bude lišit v závislosti na zásadách nastavených v tenantovi uživatele, rozsahu uživatele autority (nebo roli) a typu [oprávnění](../azuread-dev/v1-permissions-consent.md) , které klientská aplikace požaduje. To znamená, že vývojáři aplikací a Správci klientů mají kontrolu nad tím, jakým způsobem se bude jednat o používání souhlasu. Správci mají flexibilitu nastavení a zakázání zásad v tenantovi nebo aplikaci, aby mohli řídit možnosti souhlasu ve svém tenantovi. Vývojáři aplikací mohou určovat, jaké typy oprávnění jsou požadovány, a pokud chtějí uživatele pořídit pomocí toku souhlasu uživatele nebo toku souhlasu správce.
 
 - **Tok souhlasu uživatele** je v případě, že vývojář aplikace přesměruje uživatele na koncový bod autorizace s cílem zaznamenat souhlas jenom pro aktuálního uživatele.
-- **Tok souhlasu správce** je v případě, že vývojář aplikace nasměruje uživatele do koncového bodu souhlasu správce s cílem zaznamenat souhlas celého tenanta. Aby bylo zajištěno, že tok souhlasu správce funguje správně, musí vývojáři aplikací zobrazit seznam všech oprávnění ve `RequiredResourceAccess` vlastnosti v manifestu aplikace. Další informace naleznete v tématu [manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
+- **Tok souhlasu správce** je v případě, že vývojář aplikace nasměruje uživatele do koncového bodu souhlasu správce s cílem zaznamenat souhlas celého tenanta. Aby bylo zajištěno, že tok souhlasu správce funguje správně, musí vývojáři aplikací zobrazit seznam všech oprávnění ve `RequiredResourceAccess` vlastnosti v manifestu aplikace. Další informace naleznete v tématu [manifest aplikace](./reference-app-manifest.md).
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>Stavební bloky výzvy k vyjádření souhlasu
 
@@ -46,7 +46,7 @@ Následující diagram a tabulka obsahují informace o stavebních blocích výz
 | 1 | Identifikátor uživatele | Tento identifikátor představuje uživatele, který klientská aplikace žádá o přístup k chráněným prostředkům jménem. |
 | 2 | Nadpis | Název se změní na základě toho, jestli uživatelé procházejí v toku souhlasu uživatele nebo správce. V toku souhlasu uživatele bude mít název "požadovaná oprávnění", zatímco v toku souhlasu správce bude mít název další řádek "přijmout pro vaši organizaci". |
 | 3 | Logo aplikace | Tento obrázek by měl uživatelům pomáhat s vizuálním znázorněním, zda je tato aplikace aplikací, ke které má přístup. Tuto image poskytují vývojáři aplikací a vlastnictví této image se neověřuje. |
-| 4 | App name (Název aplikace) | Tato hodnota by měla informovat uživatele, které aplikace žádá o přístup ke svým datům. Poznámka: Tento název poskytují vývojáři a vlastnictví tohoto názvu aplikace se neověřuje. |
+| 4 | Název aplikace | Tato hodnota by měla informovat uživatele, které aplikace žádá o přístup ke svým datům. Poznámka: Tento název poskytují vývojáři a vlastnictví tohoto názvu aplikace se neověřuje. |
 | 5 | Doména vydavatele | Tato hodnota by měla uživatelům poskytnout doménu, kterou by mohli vyhodnotit důvěryhodnost. Tuto doménu poskytují vývojáři a je ověřeno vlastnictví této domény vydavatele. |
 | 6 | Oprávnění | Tento seznam obsahuje oprávnění požadovaná klientskou aplikací. Uživatelé by měli vždy vyhodnotit typy požadovaných oprávnění, abyste pochopili, jaká data bude klientská aplikace oprávněna k přístupu jménem uživatele, pokud přijmou. Jako vývojář aplikace je nejvhodnější požádat o přístup k oprávněním s nejnižšími oprávněními. |
 | 7 | Popis oprávnění | Tuto hodnotu poskytuje služba, která zveřejňuje oprávnění. Chcete-li zobrazit popisy oprávnění, je nutné přepnout dvojitou šipku vedle oprávnění. |
@@ -81,6 +81,6 @@ Tady jsou informace o tom, že se uživatel může setkat ve scénářích spole
     1. Uživatelům, kteří nejsou správci, uvidí stejnou obrazovku jako 2. II, jak je uvedeno výše.
 
 ## <a name="next-steps"></a>Další kroky
-- Získejte podrobný přehled o [tom, jak rozhraní pro vyjádření souhlasu Azure AD implementuje souhlas](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
-- Podrobnější informace najdete v článku [o tom, jak aplikace pro více tenantů může používat souhlasu architektury](active-directory-devhowto-multi-tenant-overview.md) k implementaci souhlasu "User" a "admin", který podporuje pokročilejší vzory vícevrstvých aplikací.
+- Získejte podrobný přehled o [tom, jak rozhraní pro vyjádření souhlasu Azure AD implementuje souhlas](./quickstart-register-app.md).
+- Podrobnější informace najdete v článku [o tom, jak aplikace pro více tenantů může používat souhlasu architektury](./howto-convert-app-to-be-multi-tenant.md) k implementaci souhlasu "User" a "admin", který podporuje pokročilejší vzory vícevrstvých aplikací.
 - Naučte [se konfigurovat doménu vydavatele aplikace](howto-configure-publisher-domain.md).

@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 7238a78279528b4522d09178d00bf916f14bad88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76696414"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120894"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Rozdíly mezi MSAL JS a ADAL JS
 
@@ -30,7 +30,7 @@ Tento článek popisuje, jak zvolit mezi knihovnou Microsoft Authentication Libr
 
 Ve většině případů chcete použít platformu Microsoft Identity Platform a MSAL.js, což je nejnovější generace knihoven ověřování od společnosti Microsoft. Pomocí MSAL.js získáte tokeny pro uživatele, kteří se přihlašují ke svojí aplikaci, pomocí Azure AD (pracovní a školní účty), účtů Microsoft (osobní) (MSA) nebo Azure AD B2C.
 
-Pokud už jste obeznámeni s koncovým bodem v 1.0 (a ADAL.js), můžete si přečíst, [co se liší od koncového bodu v 2.0?](active-directory-v2-compare.md).
+Pokud už jste obeznámeni s koncovým bodem v 1.0 (a ADAL.js), můžete si přečíst, [co se liší od koncového bodu v 2.0?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 Je však stále nutné použít ADAL.js, pokud se vaše aplikace musí přihlašovat uživatelům pomocí dřívějších verzí [Active Directory Federation Services (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services).
 
@@ -73,7 +73,7 @@ V 2.0 se pomocí `https://login.microsoftonline.com/common` autority umožní u�
 
 * Dynamické obory pro přírůstkový souhlas.
 
-    Při sestavování aplikací pomocí verze 1.0 je nutné zaregistrovat úplnou sadu oprávnění (statické obory), které aplikace požaduje, aby uživatel mohl udělit souhlas v době přihlášení. V verze 2.0 můžete použít parametr scope k vyžádání oprávnění v době, kdy chcete. Tyto jsou označovány jako dynamické obory. To umožňuje uživateli poskytnout k oboru přírůstkové vyjádření souhlasu. Takže když na začátku budete chtít, aby se uživatel přihlásil ke svojí aplikaci a nepotřebujete žádný přístup, můžete tak učinit. Pokud budete později potřebovat možnost číst kalendář uživatele, můžete požádat o obor kalendáře v metodách acquireToken a získat souhlas uživatele. Příklad:
+    Při sestavování aplikací pomocí verze 1.0 je nutné zaregistrovat úplnou sadu oprávnění (statické obory), které aplikace požaduje, aby uživatel mohl udělit souhlas v době přihlášení. V verze 2.0 můžete použít parametr scope k vyžádání oprávnění v době, kdy chcete. Tyto jsou označovány jako dynamické obory. To umožňuje uživateli poskytnout k oboru přírůstkové vyjádření souhlasu. Takže když na začátku budete chtít, aby se uživatel přihlásil ke svojí aplikaci a nepotřebujete žádný přístup, můžete tak učinit. Pokud budete později potřebovat možnost číst kalendář uživatele, můžete požádat o obor kalendáře v metodách acquireToken a získat souhlas uživatele. Například:
 
     ```javascript
     var request = {
@@ -85,7 +85,7 @@ V 2.0 se pomocí `https://login.microsoftonline.com/common` autority umožní u�
 
 * Obory pro rozhraní API V 1.0
 
-    Při získávání tokenů pro rozhraní API V 1.0 pomocí MSAL.js můžete požádat o všechny statické obory registrované v rozhraní API připojením `.default` k identifikátoru URI ID aplikace rozhraní API jako oboru. Příklad:
+    Při získávání tokenů pro rozhraní API V 1.0 pomocí MSAL.js můžete požádat o všechny statické obory registrované v rozhraní API připojením `.default` k identifikátoru URI ID aplikace rozhraní API jako oboru. Například:
 
     ```javascript
     var request = {
@@ -96,4 +96,4 @@ V 2.0 se pomocí `https://login.microsoftonline.com/common` autority umožní u�
     ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete [v tématu porovnání v 1.0 a v 2.0](active-directory-v2-compare.md).
+Další informace najdete [v tématu porovnání v 1.0 a v 2.0](../azuread-dev/azure-ad-endpoint-comparison.md).

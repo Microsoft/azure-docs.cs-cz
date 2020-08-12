@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 31aaa0134ffe34d0424868221f01b68b64e4b088
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5977aced8354694a631cce05bf6d6b913ea79118
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371154"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121591"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Kurz: použití odkazů Key Vault v aplikaci Java pružiny
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 > * Vytvořte konfigurační klíč aplikace, který odkazuje na hodnotu uloženou v Key Vault.
 > * Přístup k hodnotě tohoto klíče z jarní aplikace Java.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Podporovaná [sada Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
@@ -82,7 +82,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Přidat odkaz Key Vault do konfigurace aplikace
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**.
 
@@ -102,7 +102,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 
     Tato operace vrátí řadu párů klíč/hodnota:
 
-    ```console
+    ```json
     {
     "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
     "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
@@ -118,31 +118,51 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 
 1. Spusťte následující příkaz, který instančnímu objektu umožní přístup k trezoru klíčů:
 
-    ```console
+    ```azurecli
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get
     ```
 
 1. Spuštěním následujícího příkazu Získejte ID objektu a pak ho přidejte do konfigurace aplikace.
 
-    ```console
+    ```azurecli
     az ad sp show --id <clientId-of-your-service-principal>
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. Pomocí hodnot instančního objektu zobrazeného v předchozím kroku vytvořte následující proměnné prostředí:
+1. Vytvořte proměnné prostředí **AZURE_CLIENT_ID**, **AZURE_CLIENT_SECRET**a **AZURE_TENANT_ID**. Použijte hodnoty pro instanční objekt, který byl zobrazen v předchozích krocích. Na příkazovém řádku spusťte následující příkazy a restartujte příkazový řádek, aby se změna projevila:
 
-    * **AZURE_CLIENT_ID**: *ClientID*
-    * **AZURE_CLIENT_SECRET**: *clientSecret*
-    * **AZURE_TENANT_ID**: *tenantId*
+    ```cmd
+    setx AZURE_CLIENT_ID "clientId"
+    setx AZURE_CLIENT_SECRET "clientSecret"
+    setx AZURE_TENANT_ID "tenantId"
+    ```
+
+    Pokud používáte Windows PowerShell, spusťte následující příkaz:
+
+    ```azurepowershell
+    $Env:AZURE_CLIENT_ID = "clientId"
+    $Env:AZURE_CLIENT_SECRET = "clientSecret"
+    $Env:AZURE_TENANT_ID = "tenantId"
+    ```
+
+    Pokud používáte macOS nebo Linux, spusťte následující příkaz:
+
+    ```cmd
+    export AZURE_CLIENT_ID ='clientId'
+    export AZURE_CLIENT_SECRET ='clientSecret'
+    export AZURE_TENANT_ID ='tenantId'
+    ```
+
 
 > [!NOTE]
 > Tyto Key Vault přihlašovací údaje se používají jenom v rámci vaší aplikace.  Vaše aplikace se ověřuje přímo pomocí Key Vault pomocí těchto přihlašovacích údajů bez použití služby konfigurace aplikace.  Key Vault poskytuje ověřování pro vaši aplikaci i službu konfigurace vaší aplikace bez sdílení nebo vystavování klíčů.
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Aktualizace kódu pro použití odkazu na Key Vault
 
-1. Vytvořte proměnnou prostředí s názvem **APP_CONFIGURATION_ENDPOINT**. Nastavte jeho hodnotu na koncový bod pro vaše úložiště konfigurace aplikace. Koncový bod najdete v okně **přístupové klíče** v Azure Portal.
+1. Vytvořte proměnnou prostředí s názvem **APP_CONFIGURATION_ENDPOINT**. Nastavte jeho hodnotu na koncový bod úložiště konfigurace aplikace. Koncový bod najdete v okně **přístupové klíče** v Azure Portal. Restartováním příkazového řádku umožníte, aby se změna projevila. 
 
-1. Otevřete *rutinu Bootstrap. Properties* ve složce *Resources* . Aktualizujte tento soubor na použití koncového bodu konfigurace aplikace namísto připojovacího řetězce.
+
+1. Otevřete *rutinu Bootstrap. Properties* ve složce *Resources* . Aktualizujte tento soubor, aby se použila hodnota **APP_CONFIGURATION_ENDPOINT** . Odebere všechny odkazy na připojovací řetězec v tomto souboru. 
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
@@ -218,7 +238,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
     }
     ```
 
-1. Vytvořte nový soubor v adresáři Resources adresáře META-INF s názvem *pružiny. továrens* a přidejte.
+1. Vytvořte nový soubor v adresáři Resources adresáře META-INF s názvem *pružiny. továrens* a přidejte následující kód.
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\

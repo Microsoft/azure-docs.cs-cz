@@ -8,19 +8,17 @@ ms.topic: include
 ms.date: 1/31/2020
 ms.author: lcozzens
 ms.custom: include file
-ms.openlocfilehash: 3eb77799b1845112e9f7e5ca0b65d790625fd529
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e49f68f43044b93f329295181717ec2d3ade9fc6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76961566"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116984"
 ---
-Pokud máte v plánu pokračovat k dalšímu kurzu, ponechte prostředky, které jste vytvořili v tomto rychlém startu, pro to, abyste je mohli znovu použít.
-
-Pokud jste hotovi s ukázkovou aplikací pro rychlé zprovoznění, odstraňte prostředky Azure, které jste vytvořili v tomto rychlém startu, abyste předešli poplatkům.
+Pokud nechcete dál používat prostředky vytvořené v tomto článku, odstraňte skupinu prostředků, kterou jste tady vytvořili, abyste předešli poplatkům.
 
 > [!IMPORTANT]
-> Odstranění skupiny prostředků je nevratné. Skupina prostředků a všechny prostředky v ní se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky v rámci skupiny prostředků, která obsahuje prostředky, které chcete zachovat, odstraňte všechny prostředky jednotlivě z příslušného podokna, místo aby se odstranila skupina prostředků.
+> Odstranění skupiny prostředků je nevratné. Skupina prostředků a všechny prostředky v ní se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro tento článek v rámci skupiny prostředků, která obsahuje další prostředky, které chcete zachovat, odstraňte všechny prostředky jednotlivě z příslušného podokna, místo aby se odstranila skupina prostředků.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a vyberte **skupiny prostředků**.
 1. Do pole **filtrovat podle názvu** zadejte název vaší skupiny prostředků. 

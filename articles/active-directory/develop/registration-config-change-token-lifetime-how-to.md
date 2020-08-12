@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: fc71ebe61fba8c1bdb6b7625b16a50d8995a581a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8de6a7aafdd402e4ee75862e69ac60af3af0e041
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80883349"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114927"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>Jak změnit výchozí hodnoty životnosti tokenů pro aplikaci vytvořenou pro vlastní nastavení
 
@@ -29,5 +29,5 @@ V tomto článku se dozvíte, jak pomocí Azure AD PowerShellu nastavit zásady 
 
 ## <a name="next-steps"></a>Další kroky
 
-* V tématu [konfigurovatelné životnosti tokenů ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-configurable-token-lifetimes) se dozvíte, jak nakonfigurovat životnost tokenů vydaných službou Azure AD, včetně nastavení životnosti tokenů pro všechny aplikace ve vaší organizaci, pro víceklientské aplikace nebo pro konkrétní instanční objekt ve vaší organizaci. 
-* [Reference k tokenům Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)
+* V tématu [konfigurovatelné životnosti tokenů ve službě Azure AD](./active-directory-configurable-token-lifetimes.md) se dozvíte, jak nakonfigurovat životnost tokenů vydaných službou Azure AD, včetně nastavení životnosti tokenů pro všechny aplikace ve vaší organizaci, pro víceklientské aplikace nebo pro konkrétní instanční objekt ve vaší organizaci. 
+* [Reference k tokenům Azure AD](./id-tokens.md)

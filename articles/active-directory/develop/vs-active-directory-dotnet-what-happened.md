@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: b6a364cbd29c3273466bee15b9a54e097497a8e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc23a61c88337c152a764cc0ec90ddbbad25cef1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479109"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114723"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Co se stalo s mým projektem MVC (připojená služba Visual Studio Azure Active Directory)?
 
@@ -31,7 +31,7 @@ Informace o práci s připojenou službou najdete v tématu [Začínáme](vs-act
 
 Má vliv na soubor projektu (*. NET References) a `packages.config` (odkazy na NuGet).
 
-| Typ | Referenční informace |
+| Typ | Odkaz |
 | --- | --- |
 | Pohyby NuGet | Microsoft. IdentityModel. Protocol. Extensions |
 | Pohyby NuGet | Microsoft. Owin |
@@ -46,7 +46,7 @@ Má vliv na soubor projektu (*. NET References) a `packages.config` (odkazy na N
 
 Další odkazy, pokud jste vybrali možnost **data pro čtení adresáře** :
 
-| Typ | Referenční informace |
+| Typ | Odkaz |
 | --- | --- |
 | Pohyby NuGet | EntityFramework |
 | .NET        | EntityFramework. SqlServer (pouze Visual Studio 2015) |
@@ -60,7 +60,7 @@ Další odkazy, pokud jste vybrali možnost **data pro čtení adresáře** :
 
 Následující odkazy jsou odebrány (pouze projekty ASP.NET 4, jako v aplikaci Visual Studio 2015):
 
-| Typ | Referenční informace |
+| Typ | Odkaz |
 | --- | --- |
 | Pohyby NuGet | Microsoft. AspNet. identity. Core |
 | Pohyby NuGet | Microsoft. AspNet. identity. EntityFramework |
@@ -162,5 +162,5 @@ Při přidávání připojené služby Visual Studio 2015 zálohované a odebran
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Scénáře ověřování pro Azure Active Directory](authentication-scenarios.md)
+- [Scénáře ověřování pro Azure Active Directory](./authentication-vs-authorization.md)
 - [Přidání přihlašování do webové aplikace ASP.NET pomocí Microsoftu](quickstart-v2-aspnet-webapp.md)

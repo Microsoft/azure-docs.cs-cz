@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: bae052e06aae4881dd7203a5616b35e9c96997fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75c3b325b29e6738a61728d53b85464bb61655f8
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85551728"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117783"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: migrace z Azure Access Control Service
 
@@ -59,7 +59,7 @@ Veškerá komunikace s operacemi služby STS a správou se provádí na této ad
 
 Výjimkou je jakýkoli provoz na `https://accounts.accesscontrol.windows.net` . Provoz na tuto adresu URL již zpracovává jiná **služba a neovlivňuje Access Control** vyřazení. 
 
-Další informace o Access Control najdete v článku [Access Control Service 2,0 (archivováno)](https://msdn.microsoft.com/library/hh147631.aspx).
+Další informace o Access Control najdete v článku [Access Control Service 2,0 (archivováno)](/previous-versions/azure/azure-services/hh147631(v=azure.100)).
 
 ## <a name="find-out-which-of-your-apps-will-be-impacted"></a>Zjistěte, na které z vašich aplikací bude mít vliv.
 
@@ -129,13 +129,13 @@ Každá cloudová služba Microsoftu, která přijímá tokeny vydané Access Co
 
 | Služba | Pokyny |
 | ------- | -------- |
-| Azure Service Bus | [Migrace na sdílené přístupové podpisy](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
-| Azure Service Bus Relay | [Migrace na sdílené přístupové podpisy](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
-| Spravovaná mezipaměť Azure | [Migrace do mezipaměti Azure pro Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
-| Azure DataMarket | [Migrace na rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| BizTalk Services | [Migrace na funkci Logic Apps Azure App Service](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| Azure Service Bus | [Migrace na sdílené přístupové podpisy](../../service-bus-messaging/service-bus-migrate-acs-sas.md) |
+| Azure Service Bus Relay | [Migrace na sdílené přístupové podpisy](../../azure-relay/relay-migrate-acs-sas.md) |
+| Spravovaná mezipaměť Azure | [Migrace na Azure Cache for Redis](../../azure-cache-for-redis/cache-faq.md) |
+| Azure DataMarket | [Migrace na rozhraní API služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) |
+| BizTalk Services | [Migrace na funkci Logic Apps Azure App Service](https://azure.microsoft.com/services/cognitive-services/) |
 | Azure Media Services | [Migrace na ověřování Azure AD](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
-| Azure Backup | [Upgrade agenta Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
+| Azure Backup | [Upgrade agenta Azure Backup](../../backup/backup-azure-file-folder-backup-faq.md) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
 <!-- Azure RemoteApp deprecated in favor of Citrix: https://www.zdnet.com/article/microsoft-to-drop-azure-remoteapp-in-favor-of-citrix-remoting-technologies/ -->
@@ -148,12 +148,12 @@ Každá cloudová služba Microsoftu, která přijímá tokeny vydané Access Co
 
 Zákazníci SharePoint 2013, 2016 a SharePointu Online používali službu ACS pro účely ověřování v cloudu, místních i hybridních scénářích. Některé funkce SharePointu a případy použití budou ovlivněny vyřazením služby ACS, i když jiné nebudou. Níže uvedená tabulka shrnuje pokyny k migraci pro některé z nejoblíbenějších funkcí SharePointu, které využívají ACS:
 
-| Funkce | Pokyny |
+| Příznak | Pokyny |
 | ------- | -------- |
-| Ověřují se uživatelé z Azure AD | Dřív služba Azure AD nepodporovala tokeny SAML 1,1 vyžadované službou SharePoint pro ověřování a služba ACS byla použita jako prostředník, který provedl SharePoint kompatibilní s formáty tokenů Azure AD. Teď můžete [SharePoint připojit přímo ke službě Azure AD pomocí aplikace Azure AD Galerie služby SharePoint v místní aplikaci](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
-| [Ověřování aplikací & ověřování serveru ve službě SharePoint místně](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Neovlivněné vyřazením služby ACS; nejsou nutné žádné změny. | 
-| [Ověřování s nízkou důvěryhodností pro doplňky pro SharePoint (hostované na poskytovatelích a hostované na SharePointu)](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Neovlivněné vyřazením služby ACS; nejsou nutné žádné změny. |
-| [Hybridní hledání cloudu služby SharePoint](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Neovlivněné vyřazením služby ACS; nejsou nutné žádné změny. |
+| Ověřují se uživatelé z Azure AD | Dřív služba Azure AD nepodporovala tokeny SAML 1,1 vyžadované službou SharePoint pro ověřování a služba ACS byla použita jako prostředník, který provedl SharePoint kompatibilní s formáty tokenů Azure AD. Teď můžete [SharePoint připojit přímo ke službě Azure AD pomocí aplikace Azure AD Galerie služby SharePoint v místní aplikaci](../saas-apps/sharepoint-on-premises-tutorial.md). |
+| [Ověřování aplikací & ověřování serveru ve službě SharePoint místně](/SharePoint/security-for-sharepoint-server/authentication-overview) | Neovlivněné vyřazením služby ACS; nejsou nutné žádné změny. | 
+| [Ověřování s nízkou důvěryhodností pro doplňky pro SharePoint (hostované na poskytovatelích a hostované na SharePointu)](/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Neovlivněné vyřazením služby ACS; nejsou nutné žádné změny. |
+| [Hybridní hledání cloudu služby SharePoint](/archive/blogs/spses/cloud-hybrid-search-service-application) | Neovlivněné vyřazením služby ACS; nejsou nutné žádné změny. |
 
 ### <a name="web-applications-that-use-passive-authentication"></a>Webové aplikace, které používají pasivní ověřování
 
@@ -190,31 +190,31 @@ Následující tabulka porovnává funkce Access Control, které jsou relevantn�
 | Schopnost | Podpora Access Control | Podpora Azure AD |
 | ---------- | ----------- | ---------------- |
 | **Typy účtů** | | |
-| Pracovní nebo školní účty Microsoftu | Podporuje se | Podporuje se |
+| Pracovní nebo školní účty Microsoftu | Podporováno | Podporováno |
 | Účty z Windows Server Active Directory a AD FS |– Podporováno prostřednictvím federace s klientem služby Azure AD <br />– Podporováno prostřednictvím přímé federace s AD FS | Podporuje se jenom přes federaci s tenant Azure AD. | 
 | Účty z jiných systémů pro správu podnikových identit |– Možné prostřednictvím federace s klientem služby Azure AD <br />– Podporováno prostřednictvím přímé federace | Možné prostřednictvím federace s klientem služby Azure AD |
-| Účty Microsoft pro osobní použití | Podporuje se | Podporováno prostřednictvím protokolu OAuth služby Azure AD v 2.0, ale nikoli přes žádné jiné protokoly. | 
-| Účty Facebook, Google, Yahoo | Podporuje se | Nepodporováno |
+| Účty Microsoft pro osobní použití | Podporováno | Podporováno prostřednictvím protokolu OAuth služby Azure AD v 2.0, ale nikoli přes žádné jiné protokoly. | 
+| Účty Facebook, Google, Yahoo | Podporováno | Nepodporováno |
 | **Protokoly a kompatibilita sady SDK** | | |
-| WIF | Podporuje se | Podporované, ale k dispozici jsou omezené pokyny |
-| WS-Federation | Podporuje se | Podporuje se |
+| WIF | Podporováno | Podporované, ale k dispozici jsou omezené pokyny |
+| WS-Federation | Podporováno | Podporováno |
 | OAuth 2.0 | Podpora pro koncept 13 | Podpora pro specifikaci RFC 6749, nejvíce moderní specifikace |
-| WS-Trust | Podporuje se | Nepodporuje se |
+| WS-Trust | Podporováno | Nepodporováno |
 | **Formáty tokenů** | | |
-| TOKEN | Podporováno ve verzi beta | Podporuje se |
-| SAML 1,1 | Podporuje se | Preview |
-| SAML 2.0 | Podporuje se | Podporuje se |
-| SWT | Podporuje se | Nepodporuje se |
+| TOKEN | Podporováno ve verzi beta | Podporováno |
+| SAML 1,1 | Podporováno | Náhled |
+| SAML 2.0 | Podporováno | Podporováno |
+| SWT | Podporováno | Nepodporováno |
 | **Vlastní nastavení** | | |
-| Přizpůsobitelná funkce/zjišťování domovské sféry/účet – výdejové rozhraní | Kód ke stažení, který se dá začlenit do aplikací | Nepodporuje se |
-| Nahrávat vlastní podpisové certifikáty tokenů | Podporuje se | Podporuje se |
+| Přizpůsobitelná funkce/zjišťování domovské sféry/účet – výdejové rozhraní | Kód ke stažení, který se dá začlenit do aplikací | Nepodporováno |
+| Nahrávat vlastní podpisové certifikáty tokenů | Podporováno | Podporováno |
 | Přizpůsobení deklarací identity v tokenech |-Předávací deklarace vstupu od zprostředkovatelů identity<br />– Získat přístupový token od zprostředkovatele identity jako deklaraci identity<br />– Vydávání deklarací výstupních dat na základě hodnot vstupních deklarací identity<br />– Vydávání deklarací výstupů s konstantními hodnotami |-Nelze předat deklarace identity od zprostředkovatelů federovaných identit.<br />– Nejde získat přístupový token od zprostředkovatele identity jako deklaraci identity.<br />-Nelze vystavit deklarace výstupů na základě hodnot vstupních deklarací identity.<br />– Může vydávat deklarace výstupů s konstantními hodnotami.<br />– Může vystavovat deklarace identity na základě vlastností uživatelů synchronizovaných do Azure AD. |
 | **Automation** | | |
 | Automatizace úloh konfigurace a správy | Podporováno prostřednictvím služby správy Access Control | Podporováno pomocí rozhraní Microsoft Graph API |
 
 Pokud se rozhodnete, že Azure AD je nejlepší migrační cestou k vašim aplikacím a službám, měli byste si být vědomi dvou způsobů integrace aplikace s Azure AD.
 
-Pokud chcete pro integraci se službou Azure AD použít WS-Federation nebo WIF, doporučujeme postupovat podle postupu popsaného v tématu [Konfigurace federovaného jednotného přihlašování pro aplikaci mimo galerii](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery). Tento článek se týká konfigurace Azure AD pro jednotné přihlašování založené na SAML, ale funguje taky pro konfiguraci WS-Federation. Následující přístup vyžaduje licenci Azure AD Premium. Tento přístup má dvě výhody:
+Pokud chcete pro integraci se službou Azure AD použít WS-Federation nebo WIF, doporučujeme postupovat podle postupu popsaného v tématu [Konfigurace federovaného jednotného přihlašování pro aplikaci mimo galerii](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md). Tento článek se týká konfigurace Azure AD pro jednotné přihlašování založené na SAML, ale funguje taky pro konfiguraci WS-Federation. Následující přístup vyžaduje licenci Azure AD Premium. Tento přístup má dvě výhody:
 
 - Získáte plnou flexibilitu přizpůsobení tokenů Azure AD. Deklarace identity, které vydává služba Azure AD, můžete přizpůsobit tak, aby odpovídaly deklaracím, které vydávají Access Control. To zahrnuje zejména ID uživatele nebo deklaraci identity identifikátoru názvu. Pokud chcete pro uživatele po změně technologií nadále dostávat konzistentní identifikátory uživatelů, zajistěte, aby ID uživatelů vydaná službou Azure AD odpovídala vydaným Access Control.
 - Můžete nakonfigurovat podpisový certifikát tokenu, který je specifický pro vaši aplikaci, a s dobou životnosti, kterou ovládáte.
@@ -224,7 +224,7 @@ Pokud chcete pro integraci se službou Azure AD použít WS-Federation nebo WIF,
 
 Alternativním řešením je postupovat v [této ukázce kódu](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), který poskytuje mírně odlišné pokyny k nastavení WS-Federation. Tato ukázka kódu nepoužívá WIF, ale místo toho middleware ASP.NET 4,5 OWIN. Pokyny pro registraci aplikace jsou ale platné pro aplikace využívající WIF a nevyžadují licenci Azure AD Premium. 
 
-Pokud si vyberete tento přístup, budete muset pochopit, jak se má [Služba Azure AD vyměnit při podepisování klíčů](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Tento přístup používá k vydávání tokenů globální podepisovací klíč Azure AD. WIF ve výchozím nastavení automaticky neaktualizuje podpisové klíče. Když Azure AD otočí své globální podpisové klíče, musí být vaše implementace WIF připravená, aby tyto změny přijímala. Další informace najdete v tématu [důležité informace o výměně klíčů v Azure AD](https://msdn.microsoft.com/library/azure/dn641920.aspx).
+Pokud si vyberete tento přístup, budete muset pochopit, jak se má [Služba Azure AD vyměnit při podepisování klíčů](../develop/active-directory-signing-key-rollover.md). Tento přístup používá k vydávání tokenů globální podepisovací klíč Azure AD. WIF ve výchozím nastavení automaticky neaktualizuje podpisové klíče. Když Azure AD otočí své globální podpisové klíče, musí být vaše implementace WIF připravená, aby tyto změny přijímala. Další informace najdete v tématu [důležité informace o výměně klíčů v Azure AD](/previous-versions/azure/dn641920(v=azure.100)).
 
 Pokud můžete integrovat se službou Azure AD prostřednictvím protokolů OpenID Connect nebo OAuth, doporučujeme to udělat. Máme rozsáhlou dokumentaci a pokyny, jak integrovat Azure AD do vaší webové aplikace, která je dostupná v naší [příručce pro vývojáře Azure AD](https://aka.ms/aaddev).
 
@@ -241,32 +241,32 @@ Následující tabulka porovnává funkce Access Control, které jsou relevantn�
 | Schopnost | Podpora Access Control | Podpora Azure AD B2C |
 | ---------- | ----------- | ---------------- |
 | **Typy účtů** | | |
-| Pracovní nebo školní účty Microsoftu | Podporuje se | Podporováno prostřednictvím vlastních zásad  |
+| Pracovní nebo školní účty Microsoftu | Podporováno | Podporováno prostřednictvím vlastních zásad  |
 | Účty z Windows Server Active Directory a AD FS | Podporováno prostřednictvím přímé federace s AD FS | Podporováno prostřednictvím federace SAML pomocí vlastních zásad |
 | Účty z jiných systémů pro správu podnikových identit | Podporováno prostřednictvím přímé federace prostřednictvím WS-Federation | Podporováno prostřednictvím federace SAML pomocí vlastních zásad |
-| Účty Microsoft pro osobní použití | Podporuje se | Podporuje se | 
-| Účty Facebook, Google, Yahoo | Podporuje se | Facebook a Google podporované nativně, Yahoo prostřednictvím služby OpenID Connect Federation pomocí vlastních zásad |
+| Účty Microsoft pro osobní použití | Podporováno | Podporováno | 
+| Účty Facebook, Google, Yahoo | Podporováno | Facebook a Google podporované nativně, Yahoo prostřednictvím služby OpenID Connect Federation pomocí vlastních zásad |
 | **Protokoly a kompatibilita sady SDK** | | |
-| Windows Identity Foundation (WIF) | Podporuje se | Nepodporuje se |
-| WS-Federation | Podporuje se | Nepodporuje se |
+| Windows Identity Foundation (WIF) | Podporováno | Nepodporováno |
+| WS-Federation | Podporováno | Nepodporováno |
 | OAuth 2.0 | Podpora pro koncept 13 | Podpora pro specifikaci RFC 6749, nejvíce moderní specifikace |
-| WS-Trust | Podporuje se | Nepodporuje se |
+| WS-Trust | Podporováno | Nepodporováno |
 | **Formáty tokenů** | | |
-| TOKEN | Podporováno ve verzi beta | Podporuje se |
-| SAML 1,1 | Podporuje se | Nepodporuje se |
-| SAML 2.0 | Podporuje se | Nepodporuje se |
-| SWT | Podporuje se | Nepodporuje se |
+| TOKEN | Podporováno ve verzi beta | Podporováno |
+| SAML 1,1 | Podporováno | Nepodporováno |
+| SAML 2.0 | Podporováno | Nepodporováno |
+| SWT | Podporováno | Nepodporováno |
 | **Vlastní nastavení** | | |
 | Přizpůsobitelná funkce/zjišťování domovské sféry/účet – výdejové rozhraní | Kód ke stažení, který se dá začlenit do aplikací | Plně přizpůsobitelné uživatelské rozhraní prostřednictvím vlastních šablon stylů CSS |
-| Nahrávat vlastní podpisové certifikáty tokenů | Podporuje se | Vlastní podpisové klíče, nikoli certifikáty, podporované prostřednictvím vlastních zásad |
+| Nahrávat vlastní podpisové certifikáty tokenů | Podporováno | Vlastní podpisové klíče, nikoli certifikáty, podporované prostřednictvím vlastních zásad |
 | Přizpůsobení deklarací identity v tokenech |-Předávací deklarace vstupu od zprostředkovatelů identity<br />– Získat přístupový token od zprostředkovatele identity jako deklaraci identity<br />– Vydávání deklarací výstupních dat na základě hodnot vstupních deklarací identity<br />– Vydávání deklarací výstupů s konstantními hodnotami |– Může předávat deklarace identity od zprostředkovatelů identity; vlastní zásady vyžadované pro některé deklarace identity<br />– Nejde získat přístupový token od zprostředkovatele identity jako deklaraci identity.<br />– Může vydávat deklarace výstupů na základě hodnot vstupních deklarací prostřednictvím vlastních zásad.<br />– Může vystavovat deklarace výstupů s konstantními hodnotami prostřednictvím vlastních zásad. |
 | **Automation** | | |
 | Automatizace úloh konfigurace a správy | Podporováno prostřednictvím služby správy Access Control |-Vytváření uživatelů s povoleným použitím rozhraní Microsoft Graph API<br />-Nelze vytvořit klienty B2C, aplikace nebo zásady prostřednictvím kódu programu. |
 
 Pokud se rozhodnete, že Azure AD B2C je nejlepší cestou migrace pro vaše aplikace a služby, začněte s následujícími prostředky:
 
-- [Dokumentace k Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
-- [Azure AD B2C vlastní zásady](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
+- [Dokumentace k Azure AD B2C](../../active-directory-b2c/overview.md)
+- [Azure AD B2C vlastní zásady](../../active-directory-b2c/custom-policy-overview.md)
 - [Ceny Azure AD B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Migrace na test identity nebo Auth0

@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7654de8bf26c3eaa3c93c8efcf99577fe88e6f24
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 85c4488c4e8e1e2f9591b7d734c522c34ea4ba2d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540338"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116311"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak získat AppSource Certified pro Azure Active Directory
 
@@ -47,7 +47,7 @@ Další informace o víceklientské architektuře najdete v tématu [jak se při
 
 *Jediná klientská aplikace* je aplikace, která přijímá jenom přihlášení od uživatelů definované instance Azure AD. Externí uživatelé (včetně pracovních nebo školních účtů z jiných organizací nebo osobních účtů) se můžou přihlašovat k jednomu tenantovi aplikace po přidání každého uživatele jako účtu hosta do instance Azure AD, kterou je aplikace zaregistrovaná. 
 
-Do Azure AD můžete přidat uživatele jako účty hosta prostřednictvím [Spolupráce B2B Azure AD](../b2b/what-is-b2b.md) a můžete to udělat [programově](../../active-directory-b2c/code-samples.md). Když uživatelé používají B2B, můžou vytvořit Samoobslužný portál, který nevyžaduje pozvání k přihlášení. Další informace najdete v tématu [Samoobslužný portál pro spolupráci služby Azure AD B2B – registrace](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
+Do Azure AD můžete přidat uživatele jako účty hosta prostřednictvím [Spolupráce B2B Azure AD](../external-identities/what-is-b2b.md) a můžete to udělat [programově](../../active-directory-b2c/code-samples.md). Když uživatelé používají B2B, můžou vytvořit Samoobslužný portál, který nevyžaduje pozvání k přihlášení. Další informace najdete v tématu [Samoobslužný portál pro spolupráci služby Azure AD B2B – registrace](../external-identities/self-service-portal.md).
 
 Aplikace s jedním tenantům můžou povolit možnosti *kontakt mi* , ale pokud chcete povolit zkušební prostředí s jedním kliknutím nebo bezplatnou verzí, které AppSource doporučuje, povolte pro svoji aplikaci více tenantů.
 
@@ -108,7 +108,7 @@ Další informace o zkušebním prostředí AppSource najdete v [tomto videu](ht
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o vytváření aplikací podporujících přihlášení k Azure AD najdete v tématu [scénáře ověřování pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/v1-authentication-scenarios).
+- Další informace o vytváření aplikací podporujících přihlášení k Azure AD najdete v tématu [scénáře ověřování pro Azure AD](./v1-authentication-scenarios.md).
 - Informace o tom, jak v AppSource zobrazit seznam aplikací SaaS, najdete v tématu [informace o partnerovi AppSource](https://appsource.microsoft.com/partners) .
 
 ## <a name="get-support"></a>Získání podpory

@@ -13,12 +13,12 @@ ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: c91c3dfc23c0a8a9dffb38788f3a8fea08096f5c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 800b399e73be032cfd9d2849b004018aa9d9031f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825051"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120860"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Rychlý Start: Konfigurace klientské aplikace pro přístup k webovému rozhraní API
 
@@ -60,7 +60,7 @@ Pokud si chcete vybrat z navrhovaných identifikátorů URI pro přesměrování
 1. Vyberte jeden nebo více identifikátorů URI pro přesměrování vaší aplikace. Můžete také zadat vlastní identifikátor URI pro přesměrování. Pokud si nejste jisti, co je třeba použít, přečtěte si dokumentaci ke knihovně.
 1. Vyberte **Uložit**.
 
-Určitá omezení se vztahují na identifikátory URI přesměrování. Další informace najdete v tématu [omezení a omezení adresy URL pro přesměrování](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
+Určitá omezení se vztahují na identifikátory URI přesměrování. Další informace najdete v tématu [omezení a omezení adresy URL pro přesměrování](./reply-url.md).
 
 > [!NOTE]
 > Vyzkoušejte si nové prostředí nastavení **ověřování** , kde můžete nakonfigurovat nastavení pro svou aplikaci na základě platformy nebo zařízení, na které chcete cílit.

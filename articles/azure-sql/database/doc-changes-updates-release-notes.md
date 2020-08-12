@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: af19b72846c78ef80ba170b6d6e0cec97fa2b96e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e1e6c9254c3906b79c3a20de4672dff1b9ac6c63
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533355"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121455"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,7 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 | ---| --- |
 | Urychlené obnovení databáze s izolovanými databázemi a elastickými fondy | Informace najdete v tématu [urychlení obnovení databáze](../accelerated-database-recovery.md).|
 | Zjišťování a klasifikace dat  |Informace najdete v tématu [Azure SQL Database a Azure synapse Analytics data discovery & klasifikací](data-discovery-and-classification-overview.md).|
-| Úlohy elastické databáze | Informace najdete v tématu [vytváření, konfigurace a Správa elastických úloh](elastic-jobs-overview.md). |
+| Úlohy elastické databáze (Preview) | Informace najdete v tématu [vytváření, konfigurace a Správa elastických úloh](elastic-jobs-overview.md). |
 | Elastické dotazy | Informace najdete v tématu [Přehled elastického dotazu](elastic-query-overview.md). |
 | Elastické transakce | [Distribuované transakce v cloudových databázích](elastic-transactions-overview.md) |
 | Editor dotazů v Azure Portal |Informace najdete v tématu [použití Editoru dotazů SQL Azure Portal k připojení a dotazování dat](connect-query-portal.md).|

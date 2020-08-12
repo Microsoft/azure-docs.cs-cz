@@ -12,12 +12,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 50748334a59dd6b3d7601bd8a32ac99bfe90b0fe
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c193742527cf69526d69549d3c10f5591f0d2f93
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552811"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115692"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>Integrace s platformou Microsoft identity
 
@@ -31,15 +31,15 @@ Existuje několik způsobů, jak integrovat aplikaci s platformou Microsoft iden
 
 ### <a name="support-microsoft-identity-platform-as-a-way-to-sign-in-to-your-application"></a>Podpora platformy Microsoft Identity Platform jako způsobu přihlášení k aplikaci
 
-**Snižte tření při přihlašování a snižte náklady na podporu.** Když se k vaší aplikaci přihlašujete pomocí Microsoft Identity Platform, uživatelé nebudou mít k zapamatování další jméno a heslo. Jako vývojář budete mít jedno méně hesla pro ukládání a ochranu. Nemusíte zpracovávat zapomenuté resetování hesla, ale jenom významné úspory. Microsoft Identity Platform reidentity se přihlašuje pro některé z nejoblíbenějších cloudových aplikací na světě, včetně Office 365 a Microsoft Azure. Se stovkami milionů uživatelů od milionů organizací je pravděpodobné, že se Váš uživatel už přihlásil k platformě Microsoft identity. Přečtěte si další informace o [Přidání podpory pro přihlášení k platformě Microsoft Identity Platform](authentication-scenarios.md).
+**Snižte tření při přihlašování a snižte náklady na podporu.** Když se k vaší aplikaci přihlašujete pomocí Microsoft Identity Platform, uživatelé nebudou mít k zapamatování další jméno a heslo. Jako vývojář budete mít jedno méně hesla pro ukládání a ochranu. Nemusíte zpracovávat zapomenuté resetování hesla, ale jenom významné úspory. Microsoft Identity Platform reidentity se přihlašuje pro některé z nejoblíbenějších cloudových aplikací na světě, včetně Office 365 a Microsoft Azure. Se stovkami milionů uživatelů od milionů organizací je pravděpodobné, že se Váš uživatel už přihlásil k platformě Microsoft identity. Přečtěte si další informace o [Přidání podpory pro přihlášení k platformě Microsoft Identity Platform](./authentication-vs-authorization.md).
 
 **Zjednodušte si registraci své aplikace.**  Při registraci vaší aplikace může platforma Microsoftu pro identitu odeslat základní informace o uživateli, abyste mohli předem vyplnit formulář pro registraci, nebo ho úplně eliminovat. Uživatelé se můžou k vaší aplikaci zaregistrovat pomocí svého účtu Azure AD prostřednictvím známého prostředí pro vyjádření souhlasu, které se podobá těm, která se nacházejí v sociálních médiích a mobilních aplikacích. Každý uživatel se může zaregistrovat a přihlásit k aplikaci, která je integrovaná s Microsoft Identity platformou bez nutnosti zapojení IT. Přečtěte si další informace o [registraci aplikace pro přihlášení k účtu Azure AD](../../app-service/configure-authentication-provider-aad.md).
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Vyhledat uživatele, spravovat zřizování uživatelů a řídit přístup k vaší aplikaci
 
-**Vyhledejte uživatele v adresáři.**  Pomocí rozhraní Microsoft Graph API můžete uživatelům pomáhat vyhledávat a vyhledávat ostatní lidi v jejich organizaci při pozvání k ostatním uživatelům nebo pro udělení přístupu a nemusíte jim zadávat e-mailové adresy. Uživatelé můžou procházet pomocí známého rozhraní stylu adresáře, včetně zobrazení podrobností o organizační hierarchii. Přečtěte si další informace o [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/overview).
+**Vyhledejte uživatele v adresáři.**  Pomocí rozhraní Microsoft Graph API můžete uživatelům pomáhat vyhledávat a vyhledávat ostatní lidi v jejich organizaci při pozvání k ostatním uživatelům nebo pro udělení přístupu a nemusíte jim zadávat e-mailové adresy. Uživatelé můžou procházet pomocí známého rozhraní stylu adresáře, včetně zobrazení podrobností o organizační hierarchii. Přečtěte si další informace o [rozhraní Microsoft Graph API](/graph/overview).
 
-**Opětovné použití skupin a distribučních seznamů služby Active Directory, které už váš zákazník spravuje**  Azure AD obsahuje skupiny, které váš zákazník už používá k distribuci e-mailů a správě přístupu. Pomocí rozhraní Microsoft Graph API znovu použijte tyto skupiny a nemusíte od zákazníka vytvářet a spravovat samostatnou sadu skupin ve vaší aplikaci. Do své aplikace můžete také odeslat informace o skupině v tokenech přihlašování. Přečtěte si další informace o [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/overview).
+**Opětovné použití skupin a distribučních seznamů služby Active Directory, které už váš zákazník spravuje**  Azure AD obsahuje skupiny, které váš zákazník už používá k distribuci e-mailů a správě přístupu. Pomocí rozhraní Microsoft Graph API znovu použijte tyto skupiny a nemusíte od zákazníka vytvářet a spravovat samostatnou sadu skupin ve vaší aplikaci. Do své aplikace můžete také odeslat informace o skupině v tokenech přihlašování. Přečtěte si další informace o [rozhraní Microsoft Graph API](/graph/overview).
 
 **Použijte platformu Microsoft Identity Platform k řízení, kdo má přístup k vaší aplikaci.**  Správci a vlastníci aplikací v Azure AD můžou přiřazovat přístup k aplikacím pro konkrétní uživatele a skupiny. Pomocí rozhraní Microsoft Graph API si můžete tento seznam přečíst a použít ho k řízení zřizování a rušení zřizování prostředků a přístupu v rámci aplikace.
 
@@ -47,13 +47,13 @@ Existuje několik způsobů, jak integrovat aplikaci s platformou Microsoft iden
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Získání přístupu k profilu uživatele, kalendáři, e-mailu, kontaktům, souborům a dalším datům
 
-**Microsoft Identity Platform je autorizační Server pro Office 365 a další firemní služby Microsoftu.**  Pokud podporujete platformu Microsoft identity pro přihlášení k vaší aplikaci nebo chcete-li podpořit propojení vašich uživatelských účtů s uživatelskými účty Azure AD pomocí OAuth 2,0, můžete požádat o přístup pro čtení a zápis k profilu uživatele, kalendáři, e-mailu, kontaktům, souborům a dalším informacím. Můžete hladce zapisovat události do kalendáře uživatelů a číst soubory nebo zapisovat na jejich OneDrive. Přečtěte si další informace o [přístupu k rozhraním API Office 365](https://msdn.microsoft.com/office/office365/howto/platform-development-overview).
+**Microsoft Identity Platform je autorizační Server pro Office 365 a další firemní služby Microsoftu.**  Pokud podporujete platformu Microsoft identity pro přihlášení k vaší aplikaci nebo chcete-li podpořit propojení vašich uživatelských účtů s uživatelskými účty Azure AD pomocí OAuth 2,0, můžete požádat o přístup pro čtení a zápis k profilu uživatele, kalendáři, e-mailu, kontaktům, souborům a dalším informacím. Můžete hladce zapisovat události do kalendáře uživatelů a číst soubory nebo zapisovat na jejich OneDrive. Přečtěte si další informace o [přístupu k rozhraním API Office 365](/previous-versions/office/office-365-api/).
 
 ### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>Propagace vaší aplikace v tržištích Azure a Office 365
 
 **Zvyšte svou aplikaci na miliony organizací, které už používají Azure AD.**  Uživatelé, kteří hledají a procházejí tyto tržiště, již používají jednu nebo více cloudových služeb a mají kvalifikované zákazníky s cloudovou službou. Přečtěte si další informace o podpoře aplikace v [Azure Marketplace](https://azure.microsoft.com/marketplace/partner-program/).
 
-**Když se uživatelé registrují do vaší aplikace, zobrazí se na svém přístupovém panelu Azure AD a ve Spouštěči aplikací Office 365.**  Uživatelé se budou moct rychle a později vrátit do vaší aplikace, což zlepšuje zapojení uživatelů. Přečtěte si další informace o [přístupovém panelu Azure AD](../user-help/active-directory-saas-access-panel-introduction.md).
+**Když se uživatelé registrují do vaší aplikace, zobrazí se na svém přístupovém panelu Azure AD a ve Spouštěči aplikací Office 365.**  Uživatelé se budou moct rychle a později vrátit do vaší aplikace, což zlepšuje zapojení uživatelů. Přečtěte si další informace o [přístupovém panelu Azure AD](../user-help/my-apps-portal-end-user-access.md).
 
 ### <a name="secure-device-to-service-and-service-to-service-communication"></a>Zabezpečení komunikace mezi zařízeními a službami
 
@@ -73,9 +73,9 @@ Integrace s platformou Microsoft identity je dodávána s výhodami, které nevy
 
 **Multi-Factor Authentication.**  Platforma Microsoft Identity Platform poskytuje nativní službu Multi-Factor Authentication. Správci IT můžou pro přístup k vaší aplikaci vyžadovat vícefaktorové ověřování, takže tuto podporu nemusíte zakódovat sami. Přečtěte si další informace o [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
 
-**Neobvyklé zjišťování přihlášení.**  Platforma Microsoft Identity zpracovává více než miliarda přihlášení denně a při použití algoritmů strojového učení k detekci podezřelých aktivit a oznamuje správcům IT možné problémy. Díky podpoře přihlášení k platformě Microsoft Identity Platform získá vaše aplikace výhodu této ochrany. Přečtěte si další informace o [zobrazení sestavy Azure Active Directory Access](../active-directory-view-access-usage-reports.md).
+**Neobvyklé zjišťování přihlášení.**  Platforma Microsoft Identity zpracovává více než miliarda přihlášení denně a při použití algoritmů strojového učení k detekci podezřelých aktivit a oznamuje správcům IT možné problémy. Díky podpoře přihlášení k platformě Microsoft Identity Platform získá vaše aplikace výhodu této ochrany. Přečtěte si další informace o [zobrazení sestavy Azure Active Directory Access](../reports-monitoring/overview-reports.md).
 
-**Podmíněný přístup.**  Kromě služby Multi-Factor Authentication můžou správci vyžadovat splnění určitých podmínek, než se uživatelé můžou přihlásit ke svojí aplikaci. Podmínky, které je možné nastavit, zahrnují rozsah IP adres klientských zařízení, členství v zadaných skupinách a stav zařízení, které se používá pro přístup. Přečtěte si další informace o [Azure Active Directory podmíněný přístup](../active-directory-conditional-access-azure-portal.md).
+**Podmíněný přístup.**  Kromě služby Multi-Factor Authentication můžou správci vyžadovat splnění určitých podmínek, než se uživatelé můžou přihlásit ke svojí aplikaci. Podmínky, které je možné nastavit, zahrnují rozsah IP adres klientských zařízení, členství v zadaných skupinách a stav zařízení, které se používá pro přístup. Přečtěte si další informace o [Azure Active Directory podmíněný přístup](../conditional-access/overview.md).
 
 ### <a name="easy-development"></a>Snadný vývoj
 
@@ -91,5 +91,4 @@ Integrace s platformou Microsoft identity je dodávána s výhodami, které nevy
 
 Začněte [psát kód](v2-overview.md#getting-started).
 
-[Podepisování uživatelů při používání platformy Microsoft Identity Platform](authentication-scenarios.md)
-
+[Podepisování uživatelů při používání platformy Microsoft Identity Platform](./authentication-vs-authorization.md)

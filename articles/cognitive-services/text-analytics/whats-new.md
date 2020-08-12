@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 67850490a3c1d972d4d03eec545068b1d9eb9fff
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 95e9b208159e9af41563f12ce8af7892e13f6629
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986294"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121846"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
@@ -23,9 +23,45 @@ Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku n
 
 ## <a name="august-2020"></a>Srpen 2020
 
+### <a name="general-api-updates"></a>Obecné aktualizace rozhraní API
+
 * Verze modelu `2020-07-01` pro v3 `/keyphrases` `/pii` a `/languages` koncové body, které přidávají:
     * Další [kategorie entit](named-entity-types.md?tabs=personal) a specifických pro zemi pro státní správu pro rozpoznávání pojmenovaných entit
 * V případě požadavků V3 API, které překračují omezení publikovaných [dat](concepts/data-limits.md), se teď vrátí chyba HTTP 400. 
+
+### <a name="text-analytics-for-health-container-august-updates"></a>Aktualizace kontejneru stavů Analýza textu. srpna
+
+Následující aktualizace jsou specifické pro verzi Analýza textu ze srpna pro kontejner Health.
+
+* Nový model – verze pro Analýza textu pro stav:`2020-07-24`
+* Nová adresa URL pro odeslání Analýza textu pro žádosti o stav:`http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` 
+
+Následující vlastnosti v odpovědi JSON se změnily:
+
+* Přejmenování `type` na `category` 
+* Přejmenování `score` na `confidenceScore`
+* Entity v `category` poli výstupu JSON jsou teď v případě jazyka Pascal. Následující entity byly přejmenovány:
+    * `EXAMINATION_RELATION`byla přejmenována na `RelationalOperator` .
+    * `EXAMINATION_UNIT`byla přejmenována na `MeasurementUnit` .
+    * `EXAMINATION_VALUE`byla přejmenována na `MeasurementValue` .
+    * `ROUTE_OR_MODE`byl přejmenován `MedicationRoute` .
+    * Relační entita `ROUTE_OR_MODE_OF_MEDICATION` byla přejmenována na `RouteOfMedication` .
+
+Byly přidány následující entity:
+
+* NER
+    * `AdministrativeEvent`
+    * `CareEnvironment`
+    * `HealthcareProfession`
+    * `MedicationForm` 
+
+* Extrakce vztahu
+    * `DirectionOfCondition`
+    * `DirectionOfExamination`
+    * `DirectionOfTreatment`
+
+> [!div class="nextstepaction"]
+> [Další informace o Analýza textu pro kontejner stavu](how-tos/text-analytics-for-health.md)
 
 ## <a name="july-2020"></a>Červenec 2020 
 
@@ -39,10 +75,6 @@ Kontejner nabízí následující funkce:
 * Extrakce vztahu
 * Propojení entit
 * Opačné číslo
-
-
-> [!div class="nextstepaction"]
-> [Další informace o Analýza textu pro kontejner stavu](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>Květen 2020
 

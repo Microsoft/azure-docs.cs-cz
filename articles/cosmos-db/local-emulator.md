@@ -6,12 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: e06a2eac5387cd02e95d8252ae04edc356683ed9
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 7a115de449588ea69951e6d997aa5332e5d55ad1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028248"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119517"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Použití emulátoru Azure Cosmos pro místní vývoj a testování
 
@@ -241,7 +241,7 @@ Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort]
 
 Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Microsoft.Azure.Cosmos.Emulator.exe /?`.
 
-|**Nastavení** | **Popis** | **Příkaz**| **Arguments**|
+|**Možnost** | **Popis** | **Příkaz**| **Arguments**|
 |---|---|---|---|
 |[Žádné argumenty] | Spustí emulátor Azure Cosmos s výchozími nastaveními. |Microsoft.Azure.Cosmos.Emulator.exe| |
 |[Nápověda] |Zobrazí seznam podporovaných argumentů příkazového řádku.|Microsoft.Azure.Cosmos.Emulator.exe/? | |
@@ -490,7 +490,7 @@ Pokud pracujete na Macu, použijte následující postup:
 
 Po provedení tohoto postupu bude vaše prostředí důvěřovat certifikátu používanému emulátorem při připojování k IP adrese, kterou zveřejňuje `/AllowNetworkAccess` .
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Následující tipy vám pomůžou při řešení problémů, ke kterým dochází v emulátoru Azure Cosmos:
 
@@ -507,6 +507,8 @@ Následující tipy vám pomůžou při řešení problémů, ke kterým docház
 - Pokud narazíte na problém s připojením, [Shromážděte trasovací soubory](#trace-files), Zkomprimujte je a otevřete lístek podpory v [Azure Portal](https://portal.azure.com).
 
 - Pokud se zobrazí zpráva **Služba není dostupná**, pravděpodobně se emulátoru nedaří inicializovat sadu síťových protokolů. Zkontrolujte, zda máte nainstalovaného klienta Pulse Secure nebo klienta Juniper Networks, protože potíže mohou způsobovat jejich ovladače síťových filtrů. Odinstalace ovladačů síťových filtrů třetích stran obvykle potíže vyřeší. Případně můžete spustit emulátor pomocí/DisableRIO, který přepne síťovou komunikaci emulátoru na normální rozhraní Winsock. 
+
+- Pokud dojde k **chybě "zakázáno", "zpráva": "žádost se zakazuje zakázaným šifrováním v tranzitním protokolu nebo šifrě. Zaškrtněte nastavení minimální povolený protokol SSL/TLS... "** problémy s připojením, to může být způsobeno globálními změnami v operačním systému (například Insider Preview build 20170) nebo nastavením prohlížeče, které povoluje TLS 1,3 jako výchozí. K podobné chybě může dojít při použití sady SDK ke spuštění žádosti o emulátoru Cosmos, například **Microsoft.Azure.Documents.DocumentClientException: požadavek se zakazuje zakázaným šifrováním v tranzitním protokolu nebo šifrě. Ověřte nastavení minimálního povoleného protokolu SSL/TLS účtu**. V tuto chvíli se očekává, že emulátor Cosmos přijímá jenom a funguje s protokolem TLS 1,2. Doporučené řešení je změnit nastavení a výchozí možnost TLS 1,2; například ve Správci služby IIS přejděte na "weby" – > "výchozí weby" a vyhledejte "vazby lokality" pro port 8081 a upravte je tak, aby se protokol TLS 1,3 zakázal. Podobnou operaci lze provést pro webový prohlížeč prostřednictvím možností nastavení.
 
 - Pokud emulátor běží, když počítač přechází do režimu spánku nebo instaluje nějaké aktualizace operačního systému, může se zobrazit zpráva, že **služba momentálně není dostupná**. Obnovte data emulátoru tak, že kliknete pravým tlačítkem na ikonu, která se zobrazuje v oznamovacím panelu Windows, a vyberete **resetovat data**.
 

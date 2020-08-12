@@ -13,12 +13,12 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0654bce86cf5fb0b5bd117e444721e95f137dd47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 502bbe65cdc0aef768ff4f017b1f6a920815b001
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652695"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118854"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>Důvody pro použití Univerzální platforma Windows s MSAL.NET
 Vývojáři aplikací, které používají Univerzální platforma Windows (UWP) se MSAL.NET, by měly zvážit koncepty tohoto článku.
@@ -42,7 +42,7 @@ Základní implementace WAB na platformě UWP nefunguje správně v podnikových
 
 Tomuto problému se můžete vyhnout tak, že použijete alternativní metodu, jako je uživatelské jméno – heslo a telefonní ověřování, ale prostředí není dobré.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Někteří zákazníci oznámili následující chybu při přihlašování v konkrétních podnikových prostředích, ve kterých ví, že mají připojení k Internetu a že připojení funguje s veřejnou sítí.
 
@@ -56,7 +56,7 @@ Tomuto problému se můžete vyhnout tím, že zajistěte, aby se v WAB (podklad
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe\EnablePrivateNetwork = 00000001
 ```
 
-Další informace najdete v tématu [zprostředkovatel webového ověřování – Fiddler](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler).
+Další informace najdete v tématu [zprostředkovatel webového ověřování – Fiddler](/windows/uwp/security/web-authentication-broker#fiddler).
 
 ## <a name="next-steps"></a>Další kroky
 Následující ukázky poskytují další informace.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: d91fd15d7f1f5d2bb1bd97b5a28ef56f09797140
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 9ed6244d8f5ecf18e89994c0c62af16290fb68c5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080313"
+ms.locfileid: "88120571"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -35,7 +35,7 @@ Tato příručka představuje úvod k platformě Azure pro vývojáře aplikací
 
 Se všemi službami, které nabízí Azure, může být zastrašování úkolem zjistit, které služby potřebujete k podpoře vaší architektury řešení. V této části se vysvětlují služby Azure, které vývojáři často používají. Seznam všech služeb Azure najdete v [dokumentaci k Azure](../../index.yml).
 
-Nejprve se musíte rozhodnout, jak hostovat aplikaci v Azure. Potřebujete spravovat celou infrastrukturu jako virtuální počítač (VM). Můžete používat zařízení pro správu platformy, která poskytuje Azure? Je možné, že budete potřebovat server bez serveru k hostování pouze pro provádění kódu?
+Nejprve se musíte rozhodnout, jak hostovat aplikaci v Azure. Potřebujete spravovat celou infrastrukturu jako virtuální počítač (VM)? Můžete používat zařízení pro správu platformy, která poskytuje Azure? Je možné, že budete potřebovat server bez serveru k hostování pouze pro provádění kódu?
 
 Vaše aplikace potřebuje cloudové úložiště, které Azure nabízí několik možností pro. Můžete využít výhod podnikového ověřování Azure. K dispozici jsou také nástroje pro cloudové vývoj a monitorování a většina hostitelských služeb nabízí integraci DevOps.
 

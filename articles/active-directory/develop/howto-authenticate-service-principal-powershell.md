@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 6204fcefa60d1a627e6e3d4e6b799efd3ee9298b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 423ec19d249d183f8888bf9e1eb837e2c860b1ed
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505864"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117137"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Postupy: použití Azure PowerShell k vytvoření instančního objektu s certifikátem
 
@@ -43,13 +43,13 @@ K dokončení tohoto článku musíte mít dostatečná oprávnění v rámci va
 Nejjednodušším způsobem, jak zkontrolovat, jestli má váš účet dostatečná oprávnění, je použít k tomu portál. Informace najdete v článku [Kontrola požadovaných oprávnění](howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 ## <a name="assign-the-application-to-a-role"></a>Přiřazení aplikace k roli
-Pokud chcete získat přístup k prostředkům ve vašem předplatném, musíte aplikaci přiřadit k roli. Rozhodněte, která role nabízí správná oprávnění pro aplikaci. Další informace o dostupných rolích naleznete v tématu [RBAC: předdefinované role](/azure/role-based-access-control/built-in-roles).
+Pokud chcete získat přístup k prostředkům ve vašem předplatném, musíte aplikaci přiřadit k roli. Rozhodněte, která role nabízí správná oprávnění pro aplikaci. Další informace o dostupných rolích naleznete v tématu [RBAC: předdefinované role](../../role-based-access-control/built-in-roles.md).
 
 Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění jsou zděděna na nižší úrovně rozsahu. Například přidání aplikace do role *Čtenář* pro skupinu prostředků znamená, že může číst skupinu prostředků a všechny prostředky, které obsahuje. Pokud chcete aplikaci dovolit, aby prováděla akce, jako je restartování, spuštění a zastavení instancí, vyberte roli *Přispěvatel* .
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Vytvoření instančního objektu s certifikátem podepsaným svým držitelem
 
-Následující příklad popisuje jednoduchou situaci. Používá [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) k vytvoření instančního objektu s certifikátem podepsaným svým držitelem a pomocí [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) přiřadí roli [čtenáře](/azure/role-based-access-control/built-in-roles#reader) k instančnímu objektu. Přiřazení role je vymezené vaším aktuálně vybraným předplatným Azure. Pokud chcete vybrat jiné předplatné, použijte [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
+Následující příklad popisuje jednoduchou situaci. Používá [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) k vytvoření instančního objektu s certifikátem podepsaným svým držitelem a pomocí [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) přiřadí roli [čtenáře](../../role-based-access-control/built-in-roles.md#reader) k instančnímu objektu. Přiřazení role je vymezené vaším aktuálně vybraným předplatným Azure. Pokud chcete vybrat jiné předplatné, použijte [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
 
 > [!NOTE]
 > Rutina New-SelfSignedCertificate a modul PKI v současnosti není v prostředí PowerShell Core podporována. 
@@ -212,7 +212,7 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
   -StartDate $cert.NotBefore
 ```
 
-## <a name="debug"></a>Ladit
+## <a name="debug"></a>Ladění
 
 Při vytváření instančního objektu může dojít k následujícím chybám:
 
@@ -224,4 +224,4 @@ Při vytváření instančního objektu může dojít k následujícím chybám:
 
 * Pokud chcete nastavit instanční objekt s heslem, podívejte se na článek věnovaný [vytvoření instančního objektu Azure s použitím prostředí Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 * Podrobnější vysvětlení aplikací a instančních objektů najdete v článku [Objekty aplikací a instanční objekty](app-objects-and-service-principals.md).
-* Další informace o ověřování Azure AD najdete v tématu [scénáře ověřování pro Azure AD](authentication-scenarios.md).
+* Další informace o ověřování Azure AD najdete v tématu [scénáře ověřování pro Azure AD](./authentication-vs-authorization.md).

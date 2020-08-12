@@ -13,12 +13,12 @@ ms.date: 05/28/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bdf9c1ce36921076ab79b2ca501bf008eddfe375
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47af4015fa5c6d9a73ee597146890a29b4b9ef9d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194055"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119891"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Získání a ukládání tokenů do mezipaměti pomocí knihovny Microsoft Authentication Library (MSAL)
 
@@ -30,7 +30,7 @@ Můžete také vymazat mezipaměť tokenu, která se dosahuje odebráním účt�
 
 ## <a name="scopes-when-acquiring-tokens"></a>Obory při získávání tokenů
 
-[Obory](v2-permissions-and-consent.md) jsou oprávnění, která webovým rozhraní API zpřístupňuje, že klientské aplikace můžou požádat o přístup k. Klientské aplikace požadují souhlas uživatele pro tyto obory při vytváření žádostí o ověření, aby získaly tokeny pro přístup k webovým rozhraním API. MSAL umožňuje získat tokeny pro přístup k Azure AD pro vývojáře (v 1.0) a rozhraní Microsoft Identity Platform (v 2.0). protokol v 2.0 místo prostředků v požadavcích používá obory. Další informace najdete v tématu [porovnání čtení v 1.0 a v 2.0](active-directory-v2-compare.md). Na základě konfigurace webového rozhraní API verze tokenu, kterou přijímá, vrátí koncový bod v 2.0 přístupový token do MSAL.
+[Obory](v2-permissions-and-consent.md) jsou oprávnění, která webovým rozhraní API zpřístupňuje, že klientské aplikace můžou požádat o přístup k. Klientské aplikace požadují souhlas uživatele pro tyto obory při vytváření žádostí o ověření, aby získaly tokeny pro přístup k webovým rozhraním API. MSAL umožňuje získat tokeny pro přístup k Azure AD pro vývojáře (v 1.0) a rozhraní Microsoft Identity Platform (v 2.0). protokol v 2.0 místo prostředků v požadavcích používá obory. Další informace najdete v tématu [porovnání čtení v 1.0 a v 2.0](../azuread-dev/azure-ad-endpoint-comparison.md). Na základě konfigurace webového rozhraní API verze tokenu, kterou přijímá, vrátí koncový bod v 2.0 přístupový token do MSAL.
 
 Některé metody získání tokenu MSAL vyžadují `scopes` parametr. `scopes`Parametr je seznam řetězců, které deklarují požadovaná oprávnění a požadované prostředky. Dobře známé obory jsou [Microsoft Graph oprávnění](/graph/permissions-reference).
 

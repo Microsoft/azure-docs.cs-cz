@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 6a20bbeef83072b6fb76bd4e9214e63f094736a1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: b76e77d6d8575fa086f74c956594a344076f7c74
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172585"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118837"
 ---
 # <a name="add-your-application-to-the-azure-active-directory-application-gallery"></a>Přidání aplikace do Galerie aplikací Azure Active Directory
 
@@ -89,14 +89,14 @@ Uživatel typu Host je federovaný pro domácího tenanta, který je také Azure
 
 Pokud chcete zobrazit seznam aplikací v galerii aplikací Azure AD, musíte nejdřív implementovat jeden z následujících federačních protokolů, které Azure AD podporuje. Musíte také souhlasit s podmínkami a ujednáními v galerii aplikací Azure AD. Přečtěte si podmínky a ujednání Galerie aplikací Azure AD na [tomto webu](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/).
 
-- **OpenID Connect**: Pokud chcete svou aplikaci integrovat s Azure AD pomocí protokolu Open ID Connect, postupujte podle [pokynů pro vývojáře](v1-authentication-scenarios.md).
+- **OpenID Connect**: Pokud chcete svou aplikaci integrovat s Azure AD pomocí protokolu Open ID Connect, postupujte podle [pokynů pro vývojáře](../azuread-dev/v1-authentication-scenarios.md).
 
     ![Výpis aplikace OpenID Connect v galerii](./media/howto-app-gallery-listing/openid.png)
 
     * Pokud chcete přidat aplikaci do seznamu v galerii pomocí OpenID Connect, vyberte **OpenID připojit & OAuth 2,0** , jak je znázorněno na obrázku.
     * Pokud máte s přístupem nějaké problémy, obraťte se na [integrační tým jednotného přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-- **Saml 2,0** nebo **WS-** dodaný: Pokud vaše aplikace podporuje SAML 2,0, můžete ji integrovat přímo s klientem Azure AD podle [pokynů pro přidání vlastní aplikace](../active-directory-saas-custom-apps.md).
+- **Saml 2,0** nebo **WS-** dodaný: Pokud vaše aplikace podporuje SAML 2,0, můžete ji integrovat přímo s klientem Azure AD podle [pokynů pro přidání vlastní aplikace](../manage-apps/view-applications-portal.md).
 
   ![Výpis aplikace SAML 2,0 nebo WS-v galerii](./media/howto-app-gallery-listing/saml.png)
 

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 8/7/2020
-ms.openlocfilehash: 518d3880a740de2cda4f01e362d8a5ef7865b361
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 7697ba514b74935f8da6d71cdfb380e704d66f56
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037299"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121353"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -119,7 +119,7 @@ Následující funkce nepodporují automatické pozastavení, ale podporují aut
 - Geografická replikace (aktivní geografická replikace a skupiny s automatickým převzetím služeb při selhání).
 - Dlouhodobé uchovávání záloh (LTR).
 - Synchronizovaná databáze použitá v synchronizaci dat SQL  Na rozdíl od synchronizace databází databáze hub a členské databáze podporují automatické pozastavení.
-- Databáze úlohy používaná v elastických úlohách.
+- Databáze úlohy používaná v elastických úlohách (Preview).
 
 Při nasazování některých aktualizací služby, které vyžadují databázi online, se dočasně brání v dočasném pozastavení.  V takových případech se po dokončení aktualizace služby znovu povolí opětovné pozastavení.
 

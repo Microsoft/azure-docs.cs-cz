@@ -1,16 +1,16 @@
 ---
-title: Zprovoznění zákazníka na Azure Lighthouse
+title: Onboarding zákazníků do služby Azure Lighthouse
 description: Naučte se, jak začlenit zákazníka do Azure Lighthouse, který umožňuje získat a spravovat jejich prostředky prostřednictvím vlastního tenanta pomocí delegované správy prostředků Azure.
 ms.date: 05/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 3cc754dba124c5f647cd4b51246ced19360c82c3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: cac40a835ff3227a31611b31655865d43fa378ab
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133468"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118871"
 ---
-# <a name="onboard-a-customer-to-azure-lighthouse"></a>Zprovoznění zákazníka na Azure Lighthouse
+# <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding zákazníků do služby Azure Lighthouse
 
 V tomto článku se dozvíte, jak jako poskytovatel služeb můžete zákazníka připojit do Azure Lighthouse. V takovém případě se delegované prostředky zákazníka (předplatná a skupiny prostředků) dají a spravují prostřednictvím vlastního tenanta Azure Active Directory (Azure AD) pomocí [delegované správy prostředků Azure](../concepts/azure-delegated-resource-management.md).
 
@@ -86,7 +86,7 @@ Aby bylo možné definovat autorizaci, budete muset znát hodnoty ID pro každé
 (Get-AzADUser -UserPrincipalName '<yourUPN>').id
 
 # To retrieve the objectId for an SPN
-(Get-AzADApplication -DisplayName '<appDisplayName>').objectId
+(Get-AzADApplication -DisplayName '<appDisplayName>' | Get-AzADServicePrincipal).Id
 
 # To retrieve role definition IDs
 (Get-AzRoleDefinition -Name '<roleName>').id
@@ -131,7 +131,7 @@ Proces zprovoznění vyžaduje šablonu Azure Resource Manager (poskytnutou v [�
 |---------|---------|---------|
 |Předplatné   |[delegatedResourceManagement.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
 |Skupina prostředků   |[rgDelegatedResourceManagement.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
-|Několik skupin prostředků v rámci předplatného   |[multipleRgDelegatedResourceManagement.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
+|Více skupin prostředků v předplatném   |[multipleRgDelegatedResourceManagement.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
 |Předplatné (při použití nabídky publikované do Azure Marketplace)   |[marketplaceDelegatedResourceManagement.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
@@ -254,7 +254,7 @@ Po úspěšném připojení zákaznického předplatného do Azure Lighthouse uv
 V tenantovi poskytovatele služeb:
 
 1. Přejděte na [stránku Moji zákazníci](view-manage-customers.md).
-2. Vyberte možnost **zákazníci**.
+2. Vyberte **Zákazníci**.
 3. Potvrďte, že si můžete zobrazit odběry s názvem nabídky, který jste zadali v šabloně Správce prostředků.
 
 > [!IMPORTANT]
@@ -263,7 +263,7 @@ V tenantovi poskytovatele služeb:
 V tenantovi zákazníka:
 
 1. Přejděte na [stránku poskytovatelé služeb](view-manage-service-providers.md).
-2. Vyberte **nabídky poskytovatele služeb**.
+2. Vyberte **Nabídky poskytovatele služeb**.
 3. Potvrďte, že si můžete zobrazit odběry s názvem nabídky, který jste zadali v šabloně Správce prostředků.
 
 > [!NOTE]

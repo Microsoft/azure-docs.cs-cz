@@ -7,12 +7,12 @@ ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: a0469feed391025f8dd50a7f8b11b96265b0df29
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 09442e01fa160d3851169a51230fa4cbef7e0980
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987405"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118565"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout"></a>Diagnostika a řešení potíží s Azure Cosmos DB časový limit požadavku .NET SDK
 K chybě HTTP 408 dojde v případě, že sada SDK nemohla dokončit požadavek předtím, než dojde k vypršení časového limitu.
@@ -51,6 +51,9 @@ Pokud pracujete na virtuálních počítačích Azure, postupujte podle pokynů 
 Pokud používáte v Azure App Service, postupujte podle pokynů pro [řešení potíží s chybami připojení](../app-service/troubleshoot-intermittent-outbound-connection-errors.md#cause) a [použijte diagnostiku App Service](https://azure.github.io/AppService/2018/03/01/Deep-Dive-into-TCP-Connections-in-App-Service-Diagnostics.html).
 
 #### <a name="solution-3"></a>Řešení 3:
+Pokud používáte na Azure Functions, ověřte, že se vám [Azure Functions doporučení](../azure-functions/manage-connections.md#static-clients) pro údržbu nejednoznačných a statických klientů pro všechny zahrnuté služby (včetně Cosmos DB), a zkontrolovat [omezení služby](../azure-functions/functions-scale.md#service-limits) na základě typu a velikosti vašeho Function App hostování.
+
+#### <a name="solution-4"></a>Řešení 4:
 Pokud používáte proxy server HTTP, ujistěte se, že může podporovat počet připojení nakonfigurovaných v sadě SDK `ConnectionPolicy` .
 Jinak čelíte problémům s připojením.
 

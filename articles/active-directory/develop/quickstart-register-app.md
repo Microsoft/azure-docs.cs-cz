@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 79983678d13b810a521a00ba2c1978de92a5029f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65fff06b4a2d28bbc276920ccbaba90d814d03f3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81309505"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115352"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Rychlý Start: registrace aplikace s platformou Microsoft identity
 
@@ -50,7 +50,7 @@ Vaše aplikace se integruje s platformou Microsoft identity tak, že ji zaregist
     * V případě webových aplikací zadejte základní adresu URL vaší aplikace. Například `https://localhost:31544` může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci.
     * V případě veřejných klientských aplikací zadejte identifikátor URI, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte konkrétní hodnotu pro vaši aplikaci, například `myapp://auth`.
 
-    Příklady webových aplikací nebo nativních aplikací najdete v tématu rychlé starty v [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop).
+    Příklady webových aplikací nebo nativních aplikací najdete v tématu rychlé starty v [Microsoft Identity Platform](./index.yml).
 
 1. Až budete hotovi, vyberte **Zaregistrovat**.
 
@@ -70,7 +70,7 @@ Azure AD přiřadí vaší aplikaci jedinečnou aplikaci nebo klienta s ID. Port
 
 * Informace o správě podporovaných účtů najdete v tématu [rychlý Start: Změna účtů podporovaných aplikací](quickstart-modify-supported-accounts.md).
 
-* Pokud chcete vytvořit aplikaci a přidat funkce, podívejte se na rychlé starty v [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop).
+* Pokud chcete vytvořit aplikaci a přidat funkce, podívejte se na rychlé starty v [Microsoft Identity Platform](./index.yml).
 
 * Další informace o dvou objektech Azure AD, které představují zaregistrovanou aplikaci, a vztahu mezi nimi, najdete v článku o [objektech aplikací a instančních objektech](app-objects-and-service-principals.md).
 

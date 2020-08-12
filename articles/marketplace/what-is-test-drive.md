@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: abad72145b095b4da77ec499f936c6912fd970a6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bd3b77f80a414dd3db1d5106929fa0e215e34c1f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229444"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121863"
 ---
 # <a name="what-is-a-test-drive"></a>Co je testovací verze?
 
@@ -44,7 +44,17 @@ Podrobnosti o konfiguraci jedné z těchto testovacích jednotek najdete v čás
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager testovacích jednotek
 
-Tato šablona nasazení obsahuje všechny prostředky Azure, které tvoří vaše řešení. Produkty, které vyhovují tomuto scénáři, používají pouze prostředky Azure. Toto je jediná možnost testovacího disku pro virtuální počítač nebo nabídky aplikací Azure.
+Tato šablona nasazení obsahuje všechny prostředky Azure, které tvoří vaše řešení. Produkty, které vyhovují tomuto scénáři, používají pouze prostředky Azure. K dispozici je Azure Resource Manager testovací jednotka pro tyto typy nabídek: 
+
+- Aplikace Azure
+- Dynamics 365 for Business Central
+- Dynamics 365 pro Customer Engagement & PowerApps
+- Dynamics 365 for Operations
+- SaaS
+- Virtuální počítače
+
+>[!NOTE]
+>Toto je jediná možnost testovacího disku pro virtuální počítač a nabídky aplikací Azure.
 
 ### <a name="hosted-test-drive"></a>Hostovaný testovací disk
 

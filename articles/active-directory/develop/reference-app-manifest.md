@@ -13,18 +13,18 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: fb536b27fe283170626ca6ffa2d21749d511f244
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: b94bcd1cfbbf215ed912d506d27311aae502656b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923505"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115063"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
 
 Manifest aplikace obsahuje definici všech atributů objektu aplikace na platformě Microsoft identity. Slouží také jako mechanismus pro aktualizaci objektu aplikace. Další informace o entitě aplikace a jejím schématu naleznete v dokumentaci k [entitě aplikace Graph API](/graph/api/resources/application).
 
-Atributy aplikace můžete nakonfigurovat pomocí Azure Portal nebo programově pomocí [REST API](/graph/api/resources/application) nebo [PowerShellu](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications). Existují však situace, kdy budete muset upravit manifest aplikace a nakonfigurovat atribut aplikace. Mezi tyto scénáře patří:
+Atributy aplikace můžete nakonfigurovat pomocí Azure Portal nebo programově pomocí [REST API](/graph/api/resources/application) nebo [PowerShellu](/powershell/module/azuread/?view=azureadps-2.0#applications). Existují však situace, kdy budete muset upravit manifest aplikace a nakonfigurovat atribut aplikace. Mezi tyto scénáře patří:
 
 * Pokud jste aplikaci zaregistrovali jako víceklientské a osobní účty Microsoft Azure AD, nemůžete v uživatelském rozhraní měnit podporované účty Microsoft. Místo toho je nutné použít editor manifestu aplikace ke změně podporovaného typu účtu.
 * Pokud potřebujete definovat oprávnění a role, které vaše aplikace podporuje, je nutné změnit manifest aplikace.
@@ -33,7 +33,7 @@ Atributy aplikace můžete nakonfigurovat pomocí Azure Portal nebo programově 
 
 Konfigurace manifestu aplikace:
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte službu **Azure Active Directory** .
+1. Přejděte na [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte službu **Azure Active Directory** .
 1. Vyberte **Registrace aplikací**.
 1. Vyberte aplikaci, kterou chcete nakonfigurovat.
 1. Na stránce **Přehled** aplikace vyberte část **Manifest**. Otevře se webový editor manifestu, který umožňuje upravovat manifest v rámci portálu. Volitelně můžete vybrat **Stáhnout** a upravit manifest místně a potom použít **nahrávání** pro jeho opakované použití do aplikace.
@@ -534,7 +534,7 @@ Tato vlastnost s více hodnotami obsahuje seznam registrovaných redirect_uri ho
 - `InstalledClient`
 - `Spa`
 
-Další informace najdete v tématu [omezení a omezení replyUrl](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
+Další informace najdete v tématu [omezení a omezení replyUrl](./reply-url.md).
 
 Příklad:
 
@@ -686,14 +686,14 @@ Následující komentáře vám poskytnou zpětnou vazbu, která pomáhá Upřes
 [AAD-DEVELOPER-GLOSSARY]:developer-glossary.md
 [AAD-GROUPS-FOR-AUTHORIZATION]: http://www.dushyantgill.com/blog/2014/12/10/authorization-cloud-applications-using-ad-groups/
 [ADD-UPD-RMV-APP]:quickstart-v1-integrate-apps-with-azure-ad.md
-[APPLICATION-ENTITY]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
-[APPLICATION-ENTITY-APP-ROLE]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type
-[APPLICATION-ENTITY-OAUTH2-PERMISSION]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type
+[APPLICATION-ENTITY]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity
+[APPLICATION-ENTITY-APP-ROLE]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#approle-type
+[APPLICATION-ENTITY-OAUTH2-PERMISSION]: /previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#oauth2permission-type
 [AZURE-PORTAL]: https://portal.azure.com
 [DEV-GUIDE-TO-AUTH-WITH-ARM]: http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/
 [GRAPH-API]: active-directory-graph-api.md
 [IMPLICIT-GRANT]:v1-oauth2-implicit-grant-flow.md
-[INTEGRATING-APPLICATIONS-AAD]: https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/
-[O365-PERM-DETAILS]: https://msdn.microsoft.com/office/office365/HowTo/application-manifest
-[O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365
+[INTEGRATING-APPLICATIONS-AAD]: ./quickstart-register-app.md
+[O365-PERM-DETAILS]: /graph/permissions-reference
+[O365-SERVICE-DAEMON-APPS]: /previous-versions/office/office-365-api/
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/

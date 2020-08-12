@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: ca164b6ad6b5333c662a6632b27f658ab479231c
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 655486d8273719e89187ebac0992cf83904d9b98
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067626"
+ms.locfileid: "88120639"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -105,7 +105,9 @@ Azure Storage obsahuje všechny datové soubory v databázi. Stránky serverů u
 
 ## <a name="backup-and-restore"></a>Zálohování a obnovení
 
-Zálohy jsou založené na snímku souborů, takže jsou skoro okamžité. Oddělení úložiště a výpočtů umožňuje přesunout operaci zálohování/obnovení do vrstvy úložiště, aby se snížilo zatížení primární repliky služby Compute. V důsledku toho zálohování databáze nemá vliv na výkon primárního výpočetního uzlu. Podobně se obnovení provádí vrácením do snímků souborů a nejedná se o velikost datové operace. Obnovení je operace s konstantním časem a dokonce i více než terabajt databází může být obnoveno v řádu minut, nikoli hodin nebo dnů. Vytvoření nových databází obnovením existující zálohy také využívá tuto funkci: vytváření kopií databáze pro účely vývoje nebo testování, dokonce i z databází s velikostí terabajtu, je doable během několika minut.
+Zálohy jsou založené na snímku souborů, takže jsou skoro okamžité. Oddělení úložiště a výpočtů umožňuje přesunout operaci zálohování/obnovení do vrstvy úložiště, aby se snížilo zatížení primární repliky služby Compute. V důsledku toho zálohování databáze nemá vliv na výkon primárního výpočetního uzlu. Podobně se obnovení bodu v čase (PITR) provádí vrácením do snímků souborů a jako taková není velikost datové operace. Obnovení databáze v rámci škálování databáze ve stejné oblasti Azure je operace s konstantním časem a dokonce i více než jeden z nich může být obnoveno v řádu minut, nikoli hodin nebo dnů. Vytvoření nových databází obnovením existující zálohy také využívá tuto funkci: vytváření kopií databáze pro účely vývoje nebo testování, dokonce i z databází s velikostí terabajtu, je doable během několika minut.
+
+Informace o geografickém obnovení databází s škálovatelným škálováním najdete v tématu [obnovení databáze v rámci škálování do jiné oblasti](#restoring-a-hyperscale-database-to-a-different-region).
 
 ## <a name="scale-and-performance-advantages"></a>Výhody škálování a výkonu
 
@@ -156,7 +158,7 @@ Informace o smlouvě SLA pro škálování na úrovni najdete v tématu [SLA pro
 
 ## <a name="disaster-recovery-for-hyperscale-databases"></a>Zotavení po havárii pro databáze s škálovatelným škálováním
 
-### <a name="restoring-a-hyperscale-database-to-a-different-geography"></a>Obnovení databáze v rámci škálování na jiné geografické úrovni
+### <a name="restoring-a-hyperscale-database-to-a-different-region"></a>Obnovení databáze v rámci škálování na jiné oblasti
 
 Pokud potřebujete obnovit databázi v prostředí Azure SQL Database do jiné oblasti, než je ta, která je aktuálně hostovaná v rámci operace zotavení po havárii, přemístění, přemístění nebo jakéhokoli jiného důvodu, je primární metodou provést geografickou obnovu databáze. To zahrnuje přesně stejný postup jako v případě, že byste použili k obnovení jakékoli jiné databáze v SQL Database do jiné oblasti:
 

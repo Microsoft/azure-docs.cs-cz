@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 9388ef4aa320147815bec79c2fa4b90bce3cdac1
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 56d2e01d35f25ac469e808a805382463d2b23ceb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846135"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121098"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: Konfigurace kódu
 
@@ -107,8 +107,8 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 Další informace o tom, jak nakonfigurovat desktopovou aplikaci MSAL.NET:
 
-- Seznam všech modifikátorů, které jsou k dispozici v systému `PublicClientApplicationBuilder` , naleznete v referenční dokumentaci [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
-- Popis všech možností zveřejněných v nástroji naleznete v `PublicClientApplicationOptions` tématu [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) v referenční dokumentaci.
+- Seznam všech modifikátorů, které jsou k dispozici v systému `PublicClientApplicationBuilder` , naleznete v referenční dokumentaci [PublicClientApplicationBuilder](/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
+- Popis všech možností zveřejněných v nástroji naleznete v `PublicClientApplicationOptions` tématu [PublicClientApplicationOptions](/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) v referenční dokumentaci.
 
 ### <a name="complete-example-with-configuration-options"></a>Kompletní příklad s možnostmi konfigurace
 

@@ -13,12 +13,12 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: e706c0eeb848b6cd14a3c14de821ca59a9c52ee9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe321de279397d24e0926cf1ef26a1d66adac8c4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611360"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117307"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Architektura Azure AD pro udělování souhlasu
 
@@ -28,7 +28,7 @@ Rozhraní je založené na uživateli nebo správci, kteří přistupují k apli
 
 Rozhraní pro vyjádření souhlasu je postavené na OAuth 2,0 a jeho různých tocích, jako je udělení autorizačního kódu a udělení přihlašovacích údajů klienta, pomocí veřejných nebo důvěrných klientů. Díky použití OAuth 2,0 může Azure AD vytvořit mnoho různých typů klientských aplikací – například na telefonu, tabletu, serveru nebo webové aplikaci – a získat přístup k požadovaným prostředkům.
 
-Další informace o používání souhlasu architektury s autorizačními stipendii OAuth 2.0 najdete v tématu [autorizace přístupu k webovým aplikacím pomocí OAuth 2,0 a Azure AD](v2-oauth2-auth-code-flow.md) a [scénářů ověřování pro Azure AD](authentication-scenarios.md). Informace o tom, jak pomocí Microsoft Graph získat autorizovaný přístup k Office 365, najdete v tématu [ověřování aplikací pomocí Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
+Další informace o používání souhlasu architektury s autorizačními stipendii OAuth 2.0 najdete v tématu [autorizace přístupu k webovým aplikacím pomocí OAuth 2,0 a Azure AD](v2-oauth2-auth-code-flow.md) a [scénářů ověřování pro Azure AD](./authentication-vs-authorization.md). Informace o tom, jak pomocí Microsoft Graph získat autorizovaný přístup k Office 365, najdete v tématu [ověřování aplikací pomocí Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
 
 ## <a name="consent-experience---an-example"></a>Prostředí pro vyjádření souhlasu – příklad
 
@@ -65,4 +65,4 @@ Následující kroky ukazují, jak funguje souhlas pro vývojáře aplikací i p
 ## <a name="next-steps"></a>Další kroky
 
 * Podívejte se, [Jak převést aplikaci na více tenantů](howto-convert-app-to-be-multi-tenant.md) .
-* Podrobnější informace najdete [v tématu o tom, jak je podpora podporovaná na úrovni protokolu OAuth 2,0 během toku udělení autorizačního kódu.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
+* Podrobnější informace najdete [v tématu o tom, jak je podpora podporovaná na úrovni protokolu OAuth 2,0 během toku udělení autorizačního kódu.](../azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)

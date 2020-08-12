@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d755573b53eb63d85165fb73fe4b97298dbeff09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13000c5a61dc2c4d49aa395271beddef64d32245
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868995"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119211"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Aplikace démona, která volá webová rozhraní API – získá token.
 
@@ -167,7 +167,7 @@ private static IAuthenticationResult acquireToken() throws Exception {
 
 ---
 
-### <a name="protocol"></a>Protocol (Protokol)
+### <a name="protocol"></a>Protokol
 
 Pokud ještě nemáte knihovnu pro zvolený jazyk, možná budete chtít použít protokol přímo:
 
@@ -204,7 +204,7 @@ Další informace najdete v dokumentaci k protokolu: [Microsoft Identity Platfor
 
 V MSAL.NET `AcquireTokenForClient` používá mezipaměť tokenů aplikace. (Všechny ostatní metody AcquireToken*XX* používají mezipaměť tokenu uživatele.) Nevolejte `AcquireTokenSilent` před voláním `AcquireTokenForClient` , protože `AcquireTokenSilent` používá mezipaměť tokenu *uživatele* . `AcquireTokenForClient`kontroluje samotný mezipaměť tokenu *aplikace* a aktualizuje ji.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Použili jste prostředek/. výchozí obor?
 
@@ -234,16 +234,16 @@ Content: {
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Aplikace démona – volání webového rozhraní API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
+> [Aplikace démona – volání webového rozhraní API](./scenario-daemon-call-api.md?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Aplikace démona – volání webového rozhraní API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
+> [Aplikace démona – volání webového rozhraní API](./scenario-daemon-call-api.md?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Aplikace démona – volání webového rozhraní API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
+> [Aplikace démona – volání webového rozhraní API](./scenario-daemon-call-api.md?tabs=java)
 
 ---

@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d19f59635920951b506e41884f4ab79be78e247d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080722"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121319"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Použití IDENTITY k vytváření náhradních klíčů v synapse fondu SQL
 
@@ -24,7 +24,9 @@ V tomto článku najdete doporučení a příklady použití vlastnosti IDENTITY
 
 ## <a name="what-is-a-surrogate-key"></a>Co je náhradní klíč
 
-Náhradní klíč v tabulce je sloupec s jedinečným identifikátorem pro každý řádek. Klíč se negeneruje z dat tabulky. Datové modely, jako je vytváření náhradních klíčů ve svých tabulkách při návrhu modelů datového skladu. Vlastnost IDENTITY můžete použít k dosažení tohoto cíle jednoduše a efektivně, aniž by to ovlivnilo výkon zatížení. Vlastnost IDENTITY má určitá omezení, jak je popsáno v [Create Table (Transact-SQL) identity (vlastnost)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). Jedním z omezení IDENTITY je, že není zaručená jedinečnost. Nastavení IDENTITY pro vložení je vypnuto a nedojde k opětovnému vytvoření hodnoty identity. výsledkem bude více jedinečných hodnot, ale v některých situacích nemusí být zaručena jedinečnost. Pokud nemůžete použít hodnoty identity z důvodu omezení IDENTITY, vytvořte samostatnou tabulku s aktuální hodnotou a spravujte přístup k tabulce a číslu přiřazení k vaší aplikaci. 
+Náhradní klíč v tabulce je sloupec s jedinečným identifikátorem pro každý řádek. Klíč se negeneruje z dat tabulky. Datové modely, jako je vytváření náhradních klíčů ve svých tabulkách při návrhu modelů datového skladu. Vlastnost IDENTITY můžete použít k dosažení tohoto cíle jednoduše a efektivně, aniž by to ovlivnilo výkon zatížení.
+> [!NOTE]
+> Hodnota IDENTITY v synapse SQL není zaručená jako jedinečná, pokud uživatel explicitně vloží duplicitní hodnotu s hodnotou "SET IDENTITY_INSERT ON" nebo se resadí identita. Podrobnosti naleznete v tématu [Create Table (Transact-SQL) identity (vlastnost)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). 
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Vytvoření tabulky se sloupcem IDENTITY
 

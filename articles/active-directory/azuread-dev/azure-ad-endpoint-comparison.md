@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 001de375edab7505ed4687d848aca0ad0965dbfb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034903"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116389"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Proč aktualizovat na Microsoft Identity Platform (v2.0)?
 
@@ -33,9 +33,9 @@ Při vývoji nové aplikace je důležité znát rozdíly mezi koncovými body M
 
 * Koncový bod v 1.0 umožňuje přihlásit se k vaší aplikaci (Azure AD) pouze pracovní a školní účet.
 * Koncový bod platformy Microsoft Identity umožňuje pracovní a školní účty z Azure AD a osobních účtů Microsoft (MSA), jako je hotmail.com, outlook.com a msn.com, pro přihlášení.
-* Oba koncové body také přijímají přihlášení *[uživatelů typu Host](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* v adresáři Azure AD pro aplikace nakonfigurované jako *[jeden tenant](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* nebo pro *víceklientské* aplikace nakonfigurované tak, aby odkazovaly na koncový bod pro konkrétního klienta ( `https://login.microsoftonline.com/{TenantId_or_Name}` ).
+* Oba koncové body také přijímají přihlášení *[uživatelů typu Host](../external-identities/what-is-b2b.md)* v adresáři Azure AD pro aplikace nakonfigurované jako *[jeden tenant](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* nebo pro *víceklientské* aplikace nakonfigurované tak, aby odkazovaly na koncový bod pro konkrétního klienta ( `https://login.microsoftonline.com/{TenantId_or_Name}` ).
 
-Koncový bod platformy Microsoft Identity umožňuje psát aplikace, které přijímají přihlášení z osobních účtů Microsoft a pracovních a školních účtů. Díky tomu máte možnost napsat si aplikaci kompletně s účtem – nezávislá. Například pokud vaše aplikace volá [Microsoft Graph](https://graph.microsoft.io), budou k dispozici některé další funkce a data pro pracovní účty, jako jsou například weby služby SharePoint nebo data adresáře. Ale u mnoha akcí, jako je [čtení e-mailů uživatele](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0), může stejný kód přistupovat k e-mailu pro osobní i pracovní a školní účty.
+Koncový bod platformy Microsoft Identity umožňuje psát aplikace, které přijímají přihlášení z osobních účtů Microsoft a pracovních a školních účtů. Díky tomu máte možnost napsat si aplikaci kompletně s účtem – nezávislá. Například pokud vaše aplikace volá [Microsoft Graph](https://graph.microsoft.io), budou k dispozici některé další funkce a data pro pracovní účty, jako jsou například weby služby SharePoint nebo data adresáře. Ale u mnoha akcí, jako je [čtení e-mailů uživatele](/graph/api/user-list-messages?view=graph-rest-1.0), může stejný kód přistupovat k e-mailu pro osobní i pracovní a školní účty.
 
 V případě koncového bodu Microsoft Identity Platform můžete k získání přístupu k podnikovému světůu pro spotřebitele, vzdělávání a Enterprise použít Microsoft Authentication Library (MSAL). Koncový bod Azure AD v 1.0 přijímá přihlášení jenom z pracovních a školních účtů.
 
@@ -141,7 +141,7 @@ Registrace aplikací, které podporují pracovní a školní účty a osobní ú
 
 ### <a name="restrictions-on-redirect-urls"></a>Omezení adres URL pro přesměrování
 
-Nejaktuálnější informace o omezeních adres URL pro přesměrování u aplikací registrovaných pro platformu Microsoft identity najdete v tématu [omezení adresy URL pro přesměrování a omezení adresy URL](https://docs.microsoft.com/azure/active-directory/develop/reply-url) v dokumentaci k platformě Microsoft identity.
+Nejaktuálnější informace o omezeních adres URL pro přesměrování u aplikací registrovaných pro platformu Microsoft identity najdete v tématu [omezení adresy URL pro přesměrování a omezení adresy URL](../develop/reply-url.md) v dokumentaci k platformě Microsoft identity.
 
 Informace o tom, jak zaregistrovat aplikaci pro použití s platformou Microsoft identity, najdete v tématu [Registrace aplikace s využitím nového prostředí registrace aplikací](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 

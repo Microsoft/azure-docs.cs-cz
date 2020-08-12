@@ -12,14 +12,14 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 19c94a4807b8958fa8b1ec46ccae660c7cbe92de
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: df873e49e1bc581a32bcb4e4b40b2b24db98cee5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256692"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120809"
 ---
-# <a name="quickstart-set-up-a-tenant"></a>Rychlý Start: nastavení tenanta
+# <a name="quickstart-set-up-a-tenant"></a>Rychlý start: Nastavení tenanta
 
 Microsoft Identity Platform umožňuje vývojářům vytvářet aplikace určené pro širokou škálu vlastních prostředí a identit Microsoft 365. Pokud chcete začít používat Microsoft Identity Platform, budete potřebovat přístup k prostředí, které se označuje taky jako tenant služby Azure AD, který může registrovat a spravovat aplikace, mít přístup k Microsoft 365 dat a nasazovat vlastní podmíněný přístup a omezení klientů.
 
@@ -72,5 +72,5 @@ Pokud chcete začít vytvářet aplikace s přihlašováním účtů na sociáln
 ## <a name="next-steps"></a>Další kroky
 
 * [Zaregistrujte aplikaci](quickstart-register-app.md) a integrujte ji s platformou Microsoft identity. 
-* Seznamte se se [základy ověřování](authentication-scenarios.md).
+* Seznamte se se [základy ověřování](./authentication-vs-authorization.md).
 * Podrobnosti o vztahu mezi předplatnými a klientem služby Azure AD najdete v tématu [přidružení nebo přidání předplatného Azure ke svému klientovi Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md) .

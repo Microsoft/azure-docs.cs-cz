@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: larryfr
 author: Blackmist
-ms.date: 06/25/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 4910dc03cc4ef24b8515271a9197650c4b041f01
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: how-to
+ms.openlocfilehash: 6c2d1b3db422a40f7bcf237c292b48183d99962b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489601"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121268"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -141,6 +141,44 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
   "workspaceid": "<GUID>"
 }
 ```
+
+### <a name="virtual-network-and-private-endpoint"></a>Virtuální síť a soukromý koncový bod
+
+Pokud chcete omezit přístup k pracovnímu prostoru na virtuální síť, můžete použít následující parametry:
+
+* `--pe-name`: Název privátního koncového bodu, který je vytvořen.
+* `--pe-auto-approval`: Zda mají být připojení privátního koncového bodu k pracovnímu prostoru automaticky schválena.
+* `--pe-resource-group`: Skupina prostředků, ve které se vytvoří privátní koncový bod. Musí se jednat o stejnou skupinu, která obsahuje virtuální síť.
+* `--pe-vnet-name`: Existující virtuální síť pro vytvoření privátního koncového bodu v nástroji.
+* `--pe-subnet-name`: Název podsítě, v níž se má vytvořit privátní koncový bod. Výchozí hodnota je `default`.
+
+Další informace o používání privátního koncového bodu a virtuální sítě s vaším pracovním prostorem najdete v tématu věnovaném [izolaci sítě a ochraně osobních údajů](how-to-enable-virtual-network.md).
+
+### <a name="customer-managed-key-and-high-business-impact-workspace"></a>Klíčový prostor spravovaný zákazníkem a vysokým obchodním dopadem
+
+Ve výchozím nastavení se metriky a metadata pro pracovní prostor ukládají do Azure Cosmos DB instance, kterou Microsoft udržuje. Tato data se šifrují pomocí klíčů spravovaných Microsoftem. 
+
+Pokud vytváříte __podnikovou__ verzi Azure Machine Learning, můžete použít vlastní klíč. Tím se vytvoří instance Azure Cosmos DB, která ukládá metriky a metadata v předplatném Azure. Pomocí `--cmk-keyvault` parametru zadejte Azure Key Vault, který obsahuje klíč, a `--resource-cmk-uri` Zadejte adresu URL klíče v trezoru.
+
+> [!IMPORTANT]
+> Před použitím `--cmk-keyvault` parametrů a je `--resource-cmk-uri` třeba nejprve provést následující akce:
+>
+> 1. Autorizaci __aplikace Machine Learning__ (v části Správa identit a přístupu) s oprávněními přispěvatele v předplatném.
+> 1. Postupujte podle kroků v části [konfigurace klíčů spravovaných zákazníkem](/azure/cosmos-db/how-to-setup-cmk) na:
+>     * Registrace poskytovatele Azure Cosmos DB
+>     * Vytvoření a konfigurace Azure Key Vault
+>     * Vygenerovat klíč
+>
+>     Nemusíte vytvářet instanci Azure Cosmos DB ručně, ta se vytvoří během vytváření pracovního prostoru. Tato instance Azure Cosmos DB se vytvoří v samostatné skupině prostředků s použitím názvu založeného na tomto vzoru: `<your-resource-group-name>_<GUID>` .
+>
+> Po vytvoření pracovního prostoru toto nastavení nemůžete změnit. Pokud odstraníte Azure Cosmos DB, kterou používá váš pracovní prostor, musíte také odstranit pracovní prostor, který ho používá.
+
+Chcete-li omezit data, která společnost Microsoft shromažďuje v pracovním prostoru, použijte `--hbi-workspace` parametr. 
+
+> [!IMPORTANT]
+> Výběr vysokého dopadu na firmu se dá udělat jenom při vytváření pracovního prostoru. Po vytvoření pracovního prostoru toto nastavení nemůžete změnit.
+
+Další informace o klíčích spravovaných zákazníkem a vysokém pracovním prostoru s obchodním dopadem najdete v článku [Podnikové zabezpečení pro Azure Machine Learning](concept-enterprise-security.md#encryption-at-rest).
 
 ### <a name="use-existing-resources"></a>Použití existujících prostředků
 
@@ -356,7 +394,7 @@ az group delete -g <resource-group-name>
 
 Další informace najdete v tématu [AZ ml Workspace Delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) Document.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 

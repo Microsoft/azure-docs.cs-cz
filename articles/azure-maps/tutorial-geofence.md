@@ -3,18 +3,18 @@ title: 'Kurz: vytvoření geografického a sledovacího zařízení na mapě Mic
 description: Přečtěte si, jak nastavit geografickou ochranu. Podívejte se, jak sledovat zařízení vzhledem k geografickým záznamům pomocí Azure Maps prostorové služby.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 7/15/2020
+ms.date: 8/11/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 1044348e50f4208038739975e7355fb6f4873454
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b88d9132ec1548c9d94fc418af35b55ac2836e96
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037639"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121234"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Kurz: Nastavení monitorované geografické zóny pomocí Azure Maps
 
@@ -25,7 +25,7 @@ V tomto kurzu se seznámíte se základy vytváření a používání Azure Maps
 Azure Maps poskytuje řadu služeb pro podporu sledování zařízení, které zadává a ukončuje oblast stavby ve výše uvedeném scénáři. V tomto kurzu zjistíte, jak:
 
 > [!div class="checklist"]
-> * Nahrajte [Geoencing data o injson](geofence-geojson.md) , která definují oblasti staveniště, které chcete monitorovat. [Rozhraní API pro nahrání dat](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) použijeme k nahrání geografických zón jako souřadnic mnohoúhelníku na váš Azure Maps účet.
+> * Nahrajte [geografickou data o geografickou](geofence-geojson.md) lokalitu, která definují oblasti staveniště, které chcete monitorovat. [Rozhraní API pro nahrání dat](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) použijeme k nahrání geografických zón jako souřadnic mnohoúhelníku na váš Azure Maps účet.
 > * Nastavte dvě [Aplikace logiky](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps) , která po aktivaci pošle e-mailová oznámení na staveništi Operations Manager, když zařízení vstoupí a ukončí oblast geografické oblasti.
 > * Pomocí [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) se můžete přihlásit k odběru Azure Maps události zadání a ukončení geografické zóny. Nastavíme dva odběry událostí webového zavěšení, které budou volat koncové body HTTP definované ve dvou Logic Apps. Logic Apps pak pošle příslušná e-mailová oznámení o přemístění nebo zapisování geografického zařízení.
 > * Využijte [Hledat geografické ploty získat rozhraní API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) pro příjem oznámení v případě, že se nějaké zařízení ukončí a pak vstoupí do oblastí geografické oblasti.

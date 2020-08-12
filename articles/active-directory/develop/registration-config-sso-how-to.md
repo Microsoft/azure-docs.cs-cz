@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: 9b6451d29a3a874e09d74cbe664662a395b647f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 465adbb71abaa45160399ecba2ebfb692a8307c2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82890462"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120673"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>Jak nakonfigurovat jednotné přihlašování pro aplikaci
 
@@ -26,20 +26,20 @@ Povolení federovaného jednotného přihlašování (SSO) ve vaší aplikaci se
 
 * Pokud vytváříte mobilní aplikaci, možná budete potřebovat další konfigurace, aby bylo možné povolit zprostředkované nebo nezprostředkované jednotné přihlašování.
 
-Informace pro Android najdete v tématu [povolení jednotného přihlašování mezi aplikacemi v Androidu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android).<br>
+Informace pro Android najdete v tématu [povolení jednotného přihlašování mezi aplikacemi v Androidu](../azuread-dev/howto-v1-enable-sso-android.md).<br>
 
-Informace o iOS najdete [v tématu povolení jednotného přihlašování mezi aplikacemi v iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios).
+Informace o iOS najdete [v tématu povolení jednotného přihlašování mezi aplikacemi v iOS](../azuread-dev/howto-v1-enable-sso-ios.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-[Jednotné přihlašování Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
+[Jednotné přihlašování Azure AD](../manage-apps/what-is-single-sign-on.md)<br>
 
-[Povolení jednotného přihlašování mezi aplikacemi v Androidu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
+[Povolení jednotného přihlašování mezi aplikacemi v Androidu](../azuread-dev/howto-v1-enable-sso-android.md)<br>
 
-[Povolení jednotného přihlašování mezi aplikacemi v iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)<br>
+[Povolení jednotného přihlašování mezi aplikacemi v iOS](../azuread-dev/howto-v1-enable-sso-ios.md)<br>
 
-[Integrace aplikací do AzureAD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
+[Integrace aplikací do AzureAD](./quickstart-register-app.md)<br>
 
-[Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform](./v2-permissions-and-consent.md)<br>
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

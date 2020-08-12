@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 499b7348c645f4792332769ac598ffcea07ea102
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 79b9be504639b35c7c15d427bd7766ed2dd15535
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541902"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121081"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Získání tokenu pro mobilní aplikaci, která volá webová rozhraní API
 
@@ -209,7 +209,7 @@ catch(MsalUiRequiredException)
 
 `AcquireTokenInteractive`má pouze jeden povinný parametr: `scopes` . `scopes`Parametr vytvoří výčet řetězců, které definují obory, pro které je vyžadován token. Pokud je token pro Microsoft Graph, můžete najít požadované obory v referenčních informacích k rozhraní API každého Microsoft Graph API. V odkazu přejdete do části Permissions (oprávnění).
 
-Pokud například chcete [Zobrazit seznam kontaktů uživatele](https://docs.microsoft.com/graph/api/user-list-contacts), použijte obor "User. Read", "Contacts. Read". Další informace najdete v tématu informace o [Microsoft Graph oprávnění](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+Pokud například chcete [Zobrazit seznam kontaktů uživatele](/graph/api/user-list-contacts), použijte obor "User. Read", "Contacts. Read". Další informace najdete v tématu informace o [Microsoft Graph oprávnění](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
 V Androidu můžete při vytváření aplikace pomocí nástroje zadat nadřazenou aktivitu `PublicClientApplicationBuilder` . Pokud v daném čase nezadáte nadřazenou aktivitu, můžete ji později zadat pomocí `.WithParentActivityOrWindow` jako v následující části. Pokud zadáte nadřazenou aktivitu, pak se token vrátí do této nadřazené aktivity po interakci. Pokud ho nezadáte, `.ExecuteAsync()` vyvolá volání výjimku.
 
@@ -234,7 +234,7 @@ Třída definuje následující konstanty:
 - `ForceLogin`umožňuje službě zobrazit uživateli výzvu k zadání přihlašovacích údajů i v případě, že není nutná výzva.
 
     Tato možnost může být užitečná v případě, že získání tokenu se nezdařilo a chcete uživateli umožnit, aby se znovu přihlásili. V takovém případě MSAL odesílá `prompt=login` poskytovateli identity. Tuto možnost můžete chtít použít v aplikacích zaměřených na zabezpečení, kde zásady správného řízení organizace vyžadují, aby se uživatel přihlásil pokaždé, když přistupují k určitým částem aplikace.
-- `Never`je určen pouze pro .NET 4,5 a prostředí Windows Runtime (WinRT). Tato konstanta nevyzve uživatele, ale pokusí se použít soubor cookie, který je uložený v skrytém vloženém webovém zobrazení. Další informace najdete v tématu [použití webových prohlížečů s MSAL.NET](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers).
+- `Never`je určen pouze pro .NET 4,5 a prostředí Windows Runtime (WinRT). Tato konstanta nevyzve uživatele, ale pokusí se použít soubor cookie, který je uložený v skrytém vloženém webovém zobrazení. Další informace najdete v tématu [použití webových prohlížečů s MSAL.NET](./msal-net-web-browsers.md).
 
     Pokud tato možnost není úspěšná, `AcquireTokenInteractive` vyvolá výjimku, která vás upozorní, že je potřeba interakce uživatelského rozhraní. Pak je nutné použít jiný `Prompt` parametr.
 - `NoPrompt`neodešle výzvu poskytovateli identity.

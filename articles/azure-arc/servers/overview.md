@@ -1,21 +1,16 @@
 ---
 title: Přehled služby Azure ARC pro servery (Preview)
 description: Naučte se používat Azure ARC pro servery ke správě počítačů, které jsou hostované mimo Azure, jako by se jedná o prostředek Azure.
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
 ms.custom: references_regions
 ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: 8c02b22d27fbae0465ed3b8c97622544256854e0
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f11eedaf5f70cb24fa6c1588b7f26b2eed4734ce
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905614"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121795"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Co je Azure ARC pro servery (Preview)?
 

@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 6a48467100e396ed1b43544d1b10ae5007415e3e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d3810d3998f82127fc32327f696a2784382b4537
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201952"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117035"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postup: Přihlášení libovolného uživatele služby Azure Active Directory pomocí vzoru aplikace s více tenanty
 
@@ -47,7 +47,7 @@ Předtím, než může být aplikace vytvořená pro více tenantů, vyžaduje A
 Ve výchozím nastavení mají aplikace vytvořené prostřednictvím Azure Portal globálně jedinečný identifikátor URI ID aplikace nastavený při vytváření aplikace, ale tuto hodnotu můžete změnit. Například pokud je název vašeho tenanta contoso.onmicrosoft.com, pak bude platný identifikátor URI ID aplikace `https://contoso.onmicrosoft.com/myapp` . Pokud má tenant ověřenou doménu z `contoso.com` , bude také platný identifikátor URI ID aplikace `https://contoso.com/myapp` . Pokud identifikátor URI ID aplikace nepoužívá tento vzor, nastavení aplikace jako aplikace s více tenanty se nezdaří.
 
 > [!NOTE]
-> Registrace nativního klienta i [aplikace Microsoft Identity Platform](./active-directory-appmodel-v2-overview.md) jsou ve výchozím nastavení víceklientské. Není nutné provádět žádnou akci, aby tato aplikace mohla provést registraci více tenantů.
+> Registrace nativního klienta i [aplikace Microsoft Identity Platform](./v2-overview.md) jsou ve výchozím nastavení víceklientské. Není nutné provádět žádnou akci, aby tato aplikace mohla provést registraci více tenantů.
 
 ## <a name="update-your-code-to-send-requests-to-common"></a>Aktualizace kódu pro odesílání požadavků do/běžné
 
@@ -141,7 +141,7 @@ Vaše aplikace může mít více vrstev, z nichž každý představuje vlastní 
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Více vrstev v jednom tenantovi
 
-To může být problém, pokud se vaše logická aplikace skládá ze dvou nebo více registrací aplikace, například samostatného klienta a prostředku. Jak napřed získat prostředek do tenanta zákazníka? Azure AD pokrývá tento případ tím, že umožňuje klientovi a prostředku souhlas v jednom kroku. Uživatel uvidí celkový součet oprávnění vyžádaného klientem i prostředkem na stránce souhlasu. Aby bylo možné toto chování povolit, musí registrace aplikace prostředku zahrnovat ID aplikace klienta jako `knownClientApplications` v [manifestu aplikace][AAD-App-Manifest]. Příklad:
+To může být problém, pokud se vaše logická aplikace skládá ze dvou nebo více registrací aplikace, například samostatného klienta a prostředku. Jak napřed získat prostředek do tenanta zákazníka? Azure AD pokrývá tento případ tím, že umožňuje klientovi a prostředku souhlas v jednom kroku. Uživatel uvidí celkový součet oprávnění vyžádaného klientem i prostředkem na stránce souhlasu. Aby bylo možné toto chování povolit, musí registrace aplikace prostředku zahrnovat ID aplikace klienta jako `knownClientApplications` v [manifestu aplikace][AAD-App-Manifest]. Například:
 
 ```aad-app-manifest
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
@@ -201,7 +201,7 @@ V tomto článku jste zjistili, jak vytvořit aplikaci, která se může přihl�
 [AAD-Consent-Overview]:consent-framework.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
-[AAD-Samples-MT]: https://docs.microsoft.com/samples/browse/?products=azure-active-directory
+[AAD-Samples-MT]: /samples/browse/?products=azure-active-directory
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
 [MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview
@@ -226,9 +226,9 @@ V tomto článku jste zjistili, jak vytvořit aplikaci, která se může přihl�
 [AZURE-portal]: https://portal.azure.com
 [Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
-[O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
+[O365-Perm-Ref]: /graph/permissions-reference
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
-[OAuth2-AuthZ-Code-Grant-Flow]: https://msdn.microsoft.com/library/azure/dn645542.aspx
+[OAuth2-AuthZ-Code-Grant-Flow]: /previous-versions/azure/dn645542(v=azure.100)
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3 
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6

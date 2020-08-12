@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 822390200b7a94f2bbf8aac56d26812f36b5f12a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1efae6563b88f82318f9b8358d255b234c6cb7fd
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387605"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116202"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Ukázka kódu Azure Active Directory (koncový bod verze 1.0)
 
@@ -120,8 +120,8 @@ Následující ukázky ukazují webové rozhraní API, které volá jiné webov�
 
 Ukázky a kurzy, které ukazují různé způsoby použití rozhraní Microsoft Graph API, včetně ověřování pomocí služby Azure AD, najdete v tématu [Microsoft Graph komunitních ukázek & kurzy](https://github.com/microsoftgraph/msgraph-community-samples).
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Azure Active Directory příručka pro vývojáře](v1-overview.md)
 - [Azure Active Directory knihovny ověřování](active-directory-authentication-libraries.md)
-- [Koncepční a referenční informace k rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api)
+- [Koncepční a referenční informace k rozhraní Microsoft Graph API](/graph/use-the-api)

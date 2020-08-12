@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 5ddd40f00bab0e1c115a31ac87ee3fb7bf45e089
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: d9d8694c8ac81352ab36f3d610f02f3751090b27
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084448"
+ms.locfileid: "88120588"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: nasazení webové aplikace v Django s PostgreSQL v Azure App Service
 
@@ -79,6 +79,7 @@ Tento příkaz otevře prohlížeč pro shromáždění vašich přihlašovacíc
 
 Po přihlášení můžete spustit příkazy Azure pomocí Azure CLI a pracovat s prostředky ve vašem předplatném.
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
 
 ## <a name="clone-or-download-the-sample-app"></a>Klonování nebo stažení ukázkové aplikace
 
@@ -114,6 +115,8 @@ Ukázka se také upraví tak, aby běžela v produkčním prostředí, jako je A
 - Pokud `DJANGO_ENV` je proměnná prostředí nastavená na produkční, aplikace používá nastavení produkčního prostředí. Tuto proměnnou prostředí vytvoříte později v kurzu spolu s dalšími uživateli používanými pro konfiguraci databáze PostgreSQL.
 
 Tyto změny jsou specifické pro konfiguraci Django, aby běžely v jakémkoli provozním prostředí, a nekonkrétně se App Service. Další informace najdete v tématu [Kontrolní seznam nasazení Django](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/).
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
 
 ## <a name="create-postgres-database-in-azure"></a>Vytvoření databáze Postgres v Azure
 
@@ -156,6 +159,8 @@ Po dokončení příkazu vytvoří výstup objektu JSON, který obsahuje různé
 > [!TIP]
 > `-l <location-name>`, lze nastavit na některou z [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/). Pomocí příkazu můžete získat oblasti dostupné pro vaše předplatné [`az account list-locations`](/cli/azure/account#az-account-list-locations) . V produkčních aplikacích uložte svou databázi a aplikaci do stejného umístění.
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
+
 ## <a name="deploy-the-code-to-azure-app-service"></a>Nasaďte kód pro Azure App Service
 
 V této části vytvoříte hostitele aplikací v aplikaci App Service, připojíte tuto aplikaci k databázi Postgres a potom do tohoto hostitele nasadíte svůj kód.
@@ -188,6 +193,8 @@ Po úspěšném nasazení příkaz vygeneruje výstup JSON podobný následujíc
 
 ![Příklad AZ WebApp up Command Output](./media/tutorial-python-postgresql-app/az-webapp-up-output.png)
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
+
 > [!TIP]
 > Mnoho příkazů rozhraní příkazového řádku Azure v mezipaměti běžně ukládá společné parametry, jako je název skupiny prostředků a plán App Service, do souboru *. Azure/config*. V důsledku toho nemusíte zadávat stejný parametr s pozdějšími příkazy. Například pro opětovné nasazení aplikace po provedení změn můžete spustit `az webapp up` znovu bez parametrů. Příkazy, které pocházejí z rozšíření CLI, `az postgres up` ale v současné době nepoužívají mezipaměť. to je důvod, proč jste si v tomto případě museli zadat skupinu prostředků a umístění `az webapp up` .
 
@@ -209,6 +216,8 @@ az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<pos
 - Název skupiny prostředků a aplikace se vykreslí z hodnot uložených v mezipaměti v souboru *. Azure/config* .
 - Příkaz vytvoří nastavení s názvem `DJANGO_ENV` , `DBHOST` , `DBNAME` , `DBUSER` a `DBPASS` podle očekávání v kódu aplikace.
 - V kódu Pythonu získáte přístup k těmto nastavením jako k proměnným prostředí s příkazy, jako je `os.environ.get('DJANGO_ENV')` . Další informace najdete v tématu [přístup k proměnným prostředí](configure-language-python.md#access-environment-variables).
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
 
 ### <a name="run-django-database-migrations"></a>Spustit migrace databáze Django
 
@@ -232,6 +241,8 @@ Migrace databáze Django zajišťují, že schéma v PostgreSQL ve službě Azur
     ```
     
 1. `createsuperuser`Příkaz vás vyzve k zadání přihlašovacích údajů pro uživatele. Pro účely tohoto kurzu použijte výchozí uživatelské jméno `root` , stiskněte klávesu **ENTER** pro e-mailovou adresu, aby byla ponechána prázdná, a zadejte `Pollsdb1` heslo.
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
     
 ### <a name="create-a-poll-question-in-the-app"></a>Vytvoření otázky dotazování v aplikaci
 
@@ -243,9 +254,10 @@ Migrace databáze Django zajišťují, že schéma v PostgreSQL ve službě Azur
 
 **Blahopřejeme!** Spouštíte webovou aplikaci Python Django v Azure App Service pro Linux s aktivní databází Postgres.
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
+
 > [!NOTE]
 > App Service detekuje projekt Django hledáním souboru *WSGI.py* v každé podsložce, která se `manage.py startproject` ve výchozím nastavení vytvoří. Když App Service najde tento soubor, načte webovou aplikaci Django. Další informace najdete v tématu [Konfigurace integrované image Pythonu](configure-language-python.md).
-
 
 ## <a name="make-code-changes-and-redeploy"></a>Provádění změn kódu a opětovné nasazení
 
@@ -324,6 +336,8 @@ Otestujte aplikaci místně pomocí následujících kroků:
 
 Při místním spuštění aplikace používá místní databázi sqlite3 a nekoliduje s vaší provozní databází. V případě potřeby můžete také místní databázi PostgreSQL použít k lepšímu simulaci provozního prostředí.
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
+
 ### <a name="update-the-app"></a>Aktualizace aplikace
 
 V nástroji `polls/models.py` Najděte řádek, který začíná `choice_text` a změňte `max_length` parametr na 100:
@@ -344,6 +358,8 @@ Spusťte vývojový server znovu s `python manage.py runserver` a otestujte apli
 
 Zastavte webový server Django znovu s **kombinací CTRL** + **C**.
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
+
 ### <a name="redeploy-the-code-to-azure"></a>Opětovné nasazení kódu do Azure
 
 V kořenovém adresáři úložiště spusťte následující příkaz:
@@ -353,6 +369,8 @@ az webapp up
 ```
 
 Tento příkaz používá parametry uložené v mezipaměti v souboru *. Azure/config* . Vzhledem k tomu, že aplikace App Service zjistí, že aplikace již existuje, pouze znovu nasadí kód.
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
 
 ### <a name="rerun-migrations-in-azure"></a>Znovu spustit migrace v Azure
 
@@ -369,9 +387,13 @@ source /antenv/bin/activate
 python manage.py migrate
 ```
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
+
 ### <a name="review-app-in-production"></a>Kontrola aplikace v produkčním prostředí
 
 Přejděte na *http: \/ / \<app-name> . azurewebsites.NET* a otestujte aplikaci znovu v produkčním prostředí. (Vzhledem k tomu, že jste změnili jenom délku databázového pole, změna se dá poznamenat jenom v případě, že se při vytváření otázky pokusíte zadat delší odpověď.)
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
 
 ## <a name="stream-diagnostic-logs"></a>Streamování diagnostických protokolů
 
@@ -386,6 +408,8 @@ az webapp log tail
 Pokud nevidíte protokoly konzoly okamžitě, podívejte se znovu za 30 sekund.
 
 Pokud chcete streamování protokolů kdykoli zastavit, zadejte **CTRL** + **C**.
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
 
 > [!NOTE]
 > Soubory protokolu můžete také zkontrolovat v prohlížeči na adrese `https://<app-name>.scm.azurewebsites.net/api/logs/docker` .
@@ -406,6 +430,8 @@ Ve výchozím nastavení na portálu se zobrazí stránka **Přehled** vaší ap
 
 ![Správa aplikace Python Django na stránce Přehled v Azure Portal](./media/tutorial-python-postgresql-app/manage-django-app-in-app-services-in-the-azure-portal.png)
 
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud chcete aplikaci zachovat nebo pokračovat v dalším kurzu, přeskočte dopředu k [dalším krokům](#next-steps). Jinak, abyste se vyhnuli průběžným poplatkům, můžete odstranit skupinu prostředků vytvořenou pro tento kurz:
@@ -415,6 +441,8 @@ az group delete
 ```
 
 Příkaz používá název skupiny prostředků uložený v souboru *. Azure/config* . Odstraněním skupiny prostředků také zrušíte přidělení a odstraníte všechny prostředky, které jsou v ní obsažené.
+
+[Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
 
 ## <a name="next-steps"></a>Další kroky
 

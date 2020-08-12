@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21b8748cf74a5061e9dfa154047f867df4cb5428
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: d6ede429de686dd005785b44cf5c6d9571aac5a2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848756"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117018"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace infrastruktury Brána vzdálené plochy pomocí rozšíření serveru NPS (Network Policy Server) a Azure AD
 
@@ -111,6 +111,11 @@ Jakmile je pro MFA povolený účet, nebudete se moct přihlašovat k prostředk
 
 Postupujte podle kroků v části [co Azure Multi-Factor Authentication znamená pro mě?](../user-help/multi-factor-authentication-end-user.md) k pochopení a správné konfiguraci zařízení pro MFA s vaším uživatelským účtem.
 
+> [!IMPORTANT]
+> Chování při přihlašování pro Brána vzdálené plochy neposkytuje možnost zadat ověřovací kód pomocí Azure Multi-Factor Authentication. Uživatelský účet musí být nakonfigurovaný pro ověřování na telefonu nebo pro aplikaci Microsoft Authenticator s nabízenými oznámeními.
+>
+> Pokud není jedna z těchto dvou metod ověřování pro uživatele nakonfigurovaná, nebude moct dokončit službu Azure Multi-Factor Authentication Challenge a přihlásit se k Brána vzdálené plochy.
+
 ## <a name="install-and-configure-nps-extension"></a>Instalace a konfigurace rozšíření serveru NPS
 
 V této části najdete pokyny ke konfiguraci infrastruktury služby RDS pro použití Azure MFA pro ověřování klientů pomocí Brána vzdálené plochy.
@@ -193,7 +198,7 @@ Zásady autorizace připojení ke vzdálené ploše (RD CAP) určují požadavky
 
    ![Zadejte název nebo IP adresu vašeho serveru NPS.](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-1. Klikněte na tlačítko **Add** (Přidat).
+1. Klikněte na **Přidat**.
 1. V dialogovém okně **sdílený tajný klíč** zadejte sdílený tajný klíč a klikněte na tlačítko **OK**. Ujistěte se, že tento sdílený tajný klíč zaznamenáte a bezpečně uložíte záznam.
 
    >[!NOTE]

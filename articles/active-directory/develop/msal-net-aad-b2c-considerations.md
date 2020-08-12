@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 3aac63369dffa5b8ba0b9e55b5063ad8136c95cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea5cc53d909ed090e152af84da49c8e87907f6bf
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82883222"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120605"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Použití MSAL.NET k přihlašování uživatelů pomocí sociálních identit
 
@@ -78,7 +78,7 @@ V předchozím fragmentu kódu:
 
 - `policy`je řetězec obsahující název Azure AD B2C toku uživatele nebo vlastní zásady (například `PolicySignUpSignIn` ).
 - `ParentActivityOrWindow`vyžaduje se pro Android (aktivita) a je volitelný pro jiné platformy, které podporují nadřazené uživatelské rozhraní, jako je Windows v Microsoft Windows a UIViewController v iOS. Další informace o dialogovém okně uživatelského rozhraní najdete v tématu [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) na wikiwebu MSAL.
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)`je metoda, která najde účet pro danou zásadu. Příklad:
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)`je metoda, která najde účet pro danou zásadu. Například:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -134,7 +134,7 @@ Pomocí uživatelského jména a hesla v toku ROPC jste si zarovnali několik v�
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>Konfigurace toku ROPC v Azure AD B2C
 
-V tenantovi Azure AD B2C vytvořte nový tok uživatelů a vyberte možnost přihlásit se **pomocí ROPC** a povolte ROPC toku uživatele. Další informace najdete v tématu [Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku](/azure/active-directory-b2c/configure-ropc).
+V tenantovi Azure AD B2C vytvořte nový tok uživatelů a vyberte možnost přihlásit se **pomocí ROPC** a povolte ROPC toku uživatele. Další informace najdete v tématu [Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku](../../active-directory-b2c/configure-ropc.md).
 
 `IPublicClientApplication`obsahuje `AcquireTokenByUsernamePassword` metodu:
 
@@ -182,7 +182,7 @@ Příznakem takového scénáře je, že MSAL.NET vrací `Missing from the token
 
 Alternativním řešením je použít [ukládání do mezipaměti podle zásad](#acquire-a-token-to-apply-a-policy) popsaných výše.
 
-Případně můžete použít `tid` deklaraci identity, pokud používáte [vlastní zásady](../../active-directory-b2c/custom-policy-get-started.md) v Azure AD B2C. Vlastní zásady mohou vracet další deklarace identity do aplikace pomocí [transformace deklarací identity](/azure/active-directory-b2c/claims-transformation-technical-profile).
+Případně můžete použít `tid` deklaraci identity, pokud používáte [vlastní zásady](../../active-directory-b2c/custom-policy-get-started.md) v Azure AD B2C. Vlastní zásady mohou vracet další deklarace identity do aplikace pomocí [transformace deklarací identity](../../active-directory-b2c/claims-transformation-technical-profile.md).
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>Zmírnění omezení u možnosti chybějící v odpovědi na token
 
@@ -194,6 +194,6 @@ Další informace o určení, které deklarace identity vrátí vaše uživatels
 
 Další podrobnosti o interaktivním získání tokenů pomocí MSAL.NET pro Azure AD B2C aplikace jsou k dispozici v následující ukázce.
 
-| Ukázka | Platforma | Description|
+| Ukázka | Platforma | Popis|
 |------ | -------- | -----------|
 |[Active-Directory-B2C-Xamarin-Native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Aplikace Xamarin Forms, která používá MSAL.NET k ověřování uživatelů prostřednictvím Azure AD B2C a přístup k webovému rozhraní API s vrácenými tokeny.|

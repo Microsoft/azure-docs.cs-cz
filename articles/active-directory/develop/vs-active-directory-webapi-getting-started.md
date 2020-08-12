@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: ee79333e1092cfcf2cd35e408f86dcfc9e1327cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c76aabbfce02d7e2bd8361dc99b4ba20d1f62f15
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479007"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114485"
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Začínáme s Azure Active Directory (projekty WebApi)
 
@@ -33,5 +33,5 @@ Všechny řadiče v projektu se napracovaly s `[Authorize]` atributem. Tento atr
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Scénáře ověřování pro Azure Active Directory](authentication-scenarios.md)
+- [Scénáře ověřování pro Azure Active Directory](./authentication-vs-authorization.md)
 - [Přidání přihlašování do webové aplikace ASP.NET pomocí Microsoftu](quickstart-v2-aspnet-webapp.md)

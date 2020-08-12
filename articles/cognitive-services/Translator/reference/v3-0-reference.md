@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 4/17/2020
+ms.date: 8/11/2020
 ms.author: swmachan
-ms.openlocfilehash: 2ddc3921c77f8861761ea37b8783e220c1242b97
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592266"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121013"
 ---
 # <a name="translator-v30"></a>Překladatel v 3.0
 
-## <a name="whats-new"></a>Co je nového
+## <a name="whats-new"></a>Co je nového?
 
 Verze 3 překladatele nabízí moderní webové rozhraní API založené na formátu JSON. Zlepšuje použitelnost a výkon tím, že konsoliduje stávající funkce do menšího počtu operací a poskytuje nové funkce.
 
@@ -48,7 +48,7 @@ Pokud chcete vynutit zpracování žádosti konkrétními geografickými oblastm
 |Azure|Evropa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Asie a Tichomoří|    api-apc.cognitive.microsofttranslator.com|
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování uživatelů
 
 Přihlaste se k odběru překladatele nebo [Cognitive Services více službami](https://azure.microsoft.com/pricing/details/cognitive-services/) ve službě Azure Cognitive Services a použijte svůj klíč předplatného (dostupný v Azure Portal) k ověření. 
 
@@ -147,11 +147,11 @@ Ověřovací token je platný po dobu 10 minut. Při provádění více volání
 
 ## <a name="virtual-network-support"></a>Podpora virtuální sítě
 
-Služba Translator je teď dostupná s funkcemi Virtual Network v omezených oblastech ( `WestUS2` , `EastUS` , `SouthCentralUS` , `WestUS` , `CentralUSEUAP` , `global` ). Pokud chcete povolit Virtual Network, přečtěte si téma [Konfigurace virtuálních sítí Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
+Služba Translator je teď dostupná s funkcemi Virtual Network (VNET) ve všech oblastech veřejného cloudu Azure. Pokud chcete povolit Virtual Network, přečtěte si téma [Konfigurace virtuálních sítí Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
 
 Když tuto funkci zapnete, musíte pro volání překladatele použít vlastní koncový bod. Nemůžete použít globální koncový bod překladatele (api.cognitive.microsofttranslator.com) a nemůžete ho ověřit pomocí přístupového tokenu.
 
-Po vytvoření [prostředku překladatele](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)můžete najít vlastní koncový bod.
+Vlastní koncový bod můžete najít po vytvoření [prostředku překladatele](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) a povolení přístupu z vybraných sítí a soukromých koncových bodů.
 
 |Hlavičky|Popis|
 |:-----|:----|
@@ -169,7 +169,7 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
      -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
-## <a name="errors"></a>chyby
+## <a name="errors"></a>Chyby
 
 Standardní chybová odpověď je objekt JSON s dvojicí název/hodnota s názvem `error` . Hodnota je také objekt JSON s vlastnostmi:
 

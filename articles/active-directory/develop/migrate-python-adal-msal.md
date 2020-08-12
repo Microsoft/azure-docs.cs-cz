@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 4737b2ef701f643ff5bec47be29b3139e27fb146
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 8dcd2b55d177c533336842293b2aedaef6b4222c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845149"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119908"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Příručka k migraci ADAL do MSAL pro Python
 
@@ -38,19 +38,19 @@ Podporovaných
   - OAuth v 2.0
   - OpenID Connect (OIDC)
 
-Další podrobnosti najdete v tématu [co se liší od koncového bodu Microsoft Identity Platform (v 2.0)](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison) .
+Další podrobnosti najdete v tématu [co se liší od koncového bodu Microsoft Identity Platform (v 2.0)](../azuread-dev/azure-ad-endpoint-comparison.md) .
 
 ### <a name="scopes-not-resources"></a>Obory nejsou prostředky
 
-ADAL Python získá tokeny pro prostředky, ale MSAL Python získá tokeny pro obory. Plocha rozhraní API v MSAL Pythonu už nemá parametr prostředků. Je nutné zadat obory jako seznam řetězců, které deklarují požadovaná oprávnění a požadované prostředky. Pokud chcete zobrazit nějaký příklad oborů, přečtěte si téma [Microsoft Graph obory](https://docs.microsoft.com/graph/permissions-reference).
+ADAL Python získá tokeny pro prostředky, ale MSAL Python získá tokeny pro obory. Plocha rozhraní API v MSAL Pythonu už nemá parametr prostředků. Je nutné zadat obory jako seznam řetězců, které deklarují požadovaná oprávnění a požadované prostředky. Pokud chcete zobrazit nějaký příklad oborů, přečtěte si téma [Microsoft Graph obory](/graph/permissions-reference).
 
 Do prostředku můžete přidat `/.default` příponu oboru, která vám umožní migrovat vaše aplikace z koncového bodu v 1.0 (ADAL) na koncový bod Microsoft Identity Platform (MSAL). Například pro hodnotu prostředku `https://graph.microsoft.com` je ekvivalentní hodnota oboru `https://graph.microsoft.com/.default` .  Pokud prostředek není ve formátu adresy URL, ale ID prostředku ve formuláři `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , můžete i nadále používat hodnotu oboru jako `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
-Další podrobnosti o různých typech oborů najdete v článcích věnovaném [oprávněním a souhlasům na platformě identity Microsoftu](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) a v [oborech pro webové rozhraní API Přijímám v 1.0 tokeny](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes) .
+Další podrobnosti o různých typech oborů najdete v článcích věnovaném [oprávněním a souhlasům na platformě identity Microsoftu](./v2-permissions-and-consent.md) a v [oborech pro webové rozhraní API Přijímám v 1.0 tokeny](./msal-v1-app-scopes.md) .
 
 ### <a name="error-handling"></a>Zpracování chyb
 
-Knihovna Azure Active Directory Authentication Library (ADAL) pro Python používá výjimku `AdalError` k označení toho, že došlo k potížím. MSAL pro Python obvykle používá chybové kódy. Další informace najdete v tématu [MSAL pro zpracování chyb Pythonu](https://docs.microsoft.com/azure/active-directory/develop/msal-handling-exceptions?tabs=python).
+Knihovna Azure Active Directory Authentication Library (ADAL) pro Python používá výjimku `AdalError` k označení toho, že došlo k potížím. MSAL pro Python obvykle používá chybové kódy. Další informace najdete v tématu [MSAL pro zpracování chyb Pythonu](./msal-handling-exceptions.md?tabs=python).
 
 ### <a name="api-changes"></a>Změny rozhraní API
 
@@ -122,4 +122,4 @@ print("Migration completed")
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete [v tématu porovnání v 1.0 a v 2.0](active-directory-v2-compare.md).
+Další informace najdete [v tématu porovnání v 1.0 a v 2.0](../azuread-dev/azure-ad-endpoint-comparison.md).

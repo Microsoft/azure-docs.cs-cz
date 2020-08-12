@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 3b775d88409a03f6de54b9db3ab62d6988c5bddd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ec4103251d27114b8fe40101c0e78c259106a440
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313043"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120877"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Příručka k migraci ADAL do MSAL pro Java
 
@@ -37,15 +37,15 @@ MSAL for Java je knihovna pro ověřování, kterou doporučujeme používat s p
 
 ## <a name="differences"></a>Rozdíly
 
-Pokud jste pracovali s koncovým bodem Azure AD for Developers (v 1.0) (a ADAL4J), můžete si přečíst informace [o tom, co se liší od koncového bodu Microsoft Identity Platform (v 2.0)?](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison).
+Pokud jste pracovali s koncovým bodem Azure AD for Developers (v 1.0) (a ADAL4J), můžete si přečíst informace [o tom, co se liší od koncového bodu Microsoft Identity Platform (v 2.0)?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 ## <a name="scopes-not-resources"></a>Obory nejsou prostředky
 
-ADAL4J získává tokeny pro prostředky, zatímco MSAL pro jazyk Java získává tokeny pro obory. Počet MSAL pro třídy jazyka Java vyžaduje parametr scopes. Tento parametr je seznam řetězců, které deklarují požadovaná oprávnění a požadované prostředky. Ukázkové obory najdete v tématu věnovaném [oborům Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference) .
+ADAL4J získává tokeny pro prostředky, zatímco MSAL pro jazyk Java získává tokeny pro obory. Počet MSAL pro třídy jazyka Java vyžaduje parametr scopes. Tento parametr je seznam řetězců, které deklarují požadovaná oprávnění a požadované prostředky. Ukázkové obory najdete v tématu věnovaném [oborům Microsoft Graph](/graph/permissions-reference) .
 
 Do prostředku můžete přidat `/.default` příponu oboru, která vám umožní migrovat vaše aplikace z koncového bodu v 1.0 (ADAL) na koncový bod Microsoft Identity Platform (MSAL). Například pro hodnotu prostředku `https://graph.microsoft.com` je ekvivalentní hodnota oboru `https://graph.microsoft.com/.default` .  Pokud prostředek není ve formátu adresy URL, ale ID prostředku ve formuláři `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , můžete i nadále používat hodnotu oboru jako `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
-Další podrobnosti o různých typech oborů najdete v článcích věnovaném [oprávněním a souhlasům na platformě identity Microsoftu](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) a v [oborech pro webové rozhraní API Přijímám v 1.0 tokeny](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes) .
+Další podrobnosti o různých typech oborů najdete v článcích věnovaném [oprávněním a souhlasům na platformě identity Microsoftu](./v2-permissions-and-consent.md) a v [oborech pro webové rozhraní API Přijímám v 1.0 tokeny](./msal-v1-app-scopes.md) .
 
 ## <a name="core-classes"></a>Základní třídy
 
@@ -86,9 +86,9 @@ Pokud použijete `https://login.microsoftonline.com/common` autoritu v 2.0, uži
 
 Koncový bod v 1.0 (používaný v ADAL) vysílá jenom tokeny v 1.0.
 
-Koncový bod v 2.0 (používaný v MSAL) může generovat tokeny v 1.0 a v 2.0. Vlastnost manifestu aplikace webového rozhraní API umožňuje vývojářům zvolit, která verze tokenu je přijata. Viz `accessTokenAcceptedVersion` v tématu Referenční dokumentace k [manifestu aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) .
+Koncový bod v 2.0 (používaný v MSAL) může generovat tokeny v 1.0 a v 2.0. Vlastnost manifestu aplikace webového rozhraní API umožňuje vývojářům zvolit, která verze tokenu je přijata. Viz `accessTokenAcceptedVersion` v tématu Referenční dokumentace k [manifestu aplikace](./reference-app-manifest.md) .
 
-Další informace o tokenech v 1.0 a v 2.0 najdete v tématu [Azure Active Directory Access tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).
+Další informace o tokenech v 1.0 a v 2.0 najdete v tématu [Azure Active Directory Access tokens](./access-tokens.md).
 
 ## <a name="adal-to-msal-migration"></a>MSAL migrace ADAL
 

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: cd21ef8d697570afb2109bb56d552284c03fd9a2
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 4450b0bcc06b048fd9ad42d2a7bf1c588816eae7
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552777"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115607"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>Použití atributů rozšíření schématu adresáře v deklaracích identity
 
@@ -34,7 +34,7 @@ Identifikátor atributu rozšíření schématu adresáře má *Extension_xxxxxx
 ## <a name="registering-and-using-directory-schema-extensions"></a>Registrace a použití rozšíření schématu adresáře
 Atributy rozšíření schématu adresáře lze registrovat a naplnit jedním ze dvou způsobů:
 
-- Konfigurací služby AD Connect tak, aby se vytvořila a synchronizoval data do nich z místní služby AD. Viz [Azure AD Connect synchronizace adresářů](/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions).
+- Konfigurací služby AD Connect tak, aby se vytvořila a synchronizoval data do nich z místní služby AD. Viz [Azure AD Connect synchronizace adresářů](../hybrid/how-to-connect-sync-feature-directory-extensions.md).
 - Použití Microsoft Graph k registraci, nastavení hodnot a čtení z atributů rozšíření schématu adresáře [rozšíření schématu adresáře | Graph API konceptů](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions) a/nebo prostředí PowerShell a [Správa atributů rozšíření pomocí rutin prostředí PowerShell pro AzureAD](/powershell/azure/active-directory/using-extension-attributes-sample?view=azureadps-2.0).
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>Generování deklarací identity s daty z atributů rozšíření schématu adresáře vytvořených pomocí služby AD Connect

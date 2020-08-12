@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 28613138170d83c1073671fcb57c98203df64b37
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6d4710f0b8756ea9b7f824b8b0aa1221ad8b30f0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846288"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120384"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace
 
-V tomto rychlém startu napište aplikaci v Pythonu, která získá token přístupu pomocí identity aplikace, a potom zavolá rozhraní Microsoft Graph API, ve kterém se zobrazí [seznam uživatelů](https://docs.microsoft.com/graph/api/user-list) v adresáři. Tento scénář je vhodný pro situace, kdy je potřeba bez identity uživatele spustit bezobslužnou úlohu nebo službu systému Windows s identitou aplikace.
+V tomto rychlém startu napište aplikaci v Pythonu, která získá token přístupu pomocí identity aplikace, a potom zavolá rozhraní Microsoft Graph API, ve kterém se zobrazí [seznam uživatelů](/graph/api/user-list) v adresáři. Tento scénář je vhodný pro situace, kdy je potřeba bez identity uživatele spustit bezobslužnou úlohu nebo službu systému Windows s identitou aplikace.
 
 > [!div renderon="docs"]
 > ![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)

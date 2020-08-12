@@ -12,17 +12,17 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b899e1d651f41c9c1e1e54af1b5ec19162dfc28d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b4de8a5e96466ea324475030df1f00eb6bb5cf1a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380060"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118282"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Kurz: přihlášení uživatelů a volání Microsoft Graph z aplikace pro Android 
 
 >[!NOTE]
->Tento kurz ukazuje zjednodušené příklady práce s MSAL pro Android. Pro zjednodušení používá tento kurz jenom režim jednoho účtu. Můžete také zobrazit úložiště a klonovat [předem nakonfigurovanou ukázkovou aplikaci](https://github.com/Azure-Samples/ms-identity-android-java/) a prozkoumat tak složitější scénáře. Podívejte se na [rychlý Start](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-android) , kde najdete další informace o ukázkové aplikaci, konfiguraci a registraci. 
+>Tento kurz ukazuje zjednodušené příklady práce s MSAL pro Android. Pro zjednodušení používá tento kurz jenom režim jednoho účtu. Můžete také zobrazit úložiště a klonovat [předem nakonfigurovanou ukázkovou aplikaci](https://github.com/Azure-Samples/ms-identity-android-java/) a prozkoumat tak složitější scénáře. Podívejte se na [rychlý Start](./quickstart-v2-android.md) , kde najdete další informace o ukázkové aplikaci, konfiguraci a registraci. 
 
 V tomto kurzu se dozvíte, jak integrovat aplikaci pro Android s platformou Microsoft identity pomocí knihovny ověřování Microsoft pro Android. Naučíte se, jak se přihlásit a odhlásit uživatele, získat přístupový token pro volání rozhraní Microsoft Graph API a vytvořit žádost o Graph API. 
 
@@ -68,30 +68,30 @@ Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a na
 4. Uložte název balíčku. Později ji zadáte do Azure Portal.
 5. Změňte jazyk z **Kotlin** na **Java**.
 6. Nastavte **minimální úroveň rozhraní API** na **rozhraní API 19** nebo vyšší a klikněte na **Dokončit**.
-7. V zobrazení projektu vyberte v rozevíracím seznamu **projekt** a zobrazte zdrojové a nezdrojové soubory projektu, otevřete **App/Build. Gradle** a nastavte `targetSdkVersion` na `28`.
+7. V zobrazení projektu vyberte v rozevíracím seznamu **projekt** a zobrazte zdrojové a nezdrojové soubory projektu, otevřete **App/Build. Gradle** a nastavte `targetSdkVersion` na `28` .
 
 ## <a name="integrate-with-microsoft-authentication-library"></a>Integrace s Microsoft Authentication Library 
 
-### <a name="register-your-application"></a>Registrace vaší aplikace
+### <a name="register-your-application"></a>Registrace aplikace
 
-1. Přejít na [Azure Portal](https://aka.ms/MobileAppReg).
+1. Přejděte na [Azure Portal](https://aka.ms/MobileAppReg).
 2. Otevřete okno [Registrace aplikací](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a klikněte na **+ Nová registrace**.
 3. Zadejte **název** vaší aplikace a pak **bez** nastavení identifikátoru URI přesměrování klikněte na **zaregistrovat**.
-4. V části **Spravovat** v podokně, které se zobrazí, vyberte **ověřování** > **+ Přidat platformu** > **Android**. (V horní části okna možná budete muset vybrat možnost "přepnout na nové prostředí", abyste viděli tuto část.)
-5. Zadejte název balíčku vašeho projektu. Pokud jste kód stáhli, je `com.azuresamples.msalandroidapp`tato hodnota.
+4. V části **Spravovat** v podokně, které se zobrazí, vyberte **ověřování**  >  **+ Přidat platformu**  >  **Android**. (V horní části okna možná budete muset vybrat možnost "přepnout na nové prostředí", abyste viděli tuto část.)
+5. Zadejte název balíčku vašeho projektu. Pokud jste kód stáhli, je tato hodnota `com.azuresamples.msalandroidapp` .
 6. V části **Signature hash** na stránce **Konfigurace aplikace pro Android** klikněte na **vygenerovat hodnotu hash signatury pro vývoj.** a zkopírujte příkaz nástroje nástroje, který se má použít pro vaši platformu.
 
    > [!Note]
-   > Nástroj Tool. exe je nainstalován jako součást sady Java Development Kit (JDK). Je také nutné nainstalovat nástroj OpenSSL pro spuštění příkazu nástroje. Další informace najdete v [dokumentaci k Androidu o generování klíče](https://developer.android.com/studio/publish/app-signing#generate-key) . 
+   > KeyTool.exe je nainstalován jako součást sady Java Development Kit (JDK). Je také nutné nainstalovat nástroj OpenSSL pro spuštění příkazu nástroje. Další informace najdete v [dokumentaci k Androidu o generování klíče](https://developer.android.com/studio/publish/app-signing#generate-key) . 
 
 7. Zadejte **hodnotu hash podpisu** generovanou nástrojem.
-8. Klikněte `Configure` na a uložte **konfiguraci MSAL** , která se zobrazí na stránce **Konfigurace Androidu** , abyste ji mohli zadat při pozdější konfiguraci aplikace.  Klikněte na **Done** (Hotovo).
+8. Klikněte na `Configure` a uložte **konfiguraci MSAL** , která se zobrazí na stránce **Konfigurace Androidu** , abyste ji mohli zadat při pozdější konfiguraci aplikace.  Klikněte na **Hotovo**.
 
 ### <a name="configure-your-application"></a>Konfigurace aplikace 
 
 1. V podokně projektu Android Studio přejděte na **app\src\main\res**.
-2. Klikněte pravým tlačítkem na položku **res** a vyberte možnost **Nový** > **adresář**. Jako `raw` název nového adresáře zadejte a klikněte na **OK**.
-3. V části **App** > **Src** > **Main** > **res****raw** `auth_config_single_account.json` RAW vytvořte nový soubor JSON s názvem a vložte konfiguraci MSAL, kterou jste předtím uložili. >  
+2. Klikněte pravým tlačítkem na položku **res** a vyberte možnost **Nový**  >  **adresář**. `raw`Jako název nového adresáře zadejte a klikněte na **OK**.
+3. V části **App**  >  **Src**  >  **Main**  >  **res**  >  **raw**vytvořte nový soubor JSON s názvem `auth_config_single_account.json` a vložte konfiguraci MSAL, kterou jste předtím uložili. 
 
     Pod identifikátorem URI přesměrování vložte: 
     ```json
@@ -117,9 +117,9 @@ Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a na
    ```
     
    >[!NOTE]
-   >Tento kurz ukazuje, jak nakonfigurovat aplikaci v režimu jednoho účtu. Podívejte se na dokumentaci, kde najdete další informace o [jednom nebo víc režimech účtů](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account) a [konfiguraci aplikace](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration) .
+   >Tento kurz ukazuje, jak nakonfigurovat aplikaci v režimu jednoho účtu. Podívejte se na dokumentaci, kde najdete další informace o [jednom nebo víc režimech účtů](./single-multi-account.md) a [konfiguraci aplikace](./msal-configuration.md) .
    
-4. V **části app** > **Src** > **Main** > **souboru AndroidManifest. XML**přidejte následující `BrowserTabActivity` aktivitu do těla aplikace. Tato položka umožňuje, aby Microsoft po dokončení ověřování vrátil zpět do vaší aplikace:
+4. Do části **App**  >  **Src**  >  **Main**  >  **AndroidManifest.xml**přidejte `BrowserTabActivity` níže uvedenou aktivitu do těla aplikace. Tato položka umožňuje, aby Microsoft po dokončení ověřování vrátil zpět do vaší aplikace:
 
     ```xml
     <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
@@ -136,16 +136,16 @@ Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a na
     </activity>
     ```
 
-    Pro tuto `android:host=` hodnotu nahraďte název balíčku, který jste zaregistrovali v Azure Portal.
-    `android:path=` Hodnotu hash klíče, kterou jste zaregistrovali v Azure Portal, nahraďte hodnotou. Hodnota hash **podpisu by neměla být kódovaná** v adrese URL. Zajistěte, aby na `/` začátku hodnoty hash podpisu existovala úvodní hodnota. 
+    Pro tuto hodnotu nahraďte název balíčku, který jste zaregistrovali v Azure Portal `android:host=` .
+    Hodnotu hash klíče, kterou jste zaregistrovali v Azure Portal, nahraďte `android:path=` hodnotou. Hodnota hash **podpisu by neměla být kódovaná** v adrese URL. Zajistěte, aby na `/` začátku hodnoty hash podpisu existovala úvodní hodnota. 
     >[!NOTE]
-    >Název balíčku nahradíte `android:host` hodnotou, kterou by měl vypadat nějak takto: "com. azuresamples. Msalandroidapp" signatura "hash", nahradíte `android:path` hodnotu parametr by měl vypadat nějak takto: "/1wIqXSqBj7w + h11ZifsnqwgyKrY =" tyto hodnoty bude možné najít v okně ověřování vaší registrace aplikace. Všimněte si, že váš identifikátor URI pro přesměrování bude vypadat nějak takto: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D". I když je hodnota hash podpisu na konci této hodnoty zakódovaná, hodnota hash signatury by **neměla mít v** `android:path` hodnotě kódování URL. 
+    >Název balíčku nahradíte hodnotou, kterou `android:host` by měl vypadat nějak takto: "com. azuresamples. msalandroidapp" signatura "hash", nahradíte `android:path` hodnotu parametr by měl vypadat nějak takto: "/1WIqXSqBj7w + h11ZifsnqwgyKrY =" tyto hodnoty bude možné najít v okně ověřování vaší registrace aplikace. Všimněte si, že váš identifikátor URI pro přesměrování bude vypadat nějak takto: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D". I když je hodnota hash podpisu na konci této hodnoty zakódovaná, hodnota hash signatury by **neměla mít v** hodnotě kódování URL `android:path` . 
 
 ## <a name="use-msal"></a>Použití MSAL 
 
 ### <a name="add-msal-to-your-project"></a>Přidání MSAL do projektu
 
-1. V okně Android Studio projektu přejděte do **App** > **Src** > **Build. Gradle** a přidejte následující: 
+1. V okně Android Studio projektu přejděte do **App**  >  **Src**  >  **Build. Gradle** a přidejte následující: 
 
     ```gradle
     repositories{
@@ -163,7 +163,7 @@ Pokud ještě nemáte aplikaci pro Android, postupujte podle těchto kroků a na
 
 ### <a name="required-imports"></a>Požadované importy 
 
-Přidejte následující na začátek **aplikace** > **Src** > **hlavní**> **Java** > **com. Příklad (yourapp)** > **MainActivity. Java** 
+Přidejte následující na začátek **aplikace**  >  **Src**  >  **hlavní** >  **Java**  >  **com. Příklad (yourapp)**  >  **MainActivity. Java** 
 
 ```java
 import android.os.Bundle;
@@ -207,7 +207,7 @@ TextView currentUserTextView;
 ```
 
 ### <a name="oncreate"></a>onCreate
-V rámci `MainActivity` třídy, přečtěte si následující metodu Create () pro vytvoření instance MSAL pomocí `SingleAccountPublicClientApplication`.
+V rámci `MainActivity` třídy, přečtěte si následující metodu Create () pro vytvoření instance MSAL pomocí `SingleAccountPublicClientApplication` .
 
 ```java
 @Override
@@ -580,6 +580,6 @@ Když se uživatel poprvé přihlásí do vaší aplikace, zobrazí se mu výzva
 
 Pokud už je nepotřebujete, odstraňte objekt aplikace, který jste vytvořili v kroku [Registrace aplikace](#register-your-application) .
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 
-Pokud máte potíže s tímto kurzem nebo s platformou Microsoft identity, přejděte na [pomoc a podpora](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) .
+Pokud máte potíže s tímto kurzem nebo s platformou Microsoft identity, přejděte na [pomoc a podpora](./developer-support-help-options.md) .

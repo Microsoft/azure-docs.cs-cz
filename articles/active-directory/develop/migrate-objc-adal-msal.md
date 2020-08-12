@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 6050bdc8c2600998b9804b04b62102e74612719f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77085173"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119925"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Migrace aplikací do MSAL pro iOS a macOS
 
@@ -45,7 +45,7 @@ Platforma Microsoft identity má několik klíčových rozdílů s Azure Active 
 * Koncový bod Azure Active Directory v 1.0 vyžaduje, aby byla při registraci aplikace předem deklarována všechna oprávnění. To znamená, že tato oprávnění jsou statická.
 * Platforma Microsoft Identity vám umožňuje dynamicky požádat o oprávnění. Aplikace můžou požádat o oprávnění pouze podle potřeby a požádat o další informace, jak je aplikace potřebuje.
 
-Další informace o rozdílech mezi Azure Active Directory v 1.0 a platformou Microsoft identity najdete v tématu [Proč aktualizovat na Microsoft Identity Platform (v 2.0)?](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison).
+Další informace o rozdílech mezi Azure Active Directory v 1.0 a platformou Microsoft identity najdete v tématu [Proč aktualizovat na Microsoft Identity Platform (v 2.0)?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 ## <a name="adal-and-msal-library-differences"></a>Rozdíly v knihovně ADAL a MSAL
 
@@ -65,7 +65,7 @@ V MSAL místo jednoho identifikátoru prostředku poskytují aplikace sadu obor�
 
 Existují dva způsoby, jak poskytnout obory v MSAL:
 
-* Zadejte seznam všech oprávnění, která aplikace potřebuje. Příklad: 
+* Zadejte seznam všech oprávnění, která aplikace potřebuje. Například: 
 
     `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
@@ -77,7 +77,7 @@ Toto je vestavěný rozsah pro každou aplikaci. Odkazuje na statický seznam op
 
 Chcete-li použít `/.default` rozsah, přidejte `/.default` k identifikátoru prostředku. Například: `https://graph.microsoft.com/.default`. Pokud váš prostředek končí lomítkem ( `/` ), měli byste se stále připojit `/.default` , včetně počátečního lomítka, a to v oboru, který obsahuje dvojité lomítko ( `//` ).
 
-Další informace o používání oboru "/.default" si můžete přečíst [tady](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope) .
+Další informace o používání oboru "/.default" si můžete přečíst [tady](./v2-permissions-and-consent.md#the-default-scope) .
 
 ### <a name="supporting-different-webview-types--browsers"></a>Podpora různých typů webových zobrazení & prohlížečů
 
@@ -146,7 +146,7 @@ Postup povolení zprostředkovatele pro vaši aplikaci:
 
 1. Zaregistrujte pro aplikaci formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem. Formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem je `msauth.<app.bundle.id>://auth` . Nahraďte `<app.bundle.id>` ID sady prostředků vaší aplikace. Pokud migrujete z ADAL a vaše aplikace už je zavedená, nemusíte nic dalšího dělat. Váš předchozí identifikátor URI pro přesměrování je plně kompatibilní s MSAL, takže můžete přejít na krok 3.
 
-2. Do souboru info. plist přidejte schéma identifikátoru URI pro přesměrování vaší aplikace. Pro výchozí identifikátor URI pro přesměrování MSAL je formát `msauth.<app.bundle.id>` . Příklad:
+2. Do souboru info. plist přidejte schéma identifikátoru URI pro přesměrování vaší aplikace. Pro výchozí identifikátor URI pro přesměrování MSAL je formát `msauth.<app.bundle.id>` . Například:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -207,7 +207,7 @@ MSAL v iOS taky podporuje dva další typy jednotného přihlašování:
 
 ## <a name="intune-mam-sdk"></a>Sada Intune MAM SDK
 
-[Sada Intune mam SDK](https://docs.microsoft.com/intune/app-sdk-get-started) podporuje MSAL pro iOS počínaje verzí [11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2)
+[Sada Intune mam SDK](/intune/app-sdk-get-started) podporuje MSAL pro iOS počínaje verzí [11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2)
 
 ## <a name="msal-and-adal-in-the-same-app"></a>MSAL a ADAL ve stejné aplikaci
 

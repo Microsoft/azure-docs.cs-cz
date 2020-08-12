@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6fc4de3ef934e2d1b9dcff46c78f45e7d0f3b6d8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845455"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117732"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Volání služeb pro službu, která používají delegovanou identitu uživatele v toku za jménem
 
@@ -51,7 +51,7 @@ Zaregistrujte jak službu střední vrstvy, tak klientskou aplikaci ve službě 
 
 ### <a name="register-the-middle-tier-service"></a>Registrace služby střední vrstvy
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V horním panelu vyberte svůj účet a v seznamu **adresář** vyberte klienta Active Directory pro vaši aplikaci.
 1. V levém podokně vyberte **Další služby** a zvolte **Azure Active Directory**.
 1. Vyberte **Registrace aplikací** a pak **novou registraci**.
@@ -69,7 +69,7 @@ Zaregistrujte jak službu střední vrstvy, tak klientskou aplikaci ve službě 
 
 ### <a name="register-the-client-application"></a>Registrace klientské aplikace
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V horním panelu vyberte svůj účet a v seznamu **adresář** vyberte klienta Active Directory pro vaši aplikaci.
 1. V levém podokně vyberte **Další služby** a zvolte **Azure Active Directory**.
 1. Vyberte **Registrace aplikací** a pak **novou registraci**.
@@ -264,7 +264,7 @@ Odpověď obsahuje token SAML kódovaný v UTF8 a Base64url.
 - **SubjectConfirmationData pro vyhodnocení výrazu SAML ze volání OBO**: Pokud cílová aplikace vyžaduje hodnotu příjemce v **SubjectConfirmationData**, musí být v konfiguraci aplikace prostředků adresa URL odpovědi bez zástupných znaků.
 - **Uzel SubjectConfirmationData**: uzel nemůže obsahovat atribut **InResponseTo** , protože není součástí odpovědi SAML. Aplikace, která přijímá token SAML, musí být schopna přijmout kontrolní výraz SAML bez atributu **InResponseTo** .
 
-- **Souhlas**: souhlas se musí udělit pro příjem tokenu SAML obsahujícího uživatelská data v toku OAuth. Informace o oprávněních a získání souhlasu správce najdete [v tématu oprávnění a souhlas v koncovém bodu Azure Active Directory v 1.0](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent).
+- **Souhlas**: souhlas se musí udělit pro příjem tokenu SAML obsahujícího uživatelská data v toku OAuth. Informace o oprávněních a získání souhlasu správce najdete [v tématu oprávnění a souhlas v koncovém bodu Azure Active Directory v 1.0](./v1-permissions-consent.md).
 
 ### <a name="response-with-saml-assertion"></a>Odpověď s kontrolním výrazem SAML
 

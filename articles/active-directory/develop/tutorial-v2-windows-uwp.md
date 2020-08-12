@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7193affad3da212a6a40c0d9479473ec597e86f6
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 38bd83f8bd713f2d5bda658e052c919dd3d7625d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807617"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119704"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní Microsoft Graph API z aplikace Univerzální platforma Windows (XAML)
 
@@ -27,7 +27,7 @@ V této příručce se dozvíte, jak může aplikace pro nativní Univerzální 
 Na konci tohoto průvodce vaše aplikace volá chráněné rozhraní API pomocí osobních účtů. Příklady jsou outlook.com, live.com a další. Vaše aplikace také volá pracovní a školní účty z libovolné společnosti nebo organizace, která má Azure Active Directory (Azure AD).
 
 >[!NOTE]
-> Tato příručka vyžaduje Visual Studio s nainstalovanou Univerzální platforma Windows vývoj. Pokyny ke stažení a konfiguraci sady Visual Studio pro vývoj Univerzální platforma Windowsch aplikací najdete v tématu o [Nastavení](https://docs.microsoft.com/windows/uwp/get-started/get-set-up).
+> Tato příručka vyžaduje Visual Studio s nainstalovanou Univerzální platforma Windows vývoj. Pokyny ke stažení a konfiguraci sady Visual Studio pro vývoj Univerzální platforma Windowsch aplikací najdete v tématu o [Nastavení](/windows/uwp/get-started/get-set-up).
 
 >[!NOTE]
 > Pokud začínáte s platformou Microsoft identity, začněte [voláním rozhraní Microsoft Graph API z rychlého startu aplikace Univerzální platforma Windows (UWP)](quickstart-v2-uwp.md).
@@ -336,11 +336,11 @@ private async Task DisplayMessageAsync(string message)
      }
 ```
 
-## <a name="register-your-application"></a>Registrace vaší aplikace
+## <a name="register-your-application"></a>Registrace aplikace
 
 Nyní je nutné zaregistrovat aplikaci:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Vyberte **Azure Active Directory**  >  **Registrace aplikací**.
 1. Vyberte **Nová registrace**. Zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například *UWP-App-Call-MSGraph*.
 1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft (např. Skype, Xbox)**. Pak pokračujte výběrem **zaregistrovat** .
