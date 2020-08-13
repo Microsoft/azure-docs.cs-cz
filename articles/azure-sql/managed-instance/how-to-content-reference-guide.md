@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: 23ce3272d99401340d784f88dd537baa55774a63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de8d1b7aba7763799228c831af61bf83a79937bb
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708820"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167942"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Referenční dokumentace obsahu spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -75,6 +75,14 @@ V tomto článku najdete odkaz na obsah různých průvodců, skriptů a vysvět
 - [Ukládání rozšířených událostí do souboru události](../database/xevent-code-event-file.md)
 - [Ukládání rozšířených událostí do kruhové vyrovnávací paměti](../database/xevent-code-ring-buffer.md)
 
+### <a name="alerting"></a>Zobrazení výstrah
+
+- [Vytvoření upozornění na spravovanou instanci](alerts-create.md)
+
+## <a name="operations"></a>Operace
+
+- [Uživatelsky iniciované ruční převzetí služeb při selhání na spravované instanci SQL](user-initiated-failover.md)
+
 ## <a name="develop-applications"></a>Vývoj aplikací
 
 - [Připojení](../database/connect-query-content-reference-guide.md#libraries)
@@ -99,8 +107,6 @@ V tomto článku najdete odkaz na obsah různých průvodců, skriptů a vysvět
 - [Způsoby návrhu SaaS](../database/saas-tenancy-app-design-patterns.md)
 - [Indexer videa SaaS](../database/saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [Zabezpečení aplikací SaaS](../database/saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
-
-
 
 ## <a name="next-steps"></a>Další kroky
 

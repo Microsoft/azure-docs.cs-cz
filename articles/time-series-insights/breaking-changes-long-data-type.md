@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.custom: dpalled
-ms.openlocfilehash: 34cf770a8ac75c2516480ec3136e61da15f4e4ff
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ab7a30cf6ca71e9260a9cb6e9136f2579e51812c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446631"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167993"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Přidání podpory pro typ Long data v Azure Time Series Insights Gen2
 
@@ -66,7 +66,7 @@ Pokud aktuálně odesíláte celočíselná data telemetrie, vaše data budou ro
 
 Vaše celočíselné zápisy dat do **propertyValue_long**. Dříve ingestovaná číselná data v **propertyValue_double** nebyla kopírována.
 
-Pokud chcete zadat dotaz na data v těchto dvou sloupcích pro vlastnost **PropertyValue** , musíte v TSX použít skalární funkci **COALESCE ()** . Funkce přijímá argumenty stejného **datového typu** a vrací první hodnotu, která není null v seznamu argumentů. Další informace najdete v tématu [Azure Time Series Insights Gen2ch konceptů přístupu k datům](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions).
+Pokud chcete zadat dotaz na data v těchto dvou sloupcích pro vlastnost **PropertyValue** , musíte v TSX použít skalární funkci **COALESCE ()** . Funkce přijímá argumenty stejného **datového typu** a vrací první hodnotu, která není null v seznamu argumentů. Další informace najdete v tématu [Azure Time Series Insights Gen2ch konceptů přístupu k datům](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions).
 
 #### <a name="variable-definition-in-tsx---numeric"></a>Definice proměnné v TSX – numeric
 
@@ -78,7 +78,7 @@ Pokud chcete zadat dotaz na data v těchto dvou sloupcích pro vlastnost **Prope
 
 [![Definice nové proměnné](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-Jako [výraz vlastní časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)můžete také použít funkci **COALESCE ($Event. PropertyValue. Double, ToDouble – ($Event. PropertyValue. Long))** .
+Jako [výraz vlastní časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)můžete také použít funkci **COALESCE ($Event. PropertyValue. Double, ToDouble – ($Event. PropertyValue. Long))** .
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>Vložená definice proměnné s použitím rozhraní API pro dotazy TSX – numerický
 
@@ -126,7 +126,7 @@ Jako [výraz vlastní časové řady](https://docs.microsoft.com/rest/api/time-s
 }
 ```
 
-Jako [výraz vlastní časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)můžete také použít funkci **COALESCE ($Event. PropertyValue. Double, ToDouble – ($Event. PropertyValue. Long))** .
+Jako [výraz vlastní časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)můžete také použít funkci **COALESCE ($Event. PropertyValue. Double, ToDouble – ($Event. PropertyValue. Long))** .
 
 > [!NOTE]
 > Tyto proměnné Doporučujeme aktualizovat na všech místech, která se můžou použít. Mezi tato místa patří model časových řad, uložené dotazy a dotazy konektoru Power BI.
@@ -147,7 +147,7 @@ Pokud aktuálně používáte proměnné kategorií, které mapují celočíseln
 
 Jako [výraz vlastní časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)můžete také použít funkci **COALESCE ($Event. PropertyValue. Double, ToDouble – ($Event. PropertyValue. Long))** .
 
-Proměnné kategorií stále vyžadují, aby byla hodnota typu Integer. **Datový typ** všech argumentů v **COALESCE ()** musí být typu **Long** ve [výrazu vlastní časové řady.](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)
+Proměnné kategorií stále vyžadují, aby byla hodnota typu Integer. **Datový typ** všech argumentů v **COALESCE ()** musí být typu **Long** ve [výrazu vlastní časové řady.](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>Vložená definice proměnné pomocí rozhraní API pro dotazy TSX – kategorií
 
@@ -227,7 +227,7 @@ Proměnné kategorií stále vyžadují, aby byla hodnota typu Integer. **Datov�
 }
 ```
 
-Proměnné kategorií stále vyžadují, aby byla hodnota typu Integer. **Datový typ** všech argumentů v **COALESCE ()** musí být typu **Long** ve [výrazu vlastní časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
+Proměnné kategorií stále vyžadují, aby byla hodnota typu Integer. **Datový typ** všech argumentů v **COALESCE ()** musí být typu **Long** ve [výrazu vlastní časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 > [!NOTE]
 > Tyto proměnné Doporučujeme aktualizovat na všech místech, která se můžou použít. Mezi tato místa patří model časových řad, uložené dotazy a dotazy konektoru Power BI.

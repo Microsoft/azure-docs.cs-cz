@@ -4,19 +4,19 @@ description: Použít zařízení Azure IoT Edge jako transparentní bránu, kte
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0155294777e1d732e5ff3874102b90049d9a123d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf7147ca1295c9f2cef5d89c232f2c266075e362
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782581"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167398"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení IoT Edge tak, aby fungovalo jako transparentní brána
 
@@ -45,7 +45,7 @@ Můžete vytvořit jakoukoli infrastrukturu certifikátů, která umožňuje dů
 
 Následující kroky vás provedou procesem vytvoření certifikátů a jejich instalací do správných míst v bráně. K vygenerování certifikátů můžete použít libovolný počítač a pak je zkopírovat do zařízení IoT Edge.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Zařízení se systémem Linux nebo Windows s nainstalovaným IoT Edge.
 
@@ -73,14 +73,14 @@ V produkčních scénářích byste tyto soubory měli vytvořit s vlastní cert
       * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
 
    2. [Vytvořte certifikát certifikační autority IoT Edge zařízení](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates). Na konci těchto pokynů budete mít dva soubory, certifikát certifikační autority zařízení a jeho privátní klíč:
-      * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem`ani
+      * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem` ani
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
 2. Pokud jste tyto soubory vytvořili na jiném počítači, zkopírujte je do zařízení IoT Edge.
 
 3. Na zařízení IoT Edge otevřete konfigurační soubor démona zabezpečení.
-   * Systému`C:\ProgramData\iotedge\config.yaml`
-   * Linux`/etc/iotedge/config.yaml`
+   * Systému `C:\ProgramData\iotedge\config.yaml`
+   * Linux `/etc/iotedge/config.yaml`
 
 4. V souboru vyhledejte část **certifikáty** a zadejte identifikátory URI souborů pro tyto tři soubory jako hodnoty pro následující vlastnosti:
    * **device_ca_cert**: certifikát certifikační autority zařízení
@@ -90,18 +90,22 @@ V produkčních scénářích byste tyto soubory měli vytvořit s vlastní cert
 5. Uložte soubor a zavřete ho.
 
 6. Restartujte IoT Edge.
-   * Systému`Restart-Service iotedge`
-   * Linux`sudo systemctl restart iotedge`
+   * Systému `Restart-Service iotedge`
+   * Linux `sudo systemctl restart iotedge`
 
-## <a name="deploy-edgehub-to-the-gateway"></a>Nasazení edgeHub do brány
+## <a name="deploy-edgehub-and-route-messages"></a>Nasazení edgeHub a směrování zpráv
 
-Při první instalaci IoT Edge na zařízení se automaticky spustí pouze jeden systémový modul: Agent IoT Edge. Po vytvoření prvního nasazení pro zařízení se spustí i druhý systémový modul, Centrum IoT Edge.
+Podřízená zařízení odesílají telemetrii a zprávy do zařízení brány, kde je modul centra IoT Edge zodpovědný za směrování informací do jiných modulů nebo pro IoT Hub. Pokud chcete pro tuto funkci připravit zařízení brány, ujistěte se, že:
 
-Centrum IoT Edge zodpovídá za příjem příchozích zpráv ze zařízení pro příjem dat a jejich směrování do dalšího cíle. Pokud na vašem zařízení není modul **edgeHub** spuštěný, vytvořte počáteční nasazení pro vaše zařízení. Nasazení bude vypadat prázdné, protože nepřidáte žádné moduly, ale zajistěte, aby byly spuštěny oba systémové moduly.
+* Do zařízení se nasadí modul IoT Edge hub.
 
-Můžete zkontrolovat, které moduly jsou spuštěny na zařízení, kontrolou podrobností o zařízení v Azure Portal, zobrazením stavu zařízení v aplikaci Visual Studio nebo Visual Studio Code nebo spuštěním příkazu `iotedge list` na samotném zařízení.
+  Při první instalaci IoT Edge na zařízení se automaticky spustí pouze jeden systémový modul: Agent IoT Edge. Jakmile vytvoříte první nasazení zařízení, spustí se i druhý systémový modul, Centrum IoT Edge. Pokud na vašem zařízení není modul **edgeHub** spuštěný, vytvořte nasazení pro vaše zařízení.
 
-Pokud je modul **edgeAgent** spuštěný bez modulu **edgeHub** , použijte následující postup:
+* Modul IoT Edge hub má nastavené trasy pro zpracování příchozích zpráv z podřízených zařízení.
+
+  Zařízení brány musí mít k dispozici trasu pro zpracování zpráv ze zařízení pro příjem dat, jinak se tyto zprávy nezpracují. Zprávy můžete odeslat do modulů na zařízení brány nebo přímo do IoT Hub.
+
+Pokud chcete nasadit modul centra IoT Edge a nakonfigurovat ho pomocí tras pro zpracování příchozích zpráv z podřízených zařízení, postupujte takto:
 
 1. Na webu Azure Portal přejděte do svého centra IoT.
 
@@ -109,13 +113,27 @@ Pokud je modul **edgeAgent** spuštěný bez modulu **edgeHub** , použijte nás
 
 3. Vyberte možnost **nastavit moduly**.
 
-4. Vyberte **Další: trasy**.
+4. Na stránce **moduly** můžete přidat libovolné moduly, které chcete nasadit do zařízení brány. Pro účely tohoto článku se zaměřujeme na konfiguraci a nasazení modulu edgeHub, který není nutné explicitně nastavit na této stránce.
 
-5. Na stránce **trasy** byste měli mít výchozí trasu, která odesílá všechny zprávy, ať už z modulu nebo ze zařízení pro příjem dat, na IoT Hub. Pokud ne, přidejte novou trasu s následujícími hodnotami a pak vyberte **zkontrolovat + vytvořit**:
-   * **Název**:`route`
-   * **Hodnota**:`FROM /messages/* INTO $upstream`
+5. Vyberte **Další: trasy**.
 
-6. Na stránce **Revize + vytvořit** vyberte **vytvořit**.
+6. Na stránce **trasy** se ujistěte, že existuje trasa pro zpracování zpráv přicházejících ze zařízení pro příjem dat. Například:
+
+   * Trasa, která odesílá všechny zprávy, ať už z modulu, nebo ze zařízení pro příjem dat, na IoT Hub:
+       * **Název**: `allMessagesToHub`
+       * **Hodnota**: `FROM /messages/* INTO $upstream`
+
+   * Trasa, která odesílá všechny zprávy ze všech podřízených zařízení do IoT Hub:
+      * **Název**: `allDownstreamToHub`
+      * **Hodnota**: `FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
+
+      Tato trasa funguje, protože na rozdíl od zpráv z IoT Edgech modulů nejsou zprávy ze zařízení se systémem pro příjem dat k nim přidružena ID modulu. Použití klauzule **WHERE** trasy umožňuje vyfiltrovat všechny zprávy s touto vlastností systému.
+
+      Další informace o směrování zpráv najdete v tématu [nasazení modulů a vytváření tras](./module-composition.md#declare-routes).
+
+7. Po vytvoření trasy nebo tras vyberte **zkontrolovat + vytvořit**.
+
+8. Na stránce **Revize + vytvořit** vyberte **vytvořit**.
 
 ## <a name="open-ports-on-gateway-device"></a>Otevřít porty na zařízení brány
 
@@ -123,30 +141,11 @@ Zařízení Standard IoT Edge nepotřebují žádné příchozí připojení, pr
 
 Aby mohl scénář brány fungovat, musí být aspoň jeden z podporovaných protokolů centra IoT Edge otevřený pro příchozí provoz ze zařízení se systémem. Podporované protokoly jsou MQTT, AMQP, HTTPS, MQTT přes WebSockets a AMQP přes objekty WebSockets.
 
-| Port | Protocol (Protokol) |
+| Port | Protokol |
 | ---- | -------- |
 | 8883 | MQTT |
 | 5671 | AMQP |
 | 443 | HTTPS <br> MQTT + WS <br> AMQP + WS |
-
-## <a name="route-messages-from-downstream-devices"></a>Směrování zpráv ze zařízení pro příjem dat
-
-Modul runtime IoT Edge může směrovat zprávy odesílané ze zařízení pro příjem dat stejně jako zprávy odesílané moduly. Tato funkce umožňuje provádět analýzy v modulu spuštěném v bráně před odesláním dat do cloudu.
-
-V současné době je způsob směrování zpráv odesílaných pomocí navazujících zařízení odlišený od zpráv odesílaných moduly. Zprávy odesílané modulem All obsahují vlastnost systému nazvanou **connectionModuleId** , ale zprávy odesílané ze zařízení pro příjem dat nejsou. Klauzuli WHERE trasy můžete použít k vyloučení všech zpráv, které obsahují tuto vlastnost systému.
-
-Níže uvedený postup slouží jako příklad, který odešle zprávy ze všech podřízených zařízení do modulu s názvem `ai_insights` a následně z `ai_insights` IoT Hub.
-
-```json
-{
-    "routes":{
-        "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")",
-        "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream"
-    }
-}
-```
-
-Další informace o směrování zpráv najdete v tématu [nasazení modulů a vytváření tras](./module-composition.md#declare-routes).
 
 ## <a name="enable-extended-offline-operation"></a>Povolit rozšířenou offline operaci
 

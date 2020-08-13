@@ -9,16 +9,16 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 589dd411e3d340eb8a0bf84b21a306cabd4bb362
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3a5ee1cc8efead7c29dadaf64adb8e2686a10621
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495070"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168078"
 ---
-# <a name="send-events-to-a-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>Odeslání událostí do prostředí Azure Time Series Insights Gen1 pomocí centra událostí
+# <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>Odeslání událostí do prostředí Azure Time Series Insights Gen1 pomocí centra událostí
 
 Tento článek vysvětluje, jak vytvořit a nakonfigurovat centrum událostí v Azure Event Hubs. Popisuje také, jak spustit ukázkovou aplikaci pro vložení událostí do Azure Time Series Insights z Event Hubs. Pokud máte existující centrum událostí s událostmi ve formátu JSON, přeskočte tento kurz a podívejte se na vaše prostředí v [Azure Time Series Insights](./time-series-insights-update-create-environment.md).
 
@@ -55,9 +55,9 @@ Tento článek vysvětluje, jak vytvořit a nakonfigurovat centrum událostí v 
 
 ## <a name="add-an-azure-time-series-insights-instance"></a>Přidat instanci Azure Time Series Insights
 
-V Azure Time Series Insights Gen 2 můžete přidat kontextová data do příchozí telemetrie pomocí modelu časové řady (TSM). V TSM se vaše značky nebo signály odkazují na *instance* a v *polích instance* můžete ukládat kontextová data. Data jsou připojena v době dotazu pomocí **ID časové řady**. **ID časové řady** ukázkového projektu Windmills, který používáme dále v tomto článku `id` . Další informace o ukládání dat v polích instance najdete v tématu Přehled [modelu časové řady](./concepts-model-overview.md) .
+V Azure Time Series Insights Gen2 můžete přidat kontextová data do příchozí telemetrie pomocí modelu časové řady (TSM). V TSM se vaše značky nebo signály označují jako *instance* a v *polích instance* můžete ukládat kontextová data. Data jsou připojena v době dotazu pomocí **ID časové řady**. **ID časové řady** ukázkového projektu Windmills, který používáme dále v tomto článku `id` . Další informace o ukládání dat v polích instance najdete v tématu Přehled [modelu časové řady](./concepts-model-overview.md) .
 
-### <a name="create-a-azure-time-series-insights-event-source"></a>Vytvoření zdroje událostí Azure Time Series Insights
+### <a name="create-an-azure-time-series-insights-event-source"></a>Vytvoření zdroje události Azure Time Series Insights
 
 1. Pokud jste ještě nevytvořili zdroj událostí, proveďte kroky k [Vytvoření zdroje událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 
@@ -73,15 +73,15 @@ V Azure Time Series Insights Gen 2 můžete přidat kontextová data do přícho
 
     [![Kopírovat hodnotu pro připojovací řetězec primárního klíče](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. Přejděte na https://tsiclientsample.azurewebsites.net/windFarmGen.html. Adresa URL vytvoří a spustí simulovaná zařízení Windmill.
+1. Přejděte na <https://tsiclientsample.azurewebsites.net/windFarmGen.html>. Adresa URL vytvoří a spustí simulovaná zařízení Windmill.
 1. Do pole **připojovací řetězec centra událostí** na webové stránce vložte připojovací řetězec, který jste zkopírovali do [vstupního pole Windmill](#push-events-to-windmills-sample).
   
     [![Vložte připojovací řetězec primárního klíče do pole Připojovací řetězec centra událostí.](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
-1. Vyberte **kliknutím spustit**. 
+1. Vyberte **kliknutím spustit**.
 
     > [!TIP]
-    > Simulátor Windmill také vytvoří JSON, který můžete použít jako datovou část s [rozhraními API pro dotazy GA Azure Time Series Insights GA](https://docs.microsoft.com/rest/api/time-series-insights/ga-query).
+    > Simulátor Windmill také vytvoří JSON, který můžete použít jako datovou část s [rozhraními API pro dotazy GA Azure Time Series Insights GA](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query).
 
     > [!NOTE]
     > Simulátor bude pokračovat v posílání dat, dokud nebude zavřena karta prohlížeče.
@@ -203,6 +203,6 @@ V Azure Time Series Insights Gen 2 můžete přidat kontextová data do přícho
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zobrazte si prostředí](https://insights.timeseries.azure.com) v Průzkumníkovi Azure Time Series Insights.
+* [Zobrazte si prostředí](https://insights.timeseries.azure.com) v Průzkumníkovi Azure Time Series Insights.
 
-- Přečtěte si další informace o [IoT Hubch zprávách zařízení](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) .
+* Přečtěte si další informace o [IoT Hubch zprávách zařízení](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) .

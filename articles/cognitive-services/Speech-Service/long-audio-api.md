@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: ca6bff4c1e99bb8e63db212ca57693870afc30e7
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: be38d3e78108a15c9f7875a15156e0eeba5a6211
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080643"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167755"
 ---
 # <a name="long-audio-api-preview"></a>Dlouhé zvukové rozhraní API (Preview)
 
@@ -50,13 +50,220 @@ Při přípravě textového souboru se ujistěte, že:
 > [!NOTE]
 > Pro čínštinu (kontinentální), čínština (Hongkong – zvláštní administrativní oblast), čínština (Tchaj-wan), japonština a korejština, se jedno slovo bude počítat jako dva znaky. 
 
-## <a name="submit-synthesis-requests"></a>Odeslání žádostí o Shrnutí
+## <a name="python-example"></a>Příklad Pythonu
 
-Po přípravě vstupního obsahu postupujte podle pokynů k [rychlému startu pro přenos zvukové syntézy](https://aka.ms/long-audio-python) a odešlete žádost. Pokud máte více než jeden vstupní soubor, budete muset odeslat více požadavků. 
+Tato část obsahuje příklady Pythonu, které znázorňují základní využití dlouhého zvukového rozhraní API. Vytvořte nový projekt v jazyce Python v oblíbeném integrovaném vývojovém prostředí nebo editoru. Potom tento fragment kódu zkopírujte do souboru s názvem `voice_synthesis_client.py` .
 
-**Stavové kódy http** označují běžné chyby.
+```python
+import argparse
+import json
+import ntpath
+import urllib3
+import requests
+import time
+from json import dumps, loads, JSONEncoder, JSONDecoder
+import pickle
 
-| Rozhraní API | Stavový kód HTTP | Popis | Proposal |
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+```
+
+Tyto knihovny se používají k analýze argumentů, sestavení požadavku HTTP a volání dlouhého REST APIho textu na řeč.
+
+### <a name="get-a-list-of-supported-voices"></a>Získat seznam podporovaných hlasů
+
+Tento kód vám umožní získat úplný seznam hlasů pro konkrétní oblast nebo koncový bod, které můžete použít. Přidejte kód do `voice_synthesis_client.py` :
+
+```python
+parser = argparse.ArgumentParser(description='Text-to-speech client tool to submit voice synthesis requests.')
+parser.add_argument('--voices', action="store_true", default=False, help='print voice list')
+parser.add_argument('-key', action="store", dest="key", required=True, help='the speech subscription key, like fg1f763i01d94768bda32u7a******** ')
+parser.add_argument('-region', action="store", dest="region", required=True, help='the region information, could be centralindia, canadacentral or uksouth')
+args = parser.parse_args()
+baseAddress = 'https://%s.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0-beta1/' % args.region
+
+def getVoices():
+    response=requests.get(baseAddress+"voicesynthesis/voices", headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
+    voices = json.loads(response.text)
+    return voices
+
+if args.voices:
+    voices = getVoices()
+    print("There are %d voices available:" % len(voices))
+    for voice in voices:
+        print ("Name: %s, Description: %s, Id: %s, Locale: %s, Gender: %s, PublicVoice: %s, Created: %s" % (voice['name'], voice['description'], voice['id'], voice['locale'], voice['gender'], voice['isPublicVoice'], voice['created']))
+```
+
+Spusťte skript pomocí příkazu `python voice_synthesis_client.py --voices -key <your_key> -region <region>` a nahraďte následující hodnoty:
+
+* Nahraďte `<your_key>` klíčovým předplatným služby Speech. Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+* Nahraďte `<region>` oblastí, ve které se vytvořil prostředek řeči (například `eastus` nebo `westus` ). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+
+Zobrazí se výstup, který vypadá nějak takto:
+
+```console
+There are xx voices available:
+
+Name: Microsoft Server Speech Text to Speech Voice (en-US, xxx), Description: xxx , Id: xxx, Locale: en-US, Gender: Male, PublicVoice: xxx, Created: 2019-07-22T09:38:14Z
+Name: Microsoft Server Speech Text to Speech Voice (zh-CN, xxx), Description: xxx , Id: xxx, Locale: zh-CN, Gender: Female, PublicVoice: xxx, Created: 2019-08-26T04:55:39Z
+```
+
+Pokud **PublicVoice** má parametr PublicVoice **hodnotu true**, hlas je Public neuronové Voice. V opačném případě se jedná o vlastní neuronové hlas.
+
+### <a name="convert-text-to-speech"></a>Převod textu na řeč
+
+Připravte textový soubor, buď prostý text nebo SSML text, a přidejte následující kód do `voice_synthesis_client.py` :
+
+> [!NOTE]
+> ' concatenateResult ' je volitelný parametr. Pokud tento parametr není nastaven, budou zvukové výstupy vygenerovány podle odstavce. Můžete také zřetězit zvuky do 1 výstupu nastavením parametru. Ve výchozím nastavení je zvukový výstup nastavený na RIFF-16khz-16bitový-mono-PCM. Další informace o podporovaných výstupech zvuku naleznete v tématu [formáty zvukového výstupu](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats).
+
+```python
+parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
+parser.add_argument('--concatenateResult', action="store_true", default=False, help='If concatenate result in a single wave file')
+parser.add_argument('-file', action="store", dest="file", help='the input text script file path')
+parser.add_argument('-voiceId', action="store", nargs='+', dest="voiceId", help='the id of the voice which used to synthesis')
+parser.add_argument('-locale', action="store", dest="locale", help='the locale information like zh-CN/en-US')
+parser.add_argument('-format', action="store", dest="format", default='riff-16khz-16bit-mono-pcm', help='the output audio format')
+
+def submitSynthesis():
+    modelList = args.voiceId
+    data={'name': 'simple test', 'description': 'desc...', 'models': json.dumps(modelList), 'locale': args.locale, 'outputformat': args.format}
+    if args.concatenateResult:
+        properties={'ConcatenateResult': 'true'}
+        data['properties'] = json.dumps(properties)
+    if args.file is not None:
+        scriptfilename=ntpath.basename(args.file)
+        files = {'script': (scriptfilename, open(args.file, 'rb'), 'text/plain')}
+    response = requests.post(baseAddress+"voicesynthesis", data, headers={"Ocp-Apim-Subscription-Key":args.key}, files=files, verify=False)
+    if response.status_code == 202:
+        location = response.headers['Location']
+        id = location.split("/")[-1]
+        print("Submit synthesis request successful")
+        return id
+    else:
+        print("Submit synthesis request failed")
+        print("response.status_code: %d" % response.status_code)
+        print("response.text: %s" % response.text)
+        return 0
+
+def getSubmittedSynthesis(id):
+    response=requests.get(baseAddress+"voicesynthesis/"+id, headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
+    synthesis = json.loads(response.text)
+    return synthesis
+
+if args.submit:
+    id = submitSynthesis()
+    if (id == 0):
+        exit(1)
+
+    while(1):
+        print("\r\nChecking status")
+        synthesis=getSubmittedSynthesis(id)
+        if synthesis['status'] == "Succeeded":
+            r = requests.get(synthesis['resultsUrl'])
+            filename=id + ".zip"
+            with open(filename, 'wb') as f:  
+                f.write(r.content)
+                print("Succeeded... Result file downloaded : " + filename)
+            break
+        elif synthesis['status'] == "Failed":
+            print("Failed...")
+            break
+        elif synthesis['status'] == "Running":
+            print("Running...")
+        elif synthesis['status'] == "NotStarted":
+            print("NotStarted...")
+        time.sleep(10)
+```
+
+Spusťte skript pomocí příkazu `python voice_synthesis_client.py --submit -key <your_key> -region <region> -file <input> -locale <locale> -voiceId <voice_guid>` a nahraďte následující hodnoty:
+
+* Nahraďte `<your_key>` klíčovým předplatným služby Speech. Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+* Nahraďte `<region>` oblastí, ve které se vytvořil prostředek řeči (například `eastus` nebo `westus` ). Tyto informace jsou k dispozici na kartě **Přehled** prostředku v [Azure Portal](https://aka.ms/azureportal).
+* Nahraďte `<input>` cestou k textovému souboru, který jste připravili pro převod textu na řeč.
+* Nahraďte `<locale>` požadovaným národním prostředím výstupu. Další informace najdete v tématu [Podpora jazyků](language-support.md#neural-voices).
+* Nahraďte `<voice_guid>` požadovaným výstupním hlasem. Použijte jeden z hlasů vráceného předchozím voláním `/voicesynthesis/voices` koncového bodu.
+
+Zobrazí se výstup, který vypadá nějak takto:
+
+```console
+Submit synthesis request successful
+
+Checking status
+NotStarted...
+
+Checking status
+Running...
+
+Checking status
+Running...
+
+Checking status
+Succeeded... Result file downloaded : xxxx.zip
+```
+
+Výsledek obsahuje vstupní text a zvukové výstupní soubory, které jsou vygenerovány službou. Tyto soubory můžete stáhnout do souboru ZIP.
+
+> [!NOTE]
+> Pokud máte více než 1 vstupních souborů, budete muset odeslat více požadavků. Existují určitá omezení, která je potřeba znát. 
+> * Klient může pro každý účet předplatného Azure odeslat až **5** požadavků na server za sekundu. Pokud překročí omezení, klient obdrží kód chyby 429 (příliš mnoho požadavků). Snižte prosím částku žádosti za sekundu.
+> * Server může spouštět a zařadit do fronty až **120** požadavků pro každý účet předplatného Azure. Pokud se překročí omezení, server vrátí kód chyby 429 (příliš mnoho požadavků). Počkejte prosím a zabraňte odeslání nové žádosti, dokud nebudou dokončeny některé žádosti.
+
+### <a name="remove-previous-requests"></a>Odebrat předchozí požadavky
+
+Služba bude pro každý účet předplatného Azure uchovávat až **20 000** požadavků. Pokud vaše žádost překračuje toto omezení, odeberte prosím předchozí požadavky, než začnete vytvářet nové. Pokud neodeberete stávající žádosti, obdržíte oznámení o chybě.
+
+Do souboru `voice_synthesis_client.py` přidejte následující kód:
+
+```python
+parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
+parser.add_argument('--delete', action="store_true", default=False, help='delete a synthesis request')
+parser.add_argument('-synthesisId', action="store", nargs='+', dest="synthesisId", help='the id of the voice synthesis which need to be deleted')
+
+def getSubmittedSyntheses():
+    response=requests.get(baseAddress+"voicesynthesis", headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
+    syntheses = json.loads(response.text)
+    return syntheses
+
+def deleteSynthesis(ids):
+    for id in ids:
+        print("delete voice synthesis %s " % id)
+        response = requests.delete(baseAddress+"voicesynthesis/"+id, headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
+        if (response.status_code == 204):
+            print("delete successful")
+        else:
+            print("delete failed, response.status_code: %d, response.text: %s " % (response.status_code, response.text))
+
+if args.syntheses:
+    synthese = getSubmittedSyntheses()
+    print("There are %d synthesis requests submitted:" % len(synthese))
+    for synthesis in synthese:
+        print ("ID : %s , Name : %s, Status : %s " % (synthesis['id'], synthesis['name'], synthesis['status']))
+
+if args.delete:
+    deleteSynthesis(args.synthesisId)
+```
+
+Spusťte `python voice_synthesis_client.py --syntheses -key <your_key> -region <region>` , abyste získali seznam žádostí o shrnutí, které jste udělali. Zobrazí se výstup podobný tomuto:
+
+```console
+There are <number> synthesis requests submitted:
+ID : xxx , Name : xxx, Status : Succeeded
+ID : xxx , Name : xxx, Status : Running
+ID : xxx , Name : xxx : Succeeded
+```
+
+Pokud chcete žádost odstranit, spusťte `python voice_synthesis_client.py --delete -key <your_key> -region <Region> -synthesisId <synthesis_id>` a nahraďte `<synthesis_id>` hodnotou ID žádosti vrácenou z předchozího požadavku.
+
+> [!NOTE]
+> Žádosti se stavem "spuštěno"/"Wait" nelze odebrat ani odstranit.
+
+Dokončeno `voice_synthesis_client.py` je k dispozici na [GitHubu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py).
+
+## <a name="http-status-codes"></a>Stavové kódy HTTP
+
+Následující tabulka podrobně popisuje kódy a zprávy odpovědi HTTP z REST API.
+
+| Rozhraní API | Stavový kód HTTP | Popis | Řešení |
 |-----|------------------|-------------|----------|
 | Vytvořit | 400 | Funkce Voice syntézy není v této oblasti povolena. | Změňte klíč předplatného řeči s podporovanou oblastí. |
 |        | 400 | Platný je jenom **standardní** odběr řeči pro tuto oblast. | Změňte klíč předplatného řeči na cenovou úroveň Standard. |
@@ -82,13 +289,13 @@ Rozhraní API pro dlouhé zvukové rozhraní je k dispozici ve více oblastech s
 |--------|----------|
 | Austrálie – východ | `https://australiaeast.customvoice.api.speech.microsoft.com` |
 | Střední Kanada | `https://canadacentral.customvoice.api.speech.microsoft.com` |
-| USA – východ | `https://eastus.customvoice.api.speech.microsoft.com` |
+| East US | `https://eastus.customvoice.api.speech.microsoft.com` |
 | Indie – střed | `https://centralindia.customvoice.api.speech.microsoft.com` |
-| USA – středojih | `https://southcentralus.customvoice.api.speech.microsoft.com` |
-| Jihovýchodní Asie | `https://southeastasia.customvoice.api.speech.microsoft.com` |
+| Středojižní USA | `https://southcentralus.customvoice.api.speech.microsoft.com` |
+| Southeast Asia | `https://southeastasia.customvoice.api.speech.microsoft.com` |
 | Spojené království – jih | `https://uksouth.customvoice.api.speech.microsoft.com` |
-| Západní Evropa | `https://westeurope.customvoice.api.speech.microsoft.com` |
-| USA – západ 2 | `https://westus2.customvoice.api.speech.microsoft.com` |
+| West Europe | `https://westeurope.customvoice.api.speech.microsoft.com` |
+| Západní USA 2 | `https://westus2.customvoice.api.speech.microsoft.com` |
 
 ## <a name="audio-output-formats"></a>Formáty zvukového výstupu
 
@@ -107,12 +314,6 @@ Podporujeme flexibilní formáty zvukového výstupu. Nastavením parametru ' co
 * Audio-24khz-48kbitrate-mono-MP3
 * Audio-24khz-96kbitrate-mono-MP3
 * Audio-24khz-160kbitrate-mono-MP3
-
-## <a name="quickstarts"></a>Rychlé starty
-
-Nabízíme rychlé starty, které vám pomůžou úspěšně spouštět rozhraní API pro dlouhé zvukové zařízení. Tato tabulka obsahuje seznam dlouhých rychlých startů rozhraní API pro přenos v jazyce.
-
-* [Rychlý Start: Python](https://aka.ms/long-audio-python)
 
 ## <a name="sample-code"></a>Ukázka kódu
 Vzorový kód pro dlouhé zvukové rozhraní API je k dispozici na GitHubu.

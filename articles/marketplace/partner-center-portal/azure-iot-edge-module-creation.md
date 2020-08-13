@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: a44e7835b90ca88460d2045a5494420c6d47921b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 38e51f8bc66e8c47807a9b265ade3f196745db26
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032828"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167177"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Vytvoření nabídky modulu IoT Edge
 
@@ -48,7 +48,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a o tom, jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Příklad:
+Tato stránka obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Například:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](update-existing-offer.md#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](update-existing-offer.md#stop-selling-an-offer-or-plan) .
@@ -131,7 +131,7 @@ Tady definujete podrobnosti nabídky, které se zobrazí na webu Marketplace. To
 > [!NOTE]
 > Podrobnosti nabídky nejsou v anglickém jazyce nutné, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Také je v pořádku poskytnutí užitečného odkazu na nabídku obsahu v jazyce, který se liší od toho, který se používá v podrobnostech seznamu nabídky.
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -149,7 +149,7 @@ Zadejte krátký popis vaší nabídky. Může to být až 100 znaků dlouhé a 
 
 Poskytněte podrobnější popis vaší nabídky. Může to být až 256 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -233,9 +233,9 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 3. Adresa podpory (odkaz)
 4. podmínky a ujednání
 5. Adresa zásad ochrany osobních údajů (odkaz)
-6. Název
-7. Souhrn
-8. Popis
+6. Name
+7. Shrnutí
+8. Description
 9. Užitečné odkazy
 10. Snímky obrazovky a videa
 
@@ -288,9 +288,11 @@ Přidejte aspoň jedno ID předplatného Azure, a to buď samostatně (až 10), 
 
 Než budete pokračovat k další části, vyberte **Uložit koncept** .
 
-### <a name="plan-overview"></a>Přehled plánu
+## <a name="plan-overview"></a>Přehled plánu
 
 Tato karta vám umožní v partnerském centru poskytnout různé možnosti plánu v rámci stejné nabídky. Plány (dříve nazývané SKU) se mohou lišit v souvislosti s dostupnými cloudy, jako jsou globální cloudy, cloudy státní správy a bitová kopie, na kterou plán odkazuje. Pokud chcete zobrazit seznam nabídek na webu Marketplace, musíte nastavit aspoň jeden plán.
+
+Pro každou nabídku můžete vytvořit až 100 plánů: až 45 z nich může být privátní. Další informace o privátních plánech najdete v [části soukromé nabídky na komerčním webu Microsoft Marketplace](../private-offers.md).
 
 Po vytvoření plánů se zobrazí karta **Přehled plánu** :
 
@@ -305,7 +307,7 @@ Akce, které jsou k dispozici v přehledu plánu, se liší v závislosti na akt
 - **Odstranit koncept**: Pokud je stav plánu koncept.
 - **Zastavit prodej plánu**: Pokud je stav plánu publikovaný živě
 
-#### <a name="create-new-plan"></a>Vytvořit nový plán
+### <a name="create-new-plan"></a>Vytvořit nový plán
 
 Vyberte **vytvořit nový plán**. Zobrazí se dialogové okno **Nový plán** .
 
@@ -337,7 +339,7 @@ Tato možnost se zobrazí jenom v případě, že je v **oblasti Azure**vybraná
 
 Služba Azure Government Services zpracovává data, která se vztahují na určité předpisy a požadavky státní správy. Příklad: FedRAMP, NIST 800,171 (DIB), ITAR, finanční úřad 1075, DoD – L4 a CJIS. Pro zajištění povědomí o certifikaci pro tyto programy můžete poskytnout až 100 odkazů, které popisují vaše certifikace. Můžou to být odkazy na vaše výpisy v programu přímo nebo na váš vlastní web. Tyto odkazy jsou viditelné pouze pro Azure Government zákazníky.
 
-## <a name="plan-listing"></a>Výpis plánu
+### <a name="plan-listing"></a>Výpis plánu
 
 Tato karta zobrazuje konkrétní informace pro každý jiný plán v rámci stejné nabídky.
 
@@ -377,7 +379,7 @@ Tady je příklad podrobností Azure Marketplace plánu (všechny uvedené ceny 
 2. Název plánu
 3. Popis plánu
 
-## <a name="availability"></a>Dostupnost
+### <a name="availability"></a>Dostupnost
 
 Pokud chcete publikovat publikovanou nabídku, aby ji zákazníci nemohli vyhledat, procházet nebo koupit na webu Marketplace, zaškrtněte políčko **Skrýt plán** na kartě dostupnost.
 

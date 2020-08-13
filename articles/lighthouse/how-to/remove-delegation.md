@@ -1,20 +1,23 @@
 ---
 title: Odebrání přístupu k delegování
 description: Naučte se, jak odebrat přístup k prostředkům, které byly delegované pro poskytovatele služeb pro Azure Lighthouse.
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: be1547056bc3ec387ba4cba52f6b6d6fbcaad23c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 72a2c49dde8cccfcc298d4128384a10bb7e8840f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111724"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167219"
 ---
 # <a name="remove-access-to-a-delegation"></a>Odebrání přístupu k delegování
 
 Po delegování předplatného nebo skupiny prostředků zákazníka k poskytovateli služeb pro [Azure Lighthouse](../overview.md)se delegování dá v případě potřeby odebrat. Po odebrání delegace se už nebude vztahovat přístup [správy delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md) , který byl dříve udělen uživatelům v tenantovi poskytovatele služeb.
 
 Odebrání delegování může provést uživatel v tenantovi zákazníka nebo v tenantovi poskytovatele služeb, pokud má uživatel příslušná oprávnění.
+
+> [!TIP]
+> I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, můžou podniky, které [spravují víc tenantů](../concepts/enterprise.md) , používat stejné procesy.
 
 ## <a name="customers"></a>Zákazníci
 
@@ -42,7 +45,7 @@ Tato role se dá vybrat taky při **autorizaci** při [vytváření nabídky spr
 
 Uživatel s tímto oprávněním může odebrat delegování jedním z následujících způsobů.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 1. Přejděte na [stránku Moji zákazníci](view-manage-customers.md).
 2. Vyberte **delegování**.

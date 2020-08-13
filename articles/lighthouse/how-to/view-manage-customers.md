@@ -1,18 +1,21 @@
 ---
 title: Zobrazení a správa zákazníků a delegovaných prostředků
-description: Jako poskytovatel služeb s využitím Azure Lighthouse můžete zobrazit všechny vaše delegované prostředky a předplatná zákazníků, a to tak, že v Azure Portal kliknete na moje zákazníky.
-ms.date: 07/06/2020
+description: Jako poskytovatel služeb nebo podniková služba s využitím Azure Lighthouse můžete zobrazit všechny delegované prostředky a odběry tak, že v Azure Portal kliknete na moji zákazníci.
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: f509a91d71caa3ab1ec8282f4151556f7c10d52c
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 165110556282e90bbacf4ce3b3c59e34b203a528
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133280"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167194"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Zobrazení a správa zákazníků a delegovaných prostředků
 
-Poskytovatelé služeb používající [Azure Lighthouse](../overview.md) můžou pomocí stránky **moji zákazníci** v [Azure Portal](https://portal.azure.com) zobrazit delegované prostředky a předplatná zákazníků. V takovém případě budeme odkazováni na poskytovatele služeb a zákazníky a podniky, které spravují víc tenantů, můžou stejný postup využít k konsolidaci prostředí pro správu.
+Poskytovatelé služeb používající [Azure Lighthouse](../overview.md) můžou pomocí stránky **moji zákazníci** v [Azure Portal](https://portal.azure.com) zobrazit delegované prostředky a předplatná zákazníků. 
+
+> [!TIP]
+> V takovém případě budeme odkazováni na poskytovatele služeb a zákazníky a podniky, které [spravují víc tenantů](../concepts/enterprise.md) , můžou stejný postup využít k konsolidaci prostředí pro správu.
 
 Chcete-li získat přístup ke stránce **moji zákazníci** v Azure Portal, vyberte **všechny služby**a pak vyhledejte **Moje zákazníky** a vyberte ji. Můžete ji také najít zadáním "Moji zákazníci" do vyhledávacího pole v horní části Azure Portal.
 

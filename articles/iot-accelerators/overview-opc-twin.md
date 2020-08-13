@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 91448f55f0ebb88ba6c685b960ece9d91cb98e25
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 169a3149a2d8d02d486bc126071b17e9a4f7ed72
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73826228"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167466"
 ---
 # <a name="what-is-opc-twin"></a>Co je OPC s dvojitým obsahem?
 
@@ -29,7 +29,7 @@ OPC s sebou umožňuje operátorům továrny kontrolovat síť továrny, aby byl
 OPC, což umožňuje operátorům továrny reagovat na události a změnit jejich tovární nastavení z cloudu buď automaticky, nebo ručně. OPC s dvojitou platností poskytuje rozhraní REST API k vyvolání služeb na serveru OPC UA, procházení jeho adresního prostoru i pro čtení/zápis proměnných a provádění metod. Například kotl používá k řízení výrobní linky klíčový ukazatel výkonu. Senzor teploty publikuje změnu v datech pomocí vydavatele OPC. Operátor továrny obdrží výstrahu, že teplota dosáhla prahové hodnoty. Výrobní čára se chladí automaticky prostřednictvím OPC vlákna. Pracovník pro továrnu obdrží oznámení o vychladnutí.
 
 ## <a name="authentication"></a>Authentication
-OPC je možné použít pro jednoduché ověřování a pro jednoduché prostředí pro vývojáře.
+OPC je možné použít pro jednoduché ověřování a jednoduché prostředí pro vývojáře.
 
 ### <a name="simple-authentication"></a>Jednoduché ověřování 
 OPC se Azure Active Directory pomocí ověřování a auditu založeného na AAD používá od konce do konce. Například OPC vlákna umožňuje, aby aplikace byla sestavena na základě OPC vláken, aby bylo možné určit, který operátor byl na počítači proveden. Na straně počítače se jedná prostřednictvím auditování OPC UA. Na straně cloudu je ukládání neměnného protokolu auditu klienta a ověřování AAD na REST API.

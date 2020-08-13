@@ -1,31 +1,31 @@
 ---
-title: 'Rychlý Start: extrakce vytištěného textu (OCR) – REST, C #'
+title: 'Rychlý Start: extrakce textu pomocí Počítačové zpracování obrazu OCR REST API a C #'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu budete extrahovat tištěný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a C#.
+description: V tomto rychlém startu extrahujete text z obrázku pomocí Počítačové zpracování obrazu REST API operace OCR v jazyce C#.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4ce9e530f536893fe3d9753e43928cf53f9dde53
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ecc0ddbfa48669cad7f486e181fcdb6dbc80851e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835387"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167789"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Rychlý Start: extrakce vytištěného textu (OCR) pomocí Počítačové zpracování obrazu REST API a jazyka C #
+# <a name="quickstart-extract-text-using-the-computer-vision-ocr-rest-api-and-c"></a>Rychlý Start: extrakce textu pomocí Počítačové zpracování obrazu OCR REST API a C #
 
-> [!NOTE]
-> Pokud extrahujete text v anglickém jazyce, zvažte použití nové [operace čtení](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text). K dispozici je [rychlý Start pro C#](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) . 
+> [!IMPORTANT]
+> Pokud extrahujete text v angličtině, nizozemštině, francouzštině, němčině, italštině, portugalštině, španělštině nebo zjednodušené čínštině (Preview), doporučujeme použít novější [operaci čtení](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text). K dispozici je [rychlý Start pro C#](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) . 
 
-V tomto rychlém startu extrahujete vytištěný text pomocí optického rozpoznávání znaků (OCR) z obrázku pomocí REST API Počítačové zpracování obrazu. Pomocí funkce [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) můžete detekovat vytištěný text v obrázku a extrahovat rozpoznané znaky do datového proudu znaků, který je k počítači použitelný.
+V tomto rychlém startu budete z obrázku extrahovat vytištěný text pomocí funkce Počítačové zpracování obrazu REST API [optické operace](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) . Pomocí této operace můžete detekovat vytištěný text v obrázku a extrahovat rozpoznané znaky do datového proudu znaků, který je použitelný pro počítač.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Musíte mít [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) nebo novější.

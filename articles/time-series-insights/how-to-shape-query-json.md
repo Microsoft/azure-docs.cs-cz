@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: cc24c1f49a48e81509961d5d7d01dba60dc50475
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1a7a88e0db38f399dc47c030f3b97f6b26f4da07
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077649"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168231"
 ---
 # <a name="shape-json-to-maximize-query-performance-in-your-gen1-environment"></a>Formát JSON obrazce pro maximalizaci výkonu dotazů v prostředí Gen1
 
@@ -24,7 +24,7 @@ V tomto článku najdete pokyny k tomu, jak můžete tvarovat JSON a maximalizov
 
 ### <a name="learn-best-practices-for-shaping-json-to-meet-your-storage-needsbr"></a>Naučte se osvědčené postupy pro tvarování formátu JSON, abyste splnili požadavky na úložiště.</br>
 
-> [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
+> [!VIDEO <https://www.youtube.com/embed/b2BD5hwbg5I>]
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
@@ -60,7 +60,6 @@ V následujícím příkladu je k dispozici jedna zpráva Azure IoT Hub, kde vn�
 
 Vezměte v úvahu následující datovou část JSON odeslanou do prostředí Azure Time Series Insights GA pomocí [objektu zprávy zařízení IoT](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet) , který se při odeslání do cloudu Azure serializovaný do formátu JSON:
 
-
 ```JSON
 [
     {
@@ -90,14 +89,14 @@ Vezměte v úvahu následující datovou část JSON odeslanou do prostředí Az
 ]
 ```
 
-* Tabulka referenčních dat, která má klíčovou vlastnost **deviceId**:
+- Tabulka referenčních dat, která má klíčovou vlastnost **deviceId**:
 
    | deviceId | Parametr | deviceLocation |
    | --- | --- | --- |
    | FXXX | \_data řádku | EU |
    | FYYY | \_data řádku | USA |
 
-* Azure Time Series Insights tabulka událostí po sloučení:
+- Azure Time Series Insights tabulka událostí po sloučení:
 
    | deviceId | Parametr | deviceLocation | časové razítko | řadu. Rychlost toku ft3/s | řadu. Psí tlak v oleji motoru |
    | --- | --- | --- | --- | --- | --- |
@@ -106,6 +105,7 @@ Vezměte v úvahu následující datovou část JSON odeslanou do prostředí Az
    | FYYY | \_data řádku | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
 
 > [!NOTE]
+
 > - Sloupec **deviceId** slouží jako záhlaví sloupce pro různá zařízení v rámci loďstva. Když hodnota **deviceId** nastaví svůj název vlastní vlastnosti, omezí se celkový počet zařízení na 595 (pro prostředí S1) nebo 795 (pro prostředí S2) s dalšími pěti sloupci.
 > - Nepotřebné vlastnosti jsou vyloučeny (například informace o značka a modelu). Vzhledem k tomu, že se vlastnosti v budoucnu nedotazují, jejich vyloučení umožní lepší efektivitu sítě a úložiště.
 > - Referenční data se používají ke snížení počtu bajtů přenesených přes síť. Dva atributy **MessageID** a **deviceLocation** jsou spojeny pomocí **deviceId**vlastnosti klíče. Tato data jsou propojena s daty telemetrie v době vstupu a jsou pak uložena v Azure Time Series Insights pro dotazování.
@@ -160,7 +160,7 @@ Příklad datové části JSON:
 ]
 ```
 
-* Tabulka referenčních dat, která má vlastnosti klíče **deviceId** a **Series. tagId**:
+- Tabulka referenčních dat, která má vlastnosti klíče **deviceId** a **Series. tagId**:
 
    | deviceId | Series. tagId | Parametr | deviceLocation | typ | unit |
    | --- | --- | --- | --- | --- | --- |
@@ -169,18 +169,19 @@ Příklad datové části JSON:
    | FYYY | pumpRate | \_data řádku | USA | Rychlost toku | ft3/s |
    | FYYY | oilPressure | \_data řádku | USA | Tlak v oleji motoru | psi |
 
-* Azure Time Series Insights tabulka událostí po sloučení:
+- Azure Time Series Insights tabulka událostí po sloučení:
 
    | deviceId | Series. tagId | Parametr | deviceLocation | typ | unit | časové razítko | Series. Value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | \_data řádku | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | pumpRate | \_data řádku | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 |
    | FXXX | oilPressure | \_data řádku | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 34,7 |
-   | FXXX | pumpRate | \_data řádku | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | pumpRate | \_data řádku | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 |
    | FXXX | oilPressure | \_data řádku | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 49,2 |
    | FYYY | pumpRate | \_data řádku | USA | Rychlost toku | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
    | FYYY | oilPressure | \_data řádku | USA | Tlak v oleji motoru | psi | 2018-01-17T01:18:00Z | 22,2 |
 
 > [!NOTE]
+
 > - Sloupce **deviceId** a **Series. tagId** slouží jako záhlaví sloupců pro různá zařízení a značky v rámci loďstva. Použití každého vlastního atributu omezí dotaz na 594 (pro prostředí S1) nebo 794 (pro prostředí S2) celkem zařízení s ostatními šesti sloupci.
 > - Z důvodu citovaného v prvním příkladu se zabránilo zbytečným vlastnostem.
 > - Referenční data se používají ke snížení počtu bajtů přenesených přes síť **, a to**tak, že zavedeme do ID zařízení, které se používá pro jedinečnou dvojici **MessageID** a **deviceLocation**. Složená **série klíčů. tagId** se používá pro jedinečné páry **typu** a **jednotky**. Složený klíč umožňuje použít dvojici **deviceId** a **Series. tagId** k odkazování na čtyři hodnoty: **MessageID, deviceLocation, Type** a **Unit**. Tato data jsou spojená s daty telemetrie v čase vstupu. Pak je uložený v Azure Time Series Insights pro dotazování.
@@ -190,13 +191,13 @@ Příklad datové části JSON:
 
 Pro vlastnost s velkým počtem možných hodnot je nejlepší poslat jako jedinečné hodnoty v jednom sloupci místo vytvoření nového sloupce pro každou hodnotu. V předchozích dvou příkladech:
 
-  - V prvním příkladu má několik vlastností několik hodnot, takže je vhodné vytvořit samostatnou vlastnost.
-  - V druhém příkladu nejsou míry zadány jako jednotlivé vlastnosti. Místo toho se jedná o pole hodnot nebo měr v rámci společné vlastnosti řady. Pošle se nový Key **tagId** , který vytvoří nový sloupec **Series. tagId** ve sloučené tabulce. Nové **typy** vlastností a **jednotka** se vytvoří pomocí referenčních dat, takže se nedosáhne limitu vlastností.
+- V prvním příkladu má několik vlastností několik hodnot, takže je vhodné vytvořit samostatnou vlastnost.
+- V druhém příkladu nejsou míry zadány jako jednotlivé vlastnosti. Místo toho se jedná o pole hodnot nebo měr v rámci společné vlastnosti řady. Pošle se nový Key **tagId** , který vytvoří nový sloupec **Series. tagId** ve sloučené tabulce. Nové **typy** vlastností a **jednotka** se vytvoří pomocí referenčních dat, takže se nedosáhne limitu vlastností.
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o posílání [IoT Hub zpráv zařízení do cloudu](../iot-hub/iot-hub-devguide-messages-construct.md).
 
-- Další informace o syntaxi dotazu pro Azure Time Series Insights REST API přístupu k datům najdete v [Azure Time Series Insights syntaxi dotazů](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax) .
+- Další informace o syntaxi dotazu pro Azure Time Series Insights REST API přístupu k datům najdete v [Azure Time Series Insights syntaxi dotazů](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-syntax) .
 
 - Naučte [se, jak obrazce událostí](./time-series-insights-send-events.md).

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 1a8b458eb004b44d0045f36b18d88e11e019c4d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 42d5ca12e91de5e0e906fb017183ea684b63b49c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399507"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167704"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
@@ -41,13 +41,7 @@ Převod textu na řeč od služby pro rozpoznávání řeči umožňuje vašim a
 
 ## <a name="get-started"></a>Začínáme
 
-Služba převod textu na řeč je k dispozici prostřednictvím [sady Speech SDK](speech-sdk.md). V různých jazycích a platformách je k dispozici několik běžných scénářů jako rychlé starty:
-
-* [Syntéza řeči do zvukového souboru](quickstarts/text-to-speech-audio-file.md)
-* [Syntéza řeči do reproduktoru](quickstarts/text-to-speech.md)
-* [Naformátování dlouhého zvuku z asynchronního syntetizu](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
-
-Pokud dáváte přednost, je služba pro převod textu na řeč přístupná přes [REST](rest-text-to-speech.md).
+Pokud chcete začít používat převod textu na řeč, Projděte si [rychlý Start](get-started-text-to-speech.md) . Služba převod textu na řeč je k dispozici prostřednictvím [sady Speech SDK](speech-sdk.md), [REST API](rest-text-to-speech.md)a rozhraní příkazového [řádku pro rozpoznávání řeči](spx-overview.md)
 
 ## <a name="sample-code"></a>Ukázka kódu
 
@@ -65,7 +59,7 @@ Kromě standardních a neuronové hlasů můžete vytvářet a doladit vlastní 
 Při použití služby převod textu na řeč se vám bude účtovat každý znak, který se převede na řeč, včetně interpunkce. I když samotný dokument SSML není fakturovatelný, volitelné prvky, které slouží k úpravě způsobu převodu textu na řeč, jako je fonémy a rozteč, se počítají jako Fakturovatelné znaky. Tady je seznam toho, co je Fakturovatelné:
 
 - Text předaný do služby převodu textu na řeč v SSML textu žádosti
-- Všechny značky v textovém poli textu žádosti ve formátu SSML, s výjimkou značek `<speak>` a `<voice>`
+- Všechny značky v textovém poli textu žádosti ve formátu SSML, s výjimkou `<speak>` `<voice>` značek a
 - Písmena, interpunkční znaménka, mezery, tabulátory, značky a všechny prázdné znaky
 - Každý bod kódu definovaný v kódování Unicode
 

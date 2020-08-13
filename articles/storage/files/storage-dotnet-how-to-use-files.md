@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 44602c65a08f2e76fa017022f6137a18481f2edd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbee9881addf66d762f1eadb837e5a4e41bf79de
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515370"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167891"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -99,7 +99,7 @@ Potom uložte své přihlašovací údaje do `App.config` souboru projektu. V **
 ```
 
 > [!NOTE]
-> Nejnovější verze emulátoru úložiště Azure nepodporuje Soubory Azure. Aby váš připojovací řetězec mohl pracovat se Soubory Azure, musí jako cíl mít účet služby Azure Storage v cloudu.
+> Nejnovější verze emulátoru Azure Storage nepodporuje soubory Azure. Aby váš připojovací řetězec mohl pracovat se Soubory Azure, musí jako cíl mít účet služby Azure Storage v cloudu.
 
 ## <a name="add-using-directives"></a>Přidání direktiv using
 
@@ -487,7 +487,7 @@ Další informace o službě soubory Azure najdete v následujících zdrojích 
 ### <a name="conceptual-articles-and-videos"></a>Koncepční články a videa
 
 * [Soubory Azure: hladký cloudový souborový systém SMB pro Windows a Linux](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Použití služby Soubory Azure s Linuxem](storage-how-to-use-files-linux.md)
+* [Použití služby Azure Files s Linuxem](storage-how-to-use-files-linux.md)
 
 ### <a name="tooling-support-for-file-storage"></a>Podpora nástrojů pro úložiště File
 

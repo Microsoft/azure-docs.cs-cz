@@ -9,30 +9,30 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: a8da2355b62d7be36b10ac9a1ce4b53e87b4b288
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c2a33c701278a900e502da9e6d9520ea213ce4c3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059225"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168095"
 ---
-# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c"></a>Správa referenčních dat pro prostředí Azure Time Series Insights Gen 1 pomocí jazyka C #
+# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>Správa referenčních dat pro prostředí Azure Time Series Insights Gen 1 pomocí jazyka C Sharp
 
-Tento článek ukazuje, jak kombinovat C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)a Azure Active Directory, aby programové požadavky rozhraní API [ODKAZOVALy na rozhraní](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)api Azure Time Series Insights Gen 1 Správa dat.
+Tento článek ukazuje, jak kombinovat C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)a Azure Active Directory, aby programové požadavky rozhraní API [ODKAZOVALy na rozhraní](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)api Azure Time Series Insights Gen 1 Správa dat.
 
 > [!TIP]
-> Podívejte se na ukázky kódů GA C# na adrese [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
+> Podívejte se na ukázky kódů GA C# na adrese [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
 
 ## <a name="summary"></a>Shrnutí
 
 Vzorový kód níže znázorňuje následující funkce:
 
 * Získání přístupového tokenu pomocí [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**
-* Sekvenční vytváření, čtení, aktualizace a odstraňování operací proti [referenčnímu rozhraní Správa dat API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)pro obecné 1.
-* Běžné kódy odpovědí včetně [běžných kódů chyb](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
-    
+* Sekvenční vytváření, čtení, aktualizace a odstraňování operací proti [referenčnímu rozhraní Správa dat API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)pro obecné 1.
+* Běžné kódy odpovědí včetně [běžných kódů chyb](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api#validation-and-error-handling).
+
     Reference Správa dat API každou položku zpracuje jednotlivě a chyba s jednou položkou nebrání úspěšnému dokončení ostatních položek. Pokud třeba vaše žádost obsahuje 100 položek a jedna položka obsahuje chybu, napíší se položky 99 a jedna z nich se odmítne.
 
 ## <a name="prerequisites-and-setup"></a>Požadavky a instalace
@@ -46,7 +46,7 @@ Před kompilací a spuštěním ukázkového kódu proveďte následující krok
 
    | Název klíče | Typ |
    | --- | --- |
-   | uuid | Řetězec | 
+   | uuid | Řetězec |
 
 1. Nakonfigurujte Azure Time Series Insights prostředí pro Azure Active Directory, jak je popsáno v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md). Použijte `http://localhost:8080/` jako **identifikátor URI přesměrování**.
 
@@ -54,7 +54,7 @@ Před kompilací a spuštěním ukázkového kódu proveďte následující krok
 
 1. Níže uvedený ukázkový kód nahraďte každým **#PLACEHOLDER #** a příslušným identifikátorem prostředí.
 
-1. Spusťte `dotnet run` v kořenovém adresáři vašeho projektu. Po zobrazení výzvy použijte svůj uživatelský profil pro přihlášení k Azure. 
+1. Spusťte `dotnet run` v kořenovém adresáři vašeho projektu. Po zobrazení výzvy použijte svůj uživatelský profil pro přihlášení k Azure.
 
 ## <a name="project-dependencies"></a>Závislosti projektu
 
@@ -92,6 +92,7 @@ Ani
       </ItemGroup>
     </Project>
     ```
+
 1. Potom spusťte `dotnet restore`.
 
 ## <a name="c-sample-code"></a>Ukázkový kód C#
@@ -114,7 +115,7 @@ namespace CsharpTsiMsalGaSample
     {
         /**
          * Review the product documentation for detailed configuration steps or skip ahead and configure your environment settings.
-         * 
+         *
          * https://docs.microsoft.com/azure/time-series-insights/time-series-insights-authentication-and-authorization
          */
 
@@ -138,7 +139,7 @@ namespace CsharpTsiMsalGaSample
 
             /**
              * MSAL.NET configuration. Review the product documentation for more information about MSAL.NET authentication options.
-             * 
+             *
              * https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/
              */
 
@@ -174,7 +175,7 @@ namespace CsharpTsiMsalGaSample
                 Path = $"referencedatasets/{EnvironmentReferenceDataSetName}/$batch",
                 Query = "api-version=2016-12-12"
              }.Uri;
-                
+
              Console.WriteLine("Making HTTP POST to URI: {0}", uri);
              Console.WriteLine("");
 
@@ -202,7 +203,7 @@ namespace CsharpTsiMsalGaSample
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
 
-            {   
+            {
                 // CREATE reference data
                 Console.WriteLine("CREATE reference data example...");
                 Console.WriteLine("");
@@ -309,4 +310,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si referenční dokumentaci k [rozhraní API Správa dat reference](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) pro obecné 1.
+* Přečtěte si referenční dokumentaci k [rozhraní API Správa dat reference](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) pro obecné 1.

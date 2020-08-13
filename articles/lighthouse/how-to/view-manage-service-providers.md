@@ -1,18 +1,21 @@
 ---
 title: Zobrazení a správa poskytovatelů služeb
 description: Zákazníci mohou pomocí stránky poskytovatelé služeb v Azure Portal zobrazit informace o poskytovatelích služeb, nabídkách poskytovatele služeb a delegovaných prostředcích.
-ms.date: 07/10/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: bc0de0d3fd7ac4fe7c00720aab41961d9100ff5a
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: c22408a52d973a244d67528a73d4eaa487f166ba
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273774"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167160"
 ---
 # <a name="view-and-manage-service-providers"></a>Zobrazení a správa poskytovatelů služeb
 
-Zákazníci můžou pomocí stránky **poskytovatelé služeb** v [Azure Portal](https://portal.azure.com) zobrazit podrobnosti o nabídkách poskytovatelů služeb a poskytovatelů služeb, delegovat konkrétní prostředky na [Azure Lighthouse](../overview.md)a nakupovat nové nabídky poskytovatelů služeb. V takovém případě budeme odkazováni na poskytovatele služeb a zákazníky a podniky, které spravují víc tenantů, můžou stejný postup využít k konsolidaci prostředí pro správu.
+Zákazníci můžou pomocí stránky **poskytovatelé služeb** v [Azure Portal](https://portal.azure.com) zobrazit podrobnosti o nabídkách poskytovatelů služeb a poskytovatelů služeb, delegovat konkrétní prostředky na [Azure Lighthouse](../overview.md)a nakupovat nové nabídky poskytovatelů služeb.
+
+> [!TIP]
+> V takovém případě budeme odkazováni na poskytovatele služeb a zákazníky a podniky, které [spravují víc tenantů](../concepts/enterprise.md) , můžou stejný postup využít k konsolidaci prostředí pro správu.
 
 Pro přístup ke stránce **poskytovatelé služeb** v Azure Portal může zákazník vybrat **všechny služby**a pak vyhledat **poskytovatele služeb** a vybrat ho. Můžou je taky najít zadáním "poskytovatelé služeb" nebo "Azure Lighthouse" do vyhledávacího pole v horní části Azure Portal.
 
@@ -40,7 +43,7 @@ Zákazník může přidat novou nabídku poskytovatele služeb ze stránky **nab
 
 Pokud chce zákazník odebrat nabídku poskytovatele služeb, může vybrat ikonu odpadkového koše na řádku této nabídky. Po potvrzení odstranění již poskytovatel služeb nebude mít přístup k zákaznickým prostředkům, které byly dříve delegovány pro tuto nabídku.
 
-## <a name="delegate-resources"></a>Delegovat prostředky
+## <a name="delegate-resources"></a>Delegování prostředků
 
 Předtím, než může poskytovatel služeb získat přístup k prostředkům zákazníka a spravovat je, musí být delegovaný. Pokud zákazník nabídku přijal, ale ještě nedelegoval žádné prostředky, uvidí poznámku na začátku části **nabídky poskytovatele služeb** . To zákazníkovi ví, že musí provést akci předtím, než bude moci poskytovatel služeb získat přístup k některým prostředkům zákazníka.
 
