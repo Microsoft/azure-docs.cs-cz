@@ -1,24 +1,24 @@
 ---
 title: Přehled zabezpečení v Azure Data Lake Storage Gen1 | Microsoft Docs
-description: Vysvětlení způsobu, jakým je Azure Data Lake Storage Gen1 bezpečnější úložiště pro velké objemy dat
+description: Seznamte se s možnostmi zabezpečení Azure Data Lake Storage Gen1, včetně ověřování, autorizace, izolace sítě, ochrany dat a auditování.
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: 4992be004a4b60b7b5fb591d834e8938cf03f34f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926276"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192831"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Zabezpečení v Azure Data Lake Storage Gen1
 
 Řada podniků využívá analýzu velkých objemů dat pro Business Insights, která jim usnadňuje rozhodování. Organizace může mít komplexní a regulované prostředí s rostoucím počtem různých uživatelů. Podnik má jistotu, že kritická podniková data se ukládají bezpečněji, se správnou úrovní přístupu uděleným pro jednotlivé uživatele. Azure Data Lake Storage Gen1 je navržena tak, aby pomohla splnit tyto požadavky na zabezpečení. V tomto článku se dozvíte o možnostech zabezpečení Data Lake Storage Gen1, včetně těchto:
 
-* Ověřování
+* Authentication
 * Autorizace
 * Izolace sítě
 * Ochrana dat

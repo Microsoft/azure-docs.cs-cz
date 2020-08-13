@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 248fcdc8d57ca2408ada01db4ecf3b8ee7712e4d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: bbb42643e23020742cab66812f58f78f4529fe07
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388038"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192842"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -106,11 +106,11 @@ Pomocí tohoto zobrazení můžete identifikovat zálohované položky, které p
 
 Neaktivní prostředky zobrazíte tak, že přejdete na kartu **optimalizace** a kliknete na dlaždici **neaktivní prostředky** . Kliknutím na tuto dlaždici zobrazíte mřížku, která obsahuje podrobnosti o všech neaktivních prostředcích, které existují ve vybraném oboru. Ve výchozím nastavení mřížka zobrazuje položky, které nemají bod obnovení za posledních 7 dnů. Pokud chcete najít neaktivní prostředky pro jiný časový rozsah, můžete upravit filtr **časového rozsahu** v horní části karty.
 
-Po zjištění neaktivního prostředku můžete problém prozkoumat tak, že přejdete na řídicí panel zálohovaných položek nebo na okno prostředků Azure pro daný prostředek (kdykoli je to možné). V závislosti na vašem scénáři můžete zvolit buď zastavení zálohování počítače (Pokud již neexistuje), a ušetřit tak náklady za chráněnou instanci, nebo můžete opravit problémy v počítači, abyste měli jistotu, že zálohování bude spolehlivé.
+Po zjištění neaktivního prostředku můžete problém prozkoumat tak, že přejdete na řídicí panel zálohovaných položek nebo na okno prostředků Azure pro daný prostředek (kdykoli je to možné). V závislosti na vašem scénáři můžete zvolit buď zastavení zálohování počítače (Pokud již neexistuje), a odstranit nepotřebné zálohy, a ušetřit tak náklady, nebo můžete opravit problémy v počítači, abyste měli jistotu, že jsou zálohování spolehlivá.
 
 ![Karta optimalizace – neaktivní prostředky](./media/backup-azure-configure-backup-reports/optimize-inactive-resources.png)
 
-###### <a name="backup-items-with-a-large-retention-duration"></a>Zálohované položky s velkou dobou trvání uchování
+###### <a name="backup-items-with-a-large-retention-duration"></a>Zálohované položky s dlouhým uchováváním
 V tomto zobrazení můžete identifikovat ty položky, jejichž zálohy se uchovávají po delší dobu, než vyžaduje vaše organizace. 
 
 Když kliknete na dlaždici **optimalizace zásad** a potom na dlaždici **optimalizace uchovávání informací** , zobrazí se mřížka obsahující všechny zálohované položky, pro které je uchovávání denních, týdenních, měsíčních nebo ročního bodu uchovávání (RP) větší než zadaná hodnota. Ve výchozím nastavení mřížka zobrazuje všechny zálohované položky ve vybraném oboru. Filtry můžete použít pro denní, týdenní, měsíční a roční dobu zjišťování, abyste mohli mřížku dále vyfiltrovat a identifikovat tyto položky, pro které by mohlo být ukládání potenciálně omezené, aby se ušetřily náklady na úložiště zálohování.
@@ -119,7 +119,7 @@ Všimněte si, že pro databázové úlohy, jako je SQL a SAP HANA, se doby ucho
 
 ![Optimalizace optimalizace uchovávání karet](./media/backup-azure-configure-backup-reports/optimize-retention.png)
 
-###### <a name="databases-configured-for-daily-full-backup"></a>Databáze nakonfigurované pro každodenní úplnou zálohu
+###### <a name="databases-configured-for-daily-full-backup"></a>Databáze nakonfigurované pro každodenní úplné zálohování
 Pomocí tohoto zobrazení můžete identifikovat databázové úlohy, které byly nakonfigurovány pro každodenní úplnou zálohu. Použití denní rozdílové zálohy spolu s týdenním úplným zálohováním je často cenově výhodnější. 
 
 Kliknutím na dlaždici **optimalizace zásad** a na dlaždici **Optimalizace plánu zálohování** se zobrazí mřížka obsahující všechny databáze se každodenní zásadou úplného zálohování. Můžete se rozhodnout přejít na konkrétní zálohovanou položku a upravit ji tak, aby používala každodenní rozdílovou zálohu s týdenním úplným zálohováním.

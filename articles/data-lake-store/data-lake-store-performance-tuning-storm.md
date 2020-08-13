@@ -1,17 +1,17 @@
 ---
 title: Optimalizace výkonu – vyplavení pomocí Azure Data Lake Storage Gen1
-description: Přečtěte si pokyny k ladění výkonu pro cluster s více podmnožinami v Azure Data Lake Storage Gen1.
+description: Seznamte se s faktory, které byste měli vzít v úvahu při ladění výkonu topologie Azure, včetně řešení běžných problémů.
 author: stewu
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 47fb385e5e1fb60f860735530356fa87031c51e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71207509f20c80cf85311cba7b647aaca0a49e42
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513788"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192803"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro zaplavení v HDInsight a Azure Data Lake Storage Gen1
 
