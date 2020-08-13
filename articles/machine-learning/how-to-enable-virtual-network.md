@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 16065b45a6afea25615b985d3c89445dee48bd1d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 947f7afba6a8b40e9b1c71ac817239dd039539f7
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167721"
+ms.locfileid: "88192395"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Izolace sítě během školení & odvození s privátními virtuálními sítěmi
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,13 +25,20 @@ V tomto článku se dozvíte, jak zabezpečit životní cyklus strojového učen
 
 __Virtuální síť__ funguje jako hranice zabezpečení a izoluje prostředky Azure od veřejného Internetu. Virtuální síť Azure se taky můžete připojit k místní síti. Připojením sítí můžete bezpečně prosazovat modely a přistupovat k nasazeným modelům pro odvození.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + [Pracovní prostor](how-to-manage-workspace.md)Azure Machine Learning.
 
 + Obecné praktické znalosti [služby Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) a [sítě IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm).
 
 + Již existující virtuální síť a podsíť, která se má použít s výpočetními prostředky.
+
++ Pokud chcete nasadit prostředky do virtuální sítě nebo podsítě, musí mít váš uživatelský účet oprávnění k následujícím akcím v řízení přístupu na základě role (RBAC) v Azure.
+
+    - "Microsoft. Network/virtualNetworks/JOIN/Action" na prostředku virtuální sítě.
+    - "Microsoft. Network/virtualNetworks/podsíť/JOIN/Action" na prostředku podsítě.
+
+    Další informace o RBAC se sítí najdete v tématu [předdefinované role sítě](/azure/role-based-access-control/built-in-roles#networking) .
 
 ## <a name="private-endpoints"></a>Soukromé koncové body
 
@@ -79,7 +86,7 @@ Studio podporuje čtení dat z následujících typů úložiště dat ve virtu�
 * Azure Blob
 * Azure Data Lake Storage Gen1
 * Azure Data Lake Storage Gen2
-* Databáze Azure SQL
+* Azure SQL Database
 
 ### <a name="add-resources-to-the-virtual-network"></a>Přidat prostředky do virtuální sítě 
 
@@ -97,7 +104,7 @@ Až přidáte pracovní prostor a účet služby úložiště do virtuální sí
 
 1. Pokud chcete vytvořit nové úložiště dat, vyberte __+ nové úložiště dat__. Pokud chcete aktualizovat existující, vyberte úložiště dat a vyberte __Aktualizovat přihlašovací údaje__.
 
-1. V nastavení úložiště dat vyberte __Ano__ , pokud __chcete, aby služba Azure Machine Learning měla přístup k úložišti pomocí identity spravované pracovním prostorem__.
+1. V nastavení úložiště dat vyberte __Ano__ , pokud  __chcete, aby služba Azure Machine Learning měla přístup k úložišti pomocí identity spravované pracovním prostorem__.
 
 > [!NOTE]
 > Tyto změny mohou trvat až 10 minut, než se projeví.
@@ -203,7 +210,7 @@ Ve výchozím nastavení Azure Machine Learning provádí kontrolu platnosti dat
 - Azure Blob Storage
 - Sdílená složka Azure
 - PostgreSQL
-- Databáze Azure SQL
+- Azure SQL Database
 
 Následující ukázka kódu vytvoří nové úložiště a sady dat objektů BLOB v Azure `skip_validation=True` .
 
@@ -263,7 +270,7 @@ Pokud chcete ve virtuální síti použít [spravovaný Azure Machine Learning _
 > Pro tyto prostředky platí omezení [kvót prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) předplatného.
 
 
-### <a name="required-ports"></a><a id="mlcports"></a>Požadované porty
+### <a name="required-ports"></a><a id="mlcports"></a> Požadované porty
 
 Pokud plánujete zabezpečit virtuální síť tím, že omezíte síťový provoz na veřejný Internet, musíte povolit příchozí komunikaci ze služby Azure Batch.
 
@@ -294,7 +301,7 @@ Konfigurace pravidla NSG se v Azure Portal zobrazuje na následujících obrázc
 
 ![Odchozí NSG pravidla pro Výpočetní prostředky služby Machine Learning](./media/how-to-enable-virtual-network/experimentation-virtual-network-outbound.png)
 
-### <a name="limit-outbound-connectivity-from-the-virtual-network"></a><a id="limiting-outbound-from-vnet"></a>Omezení odchozího připojení z virtuální sítě
+### <a name="limit-outbound-connectivity-from-the-virtual-network"></a><a id="limiting-outbound-from-vnet"></a> Omezení odchozího připojení z virtuální sítě
 
 Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí přístup k virtuální síti, použijte následující postup:
 

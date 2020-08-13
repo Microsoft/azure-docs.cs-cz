@@ -1,6 +1,6 @@
 ---
 title: Přístup k Key Vault za bránou firewall Azure Key Vault | Microsoft Docs
-description: Zjistěte, jak přistupovat ke službě Azure Key Vault z aplikace za bránou firewall
+description: Přečtěte si informace o portech, hostitelích nebo IP adresách, které se mají otevřít, a povolením klientské aplikace trezoru klíčů za bránou firewall pro přístup k trezoru klíčů
 services: key-vault
 author: amitbapat
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: db5c35db271f84a88fdc03f4f0178ee1c35f727e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 273579fb3dee1e941e9f464a1956189c8808c694
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834318"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190467"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Přístup ke službě Azure Key Vault za bránou firewall
 
@@ -68,7 +68,7 @@ Služba Key Vault používá jiné prostředky Azure, například infrastrukturu
 * [Republik](https://www.microsoft.com/en-us/download/details.aspx?id=56519)
 * [US Gov](https://www.microsoft.com/en-us/download/details.aspx?id=57063)
 * [Německo](https://www.microsoft.com/en-us/download/details.aspx?id=57064)
-* [Lidov](https://www.microsoft.com/en-us/download/details.aspx?id=57062)
+* [Čína](https://www.microsoft.com/en-us/download/details.aspx?id=57062)
 
 Ověřování a identita (Azure Active Directory) je globální služba a může v případě selhání převzít služby v jiné oblasti nebo může bez předchozího upozornění dojít k přesunu provozu. V tomto scénáři by měly být všechny rozsahy IP adres uvedené v seznamu [IP adres pro ověřování a identitu](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip) přidány do brány firewall.
 

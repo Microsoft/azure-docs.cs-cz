@@ -3,12 +3,12 @@ title: Upgrade uzlů clusteru pro používání služby Azure Managed disks
 description: Tady je postup, jak upgradovat existující Cluster Service Fabric tak, aby používal Azure Managed disks s malým nebo žádným výpadkem clusteru.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 10863626945483e21aa264e2b05e94a6f08a22f6
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 1ca85af86df28691e2194c40e1cdde1abd7c8a4d
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542843"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192309"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Upgrade uzlů clusteru pro používání služby Azure Managed disks
 
@@ -24,10 +24,13 @@ Všeobecná strategie pro upgrade uzlu clusteru Service Fabric na používání 
 
 Tento článek vás provede jednotlivými kroky upgradu primárního typu uzlu ukázkového clusteru, který bude používat spravované disky, a zároveň vyloučí jakékoli výpadky clusteru (viz poznámka níže). Počáteční stav ukázkového testovacího clusteru se skládá z jednoho typu uzlu [odolného proti stříbrnému](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster), který je zajištěný jednou sadou škálování s pěti uzly.
 
+> [!NOTE]
+> Omezení základního nástroje pro vyrovnávání zatížení zabrání přidání dalšího měřítka sady. Místo toho doporučujeme použít nástroj pro vyrovnávání zatížení Standard SKU. Další informace naleznete v [porovnání dvou skladových](/azure/load-balancer/skus)položek.
+
 > [!CAUTION]
 > Tento postup se projeví pouze v případě, že máte závislosti na DNS clusteru (například při přístupu k [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)). [Osvědčeným postupem pro front-end služby](/azure/architecture/microservices/design/gateway) je mít určitý druh nástroje pro [Vyrovnávání zatížení](/azure/architecture/guide/technology-choices/load-balancing-overview) před typy uzlů, aby bylo možné přeměnit uzel bez výpadku.
 
-Tady jsou [šablony a rutiny](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) pro Azure Resource Manager, které použijeme k dokončení scénáře upgradu. Změny šablon budou vysvětleny v části [nasazení upgradované sady škálování pro typ primárního uzlu](#deploy-an-upgraded-scale-set-for-the-primary-node-type) níže.
+Tady jsou [šablony a rutiny](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) pro Azure Resource Manager, které použijeme k dokončení scénáře upgradu. Změny šablon budou vysvětleny v části [nasazení upgradované sady škálování pro typ primárního uzlu](#deploy-an-upgraded-scale-set-for-the-primary-node-type)  níže.
 
 ## <a name="set-up-the-test-cluster"></a>Nastavení testovacího clusteru
 
@@ -44,7 +47,7 @@ Následující příkazy vás provede vygenerováním nového certifikátu podep
 
 ### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Vygenerování certifikátu podepsaného svým držitelem a nasazení clusteru
 
-Nejdřív přiřaďte proměnné, které budete potřebovat pro nasazení clusteru Service Fabric. Upravte hodnoty pro `resourceGroupName` , `certSubjectName` , a `parameterFilePath` `templateFilePath` pro konkrétní účet a prostředí:
+Nejdřív přiřaďte proměnné, které budete potřebovat pro nasazení clusteru Service Fabric. Upravte hodnoty pro `resourceGroupName` ,  `certSubjectName` , a `parameterFilePath` `templateFilePath` pro konkrétní účet a prostředí:
 
 ```powershell
 # Assign deployment variables
@@ -165,7 +168,7 @@ Tady je přehled úprav původní šablony nasazení clusteru pro přidání upg
 
 #### <a name="parameters"></a>Parametry
 
-Přidejte parametr pro název instance nové sady škálování. Všimněte si, že `vmNodeType1Name` je jedinečný pro novou sadu škálování, zatímco hodnoty počtu a velikosti se shodují s původní sadou škálování.
+Přidejte parametry pro název instance, počet a velikost nové sady škálování. Všimněte si, že `vmNodeType1Name` je jedinečný pro novou sadu škálování, zatímco hodnoty počtu a velikosti se shodují s původní sadou škálování.
 
 **Soubor šablony**
 
@@ -174,7 +177,18 @@ Přidejte parametr pro název instance nové sady škálování. Všimněte si, 
     "type": "string",
     "defaultValue": "NTvm2",
     "maxLength": 9
-}
+},
+"nt1InstanceCount": {
+    "type": "int",
+    "defaultValue": 5,
+    "metadata": {
+        "description": "Instance count for node type"
+    }
+},
+"vmNodeType1Size": {
+    "type": "string",
+    "defaultValue": "Standard_D2_v2"
+},
 ```
 
 **Soubor parametrů**
@@ -182,6 +196,12 @@ Přidejte parametr pro název instance nové sady škálování. Všimněte si, 
 ```json
 "vmNodeType1Name": {
     "value": "NTvm2"
+},
+"nt1InstanceCount": {
+    "value": 5
+},
+"vmNodeType1Size": {
+    "value": "Standard_D2_v2"
 }
 ```
 
@@ -199,13 +219,13 @@ V části šablona nasazení `variables` přidejte položku pro fond adres pří
 
 V části *prostředky* šablony nasazení přidejte novou sadu škálování virtuálního počítače. Pamatujte na tyto věci:
 
-* Nová sada škálování odkazuje na nový typ uzlu:
+* Nová sada škálování odkazuje na stejný typ uzlu jako původní:
 
     ```json
-    "nodeTypeRef": "[parameters('vmNodeType1Name')]",
+    "nodeTypeRef": "[parameters('vmNodeType0Name')]",
     ```
 
-* Nová sada škálování odkazuje na stejnou adresu back-end nástroje pro vyrovnávání zatížení a podsíť jako původní, ale používá jiný fond NAT příchozího vyrovnávání zatížení:
+* Nová sada škálování odkazuje na stejnou adresu back-end služby Vyrovnávání zatížení a podsíť (ale používá jiný fond NAT příchozího vyrovnávání zatížení):
 
    ```json
     "loadBalancerBackendAddressPools": [
@@ -236,33 +256,6 @@ V části *prostředky* šablony nasazení přidejte novou sadu škálování vi
         "storageAccountType": "[parameters('storageAccountType')]"
     }
     ```
-
-Dále přidejte položku do `nodeTypes` seznamu prostředků *Microsoft. ServiceFabric/Clusters* . Použijte stejné hodnoty jako původní položka typu uzlu s výjimkou `name` , která by měla odkazovat na nový typ uzlu (*vmNodeType1Name*).
-
-```json
-"nodeTypes": [
-    {
-        "name": "[parameters('vmNodeType0Name')]",
-        ...
-    },
-    {
-        "name": "[parameters('vmNodeType1Name')]",
-        "applicationPorts": {
-            "endPort": "[parameters('nt0applicationEndPort')]",
-            "startPort": "[parameters('nt0applicationStartPort')]"
-        },
-        "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
-        "durabilityLevel": "Silver",
-        "ephemeralPorts": {
-            "endPort": "[parameters('nt0ephemeralEndPort')]",
-            "startPort": "[parameters('nt0ephemeralStartPort')]"
-        },
-        "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
-        "isPrimary": true,
-        "vmInstanceCount": "[parameters('nt0InstanceCount')]"
-    }
-],
-```
 
 Po implementaci všech změn v šabloně a souborech parametrů přejděte k další části, kde získáte odkazy na Key Vault a nasazení aktualizací do clusteru.
 

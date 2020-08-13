@@ -1,6 +1,6 @@
 ---
 title: Key Vault poznámky k verzi rozhraní .NET 2. x API | Microsoft Docs
-description: Vývojáři rozhraní .NET budou používat toto rozhraní API k kódování pro Azure Key Vault
+description: Naučte se aktualizovat aplikace napsané pro starší verze Azure Key Vault pro práci s verzí 2,0 knihovny Azure Key Vault pro C# a .NET.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 436b9c1569d7c33f79a126cd4d0513bac9385d8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 018570019b306dced76760fefa4441ee7d86ad2a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431914"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189844"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2,0 – poznámky k verzi a Průvodce migrací
 Následující informace pomáhají při migraci na verzi 2,0 knihovny Azure Key Vault pro C# a .NET.  Aplikace napsané pro starší verze se musí aktualizovat, aby podporovaly nejnovější verzi.  Tyto změny jsou potřebné k plnému podpoře nových a vylepšených funkcí, jako jsou **Key Vault certifikáty**.
@@ -36,7 +36,7 @@ Key Vault certifikáty spravují certifikáty x509 a podporují následující c
 * **.NET Framework 4.5.2** podporuje verze 2,0 knihovny Azure Key Vault .NET.
 * Verze 2,0 Azure Key Vault knihovny .NET podporuje **.NET Standard 1,4** .
 
-## <a name="namespaces"></a>Obory názvů
+## <a name="namespaces"></a>Jmenné prostory
 
 * Obor názvů pro **modely** se změnil z **Microsoft. Azure. webtrezoru** na **Microsoft. Azure. webtrezor. Models**.
 * **Microsoft. Azure. webtrezor. Internal** obor názvů je vyřazený.
@@ -50,7 +50,7 @@ Key Vault certifikáty spravují certifikáty x509 a podporují následující c
 * *Tajný kód* se změnil na *SecretBundle*
 * *Slovník* byl změněn na *IDictionary*
 * *List \<T> , String []* změněno na *IList \<T> *
-* *NextList* změněny na *NextPageLink*
+* *NextList* změněny na  *NextPageLink*
 
 ## <a name="return-types"></a>Návratové typy
 

@@ -1,17 +1,17 @@
 ---
 title: Streamování dat z Stream Analytics do Data Lake Storage Gen1 – Azure
-description: Použijte Azure Stream Analytics ke streamování dat do Azure Data Lake Storage Gen1.
+description: Naučte se používat Azure Data Lake Storage Gen1 jako výstup pro Azure Stream Analytics úlohu, s jednoduchým scénářem, který čte data z objektu blob Azure Storage.
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: 42c7894c33fe0f09748beee20508e7670545c0ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ef3d7400b64617df8d81c7b84e680496776b5bd
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515169"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192152"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Streamování dat z Azure Storage Blob do Azure Data Lake Storage Gen1 pomocí Azure Stream Analytics
 V tomto článku se naučíte, jak používat Azure Data Lake Storage Gen1 jako výstup pro Azure Stream Analytics úlohu. Tento článek ukazuje jednoduchý scénář, který čte data z Azure Storage objektů BLOB (Input) a zapisuje data do Data Lake Storage Gen1 (výstup).
@@ -58,7 +58,7 @@ Začnete vytvořením úlohy Stream Analytics, která zahrnuje vstupní zdroj a 
    * V případě **oddělovače**vyberte **kartu**.
    * V případě **kódování**vyberte **UTF-8**.
 
-     Klikněte na **Vytvořit**. Portál teď přidá vstup a otestuje připojení k němu.
+     Klikněte na možnost **Vytvořit**. Portál teď přidá vstup a otestuje připojení k němu.
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Vytvořit výstup Data Lake Storage Gen1 pro úlohu
@@ -86,7 +86,7 @@ Začnete vytvořením úlohy Stream Analytics, která zahrnuje vstupní zdroj a 
    * V případě **oddělovače**vyberte **kartu**.
    * V případě **kódování**vyberte **UTF-8**.
     
-     Klikněte na **Vytvořit**. Portál teď přidá výstup a otestuje připojení k němu.
+     Klikněte na možnost **Vytvořit**. Portál teď přidá výstup a otestuje připojení k němu.
     
 ## <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 

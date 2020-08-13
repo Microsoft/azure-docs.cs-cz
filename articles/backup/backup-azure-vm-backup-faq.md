@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné dotazy týkající s
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: bf09c4e56c3881987e14d27d5f2166c68e311ab3
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 268146430a71cca4e620381ec4ce8666f808fefd
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533491"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190882"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
 
@@ -188,3 +188,11 @@ V případě potřeby budou obnoveny body obnovení starého virtuálního poč�
 ### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>Existuje omezení počtu virtuálních počítačů, které mohou být přidruženy ke stejné zásadě zálohování?
 
 Ano, existuje limit 100 virtuálních počítačů, které se dají přidružit ke stejné zásadě zálohování z portálu. Doporučujeme, abyste pro více než 100 virtuálních počítačů vytvořili více zásad zálohování se stejným plánem nebo jiným plánem.
+
+### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>Jak si můžu zobrazit nastavení uchovávání záloh?
+
+V současné době můžete nastavení uchování zobrazit na úrovni zálohované položky na základě zásady zálohování, která je přiřazená k virtuálnímu počítači. 
+
+Jedním ze způsobů, jak zobrazit nastavení uchovávání záloh, je přejít na [řídicí panel](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) zálohovaných položek pro váš virtuální počítač v Azure Portal. Kliknutím na odkaz na zásady zálohování můžete zobrazit dobu uchování všech denních, týdenních, měsíčních a ročních bodů uchovávání dat přidružených k virtuálnímu počítači.
+
+Pomocí [Průzkumníka služby Backup](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) můžete také zobrazit nastavení uchovávání všech virtuálních počítačů v jednom podokně skla. Přejděte do Průzkumníka zálohování z libovolného trezoru Recovery Services, přejděte na kartu **zálohované položky** a kliknutím na rozšířené zobrazení zobrazte podrobné informace o uchovávání dat pro jednotlivé virtuální počítače.  

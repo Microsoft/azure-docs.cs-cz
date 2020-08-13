@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/12/2020
-ms.openlocfilehash: df723824b2d80694913e32904ed81972381c5bcb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/12/2020
+ms.openlocfilehash: 43dca9cd9f9000faae701e618e9a5fdf21d31ee3
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536211"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192745"
 ---
 # <a name="score-wide-and-deep-recommender"></a>Určení skóre doporučovacího systému Wide and Deep
 
@@ -33,7 +33,7 @@ Při vytváření druhého typu předpovědi můžete pracovat v režimu *produk
 
 - **Zkušební režim** pracuje na omezené sadě uživatelů nebo položek, které lze vyhodnotit, a obvykle se používá během experimentování.
 
-Další podrobnosti o celém a hloubkovém doporučení a jeho základní teoretické oblasti najdete v příslušném výzkumném dokumentu: [široké & hlubokou výuku pro doporučované systémy](https://arxiv.org/pdf/1606.07792.pdf).  
+Další podrobnosti o celém a hloubkovém doporučení a jeho základní teoretické oblasti najdete v příslušném výzkumném dokumentu:  [široké & hlubokou výuku pro doporučované systémy](https://arxiv.org/pdf/1606.07792.pdf).  
 
 ## <a name="how-to-configure-score-wide-and-deep-recommender"></a>Jak nakonfigurovat hodnocení v širokém a podrobném doporučeném
 
@@ -147,9 +147,6 @@ Vyhodnocená datová sada vrácená funkcí pro **velké množství a hloubkový
 
 - První sloupec obsahuje identifikátory uživatelů.
 - Vygeneruje se počet dalších sloupců v závislosti na hodnotě nastavené pro **maximální počet položek, které se doporučují pro uživatele**. Každý sloupec obsahuje doporučenou položku (podle identifikátoru). Doporučení jsou seřazená podle spřažení položek a uživatele, přičemž položka s největším spřažením je vložena do sloupce, **Položka 1**.
-
-> [!WARNING]
-> Tuto datovou sadu s hodnocením nejde vyhodnotit pomocí modulu [vyhodnocení doporučení](evaluate-recommender.md) .
 
 ##  <a name="technical-notes"></a>Technické poznámky
 

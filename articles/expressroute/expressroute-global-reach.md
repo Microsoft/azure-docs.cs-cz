@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: připojení k Microsoft Cloud pomocí Global Reach'
-description: Tento článek vysvětluje ExpressRoute Global Reach.
+description: Přečtěte si, jak může Azure ExpressRoute Global Reach propojit okruhy ExpressRoute a vytvořit tak soukromou síť mezi místními sítěmi.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5022efacf33a2c07f1388666b5de26ee86322739
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c747253a56476b0fd9431311294d487ef336e69
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636729"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190756"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute je soukromý a odolný způsob, jak připojit vaše místní sítě k Microsoft Cloud. Přístup k mnoha cloudovým službám Microsoftu, jako je Azure a Office 365, můžete získat z privátního datového centra nebo vaší firemní sítě. Můžete mít například pobočku v síti San Francisco s okruhem ExpressRoute v silikonovém sedlu a další pobočkou v Londýně s okruhem ExpressRoute ve stejném městě. Obě pobočky můžou mít vysokou rychlost připojení k prostředkům Azure v USA – západ a Velká Británie – jih. Firemní pobočky ale nemůžou přímo navzájem měnit data. Jinými slovy, 10.0.1.0/24 může odesílat data do 10.0.3.0/24 a 10.0.4.0/24, ale ne do 10.0.2.0/24.

@@ -3,20 +3,20 @@ title: Známé problémy & řešení potíží
 titleSuffix: Azure Machine Learning
 description: Získejte pomoc při hledání a opravách chyb nebo selhání v Azure Machine Learning. Přečtěte si o známých problémech, odstraňování potíží a alternativním řešení.
 services: machine-learning
-author: j-martens
-ms.author: jmartens
+author: likebupt
+ms.author: keli19
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 08/06/2020
-ms.openlocfilehash: 17d6137dd243c3bce011a1841ea9bca64e0b64ba
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 08/13/2020
+ms.openlocfilehash: 71457be4e572a0e04dfffd0689bfbd458f7c2622
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120758"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190509"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží v Azure Machine Learning
 
@@ -203,7 +203,7 @@ Pokud používáte sdílenou složku pro jiné úlohy, jako je třeba přenos da
 |Při kontrole imagí se nezobrazují nově označené obrázky.     |   Chcete-li načíst všechny označené obrázky, klikněte na tlačítko **první** . **První** tlačítko se vrátí zpět na začátek seznamu, ale načte všechna označená data.      |
 |Když stisknete klávesu ESC, zatímco při rozpoznávání objektu se vytvoří popisek s nulovou velikostí v levém horním rohu. Odesílání popisků v tomto stavu se nezdařilo.     |   Odstraňte popisek kliknutím na křížek vedle něj.  |
 
-### <a name="data-drift-monitors"></a><a name="data-drift"></a>Monitory pro posunování dat
+### <a name="data-drift-monitors"></a><a name="data-drift"></a> Monitory pro posunování dat
 
 Omezení a známé problémy pro sledování posunu dat:
 
@@ -248,6 +248,27 @@ Z kolekce dat modelu může trvat až (obvykle méně než) 10 minut, než se da
 ```python
 import time
 time.sleep(600)
+```
+
+* **Protokol pro koncové body v reálném čase:**
+
+Protokoly koncových bodů v reálném čase jsou zákaznická data. Při řešení potíží s koncovým bodem v reálném čase můžete pomocí následujícího kódu povolit protokoly. 
+
+Další podrobnosti o monitorování koncových bodů webové služby najdete v [tomto článku](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights#query-logs-for-deployed-models).
+
+```python
+from azureml.core import Workspace
+from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+Pokud máte více tenantů, možná budete muset přidat následující ověřovací kód před `ws = Workspace.from_config()`
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
 ```
 
 ## <a name="train-models"></a>Trénování modelů
@@ -306,14 +327,14 @@ time.sleep(600)
     * Ve Windows spusťte automl_setup z příkazového řádku Anaconda. Pokud chcete nainstalovat Miniconda, klikněte [sem](https://docs.conda.io/en/latest/miniconda.html).
     * Zajistěte, aby byl nainstalován conda 64, nikoli 32-bit spuštěním `conda info` příkazu. `platform`Měla by být `win-64` pro Windows nebo `osx-64` pro Mac.
     * Ujistěte se, že je nainstalovaný conda 4.4.10 nebo novější. Verzi můžete ověřit pomocí příkazu `conda -V` . Pokud máte nainstalovanou předchozí verzi, můžete ji aktualizovat pomocí příkazu: `conda update conda` .
-    * Linux`gcc: error trying to exec 'cc1plus'`
+    * Linux `gcc: error trying to exec 'cc1plus'`
       *  Pokud `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` dojde k chybě, nainstalujte základy sestavení pomocí příkazu tónování `sudo apt-get install build-essential` .
       * Pokud chcete automl_setup vytvořit nové prostředí Conda, předejte nový název jako první parametr. Zobrazit existující prostředí conda pomocí `conda env list` a odebrat je pomocí `conda env remove -n <environmentname>` .
       
-* **automl_setup_linux. sh se nezdařila**: Pokud se v Ubuntu Linux automl_setup_linus. sh, došlo k chybě:`unable to execute 'gcc': No such file or directory`-
+* **automl_setup_linux. sh se nezdařila**: Pokud se v Ubuntu Linux automl_setup_linus. sh, došlo k chybě: `unable to execute 'gcc': No such file or directory`-
   1. Ujistěte se, že jsou povolené Odchozí porty 53 a 80. Na virtuálním počítači Azure to můžete udělat z webu Azure Portal tak, že vyberete virtuální počítač a kliknete na sítě.
-  2. Spusťte příkaz:`sudo apt-get update`
-  3. Spusťte příkaz:`sudo apt-get install build-essential --fix-missing`
+  2. Spusťte příkaz: `sudo apt-get update`
+  3. Spusťte příkaz: `sudo apt-get install build-essential --fix-missing`
   4. Spustit `automl_setup_linux.sh` znovu
 
 * **konfigurace. ipynb se nezdařila**:
@@ -329,7 +350,7 @@ time.sleep(600)
   1. Ujistěte se, že Poznámkový blok Configuration. ipynb byl úspěšně spuštěn.
   2. Pokud se Poznámkový blok spouští ze složky, která není ve složce, ve které `configuration.ipynb` bylo spuštěno, zkopírujte aml_config složky a config.jssouboru, který obsahuje do nové složky. Pracovní prostor. from_config čte config.jspro složku poznámkového bloku nebo její nadřazenou složku.
   3. Pokud se používá nové předplatné, skupina prostředků, pracovní prostor nebo oblast, ujistěte se, že jste `configuration.ipynb` Poznámkový blok znovu spustili. Přímá změna config.jsna přímo bude fungovat jenom v případě, že pracovní prostor už existuje v zadané skupině prostředků v rámci zadaného předplatného.
-  4. Pokud chcete změnit oblast, změňte prosím pracovní prostor, skupinu prostředků nebo předplatné. `Workspace.create`pracovní prostor nebude vytvořen ani aktualizován, pokud již existuje, i když je zadaná oblast odlišná.
+  4. Pokud chcete změnit oblast, změňte prosím pracovní prostor, skupinu prostředků nebo předplatné. `Workspace.create` pracovní prostor nebude vytvořen ani aktualizován, pokud již existuje, i když je zadaná oblast odlišná.
   
 * **Ukázkový Poznámkový blok**se nepovede: Pokud se ukázkový Poznámkový blok nepovede s chybou, že v nástroji neexistuje analýza, metoda nebo knihovna:
   * Ujistěte se, že je v poznámkovém bloku Jupyter vybraná možnost jádro correctcorrect. Jádro se zobrazí v pravém horním rohu stránky poznámkového bloku. Výchozí hodnota je azure_automl. Všimněte si, že jádro je uloženo jako součást poznámkového bloku. Pokud tedy přepnete na nové prostředí Conda, budete muset vybrat nové jádro v poznámkovém bloku.
@@ -352,7 +373,7 @@ Proveďte tyto akce při následujících chybách:
 |---------|---------|
 |Chyba při sestavování obrázku při nasazení webové služby     |  Přidat "pynacl = = 1.2.1" jako závislost PIP k souboru conda pro konfiguraci bitové kopie       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   Změňte SKU pro virtuální počítače používané ve vašem nasazení na jednu, která má více paměti. |
-|Selhání FPGA     |  Modely v FPGA nebudete moct nasadit, dokud si nebudete požádáni a neschválili kvótu FPGA. Pokud chcete požádat o přístup, vyplňte formulář žádosti o kvótu:https://aka.ms/aml-real-time-ai       |
+|Selhání FPGA     |  Modely v FPGA nebudete moct nasadit, dokud si nebudete požádáni a neschválili kvótu FPGA. Pokud chcete požádat o přístup, vyplňte formulář žádosti o kvótu: https://aka.ms/aml-real-time-ai       |
 
 ### <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>Aktualizace komponent Azure Machine Learning v clusteru AKS
 

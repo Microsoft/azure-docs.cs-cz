@@ -5,14 +5,14 @@ keywords: app service, azure app service, domain mapping, domain name, existing 
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 04/27/2020
+ms.date: 08/13/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 96a947a20a17c4dc08851824a392143ce162f186
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: c301876a57b3be4a112c7df2706bf17389a5af44
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543553"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190054"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: mapování stávajícího vlastního názvu DNS na Azure App Service
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Přesměrovat výchozí adresu URL do vlastního adresáře
 > * Automatizovat mapování domén pomocí skriptů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -125,11 +125,11 @@ Pokud máte subdoménu jinou než `www` , nahraďte ji `www` subdoménou (např�
 
 #### <a name="create-the-cname-record"></a>Vytvoření záznamu CNAME
 
-Namapujte subdoménu na název výchozí domény aplikace ( `<app_name>.azurewebsites.net` , kde `<app_name>` je název vaší aplikace). Chcete-li vytvořit mapování CNAME pro `www` subdoménu, vytvořte dva záznamy:
+Namapujte subdoménu na název výchozí domény aplikace ( `<app-name>.azurewebsites.net` , kde `<app-name>` je název vaší aplikace). Chcete-li vytvořit mapování CNAME pro `www` subdoménu, vytvořte dva záznamy:
 
 | Typ záznamu | Hostitel | Hodnota | Komentáře |
 | - | - | - |
-| CNAME | `www` | `<app_name>.azurewebsites.net` | Samotné mapování domény. |
+| CNAME | `www` | `<app-name>.azurewebsites.net` | Samotné mapování domény. |
 | TXT | `asuid.www` | [ID ověření, které jste získali dříve](#get-domain-verification-id) | App Service přistupuje k `asuid.<subdomain>` záznamu TXT a ověří vlastnictví vlastní domény. |
 
 Po přidání záznamů CNAME a TXT bude stránka záznamů DNS vypadat jako v následujícím příkladu:
@@ -210,7 +210,7 @@ Pokud chcete namapovat záznam A na aplikaci, obvykle pro kořenovou doménu, vy
 > | Typ záznamu | Hostitel | Hodnota |
 > | - | - | - |
 > | A | `www` | IP adresa z části [Zkopírování IP adresy aplikace](#info) |
-> | TXT | `asuid.www` | `<app_name>.azurewebsites.net` |
+> | TXT | `asuid.www` | `<app-name>.azurewebsites.net` |
 >
 
 Po přidání záznamů bude stránka záznamů DNS vypadat jako v následujícím příkladu:
@@ -262,9 +262,14 @@ V tomto příkladu namapujete na aplikaci App Service [zástupný název DNS](ht
 
 #### <a name="create-the-cname-record"></a>Vytvoření záznamu CNAME
 
-Přidejte záznam CNAME pro mapování zástupného znaku na název výchozí domény aplikace ( `<app_name>.azurewebsites.net` ).
+Namapujte zástupný název `*` na výchozí název domény aplikace ( `<app-name>.azurewebsites.net` , kde `<app-name>` je název vaší aplikace). Chcete-li namapovat zástupný název, vytvořte dva záznamy:
 
-Pro příklad domény `*.contoso.com` bude záznam CNAME mapovat název `*` na `<app_name>.azurewebsites.net`.
+| Typ záznamu | Hostitel | Hodnota | Komentáře |
+| - | - | - |
+| CNAME | `*` | `<app-name>.azurewebsites.net` | Samotné mapování domény. |
+| TXT | `asuid` | [ID ověření, které jste získali dříve](#get-domain-verification-id) | App Service přistupuje k `asuid` záznamu TXT a ověří vlastnictví vlastní domény. |
+
+Pro příklad domény `*.contoso.com` bude záznam CNAME mapovat název `*` na `<app-name>.azurewebsites.net`.
 
 Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následujícím příkladu:
 
@@ -272,7 +277,7 @@ Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následu
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>Povolení mapování záznamu CNAME v aplikaci
 
-Teď můžete do aplikace přidat jakoukoli subdoménu, která odpovídá zástupnému názvu (například `sub1.contoso.com` a `sub2.contoso.com` odpovídají `*.contoso.com`).
+Nyní můžete do aplikace přidat jakoukoli subdoménu, která odpovídá zástupnému názvu (například `sub1.contoso.com` a `sub2.contoso.com` obě shody `*.contoso.com` ).
 
 V levém navigačním panelu na stránce aplikace na webu Azure Portal vyberte **Vlastní domény**.
 
@@ -336,13 +341,13 @@ Po dokončení operace by vaše aplikace měla vrátit pravou stránku na kořen
 
 Správu vlastních domén můžete automatizovat pomocí skriptů s využitím [Azure CLI](/cli/azure/install-azure-cli) nebo [Azure PowerShellu](/powershell/azure/). 
 
-### <a name="azure-cli"></a>Rozhraní příkazového řádku Azure 
+### <a name="azure-cli"></a>Azure CLI 
 
 Následující příkaz přidá do aplikace App Service nakonfigurovaný vlastní název DNS. 
 
 ```bash 
 az webapp config hostname add \
-    --webapp-name <app_name> \
+    --webapp-name <app-name> \
     --resource-group <resource_group_name> \
     --hostname <fully_qualified_domain_name>
 ``` 
@@ -357,9 +362,9 @@ Následující příkaz přidá do aplikace App Service nakonfigurovaný vlastn�
 
 ```powershell  
 Set-AzWebApp `
-    -Name <app_name> `
+    -Name <app-name> `
     -ResourceGroupName <resource_group_name> ` 
-    -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net")
+    -HostNames @("<fully_qualified_domain_name>","<app-name>.azurewebsites.net")
 ```
 
 Další informace najdete v tématu [Přiřazení vlastní domény k webové aplikaci](scripts/powershell-configure-custom-domain.md).

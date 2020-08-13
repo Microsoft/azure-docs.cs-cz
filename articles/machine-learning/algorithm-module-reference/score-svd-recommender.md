@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/10/2020
-ms.openlocfilehash: 82c3454ad4c8db3a9b19084f5b6ece988cc86b9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/10/2020
+ms.openlocfilehash: 806c19100594f449288d810b68d072dd7de23646
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79455974"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189821"
 ---
 # <a name="score-svd-recommender"></a>Určení skóre doporučovacího systému SVD
 
@@ -107,9 +107,6 @@ Vyhodnocená datová sada vrácená funkcí skore SVD doporučuje, aby vypisuje 
 
 - První sloupec obsahuje identifikátory uživatelů.
 - Vygeneruje se počet dalších sloupců v závislosti na hodnotě, kterou jste nastavili pro **maximální počet položek, které se doporučují pro uživatele**. Každý sloupec obsahuje doporučenou položku (podle identifikátoru). Doporučení jsou seřazená podle spřažení uživatelem a položky. Položka s největším spřažením je vložena do **položky sloupce 1**.
-
-> [!WARNING]
-> Tuto datovou sadu s skóre nemůžete vyhodnotit pomocí modulu [vyhodnotit doporučený](evaluate-recommender.md) modul.
 
 
 ##  <a name="technical-notes"></a>Technické poznámky

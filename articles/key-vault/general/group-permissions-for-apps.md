@@ -1,6 +1,6 @@
 ---
 title: Udělení oprávnění aplikacím pro přístup k trezoru klíčů Azure – Azure Key Vault | Microsoft Docs
-description: Zjistěte, jak udělit oprávnění k mnoha aplikacím pro přístup k trezoru klíčů.
+description: Naučte se, jak ručně zaregistrovat instanční objekt a poskytnout přístup k Azure Key Vault pomocí zásad řízení přístupu, který může být v některých případech nezbytný.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8369c507ee7a9e11969c17bbaac7c6e31892e196
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1b3f03458211e57f51c39cb5ca8da83943280aa8
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406244"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192004"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Zajištění Key Vault ověřování pomocí zásad řízení přístupu
 
@@ -33,7 +33,7 @@ Trezor klíčů podporuje až 1024 záznamů zásad přístupu, přičemž každ
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Trezor klíčů. Můžete použít existující Trezor klíčů nebo vytvořit nový pomocí následujících kroků v jednom z těchto rychlých startů:
    - [Vytvoření trezoru klíčů pomocí Azure CLI](../secrets/quick-create-cli.md)

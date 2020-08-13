@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 ms.date: 08/12/2020
-ms.openlocfilehash: faef8c29b2a5e75745e36c5d826b4feee2d60a98
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e1a5cb4a5ce02954a14a6936ec14379701354a79
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88169126"
+ms.locfileid: "88191198"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Uživatelsky iniciované ruční převzetí služeb při selhání na spravované instanci SQL
 
@@ -31,6 +31,9 @@ V některých z následujících důvodů můžete zvážit spuštění [ruční
 - Testování vlivu převzetí služeb při selhání na stávající relace databáze
 - Ověřte, jestli se převzetí služeb při selhání změní na konečný výkon kvůli změnám v latenci sítě.
 - V některých případech snížení výkonu dotazů může ruční převzetí služeb při potížích s výkonem snížit riziko.
+
+> [!NOTE]
+> Zajištění odolnosti před převzetím služeb při selhání před nasazením do produkčního prostředí vám pomůže zmírnit riziko chyb aplikací v produkčním prostředí a přispívat k dostupnosti aplikací pro vaše zákazníky.
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>Iniciovat ruční převzetí služeb při selhání na spravované instanci SQL
 

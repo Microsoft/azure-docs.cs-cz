@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault – použití obnovitelného odstranění s využitím PowerShellu
-description: Příklady případů použití obnovitelného odstranění s využitím výstřižků kódu PowerShellu
+description: Naučte se používat Azure PowerShell k použití funkce obnovitelného odstranění Azure Key Vault, která umožňuje obnovení trezorů klíčů a objektů trezoru klíčů.
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 55e4bd20b6cc17a5cbad620d3a404d6ada41b81a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 094eb784244f74fe75bf456b01c9a85457b28ba3
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136469"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191521"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu
 
@@ -40,7 +40,7 @@ Informace o Key Vault specifických referenčních informacích pro PowerShell n
 
 Operace Key Vault se samostatně spravují prostřednictvím oprávnění řízení přístupu na základě role (RBAC) následujícím způsobem:
 
-| Operace | Description | Oprávnění uživatele |
+| Operace | Popis | Oprávnění uživatele |
 |:--|:--|:--|
 |Seznam|Zobrazí seznam odstraněných trezorů klíčů.|Microsoft. deletedVaults trezor//Read|
 |Zotavit|Obnoví odstraněný Trezor klíčů.|Trezor Microsoft. a trezory/zápis|

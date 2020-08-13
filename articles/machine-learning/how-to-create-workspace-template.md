@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 5ddd4fc368a4e479d3d720698c7447d2b3cdf3cc
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 6d1042ea21308dd0f82165c288824aaef000e36d
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986558"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192337"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
@@ -380,7 +380,7 @@ Nastavením `vnetOption` hodnoty parametru na buď `new` nebo `existing` můžet
 Pokud vaše přidružené prostředky nejsou za virtuální sítí, můžete nastavit parametr **privateEndpointType** na `AutoAproval` nebo `ManualApproval` pro nasazení pracovního prostoru za soukromým koncovým bodem. To se dá udělat pro nové i existující pracovní prostory. Když aktualizujete existující pracovní prostor, vyplňte parametry šablony informacemi z existujícího pracovního prostoru.
 
 > [!IMPORTANT]
-> Nasazení je platné pouze v oblastech, které podporují soukromé koncové body.
+> Použití privátního odkazu Azure k vytvoření privátního koncového bodu pro Azure Machine Learning pracovní prostor je momentálně ve verzi Public Preview. Tato funkce je k dispozici pouze v oblastech **USA – východ** a **USA – západ 2** . Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

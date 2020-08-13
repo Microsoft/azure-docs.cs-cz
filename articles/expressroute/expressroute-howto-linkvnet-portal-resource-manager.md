@@ -1,6 +1,6 @@
 ---
 title: 'ExpressRoute: propojení virtuální sítě s okruhem: Azure Portal'
-description: Připojte virtuální síť k okruhu Azure ExpressRoute. Postup.
+description: Naučte se vytvořit připojení k propojení virtuální sítě s okruhem Azure ExpressRoute pomocí Azure Portal.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: a4ed99d69d1c2389e73c215bccfd6112895e791d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad222e55f1e3051266c1398d76c8d246e342aba9
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737066"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190919"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí portálu
 > [!div class="op_single_selector"]

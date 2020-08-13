@@ -1,6 +1,6 @@
 ---
 title: Proměnné HTTP pro modul pravidel Azure CDN | Microsoft Docs
-description: Proměnné HTTP umožňují načíst metadata požadavku a odpovědi HTTP.
+description: Přečtěte si o proměnných HTTP, které vám umožní získat metadata požadavků a odpovědí HTTP pro některé funkce stroje pravidel. Použijte metadata k modifikaci žádosti nebo odpovědi.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: 6e601e3e06965faf8ec0fd238c54115570150b61
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203571"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192683"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Proměnné HTTP pro modul pravidel Azure CDN
 Proměnné HTTP poskytují prostředky, pomocí kterých můžete načíst metadata žádosti a odpovědi HTTP. Tato metadata pak můžete použít k dynamické změně žádosti nebo odpovědi. Použití proměnných HTTP je omezeno na následující funkce stroje pravidel:
@@ -38,7 +38,7 @@ Následující tabulka popisuje podporované proměnné protokolu HTTP. Pokud GE
 | ---- | -------- | ----------- | ------------ |
 | ASN (žadatel) | % {geo_asnum} | Označuje žadatele jako číslo. <br /><br />**Zastaralé:** % {virt_dst_asnum}. <br />Tato proměnná se už nepoužívá namísto% {geo_asnum}. I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou. | AS15133 |
 | Město (žadatel) | % {geo_city} | Označuje město žadatele. | Los Angeles |
-| Kontinent (žadatel) | % {geo_continent} | Označuje kontinenta žadatele prostřednictvím zkratky. <br />Platné hodnoty jsou: <br />AF: Afrika<br />JAKO: Asie<br />EU: Evropa<br />NA: Severní Amerika<br />°C: Oceánie a<br />SA: Jižní Amerika<br /><br />**Zastaralé:** % {virt_dst_continent}. <br />Tato proměnná se už nepoužívá namísto% {geo_continent}. <br />I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou.| Nelze použít |
+| Kontinent (žadatel) | % {geo_continent} | Označuje kontinenta žadatele prostřednictvím zkratky. <br />Platné hodnoty jsou: <br />AF: Afrika<br />JAKO: Asie<br />EU: Evropa<br />NA: Severní Amerika<br />°C: Oceánie a<br />SA: Jižní Amerika<br /><br />**Zastaralé:** % {virt_dst_continent}. <br />Tato proměnná se už nepoužívá namísto% {geo_continent}. <br />I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou.| – |
 | Hodnota souboru cookie | % {cookie_Cookie} | Vrátí hodnotu odpovídající klíči souboru cookie identifikovanému termínem souboru cookie. | Ukázka použití: <br />% {cookie__utma}<br /><br />Ukázková hodnota:<br />111662281.2.10.1222100123 |
 | Země/oblast (žadatel) | % {geo_country} | Určuje zemi nebo oblast původu žadatele prostřednictvím kódu země nebo oblasti. <br />**Zastaralé:** % {virt_dst_country}. <br /><br />Tato proměnná se už nepoužívá namísto% {geo_country}. I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou. | USA |
 | Vymezená oblast trhu (žadatel) | % {geo_dma_code} |Označuje mediální trh žadatele podle kódu oblasti. <br /><br />Toto pole se vztahuje pouze na žádosti, které pocházejí z USA.| 745 |
@@ -72,7 +72,7 @@ V následující tabulce jsou popsány správné syntaxe pro určení proměnné
 | Syntaxe | Příklad | Popis |
 | ------ | -------- | ---------- |
 | % { &lt; HTTPVariable &gt; } | % {Host} | Tuto syntaxi použijte k získání celé hodnoty odpovídající zadanému &lt; HTTPVariable &gt; . |
-| % { &lt; HTTPVariableDelimiter &gt; } | % {Host,} | Tuto syntaxi použijte k nastavení velikosti písmen pro celou hodnotu odpovídající zadanému &lt; HTTPVariableDelimiter &gt; . |
+| % { &lt; HTTPVariableDelimiter &gt; } | % {Host,} | Tuto syntaxi použijte k nastavení velikosti písmen pro celou hodnotu odpovídající zadanému  &lt; HTTPVariableDelimiter &gt; . |
 | % { &lt; HTTPVariableDelimiterExpression &gt; } | % {Host/= ^ www \. ([^ \. ] +) \. ([^ \. :] +)/CDN. $2. $3:80} | Použijte regulární výraz pro &lt; HTTPVariableDelimiterExpression &gt; k nahrazení, odstranění nebo manipulaci s hodnotou proměnné http. |
 
 Názvy proměnných HTTP podporují jenom abecední znaky a podtržítka. Převede nepodporované znaky na podtržítka.

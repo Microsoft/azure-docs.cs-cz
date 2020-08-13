@@ -1,6 +1,6 @@
 ---
 title: Optimalizace streamování médií pomocí Azure CDN
-description: Optimalizujte streamování mediálních souborů pro zajištění hladkého doručení
+description: Přečtěte si o možnostech pro optimalizaci streamování médií v Azure Content Delivery Network, jako je například částečné sdílení mezipaměti a doba čekání na doplňování mezipaměti.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: edc2198cff360b6f0d2f6ace3b76d35bf77fab97
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206698"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192613"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Optimalizace streamování médií pomocí Azure CDN 
  
@@ -86,7 +86,7 @@ Krátký negativní čas ukládání do mezipaměti je vhodný pro snižování 
 | Ukládání do mezipaměti  | Obecné doručování webu | Obecné streamování médií | Streamování médií videa na vyžádání  
 |--- | --- | --- | ---
 | Ukládání do mezipaměti: kladné <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |365 dní | 365 dní   
-| Ukládání do mezipaměti: záporné <br> HTTP 204, 305, 404, <br> a 405 | Žádná | 1 sekunda | 1 sekunda
+| Ukládání do mezipaměti: záporné <br> HTTP 204, 305, 404, <br> a 405 | Žádné | 1 sekunda | 1 sekunda
  
 ### <a name="deal-with-origin-failure"></a>Zabývat se selháním původu  
 

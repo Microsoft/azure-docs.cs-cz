@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 – ladění výkonu
-description: Popisuje, jak optimalizovat Azure Data Lake Storage Gen1 pro výkon.
+description: Přečtěte si, jak využít veškerou dostupnou propustnost v Azure Data Lake Storage Gen1 je důležité pro dosažení optimálního výkonu díky souběžnému provádění tolika operací čtení a zápisu.
 author: stewu
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 6b6dba101c7793198fe9d1e2bef1bcd99ddac618
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281731"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190246"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Vyladění Azure Data Lake Storage Gen1 pro výkon
 
@@ -43,11 +43,11 @@ Po vyřešení kritických bodů hardwaru zdroje a síťového připojení jste 
 
 | Nástroj          | Nastavení | Další podrobnosti                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| PowerShell       | Hodnoty perfilethreadcount, hodnota concurrentfilecount | [Odkaz](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
-| AdlCopy    | Jednotky Azure Data Lake Analytics | [Odkaz](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
-| DistCp            | -m (mapovač) | [Odkaz](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| parallelCopies | [Odkaz](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. Size,-m (Mapper) | [Odkaz](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| PowerShell       | Hodnoty perfilethreadcount, hodnota concurrentfilecount | [Propojit](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
+| AdlCopy    | Jednotky Azure Data Lake Analytics | [Propojit](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -m (mapovač) | [Propojit](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| parallelCopies | [Propojit](../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | FS. Azure. Block. Size,-m (Mapper) | [Propojit](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Struktura sady dat
 
@@ -131,7 +131,7 @@ Kromě obecných pokynů uvedených v každé aplikaci jsou k dispozici různé 
 | [MapReduce ve službě HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>MapReduce. map. Memory</li><li>MapReduce. job. Maps</li><li>MapReduce. zmenšení paměti</li><li>MapReduce. job. redukuje</li></ul> |
 | [Storm v HDInsightu](data-lake-store-performance-tuning-storm.md)| <ul><li>Počet pracovních procesů</li><li>Počet instancí prováděcího modulu Spout</li><li>Počet instancí vykonavatele šroubů </li><li>Počet úloh Spout</li><li>Počet úloh šroubů</li></ul>|
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Začínáme s Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

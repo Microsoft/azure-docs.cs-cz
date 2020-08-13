@@ -1,6 +1,6 @@
 ---
 title: Správa Azure CDN s využitím PowerShellu | Microsoft Docs
-description: Naučte se používat rutiny Azure PowerShell ke správě Azure CDN.
+description: V tomto kurzu se naučíte, jak pomocí PowerShellu spravovat aspekty profilů a koncových bodů Azure Content Delivery Network koncového bodu.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/20/2019
 ms.author: allensu
-ms.openlocfilehash: e7ad3034ff3730cdadcfd55765af01c97df78028
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5fa1cedf4cc5e87d11dc4b5c453d9cb2a307c3c
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073064"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192662"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>Správa Azure CDN s využitím PowerShellu
 PowerShell poskytuje jednu z nejpružnější metod pro správu profilů a koncových bodů Azure CDN.  PowerShell můžete interaktivně používat nebo psát pomocí skriptů pro automatizaci úloh správy.  Tento kurz předvádí několik nejběžnějších úloh, které můžete s prostředím PowerShell využít ke správě Azure CDN profilů a koncových bodů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -80,7 +80,7 @@ Cmdlet          Unpublish-AzCdnEndpointContent                     1.4.0      Az
 ```
 
 ## <a name="getting-help"></a>Získání nápovědy
-Pomocí rutiny můžete získat pomoc s kteroukoli z těchto rutin `Get-Help` .  `Get-Help`poskytuje použití a syntaxi a volitelně zobrazuje příklady.
+Pomocí rutiny můžete získat pomoc s kteroukoli z těchto rutin `Get-Help` .  `Get-Help` poskytuje použití a syntaxi a volitelně zobrazuje příklady.
 
 ```text
 PS C:\> Get-Help Get-AzCdnProfile
@@ -139,7 +139,7 @@ Get-AzCdnProfile -ProfileName CdnDemo -ResourceGroupName CdnDemoRG
 > 
 
 ## <a name="listing-existing-cdn-endpoints"></a>Výpis stávajících koncových bodů CDN
-`Get-AzCdnEndpoint`může načíst jednotlivý koncový bod nebo všechny koncové body v profilu.  
+`Get-AzCdnEndpoint` může načíst jednotlivý koncový bod nebo všechny koncové body v profilu.  
 
 ```powershell
 # Get a single endpoint.
@@ -156,7 +156,7 @@ Get-AzCdnProfile | Get-AzCdnEndpoint | Where-Object { $_.ResourceState -eq "Runn
 ```
 
 ## <a name="creating-cdn-profiles-and-endpoints"></a>Vytváření profilů a koncových bodů CDN
-`New-AzCdnProfile`a `New-AzCdnEndpoint` slouží k vytváření profilů a koncových bodů CDN. Podporovány jsou následující SKU:
+`New-AzCdnProfile` a `New-AzCdnEndpoint` slouží k vytváření profilů a koncových bodů CDN. Podporovány jsou následující SKU:
 - Standard_Verizon
 - Premium_Verizon
 - Custom_Verizon
@@ -177,7 +177,7 @@ New-AzCdnProfile -ProfileName CdnPoshDemo -ResourceGroupName CdnDemoRG -Sku Stan
 ```
 
 ## <a name="checking-endpoint-name-availability"></a>Kontroluje se dostupnost názvu koncového bodu.
-`Get-AzCdnEndpointNameAvailability`Vrátí objekt, který označuje, zda je k dispozici název koncového bodu.
+`Get-AzCdnEndpointNameAvailability` Vrátí objekt, který označuje, zda je k dispozici název koncového bodu.
 
 ```powershell
 # Retrieve availability
@@ -189,7 +189,7 @@ Else { Write-Host "No, that endpoint name is not available." }
 ```
 
 ## <a name="adding-a-custom-domain"></a>Přidání vlastní domény
-`New-AzCdnCustomDomain`Přidá vlastní název domény do existujícího koncového bodu.
+`New-AzCdnCustomDomain` Přidá vlastní název domény do existujícího koncového bodu.
 
 > [!IMPORTANT]
 > CNAME musíte nastavit poskytovatelem DNS, jak je popsáno v tématu [Postup mapování vlastní domény na koncový bod Content Delivery Network (CDN)](cdn-map-content-to-custom-domain.md).  Mapování můžete otestovat před změnou koncového bodu pomocí `Test-AzCdnCustomDomain` .
@@ -208,7 +208,7 @@ If($result.CustomDomainValidated){ New-AzCdnCustomDomain -CustomDomainName Conto
 ```
 
 ## <a name="modifying-an-endpoint"></a>Úprava koncového bodu
-`Set-AzCdnEndpoint`upraví existující koncový bod.
+`Set-AzCdnEndpoint` upraví existující koncový bod.
 
 ```powershell
 # Get an existing endpoint
@@ -223,7 +223,7 @@ Set-AzCdnEndpoint -CdnEndpoint $endpoint
 ```
 
 ## <a name="purgingpre-loading-cdn-assets"></a>Vyprazdňování a předběžné načítání prostředků CDN
-`Unpublish-AzCdnEndpointContent`vyprázdní prostředky uložené v mezipaměti, zatímco se `Publish-AzCdnEndpointContent` předem načítají prostředky v podporovaných koncových bodech.
+`Unpublish-AzCdnEndpointContent` vyprázdní prostředky uložené v mezipaměti, zatímco se `Publish-AzCdnEndpointContent` předem načítají prostředky v podporovaných koncových bodech.
 
 ```powershell
 # Purge some assets.
@@ -237,7 +237,7 @@ Get-AzCdnProfile | Get-AzCdnEndpoint | Unpublish-AzCdnEndpointContent -PurgeCont
 ```
 
 ## <a name="startingstopping-cdn-endpoints"></a>Spouštění/zastavování koncových bodů CDN
-`Start-AzCdnEndpoint`a `Stop-AzCdnEndpoint` lze ji použít ke spuštění a zastavení jednotlivých koncových bodů nebo skupin koncových bodů.
+`Start-AzCdnEndpoint` a `Stop-AzCdnEndpoint` lze ji použít ke spuštění a zastavení jednotlivých koncových bodů nebo skupin koncových bodů.
 
 ```powershell
 # Stop the cdndocdemo endpoint
@@ -274,7 +274,7 @@ Set-AzCdnEndpoint -CdnEndpoint $ep
 ```
 
 ## <a name="deleting-cdn-resources"></a>Odstraňují se prostředky CDN
-`Remove-AzCdnProfile`a `Remove-AzCdnEndpoint` dá se použít k odebrání profilů a koncových bodů.
+`Remove-AzCdnProfile` a `Remove-AzCdnEndpoint` dá se použít k odebrání profilů a koncových bodů.
 
 ```powershell
 # Remove a single endpoint

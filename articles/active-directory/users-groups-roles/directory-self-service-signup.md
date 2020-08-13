@@ -10,40 +10,44 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: overview
 ms.workload: identity
-ms.date: 04/29/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a61bd162baf6f079b625dc07d4faa397493ba618
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d52384f04fd8a2a2bc3c42af713378ad15d01c42
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015863"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192714"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Co je samoobslužná registrace do služby Azure Active Directory?
 
 Tento článek vysvětluje, jak pomocí samoobslužné registrace naplnit organizaci v Azure Active Directory (Azure AD). Pokud chcete převzít název domény z nespravované organizace Azure AD, přečtěte si téma [převzetí nespravovaného adresáře jako správce](domains-admin-takeover.md).
 
 ## <a name="why-use-self-service-sign-up"></a>Proč používat samoobslužné registrace?
+
 * Získejte zákazníkům rychlejší služby, které chtějí.
 * Vytváření nabídek na základě e-mailů pro službu
 * Vytváření e-mailových toků pro zápis, které umožňují uživatelům rychle vytvářet identity pomocí jejich snadno zapamatování e-mailových aliasů
 * Samoobslužný adresář služby Azure AD se dá přepínat na spravovaný adresář, který se dá použít pro jiné služby.
 
 ## <a name="terms-and-definitions"></a>Pojmy a definice
+
 * **Samoobslužná registrace**: Jedná se o metodu, kterou si uživatel zaregistruje do cloudové služby a automaticky pro ně vytvořila identitu v Azure AD na základě jejich e-mailové domény.
 * **Nespravovaný adresář služby Azure AD**: Jedná se o adresář, ve kterém je tato identita vytvořená. Nespravovaný adresář je adresář, který nemá žádného globálního správce.
 * **Uživatel ověřený e-mailem**: Jedná se o typ uživatelského účtu ve službě Azure AD. Uživatel, který má vytvořenou identitu automaticky po registraci k samoobslužné nabídce, se označuje jako uživatel ověřený e-mailem. Uživatel ověřený pomocí e-mailu je běžným členem adresáře označeného creationmethod = EmailVerified.
 
 ## <a name="how-do-i-control-self-service-settings"></a>Návody nastavení samoobslužného řízení?
+
 Správci mají ještě dva samoobslužné ovládací prvky. Můžou řídit, jestli:
 
 * Uživatelé se můžou k adresáři připojit prostřednictvím e-mailu.
 * Uživatelé můžou licenci vlastnit pro aplikace a služby.
 
 ### <a name="how-can-i-control-these-capabilities"></a>Jak můžu řídit tyto možnosti?
+
 Správce může tyto možnosti nakonfigurovat pomocí následujících parametrů rutiny Azure AD set-MsolCompanySettings:
 
 * **AllowEmailVerifiedUsers** určuje, zda uživatel může vytvořit nebo připojit adresář. Pokud tento parametr nastavíte na $false, k adresáři se nemůže připojit žádný uživatel ověřený e-mailem.
@@ -57,7 +61,7 @@ AllowEmailVerifiedUsers a AllowAdHocSubscriptions jsou nastavení pro celá adre
 
 Pokud jsou předchozí podmínky splněné, vytvoří se v domovském adresáři členský uživatel a v adresáři pro pozvání se vytvoří uživatel typu Host B2B.
 
-Zápisy Flow a PowerApps zkušební verze se neřídí nastavením **AllowAdHocSubscriptions** . Další informace najdete v následujících článcích:
+Další informace o službě Flow a PowerApps zkušebního přihlášení najdete v následujících článcích:
 
 * [Jak můžu stávajícím uživatelům zabránit v tom, aby začali používat Power BI?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
 * [Otázky a odpovědi týkající se Flow ve vaší organizaci](https://docs.microsoft.com/flow/organization-q-and-a)

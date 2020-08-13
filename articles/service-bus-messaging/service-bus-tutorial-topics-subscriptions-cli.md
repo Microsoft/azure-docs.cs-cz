@@ -1,349 +1,104 @@
 ---
-title: 'Kurz: aktualizace sortimentu inventáře v maloobchodu pomocí kanálů publikování/odběru a filtrů témat pomocí Azure CLI'
-description: 'Kurz: v tomto kurzu se naučíte odesílat a přijímat zprávy z tématu a předplatného a postup přidávání a používání pravidel filtru pomocí Azure CLI.'
+title: Použití rozhraní příkazového řádku Azure k vytvoření Service Bus témat a předplatných
+description: V tomto rychlém startu se dozvíte, jak vytvořit Service Bus téma a odběry k tomuto tématu pomocí Azure CLI.
 ms.date: 06/23/2020
-ms.topic: tutorial
+ms.topic: quickstart
 author: spelluru
 ms.author: spelluru
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2526559a8b88309c098e59e8cc6d0ffd2793984f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 3a6535a13ab00c4e22ac4cd8c2de5a5bbb02d0a8
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067575"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189809"
 ---
-# <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Kurz: Aktualizace zásob pomocí rozhraní CLI a témat/odběrů
+# <a name="use-azure-cli-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Použití rozhraní příkazového řádku Azure k vytvoření Service Busho tématu a odběrů tématu
+V tomto rychlém startu pomocí Azure CLI vytvoříte Service Bus téma a pak pro toto téma vytvoříte odběry. 
 
-Microsoft Azure Service Bus je víceklientská cloudová služba pro zasílání zpráv, která odesílá informace mezi aplikacemi a službami. Asynchronní operace umožňují flexibilní zprostředkované zasílání zpráv a také strukturované zasílání zpráv typu FIFO (first-in-first-out) a funkce pro publikování a přihlášení k odběru. Tento kurz ukazuje, jak můžete témata a odběry ve službě Service Bus využít ve scénáři aktualizace maloobchodních zásob. Pracuje se při tom s kanály publikování a přihlášení k odběru s využitím rozhraní Azure CLI a jazyka Java.
+## <a name="what-are-service-bus-topics-and-subscriptions"></a>Co jsou témata a předplatné služby Service Bus?
+Témata a předplatné služby Service Bus podporují komunikační model zasílání zpráv *publikování/přihlášení*. Součásti distribuované aplikace při používání témat a předplatných nekomunikují navzájem přímo. Místo toho si zprávy vyměňují prostřednictvím tématu, které slouží jako zprostředkovatel.
 
-V tomto kurzu se naučíte:
-> [!div class="checklist"]
-> * Pomocí rozhraní Azure CLI vytvořit téma služby Service Bus a k němu jeden nebo více odběrů
-> * Přidávat filtry témat pomocí rozhraní Azure CLI
-> * Vytvořit dvě zprávy s různým obsahem
-> * Odeslat zprávy a ověřit, že dorazily do očekávaných odběrů
-> * Přijímat zprávy z odběrů
+![TopicConcepts](./media/service-bus-java-how-to-use-topics-subscriptions/sb-topics-01.png)
 
-V tomto scénáři pracujeme s příkladem aktualizace sortimentu zásob pro několik prodejen. Každá prodejna nebo sada prodejen v našem příkladu přijímá zprávy s pokyny, jak konkrétně má aktualizovat sortiment. Tento kurz vysvětluje, jak tento scénář využívající odběry a filtry implementujete. Nejprve vytvoříte téma se třemi odběry, přidáte pravidla a filtry a potom z tématu a odběrů odešlete zprávy a přijmete je.
+Na rozdíl od Service Busch front, ve kterých každá zpráva zpracovává jeden uživatel, témata a odběry poskytují formu komunikace 1: n pomocí vzoru pro publikování a odběr. K jednomu tématu můžete zaregistrovat několik předplatných. Při odeslání zprávy do tématu bude zpráva zpřístupněná všem předplatným, aby ji nezávisle zpracovala. Předplatné tématu se podobá virtuální frontě, která obdrží kopii zpráv, které byly odeslány do tématu. Volitelně můžete zaregistrovat pravidla filtru pro téma na základě jednotlivých předplatných, což umožňuje filtrovat nebo omezit, které zprávy na téma jsou přijímány v rámci předplatných tématu.
 
-![téma](./media/service-bus-tutorial-topics-subscriptions-cli/about-service-bus-topic.png)
-
-Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][] před tím, než začnete.
+Service Bus témata a předplatná umožňují škálovat na zpracování velkého počtu zpráv napříč velkým počtem uživatelů a aplikací.
 
 ## <a name="prerequisites"></a>Požadavky
+Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][free account] před tím, než začnete.
 
-K vývoji aplikace funkcí Service Bus pomocí Javy potřebujete mít nainstalované následující součásti:
+V tomto rychlém startu použijete Azure Cloud Shell, které můžete spustit po přihlášení k Azure Portal. Podrobnosti o Azure Cloud Shell najdete v tématu [přehled Azure Cloud Shell](../cloud-shell/overview.md). Na svém počítači můžete také [nainstalovat](/cli/azure/install-azure-cli) a používat Azure PowerShell. 
 
-- Nejnovější verzi sady [Java Development Kit](https://aka.ms/azure-jdks)
-- [Azure CLI](/cli/azure)
-- [Apache Maven](https://maven.apache.org)verze 3,0 nebo vyšší.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
-
-## <a name="service-bus-topics-and-subscriptions"></a>Témata a odběry služby Service Bus
-
+## <a name="create-a-service-bus-topic-and-subscriptions"></a>Vytvoření tématu Service Busu a odběrů
 Každý [odběr tématu](service-bus-messaging-overview.md#topics) může přijímat kopie všech zpráv. Témata jsou co do protokolu a sémantiky plně kompatibilní s frontami služby Service Bus. Témata služby Service Bus podporují širokou škálu pravidel pro výběr s podmínkami filtrů, včetně volitelných akcí, kterými se nastavují nebo upravují vlastnosti zprávy. Při každé shodě s pravidlem se vytvoří zpráva. Další informace o pravidlech, filtrech a akcích získáte pomocí tohoto [odkazu](topic-filters.md).
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. Azure Cloud Shell spustíte tak, že vyberete ikonu zobrazenou na následujícím obrázku. Přepněte do režimu **bash** , pokud je Cloud Shell v režimu **PowerShellu** . 
 
-Po instalaci rozhraní příkazového řádku otevřete příkazový řádek a pomocí následujících příkazů se přihlaste k Azure. Tyto kroky nejsou nutné, pokud používáte cloudové prostředí:
+    :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Spustit Cloud Shell":::
+3. Spuštěním následujícího příkazu vytvořte skupinu prostředků Azure. Pokud chcete, aktualizujte název skupiny prostředků a její umístění. 
 
-1. Pokud používáte místní rozhraní Azure CLI, přihlaste se k Azure spuštěním následujícího příkazu. Tento krok přihlášení není potřeba, pokud tyto příkazy spouštíte ve službě Cloud Shell:
+    ```azurecli-interactive
+    az group create --name MyResourceGroup --location eastus
+    ```
+4. Spuštěním následujícího příkazu vytvořte obor názvů pro zasílání zpráv Service Bus. Aktualizujte název oboru názvů tak, aby byl jedinečný. 
 
-   ```azurecli-interactive
-   az login
-   ```
+    ```azurecli-interactive
+    namespaceName=MyNameSpace$RANDOM
+    az servicebus namespace create --resource-group MyResourceGroup --name $namespaceName --location eastus
+    ```
+5. Spuštěním následujícího příkazu vytvořte téma v oboru názvů. 
 
-2. Nastavte aktuální kontext předplatného na předplatné Azure, které chcete použít:
-
-   ```azurecli-interactive
-   az account set --subscription Azure_subscription_name
-   ```
-
-## <a name="use-cli-to-provision-resources"></a>Zřízení prostředků pomocí rozhraní CLI
-
-Pomocí následujících příkazů zřiďte prostředky služby Service Bus. Nezapomeňte všechny zástupné symboly nahradit příslušnými hodnotami:
-
-```azurecli-interactive
-# Create a resource group
-az group create --name myResourcegroup --location eastus
-
-# Create a Service Bus messaging namespace with a unique name
-namespaceName=myNameSpace$RANDOM
-az servicebus namespace create \
-   --resource-group myResourceGroup \
-   --name $namespaceName \
-   --location eastus
-
-# Create a Service Bus topic
-az servicebus topic create --resource-group myResourceGroup \
-   --namespace-name $namespaceName \
-   --name myTopic
-
-# Create subscription 1 to the topic
-az servicebus subscription create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --name S1
-
-# Create filter 1 - use custom properties
-az servicebus rule create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S1 --name MyFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3')"
-
-# Create filter 2 - use custom properties
-az servicebus rule create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S1 --name MySecondFilter --filter-sql-expression "StoreId = 'Store4'"
-
-# Create subscription 2
-az servicebus subscription create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --name S2
-
-# Create filter 3 - use message header properties via IN list and 
-# combine with custom properties.
-az servicebus rule create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S2 --name MyFilter --filter-sql-expression "sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'"
-
-# Create subscription 3
-az servicebus subscription create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --name S3
-
-# Create filter 4 - Get everything except messages for subscription 1 and 2. 
-# Also modify and add an action; in this case set the label to a specified value. 
-# Assume those stores might not be part of your main store, so you only add 
-# specific items to them. For that, you flag them specifically.
-az servicebus rule create --resource-group DemoGroup --namespace-name DemoNamespaceSB --topic-name tutorialtest1
- --subscription-name S3 --name MyFilter --filter-sql-expression "sys.To NOT IN ('Store1','Store2','Store3','Store4','Sto
-re5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Stor
-e8')" --action-sql-expression "SET sys.Label = 'SalesEvent'"
-
-# Get the connection string
-connectionString=$(az servicebus namespace authorization-rule keys list \
-   --resource-group myResourceGroup \
-   --namespace-name  $namespaceName \
-   --name RootManageSharedAccessKey \
-   --query primaryConnectionString --output tsv)
-```
-
-Po dokončení všech příkazů zkopírujte vybraný připojovací řetězec a název fronty a vložte je do dočasného umístění, třeba do Poznámkového bloku. Budete je potřebovat v dalším kroku.
-
-## <a name="create-filter-rules-on-subscriptions"></a>Vytvoření pravidel filtrů u odběrů
-
-Pokud zřídíte obor názvů a téma s odběry a máte potřebná pověření, můžete u odběrů vytvořit pravidla filtrů a poté odesílat a přijímat zprávy. Kód si můžete zkontrolovat v [této složce s ukázkami na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
-
-## <a name="send-and-receive-messages"></a>Odesílání a příjem zpráv
-
-1. Přesvědčte se, že je služba Cloud Shell spuštěná a zobrazuje příkazový řádek Bash.
-
-2. Pomocí následujícího příkazu naklonujte [úložiště Service Bus na GitHubu](https://github.com/Azure/azure-service-bus/):
-
-   ```shell
-   git clone https://github.com/Azure/azure-service-bus.git
-   ```
-
-2. Přejděte do složky s ukázkou `azure-service-bus/samples/Java/quickstarts-and-tutorials/quickstart-java/tutorial-topics-subscriptions-filters-java`. Připomínáme, že v prostředí Bash se v příkazech rozlišují velká a malá písmena a cesty je třeba oddělovat pomocí lomítek.
-
-3. Proveďte následující příkaz, kterým vytvoříte aplikaci:
-   
-   ```shell
-   mvn clean package -DskipTests
-   ```
-4. Program spustíte následujícím příkazem. Nezapomeňte zástupné symboly nahradit připojovacím řetězcem a názvem tématu, které jste získali v předchozím kroku:
-
-   ```shell
-   java -jar .\target\tutorial-topics-subscriptions-filters-1.0.0-jar-with-dependencies.jar -c "myConnectionString" -t "myTopicName"
-   ```
-
-   Sledujte, jak se do tématu odešle deset zpráv a jak se následně z jednotlivých odběrů přijmou:
-
-   ![výstup programu](./media/service-bus-tutorial-topics-subscriptions-cli/service-bus-tutorial-topics-subscriptions-cli.png)
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Spuštěním následujícího příkazu odeberte skupinu prostředků, obor názvů a všechny související prostředky:
-
-```azurecli-interactive
-az group delete --resource-group my-resourcegroup
-```
-
-## <a name="understand-the-sample-code"></a>Vysvětlení vzorového kódu
-
-Tato část obsahuje další podrobnosti o chování ukázkového kódu.
-
-### <a name="get-connection-string-and-queue"></a>Získání připojovacího řetězce a fronty
-
-Nejprve kód deklaruje sadu proměnných, které řídí další provádění programu:
-
-```java
-    public String ConnectionString = null;
-    public String TopicName = null;
-    static final String[] Subscriptions = {"S1","S2","S3"};
-    static final String[] Store = {"Store1","Store2","Store3","Store4","Store5","Store6","Store7","Store8","Store9","Store10"};
-    static final String SysField = "sys.To";
-    static final String CustomField = "StoreId";
-    int NrOfMessagesPerStore = 1; // Send at least 1.
-```
-
-Připojovací řetězec a název tématu jsou jediné hodnoty přidané prostřednictvím parametrů příkazového řádku a předané do proměnné `main()`. Samotné provedení kódu se aktivuje v metodě `run()` a odešle, poté přijímá zprávy z tématu:
-
-```java
-public static void main(String[] args) {
-    TutorialTopicsSubscriptionsFilters app = new TutorialTopicsSubscriptionsFilters();
-        try {
-            app.runApp(args);
-            app.run();
-        } catch (Exception e) {
-            System.out.printf("%s", e.toString());
-        }
-        System.exit(0);
-    }
-}
-
-public void run() throws Exception {
-    // Send sample messages.
-    this.sendMessagesToTopic();
-
-    // Receive messages from subscriptions.
-    this.receiveAllMessages();
-}
-```
-
-### <a name="create-topic-client-to-send-messages"></a>Vytvoření klienta tématu k odesílání zpráv
-
-K odesílání a přijímání zpráv vytvoří metoda `sendMessagesToTopic()` instanci klienta tématu, která používá připojovací řetězec a název tématu, a potom zavolá další metodu, která zprávy odešle:
-
-```java
-public void sendMessagesToTopic() throws Exception, ServiceBusException {
-    // Create client for the topic.
-    TopicClient topicClient = new TopicClient(new ConnectionStringBuilder(ConnectionString, TopicName));
-
-    // Create a message sender from the topic client.
-
-    System.out.printf("\nSending orders to topic.\n");
-
-    // Now we can start sending orders.
-    CompletableFuture.allOf(
-            SendOrders(topicClient,Store[0]),
-            SendOrders(topicClient,Store[1]),
-            SendOrders(topicClient,Store[2]),
-            SendOrders(topicClient,Store[3]),
-            SendOrders(topicClient,Store[4]),
-            SendOrders(topicClient,Store[5]),
-            SendOrders(topicClient,Store[6]),
-            SendOrders(topicClient,Store[7]),
-            SendOrders(topicClient,Store[8]),
-            SendOrders(topicClient,Store[9])
-    ).join();
-
-    System.out.printf("\nAll messages sent.\n");
-}
-
-    public CompletableFuture<Void> SendOrders(TopicClient topicClient, String store) throws Exception {
-
-        for(int i = 0;i<NrOfMessagesPerStore;i++) {
-            Random r = new Random();
-            final Item item = new Item(r.nextInt(5),r.nextInt(5),r.nextInt(5));
-            IMessage message = new Message(GSON.toJson(item,Item.class).getBytes(UTF_8));
-            // We always set the Sent to field
-            message.setTo(store);
-            final String StoreId = store;
-            Double priceToString = item.getPrice();
-            final String priceForPut = priceToString.toString();
-            message.setProperties(new HashMap<String, String>() {{
-                // Additionally we add a customer store field. In reality you would use sys.To or a customer property but not both.
-                // This is just for demo purposes.
-                put("StoreId", StoreId);
-                // Adding more potential filter / rule and action able fields
-                put("Price", priceForPut);
-                put("Color", item.getColor());
-                put("Category", item.getItemCategory());
-            }});
-
-            System.out.printf("Sent order to Store %s. Price=%f, Color=%s, Category=%s\n", StoreId, item.getPrice(), item.getColor(), item.getItemCategory());
-            topicClient.sendAsync(message);
-        }
-
-        return new CompletableFuture().completedFuture(null);
-    }
-```
-
-### <a name="receive-messages-from-the-individual-subscriptions"></a>Příjem zpráv z jednotlivých odběrů
-
-Metoda `receiveAllMessages()` volá metodu `receiveAllMessageFromSubscription()`, která poté pro každé volání vytvoří klienta odběru a přijímá zprávy z jednotlivých odběrů:
-
-```java
-public void receiveAllMessages() throws Exception {
-    System.out.printf("\nStart Receiving Messages.\n");
-
-    CompletableFuture.allOf(
-            receiveAllMessageFromSubscription(Subscriptions[0]),
-            receiveAllMessageFromSubscription(Subscriptions[1]),
-            receiveAllMessageFromSubscription(Subscriptions[2])
-            ).join();
-}
-
-public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscription) throws Exception {
-
-    int receivedMessages = 0;
-
-    // Create subscription client.
-    IMessageReceiver subscriptionClient = ClientFactory.createMessageReceiverFromConnectionStringBuilder(new ConnectionStringBuilder(ConnectionString, TopicName+"/subscriptions/"+ subscription), ReceiveMode.PEEKLOCK);
-
-    // Create a receiver from the subscription client and receive all messages.
-    System.out.printf("\nReceiving messages from subscription %s.\n\n", subscription);
-
-    while (true)
-    {
-        // This will make the connection wait for N seconds if new messages are available.
-        // If no additional messages come we close the connection. This can also be used to realize long polling.
-        // In case of long polling you would obviously set it more to e.g. 60 seconds.
-        IMessage receivedMessage = subscriptionClient.receive(Duration.ofSeconds(1));
-        if (receivedMessage != null)
-        {
-            if ( receivedMessage.getProperties() != null ) {
-                System.out.printf("StoreId=%s\n", receivedMessage.getProperties().get("StoreId"));
-                
-                // Show the label modified by the rule action
-                if(receivedMessage.getLabel() != null)
-                    System.out.printf("Label=%s\n", receivedMessage.getLabel());
-            }
-            
-            byte[] body = receivedMessage.getBody();
-            Item theItem = GSON.fromJson(new String(body, UTF_8), Item.class);
-            System.out.printf("Item data. Price=%f, Color=%s, Category=%s\n", theItem.getPrice(), theItem.getColor(), theItem.getItemCategory());
-            
-            subscriptionClient.complete(receivedMessage.getLockToken());
-            receivedMessages++;
-        }
-        else
-        {
-            // No more messages to receive.
-            subscriptionClient.close();
-            break;
-        }
-    }
-    System.out.printf("\nReceived %s messages from subscription %s.\n", receivedMessages, subscription);
+    ```azurecli-interactive
+    az servicebus topic create --resource-group MyResourceGroup   --namespace-name $namespaceName --name MyTopic
+    ```
+6. Vytvoření prvního odběru tématu
     
-    return new CompletableFuture().completedFuture(null);
-}
-```
+    ```azurecli-interactive
+    az servicebus topic subscription create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --name S1    
+    ```
+6. Vytvoření druhého předplatného pro téma
+    
+    ```azurecli-interactive
+    az servicebus topic subscription create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --name S2    
+    ```
+6. Vytvoření třetího předplatného pro téma
+    
+    ```azurecli-interactive
+    az servicebus topic subscription create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --name S3    
+    ```
+7. Vytvoří filtr pro první odběr pomocí filtru s použitím vlastních vlastností ( `StoreId` je jedním z `Store1` , `Store2` , a `Store3` ).
 
-> [!NOTE]
-> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
+    ```azurecli-interactive
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S1 --name MyFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3')"    
+    ```
+8. Vytvoření filtru u druhého předplatného pomocí filtru pomocí vlastností Customer Customer ( `StoreId = Store4` )
+
+    ```azurecli-interactive
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S2 --name MySecondFilter --filter-sql-expression "StoreId = 'Store4'"    
+    ```
+9. Vytvořte filtr pro třetí odběr pomocí filtru pomocí vlastností zákazníka ( `StoreId` nikoli v `Store1` , `Store2` , `Store3` nebo `Store4` ).
+
+    ```azurecli-interactive
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S3 --name MyThirdFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3', 'Store4')"     
+    ```
+10. Spusťte následující příkaz, který získá primární připojovací řetězec pro obor názvů. Tento připojovací řetězec slouží k připojení k frontě a posílání a přijímání zpráv. 
+
+    ```azurecli-interactive
+    az servicebus namespace authorization-rule keys list --resource-group MyResourceGroup --namespace-name $namespaceName --name RootManageSharedAccessKey --query primaryConnectionString --output tsv    
+    ```
+
+    Poznamenejte si připojovací řetězec a název tématu. Slouží k odesílání a přijímání zpráv. 
+    
 
 ## <a name="next-steps"></a>Další kroky
-
-V tomto kurzu jste zřídili prostředky pomocí rozhraní Azure CLI a poté odesílali a přijímali zprávy z tématu služby Service Bus a jeho odběrů. Naučili jste se:
-
-> [!div class="checklist"]
-> * Pomocí portálu Azure Portal vytvořit téma služby Service Bus a k němu jeden nebo více odběrů
-> * Přidávat filtry témat pomocí kódu .NET
-> * Vytvořit dvě zprávy s různým obsahem
-> * Odeslat zprávy a ověřit, že dorazily do očekávaných odběrů
-> * Přijímat zprávy z odběrů
-
-Pokud vás zajímají další příklady odesílání a přijímání zpráv, pomůžou vám začít [ukázky služby Service Bus na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted).
-
-Přejděte k dalšímu kurzu, kde se dozvíte více o možnostech publikování a přihlášení k odběru ve službě Service Bus.
+Informace o tom, jak odesílat zprávy do tématu a přijímat tyto zprávy prostřednictvím předplatného, najdete v následujícím článku: vyberte programovací jazyk v obsahu. 
 
 > [!div class="nextstepaction"]
-> [Aktualizace zásob pomocí prostředí PowerShell a témat/odběrů](service-bus-tutorial-topics-subscriptions-portal.md)
+> [Publikování a přihlášení k odběru zpráv](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
-[bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+
+[free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create

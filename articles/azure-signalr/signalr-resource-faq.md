@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: dde11b6097dddb1568f5adfea811606214a9759e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c944ae3a5d647cc457edd20a5d3dd0489e19e286
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75891253"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192282"
 ---
 # <a name="azure-signalr-service-faq"></a>Nejčastější dotazy ke službě Azure Signal
 
@@ -52,13 +52,13 @@ Pokud prezenční signály nejsou v zadaném časovém intervalu přijaty, aplik
 
 ## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>Proč moje vlastní `IUserIdProvider` výjimka vyvolává při přepínání ze sady ASP.NET Core Signal SDK na sadu SDK služby Azure Signal Service?
 
-Tento parametr `HubConnectionContext context` se při `IUserIdProvider` volání sady SDK pro ASP.NET Core signalizace a sadu SDK služby Azure Signal Service liší.
+Tento parametr `HubConnectionContext context` se při volání sady SDK pro ASP.NET Core signalizace a sadu SDK služby Azure Signal Service liší `IUserIdProvider` .
 
 V nástroji ASP.NET Core Signal `HubConnectionContext context` je kontextem fyzického připojení klienta s platnými hodnotami všech vlastností.
 
 V sadě SDK služby signalizace Azure `HubConnectionContext context` je kontext z připojení k logickému klientovi. Fyzické připojení klienta je připojeno k instanci služby signalizace, proto je k dispozici pouze omezený počet vlastností.
 
-Pro přístup je teď `HubConnectionContext.GetHttpContext()` k `HubConnectionContext.User` dispozici jenom a.
+Pro `HubConnectionContext.GetHttpContext()` `HubConnectionContext.User` přístup je teď k dispozici jenom a.
 Zdrojový kód si můžete prohlédnout [tady](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/HubHost/ServiceHubConnectionContext.cs).
 
 ## <a name="can-i-configure-the-transports-available-in-signalr-service-as-configuring-it-on-server-side-with-aspnet-core-signalr-for-example-disable-websocket-transport"></a>Můžu ve službě Signal Service nakonfigurovat transporty, jako je konfigurace na straně serveru pomocí služby ASP.NET Core Signal? Například zakažte přenos pomocí protokolu WebSocket?
@@ -68,3 +68,39 @@ Ne.
 Služba signalizace Azure poskytuje všechny tři přenosy, které ASP.NET Core signál podporuje ve výchozím nastavení. Nedá se konfigurovat. Služba signalizace zpracuje připojení a přenosy pro všechna připojení klientů.
 
 Můžete nakonfigurovat přenosy na straně klienta, jak je popsáno [zde](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1&tabs=dotnet#configure-allowed-transports-2).
+
+## <a name="what-is-the-meaning-of-metrics-like-message-count-or-connection-count-showed-in-azure-portal-which-kind-of-aggregation-type-should-i-choose"></a>Jaký je význam metrik, jako je počet zpráv nebo počet připojení zobrazený v Azure Portal? Jaký druh agregačního typu mám zvolit?
+
+Podrobnosti o tom, jak tyto metriky vypočítat, najdete [tady](signalr-concept-messages-and-connections.md).
+
+V okně Přehled prostředků služby signalizace Azure jsme už pro vás zvolili odpovídající typ agregace. A pokud přejdete do okna metriky, můžete jako referenci [použít typ agregace](../azure-monitor/platform/metrics-supported.md#microsoftsignalrservicesignalr) .
+
+## <a name="what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose"></a>Jaký je význam režimu služby `Default` / `Serverless` / `Classic` ? Jak si můžu vybrat?
+
+Druzí
+* `Default` režim **vyžaduje** Server hub. Pokud není pro centrum k dispozici žádné připojení k serveru, klient se pokusí připojit k tomuto rozbočovači, který se nezdařil.
+* `Serverless` režim **nepovoluje žádné** připojení k serveru, to znamená, že bude odmítat všechna připojení serveru, všichni klienti musí být v režimu bez serveru.
+* `Classic` režim je smíšený stav. Pokud má rozbočovač připojení k serveru, bude nový klient směrován do serveru hub, pokud ne, klient přejde do režimu bez serveru.
+
+  To může způsobit nějaký problém, například všechna připojení serveru budou ztracena za chvíli, někteří klienti místo směrování do serveru hub zadají režim bez serveru.
+
+Kliknutím
+1. Bez serveru rozbočovače vyberte `Serverless` .
+1. Všechna centra mají servery rozbočovače, vyberte `Default` .
+1. Některá centra mají servery rozbočovače, jiné ne, nepoužívají se `Classic` , ale to může způsobit nějaký problém. lepším způsobem je vytvořit dvě instance, jeden je `Serverless` Další `Default` .
+
+## <a name="any-feature-differences-when-using-azure-signalr-for-aspnet-signalr"></a>Při použití služby Azure Signaler pro signál ASP.NET je k disdílným rozdílům funkcí?
+Pokud používáte službu Azure Signaler, některá rozhraní API a funkce nástroje ASP.NET Signal už nejsou podporované:
+- Možnost předat libovolný stav mezi klienty a centrem (často se označuje jako `HubState` ) není při použití nástroje Azure Signal podporována.
+- `PersistentConnection` Třída se při použití služby Azure Signal ještě nepodporuje.
+- Při použití služby Azure Signal není podporován **přenos snímků navždy** .
+- Služba Azure Signal už nehraje zprávy odesílané klientovi, když je klient offline.
+- Při použití nástroje Azure Signal je provoz pro jedno připojení klienta vždy směrován (označuje se také jako. **Sticky**) na jednu instanci aplikačního serveru po dobu trvání připojení
+
+Podpora ASP.NET signalizace se zaměřuje na kompatibilitu, takže nejsou podporované všechny nové funkce nástroje ASP.NET Core Signal. Například **MessagePack**, **streamování**atd., jsou k dispozici pouze pro ASP.NET Core aplikace signalizace.
+
+Služba signalizace se dá nakonfigurovat pro jiný režim služby: `Classic` / `Default` / `Serverles` s. V této podpoře ASP.NET není `Serverless` režim podporován. REST API roviny dat se také nepodporuje.
+
+## <a name="where-do-my-data-reside"></a>Kde se nacházejí moje data?
+
+Služba signalizace Azure funguje jako služba data Processor. Nebudete tak ukládat žádný obsah zákazníků a zasídlí dat se bude přislíbit. Pokud používáte službu signalizace Azure společně s dalšími službami Azure, jako je Azure Storage pro diagnostiku, přečtěte si prosím tento návod [, kde najdete](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) pokyny, jak zachovat data v oblastech Azure.

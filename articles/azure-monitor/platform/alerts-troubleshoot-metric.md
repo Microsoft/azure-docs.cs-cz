@@ -4,14 +4,14 @@ description: Běžné problémy se Azure Monitor výstrahami metrik a možnými 
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 08/09/2020
+ms.date: 08/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: c6b7d1fb28e81957ded56662a06946e56c3dc00e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1c1fe613721ea2bc2d4b9665d6da73b094487efc
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114893"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190664"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s výstrahami Azure Monitor metriky 
 
@@ -130,9 +130,9 @@ Aby nedošlo k selhání nasazení při pokusu o ověření definice vlastní me
         }
 ```
 
-## <a name="export-the-arm-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Exportujte šablonu pro pravidlo upozornění metriky pomocí Azure Portal
+## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Exportujte šablonu Azure Resource Manager pravidla výstrahy metriky prostřednictvím Azure Portal
 
-Export šablony ARM pravidla upozornění na metriku vám pomůže pochopit její syntaxi a vlastnosti a můžete ji použít k automatizaci budoucích nasazení.
+Export šablony Správce prostředků pravidla výstrahy metriky vám pomůže pochopit jeho syntaxi a vlastnosti a můžete ho použít k automatizaci budoucích nasazení.
 1. Přejděte do části **skupiny prostředků** na portálu a vyberte skupinu prostředků, která pravidlo obsahuje.
 2. V části Přehled zaškrtněte políčko **Zobrazit skryté typy** .
 3. V poli Filtr **typu** vyberte *Microsoft. Insights/metricalerts*.
@@ -207,7 +207,7 @@ Ujistěte se, že používáte pro výstrahy metrik správné příkazy rozhran�
 
    - Metrika platformy: Ujistěte se, že používáte název **metriky** ze [stránky podporované metriky Azure monitor](./metrics-supported.md), a ne jako **Zobrazovaný název metriky** .
 
-   - Vlastní metrika: Ujistěte se, že je metrika už vysílaná (nemůžete vytvořit pravidlo upozornění pro vlastní metriku, která ještě neexistuje) a že poskytujete obor názvů vlastní metriky ( [tady](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)najdete příklad šablony ARM).
+   - Vlastní metrika: Ujistěte se, že je metrika už vysílaná (nemůžete vytvořit pravidlo upozornění pro vlastní metriku, která ještě neexistuje) a že poskytujete obor názvů vlastní metriky ( [tady](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)najdete příklad šablony Správce prostředků).
 
 - Pokud vytváříte [výstrahy metriky v protokolech](./alerts-metric-logs.md), zajistěte, aby byly zahrnuty příslušné závislosti. Prohlédněte si [ukázkovou šablonu](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 

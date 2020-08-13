@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 3bfaa9f2961dca2b8b717b1506d112943910485a
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d101acd3e72e68efd9198cb273fd352967a0cd54
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042313"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192372"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Export doporučení a výstrah zabezpečení
 
@@ -35,7 +35,7 @@ Pomocí těchto nástrojů můžete:
 |----|:----|
 |Stav vydaných verzí:|Všeobecně dostupné|
 |Stanov|Úroveň Free|
-|Požadované role a oprávnění:|**Čtenář** v předplatném, který obsahuje konfiguraci exportu<br>**Role správce zabezpečení** ve skupině prostředků (nebo **vlastníkovi**)<br>Musí mít taky oprávnění k zápisu pro cílový prostředek.|
+|Požadované role a oprávnění:|**Role správce zabezpečení** ve skupině prostředků (nebo **vlastníkovi**)<br>Musí mít taky oprávnění k zápisu pro cílový prostředek.|
 |Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 

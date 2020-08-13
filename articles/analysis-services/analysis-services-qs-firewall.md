@@ -7,24 +7,24 @@ ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0bb454897a8dfa340a3586c22619723464d5ca73
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: e4953137cf939c35c6ac73fe51ca43eca6e99edc
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185566"
+ms.locfileid: "88192445"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Rychlý start: Konfigurace brány firewall serveru – portál
 
 V tomto rychlém startu se dozvíte, jak nakonfigurovat firewall pro server služby Azure Analysis Services. Důležitou součástí zabezpečení serveru a jeho dat je zapnutí brány firewall a konfigurace rozsahů IP adres pro počítače, které mají přístup k serveru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Server služby Analysis Services v předplatném. Další informace najdete v článku [Rychlý start: Vytvoření serveru – portál](analysis-services-create-server.md) nebo v článku [Rychlý start: Vytvoření serveru – PowerShell](analysis-services-create-powershell.md).
 - Jeden nebo více rozsahů IP adres pro klientské počítače (pokud jsou potřeba).
 
 > [!NOTE]
-> Pro Power BI Premium jenom v případě, že je povolená brána firewall, připojení data Import (aktualizace) a stránkované sestavy se Microsoft Cloud v současné době nepodporují, i když je povolená možnost povolit přístup z Power BI.
+> Import dat (aktualizace) a připojení stránkovaných sestav z Power BI Premium v Microsoft Cloud Německu se v současné době nepodporují, pokud je povolená brána firewall, a to i v případě, že je nastavení povolit přístup z Power BI nastaveno na zapnuto.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal 
 
@@ -34,7 +34,7 @@ V tomto rychlém startu se dozvíte, jak nakonfigurovat firewall pro server slu�
 
 1. Když kliknete na server, otevře se stránka Přehled. 
 2. V **Nastavení**  >  **Brána firewall**  >  **Povolit bránu firewall**vyberte **zapnuto**.
-3. Pokud chcete povolit všechny typy připojení Power BI a Power BI Premium, v nabídce **Povolit přístup z Power BI**vyberte **zapnuto**.  
+3. Pokud chcete povolit připojení z Power BI a Power BI Premium, v nabídce **Povolit přístup z Power BI**vyberte **zapnuto**.  
 4. (Volitelné) Zadejte jeden nebo více rozsahů IP adres. V každém rozsahu zadejte název a počáteční a koncovou IP adresu. Název pravidla brány firewall by měl být omezený na 128 znaků a může obsahovat jenom velká písmena, malá písmena, číslice, podtržítka a spojovníky. Prázdné mezery a jiné speciální znaky nejsou povoleny.
 5. Klikněte na **Uložit**.
 

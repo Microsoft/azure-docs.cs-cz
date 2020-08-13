@@ -1,17 +1,17 @@
 ---
 title: Zaznamenání dat z Event Hubs do Azure Data Lake Storage Gen1
-description: Pomocí Azure Data Lake Storage Gen1 Zachyťte data přijatá službou Azure Event Hubs.
+description: Naučte se používat Azure Data Lake Storage Gen1 k zachycení dat přijatých službou Azure Event Hubs. Začněte tím, že ověříte požadavky.
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9d663c2e95ee94811d70a0602b35842a789dd9b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5254558c62499ed6864e809dbc93c26ebba94a9
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515763"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190281"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Použití Azure Data Lake Storage Gen1 k zaznamenání dat z Event Hubs
 
@@ -99,7 +99,7 @@ V této části vytvoříte centrum událostí v oboru názvů Event Hubs. Také
 
     e. Ponechte **vzorové soubory ve formátu zachycení** na výchozí hodnotu. Tato možnost určuje strukturu složek, která je vytvořena v rámci složky Capture.
 
-    f. Klikněte na **Vytvořit**.
+    f. Klikněte na možnost **Vytvořit**.
 
 ## <a name="test-the-setup"></a>Otestování instalačního programu
 

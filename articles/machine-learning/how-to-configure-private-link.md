@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/28/2020
-ms.openlocfilehash: 28fa3fdfdb8915d528d0765bd1fded8128621208
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bdb7ba30d9fa2d0bd1eff9368d6e30e516b53895
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166514"
+ms.locfileid: "88192730"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Konfigurace privátního odkazu Azure pro pracovní prostor Azure Machine Learning (Preview)
 
@@ -39,7 +39,7 @@ Privátní odkaz Azure umožňuje připojit se k pracovnímu prostoru pomocí pr
 > [!IMPORTANT]
 > V současné době podporujeme při vytváření nového pracovního prostoru Azure Machine Learning jenom povolení privátního koncového bodu.
 
-[https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced)Dá se použít k vytvoření pracovního prostoru s privátním koncovým bodem.
+Šablona v se [https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) dá použít k vytvoření pracovního prostoru s privátním koncovým bodem.
 
 Informace o použití této šablony, včetně privátních koncových bodů, najdete v tématu [použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning](how-to-create-workspace-template.md).
 

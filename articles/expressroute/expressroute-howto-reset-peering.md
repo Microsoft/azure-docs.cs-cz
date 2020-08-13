@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: resetování partnerského vztahu okruhů'
-description: Jak zakázat a povolit partnerské vztahy okruhu ExpressRoute
+description: Naučte se, jak zakázat a povolit partnerské vztahy okruhu Azure ExpressRoute pomocí Azure PowerShell. Když nakonfigurujete partnerské vztahy, budou ve výchozím nastavení povolené.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/13/2018
 ms.author: charwen
-ms.openlocfilehash: cc4266a92d510ac84118922f7db09c99234045b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e576fe2f08d54d2642603e3b7974e00feec8ce93
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735247"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192179"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>Resetování partnerských vztahů okruhu ExpressRoute
 

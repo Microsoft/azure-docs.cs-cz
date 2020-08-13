@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží s Azure CDNmi koncovými body-404 stavového kódu
-description: Řešení potíží s kódem odpovědi 404 Azure CDN koncovými body.
+description: Naučte se řešit problémy s koncovými body Azure Content Delivery Network, které vrací stavové kódy odpovědi HTTP 404.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 6476993627708670a210cce50072f1b183d90a8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6ad0b8b37bd4f04c22ed52d4ac6717202f22889
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888682"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192481"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>Řešení potíží s Azure CDNmi koncovými body, které vracejí stavový kód 404
 Tento článek vám umožní řešit problémy s koncovými body služby Azure Content Delivery Network (CDN), které vrací stavové kódy odpovědi HTTP 404.
@@ -51,7 +51,7 @@ Existuje několik možných příčin, mezi které patří:
 ### <a name="check-the-origin-file"></a>Zkontroluje zdrojový soubor.
 Nejprve ověřte, zda je soubor pro ukládání do mezipaměti k dispozici na zdrojovém serveru a je veřejně přístupný na internetu. Nejrychlejší způsob, jak to provést, je otevřít prohlížeč v privátní nebo anonymním relaci a přejít přímo k souboru. Zadejte nebo vložte adresu URL do pole Adresa a ověřte, jestli má za následek očekávaný soubor. Předpokládejme například, že máte soubor v účtu Azure Storage, který je přístupný v protokolu https: \/ /cdndocdemo.blob.core.windows.net/publicblob/lorem.txt. Pokud tento obsah souboru můžete úspěšně načíst, test se předá.
 
-![Výborně!](./media/cdn-troubleshoot-endpoint/cdn-origin-file.png)
+![Povedlo se!](./media/cdn-troubleshoot-endpoint/cdn-origin-file.png)
 
 > [!WARNING]
 > I když je toto nejrychlejší a nejjednodušší způsob, jak ověřit, že je soubor veřejně dostupný, některé síťové konfigurace ve vaší organizaci můžou zobrazit, že je soubor veřejně dostupný, když je ve skutečnosti, jenom uživatelům vaší sítě (i v případě, že je hostovaný v Azure). Abyste se ujistili, že se nejedná o tento případ, otestujte soubor pomocí externího prohlížeče, jako je například mobilní zařízení, které není připojené k síti vaší organizace, nebo virtuální počítač v Azure.

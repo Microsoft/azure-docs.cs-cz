@@ -5,26 +5,26 @@ author: spelluru
 ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
-ms.openlocfilehash: d4b4ce8a19d03a0323af934eac3868fdcc8d50ff
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 201ea38c6feabbda2576d8480a9983f00d62d175
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182492"
+ms.locfileid: "88191257"
 ---
 # <a name="use-the-azure-cli-to-create-a-service-bus-namespace-and-a-queue"></a>Vytvoření oboru názvů Service Bus a fronty pomocí rozhraní příkazového řádku Azure
 V tomto rychlém startu se dozvíte, jak vytvořit obor názvů Service Bus a frontu pomocí rozhraní příkazového řádku Azure CLI. Také se dozvíte, jak získat autorizační přihlašovací údaje, které může klientská aplikace použít k odesílání a přijímání zpráv do fronty. 
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][free account] před tím, než začnete.
 
 V tomto rychlém startu použijete Azure Cloud Shell, které můžete spustit po přihlášení k Azure Portal. Podrobnosti o Azure Cloud Shell najdete v tématu [přehled Azure Cloud Shell](../cloud-shell/overview.md). Na svém počítači můžete také [nainstalovat](/cli/azure/install-azure-cli) a používat Azure PowerShell. 
 
 ## <a name="provision-resources"></a>Zřízení prostředků
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Azure Cloud Shell spustíte tak, že vyberete ikonu zobrazenou na následujícím obrázku: 
+2. Azure Cloud Shell spustíte tak, že vyberete ikonu zobrazenou na následujícím obrázku. Přepněte do režimu **bash** , pokud je cloudshellu v režimu **PowerShellu** . 
 
     :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Spustit Cloud Shell":::
 3. Spuštěním následujícího příkazu vytvořte skupinu prostředků Azure. Pokud chcete, aktualizujte název skupiny prostředků a její umístění. 
@@ -37,7 +37,7 @@ V tomto rychlém startu použijete Azure Cloud Shell, které můžete spustit po
     ```azurecli-interactive
     az servicebus namespace create --resource-group ContosoRG --name ContosoSBusNS --location eastus
     ```
-5. Spuštěním následujícího příkazu vytvořte frontu v oboru názvů, který jste vytvořili v předchozím kroku. V tomto příkladu `ContosoRG` je skupina prostředků, kterou jste vytvořili v předchozím kroku. `ContosoSBusNS`je název oboru názvů Service Bus vytvořeného v této skupině prostředků. 
+5. Spuštěním následujícího příkazu vytvořte frontu v oboru názvů, který jste vytvořili v předchozím kroku. V tomto příkladu `ContosoRG` je skupina prostředků, kterou jste vytvořili v předchozím kroku. `ContosoSBusNS` je název oboru názvů Service Bus vytvořeného v této skupině prostředků. 
 
     ```azurecli-interactive
     az servicebus queue create --resource-group ContosoRG --namespace-name ContosoSBusNS --name ContosoOrdersQueue

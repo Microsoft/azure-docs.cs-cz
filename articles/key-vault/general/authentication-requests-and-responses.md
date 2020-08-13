@@ -1,6 +1,6 @@
 ---
 title: Ověřování, požadavky a odpovědi
-description: Ověření ve službě AD pro použití Key Vault
+description: Přečtěte si, jak Azure Key Vault používá žádosti a odpovědi ve formátu JSON a o požadovaném ověřování pro použití trezoru klíčů.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33e3bc13e67e268b82bf517033b4b1c7c51c361f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4c8ad666efa32d98e78a0bc2544d0f8851be5e
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430887"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191785"
 ---
 # <a name="authentication-requests-and-responses"></a>Ověřování, požadavky a odpovědi
 
@@ -28,15 +28,15 @@ Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o pou
 
  Chcete-li pracovat s objekty v Azure Key Vault, jsou zde uvedené příklady adres URL:  
 
-- Postup vytvoření klíče s názvem TESTKEY v Key Vault použít-`PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
+- Postup vytvoření klíče s názvem TESTKEY v Key Vault použít- `PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
 
-- IMPORT klíče s názvem IMPORTEDKEY do Key Vault use-`POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
+- IMPORT klíče s názvem IMPORTEDKEY do Key Vault use- `POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
 
-- ZÍSKÁNÍ tajného kódu s názvem MYSECRET v Key Vault použití-`GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
+- ZÍSKÁNÍ tajného kódu s názvem MYSECRET v Key Vault použití- `GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
 
-- PODEPSÁNí algoritmu Digest pomocí klíče s názvem TESTKEY v Key Vault use-`POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
+- PODEPSÁNí algoritmu Digest pomocí klíče s názvem TESTKEY v Key Vault use- `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  Autorita pro požadavek na Key Vault je vždy následující:`https://{keyvault-name}.vault.azure.net/`  
+  Autorita pro požadavek na Key Vault je vždy následující:  `https://{keyvault-name}.vault.azure.net/`  
 
   Klíče se vždycky ukládají do cesty/Keys, tajné klíče se vždycky ukládají do cesty/Secrets.  
 
@@ -88,7 +88,7 @@ Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o pou
 
 ```  
 
-## <a name="authentication"></a>Ověřování  
+## <a name="authentication"></a>Authentication  
  Všechny požadavky na Azure Key Vault musí být ověřeny. Azure Key Vault podporuje přístupové tokeny Azure Active Directory, které se dají získat pomocí OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)]. 
  
  Další informace o registraci aplikace a ověřování pro použití Azure Key Vault najdete v tématu [registrace klientské aplikace pomocí Azure AD](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad).

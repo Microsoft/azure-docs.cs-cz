@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: Konfigurace ExpressRoute Direct'
-description: Tato stránka vám pomůže nakonfigurovat ExpressRoute Direct.
+description: Přečtěte si, jak pomocí Azure PowerShell nakonfigurovat Azure ExpressRoute Direct pro přímé připojení k globální síti Microsoftu v umístěních partnerských vztahů po celém světě.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: 8d028baef8898ce8d45fa8e2e142a58a1ae3300c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42803cbc7901be01c88145e2d98f2982434710a1
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736250"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192758"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Jak nakonfigurovat ExpressRoute Direct
 

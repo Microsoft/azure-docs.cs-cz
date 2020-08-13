@@ -1,6 +1,6 @@
 ---
 title: Převzetí služeb při selhání napříč několika koncovými body Azure CDN pomocí Traffic Manager
-description: Přečtěte si, jak nastavit Traffic Manager Azure pomocí koncových bodů Azure CDN.
+description: Přečtěte si, jak nastavit převzetí služeb při selhání napříč několika koncovými body Azure Content Delivery Network pomocí Azure Traffic Manager.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 03/18/2019
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: d557637815036fa49e83f1d11a948f264d493321
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b55e418393d6d446ae0d3557f2d1f4cf98d89293
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888660"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192507"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Nastavení převzetí služeb při selhání napříč několika koncovými body Azure CDN pomocí Azure Traffic Manager
 
@@ -62,13 +62,13 @@ Po nastavení profilů pro CDN a Traffic Manager postupujte podle těchto kroků
 
     a. Pro první záznam CNAME namapujte vlastní doménu s poddoménou cdnverify na koncový bod CDN. Tato položka je povinný krok k registraci vlastní domény do koncového bodu CDN, který jste přidali do Traffic Manager v kroku 2.
 
-      Příklad: 
+      Například: 
 
       `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101akamai.azureedge.net`  
 
     b. Pro druhý záznam CNAME namapujte vlastní doménu bez subdomény cdnverify na koncový bod CDN. Tato položka namapuje vlastní doménu na Traffic Manager. 
 
-      Příklad: 
+      Například: 
       
       `cdndemo101.dustydogpetcare.online  CNAME  cdndemo101.trafficmanager.net`   
 
@@ -87,7 +87,7 @@ Po nastavení profilů pro CDN a Traffic Manager postupujte podle těchto kroků
 
 3.  Vraťte se na web pro poskytovatele domény vlastní domény a aktualizujte první mapování DNS, které jste vytvořili v nástroji, aby se vlastní doména namapovala na druhý koncový bod CDN.
                              
-    Příklad: 
+    Například: 
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 

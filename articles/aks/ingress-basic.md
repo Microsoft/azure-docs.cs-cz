@@ -5,12 +5,12 @@ description: Přečtěte si, jak nainstalovat a nakonfigurovat základní kontro
 services: container-service
 ms.topic: article
 ms.date: 07/20/2020
-ms.openlocfilehash: 2c75d41d827ad1838898736ba8ff41aaef0b6f13
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6a34649bba275fa4b11a4c5a0c0084235d83fd4a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927045"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190775"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat ve službě Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ Můžete také:
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento článek používá [Helm 3][helm] k instalaci kontroleru Nginx pro příchozí přenosy.
+Tento článek používá [Helm 3][helm] k instalaci kontroleru Nginx pro příchozí přenosy. Ujistěte se, že používáte nejnovější verzi Helm a máte přístup k *stabilnímu* úložišti Helm.
 
 Tento článek také vyžaduje, abyste spustili Azure CLI verze 2.0.64 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 

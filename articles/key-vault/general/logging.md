@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault protokolování | Microsoft Docs
-description: Tento kurz vám pomůže začít s protokolováním v Azure Key Vault.
+description: Naučte se sledovat přístup k vašim trezorům klíčů povolením protokolování pro Azure Key Vault, které šetří informace v účtu Azure Storage, který poskytnete.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9c5b07d402219907337a590e1131691fb1e24cc2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 263568ef53ec2353bf00ebcd5b48a212f0f1eb2d
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090582"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192797"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vaultu
 
@@ -38,7 +38,7 @@ Tento kurz vám pomůže začít s protokolováním v Azure Key Vault. Vytvoří
 
 Přehled informací o Key Vault najdete v tématu [co je Azure Key Vault?](overview.md)). Informace o tom, kde je Key Vault k dispozici, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/key-vault/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete:
 
@@ -184,13 +184,13 @@ resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CO
 resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json
 ```
 
-Jak vidíte z tohoto výstupu, objekty blob dodržují konvenci pojmenování:`resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
+Jak vidíte z tohoto výstupu, objekty blob dodržují konvenci pojmenování: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
 
 Hodnoty data a času používají UTC.
 
 Vzhledem k tomu, že ke shromažďování protokolů pro více prostředků můžete použít stejný účet úložiště, úplné ID prostředku v názvu objektu BLOB je užitečné pro přístup k objektům blob, které potřebujete, nebo ke stažení jenom. Ale předtím se podíváme na to, jak stáhnout všechny objekty blob.
 
-Vytvořte složku pro stažení objektů BLOB. Příklad:
+Vytvořte složku pro stažení objektů BLOB. Například:
 
 ```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
@@ -210,7 +210,7 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 
 Když spustíte tento druhý příkaz, **/** oddělovač v názvech objektů BLOB vytvoří v cílové složce úplnou strukturu složek. Pomocí této struktury budete stahovat a ukládat objekty BLOB jako soubory.
 
-Chcete-li stahovat objekty blob selektivně, použijte zástupné znaky. Příklad:
+Chcete-li stahovat objekty blob selektivně, použijte zástupné znaky. Například:
 
 * Máte-li více trezorů klíčů a chcete stáhnout pouze protokoly pro jeden trezor klíčů s názvem CONTOSOKEYVAULT3:
 
@@ -281,7 +281,7 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 | **odcizen** |Identita z tokenu, který byl předložen v žádosti REST API. Obvykle se jedná o "uživatel", "instanční objekt" nebo kombinaci "User + appId", jako v případě požadavku, který je výsledkem rutiny Azure PowerShell. |
 | **vlastnosti** |Informace, které se liší v závislosti na operaci (**OperationName**). Ve většině případů toto pole obsahuje informace o klientovi (uživatelský agent, který předává klient), přesný REST API identifikátor URI žádosti a stavový kód HTTP. Kromě toho, když se vrátí objekt jako výsledek požadavku (například **Vytvoření** nebo **VaultGet**), obsahuje taky identifikátor URI klíče (jako `id` ), identifikátor URI trezoru nebo tajný identifikátor URI. |
 
-Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Příklad:
+Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Například:
 
 * Všechny operace trezoru klíčů mají `Vault<action>` formát, například `VaultGet` a `VaultCreate` .
 * Všechny operace s klíči mají `Key<action>` formát, například `KeySign` a `KeyList` .
@@ -291,7 +291,7 @@ Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST 
 
 | operationName | REST API – příkaz |
 | --- | --- |
-| **Ověřování** |Ověřování prostřednictvím Azure Active Directoryho koncového bodu |
+| **Authentication** |Ověřování prostřednictvím Azure Active Directoryho koncového bodu |
 | **VaultGet** |[Získání informací o trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
 | **VaultPut** |[Vytvoření nebo aktualizace trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
 | **VaultDelete** |[Odstranění trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620022.aspx) |

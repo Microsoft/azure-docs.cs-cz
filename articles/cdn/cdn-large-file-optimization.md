@@ -1,6 +1,6 @@
 ---
 title: Optimalizace stahování velkých souborů pomocí Azure CDN
-description: Tento článek vysvětluje, jak lze optimalizovat stahování velkých souborů.
+description: Přečtěte si, jak je možné optimalizovat stahování souborů v Azure Content Delivery Network. Tento článek obsahuje několik scénářů.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 0fb136b6c37c8ef14f85455431fea80099088936
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 6258baf37d00d35da3b7c95519caabdfcaa34b2a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206713"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192634"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optimalizace stahování velkých souborů pomocí Azure CDN
 
@@ -110,7 +110,7 @@ Optimalizace velkých souborů používá jiné výchozí doby vypršení platno
 | Ukládání do mezipaměti  | Obecné webové | Optimalizace velkých souborů 
 --- | --- | --- 
 Ukládání do mezipaměti: kladné <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |1 den  
-Ukládání do mezipaměti: záporné <br> HTTP 204, 305, 404, <br> a 405 | Žádná | 1 sekunda 
+Ukládání do mezipaměti: záporné <br> HTTP 204, 305, 404, <br> a 405 | Žádné | 1 sekunda 
 
 ### <a name="deal-with-origin-failure"></a>Zabývat se selháním původu
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: c36e37ba876b4b768d852d6ecedb8e3b4d8f09d0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15b9495b95ec4efb4f8e9f315595ea6bfca6cd5a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288557"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191148"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Velikosti virtuálních počítačů Azure bez místního dočasného disku 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se velikostí virtuálních počítačů Azure, které nemají místní dočasný disk (tj. žádný místní dočasný disk). Další informace o těchto velikostech virtuálních počítačů najdete v tématu [specifikace pro dv4 a Dsv4-Series (pro obecné účely úlohy)](dv4-dsv4-series.md) nebo [specifikace pro Ev4 a Esv4-Series (paměťově optimalizované úlohy)](ev4-esv4-series.md).
@@ -47,7 +47,7 @@ Ne. Pro změnu velikosti jsou povolené jenom tyto kombinace:
 > Pokud bitová kopie závisí na disku prostředků nebo na místním dočasném disku existuje stránkovací soubor nebo swapfile, image bez disků nebudou fungovat – místo toho použijte alternativu "s diskem". 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>Podporují tyto velikosti virtuálních počítačů operační systémy Linux i Windows (OS)?
-Yes.
+Ano.
 
 ## <a name="will-this-break-my-custom-scripts-custom-images-or-os-images-that-have-scratch-files-or-page-files-on-a-local-temp-disk"></a>Budou se tato přerušení vlastní skripty, vlastní image nebo image operačních systémů, které mají soubory nebo soubory stránky na místním dočasném disku?
 Pokud vlastní image operačního systému odkazuje na místní dočasný disk, bitová kopie nemusí pracovat správně s touto bezdiskovou velikostí.
@@ -56,7 +56,7 @@ Pokud vlastní image operačního systému odkazuje na místní dočasný disk, 
 Vyplňte [formulář zpětné vazby]( https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRUMzdCQkw0OVVRTldFUUtXSTlLQVBPUkVHSy4u). 
 
 ## <a name="next-steps"></a>Další kroky 
-V tomto dokumentu jste se dozvěděli víc o nejčastějších dotazech souvisejících s virtuálními počítači Azure s místním dočasným diskem. Další informace o těchto velikostech virtuálních počítačů najdete v následujících článcích:
+V tomto dokumentu jste se dozvěděli víc o nejčastějších dotazech souvisejících s virtuálními počítači Azure bez místního dočasného disku. Další informace o těchto velikostech virtuálních počítačů najdete v následujících článcích:
 
 - [Specifikace pro dv4 a Dsv4-Series (Pro obecné účely úlohy)](dv4-dsv4-series.md)
 - [Specifikace pro Ev4 a Esv4-Series (paměťově optimalizovaná zatížení)](ev4-esv4-series.md)

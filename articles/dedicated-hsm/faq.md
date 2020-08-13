@@ -1,6 +1,6 @@
 ---
 title: Nejčastější dotazy – vyhrazený modul HARDWAROVÉho zabezpečení Azure | Microsoft Docs
-description: Nejčastější dotazy týkající se různých témat o vyhrazeném modulu HSM Azure
+description: Získejte odpovědi na běžné otázky týkající se modulu zabezpečení hardwaru v Azure, jako jsou základní informace, interoperabilita, vysoká dostupnost a podpora.
 services: dedicated-hsm
 author: johncdawson
 manager: rkarlin
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 16c3676a881dc5dc979891dfd870274581be255b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d3309283279c887c00a475ccedfe1edaf311ae5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310381"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189875"
 ---
 # <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
@@ -66,19 +66,19 @@ Vyhrazená služba HSM Azure používá SafeNet Luna Network HSM 7 (model A790).
 
 Od 13. března 2019 je vyhrazený modul HSM dostupný ve 14 oblastech uvedených níže. Další oblasti jsou plánovány a mohou být popsány prostřednictvím zástupce účtu společnosti Microsoft.
 
-* USA – východ
+* East US
 * USA – východ 2
 * USA – západ
-* USA – západ 2
-* USA – středojih
-* Jihovýchodní Asie
+* Západní USA 2
+* Středojižní USA
+* Southeast Asia
 * Východní Asie
 * Indie – střed
 * Indie – jih
 * Japonsko – východ
 * Japonsko – západ
 * Severní Evropa
-* Západní Evropa
+* West Europe
 * Spojené království – jih
 * Spojené království – západ
 * Střední Kanada
@@ -90,7 +90,7 @@ Od 13. března 2019 je vyhrazený modul HSM dostupný ve 14 oblastech uvedených
 * USA (Gov) – Virginia
 * USA (Gov) – Texas
 
-## <a name="interoperability"></a>Vzájemná funkční spolupráce
+## <a name="interoperability"></a>Interoperabilita
 
 ### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>Otázka: jak se moje aplikace připojí k vyhrazené HSM?
 

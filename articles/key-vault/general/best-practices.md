@@ -1,6 +1,6 @@
 ---
 title: Osvědčené postupy použití Key Vault-Azure Key Vault | Microsoft Docs
-description: Tento dokument popisuje některé z osvědčených postupů pro použití Key Vault
+description: Seznamte se s osvědčenými postupy pro Azure Key Vault, včetně řízení přístupu, kdy používat samostatné trezory klíčů, zálohování, protokolování a možnosti obnovení.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 93ada332fdf9179cf0f582195779afc085416e1a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: cec3ad4e113fd6ee3f4e30ad2a6877b886a958e0
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386227"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189893"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Osvědčené postupy pro použití Key Vault
 

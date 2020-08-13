@@ -1,14 +1,14 @@
 ---
 title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj řešení Azure Batch.
-ms.date: 07/30/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 535deebd0ba683d9387408ad081d165a504c91d1
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87474899"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191803"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -57,6 +57,10 @@ Fondy služby Batch můžou při výpadku událostí v Azure vyskytnout. Mějte 
 
 V případě, že uzel selhává, pokusí se Batch automaticky obnovit tyto výpočetní uzly vaším jménem. To může aktivovat přeplánování všech spuštěných úloh na uzlu, který se obnovil. Další informace o přerušených úlohách najdete v tématu [navrhování pro opakování](#design-for-retries-and-re-execution) .
 
+### <a name="custom-image-pools"></a>Vlastní fondy imagí
+
+Když vytváříte fond Azure Batch s použitím konfigurace virtuálního počítače, zadáte image virtuálního počítače, která poskytuje operační systém pro každý výpočetní uzel ve fondu. Fond můžete vytvořit pomocí podporované bitové kopie Azure Marketplace, nebo můžete [vytvořit vlastní image s obrázkem Galerie sdílených imagí](batch-sig-images.md). I když pomocí [spravované image](batch-custom-images.md) můžete vytvořit vlastní fond imagí, doporučujeme vytvářet vlastní image pomocí Galerie sdílených imagí, kdykoli to bude možné. Použití Galerie sdílených imagí vám pomůže zřídit fondy rychleji, škálovat větší množství virtuálních počítačů a zvýšit spolehlivost při zřizování virtuálních počítačů.
+
 ### <a name="third-party-images"></a>Image třetích stran
 
 Fondy se dají vytvářet pomocí imagí třetích stran publikovaných na Azure Marketplace. V případě účtů Batch v režimu předplatného uživatele se může zobrazit chyba "přidělení nebylo úspěšné kvůli kontrole způsobilosti nákupu na webu Marketplace" při vytváření fondu s některými imagemi třetích stran. Chcete-li tuto chybu vyřešit, přijměte podmínky stanovené vydavatelem obrázku. Můžete to udělat pomocí [Azure PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest).
@@ -83,7 +87,7 @@ Proto se ujistěte, že nenavrhnete řešení Batch, které vyžaduje tisíce so
 
 Existuje výchozí [kvóta pro aktivní úlohu a plán úlohy](batch-quota-limit.md#resource-quotas). Úlohy a plány úloh v dokončeném stavu se nepočítají k této kvótě.
 
-## <a name="tasks"></a>Úkoly
+## <a name="tasks"></a>Úlohy
 
 [Úkoly](jobs-and-tasks.md#tasks) jsou jednotlivé pracovní jednotky, které tvoří úlohu. Úkoly jsou odesílány uživatelem a naplánovaly se službou Batch na výpočetní uzly. Při vytváření a spouštění úloh je potřeba provést několik otázek při návrhu. V následujících částech jsou vysvětlené běžné scénáře a postupy návrhu úloh pro zpracování problémů a efektivní provádění.
 
@@ -169,7 +173,7 @@ Po nahrání šablony do nové oblasti bude nutné znovu vytvořit certifikáty,
 
 Další informace o Správce prostředků a šablonách najdete v tématu [rychlý Start: vytvoření a nasazení Azure Resource Manager šablon pomocí Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
-## <a name="connectivity"></a>Připojení
+## <a name="connectivity"></a>Možnosti připojení
 
 Při zvažování připojení ve vašich řešeních služby Batch si přečtěte následující pokyny.
 

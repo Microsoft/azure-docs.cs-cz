@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault – použití obnovitelného odstranění pomocí rozhraní příkazového řádku
-description: Příklady případů použití obnovitelného odstranění s výstřižky kódu CLI
+description: Naučte se používat Azure CLI k použití funkce obnovitelného odstranění Azure Key Vault, která umožňuje obnovení trezorů klíčů a objektů trezoru klíčů.
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 8f32fcc319c3bffd9089d894c5376268227a0151
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 3c114d3624f8cc153e8516340d474302d8655bbc
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135925"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191593"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak používat obnovitelné odstranění Key Vaultu s využitím CLI
 
@@ -33,7 +33,7 @@ Informace o Key Vault specifických referenčních informacích pro rozhraní p�
 
 Operace Key Vault se samostatně spravují prostřednictvím oprávnění řízení přístupu na základě role (RBAC) následujícím způsobem:
 
-| Operace | Description | Oprávnění uživatele |
+| Operace | Popis | Oprávnění uživatele |
 |:--|:--|:--|
 |Seznam|Zobrazí seznam odstraněných trezorů klíčů.|Microsoft. deletedVaults trezor//Read|
 |Zotavit|Obnoví odstraněný Trezor klíčů.|Trezor Microsoft. a trezory/zápis|

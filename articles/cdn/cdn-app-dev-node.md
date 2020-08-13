@@ -1,6 +1,6 @@
 ---
 title: Začínáme s Azure CDN SDK pro Node.js | Microsoft Docs
-description: Naučte se psát aplikace Node.js pro správu Azure CDN.
+description: Naučte se vytvořit jednoduchou Node.js konzolovou aplikaci, která ukazuje, jak automatizovat vytváření a správu profilů Azure CDN a koncových bodů.
 services: cdn
 documentationcenter: nodejs
 author: zhangmanling
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 96dc7e8d9fb647779fc2188fe36fe9fbced2e53c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: da695975b92ea6f81de103da5edf730811a193f8
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387485"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190701"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Začínáme s vývojem pro Azure CDN
 > [!div class="op_single_selector"]
@@ -345,7 +345,7 @@ function cdnDelete() {
 Náš Node.js program teď můžeme spustit pomocí našeho oblíbeného ladicího programu nebo v konzole.
 
 > [!TIP]
-> Pokud používáte Visual Studio Code jako ladicí program, budete muset nastavit prostředí tak, aby se předávalo v parametrech příkazového řádku.  Visual Studio Code to provádí v **launch.jsv** souboru.  Vyhledejte vlastnost s názvem **args** a přidejte pole řetězcových hodnot pro parametry, aby vypadalo podobně jako toto: `"args": ["list", "profiles"]` .
+> Pokud používáte Visual Studio Code jako ladicí program, budete muset nastavit prostředí tak, aby se předávalo v parametrech příkazového řádku.  Visual Studio Code to provádí v **launch.jsv** souboru.  Vyhledejte vlastnost s názvem **args** a přidejte pole řetězcových hodnot pro parametry, aby vypadalo podobně jako toto:  `"args": ["list", "profiles"]` .
 > 
 > 
 

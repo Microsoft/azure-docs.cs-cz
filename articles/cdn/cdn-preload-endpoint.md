@@ -1,6 +1,6 @@
 ---
 title: Předběžné načtení prostředků na Azure CDN koncový bod | Microsoft Docs
-description: Naučte se, jak předem načíst obsah uložený v mezipaměti na Azure CDN koncový bod.
+description: Naučte se, jak předem načíst obsah uložený v mezipaměti na koncovém bodu Azure Content Delivery Network. Tato funkce je k dispozici v některých verzích produktu.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 587a6c4104693e8ccf610a670064832364a166d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f0968af5cb52904f6044e130adba8b0ba9a6cd1
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887576"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192567"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Předběžné načtení prostředků v koncovém bodu Azure CDN
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -50,8 +50,8 @@ Tento kurz vás provede předběžným načtením obsahu v mezipaměti na všech
    > Po zahájení zadávání textu se zobrazí další textová pole s dalšími **cestami k obsahu** , která vám umožní vytvořit seznam více prostředků. Pokud chcete odstranit assety ze seznamu, vyberte tlačítko se třemi tečkami (...) a pak vyberte **Odstranit**.
    > 
    > Každá cesta k obsahu musí být relativní adresa URL, která odpovídá následujícím [regulárním výrazům](/dotnet/standard/base-types/regular-expression-language-quick-reference):  
-   > - Načtěte jednu cestu k souboru:`^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
-   > - Načtěte jeden soubor s řetězcem dotazu:`^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
+   > - Načtěte jednu cestu k souboru: `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
+   > - Načtěte jeden soubor s řetězcem dotazu: `^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
    > 
    > Vzhledem k tomu, že každý prostředek musí mít svou vlastní cestu, neexistuje žádná funkce zástupných znaků pro předem načtené prostředky.
    > 

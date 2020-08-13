@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/13/2020
 ms.author: memildin
-ms.openlocfilehash: 19fcefdfd163bcbd9cd2adfcba6bf6711b9bee18
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d9229137c999157d2cea112ebb5e6e8b169eed96
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041663"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192774"
 ---
 # <a name="workflow-automation"></a>Automatizace pracovního postupu
 
@@ -32,7 +32,7 @@ Tento článek popisuje funkci automatizace pracovního postupu Azure Security C
 |----|:----|
 |Stav vydaných verzí:|Všeobecně dostupné|
 |Stanov|Úroveň Free|
-|Požadované role a oprávnění:|**Čtenář** v předplatném, který obsahuje konfiguraci exportu<br>**Role správce zabezpečení** nebo **vlastník** skupiny prostředků<br>Musí mít taky oprávnění k zápisu pro cílový prostředek.<br><br>Pokud chcete pracovat s Azure Logic Apps pracovními postupy, musíte mít také následující Logic Apps role/oprávnění:<br> - Jsou vyžadována oprávnění [operátora aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) nebo přístup pro čtení/aktivaci aplikace logiky (Tato role nemůže vytvářet ani upravovat aplikace logiky. *spouštějte* pouze existující)<br> - Pro vytváření a úpravu aplikace logiky se vyžadují oprávnění [Přispěvatel aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) .<br>Pokud chcete používat konektory aplikací logiky, budete možná potřebovat další přihlašovací údaje pro přihlášení ke svým příslušným službám (například k instancím aplikace Outlook/Teams nebo časové rezervy).|
+|Požadované role a oprávnění:|**Role správce zabezpečení** nebo **vlastník** skupiny prostředků<br>Musí mít taky oprávnění k zápisu pro cílový prostředek.<br><br>Pokud chcete pracovat s Azure Logic Apps pracovními postupy, musíte mít také následující Logic Apps role/oprávnění:<br> - Jsou vyžadována oprávnění [operátora aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) nebo přístup pro čtení/aktivaci aplikace logiky (Tato role nemůže vytvářet ani upravovat aplikace logiky. *spouštějte* pouze existující)<br> - Pro vytváření a úpravu aplikace logiky se vyžadují oprávnění [Přispěvatel aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) .<br>Pokud chcete používat konektory aplikací logiky, budete možná potřebovat další přihlašovací údaje pro přihlášení ke svým příslušným službám (například k instancím aplikace Outlook/Teams nebo časové rezervy).|
 |Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
@@ -44,7 +44,8 @@ Tento článek popisuje funkci automatizace pracovního postupu Azure Security C
 
     [![Seznam automatizovaných pracovních postupů](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
 
-    Na této stránce můžete vytvořit nová pravidla automatizace a zároveň povolit, zakázat nebo odstranit existující.  
+    Na této stránce můžete vytvořit nová pravidla automatizace a zároveň povolit, zakázat nebo odstranit existující.
+
 1. Pokud chcete definovat nový pracovní postup, klikněte na **Přidat automatizaci pracovního postupu**. 
 
     Zobrazí se podokno s možnostmi pro novou automatizaci. Tady můžete zadat:
@@ -86,9 +87,9 @@ Tento článek popisuje funkci automatizace pracovního postupu Azure Security C
 
 ## <a name="manually-trigger-a-logic-app"></a>Ruční aktivace aplikace logiky
 
-Logic Apps můžete také spustit ručně při zobrazení výstrahy zabezpečení nebo jakékoli doporučení, které nabízí [rychlou opravu nápravy](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#quick-fix-remediation).
+Logic Apps můžete také spustit ručně při zobrazení jakékoli výstrahy nebo doporučení zabezpečení.
 
-Pokud chcete aplikaci logiky spustit ručně, otevřete výstrahu nebo doporučení, které podporuje nápravu rychlé opravy, a klikněte na **aktivovat aplikaci logiky**:
+Pokud chcete aplikaci logiky spustit ručně, otevřete výstrahu nebo doporučení a klikněte na **aktivovat aplikaci logiky**:
 
 [![Ruční aktivace aplikace logiky](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 

@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: sql-dw
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8032e8809f7849ab7497da7821788c017adff12d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c61e8df05c4bc199c0d91b8ed0cbd73fa6f196cf
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212050"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192323"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Převod tříd prostředků na skupiny úloh
 
@@ -44,13 +44,13 @@ Vzhledem k tomu, že skupiny úloh fungují na základě procenta celkových sys
 
 Známou je `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , že <link> k vytvoření skupiny úloh můžete použít SYNTAXI vytvořit skupinu úloh.  Volitelně můžete zadat hodnotu `MIN_PERCENTAGE_RESOURCE` , která je větší než nula pro izolaci prostředků pro skupinu úloh.  Volitelně můžete také zadat `CAP_PERCENTAGE_RESOURCE` méně než 100 a omezit tak množství prostředků, které může skupina zatížení spotřebovat.  
 
-Následující příklad nastavuje, `MIN_PERCENTAGE_RESOURCE` aby vyhradal 9,6% systémových prostředků `wgDataLoads` a zaručil, že jeden dotaz bude možné spustit všechny časy.  Navíc `CAP_PERCENTAGE_RESOURCE` je nastaveno na 38,4% a omezí tuto skupinu úloh na čtyři souběžné požadavky.  Když nastavíte `QUERY_EXECUTION_TIMEOUT_SEC` parametr na 3600, všechny dotazy, které se spustí po dobu více než 1 hodiny, se automaticky zruší.
+Použití mediumrc jako základu pro příklad, následující kód nastaví, `MIN_PERCENTAGE_RESOURCE` aby vyhradí 10% systémových prostředků `wgDataLoads` a zaručila tak, že jeden dotaz bude možné spustit všechny časy.  Navíc `CAP_PERCENTAGE_RESOURCE` je nastaveno na 40% a omezí tuto skupinu úloh na čtyři souběžné požadavky.  Když nastavíte `QUERY_EXECUTION_TIMEOUT_SEC` parametr na 3600, všechny dotazy, které se spustí po dobu více než 1 hodiny, se automaticky zruší.
 
 ```sql
 CREATE WORKLOAD GROUP wgDataLoads WITH  
-( REQUEST_MIN_RESOURCE_GRANT_PERCENT = 9.6
- ,MIN_PERCENTAGE_RESOURCE = 9.6
- ,CAP_PERCENTAGE_RESOURCE = 38.4
+( REQUEST_MIN_RESOURCE_GRANT_PERCENT = 10
+ ,MIN_PERCENTAGE_RESOURCE = 10
+ ,CAP_PERCENTAGE_RESOURCE = 40
  ,QUERY_EXECUTION_TIMEOUT_SEC = 3600)
 ```
 
@@ -59,7 +59,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 Dříve bylo mapování dotazů na třídy prostředků provedeno pomocí [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Chcete-li dosáhnout stejných funkcí a požadavků na mapování na skupiny úloh, použijte syntaxi [vytvořit třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Použití sp_addrolemember povoluje mapování prostředků na požadavek na základě přihlášení.  Klasifikátor nabízí další možnosti kromě přihlášení, například:
     - label
     - relace
-    - čas, kdy níže uvedený příklad přiřadí dotazy z `AdfLogin` přihlášení, které mají také [popisek možnost](sql-data-warehouse-develop-label.md) nastavený na `factloads` skupinu úloh `wgDataLoads` vytvořenou výše.
+    - čas, kdy níže uvedený příklad přiřadí dotazy z `AdfLogin` přihlášení, které mají také [popisek možnost](sql-data-warehouse-develop-label.md)  nastavený na `factloads` skupinu úloh `wgDataLoads` vytvořenou výše.
 
 ```sql
 CREATE WORKLOAD CLASSIFIER wcDataLoads WITH  

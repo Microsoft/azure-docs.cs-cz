@@ -1,7 +1,7 @@
 ---
 title: Diagnostické protokoly
 titleSuffix: Azure Content Delivery Network
-description: Zákazník může povolit analýzu protokolů pro Azure CDN.
+description: Naučte se používat diagnostické protokoly Azure k ukládání základních analýz, které vám umožní exportovat metriky využití ze svého koncového bodu Azure Content Delivery Network.
 services: cdn
 author: asudbring
 manager: KumudD
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: dbaba67a163bb0f948de5ba2ebbdba5497ad5ff9
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116984"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191285"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>Diagnostické protokoly – Azure Content Delivery Network
 
@@ -42,7 +42,7 @@ Následující postup vyžaduje profil Azure CDN. Než budete pokračovat, pře�
 
 Postupujte podle těchto kroků a povolte protokolování pro Azure CDN koncový bod:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 
 2. V Azure Portal přejděte na **všechny prostředky**, které  ->  **profil-CDN Profile** .
 
@@ -221,7 +221,7 @@ Pro přístup k základním analýzám je k dispozici vzorový kód pro nástroj
 
 Tady je postup, jak můžete použít nástroj:
 
-1.  Navštivte odkaz na GitHub:[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  Navštivte odkaz na GitHub: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  Stáhněte si kód.
 3.  Postupujte podle pokynů pro zkompilování a konfiguraci.
 4.  Spusťte nástroj.
@@ -257,27 +257,27 @@ Ne všechny metriky jsou dostupné ze všech zprostředkovatelů, i když jsou t
 | RequestCountHttpStatus4xx | Počet všech požadavků, které vedly k 4xx kódu HTTP (například 400, 404). | Ano | Ano |Ano |
 | RequestCountHttpStatus5xx | Počet všech požadavků, které vedly k 5xx kódu HTTP (například 500, 504). | Ano | Ano |Ano |
 | RequestCountHttpStatusOthers | Počet všech ostatních kódů HTTP (mimo 2xx-5xx). | Ano | Ano |Ano |
-| RequestCountHttpStatus200 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 200. | Yes | No  |Yes |
-| RequestCountHttpStatus206 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 206. | Yes | No  |Yes |
-| RequestCountHttpStatus302 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 302. | Yes | No  |Yes |
-| RequestCountHttpStatus304 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 304. | Yes | No  |Yes |
-| RequestCountHttpStatus404 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 404. | Yes | No  |Yes |
-| RequestCountCacheHit | Počet všech požadavků, jejichž výsledkem byl úspěšný přístup do mezipaměti. Asset byl obsluhován přímo z místního klienta. | Ano | Ano | No  |
-| RequestCountCacheMiss | Počet všech požadavků, které způsobily Neúspěšné přístupy do mezipaměti. V případě neúspěšného ukládání do mezipaměti znamená, že Asset nebyl nalezen na bodu POP, který je nejblíže klientovi a byl načten ze zdroje. | Ano | Ano | No |
-| RequestCountCacheNoCache | Počet všech požadavků na prostředek, jejichž ukládání do mezipaměti brání v důsledku konfigurace uživatele na hraničních zařízeních. | Ano | Ano | No |
-| RequestCountCacheUncacheable | Počet všech požadavků na prostředky, které nemohou být ukládány do mezipaměti pomocí hlaviček pro řízení mezipaměti a vypršení platnosti assetu. Tento počet označuje, že by neměl být uložen do mezipaměti pro POP nebo klienta HTTP. | Ano | Ano | No |
-| RequestCountCacheOthers | Počet všech požadavků s mezipamětí, na které se nevztahuje stav mezipaměti. | No | Yes | No  |
+| RequestCountHttpStatus200 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 200. | Ano | Ne  |Ano |
+| RequestCountHttpStatus206 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 206. | Ano | Ne  |Ano |
+| RequestCountHttpStatus302 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 302. | Ano | Ne  |Ano |
+| RequestCountHttpStatus304 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 304. | Ano | Ne  |Ano |
+| RequestCountHttpStatus404 | Počet všech požadavků, jejichž výsledkem je odpověď kódu HTTP 404. | Ano | Ne  |Ano |
+| RequestCountCacheHit | Počet všech požadavků, jejichž výsledkem byl úspěšný přístup do mezipaměti. Asset byl obsluhován přímo z místního klienta. | Ano | Ano | Ne  |
+| RequestCountCacheMiss | Počet všech požadavků, které způsobily Neúspěšné přístupy do mezipaměti. V případě neúspěšného ukládání do mezipaměti znamená, že Asset nebyl nalezen na bodu POP, který je nejblíže klientovi a byl načten ze zdroje. | Ano | Ano | Ne |
+| RequestCountCacheNoCache | Počet všech požadavků na prostředek, jejichž ukládání do mezipaměti brání v důsledku konfigurace uživatele na hraničních zařízeních. | Ano | Ano | Ne |
+| RequestCountCacheUncacheable | Počet všech požadavků na prostředky, které nemohou být ukládány do mezipaměti pomocí hlaviček pro řízení mezipaměti a vypršení platnosti assetu. Tento počet označuje, že by neměl být uložen do mezipaměti pro POP nebo klienta HTTP. | Ano | Ano | Ne |
+| RequestCountCacheOthers | Počet všech požadavků s mezipamětí, na které se nevztahuje stav mezipaměti. | Ne | Ano | Ne  |
 | EgressTotal | Přenos odchozích dat v GB | Ano |Ano |Ano |
-| EgressHttpStatus2xx | Přenos odchozích dat * pro odpovědi se stavovým kódem HTTP 2xx v GB. | Ano | Ano | No  |
-| EgressHttpStatus3xx | Přenos odchozích dat pro odpovědi se stavovým kódem HTTP 3xx v GB. | Ano | Ano | No  |
-| EgressHttpStatus4xx | Přenos odchozích dat pro odpovědi se stavovým kódem HTTP 4xx v GB. | Ano | Ano | No  |
-| EgressHttpStatus5xx | Přenos odchozích dat pro odpovědi se stavovým kódem HTTP 5xx v GB. | Ano | Ano | No |
-| EgressHttpStatusOthers | Přenos odchozích dat pro odpovědi s dalšími kódy stavu HTTP v GB. | Ano | Ano | No  |
-| EgressCacheHit | Přenos odchozích dat pro odpovědi, které byly doručeny přímo z mezipaměti CDN na pokusůch pop a hran CDN. | Ano | Ano | No |
-| EgressCacheMiss. | Přenos odchozích dat pro odpovědi, které se nenašly na nejbližším serveru POP a ze zdrojového serveru se načetly. | Ano | Ano | No |
-| EgressCacheNoCache | Přenos odchozích dat pro prostředky, které se neukládají do mezipaměti kvůli konfiguraci uživatele na hraničních zařízeních. | Ano | Ano | No |
-| EgressCacheUncacheable | Přenos odchozích dat pro prostředky, kterým se brání v ukládání do mezipaměti pomocí hlaviček pro řízení mezipaměti a nebo vypršení platnosti assetu. Označuje, že by neměl být uložen do mezipaměti pro POP nebo klienta HTTP. | Ano | Ano | No |
-| EgressCacheOthers | Přenosy odchozích dat pro jiné scénáře mezipaměti. | No | Yes | No |
+| EgressHttpStatus2xx | Přenos odchozích dat * pro odpovědi se stavovým kódem HTTP 2xx v GB. | Ano | Ano | Ne  |
+| EgressHttpStatus3xx | Přenos odchozích dat pro odpovědi se stavovým kódem HTTP 3xx v GB. | Ano | Ano | Ne  |
+| EgressHttpStatus4xx | Přenos odchozích dat pro odpovědi se stavovým kódem HTTP 4xx v GB. | Ano | Ano | Ne  |
+| EgressHttpStatus5xx | Přenos odchozích dat pro odpovědi se stavovým kódem HTTP 5xx v GB. | Ano | Ano | Ne |
+| EgressHttpStatusOthers | Přenos odchozích dat pro odpovědi s dalšími kódy stavu HTTP v GB. | Ano | Ano | Ne  |
+| EgressCacheHit | Přenos odchozích dat pro odpovědi, které byly doručeny přímo z mezipaměti CDN na pokusůch pop a hran CDN. | Ano | Ano | Ne |
+| EgressCacheMiss. | Přenos odchozích dat pro odpovědi, které se nenašly na nejbližším serveru POP a ze zdrojového serveru se načetly. | Ano | Ano | Ne |
+| EgressCacheNoCache | Přenos odchozích dat pro prostředky, které se neukládají do mezipaměti kvůli konfiguraci uživatele na hraničních zařízeních. | Ano | Ano | Ne |
+| EgressCacheUncacheable | Přenos odchozích dat pro prostředky, kterým se brání v ukládání do mezipaměti pomocí hlaviček pro řízení mezipaměti a nebo vypršení platnosti assetu. Označuje, že by neměl být uložen do mezipaměti pro POP nebo klienta HTTP. | Ano | Ano | Ne |
+| EgressCacheOthers | Přenosy odchozích dat pro jiné scénáře mezipaměti. | Ne | Ano | Ne |
 
 * Přenos odchozích dat odkazuje na provoz doručený ze serverů POP CDN klientovi.
 
@@ -367,7 +367,7 @@ Příklad vlastností:
 
 ```
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Diagnostické protokoly Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Základní analýzy prostřednictvím Azure CDN doplňkového portálu](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)

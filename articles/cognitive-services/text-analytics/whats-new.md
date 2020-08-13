@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 95e9b208159e9af41563f12ce8af7892e13f6629
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1a5f7dcd37a970d5e039ebc38f1059839424ff68
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121846"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192037"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
@@ -33,18 +33,18 @@ Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku n
 
 Následující aktualizace jsou specifické pro verzi Analýza textu ze srpna pro kontejner Health.
 
-* Nový model – verze pro Analýza textu pro stav:`2020-07-24`
-* Nová adresa URL pro odeslání Analýza textu pro žádosti o stav:`http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` 
+* Nový model – verze pro Analýza textu pro stav: `2020-07-24`
+* Nová adresa URL pro odeslání Analýza textu pro žádosti o stav: `http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` (Nezapomeňte, že pro použití ukázkové webové aplikace zahrnuté v této nové imagi kontejneru bude potřeba vymazat mezipaměť prohlížeče.)
 
 Následující vlastnosti v odpovědi JSON se změnily:
 
 * Přejmenování `type` na `category` 
 * Přejmenování `score` na `confidenceScore`
 * Entity v `category` poli výstupu JSON jsou teď v případě jazyka Pascal. Následující entity byly přejmenovány:
-    * `EXAMINATION_RELATION`byla přejmenována na `RelationalOperator` .
-    * `EXAMINATION_UNIT`byla přejmenována na `MeasurementUnit` .
-    * `EXAMINATION_VALUE`byla přejmenována na `MeasurementValue` .
-    * `ROUTE_OR_MODE`byl přejmenován `MedicationRoute` .
+    * `EXAMINATION_RELATION` byla přejmenována na `RelationalOperator` .
+    * `EXAMINATION_UNIT` byla přejmenována na `MeasurementUnit` .
+    * `EXAMINATION_VALUE` byla přejmenována na `MeasurementValue` .
+    * `ROUTE_OR_MODE` byl přejmenován `MedicationRoute` .
     * Relační entita `ROUTE_OR_MODE_OF_MEDICATION` byla přejmenována na `RouteOfMedication` .
 
 Byly přidány následující entity:
@@ -82,7 +82,7 @@ Kontejner nabízí následující funkce:
 
 Rozhraní API pro analýzu textu v3 je teď všeobecně dostupné s následujícími aktualizacemi:
 
-* Verze modelu`2020-04-01`
+* Verze modelu `2020-04-01`
 * Nová [omezení dat](concepts/data-limits.md) pro jednotlivé funkce
 * Aktualizovaná [jazyková podpora](language-support.md) pro [Analýza mínění (SA) v3](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * Samostatný koncový bod pro propojení entit 
@@ -98,13 +98,13 @@ Rozhraní API pro analýzu textu v3 je teď všeobecně dostupné s následujíc
    * Událost – Sport
 
 Byly přidány následující vlastnosti v odpovědi JSON:
-   * `SentenceText`v Analýza mínění
-   * `Warnings`pro každý dokument 
+   * `SentenceText` v Analýza mínění
+   * `Warnings` pro každý dokument 
 
 V případě potřeby se změnily názvy následujících vlastností v odpovědi JSON:
 
 * Přejmenování `score` na `confidenceScore`
-    * `confidenceScore`má dvě desetinná místa přesnosti. 
+    * `confidenceScore` má dvě desetinná místa přesnosti. 
 * Přejmenování `type` na `category`
 * Přejmenování `subtype` na `subcategory`
 
@@ -192,6 +192,6 @@ Podporuje angličtinu ( `en` ), japonštinu () `ja` , zjednodušenou čínštinu
 * [Co je rozhraní API pro analýzu textu?](overview.md)  
 * [Ukázkové uživatelské scénáře](text-analytics-user-scenarios.md)
 * [Analýza mínění](how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Rozpoznávání jazyka](how-tos/text-analytics-how-to-language-detection.md)
-* [Rozpoznávání entit](how-tos/text-analytics-how-to-entity-linking.md)
-* [Extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [rozpoznávání jazyka,](how-tos/text-analytics-how-to-language-detection.md)
+* [rozpoznávání entit,](how-tos/text-analytics-how-to-entity-linking.md)
+* [extrakce klíčových frází,](how-tos/text-analytics-how-to-keyword-extraction.md)

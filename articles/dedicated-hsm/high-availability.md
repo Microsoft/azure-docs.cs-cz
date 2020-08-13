@@ -1,6 +1,6 @@
 ---
 title: Vysoká dostupnost – vyhrazený modul HARDWAROVÉho zabezpečení Azure | Microsoft Docs
-description: Příklad vysoké dostupnosti ve vyhrazeném HSM Azure a základní předpoklady
+description: Přečtěte si o základních požadavcích na vysoce dostupnou vysokou dostupnost HSM v Azure. Tento článek obsahuje příklad.
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f8fa2f12825fe88218fe7033a1721cb49fc7335
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70882250"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189845"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Vysoká dostupnost služby HSM ve vyhrazeném Azure
 
@@ -25,7 +25,7 @@ Vyhrazený modul HARDWAROVÉho zabezpečení Azure je nepřipojený k datovým c
 
 ## <a name="high-availability-example"></a>Příklad vysoké dostupnosti
 
-Informace o tom, jak nakonfigurovat zařízení HSM pro vysokou dostupnost na úrovni softwaru, najdete v příručce pro správu HSM identita Gemalto Luna Network HSM. Tento dokument je k dispozici na [stránce HSM identita Gemalto](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/).
+Informace o tom, jak nakonfigurovat zařízení HSM pro vysokou dostupnost na úrovni softwaru, najdete v příručce pro správu HSM identita Gemalto Luna Network HSM. Tento dokument je k dispozici na  [stránce HSM identita Gemalto](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/).
 
 Následující diagram znázorňuje architekturu s vysokou dostupností. Používá v oblasti více zařízení a několik zařízení se spáruje v samostatné oblasti. Tato architektura používá minimálně čtyři zařízení HSM a součásti virtuální sítě.
 
