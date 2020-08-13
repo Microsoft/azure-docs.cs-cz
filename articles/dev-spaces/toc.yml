@@ -25,38 +25,8 @@
           href: quickstart-existing-helm-chart.md
     - name: Kurzy
       items:
-        - name: Java (VS Code a CLI)
-          items:
-            - name: 1. Začínáme
-              href: get-started-java.md
-            - name: 2. Vývoj více služeb
-              href: multi-service-java.md
-            - name: 3. Týmový vývoj
-              href: team-development-java.md
-        - name: .NET Core (VS Code a CLI)
-          items:
-            - name: 1. Začínáme
-              href: get-started-netcore.md
-            - name: 2. Vývoj více služeb
-              href: multi-service-netcore.md
-            - name: 3. Týmový vývoj
-              href: team-development-netcore.md
-        - name: .NET Core (Visual Studio)
-          items:
-            - name: 1. Začínáme
-              href: get-started-netcore-visualstudio.md
-            - name: 2. Vývoj více služeb
-              href: multi-service-netcore-visualstudio.md
-            - name: 3. Týmový vývoj
-              href: team-development-netcore-visualstudio.md
-        - name: Node.js (VS Code a CLI)
-          items:
-            - name: 1. Začínáme
-              href: get-started-nodejs.md
-            - name: 2. Vývoj více služeb
-              href: multi-service-nodejs.md
-            - name: 3. Týmový vývoj
-              href: team-development-nodejs.md
+        - name: Začínáme se sadou Visual Studio
+          href: get-started-netcore-visualstudio.md
     - name: Koncepty
       items:
         - name: Jak funguje služba Dev Spaces
@@ -83,8 +53,6 @@
           href: how-to/install-dev-spaces.md
         - name: Vytvoření clusteru Kubernetes pomocí Azure Cloud Shellu
           href: how-to/create-cluster-cloud-shell.md
-        - name: Sdílení Azure Dev Spaces
-          href: how-to/share-dev-spaces.md
         - name: Správa tajných kódů
           href: how-to/manage-secrets.md
         - name: Použití vlastního informačního kanálu NuGet

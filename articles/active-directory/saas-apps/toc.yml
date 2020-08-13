@@ -671,6 +671,8 @@
           href: gigya-tutorial.md
         - name: GitHubu
           href: github-tutorial.md
+        - name: Cloud GitHub Enterprise – podnikový účet
+          href: github-enterprise-cloud-enterprise-account-tutorial.md
         - name: GlassFrog
           href: glassfrog-tutorial.md
         - name: GoLinks

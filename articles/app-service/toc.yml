@@ -4,8 +4,6 @@
   items:
     - name: Informace o funkci Web Apps
       href: overview.md
-    - name: Informace o App Service v Linuxu
-      href: containers/app-service-linux-intro.md
     - name: Informace o službách App Service Environment
       href: environment/intro.md
     - name: Porovnání možností hostování
@@ -13,34 +11,50 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Vytvoření aplikace v .NET Core
-      href: app-service-web-get-started-dotnet.md
-    - name: Vytvoření aplikace v .NET Frameworku
-      href: app-service-web-get-started-dotnet-framework.md
-    - name: Vytvoření aplikace v Node.js
-      href: app-service-web-get-started-nodejs.md
-    - name: Vytvoření aplikace v PHP
-      href: app-service-web-get-started-php.md
-    - name: Vytvoření aplikace v Javě
-      href: app-service-web-get-started-java.md
-    - name: Vytvoření webu ve statickém HTML
-      href: app-service-web-get-started-html.md
-    - name: Spuštění kontejneru Windows
-      href: app-service-web-get-started-windows-container.md
+    - name: .NET Core
+      href: quickstart-dotnetcore.md
+    - name: .NET Framework
+      href: quickstart-dotnet-framework.md
+    - name: Node.js
+      href: quickstart-nodejs.md
+    - name: PHP
+      href: quickstart-php.md
+    - name: Java
+      href: quickstart-java.md
+    - name: Python
+      href: quickstart-python.md
+    - name: Ruby
+      href: quickstart-ruby.md
+    - name: Statický web v HTML
+      href: quickstart-html.md
+    - name: Vlastní kontejner
+      href: quickstart-custom-container.md
+    - name: Vícekontejnerová aplikace
+      href: quickstart-multi-container.md
 - name: Kurzy
   items:
     - name: Aplikace s DB
       items:
         - name: .NET Core s SQL DB
-          href: app-service-web-tutorial-dotnetcore-sqldb.md
+          href: tutorial-dotnetcore-sqldb-app.md
         - name: .NET Framework s SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP s MySQL
-          href: app-service-web-tutorial-php-mysql.md
+          href: tutorial-php-mysql-app.md
         - name: Node.js s MongoDB
-          href: app-service-web-tutorial-nodejs-mongodb-app.md
-    - name: Přizpůsobení Windows (kontejner)
-      href: app-service-web-tutorial-windows-containers-custom-fonts.md
+          href: tutorial-nodejs-mongodb-app.md
+        - name: Ruby s Postgresem
+          href: tutorial-ruby-postgres-app.md
+        - name: Python s Postgresem
+          href: tutorial-python-postgresql-app.md
+        - name: Java se Spring Data
+          href: tutorial-java-spring-cosmosdb.md
+    - name: Vlastní kontejnery
+      items:
+        - name: Nasazení z ACR
+          href: tutorial-custom-container.md
+        - name: Vícekontejnerová aplikace
+          href: tutorial-multi-container-app.md
     - name: Zabezpečený přístup k SQL DB
       href: app-service-web-tutorial-connect-msi.md
     - name: Hostování rozhraní RESTful API
@@ -52,9 +66,11 @@
     - name: Přidání sítě CDN
       href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
     - name: Ověřování uživatelů
-      href: app-service-web-tutorial-auth-aad.md
+      href: tutorial-auth-aad.md
     - name: Odeslání e-mailu/tweetu
       href: tutorial-send-email.md
+    - name: Řešení chyb
+      href: tutorial-troubleshoot-monitor.md
 - name: ukázky
   items:
     - name: Azure CLI
@@ -125,8 +141,14 @@
           href: configure-language-nodejs.md
         - name: Konfigurace PHP
           href: configure-language-php.md
+        - name: Konfigurace Pythonu
+          href: configure-language-python.md
         - name: Konfigurace Javy
           href: configure-language-java.md
+        - name: Konfigurace Ruby
+          href: configure-language-ruby.md
+        - name: Konfigurace vlastního linuxového kontejneru
+          href: configure-custom-container.md
         - name: Připojení k místním prostředkům
           href: web-sites-integrate-with-vnet.md
         - name: Konfigurace Azure Storage (kontejner)
@@ -145,10 +167,14 @@
               href: deploy-content-sync.md
             - name: Průběžné nasazování
               href: deploy-continuous-deployment.md
+            - name: CI/CD vlastních kontejnerů
+              href: deploy-ci-cd-custom-container.md
             - name: Nasazení z místního Gitu
               href: deploy-local-git.md
-            - name: Nasazení s využitím GitHub Actions
+            - name: Akce GitHubu
               href: deploy-github-actions.md
+            - name: Akce GitHubu pro kontejnery
+              href: deploy-container-github-action.md
             - name: Nasazení pomocí šablony
               href: deploy-complex-application-predictably.md
         - name: Nastavení přihlašovacích údajů nasazení
@@ -215,6 +241,8 @@
           href: troubleshoot-diagnostic-logs.md
         - name: Získání událostí prostředků
           href: get-resource-events.md
+        - name: Otevření relace SSH pro linuxový kontejner
+          href: configure-linux-open-ssh-session.md
     - name: Správa aplikace
       items:
         - name: Správa plánu hostování

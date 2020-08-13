@@ -196,7 +196,21 @@
               href: app/pricing.md
             - name: Protokolování nákladů a využití dat
               href: platform/manage-cost-storage.md
-        - name: Pracovní prostory služby Log Analytics
+    - name: Protokoly platformy
+      items:
+        - name: Přehled
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/platform-logs-overview.md
+        - name: Protokol aktivit
+          href: platform/activity-log.md
+        - name: Protokoly prostředků
+          href: platform/resource-logs.md
+        - name: Nastavení diagnostiky
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/diagnostic-settings.md
+    - name: Log Analytics
+      items:
+        - name: Pracovní prostory
           items:
             - name: Návrh nasazení pracovního prostoru
               href: platform/design-logs-deployment.md
@@ -218,119 +232,6 @@
               href: platform/service-providers.md
             - name: Správa přístupu
               href: platform/manage-access.md
-        - name: Agenti virtuálních počítačů
-          items:
-            - name: Přehled
-              href: platform/agents-overview.md
-            - name: Nejčastější dotazy
-              href: faq.md#agents
-            - name: Rozšíření Azure Diagnostics
-              items:
-                - name: Přehled
-                  href: platform/diagnostics-extension-overview.md
-                - name: Windows
-                  displayname: diagnostics extension
-                  items:
-                    - name: Instalace a konfigurace
-                      items:
-                        - name: Možnosti instalace
-                          href: platform/diagnostics-extension-windows-install.md
-                        - name: PowerShell
-                          href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
-                        - name: Šablona Resource Manageru
-                          href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
-                    - name: Odeslání do metrik Azure Monitoru
-                      items:
-                        - name: Virtuální počítač
-                          href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-                        - name: Škálovací sada virtuálních počítačů
-                          href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                        - name: Klasický virtuální počítač
-                          href: platform/collect-custom-metrics-guestos-vm-classic.md
-                        - name: Cloudová služba
-                          href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
-                    - name: Odeslání do Event Hubs
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: Odeslání do protokolů
-                      href: platform/diagnostics-extension-logs.md
-                    - name: Odeslání do Application Insights
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Historie verzí
-                      href: platform/diagnostics-extension-versions.md
-                    - name: Řešení potíží
-                      href: platform/diagnostics-extension-troubleshooting.md
-                - name: Linux
-                  displayname: diagnostics extension
-                  items:
-                    - name: Přehled
-                      href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
-                    - name: Shromažďování metrik s využitím Telegrafu
-                      href: platform/collect-custom-metrics-linux-telegraf.md
-            - name: Agent Log Analytics
-              items:
-                - name: Přehled
-                  href: platform/log-analytics-agent.md
-                - name: Agenti systému Windows
-                  href: platform/agent-windows.md
-                - name: Agenti systému Linux
-                  href: platform/agent-linux.md
-                - name: Rozšíření virtuálního počítače pro Windows
-                  href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
-                - name: Rozšíření virtuálního počítače pro Linux
-                  href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
-                - name: Brána Log Analytics
-                  href: platform/gateway.md
-                - name: Správa agentů
-                  href: platform/agent-manage.md
-                - name: Stav agenta
-                  href: insights/solution-agenthealth.md
-                - name: Zdroje dat
-                  items:
-                    - name: Přehled
-                      href: platform/agent-data-sources.md
-                    - name: Události systému Windows
-                      href: platform/data-sources-windows-events.md
-                    - name: Vlastní data JSON
-                      href: platform/data-sources-json.md
-                    - name: Shromážděná data o výkonu
-                      href: platform/data-sources-collectd.md
-                    - name: Syslog
-                      href: platform/data-sources-syslog.md
-                    - name: Čítače výkonu
-                      href: platform/data-sources-performance-counters.md
-                    - name: Výkon linuxových aplikací
-                      href: platform/data-sources-linux-applications.md
-                    - name: Protokoly IIS
-                      href: platform/data-sources-iis-logs.md
-                    - name: Vlastní protokoly
-                      href: platform/data-sources-custom-logs.md
-                    - name: Vlastní pole
-                      href: platform/custom-fields.md
-            - name: Řešení potíží
-              items:
-                - name: Rozšíření Log Analytics pro virtuální počítače
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/vmext-troubleshoot.md
-                - name: Agent Log Analytics pro Windows
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/agent-windows-troubleshoot.md
-                - name: Linuxový agent Log Analytics
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/agent-linux-troubleshoot.md
-    - name: Protokoly platformy
-      items:
-        - name: Přehled
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/platform-logs-overview.md
-        - name: Protokol aktivit
-          href: platform/activity-log.md
-        - name: Protokoly prostředků
-          href: platform/resource-logs.md
-        - name: Nastavení diagnostiky
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings.md
-    - name: Log Analytics
-      items:
         - name: Přehled dotazů na protokoly
           displayname: 'log query, log queries, query, queries'
           href: log-query/log-query-overview.md
@@ -424,6 +325,135 @@
           href: platform/metric-chart-samples.md
         - name: Řešení potíží s grafy metrik
           href: platform/metrics-troubleshoot.md
+    - name: Shromažďování dat
+      items:
+        - name: Pravidla shromažďování dat
+          href: platform/data-collection-rule-overview.md
+        - name: Vlastní metriky
+          items:
+            - name: Vlastní metriky
+              href: platform/metrics-custom-overview.md
+            - name: Rozhraní REST API pro metriky
+              href: platform/metrics-store-custom-rest-api.md
+        - name: Vlastní protokoly
+          items:
+            - name: Rozhraní API kolekce dat služby Log Analytics
+              href: platform/data-collector-api.md
+            - name: Příklad kanálu rozhraní API kolekce dat služby Log Analytics
+              href: platform/create-pipeline-datacollector-api.md
+        - name: Logic Apps
+          items:
+            - name: Konektor protokolů služby Azure Monitor
+              href: platform/logicapp-flow-connector.md
+            - name: Application Insights Connector
+              href: app/automate-with-logic-apps.md
+    - name: Agenti
+      items:
+        - name: Přehled
+          href: platform/agents-overview.md
+        - name: Nejčastější dotazy
+          href: faq.md#agents
+        - name: Agent Azure Monitoru
+          items:
+            - name: Přehled
+              displayname: Azure Monitor agent
+              href: platform/azure-monitor-agent-overview.md
+            - name: Shromažďování dat
+              displayname: 'data collection rule,Azure Monitor agent'
+              href: platform/data-collection-rule-azure-monitor-agent.md
+        - name: Rozšíření Azure Diagnostics
+          items:
+            - name: Přehled
+              href: platform/diagnostics-extension-overview.md
+            - name: Windows
+              displayname: diagnostics extension
+              items:
+                - name: Instalace a konfigurace
+                  items:
+                    - name: Možnosti instalace
+                      href: platform/diagnostics-extension-windows-install.md
+                    - name: PowerShell
+                      href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
+                    - name: Šablona Resource Manageru
+                      href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
+                - name: Odeslání do metrik Azure Monitoru
+                  items:
+                    - name: Virtuální počítač
+                      href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
+                    - name: Škálovací sada virtuálních počítačů
+                      href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
+                    - name: Klasický virtuální počítač
+                      href: platform/collect-custom-metrics-guestos-vm-classic.md
+                    - name: Cloudová služba
+                      href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                - name: Odeslání do Event Hubs
+                  href: platform/diagnostics-extension-stream-event-hubs.md
+                - name: Odeslání do protokolů
+                  href: platform/diagnostics-extension-logs.md
+                - name: Odeslání do Application Insights
+                  href: platform/diagnostics-extension-to-application-insights.md
+                - name: Historie verzí
+                  href: platform/diagnostics-extension-versions.md
+                - name: Řešení potíží
+                  href: platform/diagnostics-extension-troubleshooting.md
+            - name: Linux
+              displayname: diagnostics extension
+              items:
+                - name: Přehled
+                  href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                - name: Shromažďování metrik s využitím Telegrafu
+                  href: platform/collect-custom-metrics-linux-telegraf.md
+        - name: Agent Log Analytics
+          items:
+            - name: Přehled
+              href: platform/log-analytics-agent.md
+            - name: Agenti systému Windows
+              href: platform/agent-windows.md
+            - name: Agenti systému Linux
+              href: platform/agent-linux.md
+            - name: Rozšíření virtuálního počítače pro Windows
+              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
+            - name: Rozšíření virtuálního počítače pro Linux
+              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
+            - name: Brána Log Analytics
+              href: platform/gateway.md
+            - name: Správa agentů
+              href: platform/agent-manage.md
+            - name: Stav agenta
+              href: insights/solution-agenthealth.md
+            - name: Zdroje dat
+              items:
+                - name: Přehled
+                  href: platform/agent-data-sources.md
+                - name: Události systému Windows
+                  href: platform/data-sources-windows-events.md
+                - name: Vlastní data JSON
+                  href: platform/data-sources-json.md
+                - name: Shromážděná data o výkonu
+                  href: platform/data-sources-collectd.md
+                - name: Syslog
+                  href: platform/data-sources-syslog.md
+                - name: Čítače výkonu
+                  href: platform/data-sources-performance-counters.md
+                - name: Výkon linuxových aplikací
+                  href: platform/data-sources-linux-applications.md
+                - name: Protokoly IIS
+                  href: platform/data-sources-iis-logs.md
+                - name: Vlastní protokoly
+                  href: platform/data-sources-custom-logs.md
+                - name: Vlastní pole
+                  href: platform/custom-fields.md
+        - name: Řešení potíží
+          items:
+            - name: Rozšíření Log Analytics pro virtuální počítače
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/vmext-troubleshoot.md
+            - name: Agent Log Analytics pro Windows
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/agent-windows-troubleshoot.md
+            - name: Linuxový agent Log Analytics
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/agent-linux-troubleshoot.md
     - name: Automatické škálování
       items:
         - name: Přehled
@@ -1148,29 +1178,6 @@
               href: log-query/dashboard-upgrade.md
         - name: Odeslání dat do Grafany
           href: platform/grafana-plugin.md
-    - name: Vlastní shromažďování a analýza dat
-      items:
-        - name: Vlastní metriky
-          items:
-            - name: Vlastní metriky
-              href: platform/metrics-custom-overview.md
-            - name: Rozhraní REST API pro metriky
-              href: platform/metrics-store-custom-rest-api.md
-        - name: Vlastní protokoly
-          items:
-            - name: Rozhraní API kolekce dat služby Log Analytics
-              href: platform/data-collector-api.md
-            - name: Příklad kanálu rozhraní API kolekce dat služby Log Analytics
-              href: platform/create-pipeline-datacollector-api.md
-        - name: Logic Apps
-          items:
-            - name: Konektor protokolů služby Azure Monitor
-              href: platform/logicapp-flow-connector.md
-            - name: Application Insights Connector
-              href: app/automate-with-logic-apps.md
-        - name: REST API
-          displayname: 'metrics, analyze'
-          href: platform/rest-api-walkthrough.md
     - name: Integrace produktu System Center
       items:
         - name: Připojení Operations Managera
@@ -1274,6 +1281,9 @@
           href: /rest/api/monitor/
         - name: Protokoly služby Azure Monitor
           href: /rest/api/loganalytics
+        - name: Podrobný průvodce rozhraním REST API
+          displayname: 'metrics, analyze'
+          href: platform/rest-api-walkthrough.md
     - name: Šablony Resource Manageru
       items:
         - name: Azure Monitor
