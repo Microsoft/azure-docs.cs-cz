@@ -1,17 +1,17 @@
 ---
-title: Registrace datových prostředků v Azure Data Catalogu
+title: 'Kurz: registrace datových assetů v Azure Data Catalog'
 description: V tomto kurzu se dozvíte, jak zaregistrovat datové assety v Azure Data Catalog.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 10733dc59d7b143657c67e24d45d4a7c920cbd03
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 66bacdf27b2ef9cf624b645cb6e4c123d9c3fa2a
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255190"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135874"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Kurz: registrace datových assetů v Azure Data Catalog
 
@@ -67,31 +67,31 @@ Datové assety z ukázkové databáze teď můžete registrovat pomocí Azure Da
 
 6. Zaregistrujte metadata datového assetu. V tomto příkladu zaregistrujete objekty **produktu** z ukázkového oboru názvů:
 
-    1. Ve stromové struktuře **hierarchie serveru** rozbalte ukázku databáze a vyberte **tabulky SalesLT**.
+   1. Ve stromové struktuře **hierarchie serveru** rozbalte ukázku databáze a vyberte **tabulky SalesLT**.
 
-    2. Pomocí kombinace kláves CTRL + SELECT vyberte **Product**, **ProductCategory**, **ProductDescription**a **ProductModel** .
+   2. Pomocí kombinace kláves CTRL + SELECT vyberte **Product**, **ProductCategory**, **ProductDescription**a **ProductModel** .
 
-    3. Vyberte **šipku vybrané pro přesun** ( **>** ). Tím se přesunou všechny vybrané objekty do seznamu **Objekty k registraci**.
+   3. Vyberte **šipku vybrané pro přesun** ( **>** ). Tím se přesunou všechny vybrané objekty do seznamu **Objekty k registraci**.
 
-          ![Kurz Azure Data Catalog – procházení a výběr objektů](media/register-data-assets-tutorial/data-catalog-server-hierarchy.png)
+      ![Kurz Azure Data Catalog – procházení a výběr objektů](media/register-data-assets-tutorial/data-catalog-server-hierarchy.png)
 
-    4. Vyberte možnost**Zahrnout náhled**, pokud chcete zahrnout snímek náhledu dat. Snímek obsahuje až 20 záznamů z každé tabulky a zkopíruje se do katalogu.
+   4. Vyberte možnost**Zahrnout náhled**, pokud chcete zahrnout snímek náhledu dat. Snímek obsahuje až 20 záznamů z každé tabulky a zkopíruje se do katalogu.
 
-    5. Vyberte možnost **Zahrnout profil dat**, pokud chcete zahrnout snímek statistik objektu pro profil dat (např.: minimální, maximální a průměrné hodnoty sloupce, počet řádků).
+   5. Vyberte možnost **Zahrnout profil dat**, pokud chcete zahrnout snímek statistik objektu pro profil dat (např.: minimální, maximální a průměrné hodnoty sloupce, počet řádků).
 
-    6. Do pole **Přidat značky** zadejte **prodej, produkt a Azure SQL**. Tím se přidají vyhledávací značky pro tyto datové assety. Značky jsou skvělý způsob, jak pomoci uživatelům najít registrovaný zdroj dat.
+   6. Do pole **Přidat značky** zadejte **prodej, produkt a Azure SQL**. Tím se přidají vyhledávací značky pro tyto datové assety. Značky jsou skvělý způsob, jak pomoci uživatelům najít registrovaný zdroj dat.
 
-    7. Zadejte jméno **experta** na tyto data (volitelné).
+   7. Zadejte jméno **experta** na tyto data (volitelné).
 
-          ![Kurz Azure Data Catalog – objekty k registraci](media/register-data-assets-tutorial/data-catalog-objects-register.png)
+      ![Kurz Azure Data Catalog – objekty k registraci](media/register-data-assets-tutorial/data-catalog-objects-register.png)
 
-    8. Vyberte **Registrovat**. Služba Azure Data Catalog zaregistruje vaše vybrané objekty. V tomto cvičení jsou zaregistrovány vybrané objekty z ukázkové databáze. Registrační nástroj vyextrahuje metadata z datového assetu a zkopíruje je do služby Azure Data Catalog. Data zůstanou tam, kde se aktuálně zůstanou. Data zůstávají pod kontrolou správců a zásad systému původu.
+   8. Vyberte **Registrovat**. Služba Azure Data Catalog zaregistruje vaše vybrané objekty. V tomto cvičení jsou zaregistrovány vybrané objekty z ukázkové databáze. Registrační nástroj vyextrahuje metadata z datového assetu a zkopíruje je do služby Azure Data Catalog. Data zůstanou tam, kde se aktuálně zůstanou. Data zůstávají pod kontrolou správců a zásad systému původu.
 
-          ![Azure Data Catalog – registrované objekty](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
+      ![Azure Data Catalog – registrované objekty](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
 
     9. Chcete-li zobrazit registrované objekty zdroje dat, vyberte možnost **Zobrazit portál**. Na portálu Azure Data Catalog potvrďte, že se v zobrazení tabulky zobrazí všechny čtyři tabulky a databáze (ověřte, zda je panel hledání jasný).
 
-        ![Objekty na portálu Azure Data Catalog](media/register-data-assets-tutorial/data-catalog-view-portal.png)
+       ![Objekty na portálu Azure Data Catalog](media/register-data-assets-tutorial/data-catalog-view-portal.png)
 
 V tomto cvičení jste zaregistrovali objekty z ukázkové databáze pro Azure SQL Database tak, aby je uživatelé ve vaší organizaci mohli snadno zjistit.
 
@@ -115,23 +115,24 @@ Následuje několik příkladů, jak zjistit datové assety v katalogu.
 
 Základní vyhledávání vám pomůže prohledat katalog pomocí jednoho nebo více hledaných výrazů. Ve výsledcích se zobrazí veškeré assety, které odpovídají jakékoli vlastnosti jednoho nebo více zadaných výrazů.
 
-1. na Azure Data Catalogovém portálu vyberte **Domů** . Pokud jste zavřeli webový prohlížeč, přejdete na [stránku Azure Data Catalog domovské stránce](https://www.azuredatacatalog.com).
+1. Na Azure Data Catalogovém portálu vyberte **Domů** . Pokud jste zavřeli webový prohlížeč, přejdete na [stránku Azure Data Catalog domovské stránce](https://www.azuredatacatalog.com).
 
 2. Do vyhledávacího pole zadejte `product` a stiskněte klávesu **ENTER**.
 
-    ![Azure Data Catalog – základní textové vyhledávání](media/register-data-assets-tutorial/data-catalog-basic-text-search.png)
+   ![Azure Data Catalog – základní textové vyhledávání](media/register-data-assets-tutorial/data-catalog-basic-text-search.png)
 
 3. Ověřte, že jsou ve výsledcích zobrazeny všechny čtyři tabulky a databáze. Můžete přepínat mezi **zobrazením mřížky** a **zobrazením seznamu** výběrem tlačítek na panelu nástrojů, jak je znázorněno na následujícím obrázku. Všimněte si, že hledané klíčové slovo je ve výsledcích vyhledávání zvýrazněno, protože možnost **Zvýraznit** je **ZAPNUTO**. Ve výsledcích vyhledávání můžete také upřesnit **počet výsledků na stránku**.
 
-    ![Azure Data Catalog – výsledky základního textového vyhledávání](media/register-data-assets-tutorial/data-catalog-basic-text-search-results.png)
+   ![Azure Data Catalog – výsledky základního textového vyhledávání](media/register-data-assets-tutorial/data-catalog-basic-text-search-results.png)
 
-    Panel **Vyhledávání** se nachází na levé straně a panel **Vlastnosti** na pravé. Na panelu **Vyhledávání** lze změnit kritéria vyhledávání a filtrovat výsledky. Na panelu **Vlastnosti** se zobrazují vlastnosti vybraného objektu v mřížce nebo seznamu.
+   Panel **Vyhledávání** se nachází na levé straně a panel **Vlastnosti** na pravé. Na panelu **Vyhledávání** lze změnit kritéria vyhledávání a filtrovat výsledky. Na panelu **Vlastnosti** se zobrazují vlastnosti vybraného objektu v mřížce nebo seznamu.
 
-4. ve výsledcích hledání vyberte **produkt** . Vyberte kartu **Náhled**, **sloupce**, **profil dat**a **dokumentace** , nebo výběrem šipky rozbalte dolní podokno.  
+4. Ve výsledcích hledání vyberte **produkt** . Vyberte kartu **Náhled**, **sloupce**, **profil dat**a **dokumentace** , nebo výběrem šipky rozbalte dolní podokno.  
 
-    ![Azure Data Catalog – spodní podokno](media/register-data-assets-tutorial/data-catalog-data-asset-preview.png)
+   ![Azure Data Catalog – spodní podokno](media/register-data-assets-tutorial/data-catalog-data-asset-preview.png)
 
-    Na kartě **Náhled** uvidíte náhled dat v tabulce **Produkt**.  
+   Na kartě **Náhled** uvidíte náhled dat v tabulce **Produkt**.
+
 5. Vyberte kartu **sloupce** pro vyhledání podrobností o sloupcích (například **název** a **datový typ**) v datovém assetu.
 
 6. Vyberte kartu **profil dat** a zobrazte si profilaci dat (například počet řádků, velikost dat nebo minimální hodnotu ve sloupci) v datovém assetu.
@@ -146,13 +147,13 @@ Funkce zkoumání vlastností vám pomůže zjistit datové assety v případě,
 
 3. Ověřte, že se ve výsledcích zobrazují tabulky a databáze.  
 
-    ![Data Catalog – výsledky vyhledávání funkce zkoumání vlastnost](media/register-data-assets-tutorial/data-catalog-property-scoping-results.png)
+   ![Data Catalog – výsledky vyhledávání funkce zkoumání vlastnost](media/register-data-assets-tutorial/data-catalog-property-scoping-results.png)
 
 ### <a name="save-the-search"></a>Uložení vyhledávání
 
 1. V podokně **hledání** v části **aktuální vyhledávání** zadejte název hledání a vyberte **Uložit**.
 
-    ![Azure Data Catalog – uložení vyhledávání](media/register-data-assets-tutorial/data-catalog-save-search.png)
+   ![Azure Data Catalog – uložení vyhledávání](media/register-data-assets-tutorial/data-catalog-save-search.png)
 
 2. Zkontrolujte, jestli se uložené vyhledávání zobrazuje v sekci **Uložená vyhledávání**.
 
@@ -166,7 +167,7 @@ Závorky lze použít k seskupení částí dotazu za účelem logické izolace,
 
 2. Zkontrolujte, jestli se vám ve výsledcích vyhledávání zobrazuje pouze tabulka **Product**.
 
-    ![Azure Data Catalog – vyhledávání seskupení](media/register-data-assets-tutorial/data-catalog-grouping-search.png)
+   ![Azure Data Catalog – vyhledávání seskupení](media/register-data-assets-tutorial/data-catalog-grouping-search.png)
 
 ### <a name="comparison-operators"></a>Operátory porovnání
 
@@ -180,7 +181,7 @@ S pomocí operátorů porovnání lze použít porovnávání jiné než rovnost
 
 4. Potvrďte, že jste viděli tabulky **Product**, **ProductCategory**a **ProductDescription** a SQL Database, kterou jste zaregistrovali ve výsledcích hledání.
 
-    ![Azure Data Catalog – výsledky vyhledávání porovnání](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
+   ![Azure Data Catalog – výsledky vyhledávání porovnání](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
 
 Podrobné informace o zjišťování datových assetů najdete v tématu [Jak zjistit datové assety](data-catalog-how-to-discover.md) . Další informace o syntaxi hledání naleznete v tématu [Data Catalog reference syntaxe vyhledávání](/rest/api/datacatalog/#search-syntax-reference).
 
@@ -192,7 +193,7 @@ V tomto cvičení přidáte poznámky k jednomu datovému assetu (ProductPhoto).
 
 1. Přejít na [domovskou stránku Azure Data Catalog](https://www.azuredatacatalog.com) a vyhledat `tags:product` datové assety, které jste zaregistrovali.
 
-2. ve výsledcích hledání vyberte **ProductModel** .  
+2. Ve výsledcích hledání vyberte **ProductModel** .  
 
 3. Zadejte **Obrázky produktu** pro **Popisný název** a jako **Popis** zadejte **Fotografie produktu pro marketingové materiály**.
 
@@ -233,21 +234,21 @@ V tomto cvičení otevřete datové assety v integrovaném klientském nástroji
 
 1. Ve výsledcích vyhledávání vyberte možnost **Product**. na panelu nástrojů vyberte **otevřít** a vyberte **Excel**.
 
-    ![Azure Data Catalog – připojení k datovému assetu](media/register-data-assets-tutorial/data-catalog-connect1.png)
+   ![Azure Data Catalog – připojení k datovému assetu](media/register-data-assets-tutorial/data-catalog-connect1.png)
 
 2. V automaticky otevíraném okně stahování vyberte **otevřít** . Přesný postup a prostředí se může mírně lišit v závislosti na prohlížeči.
 
 3. V okně **Upozornění zabezpečení aplikace Microsoft Excel** vyberte možnost **Povolit**.
 
-    ![Azure Data Catalog – automaticky otevřené okno zabezpečení Excelu](media/register-data-assets-tutorial/data-catalog-excel-security-popup.png)
+   ![Azure Data Catalog – automaticky otevřené okno zabezpečení Excelu](media/register-data-assets-tutorial/data-catalog-excel-security-popup.png)
 
 4. V dialogovém okně **Import dat** ponechte výchozí hodnoty a vyberte **OK**.
 
-    ![Azure Data Catalog – import dat aplikace Excel](media/register-data-assets-tutorial/data-catalog-excel-import-data.png)
+   ![Azure Data Catalog – import dat aplikace Excel](media/register-data-assets-tutorial/data-catalog-excel-import-data.png)
 
 5. Zobrazení zdroje dat v Excelu.
 
-    ![Azure Data Catalog – tabulka produktů v Excelu](media/register-data-assets-tutorial/data-catalog-connect2.png)
+   ![Azure Data Catalog – tabulka produktů v Excelu](media/register-data-assets-tutorial/data-catalog-connect2.png)
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
@@ -259,7 +260,7 @@ V tomto cvičení jste se připojili k datovým assetům zjištěným pomocí sl
 
 3. Použijte příslušné ověření a přihlašovací údaje pro přístup k datovému assetu. Pokud nemáte přístup, použijte informace uvedené v poli **Žádost o přístup** a vyžádejte si jej.
 
-    ![Azure Data Catalog – žádost o přístup](media/register-data-assets-tutorial/data-catalog-request-access.png)
+   ![Azure Data Catalog – žádost o přístup](media/register-data-assets-tutorial/data-catalog-request-access.png)
 
 Vyberte **Zobrazit připojovací řetězce** k zobrazení a zkopírování připojovacích řetězců ADO.NET, ODBC a OLEDB do schránky pro použití ve vaší aplikaci.
 
@@ -277,7 +278,7 @@ Služba Data Catalog vám umožní zjistit zdroje dat a zobrazit metadata souvis
 
 1. Přejděte na [domovskou stránku služby Azure Data Catalog](https://www.azuredatacatalog.com). Do textového pole **Vyhledávání** zadejte `tags:cycles` a stiskněte klávesu **ENTER**.
 
-2. v seznamu výsledků vyberte položku a na panelu nástrojů vyberte **převzít vlastnictví** .
+2. V seznamu výsledků vyberte položku a na panelu nástrojů vyberte **převzít vlastnictví** .
 
 3. V části **Správa** na panelu **vlastnosti** vyberte **převzít vlastnictví**.
 
@@ -299,20 +300,24 @@ Ve službě Azure Data Catalog je možné odstranit jednotlivý asset nebo více
 
 3. V seznamu výsledků vyberte položku a na panelu nástrojů vyberte **Odstranit** , jak je znázorněno na následujícím obrázku:
 
-    ![Azure Data Catalog – odstranění položky mřížky](media/register-data-assets-tutorial/data-catalog-delete-grid-item.png)
+   ![Azure Data Catalog – odstranění položky mřížky](media/register-data-assets-tutorial/data-catalog-delete-grid-item.png)
 
-    Pokud používáte zobrazení seznamu, je zaškrtávací políčko nalevo od položky, jak je znázorněno na následujícím obrázku:
+   Pokud používáte zobrazení seznamu, je zaškrtávací políčko nalevo od položky, jak je znázorněno na následujícím obrázku:
 
-    ![Azure Data Catalog – odstranění položky seznamu](media/register-data-assets-tutorial/data-catalog-delete-list-item.png)
+   ![Azure Data Catalog – odstranění položky seznamu](media/register-data-assets-tutorial/data-catalog-delete-list-item.png)
 
-    Můžete také vybrat a odstranit více datových assetů, jak ukazuje následující obrázek:
+   Můžete také vybrat a odstranit více datových assetů, jak ukazuje následující obrázek:
 
-    ![Azure Data Catalog – odstranění více datových assetů](media/register-data-assets-tutorial/data-catalog-delete-assets.png)
+   ![Azure Data Catalog – odstranění více datových assetů](media/register-data-assets-tutorial/data-catalog-delete-assets.png)
 
 > [!NOTE]
 > Výchozí chování katalogu je umožnit každému uživateli zaregistrovat libovolný zdroj dat a umožnit každému uživateli odstranit libovolný zaregistrovaný datový asset. Možnosti správy zahrnuté do Azure Data Catalog Standard Edition poskytují další možnosti pro převzetí vlastnictví assetů, omezení, kdo může assety zjistit, a omezení, kdo může assety odstranit.
 
-## <a name="summary"></a>Souhrn
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Postupujte podle kroků [odebrat datové prostředky](#remove-data-assets) a vyčistěte všechny prostředky, které jste mohli použít při použití tohoto kurzu.
+
+## <a name="summary"></a>Shrnutí
 
 V tomto kurzu jste prozkoumali základní možnosti služby Azure Data Catalog včetně registrace, přidávání poznámek, zjišťování a správy datových assetů organizace. Nyní, když jste dokončili kurz, je čas začít. Začít můžete ještě dnes registrací zdrojů dat, na která spoléháte vy a váš tým, a pozváním kolegů k používání katalogu.
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 8/11/2020
 ms.author: b-juche
-ms.openlocfilehash: 61e8c56e75e82bc28ddb2abf231d9a5e919691b0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f4cc253de0de9d099cfc4881f48182cf9b2a1616
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535395"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134577"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku s duálním protokolem (NFSv3 a protokolu SMB) pro Azure NetApp Files
 
@@ -36,6 +36,7 @@ Azure NetApp Files podporuje vytváření svazků pomocí systému souborů NFS 
 ## <a name="considerations"></a>Požadavky
 
 * Ujistěte se, že splňujete [požadavky pro připojení ke službě Active Directory](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
+* Na serveru DNS vytvořte zónu zpětného vyhledávání a přidejte do této zóny zpětného vyhledávání záznam ukazatele (PTR) hostitelského počítače služby AD. V opačném případě se vytvoření svazku se dvěma protokoly nezdaří.
 * Zajistěte, aby byl klient systému souborů NFS aktuální a běžel nejnovější aktualizace operačního systému.
 
 ## <a name="create-a-dual-protocol-volume"></a>Vytvoření svazku se dvěma protokoly

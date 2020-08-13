@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/09/2020
 ms.author: juliako
-ms.openlocfilehash: 5f8fb98b1032111eb55197fa5b7d561019be9de3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2c2d55b15fb69fe4c1aea21bb2183f0e40c3586c
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074485"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136486"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>Kurz: nahrávání, kódování a streamování videí pomocí Media Services V3
 
@@ -40,7 +40,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud nemáte nainstalovanou aplikaci Visual Studio, můžete získat [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
 - [Vytvořte účet Media Services](./create-account-howto.md).<br/>Nezapomeňte si pamatovat hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services.
@@ -72,7 +72,7 @@ Tato ukázka provede následující akce:
 6. Vytvoří **Lokátor streamování**.
 7. Vytvoří adresy URL pro streamování.
 
-### <a name="start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />Začínáme s rozhraním API služby Media Services se sadou .NET SDK
+### <a name="start-using-media-services-apis-with-net-sdk"></a>Začínáme s rozhraním API služby Media Services se sadou .NET SDK
 
 Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, musíte vytvořit objekt **AzureMediaServicesClient**. Pokud chcete vytvořit objekt, musíte zadat přihlašovací údaje potřebné pro připojení klienta k Azure pomocí Azure AD. V kódu, který jste naklonovali na začátku článku, vytvoří funkce **GetCredentialsAsync** objekt ServiceClientCredentials na základě pověření zadaných v místním konfiguračním souboru.
 

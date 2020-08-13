@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 08/11/2020
 ms.author: allensu
-ms.openlocfilehash: 93ce3b02ef8963a33e485b6560516e1d2b9c1ef5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 63c687cdfe3e014617b5a8773136dfb6513178ed
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424013"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135806"
 ---
 # <a name="what-is-virtual-network-nat"></a>Co je Virtual Network NAT?
 
@@ -153,7 +153,6 @@ Chceme zjistit, jak můžeme službu vylepšit. Navrhněte a hlasujte, co by se 
 
 * Překlad adres (NAT) je kompatibilní s veřejnou IP adresou SKU, předponou veřejné IP adresy a prostředky nástroje pro vyrovnávání zatížení. Základní prostředky, jako je základní nástroj pro vyrovnávání zatížení, a všechny produkty, které jsou z nich odvozené, nejsou kompatibilní se službou NAT.  Základní prostředky musí být umístěné v podsíti, která není nakonfigurovaná s překladem adres (NAT).
 * Rodina adres IPv4 je podporovaná.  Překlad adres (NAT) nekomunikuje s řadou IPv6 adres.  Překlad adres (NAT) nejde nasadit v podsíti s předponou IPv6.
-* Protokolování toku NSG se při použití překladu adres (NAT) nepodporuje.
 * Překlad adres (NAT) nemůže zahrnovat víc virtuálních sítí.
 
 ## <a name="next-steps"></a>Další kroky

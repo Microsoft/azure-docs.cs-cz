@@ -3,15 +3,15 @@ title: Seznam bezpečných adres URL pro virtuální počítače s Windows – A
 description: Seznam adres URL, které byste měli odblokovat, aby bylo zajištěno, že nasazení virtuálních klientů Windows funguje tak, jak má.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 37fb5ccf121fed6e772dc1cd3dcba2345d62c66f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d75d6ecf73dece6dad43367a7f869a1b8ec3d86b
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067201"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135857"
 ---
 # <a name="safe-url-list"></a>Seznam bezpečných adres URL
 
@@ -27,11 +27,12 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 |mrsglobalsteus2prod.blob.core.windows.net|443|Aktualizace zásobníku agenta a SXS|AzureCloud|
 |*.core.windows.net|443|Přenosy agenta|AzureCloud|
 |*.servicebus.windows.net|443|Přenosy agenta|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|Přenosy agenta|AzureCloud|
+|gcs.prod.monitoring.core.windows.net|443|Přenosy agenta|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Aktivace Windows|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Podpora Azure Portal|AzureCloud|
 | 169.254.169.254 | 80 | [Koncový bod služby metadat instance Azure](../virtual-machines/windows/instance-metadata-service.md) | – |
+| 168.63.129.16 | 80 | [Monitorování stavu hostitele relace](../virtual-network/security-overview.md#azure-platform-considerations) | – |
 
 >[!IMPORTANT]
 >Virtuální počítač s Windows teď podporuje značku plně kvalifikovaného názvu domény. Další informace najdete v tématu [použití Azure firewall k ochraně nasazení virtuálních ploch](../firewall/protect-windows-virtual-desktop.md)v systému Windows.

@@ -1,25 +1,15 @@
 ---
 title: Ukázka skriptu Azure CLI – spuštění virtuálního počítače v testovacím prostředí | Microsoft Docs
 description: Tento skript Azure CLI spustí virtuální počítač v laboratorním prostředí v Azure DevTest Labs.
-services: lab-services
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: lab-services
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/12/2018
-ms.author: spelluru
-ms.custom: mvc
-ms.openlocfilehash: a38e0eacdba2c37a18c41f307e4a8120e0e6285d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/11/2020
+ms.openlocfilehash: 793027916fb0d923cfd4052a4ecfc36fb24c7db7
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290342"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136116"
 ---
 # <a name="use-azure-cli-to-start-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Skript Azure CLI slouží ke spuštění virtuálního počítače v laboratorním prostředí v Azure DevTest Labs.
 

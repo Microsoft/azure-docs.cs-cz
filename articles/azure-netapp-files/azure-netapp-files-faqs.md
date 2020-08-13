@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 08/11/2020
 ms.author: b-juche
-ms.openlocfilehash: 7c792ee9c56a044942bb2249a57f2615c72badee
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 29055da1ea8093d413691a41d38d6280f43f728a
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533134"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134492"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -177,6 +177,11 @@ Svazek s duálním protokolem podporuje protokoly NFS i SMB.  Když se pokusíte
 
 Abyste se vyhnuli problému "oprávnění zamítnuto", ujistěte se, že systém Windows Active Directory zahrnuje `pcuser` před přístupem k přípojnému bodu. Pokud přidáte `pcuser` po zjištění problému "oprávnění zamítnuto", počkejte 24 hodin, než se položka mezipaměti před dalším pokusem o přístup vymaže.
 
+### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>Když se pokouším vytvořit svazek se dvěma protokoly, proč proces vytváření selže a dojde k chybě při ověřování konfigurace LDAP, zkuste to znovu po opravě konfigurace LDAP.  
+
+Na serveru DNS může chybět záznam ukazatele (PTR) hostitelského počítače služby AD. Musíte vytvořit zónu zpětného vyhledávání na serveru DNS a pak přidat záznam PTR hostitelského počítače služby AD v této zóně zpětného vyhledávání.
+
+Předpokládejme například, že IP adresa počítače AD je `1.1.1.1` , název hostitele počítače služby Active Directory (jak je nalezen pomocí `hostname` příkazu) `AD1` a název domény `myDomain.com` .  Záznam PTR přidaný do zóny zpětného vyhledávání by měl být `1.1.1.1`  ->  `AD1.myDomain.com` .
 
 ## <a name="capacity-management-faqs"></a>Nejčastější dotazy ke správě kapacity
 

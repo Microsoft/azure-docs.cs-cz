@@ -1,23 +1,23 @@
 ---
-title: Azure CLI – omezení přístupu pro import a export na spravované disky pomocí privátních odkazů (Preview)
-description: Povolte privátní odkazy (Preview) pro vaše spravované disky pomocí Azure CLI. Umožňuje bezpečně exportovat a importovat disky jenom v rámci vaší virtuální sítě.
+title: Azure CLI – omezení přístupu pro import a export na spravované disky pomocí privátních odkazů
+description: Povolte privátní odkazy na spravované disky pomocí Azure CLI. Umožňuje bezpečně exportovat a importovat disky jenom v rámci vaší virtuální sítě.
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 5df11e704987098d61ced7afbff5e6234d4d5f04
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 009f8ec69261103faaa4de1e27ae7383257a13ca
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420276"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136401"
 ---
-# <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links-preview"></a>Azure CLI – omezení přístupu pro import/export u spravovaných disků s privátními odkazy (Preview)
+# <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI – omezení přístupu pro import/export u spravovaných disků s privátními odkazy
 
-Pomocí [privátních koncových bodů](../../private-link/private-endpoint-overview.md) (Preview) můžete omezit export a import spravovaných disků a bezpečně přistupovat k datům přes [soukromé propojení](../../private-link/private-link-overview.md) z klientů ve službě Azure Virtual Network. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro službu Managed disks. Síťový provoz mezi klienty virtuální sítě a spravovanými disky prochází přes virtuální síť a privátním odkazem v páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu. 
+Podpora privátních odkazů se službou Managed disks je aktuálně ve verzi Preview. Pomocí [privátních koncových bodů](../../private-link/private-endpoint-overview.md) můžete omezit export a import spravovaných disků a bezpečně přistupovat k datům přes [soukromé propojení](../../private-link/private-link-overview.md) z klientů ve službě Azure Virtual Network. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro službu Managed disks. Síťový provoz mezi klienty ve své virtuální síti a spravovanými disky se přesměruje jenom přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu.
 
 Pokud chcete používat privátní odkazy pro export a import spravovaných disků, nejdřív vytvořte prostředek pro přístup k disku a propojte ho s virtuální sítí ve stejném předplatném vytvořením privátního koncového bodu. Pak přidružte disk nebo snímek k instanci přístupu k disku. Nakonec nastavte vlastnost NetworkAccessPolicy disku nebo snímku na `AllowPrivate` . Tím se omezí přístup k vaší virtuální síti. 
 

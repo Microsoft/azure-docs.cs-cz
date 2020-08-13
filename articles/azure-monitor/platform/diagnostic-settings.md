@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: ff0df654650bb1c32d5c3e9833ebde2a81e3d65c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 74e0a63da87a79cbd582cd6da5992251fc256504
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799952"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135432"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Vytvoření nastavení diagnostiky pro odesílání protokolů a metrik platforem do různých umístění
 [Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. [Metriky platformy](data-platform-metrics.md) se ve výchozím nastavení shromažďují a obvykle se ukládají do databáze Azure monitor metrik. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání metrik platforem a protokolů platforem do různých umístění.
@@ -41,34 +41,24 @@ Následující video vás provede protokoly platformy směrování s nastavením
 
 
 ## <a name="destinations"></a>Cíle
+Protokoly a metriky platformy je možné odeslat do cílových umístění v následující tabulce. 
 
-Protokoly a metriky platformy je možné odeslat do cílových umístění v následující tabulce. Podrobnosti o odesílání dat do tohoto cíle získáte podle každého odkazu v následující tabulce.
-
-| Cíl | Popis |
+| Cíl | Description |
 |:---|:---|
-| [Pracovní prostor Log Analytics](#log-analytics-workspace) | Odesílání protokolů a metrik do Log Analyticsového pracovního prostoru vám umožní je analyzovat s dalšími daty monitorování shromážděnými pomocí Azure Monitor pomocí výkonných dotazů protokolu a také využívat jiné Azure Monitor funkce, jako jsou výstrahy a vizualizace. |
-| [Centrum událostí](#event-hub) | Odesílání protokolů a metrik do Event Hubs umožňuje streamování dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics. |
-| [Účet úložiště Azure](#azure-storage) | Archivace protokolů a metrik do účtu služby Azure Storage je užitečná pro audit, statickou analýzu nebo zálohování. V porovnání s protokoly Azure Monitor a pracovním prostorem Log Analytics je úložiště Azure levnější a protokoly se můžou uchovávat po neomezenou dobu. |
+| [Pracovní prostor Log Analytics](design-logs-deployment.md) | Odesílání protokolů a metrik do Log Analyticsového pracovního prostoru vám umožní je analyzovat s dalšími daty monitorování shromážděnými pomocí Azure Monitor pomocí výkonných dotazů protokolu a také využívat jiné Azure Monitor funkce, jako jsou výstrahy a vizualizace. |
+| [Centrum událostí](/azure/event-hubs/) | Odesílání protokolů a metrik do Event Hubs umožňuje streamování dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics.  |
+| [Účet úložiště Azure](/azure/storage/blobs/) | Archivace protokolů a metrik do účtu služby Azure Storage je užitečná pro audit, statickou analýzu nebo zálohování. V porovnání s protokoly Azure Monitor a pracovním prostorem Log Analytics je úložiště Azure levnější a protokoly se můžou uchovávat po neomezenou dobu.  |
 
 
-## <a name="prerequisites"></a>Předpoklady
-Všechna cílová umístění pro nastavení diagnostiky musí být vytvořena s požadovanými oprávněními. V níže uvedených částech najdete požadavky na požadované součásti pro jednotlivé cíle.
+### <a name="destination-requirements"></a>Požadavky na cíl
 
-### <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics
-[Vytvořte nový pracovní prostor](../learn/quick-create-workspace.md) , pokud ho ještě nemáte. Pracovní prostor nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným.
+Před vytvořením nastavení diagnostiky je nutné vytvořit všechna cílová umístění pro nastavení diagnostiky. Cíl nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který nastavení nakonfiguruje, má odpovídající přístup RBAC k oběma předplatným. Následující tabulka obsahuje jedinečné požadavky na jednotlivé cíle včetně případných regionálních omezení.
 
-### <a name="event-hub"></a>Centrum událostí
-[Vytvořte centrum událostí](../../event-hubs/event-hubs-create.md) , pokud ho ještě nemáte. Obor názvů Event Hubs nemusí být ve stejném předplatném jako odběr, který generuje protokoly, pokud uživatel, který nastavení nakonfiguruje, má odpovídající přístup RBAC k oběma předplatným a oba odběry jsou ve stejném tenantovi.
-
-Zásady sdíleného přístupu pro obor názvů definují oprávnění, která má mechanismus streamování. Streamování do Event Hubs vyžaduje oprávnění spravovat, odesílat a naslouchat. Zásady sdíleného přístupu můžete vytvořit nebo upravit na Azure Portal na kartě konfigurovat pro svůj obor názvů Event Hubs. Chcete-li aktualizovat nastavení diagnostiky tak, aby zahrnovalo streamování, musíte mít oprávnění ListKey k tomuto autorizačnímu pravidlu Event Hubs. 
-
-
-### <a name="azure-storage"></a>Azure Storage
-[Vytvořte účet úložiště Azure](../../storage/common/storage-account-create.md) , pokud ho ještě nemáte. Účet úložiště nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným.
-
-Neměli byste používat existující účet úložiště, který obsahuje jiná, nemonitorovaná data, která jsou v něm uložená, abyste mohli lépe řídit přístup k datům. Pokud společně archivujte protokoly aktivit a protokoly prostředků, můžete použít stejný účet úložiště, abyste zachovali všechna data monitorování v centrálním umístění.
-
-Pokud chcete odesílat data do neměnných úložišť, nastavte pro účet úložiště neměnné zásady, jak je popsáno v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](../../storage/blobs/storage-blob-immutability-policies-manage.md). Musíte postupovat podle všech kroků v tomto článku, včetně povolení chráněných připojených objektů BLOB pro zápis.
+| Cíl | Požadavky |
+|:---|:---|
+| Pracovní prostor služby Log Analytics | Pracovní prostor nemusí být ve stejné oblasti jako monitorovaný prostředek.|
+| Event Hubs | Zásady sdíleného přístupu pro obor názvů definují oprávnění, která má mechanismus streamování. Streamování do Event Hubs vyžaduje oprávnění spravovat, odesílat a naslouchat. Chcete-li aktualizovat nastavení diagnostiky tak, aby zahrnovalo streamování, musíte mít oprávnění ListKey k tomuto autorizačnímu pravidlu Event Hubs.<br><br>Obor názvů centra událostí musí být ve stejné oblasti jako monitorovaný prostředek, pokud je prostředek místní. |
+| Účet služby Azure Storage | Neměli byste používat existující účet úložiště, který obsahuje jiná, nemonitorovaná data, která jsou v něm uložená, abyste mohli lépe řídit přístup k datům. Pokud společně archivujte protokoly aktivit a protokoly prostředků, můžete použít stejný účet úložiště, abyste zachovali všechna data monitorování v centrálním umístění.<br><br>Pokud chcete odesílat data do neměnných úložišť, nastavte pro účet úložiště neměnné zásady, jak je popsáno v tématu [nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](../../storage/blobs/storage-blob-immutability-policies-manage.md). Musíte postupovat podle všech kroků v tomto článku, včetně povolení chráněných připojených objektů BLOB pro zápis.<br><br>Účet úložiště musí být ve stejné oblasti jako monitorovaný prostředek, pokud je prostředek regionální. |
 
 > [!NOTE]
 > Účty Azure Data Lake Storage Gen2 se v současné době nepodporují jaké cíl pro nastavení diagnostiky, přestože na webu Azure Portal můžou být uvedené jako platná možnost.

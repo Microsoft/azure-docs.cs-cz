@@ -2,19 +2,19 @@
 title: Azure Key Vault – použití obnovitelného odstranění pomocí rozhraní příkazového řádku
 description: Příklady případů použití obnovitelného odstranění s výstřižky kódu CLI
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 08/12/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 7023a2301b6b6137f7a0485523c68f21d72d67a9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/11/2020
+ms.author: sudbalas
+ms.openlocfilehash: 8f32fcc319c3bffd9089d894c5376268227a0151
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385734"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135925"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak používat obnovitelné odstranění Key Vaultu s využitím CLI
 
@@ -23,7 +23,7 @@ Funkce obnovitelného odstranění Azure Key Vault umožňuje obnovení odstran�
 - Podpora obnovitelného odstranění trezoru klíčů
 - Podpora obnovitelného mazání objektů trezoru klíčů; klíče, tajné klíče a certifikáty
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure CLI – Pokud nemáte toto nastavení pro vaše prostředí, přečtěte si téma [správa Key Vault pomocí](manage-with-cli2.md)rozhraní příkazového řádku Azure.
 
@@ -33,7 +33,7 @@ Informace o Key Vault specifických referenčních informacích pro rozhraní p�
 
 Operace Key Vault se samostatně spravují prostřednictvím oprávnění řízení přístupu na základě role (RBAC) následujícím způsobem:
 
-| Operace | Popis | Oprávnění uživatele |
+| Operace | Description | Oprávnění uživatele |
 |:--|:--|:--|
 |Seznam|Zobrazí seznam odstraněných trezorů klíčů.|Microsoft. deletedVaults trezor//Read|
 |Zotavit|Obnoví odstraněný Trezor klíčů.|Trezor Microsoft. a trezory/zápis|
@@ -58,11 +58,7 @@ az keyvault update -n ContosoVault --enable-soft-delete true
 
 ### <a name="new-key-vault"></a>Nový trezor klíčů
 
-Povolení obnovitelného odstranění nového trezoru klíčů se provádí v době vytváření přidáním příznaku pro povolení slabého odstranění do příkazu pro vytvoření.
-
-```azurecli
-az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-delete true --location westus
-```
+U všech trezorů klíčů je ve výchozím nastavení automaticky povolené obnovitelné odstranění. Od prosince 31 2020 již nebude možné vytvořit nový trezor klíčů bez povoleného obnovitelného odstranění.
 
 ### <a name="verify-soft-delete-enablement"></a>Ověřit povolení pro obnovitelné odstranění
 

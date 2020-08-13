@@ -5,13 +5,13 @@ author: shreyasharmamsft
 ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 73d5c3abb2edc940bee9727ce1f3b0c4e8e0a62e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/12/2020
+ms.openlocfilehash: d0a5b48e93e839b0a0adaf185700d7f60fec7948
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289940"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140679"
 ---
 # <a name="time-series-model-variables"></a>Proměnné modelu časové řady
 
@@ -27,14 +27,14 @@ V následující tabulce jsou uvedeny vlastnosti, které jsou relevantní pro je
 
 [![Tabulka proměnných modelu časové řady](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
 
-#### <a name="numeric-variables"></a>Číselné proměnné
+## <a name="numeric-variables"></a>Číselné proměnné
 
-| Proměnná – vlastnost | Popis |
+| Proměnná – vlastnost | Description |
 | --- | ---|
 | Filtr proměnných | Filtry jsou volitelné podmíněné klauzule, které omezují počet řádků, které se považují za výpočet. |
 | Hodnota proměnné | Hodnoty telemetrie používané pro výpočet pocházející ze zařízení nebo senzorů nebo transformované pomocí výrazů Time Series. Proměnné číselného typu musí být typu *Double*.|
 | Proměnlivá interpolace | Interpolace určuje, jak rekonstruovat signál pomocí stávajících dat. Možnosti *kroku* a *lineární* interpolace jsou k dispozici pro číselné proměnné. |
-| Agregace proměnných | Provádět výpočty prostřednictvím podporovaných [agregačních funkcí pro číselné proměnné typy](https://docs.microsoft.com/rest/api/time-series-insights/preview#numeric-variable-kind-1). |
+| Agregace proměnných | Provádět výpočty prostřednictvím podporovaných [agregačních funkcí pro číselné proměnné typy](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#numeric-variable-kind). |
 
 Proměnné odpovídají následujícímu příkladu JSON:
 
@@ -57,9 +57,9 @@ Proměnné odpovídají následujícímu příkladu JSON:
 }
 ```
 
-#### <a name="categorical-variables"></a>Proměnné kategorií
+## <a name="categorical-variables"></a>Proměnné kategorií
 
-| Proměnná – vlastnost | Popis |
+| Proměnná – vlastnost | Description |
 | --- | ---|
 | Filtr proměnných | Filtry jsou volitelné podmíněné klauzule, které omezují počet řádků, které se považují za výpočet. |
 | Hodnota proměnné | Hodnoty telemetrie používané pro výpočet pocházející ze zařízení nebo senzorů. Proměnné kategorií druhu musí být buď *Long* , nebo *String*. |
@@ -73,7 +73,7 @@ Proměnné odpovídají následujícímu příkladu JSON:
 "Status": {
   "kind": "categorical",
   "value": {
-     "tsx": "$event.Status.Long" 
+     "tsx": "$event.Status.Long"
 },
   "interpolation": {
     "kind": "step",
@@ -97,12 +97,12 @@ Proměnné odpovídají následujícímu příkladu JSON:
 }
 ```
 
-#### <a name="aggregate-variables"></a>Agregační proměnné
+## <a name="aggregate-variables"></a>Agregační proměnné
 
-| Proměnná – vlastnost | Popis |
+| Proměnná – vlastnost | Description |
 | --- | ---|
 | Filtr proměnných | Filtry jsou volitelné podmíněné klauzule, které omezují počet řádků, které se považují za výpočet. |
-| Agregace proměnných | Provádět výpočty prostřednictvím podporovaných [agregačních funkcí pro agregované typy proměnných](https://docs.microsoft.com/rest/api/time-series-insights/preview#aggregate-variable-kind-1). |
+| Agregace proměnných | Provádět výpočty prostřednictvím podporovaných [agregačních funkcí pro agregované typy proměnných](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind). |
 
 Proměnné odpovídají následujícímu příkladu JSON:
 
@@ -123,4 +123,3 @@ Proměnné jsou uloženy v definici typu modelu časové řady a lze je poskytno
 * Přečtěte si další informace o [modelu časových řad](./concepts-model-overview.md).
 
 * Přečtěte si další informace o tom, jak definovat proměnné vložené pomocí [rozhraní API pro dotazy](./concepts-query-overview.md).
-

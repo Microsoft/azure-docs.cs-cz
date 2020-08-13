@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 07/16/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 81e2abc1b4fd0c540b08f96e6b34c16fca3319f1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 59df49d320b23686a3d053335ea2b95e98125b28
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132012"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135551"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s Azure Monitor
 
@@ -60,7 +60,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/servery
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |CleanerCurrentPrice|Yes|Paměť: aktuální cena čisticího modulu|Count|Průměr|Aktuální cena paměti $ USD, normalizovaná na 1000.|ServerResourceType|
 |CleanerMemoryNonshrinkable|Yes|Paměť: nezmenšovaná paměť čisticí paměti|Bajty|Průměr|Množství paměti (v bajtech), které není předmětem mazání čisticím pozadím.|ServerResourceType|
@@ -77,7 +77,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |mashup_engine_private_bytes_metric|Yes|Počet privátních bajtů modulu M|Bajty|Průměr|Používání privátních bajtů procesy v hybridních hybridních modulech.|ServerResourceType|
 |mashup_engine_qpu_metric|Yes|QPU modulu M|Count|Průměr|QPU využití hybridních procesů v hybridních modulech|ServerResourceType|
 |mashup_engine_virtual_bytes_metric|Yes|Virtuální bajty motoru M|Bajty|Průměr|Využití virtuálních bajtů procesy modulu hybridní webové aplikace|ServerResourceType|
-|memory_metric|Yes|Paměť|Bajty|Průměr|Memory: Rozsah 0-25 GB pro S1, 0-50 GB pro S2 a 0-100 GB pro S4|ServerResourceType|
+|memory_metric|Yes|Memory (Paměť)|Bajty|Průměr|Memory: Rozsah 0-25 GB pro S1, 0-50 GB pro S2 a 0-100 GB pro S4|ServerResourceType|
 |memory_thrashing_metric|Yes|Thrashing paměti|Procento|Průměr|Průměrná velikost thrashing paměti|ServerResourceType|
 |MemoryLimitHard|Yes|Paměť: limit paměti – pevný|Bajty|Průměr|Limit pevné paměti, z konfiguračního souboru.|ServerResourceType|
 |Hodnota memorylimithigh|Yes|Paměť: limit paměti – vysoká|Bajty|Průměr|Horní limit paměti, z konfiguračního souboru.|ServerResourceType|
@@ -113,7 +113,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |BackendDuration|Yes|Doba trvání požadavků back-endu|Milisekund|Průměr|Doba trvání požadavků back-endu v milisekundách|Umístění, název hostitele|
 |Kapacita|Yes|Kapacita|Procento|Průměr|Metrika využití pro službu ApiManagement|Umístění|
@@ -137,7 +137,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft. AppConfiguration/configurationStores
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |HttpIncomingRequestCount|Yes|HttpIncomingRequestCount|Count|Count|Celkový počet příchozích požadavků HTTP.|StatusCode, ověřování|
 |HttpIncomingRequestDuration|Yes|HttpIncomingRequestDuration|Count|Průměr|Latence požadavku HTTP.|StatusCode, ověřování|
@@ -146,7 +146,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/pružina
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |JVM. GC. Live. data. Size|Yes|JVM. GC. Live. data. Size|Bajty|Průměr|Velikost staré generace fondu paměti po úplném GC|Nasazení, AppName, pod|
 |JVM. GC. max. data. Size|Yes|JVM. GC. max. data. Size|Bajty|Průměr|Maximální velikost staré generace fondu paměti|Nasazení, AppName, pod|
@@ -178,7 +178,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |TotalJob|Yes|Celkový počet úloh|Count|Celkem|Celkový počet úloh|Runbook, stav|
 |TotalUpdateDeploymentMachineRuns|Yes|Celkový počet spuštěných počítačů nasazení aktualizace|Count|Celkem|Celkový počet spuštěných počítačů nasazení aktualizace softwaru v běhu nasazení aktualizace softwaru|SoftwareUpdateConfigurationName, status, TargetComputer, SoftwareUpdateConfigurationRunId|
@@ -187,7 +187,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |CoreCount|No|Vyhrazený počet jader|Count|Celkem|Celkový počet vyhrazených jader v účtu Batch|Žádné dimenze|
 |CreatingNodeCount|No|Vytváření počtu uzlů|Count|Celkem|Počet vytvořených uzlů|Žádné dimenze|
@@ -224,7 +224,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/Workspaces
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Aktivní jádra|Yes|Aktivní jádra|Count|Průměr|Počet aktivních jader|Scénář, název_clusteru|
 |Aktivní uzly|Yes|Aktivní uzly|Count|Průměr|Počet spuštěných uzlů|Scénář, název_clusteru|
@@ -245,35 +245,35 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. blockchain/blockchainMembers
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |BroadcastProcessedCount|Yes|Počet zpracovaných všesměrového vysílání|Count|Průměr|Počet zpracovaných transakcí|Uzel, kanál, typ, stav|
-|ConnectionAccepted|Yes|Přijatá připojení|Count|Celkem|Přijatá připojení|Uzel|
-|ConnectionActive|Yes|Aktivní připojení|Count|Průměr|Aktivní připojení|Uzel|
-|ConnectionHandled|Yes|Zpracovaná připojení|Count|Celkem|Zpracovaná připojení|Uzel|
+|ConnectionAccepted|Yes|Přijatá připojení|Count|Celkem|Přijatá připojení|Node|
+|ConnectionActive|Yes|Aktivní připojení|Count|Průměr|Aktivní připojení|Node|
+|ConnectionHandled|Yes|Zpracovaná připojení|Count|Celkem|Zpracovaná připojení|Node|
 |ConsensusEtcdraftCommittedBlockNumber|Yes|Konsensu Etcdraft potvrzené číslo bloku|Count|Průměr|Blokové číslo posledního zapsaného bloku|Uzel, kanál|
-|CpuUsagePercentageInDouble|Yes|Procento využití procesoru|Procento|Maximum|Procento využití procesoru|Uzel|
+|CpuUsagePercentageInDouble|Yes|Procento využití procesoru|Procento|Maximum|Procento využití procesoru|Node|
 |EndorserEndorsementFailures|Yes|Selhání potvrzení přítvrzování|Count|Průměr|Počet neúspěšných potvrzení|Uzel, kanál, chaincode, chaincodeerror|
 |GossipLeaderElectionLeader|Yes|Vedoucí Gossip vedoucího procesu|Count|Celkem|Partnerský uzel je vedoucí (1) nebo následný (0)|Uzel, kanál|
 |GossipMembershipTotalPeersKnown|Yes|Gossip členství celkem – počet známých partnerských vztahů|Count|Průměr|Celkový počet známých partnerských uzlů|Uzel, kanál|
 |GossipStateHeight|Yes|Výška stavu Gossip|Count|Průměr|Aktuální výška hlavní knihy|Uzel, kanál|
-|IOReadBytes|Yes|Bajty čtení v/v|Bajty|Celkem|Bajty čtení v/v|Uzel|
-|IOWriteBytes|Yes|Bajty zápisu v/v|Bajty|Celkem|Bajty zápisu v/v|Uzel|
+|IOReadBytes|Yes|Bajty čtení v/v|Bajty|Celkem|Bajty čtení v/v|Node|
+|IOWriteBytes|Yes|Bajty zápisu v/v|Bajty|Celkem|Bajty zápisu v/v|Node|
 |LedgerTransactionCount|Yes|Počet transakcí hlavní knihy|Count|Průměr|Počet zpracovaných transakcí|Uzel, kanál, transaction_type, chaincode, validation_code|
-|MemoryLimit|Yes|Omezení paměti|Bajty|Průměr|Omezení paměti|Uzel|
-|MemoryUsage|Yes|Využití paměti|Bajty|Průměr|Využití paměti|Uzel|
-|MemoryUsagePercentageInDouble|Yes|Procento využití paměti|Procento|Průměr|Procento využití paměti|Uzel|
-|PendingTransactions|Yes|Nedokončené transakce|Count|Průměr|Nedokončené transakce|Uzel|
-|ProcessedBlocks|Yes|Zpracované bloky|Count|Celkem|Zpracované bloky|Uzel|
-|ProcessedTransactions|Yes|Zpracované transakce|Count|Celkem|Zpracované transakce|Uzel|
-|QueuedTransactions|Yes|Transakce ve frontě|Count|Průměr|Transakce ve frontě|Uzel|
-|RequestHandled|Yes|Zpracované žádosti|Count|Celkem|Zpracované žádosti|Uzel|
-|StorageUsage|Yes|Využití úložiště|Bajty|Průměr|Využití úložiště|Uzel|
+|MemoryLimit|Yes|Omezení paměti|Bajty|Průměr|Omezení paměti|Node|
+|MemoryUsage|Yes|Využití paměti|Bajty|Průměr|Využití paměti|Node|
+|MemoryUsagePercentageInDouble|Yes|Procento využití paměti|Procento|Průměr|Procento využití paměti|Node|
+|PendingTransactions|Yes|Nedokončené transakce|Count|Průměr|Nedokončené transakce|Node|
+|ProcessedBlocks|Yes|Zpracované bloky|Count|Celkem|Zpracované bloky|Node|
+|ProcessedTransactions|Yes|Zpracované transakce|Count|Celkem|Zpracované transakce|Node|
+|QueuedTransactions|Yes|Transakce ve frontě|Count|Průměr|Transakce ve frontě|Node|
+|RequestHandled|Yes|Zpracované žádosti|Count|Celkem|Zpracované žádosti|Node|
+|StorageUsage|Yes|Využití úložiště|Bajty|Průměr|Využití úložiště|Node|
 
 
 ## <a name="microsoftcacheredis"></a>Microsoft. cache/Redis
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |cachehits|Yes|Přístupy do mezipaměti|Count|Celkem||ShardId|
 |cachehits0|Yes|Přístupy do mezipaměti (horizontálních oddílů 0)|Count|Celkem||Žádné dimenze|
@@ -459,14 +459,14 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |WebApplicationFirewallRequestCount|Yes|Počet požadavků firewallu webových aplikací|Count|Celkem|Počet požadavků klientů zpracovaných bránou firewall webových aplikací|Policy, Rule, Action|
 
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft. ClassicCompute/domainNames/sloty/role
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Bajty čtení z disku/s|No|Čtení z disku|BytesPerSecond|Průměr|Průměrný počet bajtů přečtených z disku během období monitorování|RoleInstanceId|
 |Operace čtení z disku/s|Yes|Operace čtení z disku/s|CountPerSecond|Průměr|Čtení z disku – IOPS|RoleInstanceId|
@@ -479,7 +479,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft. ClassicCompute/virtualMachines
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Bajty čtení z disku/s|No|Čtení z disku|BytesPerSecond|Průměr|Průměrný počet bajtů přečtených z disku během období monitorování|Žádné dimenze|
 |Operace čtení z disku/s|Yes|Operace čtení z disku/s|CountPerSecond|Průměr|Čtení z disku – IOPS|Žádné dimenze|
@@ -492,7 +492,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftclassicstoragestorageaccounts"></a>Microsoft. ClassicStorage/storageAccounts
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Dostupnost|Yes|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|Typ, ApiName, ověřování|
 |Výchozí přenos dat|Yes|Výchozí přenos dat|Bajty|Celkem|Objem výstupních dat (v bajtech). Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
@@ -505,7 +505,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftclassicstoragestorageaccountsblobservices"></a>Microsoft. ClassicStorage/storageAccounts/blobServices
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Dostupnost|Yes|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|Typ, ApiName, ověřování|
 |BlobCapacity|No|Kapacita objektu BLOB|Bajty|Průměr|Velikost úložiště využitá Blob service účtu úložiště v bajtech|BlobType, úroveň|
@@ -521,7 +521,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftclassicstoragestorageaccountsfileservices"></a>Microsoft. ClassicStorage/storageAccounts/služby
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Dostupnost|Yes|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|Typ, ApiName, ověřování, sdílení souborů|
 |Výchozí přenos dat|Yes|Výchozí přenos dat|Bajty|Celkem|Objem výstupních dat (v bajtech). Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování, sdílení souborů|
@@ -539,7 +539,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftclassicstoragestorageaccountsqueueservices"></a>Microsoft. ClassicStorage/storageAccounts/queueServices
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Dostupnost|Yes|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|Typ, ApiName, ověřování|
 |Výchozí přenos dat|Yes|Výchozí přenos dat|Bajty|Celkem|Objem výstupních dat (v bajtech). Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
@@ -554,7 +554,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftclassicstoragestorageaccountstableservices"></a>Microsoft. ClassicStorage/storageAccounts/tableServices
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Dostupnost|Yes|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|Typ, ApiName, ověřování|
 |Výchozí přenos dat|Yes|Výchozí přenos dat|Bajty|Celkem|Objem výstupních dat (v bajtech). Toto číslo zahrnuje výchozí přenos dat z externího klienta do služby Azure Storage i výchozí přenos dat v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
@@ -569,7 +569,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. Cognitiveservices Account/účty
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |BlockedCalls|Yes|Blokovaná volání|Count|Celkem|Počet volání, která překročily limit nebo kvótu.|ApiName, OperationName, oblast|
 |CharactersTrained|Yes|Vyškolené znaky|Count|Celkem|Celkový počet vyškolených znaků|ApiName, OperationName, oblast|
@@ -590,7 +590,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Spotřebované kredity procesoru|Yes|Spotřebované kredity procesoru|Count|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem|Žádné dimenze|
 |Zbývající kredity procesoru|Yes|Zbývající kredity procesoru|Count|Průměr|Celkový počet kreditů dostupných pro shlukování|Žádné dimenze|
@@ -635,7 +635,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Spotřebované kredity procesoru|Yes|Spotřebované kredity procesoru|Count|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem|Žádné dimenze|
 |Zbývající kredity procesoru|Yes|Zbývající kredity procesoru|Count|Průměr|Celkový počet kreditů dostupných pro shlukování|Žádné dimenze|
@@ -680,7 +680,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Spotřebované kredity procesoru|Yes|Spotřebované kredity procesoru|Count|Průměr|Celkový počet kreditů spotřebovaných virtuálním počítačem|Žádné dimenze|
 |Zbývající kredity procesoru|Yes|Zbývající kredity procesoru|Count|Průměr|Celkový počet kreditů dostupných pro shlukování|Žádné dimenze|
@@ -725,7 +725,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft. ContainerInstance/containerGroups
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |CpuUsage|Yes|Využití procesoru|Count|Průměr|Využití CPU na všech jádrech v millicores.|containerName|
 |MemoryUsage|Yes|Využití paměti|Bajty|Průměr|Celkové využití paměti v bajtech|containerName|
@@ -735,7 +735,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/Registry
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |AgentPoolCPUTime|Yes|Čas procesoru neznámá|Sekundy|Celkem|Neznámá procesor v řádu sekund|Žádné dimenze|
 |RunDuration|Yes|Doba trvání běhu|Milisekund|Celkem|Doba běhu v milisekundách|Žádné dimenze|
@@ -747,7 +747,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. ContainerService/managedClusters
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |kube_node_status_allocatable_cpu_cores|No|Celkový počet dostupných jader procesoru ve spravovaném clusteru|Count|Průměr|Celkový počet dostupných jader procesoru ve spravovaném clusteru|Žádné dimenze|
 |kube_node_status_allocatable_memory_bytes|No|Celková velikost dostupné paměti ve spravovaném clusteru|Bajty|Průměr|Celková velikost dostupné paměti ve spravovaném clusteru|Žádné dimenze|
@@ -758,7 +758,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |FailedRequests|Yes|Neúspěšné požadavky|Count|Celkem|Získá dostupné protokoly pro vlastní poskytovatele prostředků.|HttpMethod, CallPath, StatusCode|
 |SuccessfullRequests|Yes|Úspěšné požadavky|Count|Celkem|Úspěšné požadavky vytvořené vlastním poskytovatelem|HttpMethod, CallPath, StatusCode|
@@ -766,15 +766,15 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftdataboxedgedataboxedgedevices"></a>Microsoft. DataBoxEdge/dataBoxEdgeDevices
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Availablecapacity;)|Yes|Dostupná kapacita|Bajty|Průměr|Dostupná kapacita v bajtech během období generování sestav.|Žádné dimenze|
 |BytesUploadedToCloud|Yes|Odeslané bajty v cloudu (zařízení)|Bajty|Průměr|Celkový počet bajtů odeslaných do Azure ze zařízení během období generování sestav.|Žádné dimenze|
-|BytesUploadedToCloudPerShare|Yes|Odeslané bajty v cloudu (sdílená složka)|Bajty|Průměr|Celkový počet bajtů odeslaných do Azure ze sdílené složky během období generování sestav.|Sdílet|
+|BytesUploadedToCloudPerShare|Yes|Odeslané bajty v cloudu (sdílená složka)|Bajty|Průměr|Celkový počet bajtů odeslaných do Azure ze sdílené složky během období generování sestav.|Sdílení|
 |CloudReadThroughput|Yes|Propustnost stahování v cloudu|BytesPerSecond|Průměr|Propustnost stahování cloudu do Azure během období generování sestav.|Žádné dimenze|
-|CloudReadThroughputPerShare|Yes|Propustnost stahování do cloudu (sdílení)|BytesPerSecond|Průměr|Propustnost stahování do Azure ze sdílené složky během období generování sestav.|Sdílet|
+|CloudReadThroughputPerShare|Yes|Propustnost stahování do cloudu (sdílení)|BytesPerSecond|Průměr|Propustnost stahování do Azure ze sdílené složky během období generování sestav.|Sdílení|
 |CloudUploadThroughput|Yes|Propustnost nahrávání do cloudu|BytesPerSecond|Průměr|Propustnost nahrávání do cloudu do Azure během období generování sestav.|Žádné dimenze|
-|CloudUploadThroughputPerShare|Yes|Propustnost nahrávání do cloudu (sdílení)|BytesPerSecond|Průměr|Odeslání propustnosti do Azure ze sdílené složky během období generování sestav.|Sdílet|
+|CloudUploadThroughputPerShare|Yes|Propustnost nahrávání do cloudu (sdílení)|BytesPerSecond|Průměr|Odeslání propustnosti do Azure ze sdílené složky během období generování sestav.|Sdílení|
 |HyperVMemoryUtilization|Yes|Výpočet využití paměti na hraničních zařízeních|Procento|Průměr|Velikost využité paměti RAM|InstanceName|
 |HyperVVirtualProcessorUtilization|Yes|Výpočetní prostředí Edge – procento využití procesoru|Procento|Průměr|Procento využití procesoru|InstanceName|
 |NICReadThroughput|Yes|Propustnost čtení (síť)|BytesPerSecond|Průměr|Propustnost čtení síťového rozhraní v zařízení v období vytváření sestav pro všechny svazky v bráně.|InstanceName|
@@ -784,7 +784,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft. DataFactory/DataFactory
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |FailedRuns|Yes|Neúspěšná spuštění|Count|Celkem||profilace, Activity|
 |SuccessfulRuns|Yes|Úspěšná spuštění|Count|Celkem||profilace, Activity|
@@ -792,7 +792,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/továrny
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ActivityCancelledRuns|Yes|Zrušené metriky spuštění aktivit|Count|Celkem||ActivityType, název kanálu, FailureType, název|
 |ActivityFailedRuns|Yes|Neúspěšná aktivita spustí metriky|Count|Celkem||ActivityType, název kanálu, FailureType, název|
@@ -816,7 +816,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. DataLakeStore/účty
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Čtení z|Yes|Přečtená data|Bajty|Celkem|Celkový objem dat načtených z účtu.|Žádné dimenze|
 |Napsáno|Yes|Zapsaná data|Bajty|Celkem|Celkové množství dat zapsaných na účet.|Žádné dimenze|
@@ -827,7 +827,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. DBforMariaDB/servery
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |active_connections|Yes|Aktivní připojení|Count|Průměr|Aktivní připojení|Žádné dimenze|
 |backup_storage_used|Yes|Využité úložiště záloh|Bajty|Průměr|Využité úložiště záloh|Žádné dimenze|
@@ -848,7 +848,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. DBforMySQL/servery
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |active_connections|Yes|Aktivní připojení|Count|Průměr|Aktivní připojení|Žádné dimenze|
 |backup_storage_used|Yes|Využité úložiště záloh|Bajty|Průměr|Využité úložiště záloh|Žádné dimenze|
@@ -869,7 +869,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/servery
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |active_connections|Yes|Aktivní připojení|Count|Průměr|Aktivní připojení|Žádné dimenze|
 |backup_storage_used|Yes|Využité úložiště záloh|Bajty|Průměr|Využité úložiště záloh|Žádné dimenze|
@@ -891,7 +891,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |active_connections|Yes|Aktivní připojení|Count|Průměr|Aktivní připojení|Žádné dimenze|
 |cpu_percent|Yes|Procento využití procesoru|Procento|Průměr|Procento využití procesoru|Žádné dimenze|
@@ -905,7 +905,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftdbforpostgresqlsingleservers"></a>Microsoft. DBforPostgreSQL/singleservers
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |active_connections|Yes|Aktivní připojení|Count|Průměr|Aktivní připojení|Žádné dimenze|
 |connections_failed|Yes|Neúspěšná připojení|Count|Celkem|Neúspěšná připojení|Žádné dimenze|
@@ -922,7 +922,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |C2D. Commands. odchozí. Abandon. Success|Yes|Zrušené zprávy C2D|Count|Celkem|Počet zpráv typu cloud-zařízení opuštěných zařízením|Žádné dimenze|
 |C2D. Commands.. Complete. Complete. Success|Yes|Doručení zpráv C2D bylo dokončeno.|Count|Celkem|Počet úspěšně dokončených doručení zpráv typu cloud-zařízení do zařízení|Žádné dimenze|
@@ -996,7 +996,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |AttestationAttempts|Yes|Pokusy o ověření identity|Count|Celkem|Počet pokusů o ověření identity zařízení|ProvisioningServiceName, status, protokol|
 |DeviceAssignments|Yes|Přiřazená zařízení|Count|Celkem|Počet zařízení přiřazených ke centru IoT Hub|ProvisioningServiceName, IotHubName|
@@ -1005,7 +1005,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |AddRegion|Yes|Přidání oblasti|Count|Count|Přidání oblasti|Oblast|
 |AutoscaleMaxThroughput|No|Maximální propustnost automatického škálování|Count|Maximum|Maximální propustnost automatického škálování|DatabaseName, CollectionName|
@@ -1082,7 +1082,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/domény
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |DeadLetteredCount|Yes|Nedoručené události s písmeny|Count|Celkem|Celkový počet nedoručených událostí, které odpovídají tomuto odběru události|Téma, EventSubscriptionName, DomainEventSubscriptionName, DeadLetterReason|
 |DeliveryAttemptFailCount|No|Doručení – neúspěšné události|Count|Celkem|Celkový počet událostí neúspěšných doručování do tohoto odběru události|Téma, EventSubscriptionName, DomainEventSubscriptionName, chyba, ErrorType|
@@ -1097,7 +1097,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft. EventGrid/eventSubscriptions
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |DeadLetteredCount|Yes|Nedoručené události s písmeny|Count|Celkem|Celkový počet nedoručených událostí, které odpovídají tomuto odběru události|DeadLetterReason|
 |DeliveryAttemptFailCount|No|Doručení – neúspěšné události|Count|Celkem|Celkový počet událostí neúspěšných doručování do tohoto odběru události|Chyba, ErrorType|
@@ -1109,7 +1109,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsofteventgridextensiontopics"></a>Microsoft. EventGrid/extensionTopics
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |PublishFailCount|Yes|Publikovat neúspěšné události|Count|Celkem|Celkový počet událostí neúspěšných publikování do tohoto tématu|ErrorType, chyba|
 |PublishSuccessCount|Yes|Publikované události|Count|Celkem|Celkový počet událostí publikovaných na toto téma|Žádné dimenze|
@@ -1119,7 +1119,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/systemTopics
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |DeadLetteredCount|Yes|Nedoručené události s písmeny|Count|Celkem|Celkový počet nedoručených událostí, které odpovídají tomuto odběru události|DeadLetterReason, EventSubscriptionName|
 |DeliveryAttemptFailCount|No|Doručení – neúspěšné události|Count|Celkem|Celkový počet událostí neúspěšných doručování do tohoto odběru události|Chyba, ErrorType, EventSubscriptionName|
@@ -1135,7 +1135,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/témata
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |DeadLetteredCount|Yes|Nedoručené události s písmeny|Count|Celkem|Celkový počet nedoručených událostí, které odpovídají tomuto odběru události|DeadLetterReason, EventSubscriptionName|
 |DeliveryAttemptFailCount|No|Doručení – neúspěšné události|Count|Celkem|Celkový počet událostí neúspěšných doručování do tohoto odběru události|Chyba, ErrorType, EventSubscriptionName|
@@ -1151,7 +1151,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsofteventhubclusters"></a>Microsoft. EventHub/clustery
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ActiveConnections|No|ActiveConnections|Count|Průměr|Celkový počet aktivních připojení pro Microsoft. EventHub|Žádné dimenze|
 |AvailableMemory|No|Paměť k dispozici|Procento|Maximum|Dostupná paměť pro cluster centra událostí jako procento z celkové paměti.|Role|
@@ -1176,7 +1176,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/obory názvů
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ActiveConnections|No|ActiveConnections|Count|Průměr|Celkový počet aktivních připojení pro Microsoft. EventHub|Žádné dimenze|
 |CaptureBacklog|No|Zachyťte nevyřízené položky.|Count|Celkem|Zachyťte nevyřízené položky pro Microsoft. EventHub.|EntityName|
@@ -1216,7 +1216,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft. HDInsight/clustery
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |CategorizedGatewayRequests|Yes|Zařadit požadavky na bránu|Count|Celkem|Počet požadavků brány podle kategorií (1xx/2xx/3xx/4xx/5xx)|Stavu protokolu http|
 |GatewayRequests|Yes|Žádosti o bránu|Count|Celkem|Počet žádostí o bránu|Stavu protokolu http|
@@ -1225,7 +1225,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. Insights/AutoscaleSettings
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |MetricThreshold|Yes|Prahová hodnota metriky|Count|Průměr|Nakonfigurované prahové hodnoty automatického škálování, když se spustilo automatické škálování.|MetricTriggerRule|
 |ObservedCapacity|Yes|Zjištěná kapacita|Count|Průměr|Kapacita nahlášená pro automatické škálování při jejím spuštění.|Žádné dimenze|
@@ -1235,7 +1235,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. Insights/Components
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |availabilityResults/availabilityPercentage|Yes|Dostupnost|Procento|Průměr|Procento úspěšně dokončených testů dostupnosti|availabilityResult/název, availabilityResult/umístění|
 |availabilityResults/Count|No|Testy dostupnosti|Count|Count|Počet testů dostupnosti|availabilityResult/název, availabilityResult/umístění, availabilityResult/úspěch|
@@ -1268,10 +1268,24 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |žádosti/rychlost|No|Počet požadavků serveru|CountPerSecond|Průměr|Frekvence požadavků serveru za sekundu|požadavek/performanceBucket, požadavky/resultCode, provoz/syntetické, cloudové/roleInstance, požadavky/úspěch, Cloud/roleName|
 |trasování/počet|Yes|Trasování|Count|Count|Počet dokumentů trasování|Trace/severityLevel, provozní/syntetické, Cloud/roleName, Cloud/roleInstance|
 
+## <a name="microsoftiotcentraliotapps"></a>Microsoft. IoTCentral/IoTApps
+
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|---|---|---|---|---|---|---|
+|C2D. Property. Read. Failure|Yes|Neúspěšná čtení vlastností zařízení z IoT Central|Count|Celkem|Počet všech neúspěšných čtení vlastností zahájených z IoT Central|Žádné dimenze|
+|C2D. Property. Read. Success|Yes|Úspěšné čtení vlastností zařízení z IoT Central|Count|Celkem|Počet všech úspěšných čtení vlastností zahájených z IoT Central|Žádné dimenze|
+|C2D. Property. Update. Failure|Yes|Neúspěšné aktualizace vlastností zařízení z IoT Central|Count|Celkem|Počet všech neúspěšných aktualizací vlastností iniciované z IoT Central|Žádné dimenze|
+|C2D. Property. Update. Success|Yes|Úspěšná aktualizace vlastností zařízení z IoT Central|Count|Celkem|Počet všech úspěšných aktualizací vlastností zahájených z IoT Central|Žádné dimenze|
+|connectedDeviceCount|No|Celkem připojených zařízení|Count|Průměr|Počet zařízení připojených k IoT Central|Žádné dimenze|
+|D2C. Property. Read. Failure|Yes|Neúspěšná čtení vlastností zařízení ze zařízení|Count|Celkem|Počet všech neúspěšných čtení vlastností inicializovaných ze zařízení|Žádné dimenze|
+|D2C. Property. Read. Success|Yes|Úspěšná čtení vlastností zařízení ze zařízení|Count|Celkem|Počet všech úspěšných čtení vlastností inicializovaných ze zařízení|Žádné dimenze|
+|D2C. Property. Update. Failure|Yes|Neúspěšné aktualizace vlastností zařízení ze zařízení|Count|Celkem|Počet všech neúspěšných aktualizací vlastností inicializovaných ze zařízení|Žádné dimenze|
+|D2C. Property. Update. Success|Yes|Úspěšná aktualizace vlastností zařízení ze zařízení|Count|Celkem|Počet všech úspěšných aktualizací vlastností inicializovaných ze zařízení|Žádné dimenze|
+
 
 ## <a name="microsoftkeyvaultvaults"></a>Trezory a trezory Microsoft.
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Dostupnost|Yes|Celková dostupnost trezoru|Procento|Průměr|Dostupnost žádostí o trezor|ActivityType, Activity, StatusCode, StatusCodeClass|
 |SaturationShoebox|No|Celkové sytosti trezoru|Procento|Průměr|Využitá kapacita trezoru|ActivityType, Activity, TransactionType|
@@ -1282,12 +1296,12 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. Kusto/clustery
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
-|BatchBlobCount|Yes|Počet objektů BLOB dávky|Count|Průměr|Počet zdrojů dat v agregované dávce pro přijímání.|Databáze|
-|BatchDuration|Yes|Doba trvání dávky|Sekundy|Průměr|Doba trvání agregační fáze v toku přijímání.|Databáze|
+|BatchBlobCount|Yes|Počet objektů BLOB dávky|Count|Průměr|Počet zdrojů dat v agregované dávce pro přijímání.|databáze|
+|BatchDuration|Yes|Doba trvání dávky|Sekundy|Průměr|Doba trvání agregační fáze v toku přijímání.|databáze|
 |BatchesProcessed|Yes|Zpracované dávky|Count|Průměr|Počet dávek agregovaných pro ingestování. Důvod dokončení dávky: bez ohledu na to, zda dávka dosáhla doby dávkového zpracování, velikosti dat nebo počtu souborů, které jsou nastaveny pomocí dávkování zásad|Databáze, SealReason|
-|BatchSize|Yes|Velikost dávky|Bajty|Průměr|Nekomprimovaná očekávaná velikost dat v agregované dávce pro přijímání.|Databáze|
+|BatchSize|Yes|Velikost dávky|Bajty|Průměr|Nekomprimovaná očekávaná velikost dat v agregované dávce pro přijímání.|databáze|
 |CacheUtilization|Yes|Využití mezipaměti|Procento|Průměr|Úroveň využití v oboru clusteru|Žádné dimenze|
 |ContinuousExportMaxLatenessMinutes|Yes|Maximální zpoždění průběžného exportu|Count|Maximum|Zpoždění (v minutách) hlášené úlohami průběžného exportu v clusteru|Žádné dimenze|
 |ContinuousExportNumOfRecordsExported|Yes|Průběžný export – počet exportovaných záznamů|Count|Celkem|Počet exportovaných záznamů, které se vyvolaly pro každý artefakt úložiště zapsaný během operace exportu|ContinuousExportName, databáze|
@@ -1303,10 +1317,10 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |InstanceCount|Yes|Počet instancí|Count|Průměr|Celkový počet instancí|Žádné dimenze|
 |Udržení|Yes|Zachovat naživu|Count|Průměr|Správnosti check indikuje, že cluster reaguje na dotazy|Žádné dimenze|
 |QueryDuration|Yes|Doba trvání dotazu|Milisekund|Průměr|Doba trvání dotazů v sekundách|QueryStatus|
-|SteamingIngestRequestRate|Yes|Rychlost přijímání požadavků pro streamování|Count|RateRequestsPerSecond|Míra požadavků ingestování datových proudů (počet požadavků za sekundu)|Žádné dimenze|
-|StreamingIngestDataRate|Yes|Přenosová rychlost ingestování datových proudů|Count|Průměr|Přenosová rychlost ingestování datových proudů (MB za sekundu)|Žádné dimenze|
-|StreamingIngestDuration|Yes|Doba ingestování streamování|Milisekund|Průměr|Doba ingestování streamování v milisekundách|Žádné dimenze|
-|StreamingIngestResults|Yes|Výsledek ingestování streamování|Count|Průměr|Výsledek ingestování streamování|Výsledek|
+|SteamingIngestRequestRate|Yes|Četnost požadavků příjmu streamování|Count|RateRequestsPerSecond|Míra požadavků ingestování datových proudů (počet požadavků za sekundu)|Žádné dimenze|
+|StreamingIngestDataRate|Yes|Datová rychlost příjmu streamování|Count|Průměr|Přenosová rychlost ingestování datových proudů (MB za sekundu)|Žádné dimenze|
+|StreamingIngestDuration|Yes|Doba trvání příjmu streamování|Milisekund|Průměr|Doba ingestování streamování v milisekundách|Žádné dimenze|
+|StreamingIngestResults|Yes|Výsledek příjmu streamování|Count|Průměr|Výsledek ingestování streamování|Výsledek|
 |TotalNumberOfConcurrentQueries|Yes|Celkový počet souběžných dotazů|Count|Celkem|Celkový počet souběžných dotazů|Žádné dimenze|
 |TotalNumberOfExtents|Yes|Celkový počet rozsahů|Count|Celkem|Celkový počet rozsahů dat|Žádné dimenze|
 |TotalNumberOfThrottledCommands|Yes|Celkový počet příkazů s omezením|Count|Celkem|Celkový počet příkazů s omezením|CommandType|
@@ -1315,7 +1329,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft. Logic/integrationServiceEnvironments
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ActionLatency|Yes|Latence akcí |Sekundy|Průměr|Latence dokončených akcí pracovního postupu.|Žádné dimenze|
 |ActionsCompleted|Yes|Dokončené akce |Count|Celkem|Počet dokončených akcí pracovního postupu.|Žádné dimenze|
@@ -1353,7 +1367,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/Workflows
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ActionLatency|Yes|Latence akcí |Sekundy|Průměr|Latence dokončených akcí pracovního postupu.|Žádné dimenze|
 |ActionsCompleted|Yes|Dokončené akce |Count|Celkem|Počet dokončených akcí pracovního postupu.|Žádné dimenze|
@@ -1393,7 +1407,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/pracovní prostory
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Aktivní jádra|Yes|Aktivní jádra|Count|Průměr|Počet aktivních jader|Scénář, název_clusteru|
 |Aktivní uzly|Yes|Aktivní uzly|Count|Průměr|Počet uzlů Active Jedná se o uzly, které aktivně spouštějí úlohu.|Scénář, název_clusteru|
@@ -1433,7 +1447,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftmapsaccounts"></a>Microsoft. Maps/Accounts
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Dostupnost|Yes|Dostupnost|Procento|Průměr|Dostupnost rozhraní API|ApiCategory, ApiName|
 |Využití|No|Využití|Count|Count|Počet volání rozhraní API|ApiCategory, ApiName, ResultType, ResponseCode|
@@ -1441,7 +1455,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/MediaServices
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |AssetCount|Yes|Počet assetů|Count|Průměr|Kolik prostředků již bylo vytvořeno v aktuálním účtu Media Service|Žádné dimenze|
 |AssetQuota|Yes|Kvóta prostředků|Count|Průměr|Počet povolených prostředků pro aktuální účet Media Service|Žádné dimenze|
@@ -1456,7 +1470,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftmediamediaservicesstreamingendpoints"></a>Microsoft. Media/MediaServices/starají
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Výchozí přenos dat|Yes|Výchozí přenos dat|Bajty|Celkem|Objem výstupních dat (v bajtech).|OutputFormat|
 |Žádosti|Yes|Žádosti|Count|Celkem|Požadavky na koncový bod streamování.|OutputFormat, HttpStatusCode, ErrorCode|
@@ -1465,7 +1479,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft. NetApp/netAppAccounts/capacityPools
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |VolumePoolAllocatedSize|Yes|Velikost přiděleného fondu|Bajty|Průměr|Zřízená velikost tohoto fondu|Žádné dimenze|
 |VolumePoolAllocatedUsed|Yes|Fond přidělený velikosti svazku|Bajty|Průměr|Přidělená velikost fondu, která se používá|Žádné dimenze|
@@ -1475,7 +1489,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft. NetApp/netAppAccounts/capacityPools/svazky
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |AverageReadLatency|Yes|Průměrná latence čtení|Milisekund|Průměr|Průměrná latence čtení v milisekundách na operaci|Žádné dimenze|
 |AverageWriteLatency|Yes|Průměrná latence zápisu|Milisekund|Průměr|Průměrná latence zápisu v milisekundách na operaci|Žádné dimenze|
@@ -1500,7 +1514,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/applicationGateways
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ApplicationGatewayTotalTime|No|Čas Application Gateway celkem|Milisekund|Průměr|Průměrná doba, kterou trvá zpracování požadavku, a jeho odpověď k odeslání. Počítá se jako průměr intervalu od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že to obvykle zahrnuje dobu zpracování Application Gateway, čas, po který jsou pakety požadavků a odpovědí přenášeny přes síť, a čas, kdy server back-end trvala odpověď.|Naslouchací proces|
 |AvgRequestCountPerHealthyHost|No|Počet požadavků za minutu na hostitele v pořádku|Count|Průměr|Průměrný počet požadavků za minutu na hostitele back-endu v pořádku ve fondu|BackendSettingsPool|
@@ -1532,7 +1546,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ApplicationRuleHit|Yes|Počet volání pravidel aplikace|Count|Celkem|Počet přístupů k pravidlům aplikace|Stav, důvod, protokol|
 |Zpracováno na zpracování|Yes|Zpracovaná data|Bajty|Celkem|Celkový objem dat zpracovaných touto bránou firewall|Žádné dimenze|
@@ -1544,7 +1558,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft. Network/připojení
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |BitsInPerSecond|Yes|BitsInPerSecond|CountPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|Žádné dimenze|
 |BitsOutPerSecond|Yes|BitsOutPerSecond|CountPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|Žádné dimenze|
@@ -1552,7 +1566,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft. Network/dnszones
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |QueryVolume|Yes|Svazek dotazu|Count|Celkem|Počet dotazů poskytovaných pro zónu DNS|Žádné dimenze|
 |RecordSetCapacityUtilization|No|Využití kapacity sady záznamů|Procento|Maximum|Procento kapacity sady záznamů využité zónou DNS|Žádné dimenze|
@@ -1561,7 +1575,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressRouteCircuits
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ArpAvailability|Yes|Dostupnost protokolu ARP|Procento|Průměr|Dostupnost protokolu ARP z MSEE směrem ke všem partnerským uzlům.|PeeringType, partner|
 |BgpAvailability|Yes|Dostupnost protokolu BGP|Procento|Průměr|Dostupnost protokolu BGP z MSEE směrem ke všem partnerským uzlům.|PeeringType, partner|
@@ -1575,7 +1589,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft. Network/expressRouteCircuits/peering
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |BitsInPerSecond|Yes|BitsInPerSecond|CountPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|Žádné dimenze|
 |BitsOutPerSecond|Yes|BitsOutPerSecond|CountPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|Žádné dimenze|
@@ -1583,7 +1597,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft. Network/expressRouteGateways
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ErGatewayConnectionBitsInPerSecond|No|BitsInPerSecond|CountPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|ConnectionName|
 |ErGatewayConnectionBitsOutPerSecond|No|BitsOutPerSecond|CountPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|ConnectionName|
@@ -1591,7 +1605,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Microsoft. Network/expressRoutePorts
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |AdminState|Yes|AdminState|Count|Průměr|Stav Správce portu|Odkaz|
 |LineProtocol|Yes|LineProtocol|Count|Průměr|Stav protokolu linky portu|Odkaz|
@@ -1603,7 +1617,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontdoors
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |BackendHealthPercentage|Yes|Procento stavu back-endu|Procento|Průměr|Procento úspěšných sond stavu z proxy serveru HTTP/S do back-endu|Back-end, problémových|
 |BackendRequestCount|Yes|Počet požadavků back-endu|Count|Celkem|Počet požadavků odeslaných z proxy serveru HTTP/S do back-endu|Stavu protokolu HTTP, HttpStatusGroup, back-end|
@@ -1618,7 +1632,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/loadBalancers
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |AllocatedSnatPorts|No|Přidělené porty SNAT|Count|Průměr|Celkový počet portů SNAT přidělených v rámci časového období|FrontendIPAddress, BackendIPAddress, Typprotokolu, |
 |ByteCount|Yes|Počet bajtů|Count|Celkem|Celkový počet odeslaných bajtů v časovém období|FrontendIPAddress, FrontendPort, směr|
@@ -1632,7 +1646,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft. Network/networkInterfaces
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |BytesReceivedRate|Yes|Přijaté bajty|Bajty|Celkem|Počet bajtů, které síťové rozhraní přijalo|Žádné dimenze|
 |BytesSentRate|Yes|Odeslané bajty|Bajty|Celkem|Počet bajtů, které síťové rozhraní odeslalo|Žádné dimenze|
@@ -1642,7 +1656,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworknetworkwatchersconnectionmonitors"></a>Microsoft. Network/networkWatchers/connectionMonitors
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |AverageRoundtripMs|Yes|Průměrná doba odezvy (MS)|Milisekund|Průměr|Průměrná doba odezvy sítě (MS) pro testy monitorování připojení odesílané mezi zdrojem a cílem|Žádné dimenze|
 |ChecksFailedPercent|Yes|Počet neúspěšných kontrol v procentech (Preview)|Procento|Průměr|% kontrol monitorování připojení selhalo.|SourceAddress, source, parametr sourceresourceid, SourceType, protokol, DestinationAddress, Destination, DestinationResourceId, DestinationType, DestinationPort, TestGroupName, TestConfigurationName|
@@ -1652,7 +1666,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/publicIPAddresses
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ByteCount|Yes|Počet bajtů|Count|Celkem|Celkový počet odeslaných bajtů v časovém období|Port, směr|
 |BytesDroppedDDoS|Yes|Příchozí bajty vynechané DDoS|BytesPerSecond|Maximum|Příchozí bajty vynechané DDoS|Žádné dimenze|
@@ -1684,7 +1698,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ProbeAgentCurrentEndpointStateByProfileResourceId|Yes|Stav koncového bodu podle koncového bodu|Count|Maximum|1, pokud je stav testu koncového bodu zapnuto, 0 jinak.|Koncový bod|
 |QpsByEndpoint|Yes|Dotazy podle vráceného koncového bodu|Count|Celkem|Počet vrácených Traffic Managerho koncového bodu v daném časovém rámci|Koncový bod|
@@ -1692,7 +1706,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/virtualNetworkGateways
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |AverageBandwidth|Yes|Šířka pásma S2S brány|BytesPerSecond|Průměr|Průměrná šířka pásma brány mezi lokalitami v bajtech za sekundu|Žádné dimenze|
 |P2SBandwidth|Yes|Šířka pásma P2S brány|BytesPerSecond|Průměr|Průměrná šířka pásma sítě typu Point-to-site brány v bajtech za sekundu|Žádné dimenze|
@@ -1708,7 +1722,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |PingMeshAverageRoundtripMs|Yes|Čas odezvy na virtuální počítač pomocí příkazů pro odeslání|Milisekund|Průměr|Čas odezvy pro příkazy pro odeslání do cílového virtuálního počítače|SourceCustomerAddress, DestinationCustomerAddress|
 |PingMeshProbesFailedPercent|Yes|Nepovedlo se odeslat příkazy do virtuálního počítače|Procento|Průměr|Procento počtu neúspěšných příkazů pro odeslání z testu na celkový počet odeslaných příkazů VMM cílového virtuálního počítače|SourceCustomerAddress, DestinationCustomerAddress|
@@ -1716,7 +1730,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft. NotificationHubs/obory názvů/NotificationHubs
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |přijíman|Yes|Příchozí zprávy|Count|Celkem|Počet všech úspěšných volání rozhraní API pro odeslání. |Žádné dimenze|
 |příchozí. All. failedrequests|Yes|Všechny příchozí neúspěšné požadavky|Count|Celkem|Celkový počet příchozích neúspěšných žádostí pro Centrum oznámení|Žádné dimenze|
@@ -1784,7 +1798,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft. OperationalInsights/pracovní prostory
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Average_ k dispozici paměti|Yes|% Dostupné paměti|Count|Průměr|Average_ k dispozici paměti|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Average_% dostupného odkládacího prostoru|Yes|% Dostupného odkládacího prostoru|Count|Průměr|Average_% dostupného odkládacího prostoru|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
@@ -1848,12 +1862,12 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 |Average_Virtual sdílená paměť|Yes|Virtuální sdílená paměť|Count|Průměr|Average_Virtual sdílená paměť|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Událost|Yes|Událost|Count|Průměr|Událost|Zdroj, protokol událostí, počítač, EventCategory, EventLevel, EventLevelName, ID události|
 |Tep|Yes|Tep|Count|Celkem|Tep|Počítač, OSType, verze, SourceComputerId|
-|Aktualizovat|Yes|Aktualizovat|Count|Průměr|Aktualizovat|Počítač, produkt, klasifikace, UpdateState, volitelné, schválené|
+|Aktualizace|Yes|Aktualizace|Count|Průměr|Aktualizace|Počítač, produkt, klasifikace, UpdateState, volitelné, schválené|
 
 
 ## <a name="microsoftpeeringpeerings"></a>Microsoft. peering/peering
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |EgressTrafficRate|Yes|Rychlost přenosů na výstup|BitsPerSecond|Průměr|Rychlost přenosů dat v bitech za sekundu|ConnectionId|
 |IngressTrafficRate|Yes|Rychlost příchozího přenosu dat|BitsPerSecond|Průměr|Míra přenosů příchozích dat v bitech za sekundu|ConnectionId|
@@ -1863,16 +1877,16 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft. peering/peeringServices
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |PrefixLatency|Yes|Latence předpony|Milisekund|Průměr|Střední latence předpony|Předpona|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. PowerBIDedicated/– kapacity
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
-|memory_metric|Yes|Paměť|Bajty|Průměr|Memory: Rozsah 0-3 GB pro a1, 0-5 GB pro a2, 0-10 GB pro a3, 0-25 GB pro A4, 0-50 GB pro A5 a 0-100 GB pro A6|Žádné dimenze|
+|memory_metric|Yes|Memory (Paměť)|Bajty|Průměr|Memory: Rozsah 0-3 GB pro a1, 0-5 GB pro a2, 0-10 GB pro a3, 0-25 GB pro A4, 0-50 GB pro A5 a 0-100 GB pro A6|Žádné dimenze|
 |memory_thrashing_metric|Yes|Thrashing paměti (datové sady)|Procento|Průměr|Průměrná velikost thrashing paměti|Žádné dimenze|
 |qpu_high_utilization_metric|Yes|Vysoké využití procesoru|Count|Celkem|QPU vysoké využití za poslední minutu, 1 pro vysoké využití QPU, jinak 0|Žádné dimenze|
 |QueryDuration|Yes|Doba trvání dotazu (datové sady)|Milisekund|Průměr|Doba trvání dotazu DAX v posledním intervalu|Žádné dimenze|
@@ -1881,7 +1895,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/obory názvů
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ActiveConnections|No|ActiveConnections|Count|Celkem|Total ActiveConnections for Microsoft. Relay|EntityName|
 |ActiveListeners|No|ActiveListeners|Count|Celkem|Total ActiveListeners for Microsoft. Relay|EntityName|
@@ -1900,7 +1914,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |SearchLatency|Yes|Latence hledání|Sekundy|Průměr|Průměrná latence hledání pro vyhledávací službu|Žádné dimenze|
 |SearchQueriesPerSecond|Yes|Hledání dotazů za sekundu|CountPerSecond|Průměr|Hledání dotazů za sekundu pro vyhledávací službu|Žádné dimenze|
@@ -1909,7 +1923,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. ServiceBus/obory názvů
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ActiveConnections|No|ActiveConnections|Count|Celkem|Celkový počet aktivních připojení pro Microsoft. ServiceBus|Žádné dimenze|
 |ActiveMessages|No|Počet aktivních zpráv ve frontě nebo tématu.|Count|Průměr|Počet aktivních zpráv ve frontě nebo tématu.|EntityName|
@@ -1934,7 +1948,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft. ServiceFabricMesh/aplikace
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ActualCpu|No|ActualCpu|Count|Průměr|Skutečné využití CPU v lisovnách|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
 |ActualMemory|No|ActualMemory|Bajty|Průměr|Skutečné využití paměti v MB|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
@@ -1951,7 +1965,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/Signaler
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ConnectionCount|Yes|Počet připojení|Count|Maximum|Množství připojení uživatele.|Koncový bod|
 |InboundTraffic|Yes|Příchozí provoz|Bajty|Celkem|Příchozí provoz služby|Žádné dimenze|
@@ -1963,7 +1977,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |avg_cpu_percent|Yes|Průměrné procento procesoru|Procento|Průměr|Průměrné procento procesoru|Žádné dimenze|
 |io_bytes_read|Yes|Přečtené vstupně-výstupní bajty|Bajty|Průměr|Přečtené vstupně-výstupní bajty|Žádné dimenze|
@@ -1976,7 +1990,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/servery/databáze
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |active_queries|Yes|Aktivní dotazy|Count|Celkem|Aktivní dotazy napříč všemi skupinami úloh. Platí jenom pro datové sklady.|Žádné dimenze|
 |allocated_data_storage|Yes|Přidělené datové místo|Bajty|Průměr|Přidělené úložiště dat. Neplatí pro datové sklady.|Žádné dimenze|
@@ -2032,7 +2046,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft. SQL/servery/elasticPools
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |allocated_data_storage|Yes|Přidělené datové místo|Bajty|Průměr|Přidělené datové místo|Žádné dimenze|
 |allocated_data_storage_percent|Yes|Procentuální hodnota přiděleného datového prostoru|Procento|Maximum|Procentuální hodnota přiděleného datového prostoru|Žádné dimenze|
@@ -2070,7 +2084,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft. Storage/storageAccounts
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Dostupnost|Yes|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|Typ, ApiName, ověřování|
 |Výchozí přenos dat|Yes|Výchozí přenos dat|Bajty|Celkem|Množství výchozích dat. Toto číslo zahrnuje výstup do externího klienta z Azure Storage a také pro výstup v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
@@ -2083,7 +2097,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Dostupnost|Yes|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|Typ, ApiName, ověřování|
 |BlobCapacity|No|Kapacita objektu BLOB|Bajty|Průměr|Velikost úložiště využitá Blob service účtu úložiště v bajtech|BlobType, úroveň|
@@ -2100,7 +2114,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/služby
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Dostupnost|Yes|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|Typ, ApiName, ověřování, sdílení souborů|
 |Výchozí přenos dat|Yes|Výchozí přenos dat|Bajty|Celkem|Množství výchozích dat. Toto číslo zahrnuje výstup do externího klienta z Azure Storage a také pro výstup v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování, sdílení souborů|
@@ -2119,7 +2133,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft. Storage/storageAccounts/queueServices
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Dostupnost|Yes|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|Typ, ApiName, ověřování|
 |Výchozí přenos dat|Yes|Výchozí přenos dat|Bajty|Celkem|Množství výchozích dat. Toto číslo zahrnuje výstup do externího klienta z Azure Storage a také pro výstup v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
@@ -2134,7 +2148,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft. Storage/storageAccounts/tableServices
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Dostupnost|Yes|Dostupnost|Procento|Průměr|Procento dostupnosti pro službu úložiště nebo zadanou operaci rozhraní API. Dostupnost se počítá tak, že se hodnota TotalBillableRequests vydělí počtem příslušných požadavků včetně těch, u kterých došlo k neočekávaným chybám. Všechny neočekávané chyby mají pro službu úložiště nebo zadanou operaci rozhraní API za následek sníženou dostupnost.|Typ, ApiName, ověřování|
 |Výchozí přenos dat|Yes|Výchozí přenos dat|Bajty|Celkem|Množství výchozích dat. Toto číslo zahrnuje výstup do externího klienta z Azure Storage a také pro výstup v rámci Azure. Kvůli tomu toto číslo nepředstavuje fakturovatelný výchozí přenos dat.|Typ, ApiName, ověřování|
@@ -2149,7 +2163,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftstoragesyncstoragesyncservices"></a>Microsoft. storagesync/storageSyncServices
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ServerSyncSessionResult|Yes|Výsledek relace synchronizace|Count|Průměr|Metrika, která protokoluje hodnotu 1 pokaždé, když koncový bod serveru úspěšně dokončí relaci synchronizace s koncovým bodem cloudu|SyncGroupName, ServerEndpointName, SyncDirection|
 |StorageSyncBatchTransferredFileBytes|Yes|Synchronizované bajty|Bajty|Celkem|Celková velikost souborů přenesených pro relace synchronizace|SyncGroupName, ServerEndpointName, SyncDirection|
@@ -2164,7 +2178,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftstoragesyncstoragesyncservicesregisteredservers"></a>Microsoft. storagesync/storageSyncServices/registeredServers
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ServerHeartbeat|Yes|Online stav serveru|Count|Maximum|Metrika, která protokoluje hodnotu 1 pokaždé, když server resigtered úspěšně zaznamená prezenční signál pomocí koncového bodu cloudu|ServerResourceId, servername|
 |ServerRecallIOTotalSizeBytes|Yes|Stažení vrstvení cloudu|Bajty|Celkem|Celková velikost dat vrácených serverem|ServerResourceId, servername|
@@ -2172,7 +2186,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroups"></a>Microsoft. storagesync/storageSyncServices/syncGroups
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |SyncGroupBatchTransferredFileBytes|Yes|Synchronizované bajty|Bajty|Celkem|Celková velikost souborů přenesených pro relace synchronizace|SyncGroupName, ServerEndpointName, SyncDirection|
 |SyncGroupSyncSessionAppliedFilesCount|Yes|Synchronizované soubory|Count|Celkem|Počet synchronizovaných souborů|SyncGroupName, ServerEndpointName, SyncDirection|
@@ -2181,7 +2195,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroupsserverendpoints"></a>Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ServerEndpointBatchTransferredFileBytes|Yes|Synchronizované bajty|Bajty|Celkem|Celková velikost souborů přenesených pro relace synchronizace|ServerEndpointName, SyncDirection|
 |ServerEndpointSyncSessionAppliedFilesCount|Yes|Synchronizované soubory|Count|Celkem|Počet synchronizovaných souborů|ServerEndpointName, SyncDirection|
@@ -2190,7 +2204,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft. StreamAnalytics/streamingjobs
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |AMLCalloutFailedRequests|Yes|Neúspěšné žádosti o funkce|Count|Celkem|Neúspěšné žádosti o funkce|ID logického, PartitionId|
 |AMLCalloutInputEvents|Yes|Události funkcí|Count|Celkem|Události funkcí|ID logického, PartitionId|
@@ -2212,7 +2226,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft. synapse/pracovní prostory
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |OrchestrationActivityRunsEnded|No|Běh aktivity skončil.|Count|Celkem|Počet zrušených aktivit orchestrace, selhání nebo zrušení|Výsledek, FailureType, aktivita, ActivityType, kanál|
 |OrchestrationPipelineRunsEnded|No|Běh kanálu skončil.|Count|Celkem|Počet úspěšných spuštění kanálu orchestrace, selhání nebo zrušení|Výsledek, FailureType, kanál|
@@ -2224,7 +2238,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. synapse/pracovní prostory/bigDataPools
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |CoresCapacity|No|Kapacita jader|Count|Maximum|Kapacita jader|Žádné dimenze|
 |MemoryCapacityGB|No|Kapacita paměti (GB)|Count|Maximum|Kapacita paměti (GB)|Žádné dimenze|
@@ -2233,7 +2247,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. synapse/pracovní prostory/sqlPools
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |AdaptiveCacheHitPercent|No|Procento přístupů do adaptivní mezipaměti|Procento|Maximum|Měří, jak fungují i úlohy s adaptivní mezipamětí. Pomocí této metriky s metrikou procentuální hodnoty přístupů do mezipaměti určete, jestli se má škálovat pro další kapacitu, nebo znovu spustit úlohy, aby se hydratea mezipaměť.|Žádné dimenze|
 |AdaptiveCacheUsedPercent|No|Procento využití adaptivní mezipaměti|Procento|Maximum|Měří, jak fungují i úlohy s adaptivní mezipamětí. Pomocí této metriky s metrikou procenta využití mezipaměti určete, jestli se má škálovat pro další kapacitu nebo znovu spustit úlohy, aby se hydratea mezipaměť.|Žádné dimenze|
@@ -2255,7 +2269,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft. TimeSeriesInsights/prostředí
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |IngressReceivedBytes|Yes|Přijaté bajty příchozího přenosu dat|Bajty|Celkem|Počet přečtených bajtů ze všech zdrojů událostí|Žádné dimenze|
 |IngressReceivedInvalidMessages|Yes|Příchozí přenos dat přijal neplatné zprávy.|Count|Celkem|Počet neplatných zpráv přečtených ze všech centra událostí nebo zdrojů událostí služby IoT Hub|Žádné dimenze|
@@ -2270,7 +2284,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft. TimeSeriesInsights/prostředí/EventSources
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |IngressReceivedBytes|Yes|Přijaté bajty příchozího přenosu dat|Bajty|Celkem|Počet přečtených bajtů ze zdroje události|Žádné dimenze|
 |IngressReceivedInvalidMessages|Yes|Příchozí přenos dat přijal neplatné zprávy.|Count|Celkem|Počet neplatných zpráv přečtených ze zdroje události|Žádné dimenze|
@@ -2285,7 +2299,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftvmwarecloudsimplevirtualmachines"></a>Microsoft. VMwareCloudSimple/virtualMachines
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |Bajty čtení z disku|Yes|Bajty čtení z disku|Bajty|Celkem|Celková propustnost disku z důvodu operací čtení v období vzorkování.|Žádné dimenze|
 |Operace čtení z disku/s|Yes|Operace čtení z disku/s|CountPerSecond|Průměr|Průměrný počet vstupně-výstupních operací čtení v předchozích ukázkových obdobích. Všimněte si, že tyto operace mohou být proměnlivé velikosti.|Žádné dimenze|
@@ -2310,7 +2324,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft. Web/hostingEnvironments/multiRolePools
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |ActiveRequests|Yes|Aktivní požadavky|Count|Celkem|Aktivní požadavky|Instance|
 |AverageResponseTime|Yes|Průměrná doba odezvy|Sekundy|Průměr|Průměrná doba odezvy|Instance|
@@ -2338,7 +2352,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft. Web/hostingEnvironments/workerPools
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |CpuPercentage|Yes|Procento procesoru|Procento|Průměr|Procento procesoru|Instance|
 |MemoryPercentage|Yes|Procento paměti|Procento|Průměr|Procento paměti|Instance|
@@ -2349,7 +2363,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft. Web/serverových farem
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |BytesReceived|Yes|Data v|Bajty|Celkem|Data v|Instance|
 |BytesSent|Yes|Výstupní data|Bajty|Celkem|Výstupní data|Instance|
@@ -2380,7 +2394,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 > [!IMPORTANT]
 > **Průměrná doba odezvy** bude zastaralá, aby nedocházelo k záměně s agregacemi metrik. Použijte **dobu odezvy** jako náhradu.
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |AppConnections|Yes|Připojení|Count|Průměr|Připojení|Instance|
 |AverageMemoryWorkingSet|Yes|Průměrná pracovní sada paměti|Bajty|Průměr|Průměrná pracovní sada paměti|Instance|
@@ -2424,7 +2438,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 > [!NOTE]
 > **Využití systému souborů** je nová metrika, která je globálně nasazená, ale neočekávají se žádná data, pokud jste si je nepřidali do seznamu povolených privátních náhledů.
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |AverageMemoryWorkingSet|Yes|Průměrná pracovní sada paměti|Bajty|Průměr|Průměrná pracovní sada paměti|Instance|
 |BytesReceived|Yes|Data v|Bajty|Celkem|Data v|Instance|
@@ -2452,7 +2466,7 @@ Důležité Další informace najdete v tématu [Přehled agentů monitorování
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/weby/sloty
 
-|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Exportovatelné přes nastavení diagnostiky?|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|---|
 |AppConnections|Yes|Připojení|Count|Průměr|Připojení|Instance|
 |AverageMemoryWorkingSet|Yes|Průměrná pracovní sada paměti|Bajty|Průměr|Průměrná pracovní sada paměti|Instance|

@@ -2,19 +2,19 @@
 title: Azure Key Vault – použití obnovitelného odstranění s využitím PowerShellu
 description: Příklady případů použití obnovitelného odstranění s využitím výstřižků kódu PowerShellu
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 08/12/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 9b9a7a5b3d92833a0f24f6bc646b19110dcfd66a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/11/2020
+ms.author: sudbalas
+ms.openlocfilehash: 55e4bd20b6cc17a5cbad620d3a404d6ada41b81a
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386074"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136469"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak používat obnovitelné odstranění Key Vaultu s využitím PowerShellu
 
@@ -23,7 +23,7 @@ Funkce obnovitelného odstranění Azure Key Vault umožňuje obnovení odstran�
 - Podpora obnovitelného odstranění trezoru klíčů
 - Podpora obnovitelného mazání objektů trezoru klíčů; klíče, tajné klíče a certifikáty
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -40,7 +40,7 @@ Informace o Key Vault specifických referenčních informacích pro PowerShell n
 
 Operace Key Vault se samostatně spravují prostřednictvím oprávnění řízení přístupu na základě role (RBAC) následujícím způsobem:
 
-| Operace | Popis | Oprávnění uživatele |
+| Operace | Description | Oprávnění uživatele |
 |:--|:--|:--|
 |Seznam|Zobrazí seznam odstraněných trezorů klíčů.|Microsoft. deletedVaults trezor//Read|
 |Zotavit|Obnoví odstraněný Trezor klíčů.|Trezor Microsoft. a trezory/zápis|
@@ -67,11 +67,7 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ### <a name="new-key-vault"></a>Nový trezor klíčů
 
-Povolení obnovitelného odstranění nového trezoru klíčů se provádí v době vytváření přidáním příznaku pro povolení slabého odstranění do příkazu pro vytvoření.
-
-```powershell
-New-AzKeyVault -Name "ContosoVault" -ResourceGroupName "ContosoRG" -Location "westus" -EnableSoftDelete
-```
+Obnovitelné odstranění je standardně automaticky zapnuté pro všechny nové trezory klíčů. Od prosince 31 2020 již nebude možné zakázat obnovitelné odstranění v jakémkoli trezoru klíčů. 
 
 ### <a name="verify-soft-delete-enablement"></a>Ověřit povolení pro obnovitelné odstranění
 

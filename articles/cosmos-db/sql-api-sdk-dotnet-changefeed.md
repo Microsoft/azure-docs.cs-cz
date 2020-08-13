@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/05/2020
 ms.author: anfeldma
-ms.openlocfilehash: 5f0d66a515ed13f96645e5916af2b01841950375
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f38b2715115efadef4e09a95e9392b1dfd4c68b0
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846594"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135738"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Sada SDK pro rozhraní Change feed pro .NET: stažení a poznámky k verzi
 
@@ -49,6 +49,9 @@ ms.locfileid: "87846594"
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="v2-builds"></a>V2 sestavení
+
+### <a name="232"></a><a name="2.3.2"/>2.3.2
+* Přidání kompatibility úložiště zapůjčení se sadou [V3 SDK](sql-api-sdk-dotnet-standard.md) , která umožňuje cesty při migraci za provozu. Aplikace může migrovat na sadu SDK v3 a migrovat zpátky do knihovny Change feed Processor, aniž by došlo ke ztrátě jakéhokoli stavu.
 
 ### <a name="231"></a><a name="2.3.1"/>kládají
 * Opraven případ při `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` odeslání důvodu uzavření na, `FeedProcessing.IChangeFeedObserver.CloseAsync` Pokud oddíl nebyl nalezen nebo pokud cílová replika není aktuální s relací čtení. V těchto případech `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` a `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` jsou nyní použity důvody zavření.
@@ -193,6 +196,7 @@ Microsoft bude před vyřazením sady SDK do novější nebo podporované verze 
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [2.3.2](#2.3.2) |11. srpna 2020 |--- |
 | [kládají](#2.3.1) |30. července 2020 |--- |
 | [2.3.0](#2.3.0) |2. dubna 2020 |--- |
 | [2.2.8](#2.2.8) |28. října 2019 |--- |
@@ -211,7 +215,7 @@ Microsoft bude před vyřazením sady SDK do novější nebo podporované verze 
 | [1.1.0](#1.1.0) |13. srpna 2017 |--- |
 | [1.0.0](#1.0.0) |7. července 2017 |--- |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

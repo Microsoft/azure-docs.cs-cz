@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: bf6215bd9225292f7b85ed6d4c4566cd4ee860b7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902095"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136333"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografická dostupnost a podpora měny pro komerční tržiště
 
@@ -179,11 +179,7 @@ Pokud chcete upravit jakoukoli cenu před publikováním, stačí exportovat tab
 > [!NOTE]
 > Po zveřejnění ceny za uvedení na trh ve vašem plánu ji nelze později změnit. Abyste měli jistotu, že jsou ceny před publikováním správné, exportujte tabulku s cenami a Prohlédněte si ceny na každém trhu.
 
-## <a name="rate-changes"></a>Změny rychlosti
-
-Sazby, které používáme k výpočtu místních cen, se aktualizují každý den. Tento výpočet se provede, když ISV uloží stránku a může zkontrolovat všechny sazby tím, že před publikováním vyexportuje a zkontroluje ceny.
-
-### <a name="retrieving-currency-information-by-api"></a>Načítání informací o měně pomocí rozhraní API
+## <a name="retrieving-currency-information-by-api"></a>Načítání informací o měně pomocí rozhraní API
 
 Jednotlivé ceny (v závislosti na tom, jak byly nastaveny) mohou být ovlivněny směnnými sazbami v den, kdy byly uloženy), lze načíst pomocí rozhraní API. informace o měně se nedají.
 

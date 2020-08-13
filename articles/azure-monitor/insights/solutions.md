@@ -5,28 +5,28 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/12/2020
-ms.openlocfilehash: 406991de2441836565c911ef8a8e1402f6398eb0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/07/2020
+ms.openlocfilehash: 04f2d11b9fc8bbd61319a057c091cddbf140b9db
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824779"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135521"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Monitorování řešení v Azure Monitor
 
-Monitorování řešení využívajících služby v Azure k zajištění dalších analýz provozu určité aplikace nebo služby. Tento článek poskytuje stručný přehled řešení monitorování v Azure a podrobnosti o jejich používání a instalaci. Můžete přidat řešení monitorování Azure Monitor pro všechny aplikace a služby, které používáte. Jsou obvykle k dispozici zdarma, ale shromažďují data, která by mohla vyvolat poplatky za využití.
+Monitorování řešení v Azure Monitor poskytují analýzu provozu konkrétní aplikace nebo služby Azure. Tento článek poskytuje stručný přehled řešení monitorování v Azure a podrobnosti o jejich používání a instalaci. Můžete přidat řešení monitorování Azure Monitor pro všechny aplikace a služby, které používáte. Jsou obvykle k dispozici zdarma, ale shromažďují data, která by mohla vyvolat poplatky za využití.
 
 ## <a name="use-monitoring-solutions"></a>Použití řešení monitorování
 
-Otevřete stránku **Přehled** v Azure monitor pro zobrazení dlaždice pro každé nainstalované řešení v pracovním prostoru.
+Stránka **Přehled** řešení v Azure monitor zobrazuje dlaždici pro každé řešení nainstalované v pracovním prostoru Log Analytics. Tuto stránku otevřete tak, že v [Azure Portal](https://ms.portal.azure.com)přejdete na **Azure monitor** . V nabídce **přehledy** vyberte **Další** a otevřete **centrum Insights**a pak klikněte na **Log Analytics pracovní prostory**.
 
-1. Přejděte na web [Azure Portal](https://ms.portal.azure.com). Vyhledejte a vyberte **monitor**.
-1. V nabídce **přehledy** vyberte **Další**.
-1. Pomocí rozevíracích seznamů v horní části obrazovky změňte pracovní prostor nebo časový rozsah použitý pro dlaždice.
-1. Klikněte na dlaždici pro řešení a otevřete jeho zobrazení, které obsahuje podrobnější analýzu shromážděných dat.
+[![Centrum Insights](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
-![Přehled](media/solutions/overview.png)
+
+Pomocí rozevíracích seznamů v horní části obrazovky změňte pracovní prostor nebo časový rozsah použitý pro dlaždice. Klikněte na dlaždici pro řešení a otevřete jeho zobrazení, které obsahuje podrobnější analýzu shromážděných dat.
+
+[![Přehled](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
 Řešení monitorování mohou obsahovat více typů prostředků Azure a můžete si Zobrazit všechny prostředky, které jsou součástí řešení, stejně jako všechny ostatní prostředky. Například všechny dotazy protokolu zahrnuté v řešení jsou uvedeny v části **dotazy řešení** v [Průzkumníku dotazů](../log-query/get-started-portal.md#load-queries) . Tyto dotazy můžete použít při provádění analýzy ad hoc pomocí [dotazů protokolu](../log-query/log-query-overview.md).
 
@@ -36,7 +36,7 @@ Otevřete stránku **Přehled** v Azure monitor pro zobrazení dlaždice pro ka�
 
 Pomocí následujícího postupu můžete zobrazit seznam řešení monitorování nainstalovaných ve vašem předplatném.
 
-1. Přejděte na web [Azure Portal](https://ms.portal.azure.com). Vyhledejte a vyberte **řešení**.
+1. Přejděte na [Azure Portal](https://ms.portal.azure.com). Vyhledejte a vyberte **řešení**.
 1. Jsou uvedena řešení nainstalovaná ve všech pracovních prostorech. Za názvem řešení následuje název pracovního prostoru, ve kterém je nainstalovaný.
 1. Pomocí rozevíracích seznamů v horní části obrazovky můžete filtrovat podle předplatného nebo skupiny prostředků.
 
@@ -101,9 +101,9 @@ az monitor log-analytics solution list --resource-group MyResourceGroup
 
    - Vyberte tlačítko **Cloud Shell** na řádku nabídek v pravém horním rohu [Azure Portal](https://portal.azure.com)
 
-1. Přihlásit se.
+1. Přihlaste se.
 
-   Pokud používáte místní instalaci rozhraní příkazového řádku, přihlaste se pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) .  Proces ověřování dokončíte podle kroků zobrazených v terminálu.
+   Pokud používáte místní instalaci rozhraní příkazového řádku, přihlaste se pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) .  Dokončete proces ověřování podle kroků zobrazených v terminálu.
 
     ```azurecli
     az login

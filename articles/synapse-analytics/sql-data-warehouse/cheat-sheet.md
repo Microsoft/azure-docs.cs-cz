@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 74ffb54b13783b4945376e1717777fa1da39ab44
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3b5783476e0d4a96561e11158cd2b0f6421cfbf6
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543312"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136095"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>List tahák pro Azure synapse Analytics (dřív SQL DW)
 
@@ -37,7 +37,7 @@ Znalost typů operací předem vám pomůže optimalizovat návrh tabulek.
 
 ## <a name="data-migration"></a>Migrace dat
 
-Nejdřív načtěte data do [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) nebo Azure Blob Storage. Potom pomocí základu dat načtěte data do pracovních tabulek. Použijte následující konfiguraci:
+Nejdřív načtěte data do [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) nebo Azure Blob Storage. Dále pomocí [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (Preview) načtěte data do pracovních tabulek. Použijte následující konfiguraci:
 
 | Návrh | Doporučení |
 |:--- |:--- |
@@ -109,7 +109,7 @@ Pro velkou dávku aktualizací v historických datech zvažte použití [CTAS](s
 
 ## <a name="maintain-statistics"></a>Udržujte statistiky
 
- Pokud jsou automatické statistiky všeobecně dostupné, vyžadují se ruční údržba statistik. Statistiky je důležité aktualizovat, když dojde k *významným* změnám vašich dat. Pomáhá to optimalizovat plány dotazů. Pokud zjistíte, že údržba vašich statistik trvá příliš dlouho, pečlivěji zvažte, které sloupce mají statistiku mít.
+Statistiky je důležité aktualizovat, když dojde k *významným* změnám vašich dat. Pokud chcete zjistit, jestli došlo k *významným* změnám, přečtěte si téma [aktualizace](sql-data-warehouse-tables-statistics.md#update-statistics) . Aktualizovaná Statistika optimalizuje vaše plány dotazů. Pokud zjistíte, že údržba vašich statistik trvá příliš dlouho, pečlivěji zvažte, které sloupce mají statistiku mít.
 
 Můžete také definovat frekvenci aktualizací. Například můžete chtít každý den aktualizovat sloupce s datem, do kterých se můžou přidávat nové hodnoty. Nejvíce výhod získáte tak, že budete mít statistiky pro sloupce používané ve spojeních, sloupce používané v klauzuli WHERE a sloupce používané v příkazu GROUP BY.
 

@@ -1,6 +1,6 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – VPN Gateway
-description: Přečtěte si o konceptech sítě VPN typu Site-to-site CloudSimple a VPN typu Point-to-site.
+description: Přečtěte si o branách VPN typu Site-to-site a CloudSimple, které se používají k posílání šifrovaného provozu mezi CloudSimple oblastí a dalšími prostředky.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e013bb96990a8f3a0ef7d3a58529b200919e276
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024853"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140628"
 ---
 # <a name="vpn-gateways-overview"></a>Přehled bran VPN
 
@@ -60,7 +60,7 @@ Připojení VPN typu Site-to-site používá k navázání zabezpečeného přip
 |-----------|------------|------------|------------|
 | Šifrování | AES 128 | AES 256 | AES 256 |
 | Algoritmus hash| SHA 256 | SHA 256 | SHA 1 |
-| Skupina PFS (Perfect Forward Secrecy) | Žádná | Žádná | Žádná |
+| Skupina PFS (Perfect Forward Secrecy) | Žádné | Žádné | Žádné |
 | Doba života | 1 800 sekund | 1 800 sekund | 1 800 sekund |
 | Velikost dat | 4 GB | 4 GB | 4 GB |
 

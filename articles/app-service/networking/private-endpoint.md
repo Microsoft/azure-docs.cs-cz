@@ -4,17 +4,17 @@ description: Připojení soukromě k webové aplikaci pomocí privátního konco
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4fab75aef2a94ba7108085e9d5b5dbbf190342f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 773e63cb5eb2a9825975402f65439acd6ad192ae
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068292"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135381"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Používání privátních koncových bodů pro webovou aplikaci Azure (Preview)
 
@@ -128,6 +128,8 @@ Pravidelně vylepšujeme funkci privátního propojení a soukromý koncový bod
 - Postup nasazení privátního koncového bodu pro webovou aplikaci pomocí rozhraní příkazového řádku Azure najdete v tématu [Jak připojit soukromě k webové aplikaci pomocí Azure CLI][howtoguide2] .
 - Postup nasazení privátního koncového bodu pro webovou aplikaci pomocí prostředí PowerShell najdete v tématu [Postup připojení soukromě k webové aplikaci pomocí prostředí PowerShell][howtoguide3] .
 - Postup nasazení privátního koncového bodu pro webovou aplikaci pomocí šablony Azure najdete v tématu [Jak připojit soukromě k webové aplikaci pomocí šablony Azure][howtoguide4] .
+- Komplexní příklad, jak připojit front-end webovou aplikaci k zabezpečené webové aplikaci pomocí injektáže virtuální sítě a privátního koncového bodu se šablonou ARM, najdete v tomto [rychlém][howtoguide5] startu.
+- Komplexní příklad, jak připojit front-end webovou aplikaci k zabezpečené webové aplikaci pomocí injektáže virtuální sítě a privátního koncového bodu s terraformu, najdete v této [ukázce][howtoguide6]
 
 
 <!--Links-->
@@ -144,3 +146,5 @@ Pravidelně vylepšujeme funkci privátního propojení a soukromý koncový bod
 [howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
 [howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint
 [howtoguide4]: https://docs.microsoft.com/azure/app-service/scripts/template-deploy-private-endpoint
+[howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection
+[howtoguide6]: https://docs.microsoft.com/azure/app-service/scripts/terraform-secure-backend-frontend

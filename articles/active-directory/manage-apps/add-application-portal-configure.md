@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: a1a99e9f02a25f5e1d57ea485930a4f26149b53f
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: beb5c7262a5475f5c1535e120fcebe4c70838c7e
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808401"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135483"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Rychlý Start: Konfigurace vlastností aplikace ve vašem tenantovi Azure Active Directory (Azure AD)
 
 V předchozím rychlém startu jste přidali aplikaci do tenanta Azure Active Directory (Azure AD). Když přidáváte aplikaci, umožníte tenantovi Azure AD zjistit, že se jedná o poskytovatele identity pro danou aplikaci. Teď nakonfigurujete některé vlastnosti pro aplikaci.
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete nakonfigurovat vlastnosti aplikace v tenantovi Azure AD, budete potřebovat:
 
@@ -48,37 +48,24 @@ Po dokončení přidávání aplikace do tenanta služby Azure AD se zobrazí st
     - **Povolit uživatelům přihlášení?** Určuje, zda se může přihlásit uživatel přiřazený k aplikaci.
     - Je **vyžadováno přiřazení uživatele?** Určuje, jestli se uživatelé, kteří nejsou přiřazeni k aplikaci, můžou přihlásit.
     - **Viditelná pro uživatele?** Určuje, jestli se uživatelé přiřazení k aplikaci uvidí na [přístupovém panelu](https://myapps.microsoft.com) a ve Spouštěči aplikací Office 365. (Další informace naleznete v nabídce dlaždice v levém horním rohu webu Office 365 nebo webu Microsoft 365.)
-4. Následující tabulky vám pomůžou zvolit nejvhodnější možnosti pro vaše potřeby.
+    
+    > [!TIP]
+    > K přiřazování uživatelů dojde v části navigace **Uživatelé a skupiny** .
 
-   - Chování pro *přiřazené* uživatele:
+    Tři možnosti lze přepínat nezávisle na sobě a výsledné chování není vždy zřejmé. Tady je tabulka, která může pomáhat:
+    
+    | Povolit uživatelům přihlášení? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Chování pro uživatele, kteří mají buď přiřazenou aplikaci, nebo ne. |
+    |---|---|---|---|
+    | Ano | Ano | Ano | Přiřazení uživatelé uvidí aplikaci a přihlásí se.<br>Nepřiřazení uživatelé aplikaci uvidí a nelze se přihlásit. |
+    | Ano | Ano | No  | Přiřazená použití nemůže aplikaci zobrazit, ale může se přihlásit.<br>Nepřiřazení uživatelé aplikaci uvidí a nelze se přihlásit. |
+    | Ano | No  | Ano | Přiřazení uživatelé uvidí aplikaci a přihlásí se.<br>Nepřiřazení uživatelé aplikaci uvidí, ale můžou se přihlásit. |
+    | Ano | No  | No  | Přiřazení uživatelé nemůžou aplikaci zobrazit, ale můžou se přihlásit.<br>Nepřiřazení uživatelé aplikaci uvidí, ale můžou se přihlásit. |
+    | No  | Ano | Ano | Přiřazení uživatelé nemohou aplikaci zobrazit a nemohou se přihlásit.<br>Nepřiřazení uživatelé aplikaci uvidí a nelze se přihlásit. |
+    | No  | Ano | No  | Přiřazení uživatelé nemohou aplikaci zobrazit a nemohou se přihlásit.<br>Nepřiřazení uživatelé aplikaci uvidí a nelze se přihlásit. |
+    | No  | No  | Ano | Přiřazení uživatelé nemohou aplikaci zobrazit a nemohou se přihlásit.<br>Nepřiřazení uživatelé aplikaci uvidí a nelze se přihlásit. |
+    | No  | No  | No  | Přiřazení uživatelé nemohou aplikaci zobrazit a nemohou se přihlásit.<br>Nepřiřazení uživatelé aplikaci uvidí a nelze se přihlásit. |
 
-       | Vlastnost aplikace | Vlastnost aplikace | Vlastnost aplikace | Prostředí pro přiřazené uživatele | Prostředí pro přiřazené uživatele |
-       |---|---|---|---|---|
-       | Povolit uživatelům přihlášení? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se přiřazení uživatelé přihlásit? | Zobrazí se aplikace přiřazeným uživatelům?* |
-       | Ano | Ano | Ano | Ano | Ano  |
-       | Ano | Ano | Ne  | Ano | Ne   |
-       | Ano | Ne  | Ano | Ano | Ano  |
-       | Ano | Ne  | Ne  | Ano | Ne   |
-       | Ne  | Ano | Ano | Ne  | Ne   |
-       | Ne  | Ano | Ne  | Ne  | Ne   |
-       | Ne  | Ne  | Ano | Ne  | Ne   |
-       | Ne  | Ne  | Ne  | Ne  | Ne   |
-
-   - Chování pro *nepřiřazené* uživatele:
-
-       | Vlastnost aplikace | Vlastnost aplikace | Vlastnost aplikace | Prostředí pro nepřiřazené uživatele | Prostředí pro nepřiřazené uživatele |
-       |---|---|---|---|---|
-       | Povolit uživatelům přihlášení? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se nepřiřazení uživatelé přihlásit? | Zobrazí se aplikace nepřiřazeným uživatelům?* |
-       | Ano | Ano | Ano | Ne  | Ne   |
-       | Ano | Ano | Ne  | Ne  | Ne   |
-       | Ano | Ne  | Ano | Ano | Ne   |
-       | Ano | Ne  | Ne  | Ano | Ne   |
-       | Ne  | Ano | Ano | Ne  | Ne   |
-       | Ne  | Ano | Ne  | Ne  | Ne   |
-       | Ne  | Ne  | Ano | Ne  | Ne   |
-       | Ne  | Ne  | Ne  | Ne  | Ne   |
-
-     * Zobrazí se aplikace uživateli na přístupovém panelu a ve spouštěči aplikací Office 365?
+4. Až budete hotovi, vyberte **Uložit**.
 
 ## <a name="use-a-custom-logo"></a>Použití vlastního loga
 
@@ -102,7 +89,7 @@ Použití vlastního loga:
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete pokračovat v sérii rychlých startů, zvažte odstranění aplikace a vyčištění svého testovacího tenanta. Odstranění aplikace se zabývá posledním rychlým startem v této sérii, najdete v tématu [odstranění aplikace](delete-application-portal.md).
+Pokud nebudete pokračovat v sérii rychlých startů, zvažte odstranění aplikace a vyčistěte testovacího tenanta. Odstranění aplikace se zabývá posledním rychlým startem v této sérii, najdete v tématu [odstranění aplikace](delete-application-portal.md).
 
 ## <a name="next-steps"></a>Další kroky
 

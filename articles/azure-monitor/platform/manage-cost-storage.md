@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: e6e1c6a02979ff6621961e17378c7fe2c9a1592b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 391a5f054c5d80b255fd333ea416900c8c5ab6d1
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926344"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135415"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitor    
 
@@ -266,8 +266,7 @@ Heartbeat
 Hodnota získat počet uzlů odesílajících data za posledních 24 hodin používá dotaz: 
 
 ```kusto
-union * 
-| where TimeGenerated > ago(24h)
+find where TimeGenerated > ago(24h) project Computer
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
 | summarize nodes = dcount(computerName)
@@ -276,15 +275,14 @@ union *
 Chcete-li získat seznam uzlů, které odesílají data (a objem dat odesílaných každým), je možné použít následující dotaz:
 
 ```kusto
-union * 
-| where TimeGenerated > ago(24h)
+find where TimeGenerated > ago(24h) project _BilledSize, Computer
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
 
 > [!TIP]
-> Tyto dotazy můžete použít `union *` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky **na počítač** , zadejte dotaz na datový typ použití (viz níže).
+> Tyto dotazy můžete použít `find` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky **na počítač** , zadejte dotaz na datový typ použití (viz níže).
 
 ## <a name="understanding-ingested-data-volume"></a>Principy ingestných objemů dat
 
@@ -346,8 +344,7 @@ Usage
 `Usage`Datový typ neobsahuje informace na úrovni počítače. Chcete-li zobrazit **Velikost** zpracovaných dat na jeden počítač, použijte `_BilledSize` [vlastnost](log-standard-properties.md#_billedsize), která poskytuje velikost v bajtech:
 
 ```kusto
-union * 
-| where TimeGenerated > ago(24h)
+find where TimeGenerated > ago(24h) project _BilledSize, _IsBillable, Computer
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | summarize BillableDataBytes = sum(_BilledSize) by  computerName 
@@ -359,8 +356,7 @@ union *
 Chcete-li zobrazit **počet** fakturovaných událostí zpracovaných na počítač, použijte 
 
 ```kusto
-union * 
-| where TimeGenerated > ago(24h)
+find where TimeGenerated > ago(24h) project _IsBillable, Computer
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | summarize eventCount = count() by computerName  
@@ -368,15 +364,14 @@ union *
 ```
 
 > [!TIP]
-> Tyto dotazy můžete použít `union  *` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky **na počítač** , pak na něj zadejte dotaz na datový typ použití.
+> Tyto dotazy můžete použít `find` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky **na počítač** , pak na něj zadejte dotaz na datový typ použití.
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Objem dat podle prostředku Azure, skupiny prostředků nebo předplatného
 
 Pro data z uzlů hostovaných v Azure můžete získat **Velikost** zpracovaných dat __na jeden počítač__, použít [vlastnost](log-standard-properties.md#_resourceid)_ResourceId, která poskytuje úplnou cestu k prostředku:
 
 ```kusto
-union * 
-| where TimeGenerated > ago(24h)
+find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
 | where _IsBillable == true 
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by BillableDataBytes nulls last
 ```
@@ -384,22 +379,20 @@ union *
 Pro data z uzlů hostovaných v Azure můžete získat **Velikost** přijatých dat __pro každé předplatné Azure__, získat ID předplatného `_ResourceId` jako tuto vlastnost:
 
 ```kusto
-union * 
-| where TimeGenerated > ago(24h)
+find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
 | where _IsBillable == true 
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
-| extend subscriptionId = split(_ResourceId, "/")[2] 
+| extend subscriptionId = tostring(split(_ResourceId, "/")[2]) 
 | summarize BillableDataBytes = sum(BillableDataBytes) by subscriptionId | sort by BillableDataBytes nulls last
 ```
 
 Podobně platí, že pokud chcete získat objem dat podle skupiny prostředků, bude to:
 
 ```kusto
-union * 
-| where TimeGenerated > ago(24h)
+find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
 | where _IsBillable == true 
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
-| extend resourceGroup = split(_ResourceId, "/")[4] 
+| extend resourceGroup = tostring(split(_ResourceId, "/")[4] )
 | summarize BillableDataBytes = sum(BillableDataBytes) by resourceGroup | sort by BillableDataBytes nulls last
 ```
 
@@ -411,7 +404,7 @@ V případě potřeby můžete také `_ResourceId` plně analyzovat v případě
 ```
 
 > [!TIP]
-> Tyto dotazy můžete použít `union  *` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky v rámci předplatného, skupiny prostředků nebo názvu prostředku, pak dotaz na datový typ použití.
+> Tyto dotazy můžete použít `find` zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky v rámci předplatného, skupiny prostředků nebo názvu prostředku, pak dotaz na datový typ použití.
 
 > [!WARNING]
 > Některá pole datového typu použití, ale stále ve schématu, jsou zastaralá a jejich hodnoty se už neplní. Jedná se o **počítač** a pole související s ingestování (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** a **AverageProcessingTimeMs**).
@@ -458,8 +451,7 @@ Mezi návrhy na snížení objemu shromažďovaných protokolů patří:
 Pokud chcete získat seznam počítačů, které se budou fakturovat jako uzly, pokud je pracovní prostor ve starší verzi na cenové úrovni uzlů, hledejte uzly, které odesílají **účtované datové typy** (některé datové typy jsou zdarma). K tomu použijte `_IsBillable` [vlastnost](log-standard-properties.md#_isbillable) a použijte pole s plně kvalifikovaným názvem domény v levém krajním poli. Vrátí počet počítačů s fakturovanými daty za hodinu (což je členitost, při které se uzly počítají a účtují):
 
 ```kusto
-union * 
-| where _IsBillable == true 
+find where TimeGenerated > ago(24h) project Computer, TimeGenerated
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
 | summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc

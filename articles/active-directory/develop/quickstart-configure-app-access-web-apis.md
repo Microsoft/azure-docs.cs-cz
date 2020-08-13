@@ -13,12 +13,12 @@ ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 800b399e73be032cfd9d2849b004018aa9d9031f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 87c21587567ffe3462e4b702985114ac10454886
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120860"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140798"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Rychlý Start: Konfigurace klientské aplikace pro přístup k webovému rozhraní API
 
@@ -26,7 +26,7 @@ V tomto rychlém startu přidáte identifikátory URI přesměrování, přihla�
 
 Aby mohl klient získat přístup k webovému rozhraní API vystavenému pomocí aplikace prostředků, jako je Microsoft Graph API, rozhraní pro vyjádření souhlasu zajišťuje, že klient získá udělení oprávnění požadované pro požadovaná oprávnění. Ve výchozím nastavení můžou všechny aplikace požádat o oprávnění z rozhraní Microsoft Graph API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Dokončení [rychlého startu: Konfigurace aplikace k vystavení webového rozhraní API](quickstart-configure-app-expose-web-apis.md)
@@ -148,7 +148,7 @@ Postup přidání tajného klíče klienta:
 
 ## <a name="add-permissions-to-access-web-apis"></a>Přidání oprávnění pro přístup k webovým rozhraním API
 
-Ve výchozím nastavení je vybrané [oprávnění pro přihlášení a čtení profilu uživatele Graph API](https://developer.microsoft.com/graph/docs/concepts/permissions_reference#user-permissions) . Pro každé webové rozhraní API můžete vybrat ze [dvou typů oprávnění](developer-glossary.md#permissions) :
+Ve výchozím nastavení je vybrané [oprávnění pro přihlášení a čtení profilu uživatele Graph API](/graph/permissions-reference#user-permissions) . Pro každé webové rozhraní API můžete vybrat ze [dvou typů oprávnění](developer-glossary.md#permissions) :
 
 * **Oprávnění aplikace**. Vaše klientská aplikace musí přistupovat přímo k webovému rozhraní API, a to bez kontextu uživatele. Tento typ oprávnění vyžaduje souhlas správce. Toto oprávnění není k dispozici pro klientské a mobilní aplikace v klientských počítačích.
 * **Delegovaná oprávnění**. Klientská aplikace musí mít přístup k webovému rozhraní API jako přihlášený uživatel, ale s přístupem omezeným zvoleným oprávněním. Pokud tento typ oprávnění nevyžaduje souhlas správce, může ho udělit uživatel.

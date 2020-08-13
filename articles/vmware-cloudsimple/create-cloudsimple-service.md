@@ -1,6 +1,6 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – vytvoření služby CloudSimple
-description: Popisuje, jak vytvořit službu CloudSimple v Azure Portal
+description: Naučte se vytvořit službu CloudSimple v Azure Portal. Než začnete, zkontrolujte požadovanou konfiguraci.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8648f2c9cc0175050d4b7642f5235d47159ecfaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a196e717dd6e02570e4bdf830a24ce342b47ece
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024819"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140543"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>Vytvoření řešení Azure VMware pomocí služby CloudSimple
 
@@ -25,7 +25,7 @@ Přidělte bloku CIDR/28 pro podsíť brány. Pro každou službu CloudSimple se
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-the-service"></a>Vytvoření služby
 

@@ -1,6 +1,6 @@
 ---
 title: Zřízení uzlů pro řešení VMware podle CloudSimple – Azure
-description: Naučte se přidávat uzly do VMWare pomocí nasazení CloudSimple.
+description: Naučte se, jak přidat uzly do VMWare s nasazením CloudSimple v Azure Portal. Pro prostředí privátního cloudu můžete nastavit kapacitu s průběžnými platbami.
 author: dikamath
 ms.author: dikamath
 ms.date: 08/14/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccff5b4dc6ed5a571e25ab0569b9fa92674e1340
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024802"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140730"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Zřízení uzlů pro řešení Azure VMware podle CloudSimple
 

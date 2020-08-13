@@ -1,22 +1,22 @@
 ---
-title: Ověřování pomocí spravovaných identit Azure
+title: Použití spravovaných identit pro přístup ke konfiguraci aplikace
 titleSuffix: Azure App Configuration
-description: Ověřování v konfiguraci aplikací Azure pomocí spravovaných identit Azure
+description: Ověření v konfiguraci aplikace Azure pomocí spravovaných identit
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: bf97a1eae758778efc8d800666af4a5fcb574429
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ccf1bed3a1791f0aa172a617deab1cd192540f3
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80056838"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135466"
 ---
-# <a name="integrate-with-azure-managed-identities"></a>Integrace se spravovanými identitami Azure
+# <a name="use-managed-identities-to-access-app-configuration"></a>Použití spravovaných identit pro přístup ke konfiguraci aplikace
 
-Azure Active Directory [spravované identity](../active-directory/managed-identities-azure-resources/overview.md) zjednodušují správu tajných kódů pro vaši cloudovou aplikaci. Se spravovanou identitou může váš kód používat instanční objekt vytvořený pro službu Azure, na které běží. Místo samostatného přihlašovacího údaje uloženého v Azure Key Vault nebo v místním připojovacím řetězci použijete spravovanou identitu. 
+Azure Active Directory [spravované identity](../active-directory/managed-identities-azure-resources/overview.md) zjednodušují správu tajných kódů pro vaši cloudovou aplikaci. Se spravovanou identitou může váš kód používat instanční objekt vytvořený pro službu Azure, na které běží. Místo samostatného přihlašovacího údaje uloženého v Azure Key Vault nebo v místním připojovacím řetězci použijete spravovanou identitu.
 
 Konfigurace aplikace Azure a její klientské knihovny pro navýšení .NET Core, .NET Framework a Java mají do nich vestavěnou podporu spravovaných identit. I když ho použít nemusíte, spravovaná identita eliminuje potřebu přístupového tokenu, který obsahuje tajné klíče. Váš kód má přístup k úložišti konfigurace aplikace jenom pomocí koncového bodu služby. Tuto adresu URL můžete do kódu vložit přímo bez vystavení tajného kódu.
 
@@ -84,7 +84,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 
 1. Najděte koncový bod do úložiště konfigurace aplikace. Tato adresa URL je uvedena na kartě **přístupové klíče** pro úložiště v Azure Portal.
 
-1. Otevřete *appsettings.jsna*a přidejte následující skript. Nahraďte *\<service_endpoint>* včetně závorek adresou URL vašeho úložiště konfigurace aplikace. 
+1. Otevřete *appsettings.jsna*a přidejte následující skript. Nahraďte *\<service_endpoint>* včetně závorek adresou URL vašeho úložiště konfigurace aplikace.
 
     ```json
     "AppConfig": {
@@ -183,6 +183,9 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 
     Nyní máte přístup k Key Vault odkazům stejně jako jakýkoli jiný konfigurační klíč aplikace. Poskytovatel konfigurace použije `KeyVaultClient` konfiguraci, kterou jste nakonfigurovali k ověřování, aby Key Vault a načetla hodnotu.
 
+> [!NOTE]
+> `ManagedIdentityCredential`podporuje pouze spravované ověřování identity. Nefunguje v místních prostředích. Pokud chcete spustit kód místně, zvažte použití nástroje `DefaultAzureCredential` , který podporuje také ověřování instančního objektu. Podrobnosti najdete v [odkazu](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) .
+
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="deploy-from-local-git"></a>Nasazení z místního Gitu
@@ -242,7 +245,7 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>Použití spravované identity v jiných jazycích
 
-Poskytovatelé konfigurace aplikací pro .NET Framework a Java pružiny mají také integrovanou podporu pro spravovanou identitu. Když nakonfigurujete některého z těchto zprostředkovatelů, můžete použít koncový bod adresy URL vašeho obchodu místo jeho úplného připojovacího řetězce. 
+Poskytovatelé konfigurace aplikací pro .NET Framework a Java pružiny mají také integrovanou podporu pro spravovanou identitu. Když nakonfigurujete některého z těchto zprostředkovatelů, můžete použít koncový bod adresy URL vašeho obchodu místo jeho úplného připojovacího řetězce.
 
 Například můžete aktualizovat konzolovou aplikaci .NET Framework vytvořenou v rychlém startu a v souboru *App.config* zadat následující nastavení:
 

@@ -1,23 +1,23 @@
 ---
-title: Azure Portal – omezení přístupu pro import/export ke spravovaným diskům pomocí privátních odkazů (Preview)
-description: Povolte privátní odkazy (Preview) pro vaše spravované disky pomocí Azure Portal. Umožňuje bezpečně exportovat a importovat disky jenom v rámci vaší virtuální sítě.
+title: Azure Portal – omezení přístupu pro import/export ke spravovaným diskům pomocí privátních odkazů
+description: Povolte privátní odkazy pro vaše spravované disky pomocí Azure Portal, aktuálně ve verzi Preview. Umožňuje bezpečně exportovat a importovat disky v rámci vaší virtuální sítě.
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 75b5ba995ff87649ec8a7a96a7c816bf2bec7e44
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 83f204a35e48962e525ad7d64c018eef301f9933
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535746"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135840"
 ---
-# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links-preview"></a>Azure Portal – omezení přístupu pro import/export u spravovaných disků s privátními odkazy (Preview)
+# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure Portal – omezení přístupu pro import/export u spravovaných disků s privátními odkazy
 
-Můžete vygenerovat identifikátor URI sdíleného přístupového podpisu (SAS) pro nepřipojené spravované disky a snímky pro export dat do jiné oblasti pro místní rozšiřování, zotavení po havárii a pro čtení dat pro forenzní analýzu. Identifikátor URI SAS můžete použít také k přímému nahrání virtuálního pevného disku na prázdný disk z místního prostředí.  Teď můžete využít [privátní odkazy](../private-link/private-link-overview.md) (Preview) pro omezení exportu a importu jenom Managed disks jenom z vaší virtuální sítě Azure. Navíc máte jistotu, že se data nikdy neúčtují přes veřejný Internet, a při použití privátních odkazů se vždycky přenášejí v zabezpečené páteřní síti Microsoftu. 
+Podpora privátních odkazů pro spravované disky je momentálně ve verzi Preview a umožňuje omezit export a import spravovaných disků tak, aby se zobrazily jenom v rámci vaší virtuální sítě Azure. Můžete vygenerovat identifikátor URI sdíleného přístupového podpisu (SAS) pro nepřipojené spravované disky a snímky pro export dat do jiné oblasti pro místní rozšiřování, zotavení po havárii a pro čtení dat pro forenzní analýzu. Identifikátor URI SAS můžete použít také k přímému nahrání virtuálního pevného disku na prázdný disk z místního prostředí. Síťový provoz mezi klienty ve své virtuální síti a spravovanými disky se přesměruje jenom přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejnému Internetu.
 
 Vytvořením privátního koncového bodu můžete vytvořit prostředek pro přístup k disku a propojit ho s virtuální sítí ve stejném předplatném. Abyste mohli exportovat a importovat data prostřednictvím privátních odkazů, musíte k přístupu k disku přidružit disk nebo snímek. Také je nutné nastavit vlastnost NetworkAccessPolicy disku nebo snímku na `AllowPrivate` . 
 

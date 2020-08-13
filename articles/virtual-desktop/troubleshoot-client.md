@@ -3,15 +3,15 @@ title: Řešení potíží s klientem vzdálené plochy na virtuálním počíta
 description: Řešení problémů při nastavování připojení klienta v prostředí klienta virtuální plochy Windows
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 03/31/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ac2eb2632ad96538e965e4d1057d7e4a116c05d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009388"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134475"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Řešení potíží s klientem vzdálené plochy
 
@@ -41,13 +41,13 @@ nslookup rdweb.wvd.microsoft.com
 
 Zkuste se připojit pomocí jiného klienta, jako je klient vzdálené plochy pro Windows 7 nebo Windows 10, a zkontrolujte, jestli můžete otevřít webového klienta.
 
-### <a name="opening-another-site-fails"></a>Otevření jiného webového serveru se nezdařilo
+### <a name="cant-open-other-websites-while-connected-to-the-web-client"></a>Během připojení k webovému klientovi nejde otevřít další weby.
 
-To je obvykle způsobeno problémy s připojením k síti nebo výpadkem sítě. Doporučujeme, abyste kontaktovali podporu sítě.
+Pokud nemůžete otevřít další weby, když jste připojeni ke webovému klientovi, může dojít k potížím se síťovým připojením nebo k výpadku sítě. Doporučujeme, abyste kontaktovali podporu sítě.
 
-### <a name="nslookup-cannot-resolve-the-name"></a>Nástroj Nslookup nemůže přeložit název.
+### <a name="nslookup-cant-resolve-the-name"></a>Nástroj Nslookup nemůže přeložit název.
 
-To je obvykle způsobeno problémy s připojením k síti nebo výpadkem sítě. Doporučujeme, abyste kontaktovali podporu sítě.
+Pokud nástroj nslookup nemůže název přeložit, může dojít k potížím se síťovým připojením nebo k výpadku sítě. Doporučujeme, abyste kontaktovali podporu sítě.
 
 ### <a name="your-client-cant-connect-but-other-clients-on-your-network-can-connect"></a>Váš klient se nemůže připojit, ale ostatní klienti ve vaší síti se můžou připojit.
 
@@ -58,11 +58,13 @@ Pokud se v prohlížeči spustí nebo přestane pracovat, když používáte web
 3. Smažte mezipaměť prohlížeče. Viz [Vymazat mezipaměť prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
 4. Otevřete prohlížeč v privátním režimu.
 
-## <a name="web-client-does-not-show-my-resources"></a>Webový klient nezobrazuje mé prostředky
+## <a name="client-doesnt-show-my-resources"></a>Klient nezobrazuje moje prostředky
 
-Nejdřív se podívejte na účet Azure Active Directory, který používáte. Pokud jste se už přihlásili pomocí jiného účtu Azure Active Directory, než který chcete použít pro virtuální počítač s Windows, měli byste buď podepsat, nebo použít soukromé okno prohlížeče.
+Nejdřív se podívejte na účet Azure Active Directory, který používáte. Pokud jste se už přihlásili pomocí jiného účtu Azure Active Directory, než který chcete použít pro virtuální plochu Windows, měli byste se buď odhlásit, nebo použít soukromé okno prohlížeče.
 
 Pokud používáte virtuální plochu Windows (Classic), připojte se k prostředkům pomocí odkazu webový klient v [tomto článku](./virtual-desktop-fall-2019/connect-web-2019.md) .
+
+Pokud to nepomůže, ujistěte se, že je vaše skupina aplikací přidružená k pracovnímu prostoru.
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Webový klient přestane reagovat nebo odpojení.
 
@@ -78,8 +80,8 @@ Pokud webový klient zachovává výzvy k zadání přihlašovacích údajů, po
 
 1. Potvrďte správnost adresy URL webového klienta.
 2. Ověřte, že přihlašovací údaje, které používáte, jsou pro prostředí virtuálních počítačů s Windows svázané s adresou URL.
-3. Vymazat soubory cookie prohlížeče. Další podrobnosti najdete v tématu [odstranění souborů cookie v Internet Exploreru](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-4. Smažte mezipaměť prohlížeče. Další podrobnosti najdete v tématu [vymazání mezipaměti prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
+3. Vymazat soubory cookie prohlížeče. Další informace najdete v tématu [odstranění souborů cookie v aplikaci Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
+4. Smažte mezipaměť prohlížeče. Další informace najdete v tématu [vymazání mezipaměti prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
 5. Otevřete prohlížeč v privátním režimu.
 
 ## <a name="next-steps"></a>Další kroky

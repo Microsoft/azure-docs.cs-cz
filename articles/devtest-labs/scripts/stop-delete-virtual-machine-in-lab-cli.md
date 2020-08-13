@@ -1,25 +1,15 @@
 ---
 title: Azure CLI – zastavení a odstranění virtuálního počítače v testovacím prostředí
 description: Tento článek poskytuje skript Azure CLI, který v Azure DevTest Labs zastaví a odstraní virtuální počítač v testovacím prostředí.
-services: lab-services
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: lab-services
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.custom: mvc
-ms.openlocfilehash: 3ba2b2c3924f7fea481907b825ba5a04ab50b0bf
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/11/2020
+ms.openlocfilehash: 45d5b3453e29571760d47d52a1a21288be31ea90
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290328"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136115"
 ---
 # <a name="use-azure-cli-to-stop-and-delete-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Skript Azure CLI slouží k zastavení a odstranění virtuálního počítače v laboratorním prostředí v Azure DevTest Labs.
 

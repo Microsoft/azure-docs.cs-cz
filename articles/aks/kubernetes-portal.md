@@ -1,0 +1,92 @@
+---
+title: Přístup k prostředkům Kubernetes z Azure Portal (Preview)
+description: Naučte se pracovat s prostředky Kubernetes a spravovat cluster Azure Kubernetes Service (AKS) z Azure Portal.
+services: container-service
+author: laurenhughes
+ms.topic: article
+ms.date: 08/11/2020
+ms.author: lahugh
+ms.openlocfilehash: 109192efa19605af003dcfb30592c865ce7495b5
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136784"
+---
+# <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Přístup k prostředkům Kubernetes z Azure Portal (Preview)
+
+Azure Portal obsahuje prohlížeč prostředků Kubernetes (Preview) pro snadný přístup k prostředkům Kubernetes v clusteru Azure Kubernetes Service (AKS). Zobrazení prostředků Kubernetes z Azure Portal omezuje přepínání kontextu mezi Azure Portal a `kubectl` nástrojem příkazového řádku, což zjednodušuje možnosti zobrazení a úprav prostředků Kubernetes. Prohlížeč prostředků aktuálně obsahuje několik typů prostředků, jako jsou nasazení, lusky a sady replik.
+
+Zobrazení prostředků Kubernetes z Azure Portal nahrazuje [doplněk řídicího panelu AKS][kubernetes-dashboard], který je nastaven pro vyřazení.
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+## <a name="prerequisites"></a>Požadavky
+
+K zobrazení prostředků Kubernetes v Azure Portal potřebujete cluster AKS. Podporuje se libovolný cluster, ale pokud používáte integraci Azure Active Directory (Azure AD), musí cluster používat [integraci Azure AD spravovanou pomocí AKS][aks-managed-aad]. Pokud váš cluster používá starší verzi služby Azure AD, můžete cluster upgradovat na portálu nebo pomocí rozhraní příkazového [řádku Azure CLI][cli-aad-upgrade].
+
+## <a name="view-kubernetes-resources"></a>Zobrazení prostředků Kubernetes
+
+Pokud chcete zobrazit prostředky Kubernetes, přejděte do svého clusteru AKS v Azure Portal. Navigační podokno na levé straně se používá pro přístup k prostředkům. Mezi prostředky patří:
+
+- **Obory názvů** zobrazují obory názvů vašeho clusteru. Filtr v horní části seznamu oborů názvů poskytuje rychlý způsob, jak filtrovat a zobrazit prostředky oboru názvů.
+- **Úlohy** zobrazují informace o nasazeních, luskech, sadách replik a sadách démonů nasazených do vašeho clusteru. Níže uvedený snímek obrazovky ukazuje výchozí systémovou lusky v ukázkovém clusteru AKS.
+- **Služby a příchozí přenosy** zobrazují všechny prostředky služby a příchozí přenosy v clusteru.
+
+:::image type="content" source="media/kubernetes-portal/workloads.png" alt-text="Kubernetes pod informace zobrazené v Azure Portal." lightbox="media/kubernetes-portal/workloads.png":::
+
+### <a name="deploy-an-application"></a>Nasazení aplikace
+
+V tomto příkladu použijeme náš vzorový cluster AKS k nasazení hlasovací aplikace Azure z [rychlého startu AKS][portal-quickstart].
+
+1. Vyberte **Přidat** z libovolného zobrazení prostředků (obor názvů, úlohy nebo služby a příchozí přenosy).
+1. Vložte YAML pro hlasovou aplikaci Azure z rychlého startu [AKS][portal-quickstart].
+1. V dolní části editoru YAML vyberte **Přidat** a nasaďte aplikaci. 
+
+Po přidání souboru YAML zobrazí prohlížeč prostředků obě služby Kubernetes, které byly vytvořeny: interní služba (Azure-hlasování) a externí službu (Azure-hlasování-přední) pro přístup k aplikaci hlasování Azure. Externí služba obsahuje propojenou externí IP adresu, abyste ji mohli snadno zobrazit v prohlížeči.
+
+:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Informace o hlasovacích aplikacích Azure zobrazené v Azure Portal." lightbox="media/kubernetes-portal/portal-services.png":::
+
+### <a name="monitor-deployment-insights"></a>Monitorovat přehledy nasazení
+
+AKS clustery s podporou [Azure monitor pro kontejnery][enable-monitor] můžou rychle zobrazit přehledy o nasazení. V zobrazení prostředků Kubernetes můžou uživatelé zobrazit stav živého provozu jednotlivých nasazení, včetně využití CPU a paměti, a také přejít na Azure monitor, kde najdete podrobnější informace. Tady je příklad přehledů nasazení z ukázkového clusteru AKS:
+
+:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="V Azure Portal se zobrazují přehledy nasazení." lightbox="media/kubernetes-portal/deployment-insights.png":::
+
+## <a name="edit-yaml"></a>Upravit YAML
+
+Zobrazení prostředků Kubernetes zahrnuje také Editor YAML. Integrovaný editor YAML znamená, že můžete aktualizovat nebo vytvářet služby a nasazení z portálu a okamžitě použít změny.
+
+:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Editor YAML pro službu Kubernetes zobrazenou v Azure Portal.":::
+
+Po úpravě YAML se změny aplikují tak, že vyberete **zkontrolovat + Uložit**, potvrďte změny a pak znovu uložíte.
+
+>[!WARNING]
+> Provádění přímých změn v produkčním prostředí prostřednictvím uživatelského rozhraní nebo CLI se nedoporučuje, měli byste využít [osvědčené postupy průběžné integrace (CI) a průběžného nasazování (CD)](kubernetes-action.md). Možnosti správy Kubernetes a YAML v portálu Azure jsou vytvořené pro učení a získávání nových nasazení v nastavení pro vývoj a testování.
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+Tato část řeší běžné problémy a postup řešení potíží.
+
+### <a name="unauthorized-access"></a>Neautorizovaný přístup
+
+Chcete-li získat přístup k prostředkům Kubernetes, musíte mít přístup ke clusteru AKS, rozhraní Kubernetes API a objektům Kubernetes. Ujistěte se, že jste buď Správce clusteru, nebo uživatel s příslušnými oprávněními pro přístup ke clusteru AKS. Další informace o zabezpečení clusteru najdete v tématu [Možnosti přístupu a identit pro AKS][concepts-identity].
+
+### <a name="enable-resource-view"></a>Povolit zobrazení prostředků
+
+Pro existující clustery možná budete muset povolit zobrazení prostředků Kubernetes. Pokud chcete povolit zobrazení prostředků, postupujte podle výzev na portálu pro váš cluster.
+
+:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure Portalovou zprávu pro povolení zobrazení prostředků Kubernetes." lightbox="media/kubernetes-portal/enable-resource-view.png":::
+
+## <a name="next-steps"></a>Další kroky
+
+Tento článek ukazuje, jak získat přístup k prostředkům Kubernetes pro váš cluster AKS. V tématu [nasazení a manifesty YAML][deployments] získáte hlubší porozumění prostředkům clusteru a souborům YAML, ke kterým se dostanete v prohlížeči prostředků Kubernetes.
+
+<!-- LINKS - internal -->
+[kubernetes-dashboard]: kubernetes-dashboard.md
+[concepts-identity]: concepts-identity.md
+[portal-quickstart]: kubernetes-walkthrough-portal.md#run-the-application
+[deployments]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
+[aks-managed-aad]: managed-aad.md
+[cli-aad-upgrade]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration
+[enable-monitor]: ../azure-monitor/insights/container-insights-enable-existing-clusters.md

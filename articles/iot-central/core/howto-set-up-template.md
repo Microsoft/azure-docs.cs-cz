@@ -7,13 +7,13 @@ ms.date: 12/06/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: 3e4b44c8f784524b4cd363a2f4531c5bf0a70e0d
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.custom: contperfq1
+ms.openlocfilehash: a75fbeb9a12f61f827411e56c57ff6a4460ab083
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041591"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136265"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definování nového typu zařízení IoT v aplikaci Azure IoT Central
 
@@ -121,7 +121,7 @@ Následující tabulka ukazuje nastavení konfigurace pro schopnost telemetrie:
 | Pole | Popis |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název hodnoty telemetrie používané na řídicích panelech a formulářích |
-| Název | Název pole ve zprávě telemetrie IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. Toto pole musí být alfanumerické. |
+| Name | Název pole ve zprávě telemetrie IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. Toto pole musí být alfanumerické. |
 | Typ funkce | Telemetrie. |
 | Sémantický typ | Sémantický typ telemetrie, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
 | Schéma | Datový typ telemetrie, například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. Schéma není k dispozici pro sémantické typy události a stavu. |
@@ -130,7 +130,7 @@ Následující tabulka ukazuje nastavení konfigurace pro schopnost telemetrie:
 | Jednotka | Jednotka pro hodnotu telemetrie, například **mph**, **%** nebo ** &deg; C**. |
 | Zobrazit jednotku | Zobrazovací jednotka pro použití na řídicích panelech a formulářích. |
 | Komentář | Jakékoli komentáře k schopnosti telemetrie. |
-| Popis | Popis schopnosti telemetrie. |
+| Description | Popis schopnosti telemetrie. |
 
 ### <a name="properties"></a>Vlastnosti
 
@@ -141,7 +141,7 @@ Následující tabulka ukazuje nastavení konfigurace pro schopnost vlastnosti:
 | Pole | Popis |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název hodnoty vlastnosti používané na řídicích panelech a formulářích. |
-| Název | Název vlastnosti IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. Toto pole musí být alfanumerické. |
+| Name | Název vlastnosti IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. Toto pole musí být alfanumerické. |
 | Typ funkce | Majetek. |
 | Sémantický typ | Sémantický typ vlastnosti, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
 | Schéma | Datový typ vlastnosti, například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. Schéma není k dispozici pro sémantické typy události a stavu. |
@@ -151,7 +151,7 @@ Následující tabulka ukazuje nastavení konfigurace pro schopnost vlastnosti:
 | Jednotka | Jednotka pro hodnotu vlastnosti, například **mph**, **%** nebo ** &deg; C**. |
 | Zobrazit jednotku | Zobrazovací jednotka pro použití na řídicích panelech a formulářích. |
 | Komentář | Jakékoli komentáře k funkci vlastnosti. |
-| Popis | Popis schopnosti vlastnosti. |
+| Description | Popis schopnosti vlastnosti. |
 
 ### <a name="commands"></a>Příkazy
 
@@ -162,11 +162,11 @@ Následující tabulka ukazuje nastavení konfigurace pro funkci příkazu:
 | Pole | Popis |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název příkazu, který se používá na řídicích panelech a formulářích. |
-| Název | Název příkazu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. Toto pole musí být alfanumerické. |
+| Name | Název příkazu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. Toto pole musí být alfanumerické. |
 | Typ funkce | Systému. |
 | Příkaz | `SynchronousExecutionType`. |
 | Komentář | Jakékoli komentáře k funkci příkazu. |
-| Popis | Popis funkce příkazu |
+| Description | Popis funkce příkazu |
 | Žádost | Pokud je povoleno, definice parametru Request, včetně názvu, zobrazovaného názvu, schématu, jednotky a zobrazované jednotky. |
 | Odpověď | Pokud je povoleno, definice odpovědi příkazu, včetně názvu, zobrazovaného názvu, schématu, jednotky a zobrazované jednotky, je-li povolena. |
 
@@ -185,7 +185,7 @@ Následující tabulka ukazuje nastavení konfigurace pro cloudovou vlastnost:
 | Pole | Popis |
 | ----- | ----------- |
 | Zobrazovaný název | Zobrazovaný název hodnoty vlastnosti cloudu používaný na řídicích panelech a formulářích. |
-| Název | Název vlastnosti cloudu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
+| Name | Název vlastnosti cloudu IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, ale v případě potřeby můžete zvolit vlastní hodnotu. |
 | Sémantický typ | Sémantický typ vlastnosti, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici. |
 | Schéma | Datový typ cloudové vlastnosti, jako je například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. |
 

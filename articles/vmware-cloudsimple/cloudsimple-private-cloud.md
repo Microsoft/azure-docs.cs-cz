@@ -1,6 +1,6 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – privátní cloudy
-description: Přečtěte si o privátních cloudech a konceptech CloudSimple.
+description: Přečtěte si o konceptech a výhodách CloudSimple, včetně úplné provozní kontinuity VMware, kompatibility s existujícími nástroji, dovednostmi a procesy.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4fb930603455ed1a5df5d357fcab669f41a0c28c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2096e8c0ebfb233c7449510bf0bc8e80b56231e
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024941"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140712"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>Přehled privátního cloudu CloudSimple
 
@@ -22,7 +22,7 @@ CloudSimple transformuje a rozšiřuje úlohy VMware na veřejné cloudy během 
 Řešení CloudSimple poskytuje úplnou provozní kontinuitu VMware. Toto řešení poskytuje výhody veřejného cloudu pro:
 
 * Elasticita
-* Innovation
+* Inovace
 * Efektivita
 
 S CloudSimple můžete využívat výhod modelu cloudové spotřeby, který snižuje vaše celkové náklady na vlastnictví. Nabízí také zřizování na vyžádání, průběžné platby a optimalizaci kapacity.

@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.openlocfilehash: e52fe8e738f2a35204078b27019ea3742c608560
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: f775a0e1dcb82afc9a458ce4ee608a52ec06dc4c
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88122169"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135908"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Řešení potíží se zásadami přístupu ke službě Azure Key trezor
 
@@ -36,6 +36,9 @@ Pokud vytváříte aplikaci Prem, provádíte místní vývoj nebo pokud nemůž
 Udělte skupině AD oprávnění k vašemu trezoru klíčů pomocí rozhraní příkazového řádku Azure CLI AZ Key trezor set-Policy nebo rutiny Azure PowerShell set-AzKeyVaultAccessPolicy. Příklady najdete [v části poskytnutí aplikace, skupiny Azure AD nebo přístupu uživatele k vašemu trezoru klíčů](https://docs.microsoft.com/azure/key-vault/general/group-permissions-for-apps#give-the-principal-access-to-your-key-vault).
 
 Aplikace taky potřebuje alespoň jednu roli správy identit a přístupu (IAM) přiřazenou k trezoru klíčů. V opačném případě se nebude moci přihlásit a nezdaří se jim nedostatečná oprávnění pro přístup k předplatnému. Skupiny Azure AD se spravovanými identitami můžou vyžadovat až 8hr k aktualizaci tokenu a začnou platit.
+
+### <a name="how-can-i-redeploy-key-vault-with-arm-template-without-deleting-existing-access-policies"></a>Jak můžu znovu nasadit Key Vault se šablonou ARM, aniž byste museli odstraňovat existující zásady přístupu?
+V současné době Key Vault ARM redopleyment odstraní všechny zásady přístupu v Key Vault a nahradí je zásadami přístupu v šabloně ARM. Pro zásady přístupu Key Vault neexistuje žádná přírůstková možnost. Pokud chcete zachovat zásady přístupu v Key Vault potřebujete číst stávající zásady přístupu v Key Vault a naplnit šablonu ARM pomocí těchto zásad, aby nedocházelo k výpadkům přístupu.
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>Doporučené kroky pro řešení potíží pro následující typy chyb
 * HTTP 401: neověřený požadavek – [Postup řešení potíží](https://docs.microsoft.com/azure/key-vault/general/rest-error-codes#http-401-unauthenticated-request)
