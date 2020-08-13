@@ -241,6 +241,8 @@
               href: ../ncv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Řada NCv3
               href: ../ncv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Řada NCasT4_v3
+              href: ../nct4-v3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Řada ND
               href: ../nd-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Řada NDv2
@@ -508,6 +510,8 @@
               href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Použití Azure CLI
               href: image-builder.md
+            - name: Vytvoření virtuálního počítače pomocí virtuální sítě
+              href: image-builder-vnet.md
             - name: Použití Azure Powershell
               href: image-builder-powershell.md
             - name: Sestavení pro galerie imagí
