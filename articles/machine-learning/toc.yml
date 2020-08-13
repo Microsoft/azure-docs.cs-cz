@@ -161,8 +161,11 @@
             - name: Správa uživatelů a skupin
               href: how-to-assign-roles.md
             - name: Použití virtuálních sítí
-              displayName: 'vnet, blob, private endpoint, private link'
+              displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
+            - name: Použití Private Linku
+              displayName: private endpoint
+              href: how-to-configure-private-link.md
             - name: Zabezpečení webových služeb s využitím TLS
               displayName: ssl
               href: how-to-secure-web-service.md

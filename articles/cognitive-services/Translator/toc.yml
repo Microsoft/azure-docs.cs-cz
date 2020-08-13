@@ -6,6 +6,8 @@
       items:
         - name: Co je Translator?
           href: translator-info-overview.md
+        - name: Podpora jazyků
+          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
     - name: Rychlé starty
       items:
         - name: Přeložení textu
@@ -50,7 +52,7 @@
           href: firewalls.md
     - name: ukázky
       items:
-        - name: 'C#'
+        - name: C#
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp'
         - name: Java
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Java'
@@ -92,22 +94,20 @@
               href: ctf-reporting.md
             - name: Vracení N nejvhodnějších překladů
               href: return-n-best-translations.md
+        - name: Omezení počtu požadavků
+          href: request-limits.md
     - name: Zdroje a prostředky
       items:
         - name: Vzorový kód na GitHubu
           href: 'https://aka.ms/TranslatorGitHub'
         - name: Nejčastější dotazy
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: Podpora jazyků
-          href: language-support.md
         - name: Ceny
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: Regionální dostupnost
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: Dodržování předpisů
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: Omezení počtu požadavků
-          href: request-limits.md
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: Custom Translator
@@ -162,8 +162,6 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: Zdroje a prostředky
       items:
-        - name: Podpora jazyků
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
         - name: Glosář
           href: custom-translator/glossary.md
         - name: Nejčastější dotazy

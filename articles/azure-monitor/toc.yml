@@ -935,6 +935,10 @@
               href: app/sharepoint.md
             - name: Plocha Windows
               href: app/windows-desktop.md
+        - name: Další nástroje
+          items:
+            - name: Analýza změn
+              href: app/change-analysis.md
     - name: Azure Monitor pro virtuální počítače
       items:
         - name: Přehled
@@ -1062,10 +1066,6 @@
           href: insights/resource-group-insights.md
         - name: Řešení potíží s přehledy
           href: insights/troubleshoot-workbooks.md
-    - name: Analýza změn
-      items:
-        - name: Analýza změn
-          href: app/change-analysis.md
     - name: Řešení
       items:
         - name: Přehled

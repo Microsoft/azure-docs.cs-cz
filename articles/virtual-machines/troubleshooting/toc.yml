@@ -56,7 +56,7 @@
     - name: Spuštění virtuálního počítače je zablokované
       href: troubleshoot-vm-boot-configure-update.md
     - name: Stavy a životní cyklus virtuálních počítačů
-      href: ../windows/states-lifecycle.md
+      href: ../states-lifecycle.md
 - name: Virtuální počítač nejde spustit
   items:
     - name: Linux
