@@ -1,6 +1,6 @@
 ---
 title: Řešení Azure VMware podle CloudSimple – tabulky brány firewall
-description: Přečtěte si o CloudSimple tabulkách firewallu privátního cloudu a pravidlech brány firewall.
+description: Přečtěte si o CloudSimple tabulkách firewallu privátního cloudu a pravidlech brány firewall, včetně výchozích pravidel, která se vytvářejí v každé tabulce brány firewall.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 89bef6cef48f2b972aa3f931008b0db84431b832
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c44c39f66a0a0161eea8a7e9656bbe0e3d1015c
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025040"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140866"
 ---
 # <a name="firewall-tables-overview"></a>Přehled tabulek brány firewall
 
@@ -28,7 +28,7 @@ Následující tabulka popisuje parametry v pravidle brány firewall.
 | **Název** | Název, který jedinečně identifikuje pravidlo brány firewall a jeho účel. |
 | **Priorita** | Číslo mezi 100 a 4096 a 100 je nejvyšší prioritou. Pravidla se zpracovávají v pořadí podle priority. Když provoz narazí na pravidlo shodu, zpracování pravidla se zastaví. V důsledku toho nejsou zpracovávána pravidla s nižšími prioritami, která mají stejné atributy jako pravidla s vyššími prioritami.  Dbejte na to, abyste se vyhnuli konfliktům pravidel. |
 | **Sledování stavu** | Sledování může být bezstavové (privátní cloud, Internet nebo VPN) nebo stavová (veřejná IP adresa).  |
-| **Protocol (Protokol)** | Mezi možnosti patří všechny, TCP nebo UDP. Pokud budete vyžadovat protokol ICMP, použijte libovolný. |
+| **Protokol** | Mezi možnosti patří všechny, TCP nebo UDP. Pokud budete vyžadovat protokol ICMP, použijte libovolný. |
 | **Směr** | Určuje, jestli se pravidlo vztahuje na příchozí nebo odchozí provoz. |
 | **Akce** | Povolí nebo zakáže typ provozu definovaný v pravidle. |
 | **Zdroj** | IP adresa, blok směrování mezi doménami bez tříd (CIDR) (10.0.0.0/24, například) nebo Any.  Určení rozsahu, značky služby nebo skupiny zabezpečení aplikací vám umožní vytvořit méně pravidel zabezpečení. |
@@ -53,7 +53,7 @@ Pro tok přenosů v opačném směru můžou být nutná další pravidla.  Pro 
 
 V každé tabulce brány firewall jsou vytvořena následující výchozí pravidla.
 
-|Priorita|Name|Sledování stavu|Směr|Typ provozu|Protocol (Protokol)|Zdroj|Zdrojový port|Cíl|Cílový port|Akce|
+|Priorita|Name|Sledování stavu|Směr|Typ provozu|Protokol|Zdroj|Zdrojový port|Cíl|Cílový port|Akce|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
 |65000|povolení – vše pro Internet|Stavové|Odchozí|Veřejná IP adresa nebo internetový provoz|Vše|Všechny|Všechny|Všechny|Všechny|Povolit|
 |65001|Odepřít – vše z Internetu|Stavové|Příchozí|Veřejná IP adresa nebo internetový provoz|Vše|Všechny|Všechny|Všechny|Všechny|Odepřít|

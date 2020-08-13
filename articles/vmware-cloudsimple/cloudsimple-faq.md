@@ -1,6 +1,6 @@
 ---
 title: Nejčastější dotazy – řešení Azure VMware podle CloudSimple
-description: Nejčastější dotazy k řešení Azure VMware od CloudSimple
+description: Mezi nejčastější dotazy týkající se řešení Azure VMware by CloudSimple patří připojení, sítě, zabezpečení, úložiště, Integrace Azure a další.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0db8c13a7467ed864c0845319b37f958f60fa4d9
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025057"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140883"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Nejčastější dotazy týkající se řešení VMware podle CloudSimple
 
@@ -131,7 +131,7 @@ CloudSimple nepřetržitě monitoruje všechny hardwarové součásti privátní
 
 **Návody provádět rozsáhlé nahrávání nebo migraci aplikací a dat z místního prostředí?**
 
-CloudSimple poskytuje nativní řešení VMware vSphere.  Všechny nástroje VMware pro migraci hromadných dat se dají použít spolu s Vaším privátním cloudem.  Mezi možnosti patří:
+CloudSimple poskytuje nativní řešení VMware vSphere.  Všechny nástroje VMware pro migraci hromadných dat se dají použít spolu s Vaším privátním cloudem.  Vaše možnosti jsou:
 
 * HCX VMware pro hromadnou migraci dat.
 * Studená migrace dat pomocí úložiště vMotion z místního prostředí do CloudSimple.
@@ -150,7 +150,7 @@ CloudSimple neprovede upgrady ani aktualizace aplikací nainstalovaných v priv�
 
 **Které služby Azure jsou podporovány?**
 
-CloudSimple poskytuje připojení Azure ExpressRoute k vašemu předplatnému v Azure.  Všechny služby běžící v rámci vašeho předplatného se můžou připojit k vašemu privátnímu cloudu.  Mezi příklady patří:
+CloudSimple poskytuje připojení Azure ExpressRoute k vašemu předplatnému v Azure.  Všechny služby běžící v rámci vašeho předplatného se můžou připojit k vašemu privátnímu cloudu.  Příklady:
 
 * **Azure Active Directory** jako zdroj identity pro CloudSimple vCenter.
 * **Úložiště Azure** pro ukládání záloh, obrázků a dalších dat z vašeho privátního cloudu.
