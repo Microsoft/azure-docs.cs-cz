@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: e210c19f40ed77bd7c1bc1dcfc2f2787e3ea2087
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: cdd93cf8751ce2e46f06020b1d18d42416f793d4
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120282"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166104"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrace aplikací do MSAL.NET
 
@@ -57,9 +57,9 @@ V MSAL.NET je také možné získat přístup k prostředkům v 1.0. Podívejte 
 
 ### <a name="core-classes"></a>Základní třídy
 
-- ADAL.NET používá [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) jako znázornění připojení ke službě tokenů zabezpečení (STS) nebo k autorizačnímu serveru prostřednictvím autority. V opačném případě je MSAL.NET navržený kolem [klientských aplikací](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications). Poskytuje dvě samostatné třídy: `PublicClientApplication` a`ConfidentialClientApplication`
+- ADAL.NET používá [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) jako znázornění připojení ke službě tokenů zabezpečení (STS) nebo k autorizačnímu serveru prostřednictvím autority. V opačném případě je MSAL.NET navržený kolem [klientských aplikací](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications). Poskytuje dvě samostatné třídy: `PublicClientApplication` a `ConfidentialClientApplication`
 
-- Získání tokenů: ADAL.NET a MSAL.NET mají stejná ověřovací volání ( `AcquireTokenAsync` a `AcquireTokenSilentAsync` pro ADAL.NET a `AcquireTokenInteractive` a `AcquireTokenSilent` v MSAL.NET), ale vyžadují různé parametry. Jedním rozdílem je skutečnost, že v MSAL.NET už nemusíte předávat do `ClientID` aplikace v každém volání AcquireTokenXX. Ve skutečnosti `ClientID` je při sestavování (nebo) nastaveno pouze jednou `IPublicClientApplication` `IConfidentialClientApplication` .
+- Získání tokenů: ADAL.NET a MSAL.NET mají stejná ověřovací volání ( `AcquireTokenAsync` a  `AcquireTokenSilentAsync` pro ADAL.NET a `AcquireTokenInteractive` a `AcquireTokenSilent` v MSAL.NET), ale vyžadují různé parametry. Jedním rozdílem je skutečnost, že v MSAL.NET už nemusíte předávat do `ClientID` aplikace v každém volání AcquireTokenXX. Ve skutečnosti `ClientID` je při sestavování (nebo) nastaveno pouze jednou `IPublicClientApplication` `IConfidentialClientApplication` .
 
 ### <a name="iaccount-not-iuser"></a>IAccount není IUser
 
@@ -101,7 +101,7 @@ catch(MsalUiRequiredException exception)
 
 V ADAL.NET jsou výjimky výzvy deklarace identity zpracovávány následujícím způsobem:
 
-- `AdalClaimChallengeException`je výjimka (odvozená od), kterou `AdalServiceException` Služba vyvolala v případě, že prostředek vyžaduje více deklarací identity od uživatele (např. pro ověřování instance se dvěma faktory). `Claims`Člen obsahuje některý fragment JSON s deklaracemi, které jsou očekávané.
+- `AdalClaimChallengeException` je výjimka (odvozená od), kterou `AdalServiceException` Služba vyvolala v případě, že prostředek vyžaduje více deklarací identity od uživatele (např. pro ověřování instance se dvěma faktory). `Claims`Člen obsahuje některý fragment JSON s deklaracemi, které jsou očekávané.
 - V ADAL.NET je nutné, aby aplikace veřejné klienta obdržela tuto výjimku, aby vyvolala `AcquireTokenInteractive` přepsání s parametrem deklarací identity. Toto přepsání se `AcquireTokenInteractive` ani nepokusí použít mezipaměť, protože není nutné. Důvodem je, že token v mezipaměti nemá správné deklarace identity (jinak `AdalClaimChallengeException` by nebyl vyvolán). Proto není nutné pohlížet na mezipaměť. Všimněte si, že je `ClaimChallengeException` možné přijímat v WEBAPI OBO, zatímco `AcquireTokenInteractive` musí být volány ve veřejné klientské aplikaci, která volá toto webové rozhraní API.
 - Podrobnosti, včetně ukázek, najdete v tématu zpracování [AdalClaimChallengeException](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Exceptions-in-ADAL.NET#handling-adalclaimchallengeexception) .
 
@@ -132,7 +132,7 @@ Tady jsou granty podporované v ADAL.NET a MSAL.NET pro webové aplikace, webov�
 Typ aplikace | Oprávnění | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Webová aplikace, webové rozhraní API, démon | Pověření klienta | [Toky přihlašovacích údajů klienta v ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Toky přihlašovacích údajů klienta v MSAL.NET](msal-authentication-flows.md#client-credentials)
-Webové rozhraní API | Jménem | [Volání služeb jménem uživatele pomocí ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [Jménem v MSAL.NET](msal-authentication-flows.md#on-behalf-of)
+Web API | Jménem | [Volání služeb jménem uživatele pomocí ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [Jménem v MSAL.NET](msal-authentication-flows.md#on-behalf-of)
 Webová aplikace | Ověřovací kód | [Získání tokenů pomocí autorizačních kódů ve webových aplikacích pomocí ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Získání tokenů pomocí autorizačních kódů u webových aplikací s MSAL.NET](msal-authentication-flows.md#authorization-code)
 
 ### <a name="cache-persistence"></a>Trvalost mezipaměti
@@ -241,7 +241,7 @@ Pomocí této metody můžete zadat dříve použitý obnovovací token spolu s 
 
 Jelikož je tato metoda určena pro scénáře, které nejsou typické, není k dispozici, není k dispozici, `IConfidentialClientApplication` a to bez jejich prvního přetypování do `IByRefreshToken` .
 
-Tento fragment kódu ukazuje určitý kód migrace v důvěrné klientské aplikaci. `GetCachedRefreshTokenForSignedInUser`Načtěte obnovovací token, který byl uložen v některém úložišti, pomocí předchozí verze aplikace, která použila k využití knihovny ADAL 2. x. `GetTokenCacheForSignedInUser`deserializace mezipaměť přihlášeného uživatele (protože důvěrné klientské aplikace by měly mít jednu mezipaměť na uživatele).
+Tento fragment kódu ukazuje určitý kód migrace v důvěrné klientské aplikaci. `GetCachedRefreshTokenForSignedInUser` Načtěte obnovovací token, který byl uložen v některém úložišti, pomocí předchozí verze aplikace, která použila k využití knihovny ADAL 2. x. `GetTokenCacheForSignedInUser` deserializace mezipaměť přihlášeného uživatele (protože důvěrné klientské aplikace by měly mít jednu mezipaměť na uživatele).
 
 ```csharp
 TokenCache userCache = GetTokenCacheForSignedInUser();

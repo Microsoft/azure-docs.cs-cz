@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 53e29734095506a3f55593f938c2d9aba5903771
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68b80a3511a82ff06677d3b7bb1fbea1c68cb2ae
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097302"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164151"
 ---
 # <a name="azure-time-series-insights-gen2-explorer"></a>Azure Time Series Insights Průzkumník Gen2
 
@@ -28,7 +28,7 @@ Pokud chcete začít s Azure Time Series Insights Gen2 Explorer, musíte:
 * Mít zřízené prostředí Azure Time Series Insights Gen2. Další informace o zřizování instance najdete v kurzu [Azure Time Series Insights Gen2](./time-series-insights-update-create-environment.md) .
 * [Poskytněte přístup k datům](./time-series-insights-data-access.md) prostředí Azure Time Series Insights Gen2, které jste pro účet vytvořili. Můžete poskytovat přístup i ostatním uživatelům.
 * Přidejte zdroj události do prostředí Azure Time Series Insights Gen2, abyste vložili data do prostředí:
-  * Informace [o tom, jak se připojit k centru událostí](./time-series-insights-how-to-add-an-event-source-eventhub.md) 
+  * Informace [o tom, jak se připojit k centru událostí](./time-series-insights-how-to-add-an-event-source-eventhub.md)
   * Informace [o tom, jak se připojit ke službě IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md)
 
 ## <a name="explore-the-azure-time-series-insights-gen2-explorer"></a>Prozkoumejte Azure Time Series Insights Gen2 Explorer
@@ -44,7 +44,6 @@ Azure Time Series Insights Průzkumník Gen2 se skládá z následujících sedm
 1. [Panel grafu](#5-chart-panel): zobrazí aktuální pracovní graf.
 1. [Časová osa](#6-time-editor-panel): umožňuje upravit rozsah pracovní doby.
 1. [Panel aplikace](#7-app-bar): obsahuje možnosti správy uživatelů (například aktuální tenant) a umožňuje změnit nastavení a nastavení jazyka.
-
 
 ## <a name="1-environment-panel"></a>1. panel prostředí
 
@@ -79,19 +78,19 @@ Pokud chcete získat další informace o modelu časové řady, pročtěte si [m
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. strom hierarchie a panel hledání
 
-Strom a panel hledání hierarchie vám umožní snadno vyhledat a procházet hierarchii [modelu časové řady](./concepts-model-overview.md) a najít konkrétní instance časových řad, které chcete zobrazit v grafu. Když vyberete své instance, nebudou přidány pouze do aktuálního grafu, ale budou také přidány do datového zásobníku. 
+Strom a panel hledání hierarchie vám umožní snadno vyhledat a procházet hierarchii [modelu časové řady](./concepts-model-overview.md) a najít konkrétní instance časových řad, které chcete zobrazit v grafu. Když vyberete své instance, nebudou přidány pouze do aktuálního grafu, ale budou také přidány do datového zásobníku.
 
 [![Strom hierarchie a panel hledání](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
 Podokno výsledků hledání také umožňuje zobrazit výsledky v zobrazení hierarchie nebo v zobrazení seznamu, které usnadňuje vyhledání instancí, které chcete zobrazit.
- 
+
 ## <a name="4-time-series-well"></a>4. Time Series – Well
 
-Dobře zobrazuje pole instance a další metadata přidružená k vybraným instancím modelů časových řad. Zaškrtnutím políček na pravé straně můžete skrýt nebo zobrazit konkrétní instance z aktuálního grafu. 
+Dobře zobrazuje pole instance a další metadata přidružená k vybraným instancím modelů časových řad. Zaškrtnutím políček na pravé straně můžete skrýt nebo zobrazit konkrétní instance z aktuálního grafu.
 
   [![Gen2 dobře](media/v2-update-explorer/tsi-preview-ui-explorer-well.png)](media/v2-update-explorer/tsi-preview-ui-explorer-well.png#lightbox)
 
-Konkrétní datové prvky můžete ze svých aktuálních dat odebrat tak, že vyberete ovládací prvek červené **odstranění** (odpadkový koš) na levé straně elementu. Také vám umožňuje řídit, jak se jednotlivé prvky zobrazí v grafu. Můžete zvolit, že chcete přidat minimální/maximální stíny, datové body, posunout element v čase a vizualizovat instanci, která je tímto způsobem. 
+Konkrétní datové prvky můžete ze svých aktuálních dat odebrat tak, že vyberete ovládací prvek červené **odstranění** (odpadkový koš) na levé straně elementu. Také vám umožňuje řídit, jak se jednotlivé prvky zobrazí v grafu. Můžete zvolit, že chcete přidat minimální/maximální stíny, datové body, posunout element v čase a vizualizovat instanci, která je tímto způsobem.
 
 Kromě toho vám ovládací prvek průzkumy umožňuje snadno vytvářet časová posunutí a bodový graf.  
 
@@ -104,7 +103,7 @@ Kromě toho vám ovládací prvek průzkumy umožňuje snadno vytvářet časov�
 
 ## <a name="5-chart-panel"></a>5. panel grafů
 
-Graf umožňuje zobrazovat instance časových řad jako řádky. Panel prostředí, datový model a ovládací panel časová rozpětí můžete sbalit kliknutím na webové ovládací prvky, aby byl graf větší. 
+Graf umožňuje zobrazovat instance časových řad jako řádky. Panel prostředí, datový model a ovládací panel časová rozpětí můžete sbalit kliknutím na webové ovládací prvky, aby byl graf větší.
 
   [![Přehled grafu Gen2](media/v2-update-explorer/tsi-preview-chart-overview.png)](media/v2-update-explorer/tsi-preview-chart-overview.png#lightbox)
 
@@ -149,7 +148,7 @@ Při práci s Azure Time Series Insights Gen2 nejdříve vyberte časový rozsah
 > [!TIP]
 > Část časové osy je zvýrazněna žlutou nebo oranžovou barvou, aby označovala rozsah dat, která jsou k dispozici v teplém úložišti.
 
-Následující webové ovládací prvky jsou k dispozici v Azure Time Series Insights Gen2 pro výběr rozsahu pracovní doby. 
+Následující webové ovládací prvky jsou k dispozici v Azure Time Series Insights Gen2 pro výběr rozsahu pracovní doby.
 
   [![Dobré řízení průzkumu](media/v2-update-explorer/exploration-well-control.png)](media/v2-update-explorer/exploration-well-control.png#lightbox)
 
@@ -205,7 +204,7 @@ Azure Time Series Insights Průzkumník Gen2 podporuje dva motivy:
 
 ### <a name="gen2-terms-panel"></a>Panel podmínek Gen2
 
-Tato část se vztahuje jenom na existující prostředí 1. generace, která se pokusí použít Průzkumníka v aktualizovaném uživatelském rozhraní. V kombinaci můžete chtít použít produkt 1. generace a produkt Gen2. Přidali jsme některé funkce z existujícího uživatelského rozhraní do aktualizovaného Průzkumníka, ale v novém Azure Time Series Insights Průzkumníku Gen2 můžete získat plný zážitek uživatelského rozhraní pro prostředí 1. generace. 
+Tato část se vztahuje jenom na existující prostředí 1. generace, která se pokusí použít Průzkumníka v aktualizovaném uživatelském rozhraní. V kombinaci můžete chtít použít produkt 1. generace a produkt Gen2. Přidali jsme některé funkce z existujícího uživatelského rozhraní do aktualizovaného Průzkumníka, ale v novém Azure Time Series Insights Průzkumníku Gen2 můžete získat plný zážitek uživatelského rozhraní pro prostředí 1. generace.
 
 Místo hierarchie se zobrazí panel Azure Time Series Insights Gen2 podmínek. Panel podmínky vám umožní definovat dotazy ve vašem prostředí. Použijte ho k filtrování dat na základě predikátu.
 
@@ -222,7 +221,7 @@ Panel editoru Azure Time Series Insightsch podmínek Gen2 má následující par
 | `IN` | String, bool, Double, DateTime, TimeSpan, NULL | Všechny operandy by měly být stejného typu nebo mít nulovou konstantu. |
 | `HAS` | Řetězec | Na pravé straně jsou povoleny pouze konstantní řetězcové literály. Prázdný řetězec a hodnota NULL nejsou povoleny. |
 
-Další informace o podporovaných operacích dotazů a datových typech najdete v tématu [výraz Time Series Expression (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
+Další informace o podporovaných operacích dotazů a datových typech najdete v tématu [výraz Time Series Expression (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 ### <a name="examples-of-where-clauses"></a>Příklady klauzulí WHERE
 
@@ -240,10 +239,10 @@ Prvky na panelu grafu můžete zobrazit a skrýt tak, že vyberete ikonu Visible
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si informace o ingestování [dat](./concepts-ingestion-overview.md) do vašeho prostředí.
+* Přečtěte si informace o ingestování [dat](./concepts-ingestion-overview.md) do vašeho prostředí.
 
-- Projděte si článek o [úložišti](concepts-storage.md).
+* Projděte si článek o [úložišti](concepts-storage.md).
 
-- Přečtěte si o [modelování dat](./concepts-model-overview.md) v Azure Time Series Insights Gen2.
+* Přečtěte si o [modelování dat](./concepts-model-overview.md) v Azure Time Series Insights Gen2.
 
-- Naučte [se diagnostikovat a řešit potíže s](./time-series-insights-update-how-to-troubleshoot.md) prostředím.
+* Naučte [se diagnostikovat a řešit potíže s](./time-series-insights-update-how-to-troubleshoot.md) prostředím.

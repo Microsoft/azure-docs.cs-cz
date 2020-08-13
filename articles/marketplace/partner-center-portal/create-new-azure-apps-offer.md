@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: c5d52a78dec31dd796929b141556d6da10044099
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 420ca9ff6a3ccc0e0bb76887e777f05dd955e97b
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031482"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166684"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -187,8 +187,8 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 4. Podmínky použití
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Název nabídky
-7. Souhrn
-8. Popis
+7. Shrnutí
+8. Description
 9. Snímky obrazovky a videa
 
 <br>Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Portal:
@@ -202,7 +202,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 3. Užitečné odkazy
 4. Screenshoty
 
-#### <a name="name"></a>Název
+#### <a name="name"></a>Name
 
 Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole je předem vyplněno textem, který jste zadali pro možnost **alias nabídky** při vytváření nabídky, ale můžete tuto hodnotu změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
@@ -214,7 +214,7 @@ Zadejte krátký popis vaší nabídky, maximálně 100 znaků. Tento popis se d
 
 Zadejte delší popis nabídky, maximálně 256 znaků. Tento popis se dá použít ve výsledcích hledání.
 
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -315,6 +315,8 @@ Technická konfigurace definuje podrobnosti (ID tenanta a ID aplikace), které s
 ## <a name="plan-overview"></a>Přehled plánu
 
 Tato karta vám umožní v rámci stejné nabídky poskytnout různé možnosti plánu. Tyto plány (dříve nazývané SKU) se můžou lišit v souvislosti s typem plánu (šablona řešení vs. spravovaná aplikace), finanční zhodnocení nebo cílová skupina. Pokud chcete zobrazit seznam nabídek na webu Marketplace, nakonfigurujte aspoň jeden plán.
+
+Pro každou nabídku můžete vytvořit až 100 plánů: až 45 z nich může být privátní. Další informace o privátních plánech najdete v [části soukromé nabídky na komerčním webu Microsoft Marketplace](../private-offers.md).
 
 Po vytvoření se zobrazí vaše názvy plánů, ID, typ plánu, dostupnost (veřejné nebo soukromé), aktuální stav publikování a všechny dostupné akce na této kartě.
 

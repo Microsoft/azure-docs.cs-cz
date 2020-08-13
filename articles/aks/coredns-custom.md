@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: f58232eac6727f10fdccb32e7795bf12a93b7cbb
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 08d3c61ca4b5988847676b12478a5865ac319d37
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405513"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164197"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Přizpůsobení CoreDNS pomocí služby Azure Kubernetes Service
 
@@ -22,7 +22,7 @@ Jako AKS je spravovaná služba, a proto nemůžete změnit hlavní konfiguraci 
 V tomto článku se dozvíte, jak používat ConfigMaps pro základní možnosti přizpůsobení CoreDNS v AKS. Tento přístup se liší od konfigurace CoreDNS v jiných kontextech, jako je například použití CoreFile. Ověřte, že je spuštěná verze CoreDNS, protože hodnoty konfigurace se můžou mezi verzemi měnit.
 
 > [!NOTE]
-> `kube-dns`k dispozici jsou různé [Možnosti přizpůsobení][kubednsblog] prostřednictvím mapy konfigurace Kubernetes. CoreDNS není **zpětně** kompatibilní s Kube-DNS. Všechna vlastní nastavení, která jste předtím použili, musíte aktualizovat pro použití s CoreDNS.
+> `kube-dns` k dispozici jsou různé [Možnosti přizpůsobení][kubednsblog] prostřednictvím mapy konfigurace Kubernetes. CoreDNS není **zpětně** kompatibilní s Kube-DNS. Všechna vlastní nastavení, která jste předtím použili, musíte aktualizovat pro použití s CoreDNS.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -53,6 +53,9 @@ data:
         forward .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10, but that server must be able to resolve the rewritten domain name
     }
 ```
+
+> [!IMPORTANT]
+> Pokud přesměrujete na server DNS, jako je například IP adresa služby CoreDNS, musí být server DNS schopný přeložit název přepsané domény.
 
 Vytvořte ConfigMap pomocí příkazu [kubectl použít ConfigMap][kubectl-apply] a zadejte název vašeho manifestu YAML:
 

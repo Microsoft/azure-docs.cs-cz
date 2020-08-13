@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4db0956b1a2dec7626a24de2939941c2384d6a8a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 448910453b967fb15d342c22b81dd9733d0dfeb8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080758"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165120"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
@@ -250,4 +250,4 @@ Provedli jste tyto akce:
 Jste připraveni nakonfigurovat aplikaci pro jednotné přihlašování. Pomocí následujícího odkazu můžete vybrat metodu jednotného přihlašování a vyhledat kurzy jednotného přihlašování.
 
 > [!div class="nextstepaction"]
-> [Konfigurace jednotného přihlašování](what-is-single-sign-on.md#choosing-a-single-sign-on-method)
+> [Konfigurace jednotného přihlašování](sso-options.md#choosing-a-single-sign-on-method)

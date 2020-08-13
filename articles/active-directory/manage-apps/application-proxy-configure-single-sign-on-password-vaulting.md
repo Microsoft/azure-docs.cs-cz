@@ -14,18 +14,18 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5e3d08f887cc1c816dda54863c412660494418b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00b25f1b506228d2d80aecae3845467759a4bc4f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764770"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165035"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Trezor hesel pro jednotné přihlašování s proxy aplikací
 
 Proxy aplikací služby Azure Active Directory vám pomůže zlepšit produktivitu publikováním místních aplikací, aby k nim vzdálení zaměstnanci měli přístup. V Azure Portal můžete pro tyto aplikace také nastavit jednotné přihlašování (SSO). Uživatelé se potřebují jenom ověřit pomocí Azure AD a můžou získat přístup k podnikové aplikaci, aniž by se museli znovu přihlašovat.
 
-Proxy aplikace podporuje několik [režimů jednotného přihlašování](what-is-single-sign-on.md#choosing-a-single-sign-on-method). Přihlašování založené na heslech je určeno pro aplikace, které používají kombinaci uživatelského jména a hesla pro ověřování. Když pro svou aplikaci nakonfigurujete přihlášení založené na heslech, uživatelé se musí přihlašovat do místní aplikace jenom jednou. Potom Azure Active Directory uloží přihlašovací údaje a automaticky ji poskytne aplikaci, když k ní uživatelé přistupují vzdáleně.
+Proxy aplikace podporuje několik [režimů jednotného přihlašování](sso-options.md#choosing-a-single-sign-on-method). Přihlašování založené na heslech je určeno pro aplikace, které používají kombinaci uživatelského jména a hesla pro ověřování. Když pro svou aplikaci nakonfigurujete přihlášení založené na heslech, uživatelé se musí přihlašovat do místní aplikace jenom jednou. Potom Azure Active Directory uloží přihlašovací údaje a automaticky ji poskytne aplikaci, když k ní uživatelé přistupují vzdáleně.
 
 Svou aplikaci byste už měli publikovat a testovat pomocí proxy aplikace. Pokud ne, postupujte podle kroků v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](application-proxy-add-on-premises-application.md) pak se vraťte sem.
 

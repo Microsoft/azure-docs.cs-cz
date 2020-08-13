@@ -15,29 +15,29 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94c434a2892060acfdd56c496a31e41597c21357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31235936109361f0f15a071346baee128060375a
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763427"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164984"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Postupy: nasazení rozšíření přístupového panelu pro Internet Explorer pomocí zásad skupiny
 
-V tomto kurzu se dozvíte, jak pomocí zásad skupiny vzdáleně nainstalovat rozšíření přístupového panelu pro Internet Explorer na počítačích uživatelů. Toto rozšíření se vyžaduje pro uživatele Internet Exploreru, kteří se potřebují přihlašovat k aplikacím nakonfigurovaným pomocí [jednotného přihlašování založeného na heslech](what-is-single-sign-on.md#password-based-sso).
+V tomto kurzu se dozvíte, jak pomocí zásad skupiny vzdáleně nainstalovat rozšíření přístupového panelu pro Internet Explorer na počítačích uživatelů. Toto rozšíření se vyžaduje pro uživatele Internet Exploreru, kteří se potřebují přihlašovat k aplikacím nakonfigurovaným pomocí [jednotného přihlašování založeného na heslech](sso-options.md#password-based-sso).
 
 Doporučuje správcům automatizovat nasazení tohoto rozšíření. V opačném případě musí uživatelé stáhnout a nainstalovat rozšíření samotné, což je náchylné k chybě uživatele a vyžaduje oprávnění správce. V tomto kurzu se zabývá jedna metoda automatizace nasazení softwaru pomocí zásad skupiny. [Přečtěte si další informace o zásadách skupiny.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
 Rozšíření přístupového panelu je k dispozici také pro [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) a [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998), ani když není potřeba instalovat oprávnění správce.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nastavili jste [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)a připojili jste počítače uživatelů k vaší doméně.
 * Chcete-li upravit objekt Zásady skupiny (GPO), je nutné mít oprávnění upravit nastavení. Ve výchozím nastavení mají toto oprávnění členové těchto skupin zabezpečení: Domain Administrators, Enterprise Administrators a Zásady skupiny Creator Owners. [Další informace](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
 ## <a name="step-1-create-the-distribution-point"></a>Krok 1: Vytvoření distribučního bodu
 
-Nejdřív je nutné umístit instalační balíček do síťového umístění, ke kterému mají přístup počítače, na kterých chcete vzdáleně nainstalovat rozšíření. Postupujte přitom takto:
+Nejdřív je nutné umístit instalační balíček do síťového umístění, ke kterému mají přístup počítače, na kterých chcete vzdáleně nainstalovat rozšíření. Postupujte takto:
 
 1. Přihlaste se k serveru jako správce.
 1. V okně **Správce serveru** přejdete do části **soubory a služby úložiště**.

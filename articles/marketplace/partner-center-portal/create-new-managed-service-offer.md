@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: f58ec53d1c4f3ad95993fd2faff44f7164c4beeb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4d2a884bd6fd4cb62aa7cae5f3e53b865082fde8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036602"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166599"
 ---
 # <a name="create-a-managed-service-offer"></a>Vytvoření nabídky spravované služby
 
@@ -90,7 +90,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Portal:
 3. Užitečné odkazy
 4. Screenshoty
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 
 Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole je předem vyplněno textem, který jste zadali pro možnost **alias nabídky** při vytváření nabídky, ale můžete tuto hodnotu změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
@@ -102,7 +102,7 @@ Zadejte krátký popis vaší nabídky (až 100 znaků), který se dá použít 
 
 Zadejte delší popis vaší nabídky (až 256 znaků). Toto dlouhé Shrnutí se dá použít taky ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -175,6 +175,8 @@ Než budete pokračovat, vyberte **Uložit koncept** .
 ## <a name="plan-overview"></a>Přehled plánu
 
 Každá nabídka musí mít jeden nebo více plánů (dříve nazývané SKU). Můžete přidat více plánů pro podporu různých sad funkcí v různých cenách nebo upravit konkrétní plán pro omezené cílové skupiny konkrétních zákazníků. Zákazníci si můžou prohlédnout plány, které jsou pro ně k dispozici v rámci nadřízené nabídky.
+
+Pro každou nabídku můžete vytvořit až 100 plánů: až 45 z nich může být privátní. Další informace o privátních plánech najdete v [části soukromé nabídky na komerčním webu Microsoft Marketplace](../private-offers.md).
 
 Na stránce **Přehled plánu** vyberte **+ vytvořit nový plán**. Pak zadejte **ID plánu** a **název plánu**. Obě tyto hodnoty můžou obsahovat jenom malé alfanumerické znaky, pomlčky a podtržítka, maximálně 50 znaků. Tyto hodnoty můžou zákazníci zobrazovat a po publikování této nabídky je nepůjde změnit.
 

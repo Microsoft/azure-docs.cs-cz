@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c5e546c6eac77c4952a0d32d360f49d4251d49d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: cdb6e85b6d81de3d4b88ba315ddd35bd5b37ae7a
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908767"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165205"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-self-service-sign-up"></a>Použití konektorů rozhraní API k přizpůsobení a rozšiřování samoobslužné registrace 
 
@@ -30,7 +30,7 @@ Jako vývojář nebo správce IT můžete použít konektory rozhraní API k int
 <!-- - **Enrich user data**. Integrate with your external cloud systems that store user information to integrate them with the sign-up flow. For example, your API can receive the user's email address, query a CRM system, and return the user's loyalty number. Returned claims can be used to pre-fill form fields or return additional data in the application token.  -->
 - **Spusťte vlastní obchodní logiku**. Můžete aktivovat navazující události v cloudových systémech a odesílat nabízená oznámení, aktualizovat podnikové databáze, spravovat oprávnění, auditovat databáze a provádět další vlastní akce.
 
-Konektor API představuje kontrakt mezi Azure AD a koncovým bodem rozhraní API tím, že definuje koncový bod HTTP, ověřování, požadavek a očekávanou odpověď. Po nakonfigurování konektoru API ho můžete povolit pro konkrétní krok v toku uživatele. Když uživatel dosáhne tohoto kroku v procesu registrace, vyvolá se konektor API a materializuje se jako požadavek HTTP POST a posílá vybrané deklarace identity jako páry klíč-hodnota v těle JSON. Reakce rozhraní API může ovlivnit spuštění toku uživatele. Odpověď rozhraní API může například zablokovat uživateli registraci, požádat uživatele o opětovné zadání informací, nebo přepsat a připojit atributy uživatele.
+Konektor API poskytuje Azure Active Directory s informacemi potřebnými pro volání koncového bodu rozhraní API tak, že definuje adresu URL koncového bodu HTTP a ověřování. Po nakonfigurování konektoru API ho můžete povolit pro konkrétní krok v toku uživatele. Když uživatel dosáhne tohoto kroku v procesu registrace, vyvolá se konektor API a materializuje jako požadavek HTTP POST do vašeho rozhraní API a pošle informace o uživateli (deklarace identity) jako páry klíč-hodnota v těle JSON. Reakce rozhraní API může ovlivnit spuštění toku uživatele. Odpověď rozhraní API může například zablokovat uživateli registraci, požádat uživatele o opětovné zadání informací, nebo přepsat a připojit atributy uživatele.
 
 ## <a name="where-you-can-enable-an-api-connector-in-a-user-flow"></a>Kde můžete povolit konektor API v toku uživatele
 
@@ -39,7 +39,8 @@ Tok uživatele obsahuje dvě místa, kde můžete povolit konektor API:
 - Po přihlášení pomocí zprostředkovatele identity
 - Před vytvořením uživatele
 
-V obou těchto případech jsou konektory rozhraní API vyvolány během registrace, nikoli při přihlášení.
+> [!IMPORTANT]
+> V obou těchto případech jsou konektory rozhraní API vyvolány během **registrace**uživatele, nikoli při přihlášení.
 
 ### <a name="after-signing-in-with-an-identity-provider"></a>Po přihlášení pomocí zprostředkovatele identity
 

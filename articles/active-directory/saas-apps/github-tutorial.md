@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/17/2020
+ms.date: 08/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718d51c94d05e8e18f2b254b5e81e346a67205a1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 422ef08995a74b172271e165c0ec7be5010969b4
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170531"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164739"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k GitHubu
 
@@ -31,7 +31,7 @@ V tomto kurzu se dozvíte, jak integrovat GitHub s Azure Active Directory (Azure
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s GitHubem potřebujete následující položky:
 
@@ -121,7 +121,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -139,7 +139,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+
+    ![role uživatele](./media/github-tutorial/user-role.png)
+
+    > [!NOTE]
+    > Možnost **Vybrat roli** bude zakázaná a výchozí role je uživatel pro vybraného uživatele.
+
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-github-sso"></a>Konfigurace jednotného přihlašování GitHubu
 
@@ -147,11 +153,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Přejděte na **Nastavení** a klikněte na **zabezpečení** .
 
-    ![Nastavení](./media/github-tutorial/tutorial_github_config_github_03.png)
+    ![Nastavení](./media/github-tutorial/security.png)
 
 3. Zaškrtněte pole **Povolit ověřování SAML** a odhalte konfigurační pole jednotného přihlašování. proveďte následující kroky:
 
-    ![Nastavení](./media/github-tutorial/tutorial_github_config_github_13.png)
+    ![Nastavení](./media/github-tutorial/saml-sso.png)
 
     a. Zkopírujte hodnotu **adresy URL jednotného přihlašování** a vložte tuto hodnotu do textového pole **přihlašovací adresa URL** v **základní konfiguraci SAML** v Azure Portal.
     
@@ -159,7 +165,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. Nakonfigurujte následující pole:
 
-    ![Nastavení](./media/github-tutorial/tutorial_github_config_github_051.png)
+    ![Nastavení](./media/github-tutorial/configure.png)
 
     a. Do textového pole **přihlašování URL** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
@@ -175,7 +181,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 5. Kliknutím na **Test konfigurace SAML** potvrďte, že během jednotného přihlašování nedochází k selhání ověřování nebo chybám.
 
-    ![Nastavení](./media/github-tutorial/tutorial_github_config_github_06.png)
+    ![Nastavení](./media/github-tutorial/test.png)
 
 6. Klikněte na **Uložit**.
 
@@ -192,21 +198,21 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon na GitHubu. 
 
 2. Klikněte na **lidé**.
 
-    ![People](./media/github-tutorial/tutorial_github_config_github_08.png "People")
+    ![People](./media/github-tutorial/people.png "People")
 
 3. Klikněte na **pozvat člena**.
 
-    ![Pozvat uživatele](./media/github-tutorial/tutorial_github_config_github_09.png "Pozvat uživatele")
+    ![Pozvat uživatele](./media/github-tutorial/invite-member.png "Pozvat uživatele")
 
 4. Na stránce **pozvání členů** proveďte následující kroky:
 
     a. Do textového pole **e-mail** zadejte e-mailovou adresu účtu Britta Simon.
 
-    ![Pozvat lidi](./media/github-tutorial/tutorial_github_config_github_10.png "Pozvat lidi")
+    ![Pozvat lidi](./media/github-tutorial/email-box.png "Pozvat lidi")
 
     b. Klikněte na **Odeslat pozvánku**.
 
-    ![Pozvat lidi](./media/github-tutorial/tutorial_github_config_github_11.png "Pozvat lidi")
+    ![Pozvat lidi](./media/github-tutorial/send-invitation.png "Pozvat lidi")
 
     > [!NOTE]
     > Držitel účtu Azure Active Directory obdrží e-mail a provede odkaz pro potvrzení, že účet ještě nebude aktivní.

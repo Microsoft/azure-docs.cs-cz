@@ -12,20 +12,20 @@ ms.workload: identity
 ms.date: 04/12/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 57ce6ab31421cd4016f7e204eeabce82f2f7e6a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 30f9f1998ee133c2546c9f4de7a99c51feb8740f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77083982"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166191"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Inicializace klientských aplikací pomocí MSAL.NET
 Tento článek popisuje inicializaci veřejného klienta a důvěrných klientských aplikací pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).  Další informace o typech klientských aplikací a možnostech konfigurace aplikací najdete v [přehledu](msal-client-applications.md).
 
 Pomocí MSAL.NET 3. x je doporučený způsob vytvoření instance aplikace pomocí tvůrců aplikací: `PublicClientApplicationBuilder` a `ConfidentialClientApplicationBuilder` . Nabízí účinný mechanismus pro konfiguraci aplikace buď z kódu, nebo z konfiguračního souboru, nebo i smícháním obou přístupů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Před inicializací aplikace je nejprve nutné [ji zaregistrovat](quickstart-register-app.md) , aby bylo možné aplikaci integrovat s platformou Microsoft identity.  Po registraci možná budete potřebovat následující informace (které najdete v Azure Portal):
 
 - ID klienta (řetězec představující GUID)

@@ -3,17 +3,17 @@ title: Výběr správné cenové úrovně pro mapy Microsoft Azure
 description: Přečtěte si o Azure Maps cenové úrovně. Podívejte se, které funkce jsou nabízené na úrovních a zda si chcete zobrazit klíčové důležité informace pro výběr cenové úrovně.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/27/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 30507b289a0ae4f831c8bcf4e038049301da7981
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3603a4f5d103987b25bd5f976b89f943f98565a8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036772"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163981"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Výběr správné cenové úrovně v Azure Maps
 
@@ -47,6 +47,7 @@ Pokud základní geoprostorové rozhraní API splňuje požadavky vaší služby
 | Data Azure Maps (Preview)                |                     | ✓        |
 | Mobilita (Preview)                       |                     | ✓        |
 | Počasí (Preview)                        |✓                    |✓        |
+|  Tvůrce (Preview)                         |                   |✓        |
 
 Vezměte v úvahu tyto další body:
 

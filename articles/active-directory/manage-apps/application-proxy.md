@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 6ed9d5eb8d230b05a090424d6105865acae69e61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 96ebfecf01ff147a874674861c7cb64cb3725d52
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019348"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164916"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Vzdálený přístup k místním aplikacím prostřednictvím Azure Proxy aplikací služby AD
 
@@ -41,7 +41,7 @@ Proxy aplikace funguje s:
 * Aplikace hostované za [Brána vzdálené plochy](application-proxy-integrate-with-remote-desktop-services.md)
 * Bohatých klientských aplikací integrovaných do knihovny Microsoft Authentication Library (MSAL)
 
-Proxy aplikace podporuje jednotné přihlašování. Další informace o podporovaných metodách najdete v tématu [Výběr metody jednotného přihlašování](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
+Proxy aplikace podporuje jednotné přihlašování. Další informace o podporovaných metodách najdete v tématu [Výběr metody jednotného přihlašování](sso-options.md#choosing-a-single-sign-on-method).
 
 Proxy aplikací se doporučuje pro poskytování přístupu vzdálených uživatelů k interním prostředkům. Proxy aplikace nahrazuje nutnost připojení VPN nebo reverzního proxy serveru. Není určený pro interní uživatele v podnikové síti.  Tito uživatelé, kteří zbytečně využívají proxy aplikací, mohou způsobit neočekávané a nežádoucí problémy s výkonem.
 

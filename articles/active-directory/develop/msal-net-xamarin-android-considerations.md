@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 04/24/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: d244bbbe96bcea45da5c0860e4af52409123fb7f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 601a501114d754dc82991a3c19b977c0c63c5bc0
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118684"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165732"
 ---
 # <a name="considerations-for-using-xamarin-android-with-msalnet"></a>Předpoklady pro používání Xamarin Androidu s MSAL.NET
 Tento článek popisuje, co byste měli vzít v úvahu při použití Xamarin Androidu s knihovnou Microsoft Authentication Library pro .NET (MSAL.NET).
@@ -160,6 +160,6 @@ Tento příklad obsahuje správnou cestu k souboru:
 
 Další informace najdete v ukázce [mobilní aplikace Xamarin, která používá Microsoft Identity Platform](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations). Následující tabulka shrnuje relevantní informace v souboru READme.
 
-| Ukázka | Platforma | Popis |
+| Ukázka | Platforma | Description |
 | ------ | -------- | ----------- |
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin. iOS, Android, UWP | Jednoduchá aplikace Xamarin. Forms, která ukazuje, jak používat MSAL k ověřování osobních účtů Microsoft a Azure AD prostřednictvím koncového bodu Azure AD 2,0. Aplikace také ukazuje, jak získat přístup k Microsoft Graph a zobrazuje výsledný token. <br>![Topologie](media/msal-net-xamarin-android-considerations/topology.png) |

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 206f87e45377287217b4895b8d481e14618c888c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 38b474d4b454c61b83bfb1d62230930a0b569b1d
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386941"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164219"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Sdílení účtů s Azure AD
 
@@ -55,7 +55,7 @@ Azure AD podporuje sdílené účty pro všechny sady Enterprise Mobility Suite 
 
 Funkce Azure AD, které umožňují sdílení účtů, zahrnují:
 
-* [Jednotné přihlašování k heslu](../manage-apps/what-is-single-sign-on.md#password-based-sso)
+* [Jednotné přihlašování k heslu](../manage-apps/sso-options.md#password-based-sso)
 * Agent jednotného přihlašování k heslům
 * [Přiřazení skupiny](groups-self-service-management.md)
 * Vlastní aplikace pro hesla

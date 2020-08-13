@@ -9,13 +9,13 @@ ms.workload: azure-vs
 ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.custom: aaddev, vs-azure
-ms.openlocfilehash: bc23a61c88337c152a764cc0ec90ddbbad25cef1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: devx-track-csharp, aaddev, vs-azure
+ms.openlocfilehash: ab72512b2e5d915dbd4b8a3d7d8446a5932eef9e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114723"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165443"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Co se stalo s mým projektem MVC (připojená služba Visual Studio Azure Active Directory)?
 
@@ -31,7 +31,7 @@ Informace o práci s připojenou službou najdete v tématu [Začínáme](vs-act
 
 Má vliv na soubor projektu (*. NET References) a `packages.config` (odkazy na NuGet).
 
-| Typ | Odkaz |
+| Typ | Referenční informace |
 | --- | --- |
 | Pohyby NuGet | Microsoft. IdentityModel. Protocol. Extensions |
 | Pohyby NuGet | Microsoft. Owin |
@@ -46,7 +46,7 @@ Má vliv na soubor projektu (*. NET References) a `packages.config` (odkazy na N
 
 Další odkazy, pokud jste vybrali možnost **data pro čtení adresáře** :
 
-| Typ | Odkaz |
+| Typ | Referenční informace |
 | --- | --- |
 | Pohyby NuGet | EntityFramework |
 | .NET        | EntityFramework. SqlServer (pouze Visual Studio 2015) |
@@ -60,7 +60,7 @@ Další odkazy, pokud jste vybrali možnost **data pro čtení adresáře** :
 
 Následující odkazy jsou odebrány (pouze projekty ASP.NET 4, jako v aplikaci Visual Studio 2015):
 
-| Typ | Odkaz |
+| Typ | Referenční informace |
 | --- | --- |
 | Pohyby NuGet | Microsoft. AspNet. identity. Core |
 | Pohyby NuGet | Microsoft. AspNet. identity. EntityFramework |

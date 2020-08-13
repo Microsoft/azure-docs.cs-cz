@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4d9583e08591e8ea5792aad28e247dff178f1c08
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 68ccf3518a7011c0c39003d8e447a4e1d233fd91
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080656"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164576"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Použití Azure Proxy aplikací služby AD k publikování místních aplikací pro vzdálené uživatele
 
@@ -80,7 +80,7 @@ Po přihlášení mohou externí uživatelé přistupovat k místním webovým a
 
 ![Architektura Azure Proxy aplikací služby AD](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
-### <a name="authentication"></a>Ověřování uživatelů
+### <a name="authentication"></a>Authentication
 
 Existuje několik způsobů konfigurace aplikace pro jednotné přihlašování a vybraná metoda závisí na ověřování, které vaše aplikace používá. Proxy aplikace podporuje následující typy aplikací:
 
@@ -99,7 +99,7 @@ Proxy aplikace také podporuje následující protokoly ověřování s integrac
 * [**Ověřování pomocí formulářů nebo hesel**](application-proxy-configure-single-sign-on-password-vaulting.md). Pomocí této metody ověřování se uživatelé přihlásí k aplikaci pomocí uživatelského jména a hesla při prvním přístupu k ní. Po prvním přihlášení Azure AD zadá uživatelské jméno a heslo k aplikaci. V tomto scénáři služba Azure AD zpracovává ověřování.
 * [**Ověřování SAML**](application-proxy-configure-single-sign-on-on-premises-apps.md). Jednotné přihlašování založené na SAML je podporované pro aplikace, které používají protokol SAML 2,0 nebo WS-Federation. Pomocí jednotného přihlašování SAML Azure AD ověřuje aplikace pomocí účtu Azure AD uživatele.
 
-Další informace o podporovaných metodách najdete v tématu [Výběr metody jednotného přihlašování](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
+Další informace o podporovaných metodách najdete v tématu [Výběr metody jednotného přihlašování](sso-options.md#choosing-a-single-sign-on-method).
 
 ### <a name="security-benefits"></a>Výhody zabezpečení
 

@@ -4,19 +4,19 @@ description: Přidání konektorů API pro vlastní pracovní postupy schvalová
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: how-to
+ms.topic: article
 ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d1a4495b1d637b1cf8592f8c17e63ad456ea3c4
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d664d7cd169593924917bb02a0220e4047eb0cdb
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908549"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165228"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Přidání vlastního pracovního postupu schválení pro samoobslužné přihlášení
 
@@ -65,7 +65,7 @@ V dalším kroku [vytvoříte konektory rozhraní API](self-service-sign-up-add-
 
   ![Zkontroluje konfiguraci konektoru rozhraní API stavu schválení.](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
-- **Žádost o schválení** – odeslání volání schvalovacímu systému poté, co uživatel dokončí stránku kolekce atributů, ale před vytvořením uživatelského účtu pro vyžádání schválení. Žádost o schválení se dá automaticky udělit nebo ručně zkontrolovat. Příklad konektoru rozhraní API "schválení žádosti". Vyberte všechny **deklarace identity, které zasílají** , aby schvalovací systém mohl učinit rozhodnutí o schválení.
+- **Žádost o schválení** – odeslání volání schvalovacímu systému poté, co uživatel dokončí stránku kolekce atributů, ale před vytvořením uživatelského účtu pro vyžádání schválení. Žádost o schválení se dá automaticky udělit nebo ručně zkontrolovat. Příklad konektoru rozhraní API "schválení žádosti". 
 
   ![Konfigurace požadavku na schválení konektoru rozhraní API](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
@@ -90,28 +90,33 @@ Nyní přidáte konektory rozhraní API k samoobslužnému uživatelskému toku 
 
 ## <a name="control-the-sign-up-flow-with-api-responses"></a>Řízení toku registrace pomocí odpovědí rozhraní API
 
-Váš systém schvalování může použít [typy odezvy rozhraní API](self-service-sign-up-add-api-connector.md#expected-response-types-from-the-web-api) ze dvou koncových bodů rozhraní API k řízení toku registrace.
+Váš systém schvalování může použít své odpovědi při volání k řízení toku registrace. 
 
 ### <a name="request-and-responses-for-the-check-approval-status-api-connector"></a>Požadavek a odpovědi na konektor rozhraní API pro kontrolu stavu schválení
 
 Příklad požadavku přijatého rozhraním API z konektoru rozhraní API pro kontrolu stavu schválení:
 
 ```http
-POST <Approvals-API-endpoint>
+POST <API-endpoint>
 Content-type: application/json
 
 {
- "email": "johnsmith@outlook.com",
- "identities": [
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
      "issuer":"facebook.com",
      "issuerAssignedId":"0123456789"
      }
  ],
+ "displayName": "John Smith",
+ "givenName":"John",
+ "lastName":"Smith",
  "ui_locales":"en-US"
 }
 ```
+
+Přesné deklarace identity odeslané na rozhraní API závisí na tom, jaké informace poskytovatel identity poskytuje. ' e-mail ' je vždy odeslán.
 
 #### <a name="continuation-response-for-check-approval-status"></a>Reakce na pokračování pro "kontrolu stavu schválení"
 
@@ -169,12 +174,12 @@ Content-type: application/json
 Příklad požadavku HTTP přijatého rozhraním API z konektoru API "schválení žádosti":
 
 ```http
-POST <Approvals-API-endpoint>
+POST <API-endpoint>
 Content-type: application/json
 
 {
- "email": "johnsmith@outlook.com",
- "identities": [
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -182,11 +187,21 @@ Content-type: application/json
      }
  ],
  "displayName": "John Smith",
- "city": "Redmond",
- "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
+ "givenName":"John",
+ "surname":"Smith",
+ "jobTitle":"Supplier",
+ "streetAddress":"1000 Microsoft Way",
+ "city":"Seattle",
+ "postalCode": "12345",
+ "state":"Washington",
+ "country":"United States",
+ "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
+
+Přesné deklarace identity odeslané na rozhraní API závisí na tom, které informace se shromažďují od uživatele nebo které poskytuje zprostředkovatel identity.
 
 #### <a name="continuation-response-for-request-approval"></a>Reakce na pokračování pro "schválení žádosti"
 
@@ -257,7 +272,7 @@ Po získání ručního schválení vytvoří vlastní systém schvalování [u�
 
 Pokud se uživatel přihlásil pomocí účtu Google nebo Facebook, můžete použít [rozhraní API pro vytvoření uživatele](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http).
 
-1. Schvalovací systém přijme požadavek HTTP od toku uživatele.
+1. Systém schvalování používá požadavek HTTP od toku uživatele.
 
 ```http
 POST <Approvals-API-endpoint>
@@ -305,11 +320,11 @@ Content-type: application/json
 
 | Parametr                                           | Povinné | Popis                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName (Hlavní název uživatele)                                   | Ano      | Dá se vygenerovat tak, že se převezme deklarace, která se `email` pošle do rozhraní API, nahradí se `@` znak za `_` a předá ho do `#EXT@<tenant-name>.onmicrosoft.com` . |
-| accountEnabled                                      | Ano      | Musí být nastaven na hodnotu `true` .                                                                                                                                                 |
-| pošta                                                | Ano      | Ekvivalent k `email` deklaraci identity odeslané do rozhraní API.                                                                                                               |
-| userType                                            | Ano      | Musí být `Guest` . Určí tohoto uživatele jako uživatel typu Host.                                                                                                                 |
-| nebyly                                          | Ano      | Informace o federované identitě.                                                                                                                                    |
+| userPrincipalName (Hlavní název uživatele)                                   | Yes      | Dá se vygenerovat tak, že se převezme deklarace, která se `email` pošle do rozhraní API, nahradí se `@` znak za `_` a předá ho do `#EXT@<tenant-name>.onmicrosoft.com` . |
+| accountEnabled                                      | Yes      | Musí být nastaven na hodnotu `true` .                                                                                                                                                 |
+| pošta                                                | Yes      | Ekvivalent k `email` deklaraci identity odeslané do rozhraní API.                                                                                                               |
+| userType                                            | Yes      | Musí být `Guest` . Určí tohoto uživatele jako uživatel typu Host.                                                                                                                 |
+| nebyly                                          | Yes      | Informace o federované identitě.                                                                                                                                    |
 | \<otherBuiltInAttribute>                            | Ne       | Jiné předdefinované atributy jako `displayName` , `city` a další. Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                            |
 | \<extension\_\{extensions-app-id}\_CustomAttribute> | Ne       | Vlastní atributy uživatele Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                                                            |
 

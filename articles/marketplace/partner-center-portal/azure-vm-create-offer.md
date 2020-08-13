@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 8d27594b33db72303c71ceb39de92b1d4340b9be
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3e8822462cd7989f6bc1f051b3868d6241f591b1
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037265"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166701"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Vytvoření nabídky virtuálních počítačů Azure na Azure Marketplace
 
@@ -38,7 +38,7 @@ Pokud jste to ještě neudělali, Projděte si [příručku pro publikování na
 - Průvodci rychlým startem
   - [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/)
   - [Šablony Azure pro rychlý Start pro GitHub](https://github.com/azure/azure-quickstart-templates)
-- Výukové kurzy
+- Kurzy
   - [Virtuální počítače s Linuxem](../../virtual-machines/linux/tutorial-manage-vm.md)
   - [Virtuální počítače s Windows](../../virtual-machines/windows/tutorial-manage-vm.md)
 - ukázky
@@ -180,7 +180,7 @@ Na stránce **seznam nabídek** můžete definovat podrobnosti nabídky, jako je
 
 ### <a name="marketplace-details"></a>Podrobnosti Marketplace
 
-#### <a name="name"></a>Název
+#### <a name="name"></a>Name
 
 Název, který zde zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole se vyplní názvem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit. Název:
 
@@ -196,7 +196,7 @@ Zadejte krátký popis vaší nabídky, který se zobrazí ve výsledcích hled�
 
 Zadejte delší popis nabídky, která se zobrazí ve výsledcích hledání Azure Marketplace. Může obsahovat až 256 znaků.
 
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -226,7 +226,7 @@ Poskytněte web podpory, kde se zákazníci můžou připojit k vašemu týmu po
 
 Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, když vaši zákazníci otevřou lístek podpory. Tyto informace nejsou uvedené na Azure Marketplace.
 
-- Název
+- Name
 - E-mail
 - Rozložení
 
@@ -234,7 +234,7 @@ Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, kd
 
 Poskytněte kontaktní informace Microsoftu pro použití v případě problémů s vaší nabídkou, včetně problémů s certifikací. Tyto informace nejsou uvedené na Azure Marketplace.
 
-- Název
+- Name
 - E-mail
 - Rozložení
 
@@ -291,6 +291,8 @@ Než budete pokračovat k další části, vyberte **Uložit koncept** .
 ## <a name="plan-overview"></a>Přehled plánu
 
 V partnerském centru můžete v rámci stejné nabídky poskytnout nejrůznější možnosti plánu. Nabídka vyžaduje aspoň jeden plán (dříve označovaný jako SKU), který se může lišit podle finanční zhodnocení publikum, oblasti Azure, funkcí nebo imagí virtuálních počítačů.
+
+Pro každou nabídku můžete vytvořit až 100 plánů: až 45 z nich může být privátní. Další informace o privátních plánech najdete v [části soukromé nabídky na komerčním webu Microsoft Marketplace](../private-offers.md).
 
 Po vytvoření plánů vyberte kartu **Přehled plánu** , kterou chcete zobrazit:
 
@@ -538,7 +540,7 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 4. podmínky a ujednání
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Název nabídky
-7. Popis
+7. Description
 8. Užitečné odkazy
 9. Snímky obrazovky a videa
 

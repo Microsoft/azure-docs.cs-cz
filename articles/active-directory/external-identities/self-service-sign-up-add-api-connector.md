@@ -4,19 +4,19 @@ description: Nakonfigurujte webové rozhraní API, které se má používat v to
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: how-to
+ms.topic: article
 ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88270d51bf50b2b175d9d8761685a8a2a8ae19b1
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 5f241fd038d0d7309d8e1e5578dd77f950261b68
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908556"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165171"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Přidání konektoru API do toku uživatele
 
@@ -38,20 +38,54 @@ Pokud chcete použít [konektor API](api-connectors-overview.md), vytvořte nejd
    - V tuto chvíli se podporuje jenom základní ověřování. Pokud chcete použít rozhraní API bez základního ověřování pro vývojové účely, stačí zadat fiktivní **uživatelské jméno** a **heslo** , které může vaše rozhraní API ignorovat. Pro použití s funkcí Azure s klíčem rozhraní API můžete kód zahrnout jako parametr dotazu v **adrese URL koncového bodu** (například https []() ://contoso.azurewebsites.NET/API/Endpoint<b>? Code = 0123456789</b>).
 
    ![Přidání nového konektoru API](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
+8. Vyberte **Uložit**.
 
-8. Vyberte deklarace identity, které chcete odeslat do rozhraní API.
-9. Vyberte všechny deklarace identity, které plánujete z rozhraní API získat.
-
-   <!-- ![Set API connector claims](./media/self-service-sign-up-add-api-connector/api-connector-claims.png) -->
-
-10. Vyberte **Uložit**.
-
-### <a name="selection-of-claims-to-send-and-claims-to-receive"></a>Výběr deklarací identity k odeslání a deklaracím Receive
 > [!IMPORTANT]
-> Ve výchozím nastavení se můžou zobrazit všechny deklarace identity, jak je znázorněno níže. Všechny konektory API se budou aktualizovat tak, aby se chovaly tímto způsobem. Vaše rozhraní API obdrží všechny dostupné deklarace identity a může poslat zpátky všechny podporované deklarace identity, aniž by je museli konfigurovat v definici konektoru rozhraní API. 
+> Dřív jste museli nakonfigurovat, které atributy uživatele se mají odeslat do rozhraní API (deklarace k odeslání), a které atributy uživatele se mají přijmout z rozhraní API (deklarace k přijetí). Nyní jsou všechny atributy uživatelů odesílány ve výchozím nastavení, pokud mají hodnotu a libovolný atribut uživatele může být vrácen rozhraním API v odpovědi "pokračování".
 
-![Nastavit deklarace konektoru API](./media/self-service-sign-up-add-api-connector/api-connector-claims-new.png)
+## <a name="the-request-sent-to-your-api"></a>Požadavek odeslaný do vašeho rozhraní API
+Konektor rozhraní API se materializuje jako požadavek **http post** a jako páry klíč-hodnota se posílají atributy uživatele (deklarace), které jsou v těle JSON. Atributy jsou serializovány podobně jako [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0#properties) vlastností uživatele. 
 
+**Příklad požadavku**
+```http
+POST <API-endpoint>
+Content-type: application/json
+
+{
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
+     {
+     "signInType":"federated",
+     "issuer":"facebook.com",
+     "issuerAssignedId":"0123456789"
+     }
+ ],
+ "displayName": "John Smith",
+ "givenName":"John",
+ "surname":"Smith",
+ "jobTitle":"Supplier",
+ "streetAddress":"1000 Microsoft Way",
+ "city":"Seattle",
+ "postalCode": "12345",
+ "state":"Washington",
+ "country":"United States",
+ "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
+ "ui_locales":"en-US"
+}
+```
+
+V požadavku jsou k dispozici pouze uživatelské vlastnosti a vlastní atributy uvedené v **Azure Active Directory**  >  **External Identities**  >  **vlastní uživatelské atributy** identit.
+
+Vlastní atributy existují ve formátu **extension_ \<extensions-app-id> _AttributeName** v adresáři. Rozhraní API by mělo očekávat deklarace identity v tomto stejném serializovaném formátu. Další informace o vlastních atributech najdete v tématu [Definice vlastních atributů pro vlastní toky podepisování](user-flow-add-custom-attributes.md).
+
+Ve výchozím nastavení se ve všech požadavcích standardně odesílají deklarace identity **Locals (ui_locales) uživatelského rozhraní** . Poskytuje národní prostředí uživatele nastavené na zařízení, které může rozhraní API použít k vrácení mezinárodních odpovědí.
+
+> [!IMPORTANT]
+> Pokud deklarace identity pro odeslání nemá hodnotu v okamžiku volání koncového bodu rozhraní API, deklarace identity nebude odeslána do rozhraní API. Rozhraní API by mělo být navržené tak, aby explicitně kontrolovalo hodnotu, kterou očekává.
+
+> [!TIP] 
+> [**identity (identity)**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) a deklarace **e-mailové adresy (' email ')** můžou vaše rozhraní API použít k identifikaci uživatele předtím, než budou mít účet ve vašem tenantovi. Deklarace identity identity se pošle, když se uživatel ověřuje pomocí zprostředkovatele identity, jako je Google nebo Facebook. ' e-mail ' je vždy odeslán.
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>Povolení konektoru API v toku uživatele
 
@@ -70,13 +104,72 @@ Pomocí těchto kroků přidáte konektor rozhraní API k samoobslužnému uživ
 
 6. Vyberte **Uložit**.
 
-Přečtěte si [, kde můžete povolit konektor API v toku uživatele](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow).
+## <a name="after-signing-in-with-an-identity-provider"></a>Po přihlášení pomocí zprostředkovatele identity
 
-## <a name="request-sent-to-the-api"></a>Požadavek se odeslal do rozhraní API.
+Konektor API v tomto kroku v procesu registrace se vyvolá hned po ověření uživatele u poskytovatele identity (Google, Facebook, Azure AD). Tento krok předchází ***stránku kolekce atributů***, což je formulář prezentovaný uživateli ke shromáždění atributů uživatele. 
 
-Konektor rozhraní API materializuje jako požadavek HTTP POST a posílá vybrané deklarace identity jako páry klíč-hodnota v těle JSON. Odpověď by měla obsahovat také hlavičku HTTP `Content-Type: application/json` . Atributy jsou serializovány podobně Microsoft Graph atributy uživatele. <!--# TODO: Add link to MS Graph or create separate reference.-->
+<!-- The following are examples of API connector scenarios you may enable at this step:
+- Use the email or federated identity that the user provided to look up claims in an existing system. Return these claims from the existing system, pre-fill the attribute collection page, and make them available to return in the token.
+- Validate whether the user is included in an allow or deny list, and control whether they can continue with the sign-up flow. -->
 
-### <a name="example-request"></a>Příklad požadavku
+### <a name="example-request-sent-to-the-api-at-this-step"></a>Příklad žádosti odeslané na rozhraní API v tomto kroku
+```http
+POST <API-endpoint>
+Content-type: application/json
+
+{
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
+     {
+     "signInType":"federated",
+     "issuer":"facebook.com",
+     "issuerAssignedId":"0123456789"
+     }
+ ],
+ "displayName": "John Smith",
+ "givenName":"John",
+ "lastName":"Smith",
+ "ui_locales":"en-US"
+}
+```
+
+Přesné deklarace identity odeslané na rozhraní API závisí na tom, jaké informace poskytovatel identity poskytuje. ' e-mail ' je vždy odeslán.
+
+### <a name="expected-response-types-from-the-web-api-at-this-step"></a>Očekávané typy odezvy z webového rozhraní API v tomto kroku
+
+Když webové rozhraní API přijme požadavek HTTP z Azure AD během toku uživatele, může vrátit tyto odpovědi:
+
+- Reakce na pokračování
+- Blokování odpovědi
+
+#### <a name="continuation-response"></a>Reakce na pokračování
+
+Reakce na pokračování indikuje, že tok uživatele by měl pokračovat k dalšímu kroku: stránka kolekce atributů.
+
+V reakci na pokračování může rozhraní API vracet deklarace identity. Pokud rozhraní API vrátí deklaraci identity, deklarace identity provede následující akce:
+
+- Předem vyplní vstupní pole na stránce kolekce atributů.
+
+Podívejte se na příklad [reakce na pokračování](#example-of-a-continuation-response).
+
+#### <a name="blocking-response"></a>Blokování odpovědi
+
+Odezva na blokování ukončuje tok uživatele. Může být záměrně vydaný rozhraním API, aby se zastavilo pokračování toku uživatelů tím, že se uživateli zobrazí stránka blokování. Stránka blokování zobrazuje `userMessage` rozhraní API, které poskytuje.
+
+Podívejte se na příklad [blokující odezvy](#example-of-a-blocking-response).
+
+## <a name="before-creating-the-user"></a>Před vytvořením uživatele
+
+Konektor rozhraní API v tomto kroku v procesu registrace je vyvolán po stránce kolekce atributů, pokud je jeden zahrnutý. Tento krok se vždycky vyvolá před vytvořením uživatelského účtu ve službě Azure AD. 
+
+<!-- The following are examples of scenarios you might enable at this point during sign-up: -->
+<!-- 
+- Validate user input data and ask a user to resubmit data.
+- Block a user sign-up based on data entered by the user.
+- Perform identity verification.
+- Query external systems for existing data about the user and overwrite the user-provided value. -->
+
+### <a name="example-request-sent-to-the-api-at-this-step"></a>Příklad žádosti odeslané na rozhraní API v tomto kroku
 
 ```http
 POST <API-endpoint>
@@ -92,41 +185,52 @@ Content-type: application/json
      }
  ],
  "displayName": "John Smith",
- "postalCode": "33971",
+ "givenName":"John",
+ "surname":"Smith",
+ "jobTitle":"Supplier",
+ "streetAddress":"1000 Microsoft Way",
+ "city":"Seattle",
+ "postalCode": "12345",
+ "state":"Washington",
+ "country":"United States",
  "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
  "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
+Přesné deklarace identity odeslané na rozhraní API závisí na tom, které informace se shromažďují od uživatele nebo které poskytuje zprostředkovatel identity.
 
-Deklarace identity **Locals (' ui_locales ') uživatelského rozhraní** je ve výchozím nastavení odeslána ve všech požadavcích. Poskytuje národní prostředí uživatele a může je používat rozhraní API k vrácení mezinárodních odpovědí. Nezobrazuje se v podokně Konfigurace rozhraní API.
-
-Pokud deklarace identity pro odeslání nemá hodnotu v okamžiku volání koncového bodu rozhraní API, deklarace identity nebude odeslána do rozhraní API.
-
-Vlastní atributy lze vytvořit pro uživatele pomocí **extension_ \<extensions-app-id> _AttributeName** formátu. Rozhraní API by mělo očekávat deklarace identity v tomto stejném serializovaném formátu. Vaše rozhraní API může vracet deklarace identity s nebo bez `<extensions-app-id>` . Další informace o vlastních atributech najdete v tématu [definování vlastních atributů pro vlastní toky podepisování](user-flow-add-custom-attributes.md).
-
-> [!TIP] 
-> [**identity (identity)**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) a deklarace **e-mailové adresy (e-mail)** se dají použít k identifikaci uživatele dřív, než budou mít účet ve vašem tenantovi. Deklarace identity identity se pošle, když se uživatel ověří přes Google nebo Facebook a e-mail se vždycky pošle.
-
-## <a name="expected-response-types-from-the-web-api"></a>Očekávané typy odezvy z webového rozhraní API
+### <a name="expected-response-types-from-the-web-api-at-this-step"></a>Očekávané typy odezvy z webového rozhraní API v tomto kroku
 
 Když webové rozhraní API přijme požadavek HTTP z Azure AD během toku uživatele, může vrátit tyto odpovědi:
 
-- [Reakce na pokračování](#continuation-response)
-- [Blokování odpovědi](#blocking-response)
-- [Ověření – chybová odezva](#validation-error-response)
+- Reakce na pokračování
+- Blokování odpovědi
+- Odpověď na ověření
 
-### <a name="continuation-response"></a>Reakce na pokračování
+#### <a name="continuation-response"></a>Reakce na pokračování
 
-Reakce na pokračování indikuje, že tok uživatele by měl pokračovat k dalšímu kroku. V reakci na pokračování může rozhraní API vracet deklarace identity.
+Reakce na pokračování indikuje, že tok uživatele by měl pokračovat k dalšímu kroku: vytvoření uživatele v adresáři.
 
-Pokud rozhraní API vrátí deklaraci identity a vybere ji jako **deklaraci k přijetí**, deklarace identity provede následující akce:
+V reakci na pokračování může rozhraní API vracet deklarace identity. Pokud rozhraní API vrátí deklaraci identity, deklarace identity provede následující akce:
 
-- Předem vyplní vstupní pole na stránce kolekce atributů, pokud je konektor API vyvolán před zobrazením stránky.
-- Přepíše všechny hodnoty, které již byly přiřazeny k deklaraci.
-- Přiřadí deklaraci hodnoty, pokud byla dříve null.
+- Přepíše všechny hodnoty, které již byly přiřazeny k deklaraci na stránce kolekce atributů.
 
-#### <a name="example-of-a-continuation-response"></a>Příklad odpovědi na pokračování
+Podívejte se na příklad [reakce na pokračování](#example-of-a-continuation-response).
+
+#### <a name="blocking-response"></a>Blokování odpovědi
+Odezva na blokování ukončuje tok uživatele. Může být záměrně vydaný rozhraním API, aby se zastavilo pokračování toku uživatelů tím, že se uživateli zobrazí stránka blokování. Stránka blokování zobrazuje `userMessage` rozhraní API, které poskytuje.
+
+Podívejte se na příklad [blokující odezvy](#example-of-a-blocking-response).
+
+### <a name="validation-error-response"></a>Ověření – chybová odezva
+ Když rozhraní API odpoví odpověďmi na chybu ověřování, tok uživatele zůstane na stránce kolekce atributů a `userMessage` zobrazí se uživateli. Uživatel pak může formulář upravit a znovu odeslat. Tento typ odpovědi lze použít pro ověření vstupu.
+
+Podívejte se na příklad [odpovědi na chybu ověřování](#example-of-a-validation-error-response).
+
+## <a name="example-responses"></a>Příklady odpovědí
+
+### <a name="example-of-a-continuation-response"></a>Příklad odpovědi na pokračování
 
 ```http
 HTTP/1.1 200 OK
@@ -140,18 +244,14 @@ Content-type: application/json
 }
 ```
 
-| Parametr                                          | Typ              | Povinné | Popis                                                                                                                                                                                                                                                                            |
+| Parametr                                          | Typ              | Vyžadováno | Popis                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| verze                                            | Řetězec            | Ano      | Verze rozhraní API.                                                                                                                                                                                                                                                                |
-| akce                                             | Řetězec            | Ano      | Hodnota musí být `Continue` .                                                                                                                                                                                                                                                              |
+| verze                                            | Řetězec            | Yes      | Verze rozhraní API.                                                                                                                                                                                                                                                                |
+| akce                                             | Řetězec            | Yes      | Hodnota musí být `Continue` .                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | Ne       | Hodnoty mohou být uloženy v adresáři, pokud jsou vybrány jako **deklarace pro příjem** v konfiguraci konektoru rozhraní API a **atributy uživatele** pro tok uživatele. Hodnoty mohou být vráceny v tokenu, pokud je vybrána jako **deklarace identity aplikace**.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Ne       | Vrácená deklarace identity nemusí obsahovat `_<extensions-app-id>_` . Hodnoty se ukládají v adresáři, pokud se vybírají jako **deklarace, aby se přijímaly** v konfiguraci konektoru rozhraní API a **atributu uživatele** pro tok uživatele. Vlastní atributy se v tokenu nedají poslat zpátky. |
 
-### <a name="blocking-response"></a>Blokování odpovědi
-
-Odezva na blokování ukončuje tok uživatele. Může být záměrně vydaný rozhraním API, aby se zastavilo pokračování toku uživatelů tím, že se uživateli zobrazí stránka blokování. Stránka blokování zobrazuje `userMessage` rozhraní API, které poskytuje.
-
-Příklad odpovědi na blokování:
+### <a name="example-of-a-blocking-response"></a>Příklad blokující odpovědi
 
 ```http
 HTTP/1.1 200 OK
@@ -166,22 +266,18 @@ Content-type: application/json
 
 ```
 
-| Parametr   | Typ   | Povinné | Popis                                                                |
+| Parametr   | Typ   | Vyžadováno | Popis                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| verze     | Řetězec | Ano      | Verze rozhraní API.                                                    |
-| akce      | Řetězec | Ano      | Hodnota musí být`ShowBlockPage`                                              |
-| userMessage | Řetězec | Ano      | Zpráva, která se zobrazí uživateli.                                            |
+| verze     | Řetězec | Yes      | Verze rozhraní API.                                                    |
+| akce      | Řetězec | Yes      | Hodnota musí být`ShowBlockPage`                                              |
+| userMessage | Řetězec | Yes      | Zpráva, která se zobrazí uživateli.                                            |
 | kód        | Řetězec | Ne       | Kód chyby Lze použít pro účely ladění. Nezobrazuje se uživateli. |
 
-#### <a name="end-user-experience-with-a-blocking-response"></a>Činnost koncového uživatele s blokující odezvou
+**Činnost koncového uživatele s blokující odezvou**
 
 ![Příklad stránky bloku](./media/api-connectors-overview/blocking-page-response.png)
 
-### <a name="validation-error-response"></a>Ověření – chybová odezva
-
-Volání rozhraní API volané po stránce kolekce atributů může vracet odpověď na chybu ověřování. V takovém případě tok uživatele zůstane na stránce kolekce atributů a `userMessage` zobrazí se uživateli. Uživatel pak může formulář upravit a znovu odeslat. Tento typ odpovědi lze použít pro ověření vstupu.
-
-#### <a name="example-of-a-validation-error-response"></a>Příklad ověřování – odpověď na chybu
+### <a name="example-of-a-validation-error-response"></a>Příklad ověřování – odpověď na chybu
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -196,20 +292,20 @@ Content-type: application/json
 }
 ```
 
-| Parametr   | Typ    | Povinné | Popis                                                                |
+| Parametr   | Typ    | Vyžadováno | Popis                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| verze     | Řetězec  | Ano      | Verze rozhraní API.                                                    |
-| akce      | Řetězec  | Ano      | Hodnota musí být `ValidationError` .                                           |
-| status      | Integer | Ano      | `400`Pro odpověď ValidationError musí být hodnota.                        |
-| userMessage | Řetězec  | Ano      | Zpráva, která se zobrazí uživateli.                                            |
+| verze     | Řetězec  | Yes      | Verze rozhraní API.                                                    |
+| akce      | Řetězec  | Yes      | Hodnota musí být `ValidationError` .                                           |
+| status      | Integer | Yes      | `400`Pro odpověď ValidationError musí být hodnota.                        |
+| userMessage | Řetězec  | Yes      | Zpráva, která se zobrazí uživateli.                                            |
 | kód        | Řetězec  | Ne       | Kód chyby Lze použít pro účely ladění. Nezobrazuje se uživateli. |
 
-#### <a name="end-user-experience-with-a-validation-error-response"></a>Činnost koncového uživatele při ověřování – chybová odezva
+**Činnost koncového uživatele při ověřování – chybová odezva**
 
 ![Stránka příklad ověření](./media/api-connectors-overview/validation-error-postal-code.png)
 
-### <a name="integration-with-azure-functions"></a>Integrace s Azure Functions
-Trigger HTTP můžete v Azure Functions použít jako jednoduchý způsob, jak vytvořit rozhraní API pro použití s konektorem rozhraní API. Službu Azure Functions můžete použít [například](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)k provedení logiky ověřování a omezení podpisů na konkrétní domény. Můžete také volat a volat další webová rozhraní API, uživatelská úložiště a další cloudové služby.
+## <a name="using-azure-functions"></a>Použití Azure Functions
+Trigger HTTP můžete v Azure Functions použít jako jednoduchý způsob, jak vytvořit koncový bod rozhraní API pro použití s konektorem rozhraní API. Službu Azure Functions můžete použít [například](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)k provedení logiky ověřování a omezení podpisů na konkrétní domény. V rozsáhlých scénářích můžete také volat a vyvolat další webová rozhraní API, uživatelská úložiště a další cloudové služby z funkce Azure Functions.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 38bd83f8bd713f2d5bda658e052c919dd3d7625d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40
+ms.openlocfilehash: acdc23c664f84882916b91b8f8698ee36b1e6cd3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119704"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165545"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Volání rozhraní Microsoft Graph API z aplikace Univerzální platforma Windows (XAML)
 
@@ -42,7 +42,7 @@ Tato příručka vytvoří ukázkovou aplikaci UWP, která se dotazuje na rozhra
 
 Tato příručka používá následující balíček NuGet:
 
-|Knihovna|Popis|
+|Knihovna|Description|
 |---|---|
 |[Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Identity a ověřování Microsoftu|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Klientská knihovna Microsoft Graph|
@@ -459,7 +459,7 @@ Na obrazovce **výsledky volání rozhraní API** se zobrazí informace o profil
 
 Zobrazí se také základní informace o tokenu získaném prostřednictvím `AcquireTokenInteractive` nebo `AcquireTokenSilent` v poli **informace o tokenu** :
 
-|Vlastnost  |Formát  |Popis |
+|Vlastnost  |Formát  |Description |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |Uživatelské jméno, které uživatele identifikuje.|
 |`Token Expires` |`DateTime` |Čas vypršení platnosti tokenu Knihovna Microsoft Authentication Library rozšiřuje datum vypršení platnosti tím, že podle potřeby token obnovuje.|

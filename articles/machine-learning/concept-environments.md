@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: 828c8a33315f5a76eea780705e2cdf3c2871bd14
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc4c39cf26f3ab8d1037222f967789bfbeca05ba
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012803"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166769"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Co jsou Azure Machine Learning prostředí?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -94,7 +94,7 @@ Aby bylo možné určit, zda znovu použít bitovou kopii v mezipaměti nebo vyt
  * Seznam balíčků Pythonu v definici conda
  * Seznam balíčků v definici Sparku 
 
-Hodnota hash není závislá na názvu prostředí nebo verzi – Pokud přejmenujete prostředí nebo vytvoříte nové prostředí s přesnou vlastností a balíčky existující instance, hodnota hash zůstane stejná. Změny definice prostředí, jako je například přidání nebo odebrání balíčku Pythonu nebo změna verze balíčku, způsobují změnu hodnoty hash. Je důležité si uvědomit, že jakákoli změna v takovém prostředí způsobí, že hodnota hash neověřuje a výsledkem je nové "nespravované" prostředí.
+Hodnota hash není závislá na názvu prostředí nebo verzi – Pokud přejmenujete prostředí nebo vytvoříte nové prostředí s přesnou vlastností a balíčky existující instance, hodnota hash zůstane stejná. Změny definice prostředí, jako je například přidání nebo odebrání balíčku Pythonu nebo změna verze balíčku, způsobují změnu hodnoty hash. Změna pořadí závislostí nebo kanálů v prostředí bude mít za následek nové prostředí, takže bude vyžadovat nové sestavení image. Je důležité si uvědomit, že jakákoli změna v takovém prostředí způsobí, že hodnota hash neověřuje a výsledkem je nové "nespravované" prostředí.
 
 Vypočítaná hodnota hash je porovnána s hodnotami v pracovním prostoru a globálním ACR (nebo v cíli výpočetní služby pro místní spuštění). Pokud se shoduje, pak je načtena bitová kopie uložená v mezipaměti, jinak se spustí sestavení obrázku. Doba, po kterou má být vypsána bitová kopie uložená v mezipaměti, zahrnuje dobu stahování, zatímco doba vyžádat si nově vytvořenou bitovou kopii zahrnuje i čas sestavení i dobu stahování. 
 
@@ -105,7 +105,7 @@ Následující diagram znázorňuje tři definice prostředí. Dva z nich mají 
 >[!IMPORTANT]
 > Pokud vytvoříte prostředí s nepřipojenou závislostí balíčku, například ```numpy``` Toto prostředí bude používat verzi balíčku nainstalovanou _v době vytváření prostředí_. I jakékoli budoucí prostředí s vyhovující definicí bude dál používat starou verzi. 
 
-Chcete-li aktualizovat balíček, zadejte číslo verze pro vynucení opětovného sestavení bitové kopie, například ```numpy==1.18.1``` . Budou nainstalovány nové závislosti, včetně vnořených, které mohou přerušit předchozí pracovní scénář.
+Chcete-li aktualizovat balíček, zadejte číslo verze pro vynucení opětovného sestavení bitové kopie, například ```numpy==1.18.1``` . Budou nainstalovány nové závislosti, včetně vnořených, které mohou přerušit předchozí pracovní scénář. 
 
 > [!WARNING]
 >  Metoda [prostředí. Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace--image-build-compute-none-) znovu sestaví bitovou kopii v mezipaměti s případným vedlejším účinkem aktualizace nepřipnutých balíčků a zásadní reprodukovatelnosti pro všechny definice prostředí odpovídající tomuto obrázku v mezipaměti.

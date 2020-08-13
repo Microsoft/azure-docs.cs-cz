@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 77cc63945e5cfc612c074e75e38365ada26073ea
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4b1c2ea437168d00823bc5527eaeda33db6ae733
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032777"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166735"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Vytvoření nabídky kontejneru Azure v Azure Marketplace
 
@@ -50,7 +50,7 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a o tom, jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Tato stránka zobrazuje různé odkazy na základě aktuálního stavu nabídky. Příklad:
+Tato stránka zobrazuje různé odkazy na základě aktuálního stavu nabídky. Například:
 
 - Pokud je nabídka nabídkou konceptu a [odstranění konceptu](update-existing-offer.md#delete-a-draft-offer)
 - Pokud je nabídka živá, [přestanou prodávat nabídku](update-existing-offer.md#stop-selling-an-offer-or-plan) .
@@ -133,7 +133,7 @@ Tato stránka umožňuje definovat podrobnosti nabídky, které se zobrazí na k
 > [!NOTE]
 > Podrobnosti nabídky nejsou v anglickém jazyce nutné, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Také je v pořádku poskytnutí užitečného odkazu na nabídku obsahu v jazyce, který se liší od toho, který se používá v podrobnostech seznamu nabídky.
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -151,7 +151,7 @@ Krátký popis vaší nabídky Může to být až 100 znaků dlouhé a použív�
 
 Podrobnější popis vaší nabídky. Může to být až 256 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -252,9 +252,11 @@ Přidejte aspoň jedno ID předplatného Azure, a to buď samostatně (až 10), 
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
-### <a name="plan-overview"></a>Přehled plánu
+## <a name="plan-overview"></a>Přehled plánu
 
 Tato karta vám umožní v rámci stejné nabídky zadat různé možnosti plánu. Plány (dříve nazývané SKU) se mohou lišit v souvislosti s dostupnými cloudy, jako jsou globální cloudy, cloudy státní správy a bitová kopie, na kterou plán odkazuje. Pokud chcete zobrazit seznam nabídek na komerčním webu Marketplace, musíte nastavit aspoň jeden plán.
+
+Pro každou nabídku můžete vytvořit až 100 plánů: až 45 z nich může být privátní. Další informace o privátních plánech najdete v [části soukromé nabídky na komerčním webu Microsoft Marketplace](../private-offers.md).
 
 Po vytvoření plánů se zobrazí karta **Přehled plánu** :
 
@@ -269,7 +271,7 @@ Akce, které jsou k dispozici v přehledu plánu, se liší v závislosti na akt
 - **Odstranit koncept** – Pokud je stav plánu koncept.
 - **Zastavit prodejní plán** – Pokud je stav plánu publikovaný živě
 
-#### <a name="create-new-plan"></a>Vytvořit nový plán
+### <a name="create-new-plan"></a>Vytvořit nový plán
 
 Vyberte **vytvořit nový plán**. Zobrazí se dialogové okno **Nový plán** .
 
@@ -301,7 +303,7 @@ Služba Azure Government Services zpracovává data, která se vztahují na urč
 
 Pokud chcete zobrazit certifikáty pro tyto programy, můžete poskytnout až 100 odkazů, které je popisují. Můžou to být odkazy na vaše výpisy v programu přímo nebo na váš vlastní web. Tyto odkazy jsou viditelné pouze pro Azure Government zákazníky.
 
-## <a name="plan-listing"></a>Výpis plánu
+### <a name="plan-listing"></a>Výpis plánu
 
 Tato karta zobrazuje konkrétní informace pro každý jiný plán v rámci aktuální nabídky.
 
@@ -331,7 +333,7 @@ Podrobnosti o plánu Azure Portal:
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Ukazuje informace o plánu Azure Portal.":::
 
-## <a name="plan-availability"></a>Dostupnost plánu
+### <a name="plan-availability"></a>Dostupnost plánu
 
 Pokud chcete publikovat publikovanou nabídku, aby ji zákazníci nemohli vyhledat, procházet nebo koupit na webu Marketplace, zaškrtněte políčko **Skrýt plán** na kartě **dostupnost** .
 

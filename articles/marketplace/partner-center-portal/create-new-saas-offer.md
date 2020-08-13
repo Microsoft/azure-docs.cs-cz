@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 7fbb50308f14acbcec98c562fe72763341538df2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 6140d369c2dbc0968d2f28ff6b8cf447dd721d10
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031026"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166718"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>Vytvoření nabídky SaaS na komerčním webu Marketplace
 
@@ -133,8 +133,8 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 5. Podmínky použití
 6. Zásady ochrany osobních údajů
 7. Název nabídky
-8. Souhrn
-9. Popis
+8. Shrnutí
+9. Description
 10. Snímky obrazovky a videa
 11. Dokumenty
 
@@ -257,7 +257,7 @@ Zadejte podrobnosti, které se mají zobrazit na webu Marketplace, včetně popi
 - **Hledaná klíčová slova** – zadejte až tři klíčová slova pro hledání, která můžou zákazníci použít k vyhledání vaší nabídky na webu Marketplace.
 - Úvodní **pokyny** (povinné) – Vysvětlete, jak nakonfigurovat a začít používat vaši aplikaci pro potenciální zákazníky.  Tento rychlý Start může obsahovat odkazy na podrobnější online dokumentaci. Do tohoto pole lze zadat až 3 000 znaků textu.
 
-#### <a name="description"></a>Popis
+#### <a name="description"></a>Description
 
 Toto pole je vyžadováno.
 
@@ -351,6 +351,8 @@ Než budete pokračovat, vyberte **Uložit koncept** .
 ## <a name="plan-overview"></a>Přehled plánu
 
 Tato stránka vám umožní v rámci stejné nabídky poskytnout nejrůznější možnosti plánu. Tyto plány (někdy označované jako SKU) se mohou lišit v souvislosti s verzemi, finanční zhodnocení a úrovněmi služby. Aby bylo možné nabídku prodávat na webu Marketplace, musíte nastavit aspoň jeden plán.
+
+Pro každou nabídku můžete vytvořit až 100 plánů: až 45 z nich může být privátní. Další informace o privátních plánech najdete v [části soukromé nabídky na komerčním webu Microsoft Marketplace](../private-offers.md).
 
 Po vytvoření se zobrazí vaše názvy plánů, ID, cenové modely, dostupnost (veřejné nebo soukromé), aktuální stav publikování a všechny dostupné akce.
 

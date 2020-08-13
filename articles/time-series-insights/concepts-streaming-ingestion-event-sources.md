@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 9ef87027bcda6c645d1239598c849f57fb0c8992
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/12/2020
+ms.openlocfilehash: 6524128cb5bccfefe37d605b406210a91e78cac8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491965"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163964"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights zdroje událostí Gen2
 
@@ -33,34 +33,34 @@ Po připojení zdroje událostí vaše prostředí Azure Time Series Insights Ge
 
 > [!IMPORTANT]
 >
-> * Při připojování zdroje událostí k prostředí Azure Time Series Insights Gen2 může docházet k vysoké počáteční latenci.
-> Latence zdroje událostí závisí na počtu událostí, které jsou aktuálně ve IoT Hub nebo v centru událostí.
-> * Po prvním ingestování zdrojových dat událostí se tato vysoká latence bude nacházet. Pokud se setkáte s probíhající vysokou latencí, odešlete lístek podpory prostřednictvím Azure Portal.
+> - Při připojování zdroje událostí k prostředí Azure Time Series Insights Gen2 může docházet k vysoké počáteční latenci.
+> - Latence zdroje událostí závisí na počtu událostí, které jsou aktuálně ve IoT Hub nebo v centru událostí.
+> - Po prvním ingestování zdrojových dat událostí se tato vysoká latence bude nacházet. Pokud se setkáte s probíhající vysokou latencí, odešlete lístek podpory prostřednictvím Azure Portal.
 
 ## <a name="streaming-ingestion-best-practices"></a>Osvědčené postupy příjmu streamování
 
-* Vždy vytvořte jedinečnou skupinu uživatelů pro prostředí Azure Time Series Insights Gen2, abyste mohli využívat data ze zdroje událostí. Opětovné použití skupin uživatelů může způsobit náhodné odpojení a může dojít ke ztrátě dat.
+- Vždy vytvořte jedinečnou skupinu uživatelů pro prostředí Azure Time Series Insights Gen2, abyste mohli využívat data ze zdroje událostí. Opětovné použití skupin uživatelů může způsobit náhodné odpojení a může dojít ke ztrátě dat.
 
-* Nakonfigurujte prostředí Azure Time Series Insights Gen2 a IoT Hub a/nebo Event Hubs ve stejné oblasti Azure. I když je možné nakonfigurovat zdroje událostí v samostatné oblasti, tento scénář se nepodporuje a nemůžeme zaručit vysokou dostupnost.
+- Nakonfigurujte prostředí Azure Time Series Insights Gen2 a IoT Hub a/nebo Event Hubs ve stejné oblasti Azure. I když je možné nakonfigurovat zdroj událostí v samostatné oblasti, tento scénář se nepodporuje a nemůžeme zaručit vysokou dostupnost.
 
-* Nepřekračuje [limit četnosti propustnosti](./concepts-streaming-ingress-throughput-limits.md) vašeho prostředí ani limit počtu na oddíly.
+- Nepřekračuje [limit četnosti propustnosti](./concepts-streaming-ingress-throughput-limits.md) vašeho prostředí ani limit počtu na oddíly.
 
-* Nakonfigurujte [Upozornění](https://review.docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency?branch=pr-en-us-117938#monitor-latency-and-throttling-with-alerts) na prodlevu, které bude informovat, pokud vaše prostředí má problémy zpracovávající data.
+- Nakonfigurujte [Upozornění](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts) na prodlevu, které bude informovat, pokud vaše prostředí má problémy zpracovávající data.
 
-* Ingestování streamování se dá použít jenom pro téměř v reálném čase i pro poslední data. data streamovaná v historických datech se nepodporují.
+- Ingestování streamování se dá použít jenom pro téměř v reálném čase i pro poslední data. data streamovaná v historických datech se nepodporují.
 
-* Pochopte, jak budou vlastnosti uvozeny řídicími znaky a data JSON se [sloučí a uloží.](./concepts-json-flattening-escaping-rules.md)
+- Pochopte, jak budou vlastnosti uvozeny řídicími znaky a data JSON se [sloučí a uloží.](./concepts-json-flattening-escaping-rules.md)
 
-* Při poskytování připojovacích řetězců zdrojové události postupujte podle principu minimálního oprávnění. V případě Event Hubs nakonfigurujte zásady sdíleného přístupu pouze s deklarací *Odeslat* a pro IoT Hub použijte pouze oprávnění *k připojení služby* .
+- Při poskytování připojovacích řetězců zdrojové události postupujte podle principu minimálního oprávnění. V případě Event Hubs nakonfigurujte zásady sdíleného přístupu pouze s deklarací *Odeslat* a pro IoT Hub použijte pouze oprávnění *k připojení služby* .
 
 ### <a name="historical-data-ingestion"></a>Ingestování historických dat
 
 Použití kanálu streamování k importu historických dat se v současnosti v Azure Time Series Insights Gen2 nepodporuje. Pokud potřebujete importovat minulá data do svého prostředí, postupujte podle následujících pokynů:
 
-* Nepoužívejte paralelní streamování živých a historických dat. Ingestování dat z pořadí bude mít za následek snížení výkonu dotazů.
-* Ingestovat historická data v časově uspořádaném čase pro dosažení nejlepšího výkonu.
-* Zajistěte si omezení rychlosti propustnosti příjmu níže.
-* Pokud jsou data starší než doba uchovávání teplého obchodu, zakažte úložiště.
+- Nepoužívejte paralelní streamování živých a historických dat. Ingestování dat z pořadí bude mít za následek snížení výkonu dotazů.
+- Ingestovat historická data v časově uspořádaném čase pro dosažení nejlepšího výkonu.
+- Zajistěte si omezení rychlosti propustnosti příjmu níže.
+- Pokud jsou data starší než doba uchovávání teplého obchodu, zakažte úložiště.
 
 ## <a name="event-source-timestamp"></a>Časové razítko zdroje události
 
@@ -82,10 +82,6 @@ Posun časového pásma by měl být naformátovaný jako jeden z následující
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si [pravidla pro sloučení a uvozovací znaky JSON](./concepts-json-flattening-escaping-rules.md) , abyste pochopili, jak budou události uložené. 
+- Přečtěte si [pravidla pro sloučení a uvozovací znaky JSON](./concepts-json-flattening-escaping-rules.md) , abyste pochopili, jak budou události uložené.
 
-* Princip [omezení propustnosti](./concepts-streaming-ingress-throughput-limits.md) vašeho prostředí
-
-
-
-
+- Princip [omezení propustnosti](./concepts-streaming-ingress-throughput-limits.md) vašeho prostředí

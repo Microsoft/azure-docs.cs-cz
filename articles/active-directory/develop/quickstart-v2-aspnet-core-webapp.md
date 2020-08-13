@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 6902e69ecfd0738a74e6d492b8ed4d2b2d525eaf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
+ms.openlocfilehash: 1bc8a9c06b564282af15d6a6aa53b6fc696857b2
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026879"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165766"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý Start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 V tomto rychlém startu se naučíte, jak může webová aplikace ASP.NET Core přihlašovat osobní účty (hotmail.com, outlook.com, ostatní) a pracovní a školní účty z jakékoli instance Azure Active Directory (Azure AD). (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
@@ -145,7 +145,7 @@ Metoda `AddAuthentication` nakonfiguruje službu tak, aby přidala ověřování
 
 Řádek, který obsahuje `.AddAzureAd` , přidá do vaší aplikace ověřování Microsoft Identity Platform. Pak se nakonfiguruje tak, aby se přihlásilo pomocí koncového bodu Microsoft Identity Platform.
 
-> |Kde | Popis |
+> |Kde | Description |
 > |---------|---------|
 > | ClientId  | ID aplikace (klienta) z aplikace zaregistrované v Azure Portal. |
 > | Autorita | Koncový bod služby STS pro uživatele, který se má ověřit Obvykle je to <https://login.microsoftonline.com/{tenant}/v2.0> pro veřejný cloud, kde {tenant} je název vašeho tenanta nebo ID tenanta nebo *společný* odkaz na společný koncový bod (používaný pro víceklientské aplikace). |

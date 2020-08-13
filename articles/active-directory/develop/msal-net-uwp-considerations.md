@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 502bbe65cdc0aef768ff4f017b1f6a920815b001
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: f716af1d50eb8a24d8ab70f784cba31f65795cb7
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118854"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165902"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>Důvody pro použití Univerzální platforma Windows s MSAL.NET
 Vývojáři aplikací, které používají Univerzální platforma Windows (UWP) se MSAL.NET, by měly zvážit koncepty tohoto článku.
@@ -42,7 +42,7 @@ Základní implementace WAB na platformě UWP nefunguje správně v podnikových
 
 Tomuto problému se můžete vyhnout tak, že použijete alternativní metodu, jako je uživatelské jméno – heslo a telefonní ověřování, ale prostředí není dobré.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Někteří zákazníci oznámili následující chybu při přihlašování v konkrétních podnikových prostředích, ve kterých ví, že mají připojení k Internetu a že připojení funguje s veřejnou sítí.
 
@@ -61,7 +61,7 @@ Další informace najdete v tématu [zprostředkovatel webového ověřování �
 ## <a name="next-steps"></a>Další kroky
 Následující ukázky poskytují další informace.
 
-Ukázka | Platforma | Popis 
+Ukázka | Platforma | Description 
 |------ | -------- | -----------|
 |[Active-Directory-dotnet-Native-UWP-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UPW | Klientská aplikace UWP, která používá MSAL.NET. Přistupuje k Microsoft Graph pro uživatele, který se ověřuje pomocí koncového bodu Azure AD 2,0. <br>![Topologie](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[Active-Directory-Xamarin-Native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Jednoduchá aplikace Xamarin Forms, která ukazuje, jak používat MSAL k ověřování osobních účtů Microsoft a Azure AD prostřednictvím koncového bodu Azure AD 2,0. Také ukazuje, jak získat přístup k Microsoft Graph a zobrazuje výsledný token. <br>![Topologie](media/msal-net-uwp-considerations/topology-xamarin-native.png)|
