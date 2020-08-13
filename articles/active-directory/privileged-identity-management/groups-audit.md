@@ -14,12 +14,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9bbc90776ca007b84d5f67c50f8550ee9c881c7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 94dd5c2579eb7ce96dea70c6354df8ec84125bd9
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506040"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141665"
 ---
 # <a name="audit-activity-history-for-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>Historie auditu aktivity pro přiřazení privilegovaných skupin přístupu (Preview) v Privileged Identity Management
 
@@ -36,7 +36,9 @@ Pomocí těchto kroků zobrazíte historii auditu pro privilegovaný přístup s
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
-1. Vyberte **privilegovaný přístup (Preview)**.
+1. Vyberte **skupiny Privileged Access groups (Preview)**.
+
+1. Vyberte skupinu privilegovaný přístup, pro kterou chcete zobrazit historii auditu.
 
 1. V části **aktivita**vyberte **audit prostředků**.
 
@@ -46,15 +48,15 @@ Pomocí těchto kroků zobrazíte historii auditu pro privilegovaný přístup s
 
 ## <a name="view-my-audit"></a>Zobrazit můj audit
 
-Můj audit umožňuje zobrazit aktivitu osobní role.
+**Můj audit** umožňuje zobrazit aktivitu osobní role pro privilegovaný přístupovou skupinu.
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
-1. Vyberte **privilegovaný přístup (Preview)**.
+1. Vyberte **skupiny Privileged Access groups (Preview)**.
 
-1. Vyberte člena nebo skupinu, pro kterou chcete zobrazit historii auditu.
+1. Vyberte skupinu privilegovaný přístup, pro kterou chcete zobrazit historii auditu.
 
-1. Vyberte **Moje audit**.
+1. V části **aktivita**vyberte **Moje audit**.
 
 1. Filtruje historii s použitím předdefinovaného data nebo vlastního rozsahu.
 

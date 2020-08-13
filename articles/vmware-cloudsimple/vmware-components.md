@@ -1,7 +1,7 @@
 ---
 title: Komponenty VMware privátního cloudu
 titleSuffix: Azure VMware Solution by CloudSimple
-description: Popisuje, jak jsou komponenty VMware nainstalovány v privátním cloudu.
+description: Přečtěte si, jak služba CloudSimple umožňuje nasadit VMware nativně v umístěních Azure. Privátní cloudy jsou integrované se zbytkem cloudu Azure.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/15/2019
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff9aec1904be754990958869666e9d67038e4fb3
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702818"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142498"
 ---
 # <a name="private-cloud-vmware-components"></a>Komponenty VMware privátního cloudu
 

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 1ba8977272817d41334ccf0d9ad01d4d751bfb17
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 1dc9521555f2eb158209b494e43fd815e6bab6e8
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041693"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141189"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -80,7 +80,7 @@ Viz [ceny Azure firewall](https://azure.microsoft.com/pricing/details/azure-fire
 
 Můžete použít metody *navrácení* a *přidělení* Azure PowerShell.
 
-Příklad:
+Například:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -95,8 +95,8 @@ Set-AzFirewall -AzureFirewall $azfw
 
 $azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
-$publicip = Get-AzPublicIpAddress -Name "Public IP Name" -ResourceGroupName " RG Name"
-$azfw.Allocate($vnet,$publicip)
+$publicip = Get-AzPublicIpAddress -Name "Public IP Name" -ResourceGroupName "RG Name"
+$azfw.Allocate($vnet, $publicip)
 Set-AzFirewall -AzureFirewall $azfw
 ```
 
@@ -121,7 +121,7 @@ Azure Firewall nesnat, pokud je cílová IP adresa rozsahem privátních IP adre
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Je podporováno vynucené tunelové propojení/řetězení k síťovému virtuálnímu zařízení?
 
-Při vytváření nové brány firewall se podporuje vynucené tunelování. Pro vynucené tunelování nemůžete nakonfigurovat existující bránu firewall. Další informace najdete v tématu [Azure firewall vynucené tunelování](forced-tunneling.md). 
+Při vytváření nové brány firewall se podporuje vynucené tunelování. Pro vynucené tunelování nemůžete nakonfigurovat existující bránu firewall. Další informace najdete v tématu [Azure firewall vynucené tunelování](forced-tunneling.md).
 
 Služba Azure Firewall musí mít přímé připojení k internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte tuto hodnotu přepsat hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro udržování přímého připojení k Internetu.
 
@@ -194,7 +194,7 @@ $fw.ThreatIntelWhitelist = New-AzFirewallThreatIntelWhitelist `
 ## Or Update FQDNs and IpAddresses separately
 
 $fw = Get-AzFirewall -Name $firewallname -ResourceGroupName $RG
-$fw.ThreatIntelWhitelist.IpAddresses = @($fw.ThreatIntelWhitelist.IpAddresses + $ipaddresses )
+$fw.ThreatIntelWhitelist.IpAddresses = @($fw.ThreatIntelWhitelist.IpAddresses + $ipaddresses)
 $fw.ThreatIntelWhitelist.fqdns = @($fw.ThreatIntelWhitelist.fqdns + $fqdns)
 
 

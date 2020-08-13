@@ -1,6 +1,6 @@
 ---
 title: Node.js aplikace s využitím Socket.io – Azure
-description: Naučte se používat socket.io v aplikaci node.js hostované v Azure.
+description: Pomocí tohoto kurzu se naučíte hostovat soket. Vstupně-výstupní aplikace v Azure na bázi Socket.IO poskytuje komunikaci v reálném čase pro node.js Server a klienty.
 services: cloud-services
 documentationcenter: nodejs
 author: tgore03
@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8029c243052114b9a0932e5372301be84440cf85
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f3c19e77739ac8dbc503e51408b9b7830a8b5aa5
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386582"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142464"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Vytvoření aplikace Node.js chatu pomocí Socket.IO v cloudové službě Azure
 
@@ -139,7 +139,7 @@ Po uložení změn do **server.js**pomocí následujících kroků nainstalujte 
     PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
     ```
 
-5. Pokud chcete nasadit aplikaci do Azure, použijte rutinu **Publish-AzureServiceProject** . Příklad:
+5. Pokud chcete nasadit aplikaci do Azure, použijte rutinu **Publish-AzureServiceProject** . Například:
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch

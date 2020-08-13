@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 10/14/2019
-ms.custom: mvc
+ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: dabceb3cc3b7fa2b48ad1b21dfcafb3278c2461d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b23bed8163ffed6a610eda7677099989e966a646
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298754"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163811"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Kurz: povolení ověřování ve webové aplikaci pomocí Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Vytvořte toky uživatelů](tutorial-create-user-flows.md) a povolte ve své aplikaci uživatelské prostředí.
 * Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohou **vývoje ASP.NET a webu** .
@@ -42,11 +42,11 @@ V kurzu, který jste dokončili v rámci požadavků, jste zaregistrovali webovo
 
 ### <a name="add-a-redirect-uri-reply-url"></a>Přidat identifikátor URI přesměrování (adresa URL odpovědi)
 
-Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
+Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**, vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *WebApp1* .
@@ -56,7 +56,7 @@ Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete vy
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace (starší verze)** a pak vyberte aplikaci *WebApp1* .
@@ -85,16 +85,16 @@ Následující dva projekty jsou v ukázkovém řešení:
 * **TaskWebApp** – vytvoření a úprava seznamu úkolů Ukázka používá k registraci a přihlašování uživatelů tok uživatelů **registrace nebo přihlašování** .
 * **TaskService** – podporuje funkce vytvoření, čtení, aktualizace a odstranění seznamu úkolů. Rozhraní API je chráněno pomocí Azure AD B2C a volá ho TaskWebApp.
 
-Tuto ukázku změníte tak, aby používala aplikaci, která je zaregistrovaná ve vašem tenantovi, což zahrnuje ID aplikace a klíč, který jste předtím nahráli. Také nakonfigurujete toky uživatelů, které jste vytvořili. Ukázka definuje konfigurační hodnoty jako nastavení v souboru *Web. config* .
+Tuto ukázku změníte tak, aby používala aplikaci, která je zaregistrovaná ve vašem tenantovi, což zahrnuje ID aplikace a klíč, který jste předtím nahráli. Také nakonfigurujete toky uživatelů, které jste vytvořili. Ukázka definuje konfigurační hodnoty jako nastavení v souboru *Web.config* .
 
-Aktualizujte nastavení v souboru Web. config tak, aby fungovala s vaším uživatelským tokem:
+Aktualizujte nastavení v souboru Web.config pro práci s vaším uživatelským tokem:
 
 1. Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
-1. V projektu **TaskWebApp** otevřete soubor **Web. config** .
+1. V projektu **TaskWebApp** otevřete soubor **Web.config** .
     1. Aktualizujte hodnotu `ida:Tenant` a `ida:AadInstance` s názvem klienta Azure AD B2C, který jste vytvořili. Například Nahraďte parametr `fabrikamb2c` `contoso` .
     1. Nahraďte hodnotu `ida:TenantId` ID adresáře, kterou najdete ve vlastnostech vašeho tenanta Azure B2C (v Azure Portal v části **Azure Active Directory**  >  **vlastnosti**  >  **ID adresáře**).
     1. Nahraďte hodnotu hodnotou `ida:ClientId` ID aplikace, kterou jste si poznamenali.
-    1. Nahraďte hodnotu `ida:ClientSecret` klíčem, který jste si poznamenali. Pokud tajný klíč klienta obsahuje předdefinované entity XML, například menší než ( `<` ), větší než () `>` , ampersand ( `&` ) nebo dvojité uvozovky ( `"` ), musíte tyto znaky před přidáním do souboru Web. config zakódovat pomocí kódu XML.
+    1. Nahraďte hodnotu `ida:ClientSecret` klíčem, který jste si poznamenali. Pokud tajný klíč klienta obsahuje předdefinované entity XML, například menší než ( `<` ), větší než () `>` , ampersand ( `&` ) nebo dvojité uvozovky ( `"` ), je nutné tyto znaky před přidáním do Web.config zakódovat pomocí kódu XML – kódování tajného klíče klienta.
     1. Hodnotu nahraďte hodnotou `ida:SignUpSignInPolicyId` `b2c_1_signupsignin1` .
     1. Hodnotu nahraďte hodnotou `ida:EditProfilePolicyId` `b2c_1_profileediting1` .
     1. Hodnotu nahraďte hodnotou `ida:ResetPasswordPolicyId` `b2c_1_passwordreset1` .

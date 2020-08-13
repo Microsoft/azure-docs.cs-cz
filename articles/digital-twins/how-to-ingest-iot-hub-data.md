@@ -2,273 +2,246 @@
 title: Ingestování telemetrie z IoT Hubu
 titleSuffix: Azure Digital Twins
 description: Podívejte se, jak ingestovat zprávy telemetrie zařízení z IoT Hub.
-author: cschormann
-ms.author: cschorm
-ms.date: 3/17/2020
+author: alexkarcher-msft
+ms.author: alkarche
+ms.date: 8/11/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7c73f007f85a963a09de4e05222082fd52f784c0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 5209ffb0328e90fb2ca9b91773cbf18dd4ed2916
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131561"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163599"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Ingestování IoT Hub telemetrie do digitálních vláken Azure
 
 Digitální vlákna Azure se řídí daty ze zařízení IoT a dalších zdrojů. Běžný zdroj dat zařízení, která se mají používat v rámci digitálních vláken Azure, je [IoT Hub](../iot-hub/about-iot-hub.md).
 
-Během období Preview je proces pro ingestování dat do digitálních vláken Azure nastavený na externí výpočetní prostředek, jako je třeba [funkce Azure](../azure-functions/functions-overview.md), která přijímá data a používá [rozhraní API DigitalTwins](how-to-use-apis-sdks.md) k nastavení vlastností nebo událostí telemetrie na [digitální vlákna](concepts-twins-graph.md) . 
+Proces pro ingestování dat do digitálních vláken Azure je nastavení externího výpočetního prostředku, jako je třeba [funkce Azure](../azure-functions/functions-overview.md), která obdrží data a pomocí [rozhraní DigitalTwins API](how-to-use-apis-sdks.md) nastavují vlastnosti nebo události telemetrie pro [digitální vlákna](concepts-twins-graph.md) . 
 
 Tento postup popisuje, jak dokumentovat pomocí procesu vytváření funkce Azure, která může ingestovat telemetrii od IoT Hub.
-
-## <a name="example-telemetry-scenario"></a>Ukázkový scénář telemetrie
-
-Tento postup popisuje, jak odesílat zprávy z IoT Hub do digitálních vláken Azure pomocí funkce Azure Functions. Existuje mnoho možných konfigurací a vyhovujících strategií, které můžete použít, ale příklad tohoto článku obsahuje následující části:
-* Zařízení teploměr v IoT Hub se známým ID zařízení.
-* Digitální vlákna představující zařízení s ID odpovídajícího
-* Digitální dvojitá reprezentace místnosti
-
-> [!NOTE]
-> V tomto příkladu se používá jednoznačné ID mezi ID zařízení a odpovídajícím ID digitálního vlákna, ale je možné poskytnout propracovanější mapování ze zařízení na jeho dvojitou hodnotu (například s tabulkou mapování).
-
-Pokaždé, když zařízení teploměru posílá událost telemetrie teploty, musí se aktualizovat vlastnost *teploty* vlákna v *místnosti* . Pokud to chcete udělat, namapujete z události telemetrie na zařízení na vlastnost setter u digitálního vlákna. Pomocí informací o topologii v [grafu s dvojitou](concepts-twins-graph.md) polohou vyhledáte dvojitou *místnost* a pak můžete nastavit vlastnost vlákna. V jiných scénářích může uživatel chtít nastavit vlastnost na párovém vlákna (v tomto příkladu je to dvojitě s ID *123*). Digitální vlákna Azure vám dává značnou flexibilitu při rozhodování o tom, jak se data telemetrie mapují na vlákna. 
-
-Tento scénář je popsaný v diagramu níže:
-
-:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Zařízení IoT Hub odesílá do funkce Azure funkci telemetrii teploty prostřednictvím IoT Hub, Event Grid nebo systémových témat, což aktualizuje vlastnost teploty u vláken v digitálních událostech Azure." border="false":::
 
 ## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat v tomto příkladu, musíte splnit následující požadavky.
-1. Vytvořte centrum IoT. Pokyny najdete v části *vytvoření IoT Hub* v [tomto IoT Hub rychlém](../iot-hub/quickstart-send-telemetry-cli.md) startu.
-2. Vytvořte alespoň jednu funkci Azure pro zpracování událostí z IoT Hub. Přečtěte si téma [*Postupy: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md) a vytvoření základní funkce Azure, která se může připojit k digitálním podprocesům Azure a volat funkce rozhraní API digitálních vláken Azure. Zbytek tohoto postupu bude sestaven na této funkci.
-3. Nastavte cíl události pro data centra. V [Azure Portal](https://portal.azure.com/)přejděte k instanci IoT Hub. V části *události*Vytvořte předplatné pro funkci Azure Functions. 
+* **Centrum IoT**. Pokyny najdete v části *vytvoření IoT Hub* v [tomto IoT Hub rychlém](../iot-hub/quickstart-send-telemetry-cli.md) startu.
+* **Funkce Azure** se správnými oprávněními pro volání vaší digitální zdvojené instance. Pokyny najdete v tématu [*Postup: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md) . 
+* **Instance digitálního vlákna** , která bude přijímat telemetrii zařízení. Viz [ *Postup: nastavení instance a ověřování digitálních vláken Azure*](./how-to-set-up-instance-portal.md) 
 
-    :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Azure Portal: přidání odběru události":::
+### <a name="example-telemetry-scenario"></a>Ukázkový scénář telemetrie
 
-4. Na stránce *vytvořit odběr události* vyplňte pole následujícím způsobem:
-   * V části *Podrobnosti odběru události*pojmenujte předplatné tak, co byste chtěli.
-   * V části *typy událostí*vyberte *telemetrie zařízení* jako typ události, která se má filtrovat.
-      - Přidejte filtry k ostatním typům událostí, pokud chcete.
-   * V části *Podrobnosti o koncovém bodu*vyberte Azure Function jako koncový bod.
+Tento postup popisuje, jak odesílat zprávy z IoT Hub do digitálních vláken Azure pomocí funkce Azure Functions. Existuje mnoho možných konfigurací a vyhovujících strategií, které můžete použít, ale příklad tohoto článku obsahuje následující části:
+* Zařízení teploměr v IoT Hub se známým ID zařízení.
+* Digitální vlákna představující zařízení s ID odpovídajícího
 
-## <a name="create-an-azure-function-in-visual-studio"></a>Vytvoření funkce Azure v aplikaci Visual Studio
+> [!NOTE]
+> V tomto příkladu se používá jednoznačné ID mezi ID zařízení a odpovídajícím ID digitálního vlákna, ale je možné poskytnout propracovanější mapování ze zařízení na jeho dvojitou hodnotu (například s tabulkou mapování).
+
+Pokaždé, když zařízení teploměr odešle událost telemetrie teploty, vlastnost *teplota* digitálního vlákna by se měla aktualizovat. Tento scénář je popsaný v diagramu níže:
+
+:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Diagram znázorňující vývojový diagram V grafu IoT Hub zařízení odesílá telemetrii teploty prostřednictvím IoT Hub do funkce Azure, která aktualizuje vlastnost teploty u vlákna v digitálních událostech Azure." border="false":::
+
+## <a name="add-a-model-and-twin"></a>Přidání modelu a vlákna
+
+K aktualizaci informací o službě IoT Hub budete potřebovat dvojitou hodnotu.
+
+Model vypadá takto:
+```JSON
+{
+  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",
+  "@type": "Interface",
+  "@context": "dtmi:dtdl:context;2",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "Temperature",
+      "schema": "double"
+    }
+  ]
+}
+```
+
+Pokud chcete **Tento model nahrát do instance vláken**, otevřete Azure CLI a spusťte následující příkaz:
+```azurecli-interactive
+az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
+```
+
+Pak budete muset **vytvořit jeden z těchto vláken pomocí tohoto modelu**. Pomocí následujícího příkazu vytvořte dvojitou hodnotu a nastavte 0,0 jako počáteční hodnotu teploty.
+```azurecli-interactive
+az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
+```
+
+Výstup úspěšného zdvojeného příkazu CREATE by měl vypadat takto:
+```json
+{
+  "$dtId": "thermostat67",
+  "$etag": "W/\"0000000-9735-4f41-98d5-90d68e673e15\"",
+  "$metadata": {
+    "$model": "dtmi:contosocom:DigitalTwins:Thermostat;1",
+    "Temperature": {
+      "ackCode": 200,
+      "ackDescription": "Auto-Sync",
+      "ackVersion": 1,
+      "desiredValue": 0.0,
+      "desiredVersion": 1
+    }
+  },
+  "Temperature": 0.0
+}
+```
+
+## <a name="create-an-azure-function"></a>Vytvořit funkci Azure
 
 V této části se používají stejné kroky při spuštění sady Visual Studio a Osnova funkcí Azure Functions v tématu [*Postupy: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md). Kostra zpracovává ověřování a vytváří klienta služby, který je připravený na zpracování dat a volání rozhraní API digitálních vláken Azure v reakci. 
 
-Jádrem funkce kostra je:
-
-```csharp
-namespace FunctionSample
-{
-    public static class FooFunction
-    {
-        const string adtAppId = "https://digitaltwins.azure.net";
-        private static string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
-        private static HttpClient httpClient = new HttpClient();
-
-        [FunctionName("Foo")]
-        public static async Task Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
-        {
-            DigitalTwinsClient client = null;
-            try
-            {
-                ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-                DigitalTwinsClientOptions opts = 
-                    new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-                client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
-                                                
-                log.LogInformation($"ADT service client connection created.");
-            }
-            catch (Exception e)
-            {
-                log.LogError($"ADT service client connection failed. " + e.ToString());
-                return;
-            }
-            log.LogInformation(eventGridEvent.Data.ToString());
-        }
-    }
-}
-```
-
 V následujících krocích přidáte konkrétní kód pro zpracování událostí telemetrie IoT z IoT Hub.  
 
-## <a name="add-telemetry-processing"></a>Přidat zpracování telemetrie
-
+### <a name="add-telemetry-processing"></a>Přidat zpracování telemetrie
+    
 Události telemetrie přicházejí do formy zpráv ze zařízení. Prvním krokem při přidávání kódu pro zpracování telemetrie je extrakce příslušné části této zprávy zařízení z události Event Grid. 
 
-Různá zařízení mohou strukturovat své zprávy různě, takže kód pro tento krok závisí na připojeném zařízení. 
+Různá zařízení mohou strukturovat své zprávy různě, takže kód pro **Tento krok závisí na připojeném zařízení.** 
 
-Následující kód ukazuje příklad jednoduchého zařízení, které odesílá telemetrii jako JSON. Ukázka extrahuje ID zařízení, které zprávu odeslalo, a také hodnotu teploty.
+Následující kód ukazuje příklad jednoduchého zařízení, které odesílá telemetrii jako JSON. Tato ukázka je plně proprozkoumána v [*kurzu: připojení kompletního řešení*](./tutorial-end-to-end.md). Následující kód vyhledá ID zařízení, které zprávu odeslalo, a také hodnotu teploty.
 
 ```csharp
-JObject job = eventGridEvent.Data as JObject;
-string devid = (string)job["systemProperties"].ToObject<JObject>().Property("IoT-hub-connection-device-ID").Value;
-double temp = (double)job["body"].ToObject<JObject>().Property("temperature").Value;
+JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
+string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
+var temperature = deviceMessage["body"]["Temperature"];
 ```
 
-Pokud je účelem tohoto cvičení, je potřeba aktualizovat teplotu *místnosti* v grafu s dvojitou přesností. To znamená, že náš cíl zprávy není digitální, který je spojený s tímto zařízením, ale *místnost* vlákna, která je jeho nadřazenou. Nadřazené vlákna můžete najít pomocí hodnoty ID zařízení, kterou jste extrahovali ze zprávy telemetrie pomocí výše uvedeného kódu.
-
-Pokud to chcete provést, použijte rozhraní API pro digitální vlákna Azure pro přístup k příchozím relacím na zařízení, které představuje zdvojené (v tomto případě má stejné ID jako zařízení). Z příchozího vztahu můžete najít ID nadřazeného prvku s následujícím fragmentem kódu.
-
-Následující fragment kódu ukazuje, jak načíst příchozí relace vlákna:
+Další ukázka kódu vezme ID a teplotu a použije je k opravě (provedení aktualizací), které jsou vytvářené.
 
 ```csharp
-AsyncPageable<IncomingRelationship> res = client.GetIncomingRelationshipsAsync(twin_id);
-await foreach (IncomingRelationship irel in res)
-{
-    Log.Ok($"Relationship: {irel.RelationshipName} from {irel.SourceId} | {irel.RelationshipId}");
-}
-```
-
-Nadřazená položka vlákna je ve vlastnosti *SourceId* vztahu.
-
-Je poměrně běžné pro model vláken, který představuje zařízení, aby měl jenom jeden příchozí vztah. V takovém případě můžete vybrat první (a pouze) vrácenou relaci. Pokud vaše modely umožňují více typů vztahů k tomuto typu vlákna, možná budete muset zadat další pro výběr z více příchozích vztahů. Běžným způsobem, jak to provést, je vybrat relaci podle `RelationshipName` . 
-
-Jakmile budete mít ID nadřazeného vlákna představujícího *místnost*, můžete "opravit" (provést aktualizace), které jsou vytvářené. K tomu použijte následující kód:
-
-```csharp
-UpdateOperationsUtility uou = new UpdateOperationsUtility();
-uou.AppendAddOp("/Temperature", temp);
-try
-{
-    await client.UpdateDigitalTwinAsync(twin_id, uou.Serialize());
-    Log.Ok($"Twin '{twin_id}' updated successfully!");
-}
+//Update twin using device temperature
+var uou = new UpdateOperationsUtility();
+uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
+await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
 ...
 ```
 
-### <a name="full-azure-function-code"></a>Úplný kód funkce Azure
+### <a name="update-your-azure-function-code"></a>Aktualizace kódu funkce Azure
 
-Pomocí kódu z předchozích ukázek je zde celá funkce Azure v kontextu:
+Teď, když rozumíte kódu ze starších ukázek, otevřete Visual Studio a nahraďte kód vaší funkce Azure pomocí tohoto ukázkového kódu.
 
 ```csharp
-[FunctionName("ProcessHubToDTEvents")]
-public async void Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
+using System;
+using System.Net.Http;
+using Azure.Core.Pipeline;
+using Azure.DigitalTwins.Core;
+using Azure.DigitalTwins.Core.Serialization;
+using Azure.Identity;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace IotHubtoTwins
 {
-    // After this is deployed, in order for this function to be authorized on Azure Digital Twins APIs,
-    // you'll need to turn the Managed Identity Status to "On", 
-    // grab the Object ID of the function, and assign the "Azure Digital Twins Owner (Preview)" role to this function identity.
+    public class IoTHubtoTwins
+    {
+        private static readonly string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
+        private static readonly HttpClient httpClient = new HttpClient();
 
-    DigitalTwinsClient client = null;
-    //log.LogInformation(eventGridEvent.Data.ToString());
-    // Authenticate on Azure Digital Twins APIs
-    try
-    {
-        
-        ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-        client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-        log.LogInformation($"ADT service client connection created.");
-    }
-    catch (Exception e)
-    {
-        log.LogError($"ADT service client connection failed. " + e.ToString());
-        return;
-    }
-
-    if (client != null)
-    {
-        try
+        [FunctionName("IoTHubtoTwins")]
+        public async void Run([EventGridTrigger] EventGridEvent eventGridEvent, ILogger log)
         {
-            if (eventGridEvent != null && eventGridEvent.Data != null)
+            if (adtInstanceUrl == null) log.LogError("Application setting \"ADT_SERVICE_URL\" not set");
+
+            try
             {
-                #region Open this region for message format information
-                // Telemetry message format
-                //{
-                //  "properties": { },
-                //  "systemProperties": 
-                // {
-                //    "iothub-connection-device-id": "thermostat1",
-                //    "iothub-connection-auth-method": "{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-                //    "iothub-connection-auth-generation-id": "637199981642612179",
-                //    "iothub-enqueuedtime": "2020-03-18T18:35:08.269Z",
-                //    "iothub-message-source": "Telemetry"
-                //  },
-                //  "body": "eyJUZW1wZXJhdHVyZSI6NzAuOTI3MjM0MDg3MTA1NDg5fQ=="
-                //}
-                #endregion
-
-                // Reading deviceId from message headers
-                log.LogInformation(eventGridEvent.Data.ToString());
-                JObject job = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-                string deviceId = (string)job["systemProperties"]["iothub-connection-device-id"];
-                log.LogInformation($"Found device: {deviceId}");
-
-                // Extracting temperature from device telemetry
-                byte[] body = System.Convert.FromBase64String(job["body"].ToString());
-                var value = System.Text.ASCIIEncoding.ASCII.GetString(body);
-                var bodyProperty = (JObject)JsonConvert.DeserializeObject(value);
-                var temperature = bodyProperty["Temperature"];
-                log.LogInformation($"Device Temperature is:{temperature}");
-
-                // Update device Temperature property
-                await AdtUtilities.UpdateTwinProperty(client, deviceId, "/Temperature", temperature, log);
-
-                // Find parent using incoming relationships
-                string parentId = await AdtUtilities.FindParent(client, deviceId, "contains", log);
-                if (parentId != null)
+                //Authenticate with Digital Twins
+                ManagedIdentityCredential cred = new ManagedIdentityCredential("https://digitaltwins.azure.net");
+                DigitalTwinsClient client = new DigitalTwinsClient(
+                    new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions 
+                    { Transport = new HttpClientTransport(httpClient) });
+                log.LogInformation($"ADT service client connection created.");
+            
+                if (eventGridEvent != null && eventGridEvent.Data != null)
                 {
-                    await AdtUtilities.UpdateTwinProperty(client, parentId, "/Temperature", temperature, log);
-                }
+                    log.LogInformation(eventGridEvent.Data.ToString());
 
+                    // Reading deviceId and temperature for IoT Hub JSON
+                    JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
+                    string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
+                    var temperature = deviceMessage["body"]["Temperature"];
+                    
+                    log.LogInformation($"Device:{deviceId} Temperature is:{temperature}");
+
+                    //Update twin using device temperature
+                    var uou = new UpdateOperationsUtility();
+                    uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
+                    await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
+                }
+            }
+            catch (Exception e)
+            {
+                log.LogError($"Error in ingest function: {e.Message}");
             }
         }
-        catch (Exception e)
-        {
-            log.LogError($"Error in ingest function: {e.Message}");
-        }
     }
 }
 ```
 
-Funkce nástroje pro vyhledání příchozích vztahů:
-```csharp
-public static async Task<string> FindParent(DigitalTwinsClient client, string child, string relname, ILogger log)
+## <a name="connect-your-function-to-iot-hub"></a>Připojte funkci k IoT Hub
+
+1. Nastavte cíl události pro data centra. V [Azure Portal](https://portal.azure.com/)přejděte k instanci IoT Hub. V části **události**Vytvořte předplatné pro funkci Azure Functions. 
+
+    :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Snímek obrazovky Azure Portal, který ukazuje přidání odběru události":::
+
+2. Na stránce **vytvořit odběr události** vyplňte pole následujícím způsobem:
+    1. V části **název**zadejte název předplatného, co byste chtěli.
+    2. V části **schéma události**vyberte **Event Grid schéma**.
+    3. V části **Název systémového tématu**vyberte jedinečný název.
+    4. V části **typy událostí**vyberte **telemetrie zařízení** jako typ události, na který se má filtrovat.
+    5. V části **Podrobnosti o koncovém bodu**vyberte Azure Function jako koncový bod.
+
+    :::image type="content" source="media/how-to-ingest-iot-hub-data/event-subscription-2.png" alt-text="Snímek obrazovky Azure Portal zobrazující podrobnosti odběru události":::
+
+## <a name="send-simulated-iot-data"></a>Odeslat Simulovaná data IoT
+
+Pokud chcete otestovat novou funkci příchozího přenosu dat, použijte simulátor zařízení z [*kurzu: připojení kompletního řešení*](./tutorial-end-to-end.md). Tento kurz se řídí ukázkovým projektem napsaným v jazyce C#. Vzorový kód je umístěný tady: [ukázky digitálních vláken Azure](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples). V tomto úložišti budete používat projekt **DeviceSimulator** .
+
+V tomto koncovém kurzu proveďte následující kroky:
+1. [*Zaregistrujte simulované zařízení s IoT Hub*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
+2. [*Konfigurace a spuštění simulace*](./tutorial-end-to-end.md#configure-and-run-the-simulation)
+
+## <a name="validate-your-results"></a>Ověřit výsledky
+
+Při současném spuštění simulátoru zařízení se změní hodnota teplota digitálního vlákna. V Azure CLI spuštěním následujícího příkazu zobrazte hodnotu teploty.
+
+```azurecli-interactive
+az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name}
+```
+
+Výstup by měl obsahovat hodnotu teploty, například:
+
+```json
 {
-    // Find parent using incoming relationships
-    try
+  "result": [
     {
-        AsyncPageable<IncomingRelationship> rels = client.GetIncomingRelationshipsAsync(child);
-
-        await foreach (IncomingRelationship ie in rels)
-        {
-            if (ie.RelationshipName == relname)
-                return (ie.SourceId);
+      "$dtId": "thermostat67",
+      "$etag": "W/\"0000000-1e83-4f7f-b448-524371f64691\"",
+      "$metadata": {
+        "$model": "dtmi:contosocom:DigitalTwins:Thermostat;1",
+        "Temperature": {
+          "ackCode": 200,
+          "ackDescription": "Auto-Sync",
+          "ackVersion": 1,
+          "desiredValue": 69.75806974934324,
+          "desiredVersion": 1
         }
+      },
+      "Temperature": 69.75806974934324
     }
-    catch (RequestFailedException exc)
-    {
-        log.LogInformation($"*** Error in retrieving parent:{exc.Status}:{exc.Message}");
-    }
-    return null;
+  ]
 }
 ```
 
-A funkce Utility pro opravu vlákna:
-```csharp
-public static async Task UpdateTwinProperty(DigitalTwinsClient client, string twinId, string propertyPath, object value, ILogger log)
-{
-    // If the twin does not exist, this will log an error
-    try
-    {
-        // Update twin property
-        UpdateOperationsUtility uou = new UpdateOperationsUtility();
-        uou.AppendAddOp(propertyPath, value);
-        await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
-    }
-    catch (RequestFailedException exc)
-    {
-        log.LogInformation($"*** Error:{exc.Status}/{exc.Message}");
-    }
-}
-```
-
-Teď máte funkci Azure, která je vybavená ke čtení a interpretaci dat scénáře přicházejících z IoT Hub.
-
-## <a name="debug-azure-function-apps-locally"></a>Místní ladění aplikací funkcí Azure Functions
-
-Službu Azure Functions je možné ladit pomocí Event Grid triggeru místně. Další informace najdete v tématu [*ladění Event Grid triggeru místně*](../azure-functions/functions-debug-event-grid-trigger-local.md).
+Chcete-li zobrazit změnu hodnoty, opakovaně spusťte příkaz dotazu výše.
 
 ## <a name="next-steps"></a>Další kroky
 

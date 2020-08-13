@@ -1,20 +1,23 @@
 ---
 title: Monitorování delegovaných prostředků ve velkém měřítku
 description: Naučte se efektivně používat Azure Monitor protokoly škálovatelným způsobem napříč klienty zákazníka, které spravujete.
-ms.date: 07/15/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 5cace0396c5a1f430ce10ba29ee051b5e432c125
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: fdd0147737da47613d6b7ef1bf6005e4c03de0dd
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448943"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163284"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Monitorování delegovaných prostředků ve velkém měřítku
 
 Jako poskytovatel služeb můžete mít k [Azure Lighthouse](../overview.md)k dispozici několik klientů pro zákazníky. Azure Lighthouse umožňuje poskytovatelům služeb provádět operace ve velkém měřítku napříč několika klienty najednou, což usnadňuje úlohy správy.
 
 V tomto tématu se dozvíte, jak používat [Azure monitor protokoly](../../azure-monitor/platform/data-platform-logs.md) škálovatelným způsobem napříč klienty zákazníka, které spravujete.
+
+> [!TIP]
+> I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, tyto doprovodné materiály se vztahují také na [podniky, které používají Azure Lighthouse ke správě více tenantů](../concepts/enterprise.md).
 
 ## <a name="create-log-analytics-workspaces"></a>Vytváření Log Analyticsch pracovních prostorů
 

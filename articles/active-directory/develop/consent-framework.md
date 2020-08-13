@@ -13,12 +13,12 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: fe321de279397d24e0926cf1ef26a1d66adac8c4
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 75d848c8d4459e5534e2954a11612bdf44f6d1ce
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117307"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141546"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Architektura Azure AD pro udělování souhlasu
 
@@ -28,7 +28,7 @@ Rozhraní je založené na uživateli nebo správci, kteří přistupují k apli
 
 Rozhraní pro vyjádření souhlasu je postavené na OAuth 2,0 a jeho různých tocích, jako je udělení autorizačního kódu a udělení přihlašovacích údajů klienta, pomocí veřejných nebo důvěrných klientů. Díky použití OAuth 2,0 může Azure AD vytvořit mnoho různých typů klientských aplikací – například na telefonu, tabletu, serveru nebo webové aplikaci – a získat přístup k požadovaným prostředkům.
 
-Další informace o používání souhlasu architektury s autorizačními stipendii OAuth 2.0 najdete v tématu [autorizace přístupu k webovým aplikacím pomocí OAuth 2,0 a Azure AD](v2-oauth2-auth-code-flow.md) a [scénářů ověřování pro Azure AD](./authentication-vs-authorization.md). Informace o tom, jak pomocí Microsoft Graph získat autorizovaný přístup k Office 365, najdete v tématu [ověřování aplikací pomocí Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
+Další informace o používání souhlasu architektury s autorizačními stipendii OAuth 2.0 najdete v tématu [autorizace přístupu k webovým aplikacím pomocí OAuth 2,0 a Azure AD](v2-oauth2-auth-code-flow.md) a [scénářů ověřování pro Azure AD](./authentication-vs-authorization.md). Informace o tom, jak pomocí Microsoft Graph získat autorizovaný přístup k Office 365, najdete v tématu [ověřování aplikací pomocí Microsoft Graph](/graph/).
 
 ## <a name="consent-experience---an-example"></a>Prostředí pro vyjádření souhlasu – příklad
 

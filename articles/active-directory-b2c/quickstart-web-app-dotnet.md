@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: devx-track-csharp, mvc
 ms.date: 09/12/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 197155650bf7b8d113f96dbcfd6d9e2b58924b7f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 379ea9a0c2a49e92fa1c4882ea6e783b3b91e32f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187198"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163913"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Rychlý Start: nastavení přihlášení pro aplikaci ASP.NET pomocí Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje cloudovou správu identit, k
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohou **vývoje ASP.NET a webu** .
 - Účet sociální sítě z Facebooku, Google nebo Microsoftu.
@@ -44,7 +44,7 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje cloudovou správu identit, k
 1. V sadě Visual Studio otevřete řešení **B2C-WebAPI-DotNet.sln** ze složky projektu ukázkové aplikace.
 2. Pro účely tohoto rychlého startu spustíte oba projekty **TaskWebApp** a **TaskService** najednou. V Průzkumníku řešení klikněte pravým tlačítkem na řešení **B2C-WebAPI-DotNet** a vyberte **Nastavit projekty po spuštění**.
 3. Vyberte **Více projektů po spuštění** a u obou projektů změňte **akci** na **Spuštění**.
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
 5. Stisknutím klávesy **F5** spusťte ladění obou aplikací. Obě aplikace se otevřou na samostatné kartě prohlížeče:
 
     - `https://localhost:44316/` – Webová aplikace ASP.NET. V tomto rychlém startu pracujete přímo s touto aplikací.

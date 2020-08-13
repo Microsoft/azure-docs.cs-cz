@@ -8,14 +8,14 @@ ms.author: shresha
 manager: dpalled
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/23/2020
+ms.date: 08/12/2020
 ms.custom: shresha
-ms.openlocfilehash: a74a5e2b8e80121324dc8b880d90f493d5b2ddfd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 784c19844c658af6850c755244314145223c45ef
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423945"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163947"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Migrace na nové verze rozhraní API Azure Time Series Insights Gen2
 
@@ -23,7 +23,7 @@ ms.locfileid: "87423945"
 
 Pokud jste vytvořili prostředí Azure Time Series Insights Gen2, pokud bylo v Public Preview (před 16. července 2020), aktualizujte prosím prostředí TSI, aby používalo nové všeobecně dostupné verze rozhraní API, a to podle postupu popsaného v tomto článku.
 
-Nová verze rozhraní API je `2020-07-31` a používá aktualizovanou [syntaxi výrazu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
+Nová verze rozhraní API je `2020-07-31` a používá aktualizovanou [syntaxi výrazu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 Uživatelé musí migrovat [proměnné modelu časové řady](./concepts-variables.md)svého prostředí, uložené dotazy, Power BI dotazy a libovolné vlastní nástroje, které volají koncové body rozhraní API. Pokud máte nějaké dotazy nebo obavy týkající se procesu migrace, odešlete lístek podpory prostřednictvím Azure Portal a zmiňujte si tento dokument.
 
@@ -81,7 +81,7 @@ Pokud vaše vlastní aplikace provádí volání následujících koncových bod
 
 - Rozhraní API modelu časové řady
   - Rozhraní API pro nastavení modelu
-    - [Získat](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
+    - [Čtěte](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
     - [Aktualizace](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
   - Rozhraní API instancí
     - [Všechny operace Batch](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
@@ -95,7 +95,7 @@ Pokud vaše vlastní aplikace provádí volání následujících koncových bod
     - [Odstranit, získat operace](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
     - [Seznam](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list)
 
-V následujících koncových bodech REST musíte aktualizovat verzi rozhraní API na identifikátor URI a zajistěte, aby `2020-07-31` všechny výskyty `tsx` vlastnosti používaly aktualizovanou [syntaxi výrazu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
+V následujících koncových bodech REST musíte aktualizovat verzi rozhraní API na identifikátor URI a zajistěte, aby `2020-07-31` všechny výskyty `tsx` vlastnosti používaly aktualizovanou [syntaxi výrazu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 - Rozhraní API typů
   - [Operace Put](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
@@ -355,7 +355,7 @@ Alternativně `value` může být také `coalesce($event['Temp'].Double, toDoubl
 
 #### <a name="invalidinput"></a>InvalidInput
 
-Pokud se zobrazí následující chyba, použijete novou verzi rozhraní API (), `2020-07-31` ale neaktualizovala se syntaxe TSX. Podívejte se prosím na [syntaxi výrazu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) a výše uvedené příklady migrace. Před opětovným `tsx` odesláním žádosti rozhraní API se ujistěte, že jsou všechny vlastnosti správně aktualizované.
+Pokud se zobrazí následující chyba, použijete novou verzi rozhraní API (), `2020-07-31` ale neaktualizovala se syntaxe TSX. Podívejte se prosím na [syntaxi výrazu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) a výše uvedené příklady migrace. Před opětovným `tsx` odesláním žádosti rozhraní API se ujistěte, že jsou všechny vlastnosti správně aktualizované.
 
 ```JSON
 {

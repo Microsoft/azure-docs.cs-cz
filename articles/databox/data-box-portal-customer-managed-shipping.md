@@ -2,24 +2,24 @@
 title: Microsoft Azure Data Boxi samostatně spravovaného přenosu | Microsoft Docs v datech
 description: Popisuje pracovní postup pro expedici spravovaný pro Azure Data Box zařízení.
 services: databox
-author: priestlg
+author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 05/20/2020
-ms.author: v-grpr
-ms.openlocfilehash: 99c7021744467484656c52cf72378c6f553c3913
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.author: alkohli
+ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608583"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142532"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Použití samoobslužného expedice pro Azure Data Box v Azure Portal
 
 Tento článek popisuje samostatné spravované úkoly, které je možné objednat, vybrat a vyřadit z Azure Data Boxho zařízení. Zařízení Data Box můžete spravovat pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Samostatně spravovaná dodávka je k dispozici jako možnost při [objednání Azure Data box](data-box-deploy-ordered.md). Samostatně spravovaná dodávka je k dispozici pouze v následujících oblastech:
 
@@ -28,18 +28,20 @@ Samostatně spravovaná dodávka je k dispozici jako možnost při [objednání 
 * Japonsko
 * Singapur
 * Jižní Korea
+* Indie
+* Jižní Afrika
 
 ## <a name="use-self-managed-shipping"></a>Použití samoobslužné expedice
 
 Když umístíte Data Box pořadí, můžete vybrat možnost samostatně spravovaná dodávka.
 
 1. V pořadí Azure Data Box v části **kontaktní údaje**vyberte **+ Přidat dodací adresu**.
-   ![Samostatně spravovaná dodávka](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+   ![Expedice řízená svépomocí](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. Když zvolíte typ přenosu, vyberte možnost **expedice samostatně spravovaná** . Tato možnost je k dispozici pouze v případě, že jste v podporované oblasti, jak je popsáno v části požadavky.
 
 3. Po zadání dodací adresy ji budete muset ověřit a dokončit objednávku.
-   ![Samostatně spravovaná dodávka](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Expedice řízená svépomocí](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Po přípravě zařízení a obdržení e-mailových oznámení můžete naplánovat vyzvednutí.
 

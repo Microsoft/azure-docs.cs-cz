@@ -1,17 +1,17 @@
 ---
-title: Kurz – obnovení disku virtuálního počítače pomocí Azure Backup
+title: Kurz – obnovení virtuálního počítače pomocí Azure CLI
 description: Zjistěte, jak obnovit disk a vytvořit obnovený virtuální počítač v Azure pomocí služeb Backup a Recovery Services.
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: efad97c3668c50669be89e6eccaadb26cb313e81
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 56ea3de451e625ef5c55f92daa1b86bd34b1c4c4
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289476"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141342"
 ---
-# <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Obnovení disku a vytvoření obnoveného virtuálního počítače v Azure
+# <a name="restore-a-vm-with-azure-cli"></a>Obnovení virtuálního počítače pomocí Azure CLI
 
 Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo jednotlivé soubory. Tento článek vysvětluje postup obnovení celého virtuálního počítače pomocí rozhraní příkazového řádku. Co se v tomto kurzu naučíte:
 
@@ -25,15 +25,15 @@ Informace o obnovení disku a vytvoření chráněného počítače pomocí Powe
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.18 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.18 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz vyžaduje virtuální počítač s Linuxem chráněný službou Azure Backup. Pro simulaci náhodného odstranění virtuálního počítače a procesu obnovení vytvoříte virtuální počítač z disku v bodu obnovení. Pokud potřebujete virtuální počítač s Linuxem chráněný pomocí služby Azure Backup, přečtěte si téma [Zálohování virtuálního počítače v Azure pomocí rozhraní příkazového řádku](quick-backup-vm-cli.md).
 
 ## <a name="backup-overview"></a>Přehled služby Backup
 
-Když Azure zahájí zálohování, rozšíření zálohování na virtuálním počítači pořídí snímek v daném okamžiku. Rozšíření zálohování se na virtuální počítač nainstaluje při vyžádání prvního zálohování. Azure Backup může pořídit také snímek základního úložiště, pokud virtuální počítač není při zálohování spuštěný.
+Když Azure zahájí zálohování, rozšíření zálohování na virtuálním počítači pořídí snímek v daném okamžiku. Rozšíření zálohování se na virtuální počítač nainstaluje při vyžádání prvního zálohování. Azure Backup může také pořídit snímek základního úložiště, pokud virtuální počítač neběží, když dojde k zálohování.
 
 Ve výchozím nastavení provede Azure Backup zálohování konzistentní vzhledem k systému souborů. Jakmile Azure Backup pořídí snímek, data se přenesou do trezoru služby Recovery Services. Pro maximalizaci efektivity Azure Backup identifikuje a přenese pouze bloky dat, které se změnily od posledního zálohování.
 
@@ -105,7 +105,7 @@ Tato akce obnoví spravované disky jako nespravované disky do daného účtu �
 
 ### <a name="unmanaged-disks-restore"></a>Obnovení nespravovaných disků
 
-Pokud zálohovaný virtuální počítač obsahuje nespravované disky a záměr obnovovat disky z bodu obnovení, nejprve zadáte účet úložiště Azure. Tento účet úložiště se používá k uložení konfigurace virtuálního počítače a šablony nasazení, které se dají později použít k nasazení virtuálního počítače z obnovených disků. Ve výchozím nastavení se nespravované disky obnoví do původních účtů úložiště. Pokud si uživatel přeje obnovit na jednom místě všechny nespravované disky, pak se daný účet úložiště dá také použít jako pracovní umístění pro tyto disky.
+Pokud má zálohovaný virtuální počítač nespravované disky a záměr obnovovat disky z bodu obnovení, nejprve zadáte účet úložiště Azure. Tento účet úložiště se používá k uložení konfigurace virtuálního počítače a šablony nasazení, které se dají později použít k nasazení virtuálního počítače z obnovených disků. Ve výchozím nastavení se nespravované disky obnoví do původních účtů úložiště. Pokud si uživatel přeje obnovit na jednom místě všechny nespravované disky, pak se daný účet úložiště dá také použít jako pracovní umístění pro tyto disky.
 
 V dalších krocích se obnovený disk použije k vytvoření virtuálního počítače.
 
@@ -181,7 +181,7 @@ az backup job show \
     -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414
 ```
 
-Výstup tohoto dotazu poskytne všechny podrobnosti, ale zajímá se jenom o obsah účtu úložiště. K načtení relevantních podrobností můžeme použít [Možnosti dotazů](/cli/azure/query-azure-cli?view=azure-cli-latest) rozhraní příkazového řádku Azure CLI.
+Výstup tohoto dotazu poskytne všechny podrobnosti, ale zajímá Vás jenom s obsahem účtu úložiště. K načtení relevantních podrobností můžeme použít [Možnosti dotazů](/cli/azure/query-azure-cli?view=azure-cli-latest) rozhraní příkazového řádku Azure CLI.
 
 ```azurecli-interactive
 az backup job show \
@@ -204,7 +204,7 @@ az backup job show \
 
 ### <a name="fetch-the-deployment-template"></a>Načtení šablony nasazení
 
-Šablona není přímo dostupná, protože se nachází v účtu úložiště zákazníka a v daném kontejneru. Pro přístup k této šabloně potřebujeme úplnou adresu URL (spolu s dočasným tokenem SAS).
+Šablona není přímo přístupná, protože je pod účtem úložiště zákazníka a zadaným kontejnerem. Pro přístup k této šabloně potřebujeme úplnou adresu URL (spolu s dočasným tokenem SAS).
 
 Nejdřív z podrobností úlohy rozbalte identifikátor URI objektu BLOB šablony.
 

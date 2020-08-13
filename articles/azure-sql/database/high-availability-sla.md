@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-ms.date: 04/02/2020
-ms.openlocfilehash: ab3d0a4b33bd2e424141adc9f6b8739380c2947b
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.date: 08/12/2020
+ms.openlocfilehash: 33521a5aed38cacbc7ce87b4a2a917ade866e378
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542004"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142430"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Vysoká dostupnost pro Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -101,9 +101,9 @@ Převzetí služeb při selhání se dá iniciovat pomocí PowerShellu, REST API
 
 |Typ nasazení|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
-|Databáze|[Invoke – AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Převzetí služeb při selhání databáze](/rest/api/sql/databases(failover)/failover/)|[AZ REST](https://docs.microsoft.com/cli/azure/reference-index#az-rest) se dá použít k vyvolání volání REST API z Azure CLI.|
+|Database|[Invoke – AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Převzetí služeb při selhání databáze](/rest/api/sql/databases(failover)/failover/)|[AZ REST](https://docs.microsoft.com/cli/azure/reference-index#az-rest) se dá použít k vyvolání volání REST API z Azure CLI.|
 |Elastický fond|[Invoke – AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Převzetí služeb při selhání elastického fondu](/rest/api/sql/elasticpools(failover)/failover/)|[AZ REST](https://docs.microsoft.com/cli/azure/reference-index#az-rest) se dá použít k vyvolání volání REST API z Azure CLI.|
-|MI|[Invoke – AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Spravované instance – převzetí služeb při selhání](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[AZ SQL mi Failover převzetí služeb při selhání](/cli/azure/sql/mi/#az-sql-mi-failover)|
+|MI|[Invoke – AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Spravované instance – převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover)|[AZ SQL mi Failover převzetí služeb při selhání](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
 > [!IMPORTANT]
 > Příkaz pro převzetí služeb při selhání není k dispozici pro čitelné sekundární repliky databází v rámci škálování.

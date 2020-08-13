@@ -4,16 +4,16 @@ description: Monitorujte svou webovou aplikaci v reálném čase s vlastními me
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 4b84088c1213801e61a4c669bccb1a983c999310
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c12126c23ce1f1e2bd72f88eead5b8f34e4fd83d
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321934"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142209"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: monitorování & diagnostiky s 1 sekundou latencí
 
-Monitorujte svou živou webovou aplikaci v produkčním prostředí pomocí Live Metrics Stream z [Application Insights](./app-insights-overview.md). Vyberte a filtrujte metriky a čítače výkonu pro sledování v reálném čase bez nutnosti zásahu do služby. Zkontrolujte trasování zásobníku z ukázkových neúspěšných žádostí a výjimek. Společně s [ladicím programem](./snapshot-debugger.md) [profileru](./profiler.md) a snímků Live Metrics Stream poskytuje výkonný a nenáročný diagnostický nástroj pro váš živý Web.
+Monitorujte svou živou webovou aplikaci v produkčním prostředí pomocí Live Metrics Stream (označuje se také jako QuickPulse) z [Application Insights](./app-insights-overview.md). Vyberte a filtrujte metriky a čítače výkonu pro sledování v reálném čase bez nutnosti zásahu do služby. Zkontrolujte trasování zásobníku z ukázkových neúspěšných žádostí a výjimek. Společně s [ladicím programem](./snapshot-debugger.md) [profileru](./profiler.md) a snímků Live Metrics Stream poskytuje výkonný a nenáročný diagnostický nástroj pro váš živý Web.
 
 Pomocí Live Metrics Stream můžete:
 
@@ -31,19 +31,81 @@ Pro aplikace ASP.NET, ASP.NET Core, Azure Functions, Java a Node.js se aktuáln�
 
 ## <a name="get-started"></a>Začínáme
 
-1. [Nainstalujte Application Insights](../azure-monitor-app-hub.yml) do své aplikace.
-2. K povolení živého streamu metrik se vyžaduje kromě standardních Application Insights balíčků [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) .
-3. **Aktualizujte na nejnovější verzi** balíčku Application Insights. V aplikaci Visual Studio klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**. Otevřete kartu **aktualizace** a vyberte všechny balíčky Microsoft. ApplicationInsights. *.
+1. Pokud chcete povolit živé metriky, postupujte podle pokynů pro konkrétní jazyk.
+   * [ASP.NET](./asp-net.md) – aktivní metrika je ve výchozím nastavení povolená.
+   * [ASP.NET Core](./asp-net-core.md)– aktivní metrika je ve výchozím nastavení povolená.
+   * [.NET/.NET Core Console/pracovní proces](./worker-service.md)– živé metriky jsou ve výchozím nastavení povolené.
+   * [Aplikace .NET – povolit používání kódu](#enable-livemetrics-using-code-for-any-net-application)
+   * [Node.js](./nodejs.md#live-metrics)
 
-    Znovu nasaďte aplikaci.
+2. V [Azure Portal](https://portal.azure.com)otevřete prostředek Application Insights pro vaši aplikaci a pak otevřete Live Stream.
 
-3. V [Azure Portal](https://portal.azure.com)otevřete prostředek Application Insights pro vaši aplikaci a pak otevřete Live Stream.
+3. [Zabezpečte řídicí kanál,](#secure-the-control-channel) Pokud ve svých filtrech používáte citlivá data, jako jsou názvy zákazníků.
 
-4. [Zabezpečte řídicí kanál,](#secure-the-control-channel) Pokud ve svých filtrech používáte citlivá data, jako jsou názvy zákazníků.
+### <a name="enable-livemetrics-using-code-for-any-net-application"></a>Povolit LiveMetrics pomocí kódu pro libovolnou aplikaci .NET
 
-### <a name="no-data-check-your-server-firewall"></a>Žádná data? Ověřit bránu firewall serveru
+I když je ve výchozím nastavení povolená služba LiveMetrics při připojování pomocí doporučených pokynů pro aplikace .NET, ukazuje následující postup ruční nastavení živých metrik.
 
-Ověřte, že [Odchozí porty pro Live Metrics Stream](./ip-addresses.md#outgoing-ports) jsou otevřené v bráně firewall vašich serverů.
+1. Nainstalujte balíček NuGet [Microsoft. ApplicationInsights. PerfCounterCollector.](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector)
+2. Následující vzorový kód aplikace konzoly ukazuje nastavení živých metrik.
+
+```csharp
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
+using System;
+using System.Threading.Tasks;
+
+namespace LiveMetricsDemo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Create a TelemetryConfiguration instance.
+            TelemetryConfiguration config = TelemetryConfiguration.CreateDefault();
+            config.InstrumentationKey = "INSTRUMENTATION-KEY-HERE";
+            QuickPulseTelemetryProcessor quickPulseProcessor = null;
+            config.DefaultTelemetrySink.TelemetryProcessorChainBuilder
+                .Use((next) =>
+                {
+                    quickPulseProcessor = new QuickPulseTelemetryProcessor(next);
+                    return quickPulseProcessor;
+                })
+                .Build();
+
+            var quickPulseModule = new QuickPulseTelemetryModule();
+
+            // Secure the control channel.
+            // This is optional, but recommended.
+            quickPulseModule.AuthenticationApiKey = "YOUR-API-KEY-HERE";
+            quickPulseModule.Initialize(config);
+            quickPulseModule.RegisterTelemetryProcessor(quickPulseProcessor);
+
+            // Create a TelemetryClient instance. It is important
+            // to use the same TelemetryConfiguration here as the one
+            // used to setup Live Metrics.
+            TelemetryClient client = new TelemetryClient(config);
+
+            // This sample runs indefinitely. Replace with actual application logic.
+            while (true)
+            {
+                // Send dependency and request telemetry.
+                // These will be shown in Live Metrics stream.
+                // CPU/Memory Performance counter is also shown
+                // automatically without any additional steps.
+                client.TrackDependency("My dependency", "target", "http://sample",
+                    DateTimeOffset.Now, TimeSpan.FromMilliseconds(300), true);
+                client.TrackRequest("My Request", DateTimeOffset.Now,
+                    TimeSpan.FromMilliseconds(230), "200", true);
+                Task.Delay(1000).Wait();
+            }
+        }
+    }
+}
+```
+
+I když je výše uvedená ukázka pro konzolovou aplikaci, je možné použít stejný kód v aplikacích .NET. Pokud jsou povolené jiné TelemetryModules, které automaticky shromažďují telemetrii, je důležité zajistit, aby se stejná konfigurace použitá pro inicializaci těchto modulů používala i pro aktivní modul metrik.
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Jak se Live Metrics Stream liší od Průzkumník metrik a analýzy?
 
@@ -52,8 +114,8 @@ Ověřte, že [Odchozí porty pro Live Metrics Stream](./ip-addresses.md#outgoin
 |**Latence**|Data zobrazená během jedné sekundy|Agregované v průběhu minut|
 |**Bez uchování**|Data se v grafu přetrvají a pak se zahodí.|[Data zachovaná po 90 dnech](./data-retention-privacy.md#how-long-is-the-data-kept)|
 |**Na vyžádání**|Data se streamují jenom v případě, že je otevřené podokno aktivní metriky. |Data se odesílají pokaždé, když je SDK nainstalovaná a povolená.|
-|**Free**|Za Live Stream data se neúčtují žádné poplatky.|V souladu s [cenami](./pricing.md)
-|**Vzorkování**|Přenáší se všechny vybrané metriky a čítače. Navzorkují se chyby a trasování zásobníku. TelemetryProcessors se neaplikují.|Události se dají [vzorkovat](./api-filtering-sampling.md) .|
+|Zadejte možnost pro **bezplatnou** SKU.|Za Live Stream data se neúčtují žádné poplatky.|V souladu s [cenami](./pricing.md)
+|**Vzorkování**|Přenáší se všechny vybrané metriky a čítače. Navzorkují se chyby a trasování zásobníku. |Události se dají [vzorkovat](./api-filtering-sampling.md) .|
 |**Řídicí kanál**|Řídicí signály filtru se odesílají do sady SDK. Doporučujeme tento kanál zabezpečit.|Komunikace je jedním ze způsobů, jak na portál|
 
 ## <a name="select-and-filter-your-metrics"></a>Výběr a filtrování metriky
@@ -97,9 +159,10 @@ Pokud chcete monitorovat určitou instanci role serveru, můžete filtrovat podl
 ## <a name="secure-the-control-channel"></a>Zabezpečení řídicího kanálu
 
 > [!NOTE]
-> V současné době můžete nastavit jenom ověřený kanál pomocí monitorování základních kódů a nemůžete ověřovat servery pomocí připojení bez kódu.
+> V současné době můžete nastavit jenom ověřený kanál pomocí monitorování založeného na kódu a nemůžete ověřovat servery pomocí připojení bez kódu.
 
-Vlastní kritéria filtrů, která zadáte, se vrátí zpět na komponentu živých metrik v sadě Application Insights SDK. Filtry mohou potenciálně obsahovat citlivé informace, jako jsou například KódZákazníka. Kanál můžete nastavit jako zabezpečený pomocí tajného klíče rozhraní API, a to i pomocí klíče instrumentace.
+Vlastní kritéria filtrů, která zadáte v portálu Live Metrics, se odešlou zpět do komponenty živé metriky v sadě Application Insights SDK. Filtry mohou potenciálně obsahovat citlivé informace, jako jsou například KódZákazníka. Kanál můžete nastavit jako zabezpečený pomocí tajného klíče rozhraní API, a to i pomocí klíče instrumentace.
+
 ### <a name="create-an-api-key"></a>Vytvoření klíče rozhraní API
 
 ![Klíč rozhraní API > vytvořit klíč rozhraní API – ](./media/live-stream/api-key.png)
@@ -107,73 +170,63 @@ Vlastní kritéria filtrů, která zadáte, se vrátí zpět na komponentu živ�
 
 ### <a name="add-api-key-to-configuration"></a>Přidat klíč rozhraní API do konfigurace
 
-### <a name="classic-aspnet"></a>Klasický ASP.NET
+### <a name="aspnet"></a>ASP.NET
 
 Do souboru applicationinsights.config přidejte AuthenticationApiKey do QuickPulseTelemetryModule:
-``` XML
 
+```XML
 <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector">
       <AuthenticationApiKey>YOUR-API-KEY-HERE</AuthenticationApiKey>
 </Add>
-
 ```
-Nebo v kódu ho nastavte na QuickPulseTelemetryModule:
+
+### <a name="aspnet-core"></a>ASP.NET Core
+
+Pro [ASP.NET Core](./asp-net-core.md) aplikace postupujte podle následujících pokynů.
+
+Upravte `ConfigureServices` soubor Startup.cs následujícím způsobem:
+
+Přidejte následující obor názvů.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
-using Microsoft.ApplicationInsights.Extensibility;
-
-             TelemetryConfiguration configuration = new TelemetryConfiguration();
-            configuration.InstrumentationKey = "YOUR-IKEY-HERE";
-
-            QuickPulseTelemetryProcessor processor = null;
-
-            configuration.TelemetryProcessorChainBuilder
-                .Use((next) =>
-                {
-                    processor = new QuickPulseTelemetryProcessor(next);
-                    return processor;
-                })
-                        .Build();
-
-            var QuickPulse = new QuickPulseTelemetryModule()
-            {
-
-                AuthenticationApiKey = "YOUR-API-KEY"
-            };
-            QuickPulse.Initialize(configuration);
-            QuickPulse.RegisterTelemetryProcessor(processor);
-            foreach (var telemetryProcessor in configuration.TelemetryProcessors)
-                {
-                if (telemetryProcessor is ITelemetryModule telemetryModule)
-                    {
-                    telemetryModule.Initialize(configuration);
-                    }
-                }
-
 ```
+
+Pak upravte `ConfigureServices` metodu následujícím způsobem.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // existing code which include services.AddApplicationInsightsTelemetry() to enable Application Insights.
+    services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
+}
+```
+
+Další informace o konfiguraci aplikací ASP.NET Core najdete v našem návodu ke [konfiguraci modulů telemetrie v ASP.NET Core](./asp-net-core.md#configuring-or-removing-default-telemetrymodules).
+
+### <a name="workerservice"></a>WorkerService
+
+V případě aplikací [WorkerService](./worker-service.md) postupujte podle následujících pokynů.
+
+Přidejte následující obor názvů.
+
+```csharp
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
+```
+
+Dále přidejte následující řádek před voláním `services.AddApplicationInsightsTelemetryWorkerService` .
+
+```csharp
+    services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
+```
+
+Další informace o konfiguraci aplikací WorkerService najdete v našem návodu ke [konfiguraci modulů telemetrie v WorkerServices](./worker-service.md#configuring-or-removing-default-telemetrymodules).
 
 ### <a name="azure-function-apps"></a>Aplikace Azure Functions
 
 V případě aplikací Azure Function App (v2) lze zabezpečení kanálu pomocí klíče rozhraní API provést pomocí proměnné prostředí.
 
-Vytvořte klíč rozhraní API z Application Insights prostředku a v **nastavení aplikace** pro Function App použijte. Vyberte **Přidat nové nastavení** a zadejte název `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` a hodnotu, která odpovídá vašemu klíči rozhraní API.
-
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core (vyžaduje sadu Application Insights ASP.NET Core SDK 2.3.0 nebo vyšší)
-
-Upravte soubor startup.cs následujícím způsobem:
-
-Nejprve přidat
-
-```csharp
-using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
-```
-
-Potom v rámci metody ConfigureServices přidejte:
-
-```csharp
-services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
-```
+Vytvořte klíč rozhraní API z prostředku Application Insights a v **nastavení > konfiguraci** pro Function App. Vyberte **Nastavení nové aplikace** a zadejte název `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` a hodnotu, která odpovídá vašemu klíči rozhraní API.
 
 Pokud ale znáte všechny připojené servery a důvěřujete jim, můžete si vyzkoušet vlastní filtry bez ověřeného kanálu. Tato možnost je k dispozici po dobu šesti měsíců. Toto přepsání se vyžaduje po každé nové relaci, nebo když se nový server dostane do online režimu.
 
@@ -187,7 +240,7 @@ Pokud ale znáte všechny připojené servery a důvěřujete jim, můžete si v
 
 | Jazyk                         | Základní metriky       | Metriky výkonu | Vlastní filtrování    | Ukázková telemetrie    | PROCESOR rozdělený podle procesu |
 |----------------------------------|:--------------------|:--------------------|:--------------------|:--------------------|:---------------------|
-| .NET                             | Podporováno (V 2.7.2 +) | Podporováno (V 2.7.2 +) | Podporováno (V 2.7.2 +) | Podporováno (V 2.7.2 +) | Podporováno (V 2.7.2 +)  |
+| .NET Framework                   | Podporováno (V 2.7.2 +) | Podporováno (V 2.7.2 +) | Podporováno (V 2.7.2 +) | Podporováno (V 2.7.2 +) | Podporováno (V 2.7.2 +)  |
 | .NET Core (Target =. NET Framework)| Podporováno (V 2.4.1 +) | Podporováno (V 2.4.1 +) | Podporováno (V 2.4.1 +) | Podporováno (V 2.4.1 +) | Podporováno (V 2.4.1 +)  |
 | .NET Core (Target =. NET Core)     | Podporováno (V 2.4.1 +) | Podporuje se*          | Podporováno (V 2.4.1 +) | Podporováno (V 2.4.1 +) | **Nepodporováno**    |
 | Azure Functions v2               | Podporováno           | Podporováno           | Podporováno           | Podporováno           | **Nepodporováno**    |
@@ -200,17 +253,15 @@ Základní metriky zahrnují četnost požadavků, závislostí a výjimek. Metr
 
 - Metriky PerfCounters se podporují při použití v Azure App Service pro Windows. (AspNetCore SDK verze 2.4.1 nebo vyšší)
 - PerfCounters se podporují, když je aplikace spuštěná na LIBOVOLNÝch počítačích s Windows (virtuální počítač nebo cloudová služba nebo na Prem atd.). (AspNetCore SDK verze 2.7.1 nebo vyšší), ale pro aplikace cílené na .NET Core 2,0 nebo vyšší.
-- PerfCounters se podporují, pokud je aplikace spuštěná kdekoli (Linux, Windows, App Service pro Linux, kontejnery atd.) v nejnovější verzi beta (tj. AspNetCore SDK verze 2.8.0-Beta1 nebo vyšší), ale pro aplikace cílené na .NET Core 2,0 nebo vyšší.
-
-Ve výchozím nastavení jsou aktivní metriky v sadě Node.js SDK zakázané. Pokud chcete povolit živé metriky, přidejte `setSendLiveMetrics(true)` do [metod konfigurace](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) při inicializaci sady SDK.
+- PerfCounters se podporují, pokud je aplikace spuštěná kdekoli (Linux, Windows, App Service pro Linux, kontejnery atd.) v nejnovějších verzích (tj. AspNetCore SDK verze 2.8.0 nebo vyšší), ale jenom pro aplikace cílené na .NET Core 2,0 nebo vyšší.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Žádná data? Pokud je vaše aplikace v chráněné síti: Live Metrics Stream používá jiné IP adresy než jiná telemetrie Application Insights. Ujistěte se, že jsou [tyto IP adresy](./ip-addresses.md) v bráně firewall otevřené.
+Live Metrics Stream používá jiné IP adresy než jiné telemetrie Application Insights. Ujistěte se, že jsou [tyto IP adresy](./ip-addresses.md) v bráně firewall otevřené. Také ověřte, zda jsou v bráně firewall serverů otevřeny [Odchozí porty pro Live Metrics Stream](./ip-addresses.md#outgoing-ports) .
 
 ## <a name="next-steps"></a>Další kroky
+
 * [Monitorování využití pomocí Application Insights](./usage-overview.md)
 * [Pomocí diagnostického vyhledávání](./diagnostic-search.md)
 * [Profiler](./profiler.md)
 * [Snapshot Debugger](./snapshot-debugger.md)
-

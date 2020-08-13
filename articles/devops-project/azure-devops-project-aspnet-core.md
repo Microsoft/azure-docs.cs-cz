@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
-ms.custom: mvc
-ms.openlocfilehash: 3f0d937737cb261fb81dc4cdad3579ee593b5981
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: c434abdac19c0afd3a76256c27fc3316a8b09940
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233294"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163692"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Vytvoření kanálu CI/CD pro .NET pomocí Azure DevOps Starter
 
@@ -32,7 +32,7 @@ Pokud nemáte předplatné Azure, můžete ho získat zdarma prostřednictvím p
 
 DevOps Starter vytvoří kanál CI/CD v Azure DevOps. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Starter také vytvoří prostředky Azure v předplatném Azure podle vašeho výběru.
 
-1. Přihlaste se na web [Microsoft Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Microsoft Azure Portal](https://portal.azure.com).
 
 1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový. 
 

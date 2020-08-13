@@ -4,12 +4,12 @@ description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete zí
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 994dfe0d7e252fd2aea489c363e76f0956715048
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318330"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142399"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
 
@@ -184,6 +184,16 @@ PagerDuty, což je špičkové řešení pro správu incidentů, poskytuje prvot
 
 [Přejít na dokumentaci.][pagerduty-doc]
 
+## <a name="promitor"></a>Promitor
+
+![Logo Promitor](./media/partners/promitor.png)
+
+Promitor je Azure Monitor odpad, který zpřístupňuje metriky v systémech, jako je Atlassian StatusPage, Prometheus a statistiky.
+
+Nahrajte všechny metriky Azure Monitor a využijte je tam, kde je potřebujete.
+
+[Další informace][promitor-doc]
+
 ## <a name="qradar"></a>QRadar
 
 ![Logo QRadar](./media/partners/qradar.png)
@@ -293,6 +303,7 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy tím, že součas
 [newrelic-doc]: https://newrelic.com/azure "Dokumentaci k NewRelic."
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "Dokumentaci k OpsGenie."
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "Dokumentaci k PagerDuty."
+[promitor-doc]: https://promitor.io/ "Dokumentaci k Promitor."
 [qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "Dokumentaci k QRadar."
 [sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "Dokumentaci k ScienceLogic."
 [serverless360-doc]: https://docs.serverless360.com/docs/ "Dokumentaci k Serverless360."

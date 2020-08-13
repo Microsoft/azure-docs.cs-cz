@@ -4,14 +4,14 @@ description: Naučte se, jak odebrat typ uzlu z Service Fabric clusteru se syst�
 author: inputoutputcode
 manager: sridmad
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 08/11/2020
 ms.author: chrpap
-ms.openlocfilehash: 6cc7cbcc8344c5015d60d9721c682b6a856cbb6e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ede999bee9ce1a4a9dd10652a2c52a840d5b24be
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247230"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163573"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Postup odebrání typu Service Fabric uzlu
 Tento článek popisuje, jak škálovat cluster Azure Service Fabric odebráním existujícího typu uzlu z clusteru. Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Sady škálování virtuálních počítačů jsou výpočetním prostředkem Azure, který můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definovaný v clusteru Azure, je [nastavený jako samostatná sada škálování](service-fabric-cluster-nodetypes.md). Každý typ uzlu se pak dá spravovat samostatně. Po vytvoření clusteru Service Fabric můžete škálovat cluster vodorovně odebráním typu uzlu (sada škálování virtuálního počítače) a všech jeho uzlů.  Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru.  I když se cluster škáluje, vaše aplikace se automaticky škálují.
@@ -59,7 +59,7 @@ Při odebírání typu uzlu, který je bronz, se okamžitě najdou všechny uzly
     - Cluster je v pořádku.
     - Žádný z uzlů náležejících k typu uzlu není označen jako počáteční uzel.
 
-4. Zakáže data pro typ uzlu.
+4. Zakažte všechny uzly v typu uzlu.
 
     Připojte se ke clusteru pomocí PowerShellu a pak spusťte následující krok.
     
@@ -98,8 +98,20 @@ Při odebírání typu uzlu, který je bronz, se okamžitě najdou všechny uzly
     ```
     
     Počkejte, dokud nebudou všechny uzly typu uzlu označeny.
+
+6. Zruší přidělení uzlů v původní sadě škálování virtuálního počítače.
     
-6. Odeberte data pro typ uzlu.
+    Přihlaste se k předplatnému Azure, kde byla sada škálování nasazená, a odeberte sadu škálování virtuálního počítače. 
+
+    ```powershell
+    $scaleSetName="myscaleset"
+    $scaleSetResourceType="Microsoft.Compute/virtualMachineScaleSets"
+    
+    Remove-AzResource -ResourceName $scaleSetName -ResourceType $scaleSetResourceType -ResourceGroupName $resourceGroupName -Force
+    ```
+
+    
+7. Odeberte data pro typ uzlu.
 
     Připojte se ke clusteru pomocí PowerShellu a pak spusťte následující krok.
     
@@ -117,7 +129,7 @@ Při odebírání typu uzlu, který je bronz, se okamžitě najdou všechny uzly
 
     Počkejte, až se všechny uzly z clusteru odeberou. Uzly by se neměly zobrazovat v SFX.
 
-7. Odebrat typ uzlu z Service Fabric oddíl
+8. Odebrat typ uzlu z Service Fabric oddíl
 
     - Vyhledejte šablonu Azure Resource Manager použitou pro nasazení.
     - V části Service Fabric najdete část týkající se typu uzlu.
@@ -165,7 +177,7 @@ Při odebírání typu uzlu, který je bronz, se okamžitě najdou všechny uzly
     Pak ověřte, že:
     - Service Fabric prostředek na portálu se zobrazuje jako připravený.
 
-8. Odeberte všechny odkazy na prostředky související s typem uzlu.
+9. Odeberte všechny odkazy na prostředky související s typem uzlu ze šablony ARM.
 
     - Vyhledejte šablonu Azure Resource Manager použitou pro nasazení.
     - Odeberte sadu škálování virtuálního počítače a další prostředky související s typem uzlu ze šablony.
@@ -173,6 +185,13 @@ Při odebírání typu uzlu, který je bronz, se okamžitě najdou všechny uzly
 
     Potom:
     - Počkejte na dokončení nasazení.
+    
+10. Odeberte prostředky týkající se typu uzlu, které se již nepoužívají. Příklad Load Balancer a veřejná IP adresa. 
+
+    - Chcete-li odebrat tyto prostředky, můžete použít stejný příkaz prostředí PowerShell, který se používá v kroku 6 určení konkrétního typu prostředku a verze rozhraní API. 
+
+> [!Note]
+> Tento krok je nepovinný, pokud jsou stejné Load Balancer a IP se znovu použijí mezi typy uzlů.
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [vlastnostech odolnosti](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)clusteru.

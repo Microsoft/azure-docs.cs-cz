@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3370a2631a81ce36fd994da73c871fb1e409c667
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dd3ede40582e8f2c71c0424df025d06ff7f0f79
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728363"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141597"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
-V Azure Active Directory (Azure AD) můžete vytvářet složitá pravidla založená na atributech, která umožní dynamické členství pro skupiny. Dynamické členství ve skupinách snižuje administrativní režii při přidávání a odebírání uživatelů. Tento článek podrobně popisuje vlastnosti a syntaxi pro vytváření pravidel dynamického členství pro uživatele nebo zařízení. Pravidlo pro dynamické členství můžete nastavit pro skupiny zabezpečení nebo pro skupiny Office 365.
+V Azure Active Directory (Azure AD) můžete vytvářet složitá pravidla založená na atributech, která umožní dynamické členství pro skupiny. Dynamické členství ve skupinách snižuje administrativní režii při přidávání a odebírání uživatelů. Tento článek podrobně popisuje vlastnosti a syntaxi pro vytváření pravidel dynamického členství pro uživatele nebo zařízení. Můžete nastavit pravidlo pro dynamické členství u skupin zabezpečení nebo skupin Microsoft 365.
 
 Když se změní kterýkoli atribut uživatele nebo zařízení, systém vyhodnotí všechna dynamická pravidla skupiny v adresáři, aby zjistil, jestli by změna aktivovala nebo odebrala nějakou skupinu. Pokud uživatel nebo zařízení splňuje pravidlo pro skupinu, přidají se jako členové této skupiny. Pokud už pravidla nevyhovují, odeberou se. Nemůžete ručně přidat nebo odebrat člena dynamické skupiny.
 
@@ -138,7 +138,7 @@ V následující tabulce jsou uvedeny všechny podporované operátory a jejich 
 | Operátor | Syntax |
 | --- | --- |
 | Nerovná se |-Ne |
-| Rovná se |– EQ |
+| Je rovno |– EQ |
 | Nezačíná na |-notStartsWith |
 | Začíná na |– startsWith |
 | Neobsahuje |-notContains |
@@ -269,7 +269,7 @@ assignedPlans je vlastnost s více hodnotami, která obsahuje seznam všech plá
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-Pravidlo, jako je tato vlastnost, lze použít k seskupení všech uživatelů, pro které je povolená funkce Office 365 (nebo jiná online služba Microsoftu). Pro skupinu pak můžete použít sadu zásad.
+Pravidlo, jako je tato vlastnost, lze použít k seskupení všech uživatelů, pro které je povolena funkce Microsoft 365 (nebo jiné online služby Microsoftu). Pro skupinu pak můžete použít sadu zásad.
 
 #### <a name="example-2"></a>Příklad 2
 

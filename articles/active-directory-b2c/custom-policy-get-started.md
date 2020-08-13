@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb3bb363b1d6be72fe8941cad509b4c3525cfa15
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169425"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163182"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Začínáme s vlastními zásadami v Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ ms.locfileid: "87169425"
 
 [Vlastní zásady](custom-policy-overview.md) jsou konfigurační soubory, které definují chování klienta Azure Active Directory B2C (Azure AD B2C). V tomto článku vytvoříte vlastní zásadu, která podporuje registraci nebo přihlášení k místnímu účtu pomocí e-mailové adresy a hesla. Připravuje se také prostředí pro přidávání zprostředkovatelů identity.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud ho ještě nemáte, [Vytvořte klienta Azure AD B2C](tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
 - [Zaregistrujte svoji aplikaci](tutorial-register-applications.md) v tenantovi, kterou jste vytvořili, aby mohla komunikovat s Azure AD B2C.
@@ -33,7 +33,7 @@ ms.locfileid: "87169425"
 
 ## <a name="add-signing-and-encryption-keys"></a>Přidat podpisové a šifrovací klíče
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled v části **zásady**vyberte **Architektura prostředí identity**.
@@ -213,6 +213,6 @@ Jak je uvedeno v [požadavcích](#prerequisites), Facebook *se nevyžaduje* pro 
 
 ## <a name="next-steps"></a>Další kroky
 
-Potom zkuste přidat Azure Active Directory (Azure AD) jako zprostředkovatele identity. Základní soubor použitý v této příručce Začínáme už obsahuje nějaký obsah, který potřebujete pro přidání dalších poskytovatelů identity, jako je Azure AD.
+Potom zkuste přidat Azure Active Directory (Azure AD) jako zprostředkovatele identity. Základní soubor použitý v této příručce Začínáme už obsahuje nějaký obsah, který potřebujete pro přidání dalších poskytovatelů identity, jako je Azure AD. Informace o nastavení služby Azure AD jako zprostředkovatele identity najdete v tématu [Nastavení registrace a přihlášení pomocí účtu Azure Active Directory s využitím Active Directory B2C vlastních zásad](identity-provider-azure-ad-single-tenant-custom.md). 
 
-Informace o nastavení služby Azure AD jako zprostředkovatele identity najdete v tématu [Nastavení registrace a přihlášení pomocí účtu Azure Active Directory s využitím Active Directory B2C vlastních zásad](identity-provider-azure-ad-single-tenant-custom.md).
+Další informace o tom, jak implementovat integraci ISV pomocí vlastních zásad, najdete v naší [galerii partnerů](partner-gallery.md) . 

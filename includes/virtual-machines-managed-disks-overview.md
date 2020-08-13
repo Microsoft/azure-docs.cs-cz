@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/17/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6ba9147aefb793387b429702623639bbccf0beea
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 26d6ca641c03395996fdeaa4e54d2a001cf02bef
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507228"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88162768"
 ---
 ## <a name="benefits-of-managed-disks"></a>Výhody spravovaných disků
 
@@ -53,7 +53,7 @@ Informace o tom, jak přenést virtuální pevný disk do Azure, najdete v člá
 
 ### <a name="private-links"></a>Privátní odkazy
 
-Managed disks podporuje používání privátních odkazů k importu nebo exportu spravovaného disku, který je interní do vaší sítě. Privátní odkazy umožňují vygenerovat identifikátor URI sdíleného přístupového podpisu (SAS) pro nepřipojené spravované disky a snímky, které můžete použít k exportu dat do jiných oblastí pro regionální rozšiřování, zotavení po havárii a analýzu forenzní. Identifikátor URI SAS můžete použít také k přímému nahrání virtuálního pevného disku na prázdný disk z místního prostředí. Teď můžete využít [privátní odkazy](../articles/private-link/private-link-overview.md) k omezení exportu a importu spravovaných disků tak, aby se mohly vyskytovat jenom v rámci vaší virtuální sítě Azure. Soukromé odkazy vám umožní zajistit, aby data byla přenášena pouze v rámci zabezpečené páteřní sítě Microsoftu.
+Podpora privátních odkazů pro služby Managed disks je aktuálně ve verzi Preview a je možné ji použít k internímu importu nebo exportu spravovaného disku do vaší sítě. Privátní odkazy umožňují vygenerovat identifikátor URI sdíleného přístupového podpisu (SAS) pro nepřipojené spravované disky a snímky, které můžete použít k exportu dat do jiných oblastí pro regionální rozšiřování, zotavení po havárii a analýzu forenzní. Identifikátor URI SAS můžete použít také k přímému nahrání virtuálního pevného disku na prázdný disk z místního prostředí. Teď můžete využít [privátní odkazy](../articles/private-link/private-link-overview.md) k omezení exportu a importu spravovaných disků tak, aby se mohly vyskytovat jenom v rámci vaší virtuální sítě Azure. Soukromé odkazy vám umožní zajistit, aby data byla přenášena pouze v rámci zabezpečené páteřní sítě Microsoftu.
 
 Informace o tom, jak povolit privátní odkazy pro import nebo Export spravovaného disku, najdete v článcích o [CLI](../articles/virtual-machines/linux/disks-export-import-private-links-cli.md) nebo na [portálu](../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md) .
 

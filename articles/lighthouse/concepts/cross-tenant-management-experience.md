@@ -1,25 +1,25 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 08/07/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9ec3896b85f825b22dc9b57d4220e1cdcdf3e390
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 0ad1c0944076f24363961da21ee347dbd7c0239c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003612"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163505"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
-Jako poskytovatel služeb můžete pomocí [Azure Lighthouse](../overview.md) spravovat prostředky pro více zákazníků v rámci vašeho vlastního tenanta v [Azure Portal](https://portal.azure.com). V rámci spravovaných klientů se dá provádět mnoho úloh a služeb pomocí [delegované správy prostředků Azure](../concepts/azure-delegated-resource-management.md).
+Jako poskytovatel služeb můžete použít [Azure Lighthouse](../overview.md) ke správě prostředků pro více zákazníků z vlastního tenanta Azure Active Directory (Azure AD). V rámci spravovaných klientů se dá provádět mnoho úloh a služeb pomocí [delegované správy prostředků Azure](../concepts/azure-delegated-resource-management.md).
 
-> [!NOTE]
+> [!TIP]
 > Správu delegovaných prostředků Azure je možné použít i [v rámci podniku, který má více tenantů Azure AD vlastní](enterprise.md) pro zjednodušení správy mezi klienty.
 
-## <a name="understanding-customer-tenants"></a>Porozumění klientům zákazníka
+## <a name="understanding-tenants-and-delegation"></a>Porozumění klientům a delegování
 
-Tenant Azure Active Directory (Azure AD) je zastoupení organizace. Jedná se o vyhrazenou instanci služby Azure AD, kterou organizace obdrží, když vytvoří relaci se společností Microsoft tím, že se přihlásí k Azure, Microsoft 365 nebo jiným službám. Každý tenant služby Azure AD je jedinečný a oddělený od ostatních tenantů Azure AD a má své vlastní ID tenanta (identifikátor GUID). Další informace najdete v tématu [co je Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
+Tenant služby Azure AD je reprezentace organizace. Jedná se o vyhrazenou instanci služby Azure AD, kterou organizace obdrží, když vytvoří relaci se společností Microsoft tím, že se přihlásí k Azure, Microsoft 365 nebo jiným službám. Každý tenant služby Azure AD je jedinečný a oddělený od ostatních tenantů Azure AD a má své vlastní ID tenanta (identifikátor GUID). Další informace najdete v tématu [co je Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
 
 Aby bylo možné spravovat prostředky Azure pro zákazníka, poskytovatelé služeb by se museli přihlašovat k Azure Portal pomocí účtu přidruženého k tenantovi daného zákazníka a vyžadovat od správce v tenantovi zákazníka vytváření a správu uživatelských účtů pro poskytovatele služeb.
 
@@ -27,13 +27,13 @@ Pomocí Azure Lighthouse proces připojování Určuje uživatele v rámci tenan
 
 Azure Lighthouse umožňuje větší flexibilitu při správě prostředků pro různé zákazníky bez nutnosti přihlašovat se k různým účtům v různých klientech. Poskytovatel služeb může mít například dva zákazníky s různými zodpovědnostmi a úrovněmi přístupu. Pomocí Azure Lighthouse se autorizovaní uživatelé můžou přihlásit k tenantovi poskytovatele služeb, aby měli přístup k těmto prostředkům.
 
-![Prostředky zákazníka spravované prostřednictvím jednoho tenanta poskytovatele služeb](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
+![Diagram znázorňující prostředky zákazníka spravované prostřednictvím jednoho tenanta poskytovatele služeb](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
 ## <a name="apis-and-management-tool-support"></a>Podpora rozhraní API a nástrojů pro správu
 
 Úlohy správy můžete u delegovaných prostředků provádět buď přímo na portálu, nebo pomocí rozhraní API a nástrojů pro správu (například Azure CLI a Azure PowerShell). Všechna existující rozhraní API se dají použít při práci s delegovanými prostředky, pokud je tato funkce podporovaná pro správu mezi klienty a uživatel má příslušná oprávnění.
 
-[Rutina Azure PowerShell Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) zobrazuje `HomeTenantId` atributy a `ManagedByTenantIds` pro každé předplatné, což vám umožní určit, jestli vracený odběr patří do spravovaného tenanta zákazníka nebo do vašeho tenanta pro správu.
+[Rutina Azure PowerShell Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) zobrazuje `HomeTenantId` atributy a `ManagedByTenantIds` pro každé předplatné, což vám umožní určit, jestli vracený odběr patří do spravovaného tenanta nebo do vašeho tenanta pro správu.
 
 Podobně příkazy rozhraní příkazového řádku Azure, jako je například [AZ Account list](/cli/azure/account?view=azure-cli-latest#az-account-list) , zobrazí `homeTenantId` `managedByTenants` atributy a.
 
@@ -60,11 +60,11 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 
 [Azure Automation](../../automation/index.yml):
 
-- Použití účtů Automation pro přístup k prostředkům delegovaného zákazníka a práce s nimi
+- Používání účtů Automation pro přístup k delegovaným prostředkům a práce s nimi
 
 [Azure Backup](../../backup/index.yml):
 
-- Zálohování a obnovení zákaznických dat v klientech zákazníků
+- Zálohování a obnovení dat v klientech zákazníků
 - Pomocí [Průzkumníka zálohování](../../backup/monitor-azure-backup-with-backup-explorer.md) si můžete zobrazit provozní informace o zálohovaných položkách (včetně prostředků Azure, které ještě nejsou nakonfigurované pro zálohování), a informace o monitorování (úlohy a výstrahy) pro delegované předplatné. Průzkumník zálohování je momentálně dostupný jenom pro data virtuálních počítačů Azure.
 - [Sestavy zálohování](../../backup/configure-reports.md) v rámci delegovaných předplatných vám umožní sledovat historické trendy, analyzovat spotřebu úložiště záloh a auditovat a obnovovat zálohy.
 
@@ -80,35 +80,34 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 
 - Zobrazit výstrahy pro delegovaná předplatná s možností zobrazovat výstrahy napříč všemi předplatnými
 - Zobrazit podrobnosti protokolu aktivit pro delegované odběry
-- Log Analytics: dotazování dat ze vzdálených pracovních prostorů zákazníka ve více klientech
-- Vytváření výstrah v klientech zákazníka, kteří spouštějí automatizaci, například Azure Automation Runbooky nebo Azure Functions v tenantovi poskytovatele služeb prostřednictvím webhooků
+- Log Analytics: dotazování dat ze vzdálených pracovních prostorů ve více klientech
+- Vytváření výstrah v klientech zákazníků, kteří spouštějí automatizaci, například Azure Automation Runbooky nebo Azure Functions, v části Správa tenanta prostřednictvím webhooků
 - Pro úlohy SAP [Sledujte metriky řešení SAP s agregovaným zobrazením napříč klienty zákazníka](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293) .
 
 [Sítě Azure](../../networking/networking-overview.md):
 
-- Nasazení a Správa [Azure Virtual Network](../../virtual-network/index.yml) a karet virtuální síťové adaptéry (Virtual Network Interface) v rámci zákaznických tenantů
+- Nasazení a Správa [Azure Virtual Network](../../virtual-network/index.yml) a síťových karet virtuální síťové adaptéry (Virtual Network Interface) v rámci spravovaných tenantů
 - Nasazení a konfigurace [Azure firewall](../../firewall/overview.md) pro ochranu prostředků Virtual Network zákazníků
-- Správa služeb připojení, jako je [Azure Virtual WAN](../../virtual-wan/virtual-wan-about.md), [ExpressRoute](../../expressroute/expressroute-introduction.md)a [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) pro zákazníky
+- Správa služeb připojení, jako je [Azure Virtual WAN](../../virtual-wan/virtual-wan-about.md), [ExpressRoute](../../expressroute/expressroute-introduction.md)a [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 - Použití Azure Lighthouse k podpoře klíčových scénářů pro [program MSP sítě Azure](../../networking/networking-partners-msp.md)
-
 
 [Azure Policy](../../governance/policy/index.yml):
 
 - Snímky dodržování předpisů zobrazují podrobnosti o přiřazených zásadách v rámci delegovaných předplatných.
-- Vytvoření a úprava definic zásad v rámci delegovaného předplatného
-- Přiřazení definic zásad definovaných zákazníkem v rámci delegovaného předplatného
+- Vytvoření a úprava definic zásad v rámci delegovaných předplatných
+- Přiřazení definic zásad definovaných uživatelem v rámci delegovaných předplatných
 - Zákazníci uvidí zásady vytvořené poskytovatelem služeb společně se všemi zásadami, které sami vytvořily.
-- Může [napravit deployIfNotExists nebo upravit přiřazení v rámci tenanta zákazníka](../how-to/deploy-policy-remediation.md) .
+- Může [napravit deployIfNotExists nebo upravit přiřazení v rámci spravovaného tenanta](../how-to/deploy-policy-remediation.md) .
 
 [Graf prostředků Azure](../../governance/resource-graph/index.yml):
 
-- Teď obsahuje ID tenanta v vrácených výsledcích dotazu, které vám umožní určit, jestli předplatné patří klientovi zákazníka nebo poskytovateli služeb.
+- Teď zahrnuje ID tenanta v vrácených výsledcích dotazu, které vám umožní určit, jestli předplatné patří ke spravovanému tenantovi.
 
 [Azure Security Center](../../security-center/index.yml):
 
 - Viditelnost mezi klienty
   - Monitorování dodržování zásad zabezpečení a zajištění pokrytí zabezpečení napříč prostředky všech tenantů
-  - Nepřetržité monitorování dodržování předpisů v rámci více zákazníků v jednom zobrazení
+  - Nepřetržité monitorování dodržování předpisů v rámci více tenantů v jednom zobrazení
   - Monitorování, třídění a stanovení priorit s napadnutelnými doporučeními zabezpečení pomocí výpočtu zabezpečeného skóre
 - Správa stav zabezpečení mezi klienty
   - Správa zásad zabezpečení
@@ -124,8 +123,8 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 [Sentinel Azure](../../sentinel/multiple-tenants-service-providers.md):
 
 - Správa prostředků Azure Sentinel [v klientech zákazníků](../../sentinel/multiple-tenants-service-providers.md)
-- [Sledování útoků a zobrazování výstrah zabezpečení napříč klienty s více zákazníky](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
-- [Zobrazení incidentů](../../sentinel/multiple-workspace-view.md) v několika pracovních prostorech Sentinel rozmístěných mezi klienty zákazníka
+- [Sledování útoků a zobrazování výstrah zabezpečení napříč více klienty](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
+- [Zobrazení incidentů](../../sentinel/multiple-workspace-view.md) napříč několika pracovními prostory Sentinel mezi klienty
 
 [Azure Service Health](../../service-health/index.yml):
 
@@ -138,25 +137,26 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 
 [Virtual Machines Azure](../../virtual-machines/index.yml):
 
-- Použití rozšíření virtuálních počítačů k zajištění konfigurace po nasazení a úloh automatizace na virtuálních počítačích Azure v klientech zákazníků
-- Řešení potíží s virtuálními počítači Azure v klientech zákazníků pomocí diagnostiky spouštění
-- Přístup k virtuálním počítačům pomocí sériové konzoly v klientech zákazníků
-- Integrujte virtuální počítače s Azure Key Vault pro hesla, tajné klíče nebo kryptografické klíče pro šifrování disků pomocí [spravované identity prostřednictvím zásad](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret)a ujistěte se, že tajné klíče jsou uložené v Key Vault v klientech zákazníka.
-- Všimněte si, že nemůžete použít Azure Active Directory pro vzdálené přihlášení k virtuálním počítačům v klientech zákazníků.
+- Použití rozšíření virtuálních počítačů k zajištění konfigurace po nasazení a úloh automatizace na virtuálních počítačích Azure
+- Řešení potíží s virtuálními počítači Azure pomocí diagnostiky spouštění
+- Přístup k virtuálním počítačům pomocí sériové konzoly
+- Integrujte virtuální počítače s Azure Key Vault pro hesla, tajné klíče nebo kryptografické klíče pro šifrování disků pomocí [spravované identity prostřednictvím zásad](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret)a ujistěte se, že tajné klíče jsou uložené v Key Vault ve spravovaných klientech.
+- Všimněte si, že nemůžete použít Azure Active Directory pro vzdálené přihlášení k virtuálním počítačům.
 
 Žádosti o podporu:
 
 - [Otevřete žádosti o podporu z **nápovědu a podpory** ](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) v Azure Portal delegovaných prostředků (výběr plánu podpory dostupného pro delegovaný obor).
 
 ## <a name="current-limitations"></a>Aktuální omezení
+
 U všech scénářů Prosím mějte na paměti následující stávající omezení:
 
-- Požadavky, které jsou zpracovávány Azure Resource Manager, lze provádět pomocí delegované správy prostředků Azure. Identifikátory URI operací pro tyto požadavky začínají na `https://management.azure.com` . Nicméně požadavky, které jsou zpracovávány instancí typu prostředku (například přístup k přístupu k datovým Key Vault nebo přístup k datům úložiště), se nepodporují se správou delegovaných prostředků Azure. Identifikátory URI operací pro tyto požadavky obvykle začínají adresou, která je pro vaši instanci jedinečná, například `https://myaccount.blob.core.windows.net` nebo `https://mykeyvault.vault.azure.net/` . Druhá z nich také obvykle slouží k operacím s daty a nikoli k operacím správy.
+- Požadavky, které jsou zpracovávány Azure Resource Manager, lze provádět pomocí služby Azure Lighthouse. Identifikátory URI operací pro tyto požadavky začínají na `https://management.azure.com` . Nicméně požadavky, které jsou zpracovávány instancí typu prostředku (Key Vault například přístup k Lighthouse tajným klíčům nebo přístup k datům úložiště), nejsou podporovány v Azure. Identifikátory URI operací pro tyto požadavky obvykle začínají adresou, která je pro vaši instanci jedinečná, například `https://myaccount.blob.core.windows.net` nebo `https://mykeyvault.vault.azure.net/` . Druhá z nich také obvykle slouží k operacím s daty a nikoli k operacím správy.
 - Přiřazení rolí musí používat [předdefinované role](../../role-based-access-control/built-in-roles.md)řízení přístupu na základě role (RBAC). Všechny předdefinované role se v současné době podporují se správou delegovaných prostředků Azure s výjimkou vlastníka nebo jakýchkoli integrovaných rolí s [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) oprávněním. Role správce přístupu uživatelů je podporovaná jenom pro omezené použití při [přiřazování rolí ke spravovaným identitám](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Vlastní role a [role správců pro klasický odběr](../../role-based-access-control/classic-administrators.md) nejsou podporovány.
 - I když můžete připojit odběry, které používají Azure Databricks, uživatelé v tenantovi pro správu nemůžou v současné době spouštět Azure Databricks pracovní prostory na delegovaném předplatném.
 - I když můžete připojit odběry a skupiny prostředků, které mají zámky prostředků, tyto zámky nebudou bránit v provádění akcí uživatelům v tenantovi. [Zakažte přiřazení](../../role-based-access-control/deny-assignments.md) , která chrání systémem spravované prostředky, jako jsou ty, které vytvořily spravované aplikace Azure nebo plány Azure (přiřazení zamítnutí přiřazení systémem), zabrání uživatelům ve správě tenanta na těchto prostředcích. Nicméně v tomto okamžiku nemohou uživatelé v tenantovi zákazníka vytvořit vlastní přiřazení odepřít (přiřazení odepřít uživateli).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Připojte vaše zákazníky do správy delegovaných prostředků Azure, a to buď [pomocí šablon Azure Resource Manager](../how-to/onboard-customer.md) , nebo [publikováním nabídky privátních nebo veřejných spravovaných služeb, které Azure Marketplace](../how-to/publish-managed-services-offers.md).
+- Připojte vaše zákazníky do Azure Lighthouse, a to buď [pomocí šablon Azure Resource Manager](../how-to/onboard-customer.md) , nebo [publikováním nabídky privátních nebo veřejných spravovaných služeb, které Azure Marketplace](../how-to/publish-managed-services-offers.md).
 - V **Azure Portal můžete** [Zobrazit a spravovat zákazníky](../how-to/view-manage-customers.md) .

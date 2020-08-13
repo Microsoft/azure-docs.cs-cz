@@ -1,6 +1,6 @@
 ---
 title: Seznam aktualizací použitých v hostovaném operačním systému Azure | Microsoft Docs
-description: Seznam aktualizací použitých na verze hostovaného operačního systému
+description: V tomto článku jsou uvedené aktualizace služby Microsoft Security Response Center, které se nastavily na jiný hostovaný operační systém Azure. Podívejte se, jestli se aktualizace vztahuje na hostovaný operační systém, který používáte.
 services: cloud-services
 documentationcenter: na
 author: yohaddad
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 8/11/2020
 ms.author: yohaddad
-ms.openlocfilehash: a8755c593f4009d4cacc3d411eb1bc1cb8ddc50d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 3fb9c863b94c65d7a4333d734648d308a904e355
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079154"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142345"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.

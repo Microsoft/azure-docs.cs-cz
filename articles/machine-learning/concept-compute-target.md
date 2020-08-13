@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f8b532716e14a8a90b0be061f7d93abf43e55e38
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 27c129af9fbf3e76c6c57fbf084596876b51955b
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321985"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141921"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Jaké jsou výpočetní cíle v Azure Machine Learning? 
 
@@ -50,7 +50,7 @@ Spravovaný výpočetní prostředek je vytvořený a spravovaný pomocí Azure 
 
 Můžete vytvořit Azure Machine Learning výpočetní instance nebo výpočetní clustery z:
 * Azure Machine Learning Studio
-* portál Azure
+* Azure Portal
 * Třídy Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) a [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Preview)
 * Šablona Správce prostředků. Příklad šablony naleznete v tématu [create Azure Machine Learning COMPUTE Template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute).
@@ -85,7 +85,9 @@ Další informace o podporovaných řadách a omezeních najdete v následujíc�
 | D | Žádné |
 | Dv2 | Žádné |  
 | DSv2 | Žádné |  
-| FSv2 | Žádné |  
+| FSv2 | Žádné | 
+| HBv2 | Vyžaduje schválení |  
+| KLIENTOVI HCS | Vyžaduje schválení |  
 | M | Vyžaduje schválení |
 | NC | Žádné |    
 | NCsv2 | Vyžaduje schválení |

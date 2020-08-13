@@ -3,12 +3,12 @@ title: Správa pracovních prostorů Sentinel Azure ve velkém měřítku
 description: Zjistěte, jak efektivně spravovat Sentinel Azure na delegovaných zákaznických zdrojích.
 ms.date: 06/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 70810ca54c62e73d5dec76495eb5179b84db60fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fc6d66a31ed46766bbe664fd8656792c97ff69fd
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105264"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163233"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Správa pracovních prostorů Sentinel Azure ve velkém měřítku
 
@@ -17,6 +17,9 @@ Jako poskytovatel služeb můžete mít k [Azure Lighthouse](../overview.md)k di
 Služba Azure Sentinel zajišťuje analýzy zabezpečení a analýzu hrozeb a poskytuje jedno řešení pro detekci výstrah, viditelnost hrozeb, proaktivní lov a reakci na hrozby. Pomocí Azure Lighthouse můžete spravovat víc pracovních prostorů služby Azure Sentinel napříč klienty ve velkém měřítku. To umožňuje scénářům, jako je spouštění dotazů napříč několika pracovními prostory, nebo vytváření sešitů pro vizualizaci a monitorování dat z připojených zdrojů dat, abyste získali přehledy. IP adresy, jako jsou dotazy a playbooky, zůstanou ve vašem spravovaném tenantovi, ale dají se použít k provádění správy zabezpečení v klientech zákazníka.
 
 Toto téma poskytuje přehled o tom, jak pomocí funkce [Azure Sentinel](../../sentinel/overview.md) vytvořit škálovatelný způsob viditelnosti a spravovaných služeb zabezpečení mezi klienty.
+
+> [!TIP]
+> I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, tyto doprovodné materiály se vztahují také na [podniky, které používají Azure Lighthouse ke správě více tenantů](../concepts/enterprise.md).
 
 ## <a name="architectural-considerations"></a>Pokyny pro architekturu
 

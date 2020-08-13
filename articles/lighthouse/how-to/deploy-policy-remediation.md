@@ -1,18 +1,21 @@
 ---
 title: Nasazení zásady, která se dá napravit
 description: Pokud chcete nasadit zásady, které používají úlohu nápravy prostřednictvím Azure Lighthouse, musíte vytvořit spravovanou identitu v tenantovi zákazníka.
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: fc13b6209826d4a59d82bca5db63d4ca5c39f9fb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 998576d06d470c525a551463861f7a25d4ab9d8f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105332"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163250"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Nasazení zásady, která se dá opravit v rámci delegovaného předplatného
 
 [Azure Lighthouse](../overview.md) umožňuje poskytovatelům služeb vytvářet a upravovat definice zásad v rámci delegovaného předplatného. Pokud ale chcete nasadit zásady, které používají [úlohu nápravy](../../governance/policy/how-to/remediate-resources.md) (to znamená zásady s efektem [deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists) nebo [úprav](../../governance/policy/concepts/effects.md#modify) ), budete muset vytvořit [spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md) v tenantovi zákazníka. Tuto spravovanou identitu můžou použít Azure Policy k nasazení šablony v rámci zásad. V takovém případě jsou vyžadovány kroky, pokud zadáváte zákazníka pro správu delegovaných prostředků Azure a při nasazení samotné zásady.
+
+> [!TIP]
+> I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, můžou podniky, které [spravují víc tenantů](../concepts/enterprise.md) , používat stejné procesy.
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Vytvoření uživatele, který může přiřadit role ke spravované identitě v tenantovi zákazníka
 

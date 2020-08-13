@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 22bf7e85a48e0d138bfdbca82cf032287d982899
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 62cebb4e774e2f86ed6a4a17edd6da71f7c7cd9f
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339590"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141325"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Rychlý Start: volání webového rozhraní API ASP.NET chráněného technologií Microsoft Identity Platform
 
@@ -24,7 +24,7 @@ V tomto rychlém startu vystavíte webové rozhraní API a ochráníte ho, aby k
 
 Ukázka zahrnuje také klienta aplikace pro stolní počítače (WPF) systému Windows, který ukazuje, jak můžete požádat o přístupový token pro přístup k webovému rozhraní API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li spustit tuto ukázku, budete potřebovat následující:
 
@@ -82,13 +82,14 @@ Pokud chcete své aplikace registrovat ručně, je třeba nejprve tyto kroky:
 
 ### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>Přidání nového oboru do app.config *TodoListClient*
 
-1. Otevřete **app.config** soubor umístěný v kořenové složce projektu **TodoListClient** a potom vložte **ID aplikace** z aplikace, kterou jste právě zaregistrovali pro svůj *TodoListService* v `TodoListServiceScope` parametru, a nahraďte řetězec `{Enter the Application ID of your TodoListService from the app registration portal}` .
+* Otevřete **app.config** soubor umístěný v kořenové složce projektu **TodoListClient** a potom vložte **ID aplikace** z aplikace, kterou jste právě zaregistrovali pro svůj *TodoListService* v `TodoListServiceScope` parametru, a nahraďte řetězec `{Enter the Application ID of your TodoListService from the app registration portal}` .
 
-   > Poznámka: Ujistěte se, že používá následující formát:
-   >
-   > `api://{TodoListService-Application-ID}/access_as_user`
-   >
-   >(kde {TodoListService-Application-ID} je identifikátor GUID, který představuje ID aplikace pro váš TodoListService).
+  > [!NOTE]
+  > Ujistěte se, že používá následující formát:
+  >
+  > `api://{TodoListService-Application-ID}/access_as_user`
+  >
+  >(kde {TodoListService-Application-ID} je identifikátor GUID, který představuje ID aplikace pro váš TodoListService).
 
 ## <a name="register-the-client-app-todolistclient"></a>Registrace klientské aplikace (TodoListClient)
 
@@ -102,15 +103,28 @@ V tomto kroku nakonfigurujete projekt *TodoListClient* tak, že zaregistrujete n
    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `NativeClient-DotNet-TodoListClient`.
    - Změňte **podporované typy účtů** na **účty v libovolném organizačním adresáři**.
    - Výběrem možnosti **Registrovat** aplikaci vytvořte.
-1. Na stránce Přehled aplikace vyberte část **Ověřování**.
-   - V části **identifikátory URI přesměrování**  |  **navrhované identifikátory URI přesměrování pro veřejné klienty (mobilní zařízení, stolní počítače)** ověřte**https://login.microsoftonline.com/common/oauth2/nativeclient**
-   - Vyberte **Uložit**.
+   
+   > [!NOTE]
+   > V **app.config**projektu *TodoListClient* je výchozí hodnota `ida:Tenant` nastavená na `common` .
+   >
+   > `common`znamená, že se můžete přihlásit pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft (protože jste vybrali **účty v jakékoli organizační složce**).
+   >
+   > `organizations`znamená, že se můžete přihlásit pomocí pracovního nebo školního účtu.
+   >
+   > `consumers`znamená, že se můžete přihlásit pouze pomocí osobního účtu společnosti Microsoft.
+   >
+   
+1. Na stránce Přehled aplikace vyberte část **ověřování** .
+   1. V části **konfigurace platformy**vyberte tlačítko **Přidat platformu** .
+   1. Pro **mobilní a desktopové aplikace**vyberte **mobilní a desktopové aplikace**.
+   1. V případě **identifikátorů URI přesměrování**zaškrtněte **https://login.microsoftonline.com/common/oauth2/nativeclient** políčko.
+   1. Vyberte **Konfigurovat**.   
 1. Vyberte oddíl **oprávnění rozhraní API** .
-   - Klikněte na tlačítko **Přidat oprávnění** a pak na
-   - Vyberte kartu **Moje rozhraní API** .
-   - V seznamu rozhraní API vyberte `AppModelv2-NativeClient-DotNet-TodoListService API` nebo zadejte název, který jste zadali pro webové rozhraní API.
-   - Zaškrtněte **access_as_user** oprávnění, pokud ještě není zaškrtnuté. V případě potřeby použijte vyhledávací pole.
-   - Vyberte tlačítko **Přidat oprávnění** .
+   1. Vyberte tlačítko **Přidat oprávnění**.
+   1. Vyberte kartu **Moje rozhraní API** .
+   1. V seznamu rozhraní API vyberte `AppModelv2-NativeClient-DotNet-TodoListService API` nebo zadejte název, který jste zadali pro webové rozhraní API.
+   1. Zaškrtněte **access_as_user** oprávnění, pokud ještě není zaškrtnuté. V případě potřeby použijte vyhledávací pole.
+   1. Klikněte na tlačítko **Přidat oprávnění** .
 
 ### <a name="configure-your-todolistclient-project"></a>Konfigurace projektu *TodoListClient*
 

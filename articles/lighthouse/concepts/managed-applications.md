@@ -1,24 +1,27 @@
 ---
 title: Azure Lighthouse a spravované aplikace Azure
-description: Azure Lighthouse a spravované aplikace Azure...
-ms.date: 05/01/2020
+description: Seznamte se s tím, jak můžou Azure Lighthouse a spravované aplikace Azure pomáhat při povolování různých scénářích a způsobu jejich použití společně.
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3e1477de18b24cf5099cd4479a82169e3ecada26
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 81ff61a6d1b7487d3da0643bac3987589de46c1e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121601"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163420"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse a spravované aplikace Azure
 
 Spravované aplikace Azure i služba Azure Lighthouse fungují tak, že poskytovateli služeb umožní přístup k prostředkům, které se nacházejí v tenantovi zákazníka. Může být užitečné pochopit rozdíly ve způsobu, jakým fungují, a scénáře, které jim umožňují povolit, a také způsob, jak je lze použít společně.
 
+> [!TIP]
+> I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, můžou podniky, které [spravují víc tenantů](enterprise.md) , používat stejné procesy a nástroje.
+
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>Porovnání Azure Lighthouse a spravovaných aplikací Azure
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
-S [Azure Lighthouse](../overview.md), což je poskytovatel služeb pro provádění široké škály úloh správy přímo na předplatném zákazníka (nebo skupině prostředků). Tento přístup se dosahuje prostřednictvím logické projekce, která umožňuje poskytovatelům služeb přihlašovat se ke svému vlastnímu tenantovi a přistupovat k prostředkům, které patří do tenanta zákazníka. Zákazník může určit, která předplatná nebo skupiny prostředků delegovat poskytovateli služeb, a zákazník zachovává úplný přístup k těmto prostředkům. Můžou taky odebrat přístup poskytovatele služeb kdykoli.
+S [Azure Lighthouse](../overview.md)může poskytovatel služeb provádět nejrůznější úlohy správy přímo na předplatném zákazníka (nebo skupině prostředků). Tento přístup se dosahuje prostřednictvím logické projekce, která umožňuje poskytovatelům služeb přihlašovat se ke svému vlastnímu tenantovi a přistupovat k prostředkům, které patří do tenanta zákazníka. Zákazník může určit, která předplatná nebo skupiny prostředků delegovat poskytovateli služeb, a zákazník zachovává úplný přístup k těmto prostředkům. Můžou taky odebrat přístup poskytovatele služeb kdykoli.
 
 Aby bylo možné používat Azure Lighthouse, jsou zákazníci přihlášeni pro [správu delegovaných prostředků Azure](azure-delegated-resource-management.md) , a to [nasazením šablon ARM](../how-to/onboard-customer.md) nebo pomocí [nabídky spravované služby v Azure Marketplace](managed-services-offers.md). Svůj dopad na zapojení zákazníků můžete sledovat [propojením ID partnera](../../cost-management-billing/manage/link-partner-id.md).
 

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 1cb3af32f1ad16218c82f91c3f28d4f4ab47e677
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0a24339d728c43817b6a7ae6eac8782ad0e27b09
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843500"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142515"
 ---
 # <a name="features"></a>Funkce
 
@@ -21,9 +21,9 @@ Azure API for FHIR poskytuje plně spravované nasazení serveru Microsoft FHIR 
 
 ## <a name="fhir-version"></a>Verze FHIR
 
-Nejnovější verze je podporována:`4.0.1`
+Nejnovější verze je podporována: `4.0.1`
 
-Předchozí verze, které jsou aktuálně podporované, zahrnují:`3.0.2`
+Předchozí verze, které jsou aktuálně podporované, zahrnují: `3.0.2`
 
 ## <a name="rest-api"></a>REST API
 
@@ -35,7 +35,7 @@ Předchozí verze, které jsou aktuálně podporované, zahrnují:`3.0.2`
 | aktualizace s optimistické uzamykání | Ano       | Ano       | Ano       |                                                     |
 | aktualizovat (podmíněné)           | Ano       | Ano       | Ano       |                                                     |
 | použita                          | Ne        | Ne        | Ne        |                                                     |
-| odstranění                         | Ano       | Ano       | Ano       |                                                     |
+| delete                         | Ano       | Ano       | Ano       |                                                     |
 | Odstranit (podmíněné)           | Ne        | Ne        | Ne        |                                                     |
 | vytvoření                         | Ano       | Ano       | Ano       | Podpora pro POST/PUT                               |
 | vytvořit (podmíněné)           | Ano       | Ano       | Ano       |                                                     |
@@ -46,10 +46,10 @@ Předchozí verze, které jsou aktuálně podporované, zahrnují:`3.0.2`
 | dávka                          | Ano       | Ano       | Ano       |                                                     |
 | transakce                    | Ne        | Ano       | Ne        |                                                     |
 | historie                        | Ano       | Ano       | Ano       |                                                     |
-| přenosu                         | Částečné   | Částečné   | Částečné   | `self`a `next` jsou podporovány                     |
+| přenosu                         | Částečné   | Částečné   | Částečné   | `self` a `next` jsou podporovány                     |
 | prostředníci                 | Ne        | Ne        | Ne        |                                                     |
 
-## <a name="search"></a>Search
+## <a name="search"></a>Hledat
 
 Všechny typy parametrů vyhledávání jsou podporovány. 
 
@@ -72,14 +72,14 @@ Všechny typy parametrů vyhledávání jsou podporovány.
 |`:exact`               | Ano       | Ano       | Ano       |         |
 |`:contains`            | Ano       | Ano       | Ano       |         |
 |`:text`                | Ano       | Ano       | Ano       |         |
-|`:in`klíčové          | Ne        | Ne        | Ne        |         |
-|`:below`klíčové       | Ne        | Ne        | Ne        |         |
-|`:above`klíčové       | Ne        | Ne        | Ne        |         |
-|`:not-in`klíčové      | Ne        | Ne        | Ne        |         |
-|`:[type]`odkaz  | Ne        | Ne        | Ne        |         |
-|`:below`identifikátor URI         | Ano       | Ano       | Ano       |         |
+|`:in` klíčové          | Ne        | Ne        | Ne        |         |
+|`:below` klíčové       | Ne        | Ne        | Ne        |         |
+|`:above` klíčové       | Ne        | Ne        | Ne        |         |
+|`:not-in` klíčové      | Ne        | Ne        | Ne        |         |
+|`:[type]` odkaz  | Ne        | Ne        | Ne        |         |
+|`:below` identifikátor URI         | Ano       | Ano       | Ano       |         |
 |`:not`                 | Ne        | Ne        | Ne        |         |
-|`:above`identifikátor URI         | Ne        | Ne        | Ne        | Problém [#158](https://github.com/Microsoft/fhir-server/issues/158) |
+|`:above` identifikátor URI         | Ne        | Ne        | Ne        | Problém [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | Společný parametr hledání | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
 |-------------------------| ----------| ----------| ----------|---------|
@@ -101,9 +101,9 @@ Všechny typy parametrů vyhledávání jsou podporovány.
 | `_sort`                 | Ne        | Ne        | Ne        |         |
 | `_score`                | Ne        | Ne        | Ne        |         |
 | `_count`                | Ano       | Ano       | Ano       |         |
-| `_summary`              | Částečné   | Částečné   | Částečné   | `_summary=count`je podporováno |
+| `_summary`              | Částečné   | Částečné   | Částečné   | `_summary=count` je podporováno |
 | `_include`              | Ne        | Ano       | Ne        |         |
-| `_revinclude`           | Ne        | Ne        | Ne        |         |
+| `_revinclude`           | Ne        | Ano       | Ne        | Zahrnuté položky jsou omezeny na 100. |
 | `_contained`            | Ne        | Ne        | Ne        |         |
 | `_elements`             | Ne        | Ne        | Ne        |         |
 

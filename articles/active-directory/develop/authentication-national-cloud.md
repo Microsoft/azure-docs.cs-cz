@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: 9d703eab97b087ed6b3e4d9c3519a7e3ee7489cd
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d27498748f03fb101d165351ec80c77d57f78f1a
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117409"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141495"
 ---
 # <a name="national-clouds"></a>Národní cloudy
 
@@ -67,7 +67,7 @@ U aplikací pro jednoho tenanta nahraďte "Common" v předchozích adresách URL
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-Informace o tom, jak volat rozhraní API Microsoft Graph v národním cloudovém prostředí, najdete v tématu [Microsoft Graph v národních cloudových nasazeních](https://developer.microsoft.com/graph/docs/concepts/deployments).
+Informace o tom, jak volat rozhraní API Microsoft Graph v národním cloudovém prostředí, najdete v tématu [Microsoft Graph v národních cloudových nasazeních](/graph/deployments).
 
 > [!IMPORTANT]
 > Některé služby a funkce, které jsou v konkrétních oblastech globální služby, nemusí být k dispozici ve všech národních cloudech. Pokud chcete zjistit, jaké služby jsou k dispozici, přečtěte si [produkty dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast).

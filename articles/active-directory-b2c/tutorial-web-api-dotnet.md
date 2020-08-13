@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 10/14/2019
-ms.custom: mvc
+ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 280a59d8c378de6b3667560a4eb2b1cf95041f8d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: bfa8943af16fe62015a4736f561875235e205fc1
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298784"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163879"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Kurz: poskytnutí přístupu k webovému rozhraní API ASP.NET pomocí Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky a požadavky v [kurzu: povolení ověřování ve webové aplikaci pomocí Azure Active Directory B2C](tutorial-web-app-dotnet.md).
 
@@ -40,11 +40,11 @@ Proveďte kroky a požadavky v [kurzu: povolení ověřování ve webové aplika
 
 Prostředky webového rozhraní API musí být ve vašem tenantovi zaregistrované, aby mohly přijímat a reagovat na požadavky na chráněné prostředky klientskými aplikacemi, které prezentují přístupový token.
 
-K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
+K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
@@ -55,7 +55,7 @@ K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové j
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **aplikace (starší verze)** a pak vyberte **Přidat**.
@@ -63,7 +63,7 @@ K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové j
 6. Pro **Zahrnout webovou aplikaci nebo webové rozhraní API**vyberte **Ano**.
 7. V případě **adresy URL odpovědi**Zadejte koncový bod, kde Azure AD B2C by měl vracet jakékoli tokeny, které vaše aplikace požaduje. V tomto kurzu se ukázka spouští místně a naslouchá na `https://localhost:44332` .
 8. Pro **identifikátor URI ID aplikace**zadejte identifikátor použitý pro vaše webové rozhraní API. Vygeneruje se pro vás úplný identifikátor URI včetně domény. Například, `https://contosotenant.onmicrosoft.com/api`.
-9. Klikněte na **Vytvořit**.
+9. Klikněte na možnost **Vytvořit**.
 10. Na stránce Vlastnosti Poznamenejte ID aplikace, které použijete při konfiguraci webové aplikace.
 
 * * *
@@ -94,7 +94,7 @@ Ukázkové řešení obsahuje dva projekty:
 ### <a name="configure-the-web-application"></a>Konfigurace webové aplikace
 
 1. Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
-1. V projektu **TaskWebApp** otevřete soubor **Web. config**.
+1. V projektu **TaskWebApp** otevřete **Web.config**.
 1. Pokud chcete rozhraní API spustit místně, jako **api:TaskServiceUrl** použijte nastavení pro localhost. Změňte soubor Web.config následujícím způsobem:
 
     ```csharp
@@ -111,7 +111,7 @@ Ukázkové řešení obsahuje dva projekty:
 
 ### <a name="configure-the-web-api"></a>Konfigurace webového rozhraní API
 
-1. V projektu **TaskService** otevřete soubor **Web. config**.
+1. V projektu **TaskService** otevřete **Web.config**.
 1. Nakonfigurujte rozhraní API tak, aby používalo vašeho tenanta.
 
     ```csharp
@@ -147,7 +147,7 @@ Je potřeba spustit jak projekt **TaskWebApp**, tak i projekt **TaskService**.
 1. U obou projektů změňte hodnotu **Akce** na **Spustit**.
 1. Konfiguraci uložíte kliknutím na **OK** .
 1. Stisknutím klávesy **F5** spusťte obě aplikace. Každá aplikace se otevře v samostatném okně prohlížeče.
-    * `https://localhost:44316/`je webová aplikace.
+    * `https://localhost:44316/` je webová aplikace.
     * Na adrese `https://localhost:44332/` je webové rozhraní API.
 
 1. Ve webové aplikaci vyberte možnost **Registrace/přihlášení** a přihlaste se k webové aplikaci. Použijte účet, který jste vytvořili dříve.

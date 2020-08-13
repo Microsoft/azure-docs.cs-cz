@@ -3,12 +3,12 @@ title: Sledování změn delegování ve vašem tenantovi pro správu
 description: Přečtěte si, jak monitorovat aktivitu delegování z klientů zákazníka do vašeho spravovaného tenanta.
 ms.date: 08/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 9842ad91c059fe4da70221d8c7c5570084bcc6b9
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 63b8ec60ecf2f2e5655e3253db7aef01c003fc63
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119007"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163335"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Sledování změn delegování ve vašem tenantovi pro správu
 
@@ -173,6 +173,9 @@ Uživatelé, kterým byla přiřazena integrovaná role Azure Monitoring Reader 
 1. Ujistěte se, že je ve filtru v horní části obrazovky vybraná **aktivita adresáře** .
 
 Zobrazí se seznam změn delegování. Můžete vybrat **Upravit sloupce** a zobrazit nebo skrýt **stav**, **kategorii události**, **čas**, **časové razítko**, **předplatné**, **událost iniciované**, **skupinu prostředků**, **typ prostředku**a hodnoty **prostředků** .
+
+> [!TIP]
+> I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, můžou podniky, které [spravují víc tenantů](../concepts/enterprise.md) , používat stejné procesy.
 
 ## <a name="next-steps"></a>Další kroky
 

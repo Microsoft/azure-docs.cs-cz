@@ -1,5 +1,5 @@
 ---
-title: Automatizované zřizování uživatelů aplikací SaaS ve službě Azure AD
+title: Co je automatizované zřizování uživatelů aplikací SaaS ve službě Azure AD
 description: Představte si, jak můžete pomocí Azure AD automaticky zřídit, zrušit zřízení a průběžně aktualizovat uživatelské účty napříč různými aplikacemi SaaS třetích stran.
 services: active-directory
 author: kenwith
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 7f09bb42f529164ef0f5062ef801ddc7ecfef85c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56243e4d754f33b17238b64df2ba56ade162b3a2
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781086"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163777"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-ad"></a>Automatizace zřizování uživatelů a jejich rušení s aplikacemi pomocí Azure AD
+# <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Co je automatizované zřizování uživatelů aplikací SaaS ve službě Azure AD?
 
 V Azure Active Directory (Azure AD) pojem **zřizování aplikací** označuje automatické vytváření identit uživatelů a rolí v cloudových aplikacích ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), ke kterým uživatelé potřebují přístup. Kromě vytváření identit uživatelů zahrnuje Automatické zřizování také údržbu a odebírání identit uživatelů při změně stavu nebo rolí. Mezi běžné scénáře patří zřizování uživatelů Azure AD v aplikacích, jako jsou [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)a další.
 
@@ -94,11 +94,8 @@ V případě předem integrovaných aplikací uvedených v galerii jsou podrobn�
 Pro jiné aplikace, které podporují SCIM 2,0, postupujte podle kroků v článku [Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů](use-scim-to-provision-users-and-groups.md).
 
 
-## <a name="related-articles"></a>Související články
+## <a name="next-steps"></a>Další kroky
 
 - [Seznam kurzů, jak integrovat aplikace SaaS](../saas-apps/tutorial-list.md)
 - [Přizpůsobení mapování atributů pro zřizování uživatelů](customize-application-attributes.md)
-- [Zápis výrazů pro mapování atributů](../app-provisioning/functions-for-customizing-application-data.md)
-- [Filtry oborů pro zřizování uživatelů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
-- [Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů](use-scim-to-provision-users-and-groups.md)
-- [Přehled rozhraní API pro synchronizaci Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+- [Filtry oborů pro zřizování uživatelů](define-conditional-rules-for-provisioning-user-accounts.md)

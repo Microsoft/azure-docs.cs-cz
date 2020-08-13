@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: bd46044b6ba6d4dfca8dd90612d8f2530638c6f8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 03f27315a1506a67f41bec929f42f3cf6278f126
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844452"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142277"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Kurz: použití modelů strojového učení v Azure Functions pomocí Pythonu a TensorFlow
 
@@ -23,7 +23,7 @@ V tomto článku se naučíte používat Python, TensorFlow a Azure Functions s 
 > * Vytvoří rozhraní HTTP API bez serveru pro klasifikaci obrázku jako obsahujícího psa nebo kočka.
 > * Využívání rozhraní API z webové aplikace
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Python 3.7.4](https://www.python.org/downloads/release/python-374/). (Python 3.7.4 a Python 3.6. x jsou ověřovány pomocí Azure Functions; Python 3,8 a novější verze se zatím nepodporují.)
@@ -86,7 +86,7 @@ cd start
 ```
 
 ```powershell
-py -m venv .venv
+py -3.7 -m venv .venv
 ```
 
 ```powershell
@@ -100,7 +100,7 @@ cd start
 ```
 
 ```cmd
-py -m venv .venv
+py -3.7 -m venv .venv
 ```
 
 ```cmd

@@ -4,18 +4,18 @@ description: Přečtěte si, jak App Service plány pracují v Azure App Service
 keywords: App Service, Azure App Service, škálování, škálovatelná, škálovatelnost, plán služby App Service, náklady na službu App Service
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 93f823a623145f8dd8bf5118de973dfbc095bfb4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6aa5200220c55407ade5910b4232fffed3ffe19
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068192"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141580"
 ---
 # <a name="azure-app-service-plan-overview"></a>Přehled plánu služby App Service
 
-Ve službě App Service se aplikace spouští v rámci _plánu služby App Service_. Plán služby App Service definuje sadu výpočetních prostředků pro provozování webové aplikace. Tyto výpočetní prostředky jsou obdobné jako [_Serverová farma_](https://wikipedia.org/wiki/Server_farm) v části konvenční webové hostování. Jednu nebo více aplikací je možné nakonfigurovat tak, aby běžely na stejných výpočetních prostředcích (nebo ve stejném plánu App Service).
+V App Service (Web Apps, API Apps nebo Mobile Apps) se aplikace vždy spustí v _plánu App Service_. Kromě toho [Azure Functions](../azure-functions/functions-scale.md#app-service-plan) také možnost spouštět v _plánu App Service_. Plán služby App Service definuje sadu výpočetních prostředků pro provozování webové aplikace. Tyto výpočetní prostředky jsou obdobné jako [_Serverová farma_](https://wikipedia.org/wiki/Server_farm) v části konvenční webové hostování. Jednu nebo více aplikací je možné nakonfigurovat tak, aby běžely na stejných výpočetních prostředcích (nebo ve stejném plánu App Service).
 
 Při vytváření plánu App Service v určité oblasti (například Západní Evropa) se pro tento plán v této oblasti vytvoří sada výpočetních prostředků. Všechny aplikace, které zadáte do tohoto plánu App Service, běží na těchto výpočetních prostředcích, jak jsou definované vaším plánem App Service. Každý plán služby App Service definuje:
 

@@ -8,12 +8,13 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 6f68fede0257086cc3a23fe6f7a0a3cc9466ad1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 79e2726e26ff7883d5022e57fff8fa8961af2c98
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233148"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163675"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>Nasazení do Azure Functions s DevOps Starter
 
@@ -38,7 +39,7 @@ V tomto kurzu provedete následující:
 
 V současné době jsou podporované běhové moduly pro funkce **.NET** a **Node.js**. Používáme. .NET runtime pro tento kurz nasazení na Azure Functions. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Můžete si ji stáhnout [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/)
 
@@ -46,7 +47,7 @@ V současné době jsou podporované běhové moduly pro funkce **.NET** a **Nod
 
 DevOps Starter vytvoří kanál CI/CD v Azure Pipelines. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Projects také vytvoří prostředky Azure, jako je například IoTHub, v předplatném Azure podle vašeho výběru.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 
 1. Do vyhledávacího pole zadejte **DevOps Starter**a pak vyberte. Kliknutím na **Přidat** vytvořte nový.
 

@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fc14d79edda1fb8e0083dffa68d23f46630ba2f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1d07b3ff41c16ff2145311a0b42d8c57a8e7b82
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84342591"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141954"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Doporučení pro ceny SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -67,7 +67,7 @@ Máte dvě možnosti, jak platíte za SQL Server licencování pro tyto edice: *
 
 **Platba SQL Server licence na použití** (označované také jako **průběžné platby**) znamená, že cena za sekundu po spuštění virtuálního počítače Azure zahrnuje náklady na SQL Server licenci. Ceny pro různé SQL Server edice (web, Standard, Enterprise) si můžete prohlédnout na stránce s cenami Azure Virtual Machines pro [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) nebo [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
 
-Náklady jsou stejné pro všechny verze SQL Server (2012 SP3 až 2017). Náklady na licencování za sekundu závisí na počtu vCPU virtuálních počítačů.
+Náklady jsou stejné pro všechny verze SQL Server (2012 SP3 až 2019). Náklady na licencování za sekundu závisí na počtu vCPU virtuálních počítačů.
 
 Platba SQL Server licencování na použití se doporučuje pro:
 
@@ -94,7 +94,7 @@ Pokud chcete vytvořit virtuální počítač Azure s SQL Server 2017 s jedním 
 > [!NOTE]
 > Nyní je možné změnit licenční model z plateb na využití a využít vlastní licenci (BYOL) a zpět. Další informace najdete v tématu [Změna licenčního modelu pro SQL Server virtuální počítač](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
-## <a name="bring-your-own-license-byol"></a><a id="byol"></a>Přineste si vlastní licenci (BYOL)
+## <a name="bring-your-own-license-byol"></a><a id="byol"></a> Přineste si vlastní licenci (BYOL)
 
 **Uvedení vlastní licence SQL Server prostřednictvím License mobility**, která se také označuje jako **BYOL**, znamená použití stávající SQL Server multilicenčního programu se Software Assurance ve virtuálním počítači Azure. Virtuální počítač s SQL Server pomocí BYOL se účtuje jenom za náklady na provozování virtuálního počítače, ne pro SQL Server licencování, protože jste už získali licence a Software Assurance prostřednictvím multilicenčního programu.
 
@@ -134,7 +134,7 @@ Pokud chcete vytvořit virtuální počítač Azure s SQL Server 2017 s jedním 
 
 Aby nedocházelo k zbytečným nákladům, vyberte optimální velikost virtuálního počítače a zvažte občasné vypnutí pro nesouvislé úlohy.
 
-### <a name="correctly-size-your-vm"></a><a id="machinesize"></a>Správná velikost virtuálního počítače
+### <a name="correctly-size-your-vm"></a><a id="machinesize"></a> Správná velikost virtuálního počítače
 
 Náklady na licencování SQL Server přímo souvisí s počtem vCPU. Vyberte velikost virtuálního počítače, která odpovídá očekávaným potřebám pro procesor, paměť, úložiště a I/O šířku pásma. Úplný seznam možností velikosti počítače najdete v tématu [velikosti virtuálních počítačů s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) a [velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)se systémem Linux.
 

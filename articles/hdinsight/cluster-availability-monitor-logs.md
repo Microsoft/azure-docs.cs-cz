@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 05/01/2020
-ms.openlocfilehash: 25bda7ed94eef20e22bcf717780d08a3ea5e6521
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/12/2020
+ms.openlocfilehash: 19e3f1a157ee2c042dfebfc96c9b51c3c4698ebc
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077214"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163726"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>Jak monitorovat dostupnost clusteru pomocí protokolů Azure Monitor v HDInsight
 
@@ -30,6 +30,8 @@ Na stránce prostředek clusteru HDInsight na portálu vyberte **Azure monitor**
 
 ![Sada HDInsight Operations Management Suite](media/cluster-availability-monitor-logs/azure-portal-monitoring.png)
 
+Ve výchozím nastavení se nainstaluje agent OMS na všechny uzly clusteru s výjimkou hraničních uzlů. Protože na hraničních uzlech clusteru není nainstalovaný žádný agent OMS, na hraničních uzlech, které jsou ve výchozím nastavení Log Analytics, se nevyskytují žádné telemetrie.
+
 ## <a name="query-metrics-and-logs-tables"></a>Tabulky metrik a protokolů dotazů
 
 Jakmile je integrace protokolu Azure Monitor povolená (může to trvat několik minut), přejděte do prostředku **pracovního prostoru Log Analytics** a vyberte **protokoly**.
@@ -46,7 +48,7 @@ Protokoluje seznam několika ukázkových dotazů, například:
 | Nedostupné počítače           | Zobrazí seznam všech známých počítačů, které neodeslaly prezenční signál za posledních 5 hodin. |
 | Míra dostupnosti               | Vypočítat míru dostupnosti každého připojeného počítače                |
 
-Jako příklad spusťte dotaz ukázka **míry dostupnosti** tak, že v tomto dotazu vyberete **Spustit** , jak je znázorněno na snímku obrazovky výše. Tím se v procentech zobrazí míra dostupnosti jednotlivých uzlů v clusteru. Pokud jste povolili více clusterů HDInsight, aby odesílaly metriky do stejného pracovního prostoru Log Analytics, zobrazí se v těchto clusterech míra dostupnosti pro všechny uzly.
+Jako příklad spusťte dotaz ukázka **míry dostupnosti** tak, že v tomto dotazu vyberete **Spustit** , jak je znázorněno na snímku obrazovky výše. Tím se v procentech zobrazí míra dostupnosti jednotlivých uzlů v clusteru. Pokud jste povolili více clusterů HDInsight, aby odesílaly metriky do stejného pracovního prostoru Log Analytics, zobrazí se v těchto clusterech frekvence dostupnosti všech uzlů (kromě hraničních uzlů).
 
 ![Vzorový dotaz k protokolu dostupnosti v pracovním prostoru Log Analytics](media/cluster-availability-monitor-logs/portal-availability-rate.png)
 

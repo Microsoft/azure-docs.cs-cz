@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: e9c4470ea16f1840274a6fa8613822b20d6772b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b867f5bcbbdc5deab2d67f356df69ee870c21f3
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81310867"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142243"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Rychlý Start: vytvoření vlákna modulu azureiotsecurity
 
@@ -76,7 +76,7 @@ Další informace o přizpůsobení vlastností Azure Security Center pro vlákn
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším článku se dozvíte, jak nakonfigurovat vlastní výstrahy...
+V dalším článku se dozvíte, jak prozkoumat doporučení zabezpečení...
 
 > [!div class="nextstepaction"]
-> [Konfigurace vlastních výstrah](quickstart-create-custom-alerts.md)
+> [Prozkoumat doporučení zabezpečení](quickstart-investigate-security-recommendations.md)

@@ -3,12 +3,12 @@ title: Klienti, role a uživatelé ve scénářích Azure Lighthouse
 description: Seznamte se s koncepty Azure Active Directory klientů, uživatelů a rolí a také jak se dají použít ve scénářích Azure Lighthouse.
 ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6bcfd1603469ba27971fffa8e7c46f0f696bb6a2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 855f6a39abc99f07e5847a01896ef864473358c4
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105383"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163301"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Klienti, role a uživatelé ve scénářích Azure Lighthouse
 
@@ -16,7 +16,7 @@ Před zprovozněním zákazníků pro [Azure Lighthouse](../overview.md)je důle
 
 *Tenant* je vyhrazená a důvěryhodná instance Azure AD. Každý tenant obvykle představuje jednu organizaci. [Správa delegovaných prostředků v Azure](azure-delegated-resource-management.md) umožňuje logickou projekci prostředků z jednoho tenanta do jiného tenanta. To umožňuje uživatelům v tenantovi pro správu (například k jednomu poskytovateli služeb) získat přístup k delegovaným prostředkům v tenantovi zákazníka nebo umožňuje [podnikům s více klienty centralizovat své operace správy](enterprise.md).
 
-Aby bylo možné dosáhnout této logické projekce, *musí být předplatné* (nebo jedna nebo víc skupin prostředků v rámci předplatného) v tenantovi zákazníka připojené pro správu delegovaných prostředků Azure. Tento proces připojování se dá provést buď [prostřednictvím šablon Azure Resource Manager](../how-to/onboard-customer.md) , nebo [publikováním veřejné nebo soukromé nabídky k Azure Marketplace](../how-to/publish-managed-services-offers.md).
+Aby bylo možné dosáhnout této logické projekce, *musí být předplatné* (nebo jedna nebo víc skupin prostředků v rámci předplatného) v tenantovi zákazníka připojené do Azure Lighthouse. Tento proces připojování se dá provést buď [prostřednictvím šablon Azure Resource Manager](../how-to/onboard-customer.md) , nebo [publikováním veřejné nebo soukromé nabídky k Azure Marketplace](../how-to/publish-managed-services-offers.md).
 
 Podle toho, jakou metodu připojování zvolíte, budete muset definovat *autorizaci*. Každá autorizace určuje uživatelský účet ve správě tenanta, který bude mít přístup k delegovaným prostředkům, a předdefinovanou roli, která nastaví oprávnění, která budou mít tito uživatelé pro tyto prostředky.
 
@@ -31,7 +31,7 @@ Všechny [předdefinované role](../../role-based-access-control/built-in-roles.
 - Integrovaná role [Správce přístupu uživatele](../../role-based-access-control/built-in-roles.md#user-access-administrator) je podporovaná, ale jenom kvůli omezenému účelu [přiřazování rolí ke spravované identitě v tenantovi zákazníka](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant). Žádná další oprávnění, která tato role obvykle neudělí, se použijí. Pokud definujete uživatele s touto rolí, musíte zadat také předdefinované role, které tento uživatel může přiřadit ke spravovaným identitám.
 
 > [!NOTE]
-> Po přidání nové příslušné předdefinované role do Azure ji můžete přiřadit při [připojování zákazníka pomocí Azure Resource Manager šablon](../how-to/onboard-customer.md). Aby byla nově přidaná role k dispozici v portál partnerů cloudu při [publikování nabídky spravované služby](../how-to/publish-managed-services-offers.md), může dojít ke zpoždění.
+> Po přidání nové příslušné předdefinované role do Azure ji můžete přiřadit při [připojování zákazníka pomocí Azure Resource Manager šablon](../how-to/onboard-customer.md). Aby byla nově přidaná role k dispozici v partnerském centru při [publikování nabídky spravované služby](../how-to/publish-managed-services-offers.md), může dojít ke zpoždění.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Osvědčené postupy pro definování uživatelů a rolí
 

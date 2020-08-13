@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 332b4fdb6e0a26437edbf4309ee0b89b79f7eb23
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845795"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142107"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>Kurz: návratová Azure Data Box (Preview)
 
@@ -176,7 +176,7 @@ Pokud se vyskytnou nějaké problémy, pošlete e-mail Data Box operací Asie [a
 
 ## <a name="self-managed"></a>[V případě svépomoci](#tab/in-selfmanaged)
 
-Pokud používáte Data Box v Japonsku, Singapuru, Koreji a Západní Evropě a při vytváření objednávky jste vybrali možnost Expedice řízená svépomocí, postupujte podle těchto pokynů.
+Pokud používáte Data Box v Japonsku, Singapuru, Koreji, Indii, Jižní Africe nebo Západní Evropa a při vytváření objednávky jste vybrali možnost samostatně spravovaná dodávka, postupujte podle těchto pokynů.
 
 1. Po úspěšném dokončení tohoto kroku si poznamenejte autorizační kód uvedený na stránce Připravit k odeslání v místním webovém uživatelském rozhraní Data Boxu.
 2. Vypněte zařízení a odpojte kabely. Smotejte napájecí kabel, který jste dostali se zařízením, a bezpečně ho umístěte do zadní části zařízení.

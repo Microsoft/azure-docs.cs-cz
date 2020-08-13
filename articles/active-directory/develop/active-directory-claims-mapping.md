@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/06/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 8923cb19c24b0e392026dc0f4b8f67c31956894a
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d518dcf833a49e32d72938a31da412d53cc40037
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115930"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141529"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -44,7 +44,7 @@ Zásada mapování deklarací identity je typ objektu **zásad** , který mění
 
 Existují určité sady deklarací, které definují, jak a kdy se používají v tokenech.
 
-| Sada deklarací identity | Popis |
+| Sada deklarací identity | Description |
 |---|---|
 | Základní sada deklarací identity | Jsou přítomny v každém tokenu bez ohledu na zásadu. Tyto deklarace jsou také považovány za omezené a nelze je upravit. |
 | Základní sada deklarací identity | Zahrnuje deklarace identity, které jsou ve výchozím nastavení emitované pro tokeny (kromě základní sady deklarací identity). Základní deklarace identity můžete vynechat nebo upravit pomocí zásad mapování deklarací identity. |
@@ -286,7 +286,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabulka 3: platné hodnoty ID na zdroj
 
-| Zdroj | ID | Popis |
+| Zdroj | ID | Description |
 |-----|-----|-----|
 | Uživatel | surname | Název rodiny |
 | Uživatel | givenname | jméno |
@@ -329,7 +329,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
 | Uživatel | assignedroles | seznam rolí aplikace přiřazených uživateli|
 | aplikace, prostředek, cílová skupina | DisplayName | Zobrazovaný název |
-| aplikace, prostředek, cílová skupina | s objekty | ObjectId |
+| aplikace, prostředek, cílová skupina | objektu | ObjectId |
 | aplikace, prostředek, cílová skupina | tags | Značka objektu služby |
 | Společnost | tenantcountry | Země/oblast tenanta |
 
@@ -361,7 +361,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabulka 4: metody transformace a očekávané vstupy a výstupy
 
-|TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
+|TransformationMethod|Očekávaný vstup|Očekávaný výstup|Description|
 |-----|-----|-----|-----|
 |Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: " foo@bar.com ", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: " foo@bar.com.sandbox "|
 |ExtractMailPrefix|E-mail nebo hlavní název uživatele|extrahovaný řetězec|ExtensionAttributes 1-15 nebo jiná rozšíření schématu, která pro uživatele ukládají hodnotu hlavního názvu uživatele (UPN) nebo e-mailové adresy, například johndoe@contoso.com . Extrahuje místní část e-mailové adresy. Například: mail: " foo@bar.com " má za následek outputClaim: "foo". Pokud \@ není k dispozici žádný symbol, je původní vstupní řetězec vrácen tak, jak je.|
@@ -387,7 +387,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabulka 5: atributy povolené jako zdroj dat pro SAML NameID
 
-|Zdroj|ID|Popis|
+|Zdroj|ID|Description|
 |-----|-----|-----|
 | Uživatel | pošta|E-mailová adresa|
 | Uživatel | třídy|Hlavní název uživatele|
@@ -441,7 +441,7 @@ V Azure AD je mnoho scénářů možné, když můžete přizpůsobit deklarace 
 > [!NOTE]
 > Při vytváření zásad mapování deklarací identity můžete také vygenerovat deklaraci identity z atributu rozšíření schématu adresáře v tokenech. Použijte *ExtensionID* pro atribut Extension namísto *ID* v `ClaimsSchema` elementu.  Další informace o atributech rozšíření najdete v tématu [použití atributů rozšíření schématu adresáře](active-directory-schema-extensions.md).
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro instanční objekty. Pokud s Azure AD teprve začínáte, doporučujeme vám seznámit se s tím, [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md) , než budete pokračovat v těchto příkladech.
 

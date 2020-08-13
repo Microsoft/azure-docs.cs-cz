@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 74a20e46858aada48151809c5bedf1f93076827e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f62a7eb895248f5d39f5c3df136c88a9b1f0e5b1
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289969"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141716"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Model časové řady v Azure Time Series Insights Gen2
 
@@ -26,7 +26,7 @@ Tento článek popisuje model časových řad, možnosti a způsob, jak začít 
 > * Příklad modelu živé časové řady najdete v [ukázkovém prostředí farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) .
 > * Naučte se [pracovat s modelem časových řad](/azure/time-series-insights/how-to-edit-your-model) pomocí Azure Time Series Insights Gen2 Explorer.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Data shromážděná ze zařízení IoT neobsahují kontextové informace, což usnadňuje rychlé vyhledání a analýzu senzorů. Hlavním motivací pro model časových řad je zjednodušení hledání a analýza dat IoT nebo časových řad. Tento cíl dosahuje tím, že umožňuje zpracovat, udržovat a zdokonalovat data časových řad, což vám usnadní přípravu datových sad připravených pro zákazníky pro účely analýzy.
 
@@ -75,7 +75,7 @@ Tyto součásti jsou kombinovány pro určení modelu časové řady a k uspoř�
 
 [![Graf s přehledem modelu časové řady](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Model časových řad se dá vytvořit a spravovat pomocí [Azure Time Series Insights Gen2 Exploreru](/azure/time-series-insights/concepts-model-overview). Nastavení modelu časové řady lze spravovat prostřednictvím [rozhraní API pro nastavení modelu](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
+Model časových řad se dá vytvořit a spravovat pomocí [Azure Time Series Insights Gen2 Exploreru](/azure/time-series-insights/concepts-model-overview). Nastavení modelu časové řady lze spravovat prostřednictvím [rozhraní API pro nastavení modelu](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis).
 
 ## <a name="time-series-model-instances"></a>Instance modelů časových řad
 
@@ -129,7 +129,7 @@ Instance mají následující reprezentaci JSON:
 ```
 
 > [!TIP]
-> Pro podporu vytváření, čtení, aktualizace a odstraňování (CRUD) rozhraní API si přečtěte článek [dotazování na data](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) a [dokumentaci k rozhraní API instance rozhraní API REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
+> Pro podporu vytváření, čtení, aktualizace a odstraňování (CRUD) rozhraní API si přečtěte článek [dotazování na data](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) a [dokumentaci k rozhraní API instance rozhraní API REST](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#instances-api).
 
 ## <a name="time-series-model-hierarchies"></a>Hierarchie modelů časových řad
 
@@ -186,7 +186,7 @@ V předchozím příkladu JSON:
 * `ManufactureDate`definuje hierarchii s nadřazenou `year` a podřízenou položkou `month` . Každý `ManufactureDate` může mít více `years` , což může mít více `months` .
 
 > [!TIP]
-> Pro podporu rozhraní API pro vytváření, čtení, aktualizaci a odstraňování (CRUD) si přečtěte článek [dotazování na data](concepts-query-overview.md#time-series-model-query-tsm-q-apis) a [dokumentaci k rozhraní API pro rozhraní API pro hierarchii](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
+> Pro podporu rozhraní API pro vytváření, čtení, aktualizaci a odstraňování (CRUD) si přečtěte článek [dotazování na data](concepts-query-overview.md#time-series-model-query-tsm-q-apis) a [dokumentaci k rozhraní API pro rozhraní API pro hierarchii](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#hierarchies-api).
 
 ### <a name="hierarchy-example"></a>Příklad hierarchie
 
@@ -231,7 +231,7 @@ Typ může mít jednu nebo více proměnných. Například instance modelu časo
 [![Příklad typu modelu časové řady](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> V případě podpory typu rozhraní API vytváření, čtení, aktualizace a odstraňování (CRUD) si přečtěte článek [dotazování na data](concepts-query-overview.md#time-series-model-query-tsm-q-apis) a [dokumentaci typu rozhraní API REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
+> V případě podpory typu rozhraní API vytváření, čtení, aktualizace a odstraňování (CRUD) si přečtěte článek [dotazování na data](concepts-query-overview.md#time-series-model-query-tsm-q-apis) a [dokumentaci typu rozhraní API REST](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#types-api).
 
 ### <a name="type-properties"></a>Vlastnosti typu
 
@@ -288,7 +288,7 @@ Typy modelů časových řad můžou mít mnoho proměnných, které určují pr
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o tom, jak upravit model prostřednictvím rozhraní API, najdete v referenční dokumentaci k [modelu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) .
+* Další informace o tom, jak upravit model prostřednictvím rozhraní API, najdete v referenční dokumentaci k [modelu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) .
 
 * Prozkoumejte vzorce a výpočty, které můžete vytvořit pomocí [proměnných modelu časové řady](./concepts-variables.md) .
 

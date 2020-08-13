@@ -1,6 +1,6 @@
 ---
 title: Zpracování událostí životního cyklu cloudové služby | Microsoft Docs
-description: Přečtěte si, jak se metody životního cyklu role cloudové služby dají používat v .NET.
+description: Naučte se používat metody životního cyklu role cloudové služby v .NET, včetně RoleEntryPoint, která poskytuje metody pro reakci na události životního cyklu.
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e23eea439235659cf68da1063ae50a718a847a8d
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652080"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142311"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Přizpůsobení životního cyklu webové role nebo role pracovního procesu v .NET
 Když vytváříte roli pracovního procesu, rozšíříte třídu [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) , která poskytuje metody pro přepsání, které umožňují reagovat na události životního cyklu. Pro webové role je tato třída volitelná, takže ji musíte použít k reakci na události životního cyklu.

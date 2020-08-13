@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: 4bd13adb9bb431749f1d0f52781ce22c832fc090
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a9ae3d2789758d03405fb5be82181c799d1ea692
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846730"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141121"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Správa & zvýšení kvót pro prostředky pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -107,24 +107,26 @@ Pokud chcete nastavit kvóty na úrovni pracovního prostoru, přejděte na libo
 
 ## <a name="view-your-usage-and-quotas"></a>Zobrazení využití a kvót
 
-Azure Machine Learning výpočetní prostředky se spravují odděleně od jiných kvót prostředků Azure v rámci vašeho předplatného. Chcete-li zobrazit tuto kvótu, je třeba přejít k podrobnostem Machine Learning Services.  
+Azure Machine Learning výpočetní kvótu předplatného se spravuje odděleně od jiných kvót prostředků Azure. Chcete-li zobrazit tuto kvótu, je třeba přejít k podrobnostem Machine Learning Services.  
 
 1. V levém podokně vyberte **Machine Learning Service** a pak vyberte libovolný pracovní prostor ze seznamu.
 
-1. V dalším okně vyberte v části **Podpora a Poradce při potížích** možnost **využití + kvóty** , abyste zobrazili aktuální limity a využití kvóty.
+2. V dalším okně vyberte v části **Podpora a Poradce při potížích** možnost **využití + kvóty** , abyste zobrazili aktuální limity a využití kvóty.
 
-1. Vyberte předplatné, pro které chcete zobrazit omezení kvóty. Nezapomeňte filtrovat na oblast, do které vás zajímáte.
+3. Vyberte předplatné, pro které chcete zobrazit omezení kvóty. Nezapomeňte filtrovat na oblast, do které vás zajímáte.
 
-1. Nyní můžete přepínat mezi zobrazením na úrovni předplatného a zobrazením na úrovni pracovního prostoru:
-    + **Zobrazení odběru:** Zobrazí vaše využití základní kvóty podle rodiny virtuálních počítačů, rozbalí je podle pracovního prostoru a bude je dál rozšiřovat podle skutečných názvů clusterů. Rychle se seznamte s podrobnostmi o základním využití konkrétní rodiny virtuálních počítačů, abyste viděli rozdělení podle pracovních prostorů a dále podle základních clusterů pro každý z těchto pracovních prostorů. Obecná konvence v tomto zobrazení je (využití/kvóta), kde využití je aktuální počet jader s horizontálním škálováním a kvóta představuje logický maximální počet jader, na které se může prostředek škálovat. U každého **pracovního prostoru**by kvóta byla kvóta na úrovni pracovního prostoru (jak je vysvětleno výše), která označuje maximální počet jader, na které se dá pro konkrétní rodinu virtuálních počítačů škálovat. Pro **cluster** podobně je kvóta ve skutečnosti jádry, které odpovídají maximálnímu počtu uzlů, které může cluster škálovat, aby byl definovaný vlastností max_nodes.
-
+4. Nyní můžete přepínat mezi zobrazením na úrovni předplatného a zobrazením na úrovni pracovního prostoru:
+    + **Zobrazení odběru:** Díky tomu můžete zobrazit využití základní kvóty podle rodiny virtuálních počítačů, rozšířit je podle pracovního prostoru a dále je rozšířit o skutečné názvy clusterů. Toto zobrazení je optimální pro rychlé získání podrobností o základním využití konkrétní rodiny virtuálních počítačů, aby se zobrazilo rozdělení v pracovních prostorech a dále podle základních clusterů pro každý z těchto pracovních prostorů. Obecná konvence v tomto zobrazení je (využití/kvóta), kde využití je aktuální počet jader s horizontálním škálováním a kvóta představuje logický maximální počet jader, na které se může prostředek škálovat. U každého **pracovního prostoru**by kvóta byla kvóta na úrovni pracovního prostoru (jak je vysvětleno výše), která označuje maximální počet jader, na které se dá pro konkrétní rodinu virtuálních počítačů škálovat. Pro **cluster** podobně je kvóta ve skutečnosti jádry, které odpovídají maximálnímu počtu uzlů, které může cluster škálovat, aby byl definovaný vlastností max_nodes.
+    
     + **Zobrazení pracovního prostoru:** Díky tomu můžete zobrazit využití základních kvót podle pracovního prostoru, rozšíříte je pomocí rodiny virtuálních počítačů a dále je rozšíříte pomocí skutečných názvů clusterů. Toto zobrazení je optimální pro rychlé získání podrobností o základním použití pro konkrétní pracovní prostor, aby se mohla zobrazit zaregistrované v rámci rodin virtuálních počítačů a dále podkladové clustery pro každou z těchto rodin.
 
 Zobrazení kvóty pro různé další prostředky Azure, jako je Virtual Machines, úložiště, síť, je snadno Azure Portal.
 
 1. V levém podokně vyberte **všechny služby** a potom v kategorii Obecné vyberte **předplatná** .
 
-1. V seznamu předplatných vyberte předplatné, jehož kvótu hledáte.
+2. V seznamu předplatných vyberte předplatné, jehož kvótu hledáte.
+
+3. Pokud chcete zobrazit aktuální limity a využití kvóty, vyberte **využití a kvóty** . Pomocí filtrů vyberte poskytovatele a umístění. 
 
 ## <a name="request-quota-increases"></a>Žádost o navýšení kvóty
 

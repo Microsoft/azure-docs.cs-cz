@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 79b9be504639b35c7c15d427bd7766ed2dd15535
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: dfccc274ef920c59d39c160055ab27a6900c839c
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121081"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141274"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Získání tokenu pro mobilní aplikaci, která volá webová rozhraní API
 
@@ -209,7 +209,7 @@ catch(MsalUiRequiredException)
 
 `AcquireTokenInteractive`má pouze jeden povinný parametr: `scopes` . `scopes`Parametr vytvoří výčet řetězců, které definují obory, pro které je vyžadován token. Pokud je token pro Microsoft Graph, můžete najít požadované obory v referenčních informacích k rozhraní API každého Microsoft Graph API. V odkazu přejdete do části Permissions (oprávnění).
 
-Pokud například chcete [Zobrazit seznam kontaktů uživatele](/graph/api/user-list-contacts), použijte obor "User. Read", "Contacts. Read". Další informace najdete v tématu informace o [Microsoft Graph oprávnění](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+Pokud například chcete [Zobrazit seznam kontaktů uživatele](/graph/api/user-list-contacts), použijte obor "User. Read", "Contacts. Read". Další informace najdete v tématu informace o [Microsoft Graph oprávnění](/graph/permissions-reference).
 
 V Androidu můžete při vytváření aplikace pomocí nástroje zadat nadřazenou aktivitu `PublicClientApplicationBuilder` . Pokud v daném čase nezadáte nadřazenou aktivitu, můžete ji později zadat pomocí `.WithParentActivityOrWindow` jako v následující části. Pokud zadáte nadřazenou aktivitu, pak se token vrátí do této nadřazené aktivity po interakci. Pokud ho nezadáte, `.ExecuteAsync()` vyvolá volání výjimku.
 
