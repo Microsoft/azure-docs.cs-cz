@@ -173,8 +173,8 @@ Pokud třeba chcete pravidelně kontrolovat službu pro nové soubory, můžete 
 
 | Obsahuje požadavek `triggerState` ? | Odpověď rozhraní API | 
 | -------------------------------- | -------------| 
-| Ne | Vrátí stav HTTP a `202 ACCEPTED` `location` hlavičku s `triggerState` nastavenou na aktuální čas a `retry-after` interval na 15 sekund. | 
-| Ano | Ověřte službu pro soubory přidané po `DateTime` pro `triggerState` . | 
+| No | Vrátí stav HTTP a `202 ACCEPTED` `location` hlavičku s `triggerState` nastavenou na aktuální čas a `retry-after` interval na 15 sekund. | 
+| Yes | Ověřte službu pro soubory přidané po `DateTime` pro `triggerState` . | 
 ||| 
 
 | Počet nalezených souborů | Odpověď rozhraní API | 
