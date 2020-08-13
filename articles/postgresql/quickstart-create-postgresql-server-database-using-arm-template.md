@@ -1,18 +1,18 @@
 ---
-title: Vytvoření Azure DB pro PostgreSQL pomocí šablony ARM
-description: V tomto článku se dozvíte, jak vytvořit Azure Database for PostgreSQL Server pomocí Azure Resource Manager šablony.
+title: 'Rychlý Start: Vytvoření šablony Azure DB pro PostgreSQL – ARM'
+description: V tomto článku se dozvíte, jak vytvořit Azure Database for PostgreSQL jediný server pomocí šablony Azure Resource Manager.
 author: mgblythe
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 5bdcbe620e88700c5607162cd2471f6b2c3e7532
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 00e8910627690d4713a7a86a56262519610c2392
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132830"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183849"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití šablony ARM k vytvoření serveru Azure Database for PostgreSQL-Single
 
@@ -20,7 +20,7 @@ Azure Database for PostgreSQL je spravovaná služba, pomocí které spouštíte
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
@@ -46,7 +46,7 @@ Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používán�
 
 Vytvoříte Azure Database for PostgreSQL Server s nakonfigurovanou sadou výpočetních prostředků a prostředků úložiště. Další informace najdete v tématu [cenové úrovně na Azure Database for PostgreSQL – jeden server](concepts-pricing-tiers.md). Server vytvoříte v rámci [skupiny prostředků Azure](../azure-resource-manager/management/overview.md).
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-managed-postgresql-with-vnet/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-managed-postgresql-with-vnet/).
 
 :::code language="json" source="~/quickstart-templates/101-managed-postgresql-with-vnet/azuredeploy.json" range="001-233" highlight="151,164,178,201,215":::
 

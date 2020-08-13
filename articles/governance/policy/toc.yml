@@ -10,16 +10,22 @@
   items:
     - name: Přiřazení zásad – portál
       displayName: 'assign, compliance'
-      href: assign-policy-portal.md
-    - name: Přiřazení zásad – Azure PowerShell
-      displayName: 'assign, compliance'
-      href: assign-policy-powershell.md
+      href: ./assign-policy-portal.md
     - name: Přiřazení zásad – rozhraní příkazového řádku Azure
       displayName: 'assign, compliance'
-      href: assign-policy-azurecli.md
+      href: ./assign-policy-azurecli.md
+    - name: Přiřazení zásad – Azure PowerShell
+      displayName: 'assign, compliance'
+      href: ./assign-policy-powershell.md
+    - name: Přiřazení zásad – Python
+      displayName: 'assign, compliance'
+      href: ./assign-policy-python.md
+    - name: Přiřazení zásad – REST
+      displayName: 'armclient, postman'
+      href: ./assign-policy-rest-api.md
     - name: Přiřazení zásad – šablona Resource Manageru
       displayName: 'assign, compliance, resource manager'
-      href: assign-policy-template.md
+      href: ./assign-policy-template.md
 - name: Kurzy
   items:
     - name: Vytvoření a správa zásad Azure

@@ -4,6 +4,8 @@
   items:
     - name: Informace o rozhraní Azure API for FHIR
       href: overview.md
+    - name: Informace o konektoru Azure IoT pro FHIR (Preview)
+      href: overview.md#azure-iot-connector-for-fhir-preview
 - name: Rychlé starty
   expanded: true
   items:

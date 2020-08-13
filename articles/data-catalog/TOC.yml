@@ -5,6 +5,7 @@
     - name: Co je služba Data Catalog?
       href: overview.md
 - name: Rychlé starty
+  expanded: true
   items:
     - name: Vytvoření Azure Data Catalogu
       href: data-catalog-get-started.md
@@ -20,8 +21,6 @@
       href: data-catalog-dsr.md
     - name: Přijmutí služby Azure Data Catalog
       href: data-catalog-adopting-data-catalog.md
-    - name: Požadavky
-      href: data-catalog-prerequisites.md
     - name: Nejčastější dotazy
       href: data-catalog-frequently-asked-questions.md
 - name: Postup

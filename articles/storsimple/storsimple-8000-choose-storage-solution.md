@@ -1,18 +1,18 @@
 ---
 title: Možnosti přenosu dat do Azure pomocí zařízení | Microsoft Docs
-description: Naučte se, jak zvolit správné zařízení pro přenos dat do Azure.
+description: Naučte se, jak zvolit správné zařízení pro místní přenos dat do Azure mezi Data Box Edge, Azure File Sync a StorSimple řady 8000.
 services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: dc7de4e69d42a2165f5845f3d8214975d67cdc3c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 903342230b28f8e4fbdcdfd93543e5a0aa54975e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203981"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183271"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>Porovnání StorSimple s možnostmi přenosu dat pomocí Synchronizace souborů Azure a Data Boxu Edge 
 

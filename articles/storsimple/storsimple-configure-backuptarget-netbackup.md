@@ -1,6 +1,6 @@
 ---
 title: Řady StorSimple 8000 jako cíl zálohování s NetBackup | Microsoft Docs
-description: Popisuje konfiguraci cíle zálohování StorSimple pomocí programu VERITAS NetBackup.
+description: Přečtěte si o konfiguraci cílů zálohování StorSimple pomocí VERITAS NetBackup a osvědčených postupů pro integraci obou řešení.
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: 34c66c3d5739fdc23323a302e3bedfb1b6301d86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b186fadcc99c6cc538b61eaa94d5d84d649c233f
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077897"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184002"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple jako cíl zálohování s NetBackup
 
@@ -92,10 +92,10 @@ V následujících tabulkách jsou uvedeny úvodní pokyny k modelům zařízen�
 
 | Kapacita úložiště       | 8100          | 8600            |
 |------------------------|---------------|-----------------|
-| Kapacita místního úložiště | &lt;10 TiB\*  | &lt;20 TiB\*  |
-| Kapacita cloudového úložiště | &gt;200 TiB\* | &gt;500 TiB\* |
+| Kapacita místního úložiště | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
+| Kapacita cloudového úložiště | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\*Velikost úložiště nepředpokládá žádné odstranění duplicit ani kompresi.
+\* Velikost úložiště nepředpokládá žádné odstranění duplicit ani kompresi.
 
 **StorSimple kapacity pro primární a sekundární zálohy**
 
@@ -253,13 +253,13 @@ Na základě předchozích předpokladů vytvořte TiB StorSimple vrstvený svaz
 | Uchování typu zálohování | Velikost (TiB) | Multiplikátor GFS\* | Celková kapacita (TiB)  |
 |---|---|---|---|
 | Týdně úplné | 1 | 4  | 4 |
-| Denní přírůstkový | 0.5 | 20 (počet cyklů s rovným počtem týdnů za měsíc) | 12 (2 pro další kvótu) |
+| Denní přírůstkový | 0,5 | 20 (počet cyklů s rovným počtem týdnů za měsíc) | 12 (2 pro další kvótu) |
 | Úplně měsíčně | 1 | 12 | 12 |
 | Celý rok na celé | 1  | 10 | 10 |
 | Požadavek GFS |   | 38 |   |
 | Dodatečná kvóta  | 4  |   | 42 celková GFS požadavek  |
 
-\*Multiplikátor GFS je počet kopií, které je třeba chránit a které je potřeba zachovat, aby splňovaly požadavky zásad zálohování.
+\* Multiplikátor GFS je počet kopií, které je třeba chránit a které je potřeba zachovat, aby splňovaly požadavky zásad zálohování.
 
 ## <a name="set-up-netbackup-storage"></a>Nastavení úložiště NetBackup
 
@@ -403,7 +403,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na m
 | Celý rok na celé |StorSimple disk (dlouhodobě) | 1 | 1 | 1 |
 |Požadavek na velikost svazků GFS |  |  |  | let|
 
-\*Celková kapacita zahrnuje 17 TiB disků StorSimple a 1 TiB místního svazku RAID.
+\* Celková kapacita zahrnuje 17 TiB disků StorSimple a 1 TiB místního svazku RAID.
 
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS příklad plánu: GFS rotace týdně, měsíčně a ročního plánu
@@ -472,13 +472,13 @@ Po definování počátečních fondů disků musíte definovat tři další zá
 | Uchování typu zálohování | Velikost (TiB) | Multiplikátor GFS\* | Celková kapacita (TiB)  |
 |---|---|---|---|
 | Týdně úplné |  1  |  4 | 4  |
-| Denní přírůstkový  | 0.5  | 20 (počet cyklů se rovná počtu týdnů za měsíc) | 12 (2 pro další kvótu) |
+| Denní přírůstkový  | 0,5  | 20 (počet cyklů se rovná počtu týdnů za měsíc) | 12 (2 pro další kvótu) |
 | Úplně měsíčně  | 1 | 12 | 12 |
 | Celý rok na celé | 1  | 10 | 10 |
 | Požadavek GFS  |     |     | 38 |
 | Dodatečná kvóta  | 4  |    | 42 celková GFS požadavek |
 
-\*Multiplikátor GFS je počet kopií, které je třeba chránit a které je potřeba zachovat, aby splňovaly požadavky zásad zálohování.
+\* Multiplikátor GFS je počet kopií, které je třeba chránit a které je potřeba zachovat, aby splňovaly požadavky zásad zálohování.
 
 ## <a name="storsimple-cloud-snapshots"></a>StorSimple cloudové snímky
 
@@ -535,7 +535,7 @@ Havárie může být způsobeno nejrůznějšími faktory. V následující tabu
 | Selhání serveru NetBackup | Operace zálohování a obnovení jsou přerušeny. | Znovu sestavte záložní server a proveďte obnovení databáze. | Server NetBackup je nutné znovu sestavit nebo obnovit na webu pro zotavení po havárii. Obnovte databázi do nejnovějšího bodu. Pokud obnovená databáze NetBackup není synchronizovaná s nejnovějšími úlohami zálohování, je nutné indexování a vytváření katalogu. Tento index a proces opětovného prohledání katalogu může způsobit, že se všechny zálohovací sklady prohledají a nastavují z vrstvy cloudu na úroveň místního zařízení. Díky tomu je tato operace časově náročná. |
 | Selhání lokality, které vede ke ztrátě záložního serveru i StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nejprve obnovte StorSimple a pak obnovte NetBackup. | Nejprve obnovte StorSimple a pak obnovte NetBackup. Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se z cloudu načtou do nového zařízení. Všechny operace jsou v cloudových rychlostech. |
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 
 Následující dokumenty byly odkazovány na tento článek:
 

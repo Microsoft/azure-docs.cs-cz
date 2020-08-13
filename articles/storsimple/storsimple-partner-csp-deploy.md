@@ -1,6 +1,6 @@
 ---
 title: Nasazení StorSimple Virtual Array pro program poskytovatele Cloud Solution Provider
-description: Přehled o StorSimple a CSP pro partnery StorSimple.
+description: Zjistěte, jak může partner CSP přidat zákazníka nebo nové předplatné stávajícímu zákazníkovi a pak vytvořit službu pro nasazení StorSimple virtuálního pole v CSP.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 7f1927a67127766c72be463c283225135b2a2aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77466905"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182217"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Nasazení StorSimple Virtual Array pro program poskytovatele Cloud Solution Provider
 
@@ -29,7 +29,7 @@ StorSimple Virtual Array může být nasazeno partnery poskytovatele Cloud Solut
 
 Tento článek popisuje, jak může partner CSP přidat zákazníka nebo nové předplatné stávajícímu zákazníkovi a pak vytvořit službu pro nasazení StorSimple virtuálního pole v CSP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že:
 

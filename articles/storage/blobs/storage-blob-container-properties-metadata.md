@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 07/01/2020
 ms.author: tamram
-ms.openlocfilehash: 455595a2e41ecc05f7064044e09df8efcd9d4548
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a48e598680ee969f3823dee6699c8c981dff392
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833396"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182472"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Správa vlastností kontejneru a metadat pomocí .NET
 
@@ -29,7 +29,7 @@ Páry název-hodnota metadat jsou platné hlavičky protokolu HTTP, takže by m�
 
 ## <a name="retrieve-container-properties"></a>Načíst vlastnosti kontejneru
 
-# <a name="net-v12-sdk"></a>[Sada .NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Chcete-li načíst vlastnosti kontejneru, zavolejte jednu z následujících metod:
 
@@ -40,7 +40,7 @@ Následující příklad kódu načte vlastnosti systému kontejneru a zapisuje 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerProperties":::
 
-# <a name="net-v11-sdk"></a>[Sada .NET V11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Načítají se hodnoty vlastností a metadat pro prostředek BLOB Storage je proces se dvěma kroky. Než budete moci číst tyto hodnoty, je nutné je explicitně načíst voláním metody **FetchAttributes** nebo **FetchAttributesAsync** . Výjimkou z tohoto pravidla je, že metody **Exists** a **ExistsAsync** volají odpovídající metodu **FetchAttributes** v rámci pokrývání. Při volání jedné z těchto metod není nutné volat také **FetchAttributes**.
 
@@ -80,7 +80,7 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 
 ## <a name="set-and-retrieve-metadata"></a>Nastavení a načtení metadat
 
-# <a name="net-v12-sdk"></a>[Sada .NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Metadata můžete zadat jako jednu nebo více párů název-hodnota u prostředku BLOB nebo kontejneru. Chcete-li nastavit metadata, přidejte páry název-hodnota do objektu [IDictionary](/dotnet/api/system.collections.idictionary) a potom zavolejte jednu z následujících metod pro zápis hodnot:
 
@@ -102,7 +102,7 @@ Pak si přečtěte hodnoty, jak je znázorněno v následujícím příkladu.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerMetadata":::
 
-# <a name="net-v11-sdk"></a>[Sada .NET V11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Metadata můžete zadat jako jednu nebo více párů název-hodnota u prostředku BLOB nebo kontejneru. Chcete-li nastavit metadata, přidejte páry název-hodnota do kolekce **metadat** v prostředku a pak zavolejte jednu z následujících metod pro zápis hodnot:
 

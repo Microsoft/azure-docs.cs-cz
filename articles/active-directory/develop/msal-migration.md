@@ -13,12 +13,12 @@ ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 4672c5cab5977b000bd5095f3868864ae0c267ed
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: fd19b451638eacbf0d6174154a2688b3523ca4d2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005750"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183866"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Migrace aplikací do knihovny Microsoft Authentication Library (MSAL)
 
@@ -58,7 +58,7 @@ __Otázka: budou moje existující aplikace ADAL přestat fungovat?__
 Odpověď: Ne. Stávající aplikace budou i nadále fungovat bez úprav. Pokud plánujete, že byste je měli po dobu od 30. června 2022, měli byste zvážit aktualizaci vašich aplikací na MSAL, aby byly zabezpečené, ale migrace na MSAL není nutná k zachování stávajících funkcí.
 
 __Otázka: Návody víte, které moje aplikace používají ADAL?__  
-O: Pokud máte zdrojový kód aplikace, můžete odkazovat na výše uvedené příručky migrace, které vám pomůžou určit, kterou knihovnu aplikace používá a jak ji migrovat do MSAL. Pokud jste spolupracujete se svým nezávislým výrobcem softwaru, doporučujeme vám, abyste se na ně dostali přímo a pochopili cestu k migraci na MSAL. Pokud nemáte přístup ke zdrojovému kódu vaší aplikace, můžete [otevřít žádost o podporu](developer-support-help-options.md#open-a-support-request) a získat tak seznam registrovaných aplikací a knihovny, které aplikace používá.
+O: Pokud máte zdrojový kód aplikace, můžete odkazovat na výše uvedené příručky migrace, které vám pomůžou určit, kterou knihovnu aplikace používá a jak ji migrovat do MSAL. Pokud jste spolupracujete se svým nezávislým výrobcem softwaru, doporučujeme vám, abyste se na ně dostali přímo a pochopili cestu k migraci na MSAL.
 
 __Otázka: Proč investovat do MSAL?__  
 Odpověď: MSAL obsahuje nové funkce, které nejsou v ADAL, včetně přírůstkového souhlasu, jednotné přihlašování a správy mezipaměti tokenů. I na rozdíl od ADAL bude MSAL nadále získávat opravy zabezpečení i po 30. června 2022. [Další informace](msal-overview.md).

@@ -5,12 +5,12 @@ author: spelluru
 ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: 77a8ef9c96219d2deb08126dc68eafe08d5262d4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 348e37202335cc525f945085658337fbe6bcc561
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341693"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182421"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Kurz: Aktualizace zásob pomocí portálu Azure Portal a témat/odběrů
 
@@ -30,7 +30,7 @@ V tomto scénáři pracujeme s příkladem aktualizace sortimentu zásob pro ně
 
 Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný účet][] před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před tímto kurzem se ujistěte, že máte nainstalované tyto položky:
 
@@ -395,7 +395,7 @@ private async Task ReceiveMessages(string subscription)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zřídili prostředky na portálu Azure Portal a poté odesílali a přijímali zprávy z tématu služby Service Bus a jeho odběrů. Naučili jste se tyto postupy:
+V tomto kurzu jste zřídili prostředky na portálu Azure Portal a poté odesílali a přijímali zprávy z tématu služby Service Bus a jeho odběrů. Naučili jste se:
 
 > [!div class="checklist"]
 > * Pomocí portálu Azure Portal vytvořit téma služby Service Bus a k němu jeden nebo více odběrů
@@ -409,7 +409,7 @@ Pokud vás zajímají další příklady odesílání a přijímání zpráv, po
 Přejděte k dalšímu kurzu, kde se dozvíte více o možnostech publikování a přihlášení k odběru ve službě Service Bus.
 
 > [!div class="nextstepaction"]
-> [Aktualizace zásob pomocí prostředí PowerShell a témat/odběrů](service-bus-tutorial-topics-subscriptions-powershell.md)
+> [Reakce na události prostřednictvím Event Gridu](service-bus-to-event-grid-integration-example.md)
 
 [bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

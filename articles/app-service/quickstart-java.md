@@ -10,16 +10,19 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 8289b21da5009459d2eb7ddc8d26b549f0920317
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 274228ea5aa9ac9de9725176c8b6221ee9e9542e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88085039"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182693"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Rychlý Start: Vytvoření aplikace Java na Azure App Service
 
 [Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto rychlém startu se dozvíte, jak pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) s [modulem plug-in webové aplikace Azure pro Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) nasadit soubor webového archivu Java (War).
+
+> [!NOTE]
+> V tomto článku pracujeme jenom s aplikacemi Java zabalenými do souborů WAR. Modul plug-in podporuje také webové aplikace JAR. Pokud si to chcete vyzkoušet, přečtěte si téma věnované [nasazení souboru Java SE JAR do služby App Service v Linuxu](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 > [!NOTE]
 > Totéž můžete také udělat pomocí oblíbených prostředí, jako je IntelliJ a zatmění. Podívejte se na naše podobné dokumenty při [Azure Toolkit for IntelliJ rychlý Start](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app) nebo v [rychlém startu Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app).
@@ -53,12 +56,12 @@ Spuštěním následujícího příkazu Maven můžete nakonfigurovat nasazení.
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
 
-::: zone pivot="platform-windows"  
+::: zone pivot="platform-windows" 
 Zobrazí se výzva k výběru 
 * **Operační systém (výchozí: `linux` )**
 * **Java verze (výchozí: `1.8` )**
 * **Webový kontejner (výchozí: `tomcat 8.5` )** 
-
+ 
 Při **`2`** výběru operačního **systému Windows** v prvním kroku buďte opatrní. Ostatní konfigurace můžou být ponechány ve výchozím nastavení stisknutím klávesy **ENTER**. Nakonec stiskněte **`Y`** tlačítko **Potvrdit (a/N)** s výzvou k dokončení konfigurace.
 
 Vzorový proces vypadá takto:
@@ -137,6 +140,13 @@ Confirm (Y/N)? :
 ```
 ::: zone-end
 ::: zone pivot="platform-linux"  
+
+Zobrazí se výzva k výběru 
+* **Operační systém (výchozí: `linux` )**
+* **Java verze (výchozí: `Java 8` )**
+* **Webový kontejner (výchozí: `Tomcat 8.5` )** 
+
+Všechny konfigurace můžou být ponechány ve výchozím nastavení stisknutím klávesy **ENTER**. Nakonec stiskněte **`Y`** tlačítko **Potvrdit (a/N)** s výzvou k dokončení konfigurace.
 Vzorový proces vypadá takto:
 
 ```cmd
@@ -174,16 +184,7 @@ Confirm (Y/N)? : Y
 ```
 ::: zone-end
 
-> [!NOTE]
-> V tomto článku pracujeme jenom s aplikacemi Java zabalenými do souborů WAR. Modul plug-in podporuje také webové aplikace JAR. Pokud si to chcete vyzkoušet, přečtěte si téma věnované [nasazení souboru Java SE JAR do služby App Service v Linuxu](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
-
-Otevřete `pom.xml` a zobrazte aktualizovanou konfiguraci.
-
-```bash
-code pom.xml
-```
-
-Konfigurace pro App Service můžete v případě potřeby upravit přímo v souboru pom:
+Konfigurace pro App Service můžete v `pom.xml` případě potřeby upravit přímo, některé běžné jsou uvedeny níže:
 
  Vlastnost | Povinné | Popis | Verze
 ---|---|---|---
@@ -195,11 +196,8 @@ Konfigurace pro App Service můžete v případě potřeby upravit přímo v sou
 `<runtime>` | true | Konfigurace běhového prostředí můžete zobrazit podrobnosti [zde](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0 +
 `<deployment>` | true | Konfigurace nasazení vám může [Zobrazit podrobnosti.](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) | 0.1.0 +
 
-::: zone pivot="platform-windows"
 Buďte opatrní na hodnoty `<appName>` a `<resourceGroup>` ( `helloworld-1590394316693` a `helloworld-1590394316693-rg` odpovídajícím způsobem v ukázce), budou použity později.
-::: zone-end
-::: zone pivot="platform-linux"
-::: zone-end
+
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=quickstart-java&step=config)
 
@@ -216,21 +214,11 @@ Potom můžete aplikaci Java nasadit do Azure pomocí následujícího příkazu
 mvn package azure-webapp:deploy
 ```
 
-::: zone pivot="platform-windows"
 Po dokončení nasazení bude vaše aplikace připravená na `http://<appName>.azurewebsites.net/` ( `http://helloworld-1590394316693.azurewebsites.net` v ukázce). Otevřete adresu URL v místním webovém prohlížeči, měli byste vidět
 
-![Ukázková aplikace spuštěná v Azure App Service](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
+![Ukázková aplikace spuštěná v Azure App Service](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
-**Blahopřejeme!** Nasadili jste svoji první aplikaci Java, abyste App Service ve Windows.
-
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
-::: zone-end
-::: zone pivot="platform-linux"
-Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následující adresy URL, například `http://<webapp>.azurewebsites.net`, do nasazené aplikace. 
-
-![Ukázková aplikace spuštěná v Azure App Service](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
-
-**Blahopřejeme!** Nasadili jste svou první aplikaci v Javě do služby App Service v Linuxu.
+**Blahopřejeme!** Nasadili jste svoji první aplikaci v jazyce Java, abyste ji App Service.
 
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
@@ -244,19 +232,6 @@ az group delete --name <your resource group name; for example: helloworld-155840
 ```
 
 Spuštění tohoto příkazu může trvat přibližně minut.
-::: zone-end
-
-Po dokončení nasazení bude vaše aplikace připravená na `http://<appName>.azurewebsites.net/` ( `http://helloworld-1590394316693.azurewebsites.net` v ukázce). Otevřete adresu URL v místním webovém prohlížeči, měli byste vidět
-
-![Ukázková aplikace spuštěná v Azure App Service](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
-
-**Blahopřejeme!** Nasadili jste svoji první aplikaci v jazyce Java, abyste ji App Service.
-
-> [!div class="nextstepaction"]
-> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?quickstart-java&step=deploy)
-
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
-
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]

@@ -1,6 +1,6 @@
 ---
 title: Převzetí služeb při selhání a zotavení po havárii pro virtuální pole StorSimple
-description: Přečtěte si další informace o převzetí služeb při selhání ve virtuálním poli StorSimple.
+description: Přečtěte si o zotavení po havárii pro vaše Microsoft Azure StorSimple virtuální pole, včetně podrobných kroků pro převzetí služeb při selhání jiným virtuálním polem.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05f31993b7491dbfb0bff46c8fd2362b6bab0d4e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24eb03069689d6dc89d8e237e0e65c71af6c6173
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077785"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184716"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Zotavení po havárii a převzetí služeb při selhání zařízení StorSimple Virtual Array prostřednictvím webu Azure Portal
 

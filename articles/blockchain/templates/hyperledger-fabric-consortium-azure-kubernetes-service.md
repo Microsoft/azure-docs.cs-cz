@@ -1,15 +1,15 @@
 ---
 title: Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
 description: Jak nasadit a nakonfigurovat síť sdružení prostředků infrastruktury pro hlavní knihu ve službě Azure Kubernetes
-ms.date: 07/27/2020
+ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 4bc55090234a4ab33125ba43b8416de1eadb702f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d6999b32224e6c41cdf9869554c884fc4779c217
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533423"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184206"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
 
@@ -26,7 +26,7 @@ Po přečtení tohoto článku:
 
 Než začnete používat šablonu řešení, porovnejte svůj scénář s běžnými případy použití dostupných možností Azure blockchain.
 
-Parametr | Model služby | Běžný případ použití
+Možnost | Model služby | Běžný případ použití
 -------|---------------|-----------------
 Šablony řešení | IaaS | Šablony řešení jsou Azure Resource Manager šablony, pomocí kterých můžete zřídit plně nakonfigurovanou topologii sítě blockchain. Šablony nasazují a konfigurují Microsoft Azure COMPUTE, sítě a služby úložiště pro daný typ sítě blockchain. Šablony řešení jsou poskytovány bez smlouvy o úrovni služeb. Pro podporu použijte [stránku s otázkou Microsoft Q&](/answers/topics/azure-blockchain-workbench.html) .
 [Služba Azure Blockchain](../service/overview.md) | PaaS | Služba Azure blockchain ve verzi Preview zjednodušuje vytváření, správu a řízení sítí konsorcia blockchain. Využijte Azure blockchain Service pro řešení, která vyžadují PaaS, správu konsorcia nebo jejich soukromí a transakce.
@@ -350,10 +350,22 @@ Postupujte podle následujících kroků:
 Z klientské aplikace peere spusťte pod příkazem vytvoření instance chaincode na kanálu.  
 
 ```bash
-./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>
 ```
 
 Název funkce instance a seznam argumentů, které jsou odděleny mezerou, v `<instantiateFunc>` a v `<instantiateFuncArgs>` uvedeném pořadí. Například v chaincode_example02. přejít chaincode, pokud chcete vytvořit instanci chaincode sady `<instantiateFunc>` na `init` a `<instantiateFuncArgs>` na "a" "2000" "b" "1000".
+
+Pomocí příznaku můžete také předat soubor JSON konfigurace kolekcí `--collections-config` . Nebo nastavte přechodné argumenty pomocí `-t` příznaku při vytváření instance chaincode používané pro privátní transakce.
+
+Například:
+
+```bash
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath> -t <transientArgs>
+```
+
+\<collectionConfigJSONFilePath\>Je cesta k souboru JSON obsahujícím kolekce definované pro vytváření instancí privátních datových chaincode. Soubor JSON konfigurace ukázkových kolekcí najdete relativně k adresáři azhlfTool v následující cestě: `./samples/chaincode/src/private_marbles/collections_config.json` .
+Předat \<transientArgs\> jako platný formát JSON ve formátu řetězce. Řídicí sekvence všech speciálních znaků. Příklad: `'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
 
 > [!NOTE]
 > Spusťte příkaz pro jednu z libovolných partnerských organizací v kanálu. Po úspěšném odeslání transakce do objednávky bude objednávka distribuovat tuto transakci do všech partnerských organizací v kanálu. Proto je instance chaincode vytvořena na všech partnerských uzlech všech partnerských organizací v kanálu.  
@@ -377,8 +389,12 @@ Předejte vyvolat název funkce a seznam argumentů oddělených mezerou v v  
 Příkaz spustit pod příkazem pro dotaz na chaincode:  
 
 ```bash
-./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
+./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
 ```
+Přidávajícím partnerům jsou partnerské uzly, kde je nainstalovaný chaincode a který se volá pro provádění transakcí. Je nutné nastavit \<endorsingPeers\> názvy obsahující rovnocenné uzly z aktuální partnerské organizace. Seznam přidávajících partnerských uzlů pro danou kombinaci chaincode a kanálů oddělených mezerami Například, `-p "peer1" "peer3"`.
+
+Pokud používáte azhlfTool k instalaci vašeho chaincode, předejte všechny názvy partnerských uzlů jako hodnotu do argumentu pro potvrzení partnerského vztahu. Chaincode je nainstalovaná na všech partnerských uzlech této organizace. 
+
 Předejte název funkce dotazu a seznam argumentů oddělených mezerami v  `<queryFunction>`    `<queryFuncArgs>`   uvedeném pořadí. Znovu se postará o chaincode_example02. přejít chaincode jako na odkaz a na hodnotu dotazu "a" ve světě nastavenou  `<queryFunction>`   na  `query` a  `<queryArgs>` na "a".  
 
 ## <a name="troubleshoot"></a>Řešení potíží

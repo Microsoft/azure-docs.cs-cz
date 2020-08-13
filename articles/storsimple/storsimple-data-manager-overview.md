@@ -1,6 +1,6 @@
 ---
 title: Přehled Data Manager Microsoft Azure StorSimple | Microsoft Docs
-description: Poskytuje přehled služby StorSimple Data Manager.
+description: Přečtěte si o řešení StorSimple Data Manager a o tom, jak tuto službu můžete použít k psaní aplikací, které používají StorSimple data a další služby Azure.
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: alkohli
-ms.openlocfilehash: 2ffe17bf7ef4f01c18d2c26f4a045add7302272d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d683f49cadb384ef59d3bae819156733691813cd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67876102"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183492"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>Přehled řešení StorSimple Data Manager
 
@@ -47,13 +47,13 @@ Data Manager s Azure Functions, Azure Automation a Azure Data Factory můžete p
 
 StorSimple Data Manager je k dispozici v následujících 7 oblastech:
 
- - Jihovýchodní Asie
- - USA – východ
+ - Southeast Asia
+ - East US
  - USA – západ
- - USA – západ 2
+ - Západní USA 2
  - USA – středozápad
  - Severní Evropa
- - Západní Evropa
+ - West Europe
 
 StorSimple Data Manager lze však použít k transformaci dat v následujících oblastech. 
 

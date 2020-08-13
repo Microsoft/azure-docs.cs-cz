@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e76468238a911c7a9e5543bf5063d1c7b6a8b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81f3f771987ce2ff11aab88a4d35df01b6c85941
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253320"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184342"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínek použití
 
@@ -52,7 +52,7 @@ Funkce Azure AD terms of use mají tyto možnosti:
 - Zobrazit protokol aktivity použití pro dodržování předpisů a audit.
 - Vytvářejte a spravujte podmínek použití pomocí [rozhraní Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) (aktuálně ve verzi Preview).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete použít a nakonfigurovat používání podmínek Azure AD, musíte mít:
 
@@ -92,10 +92,10 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 
 1. Pokud chcete zadat plán pro **vyprší** platnosti podmínek použití, použijte nastavení **frekvence** od do. Následující tabulka ukazuje výsledek pro několik příkladů nastavení:
 
-   | Platnost začíná dnem | Frekvence | Výsledek |
+   | Platnost začíná dnem | Frequency | Výsledek |
    | --- | --- | --- |
-   | Dnešní datum  | měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití a pak každý měsíc znovu přijmout. |
-   | Datum v budoucnosti  | měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití. Když dojde k budoucímu datu, vyprší platnost souhlasu a pak se uživatelé musí každý měsíc znovu akceptovat.  |
+   | Dnešní datum  | Měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití a pak každý měsíc znovu přijmout. |
+   | Datum v budoucnosti  | Měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití. Když dojde k budoucímu datu, vyprší platnost souhlasu a pak se uživatelé musí každý měsíc znovu akceptovat.  |
 
    Pokud například nastavíte vypršení platnosti začínající na **1** a četnost na **měsíčně**, v této části se může vyskytnout vypršení platnosti pro dva uživatele:
 
@@ -117,7 +117,7 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 
    ![Rozevírací seznam pro podmíněný přístup pro výběr šablony zásad](./media/terms-of-use/conditional-access-templates.png)
 
-   | Šablona | Description |
+   | Šablona | Popis |
    | --- | --- |
    | **Přístup ke cloudovým aplikacím pro všechny hosty** | Vytvoří se zásada podmíněného přístupu pro všechny hosty a všechny cloudové aplikace. Tato zásada má vliv na Azure Portal. Po vytvoření budete možná muset odhlásit a přihlásit se. |
    | **Přístup ke cloudovým aplikacím pro všechny uživatele** | Vytvoří se zásada podmíněného přístupu pro všechny uživatele a všechny cloudové aplikace. Tato zásada má vliv na Azure Portal. Po vytvoření budete muset odhlásit a přihlásit se. |
@@ -129,7 +129,7 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 
     Vlastní zásady podmíněného přístupu umožňují podrobné podmínky použití, a to až do konkrétní cloudové aplikace nebo skupiny uživatelů. Další informace najdete v tématu [rychlý Start: vyžadování podmínek použití, které se mají přijmout před přístupem ke cloudovým aplikacím](require-tou.md).
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
    Pokud jste vybrali vlastní šablonu podmíněného přístupu, zobrazí se nová obrazovka, která vám umožní vytvořit vlastní zásady podmíněného přístupu.
 
@@ -225,7 +225,7 @@ Můžete upravit některé podrobnosti podmínek použití, ale nemůžete uprav
 
    ![Podokno úprav podmínek použití znázorňující možnosti název a rozbalení](./media/terms-of-use/edit-tou.png)
 
-1. Kliknutím na **Uložit** uložte změny.
+1. Kliknutím na **Uložit** změny uložte.
 
    Po uložení změn nebudou uživatelé tyto úpravy znovu přijímat.
 
@@ -363,7 +363,7 @@ Odpověď: Pokud správce upraví podrobnosti pro podmínky použití (název, z
 Odpověď: v současné době nelze aktualizovat existující dokument s podmínkami použití. Chcete-li změnit dokument s podmínkami použití, budete muset vytvořit novou podmínku použití instance.
 
 **Otázka: Pokud jsou hypertextové odkazy v dokumentu PDF s podmínkami použití, budou koncoví uživatelé moci kliknout na ně?**<br />
-Odpověď: Ano, koncoví uživatelé mohou vybrat hypertextové odkazy na další stránky, ale odkazy na oddíly v dokumentu nejsou podporovány.
+Odpověď: Ano, koncoví uživatelé mohou vybrat hypertextové odkazy na další stránky, ale odkazy na oddíly v dokumentu nejsou podporovány. Hypertextové odkazy z pojmu použití souborů PDF nefungují ani při otevření z portálu Azure AD Mojeapl/MyAccount.
 
 **Otázka: Podporují se podmínky použití ve více jazycích?**<br />
 Odpověď: Ano. V současné době existuje 108 různých jazyků, které může správce nakonfigurovat pro jedno z podmínek použití. Správce může nahrát několik dokumentů PDF a označit tyto dokumenty Tagy odpovídajícím jazykem (až 108). Když se koncoví uživatelé přihlásí, podíváme se na jazyk prohlížeče předvolby a zobrazí se odpovídající dokument. Pokud se neshoduje, zobrazí se výchozí dokument, který je prvním odeslaným dokumentem.

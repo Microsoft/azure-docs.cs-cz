@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 05/20/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 025d3b1e0ce2f46cc689d74fe659facf026dc215
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 05a70274e075ddda8770e57c71a7f55807cf3dcc
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852493"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182132"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,33 +37,22 @@ Možnosti konfigurace dostupné v automatizovaném strojovém učení:
 
 Pokud dáváte přednost žádnému způsobu použití kódu, můžete [v Azure Machine Learning Studiu vytvářet i automatizované experimenty strojového učení](how-to-use-automated-ml-for-ml-models.md).
 
+## <a name="prerequisites"></a>Předpoklady
+
+Pro tento článek potřebujete, 
+* Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [vytvoření Azure Machine Learningho pracovního prostoru](how-to-manage-workspace.md).
+
+* Sada SDK Azure Machine Learning Pythonu je nainstalovaná.
+    Pro instalaci sady SDK můžete buď 
+    * Vytvořte výpočetní instanci, která automaticky nainstaluje sadu SDK a je předem nakonfigurovaná pro pracovní postupy ML. Další informace najdete v tématu [co je instance služby compute Azure Machine Learning?](concept-compute-instance.md#managing-a-compute-instance) . 
+
+    * [Nainstalujte sadu SDK sami](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). Stačí, abyste zahrnuli `automl` extra. 
+
 ## <a name="select-your-experiment-type"></a>Výběr typu experimentu
 
-Než začnete experimentovat, měli byste určit druh problému strojového učení, který řešíte. Automatizované Machine Learning podporuje typy úloh klasifikace, regrese a prognózy. Přečtěte si další informace o [typech úloh](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast).
+Než začnete experimentovat, měli byste určit druh problému strojového učení, který řešíte. Automatizované Machine Learning podporuje typy úloh `classification` , `regression` a `forecasting` . Přečtěte si další informace o [typech úloh](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast).
 
-Automatizované Machine Learning podporuje během procesu automatizace a optimalizace následující algoritmy. Jako uživatel není nutné zadávat algoritmus.
-
-> [!NOTE]
-> Pokud plánujete exportovat vytvořené modely automl do [modelu ONNX](concept-onnx.md), je možné převést pouze ty algoritmy označené znakem * na formát ONNX. Přečtěte si další informace o [převodu modelů na ONNX](concept-automated-ml.md#use-with-onnx). <br> <br> Všimněte si také, že ONNX podporuje v tuto chvíli pouze úlohy klasifikace a regrese. 
-
-Classification | Regrese | Prognózování časové řady
-|-- |-- |--
-[Logistická regrese](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Elastická síť](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Elastická síť](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Lehký GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[Zvýšení barevného přechodu](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[Zvýšení barevného přechodu](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[Zvýšení barevného přechodu](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#regression)* |[Rozhodovací strom](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K nejbližším sousedním sousedům](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K nejbližším sousedním sousedům](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K nejbližším sousedním sousedům](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[Lineární SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS laso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[Podpora klasifikace vektoru (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[Stochastickéhoový přechod klesá (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[Stochastickéhoový přechod klesá (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
-[Náhodná doménová struktura](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Náhodná doménová struktura](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Náhodný les](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[Extrémně náhodné stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extrémně náhodné stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extrémně náhodné stromy](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[Průměrný Perceptron klasifikátor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)|[Online gradient regresor klesání](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest) |[Automatické ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Rychlé lineární regresor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
-[Stochastickéhoový přechod klesá (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||ForecastTCN
-|[Lineární třídění SVM](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)*||
-
-Použijte `task` parametr v `AutoMLConfig` konstruktoru k určení typu experimentu.
+Následující kód používá `task` parametr v `AutoMLConfig` konstruktoru k určení typu experimentu jako `classification` .
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -74,26 +63,27 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="data-source-and-format"></a>Zdroj dat a formát
 
-Automatizované Machine Learning podporuje data, která se nachází na místním počítači nebo v cloudu, jako je například Azure Blob Storage. Data lze číst do **PANDAS dataframe** nebo do **Azure Machine Learning TabularDataset**.  [Přečtěte si další informace o datových sadách](how-to-create-register-datasets.md).
+Automatizované Machine Learning podporuje data, která se nachází na místním počítači nebo v cloudu, jako je například Azure Blob Storage. Data lze číst do **PANDAS dataframe** nebo do **Azure Machine Learning TabularDataset**. [Přečtěte si další informace o datových sadách](how-to-create-register-datasets.md).
 
 Požadavky na školicí data:
 - Data musí být v tabulkovém formátu.
 - Hodnota pro předpověď, cílový sloupec musí být v datech.
 
-Následující příklady kódu ukazují, jak ukládat data v těchto formátech.
+**Pro vzdálené experimenty**musí být školicí data dostupná ze vzdáleného výpočetního prostředí. AutoML přijímá pouze [Azure Machine Learning TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) při práci na vzdáleném výpočetním prostředí. 
 
-* TabularDataset
+Azure Machine Learning datové sady zpřístupňují funkce:
 
-  ```python
-  from azureml.core.dataset import Dataset
-  from azureml.opendatasets import Diabetes
-  
-  tabular_dataset = Diabetes.get_tabular_dataset()
-  train_dataset, test_dataset = tabular_dataset.random_split(percentage=0.1, seed=42)
-  label = "Y"
+* Data můžete snadno přenést ze statických souborů nebo zdrojů URL do svého pracovního prostoru.
+* Zpřístupněte data pro školení skriptů při spuštění na cloudových výpočetních prostředcích. Příklad [How to train with datasets](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) použití `Dataset` třídy pro připojení dat ke vzdálenému cíli výpočtů najdete v tématu výuka s datovými sadami.
+
+Následující kód vytvoří TabularDataset z webové adresy URL. Příklady vytváření datových sad z jiných zdrojů, jako jsou místní soubory a úložiště dat, najdete v tématu věnovaném [Vytvoření TabularDatasets](how-to-create-register-datasets.md#create-a-tabulardataset) .
+
+```python
+from azureml.core.dataset import Dataset
+data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
+dataset = Dataset.Tabular.from_delimited_files(data)
   ```
-
-* PANDAS – datový rámec
+**Pro účely místních výpočetních experimentů**doporučujeme PANDAS dataframes pro rychlejší časy zpracování.
 
   ```python
   import pandas as pd
@@ -104,44 +94,30 @@ Následující příklady kódu ukazují, jak ukládat data v těchto formátech
   label = "label-col-name"
   ```
 
-## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>Načtení dat pro spuštění experimentu na vzdálených COMPUTE
+## <a name="training-validation-and-test-data"></a>Školení, ověřování a testování dat
 
-Pro vzdálená spuštění musí být školicí data dostupná ze vzdáleného výpočetního prostředí. Třída [`Datasets`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) v sadě SDK zpřístupňuje funkce:
+Můžete určit samostatné **školicí a ověřovací sady** přímo v `AutoMLConfig` konstruktoru. Přečtěte si další informace o [tom, jak nakonfigurovat rozdělení dat a vzájemné ověřování](how-to-configure-cross-validation-data-splits.md) pro AutoML experimenty. 
 
-* snadné přenos dat ze statických souborů nebo zdrojů URL do vašeho pracovního prostoru
-* zpřístupnění dat pro školicí skripty při spuštění na cloudových výpočetních prostředcích
+Pokud explicitně nezadáte `validation_data` `n_cross_validation` parametr nebo, AutoML použije výchozí techniky k určení, jak se provádí ověřování. Toto určení závisí na počtu řádků v datové sadě přiřazené k vašemu `training_data` parametru. 
 
-Podívejte se [na](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) příklad použití `Dataset` třídy pro připojení dat k cíli služby Compute.
+|&nbsp;Velikost dat &nbsp; školení| Technika ověřování |
+|---|-----|
+|**Větší &nbsp; než &nbsp; 20 000 &nbsp; řádků**| Je použito rozdělení dat pro vlak nebo ověření. Ve výchozím nastavení se jako sada ověření provede 10% počáteční sady dat školení. Pak se tato sada ověření používá pro výpočet metrik.
+|**Menší &nbsp; než &nbsp; 20 000 &nbsp; řádků**| Je použit přístup pro křížové ověřování. Výchozí počet skládání závisí na počtu řádků. <br> **Pokud je datová sada menší než 1 000 řádků**, použije se 10 skládání. <br> **Pokud jsou řádky mezi 1 000 a 20 000**, budou použity tři skládání.
 
-## <a name="train-and-validation-data"></a>Data o školeních a ověřováních
-
-Můžete určit samostatné sady vlaků a ověřovacích sad přímo v `AutoMLConfig` konstruktoru s následujícími možnostmi. Přečtěte si další informace o [tom, jak nakonfigurovat rozdělení dat a vzájemné ověřování](how-to-configure-cross-validation-data-splits.md) pro AutoML experimenty. 
-
-### <a name="k-folds-cross-validation"></a>K skládání křížového ověřování
-
-Pomocí `n_cross_validations` nastavení určete počet křížků. Sada školicích dat bude náhodně rozdělena na `n_cross_validations` skládání stejné velikosti. Během každého kulatého kulatého kole se jedno ze skládání použije pro ověření modelu vyškolených ve zbývajících skládáních. Tento proces se opakuje `n_cross_validations` , dokud se každé skládání nepoužije jako nastavené pro ověření. Průměrné skóre `n_cross_validations` pro všechna zaokrouhlení budou hlášena a odpovídající model bude převedený na celou sadu dat školení.
-
-Přečtěte si další informace o tom, jak autoML používá křížové ověřování, aby se [předešlo navýšení modelů](concept-manage-ml-pitfalls.md#prevent-over-fitting)
-
-### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Křížové ověření Monte Carlo (opakované náhodné dílčí vzorkování)
-
-Slouží `validation_size` k zadání procenta pro datovou sadu školení, která se má použít k ověření, a použijte `n_cross_validations` k určení počtu meziplatných. Během každého kulatého kruhového ověřování se náhodně vybere podmnožina velikosti `validation_size` pro ověření modelu vyškolených u zbývajících dat. Nakonec bude oznámeno průměrné skóre všech `n_cross_validations` zaokrouhlení a odpovídající model bude převedený na celou datovou sadu školení. Monte Carlo se pro prognózování časových řad nepodporuje.
-
-### <a name="custom-validation-dataset"></a>Vlastní ověřovací datová sada
-
-Použijte vlastní ověřovací datovou sadu, pokud není přijatelné náhodné rozdělení, obvykle data časových řad nebo nevyvážená data. Můžete zadat vlastní ověřovací datovou sadu. Model bude vyhodnocen proti zadané datové sadě ověřování místo náhodné datové sady. Přečtěte si další informace o [tom, jak nakonfigurovat vlastní sadu ověření pomocí sady SDK](how-to-configure-cross-validation-data-splits.md#provide-validation-data).
+V tuto chvíli potřebujete pro vyhodnocení modelu zadat vlastní **testovací data** . Příklad kódu, který přináší vlastní testovací data pro vyhodnocení modelu, najdete v části **test** [tohoto poznámkového bloku Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb).
 
 ## <a name="compute-to-run-experiment"></a>Výpočetní prostředí pro spuštění experimentu
 
-Dále určete, kde bude model vyškolený. Automatický experiment pro školení ve službě Machine Learning může běžet na následujících možnostech výpočtů:
-* Váš místní počítač, jako je například místní plocha nebo přenosný počítač – obecně platí, že pokud máte malou datovou sadu a stále jste ve fázi průzkumu.
-* Vzdálený počítač v cloudu – [Azure Machine Learning Managed COMPUTE](concept-compute-target.md#amlcompute) je spravovaná služba, která umožňuje naučit modely strojového učení v clusterech virtuálních počítačů Azure. 
+Dále určete, kde bude model vyškolený. Automatické experimenty pro školení ve službě Machine Learning můžete spustit na následujících možnostech výpočtů. Seznamte se s [odborníky a nevýhody možností místní a vzdálené výpočty](concept-automated-ml.md#local-remote) . 
 
-  Příklady poznámkových bloků s místními a vzdálenými výpočetními cíli najdete na tomto [webu GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) .
+* Váš **místní** počítač, jako je místní plocha nebo přenosný počítač – obecně platí, že když máte malou datovou sadu a pořád jste ve fázi průzkumu. Příklad pro místní výpočetní prostředí najdete v [tomto poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb) . 
+ 
+* **Vzdálený** počítač v cloudu – [Azure Machine Learning Managed COMPUTE](concept-compute-target.md#amlcompute) je spravovaná služba, která umožňuje naučit modely strojového učení v clusterech virtuálních počítačů Azure. 
 
-* Cluster Azure Databricks ve vašem předplatném Azure. Další podrobnosti najdete tady: [nastavení Azure Databricks clusteru pro automatizované ml](how-to-configure-environment.md#azure-databricks) .
+    V [tomto poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) najdete vzdálený příklad s využitím Azure Machine Learning spravované výpočetní prostředky. 
 
-  Příklady poznámkových bloků s Azure Databricks najdete na tomto [webu GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) .
+* **Cluster Azure Databricks** ve vašem předplatném Azure. Další podrobnosti najdete tady – [nastavení Azure Databricks clusteru pro automatizované ml](how-to-configure-environment.md#azure-databricks). Příklady poznámkových bloků s Azure Databricks najdete na tomto [webu GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl) .
 
 <a name='configure-experiment'></a>
 
@@ -158,99 +134,111 @@ Možné příklady:
        task='classification',
        primary_metric='AUC_weighted',
        experiment_timeout_minutes=30,
-       blacklist_models=['XGBoostClassifier'],
+       blocked_models=['XGBoostClassifier'],
        training_data=train_data,
        label_column_name=label,
        n_cross_validations=2)
    ```
-2. Níže je uveden příklad regresní experimentu, který se ukončí po 60 minutách a pět přeložení ověřování.
+1. V následujícím příkladu je regresní experiment nastavený na konec po 60 minutách s pěti více než 5 ověřovacími skládáními.
 
    ```python
       automl_regressor = AutoMLConfig(
       task='regression',
       experiment_timeout_minutes=60,
-      whitelist_models=['KNN'],
+      allowed_models=['KNN'],
       primary_metric='r2_score',
       training_data=train_data,
       label_column_name=label,
       n_cross_validations=5)
    ```
 
-Tři různé `task` hodnoty parametrů (třetí typ úlohy je `forecasting` a jako úlohy používá podobný fond algoritmů `regression` ) určují seznam modelů, které se mají použít. Pomocí `whitelist` parametrů nebo `blacklist` můžete dále upravit iterace s dostupnými modely, které chcete zahrnout nebo vyloučit. Seznam podporovaných modelů lze nalézt ve [třídě SupportedModels](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) pro ([klasifikace](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [Prognózování](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)a [regresi](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)).
 
-Aby se zabránilo neúspěšným časovým limitům experimentů, bude služba ověřování automatizovaného ML vyžadovat, aby `experiment_timeout_minutes` byla nastavená na minimálně 15 minut, nebo 60 minut, pokud řádek podle velikosti sloupce překračuje 10 000 000.
+1. Úlohy prognózování vyžadují další nastavení. Další podrobnosti najdete v článku věnovaném [automatickému učení modelu prognózy Time-Series](how-to-auto-train-forecast.md) . 
+
+    ```python
+    time_series_settings = {
+        'time_column_name': time_column_name,
+        'time_series_id_column_names': time_series_id_column_names,
+        'drop_column_names': ['logQuantity'],
+        'forecast_horizon': n_test_periods
+    }
+    
+    automl_config = AutoMLConfig(task = 'forecasting',
+                                 debug_log='automl_oj_sales_errors.log',
+                                 primary_metric='normalized_root_mean_squared_error',
+                                 experiment_timeout_minutes=20,
+                                 training_data=train_data,
+                                 label_column_name=label,
+                                 n_cross_validations=5,
+                                 path=project_folder,
+                                 verbosity=logging.INFO,
+                                 **time_series_settings)
+    ```
+    
+### <a name="supported-models"></a>Podporované modely
+
+Automatizované strojové učení během procesu automatizace a optimalizace zkouší různé modely a algoritmy. Jako uživatel není nutné zadávat algoritmus. 
+
+Tři různé `task` hodnoty parametrů (třetí typ úlohy je `forecasting` a jako úlohy používá podobný fond algoritmů `regression` ) určují seznam algoritmů a modelů, které se mají použít. Pomocí `allowed_models` parametrů nebo `blocked_models` můžete dále upravit iterace s dostupnými modely, které chcete zahrnout nebo vyloučit. Seznam podporovaných modelů lze nalézt v [SupportedModels třídy](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) pro [klasifikaci](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [prognózy](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)a [regresi](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression).
+
 
 ### <a name="primary-metric"></a>Primární metrika
-Primární metrika určuje metriku, která se má použít během školení modelu pro optimalizaci. Dostupné metriky můžete vybrat podle typu úlohy, kterou zvolíte, a v následující tabulce jsou uvedeny platné primární metriky pro každý typ úkolu.
+`primary metric`Parametr určuje metriku, která se má použít během školení modelu pro optimalizaci. Dostupné metriky můžete vybrat podle typu úlohy, kterou zvolíte, a v následující tabulce jsou uvedeny platné primární metriky pro každý typ úkolu.
+
+Přečtěte si o konkrétních definicích těchto metrik v seznámení s [automatizovanými výsledky strojového učení](how-to-understand-automated-ml.md).
 
 |Classification | Regrese | Prognózování časové řady
-|-- |-- |--
+|--|--|--
 |accuracy| spearman_correlation | spearman_correlation
 |AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
 |average_precision_score_weighted | r2_score | r2_score
 |norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
 |precision_score_weighted |
 
-Přečtěte si o konkrétních definicích těchto metrik v seznámení s [automatizovanými výsledky strojového učení](how-to-understand-automated-ml.md).
-
 ### <a name="data-featurization"></a>Featurization dat
 
-U každého automatizovaného experimentu strojového učení se vaše data [automaticky škálují a normalizují](how-to-configure-auto-features.md#) tak, aby pomohly *určité* algoritmy, které jsou citlivé na funkce, které jsou v různých měřítkech.  Můžete ale také povolit další featurization, například chybějící hodnoty imputac, Encoding a transformes.
+U každého automatizovaného experimentu strojového učení se vaše data automaticky škálují a normalizují tak, aby pomohly *určité* algoritmy, které jsou citlivé na funkce, které jsou v různých měřítkech. Toto škálování a normalizace se označují jako featurization. Další podrobnosti a příklady kódu naleznete [v tématu Featurization v AutoML](how-to-configure-auto-features.md#) . 
 
-Při konfiguraci experimentů ve vašem `AutoMLConfig` objektu můžete nastavení povolit nebo zakázat `featurization` . V následující tabulce jsou uvedena přijímaná nastavení pro featurization ve [třídě AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
+Při konfiguraci experimentů ve vašem `AutoMLConfig` objektu můžete nastavení povolit nebo zakázat `featurization` . V následující tabulce jsou uvedena přijímaná nastavení pro featurization v [objektu AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
 |Konfigurace Featurization | Popis |
 | ------------- | ------------- |
-|`"featurization": 'auto'`| Označuje, že v rámci předběžného zpracování se [kroky guardrails a featurization](how-to-configure-auto-features.md#featurization) provádějí automaticky. **Výchozí nastavení**|
-|`"featurization": 'off'`| Indikuje, že krok featurization by se neměl provádět automaticky.|
+|`"featurization": 'auto'`| Označuje, že v rámci předběžného zpracování se [kroky guardrails a featurization](how-to-configure-auto-features.md#featurization) provádějí automaticky. **Výchozí nastavení**.|
+|`"featurization": 'off'`| Indikuje, že krok featurization se neprovádí automaticky.|
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| Indikuje, že by se měl použít upravený krok featurization. [Přečtěte si, jak přizpůsobit featurization](how-to-configure-auto-features.md#customize-featurization).|
 
 > [!NOTE]
 > Automatické kroky featurization strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky featurization, jaké jste použili během školení.
 
-### <a name="time-series-forecasting"></a>Prognózování časové řady
-Úloha časové řady `forecasting` vyžaduje další parametry v objektu Configuration:
+<a name="ensemble"></a>
 
-1. `time_column_name`: Požadovaný parametr, který definuje název sloupce ve školicích datech obsahujících platnou časovou řadu.
-1. `forecast_horizon`: Definuje počet období, které chcete před prognózou předpovědět. Celočíselný horizont je v jednotkách časové řady frekvence. Například pokud máte školicí data s denní frekvencí, definujete, jak dlouho ve dnech chcete, aby model mohl vyškolit.
-1. `time_series_id_column_names`: Definuje sloupce, které jednoznačně identifikují časovou řadu v datech s více řádky se stejným časovým razítkem. Pokud například vytváříte předpověď prodeje konkrétní značky podle obchodu, definovali byste sloupce úložiště a značky jako identifikátory časových řad. Pro každé seskupení se vytvoří samostatné prognózy. Pokud nejsou definované identifikátory časových řad, předpokládá se, že datová sada bude jedna časová řada.
+### <a name="ensemble-configuration"></a>Konfigurace kompletu
 
-Příklady nastavení použitých níže najdete v [ukázkovém poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
+Modely kompletu jsou ve výchozím nastavení povolené a zobrazují se jako poslední iterace spuštění v AutoML spuštění. V současné době se podporují **VotingEnsemble** a **StackEnsemble** . 
 
-```python
-# Setting Store and Brand as time series identifiers for training.
-time_series_id_column_names = ['Store', 'Brand']
-nseries = data.groupby(time_series_id_column_names).ngroups
+Hlasování implementuje měkké hlasování, které používá vážené průměry. Implementace skládání používá dvě implementace vrstvy, kde první vrstva má stejné modely jako hlasovacího kompletu, a druhý model vrstvy se používá k nalezení optimální kombinace modelů z první vrstvy. 
 
-# View the number of time series data with defined time series identifiers
-print('Data contains {0} individual time-series.'.format(nseries))
-```
+Pokud používáte modely ONNX **nebo** máte povolené vyjasnění modelu, je zablokování zakázané a využívají se jenom hlasovací.
+
+Školení kompletu se dá zakázat pomocí `enable_voting_ensemble` `enable_stack_ensemble` logických parametrů a.
 
 ```python
-time_series_settings = {
-    'time_column_name': time_column_name,
-    'time_series_id_column_names': time_series_id_column_names,
-    'drop_column_names': ['logQuantity'],
-    'forecast_horizon': n_test_periods
-}
-
-automl_config = AutoMLConfig(task = 'forecasting',
-                             debug_log='automl_oj_sales_errors.log',
-                             primary_metric='normalized_root_mean_squared_error',
-                             experiment_timeout_minutes=20,
-                             training_data=train_data,
-                             label_column_name=label,
-                             n_cross_validations=5,
-                             path=project_folder,
-                             verbosity=logging.INFO,
-                             **time_series_settings)
+automl_classifier = AutoMLConfig(
+        task='classification',
+        primary_metric='AUC_weighted',
+        experiment_timeout_minutes=30,
+        training_data=data_train,
+        label_column_name=label,
+        n_cross_validations=5,
+        enable_voting_ensemble=False,
+        enable_stack_ensemble=False
+        )
 ```
 
-### <a name="ensemble-configuration"></a><a name="ensemble"></a>Konfigurace kompletu
+Chcete-li změnit výchozí chování kompletování, existuje více výchozích argumentů, které lze zadat jako `kwargs` v `AutoMLConfig` objektu.
 
-Modely kompletu jsou ve výchozím nastavení povolené a zobrazují se jako poslední iterace v automatizovaném spuštění strojového učení. Aktuálně podporované metody kompletování jsou hlasovací a Stacked. Hlasování je implementováno jako měkký hlas pomocí vážených průměrů a implementace skládání používá dvě implementace vrstvy, kde první vrstva má stejné modely jako hlasovacího kompletu, a druhý model vrstvy se používá k nalezení optimální kombinace modelů z první vrstvy. Pokud používáte modely ONNX **nebo** Pokud máte povolenou možnost vysvětlování modelu, bude zablokování zakázané a budou využívány jenom hlasovací prvky.
-
-Existuje více výchozích argumentů, které lze zadat jako `kwargs` v `AutoMLConfig` objektu pro změnu výchozího chování kompletu.
+> [!IMPORTANT]
+>  Následující parametry nejsou explicitními parametry třídy AutoMLConfig. 
 
 * `ensemble_download_models_timeout_sec`: Během generování modelu **VotingEnsemble** a **StackEnsemble** se stáhnou několik namontovaných modelů z předchozích podřízených běhů. Pokud se setkáte s touto chybou: `AutoMLEnsembleException: Could not find any models for running ensembling` , možná bude potřeba poskytnout více času pro stažení modelů. Výchozí hodnota je 300 sekund pro stažení těchto modelů paralelně a neexistuje maximální časový limit. Pokud je potřeba víc času, nakonfigurujte tento parametr s vyšší hodnotou než 300 s. 
 
@@ -292,21 +280,6 @@ automl_classifier = AutoMLConfig(
         )
 ```
 
-Školení kompletu je ve výchozím nastavení povolené, ale je možné ho zakázat pomocí `enable_voting_ensemble` `enable_stack_ensemble` logických parametrů a.
-
-```python
-automl_classifier = AutoMLConfig(
-        task='classification',
-        primary_metric='AUC_weighted',
-        experiment_timeout_minutes=30,
-        training_data=data_train,
-        label_column_name=label,
-        n_cross_validations=5,
-        enable_voting_ensemble=False,
-        enable_stack_ensemble=False
-        )
-```
-
 ## <a name="run-experiment"></a>Spustit experiment
 
 Pro automatizované ML vytvoříte `Experiment` objekt, který je pojmenovaný objekt v, který se `Workspace` používá ke spouštění experimentů.
@@ -333,173 +306,30 @@ run = experiment.submit(automl_config, show_output=True)
 >Závislosti jsou nejprve nainstalovány v novém počítači.  Může trvat až 10 minut, než se zobrazí výstup.
 >Nastavení `show_output` na `True` výstup se zobrazí v konzole nástroje.
 
-### <a name="exit-criteria"></a><a name="exit"></a>Výstupní kritéria
+ <a name="exit"></a> 
+
+### <a name="exit-criteria"></a>Výstupní kritéria
 
 Existuje několik možností, které můžete definovat pro ukončení experimentu.
-1. Žádná kritéria: Pokud nedefinujete žádné parametry ukončení, bude experiment pokračovat, dokud nebude u primární metriky proveden žádný další postup.
-1. Ukončit po určité době: pomocí `experiment_timeout_minutes` v nastavení můžete určit, jak dlouho má experiment pokračovat v běhu.
-1. Ukončit po dosažení skóre: pomocí `experiment_exit_score` se dokončí experiment po dosažení primárního skóre metriky.
 
-### <a name="explore-model-metrics"></a>Prozkoumat metriky modelu
+|Kritéria| description
+|----|----
+Žádná &nbsp; kritéria | Pokud nedefinujete žádné parametry ukončení, experiment pokračuje, dokud neproběhne další postup u primární metriky.
+Po &nbsp; &nbsp; delší &nbsp; &nbsp; dobu| Pomocí `experiment_timeout_minutes` Možnosti v nastavení můžete určit, jak dlouho má experiment běžet v řádu minut. <br><br> Aby se zabránilo chybám při experimentování, je k dispozici minimálně 15 minut nebo 60 minut, pokud řádek podle velikosti sloupce překračuje 10 000 000.
+Bylo &nbsp; &nbsp; dosaženo skóre &nbsp; &nbsp;| Použijte `experiment_exit_score` dokončí experiment po dosažení zadaného primárního skóre metriky.
+
+## <a name="explore-models-and-metrics"></a>Prozkoumejte modely a metriky
 
 Pokud se nacházíte v poznámkovém bloku, můžete zobrazit výsledky školení v widgetu nebo v případě potřeby. Další podrobnosti najdete v tématu [sledování a vyhodnocení modelů](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs) .
 
+Přečtěte si [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md) pro definice a příklady grafů výkonu a metriky, které jsou k dispozici pro jednotlivé spuštění. 
+
+Chcete-li získat souhrn featurization a pochopit, jaké funkce byly přidány do konkrétního modelu, přečtěte si téma [transparentnost featurization](how-to-configure-auto-features.md#featurization-transparency). 
+
+## <a name="register-and-deploy-models"></a>Registrace a nasazení modelů
+
 Podrobnosti o tom, jak stáhnout nebo zaregistrovat model pro nasazení do webové služby, najdete v tématu [jak a kde nasadit model](how-to-deploy-and-where.md).
 
-## <a name="understand-automated-ml-models"></a>Principy automatizovaných modelů ML
-
-Libovolný model vytvořený pomocí automatizovaného ML obsahuje následující kroky:
-+ Automatizovaná technologie funkcí (Pokud `"featurization": 'auto'` )
-+ Škálování/normalizace a algoritmy s použitím hodnot parametrů
-
-Pro získání těchto informací z fitted_modelho výstupu z automatizovaného ML je transparentní.
-
-```python
-automl_config = AutoMLConfig(…)
-automl_run = experiment.submit(automl_config …)
-best_run, fitted_model = automl_run.get_output()
-```
-
-### <a name="automated-feature-engineering"></a>Automatizovaná technologie funkcí
-
-Podívejte se na seznam předzpracovaných a [automatizovaných funkcí]() , ke kterým dojde, když `"featurization": 'auto'` .
-
-Vezměte v úvahu tento příklad:
-+ Existují čtyři vstupní funkce: A (číselná), B (číselná), C (číselná), D (DateTime).
-+ Číselná funkce C je vyřazena, protože se jedná o sloupec ID se všemi jedinečnými hodnotami.
-+ Numerické funkce a a B chybějící hodnoty a jsou proto imputované středníky.
-+ Funkce DateTime D je natrénuje na 11 různých funkcí navržených pro analýzu.
-
-Tato 2 rozhraní API použijte v prvním kroku namontovaného modelu, abyste lépe pochopili víc.  Podívejte se na [Tento ukázkový Poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
-
-+ Rozhraní API 1: `get_engineered_feature_names()` vrátí seznam navržených názvů funkcí.
-
-  Použití:
-  ```python
-  fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
-  ```
-
-  ```
-  Output: ['A', 'B', 'A_WASNULL', 'B_WASNULL', 'year', 'half', 'quarter', 'month', 'day', 'hour', 'am_pm', 'hour12', 'wday', 'qday', 'week']
-  ```
-
-  Tento seznam obsahuje všechny inženýrské názvy funkcí.
-
-  >[!Note]
-  >Použijte ' timeseriestransformer ' pro Task = ' Forecasting ', jinak použijte ' datatransformer ' pro ' regresi ' nebo ' Classification '.
-
-+ Rozhraní API 2: `get_featurization_summary()` Vrátí souhrn featurization pro všechny vstupní funkce.
-
-  Použití:
-  ```python
-  fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
-  ```
-
-  >[!Note]
-  >Použijte ' timeseriestransformer ' pro Task = ' Forecasting ', jinak použijte ' datatransformer ' pro ' regresi ' nebo ' Classification '.
-
-  Výstup:
-  ```
-  [{'RawFeatureName': 'A',
-    'TypeDetected': 'Numeric',
-    'Dropped': 'No',
-    'EngineeredFeatureCount': 2,
-    'Tranformations': ['MeanImputer', 'ImputationMarker']},
-   {'RawFeatureName': 'B',
-    'TypeDetected': 'Numeric',
-    'Dropped': 'No',
-    'EngineeredFeatureCount': 2,
-    'Tranformations': ['MeanImputer', 'ImputationMarker']},
-   {'RawFeatureName': 'C',
-    'TypeDetected': 'Numeric',
-    'Dropped': 'Yes',
-    'EngineeredFeatureCount': 0,
-    'Tranformations': []},
-   {'RawFeatureName': 'D',
-    'TypeDetected': 'DateTime',
-    'Dropped': 'No',
-    'EngineeredFeatureCount': 11,
-    'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
-  ```
-
-   Kde:
-
-   |Výstup|Definice|
-   |----|--------|
-   |RawFeatureName|Název funkce nebo sloupce vstupu ze zadané datové sady.|
-   |TypeDetected|Byl zjištěn datový typ vstupní funkce.|
-   |Odpojení|Určuje, zda byla vstupní funkce vyřazena nebo použita.|
-   |EngineeringFeatureCount|Počet funkcí generovaných pomocí transformací technologie automatizovaného zpracování funkcí|
-   |Transformace|Seznam transformací použitých u vstupních funkcí k vygenerování navržených funkcí|
-### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Škálování/normalizace a algoritmy pomocí hodnot parametrů:
-
-Pro pochopení hodnoty škálování/normalizace a algoritmu/parametrů pro kanál použijte fitted_model. Steps. [Další informace o škálování/normalizaci](how-to-configure-auto-features.md). Zde je ukázkový výstup:
-
-```
-[('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))
-```
-
-Další podrobnosti získáte pomocí této pomocné funkce: 
-
-```python
-from pprint import pprint
-
-
-def print_model(model, prefix=""):
-    for step in model.steps:
-        print(prefix + step[0])
-        if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
-            pprint({'estimators': list(
-                e[0] for e in step[1].estimators), 'weights': step[1].weights})
-            print()
-            for estimator in step[1].estimators:
-                print_model(estimator[1], estimator[0] + ' - ')
-        else:
-            pprint(step[1].get_params())
-            print()
-
-
-print_model(model)
-```
-
-Následující vzorový výstup je určený pro kanál pomocí konkrétního algoritmu (LogisticRegression s RobustScalar, v tomto případě).
-
-```
-RobustScaler
-{'copy': True,
-'quantile_range': [10, 90],
-'with_centering': True,
-'with_scaling': True}
-
-LogisticRegression
-{'C': 0.18420699693267145,
-'class_weight': 'balanced',
-'dual': False,
-'fit_intercept': True,
-'intercept_scaling': 1,
-'max_iter': 100,
-'multi_class': 'multinomial',
-'n_jobs': 1,
-'penalty': 'l2',
-'random_state': None,
-'solver': 'newton-cg',
-'tol': 0.0001,
-'verbose': 0,
-'warm_start': False}
-```
-
-### <a name="predict-class-probability"></a>Předpověď pravděpodobnosti třídy
-
-Modely vytvořené pomocí automatizovaných ML mají objekty obálky, které zrcadlí funkci ze své Open Source třídy původu. Většina objektů obálky modelu klasifikace vrácených pomocí automatizovaného ML implementuje `predict_proba()` funkci, která přijímá ukázku dat typu pole nebo zhuštěné matrice vašich funkcí (hodnot X) a vrací n-dimenzionální pole každé ukázky a její příslušnou pravděpodobnost třídy.
-
-Za předpokladu, že jste načetli nejlepší běh a namontovaný model pomocí stejných volání výše, můžete zavolat `predict_proba()` přímo z namontovaného modelu a zadat `X_test` ukázku v příslušném formátu v závislosti na typu modelu.
-
-```python
-best_run, fitted_model = automl_run.get_output()
-class_prob = fitted_model.predict_proba(X_test)
-```
-
-Pokud podkladový model nepodporuje `predict_proba()` funkci nebo je nesprávný formát, bude vyvolána výjimka specifická pro třídu modelu. Příklady toho, jak je tato funkce implementovaná pro různé typy modelů, najdete v referenční dokumentaci k [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.predict_proba) a [XGBoost](https://xgboost.readthedocs.io/en/latest/python/python_api.html) .
 
 <a name="explain"></a>
 
@@ -519,4 +349,5 @@ Obecné informace o tom, jak je možné povolit vysvětlení modelu a důležito
 + Přečtěte si další informace o [tom, jak a kde model nasadit](how-to-deploy-and-where.md).
 
 + Přečtěte si další informace o [tom, jak vytvořit regresní model pomocí automatizovaného strojového učení](tutorial-auto-train-models.md) nebo [jak pomocí automatizovaného strojového učení na vzdáleném prostředku vyškolit](how-to-auto-train-remote.md).
-+ Naučte se, jak proškolit několik modelů pomocí autoML v [mnoha akcelerátorech řešení modelů](https://aka.ms/many-models).
+
++ Naučte se, jak proškolit několik modelů pomocí AutoML v [mnoha akcelerátorech řešení modelů](https://aka.ms/many-models).

@@ -46,6 +46,8 @@
       href: how-to-integrate-certificate-authority.md
     - name: Řešení potíží – import certifikátů
       href: import-cert-faqs.md
+    - name: Export certifikátu z trezoru klíčů
+      href: how-to-export-certificate.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell

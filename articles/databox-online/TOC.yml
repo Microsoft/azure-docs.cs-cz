@@ -117,10 +117,14 @@
               href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: Přes PowerShell
               href: azure-stack-edge-connect-powershell-interface.md
-        - name: Řešení potíží
-          href: azure-stack-edge-troubleshoot.md
-        - name: Kontaktovat podporu Microsoftu
-          href: azure-stack-edge-contact-microsoft-support.md
+            - name: Řešení potíží
+              items:
+                - name: Přes protokoly
+                  href: azure-stack-edge-troubleshoot.md
+                - name: Potíže s objednáním
+                  href: azure-stack-edge-troubleshoot-ordering.md
+                - name: Kontaktovat podporu Microsoftu
+                  href: azure-stack-edge-contact-microsoft-support.md
         - name: Monitorování
           href: azure-stack-edge-monitor.md
         - name: Vrácení zařízení

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 127604264850f9845846d0bb6a2768cac23cdc8c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 0613b4c444b9eacaaf2b9d3e0795f4872cb903f3
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88169132"
+ms.locfileid: "88182935"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Životní cyklus a stavy virtuálních počítačů
 
@@ -23,137 +23,195 @@ Azure Virtual Machines (virtuální počítače) procházejí různými stavy, k
 
 Stav napájení představuje poslední známý stav virtuálního počítače.
 
-![Diagram stavu napájení virtuálního počítače](./media/vm-power-states.png)
+![Diagram stavu napájení virtuálního počítače](./media/virtual-machines-common-states-lifecycle/vm-power-states.png)
 
 <br>
 Následující tabulka obsahuje popis každého stavu instance a označuje, zda se účtuje za použití instance nebo ne.
 
-<table>
-<tr>
-<th>
-State
-</th>
-<th>
-Popis
-</th>
-<th>
-Fakturace využití instancí
-</th>
-</tr>
-<tr>
-<td>
-<p><b>Spouštění</b></p>
-</td>
-<td>
-<p>Spouští se virtuální počítač.</p>
-<code>"statuses": [<br>
-   {<br>
-      "code": "PowerState/starting",<br>
-       "level": "Info",<br>
-        "displayStatus": "VM starting"<br>
-    }<br>
-    ]</code><br>
-</td>
-<td>
-<p><b>Neúčtuje se</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>Spuštěno</b></p>
-</td>
-<td>
-<p>Normální pracovní stav pro virtuální počítač</p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/running",<br>
- "level": "Info",<br>
- "displayStatus": "VM running"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>Účtuje</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>Zastavování</b></p>
-</td>
-<td>
-<p>Toto je přechodný stav. Po dokončení se zobrazí jako **Zastaveno**.</p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/stopping",<br>
- "level": "Info",<br>
- "displayStatus": "VM stopping"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>Účtuje</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>Zastaveno</b></p>
-</td>
-<td>
-<p>Virtuální počítač se vypnul v hostovaném operačním systému nebo pomocí rozhraní stavu PowerOff API.</p>
-<p>Hardware je stále přidělen k virtuálnímu počítači a zůstane na hostiteli. </p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/stopped",<br>
- "level": "Info",<br>
- "displayStatus": "VM stopped"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>Fakturované&#42;</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>Rušení přidělení</b></p>
-</td>
-<td>
-<p>Přechodný stav. Po dokončení se virtuální počítač zobrazí jako **navrácené**.</p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/deallocating",<br>
- "level": "Info",<br>
- "displayStatus": "VM deallocating"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>Nefakturovatelné&#42;</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>Přidělení zrušeno</b></p>
-</td>
-<td>
-<p>Virtuální počítač se úspěšně zastavil a odebral z hostitele. </p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/deallocated",<br>
- "level": "Info",<br>
- "displayStatus": "VM deallocated"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>Neúčtuje se</b></p>
-</td>
-</tr>
-</tbody>
-</table>
+:::row:::
+   :::column span="":::
+
+   **Státech**
+   
+   :::column-end:::
+   :::column span="":::
+
+   **Popis**
+
+   :::column-end:::
+   :::column span="":::
+
+   **Využití instance se účtuje**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Spouštění**
+
+   :::column-end:::
+   :::column span="":::
+
+   Spouští se virtuální počítač.
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/starting",
+    "level": "Info",
+    "displayStatus": "VM starting"
+    }
+   ]
+   ```
+   :::column-end:::
+   :::column span="":::
+
+   **Neúčtuje se**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Spuštěno**
+
+   :::column-end:::
+   :::column span="":::
+
+   Normální pracovní stav pro virtuální počítač
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/running",
+    "level": "Info",
+    "displayStatus": "VM running"
+    }
+  ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **Účtuje**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Zastavování**
+
+   :::column-end:::
+   :::column span="":::
+
+   Toto je přechodný stav. Po dokončení se zobrazí jako **Zastaveno**.
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/stopping",
+    "level": "Info",
+    "displayStatus": "VM stopping"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **Účtuje**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Zastaveno**
+
+   :::column-end:::
+   :::column span="":::
+
+   Virtuální počítač se vypnul v hostovaném operačním systému nebo pomocí rozhraní stavu PowerOff API.
+
+   Hardware je stále přidělen k virtuálnímu počítači a zůstane na hostiteli.
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/stopped",
+    "level": "Info",
+    "displayStatus": "VM stopped"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **Účtuje***
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Rušení přidělení**
+
+   :::column-end:::
+   :::column span="":::
+
+   Přechodný stav. Po dokončení se virtuální počítač zobrazí jako **navrácené**.
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/deallocating",
+    "level": "Info",
+    "displayStatus": "VM deallocating"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **Neúčtuje se***
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Přidělení zrušeno**
+
+   :::column-end:::
+   :::column span="":::
+
+   Virtuální počítač se úspěšně zastavil a odebral z hostitele.
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/deallocated",
+    "level": "Info",
+    "displayStatus": "VM deallocated"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **Neúčtuje se**
+
+   :::column-end:::
+:::row-end:::
 
 
-&#42;některých prostředků Azure, jako jsou disky a sítě, se účtují poplatky. K softwarovým licencím na instanci se neúčtují poplatky.
+&#42; některých prostředků Azure, jako jsou disky a sítě, se účtují poplatky. K softwarovým licencím na instanci se neúčtují poplatky.
 
 ## <a name="provisioning-states"></a>Stavy zřizování
 
@@ -171,86 +229,159 @@ Stav zřizování je stav operace iniciované uživatelem na úrovni virtuální
 
 Zde jsou přechodné stavy operace poté, co platforma přijala akci iniciované uživatelem:
 
-<br>
+:::row:::
+   :::column span="":::
 
-<table>
-<tbody>
-<tr>
-<td width="162">
-<p><b>Stavy</b></p>
-</td>
-<td width="366">
-<p>Description</p>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>Vytváření</b></p>
-</td>
-<td width="366">
-<code>"statuses": [<br>
- {<br>
- "code": "ProvisioningState/creating",<br>
- "level": "Info",<br>
- "displayStatus": "Creating"<br>
- }</code><br>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>Doplnění</b></p>
-</td>
-<td width="366">
-<code>"statuses": [<br>
- {<br>
- "code": "ProvisioningState/updating",<br>
- "level": "Info",<br>
- "displayStatus": "Updating"<br>
- }<br>
- ]</code><br>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>odstraňování</b></p>
-</td>
-<td width="366">
-<code>"statuses": [<br>
- {<br>
- "code": "ProvisioningState/deleting",<br>
- "level": "Info",<br>
- "displayStatus": "Deleting"<br>
- }<br>
- ]</code><br>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>Stavy zřizování operačního systému</b></p>
-</td>
-<td width="366">
-<p>Pokud se vytvoří virtuální počítač s bitovou kopií operačního systému, a ne s specializovanou imagí, můžete dodržovat tyto podstavy:</p>
-<p>1. <b>OSProvisioningInprogress</b> &ndash; Virtuální počítač je spuštěný a probíhá instalace hostovaného operačního systému. <p /> 
-<code> "statuses": [<br>
- {<br>
- "code": "ProvisioningState/creating/OSProvisioningInprogress",<br>
- "level": "Info",<br>
- "displayStatus": "OS Provisioning In progress"<br>
- }<br>
-]</code><br>
-<p>2. <b>OSProvisioningComplete</b> &ndash; Krátkodobý stav. Virtuální počítač se rychle přepřechodem na **úspěch** , pokud není potřeba instalovat nějaká rozšíření. Instalace rozšíření může chvíli trvat. <br />
-<code> "statuses": [<br>
- {<br>
- "code": "ProvisioningState/creating/OSProvisioningComplete",<br>
- "level": "Info",<br>
- "displayStatus": "OS Provisioning Complete"<br>
- }<br>
-]</code><br>
-<p><b>Poznámka</b>: zřizování operačního systému může přejít na **neúspěšné** , pokud dojde k selhání operačního systému nebo pokud se operační systém neinstaluje v čase. Zákazníkům se bude účtovat nasazený virtuální počítač v infrastruktuře.</p>
-</td>
-</tr>
-</table>
+   **Státech**
+   
+   :::column-end:::
+   :::column span="2":::
 
+   **Popis**
+
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Vytváření**
+
+   :::column-end:::
+   :::column span="2":::
+
+  ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/creating",
+    "level": "Info",
+    "displayStatus": "Creating"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Doplnění**
+
+   :::column-end:::
+   :::column span="2":::
+
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/updating",
+    "level": "Info",
+    "displayStatus": "Updating"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **odstraňování**
+
+   :::column-end:::
+   :::column span="2":::
+
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/deleting",
+    "level": "Info",
+    "displayStatus": "Deleting"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Stavy zřizování operačního systému**
+   
+   :::column-end:::
+   :::column span="2":::
+
+   **Popis**
+
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+
+
+   :::column-end:::
+   :::column span="2":::
+
+   Pokud se vytvoří virtuální počítač s bitovou kopií operačního systému, a ne s specializovanou imagí, můžete dodržovat tyto podstavy:
+
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **OSProvisioningInprogress**
+
+   :::column-end:::
+   :::column span="2":::
+
+   Virtuální počítač je spuštěný a probíhá instalace hostovaného operačního systému.
+ 
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/creating/OSProvisioningInprogress",
+    "level": "Info",
+    "displayStatus": "OS Provisioning In progress"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **OSProvisioningComplete**
+
+   :::column-end:::
+   :::column span="2":::
+   
+   Krátkodobý stav. Virtuální počítač se rychle přepřechodem na **úspěch** , pokud není potřeba instalovat nějaká rozšíření. Instalace rozšíření může chvíli trvat.
+   
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/creating/OSProvisioningComplete",
+    "level": "Info",
+    "displayStatus": "OS Provisioning Complete"
+    }
+   [
+   ```
+   
+   **Poznámka**: zřizování operačního systému může přejít na **neúspěšné** , pokud dojde k selhání operačního systému nebo pokud se operační systém neinstaluje v čase. Zákazníkům se bude účtovat nasazený virtuální počítač v infrastruktuře.
+
+   :::column-end:::
+
+:::row-end:::
 
 Po dokončení operace se virtuální počítač převede do jednoho z následujících stavů:
 

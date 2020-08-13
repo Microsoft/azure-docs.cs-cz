@@ -46,7 +46,7 @@
       items:
         - name: 1. Návrh databáze
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: tutorial-design-database-using-azure-portal.md
             - name: Azure CLI
               href: tutorial-design-database-using-azure-cli.md
@@ -169,14 +169,16 @@
               href: howto-move-regions-portal.md
     - name: Hyperscale (Citus)
       items:
-        - name: Uzly
-          href: concepts-hyperscale-nodes.md
         - name: Distribuovaná data
-          href: concepts-hyperscale-distributed-data.md
-        - name: Volba distribučního sloupce
-          href: concepts-hyperscale-choose-distribution-column.md
-        - name: Společné umístění tabulek
-          href: concepts-hyperscale-colocation.md
+          items:
+            - name: Uzly a tabulky
+              href: concepts-hyperscale-nodes.md
+            - name: Určení typu aplikace
+              href: concepts-hyperscale-app-type.md
+            - name: Volba distribučního sloupce
+              href: concepts-hyperscale-choose-distribution-column.md
+            - name: Společné umístění tabulek
+              href: concepts-hyperscale-colocation.md
         - name: Zabezpečení a přístup k datům
           items:
             - name: Pravidla brány firewall
@@ -231,13 +233,13 @@
               href: howto-optimize-query-time-with-toast-table-storage-strategy.md
         - name: Správa brány firewall
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-manage-firewall-using-portal.md
             - name: Azure CLI
               href: howto-manage-firewall-using-cli.md
         - name: Obnovení serveru
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-restore-server-portal.md
             - name: Azure CLI
               href: howto-restore-server-cli.md
@@ -259,7 +261,7 @@
               href: howto-connection-string-powershell.md
         - name: Konfigurace parametrů serveru
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-configure-server-parameters-using-portal.md
             - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
@@ -267,7 +269,7 @@
               href: howto-configure-server-parameters-using-powershell.md
         - name: Automatické zvětšení úložiště
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-auto-grow-storage-portal.md
             - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
@@ -275,7 +277,7 @@
               href: howto-auto-grow-storage-powershell.md
         - name: Protokoly přístupu
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-configure-server-logs-in-portal.md
             - name: Azure CLI
               href: howto-configure-server-logs-using-cli.md
@@ -295,19 +297,19 @@
               href: howto-database-threat-protection-portal.md
         - name: Virtual Network
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-manage-vnet-using-portal.md
             - name: Azure CLI
               href: howto-manage-vnet-using-cli.md
         - name: Privátní propojení
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-configure-privatelink-portal.md
             - name: Azure CLI
               href: howto-configure-privatelink-cli.md
         - name: Šifrování dat
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-data-encryption-portal.md
             - name: Azure CLI
               href: howto-data-encryption-cli.md
@@ -319,7 +321,7 @@
               href: howto-double-encryption.md
         - name: Restartování serveru
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-restart-server-portal.md
             - name: Azure CLI
               href: howto-restart-server-cli.md
@@ -341,12 +343,16 @@
       items:
         - name: Vytvoření uživatelů
           href: howto-hyperscale-create-users.md
-        - name: Měřítko
+        - name: Velikost skupiny serverů
           href: howto-hyperscale-scaling.md
         - name: Správa brány firewall
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: Distribuovaná data
+          items:
+            - name: Distribuce a úprava tabulek
+              href: howto-hyperscale-modify-distributed-tables.md
         - name: Vysoká dostupnost
           href: howto-hyperscale-high-availability.md
         - name: Monitorování
@@ -361,12 +367,22 @@
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: Referenční informace
   items:
-    - name: Azure CLI
-      href: /cli/azure/postgres
-    - name: REST API
-      href: /rest/api/postgresql
-    - name: Šablona Resource Manageru
-      href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Jeden server
+      items:
+        - name: Azure CLI
+          href: /cli/azure/postgres
+        - name: REST API
+          href: /rest/api/postgresql
+        - name: Šablona Resource Manageru
+          href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Hyperscale (Citus)
+      items:
+        - name: Funkce SQL API
+          href: reference-hyperscale-functions.md
+        - name: Parametry serveru
+          href: reference-hyperscale-parameters.md
+        - name: Systémové tabulky
+          href: reference-hyperscale-metadata.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

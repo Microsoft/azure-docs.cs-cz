@@ -1,6 +1,6 @@
 ---
 title: Azure VMware Solution by CloudSimple
-description: Vyhledejte si dokumentaci pro Azure VMware Solution by CloudSimple.
+description: Seznamte se se službou Azure VMware Solutions by CloudSimple, včetně přehledu, rychlých zprovoznění, kurzů a praktických průvodců.
 author: sharaths-cs
 ms.author: b-mashar
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8866015fc4c9d054289a3eea2b9b8453ae39edcf
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 0ea962469d9f1dafb51cf047306d99758c3cc118
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116637"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140696"
 ---
 # <a name="azure-vmware-solution-by-cloudsimple"></a>Azure VMware Solution by CloudSimple
 

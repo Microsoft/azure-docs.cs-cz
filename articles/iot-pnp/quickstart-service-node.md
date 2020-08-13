@@ -3,17 +3,17 @@ title: Interakce se zařízením IoT technologie Plug and Play Preview připojen
 description: Pomocí Node.js se můžete připojit k zařízení IoT technologie Plug and Play Preview, které je připojené k řešení Azure IoT, a pracovat s ním.
 author: elhorton
 ms.author: elhorton
-ms.date: 07/13/2020
+ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 511a61fb1069ce10e94e24ecd3ba6d60470ca40f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: fd65dcc9ce0be07daa5848a0ac583cf795150e47
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424439"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184733"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play ve verzi Preview, které je připojené k vašemu řešení (Node.js)
 
@@ -33,12 +33,6 @@ Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověř
 node --version
 ```
 
-Pomocí následujícího příkazu nainstalujte [sadu SDK pro Node Service s podporou IoT technologie Plug and Play](https://www.npmjs.com/package/azure-iot-digitaltwins-service) :
-
-```cmd/sh
-npm i azure-iot-digitaltwins-service
-```
-
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
 Spuštěním následujícího příkazu Získejte _připojovací řetězec služby IoT Hub_ pro vaše centrum. Poznamenejte si tento připojovací řetězec, budete ho používat později v tomto rychlém startu:
@@ -53,15 +47,19 @@ Spuštěním následujícího příkazu Získejte _připojovací řetězec zař�
 az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output
 ```
 
+### <a name="clone-the-sdk-repository-with-the-sample-code"></a>Naklonujte úložiště sady SDK pomocí ukázkového kódu.
+
+Sada SDK služby je ve verzi Preview, takže je nutné klonovat ukázky z [větve Preview sady SDK Node](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh). Otevřete okno terminálu ve složce podle vašeho výběru. Spuštěním následujícího příkazu naklonujte větev **pnp-Preview-Refresh** sady [Microsoft Azure IoT SDK pro Node.js](https://github.com/Azure/azure-iot-sdk-node) úložiště GitHub:
+
+```cmd/sh
+git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
+```
+
 ## <a name="run-the-sample-device"></a>Spuštění ukázkového zařízení
 
 V tomto rychlém startu můžete použít ukázkový termostat zařízení, které je napsané v Node.js jako zařízení technologie Plug and Play IoT. Spuštění ukázkového zařízení:
 
-1. Otevřete okno terminálu ve složce podle vašeho výběru. Spusťte následující příkaz, který naklonuje [sadu Microsoft Azure IoT SDK pro Node.js](https://github.com/Azure/azure-iot-sdk-node) úložiště GitHub do tohoto umístění:
-
-    ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node
-    ```
+1. Otevřete okno terminálu a přejděte do místní složky, která obsahuje sadu Microsoft Azure IoT SDK pro Node.js úložiště, které jste naklonoval z GitHubu.
 
 1. Toto okno terminálu slouží jako terminál **zařízení** . Přejděte do složky naklonovaného úložiště a přejděte do složky */Azure-IoT-SDK-Node/Device/Samples/PNP* . Všechny závislosti Nainstalujte spuštěním následujícího příkazu:
 
@@ -90,10 +88,10 @@ V tomto rychlém startu použijete ukázkové řešení IoT v Node.js k interakc
 1. Otevřete další okno terminálu pro použití jako terminálu **služby** . Sada SDK služby je ve verzi Preview, takže je nutné klonovat ukázky z [větve verze Preview sady SDK pro uzly](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh):
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node -b public-preview-pnp
+    git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
     ```
 
-1. Přejděte do složky této větve klonovaného úložiště a přejděte do složky */Azure-IoT-Samples-Node/Digital-Twins/Samples/Service/JavaScript* . Všechny závislosti Nainstalujte spuštěním následujícího příkazu:
+1. Přejděte do složky této větve klonovaného úložiště a přejděte do složky */Azure-IoT-SDK-Node/digitaltwins/Samples/Service/JavaScript* . Všechny závislosti Nainstalujte spuštěním následujícího příkazu:
 
     ```cmd/sh
     npm install
@@ -144,14 +142,14 @@ V tomto scénáři výstup IT `Model Id: dtmi:com:example:Thermostat;1` .
 
 ### <a name="update-a-writable-property"></a>Aktualizovat vlastnost s možností zápisu
 
-1. Otevřete soubor *update_digital_twin_property.js* v editoru kódu.
+1. Otevřete soubor *update_digital_twin.js* v editoru kódu.
 
 1. Přečtěte si vzorový kód. Můžete si prohlédnout, jak vytvořit opravu JSON pro aktualizaci digitálního vlákna vašeho zařízení. V této ukázce kód nahradí teplotu termostatu hodnotou 42:
 
     ```javascript
     const patch = [{
         op: 'add',
-        path: 'targetTemperature',
+        path: '/targetTemperature',
         value: '42'
       }]
     ```
@@ -159,43 +157,23 @@ V tomto scénáři výstup IT `Model Id: dtmi:com:example:Thermostat;1` .
 1. V terminálu **služby** použijte následující příkaz ke spuštění ukázky pro aktualizaci vlastnosti:
 
     ```cmd/sh
-    node update_digital_twin_property.js
-    ```
-
-1. Výstup terminálu **služby** zobrazuje aktualizované informace o zařízení. Posuňte se na `thermostat1` součást, abyste viděli novou `targetTemperature` hodnotu 42:
-
-    ```json
-    "modelId": "dtmi:com:example:Thermostat;1",
-        "version": 12,
-        "properties": {
-            "desired": {
-                "targetTemperature": "42",
-                "$metadata": {
-                    "$lastUpdated": "2020-07-09T13:55:50.7976985Z",
-                    "$lastUpdatedVersion": 5,
-                    "targetTemperature": {
-                        "$lastUpdated": "2020-07-09T13:55:50.7976985Z",
-                        "$lastUpdatedVersion": 5
-                    }
-                },
-                "$version": 5
-            },
-            "reported": {
-                "serialNumber": "123abc",
-                "maxTempSinceLastReboot": 32.279942997143785,
-                "targetTemperature": {
-                    "value": "42",
-                    "ac": 200,
-                    "ad": "Successfully executed patch for targetTemperature",
-                    "av": 2
-                },
+    node update_digital_twin.js
     ```
 
 1. V terminálu **zařízení** vidíte, že zařízení obdrželo aktualizaci:
 
     ```cmd/sh
-    Received an update for targetTemperature: 42
+    The following properties will be updated for root interface:
+    {
+      targetTemperature: {
+        value: 42,
+        ac: 200,
+        ad: 'Successfully executed patch for targetTemperature',
+        av: 2
+      }
+    }
     updated the property
+    Properties have been reported for component
     ```
 
 1. V terminálu **služby** spusťte následující příkaz, kterým potvrdíte aktualizaci této vlastnosti:
@@ -207,15 +185,7 @@ V tomto scénáři výstup IT `Model Id: dtmi:com:example:Thermostat;1` .
 1. Ve výstupu terminálu **služby** se v digitální nedokončené reakci v rámci `thermostat1` komponenty zobrazí aktualizovaná cílová teplota. Může chvíli trvat, než zařízení dokončí aktualizaci. Opakujte tento krok, dokud zařízení nezpracuje aktualizaci vlastnosti:
 
     ```json
-    "$model": "dtmi:com:example:Thermostat;1",
-    "targetTemperature": {
-      "desiredValue": 42,
-      "desiredVersion": 4,
-      "ackVersion": 4,
-      "ackCode": 200,
-      "ackDescription": "Successfully executed patch for targetTemperature",
-      "lastUpdateTime": "2020-07-09T13:55:30.5062641Z"
-    }
+    targetTemperature: 42,
     ```
 
 ### <a name="invoke-a-command"></a>Vyvolání příkazu
@@ -225,6 +195,8 @@ V tomto scénáři výstup IT `Model Id: dtmi:com:example:Thermostat;1` .
 1. Přejděte do terminálu **služby** . Pomocí následujícího příkazu spusťte ukázku pro vyvolání příkazu:
 
     ```cmd/sh
+    set IOTHUB_COMMAND_NAME=getMaxMinReport
+    set IOTHUB_COMMAND_PAYLOAD=commandpayload
     node invoke_command.js
     ```
 
@@ -245,7 +217,7 @@ V tomto scénáři výstup IT `Model Id: dtmi:com:example:Thermostat;1` .
 1. V terminálu **zařízení** se zobrazí potvrzení příkazu:
 
     ```cmd/sh
-    MaxMinReport [object Object]
+    MaxMinReport commandpayload
     Response to method 'getMaxMinReport' sent successfully.
     ```
 

@@ -5,14 +5,14 @@ author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: f7d9912686be8ba6076278f148067575a40f32f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e2eb1c2b6ecb98c60b117d004a97cd4e5f07a55
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510034"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182158"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Zpracování oznámení o plánované údržbě
 
@@ -107,7 +107,8 @@ Další informace o vysoké dostupnosti najdete v tématu [dostupnost pro virtu�
 **A:** Existuje několik důvodů, proč se na virtuálních počítačích nezobrazuje žádné informace o údržbě:
 1.  Používáte odběr označený jako interní Microsoft.
 2.  Pro vaše virtuální počítače není naplánovaná údržba. Může to být tím, že se vlna údržby ukončil, zrušil nebo upravil, aby na vaše virtuální počítače už neovlivnila žádná z nich.
-3.  Do zobrazení seznamu virtuálních počítačů nemáte přidaný sloupec **Údržba** . I když jsme tento sloupec přidali do výchozího zobrazení, zákazníci, kteří si nakonfigurovali, aby viděli jiné než výchozí sloupce, musí do zobrazení seznamu virtuálních počítačů ručně přidat sloupec **Údržba** .
+3. Nastavili jste virtuální počítač a potom ho spustili. To může způsobit, že se virtuální počítač přesune do umístění, ve kterém se naplánovala plánovaná vlna údržby. Takže virtuální počítač nebude zobrazovat informace o údržbě. 
+4.  Do zobrazení seznamu virtuálních počítačů nemáte přidaný sloupec **Údržba** . I když jsme tento sloupec přidali do výchozího zobrazení, zákazníci, kteří si nakonfigurovali, aby viděli jiné než výchozí sloupce, musí do zobrazení seznamu virtuálních počítačů ručně přidat sloupec **Údržba** .
 
 **Otázka: má virtuální počítač naplánovanou údržbu podruhé. Proč?**
 

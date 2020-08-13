@@ -1,17 +1,17 @@
 ---
 title: Uživatelské rozhraní Microsoft Azure StorSimple Data Manager
-description: Popisuje, jak používat rozhraní StorSimple Data Manager služby.
+description: Přečtěte si, jak můžete pomocí uživatelského rozhraní StorSimple Data Manager transformovat data umístěná na zařízeních řady StorSimple 8000.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 00748cfa60882e49336c3a0ac3ecfdec389021ac
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5d6273cbef1664984d466fb15c7f02ca505b18e2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496436"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184529"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Správa služby StorSimple Data Manager v Azure Portal
 
@@ -48,7 +48,7 @@ Chcete-li vytvořit službu StorSimple Data Manager, proveďte následující kr
     
    5. Pokud chcete na řídicím panelu získat odkaz na tuto službu, vyberte **Připnout na řídicí panel**.
     
-   6. Klikněte na **Vytvořit**.
+   6. Klikněte na možnost **Vytvořit**.
 
       ![Vytvoření StorSimple Data Manager služby 3](./media/storsimple-data-manager-ui/create-service-4.png)
 

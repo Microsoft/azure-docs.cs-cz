@@ -1,5 +1,5 @@
 ---
-title: Připojení pomocí Pythonu-Azure Database for PostgreSQL-Single server
+title: 'Rychlý Start: připojení pomocí Pythonu-Azure Database for PostgreSQL-Single server'
 description: V tomto rychlém startu najdete ukázky kódu v Pythonu, které můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jednom serveru.
 author: rachel-msft
 ms.author: raagyema
@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 8cc081035c971f1864af5512a19c0ee2da3004ab
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a9303909eb98fc0ff2d7582fa7f5807a879e7958
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852170"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182678"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití Pythonu k připojení a dotazování dat v Azure Database for PostgreSQL-Single server
 
@@ -23,7 +23,7 @@ V tomto rychlém startu pracujete s Azure Database for PostgreSQL s využitím P
 > Pokud chcete vytvořit aplikaci Django s PostgreSQL, pak ji vyřadíte [pomocí kurzu nasazení webové aplikace Django s](../app-service/containers/tutorial-python-postgresql-app.md) využitím PostgreSQL.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 

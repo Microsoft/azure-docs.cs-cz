@@ -117,30 +117,16 @@
   items:
     - name: Dokumentace k převodu textu na řeč
       href: index-text-to-speech.yml
-    - name: Přehled
-      items:
-        - name: Co je převod textu na řeč?
-          href: text-to-speech.md
-        - name: Základy převodu textu na řeč
-          href: text-to-speech-basics.md
-    - name: Rychlý start
-      items:
-        - name: Syntéza řeči do reproduktoru
-          href: quickstarts/text-to-speech.md
-        - name: Syntéza řeči do zvukového souboru
-          href: quickstarts/text-to-speech-audio-file.md
-        - name: Syntéza řeči s využitím dlouhého formátu
-          href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+    - name: Co je převod textu na řeč?
+      href: text-to-speech.md
+    - name: Rychlé zprovoznění převodu textu na řeč
+      href: get-started-text-to-speech.md
     - name: Návody
       items:
         - name: Vylepšení syntézy pomocí jazyka SSML
           href: speech-synthesis-markup.md
         - name: Syntéza řeči s využitím rozhraní API pro řeč dlouhého formátu
           href: long-audio-api.md
-        - name: Získání seznamu hlasů s využitím REST (Python)
-          href: quickstart-python-get-text-to-speech-voices.md
-        - name: Převod textu na řeč s využitím REST (Python)
-          href: quickstart-python-text-to-speech.md
     - name: Přizpůsobení
       items:
         - name: Zodpovědné nasazení

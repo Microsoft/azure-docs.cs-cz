@@ -1,6 +1,6 @@
 ---
 title: Kurz – převzetí služeb při selhání fyzického zařízení StorSimple na stejné zařízení
-description: Přečtěte si, jak převzít služby při selhání zařízení StorSimple na stejné zařízení.
+description: Seznamte se s kroky potřebnými k převzetí služeb při selhání fyzického zařízení řady StorSimple 8000 v případě havárie.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 60bf5b593efc5a26387680c092fc972bf9274e56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17c116194aa52a82246bcee9114824e8a918ebbd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511751"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184325"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Převzetí služeb při selhání fyzického zařízení StorSimple na stejné zařízení
 
@@ -32,7 +32,7 @@ Další informace o převzetí služeb při selhání zařízení a způsobu jeh
 Pokud chcete převzít služby při selhání fyzického zařízení na jiné fyzické zařízení, přečtěte si [převzetí služeb při selhání na stejné StorSimple fyzické zařízení](storsimple-8000-device-failover-physical-device.md). Pokud chcete převzít služby při selhání fyzického zařízení StorSimple na StorSimple Cloud Appliance, přečtěte si [převzetí služeb při selhání do StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že jste si prošli požadavky na převzetí služeb při selhání zařízení. Další informace najdete v [častých otázkách pro převzetí služeb zařízení při selhání](storsimple-8000-device-failover-disaster-recovery.md).
 

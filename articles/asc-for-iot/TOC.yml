@@ -29,6 +29,8 @@
       href: quickstart-configure-your-solution.md
     - name: Vytvoření dvojčete modulu služby Azure Security Center pro IoT
       href: quickstart-create-security-twin.md
+    - name: Prozkoumání doporučení pro zabezpečení
+      href: quickstart-investigate-security-recommendations.md
     - name: Vytváření vlastních výstrah zabezpečení
       href: quickstart-create-custom-alerts.md
     - name: Prošetření výstrah zabezpečení

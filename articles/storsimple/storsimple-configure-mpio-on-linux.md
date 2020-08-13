@@ -1,18 +1,18 @@
 ---
 title: Konfigurace funkce MPIO na hostiteli StorSimple Linux
-description: Konfigurace funkce MPIO na StorSimple připojeném k hostiteli Linux se systémem CentOS 6,6
+description: Seznamte se s kroky potřebnými ke konfiguraci funkce MPIO (Path) na hostitelském serveru s StorSimple Linux (CentOS 6,6).
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 05a67ab33c12e9f2bdbc0cd0098c39252db37e8e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187077"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183628"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurace funkce MPIO na hostiteli StorSimple se systémem CentOS
 Tento článek popisuje kroky potřebné ke konfiguraci funkce MPIO (CentOS) na hostitelském serveru s 6,6 v/v. Hostitelský server je připojený k vašemu zařízení Microsoft Azure StorSimple pro zajištění vysoké dostupnosti prostřednictvím iniciátorů iSCSI. Podrobně popisuje automatické zjišťování zařízení s více cestami a konkrétní nastavení jenom pro StorSimple svazky.
@@ -214,7 +214,7 @@ Zařízení s podporou více funkcí se dají automaticky zjistit a nakonfigurov
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Krok 2: Konfigurace více cest pro StorSimple svazky
 Ve výchozím nastavení jsou všechna zařízení černá uvedená v souboru Multipath. conf a budou se obejít. Budete muset vytvořit výjimky zakázané pro povolení více cest pro svazky ze zařízení StorSimple.
 
-1. Upravte `/etc/mulitpath.conf` soubor. Zadejte:
+1. Úprava souboru `/etc/mulitpath.conf`. Zadejte:
    
     `vi /etc/multipath.conf`
 1. V souboru Multipath. conf vyhledejte část blacklist_exceptions. Vaše zařízení StorSimple musí být v této části uvedené jako výjimka zakázané. V tomto souboru můžete odkomentovat relevantní řádky a upravit je tak, jak vidíte níže (použijte jenom konkrétní model zařízení, které používáte):
@@ -235,7 +235,7 @@ Ve výchozím nastavení jsou všechna zařízení černá uvedená v souboru Mu
 ### <a name="step-3-configure-round-robin-multipathing"></a>Krok 3: Konfigurace více cest pro kruhové dotazování
 Tento algoritmus vyrovnávání zatížení používá všechny dostupné cesty k aktivnímu řadiči v vyváženém kruhovém dotazování.
 
-1. Upravte `/etc/multipath.conf` soubor. Zadejte:
+1. Úprava souboru `/etc/multipath.conf`. Zadejte:
    
     `vi /etc/multipath.conf`
 1. V `defaults` části nastavte na `path_grouping_policy` `multibus` . `path_grouping_policy`Určuje výchozí zásadu seskupování cest, která se má použít u nespecifikovaných cest. Oddíl Defaults (výchozí) bude vypadat jako v následujícím příkladu.
@@ -352,7 +352,7 @@ Mělo by to taky znamenat kontrolu nad tím, že se po připojení k cíli zobra
 
 * Pomocí následujícího příkazu znovu zkontrolujte sběrnici SCSI:
   
-    `$ rescan-scsi-bus.sh`(součást sg3_utils balíčku)
+    `$ rescan-scsi-bus.sh` (součást sg3_utils balíčku)
 * Zadejte následující příkazy:
   
     `$ dmesg | grep sd*`
@@ -423,7 +423,7 @@ dm-3 devnode blacklisted, unmonitored
 Další informace najdete v postupu [při odstraňování více cest](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)na webu.
 
 ## <a name="list-of-useful-commands"></a>Seznam užitečných příkazů
-| Type | Příkaz | Popis |
+| Typ | Příkaz | Popis |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |Spustit službu iSCSI |
 | &nbsp; |`service iscsid stop` |Zastavení služby iSCSI |
@@ -441,7 +441,7 @@ Další informace najdete v postupu [při odstraňování více cest](https://ac
 | &nbsp; |`chkconfig multipathd on` </br> NEBO </br> `mpathconf -with_chkconfig y` |Povolit spuštění procesu Multipath v době spuštění |
 | &nbsp; |`multipathd -k` |Spustit interaktivní konzolu pro řešení potíží |
 | &nbsp; |`multipath -l` |Seznam připojení a zařízení se seznamem funkcí Multipath |
-| &nbsp; |`mpathconf --enable` |Vytvoření ukázkového souboru mulitpath. conf v`/etc/mulitpath.conf` |
+| &nbsp; |`mpathconf --enable` |Vytvoření ukázkového souboru mulitpath. conf v `/etc/mulitpath.conf` |
 |  | | |
 
 ## <a name="next-steps"></a>Další kroky

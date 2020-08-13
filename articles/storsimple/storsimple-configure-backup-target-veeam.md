@@ -1,6 +1,6 @@
 ---
 title: Řady StorSimple 8000 jako cíl zálohování s Veeam | Microsoft Docs
-description: Popisuje konfiguraci cíle zálohování StorSimple pomocí Veeam.
+description: Přečtěte si o konfiguraci cílů zálohování StorSimple pomocí Veeam a osvědčených postupů pro integraci obou řešení.
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
-ms.openlocfilehash: 05ee60986703096c004c4d15764028b73d04c0bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 71a5434d985aad4033e4392dd31e6b7d112692de
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077889"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183973"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple jako cíl zálohování s Veeam
 
@@ -260,7 +260,7 @@ Na základě předchozích předpokladů vytvořte TiB StorSimple vrstvený svaz
 | Uchování typu zálohování | Velikost (TiB) | Multiplikátor GFS\* | Celková kapacita (TiB)  |
 |---|---|---|---|
 | Týdně úplné | 1 | 4  | 4 |
-| Denní přírůstkový | 0.5 | 20 (počet cyklů s rovným počtem týdnů za měsíc) | 12 (2 pro další kvótu) |
+| Denní přírůstkový | 0,5 | 20 (počet cyklů s rovným počtem týdnů za měsíc) | 12 (2 pro další kvótu) |
 | Úplně měsíčně | 1 | 12 | 12 |
 | Celý rok na celé | 1  | 10 | 10 |
 | Požadavek GFS |   | 38 |   |
@@ -507,7 +507,7 @@ Havárie může být způsobeno nejrůznějšími faktory. V následující tabu
 | Selhání lokality, které vede ke ztrátě záložního serveru i StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nejprve obnovte StorSimple a pak obnovte Veeam. | Nejprve obnovte StorSimple a pak obnovte Veeam. Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se z cloudu načtou do nového zařízení. Všechny operace jsou v cloudových rychlostech. |
 
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 
 Následující dokumenty byly odkazovány na tento článek:
 

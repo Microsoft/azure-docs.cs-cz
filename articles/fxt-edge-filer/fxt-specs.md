@@ -1,17 +1,17 @@
 ---
 title: Specifikace souborového Microsoft Azure Edge FXT | Microsoft Docs
-description: Fyzické a environmentální specifikace pro hardware Azure FXT Edge souborového
+description: Seznamte se s fyzickými a environmentálními specifikacemi pro Microsoft Azure FXT Edge souborového hardware.
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 57e312df31682ea868443423f40d54369cab6699
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 30af35075c06585b9c490495e9897c145e9974d9
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231295"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184682"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Specifikace souborového pro Azure FXT Edge
 
@@ -19,7 +19,7 @@ Tento článek vysvětluje hardwarové specifikace pro hardwarové uzly Azure FX
 
 ## <a name="hardware-specifications"></a>Specifikace hardwaru
 
-| Komponenta | FXT 6600 | FXT 6400 |
+| Součást | FXT 6600 | FXT 6400 |
 |----------|-----------|-----------|
 | Procesorová jádra |  16 | 16 |
 | DRAM  | 1536 GB | 768 GB |

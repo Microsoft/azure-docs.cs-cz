@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: db2e493f04d74308b21e8a63222f26b1e2af8546
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e6f3a541f1e9dbca2c9949fb0c5cde28cd43e8e5
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038193"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183008"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Vytváření Azure Machine Learning datových sad z Azure Open DataSets
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Otevřené datové sady v Azure jsou spravované veřejné datové sady, které 
 
 Další informace najdete v tématu [co jsou otevřené datové sady](overview-what-are-open-datasets.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K vytváření a práci s datovými sadami potřebujete:
 
@@ -75,19 +75,21 @@ Když zaregistrujete datovou sadu vytvořenou z otevřených datových sad, nest
 
 ## <a name="create-datasets-with-the-studio"></a>Vytváření datových sad pomocí studia
 
-Datové sady můžete také vytvořit z otevřených datových sad pomocí nástroje [Azure Machine Learning Studio](https://ml.azure.com). V pracovním prostoru vyberte kartu datové **sady** v části **prostředky**. V rozevírací nabídce **vytvořit datovou sadu** vyberte možnost **z otevřených datových sad**.
+Datové sady můžete také vytvořit z otevřených datových sad pomocí nástroje [Azure Machine Learning Studio](https://ml.azure.com).
 
-![Otevřít datovou sadu s uživatelským rozhraním](./media/how-to-create-dataset-from-open-dataset/open-datasets-1.png)
+1. V pracovním prostoru vyberte kartu datové **sady** v části **prostředky**. V rozevírací nabídce **vytvořit datovou sadu** vyberte možnost **z otevřených datových sad**.
 
-Vyberte datovou sadu tím, že vyberete její dlaždici. (Máte možnost filtrovat pomocí panelu hledání.) Vyberte **Další**.
+    ![Otevřít datovou sadu s uživatelským rozhraním](./media/how-to-create-dataset-from-open-dataset/open-datasets-1.png)
 
-![Zvolit datovou sadu](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
+1. Vyberte datovou sadu tím, že vyberete její dlaždici. (Máte možnost filtrovat pomocí panelu hledání.) Vyberte **Další**.
 
-Vyberte název, pod kterým chcete datovou sadu zaregistrovat, a volitelně data filtrujte pomocí dostupných filtrů. V tomto případě můžete pro datovou sadu veřejných svátků filtrovat časové období na jeden rok a směrové číslo země pouze na nás. Vyberte **Vytvořit**.
+    ![Zvolit datovou sadu](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-![Nastavení parametrů datové sady a vytvoření datové sady](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
+1. Vyberte název, pod kterým chcete datovou sadu zaregistrovat, a volitelně data filtrujte pomocí dostupných filtrů. V tomto případě můžete pro datovou sadu **veřejných svátků** filtrovat časové období na jeden rok a směrové číslo země pouze na nás. Vyberte **Vytvořit**.
 
-Datová sada je teď v pracovním prostoru v části datové **sady**dostupná. Můžete ji použít stejným způsobem jako jiné datové sady, které jste vytvořili.
+    ![Nastavení parametrů datové sady a vytvoření datové sady](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
+
+    Datová sada je teď v pracovním prostoru v části datové **sady**dostupná. Můžete ji použít stejným způsobem jako jiné datové sady, které jste vytvořili.
 
 
 ## <a name="access-datasets-for-your-experiments"></a>Přístup k datovým sadám pro vaše experimenty

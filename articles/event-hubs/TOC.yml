@@ -188,6 +188,8 @@
           href: event-hubs-kafka-flink-tutorial.md
         - name: Integrace nástroje Apache Kafka Connect s centrem (Preview)
           href: event-hubs-kafka-connect-tutorial.md
+        - name: Integrace nástroje Apache Kafka Connect (Preview) s Debeziem
+          href: event-hubs-kafka-connect-debezium.md
         - name: Připojení Akka Streams k centru událostí
           href: event-hubs-kafka-akka-streams-tutorial.md
         - name: Nejčastější dotazy – Event Hubs pro Kafka

@@ -5,17 +5,20 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: 913f1f2a7a03c1abb83d8daa6d4b0c3f6e77e309
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c1915d108bf9465d3e5b8d6a55053b583ee4f580
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133752"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184614"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Řešení potíží s rozšířením virtuálních počítačů Azure
 
 Tento článek popisuje kroky pro řešení potíží, které vám pomůžou vyřešit chyby Azure Site Recovery související s agentem a rozšířením virtuálního počítače.
 
+## <a name="low-system-resources"></a>Nedostatek systémových prostředků
+
+K tomuto problému dochází, když má systém nedostatek dostupné paměti a nemůže přidělit paměť pro instalaci služby mobility. Zajistěte, aby byla pro instalaci dokončena dostatek paměti, aby bylo možné pokračovat v jejím dokončení.
 
 ## <a name="azure-site-recovery-extension-time-out"></a>Časový limit rozšíření Azure Site Recovery  
 
@@ -103,7 +106,7 @@ Postup při odinstalaci rozšíření:
 
 1. V [Azure Portal](https://portal.azure.com/)přejdete na virtuální počítač, u kterého dochází k chybě zálohování.
 1. Vyberte **Nastavení**.
-1. Vyberte **Extensions** (Rozšíření).
+1. Vyberte **Rozšíření**.
 1. Vyberte **rozšíření Site Recovery**.
 1. Vyberte **Odinstalovat**.
 

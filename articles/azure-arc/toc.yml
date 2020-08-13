@@ -6,6 +6,16 @@
       href: ./kubernetes/overview.md
     - name: Informace o serverech s podporou služby Azure Arc
       href: ./servers/overview.md
+- name: Rychlé starty
+  items:
+    - name: Povolení agenta Arc pro servery
+      href: ./servers/learn/quick-enable-hybrid-vm.md
+- name: Kurzy
+  items:
+    - name: Přiřazení zásad pro posouzení dodržování předpisů
+      href: ./servers/learn/tutorial-assign-policy-portal.md
+    - name: Monitorování počítače
+      href: ./servers/learn/tutorial-enable-vm-insights.md
 - name: ukázky
   items:
     - name: Integrované služby Azure Policy

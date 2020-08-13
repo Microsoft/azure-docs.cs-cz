@@ -72,7 +72,7 @@
               items:
                 - name: Konfigurace ověřování Azure AD
                   href: database/authentication-aad-configure.md
-                - name: Vícefaktorové ověřování AAD
+                - name: Vícefaktorové ověřování Azure AD
                   href: database/authentication-mfa-ssms-overview.md
                 - name: Konfigurace vícefaktorového ověřování
                   href: database/authentication-mfa-ssms-configure.md
@@ -891,8 +891,10 @@
           href: managed-instance/threat-detection-configure.md
         - name: Připojení aplikací
           href: managed-instance/connect-application-instance.md
-        - name: Vytváření upozornění
+        - name: Vytváření upozornění pro spravovanou instanci
           href: managed-instance/alerts-create.md
+        - name: Ruční iniciování převzetí služeb při selhání pro spravovanou instanci
+          href: managed-instance/user-initiated-failover.md
     - name: ukázky
       items:
         - name: Azure CLI

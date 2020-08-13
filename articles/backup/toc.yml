@@ -24,7 +24,7 @@
       href: tutorial-backup-vm-at-scale.md
     - name: Zálohování virtuálních počítačů Azure s využitím PowerShellu
       href: tutorial-backup-azure-vm.md
-    - name: Obnovení disku
+    - name: Obnovení virtuálního počítače s využitím Azure CLI
       href: tutorial-restore-disk.md
     - name: Obnovení jednotlivých souborů
       href: tutorial-restore-files.md

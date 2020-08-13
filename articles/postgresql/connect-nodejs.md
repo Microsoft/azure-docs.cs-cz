@@ -1,5 +1,5 @@
 ---
-title: Použití Node.js k připojení k serveru Azure Database for PostgreSQL-Single
+title: 'Rychlý Start: použití Node.js pro připojení k serveru Azure Database for PostgreSQL-Single'
 description: V tomto rychlém startu najdete Node.js ukázka kódu, který můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jednom serveru.
 author: rachel-msft
 ms.author: raagyema
@@ -13,12 +13,12 @@ ms.custom:
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: c3157bb3e643c8aea4653f7cf12390938ae44d5a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 10c7abf7349a3b2419e81459866920f20c3af6f7
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423248"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182727"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití Node.js k připojení a dotazování dat v Azure Database for PostgreSQL-jednom serveru
 

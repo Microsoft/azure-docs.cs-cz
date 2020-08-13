@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 391a5f054c5d80b255fd333ea416900c8c5ab6d1
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: f6420683d22488abc66b387fd44cb74cc8f8b7bd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135415"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184648"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitor    
 
@@ -64,7 +64,7 @@ Pokud protokoly Azure Monitor ještě nepoužíváte, můžete pomocí [cenové 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Pochopení nákladů na využití a odhadované náklady
 
-Pokud nyní používáte protokoly Azure Monitor, je snadné pochopit, jaké náklady jsou pravděpodobně založené na nedávných vzorech použití. K tomu použijte **Log Analytics využití a odhadované náklady** na kontrolu a analýzu využití dat. Ukazuje, kolik dat je každé řešení shromažďováno, kolik dat se zachovává, a odhad nákladů na základě množství přijatých dat a dalšího uchovávání nad rámec zahrnutého množství.
+Pokud nyní používáte protokoly Azure Monitor, je snadné pochopit, jaké náklady jsou pravděpodobně založené na nedávných vzorech použití. K tomu použijte  **Log Analytics využití a odhadované náklady** na kontrolu a analýzu využití dat. Ukazuje, kolik dat je každé řešení shromažďováno, kolik dat se zachovává, a odhad nákladů na základě množství přijatých dat a dalšího uchovávání nad rámec zahrnutého množství.
 
 ![Využití a odhadované náklady](media/manage-cost-storage/usage-estimated-cost-dashboard-01.png)
 
@@ -575,9 +575,9 @@ Chcete-li upozornit, zda byl objem fakturovatelných dat zobrazený za poslední
 - **Definujte podmínku upozornění** – Jako cíl prostředku zadejte svůj pracovní prostor služby Log Analytics.
 - **Kritéria upozornění** – Zadejte následující:
    - **Název signálu** – Vyberte **Vlastní prohledávání protokolu**.
-   - **Vyhledávací dotaz** na `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Pokud chcete differetn 
+   - **Vyhledávací dotaz** na `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . 
    - **Logika upozornění** je **Založená na** *počtu výsledků* a **Podmínka** je *Větší než***Prahová hodnota***0*.
-   - **Časové období** *1440* minut a **frekvence upozornění** každé *1440* minutesto spustit jednou denně.
+   - **Časové období** *1440* minut a **frekvence upozornění** každé *1440* minut, které se spustí jednou denně.
 - **Definujte podrobnosti upozornění** – Zadejte následující:
    - **Název** pro *fakturovatelný objem dat větší než 50 GB za 24 hodin*
    - **Závažnost** na *Upozornění*.
@@ -604,7 +604,7 @@ Když se shromažďování dat zastaví, stav OperationStatus je **Upozornění*
 |Kolekce důvodů – zastavení| Řešení| 
 |-----------------------|---------|
 |Dosáhlo se denního limitu pracovního prostoru.|Počkejte na automatické restartování kolekce nebo zvyšte počet denních objemů dat popsaných v tématu Správa maximálního denního objemu dat. Doba obnovení denního limitu se zobrazí na stránce **denní limit** . |
-| V pracovním prostoru se dosáhlo [míry objemu příjmu dat](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) . | Výchozí omezení přenosové rychlosti pro data odesílaná z prostředků Azure pomocí nastavení diagnostiky je přibližně 6 GB za minutu na jeden pracovní prostor. Jedná se o přibližnou hodnotu, protože skutečná velikost se může v závislosti na délce protokolu a kompresním poměru měnit mezi datovými typy. Toto omezení se nevztahuje na data odesílaná z agentů nebo rozhraní API kolekce dat. Pokud odesíláte data s vyšší sazbou do jednoho pracovního prostoru, některá data jsou Vyřazená a do tabulky operací v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud váš svazek ingestování stále překročí limit přenosové rychlosti nebo jste se od vás očekávali, můžete požádat o zvýšení pracovního prostoru odesláním e-mailu LAIngestionRate@microsoft.com nebo otevřením žádosti o podporu. Událost, která se má vyhledat, indikuje, že dotaz může najít omezení frekvence přijímání dat `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The rate of data crossed the threshold"` . |
+| V pracovním prostoru se dosáhlo [míry objemu příjmu dat](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) . | Výchozí prahová hodnota frekvence pro ingestování 500 MB (komprimovaná) se vztahuje na pracovní prostory, které jsou přibližně **6 GB/min** nekomprimované – skutečná velikost se může mezi datovými typy lišit v závislosti na délce protokolu a jeho kompresním poměru. Tato prahová hodnota se vztahuje na všechna přijatá data, ať už jsou odesílána z prostředků Azure pomocí [nastavení diagnostiky](diagnostic-settings.md), [rozhraní API kolekce dat](data-collector-api.md) nebo agentů. Když do pracovního prostoru odešlete data rychlostí vyšší než 80% prahové hodnoty nakonfigurované ve vašem pracovním prostoru, do tabulky *operace* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Když je rychlost příjmu dat vyšší než prahová hodnota, některá data se zahozena a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud vaše rychlost přijímání dat i nadále překračuje prahovou hodnotu nebo jste se k tomu již neočekávali, můžete požádat o jeho zvýšení v pracovním prostoru otevřením žádosti o podporu. Chcete-li být v pracovním prostoru upozorněni na událost, vytvořte [pravidlo výstrahy protokolu](alerts-log.md) pomocí následujícího dotazu se základem výstrahy upozornění na základě počtu výsledků od nuly, zkušebního období 5 minut a frekvence 5 minut. Rychlost příjmu se dosáhla 80% prahové hodnoty: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` . Prahová hodnota dosažené míry objemu přijímání: `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` . |
 |Dosáhlo se denního limitu starší verze bezplatné cenové úrovně. |Počkejte prosím, než se automaticky restartuje kolekce, nebo se změní na placenou cenovou úroveň.|
 |Předplatné Azure je v pozastaveném stavu z důvodu:<br> Zkušební verze skončila.<br> Platnost Azure Pass vypršela.<br> Dosáhlo se limitu měsíčního útraty (například na předplatném MSDN nebo Visual Studio).|Přechod na placené předplatné<br> Odebrat limit nebo počkat na obnovení limitu|
 

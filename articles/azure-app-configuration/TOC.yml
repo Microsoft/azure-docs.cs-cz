@@ -91,8 +91,6 @@
           href: concept-customer-managed-keys.md
         - name: Zabezpečení úložiště konfigurace pomocí privátních koncových bodů
           href: concept-private-endpoint.md
-        - name: Integrace se spravovanou identitou Azure
-          href: howto-integrate-azure-managed-service-identity.md
         - name: Povolení přístupu s využitím Azure Active Directory
           href: concept-enable-rbac.md
         - name: Přiřazení spravované identity Azure
@@ -115,6 +113,8 @@
       href: howto-app-configuration-event.md
     - name: Automatické zálohování úložiště konfigurace
       href: howto-backup-config-store.md
+    - name: Použití spravovaných identit pro přístup ke službě App Configuration
+      href: howto-integrate-azure-managed-service-identity.md
 - name: Referenční informace
   items:
     - name: Konfigurace

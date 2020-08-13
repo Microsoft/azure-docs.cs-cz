@@ -1,5 +1,5 @@
 ---
-title: Vytváření distribuovaných tabulek – Citus (-Scale) – Azure Database for PostgreSQL
+title: 'Rychlý Start: vytvoření distribuovaných tabulek – Citus (škálování) – Azure Database for PostgreSQL'
 description: Rychlý Start pro vytváření a dotazování distribuovaných tabulek v Azure Database for PostgreSQL Citus ().
 author: jonels-msft
 ms.author: jonels
@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: 6e03b8f89ec22b74ad7dd14d9225c11fde78ec7f
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: c17018e0f2f3a7c1c23d176a441842abcf5521f4
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135619"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183917"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Rychlý Start: vytvoření Azure Database for PostgreSQL – Citus (škálování) v Azure Portal
 

@@ -1,5 +1,5 @@
 ---
-title: Připojení pomocí Ruby-Azure Database for PostgreSQL-Single server
+title: 'Rychlý Start: připojení s Ruby-Azure Database for PostgreSQL – jeden server'
 description: V tomto rychlém startu najdete ukázku kódu Ruby, který můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jednom serveru.
 author: rachel-msft
 ms.author: raagyema
@@ -8,17 +8,18 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 5dd4cfe9bee0db6f14f736c79fe91770641008fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 98814060fb9ae669fc4e9a90fcda6319bbfaeacf
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74766901"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182540"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL – jeden server: použití Ruby k připojení a dotazování dat
+# <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití Ruby k připojení a dotazování dat v Azure Database for PostgreSQL – jeden server
+
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí aplikace v [Ruby](https://www.ruby-lang.org). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Ruby a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
 - [Vytvoření databáze – Azure CLI](quickstart-create-server-database-azure-cli.md)
@@ -37,7 +38,7 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
  ![Název serveru Azure Database for PostgreSQL](./media/connect-ruby/1-connection-string.png)
 
 > [!NOTE]
-> `@` Symbol v uživatelském jménu Azure Postgres byl kódovaný jako `%40` adresa URL ve všech připojovacích řetězcích. 
+> `@`Symbol v uživatelském jménu Azure Postgres byl kódovaný jako adresa URL `%40` ve všech připojovacích řetězcích. 
 
 ## <a name="connect-and-create-a-table"></a>Připojení a vytvoření tabulky
 Pomocí následujícího kódu se připojte a vytvořte tabulku s využitím příkazu **CREATE TABLE** jazyka SQL, po kterém následují příkazy **INSERT INTO** jazyka SQL, které do tabulky přidají řádky.

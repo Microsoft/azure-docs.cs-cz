@@ -170,6 +170,8 @@
         - name: Nasazení AKS s Terraformem
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true
+        - name: Použití prohlížeče prostředků Kubernetes (Preview)
+          href: kubernetes-portal.md
         - name: Použití řídicího panelu Kubernetes
           href: kubernetes-dashboard.md
     - name: Konfigurace svazků s daty

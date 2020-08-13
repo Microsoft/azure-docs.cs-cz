@@ -1,19 +1,19 @@
 ---
 title: Použití sady .NET SDK pro úlohy Microsoft Azure StorSimple Data Manager
-description: Naučte se používat sadu .NET SDK ke spouštění úloh StorSimple Data Manager.
+description: Naučte se používat sadu .NET SDK v rámci služby StorSimple Data Manager k transformaci dat zařízení StorSimple.
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 316eddc98de78974bb2583f91ced635b148686c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e34701640de24a4c3c13f8d10073b4392af2f28a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514890"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183643"
 ---
-# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Spuštění transformace dat pomocí .NET SDK
+# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Zahájení transformace dat s využitím sady .NET SDK
 
 ## <a name="overview"></a>Přehled
 
@@ -26,7 +26,7 @@ Tento článek vysvětluje, jak můžete pomocí funkce transformace dat v rámc
  
   Tento článek podrobně popisuje, jak vytvořit ukázkovou konzolovou aplikaci .NET pro zahájení úlohy transformace dat a pak ji sledovat pro dokončení. Další informace o tom, jak iniciovat transformaci dat pomocí automatizace, najdete v tématu [použití Azure Automation Runbook k aktivaci úloh transformace dat](storsimple-data-manager-job-using-automation.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující:
 *   Počítač se systémem:
