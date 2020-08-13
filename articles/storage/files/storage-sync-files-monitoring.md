@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8b2b62ac4d79964c0a597f40d8154e5f57350f0b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 737617b1fb8bd233a8747deacbbb328a02fa30ef
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031077"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185617"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
@@ -156,12 +156,13 @@ Stav vrstvení cloudu
   - ID události 9016 poskytuje duplikování výsledků pro svazek. Například: volné místo v procentech je, počet souborů, které byly v relaci opuštěné, a počet souborů, jejichž počet se nezdařil.
   - Událost s ID 9029 poskytuje duplikaci informací o relaci koncového bodu serveru. Například: počet souborů, které se v relaci pokoušely, počet souborů vrstvených v relaci a počet souborů, které jsou již vrstveny.
   
-- Chcete-li monitorovat aktivitu odvolání na serveru, použijte ID události 9005, 9006, 9009 a 9059 v protokolu událostí telemetrie, který je umístěn v Prohlížeč událostí v části *aplikace a Services\Microsoft\FileSync\Agent*.
+- Chcete-li monitorovat aktivitu odvolání na serveru, použijte ID události 9005, 9006, 9009, 9059 a 9071 v protokolu událostí telemetrie, který je umístěn v Prohlížeč událostí v části *aplikace a Services\Microsoft\FileSync\Agent*.
 
   - Událost s ID 9005 poskytuje spolehlivost odvolání pro koncový bod serveru. Například: celkový přístup k jedinečným souborům a celkový počet jedinečných souborů s neúspěšným přístupem.
   - Událost s ID 9006 poskytuje distribuci chyb odvolání pro koncový bod serveru. Například: celkový počet neúspěšných požadavků a kód chyby. Jedna událost je protokolována podle kódu chyby.
   - Událost s ID 9009 poskytuje informace o odvolání relace pro koncový bod serveru. Například: DurationSeconds, CountFilesRecallSucceeded a CountFilesRecallFailed.
   - Událost s ID 9059 poskytuje distribuci odvolání aplikace pro koncový bod serveru. Například: ShareId, název aplikace a TotalEgressNetworkBytes.
+  - ID události 9071 poskytuje efektivitu cloudových vrstev pro koncový bod serveru. Například: TotalDistinctFileCountCacheHit, TotalDistinctFileCountCacheMiss, TotalCacheHitBytes a TotalCacheMissBytes.
 
 ### <a name="performance-counters"></a>Čítače výkonu
 

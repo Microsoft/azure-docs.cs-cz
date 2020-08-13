@@ -11,21 +11,21 @@ manager: cgronlun
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3973e94c9d3add25dba0af7a6b0c0deb18b77440
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 20a85c17ccd4167b29e167c55df1bd8a8cc4d56e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850436"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185651"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Použití automatizovaného ML v kanálu Azure Machine Learning v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Funkce automatizovaného škálování na základě Azure Machine Learning vám pomůže zjistit modely s vysokým výkonem bez nutnosti opětovné implementace každého možného přístupu. V kombinaci s Azure Machine Learning kanály můžete vytvářet nasaditelné pracovní postupy, které umožňují rychle zjistit algoritmus, který je pro vaše data nejvhodnější. V tomto článku se dozvíte, jak efektivně připojit krok přípravy dat k automatizovanému kroku ML. Automatizovaná ML může rychle zjistit algoritmus, který je pro vaše data nejvhodnější, a přitom vás zavede na cestách, aby MLOps a modeloval provozní životní cyklus s kanály.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).  
 
@@ -328,8 +328,9 @@ automl_config = AutoMLConfig(task = 'classification',
 
 train_step = AutoMLStep(name='AutoML_Classification',
     automl_config=automl_config,
-    passthru_automl_config=False,
     outputs=[metrics_data,model_data],
+    enable_default_model_output=False,
+    enable_default_metrics_output=False,
     allow_reuse=True)
 ```
 Fragment kódu ukazuje idiom, který se běžně používá s `AutoMLConfig` . Argumenty, které jsou větší než kapalina (delšími), jsou určeny v samostatném slovníku, zatímco hodnoty, které jsou menší, se mohou měnit, jsou určeny přímo v `AutoMLConfig` konstruktoru. V takovém případě `automl_settings` Zadejte krátký běh: běh se zastaví po 2 iteracích nebo 15 minutách, podle toho, co nastane dřív.
@@ -346,7 +347,7 @@ Fragment kódu ukazuje idiom, který se běžně používá s `AutoMLConfig` . A
 `AutoMLStep`Sám o sobě použije `AutoMLConfig` a má jako výstupy `PipelineData` objekty vytvořené pro uchování metrik a data modelu. 
 
 >[!Important]
-> Je nutné nastavit `passthru_automl_config` na, `False` zda `AutoMLStep` používáte `PipelineOutputTabularDataset` objekty pro vstup.
+> Pokud používáte, musíte nastavit `enable_default_model_output` a `enable_default_metrics_output` na `False` `AutoMLStep` .
 
 V tomto příkladu proces automatizovaného ML provede křížové ověřování v `training_data` . Můžete řídit počet křížových ověření s `n_cross_validations` argumentem. Pokud jste již data školení rozdělili jako součást kroků přípravy dat, můžete nastavit `validation_data` vlastní `Dataset` .
 

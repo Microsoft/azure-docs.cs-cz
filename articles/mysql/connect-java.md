@@ -1,5 +1,5 @@
 ---
-title: Připojit pomocí Azure Database for MySQL Java
+title: 'Rychlý Start: připojení pomocí Java-Azure Database for MySQL'
 description: V tomto rychlém startu najdete ukázku kódu Java, který můžete použít k připojení a dotazování dat z databáze Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, devx-track-ja
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 5/26/2020
-ms.openlocfilehash: 4da7efc40177937aad8f1a97e909d90c4cf5f466
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b6f928aba1c3abda57a8ed329c0ad4e7cdb5e881
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322852"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185889"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití jazyka Java pro připojení k datům a jejich dotazování v Azure Database for MySQL
 
@@ -21,7 +21,7 @@ V tomto rychlém startu se připojíte k Azure Database for MySQL pomocí aplika
 
 V tomto tématu se předpokládá, že máte zkušenosti s vývojem pomocí jazyka Java, ale začínáte pracovat s Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Server Azure Database for MySQL. [Vytvořte Azure Database for MySQL server pomocí Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [Vytvořte Azure Database for MySQL server pomocí Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6981b6acaf0281c1643e2d8ac3933e0fa892e3c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3a2474b491abd31b750a15aad7860666c7bd02e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84124300"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186336"
 ---
 Tento článek vysvětluje, jak naplánovat zálohování a zotavení po havárii (DR) virtuálních počítačů s IaaS (VM) a disků v Azure. Tento dokument pokrývá spravované i nespravované disky.
 
@@ -33,7 +33,7 @@ Než se podíváme na možnosti zálohování a zotavení po havárii, pojďme R
 
 ### <a name="azure-iaas-resiliency"></a>Odolnost Azure IaaS
 
-*Odolnost* proti chybám označuje toleranci pro běžné chyby, ke kterým dochází v hardwarových součástech. Odolnost proti chybám je schopnost zotavení po selháních a nadále fungovat. Nejedná se o způsoby, jak zabránit selhání, ale o reakci na selhání způsobem, který zabraňuje výpadkům nebo ztrátě dat. Cílem odolnosti proti chybám je obnovení plně funkčního stavu aplikace co nejdříve po selhání. Virtuální počítače a disky Azure jsou navržené tak, aby byly odolné vůči běžným hardwarovým chybám. Pojďme se podívat, jak tato odolnost zajišťuje platforma Azure IaaS.
+*Odolnost* proti chybám označuje toleranci pro běžné chyby, ke kterým dochází v hardwarových součástech. Odolnost proti chybám je schopnost zotavení po selháních a nadále fungovat. Nejedná se o způsoby, jak zabránit selhání, ale o reakci na selhání způsobem, který zabraňuje výpadkům nebo ztrátě dat. Cílem odolnosti je obnovení plně funkčního stavu aplikace co nejdříve po selhání. Virtuální počítače a disky Azure jsou navržené tak, aby byly odolné vůči běžným hardwarovým chybám. Pojďme se podívat, jak tato odolnost zajišťuje platforma Azure IaaS.
 
 Virtuální počítač se skládá hlavně ze dvou částí: výpočetní Server a trvalé disky. Obojí má vliv na odolnost virtuálního počítače.
 
@@ -178,7 +178,7 @@ Snímek je reprezentace objektu v určitém časovém okamžiku. U snímku dojde
 
 ### <a name="create-snapshots-while-the-vm-is-running"></a>Vytváření snímků, když je spuštěný virtuální počítač
 
-I když můžete pořídit snímek kdykoli, pokud je virtuální počítač spuštěný, na disky se pořád streamuje data. Snímky mohou obsahovat částečné operace, které byly v letu. V případě, že je k dispozici několik disků, mohou být v různých časech k dispozici také snímky různých disků. Tyto scénáře mohou způsobit nekoordinaci snímků. Tato nedostatečná koordinace je obzvláště problematická u prokládaných svazků, jejichž soubory můžou být poškozené, pokud se během zálohování provedly změny.
+I když můžete pořídit snímek kdykoli, pokud je virtuální počítač spuštěný, na disky se pořád streamuje data. Snímky mohou obsahovat částečné operace, které byly v letu. V případě, že je k dispozici několik disků, mohou být v různých časech k dispozici také snímky různých disků. Tyto scénáře mohou způsobit nekoordinaci snímků. Tato nedostatečná koordinace je obzvláště problematické u prokládaných svazků, jejichž soubory můžou být poškozené, pokud byly během zálohování provedeny změny.
 
 Aby k této situaci nedocházelo, proces zálohování musí implementovat následující kroky:
 
@@ -257,9 +257,6 @@ Hlavním rozdílem mezi geograficky redundantním úložištěm a geograficky re
 Pokud dojde k výraznému výpadku, může tým Azure aktivovat geografické převzetí služeb při selhání a změnit primární záznamy DNS tak, aby odkazovaly na sekundární úložiště. V tomto okamžiku, pokud máte povolené geograficky redundantní úložiště nebo geograficky redundantní úložiště s přístupem pro čtení, můžete získat přístup k datům v oblasti, která se používá jako sekundární. Jinými slovy, pokud je váš účet úložiště geograficky redundantní úložiště a dojde k problému, můžete získat přístup k sekundárnímu úložišti jenom v případě, že dojde k geografickému převzetí služeb při selhání.
 
 Další informace najdete v tématu [Co dělat v případě výpadku služby Azure Storage](../articles/storage/common/storage-disaster-recovery-guidance.md).
-
->[!NOTE] 
->Microsoft řídí, jestli dojde k převzetí služeb při selhání. Převzetí služeb při selhání se neřídí na účet úložiště, takže je nerozhodli jednotliví zákazníci. Chcete-li implementovat zotavení po havárii pro konkrétní účty úložiště nebo disky virtuálních počítačů, je nutné použít techniky popsané dříve v tomto článku.
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png

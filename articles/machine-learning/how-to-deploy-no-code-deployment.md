@@ -9,21 +9,23 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: d6c70f27eebc9d502ce7275603e99975c2efc267
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9d6e234e1f4c8ac5199b92a09eb12bf7aa41b01b
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544566"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185481"
 ---
 # <a name="preview-no-code-model-deployment"></a>Tisk Nasazení modelu bez kódu
 
 Nasazení modelu bez kódu je momentálně ve verzi Preview a podporuje následující architektury strojového učení:
 
-## <a name="tensorflow-savedmodel-format"></a>Formát Tensorflow SavedModel
-Modely Tensorflow je nutné zaregistrovat ve **formátu SavedModel** pro práci s nasazením modelu bez kódu.
+## <a name="tensorflow-savedmodel-format"></a>Formát TensorFlow SavedModel
+Modely TensorFlow je nutné zaregistrovat ve **formátu SavedModel** pro práci s nasazením modelu bez kódu.
 
 V [tomto odkazu](https://www.tensorflow.org/guide/saved_model) najdete informace o tom, jak vytvořit SavedModel.
+
+Podporujeme všechny verze TensorFlow, které jsou uvedeny v části "značky" na [TensorFlow obsluhující dockerhubu](https://registry.hub.docker.com/r/tensorflow/serving/tags).
 
 ```python
 from azureml.core import Model
@@ -129,7 +131,7 @@ print(output)
 * [Řešení potíží s neúspěšným nasazením](how-to-troubleshoot-deployment.md)
 * [Nasazení do Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Vytváření klientských aplikací pro využívání webových služeb](how-to-consume-web-service.md)
-* [Aktualizovat webovou službu](how-to-deploy-update-web-service.md)
+* [Aktualizace webové služby](how-to-deploy-update-web-service.md)
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)

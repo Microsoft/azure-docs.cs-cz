@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 04b4feb1219f6a51a1f0a7ac0d19fc3fd70029c6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: db66137ac4b233a7e5d3040cf38dc69a089b0c9a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133535"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185209"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Řešení potíží s nabízenou instalací služby mobility
 
@@ -204,7 +204,7 @@ Před verzí 9,20 byl kořenový oddíl nebo nastavení svazku na více discích
 
 Konfigurační soubory Grand Unified zaváděcího programu (GRUB) (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/boot/grub2/grub.cfg_nebo _/etc/default/grub_) můžou obsahovat hodnotu pro **kořen** parametrů a **obnovit** je jako skutečné názvy zařízení místo univerzálně jedinečného identifikátoru (UUID). Site Recovery zmocňuje přístup k identifikátoru UUID, protože názvy zařízení se můžou v rámci restartování virtuálního počítače změnit. Například virtuální počítač nemusí být online se stejným názvem při převzetí služeb při selhání a bude mít za následek problémy.
 
-Příklad:
+Například:
 
 - Následující řádek je ze souboru GRUB _/boot/grub2/grub.cfg_:
 
@@ -223,7 +223,7 @@ Názvy zařízení je potřeba nahradit odpovídajícími identifikátory UUID.
 
 1. Vyhledá UUID zařízení provedením příkazu `blkid \<device name>` .
 
-   Příklad:
+   Například:
 
    ```shell
    blkid /dev/sda1
@@ -257,6 +257,10 @@ Od [verze 9,20](https://support.microsoft.com/help/4478871/update-rollup-31-for-
 ## <a name="insufficient-space-errorid-95524"></a>Nedostatek místa (ErrorID: 95524)
 
 Po zkopírování agenta mobility na zdrojový počítač se vyžaduje aspoň 100 MB volného místa. Ujistěte se, že na zdrojovém počítači je požadované množství volného místa, a zkuste operaci zopakovat.
+
+## <a name="low-system-resources"></a>Nedostatek systémových prostředků
+
+K tomuto problému dochází, když má systém nedostatek dostupné paměti a nemůže přidělit paměť pro instalaci služby mobility. Zajistěte, aby byla pro instalaci dokončena dostatek paměti, aby bylo možné pokračovat v jejím dokončení.
 
 ## <a name="vss-installation-failures"></a>Selhání instalace VSS
 

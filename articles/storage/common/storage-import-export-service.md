@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a43637071ec1a9962c8aa1b2262e07354293f12b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2918c5842d6470e634518ff9c12f6f04aefc920
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512424"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185379"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co je služba Azure import/export?
 
@@ -120,16 +120,17 @@ Služba Azure import/export podporuje kopírování dat do a ze všech účtů �
 
 |Země/oblast  |Země/oblast  |Země/oblast  |Země/oblast  |
 |---------|---------|---------|---------|
-|USA – východ    | Severní Evropa        | Indie – střed        |US Gov – Iowa         |
-|USA – západ     |Západní Evropa         | Indie – jih        | US DoD – východ        |
-|USA – východ 2    | Východní Asie        |  Indie – západ        | US DoD – střed        |
-|USA – západ 2     | Jihovýchodní Asie        | Střední Kanada        | Čína – východ         |
-|USA – střed     | Austrálie – východ        | Kanada – východ        | Čína – sever        |
-|USA – středosever     |  Austrálie – jihovýchod       | Brazílie – jih        | Spojené království – jih        |
-|USA – středojih     | Japonsko – západ        |Jižní Korea – střed         | Německo – střed        |
-|USA – středozápad     |  Japonsko – východ       | USA (Gov) – Virginia        | Německo – severovýchod        |
+|East US    | Severní Evropa        | Central India        |US Gov – Iowa         |
+|USA – západ     |West Europe         | Indie – jih        | US DoD – východ        |
+|USA – východ 2    | Východní Asie        |  Západní Indie        | US DoD – střed        |
+|Západní USA 2     | Southeast Asia        | Střední Kanada        | Čína – východ         |
+|Střední USA     | Austrálie – východ        | Kanada – východ        | Čína – sever        |
+|USA – středosever     |  Australia Southeast       | Brazil South        | Spojené království – jih        |
+|Středojižní USA     | Japonsko – západ        |Jižní Korea – střed         | Německo – střed        |
+|USA – středozápad     |  Japan East       | USA (Gov) – Virginia        | Německo – severovýchod        |
+|Jižní Afrika – západ   |  Jižní Afrika – sever |
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
 Data na jednotce jsou šifrovaná pomocí šifrování AES 256-bit nástroj BitLocker Drive Encryption. Toto šifrování chrání vaše data během přenosu.
 

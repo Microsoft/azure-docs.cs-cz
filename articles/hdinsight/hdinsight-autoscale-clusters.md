@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 29c04fc8f6af016200e06ad239095a3665de5869
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cc294eb1bdfd4a6a8c6ad001c007f83a10983644
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086428"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185804"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
 
@@ -39,7 +39,7 @@ Při volbě typu škálování Vezměte v úvahu následující faktory:
 
 Automatické škálování průběžně monitoruje cluster a shromažďuje následující metriky:
 
-|Metric|Popis|
+|Metrika|Popis|
 |---|---|
 |Celkový počet vyřízených PROCESORů|Celkový počet jader potřebných ke spuštění provádění všech nevyřízených kontejnerů.|
 |Celkový počet nevyřízených paměti|Celková paměť (v MB) požadovaná k zahájení provádění všech kontejnerů, které čekají na zpracování.|
@@ -72,12 +72,12 @@ Pro horizontální navýšení kapacity vydává automatické škálování pož
 
 Následující tabulka popisuje typy clusterů a verze, které jsou kompatibilní s funkcí automatického škálování.
 
-| Verze | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| Verze | Spark | Hive | LLAP | HBase | Kafka | Bouře | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 bez protokolu ESP | Ano | Ano | Ano | Ano* | No | No | No |
-| HDInsight 4,0 bez protokolu ESP | Ano | Ano | Ano | Ano* | No | No | No |
-| HDInsight 3,6 s ESP | Ano | Ano | Ano | Ano* | No | No | No |
-| HDInsight 4,0 s ESP | Ano | Ano | Ano | Ano* | No | No | No |
+| HDInsight 3,6 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 4,0 bez protokolu ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 3,6 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
+| HDInsight 4,0 s ESP | Ano | Ano | Ano | Ano* | Ne | Ne | Ne |
 
 \*Clustery clusterů se dají konfigurovat jenom pro škálování na základě plánu, nikoli na základě zatížení.
 
@@ -133,7 +133,7 @@ Další informace o vytváření clusteru HDInsight pomocí Azure Portal najdete
 
 #### <a name="load-based-autoscaling"></a>Automatické škálování na základě zatížení
 
-Cluster HDInsight s automatickým škálováním na základě zatížení můžete vytvořit pomocí šablony Azure Resource Manager přidáním `autoscale` uzlu do `computeProfile`  >  `workernode` oddílu s vlastnostmi, `minInstanceCount` `maxInstanceCount` jak je znázorněno v následujícím fragmentu kódu JSON.
+Cluster HDInsight s automatickým škálováním na základě zatížení můžete vytvořit pomocí šablony Azure Resource Manager přidáním `autoscale` uzlu do `computeProfile`  >  `workernode` oddílu s vlastnostmi, `minInstanceCount` `maxInstanceCount` jak je znázorněno v následujícím fragmentu kódu JSON. Úplnou šablonu Resource Manageru najdete v tématu [Šablona pro rychlý Start: nasazení clusteru Spark se zapnutým AutoLoadbased AutoScale](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased).
 
 ```json
 {
@@ -161,7 +161,7 @@ Cluster HDInsight s automatickým škálováním na základě zatížení může
 
 #### <a name="schedule-based-autoscaling"></a>Automatické škálování na základě plánu
 
-Cluster HDInsight s automatickým škálováním na základě plánu můžete vytvořit pomocí šablony Azure Resource Manager přidáním `autoscale` uzlu do `computeProfile`  >  `workernode` oddílu. `autoscale`Uzel obsahuje a `recurrence` , který `timezone` `schedule` popisuje, kdy bude provedeno provedení změny.
+Cluster HDInsight s automatickým škálováním na základě plánu můžete vytvořit pomocí šablony Azure Resource Manager přidáním `autoscale` uzlu do `computeProfile`  >  `workernode` oddílu. `autoscale`Uzel obsahuje a `recurrence` , který `timezone` `schedule` popisuje, kdy bude provedeno provedení změny. Úplnou šablonu Resource Manageru najdete v tématu [nasazení clusteru Spark s povoleným autoškálováním na základě plánu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased).
 
 ```json
 {
@@ -225,7 +225,7 @@ Stav clusteru uvedený v Azure Portal vám může pomáhat monitorovat aktivity 
 
 Všechny stavové zprávy clusteru, které se mohou zobrazit, jsou vysvětleny v následujícím seznamu.
 
-| Stav clusteru | Description |
+| Stav clusteru | Popis |
 |---|---|
 | Spuštěno | Cluster pracuje normálně. Všechny předchozí aktivity automatického škálování se úspěšně dokončily. |
 | Doplnění  | Aktualizuje se konfigurace automatického škálování clusteru.  |

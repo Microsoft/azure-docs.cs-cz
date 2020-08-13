@@ -1,5 +1,5 @@
 ---
-title: Připojení pomocí Node.js-Azure Database for MySQL
+title: 'Rychlý Start: připojení pomocí Node.js-Azure Database for MySQL'
 description: V tomto rychlém startu najdete několik vzorových kódů Node.js, které můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
@@ -8,12 +8,12 @@ ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-t
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 9d3e2d744c4800c06503483c6e7270ad1ca60e2c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1f8f4dee2ed1e6dc5cdf6985c1149db0dcaed7c2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423180"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185923"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití Node.js k připojení a dotazování dat v Azure Database for MySQL
 
@@ -33,11 +33,11 @@ V tomto tématu se předpokládá, že máte zkušenosti s vývojem pomocí Node
 
 V závislosti na vaší platformě nainstalujte [Node.js](https://nodejs.org)podle pokynů v příslušné části. Pomocí npm nainstalujte balíček [MySQL](https://www.npmjs.com/package/mysql) a jeho závislosti do složky projektu.
 
-### <a name="windows"></a>**Windows**
+### <a name="windows"></a>Windows
 
 1. Přejděte na [stránku pro stažení Node.js](https://nodejs.org/en/download/) a vyberte požadovanou možnost Instalační služby systému Windows.
 2. Vytvořte místní složku projektu, například `nodejsmysql`. 
-3. Otevřete příkazový řádek a poté změňte adresář na složku projektu, například`cd c:\nodejsmysql\`
+3. Otevřete příkazový řádek a poté změňte adresář na složku projektu, například `cd c:\nodejsmysql\`
 4. Spusťte nástroj NPM a nainstalujte knihovnu MySQL do složky projektu.
 
    ```cmd
@@ -48,7 +48,7 @@ V závislosti na vaší platformě nainstalujte [Node.js](https://nodejs.org)pod
 
 5. Ověřte instalaci tak, že zkontrolujete `npm list` Výstupní text. Číslo verze se může lišit v závislosti na vydávání nových oprav.
 
-### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
 1. Spuštěním následujících příkazů nainstalujte **Node.js** a **npm** – správce balíčků pro Node.js.
 
@@ -66,7 +66,7 @@ V závislosti na vaší platformě nainstalujte [Node.js](https://nodejs.org)pod
    ```
 3. Ověřte instalaci tak, že zkontrolujete výstupní text seznamu npm. Číslo verze se může lišit v závislosti na vydávání nových oprav.
 
-### <a name="mac-os"></a>**Mac OS**
+### <a name="mac-os"></a>Mac OS
 
 1. Zadejte následující příkazy, abyste nainstalovali **brew**, snadno použitelného správce balíčků pro Mac OS X a **Node.js**.
 
@@ -104,7 +104,7 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 
 ## <a name="connect-create-table-and-insert-data"></a>Připojení, vytvoření tabulky a vložení dat
 
-Pomocí následujícího kódu se připojte a načtěte data pomocí **Create Table** a **vložte do** příkazů SQL.
+Pomocí následujícího kódu se připojte a načtěte data pomocí **Create Table** a  **vložte do** příkazů SQL.
 
 Metoda [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) slouží k vytvoření rozhraní pro server MySQL. Funkce [connect()](https://github.com/mysqljs/mysql#establishing-connections) se používá k navázání připojení k serveru. Funkce [query()](https://github.com/mysqljs/mysql#performing-queries) se používá k provedení příkazu jazyka SQL na databázi MySQL. 
 

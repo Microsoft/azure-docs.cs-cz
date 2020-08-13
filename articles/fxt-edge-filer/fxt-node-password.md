@@ -1,17 +1,17 @@
 ---
 title: 'Kurz: inicializace hardwaru – Azure FXT Edge souborového'
-description: Jak nastavit počáteční heslo na uzlech souborového Azure FXT Edge
+description: Naučte se připojit k uzlu hardwaru a nastavit počáteční heslo pro uzly Azure FXT Edge souborového.
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 8cb5f639deb0630575c46db30efe70ad967324a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4fae7795cdd61e3eb465285163bcd6c0dd9f7db2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75550887"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184920"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>Kurz: Nastavení hardwarových hesel
 
@@ -23,7 +23,7 @@ Tento krok proveďte po instalaci a propojení uzlu, ale před tím, než se pok
 
 V tomto kurzu se dozvíte, jak se připojit k uzlu hardwaru a nastavit heslo. 
 
-V tomto kurzu se naučíte: 
+V tomto kurzu se naučíte, jak: 
 
 > [!div class="checklist"]
 > * Připojte klávesnici a monitor k uzlu a zapněte ho.
@@ -34,7 +34,7 @@ Opakujte tyto kroky pro každý uzel, který budete používat ve vašem cluster
 
 Dokončení tohoto kurzu trvá přibližně 15 minut. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu proveďte tyto kroky: 
 
@@ -80,7 +80,7 @@ Heslo, které zadáte, se používá pro dvě věci:
 
 * Jedná se o dočasné kořenové heslo pro tento uzel Azure FXT Edge souborového. 
 
-  Toto heslo se změní, když vytvoříte cluster pomocí tohoto uzlu, nebo když přidáte tento uzel do clusteru. Heslo pro správu clusteru (přidružené uživateli ``admin``) je také kořenovým heslem pro všechny uzly v clusteru.
+  Toto heslo se změní, když vytvoříte cluster pomocí tohoto uzlu, nebo když přidáte tento uzel do clusteru. Heslo pro správu clusteru (přidružené uživateli ``admin`` ) je také kořenovým heslem pro všechny uzly v clusteru.
 
 * Jedná se o dlouhodobé heslo pro port správy hardwaru iDRAC/IPMI.
 

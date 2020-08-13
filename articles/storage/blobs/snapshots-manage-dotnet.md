@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: be3d06d8ea493ab7c246ace5c49d5e5bc0036108
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9404cc8037b9cd7ef3e6f74265ce803177eb0465
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463531"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185277"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>Vytvoření a Správa snímku objektu BLOB v .NET
 
@@ -24,7 +24,7 @@ Další informace o snímcích objektů BLOB v Azure Storage najdete v tématu [
 
 ## <a name="create-a-snapshot"></a>Vytvoření snímku
 
-# <a name="net-version-12x"></a>[.NET verze 12. x](#tab/v12)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Chcete-li vytvořit snímek objektu blob bloku pomocí verze 12. x Azure Storage klientské knihovny pro .NET, použijte jednu z následujících metod:
 
@@ -77,7 +77,7 @@ private static async Task CreateBlockBlobSnapshot(string accountName, string con
 }
 ```
 
-# <a name="net-version-11x"></a>[.NET verze 11. x](#tab/v11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Chcete-li vytvořit snímek objektu blob bloku pomocí verze 11. x Azure Storage klientské knihovny pro rozhraní .NET, použijte jednu z následujících metod:
 
@@ -126,7 +126,7 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 
 Pokud chcete odstranit objekt blob, musíte nejdřív odstranit všechny snímky tohoto objektu BLOB. Snímek můžete odstranit jednotlivě nebo můžete určit, že se při odstranění zdrojového objektu BLOB odstraní všechny snímky. Pokud se pokusíte odstranit objekt blob, který má stále snímky, dojde k chybě.
 
-# <a name="net-version-12x"></a>[.NET verze 12. x](#tab/v12)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Pokud chcete odstranit objekt BLOB a jeho snímky pomocí verze 12. x Azure Storage klientské knihovny pro .NET, použijte jednu z následujících metod a zahrňte do výčtu [DeleteSnapshotsOption](/dotnet/api/azure.storage.blobs.models.deletesnapshotsoption) :
 
@@ -141,7 +141,7 @@ Následující příklad kódu ukazuje, jak odstranit objekt BLOB a jeho snímky
 await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
 ```
 
-# <a name="net-version-11x"></a>[.NET verze 11. x](#tab/v11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Pokud chcete odstranit objekt BLOB a jeho snímky pomocí verze 11. x Azure Storage klientské knihovny pro .NET, použijte jednu z následujících metod odstranění objektů BLOB a přidejte výčet [DeleteSnapshotsOption](/dotnet/api/microsoft.azure.storage.blob.deletesnapshotsoption) :
 

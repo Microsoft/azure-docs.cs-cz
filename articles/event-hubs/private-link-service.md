@@ -3,12 +3,12 @@ title: Integrace služby Azure Event Hubs se službou privátního propojení Az
 description: Naučte se integrovat Azure Event Hubs se službou Azure Private Link.
 ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: 66753e51fd1e918e5659e219c5ebbe471705b3ee
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8d6d5c13e1a5eab55998d3b98596ce845de104eb
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421093"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185464"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Povolení přístupu k oborům názvů Azure Event Hubs prostřednictvím privátních koncových bodů 
 Služba privátního propojení Azure umožňuje přístup ke službám Azure (například k Azure Event Hubs, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím **privátního koncového bodu** ve vaší virtuální síti.
@@ -18,21 +18,19 @@ Privátní koncový bod je síťové rozhraní, které se připojuje soukromě a
 Další informace najdete v tématu [co je privátní propojení Azure?](../private-link/private-link-overview.md)
 
 > [!IMPORTANT]
-> Tato funkce je podporovaná pro **standardní** i **vyhrazené** úrovně. 
-
->[!WARNING]
-> Povolení privátních koncových bodů může ostatním službám Azure zabránit v interakci s Event Hubs.
+> Tato funkce je podporovaná pro **standardní** i **vyhrazené** úrovně. Na úrovni **Basic** se nepodporuje.
 >
-> Důvěryhodné služby společnosti Microsoft nejsou při používání virtuálních sítí podporovány.
+> Povolení privátních koncových bodů může ostatním službám Azure zabránit v interakci s Event Hubs.  Blokované požadavky zahrnují ty z jiných služeb Azure, od Azure Portal, ze služeb protokolování a metriky atd. 
+> 
+> Zde jsou některé ze služeb, které nemůžou přistupovat k Event Hubs prostředkům, když jsou povolené privátní koncové body. Všimněte si, že seznam **není vyčerpávající.**
 >
-> Běžné scénáře Azure, které nefungují s virtuálními sítěmi (Všimněte si, že seznam **není vyčerpávající)** –
 > - Azure Stream Analytics
 > - Trasy k Azure IoT Hub
 > - Device Explorer Azure IoT
+> - Azure Event Grid
+> - Azure Monitor (nastavení diagnostiky)
 >
-> Následující služby společnosti Microsoft musí být ve virtuální síti.
-> - Azure Web Apps
-> - Azure Functions
+> V případě výjimky můžete povolit přístup k Event Hubs prostředkům z určitých důvěryhodných služeb i v případě, že jsou povolené soukromé koncové body. Seznam důvěryhodných služeb najdete v tématu [důvěryhodné služby](#trusted-microsoft-services).
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Přidání privátního koncového bodu pomocí Azure Portal
 
@@ -52,7 +50,7 @@ Váš privátní koncový bod používá privátní IP adresu ve vaší virtuál
 ### <a name="steps"></a>Kroky
 Pokud již máte obor názvů Event Hubs, můžete vytvořit připojení k privátnímu propojení pomocí následujících kroků:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 2. Na panelu hledání zadejte do pole **centra událostí**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
 4. V části **Nastavení** v nabídce vlevo vyberte **sítě** .
@@ -105,6 +103,10 @@ Pokud již máte obor názvů Event Hubs, můžete vytvořit připojení k priv�
 12. Ověřte, že se v seznamu koncových bodů zobrazuje připojení privátního koncového bodu, které jste vytvořili. V tomto příkladu je soukromý koncový bod automaticky schválen, protože jste se připojili k prostředku Azure v adresáři a máte dostatečná oprávnění. 
 
     ![Privátní koncový bod byl vytvořen.](./media/private-link-service/private-endpoint-created.png)
+
+[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
+
+Pokud chcete, aby důvěryhodné služby měly přístup k vašemu oboru názvů, přejděte na kartu **brány firewall a virtuální sítě** na stránce **síť** a vyberte **Ano** , pokud **chcete, aby důvěryhodné služby Microsoftu tuto bránu firewall vynechal?**. 
 
 ## <a name="add-a-private-endpoint-using-powershell"></a>Přidání privátního koncového bodu pomocí prostředí PowerShell
 Následující příklad ukazuje, jak použít Azure PowerShell k vytvoření připojení privátního koncového bodu. Nevytváří pro vás vyhrazený cluster. Pokud chcete vytvořit vyhrazený cluster Event Hubs, postupujte podle kroků v [tomto článku](event-hubs-dedicated-cluster-create-portal.md) . 
@@ -209,7 +211,7 @@ Existují čtyři stavy zřizování:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Schválení, zamítnutí nebo odebrání připojení privátního koncového bodu
 
-1. Přihlaste se k webu Azure Portal.
+1. Přihlaste se k portálu Azure.
 2. Na panelu hledání zadejte do pole **centra událostí**.
 3. Vyberte **obor názvů** , který chcete spravovat.
 4. Vyberte kartu **síť** .

@@ -11,14 +11,47 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: f2aebee24c4de8a1bd92ad3db8e5d110184cbaee
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ac4b0c59cfad3d435858e094cbcb8c9f855a0041
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415019"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185311"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
+
+## <a name="new-speech-to-text-locales-2020-august-release"></a>Nové národní prostředí pro převod řeči na text: 2020 – srpen Release
+Speech-to-text vydaná 26 nových národních prostředí v srpnu: 2 Evropské jazyky cs-CZ a hu-HU, 5 anglické národní prostředí a 19 Španělská národní prostředí, která se týkají většiny zemí jihovýchodní Ameriky. Níže je uveden seznam nových národních prostředí. Seznam kompletních jazyků najdete [tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
+
+| Národní prostředí  | Jazyk                          |
+|---------|-----------------------------------|
+| `cs-CZ` | čeština (Česká republika)            | 
+| `en-HK` | Angličtina (Hongkong)               | 
+| `en-IE` | Angličtina (Irsko)                 | 
+| `en-PH` | Angličtina (Filipíny)             | 
+| `en-SG` | Angličtina (Singapur)               | 
+| `en-ZA` | Angličtina (Jihoafrická republika)            | 
+| `es-AR` | Španělština (Argentina)               | 
+| `es-BO` | Španělština (Bolívie)                 | 
+| `es-CL` | Španělština (Chile)                   | 
+| `es-CO` | Španělština (Kolumbie)                | 
+| `es-CR` | Španělština (Kostarika)              | 
+| `es-CU` | Španělština (Kuba)                    | 
+| `es-DO` | Španělština (Dominikánská republika)      | 
+| `es-EC` | Španělština (Ekvádor)                 | 
+| `es-GT` | Španělština (Guatemala)               | 
+| `es-HN` | Španělština (Honduras)                | 
+| `es-NI` | Španělština (Nikaragua)               | 
+| `es-PA` | Španělština (Panama)                  | 
+| `es-PE` | Španělština (Peru)                    | 
+| `es-PR` | Španělština (Portoriko)             | 
+| `es-PY` | Španělština (Paraguay)                | 
+| `es-SV` | Španělština (Salvador)             | 
+| `es-US` | Španělština (USA)                     | 
+| `es-UY` | Španělština (Uruguay)                 | 
+| `es-VE` | Španělština (Venezuela)               | 
+| `hu-HU` | Maďarština (Maďarsko)               | 
+
 
 ## <a name="speech-sdk-1130-2020-july-release"></a>Sada Speech SDK 1.13.0:2020 – červenec
 
@@ -96,7 +129,7 @@ Buďte v pořádku!
 ### <a name="bug-fixes"></a>Opravy chyb
 
 * Čtení měny
-    * Opravili jsme problém se čtením měny pro `es-ES` a`es-MX`
+    * Opravili jsme problém se čtením měny pro `es-ES` a `es-MX`
      
     | Jazyk | Vstup | Přečtení po vylepšení |
     |---|---|---|
@@ -248,9 +281,9 @@ Buďte v pořádku!
 
 **Změny způsobující chyby**
 
-- `OpenSSL`byla aktualizována na verzi 1.1.1 b a staticky propojená se základní knihovnou sady Speech SDK pro Linux. To může způsobit přerušení, pokud vaše Doručená pošta nebyla `OpenSSL` nainstalována do `/usr/lib/ssl` adresáře v systému. Pokud chcete tento problém obejít, přečtěte si [naši dokumentaci](how-to-configure-openssl-linux.md) v části dokumentace k sadě Speech SDK.
+- `OpenSSL` byla aktualizována na verzi 1.1.1 b a staticky propojená se základní knihovnou sady Speech SDK pro Linux. To může způsobit přerušení, pokud vaše Doručená pošta nebyla `OpenSSL` nainstalována do `/usr/lib/ssl` adresáře v systému. Pokud chcete tento problém obejít, přečtěte si [naši dokumentaci](how-to-configure-openssl-linux.md) v části dokumentace k sadě Speech SDK.
 - Změnili jsme datový typ vrácený pro C# `WordLevelTimingResult.Offset` z `int` na, `long` aby bylo umožněno přístupu k `WordLevelTimingResults` datům, když jsou data řeči delší než 2 minuty.
-- `PushAudioInputStream`a `PullAudioInputStream` teď pošle informace o hlavičce WAV do služby pro rozpoznávání řeči na základě `AudioStreamFormat` , volitelně zadané při jejich vytvoření. Zákazníci teď musí používat [podporovaný formát zvukového vstupu](how-to-use-audio-input-streams.md). Všechny ostatní formáty získají dílčí optimální výsledky rozpoznávání nebo můžou způsobit jiné problémy. 
+- `PushAudioInputStream` a `PullAudioInputStream` teď pošle informace o hlavičce WAV do služby pro rozpoznávání řeči na základě `AudioStreamFormat` , volitelně zadané při jejich vytvoření. Zákazníci teď musí používat [podporovaný formát zvukového vstupu](how-to-use-audio-input-streams.md). Všechny ostatní formáty získají dílčí optimální výsledky rozpoznávání nebo můžou způsobit jiné problémy. 
 
 **Opravy chyb**
 
@@ -299,8 +332,8 @@ Buďte v pořádku!
 
 **ukázky**
 
-- Ukázka Xamarin pro`KeywordRecognizer`
-- Ukázka Unity pro`KeywordRecognizer`
+- Ukázka Xamarin pro `KeywordRecognizer`
+- Ukázka Unity pro `KeywordRecognizer`
 - Ukázky pro automatické zdrojové Rozpoznávání jazyka v jazyce C++ a Java
 
 ## <a name="speech-sdk-170-2019-september-release"></a>Sada Speech SDK 1.7.0:2019 – září verze
@@ -323,9 +356,9 @@ Buďte v pořádku!
 - Opravený problém s identifikátory UUID není jedinečný v některých vlastnostech připojení.
 - Opravili jsme několik upozornění na specifikátory hodnoty null v vazbách SWIFT (může vyžadovat malé změny kódu).
 - Opravili jsme chybu, která způsobila, že připojení protokolu WebSocket se v zatížení sítě nekorektně zavřou.
-- Opravili jsme problém v Androidu, který někdy má za následek duplicitní ID dojmů, které používá.`DialogServiceConnector`
-- Vylepšení stability připojení v rámci vícenásobných interakcí a hlášení selhání (prostřednictvím `Canceled` událostí), když k nim dojde`DialogServiceConnector`
-- `DialogServiceConnector`spuštění relace nyní bude správně poskytovat události, včetně při volání `ListenOnceAsync()` během aktivní`StartKeywordRecognitionAsync()`
+- Opravili jsme problém v Androidu, který někdy má za následek duplicitní ID dojmů, které používá. `DialogServiceConnector`
+- Vylepšení stability připojení v rámci vícenásobných interakcí a hlášení selhání (prostřednictvím `Canceled` událostí), když k nim dojde `DialogServiceConnector`
+- `DialogServiceConnector` spuštění relace nyní bude správně poskytovat události, včetně při volání `ListenOnceAsync()` během aktivní `StartKeywordRecognitionAsync()`
 - Vyřešená havárie přidružená k `DialogServiceConnector` přijatým aktivitám
 
 **ukázky**
@@ -341,14 +374,14 @@ Buďte v pořádku!
 - Ukázky rychlý Start pro převod textu na řeč pro UWP a Unity
 - Ukázka rychlého startu pro SWIFT v iOS
 - Ukázky Unity pro rozpoznávání řeči & Rozpoznávání záměru a překlad
-- Aktualizované ukázky pro rychlý Start pro`DialogServiceConnector`
+- Aktualizované ukázky pro rychlý Start pro `DialogServiceConnector`
 
 **Vylepšení/změny**
 
 - Obor názvů dialogového okna:
   - Přejmenování `SpeechBotConnector` na `DialogServiceConnector`
   - Přejmenování `BotConfig` na `DialogServiceConfig`
-  - `BotConfig::FromChannelSecret()`bylo přemapováno na`DialogServiceConfig::FromBotSecret()`
+  - `BotConfig::FromChannelSecret()` bylo přemapováno na `DialogServiceConfig::FromBotSecret()`
   - Po přejmenování budou dál podporovány všechny existující klienty s přímým ovládáním řeči.
 - Aktualizace adaptéru pro převod textu na řeč pro podporu proxy a trvalého připojení
 - Vylepšit chybovou zprávu, když je předána neplatná oblast
@@ -511,7 +544,7 @@ Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly proveden
   - Sada Speech SDK pro JavaScript je open source. Zdrojový kód je k dispozici na [GitHubu](https://github.com/Microsoft/cognitive-services-speech-sdk-js).
   - Nyní podporujeme Node.js, další informace najdete [tady](quickstart-js-node.md).
   - Omezení délky pro zvukové relace bylo odebráno, k automatickému připojení dojde v rámci pokrytí.
-- `Connection`předmětů
+- `Connection` předmětů
   - Z `Recognizer` , můžete získat přístup k `Connection` objektu. Tento objekt vám umožňuje explicitně iniciovat připojení služby a přihlásit se k odběru událostí a odpojovat se.
     (Tato funkce ještě není dostupná z JavaScriptu a Pythonu.)
 - Podpora pro Ubuntu 18,04.
@@ -638,7 +671,7 @@ V našem [ukázkovém úložišti](https://aka.ms/csspeech/samples)se přidala N
 
 **Funkční změny**
 
-- `StartContinuousRecognitionAsync()`podporuje dlouhodobě běžící rozpoznávání.
+- `StartContinuousRecognitionAsync()` podporuje dlouhodobě běžící rozpoznávání.
 - Výsledek rozpoznávání obsahuje více polí. Jsou posunuty od zahájení zvuku a doby trvání (v tiků) rozpoznaného textu a dalších hodnot, které představují stav rozpoznávání, například `InitialSilenceTimeout` a `InitialBabbleTimeout` .
 - Podporuje AuthorizationToken pro vytváření instancí továrny.
 

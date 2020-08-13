@@ -1,19 +1,17 @@
 ---
 title: Data Lake Analytics poslední změny
 description: Tento článek poskytuje průběžný seznam nedávných změn, které se provedou Data Lake Analytics.
-services: data-lake-analytics
 author: xujiang1
 ms.service: data-lake-analytics
-ms.devlang: na
 ms.topic: overview
 ms.author: xujiang1
 ms.date: 07/31/2020
-ms.openlocfilehash: e78389ffc06f1b4cd4e39c15ac66215d514e9bc1
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 0afd37a9f80fd2778f2b7206f58cec6ff423763e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476329"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184954"
 ---
 # <a name="whats-new-in-data-lake-analytics"></a>Co je nového v Data Lake Analytics?
 

@@ -1,17 +1,17 @@
 ---
 title: 'Kurz: Vytvoření clusteru Azure FXT Edge souborového cache'
-description: Vytvoření clusteru hybridních mezipaměti úložiště pomocí Azure FXT Edge souborového
+description: Naučte se, jak vytvořit hybridní cluster mezipaměti úložiště pomocí Azure FXT Edge souborového a jak se přihlásit k ovládacímu panelu clusteru a nakonfigurovat nastavení clusteru.
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.openlocfilehash: bfe1d1aeeac55039acf0c7eb295001277be9cd2e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7a471868bac8f5e0623942c0cc1dc4af4e3881e7
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84693069"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185345"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Kurz: Vytvoření clusteru Azure FXT Edge souborového
 
@@ -30,7 +30,7 @@ V tomto kurzu se dozvíte:
 
 Tento postup trvá 15 až 45 minut v závislosti na tom, kolik zdrojů potřebujete k identifikaci IP adres a síťových prostředků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu dokončete tyto požadavky:
 

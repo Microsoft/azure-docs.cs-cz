@@ -10,12 +10,12 @@ ms.date: 07/08/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: d35b02e798d68682a3c55068f1f53f7a28d81721
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d4bead0ad73bd1315ce114c08320c6673ab0f42d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209386"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185151"
 ---
 # <a name="configure-transport-layer-security-tls-for-a-client-application"></a>Konfigurace protokolu TLS (Transport Layer Security) pro klientskou aplikaci
 
@@ -43,13 +43,13 @@ $ctx = $storageAccount.Context
 New-AzStorageContainer -Name "sample-container" -Context $ctx
 ```
 
-# <a name="net-v12-sdk"></a>[Sada .NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
 Následující příklad ukazuje, jak povolit TLS 1,2 v klientovi .NET pomocí verze 12 Azure Storage klientské knihovny:
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Networking.cs" id="Snippet_ConfigureTls12":::
 
-# <a name="net-v11-sdk"></a>[Sada .NET V11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Následující příklad ukazuje, jak povolit TLS 1,2 v klientovi .NET pomocí verze 11 Azure Storage klientské knihovny:
 

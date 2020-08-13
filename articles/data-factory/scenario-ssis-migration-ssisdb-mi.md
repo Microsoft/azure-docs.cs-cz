@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: c91731d70d5db59ecf5daa726fd42ee42c58f51e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6de08faee78deeb86117084b420eb5043153f62d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84116316"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186042"
 ---
 # <a name="ssis-migration-with-azure-sql-managed-instance-as-the-database-workload-destination"></a>SSIS migrace pomocí spravované instance Azure SQL jako cíle databázových úloh
 
@@ -32,7 +32,9 @@ Migraci SSISDB můžete provést pomocí DMS, jak je popsáno v článku: [migra
 
 ## <a name="ssis-jobs-to-sql-managed-instance-agent"></a>SSIS úlohy do agenta spravované instance SQL
 
-Spravovaná instance SQL má nativní, první Plánovač, který je první třídou, stejně jako SQL Server agenta místně.  Vzhledem k tomu, že nástroj pro migraci pro úlohy SSIS ještě není dostupný, musí být migrován z SQL Server agenta místně do agenta spravované instance SQL prostřednictvím skriptů a ruční kopie.
+Spravovaná instance SQL má nativní, první Plánovač, který je první třídou, stejně jako SQL Server agenta místně.  Můžete [spouštět balíčky SSIS prostřednictvím agenta spravované instance Azure SQL](how-to-invoke-ssis-package-managed-instance-agent.md).
+
+Vzhledem k tomu, že nástroj pro migraci pro úlohy SSIS ještě není dostupný, musí být migrován z SQL Server agenta místně do agenta spravované instance SQL prostřednictvím skriptů a ruční kopie.
 
 ## <a name="additional-resources"></a>Další zdroje
 

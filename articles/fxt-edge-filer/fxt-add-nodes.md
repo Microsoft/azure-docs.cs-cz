@@ -1,17 +1,17 @@
 ---
 title: 'Kurz: Přidání uzlů do clusteru Azure FXT Edge souborového'
-description: Postup přidání uzlů do mezipaměti úložiště Azure FXT Edge souborového
+description: Naučte se přidávat uzly clusteru do mezipaměti úložiště Azure FXT Edge souborového a povolit funkci vysoké dostupnosti (HA).
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 6251fe8f88b7db25e3c09898540e07754d72fb0d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5b62927930212fc7e59fc4329a29ceecbe2815e5
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75551943"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185328"
 ---
 # <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>Kurz: Přidání uzlů clusteru do clusteru Azure FXT Edge souborového
 
@@ -68,7 +68,7 @@ Sloupec **Actions** obsahuje tlačítka, která umožňují přidat uzel do clus
 
 Všechny uzly v clusteru musí používat stejnou verzi operačního systému, ale před přidáním uzlu nemusíte tento software aktualizovat. Po kliknutí na tlačítko **pro připojení** se proces připojení clusteru automaticky zkontroluje a nainstaluje software operačního systému, který odpovídá verzi v clusteru.
 
-Další informace o možnostech na této stránce najdete v části [ **cluster** > FXT Nodes](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) v Průvodci konfigurací clusteru.
+Další informace o možnostech na této stránce najdete v části [ **cluster**  >  **FXT Nodes** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html) v Průvodci konfigurací clusteru.
 
 ## <a name="3-click-the-allow-to-join-button"></a>3. klikněte na tlačítko "udělit připojení". 
 
