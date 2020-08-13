@@ -12,6 +12,8 @@
       href: quick-create-powershell.md
     - name: Vytvoření virtuální sítě – Azure CLI
       href: quick-create-cli.md
+    - name: Vytvoření virtuální sítě – šablona ARM
+      href: quick-create-template.md
   expanded: true
 - name: Kurzy
   items:

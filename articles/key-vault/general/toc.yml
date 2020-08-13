@@ -90,6 +90,8 @@
           href: managed-identity.md
         - name: Použití zásad řízení přístupu
           href: group-permissions-for-apps.md
+        - name: Řešení potíží s přístupem
+          href: troubleshooting-access-issues.md
     - name: Vývoj
       items:
         - name: Průvodce vývojáře pro službu Azure Key Vault
@@ -144,7 +146,7 @@
       href: versions.md
     - name: Azure PowerShell
       href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
-    - name: Rozhraní příkazového řádku Azure
+    - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET
       href: /dotnet/api/overview/azure/keyvault/management?view=azure-dotnet

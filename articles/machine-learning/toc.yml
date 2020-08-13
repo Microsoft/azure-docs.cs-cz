@@ -161,11 +161,8 @@
             - name: Správa uživatelů a skupin
               href: how-to-assign-roles.md
             - name: Použití virtuálních sítí
-              displayName: 'vnet, blob'
+              displayName: 'vnet, blob, private endpoint, private link'
               href: how-to-enable-virtual-network.md
-            - name: Použití Private Linku
-              displayName: private endpoint
-              href: how-to-configure-private-link.md
             - name: Zabezpečení webových služeb s využitím TLS
               displayName: ssl
               href: how-to-secure-web-service.md
@@ -457,8 +454,8 @@
         - name: Ladění a řešení potíží s kanály
           displayName: designer
           href: how-to-debug-pipelines.md
-        - name: Ladění kanálů ve službě Application Insights
-          href: how-to-debug-pipelines-application-insights.md
+        - name: Protokolování dat kanálů do Application Insights
+          href: how-to-log-pipelines-application-insights.md
         - name: Použití kroku paralelního spuštění
           displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-use-parallel-run-step.md

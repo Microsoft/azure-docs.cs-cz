@@ -22,6 +22,8 @@
   items:
     - name: Ruční škálování aplikace
       href: spring-cloud-tutorial-scale-manual.md
+    - name: Automatické škálování aplikace
+      href: spring-cloud-tutorial-setup-autoscale.md
     - name: Upozornění a skupiny akcí
       href: spring-cloud-tutorial-alerts-action-groups.md
     - name: Použití IntelliJ k nasazení aplikací
@@ -38,8 +40,6 @@
       href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
     - name: Použití spravované identity pro připojení Key Vaultu k aplikaci Azure Spring Cloud
       href: spring-cloud-tutorial-managed-identities-key-vault.md
-    - name: Nastavení automatického škálování pro aplikace mikroslužeb
-      href: spring-cloud-tutorial-setup-autoscale.md
 - name: ukázky
   items:
     - name: Integrované služby Azure Policy

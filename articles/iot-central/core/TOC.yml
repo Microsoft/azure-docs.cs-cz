@@ -139,6 +139,8 @@
               href: howto-monitor-application-health.md
             - name: Informace o aplikaci
               href: howto-get-app-info.md
+            - name: Zavedení certifikátů X.509
+              href: how-to-roll-x509-certificates.md
         - name: Správa z jiných míst
           items:
             - name: Správa z webu Azure Portal

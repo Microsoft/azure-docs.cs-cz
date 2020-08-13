@@ -109,6 +109,8 @@
       href: howto-labels-aspnet-core.md
     - name: Import nebo export konfiguračních dat
       href: howto-import-export-data.md
+    - name: Použití záhlaví content-type JSON pro páry klíč-hodnota
+      href: howto-leverage-json-content-type.md
     - name: Směrování událostí na vlastní koncový bod
       href: howto-app-configuration-event.md
     - name: Automatické zálohování úložiště konfigurace

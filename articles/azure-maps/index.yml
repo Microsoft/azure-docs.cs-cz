@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Azure Maps
-summary: Služba Microsoft Azure Maps poskytuje vývojářům ze všech odvětví výkonné geoprostorové funkce. Tyto geoprostorové funkce jsou doslova nabité čerstvými mapovými daty. Služba Azure Maps je k dispozici pro webové i mobilní aplikace. Jde o sadu rozhraní REST API, která jsou kompatibilní se standardem Azure One API. Mezi služby, které Azure Maps nabízí, patří mimo jiné mapy, vyhledávání, směrování, provoz, mobilita, počasí, časová pásma, geografická poloha, geofencing, mapová data a prostorové operace. Sady SDK pro web a Android zajišťují snadný, flexibilní a přenositelný vývoj napříč různými platformami.
+summary: Služba Microsoft Azure Maps poskytuje vývojářům ze všech odvětví výkonné geoprostorové funkce. Tyto geoprostorové funkce jsou doslova nabité čerstvými mapovými daty. Služba Azure Maps je k dispozici pro webové i mobilní aplikace. Jde o sadu rozhraní REST API, která jsou kompatibilní se standardem Azure One API. Mezi služby, které Azure Maps nabízí, patří mimo jiné mapy, vyhledávání, směrování, provoz, mobilita, počasí, časová pásma, geografická poloha, geofencing, mapová data, Tvůrce a Spatial Operations. Sady SDK pro web a Android zajišťují snadný, flexibilní a přenositelný vývoj napříč různými platformami.
 metadata:
   title: Dokumentace ke službě Azure Maps | Microsoft Docs
   description: Seznamte se se službou Azure Maps a jejím využitím k poskytování geoprostorových služeb pro vaše webové nebo mobilní aplikace.
@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: 0760dce9e64560c8ecb593f41b2d611bd059a639
-  ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+  ms.openlocfilehash: 4e95d7d9afb77dcf8e168a04c9e0f4fc3b266807
+  ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/31/2020
-  ms.locfileid: "87461744"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88121642"
 landingContent:
 - title: Informace o službě Azure Maps
   linkLists:

@@ -11,7 +11,11 @@
           expanded: true
           items:
             - name: Nastavení – Azure Portal
-              href: data-box-quickstart-portal.md
+              items:
+                - name: Pro import
+                  href: data-box-quickstart-portal.md
+                - name: Pro export
+                  href: data-box-quickstart-export.md
         - name: Kurzy
           items:
             - name: Import dat do Azure
