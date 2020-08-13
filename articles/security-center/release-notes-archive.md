@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 19a6764b68a7a06f9777bac94c9f34aaf09aec0b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cebc2c3d364cdb93c4b528c186dcef79c58ac6ea
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519575"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167007"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archivujte, co je nového v Azure Security Center?
 
@@ -28,6 +28,19 @@ Tato stránka poskytuje informace o:
 - Nové funkce
 - Opravy chyb
 - Zastaralé funkce
+
+
+## <a name="february-2020"></a>Únor 2020
+
+### <a name="fileless-attack-detection-for-linux-preview"></a>Detekce útoků typu soubor pro Linux (Preview)
+
+Díky tomu, že útočníci zvyšují stealthier metody, aby se vyhnuli detekci, Azure Security Center kromě systému Windows rozšířit rozpoznávání útoků bez souborů pro Linux. Útoky bez souborů zneužívají chyby softwaru, vkládají škodlivé datové části do neškodných systémových procesů a skrývají se v paměti. Tyto techniky:
+
+- Minimalizace nebo odstranění trasování malwaru na disku
+- výrazné omezení pravděpodobnosti detekce pomocí řešení pro kontrolu malwaru na disku
+
+Pokud chcete tuto hrozbu vyhodnotit, Azure Security Center pro Windows v říjnu 2018 vydávat detekci útoku bez souborů a teď má rozšířenou detekci útoku bez souborů i na Linux. 
+
 
 
 ## <a name="january-2020"></a>Leden 2020

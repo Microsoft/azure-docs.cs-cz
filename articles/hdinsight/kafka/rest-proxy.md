@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 660e200b673da53af1ee00e4de1e2ce3298e861d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 57c2fb125547149a7fea6643a483e29f5fecb495
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876440"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167041"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interakce s Apache Kafka clustery ve službě Azure HDInsight pomocí proxy REST
 
@@ -45,7 +45,7 @@ V případě požadavků koncových bodů proxy REST by klientské aplikace měl
 ## <a name="kafka-rest-proxy-with-network-security-groups"></a>Kafka REST proxy se skupinami zabezpečení sítě
 Pokud přenesete vlastní virtuální síť a řízení síťového provozu pomocí skupin zabezpečení sítě, povolte kromě portu 443 **příchozí** provoz na portu **9400** . Tím se zajistí, že proxy server Kafka REST je dosažitelný.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Zaregistrovat aplikaci s Azure AD. Klientské aplikace, které napíšete pro interakci s proxy Kafka REST, budou k ověření v Azure používat ID a tajný kód této aplikace.
 
@@ -104,6 +104,7 @@ Další informace o získání tokenů OAuth v Pythonu najdete v tématu [Tříd
 #pip3 install msal
 
 import msal
+import requests
 
 #--------------------------Configure these properties-------------------------------#
 # Tenant ID for your Azure Subscription
@@ -140,7 +141,7 @@ getstatus = "/v1/metadata/topics"
 request_url = kafkarest_endpoint + getstatus
 
 # sending get request and saving the response as response object
-response = requests.get(request_url, headers={'Authorization': accessToken})
+response = requests.get(request_url, headers={'Authorization': 'Bearer ' + 'accessToken})
 print(response.content)
 ```
 

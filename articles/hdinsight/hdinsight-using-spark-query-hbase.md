@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/20/2020
-ms.openlocfilehash: 3ddb8734a3d15a6cd5f4a43ee069d6364f7523ed
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/12/2020
+ms.openlocfilehash: 9454cb83d535d97a3dd95cd9f5d0636769797d08
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087482"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166939"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Použití Apache Sparku ke čtení a zápisu dat Apache HBase
 
-Apache Hbas se obvykle dotazuje buď pomocí rozhraní API na nižší úrovni (vyhledávání, získání a vložení), nebo pomocí syntaxe SQL pomocí Apache Phoenix. Apache taky poskytuje konektor Apache Spark HBA. Konektor je pohodlná a praktická alternativa k dotazování a úpravám dat uložených pomocí adaptérů HBA.
+Apache Hbas se obvykle dotazuje buď pomocí rozhraní API na nižší úrovni (vyhledávání, získání a vložení), nebo pomocí syntaxe SQL pomocí Apache Phoenix. Apache taky poskytuje konektor Apache Spark HBA. Konektor je praktická a efektivní alternativa k dotazování a úpravám dat uložených pomocí adaptérů HBA.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Ve stejné [virtuální síti](./hdinsight-plan-virtual-network-deployment.md)jsou nasazené dva samostatné clustery HDInsight. Je nainstalovaná jedna z adaptérů HBA a jedna Spark s aspoň Spark 2,1 (HDInsight 3,6). Další informace najdete v tématu [Vytvoření clusterů se systémem Linux v HDInsight pomocí Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md).
 
@@ -27,11 +27,10 @@ Apache Hbas se obvykle dotazuje buď pomocí rozhraní API na nižší úrovni (
 
 ## <a name="overall-process"></a>Celkový proces
 
-Proces vysoké úrovně, který umožňuje vašemu clusteru Spark dotazovat se na cluster HDInsight, je následující:
+Proces vysoké úrovně, který umožňuje vašemu clusteru Spark dotazovat se na váš cluster HBA, je následující:
 
 1. Připravte si některá ukázková data v adaptérech HBA.
-2. Získejte soubor hbase-site.xml ze složky pro konfiguraci clusteru HBA (/etc/HBase/conf).
-3. Uložte kopii hbase-site.xml do konfigurační složky Spark 2 (/etc/spark2/conf).
+2. Získejte soubor hbase-site.xml z vaší konfigurační složky clusteru HBA (/etc/HBase/conf) a umístěte kopii hbase-site.xml do konfigurační složky Spark 2 (/etc/spark2/conf). (Volitelné: pro automatizaci tohoto procesu použijte skript poskytovaný týmem HDInsight.)
 4. Spusťte `spark-shell` odkazování konektoru Spark HBA podle jeho souřadnic Maven v `packages` Možnosti.
 5. Definujte katalog, který mapuje schéma ze Sparku na HBA.
 6. Můžete pracovat s daty HBA pomocí rozhraní API RDD nebo dataframe.
@@ -76,36 +75,77 @@ V tomto kroku vytvoříte a naplníte tabulku v Apache Hbach, které pak můžet
     ```hbase
     exit
     ```
+    
+## <a name="run-scripts-to-set-up-connection-between-clusters"></a>Spuštění skriptů pro nastavení připojení mezi clustery
 
-## <a name="copy-hbase-sitexml-to-spark-cluster"></a>Kopírovat hbase-site.xml do clusteru Spark
+Pokud chcete nastavit komunikaci mezi clustery, postupujte podle následujících kroků a spusťte ve svých clusterech dva skripty. Tyto skripty automatizují proces kopírování souborů, který je popsaný v části Nastavení komunikace ručně. 
 
-Zkopírujte hbase-site.xml z místního úložiště do kořenového adresáře výchozího úložiště clusteru Spark.  Upravte následující příkaz tak, aby odrážel vaši konfiguraci.  Pak z otevřené relace SSH do clusteru HBA zadejte příkaz:
+* Skript, který spustíte z clusteru HBA, nahraje `hbase-site.xml` a přidá informace mapování IP na výchozí úložiště připojené ke clusteru Spark. 
+* Skript, který spustíte z clusteru Spark, nastaví dvě úlohy cron, aby se pravidelně spouštěly dva pomocné skripty:  
+    1.  HBA cron úlohu – umožňuje stáhnout nové `hbase-site.xml` soubory a HBA mapování IP adres z výchozího účtu úložiště Spark do místního uzlu.
+    2.  Úloha Spark cron – kontroluje, jestli došlo k škálování Sparku a pokud je cluster zabezpečený. Pokud ano, upravte, `/etc/hosts` aby zahrnovaly místně uložené mapování IP adaptérů.
 
-| Hodnota syntaxe | Nová hodnota|
-|---|---|
-|[Schéma identifikátoru URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) | Upravte, aby odrážela vaše úložiště.  Níže uvedená syntaxe je pro úložiště objektů BLOB s povoleným zabezpečeným přenosem.|
-|`SPARK_STORAGE_CONTAINER`|Nahraďte výchozím názvem kontejneru úložiště použitým pro cluster Spark.|
-|`SPARK_STORAGE_ACCOUNT`|Nahraďte názvem výchozího účtu úložiště použitým pro cluster Spark.|
+__Poznámka__: než budete pokračovat, ujistěte se, že jste přidali účet úložiště clusteru Spark do clusteru HBA jako sekundární účet úložiště. Ujistěte se, že jsou skripty v uvedeném pořadí, jak je uvedeno níže.
 
-```bash
-hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
-```
 
-Pak ukončete připojení SSH k vašemu clusteru HBA.
+1. Použijte [akci skriptu](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster) na svém clusteru HBA, aby se změny projevily s následujícími požadavky: 
 
-```bash
-exit
-```
 
-## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Vložení hbase-site.xml do clusteru Spark
+    |Vlastnost | Hodnota |
+    |---|---|
+    |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-hbase.sh`|
+    |Typ (typy) uzlů|Oblast|
+    |Parametry|`-s SECONDARYS_STORAGE_URL`|
+    |Trvalé|ano|
 
-1. Připojte se k hlavnímu uzlu clusteru Spark pomocí SSH. Níže uvedený příkaz upravte nahrazením `SPARKCLUSTER` názvem vašeho clusteru Spark a zadáním příkazu:
+    * `SECONDARYS_STORAGE_URL`je adresa URL výchozího úložiště na straně Spark. Příklad parametru:`-s wasb://sparkcon-2020-08-03t18-17-37-853z@sparkconhdistorage.blob.core.windows.net`
+
+
+2.  Použijte akci skriptu v clusteru Spark pro použití změn s následujícími požadavky:
+
+    |Vlastnost | Hodnota |
+    |---|---|
+    |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-spark.sh`|
+    |Typ (typy) uzlů|Vedoucí pracovník, Zookeeper|
+    |Parametry|`-s "SPARK-CRON-SCHEDULE"`(volitelné) `-h "HBASE-CRON-SCHEDULE"` volitelné|
+    |Trvalé|ano|
+
+
+    * Můžete určit, jak často chcete, aby tento cluster automaticky kontroloval aktualizace. Výchozí:-s "*/1 * * * *"-h 0 (v tomto příkladu se Spark cron spouští každou minutu, zatímco adaptéry HBA cron neběží)
+    * Vzhledem k tomu, že adaptéry HBA cron nejsou nastavené ve výchozím nastavení, musíte tento skript spustit znovu při provádění škálování clusteru HBA. Pokud se vaše adaptéry HBA často škálují, můžete se rozhodnout nastavit úlohu HBA cron automaticky. Například: `-h "*/30 * * * *"` nakonfiguruje skript, aby prováděl kontroly každých 30 minut. Tím se v pravidelných intervalech cron plán HBA pro automatizaci stahování nových informací o adaptérech HBA na společném účtu úložiště do místního uzlu.
+    
+    
+
+## <a name="set-up-communication-manually-optional-if-provided-script-in-above-step-fails"></a>Ruční nastavení komunikace (nepovinný, pokud zadaný skript ve výše uvedeném kroku selže)
+
+__Poznámka:__ Tyto kroky je potřeba provést pokaždé, když jeden z clusterů přechází do aktivity škálování.
+
+1. Zkopírujte hbase-site.xml z místního úložiště do kořenového adresáře výchozího úložiště clusteru Spark.  Upravte následující příkaz tak, aby odrážel vaši konfiguraci.  Pak z otevřené relace SSH do clusteru HBA zadejte příkaz:
+
+    | Hodnota syntaxe | Nová hodnota|
+    |---|---|
+    |[Schéma identifikátoru URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) | Upravte, aby odrážela vaše úložiště.  Níže uvedená syntaxe je pro úložiště objektů BLOB s povoleným zabezpečeným přenosem.|
+    |`SPARK_STORAGE_CONTAINER`|Nahraďte výchozím názvem kontejneru úložiště použitým pro cluster Spark.|
+    |`SPARK_STORAGE_ACCOUNT`|Nahraďte názvem výchozího účtu úložiště použitým pro cluster Spark.|
+
+    ```bash
+    hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
+    ```
+
+2. Pak ukončete připojení SSH k vašemu clusteru HBA.
+
+    ```bash
+    exit
+    ```
+
+
+3. Připojte se k hlavnímu uzlu clusteru Spark pomocí SSH. Níže uvedený příkaz upravte nahrazením `SPARKCLUSTER` názvem vašeho clusteru Spark a zadáním příkazu:
 
     ```cmd
     ssh sshuser@SPARKCLUSTER-ssh.azurehdinsight.net
     ```
 
-2. Zadejte následující příkaz pro zkopírování `hbase-site.xml` z výchozího úložiště clusteru Spark do složky Konfigurace Spark 2 v místním úložišti clusteru:
+4. Zadejte následující příkaz pro zkopírování `hbase-site.xml` z výchozího úložiště clusteru Spark do složky Konfigurace Spark 2 v místním úložišti clusteru:
 
     ```bash
     sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
@@ -125,7 +165,7 @@ Příklad: v následující tabulce jsou uvedeny dvě verze a odpovídající p�
     |      2.1    | HDI 3,6 (HBA 1,1) | 1.1.0.3.1.2.2-1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
     |      2,4    | HDI 4,0 (HBA 2,0) | 1.1.1-2.1-s_2.11  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
 
-2. Nechte tuto instanci prostředí Sparku otevřenou a pokračujte [definováním katalogu a dotazu](#define-a-catalog-and-query). Pokud nenajdete jar, který odpovídá vašim verzím v SHC Core úložiště, pokračujte ve čtení. 
+2. Nechte tuto instanci prostředí Sparku otevřenou a pokračujte [definováním katalogu a dotazu](#define-a-catalog-and-query). Pokud nenajdete jar, který odpovídá vašim verzím v úložišti SHC Core, pokračujte ve čtení. 
 
 JAR můžete vytvořit přímo z větve GitHubu [Spark-HBA-Connector](https://github.com/hortonworks-spark/shc) . Pokud například používáte se systémem Spark 2,3 a HBA 1,1, proveďte tyto kroky:
 
