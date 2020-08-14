@@ -4,12 +4,12 @@ description: Naučte se, jak tyto certifikáty otočit v clusteru Azure Kubernet
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: 2e48a05a36fdbd56fb78cd1394c512485b521e50
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 90526b78e65c335f07a2a9d2d152b54b47233082
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255349"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211027"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Otočení certifikátů ve službě Azure Kubernetes (AKS)
 
@@ -37,7 +37,7 @@ AKS generuje a používá následující certifikáty, certifikační autority a
 > [!NOTE]
 > Clustery AKS vytvořené před vydáním března 2019 obsahují certifikáty, jejichž platnost vyprší po dvou letech. Každý cluster vytvořený po březnu 2019 nebo jakémkoli clusteru, který má jeho certifikáty otočený, má certifikáty certifikační autority clusteru, jejichž platnost vyprší po 30 letech. Platnost všech ostatních certifikátů vyprší po dvou letech. Pokud chcete ověřit, kdy byl cluster vytvořen, použijte `kubectl get nodes` k zobrazení *stáří* fondů uzlů.
 > 
-> Navíc můžete kontrolovat datum vypršení platnosti certifikátu vašeho clusteru. Například následující příkaz zobrazí podrobnosti o certifikátu pro cluster *myAKSCluster* .
+> Navíc můžete kontrolovat datum vypršení platnosti certifikátu vašeho clusteru. Například následující příkaz bash zobrazí podrobnosti o certifikátu pro cluster *myAKSCluster* .
 > ```console
 > kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
 > ```
@@ -62,7 +62,7 @@ az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 > [!IMPORTANT]
 > Dokončení může trvat až 30 minut `az aks rotate-certs` . Pokud příkaz před dokončením skončí, použijte `az aks show` k ověření stavu clusteru *otočení certifikátu*. Pokud je cluster ve stavu selhání, znovu ho znovu `az aks rotate-certs` natočit.
 
-Spuštěním příkazu ověřte, že staré certifikáty již nejsou platné `kubectl` . Vzhledem k tomu, že jste neaktualizovali certifikáty používané v `kubectl` , zobrazí se chyba.  Příklad:
+Spuštěním příkazu ověřte, že staré certifikáty již nejsou platné `kubectl` . Vzhledem k tomu, že jste neaktualizovali certifikáty používané v `kubectl` , zobrazí se chyba.  Například:
 
 ```console
 $ kubectl get no
@@ -75,7 +75,7 @@ Aktualizujte certifikát používaný spuštěním `kubectl` `az aks get-credent
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 
-Ověřte, že se certifikáty aktualizovaly spuštěním `kubectl` příkazu, který teď bude úspěšný. Příklad:
+Ověřte, že se certifikáty aktualizovaly spuštěním `kubectl` příkazu, který teď bude úspěšný. Například:
 
 ```console
 kubectl get no

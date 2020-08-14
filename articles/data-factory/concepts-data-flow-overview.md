@@ -6,36 +6,36 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 850879675d4554329f24c86f2ac28660b303084c
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.custom: references_regions
+ms.date: 08/12/2020
+ms.openlocfilehash: ad3fa9db5a15f68f0538b5de29d9a89858c472e9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475562"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212070"
 ---
-# <a name="what-are-mapping-data-flows"></a>Co jsou toky dat mapování?
+# <a name="mapping-data-flows-in-azure-data-factory"></a>Mapování toků dat v Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Mapování datových toků je vizuálně navržené transformace dat v Azure Data Factory. Datové toky umožňují technikům pro transformaci dat pracovat s grafickými logikami bez psaní kódu. Výsledné toky dat se spouštějí jako aktivity v rámci Azure Data Factory kanálů, které používají clustery Apache Spark s horizontálním navýšení kapacity. Aktivity toku dat se dají provádět pomocí stávajících Data Factory možností plánování, řízení, toku a monitorování.
+## <a name="what-are-mapping-data-flows"></a>Co jsou toky dat mapování?
 
-Mapování toků dat poskytuje zcela vizuální prostředí bez nutnosti kódování. Vaše toky dat běží na vašem prováděcím clusteru pro zpracování dat se škálováním na více instancí. Azure Data Factory zpracovává všechny překlady kódu, optimalizaci cest a provádění úloh toku dat.
+Mapování datových toků je vizuálně navržené transformace dat v Azure Data Factory. Toky dat umožňují inženýrům dat vyvíjet logiku transformace dat bez psaní kódu. Výsledné toky dat se spouštějí jako aktivity v rámci Azure Data Factory kanálů, které používají clustery Apache Spark s horizontálním navýšení kapacity. Aktivity toku dat je možné provozovat pomocí stávajících funkcí Azure Data Factory plánování, řízení, flow a monitorování.
 
-![Architektura](media/data-flow/adf-data-flows.png "Architektura")
+Mapování toků dat poskytuje zcela vizuální prostředí bez nutnosti kódování. Vaše datové toky se spouštějí na clusterech spuštění spravovaných ADF pro zpracování dat se škálováním na více systémů. Azure Data Factory zpracovává všechny překlady kódu, optimalizaci cest a provádění úloh toku dat.
 
 ## <a name="getting-started"></a>Začínáme
 
-Tok dat vytvoříte tak, že vyberete znaménko plus v části **prostředky výroby**a pak vyberete **tok dat**. 
+Toky dat se vytvářejí v podokně prostředky továrny, jako jsou kanály a datové sady. Tok dat vytvoříte tak, že vyberete znaménko plus vedle **prostředků výrobce**a pak vyberete **tok dat**. 
 
-![Nový tok dat](media/data-flow/newdataflow2.png "Nový tok dat")
+![Nový tok dat](media/data-flow/new-data-flow.png "Nový tok dat")
 
 Tato akce přejde k plátnu toku dat, kde můžete vytvořit logiku transformace. Pokud chcete začít konfigurovat transformaci zdrojového kódu, vyberte **Přidat zdroj** . Další informace najdete v tématu [transformace zdroje](data-flow-source.md).
 
-## <a name="data-flow-canvas"></a>Plátno toku dat
+## <a name="authoring-data-flows"></a>Vytváření toků dat
 
-Plátno toku dat je rozdělené na tři části: horní pruh, graf a panel konfigurace. 
+Mapování toku dat má jedinečné plátno pro vytváření, které usnadňuje sestavování logiky transformace. Plátno toku dat je rozdělené na tři části: horní pruh, graf a panel konfigurace. 
 
 ![Plátno](media/data-flow/canvas1.png "Plátno")
 
@@ -44,40 +44,6 @@ Plátno toku dat je rozdělené na tři části: horní pruh, graf a panel konfi
 Graf zobrazí datový proud transformace. Ukazuje, že se při toku dat do jedné nebo více umyvadel zobrazuje čára. Chcete-li přidat nový zdroj, vyberte možnost **Přidat zdroj**. Chcete-li přidat novou transformaci, vyberte znaménko plus na pravé straně existující transformace.
 
 ![Plátno](media/data-flow/canvas2.png "Plátno")
-
-### <a name="azure-integration-runtime-data-flow-properties"></a>Vlastnosti toku dat prostředí Azure Integration runtime
-
-![Tlačítko ladit](media/data-flow/debugbutton.png "Tlačítko ladit")
-
-Když začnete pracovat s toky dat v ADF, chcete zapnout přepínač ladit pro toky dat v horní části uživatelského rozhraní prohlížeče. Tím se vytvoří cluster Spark, který se použije pro interaktivní ladění, náhledy dat a spuštění ladění kanálu. Velikost používaného clusteru můžete nastavit tak, že vyberete vlastní [Azure Integration runtime](concepts-integration-runtime.md). Relace ladění zůstane aktivní po dobu až 60 minut po poslední ukázce náhledu dat nebo posledního spuštění kanálu ladění.
-
-Když zprovoznění své kanály s aktivitami toku dat, ADF používá Azure Integration Runtime přidružený k [aktivitě](control-flow-execute-data-flow-activity.md) ve vlastnosti "spustit na".
-
-Výchozí Azure Integration Runtime je malý cluster jednoho pracovního procesu, který umožňuje zobrazit náhled dat a rychle spouštět kanály ladění s minimálními náklady. Pokud provádíte operace s velkými datovými sadami, nastavte větší konfiguraci Azure IR.
-
-Můžete nastavit, aby služba ADF udržovala fond prostředků clusteru (VM) nastavením hodnoty TTL ve vlastnostech toku dat Azure IR. Výsledkem této akce je rychlejší provádění úloh v následných aktivitách.
-
-#### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Azure Integration runtime a strategie toku dat
-
-##### <a name="execute-data-flows-in-parallel"></a>Paralelní spouštění toků dat
-
-Pokud provedete paralelní toky dat v kanálu, vytvoří se pro každé spuštění aktivity samostatné clustery Sparku, a to na základě nastavení v Azure Integration Runtime připojené ke každé aktivitě. Chcete-li navrhovat paralelní spouštění v kanálech ADF, přidejte aktivity toku dat bez omezení priority v uživatelském rozhraní.
-
-Z těchto tří možností se tato možnost může v nejkratší době vykoná. Každý paralelní tok dat se ale spustí současně u samostatných clusterů, takže řazení událostí je nedeterministické.
-
-Pokud spouštíte aktivity toku dat paralelně uvnitř kanálů, doporučujeme nepoužívat hodnotu TTL. Tato akce je způsobená tím, že paralelní spouštění toku dat současně pomocí stejné Azure Integration Runtime vede k více instancím teplého fondu pro vaši datovou továrnu.
-
-##### <a name="overload-single-data-flow"></a>Jeden tok dat přetížení
-
-Pokud vložíte veškerou logiku do jediného toku dat, provede ADF stejný kontext spuštění úlohy v jedné instanci clusteru Spark.
-
-Tato možnost může být náročnější na sledování a řešení problémů, protože vaše obchodní pravidla a obchodní logika můžou být jumbled dohromady. Tato možnost také neposkytuje mnohem větší použitelnost.
-
-##### <a name="execute-data-flows-sequentially"></a>Postupné provádění toků dat
-
-Pokud provedete své aktivity toku dat v rámci kanálu a nastavíte hodnotu TTL pro konfiguraci Azure IR, pak ADF znovu použije výpočetní prostředky (virtuální počítače), což vede k rychlejší následné době spuštění. Pro každé spuštění se stále dostanete nový kontext Sparku.
-
-Z těchto tří možností Tato akce může trvat delší dobu, než se provede celý konec až do konce. Ale poskytuje čisté oddělení logických operací v každém kroku toku dat.
 
 ### <a name="configuration-panel"></a>Panel konfigurace
 
@@ -111,13 +77,85 @@ Pokud je režim ladění zapnutý, karta **Náhled dat** vám poskytne interakti
 
 ### <a name="top-bar"></a>Horní panel
 
-Horní panel obsahuje akce, které ovlivňují celý tok dat, jako je ukládání a ověřování. Můžete také přepínat mezi režimy grafu a konfigurace pomocí tlačítek **Zobrazit graf** a **Skrýt graf** .
+Horní panel obsahuje akce, které ovlivňují celý tok dat, jako je ukládání a ověřování. Můžete také zobrazit základní kód JSON a skript toku dat logiky transformace. Další informace najdete v části [skript toku dat](data-flow-script.md).
 
-![Skrýt graf](media/data-flow/hideg.png "Skrýt graf")
+## <a name="available-transformations"></a>Dostupné transformace
 
-Pokud graf skryjete, můžete později procházet uzly pro transformaci prostřednictvím **předchozích** a **dalších** tlačítek.
+Seznam dostupných transformací najdete v [přehledu transformace toku dat mapování](data-flow-transformation-overview.md) .
 
-![Tlačítka předchozí a další](media/data-flow/showhide.png "tlačítka předchozí a další")
+## <a name="data-flow-activity"></a>Aktivita toku dat
+
+Mapování toků dat je v rámci kanálů ADF provozováno pomocí [aktivity toku dat](control-flow-execute-data-flow-activity.md). Všichni uživatelé musí zadat, který Integration runtime má použít a předávat hodnoty parametrů. Další informace najdete v části [Azure Integration runtime](concepts-integration-runtime.md#azure-integration-runtime).
+
+## <a name="debug-mode"></a>Režim ladění
+
+Režim ladění umožňuje interaktivně zobrazit výsledky jednotlivých kroků transformace při sestavování a ladění toků dat. Ladicí relaci lze použít v v nástroji při sestavování logiky toku dat a spuštění ladění kanálu s aktivitami toku dat. Další informace najdete v dokumentaci v [režimu ladění](concepts-data-flow-debug-mode.md).
+
+## <a name="monitoring-data-flows"></a>Monitorování toků dat
+
+Mapování toku dat se integruje s existujícími možnostmi monitorování Azure Data Factory. Informace o tom, jak pochopit výstup monitorování toku dat, najdete v tématu [monitorování toků dat mapování](concepts-data-flow-monitoring.md).
+
+Tým Azure Data Factory vytvořil [Průvodce optimalizací výkonu](concepts-data-flow-performance.md) , který vám pomůže optimalizovat dobu provádění toků dat po sestavení obchodní logiky.
+
+## <a name="available-regions"></a>Dostupné oblasti
+
+Datové toky mapování jsou k dispozici v následujících oblastech:
+
+| Oblast Azure | Toky dat v ADF | Toky dat v synapse studiu |
+| ------------ | ----------------- | ---------------------------- |
+|  Austrálie – střed | | |  
+| Austrálie – střed 2 | | |
+| Austrálie – východ | ✓ |  ✓ |
+| Australia Southeast   | ✓ | ✓ |
+| Brazil South  | ✓ |  |
+| Střední Kanada | ✓ |  |
+| Central India | ✓ |   ✓ |
+| Střední USA    | ✓ |   ✓ |
+| Čína – východ |      | ✓ |
+| Čína – východ 2  |   |    |
+| Čína – neregionální | | |
+| Čína – sever |     | |
+| Čína – sever 2 | |  |
+| Východní Asie | ✓ | |
+| East US   | ✓ | ✓ |
+| USA – východ 2 | ✓ | ✓ |
+| Francie – střed | ✓ | ✓ |
+| Francie – jih  | | |
+| Německo – střed (Svrchovan) | | |
+| Německo – bez ohledu na oblast (Svrchovan) | | |
+| Německo – sever (veřejné) | | |
+| Německo – Severovýchod (Svrchovan) | | |
+| Německo – středozápad (veřejné) |  | ✓ |
+| Japan East | ✓ |  |
+| Japonsko – západ |  | |
+| Jižní Korea – střed | ✓ |  |
+| Jižní Korea – jih | | |
+| USA – středosever  | ✓ | ✓ |
+| Severní Evropa  | ✓ |    |
+| Norsko – východ | | |
+| Norsko – západ | | |
+| Jižní Afrika – sever    | ✓ | |
+| Jižní Afrika – západ |  |    |
+| Středojižní USA  | | ✓ |
+| Indie – jih | | |
+| Southeast Asia    | ✓ | ✓ |
+| Švýcarsko – sever |   |  |
+| Švýcarsko – západ | | |
+| Spojené arabské emiráty – střed | | |
+| Spojené arabské emiráty sever |  |    |
+| Spojené království – jih  | ✓ |   | ✓ |
+| Spojené království – západ |     | ✓ |
+| US DoD – střed | |  |
+| US DoD – východ | |  |
+| USA (Gov) – Arizona |      |  |
+| US Gov – bez ohledu na oblast | |  |
+| USA (Gov) – Texas | |  |
+| USA (Gov) – Virginia |     |  |
+| USA – středozápad |     | ✓ |
+| West Europe   | ✓ |   ✓ |
+| Západní Indie | | |
+| USA – západ   | ✓ |   |
+| Západní USA 2 | ✓ |   ✓ | 
 
 ## <a name="next-steps"></a>Další kroky
 

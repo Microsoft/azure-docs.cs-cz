@@ -1,18 +1,18 @@
 ---
-title: Řešení potíží s připojením agenta Azure ARC pro servery
-description: V tomto článku se dozvíte, jak řešit problémy s agentem připojeného počítače, který se při pokusu o připojení ke službě vyskytnout v rámci služby Azure ARC pro servery (Preview).
+title: Řešení potíží s připojením agenta Azure ARC s podporou serverů (Preview)
+description: V tomto článku se dozvíte, jak řešit problémy s agentem připojeného počítače, který se při pokusu o připojení ke službě vyskytnout u serverů s podporou ARC Azure (Preview).
 ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5cd2560279085485a8ac7b285e4f601060a924f1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: aeb370fb6cd4eacf20c1acf29e84c03e5e322d39
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118004"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213546"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Řešení potíží s připojením agenta připojeného počítače
 
-Tento článek poskytuje informace o řešení potíží a řešení problémů, ke kterým může dojít při pokusu o konfiguraci agenta Azure ARC pro servery (Preview), který je připojený pro Windows nebo Linux. Součástí jsou i metody interaktivního i navýšení instalace při konfiguraci připojení ke službě. Obecné informace najdete v tématu [Přehled ARC pro servery](./overview.md).
+Tento článek poskytuje informace o řešení potíží a řešení problémů, ke kterým může dojít při pokusu o konfiguraci serveru s podporou Azure ARC (verze Preview) připojeného agenta počítače pro Windows nebo Linux. Součástí jsou i metody interaktivního i navýšení instalace při konfiguraci připojení ke službě. Obecné informace najdete v tématu [Přehled serverů s podporou ARC](./overview.md).
 
 ## <a name="agent-verbose-log"></a>Podrobný protokol agenta
 
@@ -22,13 +22,13 @@ Než budete postupovat podle kroků, které jsou popsané dále v tomto článku
 
 Následuje příklad příkazu, který umožňuje podrobné protokolování s připojeným agentem počítače pro Windows při provádění interaktivní instalace.
 
-```
+```console
 & "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
 ```
 
 Následuje příklad příkazu, který umožňuje podrobné protokolování s připojeným agentem počítače pro Windows při provádění instalace v rámci škálování pomocí instančního objektu.
 
-```
+```console
 & "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe" connect `
   --service-principal-id "{serviceprincipalAppID}" `
   --service-principal-secret "{serviceprincipalPassword}" `
@@ -46,13 +46,13 @@ Následuje příklad příkazu, který umožňuje podrobné protokolování s p�
 >[!NOTE]
 >Aby bylo možné spustit **azcmagent**, musíte mít oprávnění *root* Access pro počítače se systémem Linux.
 
-```
+```bash
 azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
 ```
 
 Následuje příklad příkazu, který umožňuje podrobné protokolování s připojeným agentem počítače pro Linux při provádění instalace v rámci škálování pomocí instančního objektu.
 
-```
+```bash
 azcmagent connect \
   --service-principal-id "{serviceprincipalAppID}" \
   --service-principal-secret "{serviceprincipalPassword}" \

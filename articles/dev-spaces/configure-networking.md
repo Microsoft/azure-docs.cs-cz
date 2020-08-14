@@ -5,12 +5,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Popisuje požadavky na síť pro provozování Azure Dev Spaces ve službě Azure Kubernetes.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, CNI, kubenet, SDN, Network
-ms.openlocfilehash: c3ee84819172fe28aef779493d01e2433ccca336
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d9ebbec3e3c07a466acb58e88b67e6a32a20edb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300687"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214175"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Konfigurace sítě pro Azure Dev Spaces v různých topologiích sítě
 
@@ -72,7 +72,7 @@ Azure Dev Spaces má možnost vystavovat koncové body pro vaše služby běží
 * *Privátní* koncový bod nasadí kontroler příchozího přenosu s privátní IP adresou. Pomocí privátní IP adresy je nástroj pro vyrovnávání zatížení pro váš cluster přístupný jenom v rámci virtuální sítě clusteru. Privátní IP adresa nástroje pro vyrovnávání zatížení je zaregistrovaná na DNS clusteru, aby bylo možné ke službám uvnitř virtuální sítě clusteru přistupovat pomocí adresy URL. Tuto adresu URL můžete zobrazit pomocí `azds list-uris` .
 * Nastavení *žádné* pro možnost koncový bod nezpůsobí nasazení žádného kontroleru příchozího přenosu dat. Bez nasazení adaptéru pro příchozí přenos dat nebudou [Možnosti směrování Azure dev Spaces][dev-spaces-routing] fungovat. Volitelně můžete implementovat vlastní řešení řadiče příchozího přenosu dat pomocí [traefik][traefik-ingress] nebo [Nginx][nginx-ingress]. Tím umožníte, aby funkce směrování znovu fungovaly.
 
-Pokud chcete nakonfigurovat možnost koncového bodu, použijte parametr *-e* nebo *--endpoint* při povolování Azure dev Spaces v clusteru. Příklad:
+Pokud chcete nakonfigurovat možnost koncového bodu, použijte parametr *-e* nebo *--endpoint* při povolování Azure dev Spaces v clusteru. Například:
 
 > [!NOTE]
 > Možnost Endpoint vyžaduje, abyste spustili Azure CLI verze 2.2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
@@ -87,10 +87,10 @@ Azure Dev Spaces používá klientské nástroje, jako je rozšíření CLI Azur
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace napříč více kontejnery a jak zjednodušit vývoj díky práci s různými verzemi nebo větvemi kódu v různých prostorech.
+Přečtěte si další informace o tom, jak Azure Dev Spaces funguje.
 
 > [!div class="nextstepaction"]
-> [Vývoj pro tým v Azure Dev Spaces][team-quickstart]
+> [Jak Azure Dev Spaces funguje](how-dev-spaces-works.md)
 
 [aks-cni]: ../aks/configure-azure-cni.md
 [aks-cni-ip-planning]: ../aks/configure-azure-cni.md#plan-ip-addressing-for-your-cluster
@@ -111,4 +111,3 @@ Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace n
 [nginx-ingress]: how-to/ingress-https-nginx.md
 [sample-repo]: https://github.com/Azure/dev-spaces/tree/master/advanced%20networking
 [service-tags]: ../virtual-network/service-tags-overview.md#available-service-tags
-[team-quickstart]: quickstart-team-development.md

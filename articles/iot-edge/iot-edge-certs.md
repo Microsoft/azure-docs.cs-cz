@@ -4,34 +4,37 @@ description: Azure IoT Edge používá certifikát k ověření zařízení, mod
 author: stevebus
 manager: philmea
 ms.author: stevebus
-ms.date: 10/29/2019
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: f9c3f8e1e37a59dc0010269c6b4c19e3a682c57e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9d7caf332239d364b5bc47b5d58a808ead70395d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247009"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210592"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Vysvětlení způsobu, jakým Azure IoT Edge používá certifikáty
 
 IoT Edge certifikáty používají moduly a zařízení IoT pro příjem dat k ověření identity a legitimity modulu runtime [centra IoT Edge](iot-edge-runtime.md#iot-edge-hub) . Tato ověření umožňují zabezpečené připojení TLS (Transport Layer Security) mezi modulem runtime, moduly a zařízeními IoT. Stejně jako IoT Hub sám IoT Edge vyžaduje zabezpečené a šifrované připojení ze zařízení IoT (nebo list) a modulů IoT Edge. Aby bylo možné vytvořit zabezpečené připojení TLS, modul IoT Edge hub prezentuje řetěz certifikátů serveru pro připojení klientů, aby ověřil jeho identitu.
 
+>[!NOTE]
+>Tento článek se týká certifikátů, které se používají k zabezpečení připojení mezi různými součástmi na zařízení IoT Edge nebo mezi zařízením IoT Edge a všemi koncovými zařízeními. Pomocí certifikátů můžete také ověřit, že zařízení IoT Edge IoT Hub. Tyto ověřovací certifikáty se liší a nejsou popsány v tomto článku. Další informace o ověřování zařízení pomocí certifikátů najdete v tématu [Vytvoření a zřízení IoT Edge zařízení pomocí certifikátů X. 509](how-to-auto-provision-x509-certs.md).
+
 Tento článek vysvětluje, jak IoT Edge certifikáty můžou fungovat v produkčních, vývojových a testovacích scénářích. I když se skripty liší (PowerShell vs. bash), koncepty jsou stejné mezi systémy Linux a Windows.
 
 ## <a name="iot-edge-certificates"></a>Certifikáty IoT Edge
 
-Výrobci nejsou obvykle koncoví uživatelé zařízení IoT Edge. V některých případech je jediným vztahem mezi těmito dvěma pokaždé, když koncový uživatel, nebo operátor zakoupí obecné zařízení provedené výrobcem. Jinak výrobce v rámci smlouvy pracuje na sestavení vlastního zařízení pro operátor. IoT Edge návrh certifikátu se snaží vzít v úvahu oba scénáře.
-
-> [!NOTE]
-> V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2050. Toto omezení se vztahuje na certifikát certifikační autority zařízení, všechny certifikáty v sadě prostředků trustu a na certifikáty ID zařízení, které se používají pro metody zřizování X. 509.
+Existují dva běžné scénáře nastavení certifikátů na zařízení IoT Edge. V některých případech může koncový uživatel (nebo operátor) zařízení nakoupit obecné zařízení, které provedl výrobce, a pak tyto certifikáty spravuje sami. Jinak výrobce pracuje pod smlouvou o sestavení vlastního zařízení pro operátor a provede některé počáteční podepisování certifikátu před tím, než se zařízení dokončí. IoT Edge návrh certifikátu se snaží vzít v úvahu oba scénáře.
 
 Následující obrázek ukazuje IoT Edge využití certifikátů. Mezi certifikátem kořenové certifikační autority a certifikátem certifikační autority zařízení může být nulový, jeden nebo mnoho zprostředkujících podpisových certifikátů v závislosti na počtu zúčastněných entit. Tady zobrazujeme jeden případ.
 
 ![Diagram typických vztahů certifikátů](./media/iot-edge-certs/edgeCerts-general.png)
+
+> [!NOTE]
+> V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2050. Toto omezení se vztahuje na certifikát certifikační autority zařízení, všechny certifikáty v sadě prostředků trustu a na certifikáty ID zařízení, které se používají pro metody zřizování X. 509.
 
 ### <a name="certificate-authority"></a>Certifikační autorita
 
@@ -43,7 +46,7 @@ Certifikát kořenové certifikační autority je kořenem vztahu důvěryhodnos
 
 ### <a name="intermediate-certificates"></a>Zprostředkující certifikáty
 
-V typickém výrobním procesu pro vytváření zabezpečených zařízení se certifikáty kořenové certifikační autority používají jenom zřídka, hlavně kvůli riziku úniku nebo ozáření. Certifikát kořenové certifikační autority vytvoří a digitálně podepíše jeden nebo víc certifikátů Zprostředkující certifikační autority. Může existovat jen jeden nebo může existovat řetěz těchto zprostředkujících certifikátů. Mezi scénáře, které by vyžadovaly řetěz zprostředkujících certifikátů, patří:
+V typickém výrobním procesu pro vytváření zabezpečených zařízení se certifikáty kořenové certifikační autority používají jenom zřídka, hlavně kvůli riziku úniku nebo ozáření. Certifikát kořenové certifikační autority vytvoří a digitálně podepíše jeden nebo víc certifikátů Zprostředkující certifikační autority. Může existovat jenom jeden, nebo se může jednat o řetěz zprostředkujících certifikátů. Mezi scénáře, které by vyžadovaly řetěz zprostředkujících certifikátů, patří:
 
 * Hierarchie oddělení v rámci výrobce.
 
@@ -59,7 +62,7 @@ Certifikát certifikační autority zařízení se vygeneruje a podepíše konco
 
 ### <a name="iot-edge-workload-ca"></a>IoT Edge CA pro úlohy
 
-[IoT Edge Security Manager](iot-edge-security-manager.md) generuje certifikát certifikační autority pro úlohy, první na straně operátora procesu, při IoT Edge prvním spuštění. Tento certifikát je vygenerovaný z a podepsaný certifikátem certifikační autority zařízení. Tento certifikát, který je pouze dalším zprostředkujícím podpisovým certifikátem, se používá ke generování a podepsání všech dalších certifikátů používaných modulem runtime IoT Edge. V dnešní době je to hlavně certifikát serveru IoT Edge hub, který je popsaný v následující části, ale v budoucnu může zahrnovat další certifikáty pro ověřování IoT Edgech součástí.
+[IoT Edge Security Manager](iot-edge-security-manager.md) generuje certifikát certifikační autority pro úlohy, první na straně operátora procesu, při IoT Edge prvním spuštění. Tento certifikát je vygenerovaný a podepsaný certifikátem certifikační autority zařízení. Tento certifikát, který je pouze dalším zprostředkujícím podpisovým certifikátem, se používá ke generování a podepsání všech dalších certifikátů používaných modulem runtime IoT Edge. V dnešní době je to hlavně certifikát serveru IoT Edge hub, který je popsaný v následující části, ale v budoucnu může zahrnovat další certifikáty pro ověřování IoT Edgech součástí.
 
 ### <a name="iot-edge-hub-server-certificate"></a>Certifikát serveru IoT Edge hub
 

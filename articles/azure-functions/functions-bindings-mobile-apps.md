@@ -3,14 +3,15 @@ title: Mobile Apps vazby pro Azure Functions
 description: Naučte se používat vazby Azure Mobile Apps v Azure Functions.
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 6810ba76379e78d3cde4f3cd341d501be3725257
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ea58cc3d9f3615a74249b36f3f9ffb79caddda1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506328"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212232"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps vazby pro Azure Functions 
 
@@ -310,9 +311,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 Ve funkcích skriptu jazyka C# použijte `out object` pro přístup k výstupnímu záznamu pojmenovaný výstupní parametr typu. V knihovnách tříd jazyka C# `MobileTable` lze atribut použít s některým z následujících typů:
 
-* `ICollector<T>`nebo `IAsyncCollector<T>` , kde `T` je buď `JObject` nebo jakýkoli typ s `public string Id` vlastností.
+* `ICollector<T>` nebo `IAsyncCollector<T>` , kde `T` je buď `JObject` nebo jakýkoli typ s `public string Id` vlastností.
 * `out JObject`
-* `out T`nebo `out T[]` , kde `T` je libovolný typ s `public string Id` vlastností.
+* `out T` nebo `out T[]` , kde `T` je libovolný typ s `public string Id` vlastností.
 
 V Node.js Functions použijte `context.bindings.<name>` pro přístup k výstupnímu záznamu.
 

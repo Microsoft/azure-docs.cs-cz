@@ -3,16 +3,17 @@ title: Použití filtrů funkcí k povolení funkce pro podmnožinu uživatelů
 titleSuffix: Azure App Configuration
 description: Naučte se používat filtry funkcí k povolení funkce pro podmnožinu uživatelů.
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 author: lisaguthrie
 ms.author: lcozzens
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 181c97615985283011834dcf9145810b1563fb4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b2eb942581f6e4163012b0f767d04c02689bb7b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80056997"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206760"
 ---
 # <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>Použití filtrů funkcí k povolení funkce pro podmnožinu uživatelů
 
@@ -22,8 +23,8 @@ Naproti tomu _příznak podmíněné funkce_ umožňuje, aby byl příznak funkc
 
 `Microsoft.FeatureManagement`Knihovna obsahuje dva filtry funkcí:
 
-- `PercentageFilter`Povolí příznak funkce na základě procenta.
-- `TimeWindowFilter`Povolí příznak funkce během zadaného časového období.
+- `PercentageFilter` Povolí příznak funkce na základě procenta.
+- `TimeWindowFilter` Povolí příznak funkce během zadaného časového období.
 
 Můžete také vytvořit vlastní filtr funkcí, který implementuje [rozhraní Microsoft. FeatureManagement. IFeatureFilter](/dotnet/api/microsoft.featuremanagement.ifeaturefilter).
 

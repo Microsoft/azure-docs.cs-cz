@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 5fe674fa7ab6a6a3f222a215ebc6912549776fee
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 2ffe9d525e92fa2154889cea43f681a0f31a18ab
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067354"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214225"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Přizpůsobení výstupů clusteru pomocí uživatelsky definované trasy
 
@@ -19,7 +19,7 @@ Odchozí přenos dat z clusteru AKS se dá přizpůsobit tak, aby vyhovoval spec
 
 Tento článek vás seznámí s postupem přizpůsobení odchozí trasy clusteru pro podporu vlastních síťových scénářů, jako jsou například ty, které nepovolují veřejné IP adresy a vyžadují, aby se cluster zacházel za virtuálním síťovým zařízením (síťové virtuální zařízení).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Azure CLI verze 2.0.81 nebo vyšší
 * Verze rozhraní API `2020-01-01` nebo vyšší
 
@@ -71,7 +71,8 @@ K ilustraci aplikace clusteru s odchozím typem pomocí uživatelsky definované
 > [!IMPORTANT]
 > Výstupní typ UDR vyžaduje trasu pro 0.0.0.0/0 a cíl dalšího segmentu směrování síťové virtuální zařízení (síťové virtuální zařízení) v tabulce směrování.
 > Tabulka směrování už má výchozí hodnotu 0.0.0.0/0 pro Internet, bez veřejné IP adresy do SNAT jenom přidání této trasy vám neposkytne žádný výstup. AKS ověří, že nevytvoříte trasu 0.0.0.0/0 ukazující na Internet, ale místo síťové virtuální zařízení nebo brány atd.
-
+> 
+> Při použití odchozího typu UDR není vytvořena veřejná IP adresa nástroje pro vyrovnávání zatížení, pokud není nakonfigurované služba typu *Vyrovnávání* zatížení.
 
 ## <a name="next-steps"></a>Další kroky
 

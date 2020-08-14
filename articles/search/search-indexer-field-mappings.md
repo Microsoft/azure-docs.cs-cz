@@ -9,14 +9,16 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 543644495a99bacd40edc3f2d9151e4c15808c50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47a8d58d6ca0a8a04823fe09fb52490f13cfead7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038422"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208754"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mapování polí a transformace pomocí indexerů Azure Kognitivní hledání
+
+![Fáze indexeru](./media/search-indexer-field-mappings/indexer-stages-field-mappings.png "fáze indexeru")
 
 Při použití služby Azure Kognitivní hledání indexery někdy zjistíte, že vstupní data neodpovídají schématu cílového indexu. V těchto případech můžete použít **mapování polí** k přetvarování dat během procesu indexování.
 
@@ -275,9 +277,9 @@ Tato funkce se dá použít ke kódování řetězce tak, aby byla zabezpečená
 
 #### <a name="example---document-key-lookup"></a>Příklad – vyhledávání klíčů dokumentu
 
-`urlEncode`funkci lze použít jako alternativu k `base64Encode` funkci, pokud je třeba převést pouze nebezpečné znaky adresy URL, přičemž zachová jiné znaky tak, jak jsou.
+`urlEncode` funkci lze použít jako alternativu k `base64Encode` funkci, pokud je třeba převést pouze nebezpečné znaky adresy URL, přičemž zachová jiné znaky tak, jak jsou.
 
-Řekněme, že vstupní řetězec je a `<hello>` pak cílové pole typu `(Edm.String)` se naplní hodnotou.`%3chello%3e`
+Řekněme, že vstupní řetězec je a `<hello>` pak cílové pole typu `(Edm.String)` se naplní hodnotou. `%3chello%3e`
 
 Když načtete kódovaný klíč v době hledání, můžete použít `urlDecode` funkci k získání původní hodnoty klíče a použít ji k načtení zdrojového dokumentu.
 

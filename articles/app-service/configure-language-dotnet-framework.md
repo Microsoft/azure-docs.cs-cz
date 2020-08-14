@@ -2,14 +2,15 @@
 title: Konfigurace aplikací ASP.NET
 description: Naučte se konfigurovat aplikaci ASP.NET v Azure App Service. Tento článek ukazuje nejběžnější konfigurační úlohy.
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 53654520ea20bd8ee797de61449a616eadd001a5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 67816544e173c19cbc85c5779ffeba92578e00b2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080143"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211860"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Konfigurace aplikace ASP.NET pro Azure App Service
 
@@ -70,7 +71,7 @@ ConfigurationManager.ConnectionStrings["MyConnection"];
 }
 ```
 
-Pokud nakonfigurujete nastavení aplikace se stejným názvem v App Service a v *web.config*, hodnota App Service má přednost před *web.configou* hodnotou. Hodnota místního *web.config* umožňuje místní ladění aplikace, ale hodnota App Service umožňuje spuštění aplikace v produktu s nastavením produkčního prostředí. Připojovací řetězce fungují stejným způsobem. Tímto způsobem můžete zachovat tajné klíče aplikace mimo vaše úložiště kódu a přistupovat k odpovídajícím hodnotám beze změny kódu.
+Pokud nakonfigurujete nastavení aplikace se stejným názvem v App Service a v *web.config*, hodnota App Service má přednost před *web.configou * hodnotou. Hodnota místního *web.config* umožňuje místní ladění aplikace, ale hodnota App Service umožňuje spuštění aplikace v produktu s nastavením produkčního prostředí. Připojovací řetězce fungují stejným způsobem. Tímto způsobem můžete zachovat tajné klíče aplikace mimo vaše úložiště kódu a přistupovat k odpovídajícím hodnotám beze změny kódu.
 
 ## <a name="deploy-multi-project-solutions"></a>Nasazení řešení s více projekty
 

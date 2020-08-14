@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 03d40dcaeaefe01fecbc201cf28dc20c8634af9d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 390376216700b760e96c2348b1ad61bb4561aad2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926667"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211505"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade na Azure Kognitivní hledání .NET SDK verze 11
 
@@ -26,14 +26,14 @@ Mezi hlavní rozdíly, které si všimnete v nové verzi, patří:
 
 + Jeden balíček a knihovna na rozdíl od více
 + Nový název balíčku: `Azure.Search.Documents` místo `Microsoft.Azure.Search` .
-+ Tři klienti místo dvou: `SearchClient` , `SearchIndexClient` ,`SearchIndexerClient`
++ Tři klienti místo dvou: `SearchClient` , `SearchIndexClient` , `SearchIndexerClient`
 + Rozdíly v pojmenovávání napříč celou řadou rozhraní API a malé strukturální rozdíly, které zjednodušují některé úkoly
 
 ## <a name="package-and-library-consolidation"></a>Konsolidace balíčků a knihoven
 
 Verze 11 slučuje více balíčků a knihoven do jedné. Po migraci budete mít k dispozici méně knihoven ke správě.
 
-+ [Balíček umentsAzure.Search.Doc](https://www.nuget.org/packages/Azure.Search.Documents/)
++ [ Balíček umentsAzure.Search.Doc](https://www.nuget.org/packages/Azure.Search.Documents/)
 
 + [Reference k rozhraní API pro klientskou knihovnu](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)
 
@@ -48,7 +48,7 @@ V případě potřeby následující tabulka mapuje klientské knihovny mezi tě
 | Klient používaný pro indexery, zdroje dat, dovednosti | [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**nové**)](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
-> `SearchIndexClient`existuje v obou verzích, ale podporuje různé věci. Ve verzi 10 `SearchIndexClient` Vytvořte indexy a další objekty. Ve verzi 11 `SearchIndexClient` funguje se stávajícími indexy. Aby nedocházelo k nejasnostem při aktualizaci kódu, nezapomeňte na pořadí, ve kterém jsou odkazy na klienta aktualizovány. Po sekvencování [kroků k upgradu](#UpgradeSteps) by měl být možné zmírnit případné problémy s nahrazením řetězce.
+> `SearchIndexClient` existuje v obou verzích, ale podporuje různé věci. Ve verzi 10 `SearchIndexClient` Vytvořte indexy a další objekty. Ve verzi 11 `SearchIndexClient` funguje se stávajícími indexy. Aby nedocházelo k nejasnostem při aktualizaci kódu, nezapomeňte na pořadí, ve kterém jsou odkazy na klienta aktualizovány. Po sekvencování [kroků k upgradu](#UpgradeSteps) by měl být možné zmírnit případné problémy s nahrazením řetězce.
 
 <a name="naming-differences"></a>
 
@@ -61,7 +61,7 @@ Kromě rozdílů klientů (uvedených dříve a tedy vynechán) bylo přejmenov�
 | Verze 10 | Ekvivalent verze 11 |
 |------------|-----------------------|
 | [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials) | [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) |
-| `EncryptionKey`(existovala v [sadě Preview SDK](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) jako obecně dostupná funkce) | [SearchResourceEncryptionKey](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchresourceencryptionkey) |
+| `EncryptionKey` (existovala v [sadě Preview SDK](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) jako obecně dostupná funkce) | [SearchResourceEncryptionKey](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchresourceencryptionkey) |
 
 ### <a name="indexes-analyzers-synonym-maps"></a>Indexy, analyzátory, mapy synonym
 
@@ -71,7 +71,7 @@ Kromě rozdílů klientů (uvedených dříve a tedy vynechán) bylo přejmenov�
 | [Pole](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field) | [Seachfield](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield) |
 | [Programátor](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datatype) | [SearchFieldDataType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfielddatatype) |
 | [ItemError](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.itemerror) | [SearchIndexerError](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexererror) |
-| [MBSA](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lexicalanalyze) (také `AnalyzerName` na `LexicalAnalyzerName` ) |
+| [MBSA](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) (také `AnalyzerName` na `LexicalAnalyzerName` ) |
 | [AnalyzeRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzerequest) | [AnalyzeTextOptions](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.analyzetextoptions) |
 | [StandardAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.standardanalyzer) | [LuceneStandardAnalyzer](https://docs.microsoft.com//dotnet/api/azure.search.documents.indexes.models.lucenestandardanalyzer) |
 | [StandardTokenizer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.standardtokenizer) | [LuceneStandardTokenizer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lucenestandardtokenizer) (také `StandardTokenizerV2` na `LuceneStandardTokenizerV2` ) |
@@ -88,7 +88,7 @@ Definice polí jsou zjednodušené: [SearchableField](https://docs.microsoft.com
 | [Indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) | [SearchIndexer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexer) |
 | [Datového](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) | [SearchIndexerDataSourceConnection](https://docs.microsoft.com//dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) |
 | [Tuhle](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skill) | [SearchIndexerSkill](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
-| [Dovednosti](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskillse) |
+| [Dovednosti](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
 | [DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype) | [SearchIndexerDataSourceType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) |
 
 ### <a name="data-import"></a>Import dat
@@ -135,7 +135,7 @@ Následující funkce verze 10 ještě nejsou k dispozici ve verzi 11. Pokud tyt
 
 Následující kroky vám pomohou začít s migrací kódu proprocházením první sady požadovaných úloh, zejména v souvislosti s klientskými odkazy.
 
-1. Nainstalujte [balíčekAzure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
+1. Nainstalujte [ balíčekAzure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
 
 1. Nahraďte direktivy using pro Microsoft. Azure. Search pomocí následujících kroků:
 
@@ -153,7 +153,7 @@ Následující kroky vám pomohou začít s migrací kódu proprocházením prvn
 
 1. Aktualizujte klientské odkazy na dotazy a import dat. Instance [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) by měly být změněny na [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient). Aby nedošlo k nejasnostem názvů, před pokračováním na další krok nezapomeňte zachytit všechny instance.
 
-1. Aktualizujte odkazy klienta pro objekty index, indexer, mapování synonym a objekty analyzátoru. Instance [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) by měly být změněny na [SearchIndexClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchindexclient). 
+1. Aktualizujte odkazy klienta pro objekty index, indexer, mapování synonym a objekty analyzátoru. Instance [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) by měly být změněny na [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient). 
 
 1. Co nejvíc je to možné, aktualizační třídy, metody a vlastnosti pro použití rozhraní API nové knihovny. Oddíl [rozdíly v pojmenování](#naming-differences) je místo, kde se má začít, ale můžete si také prohlédnout [protokol změn](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md).
 
@@ -175,6 +175,6 @@ V souvislosti s verzemi služeb přináší přechod z 10 na 11 následující z
 
 ## <a name="next-steps"></a>Další kroky
 
-+ [Balíček umentsAzure.Search.Doc](https://www.nuget.org/packages/Azure.Search.Documents/)
++ [ Balíček umentsAzure.Search.Doc](https://www.nuget.org/packages/Azure.Search.Documents/)
 + [Ukázky na GitHubu](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)
-+ [Reference k rozhraní APIAzure.Search.Document](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)
++ [ Reference k rozhraní APIAzure.Search.Document](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet)

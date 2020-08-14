@@ -13,21 +13,21 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/06/2015
 ms.author: lauraa
-ms.openlocfilehash: 7a241d3144b6220d0084b61de2dde7c36a68c257
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 590aa7773c099aaa537e1fb9aaf658843b040674
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334645"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88203977"
 ---
 Následující omezení platí pro Azure Site Recovery.
 
 | Identifikátor omezení | Omezení |
 | --- | --- |
 | Počet trezorů na předplatné |500 |     
-| Počet serverů na trezor Azure |250 |
-| Počet skupin ochrany na trezor Azure |Bez omezení |
-| Počet plánů obnovení na trezor Azure |Bez omezení |
+| Počet serverů na trezor Recovery Services |250 |
+| Počet skupin ochrany na trezor Recovery Services |Bez omezení |
+| Počet plánů obnovení na Recovery Services trezor |Bez omezení |
 | Počet serverů na skupinu ochrany |Bez omezení |
-| Počet serverů na plán obnovení |50 |
+| Počet serverů na plán obnovení |100 |
 

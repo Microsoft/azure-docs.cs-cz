@@ -3,13 +3,14 @@ title: Referenční příručka pro vývojáře PowerShellu pro Azure Functions
 description: Naučte se vyvíjet funkce pomocí prostředí PowerShell.
 author: eamonoreilly
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 8b8c84583bd80a7c3cbadde1caba231eed801c1f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 06838ecee809c5159bc8a290ecb4f589fd3ce04f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506124"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207416"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -113,7 +114,7 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 ```
 
-`Push-OutputBinding`se chová odlišně na základě hodnoty zadané pro `-Name` :
+`Push-OutputBinding` se chová odlišně na základě hodnoty zadané pro `-Name` :
 
 * Pokud zadaný název nelze přeložit na platnou výstupní vazbu, je vyvolána chyba.
 
@@ -121,7 +122,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 * Pokud výstupní vazba akceptuje jenom hodnotu typu Singleton, `Push-OutputBinding` vyvolá se chyba při druhém volání.
 
-#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding`syntaktick
+#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding` syntaktick
 
 Níže jsou uvedené platné parametry pro volání `Push-OutputBinding` :
 
@@ -175,7 +176,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 
 #### <a name="push-outputbinding-example-queue-output-binding"></a>Příklad push-OutputBinding: Queue Output Binding
 
-`Push-OutputBinding`slouží k odesílání dat do výstupních vazeb, jako je například [Výstupní vazba Azure Queue Storage](functions-bindings-storage-queue-output.md). V následujícím příkladu má zpráva zapsaná do fronty hodnotu "výstupní #1":
+`Push-OutputBinding` slouží k odesílání dat do výstupních vazeb, jako je například [Výstupní vazba Azure Queue Storage](functions-bindings-storage-queue-output.md). V následujícím příkladu má zpráva zapsaná do fronty hodnotu "výstupní #1":
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
@@ -195,7 +196,7 @@ PS >Push-OutputBinding -Name outQueue -Value @("output #3", "output #4")
 
 Při zápisu do fronty obsahuje zpráva tyto čtyři hodnoty: "výstupní #1", "výstupní #2", "výstupní #3" a "výstupní #4".
 
-#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding`rutiny
+#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding` rutiny
 
 Pomocí `Get-OutputBinding` rutiny můžete načíst hodnoty, které jsou aktuálně nastaveny pro vaše výstupní vazby. Tato rutina načte zatřiďovací tabulku, která obsahuje názvy výstupních vazeb s příslušnými hodnotami. 
 
@@ -212,7 +213,7 @@ MyQueue                        myData
 MyOtherQueue                   myData
 ```
 
-`Get-OutputBinding`obsahuje také parametr s názvem `-Name` , který lze použít k filtrování vrácené vazby, jako v následujícím příkladu:
+`Get-OutputBinding` obsahuje také parametr s názvem `-Name` , který lze použít k filtrování vrácené vazby, jako v následujícím příkladu:
 
 ```powershell
 Get-OutputBinding -Name MyQ*
@@ -226,7 +227,7 @@ MyQueue                        myData
 
 Zástupné znaky (*) jsou podporovány v `Get-OutputBinding` .
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 Protokolování funkcí prostředí PowerShell funguje jako běžné protokolování do PowerShellu. K zápisu do každého výstupního datového proudu můžete použít rutiny protokolování. Každá rutina se mapuje na úroveň protokolu využívané funkcemi.
 
@@ -296,7 +297,7 @@ Objekt Request, který je předán do skriptu, je typu `HttpRequestContext` , kt
 
 | Vlastnost  | Popis                                                    | Typ                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Objekt, který obsahuje tělo žádosti. `Body`je serializována do nejlepšího typu na základě dat. Například pokud jsou data JSON, předává se jako zatřiďovací tabulka. Pokud jsou data řetězcem, je předáno jako řetězec. | object |
+| **`Body`**    | Objekt, který obsahuje tělo žádosti. `Body` je serializována do nejlepšího typu na základě dat. Například pokud jsou data JSON, předává se jako zatřiďovací tabulka. Pokud jsou data řetězcem, je předáno jako řetězec. | object |
 | **`Headers`** | Slovník, který obsahuje hlavičky požadavku.                | Řetězec<slovníku, řetězec><sup>*</sup> |
 | **`Method`** | Metoda HTTP požadavku.                                | řetězec                    |
 | **`Params`**  | Objekt, který obsahuje parametry směrování požadavku. | Řetězec<slovníku, řetězec><sup>*</sup> |
@@ -422,9 +423,9 @@ Pomocí následujících nastavení aplikace můžete změnit způsob stažení 
 
 | Nastavení Function App              | Výchozí hodnota             | Popis                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
-| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00`(7 dnů)     | Každý pracovní proces PowerShellu inicializuje kontrolu upgradů modulů na Galerie prostředí PowerShell spuštění procesu a každé z nich `MDMaxBackgroundUpgradePeriod` . Když je v Galerie prostředí PowerShell k dispozici nová verze modulu, nainstaluje se do systému souborů a zpřístupní se pro pracovní procesy prostředí PowerShell. Snížením této hodnoty umožníte, aby aplikace Function App získala novější verze modulu, ale také zvyšuje využití prostředků aplikace (v/v sítě, CPU, úložiště). Zvýšením této hodnoty se sníží využití prostředků aplikace, ale může také dojít k zpoždění doručení nových verzí modulu do aplikace. | 
-| **`MDNewSnapshotCheckPeriod`**         | `01:00:00`(1 hodina)       | Až se v systému souborů nainstalují nové verze modulů, musí se všechny pracovní procesy PowerShellu restartovat. Restartování pracovních procesů PowerShell ovlivní dostupnost vaší aplikace, protože může přerušit aktuální spuštění funkce. Dokud nebudou všechny pracovní procesy prostředí PowerShell restartovány, mohou být vyvolány funkce buď staré, nebo nové verze modulu. Restart všech pracovních procesů PowerShellu se dokončil v rámci `MDNewSnapshotCheckPeriod` . Zvýšením této hodnoty se zkrátí frekvence přerušení, ale může se prodloužit i čas, kdy volání funkcí používají buď starou, nebo nové verze modulu, které nejsou deterministické. |
-| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00`(1 den)     | Aby nedocházelo k nadměrným upgradům modulů v častých restartech pracovních procesů, neprovádí se kontrola upgradů modulů, pokud kterýkoli pracovník již zahájil kontrolu za poslední `MDMinBackgroundUpgradePeriod` . |
+| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 dnů)     | Každý pracovní proces PowerShellu inicializuje kontrolu upgradů modulů na Galerie prostředí PowerShell spuštění procesu a každé z nich `MDMaxBackgroundUpgradePeriod` . Když je v Galerie prostředí PowerShell k dispozici nová verze modulu, nainstaluje se do systému souborů a zpřístupní se pro pracovní procesy prostředí PowerShell. Snížením této hodnoty umožníte, aby aplikace Function App získala novější verze modulu, ale také zvyšuje využití prostředků aplikace (v/v sítě, CPU, úložiště). Zvýšením této hodnoty se sníží využití prostředků aplikace, ale může také dojít k zpoždění doručení nových verzí modulu do aplikace. | 
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 hodina)       | Až se v systému souborů nainstalují nové verze modulů, musí se všechny pracovní procesy PowerShellu restartovat. Restartování pracovních procesů PowerShell ovlivní dostupnost vaší aplikace, protože může přerušit aktuální spuštění funkce. Dokud nebudou všechny pracovní procesy prostředí PowerShell restartovány, mohou být vyvolány funkce buď staré, nebo nové verze modulu. Restart všech pracovních procesů PowerShellu se dokončil v rámci `MDNewSnapshotCheckPeriod` . Zvýšením této hodnoty se zkrátí frekvence přerušení, ale může se prodloužit i čas, kdy volání funkcí používají buď starou, nebo nové verze modulu, které nejsou deterministické. |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 den)     | Aby nedocházelo k nadměrným upgradům modulů v častých restartech pracovních procesů, neprovádí se kontrola upgradů modulů, pokud kterýkoli pracovník již zahájil kontrolu za poslední `MDMinBackgroundUpgradePeriod` . |
 
 Využití vlastních modulů je trochu jiné, než jak byste to prostupovali normálně.
 
@@ -517,7 +518,7 @@ Azure PowerShell používá některé kontexty _na úrovni procesu_ a stav, kter
 
 Obrovské je hodnota v souběžnosti s Azure PowerShell, protože některé operace mohou trvat značnou dobu. Je však třeba postupovat opatrně. Pokud máte podezření, že jste se setkali s časováním, nastavte nastavení aplikace PSWorkerInProcConcurrencyUpperBound na `1` a místo toho použijte [izolaci úrovně pracovního procesu jazyka](functions-app-settings.md#functions_worker_process_count) pro souběžnost.
 
-## <a name="configure-function-scriptfile"></a>Konfigurovat funkci`scriptFile`
+## <a name="configure-function-scriptfile"></a>Konfigurovat funkci `scriptFile`
 
 Ve výchozím nastavení je funkce PowerShellu spouštěna z `run.ps1` , soubor, který sdílí stejný nadřazený adresář jako odpovídající `function.json` .
 
@@ -595,7 +596,7 @@ Při práci s funkcemi PowerShellu si pamatujte na informace v následujících 
 
 Při vývoji Azure Functions v [modelu hostování bez serveru](functions-scale.md#consumption-plan)je to realita. *Studená Start* odkazuje na dobu, kterou aplikace Function App spustí pro zpracování žádosti. K studenému startu dochází častěji v plánu spotřeby, protože aplikace Function App se během období nečinnosti ukončí.
 
-### <a name="bundle-modules-instead-of-using-install-module"></a>Místo použití použít modul sady`Install-Module`
+### <a name="bundle-modules-instead-of-using-install-module"></a>Místo použití použít modul sady `Install-Module`
 
 Váš skript se spustí při každém vyvolání. Vyhněte se použití `Install-Module` ve vašem skriptu. Místo toho použijte `Save-Module` před publikováním, aby vaše funkce nemusela ztrácet čas stažením modulu. Pokud mají tyto funkce vliv na studená spuštění, zvažte nasazení aplikace Function App do [plánu App Service](functions-scale.md#app-service-plan) nastaveného na hodnotu *Always On* nebo [Premium](functions-scale.md#premium-plan).
 

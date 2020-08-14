@@ -2,13 +2,13 @@
 title: Typy entit – LUIS
 description: Entita extrahuje data z utterance uživatele v předpokládaném modulu runtime. _Volitelným_a sekundárním účelem je zvýšit předpověď záměru nebo jiných entit pomocí entity jako funkce.
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: ced4a3e23b8e532b54d0b3cf974dab233b81b375
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.date: 08/06/2020
+ms.openlocfilehash: 8751bdd52bb1c3738103dc074184a3cf72bfeb09
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337615"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207746"
 ---
 # <a name="extract-data-with-entities"></a>Extrakce dat s entitami
 
@@ -30,7 +30,7 @@ Entity musí být označeny konzistentně ve všech školicích projevy pro kaž
 
  Můžete definovat vlastní entity nebo používat předem připravené entity k ukládání času pro běžné koncepty, jako je [datetimeV2](luis-reference-prebuilt-datetimev2.md), [ordinální](luis-reference-prebuilt-ordinal.md)číslo, [e-mail](luis-reference-prebuilt-email.md)a [telefonní číslo](luis-reference-prebuilt-phonenumber.md).
 
-|Výrok|Entita|Data|
+|Promluva|Entita|Data|
 |--|--|--|
 |Koupit 3 lístky do Praha|Předem připravené číslo<br>Cíl|3<br>New York|
 
@@ -49,7 +49,7 @@ Entita představuje koncept dat _uvnitř utterance_. Záměr klasifikuje _celou 
 
 Vezměte v úvahu následující čtyři projevy:
 
-|Výrok|Předpokládané záměr|Extrahované entity|Vysvětlení|
+|Promluva|Předpokládané záměr|Extrahované entity|Vysvětlení|
 |--|--|--|--|
 |Nápověda|Nápověda|-|Nic k extrakci.|
 |Poslat něco|sendSomething|-|Nic k extrakci. Model nemá požadovanou funkci pro extrakci `something` v tomto kontextu a není uveden žádný příjemce.|
@@ -140,9 +140,16 @@ Vzor. any je k dispozici pouze ve [vzoru](luis-concept-patterns.md).
 
 Pokud potřebujete víc, než je [limit](luis-limits.md#model-limits), obraťte se na podporu. Provedete to tak, že shromáždíte podrobné informace o vašem systému, přejdete na web [Luis](luis-reference-regions.md#luis-website) a pak vyberete **Podpora**. Pokud vaše předplatné Azure zahrnuje služby podpory, obraťte se na [technickou podporu Azure](https://azure.microsoft.com/support/options/).
 
-## <a name="entity-prediction-status"></a>Stav předpovědi entity
+## <a name="entity-prediction-status-and-errors"></a>Stav a chyby předpovědi entity
 
-Portál LUIS se zobrazí, když má entita jinou předpověď entit než entita, kterou jste vybrali pro příklad utterance. Toto jiné skóre vychází z aktuálně vyškolených modelů. Tyto informace slouží k řešení chyb školení pomocí jedné nebo několika z následujících možností:
+Portál LUIS se zobrazí, když má entita jinou předpověď entit než entita, kterou jste vybrali pro příklad utterance. Toto jiné skóre vychází z aktuálně vyškolených modelů. 
+
+:::image type="content" source="./media/luis-concept-entities/portal-entity-prediction-error.png" alt-text="Portál LUIS se zobrazí, když má entita jinou předpověď entit než entita, kterou jste vybrali pro příklad utterance.":::
+
+Chybový text je zvýrazněný v příkladu utterance a příklad utterance čára má na pravé straně indikátor chyby, který se zobrazuje jako červený trojúhelník. 
+
+Tyto informace slouží k vyřešení chyb entity pomocí jedné nebo několika z následujících možností:
+* Zvýrazněný text je označený jako nepopisekný. Oprava, kontrola, správné a přeučení. 
 * Vytvořte [funkci](luis-concept-feature.md) pro entitu, která vám usnadní identifikaci konceptu entity.
 * Přidejte k entitě další [Příklady projevy](luis-concept-utterance.md) a Label.
 * [Přečtěte si přehled aktivních kurzů](luis-concept-review-endpoint-utterances.md) pro všechny projevy přijaté na koncovém bodu předpovědi, které vám pomůžou identifikovat koncept entity.

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 3ef109dc5fad73a19eabefb8eb872c02d62698ba
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b7623a3c89f9ae4b20385caaac676b972f55f85e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087567"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209494"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migrace instance SQL Server do spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ V případě vysoké úrovně proces migrace databáze vypadá takto:
 
 Nejdřív Zjistěte, jestli je spravovaná instance SQL kompatibilní s požadavky na databázi vaší aplikace. Spravovaná instance SQL je navržená tak, aby poskytovala snadnou migraci pomocí přezvednutí a posunutí pro většinu stávajících aplikací, které používají SQL Server. Někdy ale můžete vyžadovat funkce nebo možnosti, které ještě nejsou podporované, a náklady na implementaci alternativního řešení jsou moc vysoké.
 
-Použijte [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview) k detekci potenciálních problémů s kompatibilitou, které mají vliv na funkčnost databáze na Azure SQL Database. Pokud dojde k nějakým chybám blokujícím blokování, možná budete muset vzít v úvahu alternativní možnost, například [SQL Server na virtuálním počítači Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Tady je pár příkladů:
+Použijte [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview) k detekci potenciálních problémů s kompatibilitou, které mají vliv na funkčnost databáze na Azure SQL Database. Pokud dojde k nějakým chybám blokujícím blokování, možná budete muset vzít v úvahu alternativní možnost, například [SQL Server na virtuálním počítači Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Tady je několik příkladů:
 
 - Pokud požadujete přímý přístup k operačnímu systému nebo systému souborů, například pro instalaci jiných agentů nebo vlastních agentů na stejný virtuální počítač s SQL Server.
 - Pokud máte striktní závislost na funkcích, které stále nejsou podporované, jako jsou FileStream/soubor, základ a transakce mezi instancemi.
@@ -162,7 +162,7 @@ Migrace databáze do spravované instance udržuje nastavení databáze a její 
 V rámci předpokladu se ujistěte, že jste dokončili následující aktivity:
 
 - Pomocí nastavení ze zdrojové instance SQL Server zarovnejte nastavení ze zdrojové instance, a prozkoumáním různých instancí, databází, nastavení databáze tempdb a konfigurací. Před spuštěním prvního porovnání výkonu se ujistěte, že jste nezměnili nastavení, jako jsou úrovně kompatibility nebo šifrování, nebo přijměte riziko, že některé nové funkce, které jste povolili, mohou ovlivnit některé dotazy. Chcete-li snížit rizika migrace, změňte úroveň kompatibility databáze pouze po sledování výkonu.
-- Implementujte [pokyny k osvědčeným postupům úložiště pro pro obecné účely](https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525), jako je třeba předběžně přidělit velikost souborů, abyste získali lepší výkon.
+- Implementujte [pokyny k osvědčeným postupům úložiště pro pro obecné účely](https://techcommunity.microsoft.com), jako je třeba předběžně přidělit velikost souborů, abyste získali lepší výkon.
 - Přečtěte si o [klíčových rozdílech v prostředích, které by mohly způsobit rozdíly v výkonu mezi spravovanou instancí a SQL Server](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/), a Identifikujte rizika, která mohou ovlivnit výkon.
 - Ujistěte se, že jste zachovali povolené úložiště dotazů a automatické ladění na spravované instanci. Tyto funkce umožňují měřit výkon úloh a automaticky opravovat potenciální problémy s výkonem. Naučte se používat úložiště dotazů jako optimální nástroj pro získání informací o výkonu úloh před a po změně úrovně kompatibility databáze, jak je vysvětleno v [části zachování stability výkonu během upgradu na novější verzi SQL Server](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
 Po přípravě prostředí, které je co nejvíc porovnatelné s vaším místním prostředím, můžete začít spouštět úlohy a měřit výkon. Proces měření by měl zahrnovat stejné parametry, které jste naměřeni [při vytváření směrného plánu pro úlohy na zdrojové SQL Server instanci](#create-a-performance-baseline).

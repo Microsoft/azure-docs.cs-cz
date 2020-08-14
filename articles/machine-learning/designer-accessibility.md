@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
 ms.custom: designer
-ms.openlocfilehash: af676f128796c762b330d986836ea825a36cb246
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d91dc212eb2f856f0252261f2ddfc8a5a4d70ee
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83646301"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210365"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Použití klávesnice k použití návrháře Azure Machine Learning (Preview)
 
@@ -53,7 +53,7 @@ Připojení modulu k jinému modulu:
 
 ## <a name="navigation-shortcuts"></a>Navigační zástupci
 
-| Klávesnice | Description |
+| Klávesnice | Popis |
 |-|-|
 | Ctrl+F6 | Přepnout fokus mezi plátnem a stromem modulu |
 | CTRL + F1   | Při zaměření na uzel ve stromu modulů otevřít informační kartu |
@@ -68,7 +68,7 @@ Použijte následující klávesové zkratky s přístupovým klíčem. Další 
 | Klávesnice | Akce |
 |-|-|
 | Přístupový klíč + R | Spustit |
-| Přístupový klíč + P | Publikování |
+| Přístupový klíč + P | Publikovat |
 | Přístupová klávesa + C | Klonování |
 | Přístupová klávesa + D | Nasazení |
 | Přístupový klíč + I | Vytvořit nebo aktualizovat kanál odvození |
@@ -79,5 +79,5 @@ Použijte následující klávesové zkratky s přístupovým klíčem. Další 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zapnutí vysokého kontrastu nebo změna motivu](../azure-portal/azure-portal-change-theme-high-contrast.md)
+- [Zapnutí vysokého kontrastu nebo změna motivu](../azure-portal/set-preferences.md#choose-a-theme-or-enable-high-contrast)
 - [Nástroje související s přístupností v Microsoftu](https://www.microsoft.com/accessibility)

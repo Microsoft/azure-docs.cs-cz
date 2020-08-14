@@ -5,13 +5,13 @@ keywords: Azure App Service, Webová aplikace, nastavení aplikace, proměnné p
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
-ms.custom: seodec18
-ms.openlocfilehash: 9371b39bd37ba2514256a3b2fa90812f45c7ce5e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 57039149afd22546bbd584db47e7a015b8b5f85c
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077369"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213572"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurace aplikace App Service v Azure Portal
 
@@ -96,11 +96,11 @@ Pro jiné jazykové zásobníky je vhodnější místo toho použít [nastavení
 
 V době běhu jsou připojovací řetězce k dispozici jako proměnné prostředí s předponou následujících typů připojení:
 
-* Hostitel`SQLCONNSTR_`  
-* MySQL`MYSQLCONNSTR_` 
-* SQLAzure:`SQLAZURECONNSTR_` 
-* Uživatelská`CUSTOMCONNSTR_`
-* PostgreSQL`POSTGRESQLCONNSTR_`  
+* Hostitel `SQLCONNSTR_`  
+* MySQL `MYSQLCONNSTR_` 
+* SQLAzure: `SQLAZURECONNSTR_` 
+* Uživatelská `CUSTOMCONNSTR_`
+* PostgreSQL `POSTGRESQLCONNSTR_`  
 
 Například připojovací řetězec MySql s názvem *ConnectionString1* je k dispozici jako proměnná prostředí `MYSQLCONNSTR_connectionString1` . Postup pro konkrétní jazykový zásobník najdete v těchto tématech:
 

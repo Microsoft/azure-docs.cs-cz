@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
-ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 15ac5bde6029b5608ff02c35451d4041bec29796
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: d503d71cf44446f93fab3d292d4c26d9b7b0941d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853343"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210217"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Průběžné doručování pomocí Azure DevOps
 
@@ -30,7 +30,7 @@ Pokud chcete vytvořit kanál založený na YAML, nejdřív sestavte aplikaci a 
 
 Způsob sestavování aplikace v Azure Pipelines závisí na programovacím jazyku vaší aplikace. Každý jazyk má konkrétní kroky sestavení, které vytvářejí artefakt nasazení. Artefakt nasazení se používá k nasazení aplikace Function App v Azure.
 
-# <a name="c"></a>[R\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Pomocí následující ukázky můžete vytvořit soubor YAML k vytvoření aplikace .NET:
 

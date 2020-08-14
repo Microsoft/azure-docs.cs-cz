@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: alkohli
-ms.openlocfilehash: a99499110951ccbc0458b5ce848930fed9205dad
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7cac14708adecbdf3c809e3a9656d25c727d80e3
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371998"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206162"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Použití místního webového uživatelského rozhraní ke správě Data Box a Data Box Heavy
 
@@ -25,7 +25,7 @@ Tento článek obsahuje následující návody:
 
 - Generování balíčku pro podporu
 - Vypnutí nebo restartování zařízení
-- Stažení souboru kusovníku nebo manifestu
+- Stažení kusovníku nebo souborů manifestu
 - Zobrazení dostupné kapacity zařízení
 - Přeskočení ověření kontrolního součtu
 
@@ -53,7 +53,7 @@ Pokud budete mít se zařízením jakékoliv problémy, můžete vytvořit ze sy
 
 ## <a name="shut-down-or-restart-your-device"></a>Vypnutí nebo restartování zařízení
 
-Zařízení můžete vypnout nebo restartovat pomocí místního webového uživatelského rozhraní. Doporučujeme před restartováním přepnout sdílené složky na hostiteli a potom na zařízení do offline režimu. Minimalizuje se tak možnost poškození dat. Při vypnutí zařízení zkontrolujte, že se nekopírují data.
+Zařízení můžete vypnout nebo restartovat pomocí místního webového uživatelského rozhraní. Doporučujeme před restartováním přepnout sdílené složky na hostiteli a potom na zařízení do offline režimu. Tím se minimalizuje jakákoli možnost poškození dat. Při vypnutí zařízení zkontrolujte, že se nekopírují data.
 
 Pokud chcete zařízení vypnout, proveďte následující kroky.
 
@@ -62,7 +62,7 @@ Pokud chcete zařízení vypnout, proveďte následující kroky.
 
     ![Vypnutí Data Boxu 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
-3. Po zobrazení výzvy k potvrzení pokračujte kliknutím na **OK**.
+3. Po zobrazení výzvy k potvrzení pokračujte výběrem **OK** .
 
     ![Vypnutí Data Boxu 2](media/data-box-local-web-ui-admin/shut-down-local-web-ui-2.png)
 
@@ -81,33 +81,32 @@ Při restartování Data Boxu postupujte podle následujících pokynů.
 
 ## <a name="download-bom-or-manifest-files"></a>Stažení souboru kusovníku nebo manifestu
 
-Kusovník nebo soubory manifestu obsahují seznam souborů, které jsou zkopírovány do Data Box nebo Data Box Heavy. Tyto soubory jsou vygenerovány pro pořadí importu při přípravě zařízení k odeslání.
+KUSOVNÍK nebo soubory manifestu obsahují seznam souborů, které jsou zkopírovány do Data Box nebo Data Box Heavy. Tyto soubory jsou vygenerovány pro pořadí importu při přípravě zařízení k odeslání.
 
-Než začnete, ujistěte se, že se v zařízení dokončilo **Příprava k odeslání** krok. Pomocí těchto kroků stáhnete soubory kusovníku nebo manifestu pro vaše pořadí importu:
+Než začnete, postupujte podle těchto kroků a Stáhněte soubory kusovníku nebo manifestu pro vaše pořadí importu:
 
-1. Přejít k místnímu webovému uživatelskému rozhraní pro vaše zařízení. Uvidíte, že zařízení dokončilo Příprava na odeslání. Až se dokončí příprava zařízení, zobrazí se stav zařízení jako **připravený k odeslání**.
+1. Přejít k místnímu webovému uživatelskému rozhraní pro vaše zařízení. Ověřte, že zařízení dokončilo **Příprava k odeslání** krok. Až se dokončí příprava zařízení, zobrazí se stav zařízení jako **připravený k odeslání**.
 
-    ![Zařízení připravené k dodání](media/data-box-portal-admin/ready-to-ship.png)
+    ![Zařízení připravené k dodání](media/data-box-local-web-ui-admin/prepare-to-ship-3.png)
 
 2. Vyberte **Stáhnout seznam souborů** a Stáhněte si seznam souborů, které jste zkopírovali v data box.
 
-    ![Vybrat seznam souborů ke stažení](media/data-box-portal-admin/download-list-of-files.png)
+    <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
 3. V Průzkumníkovi souborů uvidíte, že se v závislosti na protokolu používaném pro připojení k zařízení a používaném typu Azure Storage generují samostatné seznamy souborů.
 
-    ![Soubory pro typ úložiště a protokol připojení](media/data-box-portal-admin/files-storage-connection-type.png)
+    <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
+    ![Soubory pro typ úložiště a protokol připojení](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
 
    Následující tabulka mapuje názvy souborů na typ Azure Storage a použitý protokol připojení.
 
     |Název souboru  |Typ Azure Storage  |Použitý protokol připojení |
     |---------|---------|---------|
-    |databoxe2etest_BlockBlob.txt     |Objekty blob bloku         |SMB/NFS         |
-    |databoxe2etest_PageBlob.txt     |Objekty blob stránky         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM.txt    |Soubory Azure         |SMB/NFS         |
-    |databoxe2etest_PageBlock_Rest-BOM.txt     |Objekty blob stránky         |REST        |
-    |databoxe2etest_BlockBlock_Rest-BOM.txt    |Objekty blob bloku         |REST         |
-    |mydbmdrg1_MDisk-BOM.txt    |Spravovaný disk         |SMB/NFS         |
-    |mydbmdrg2_MDisk-BOM.txt     |Spravovaný disk         |SMB/NFS         |
+    |utSAC1_202006051000_BlockBlob-BOM.txt     |Objekty blob bloku         |SMB/NFS         |
+    |utSAC1_202006051000_PageBlob-BOM.txt     |Objekty blob stránky         |SMB/NFS         |
+    |utSAC1_202006051000_AzFile-BOM.txt    |Soubory Azure         |SMB/NFS         |
+    |utsac1_PageBlock_Rest-BOM.txt     |Objekty blob stránky         |REST        |
+    |utsac1_BlockBlock_Rest-BOM.txt    |Objekty blob bloku         |REST         |
 
 Pomocí tohoto seznamu ověříte soubory nahrané do Azure Storage účtu poté, co se Data Box vrátí do datacentra Azure. Ukázkový soubor manifestu je uveden níže.
 
@@ -209,7 +208,7 @@ Ve výchozím nastavení používá Azure Data Box k šifrování protokol TLS (
 
 Další informace související s protokolem TLS najdete v tématu [Azure Data box Gateway Security](../databox-online/data-box-gateway-security.md).
 
-Povolení TLS 1,1 v zařízení Azure:
+Povolení TLS 1,1 ve vašem zařízení Azure:
 
 1. V pravém horním rohu místního webového uživatelského rozhraní vašeho zařízení vyberte **Nastavení**.
 

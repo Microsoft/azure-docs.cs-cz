@@ -9,27 +9,27 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 11/08/2019
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4253f5bd702abd061cf1cddd4badd68c9cd5d475
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: e5b54af39401ba8c3fede4c9ad80ec8edc963b1d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582833"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213677"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Rychlý start: Zásady pojmenování pro skupiny v Azure Active Directory
 
-V tomto rychlém startu nastavíte zásady pojmenování v organizaci Azure Active Directory (Azure AD) pro uživatelem vytvořené skupiny Office 365, které vám pomůžou s řazením a hledáním skupin ve vaší organizaci. Zásady pojmenování můžete použít například k následujícím účelům:
+V tomto rychlém startu nastavíte zásady pojmenování v organizaci Azure Active Directory (Azure AD) pro uživatelem vytvořené Microsoft 365 skupiny, které vám pomůžou s řazením a hledáním skupin ve vaší organizaci. Zásady pojmenování můžete použít například k následujícím účelům:
 
 * Informování o funkci skupiny, členství, geografické oblasti a uživateli, který skupinu vytvořil.
 * Pomoc s uspořádáním skupin do kategorií v adresáři.
 * Blokování použití určitých slov v názvech a aliasech skupin.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="configure-the-group-naming-policy-in-the-azure-portal"></a>Konfigurace zásady pojmenování skupin v Azure Portal
 
@@ -55,7 +55,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 1. Kliknutím na ikonu souboru Nahrajte nový seznam vlastních blokovaných slov.
 1. Vyberte **Uložit** pro změny zásady, aby se projevily.
 
-A to je vše. Nastavili jste zásady pojmenování a přidali jste vlastní blokovaná slova.
+A je to! Nastavili jste zásady pojmenování a přidali jste vlastní blokovaná slova.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

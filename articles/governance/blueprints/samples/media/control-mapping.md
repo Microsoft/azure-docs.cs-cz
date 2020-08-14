@@ -1,20 +1,20 @@
 ---
 title: Ukázkové ovládací prvky pro Media details
 description: Mapování ovládacího prvku ukázek pro Media details Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-ms.date: 02/24/2020
+ms.date: 08/13/2020
 ms.topic: sample
-ms.openlocfilehash: bdc4ef65c6d61a9d4217d7873bb29bd787842e71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4101b9030425c22b8806870d467581521870d639
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78201903"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208458"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>Mapování ovládacího prvku ukázka pro Media details
 
 Následující článek podrobně popisuje, jak se vzorová ukázka Azure modrotisky Media Details mapuje na ovládací prvky multimédií. Další informace o ovládacích prvcích naleznete v tématu [Media](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
 
-Následující mapování jsou k ovládacím prvkům **média** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ve ** \[verzi Preview\]: audit Media Controls** (předdefinovaná iniciativa zásad).
+Následující mapování jsou k ovládacím prvkům **média** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ve ** \[ verzi Preview \] : audit Media Controls** (předdefinovaná iniciativa zásad).
 
 > [!IMPORTANT]
 > Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/media/control-mapping.md).
@@ -23,11 +23,11 @@ Následující mapování jsou k ovládacím prvkům **média** . Pomocí naviga
 
 ### <a name="ac-11--ensure-no-root-access-key-exists"></a>AC-1,1 – Zajistěte, aby neexistuje žádný kořenový přístupový klíč.
 
-- \[Verze\]Preview: nasaďte požadavky na auditování virtuálních počítačů s Windows, které neobsahují zadané certifikáty v důvěryhodném kořenovém adresáři.
+- \[Verze Preview \] : nasaďte požadavky na auditování virtuálních počítačů s Windows, které neobsahují zadané certifikáty v důvěryhodném kořenovém adresáři.
 
 ### <a name="ac-12---passwords-pins-and-tokens-must-be-protected"></a>AC-1,2 – hesla, PIN kódy a tokeny musí být chráněné.
 
-- \[Verze\]Preview: nasaďte požadavky pro audit virtuálních počítačů s Windows, které neomezují minimální délku hesla na 14 znaků.
+- \[Verze Preview \] : nasaďte požadavky pro audit virtuálních počítačů s Windows, které neomezují minimální délku hesla na 14 znaků.
 
 ### <a name="ac-18---shared-account-access-is-prohibited"></a>AC-1,8 – přístup ke sdílenému účtu je zakázaný
 
@@ -39,23 +39,23 @@ Následující mapování jsou k ovládacím prvkům **média** . Pomocí naviga
 
 ### <a name="ac--114--system-must-enforce-access-rights"></a>AC-1,14 – systém musí vyhovět přístupovým právům.
 
-- \[Verze\]Preview: nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v přiřazení uživatelských práv
+- \[Verze Preview \] : nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v přiřazení uživatelských práv
 
 ### <a name="ac--115--prevent-unauthorized-access-to-security-relevant-information-or-functions"></a>AC-1,15 – zabrání neoprávněnému přístupu k příslušným informacím nebo funkcím zabezpečení.
 
-- \[Preview\]: Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – systémové nastavení
+- \[Preview \] : Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – systémové nastavení
 
 ### <a name="ac-1-21---separation-of-duties-must-be-enforced-through-appropriate-assignment-of-role"></a>AC-1-21 – oddělení cel se musí vyhovět odpovídajícím přiřazením role.
 
-- [Preview\]: Access Control na základě rolí (RBAC) by se měla používat pro služby Kubernetes Services
+- [Preview \] : Access Control na základě rolí (RBAC) by se měla používat pro služby Kubernetes Services
 
 ### <a name="ac-140--ensure-that-systems-are-not-connecting-trusted-network-and-untrusted-networks-at-the-same-time"></a>AC-1,40 – zajistěte, aby systémy nepřipojovaly důvěryhodnou síť a nedůvěryhodné sítě ve stejnou dobu.
 
-- \[Verze\]Preview: nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v možnosti zabezpečení-síťový přístup
+- \[Verze Preview \] : nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v možnosti zabezpečení-síťový přístup
 
 ### <a name="ac-142--ac--143---remote-access-for-non-employees-must-be-restricted-to-allow-access-only-to-specifically-approved-information-systems"></a>AC-1,42 & AC-1,43-vzdálený přístup pro zaměstnance, kteří nejsou zaměstnanci, se musí omezit tak, aby povoloval přístup jenom k výslovně schváleným informačním systémům.
 
-- \[Preview\]: Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
+- \[Preview \] : Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
 
 ### <a name="ac-150--log-security-related-events-for-all-information-system-components"></a>AC-1,50 – protokoluje události související se zabezpečením pro všechny součásti informačního systému.
 
@@ -74,24 +74,24 @@ Následující mapování jsou k ovládacím prvkům **média** . Pomocí naviga
 
 ### <a name="al--216---network-devicesinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-network-deviceinstance-elbs-web-application-firewalls-etc"></a>AL-2,16 – síťová zařízení/instance musí protokolovat jakoukoli událost klasifikovanou jako kritickou událost zabezpečení prostřednictvím tohoto síťového zařízení/instance (ELBs, Firewall webových aplikací atd.).
 
-- \[Preview\]: Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – účty
+- \[Preview \] : Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – účty
 
 ### <a name="al-217--serversinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-serverinstance"></a>AL-2,17 – servery/instance musí protokolovat všechny události klasifikované jako kritická událost zabezpečení daného serveru/instance.
 
-- \[Preview\]: Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – účty
+- \[Preview \] : Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – účty
 
 ### <a name="al-219---domain-events-must-log-any-event-classified-as-a-critical-or-high-security-event-by-the-domain-management-software"></a>AL-2,19 – události domény musí protokolovat jakoukoli událost klasifikovanou jako kritickou nebo vysokou událost zabezpečení, kterou používá software pro správu domény.
 
-- \[Preview\]: Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – účty
-- \[Verze\]Preview: nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – Klient sítě Microsoft
+- \[Preview \] : Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – účty
+- \[Verze Preview \] : nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – Klient sítě Microsoft
 
 ### <a name="al-220--domain-events-must-log-any-event-classified-as-a-critical-security-event-by-domain-security-controls"></a>AL-2,20 – události domény musí protokolovat jakoukoli událost klasifikovanou jako kritická událost zabezpečení pomocí ovládacích prvků zabezpečení domény.
 
-- \[Preview\]: Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – účty
+- \[Preview \] : Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – účty
 
 ### <a name="al-221--domain-events-must-log-any-access-or-changes-to-the-domain-log"></a>AL-2,21 – události domény musí protokolovat jakýkoli přístup nebo změny do protokolu domény.
 
-- \[Preview\]: Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – konzola pro zotavení
+- \[Preview \] : Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows v možnosti zabezpečení – konzola pro zotavení
 
 ## <a name="cryptographic-controls"></a>Ovládací prvky kryptografie
 
@@ -102,11 +102,11 @@ Následující mapování jsou k ovládacím prvkům **média** . Pomocí naviga
 
 ### <a name="cc-45--digital-certificates-must-be-signed-by-an-approved-certificate-authority"></a>CC-4,5-digitální certifikáty musí být podepsány schválenou certifikační autoritou.
 
-- \[Preview\]: Zobrazit výsledky auditu z virtuálních počítačů s Windows, které v zadaném počtu dní obsahují certifikáty, jejichž platnost vyprší
+- \[Preview \] : Zobrazit výsledky auditu z virtuálních počítačů s Windows, které v zadaném počtu dní obsahují certifikáty, jejichž platnost vyprší
 
 ### <a name="cc-46--digital-certificates-must-be-uniquely-assigned-to-a-user-or-device"></a>CC-4,6-digitální certifikáty musí být jednoznačně přiřazeny uživateli nebo zařízení.
 
-- \[Verze\]Preview: nasazení požadavků pro audit virtuálních počítačů s Windows, které obsahují certifikáty vyprší během zadaného počtu dnů.
+- \[Verze Preview \] : nasazení požadavků pro audit virtuálních počítačů s Windows, které obsahují certifikáty vyprší během zadaného počtu dnů.
 
 ### <a name="cc-47--cryptographic-material-must-be-stored-to-enable-decryption-of-the-records-for-the-length-of-time-the-records-are-retained"></a>CC-4,7 – šifrovací materiál musí být uložen, aby umožňoval dešifrování záznamů po dobu uchování záznamů.
 
@@ -138,7 +138,7 @@ Následující mapování jsou k ovládacím prvkům **média** . Pomocí naviga
 ### <a name="cm-514--identify-and-disable-unnecessary-andor-non-secure-functions-ports-protocols-and-services"></a>CM-5,14 – identifikujte a zakažte nepotřebné nebo nezabezpečené funkce, porty, protokoly a služby.
 
 - Síťová rozhraní by měla zakázat předávání IP
-- \[Verze\]Preview: předávání IP na virtuálním počítači by mělo být zakázané.
+- \[Verze Preview \] : předávání IP na virtuálním počítači by mělo být zakázané.
 
 ### <a name="cm-519--monitor-changes-to-the-security-configuration-settings"></a>CM-5,19 – Sledujte změny nastavení konfigurace zabezpečení.
 
@@ -160,19 +160,19 @@ Následující mapování jsou k ovládacím prvkům **média** . Pomocí naviga
 
 ### <a name="ns-92--access-to-network-device-management-functionality-is-restricted-to-authorized-users"></a>NS-9,2 – přístup k funkcím správy síťových zařízení je omezený na autorizované uživatele.
 
-- \[Verze\]Preview: nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v možnosti zabezpečení-síťový přístup
+- \[Verze Preview \] : nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v možnosti zabezpečení-síťový přístup
 
 ### <a name="ns-93--all-network-devices-must-be-configured-using-their-most-secure-configurations"></a>NS-9,3 – všechna síťová zařízení musí být nakonfigurovaná pomocí jejich nejbezpečnější konfigurace.
 
-- \[Verze\]Preview: nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v možnosti zabezpečení-síťový přístup
+- \[Verze Preview \] : nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows v možnosti zabezpečení-síťový přístup
 
 ### <a name="ns-95--all-network-connections-to-a-system-through-a-firewall-must-be-approved-and-audited-on-a-regular-basis"></a>NS-9,5 – všechna síťová připojení k systému prostřednictvím brány firewall musí být schválena a pravidelně auditována.
 
-- \[Preview\]: Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows ve vlastnostech brány Windows Firewall
+- \[Preview \] : Zobrazit výsledky auditu z konfigurací virtuálních počítačů s Windows ve vlastnostech brány Windows Firewall
 
 ### <a name="ns-97--appropriate-controls-must-be-present-at-any-boundary-between-a-trusted-network-and-any-untrusted-or-public-network"></a>NS-9,7: příslušné ovládací prvky musí být k dispozici na hranici mezi důvěryhodnou sítí a jakoukoli nedůvěryhodnou nebo veřejnou sítí.
 
-- \[Verze\]Preview: nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows ve vlastnostech brány Windows Firewall
+- \[Verze Preview \] : nasazení požadavků pro audit konfigurací virtuálních počítačů s Windows ve vlastnostech brány Windows Firewall
 
 ## <a name="security-planning"></a>Plánování zabezpečení
 
@@ -236,8 +236,8 @@ Následující mapování jsou k ovládacím prvkům **média** . Pomocí naviga
 Zkontrolovali jste mapování ovládacího prvku ukázka pro Media details. Další informace o přehledu a způsobu nasazení této ukázky najdete v následujících článcích:
 
 > [!div class="next step action"]
-> [Media Details – přehled](./control-mapping.md)
-> [Media Details – nasazení kroků](./deploy.md)
+> [Media Details – přehled](./control-mapping.md) 
+>  [Media Details – postup nasazení](./deploy.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 

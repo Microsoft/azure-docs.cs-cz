@@ -3,14 +3,14 @@ title: Koncepty – Network vzájemné propojení
 description: Seznamte se s klíčovými aspekty a případy použití sítě a vzájemné propojení v řešení Azure VMware (AVS).
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: c0416da9c745ccf92970ff39f623a782d5784983
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f1f1f5a089781f1f7e882c9c8692f0c845ae485
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062843"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214095"
 ---
-# <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware Solution (AVS) Preview sítě a vzájemné propojení koncepty
+# <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Koncepty sítí a propojení ve službě Azure VMware Solution (AVS) verze Preview
 
 Vzájemné propojení sítě mezi privátními a místními cloudy Azure VMware Solution (AVS) a místními prostředími nebo virtuálními sítěmi v Azure vám umožní přístup k privátnímu cloudu a jeho používání. V tomto článku se podíváme na několik klíčových konceptů, které zajišťují základ sítí a vzájemné propojení.
 
@@ -48,7 +48,7 @@ Logické sítě privátního cloudu jsou dodávány s předem zřízeným NSX-T.
 
 Směrování je založené na protokolu BGP (Routing Border Gateway Protocol), které se ve výchozím nastavení automaticky zřídí a povoluje pro každé nasazení privátního cloudu. U privátních cloudů služby AVS se vyžaduje plánování adresních prostorů sítě privátního cloudu s minimální délkou bloků síťových adres CIDR, které jsou v níže uvedené tabulce. Blok adres by neměl překrývat bloky adres používané v jiných virtuálních sítích, které jsou ve vašem předplatném a v místních sítích. V rámci tohoto bloku adres se automaticky zřídí Správa, zřizování a vMotion sítě.
 
-Příklad `/22` bloku síťových adres CIDR:`10.10.0.0/22`
+Příklad `/22` bloku síťových adres CIDR:  `10.10.0.0/22`
 
 Podsítě:
 
@@ -77,7 +77,7 @@ V rámci virtuální sítě a do úplného nasazení privátního cloudu máte p
 
 V následujícím diagramu vidíte místní vzájemné propojení privátního cloudu, které umožňují následující případy použití:
 * Horká a studená vMotiona přes vCenter
-* Místní pro přístup ke správě privátního cloudu pro funkci AVS
+* Místní přístup ke správě privátního cloudu z místního prostředí
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Připojení k virtuální síti a místnímu úplnému privátnímu cloudu" border="false":::
 

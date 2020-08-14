@@ -3,15 +3,16 @@ title: Jak používat sadu WebJobs SDK
 description: Přečtěte si další informace o tom, jak napsat kód pro sadu WebJobs SDK. Vytvářejte úlohy zpracování na pozadí založené na událostech, které přistupují k datům v Azure a službách třetích stran.
 author: ggailey777
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 97b17f7e80590b9b907b8dc25253e6d706117357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25aaf49d32da29fe5fb082e6e4481cd9266f88e1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807974"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208628"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak použít sadu Azure WebJobs SDK k událostmi řízenému zpracování na pozadí
 
@@ -73,7 +74,7 @@ Můžete spustit hostitele v režimu vývoje a zefektivnit tak místní vývoj. 
 
 | Vlastnost | Nastavení vývoje |
 | ------------- | ------------- |
-| `Tracing.ConsoleLevel` | `TraceLevel.Verbose`pro maximalizaci výstupu protokolu. |
+| `Tracing.ConsoleLevel` | `TraceLevel.Verbose` pro maximalizaci výstupu protokolu. |
 | `Queues.MaxPollingInterval`  | Nízká hodnota pro zajištění, že se metody fronty spouštějí okamžitě.  |
 | `Singleton.ListenerLockPeriod` | 15 sekund na pomoc při rychlém iterativním vývoji. |
 
@@ -620,7 +621,7 @@ Překladač můžete nakonfigurovat pomocí injektáže závislostí. Tyto ukáz
 using Microsoft.Extensions.DependencyInjection;
 ```
 
-Překladač přidáte voláním [`ConfigureServices`] metody rozšíření na [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) , jako v tomto příkladu:
+Překladač přidáte voláním [`ConfigureServices`] metody rozšíření na  [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) , jako v tomto příkladu:
 
 ```cs
 static async Task Main(string[] args)
@@ -822,17 +823,17 @@ Doporučujeme rozhraní protokolování, které bylo vyvinuto pro ASP.NET. V čl
 
 ### <a name="log-filtering"></a>Filtrování protokolů
 
-Každý protokol vytvořený `ILogger` instancí má přidruženou `Category` a `Level` . [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)je výčet a celočíselný kód označuje relativní důležitost:
+Každý protokol vytvořený `ILogger` instancí má přidruženou `Category` a `Level` . [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) je výčet a celočíselný kód označuje relativní důležitost:
 
 |LogLevel    |Kód|
 |------------|---|
 |Trasování       | 0 |
-|Ladit       | 1 |
+|Ladění       | 1 |
 |Informace | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |
 |Kritické    | 5 |
-|Žádná        | 6 |
+|Žádné        | 6 |
 
 Jednotlivé kategorie můžete filtrovat nezávisle na konkrétním [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) . Můžete například chtít zobrazit všechny protokoly pro zpracování triggerů objektů blob, ale jenom `Error` a vyšší pro všechno ostatní.
 
@@ -840,7 +841,7 @@ Jednotlivé kategorie můžete filtrovat nezávisle na konkrétním [`LogLevel`]
 
 Verze 3. *x* sady SDK spoléhá na filtrování integrované do .NET Core. `LogCategories`Třída umožňuje definovat kategorie pro konkrétní funkce, triggery nebo uživatele. Také definuje filtry pro konkrétní stavy hostitele, například `Startup` a `Results` . To vám umožní vyladit výstup protokolování. Pokud se v definovaných kategoriích nenajde žádná shoda, filtr se vrátí k `Default` hodnotě při rozhodování o tom, jestli se má zpráva filtrovat.
 
-`LogCategories`vyžaduje následující příkaz using:
+`LogCategories` vyžaduje následující příkaz using:
 
 ```cs
 using Microsoft.Azure.WebJobs.Logging; 
@@ -996,7 +997,7 @@ config.LoggerFactory = new LoggerFactory()
     .AddApplicationInsights(clientFactory);
 ```
 
-## <a name="next-steps"></a><a id="nextsteps"></a>Další kroky
+## <a name="next-steps"></a><a id="nextsteps"></a> Další kroky
 
 V tomto článku jsou uvedené fragmenty kódu, které ukazují, jak zpracovávat běžné scénáře pro práci se sadou WebJobs SDK. Kompletní ukázky najdete v tématu [Azure-WebJobs-SDK-Samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 

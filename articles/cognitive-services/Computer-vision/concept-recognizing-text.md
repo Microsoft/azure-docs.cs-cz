@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e2226f70ed3318bb370f0afee003fd9f91153a45
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9f9ebff77f54d86c3c4ed45fb5190de1900934e9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167860"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207220"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optické rozpoznávání znaků (OCR)
 
@@ -28,7 +28,18 @@ Rozhraní Počítačové zpracování obrazu [Read API](https://westcentralus.de
 
 ![Jak optické rozpoznávání znaků převede obrázky a dokumenty na strukturovaný výstup s extrahovaným textem](./Images/how-ocr-works.svg)
 
-Rozhraní API pro čtení poskytuje možnosti optického rozpoznávání znaků prostřednictvím dvou operací – **čtení** a **získání výsledků čtení**.
+## <a name="input-requirements"></a>Požadavky na vstup
+Operace **čtení** rozhraní API pro čtení bere jako vstup obrázky a dokumenty. Mají následující požadavky:
+
+* Podporované formáty souborů: JPEG, PNG, BMP, PDF a TIFF
+* Pro PDF a TIFF se zpracují až 2000 stránek. Pro předplatitele bezplatné úrovně se zpracují jenom první dvě stránky.
+* Velikost souboru musí být menší než 50 MB a rozměry aspoň 50 x 50 pixelů a maximálně 10000 x 10000 pixelů.
+* Rozměry PDF musí být maximálně 17 × 17 palců, které odpovídají právním nebo a3 velikosti papíru a menšímu.
+
+> [!NOTE]
+> **Vstup jazyka** 
+>
+> [Operace čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) má volitelný parametr požadavku pro jazyk. Toto je kód jazyka BCP-47 textu v dokumentu. Čtení podporuje automatické identifikaci jazyka a vícejazyčné dokumenty, takže zadejte jenom kód jazyka, pokud chcete vynutit zpracování dokumentu jako u tohoto konkrétního jazyka.
 
 ## <a name="the-read-operation"></a>Operace čtení
 
@@ -36,7 +47,7 @@ Rozhraní API pro čtení poskytuje možnosti optického rozpoznávání znaků 
 
 |Hlavička odpovědi| Adresa URL výsledku |
 |:-----|:----|
-|Operace – umístění | https://cognitiveservice/vision/v3.0-preview/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f |
+|Operace – umístění | `https://cognitiveservice/vision/v3.0/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 ## <a name="the-get-read-results-operation"></a>Operace načíst výsledky čtení
 
@@ -112,19 +123,6 @@ Podívejte se na následující příklad úspěšné odpovědi JSON:
 
 Postupujte podle pokynů pro rychlý Start [vytisknutého a ručně psaného textu a](./QuickStarts/CSharp-hand-text.md) implementujte optické rozpoznávání znaků pomocí jazyka C# a REST API.
 
-## <a name="input-requirements"></a>Požadavky na vstup
-
-Vstupní obrázky a dokumenty mají následující požadavky:
-* Podporované formáty souborů: JPEG, PNG, BMP, PDF a TIFF
-* Pro PDF a TIFF se zpracují až 2000 stránek. Pro předplatitele bezplatné úrovně se zpracují jenom první dvě stránky.
-* Velikost souboru musí být menší než 50 MB a rozměry aspoň 50 x 50 pixelů a maximálně 10000 x 10000 pixelů.
-* Rozměry PDF musí být maximálně 17 × 17 palců, které odpovídají právním nebo a3 velikosti papíru a menšímu.
-
-> [!NOTE]
-> **Vstup jazyka** 
->
-> [Operace čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) má volitelný parametr požadavku pro jazyk. Toto je kód jazyka BCP-47 textu v dokumentu. Čtení podporuje automatické identifikaci jazyka a vícejazyčné dokumenty, takže zadejte jenom kód jazyka, pokud chcete vynutit zpracování dokumentu jako u tohoto konkrétního jazyka.
-
 ## <a name="language-support"></a>Podpora jazyků
 
 ### <a name="printed-text"></a>Vytištěný text
@@ -184,6 +182,9 @@ Rozhraní API pro čtení podporuje obrázky a dokumenty, které obsahují něko
 ## <a name="data-privacy-and-security"></a>Ochrana osobních údajů a zabezpečení dat
 
 Stejně jako u všech služeb rozpoznávání by mohli vývojáři, kteří používají služby čtení/OCR, znát zásady Microsoftu u zákaznických dat. Další informace najdete na stránce Cognitive Services v [Centru zabezpečení Microsoftu](https://www.microsoft.com/trust-center/product-overview) .
+
+> [!NOTE]
+> Počítač vison 2,0 operace RecognizeText se v procesu získávání a vyřazení nového rozhraní API pro čtení popsaných v tomto článku. Stávající zákazníci by měli [Přejít na použití operací čtení](upgrade-api-versions.md).
 
 ## <a name="next-steps"></a>Další kroky
 

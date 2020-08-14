@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 11/14/2019
+ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 8d48ea133aaabbe9fd44bda545d672e68c93c08d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 02332e190def7770fa57977461d57766f3dee13a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81312201"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205577"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Kurz: vytvoření aplikační brány s pravidly směrování založenými na cestách pomocí Azure Portal
 
@@ -21,7 +21,7 @@ Pomocí Azure Portal můžete nakonfigurovat [pravidla směrování na základě
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření služby Application Gateway
+> * Vytvoření brány Application Gateway
 > * Vytváření virtuálních počítačů pro back-end servery
 > * Vytváření back-end fondů se servery back-end
 > * Vytvoření naslouchacího procesu back-endu
@@ -29,13 +29,13 @@ V tomto článku získáte informace o těchto tématech:
 
 ![Příklad směrování na základě adresy URL](./media/application-gateway-create-url-route-portal/scenario.png)
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="prerequisites"></a>Předpoklady
 
-Přihlaste se k Azure Portal v[https://portal.azure.com](https://portal.azure.com)
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
@@ -93,7 +93,7 @@ V tomto příkladu vytvoříte tři virtuální počítače, které se použijí
 
 3. Vytvořte dva další virtuální počítače a nainstalujte IIS pomocí kroků, které jste právě dokončili. Zadejte názvy *myVM2* a *myVM3* pro názvy a pro hodnoty VMName v set-AzVMExtension.
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 1. V levé nabídce Azure Portal vyberte **vytvořit prostředek** . Zobrazí se **nové** okno.
 
@@ -163,7 +163,7 @@ Na kartě **Konfigurace** se připojíte k front-endovému a back-endovému fond
 
 6. V okně **Přidat nastavení protokolu HTTP** , které se otevře, zadejte *myHTTPSetting* pro **název nastavení http**. Přijměte výchozí hodnoty pro ostatní nastavení v okně **Přidat nastavení http** a pak vyberte **Přidat** a vraťte se do okna **Přidat pravidlo směrování** .
 7. V části **směrování na základě cesty**vyberte **Přidat více cílů a vytvořte pravidlo na základě cesty**.
-8. Jako **cestu**zadejte */images/*\*.
+8. Jako **cestu**zadejte */images/* \* .
 9. Jako **název pravidla cesty**zadejte *Image*.
 10. V **Nastavení http**vyberte **myHTTPSetting**
 11. V případě **cíle pro back-end**vyberte **obrázky**.
@@ -173,38 +173,42 @@ Na kartě **Konfigurace** se připojíte k front-endovému a back-endovému fond
 15. Vyberte **Další: značky** a potom **Další: zkontrolovat + vytvořit**.
 
 > [!NOTE]
-> Nemusíte přidávat vlastní */** pravidlo cesty pro zpracování výchozích případů. To se automaticky zpracuje ve výchozím fondu back-end.
+> Nemusíte přidávat vlastní */* * pravidlo cesty pro zpracování výchozích případů. To se automaticky zpracuje ve výchozím fondu back-end.
 
 ### <a name="review--create-tab"></a>Revize + vytvořit kartu
 
 Zkontrolujte nastavení na kartě **Revize + vytvořit** a pak vyberte **vytvořit** k vytvoření virtuální sítě, veřejné IP adresy a aplikační brány. Vytvoření služby Application Gateway v Azure může trvat několik minut. Před přechodem k další části počkejte na úspěšné dokončení nasazení.
 
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 1. Vyberte **všechny prostředky**a pak vyberte **myAppGateway**.
 
     ![Záznam veřejné IP adresy aplikační brány](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například http:\//52.188.72.175:8080.
+2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například http: \/ /52.188.72.175:8080.
 
     ![Testování základní adresy URL v aplikační bráně](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 
    Naslouchací proces na portu 8080 směruje tento požadavek na výchozí back-end fond.
 
-3. Změňte adresu URL na *http://&lt;IP-address&gt;: 8080/images/test.htm*, nahraďte &lt;&gt; IP adresu IP adresou a měli byste vidět něco jako v následujícím příkladu:
+3. Změňte adresu URL na *http:// &lt; IP-address &gt; : 8080/images/test.htm*, nahraďte IP adresu IP &lt; &gt; adresou a měla by se zobrazit něco jako v následujícím příkladu:
 
     ![Testování adresy URL obrázků v aplikační bráně](./media/application-gateway-create-url-route-portal/application-gateway-iistest-images.png)
 
    Naslouchací proces na portu 8080 směruje tento požadavek do back-endového fondu *imagí* .
 
-4. Změňte adresu URL na *http://&lt;IP-address&gt;: 8080/video/test.htm*, nahraďte &lt;&gt; IP adresu IP adresou a měli byste vidět něco jako v následujícím příkladu:
+4. Změňte adresu URL na *http:// &lt; IP-address &gt; : 8080/video/test.htm*, nahraďte IP adresu IP &lt; &gt; adresou a měla by se zobrazit něco jako v následujícím příkladu:
 
     ![Testování adresy URL videa v aplikační bráně](./media/application-gateway-create-url-route-portal/application-gateway-iistest-video.png)
 
    Naslouchací proces na portu 8080 směruje tento požadavek do fondu back-endu *videa* .
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků a vyberete **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolení koncového šifrování TLS v Azure Application Gateway](application-gateway-backend-ssl.md)
+> [!div class="nextstepaction"]
+> [Povolení koncového šifrování TLS v Azure Application Gateway](application-gateway-backend-ssl.md)

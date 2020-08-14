@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Popisuje procesy spuštění kódu ve službě Azure Kubernetes pomocí Azure Dev Spaces
 keywords: azds. yaml, Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers
-ms.openlocfilehash: c343c32f0817cc922784bb25283290dc9ed88d29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9dbc1f0f21c2883e5caadbdae268a515eb94d145
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072952"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208683"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Způsob spuštění kódu s Azure Dev Spaces funguje
 
@@ -130,7 +130,7 @@ Vlastnost *install. set* umožňuje nakonfigurovat jednu nebo více hodnot, kter
 
 V předchozím příkladu vlastnost *install. set. replicaCount* přikáže kontroleru, kolik instancí aplikace se má spustit ve vývojovém prostoru. V závislosti na vašem scénáři můžete tuto hodnotu zvýšit, ale bude mít vliv na připojení ladicího programu k objektu pod vaší aplikace. Další informace najdete v [článku věnovaném řešení potíží][troubleshooting].
 
-V generovaném grafu Helm je image kontejneru nastavená na *{{. Hodnoty. Image. úložiště}}: {{. Values. Image. Tag}}*. `azds.yaml`Soubor definuje ve výchozím nastavení vlastnost *install. set. Image. Tag* jako *$ (tag)* , která se používá jako hodnota pro *{{. Values. Image. Tag}}*. Nastavením vlastnosti *install. set. Image. Tag* tímto způsobem umožníte, aby se image kontejneru pro vaši aplikaci označila odlišným způsobem při spuštění Azure dev Spaces. V tomto konkrétním případě je obrázek označen jako * \<value from image.repository> : $ (tag)*. Proměnnou *$ (tag)* musíte použít jako hodnotu *install. set. Image. Tag* , aby prostory pro vývoj rozpoznaly a našli kontejner v clusteru AKS.
+V generovaném grafu Helm je image kontejneru nastavená na *{{. Hodnoty. Image. úložiště}}: {{. Values. Image. Tag}}*. `azds.yaml`Soubor definuje ve výchozím nastavení vlastnost *install. set. Image. Tag* jako *$ (tag)* , která se používá jako hodnota pro *{{. Values. Image. Tag}}*. Nastavením vlastnosti *install. set. Image. Tag* tímto způsobem umožníte, aby se image kontejneru pro vaši aplikaci označila odlišným způsobem při spuštění Azure dev Spaces. V tomto konkrétním případě je obrázek označen jako * \<value from image.repository> : $ (tag)*. Proměnnou *$ (tag)* musíte použít jako hodnotu   *install. set. Image. Tag* , aby prostory pro vývoj rozpoznaly a našli kontejner v clusteru AKS.
 
 V předchozím příkladu `azds.yaml` definuje *install. set. příchozí. Hosts*. Vlastnost *install. set.. Hosts* definuje formát názvu hostitele pro veřejné koncové body. Tato vlastnost také používá *$ (spacePrefix)*, *$ (rootSpacePrefix)* a *$ (hostSuffix)*, což jsou hodnoty poskytované řadičem.
 
@@ -201,14 +201,6 @@ Další informace o sítích a způsobu směrování požadavků v Azure Dev Spa
 
 Další informace o použití Azure Dev Spaces pro rychlé iterace a vývoj najdete v tématu [jak místní proces s Kubernetes funguje][how-it-works-local-process-kubernetes] a [jak vzdálené ladění kódu pomocí Azure dev Spaces funguje][how-it-works-remote-debugging].
 
-Chcete-li začít používat Azure Dev Spaces ke spuštění projektu, přečtěte si následující rychlé starty:
-
-* [Rychlé iterování a ladění pomocí Visual Studio Code a Java][quickstart-java]
-* [Rychlé iterování a ladění pomocí Visual Studio Code a .NET][quickstart-netcore]
-* [Rychlé iterování a ladění pomocí Visual Studio Code a Node.js][quickstart-node]
-* [Rychlé iterace a ladění pomocí sady Visual Studio a .NET Core][quickstart-vs]
-* [Použití rozhraní příkazového řádku k vývoji aplikace v Kubernetes][quickstart-cli]
-
 
 [azds-yaml-section]: #how-running-your-code-is-configured
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
@@ -216,10 +208,5 @@ Chcete-li začít používat Azure Dev Spaces ke spuštění projektu, přečtě
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
-[quickstart-cli]: quickstart-cli.md
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md
 [sync-section]: #file-synchronization
 [troubleshooting]: troubleshooting.md

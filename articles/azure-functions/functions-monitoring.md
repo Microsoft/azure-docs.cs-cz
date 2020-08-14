@@ -4,13 +4,13 @@ description: Naučte se používat Azure Application Insights s Azure Functions 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: a1e72fba4ece24afffba573d954c7627af46a6cd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp, fasttrack-edit
+ms.openlocfilehash: 239d1da028a06d4272ed9b22b624413394aa142f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273369"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212990"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -69,7 +69,7 @@ Následující oblasti Application Insights mohou být užitečné při vyhodnoc
 | **[Selhání](../azure-monitor/app/asp-net-exceptions.md)** |  Vytvářejte grafy a výstrahy na základě selhání funkcí a výjimek serveru. **Název operace** je název funkce. Pokud neimplementujete vlastní telemetrie pro závislosti, neobjeví se chyby v závislostech. |
 | **[Výkon](../azure-monitor/app/performance-counters.md)** | Analyzujte problémy s výkonem zobrazením využití prostředků a propustnosti na **instance rolí cloudu**. Tato data můžou být užitečná pro scénáře ladění, kde funkce bogging své základní prostředky. |
 | **[Metriky](../azure-monitor/platform/metrics-charts.md)** | Vytváření grafů a výstrah založených na metrikách. Metriky zahrnují počet vyvolání funkcí, dobu provádění a míru úspěšnosti. |
-| **[Živé metriky](../azure-monitor/app/live-stream.md)** | Umožňuje zobrazit data metrik, která se vytvářejí téměř v reálném čase. |
+| **[Živé metriky    ](../azure-monitor/app/live-stream.md)** | Umožňuje zobrazit data metrik, která se vytvářejí téměř v reálném čase. |
 
 ## <a name="query-telemetry-data"></a>Dotazování dat telemetrie
 
@@ -192,7 +192,7 @@ Tento příklad nastavuje následující pravidla:
 * Pro protokoly s kategorií `Host.Aggregator` odešlete všechny protokoly do Application Insights. `Trace`Úroveň protokolu je stejná jako u některých volání protokolovacích `Verbose` nástrojů, ale používá se `Trace` v [host.jsv] souboru.
 * Pro všechny ostatní protokoly odešlete `Information` Application Insights jenom úroveň a vyšší.
 
-Hodnota kategorie v [host.js] řídí protokolování pro všechny kategorie, které začínají stejnou hodnotou. `Host`v [host.js] ovládací prvky pro protokolování `Host.General` , `Host.Executor` , `Host.Results` a tak dále.
+Hodnota kategorie v [host.js] řídí protokolování pro všechny kategorie, které začínají stejnou hodnotou. `Host` v [host.js] ovládací prvky pro protokolování `Host.General` , `Host.Executor` , `Host.Results` a tak dále.
 
 Pokud [host.jsna] zahrnuje více kategorií, které začínají stejným řetězcem, budou se nejprve shodovat. Předpokládejme, že chcete, aby vše z modulu runtime s výjimkou `Host.Aggregator` protokolování na `Error` úrovni, ale chcete `Host.Aggregator` se přihlásit na `Information` úrovni:
 

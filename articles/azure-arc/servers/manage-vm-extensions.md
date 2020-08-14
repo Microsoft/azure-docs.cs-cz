@@ -1,24 +1,24 @@
 ---
-title: Správa rozšíření virtuálních počítačů pomocí ARC Azure pro servery
-description: Azure ARC pro servery (verze Preview) může spravovat nasazení rozšíření virtuálních počítačů, které poskytuje konfiguraci po nasazení a úlohy automatizace s virtuálními počítači mimo Azure.
+title: Správa rozšíření virtuálních počítačů pomocí serverů s podporou ARC Azure (Preview)
+description: Servery s podporou ARC Azure (Preview) můžou spravovat nasazení rozšíření virtuálních počítačů, která poskytují konfiguraci po nasazení a úlohy automatizace s virtuálními počítači mimo Azure.
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0319420fe528d41a23ee8fae90c4ad8c326f35a0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1b27172a14896041cb4217b12af41d6a04118721
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121302"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213111"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>Správa rozšíření virtuálních počítačů pomocí ARC Azure pro servery (Preview)
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Správa rozšíření virtuálních počítačů pomocí serverů s podporou ARC Azure (Preview)
 
 Rozšíření virtuálních počítačů jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. Pokud virtuální počítač vyžaduje například instalaci softwaru, antivirovou ochranu nebo spuštění interního skriptu, je možné pro tento účel použít rozšíření virtuálního počítače.
 
-Azure ARC pro servery (Preview) umožňuje nasadit rozšíření virtuálních počítačů Azure na virtuální počítače, které nejsou v Azure s Windows a Linux, a zjednodušit tak správu vašich hybridních počítačů v místním prostředí, hraničních zařízeních a dalších cloudových prostředích prostřednictvím jejich životního cyklu.
+Servery s podporou Azure ARC (ve verzi Preview) umožňují nasadit rozšíření virtuálních počítačů Azure na virtuální počítače, které nejsou v Azure a Linux, což zjednodušuje správu hybridního počítače v místním prostředí, hraničních zařízeních a dalších cloudových prostředích v životním cyklu.
 
 ## <a name="key-benefits"></a>Klíčové výhody
 
-Podpora rozšíření virtuálních počítačů ve službě Azure ARC pro servery (Preview) nabízí následující klíčové výhody:
+Podpora rozšíření virtuálních počítačů na serverech s podporou Azure ARC (Preview) nabízí následující klíčové výhody:
 
 * [Konfigurace stavu Azure Automation](../../automation/automation-dsc-overview.md) slouží k centrálnímu ukládání konfigurací a údržbě požadovaného stavu hybridních připojených počítačů povolených prostřednictvím rozšíření virtuálního počítače DSC.
 
@@ -47,11 +47,11 @@ V této verzi Preview podporujeme následující rozšíření virtuálních po�
 |Agent Log Analytics |Linux |Microsoft. EnterpriseCloud. Monitoring |[Rozšíření virtuálního počítače s Log Analytics pro Linux](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft Dependency Agent | Linux |Microsoft.Compute | [Rozšíření pro virtuální počítače s agentem závislosti pro Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
 
-Rozšíření virtuálních počítačů je možné spouštět pomocí šablon Azure Resource Manager, z Azure Portal nebo Azure PowerShell na hybridních serverech spravovaných pomocí ARC pro servery (Preview).
+Rozšíření virtuálních počítačů je možné spouštět pomocí šablon Azure Resource Manager, z Azure Portal nebo Azure PowerShell na hybridních serverech spravovaných servery s podporou ARC (Preview).
 
 Další informace o balíčku agenta připojeného počítače Azure a podrobnostech o komponentě agenta rozšíření najdete v tématu [Přehled agenta](agent-overview.md#agent-component-details).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tato funkce závisí na následujících poskytovatelích prostředků Azure v rámci vašeho předplatného:
 
@@ -98,7 +98,7 @@ Rozšíření virtuálních počítačů můžete použít k použití spravovan
 
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
-Rozšíření virtuálních počítačů lze přidat do šablony Azure Resource Manager a spustit s nasazením šablony. S rozšířeními virtuálních počítačů, které podporuje ARC pro servery (Preview), můžete nasadit podporované rozšíření virtuálního počítače na počítačích se systémem Linux nebo Windows pomocí Azure PowerShell. Každý příklad obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
+Rozšíření virtuálních počítačů lze přidat do šablony Azure Resource Manager a spustit s nasazením šablony. S rozšířeními virtuálních počítačů podporovaných servery s podporou ARC (Preview) můžete nasadit podporované rozšíření virtuálního počítače na počítačích se systémem Linux nebo Windows pomocí Azure PowerShell. Každý příklad obsahuje soubor šablony a soubor parametrů s ukázkovými hodnotami, které se mají poskytnout šabloně.
 
 >[!NOTE]
 >I když je možné dávkovat více rozšíření a zpracovat je, nainstalují se sériově. Po dokončení první instalace rozšíření dojde k pokusu o instalaci dalšího rozšíření.
@@ -223,7 +223,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 Chcete-li použít rozšíření vlastních skriptů, je k dispozici následující ukázka pro spuštění v systému Windows a Linux. Pokud neznáte rozšíření vlastních skriptů, přečtěte si téma rozšíření [vlastních skriptů pro Windows](../../virtual-machines/extensions/custom-script-windows.md) nebo [rozšíření vlastních skriptů pro Linux](../../virtual-machines/extensions/custom-script-linux.md). Existuje několik různých charakteristik, které byste měli pochopit při používání tohoto rozšíření u hybridních počítačů:
 
-* Seznam podporovaných operačních systémů s rozšířením vlastních skriptů virtuálního počítače Azure se nedá použít pro Azure ARC pro servery. Seznam podporovaných OSs pro oblouk pro servery najdete [tady](agent-overview.md#supported-operating-systems).
+* Seznam podporovaných operačních systémů s rozšířením vlastních skriptů virtuálního počítače Azure se nedá použít pro servery s podporou ARC Azure. Seznam podporovaných OSs pro servery s podporou ARC najdete [tady](agent-overview.md#supported-operating-systems).
 
 * Podrobnosti o konfiguraci týkající se Azure Virtual Machine Scale Sets nebo klasických virtuálních počítačů nejsou k dispozici.
 
@@ -379,7 +379,7 @@ Konfigurace rozšíření vlastních skriptů určuje například umístění sk
 
 Chcete-li použít rozšíření PowerShell DSC, je k dispozici následující ukázka pro spuštění v systému Windows a Linux. Pokud neznáte rozšíření PowerShell DSC, přečtěte si téma [Přehled obslužné rutiny rozšíření DSC](../../virtual-machines/extensions/dsc-overview.md). Existuje několik různých charakteristik, které byste měli pochopit při používání tohoto rozšíření u hybridních počítačů:
 
-* Seznam podporovaných operačních systémů s rozšířením PowerShell pro virtuální počítače Azure se nedá použít pro Azure ARC pro servery. Seznam podporovaných OSs pro oblouk pro servery najdete [tady](agent-overview.md#supported-operating-systems).
+* Seznam podporovaných operačních systémů s rozšířením PowerShell pro virtuální počítače Azure se nevztahují na servery s podporou ARC Azure. Seznam podporovaných OSs pro servery s podporou ARC najdete [tady](agent-overview.md#supported-operating-systems).
 
 * Pokud vaše počítače potřebují stáhnout skript externě a můžou komunikovat jenom pomocí proxy server, musíte [nakonfigurovat agenta připojeného počítače](manage-agent.md#update-or-remove-proxy-settings) , aby nastavil proměnnou prostředí proxy server.
 
@@ -707,7 +707,7 @@ Chcete-li použít rozšíření agenta závislosti Azure Monitor, je k dispozic
 }
 ```
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal.
 

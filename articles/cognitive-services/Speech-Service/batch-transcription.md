@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 3e7f310f37bd016a73c589db3c9a23e197465427
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 70977c30edce124aa0d39bcc57d4ccd015d65961
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053912"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214043"
 ---
 # <a name="what-is-batch-transcription"></a>Co je Batch přepis?
 
@@ -44,7 +44,7 @@ Můžete zkontrolovat a otestovat podrobné rozhraní API, které je k dispozici
 
 Vedle snadno použitelného rozhraní API nemusíte nasazovat vlastní koncové body a nemusíte sledovat žádné požadavky na souběžnost.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="subscription-key"></a>Klíč předplatného
 
@@ -63,7 +63,7 @@ Pokud plánujete přizpůsobovat modely, postupujte podle kroků v tématu [akus
 
 Rozhraní API dávkového přepisu podporuje následující formáty:
 
-| Formát | Kodek | Rychlostí | Vzorkovací frekvence                     |
+| Formát | Kodek | Bity na ukázku | Vzorkovací frekvence             |
 |--------|-------|---------|---------------------------------|
 | WAV    | PCM   | 16bitový  | 8 kHz nebo 16 kHz, mono nebo stereo |
 | MP3    | PCM   | 16bitový  | 8 kHz nebo 16 kHz, mono nebo stereo |
@@ -333,7 +333,7 @@ Vzorový kód nastaví klienta a odešle požadavek přepisu. Pak se dotazuje na
 
 Úplné podrobnosti o předchozích voláních najdete v našem [dokumentu Swagger](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0). Úplný vzorek, který vidíte tady, najdete v podadresáři na [GitHubu](https://aka.ms/csspeech/samples) `samples/batch` .
 
-Poznamenejte si asynchronní nastavení pro publikování zvuku a přijetí přepisu stavu. Vytvořeným klientem je klient .NET HTTP. Existuje `PostTranscriptions` metoda pro odeslání podrobností o zvukovém souboru a `GetTranscriptions` metodě pro přijetí stavů. `PostTranscriptions`Vrátí popisovač a `GetTranscriptions` použije ho k vytvoření popisovače pro získání stavu přepisu.
+Poznamenejte si asynchronní nastavení pro publikování zvuku a přijetí přepisu stavu. Vytvořeným klientem je klient .NET HTTP. Existuje `PostTranscriptions` metoda pro odeslání podrobností o zvukovém souboru a `GetTranscriptions` metodě pro přijetí stavů. `PostTranscriptions` Vrátí popisovač a `GetTranscriptions` použije ho k vytvoření popisovače pro získání stavu přepisu.
 
 Aktuální ukázkový kód neurčuje vlastní model. Služba používá základní model pro zdlouhavého přepisování souborů nebo souborů. Chcete-li určit model, můžete předat stejné metodě odkaz na model pro vlastní model.
 

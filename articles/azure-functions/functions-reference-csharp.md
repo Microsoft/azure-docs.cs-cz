@@ -3,14 +3,15 @@ title: Referenční dokumentace pro vývojáře skriptu v jazyce C# Azure Functi
 description: Naučte se vyvíjet Azure Functions pomocí skriptu jazyka C#.
 author: craigshoemaker
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 177e9fcd872c594fbfb5f29077235113c6342860
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4d5388f850f47323f6ad79f9f91e617e506546bf
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506141"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205447"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions referenční příručka pro vývojáře skriptu jazyka C# (. csx)
 
@@ -210,9 +211,9 @@ public class Order
 
 Můžete použít relativní cestu k této `#load` direktivě:
 
-* `#load "mylogger.csx"`Načte soubor umístěný ve složce Functions.
-* `#load "loadedfiles\mylogger.csx"`Načte soubor umístěný ve složce ve složce Functions.
-* `#load "..\shared\mylogger.csx"`Načte soubor umístěný do složky na stejné úrovni jako složka funkcí, která je přímo pod uzlem *wwwroot*.
+* `#load "mylogger.csx"` Načte soubor umístěný ve složce Functions.
+* `#load "loadedfiles\mylogger.csx"` Načte soubor umístěný ve složce ve složce Functions.
+* `#load "..\shared\mylogger.csx"` Načte soubor umístěný do složky na stejné úrovni jako složka funkcí, která je přímo pod uzlem *wwwroot*.
 
 `#load`Direktiva funguje pouze se soubory *. csx* , nikoli s *příponou. cs* .
 
@@ -236,7 +237,7 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 }
 ```
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 Chcete-li protokolovat výstup do protokolů streamování v jazyce C#, zahrňte argument typu [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger). Doporučujeme vám ho pojmenovat `log` . Nepoužívejte `Console.Write` v Azure Functions.
 
@@ -459,7 +460,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute`je atribut rozhraní .NET, který definuje vaši vazbu a `T` je vstupní nebo výstupní typ podporovaný tímto typem vazby. `T`nelze `out` zadat typ parametru (například `out JObject` ). Například výstupní vazba Mobile Apps tabulky podporuje [šest výstupních typů](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale můžete použít pouze [ICollector \<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) pro `T` .
+`BindingTypeAttribute` je atribut rozhraní .NET, který definuje vaši vazbu a `T` je vstupní nebo výstupní typ podporovaný tímto typem vazby. `T` nelze `out` zadat typ parametru (například `out JObject` ). Například výstupní vazba Mobile Apps tabulky podporuje [šest výstupních typů](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), ale můžete použít pouze [ICollector \<T> ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) nebo [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) pro `T` .
 
 ### <a name="single-attribute-example"></a>Příklad jednoduchého atributu
 
@@ -482,7 +483,7 @@ public static async Task Run(string input, Binder binder)
 
 ### <a name="multiple-attribute-example"></a>Příklad více atributů
 
-Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage` ). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()` . Použijte `Binder` parametr, ne `IBinder` .  Příklad:
+Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage` ). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()` . Použijte `Binder` parametr, ne `IBinder` .  Například:
 
 ```cs
 using Microsoft.Azure.WebJobs;

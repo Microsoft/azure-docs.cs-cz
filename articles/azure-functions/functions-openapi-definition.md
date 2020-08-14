@@ -4,13 +4,13 @@ description: Vytvořte definici OpenAPI, která umožní ostatním aplikacím a 
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.reviewer: sunayv
-ms.custom: mvc, cc996988-fb4f-47, references_regions
-ms.openlocfilehash: 87f7b47354d3d76d5185b1bf956fd0c422c092bd
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47, references_regions
+ms.openlocfilehash: 9083ff7d8f65c68ce8d173973a4eda650ac355aa
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84197025"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212904"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Vytvoření definice OpenAPI pro rozhraní API bez serveru s využitím Azure API Management
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 > * Otestování definice zavoláním funkce
 > * Stažení definice OpenAPI
 
-## <a name="create-a-function-app"></a>Vytvoření Function App
+## <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
 K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace Function App umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování, škálování a sdílení prostředků.
 
@@ -144,7 +144,7 @@ Generování definice OpenAPI:
     | **Umístění** | USA – západ | Vyberte umístění Západní USA. |
     | **Název organizace** | Contoso | Název organizace, který se používá na portálu pro vývojáře, a pro e-mailová oznámení. |
     | **E-mail správce** | Váš e-mail | E-mail, který přijal systémová oznámení z API Management. |
-    | **Cenová úroveň** | Využití | Úroveň spotřeby není dostupná ve všech oblastech. Úplné podrobnosti o cenách najdete na [stránce s cenami API Management](https://azure.microsoft.com/pricing/details/api-management/) . |
+    | **Cenová úroveň** | Consumption | Úroveň spotřeby není dostupná ve všech oblastech. Úplné podrobnosti o cenách najdete na [stránce s cenami API Management](https://azure.microsoft.com/pricing/details/api-management/) . |
 
     ![Vytvořit novou službu API Management](media/functions-openapi-definition/new-apim-service-openapi.png)
 

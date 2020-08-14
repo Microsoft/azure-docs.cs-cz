@@ -3,16 +3,16 @@ title: Přehled agenta připojeného počítače systému Windows
 description: Tento článek poskytuje podrobný přehled dostupného agenta Azure ARC pro servery (Preview), který podporuje monitorování virtuálních počítačů hostovaných v hybridních prostředích.
 ms.date: 08/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8e8abfcc3c6ec7b7893563c67dc6bb82ccdda850
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d922652537034bef258c5bcde78fb178b092ed16
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121829"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212984"
 ---
-# <a name="overview-of-azure-arc-for-servers-preview-agent"></a>Přehled agenta Azure ARC pro servery (Preview)
+# <a name="overview-of-azure-arc-enabled-servers-preview-agent"></a>Přehled agenta serverů s podporou ARC Azure (Preview)
 
-Agent Azure ARC pro servery (Preview) umožňuje spravovat počítače se systémem Windows a Linux hostované mimo Azure v podnikové síti nebo v jiném poskytovateli cloudu. Tento článek poskytuje podrobný přehled požadavků na agenty, systém a síť a různé metody nasazení.
+Agent počítače s podporou Azure ARC (Preview) umožňuje spravovat počítače s Windows a Linux hostovanými mimo Azure ve vaší podnikové síti nebo jiném cloudovém poskytovateli. Tento článek poskytuje podrobný přehled požadavků na agenty, systém a síť a různé metody nasazení.
 
 ## <a name="agent-component-details"></a>Podrobnosti komponenty agenta
 
@@ -40,7 +40,7 @@ Balíček agenta připojeného počítače Azure pro Windows a Linux si můžete
 
 Agenta připojeného počítače Azure pro Windows a Linux se dá upgradovat na nejnovější verzi ručně nebo automaticky v závislosti na vašich požadavcích. Další informace najdete [tady](manage-agent.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -65,7 +65,7 @@ Pro agenta připojeného počítače Azure jsou oficiálně podporované násled
 
 ### <a name="azure-subscription-and-service-limits"></a>Omezení předplatného a služeb Azure
 
-Před konfigurací počítačů pomocí ARC Azure pro servery (Preview) si přečtěte část [omezení Azure Resource Manager předplatného](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) a [omezení skupiny prostředků](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) , abyste naplánovali počet počítačů, které se mají připojit.
+Před konfigurací počítačů se servery s podporou ARC Azure (Preview) si přečtěte část [omezení Azure Resource Manager předplatného](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) a [omezení skupiny prostředků](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) , abyste naplánovali počet počítačů, které se mají připojit.
 
 ### <a name="transport-layer-security-12-protocol"></a>Protokol TLS (Transport Layer Security 1,2)
 
@@ -105,7 +105,7 @@ Adresy URL v předchozí tabulce jsou nutné kromě informací o rozsahu IP adre
 
 ### <a name="register-azure-resource-providers"></a>Registrovat poskytovatele prostředků Azure
 
-Azure ARC pro servery (verze Preview) závisí na následujících poskytovatelích prostředků Azure ve vašem předplatném, aby bylo možné tuto službu používat:
+Servery s podporou ARC Azure (Preview) závisí na následujících poskytovatelích prostředků Azure ve vašem předplatném, aby bylo možné tuto službu používat:
 
 * **Microsoft. HybridCompute**
 * **Microsoft. GuestConfiguration**
@@ -248,4 +248,4 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít vyhodnocovat Azure ARC pro servery (Preview), postupujte podle článku [připojení Hybrid Machines k Azure z Azure Portal](onboard-portal.md).
+Pokud chcete začít vyhodnocovat servery s podporou Azure ARC (Preview), postupujte podle článku [připojení Hybrid Machines k Azure z Azure Portal](onboard-portal.md).

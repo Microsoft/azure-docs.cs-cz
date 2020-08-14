@@ -6,13 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: c377d9882b59731857641e1f593dd6b7b24ca7f9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 3fc8f205bff52fad6e55b7aa6692ec80ae5e954a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844078"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212159"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus výstupní vazba pro Azure Functions
 
@@ -300,12 +300,12 @@ V Azure Functions 1. x modul runtime vytvoří frontu, pokud neexistuje a že js
 
 Pro výstupní vazbu použijte následující typy parametrů:
 
-* `out T paramName` - `T`může být jakýkoli typ serializovatelný jako JSON. Pokud má parametr hodnotu null, když funkce skončí, funkce vytvoří zprávu s objektem s hodnotou null.
-* `out string`– Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
-* `out byte[]`– Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
-* `out BrokeredMessage`– Pokud má parametr hodnotu null, když se funkce ukončí, funkce nevytvoří zprávu (pro funkce 1. x).
-* `out Message`– Pokud má parametr hodnotu null, když se funkce ukončí, funkce nevytvoří zprávu (pro Functions 2. x a vyšší).
-* `ICollector<T>`nebo `IAsyncCollector<T>` (pro asynchronní metody) – pro vytváření více zpráv. Zpráva se vytvoří při volání `Add` metody.
+* `out T paramName` - `T` může být jakýkoli typ serializovatelný jako JSON. Pokud má parametr hodnotu null, když funkce skončí, funkce vytvoří zprávu s objektem s hodnotou null.
+* `out string` – Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
+* `out byte[]` – Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
+* `out BrokeredMessage` – Pokud má parametr hodnotu null, když se funkce ukončí, funkce nevytvoří zprávu (pro funkce 1. x).
+* `out Message` – Pokud má parametr hodnotu null, když se funkce ukončí, funkce nevytvoří zprávu (pro Functions 2. x a vyšší).
+* `ICollector<T>` nebo `IAsyncCollector<T>` (pro asynchronní metody) – pro vytváření více zpráv. Zpráva se vytvoří při volání `Add` metody.
 
 Při práci s funkcemi jazyka C#:
 
@@ -317,12 +317,12 @@ Při práci s funkcemi jazyka C#:
 
 Pro výstupní vazbu použijte následující typy parametrů:
 
-* `out T paramName` - `T`může být jakýkoli typ serializovatelný jako JSON. Pokud má parametr hodnotu null, když funkce skončí, funkce vytvoří zprávu s objektem s hodnotou null.
-* `out string`– Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
-* `out byte[]`– Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
-* `out BrokeredMessage`– Pokud má parametr hodnotu null, když se funkce ukončí, funkce nevytvoří zprávu (pro funkce 1. x).
-* `out Message`– Pokud má parametr hodnotu null, když se funkce ukončí, funkce nevytvoří zprávu (pro Functions 2. x a vyšší).
-* `ICollector<T>`nebo `IAsyncCollector<T>` – pro vytvoření více zpráv. Zpráva se vytvoří při volání `Add` metody.
+* `out T paramName` - `T` může být jakýkoli typ serializovatelný jako JSON. Pokud má parametr hodnotu null, když funkce skončí, funkce vytvoří zprávu s objektem s hodnotou null.
+* `out string` – Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
+* `out byte[]` – Pokud má parametr hodnotu null, když funkce skončí, funkce nevytvoří zprávu.
+* `out BrokeredMessage` – Pokud má parametr hodnotu null, když se funkce ukončí, funkce nevytvoří zprávu (pro funkce 1. x).
+* `out Message` – Pokud má parametr hodnotu null, když se funkce ukončí, funkce nevytvoří zprávu (pro Functions 2. x a vyšší).
+* `ICollector<T>` nebo `IAsyncCollector<T>` – pro vytvoření více zpráv. Zpráva se vytvoří při volání `Add` metody.
 
 Při práci s funkcemi jazyka C#:
 

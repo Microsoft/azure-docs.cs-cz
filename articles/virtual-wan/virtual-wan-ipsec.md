@@ -1,18 +1,18 @@
 ---
 title: Výchozí zásady IPsec pro Azure Virtual WAN | Microsoft Docs
-description: Tento článek poskytuje informace o zásadách IPsec pro virtuální síť WAN.
+description: Přečtěte si o zásadách připojení Azure Virtual WAN, včetně výchozích zásad iniciátoru a respondéru, a kombinací vlastních zásad.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 877a17327f13e407f86cb3a1a21f051572f74343
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 784f43cfa259ad7bdf161aea8e9b1ce559855db7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73499724"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213902"
 ---
 # <a name="virtual-wan-default-policies-for-ipsec-connectivity"></a>Výchozí zásady virtuální sítě WAN pro připojení IPsec
 

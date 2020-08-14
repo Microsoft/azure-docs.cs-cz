@@ -1,26 +1,27 @@
 ---
-title: Použití spravovaných identit pro přístup ke konfiguraci aplikace
+title: Použití spravovaných identit pro přístup ke službě App Configuration
 titleSuffix: Azure App Configuration
 description: Ověření v konfiguraci aplikace Azure pomocí spravovaných identit
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 7ccf1bed3a1791f0aa172a617deab1cd192540f3
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: b1efeeef09e7c228eb8fc14de52a6beb2e9ffffe
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135466"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206833"
 ---
-# <a name="use-managed-identities-to-access-app-configuration"></a>Použití spravovaných identit pro přístup ke konfiguraci aplikace
+# <a name="use-managed-identities-to-access-app-configuration"></a>Použití spravovaných identit pro přístup ke službě App Configuration
 
 Azure Active Directory [spravované identity](../active-directory/managed-identities-azure-resources/overview.md) zjednodušují správu tajných kódů pro vaši cloudovou aplikaci. Se spravovanou identitou může váš kód používat instanční objekt vytvořený pro službu Azure, na které běží. Místo samostatného přihlašovacího údaje uloženého v Azure Key Vault nebo v místním připojovacím řetězci použijete spravovanou identitu.
 
 Konfigurace aplikace Azure a její klientské knihovny pro navýšení .NET Core, .NET Framework a Java mají do nich vestavěnou podporu spravovaných identit. I když ho použít nemusíte, spravovaná identita eliminuje potřebu přístupového tokenu, který obsahuje tajné klíče. Váš kód má přístup k úložišti konfigurace aplikace jenom pomocí koncového bodu služby. Tuto adresu URL můžete do kódu vložit přímo bez vystavení tajného kódu.
 
-V tomto článku se dozvíte, jak můžete využít spravovanou identitu pro přístup ke konfiguraci aplikací. Sestavuje se ve webové aplikaci představené v rychlých startech. Než budete pokračovat, [vytvořte nejprve aplikaci ASP.NET Core s konfigurací aplikace](./quickstart-aspnet-core-app.md) .
+V tomto článku se dozvíte, jak můžete využít spravovanou identitu pro přístup ke konfiguraci aplikací. Sestavuje se ve webové aplikaci představené v rychlých startech. Než budete pokračovat,  [vytvořte nejprve aplikaci ASP.NET Core s konfigurací aplikace](./quickstart-aspnet-core-app.md) .
 
 Tento článek také ukazuje, jak můžete použít spravovanou identitu ve spojení s Key Vault odkazy na konfiguraci aplikace. S jedinou spravovanou identitou můžete bezproblémově přistupovat k oběma tajným klíčům z Key Vault a konfiguračních hodnot z konfigurace aplikace. Pokud chcete tuto funkci prozkoumat, dokončete nejprve [použití Key Vault odkazů ASP.NET Core](./use-key-vault-references-dotnet-core.md) .
 
@@ -33,7 +34,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Nakonfigurujte svou aplikaci tak, aby používala spravovanou identitu, když se připojíte ke konfiguraci aplikace.
 > * Volitelně můžete aplikaci nakonfigurovat tak, aby používala spravovanou identitu, když se k Key Vault připojíte prostřednictvím konfigurace aplikace Key Vault odkazem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete:
 
@@ -101,7 +102,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 1. Pokud chcete získat přístup pouze k hodnotám uloženým přímo v konfiguraci aplikace, aktualizujte metodu tak, že `CreateWebHostBuilder` nahradíte `config.AddAzureAppConfiguration()` metodu.
 
     > [!IMPORTANT]
-    > `CreateHostBuilder`nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
+    > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
 
     ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -184,7 +185,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     Nyní máte přístup k Key Vault odkazům stejně jako jakýkoli jiný konfigurační klíč aplikace. Poskytovatel konfigurace použije `KeyVaultClient` konfiguraci, kterou jste nakonfigurovali k ověřování, aby Key Vault a načetla hodnotu.
 
 > [!NOTE]
-> `ManagedIdentityCredential`podporuje pouze spravované ověřování identity. Nefunguje v místních prostředích. Pokud chcete spustit kód místně, zvažte použití nástroje `DefaultAzureCredential` , který podporuje také ověřování instančního objektu. Podrobnosti najdete v [odkazu](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) .
+> `ManagedIdentityCredential` podporuje pouze spravované ověřování identity. Nefunguje v místních prostředích. Pokud chcete spustit kód místně, zvažte použití nástroje `DefaultAzureCredential` , který podporuje také ověřování instančního objektu. Podrobnosti najdete v [odkazu](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) .
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 

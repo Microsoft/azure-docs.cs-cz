@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 57eb005109b97a423f9218ee6a47ce5bb06c3853
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505342"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207796"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Shromažďování vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf
 
@@ -31,7 +31,7 @@ Pomocí Azure Monitor můžete shromažďovat vlastní metriky prostřednictvím
 
 V tomto kurzu nasadíme virtuální počítač Linux, na kterém běží operační systém Ubuntu 16,04 LTS. Agent telegraf se podporuje pro většinu operačních systémů Linux. Balíčky Debian i ot./min. jsou k dispozici společně s nebalenými binárními soubory Linux na [portálu pro stažení InfluxData](https://portal.influxdata.com/downloads). Další pokyny k instalaci a možnosti najdete v této [příručce k instalaci telegraf](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) . 
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 > [!NOTE]  
 > Pokud chcete migrovat pravidla pro klasické výstrahy a použít stávající virtuální počítač se systémem Linux, ujistěte se, že má počítač s virtuální nastavenou identitu přiřazenou **systémem.**
@@ -127,7 +127,7 @@ Agent nyní bude shromažďovat metriky ze všech zadaných vstupních modulů p
 
 ## <a name="additional-configuration"></a>Další konfigurace 
 
-Předchozí návod poskytuje informace o tom, jak nakonfigurovat agenta telegraf na shromažďování metrik z několika základních modulů plug-in. Agent telegraf podporuje více než 150 vstupních modulů plug-in, přičemž některé podporují další možnosti konfigurace. InfluxData publikoval [seznam podporovaných modulů plug-in](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/) a pokyny, [jak je nakonfigurovat](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/).  
+Předchozí návod poskytuje informace o tom, jak nakonfigurovat agenta telegraf na shromažďování metrik z několika základních modulů plug-in. Agent telegraf podporuje více než 150 vstupních modulů plug-in, přičemž některé podporují další možnosti konfigurace. InfluxData publikoval [seznam podporovaných modulů plug-in](https://docs.influxdata.com/telegraf/v1.15/plugins/inputs/) a pokyny, [jak je nakonfigurovat](https://docs.influxdata.com/telegraf/v1.15/administration/configuration/).  
 
 V tomto návodu jste navíc použili agenta telegraf k vygenerování metrik o virtuálním počítači, na kterém je agent nasazený. Agenta telegraf lze také použít jako kolektor a předávané metriky pro další prostředky. Informace o tom, jak nakonfigurovat agenta tak, aby vygeneroval metriky pro další prostředky Azure, najdete v tématu [Azure monitor vlastní výstup metriky pro telegraf](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md).  
 

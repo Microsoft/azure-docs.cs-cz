@@ -5,14 +5,14 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: msangapu
 keywords: Azure App Service, Web App, Linux, Windows, Docker, kontejner
-ms.custom: mvc, seodec18, devx-track-python
+ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: c589ceecdd946b9c9ff17dd459654d066a1167e4
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: a3579ba805d0da08184e6274de60086a9d55a938
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084514"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212944"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Migrace vlastního softwaru na Azure App Service pomocí vlastního kontejneru
 
@@ -22,7 +22,7 @@ ms.locfileid: "88084514"
 
 ![Zobrazuje webovou aplikaci spuštěnou v kontejneru Windows.](media/tutorial-custom-container/app-running.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -462,9 +462,9 @@ Chcete-li nasadit kontejner pro Azure App Service, nejprve vytvořte webovou apl
     ```
 
     Nahraďte následující hodnoty:
-    - `<principal-id>`s ID objektu služby z `az webapp identity assign` příkazu
-    - `<registry-name>`s názvem vašeho registru kontejneru
-    - `<subscription-id>`s ID předplatného načteným z `az account show` příkazu
+    - `<principal-id>` s ID objektu služby z `az webapp identity assign` příkazu
+    - `<registry-name>` s názvem vašeho registru kontejneru
+    - `<subscription-id>` s ID předplatného načteným z `az account show` příkazu
 
 Další informace o těchto oprávněních najdete v tématu [co je řízení přístupu na základě role Azure](/azure/role-based-access-control/overview) . 
 

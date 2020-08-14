@@ -1,6 +1,6 @@
 ---
 title: Rychlý Start pro zásady vypršení platnosti skupiny – Azure AD | Microsoft Docs
-description: Vypršení platnosti u skupin Office 365 – Azure Active Directory
+description: Vypršení platnosti pro Microsoft 365 skupiny – Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,33 +9,33 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 04/29/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 616910eda33b3ddc49fa6233ccb3989c5e4214e2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 178f6a2c1a71d088eeb1a3ea6f7e39198d401ff4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582841"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213724"
 ---
-# <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Rychlý start: Nastavení vypršení platnosti skupin Office 365 v Azure Active Directory
+# <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Rychlý Start: nastavení Microsoft 365ch skupin, jejichž platnost vyprší v Azure Active Directory
 
-V tomto rychlém startu nastavíte zásadu vypršení platnosti pro skupiny Office 365. Když mají uživatelé možnost nastavovat vlastní skupiny, můžou se začít množit nepoužívané skupiny. Jedním ze způsobů, jak spravovat nepoužívané skupiny, je nastavit vypršení platnosti těchto skupin a tím snížit potřebu údržby související s ručním odstraňováním skupin.
+V tomto rychlém startu nastavíte zásady vypršení platnosti pro vaše Microsoft 365 skupiny. Když mají uživatelé možnost nastavovat vlastní skupiny, můžou se začít množit nepoužívané skupiny. Jedním ze způsobů, jak spravovat nepoužívané skupiny, je nastavit vypršení platnosti těchto skupin a tím snížit potřebu údržby související s ručním odstraňováním skupin.
 
 Zásady vypršení platnosti je jednoduchá:
 
 - Skupiny s aktivitami uživatele se automaticky Obnovují jako vypršení platnosti v blízkosti
 - Vlastníci skupiny obdrží oznámení o potřebě prodloužit platnost skupiny, které vyprší platnost.
 - Skupina, které se neprodlouží platnost, se odstraní.
-- Odstraněnou skupinu Office 365 může do 30 dnů obnovit vlastník skupiny nebo správce Azure AD.
+- Odstraněnou skupinu Microsoft 365 lze obnovit do 30 dnů vlastníkem skupiny nebo správcem služby Azure AD.
 
 > [!NOTE]
 > Skupiny teď používají Azure AD Intelligence k automatickému obnovení na základě toho, jestli jsou v nedávném použití. Toto rozhodnutí o obnovení je založené na aktivitě uživatelů ve skupinách napříč službami Office 365, jako je Outlook, SharePoint, teams, Yammer a další.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisite"></a>Požadavek
 
@@ -49,13 +49,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
   
    ![Stránka nastavení samoobslužné skupiny](./media/groups-quickstart-expiration/self-service-settings.png)
 
-3. Nastavte možnost **Uživatelé můžou vytvářet skupiny Office 365** na **Ano**.
+3. Nastavení  **Uživatelé mohou vytvořit Microsoft 365 skupiny** na **Ano**.
 
 4. Jakmile budete hotovi, výběrem možnosti **Uložit** uložte nastavení skupin.
 
 ## <a name="set-group-expiration"></a>Nastavení vypršení platnosti skupiny
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com), vyberte **Azure Active Directory** > **skupiny** > **vypršení platnosti** a otevřete nastavení vypršení platnosti.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com), vyberte **Azure Active Directory**  >  **skupiny**  >  **vypršení platnosti** a otevřete nastavení vypršení platnosti.
   
    ![Stránka nastavení vypršení platnosti pro skupinu](./media/groups-quickstart-expiration/expiration-settings.png)
 
@@ -63,24 +63,24 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 3. Zadejte e-mailovou adresu, kam se mají odesílat oznámení o vypršení platnosti v případě, že skupina nemá žádného vlastníka.
 
-4. Pro účely tohoto rychlého startu nastavte možnost **Povolit vypršení platnosti u těchto skupin Office 365** na **Všechny**.
+4. Pro tento rychlý Start nastavte **možnost Povolit vypršení platnosti pro tyto Microsoft 365 skupiny** na **vše**.
 
 5. Jakmile budete hotovi, výběrem možnosti **Uložit** uložte nastavení vypršení platnosti.
 
-A to je vše! V tomto rychlém startu jste úspěšně nastavili zásadu vypršení platnosti pro vybrané skupiny Office 365.
+A to je vše! V tomto rychlém startu jste úspěšně nastavili zásady vypršení platnosti pro vybrané skupiny Microsoft 365.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 ### <a name="to-remove-the-expiration-policy"></a>Odebrání zásady vypršení platnosti
 
 1. Ujistěte se, že jste k [Azure Portal](https://portal.azure.com) přihlášeni pomocí účtu, který je globálním správcem vaší organizace Azure AD.
-2. Vyberte **Azure Active Directory** > **skupiny** > **vyprší**.
-3. Nastavte možnost **Povolit vypršení platnosti u těchto skupin Office 365** na **Žádné**.
+2. Vyberte **Azure Active Directory**  >  **skupiny**  >  **vyprší**.
+3. **U těchto Microsoft 365 skupin nastavte možnost Povolit vypršení platnosti** na **žádná**.
 
 ### <a name="to-turn-off-user-creation-for-groups"></a>Vypnutí vytváření uživatelů pro skupiny
 
-1. Vyberte **Azure Active Directory** > **skupiny** > **Obecné**. 
-2. Nastavte možnost **Uživatelé můžou vytvářet skupiny Office 365 na webu Azure Portal** na **Ne**.
+1. Vyberte **Azure Active Directory**  >  **skupiny**  >  **Obecné**. 
+2. Nastavení **Uživatelé můžou na portálech Azure vytvářet skupiny Microsoft 365** na **ne**.
 
 ## <a name="next-steps"></a>Další kroky
 

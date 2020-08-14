@@ -4,13 +4,13 @@ description: Přečtěte si, jak pomocí příkazového řádku nebo terminálu 
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 5c6761b083200556314d7133d5040f7811066e30
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-csharp, 80e4ff38-5174-43
+ms.openlocfilehash: 18263f9e77961fb4c169559f221ab94eb4a38840
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037027"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207452"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -39,7 +39,7 @@ Existují tři verze Azure Functions Core Tools. Použitá verze závisí na va�
 
 Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 3. x.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Azure Functions Core Tools v současné době závisí na Azure CLI pro ověřování pomocí účtu Azure. To znamená, že musíte [Azure CLI nainstalovat místně](/cli/azure/install-azure-cli) , aby bylo možné [publikovat do Azure](#publish) z Azure Functions Core Tools. 
 
@@ -189,7 +189,7 @@ Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 </pre>
 
-`func init`podporuje následující možnosti, které jsou verze 3. x/2. x-Only, pokud není uvedeno jinak:
+`func init` podporuje následující možnosti, které jsou verze 3. x/2. x-Only, pokud není uvedeno jinak:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
@@ -363,7 +363,7 @@ npm start
 > func host start
 > ```
 
-`func start`podporuje následující možnosti:
+`func start` podporuje následující možnosti:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
@@ -472,7 +472,7 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 
 Ve verzi 1. x můžete také vyvolat funkci přímo pomocí `func run <FunctionName>` a zadat vstupní data pro funkci. Tento příkaz je podobný spuštění funkce pomocí karty **test** v Azure Portal.
 
-`func run`podporuje následující možnosti:
+`func run` podporuje následující možnosti:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
@@ -547,7 +547,7 @@ K dispozici jsou následující možnosti nasazení vlastního kontejneru:
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | Název registru Docker, ke kterému se přihlásil aktuální uživatel. |
-| **`--platform`** | Platforma hostování aplikace Function App. Platné možnosti jsou`kubernetes` |
+| **`--platform`** | Platforma hostování aplikace Function App. Platné možnosti jsou `kubernetes` |
 | **`--name`** | Název aplikace Function App |
 | **`--max`**  | Volitelně můžete nastavit maximální počet instancí aplikace Function App, na které se mají nasadit. |
 | **`--min`**  | Volitelně nastaví minimální počet instancí aplikace Function App, na které se má nasadit. |

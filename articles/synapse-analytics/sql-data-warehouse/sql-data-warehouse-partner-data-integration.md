@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c8ab5bc5072612edd3eaabbd13468567a92f42e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 354e51d529c504bd04ed40f64b3db14a06384c98
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296385"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210575"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Partneři Azure synapse Analytics pro integraci dat
 
@@ -24,7 +24,7 @@ Pokud chcete vytvořit řešení datového skladu pomocí funkce synapse fondu S
 
 ## <a name="data-integration-partners"></a>Partneři pro integraci dat
 
-| Partner | Description | Odkaz na web/produkt |
+| Partner | Popis | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma je řešení pro extrakci, transformaci a načítání (ETL), které umožňuje datovým týmům integraci, obohacení a streamování dat z různých sila dat do datového skladu Azure synapse v reálném čase. |[Stránka produktu](https://www.alooma.com/) |
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> Alteryx Designer poskytuje opakovaně pracovní postup pro analýzu dat samoobslužných služeb, který vede k hlubším přehledům v řádu hodin, ne k týdenům typickým z tradičních přístupů. Alteryx Designer pomáhá analytikům dat kombinací přípravy dat, míchání dat a analýz – prediktivní, statistická a prostorová – pomocí stejného intuitivního uživatelského rozhraní. |[Stránka produktu](https://www.alteryx.com/partners/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|
@@ -43,7 +43,7 @@ Pokud chcete vytvořit řešení datového skladu pomocí funkce synapse fondu S
 | ![StreamSets](./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png) |**StreamSets**<br>StreamSets poskytuje platformu pro integraci dat pro DataOps. Operationalizes kompletní životní cyklus návrhu – nasazení – provoz integruje data do datového skladu Azure synapse. Můžete rychle ingestovat a integrovat data do a ze skladu prostřednictvím streamování, dávek nebo změněných způsobů doručování dat. Můžete také zajistit průběžné operace s inteligentními datovými kanály, které poskytují ucelenou viditelnost toku dat a odolnost.|[Stránka produktu](https://streamsets.com/partners/microsoft)|
 | ![Talend](./media/sql-data-warehouse-partner-data-integration/talend_logo.png) |**Talend Cloud**<br>Talend Cloud je podniková platforma pro integraci dat, která slouží k připojení, přístupu a transformaci všech dat v cloudu i v místním prostředí. Jedná se o integrační platformu jako službu (iPaaS), která poskytuje široké možnosti konektivity, integrované kvality dat a nativní podporu pro nejnovější velké objemy dat a cloudové technologie. |[Stránka produktu](https://www.talend.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/talend.talendremoteengine?source=datamarket&tab=Overview) |
 | ![TimeXtender](./media/sql-data-warehouse-partner-data-integration/timextender-logo.png) |**TimeXtender**<br>Centrum zjišťování TimeXtender pomáhá firmám vytvářet moderní datové podstaty tím, že poskytuje integrovanou platformu pro správu dat, která zrychluje dobu analýzy dat až na 10 časů. Za každodenní extrakci, transformaci a načítání (ETL) nebo extrakci, načítání a transformaci (ELT) díky automatizaci a funkcím pro přístup k datům, modelování dat a dodržování předpisů v jedné platformě. Centrum zjišťování poskytuje soudržné datové prostředky pro cloudové analýzy, které vám umožní připojit a integrovat různé sila dat, katalog, model, přesun a dokumentovat data pro analýzy a AI. | [Stránka produktu](https://www.timextender.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=timextender&page=1) |
-| ![Trifacta](./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png) |**Trifacta Wrangler**<br> Trifacta pomáhá jednotlivcům a organizacím prozkoumat a spojit dohromady nejrůznější data pro účely analýzy. Trifacta Wrangler je navržená tak, aby zpracovávala úlohy tahání dat, které potřebují podporovat škálovaná data a velký počet koncových uživatelů.|[Stránka produktu](https://www.trifacta.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.tr01?source=datamarket&tab=Overview) |
+| ![Trifacta](./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png) |**Trifacta Wrangler**<br> Trifacta pomáhá jednotlivcům a organizacím prozkoumat a spojit dohromady nejrůznější data pro účely analýzy. Trifacta Wrangler je navržená tak, aby zpracovávala úlohy tahání dat, které potřebují podporovat škálovaná data a velký počet koncových uživatelů.|[Stránka produktu](https://www.trifacta.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/trifactainc1587522950142.trifactaazure?tab=Overview) |
 | ![WhereScape](./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png) |**Wherescape červená**<br> WhereScape RED je integrované vývojové prostředí (IDE), které poskytuje týmům nástroje pro automatizaci a zjednodušit tak pracovní postupy ETL. Integrované vývojové prostředí (IDE) poskytuje osvědčené postupy optimalizované nativní kód pro oblíbené datové cíle. WhereScape RED použijte k vyjmutí času pro vývoj, nasazení a provoz infrastruktury dat.|[Stránka produktu](https://www.wherescape.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/wherescapesoftware.wherescape-red?source=datamarket&tab=Overview) |
 
 

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 01/07/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 383c5a0d6811b2797ecb4407e73c26752e1a5022
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 85b457b4aefee408e35fb89d46e0de0dc4e96740
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055985"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213858"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Vytvoření nebo aktualizace dynamické skupiny v Azure Active Directory
 
@@ -35,7 +35,7 @@ Tady jsou některé příklady pokročilých pravidel nebo syntaxe, pro které d
 - Pravidlo s více než pěti výrazy
 - Pravidlo přímých sestav
 - Nastavení [priority operátoru](groups-dynamic-membership.md#operator-precedence)
-- [Pravidla se složitými výrazy](groups-dynamic-membership.md#rules-with-complex-expressions); například`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [Pravidla se složitými výrazy](groups-dynamic-membership.md#rules-with-complex-expressions); například `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
 > Tvůrce pravidel nemusí být schopný zobrazit některá pravidla vytvořená v textovém poli. Když tvůrce pravidel nemůže zobrazit pravidlo, může se zobrazit zpráva. Tvůrce pravidel nemění podporovanou syntaxi, ověřování ani zpracování pravidel dynamických skupin jakýmkoli způsobem.
@@ -80,7 +80,7 @@ Pokud pravidlo, které jste zadali, není platné, zobrazí se v oznámení Azur
 
 ## <a name="turn-on-or-off-welcome-email"></a>Zapnutí nebo vypnutí uvítacího e-mailu
 
-Když se vytvoří nová skupina Office 365, pošle se uvítací e-mailové oznámení uživatelům, kteří se do této skupiny přidají. Později platí, že pokud se libovolné atributy uživatele nebo zařízení změní, budou se pro změny členství zpracovávat všechna pravidla dynamické skupiny v organizaci. Přidaní uživatelé pak obdrží i uvítací oznámení. Toto chování můžete vypnout v [prostředí Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps).
+Když se vytvoří nová skupina Microsoft 365, uživatelům, kteří se do této skupiny přidají, se pošle uvítací e-mailové oznámení. Později platí, že pokud se libovolné atributy uživatele nebo zařízení změní, budou se pro změny členství zpracovávat všechna pravidla dynamické skupiny v organizaci. Přidaní uživatelé pak obdrží i uvítací oznámení. Toto chování můžete vypnout v [prostředí Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps).
 
 ## <a name="check-processing-status-for-a-rule"></a>Zkontroluje stav zpracování pravidla.
 
