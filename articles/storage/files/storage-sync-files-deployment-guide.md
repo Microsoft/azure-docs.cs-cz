@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 27615d1367bd0faa035e68bf9f03df05cdccfa7f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f2c8dbebce685eea67672a2b8c93d51e356ac69c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903846"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226038"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -74,19 +74,19 @@ Před dokončením kroků popsaných v tomto článku důrazně doporučujeme, a
 
    - Zvolte **Vyzkoušet** v pravém horním rohu bloku kódu. **Zkuste** otevřít Azure Cloud Shell, ale nezkopíruje automaticky kód do Cloud Shell.
 
-   - Otevřete Cloud Shell tak, že na[https://shell.azure.com](https://shell.azure.com)
+   - Otevřete Cloud Shell tak, že na [https://shell.azure.com](https://shell.azure.com)
 
    - Vyberte tlačítko **Cloud Shell** na řádku nabídek v pravém horním rohu [Azure Portal](https://portal.azure.com)
 
-1. Přihlásit se.
+1. Přihlaste se.
 
-   Přihlaste se pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) , pokud používáte místní instalaci rozhraní příkazového řádku.
+   Pokud používáte místní instalaci rozhraní příkazového řádku, přihlaste se pomocí příkazu [az login](/cli/azure/reference-index#az-login).
 
    ```azurecli
    az login
    ```
 
-    Proces ověřování dokončíte podle kroků zobrazených v terminálu.
+    Dokončete proces ověřování podle kroků zobrazených v terminálu.
 
 1. Nainstalujte rozhraní [AZ. Sync](/cli/azure/ext/storagesync/storagesync) Azure CLI Extension.
 
@@ -415,16 +415,19 @@ V podokně **Přidat koncový bod serveru** zadejte následující informace pro
 - **Cesta**: cesta k Windows serveru, která se má synchronizovat jako součást skupiny synchronizace.
 - **Vrstvení cloudu**: přepínač pro povolení nebo zakázání vrstvení cloudu. Při vrstvení cloudu se nečasto používané nebo dostupné soubory dají navrstvit na soubory Azure.
 - **Volné místo na svazku**: množství volného místa, které se má rezervovat na svazku, na kterém je umístěný koncový bod serveru. Pokud je například volné místo na svazku nastavené na 50% na svazku, který má koncový bod serveru, zhruba polovinu množství dat se navrstvená na soubory Azure. Bez ohledu na to, jestli je povolená vrstva cloudu, bude mít vaše sdílená složka Azure vždycky úplnou kopii dat ve skupině synchronizace.
+- **Režim počátečního stahování**: Jedná se o volitelný výběr, který začíná na agentovi verze 11, který může být užitečný, když jsou soubory ve sdílené složce Azure, ale ne na serveru. Taková situace může existovat například v případě, že vytvoříte koncový bod serveru pro přidání dalšího serveru firemní pobočky do skupiny synchronizace nebo když dojde k zotavení po havárii serveru, který selhal. Pokud je zapnutá vrstva cloudu, ve výchozím nastavení se jenom odvolá jenom obor názvů, ale ne žádný obsah souboru. To je užitečné, pokud se domníváte, že se spíše požadavky na přístup uživatelů musí rozhodnout, jaký obsah souboru je vrácen na server. Pokud je vrstva cloudu zakázaná, výchozí hodnota je, že se nejprve stáhne obor názvů a pak se soubory odvolají na základě naposledy upraveného časového razítka, dokud nedosáhnete místní kapacity. Režim počátečního stahování ale můžete změnit jenom na obor názvů. Třetí režim se dá použít jenom v případě, že je pro tento koncový bod serveru zakázané vrstvení cloudu. Tento režim zabrání v prvním volání oboru názvů. Soubory se zobrazí jenom na místním serveru, pokud mají možnost je úplně stáhnout. Tento režim je užitečný, pokud například aplikace vyžaduje, aby byly k dispozici úplné soubory a aby nemohly tolerovat vrstvené soubory v oboru názvů.
 
 Pokud chcete přidat koncový bod serveru, vyberte **vytvořit**. Vaše soubory jsou nyní udržovány synchronizované napříč sdílenou složkou Azure a systémem Windows Server. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Spusťte následující příkazy PowerShellu pro vytvoření koncového bodu serveru a nezapomeňte nahradit `<your-server-endpoint-path>` `<your-volume-free-space>` hodnoty a požadovanými hodnotami.
+Spusťte následující příkazy PowerShellu pro vytvoření koncového bodu serveru a nezapomeňte nahradit `<your-server-endpoint-path>` `<your-volume-free-space>` a s požadovanými hodnotami a zkontrolovat volitelná nastavení pro volitelné zásady prvotního stažení.
 
 ```powershell
 $serverEndpointPath = "<your-server-endpoint-path>"
 $cloudTieringDesired = $true
 $volumeFreeSpacePercentage = <your-volume-free-space>
+# Optional property. Choose from: [NamespaceOnly] default when cloud tiering is enabled. [NamespaceThenModifiedFiles] default when cloud tiering is disabled. [AvoidTieredFiles] only available when cloud tiering is disabled.
+$initialDownloadPolicy = NamespaceOnly
 
 if ($cloudTieringDesired) {
     # Ensure endpoint path is not the system volume
@@ -441,14 +444,16 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath `
         -CloudTiering `
-        -VolumeFreeSpacePercent $volumeFreeSpacePercentage
+        -VolumeFreeSpacePercent $volumeFreeSpacePercentage `
+        -InitialDownloadPolicy $initialDownloadPolicy
 } else {
     # Create server endpoint
     New-AzStorageSyncServerEndpoint `
         -Name $registeredServer.FriendlyName `
         -SyncGroup $syncGroup `
         -ServerResourceId $registeredServer.ResourceId `
-        -ServerLocalPath $serverEndpointPath 
+        -ServerLocalPath $serverEndpointPath `
+        -InitialDownloadPolicy $initialDownloadPolicy
 }
 ```
 
@@ -460,23 +465,24 @@ Pomocí příkazu [AZ storagesync Sync-Group Server-Endpoint](/cli/azure/ext/sto
 # Create a new sync group server endpoint 
 az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
                                                  --name myNewServerEndpointName
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0
                                                  --server-local-path d:\myPath
                                                  --storage-sync-service myStorageSyncServiceNAme
                                                  --sync-group-name mySyncGroupName
 
 # Create a new sync group server endpoint with additional optional parameters
 az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
-                                                 --name myNewServerEndpointName \
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0 \
-                                                 --server-local-path d:\myPath \
                                                  --storage-sync-service myStorageSyncServiceName \
                                                  --sync-group-name mySyncGroupName \
+                                                 --name myNewServerEndpointName \
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0 \
+                                                 --server-local-path d:\myPath \
                                                  --cloud-tiering on \
+                                                 --volume-free-space-percent 85 \
+                                                 --tier-files-older-than-days 15 \
+                                                 --initial-download-policy NamespaceOnly [OR] NamespaceThenModifiedFiles [OR] AvoidTieredFiles
                                                  --offline-data-transfer on \
                                                  --offline-data-transfer-share-name myfilesharename \
-                                                 --tier-files-older-than-days 15 \
-                                                 --volume-free-space-percent 85 \
 
 ```
 
@@ -567,6 +573,40 @@ Výchozí maximální počet snímků služby VSS na svazek (64) a také výchoz
 
 If Max. 64 snímků VSS na svazek není správné nastavení, můžete [tuto hodnotu změnit pomocí klíče registru](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
 Aby se nový limit mohl projevit, musíte rutinu znovu spustit, aby se zajistila kompatibilita předchozí verze na všech dříve povolených svazcích s příznakem-Force, který zabere nový maximální počet snímků VSS na svazek v rámci účtu. Výsledkem bude nově vypočtený počet kompatibilních dnů. Upozorňujeme, že tato změna se projeví jenom u nově vrstvených souborů a přepíše všechna vlastní nastavení plánu VSS, který jste mohli udělat.
+
+<a id="proactive-recall"></a>
+## <a name="proactively-recall-new-and-changed-files-from-an-azure-file-share"></a>Proaktivní odvolání nových a změněných souborů ze sdílené složky Azure
+
+S agentem verze 11 se nový režim bude k dispozici na koncovém bodu serveru. Tento režim umožňuje globálně distribuovaným společnostem uchovávat mezipaměť serveru ve vzdálené oblasti předem vyplněnou ještě předtím, než místní uživatelé přistupují k souborům. Pokud je tato možnost povolená na koncovém bodu serveru, tento režim způsobí, že tento server bude navracet soubory, které se vytvořily nebo změnily ve sdílené složce Azure.
+
+### <a name="scenario"></a>Scénář
+
+Globálně distribuovaná společnost obsahuje pobočky v USA a v Indii. V dopoledne (čas USA) si pracovní procesy vytvoří novou složku a nové soubory pro úplně nový projekt a budou na něm fungovat celý den. Azure File Sync bude synchronizovat složku a soubory do sdílené složky Azure (koncový bod cloudu). Informační pracovníci v Indii budou v tomto časovém pásmu pokračovat v práci na projektu. Po doručení do ráno musí místní server Azure File Sync, v Indii, mít tyto nové soubory místně k dispozici, aby tým Indie mohl efektivně pracovat s místní mezipamětí. Povolením tohoto režimu zabráníte, aby byl počáteční přístup k souborům pomalejší z důvodu odvolání na vyžádání a aby server mohl znovu aktivovat soubory ihned po změně nebo vytvoření ve sdílené složce Azure.
+
+> [!IMPORTANT]
+> Je důležité si uvědomit, že sledování změn ve sdílené složce Azure, které úzce na serveru, můžou zvýšit váš výstupní provoz a vysílat z Azure. Pokud se soubory, které jsou na serveru znovu navolají, nejsou ve skutečnosti potřeba v místním prostředí, může mít zbytečné odvolání serveru negativní následky. Tento režim použijte, pokud víte, že před vyplněním mezipaměti na serveru s nedávnými změnami v cloudu bude mít pozitivní vliv na uživatele nebo aplikace používající soubory na tomto serveru.
+
+### <a name="enable-a-server-endpoint-to-proactively-recall-what-changed-in-an-azure-file-share"></a>Povolení koncovému bodu serveru proaktivní odvolání toho, co se změnilo ve sdílené složce Azure
+
+# <a name="portal"></a>[Azure Portal](#tab/proactive-portal)
+
+1. V [Azure Portal](https://portal.azure.com/)otevřete službu synchronizace úložiště, vyberte správnou skupinu synchronizace a pak Identifikujte koncový bod serveru, pro který chcete pečlivě sledovat změny ve sdílené složce Azure (koncový bod cloudu).
+1. V části vrstvení cloudu vyhledejte téma "stažení sdílené složky Azure". Zobrazí se aktuálně vybraný režim a může ho změnit, aby bylo možné sledovat změny sdílené složky Azure podrobněji a proaktivně je znovu vyvolat na server.
+
+:::image type="content" source="media/storage-sync-files-deployment-guide/proactive-download.png" alt-text="Obrázek znázorňující chování stahování sdílené složky Azure pro aktuálně platný koncový bod serveru a tlačítko pro otevření nabídky, která umožňuje ji změnit.":::
+
+# <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
+
+Vlastnosti koncového bodu serveru můžete upravit v PowerShellu pomocí rutiny [set-AzStorageSyncServerEndpoint](https://docs.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) .
+
+```powershell
+# Optional parameter. Default: "UpdateLocallyCachedFiles", alternative behavior: "DownloadNewAndModifiedFiles"
+$recallBehavior = "DownloadNewAndModifiedFiles"
+
+Set-AzStorageSyncServerEndpoint -InputObject <PSServerEndpoint> -LocalCacheMode $recallBehavior
+```
+
+---
 
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>Migrace nasazení Replikace DFS (DFS-R) do Azure File Sync
 Migrace nasazení systému souborů DFS-R na Azure File Sync:

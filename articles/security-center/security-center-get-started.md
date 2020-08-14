@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: f16df87ca72b66003d8870dcd9d778616ea840d4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 550c9ff57b9c558f2f175165c7f06ead45991be9
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038541"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226004"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Rychlý start: Připojení předplatného Azure ke službě Security Center úrovně Standard
 Azure Security Center zajišťuje jednotnou správu zabezpečení a ochranu před hrozbami napříč vašimi hybridními cloudovými úlohami. I když úroveň Free nabízí jenom omezené zabezpečení pro vaše prostředky Azure, úroveň Standard tyto možnosti rozšiřuje na místní a jiné cloudy. Security Center úrovně Standard pomáhá vyhledávat a opravovat ohrožení zabezpečení, blokovat škodlivou aktivitu pomocí ovládacích prvků přístupu a aplikací, detekovat hrozby s využitím analýz a inteligentních funkcí a rychle reagovat v případě útoku. Můžete vyzkoušet Security Center Standard bez jakýchkoli nákladů. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 V tomto článku provedete upgrade na úroveň Standard pro zvýšení zabezpečení a nainstalujete agenta Log Analytics na virtuální počítače, abyste mohli monitorovat ohrožení zabezpečení a hrozby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 Pokud chcete upgradovat předplatné na úroveň Standard, musíte mít přiřazenou roli Vlastník předplatného, přispěvatele předplatného nebo správce zabezpečení.
@@ -34,7 +34,8 @@ Pokud chcete upgradovat předplatné na úroveň Standard, musíte mít přiřaz
 ## <a name="enable-your-azure-subscription"></a>Povolení předplatného Azure
 
 1. Přihlaste se k webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
-2. V nabídce **Microsoft Azure** vyberte možnost **Security Center**. **Security Center –** zobrazí se přehled.
+
+1. V nabídce **Microsoft Azure** vyberte možnost **Security Center**. **Security Center –** zobrazí se přehled.
 
    ![Přehled služby Security Center][2]
 
@@ -49,21 +50,25 @@ Během několika minut od prvního spuštění služby Security Center se může
 
 Abyste mohli plně využít výhod Security Center, musíte provést následující kroky, abyste upgradovali na úroveň Standard a nainstalovali agenta Log Analytics.
 
-## <a name="upgrade-to-the-standard-pricing-tier"></a>Upgrade na cenovou úroveň Standard
-Pro účely Security Center rychlých startů a kurzů musíte upgradovat na úroveň Standard. K dispozici je bezplatná zkušební verze Security Center Standard. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). 
 
-1. V hlavní nabídce služby Security Center vyberte **Začínáme**.
+## <a name="upgrade-to-the-standard-tier"></a>Upgrade na úroveň Standard
+
+Pro účely rychlých startů a kurzů pro službu Security Center musíte provést upgrade na úroveň Standard. K dispozici je bezplatná zkušební verze Security Center Standard. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). 
+
+1. Z bočního panelu Security Center vyberte **Začínáme**.
  
-   ![Začínáme][4]
+   ![Začínáme](./media/security-center-get-started/get-started-upgrade-tab.png)
 
-2. V části **Upgrade** zobrazí Security Center seznam předplatných a pracovních prostorů, ke kterým se můžete připojit. 
-   - Po kliknutí na **Využít zkušební verzi** se zobrazí seznam všech předplatných a pracovních prostorů, které jsou ve stavu bezplatné zkušební verze.
-   -    Předplatná a pracovní prostory, které si nemůžete zdarma vyzkoušet, můžete upgradovat.
-   -    V bezplatné zkušební verzi můžete začít používat vybrané pracovní prostory a předplatná.
-3. Pokud chcete začít používat zkušební verzi vybraných předplatných, klikněte na **Zahájit zkušební období**.
+    Karta **upgrade** obsahuje seznam předplatných a pracovních prostorů, které mají nárok na registraci.
+
+1. V seznamu **vybrat pracovní prostory pro povolení úrovně Standard** vyberte pracovní prostory, které chcete upgradovat.
 
 
-  ![Výstrahy zabezpečení][9]
+    > [!TIP]
+    > Pokud vyberete pracovní prostor, který má nárok na bezplatnou zkušební verzi, bude další krok začínat zkušební verzí. Pokud pracovní prostory nemají nárok na zkušební verzi, budou upgradovány a začnou platit poplatky.
+
+1. Vyberte **upgradovat** a upgradujte vybrané pracovní prostory na úroveň Standard.
+
 
 ## <a name="automate-data-collection"></a>Automatizace shromažďování dat
 Security Center shromažďuje data z vašich virtuálních počítačů Azure a počítačů umístěných mimo Azure za účelem monitorování ohrožení zabezpečení a hrozeb. Data se shromažďují pomocí Log Analytics agenta, který čte různé konfigurace a protokoly událostí související se zabezpečením z počítače a kopíruje data do pracovního prostoru pro účely analýzy. Ve výchozím nastavení pro vás Security Center vytvoří nový pracovní prostor.
@@ -73,9 +78,9 @@ Když je povolené Automatické zřizování, Security Center nainstaluje agenta
 Povolení automatického zřizování agenta Log Analytics:
 
 1. V hlavní nabídce Security Center vyberte **cenové & nastavení**.
-2. Na řádku předplatného klikněte na předplatné, pro které chcete změnit nastavení.
-3. Na kartě **Shromažďování dat** nastavte **Automatické zřizování** na **Zapnuto**.
-4. Vyberte **Uložit**.
+1. Na řádku předplatného klikněte na předplatné, pro které chcete změnit nastavení.
+1. Na kartě **Shromažďování dat** nastavte **Automatické zřizování** na **Zapnuto**.
+1. Vyberte **Uložit**.
 ---
   ![Povolení automatického zřizování][6]
 

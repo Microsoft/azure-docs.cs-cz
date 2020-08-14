@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/31/2020
+ms.date: 08/13/2020
 ms.author: juliako
-ms.openlocfilehash: 032a3c719610d658ec32492033a04a610117643d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4f0e8822d734d3c1147eb6d5cbbc8f26a7410a01
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489771"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224063"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamické balení v Media Services V3
 
@@ -80,8 +80,10 @@ Váš klient streamování může určit následující formáty Smooth Streamin
 
 Následující kroky ukazují běžný pracovní postup streamování Media Services, kde se používá dynamické balení spolu se standardním kodérem v Azure Media Services.
 
-1. Nahrání vstupního souboru, jako je soubor QuickTime/MOV nebo MXF. Tento soubor se také označuje jako Mezzanine nebo zdrojový soubor. Seznam podporovaných formátů najdete v tématu [formáty podporované kodérem Standard](media-encoder-standard-formats.md).
+1. [Nahrajte vstupní soubor](manage-asset-concept.md) , jako je MP4, QuickTime nebo MOV, nebo jiný podporovaný formát souboru. Tento soubor se také označuje jako Mezzanine nebo zdrojový soubor. Seznam podporovaných formátů najdete v tématu [formáty podporované kodérem Standard](media-encoder-standard-formats.md).
 1. [Zakódovat](#encode-to-adaptive-bitrate-mp4s) soubor Mezzanine do sady H. 264/AAC MP4 s adaptivní přenosovou rychlostí.
+
+    Pokud již máte kódované soubory a chcete soubory pouze zkopírovat a streamovat, použijte rozhraní API: [CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) a [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio) . V důsledku toho se vytvoří nový soubor MP4 s manifestem streamování (soubor. ISM).
 1. Publikujte výstupní Asset, který obsahuje sadu MP4 s adaptivní přenosovou rychlostí. Publikujete vytvořením [lokátoru streamování](streaming-locators-concept.md).
 1. Vytvářejte adresy URL, které cílí na různé formáty (HLS, MPEG-POMLČKa a Smooth Streaming). *Koncový bod streamování* by postaral o poskytování správného manifestu a požadavků pro všechny tyto různé formáty.
     

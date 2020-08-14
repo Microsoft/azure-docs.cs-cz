@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: a045ef0fea70347f168e8ae0cc93e0c359f31dfa
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 43bc278ea3cbd14690f1a9ac9263872536b5b174
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031114"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224777"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrovat rozšíření vazby Azure Functions
 
@@ -31,7 +31,7 @@ Následující tabulka uvádí, kdy a jak registrovat vazby.
 |Knihovna tříd C# s využitím sady Visual Studio|[Použití nástrojů NuGet](#vs)|[Použití nástrojů NuGet](#vs)|
 |Knihovna tříd C# pomocí Visual Studio Code|–|[Použít .NET Core CLI](#vs-code)|
 
-<sup>*</sup>Portál používá sady rozšíření.
+<sup>*</sup> Portál používá sady rozšíření.
 
 ## <a name="extension-bundles"></a><a name="extension-bundles"></a>Sady rozšíření
 
@@ -53,7 +53,7 @@ Pokud chcete použít sady rozšíření, aktualizujte *host.jsv* souboru tak, a
 
 ## <a name="nuget-packages"></a><a name="local-csharp"></a>Balíčky NuGet
 
-Pro projekt funkcí založených na knihovně jazyka C# byste měli instalovat sady rozšíření určené speciálně pro projekty, které nejsou třídy. 
+Pro projekt funkcí založených na knihovně jazyka C# byste měli nainstalovat rozšíření přímo. Sady rozšíření jsou určeny konkrétně pro projekty, které nejsou založené na knihovně C# třídy.
 
 ### <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>\#Knihovna tříd C se sadou Visual Studio
 
@@ -69,7 +69,7 @@ Název balíčku, který se používá pro danou vazbu, je uveden v referenční
 
 Pokud používáte `Install-Package` pro odkazování na vazbu, nemusíte používat [sady rozšíření](#extension-bundles). Tento přístup je specifický pro knihovny tříd sestavené v aplikaci Visual Studio.
 
-## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a>Knihovna tříd C# s Visual Studio Code
+## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> Knihovna tříd C# s Visual Studio Code
 
 V **Visual Studio Code**nainstalujte balíčky pro projekt knihovny tříd jazyka C# z příkazového řádku pomocí příkazu [dotnet add Package](/dotnet/core/tools/dotnet-add-package) v .NET Core CLI. Následující příklad ukazuje, jak přidat vazbu:
 

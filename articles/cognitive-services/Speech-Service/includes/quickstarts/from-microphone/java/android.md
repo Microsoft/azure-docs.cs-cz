@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 2641464e52b80c59b6c6b5a123ad1605c1d41495
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 5832920ec491ce9d99219a7a423fcf0e38ba62cc
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81275154"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226106"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -58,15 +58,15 @@ Text a grafická reprezentace vašeho uživatelského rozhraní by teď měla vy
 
 1. Ve stejném souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného.
 
-1. Nahraďte řetězec `YourServiceRegion` také **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) přidružené k vašemu předplatnému. Použijte `westus` například pro předplatné bezplatné zkušební verze.
+1. Nahraďte řetězec také `YourServiceRegion` **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) přidružené k vašemu předplatnému.
 
-## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
+## <a name="build-and-run-the-app"></a>Sestavte a spusťte aplikaci.
 
 1. Připojte k vývojovému počítači zařízení s Androidem. Ujistěte se, že jste na zařízení povolili [režim vývoje a ladění USB](https://developer.android.com/studio/debug/dev-options) .
 
-1. Chcete-li sestavit aplikaci, vyberte kombinaci kláves CTRL + F9 nebo z panelu nabídek vyberte možnost **sestavit** > **projekt** .
+1. Chcete-li sestavit aplikaci, vyberte kombinaci kláves CTRL + F9 nebo z panelu nabídek vyberte možnost **sestavit**  >  **projekt** .
 
-1. Pokud chcete aplikaci spustit, vyberte SHIFT + F10 nebo vyberte **Spustit** > **běh aplikace**.
+1. Pokud chcete aplikaci spustit, vyberte SHIFT + F10 nebo vyberte **Spustit**  >  **běh aplikace**.
 
 1. V okně cíl nasazení, které se zobrazí, vyberte své zařízení s Androidem.
 

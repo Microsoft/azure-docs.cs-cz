@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 594a47f397ca78476ed987ac0e06a3cacc79ec3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5878ea6a554439c261399706eec708b06ed59b11
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319894"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225362"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problémy a řešení během certifikace virtuálních počítačů 
 
@@ -294,7 +294,7 @@ Pokud se mají znovu použít všechny image z Azure Marketplace, musí být vir
 
 * Pro **Linux**následující proces GENERALIZUJE virtuální počítač Linux a znovu ho nasadí jako samostatný virtuální počítač.
 
-  V okně SSH zadejte následující příkaz:`sudo waagent -deprovision+user`
+  V okně SSH zadejte následující příkaz: `sudo waagent -deprovision+user`
 
 * Pro **Windows**můžete zobecnit bitové kopie systému Windows pomocí nástroje `sysreptool` .
 
@@ -314,6 +314,57 @@ Pro řešení chyb souvisejících s datovým diskem použijte následující ta
 Pokud v imagi Windows není povolená možnost protokol RDP (Remote Desktop Protocol) (RDP), zobrazí se tato chyba. 
 
 Než je odešlete, povolte přístup k protokolu RDP pro image Windows.
+
+## <a name="bash-history-failed"></a>Nepovedlo se Bashovat historii
+
+Tato chyba se zobrazí, pokud je velikost historie bash v odeslaném obrázku větší než 1 kilobajt (KB). Velikost je omezená na 1 KB, aby se zajistilo, že v souboru historie bash nejsou zachyceny žádné potenciálně citlivé informace.
+
+Níže jsou uvedené kroky, jak odstranit historii bash.
+
+Krok 1. Nasaďte virtuální počítač a klikněte na možnost spustit příkaz na Azure Portal.
+![Spustit příkaz na Azure Portal](./media/vm-certification-issues-solutions-3.png)
+
+Krok 2. Vyberte první možnost "RunShellScript" a spusťte následující příkaz.
+
+Příkaz: CAT/dev/null > ~/. bash_history && History-c " ![ bash historie příkazu on Azure Portal](./media/vm-certification-issues-solutions-4.png)
+
+Krok 3. Po úspěšném provedení příkazu restartujte virtuální počítač.
+
+Krok 4: Generalizujte virtuální počítač, povezměte virtuální pevný disk image a zastavte virtuální počítač.
+
+Krok 5.     Znovu odešlete zobecněnou bitovou kopii.
+
+## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>Požadavky na výjimky (vlastní šablony) na image virtuálních počítačů pro selektivní testy
+
+Vydavatelé se můžou obrátit na žádosti o výjimky pro několik testů provedených během certifikace virtuálního počítače. Výjimky jsou k dispozici ve výjimečných případech, pokud Vydavatel poskytuje důkaz pro podporu žádosti.
+Certifikační tým si vyhrazuje právo odepřít nebo schválit výjimky v jakémkoli okamžiku.
+
+V následujících částech budeme pohovořit o hlavních scénářích, kde jsou požadovány výjimky a jak vyžádat výjimku.
+
+Scénáře pro výjimku
+
+Existují tři scénáře/případy, kdy vydavatel obecně požadují tyto výjimky. 
+
+* **Výjimka pro jeden nebo více testovacích případů:** Vydavatelé se můžou spojit s výjimkami žádosti o [podporu vydavatele na Marketplace](https://aka.ms/marketplacepublishersupport) pro testovací případy. 
+
+* **Zamčené virtuální počítače/žádný kořenový přístup:** Někteří vydavatelé mají scénáře, kdy je potřeba, aby virtuální počítače byly uzamčené, protože mají na virtuálním počítači nainstalovaný software, jako jsou třeba brány firewall. 
+       V takovém případě mohou vydavatelé stáhnout [Nástroj certifikovaný test](https://aka.ms/AzureCertificationTestTool) a poskytnout zprávu na [webu Marketplace podpora vydavatelů](https://aka.ms/marketplacepublishersupport) .
+
+
+* **Vlastní šablony:** Někteří vydavatelé publikují image virtuálních počítačů, které pro nasazení virtuálních počítačů vyžadují vlastní šablonu ARM. V takovém případě se vydavatelé požadují, aby poskytovali vlastní šablony v rámci [podpory vydavatele na webu Marketplace](https://aka.ms/marketplacepublishersupport) , aby je bylo možné používat certifikační tým pro ověřování. 
+
+### <a name="information-to-provide-for-exception-scenarios"></a>Informace, které je potřeba poskytnout pro scénáře výjimek
+
+Vydavatelé se musí obrátit na podporu [vydavatele na webu Marketplace](https://aka.ms/marketplacepublishersupport) , který požaduje výjimky pro výše uvedený scénář, a další následující informace:
+
+   1.   ID vydavatele – ID vydavatele na portálu partnerského centra
+   2.   ID nabídky/název – ID nabídky/název, pro který se požaduje výjimka 
+   3.   ID SKU/plánu – ID/SKU nabídky virtuálních počítačů, pro které se požaduje výjimka
+   4.    Verze – verze nabídky virtuálních počítačů, pro kterou je požadována výjimka
+   5.   Typ výjimky – testy, uzamčený virtuální počítač, vlastní šablony
+   6.   Důvod žádosti – důvod pro tuto výjimku a informace o testech, které mají být vyloučeny 
+   7.   Příloha – připojte všechny dokumenty legitimace podle důležitosti. Pro zamčené virtuální počítače připojte testovací sestavu a pro vlastní šablony zadejte vlastní šablonu ARM jako přílohu. Nepovedlo se připojit sestavu pro zamčené virtuální počítače a vlastní šablonu ARM pro vlastní šablony. výsledkem bude odepření žádosti.
+
 
 ## <a name="next-steps"></a>Další kroky
 

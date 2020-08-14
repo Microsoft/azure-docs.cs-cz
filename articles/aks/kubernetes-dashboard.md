@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 69e60c3e4ac91a5d0ca9a0245dc61f090c625c60
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 35424c0a9e566a9dfa780c524e23945348335040
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499857"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225984"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Přístup k webovému řídicímu panelu Kubernetes ve službě Azure Kubernetes (AKS)
 
@@ -20,7 +20,7 @@ Kubernetes zahrnuje webový řídicí panel, který se dá použít pro základn
 Další informace o řídicím panelu Kubernetes najdete v tématu [řídicí panel webového uživatelského rozhraní Kubernetes][kubernetes-dashboard]. AKS používá verzi 2,0 a větší z open source řídicího panelu.
 
 > [!WARNING]
-> **Doplněk řídicího panelu AKS je nastaven pro vyřazení.** 
+> **Doplněk řídicího panelu AKS je nastaven pro vyřazení. Místo toho použijte [zobrazení prostředků Kubernetes v Azure Portal (Preview)][kubernetes-portal] .** 
 > * Řídicí panel Kubernetes je ve výchozím nastavení povolen pro clustery se systémem Kubernetes verze nižší než 1,18.
 > * Doplněk řídicího panelu bude ve výchozím nastavení zakázán pro všechny nové clustery vytvořené v Kubernetes 1,18 nebo novějším. 
  > * AKS ve verzi Preview od verze Kubernetes 1,19 už nebude podporovat instalaci spravovaného doplňku Kube-Dashboard. 
@@ -54,8 +54,8 @@ Tento příkaz vytvoří proxy server mezi vývojovým systémem a rozhraním AP
 
 > [!NOTE]
 > Pokud řídicí panel nevidíte na `http://127.0.0.1:8001` , můžete ručně směrovat na následující adresy. Clustery na 1,16 nebo více použití HTTPS a vyžadují samostatný koncový bod.
-> * K8s 1,16 nebo vyšší:`http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
-> * K8s 1,15 a nižší:`http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
+> * K8s 1,16 nebo vyšší: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
+> * K8s 1,15 a nižší: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
@@ -117,7 +117,7 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 
 Pro clustery s podporou Azure AD i mimo Azure AD se dá kubeconfig předat. Zajistěte, aby byly tokeny přístupu platné, pokud vypršela platnost tokenů, můžete tokeny aktualizovat prostřednictvím kubectl.
 
-1. Nastavte kubeconfig správce na`az aks get-credentials -a --resource-group <RG_NAME> --name <CLUSTER_NAME>`
+1. Nastavte kubeconfig správce na `az aks get-credentials -a --resource-group <RG_NAME> --name <CLUSTER_NAME>`
 1. Výběrem `Kubeconfig` a kliknutím `Choose kubeconfig file` Otevřete selektor souborů.
 1. Vyberte soubor kubeconfig (výchozí nastavení $HOME/.Kube/config).
 1. Klikněte na `Sign In`.
@@ -209,3 +209,4 @@ Další informace o řídicím panelu Kubernetes najdete na [řídicím panelu w
 [az-aks-browse]: /cli/azure/aks#az-aks-browse
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [install-azure-cli]: /cli/azure/install-azure-cli
+[kubernetes-portal]: ./kubernetes-portal.md

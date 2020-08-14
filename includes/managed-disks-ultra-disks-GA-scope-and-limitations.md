@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: aa9327bd0ba6763aa4e89630611aabb3c5195655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 546c21802d275fe99ed2acbf00e32d37db3603f2
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85448702"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225188"
 ---
 V současnosti mají extrémně disky další omezení, jsou následující:
 
@@ -26,23 +26,32 @@ V následující tabulce jsou popsány oblasti Ultra disks jsou k dispozici v n�
 
 |Oblasti  |Počet zón dostupnosti podporujících extrémně disky  |
 |---------|---------|
-|USA (Gov) – Virginia     |Žádná         |
-|USA – středojih     |Žádná         |
-|USA – střed     |Tři zóny         |
-|USA – západ     |Žádná         |
-|USA – západ 2    |Tři zóny         |
-|USA – východ     |Tři zóny         |
-|USA – východ 2     |Dvě zóny         |
+|USA (Gov) – Virginia     |Žádné         |
+|USA (Gov) – Arizona     |Žádné         |
+|Středojižní USA     |Žádné         |
+|Střední USA     |Tři zóny         |
+|USA – západ     |Žádné         |
+|Západní USA 2    |Tři zóny         |
+|East US     |Tři zóny         |
+|USA – východ 2     |Tři zóny         |
 |Jihovýchodní Asie     |Tři zóny         |
+|Východní Asie     |Žádné         |
 |Severní Evropa     |Tři zóny          |
-|Západní Evropa     |Tři zóny          |
+|West Europe     |Tři zóny          |
 |Spojené království – jih     |Tři zóny          |
-|Japonsko – východ     |Dvě zóny         |
+|Japan East     |Tři zóny         |
 |Francie – střed    |Dvě zóny        |
+|Brazil South    |Žádné        |
+|Austrálie – východ    |Tři zóny        |
+|Kanada – střed *    |Tři zóny        |
 
+\* Pokud chcete získat přístup k Zóny dostupnosti pro tuto oblast, obraťte se na podporu Azure.
 
 - Podporují se jenom na následujících řadách virtuálních počítačů:
     - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)
+    - [Easv4](../articles/virtual-machines/eav4-easv4-series.md#easv4-series)
+    - [Edsv4](../articles/virtual-machines/edv4-edsv4-series.md#edsv4-series)
+    - [Esv4](../articles/virtual-machines/ev4-esv4-series.md#esv4-series)
     - [DSv3](../articles/virtual-machines/dv3-dsv3-series.md#dsv3-series)
     - [FSv2](../articles/virtual-machines/fsv2-series.md)
     - [LSv2](../articles/virtual-machines/lsv2-series.md)

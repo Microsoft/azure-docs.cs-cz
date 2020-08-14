@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: f1e3598f2a805dfc2ebf92395db6b7bf6b0b147a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e8aabcd1c68272a78b3c1fe88913c5a62496f681
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494679"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225831"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Kopírování obrázku z jiné galerie pomocí Azure CLI
 
@@ -154,7 +154,7 @@ az sig image-version create \
 > [!NOTE]
 > Aby bylo možné použít stejnou spravovanou bitovou kopii k vytvoření jiné verze bitové kopie, je třeba počkat na dokončení sestavení a repliky verze image.
 >
-> Image můžete ukládat do úložiště Premiun přidáním `--storage-account-type  premium_lrs` nebo [redundantním úložištěm zóny](../storage/common/storage-redundancy.md) přidáním `--storage-account-type  standard_zrs` při vytváření verze image.
+> Image můžete ukládat do služby Premium Storage tím, že přidáte `--storage-account-type  premium_lrs` nebo zadáte [redundantní úložiště do zóny](../storage/common/storage-redundancy.md) , a to přidáním, `--storage-account-type  standard_zrs` Když vytvoříte verzi image.
 >
 
 ## <a name="next-steps"></a>Další kroky

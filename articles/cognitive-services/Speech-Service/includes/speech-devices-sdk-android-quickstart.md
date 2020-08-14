@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: abc9a42c7ced6a71f93c00968eb825f28f720843
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dc027d034c50b49044f4a350fe4d239c18060fc7
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374717"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226564"
 ---
 V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Android vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](../conversation-transcription-service.md) .
 
-Tato příručka vyžaduje účet [Azure Cognitive Services](../get-started.md) s prostředkem služby Speech. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
+Tato příručka vyžaduje účet [Azure Cognitive Services](../get-started.md) s prostředkem služby Speech.
 
 Zdrojový kód ukázkové aplikace je součástí sady Speech Devices SDK. Je také [k dispozici na GitHubu](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
@@ -126,7 +126,7 @@ Chcete-li ověřit nastavení vývojové sady, sestavte a nainstalujte ukázkovo
 
    Chcete-li použít nové klíčové slovo, aktualizujte následující dva řádky v `MainActivity.java` a zkopírujte balíček klíčových slov do aplikace. Například pro použití klíčového slova ' Machine ' z kws-machine.zip balíčku klíčového slova:
 
-   - Zkopírujte balíček s klíčovým slovem do složky "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\".
+   - Zkopírujte balíček s klíčovým slovem do složky "C:\SDSDK\Android-Sample-Release\example\app\src\main\assets \" .
    - Aktualizujte `MainActivity.java` klíčové slovo pomocí klíčového slova a názvu balíčku:
 
      ```java
@@ -145,12 +145,12 @@ Chcete-li ověřit nastavení vývojové sady, sestavte a nainstalujte ukázkovo
 
    | Proměnná | Význam | Dostupné hodnoty |
    | -------- | ------- | ---------------- |
-   | `DeviceGeometry` | Konfigurace fyzického mikrofonu | Pro kruhovou sadu dev Kit:`Circular6+1` |
-   |          |         | Pro lineární sadu dev Kit:`Linear4` |
-   | `SelectedGeometry` | Konfigurace softwaru MIC | Pro kruhovou sadu pro vývoj, která používá všechny mics:`Circular6+1` |
-   |          |         | Pro kruhovou sadu pro vývoj, která používá čtyři mics:`Circular3+1` |
-   |          |         | Pro lineární vývojovou sadu, která používá všechny mics:`Linear4` |
-   |          |         | Pro lineární vývojovou sadu, která používá dvě mics:`Linear2` |
+   | `DeviceGeometry` | Konfigurace fyzického mikrofonu | Pro kruhovou sadu dev Kit: `Circular6+1` |
+   |          |         | Pro lineární sadu dev Kit: `Linear4` |
+   | `SelectedGeometry` | Konfigurace softwaru MIC | Pro kruhovou sadu pro vývoj, která používá všechny mics: `Circular6+1` |
+   |          |         | Pro kruhovou sadu pro vývoj, která používá čtyři mics: `Circular3+1` |
+   |          |         | Pro lineární vývojovou sadu, která používá všechny mics: `Linear4` |
+   |          |         | Pro lineární vývojovou sadu, která používá dvě mics: `Linear2` |
 
 1. Aplikaci vytvoříte tak, že v nabídce **Spustit** vyberete **Spustit aplikaci**. Zobrazí se dialogové okno **vybrat cíl nasazení** .
 

@@ -5,23 +5,23 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/9/2020
-ms.openlocfilehash: 7ded54e0116e6c6e58c0ca8019942dfaaaa88480
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 8/13/2020
+ms.openlocfilehash: cb785a6d988772ba160806621e44900d630b7e61
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954190"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225712"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB cenové úrovně
 
 Server Azure Database for MariaDB můžete vytvořit v jedné ze tří různých cenových úrovní: optimalizováno Basic, Pro obecné účely a paměť. Cenové úrovně jsou rozlišené o množství výpočtů v virtuální jádra, které se dá zřídit, paměť na vCore a technologie úložiště, která se používá k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru MariaDB. Server může mít jednu nebo více databází.
 
-| Prostředek | **Základní** | **Pro obecné účely** | **Paměťově optimalizovaná** |
+| Prostředek | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
 | Generování výpočtů | Gen 5 |Gen 5 | Gen 5 |
 | Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
-| Paměť na vCore | 2 GB | 5 GB | 10 GB |
+| Paměť na vCore | 2 GB | 5 GB | 10 GB |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
 | Doba uchování zálohy databáze | 7 až 35 dní | 7 až 35 dní | 7 až 35 dní |
 
@@ -47,7 +47,7 @@ Výpočetní prostředky se poskytují jako virtuální jádra, což představuj
 |:---|:----------|:--------------------|:---------------------|
 | Typ úložiště | Základní úložiště | Pro obecné účely úložiště | Pro obecné účely úložiště |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
-| Velikost přírůstku úložiště | 1 GB | 1 GB | 1 GB |
+| Velikost přírůstku úložiště | 1 GB | 1 GB | 1 GB |
 | IOPS | Proměnná |3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 6000 IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 6000 IOPS |
 
 Můžete přidat další úložnou kapacitu během a po vytvoření serveru a nechat systém, aby automaticky rozšiřoval úložiště na základě spotřeby úložiště vašich úloh.
@@ -67,7 +67,7 @@ Zvýšili jsme limity úložiště v našich Pro obecné účely a paměťově o
 |:-------------|:--------------------|:---------------------|
 | Typ úložiště | Premium Storage Azure | Premium Storage Azure |
 | Velikost úložiště | 32 GB až 16 TB| 32 až 16 TB |
-| Velikost přírůstku úložiště | 1 GB | 1 GB |
+| Velikost přírůstku úložiště | 1 GB | 1 GB |
 | IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS| 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS |
 
 > [!IMPORTANT]
@@ -93,13 +93,11 @@ Mějte na paměti, že úložiště je možné škálovat pouze nahoru, ne dolů
 
 ## <a name="backup"></a>Backup
 
-Služba automaticky provede zálohování vašeho serveru. Můžete vybrat dobu uchování z rozsahu 7 až 35 dní. Pro obecné účely a paměťově optimalizované servery se můžou rozhodnout pro zálohování geograficky redundantního úložiště. Další informace o zálohách [najdete v článku koncepty](concepts-backup.md).
+Azure Database for MariaDB poskytuje úložiště zřízeného serveru jako úložiště pro zálohování až 100%, a to bez dalších nákladů. Jakékoli úložiště záloh, které využijete, se nad rámec této částky účtuje za GB za měsíc. Pokud například zřídíte Server s 250 GB úložiště, budete mít k dispozici až 250 GB dalších úložiště pro zálohy serveru zdarma. Úložiště pro zálohy převyšující 250 GB se účtuje podle [cenového modelu](https://azure.microsoft.com/pricing/details/mariadb/). Pokud chcete pochopit faktory ovlivňující využití úložiště záloh, monitorování a řízení nákladů na úložiště zálohování, můžete se podívat na [dokumentaci k zálohování](concepts-backup.md).
 
 ## <a name="scale-resources"></a>Škálování prostředků
 
 Po vytvoření serveru můžete nezávisle změnit virtuální jádra, cenovou úroveň (s výjimkou a od úrovně Basic), velikost úložiště a dobu uchování zálohy. Po vytvoření serveru nejde typ úložiště zálohy změnit. Počet virtuální jádra se dá škálovat nahoru nebo dolů. Doba uchovávání záloh se dá škálovat nahoru nebo dolů od 7 do 35 dnů. Velikost úložiště se dá zvýšit jenom. Škálování prostředků se dá provést buď prostřednictvím portálu, nebo pomocí Azure CLI. 
-
-<!--For an example of scaling by using Azure CLI, see [Monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->
 
 Když změníte počet virtuální jádra nebo cenovou úroveň, vytvoří se kopie původního serveru s novým přidělením výpočtů. Po zprovoznění nového serveru se připojení přepnou na nový server. Během přepínání systému na nový server není možné navazovat nová připojení a všechny nepotvrzené transakce se vrátí zpět. Tento časový interval je různý, ale ve většině případů je kratší než minuta.
 
@@ -112,6 +110,3 @@ Nejaktuálnější informace o cenách najdete na [stránce s cenami](https://az
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si o [omezeních služeb](concepts-limits.md).
 - Naučte se [vytvářet MariaDB Server v Azure Portal](quickstart-create-mariadb-server-database-using-azure-portal.md).
-
-<!--
-- Learn how to [monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->

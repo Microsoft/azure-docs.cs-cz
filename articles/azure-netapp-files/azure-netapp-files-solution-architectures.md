@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 48e3f895fb123429f1bedd106bd92113533c84ae
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 8ed9f6565da55d3ffbe522bbdf404265c487f67c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055798"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225610"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury řešení s využitím Azure NetApp Files
 Tento článek poskytuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití Azure NetApp Files.  
@@ -85,6 +85,7 @@ V této části najdete odkazy na řešení infrastruktury virtuálních klients
 
 ### <a name="windows-virtual-desktop"></a>Windows Virtual Desktop
 
+* [Použití virtuálního počítače s Windows s Azure NetApp Files](solutions-windows-virtual-desktop.md)
 * [Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
 * [Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
 * [Virtuální plocha Windows na podnikové úrovni](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)

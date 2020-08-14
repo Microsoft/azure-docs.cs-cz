@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 951ae2c48bcdd92f640a37ddbb6430ca62a3b816
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e2302c92cf723b1ab28611d46769290ed54df43c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81274822"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226579"
 ---
 > [!NOTE]
 > Sada Speech SDK for Unity podporuje Desktop Windows (x86 a x64) nebo Univerzální platforma Windows (x86, x64, ARM/ARM64), Android (x86, ARM32/64) a iOS (simulátor x64, ARM32 a ARM64).
@@ -32,10 +32,10 @@ Pokud jste to již provedli, Skvělé. Pojďme pokračovat.
 
 ## <a name="create-a-unity-project"></a>Vytvoření projektu Unity
 
-1. Otevřete Unity. Pokud používáte Unity poprvé, zobrazí se okno **centrum** *<version number>* Unity. (K tomuto oknu se dostanete také tak, že můžete otevřít centrum Unity přímo.)
+1. Otevřete Unity. Pokud používáte Unity poprvé, zobrazí se okno **centrum Unity** *<version number>* . (K tomuto oknu se dostanete také tak, že můžete otevřít centrum Unity přímo.)
 
    [![Okno centra Unity](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-hub.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-hub.png#lightbox)
-1. Vyberte **Nový**. Zobrazí se okno **vytvořit nový projekt s Unity** *<version number>* .
+1. Vyberte **Nové**. Zobrazí se okno **vytvořit nový projekt s Unity** *<version number>* .
 
    [![Vytvořit nový projekt v centru Unity](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-create-a-new-project.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-create-a-new-project.png#lightbox)
 1. Do **název projektu**zadejte **CSharp-Unity**.
@@ -51,7 +51,7 @@ Po uplynutí časového intervalu se zobrazí okno Editor Unity.
 
 Nyní přidáme k naší scéně minimální uživatelské rozhraní. Toto uživatelské rozhraní se skládá z tlačítka pro aktivaci rozpoznávání řeči a textového pole, které zobrazí výsledek. V okně [ **hierarchie** ](https://docs.unity3d.com/Manual/Hierarchy.html)se zobrazí ukázková scéna, kterou Unity vytvořil s novým projektem.
 
-1. V horní části okna **hierarchie** vyberte**tlačítko** **vytvořit** > **uživatelské rozhraní** > .
+1. V horní části okna **hierarchie** vyberte tlačítko **vytvořit**  >  **uživatelské rozhraní**  >  **Button**.
 
    Tato akce vytvoří tři objekty hry, které lze zobrazit v okně **hierarchie** : objekt **tlačítka** , objekt **plátna** obsahující tlačítko a objekt **EventSystem** .
 
@@ -61,7 +61,7 @@ Nyní přidáme k naší scéně minimální uživatelské rozhraní. Toto uživ
 
 1. V okně [ **inspektora** ](https://docs.unity3d.com/Manual/UsingTheInspector.html) (standardně napravo) nastavte vlastnosti **POS X** a **POS Y** na **hodnotu 0**, aby bylo tlačítko zarovnané na střed plátna.
 
-1. V okně **hierarchie** vyberte **vytvořit** > **text** **uživatelského rozhraní** > a vytvořte **textový** objekt.
+1. V okně **hierarchie** vyberte **vytvořit**  >  text**uživatelského rozhraní**  >  **Text** a vytvořte **textový** objekt.
 
 1. V okně **inspektora** nastavte vlastnosti **POS X** a **pos Y** na **0** a **120**a nastavte vlastnosti **Width** a **Height** na **240** a **120**. Tyto hodnoty zajišťují, aby se textové pole a tlačítko nepřekrývaly.
 
@@ -73,23 +73,23 @@ Až skončíte, zobrazení **scény** by mělo vypadat podobně jako na tomto sn
 
 Chcete-li přidat ukázkový kód skriptu pro projekt Unity, postupujte takto:
 
-1. V [okně projekt](https://docs.unity3d.com/Manual/ProjectView.html)vyberte možnost **vytvořit** > **skript v jazyce c#** a přidejte nový skript jazyka c#.
+1. V [okně projekt](https://docs.unity3d.com/Manual/ProjectView.html)vyberte možnost **vytvořit**  >  **skript v jazyce c#** a přidejte nový skript jazyka c#.
 
    [![Okno projektu v editoru Unity](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-project-window.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-project-window.png#lightbox)
-1. Pojmenujte `HelloWorld`skript.
+1. Pojmenujte skript `HelloWorld` .
 
 1. Dvakrát klikněte `HelloWorld` pro úpravu nově vytvořeného skriptu.
 
    > [!NOTE]
-   > Pokud chcete nakonfigurovat Editor kódu, který bude používat Unity pro úpravy, vyberte **Upravit** > **Předvolby**a pak přejít na předvolby **externích nástrojů** . Další informace najdete v příručce pro [uživatele Unity](https://docs.unity3d.com/Manual/Preferences.html).
+   > Pokud chcete nakonfigurovat Editor kódu, který bude používat Unity pro úpravy, vyberte **Upravit**  >  **Předvolby**a pak přejít na předvolby **externích nástrojů** . Další informace najdete v příručce pro [uživatele Unity](https://docs.unity3d.com/Manual/Preferences.html).
 
 1. Existující skript nahraďte následujícím kódem:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/unity/from-microphone/Assets/Scripts/HelloWorld.cs#code)]
 
-1. Vyhledejte řetězec `YourSubscriptionKey` a nahraďte ho klíčovým předplatným služby Speech.
+1. Vyhledejte řetězec a nahraďte `YourSubscriptionKey` ho klíčovým předplatným služby Speech.
 
-1. Vyhledejte a nahraďte řetězec `YourServiceRegion` **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) přidružené k vašemu předplatnému. Pokud například používáte bezplatnou zkušební verzi, oblast je `westus`.
+1. Vyhledejte a nahraďte řetězec `YourServiceRegion` **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) přidružené k vašemu předplatnému.
 
 1. Uložte změny do skriptu.
 
@@ -122,14 +122,14 @@ Teď jste připraveni spustit aplikaci v editoru Unity.
 
    [![Herní zobrazení v editoru Unity](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png#lightbox)
 
-1. V okně [ **konzoly** ](https://docs.unity3d.com/Manual/Console.html) vyhledejte zprávy ladění. Pokud se okno **konzoly** nezobrazuje, přejděte na panel nabídek a vyberte **okno** > **Obecná** > **Konzola** a zobrazte ho.
+1. V okně [ **konzoly** ](https://docs.unity3d.com/Manual/Console.html) vyhledejte zprávy ladění. Pokud se okno **konzoly** nezobrazuje, přejděte na panel nabídek a vyberte **okno**  >  **Obecná**  >  **Konzola** a zobrazte ho.
 
 1. Až budete s rozpoznáváním řeči hotovi, vyberte na panelu nástrojů editoru Unity tlačítko **Přehrát** a zastavte aplikaci.
 
 ## <a name="additional-options-to-run-this-application"></a>Další možnosti spuštění této aplikace
 
 Tato aplikace se dá nasadit taky do aplikace pro Android, samostatné aplikace Windows nebo aplikace UWP.
-Další informace najdete v našem [ukázkovém úložišti](https://aka.ms/csspeech/samples). Tato `quickstart/csharp-unity` složka popisuje konfiguraci pro tyto další cíle.
+Další informace najdete v našem [ukázkovém úložišti](https://aka.ms/csspeech/samples). Tato `quickstart/csharp-unity` Složka popisuje konfiguraci pro tyto další cíle.
 
 ## <a name="next-steps"></a>Další kroky
 

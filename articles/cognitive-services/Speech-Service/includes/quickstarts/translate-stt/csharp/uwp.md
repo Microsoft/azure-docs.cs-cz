@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.date: 04/04/2020
 ms.author: jhakulin
 ms.topic: include
-ms.openlocfilehash: 08da79afa14d883c6fe21ead7b3bca5f1aac5538
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: cdc1bfcc7c2ea0cc51fe830c5218cf10cae7d990
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87771075"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226454"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,7 +42,7 @@ Nyní přidejte kód jazyka XAML, který definuje uživatelské rozhraní aplika
 
 1. V `SpeechTranslationFromMicrophone_ButtonClicked` obslužné rutině v tomto souboru vyhledejte řetězec `YourSubscriptionKey` a nahraďte ho klíčem předplatného.
 
-1. V `SpeechTranslationFromMicrophone_ButtonClicked` obslužné rutině Najděte řetězec `YourServiceRegion` a nahraďte ho [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) , která je přidružená k vašemu předplatnému. (Například použijte `westus` pro předplatné bezplatné zkušební verze.)
+1. V `SpeechTranslationFromMicrophone_ButtonClicked` obslužné rutině Najděte řetězec `YourServiceRegion` a nahraďte ho [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) , která je přidružená k vašemu předplatnému.
 
 1. V řádku **nabídek výběrem možnosti**  >  **Uložit vše** uložte změny.
 

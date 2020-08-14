@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: 33f87bf6f030adb48f2c4f8eb45027c1b298d812
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c36a8e6f2e104d91bd7738849918c46802cd0dca
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419712"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225916"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastické fondy vám pomůžou se správou a škálováním více databází v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ V rámci fondu disponují jednotlivé databáze flexibilní možností automatic
 
 ## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>Kdy byste měli zvážit SQL Database elastický fond
 
-Fondy jsou vhodné pro velký počet databází s konkrétními vzory využití. Pro danou databázi je tento vzor charakterizován nízkou mírou průměrného využití s relativně málo častými nárůsty využití. Naopak více databází, které mají trvalé střední-vysoké využití, by nemělo být umístěno do stejného elastického fondu.
+Fondy jsou vhodné pro velký počet databází se specifickými vzory využití. Pro danou databázi je tento vzor charakterizován nízkou mírou průměrného využití s relativně málo častými nárůsty využití. Naopak více databází, které mají trvalé střední-vysoké využití, by nemělo být umístěno do stejného elastického fondu.
 
 Čím více databází je možné do fondu přidat, tím větší budou vaše úspory. V závislosti na způsobu využití vaší aplikace je možné vidět úspory s malým počtem databází S3.
 
@@ -113,11 +113,11 @@ Následující kroky vám pomůžou odhadnout, jestli je fond cenově výhodněj
 
 Pro nákupní model založený na DTU:
 
-MAX (<*Celkový počet databáze* x *průměrné využití dtu na databázi*>, <*počet souběžných* *využití DTU ve špičce databáze X na databázi*)
+MAX (<*Celkový počet databáze* x *průměrného využití dtu na databázi*>, <*počet souběžných* *využití dtu ve špičce databáze X na databázi*>)
 
 Pro nákupní model založený na vCore:
 
-MAX (<*Celkový počet databáze* x *průměrného využití vCore na db*>, <*počet souběžných* zvýšení *využití ve špičce databáze X na databázi*)
+MAX (<*Celkový počet databáze* x *průměrného využití vCore na db*>, <*počet souběžných* zvýšení *využití ve špičce databáze X na DB*>)
 
 2. Odhadněte potřebnou velikost úložiště pro fond (sečtěte počet bajtů potřebných pro všechny databáze ve fondu). Potom určete velikost fondu v jednotkách eDTU, která toto úložiště poskytuje.
 3. V případě nákupního modelu založeného na DTU Vezměte v úvahu větší z odhadů eDTU z kroku 1 a krok 2. U nákupního modelu založeného na vCore proveďte odhad vCore z kroku 1.

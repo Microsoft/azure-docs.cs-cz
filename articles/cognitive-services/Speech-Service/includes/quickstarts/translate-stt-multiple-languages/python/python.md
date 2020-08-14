@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: chlandsi
-ms.openlocfilehash: 3758b035e7840c63c895417d0ed3d8dca0ab618f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2222f19ef4459d5ad3ccfa8a39fac6ab804b62e4
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671155"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226116"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -78,9 +78,9 @@ Než začnete, nezapomeňte:
 
 1. Ve stejném souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného.
 
-1. Řetězec `YourServiceRegion` nahraďte [oblastí](../../../../regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
+1. Nahraďte řetězec `YourServiceRegion` [oblastí](../../../../regions.md) , která je přidružená k vašemu předplatnému.
 
-1. Uložte změny, které jste udělali v `quickstart.py`.
+1. Uložte změny, které jste udělali v `quickstart.py` .
 
 ## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 

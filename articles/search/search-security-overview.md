@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: fb265f8a8ab34972dac8529d267e41edaf0acb4c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4bf8f5d7bb8fd262fefc7cbf2f8ca906136509d5
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829284"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225270"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Zabezpečení v Azure Kognitivní hledání – přehled
 
@@ -36,11 +36,11 @@ Podívejte se na toto video s rychlým tempem, kde se dozvíte přehled architek
 
 V Azure Kognitivní hledání začíná šifrování připojení a přenosů a rozšiřuje se na obsah uložený na disku. Pro vyhledávací služby na veřejném Internetu Azure Kognitivní hledání naslouchá na portu HTTPS 443. Všechna připojení klient-služba používají šifrování TLS 1,2. Starší verze (1,0 nebo 1,1) nejsou podporovány.
 
-V následující tabulce jsou popsány datové [modely](../security/fundamentals/encryption-atrest.md#data-encryption-models)pro data, která jsou interně zpracovávána pomocí vyhledávací služby. Některé funkce, jako je znalostní báze, přírůstkové obohacení a indexování založené na indexerech, čtou nebo zapisují do datových struktur v jiných službách Azure. Tyto služby mají svou vlastní úroveň podpory šifrování, která je oddělená od Azure Kognitivní hledání.
+V následující tabulce jsou popsány datové [modely](../security/fundamentals/encryption-models.md)pro data, která jsou interně zpracovávána pomocí vyhledávací služby. Některé funkce, jako je znalostní báze, přírůstkové obohacení a indexování založené na indexerech, čtou nebo zapisují do datových struktur v jiných službách Azure. Tyto služby mají svou vlastní úroveň podpory šifrování, která je oddělená od Azure Kognitivní hledání.
 
 | Model | Klíče&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Požadavků&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Omezení | Platí pro |
 |------------------|-------|-------------|--------------|------------|
-| šifrování na straně serveru | Klíče spravované společností Microsoft | Žádný (integrovaný) | Žádná, k dispozici na všech úrovních ve všech oblastech pro obsah vytvořený po lednu 24 2018. | Obsah (indexy a mapy synonym) a definice (indexery, zdroje dat, dovednosti) |
+| šifrování na straně serveru | Klíče spravované Microsoftem | Žádný (integrovaný) | Žádná, k dispozici na všech úrovních ve všech oblastech pro obsah vytvořený po lednu 24 2018. | Obsah (indexy a mapy synonym) a definice (indexery, zdroje dat, dovednosti) |
 | šifrování na straně serveru | klíče spravované zákazníkem | Azure Key Vault | K dispozici pro Fakturovatelné úrovně pro obsah vytvořený po lednu 2019 ve všech oblastech. | Obsah (indexy a mapy synonym) na datových discích |
 | dvojité šifrování na straně serveru | klíče spravované zákazníkem | Azure Key Vault | K dispozici v fakturovaných úrovních ve vybraných oblastech ve službě Search po 1 2020. srpna. | Obsah (indexy a mapy synonym) na datových discích a na dočasných discích |
 
@@ -54,7 +54,7 @@ Klíče spravované zákazníkem vyžadují další fakturovatelnou službu, Azu
 
 <a name="double-encryption"></a>
 
-### <a name="double-encryption"></a>Dvojité šifrování 
+### <a name="double-encryption"></a>Dvojité šifrování
 
 V Azure Kognitivní hledání je dvojité šifrování rozšířením CMK. Považuje se za oboustranné šifrování (jednou pomocí CMK a znovu klíče spravované službou) a komplexní v oboru, včetně dlouhodobého úložiště, které se zapisuje na datový disk a krátkodobého úložiště zapsaného na dočasné disky. Rozdíl mezi CMK před srpna 1 2020 a po a s tím, jak CMK funkci šifrování v Azure Kognitivní hledání, je další šifrování dat na dočasných discích.
 
@@ -74,7 +74,7 @@ Příchozí funkce zabezpečení chrání koncový bod vyhledávací služby pro
 
 ### <a name="public-access-using-api-keys"></a>Veřejný přístup s použitím klíčů rozhraní API
 
-Ve výchozím nastavení se k vyhledávací službě přistupuje prostřednictvím veřejného cloudu, a to pomocí ověřování založeného na klíčích pro správce nebo dotazování na koncový bod vyhledávací služby. Klíč rozhraní API je řetězec tvořený náhodně generovanými čísly a písmeny. Typ klíče (správce nebo dotaz) určuje úroveň přístupu. Odeslání platného klíče se považuje za důkaz, že požadavek pochází z důvěryhodné entity. 
+Ve výchozím nastavení se k vyhledávací službě přistupuje prostřednictvím veřejného cloudu, a to pomocí ověřování založeného na klíčích pro správce nebo dotazování na koncový bod vyhledávací služby. Klíč rozhraní API je řetězec tvořený náhodně generovanými čísly a písmeny. Typ klíče (správce nebo dotaz) určuje úroveň přístupu. Odeslání platného klíče se považuje za důkaz, že požadavek pochází z důvěryhodné entity.
 
 Existují dvě úrovně přístupu k vaší vyhledávací službě, které jsou povoleny pomocí následujících klíčů rozhraní API:
 
@@ -92,15 +92,15 @@ Pro každý požadavek se vyžaduje ověřování, kde každý požadavek se skl
 
 Pro další řízení přístupu ke službě vyhledávání můžete vytvořit pravidla brány firewall, která umožňují přístup ke konkrétní IP adrese nebo rozsahu IP adres. Všechna připojení klientů musí být provedena prostřednictvím povolené IP adresy, jinak se připojení zamítlo.
 
-K [nakonfigurování příchozího přístupu](service-configure-firewall.md)můžete použít portál. 
+K [nakonfigurování příchozího přístupu](service-configure-firewall.md)můžete použít portál.
 
-Alternativně můžete použít rozhraní REST API pro správu. Rozhraní API verze 2020-03-13 s parametrem [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) umožňuje omezit přístup k vaší službě pomocí identifikace IP adres, jednotlivě nebo v rozsahu, který chcete udělit přístup k vaší vyhledávací službě. 
+Alternativně můžete použít rozhraní REST API pro správu. Rozhraní API verze 2020-03-13 s parametrem [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) umožňuje omezit přístup k vaší službě pomocí identifikace IP adres, jednotlivě nebo v rozsahu, který chcete udělit přístup k vaší vyhledávací službě.
 
 ### <a name="private-endpoint-no-internet-traffic"></a>Privátní koncový bod (žádný internetový provoz)
 
-[Privátní koncový bod](../private-link/private-endpoint-overview.md) pro Azure kognitivní hledání umožňuje klientovi ve [virtuální síti](../virtual-network/virtual-networks-overview.md) zabezpečený přístup k datům v indexu vyhledávání prostřednictvím [privátního propojení](../private-link/private-link-overview.md). 
+[Privátní koncový bod](../private-link/private-endpoint-overview.md) pro Azure kognitivní hledání umožňuje klientovi ve [virtuální síti](../virtual-network/virtual-networks-overview.md) zabezpečený přístup k datům v indexu vyhledávání prostřednictvím [privátního propojení](../private-link/private-link-overview.md).
 
-Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro připojení k vaší vyhledávací službě. Síťový provoz mezi klientem a vyhledávací službou prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu. VIRTUÁLNÍ síť umožňuje zabezpečenou komunikaci mezi prostředky, s vaší místní sítí i s internetem. 
+Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro připojení k vaší vyhledávací službě. Síťový provoz mezi klientem a vyhledávací službou prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu. VIRTUÁLNÍ síť umožňuje zabezpečenou komunikaci mezi prostředky, s vaší místní sítí i s internetem.
 
 I když toto řešení je nejbezpečnější, je za použití dalších služeb k dispozici náklady, abyste měli jistotu, že budete mít jasné znalosti výhod před začneteí. Další informace o cenách najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/private-link/). Další informace o tom, jak tyto komponenty spolupracují, najdete v videu v horní části tohoto článku. Pokrytí možnosti privátní koncový bod začíná na videu na 5:48. Pokyny k nastavení koncového bodu najdete v tématu [Vytvoření privátního koncového bodu pro Azure kognitivní hledání](service-create-private-endpoint.md).
 
@@ -140,7 +140,7 @@ Pro veřejný cloud i Azure Government byl v Azure Kognitivní hledání certifi
 
 V případě dodržování předpisů můžete pomocí [Azure Policy](../governance/policy/overview.md) implementovat osvědčené postupy pro [zabezpečení Azure](../security/benchmarks/introduction.md)v rámci vysokého zabezpečení. Srovnávací test zabezpečení Azure je kolekcí doporučení zabezpečení, která se mapují na klíčové akce, které byste měli vzít v úvahu při zmírnění hrozeb pro služby a data. V současné době je k dispozici 11 kontrol zabezpečení, včetně [zabezpečení sítě](../security/benchmarks/security-control-network-security.md), [protokolování a monitorování](../security/benchmarks/security-control-logging-monitoring.md)a [ochrany dat](../security/benchmarks/security-control-data-protection.md) .
 
-Azure Policy je funkce integrovaná do Azure, která vám pomůže spravovat dodržování předpisů pro několik standardů, včetně standardů Azure Security test. U dobře známých srovnávacích testů Azure Policy poskytuje předdefinované definice, které poskytují obě kritéria, i odpověď, která řeší nedodržování předpisů. 
+Azure Policy je funkce integrovaná do Azure, která vám pomůže spravovat dodržování předpisů pro několik standardů, včetně standardů Azure Security test. U dobře známých srovnávacích testů Azure Policy poskytuje předdefinované definice, které poskytují obě kritéria, i odpověď, která řeší nedodržování předpisů.
 
 V případě Azure Kognitivní hledání existuje v současné době jedna integrovaná definice. Slouží k protokolování diagnostiky. Pomocí této integrované sady můžete přiřadit zásadu, která identifikuje libovolnou vyhledávací službu, která postrádá protokolování diagnostiky, a pak ji zapne. Další informace najdete v tématu [Azure Policy kontroly dodržování předpisů pro Azure kognitivní hledání](security-controls-policy.md).
 

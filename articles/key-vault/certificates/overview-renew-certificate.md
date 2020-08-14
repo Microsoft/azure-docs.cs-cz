@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 41085ee629189c32c1bc7196f23805c9c48d154a
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: beea6f7472d6bc871b4a2df323445b05671a621f
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056274"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224556"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>Informace o Azure Key Vault obnovení certifikátu
 
@@ -60,8 +60,11 @@ Dobrá zpráva. Trezory klíčů Azure se také postará o automatické obnoven�
 Pokud je certifikát vystavený ve Azure Portal stav zakázáno, přejděte k části zobrazení certifikátu a zobrazte chybovou zprávu pro tento certifikát.
 
 ### <a name="frequently-asked-questions"></a>Nejčastější dotazy
-Budou značky replikovány po automatickém obnovení certifikátu?
-Ne, značky nebudou replikovány, pokud uživatel ručně nezkopíruje samotné značky.
+* Jak můžu otestovat funkci autorotace certifikátu?
+  Vytvořte certifikát s platností 1 měsíc a pak nastavte akci životního cyklu pro otočení o 1%. Toto nastavení otočí certifikát během 7,2 hodin.
+  
+* Budou značky replikovány po automatickém obnovení certifikátu?
+  Ne, značky nebudou replikovány, pokud uživatel ručně nezkopíruje samotné značky.
 
 ### <a name="see-also"></a>Viz také
 *   [Integrace služby Key Vault s certifikační autoritou DigiCert](how-to-integrate-certificate-authority.md)

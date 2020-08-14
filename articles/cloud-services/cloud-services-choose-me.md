@@ -1,18 +1,18 @@
 ---
 title: Co je Azure Cloud Services | Microsoft Docs
-description: Přečtěte si, co je Azure Cloud Services.
+description: Přečtěte si, co je Azure Cloud Services, konkrétně je navržená tak, aby podporovala aplikace, které jsou škálovatelné, spolehlivé a nenákladné pro provoz.
 services: cloud-services
 author: tgore03
 ms.service: multiple
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: c531e02656c9f6342670024b2220386e789a2d98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0013a3a29bae9d2dde7896b3ae23d0d358946f2b
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75386846"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224284"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Přehled služby Azure Cloud Services
 Azure Cloud Services je příkladem [platformy jako služby](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Stejně jako [Azure App Service](../app-service/overview.md)je tato technologie navržena tak, aby podporovala aplikace, které jsou škálovatelné, spolehlivé a nenákladné pro provoz. Stejným způsobem, jako hostuje App Service na virtuálních počítačích, je to také Cloud Services Azure. Máte ale větší kontrolu nad virtuálními počítači. Na virtuální počítače, které používají Azure Cloud Services, můžete nainstalovat vlastní software a k nim můžete přistupovat vzdáleně.

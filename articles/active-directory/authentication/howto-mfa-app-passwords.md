@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6bd09a24202b599c1f008e7b046ea5f93ff0323
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4c4e34c6f13f7013847e99a362716fc9c570cdaf
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489788"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224913"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Povolení a používání služby Azure Multi-Factor Authentication se staršími aplikacemi pomocí hesel aplikací
 
@@ -41,6 +41,8 @@ Při použití hesel aplikací platí následující požadavky:
 * Aplikace, které ukládá hesla do mezipaměti a používají je v místních scénářích, můžou selhat, protože heslo aplikace není známé mimo pracovní nebo školní účet. Příkladem tohoto scénáře jsou e-maily systému Exchange, které jsou místní, ale Archivovaná pošta je v cloudu. V tomto scénáři stejné heslo nefunguje.
 * Po povolení služby Azure Multi-Factor Authentication na účtu uživatele se hesla aplikací dají použít u většiny klientů bez prohlížeče, jako je Outlook a Microsoft Skype pro firmy. Akce správy se ale nedají provádět pomocí hesel aplikací přes neprohlížečové aplikace, jako je Windows PowerShell. Akce se nedají provést, i když má uživatel účet správce.
     * Chcete-li spustit skripty prostředí PowerShell, vytvořte účet služby se silným heslem a nepovolujte účet pro dvoustupňové ověřování.
+* Pokud se domníváte, že je uživatelský účet napadený, a odvoláte nebo resetujete heslo k účtu, měli byste taky aktualizovat hesla aplikací. Hesla aplikací nejsou automaticky odvolána, když je heslo nebo resetování hesla uživatelského účtu zrušeno. Uživatel by měl odstranit existující hesla aplikací a vytvořit nové.
+   * Další informace najdete v tématu [Vytvoření a odstranění hesel aplikací ze stránky další ověření zabezpečení](../user-help/multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page).
 
 >[!WARNING]
 > Hesla aplikací nefungují v hybridních prostředích, kde klienti komunikují s místními i cloudy pro automatické zjišťování koncových bodů. K místnímu ověřování se vyžadují doménová hesla. K ověřování pomocí cloudu se vyžadují hesla aplikací.
@@ -81,7 +83,7 @@ V tomto scénáři použijete následující přihlašovací údaje:
 
 Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Funkce hesla aplikací musí být povolená, aby je uživatelé mohli používat. Pokud chcete uživatelům poskytnout možnost vytvářet hesla aplikací, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 2. Vyhledejte a vyberte **Azure Active Directory**a pak zvolte **Uživatelé**.
 3. Na navigačním panelu v horní části okna *uživatele* vyberte **Multi-Factor Authentication** .
 4. V části Multi-Factor Authentication vyberte **nastavení služby**.

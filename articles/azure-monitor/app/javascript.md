@@ -4,12 +4,12 @@ description: Získejte zobrazení stránky a počty relací, data webového klie
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 7c5abb109018bd8bc5b501fe728a3a0f422a3db7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905821"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224848"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -115,7 +115,7 @@ Dostupné možnosti konfigurace jsou
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Posílání telemetrie do Azure Portal
 
-Ve výchozím nastavení Application Insights JavaScript SDK automaticky shromáždí řadu položek telemetrie, které jsou užitečné při určování stavu aplikace a podkladového uživatelského prostředí. Mezi ně patří:
+Ve výchozím nastavení Application Insights JavaScript SDK automaticky shromáždí řadu položek telemetrie, které jsou užitečné při určování stavu aplikace a podkladového uživatelského prostředí. Tady jsou některé z nich:
 
 - **Nezachycené výjimky** v aplikaci, včetně informací o
     - Trasování zásobníku
@@ -217,8 +217,8 @@ Nastavením se `autoTrackPageVisitTime: true` sleduje čas strávený uživateli
 
 | Rozšíření |
 |---------------|
-| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
-| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+| [React](javascript-react-plugin.md)|
+| [React Native](javascript-react-native-plugin.md)|
 
 ## <a name="correlation"></a>Korelace
 
@@ -235,7 +235,7 @@ Aby bylo možné povolit `CORS` korelaci, musí klient odeslat dvě další hlav
 
 V závislosti na `Access-Control-Allow-Headers` konfiguraci na straně serveru je často potřeba rozšíření seznamu na straně serveru tím, že ručně přidáte `Request-Id` a `Request-Context` .
 
-Access-Control-Allow-Headers: `Request-Id` , `Request-Context` ,`<your header>`
+Access-Control-Allow-Headers: `Request-Id` , `Request-Context` , `<your header>`
 
 Pokud některý ze serverů jiných výrobců, které klient komunikuje, nemůže přijmout `Request-Id` hlavičky a a `Request-Context` nemůžete aktualizovat jejich konfiguraci, pak je budete muset vložit do seznamu vyloučení prostřednictvím `correlationHeaderExcludeDomains` Vlastnosti konfigurace. Tato vlastnost podporuje zástupné znaky.
 
@@ -302,7 +302,7 @@ Prostředek Application Insights můžete propojit s vlastním kontejnerem Azure
 ### <a name="drag-and-drop"></a>Přetažení
 
 1. Vyberte položku telemetrie výjimek v Azure Portal, abyste zobrazili její "Podrobnosti o koncových transakcích".
-2. Určete, která zdrojová mapování odpovídají tomuto zásobníku volání. Zdrojová mapa musí odpovídat zdrojovému souboru rámce zásobníku, ale má příponu.`.map`
+2. Určete, která zdrojová mapování odpovídají tomuto zásobníku volání. Zdrojová mapa musí odpovídat zdrojovému souboru rámce zásobníku, ale má příponu. `.map`
 3. Přetáhněte zdrojové mapy do zásobníku volání v Azure Portal ![ animovaný obrázek ukazující, jak přetahovat zdrojové soubory mapování ze složky sestavení do okna zásobník volání v Azure Portal.](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights web Basic
@@ -377,7 +377,7 @@ Sada Application Insights JavaScript SDK je open source, aby zobrazila zdrojový
 
 Nejnovější aktualizace a opravy chyb [najdete v poznámkách k verzi](./release-notes.md).
 
-## <a name="next-steps"></a><a name="next"></a>Další kroky
+## <a name="next-steps"></a><a name="next"></a> Další kroky
 * [Sledování využití](usage-overview.md)
 * [Vlastní události a metriky](api-custom-events-metrics.md)
 * [Sestavení vyhodnocení poučení](usage-overview.md)

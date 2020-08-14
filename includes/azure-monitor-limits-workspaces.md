@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 6979ce65022f350a93f533951d634b8e436283bc
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 91adafedfc8f4e6b4948b0dcfe541e2754b47556
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186300"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226585"
 ---
 **Objem shromažďování dat a jejich uchovávání** 
 
@@ -64,7 +64,7 @@ ms.locfileid: "88186300"
 | Maximální počet znaků pro název sloupce | 500 | |
 | Export dat | Momentálně není k dispozici | Pomocí funkce Azure Functions nebo aplikace logiky můžete agregovat a exportovat data. | 
 
-**Frekvence přijímání dat**
+**<a name="data-ingestion-volume-rate">Frekvence přijímání dat</a>**
 
 Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. Limit přenosové rychlosti je v úmyslu chránit Azure Monitor zákazníky před náhlými špičkami příjmu ve víceklientském prostředí. Výchozí prahová hodnota frekvence pro ingestování 500 MB (komprimovaná) se vztahuje na pracovní prostory, které jsou přibližně **6 GB/min** nekomprimované – skutečná velikost se může mezi datovými typy lišit v závislosti na délce protokolu a jeho kompresním poměru. Tato prahová hodnota se vztahuje na všechna přijatá data, ať už jsou odesílána z prostředků Azure pomocí [nastavení diagnostiky](../articles/azure-monitor/platform/diagnostic-settings.md), [rozhraní API kolekce dat](../articles/azure-monitor/platform/data-collector-api.md) nebo agentů.
 

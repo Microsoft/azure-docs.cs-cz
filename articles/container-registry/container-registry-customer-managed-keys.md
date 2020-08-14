@@ -4,22 +4,22 @@ description: Přečtěte si o šifrování v klidovém prostředí služby Azure
 ms.topic: article
 ms.date: 05/01/2020
 ms.custom: ''
-ms.openlocfilehash: 393e51e687e95c1ff4c6a50429dd342005aad296
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67fb58d0e11709b3d801a81f15d856e9b3db922b
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509538"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225882"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Šifrování registru pomocí klíče spravovaného zákazníkem
 
-Když ukládáte image a jiné artefakty do služby Azure Container Registry, Azure automaticky zašifruje obsah registru v klidovém formátu pomocí [klíčů spravovaných službou](../security/fundamentals/encryption-atrest.md#data-encryption-models). Výchozí šifrování můžete doplnit další vrstvou šifrování pomocí klíče, který vytvoříte a spravujete v Azure Key Vault. Tento článek vás provede jednotlivými kroky použití Azure CLI a Azure Portal.
+Když ukládáte image a jiné artefakty do služby Azure Container Registry, Azure automaticky zašifruje obsah registru v klidovém formátu pomocí [klíčů spravovaných službou](../security/fundamentals/encryption-models.md). Výchozí šifrování můžete doplnit další vrstvou šifrování pomocí klíče, který vytvoříte a spravujete v Azure Key Vault. Tento článek vás provede jednotlivými kroky použití Azure CLI a Azure Portal.
 
 Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem je podporováno prostřednictvím integrace s [Azure Key Vault](../key-vault/general/overview.md). Můžete vytvořit vlastní šifrovací klíče a uložit je do trezoru klíčů, nebo můžete použít rozhraní API Azure Key Vault k vygenerování klíčů. Pomocí Azure Key Vault můžete také auditovat použití klíče.
 
 Tato funkce je k dispozici na úrovni služby Registry kontejneru **Premium** . Informace o úrovních a omezeních služby registru najdete v tématu [Azure Container Registry úrovně služeb](container-registry-skus.md).
 
-   
+
 ## <a name="things-to-know"></a>Co je potřeba vědět
 
 * Klíč spravovaný zákazníkem teď můžete povolit jenom v případě, že vytváříte registr.
@@ -48,7 +48,7 @@ Pomocí příkazu [AZ identity Create][az-identity-create] vytvořte uživatelsk
 ```azurecli
 az identity create \
   --resource-group <resource-group-name> \
-  --name <managed-identity-name> 
+  --name <managed-identity-name>
 ```
 
 Ve výstupu příkazu si poznamenejte následující hodnoty: `id` a `principalId` . Tyto hodnoty budete potřebovat v pozdějších krocích, abyste nakonfigurovali přístup k registru k trezoru klíčů.
@@ -76,11 +76,11 @@ identityID=$(az identity show --resource-group <resource-group-name> --name <man
 identityPrincipalID=$(az identity show --resource-group <resource-group-name> --name <managed-identity-name> --query 'principalId' --output tsv)
 ```
 
-### <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
+### <a name="create-a-key-vault"></a>Vytvořte trezor klíčů.
 
-Vytvoření trezoru klíčů pomocí [AZ Key trezor Create][az-keyvault-create] k uložení klíče spravovaného zákazníkem pro šifrování registru. 
+Vytvoření trezoru klíčů pomocí [AZ Key trezor Create][az-keyvault-create] k uložení klíče spravovaného zákazníkem pro šifrování registru.
 
-Aby nedošlo ke ztrátě dat způsobené náhodným odstraněním klíčů nebo trezoru klíčů, je nutné povolit následující nastavení: **tichá odstranění** a **ochrana vyprázdnění**. Následující příklad obsahuje parametry pro tato nastavení: 
+Aby nedošlo ke ztrátě dat způsobené náhodným odstraněním klíčů nebo trezoru klíčů, je nutné povolit následující nastavení: **tichá odstranění** a **ochrana vyprázdnění**. Následující příklad obsahuje parametry pro tato nastavení:
 
 ```azurecli
 az keyvault create --name <key-vault-name> \
@@ -98,7 +98,7 @@ az keyvault set-policy \
   --resource-group <resource-group-name> \
   --name <key-vault-name> \
   --object-id $identityPrincipalID \
-  --key-permissions get unwrapKey wrapKey 
+  --key-permissions get unwrapKey wrapKey
 ```
 
 ### <a name="create-key-and-get-key-id"></a>Vytvořit klíč a získat ID klíče
@@ -161,7 +161,7 @@ az acr create \
 Pokud chcete zjistit, jestli je povolené šifrování registru s klíčem spravovaným zákazníkem, spusťte příkaz [AZ ACR Encryption show][az-acr-encryption-show] :
 
 ```azurecli
-az acr encryption show --name <registry-name> 
+az acr encryption show --name <registry-name>
 ```
 
 Výstup se podobá tomuto:
@@ -187,7 +187,7 @@ Název identity použijete v pozdějších krocích.
 
 ![Vytvoření spravované identity přiřazené uživatelem v Azure Portal](./media/container-registry-customer-managed-keys/create-managed-identity.png)
 
-### <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
+### <a name="create-a-key-vault"></a>Vytvořte trezor klíčů.
 
 Postup vytvoření trezoru klíčů najdete v tématu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure Portal](../key-vault/secrets/quick-create-portal.md).
 
@@ -228,11 +228,11 @@ Nakonfigurujte zásady pro Trezor klíčů, aby k němu měl přístup identita.
 
 ![Vytvoření registru kontejneru v Azure Portal](./media/container-registry-customer-managed-keys/create-encrypted-registry.png)
 
-Pokud chcete zobrazit stav šifrování vašeho registru na portálu, přejděte k registru. V části **Nastavení**vyberte **šifrování**.
+Pokud chcete zobrazit stav šifrování vašeho registru na portálu, přejděte k registru. V části **Nastavení**vyberte  **šifrování**.
 
 ## <a name="enable-customer-managed-key---template"></a>Povolit zákaznickou šablonu pro správu klíčů
 
-Můžete také použít šablonu Správce prostředků k vytvoření registru a povolení šifrování pomocí klíče spravovaného zákazníkem. 
+Můžete také použít šablonu Správce prostředků k vytvoření registru a povolení šifrování pomocí klíče spravovaného zákazníkem.
 
 Následující šablona vytvoří nový registr kontejneru a uživatelem přiřazenou spravovanou identitu. Zkopírujte následující obsah do nového souboru a uložte ho pomocí názvu souboru, například `CMKtemplate.json` .
 
@@ -345,7 +345,7 @@ Postupujte podle kroků v předchozích částech a vytvořte následující pro
 * Trezor klíčů identifikovaný názvem
 * Klíč trezoru klíčů identifikovaný ID klíče
 
-Spuštěním následujícího příkazu [AZ Group Deployment Create][az-group-deployment-create] vytvořte registr pomocí předchozího souboru šablony. Tam, kde je uvedeno, zadejte nový název registru a název spravované identity a také název trezoru klíčů a ID klíče, který jste vytvořili. 
+Spuštěním následujícího příkazu [AZ Group Deployment Create][az-group-deployment-create] vytvořte registr pomocí předchozího souboru šablony. Tam, kde je uvedeno, zadejte nový název registru a název spravované identity a také název trezoru klíčů a ID klíče, který jste vytvořili.
 
 ```bash
 az group deployment create \
@@ -363,7 +363,7 @@ az group deployment create \
 Chcete-li zobrazit stav šifrování registru, spusťte příkaz [AZ ACR Encryption show][az-acr-encryption-show] :
 
 ```azurecli
-az acr encryption show --name <registry-name> 
+az acr encryption show --name <registry-name>
 ```
 
 ## <a name="use-the-registry"></a>Použití registru
@@ -377,7 +377,7 @@ Otočte klíč spravovaný zákazníkem, který se používá k šifrování reg
 Při otáčení klíče obvykle zadáte stejnou identitu, která se používá při vytváření registru. Volitelně můžete nakonfigurovat novou identitu přiřazenou uživatelem pro přístup k klíči nebo povolit a zadat identitu přiřazenou systémem v registru.
 
 > [!NOTE]
-> Zajistěte, aby byla pro identitu, kterou konfigurujete pro přístup k klíči, nastavena požadovaná [zásada přístupu trezoru klíčů](#add-key-vault-access-policy) . 
+> Zajistěte, aby byla pro identitu, kterou konfigurujete pro přístup k klíči, nastavena požadovaná [zásada přístupu trezoru klíčů](#add-key-vault-access-policy) .
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -387,12 +387,12 @@ Pomocí příkazu [AZ Key trezor Key][az-keyvault-key] vytvořte nebo spravujte 
 # Create new version of existing key
 az keyvault key create \
   –-name <key-name> \
-  --vault-name <key-vault-name> 
+  --vault-name <key-vault-name>
 
 # Create new key
 az keyvault key create \
   –-name <new-key-name> \
-  --vault-name <key-vault-name> 
+  --vault-name <key-vault-name>
 ```
 
 Pak spusťte příkaz [AZ ACR Encryption otočit-Key][az-acr-encryption-rotate-key] s předáním nového ID klíče a identity, kterou chcete nakonfigurovat:
@@ -413,14 +413,14 @@ az acr encryption rotate-key \
 
 ### <a name="portal"></a>Portál
 
-Pomocí nastavení **šifrování** v registru můžete aktualizovat klíčovou verzi, klíč, Trezor klíčů nebo nastavení identity, která se používají pro klíč spravovaný zákazníkem. 
+Pomocí nastavení **šifrování** v registru můžete aktualizovat klíčovou verzi, klíč, Trezor klíčů nebo nastavení identity, která se používají pro klíč spravovaný zákazníkem.
 
 Chcete-li například vygenerovat a nakonfigurovat novou verzi klíče:
 
-1. Na portálu přejděte do svého registru. 
+1. Na portálu přejděte do svého registru.
 1. V části **Nastavení**vyberte **Encryption**  >  **klíč pro změnu**šifrování.
 1. Vyberte **Vybrat klíč** .
-    
+
     ![Otočit klíč v Azure Portal](./media/container-registry-customer-managed-keys/rotate-key.png)
 1. V okně **Vybrat klíč z Azure Key Vault** vyberte Trezor klíčů a klíč, který jste nakonfigurovali dříve, a v části **verze**vyberte **vytvořit novou**.
 1. V okně **vytvořit klíč** vyberte **Generovat**a pak **vytvořit**.
@@ -447,7 +447,7 @@ Pro přístup k trezoru klíčů pro šifrovací klíče můžete nakonfigurovat
 
 Povolení identity přiřazené systémem v registru na portálu:
 
-1. Na portálu přejděte do svého registru. 
+1. Na portálu přejděte do svého registru.
 1. Vyberte **Nastavení**  >   **Identita**.
 1. V části **přiřazený systém**nastavte **stav** na **zapnuto**. Vyberte **Uložit**.
 1. Zkopírujte **ID objektu** identity.
@@ -462,7 +462,7 @@ Pokud chcete identitě udělit přístup k vašemu trezoru klíčů:
 
 Aktualizace nastavení šifrování registru pro použití identity:
 
-1. Na portálu přejděte do svého registru. 
+1. Na portálu přejděte do svého registru.
 1. V části **Nastavení**vyberte **Encryption**  >  **klíč pro změnu**šifrování.
 1. V položce **Identita**vyberte **přiřazeno systému**a vyberte **Uložit**.
 
@@ -471,9 +471,9 @@ Aktualizace nastavení šifrování registru pro použití identity:
 Pokud je váš Trezor klíčů Azure nasazený ve virtuální síti s bránou Key Vault firewall, proveďte následující kroky:
 
 1. Nakonfigurujte šifrování registru tak, aby používalo identitu přiřazenou systémem v registru. Projděte si předchozí část.
-2. Nakonfigurujte Trezor klíčů tak, aby povoloval přístup libovolné [důvěryhodné služby](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services). 
+2. Nakonfigurujte Trezor klíčů tak, aby povoloval přístup libovolné [důvěryhodné služby](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services).
 
-Podrobný postup najdete v tématu [konfigurace Azure Key Vault bran firewall a virtuálních sítí](../key-vault/general/network-security.md). 
+Podrobný postup najdete v tématu [konfigurace Azure Key Vault bran firewall a virtuálních sítí](../key-vault/general/network-security.md).
 
 ## <a name="next-steps"></a>Další kroky
 

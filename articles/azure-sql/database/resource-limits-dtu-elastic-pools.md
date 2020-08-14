@@ -11,19 +11,19 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: f3c7420e1f33a7c25e7d3bfdffff14019d0b606a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 48d8b0519ca1b312909f8b48a7fd8a25d0f8b919
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542666"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225814"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Tento článek poskytuje podrobné omezení prostředků pro databáze v Azure SQL Database, které jsou v elastickém fondu, pomocí modelu nákupu DTU.
 
-* Omezení prostředků modelu nákupu DTU pro Azure SQL Database najdete v tématu [omezení prostředků DTU – Azure SQL Database](resource-limits-vcore-elastic-pools.md).
+* Omezení prostředků modelu nákupu DTU pro Azure SQL Database najdete v tématu [omezení prostředků DTU – Azure SQL Database](resource-limits-dtu-single-databases.md).
 * Omezení prostředků vCore najdete v tématu omezení [prostředků Vcore –](resource-limits-vcore-single-databases.md) [omezení prostředků Azure SQL Database a Vcore – elastické fondy](resource-limits-vcore-elastic-pools.md).
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastický fond: velikosti úložiště a velikosti výpočtů

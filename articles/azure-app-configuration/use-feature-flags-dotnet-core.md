@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 04/19/2019
+ms.date: 08/12/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 2f8e95826a7da3caa3edfe8ec23a6e0725b6bcba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 3f8a43a1ff28206a4bcc5fd059f69492c83eb34d
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213223"
+ms.locfileid: "88224709"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Kurz: používání příznaků funkcí v aplikaci ASP.NET Core
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte, jak:
 
 ## <a name="set-up-feature-management"></a>Nastavení správy funkcí
 
-Přidejte odkaz na `Microsoft.FeatureManagement` balíček NuGet, abyste mohli využít správce funkcí .NET Core.
+Přidejte odkaz na `Microsoft.FeatureManagement.AspNetCore` `Microsoft.FeatureManagement` balíčky a NuGet, abyste mohli využít správce funkcí .NET Core.
     
 Správce funkcí .NET Core `IFeatureManager` získá příznaky funkcí z nativního konfiguračního systému rozhraní. V důsledku toho můžete definovat příznaky funkcí vaší aplikace pomocí libovolného zdroje konfigurace, který podporuje .NET Core, včetně místní *appsettings.jsv* proměnných souboru nebo prostředí. `IFeatureManager` spoléhá na vkládání závislostí .NET Core. Služby správy funkcí můžete zaregistrovat pomocí standardních konvencí:
 
@@ -206,6 +206,8 @@ public class HomeController : Controller
 V řadičích MVC pomocí atributu určíte, `FeatureGate` zda je povolena celá třída řadiče nebo konkrétní akce. Následující `HomeController` kontroler vyžaduje, `FeatureA` aby *bylo možné* provést všechny akce, které třída Controller obsahuje:
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public class HomeController : Controller
 {
@@ -216,6 +218,8 @@ public class HomeController : Controller
 Než bude `Index` možné spustit tuto akci, musí `FeatureA` být *zapnutá* následující akce:
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public IActionResult Index()
 {

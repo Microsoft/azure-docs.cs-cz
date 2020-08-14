@@ -6,12 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 7a115de449588ea69951e6d997aa5332e5d55ad1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 87fe128a79413af024d72726d936b85db3f9ef52
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119517"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225967"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Použití emulátoru Azure Cosmos pro místní vývoj a testování
 
@@ -114,12 +114,13 @@ Pro povolení přístupu k síti uživateli při prvním spuštění emulátoru 
 
 ### <a name="sql-api"></a>SQL API
 
-Jakmile na ploše spustíte emulátor Azure Cosmos, můžete k interakci s emulátorem použít libovolnou podporovanou [sadu Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) nebo [Azure Cosmos DB REST API](/rest/api/cosmos-db/) . Emulátor Azure Cosmos obsahuje taky integrovaný Průzkumník dat, který umožňuje vytvářet kontejnery pro rozhraní SQL API nebo Cosmos DB pro rozhraní API Mongo DB a zobrazovat a upravovat položky bez psaní kódu.
+Jakmile na ploše spustíte emulátor Azure Cosmos, můžete k interakci s emulátorem použít libovolnou podporovanou [sadu Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) nebo [Azure Cosmos DB REST API](/rest/api/cosmos-db/) . Emulátor Azure Cosmos obsahuje taky integrovaný Průzkumník dat, který umožňuje vytvářet kontejnery pro rozhraní SQL API nebo Cosmos DB pro rozhraní API Mongo DB a zobrazovat a upravovat položky bez psaní kódu.
 
 ```csharp
 // Connect to the Azure Cosmos Emulator running locally
-DocumentClient client = new DocumentClient(
-   new Uri("https://localhost:8081"), "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
+CosmosClient client = new CosmosClient(
+   "https://localhost:8081", 
+    "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
 
 ```
 
@@ -182,7 +183,7 @@ Spusťte emulátor z příkazového řádku správce s názvem "/EnableCassandra
 
 ### <a name="gremlin-api"></a>Rozhraní Gremlin API
 
-Spusťte emulátor z příkazového řádku správce s názvem "/EnableGremlinEndpoint". Případně můžete také nastavit proměnnou prostředí.`AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
+Spusťte emulátor z příkazového řádku správce s názvem "/EnableGremlinEndpoint". Případně můžete také nastavit proměnnou prostředí. `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
 
 * [Nainstalujte Apache-tinkerpop-Gremlin-Console-3.3.4](https://archive.apache.org/dist/tinkerpop/3.3.4).
 
@@ -274,7 +275,7 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Micro
 | NoUI | Nezobrazuje uživatelské rozhraní emulátoru. | Microsoft.Azure.Cosmos.Emulator.exe/NoUI | |
 | NoExplorer | Nezobrazuje Průzkumníka dat při spuštění. |Microsoft.Azure.Cosmos.Emulator.exe/NoExplorer | | 
 | PartitionCount | Určuje maximální počet kontejnerů rozdělený na oddíly. Další informace najdete v tématu [Změna počtu kontejnerů](#set-partitioncount) . | Microsoft.Azure.Cosmos.Emulator.exe/PartitionCount =\<partitioncount\> | \<partitioncount\>: Maximální počet povolených kontejnerů s jedním oddílem. Výchozí hodnota je 25. Maximální povolený počet je 250.|
-| DefaultPartitionCount| Určuje výchozí počet oddílů pro kontejner rozdělený na oddíly. | Microsoft.Azure.Cosmos.Emulator.exe/DefaultPartitionCount =\<defaultpartitioncount\> | \<defaultpartitioncount\>Výchozí hodnota je 25.|
+| DefaultPartitionCount| Určuje výchozí počet oddílů pro kontejner rozdělený na oddíly. | Microsoft.Azure.Cosmos.Emulator.exe/DefaultPartitionCount =\<defaultpartitioncount\> | \<defaultpartitioncount\> Výchozí hodnota je 25.|
 | AllowNetworkAccess | Povolí přístup k emulátoru přes síť. \<key_string\> \<file_name\> Abyste mohli povolit přístup k síti, musíte taky předat/Key = nebo/keyfile =. | Microsoft.Azure.Cosmos.Emulator.exe/AllowNetworkAccess/Key = \<key_string\> nebo Microsoft.Azure.Cosmos.Emulator.exe/AllowNetworkAccess/keyfile =\<file_name\>| |
 | NoFirewall | Neupravujte pravidla brány firewall, pokud se používá možnost/AllowNetworkAccess. |Microsoft.Azure.Cosmos.Emulator.exe/NoFirewall | |
 | GenKeyFile | Vygeneruje nový autorizační klíč a uloží ho do zadaného souboru. Generovaný klíč lze použít s možností /Key nebo/KeyFile. | Microsoft.Azure.Cosmos.Emulator.exe/GenKeyFile =\<path to key file\> | |
@@ -317,7 +318,7 @@ Zde je uveden seznam příkazů pro řízení emulátoru z PowerShellu:
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Syntax**
+**Syntaxe**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -327,7 +328,7 @@ Vrátí jednu z těchto hodnot ServiceControllerStatus: ServiceControllerStatus.
 
 ### `Start-CosmosDbEmulator`
 
-**Syntax**
+**Syntaxe**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -337,7 +338,7 @@ Spustí emulátor. Ve výchozím nastavení tento příkaz čeká, dokud emulát
 
 ### `Stop-CosmosDbEmulator`
 
-**Syntax**
+**Syntaxe**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -347,7 +348,7 @@ Zastaví emulátor. Ve výchozím nastavení tento příkaz čeká, až emuláto
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Syntax**
+**Syntaxe**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 
@@ -428,7 +429,7 @@ Pokud máte klientskou aplikaci .NET spuštěnou v kontejneru Docker platformy L
 
 ## <a name="running-on-mac-or-linux"></a>Spuštění v systému Mac nebo Linux<a id="mac"></a>
 
-V současné době se emulátor Cosmos dá spustit jenom ve Windows. Uživatelé se systémem Mac nebo Linux můžou spustit emulátor na virtuálním počítači s Windows, který hostuje hypervisor, jako je Parallel nebo VirtualBox. Tady je postup, jak to povolit.
+V současné době se emulátor Cosmos dá spustit jenom ve Windows. Uživatelé se systémem Mac nebo Linux můžou spustit emulátor na virtuálním počítači s Windows, který je hostovaný v hypervisoru, jako je Parallel nebo VirtualBox. Tady je postup, jak to povolit.
 
 Ve virtuálním počítači s Windows spusťte níže uvedený příkaz a poznamenejte si adresu IPv4.
 
@@ -444,7 +445,36 @@ V dalším kroku z na virtuálním počítači s Windows spustíte emulátor Cos
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
 
-Nakonec musíme importovat certifikát CA emulátoru do prostředí Linux nebo Mac.
+Nakonec musíme vyřešit proces důvěryhodných certifikátů mezi aplikací spuštěnou v prostředí systému Linux nebo Mac a emulátorem. Máme dvě možnosti:
+
+1. Zakažte ověřování SSL v aplikaci:
+
+# <a name="net-standard-21"></a>[.NET Standard 2.1 +](#tab/ssl-netstd21)
+
+   Pro všechny aplikace běžící v rozhraní, které je kompatibilní s .NET Standard 2,1 nebo novějším, můžeme využít tyto `CosmosClientOptions.HttpClientFactory` kroky:
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard21)]
+
+# <a name="net-standard-20"></a>[.NET Standard 2,0](#tab/ssl-netstd20)
+
+   Pro všechny aplikace běžící v rámci architektury kompatibilní s .NET Standard 2,0 můžeme využít tyto `CosmosClientOptions.HttpClientFactory` kroky:
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard20)]
+
+# <a name="nodejs"></a>[Node.js](#tab/ssl-nodejs)
+
+   U Node.jsch aplikací můžete upravit `package.json` soubor pro nastavení `NODE_TLS_REJECT_UNAUTHORIZED` při spuštění aplikace:
+
+   ```json
+   "start": NODE_TLS_REJECT_UNAUTHORIZED=0 node app.js
+   ```
+
+--- 
+
+> [!NOTE]
+> Vypnutí ověřování SSL se doporučuje jenom pro účely vývoje a nemělo by se dělat při spuštění v produkčním prostředí.
+
+2. Importujte certifikát CA emulátoru do prostředí systému Linux nebo Mac:
 
 ### <a name="linux"></a>Linux
 
@@ -490,7 +520,7 @@ Pokud pracujete na Macu, použijte následující postup:
 
 Po provedení tohoto postupu bude vaše prostředí důvěřovat certifikátu používanému emulátorem při připojování k IP adrese, kterou zveřejňuje `/AllowNetworkAccess` .
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Následující tipy vám pomůžou při řešení problémů, ke kterým dochází v emulátoru Azure Cosmos:
 
