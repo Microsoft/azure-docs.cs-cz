@@ -1,4 +1,4 @@
-- name: Dokumentace ke službě Stream Analytics
+- name: Dokumentace ke službě Azure Stream Analytics
   href: index.yml
 - name: Přehled
   items:

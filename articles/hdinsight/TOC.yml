@@ -1,3 +1,5 @@
+- name: Dokumentace k Azure HDInsightu
+  href: index.yml
 - name: Služba HDInsight
   expanded: true
   items:
@@ -74,7 +76,7 @@
               href: overview-data-lake-storage-gen1.md
             - name: Přehled služby Azure Data Lake Storage Gen2
               href: overview-data-lake-storage-gen2.md
-    - name: Postup
+    - name: Návody
       items:
         - name: Vytváření clusterů
           items:
@@ -342,7 +344,7 @@
               href: ./spark/optimize-cluster-configuration.md
         - name: Migrace na Spark 2.3 nebo 2.4
           href: ./spark/migrate-versions.md
-    - name: Postup
+    - name: Návody
       items:
         - name: Použití nástrojů
           items:
@@ -471,7 +473,7 @@
           href: ./hdinsight-hadoop-create-linux-clusters-adf.md
         - name: Odesílání úloh Apache Hadoopu
           href: ./hadoop/submit-apache-hadoop-jobs-programmatically.md
-    - name: Postup
+    - name: Návody
       items:
         - name: Použití nástrojů
           items:
@@ -616,7 +618,7 @@
           href: ./kafka/apache-kafka-performance-tuning.md
         - name: Nejčastější dotazy k platformě Kafka
           href: ./kafka/kafka-faq.md
-    - name: Postup
+    - name: Návody
       items:
         - name: Vývoj
           items:
@@ -667,7 +669,7 @@
       items:
         - name: Použití Apache HBase v HDInsightu
           href: ./hbase/apache-hbase-tutorial-get-started-linux.md
-    - name: Postup
+    - name: Návody
       items:
         - name: Vývoj
           items:
@@ -746,7 +748,7 @@
           href: ./interactive-query/gateway-best-practices.md
         - name: Pokyny pro změnu velikosti
           href: ./interactive-query/sizing-guidelines.md
-    - name: Postup
+    - name: Návody
       items:
         - name: Vývoj
           items:
@@ -843,7 +845,7 @@
           href: ./r-server/ml-services-tutorial-spark-compute.md
         - name: Použití Nástrojů R pro Visual Studio
           href: ./r-server/r-server-submit-jobs-r-tools-vs.md
-    - name: Postup
+    - name: Návody
       items:
         - name: Vývoj
           items:
@@ -875,7 +877,7 @@
           href: ./storm/apache-storm-write-data-lake-store.md
         - name: Apache Kafka a Apache Storm (Java)
           href: ./hdinsight-apache-storm-with-kafka.md
-    - name: Postup
+    - name: Návody
       items:
         - name: Migrace Stormu do Sparku
           href: ./storm/migrate-storm-to-spark.md
@@ -943,7 +945,7 @@
           href: ./disk-encryption.md
         - name: Synchronizace LDAP v Rangeru a Apache Ambari
           href: ./domain-joined/ldap-sync.md
-    - name: Postup
+    - name: Návody
       items:
         - name: Použití zprostředkovatele ID pro správu přihlašovacích údajů
           href: ./domain-joined/identity-broker.md

@@ -1,4 +1,4 @@
-- name: Dokumentace ke službě Data Catalog
+- name: Dokumentace k Azure Data Catalog
   href: index.yml
 - name: Přehled
   items:
@@ -23,7 +23,7 @@
       href: data-catalog-adopting-data-catalog.md
     - name: Nejčastější dotazy
       href: data-catalog-frequently-asked-questions.md
-- name: Postup
+- name: Návody
   items:
     - name: Registrace zdrojů dat
       href: data-catalog-how-to-register.md
