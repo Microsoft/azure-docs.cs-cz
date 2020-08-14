@@ -1,474 +1,474 @@
 - name: Dokumentace ke Cost Managementu a fakturaci Azure
   href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Cost Management a fakturace?
+      href: cost-management-billing-overview.md
+- name: Rychlé starty
+  expanded: true
+  items:
+    - name: Začínáme s analýzou nákladů
+      href: costs/quick-acm-cost-analysis.md
+    - name: Vytvoření rozpočtu – šablona ARM
+      href: costs/quick-create-budget-template.md
+      displayName: 'ARM template, resource manager template'
+- name: Kurzy
+  items:
+    - name: Kontrola vyúčtování jednotlivého účtu
+      href: understand/review-individual-bill.md
+    - name: Kontrola vyúčtování smlouvy Enterprise
+      href: understand/review-enterprise-agreement-bill.md
+    - name: Kontrola vyúčtování Smlouvy se zákazníkem Microsoftu
+      href: understand/review-customer-agreement-bill.md
+    - name: Kontrola vyúčtování Smlouvy s partnerem Microsoftu
+      href: understand/review-partner-agreement-bill.md
+    - name: Vytváření a správa rozpočtů
+      href: costs/tutorial-acm-create-budgets.md
+    - name: Exportovat data
+      href: costs/tutorial-export-acm-data.md
+    - name: Využití doporučení
+      href: costs/tutorial-acm-opt-recommendations.md
+- name: Koncepty
+  items:
+    - name: Cost Management
+      items:
+        - name: Osvědčené postupy ve službě Azure Cost Management
+          href: costs/cost-mgt-best-practices.md
+        - name: Vysvětlení dat služby Cost Management
+          href: costs/understand-cost-mgt-data.md
+        - name: Vysvětlení a práce s rozsahy
+          href: costs/understand-work-scopes.md
+        - name: Možnosti filtrování a seskupení
+          href: costs/group-filter.md
+        - name: Správa nákladů s využitím automatizace
+          href: costs/manage-automation.md
+        - name: Cost Management pro partnery
+          href: costs/get-started-partners.md
+        - name: Volba mezi Cost Managementem a Cloudynem
+          href: costs/choose-between-azure-cost-management-cloudyn.md
+    - name: Reservations
+      items:
+        - name: Co jsou rezervace Azure?
+          href: reservations/save-compute-costs-reservations.md?toc=/azure/cost-management-billing/toc.json
+        - name: Jak se vytvářejí doporučení pro rezervace
+          href: reservations/reserved-instance-purchase-recommendations.md?toc=/azure/cost-management-billing/toc.json
+        - name: Postup při využití slev
+          items:
+            - name: Způsob uplatňování slevy za rezervaci Azure
+              href: reservations/reservation-discount-application.md?toc=/azure/cost-management-billing/toc.json
+            - name: App Service
+              href: reservations/reservation-discount-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/toc.json
+            - name: Azure Cache for Redis
+              href: reservations/understand-azure-cache-for-redis-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Databáze Cosmos
+              href: reservations/understand-cosmosdb-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Database for MariaDB
+              href: reservations/understand-reservation-charges-mariadb.md?toc=/azure/cost-management-billing/toc.json
+            - name: Database for MySQL
+              href: reservations/understand-reservation-charges-mysql.md?toc=/azure/cost-management-billing/toc.json
+            - name: Database for PostgreSQL
+              href: reservations/understand-reservation-charges-postgresql.md?toc=/azure/cost-management-billing/toc.json
+            - name: Databricks
+              href: reservations/reservation-discount-databricks.md
+            - name: Data Explorer
+              href: reservations/understand-azure-data-explorer-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Dedicated Hosts
+              href: reservations/billing-understand-dedicated-hosts-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Disk Storage
+              href: reservations/understand-disk-reservations.md?toc=/azure/cost-management-billing/toc.json
+            - name: Red Hat Linux Enterprise
+              href: reservations/understand-rhel-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Softwarové plány
+              href: reservations/understand-suse-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Storage
+              href: reservations/understand-storage-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Databáze SQL
+              href: reservations/understand-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Azure Synapse Analytics
+              href: reservations/reservation-discount-azure-sql-dw.md?toc=/azure/cost-management-billing/toc.json
+            - name: Virtuální počítače
+              href: manage/understand-vm-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
+        - name: Náklady na Windows a SQL nejsou součástí
+          href: reservations/reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/toc.json
+        - name: Data o využití pro jednotlivá předplatná
+          href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
+        - name: Data o využití pro podnikové zákazníky
+          href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
+    - name: Fakturace
+      items:
+        - name: Podmínky využití jednotlivých předplatných
+          href: understand/understand-usage.md
+        - name: Fakturační podmínky jednotlivých předplatných
+          href: understand/understand-invoice.md
+        - name: Podmínky využití Smlouvy se zákazníkem Microsoftu
+          href: understand/mca-understand-your-usage.md
+        - name: Fakturační podmínky Smlouvy se zákazníkem Microsoftu
+          href: understand/mca-understand-your-invoice.md
+        - name: Výrazy v ceníku pro Smlouvu se zákazníkem Microsoftu
+          href: manage/mca-understand-pricesheet.md
+        - name: Fakturační podmínky Smlouvy s partnerem Microsoftu
+          href: understand/mpa-invoice-terms.md
+        - name: Změny aktualizovaného individuálního fakturačního účtu
+          href: understand/mosp-new-customer-experience.md
+        - name: Fakturační účty pro smlouvu se zákazníkem Microsoftu
+          href: understand/mca-overview.md
+        - name: Fakturační účty pro smlouvu s partnerem Microsoftu
+          href: understand/mpa-overview.md
+- name: Návody
+  items:
+    - name: Konfigurace správy nákladů a fakturace
+      items:
+        - name: Správa účtů
+          items:
+            - name: Úlohy správce účtu
+              href: manage/account-admin-tasks.md
+            - name: Úprava profilu
+              href: manage/change-azure-account-profile.md
+            - name: Řešení zůstatku po splatnosti
+              href: manage/resolve-past-due-balance.md
+            - name: Udělení přístupu k fakturaci
+              href: manage/manage-billing-access.md
+            - name: Role smlouvy se zákazníkem Microsoftu v Azure
+              href: manage/understand-mca-roles.md
+            - name: Propojení ID partnera
+              href: manage/link-partner-id.md
+        - name: Správa předplatných
+          items:
+            - name: Přiřazení přístupu k datům služby Cost Management
+              href: costs/assign-access-acm-data.md
+            - name: Stavy předplatných
+              href: manage/subscription-states.md
+            - name: Opětovná aktivace předplatného
+              href: manage/subscription-disabled.md
+            - name: Opětovná aktivace předplatného Azure pro studenty
+              href: manage/azurestudents-subscription-disabled.md
+            - name: Převod vlastnictví
+              href: manage/billing-subscription-transfer.md
+            - name: Vyžádání vlastnictví Smlouvy se zákazníkem Microsoftu
+              href: manage/mca-request-billing-ownership.md
+            - name: Vyžádání vlastnictví Smlouvy s partnerem Microsoftu
+              href: manage/mpa-request-ownership.md
+            - name: Nastavení a konfigurace integrace AWS
+              href: costs/aws-integration-set-up-configure.md
+    - name: Provádění klíčových úloh správy fakturace
+      items:
+        - name: Správa účtů
+          items:
+            - name: Zobrazení fakturačních účtů
+              href: manage/view-all-accounts.md
+            - name: Organizace nákladů pomocí oddílů faktury
+              href: manage/mca-section-invoice.md
+            - name: Nastavení fakturačního účtu pro Smlouvu se zákazníkem Microsoftu
+              href: manage/mca-setup-account.md
+            - name: Registrace pomocí účtu Microsoft 365
+              href: manage/microsoft-365-account-for-azure-subscription.md
+            - name: Registrace pro Microsoft 365 pomocí účtu Azure
+              href: manage/azure-account-for-microsoft-365-subscription.md
+            - name: Platba s využitím silného ověřování zákazníků
+              href: manage/open-banking-strong-customer-authentication.md
+        - name: Správa předplatných
+          items:
+            - name: Platba na základě faktury
+              href: manage/pay-by-invoice.md
+            - name: Vytvoření dalších předplatných
+              href: manage/create-subscription.md
+            - name: Export informací o předplatném
+              href: manage/export-subscriptions.md
+            - name: Změna platební karty
+              href: manage/change-credit-card.md
+            - name: Změna správce
+              href: manage/add-change-subscription-administrator.md
+            - name: Přepnutí nabídky předplatného
+              href: manage/switch-azure-offer.md
+            - name: Převod předplatných CSP
+              href: manage/transfer-subscriptions-subscribers-csp.md
+            - name: Zrušení předplatného
+              href: manage/cancel-azure-subscription.md
+        - name: Správa předplatných smlouvy Enterprise
+          items:
+            - name: Začínáme na portálu Azure EA
+              href: manage/ea-portal-get-started.md
+            - name: Role EA v Azure
+              href: manage/understand-ea-roles.md
+            - name: Správa portálu Azure EA
+              href: manage/ea-portal-administration.md
+            - name: Správa portálu Azure EA pro partnery
+              href: manage/ea-partner-portal-administration.md
+            - name: Převody Azure Enterprise
+              href: manage/ea-transfers.md
+            - name: Úlohy EA ve smlouvě se zákazníkem Microsoftu
+              href: manage/mca-enterprise-operations.md
+            - name: Smlouvy k Azure EA a jejich změny
+              href: manage/ea-portal-agreements.md
+            - name: Faktury za smlouvy Enterprise
+              href: manage/ea-portal-enrollment-invoices.md
+            - name: Ceny Azure EA
+              href: manage/ea-pricing-overview.md
+            - name: Rozhraní Azure Enterprise REST API
+              href: manage/ea-portal-rest-apis.md
+            - name: Rezervované instance virtuálních počítačů Azure EA
+              href: manage/ea-portal-vm-reservations.md
+            - name: Azure Marketplace
+              href: manage/ea-azure-marketplace.md
+        - name: Stáhnout informace o cenách a fakturaci
+          items:
+            - name: Úhrada faktury
+              href: understand/pay-bill.md
+            - name: Zobrazení a stažení faktury za Azure
+              href: understand/download-azure-invoice.md
+            - name: Zobrazení a stažení informací o využití a poplatcích za Azure
+              href: understand/download-azure-daily-usage.md
+            - name: Stažení faktury a údajů o denním využití
+              href: manage/download-azure-invoice-daily-usage-date.md
+            - name: Zobrazení a stažení daňových dokumentů
+              href: understand/mca-download-tax-document.md
+            - name: Zobrazení poplatků za externí služby Azure
+              href: understand/understand-azure-marketplace-charges.md
+            - name: Zobrazit a stáhnout ceny vaší organizace
+              href: manage/ea-pricing.md
+        - name: Bezplatný účet
+          items:
+            - name: Vytvoření bezplatných služeb
+              href: manage/create-free-services.md
+            - name: Jak se vyhnout poplatkům
+              href: manage/avoid-charges-free-account.md
+            - name: Kontrola využití
+              href: manage/check-free-service-usage.md
+            - name: Upgrade bezplatného účtu
+              href: manage/upgrade-azure-subscription.md
+    - name: Provádění klíčových úloh správy nákladů
+      items:
+        - name: Jak zabránit neočekávaným nákladům
+          href: manage/getting-started.md
+        - name: Výpočet cen
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: Použití analýzy nákladů pro běžné úlohy
+          href: costs/cost-analysis-common-uses.md
+        - name: Automatizace akcí s využitím rozpočtů
+          href: manage/cost-management-budget-scenario.md
+        - name: Použití upozornění na náklady
+          href: costs/cost-mgt-alerts-monitor-usage-spending.md
+        - name: Propojení s Power BI Desktopem
+          href: /power-bi/desktop-connect-azure-cost-management
+        - name: Analýza nákladů na Azure s využitím aplikace šablony Power BI
+          href: costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md
+        - name: Správa nákladů a využití AWS
+          href: costs/aws-integration-manage.md
+        - name: Vysvětlení limitu útraty
+          href: manage/spending-limit.md
+        - name: Sledování kreditu pro smlouvu se zákazníkem Microsoftu
+          href: manage/mca-check-azure-credits-balance.md
+        - name: Migrace z rozhraní API EA na MCA
+          href: costs/migrate-cost-management-api.md
+    - name: Nákup a správa rezervací
+      items:
+        - name: 'Určení, co koupit'
+          items:
+            - name: Volba rezervace k zakoupení
+              href: reservations/determine-reservation-purchase.md?toc=/azure/cost-management-billing/toc.json
+        - name: Nákup rezervací
+          items:
+            - name: Nákup rezervace Azure
+              href: reservations/prepare-buy-reservation.md?toc=/azure/cost-management-billing/toc.json
+            - name: App Service
+              href: reservations/prepay-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/toc.json
+            - name: Rezervace Azure Cache for Redis
+              href: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/toc.json
+            - name: Databáze Cosmos
+              href: /azure/data-explorer
+            - name: Databricks
+              href: reservations/prepay-databricks-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+            - name: Data Explorer
+              href: /azure/data-explorer/pricing-reserved-capacity
+            - name: Disk Storage
+              href: ../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+            - name: Dedicated Host
+              href: ../virtual-machines/prepay-dedicated-hosts-reserved-instances.md?toc=/azure/cost-management-billing/toc.json
+            - name: Softwarové plány
+              href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Azure Storage
+              href: ../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+            - name: Azure Database for PostgreSQL
+              href: ../postgresql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
+            - name: Azure Database for MySQL
+              href: ../mysql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
+            - name: Azure Database for MariaDB
+              href: ../mariadb/concept-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
+            - name: Velké instance SAP HANA
+              href: reservations/prepay-hana-large-instances-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+            - name: Databáze SQL
+              href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+            - name: Azure Synapse Analytics
+              href: reservations/prepay-sql-data-warehouse-charges.md?toc=/azure/cost-management-billing/toc.json
+            - name: Virtuální počítače
+              href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/toc.json
+        - name: 'Zobrazení, správa a optimalizace po nákupu'
+          items:
+            - name: Zobrazení rezervací a využití
+              href: reservations/view-reservations.md?toc=/azure/cost-management-billing/toc.json
+            - name: Zobrazení rezervací jako CSP
+              href: reservations/how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/toc.json
+            - name: Správa rezervací
+              href: reservations/manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/toc.json
+            - name: Výměna a refundace rezervací
+              href: reservations/exchange-and-refund-azure-reservations.md?toc=/azure/cost-management-billing/toc.json
+        - name: Vytvoření sestavy nákladů
+          items:
+            - name: Zobrazení transakcí rezervací
+              href: reservations/view-purchase-refunds.md?toc=/azure/cost-management-billing/toc.json
+            - name: Zpětné vyúčtování nákladů na rezervace
+              href: reservations/charge-back-usage.md?toc=/azure/cost-management-billing/toc.json
+        - name: Obnovení rezervací
+          items:
+            - name: Obnovení rezervace
+              href: reservations/reservation-renew.md?toc=/azure/cost-management-billing/toc.json
+    - name: Řešení potíží
+      items:
+        - name: Nenalezena žádná předplatná
+          href: manage/no-subscriptions-found.md
+        - name: Problémy s platbou
+          href: manage/billing-troubleshoot-azure-payment-issues.md
+        - name: Odmítnutá karta
+          href: manage/troubleshoot-declined-card.md
+        - name: Problémy s registrací účtu Azure
+          href: manage/troubleshoot-azure-sign-up.md
+        - name: Problémy s přihlašováním k předplatnému
+          href: manage/troubleshoot-sign-in-issue.md
+        - name: Zákaz zobrazení firemních nákladů
+          href: manage/enterprise-mgmt-grp-troubleshoot-cost-view.md
+        - name: Řešení potíží s přístupem k portálu Azure EA
+          href: manage/ea-portal-troubleshoot.md
+        - name: Kontaktování podpory
+          href: ../azure-portal/supportability/how-to-create-azure-support-request.md
+- name: Referenční informace
+  items:
+    - name: Rozhraní REST API služby Azure Cost Management
+      href: 'https://docs.microsoft.com/rest/api/cost-management'
+    - name: Rozhraní REST API služby Azure Consumption
+      href: 'https://docs.microsoft.com/rest/api/consumption'
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.consumption/budgets
+    - name: Ukázky rozhraní REST API služby Cost Management
+      href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
+    - name: Scénáře automatizace služby Billing
+      href: manage/cost-management-automation-scenarios.md
+    - name: Přehled rozhraní API služby Azure Billing
+      href: manage/usage-rate-card-overview.md
+    - name: Rozhraní REST API služby Azure Billing
+      href: 'https://docs.microsoft.com/rest/api/billing'
+    - name: Přehled rozhraní API služby Azure Consumption
+      href: manage/consumption-api-overview.md
+    - name: Rozhraní REST API služby Azure Consumption
+      href: 'https://docs.microsoft.com/rest/api/consumption'
+    - name: Rozhraní REST API služby RateCard
+      href: 'https://msdn.microsoft.com/library/azure/mt219005.aspx'
+    - name: Rozhraní REST API služby Usage
+      href: 'https://msdn.microsoft.com/library/azure/mt219003.aspx'
+    - name: Přehled služby Enterprise Reporting
+      href: manage/enterprise-api.md
+    - name: Rozhraní REST API služby Enterprise Reporting
+      href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'
+    - name: Reservations
+      items:
+        - name: Rozhraní REST API pro rezervace
+          href: reservations/reservation-apis.md?toc=/azure/cost-management-billing/toc.json
+        - name: Rezervace – Azure PowerShell
+          href: /powershell/module/azurerm.reservations
+        - name: Rezervace – rozhraní příkazového řádku
+          href: /cli/azure/reservations/reservation
+        - name: Cost Management – rozhraní REST API pro podrobnosti využití spotřeby
+          href: /rest/api/consumption/usagedetails
+        - name: Cost Management – rozhraní REST API pro podrobnosti rezervací spotřeby
+          href: /rest/api/consumption/reservationsdetails
+- name: Zdroje a prostředky
+  items:
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/browse/?products=azure-cost-management
+    - name: Fórum pro názory na Cost Management
+      href: 'https://feedback.azure.com/forums/906772-cost-management'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cost-management'
+    - name: Dostupnost podle oblastí
+      href: 'https://azure.microsoft.com/regions/services/'
+- name: ukázky
+  items:
+    - name: REST API
+      items:
+        - name: Kontrola podnikových nákladů
+          href: manage/review-enterprise-billing.md
+        - name: Kontrola využití předplatného
+          href: manage/review-subscription-billing.md
+        - name: Kontrola využití prostředků
+          href: manage/review-service-usage-api.md
+    - name: Ukázky .NET
+      items:
+        - name: Vzorový kód pro rozhraní API pro faktury
+          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
+        - name: Vzorový kód pro rozhraní API služby Usage
+          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
+        - name: Vzorový kód pro rozhraní API služby RateCard
+          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
+- name: Cloudyn
   items:
     - name: Přehled
       items:
-        - name: Co je Cost Management a fakturace?
-          href: cost-management-billing-overview.md
+        - name: Co je Cloudyn?
+          href: cloudyn/overview.md
     - name: Rychlé starty
       items:
-        - name: Začínáme s analýzou nákladů
-          href: costs/quick-acm-cost-analysis.md
-        - name: Vytvoření rozpočtu – šablona ARM
-          href: costs/quick-create-budget-template.md
-          displayName: 'ARM template, resource manager template'
+        - name: Zobrazení informací o nákladech
+          href: cloudyn/quick-register-azure-sub.md
+        - name: Zobrazení informací o nákladech – EA
+          href: cloudyn/quick-register-ea.md
+        - name: Zobrazení informací o nákladech – CSP
+          href: cloudyn/quick-register-csp.md
     - name: Kurzy
       items:
-        - name: Kontrola vyúčtování jednotlivého účtu
-          href: understand/review-individual-bill.md
-        - name: Kontrola vyúčtování smlouvy Enterprise
-          href: understand/review-enterprise-agreement-bill.md
-        - name: Kontrola vyúčtování Smlouvy se zákazníkem Microsoftu
-          href: understand/review-customer-agreement-bill.md
-        - name: Kontrola vyúčtování Smlouvy s partnerem Microsoftu
-          href: understand/review-partner-agreement-bill.md
-        - name: Vytváření a správa rozpočtů
-          href: costs/tutorial-acm-create-budgets.md
-        - name: Exportovat data
-          href: costs/tutorial-export-acm-data.md
-        - name: Využití doporučení
-          href: costs/tutorial-acm-opt-recommendations.md
+        - name: Kontrola využití a nákladů
+          href: cloudyn/tutorial-review-usage.md
+        - name: Odhad útraty
+          href: cloudyn/tutorial-forecast-spending.md
+        - name: Správa nákladů
+          href: cloudyn/tutorial-manage-costs.md
+        - name: Optimalizace rezervovaných instancí
+          href: cloudyn/tutorial-optimize-reserved-instances.md
+        - name: Řízení přístupu k datům
+          href: cloudyn/tutorial-user-access.md
     - name: Koncepty
       items:
-        - name: Cost Management
-          items:
-            - name: Osvědčené postupy ve službě Azure Cost Management
-              href: costs/cost-mgt-best-practices.md
-            - name: Vysvětlení dat služby Cost Management
-              href: costs/understand-cost-mgt-data.md
-            - name: Vysvětlení a práce s rozsahy
-              href: costs/understand-work-scopes.md
-            - name: Možnosti filtrování a seskupení
-              href: costs/group-filter.md
-            - name: Správa nákladů s využitím automatizace
-              href: costs/manage-automation.md
-            - name: Cost Management pro partnery
-              href: costs/get-started-partners.md
-            - name: Volba mezi Cost Managementem a Cloudynem
-              href: costs/choose-between-azure-cost-management-cloudyn.md
-        - name: Reservations
-          items:
-            - name: Co jsou rezervace Azure?
-              href: reservations/save-compute-costs-reservations.md?toc=/azure/cost-management-billing/toc.json
-            - name: Jak se vytvářejí doporučení pro rezervace
-              href: reservations/reserved-instance-purchase-recommendations.md?toc=/azure/cost-management-billing/toc.json
-            - name: Postup při využití slev
-              items:
-                - name: Způsob uplatňování slevy za rezervaci Azure
-                  href: reservations/reservation-discount-application.md?toc=/azure/cost-management-billing/toc.json
-                - name: App Service
-                  href: reservations/reservation-discount-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/toc.json
-                - name: Azure Cache for Redis
-                  href: reservations/understand-azure-cache-for-redis-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Databáze Cosmos
-                  href: reservations/understand-cosmosdb-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Database for MariaDB
-                  href: reservations/understand-reservation-charges-mariadb.md?toc=/azure/cost-management-billing/toc.json
-                - name: Database for MySQL
-                  href: reservations/understand-reservation-charges-mysql.md?toc=/azure/cost-management-billing/toc.json
-                - name: Database for PostgreSQL
-                  href: reservations/understand-reservation-charges-postgresql.md?toc=/azure/cost-management-billing/toc.json
-                - name: Databricks
-                  href: reservations/reservation-discount-databricks.md
-                - name: Data Explorer
-                  href: reservations/understand-azure-data-explorer-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Dedicated Hosts
-                  href: reservations/billing-understand-dedicated-hosts-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Disk Storage
-                  href: reservations/understand-disk-reservations.md?toc=/azure/cost-management-billing/toc.json
-                - name: Red Hat Linux Enterprise
-                  href: reservations/understand-rhel-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Softwarové plány
-                  href: reservations/understand-suse-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Storage
-                  href: reservations/understand-storage-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Databáze SQL
-                  href: reservations/understand-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Azure Synapse Analytics
-                  href: reservations/reservation-discount-azure-sql-dw.md?toc=/azure/cost-management-billing/toc.json
-                - name: Virtuální počítače
-                  href: manage/understand-vm-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
-            - name: Náklady na Windows a SQL nejsou součástí
-              href: reservations/reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/toc.json
-            - name: Data o využití pro jednotlivá předplatná
-              href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
-            - name: Data o využití pro podnikové zákazníky
-              href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
-        - name: Fakturace
-          items:
-            - name: Podmínky využití jednotlivých předplatných
-              href: understand/understand-usage.md
-            - name: Fakturační podmínky jednotlivých předplatných
-              href: understand/understand-invoice.md
-            - name: Podmínky využití Smlouvy se zákazníkem Microsoftu
-              href: understand/mca-understand-your-usage.md
-            - name: Fakturační podmínky Smlouvy se zákazníkem Microsoftu
-              href: understand/mca-understand-your-invoice.md
-            - name: Výrazy v ceníku pro Smlouvu se zákazníkem Microsoftu
-              href: manage/mca-understand-pricesheet.md
-            - name: Fakturační podmínky Smlouvy s partnerem Microsoftu
-              href: understand/mpa-invoice-terms.md
-            - name: Změny aktualizovaného individuálního fakturačního účtu
-              href: understand/mosp-new-customer-experience.md
-            - name: Fakturační účty pro smlouvu se zákazníkem Microsoftu
-              href: understand/mca-overview.md
-            - name: Fakturační účty pro smlouvu s partnerem Microsoftu
-              href: understand/mpa-overview.md
+        - name: Vysvětlení sestav nákladů
+          href: cloudyn/understanding-cost-reports.md
     - name: Návody
       items:
-        - name: Konfigurace správy nákladů a fakturace
-          items:
-            - name: Správa účtů
-              items:
-                - name: Úlohy správce účtu
-                  href: manage/account-admin-tasks.md
-                - name: Úprava profilu
-                  href: manage/change-azure-account-profile.md
-                - name: Řešení zůstatku po splatnosti
-                  href: manage/resolve-past-due-balance.md
-                - name: Udělení přístupu k fakturaci
-                  href: manage/manage-billing-access.md
-                - name: Role smlouvy se zákazníkem Microsoftu v Azure
-                  href: manage/understand-mca-roles.md
-                - name: Propojení ID partnera
-                  href: manage/link-partner-id.md
-            - name: Správa předplatných
-              items:
-                - name: Přiřazení přístupu k datům služby Cost Management
-                  href: costs/assign-access-acm-data.md
-                - name: Stavy předplatných
-                  href: manage/subscription-states.md
-                - name: Opětovná aktivace předplatného
-                  href: manage/subscription-disabled.md
-                - name: Opětovná aktivace předplatného Azure pro studenty
-                  href: manage/azurestudents-subscription-disabled.md
-                - name: Převod vlastnictví
-                  href: manage/billing-subscription-transfer.md
-                - name: Vyžádání vlastnictví Smlouvy se zákazníkem Microsoftu
-                  href: manage/mca-request-billing-ownership.md
-                - name: Vyžádání vlastnictví Smlouvy s partnerem Microsoftu
-                  href: manage/mpa-request-ownership.md
-                - name: Nastavení a konfigurace integrace AWS
-                  href: costs/aws-integration-set-up-configure.md
-        - name: Provádění klíčových úloh správy fakturace
-          items:
-            - name: Správa účtů
-              items:
-                - name: Zobrazení fakturačních účtů
-                  href: manage/view-all-accounts.md
-                - name: Organizace nákladů pomocí oddílů faktury
-                  href: manage/mca-section-invoice.md
-                - name: Nastavení fakturačního účtu pro Smlouvu se zákazníkem Microsoftu
-                  href: manage/mca-setup-account.md
-                - name: Registrace pomocí účtu Microsoft 365
-                  href: manage/microsoft-365-account-for-azure-subscription.md
-                - name: Registrace pro Microsoft 365 pomocí účtu Azure
-                  href: manage/azure-account-for-microsoft-365-subscription.md
-                - name: Platba s využitím silného ověřování zákazníků
-                  href: manage/open-banking-strong-customer-authentication.md
-            - name: Správa předplatných
-              items:
-                - name: Platba na základě faktury
-                  href: manage/pay-by-invoice.md
-                - name: Vytvoření dalších předplatných
-                  href: manage/create-subscription.md
-                - name: Export informací o předplatném
-                  href: manage/export-subscriptions.md
-                - name: Změna platební karty
-                  href: manage/change-credit-card.md
-                - name: Změna správce
-                  href: manage/add-change-subscription-administrator.md
-                - name: Přepnutí nabídky předplatného
-                  href: manage/switch-azure-offer.md
-                - name: Převod předplatných CSP
-                  href: manage/transfer-subscriptions-subscribers-csp.md
-                - name: Zrušení předplatného
-                  href: manage/cancel-azure-subscription.md
-            - name: Správa předplatných smlouvy Enterprise
-              items:
-                - name: Začínáme na portálu Azure EA
-                  href: manage/ea-portal-get-started.md
-                - name: Role EA v Azure
-                  href: manage/understand-ea-roles.md
-                - name: Správa portálu Azure EA
-                  href: manage/ea-portal-administration.md
-                - name: Správa portálu Azure EA pro partnery
-                  href: manage/ea-partner-portal-administration.md
-                - name: Převody Azure Enterprise
-                  href: manage/ea-transfers.md
-                - name: Úlohy EA ve smlouvě se zákazníkem Microsoftu
-                  href: manage/mca-enterprise-operations.md
-                - name: Smlouvy k Azure EA a jejich změny
-                  href: manage/ea-portal-agreements.md
-                - name: Faktury za smlouvy Enterprise
-                  href: manage/ea-portal-enrollment-invoices.md
-                - name: Ceny Azure EA
-                  href: manage/ea-pricing-overview.md
-                - name: Rozhraní Azure Enterprise REST API
-                  href: manage/ea-portal-rest-apis.md
-                - name: Rezervované instance virtuálních počítačů Azure EA
-                  href: manage/ea-portal-vm-reservations.md
-                - name: Azure Marketplace
-                  href: manage/ea-azure-marketplace.md
-            - name: Stáhnout informace o cenách a fakturaci
-              items:
-                - name: Úhrada faktury
-                  href: understand/pay-bill.md
-                - name: Zobrazení a stažení faktury za Azure
-                  href: understand/download-azure-invoice.md
-                - name: Zobrazení a stažení informací o využití a poplatcích za Azure
-                  href: understand/download-azure-daily-usage.md
-                - name: Stažení faktury a údajů o denním využití
-                  href: manage/download-azure-invoice-daily-usage-date.md
-                - name: Zobrazení a stažení daňových dokumentů
-                  href: understand/mca-download-tax-document.md
-                - name: Zobrazení poplatků za externí služby Azure
-                  href: understand/understand-azure-marketplace-charges.md
-                - name: Zobrazit a stáhnout ceny vaší organizace
-                  href: manage/ea-pricing.md
-            - name: Bezplatný účet
-              items:
-                - name: Vytvoření bezplatných služeb
-                  href: manage/create-free-services.md
-                - name: Jak se vyhnout poplatkům
-                  href: manage/avoid-charges-free-account.md
-                - name: Kontrola využití
-                  href: manage/check-free-service-usage.md
-                - name: Upgrade bezplatného účtu
-                  href: manage/upgrade-azure-subscription.md
-        - name: Provádění klíčových úloh správy nákladů
-          items:
-            - name: Jak zabránit neočekávaným nákladům
-              href: manage/getting-started.md
-            - name: Výpočet cen
-              href: 'https://azure.microsoft.com/pricing/calculator/'
-            - name: Použití analýzy nákladů pro běžné úlohy
-              href: costs/cost-analysis-common-uses.md
-            - name: Automatizace akcí s využitím rozpočtů
-              href: manage/cost-management-budget-scenario.md
-            - name: Použití upozornění na náklady
-              href: costs/cost-mgt-alerts-monitor-usage-spending.md
-            - name: Propojení s Power BI Desktopem
-              href: /power-bi/desktop-connect-azure-cost-management
-            - name: Analýza nákladů na Azure s využitím aplikace šablony Power BI
-              href: costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md
-            - name: Správa nákladů a využití AWS
-              href: costs/aws-integration-manage.md
-            - name: Vysvětlení limitu útraty
-              href: manage/spending-limit.md
-            - name: Sledování kreditu pro smlouvu se zákazníkem Microsoftu
-              href: manage/mca-check-azure-credits-balance.md
-            - name: Migrace z rozhraní API EA na MCA
-              href: costs/migrate-cost-management-api.md
-        - name: Nákup a správa rezervací
-          items:
-            - name: 'Určení, co koupit'
-              items:
-                - name: Volba rezervace k zakoupení
-                  href: reservations/determine-reservation-purchase.md?toc=/azure/cost-management-billing/toc.json
-            - name: Nákup rezervací
-              items:
-                - name: Nákup rezervace Azure
-                  href: reservations/prepare-buy-reservation.md?toc=/azure/cost-management-billing/toc.json
-                - name: App Service
-                  href: reservations/prepay-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/toc.json
-                - name: Rezervace Azure Cache for Redis
-                  href: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/toc.json
-                - name: Databáze Cosmos
-                  href: /azure/data-explorer
-                - name: Databricks
-                  href: reservations/prepay-databricks-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
-                - name: Data Explorer
-                  href: /azure/data-explorer/pricing-reserved-capacity
-                - name: Disk Storage
-                  href: ../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
-                - name: Dedicated Host
-                  href: ../virtual-machines/prepay-dedicated-hosts-reserved-instances.md?toc=/azure/cost-management-billing/toc.json
-                - name: Softwarové plány
-                  href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Azure Storage
-                  href: ../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
-                - name: Azure Database for PostgreSQL
-                  href: ../postgresql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
-                - name: Azure Database for MySQL
-                  href: ../mysql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
-                - name: Azure Database for MariaDB
-                  href: ../mariadb/concept-reserved-pricing.md?toc=/azure/cost-management-billing/toc.json
-                - name: Velké instance SAP HANA
-                  href: reservations/prepay-hana-large-instances-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
-                - name: Databáze SQL
-                  href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
-                - name: Azure Synapse Analytics
-                  href: reservations/prepay-sql-data-warehouse-charges.md?toc=/azure/cost-management-billing/toc.json
-                - name: Virtuální počítače
-                  href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/toc.json
-            - name: 'Zobrazení, správa a optimalizace po nákupu'
-              items:
-                - name: Zobrazení rezervací a využití
-                  href: reservations/view-reservations.md?toc=/azure/cost-management-billing/toc.json
-                - name: Zobrazení rezervací jako CSP
-                  href: reservations/how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/toc.json
-                - name: Správa rezervací
-                  href: reservations/manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/toc.json
-                - name: Výměna a refundace rezervací
-                  href: reservations/exchange-and-refund-azure-reservations.md?toc=/azure/cost-management-billing/toc.json
-            - name: Vytvoření sestavy nákladů
-              items:
-                - name: Zobrazení transakcí rezervací
-                  href: reservations/view-purchase-refunds.md?toc=/azure/cost-management-billing/toc.json
-                - name: Zpětné vyúčtování nákladů na rezervace
-                  href: reservations/charge-back-usage.md?toc=/azure/cost-management-billing/toc.json
-            - name: Obnovení rezervací
-              items:
-                - name: Obnovení rezervace
-                  href: reservations/reservation-renew.md?toc=/azure/cost-management-billing/toc.json
-        - name: Řešení potíží
-          items:
-            - name: Nenalezena žádná předplatná
-              href: manage/no-subscriptions-found.md
-            - name: Problémy s platbou
-              href: manage/billing-troubleshoot-azure-payment-issues.md
-            - name: Odmítnutá karta
-              href: manage/troubleshoot-declined-card.md
-            - name: Problémy s registrací účtu Azure
-              href: manage/troubleshoot-azure-sign-up.md
-            - name: Problémy s přihlašováním k předplatnému
-              href: manage/troubleshoot-sign-in-issue.md
-            - name: Zákaz zobrazení firemních nákladů
-              href: manage/enterprise-mgmt-grp-troubleshoot-cost-view.md
-            - name: Řešení potíží s přístupem k portálu Azure EA
-              href: manage/ea-portal-troubleshoot.md
-            - name: Kontaktování podpory
-              href: ../azure-portal/supportability/how-to-create-azure-support-request.md
-    - name: Referenční informace
-      items:
-        - name: Rozhraní REST API služby Azure Cost Management
-          href: 'https://docs.microsoft.com/rest/api/cost-management'
-        - name: Rozhraní REST API služby Azure Consumption
-          href: 'https://docs.microsoft.com/rest/api/consumption'
-        - name: Šablona Resource Manageru
-          href: /azure/templates/microsoft.consumption/budgets
-        - name: Ukázky rozhraní REST API služby Cost Management
-          href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
-        - name: Scénáře automatizace služby Billing
-          href: manage/cost-management-automation-scenarios.md
-        - name: Přehled rozhraní API služby Azure Billing
-          href: manage/usage-rate-card-overview.md
-        - name: Rozhraní REST API služby Azure Billing
-          href: 'https://docs.microsoft.com/rest/api/billing'
-        - name: Přehled rozhraní API služby Azure Consumption
-          href: manage/consumption-api-overview.md
-        - name: Rozhraní REST API služby Azure Consumption
-          href: 'https://docs.microsoft.com/rest/api/consumption'
-        - name: Rozhraní REST API služby RateCard
-          href: 'https://msdn.microsoft.com/library/azure/mt219005.aspx'
-        - name: Rozhraní REST API služby Usage
-          href: 'https://msdn.microsoft.com/library/azure/mt219003.aspx'
-        - name: Přehled služby Enterprise Reporting
-          href: manage/enterprise-api.md
-        - name: Rozhraní REST API služby Enterprise Reporting
-          href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'
-        - name: Reservations
-          items:
-            - name: Rozhraní REST API pro rezervace
-              href: reservations/reservation-apis.md?toc=/azure/cost-management-billing/toc.json
-            - name: Rezervace – Azure PowerShell
-              href: /powershell/module/azurerm.reservations
-            - name: Rezervace – rozhraní příkazového řádku
-              href: /cli/azure/reservations/reservation
-            - name: Cost Management – rozhraní REST API pro podrobnosti využití spotřeby
-              href: /rest/api/consumption/usagedetails
-            - name: Cost Management – rozhraní REST API pro podrobnosti rezervací spotřeby
-              href: /rest/api/consumption/reservationsdetails
+        - name: Aktivace účtů a předplatných Azure
+          href: cloudyn/activate-subs-accounts.md
+        - name: Přidání rozšířené metriky pro virtuální počítače
+          href: cloudyn/azure-vm-extended-metrics.md
+        - name: Připojení účtu Google
+          href: cloudyn/connect-google-account.md
+        - name: Připojení účtu AWS
+          href: cloudyn/connect-aws-account.md
+        - name: Konfigurace účtů úložiště
+          href: cloudyn/storage-accounts.md
+        - name: Použití sestav Cloudyn
+          href: cloudyn/use-reports.md
+        - name: Použití řídicích panelů
+          href: cloudyn/dashboards.md
+        - name: Správa rozpočtů
+          href: cloudyn/manage-budgets.md
     - name: Zdroje a prostředky
       items:
-        - name: Získávání dovedností pomocí Microsoft Learn
-          href: /learn/browse/?products=azure-cost-management
-        - name: Fórum pro názory na Cost Management
-          href: 'https://feedback.azure.com/forums/906772-cost-management'
+        - name: Cloudyn – videa
+          href: cloudyn/ref-videos.md
         - name: Plány Azure do budoucna
           href: 'https://azure.microsoft.com/roadmap/'
-        - name: Ceny
+        - name: Cloudyn – ceny
           href: 'https://azure.microsoft.com/pricing/details/cost-management'
-        - name: Dostupnost podle oblastí
+        - name: Dostupnost Cloudynu podle oblastí
           href: 'https://azure.microsoft.com/regions/services/'
-    - name: ukázky
-      items:
-        - name: REST API
-          items:
-            - name: Kontrola podnikových nákladů
-              href: manage/review-enterprise-billing.md
-            - name: Kontrola využití předplatného
-              href: manage/review-subscription-billing.md
-            - name: Kontrola využití prostředků
-              href: manage/review-service-usage-api.md
-        - name: Ukázky .NET
-          items:
-            - name: Vzorový kód pro rozhraní API pro faktury
-              href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-            - name: Vzorový kód pro rozhraní API služby Usage
-              href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-            - name: Vzorový kód pro rozhraní API služby RateCard
-              href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
-    - name: Cloudyn
-      items:
-        - name: Přehled
-          items:
-            - name: Co je Cloudyn?
-              href: cloudyn/overview.md
-        - name: Rychlé starty
-          items:
-            - name: Zobrazení informací o nákladech
-              href: cloudyn/quick-register-azure-sub.md
-            - name: Zobrazení informací o nákladech – EA
-              href: cloudyn/quick-register-ea.md
-            - name: Zobrazení informací o nákladech – CSP
-              href: cloudyn/quick-register-csp.md
-        - name: Kurzy
-          items:
-            - name: Kontrola využití a nákladů
-              href: cloudyn/tutorial-review-usage.md
-            - name: Odhad útraty
-              href: cloudyn/tutorial-forecast-spending.md
-            - name: Správa nákladů
-              href: cloudyn/tutorial-manage-costs.md
-            - name: Optimalizace rezervovaných instancí
-              href: cloudyn/tutorial-optimize-reserved-instances.md
-            - name: Řízení přístupu k datům
-              href: cloudyn/tutorial-user-access.md
-        - name: Koncepty
-          items:
-            - name: Vysvětlení sestav nákladů
-              href: cloudyn/understanding-cost-reports.md
-        - name: Návody
-          items:
-            - name: Aktivace účtů a předplatných Azure
-              href: cloudyn/activate-subs-accounts.md
-            - name: Přidání rozšířené metriky pro virtuální počítače
-              href: cloudyn/azure-vm-extended-metrics.md
-            - name: Připojení účtu Google
-              href: cloudyn/connect-google-account.md
-            - name: Připojení účtu AWS
-              href: cloudyn/connect-aws-account.md
-            - name: Konfigurace účtů úložiště
-              href: cloudyn/storage-accounts.md
-            - name: Použití sestav Cloudyn
-              href: cloudyn/use-reports.md
-            - name: Použití řídicích panelů
-              href: cloudyn/dashboards.md
-            - name: Správa rozpočtů
-              href: cloudyn/manage-budgets.md
-        - name: Zdroje a prostředky
-          items:
-            - name: Cloudyn – videa
-              href: cloudyn/ref-videos.md
-            - name: Plány Azure do budoucna
-              href: 'https://azure.microsoft.com/roadmap/'
-            - name: Cloudyn – ceny
-              href: 'https://azure.microsoft.com/pricing/details/cost-management'
-            - name: Dostupnost Cloudynu podle oblastí
-              href: 'https://azure.microsoft.com/regions/services/'
-            - name: Cloudyn – nejčastější dotazy
-              href: cloudyn/cost-mgt-faq.md
-            - name: Obraťte se na podporu Cloudyn
-              href: 'https://docs.microsoft.com/azure/cost-management-billing/costs/open-support-request'
+        - name: Cloudyn – nejčastější dotazy
+          href: cloudyn/cost-mgt-faq.md
+        - name: Obraťte se na podporu Cloudyn
+          href: 'https://docs.microsoft.com/azure/cost-management-billing/costs/open-support-request'
