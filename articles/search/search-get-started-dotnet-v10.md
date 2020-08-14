@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 4d8a38666991760fbb133e617984ba23788034ca
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 4a8a2455ea3e5889293cb8285f36699942a46437
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908886"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209337"
 ---
 # <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>Rychlý Start: vytvoření indexu vyhledávání pomocí knihovny Microsoft. Azure. Search v10 za účelem Client Library
 
@@ -31,7 +31,7 @@ Tento článek vysvětluje, jak vytvořit aplikaci. Můžete si také [Stáhnout
 > [!NOTE]
 > Ukázkový kód v tomto článku používá pro jednoduchost synchronní metody Azure Kognitivní hledání verze 10 .NET SDK. U produkčních scénářů ale doporučujeme používat asynchronní metody ve vašich vlastních aplikacích, abyste je zachovali a mohli reagovat. Můžete například použít `CreateAsync` a `DeleteAsync` místo `Create` a `Delete` .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte mít následující:
 
@@ -106,9 +106,9 @@ Tento krok je nutný k vytváření smysluplného výstupu v konzole nástroje. 
 
 1. Přidejte do projektu dvě prázdné definice tříd: Address.Methods.cs, Hotel.Methods.cs
 
-1. V Address.Methods.cs přepište výchozí obsah následujícím kódem, [řádky 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L25).
+1. V Address.Methods.cs přepište výchozí obsah následujícím kódem, [řádky 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25).
 
-1. Na Hotel.Methods.cs zkopírujte [řádky 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L68).
+1. Na Hotel.Methods.cs zkopírujte [řádky 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68).
 
 ## <a name="1---create-index"></a>1. vytvoření indexu
 
@@ -205,7 +205,7 @@ Index hotelů se skládá z jednoduchých a složitých polí, kde je jednoduch�
 
 1. V Program.cs vytvořte instanci [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) třídy pro připojení ke službě pomocí hodnot, které jsou uložené v konfiguračním souboru aplikace (appsettings.json). 
 
-   `SearchServiceClient`má [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) vlastnost, která poskytuje všechny metody, které potřebujete k vytvoření, výpisu, aktualizaci nebo odstranění indexů služby Azure kognitivní hledání. 
+   `SearchServiceClient` má [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) vlastnost, která poskytuje všechny metody, které potřebujete k vytvoření, výpisu, aktualizaci nebo odstranění indexů služby Azure kognitivní hledání. 
 
     ```csharp
     using System;
@@ -427,7 +427,7 @@ Při odesílání dokumentů je nutné použít [`IndexBatch`](https://docs.micr
     }
     ```
 
-    Po inicializaci `IndexBatch` objektu jej můžete odeslat do indexu voláním [`Documents.Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) [`SearchIndexClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) objektu. `Documents`je vlastnost `SearchIndexClient` , která poskytuje metody pro přidání, úpravu, odstranění nebo dotazování dokumentů v indexu.
+    Po inicializaci `IndexBatch` objektu jej můžete odeslat do indexu voláním [`Documents.Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) [`SearchIndexClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) objektu. `Documents` je vlastnost `SearchIndexClient` , která poskytuje metody pro přidání, úpravu, odstranění nebo dotazování dokumentů v indexu.
 
     `try` / `catch` Okolní volání `Index` metody zachytí chyby indexování, ke kterým může dojít, pokud je vaše služba přetížená. V produkčním kódu můžete odložit a potom opakovat indexování dokumentů, které selhaly, nebo můžete protokolovat a pokračovat, jako je ukázka, nebo ho zpracovat jiným způsobem, který splňuje požadavky vaší aplikace na konzistenci dat.
 

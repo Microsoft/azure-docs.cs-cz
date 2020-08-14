@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Popisuje, jak nastavovat cluster služby Azure Kubernetes pro Azure Dev Spaces funguje.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41b955fac7abcc700d73d8ace601f80982b2253d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995883"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207953"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Jak nastavovat cluster pro Azure Dev Spaces funguje
 
@@ -19,8 +19,6 @@ Azure Dev Spaces poskytuje několik způsobů, jak rychle iterovat a ladit aplik
 ## <a name="prepare-your-aks-cluster"></a>Příprava clusteru AKS
 
 Pokud chcete připravit cluster AKS pro vývojové prostory, ověřte, jestli je cluster AKS v oblasti [podporované Azure dev Spaces][supported-regions] a používáte Kubernetes 1.10.3 nebo novější. Spuštěním nástroje můžete povolit Azure Dev Spaces z rozhraní příkazového řádku Azure `az aks use-dev-spaces` .
-
-Příklad nastavení clusteru AKS pro vývojové prostory najdete v tématu [rychlý Start pro vývoj týmu][quickstart-team].
 
 Když je v clusteru AKS povolená možnost Azure Dev Spaces, nainstaluje se kontrolér pro váš cluster. Kontroler se nachází mimo váš cluster AKS. Řídí chování a komunikaci mezi nástroji na straně klienta a clusterem AKS. Jakmile je tato možnost povolená, můžete s řadičem pracovat pomocí nástrojů na straně klienta.
 
@@ -92,10 +90,8 @@ V rámci příkazu můžete použít nástroje na straně klienta z příkazové
 
 Další informace o tom, jak pomocí nástrojů na straně klienta připravit a spustit váš kód ve vývojovém prostoru, najdete v tématu [jak připravovat projekt pro Azure dev Spaces funguje][how-it-works-prep].
 
-Chcete-li začít používat Azure Dev Spaces pro týmový vývoj, přečtěte si téma [vývoj týmu v Azure dev Spaces][quickstart-team] rychlý Start.
 
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
 [how-it-works-up]: how-dev-spaces-works-up.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[quickstart-team]: quickstart-team-development.md

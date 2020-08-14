@@ -1,17 +1,17 @@
 ---
-title: Vývoj Azure Functions pomocí sady Visual Studio
+title: Vývoj služby Azure Functions pomocí sady Visual Studio
 description: Naučte se vyvíjet a testovat Azure Functions pomocí Azure Functionsch nástrojů pro Visual Studio 2019.
-ms.custom: vs-azure
+ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 0df65c4cdbf40b49bc265f4accafde67f41dafb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81de0af335e0a233ac568921b298c9bb168eb174
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730987"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209972"
 ---
-# <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
+# <a name="develop-azure-functions-using-visual-studio"></a>Vývoj služby Azure Functions pomocí sady Visual Studio  
 
 Visual Studio umožňuje vyvíjet, testovat a nasazovat funkce knihovny tříd C# do Azure. Pokud je toto prostředí vaše první s Azure Functions, přečtěte si [Úvod do Azure Functions](functions-overview.md).
 
@@ -27,7 +27,7 @@ Tento článek poskytuje podrobné informace o tom, jak používat Visual Studio
 
 Pokud není uvedeno jinak, postupy a příklady jsou uvedeny pro Visual Studio 2019. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure Functions nástroje. Pokud chcete přidat nástroje Azure Function Tools, zahrňte do instalace sady Visual Studio úlohu **vývoj pro Azure** . Azure Functions nástroje jsou k dispozici v rámci úlohy vývoje Azure počínaje sadou Visual Studio 2017.
 
@@ -65,7 +65,7 @@ Pokud není uvedeno jinak, postupy a příklady jsou uvedeny pro Visual Studio 2
 > [!NOTE]  
 > V aplikaci Visual Studio 2019 nebo novější je rozšíření Azure Functionsch nástrojů aktualizováno v rámci sady Visual Studio.  
 
-## <a name="create-an-azure-functions-project"></a>Vytvoření projektu Azure Functions
+## <a name="create-an-azure-functions-project"></a>Vytvoření projektu služby Azure Functions
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
@@ -193,7 +193,7 @@ For an example of how to test a queue triggered function, see the [queue trigger
 -->
 
 
-## <a name="publish-to-azure"></a>Publikování aplikací do Azure
+## <a name="publish-to-azure"></a>Publikování do Azure
 
 Při publikování ze sady Visual Studio používá jednu ze dvou metod nasazení:
 

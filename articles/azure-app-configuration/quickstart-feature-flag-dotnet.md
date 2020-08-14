@@ -9,17 +9,18 @@ editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: bf2ccd93a94036c6ab5b6224456cd1f5a13239c5
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 998527a8557db0b0cf271dc8b05d5771660a175c
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855007"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209437"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace .NET Framework
 
@@ -27,7 +28,7 @@ V tomto rychlém startu zařadíte do aplikace .NET Framework aplikaci Azure App
 
 Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou příznaků funkcí. Tyto knihovny jsou postaveny na systému konfigurace .NET. Bez problémů se integrují s konfigurací aplikací prostřednictvím poskytovatele konfigurace .NET.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -50,7 +51,7 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou p�
 
 1. V části **vytvořit nový projekt**, vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework)**. Klikněte na **Další**.
 
-1. V **konfiguraci nového projektu**zadejte název projektu. V části **rozhraní**vyberte **.NET Framework 4,8** nebo vyšší. Klikněte na **Vytvořit**.
+1. V **konfiguraci nového projektu**zadejte název projektu. V části **rozhraní**vyberte **.NET Framework 4,8** nebo vyšší. Klikněte na možnost **Vytvořit**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
@@ -130,4 +131,4 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou p�
 V tomto rychlém startu jste v konfiguraci aplikace vytvořili příznak funkce a použili ho v aplikaci .NET Framework konzolové aplikace. Pokud se chcete dozvědět, jak dynamicky aktualizovat příznaky funkcí a jiné hodnoty konfigurace bez restartování aplikace, přejděte k dalšímu kurzu.
 
 > [!div class="nextstepaction"]
-> [Povolit dynamickou konfiguraci](./enable-dynamic-configuration-dotnet.md)
+> [Povolení dynamické konfigurace](./enable-dynamic-configuration-dotnet.md)

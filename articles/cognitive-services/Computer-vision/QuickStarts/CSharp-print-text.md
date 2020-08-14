@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: extrakce textu pomocí Počítačové zpracování obrazu OCR REST API a C #'
+title: 'Rychlý Start: extrakce textu pomocí operace Počítačové zpracování obrazu 2,0 REST API OCR a jazyka C #'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu extrahujete text z obrázku pomocí Počítačové zpracování obrazu REST API operace OCR v jazyce C#.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ecc0ddbfa48669cad7f486e181fcdb6dbc80851e
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 4306b82793dd62765c07dfa808add4e16dc06be5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167789"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209177"
 ---
-# <a name="quickstart-extract-text-using-the-computer-vision-ocr-rest-api-and-c"></a>Rychlý Start: extrakce textu pomocí Počítačové zpracování obrazu OCR REST API a C #
+# <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>Rychlý Start: extrakce textu pomocí operace Počítačové zpracování obrazu 2,0 REST API OCR a jazyka C #
 
 > [!IMPORTANT]
 > Pokud extrahujete text v angličtině, nizozemštině, francouzštině, němčině, italštině, portugalštině, španělštině nebo zjednodušené čínštině (Preview), doporučujeme použít novější [operaci čtení](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text). K dispozici je [rychlý Start pro C#](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) . 

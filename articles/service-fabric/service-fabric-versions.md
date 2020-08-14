@@ -3,12 +3,12 @@ title: Podporované verze clusteru v Azure Service Fabric
 description: Přečtěte si o verzích clusterů v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 728d7403ee8e0ac9ccbd69260a718c65389adc43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 9a2278769d75de19a3006e3a9f39b424dbc02b1f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433198"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205894"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
@@ -39,13 +39,14 @@ V následující tabulce jsou uvedeny verze Service Fabric a jejich koncová dat
 | 6,3. * | 6.1.480.* |Menší nebo rovno verzi 3,2 |31. března 2019  |
 | 6,4. * | 6.2.301.* |Menší nebo rovno verzi 3,3 |15. září 2019 |
 | 6,5. * | 6.4.617.* |Menší nebo rovno verzi 3,4 |Od 1. srpna 2020 |
-| 7.0.466.* | 6.4.664.* |Menší nebo rovno verzi 4,0|Od 1. srpna 2020  |
-| 7.0.466.* | 6,5. * |Menší nebo rovno verzi 4,0|Od 1. srpna 2020 |
-| 7.0.470.* | 7.0.466.* |Menší nebo rovno verzi 4,0 |Od 1. srpna 2020  |
-| 7.0.472.* | 7.0.466.* |Menší nebo rovno verzi 4,0 |Od 1. srpna 2020  |
+| 7.0.466.* | 6.4.664.* |Menší nebo rovno verzi 4,0|Od 1. listopadu 2020  |
+| 7.0.466.* | 6,5. * |Menší nebo rovno verzi 4,0|Od 1. listopadu 2020 |
+| 7.0.470.* | 7.0.466.* |Menší nebo rovno verzi 4,0 |Od 1. listopadu 2020  |
+| 7.0.472.* | 7.0.466.* |Menší nebo rovno verzi 4,0 |Od 1. listopadu 2020  |
 | 7.1.409.* | 7.0.466.* |Menší nebo rovno verzi 4,1 |Aktuální verze, takže bez koncového data |
 | 7.1.417.* | 7.0.466.* |Menší nebo rovno verzi 4,1 |Aktuální verze, takže bez koncového data |
 | 7.1.428.* | 7.0.466.* |Menší nebo rovno verzi 4,1 |Aktuální verze, takže bez koncového data |
+| 7.1.456.* | 7.0.466.* |Menší nebo rovno verzi 4,1 |Aktuální verze, takže bez koncového data |
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -117,4 +118,5 @@ Následující tabulka uvádí názvy verzí Service Fabric a jejich odpovídaj�
 | 7,1 RTO | 7.1.409.9590 | 7.1.410.1 |
 | 7,1 CU1 | 7.1.417.9590 | 7.1.418.1 |
 | 7,1 CU2 | 7.1.428.9590 | 7.1.428.1 |
+| 7,1 CU3 | 7.1.456.9590 | 7.1.452.1 |
 

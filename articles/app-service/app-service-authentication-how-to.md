@@ -4,12 +4,12 @@ description: Naučte se přizpůsobit funkci ověřování a autorizace v App Se
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: d69a75092f4ede5d5467357a7ac254be6e7c379b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 52213999ae0ec9f6891c8ec10ab65471926e87d2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078389"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208022"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené použití ověřování a autorizace v Azure App Service
 
@@ -297,6 +297,9 @@ Nastavení ověřování lze volitelně nakonfigurovat prostřednictvím souboru
     1.  Nastavit `enabled` na hodnotu "true"
     2.  Nastavit `isAuthFromFile` na hodnotu "true"
     3.  Nastavte `authFilePath` na název souboru (například "auth.json").
+
+> [!NOTE]
+> Formát pro `authFilePath` různé platformy se liší. V systému Windows jsou podporovány relativní i absolutní cesty. Doporučuje se relativní. Pro Linux se v současné době podporují jenom absolutní cesty, takže hodnota nastavení by měla být "/Home/site/wwwroot/auth.json" nebo podobná.
 
 Po provedení této aktualizace konfigurace bude obsah souboru použit k definování chování App Service ověřování/autorizace pro danou lokalitu. Pokud se někdy chcete vrátit ke konfiguraci Azure Resource Manager, můžete to udělat tak, že nastavíte `isAuthFromFile` zpět na false (NEPRAVDA).
 

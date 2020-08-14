@@ -1,18 +1,18 @@
 ---
 title: Pokyny pro automatizaci Azure Virtual WAN partneři | Microsoft Docs
-description: Tento článek pomáhá partnerům nastavit automatizaci Azure Virtual WAN.
+description: Nastavte prostředí automatizace pro připojení a konfiguraci místního připojení VPN nebo SD-WAN nebo připojení k síti Azure Virtual WAN.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 816e8843467588cbfaeb5eb6e531d2221d28656b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0029f3fbcf96036a247356042e4c39d59f86a224
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565948"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208340"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Pokyny pro automatizaci pro virtuální partneři sítě WAN
 

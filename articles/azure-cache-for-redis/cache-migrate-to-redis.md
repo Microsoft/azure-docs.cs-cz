@@ -4,15 +4,16 @@ description: Naučte se migrovat aplikace Managed Cache Service a Mezipaměť ho
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 07/23/2020
 ms.author: yegu
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4e867f28209230cf33b0f94e7cc8ca12d015ff15
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: beb6014a9b6d90d1bc9a3c3236877a720a44a0c4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008555"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211121"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis-deprecated"></a>Migrace z Managed Cache Service do mezipaměti Azure pro Redis (zastaralé)
 Migrace aplikací používajících Azure Managed Cache Service do mezipaměti Azure pro Redis se dá udělat s minimálními změnami vaší aplikace, a to v závislosti na funkcích Managed Cache Service používaných vaší aplikací pro ukládání do mezipaměti. I když rozhraní API nejsou přesně stejná, jsou podobná a většina vašeho stávajícího kódu, který používá Managed Cache Service pro přístup do mezipaměti, může být použita s minimálními změnami. V tomto článku se dozvíte, jak provést potřebné změny konfigurace a aplikace pro migraci aplikací Managed Cache Service pro použití Azure cache pro Redis a ukazuje, jak se některé funkce mezipaměti Azure pro Redis dají použít k implementaci funkcí mezipaměti Managed Cache Service.
@@ -166,7 +167,7 @@ int key2 = (int)cache.StringGet("key2");
 
 Klient StackExchange. Redis používá `RedisKey` `RedisValue` typy a pro přístup k položkám v mezipaměti a jejich ukládání. Tyto typy jsou mapovány na většinu primitivních typů jazyků, včetně řetězce a často nejsou použity přímo. Řetězce Redis jsou nejzákladnější typ Redis hodnoty a mohou obsahovat mnoho typů dat, včetně serializovaných binárních proudů a i když nemůžete typ použít přímo, budete používat metody, které `String` v názvu obsahují. Pro většinu primitivních datových typů ukládáte a načítáte položky z mezipaměti pomocí `StringSet` metod a `StringGet` , pokud do mezipaměti neukládáte kolekce nebo jiné Redis datové typy. 
 
-`StringSet`a `StringGet` jsou podobné Managed Cache Service `Put` a `Get` metodám, s jedním velkým rozdílem, že před nastavením a získáním objektu .NET do mezipaměti je nutné nejprve serializovat. 
+`StringSet` a `StringGet` jsou podobné Managed Cache Service `Put` a `Get` metodám, s jedním velkým rozdílem, že před nastavením a získáním objektu .NET do mezipaměti je nutné nejprve serializovat. 
 
 Při volání `StringGet` , pokud objekt existuje, je vráceno a pokud není, je vrácena hodnota null. V takovém případě můžete načíst hodnotu z požadovaného zdroje dat a uložit ji do mezipaměti pro pozdější použití. Tento model je známý jako model doplňování mezipaměti.
 

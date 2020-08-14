@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 901815ba40459bd50562e557a0a766474c731ce0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 84bf041f64a2f85f3aa3eada1dc1955c93dc034a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476029"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208197"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Řešení potíží s rolemi přiřazenými ke skupinám cloudu
 
@@ -51,7 +51,7 @@ Odpověď **: uživatel**může narazit na čtečku adresářů pomocí skupiny 
 
 **A:** Ano, můžete. Globální správce a Správce uživatelů mají v balíčku pro přístup oprávnění k uvedení jakékoli skupiny. U globálního správce se nic nemění, ale oprávnění role Správce uživatelů se mírně mění. Chcete-li do balíčku pro přístup umístit skupinu s přiřazením role, musíte být správcem uživatele a také vlastníkem skupiny role-přiřazení. Tady je celá tabulka, která ukazuje, kdo může vytvořit balíček přístupu ve správě licencí Enterprise:
 
-Role adresáře Azure AD | Role správy oprávnění | Může přidat skupinu zabezpečení.\* | Může přidat skupinu Office 365.\* | Může přidat aplikaci. | Může přidat web SharePointu Online.
+Role adresáře Azure AD | Role správy oprávnění | Může přidat skupinu zabezpečení.\* | Může přidat skupinu Microsoft 365.\* | Může přidat aplikaci. | Může přidat web SharePointu Online.
 ----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------
 Globální správce | Není k dispozici | ✔️ | ✔️ | ✔️  | ✔️
 Správce uživatelů  | Není k dispozici  | ✔️  | ✔️  | ✔️
@@ -101,4 +101,4 @@ Uživatel | Vlastník katalogu | Pouze v případě, že vlastník skupiny | Pou
 ## <a name="next-steps"></a>Další kroky
 
 - [Použití skupin cloudů ke správě přiřazení rolí](roles-groups-concept.md)
-- [Vytvoření skupiny s přiřazením rolí](roles-groups-create-eligible.md)
+- [Vytvoření skupiny s možností přiřazení rolí](roles-groups-create-eligible.md)

@@ -7,14 +7,15 @@ manager: gwallace
 keywords: funkce Azure Functions, Functions, zpracování událostí, zahřívání, studená Start, Premium, dynamické výpočty, architektura bez serveru
 ms.service: azure-functions
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: dade31fd9a5a75c875274ea45607fea81a2de027
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f5523c513cc0bdd08c43bdbed5046bf662f1a3e5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383711"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206576"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Aktivační událost Azure Functions zahřívání
 
@@ -76,7 +77,7 @@ namespace WarmupSample
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
 
-Následující příklad ukazuje Trigger zahřívání v souboru *vfunction.js* a [funkce skriptu jazyka C#](functions-reference-csharp.md) , která se spustí na každé nové instanci při přidání do vaší aplikace.
+Následující příklad ukazuje Trigger zahřívání v souboru * vfunction.js* a [funkce skriptu jazyka C#](functions-reference-csharp.md) , která se spustí na každé nové instanci při přidání do vaší aplikace.
 
 Vaše funkce musí být pojmenována ```warmup``` (nerozlišuje velká a malá písmena) a pro každou aplikaci může existovat pouze jedna zahřívání funkce.
 
@@ -107,7 +108,7 @@ public static void Run(ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje Trigger zahřívání v souboru *function.js* a [funkce JavaScriptu](functions-reference-node.md) , která se spustí na každé nové instanci při přidání do vaší aplikace.
+Následující příklad ukazuje Trigger zahřívání v souboru *function.js* a [funkce JavaScriptu](functions-reference-node.md)  , která se spustí na každé nové instanci při přidání do vaší aplikace.
 
 Vaše funkce musí být pojmenovaná ```warmup``` (nerozlišuje velká a malá písmena) a pro každou aplikaci může existovat jenom jedna zahřívání funkce.
 

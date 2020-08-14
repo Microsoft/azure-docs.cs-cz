@@ -12,15 +12,16 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: ace0ef2660a44af41d8942cfe4d225bc1a03228e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: abb9cbb73f8957cec2cb3240bbf186623b9b2ef9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254584"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205510"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Monitorování rozhraní API pomocí API Management Azure, Event Hubs a Moesif
 [Služba API Management](api-management-key-concepts.md) poskytuje mnoho funkcí, které zvyšují zpracování požadavků HTTP odeslaných na vaše rozhraní HTTP API. Existence požadavků a odpovědí je však přechodný. Požadavek se provede a přetéká prostřednictvím služby API Management do rozhraní back-end API. Vaše rozhraní API zpracovává požadavek a odezvu zpět do příjemce rozhraní API. Služba API Management udržuje několik důležitých statistik o rozhraních API pro zobrazení na řídicím panelu Azure Portal, ale kromě toho se tyto podrobnosti odešlou.
@@ -163,7 +164,7 @@ Zásada pro odeslání zprávy HTTP odpovědi vypadá podobně jako požadavek, 
 Události z centra událostí Azure se přijímají pomocí [protokolu AMQP](https://www.amqp.org/). Tým Microsoft Service Bus provedl klientské knihovny, aby bylo možné snadněji spotřebovávat náročné události. Existují dva různé přístupy, jeden je *přímý spotřebitel* a druhý používá `EventProcessorHost` třídu. Příklady těchto dvou přístupů najdete v [Průvodci programováním v Event Hubs](../event-hubs/event-hubs-programming-guide.md). Krátká verze rozdílů je, `Direct Consumer` poskytuje úplnou kontrolu a `EventProcessorHost` provede některé pracovní postupy, které vám pomohou při zpracování těchto událostí.
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
-V této ukázce používáme `EventProcessorHost` pro jednoduchost, ale to ale nemusí být pro tento konkrétní scénář nejlepší volbou. `EventProcessorHost`nemusíte mít jistotu, že se nemusíte starat o problémy s vlákny v rámci konkrétní třídy procesoru událostí. V našem scénáři ale jednoduše převádíme zprávu na jiný formát a projdeme ji do jiné služby pomocí asynchronní metody. Není potřeba aktualizovat sdílený stav, a proto nehrozí žádné riziko problémů s vlákny. Ve většině scénářů `EventProcessorHost` je pravděpodobně nejlepší volbou a ta je určitě jednodušší.
+V této ukázce používáme `EventProcessorHost` pro jednoduchost, ale to ale nemusí být pro tento konkrétní scénář nejlepší volbou. `EventProcessorHost` nemusíte mít jistotu, že se nemusíte starat o problémy s vlákny v rámci konkrétní třídy procesoru událostí. V našem scénáři ale jednoduše převádíme zprávu na jiný formát a projdeme ji do jiné služby pomocí asynchronní metody. Není potřeba aktualizovat sdílený stav, a proto nehrozí žádné riziko problémů s vlákny. Ve většině scénářů `EventProcessorHost` je pravděpodobně nejlepší volbou a ta je určitě jednodušší.
 
 ### <a name="ieventprocessor"></a>IEventProcessor
 Centrální koncept při použití `EventProcessorHost` je vytvořit implementaci `IEventProcessor` rozhraní, které obsahuje metodu `ProcessEventAsync` . Podstata této metody je znázorněna zde:

@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Vyhledejte odpovědi na některé běžné otázky týkající se Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: 27e834e71f9e5cfdf3d72fb3b221c24edecab4e8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 739cfdb4f930d384e180ffd0f3ce2311cd41c70a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258308"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207994"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Nejčastější dotazy týkající se Azure Dev Spaces
 
@@ -37,9 +37,6 @@ Při použití vlastního grafu souboru Dockerfile nebo Helm existují tato omez
 * Váš graf Helm musí podporovat předání části nebo celé značky obrázku jako hodnoty z *Values. yaml*.
 * Pokud upravujete cokoli pomocí příchozího přenosu dat, můžete graf Helm také aktualizovat tak, aby používal řešení příchozího přenosu dat, které poskytuje Azure Dev Spaces.
 * Pokud chcete použít [Možnosti směrování poskytované Azure dev Spaces][dev-spaces-routing], musí se všechny služby pro jednotlivé projekty vejít do jednoho oboru názvů Kubernetes a musí být nasazeny s jednoduchým pojmenování, například *služba-a*. V standardních grafech Helm se tato aktualizace názvů dá udělat zadáním hodnoty vlastnosti *fullnameOverride* .
-
-Pokud chcete porovnat vlastní souboru Dockerfile nebo Helm graf s existující verzí, která funguje s Azure Dev Spaces, zkontrolujte soubory vygenerované v [rychlém][quickstart-cli]startu.
-
 
 ## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>Můžu měnit soubory generované Azure Dev Spaces?
 
@@ -115,7 +112,6 @@ V tuto chvíli nemůžete použít Azure Dev Spaces s mřížkami služeb, jako 
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https
 [istio]: https://istio.io/
 [linkerd]: https://linkerd.io/
-[quickstart-cli]: quickstart-cli.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [vs-code-multi-root-workspaces]: https://code.visualstudio.com/docs/editor/multi-root-workspaces
 [windows-containers]: how-to/run-dev-spaces-windows-containers.md

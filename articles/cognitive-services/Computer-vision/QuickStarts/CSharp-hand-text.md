@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: OCR pro vytištěné a ručně psaný text pomocí Počítačové zpracování obrazu 3,0 REST API operace čtení a C #'
+title: 'Rychlý Start: extrakce textu pomocí Počítačové zpracování obrazu 3,0 REST API operace čtení a C #'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijte OCR na obrázek pomocí Počítačové zpracování obrazu 3,0 REST API operace čtení a C#.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 36f149019e37949445189045a8a71489f0f26418
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ac924d6cccbc6f36afc00154c230cac118bd9257
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167823"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210146"
 ---
-# <a name="quickstart-ocr-for-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-read-operation-and-c"></a>Rychlý Start: OCR pro vytištěné a ručně psaný text pomocí Počítačové zpracování obrazu 3,0 REST API operace čtení a C #
+# <a name="quickstart-extract-text-using-the-computer-vision-30-rest-api-read-operation-and-c"></a>Rychlý Start: extrakce textu pomocí Počítačové zpracování obrazu 3,0 REST API operace čtení a C #
 
 V tomto rychlém startu budete z obrázku extrahováni vytištěné a ručně psaný text pomocí nové technologie OCR dostupné jako součást REST API Počítačové zpracování obrazu 3,0. Pomocí nových metod [čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) a [získání výsledků čtení](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) můžete detekovat text v obrázku a extrahovat rozpoznané znaky do datového proudu znaků, který je strojově čitelný. 
 
@@ -68,7 +68,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
 
         // the Batch Read method endpoint
-        static string uriBase = endpoint + "/vision/v3.0//read/analyze";
+        static string uriBase = endpoint + "/vision/v3.0/read/analyze";
 
         // Add a local image with text here (png or jpg is OK)
         static string imageFilePath = @"my-image.png";

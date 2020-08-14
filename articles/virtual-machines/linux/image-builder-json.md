@@ -3,17 +3,17 @@ title: Vytvoření šablony Azure image Builder (Preview)
 description: Naučte se, jak vytvořit šablonu pro použití s nástrojem Azure image Builder.
 author: danielsollondon
 ms.author: danis
-ms.date: 08/03/2020
+ms.date: 08/13/2020
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 2f1db4e6c45602fb7fde84079e8ef78179a4ec6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 095aa4ddbdc9ceb04c65d8c896642a0f1a91e547
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830338"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205539"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -306,7 +306,7 @@ Přizpůsobení vlastností:
 - **scriptUri** -URI do umístění souboru 
 - **vložené** – pole příkazů prostředí oddělené čárkami.
 - **sha256Checksum** -hodnota kontrolního součtu SHA256 souboru, vygenerujete ho místně a pak tvůrce imagí provede kontrolu kontrolního součtu a ověření.
-    * K vygenerování sha256Checksum pomocí terminálu pro Mac/Linux spusťte:`sha256sum <fileName>`
+    * K vygenerování sha256Checksum pomocí terminálu pro Mac/Linux spusťte: `sha256sum <fileName>`
 
 
 Příkazy, které se mají spustit s oprávněními superuživatele, musí mít předponu `sudo` .
@@ -430,12 +430,13 @@ OS support: Windows
 ```
 
 Přizpůsobení vlastností:
-- **typ** – windowsupdate.
+- **typ**  – windowsupdate.
 - **Třída SearchCriteria** – volitelné, definuje, který typ aktualizací se má nainstalovat (doporučeno, důležité atd.), BrowseOnly = 0 a IsInstalled = 0 (doporučeno) je výchozí hodnota.
 - **filtry** – volitelné, umožňuje zadat filtr pro zahrnutí nebo vyloučení aktualizací.
 - **updateLimit** – volitelné, definuje, kolik aktualizací se dá nainstalovat, výchozí 1000.
  
- 
+> [!NOTE]
+> V případě, že se vyskytnou nějaké nedokončené restarty Windows nebo jsou pořád spuštěné instalace aplikací, může se stát, web Windows Update že se vám tato chyba obvykle zobrazí v části přizpůsobení. log `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Důrazně doporučujeme zvážit přidání do restartování systému Windows a/nebo povolit aplikacím dostatek času k dokončení instalace pomocí [režimu spánku] nebo příkazů čekání ( https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) ve vložených příkazech nebo skriptech před spuštěním web Windows Update.
 
 ### <a name="generalize"></a>Generalizovat 
 Ve výchozím nastavení bude Azure image Builder na konci každé fáze přizpůsobení image taky spouštět kód zrušení zřízení, aby se image generalizoval. Generalizace je proces, ve kterém je image nastavená tak, aby se mohla znovu použít k vytvoření více virtuálních počítačů. Pro virtuální počítače s Windows používá Azure image Builder nástroj Sysprep. Pro Linux spustí Azure image Builder "waagent-disvision". 
@@ -590,7 +591,7 @@ Distribuovat vlastnosti pro galerie sdílených imagí:
 - **typ** – sharedImage  
 - **galleryImageId** – ID Galerie sdílených imagí, kterou lze zadat ve dvou formátech:
     * Automatické vytváření verzí – nástroj image Builder vygeneruje číslo verze monotónní, což je užitečné v případě, že chcete zachovat obnovování imagí ze stejné šablony: formát je: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` .
-    * Explicitní verze – můžete předat číslo verze, které má Tvůrce obrázků použít. Formát je následující:`/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
+    * Explicitní verze – můžete předat číslo verze, které má Tvůrce obrázků použít. Formát je následující: `/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
 
 - **runOutputName** – jedinečný název pro identifikaci distribuce.  
 - **artifactTags** – volitelné uživatelsky definované páry klíč-hodnota.

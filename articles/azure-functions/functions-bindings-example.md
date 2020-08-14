@@ -3,14 +3,15 @@ title: Příklad triggerů a vazeb Azure Functions.
 description: Naučte se konfigurovat vazby funkcí Azure
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c95524a5de6696bd0ffe7463451d152a9d3a19b4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74227249"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205961"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Příklad triggerů a vazeb Azure Functions.
 
@@ -52,7 +53,7 @@ Pokud chcete zobrazit a upravit obsah *function.js* v Azure Portal, klikněte na
 
 ## <a name="c-script-example"></a>Příklad skriptu C#
 
-Tady je kód skriptu C#, který funguje s touto triggerem a vazbou. Všimněte si, že název parametru, který poskytuje obsah zprávy ve frontě, je `order` . Tento název je vyžadován, protože `name` hodnota vlastnosti v *function.js* je`order` 
+Tady je kód skriptu C#, který funguje s touto triggerem a vazbou. Všimněte si, že název parametru, který poskytuje obsah zprávy ve frontě, je `order` . Tento název je vyžadován, protože `name` hodnota vlastnosti v *function.js* je `order` 
 
 ```cs
 #r "Newtonsoft.Json"

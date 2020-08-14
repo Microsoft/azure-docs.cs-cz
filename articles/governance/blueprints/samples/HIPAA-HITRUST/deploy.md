@@ -1,14 +1,14 @@
 ---
 title: Ukázka nasazení HIPAA HITRUST details
 description: Nasaďte kroky pro ukázku HIPAA HITRUST Details, včetně podrobností parametrů artefaktu podrobného plánu.
-ms.date: 12/03/2019
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: b3101d67e281f3b613b95e3f3ef5f620ae44cec7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f41827d687beb583ea6402d517e88b8cf69903a0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044834"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211518"
 ---
 # <a name="deploy-the-hipaa-hitrust-blueprint-sample"></a>Nasazení ukázky HIPAA HITRUST details
 
@@ -19,7 +19,7 @@ K nasazení ukázky HIPAA HITRUST podrobného plánu je potřeba provést tyto k
 > - Označení kopie ukázky jako **publikované**
 > - Přiřazení kopie podrobného plánu k existujícímu předplatnému
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free).
 
 ## <a name="create-blueprint-from-sample"></a>Vytvořit podrobný plán z ukázky
 
@@ -91,21 +91,23 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
 Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
-Název artefaktu|Typ artefaktu|Název parametru|Description|
+Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
-|\[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače se systémem Linux |Přiřazení zásad |Log Analytics pracovní prostor pro virtuální počítače se systémem Linux |Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače se systémem Linux |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru |Prázdné pole se dá použít k označení žádných volitelných parametrů:`[]` |
-|\[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows |Přiřazení zásad |Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru |Prázdné pole se dá použít k označení žádných volitelných parametrů:`[]` |
-|\[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows |Přiřazení zásad |Log Analytics pracovní prostor pro virtuální počítače s Windows |Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Verze Preview \] : Auditovat HiTRUST HIPAA Controls a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásad |ID pracovního prostoru Log Analytics, pro který by se měly virtuální počítače nakonfigurovat |Toto je ID (GUID) Log Analyticsho pracovního prostoru, pro který by se měly virtuální počítače nakonfigurovat. |
-|\[Verze Preview \] : Auditovat HiTRUST HIPAA Controls a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásad |Seznam typů prostředků, které by měly mít povolené diagnostické protokoly |Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas). |
-|\[Verze Preview \] : Auditovat HiTRUST HIPAA Controls a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásad |Skupina Administrators |Skupiny. Příklad: `Administrator; myUser1; myUser2` |
-|\[Verze Preview \] : Auditovat HiTRUST HIPAA Controls a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásad |Seznam uživatelů, které by měly být zahrnuté ve skupině Správci virtuálních počítačů s Windows |Středníkem oddělený seznam členů, kteří by měli být zahrnutí do místní skupiny Administrators. Příklad: `Administrator; myUser1; myUser2` |
-|Nasazení rozšířené ochrany před internetovými útoky na účty úložiště |Přiřazení zásad |Efekt |Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md). |
-|Nasazení auditování na SQL serverech |Přiřazení zásad |Hodnota v dnech doby uchování (0 označuje neomezené uchovávání) |Počet dnů uchování (volitelné, _180_ dní, pokud není zadaný) |
-|Nasazení auditování na SQL serverech |Přiřazení zásad |Název skupiny prostředků pro účet úložiště pro auditování SQL serveru |Auditování zapisuje události databáze do protokolu auditu ve vašem účtu Azure Storage (účet úložiště se vytvoří v každé oblasti, kde se vytvoří SQL Server, který sdílí všechny servery v této oblasti). Důležité: Pokud chcete, aby řádná operace auditování neodstranila ani nepřejmenovala skupinu prostředků nebo účty úložiště. |
-|Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě |Přiřazení zásad |Předpona účtu úložiště pro diagnostiku skupiny zabezpečení sítě |Tato předpona je kombinována s umístěním skupiny zabezpečení sítě, aby vytvořila název vytvořeného účtu úložiště. |
-|Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě |Přiřazení zásad |Název skupiny prostředků pro účet úložiště pro diagnostiku skupiny zabezpečení sítě (musí existovat) |Skupina prostředků, ve které se účet úložiště vytvoří. Tato skupina prostředků už musí existovat. |
+|\[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače se systémem Linux |Přiřazení zásady |Log Analytics pracovní prostor pro virtuální počítače se systémem Linux |Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače se systémem Linux |Přiřazení zásady |Volitelné: seznam imagí virtuálních počítačů, které mají podporovaný operační systém Linux pro přidání do oboru |Prázdné pole se dá použít k označení žádných volitelných parametrů: `[]` |
+|\[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows |Přiřazení zásady |Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru |Prázdné pole se dá použít k označení žádných volitelných parametrů: `[]` |
+|\[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows |Přiřazení zásady |Log Analytics pracovní prostor pro virtuální počítače s Windows |Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Verze Preview \] : Auditovat HiTRUST HIPAA Controls a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásady |ID pracovního prostoru Log Analytics, pro který by se měly virtuální počítače nakonfigurovat |Toto je ID (GUID) Log Analyticsho pracovního prostoru, pro který by se měly virtuální počítače nakonfigurovat. |
+|\[Verze Preview \] : Auditovat HiTRUST HIPAA Controls a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásady |Seznam typů prostředků, které by měly mít povolené diagnostické protokoly |Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas). |
+|\[Verze Preview \] : Auditovat HiTRUST HIPAA Controls a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásady |Skupina Administrators |Skupiny. Příklad: `Administrator; myUser1; myUser2` |
+|\[Verze Preview \] : Auditovat HiTRUST HIPAA Controls a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit |Přiřazení zásady |Seznam uživatelů, které by měly být zahrnuté ve skupině Správci virtuálních počítačů s Windows |Středníkem oddělený seznam členů, kteří by měli být zahrnutí do místní skupiny Administrators. Příklad: `Administrator; myUser1; myUser2` |
+|Nasazení rozšířené ochrany před internetovými útoky na účty úložiště |Přiřazení zásady |Účinek |Informace o účincích na zásady najdete v [porozumět Azure Policych efektech](../../../policy/concepts/effects.md). |
+|Nasazení auditování na SQL serverech |Přiřazení zásady |Hodnota v dnech doby uchování (0 označuje neomezené uchovávání) |Počet dnů uchování (volitelné, _180_ dní, pokud není zadaný) |
+|Nasazení auditování na SQL serverech |Přiřazení zásady |Název skupiny prostředků pro účet úložiště pro auditování SQL serveru |Auditování zapisuje události databáze do protokolu auditu ve vašem účtu Azure Storage (účet úložiště se vytvoří v každé oblasti, kde se vytvoří SQL Server, který sdílí všechny servery v této oblasti). Důležité: Pokud chcete, aby řádná operace auditování neodstranila ani nepřejmenovala skupinu prostředků nebo účty úložiště. |
+|Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě |Přiřazení zásady |Předpona účtu úložiště pro diagnostiku skupiny zabezpečení sítě |Tato předpona je kombinována s umístěním skupiny zabezpečení sítě, aby vytvořila název vytvořeného účtu úložiště. |
+|Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě |Přiřazení zásady |Název skupiny prostředků pro účet úložiště pro diagnostiku skupiny zabezpečení sítě (musí existovat) |Skupina prostředků, ve které se účet úložiště vytvoří. Tato skupina prostředků už musí existovat. |
+|\[Verze Preview \] : nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS) |Přiřazení zásady |Log Analytics pracovní prostor pro Linux VM Scale Sets (VMSS) |Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad. |
+|\[Verze Preview \] : nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS) |Přiřazení zásady |Log Analytics pracovní prostor pro Linux VM Scale Sets (VMSS) |Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad. |
 
 ## <a name="next-steps"></a>Další kroky
 

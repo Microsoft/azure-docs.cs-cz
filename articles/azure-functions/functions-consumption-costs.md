@@ -3,12 +3,12 @@ title: Odhad nákladů na plán spotřeby v Azure Functions
 description: Naučte se, jak lépe odhadnout náklady, které vám mohou vzniknout při spuštění aplikace Function App v plánu spotřeby v Azure.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 880d1c20c75ce297b556ac203e309e446227e97a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33c892bd7904d2921039a4b2afb9c775d6a4926a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083034"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207769"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Odhad nákladů na plán spotřeby
 
@@ -16,7 +16,7 @@ Existují tři typy hostujících plánů pro aplikaci, která běží v Azure F
 
 | Plánování | Popis |
 | ---- | ----------- |
-| [**Využití**](functions-scale.md#consumption-plan) | Účtují se vám jenom čas, který aplikace Function App spouští. Tento plán zahrnuje[stránku s cenami] [bezplatného grantu]na jednotlivých předplatných.|
+| [**Consumption**](functions-scale.md#consumption-plan) | Účtují se vám jenom čas, který aplikace Function App spouští. Tento plán zahrnuje[stránku s cenami] [bezplatného grantu]na jednotlivých předplatných.|
 | [**Premium**](functions-scale.md#premium-plan) | Poskytuje stejný mechanismus funkcí a škálování jako plán spotřeby, ale s vylepšeným výkonem a přístupem k virtuální síti. Náklady jsou založené na vaší zvolené cenové úrovni. Další informace najdete v tématu [plán Azure Functions Premium](functions-premium-plan.md). |
 | [**Vyhrazeno (App Service)**](functions-scale.md#app-service-plan) <br/>(úroveň Basic nebo vyšší) | Pokud potřebujete spustit na vyhrazených virtuálních počítačích nebo v izolaci, použijte vlastní image nebo využijte své nadměrné App Service plánování kapacity. Používá k [fakturaci pravidelného plánování App Service](https://azure.microsoft.com/pricing/details/app-service/). Náklady jsou založené na vaší zvolené cenové úrovni.|
 
@@ -36,6 +36,8 @@ Vzhledem k tomu, že se využití paměti mění v čase, výpočet je v podstat
 
 > [!NOTE]
 > I když využití procesoru není přímo považováno za náklady na spuštění, může mít vliv na náklady, pokud má vliv na dobu provádění funkce.
+
+U funkce aktivované protokolem HTTP dojde k chybě před tím, než se kód vaší funkce začne spouštět. neúčtují se za spuštění. To znamená, že 401 odezvy z platformy z důvodu ověření klíče rozhraní API nebo funkce App Service ověřování/autorizace se nepočítají na základě nákladů na spuštění. Podobně se nepočítají odpovědi stavového kódu 5xx, když k nim dojde na platformě před funkcí, která požadavek zpracovává. Odpověď 5XX vygenerovaná platformou po spuštění kódu funkce se pořád počítá jako vykonání, i když není chyba vyvolána vaším kódem funkce.
 
 ## <a name="other-related-costs"></a>Další související náklady
 
@@ -206,7 +208,7 @@ performanceCounters
 
 Výsledky vypadají jako v následujícím příkladu:
 
-| časové razítko \[ UTC\]          | name          | Hodnota       |
+| časové razítko \[ UTC\]          | name          | value       |
 |----------------------------|---------------|-------------|
 | 9/12/2019, 1:05:14 \. 947 am | Soukromé bajty | 209 932 288 |
 | 9/12/2019, 1:06:14 \. 994 am | Soukromé bajty | 212 189 184 |

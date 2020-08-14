@@ -5,14 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: devx-track-csharp, mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: 177aa42991612d8ce2e899576599aafc43015c58
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 71f1e2b50daf333e19bc11bce119f37cec28d146
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082773"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209201"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Kurz: Vytvoření tabulky výsledků s principem s doplňováním mezipaměti aplikací v ASP.NET
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
@@ -657,7 +657,7 @@ V této části zřídíte novou databázi v SQL Database, aby se aplikace použ
    | **Název databáze** | *ContosoTeamsDatabase* | Platné názvy databází najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
    | **Předplatné** | *Vaše předplatné*  | Vyberte stejné předplatné, které jste použili k vytvoření mezipaměti a hostování služby App Service. |
    | **Skupina prostředků**  | *TestResourceGroup* | Klikněte na **Použít existující** a použijte stejnou skupinu prostředků, do které jste umístili mezipaměť a App Service. |
-   | **Vybrat zdroj** | **Prázdná databáze** | Začněte s prázdnou databází. |
+   | **Zvolit zdroj** | **Prázdná databáze** | Začněte s prázdnou databází. |
 
 1. V části **Server** klikněte na **Konfigurovat požadované nastavení** > **Vytvořit nový server** a zadejte následující informace. Potom klikněte na tlačítko **Vybrat**:
 
@@ -666,7 +666,7 @@ V této části zřídíte novou databázi v SQL Database, aby se aplikace použ
    | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
    | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
    | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň 8 znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
-   | **Umístění** | *USA – východ* | Vyberte stejnou oblast, ve které jste vytvořili mezipaměť a App Service. |
+   | **Umístění** | *East US* | Vyberte stejnou oblast, ve které jste vytvořili mezipaměť a App Service. |
 
 1. Kliknutím na **Připnout na řídicí panel** a potom na **Vytvořit** vytvořte novou databázi a server.
 
@@ -691,7 +691,7 @@ V tomto kroku kurzu publikujete aktualizace aplikace do Azure a spustíte ji v c
 
 1. V sadě Visual Studio klikněte pravým tlačítkem na projekt **ContosoTeamStats** a vyberte **Publikovat**.
 
-    ![Publikování](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
+    ![Publikovat](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
 2. Klikněte na **Publikovat**, aby se použil stejný profil publikování, který jste vytvořili v rychlém startu.
 
@@ -701,7 +701,7 @@ V tomto kroku kurzu publikujete aktualizace aplikace do Azure a spustíte ji v c
 
     Následující tabulka popisuje každý odkaz na akci v ukázkové aplikaci:
 
-    | Akce | Description |
+    | Akce | Popis |
     | --- | --- |
     | Vytvořit nové |Vytvoření nového týmu. |
     | Odehrát sezónu |Odehrání sezóny her, aktualizace týmových statistik a vymazání zastaralých dat z mezipaměti. |

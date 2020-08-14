@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 4ee489e8b596adf0767856e3358c9bdcb17fbb6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e2aee194d3c97655dd4ec5aaeea46fb607c4c5e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004357"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210966"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Soubor createUiDefinition.json pro prostředí pro vytváření spravovaných aplikací Azure
 
@@ -77,49 +77,56 @@ Následující příklad ukazuje textové pole, které bylo přidáno do výchoz
 Prvek konfigurace určíte, pokud potřebujete přepsat výchozí chování pro základní kroky. Následující příklad ukazuje dostupné vlastnosti.
 
 ```json
-"config": {  
-    "basics": {  
-        "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
-        "subscription": {
-            "constraints": {
-                "validations": [
-                    {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid subscription."
-                    },
+"config": {
+    "basics": {
+        "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
+        "subscription": {
+            "constraints": {
+                "validations": [
                     {
-                        "permission": "<Resource Provider>/<Action>",
-                        "message": "Must have correct permission to complete this step."
-                    }
-                ]
-            },
-            "resourceProviders": [ "<Resource Provider>" ]
-        },
-        "resourceGroup": {
-            "constraints": {
-                "validations": [
-                    {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid resource group."
-                    }
-                ]
-            },
-            "allowExisting": true
-        },
-        "location": {  
-            "label": "Custom label for location",  
-            "toolTip": "provide a useful tooltip",  
-            "resourceTypes": [ "Microsoft.Compute/virtualMachines" ],
-            "allowedValues": [ "eastus", "westus2" ],  
-            "visible": true  
-        }  
-    }  
-},  
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid subscription."
+                    },
+                    {
+                        "permission": "<Resource Provider>/<Action>",
+                        "message": "Must have correct permission to complete this step."
+                    }
+                ]
+            },
+            "resourceProviders": [
+                "<Resource Provider>"
+            ]
+        },
+        "resourceGroup": {
+            "constraints": {
+                "validations": [
+                    {
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid resource group."
+                    }
+                ]
+            },
+            "allowExisting": true
+        },
+        "location": {
+            "label": "Custom label for location",
+            "toolTip": "provide a useful tooltip",
+            "resourceTypes": [
+                "Microsoft.Compute/virtualMachines"
+            ],
+            "allowedValues": [
+                "eastus",
+                "westus2"
+            ],
+            "visible": true
+        }
+    }
+},
 ```
 
 Pro `description` Zadejte řetězec s podporou Markdownu, který popisuje váš prostředek. Podporují se víceřádkové formáty a odkazy.
 
-Pro `location` Zadejte vlastnosti ovládacího prvku umístění, který chcete přepsat. Všechny vlastnosti, které nejsou přepsány, jsou nastaveny na výchozí hodnoty. `resourceTypes`přijímá pole řetězců obsahující plně kvalifikované názvy typů prostředků. Možnosti umístění jsou omezené jenom na oblasti, které podporují typy prostředků.  `allowedValues`   přijímá pole řetězců oblastí. V rozevíracím seznamu se zobrazí pouze tyto oblasti.Můžete nastavit i `allowedValues`    `resourceTypes` . Výsledkem je průnik obou seznamů. Nakonec `visible` lze vlastnost použít k podmíněnému nebo úplnému vypnutí rozevíracího seznamu umístění.  
+Pro `location` Zadejte vlastnosti ovládacího prvku umístění, který chcete přepsat. Všechny vlastnosti, které nejsou přepsány, jsou nastaveny na výchozí hodnoty. `resourceTypes` přijímá pole řetězců obsahující plně kvalifikované názvy typů prostředků. Možnosti umístění jsou omezené jenom na oblasti, které podporují typy prostředků.  `allowedValues`   přijímá pole řetězců oblastí. V rozevíracím seznamu se zobrazí pouze tyto oblasti.Můžete nastavit i `allowedValues`    `resourceTypes` . Výsledkem je průnik obou seznamů. Nakonec `visible` lze vlastnost použít k podmíněnému nebo úplnému vypnutí rozevíracího seznamu umístění.  
 
 `subscription`Prvky a `resourceGroup` umožňují zadat další ověření. Syntaxe pro určení platnosti je shodná s vlastním ověřením pro [textové pole](microsoft-common-textbox.md). Můžete také zadat `permission` ověřování pro předplatné nebo skupinu prostředků.  
 
@@ -174,7 +181,7 @@ Chcete-li filtrovat dostupná umístění pouze do těch umístění, která pod
           ...
 ```  
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 CreateUiDefinition poskytuje [funkce](create-uidefinition-functions.md) pro práci s vstupy a výstupy prvků a funkcemi, jako jsou podmíněné. Tyto funkce jsou podobné v syntaxi a funkcích pro Azure Resource Manager funkcí šablon.
 

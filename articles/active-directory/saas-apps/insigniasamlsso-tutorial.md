@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: c7b62a65d3f0b3b4006c55f5323b1feb69cca9f1
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 436b3d7005750c4f80e7bdd50449e36e11cee882
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799842"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209623"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Kurz: Integrace Azure Active Directory s Insignia SAML SSO
 
@@ -32,9 +32,9 @@ Integrace Insignia SSO s protokolem SAML s Azure AD poskytuje následující vý
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K nakonfigurování integrace služby Azure AD pomocí jednotného přihlašování Insignia SAML budete potřebovat následující položky:
 
@@ -113,10 +113,10 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
     https://<customername>.insigniailsusa.com/
     ```
     
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<customername>.insigniailsusa.com/<uniqueid>`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<customername>.insigniailsusa.com/<uniqueid>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Insignia SAML pro jednotné přihlašování](https://www.insigniasoftware.com/insignia/Techsupport.aspx) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Insignia SAML pro jednotné přihlašování](http://www.insigniasoftware.com/insignia/Techsupport.aspx) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -134,7 +134,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 ### <a name="configure-insignia-saml-sso-single-sign-on"></a>Konfigurace jednotného přihlašování Insignia SAML jednotného přihlašování
 
-Pokud chcete nakonfigurovat jednotné přihlašování na **Insignia SAML** na straně jednotného přihlašování, musíte stáhnout stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal až [Insignia týmu podpory SAML pro jednotné](https://www.insigniasoftware.com/insignia/Techsupport.aspx)přihlašování. Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Pokud chcete nakonfigurovat jednotné přihlašování na **Insignia SAML** na straně jednotného přihlašování, musíte stáhnout stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal až [Insignia týmu podpory SAML pro jednotné](http://www.insigniasoftware.com/insignia/Techsupport.aspx)přihlašování. Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -159,7 +159,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -189,7 +189,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-insignia-saml-sso-test-user"></a>Vytvořit uživatele testu jednotného přihlašování SAML Insignia
 
-V této části vytvoříte uživatele s názvem Britta Simon v Insignia SSO jednotného přihlašování SAML. Pokud chcete přidat uživatele na Insignia SAML Insignia, můžete pracovat s [týmem podpory jednotného](https://www.insigniasoftware.com/insignia/Techsupport.aspx) přihlašování SAML. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v Insignia SSO jednotného přihlašování SAML. Pokud chcete přidat uživatele na Insignia SAML Insignia, můžete pracovat s [týmem podpory jednotného](http://www.insigniasoftware.com/insignia/Techsupport.aspx) přihlašování SAML. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 

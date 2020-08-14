@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 6e38be4a97678ce749e32ca31c0703ed9d786d76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30f6bf7629152050bc1249a1e22aff0aa30642de
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84046765"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209534"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Veřejné datové sady pro testování a vytváření prototypů
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -33,7 +33,7 @@ Projděte si tento seznam veřejných datových sad pro data, která můžete po
 | [Zpoždění leteckých letů a další přepravní data](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Středisko pro povýšení statistik přepravosti (tečka) v USA sleduje provoz domácích letů provozovaných v rámci velkých leteckých dopravců. Zobrazí se souhrnné informace o počtu neúspěšných, zpožděných, zrušených a předaných letů... v souhrnných tabulkách publikovaných na tomto webu. | Soubory jsou ve formátu CSV. |
 | [Závažnosti provozu – systém generování sestav analýzy závažnosti USA (FARS)](https://www.nhtsa.gov/FARS) | "FARS je celostátní soupis, který poskytuje NHTSA, Kongresem a každoroční údaje o závažných škodách utrpěných při selhání provozu motorových vozidel." | Možnost vytvořit vlastní data o závažnosti se spouští online pomocí systému dotazů FARS. Můžete si také stáhnout všechna FARS data z 1975, která se nacházejí od serveru FTP. |
 | [Data o toxických chemických datech – EPA toxicita (ToxCast &trade; )](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "NejEPAější a veřejně dostupná data o toxicitě s vysokou propustností na tisících chemických látek. Tato data se generují prostřednictvím výzkumného úsilí EPA ToxCast. | Datové sady jsou k dispozici v různých formátech, včetně tabulek, balíčků R a souborů databáze MySQL. |
-| [Toxický chemický data – NIH Tox21 data Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | 2014 "Tox21 data Challenge je navržená tak, aby pomáhala pracovníkům, kteří porozuměli potenciálním chemickým látkám a sloučeninám, které jsou testovány prostřednictvím toxikologického podnětu v rámci 21. | Datové sady jsou dostupné v SMAJLÍKech a SDF formátech. Data poskytují "data o zkušebních činnostech a chemické struktury pro kolekci Tox21 ~ 10 000 sloučeniny (Tox21 10 000)." |
+| [Toxický chemický data – NIH Tox21 data Challenge 2014](https://tripod.nih.gov/tox21) | 2014 "Tox21 data Challenge je navržená tak, aby pomáhala pracovníkům, kteří porozuměli potenciálním chemickým látkám a sloučeninám, které jsou testovány prostřednictvím toxikologického podnětu v rámci 21. | Datové sady jsou dostupné v SMAJLÍKech a SDF formátech. Data poskytují "data o zkušebních činnostech a chemické struktury pro kolekci Tox21 ~ 10 000 sloučeniny (Tox21 10 000)." |
 | [Biotechnologie a data genomu z NCBI](https://www.ncbi.nlm.nih.gov/guide/data-software/) | Více datových sad, které pokrývají genů, genomy a bílkoviny. | Datové sady jsou v textu, formátu XML, vysokých a dalších formátech. K dispozici je aplikace pro vysoké dostupnosti. |
 
 ## <a name="other-statistical-and-scientific-data"></a>Další statistická a vědecká data

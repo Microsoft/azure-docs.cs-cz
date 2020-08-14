@@ -3,12 +3,12 @@ title: Práce s rozsáhlými datovými sadami
 description: Seznamte se s tím, jak ve velkých datových sadách získat záznamy, které se mají při práci se službou Azure Resource Graph získávat, formátovat, stránkovat a přeskakovat.
 ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 77ec7cc342672becddcbca7e6173eb1968519f02
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 2de62af5f7a59837876ed3348bc14de232fdee38
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056402"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206360"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Práce s velkými sadami dat prostředků Azure
 
@@ -33,7 +33,7 @@ az graph query -q "Resources | project name | order by name asc" --first 200 --o
 Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
-V [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)je ovládací prvek **$Top** a je součástí **QueryRequestOptionsu**.
+V [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)je ovládací prvek **$Top** a je součástí **QueryRequestOptionsu**.
 
 Ovládací prvek, který je _nejvíce omezující_ , se podaří. Pokud Váš dotaz například používá operátory **Top** nebo **limit** a výsledkem by bylo více záznamů než **první**, maximální počet vrácených záznamů bude stejný jako **první**. Podobně, pokud je **horní** nebo **limit** menší než **první**, vrácená sada záznamů bude menší hodnota nakonfigurovaná funkcí **Top** nebo **limit**.
 
@@ -59,11 +59,11 @@ az graph query -q "Resources | project name | order by name asc" --skip 10 --out
 Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
-V [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)je ovládací prvek **$Skip** a je součástí **QueryRequestOptionsu**.
+V [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)je ovládací prvek **$Skip** a je součástí **QueryRequestOptionsu**.
 
 ## <a name="paging-results"></a>Výsledky stránkování
 
-Pokud je nutné rozdělit sadu výsledků na menší sady záznamů ke zpracování nebo protože sada výsledků by překročila maximální povolenou hodnotu _1000_ vrácených záznamů, použijte stránkování. [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 
+Pokud je nutné rozdělit sadu výsledků na menší sady záznamů ke zpracování nebo protože sada výsledků by překročila maximální povolenou hodnotu _1000_ vrácených záznamů, použijte stránkování. [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 
  **QueryResponse** poskytuje hodnoty pro indikaci sady výsledků byla rozdělena: **resultTruncated** a **$skipToken**. **resultTruncated** je logická hodnota, která informuje příjemce, pokud v odpovědi nejsou vráceny další záznamy. Tato podmínka se dá identifikovat také v případě, že vlastnost **Count** je menší než vlastnost **totalRecords** . **totalRecords** definuje počet záznamů, které odpovídají dotazu.
 
  **resultTruncated** má **hodnotu true** , pokud je buď zakázáno stránkování, nebo není možné, protože není `id` k dispozici žádný sloupec, nebo pokud je k dispozici méně prostředků, než dotaz požaduje. Pokud **resultTruncated** má resultTruncated **hodnotu true**, vlastnost **$skipToken** není nastavena.
@@ -81,7 +81,7 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 > [!IMPORTANT]
 > Aby bylo možné stránkování fungovat, dotaz musí **projektovat** pole **ID** . Pokud v dotazu chybí, nebude odpověď zahrnovat **$skipToken**.
 
-Příklad naleznete v tématu [dotaz na další stránku](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources#next-page-query) v dokumentaci REST API.
+Příklad naleznete v tématu [dotaz na další stránku](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources#next-page-query) v dokumentaci REST API.
 
 ## <a name="formatting-results"></a>Formátování výsledků
 

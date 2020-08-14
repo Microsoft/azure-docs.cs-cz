@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 19c08029e78e68273298e76635136ff35ae724e0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c242b08c598b04c84ab330e846704eace23c4858
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924117"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205476"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure Virtual Network
 
@@ -356,7 +356,7 @@ Ne, za použití koncových bodů služby virtuální sítě se neúčtují žá
 Ano, je to možné. Virtuální sítě a prostředky služeb Azure můžou být ve stejném nebo různých předplatných. Jediným požadavkem je, že virtuální síť i prostředky služby Azure musí být ve stejném tenantovi Active Directory (AD).
 
 ### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>Můžu zapnout koncové body služby virtuální sítě a nastavit seznamy ACL pro virtuální sítě, pokud virtuální síť a prostředky služeb Azure patří do různých tenantů služby AD?
-Ne, koncové body služby virtuální sítě a seznamy ACL virtuální sítě nejsou v klientech služby AD podporované.
+Ano, je možné použít koncové body služby pro Azure Storage a Azure Key Vault. V případě služeb REST nejsou v klientech služby AD podporovány koncové body služby virtuální sítě a seznamy ACL virtuální sítě.
 
 ### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Může IP adresa místního zařízení připojená prostřednictvím služby Azure Virtual Network Gateway (VPN) nebo brány ExpressRoute přistupovat ke službě Azure PaaS prostřednictvím koncových bodů služby VNet?
 Prostředky služeb Azure svázané s virtuálními sítěmi ve výchozím nastavení nejsou přístupné z místních sítí. Pokud chcete povolený provoz z místního prostředí, musíte taky z místního nebo ExpressRoute povolených IP adres veřejných (obvykle NAT). Tyto IP adresy je možné přidat prostřednictvím konfigurace brány firewall protokolu IP pro prostředky služeb Azure.

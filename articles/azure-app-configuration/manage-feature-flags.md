@@ -14,13 +14,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: ccab8014000f9f684249bf2c1f800f74c92e7369
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: dd816ebcf2a40e6a0b7febcc3fe5c1006dac20bb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76899365"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209949"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Kurz: Správa příznaků funkcí v konfiguraci aplikací Azure
 
@@ -38,7 +38,7 @@ Správce funkcí v konfiguraci aplikace Azure Portal for App poskytuje uživatel
 
 Přidání nového příznaku funkce:
 
-1. Vyberte **správce** > funkcí **+ Přidat** a přidejte příznak funkce.
+1. Vyberte **správce funkcí**  >  **+ Přidat** a přidejte příznak funkce.
 
     ![Seznam příznaků funkcí](./media/azure-app-configuration-feature-flags.png)
 
@@ -52,7 +52,7 @@ Přidání nového příznaku funkce:
 
 1. Když je stav *zapnutý*, vyberte **+ Přidat filtr** a určete další podmínky, které se mají uvést do stavu. Zadejte vestavěný nebo vlastní klíč filtru a pak vyberte **+ Přidat parametr** pro přidružení jednoho nebo více parametrů k filtru. Mezi předdefinované filtry patří:
 
-    | Key | Parametry JSON |
+    | Klíč | Parametry JSON |
     |---|---|
     | Microsoft. PERCENTAGE | {"Value": 0-100%} |
     | Microsoft. TimeWindow | {"Start": čas UTC, "konec": světový čas UTC} |
@@ -71,7 +71,7 @@ Změna hodnoty stavu příznaku funkce:
 
 ## <a name="access-feature-flags"></a>Přístup k příznakům funkcí
 
-Příznaky funkcí vytvořené správcem funkcí se ukládají a načítají jako běžné hodnoty klíčů. Jsou uchovávány v rámci speciální předpony `.appconfig.featureflag`oboru názvů. Chcete-li zobrazit základní hodnoty klíčů, použijte Průzkumníka konfigurace. Vaše aplikace může tyto hodnoty načíst pomocí zprostředkovatelů konfigurace aplikace, sad SDK, rozšíření příkazového řádku a rozhraní REST API.
+Příznaky funkcí vytvořené správcem funkcí se ukládají a načítají jako běžné hodnoty klíčů. Jsou uchovávány v rámci speciální předpony oboru názvů `.appconfig.featureflag` . Chcete-li zobrazit základní hodnoty klíčů, použijte Průzkumníka konfigurace. Vaše aplikace může tyto hodnoty načíst pomocí zprostředkovatelů konfigurace aplikace, sad SDK, rozšíření příkazového řádku a rozhraní REST API.
 
 ## <a name="next-steps"></a>Další kroky
 

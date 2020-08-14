@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 6713a1fbbbbca0aa212461cc966b42aaf2daa47e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5f42079d271a933cb9a722c7e33e6f646f7c4d1b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498436"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210502"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure SQL Managed instance (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -192,7 +192,7 @@ Ne, nejsou podporovány. [Zobrazení dynamické správy](../database/monitoring-
 
 **Můžu vytvořit upozornění metriky na spravované instanci SQL?**
 
-Yes. Pokyny najdete v tématu [vytvoření výstrah pro spravovanou instanci SQL](alerts-create.md).
+Ano. Pokyny najdete v tématu [vytvoření výstrah pro spravovanou instanci SQL](alerts-create.md).
 
 **Můžu vytvářet upozornění na metriky v databázi ve spravované instanci?**
 
@@ -214,7 +214,7 @@ Ano, v některých případech můžete koupit doplňky úložiště nezávisle 
 
 **Jak můžu optimalizovat výkon úložiště v Pro obecné účely úrovně služeb?**
 
-Pokud chcete optimalizovat výkon úložiště, přečtěte si téma [osvědčené postupy pro úložiště v pro obecné účely](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525).
+Pokud chcete optimalizovat výkon úložiště, přečtěte si téma [osvědčené postupy pro úložiště v pro obecné účely](https://techcommunity.microsoft.com).
 
 ## <a name="backup-and-restore"></a>Zálohování a obnovení
 
@@ -251,11 +251,11 @@ K tomu je potřeba zajistit nepřerušovaný tok provozu správy za účelem spl
 
 **Můžu získat zdrojové rozsahy IP adres, které se používají pro příchozí provoz správy?**
 
-Yes. Můžete analyzovat provoz přicházející do skupiny zabezpečení sítě [konfigurací protokolů Network Watcher Flow](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group).
+Ano. Můžete analyzovat provoz přicházející do skupiny zabezpečení sítě [konfigurací protokolů Network Watcher Flow](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group).
 
 **Můžu nastavit NSG pro řízení přístupu ke koncovému bodu dat (port 1433)?**
 
-Yes. Po zřízení spravované instance můžete nastavit NSG, který řídí příchozí přístup k portu 1433. Doporučuje se co nejvíc omezit rozsah IP adres.
+Ano. Po zřízení spravované instance můžete nastavit NSG, který řídí příchozí přístup k portu 1433. Doporučuje se co nejvíc omezit rozsah IP adres.
 
 **Můžu nastavit síťové virtuální zařízení nebo místní bránu firewall pro filtrování odchozího provozu správy na základě plně kvalifikovaných názvů domén?**
 
@@ -266,7 +266,7 @@ Ne. Tato akce není podporována z několika důvodů:
 
 **Můžu pro odchozí provoz bez správy nastavit síťové virtuální zařízení nebo bránu firewall?**
 
-Yes. Nejjednodušší způsob, jak toho dosáhnout, je přidání pravidla 0/0 do UDR přidruženého k podsíti spravované instance ke směrování provozu prostřednictvím síťové virtuální zařízení.
+Ano. Nejjednodušší způsob, jak toho dosáhnout, je přidání pravidla 0/0 do UDR přidruženého k podsíti spravované instance ke směrování provozu prostřednictvím síťové virtuální zařízení.
  
 **Kolik IP adres potřebuji pro spravovanou instanci?**
 
@@ -296,7 +296,7 @@ Tento krok není povinný. Můžete buď [vytvořit virtuální síť pro spravo
 
 Ne. V současné době nepodporujeme umístění spravované instance v podsíti, která už obsahuje jiné typy prostředků.
 
-## <a name="connectivity"></a>Připojení 
+## <a name="connectivity"></a>Možnosti připojení 
 
 **Můžu se k spravované instanci připojit pomocí IP adresy?**
 
@@ -313,7 +313,7 @@ Z tohoto důvodu se důrazně nedoporučuje spoléhat na neměnnosti IP adresy, 
 
 **Má spravovaná instance veřejný koncový bod?**
 
-Yes. Spravovaná instance má veřejný koncový bod, který se ve výchozím nastavení používá jenom pro správu služeb, ale zákazník ho může povolit i pro přístup k datům. Další podrobnosti najdete v tématu [použití spravované instance SQL s veřejnými koncovými body](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely). Pokud chcete nakonfigurovat veřejný koncový bod, použijte ke [konfiguraci veřejného koncového bodu ve spravované instanci SQL](public-endpoint-configure.md).
+Ano. Spravovaná instance má veřejný koncový bod, který se ve výchozím nastavení používá jenom pro správu služeb, ale zákazník ho může povolit i pro přístup k datům. Další podrobnosti najdete v tématu [použití spravované instance SQL s veřejnými koncovými body](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely). Pokud chcete nakonfigurovat veřejný koncový bod, použijte ke [konfiguraci veřejného koncového bodu ve spravované instanci SQL](public-endpoint-configure.md).
 
 **Jak řízení spravované instance přistupuje k veřejnému koncovému bodu?**
 
@@ -323,7 +323,7 @@ Služba správy a nasazení se připojí ke spravované instanci pomocí [koncov
 
 **Můžu použít veřejný koncový bod pro přístup k datům v databázích spravované instance?**
 
-Yes. Zákazník bude muset povolit přístup k datům veřejného koncového bodu z webu [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /ARM a nakonfigurovat NSG tak, aby zamkne přístup k datovému portu (číslo portu 3342). Další informace najdete v tématech [Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL](public-endpoint-configure.md) a [bezpečné použití spravované instance Azure SQL s veřejným koncovým bodem](public-endpoint-overview.md). 
+Ano. Zákazník bude muset povolit přístup k datům veřejného koncového bodu z webu [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /ARM a nakonfigurovat NSG tak, aby zamkne přístup k datovému portu (číslo portu 3342). Další informace najdete v tématech [Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL](public-endpoint-configure.md) a [bezpečné použití spravované instance Azure SQL s veřejným koncovým bodem](public-endpoint-overview.md). 
 
 **Můžu zadat vlastní port pro koncové body dat SQL?**
 
@@ -353,7 +353,7 @@ Zákazníkům se doporučuje použít sadu nastavení zabezpečení a ovládací
 
 **Můžu nakonfigurovat vlastní DNS pro spravovanou instanci SQL?**
 
-Yes. Podívejte [se, jak nakonfigurovat vlastní DNS pro spravovanou instanci SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns).
+Ano. Podívejte [se, jak nakonfigurovat vlastní DNS pro spravovanou instanci SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns).
 
 **Můžu aktualizovat DNS?**
 

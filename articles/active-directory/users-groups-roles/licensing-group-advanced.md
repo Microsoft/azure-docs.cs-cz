@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbdebd8d59034bd16a3199c1304606ccf12ab2c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2f055a6b8f4a8876c024bdd131a6001e21004e5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727666"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209463"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory
 
@@ -130,7 +130,7 @@ Ke kontrole, jestli mají uživatelé přiřazenou licenci přímo nebo zděděn
 
 1. Spusťte `connect-msolservice` rutinu pro ověření a připojení k vaší organizaci.
 
-2. `Get-MsolAccountSku`dá se použít ke zjištění všech zřízených licencí produktu v organizaci Azure AD.
+2. `Get-MsolAccountSku` dá se použít ke zjištění všech zřízených licencí produktu v organizaci Azure AD.
 
    ![Snímek obrazovky s rutinou Get-MsolAccountSku Zjistěte](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
@@ -205,7 +205,7 @@ Pokud používáte licencování na základě skupin, je vhodné se seznámit s 
 
 - Licencování na základě skupin aktuálně nepodporuje skupiny, které obsahují další skupiny (vnořené skupiny). Pokud použijete licenci pro vnořenou skupinu, použije se jenom pro bezprostřední členy této skupiny na první úrovni.
 
-- Tato funkce se dá použít jenom se skupinami zabezpečení a skupinami Office 365, které mají securityEnabled = TRUE.
+- Tato funkce se dá použít jenom se skupinami zabezpečení a Microsoft 365mi skupinami, které mají securityEnabled = TRUE.
 
 - [Centrum pro správu Microsoft 365](https://admin.microsoft.com) v současné době nepodporuje licencování na základě skupin. Pokud uživatel zdědí licenci ze skupiny, zobrazí se tato licence na portálu pro správu Office jako běžná Uživatelská licence. Pokud se pokusíte tuto licenci změnit nebo se pokusíte licenci odebrat, portál vrátí chybovou zprávu. Zděděné licence skupiny nelze upravovat přímo uživateli.
 

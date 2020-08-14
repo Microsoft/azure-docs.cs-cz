@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 7616f6c502f0b5402aa784f707d0dafa31268d78
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 2f4647f4e13677d9136ce7fdb090e809943cdf0d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853054"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206701"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby úložiště tabulek Azure pro Azure Functions
 
@@ -94,7 +94,7 @@ public class TableStorage
 
 ### <a name="cloudtable"></a>CloudTable
 
-`IQueryable`není podporován v [modulu runtime Functions v2](functions-versions.md). Alternativou je použití `CloudTable` parametru metody pro čtení tabulky pomocí sady Azure Storage SDK. Tady je příklad funkce, která se dotazuje Azure Functions tabulce protokolu:
+`IQueryable` není podporován v [modulu runtime Functions v2](functions-versions.md). Alternativou je použití `CloudTable` parametru metody pro čtení tabulky pomocí sady Azure Storage SDK. Tady je příklad funkce, která se dotazuje Azure Functions tabulce protokolu:
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -249,7 +249,7 @@ public class Person : TableEntity
 
 ### <a name="cloudtable"></a>CloudTable
 
-`IQueryable`není podporováno v modulu runtime Functions pro [verze 2. x a vyšší)](functions-versions.md). Alternativou je použití `CloudTable` parametru metody pro čtení tabulky pomocí sady Azure Storage SDK. Tady je příklad funkce, která se dotazuje Azure Functions tabulce protokolu:
+`IQueryable` není podporováno v modulu runtime Functions pro [verze 2. x a vyšší)](functions-versions.md). Alternativou je použití `CloudTable` parametru metody pro čtení tabulky pomocí sady Azure Storage SDK. Tady je příklad funkce, která se dotazuje Azure Functions tabulce protokolu:
 
 ```json
 {
@@ -575,27 +575,27 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 * **Číst jeden řádek v**
 
-  Nastavte `partitionKey` a `rowKey` . Přístup k datům tabulky pomocí parametru metody `T <paramName>` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *function.jsv*. `T`je obvykle typ, který implementuje `ITableEntity` nebo je odvozen z `TableEntity` . `filter`Vlastnosti a `take` se v tomto scénáři nepoužívají.
+  Nastavte `partitionKey` a `rowKey` . Přístup k datům tabulky pomocí parametru metody `T <paramName>` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *function.jsv*. `T` je obvykle typ, který implementuje `ITableEntity` nebo je odvozen z `TableEntity` . `filter`Vlastnosti a `take` se v tomto scénáři nepoužívají.
 
 * **Čtení jednoho nebo více řádků**
 
-  Přístup k datům tabulky pomocí parametru metody `IQueryable<T> <paramName>` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *function.jsv*. `T`musí se jednat o typ, který implementuje `ITableEntity` nebo odvodí z `TableEntity` . Můžete použít `IQueryable` metody k provedení libovolného filtrování. `partitionKey`Vlastnosti, `rowKey` , `filter` a `take` nejsou v tomto scénáři použity.  
+  Přístup k datům tabulky pomocí parametru metody `IQueryable<T> <paramName>` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *function.jsv*. `T` musí se jednat o typ, který implementuje `ITableEntity` nebo odvodí z `TableEntity` . Můžete použít `IQueryable` metody k provedení libovolného filtrování. `partitionKey`Vlastnosti, `rowKey` , `filter` a `take` nejsou v tomto scénáři použity.  
 
   > [!NOTE]
-  > `IQueryable`není podporován v [modulu runtime Functions v2](functions-versions.md). Alternativou je [použití parametru paramName metody cloudu](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) pro čtení tabulky pomocí sady SDK Azure Storage. Pokud se pokusíte vytvořit navázání `CloudTable` a získat chybovou zprávu, ujistěte se, že máte odkaz na [správnou verzi sady SDK úložiště](#azure-storage-sdk-version-in-functions-1x).
+  > `IQueryable` není podporován v [modulu runtime Functions v2](functions-versions.md). Alternativou je [použití parametru paramName metody cloudu](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) pro čtení tabulky pomocí sady SDK Azure Storage. Pokud se pokusíte vytvořit navázání `CloudTable` a získat chybovou zprávu, ujistěte se, že máte odkaz na [správnou verzi sady SDK úložiště](#azure-storage-sdk-version-in-functions-1x).
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
 * **Číst jeden řádek v**
 
-  Nastavte `partitionKey` a `rowKey` . Přístup k datům tabulky pomocí parametru metody `T <paramName>` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *function.jsv*. `T`je obvykle typ, který implementuje `ITableEntity` nebo je odvozen z `TableEntity` . `filter`Vlastnosti a `take` se v tomto scénáři nepoužívají.
+  Nastavte `partitionKey` a `rowKey` . Přístup k datům tabulky pomocí parametru metody `T <paramName>` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *function.jsv*. `T` je obvykle typ, který implementuje `ITableEntity` nebo je odvozen z `TableEntity` . `filter`Vlastnosti a `take` se v tomto scénáři nepoužívají.
 
 * **Čtení jednoho nebo více řádků**
 
-  Přístup k datům tabulky pomocí parametru metody `IQueryable<T> <paramName>` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *function.jsv*. `T`musí se jednat o typ, který implementuje `ITableEntity` nebo odvodí z `TableEntity` . Můžete použít `IQueryable` metody k provedení libovolného filtrování. `partitionKey`Vlastnosti, `rowKey` , `filter` a `take` nejsou v tomto scénáři použity.  
+  Přístup k datům tabulky pomocí parametru metody `IQueryable<T> <paramName>` . Ve skriptu jazyka C# `paramName` je hodnota zadaná ve `name` vlastnosti *function.jsv*. `T` musí se jednat o typ, který implementuje `ITableEntity` nebo odvodí z `TableEntity` . Můžete použít `IQueryable` metody k provedení libovolného filtrování. `partitionKey`Vlastnosti, `rowKey` , `filter` a `take` nejsou v tomto scénáři použity.  
 
   > [!NOTE]
-  > `IQueryable`není podporován v [modulu runtime Functions v2](functions-versions.md). Alternativou je [použití parametru paramName metody cloudu](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) pro čtení tabulky pomocí sady SDK Azure Storage. Pokud se pokusíte vytvořit navázání `CloudTable` a získat chybovou zprávu, ujistěte se, že máte odkaz na [správnou verzi sady SDK úložiště](#azure-storage-sdk-version-in-functions-1x).
+  > `IQueryable` není podporován v [modulu runtime Functions v2](functions-versions.md). Alternativou je [použití parametru paramName metody cloudu](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) pro čtení tabulky pomocí sady SDK Azure Storage. Pokud se pokusíte vytvořit navázání `CloudTable` a získat chybovou zprávu, ujistěte se, že máte odkaz na [správnou verzi sady SDK úložiště](#azure-storage-sdk-version-in-functions-1x).
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

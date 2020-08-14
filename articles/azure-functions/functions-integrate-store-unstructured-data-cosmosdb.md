@@ -3,13 +3,13 @@ title: Ukládání nestrukturovaných dat pomocí Azure Cosmos DB a funkcí
 description: Ukládání nestrukturovaných dat pomocí Azure Functions a databáze Cosmos DB
 ms.topic: quickstart
 ms.date: 04/14/2020
-ms.custom: mvc
-ms.openlocfilehash: 09d9bbca7119539f31a4cea056f338cf28dfcd23
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: a242f1ffc0a7738ce7cdf33aeeef214fb4f63e61
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121854"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210884"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Ukládání nestrukturovaných dat pomocí služeb Azure Functions a Azure Cosmos DB
 
@@ -20,7 +20,7 @@ ms.locfileid: "83121854"
 
 Ve službě Azure Functions poskytují vstupní a výstupní vazby deklarativní způsob připojení k datům externí služby z funkce. V tomto článku se dozvíte, jak aktualizovat stávající funkci a přidat výstupní vazbu, která ukládá nestrukturovaná data v dokumentu Azure Cosmos DB.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -63,7 +63,7 @@ Před vytvořením výstupní vazby potřebujete účet služby Azure Cosmos DB,
 
 Nahraďte stávající kód funkce následujícím kódem ve zvoleném jazyce:
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Nahraďte stávající funkci v C# následujícím kódem:
 
@@ -150,7 +150,7 @@ Tento vzorový kód přečte řetězce dotazů požadavků HTTP a přiřadí je 
 
     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="Vyhledejte službu Cosmos DB." border="true":::
 
-1. Zvolte účet Azure Cosmos DB a pak vyberte **Průzkumník dat**.
+1. Zvolte účet Azure Cosmos DB a pak vyberte  **Průzkumník dat**.
 
 1. Rozbalte uzly **úlohacollection** , vyberte nový dokument a potvrďte, že dokument obsahuje vaše hodnoty řetězce dotazu spolu s dalšími metadaty.
 
