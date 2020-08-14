@@ -3,23 +3,23 @@ title: 'Rychlý Start: Vytvoření front Azure Storage na portálu'
 description: Vytvořte frontu pomocí Azure Portal. Pak použijte Azure Portal k přidání zprávy, zobrazení vlastností zprávy a vyřazení zprávy do fronty.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/06/2019
+ms.date: 08/13/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: af3f812c8018f059f26c29cd373714e4ab3c8a49
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 11c6cdff852a0695d4b2071f1d0a60c05dba2410
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808972"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213475"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Rychlý Start: vytvoření fronty a přidání zprávy s Azure Portal
 
 V tomto rychlém startu se dozvíte, jak pomocí [Azure Portal](https://portal.azure.com/) vytvořit frontu v Azure Storage a přidat a vyřadit zprávy z fronty.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -40,8 +40,8 @@ Pokud chcete vytvořit frontu v Azure Portal, postupujte podle těchto kroků:
 V dalším kroku přidejte do nové fronty zprávu. Zpráva může mít velikost až 64 KB.
 
 1. Vyberte novou frontu ze seznamu front v účtu úložiště.
-1. Vyberte tlačítko **+ přidat zprávu** a přidejte zprávu do fronty. Zadejte zprávu do pole **text zprávy** . 
-1. Určete, kdy vyprší platnost zprávy. Maximální doba, po kterou může zpráva zůstat ve frontě, je 7 dní.
+1. Vyberte tlačítko **+ přidat zprávu** a přidejte zprávu do fronty. Zadejte zprávu do pole **text zprávy** .
+1. Určete, kdy vyprší platnost zprávy. Platné hodnoty, které lze zadat v poli **Expires v** poli, jsou v rozmezí od 1 sekundy do 7 dnů. Vyberte **zprávu nikdy nevyprší** , aby označovala zprávu, která zůstane ve frontě, dokud není explicitně odebrána.
 1. Určuje, zda se má zpráva kódovat jako base64. Doporučuje se kódování binárních dat.
 1. Kliknutím na tlačítko **OK** přidejte zprávu.
 

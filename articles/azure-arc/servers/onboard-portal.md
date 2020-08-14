@@ -1,19 +1,19 @@
 ---
 title: Připojení hybridních počítačů k Azure z Azure Portal
-description: V tomto článku se dozvíte, jak nainstalovat agenta a připojit počítače k Azure pomocí Azure ARC pro servery (Preview) z Azure Portal.
+description: V tomto článku se dozvíte, jak nainstalovat agenta a připojit počítače k Azure pomocí serverů s podporou Azure ARC (Preview) z Azure Portal.
 ms.date: 08/07/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 08f2563aaa67cdd45760af34ef3bef3e8e472ae7
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 23415bc648ae31b9073adb71d6f066a28c144c9d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120979"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213502"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Připojení hybridních počítačů k Azure z Azure Portal
 
-Můžete povolit Azure ARC pro servery (Preview) pro jeden nebo malý počet počítačů se systémem Windows nebo Linux v prostředí provedením sady kroků ručně. Nebo můžete použít automatizovanou metodu spuštěním skriptu šablony, který poskytujeme. Tento skript automatizuje stahování a instalaci obou agentů.
+Můžete povolit servery s podporou ARC Azure (Preview) pro jeden nebo malý počet počítačů s Windows nebo Linux ve vašem prostředí provedením sady kroků ručně. Nebo můžete použít automatizovanou metodu spuštěním skriptu šablony, který poskytujeme. Tento skript automatizuje stahování a instalaci obou agentů.
 
 Tato metoda vyžaduje, abyste na počítači měli oprávnění správce pro instalaci a konfiguraci agenta. V systému Linux, pomocí kořenového účtu a ve Windows, jste členem místní skupiny Administrators.
 
@@ -34,7 +34,7 @@ Skript pro automatizaci stahování a instalace a navázání připojení pomoc�
 1. Na stránce **vygenerovat skript** vyberte předplatné a skupinu prostředků, ve které chcete, aby se počítač spravoval v rámci Azure. Vyberte umístění Azure, kam se budou ukládat metadata počítače.
 
     >[!NOTE]
-    >Azure ARC pro servery (Preview) podporuje jenom tyto oblasti:
+    >Servery s podporou ARC Azure (Preview) podporují jenom tyto oblasti:
     >- EastUS
     >- WestUS2
     >- WestEurope
@@ -147,7 +147,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Ověření připojení k Azure Arcu
 
-Po nainstalování agenta a jeho konfiguraci pro připojení k Azure ARC pro servery (Preview), navštivte Azure Portal a ověřte, že se server úspěšně připojil. Zobrazte si počítače na webu [Azure Portal](https://aka.ms/hybridmachineportal).
+Po nainstalování agenta a jeho konfiguraci pro připojení k serverům s podporou Azure ARC (verze Preview) přejdete na Azure Portal a ověříte tak, že se server úspěšně připojil. Zobrazte si počítače na webu [Azure Portal](https://aka.ms/hybridmachineportal).
 
 ![Úspěšné připojení k serveru](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

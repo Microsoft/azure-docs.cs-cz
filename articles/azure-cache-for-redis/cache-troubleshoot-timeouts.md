@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 10/18/2019
-ms.openlocfilehash: efe175e4086d5273471c1b0451e4cfb28449c236
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: bf8b20dadd2fcd78657aa6877e796b645332dd94
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008929"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213458"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Řešení potíží s časovými limity služby Azure Cache for Redis
 
@@ -44,7 +45,7 @@ Tato chybová zpráva obsahuje metriky, které vám pomohou Ukázat příčinu a
 | Mgr |Správce soketu to `socket.select` znamená, že se požádá o operační systém, aby označoval soket, který má něco udělat. Čtenář se aktivně nečte ze sítě, protože nebere v úvahu cokoli, co dělat. |
 | fronta |K dispozici jsou 73 celkový počet probíhajících operací. |
 | Thá |6 probíhajících operací je v neodeslané frontě a ještě není zapsaná do odchozí sítě. |
-| qs |67 probíhajících operací bylo odesláno na server, ale odpověď zatím není k dispozici. Odpověď může být `Not yet sent by the server` nebo.`sent by the server but not yet processed by the client.` |
+| qs |67 probíhajících operací bylo odesláno na server, ale odpověď zatím není k dispozici. Odpověď může být `Not yet sent by the server` nebo. `sent by the server but not yet processed by the client.` |
 | QC |počet probíhajících operací zaznamenal odpovědi, ale ještě nebyly označeny jako splněné, protože čekají na cyklus dokončení. |
 | radiační |Existuje aktivní zapisovač (to znamená, že 6 neodeslaných požadavků se Neignoruje) bajtů/activewriters |
 | in |Nejsou k dispozici žádná aktivní čtecí zařízení a v bajtech síťových adaptérů/activereaders je k dispozici nula bajtů. |
@@ -91,7 +92,7 @@ Pomocí následujících kroků můžete prozkoumat možné hlavní příčiny.
 1. Vysoké zatížení serveru Redis může způsobit vypršení časových limitů. Zatížení serveru můžete monitorovat monitorováním `Redis Server Load` [metriky výkonu mezipaměti](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Zatížení serveru 100 (maximální hodnota) znamená, že server Redis je zaneprázdněný, a to bez času nečinnosti, zpracování požadavků. Pokud chcete zjistit, jestli některé žádosti zabírají všechny možnosti serveru, spusťte příkaz SlowLog, jak je popsáno v předchozím odstavci. Další informace najdete v tématu vysoké využití procesoru/zatížení serveru.
 1. Bylo na straně klienta nějaká jiná událost, která by mohla způsobit Blip sítě? Mezi běžné události patří: škálování počtu instancí klientů nahoru nebo dolů, nasazení nové verze klienta nebo automatické škálování povoleno. V našem testování jsme zjistili, že automatické škálování nebo horizontální navýšení kapacity může způsobit ztrátu odchozího síťového připojení po dobu několika sekund. StackExchange. Redis kód je odolný vůči takovým událostem a znovu se připojuje. Při opětovném připojení můžou všechny žádosti ve frontě vyprší časový limit.
 1. Existuje velký požadavek před několika malými požadavky na mezipaměť, jejichž časový limit vypršel? Parametr `qs` v chybové zprávě oznamuje, kolik požadavků bylo odesláno z klienta na server, ale nezpracovalo odpověď. Tato hodnota může zůstat větší, protože StackExchange. Redis používá jedno připojení TCP a může v jednom okamžiku číst jen jednu odpověď. I když vypršel časový limit první operace, nezastaví posílání více dat na server ani ze serveru. Ostatní požadavky budou zablokovány, dokud nebude velký požadavek dokončen a může dojít k vypršení časového limitu. Jedním z řešení je minimalizace pravděpodobnosti časových limitů tím, že zajistíte dostatečnou velikost mezipaměti pro vaše úlohy a rozdělení velkých hodnot do menších bloků dat. Dalším možným řešením je použít `ConnectionMultiplexer` ve vašem klientovi fond objektů a `ConnectionMultiplexer` při odesílání nové žádosti zvolit aspoň načtenou hodnotu. Načítání přes více objektů připojení by mělo zabránit jednomu časovému limitu, který by způsobil vypršení dalších požadavků.
-1. Pokud používáte `RedisSessionStateProvider` , ujistěte se, že jste správně nastavili časový limit opakování. `retryTimeoutInMilliseconds`by měl být větší než `operationTimeoutInMilliseconds` , jinak nedojde k žádnému opakování. V následujícím příkladu `retryTimeoutInMilliseconds` je nastavená na 3000. Další informace najdete v tématu [zprostředkovatel stavu relací ASP.NET pro Azure cache pro Redis](cache-aspnet-session-state-provider.md) a [Jak používat konfigurační parametry zprostředkovatele stavu relace a zprostředkovatele výstupní mezipaměti](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
+1. Pokud používáte `RedisSessionStateProvider` , ujistěte se, že jste správně nastavili časový limit opakování. `retryTimeoutInMilliseconds` by měl být větší než `operationTimeoutInMilliseconds` , jinak nedojde k žádnému opakování. V následujícím příkladu `retryTimeoutInMilliseconds` je nastavená na 3000. Další informace najdete v tématu [zprostředkovatel stavu relací ASP.NET pro Azure cache pro Redis](cache-aspnet-session-state-provider.md) a [Jak používat konfigurační parametry zprostředkovatele stavu relace a zprostředkovatele výstupní mezipaměti](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
 
     ```xml
     <add

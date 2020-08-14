@@ -13,13 +13,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 4641c50f0579e2a8db514df58c0401eb2173d793
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 3e6403f41d8e4b52ca64e9fa452524fa25efe870
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81309055"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213254"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Kurz: použití odkazů Key Vault v aplikaci ASP.NET Core
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 > * Vytvořte konfigurační klíč aplikace, který odkazuje na hodnotu uloženou v Key Vault.
 > * Přístup k hodnotě tohoto klíče z ASP.NET Core webové aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download).
 
@@ -82,11 +82,11 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Přidat odkaz Key Vault do konfigurace aplikace
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**.
 
-1. Vyberte **+ vytvořit** > **odkaz na Trezor klíčů**a pak zadejte následující hodnoty:
+1. Vyberte **+ vytvořit**  >  **odkaz na Trezor klíčů**a pak zadejte následující hodnoty:
     - **Klíč**: vyberte **TestApp: Settings: KeyVaultMessage**.
     - **Popisek**: Nechte tuto hodnotu prázdnou.
     - **Předplatné**, **Skupina prostředků**a **Trezor klíčů**: zadejte hodnoty odpovídající klíčům v trezoru klíčů, který jste vytvořili v předchozí části.
@@ -216,7 +216,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 
 1. Po inicializaci připojení k konfiguraci aplikace nastavíte připojení k Key Vault voláním `ConfigureKeyVault` metody. Po inicializaci můžete přistupovat k hodnotám Key Vault odkazů stejným způsobem jako při přístupu k hodnotám běžných konfiguračních klíčů aplikací.
 
-    Chcete-li zobrazit tento proces v akci, otevřete *index. cshtml* v**domovské** složce **zobrazení** > . Nahraďte jeho obsah následujícím kódem:
+    Chcete-li zobrazit tento proces v akci, otevřete *index. cshtml* v **Views**  >  **domovské** složce zobrazení. Jeho obsah nahraďte následujícím kódem.
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -252,7 +252,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
     dotnet run
     ```
 
-1. Otevřete okno prohlížeče a pro webovou aplikaci hostovanou místně použijte `http://localhost:5000`výchozí adresu URL.
+1. Otevřete okno prohlížeče a pro `http://localhost:5000` webovou aplikaci hostovanou místně použijte výchozí adresu URL.
 
     ![Spuštění místní aplikace v rychlém startu](./media/key-vault-reference-launch-local.png)
 

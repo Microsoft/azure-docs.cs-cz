@@ -13,13 +13,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 3182961f928a9befc5a55fb6d58e22c74ba81089
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 2f8e95826a7da3caa3edfe8ec23a6e0725b6bcba
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79473434"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213223"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Kurz: používání příznaků funkcí v aplikaci ASP.NET Core
 
@@ -29,7 +29,7 @@ Knihovny správy funkcí také spravují životní cykly příznaků funkcí na 
 
 [Příznaky funkce přidat ASP.NET Core aplikace v rychlém](./quickstart-feature-flag-aspnet-core.md) startu zobrazují několik způsobů přidávání příznaků funkcí do aplikace ASP.NET Core. V tomto kurzu se tyto metody vysvětlují podrobněji. Úplný odkaz najdete v [dokumentaci ke správě funkcí ASP.NET Core](https://go.microsoft.com/fwlink/?linkid=2091410).
 
-V tomto kurzu se naučíte:
+V tomto kurzu se naučíte, jak:
 
 > [!div class="checklist"]
 > * Přidání příznaků funkcí v klíčových částech vaší aplikace pro řízení dostupnosti funkcí.
@@ -37,9 +37,9 @@ V tomto kurzu se naučíte:
 
 ## <a name="set-up-feature-management"></a>Nastavení správy funkcí
 
-Přidejte odkaz na balíček `Microsoft.FeatureManagement` NuGet, abyste mohli využít správce funkcí .NET Core.
+Přidejte odkaz na `Microsoft.FeatureManagement` balíček NuGet, abyste mohli využít správce funkcí .NET Core.
     
-Správce `IFeatureManager` funkcí .NET Core získá příznaky funkcí z nativního konfiguračního systému rozhraní. V důsledku toho můžete definovat příznaky funkcí aplikace pomocí libovolného zdroje konfigurace, který podporuje .NET Core, včetně místního souboru *appSettings. JSON* nebo proměnných prostředí. `IFeatureManager`spoléhá na vkládání závislostí .NET Core. Služby správy funkcí můžete zaregistrovat pomocí standardních konvencí:
+Správce funkcí .NET Core `IFeatureManager` získá příznaky funkcí z nativního konfiguračního systému rozhraní. V důsledku toho můžete definovat příznaky funkcí vaší aplikace pomocí libovolného zdroje konfigurace, který podporuje .NET Core, včetně místní *appsettings.jsv* proměnných souboru nebo prostředí. `IFeatureManager` spoléhá na vkládání závislostí .NET Core. Služby správy funkcí můžete zaregistrovat pomocí standardních konvencí:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -70,7 +70,7 @@ public class Startup
 }
 ```
 
-Pokud používáte filtry v příznacích funkcí, je třeba zahrnout další knihovnu a zaregistrovat ji. Následující příklad ukazuje, jak použít vestavěný filtr funkcí nazvaný `PercentageFilter`:
+Pokud používáte filtry v příznacích funkcí, je třeba zahrnout další knihovnu a zaregistrovat ji. Následující příklad ukazuje, jak použít vestavěný filtr funkcí nazvaný `PercentageFilter` :
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -88,7 +88,7 @@ public class Startup
 
 Doporučujeme zachovat příznaky funkcí mimo aplikaci a spravovat je samostatně. V takovém případě vám umožní kdykoli změnit stav příznaku a tyto změny se projeví v aplikaci hned. Konfigurace aplikací poskytuje centralizované místo pro organizování a řízení všech příznaků funkcí prostřednictvím vyhrazeného uživatelského rozhraní portálu. Konfigurace aplikace také poskytuje příznaky vaší aplikaci přímo prostřednictvím svých klientských knihoven .NET Core.
 
-Nejjednodušší způsob, jak připojit aplikaci ASP.NET Core ke konfiguraci aplikace, je prostřednictvím poskytovatele `Microsoft.Azure.AppConfiguration.AspNetCore`konfigurace. Pro použití tohoto balíčku NuGet postupujte podle těchto kroků.
+Nejjednodušší způsob, jak připojit aplikaci ASP.NET Core ke konfiguraci aplikace, je prostřednictvím poskytovatele konfigurace `Microsoft.Azure.AppConfiguration.AspNetCore` . Pro použití tohoto balíčku NuGet postupujte podle těchto kroků.
 
 1. Otevřete soubor *program.cs* a přidejte následující kód.
 
@@ -130,11 +130,11 @@ config.AddAzureAppConfiguration(options => {
 
 ## <a name="feature-flag-declaration"></a>Deklarace příznaku funkce
 
-Každý příznak funkce má dvě části: název a seznam jednoho nebo více filtrů, které se používají k vyhodnocení, zda je stav funkce *zapnut* (tj. je-li jeho hodnota `True`). Filtr definuje případ použití, kdy má být funkce zapnuta.
+Každý příznak funkce má dvě části: název a seznam jednoho nebo více filtrů, které se používají k vyhodnocení, zda je stav funkce *zapnut* (tj. je-li jeho hodnota `True` ). Filtr definuje případ použití, kdy má být funkce zapnuta.
 
 Pokud má příznak funkce více filtrů, seznam filtrů se prochází v pořadí, dokud jeden z filtrů neurčí, že by měla být funkce povolená. V tomto okamžiku je příznak funkce *zapnutý*a všechny zbývající výsledky filtru se přeskočí. Pokud žádný filtr neindikuje, že by měla být funkce povolená, příznak funkce je *vypnutý*.
 
-Správce funkcí podporuje jako zdroj konfigurace pro příznaky funkcí funkci *appSettings. JSON* . Následující příklad ukazuje, jak nastavit příznaky funkcí v souboru JSON:
+Správce funkcí podporuje *appsettings.js* jako zdroj konfigurace pro příznaky funkcí. Následující příklad ukazuje, jak nastavit příznaky funkcí v souboru JSON:
 
 ```JSON
 "FeatureManagement": {
@@ -155,9 +155,9 @@ Správce funkcí podporuje jako zdroj konfigurace pro příznaky funkcí funkci 
 
 Podle konvence se `FeatureManagement` oddíl tohoto dokumentu JSON používá pro nastavení příznaku funkce. Předchozí příklad ukazuje tři příznaky funkcí s jejich filtry definovanými ve `EnabledFor` vlastnosti:
 
-* `FeatureA`je *zapnuto*.
-* `FeatureB`je *vypnutý*.
-* `FeatureC`Určuje filtr s názvem `Percentage` s `Parameters` vlastností. `Percentage`je konfigurovatelný filtr. V tomto příkladu `Percentage` určujeme pravděpodobnost 50-Percent pro `FeatureC` příznak, který má být *zapnut*.
+* `FeatureA` je *zapnuto*.
+* `FeatureB` je *vypnutý*.
+* `FeatureC` Určuje filtr s názvem `Percentage` s `Parameters` vlastností. `Percentage` je konfigurovatelný filtr. V tomto příkladu `Percentage` určujeme pravděpodobnost 50-Percent pro příznak, `FeatureC` který má být *zapnut*.
 
 ## <a name="feature-flag-references"></a>Odkazy na příznak funkce
 
@@ -174,7 +174,7 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>Kontroly příznaků funkcí
 
-Základním vzorem správy funkcí je nejprve zjistit, zda je příznak funkce nastaven na hodnotu *zapnuto*. V takovém případě správce funkcí spustí akce, které funkce obsahuje. Příklad:
+Základním vzorem správy funkcí je nejprve zjistit, zda je příznak funkce nastaven na hodnotu *zapnuto*. V takovém případě správce funkcí spustí akce, které funkce obsahuje. Například:
 
 ```csharp
 IFeatureManager featureManager;
@@ -187,7 +187,7 @@ if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 
 ## <a name="dependency-injection"></a>Injektáž závislostí
 
-Ve službě ASP.NET Core MVC můžete ke správci `IFeatureManager` funkcí přistupovat pomocí injektáže závislosti:
+Ve službě ASP.NET Core MVC můžete ke Správci funkcí přistupovat `IFeatureManager` pomocí injektáže závislosti:
 
 ```csharp
 public class HomeController : Controller
@@ -203,7 +203,7 @@ public class HomeController : Controller
 
 ## <a name="controller-actions"></a>Akce kontroleru
 
-V řadičích MVC pomocí `FeatureGate` atributu určíte, zda je povolena celá třída řadiče nebo konkrétní akce. Následující `HomeController` kontroler vyžaduje `FeatureA` , aby *bylo možné* provést všechny akce, které třída Controller obsahuje:
+V řadičích MVC pomocí atributu určíte, `FeatureGate` zda je povolena celá třída řadiče nebo konkrétní akce. Následující `HomeController` kontroler vyžaduje, `FeatureA` aby *bylo možné* provést všechny akce, které třída Controller obsahuje:
 
 ```csharp
 [FeatureGate(MyFeatureFlags.FeatureA)]
@@ -213,7 +213,7 @@ public class HomeController : Controller
 }
 ```
 
-Než bude `Index` možné spustit `FeatureA` tuto akci, musí být *zapnutá* následující akce:
+Než bude `Index` možné spustit tuto akci, musí `FeatureA` být *zapnutá* následující akce:
 
 ```csharp
 [FeatureGate(MyFeatureFlags.FeatureA)]
@@ -223,7 +223,7 @@ public IActionResult Index()
 }
 ```
 
-Když je kontroler MVC nebo akce zablokovaná, protože příznak řídicí funkce je *vypnutý*, zavolá se registrované `IDisabledFeaturesHandler` rozhraní. Výchozí `IDisabledFeaturesHandler` rozhraní vrátí klientovi stav 404 bez těla odpovědi.
+Když je kontroler MVC nebo akce zablokovaná, protože příznak řídicí funkce je *vypnutý*, `IDisabledFeaturesHandler` zavolá se registrované rozhraní. Výchozí `IDisabledFeaturesHandler` rozhraní vrátí klientovi stav 404 bez těla odpovědi.
 
 ## <a name="mvc-views"></a>Zobrazení MVC
 
@@ -235,7 +235,7 @@ V zobrazeních MVC můžete použít `<feature>` značku k vykreslení obsahu na
 </feature>
 ```
 
-Chcete-li zobrazit alternativní obsah v případě, že požadavky `negate` nejsou splněny, lze atribut použít.
+Chcete-li zobrazit alternativní obsah v případě, že požadavky nejsou splněny, `negate` lze atribut použít.
 
 ```html
 <feature name="FeatureA" negate="true">
@@ -256,7 +256,7 @@ Značku funkce `<feature>` lze také použít k zobrazení obsahu, pokud jsou po
 
 ## <a name="mvc-filters"></a>Filtry MVC
 
-Filtry MVC můžete nastavit tak, aby byly aktivovány na základě stavu příznaku funkce. Následující kód přidá filtr MVC s názvem `SomeMvcFilter`. Tento filtr se aktivuje v rámci kanálu MVC jenom v `FeatureA` případě, že je povolený. Tato funkce je omezená na `IAsyncActionFilter`. 
+Filtry MVC můžete nastavit tak, aby byly aktivovány na základě stavu příznaku funkce. Následující kód přidá filtr MVC s názvem `SomeMvcFilter` . Tento filtr se aktivuje v rámci kanálu MVC jenom v případě `FeatureA` , že je povolený. Tato funkce je omezená na `IAsyncActionFilter` . 
 
 ```csharp
 using Microsoft.FeatureManagement.FeatureFilters;
@@ -273,7 +273,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="middleware"></a>Middleware
 
-Příznaky funkcí můžete použít také k podmíněnému přidávání větví aplikace a middlewaru. Následující kód Vloží komponentu middlewaru do kanálu žádosti pouze v případě, `FeatureA` že je povolena:
+Příznaky funkcí můžete použít také k podmíněnému přidávání větví aplikace a middlewaru. Následující kód Vloží komponentu middlewaru do kanálu žádosti pouze v případě, že `FeatureA` je povolena:
 
 ```csharp
 app.UseMiddlewareForFeature<ThirdPartyMiddleware>(nameof(MyFeatureFlags.FeatureA));

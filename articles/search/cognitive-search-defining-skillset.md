@@ -8,16 +8,20 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bdbe157198ad62578613d86f3b3a55b72ca0acf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 779aa96fcf58d45bb53757f7fe974a0fe4c61ffa
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557457"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214074"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Postup vytvoření dovednosti v kanálu rozšíření AI v Azure Kognitivní hledání 
 
-Rozšíření AI extrahuje a vylepšuje data, aby je bylo možné prohledávat v Azure Kognitivní hledání. Vyvoláme kroky pro extrakci a obohacení, které jsou zkombinovány do *dovednosti* , na *který se odkazuje*při indexování. Dovednosti může používat [integrované dovednosti](cognitive-search-predefined-skills.md) nebo vlastní dovednosti (viz [Příklad: Vytvoření vlastní dovednosti v kanálu rozšíření AI](cognitive-search-create-custom-skill-example.md) pro další informace).
+![fáze indexeru](media/cognitive-search-defining-skillset/indexer-stages-skillset.png "fáze indexeru")
+
+Dovednosti definuje operace, které extrahují a obohacuje data, aby je bylo možné prohledávat. Dovednosti se spustí po extrakci textu a obsahu obrázku ze zdrojových dokumentů a po všech polích ze zdrojového dokumentu (volitelně) namapovaných na cílová pole v indexu nebo v úložišti znalostí.
+
+Dovednosti obsahuje jednu nebo více *dovedností rozpoznávání* , které reprezentují konkrétní operaci rozšíření, jako je například překlad textu, extrakce klíčových frází nebo provádění optického rozpoznávání znaků z obrázkového souboru. Chcete-li vytvořit dovednosti, můžete využít [integrované dovednosti](cognitive-search-predefined-skills.md) od společnosti Microsoft nebo vlastní dovednosti, které obsahují modely nebo zpracování logiky (viz [Příklad: Vytvoření vlastní dovednosti v kanálu rozšíření AI](cognitive-search-create-custom-skill-example.md) pro další informace).
 
 V tomto článku se dozvíte, jak vytvořit kanál pro rozšíření pro dovednosti, které chcete použít. Dovednosti je připojen ke službě Azure Kognitivní hledání [indexer](search-indexer-overview.md). Jedna součást návrhu kanálu, která je popsaná v tomto článku, sestavuje dovednosti sebe sama. 
 
@@ -171,13 +175,13 @@ Pojďme se podívat na první dovednost, což je integrovaná [dovednost pro roz
 
 * Dovednost má jeden výstup s názvem ```"organizations"``` . Výstupy existují pouze během zpracování. Chcete-li tento výstup zřetězit na vstup pro příjem dat, odkazujte na výstup ```"/document/organizations"``` .
 
-* V případě konkrétního dokumentu ```"/document/organizations"``` je hodnota pole organizací extrahovaných z textu. Příklad:
+* V případě konkrétního dokumentu ```"/document/organizations"``` je hodnota pole organizací extrahovaných z textu. Například:
 
   ```json
   ["Microsoft", "LinkedIn"]
   ```
 
-Některé situace volají pro odkazování na každý prvek pole samostatně. Předpokládejme například, že chcete každý prvek předat ```"/document/organizations"``` samostatně do jiné dovednosti (například vlastní rozšíření pro vyhledávání entit Bingu). Na každý prvek pole můžete odkazovat přidáním hvězdičky do cesty:```"/document/organizations/*"``` 
+Některé situace volají pro odkazování na každý prvek pole samostatně. Předpokládejme například, že chcete každý prvek předat ```"/document/organizations"``` samostatně do jiné dovednosti (například vlastní rozšíření pro vyhledávání entit Bingu). Na každý prvek pole můžete odkazovat přidáním hvězdičky do cesty: ```"/document/organizations/*"``` 
 
 Druhá dovednost pro extrakci mínění se řídí stejným vzorem jako první obohacení. ```"/document/content"```Jako vstup bere a vrátí mínění skóre pro každou instanci obsahu. Vzhledem k tomu, že jste ```"context"``` pole nezadali explicitně, výstup (mySentiment) je teď podřízeným objektem ```"/document"``` .
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 06/17/2020
+ms.date: 08/13/2020
 ms.author: diberry
-ms.openlocfilehash: cc14f1cd60f048ba01060b9ebdbca434af6b9751
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 390080fecefcc22decd8bec70d043b28311a725d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145614"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212648"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrace na klíč pro vytváření prostředků Azure
 
@@ -34,6 +34,7 @@ Migraci je potřeba provést z portálu LUIS. Pokud vytvoříte vytváření kl�
 
 ## <a name="note-before-you-migrate"></a>Poznámka před migrací
 
+* Prostředí pro vytváření obsahu je třeba migrovat do **2. listopadu 2020**. 
 * Migrace je jednosměrný proces. Po dokončení migrace se nemůžete vrátit.
 * Aplikace se automaticky migrují s vámi, pokud jste vlastníkem aplikace.
 * Vlastník nemůže zvolit podmnožinu aplikací k migraci a proces nebude vratný.

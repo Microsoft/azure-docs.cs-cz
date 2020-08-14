@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Popisuje, jak připravit projekt pomocí Azure Dev Spaces funguje.
 keywords: azds. yaml, Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers
-ms.openlocfilehash: 24a54fffdc8e94493d2a4a9aeb1c5f02dcd192b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61351072494b51d02a1d6c31399208b9e9b54fce
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80241631"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213425"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Příprava projektu na Azure Dev Spaces funguje
 
@@ -98,17 +98,4 @@ configurations:
 
 Další informace o spuštění kódu ve vývojovém prostoru naleznete v tématu [jak běží váš kód s Azure dev Spaces pracuje][how-it-works-up].
 
-Pokud chcete začít používat Azure Dev Spaces pro přípravu projektu na vývojové místo Azure, přečtěte si následující rychlé starty:
-
-* [Rychlé iterování a ladění pomocí Visual Studio Code a Java][quickstart-java]
-* [Rychlé iterování a ladění pomocí Visual Studio Code a .NET][quickstart-netcore]
-* [Rychlé iterování a ladění pomocí Visual Studio Code a Node.js][quickstart-node]
-* [Rychlé iterace a ladění pomocí sady Visual Studio a .NET Core][quickstart-vs]
-* [Použití rozhraní příkazového řádku k vývoji aplikace v Kubernetes][quickstart-cli]
-
 [how-it-works-up]: how-dev-spaces-works-up.md
-[quickstart-cli]: quickstart-cli.md
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md

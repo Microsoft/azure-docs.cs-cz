@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: overview
-ms.date: 04/29/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dd3ede40582e8f2c71c0424df025d06ff7f0f79
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 8dda8c742a0aafe7ec3f46a0a9dbf0abd4a516b4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141597"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213797"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
-V Azure Active Directory (Azure AD) můžete vytvářet složitá pravidla založená na atributech, která umožní dynamické členství pro skupiny. Dynamické členství ve skupinách snižuje administrativní režii při přidávání a odebírání uživatelů. Tento článek podrobně popisuje vlastnosti a syntaxi pro vytváření pravidel dynamického členství pro uživatele nebo zařízení. Můžete nastavit pravidlo pro dynamické členství u skupin zabezpečení nebo skupin Microsoft 365.
+V Azure Active Directory (Azure AD) můžete vytvářet složitá pravidla založená na atributech, která umožní dynamické členství pro skupiny. Dynamické členství ve skupinách snižuje administrativní režii při přidávání a odebírání uživatelů. Tento článek podrobně popisuje vlastnosti a syntaxi pro vytváření pravidel dynamického členství pro uživatele nebo zařízení. Můžete nastavit pravidlo pro dynamické členství ve skupinách zabezpečení nebo Microsoft 365ch skupinách.
 
 Když se změní kterýkoli atribut uživatele nebo zařízení, systém vyhodnotí všechna dynamická pravidla skupiny v adresáři, aby zjistil, jestli by změna aktivovala nebo odebrala nějakou skupinu. Pokud uživatel nebo zařízení splňuje pravidlo pro skupinu, přidají se jako členové této skupiny. Pokud už pravidla nevyhovují, odeberou se. Nemůžete ručně přidat nebo odebrat člena dynamické skupiny.
 
@@ -43,7 +43,7 @@ Tady jsou některé příklady pokročilých pravidel nebo syntaxe, pro které d
 - Pravidlo s více než pěti výrazy
 - Pravidlo přímých sestav
 - Nastavení [priority operátoru](groups-dynamic-membership.md#operator-precedence)
-- [Pravidla se složitými výrazy](groups-dynamic-membership.md#rules-with-complex-expressions); například`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [Pravidla se složitými výrazy](groups-dynamic-membership.md#rules-with-complex-expressions); například `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
 > Tvůrce pravidel nemusí být schopný zobrazit některá pravidla vytvořená v textovém poli. Když tvůrce pravidel nemůže zobrazit pravidlo, může se zobrazit zpráva. Tvůrce pravidel nemění podporovanou syntaxi, ověřování ani zpracování pravidel dynamických skupin jakýmkoli způsobem.
@@ -127,7 +127,7 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 | Vlastnosti | Povolené hodnoty | Využití |
 | --- | --- | --- |
 | otherMails |Libovolná hodnota řetězce |(User. otherMails-Contains " alias@domain ") |
-| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-obsahuje "SMTP: alias@domain ") |
+| proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses-obsahuje "SMTP: alias@domain ") |
 
 Vlastnosti používané pro pravidla zařízení najdete v tématu [pravidla pro zařízení](#rules-for-devices).
 
@@ -135,7 +135,7 @@ Vlastnosti používané pro pravidla zařízení najdete v tématu [pravidla pro
 
 V následující tabulce jsou uvedeny všechny podporované operátory a jejich syntaxe pro jeden výraz. Operátory lze použít s předponou spojovníku (-) nebo bez ní.
 
-| Operátor | Syntax |
+| Operátor | Syntaxe |
 | --- | --- |
 | Nerovná se |-Ne |
 | Je rovno |– EQ |
@@ -252,7 +252,7 @@ Vlastnosti s více hodnotami jsou kolekce objektů stejného typu. Je možné je
 | Vlastnosti | Hodnoty | Využití |
 | --- | --- | --- |
 | assignedPlans | Každý objekt v kolekci zpřístupňuje následující řetězcové vlastnosti: capabilityStatus, Service, servicePlanId |User. assignedPlans-any (assignedPlan. servicePlanId-any (.-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-a assignedPlan. capabilityStatus-EQ "Enabled") |
-| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any ( \_ -obsahuje "contoso")) |
+| proxyAddresses| SMTP: alias@domain SMTP: alias@domain | (User. proxyAddresses-any ( \_ -obsahuje "contoso")) |
 
 ### <a name="using-the--any-and--all-operators"></a>Použití operátorů-any a-All
 

@@ -11,13 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 448910453b967fb15d342c22b81dd9733d0dfeb8
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e44de0058af0210ecb42eaa4be8b55d543d66103
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165120"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212810"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
@@ -32,7 +31,7 @@ V tomto kurzu:
 > * Přidá místní aplikaci do tenanta služby Azure AD.
 > * Ověří, jestli se testovací uživatel může přihlásit k aplikaci pomocí účtu Azure AD.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="prerequisites"></a>Předpoklady
 
 K přidání místní aplikace do služby Azure AD potřebujete:
 
@@ -234,6 +233,10 @@ Otestování přihlášení k aplikaci:
 3. Nezapomeňte nejdřív spustit aplikaci, abyste otestovali přihlášení k aplikaci, a pak si stáhněte diagnostickou zprávu, kde najdete pokyny k vyřešení všech zjištěných problémů.
 
 Informace o řešení potíží najdete v tématu [řešení potíží se službou Application proxy a chybovými zprávami](application-proxy-troubleshoot.md).
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už je nepotřebujete, odstraňte prostředky, které jste vytvořili v tomto kurzu.
 
 ## <a name="next-steps"></a>Další kroky
 

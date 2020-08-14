@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 07/27/2020
-ms.openlocfilehash: 55483b93b770687703b381366d48edbc7d48f26e
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.date: 08/12/2020
+ms.openlocfilehash: cf91dd0b7f16bf0dcd3d84da1b942b2353ec5bd0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475299"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212029"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -87,7 +87,7 @@ Pokud máte dobré znalosti o mohutnosti vašich dat, může být vytváření o
 > [!TIP]
 > Ruční nastavení schématu dělení přesadí data a může kompenzovat výhody Optimalizátoru Sparku. Osvědčeným postupem je nenastavit oddíly ručně, pokud nepotřebujete.
 
-## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a>Optimalizace Azure Integration Runtime
+## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a> Optimalizace Azure Integration Runtime
 
 Toky dat běží na clusterech Spark, které se provedou v době běhu. V modulu Integration runtime (IR) aktivity se definuje konfigurace pro použitý cluster. Při definování prostředí Integration runtime jsou k dispozici tři požadavky na výkon: typ clusteru, velikost clusteru a doba do provozu.
 
@@ -273,6 +273,29 @@ Pokud vaše data nejsou rovnoměrně rozdělená po transformaci, můžete k jej
 
 > [!TIP]
 > Pokud data změníte na oddíly, ale budete mít k dispozici transformace, které přerozdělí data, použijte dělení algoritmu hash u sloupce používaného jako klávesa JOIN.
+
+## <a name="using-data-flows-in-pipelines"></a>Používání toků dat v kanálech 
+
+Při sestavování složitých kanálů s více datovými toky může mít logický tok velký dopad na časování a náklady. Tato část se zabývá dopadem různých strategií architektury.
+
+### <a name="executing-data-flows-in-parallel"></a>Paralelní spouštění toků dat
+
+Pokud spouštíte více toků dat paralelně, ADF vytočí samostatné clustery Spark pro každou aktivitu. To umožňuje, aby každá úloha byla izolovaná a spuštěná paralelně, ale povedlo se současně o několik clusterů.
+
+Pokud se vaše toky dat spouštějí paralelně, doporučuje se Nepovolit vlastnost Azure IR Time to Live, protože by to mohlo vést k několika nevyužitým fondům teplého fondu.
+
+> [!TIP]
+> Místo spuštění stejného toku dat v rámci pro každou aktivitu můžete připravit data ve službě Data Lake a použít cesty zástupných znaků ke zpracování dat v jednom toku dat.
+
+### <a name="execute-data-flows-sequentially"></a>Postupné provádění toků dat
+
+Pokud spustíte aktivity toku dat v sekvenci, doporučuje se nastavit hodnotu TTL v konfiguraci Azure IR. ADF znovu použije výpočetní prostředky, což vede k rychlejšímu spuštění clusteru. Každá aktivita bude i nadále izolovaná a získá nový kontext Sparku pro každé spuštění.
+
+Spuštění úloh postupně bude trvat delší dobu, než se provede celý konec až do konce, ale poskytuje čisté oddělení logických operací.
+
+### <a name="overloading-a-single-data-flow"></a>Přetížení jednoho toku dat
+
+Pokud vložíte veškerou logiku do jediného toku dat, ADF spustí v rámci jedné instance Spark celou úlohu. I když se to může zdát jako způsob, jak snížit náklady, kombinuje dohromady různé logické toky a může být obtížné monitorovat a ladit. V případě selhání jedné součásti dojde také k selhání všech ostatních částí úlohy. Tým Azure Data Factory doporučuje organizovat toky dat nezávisle na obchodní logice. Pokud se tok dat příliš rozsáhlý, rozdělí se na samostatné komponenty a zjednoduší se monitorování a ladění. I když neexistují žádné pevné omezení počtu transformací v toku dat, což má příliš mnoho, bude úloha složitá.
 
 ## <a name="next-steps"></a>Další kroky
 

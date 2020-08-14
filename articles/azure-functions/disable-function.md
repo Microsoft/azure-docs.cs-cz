@@ -3,13 +3,13 @@ title: Postup zakázání funkcí v Azure Functions
 description: Naučte se, jak zakázat a povolit funkce v Azure Functions.
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 47fbd446937ea0cfd981cef2d5cdd4759f2583d4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 761a78f050aa25a62075dd7a53836afb48f89cd7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497694"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213157"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Postup zakázání funkcí v Azure Functions
 
@@ -46,6 +46,21 @@ Můžete také použít tlačítka **Povolit** a **Zakázat** na stránce **Pře
 
 > [!NOTE]  
 > Funkce testování integrované na portálu ignoruje `Disabled` nastavení. To znamená, že zakázaná funkce se pořád spustí při spuštění z okna **test** na portálu. 
+
+## <a name="localsettingsjson"></a>local.settings.json
+
+Funkce lze zakázat stejným způsobem při místním spuštění. Chcete-li zakázat funkci s názvem `HttpExample` , přidejte položku do kolekce Values v local.settings.jssouboru, a to následujícím způsobem:
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true", 
+    "AzureWebJobs.HttpExample.Disabled": "true"
+  }
+}
+``` 
 
 ## <a name="other-methods"></a>Jiné metody
 

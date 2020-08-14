@@ -3,17 +3,17 @@ title: Kurz – nové přiřazení zásad s Azure Portal
 description: V tomto kurzu použijete Azure Portal k vytvoření přiřazení Azure Policy k identifikaci prostředků, které nedodržují předpisy.
 ms.topic: tutorial
 ms.date: 08/12/2020
-ms.openlocfilehash: cdd682e215648f1f819503ac03e15c58b32c79b5
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 4ba301b066137dbdb85ccea0a02ffcac88128e6b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88172906"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213238"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Kurz: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy
 
 Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků.
-Tento kurz vás provede procesem vytvoření přiřazení zásady pro identifikaci počítačů Azure ARC pro servery (Preview) a pro identifikaci počítačů, které nemají nainstalovaného agenta Log Analytics na počítačích s podporou ARC Azure.
+Tento kurz vás provede procesem vytvoření přiřazení zásady pro identifikaci počítačů s podporou Azure ARC (ve verzi Preview) a k identifikaci počítačů, které nemají nainstalovaného agenta Log Analytics na počítačích s podporou ARC Azure.
 
 Na konci tohoto procesu úspěšně identifikujete počítače, které nemají nainstalovaného agenta Log Analytics pro systém Windows nebo Linux. _Neodpovídají_ přiřazení zásad.
 
@@ -51,7 +51,7 @@ V tomto kurzu vytvoříte přiřazení zásady a přiřadíte _virtuální poč�
 
    Částečný seznam dostupných integrovaných zásad najdete v tématu [Azure Policy Samples](../../../governance/policy/samples/index.md).
 
-1. Vyhledejte v seznamu definice zásad a vyhledejte _ \[ verzi Preview]: Agent Log Analytics by měl být nainstalovaný na definici počítačů s Windows Azure ARC_ , pokud jste povolili agenta ARC pro servery (Preview) na počítači se systémem Windows. V případě počítače se systémem Linux Najděte odpovídající _ \[ verzi Preview]: Agent Log Analytics by měl být nainstalovaný v definici zásad pro počítače se systémem Linux Azure ARC_ . Klikněte na tuto zásadu a potom na **Vybrat**.
+1. Pokud jste povolili agenta servery s podporou ARC (Preview) na počítači se systémem Windows, Projděte si seznam definice zásad a vyhledejte _ \[ verzi Preview]: Log Analytics agenta je třeba nainstalovat do definice počítačů s Windows Azure ARC_ . V případě počítače se systémem Linux Najděte odpovídající _ \[ verzi Preview]: Agent Log Analytics by měl být nainstalovaný v definici zásad pro počítače se systémem Linux Azure ARC_ . Klikněte na tuto zásadu a potom na **Vybrat**.
 
    :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="Vyhledání správné definice zásady" border="false":::
 
@@ -77,9 +77,9 @@ Pokud se napříč stávajícími prostředky vyhodnotí nějaká podmínka a zj
 | **Stav prostředku** | **Účinek** | **Vyhodnocení zásad** | **Stav dodržování předpisů** |
 | --- | --- | --- | --- |
 | Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Ano | Nevyhovující předpisům |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Nepravda | Odpovídající |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Ne | Odpovídající |
 | Nová | Audit, AuditIfNotExist\* | Ano | Nevyhovující předpisům |
-| Nová | Audit, AuditIfNotExist\* | Nepravda | Odpovídající |
+| Nová | Audit, AuditIfNotExist\* | Ne | Odpovídající |
 
 \* Účinky Append, DeployIfNotExist a AuditIfNotExist vyžadují, aby byl příkaz IF nastaven na TRUE.
 Tyto účinky také vyžadují, aby existovala podmínka, která musí nabývat hodnoty FALSE, aby byla zásada vyhodnocena jako Nevyhovující předpisům. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
@@ -97,7 +97,7 @@ K odebrání vytvořeného přiřazení použijte následující postup:
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste přiřadili definici zásady k oboru a vyhodnotili sestavu dodržování předpisů.
-Definice zásady ověří, že všechny prostředky v oboru jsou v souladu s předpisy, a určí, které z nich nejsou. Teď jste připraveni monitorovat počítač Azure ARC pro servery (ve verzi Preview) pomocí Azure Monitor pro virtuální počítače.
+Definice zásady ověří, že všechny prostředky v oboru jsou v souladu s předpisy, a určí, které z nich nejsou. Nyní jste připraveni monitorovat počítač se serverem s podporou Azure ARC (ve verzi Preview) pomocí Azure Monitor pro virtuální počítače.
 
 Pokud se chcete dozvědět, jak monitorovat a sledovat výkon, běžící proces a jejich závislosti z počítače, přejděte k kurzu:
 

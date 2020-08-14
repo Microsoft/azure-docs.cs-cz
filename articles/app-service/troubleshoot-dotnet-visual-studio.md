@@ -5,13 +5,13 @@ ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
-ms.custom: seodec18
-ms.openlocfilehash: f7c35fa2d69df9c900eb64f10da1948fade02b5f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 1ed7a6ebea12e5db37ec89c73db105dd7ce7e2ab
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079803"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211984"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikací v Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
@@ -28,7 +28,7 @@ Naučíte se:
 
 Pokud máte Visual Studio Ultimate, můžete použít také [IntelliTrace](/visualstudio/debugger/intellitrace) pro ladění. IntelliTrace se v tomto kurzu nezabývá.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a><a name="prerequisites"></a>Předpoklady
 Tento kurz spolupracuje s vývojovým prostředím, webovým projektem a App Service aplikaci, kterou jste nastavili v části [Vytvoření aplikace v ASP.NET v Azure App Service](quickstart-dotnet-framework.md). V sekcích WebJobs budete potřebovat aplikaci, kterou vytvoříte v části [Začínáme s Azure WEBJOBS SDK][GetStartedWJ].
 
 Ukázky kódu zobrazené v tomto kurzu jsou pro webovou aplikaci v jazyce C# MVC, ale postupy řešení potíží jsou stejné pro aplikace Visual Basic a webových formulářů.
@@ -165,7 +165,7 @@ V této části se dozvíte, jak vzdáleně ladit pomocí projektu, který jste 
 
      ![O stránce s novou hodnotou](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png)
 
-## <a name="remote-debugging-webjobs"></a><a name="remotedebugwj"></a>Vzdálené ladění WebJobs
+## <a name="remote-debugging-webjobs"></a><a name="remotedebugwj"></a> Vzdálené ladění WebJobs
 V této části se dozvíte, jak vzdáleně ladit pomocí projektu a aplikace, kterou vytvoříte v tématu [Začínáme s Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
 Funkce uvedené v této části jsou k dispozici pouze v Visual Studio 2013 s aktualizací Update 4 nebo novější.
@@ -556,7 +556,7 @@ Protokoly pro trasování chybných požadavků jsou užitečné, pokud potřebu
 
 Aplikace App Service používají stejné funkce pro trasování chybných požadavků, které jsou dostupné se službou IIS 7,0 a novější. Nemáte přístup k nastavení služby IIS, která konfigurují, které chyby se ale protokolují. Pokud povolíte trasování chybných požadavků, budou zachyceny všechny chyby.
 
-Trasování chybných požadavků můžete povolit pomocí sady Visual Studio, ale nemůžete je zobrazit v aplikaci Visual Studio. Tyto protokoly jsou soubory XML. Služba protokol streamování monitoruje pouze soubory, které jsou považovány za čitelné v režimu prostého textu: *. txt*, *. html*a *. log* .
+Trasování chybných požadavků můžete povolit pomocí sady Visual Studio, ale nemůžete je zobrazit v aplikaci Visual Studio. Tyto protokoly jsou soubory XML. Služba protokol streamování monitoruje pouze soubory, které jsou považovány za čitelné v režimu prostého textu:  *. txt*, *. html*a *. log* .
 
 Protokoly pro trasování chybných požadavků můžete zobrazit v prohlížeči přímo prostřednictvím FTP nebo místně po použití nástroje FTP pro jejich stažení do místního počítače. V této části je budete zobrazovat přímo v prohlížeči.
 

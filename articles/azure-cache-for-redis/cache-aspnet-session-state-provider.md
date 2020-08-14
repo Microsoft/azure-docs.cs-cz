@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
-ms.openlocfilehash: 4854fabb3dccc276ec32a596a42263acd07ac276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7692bfda16ac1b8789ee49469c46ef8276c97f8a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316070"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213306"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Zprostředkovatel stavu relací ASP.NET pro Azure Cache for Redis
 
@@ -92,7 +93,7 @@ Nakonfigurujte atributy s hodnotami z okna cache v portál Microsoft Azure a pod
 * **ApplicationName** – klíče jsou uloženy v Redis jako `{<Application Name>_<Session ID>}_Data` . Toto schéma pojmenování umožňuje více aplikacím sdílet stejnou instanci Redis. Tento parametr je nepovinný a pokud nezadáte, použije se výchozí hodnota.
 * **connectionTimeoutInMilliseconds** – toto nastavení umožňuje přepsat nastavení connectTimeout v klientovi stackexchange. Redis. Pokud není zadaný, použije se výchozí nastavení connectTimeout 5000. Další informace najdete v tématu [konfigurační model stackexchange. Redis](https://go.microsoft.com/fwlink/?LinkId=398705).
 * **operationTimeoutInMilliseconds** – toto nastavení umožňuje přepsat nastavení syncTimeout v klientovi stackexchange. Redis. Pokud není zadaný, použije se výchozí nastavení syncTimeout 1000. Další informace najdete v tématu [konfigurační model stackexchange. Redis](https://go.microsoft.com/fwlink/?LinkId=398705).
-* **redisSerializerType** – toto nastavení umožňuje zadat vlastní serializaci obsahu relace, který je odeslán do Redis. Zadaný typ musí implementovat `Microsoft.Web.Redis.ISerializer` a musí deklarovat veřejný konstruktor bez parametrů. Ve výchozím nastavení `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` se používá.
+* **redisSerializerType** – toto nastavení umožňuje zadat vlastní serializaci obsahu relace, který je odeslán do Redis. Zadaný typ musí implementovat `Microsoft.Web.Redis.ISerializer` a musí deklarovat veřejný konstruktor bez parametrů. Ve výchozím nastavení  `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` se používá.
 
 Další informace o těchto vlastnostech najdete v původním příspěvku na blogu v oznámení [o poskytovateli stavu relace ASP.NET pro Redis](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/).
 

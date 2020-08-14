@@ -1,18 +1,18 @@
 ---
 title: Instalace agenta připojeného počítače pomocí Windows PowerShell DSC
-description: V tomto článku se dozvíte, jak připojit počítače k Azure pomocí ARC Azure pro servery (Preview) pomocí Windows PowerShell DSC.
+description: V tomto článku se dozvíte, jak připojit počítače k Azure pomocí serverů s podporou Azure ARC (Preview) pomocí Windows PowerShell DSC.
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdda3e6681d3e6912d031c45f5c6da9e92814e8f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 25d6e435c261a83bf81c15d5dd445a936d48a08b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120996"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213084"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Postup instalace agenta připojeného počítače pomocí Windows PowerShell DSC
 
-Pomocí [Konfigurace požadovaného stavu Windows PowerShellu](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) můžete automatizovat instalaci a konfiguraci softwaru pro počítač se systémem Windows. Tento článek popisuje, jak použít DSC k instalaci agenta Azure ARC pro servery připojené Machine Agent na hybridních počítačích s Windows.
+Pomocí [Konfigurace požadovaného stavu Windows PowerShellu](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) můžete automatizovat instalaci a konfiguraci softwaru pro počítač se systémem Windows. Tento článek popisuje, jak pomocí DSC nainstalovat do hybridních počítačů s Windows agenta připojeného počítače (Preview) s podporou Azure ARC.
 
 ## <a name="requirements"></a>Požadavky
 
@@ -20,7 +20,7 @@ Pomocí [Konfigurace požadovaného stavu Windows PowerShellu](/powershell/scrip
 
 - Modul [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc/1.0.1.0) DSC
 
-- Instanční objekt pro připojení počítačů k Azure ARC pro servery, které nejsou interaktivně. Pokud jste ještě nevytvořili instanční objekt pro ARC pro servery, postupujte podle kroků v části [Vytvoření instančního objektu pro škálování ve velkém měřítku](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) .
+- Instanční objekt pro připojení počítačů k serverům s podporou Azure ARC (Preview) bez interaktivně. Pokud jste ještě nevytvořili instanční objekt pro servery s podporou ARC (Preview), postupujte podle kroků v části [Vytvoření instančního objektu pro škálování ve velkém měřítku](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) .
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>Instalace modulu ConnectedMachine DSC
 
@@ -76,7 +76,7 @@ Níže jsou uvedené parametry, které předáte skriptu PowerShellu, který se 
 
 3. Tím se vytvoří `localhost.mof file` Nová složka s názvem `C:\dsc` .
 
-Po nainstalování agenta a jeho konfiguraci pro připojení k Azure ARC pro servery (Preview), navštivte Azure Portal a ověřte, že se server úspěšně připojil. Zobrazte si počítače na webu [Azure Portal](https://aka.ms/hybridmachineportal).
+Po nainstalování agenta a jeho konfiguraci pro připojení k serverům s podporou Azure ARC (verze Preview) přejdete na Azure Portal a ověříte tak, že se server úspěšně připojil. Zobrazte si počítače na webu [Azure Portal](https://aka.ms/hybridmachineportal).
 
 ## <a name="adding-to-existing-configurations"></a>Přidávání do stávajících konfigurací
 

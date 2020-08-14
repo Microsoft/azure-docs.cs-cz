@@ -4,13 +4,13 @@ description: Naučte se spouštět webové aplikace v Azure App Service nasazen�
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
 ms.date: 08/06/2020
-ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: 55b8dabfb2f5b3deff8b8435f0121a41333fb655
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, mvc, devcenter, seodec18
+ms.openlocfilehash: 5bf774f2b5cf4a6275dc04248aadfd9a94f5122d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084961"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212560"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Framework v Azure
 
@@ -20,7 +20,7 @@ V tomto rychlém startu se dozvíte, jak nasadit první webovou aplikaci v ASP.N
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu nainstalujte <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> s úlohou **vývoje ASP.NET a web** .
 
@@ -29,7 +29,7 @@ Pokud jste již nainstalovali Visual Studio 2019:
 - Nainstalujte nejnovější aktualizace v aplikaci Visual Studio tak, že vyberete **nápovědu**vyhledat  >  **aktualizace**.
 - Přidejte úlohy tak, že vyberete **nástroje**  >  **získat nástroje a funkce**.
 
-## <a name="create-an-aspnet-web-app"></a>Vytvoření webové aplikace v ASP.NET<a name="create-and-publish-the-web-app"></a>
+## <a name="create-an-aspnet-web-app"></a>Vytvoření webové aplikace v ASP.NET <a name="create-and-publish-the-web-app"></a>
 
 Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
@@ -51,7 +51,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
    ![Místní spuštění aplikace](./media/quickstart-dotnet-framework/local-web-app.png)
 
-## <a name="publish-your-web-app"></a>Publikování webové aplikace<a name="launch-the-publish-wizard"></a>
+## <a name="publish-your-web-app"></a>Publikování webové aplikace <a name="launch-the-publish-wizard"></a>
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt **MyFirstAzureWebApp** a vyberte **publikovat**.
 
@@ -84,7 +84,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
    |-|-|-|
    | Plán Hosting| myAppServicePlan | Název plánu služby App Service. |
    | Umístění | West Europe | Datacentrum, které je hostitelem webové aplikace. |
-   | Velikost | Free | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
+   | Velikost | Zdarma | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
 
    ![Vytvoření plánu služby App Service](./media/quickstart-dotnet-framework/app-service-plan-framework-vs2019.png)
 

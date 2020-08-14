@@ -3,14 +3,15 @@ title: Aktivační událost služby signalizace Azure Functions
 description: Naučte se odesílat zprávy služby signalizace z Azure Functions.
 author: chenyl
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: ec2952a3093661f0f6ef32908307a8a82c6367ed
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e2651afbcdc3bae71bb531aa0e821f83264c295d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540226"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212582"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Aktivační událost služby signalizace pro Azure Functions
 
@@ -175,7 +176,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**Jméno**| Není k dispozici | Název proměnné použitý v kódu funkce pro objekt kontextu vyvolání triggeru |
 |**hubName**|**HubName**| Tato hodnota musí být nastavená na název centra signalizace pro funkci, která se má aktivovat.|
 |**kategorií**|**Kategorie**| Tato hodnota musí být nastavena jako kategorie zpráv pro funkci, která má být aktivována. Kategorie může být jedna z následujících hodnot: <ul><li>**připojení**: včetně *připojených* a *odpojených* událostí</li><li>**zprávy**: včetně všech ostatních událostí kromě těch v kategorii *připojení*</li></ul> |
-|**událostí**|**Událost**| Tato hodnota musí být nastavena jako událost zpráv pro funkci, která má být aktivována. Pro kategorii *zprávy* je událost *cílem* ve [zprávě vyvolání](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) , kterou klienti odesílají. Pro kategorii *připojení* se používá pouze *připojeno* a *Odpojeno* . |
+|**event**|**Událostí**| Tato hodnota musí být nastavena jako událost zpráv pro funkci, která má být aktivována. Pro kategorii *zprávy* je událost *cílem* ve [zprávě vyvolání](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) , kterou klienti odesílají. Pro kategorii *připojení* se používá pouze *připojeno* a *Odpojeno* . |
 |**parameterNames**|**ParameterNames**| Volitelné Seznam názvů, které se váže k parametrům. |
 |**connectionStringSetting**|**ConnectionStringSetting**| Název nastavení aplikace, které obsahuje připojovací řetězec služby signalizace (výchozí hodnota je "AzureSignalRConnectionString") |
 
@@ -197,7 +198,7 @@ InvocationContext obsahuje veškerý obsah ve zprávě odesílané ze služby si
 |ConnectionId| ID připojení klienta, které odesílá zprávu.|
 |UserId| Identita uživatele klienta, který odesílá zprávu.|
 |Hlavičky| Hlavičky požadavku|
-|Dotazy| Dotaz na požadavek při připojení klientů ke službě.|
+|Dotaz| Dotaz na požadavek při připojení klientů ke službě.|
 |Deklarace identit| Deklarace identity klienta.|
 
 ## <a name="using-parameternames"></a>Používání akce `ParameterNames`
@@ -216,7 +217,7 @@ K těmto dvěma argumentům můžete přistupovat z parametru a také k přiřaz
 
 Pro vazbu parametru se jedná o pořadí. Pokud používáte `ParameterNames` , pořadí `ParameterNames` odpovídá pořadí argumentů, které jste vyvolali v klientovi. Pokud používáte atribut `[SignalRParameter]` v jazyce C#, pořadí argumentů v metodách funkce Azure se shoduje s pořadím argumentů v klientech.
 
-`ParameterNames`atribut a `[SignalRParameter]` **nelze** použít ve stejnou dobu, nebo se zobrazí výjimka.
+`ParameterNames` atribut a `[SignalRParameter]` **nelze** použít ve stejnou dobu, nebo se zobrazí výjimka.
 
 ## <a name="send-messages-to-signalr-service-trigger-binding"></a>Odeslat zprávy do aktivační vazby služby Signal
 

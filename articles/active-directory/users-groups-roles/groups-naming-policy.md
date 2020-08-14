@@ -1,6 +1,6 @@
 ---
 title: Vynutilit zásady pojmenování skupin v Azure Active Directory | Microsoft Docs
-description: Jak nastavit zásady pojmenování pro skupiny Office 365 v Azure Active Directory
+description: Nastavení zásad pro pojmenovávání skupin Microsoft 365 v Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,28 +9,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 08/13/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 380962b71d6829b8a217a5d3038e2ae4dd7264fd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9ff525eab42d69ded33381fefc83076f9aa94f05
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497082"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213746"
 ---
-# <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Vynutili zásady pojmenování skupin Office 365 v Azure Active Directory
+# <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Vynutili zásady pojmenování u skupin Microsoft 365 v Azure Active Directory
 
-Pokud chcete vyhodnotit konzistentní konvence pojmenování pro skupiny Office 365 vytvořené nebo upravované uživateli, nastavte zásady pro pojmenování skupin pro vaše organizace ve službě Azure Active Directory (Azure AD). Zásady pojmenování můžete použít například ke komunikaci funkce skupiny, členství, geografické oblasti nebo osoby, která skupinu vytvořila. Můžete také použít zásady pojmenování, které vám pomohou kategorizovat skupiny v adresáři. Pomocí zásad můžete blokovat použití určitých slov v názvech skupin a aliasech.
+Pokud chcete vyhodnotit konzistentní konvence pojmenování pro Microsoft 365 skupiny vytvořené nebo upravované uživateli, nastavte zásady pro pojmenování skupin pro vaše organizace v Azure Active Directory (Azure AD). Zásady pojmenování můžete použít například ke komunikaci funkce skupiny, členství, geografické oblasti nebo osoby, která skupinu vytvořila. Můžete také použít zásady pojmenování, které vám pomohou kategorizovat skupiny v adresáři. Pomocí zásad můžete blokovat použití určitých slov v názvech skupin a aliasech.
 
 > [!IMPORTANT]
-> Použití zásad vytváření názvů pro Azure AD pro skupiny Office 365 vyžaduje, abyste měli k disAzure Active Directory Premium licenci P1 nebo Azure AD Basic EDU pro každého jedinečného uživatele, který je členem jedné nebo více skupin Office 365.
+> Použití zásad pro pojmenování Azure AD pro skupiny Microsoft 365 vyžaduje, abyste pro každého jedinečného uživatele, který je členem jedné nebo více skupin Microsoft 365, ale nemuseli přiřadit licenci Azure Active Directory Premium P1 nebo Azure AD Basic licence EDU.
 
 Zásady pojmenování se aplikují na vytváření nebo úpravy skupin vytvořených napříč úlohami (například Outlook, Microsoft teams, SharePoint, Exchange nebo Planner). Aplikuje se na název skupiny i alias skupiny. Pokud nastavíte zásady pro pojmenování ve službě Azure AD a máte stávající zásady pojmenování skupin Exchange, ve vaší organizaci se vynutila zásada pro pojmenování Azure AD.
 
-Když se nakonfigurují zásady pojmenování skupin, použijí se zásady pro nové skupiny Office 365 vytvořené koncovými uživateli. Zásady pojmenování se nevztahují na určité role adresáře, jako je například globální správce nebo Správce uživatelů (níže najdete úplný seznam rolí vyjmutých ze zásad pro pojmenování skupin). V případě existujících skupin Office 365 se tyto zásady v době konfigurace okamžitě nepoužijí. Když vlastník skupiny upraví název skupiny pro tyto skupiny, vynutily se zásady pojmenování.
+Při konfiguraci zásady pojmenování skupin se zásada použije na nové skupiny Microsoft 365 vytvořené koncovými uživateli. Zásady pojmenování se nevztahují na určité role adresáře, jako je například globální správce nebo Správce uživatelů (níže najdete úplný seznam rolí vyjmutých ze zásad pro pojmenování skupin). U existujících skupin Microsoft 365 se zásada v době konfigurace okamžitě nepoužije. Když vlastník skupiny upraví název skupiny pro tyto skupiny, vynutily se zásady pojmenování.
 
 ## <a name="naming-policy-features"></a>Funkce zásad pojmenovávání
 
@@ -253,7 +253,7 @@ Správce zákaznických aplikací Outlook (OCM) | Správce zákaznických aplika
 Aplikace učeben | Skupiny vytvořené v aplikaci učeben vyhovují zásadám pojmenování, ale zásady pojmenování se neaplikují automaticky a verze Preview se uživatelům při zadávání názvu skupiny učeben nezobrazuje. Uživatelé musí zadat název skupiny vynutilého učebny s předponami a příponami. V takovém případě se operace vytvoření nebo úpravy skupiny učeben nepovede s chybami.
 Power BI | Power BI pracovní prostory jsou kompatibilní se zásadami pojmenování.    
 Yammer | Když se uživatel přihlásil ke službě Yammer pomocí svého Azure Active Directory účtu vytvoří skupinu nebo upraví název skupiny, bude název skupiny odpovídat zásadám pojmenování. To platí jak pro připojené skupiny Office 365, tak pro všechny ostatní skupiny Yammeru.<br>Pokud byla před vytvořením zásady pojmenování vytvořena připojená skupina sady Office 365, název skupiny nebude automaticky odpovídat zásadám pojmenování. Když uživatel upraví název skupiny, zobrazí se výzva k přidání předpony a přípony.
-Směn staffhubu  | Směn staffhubu týmy nedodržují zásady pojmenování, ale základní skupina Office 365. Název týmu směn staffhubu nepoužívá předpony a přípony a nekontroluje vlastní blokovaná slova. Ale směn staffhubu použije předpony a přípony a odebere blokovaná slova z podkladové skupiny Office 365.
+Směn staffhubu  | Směn staffhubu týmy nedodržují zásady pojmenování, ale podkladová skupina Microsoft 365. Název týmu směn staffhubu nepoužívá předpony a přípony a nekontroluje vlastní blokovaná slova. Ale směn staffhubu použije předpony a přípony a odstraní blokovaná slova z podkladové skupiny Microsoft 365.
 Prostředí Exchange PowerShell | Rutiny prostředí Exchange PowerShell jsou kompatibilní se zásadami pojmenování. Uživatelé dostanou vhodné chybové zprávy s navrhovanými předponami a příponami a u vlastních blokovaných slov, pokud nedodržují zásady pojmenování v názvu skupiny a aliasu skupiny (mailNickname).
 Rutiny Azure Active Directory PowerShellu | Rutiny Azure Active Directory PowerShellu jsou kompatibilní se zásadami pojmenování. Uživatelé dostanou příslušné chybové zprávy s navrhovanými předponami a příponami a vlastní blokovaná slova, pokud nedodržují zásady vytváření názvů v názvech skupin a aliasu skupiny.
 Centrum pro správu Exchange | Centrum pro správu Exchange je kompatibilní se zásadami vytváření názvů. Uživatelé dostanou vhodné chybové zprávy s navrhovanými předponami a příponami a vlastní blokovaná slova, pokud nedodržují zásady vytváření názvů v názvu skupiny a aliasu skupiny.
@@ -264,7 +264,7 @@ Centrum pro správu služby Microsoft 365 | Centrum pro správu Microsoft 365 je
 Tyto články poskytují další informace o skupinách Azure AD.
 
 - [Zobrazení existujících skupin](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [Zásady vypršení platnosti pro skupiny Office 365](groups-lifecycle.md)
+- [Zásady vypršení platnosti pro skupiny Microsoft 365](groups-lifecycle.md)
 - [Správa nastavení skupiny](../fundamentals/active-directory-groups-settings-azure-portal.md)
 - [Správa členů skupiny](../fundamentals/active-directory-groups-members-azure-portal.md)
 - [Správa členství ve skupině](../fundamentals/active-directory-groups-membership-azure-portal.md)

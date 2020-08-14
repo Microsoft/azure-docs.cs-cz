@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
-ms.custom: seodec18
-ms.openlocfilehash: 37c98ca2fbffddd064b55192e9b5d83c948d88e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 8ae7613eea4b952c079be90b05e615087ea80a32
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041957"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214152"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB vazby pro Azure Functions 1. x
 
@@ -1152,7 +1152,7 @@ Azure Cosmos DB výstupní vazba umožňuje napsat nový dokument do databáze A
 Tato část obsahuje následující příklady:
 
 * Aktivační událost fronty, zápis jednoho dokumentu
-* Aktivační událost fronty, zápis dokumentů pomocí`IAsyncCollector`
+* Aktivační událost fronty, zápis dokumentů pomocí `IAsyncCollector`
 
 Příklady odkazují na jednoduchý `ToDoItem` Typ:
 
@@ -1238,7 +1238,7 @@ namespace CosmosDBSamplesV1
 Tato část obsahuje následující příklady:
 
 * Aktivační událost fronty, zápis jednoho dokumentu
-* Aktivační událost fronty, zápis dokumentů pomocí`IAsyncCollector`
+* Aktivační událost fronty, zápis dokumentů pomocí `IAsyncCollector`
 
 ### <a name="queue-trigger-write-one-doc"></a>Aktivační událost fronty, zápis jednoho dokumentu
 

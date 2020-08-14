@@ -6,13 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 7738582ec2839a6fddaa01ff0f9921c276c9748d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 262a6612c50148232e814befc76707989befb18b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843109"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212139"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Aktivační událost Azure Service Bus pro Azure Functions
 
@@ -299,7 +299,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**subscriptionName**|**SubscriptionName**|Název předplatného, které se má monitorovat Nastavte pouze v případě, že monitorování tématu, nikoli pro frontu.|
 |**vázán**|**Připojení**|Název nastavení aplikace, které obsahuje připojovací řetězec Service Bus, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyServiceBus", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyServiceBus". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec Service Bus v nastavení aplikace s názvem "AzureWebJobsServiceBus".<br><br>Pokud chcete získat připojovací řetězec, postupujte podle kroků uvedených v části [získání přihlašovacích údajů pro správu](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). Připojovací řetězec musí být pro obor názvů Service Bus, který není omezen na konkrétní frontu nebo téma. |
 |**accessRights**|**Přístup**|Přístupová práva k připojovacímu řetězci Dostupné hodnoty jsou `manage` a `listen` . Výchozí hodnota je `manage` , což znamená, že `connection` má oprávnění **Spravovat** . Pokud použijete připojovací řetězec, který nemá oprávnění **Spravovat** , nastavte `accessRights` na "naslouchání". V opačném případě může modul runtime Functions selhat při pokusu o provedení operací, které vyžadují oprávnění ke správě. V Azure Functions verze 2. x nebo vyšší není tato vlastnost k dispozici, protože nejnovější verze Service Bus SDK nepodporuje operace správy.|
-|**isSessionsEnabled**|**IsSessionsEnabled**|`true`Pokud se připojujete ke frontě nebo předplatnému [využívajícím relaci](../service-bus-messaging/message-sessions.md) . `false`jinak, což je výchozí hodnota.|
+|**isSessionsEnabled**|**IsSessionsEnabled**|`true` Pokud se připojujete ke frontě nebo předplatnému [využívajícím relaci](../service-bus-messaging/message-sessions.md) . `false` jinak, což je výchozí hodnota.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -309,11 +309,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 Pro zprávu o frontě nebo tématu jsou k dispozici následující typy parametrů:
 
-* `string`– Pokud se jedná o text zprávy
-* `byte[]`– Užitečné pro binární data.
+* `string` – Pokud se jedná o text zprávy
+* `byte[]` – Užitečné pro binární data.
 * Vlastní typ – Pokud zpráva obsahuje JSON, Azure Functions se pokusí deserializovat data JSON.
-* `BrokeredMessage`– Poskytuje deserializovanou zprávu s metodou [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
-* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)– Používá se k přijímání a potvrzení zpráv z kontejneru zpráv (povinné, když [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) je nastavená na `false` )
+* `BrokeredMessage` – Poskytuje deserializovanou zprávu s metodou [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) – Používá se k přijímání a potvrzení zpráv z kontejneru zpráv (povinné, když [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) je nastavená na `false` )
 
 Tyto typy parametrů jsou pro Azure Functions verze 1. x; pro 2. x a novější použijte [`Message`](/dotnet/api/microsoft.azure.servicebus.message) místo `BrokeredMessage` .
 
@@ -321,10 +321,10 @@ Tyto typy parametrů jsou pro Azure Functions verze 1. x; pro 2. x a novější 
 
 Pro zprávu o frontě nebo tématu jsou k dispozici následující typy parametrů:
 
-* `string`– Pokud se jedná o text zprávy
-* `byte[]`– Užitečné pro binární data.
+* `string` – Pokud se jedná o text zprávy
+* `byte[]` – Užitečné pro binární data.
 * Vlastní typ – Pokud zpráva obsahuje JSON, Azure Functions se pokusí deserializovat data JSON.
-* `BrokeredMessage`– Poskytuje deserializovanou zprávu s metodou [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
+* `BrokeredMessage` – Poskytuje deserializovanou zprávu s metodou [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
 
 Tyto parametry jsou pro Azure Functions verze 1. x; pro 2. x a novější použijte [`Message`](/dotnet/api/microsoft.azure.servicebus.message) místo `BrokeredMessage` .
 

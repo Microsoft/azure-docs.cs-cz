@@ -7,25 +7,26 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: b7bcdaf9e3935c01a0906ecfaa1570e4bc7caba9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: efe60079814958116d8042991e1cfd6e2f6f71f5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798116"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213887"
 ---
 # <a name="offer-listing-best-practices"></a>Osvědčené postupy nabídky
 
-Tento článek obsahuje návrhy pro vytváření a poutavé komerční nabídky na webu Marketplace. Následující tabulky popisují osvědčené postupy pro dokončení informací nabídky v partnerském centru. Analýzu toho, jak vaše nabídky provádí, najdete na [řídicím panelu přehledy Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) v partnerském centru. 
+Tento článek obsahuje návrhy na vytváření a poutavé nabídky Microsoftu pro komerční tržišti. Následující tabulky popisují osvědčené postupy pro dokončení informací nabídky v partnerském centru. Analýzu toho, jak vaše nabídky provádí, najdete na [řídicím panelu přehledy Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) v partnerském centru. 
 
 ## <a name="storefront-offer-details"></a>Podrobnosti nabídky prezentace
 
 | Nastavení prezentace | Osvědčený postup |
 |:--- |:--- |  
-| Název nabídky | V případě aplikací zadejte jasný název, který obsahuje klíčová slova pro hledání, která zákazníkům pomůžou vyhledat vaši nabídku. <br> <br> V případě konzultačních služeb použijte tento formát: [název nabídky: [doba trvání] [typ nabídky] (například contoso: implementace 2-Week). <br> <br> Dodržování pokynů pro značky: Sledujte ochranné známky [společnosti Microsoft a pokyny pro značky](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) a další důležité pokyny specifické pro produkty, které se vztahují na ochranné známky společnosti Microsoft a na názvy softwaru, produktů a služeb společnosti Microsoft. |
+| Název nabídky | V případě aplikací zadejte jasný název, který obsahuje klíčová slova pro hledání, která zákazníkům pomůžou vyhledat vaši nabídku. <br> <br> V případě konzultačních služeb použijte tento formát: [název nabídky: [doba trvání] [typ nabídky] (například contoso: implementace 2-Week). |
 | Popis nabídky | Zadejte jasný popis, který popisuje jeho hodnotu v prvních několika větách na pozici vaší nabídky.  Pamatujte, že tyto věty mohou být použity ve výsledcích vyhledávacího stroje. Základní komponenty pro vaši polohu hodnoty by měly zahrnovat: <ul> <li>Popis produktu nebo řešení. </li> <li> Uživatel, který je výhodou z produktu nebo řešení. </li> <li> Potřebu zákazníka nebo bolesti adres produktů nebo řešení. </li> </ul> <br> Pokud je to možné, využijte standardní oborové slovníace nebo používání na základě výhod.  Nespoléhá se na funkce a funkce k prodeji vašeho produktu.  Místo toho se zaměřte na hodnotu, kterou doručujete. <br> <br> V případě servisních konzultačních služeb jasně uveďte profesionální službu, kterou poskytnete. |
 
-Tabulky v této části obsahují návrhy na vytváření a poutavé nabídky Marketplace. Pokud chcete napsat a nakonfigurovat svoje marketingové materiály, navštivte [centrum partnerů](https://partner.microsoft.com/dashboard/commercial-marketplace/). 
+> [!IMPORTANT]
+> Ujistěte se, že název vaší nabídky a popis nabídky se řídí **[zásadami Microsoftu a pokyny pro značky](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)** a dalšími relevantními pokyny pro konkrétní produkt, které se vztahují na ochranné známky společnosti Microsoft a na názvy softwaru, produktů a služeb společnosti Microsoft.
 
 ## <a name="storefront-listing-details"></a>Podrobnosti o prezentace seznamu
 
@@ -119,19 +120,19 @@ Klíčová slova můžou zákazníkům pomáhat při hledání vaší nabídky. 
 ## <a name="storefront-marketing-details"></a>Podrobnosti o marketingu prezentace
 | Nastavení prezentace | Osvědčený postup |
 |:--- |:--- |  
-| Logo nabídky (formát PNG, mezi 216 × 216 a 350 × 350 pixelů): Stránka s podrobnostmi aplikace | Návrh a optimalizace loga pro digitální média:<br>Nahrajte logo ve formátu PNG na stránku se seznamem podrobností aplikace vaší nabídky. Partnerské centrum změní velikost na požadované velikosti loga. |
-| Logo nabídky (formát PNG, 48 × 48 pixelů): stránka hledání | Partnerské centrum vygeneruje toto logo z velkého loga, které jste nahráli. Volitelně můžete tento text nahradit jiným obrázkem. |
-| Dokumenty "Další informace" | Do části "Další informace" zahrňte podporu prodejních a marketingových prostředků:<ul><li>dokumenty White Paper</li><li> brožury</li><li>kontrolní seznamy nebo</li><li> Prezentace aplikace PowerPoint</li></ul><br>Uloží všechny soubory ve formátu PDF. Tady by měl být váš cíl informovat zákazníky a neprodávat jim.<br><br>Přidejte odkaz na cílovou stránku aplikace do všech dokumentů a přidejte parametry adresy URL, které vám pomohou sledovat návštěvníky a zkušební verze. |
+| Logo nabídky (formát PNG, 48 &nbsp; &times; &nbsp; 48): stránka hledání | Návrh a optimalizace loga pro digitální média:<br>Nahrajte logo ve formátu PNG na stránku vyhledávání vaší nabídky. |
+| Logo nabídky (formát PNG, 216 &nbsp; &times; &nbsp; 216): Stránka s podrobnostmi aplikace | Návrh a optimalizace loga pro digitální média:<br>Nahrajte logo ve formátu PNG na stránku se seznamem podrobností aplikace vaší nabídky. |
+| Dokumenty "Další informace" | Do části "Další informace" zahrňte podporu prodejních a marketingových prostředků: <ul> <li> dokumenty White Paper, </li> <li> brožury, </li> <li> kontrolní seznamy nebo </li> <li> Prezentace aplikace PowerPoint.</li> </ul>Uloží všechny soubory ve formátu PDF. Tady by měl být váš cíl informovat zákazníky a neprodávat jim. <br><br>Přidejte odkaz na cílovou stránku aplikace do všech dokumentů a přidejte parametry adresy URL, které vám pomohou sledovat návštěvníky a zkušební verze. |
 | Videa: AppSource, konzultační služby a SaaS nabídky | Nejsilnější videa sdělují hodnotu vaší nabídky ve formě mluveného komentáře:<ul> <li> Udělejte zákazníka, ne firmu, Hero příběh. </li> <li> Vaše video by mělo řešit hlavní výzvy a cíle vašeho cílového zákazníka. </li> <li> Doporučená délka: 60-90 sekund.</li> <li> Zahrňte klíčová slova pro hledání, která používají název videí. </li> <li> Zvažte přidání dalších videí, jako jsou postupy, začátky nebo zákaznické reference. </li> </ul> |
 | Snímky obrazovky (1280 &nbsp; &times; &nbsp; 720) | Přidat až pět snímků obrazovky:<br>Do názvů souborů zahrňte klíčová slova pro hledání klíčů. |
 
 ## <a name="link-to-your-offer-page-from-your-website"></a>Odkaz na stránku nabídky z webu
 
-Když propojíte AppSource nebo Azure Marketplace BADGE na vašem webu s vaším seznamem na webu Marketplace, můžete podporovat silné analýzy a vytváření sestav, a to tak, že na konci adresy URL zadáte následující parametry dotazu:
+Když propojíte AppSource nebo Azure Marketplace BADGE na vašem webu s vaším výpisem na komerčním webu Marketplace, můžete podporovat silné analýzy a vytváření sestav, a to tak, že na konci adresy URL zadáte následující parametry dotazu:
 * **Src**: zahrnuje zdroj, ze kterého je směrován provoz do AppSource (například web, LinkedIn nebo Facebook).
 * **mktcmpid**: vaše ID marketingové kampaně, které může obsahovat až 16 znaků v libovolné kombinaci písmen, číslic, podtržítka a spojovníků (například *blogpost_12*).
 
-Následující příklad adresy URL obsahuje oba předchozí parametry dotazu:`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
+Následující příklad adresy URL obsahuje oba předchozí parametry dotazu: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
 Přidáním parametrů k AppSource adrese URL si můžete prohlédnout efektivitu kampaně na řídicím panelu Analytics v [partnerském centru](https://partner.microsoft.com/dashboard/commercial-marketplace/).
 

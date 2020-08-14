@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Popisuje procesy pro vzdálené ladění ve službě Azure Kubernetes s Azure Dev Spaces
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: a9f303ea6f954285a319be137a594f7ce127f740
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80241397"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213381"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>Jak vzdálené ladění kódu pomocí Azure Dev Spaces funguje
 
@@ -30,15 +30,7 @@ Obrázek ladicího programu se automaticky určí pomocí nástrojů na straně 
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li začít používat Azure Dev Spaces pro vzdálené ladění projektu, přečtěte si následující rychlé starty:
+Přečtěte si další informace o tom, jak Azure Dev Spaces funguje.
 
-* [Rychlé iterování a ladění pomocí Visual Studio Code a Java][quickstart-java]
-* [Rychlé iterování a ladění pomocí Visual Studio Code a .NET][quickstart-netcore]
-* [Rychlé iterování a ladění pomocí Visual Studio Code a Node.js][quickstart-node]
-* [Rychlé iterace a ladění pomocí sady Visual Studio a .NET Core][quickstart-vs]
-
-
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md
+> [!div class="nextstepaction"]
+> [Jak Azure Dev Spaces funguje](how-dev-spaces-works.md)

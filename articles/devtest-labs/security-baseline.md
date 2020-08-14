@@ -3,12 +3,12 @@ title: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 description: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 158ead7531b0b3da2e495e36e40e761961bea498
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: ed263ad80250531431840516f2764055c75abd50
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761004"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212311"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 
@@ -629,8 +629,8 @@ Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
 **Doprovodné materiály:** Využijte Azure DevOps k bezpečnému ukládání a správě kódu, jako jsou vlastní zásady Azure, Azure Resource Manager šablony a požadované konfigurační skripty stavu. Pokud chcete získat přístup k prostředkům, které spravujete v Azure DevOps, můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory (Azure AD), pokud jsou integrované s Azure DevOps.
 
-- [Kurz k Azure Repos Git](/devops/repos/git/gitworkflow?view=azure-devops)
-- [O oprávněních a skupinách](/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Kurz k Azure Repos Git](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
+- [O oprávněních a skupinách](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
 - [Integrace mezi Azure DevTest Labs a pracovním postupem Azure DevOps](devtest-lab-dev-ops.md)
 
 **Monitorování Azure Security Center:** Nelze použít

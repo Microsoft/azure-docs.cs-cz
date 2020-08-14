@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 6933321ad402104fa5529af2b7fdf38e329e0168
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6422874f57b490773f70b6fb27d5b65c654ded07
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830917"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212734"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
@@ -76,7 +76,7 @@ Další informace o této službě najdete v dokumentaci ke [službě mobility](
 
 ### <a name="render-service"></a>Služba Render
 
-[Služba vykreslování verze V2](https://docs.microsoft.com/est/api/maps/renderv2) , která je teď ve verzi Preview, zavádí novou verzi [rozhraní získat dlaždici mapy v2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). Rozhraní API pro dlaždici získat mapu verze 2 teď umožňuje zákazníkům požádat o Azure Mapsovou dlaždici, počasí a dlaždice map vytvořené pomocí Tvůrce Azure Maps. Doporučuje se použít novou dlaždici získat rozhraní API pro získání mapy.  
+[Služba vykreslování verze V2](https://docs.microsoft.com/rest/api/maps/renderv2) , která je teď ve verzi Preview, zavádí novou verzi [rozhraní získat dlaždici mapy v2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). Rozhraní API pro dlaždici získat mapu verze 2 teď umožňuje zákazníkům požádat o Azure Mapsovou dlaždici, počasí a dlaždice map vytvořené pomocí Tvůrce Azure Maps. Doporučuje se použít novou dlaždici získat rozhraní API pro získání mapy.  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Příklad mapy ze služby vykreslení v2":::
 

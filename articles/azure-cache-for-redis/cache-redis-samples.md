@@ -4,14 +4,15 @@ description: 'Naučte se používat Azure cache pro Redis s těmito ukázkami k�
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
+ms.custom: devx-track-dotnet
 ms.topic: sample
 ms.date: 01/23/2017
-ms.openlocfilehash: 8057a7db3d1a2db0e51ec15e4966ed0b31c84226
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 553850173f463a05b13768eb3b9e17703bfa2886
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75433406"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212299"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Ukázky služby Azure Cache for Redis
 Toto téma poskytuje seznam mezipaměti Azure pro ukázky Redis, které se týkají scénářů, jako je připojení k mezipaměti, čtení a zápis dat do a z mezipaměti, a použití ASP.NET mezipaměti Azure pro poskytovatele Redis. Některé ukázky jsou projekty ke stažení a některé poskytují podrobné pokyny a obsahují fragmenty kódu, ale neodkazování na projekt ke stažení.

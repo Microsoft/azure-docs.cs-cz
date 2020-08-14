@@ -9,17 +9,18 @@ editor: ''
 ms.assetid: 772bc8dd-5cda-41c4-95bf-b9f6f052bc85
 ms.service: api-management
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: a366cf6d4e17e83fd89ae21631ad5b40e8971c1b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: cf9901b4e49460dd2fb91dceaf239571058c5284
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903438"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213314"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Vlastní ukládání do mezipaměti ve službě Azure API Management
 Služba Azure API Management obsahuje integrovanou podporu [ukládání odpovědí HTTP do mezipaměti](api-management-howto-cache.md) pomocí adresy URL prostředku jako klíče. Klíč lze upravit pomocí hlaviček požadavků pomocí `vary-by` vlastností. To je užitečné pro ukládání celých odpovědí HTTP (označovaných také jako reprezentace), ale v některých případech je vhodné jenom ukládat část reprezentace do mezipaměti. Nové zásady [cache-Lookup-Value](./api-management-caching-policies.md#GetFromCacheByKey) a [cache-Store-Value](./api-management-caching-policies.md#StoreToCacheByKey) umožňují ukládat a načítat libovolné části dat v rámci definic zásad. Tato možnost také přidá hodnotu k dříve zavedené zásadě [odeslání – požadavek](./api-management-advanced-policies.md#SendRequest) , protože teď můžete ukládat odpovědi z externích služeb do mezipaměti.
@@ -276,5 +277,5 @@ Ve větších nasazeních s více klienty vytvářejí některé společnosti sa
 
 Místo vrácení upřednostňované verze rozhraní API pro každý klíč předplatného byste vrátili identifikátor, který vztahuje tenanta k přiřazené hardwarové skupině. Tento identifikátor lze použít k vytvoření příslušné adresy URL back-endu.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Volná mezipaměť služby Azure API Management pro ukládání jakéhokoli druhu dat umožňuje efektivní přístup k datům konfigurace, který může ovlivnit způsob zpracování příchozího požadavku. Dá se taky použít k ukládání fragmentů dat, které můžou rozšiřovat odpovědi, které se vrátí z back-endu rozhraní API.

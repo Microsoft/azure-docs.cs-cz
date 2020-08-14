@@ -1,7 +1,7 @@
 ---
 title: Upgrade na verzi v 3.0 rozhraní API pro počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak upgradovat z verze 2.0 a v 2.1 na v 3.0 rozhraní API pro počítačové zpracování obrazu.
+description: Přečtěte si, jak upgradovat na Počítačové zpracování obrazu v 3.0 – rozhraní API pro čtení z verze 2.0/v 2.1.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: 16add0dce88d0f809dc291d3c9de33e1a853f257
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 6e695fcfacac19ca82273d84d049bdb2afe14b54
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136500"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214186"
 ---
-# <a name="upgrade-to-v30-of-computer-vision-api-from-v20-and-v21"></a>Upgrade na verzi v 3.0 rozhraní API pro počítačové zpracování obrazu z verze 2.0 a v 2.1
+# <a name="upgrade-to-computer-vision-v30-read-api-from-v20v21"></a>Upgrade na Počítačové zpracování obrazu v 3.0 – rozhraní API pro čtení z verze 2.0/v 2.1
 
-Tato příručka ukazuje, jak upravit existující kód pro migraci z verze v 2.0 nebo v 2.1 rozhraní API pro počítačové zpracování obrazu do v 3.0 pro uživatele REST API. 
+V této příručce se dozvíte, jak upgradovat stávající Počítačové zpracování obrazu v 2.0 nebo v 2.1 REST API kódu na operace čtení v 3.0. 
 
-## <a name="upgrade-batch-read-file-to-read"></a>Upgradovat `Batch Read File` na`Read`
+## <a name="upgrade-batch-read-file-to-read"></a>Upgradovat `Batch Read File` na `Read`
 
 
 1. Změňte cestu rozhraní API `Batch Read File` 2. x následujícím způsobem:
@@ -57,7 +57,7 @@ Tato příručka ukazuje, jak upravit existující kód pro migraci z verze v 2.
     - Chcete-li získat kořen pro pole stránky, změňte hierarchii JSON z `"recognitionResults"` na `"analyzeResult"` / `"readResults"` . Hierarchie JSON řádku a slov nezůstane beze změny, takže se nevyžadují žádné změny kódu.
     -   Úhel stránky byl `"clockwiseOrientation"` přejmenován na `"angle"` a rozsah byl změněn z 0-360 stupňů na-180 na 180 stupňů. V závislosti na vašem kódu může nebo nemusí být nutné provádět změny, protože většina matematických funkcí může zvládnout kterýkoli rozsah.
     -   Rozhraní API v 3.0 také zavádí následující vylepšení, která můžete volitelně využít:- `"createdDateTime"` a, `"lastUpdatedDateTime"` abyste mohli sledovat dobu trvání zpracování. Další podrobnosti najdete v dokumentaci. 
-        - `"version"`oznamuje verzi rozhraní API používaného k vygenerování výsledků.
+        - `"version"` oznamuje verzi rozhraní API používaného k vygenerování výsledků.
         - Bylo přidáno jednotlivé slovo `"confidence"` . Tato hodnota se kalibruje tak, že hodnota 0,95 znamená, že se rozpoznávání vyřeší na 95%. Skóre spolehlivosti lze použít k výběru textu, který se má odeslat do lidské recenze. 
     
     
@@ -158,8 +158,8 @@ Tato příručka ukazuje, jak upravit existující kód pro migraci z verze v 2.
     }
     ```
 
-## <a name="upgrade-from-recognize-text-to-read"></a>Upgrade z `Recognize Text` na verzi`Read`
-`Recognize Text`je operace *verze Preview* , která se *už nepoužívá ve všech verzích rozhraní API pro počítačové zpracování obrazu*. Je nutné provést migraci z nástroje `Recognize Text` na `Read` verzi (v 3.0) nebo `Batch Read File` (v 2.0, v 2.1). v 3.0 `Read` obsahuje novější, lepší modely pro rozpoznávání textu a další funkce, takže se doporučuje. Upgrade z `Recognize Text` na verzi `Read` :
+## <a name="upgrade-from-recognize-text-to-read"></a>Upgrade z `Recognize Text` na verzi `Read`
+`Recognize Text` je operace *verze Preview* , která se *už nepoužívá ve všech verzích rozhraní API pro počítačové zpracování obrazu*. Je nutné provést migraci z nástroje `Recognize Text` na `Read` verzi (v 3.0) nebo `Batch Read File` (v 2.0, v 2.1). v 3.0 `Read` obsahuje novější, lepší modely pro rozpoznávání textu a další funkce, takže se doporučuje. Upgrade z `Recognize Text` na verzi `Read` :
 
 1. Cestu rozhraní API pro `Recognize Text` v2. x změňte takto:
 
@@ -195,12 +195,12 @@ Tato příručka ukazuje, jak upravit existující kód pro migraci z verze v 2.
     - V v2. x `"Get Read Operation Result"` vrátí JSON pro rozpoznávání OCR, pokud je stav `"Succeeded"` . V v 3.0 je toto pole `"succeeded"` .
     - Chcete-li získat kořen pro pole stránky, změňte hierarchii JSON z `"recognitionResult"` na `"analyzeResult"` / `"readResults"` . Hierarchie JSON řádku a slov nezůstane beze změny, takže se nevyžadují žádné změny kódu.
     -   Rozhraní API v 3.0 také zavádí následující vylepšení, která můžete volitelně využít. Další podrobnosti najdete v referenčních informacích k rozhraní API:- `"createdDateTime"` a `"lastUpdatedDateTime"` jsou přidané, abyste mohli sledovat dobu trvání zpracování. Další podrobnosti najdete v dokumentaci. 
-        - `"version"`oznamuje verzi rozhraní API používaného k vygenerování výsledků.
+        - `"version"` oznamuje verzi rozhraní API používaného k vygenerování výsledků.
         - Bylo přidáno jednotlivé slovo `"confidence"` . Tato hodnota se kalibruje tak, že hodnota 0,95 znamená, že se rozpoznávání vyřeší na 95%. Skóre spolehlivosti lze použít k výběru textu, který se má odeslat do lidské recenze. 
-        - `"angle"`Obecná orientace textu ve směru po směru hodinových ručiček měřená ve stupních mezi (-180, 180].
-        -  `"width"`a `"height"` Poskytněte vám rozměry dokumentu a `"unit"` poskytuje jednotky (v pixelech nebo palcích) v závislosti na typu dokumentu.
-        - `"page"`vícestránkové dokumenty jsou podporovány.
-        - `"language"`vstupní jazyk dokumentu (z volitelného parametru _jazyka_ )
+        - `"angle"` Obecná orientace textu ve směru po směru hodinových ručiček měřená ve stupních mezi (-180, 180].
+        -  `"width"` a `"height"` Poskytněte vám rozměry dokumentu a `"unit"` poskytuje jednotky (v pixelech nebo palcích) v závislosti na typu dokumentu.
+        - `"page"` vícestránkové dokumenty jsou podporovány.
+        - `"language"` vstupní jazyk dokumentu (z volitelného parametru _jazyka_ )
 
 
     Ve 2. X je výstupní formát následující: 
