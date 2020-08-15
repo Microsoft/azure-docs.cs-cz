@@ -4,12 +4,12 @@ description: Přečtěte si o sítích ve službě Azure Kubernetes Service (AKS
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dacb14664b21412df1b1d48c023017378cf364c9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: edb195fae2e05a1f746c10482576f7e0b1bff7c9
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387757"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243900"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -73,6 +73,8 @@ Další informace najdete v tématu [Konfigurace sítě kubenet pro cluster AKS]
 
 Při použití Azure CNI získá každý pod IP adresu z podsítě a dá se k němu přistupovat přímo. Tyto IP adresy musí být v rámci vašeho síťového prostoru jedinečné a musí být plánovány předem. Každý uzel má parametr konfigurace maximálního počtu lusků, které podporuje. Pro tento uzel je pak rezervovaný i ekvivalentní počet IP adres na uzel. Tento přístup vyžaduje více plánování, jinak může dojít k vyčerpání IP adres nebo potřeba znovu sestavit clustery ve větší podsíti, jak vaše aplikace požaduje růst.
 
+Na rozdíl od kubenet provoz do koncových bodů ve stejné virtuální síti není NAT k primární IP adrese uzlu. Zdrojová adresa pro přenos dat ve virtuální síti je pod IP adresou pod. Přenosy, které jsou externí pro virtuální síť, jsou pořád NAT na primární IP adresu uzlu.
+
 Uzly používají modul plug-in Kubernetes [CNI (Azure Container Networking Interface)][cni-networking] .
 
 ![Diagram znázorňující dva uzly s mostem připojujícím se každé virtuální síti Azure][advanced-networking-diagram]
@@ -114,12 +116,12 @@ Bez ohledu na použitý model sítě můžete nasadit jak kubenet, tak i Azure C
 * Platforma Azure může automaticky vytvářet a konfigurovat prostředky virtuální sítě při vytváření clusteru AKS.
 * Při vytváření clusteru AKS můžete ručně vytvořit a nakonfigurovat prostředky virtuální sítě a připojit se k těmto prostředkům.
 
-I když jsou podporované možnosti, jako jsou koncové body služby nebo udr, kubenet i Azure CNI, [zásady podpory pro AKS][support-policies] definují, jaké změny můžete provádět. Příklad:
+I když jsou podporované možnosti, jako jsou koncové body služby nebo udr, kubenet i Azure CNI, [zásady podpory pro AKS][support-policies] definují, jaké změny můžete provádět. Například:
 
 * Pokud ručně vytvoříte prostředky virtuální sítě pro cluster AKS, budete podporováni při konfiguraci vlastních koncových bodů udr nebo služby.
 * Pokud platforma Azure automaticky vytvoří prostředky virtuální sítě pro cluster AKS, není podporováno ruční změna těchto prostředků spravovaných AKS ke konfiguraci vlastních koncových bodů udr nebo služby.
 
-## <a name="ingress-controllers"></a>Kontrolery příchozího přenosu dat
+## <a name="ingress-controllers"></a>Řadiče příchozího přenosu dat
 
 Když vytvoříte službu typu Vyrovnávání zatížení, vytvoří se základní prostředek nástroje pro vyrovnávání zatížení Azure. Nástroj pro vyrovnávání zatížení je nakonfigurovaný k distribuci provozu do lusků ve vaší službě na daném portu. Nástroj pro vyrovnávání zatížení funguje pouze ve vrstvě 4 – služba nezohledňuje skutečné aplikace a nemůže dělat žádné další informace o směrování.
 
@@ -135,7 +137,7 @@ Další běžnou funkcí příchozího přenosu dat je ukončení SSL/TLS. U roz
 
 Můžete taky nakonfigurovat svůj kontroler příchozího přenosu dat, aby se v požadavcích na kontejnery v clusteru AKS zachovala zdrojová IP adresa klienta. Když je požadavek klienta směrován do kontejneru v clusteru AKS prostřednictvím vašeho kontroleru příchozího přenosu dat, původní zdrojová IP adresa této žádosti nebude k dispozici pro cílový kontejner. Když povolíte *zachování IP adresy zdrojového klienta*, je zdrojová IP adresa pro klienta k dispozici v hlavičce žádosti v části *X-předáno-pro*. Pokud používáte zachování IP adresy zdrojového klienta v řadiči příchozího přenosu dat, nemůžete použít průchozí protokol TLS. U jiných služeb, jako je třeba typ *Vyrovnávání zatížení* sítě, můžete použít předávání IP adres klienta a předávací protokol TLS.
 
-## <a name="network-security-groups"></a>skupiny zabezpečení sítě,
+## <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 
 Skupina zabezpečení sítě filtruje provoz virtuálních počítačů, například uzlů AKS. Při vytváření služeb, jako je například nástroj pro vyrovnávání zatížení, platforma Azure automaticky konfiguruje všechna potřebná pravidla skupiny zabezpečení sítě. Nekonfigurujte ručně pravidla skupiny zabezpečení sítě pro filtrování provozu pro lusky v clusteru AKS. Definujte všechny požadované porty a předávání jako součást svých manifestů služby Kubernetes a umožněte, aby platforma Azure vytvořila nebo aktualizovala příslušná pravidla. Můžete také použít zásady sítě, jak je popsáno v další části, a automaticky tak použít pravidla filtru přenosu na lusky.
 

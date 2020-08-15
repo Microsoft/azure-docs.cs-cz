@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 9f27deebe3a1fb21f4c7406bfd424196fb1072ec
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 527ce1c7d434ae94c91c78c865c00aa0687a73cb
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921932"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245498"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Kurz: vizualizace anomálií pomocí zjišťování dávek a Power BI
 
@@ -29,10 +29,10 @@ V tomto kurzu se naučíte:
 > * Vizualizujte anomálie nalezené v rámci vašich dat, včetně očekávaných a zobrazených hodnot a hranic detekce anomálií.
 
 ## <a name="prerequisites"></a>Požadavky
-* [Předplatné Azure](https://azure.microsoft.com/free/)
+* [Předplatné Azure](https://azure.microsoft.com/free/cognitive-services)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), k dispozici zdarma.
 * Excelový soubor (. xlsx), který obsahuje datové body časové řady. Ukázková data pro tento rychlý Start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090962) .
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" vytvořte prostředek pro detekci anomálií "  target="_blank"> vytvořením prostředku detektoru anomálií <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. 
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" vytvořte prostředek pro detekci anomálií "  target="_blank"> vytvořením prostředku detektoru anomálií <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod.
     * K připojení aplikace k rozhraní API detektoru anomálií budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Provedete to později v rychlém startu.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
@@ -52,19 +52,19 @@ Po zobrazení dialogového okna přejděte do složky, do které jste stáhli so
 
 ![Obrázek obrazovky datového zdroje "navigátor" v Power BI](../media/tutorials/navigator-dialog-box.png)
 
-Power BI převede časová razítka v prvním sloupci na `Date/Time` datový typ. Tato časová razítka je nutné převést na text, aby bylo možné je odeslat do rozhraní API detektoru anomálií. Pokud se Editor Power Query automaticky neotevře, klikněte na tlačítko **Upravit dotazy** na kartě Domů. 
+Power BI převede časová razítka v prvním sloupci na `Date/Time` datový typ. Tato časová razítka je nutné převést na text, aby bylo možné je odeslat do rozhraní API detektoru anomálií. Pokud se Editor Power Query automaticky neotevře, klikněte na tlačítko **Upravit dotazy** na kartě Domů.
 
 V editoru Power Query klikněte na pás karet **transformace** . Ve skupině **libovolný sloupec** otevřete položku **datový typ:** rozevírací nabídka a vyberte **text**.
 
 ![Obrázek obrazovky datového zdroje "navigátor" v Power BI](../media/tutorials/data-type-drop-down.png)
 
-Po zobrazení oznámení o změně typu sloupce klikněte na **Nahradit aktuální**. Pak klikněte na tlačítko **zavřít & použít** nebo **použít** na pásu karet **Domů** . 
+Po zobrazení oznámení o změně typu sloupce klikněte na **Nahradit aktuální**. Pak klikněte na tlačítko **zavřít & použít** nebo **použít** na pásu karet **Domů** .
 
 ## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>Vytvoření funkce pro odeslání dat a naformátování odpovědi
 
 K naformátování a odeslání datového souboru do rozhraní API detektoru anomálií můžete vyvolat dotaz na tabulku vytvořenou výše. V editoru Power Query v pásu karet **Domů** otevřete rozevírací nabídku **nový zdroj** a klikněte na příkaz **prázdný dotaz**.
 
-Ujistěte se, že je vybraný nový dotaz, a pak klikněte na **Rozšířený editor**. 
+Ujistěte se, že je vybraný nový dotaz, a pak klikněte na **Rozšířený editor**.
 
 ![Obrázek tlačítka Rozšířený editor v Power BI](../media/tutorials/advanced-editor-screen.png)
 
@@ -84,7 +84,7 @@ V Rozšířený editor použijte následující fragment kódu Power Query M k e
     jsonresp    = Json.Document(bytesresp),
 
     respTable = Table.FromColumns({
-                    
+
                      Table.Column(inputTable, "Timestamp")
                      ,Table.Column(inputTable, "Value")
                      , Record.Field(jsonresp, "IsAnomaly") as list
@@ -96,7 +96,7 @@ V Rozšířený editor použijte následující fragment kódu Power Query M k e
 
                   }, {"Timestamp", "Value", "IsAnomaly", "ExpectedValues", "UpperMargin", "LowerMargin", "IsPositiveAnomaly", "IsNegativeAnomaly"}
                ),
-    
+
     respTable1 = Table.AddColumn(respTable , "UpperMargins", (row) => row[ExpectedValues] + row[UpperMargin]),
     respTable2 = Table.AddColumn(respTable1 , "LowerMargins", (row) => row[ExpectedValues] -  row[LowerMargin]),
     respTable3 = Table.RemoveColumns(respTable2, "UpperMargin"),
@@ -112,7 +112,7 @@ V Rozšířený editor použijte následující fragment kódu Power Query M k e
  in results
 ```
 
-Vyvolejte dotaz na datovou tabulku výběrem `Sheet1` níže uvedeného **parametru**a kliknutím na **vyvolat**. 
+Vyvolejte dotaz na datovou tabulku výběrem `Sheet1` níže uvedeného **parametru**a kliknutím na **vyvolat**.
 
 ![Obrázek tlačítka "Rozšířený editor"](../media/tutorials/invoke-function-screenshot.png)
 
@@ -121,23 +121,23 @@ Vyvolejte dotaz na datovou tabulku výběrem `Sheet1` níže uvedeného **parame
 > [!NOTE]
 > Uvědomte si zásady vaší organizace na ochranu osobních údajů a přístup k datům. Další informace najdete v tématu [Power BI Desktop úrovně ochrany osobních údajů](https://docs.microsoft.com/power-bi/desktop-privacy-levels) .
 
-Při pokusu o spuštění dotazu se může zobrazit zpráva s upozorněním, že se používá externí zdroj dat. 
+Při pokusu o spuštění dotazu se může zobrazit zpráva s upozorněním, že se používá externí zdroj dat.
 
 ![Obrázek ukazující upozornění vytvořené nástrojem Power BI](../media/tutorials/blocked-function.png)
 
-Pokud to chcete opravit, klikněte na **soubor**a vyberte **Možnosti a nastavení**. Pak klikněte na **Možnosti**. Pod **aktuálním souborem**vyberte možnost **soukromí**a **ignorujte úroveň ochrany osobních údajů a potenciálně Vylepšete výkon**. 
+Pokud to chcete opravit, klikněte na **soubor**a vyberte **Možnosti a nastavení**. Pak klikněte na **Možnosti**. Pod **aktuálním souborem**vyberte možnost **soukromí**a **ignorujte úroveň ochrany osobních údajů a potenciálně Vylepšete výkon**.
 
 Kromě toho se může zobrazit zpráva s výzvou, abyste určili, jak se chcete připojit k rozhraní API.
 
 ![Obrázek ukazující požadavek na zadání přihlašovacích údajů pro přístup](../media/tutorials/edit-credentials-message.png)
 
-Pokud to chcete opravit, klikněte ve zprávě na **Upravit přihlašovací údaje** . Po zobrazení dialogového okna vyberte **anonymní** a připojte se k rozhraní API anonymně. Pak klikněte na **Connect** (Připojit). 
+Pokud to chcete opravit, klikněte ve zprávě na **Upravit přihlašovací údaje** . Po zobrazení dialogového okna vyberte **anonymní** a připojte se k rozhraní API anonymně. Pak klikněte na **Connect** (Připojit).
 
 Potom kliknutím na **zavřít & použít** na pásu karet **Domů** , aby se změny projevily.
 
 ## <a name="visualize-the-anomaly-detector-api-response"></a>Vizualizace odpovědi rozhraní API detektoru anomálií
 
-Na hlavní obrazovce Power BI začněte používat dotazy vytvořené výše k vizualizaci dat. Nejprve vyberte **Spojnicový graf** v **vizualizacích**. Pak přidejte časové razítko z vyvolané funkce na **osu**čárového grafu. Klikněte na něj pravým tlačítkem myši a vyberte **časové razítko**. 
+Na hlavní obrazovce Power BI začněte používat dotazy vytvořené výše k vizualizaci dat. Nejprve vyberte **Spojnicový graf** v **vizualizacích**. Pak přidejte časové razítko z vyvolané funkce na **osu**čárového grafu. Klikněte na něj pravým tlačítkem myši a vyberte **časové razítko**.
 
 ![Kliknutí pravým tlačítkem na hodnotu časového razítka](../media/tutorials/timestamp-right-click.png)
 

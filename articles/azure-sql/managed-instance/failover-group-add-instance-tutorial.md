@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 47f33d8b1a7792487491cbe7f2ddb5c7f5b087af
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c898eeaf99b8a24b992f1daa82b9149327b7a457
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002990"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245774"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL do skupiny převzetí služeb při selhání
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -52,7 +52,7 @@ K dokončení tohoto kurzu se ujistěte, že máte následující položky:
 ---
 
 
-## <a name="1---create-a-resource-group-and-primary-managed-instance"></a>1. Vytvoření skupiny prostředků a primární spravované instance
+## <a name="create-a-resource-group-and-primary-managed-instance"></a>Vytvoření skupiny prostředků a primární spravované instance
 
 V tomto kroku vytvoříte skupinu prostředků a primární spravovanou instanci pro skupinu převzetí služeb při selhání pomocí Azure Portal nebo PowerShellu. 
 
@@ -404,7 +404,7 @@ Tato část kurzu používá následující rutiny PowerShellu:
 
 ---
 
-## <a name="2---create-secondary-virtual-network"></a>2 – vytvoření sekundární virtuální sítě
+## <a name="create-secondary-virtual-network"></a>Vytvořit sekundární virtuální síť
 
 Pokud používáte Azure Portal k vytvoření spravované instance, bude nutné vytvořit virtuální síť samostatně, protože existuje požadavek, aby podsíť primární a sekundární spravované instance nepřesahoval rozsahy. Pokud ke konfiguraci spravované instance používáte PowerShell, přeskočte dopředu ke kroku 3. 
 
@@ -432,7 +432,7 @@ Pokud chcete vytvořit virtuální síť, postupujte takto:
     | **Adresní prostor** | Adresní prostor pro virtuální síť, například `10.128.0.0/16` . | 
     | **Předplatné** | Předplatné, ve kterém se nachází vaše primární spravovaná instance a skupina prostředků |
     | **Oblast** | Umístění, do kterého budete nasazovat sekundární spravovanou instanci. |
-    | **Podsíť** | Název vaší podsítě. `default`je ve výchozím nastavení k dispozici pro vás. |
+    | **Podsíť** | Název vaší podsítě. `default` je ve výchozím nastavení k dispozici pro vás. |
     | **Rozsah adres**| Rozsah adres pro vaši podsíť. Musí se lišit od rozsahu adres podsítě používaného virtuální sítí vaší primární spravované instance, například `10.128.0.0/24` .  |
     | &nbsp; | &nbsp; |
 
@@ -444,7 +444,7 @@ Tento krok je nezbytný pouze v případě, že používáte Azure Portal k nasa
 
 ---
 
-## <a name="3---create-a-secondary-managed-instance"></a>3. vytvoření sekundární spravované instance
+## <a name="create-a-secondary-managed-instance"></a>Vytvoření sekundární spravované instance
 V tomto kroku vytvoříte sekundární spravovanou instanci v Azure Portal, která bude také konfigurovat síť mezi dvěma spravovanými instancemi. 
 
 Vaše druhá spravovaná instance musí:
@@ -734,9 +734,9 @@ Tato část kurzu používá následující rutiny PowerShellu:
 
 ---
 
-## <a name="4---create-a-primary-gateway"></a>4. vytvoření primární brány 
+## <a name="create-a-primary-gateway"></a>Vytvoření primární brány 
 
-Aby se dvě spravované instance účastnily skupiny převzetí služeb při selhání, musí existovat buď ExpressRoute, nebo brána nakonfigurovaná mezi virtuálními sítěmi dvou spravovaných instancí, aby bylo možné síťovou komunikaci. Pokud se rozhodnete nakonfigurovat [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) místo připojení dvou bran VPN Gateway, přejděte ke [kroku 7](#7---create-a-failover-group).  
+Aby se dvě spravované instance účastnily skupiny převzetí služeb při selhání, musí existovat buď ExpressRoute, nebo brána nakonfigurovaná mezi virtuálními sítěmi dvou spravovaných instancí, aby bylo možné síťovou komunikaci. Pokud se rozhodnete nakonfigurovat [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) místo připojení dvou bran VPN Gateway, přejděte ke [kroku 7](#create-a-failover-group).  
 
 Tento článek popisuje kroky pro vytvoření dvou bran sítě VPN a jejich připojení, ale můžete přeskočit k vytvoření skupiny převzetí služeb při selhání, pokud jste místo toho nakonfigurovali ExpressRoute. 
 
@@ -767,7 +767,6 @@ Vytvořte bránu pro virtuální síť vaší primární spravované instance po
     | **Typ brány** | Vyberte **VPN**. |
     | **Typ sítě VPN** | Vyberte **směrování založené na trasách**. |
     | **Skladová jednotka (SKU)**| Ponechte výchozí hodnotu `VpnGw1` . |
-    | **Umístění**| Umístění, kde jsou vaše primární spravovaná instance a primární virtuální síť.   |
     | **Virtuální síť**| Vyberte virtuální síť, která byla vytvořena v části 2, například `vnet-sql-mi-primary` . |
     | **Veřejná IP adresa**| Vyberte, že chcete **vytvořit novou** IP adresu. |
     | **Název veřejné IP adresy**| Zadejte název vaší IP adresy, například `primary-gateway-IP` . |
@@ -831,7 +830,7 @@ Tato část kurzu používá následující rutiny PowerShellu:
 ---
 
 
-## <a name="5---create-secondary-gateway"></a>5 – vytvoření sekundární brány 
+## <a name="create-secondary-gateway"></a>Vytvořit sekundární bránu 
 V tomto kroku vytvoříte bránu pro virtuální síť sekundární spravované instance pomocí Azure Portal. 
 
 
@@ -849,8 +848,7 @@ Pomocí Azure Portal vytvořte podsíť virtuální sítě a bránu pro sekundá
    | **Typ brány** | Vyberte **VPN**. |
    | **Typ sítě VPN** | Vyberte **směrování založené na trasách**. |
    | **Skladová jednotka (SKU)**| Ponechte výchozí hodnotu `VpnGw1` . |
-   | **Umístění**| Umístění, kde je sekundární spravovaná instance a sekundární virtuální síť.   |
-   | **Virtuální síť**| Vyberte virtuální síť, která byla vytvořena v části 2, například `vnet-sql-mi-secondary` . |
+   | **Virtuální síť**| Vyberte virtuální síť pro sekundární spravovanou instanci, například `vnet-sql-mi-secondary` . |
    | **Veřejná IP adresa**| Vyberte, že chcete **vytvořit novou** IP adresu. |
    | **Název veřejné IP adresy**| Zadejte název vaší IP adresy, například `secondary-gateway-IP` . |
    | &nbsp; | &nbsp; |
@@ -883,7 +881,7 @@ Vytvořte bránu pro virtuální síť sekundární spravované instance pomocí
                      -VirtualNetwork $secondaryVirtualNetwork
    $drLocation = $secondaryVirtualNetwork.Location
    
-   Write-host "Creating primary gateway..."
+   Write-host "Creating secondary gateway..."
    Write-host "This will take some time."
    $secondaryGWPublicIP = New-AzPublicIpAddress -Name $secondaryGWPublicIPAddress -ResourceGroupName $resourceGroupName `
             -Location $drLocation -AllocationMethod Dynamic
@@ -911,7 +909,7 @@ Tato část kurzu používá následující rutiny PowerShellu:
 ---
 
 
-## <a name="6---connect-the-gateways"></a>6. připojení bran
+## <a name="connect-the-gateways"></a>Připojení bran
 V tomto kroku vytvořte obousměrné připojení mezi dvěma branami obou virtuálních sítí. 
 
 
@@ -923,21 +921,24 @@ Připojte dvě brány pomocí Azure Portal.
 1. Vyberte **vytvořit prostředek** z [Azure Portal](https://portal.azure.com).
 1. Do `connection` vyhledávacího pole zadejte a stiskněte klávesu ENTER pro hledání, které vás přesměruje do prostředku **připojení** publikovaného společností Microsoft.
 1. Vyberte **vytvořit** a vytvořte připojení. 
-1. Na kartě **základy** vyberte následující hodnoty a pak vyberte **OK**. 
+1. Na stránce **základy** vyberte následující hodnoty a pak vyberte **OK**. 
     1. Jako `VNet-to-VNet` **Typ připojení**vyberte. 
     1. Vyberte vaše předplatné z rozevíracího seznamu. 
     1. V rozevíracím seznamu vyberte skupinu prostředků pro spravovanou instanci SQL. 
     1. Z rozevíracího seznamu vyberte umístění vaší primární spravované instance. 
-1. Na kartě **Nastavení** vyberte nebo zadejte následující hodnoty a pak vyberte **OK**:
-    1. Vyberte bránu primárního síťového rozhraní pro **první bránu virtuální sítě**, například `Primary-Gateway` .  
-    1. Vyberte bránu sekundární sítě pro **druhou bránu virtuální sítě**, například `Secondary-Gateway` . 
+1. Na stránce **Nastavení** vyberte nebo zadejte následující hodnoty a pak vyberte **OK**:
+    1. Vyberte bránu primárního síťového rozhraní pro **první bránu virtuální sítě**, například `primaryGateway` .  
+    1. Vyberte bránu sekundární sítě pro **druhou bránu virtuální sítě**, například `secondaryGateway` . 
     1. Zaškrtněte políčko vedle možnosti **navázat obousměrné připojení**. 
     1. Buď ponechte výchozí název primárního připojení, nebo ho přejmenujte na hodnotu podle vašeho výběru. 
     1. Zadejte **sdílený klíč (PSK)** pro připojení, například `mi1m2psk` . 
+    1. Kliknutím na **OK** uložte nastavení. 
 
-   ![Vytvořit připojení brány](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
+    ![Vytvořit připojení brány](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
 
-1. Na kartě **Souhrn** zkontrolujte nastavení obousměrného připojení a pak vyberte **OK** . tím vytvoříte připojení. 
+    
+
+1. Na stránce **Revize + vytvořit** zkontrolujte nastavení obousměrného připojení a pak vyberte **OK** . tím vytvoříte připojení. 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -970,7 +971,7 @@ Tato část kurzu používá následující rutinu PowerShellu:
 ---
 
 
-## <a name="7---create-a-failover-group"></a>7. Vytvoření skupiny převzetí služeb při selhání
+## <a name="create-a-failover-group"></a>Vytvoření skupiny převzetí služeb při selhání
 V tomto kroku vytvoříte skupinu převzetí služeb při selhání a přidáte do ní obě spravované instance. 
 
 
@@ -1013,7 +1014,7 @@ Tato část kurzu používá následující rutinu PowerShellu:
 ---
 
 
-## <a name="8---test-failover"></a>8. testování převzetí služeb při selhání
+## <a name="test-failover"></a>Testovací převzetí služeb při selhání
 V tomto kroku dojde k selhání skupiny převzetí služeb při selhání pro sekundární server a následnému navrácení služeb po obnovení pomocí Azure Portal. 
 
 

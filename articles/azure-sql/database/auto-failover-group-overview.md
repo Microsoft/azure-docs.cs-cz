@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: d4398b2bf37ad5dcf60a931f5d4991a3ad00845a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5a7f13982de000478b14eb75d7341ed2e99c1274
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826530"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245566"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Skupiny s automatickým převzetím služeb při selhání umožňují spravovat replikaci a převzetí služeb při selhání skupiny databází na serveru nebo všech databázích ve spravované instanci do jiné oblasti. Jedná se o deklarativní abstrakci nad stávající [aktivní geografickou replikací](active-geo-replication-overview.md) , která je navržená tak, aby zjednodušila nasazení a správu geograficky replikovaných databází se škálováním. Převzetí služeb při selhání můžete iniciovat ručně nebo je můžete delegovat na službu Azure na základě uživatelsky definované zásady. Druhá možnost umožňuje automaticky obnovit více souvisejících databází v sekundární oblasti po závažných chybách nebo jiné neplánované události, které mají za následek úplnou nebo částečnou ztrátu SQL Database nebo dostupnosti spravované instance SQL v primární oblasti. Skupina převzetí služeb při selhání může zahrnovat jednu nebo více databází, které obvykle používá stejná aplikace. Kromě toho můžete použít čitelné sekundární databáze pro přesměrování zatížení dotazů jen pro čtení. Vzhledem k tomu, že skupiny s automatickým převzetím služeb při selhání zahrnují více databází, je nutné tyto databáze nakonfigurovat na primárním serveru Skupiny s automatickým převzetím služeb při selhání podporují replikaci všech databází ve skupině jenom na jeden sekundární server nebo instanci v jiné oblasti.
+Funkce skupin s automatickým převzetím služeb při selhání umožňuje spravovat replikaci a převzetí služeb při selhání skupiny databází na serveru nebo všech databázích ve spravované instanci do jiné oblasti. Jedná se o deklarativní abstrakci nad stávající [aktivní geografickou replikací](active-geo-replication-overview.md) , která je navržená tak, aby zjednodušila nasazení a správu geograficky replikovaných databází se škálováním. Převzetí služeb při selhání můžete iniciovat ručně nebo je můžete delegovat na službu Azure na základě uživatelsky definované zásady. Druhá možnost umožňuje automaticky obnovit více souvisejících databází v sekundární oblasti po závažných chybách nebo jiné neplánované události, které mají za následek úplnou nebo částečnou ztrátu SQL Database nebo dostupnosti spravované instance SQL v primární oblasti. Skupina převzetí služeb při selhání může zahrnovat jednu nebo více databází, které obvykle používá stejná aplikace. Kromě toho můžete použít čitelné sekundární databáze pro přesměrování zatížení dotazů jen pro čtení. Vzhledem k tomu, že skupiny s automatickým převzetím služeb při selhání zahrnují více databází, je nutné tyto databáze nakonfigurovat na primárním serveru Skupiny s automatickým převzetím služeb při selhání podporují replikaci všech databází ve skupině jenom na jeden sekundární server nebo instanci v jiné oblasti.
 
 > [!NOTE]
 > Pokud chcete více Azure SQL Databasech sekundárních umístění ve stejné nebo jiné oblasti, použijte [aktivní geografickou replikaci](active-geo-replication-overview.md).
@@ -203,7 +203,7 @@ K ilustraci sekvence změn se předpokládá, že server A je primárním server
 1. Proveďte plánované převzetí služeb při selhání pro přepnutí primárního serveru na B. Server A se stane novým sekundárním serverem. Převzetí služeb při selhání může vést k několika minutám výpadku. Skutečný čas bude záviset na velikosti skupiny převzetí služeb při selhání.
 2. Pomocí [aktivní geografické replikace](active-geo-replication-overview.md)vytvořte další sekundární databáze pro každou databázi na serveru B a serverem C. Každá databáze na serveru B bude mít dvě sekundární verze, jednu na serveru A a jednu na serveru C. Tím se zajistí, že primární databáze zůstanou chráněné během přechodu.
 3. Odstraňte skupinu převzetí služeb při selhání. V tomto okamžiku se přihlášení nezdaří. Důvodem je, že se odstranily aliasy SQL pro naslouchací procesy skupiny převzetí služeb při selhání a brána nerozpozná název skupiny převzetí služeb při selhání.
-4. Znovu vytvořte skupinu převzetí služeb při selhání se stejným názvem mezi servery A a C. V tomto okamžiku se přihlášení zastaví, pokud se nezdaří.
+4. Znovu vytvořte skupinu převzetí služeb při selhání se stejným názvem mezi servery B a C. V tomto okamžiku se přihlášení zastaví, pokud se nezdaří.
 5. Přidejte všechny primární databáze na B do nové skupiny převzetí služeb při selhání.
 6. Proveďte plánované převzetí služeb při selhání ve skupině převzetí služeb při selhání a přepněte B a C. Nyní se Server C stane primární a B-sekundární. Všechny sekundární databáze na serveru A budou automaticky propojeny se základními počítači v jazyce C. Stejně jako v kroku 1 může převzetí služeb při selhání způsobit několik minut výpadků.
 7. Vyřaďte Server A. Všechny databáze na straně budou automaticky odstraněny.
@@ -231,7 +231,7 @@ Pro zajištění nepřerušeného připojení k primární spravované instanci 
 > [!IMPORTANT]
 > První spravovaná instance vytvořená v podsíti Určuje zónu DNS pro všechny následné instance ve stejné podsíti. To znamená, že dvě instance ze stejné podsítě nemohou patřit do různých zón DNS.
 
-Další informace o vytváření sekundární instance SQL spravované v rámci stejné zóny DNS jako primární instance najdete v tématu [vytvoření sekundární spravované instance](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-managed-instance).
+Další informace o vytváření sekundární instance SQL spravované v rámci stejné zóny DNS jako primární instance najdete v tématu [vytvoření sekundární spravované instance](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance).
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>Povolení provozu replikace mezi dvěma instancemi
 
@@ -378,10 +378,10 @@ Tato sekvence se doporučuje výslovně vyhnout problému, při kterém se sekun
 
 ## <a name="preventing-the-loss-of-critical-data"></a>Zabránění ztrátě důležitých dat
 
-V důsledku vysoké latence sítí WAN používá průběžné kopírování mechanismus asynchronní replikace. Asynchronní replikace způsobuje nenevyhnutelnou ztrátu dat, pokud dojde k selhání. Některé aplikace ale nemusí vyžadovat žádnou ztrátu dat. Pro ochranu těchto důležitých aktualizací může vývojář aplikace volat [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) systémové procedury ihned po potvrzení transakce. Volání `sp_wait_for_database_copy_sync` blokuje volající vlákno, dokud se poslední potvrzená transakce nepřenesla do sekundární databáze. Nečeká ale na přenesení transakcí a jejich potvrzení na sekundárním počítači. `sp_wait_for_database_copy_sync`je vymezen na konkrétní odkaz průběžné kopírování. Tento postup může volat každý uživatel s právy pro připojení k primární databázi.
+V důsledku vysoké latence sítí WAN používá průběžné kopírování mechanismus asynchronní replikace. Asynchronní replikace způsobuje nenevyhnutelnou ztrátu dat, pokud dojde k selhání. Některé aplikace ale nemusí vyžadovat žádnou ztrátu dat. Pro ochranu těchto důležitých aktualizací může vývojář aplikace volat [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) systémové procedury ihned po potvrzení transakce. Volání `sp_wait_for_database_copy_sync` blokuje volající vlákno, dokud se poslední potvrzená transakce nepřenesla do sekundární databáze. Nečeká ale na přenesení transakcí a jejich potvrzení na sekundárním počítači. `sp_wait_for_database_copy_sync` je vymezen na konkrétní odkaz průběžné kopírování. Tento postup může volat každý uživatel s právy pro připojení k primární databázi.
 
 > [!NOTE]
-> `sp_wait_for_database_copy_sync`zabraňuje ztrátě dat po převzetí služeb při selhání, ale nezaručuje úplnou synchronizaci pro přístup pro čtení. Zpoždění způsobené `sp_wait_for_database_copy_sync` voláním procedury může být významné a závisí na velikosti transakčního protokolu v době volání.
+> `sp_wait_for_database_copy_sync` zabraňuje ztrátě dat po převzetí služeb při selhání, ale nezaručuje úplnou synchronizaci pro přístup pro čtení. Zpoždění způsobené `sp_wait_for_database_copy_sync` voláním procedury může být významné a závisí na velikosti transakčního protokolu v době volání.
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>Skupiny převzetí služeb při selhání a obnovení k bodu v čase
 

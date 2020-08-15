@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 07/16/2020
+ms.date: 08/14/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a924cb42ce1c5fccde3d49fa8f9c2d402997df52
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 48c18e08943e170fdd53f04b49b517424b511c62
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544827"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246141"
 ---
 >[!NOTE]
 >Těžko pracujeme na přidání dalších oblastí. Po přidání oblasti ji přidáme do tohoto seznamu.
@@ -39,7 +39,7 @@ ms.locfileid: "86544827"
 * Švýcarsko – sever
 * Spojené království – jih
 * Spojené království – západ
-* Západní Evropa
+* West Europe
 
 **Asie a Tichomoří**
 * Austrálie – střed 2
@@ -50,7 +50,7 @@ ms.locfileid: "86544827"
 * Japonsko – západ
 * Jižní Korea – střed
 * Jižní Korea – jih
-* Jihovýchodní Asie
+* Southeast Asia
 * Central India
 * Západní Indie
 
@@ -62,7 +62,6 @@ ms.locfileid: "86544827"
 * US DoD – střed
 * US DoD – východ
 * USA (Gov) – Arizona
-* US Gov – Iowa
 * USA (Gov) – Texas
 * USA (Gov) – Virginia
 

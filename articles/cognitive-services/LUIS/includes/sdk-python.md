@@ -10,12 +10,12 @@ ms.date: 08/13/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: d4f55b9fe40afbd75875a22dcf4971e869df5691
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: eac827097f892de81bc5820994f3e2a4e0696dcb
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88237376"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246346"
 ---
 Použijte klientské knihovny Language Understanding (LUIS) pro Python k těmto akcím:
 
@@ -29,7 +29,7 @@ Použijte klientské knihovny Language Understanding (LUIS) pro Python k těmto 
 ## <a name="prerequisites"></a>Požadavky
 
 * Aktuální verze [Pythonu 3. x](https://www.python.org/). 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Jakmile budete mít předplatné Azure, vytvořte v Azure Portal [prostředek pro vytváření Language Understanding](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) , abyste získali svůj klíč a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
     * Pro připojení aplikace k Language Understanding vytváření obsahu budete potřebovat klíč a koncový bod z prostředku, který [vytvoříte](../luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) . Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu. Službu můžete vyzkoušet pomocí bezplatné cenové úrovně ( `F0` ).
 

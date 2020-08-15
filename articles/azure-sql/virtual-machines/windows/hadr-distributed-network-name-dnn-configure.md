@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7c40f4d9f86f27af34c1bc649483810f6756c41d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 8eb9caf466148e43266c4be9cf1308da15fb67f2
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169812"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245532"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>Konfigurace distribuovaného síťového názvu pro FCI 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ V Azure Virtual Machines se název distribuované sítě (DNN) používá ke sm�
 
 V tomto článku se dozvíte, jak nakonfigurovat DNN pro směrování provozu do vaší FCIs pomocí SQL Server na virtuálních počítačích Azure pro zajištění vysoké dostupnosti a zotavení po havárii (HADR). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před dokončením kroků v tomto článku byste už měli mít:
 
@@ -126,7 +126,7 @@ Chcete-li aktualizovat možné vlastníky, použijte následující postup:
 
 ## <a name="restart-sql-server-instance"></a>Restartovat instanci SQL Server 
 
-K restartování instance SQL Server použijte Správce clusteru s podporou převzetí služeb při selhání. Postupujte takto:
+K restartování instance SQL Server použijte Správce clusteru s podporou převzetí služeb při selhání. Postupujte následovně:
 
 1. V Správce clusteru s podporou převzetí služeb při selhání přejít na prostředek SQL Server.
 1. Klikněte pravým tlačítkem na prostředek SQL Server a převeďte ho do offline režimu. 
@@ -156,6 +156,29 @@ Při testování převzetí služeb při selhání postupujte takto:
 Pokud chcete otestovat připojení, přihlaste se k jinému virtuálnímu počítači ve stejné virtuální síti. Otevřete **SQL Server Management Studio** a připojte se k SQL Server FCI pomocí názvu DNS DNN.
 
 Pokud potřebujete, můžete [si stáhnout SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
+
+## <a name="avoid-ip-conflict"></a>Vyhnout se konfliktu protokolu IP
+
+Toto je volitelný krok, který zabrání tomu, aby byla virtuální adresa IP (VIP) používaná prostředkem FCI přiřazena k jinému prostředku v Azure jako duplicitní. 
+
+I když se zákazníci nyní používají DNN k připojení k SQL Server FCI, název virtuální sítě (VNN) a virtuální IP adresy nelze odstranit, protože jsou nezbytné součásti infrastruktury FCI. Vzhledem k tomu, že už neexistuje služba Vyrovnávání zatížení, která v Azure zachovává rezervaci virtuální IP adresy, existuje riziko, že by se k jinému prostředku ve virtuální síti přiřadila stejná IP adresa jako virtuální IP adresa, kterou používá FCI. To může potenciálně vést k problému s duplicitními IP konflikty. 
+
+Nakonfigurujte adresu APIPa nebo vyhrazený síťový adaptér pro rezervaci IP adresy. 
+
+### <a name="apipa-address"></a>Adresa APIPa
+
+Pokud se chcete vyhnout použití duplicitních IP adres, nakonfigurujte adresu APIPa (označuje se také jako místní adresa odkazu). Provedete to pomocí následujícího příkazu:
+
+```powershell
+Get-ClusterResource "virtual IP address" | Set-ClusterParameter 
+    –Multiple @{"Address”=”169.254.1.1”;”SubnetMask”=”255.255.0.0”;"OverrideAddressMatch"=1;”EnableDhcp”=0}
+```
+
+V tomto příkazu je "virtuální IP adresa" název prostředku clusterované VIP adresy a "169.254.1.1" je adresa APIPa vybraná pro adresu VIP. Vyberte si adresu, která nejlépe odpovídá vašemu podniku. Nastavte `OverrideAddressMatch=1` , aby se IP adresa nastavila v libovolné síti, včetně adresního prostoru APIPA. 
+
+### <a name="dedicated-network-adapter"></a>Vyhrazený síťový adaptér
+
+Případně můžete nakonfigurovat síťový adaptér v Azure tak, aby vyhradil IP adresu, kterou používá prostředek virtuální IP adresy. Tato adresa však používá adresu v adresním prostoru podsítě a existuje dodatečná režie k tomu, aby se síťový adaptér nepoužíval k žádným jiným účelům.
 
 ## <a name="limitations"></a>Omezení
 

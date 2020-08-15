@@ -4,12 +4,12 @@ description: Prohlášení o zásadách uchovávání a ochrany osobních údaj�
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 772777c48c8d16197cd8a73586f6549837d7d080
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1b1a1e370d55ad58bf1468c2e8b2381b62707b6a
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372395"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245940"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchovávání a ukládání dat v Application Insights
 
@@ -94,9 +94,6 @@ Microsoft Data používá jenom k tomu, aby službu poskytovala.
 ## <a name="where-is-the-data-held"></a>Kde jsou uložená data?
 * Umístění můžete vybrat při vytváření nového prostředku Application Insights. [Tady](https://azure.microsoft.com/global-infrastructure/services/?products=all)se dozvíte víc o dostupnosti Application Insights v jednotlivých oblastech.
 
-#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Znamená to, že moje aplikace musí být hostována v USA, Evropě nebo jihovýchodní Asie?
-* Ne. Vaše aplikace může běžet kdekoli, a to buď na místních hostitelích, nebo v cloudu.
-
 ## <a name="how-secure-is-my-data"></a>Jak zabezpečená má moje data?
 Application Insights je služba Azure. Zásady zabezpečení jsou popsané v [dokumentu White Paper zabezpečení, ochrana osobních údajů a dodržování předpisů v Azure](https://go.microsoft.com/fwlink/?linkid=392408).
 
@@ -129,7 +126,7 @@ Pokud zákazník potřebuje nakonfigurovat tento adresář s konkrétními poža
 
 ### <a name="java"></a>Java
 
-`C:\Users\username\AppData\Local\Temp`slouží k uchování dat. Toto umístění není možné konfigurovat z konfiguračního adresáře a oprávnění pro přístup k této složce jsou omezená na konkrétního uživatele s požadovanými přihlašovacími údaji. (Další informace najdete v tématu [implementace](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72).)
+`C:\Users\username\AppData\Local\Temp` slouží k uchování dat. Toto umístění není možné konfigurovat z konfiguračního adresáře a oprávnění pro přístup k této složce jsou omezená na konkrétního uživatele s požadovanými přihlašovacími údaji. (Další informace najdete v tématu [implementace](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72).)
 
 ###  <a name="net"></a>.Net
 
@@ -251,7 +248,7 @@ Sady SDK se mezi platformami liší a je možné nainstalovat několik součást
 | [Přidání sady SDK Application Insights do webového projektu .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Žádosti<br/>**Výjimky**<br/>Relace<br/>uživatelé |
 | [Instalace Monitorování stavu ve službě IIS][redfield] |Závislosti<br/>ServerContext<br/>Odvodit<br/>Čítače výkonu |
 | [Přidání sady SDK Application Insights do webové aplikace v jazyce Java][java] |ServerContext<br/>Odvodit<br/>Žádost<br/>Relace<br/>uživatelé |
-| [Přidat sadu JavaScript SDK na webovou stránku][client] |Instance třídy ClientContext <br/>Odvodit<br/>stránka<br/>ClientPerf<br/>Ajax |
+| [Přidat sadu JavaScript SDK na webovou stránku][client] |Instance třídy ClientContext <br/>Odvodit<br/>Stránka<br/>ClientPerf<br/>Ajax |
 | [Definovat výchozí vlastnosti][apiproperties] |**Vlastnosti** všech standardních a vlastních událostí |
 | [TrackMetric volání][api] |Číselné hodnoty<br/>**Vlastnosti** |
 | [Hovorová stopa *][api] |Název události<br/>**Vlastnosti** |
@@ -277,7 +274,7 @@ Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 | Ajax |Volání HTTP z webové stránky na server |
 | Žádosti |Adresa URL, doba trvání, kód odpovědi |
 | Závislosti |Typ (SQL, HTTP,...), připojovací řetězec nebo identifikátor URI, Sync/Async, Duration, úspěch, příkaz SQL (s Monitorování stavu) |
-| **Výjimky** |Typ, **zpráva**, zásobníky volání, zdrojový soubor, číslo řádku,`thread id` |
+| **Výjimky** |Typ, **zpráva**, zásobníky volání, zdrojový soubor, číslo řádku, `thread id` |
 | Chybě |`Process id`, `parent process id` , `crash thread id` ; Oprava aplikace, `id` , Build;  Typ výjimky, adresa, důvod; zakódováné symboly a registry, binární počáteční a koncové adresy, binární název a cesta, typ procesoru |
 | Trasování |Úroveň **zprávy** a závažnosti |
 | Čítače výkonu |Čas procesoru, dostupná paměť, frekvence požadavků, četnost výjimek, zpracování soukromých bajtů, frekvence v/v, doba trvání žádosti, délka fronty požadavků |

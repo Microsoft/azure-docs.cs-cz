@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: cc61d842550f82dc8b408ed5cd421af65d0e2be6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 59566fc051b1e84d8e271b3c9d061f2481dcc58f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507892"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245311"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Instalace Micro Micro Enterprise Server 5,0 a Enterprise Developer 5,0 v Azure
 
@@ -29,7 +29,7 @@ Tento instalační program používá virtuální počítače Azure s Windows se
 
 Odpovídající vývojové prostředí pro podnikový server je podnikovým vývojářem, který běží na Microsoft Visual Studio 2017 nebo novějším, v rámci sady Visual Studio Community (zdarma ke stažení) nebo na zatmění. Tento článek ukazuje, jak ho nasadit pomocí virtuálního počítače s Windows serverem 2016, který je součástí sady Visual Studio 2017 nebo novější.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, podívejte se na tyto požadavky:
 
@@ -67,9 +67,9 @@ Než začnete, podívejte se na tyto požadavky:
 
 8.  Z relace RDP načtěte následující dva soubory. Vzhledem k tomu, že používáte Windows, můžete soubory přetáhnout do relace RDP:
 
-    -   ** \_50.exe**a instalační soubor podnikového serveru.
+    -   `es\_50.exe`, instalační soubor podnikového serveru.
 
-    -   **mflic**, odpovídající soubor s licencí – podnikový server se nenačte bez něj.
+    -   `mflic`, odpovídající soubor s licencí – podnikový server se nebude načítat bez něj.
 
 9.  Spusťte instalaci dvojím kliknutím na soubor. V prvním okně vyberte umístění instalace a přijměte licenční smlouvu s koncovým uživatelem.
 
@@ -87,11 +87,11 @@ Po instalaci nezapomeňte zkontrolovat všechny další aktualizace, jako je tř
 
 1.  Začněte se správou licencí na Micro-Focus.
 
-2.  Vyberte možnost **Spustit** \> **Nástroj** Správa licencí správce licencí na úrovni Micro \> **License Administration**a pak klikněte na kartu **instalovat** . Zvolte typ licenčního formátu, který se má nahrát: licenční soubor nebo kód s kódem 16 znaků. Například pro soubor v **souboru s licencí**přejděte do souboru **mflic** , který jste NAHRÁLi na virtuální počítač, a vyberte **instalovat licence**.
+2.  Vyberte možnost **Spustit** \> **Nástroj** Správa licencí správce licencí na úrovni Micro \> **License Administration**a pak klikněte na kartu **instalovat** . Zvolte typ licenčního formátu, který se má nahrát: licenční soubor nebo kód s kódem 16 znaků. Například pro soubor v **souboru s licencí**přejděte do souboru *, který `mflic` jste předtím nahráli na virtuální počítač, a vyberte **instalovat licence**.
 
     ![Dialogové okno Správa licencí Micro Focus](media/install-image-3.png)
 
-3.  Ověřte, že se na podnikovém serveru načítá. Zkuste spustit web pro správu podnikového serveru z prohlížeče pomocí této adresy URL: <http://localhost:86/> . Zobrazí se stránka pro správu podnikového serveru, jak je znázorněno na obrázku.
+3.  Ověřte, že se na podnikovém serveru načítá. Zkuste spustit web pro správu podnikového serveru z prohlížeče pomocí této adresy URL: `http://localhost:86/` . Zobrazí se stránka pro správu podnikového serveru, jak je znázorněno na obrázku.
 
     ![Stránka pro správu podnikového serveru](media/install-image-4.png)
 
@@ -103,9 +103,9 @@ Po instalaci nezapomeňte zkontrolovat všechny další aktualizace, jako je tř
 
 3.  Z relace RDP načtěte následující dva soubory (Pokud chcete, můžete je přetáhnout):
 
-    -   **edvs2017.exe**instalační soubor podnikového serveru.
+    -   `edvs2017.exe`, instalační soubor podnikového serveru.
 
-    -   **mflic**, odpovídající soubor s licencí (vývojář podnikových aplikací se nenačte bez něj).
+    -   `mflic`, odpovídající soubor s licencí (podniková vývojář nebude bez něj načten).
 
 4.  Spusťte instalaci dvojím kliknutím na soubor **edvs2017.exe** . V prvním okně vyberte umístění instalace a přijměte licenční smlouvu s koncovým uživatelem. Pokud chcete, nainstalujte tento emulátor terminálu tak, že vyberete **instalovat Rumba 9,5** , který budete pravděpodobně potřebovat.
 
@@ -117,7 +117,7 @@ Po instalaci nezapomeňte zkontrolovat všechny další aktualizace, jako je tř
 
 6.  Spusťte Správce licencí Micro Focus stejně jako u podnikového serveru. Vyberte možnost **Spustit** \> Nástroj Správa licencí správce licencí od **Micro Manageru** \> **License Administration**a klikněte na kartu **instalovat** .
 
-7.  Vyberte typ licenčního formátu, který se má nahrát: soubor s licencí nebo kód licenčního kódu o 16 znacích. Například pro soubor v **souboru s licencí**přejděte do souboru **mflic** , který jste NAHRÁLi na virtuální počítač, a vyberte **instalovat licence**.
+7.  Vyberte typ licenčního formátu, který se má nahrát: soubor s licencí nebo kód licenčního kódu o 16 znacích. Například pro soubor v **souboru s licencí**přejděte do souboru, který `mflic` jste nahráli na virtuální počítač, a vyberte  **instalovat licence**.
 
     ![Dialogové okno Správa licencí Micro Focus](media/install-image-7.png)
 

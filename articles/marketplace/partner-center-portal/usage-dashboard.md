@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/22/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: c6964a28956230dabad007d60d84dcdd1cffab23
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b8432a54aa90b7d500898b2f6959d075ac89460
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319911"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245328"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Řídicí panel využití v Microsoft Commercial Marketplace Analytics
 
@@ -111,6 +111,8 @@ Karta **využití měřené fakturace** prezentuje informace o použití pro typ
 - Nadlimitní **trend podle plánu**: představuje trend množství využití vybrané dimenze měřiče podle plánů. Zobrazené plány budou představovat pět nejlepších plánů s největším množstvím využití vybrané nabídky.
 - Trend nadlimitního využití **od největších 50 zákazníků**: horní 50 nabídky s nejvyšším počtem hodin používání se zobrazují na ***kartě vedoucí*** a jsou seřazené podle nejvyššího využití vlastního měřiče. Vyberte zákazníka v tabulek výsledků a zobrazte trend využití vybrané dimenze měřiče.
 - Trend nadlimitního využití **v rámci hlavních zákazníků**: prezentuje nejlepší percentily zákazníků, které přispívají k celkovému využití%. Horní percentil zákazníka se zobrazuje podél osy X a je určený množstvím využití zákazníka. Osa Y zobrazuje množství využití. Podrobnosti můžete zobrazit tak, že najedete myší na body podél spojnicového grafu.
+
+Pokud máte více nabídek, které používají vlastní měřiče, zobrazí se v sestavě využití měřených faktur informace o využití pro všechny vaše nabídky, a to podle jejich vlastních dimenzí měřičů.
 
 > [!NOTE]
 > Podrobnosti o využití a všechny grafy na této stránce se zobrazí pro každou dimenzi měřiče, která je vybrána pro filtr stránky.

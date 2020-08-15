@@ -3,12 +3,12 @@ title: 'Rychlý Start: dotaz na předpověď s prohlížečem – LUIS'
 description: V tomto rychlém startu pomocí dostupné veřejné aplikace LUIS určíte záměr uživatele z konverzačního textu v prohlížeči.
 ms.topic: quickstart
 ms.date: 04/21/2020
-ms.openlocfilehash: 5ba86882ebf3cb538ad6b865382342fcbd43d27c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 24c7a8aca410ad10b8a9299c4bca2f13d0feb780
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769970"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245991"
 ---
 # <a name="quickstart-query-prediction-runtime-with-user-text"></a>Rychlý Start: modul runtime předpovědi dotazu s uživatelským textem
 
@@ -19,14 +19,14 @@ Abyste porozuměli výsledkům koncového bodu předpovědí služby LUIS, zobra
 K dotazování veřejné aplikace potřebujete:
 
 * Informace o prostředcích Language Understanding (LUIS):
-    * **Klíč předpovědi** – který se dá získat z [portálu Luis](https://www.luis.ai/). Pokud ještě nemáte předplatné k vytvoření klíče, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
+    * **Klíč předpovědi** – který se dá získat z [portálu Luis](https://www.luis.ai/). Pokud ještě nemáte předplatné k vytvoření klíče, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/cognitive-services).
     * Dílčí doména **koncového bodu předpovědi** – subdoména je také **název** vašeho prostředku Luis.
-* ID aplikace LUIS – používá veřejné ID aplikace IoT `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. Dotaz uživatele použitý v kódu pro rychlý Start je specifický pro danou aplikaci.
+* ID aplikace LUIS – používá veřejné ID aplikace IoT `df67dcdb-c37d-46af-88e1-8b97951ca1c2` . Dotaz uživatele použitý v kódu pro rychlý Start je specifický pro danou aplikaci.
 
 ## <a name="use-the-browser-to-see-predictions"></a>Použití prohlížeče k zobrazení předpovědi
 
 1. Otevřete webový prohlížeč.
-1. Pomocí níže uvedených úplných adres URL `YOUR-KEY` nahraďte vlastní klíč předpovědi Luis. Požadavky jsou požadavky GET a zahrnují autorizaci s klíčem předpovědi LUIS jako parametr řetězce dotazu.
+1. Pomocí níže uvedených úplných adres URL nahraďte `YOUR-KEY` vlastní klíč předpovědi Luis. Požadavky jsou požadavky GET a zahrnují autorizaci s klíčem předpovědi LUIS jako parametr řetězce dotazu.
 
     #### <a name="v3-prediction-request"></a>[Požadavek na předpověď V3](#tab/V3-1-1)
 
@@ -169,7 +169,7 @@ K dotazování veřejné aplikace potřebujete:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace:
+Přečtěte si další informace:
 * [Prediktivní koncový bod V3](luis-migration-api-v3.md)
 * [Vlastní subdomény](../cognitive-services-custom-subdomains.md)
 

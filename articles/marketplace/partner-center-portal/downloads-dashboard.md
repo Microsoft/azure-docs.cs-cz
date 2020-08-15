@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: 2bd38bc7a499aa9178d49f54e27a88a38206e521
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5b688d64641f6dd8779d699bcd1d646e40b19b87
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317565"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245668"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Stahování v analýzách komerčního marketplace
 
@@ -25,9 +25,7 @@ Přístup k řídicímu panelu ke stažení otevřete tak, že v části komerč
 
 ## <a name="downloads-dashboard"></a>Řídicí panel stahování
 
-Řídicí panel **ke stažení** v nabídce **analyzovat** zobrazuje požadavky na všechny soubory ke stažení, které obsahují více než 1000 řádků dat zákazníků nebo objednávek.
-
-Když si vyžádáte stažení s více než 1000 řádky dat, zobrazí se místní oznámení a e-mail s odkazem na řídicí panel **ke stažení** . Tyto soubory ke stažení budou k dispozici po dobu 30 dnů a pak se odeberou.
+Řídicí panel **ke stažení** v nabídce **analyzovat** zobrazuje požadavky na všechny soubory ke stažení, které obsahují více než 1000 řádků dat zákazníků nebo objednávek. Tyto soubory ke stažení budou k dispozici po dobu 30 dnů a pak se odeberou.
 
 ## <a name="next-steps"></a>Další kroky
 

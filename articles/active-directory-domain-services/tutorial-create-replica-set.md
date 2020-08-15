@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: iainfou
-ms.openlocfilehash: 69bb61012082404dfd6488b5e0606e5966c2fcef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6f166cdcb5f3764d7b264fdb4ebc082ece4c798b
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506458"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245090"
 ---
 # <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>Kurz: vytvoření a použití sad replik pro zajištění odolnosti nebo geografického umístění v Azure Active Directory Domain Services (Preview)
 
@@ -42,11 +42,11 @@ K dokončení tohoto kurzu potřebujete následující prostředky a oprávněn�
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
-* Azure Active Directory Domain Services spravovaná doména vytvořená pomocí sad replik a nakonfigurovaná ve vašem tenantovi Azure AD.
+* Azure Active Directory Domain Services spravovaná doména vytvořená pomocí modelu nasazení Azure Resource Manager a nakonfigurovaná ve vašem tenantovi Azure AD.
     * V případě potřeby [vytvořte a nakonfigurujte Azure Active Directory Domain Services spravovanou doménu][tutorial-create-instance].
 
     > [!IMPORTANT]
-    > Ujistěte se, že jste vytvořili spravovanou doménu, která používá sady replik. Existující spravovaná doména vytvořená před touto verzí Preview nepodporuje sady replik. Pro spravovanou doménu je také nutné použít minimálně jednotku SKU *Enterprise* . V případě potřeby [změňte skladovou položku pro spravovanou doménu][howto-change-sku].
+    > Spravované domény vytvořené pomocí modelu nasazení Classic nemůžou používat sady replik. Pro spravovanou doménu je také nutné použít minimálně jednotku SKU *Enterprise* . V případě potřeby [změňte skladovou položku pro spravovanou doménu][howto-change-sku].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 

@@ -5,16 +5,21 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 1c2330f1ba71e2a72a1a44df7af6444181f5f9ea
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 02facedda206a5621cabe62a07520303635dc3ff
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836390"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245362"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
 
 Tento článek popisuje Nejčastější dotazy a známé problémy týkající se Azure Container Registry.
+
+Pokyny k odstraňování potíží registru najdete v těchto tématech:
+* [Řešení potíží s přihlášením k registru](container-registry-troubleshoot-login.md)
+* [Řešení potíží se sítí pomocí registru](container-registry-troubleshoot-access.md)
+* [Řešení potíží s výkonem registru](container-registry-troubleshoot-performance.md)
 
 ## <a name="resource-management"></a>Správa prostředků
 
@@ -28,11 +33,11 @@ Tento článek popisuje Nejčastější dotazy a známé problémy týkající s
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Můžu vytvořit Azure Container Registry pomocí šablony Správce prostředků?
 
-Ano. Tady je [Šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry) , kterou můžete použít k vytvoření registru.
+Yes. Tady je [Šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry) , kterou můžete použít k vytvoření registru.
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Kontroluje se u obrázků v ACR chyba zabezpečení?
 
-Ano. Přečtěte si dokumentaci od [Azure Security Center](../security-center/azure-container-registry-integration.md), [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [azurová](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
+Yes. Přečtěte si dokumentaci od [Azure Security Center](../security-center/azure-container-registry-integration.md), [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [azurová](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Návody nakonfigurovat Kubernetes pomocí Azure Container Registry?
 
@@ -261,10 +266,10 @@ Nastavení služby Azure Container registry pro anonymní (veřejné) zpřístup
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnostika a kontroly stavu
 
-- [Ověřit stav pomocí`az acr check-health`](#check-health-with-az-acr-check-health)
+- [Ověřit stav pomocí `az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker pull se nepovedlo s chybou: NET/http: žádost se zrušila během čekání na připojení (Client. Timeout se překročila při očekávaných hlavičkách).](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [nabízení Docker Push je úspěšné, ale docker pull se nezdaří s chybou: Neautorizováno: vyžadováno ověřování](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
-- [`az acr login`je úspěšné, ale příkazy Docker selžou s chybou: Neautorizováno: vyžaduje se ověření.](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
+- [`az acr login` je úspěšné, ale příkazy Docker selžou s chybou: Neautorizováno: vyžaduje se ověření.](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
 - [Povolit a získat protokoly ladění démona Docker](#enable-and-get-the-debug-logs-of-the-docker-daemon)    
 - [Nová oprávnění uživatele nemůžou být účinná hned po aktualizaci.](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Informace o ověřování nejsou uvedené ve správném formátu při přímém REST API volání.](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
@@ -274,7 +279,7 @@ Nastavení služby Azure Container registry pro anonymní (veřejné) zpřístup
 - [Formát úložiště je neplatný nebo nepodporovaný.](#repository-format-is-invalid-or-unsupported)
 - [Návody shromažďovat trasování http ve Windows?](#how-do-i-collect-http-traces-on-windows)
 
-### <a name="check-health-with-az-acr-check-health"></a>Ověřit stav pomocí`az acr check-health`
+### <a name="check-health-with-az-acr-check-health"></a>Ověřit stav pomocí `az acr check-health`
 
 Pokud chcete řešit běžné problémy s prostředím a registrací, přečtěte si téma o [kontrole stavu služby Azure Container Registry](container-registry-check-health.md).
 
@@ -316,7 +321,7 @@ unauthorized: authentication required
 ```
 
 Řešení této chyby:
-1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker` . Příklad:
+1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker` . Například:
    
    `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
    
@@ -451,10 +456,10 @@ Pokud se zobrazí chyba, například "nepodporovaný formát úložiště", "nep
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Návody shromažďovat trasování http ve Windows?
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
-- Povolit dešifrování HTTPS v Fiddler:<https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
-- Povolit Docker pro použití proxy serveru prostřednictvím uživatelského rozhraní Docker:<https://docs.docker.com/docker-for-windows/#proxies>
+- Povolit dešifrování HTTPS v Fiddler:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
+- Povolit Docker pro použití proxy serveru prostřednictvím uživatelského rozhraní Docker: <https://docs.docker.com/docker-for-windows/#proxies>
 - Nezapomeňte po dokončení vrátit zpět.  Docker nebude fungovat s povoleným a Fiddler, který neběží.
 
 #### <a name="windows-containers"></a>Kontejnery Windows
@@ -505,8 +510,8 @@ V tuto chvíli nepodporujeme GitLab pro aktivační události zdroje.
 |---|---|---|---|
 | GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ano |
 | Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Ano | Ano |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ne |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ano | Ne |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ano | No |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ano | No |
 
 ## <a name="run-error-message-troubleshooting"></a>Řešení potíží s chybovou zprávou
 

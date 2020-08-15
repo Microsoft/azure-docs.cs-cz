@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff0a1fb386776a3ab1a3b7689c69dea7dc717d1e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: afc9a32c4f0fa5b4b6a2f6c0ec56bbc35b6dde68
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213781"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244478"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Microsoft 365
 
@@ -79,7 +79,7 @@ Další informace o oprávněních k obnovení odstraněné skupiny najdete [v t
 
 3. Na stránce **vypršení platnosti** můžete:
 
-    - Nastavte dobu života skupiny ve dnech. Můžete vybrat jednu z přednastavených hodnot nebo vlastní hodnotu (měla by být 31 dní nebo více).
+    - Nastavte dobu života skupiny ve dnech. Můžete vybrat jednu z přednastavených hodnot nebo vlastní hodnotu (měla by být 30 dní nebo více).
     - Zadejte e-mailovou adresu, na kterou by se měla odeslat oznámení o prodloužení a vypršení platnosti, když skupina nemá žádného vlastníka.
     - Vyberte, které Microsoft 365 skupiny vyprší. Můžete nastavit vypršení platnosti pro:
       - **Vše** Skupiny Microsoft 365

@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: ee897a22ceda4378ea9dba4579d5108a2ddf0b0d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c0129ff25f1df492ab6eba9f49add18d5321a3e8
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156693"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246042"
 ---
-Začínáme s klientskou knihovnou Automatické návrhy Bingu pro přejít. Pomocí těchto kroků nainstalujte knihovnu a vyzkoušejte si naše příklady pro základní úlohy. 
+Začínáme s klientskou knihovnou Automatické návrhy Bingu pro přejít. Pomocí těchto kroků nainstalujte knihovnu a vyzkoušejte si naše příklady pro základní úlohy.
 
 Pomocí klientské knihovny Automatické návrhy Bingu můžete získat návrhy hledání na základě částečných řetězců dotazů.
 
@@ -23,7 +23,7 @@ Pomocí klientské knihovny Automatické návrhy Bingu můžete získat návrhy 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services).
 * Nejnovější verze nástroje [Přejít](https://golang.org/dl/).
 
 Začněte používat klientskou knihovnu Automatické návrhy Bingu vytvořením prostředku Azure. Vyberte typ prostředku, který je pro vás nejvhodnější:
@@ -33,12 +33,12 @@ Začněte používat klientskou knihovnu Automatické návrhy Bingu vytvořením
 ## <a name="create-environment-variables"></a>Vytvoření proměnných prostředí
 
 >[!NOTE]
-> Koncové body prostředků vytvořených po 1. červenci 2019 používají vlastní formát subdomény, který vidíte níže. Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
+> Koncové body prostředků vytvořených po 1. červenci 2019 používají vlastní formát subdomény, který vidíte níže. Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains).
 
 Pomocí klíče a koncového bodu z prostředku, který jste vytvořili, vytvořte dvě proměnné prostředí pro ověřování:
 <!-- replace the below variable names with the names expected in the code sample.-->
 * `AUTOSUGGEST_SUBSCRIPTION_KEY`: Klíč prostředku pro ověření vašich požadavků.
-* `AUTOSUGGEST_ENDPOINT`: Koncový bod prostředku pro odesílání požadavků rozhraní API. Mělo by to vypadat takto:`https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
+* `AUTOSUGGEST_ENDPOINT`: Koncový bod prostředku pro odesílání požadavků rozhraní API. Mělo by to vypadat takto: `https://<your-custom-subdomain>.api.cognitive.microsoft.com`
 
 Použijte pokyny pro váš operační systém.
 <!-- replace the below endpoint and key examples -->
@@ -74,7 +74,7 @@ Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .
 
 ## <a name="create-a-new-go-project"></a>Vytvoření nového projektu přejít
 
-V okně konzoly (cmd, PowerShell, terminál, bash) vytvořte nový pracovní prostor pro projekt přejít a přejděte na něj. Váš pracovní prostor bude obsahovat tři složky: 
+V okně konzoly (cmd, PowerShell, terminál, bash) vytvořte nový pracovní prostor pro projekt přejít a přejděte na něj. Váš pracovní prostor bude obsahovat tři složky:
 
 * **Src**: Tento adresář obsahuje zdrojový kód a balíčky. Všechny balíčky nainstalované s tímto `go get` příkazem budou umístěny zde.
 * **pkg**: Tento adresář obsahuje kompilované objekty balíčku pro přechod. Všechny tyto soubory mají `.a` rozšíření.
@@ -92,7 +92,7 @@ $ cd my-app
 
 ## <a name="install-the-client-library-for-go"></a>Instalace klientské knihovny pro přejít
 
-Teď si nainstalujeme klientskou knihovnu pro přejít: 
+Teď si nainstalujeme klientskou knihovnu pro přejít:
 
 ```bash
 $ go get -u <library-location-or-url>
@@ -154,10 +154,10 @@ Tyto ukázky kódu ukazují, jak dokončit základní úlohy pomocí Automatick�
 
 ### <a name="authenticate-the-client"></a>Ověření klienta
 
-> [!NOTE] 
-> V tomto rychlém startu se předpokládá, že jste [vytvořili proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč pro automatický návrh Bingu s názvem `BING_AUTOSUGGEST_SUBSCRIPTION_KEY` a jednu pro váš koncový bod s názvem `BING_AUTOSUGGEST_ENDPOINT` .
+> [!NOTE]
+> V tomto rychlém startu se předpokládá, že jste [vytvořili proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)  pro klíč pro automatický návrh Bingu s názvem `BING_AUTOSUGGEST_SUBSCRIPTION_KEY` a jednu pro váš koncový bod s názvem `BING_AUTOSUGGEST_ENDPOINT` .
 
-Ve `main()` funkci vytvořte instanci klienta s vaším koncovým bodem a klíčem. 
+Ve `main()` funkci vytvořte instanci klienta s vaším koncovým bodem a klíčem.
 
 ```go
 // Get the context, which is required by the SDK methods.

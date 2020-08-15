@@ -3,12 +3,12 @@ title: 'Rychlý Start: Klientská knihovna QnA Maker pro .NET'
 description: V tomto rychlém startu se dozvíte, jak začít s klientskou knihovnou QnA Maker pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 0dfabfa1357543e4011412c0a9f63061e8856019
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: eecbf162f3bd043bf4aabe9796ee095667e0cc39
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507500"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246466"
 ---
 Pomocí klientské knihovny QnA Maker pro .NET:
 
@@ -27,7 +27,7 @@ Pomocí klientské knihovny QnA Maker pro .NET:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Integrované vývojové prostředí (IDE) sady Visual Studio](https://visualstudio.microsoft.com/vs/) nebo aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 * Jakmile budete mít předplatné Azure, vytvořte v Azure Portal [prostředek QnA maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) , abyste získali svůj klíč pro vytváření a název prostředku. Po nasazení vyberte **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API služby QnA Maker budete potřebovat klíč a název prostředku z prostředku, který vytvoříte. Svůj klíč a název prostředku vložíte do níže uvedeného kódu později v rychlém startu.
@@ -144,9 +144,9 @@ Znalostní báze ukládá páry dotazů a odpovědí pro objekt [CreateKbDTO](ht
 * V případě **adres URL**použijte seznam řetězců, které reprezentují veřejně dostupné adresy URL.
 
 Krok vytvoření zahrnuje také vlastnosti pro znalostní báze:
-* `defaultAnswerUsedForExtraction`– Co se vrátí, když se nenajde žádná odpověď
-* `enableHierarchicalExtraction`-automaticky vytvářet relace výzvy mezi extrahovanými páry QnA
-* `language`– Při vytváření první znalostní báze prostředků nastavte jazyk, který se má použít v indexu Azure Search.
+* `defaultAnswerUsedForExtraction` – Co se vrátí, když se nenajde žádná odpověď
+* `enableHierarchicalExtraction` -automaticky vytvářet relace výzvy mezi extrahovanými páry QnA
+* `language` – Při vytváření první znalostní báze prostředků nastavte jazyk, který se má použít v indexu Azure Search.
 
 Zavolejte metodu [CreateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebaseextensions.createasync?view=azure-dotnet) a pak předejte vrácené ID operace do metody [MonitorOperation](#get-status-of-an-operation) pro dotazování na stav.
 

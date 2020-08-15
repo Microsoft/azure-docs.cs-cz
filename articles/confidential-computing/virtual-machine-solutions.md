@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 6e853edf5b7ba756aaedceaf59b1f7d1d7e48b39
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985422"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245848"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Řešení na virtuálních počítačích Azure
 
 Tento článek obsahuje informace o nasazení virtuálních počítačů Azure s důvěrnými výpočetními platformami, které používají procesory Intel zajištěné [rozšířením Intel software Guard](https://software.intel.com/sgx) (Intel SGX). 
 
-## <a name="azure-confidential-computing-vm-sizes"></a>Velikosti virtuálních počítačů pro důvěrné výpočetní operace Azure
+## <a name="azure-confidential-computing-vm-sizes"></a>Velikosti virtuálních počítačů pro důvěrné výpočetní služby Azure
 
 Důvěrné výpočetní virtuální počítače Azure jsou navržené tak, aby chránily důvěrnost a integritu vašich dat a kódu během zpracování v cloudu. 
 
@@ -32,41 +32,18 @@ Pomocí [kurzu rychlý](quick-create-marketplace.md)Start začněte NASAZOVAT vi
 Pokud chcete získat seznam všech všeobecně dostupných důvěrných velikost výpočetního virtuálního počítače v dostupných oblastech a zónách dostupnosti, spusťte v [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)tento příkaz:
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
-    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" 
-    --all 
+az vm list-skus `
+    --size dc `
+    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" `
+    --all `
     --output table
-```
-
-Od května 2020 jsou tyto SKU dostupné v následujících oblastech a zónách dostupnosti:
-
-```output
-Name              Locations      AZ_a
-----------------  -------------  ------
-Standard_DC8_v2   eastus         2
-Standard_DC1s_v2  eastus         2
-Standard_DC2s_v2  eastus         2
-Standard_DC4s_v2  eastus         2
-Standard_DC8_v2   CanadaCentral
-Standard_DC1s_v2  CanadaCentral
-Standard_DC2s_v2  CanadaCentral
-Standard_DC4s_v2  CanadaCentral
-Standard_DC8_v2   uksouth        3
-Standard_DC1s_v2  uksouth        3
-Standard_DC2s_v2  uksouth        3
-Standard_DC4s_v2  uksouth        3
-Standard_DC8_v2   CentralUSEUAP
-Standard_DC1s_v2  CentralUSEUAP
-Standard_DC2s_v2  CentralUSEUAP
-Standard_DC4s_v2  CentralUSEUAP
 ```
 
 Podrobnější pohled na výše uvedené velikosti získáte spuštěním následujícího příkazu:
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
+az vm list-skus `
+    --size dc `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>Požadavky na vyhrazený hostitel
@@ -101,17 +78,17 @@ Při používání virtuálních počítačů v Azure zodpovídáte za implement
 
 Důvěrné výpočetní prostředí Azure v tuto chvíli nepodporuje redundanci zóny prostřednictvím Zóny dostupnosti. Pro zajištění nejvyšší dostupnosti a redundance pro důvěrný výpočetní prostředí použijte [skupiny dostupnosti](../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy). Kvůli hardwarovým omezením můžou skupiny dostupnosti pro instance s důvěrnými výpočetními instancemi mít maximálně 10 aktualizačních domén. 
 
-## <a name="deploying-via-an-azure-resource-manager-template"></a>Nasazení prostřednictvím šablony Azure Resource Manager 
+## <a name="deployment-with-azure-resource-manager-arm-template"></a>Nasazení pomocí šablony Azure Resource Manager (ARM)
 
 Azure Resource Manager je služba nasazování a správy pro Azure. Poskytuje vrstvu pro správu, která umožňuje vytvářet, aktualizovat a odstraňovat prostředky v předplatném Azure. K zabezpečení a uspořádání prostředků po nasazení můžete použít funkce správy, jako je řízení přístupu, zámky a značky.
 
-Další informace o šablonách Azure Resource Manager najdete v tématu [template Deployment Overview](../azure-resource-manager/templates/overview.md).
+Další informace o šablonách ARM najdete v tématu [přehled Template Deployment](../azure-resource-manager/templates/overview.md).
 
-Pokud chcete nasadit virtuální počítač DCsv2-Series do šablony Azure Resource Manager, budete používat [prostředek virtuálního počítače](../virtual-machines/windows/template-description.md). Ujistěte se, že jste zadali správné vlastnosti pro **vmSize** a pro **element imagereference**.
+Pokud chcete nasadit virtuální počítač DCsv2-Series v šabloně ARM, budete používat [prostředek virtuálního počítače](../virtual-machines/windows/template-description.md). Ujistěte se, že jste zadali správné vlastnosti pro **vmSize** a pro **element imagereference**.
 
 ### <a name="vm-size"></a>Velikost virtuálního počítače
 
-Zadejte jednu z následujících velikostí v šabloně Azure Resource Manager v prostředku virtuálního počítače. Tento řetězec je vložen jako **vmSize** ve **vlastnostech**.
+Zadejte jednu z následujících velikostí v šabloně ARM v prostředku virtuálního počítače. Tento řetězec je vložen jako **vmSize** ve **vlastnostech**.
 
 ```json
   [

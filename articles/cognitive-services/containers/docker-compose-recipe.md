@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 458cda927a6a123fcd9962efc6ab705e13f43286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 740311226a662ea3d3f8bba3ee5156e14f74516b
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878778"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244291"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Použití nástroje Docker Compose k nasazení několika kontejnerů
 
@@ -29,7 +29,7 @@ Může být užitečné pro orchestraci více imagí kontejneru v jednom hostite
 
 Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spustit místně:
 
-* Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/cognitive-services).
 * [Modul Docker](https://www.docker.com/products/docker-engine). Potvrďte, že rozhraní příkazového řádku Docker funguje v okně konzoly.
 * Prostředek Azure se správnou cenovou úrovní. S tímto kontejnerem fungují jenom následující cenové úrovně:
   * **Počítačové zpracování obrazu** prostředek s pouze cenovou úrovní F0 nebo Standard.
@@ -172,7 +172,7 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-containers"></a>Kontejnery testů
 
-Otevřete na hostitelském počítači prohlížeč a v souboru *Docker-YAML* , který používá zadaný port, přejít na http://localhost:5021/swagger/index.html **localhost** . Můžete například použít funkci **try it** v rozhraní API k otestování koncového bodu pro rozpoznávání formulářů. Stránky Swagger kontejneru by měly být k dispozici a testovatelné.
+Otevřete na hostitelském počítači prohlížeč a v souboru *Docker-YAML* , který používá zadaný port, přejít na **localhost** http://localhost:5021/swagger/index.html . Můžete například použít funkci **try it** v rozhraní API k otestování koncového bodu pro rozpoznávání formulářů. Stránky Swagger kontejneru by měly být k dispozici a testovatelné.
 
 ![Kontejner pro rozpoznávání formulářů](media/form-recognizer-swagger-page.png)
 

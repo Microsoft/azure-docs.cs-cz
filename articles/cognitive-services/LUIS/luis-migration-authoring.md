@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/13/2020
 ms.author: diberry
-ms.openlocfilehash: 390080fecefcc22decd8bec70d043b28311a725d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4c9dc04770e5fadd72c5460a4b44c05ffda47cb7
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212648"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245447"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrace na klíč pro vytváření prostředků Azure
 
@@ -52,7 +52,7 @@ Migraci je potřeba provést z portálu LUIS. Pokud vytvoříte vytváření kl�
 
 ## <a name="migration-prerequisites"></a>Předpoklady migrace
 
-* Musíte být přidruženi k platnému předplatnému Azure. Požádejte správce tenanta, aby vás přidal do předplatného, nebo si [Zaregistrujte bezplatný](https://azure.microsoft.com/free/)účet.
+* Musíte být přidruženi k platnému předplatnému Azure. Požádejte správce tenanta, aby vás přidal do předplatného, nebo si [Zaregistrujte bezplatný](https://azure.microsoft.com/free/cognitive-services)účet.
 * Musíte vytvořit LUIS prostředek pro vytváření prostředků Azure z portálu LUIS nebo z Azure Portal. Vytváření prostředků pro vytváření obsahu z portálu LUIS je součástí toku migrace, který je popsaný v následující části.
 * Pokud jste spolupracujete na aplikacích, aplikace se automaticky nemigrují. Doporučujeme, abyste tyto aplikace zálohovali exportováním nebo pomocí [rozhraní API pro export](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40). Po migraci můžete aplikaci importovat zpátky do LUIS. Proces importu vytvoří novou aplikaci s novým ID aplikace, pro kterou jste vlastníkem.
 * Pokud jste vlastníkem aplikace, nebudete muset exportovat své aplikace, protože se migrují automaticky. Doporučujeme, abyste si uložili seznam spolupracovníků jednotlivých aplikací. E-mailová šablona, která má tento seznam, je v rámci procesu migrace volitelně k dispozici.
@@ -60,7 +60,7 @@ Migraci je potřeba provést z portálu LUIS. Pokud vytvoříte vytváření kl�
 
 |Portál|Účel|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)| Vytvořte předpověď a vytváření prostředků.<br> Přiřaďte přispěvatele k prostředkům.|
+|[Azure](https://azure.microsoft.com/free/cognitive-services)| Vytvořte předpověď a vytváření prostředků.<br> Přiřaďte přispěvatele k prostředkům.|
 |[LUIS](https://www.luis.ai)| Migrujte na nové prostředky pro vytváření obsahu.<br> V toku migrace vytvořte nové prostředky pro vytváření obsahu.<br> Přiřaďte nebo zrušte přiřazení předpovědí a vytváření prostředků aplikacím ze stránky **Správa**  >  **prostředků Azure** . <br> Přesuňte aplikace z jednoho zdroje pro vytváření do jiného.  |
 
 > [!Note]

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 1bf6fefbe7d2ea3fccc393f4445fceec44ed4117
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cc06f73aba216f37db570bb33b9f897fabb16cbf
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584667"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244121"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Jak použít vytváření sestav CTF (Collaborative Translation Framework)
 
@@ -33,7 +33,7 @@ Rozhraní API pro vytváření sestav (CTF) pro vytváření sestav vrátí stat
 Koncový bod rozhraní API pro vytváření sestav CTF je https://api.microsofttranslator.com/v2/beta/ctfreporting.svc .
 
 ## <a name="methods"></a>Metody
-| Name | Popis|
+| Název | Popis|
 |:---|:---|
 | Metoda GetUserTranslationCounts | Získejte počty překladů, které jsou vytvořené uživatelem. |
 | Metoda GetUserTranslations | Načte překlady, které jsou vytvořeny uživatelem. |
@@ -84,7 +84,7 @@ Tato metoda získá počet překladů, které jsou vytvořeny uživatelem. Posky
 | minDateUtc| **Volitelné** Datum, od kterého chcete načíst překlady. Datum musí být ve formátu UTC. |
 | maxDateUtc| **Volitelné** Datum, do kterého chcete načíst překlady. Datum musí být ve formátu UTC. |
 | Přeskočit| **Volitelné** Počet výsledků, které mají být na stránce přeskočeny. Například pokud chcete přeskočit prvních 20 řádků výsledků a zobrazit z 21 záznamu výsledků, zadejte pro tento parametr 20. Výchozí hodnota pro tento parametr je 0.|
-| nezbytná | **Volitelné** Počet výsledků, které chcete načíst. Maximální počet jednotlivých požadavků je 100. Výchozí hodnota je 100.|
+| take | **Volitelné** Počet výsledků, které chcete načíst. Maximální počet jednotlivých požadavků je 100. Výchozí hodnota je 100.|
 
 > [!NOTE]
 > Parametry vynechání a přijetí žádosti umožňují stránkování pro velký počet výsledných záznamů.
@@ -95,10 +95,10 @@ Sada výsledků obsahuje pole **UserTranslationCount**. Každý UserTranslationC
 
 | Pole | Popis |
 |:---|:---|
-| Počet| Počet načtených výsledků|
-| From | Zdrojový jazyk|
+| Count| Počet načtených výsledků|
+| Z | Zdrojový jazyk|
 | Rating| Hodnocení, které je použito odesílatelem ve volání metody AddTranslation ()|
-| Akce| Cílový jazyk|
+| Záměr| Cílový jazyk|
 | Identifikátor URI| Identifikátor URI, který se použije ve volání metody AddTranslation ()|
 | Uživatel| Uživatelské jméno|
 
@@ -113,7 +113,7 @@ Sada výsledků obsahuje pole **UserTranslationCount**. Každý UserTranslationC
 > [!NOTE]
 > Kvóta se upraví, aby se zajistilo spravedlivé mezi všemi uživateli služby.
 
-**Zobrazit příklady kódu na GitHib**
+**Zobrazit příklady kódu na GitHubu**
 * [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
 * [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)
 
@@ -155,7 +155,7 @@ Tato metoda načte překlady, které jsou vytvořeny uživatelem. Poskytuje pře
 | minDateUtc| **Volitelné** Datum, od kterého chcete načíst překlady. Datum musí být ve formátu UTC.|
 | maxDateUtc| **Volitelné** Datum, do kterého chcete načíst překlady. Datum musí být ve formátu UTC.|
 | Přeskočit| **Volitelné** Počet výsledků, které mají být na stránce přeskočeny. Například pokud chcete přeskočit prvních 20 řádků výsledků a zobrazit z 21 záznamu výsledků, zadejte pro tento parametr 20. Výchozí hodnota pro tento parametr je 0.|
-| nezbytná| **Volitelné** Počet výsledků, které chcete načíst. Maximální počet jednotlivých požadavků je 100. Výchozí hodnota je 50.|
+| take| **Volitelné** Počet výsledků, které chcete načíst. Maximální počet jednotlivých požadavků je 100. Výchozí hodnota je 50.|
 
 > [!NOTE]
 > Parametry vynechání a přijetí žádosti umožňují stránkování pro velký počet výsledných záznamů.
@@ -167,10 +167,10 @@ Sada výsledků obsahuje pole **UserTranslation**. Každý UserTranslation má n
 | Pole | Popis |
 |:---|:---|
 | CreatedDateUtc| Datum vytvoření položky pomocí AddTranslation ()|
-| From| Zdrojový jazyk|
+| Z| Zdrojový jazyk|
 | OriginalText| Text zdrojového jazyka, který se používá při odesílání žádosti|
 |Rating |Hodnocení, které je použito odesílatelem ve volání metody AddTranslation ()|
-|Akce|    Cílový jazyk|
+|Záměr|    Cílový jazyk|
 |TranslatedText|    Překlad jako odeslaný ve volání metody AddTranslation ()|
 |Identifikátor URI|   Identifikátor URI, který se použije ve volání metody AddTranslation ()|
 |Uživatel   |Uživatelské jméno|

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/24/2020
+ms.date: 08/14/2020
 ms.author: victorh
-ms.openlocfilehash: baadd52a931a28e1502fe0da2286d541db9face4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0d0522dd2f206e02ad8b63b13a9537c049232db2
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290130"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245736"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>Kurz: Konfigurace aplikační brány s ukončením TLS pomocí Azure Portal
 
@@ -30,9 +30,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="prerequisites"></a>Požadavky
 
-Přihlaste se k Azure Portal v[https://portal.azure.com](https://portal.azure.com)
+Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com)
 
 ## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
@@ -259,6 +259,10 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
     Potom se zobrazí váš zabezpečený web služby IIS, jak je znázorněno v následujícím příkladu:
 
     ![Testování základní adresy URL v aplikační bráně](./media/create-ssl-portal/application-gateway-iistest.png)
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků a vyberete **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další kroky
 

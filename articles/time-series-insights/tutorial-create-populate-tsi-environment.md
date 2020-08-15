@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/30/2020
+ms.date: 08/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9f74be239bee1d6da3dfdb516c4fc410669e338d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36687f6394ef03a3fceb70c73601680dd262d90c
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020647"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245396"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>Kurz: vytvoření prostředí Azure Time Series Insights Gen1
 
@@ -31,19 +31,19 @@ Tento kurz vás provede procesem vytvoření Azure Time Series Insights prostře
 > [!IMPORTANT]
 > Zaregistrujte si [bezplatné předplatné Azure](https://azure.microsoft.com/free/) , pokud ho ještě nemáte.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet pro přihlášení do Azure musí být také členem role **vlastníka** předplatného. Další informace najdete v článku [Správa přístupu pomocí řízení přístupu na základě role a Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="review-video"></a>Zkontrolovat video
 
-### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-azure-time-series-insights-br"></a>Naučte se, jak pomocí akcelerátoru řešení Azure IoT vygenerovat data a začít s Azure Time Series Insights. </br>
+Naučte se, jak pomocí akcelerátoru řešení Azure IoT vygenerovat data a začít s Azure Time Series Insights.
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 
 ## <a name="overview"></a>Přehled
 
-Prostředí Azure Time Series Insights je místo, kde se shromažďují a ukládají data zařízení. Po uložení je možné použít k dotazování a analýze dat [rozhraní API](/rest/api/time-series-insights/ga-query-api) pro [Azure Time Series Insights](time-series-quickstart.md) a dotazování Azure Time Series Insights.
+Prostředí Azure Time Series Insights je místo, kde se shromažďují a ukládají data zařízení. Po uložení je možné použít k dotazování a analýze dat [rozhraní API](/rest/api/time-series-insights/gen1-query-api) pro [Azure Time Series Insights](time-series-quickstart.md) a dotazování Azure Time Series Insights.
 
 Azure IoT Hub je zdroj událostí, který se používá pro všechna zařízení (simulované nebo fyzické) v tomto kurzu k bezpečnému připojení a přenosu dat do cloudu Azure.
 
@@ -86,7 +86,7 @@ Nejprve vytvořte řešení pro simulaci zařízení, které generuje testovací
 
 ## <a name="create-an-environment"></a>Vytvoření prostředí
 
-Za druhé vytvořte v předplatném Azure Azure Time Series Insights prostředí.
+Za druhé vytvořte ve svém předplatném Azure Azure Time Series Insights prostředí.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí svého účtu předplatného Azure.
 1. Vlevo nahoře vyberte **+ Vytvořit prostředek**.
@@ -98,7 +98,7 @@ Za druhé vytvořte v předplatném Azure Azure Time Series Insights prostředí
 
    Parametr|Popis
    ---|---
-   **Název prostředí** | Vyberte jedinečný název prostředí Azure Time Series Insights. Názvy používá Průzkumník Azure Time Series Insights a [rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/ga-query).
+   **Název prostředí** | Vyberte jedinečný název prostředí Azure Time Series Insights. Názvy používá Průzkumník Azure Time Series Insights a [rozhraní API pro dotazy](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query).
    **Předplatné** | Předplatná představují kontejnery prostředků Azure. Vyberte předplatné, ve kterém chcete vytvořit prostředí Azure Time Series Insights.
    **Skupina prostředků** | Skupina prostředků představuje kontejner prostředků Azure. Vyberte existující skupinu prostředků nebo vytvořte novou pro prostředek prostředí Azure Time Series Insights.
    **Umístění** | Vyberte oblast datového centra pro prostředí Azure Time Series Insights. Aby nedošlo k další latenci, vytvořte Azure Time Series Insights prostředí ve stejné oblasti jako jiné prostředky IoT.

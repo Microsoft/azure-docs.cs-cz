@@ -7,16 +7,16 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: rambala
-ms.openlocfilehash: df4108604c656cd6383bd57b462c0f12f31bdd7b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 68596b881ef1b62187bdb7194b364c9477b4e04d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206867"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244767"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>Použití S2S VPN jako zálohy privátního partnerského vztahu ExpressRoute
 
-V článku s názvem [Návrh pro zotavení po havárii s privátním partnerským vztahem ExpressRoute][DR-PP]jsme si pobývali potřebu řešení pro připojení k zálohování pro připojení privátního partnerského vztahu ExpressRoute a použití geograficky redundantních okruhů ExpressRoute pro účely. V tomto článku můžeme zvážit, jak využít a udržovat VPN typu Site-to-Site (S2S) VPN jako back pro privátní partnerské vztahy ExpressRoute. 
+V článku s názvem [Návrh pro zotavení po havárii s privátním partnerským vztahem ExpressRoute][DR-PP]jsme si pobývali potřebu řešení pro připojení k zálohování pro připojení privátního partnerského vztahu ExpressRoute a použití geograficky redundantních okruhů ExpressRoute pro účely. V tomto článku můžeme zvážit, jak využít a spravovat síť Site-to-Site (S2S) VPN jako zálohu pro privátní partnerské vztahy ExpressRoute. 
 
 Na rozdíl od geograficky redundantních okruhů ExpressRoute můžete použít kombinaci ExpressRoute-VPN Recovery v režimu aktivní-pasivní. Hlavní výzvou k použití libovolného záložního připojení k síti v pasivním režimu je to, že pasivní připojení často selže vedle primárního připojení. Běžným důvodem pro selhání pasivního připojení je neexistence aktivní údržby. Proto se v tomto článku zaměřte na to, jak ověřit a aktivně udržovat připojení S2S VPN, které provádí zálohování privátního partnerského vztahu ExpressRoute.
 
@@ -116,7 +116,7 @@ Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
 
 ### <a name="configuring-for-symmetric-traffic-flow"></a>Konfigurace pro tok symetrického provozu
 
-Poznamenali jsme, že když je daná místní trasa inzerována prostřednictvím sítě VPN ExpressRoute i S2S, Azure by preferovat cestu ExpressRoute. Pokud chcete vynutit, aby Azure preferovat S2S VPN cestou přes kostávající ExpressRoute, je potřeba prostřednictvím připojení VPN inzerovat konkrétnější trasy (delší předponu s větší maskou podsítě). Naším cílem je, aby se připojení VPN používala jenom zpátky. Proto je výchozí chování při výběru cesty v Azure v souladu s naším cílem. 
+Poznamenali jsme, že když je daná místní trasa inzerována prostřednictvím sítě VPN ExpressRoute i S2S, Azure by preferovat cestu ExpressRoute. Pokud chcete vynutit, aby Azure preferovat S2S VPN cestou přes kostávající ExpressRoute, je potřeba prostřednictvím připojení VPN inzerovat konkrétnější trasy (delší předponu s větší maskou podsítě). Naším cílem je, aby se připojení VPN používala jenom jako záloha. Proto je výchozí chování při výběru cesty v Azure v souladu s naším cílem. 
 
 Je naše zodpovědnost za to, že přenos, který je určený pro Azure z místního prostředí, taky upřednostňuje ExpressRoute cestu přes S2S VPN. Výchozí místní preference směrovačů CE a bran firewall v naší místní instalaci jsou 100. Pokud tedy nakonfigurujete místní preference tras přijatých prostřednictvím privátních partnerských vztahů ExpressRoute větší než 100 (řekněme 150), můžeme provoz určený pro Azure preferovat ExpressRoute okruh ve stabilním stavu.
 

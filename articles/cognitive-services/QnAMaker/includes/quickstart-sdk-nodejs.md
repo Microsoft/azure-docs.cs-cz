@@ -4,12 +4,12 @@ description: V tomto rychlém startu se dozvíte, jak začít s klientskou kniho
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 76d0587c68ac46253dbd937c661b06bdb8c495c8
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 4085ec5aaff75f33fc7a87708693084831ff5d8d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404072"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246465"
 ---
 Pomocí klientské knihovny QnA Maker Node.js:
 
@@ -28,7 +28,7 @@ Pomocí klientské knihovny QnA Maker Node.js:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Aktuální verze [Node.js](https://nodejs.org).
 * Jakmile budete mít předplatné Azure, vytvořte v Azure Portal [prostředek QnA maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) , abyste získali svůj klíč pro vytváření obsahu a prostředek. Po nasazení vyberte **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API služby QnA Maker budete potřebovat klíč a název prostředku z prostředku, který vytvoříte. Svůj klíč a název prostředku vložíte do níže uvedeného kódu později v rychlém startu.
@@ -128,9 +128,9 @@ Znalostní báze ukládá páry dotazů a odpovědí pro objekt [CreateKbDTO](ht
 * V případě **adres URL**použijte seznam řetězců, které reprezentují veřejně dostupné adresy URL.
 
 Krok vytvoření zahrnuje také vlastnosti pro znalostní báze:
-* `defaultAnswerUsedForExtraction`– Co se vrátí, když se nenajde žádná odpověď
-* `enableHierarchicalExtraction`-automaticky vytvářet relace výzvy mezi extrahovanými páry QnA
-* `language`– Při vytváření první znalostní báze prostředků nastavte jazyk, který se má použít v indexu Azure Search.
+* `defaultAnswerUsedForExtraction` – Co se vrátí, když se nenajde žádná odpověď
+* `enableHierarchicalExtraction` -automaticky vytvářet relace výzvy mezi extrahovanými páry QnA
+* `language` – Při vytváření první znalostní báze prostředků nastavte jazyk, který se má použít v indexu Azure Search.
 
 Pomocí informací o znalostní bázi volejte metodu [Create](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#create-createkbdto--servicecallback-operation--) . Informace o znalostní bázi jsou v podstatě objekt JSON.
 

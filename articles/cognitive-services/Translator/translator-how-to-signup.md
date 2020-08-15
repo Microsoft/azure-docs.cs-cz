@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 15204a081f001d421574daa7f5ec2bac40152a19
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995747"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244308"
 ---
 # <a name="how-to-sign-up-for-translator"></a>Jak se zaregistrovat k překladateli
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-- Nemáte účet? Můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free/) a experimentovat bez poplatků.
+- Nemáte účet? Můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free/cognitive-services) a experimentovat bez poplatků.
 - Již máte účet? [Přihlásit](https://ms.portal.azure.com/)
 
 ## <a name="create-a-subscription-for-translator"></a>Vytvoření odběru pro překladatele
@@ -53,7 +53,7 @@ Microsoft Translator bude obecně moci předem předat vaše první pár požada
 
 ## <a name="pricing-options"></a>Cenové možnosti
 
-- [Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
+- [Překladač](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 
 ## <a name="customization"></a>Přizpůsobení
 

@@ -3,18 +3,23 @@ title: Ověřit stav registru
 description: Naučte se, jak spustit příkaz Rychlý diagnostiky k identifikaci běžných problémů při použití služby Azure Container Registry, včetně místní konfigurace Docker a připojení k registru.
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27a99818260553cbd7ba26158db0064c145a21f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74456406"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245379"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Zkontroluje stav služby Azure Container Registry.
 
 Při použití služby Azure Container Registry může občas docházet k problémům. Například je možné, že nebudete moci načíst image kontejneru z důvodu problému s Docker ve vašem místním prostředí. Případně může dojít k potížím se sítí, takže se nebudete moci připojit k registru. 
 
 Jako první krok diagnostiky spusťte příkaz [AZ ACR check-Health][az-acr-check-health] , který získá informace o stavu prostředí a volitelně přístup k cílovému registru. Tento příkaz je k dispozici v Azure CLI verze 2.0.67 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
+
+Další pokyny k odstraňování potíží registru najdete v těchto tématech:
+* [Řešení potíží s přihlášením k registru](container-registry-troubleshoot-login.md)
+* [Řešení potíží se sítí pomocí registru](container-registry-troubleshoot-access.md)
+* [Řešení potíží s výkonem registru](container-registry-troubleshoot-performance.md)
 
 ## <a name="run-az-acr-check-health"></a>Spuštění AZ ACR check-Health
 
@@ -33,7 +38,7 @@ az acr check-health
 
 ### <a name="check-the-environment-and-a-target-registry"></a>Zkontrolování prostředí a cílového registru
 
-Chcete-li zkontrolovat přístup k registru a provádět kontroly místního prostředí, předejte název cílového registru. Příklad:
+Chcete-li zkontrolovat přístup k registru a provádět kontroly místního prostředí, předejte název cílového registru. Například:
 
 ```azurecli
 az acr check-health --name myregistry
