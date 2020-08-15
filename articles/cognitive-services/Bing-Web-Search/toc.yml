@@ -11,7 +11,7 @@
   items:
     - name: Rozhraní REST API
       items:
-        - name: 'C#'
+        - name: C#
           href: quickstarts/csharp.md
         - name: Přejít
           href: quickstarts/go.md
@@ -88,7 +88,7 @@
 - name: Zdroje a prostředky
   items:
     - name: Získání klíče rozhraní API
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: Koncové body Vyhledávání na webu Bingu
       href: web-search-endpoints.md
     - name: Ceny

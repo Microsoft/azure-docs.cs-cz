@@ -115,6 +115,8 @@
           href: join-rhel-linux-vm.md
         - name: Ubuntu Server
           href: join-ubuntu-linux-vm.md
+        - name: SUSE Linux Enterprise
+          href: join-suse-linux-vm.md
     - name: Nasazení aplikací
       items:
         - name: Nasazení proxy aplikace služby Azure AD

@@ -12,12 +12,12 @@ metadata:
   title: Dokumentace ke službě Language Understanding (LUIS)
   titleSuffix: Azure Cognitive Services
   description: Služba Language Understanding (LUIS) umožňuje vaší aplikaci pochopit, co lidé vlastními slovy chtějí. Služba LUIS využívá strojové učení a umožňuje vývojářům sestavovat aplikace, které dokážou přijmout uživatelský vstup v přirozeném jazyce a extrahovat jeho význam.
-  ms.openlocfilehash: 0d941872670a5bdd559a2760f73cda72773fc887
-  ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+  ms.openlocfilehash: 561f6ee161d2a697b8c143ee49209515f679c77b
+  ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/15/2020
-  ms.locfileid: "84791584"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88236518"
 landingContent:
 - title: Informace o službě Language Understanding (LUIS)
   linkLists:
@@ -60,9 +60,9 @@ landingContent:
     - text: 'Portál: Vytvoření nové aplikace LUIS'
       url: get-started-portal-build-app.md
     - text: S využitím C# SDK
-      url: sdk-authoring.md?pivots=programming-language-csharp
+      url: quickstart-sdk.md?pivots=programming-language-csharp
     - text: S využitím sady Face Python SDK
-      url: sdk-authoring.md?pivots=programming-language-python
+      url: quickstart-sdk.md?pivots=programming-language-python
   - linkListType: how-to-guide
     links:
     - text: Vytvoření nové aplikace LUIS
@@ -88,7 +88,7 @@ landingContent:
     - text: 'Portál: Nasazení aplikace do koncového bodu předpovědi'
       url: get-started-portal-deploy-app.md
     - text: S využitím sady SDK
-      url: sdk-authoring.md
+      url: quickstart-sdk.md
   - linkListType: how-to-guide
     links:
     - text: Správa verzí aplikace
@@ -106,7 +106,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: S využitím sady SDK
-      url: sdk-query-prediction-endpoint.md
+      url: quickstart-sdk.md
   - linkListType: quickstart
     links:
     - text: S C# s využitím REST

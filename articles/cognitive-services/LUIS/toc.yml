@@ -22,11 +22,7 @@
     - name: Použití prohlížeče
       href: luis-get-started-get-intent-from-browser.md
     - name: Použití sady SDK
-      items:
-        - name: Aplikace pro vytváření
-          href: sdk-authoring.md
-        - name: Koncový bod předpovědi dotazů
-          href: sdk-query-prediction-endpoint.md
+      href: quickstart-sdk.md
     - name: Použití rozhraní REST API
       items:
         - name: Získání záměru
