@@ -1,6 +1,6 @@
 ---
 title: Přehled SQL Serveru na virtuálních počítačích Azure s Windows | Dokumentace Microsoftu
-description: Můžete se dozvědět, jak spouštět úplné edice SQL Serveru virtuálních počítačích Azure.
+description: Naučte se spouštět úplné edice SQL Server v Azure Virtual Machines v cloudu, aniž byste museli spravovat jakýkoli místní hardware.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 161722d1f80e4bada35548b4e2b4e903c56215ec
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4bf5b9b6f683783a39b7d34c430f1c6671c35885
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926686"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236365"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co je SQL Server ve službě Azure Virtual Machines (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -57,7 +57,7 @@ Chcete-li začít, zvolte image virtuálního počítače s SQL Serverem s poža
 > [!TIP]
 > Další informace o cenách SQL Server imagí najdete v tématu [cenové poradenství pro SQL Server v Azure Virtual Machines](pricing-guidance.md). 
 
-### <a name="pay-as-you-go"></a><a id="payasyougo"></a>Průběžné platby
+### <a name="pay-as-you-go"></a><a id="payasyougo"></a> Průběžné platby
 Následující tabulka obsahuje matici imagí SQL Serveru s průběžnými platbami.
 
 | Verze | Operační systém | Edice |
@@ -74,7 +74,7 @@ Pokud chcete zobrazit dostupné image virtuálních počítačů SQL Server on L
 > [!NOTE]
 > Nyní je možné změnit licenční model s platbami podle využití SQL Server virtuálního počítače na používání vlastní licence. Další informace najdete v tématu [Změna licenčního modelu pro SQL Server virtuální počítač](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
-### <a name="bring-your-own-license"></a><a id="BYOL"></a>Přineste si vlastní licenci
+### <a name="bring-your-own-license"></a><a id="BYOL"></a> Přineste si vlastní licenci
 Můžete také používat vlastní licenci (BYOL). V tomto scénáři zaplatíte jenom za virtuální počítač bez jakýchkoli dalších poplatků za licencování SQL Serveru.  Používáním vlastní licence můžete časem ušetřit peníze za nepřetržité produkční úlohy. Požadavky k použití této možnosti najdete v tématu [Doprovodné materiály k cenám pro virtuální počítače Azure s SQL Serverem](pricing-guidance.md#byol).
 
 Pokud chcete využít vlastní licenci, můžete buď převést existující SQL Server virtuální počítač s platbami za použití, nebo můžete nasadit image s předem opraveným **{BYOL}**. Další informace o přepínání licenčního modelu mezi platbami podle využití a BYOL najdete v článku [Změna licenčního modelu pro SQL Server virtuální počítač](licensing-model-azure-hybrid-benefit-ahb-change.md). 
@@ -128,7 +128,7 @@ Podrobnosti najdete tady:
 - [Vytvoření spravované instance](../../managed-instance/instance-create-quickstart.md)
 - [Vytvoření virtuálního počítače s SQL Server](sql-vm-create-portal-quickstart.md)
 
-## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a>Zásada aktualizace image virtuálního počítače SQL Server
+## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a> Zásada aktualizace image virtuálního počítače SQL Server
 Azure pro každou podporovanou kombinaci operačního systému, jeho verze a edice udržuje pouze jednu image virtuálního počítače. To znamená, že se image v průběhu času aktualizují a staré image se odebírají. Další informace najdete v části **Image** tématu [Nejčastější dotazy k virtuálním počítačům s SQL Serverem](frequently-asked-questions-faq.md#images).
 
 ## <a name="customer-experience-improvement-program-ceip"></a>Program Zlepšování softwaru a služeb na základě zkušeností uživatelů (CEIP)

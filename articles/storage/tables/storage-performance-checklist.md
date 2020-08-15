@@ -3,17 +3,17 @@ title: Kontrolní seznam pro výkon a škálovatelnost pro úložiště tabulek 
 description: Kontrolní seznam osvědčených postupů pro použití s tabulkovým úložištěm při vývoji vysoce výkonných aplikací.
 services: storage
 author: tamram
+ms.author: tamram
 ms.service: storage
 ms.topic: overview
 ms.date: 10/10/2019
-ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 89581c8ae2fbdbb55a2abfbd527c8fdcf4b65761
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c805e9cf15e22b9200ef86c6c22ac3f50e77719
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75749548"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236382"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště tabulek
 
@@ -39,7 +39,7 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 | &nbsp; |Konfigurace .NET |[Nakonfigurovali jste klienta tak, aby používal dostatečný počet souběžných připojení?](#increase-default-connection-limit) |
 | &nbsp; |Konfigurace .NET |[Pro aplikace .NET jste nakonfigurovali .NET pro použití dostatečného počtu vláken?](#increase-minimum-number-of-threads) |
 | &nbsp; |Paralelismu |[Měli byste zajistit, aby byl paralelismu správně ohraničený, takže nebudete přetěžovat možnosti svého klienta nebo se přiblížíte cílům škálovatelnosti?](#unbounded-parallelism) |
-| &nbsp; |Nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
+| &nbsp; |nástroje |[Používáte nejnovější verze klientských knihoven a nástrojů od společnosti Microsoft?](#client-libraries-and-tools) |
 | &nbsp; |Opakování |[Používáte zásady opakování s exponenciálním omezení rychlosti pro omezení chyb a časových limitů?](#timeout-and-server-busy-errors) |
 | &nbsp; |Opakování |[Vyloučí vaše aplikace opakované pokusy o neopakující se chyby?](#non-retryable-errors) |
 | &nbsp; |Konfigurace |[Používáte pro žádosti o tabulku JSON?](#use-json) |

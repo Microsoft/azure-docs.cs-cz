@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: d76506141b2563b3ae8d5779e774ad564022494d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: a5825cf5461213e3440893597059c84dcdc9ad33
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809999"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236093"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -99,7 +99,7 @@ Informace najdete v tématu [Application Gateway hlediska velikosti podsítě](h
 
 ### <a name="can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>Můžu nasadit více než jeden prostředek Application Gateway do jedné podsítě?
 
-Ano. Kromě více instancí daného nasazení Application Gateway můžete zřídit jiný jedinečný Application Gateway prostředek pro existující podsíť, která obsahuje jiný prostředek Application Gateway.
+Yes. Kromě více instancí daného nasazení Application Gateway můžete zřídit jiný jedinečný Application Gateway prostředek pro existující podsíť, která obsahuje jiný prostředek Application Gateway.
 
 Jedna podsíť nepodporuje Application Gateway SKU v2 i v1.
 
@@ -109,7 +109,7 @@ Ano, ale pouze konkrétní scénáře. Další informace najdete v tématu [Pře
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Podporuje Application Gateway hlaviček předávaných přes x?
 
-Ano. Viz [Úpravy žádosti](https://docs.microsoft.com/azure/application-gateway/how-application-gateway-works#modifications-to-the-request).
+Yes. Viz [Úpravy žádosti](https://docs.microsoft.com/azure/application-gateway/how-application-gateway-works#modifications-to-the-request).
 
 ### <a name="how-long-does-it-take-to-deploy-an-application-gateway-will-my-application-gateway-work-while-its-being-updated"></a>Jak dlouho trvá nasazení aplikační brány? Bude moje Aplikační brána fungovat, i když se aktualizuje?
 
@@ -119,19 +119,19 @@ Zřizování většiny nasazení, která používají SKU v2, trvá přibližně
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Můžu použít Exchange Server jako back-end s Application Gateway?
 
-Ne. Application Gateway nepodporuje e-mailové protokoly, jako jsou SMTP, IMAP a POP3.
+No. Application Gateway nepodporuje e-mailové protokoly, jako jsou SMTP, IMAP a POP3.
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Je k dispozici návod k migraci z SKU V1 na SKU 2?
 
-Ano. Podrobnosti najdete v tématu [migrace služby Azure Application Gateway a firewall webových aplikací z verze V1 na verzi v2](migrate-v1-v2.md).
+Yes. Podrobnosti najdete v tématu [migrace služby Azure Application Gateway a firewall webových aplikací z verze V1 na verzi v2](migrate-v1-v2.md).
 
 ### <a name="will-the-application-gateway-v1-sku-continue-to-be-supported"></a>Bude nadále podporována SKU Application Gateway v1?
 
-Ano. SKU Application Gateway v1 bude nadále podporována. Důrazně však doporučujeme přejít na verzi v2, abyste mohli využít aktualizace funkcí v této SKU. Další informace najdete v tématu Automatické [škálování a redundantní Application Gateway v2 pro zóny](application-gateway-autoscaling-zone-redundant.md).
+Yes. SKU Application Gateway v1 bude nadále podporována. Důrazně však doporučujeme přejít na verzi v2, abyste mohli využít aktualizace funkcí v této SKU. Další informace najdete v tématu Automatické [škálování a redundantní Application Gateway v2 pro zóny](application-gateway-autoscaling-zone-redundant.md).
 
 ### <a name="does-application-gateway-v2-support-proxying-requests-with-ntlm-authentication"></a>Podporuje Application Gateway v2 požadavky na proxy s ověřováním NTLM?
 
-Ne. Application Gateway v2 nepodporuje proxy požadavky s ověřováním NTLM ještě nepodporují.
+No. Application Gateway v2 nepodporuje proxy požadavky s ověřováním NTLM ještě nepodporují.
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Podporuje soubor cookie spřažení Application Gateway atribut SameSite?
 Ano, [v80](https://chromiumdash.appspot.com/schedule) v [prohlížeči chrom](https://www.chromium.org/Home) představila v souborech cookie protokolu HTTP pověření bez SameSite atributu, aby bylo považováno za SameSite = Lax. To znamená, že prohlížeč nebude odesílat soubory cookie spřažení Application Gateway v kontextu třetí strany. 
@@ -156,21 +156,21 @@ Ano, skladová položka Application Gateway v2 podporuje automatické škálová
 
 ### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>Způsobuje ruční nebo automatické horizontální navýšení nebo snížení kapacity při výpadku?
 
-Ne. Instance se distribuují napříč doménami upgradu a doménami selhání.
+No. Instance se distribuují napříč doménami upgradu a doménami selhání.
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Podporuje Application Gateway vyprazdňování připojení?
 
-Ano. Můžete nastavit vyprazdňování připojení pro změnu členů ve fondu back-end bez přerušení. Další informace najdete v [části vyprazdňování připojení Application Gateway](features.md#connection-draining).
+Yes. Můžete nastavit vyprazdňování připojení pro změnu členů ve fondu back-end bez přerušení. Další informace najdete v [části vyprazdňování připojení Application Gateway](features.md#connection-draining).
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Můžu změnit velikost instance z středně na velká bez přerušení?
 
-Ano.
+Yes.
 
 ## <a name="configuration"></a>Konfigurace
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Je Application Gateway vždycky nasazené ve virtuální síti?
 
-Ano. Application Gateway je vždy nasazena v podsíti virtuální sítě. Tato podsíť může obsahovat jenom aplikační brány. Další informace najdete v tématu [požadavky na virtuální síť a podsíť](https://docs.microsoft.com/azure/application-gateway/configuration-overview#azure-virtual-network-and-dedicated-subnet).
+Yes. Application Gateway je vždy nasazena v podsíti virtuální sítě. Tato podsíť může obsahovat jenom aplikační brány. Další informace najdete v tématu [požadavky na virtuální síť a podsíť](https://docs.microsoft.com/azure/application-gateway/configuration-overview#azure-virtual-network-and-dedicated-subnet).
 
 ### <a name="can-application-gateway-communicate-with-instances-outside-of-its-virtual-network-or-outside-of-its-subscription"></a>Může Application Gateway komunikovat s instancemi mimo svou virtuální síť nebo mimo její předplatné?
 
@@ -178,7 +178,7 @@ Pokud máte připojení IP, Application Gateway můžou komunikovat s instancemi
 
 ### <a name="can-i-deploy-anything-else-in-the-application-gateway-subnet"></a>Můžu v podsíti aplikační brány nasazovat cokoli jiného?
 
-Ne. V podsíti ale můžete nasadit i jiné aplikační brány.
+No. V podsíti ale můžete nasadit i jiné aplikační brány.
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>Jsou skupiny zabezpečení sítě podporované v podsíti služby Application Gateway?
 
@@ -194,11 +194,11 @@ Viz [omezení Application Gateway](../azure-resource-manager/management/azure-su
 
 ### <a name="can-i-simultaneously-use-application-gateway-for-both-external-and-internal-traffic"></a>Můžu současně Application Gateway použít pro externí i interní provoz?
 
-Ano. Application Gateway podporuje jednu interní IP adresu a jednu externí IP adresu pro bránu aplikace.
+Yes. Application Gateway podporuje jednu interní IP adresu a jednu externí IP adresu pro bránu aplikace.
 
 ### <a name="does-application-gateway-support-virtual-network-peering"></a>Podporuje Application Gateway partnerský vztah virtuálních sítí?
 
-Ano. Partnerské vztahy virtuálních sítí pomáhají vyrovnávat zatížení v jiných virtuálních sítích.
+Yes. Partnerské vztahy virtuálních sítí pomáhají vyrovnávat zatížení v jiných virtuálních sítích.
 
 ### <a name="can-i-talk-to-on-premises-servers-when-theyre-connected-by-expressroute-or-vpn-tunnels"></a>Můžu komunikovat s místními servery, když jsou připojeni pomocí tunelů ExpressRoute nebo VPN?
 
@@ -210,7 +210,7 @@ Architektura mikroslužeb je podporovaná. Chcete-li provést test na různých 
 
 ### <a name="do-custom-probes-support-wildcards-or-regex-on-response-data"></a>Podporují vlastní testy zástupné znaky nebo regulární výrazy v datech odpovědí?
 
-Ne. 
+No. 
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>Jak se zpracovávají pravidla směrování v Application Gateway?
 
@@ -222,11 +222,11 @@ Pole hostitel Určuje název, do kterého se má odeslat sonda při konfiguraci 
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Můžu Application Gateway přístup k jenom několika zdrojovým IP adresám?
 
-Ano. Viz [omezení přístupu na konkrétní zdrojové IP adresy](https://docs.microsoft.com/azure/application-gateway/configuration-overview#allow-application-gateway-access-to-a-few-source-ips).
+Yes. Viz [omezení přístupu na konkrétní zdrojové IP adresy](https://docs.microsoft.com/azure/application-gateway/configuration-overview#allow-application-gateway-access-to-a-few-source-ips).
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Můžu použít stejný port pro veřejné i privátní naslouchací procesy?
 
-Ne.
+No.
 
 ### <a name="does-application-gateway-support-ipv6"></a>Podporuje Application Gateway IPv6?
 
@@ -259,7 +259,7 @@ Ukázková konfigurace NSG jenom pro soukromý IP přístup: ![ konfigurace Appl
 
 ### <a name="what-certificates-does-application-gateway-support"></a>Jaké certifikáty Application Gateway podporují?
 
-Application Gateway podporuje certifikáty podepsané svým držitelem, certifikáty certifikační autority (CA), rozšířené ověřování (EV) certifikátů a certifikáty se zástupnými znaky.
+Application Gateway podporuje certifikáty podepsané svým držitelem, certifikáty certifikační autority (CA), rozšířené ověřování (EV), certifikáty pro více domén (SAN) a certifikáty se zástupnými znaky.
 
 ### <a name="what-cipher-suites-does-application-gateway-support"></a>Jaké šifrovací sady podporuje Application Gateway?
 
@@ -298,15 +298,15 @@ Informace o tom, jak přizpůsobit možnosti TLS, najdete v tématu [Konfigurace
 
 ### <a name="does-application-gateway-support-reencryption-of-traffic-to-the-backend"></a>Podporuje Application Gateway šifrování provozu do back-endu?
 
-Ano. Application Gateway podporuje snižování zátěže TLS a komplexní TLS, které přešifrují provoz na back-end.
+Yes. Application Gateway podporuje snižování zátěže TLS a komplexní TLS, které přešifrují provoz na back-end.
 
 ### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>Můžu nakonfigurovat zásady TLS pro řízení verzí protokolu TLS?
 
-Ano. Application Gateway můžete nakonfigurovat tak, aby odepřely protokol TLS 1.0, TLS 1.1 a TLS 1.2. Ve výchozím nastavení jsou SSL 2,0 a 3,0 už zakázané a nedají se konfigurovat.
+Yes. Application Gateway můžete nakonfigurovat tak, aby odepřely protokol TLS 1.0, TLS 1.1 a TLS 1.2. Ve výchozím nastavení jsou SSL 2,0 a 3,0 už zakázané a nedají se konfigurovat.
 
 ### <a name="can-i-configure-cipher-suites-and-policy-order"></a>Můžu nakonfigurovat šifrovací sady a pořadí zásad?
 
-Ano. V Application Gateway můžete [nakonfigurovat šifrovací sady](application-gateway-ssl-policy-overview.md). Pokud chcete definovat vlastní zásadu, povolte aspoň jednu z následujících šifrovacích sad. 
+Yes. V Application Gateway můžete [nakonfigurovat šifrovací sady](application-gateway-ssl-policy-overview.md). Pokud chcete definovat vlastní zásadu, povolte aspoň jednu z následujících šifrovacích sad. 
 
 * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
@@ -346,7 +346,7 @@ Prohlížeč certifikační autority (CA) Členové prohlížeče nedávno publi
 
 Podle požadavků na dodržování předpisů v oboru můžou dodavatelé CA odvolat certifikační autority, které nedodržují předpisy, a vydávat odpovídající certifikační autority, které vyžadují, aby se jejich certifikáty znovu vystavily pro zákazníky.Společnost Microsoft úzce spolupracuje s těmito dodavateli, aby minimalizovala potenciální dopad na služby Azure, **ale vaše vlastní certifikáty nebo certifikáty, které se používají ve scénářích "Přineste si vlastní certifikát" (BYOC), jsou stále ohroženy tím, že se neočekávaně odvolají**.
 
-Chcete-li zjistit, zda certifikáty využívané vaší aplikací byly odvolány z oznámení referenčního [DigiCert](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) a [sledování odvolaných certifikátů](https://misissued.com/#revoked). Pokud vaše certifikáty byly odvolány nebo budou odvolány, budete muset požádat dodavatele CA o nové certifikáty využívané ve svých aplikacích. Aby nedošlo k přerušení dostupnosti vaší aplikace z důvodu neočekávaného odvolání certifikátů, nebo pokud chcete aktualizovat certifikát, který byl odvolán, přečtěte si následující příspěvek v našich aktualizacích Azure, kde najdete odkazy na nápravy různých služeb Azure, které podporují BYOC:https://azure.microsoft.com/updates/certificateauthorityrevocation/
+Chcete-li zjistit, zda certifikáty využívané vaší aplikací byly odvolány z oznámení referenčního [DigiCert](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) a [sledování odvolaných certifikátů](https://misissued.com/#revoked). Pokud vaše certifikáty byly odvolány nebo budou odvolány, budete muset požádat dodavatele CA o nové certifikáty využívané ve svých aplikacích. Aby nedošlo k přerušení dostupnosti vaší aplikace z důvodu neočekávaného odvolání certifikátů, nebo pokud chcete aktualizovat certifikát, který byl odvolán, přečtěte si následující příspěvek v našich aktualizacích Azure, kde najdete odkazy na nápravy různých služeb Azure, které podporují BYOC: https://azure.microsoft.com/updates/certificateauthorityrevocation/
 
 Konkrétní informace o Application Gateway najdete v části níže.
 
@@ -448,7 +448,7 @@ Na portálu v okně nabídky aplikační brány vyberte **Protokol aktivit** pro
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>Můžu nastavit upozornění pomocí Application Gateway?
 
-Ano. V Application Gateway jsou výstrahy nakonfigurované na metrikách. Další informace najdete v tématu [Application Gateway metriky](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics) a [přijímání oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Yes. V Application Gateway jsou výstrahy nakonfigurované na metrikách. Další informace najdete v tématu [Application Gateway metriky](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics) a [přijímání oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Návody analyzovat Statistiky provozu pro Application Gateway?
 
@@ -462,7 +462,7 @@ Obvykle se zobrazuje neznámý stav, pokud je přístup k back-endu zablokovaný
 
 ### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>Existují nějaké případy, kdy protokoly toku NSG neukazují povolený provoz?
 
-Ano. Pokud vaše konfigurace odpovídá následujícímu scénáři, neuvidíte v protokolech toku NSG povolený provoz:
+Yes. Pokud vaše konfigurace odpovídá následujícímu scénáři, neuvidíte v protokolech toku NSG povolený provoz:
 - Nasadili jste Application Gateway v2
 - Máte NSGu v podsíti služby Application Gateway.
 - Povolili jste protokoly toku NSG na těchto NSG.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 8dd108e8c2877c7fe459819bf01b0e5b206cd9c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b96b679e967fd898f072b4b1ae195e3dd1061c04
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445557"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235686"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Plánování aplikace cloudového HR pro Azure Active Directory zřizování uživatelů
 
@@ -56,7 +56,7 @@ Integrace aplikace pro cloudovou HR se zřizováním uživatelů Azure AD je ide
 
 Zřizování uživatelů vytvoří základ pro průběžné řízení identit. Vylepšuje kvalitu obchodních procesů, které spoléhají na data autoritativní identity.
 
-### <a name="terms"></a>Výrazy
+### <a name="terms"></a>Terminologie
 
 Tento článek používá následující výrazy:
 
@@ -79,7 +79,7 @@ Pokud chcete nakonfigurovat aplikaci cloudového HR na integraci zřizování u�
 
 Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a je zajištěná v rámci služby Active Directory nebo Azure AD, potřebujete také platnou licenci pro předplatného Azure AD Premium P1 nebo vyšší. Jakýkoli nesprávný počet licencí vlastněných v aplikaci cloudového HR může vést k chybám při zřizování uživatele.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - [Správce hybridní identity](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator) Azure AD ke konfiguraci Azure AD Connectho agenta zřizování.
 - Role [Správce aplikací](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) Azure AD pro konfiguraci zřizování aplikace v Azure Portal
@@ -96,7 +96,7 @@ Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a j
 | | [Postup nasazení zřizování uživatelů v aktivním adresáři Azure](https://youtu.be/pKzyts6kfrw) |
 | Kurzy | [Seznam kurzů pro integraci aplikací SaaS s Azure AD](../saas-apps/tutorial-list.md) |
 | | [Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
-| Nejčastější dotazy | [Automatizované zřizování uživatelů](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| Časté otázky | [Automatizované zřizování uživatelů](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [Zřizování z Workday do Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>Architektura řešení
@@ -167,7 +167,7 @@ Integrace zřizování mezi aplikací cloudového HR a službou Active Directory
 - Agent zřizování Azure AD Connect
 - Doména služby Active Directory
 
-Topologie nasazení agenta Azure AD Connect zřizování závisí na počtu klientů aplikace cloudového HR a podřízených domén služby Active Directory, které chcete integrovat. Pokud máte více domén služby Active Directory, záleží na tom, jestli jsou domény služby Active Directory souvislé [nebo nesouvislé.](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace)
+Topologie nasazení agenta Azure AD Connect zřizování závisí na počtu klientů aplikace cloudového HR a podřízených domén služby Active Directory, které chcete integrovat. Pokud máte více domén služby Active Directory, záleží na tom, jestli jsou domény služby Active Directory souvislé [nebo nesouvislé.](/windows-server/identity/ad-ds/plan/disjoint-namespace)
 
 Na základě vašeho rozhodnutí vyberte jeden z scénářů nasazení:
 
@@ -313,7 +313,7 @@ Pokud je v tomto výrazu hodnota správní hodnoty: Praha, Austin, Seattle nebo 
 
 ## <a name="plan-for-password-delivery-of-new-user-accounts"></a>Plán pro doručování nových uživatelských účtů v hesle
 
-Když zahájíte spojovací procesy, musíte nastavit a doručovat dočasné heslo nových uživatelských účtů. Díky zřizování uživatelů v cloudu na Azure AD můžete pro uživatele zavést funkci [samoobslužného resetování hesla](../authentication/quickstart-sspr.md) (SSPR) služby Azure AD.
+Když zahájíte spojovací procesy, musíte nastavit a doručovat dočasné heslo nových uživatelských účtů. Díky zřizování uživatelů v cloudu na Azure AD můžete pro uživatele zavést funkci [samoobslužného resetování hesla](../authentication/tutorial-enable-sspr.md) (SSPR) služby Azure AD.
 
 SSPR je jednoduchý způsob, jak správcům IT umožnit uživatelům resetovat hesla nebo odemykat jejich účtů. Atribut **mobilní číslo** můžete zřídit z aplikace cloudového HR do služby Active Directory a synchronizovat s Azure AD. Po zadání atributu **mobilní číslo** v Azure AD můžete pro účet uživatele povolit SSPR. Pak nový uživatel může k ověřování použít registrované a ověřené mobilní číslo.
 

@@ -1,6 +1,6 @@
 ---
 title: Místní změna edice SQL Server
-description: Přečtěte si, jak změnit edici virtuálního počítače s SQL Server v Azure.
+description: Naučte se, jak změnit edici virtuálního počítače s SQL Server v Azure na downgrade za účelem snížení nákladů nebo upgradu za účelem povolení více funkcí.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -13,14 +13,14 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 228f76c9ecb262ffca7851f4339b73c5574f09dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60020667126fe76d33264795ddb2e17e1241a7b2
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669160"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236280"
 ---
-# <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Místní změna edice SQL Serveru na virtuálním počítači Azure
+# <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Místní změna edice SQL Server na virtuálním počítači Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Tento článek popisuje, jak změnit edici SQL Server na virtuálním počítači s Windows v Azure. 
@@ -33,7 +33,7 @@ Po interní změně edice SQL Server k virtuálnímu počítači SQL Server mus�
 
 Chcete-li provést místní změnu edice SQL Server, budete potřebovat následující: 
 
-- [Předplatné Azure](https://azure.microsoft.com/free/).
+- [Předplatné Azure](https://azure.microsoft.com/free/)
 - [SQL Server virtuální počítač ve Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) zaregistrovaný u [poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md).
 - Nastavte médium s **požadovanou verzí** SQL Server. Zákazníci, kteří mají [program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) , mohou získat instalační média z [centra](https://www.microsoft.com/Licensing/servicecenter/default.aspx)multilicenčního programu. Zákazníci, kteří nemají Software Assurance, mohou použít instalační médium z Azure Marketplace SQL Server image virtuálního počítače, která má požadovanou edici (obvykle se nachází v části `C:\SQLServerFull` ). 
 
@@ -77,7 +77,7 @@ Po downgradu edice SQL Server upravte vlastnost edice SQL Server virtuálního p
 
 Pokud jste změnili edici SQL Server pomocí instalačního média a zaregistrovali jste SQL Server virtuální počítač s [poskytovatelem prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md), můžete pomocí Azure Portal změnit vlastnost edice SQL Server virtuálního počítače pro účely fakturace. Postup je následující: 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
 1. Přejít na prostředek SQL Server prostředku virtuálního počítače. 
 1. V části **Nastavení**vyberte **Konfigurovat**. Pak v rozevíracím seznamu v části **edice**vyberte požadovanou edici SQL Server. 
 

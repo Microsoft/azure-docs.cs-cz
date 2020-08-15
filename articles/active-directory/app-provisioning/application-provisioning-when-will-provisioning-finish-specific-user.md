@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8f712604ae854a1870fe96112db3ae0f2ed60a8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 307a97b71fe453c89617a86a88063e60fcf28fa3
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203011"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235056"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Ověřit stav zřizování uživatelů
 
@@ -30,7 +30,7 @@ Při první konfiguraci automatického zřizování se v části **aktuální st
 - Typ cyklu zřizování (počáteční nebo přírůstkové), který aktuálně běží nebo byl naposledy dokončen.
 - Indikátor **průběhu** znázorňující procento dokončeného cyklu zřizování. Procento odráží počet zřízených stránek. Všimněte si, že každá stránka může obsahovat více uživatelů nebo skupin, takže procento přímo nekoreluje s počtem uživatelů, skupin nebo zřízených rolí.
 - Tlačítko pro **obnovení** , které můžete použít k udržení aktualizovaného zobrazení.
-- Počet **uživatelů** a **skupin** v úložišti dat konektoru. Počet se zvyšuje, kdykoli se do oboru zřizování přidá objekt. Pokud je uživatel bez potíží nebo odstraněn z úložiště dat konektoru, počet se neukončí. Počet se přepočítá při první synchronizaci po [resetování](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) disků CD. 
+- Počet **uživatelů** a **skupin** v úložišti dat konektoru. Počet se zvyšuje, kdykoli se do oboru zřizování přidá objekt. Pokud je uživatel bez potíží nebo odstraněn z úložiště dat konektoru, počet se neukončí. Počet se přepočítá při první synchronizaci po [resetování](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta) disků CD. 
 - Odkaz **Zobrazit protokoly auditu** , ve kterém se otevře protokol zřizování Azure AD, který obsahuje podrobnosti o všech operacích spuštěných službou zřizování uživatelů, včetně stavu zřizování pro jednotlivé uživatele (viz část [použití protokolů zřizování](#use-provisioning-logs-to-check-a-users-provisioning-status) níže).
 
 Po dokončení cyklu zřizování se v části **Statistika k datu** zobrazuje kumulativní počet uživatelů a skupin, které byly zřízeny do data, spolu s datem dokončení a dobou trvání posledního cyklu. **ID aktivity** jednoznačně identifikuje nejnovější cyklus zřizování. **ID úlohy** je jedinečný identifikátor pro úlohu zřizování a je specifický pro aplikaci ve vašem tenantovi.
@@ -99,4 +99,4 @@ Souhrn faktorů, které mají vliv na dobu potřebnou k dokončení **počáteč
 - Pokud dojde k potížím s výkonem a pokoušíte se zřídit většinu uživatelů a skupin ve vašem tenantovi, použijte filtry oborů. Filtry oborů vám umožňují vyladit data, která služba zřizování z Azure AD extrahuje, filtrováním uživatelů na základě konkrétních hodnot atributů. Další informace o filtrech oborů najdete v tématu [zřizování aplikací na základě atributů s filtry oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="next-steps"></a>Další kroky
-[Automatizace zřizování a rušení uživatelů pro aplikace SaaS pomocí Azure Active Directory](user-provisioning.md)
+[Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](user-provisioning.md)

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4325f75ac8181e088d64e53d3f65e085a09c0224
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8353b7290f0e0073faf93b4ea23bcc0ba50bb89e
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119405"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236467"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Procesor kanálu změn ve službě Azure Cosmos DB
 
@@ -95,11 +95,23 @@ Procesor změn kanálu se navíc může dynamicky upravovat na kontejnery škál
 
 Účtují se vám poplatky za ru spotřebované, protože přesun dat do kontejnerů Cosmos a z nich vždycky spotřebovává ru. Účtují se vám poplatky za ru spotřebované kontejnerem zapůjčení.
 
+## <a name="where-to-host-the-change-feed-processor"></a>Místo hostování procesoru změny kanálu
+
+Procesor změnového kanálu lze hostovat na libovolné platformě, která podporuje dlouho běžící procesy nebo úlohy:
+
+* Nepřetržitě běžící [Webová úloha Azure](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/)
+* Proces na [virtuálním počítači Azure](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-virtual-machines).
+* Úloha na pozadí ve [službě Azure Kubernetes](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-kubernetes-service).
+* [Hostovaná služba ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services)
+
+I když se procesor Change feed může spouštět v krátkodobých prostředích, protože kontejner zapůjčení udržuje stav, cyklus spuštění a zastavení těchto prostředí přidá zpoždění pro příjem oznámení (kvůli režii spuštění procesoru při každém spuštění prostředí).
+
 ## <a name="additional-resources"></a>Další zdroje
 
 * [Sada Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [Ukázky použití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
-* [Další ukázky na GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
+* [Kompletní ukázková aplikace na GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
+* [Další ukázky použití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
+* [Cosmos DB Workshop Labs pro procesor změn kanálu](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html#consume-cosmos-db-change-feed-via-the-change-feed-processor)
 
 ## <a name="next-steps"></a>Další kroky
 

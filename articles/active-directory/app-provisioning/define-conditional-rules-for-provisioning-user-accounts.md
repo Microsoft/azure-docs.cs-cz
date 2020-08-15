@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 1e858f1141ade52a1872d8a9822f515796d9182c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781952"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235804"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlit, jak používat filtry oborů k definování pravidel založených na atributech, která určují, kteří uživatelé se zřídí do aplikace.
@@ -94,7 +94,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
    
    j. **Greater_Than_OR_EQUALS.** Klauzule vrátí "true", pokud je vyhodnocený atribut větší nebo roven hodnotě. Hodnota zadaná ve filtru oboru musí být celé číslo a atribut na tomto uživateli musí být celé číslo [0, 1, 2,...]. 
    
-   k. **Zahrnující.** Klauzule vrátí "true", pokud vyhodnocený atribut obsahuje hodnotu řetězce (rozlišuje velká a malá písmena), jak je popsáno [zde](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8). 
+   k. **Zahrnující.** Klauzule vrátí "true", pokud vyhodnocený atribut obsahuje hodnotu řetězce (rozlišuje velká a malá písmena), jak je popsáno [zde](/dotnet/api/system.string.contains?view=netframework-4.8). 
 
 
 >[!IMPORTANT] 
@@ -116,7 +116,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 
 
 ## <a name="common-scoping-filters"></a>Běžné filtry oboru
-| Cílový atribut| Operátor | Hodnota | Description|
+| Cílový atribut| Operátor | Hodnota | Popis|
 |----|----|----|----|
 |userPrincipalName (Hlavní název uživatele)|POROVNÁVÁNÍ REGULÁRNÍCH HODNOT|.\*@domain.com |Všichni uživatelé s userPrincipal, kteří mají doménu, @domain.com budou v oboru pro zřizování.|
 |userPrincipalName (Hlavní název uživatele)|NESHODA S REGULÁRNÍM VÝRAZEM|.\*@domain.com|Všichni uživatelé s userPrincipal, kteří mají doménu, @domain.com budou mimo rozsah zřizování.|
@@ -130,4 +130,3 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 * [Oznámení zřizování účtů](../app-provisioning/user-provisioning.md)
 * [Pomocí SCIM můžete povolit Automatické zřizování uživatelů a skupin od Azure Active Directory k aplikacím.](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Seznam kurzů, jak integrovat aplikace SaaS](../saas-apps/tutorial-list.md)
-

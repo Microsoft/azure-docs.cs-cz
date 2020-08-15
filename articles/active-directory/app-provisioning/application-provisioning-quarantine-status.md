@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ac5b1f72e4c70e15ccb12ea41e5f080ca0b8a505
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 54d02b3189825d08716b73b7250efd4e3f334aa0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203032"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234733"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Stav zřizování aplikace v karanténě
 
@@ -34,7 +34,7 @@ Existují tři způsoby, jak ověřit, zda je aplikace v karanténě:
 
 - V Azure Portal přejděte do **Azure Active Directory**  >  **protokoly auditu** > filtrovat **aktivity: umístit do karantény** a zkontrolovat historii karantény. Zobrazení v indikátoru průběhu, jak je popsáno výše, ukazuje, jestli je zřizování aktuálně v karanténě, a protokoly auditu vám umožní zobrazit historii karantény pro aplikaci. 
 
-- Pomocí Microsoft Graph žádosti [Get synchronizationJob](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) programově Získejte stav úlohy zřizování:
+- Pomocí Microsoft Graph žádosti [Get synchronizationJob](/graph/api/synchronization-synchronizationjob-get?tabs=http&view=graph-rest-beta) programově Získejte stav úlohy zřizování:
 
 ```microsoft-graph
         GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/
@@ -52,15 +52,15 @@ Existují tři způsoby, jak ověřit, zda je aplikace v karanténě:
 |---|---|
 |**Problém s dodržováním předpisů SCIM:** Byla vrácena odpověď HTTP/404 nenalezena místo očekávané odpovědi HTTP/200 OK. V tomto případě služba zřizování Azure AD odeslala žádost do cílové aplikace a obdržela neočekávanou odpověď.|Zkontrolujte část přihlašovací údaje správce, abyste viděli, jestli aplikace vyžaduje zadání adresy URL tenanta, a ujistěte se, že je adresa URL správná. Pokud se problém nezobrazuje, obraťte se prosím na vývojáře aplikace, aby se zajistilo, že je jejich služba kompatibilní s SCIM. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Neplatné přihlašovací údaje:** Při pokusu o autorizaci přístupu k cílové aplikaci jsme dostali odpověď z cílové aplikace, která indikuje, že zadané přihlašovací údaje jsou neplatné.|Přejděte do části přihlašovací údaje správce uživatelského rozhraní pro konfiguraci zřizování a znovu udělte přístup s platnými přihlašovacími údaji. Pokud je aplikace v galerii, Projděte si kurz konfigurace aplikace pro všechny další požadované kroky.|
-|**Duplicitní role:** Role importované z některých aplikací, jako je Salesforce a Zendesk, musí být jedinečné. |V Azure Portal přejděte na [manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) aplikace a odeberte duplicitní roli.|
+|**Duplicitní role:** Role importované z některých aplikací, jako je Salesforce a Zendesk, musí být jedinečné. |V Azure Portal přejděte na [manifest](../develop/reference-app-manifest.md) aplikace a odeberte duplicitní roli.|
 
  Microsoft Graph požadavek na získání stavu úlohy zřizování zobrazuje následující důvod pro karanténu:
 
-- `EncounteredQuarantineException`označuje, že byly zadány neplatné přihlašovací údaje. Služba zřizování nemůže navázat spojení mezi zdrojovým systémem a cílovým systémem.
+- `EncounteredQuarantineException` označuje, že byly zadány neplatné přihlašovací údaje. Služba zřizování nemůže navázat spojení mezi zdrojovým systémem a cílovým systémem.
 
-- `EncounteredEscrowProportionThreshold`označuje, že zřizování překročilo prahovou hodnotu v úschově. K tomuto stavu dochází, pokud se nezdařila více než 60% událostí zřizování.
+- `EncounteredEscrowProportionThreshold` označuje, že zřizování překročilo prahovou hodnotu v úschově. K tomuto stavu dochází, pokud se nezdařila více než 60% událostí zřizování.
 
-- `QuarantineOnDemand`znamená, že jsme zjistili problém s vaší aplikací a ručně jste ho nastavili na karanténu.
+- `QuarantineOnDemand` znamená, že jsme zjistili problém s vaší aplikací a ručně jste ho nastavili na karanténu.
 
 ## <a name="how-do-i-get-my-application-out-of-quarantine"></a>Návody se moje aplikace dostat do karantény?
 
@@ -74,11 +74,10 @@ Po vyřešení problému restartujte úlohu zřizování. Některé změny nasta
 
 - Pomocí Azure Portal restartujte úlohu zřizování. Na stránce **zřizování** aplikace v části **Nastavení**vyberte **Vymazat stav a znovu spusťte synchronizaci** a nastavte **stav zřizování** **na zapnuto**. Tato akce plně restartuje službu zřizování, což může nějakou dobu trvat. Úplný počáteční cyklus se znovu spustí, který zruší escrows, odebere aplikaci z karantény a vymaže všechny vodoznaky.
 
-- [Restartujte úlohu zřizování](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)pomocí Microsoft Graph. Budete mít plnou kontrolu nad tím, co restartujete. Můžete zvolit vymazání escrows (pro restartování čítače v úschově, který se bude přestavovat do karantény), vymazat karanténu (Pokud chcete aplikaci odebrat z karantény) nebo zrušit meze. Použijte následující žádost:
+- [Restartujte úlohu zřizování](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)pomocí Microsoft Graph. Budete mít plnou kontrolu nad tím, co restartujete. Můžete zvolit vymazání escrows (pro restartování čítače v úschově, který se bude přestavovat do karantény), vymazat karanténu (Pokud chcete aplikaci odebrat z karantény) nebo zrušit meze. Použijte následující žádost:
  
 ```microsoft-graph
         POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
 ```
 
-Nahraďte {ID} hodnotou ID aplikace a nahraďte {jobId} [ID úlohy synchronizace](https://docs.microsoft.com/graph/api/resources/synchronization-configure-with-directory-extension-attributes?view=graph-rest-beta&tabs=http#list-synchronization-jobs-in-the-context-of-the-service-principal). 
-
+Nahraďte {ID} hodnotou ID aplikace a nahraďte {jobId} [ID úlohy synchronizace](/graph/api/resources/synchronization-configure-with-directory-extension-attributes?tabs=http&view=graph-rest-beta#list-synchronization-jobs-in-the-context-of-the-service-principal).

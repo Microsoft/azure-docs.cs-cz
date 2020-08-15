@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 33772d46f363b161c1faa5c953f48a702ae2b8bf
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1f7486f1080c0fbb25b1be6ab70bb647a546ceca
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009638"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234980"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Nastavení instance a ověřování digitálních vláken Azure (portál)
 
@@ -126,6 +126,9 @@ Na stránce portálu pro registraci aplikace vyberte v nabídce *oprávnění ro
 Na stránce *oprávnění rozhraní API* , které následuje, přepněte do *rozhraní API moje organizace používá* kartu a vyhledejte *digitální vlákna Azure*. Pokud chcete pokračovat v přiřazování oprávnění pro rozhraní API digitálních vláken Azure, vyberte z výsledků hledání možnost *digitálních vláken Azure* .
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Zobrazení výsledků hledání stránky žádosti API s informacemi o tom, že se zobrazují digitální vlákna Azure":::
+
+>[!NOTE]
+> Pokud máte existující instanci digitálních vláken Azure z předchozí verze Public Preview služby (starší než červenec 2020) ve vašem předplatném, budete muset místo toho hledat *službu inteligentních prostorů Azure* . Toto je starší název pro stejnou sadu rozhraní API a nemění se tím prostředí nad rámec tohoto kroku.
 
 V dalším kroku vyberete, která oprávnění chcete těmto rozhraním API udělit. Rozbalte oprávnění **číst (1)** a zaškrtněte políčko *číst. zapsat* pro udělení oprávnění pro přístup k registraci aplikace a oprávnění k zápisu.
 

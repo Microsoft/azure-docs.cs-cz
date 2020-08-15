@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7e7f8ded24e71fec8ed6bfbc78f9057ddb98dacc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c42a83b4f7f3c6b5ff501525a04ebd96c2a692a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781986"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234835"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa zřizování uživatelských účtů pro podnikové aplikace v Azure Portal
 
 Tento článek popisuje obecné kroky pro správu automatického zřizování uživatelských účtů a zrušení zajišťování pro aplikace, které ho podporují. *Zřizování uživatelských účtů* je proces vytváření, aktualizace nebo zakázání záznamů uživatelských účtů v úložišti profilů místního uživatele aplikace. Většina cloudových a SaaS aplikací ukládá role uživatelů a oprávnění do vlastního místního úložiště profilů uživatele a k získání jednotného přihlašování se *vyžaduje* přítomnost takového záznamu uživatele v místním úložišti uživatele a přístup k práci. Další informace o automatickém zřizování uživatelských účtů najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů při SaaS aplikací pomocí Azure Active Directory](user-provisioning.md).
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) obsahuje galerii obsahující tisíce předem integrovaných aplikací, u kterých je povolené Automatické zřizování pomocí Azure AD. Měli byste začít tak, že v [seznamu kurzů, jak integrovat aplikace SaaS s Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/), provedete konkrétní kurz nastavení zřizování, který je specifický pro vaši aplikaci. Pravděpodobně najdete podrobné pokyny pro konfiguraci aplikace i služby Azure AD pro vytvoření zřizovacího připojení.
+> Azure Active Directory (Azure AD) obsahuje galerii obsahující tisíce předem integrovaných aplikací, u kterých je povolené Automatické zřizování pomocí Azure AD. Měli byste začít tak, že v [seznamu kurzů, jak integrovat aplikace SaaS s Azure Active Directory](../saas-apps/tutorial-list.md), provedete konkrétní kurz nastavení zřizování, který je specifický pro vaši aplikaci. Pravděpodobně najdete podrobné pokyny pro konfiguraci aplikace i služby Azure AD pro vytvoření zřizovacího připojení.
 
 ## <a name="finding-your-apps-in-the-portal"></a>Hledání aplikací na portálu
 
@@ -83,6 +83,6 @@ Službu zřizování Azure AD pro vybranou aplikaci můžete spustit a zastavit 
 
 Pokud je zřizování pro aplikaci poprvé zapnuté, zapněte službu změnou **stavu zřizování** na **zapnuto**. Tato změna způsobí, že služba zřizování Azure AD spustí počáteční cyklus. Načte uživatele, kteří jsou přiřazeni v části **Uživatelé a skupiny** , zadá dotaz na cílovou aplikaci pro ně a potom spustí akce zřizování definované v oddílu **mapování** Azure AD. Během tohoto procesu služba zřizování ukládá data uložená v mezipaměti s informacemi o tom, jaké uživatelské účty spravuje, takže nespravované účty v cílových aplikacích, které nikdy nejsou v oboru pro přiřazení, nejsou ovlivněné operacemi zrušení zřízení. Po počátečním cyklu služba zřizování automaticky synchronizuje objekty uživatelů a skupin v intervalu 40 minut.
 
-Změňte **stav zřizování** na **vypnuto** , aby se služba zřizování zastavila. V tomto stavu Azure v aplikaci nevytvoří, neaktualizuje ani neodebere žádné objekty uživatelů ani skupin. Změňte stav zpět na **zapnuto** a služba se ponechá tam, kde skončila.
+Změňte **stav zřizování** na **vypnuto**  , aby se služba zřizování zastavila. V tomto stavu Azure v aplikaci nevytvoří, neaktualizuje ani neodebere žádné objekty uživatelů ani skupin. Změňte stav zpět na **zapnuto** a služba se ponechá tam, kde skončila.
 
-**Vymazání aktuálního stavu a restartuje synchronizaci** aktivuje počáteční cyklus. Služba potom znovu vyhodnotí všechny uživatele ve zdrojovém systému a určí, jestli jsou v oboru pro zřizování. To může být užitečné, pokud je vaše aplikace momentálně v karanténě nebo potřebujete provést změnu mapování atributů. Všimněte si, že počáteční cyklus trvá déle než typický přírůstkový cyklus z důvodu počtu objektů, které je třeba vyhodnotit. Další informace o výkonu počátečních a přírůstkových cyklů najdete [tady](application-provisioning-when-will-provisioning-finish-specific-user.md). 
+**Vymazání aktuálního stavu a restartuje synchronizaci** aktivuje počáteční cyklus. Služba potom znovu vyhodnotí všechny uživatele ve zdrojovém systému a určí, jestli jsou v oboru pro zřizování. To může být užitečné, pokud je vaše aplikace momentálně v karanténě nebo potřebujete provést změnu mapování atributů. Všimněte si, že počáteční cyklus trvá déle než typický přírůstkový cyklus z důvodu počtu objektů, které je třeba vyhodnotit. Další informace o výkonu počátečních a přírůstkových cyklů najdete [tady](application-provisioning-when-will-provisioning-finish-specific-user.md).

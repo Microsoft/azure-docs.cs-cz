@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: kenwith
-ms.openlocfilehash: 70795c703810212c3b46d06254a0c3ebdcb418f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5040fca85857cd131731d67c543c08fb1114ccee
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782037"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235220"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení uživatelského zřizování atributů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -108,7 +108,7 @@ Mezi aplikace a systémy, které podporují přizpůsobení seznamu atributů, p
 - Salesforce
 - ServiceNow
 - Workday
-- Azure Active Directory (podporují se[výchozí atributy služby Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) a vlastní rozšíření adresáře)
+- Azure Active Directory (podporují se[výchozí atributy služby Azure AD Graph API](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) a vlastní rozšíření adresáře)
 - Aplikace, které podporují [SCIM 2,0](https://tools.ietf.org/html/rfc7643), ve kterých je potřeba přidat atributy definované ve [schématu Core](https://tools.ietf.org/html/rfc7643)
 
 > [!NOTE]
@@ -123,7 +123,7 @@ Při úpravách seznamu podporovaných atributů jsou k dispozici následující
   - *Hodnota DateTime* -atribut obsahuje řetězec data.
   - *Celočíselný* atribut obsahuje celé číslo.
   - *Odkaz* -atribut obsahuje ID, které odkazuje na hodnotu uloženou v jiné tabulce cílové aplikace.
-  - *Řetězcový* atribut obsahuje textový řetězec.
+  - *Řetězcový*  atribut obsahuje textový řetězec.
 - **Primární klíč?** – Určuje, zda je atribut definován jako pole primárního klíče ve schématu cílového objektu.
 - **Požadovanou?** – Určuje, zda je atribut požadován k naplnění cílové aplikace nebo systému.
 - **Více hodnot?** – Zda atribut podporuje více hodnot.

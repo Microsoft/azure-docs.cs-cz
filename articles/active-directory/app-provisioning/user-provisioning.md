@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 56243e4d754f33b17238b64df2ba56ade162b3a2
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: b6eb571c7c37a628d11f07b4e1b207e38830250b
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163777"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235396"
 ---
 # <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Co je automatizované zřizování uživatelů aplikací SaaS ve službě Azure AD?
 
@@ -59,7 +59,7 @@ Azure AD nabízí předem integrovanou podporu pro spoustu oblíbených aplikac�
 
    ![Logo Salesforce](./media/user-provisioning/gallery-app-logos.png)
 
-   Pokud chcete požádat o novou aplikaci pro zřizování, můžete [požádat o integraci aplikace do naší galerie aplikací](../develop/howto-app-gallery-listing.md). Pro požadavek na zřízení uživatele vyžaduje aplikace, aby měl koncový bod kompatibilní s SCIM. Požádejte prosím, aby dodavatel aplikace následoval za standardu SCIM, abychom mohli rychle připojit aplikaci k naší platformě.
+   Pokud chcete požádat o novou aplikaci pro zřizování, můžete [požádat o integraci aplikace do naší galerie aplikací](../azuread-dev/howto-app-gallery-listing.md). Pro požadavek na zřízení uživatele vyžaduje aplikace, aby měl koncový bod kompatibilní s SCIM. Požádejte prosím, aby dodavatel aplikace následoval za standardu SCIM, abychom mohli rychle připojit aplikaci k naší platformě.
 
 * **Aplikace, které podporují SCIM 2,0**. Informace o tom, jak obecně připojit aplikace, které implementují rozhraní API pro správu uživatelů na bázi SCIM 2,0, najdete v tématu [Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů](use-scim-to-provision-users-and-groups.md).
 

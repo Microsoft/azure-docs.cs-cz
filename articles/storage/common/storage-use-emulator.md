@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: e50c1e3efc33fb761068b3009979079b2ba4b760
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 3bef3ba1e993d91fee8b6f6ef2734f008c91d1a1
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447144"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236824"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
@@ -42,7 +42,7 @@ Mezi emulátor úložiště a služby Azure Storage existují některé rozdíly
 
 ## <a name="start-and-initialize-the-storage-emulator"></a>Spuštění a inicializace emulátoru úložiště
 
-Spuštění emulátoru úložiště Azure:
+Spuštění emulátoru Azure Storage:
 
 1. Vyberte tlačítko **Start** nebo stiskněte klávesu **Windows** .
 2. Začněte psát `Azure Storage Emulator` .
@@ -51,7 +51,7 @@ Spuštění emulátoru úložiště Azure:
 Po spuštění emulátoru úložiště se zobrazí okno příkazového řádku. Pomocí tohoto okna konzoly můžete spustit a zastavit emulátor úložiště. Můžete také vymazat data, získat stav a inicializovat emulátor z příkazového řádku. Další informace najdete v části referenční informace k [nástroji příkazového řádku emulátoru úložiště](#storage-emulator-command-line-tool-reference) dále v tomto článku.
 
 > [!NOTE]
-> Emulátor úložiště Azure se nemusí správně spustit, pokud je v systému spuštěný jiný emulátor úložiště, například Azurite.
+> Emulátor Azure Storage se nemusí správně spustit, pokud je v systému spuštěný jiný emulátor úložiště, například Azurite.
 
 Po spuštění emulátoru se v oznamovací oblasti hlavního panelu Windows zobrazí jeho ikona.
 
@@ -150,9 +150,9 @@ K přístupu k objektu BLOB v emulátoru úložiště můžete například použ
 
 Koncový bod služby pro emulátor úložiště:
 
-* Blob service:`http://127.0.0.1:10000/<account-name>/<resource-path>`
-* Služba front:`http://127.0.0.1:10001/<account-name>/<resource-path>`
-* Table service:`http://127.0.0.1:10002/<account-name>/<resource-path>`
+* Blob service: `http://127.0.0.1:10000/<account-name>/<resource-path>`
+* Služba front: `http://127.0.0.1:10001/<account-name>/<resource-path>`
+* Table service: `http://127.0.0.1:10002/<account-name>/<resource-path>`
 
 ### <a name="addressing-the-account-secondary-with-ra-grs"></a>Adresování sekundárního účtu pomocí RA-GRS
 

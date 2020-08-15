@@ -3,12 +3,12 @@ title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: ca13203b6d31c1eeb939c668a58e67f0d462a905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56c50354a6ecbd6ba1d9a806f986cea1c4f3215f
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554338"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235974"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -36,39 +36,39 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | služba | global | 1-50 | Alfanumerické znaky a spojovníky.<br><br>Začíná písmenem a končí alfanumerickým znakem. |
-> | služba/rozhraní API | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | služba/rozhraní API/problémy | rozhraní api | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | service | global | 1-50 | Alfanumerické znaky a spojovníky.<br><br>Začíná písmenem a končí alfanumerickým znakem. |
+> | služba/rozhraní API | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | služba/rozhraní API/problémy | api | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | služba/rozhraní API/problémy/přílohy | chybu | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | služba/rozhraní API/problémy/komentáře | chybu | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | služba/rozhraní API/operace | rozhraní api | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | služba/rozhraní API/operace/značky | NázevOperace | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | služba/rozhraní API/verze | rozhraní api | 1–80 | Alfanumerické znaky, podtržítka a spojovníky.<br><br>Zahajte a končí alfanumerickým znakem nebo podtržítkem. |
-> | služba/rozhraní API/schémata | rozhraní api | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | služba/rozhraní API/tagDescriptions | rozhraní api | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | služba/rozhraní API/značky | rozhraní api | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | služba/rozhraní API – sady verzí | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | Služba/authorizationServers | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | Služba/back-endy | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | Služba/certifikáty | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | Služba/Diagnostika | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | služba/skupiny | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | služba/rozhraní API/operace | api | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | služba/rozhraní API/operace/značky | operation | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | služba/rozhraní API/verze | api | 1–80 | Alfanumerické znaky, podtržítka a spojovníky.<br><br>Zahajte a končí alfanumerickým znakem nebo podtržítkem. |
+> | služba/rozhraní API/schémata | api | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | služba/rozhraní API/tagDescriptions | api | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | služba/rozhraní API/značky | api | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | služba/rozhraní API – sady verzí | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | Služba/authorizationServers | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | Služba/back-endy | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | Služba/certifikáty | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | Služba/Diagnostika | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | služba/skupiny | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | služba/skupiny/Uživatelé | group | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | Služba/identityProviders | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | Služba/protokolovací nástroje | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | Služba/oznámení | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | Služba/identityProviders | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | Služba/protokolovací nástroje | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | Služba/oznámení | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | Služba/oznámení/recipientEmails | oznámení | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | Služba/openidConnectProviders | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | Služba/zásady | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | Služba/produkty | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | Služba/openidConnectProviders | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | Služba/zásady | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | Služba/produkty | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | Služba/produkty/rozhraní API | product | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | Služba/produkty/skupiny | product | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | Služba/produkty/značky | product | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | Služba/vlastnosti | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | Služba/předplatná | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | Služba/značky | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | Služba/šablony | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
-> | Služba/uživatelé | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | Služba/vlastnosti | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | Služba/předplatná | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | Služba/značky | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | Služba/šablony | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
+> | Služba/uživatelé | service | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
@@ -290,7 +290,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
 > | services | skupina prostředků | 2-62 | Alfanumerické znaky, spojovníky, tečky a podtržítka.<br><br>Začněte s alfanumerickými znaky. |
-> | služby a projekty | služba | 2-57 | Alfanumerické znaky, spojovníky, tečky a podtržítka.<br><br>Začněte s alfanumerickými znaky. |
+> | služby a projekty | service | 2-57 | Alfanumerické znaky, spojovníky, tečky a podtržítka.<br><br>Začněte s alfanumerickými znaky. |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
 
@@ -322,7 +322,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | servery/firewallRules | servery | 1-128 | Alfanumerické znaky, spojovníky a podtržítka. |
 > | servery/virtualNetworkRules | servery | 1-128 | Alfanumerické znaky a spojovníky. |
 
-## <a name="microsoftdevices"></a>Microsoft. Devices
+## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
@@ -392,6 +392,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
+> | actionGroups | skupina prostředků | 1-260 | Nejde použít:<br>`/` <br><br>Nemůže končit mezerou nebo tečkou.  |
 > | konstrukční | skupina prostředků | 1-260 | Nejde použít:<br>`%&\?/` <br><br>Nemůže končit mezerou nebo tečkou.  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft. IoTCentral
@@ -542,7 +543,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | Řešení | pracovní prostor | Není k dispozici | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
+> | Řešení | pracovní prostor | – | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 
@@ -652,7 +653,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | storageAccounts/managementPolicies | účet úložiště |  | Musí být `default` . |
 > | blob | kontejner | 1–1024 | Všechny znaky adresy URL, rozlišovat velikost písmen |
 > | fronta | účet úložiště | 3–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. Nelze použít po sobě jdoucí spojovníky. |
-> | tabulka | účet úložiště | 3–63 | Alfanumerické znaky.<br><br>Začíná písmenem. |
+> | table | účet úložiště | 3–63 | Alfanumerické znaky.<br><br>Začíná písmenem. |
 
 ## <a name="microsoftstoragesync"></a>Microsoft. StorageSync
 
@@ -695,6 +696,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
+> | certifikáty | skupina prostředků | 1-260 | Nejde použít:<br>`/` <br><br>Nemůže končit mezerou nebo tečkou.  | 
 > | serverových farem | skupina prostředků | 1-40 | Alfanumerické znaky a spojovníky. |
 > | místa | global | 2-60 | Obsahuje alfanumerické znaky a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. |
 > | lokality/sloty | webovém | 2-59 | Alfanumerické znaky a spojovníky. |

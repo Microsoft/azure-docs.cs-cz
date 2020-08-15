@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: d1cd4a25a2a9f07c75976d5eb5c97ba450ffdabb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e579223691ed7593d04c3b67004a6dd511f72c78
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284638"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236603"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Vytvoření spravované image zobecněného virtuálního počítače v Azure
 
@@ -39,13 +39,15 @@ K generalizaci virtuálního počítače s Windows použijte následující post
 
 1. Přihlaste se k VIRTUÁLNÍmu počítači s Windows.
    
-2. Otevřete okno příkazového řádku jako správce. Změňte adresář na%WINDIR%\system32\sysprep a potom spusťte příkaz `sysprep.exe` .
+2. Otevřete okno příkazového řádku jako správce. 
+
+3. Odstraňte adresář Panther (C:\Windows\Panther). Pak změňte adresář na%WINDIR%\system32\sysprep a potom spusťte `sysprep.exe` .
    
-3. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost **Zadejte systém do prostředí při spuštění** a zaškrtněte políčko **generalizace** .
+4. V dialogovém okně **Nástroj pro přípravu systému** vyberte možnost **Zadejte systém do prostředí při spuštění** a zaškrtněte políčko **generalizace** .
    
-4. V **Možnosti vypnutí**vyberte **vypnout**.
+5. V **Možnosti vypnutí**vyberte **vypnout**.
    
-5. Vyberte **OK**.
+6. Vyberte **OK**.
    
     ![Spustit nástroj Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 

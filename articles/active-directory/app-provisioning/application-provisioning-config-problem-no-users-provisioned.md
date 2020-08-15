@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: cc3c62da371d66c2aa957974ad6d4472aaf5648e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d07450b61558814a99bf85668c55899c8cf9d389
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782275"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234784"
 ---
 # <a name="no-users-are-being-provisioned"></a>Neprobíhá zřizování žádných uživatelů 
 >[!NOTE]
@@ -58,13 +58,13 @@ Když se v protokolech zřizování zobrazí uživatel s názvem "přeskočeno",
 - **Povinný atribut chybí nebo není vyplněný pro uživatele.** Při nastavování zřizování je důležité vzít v úvahu, že je potřeba zkontrolovat a nakonfigurovat mapování atributů a pracovní postupy, které definují, který uživatel (nebo skupinu) z Azure AD do aplikace přesměruje. Tato konfigurace zahrnuje nastavení "odpovídajících vlastností", která se používá k jednoznačné identifikaci uživatelů nebo skupin mezi oběma systémy a jejich porovnání. Další informace o tomto důležitém procesu najdete v tématu [Přizpůsobení mapování atributů zřizování uživatelů pro aplikace SaaS v Azure Active Directory](customize-application-attributes.md).
 - **Mapování atributů pro skupiny:** Zřizování názvu skupiny a podrobností skupiny, a to i u členů, pokud jsou podporovány pro některé aplikace. Tuto funkci můžete povolit nebo zakázat povolením nebo zakázáním **mapování** pro objekty skupiny zobrazené na kartě **zřizování** . Pokud jsou skupiny zřizování povoleny, nezapomeňte zkontrolovat mapování atributů, aby se zajistilo, že se pro "odpovídající ID" používá příslušné pole. ID porovnání může být zobrazované jméno nebo e-mailový alias. Skupina a její členové se nezřídí, pokud je vlastnost odpovídajícího typu prázdná nebo není naplněná pro skupinu ve službě Azure AD.
 ## <a name="provisioning-users-assigned-to-the-default-access-role"></a>Zřizování uživatelů přiřazených k výchozí roli přístupu
-Výchozí rolí aplikace z Galerie se nazývá role výchozí přístup. Historicky nejsou uživatelé přiřazení k této roli zřízeni a jsou v [protokolech zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) označeny jako vynechané, protože jsou "neoprávněným oprávněním". 
+Výchozí rolí aplikace z Galerie se nazývá role výchozí přístup. Historicky nejsou uživatelé přiřazení k této roli zřízeni a jsou v [protokolech zřizování](../reports-monitoring/concept-provisioning-logs.md) označeny jako vynechané, protože jsou "neoprávněným oprávněním". 
 
 **Chování pro konfigurace zřizování vytvořené po 04/16/2020:** Uživatelé přiřazení k výchozí roli přístupu budou vyhodnoceni stejně jako všechny ostatní role. Uživatel, který je přiřazený k výchozímu přístupu, nebude přeskočen jako "neefektivně oprávněný". 
 
 **Chování při zřizování konfigurací vytvořených před 04/16/2020:** V příštích 3 měsících bude chování pokračovat, jak je ještě dnes. Uživatelé s výchozí rolí přístupu se přeskočí jako neefektivně. Po červenci 2020 bude chování pro všechny aplikace jednotné. Nebudeme přeskočí zřizování uživatelů s výchozí rolí přístupu, protože to není efektivně oprávněné. Tuto změnu provede Microsoft, aniž by se vyžadovala žádná akce od zákazníka. Pokud chcete zajistit, aby se tito uživatelé i nadále přeskočili i po této změně, použijte prosím příslušné filtry oborů nebo zrušte přiřazení uživatele z aplikace, abyste zajistili, že jsou mimo rozsah.  
 
-Pokud se o těchto změnách chcete zeptat, obraťte se naprovisioningfeedback@microsoft.com
+Pokud se o těchto změnách chcete zeptat, obraťte se na provisioningfeedback@microsoft.com
 ## <a name="next-steps"></a>Další kroky
 
 [Azure AD Connect synchronizace: principy deklarativního zřizování](../hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 07/23/2020
-ms.openlocfilehash: f0a5c3df2359add9f896e05af6c8c77d9e006a2a
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: c690002141c6c275d90d5bae41318f9a5907fb85
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171976"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236410"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z PHP
 
@@ -85,7 +85,7 @@ Pokud chcete vytvořit instanci klienta služby Table Storage, musíte nejprve m
 $connectionString = "DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]"
 ```
 
-### <a name="add-a-storage-emulator-connection"></a>Přidání připojení k emulátoru úložiště
+### <a name="add-a-storage-emulator-connection"></a>Přidání připojení emulátoru úložiště
 
 Získání přístupu k úložišti emulátoru:
 
@@ -148,7 +148,7 @@ Další informace o omezeních a názvech tabulek najdete v tématu [Vysvětlen�
 
 ## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
 
-Pokud chcete do tabulky přidat entitu, vytvořte nový objekt **Entity** a předejte ho do metody **TableRestProxy->insertEntity**. Nezapomeňte, že při vytváření entity musíte zadat `PartitionKey` a `RowKey`. Jedná se o jedinečné identifikátory entity a jsou to hodnoty, které je možné dotazovat mnohem rychleji než ostatní vlastnosti entity. Systém používá `PartitionKey` k automatické distribuci entit tabulky do mnoha uzlů úložiště. Entity se stejnou hodnotou `PartitionKey` se ukládají na stejném uzlu. (Operace s více entitami uloženými ve stejném uzlu mají lepší výkon než u entit uložených v různých uzlech.) `RowKey`Je jedinečné ID entity v rámci oddílu.
+Pokud chcete do tabulky přidat entitu, vytvořte nový objekt **Entity** a předejte ho do metody **TableRestProxy->insertEntity**. Nezapomeňte, že při vytváření entity musíte zadat `PartitionKey` a `RowKey`. Jedná se o jedinečné identifikátory entity a jsou to hodnoty, které je možné dotazovat mnohem rychleji než ostatní vlastnosti entity. Systém používá `PartitionKey` k automatické distribuci entit tabulky do mnoha uzlů úložiště. Entity se stejnou hodnotou `PartitionKey` se ukládají na stejném uzlu. (Operace s více entitami uloženými ve stejném uzlu mají lepší výkon než u entit uložených v různých uzlech.) `RowKey` Je jedinečné ID entity v rámci oddílu.
 
 ```php
 require_once 'vendor/autoload.php';

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 38973e5484ece0b47e2f81ad78c716b5ee49cead
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 70938bf1dcd06ce9936767c66ffead0f8627c5a7
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829692"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235464"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD
 
@@ -156,7 +156,7 @@ V rámci [specifikace protokolu SCIM 2,0](http://www.simplecloud.info/#Specifica
 
 Při implementaci SCIM koncového bodu, který zajistí kompatibilitu s Azure AD, postupujte podle těchto obecných pokynů:
 
-* `id`je požadovaná vlastnost pro všechny prostředky. Každá odpověď, která vrací prostředek, by měla mít jistotu, že každý prostředek má tuto vlastnost, s výjimkou `ListResponse` členů s nulovými členy.
+* `id` je požadovaná vlastnost pro všechny prostředky. Každá odpověď, která vrací prostředek, by měla mít jistotu, že každý prostředek má tuto vlastnost, s výjimkou `ListResponse` členů s nulovými členy.
 * Odpověď na požadavek na dotaz nebo filtr by měla být vždy typu `ListResponse` .
 * Skupiny jsou volitelné, ale podporují se jenom v případě, že implementace SCIM podporuje žádosti o opravu.
 * V reakci na opravu není nutné zahrnout celý prostředek.
@@ -751,7 +751,7 @@ Služba zřizování Azure AD aktuálně funguje pod rozsahy IP adres pro Azurea
 
 Teď, když jste navrhli schéma a rozumíte implementaci Azure AD SCIM, můžete začít s vývojem koncového bodu SCIM. Místo začátku od nuly a sestavení implementace zcela na vlastní, můžete spoléhat na řadu open source knihoven SCIM, které publikovala komunita SCIM.
 
-Open source [referenční kód](https://aka.ms/SCIMReferenceCode) .NET Core publikovaný týmem zřizování Azure AD je jeden takový prostředek, který může přejít k zahájení vývoje. Po vytvoření SCIM koncového bodu ho budete chtít otestovat. Můžete použít kolekci předávacích [testů](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) , které jsou součástí referenčního kódu, nebo spustit prostřednictvím vzorových požadavků nebo odpovědí uvedených [výše](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations).  
+Open source [referenční kód](https://aka.ms/SCIMReferenceCode) .NET Core publikovaný týmem zřizování Azure AD je jeden takový prostředek, který může přejít k zahájení vývoje. Po vytvoření SCIM koncového bodu ho budete chtít otestovat. Můžete použít kolekci předávacích [testů](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) , které jsou součástí referenčního kódu, nebo spustit prostřednictvím vzorových požadavků nebo odpovědí uvedených [výše](#user-operations).  
 
    > [!Note]
    > Referenční kód vám umožňuje začít vytvářet SCIM koncový bod a poskytuje "tak, jak je". Příspěvky z komunity jsou Vítá vás při sestavování a údržbě kódu.
@@ -796,10 +796,10 @@ Služba SCIM musí mít adresu HTTP a certifikát ověřování serveru, u kter�
 
 .NET Core SDK obsahuje certifikát pro vývoj HTTPS, který se dá použít během vývoje, certifikát se nainstaluje jako součást prvního spuštění prostředí. V závislosti na tom, jak spouštíte ASP.NET Core webové aplikace, bude naslouchat na jiném portu:
 
-* Microsoft. SCIM. WebHostSample:https://localhost:5001
-* IIS Express:https://localhost:44359/
+* Microsoft. SCIM. WebHostSample: https://localhost:5001
+* IIS Express: https://localhost:44359/
 
-Další informace o protokolu HTTPS v ASP.NET Core použijte následující odkaz: [vysazení protokolu HTTPS v ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl)
+Další informace o protokolu HTTPS v ASP.NET Core použijte následující odkaz: [vysazení protokolu HTTPS v ASP.NET Core](/aspnet/core/security/enforcing-ssl)
 
 ### <a name="handling-endpoint-authentication"></a>Zpracování ověřování koncového bodu
 
@@ -1168,12 +1168,12 @@ Po zahájení počátečního cyklu můžete na levém panelu vybrat **protokoly
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>Krok 5: publikování aplikace v galerii aplikací Azure AD
 
-Pokud vytváříte aplikaci, kterou bude používat víc než jeden tenant, můžete je zpřístupnit v galerii aplikací Azure AD. Díky tomu budou moci organizace snadno vyhledat aplikaci a nakonfigurovat zřizování. Publikování aplikace v galerii Azure AD a zpřístupnění pro ostatní je snadné. Podívejte se na tento [postup.](../develop/howto-app-gallery-listing.md) Microsoft bude s vámi spolupracovat na integraci vaší aplikace do naší galerie, testování koncového bodu a [dokumentaci](../saas-apps/tutorial-list.md) k registraci pro zákazníky, kteří budou používat. 
+Pokud vytváříte aplikaci, kterou bude používat víc než jeden tenant, můžete je zpřístupnit v galerii aplikací Azure AD. Díky tomu budou moci organizace snadno vyhledat aplikaci a nakonfigurovat zřizování. Publikování aplikace v galerii Azure AD a zpřístupnění pro ostatní je snadné. Podívejte se na tento [postup.](../azuread-dev/howto-app-gallery-listing.md) Microsoft bude s vámi spolupracovat na integraci vaší aplikace do naší galerie, testování koncového bodu a [dokumentaci](../saas-apps/tutorial-list.md) k registraci pro zákazníky, kteří budou používat. 
 
 ### <a name="gallery-onboarding-checklist"></a>Kontrolní seznam pro registraci galerie
 Postupujte podle níže uvedeného kontrolního seznamu a ujistěte se, že je vaše aplikace rychlá a zákazníci mají hladké prostředí pro nasazení. Informace budou shromažďovány od vás při připojování k galerii. 
 > [!div class="checklist"]
-> * Podpora koncového bodu uživatelů a skupin [SCIM 2,0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation) (je vyžadována pouze jedna, ale doporučuje se obě)
+> * Podpora koncového bodu uživatelů a skupin [SCIM 2,0 ](#step-2-understand-the-azure-ad-scim-implementation) (je vyžadována pouze jedna, ale doporučuje se obě)
 > * Podpora minimálně 25 požadavků za sekundu na tenanta (povinné)
 > * Navázání technologických kontaktů a vedení a podpory pro zákazníky po registraci galerie (povinné)
 > * 3 přihlašovací údaje pro vaši aplikaci bez vypršení platnosti (povinné)

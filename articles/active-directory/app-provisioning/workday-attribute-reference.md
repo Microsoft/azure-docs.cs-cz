@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 8c508e65ef2c6d62716454af151feb0a1c80bba0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036b3af03dec2bdaa7feacc94abca930ebd9b317
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781104"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235379"
 ---
 # <a name="workday-attribute-reference"></a>Referenční informace k atributu Workday
 
@@ -211,7 +211,7 @@ Pokud chcete nakonfigurovat další XPATH, přečtěte si část [kurz: Správa 
 ## <a name="custom-xpath-values"></a>Vlastní hodnoty XPATH
 V následující tabulce najdete seznam dalších běžně používaných výrazů rozhraní API XPATH při zřizování pracovníků z Workday do služby Active Directory nebo Azure AD. Otestujte prosím v rámci vaší verze pracovního dne výrazy rozhraní API XPATH, které odkazují na pokyny zaznamenané v části [kurz: Správa konfigurace](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration).
 
-Pokud chcete do tabulky XPATH přidat další atributy pro výhody pro zákazníky, kteří implementují tuto integraci, ponechte prosím níže uvedený komentář nebo přímo [přispívat](https://docs.microsoft.com/contribute) k článku. 
+Pokud chcete do tabulky XPATH přidat další atributy pro výhody pro zákazníky, kteří implementují tuto integraci, ponechte prosím níže uvedený komentář nebo přímo [přispívat](/contribute) k článku. 
 
 > [!div class="mx-tdBreakAll"]
 > | \# | Název atributu Workday  | Verze rozhraní API Workday | Výraz rozhraní XPATH pro cestu pracovního dne   |
@@ -224,7 +224,7 @@ Pokud chcete do tabulky XPATH přidat další atributy pro výhody pro zákazní
 
 
 ## <a name="supported-xpath-functions"></a>Podporované funkce XPATH
-Níže je uveden seznam funkcí XPATH podporovaných [knihovnou XPath Microsoft .NET](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100)) , které můžete použít při vytváření výrazu rozhraní API XPath. 
+Níže je uveden seznam funkcí XPATH podporovaných [knihovnou XPath Microsoft .NET](/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100)) , které můžete použít při vytváření výrazu rozhraní API XPath. 
 
 * name
 * poslední
@@ -239,7 +239,7 @@ Níže je uveden seznam funkcí XPATH podporovaných [knihovnou XPath Microsoft 
 * translate
 * normalizovat místo
 * dílčí řetězec – před
-* Boolean
+* boolean
 * true
 * not
 * false (nepravda)
@@ -248,4 +248,3 @@ Níže je uveden seznam funkcí XPATH podporovaných [knihovnou XPath Microsoft 
 * Součet
 * round
 * řízení
-

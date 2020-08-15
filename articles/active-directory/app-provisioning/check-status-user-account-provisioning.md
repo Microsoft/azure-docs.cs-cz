@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a0c85226b5890fe0f5f2011110c1d7d20e3c2907
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2de6c07395a559085db237eb1bc7f885998860d0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782003"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235073"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: vytváření sestav o automatickém zřizování uživatelských účtů
 
-Azure Active Directory (Azure AD) obsahuje [službu zřizování uživatelských účtů](user-provisioning.md) , která pomáhá automatizovat zřizování uživatelských účtů v aplikacích SaaS a dalších systémech za účelem komplexní správy životního cyklu identity. Azure AD podporuje předem integrované konektory pro zřizování uživatelů pro všechny aplikace a systémy [pomocí kurzů pro](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)zřizování uživatelů.
+Azure Active Directory (Azure AD) obsahuje [službu zřizování uživatelských účtů](user-provisioning.md) , která pomáhá automatizovat zřizování uživatelských účtů v aplikacích SaaS a dalších systémech za účelem komplexní správy životního cyklu identity. Azure AD podporuje předem integrované konektory pro zřizování uživatelů pro všechny aplikace a systémy [pomocí kurzů pro](../saas-apps/tutorial-list.md)zřizování uživatelů.
 
 Tento článek popisuje, jak kontrolovat stav zřizovacích úloh po jejich nastavení a jak řešit problémy zřizování jednotlivých uživatelů a skupin.
 
@@ -69,7 +69,7 @@ Sestava souhrnu zřizování a zřizovacích protokolů hraje klíčovou roli, k
 
 Pokyny k řešení potíží s automatickým zřizováním uživatelů najdete v tématu problémy s [konfigurací a zřizováním uživatelů do aplikace](../app-provisioning/application-provisioning-config-problem.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

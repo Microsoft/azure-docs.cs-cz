@@ -3,12 +3,12 @@ title: Postup vytváření zásad konfigurace hosta pro Windows
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Windows.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: b53c8ec8189516305de8b0b8c05b2be8ea49f7f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 31c40640babea961ef3bb255112306f59772bae2
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045123"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236535"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Postup vytváření zásad konfigurace hosta pro Windows
 
@@ -106,9 +106,9 @@ Vlastnost důvody používá služba ke standardizaci způsobu, jakým jsou info
 Služba očekává **kód** a **frázi** vlastností. Při vytváření vlastního prostředku nastavte text (obvykle STDOUT), který chcete zobrazit jako důvod, proč prostředek není kompatibilní jako hodnota **fráze**. **Kód** má specifické požadavky na formátování, takže hlášení může jasně zobrazit informace o prostředku, který se používá k provedení auditu. Toto řešení zajišťuje rozšiřitelnou konfiguraci hostů. Libovolný příkaz lze spustit, dokud bude výstup vrácen jako řetězcová hodnota pro vlastnost **fráze** .
 
 - **Code** (String): název prostředku, opakuje a pak krátký název bez mezer jako identifikátor z důvodu. Tyto tři hodnoty by měly být odděleny dvojtečkami bez mezer.
-  - Příkladem může být`registry:registry:keynotpresent`
+  - Příkladem může být `registry:registry:keynotpresent`
 - **Fráze** (String): text čitelný lidmi pro vysvětlení, proč nastavení není vyhovující.
-  - Příkladem může být`The registry key $key is not present on the machine.`
+  - Příkladem může být `The registry key $key is not present on the machine.`
 
 ```powershell
 $reasons = @()
@@ -307,6 +307,8 @@ Parametry `New-GuestConfigurationPolicy` rutiny:
 - **Verze**: verze zásad
 - **Cesta**: cílová cesta, kde jsou vytvořeny definice zásad.
 - **Platforma**: cílová platforma (Windows/Linux) pro zásady konfigurace hosta a balíček obsahu.
+- **Tag** přidá do definice zásady jeden nebo více filtrů značek.
+- **Kategorie** nastaví pole metadata kategorie v definici zásady.
 
 Následující příklad vytvoří definice zásad v zadané cestě z vlastního balíčku zásad:
 
@@ -328,14 +330,6 @@ Následující soubory vytvořil `New-GuestConfigurationPolicy` :
 - **Initiative.jsna**
 
 Výstup rutiny vrátí objekt, který obsahuje zobrazovaný název iniciativy a cestu k souborům zásad.
-
-> [!Note]
-> Nejnovější modul konfigurace hosta obsahuje nové parametry:
-> - **Tag** přidá do definice zásady jeden nebo více filtrů značek.
->   - Viz část [filtrování zásad konfigurace hostů pomocí značek](#filtering-guest-configuration-policies-using-tags).
-> - **Kategorie** nastaví pole metadata kategorie v definici zásady.
->   - Pokud parametr není zahrnutý, kategorie se nastaví jako výchozí konfigurace hostů.
-> Tyto funkce jsou ve verzi Preview a vyžadují modul konfigurace hosta verze 1.20.1, který se dá nainstalovat pomocí nástroje `Install-Module GuestConfiguration -AllowPrerelease` .
 
 Nakonec publikujte definice zásad pomocí `Publish-GuestConfigurationPolicy` rutiny. Rutina má pouze parametr **path** , který odkazuje na umístění souborů JSON, které vytvořil `New-GuestConfigurationPolicy` .
 
@@ -377,9 +371,6 @@ New-AzRoleDefinition -Role $role
 ```
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Filtrování zásad konfigurace hostů pomocí značek
-
-> [!Note]
-> Tato funkce je ve verzi Preview a vyžaduje modul konfigurace hosta verze 1.20.1, který se dá nainstalovat pomocí nástroje `Install-Module GuestConfiguration -AllowPrerelease` .
 
 Definice zásad vytvořené rutinami v modulu Konfigurace hosta můžou volitelně zahrnovat filtr pro značky. Parametr **značky** pro `New-GuestConfigurationPolicy` podporuje pole zatřiďovacími tabulkami obsahující jednotlivá označení celého značky. Značky se přidají do `If` oddílu definice zásady a nedají se upravit přiřazením zásad.
 
@@ -439,10 +430,6 @@ New-GuestConfigurationPolicy
 ```
 
 ## <a name="extending-guest-configuration-with-third-party-tools"></a>Rozšíření konfigurace hostů pomocí nástrojů třetích stran
-
-> [!Note]
-> Tato funkce je ve verzi Preview a vyžaduje modul konfigurace hosta verze 1.20.3, který se dá nainstalovat pomocí nástroje `Install-Module GuestConfiguration -AllowPrerelease` .
-> Ve verzi 1.20.3 je tato funkce dostupná jenom pro definice zásad, které auditují počítače s Windows.
 
 Balíčky artefaktů pro konfiguraci hosta se dají rozšířit tak, aby zahrnovaly nástroje třetích stran.
 Rozšíření konfigurace hosta vyžaduje vývoj dvou součástí.
@@ -574,11 +561,6 @@ Pokud chcete vydat aktualizaci zásady, existují dvě pole, která vyžadují p
 - **contentHash**: Tato vlastnost je automaticky aktualizována `New-GuestConfigurationPolicy` rutinou. Jedná se o hodnotu hash balíčku, kterou vytvořil `New-GuestConfigurationPackage` . Vlastnost musí být správná pro `.zip` soubor, který publikujete. Pokud se aktualizuje jenom vlastnost **contentUri** , rozšíření nepřijme balíček obsahu.
 
 Nejjednodušším způsobem, jak vydat aktualizovaný balíček, je opakovat postup popsaný v tomto článku a zadat aktualizované číslo verze. Tento proces zaručuje, že všechny vlastnosti jsou správně aktualizované.
-
-## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Převod obsahu Windows Zásady skupiny na Azure Policy konfiguraci hosta
-
-Konfigurace hosta, při auditování počítačů s Windows, je implementovaná syntaxe konfigurace požadovaného stavu prostředí PowerShell. Komunita DSC zveřejnila nástroje pro převod exportovaných šablon Zásady skupiny do formátu DSC. Pomocí tohoto nástroje spolu s rutinami konfigurace hosta, které jsou popsané výše, můžete převést Windows Zásady skupiny obsah a balíček/publikovat pro Azure Policy k auditování. Podrobnosti o používání tohoto nástroje najdete v článku [rychlý Start: převod zásady skupiny do DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
-Po převodu obsahu můžete pomocí kroků uvedených v tomto postupu vytvořit balíček a publikovat ho jako Azure Policy jsou stejné jako u jakéhokoli obsahu DSC.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>Volitelné: podepisování balíčků konfigurace hosta
 

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
-ms.openlocfilehash: ef4fbf582baf1e4b81d49c81a8b0e16674e64841
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e34656d6ce515cabe955c101f7b52ac0f2ade8db
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781718"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235813"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Postupy: Export konfigurace zřizování a návrat do známého funkčního stavu
 
@@ -39,8 +39,8 @@ Export konfigurace:
 
 Export a uložení konfigurace vám umožní vrátit se zpátky k předchozí verzi vaší konfigurace. Doporučujeme vám Exportovat konfiguraci zřizování a uložit ji pro pozdější použití, kdykoli uděláte změnu mapování atributů nebo filtrování rozsahu. Vše, co potřebujete udělat, je otevřít soubor JSON, který jste stáhli v předchozích krocích. Zkopírujte celý obsah souboru JSON, nahraďte celý obsah datové části JSON v editoru schémat a pak ho uložte. Pokud je aktivní cyklus zřizování, bude dokončen a další cyklus bude používat aktualizované schéma. Dalším cyklem bude také počáteční cyklus, který znovu vyhodnotí každého uživatele a skupinu na základě nové konfigurace. Při návratu do předchozí konfigurace Vezměte v úvahu následující:
 
-- Uživatelé se znovu vyhodnotí a určí, jestli mají být v oboru. Pokud se změní rozsahy filtrů, uživatel není v oboru, protože už žádné další budou zakázané. I když se jedná o požadované chování ve většině případů, existují situace, kdy byste to měli chtít zabránit, a můžete použít funkci [Přeskočit z rozsahu odstranění](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions) . 
-- Změna konfigurace zřizování restartuje službu a aktivuje [počáteční cyklus](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental).
+- Uživatelé se znovu vyhodnotí a určí, jestli mají být v oboru. Pokud se změní rozsahy filtrů, uživatel není v oboru, protože už žádné další budou zakázané. I když se jedná o požadované chování ve většině případů, existují situace, kdy byste to měli chtít zabránit, a můžete použít funkci [Přeskočit z rozsahu odstranění](./skip-out-of-scope-deletions.md) . 
+- Změna konfigurace zřizování restartuje službu a aktivuje [počáteční cyklus](./how-provisioning-works.md#provisioning-cycles-initial-and-incremental).
 
 ## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Export a import konfigurace zřizování pomocí rozhraní Microsoft Graph API
 

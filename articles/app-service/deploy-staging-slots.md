@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 19a7bc70bd782f9b684cb48672147f5009e4a08f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab8bee756cc714074a6f97156bf528ddeabff8a0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073851"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236739"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
@@ -423,7 +423,6 @@ Zde jsou některé běžné chyby swapu:
       ...
     </conditions>
     ```
-- Některá [pravidla omezení IP adres](app-service-ip-restrictions.md) můžou zabránit operaci přepnutí z odesílání požadavků HTTP do vaší aplikace. Rozsahy IPv4 adres, které `10.` začínají `100.` na a jsou interní pro vaše nasazení. Měli byste jim dovolit, aby se připojili k vaší aplikaci.
 
 - Po prohození slotu může aplikace zaznamenat neočekávané restartování. Důvodem je to, že po prohození není konfigurace vazeb názvů hostitelů synchronizovaná, což sám o sobě nezpůsobí restart. Některé zdrojové události úložiště (například převzetí služeb při selhání svazku úložiště) ale můžou detekovat rozdíly a vynutit restartování všech pracovních procesů. K minimalizaci těchto typů restartování nastavte [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` nastavení aplikace](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) na *všech slotech*. Toto nastavení *aplikace ale nefunguje s* aplikacemi Windows Communication Foundation (WCF).
 

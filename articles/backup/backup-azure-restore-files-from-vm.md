@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: e12669609b21d23b775af27f95528c4b42e95e81
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3a7fe7ca2e439739cbdeeb626fea9d2fb3983b83
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533531"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236297"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -85,6 +85,9 @@ Po zjištění souborů a jejich jejich zkopírování do umístění místního
 Po odpojení disků se zobrazí zpráva. Aktualizace připojení může trvat několik minut, aby bylo možné disky odebrat.
 
 V systému Linux se po navázání připojení k bodu obnovení neodstraní příslušné cesty připojení automaticky. Cesty pro připojení existují jako "osamocené" svazky a jsou viditelné, ale při přístupu k souborům a jejich zapisování vyvolávají chybu. Je možné je odebrat ručně. Skript při spuštění identifikuje všechny takové svazky existující z předchozích bodů obnovení a vyčistí je na základě souhlasu.
+
+> [!NOTE]
+> Ujistěte se, že připojení bylo po obnovení požadovaných souborů zavřeno. To je důležité, zejména v případě, kdy je počítač, ve kterém je spuštěný skript, nakonfigurovaný taky pro zálohování. V případě, že je připojení stále otevřené, může následné zálohování selhat s chybou "UserErrorUnableToOpenMount". Důvodem je, že připojené jednotky nebo svazky se považují za dostupné a při jejich použití může selhat, protože zdrojové úložiště, tj., nemusí mít cílový server iSCSI k dispozici. Vymazáním připojení dojde k odstranění těchto jednotek a svazků, takže nebudou během zálohování k dispozici.
 
 ## <a name="selecting-the-right-machine-to-run-the-script"></a>Výběr správného počítače ke spuštění skriptu
 
@@ -242,7 +245,7 @@ Následující příkaz zobrazí podrobnosti o všech discích RAID:
 mdadm –detail –scan
 ```
 
- Příslušný disk RAID se zobrazí jako`/dev/mdm/<RAID array name in the protected VM>`
+ Příslušný disk RAID se zobrazí jako `/dev/mdm/<RAID array name in the protected VM>`
 
 Použijte příkaz Mount, pokud má disk RAID fyzické svazky:
 
@@ -265,7 +268,7 @@ V následující tabulce je uvedena kompatibilita mezi operačním systémem ser
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+| Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Pro Linux OS
 
@@ -288,7 +291,7 @@ V systému Linux musí operační systém počítače používaného k obnovení
 
 Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečně připojeny k bodu obnovení.
 
-|Komponenta | Verze  |
+|Součást | Verze  |
 | --------------- | ---- |
 | bash | 4 a vyšší |
 | python | 2.6.6 a vyšší  |
@@ -300,10 +303,10 @@ Pokud skript spustíte na počítači s omezeným přístupem, ujistěte se, že
 
 - `download.microsoft.com`
 - Adresy URL služby obnovení (geografické názvy) odkazují na oblast, ve které se nachází trezor služby Recovery Services.
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com`(Pro veřejné oblasti Azure)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.cn`(Pro Azure Čína 21Vianet)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.us`(Pro státní správu USA Azure)
-  - `https://pod01-rec2.geo-name.backup.windowsazure.de`(Pro Azure Německo)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Pro veřejné oblasti Azure)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Pro Azure Čína 21Vianet)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.us` (Pro státní správu USA Azure)
+  - `https://pod01-rec2.geo-name.backup.windowsazure.de` (Pro Azure Německo)
 - Odchozí porty 53 (DNS), 443, 3260
 
 > [!NOTE]

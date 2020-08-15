@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: e1e6c9254c3906b79c3a20de4672dff1b9ac6c63
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121455"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236569"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -84,11 +84,11 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 ### <a name="sql-managed-instance-h1-2019-updates"></a>Aktualizace spravované instance SQL H1 2019
 
 V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující funkce:
-  - Podpora předplatných s <a href="https://aka.ms/sql-mi-visual-studio-subscribers">měsíčním kreditem Azure pro předplatitele sady Visual Studio</a> a zvýšená [regionální omezení](../managed-instance/resource-limits.md#regional-resource-limitations).
-  - Podpora pro <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019">sharepoint 2016 a sharepoint 2019</a> a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central.</a>
+  - Podpora předplatných s <a href="https://aka.ms/sql-mi-visual-studio-subscribers"> měsíčním kreditem Azure pro předplatitele sady Visual Studio </a> a zvýšená [regionální omezení](../managed-instance/resource-limits.md#regional-resource-limitations).
+  - Podpora pro <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> sharepoint 2016 a sharepoint 2019 </a> a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central. </a>
   - Vytvořte spravovanou instanci s <a href="https://aka.ms/managed-instance-collation">kolací na úrovni instance</a> a zvoleným <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">časovým pásmem</a> .
   - Spravované instance jsou teď chráněné pomocí [integrované brány firewall](../managed-instance/management-endpoint-verify-built-in-firewall.md).
-  - Nakonfigurujte spravovanou instanci SQL tak, aby používala [veřejné koncové body](../managed-instance/public-endpoint-configure.md), připojení [přepsání proxy serveru](connectivity-architecture.md#connection-policy) , aby se dosáhlo lepšího výkonu sítě, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuální jádra na generaci hardwaru Gen5</a> nebo <a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurace uchovávání záloh až 35 dní</a> pro obnovení k bodu v čase. [Dlouhodobé uchovávání záloh](long-term-retention-overview.md#sql-managed-instance-support) (až 10 let) je aktuálně ve verzi Public Preview omezeno.  
+  - Nakonfigurujte spravovanou instanci SQL tak, aby používala [veřejné koncové body](../managed-instance/public-endpoint-configure.md), připojení [přepsání proxy serveru](connectivity-architecture.md#connection-policy) , aby se dosáhlo lepšího výkonu sítě, <a href="https://aka.ms/four-cores-sql-mi-update"> 4 virtuální jádra na generaci hardwaru Gen5</a> nebo <a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurace uchovávání záloh až 35 dní</a> pro obnovení k bodu v čase. [Dlouhodobé uchovávání záloh](long-term-retention-overview.md#sql-managed-instance-support) (až 10 let) je aktuálně ve verzi Public Preview omezeno.  
   - Nové funkce umožňují <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">geograficky obnovit databázi do jiného datového centra pomocí prostředí PowerShell</a>, [Přejmenovat databázi](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), [odstranit virtuální cluster](../managed-instance/virtual-cluster-delete.md).
   - Nová Vestavěná [role přispěvatele instance](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) umožňuje oddělení povinností (SOD) dodržovat zásady zabezpečení a dodržování předpisů v podnikových normách.
   - Spravovaná instance SQL je k dispozici v následujících oblastech Azure Government v oblasti GA (US Gov – Texas, US Gov – Arizona) a také v Čína – sever 2 a Čína – východ 2. Je také k dispozici v následujících veřejných oblastech: Austrálie – střed, Austrálie – střed 2, Brazílie – jih, Francie – jih, Spojené arabské emiráty střed, Spojené arabské emiráty sever, Jižní Afrika sever, Jižní Afrika – západ.
@@ -97,6 +97,7 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující
 
 |Problém  |Datum zjištění  |Status  |Datum vyřešení  |
 |---------|---------|---------|---------|
+|[Instanční objekt nemá přístup k Azure AD a integrace](#service-principal-cannot-access-azure-ad-and-akv)|Srpna 2020|Má alternativní řešení||
 |[Obnovení ručního zálohování bez KONTROLNÍho SOUČTu může selhat](#restoring-manual-backup-without-checksum-might-fail)|Květen 2020|Vyřešeno|Červen 2020|
 |[Agent přestane reagovat při úpravách, zakázání nebo povolování stávajících úloh.](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Květen 2020|Vyřešeno|Červen 2020|
 |[Oprávnění pro skupinu prostředků neplatí pro spravovanou instanci SQL.](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|Únor 2020|Má alternativní řešení||
@@ -110,7 +111,7 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující
 |[Po převzetí služeb při selhání může být potřeba změnit správce prostředků u Pro důležité obchodní informace úrovně služeb](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|SEP 2019|Má alternativní řešení||
 |[Dialogová okna mezidatabázového Service Broker se musí po upgradu na úrovni služby znovu inicializovat.](#cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade)|Srpna 2019|Má alternativní řešení||
 |[Zosobnění typů přihlašovacích údajů Azure AD se nepodporuje.](#impersonation-of-azure-ad-login-types-is-not-supported)|Července 2019|Žádné alternativní řešení||
-|[@queryparametr není v sp_send_db_mail podporován.](#-parameter-not-supported-in-sp_send_db_mail)|Duben 2019|Žádné alternativní řešení||
+|[@query parametr není v sp_send_db_mail podporován.](#-parameter-not-supported-in-sp_send_db_mail)|Duben 2019|Žádné alternativní řešení||
 |[Po geografickém převzetí služeb při selhání je potřeba znovu nakonfigurovat transakční replikaci.](#transactional-replication-must-be-reconfigured-after-geo-failover)|Březen 2019|Žádné alternativní řešení||
 |[Během operace obnovení se používá dočasná databáze.](#temporary-database-is-used-during-restore-operation)||Má alternativní řešení||
 |[Struktura a obsah TEMPDB se znovu vytvoří.](#tempdb-structure-and-content-is-re-created)||Žádné alternativní řešení||
@@ -124,6 +125,11 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující
 |Funkce databázového e-mailu s externími poštovními servery (mimo Azure) pomocí zabezpečeného připojení||Vyřešeno|Říjen 2019|
 |Obsažené databáze nejsou ve spravované instanci SQL podporovány.||Vyřešeno|Srpna 2019|
 
+### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Instanční objekt nemá přístup k Azure AD a integrace
+
+V některých případech může existovat problém s instančním objektem, který se používá pro přístup ke službám Azure AD a Azure Key Vault (integrace). Výsledkem je, že tento problém se týká využití ověřování Azure AD a transparentního šifrování databáze (TDE) pomocí spravované instance SQL. Může se jednat o problém s přerušovaným připojením nebo nemůže spustit příkazy, jako je vytvoření přihlášení/uživatele od externího poskytovatele nebo spuštění jako přihlašovací jméno nebo uživatel. Nastavení TDE s klíčem spravovaným zákazníkem na nové spravované instanci SQL Azure nemusí v některých případech fungovat.
+
+**Alternativní řešení**: Pokud chcete zabránit tomu, aby k tomuto problému došlo na spravované instanci SQL před provedením jakýchkoli příkazů aktualizace, nebo pokud jste už tento problém nastavili po příkazech aktualizovat, přejděte na Azure Portal, přístup k [oknu Správce služby Active Directory](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)spravované instance SQL. Ověřte, jestli se vám zobrazí chybová zpráva "spravovaná instance vyžaduje instanční objekt pro přístup k Azure Active Directory. Pokud chcete vytvořit instanční objekt, klikněte sem. Pokud jste narazili na tuto chybovou zprávu, klikněte na ni a postupujte podle podrobných pokynů, dokud se tato chyba nevyřeší.
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>Obnovení ručního zálohování bez KONTROLNÍho SOUČTu může selhat
 
@@ -205,7 +211,7 @@ Zosobnění pomocí `EXECUTE AS USER` nebo `EXECUTE AS LOGIN` z následujících
 -   Uživatelé Azure AD s aliasy V tomto případě se vrátí následující chyba: `15517` .
 - Přihlašovací údaje a uživatele služby Azure AD založené na aplikacích nebo instančních objektech Azure AD. V tomto případě se vrátí následující chyby: `15517` a `15406` .
 
-### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryparametr není v sp_send_db_mail podporován.
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@query parametr není v sp_send_db_mail podporován.
 
 `@query`Parametr v proceduře [sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) nefunguje.
 
@@ -229,7 +235,7 @@ V úvodní fázi může uživatel získat přístup k prázdné databázi a doko
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>Struktura a obsah TEMPDB se znovu vytvoří.
 
-`tempdb`Databáze je vždy rozdělena do 12 datových souborů a struktura souborů nemůže být změněna. Maximální velikost na soubor nelze změnit a nelze přidat nové soubory do `tempdb` . `Tempdb`je vždy znovu vytvořen jako prázdná databáze při spuštění nebo převzetí služeb při selhání a jakékoli změny provedené v nezůstanou `tempdb` zachovány.
+`tempdb`Databáze je vždy rozdělena do 12 datových souborů a struktura souborů nemůže být změněna. Maximální velikost na soubor nelze změnit a nelze přidat nové soubory do `tempdb` . `Tempdb` je vždy znovu vytvořen jako prázdná databáze při spuštění nebo převzetí služeb při selhání a jakékoli změny provedené v nezůstanou `tempdb` zachovány.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Překročení úložného prostoru s malými databázovými soubory
 
@@ -266,7 +272,7 @@ Protokoly chyb, které jsou k dispozici ve spravované instanci SQL, nejsou trva
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Obor transakce ve dvou databázích v rámci stejné instance není podporovaný.
 
-**(Vyřešeno v březnu 2020)** `TransactionScope`Třída v rozhraní .NET nefunguje, pokud jsou dva dotazy odesílány do dvou databází v rámci stejné instance v rámci stejného oboru transakce:
+**(Vyřešeno v březnu 2020)** `TransactionScope` Třída v rozhraní .NET nefunguje, pokud jsou dva dotazy odesílány do dvou databází v rámci stejné instance v rámci stejného oboru transakce:
 
 ```csharp
 using (var scope = new TransactionScope())

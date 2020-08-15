@@ -1,19 +1,19 @@
 ---
-title: Použití digitálních vláken Azure k aktualizaci mapy vnitřních Azure Maps
+title: Integrace s Azure Maps
 titleSuffix: Azure Digital Twins
-description: Podívejte se, jak vytvořit funkci Azure, která může k aktualizaci informací zobrazených v Azure Maps používat dvojitá oznámení grafu a digitálních vláken Azure.
+description: Přečtěte si, jak vytvořit funkci Azure, která může použít oznámení o vytvářené grafice a digitální vlákna Azure k aktualizaci Azure Maps vnitřní mapy.
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 6aad6201136bb925d5e094de115cc7274cc7872a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a2dff1ea9c830fa48545dc25654cc3c5318c3415
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131408"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235906"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Použití digitálních vláken Azure k aktualizaci mapy vnitřních Azure Maps
 
@@ -25,7 +25,7 @@ Tento postup se zabývá těmito postupy:
 2. Vytvoření funkce Azure, která aktualizuje Azure Maps funkce vnitřních map stateset
 3. Jak ukládat ID map a ID stateset funkcí do grafu digitálních vláken Azure
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 * Postupujte podle kurzu digitálních vláken Azure [*: připojení kompletního řešení*](./tutorial-end-to-end.md).
     * Tuto dvojitou cestu rozšíříte pomocí dalšího koncového bodu a trasy. Z tohoto kurzu taky přidáte další funkci do aplikace Function App. 

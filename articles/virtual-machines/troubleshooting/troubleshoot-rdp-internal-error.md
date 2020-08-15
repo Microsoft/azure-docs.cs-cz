@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 4831a084153c28576cca7c40dfefeb8c5ff3c4e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 299bbfa31584b260f85dfa7bafddea268084f876
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036382"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235158"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Při pokusu o připojení k virtuálnímu počítači Azure přes Vzdálenou plochu dojde k vnitřní chybě
 
@@ -55,13 +55,13 @@ Připojte se ke [konzole sériového prostředí a otevřete instanci PowerShell
 
 #### <a name="step-1-check-the-rdp-port"></a>Krok: 1 zkontrolování portu RDP
 
-1. V instanci prostředí PowerShell ověřte pomocí příkazu [netstat](/windows-server/administration/windows-commands/netstat) , zda je port 8080 používán jinými aplikacemi:
+1. V instanci prostředí PowerShell ověřte pomocí příkazu [netstat](/windows-server/administration/windows-commands/netstat) , zda je port 3389 používán jinými aplikacemi:
 
     ```powershell
     Netstat -anob |more
     ```
 
-2. Pokud Termservice.exe používá port 8080, pokračujte na krok 2. Pokud je na portu 8080 jiná služba nebo jiná aplikace než Termservice.exe, použijte následující postup:
+2. Pokud Termservice.exe používá port 3389, pokračujte na krok 2. Pokud je na portu 3389 jiná služba nebo jiná aplikace než Termservice.exe, použijte následující postup:
 
     1. Zastavte službu pro aplikaci, která používá službu 3389:
 

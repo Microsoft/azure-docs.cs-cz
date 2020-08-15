@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/15/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 01d4475e73fd436fd0cd2a8aca1e7a946cdd7562
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17660df34c8039ae96440c417aef051d51a5c91c
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782054"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234744"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Konfigurace zřizování pomocí rozhraní API Microsoft Graph
 
@@ -48,7 +48,7 @@ Azure Portal je pohodlný způsob, jak nakonfigurovat zřizování pro jednotliv
 1. Po úspěšném přihlášení se zobrazí podrobnosti o uživatelském účtu v levém podokně.
 
 ### <a name="retrieve-the-gallery-application-template-identifier"></a>Načtení identifikátoru šablony aplikace Galerie
-Aplikace v galerii aplikací Azure AD mají každý z nich [šablonu aplikace](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http) , která popisuje metadata pro danou aplikaci. Pomocí této šablony můžete ve vašem tenantovi vytvořit instanci aplikace a instančního objektu pro správu.
+Aplikace v galerii aplikací Azure AD mají každý z nich [šablonu aplikace](/graph/api/applicationtemplate-list?tabs=http&view=graph-rest-beta) , která popisuje metadata pro danou aplikaci. Pomocí této šablony můžete ve vašem tenantovi vytvořit instanci aplikace a instančního objektu pro správu.
 
 #### <a name="request"></a>*Žádost*
 
@@ -61,7 +61,7 @@ Aplikace v galerii aplikací Azure AD mají každý z nich [šablonu aplikace](h
 GET https://graph.microsoft.com/beta/applicationTemplates
 ```
 
-#### <a name="response"></a>*Základě*
+#### <a name="response"></a>*Response* (Odpověď)
 
 <!-- {
   "blockType": "response",
@@ -100,7 +100,7 @@ Content-type: application/json
 
 ### <a name="create-the-gallery-application"></a>Vytvoření aplikace Galerie
 
-Použijte ID šablony načtené pro vaši aplikaci v posledním kroku a [vytvořte instanci](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http) aplikace a instančního objektu ve vašem tenantovi.
+Použijte ID šablony načtené pro vaši aplikaci v posledním kroku a [vytvořte instanci](/graph/api/applicationtemplate-instantiate?tabs=http&view=graph-rest-beta) aplikace a instančního objektu ve vašem tenantovi.
 
 #### <a name="request"></a>*Žádost*
 
@@ -118,7 +118,7 @@ Content-type: application/json
 }
 ```
 
-#### <a name="response"></a>*Základě*
+#### <a name="response"></a>*Response* (Odpověď)
 
 
 <!-- {
@@ -169,7 +169,7 @@ Content-type: application/json
 
 ### <a name="retrieve-the-template-for-the-provisioning-connector"></a>Načtení šablony pro zřizovací konektor
 
-Aplikace v galerii s povoleným zřizováním mají šablony pro zjednodušení konfigurace. Pomocí níže uvedeného požadavku [načtěte šablonu pro konfiguraci zřizování](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http). Všimněte si, že budete muset zadat ID. ID odkazuje na předchozí prostředek, který je v tomto případě ServicePrincipal. 
+Aplikace v galerii s povoleným zřizováním mají šablony pro zjednodušení konfigurace. Pomocí níže uvedeného požadavku [načtěte šablonu pro konfiguraci zřizování](/graph/api/synchronization-synchronizationtemplate-list?tabs=http&view=graph-rest-beta). Všimněte si, že budete muset zadat ID. ID odkazuje na předchozí prostředek, který je v tomto případě ServicePrincipal. 
 
 #### <a name="request"></a>*Žádost*
 
@@ -182,7 +182,7 @@ GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/temp
 ```
 
 
-#### <a name="response"></a>*Základě*
+#### <a name="response"></a>*Response* (Odpověď)
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -207,7 +207,7 @@ HTTP/1.1 200 OK
 ```
 
 ### <a name="create-the-provisioning-job"></a>Vytvoření úlohy zřizování
-Pokud chcete povolit zřizování, budete nejdřív muset [vytvořit úlohu](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http). K vytvoření úlohy zřizování použijte níže uvedený požadavek. Použijte templateId z předchozího kroku při zadávání šablony, která se má použít pro úlohu.
+Pokud chcete povolit zřizování, budete nejdřív muset [vytvořit úlohu](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta). K vytvoření úlohy zřizování použijte níže uvedený požadavek. Použijte templateId z předchozího kroku při zadávání šablony, která se má použít pro úlohu.
 
 #### <a name="request"></a>*Žádost*
 <!-- {
@@ -223,7 +223,7 @@ Content-type: application/json
 }
 ```
 
-#### <a name="response"></a>*Základě*
+#### <a name="response"></a>*Response* (Odpověď)
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -261,7 +261,7 @@ Content-type: application/json
 
 ### <a name="test-the-connection-to-the-application"></a>Otestování připojení k aplikaci
 
-Otestujte připojení k aplikaci třetí strany. Níže uvedený příklad je pro aplikaci, která vyžaduje clientSecret a secretToken. Každá aplikace má své požadavky. Aplikace často používají vlastnost BaseAddress místo ClientSecret. Pokud chcete zjistit, jaké přihlašovací údaje vaše aplikace vyžaduje, přejděte na stránku konfigurace zřizování pro vaši aplikaci a v režimu pro vývojáře klikněte na test připojení. Síťový provoz zobrazí parametry používané pro přihlašovací údaje. Úplný seznam přihlašovacích údajů najdete [tady](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http). 
+Otestujte připojení k aplikaci třetí strany. Níže uvedený příklad je pro aplikaci, která vyžaduje clientSecret a secretToken. Každá aplikace má své požadavky. Aplikace často používají vlastnost BaseAddress místo ClientSecret. Pokud chcete zjistit, jaké přihlašovací údaje vaše aplikace vyžaduje, přejděte na stránku konfigurace zřizování pro vaši aplikaci a v režimu pro vývojáře klikněte na test připojení. Síťový provoz zobrazí parametry používané pro přihlašovací údaje. Úplný seznam přihlašovacích údajů najdete [tady](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta). 
 
 #### <a name="request"></a>*Žádost*
 ```msgraph-interactive
@@ -273,7 +273,7 @@ POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/job
     ]
 }
 ```
-#### <a name="response"></a>*Základě*
+#### <a name="response"></a>*Response* (Odpověď)
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -285,7 +285,7 @@ HTTP/1.1 204 No Content
 
 ### <a name="save-your-credentials"></a>Uložení přihlašovacích údajů
 
-Konfigurace zřizování vyžaduje vytvoření vztahu důvěryhodnosti mezi službou Azure AD a aplikací. Autorizovat přístup k aplikaci třetí strany. Níže uvedený příklad je pro aplikaci, která vyžaduje clientSecret a secretToken. Každá aplikace má své požadavky. V [dokumentaci k rozhraní API](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http) si můžete prohlédnout dostupné možnosti. 
+Konfigurace zřizování vyžaduje vytvoření vztahu důvěryhodnosti mezi službou Azure AD a aplikací. Autorizovat přístup k aplikaci třetí strany. Níže uvedený příklad je pro aplikaci, která vyžaduje clientSecret a secretToken. Každá aplikace má své požadavky. V [dokumentaci k rozhraní API](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta) si můžete prohlédnout dostupné možnosti. 
 
 #### <a name="request"></a>*Žádost*
 ```msgraph-interactive
@@ -299,7 +299,7 @@ PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secr
 }
 ```
 
-#### <a name="response"></a>*Základě*
+#### <a name="response"></a>*Response* (Odpověď)
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -310,7 +310,7 @@ HTTP/1.1 204 No Content
 ```
 
 ## <a name="step-4-start-the-provisioning-job"></a>Krok 4: zahájení úlohy zřizování
-Teď, když je nakonfigurovaná úloha zřizování, [Spusťte úlohu](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http)pomocí následujícího příkazu. 
+Teď, když je nakonfigurovaná úloha zřizování, [Spusťte úlohu](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta)pomocí následujícího příkazu. 
 
 
 #### <a name="request"></a>*Žádost*
@@ -322,7 +322,7 @@ Teď, když je nakonfigurovaná úloha zřizování, [Spusťte úlohu](https://d
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/start
 ```
 
-#### <a name="response"></a>*Základě*
+#### <a name="response"></a>*Response* (Odpověď)
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -348,7 +348,7 @@ Teď, když je spuštěná úloha zřizování, použijte následující příka
 GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/
 ```
 
-#### <a name="response"></a>*Základě*
+#### <a name="response"></a>*Response* (Odpověď)
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -392,13 +392,13 @@ Content-length: 2577
 
 
 ### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>Monitorování událostí zřizování pomocí protokolů zřizování
-Kromě monitorování stavu úlohy zřizování můžete použít [protokoly zřizování](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http) k dotazování na všechny události, ke kterým dochází (například dotaz na konkrétního uživatele a zjistit, jestli se úspěšně zřídily).
+Kromě monitorování stavu úlohy zřizování můžete použít [protokoly zřizování](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta) k dotazování na všechny události, ke kterým dochází (například dotaz na konkrétního uživatele a zjistit, jestli se úspěšně zřídily).
 
 #### <a name="request"></a>*Žádost*
 ```msgraph-interactive
 GET https://graph.microsoft.com/beta/auditLogs/provisioning
 ```
-#### <a name="response"></a>*Základě*
+#### <a name="response"></a>*Response* (Odpověď)
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -526,5 +526,5 @@ Content-type: application/json
 ```
 ## <a name="related-articles"></a>Související články
 
-- [Projděte si dokumentaci Microsoft Graph synchronizace.](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Projděte si dokumentaci Microsoft Graph synchronizace.](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [Integrace vlastní aplikace v SCIM s Azure AD](use-scim-to-provision-users-and-groups.md)

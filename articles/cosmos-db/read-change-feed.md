@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d7408f3b3e955d397ba4a54d07323f80dd72c3d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23f99dc5c648948ce07f1b40106667d24906328a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697347"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236790"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Čtení z kanálu změn služby Azure Cosmos DB
 
-S kanálem pro změnu Azure Cosmos DB můžete pracovat pomocí modelu push nebo modelu Pull. Model push vyžaduje, aby klient pracoval ze serveru a měl obchodní logiku pro zpracování změny. Nicméně složitost při kontrole změn a stavu ukládání pro poslední zpracované změny se zpracovává na serveru.
+S kanálem pro změnu Azure Cosmos DB můžete pracovat pomocí modelu push nebo modelu Pull. Při použití modelu nabízených oznámení se server (kanál změn) doručí na práci klienta, který má obchodní logiku pro zpracování této práce. Složitá kontrola práce a ukládání stavu pro poslední zpracovávanou práci se však zpracovává na serveru.
 
-V případě modelu vyžádání obsahu vyžádá Server, který je často žádající z centrální pracovní fronty. Klient, v tomto případě obsahuje nejen obchodní logiku pro zpracování změn, ale také ukládá stav pro poslední zpracovanou změnu, zpracovávání vyrovnávání zatížení napříč více klienty zpracovávající změny paralelně a zpracovává chyby.
+U modelu Pull musí klient vyžádat si práci ze serveru. Klient, v tomto případě má nejen obchodní logiku pro zpracování práce, ale také ukládá stav pro poslední zpracovávanou práci, zpracovává vyrovnávání zatížení mezi více klienty zpracovávajících práci paralelně a zpracovává chyby.
 
 Při čtení z kanálu změn Azure Cosmos DB obvykle doporučujeme použít model nabízených oznámení, protože nebudete si muset dělat starosti:
 

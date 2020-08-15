@@ -3,12 +3,12 @@ title: Postup vytvoření zásad konfigurace hostů pro Linux
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Linux.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: fef5bdea1b7f98e19f9f8ee8bc9bce8553107fda
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026708"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236586"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Postup vytvoření zásad konfigurace hostů pro Linux
 
@@ -50,6 +50,10 @@ Operační systémy, ve kterých se modul dá nainstalovat:
 - Linux
 - macOS
 - Windows
+
+> [!NOTE]
+> Rutina ' test-GuestConfigurationPackage ' vyžaduje OpenSSL verze 1,0 z důvodu závislosti na OMI.
+> To způsobí chybu v jakémkoli prostředí s OpenSSL 1,1 nebo novějším.
 
 Modul prostředků konfigurace hosta vyžaduje následující software:
 
@@ -260,6 +264,8 @@ Parametry `New-GuestConfigurationPolicy` rutiny:
 - **Verze**: verze zásad
 - **Cesta**: cílová cesta, kde jsou vytvořeny definice zásad.
 - **Platforma**: cílová platforma (Windows/Linux) pro zásady konfigurace hosta a balíček obsahu.
+- **Tag** přidá do definice zásady jeden nebo více filtrů značek.
+- **Kategorie** nastaví pole metadata kategorie v definici zásady.
 
 Následující příklad vytvoří definice zásad v zadané cestě z vlastního balíčku zásad:
 
@@ -281,14 +287,6 @@ Následující soubory vytvořil `New-GuestConfigurationPolicy` :
 - **Initiative.jsna**
 
 Výstup rutiny vrátí objekt, který obsahuje zobrazovaný název iniciativy a cestu k souborům zásad.
-
-> [!Note]
-> Nejnovější modul konfigurace hosta obsahuje nové parametry:
-> - **Tag** přidá do definice zásady jeden nebo více filtrů značek.
->   - Viz část [filtrování zásad konfigurace hostů pomocí značek](#filtering-guest-configuration-policies-using-tags).
-> - **Kategorie** nastaví pole metadata kategorie v definici zásady.
->   - Pokud parametr není zahrnutý, kategorie se nastaví jako výchozí konfigurace hostů.
-> Tyto funkce jsou momentálně ve verzi Preview a vyžadují modul konfigurace hosta verze 1.20.1, který se dá nainstalovat pomocí nástroje `Install-Module GuestConfiguration -AllowPrerelease` .
 
 Nakonec publikujte definice zásad pomocí `Publish-GuestConfigurationPolicy` rutiny.
 Rutina má pouze parametr **path** , který odkazuje na umístění souborů JSON, které vytvořil `New-GuestConfigurationPolicy` .
@@ -404,9 +402,6 @@ Nejjednodušším způsobem, jak vydat aktualizovaný balíček, je opakovat pos
 
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Filtrování zásad konfigurace hostů pomocí značek
-
-> [!Note]
-> Tato funkce je aktuálně ve verzi Preview a vyžaduje modul konfigurace hosta verze 1.20.1, který se dá nainstalovat pomocí nástroje `Install-Module GuestConfiguration -AllowPrerelease` .
 
 Zásady vytvořené rutinami v modulu Konfigurace hosta můžou volitelně zahrnovat filtr pro značky. Parametr **-tag** pro `New-GuestConfigurationPolicy` podporuje pole zatřiďovacími tabulkami obsahující jednotlivá označení celých značek. Značky se přidají do `If` oddílu definice zásady a nedá se upravit pomocí přiřazení zásady.
 

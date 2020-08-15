@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7dae16140c376bc9288fec5b8744ac6cd14051e5
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445624"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235719"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
@@ -44,7 +44,7 @@ Pokud chcete požádat o automatický konektor zřizování Azure AD pro aplikac
 
 Aby se služba Azure AD mohla připojit k rozhraní API pro správu uživatelů aplikace, vyžadují přihlašovací údaje. Při konfiguraci automatického zřizování uživatelů pro aplikaci musíte zadat platné přihlašovací údaje. Typy a požadavky na přihlašovací údaje pro aplikaci najdete tak, že se odkazujete na kurz aplikace. V Azure Portal budete moct otestovat přihlašovací údaje tím, že se Azure AD pokusí připojit k aplikaci zřizování aplikace pomocí zadaných přihlašovacích údajů.
 
-Pokud je pro aplikaci nakonfigurovaná taky jednotné přihlašování založené na SAML, je limit úložiště interní služby Azure AD pro jednotlivé aplikace 1024 bajtů. Tento limit zahrnuje všechny certifikáty, tajné tokeny, přihlašovací údaje a související konfigurační data přidružená k jedné instanci aplikace (označované také jako záznam instančního objektu ve službě Azure AD). Pokud je nakonfigurováno jednotné přihlašování založené na SAML, certifikát použitý k podepisování tokenů SAML často spotřebovává více než 50% procent místa. Všechny další položky (tajné tokeny, identifikátory URI, e-mailové adresy, uživatelská jména a hesla), které zadáte během nastavení zřizování uživatelů, by mohly překročit limit úložiště. Další informace najdete v tématu [problém při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů](../manage-apps/application-provisioning-config-problem-storage-limit.md).
+Pokud je pro aplikaci nakonfigurovaná taky jednotné přihlašování založené na SAML, je limit úložiště interní služby Azure AD pro jednotlivé aplikace 1024 bajtů. Tento limit zahrnuje všechny certifikáty, tajné tokeny, přihlašovací údaje a související konfigurační data přidružená k jedné instanci aplikace (označované také jako záznam instančního objektu ve službě Azure AD). Pokud je nakonfigurováno jednotné přihlašování založené na SAML, certifikát použitý k podepisování tokenů SAML často spotřebovává více než 50% procent místa. Všechny další položky (tajné tokeny, identifikátory URI, e-mailové adresy, uživatelská jména a hesla), které zadáte během nastavení zřizování uživatelů, by mohly překročit limit úložiště. Další informace najdete v tématu [problém při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů](./application-provisioning-config-problem-storage-limit.md).
 
 ## <a name="mapping-attributes"></a>Mapování atributů
 
@@ -54,7 +54,7 @@ K dispozici je předem nakonfigurovaná sada atributů a mapování atributů me
 
 Při nastavování zřizování je důležité zkontrolovat a nakonfigurovat mapování atributů a pracovní postupy, které definují, které vlastnosti uživatele (nebo skupiny) se z Azure AD do aplikace přesměrují. Zkontrolujte a nakonfigurujte odpovídající vlastnost (**Porovnat objekty pomocí tohoto atributu**), která se používá k jednoznačné identifikaci uživatelů nebo skupin mezi oběma systémy a jejich porovnání.
 
-Výchozí mapování atributů můžete přizpůsobit podle potřeb vaší firmy. Takže můžete změnit nebo odstranit existující mapování atributů nebo vytvořit nová mapování atributů. Podrobnosti najdete v tématu [přizpůsobení atributů zřizování uživatelů – mapování pro aplikace SaaS](../manage-apps/customize-application-attributes.md).
+Výchozí mapování atributů můžete přizpůsobit podle potřeb vaší firmy. Takže můžete změnit nebo odstranit existující mapování atributů nebo vytvořit nová mapování atributů. Podrobnosti najdete v tématu [přizpůsobení atributů zřizování uživatelů – mapování pro aplikace SaaS](./customize-application-attributes.md).
 
 Při konfiguraci zřizování pro aplikaci SaaS je jedním z typů mapování atributů, které lze zadat, mapování výrazu. Pro tato mapování musíte napsat výraz podobný skriptům, který umožňuje transformovat data uživatelů na formáty, které jsou pro aplikaci SaaS přijatelné. Podrobnosti najdete v tématu [zápis výrazů pro mapování atributů](functions-for-customizing-application-data.md).
 
@@ -81,13 +81,13 @@ Filtry oborů lze použít k definování pravidel založených na atributech, k
 
 ### <a name="b2b-guest-users"></a>Uživatelé B2B (host)
 
-Je možné použít službu Azure AD Provisioning Service ke zřízení uživatelů B2B (nebo hostů) ve službě Azure AD a SaaS aplikace. Aby se však uživatelé B2B přihlásili k aplikaci SaaS pomocí služby Azure AD, musí mít aplikace SaaS možnost jednotného přihlašování založené na SAML nakonfigurovanou určitým způsobem. Další informace o tom, jak nakonfigurovat aplikace SaaS tak, aby podporovaly přihlášení uživatelů B2B, najdete v tématu [Konfigurace aplikací SaaS pro spolupráci B2B](../b2b/configure-saas-apps.md).
+Je možné použít službu Azure AD Provisioning Service ke zřízení uživatelů B2B (nebo hostů) ve službě Azure AD a SaaS aplikace. Aby se však uživatelé B2B přihlásili k aplikaci SaaS pomocí služby Azure AD, musí mít aplikace SaaS možnost jednotného přihlašování založené na SAML nakonfigurovanou určitým způsobem. Další informace o tom, jak nakonfigurovat aplikace SaaS tak, aby podporovaly přihlášení uživatelů B2B, najdete v tématu [Konfigurace aplikací SaaS pro spolupráci B2B](../external-identities/configure-saas-apps.md).
 
 Všimněte si, že userPrincipalName pro uživatele typu Host je často uložen jako "alias # EXT # @domain.com ". Pokud je hodnota userPrincipalName obsažena v mapování atributů jako zdrojový atribut, #EXT # je odstraněn z třídy userPrincipalName. Pokud požadujete, aby byla k dispozici #EXT #, nahraďte atribut userPrincipalName parametrem originalUserPrincipalName jako zdrojový atribut. 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Cykly zřizování: počáteční a přírůstkové
 
-Když je Azure AD zdrojovým systémem, služba zřizování používá [dotaz použít rozdíl ke sledování změn v Microsoft Graph dat](https://docs.microsoft.com/graph/delta-query-overview) pro monitorování uživatelů a skupin. Služba zřizování spouští počáteční cyklus proti zdrojovému systému a cílovému systému, po kterém následují pravidelné přírůstkové cykly.
+Když je Azure AD zdrojovým systémem, služba zřizování používá [dotaz použít rozdíl ke sledování změn v Microsoft Graph dat](/graph/delta-query-overview) pro monitorování uživatelů a skupin. Služba zřizování spouští počáteční cyklus proti zdrojovému systému a cílovému systému, po kterém následují pravidelné přírůstkové cykly.
 
 ### <a name="initial-cycle"></a>Počáteční cyklus
 
@@ -154,11 +154,11 @@ Vyřešte tyto chyby úpravou hodnot atributu pro ovlivněného uživatele ve zd
 
 ### <a name="quarantine"></a>Karanténa
 
-Pokud se většina nebo všechna volání prováděná na cílovém systému konzistentně nezdařila kvůli chybě (například neplatné přihlašovací údaje správce), úloha zřizování přejde do stavu "karanténa". Tento stav je uveden v [sestavě souhrn zřizování](../manage-apps/check-status-user-account-provisioning.md) a prostřednictvím e-mailu, pokud byly e-mailová oznámení konfigurována v Azure Portal.
+Pokud se většina nebo všechna volání prováděná na cílovém systému konzistentně nezdařila kvůli chybě (například neplatné přihlašovací údaje správce), úloha zřizování přejde do stavu "karanténa". Tento stav je uveden v [sestavě souhrn zřizování](./check-status-user-account-provisioning.md) a prostřednictvím e-mailu, pokud byly e-mailová oznámení konfigurována v Azure Portal.
 
 Když je v karanténě, frekvence přírůstkových cyklů se postupně zkracuje na jeden den.
 
-Úloha zřizování se ukončí do karantény po opravení všech problematických chyb a spuštění dalšího cyklu synchronizace. Pokud úloha zřizování zůstane v karanténě po dobu delší než čtyři týdny, úloha zřizování je zakázaná. Tady najdete další informace [o stavu](../manage-apps/application-provisioning-quarantine-status.md)karantény.
+Úloha zřizování se ukončí do karantény po opravení všech problematických chyb a spuštění dalšího cyklu synchronizace. Pokud úloha zřizování zůstane v karanténě po dobu delší než čtyři týdny, úloha zřizování je zakázaná. Tady najdete další informace [o stavu](./application-provisioning-quarantine-status.md)karantény.
 
 ### <a name="how-long-provisioning-takes"></a>Jak dlouho trvá zřizování
 
@@ -166,7 +166,7 @@ Výkon závisí na tom, jestli vaše úloha zřizování spouští počáteční
 
 ### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>Jak zjistit, jestli se uživatelé správně zřídí
 
-Všechny operace spouštěné službou zřizování uživatelů se zaznamenávají v [protokolech zřizování Azure AD (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Protokoly zahrnují všechny operace čtení a zápisu provedené ve zdrojovém a cílovém systému a uživatelská data, která byla během každé operace načtena nebo zapsána. Informace o tom, jak číst protokoly zřizování v Azure Portal, najdete v [průvodci zřizováním sestav](../manage-apps/check-status-user-account-provisioning.md).
+Všechny operace spouštěné službou zřizování uživatelů se zaznamenávají v [protokolech zřizování Azure AD (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Protokoly zahrnují všechny operace čtení a zápisu provedené ve zdrojovém a cílovém systému a uživatelská data, která byla během každé operace načtena nebo zapsána. Informace o tom, jak číst protokoly zřizování v Azure Portal, najdete v [průvodci zřizováním sestav](./check-status-user-account-provisioning.md).
 
 ## <a name="de-provisioning"></a>Zrušení zřizování
 
@@ -190,8 +190,8 @@ Pokud se ve svých mapováních atributů zobrazí atribut IsSoftDeleted, použi
 
 [Naplánování nasazení automatického zřizování uživatelů](../app-provisioning/plan-auto-user-provisioning.md)
 
-[Konfigurace zřizování pro aplikaci v galerii](../manage-apps/configure-automatic-user-provisioning-portal.md)
+[Konfigurace zřizování pro aplikaci v galerii](./configure-automatic-user-provisioning-portal.md)
 
 [Vytvoření koncového bodu SCIM a konfigurace zřizování při vytváření vlastní aplikace](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-[Řešení potíží s konfigurací a zřizováním uživatelů do aplikace](../manage-apps/application-provisioning-config-problem.md).
+[Řešení potíží s konfigurací a zřizováním uživatelů do aplikace](./application-provisioning-config-problem.md).

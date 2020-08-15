@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 3c3706cc3a15a8832cec3d799ea551810c849379
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 52819fc37cf0d10cb36009feb82dec234184752c
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313604"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235532"
 ---
 # <a name="on-demand-provisioning"></a>Zřizování na vyžádání
 Pomocí zřizování na vyžádání můžete zřídit uživatele v aplikaci během několika sekund. Mimo jiné můžete tuto možnost využít k těmto účelům:
@@ -27,7 +27,7 @@ Pomocí zřizování na vyžádání můžete zřídit uživatele v aplikaci bě
 
 ## <a name="how-to-use-on-demand-provisioning"></a>Jak používat zřizování na vyžádání
 
-1. Přihlaste se na **Azure Portal**.
+1. Přihlaste se na web **Azure Portal**.
 2. Přejít na **všechny služby**v  >  **podnikových aplikacích**.
 3. Vyberte svou aplikaci a pak klikněte na stránku konfigurace zřizování.
 4. Nakonfigurujte zřizování poskytnutím přihlašovacích údajů správce.
@@ -47,9 +47,9 @@ Služba zřizování se pokusí o autorizaci přístupu k cílové aplikaci tím
 
 #### <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 
-* Ujistěte se, že jste do cílové aplikace zadali platné přihlašovací údaje, jako je například tajný token a adresa URL tenanta. Požadovaná pověření se liší podle aplikace. Podrobné kurzy konfigurace najdete v [seznamu kurzů](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list). 
+* Ujistěte se, že jste do cílové aplikace zadali platné přihlašovací údaje, jako je například tajný token a adresa URL tenanta. Požadovaná pověření se liší podle aplikace. Podrobné kurzy konfigurace najdete v [seznamu kurzů](../saas-apps/tutorial-list.md). 
 * Ujistěte se, že cílová aplikace podporuje filtrování na odpovídající atributy definované v podokně **mapování atributů** . Je možné, že budete muset v dokumentaci k rozhraní API poskytnutým vývojářem aplikace zjistit podporované filtry.
-* V případě aplikací pro správu identit mezi doménami (SCIM) můžete použít nástroj, jako je například post. Tyto nástroje vám pomůžou zajistit, že aplikace reaguje na požadavky na autorizaci způsobem, který služba zřizování služby Azure Active Directory (Azure AD) očekává. Podívejte se na [příklad žádosti](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#request-3).
+* V případě aplikací pro správu identit mezi doménami (SCIM) můžete použít nástroj, jako je například post. Tyto nástroje vám pomůžou zajistit, že aplikace reaguje na požadavky na autorizaci způsobem, který služba zřizování služby Azure Active Directory (Azure AD) očekává. Podívejte se na [příklad žádosti](./use-scim-to-provision-users-and-groups.md#request-3).
 
 ### <a name="step-2-import-user"></a>Krok 2: import uživatele
 
@@ -76,7 +76,7 @@ V části **zobrazení podrobností** se zobrazují vlastnosti uživatele import
 
 ### <a name="step-3-determine-if-user-is-in-scope"></a>Krok 3: určení, jestli je uživatel v oboru
 
-Dále služba zřizování určí, jestli je uživatel v [oboru](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#scoping) pro zřizování. Služba zohledňuje následující aspekty:
+Dále služba zřizování určí, jestli je uživatel v [oboru](./how-provisioning-works.md#scoping) pro zřizování. Služba zohledňuje následující aspekty:
 
 * Určuje, zda je uživatel přiřazen k aplikaci.
 * Určuje, zda je obor nastaven na možnost **synchronizace byla přiřazena** nebo **synchronizována**.
@@ -94,8 +94,8 @@ V části **zobrazení podrobností** se zobrazují podmínky oboru, které byly
 
 #### <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 
-* Ujistěte se, že jste definovali platnou roli oboru. Nepoužívejte například [operátor Greater_Than](https://docs.microsoft.com/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-a-scoping-filter) s hodnotou, která není typu Integer.
-* Pokud uživatel nemá nezbytnou roli, přečtěte si [tipy pro zřizování uživatelů přiřazených k výchozí roli přístupu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-no-users-provisioned#provisioning-users-assigned-to-the-default-access-role).
+* Ujistěte se, že jste definovali platnou roli oboru. Nepoužívejte například [operátor Greater_Than](./define-conditional-rules-for-provisioning-user-accounts.md#create-a-scoping-filter) s hodnotou, která není typu Integer.
+* Pokud uživatel nemá nezbytnou roli, přečtěte si [tipy pro zřizování uživatelů přiřazených k výchozí roli přístupu](./application-provisioning-config-problem-no-users-provisioned.md#provisioning-users-assigned-to-the-default-access-role).
 
 ### <a name="step-4-match-user-between-source-and-target"></a>Krok 4: vyhledání uživatele mezi zdrojem a cílem
 
@@ -129,7 +129,7 @@ V části **Zobrazit podrobnosti** se zobrazí atributy, které byly v cílové 
 
 #### <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 
-* Selhání při exportu změn se může značně lišit. V [dokumentaci k protokolům zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs#error-codes) najdete běžné chyby.
+* Selhání při exportu změn se může značně lišit. V [dokumentaci k protokolům zřizování](../reports-monitoring/concept-provisioning-logs.md#error-codes) najdete běžné chyby.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -150,4 +150,4 @@ Pro zřizování na vyžádání je aktuálně k dispozici několik známých om
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Řešení potíží s zřizováním](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem)
+* [Řešení potíží s zřizováním](./application-provisioning-config-problem.md)

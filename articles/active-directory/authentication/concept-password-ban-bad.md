@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f0f7571cf9f8d355330c4acf425e38ce215e840
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68419c33286457a770a9988f1f00cc0b5e1f91bc
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050870"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235294"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Eliminujte chybná hesla pomocí Azure Active Directory ochrany heslem.
 
 Spousta pokynů k zabezpečení doporučuje, abyste nepoužívali stejné heslo na více místech, aby se zajistila složitá a aby nedocházelo k jednoduchým heslům, jako je *Password123*. Uživatelům můžete poskytnout [pokyny, jak zvolit hesla](https://www.microsoft.com/research/publication/password-guidance), ale slabá nebo nezabezpečená hesla se často používají. Ochrana heslem Azure AD detekuje a blokuje známá slabá hesla a jejich varianty a může také blokovat další slabé výrazy, které jsou specifické pro vaši organizaci.
 
-Díky ochraně hesel služby Azure AD jsou výchozí globální seznamy zakázaných hesel automaticky aplikovány na všechny cloudové uživatele. Pro podporu vlastních obchodních potřeb a zabezpečení můžete definovat položky v seznamu vlastního zakázaného hesla. Když uživatelé mění nebo resetují hesla, jsou tyto seznamy zakázaných hesel zaškrtnuté, aby vynutily používání silných hesel.
+Díky ochraně hesel Azure AD se výchozí globální seznamy zakázaných hesel automaticky aplikují na všechny uživatele v tenantovi Azure AD. Pro podporu vlastních obchodních potřeb a zabezpečení můžete definovat položky v seznamu vlastního zakázaného hesla. Když uživatelé mění nebo resetují hesla, jsou tyto seznamy zakázaných hesel zaškrtnuté, aby vynutily používání silných hesel.
 
 Měli byste používat další funkce, jako je [Azure Multi-Factor Authentication](concept-mfa-howitworks.md). nespoléhá se jenom na silná hesla vynucená ochranou hesel Azure AD. Další informace o použití několika vrstev zabezpečení pro přihlašovací události najdete v tématu o tom, co je [to $Word PA](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).
 
@@ -37,7 +37,7 @@ Tým Azure AD Identity Protection průběžně analyzuje data telemetrie zabezpe
 
 Při změně nebo resetování hesla pro libovolného uživatele v tenantovi služby Azure AD se používá aktuální verze seznamu globálních zakázaných hesel k ověření síly hesla. Tato kontrola ověření má za následek silnější hesla pro všechny zákazníky Azure AD.
 
-Globální seznam zakázaných hesel se automaticky použije pro všechny cloudové uživatele v tenantovi Azure AD. Není k dispozici žádná možnost povolit ani konfigurovat a nelze ji zakázat.
+Globální seznam zakázaných hesel se automaticky použije pro všechny uživatele v tenantovi Azure AD. Není k dispozici žádná možnost povolit ani konfigurovat a nelze ji zakázat. Tento globální seznam zakázaných hesel se aplikuje uživatelům při změně nebo resetování vlastního hesla prostřednictvím služby Azure AD.
 
 > [!NOTE]
 > Internetoví – zločinci používají podobné strategie ve svých útocích k identifikaci běžných slabých hesel a variací. Pro zvýšení zabezpečení nepublikuje Microsoft obsah seznamu globálních zakázaných hesel.
@@ -99,7 +99,7 @@ I když je globální seznam zakázaných dat malý v porovnání s některými 
 
 ## <a name="on-premises-hybrid-scenarios"></a>Místní hybridní scénáře
 
-Řada organizací má model hybridní identity, který zahrnuje místní prostředí Active Directory Domain Services (služba AD DS). K rozšiřování výhod zabezpečení ochrany heslem Azure AD do prostředí služba AD DS můžete komponenty nainstalovat na místní servery. Tito agenti vyžadují v místním prostředí služba AD DS události změny hesla, aby vyhověly stejným zásadám hesel jako jen cloudovým uživatelům.
+Řada organizací má model hybridní identity, který zahrnuje místní prostředí Active Directory Domain Services (služba AD DS). K rozšiřování výhod zabezpečení ochrany heslem Azure AD do prostředí služba AD DS můžete komponenty nainstalovat na místní servery. Tito agenti vyžadují pro místní služba AD DS prostředí události změny hesla, aby vyhověly stejným zásadám hesel jako v Azure AD.
 
 Další informace najdete v tématu věnovaném [vymáhání ochrany heslem Azure AD pro služba AD DS](concept-password-ban-bad-on-premises.md).
 
