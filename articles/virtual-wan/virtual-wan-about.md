@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 713e980eb84032c98ccf08c52e68dab36eadd659
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: d7e3992f12e39dd819bc18d5deb9f8b6da935616
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513141"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258693"
 ---
 # <a name="about-azure-virtual-wan"></a>Informace o službě Azure Virtual WAN
 
@@ -98,7 +98,7 @@ Směrovač může mít čtyři stavy směrování: zřizování, zřizování, n
 * Stav **žádný** označuje, že virtuální rozbočovač nezřídil směrovač. K tomu může dojít, pokud je virtuální síť WAN typu *Basic*nebo pokud byl virtuální rozbočovač nasazen před zpřístupněním služby.
 * Stav **selhání** indikuje selhání při vytváření instance. Chcete-li vytvořit instanci nebo resetovat směrovač, můžete najít možnost **resetovat směrovač** tak, že přejdete na stránku Přehled virtuálního centra v Azure Portal.
 
-Každý směrovač virtuálního rozbočovače podporuje agregovanou propustnost až do 50 GB/s. Připojení mezi virtuálními síťovými připojeními předpokládá celkem 2000 úloh virtuálních počítačů ve všech virtuální sítě ve virtuální síti WAN.
+Každý směrovač virtuálního rozbočovače podporuje agregovanou propustnost až do 50 GB/s. Připojení mezi virtuálními síťovými připojeními předpokládá celkem 2000 úloh virtuálních počítačů v rámci všech virtuální sítě připojených k virtuálnímu rozbočovači.
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>Tranzitní připojení mezi VPN a ExpressRoute
 
@@ -128,7 +128,7 @@ Směrovací tabulky teď mají funkce pro přidružení a šíření. Již exist
 
 * **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud chcete používat nové možnosti směrovací tabulky, počkejte prosím, než se dokončí 17 v Azure. Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standard Virtual WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
 
-## <a name="faq"></a><a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a><a name="faq"></a>Časté otázky
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 

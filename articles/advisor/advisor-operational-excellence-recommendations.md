@@ -3,12 +3,12 @@ title: Vylepšení provozního excellencyu pomocí Poradce
 description: Využijte Azure Advisor k optimalizaci a vyspělosti vaší provozní kvality vašich předplatných Azure.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 2b4c4726400134e4eec3868e155da47cb8c515b5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 036adb7e7d59bd78980c72b210ad41faea277d00
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057642"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258474"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Dosažení provozní úrovně pomocí Azure Advisor
 
@@ -53,6 +53,16 @@ Azure Policy je služba v Azure, kterou můžete použít k vytváření, přiř
 **Vynutili *audit virtuálních počítačů, které nepoužívají spravované disky*.**
 
 **Povolení *zdědí značku ze skupin prostředků*.** Tyto zásady při vytvoření nebo aktualizaci jakéhokoli prostředku přidají nebo nahradí zadanou značku a hodnotu z nadřazené skupiny prostředků. Stávající prostředky můžete opravit tak, že aktivujete úlohu nápravy.
+
+## <a name="no-validation-environment-enabled"></a>Není povolené žádné prostředí pro ověřování
+Azure Advisor určuje, že v aktuálním předplatném není povolené prostředí ověřování. Při vytváření fondů hostitelů jste na \" kartě Vlastnosti vybrali možnost Ne \" pro \" prostředí ověřování \" . Aspoň jeden fond hostitelů s povoleným ověřovacím prostředím zajišťuje kontinuitu podnikových služeb prostřednictvím nasazení služby Virtual Desktop systému Windows s dřívější detekcí potenciálních problémů. [Další informace](https://docs.microsoft.com/azure/virtual-desktop/create-validation-host-pool)
+
+## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>Zajistěte, aby provozní prostředí (bez ověřování) využilo výhod stabilní funkčnosti.
+Azure Advisor zjistí, že je v prostředí ověřování zapnuté příliš mnoho fondů hostitelů. Aby mohla prostředí ověřování nejlépe zajišťovat jejich účel, měli byste mít alespoň jednu, ale nikdy více než polovinu fondů hostitelů v ověřovacím prostředí. Díky povolenému zůstatku mezi fondy hostitelů s povoleným ověřovacím prostředím a s tím, jak je zakázané, budete mít možnost využívat výhody nasazení s více fázemi, které nabízí virtuální plocha Windows s určitými aktualizacemi. Chcete-li tento problém vyřešit, otevřete vlastnosti fondu hostitelů a vyberte možnost \" ne \" vedle \" nastavení prostředí ověřování \" .
+
+## <a name="enable-traffic-analytics-to-view-insights-into-traffic-patterns-across-azure-resources"></a>Povolením Analýza provozu zobrazovat přehledy o vzorech provozu napříč prostředky Azure
+Analýza provozu je cloudové řešení, které poskytuje přehled o aktivitách uživatelů a aplikací v Azure. Analýza provozu analyzuje protokoly toku Network Watcher NSG (Network Security Group), aby poskytovala přehledy toku provozu. Díky analýze provozu můžete zobrazit hlavní televizní přijímače napříč nasazeními Azure i mimo Azure, prozkoumat v prostředí otevřené porty, protokoly a škodlivé toky a optimalizovat nasazení sítě pro výkon. Protokoly toku můžete zpracovávat 10 minut a 60 minut, což vám poskytne rychlejší analýzy provozu. Je dobrým zvykem povolit Analýza provozu pro prostředky Azure. 
+
 
 ## <a name="next-steps"></a>Další kroky
 

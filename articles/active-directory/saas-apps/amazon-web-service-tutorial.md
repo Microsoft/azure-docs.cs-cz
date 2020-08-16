@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79e23f516fe31b4a21232f75286540e6c0d9019d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6a68a282a907817f1921acea911754bf78834b35
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922982"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257761"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Amazon Web Services (AWS)
 
@@ -117,7 +117,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace AWS několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Name  | Zdrojový atribut  | Obor názvů |
+    | Název  | Zdrojový atribut  | Obor názvů |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Role            | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
@@ -150,7 +150,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -352,7 +352,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     d. Uložte nastavení výběrem možnosti **Uložit**.
 
-3. V části **Nastavení** pro **stav zřizování**vyberte **zapnuto**. Potom vyberte **Uložit**.
+3. V části **Nastavení** pro **stav zřizování**vyberte **zapnuto**. Pak vyberte **Uložit**.
 
     ![Snímek obrazovky s oddílem nastavení se zvýrazněnou možností](./media/amazon-web-service-tutorial/provisioning2.png)
 
@@ -385,8 +385,6 @@ Po kliknutí na dlaždici Amazon Web Services (AWS) na přístupovém panelu bys
 * Role musí splňovat následující požadavky, aby měly nárok na Import z AWS do služby Azure AD:
 
   * Role musí mít přesně jednoho poskytovatele SAML definovaného v AWS.
-
-  * Kombinovaná délka ARN role a ARN zprostředkovatele SAML pro importované role musí mít 119 znaků nebo méně.
 
 ## <a name="additional-resources"></a>Další zdroje
 

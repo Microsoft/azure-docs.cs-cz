@@ -3,31 +3,16 @@ title: Vylepšení spolehlivosti aplikace pomocí služby Advisor
 description: Pomocí Azure Advisor můžete zajistit a zlepšit spolehlivost vašich důležitých nasazení v Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 1eba688a67a8684cdbb6846b389f83e61b349abe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0d96974e53f24d5a01eeee8b08eee578177a9ad2
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057666"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258502"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Zlepšení spolehlivosti aplikace pomocí Azure Advisor
 
 Azure Advisor vám pomůže zajistit a zlepšit kontinuitu důležitých podnikových aplikací. Doporučení pro spolehlivost můžete získat na kartě **spolehlivost** na řídicím panelu poradce.
-
-## <a name="ensure-virtual-machine-fault-tolerance"></a>Zajištění odolnosti proti chybám virtuálního počítače
-
-Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Poradce identifikuje virtuální počítače, které nejsou součástí skupiny dostupnosti, a doporučuje je přesunout do jedné. Tato konfigurace zajišťuje, že během plánované nebo neplánované údržby je k dispozici aspoň jeden virtuální počítač a splňuje smlouvu SLA pro virtuální počítače Azure. Můžete zvolit vytvoření skupiny dostupnosti pro virtuální počítač nebo přidání virtuálního počítače do existující skupiny dostupnosti.
-
-> [!NOTE]
-> Pokud se rozhodnete vytvořit skupinu dostupnosti, musíte do ní přidat aspoň jeden virtuální počítač. Doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti, aby bylo zajištěno, že během výpadku bude k dispozici alespoň jeden počítač.
-
-## <a name="ensure-availability-set-fault-tolerance"></a>Zajištění odolnosti proti chybám u sady dostupnosti
-
-Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Poradce identifikuje skupiny dostupnosti, které obsahují jeden virtuální počítač a doporučuje do něj přidat jeden nebo více virtuálních počítačů.Tato konfigurace zajišťuje, že během plánované nebo neplánované údržby je k dispozici aspoň jeden virtuální počítač a splňuje smlouvu SLA pro virtuální počítače Azure.Můžete se rozhodnout vytvořit virtuální počítač nebo přidat existující virtuální počítač do skupiny dostupnosti.  
-
-## <a name="use-managed-disks-to-improve-data-reliability"></a>Použití spravovaných disků ke zlepšení spolehlivosti dat
-
-Virtuální počítače, které jsou ve skupině dostupnosti s disky, které sdílejí buď účty úložiště nebo jednotky škálování úložiště, nejsou odolné vůči selháním jednotek škálování v jednom úložišti během výpadků. Advisor tyto skupiny dostupnosti identifikuje a doporučuje migraci na Azure Managed disks. Tato migrace zajistí, že disky virtuálních počítačů ve skupině dostupnosti jsou dostatečně izolované, aby se předešlo jednomu bodu selhání. 
 
 ## <a name="check-the-version-of-your-check-point-network-virtual-appliance-image"></a>Ověřte verzi image síťového virtuálního zařízení se kontrolním bodem
 
@@ -73,6 +58,21 @@ Azure Advisor kontroluje všechny brány VPN, které používají základní SKU
 - Možnosti konfigurace aktivní – aktivní 
 - Vlastní zásady IPSec/IKE. 
 - Vyšší stabilita a dostupnost.
+
+## <a name="ensure-virtual-machine-fault-tolerance-temporarily-disabled"></a>Zajištění odolnosti proti chybám virtuálního počítače (dočasně zakázáno)
+
+Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Poradce identifikuje virtuální počítače, které nejsou součástí skupiny dostupnosti, a doporučuje je přesunout do jedné. Tato konfigurace zajišťuje, že během plánované nebo neplánované údržby je k dispozici aspoň jeden virtuální počítač a splňuje smlouvu SLA pro virtuální počítače Azure. Můžete zvolit vytvoření skupiny dostupnosti pro virtuální počítač nebo přidání virtuálního počítače do existující skupiny dostupnosti.
+
+> [!NOTE]
+> Pokud se rozhodnete vytvořit skupinu dostupnosti, musíte do ní přidat aspoň jeden virtuální počítač. Doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti, aby bylo zajištěno, že během výpadku bude k dispozici alespoň jeden počítač.
+
+## <a name="ensure-availability-set-fault-tolerance-temporarily-disabled"></a>Zajištění odolnosti proti chybám u sady dostupnosti (dočasně zakázáno)
+
+Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Poradce identifikuje skupiny dostupnosti, které obsahují jeden virtuální počítač a doporučuje do něj přidat jeden nebo více virtuálních počítačů.Tato konfigurace zajišťuje, že během plánované nebo neplánované údržby je k dispozici aspoň jeden virtuální počítač a splňuje smlouvu SLA pro virtuální počítače Azure.Můžete se rozhodnout vytvořit virtuální počítač nebo přidat existující virtuální počítač do skupiny dostupnosti.  
+
+## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>Použití spravovaných disků ke zlepšení spolehlivosti dat (dočasně zakázáno)
+
+Virtuální počítače, které jsou ve skupině dostupnosti s disky, které sdílejí buď účty úložiště nebo jednotky škálování úložiště, nejsou odolné vůči selháním jednotek škálování v jednom úložišti během výpadků. Advisor tyto skupiny dostupnosti identifikuje a doporučuje migraci na Azure Managed disks. Tato migrace zajistí, že disky virtuálních počítačů ve skupině dostupnosti jsou dostatečně izolované, aby se předešlo jednomu bodu selhání. 
 
 ## <a name="repair-invalid-log-alert-rules"></a>Opravit neplatná pravidla upozornění protokolu
 

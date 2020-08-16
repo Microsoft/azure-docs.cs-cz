@@ -2,13 +2,13 @@
 title: Poznámky k verzi pro Application Insights | Microsoft Docs
 description: Přidejte značky nasazení nebo sestavení do grafů Průzkumníka metrik v Application Insights.
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: 8e9e0cb49343524e8a45831566cf802b1c8c5d9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/14/2020
+ms.openlocfilehash: e21981f134f6a78109d70b1edf6d61e204b64e12
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320659"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258408"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafech metrik v Application Insights
 
@@ -68,6 +68,10 @@ Vytvořte samostatný klíč rozhraní API pro každou ze šablon verze Azure Pi
    ![Na kartě proměnné DevOps Azure vyberte Přidat, pojmenujte proměnnou ApiKey a vložte klíč rozhraní API pod hodnotu.](./media/annotations/7-paste-api-key.png)
    
 1. Vyberte **Uložit** v hlavním okně šablony vydané verze a uložte šablonu.
+
+
+   > [!NOTE]
+   > Omezení pro klíče rozhraní API jsou popsána v [dokumentaci omezení rychlosti REST API](https://dev.applicationinsights.io/documentation/Authorization/Rate-limits).
 
 ## <a name="view-annotations"></a>Zobrazit poznámky
 

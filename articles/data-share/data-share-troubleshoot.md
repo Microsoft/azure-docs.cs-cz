@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 07/30/2020
-ms.openlocfilehash: 0fb2f9dd156d18705308b41ef8d6b015b3b6d71b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 08/14/2020
+ms.openlocfilehash: c68c9dc961475d6916b1f00e7d4f596bfd8c77dd
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534443"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257802"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Řešení běžných problémů v Azure Data Share 
 
@@ -34,7 +34,7 @@ K tomu může dojít z následujících důvodů:
     1. Hledání **Microsoft. Datashare**
     1. Klikněte na **zaregistrovat** . 
 
-    K provedení těchto kroků budete muset mít [roli Přispěvatel Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) . 
+    Abyste mohli dokončit tento postup, musíte mít [roli přispěvatele Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) v rámci předplatného Azure. 
 
 * **Pozvánka se pošle na váš e-mailový alias místo na přihlašovací e-mail Azure.** Pokud jste zaregistrovali službu Azure data Shared nebo už jste vytvořili prostředek pro sdílení dat v tenantovi Azure, ale pořád nevidíte pozvánku, může to být tím, že poskytovatel zadal váš e-mailový alias jako příjemce namísto přihlašovací e-mailové adresy Azure. Obraťte se na poskytovatele dat a zajistěte, aby odeslal pozvánku na vaši e-mailovou adresu Azure, a ne na váš e-mailový alias.
 

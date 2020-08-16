@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: 967b2dceab1f1702120cd3121ccd64b4e7286bc6
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: 0e81d04edff667b0526f1d286701b2e8701528dc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511900"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258595"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Podporovaná úložiště dat v Azure Data Share
 
@@ -30,7 +30,7 @@ Následující tabulka uvádí podporované zdroje dat pro sdílenou složku Azu
 | Azure Data Lake Storage Gen2 |✓ ||
 | Azure SQL Database |Public Preview | |
 | Azure synapse Analytics (dříve Azure SQL DW) |Public Preview | |
-| Průzkumník dat Azure | |Public Preview |
+| Průzkumník dat Azure | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Matice podpory úložiště dat
 
@@ -62,9 +62,7 @@ Sdílení ze zdrojů založených na SQL má požadavky související s pravidly
 ## <a name="share-from-azure-data-explorer"></a>Sdílení z Azure Průzkumník dat
 Azure Data Share podporuje možnost místního sdílení databází z clusterů Azure Průzkumník dat. Poskytovatel dat může sdílet na úrovni databáze nebo clusteru. Při sdílení na úrovni databáze bude příjemce dat moct přistupovat jenom ke konkrétním databázím, které sdílí poskytovatel dat. Při sdílení na úrovni clusteru má příjemce dat přístup ke všem databázím z clusteru poskytovatele, včetně všech budoucích databází vytvořených poskytovatelem dat.
 
-Pro přístup ke sdíleným databázím musí mít příjemce dat svůj vlastní cluster Azure Průzkumník dat. Cluster Azure Průzkumník dat pro příjemce dat musí najít ve stejném datovém centru Azure jako cluster Azure Průzkumník dat poskytovatele dat. Když je navázán vztah sdílení, Azure Data Share vytvoří symbolický odkaz mezi clustery Průzkumník dat Azure pro poskytovatele a uživatele.
-
-Azure Průzkumník dat podporuje dva režimy přijímání dat: Batch a streaming. Data přijatá ze služby Batch ve sdílené databázi se zobrazí během několika sekund po dobu několika minut na straně příjemce dat. Data přijatá ze streamování můžou na straně spotřebitele dat trvat až 24 hodin. 
+Pro přístup ke sdíleným databázím musí mít příjemce dat svůj vlastní cluster Azure Průzkumník dat. Cluster Azure Průzkumník dat pro příjemce dat musí najít ve stejném datovém centru Azure jako cluster Azure Průzkumník dat poskytovatele dat. Když je navázán vztah sdílení, Azure Data Share vytvoří symbolický odkaz mezi clustery Průzkumník dat Azure pro poskytovatele a uživatele. Data ingestovaná pomocí dávkového režimu do zdrojového clusteru Azure Průzkumník dat se budou zobrazovat v cílovém clusteru během několika sekund až po několik minut.
 
 ## <a name="next-steps"></a>Další kroky
 

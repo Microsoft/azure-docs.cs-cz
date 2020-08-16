@@ -3,12 +3,12 @@ title: Jak navrhnout nasazení Application Insights – jeden vs mnoho prostřed
 description: Přímá telemetrie na různé prostředky pro vývoj, testování a produkční razítka.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 4f539862432fcdc67632e91caadf71d6584fbc3e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420562"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258719"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Kolik prostředků Application Insights mám nasadit
 
@@ -39,9 +39,9 @@ Každý Application Insights prostředek obsahuje metriky, které jsou k dispozi
 - V případě aplikací Service Fabric a klasických cloudových služeb sada SDK automaticky načte z prostředí role Azure a nastaví je. U všech ostatních typů aplikací je pravděpodobně budete muset nastavit explicitně.
 -   Prostředí živé metriky nepodporuje rozdělování podle názvu role.
 
-## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a>Dynamický klíč instrumentace
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> Dynamický klíč instrumentace
 
-Aby bylo snazší změnit ikey při pohybu kódu mezi fázemi výroby, nastavte ho v kódu místo v konfiguračním souboru.
+Aby bylo snazší změnit ikey při pohybu kódu mezi fázemi výroby, místo použití pevně zakódované/statické hodnoty se na klíč dynamicky odkazovat v kódu.
 
 Nastavte klíč v inicializační metodě, jako je například global.aspx.cs ve službě ASP.NET:
 

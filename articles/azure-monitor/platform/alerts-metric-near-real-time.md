@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 7/26/2020
+ms.date: 8/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: bbfbc5e92fc49e45d1d16621992dbf4483f01bb5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 877134fb1d4417c04da3bf6a96267b413389ecb2
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327153"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258446"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Podporované prostředky pro výstrahy metriky v Azure Monitor
 
@@ -30,82 +30,87 @@ Tady je úplný seznam zdrojů metrik Azure monitorů podporovaných novějším
 
 |Typ prostředku  |Podporované dimenze |Výstrahy s více prostředky| Dostupné metriky|
 |---------|---------|-----|----------|
-|Microsoft.ApiManagement/service | Ano | Ne | [API Management](./metrics-supported.md#microsoftapimanagementservice) |
-|Microsoft. AppConfiguration/configurationStores |Ano | Ne | [App Configuration](./metrics-supported.md#microsoftappconfigurationconfigurationstores) |
-|Microsoft. AppPlatform/pružina | Ano | Ne | [Azure Spring Cloud](./metrics-supported.md#microsoftappplatformspring) |
-|Microsoft. Automation/automationAccounts | Ano| Ne | [Účty služby Automation](./metrics-supported.md#microsoftautomationautomationaccounts) |
-|Microsoft.Batch/batchAccounts | Ano | Ne | [Účty Batch](./metrics-supported.md#microsoftbatchbatchaccounts) |
-|Microsoft. cache/Redis | Ano | Ne | [Azure Cache for Redis](./metrics-supported.md#microsoftcacheredis) |
-|Microsoft. ClassicStorage/storageAccounts | Ano | Ne | [Účty úložiště (klasické)](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
-|Microsoft. ClassicStorage/storageAccounts/blobServices | Ano | Ne | |
-|Microsoft. ClassicStorage/storageAccounts/služby | Ano | Ne | |
-|Microsoft. ClassicStorage/storageAccounts/queueServices | Ano | Ne | |
-|Microsoft. ClassicStorage/storageAccounts/tableServices | Ano | Ne | |
-|Microsoft. Cognitiveservices Account/účty | Ano | Ne | [Cognitive Services](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
+|Microsoft. Aadiam/azureADMetrics | Ano | No | |
+|Microsoft.ApiManagement/service | Ano | No | [API Management](./metrics-supported.md#microsoftapimanagementservice) |
+|Microsoft. AppConfiguration/configurationStores |Ano | No | [App Configuration](./metrics-supported.md#microsoftappconfigurationconfigurationstores) |
+|Microsoft. AppPlatform/pružina | Ano | No | [Azure Spring Cloud](./metrics-supported.md#microsoftappplatformspring) |
+|Microsoft. Automation/automationAccounts | Ano| No | [Účty služby Automation](./metrics-supported.md#microsoftautomationautomationaccounts) |
+|Microsoft. AVS/privateClouds | No | No | |
+|Microsoft.Batch/batchAccounts | Ano | No | [Účty Batch](./metrics-supported.md#microsoftbatchbatchaccounts) |
+|Microsoft. cache/Redis | Ano | No | [Azure Cache for Redis](./metrics-supported.md#microsoftcacheredis) |
+|Microsoft. ClassicStorage/storageAccounts | Ano | No | [Účty úložiště (klasické)](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
+|Microsoft. ClassicStorage/storageAccounts/blobServices | Ano | No | |
+|Microsoft. ClassicStorage/storageAccounts/služby | Ano | No | |
+|Microsoft. ClassicStorage/storageAccounts/queueServices | Ano | No | |
+|Microsoft. ClassicStorage/storageAccounts/tableServices | Ano | No | |
+|Microsoft. Cognitiveservices Account/účty | Ano | No | [Cognitive Services](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
 |Microsoft.Compute/virtualMachines | Ano | Ano | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
-|Microsoft.Compute/virtualMachineScaleSets | Ano | Ne |[Virtual Machine Scale Sets](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
-|Microsoft. ContainerInstance/containerGroups | Ano| Ne | [Skupiny kontejnerů](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
-|Microsoft. ContainerRegistry/Registry | Ne | Ne | [Registry kontejnerů](./metrics-supported.md#microsoftcontainerregistryregistries) |
-|Microsoft. ContainerService/managedClusters | Ano | Ne | [Spravované clustery](./metrics-supported.md#microsoftcontainerservicemanagedclusters) |
+|Microsoft.Compute/virtualMachineScaleSets | Ano | No |[Virtual Machine Scale Sets](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
+|Microsoft. ContainerInstance/containerGroups | Ano| No | [Skupiny kontejnerů](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
+|Microsoft. ContainerRegistry/Registry | No | No | [Registry kontejnerů](./metrics-supported.md#microsoftcontainerregistryregistries) |
+|Microsoft. ContainerService/managedClusters | Ano | No | [Spravované clustery](./metrics-supported.md#microsoftcontainerservicemanagedclusters) |
 |Microsoft. DataBoxEdge/dataBoxEdgeDevices | Ano | Ano | [Data Box](./metrics-supported.md#microsoftdataboxedgedataboxedgedevices) |
-|Microsoft. DataFactory/DataFactory| Ano| Ne | [Datové továrny v1](./metrics-supported.md#microsoftdatafactorydatafactories) |
-|Microsoft. DataFactory/továrny |Ano | Ne | [Datové továrny v2](./metrics-supported.md#microsoftdatafactoryfactories) |
-|Microsoft. datashare/Accounts | Ano | Ne | |
-|Microsoft. DBforMariaDB/servery | Ne | Ne | [DB pro MariaDB](./metrics-supported.md#microsoftdbformariadbservers) |
-|Microsoft. DBforMySQL/servery | Ne | Ne |[DB pro MySQL](./metrics-supported.md#microsoftdbformysqlservers)|
-|Microsoft. DBforPostgreSQL/servery | Ne | Ne | [DB pro PostgreSQL](./metrics-supported.md#microsoftdbforpostgresqlservers)|
-|Microsoft. DBforPostgreSQL/serversv2 | Ne | Ne | [DB pro PostgreSQL v2](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|Microsoft. DBforPostgreSQL/singleservers | Ne | Ne | [DB pro PostgreSQL (jednotlivé servery)](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
-|Microsoft. Devices/IotHubs | Ano | Ne |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
-|Microsoft. Devices/provisioningServices| Ano | Ne | [Služby Device Provisioning](./metrics-supported.md#microsoftdevicesprovisioningservices) |
-|Microsoft.DocumentDB/databaseAccounts | Ano | Ne | [Databáze Cosmos](./metrics-supported.md#microsoftdocumentdbdatabaseaccounts) |
-|Microsoft. EventGrid/domény | Ano | Ne | [Domény Event Gridu](./metrics-supported.md#microsofteventgriddomains) |
-|Microsoft. EventGrid/systemTopics | Ano | Ne | [Témata týkající se Event Grid systému](./metrics-supported.md#microsofteventgridsystemtopics) |
-|Microsoft. EventGrid/témata |Ano | Ne | [Témata Event Gridu](./metrics-supported.md#microsofteventgridtopics) |
-|Microsoft. EventHub/clustery |Ano| Ne | [Clustery Event Hubs](./metrics-supported.md#microsofteventhubclusters) |
-|Microsoft. EventHub/obory názvů |Ano| Ne | [Event Hubs](./metrics-supported.md#microsofteventhubnamespaces) |
-|Microsoft. HDInsight/clustery | Ano | Ne | [Clustery HDInsight](./metrics-supported.md#microsofthdinsightclusters) |
-|Microsoft. Insights/Components | Ano | Ne | [Application Insights](./metrics-supported.md#microsoftinsightscomponents) |
-|Trezory a trezory Microsoft. | Ne |Ne |[Trezory](./metrics-supported.md#microsoftkeyvaultvaults)|
-|Microsoft. Kusto/clustery | Ano |Ne |[Clustery Průzkumník dat](./metrics-supported.md#microsoftkustoclusters)|
-|Microsoft. Logic/Workflows | Ne | Ne |[Logic Apps](./metrics-supported.md#microsoftlogicworkflows) |
-|Microsoft. MachineLearningServices/pracovní prostory | Ano | Ne | [Machine Learning](./metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
-|Microsoft. Maps/Accounts | Ano | Ne | [Účty mapy](./metrics-supported.md#microsoftmapsaccounts) |
-|Microsoft. Media/MediaServices | Ne | Ne | [Media Services](./metrics-supported.md#microsoftmediamediaservices) |
-|Microsoft. Media/MediaServices/starají | Ano | Ne | [Koncové body streamování Media Services](./metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |
-|Microsoft. NetApp/netAppAccounts/capacityPools | Ano | Ne | [Fondy kapacit Azure NetApp](./metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
-|Microsoft. NetApp/netAppAccounts/capacityPools/svazky | Ano | Ne | [Svazky NetApp Azure](./metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
-|Microsoft. Network/applicationGateways | Ano | Ne | [Aplikační brány](./metrics-supported.md#microsoftnetworkapplicationgateways) |
-|Microsoft. Network/azurefirewalls | Ano | Ne | [brány firewall,](./metrics-supported.md#microsoftnetworkazurefirewalls) |
-|Microsoft. Network/dnsZones | Ne | Ne | [Zóny DNS](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft. Network/expressRouteCircuits | – | Ne |[Okruhy ExpressRoute](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
-|Microsoft. Network/loadBalancers (pouze pro standardní SKU)| Ano| Ne | [Nástroje pro vyrovnávání zatížení](./metrics-supported.md#microsoftnetworkloadbalancers) |
-|Microsoft. Network/natGateways| Ne | Ne | |
-|Microsoft. Network/privateEndpoints| Ne | Ne | |
-|Microsoft. Network/privateLinkServices| Ne | Ne |
-|Microsoft. Network/publicipaddresses | Ne | Ne |[Veřejné IP adresy](./metrics-supported.md#microsoftnetworkpublicipaddresses)|
-|Microsoft. Network/trafficManagerProfiles | Ano | Ne | [Profily Traffic Manageru](./metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
-|Microsoft. OperationalInsights/pracovní prostory| Ano | Ne | [Pracovní prostory služby Log Analytics](./metrics-supported.md#microsoftoperationalinsightsworkspaces)|
-|Microsoft. peering/peering | Ano | Ne | [Partnerské vztahy](./metrics-supported.md#microsoftpeeringpeerings) |
-|Microsoft. peering/peeringServices | Ano | Ne | [Služby Peering Service](./metrics-supported.md#microsoftpeeringpeeringservices) |
-|Microsoft. PowerBIDedicated/– kapacity | Ne | Ne | [Capacities](./metrics-supported.md#microsoftpowerbidedicatedcapacities) |
-|Microsoft. Relay/obory názvů | Ano | Ne | [Předávání](./metrics-supported.md#microsoftrelaynamespaces) |
-|Microsoft. Search/searchServices | Ne | Ne | [Hledat služby](./metrics-supported.md#microsoftsearchsearchservices) |
-|Microsoft. ServiceBus/obory názvů | Ano | Ne | [Service Bus](./metrics-supported.md#microsoftservicebusnamespaces) |
-|Microsoft. SQL/managedInstances | Ne | Ano | [Spravované instance SQL](./metrics-supported.md#microsoftsqlmanagedinstances) |
-|Microsoft. SQL/servery/databáze | Ne | Ano | [Databáze SQL](./metrics-supported.md#microsoftsqlserversdatabases) |
-|Microsoft. SQL/servery/elasticPools | Ne | Ano | [Elastické fondy SQL](./metrics-supported.md#microsoftsqlserverselasticpools) |
-|Microsoft. Storage/storageAccounts |Ano | Ne | [Účty úložiště](./metrics-supported.md#microsoftstoragestorageaccounts)|
-|Microsoft. Storage/storageAccounts/Services | Ano| Ne | Služby [BLOB Services](./metrics-supported.md#microsoftstoragestorageaccountsblobservices), [souborové](./metrics-supported.md#microsoftstoragestorageaccountsfileservices)služby, [služby front](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) a [tabulkové služby](./metrics-supported.md#microsoftstoragestorageaccountstableservices)|
-|Microsoft. StorageCache/caches | Ano | Ne | |
-|Microsoft. StorageSync/storageSyncServices | Ano | Ne | [Služby synchronizace úložiště](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
-|Microsoft. StreamAnalytics/streamingjobs | Ano | Ne | [Stream Analytics](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
-|Microsoft. VMWareCloudSimple/virtualMachines | Ano | Ne | [Virtuální počítače CloudSimple](./metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines) |
-|Microsoft. Web/hostingEnvironments/multiRolePools | Ano | Ne | [App Service Environment fondů s více rolemi](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
-|Microsoft. Web/hostingEnvironments/workerPools | Ano | Ne | [App Service Environment fondy pracovních procesů](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
-|Microsoft. Web/serverových farem | Ano | Ne | [Plány App Service](./metrics-supported.md#microsoftwebserverfarms)|
-|Microsoft. Web/weby | Ano | Ne | [App Services](./metrics-supported.md#microsoftwebsites-excluding-functions) a [funkce](./metrics-supported.md#microsoftwebsites-functions)|
-|Microsoft. Web/weby/sloty | Ano | Ne | [Sloty App Service](./metrics-supported.md#microsoftwebsitesslots)|
+|Microsoft. DataFactory/DataFactory| Ano| No | [Datové továrny v1](./metrics-supported.md#microsoftdatafactorydatafactories) |
+|Microsoft. DataFactory/továrny |Ano | No | [Datové továrny v2](./metrics-supported.md#microsoftdatafactoryfactories) |
+|Microsoft. datashare/Accounts | Ano | No | |
+|Microsoft. DBforMariaDB/servery | No | No | [DB pro MariaDB](./metrics-supported.md#microsoftdbformariadbservers) |
+|Microsoft. DBforMySQL/servery | No | No |[DB pro MySQL](./metrics-supported.md#microsoftdbformysqlservers)|
+|Microsoft. DBforPostgreSQL/flexibleServers | Ano | No | |
+|Microsoft. DBforPostgreSQL/servery | No | No | [DB pro PostgreSQL](./metrics-supported.md#microsoftdbforpostgresqlservers)|
+|Microsoft. DBforPostgreSQL/serversv2 | No | No | [DB pro PostgreSQL v2](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
+|Microsoft. DBforPostgreSQL/singleservers | No | No | [DB pro PostgreSQL (jednotlivé servery)](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
+|Microsoft. Devices/IotHubs | Ano | No |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
+|Microsoft. Devices/provisioningServices| Ano | No | [Služby Device Provisioning](./metrics-supported.md#microsoftdevicesprovisioningservices) |
+|Microsoft. DigitalTwins/digitalTwinsInstances | Ano | No | |
+|Microsoft.DocumentDB/databaseAccounts | Ano | No | [Databáze Cosmos](./metrics-supported.md#microsoftdocumentdbdatabaseaccounts) |
+|Microsoft. EventGrid/domény | Ano | No | [Domény Event Gridu](./metrics-supported.md#microsofteventgriddomains) |
+|Microsoft. EventGrid/systemTopics | Ano | No | [Témata týkající se Event Grid systému](./metrics-supported.md#microsofteventgridsystemtopics) |
+|Microsoft. EventGrid/témata |Ano | No | [Témata Event Gridu](./metrics-supported.md#microsofteventgridtopics) |
+|Microsoft. EventHub/clustery |Ano| No | [Clustery Event Hubs](./metrics-supported.md#microsofteventhubclusters) |
+|Microsoft. EventHub/obory názvů |Ano| No | [Event Hubs](./metrics-supported.md#microsofteventhubnamespaces) |
+|Microsoft. HDInsight/clustery | Ano | No | [Clustery HDInsight](./metrics-supported.md#microsofthdinsightclusters) |
+|Microsoft. Insights/Components | Ano | No | [Application Insights](./metrics-supported.md#microsoftinsightscomponents) |
+|Trezory a trezory Microsoft. | Ano |Ano |[Trezory](./metrics-supported.md#microsoftkeyvaultvaults)|
+|Microsoft. Kusto/clustery | Ano |No |[Clustery Průzkumník dat](./metrics-supported.md#microsoftkustoclusters)|
+|Microsoft. Logic/integrationServiceEnvironments | Ano | No |[Prostředí integrační služby](./metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
+|Microsoft. Logic/Workflows | No | No |[Logic Apps](./metrics-supported.md#microsoftlogicworkflows) |
+|Microsoft. MachineLearningServices/pracovní prostory | Ano | No | [Machine Learning](./metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
+|Microsoft. Maps/Accounts | Ano | No | [Účty mapy](./metrics-supported.md#microsoftmapsaccounts) |
+|Microsoft. Media/MediaServices | No | No | [Media Services](./metrics-supported.md#microsoftmediamediaservices) |
+|Microsoft. Media/MediaServices/starají | Ano | No | [Koncové body streamování Media Services](./metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |
+|Microsoft. NetApp/netAppAccounts/capacityPools | Ano | Ano | [Fondy kapacit Azure NetApp](./metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
+|Microsoft. NetApp/netAppAccounts/capacityPools/svazky | Ano | Ano | [Svazky NetApp Azure](./metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
+|Microsoft. Network/applicationGateways | Ano | No | [Aplikační brány](./metrics-supported.md#microsoftnetworkapplicationgateways) |
+|Microsoft. Network/azurefirewalls | Ano | No | [Brány firewall](./metrics-supported.md#microsoftnetworkazurefirewalls) |
+|Microsoft. Network/dnsZones | No | No | [Zóny DNS](./metrics-supported.md#microsoftnetworkdnszones) |
+|Microsoft. Network/expressRouteCircuits | – | No |[Okruhy ExpressRoute](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft. Network/loadBalancers (pouze pro standardní SKU)| Ano| No | [Nástroje pro vyrovnávání zatížení](./metrics-supported.md#microsoftnetworkloadbalancers) |
+|Microsoft. Network/natGateways| No | No | |
+|Microsoft. Network/privateEndpoints| No | No | |
+|Microsoft. Network/privateLinkServices| No | No |
+|Microsoft. Network/publicipaddresses | No | No |[Veřejné IP adresy](./metrics-supported.md#microsoftnetworkpublicipaddresses)|
+|Microsoft. Network/trafficManagerProfiles | Ano | No | [Profily Traffic Manageru](./metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
+|Microsoft. OperationalInsights/pracovní prostory| Ano | No | [Pracovní prostory služby Log Analytics](./metrics-supported.md#microsoftoperationalinsightsworkspaces)|
+|Microsoft. peering/peering | Ano | No | [Partnerské vztahy](./metrics-supported.md#microsoftpeeringpeerings) |
+|Microsoft. peering/peeringServices | Ano | No | [Služby Peering Service](./metrics-supported.md#microsoftpeeringpeeringservices) |
+|Microsoft. PowerBIDedicated/– kapacity | No | No | [Capacities](./metrics-supported.md#microsoftpowerbidedicatedcapacities) |
+|Microsoft. Relay/obory názvů | Ano | No | [Předávání](./metrics-supported.md#microsoftrelaynamespaces) |
+|Microsoft. Search/searchServices | No | No | [Hledat služby](./metrics-supported.md#microsoftsearchsearchservices) |
+|Microsoft. ServiceBus/obory názvů | Ano | No | [Service Bus](./metrics-supported.md#microsoftservicebusnamespaces) |
+|Microsoft. SQL/managedInstances | No | Ano | [Spravované instance SQL](./metrics-supported.md#microsoftsqlmanagedinstances) |
+|Microsoft. SQL/servery/databáze | No | Ano | [Databáze SQL](./metrics-supported.md#microsoftsqlserversdatabases) |
+|Microsoft. SQL/servery/elasticPools | No | Ano | [Elastické fondy SQL](./metrics-supported.md#microsoftsqlserverselasticpools) |
+|Microsoft. Storage/storageAccounts |Ano | No | [Účty úložiště](./metrics-supported.md#microsoftstoragestorageaccounts)|
+|Microsoft. Storage/storageAccounts/Services | Ano| No | Služby [BLOB Services](./metrics-supported.md#microsoftstoragestorageaccountsblobservices), [souborové](./metrics-supported.md#microsoftstoragestorageaccountsfileservices)služby, [služby front](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) a [tabulkové služby](./metrics-supported.md#microsoftstoragestorageaccountstableservices)|
+|Microsoft. StorageCache/caches | Ano | No | |
+|Microsoft. StorageSync/storageSyncServices | Ano | No | [Služby synchronizace úložiště](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
+|Microsoft. StreamAnalytics/streamingjobs | Ano | No | [Stream Analytics](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
+|Microsoft. VMWareCloudSimple/virtualMachines | Ano | No | [Virtuální počítače CloudSimple](./metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines) |
+|Microsoft. Web/hostingEnvironments/multiRolePools | Ano | No | [App Service Environment fondů s více rolemi](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
+|Microsoft. Web/hostingEnvironments/workerPools | Ano | No | [App Service Environment fondy pracovních procesů](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
+|Microsoft. Web/serverových farem | Ano | No | [Plány App Service](./metrics-supported.md#microsoftwebserverfarms)|
+|Microsoft. Web/weby | Ano | No | [App Services](./metrics-supported.md#microsoftwebsites-excluding-functions) a [funkce](./metrics-supported.md#microsoftwebsites-functions)|
+|Microsoft. Web/weby/sloty | Ano | No | [Sloty App Service](./metrics-supported.md#microsoftwebsitesslots)|
 
 ## <a name="payload-schema"></a>Schéma datové části
 

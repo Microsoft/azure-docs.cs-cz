@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 9816ea7dd9f5aef9dcdd62319f8cc4408eff3fd8
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 90b4ffb273fc314a7c92971490fb09b6f0c131ee
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987252"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258352"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a .NET
 
@@ -32,7 +32,7 @@ Pokud se tedy snažíte zvýšit výkon databáze, zvažte tyto možnosti:
 
 Pro zlepšení výkonu doporučujeme zpracování bitového hostitelského systému Windows 64. Sada SQL SDK obsahuje nativní ServiceInterop.dll k analýze a optimalizaci dotazů v místním prostředí. ServiceInterop.dll se podporuje jenom na platformě Windows x64. Pro Linux a jiné nepodporované platformy, kde ServiceInterop.dll není k dispozici, je bráně k získání optimalizovaného dotazu učiněno další síťové volání. Následující typy aplikací používají ve výchozím nastavení 32 hostitelského zpracování. Chcete-li změnit zpracování hostitele na 64, postupujte podle těchto kroků na základě typu vaší aplikace:
 
-- U spustitelných aplikací lze změnit zpracování hostitele nastavením možnosti [cíl platformy](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) na hodnotu **x64** v okně **Vlastnosti projektu** na kartě **sestavení** .
+- U spustitelných aplikací lze změnit zpracování hostitele nastavením možnosti [cíl platformy](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) na hodnotu **x64**  v okně **Vlastnosti projektu** na kartě **sestavení** .
 
 - U testovacích projektů založených na VSTest můžete změnit zpracování hostitele tak, **Test**že  >  v nabídce Test sady Visual Studio vyberete**možnost nastavení test testu**  >  **výchozí architektura procesoru jako x64** . **Test**
 
@@ -71,15 +71,12 @@ Způsob připojení klienta k Azure Cosmos DB má důležité dopady na výkon, 
      Pokud vaše aplikace běží v podnikové síti s přísnými omezeními brány firewall, je nejlepší volbou režim brány, protože používá standardní port HTTPS a jeden koncový bod. Kompromisy týkající se výkonu však jsou v tom, že režim brány zahrnuje dodatečné směrování sítě pokaždé, když se data čtou nebo se zapisují do Azure Cosmos DB. Přímý režim proto nabízí lepší výkon, protože je k dispozici méně síťových segmentů. Režim připojení brány doporučujeme také v případě, že spouštíte aplikace v prostředích, které mají omezený počet připojení soketu.
 
      Při použití sady SDK v Azure Functions, zejména v [plánu spotřeby](../azure-functions/functions-scale.md#consumption-plan), si pamatujte na aktuální [omezení připojení](../azure-functions/manage-connections.md). V takovém případě může být režim brány lepší, pokud také pracujete s jinými klienty na bázi protokolu HTTP v rámci vaší aplikace Azure Functions.
-
-
-V režimu brány Azure Cosmos DB pomocí rozhraní Azure Cosmos DB API pro MongoDB používat port 443 a porty 10250, 10255 a 10256. Port 10250 se mapuje na výchozí instanci MongoDB bez geografické replikace. Porty 10255 a 10256 jsou mapovány na instanci MongoDB, která má geografickou replikaci.
      
-Pokud používáte protokol TCP v přímém režimu kromě portů brány, je nutné zajistit, aby byl rozsah portů mezi 10000 a 20000 otevřený, protože Azure Cosmos DB používá dynamické porty TCP (při použití přímého režimu na [soukromých koncových bodech](./how-to-configure-private-endpoints.md)musí být otevřen plný rozsah portů TCP-od 0 do 65535-). Ve výchozím nastavení jsou porty otevřené pro standardní konfiguraci virtuálních počítačů Azure. Pokud se tyto porty neotevřou a pokusíte se použít protokol TCP, obdržíte nedostupnou chybu služby 503. Tato tabulka zobrazuje režimy připojení dostupné pro různá rozhraní API a porty služeb používané pro každé rozhraní API:
+Pokud používáte protokol TCP v přímém režimu kromě portů brány, je nutné zajistit, aby byl rozsah portů mezi 10000 a 20000 otevřený, protože Azure Cosmos DB používá dynamické porty TCP. Při použití přímého režimu u [privátních koncových bodů](./how-to-configure-private-endpoints.md)by se mělo otevřít celý rozsah portů TCP od 0 do 65535. Ve výchozím nastavení jsou porty otevřené pro standardní konfiguraci virtuálních počítačů Azure. Pokud se tyto porty neotevřou a pokusíte se použít protokol TCP, obdržíte nedostupnou chybu služby 503. V následující tabulce jsou uvedeny režimy připojení dostupné pro různá rozhraní API a porty služeb používané pro každé rozhraní API:
 
 |Režim připojení  |Podporovaný protokol  |Podporované sady SDK  |Port API/Service  |
 |---------|---------|---------|---------|
-|brána  |   HTTPS    |  Všechny sady SDK    |   SQL (443), MongoDB (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
+|brána  |   HTTPS    |  Všechny sady SDK    |   SQL (443), MongoDB (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443) <br> Port 10250 se mapuje na výchozí rozhraní Azure Cosmos DB API pro instanci MongoDB bez geografické replikace. V případě, že jsou porty 10255 a 10256 mapovány na instanci, která má geografickou replikaci.   |
 |Direct    |     TCP    |  .NET SDK    | Při použití koncových bodů veřejné/služby: porty v rozsahu 10000 až 20000<br>Při použití privátních koncových bodů: porty v rozsahu 0 až 65535 |
 
 Azure Cosmos DB nabízí jednoduchý a otevřený programovací model RESTful přes protokol HTTPS. Navíc nabízí efektivní protokol TCP, který se také RESTful ve svém komunikačním modelu a je dostupný prostřednictvím klientské sady SDK pro .NET. Protokol TCP používá pro počáteční ověřování a šifrování provozu protokol TLS. Pro nejlepší výkon použijte protokol TCP, pokud je to možné.
@@ -167,8 +164,8 @@ Při použití režimu brány se požadavky na Azure Cosmos DB zavedou přes HTT
 **Ladění paralelních dotazů pro dělené kolekce**
 
 Sada SQL .NET SDK podporuje paralelní dotazy, které umožňují paralelní dotazování kontejneru rozděleného na oddíly. Další informace najdete v tématu [ukázky kódu](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs) týkající se práce se sadami SDK. Paralelní dotazy jsou navržené tak, aby poskytovaly lepší latenci a propustnost dotazů než jejich sériové protějšky. Paralelní dotazy poskytují dva parametry, které můžete ladit podle svých požadavků: 
-- `MaxConcurrency`Určuje maximální počet oddílů, které lze dotazovat paralelně. 
-- `MaxBufferedItemCount`Určuje počet předběžně načtených výsledků.
+- `MaxConcurrency` Určuje maximální počet oddílů, které lze dotazovat paralelně. 
+- `MaxBufferedItemCount` Určuje počet předběžně načtených výsledků.
 
 ***Stupeň optimalizace souběžnosti***
 

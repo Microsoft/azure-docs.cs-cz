@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d2681c09030ff0f36938d7a09e1d1b2e9aa645c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2cae29bb4edaf7040b1cb41293c902f975a03f23
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82166306"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258779"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí sady nástrojů Azure AD SAML Toolkit
 
@@ -82,11 +82,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://samltoolkit.azurewebsites.net/`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL: `https://samltoolkit.azurewebsites.net/`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL:`https://samltoolkit.azurewebsites.net`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL: `https://samltoolkit.azurewebsites.net`
 
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL:`https://samltoolkit.azurewebsites.net/SAML/Consume`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL: `https://samltoolkit.azurewebsites.net/SAML/Consume`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné hodnoty. Aktualizujte tyto hodnoty pomocí vlastního přihlašovací adresy URL, identifikátoru a adresy URL odpovědi, které jsou vysvětleny dále v tomto kurzu.
@@ -107,9 +107,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -139,7 +139,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     ![Konfigurace SAML sady Azure AD SAML Toolkit](./media/saml-toolkit-tutorial/saml-configure.png)
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
     ![Služba Azure AD SAML Toolkit vytvořit jednotné přihlašování](./media/saml-toolkit-tutorial/createsso.png)
 
@@ -155,13 +155,13 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     1. Klikněte na **zvolit soubor** a nahrajte soubor **certifikátu (RAW)** , který jste stáhli z Azure Portal.
 
-    1. Klikněte na **Vytvořit**.
+    1. Klikněte na možnost **Vytvořit**.
 
     1. Kopírování přihlašovacích adres URL, identifikátorů a hodnot adresy URL služby ACS na stránce konfigurace jednotného přihlašování SAML Toolkit a vložení do v **části základní konfigurační** pole v Azure Portal.
 
 ### <a name="create-azure-ad-saml-toolkit-test-user"></a>Vytvořit testovacího uživatele pro Azure AD SAML Toolkit
 
-V této části se ve službě Azure AD SAML Toolkit vytvoří uživatel s názvem B. Simon. Azure AD SAML Toolkit podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel už v sadě Azure AD SAML Toolkit neexistuje, vytvoří se po ověření nový.
+V této části se ve službě Azure AD SAML Toolkit vytvoří uživatel s názvem B. Simon. Vytvořte prosím v nástroji testovacího uživatele tak, že zaregistrujete nového uživatele a zadáte všechny podrobnosti o uživateli. 
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -169,11 +169,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici sady Azure AD SAML Toolkit na přístupovém panelu byste měli být automaticky přihlášeni ke službě Azure AD SAML Toolkit, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

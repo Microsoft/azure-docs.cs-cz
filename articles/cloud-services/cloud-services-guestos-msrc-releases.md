@@ -10,17 +10,73 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/11/2020
+ms.date: 8/15/2020
 ms.author: yohaddad
-ms.openlocfilehash: 3fb9c863b94c65d7a4333d734648d308a904e355
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 21dcc10be255c0795058886188b4380266679963
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142345"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258289"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
+
+## <a name="august-2020-guest-os"></a>2020. srpna hostovaný operační systém
+>[!NOTE]
+>V tuto chvíli probíhá navýšení hostovaného operačního systému pro virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. V hostovaném operačním systému z srpna jsou zahrnuté následující opravy. Tento seznam se může změnit.
+
+
+| Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| --- | --- | --- | --- | --- |
+|  Rel. 20-08 |  [4571687]  |  Kumulativní aktualizace IE | 2,101, 3,88, 4,81 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4561600]  |  Aktualizace pro Flash | 3,88, 4,81, 5,46, 6,22 | 9. června 2020 |
+|  Rel. 20-08 |  [4571694]  |  Nejnovější kumulativní aktualizace | 6,22 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4565349]  |  Nejnovější kumulativní aktualizace | 5,46 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4570673]  |  Aktualizace servisního zásobníku | 2,101 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4571729]  |  Měsíční souhrn | 2,101 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569767]  |  Shrnutí zabezpečení a kvality .NET Framework 3.5.1 | 2,101 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569780]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 2,101 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569765]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | 3,88 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569779]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 3,88 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4566426]  |  Aktualizace servisního zásobníku | 3,88 | 14. července 2020 |
+|  Rel. 20-08 |  [4571736]  |  Měsíční souhrn | 3,88 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4566425]  |  Aktualizace servisního zásobníku | 4,81 | 14. července 2020 |
+|  Rel. 20-08 |  [4571703]  |  Měsíční souhrn | 4,81 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569768]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | 4,81 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569778]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 4,81 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4494175]  |  Vyžádal povolení mikrokódu | 5,46 | 25. února 2020 |
+|  Rel. 20-08 |  [4565912]  |  Aktualizace servisního zásobníku | 5,46 | 14. července 2020 |
+|  Rel. 20-08 |  [4569746]  |  Shrnutí zabezpečení a kvality .NET Framework 4,8 | 5,46 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569776]  |  .NET Framework 3,5 a kumulativní aktualizace 4.7.2 | 6,22 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4569750]  |  Kumulativní aktualizace .NET Framework 3,5 a 4,8 | 6,22 | 11. srpna 2020 |
+|  Rel. 20-08 |  [4566424]  |  Aktualizace servisního zásobníku | 6,22 | 11. srpna 2020 |
+
+
+
+[4571687]: https://support.microsoft.com/kb/4571687
+[4561600]: https://support.microsoft.com/kb/4561600
+[4571694]: https://support.microsoft.com/kb/4571694
+[4565349]: https://support.microsoft.com/kb/4565349
+[4570673]: https://support.microsoft.com/kb/4570673
+[4571729]: https://support.microsoft.com/kb/4571729
+[4569767]: https://support.microsoft.com/kb/4569767
+[4569780]: https://support.microsoft.com/kb/4569780
+[4569765]: https://support.microsoft.com/kb/4569765
+[4569779]: https://support.microsoft.com/kb/4569779
+[4566426]: https://support.microsoft.com/kb/4566426
+[4571736]: https://support.microsoft.com/kb/4571736
+[4566425]: https://support.microsoft.com/kb/4566425
+[4571703]: https://support.microsoft.com/kb/4571703
+[4569768]: https://support.microsoft.com/kb/4569768
+[4569778]: https://support.microsoft.com/kb/4569778
+[4494175]: https://support.microsoft.com/kb/4494175
+[4565912]: https://support.microsoft.com/kb/4565912
+[4569746]: https://support.microsoft.com/kb/4569746
+[4569776]: https://support.microsoft.com/kb/4569776
+[4569750]: https://support.microsoft.com/kb/4569750
+[4566424]: https://support.microsoft.com/kb/4566424
+
 
 ## <a name="july-2020-guest-os"></a>Z července 2020 hostovaný operační systém
 >[!NOTE]
@@ -119,7 +175,7 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 20-05  |  [4556798]  |  Internet Explorer   |  [2,98], [3,85], [4,78]  |  12. května 2020  |
+|  Rel. 20-05  |  [4556798]  |  Internet Explorer   |  [2,98],  [3,85], [4,78]  |  12. května 2020  |
 |  Rel. 20-05  |  [4556813]  |  Nejnovější kumulativní aktualizace (LCU)   |  [5,43]  |  12. května 2020  |
 |  Rel. 20-05  |  [4551853]  |  Nejnovější kumulativní aktualizace (LCU)   |  [6,19]  |  12. května 2020  |
 |  Rel. 20-05  |  [4552940]  |  Měsíční souhrn   |  [2,98]  |  12. května 2020  |

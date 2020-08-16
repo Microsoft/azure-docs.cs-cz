@@ -1,15 +1,15 @@
 ---
 title: Pochopte, jak budou výstrahy metriky fungovat v Azure Monitor.
 description: Získejte přehled o tom, co můžete dělat s výstrahami metrik a jak fungují v Azure Monitor.
-ms.date: 07/16/2020
+ms.date: 08/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 9ac034eb144e5873f8f73ab7b1d7459394ce4775
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 035b68afed7383956beb13e367aa7a1f6dfcd070
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327136"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258433"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Principy fungování upozornění na metriky ve službě Azure Monitor
 
@@ -137,10 +137,13 @@ Tato funkce se v současné době podporuje pro metriky platforem (ne pro vlastn
 
 | Služba | Veřejné Azure | Státní správa | Čína |
 |:--------|:--------|:--------|:--------|
-| Virtuální počítače  | **Ano** | Ne | Ne |
-| Databáze systému SQL Server | **Ano** | **Ano** | Ne |
-| Elastické fondy SQL serveru | **Ano** | **Ano** | Ne |
-| Hraniční zařízení datového boxu | **Ano** | **Ano** | Ne |
+| Virtuální počítače  | **Ano** | No | No |
+| Databáze systému SQL Server | **Ano** | **Ano** | **Ano** |
+| Elastické fondy SQL serveru | **Ano** | **Ano** | **Ano** |
+| Fondy kapacity souborů NetApp | **Ano** | **Ano** | **Ano** |
+| Svazky NetApp souborů | **Ano** | **Ano** | **Ano** |
+| Trezory klíčů | **Ano** | **Ano** | **Ano** |
+| Hraniční zařízení datového boxu | **Ano** | **Ano** | **Ano** |
 
 Můžete určit rozsah monitorování jedním pravidlem výstrahy metriky jedním ze tří způsobů. Například u virtuálních počítačů můžete obor zadat jako:  
 

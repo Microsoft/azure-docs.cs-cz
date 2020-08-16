@@ -4,12 +4,12 @@ description: Naučte se, jak pomocí automatického škálování clusteru autom
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: af09d594dd745b64901965499df4245fa2e6a85f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9f1dcc64569e9822e3703312740450e2528479dc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130830"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257515"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatické škálování clusteru pro splnění požadavků aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -20,12 +20,6 @@ V tomto článku se dozvíte, jak povolit a spravovat automatické škálování
 ## <a name="before-you-begin"></a>Než začnete
 
 Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.76 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
-
-## <a name="limitations"></a>Omezení
-
-Při vytváření a správě clusterů AKS, které používají automatické škálování clusteru, platí následující omezení:
-
-* Nelze použít doplněk směrování aplikace HTTP.
 
 ## <a name="about-the-cluster-autoscaler"></a>O automatickém škálování clusteru
 
@@ -44,7 +38,7 @@ V případě potřeby můžete také snížit počet lusků a uzlů, a to jak ho
 
 Další informace o tom, jak se automatické škálování clusteru nedá škálovat, najdete v tématu [Jaké typy lusků můžou zabránit automatickému škálování clusteru v odebírání uzlu][autoscaler-scaledown] .
 
-Automatické škálování clusteru používá parametry spouštění pro věci, jako jsou časové intervaly mezi událostmi škálování a mezními hodnotami prostředků. Další informace o tom, jaké parametry používá nástroj pro automatické škálování clusteru, najdete v tématu [co jsou parametry automatického škálování clusteru?][autoscaler-parameters]
+Automatické škálování clusteru používá parametry spouštění pro věci, jako jsou časové intervaly mezi událostmi škálování a mezními hodnotami prostředků. Další informace o tom, jaké parametry používá nástroj pro automatické škálování clusteru, najdete v tématu [použití profilu automatického škálování](#using-the-autoscaler-profile).
 
 Cluster a horizontální, pod kterými můžou spolupracovníci spolupracovat a často se obě nasazují v clusteru. V kombinaci se horizontální automatické škálování pod ním zaměřuje na spouštění počtu lusků potřebných pro splnění požadavků aplikace. Automatické škálování clusteru se zaměřuje na spouštění počtu uzlů potřebných k podpoře naplánovaných lusků.
 
@@ -135,7 +129,7 @@ Můžete taky nakonfigurovat podrobnější informace o automatickém škálová
 | horizontální navýšení kapacity – zpoždění po chybě   | Jak dlouho po selhání horizontálního navýšení kapacity se zkušební verze obnoví                     | 3 minuty     |
 | horizontální navýšení kapacity – nepotřebné         | Jak dlouho by měl uzel být nepotřebný, než bude mít nárok na horizontální navýšení kapacity                  | 10 minut    |
 | horizontální navýšení kapacity – nečitelný čas          | Doba, po kterou by měl být nečitelný uzel nutný, než bude mít nárok na horizontální navýšení kapacity         | 20 minut    |
-| škála-snížení využití – prahová hodnota | Úroveň využití uzlu definovaná jako součet požadovaných prostředků dělený kapacitou, pod kterou je možné uzel zvážit pro horizontální navýšení kapacity | 0.5 |
+| škála-snížení využití – prahová hodnota | Úroveň využití uzlu definovaná jako součet požadovaných prostředků dělený kapacitou, pod kterou je možné uzel zvážit pro horizontální navýšení kapacity | 0,5 |
 | Max – řádné – ukončení – s     | Maximální počet sekund, po které bude automatické škálování clusteru čekat po ukončení při pokusu o horizontální navýšení kapacity uzlu. | 600 sekund   |
 | rovnováha – podobný uzel – skupiny | Zjištění podobných fondů uzlů a vyvážení počtu uzlů mezi nimi | false (nepravda) |
 
@@ -165,7 +159,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-Pokud povolíte automatické škálování clusteru u fondů uzlů v clusteru, budou tyto clustery také používat profil automatického škálování clusteru. Příklad:
+Pokud povolíte automatické škálování clusteru u fondů uzlů v clusteru, budou tyto clustery také používat profil automatického škálování clusteru. Například:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -182,7 +176,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>Nastavení profilu automatického škálování clusteru při vytváření clusteru AKS
 
-Můžete také použít parametr *cluster-autoscaleer-Profile* při vytváření clusteru. Příklad:
+Můžete také použít parametr *cluster-autoscaleer-Profile* při vytváření clusteru. Například:
 
 ```azurecli-interactive
 az aks create \

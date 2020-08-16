@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3a2e4bbff1274a2473ac961b8355ca4193dcc69f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 52700df5c2977f33c988fcb34cdc3d67844d1d49
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924899"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257558"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Kurz: Konfigurace přiblížení pro Automatické zřizování uživatelů
 
@@ -50,7 +50,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 ## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace přiblížení na podporu zřizování pomocí Azure AD
 
-1. Přihlaste se ke [konzole správce lupy](https://zoom.us/signin). Přejděte na **upřesnit > přiblížení pro vývojáře** v levém navigačním podokně.
+1. Přihlaste se ke [konzole správce lupy](https://zoom.us/signin). Přejděte na **Web Advanced > App Marketplace** v levém navigačním podokně.
 
     ![Integrace lupy](media/zoom-provisioning-tutorial/zoom01.png)
 
@@ -89,7 +89,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro přiblížení v Azure AD:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

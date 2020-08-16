@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 81fc8de7e5a70ebb95e06a8e362cda41f8bfe1aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95c0a884b335920df9803a9b468ab522646b26a1
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945014"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258753"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Použití samoobslužného expedice pro Azure Data Box Disk v Azure Portal
 
@@ -28,6 +28,7 @@ Samostatně spravovaná dodávka je k dispozici jako možnost při [objednání 
 * Japonsko
 * Singapur
 * Jižní Korea
+* Jižní Afrika
 * Indie (Preview)
 
 ## <a name="use-self-managed-shipping"></a>Použití samoobslužné expedice
@@ -36,13 +37,13 @@ Když umístíte Data Box Disk pořadí, můžete vybrat možnost samostatně sp
 
 1. V pořadí Azure Data Box Disk v části **kontaktní údaje**vyberte **+ Přidat dodací adresu**.
 
-   ![Samostatně spravovaná dodávka](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+   ![Expedice řízená svépomocí](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. Když zvolíte typ přenosu, vyberte možnost **expedice samostatně spravovaná** . Tato možnost je k dispozici pouze v případě, že jste v podporované oblasti, jak je popsáno v části požadavky.
 
 3. Po zadání dodací adresy ji budete muset ověřit a dokončit objednávku.
 
-   ![Samostatně spravovaná dodávka](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Expedice řízená svépomocí](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Po přípravě zařízení a obdržení e-mailového oznámení můžete naplánovat vyzvednutí. V pořadí Azure Data Box Disk klikněte na **Přehled** a pak vyberte **Naplánovat vyzvednutí**.
 
@@ -52,7 +53,7 @@ Když umístíte Data Box Disk pořadí, můžete vybrat možnost samostatně sp
 
    ![Naplánovat vyzvednutí](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-user-pickup-02c.png)
 
-6. Po naplánování vyzvednutí zařízení budete moct zobrazit autorizační kód v **plánu vyzvednutí pro Azure**.
+6. Po naplánování vyzvednutí zařízení budete moct zobrazit autorizační kód v  **plánu vyzvednutí pro Azure**.
 
    ![Zobrazení autorizačního kódu](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
 

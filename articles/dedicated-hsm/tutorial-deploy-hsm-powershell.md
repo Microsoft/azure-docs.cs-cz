@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/14/2020
 ms.author: johndaw
-ms.openlocfilehash: e7958a722f7010d63794cacc072289030a72ed99
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 93333f2f0a2ef4aaf44884aa30afaa959459aaad
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512499"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257421"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Kurz – nasazení HSM do existující virtuální sítě pomocí prostředí PowerShell
 
@@ -38,9 +38,9 @@ Tento kurz se zaměřuje na pár HSM a požadovanou bránu ExpressRoute (viz pod
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Vyhrazený modul HARDWAROVÉho zabezpečení Azure není v Azure Portal aktuálně k dispozici, takže veškerá interakce se službou bude prostřednictvím příkazového řádku nebo pomocí PowerShellu. V tomto kurzu použijete PowerShell v Azure Cloud Shell. Pokud prostředí PowerShell začínáte, postupujte podle pokynů v části Začínáme: [Azure PowerShell Začínáme](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Vyhrazený modul HARDWAROVÉho zabezpečení Azure není v Azure Portal aktuálně k dispozici, takže veškerá interakce se službou bude prostřednictvím příkazového řádku nebo pomocí PowerShellu. V tomto kurzu použijete PowerShell v Azure Cloud Shell. Pokud prostředí PowerShell začínáte, postupujte podle pokynů v části Začínáme: [Azure PowerShell Začínáme](/powershell/azure/get-started-azureps).
 
 Předpoklady:
 
@@ -72,12 +72,12 @@ Zařízení HSM se zřídí do virtuální sítě zákazníků. To předpoklád�
 
 Jakmile budete mít soubory, musíte upravit soubor parametrů a vložit tak preferované názvy prostředků. To znamená, že se upravují řádky s hodnotou:.
 
-- `namingInfix`Předpona názvů prostředků HSM
-- `ExistingVirtualNetworkName`Název virtuální sítě použité pro HSM
-- `DedicatedHsmResourceName1`Název prostředku HSM v razítku Datacenter 1
-- `DedicatedHsmResourceName2`Název prostředku HSM v razítku Datacenter 2
-- `hsmSubnetRange`Rozsah IP adres podsítě pro HSM
-- `ERSubnetRange`Rozsah IP adres podsítě pro bránu virtuální sítě
+- `namingInfix` Předpona názvů prostředků HSM
+- `ExistingVirtualNetworkName` Název virtuální sítě použité pro HSM
+- `DedicatedHsmResourceName1` Název prostředku HSM v razítku Datacenter 1
+- `DedicatedHsmResourceName2` Název prostředku HSM v razítku Datacenter 2
+- `hsmSubnetRange` Rozsah IP adres podsítě pro HSM
+- `ERSubnetRange` Rozsah IP adres podsítě pro bránu virtuální sítě
 
 Příklad těchto změn je následující:
 

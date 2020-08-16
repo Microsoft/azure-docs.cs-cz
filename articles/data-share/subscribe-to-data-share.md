@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/30/2020
-ms.openlocfilehash: 999d99b0ed4701eb6758ed0bf7a71ca625e622b5
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: 409f143ce67e301e3b2a973d8d2db80380fbd50e
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512087"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258660"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Kurz: přijetí a příjem dat pomocí Azure Data Share  
 
@@ -93,38 +93,35 @@ Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 
    V poli **přijatý název sdílené složky** můžete ponechat výchozí hodnotu zadanou daty nebo zadat nový název přijaté sdílené složky. 
 
-   ![Cílový účet pro sdílení dat](./media/target-data-share.png "Cílový účet pro sdílení dat") 
-
-1. Až budete souhlasit s podmínkami použití a zadáte umístění pro sdílenou složku, vyberte možnost *přijmout a konfigurovat*. Vytvoří se předplatné sdílení.
-
-   U sdílení na základě snímků vás další obrazovka vyzve k výběru cílového účtu úložiště, do kterého se mají data kopírovat. 
+   Jakmile souhlasíte s podmínkami použití a zadáte účet pro sdílení dat pro správu přijaté sdílené složky, vyberte **přijmout a nakonfigurovat**. Vytvoří se předplatné sdílení. 
 
    ![Přijmout možnosti](./media/accept-options.png "Přijmout možnosti") 
 
-   Pokud chcete pozvánku přijmout teď, ale později nakonfigurovat cílové úložiště dat, vyberte *přijmout a nakonfigurovat později*. Pokud chcete později pokračovat v konfiguraci úložiště, přečtěte si článek [Konfigurace stránky mapování datových sad](how-to-configure-mapping.md) , kde najdete podrobné pokyny pro obnovení konfigurace sdílené složky. 
-
-   Informace o tom, jak obnovit konfiguraci sdílení dat, najdete v tématu věnovaném místnímu sdílení na stránce [Konfigurace mapování datových sad](how-to-configure-mapping.md) . 
+   Tím přejdete na přijatý podíl v účtu pro sdílení dat. 
 
    Pokud nechcete pozvánku přijmout, vyberte *odmítnout*. 
 
-## <a name="configure-storage"></a>Konfigurace úložiště
-1. V části *nastavení cílového úložiště*vyberte předplatné, skupinu prostředků a účet úložiště, do kterého chcete data přijímat. 
+## <a name="configure-received-share"></a>Konfigurace přijaté sdílené složky
+Chcete-li nakonfigurovat, kde chcete přijímat data, postupujte podle následujících kroků.
 
-   ![Nastavení cílového úložiště](./media/target-storage-settings.png "Cílové úložiště") 
+1. Vyberte kartu datové **sady** . zaškrtněte políčko vedle datové sady, ke které chcete přiřadit cíl. Vyberte možnost **+ mapovat na cíl** a zvolte cílové úložiště dat. 
 
-1. Pokud chcete získat pravidelnou aktualizaci vašich dat, ujistěte se, že jste povolili nastavení snímku. Všimněte si, že se zobrazí jenom plán nastavení snímků, pokud ho poskytovatel dat zahrnul do sdílené složky dat. 
+   ![Mapovat na cíl](./media/dataset-map-target.png "Mapovat na cíl") 
 
-   ![Nastavení snímku](./media/snapshot-settings.png "Nastavení snímku") 
+1. Vyberte cílový typ úložiště dat, do kterého chcete data založit. Budou přepsány všechny datové soubory nebo tabulky v cílovém úložišti dat se stejnou cestou a názvem. 
 
-1. Vyberte *Uložit*. 
+   V případě místního sdílení vyberte v zadaném umístění úložiště dat. Umístění je datové centrum Azure, kde se nachází zdrojové úložiště dat poskytovatele dat. Po namapování datové sady můžete pro přístup k datům sledovat odkaz v cílové cestě.
 
-> [!IMPORTANT]
-> Pokud přijímáte data založená na jazyce SQL a chcete tato data přijímat do zdroje založeného na jazyce SQL, přejděte na téma [Konfigurace mapování datových sad](how-to-configure-mapping.md) s návodem, jak se naučíte konfigurovat SQL Server jako cíl pro datovou sadu. 
+   ![Cílový účet úložiště](./media/dataset-map-target-sql.png "Cílové úložiště") 
+
+1. Pokud pro sdílení na základě snímků vytvořil poskytovatel dat plán snímků, který poskytuje pravidelnou aktualizaci dat, můžete také povolit plán snímků výběrem karty **plán snímku** . zaškrtněte políčko vedle plánu snímku a vyberte **+ Povolit**.
+
+   ![Povolit plán snímků](./media/enable-snapshot-schedule.png "Povolit plán snímků")
 
 ## <a name="trigger-a-snapshot"></a>Aktivace snímku
 Tyto kroky platí pouze pro sdílení na základě snímků.
 
-1. Snímek můžete aktivovat na kartě přijaté sdílené složky – > podrobnosti výběrem **spouštěcího snímku**. Tady můžete aktivovat úplný nebo přírůstkový snímek dat. Pokud data od poskytovatele dat přijímáte poprvé, vyberte možnost úplné kopírování. 
+1. Snímek můžete aktivovat výběrem karty **Podrobnosti** a **snímku triggeru**. Tady můžete aktivovat úplný nebo přírůstkový snímek dat. Pokud data od poskytovatele dat přijímáte poprvé, vyberte možnost úplné kopírování. 
 
    ![Spustit snímek](./media/trigger-snapshot.png "Spustit snímek") 
 
@@ -133,7 +130,7 @@ Tyto kroky platí pouze pro sdílení na základě snímků.
    ![Datové sady příjemců](./media/consumer-datasets.png "Mapování datové sady příjemce") 
 
 ## <a name="view-history"></a>Zobrazení historie
-Pokud chcete zobrazit historii snímků, přejděte k části přijaté sdílené složky – historie >. Tady najdete historii všech snímků vygenerovaných za posledních 60 dnů. 
+Tento krok platí jenom pro sdílení na základě snímků. Chcete-li zobrazit historii snímků, vyberte kartu **Historie** . Tady najdete historii všech snímků, které se vygenerovaly za posledních 30 dní. 
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak přijmout a získat sdílenou složku Azure Data. Další informace o konceptech Azure Data Share najdete v článku [Koncepty: terminologie Azure Data Share](terminology.md).

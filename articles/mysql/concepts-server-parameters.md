@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: de1345fca418118e88929870cd2f4007dd36b3a4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835982"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258554"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Parametry serveru v Azure Database for MySQL
 
@@ -98,7 +98,7 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 ### <a name="innodb_file_per_table"></a>innodb_file_per_table
 
 > [!NOTE]
-> `innodb_file_per_table`dá se aktualizovat jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
+> `innodb_file_per_table` dá se aktualizovat jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
 
 MySQL ukládá tabulku InnoDB v různých tabulkových prostorech na základě konfigurace, kterou jste zadali během vytváření tabulky. [Systémový tabulkový prostor](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) je oblast úložiště pro slovník InnoDB data Dictionary. [Tabulkový prostor pro tabulku](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) obsahuje data a indexy pro jednu tabulku InnoDB a je uložený v systému souborů ve vlastním datovém souboru. Toto chování je řízeno `innodb_file_per_table` parametrem serveru. Nastavení `innodb_file_per_table` na `OFF` způsobí, že InnoDB vytvoří tabulky v systémovém tabulkovém prostoru. V opačném případě InnoDB vytvoří tabulky v tabulkových prostorech v souborové tabulce.
 
@@ -212,6 +212,9 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 Pokud se zobrazí chybová zpráva podobná velikosti řádku je moc velká (> 8126), můžete **innodb_strict_mode**parametru vypnout. Parametr serveru **innodb_strict_mode** není povoleno upravovat globálně na úrovni serveru, protože pokud je velikost dat řádku větší než 8k, data budou zkrácena, aniž by došlo k chybě, která by vedla k potenciální ztrátě dat. Doporučujeme schéma upravit tak, aby odpovídalo limitu velikosti stránky. 
 
 Tento parametr lze nastavit na úrovni relace pomocí `init_connect` . Pokud chcete nastavit **innodb_strict_mode** na úrovni relace, přečtěte si téma [Nastavení parametrů není uvedené](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed).
+
+> [!NOTE]
+> Pokud máte server repliky pro čtení, nastavení **innodb_strict_mode** pro vypnutí na úrovni relace na hlavním serveru způsobí přerušení replikace. Pokud máte repliky čtení, doporučujeme ponechat parametr nastavený na vypnuto.
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

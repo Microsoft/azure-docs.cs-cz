@@ -3,12 +3,12 @@ title: Snížení nákladů na službu pomocí Azure Advisor
 description: Využijte Azure Advisor k optimalizaci nákladů na nasazení Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: e8f0e555f71c31bb3286cee59bb7161c3ce3986e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15f357248a6174de1e0890a4b45e9fa3930a06fe
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284366"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258533"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Snížení nákladů na službu pomocí Azure Advisor
 
@@ -96,10 +96,12 @@ Pomocí inteligentních informací o počtu, celkové velikosti a transakcích s
 
 Je vhodnější použít dočasný disk s operačním systémem pro krátkodobé IaaS virtuální počítače nebo virtuální počítače se stavovým zatížením. Advisor poskytuje doporučení pro prostředky, které můžou využívat dočasný disk s operačním systémem.
 
+## <a name="reduce-azure-data-explorer-table-cache-period-policy-for-cluster-cost-optimization-preview"></a>Zmenšení mezipaměti Azure Průzkumník dat Table – perioda (zásady) pro optimalizaci nákladů na cluster (Preview)
+Poradce identifikuje prostředky, ve kterých se omezuje zásada mezipaměti tabulky, uvolní uzly clusteru Azure Průzkumník dat s nízkým využitím procesoru, pamětí a konfigurací vysoké velikosti mezipaměti.
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Přístup k cenovým doporučením v Azure Advisor
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte a vyberte [**Advisor**](https://aka.ms/azureadvisordashboard) na libovolné stránce.
 

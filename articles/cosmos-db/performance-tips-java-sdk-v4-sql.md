@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: d8ad191476416bc6ced35c4086d336b7f0a926cb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a014038996ae2846d059551b565feedd8de560a0
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327833"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258315"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB Java SDK v4
 
@@ -45,9 +45,9 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
     Tyto režimy připojení v podstatě vybírají trasu, kterou požadavky na data rovinují – čtení a zápis dokumentů – z klientského počítače na oddíly v Azure Cosmos DB back-endu. Obecně přímým režimem je upřednostňovaná možnost pro nejlepší výkon – umožňuje klientovi otevřít připojení TCP přímo k oddílům v Azure Cosmos DB back-endu a *odesílat požadavky přímo*, bez jakýchkoli dodavatelů. V režimu brány naopak požadavky vytvořené vaším klientem jsou směrovány na server "brána" v Azure Cosmos DB front-endu, který zase odvolá vaše požadavky na příslušné oddíly v back-endu Azure Cosmos DB. Pokud vaše aplikace běží v podnikové síti s přísnými omezeními brány firewall, je nejlepší volbou režim brány, protože používá standardní port HTTPS a jeden koncový bod. Kompromisy týkající se výkonu však jsou v tom, že režim brány zahrnuje dodatečné směrování sítě (klient brány k bráně plus brána) při každém čtení nebo zápisu dat do Azure Cosmos DB. Díky tomu přímý režim nabízí lepší výkon kvůli menšímu počtu směrování sítě.
 
-    Režim připojení pro požadavky na rovinu dat je konfigurován v Azure Cosmos DB tvůrce klienta pomocí metod *directMode ()* nebo *gatewayMode ()* , jak je znázorněno níže. Chcete-li nakonfigurovat kterýkoli režim s výchozím nastavením, zavolejte buď metodu bez argumentů. V opačném případě předejte instanci třídy nastavení konfigurace jako argument (*DirectConnectionConfig* pro *directMode ()*, *GatewayConnectionConfig* pro *gatewayMode ()*.)
+    Režim připojení pro požadavky na rovinu dat je konfigurován v Azure Cosmos DB tvůrce klienta pomocí metod *directMode ()* nebo *gatewayMode ()* , jak je znázorněno níže. Chcete-li nakonfigurovat kterýkoli režim s výchozím nastavením, zavolejte buď metodu bez argumentů. V opačném případě předejte instanci třídy nastavení konfigurace jako argument (*DirectConnectionConfig* pro *directMode ()*,  *GatewayConnectionConfig* pro *gatewayMode ()*.)
     
-    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Sada Java v4 SDK
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Sada Java v4 SDK
 
     # <a name="async"></a>[Async](#tab/api-async)
 
@@ -65,7 +65,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
     Metoda *directMode ()* má dodatečné přepsání z následujícího důvodu. Operace roviny ovládacího prvku, jako je databáze a CRUD, používají *vždy* režim brány; Pokud uživatel nakonfiguroval přímý režim pro operace roviny dat, operace řídicí roviny použijí nastavení režimu výchozí brány. To vyhovuje většině uživatelů. Uživatel, který požaduje přímý režim pro operace roviny dat, a také tunability parametrů režimu brány řídicích ploch může použít následující přepsání *directMode ()* :
 
-    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Sada Java v4 SDK
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Sada Java v4 SDK
 
     # <a name="async"></a>[Async](#tab/api-async)
 
@@ -133,7 +133,7 @@ Další podrobnosti najdete v pokynech pro [Windows](https://docs.microsoft.com/
 
     Následující fragmenty kódu ukazují, jak inicializovat klienta Azure Cosmos DB pro operaci rozhraní API asynchronního rozhraní API nebo synchronizace, v uvedeném pořadí:
 
-    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Sada Java v4 SDK
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Sada Java v4 SDK
 
     # <a name="async"></a>[Async](#tab/api-async)
 
@@ -316,7 +316,7 @@ Další podrobnosti najdete v pokynech pro [Windows](https://docs.microsoft.com/
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-indexing"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos)
 
-    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=MigrateIndexingAsync)]
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateIndexingAsync)]
 
     Další informace najdete v tématu [Azure Cosmos DB zásady indexování](indexing-policies.md).
 

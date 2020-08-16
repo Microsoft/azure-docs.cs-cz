@@ -3,12 +3,12 @@ title: Zlepšení výkonu aplikací Azure pomocí služby Advisor
 description: Využijte doporučení k výkonu v Azure Advisor ke zlepšení rychlosti a odezvy vašich důležitých podnikových aplikací.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 7ecd6a45dc255f4748ed5074a3adb3d948f4122e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bdca8cd39427fb0d25f8b3308eaf2be24e0eb81a
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057569"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257461"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 
@@ -20,7 +20,7 @@ Doporučení k výkonu v Azure Advisor mohou pomoci zlepšit rychlost a rychlost
 
 Azure Advisor identifikuje profily Traffic Manager, u kterých je nakonfigurované delší hodnoty TTL. V závislosti na tom, jestli je profil nakonfigurovaný pro [rychlé převzetí služeb při selhání](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/), doporučuje nakonfigurovat hodnotu TTL na 20 sekund nebo 60 sekund.
 
-## <a name="improve-database-performance-by-using-sql-database-advisor"></a>Zvýšení výkonu databáze pomocí SQL Database Advisor
+## <a name="improve-database-performance-by-using-sql-database-advisor-temporarily-disabled"></a>Zvýšení výkonu databáze pomocí SQL Database Advisor (dočasně zakázáno)
 
 Azure Advisor poskytuje konzistentní a konsolidované zobrazení doporučení pro všechny prostředky Azure. Integruje se s SQL Database Advisor a dává vám doporučení pro zlepšení výkonu databází.SQL Database Advisor vyhodnocuje výkon vašich databází analýzou historie využití. Potom nabízí doporučení, která jsou nejvhodnější pro spuštění typického zatížení databáze.
 
@@ -151,6 +151,22 @@ Advisor identifikuje kontejnery Azure Cosmos DB, které používají výchozí z
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Nastavení velikosti stránky dotazu na Azure Cosmos DB (MaxItemCount) na hodnotu-1 
 
 Azure Advisor identifikuje kontejnery Azure Cosmos DB, které používají velikost stránky dotazu 100. Pro rychlejší kontroly doporučuje použití velikosti stránky-1. [Přečtěte si další informace o MaxItemCount.](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+
+## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>Zvažte použití funkce akcelerovaného zápisu v clusteru HBA pro zlepšení výkonu clusteru.
+Analýza Azure Advisor v systémových protokolech za posledních 7 dnů a zjistí, jestli cluster zjistil následující scénáře:
+1. Vysoká latence z hlediska času synchronizace WAL 
+2. Vysoký počet žádostí o zápis (minimálně 3 intervaly v délce 1 hodiny s více než 1000 žádostí o zápis (prům.)/sekunda/uzel)
+
+Tato zjištění indikují, že cluster trpí vysokou latencí při zapisování. Důvodem může být to, že ve vašem clusteru bude provedeno velké zatížení. Pokud chcete zvýšit výkon clusteru, můžete zvážit použití funkce akcelerovaného zápisu, kterou poskytuje služba Azure HDInsight HBA. Funkce Akcelerované zápisy pro clustery HDInsight Apache HBase připojuje prémiové disky spravované přes SSD ke každému pracovnímu uzlu (RegionServer) místo použití cloudového úložiště. Ve výsledku pak pro aplikace zajišťuje nízkou latenci při zapisování a lepší odolnost. Další informace o této funkci najdete v článku [Další](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)
+
+## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>Kontrola mezipaměti Azure Průzkumník dat cache – perioda (zásady) pro lepší výkon (Preview)
+Toto doporučení rozsvítí tabulky Azure Průzkumník dat s vysokým počtem dotazů, které se prohledají po nakonfigurovaném období mezipaměti (zásady) (zobrazí se prvních 10 tabulek podle procenta dotazu, které přistupují k datům mimo mezipaměť). Doporučená akce pro zlepšení výkonu clusteru: omezí dotazy na tuto tabulku na minimální časový rozsah (v rámci definovaných zásad). Případně platí, že pokud potřebujete data z celého časového rozsahu, zvyšte dobu mezipaměti na doporučenou hodnotu.
+
+## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>Zvýšení výkonu optimalizací velikosti dočasné tabulky MySQL
+Analýza Advisor indikuje, že váš server MySQL může vydávat zbytečné vstupně-výstupní režii kvůli nízkým nastavením parametrů pro dočasné tabulky. To může vést ke zbytečným transakcím na disku a snížení výkonu. Pokud chcete snížit počet transakcí na disku, doporučujeme zvýšit hodnoty parametrů tmp_table_size a max_heap_table_size. [Další informace](https://aka.ms/azure_mysql_tmp_table)
+
+## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Distribuce dat ve skupině serverů pro distribuci úloh mezi uzly
+Poradce identifikuje skupiny serverů, na kterých nebyla data distribuována, ale zůstává v koordinátorovi. Na základě tohoto doporučení doporučuje poradce, aby Citus výhody distribuce dat na pracovních uzlech pro skupiny serverů. Tím se vylepšit výkon dotazů pomocí prostředku každého uzlu ve skupině serverů. [Další informace](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak získat přístup k doporučením k výkonu v Advisoru
 

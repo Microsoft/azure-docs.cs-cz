@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 04/27/2020
+ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 0dc79132ae75be511b53bf272e578ff0ce7a7775
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986810"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258272"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Omezení dat a přenosové rychlosti rozhraní API pro analýzu textu
 <a name="data-limits"></a>
@@ -31,8 +31,8 @@ V tomto článku najdete omezení velikosti a tarify, které můžete použít k
 
 | Omezení | Hodnota |
 |------------------------|---------------|
-| Maximální velikost jednoho dokumentu | 5 120 znaků měřených pomocí [StringInfo. lengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
-| Maximální velikost celého požadavku | 1 MB |
+| Maximální velikost jednoho dokumentu | 5 120 znaků měřených pomocí [StringInfo. lengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). Vztahuje se také na Analýza textu pro kontejner Health. |
+| Maximální velikost celého požadavku | 1 MB. Vztahuje se také na Analýza textu pro kontejner Health. |
 
 Maximální počet dokumentů, které můžete poslat v rámci jedné žádosti, bude záviset na verzi rozhraní API a funkci, kterou používáte.
 
@@ -48,7 +48,7 @@ V v3 rozhraní API se změnila následující omezení. Překročení následuj�
 | Extrakce klíčových frází | 10 |
 | Rozpoznávání pojmenovaných entit | 5 |
 | Entity Linking | 5 |
-
+| Analýza textu pro kontejner stavu | 1000 |
 #### <a name="version-2"></a>[Verze 2](#tab/version-2)
 
 | Příznak | Maximální počet dokumentů na požadavek | 
@@ -63,7 +63,7 @@ V v3 rozhraní API se změnila následující omezení. Překročení následuj�
 
 ## <a name="rate-limits"></a>Omezení přenosové rychlosti
 
-Vaše omezení četnosti se bude lišit od [cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/). Tato omezení jsou stejná pro obě verze rozhraní API.
+Vaše omezení četnosti se bude lišit od [cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/). Tato omezení jsou stejná pro obě verze rozhraní API. Tyto limity přenosové rychlosti se nevztahují na Analýza textu pro kontejner stavů, které nemají nastavenou omezení četnosti.
 
 | Úroveň          | Počet žádostí za sekundu | Žádosti za minutu |
 |---------------|---------------------|---------------------|
