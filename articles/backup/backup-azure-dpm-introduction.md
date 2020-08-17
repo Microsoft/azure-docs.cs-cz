@@ -3,12 +3,12 @@ title: Příprava serveru DPM pro zálohování úloh
 description: V tomto článku se dozvíte, jak připravit zálohy aplikace System Center Data Protection Manager (DPM) do Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 9891be5eded94c64a6cc256b99510a9c0c673daf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a61112f04d3faef83a80395a7d316c63130e7758
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514165"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263261"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí System Center DPM
 
@@ -26,7 +26,7 @@ Tento článek vysvětluje, jak připravit zálohy aplikace System Center Data P
 
 [Aplikace System Center DPM](/system-center/dpm/dpm-overview) zálohuje data souborů a aplikací. DPM komunikuje s Azure Backup následujícím způsobem:
 
-- **DPM běžící na fyzickém serveru nebo místním virtuálním počítači** – data můžete zálohovat do trezoru záloh v Azure, kromě zálohování na disk a na pásku.
+- **DPM běžící na fyzickém serveru nebo místním virtuálním počítači** – data můžete zálohovat do trezoru záloh v Azure kromě zálohování na disk a na pásku.
 - **DPM běžící na virtuálním počítači Azure** – od verze System Center 2012 R2 s aktualizací Update 3 nebo novější můžete nasadit DPM na virtuálním počítači Azure. Data můžete zálohovat na disky Azure připojené k virtuálnímu počítači nebo použít Azure Backup k zálohování dat do trezoru služby Backup.
 
 Mezi obchodní výhody zálohování serverů DPM do Azure patří:
@@ -44,8 +44,8 @@ DPM na virtuálním počítači s technologií Hyper-V | System Center 2012 SP1 
 DPM na virtuálním počítači VMware | System Center 2012 R2 s kumulativní aktualizací 5 nebo novější.
 Komponenty | Na serveru DPM musí být nainstalováno prostředí Windows PowerShell a .NET Framework 4,5.
 Podporované aplikace | [Přečtěte si](/system-center/dpm/dpm-protection-matrix) , co může aplikace DPM zálohovat.
-Podporované typy souborů | Tyto typy souborů je možné zálohovat pomocí Azure Backup: šifrované (pouze úplné zálohy); Komprimovaná (podpora přírůstkových záloh); Zhuštěné (podporované přírůstkové zálohy); Komprimovaný a zhuštěný (je považován za zhuštěný).
-Nepodporované typy souborů | Servery se systémy souborů s rozlišováním velkých a malých písmen; pevné odkazy (vynecháno); body rozboru (přeskočeny); šifrované a komprimované (vynechané); šifrované a zhuštěné (přeskočené); Komprimovaný datový proud; analyzovat datový proud.
+Podporované typy souborů | Tyto typy souborů je možné zálohovat pomocí Azure Backup:<br> <li>Šifrované (pouze úplné zálohy)<li> Komprimovaná (podpora přírůstkových záloh) <li> Zhuštěné (podporované přírůstkové zálohy)<li> Komprimovaný a zhuštěný (je považován za zhuštěný)
+Nepodporované typy souborů | <li>Servery se systémy souborů s rozlišováním velkých a malých písmen<li> pevné odkazy (vynecháno)<li> body rozboru (přeskočeny)<li> šifrované a komprimované (vynechané)<li> šifrované a zhuštěné (přeskočené)<li> Komprimovaný datový proud<li> analyzovat datový proud
 Místní úložiště | Každý počítač, který chcete zálohovat, musí mít místní volné úložiště, které má nejméně 5% velikosti zálohovaných dat. Například zálohování 100 GB dat vyžaduje minimálně 5 GB volného místa v umístění od začátku.
 Úložiště trezoru | Neexistuje žádné omezení na množství dat, která můžete zálohovat do trezoru Azure Backup, ale velikost zdroje dat (například virtuální počítač nebo databáze) by neměla překročit 54 400 GB.
 Azure ExpressRoute | Data můžete zálohovat přes Azure ExpressRoute s veřejným partnerským vztahem (k dispozici pro staré okruhy) a partnerským vztahem Microsoftu. Zálohování přes soukromý partnerský vztah se nepodporuje.<br/><br/> **S veřejným partnerským vztahem**: Zajistěte přístup k následujícím doménám nebo adresám:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **S partnerským vztahem Microsoftu**vyberte následující služby nebo oblasti a příslušné hodnoty komunity:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure oblasti (podle umístění vašeho trezoru Recovery Services)<br/><br/>-Azure Storage (podle umístění vašeho trezoru Recovery Services)<br/><br/>Další informace najdete v tématu [požadavky na směrování ExpressRoute](../expressroute/expressroute-routing.md).<br/><br/>**Poznámka**: veřejný partnerský vztah je pro nové okruhy zastaralý.
@@ -68,7 +68,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
 1. Otevřete řídicí panel trezoru.
 
-2. V nabídce **Spravovat**klikněte na **infrastruktura zálohování**.
+2. V **možnosti spravovat**vyberte **infrastruktura zálohování**.
 
 3. V nabídce **Konfigurace zálohování** vyberte možnost úložiště pro trezor.
 
@@ -91,32 +91,32 @@ Pokud chcete získat přihlašovací údaje, Stáhněte si soubor s přihlašova
 - Je vaše zodpovědnost za to, že soubor s přihlašovacími údaji trezoru je bezpečný a neohrožuje.
   - Pokud se kontrola přihlašovacích údajů ztratí, můžou se přihlašovací údaje k trezoru použít k registraci dalších počítačů do trezoru.
   - Záložní data se ale šifrují pomocí přístupového hesla, který patří zákazníkovi, takže stávající zálohovaná data nejdou ohrozit.
-- Zajistěte, aby byl soubor uložen v umístění, ke kterému lze přistupovat ze serveru aplikace DPM. Pokud je soubor uložený ve sdílené složce nebo v protokolu SMB, vyhledejte přístupová oprávnění.
+- Zajistěte, aby byl soubor uložen v umístění, ke kterému lze přistupovat ze serveru aplikace DPM. Pokud je uložen ve sdílené složce/SMB, vyhledejte přístupová oprávnění.
 - Platnost přihlašovacích údajů trezoru vyprší po 48 hodinách. Nové přihlašovací údaje trezoru můžete stáhnout tolikrát, kolikrát potřebujete. Během pracovního postupu registrace se ale dá použít jenom nejnovější soubor s přihlašovacími údaji k trezoru.
 - Služba Azure Backup neznáte s privátním klíčem certifikátu a privátní klíč není k dispozici na portálu ani v této službě.
 
 Stáhněte si soubor s přihlašovacími údaji trezoru do místního počítače následujícím způsobem:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Otevřete trezor, ve kterém chcete zaregistrovat server DPM.
-3. V **Nastavení**klikněte na **vlastnosti**.
+3. V **Nastavení**vyberte **vlastnosti**.
 
     ![Otevření nabídky trezoru](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 
-4. V nabídce **vlastnosti**  >  **zálohovat přihlašovací údaje**klikněte na **Stáhnout**. Portál vygeneruje soubor s přihlašovacími údaji trezoru pomocí kombinace názvu trezoru a aktuálního data a zpřístupní ho ke stažení.
+4. V **vlastnosti**  >  **zálohovat přihlašovací údaje**vyberte **Stáhnout**. Portál vygeneruje soubor s přihlašovacími údaji trezoru pomocí kombinace názvu trezoru a aktuálního data a zpřístupní ho ke stažení.
 
-    ![Stáhnout](./media/backup-azure-dpm-introduction/vault-credentials.png)
+    ![Stáhnout přihlašovací údaje](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
-5. Kliknutím na **Uložit** Stáhněte přihlašovací údaje trezoru do složky, nebo je **uložte jako** a zadejte umístění. Vygenerování souboru bude trvat až minutu.
+5. Vyberte **Uložit** a Stáhněte si přihlašovací údaje trezoru do složky, nebo je **uložte jako** a zadejte umístění. Vygenerování souboru bude trvat až minutu.
 
 ## <a name="install-the-backup-agent"></a>Instalace agenta Zálohování
 
 Každý počítač, který je zálohovaný pomocí Azure Backup musí mít nainstalovaného agenta Zálohování (také označovaný jako agent služby obnovení Microsoft Azure (MARS). Nainstalujte agenta na server DPM následujícím způsobem:
 
 1. Otevřete trezor, do kterého chcete zaregistrovat server aplikace DPM.
-2. V **Nastavení**klikněte na **vlastnosti**.
+2. V **Nastavení**vyberte **vlastnosti**.
 
-    ![Otevření nabídky trezoru](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
+    ![Otevřít nastavení trezoru](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 3. Na stránce **vlastnosti** stáhněte agenta Azure Backup.
 
     ![Stáhnout](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
@@ -131,7 +131,7 @@ Každý počítač, který je zálohovaný pomocí Azure Backup musí mít nains
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>Registrace serveru DPM v trezoru
 
-1. V konzole správce aplikace DPM > **Správa**klikněte na možnost **online**. Vyberte **Zaregistrovat**. Otevře se Průvodce registrací serveru.
+1. V konzole správce aplikace DPM > **Správa**vyberte možnost **online**. Vyberte **Zaregistrovat**. Otevře se Průvodce registrací serveru.
 2. V části **konfigurace proxy**zadejte požadovaná nastavení proxy serveru.
 
     ![Konfigurace proxy serveru](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
@@ -147,7 +147,7 @@ Každý počítač, který je zálohovaný pomocí Azure Backup musí mít nains
 
     - Azure Backup používá toto umístění jako dočasnou oblast pro obnovená data.
     - Po dokončení obnovení dat Azure Backup vyčistí data v této oblasti.
-    - Umístění musí mít dostatek místa pro položky, které předpokládáte paralelní obnovování.
+    - Umístění musí mít dostatek místa pro položky, které byste měli mít paralelně k obnovení.
 
     ![Nastavení složky pro obnovení](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
 
@@ -163,15 +163,15 @@ Každý počítač, který je zálohovaný pomocí Azure Backup musí mít nains
     > Vlastníte šifrovací heslo a společnost Microsoft k němu nemá přehled.
     > Pokud je přístupové heslo ztraceno nebo zapomenuto; Microsoft nemůže při obnovování zálohovaných dat pomáhat.
 
-7. Kliknutím na **Registrovat** zaregistrujete server DPM do trezoru.
+7. Vyberte **Registrovat** a zaregistrujte server DPM do trezoru.
 
-Po úspěšném zaregistrování serveru do trezoru jste nyní připraveni začít s zálohováním Microsoft Azure. Chcete-li zálohovat úlohy do Azure, budete muset nakonfigurovat skupinu ochrany v konzole DPM. [Přečtěte si, jak](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) nasadit skupiny ochrany.
+Po úspěšném zaregistrování serveru do trezoru teď budete připraveni začít s zálohováním Microsoft Azure. Abyste mohli zálohovat úlohy do Azure, budete muset nakonfigurovat skupinu ochrany v konzole DPM. [Přečtěte si, jak](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) nasadit skupiny ochrany.
 
 ## <a name="troubleshoot-vault-credentials"></a>Řešení potíží s přihlašovacími údaji trezoru
 
 ### <a name="expiration-error"></a>Chyba vypršení platnosti
 
-Soubor s přihlašovacími údaji trezoru je platný jenom pro 48 hodiny (po stažení z portálu). Pokud dojde k nějaké chybě na této obrazovce (například vypršela platnost poskytnutého souboru s přihlašovacími údaji k trezoru), přihlaste se k Azure Portal a znovu stáhněte soubor s přihlašovacími údaji trezoru.
+Soubor s přihlašovacími údaji trezoru je platný jenom po dobu 48 hodin (po stažení z portálu). Pokud dojde k nějaké chybě na této obrazovce (například vypršela platnost poskytnutého souboru s přihlašovacími údaji k trezoru), přihlaste se k Azure Portal a znovu stáhněte soubor s přihlašovacími údaji trezoru.
 
 ### <a name="access-error"></a>Chyba přístupu
 
@@ -179,7 +179,7 @@ Zajistěte, aby byl soubor s přihlašovacími údaji úložiště k dispozici v
 
 ### <a name="invalid-credentials-error"></a>Chyba neplatných přihlašovacích údajů
 
-Pokud narazíte na neplatnou chybu přihlašovacích údajů trezoru (například "neplatné přihlašovací údaje trezoru"), soubor je buď poškozený, nebo nemá k dispozici nejnovější přihlašovací údaje přidružené ke službě obnovení.
+Pokud narazíte na neplatnou chybu přihlašovacích údajů trezoru (například zadali jste neplatné přihlašovací údaje trezoru), soubor je buď poškozený, nebo nemá k dispozici nejnovější přihlašovací údaje přidružené ke službě obnovení.
 
 - Po stažení nového souboru přihlašovacích údajů k úložišti z portálu zkuste operaci zopakovat.
-- K této chybě obvykle dochází v případě, že kliknete na možnost **Stáhnout přihlašovací údaje trezoru** v Azure Portal dvakrát v rychlém úspěchu. V tomto případě je platný jenom druhý soubor přihlašovacích údajů k trezoru.
+- K této chybě obvykle dochází, když vyberete možnost **Stáhnout přihlašovací údaje trezoru** v Azure Portal dvakrát v rychlém úspěchu. V tomto případě je platný jenom druhý soubor přihlašovacích údajů k trezoru.

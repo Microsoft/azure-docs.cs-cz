@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd63e82788856624c3babe078de52e698f190ce0
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 91e89f274615e75fec818ec9e3ecf785aa6e804f
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796621"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262954"
 ---
 # <a name="what-is-azure-active-directory"></a>Představení služby Azure Active Directory
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) je cloudová služba pro správu identit a př
 
 - Interní prostředky, jako jsou aplikace ve vaší podnikové síti nebo intranetu, spolu s jakýmikoli cloudovou aplikací vyvinutou vaší organizací. Další informace o vytvoření tenanta pro vaši organizaci najdete v tématu [rychlý Start: vytvoření nového tenanta v Azure Active Directory](active-directory-access-create-new-tenant.md).
 
-Pokud se chcete dozvědět rozdíl mezi Azure AD a Active Directory Domain Services, přečtěte si téma [porovnání služby Active Directory s Azure Active Directory](active-directory-compare-azure-ad-to-ad.md). K lepšímu pochopení základních služeb identit v Azure, Azure AD a Office 365 můžete použít i různé [Microsoft Cloud pro plakáty řady Enterprise Architects](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity) .
+Pokud se chcete dozvědět rozdíl mezi Azure AD a Active Directory Domain Services, přečtěte si téma [porovnání služby Active Directory s Azure Active Directory](active-directory-compare-azure-ad-to-ad.md). K lepšímu pochopení základních služeb identit v Azure, Azure AD a Office 365 můžete použít i různé [Microsoft Cloud pro plakáty řady Enterprise Architects](https://docs.microsoft.com/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide) .
 
 ## <a name="who-uses-azure-ad"></a>Kdo používá službu Azure AD?
 
@@ -66,7 +66,7 @@ Po výběru licence Azure AD získáte přístup k některým nebo všem násled
 |Kategorie|Popis|
 |-------|-----------|
 |Správa aplikací|Spravujte své cloudové a místní aplikace pomocí proxy aplikací, jednotného přihlašování, portálu moje aplikace (označovaného také jako přístupový panel) a aplikací SaaS (software jako služba). Další informace najdete v tématu [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](../manage-apps/application-proxy.md) a [dokumentaci správy aplikací](../manage-apps/index.yml).|
-|Ověřování uživatelů|Spravujte Azure Active Directory Samoobslužné resetování hesla, Multi-Factor Authentication, vlastní seznam zakázaných hesel a inteligentní uzamčení. Další informace najdete v [dokumentaci k ověřování Azure AD](../authentication/index.yml).|
+|Authentication|Spravujte Azure Active Directory Samoobslužné resetování hesla, Multi-Factor Authentication, vlastní seznam zakázaných hesel a inteligentní uzamčení. Další informace najdete v [dokumentaci k ověřování Azure AD](../authentication/index.yml).|
 |Azure Active Directory pro vývojáře|Vytvářejte aplikace, které přihlásí všechny identity Microsoftu, získávají tokeny pro volání Microsoft Graph, dalších rozhraní API Microsoftu nebo vlastních rozhraní API. Další informace najdete v tématu [Microsoft Identity Platform (Azure Active Directory pro vývojáře)](../develop/index.yml).|
 |B2B (Business-to-Business)|Spravujte uživatele typu Host a externí partnery a udržujte si kontrolu nad vašimi podnikovými daty. Další informace najdete v tématu [Azure Active Directory dokumentaci B2B](../b2b/index.yml).|
 |B2C (Business-to-Customer)|Přizpůsobte a určete, jak se uživatelé při používání vašich aplikací přihlásí, přihlásí a spravují své profily. Další informace najdete v [dokumentaci Azure Active Directory B2C](../../active-directory-b2c/index.yml).|

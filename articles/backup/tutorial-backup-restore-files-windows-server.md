@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte používat agenta Microsoft Azure Recove
 ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
-ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 746c901747cf1c0b87612a31fbabcb657d5c4a0c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78672947"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263108"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Obnovení souborů z Azure do Windows Serveru
 
@@ -21,7 +21,7 @@ Azure Backup umožňuje obnovení jednotlivých položek ze záloh Windows Serve
 > * Výběr bodu obnovení
 > * Obnovení položek z bodu obnovení
 
-Tento kurz předpokládá, že jste už provedli postup [Zálohování Windows Serveru do Azure](backup-windows-with-mars-agent.md) a že máte v Azure alespoň jednu zálohu vašich souborů Windows Serveru.
+V tomto kurzu se předpokládá, že jste už provedli postup [zálohování Windows serveru do Azure](backup-windows-with-mars-agent.md) a máte aspoň jednu zálohu souborů Windows serveru v Azure.
 
 ## <a name="initiate-recovery-of-individual-items"></a>Zahájení obnovení jednotlivých položek
 
@@ -29,39 +29,39 @@ Součástí instalace agenta služby Microsoft Azure Recovery Services (MARS) je
 
 1. Otevřete modul snap-in **Microsoft Azure Backup**. Najdete ho vyhledáním **Microsoft Azure Backup** ve svém počítači.
 
-    ![Zálohování čeká na zpracování](./media/tutorial-backup-restore-files-windows-server/mars.png)
+    ![Modul snap-in Microsoft Azure Backup](./media/tutorial-backup-restore-files-windows-server/mars.png)
 
-2. V průvodci klikněte na **Obnovit data** v **podokně Akce** konzoly agenta. Spustí se průvodce **Obnovení dat**.
+2. V průvodci vyberte možnost **obnovit data** v **podokně akce** konzoly agenta a spusťte tak průvodce **obnovením dat** .
 
-    ![Zálohování čeká na zpracování](./media/tutorial-backup-restore-files-windows-server/mars-recover-data.png)
+    ![Výběr obnovení dat](./media/tutorial-backup-restore-files-windows-server/mars-recover-data.png)
 
-3. Na stránce **Začínáme** vyberte **Tento server (název serveru)** a klikněte na **Další**.
+3. Na stránce **Začínáme** vyberte možnost **Server (název serveru)** a klikněte na tlačítko **Další**.
 
-4. Na stránce **Vybrat režim obnovení** vyberte **Jednotlivé soubory a složky** a pak kliknutím na **Další** zahajte proces výběru bodu obnovení.
+4. Na stránce **Vybrat režim obnovení** vyberte **jednotlivé soubory a složky** a potom kliknutím na tlačítko **Další** zahajte proces výběru bodu obnovení.
 
-5. Na stránce **Vybrat svazek a datum** vyberte svazek obsahující soubory nebo složky, které chcete obnovit, a klikněte na **Připojit**. Vyberte datum a z rozevírací nabídky vyberte čas odpovídající bodu obnovení. Data zobrazená **tučně** značí, že je pro daný den dostupný alespoň jeden bod obnovení.
+5. Na stránce **Vybrat svazek a datum** vyberte svazek, který obsahuje soubory nebo složky, které chcete obnovit, a vyberte **připojit**. Vyberte datum a z rozevírací nabídky vyberte čas odpovídající bodu obnovení. Data zobrazená **tučně** značí, že je pro daný den dostupný alespoň jeden bod obnovení.
 
-    ![Zálohování čeká na zpracování](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
+    ![Vybrat svazek a datum](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
 
-    Když kliknete na **Připojit**, Azure Backup zpřístupní bod obnovení jako disk. Soubory z disku můžete procházet a obnovit.
+    Když vyberete **připojit**, Azure Backup bude bod obnovení dostupný jako disk. Soubory z disku můžete procházet a obnovit.
 
 ## <a name="restore-items-from-a-recovery-point"></a>Obnovení položek z bodu obnovení
 
-1. Po připojení svazku pro obnovení kliknutím na **Procházet** otevřete Průzkumníka Windows a vyhledejte soubory a složky, které chcete obnovit.
+1. Jakmile je svazek pro obnovení připojený, vyberte **Procházet** a spusťte Průzkumníka Windows a vyhledejte soubory a složky, které chcete obnovit.
 
-    ![Zálohování čeká na zpracování](./media/tutorial-backup-restore-files-windows-server/mars-browse-recover.png)
+    ![Vyberte Procházet.](./media/tutorial-backup-restore-files-windows-server/mars-browse-recover.png)
 
     Soubory můžete otevřít přímo ze svazku pro obnovení a ověřit je.
 
-2. V Průzkumníku Windows zkopírujte soubory a složky, které chcete obnovit, a vložte je do libovolného umístění na serveru.
+2. V Průzkumníku Windows zkopírujte soubory a složky, které chcete obnovit, a vložte je do libovolného požadovaného umístění na serveru.
 
-    ![Zálohování čeká na zpracování](./media/tutorial-backup-restore-files-windows-server/mars-final.png)
+    ![Zkopírování souborů a složek](./media/tutorial-backup-restore-files-windows-server/mars-final.png)
 
-3. Jakmile budete hotovi s obnovováním souborů a složek, na stránce **Procházet a obnovit soubory** průvodce **Obnovení dat** klikněte na **Odpojit**.
+3. Po dokončení obnovování souborů a složek na stránce **Procházet a obnovit soubory** v průvodci **obnovením dat** vyberte **Odpojit**.
 
-    ![Zálohování čeká na zpracování](./media/tutorial-backup-restore-files-windows-server/unmount-and-confirm.png)
+    ![Vybrat odpojit](./media/tutorial-backup-restore-files-windows-server/unmount-and-confirm.png)
 
-4. Kliknutím na **Ano** potvrďte, že chcete svazek odpojit.
+4. Výběrem **Ano** potvrďte, že chcete odpojit svazek.
 
     Po odpojení snímku se v podokně **Úlohy** v konzole agenta zobrazí **Úloha dokončena**.
 

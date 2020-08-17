@@ -4,12 +4,12 @@ description: Naučte se spravovat a monitorovat zálohy agenta Microsoft Azure R
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 096f47ba4a3d8d490c9cfaf43f4dafec4faf10f9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 581141ea5ffaecf774d292f66a05da5e40c8dc54
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317344"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263295"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agenta Microsoft Azure Recovery Services (MARS) pomocí služby Azure Backup
 
@@ -29,60 +29,60 @@ Když upravíte zásady zálohování, můžete přidat nové položky, odebrat 
 
 ### <a name="add-new-items-to-existing-policy"></a>Přidat nové položky do existujících zásad
 
-1. V nabídce **Akce**klikněte na **naplánovat zálohování**.
+1. V **Možnosti akce**vyberte **naplánovat zálohování**.
 
     ![Naplánování zálohování Windows Serveru](./media/backup-configure-vault/schedule-first-backup.png)
 
-2. Na kartě **Vybrat položku zásady** a vyberte **Upravit plán zálohování pro vaše soubory a složky** a klikněte na **Další**.
+2. Na kartě **Vybrat položku zásady** a vyberte **Upravit plán zálohování pro vaše soubory a složky** a vyberte **Další**.
 
     ![Vybrat položky zásad](./media/backup-azure-manage-mars/select-policy-items.png)
 
-3. Na kartě **Upravit nebo zastavit plánování zálohování** vyberte **provést změny zálohových položek nebo časů** a klikněte na **Další**.
+3. Na kartě **Upravit nebo zastavit plánování zálohování** vyberte **provést změny zálohových položek nebo časů** a vyberte **Další**.
 
     ![Úprava nebo plánování zálohování](./media/backup-azure-manage-mars/modify-schedule-backup.png)
 
-4. Na kartě **Vybrat položky na zálohování** klikněte na **Přidat položky** a přidejte položky, které chcete zálohovat.
+4. Na kartě **Vybrat položky na zálohování** vyberte **Přidat položky** a přidejte položky, které chcete zálohovat.
 
     ![Úprava nebo plánování zálohování přidat položky](./media/backup-azure-manage-mars/modify-schedule-backup-add-items.png)
 
-5. V okně **Vybrat položky** vyberte možnost letí nebo složky, které chcete přidat, a klikněte na tlačítko **OK**.
+5. V okně **Vybrat položky** vyberte soubory nebo složky, které chcete přidat, a vyberte **OK**.
 
     ![Vybrat položky](./media/backup-azure-manage-mars/select-item.png)
 
-6. Dokončete následující kroky a kliknutím na **Dokončit** dokončete operaci.
+6. Dokončete následující kroky a vyberte **Dokončit** pro dokončení operace.
 
 ### <a name="add-exclusion-rules-to-existing-policy"></a>Přidat pravidla vyloučení do existujících zásad
 
 Můžete přidat pravidla vyloučení pro přeskočení souborů a složek, které nechcete zálohovat. To můžete provést během definování nové zásady nebo úpravou existující zásady.
 
-1. V podokně Akce klikněte na **naplánovat zálohování**. Přejděte na **Vybrat položky, které chcete zálohovat** , a klikněte na **Nastavení vyloučení**.
+1. V podokně Akce vyberte **naplánovat zálohování**. Vyberte **položku vybrat položky, které chcete zálohovat** , a vyberte **Nastavení vyloučení**.
 
-    ![Vybrat položky](./media/backup-azure-manage-mars/select-exclusion-settings.png)
+    ![Nastavení vyloučení](./media/backup-azure-manage-mars/select-exclusion-settings.png)
 
-2. V **Nastavení vyloučení**klikněte na **Přidat vyloučení**.
+2. V **Nastavení vyloučení**vyberte **Přidat vyloučení**.
 
-    ![Vybrat položky](./media/backup-azure-manage-mars/add-exclusion.png)
+    ![Přidat vyloučení](./media/backup-azure-manage-mars/add-exclusion.png)
 
-3. V části **Vyberte položky, které chcete vyloučit**, vyhledejte soubory a složky a vyberte položky, které chcete vyloučit, a klikněte na **OK**.
+3. V části **Vyberte položky, které chcete vyloučit**, vyhledejte soubory a složky a vyberte položky, které chcete vyloučit, a vyberte **OK**.
 
-    ![Vybrat položky](./media/backup-azure-manage-mars/select-items-exclude.png)
+    ![Vyberte položky, které chcete vyloučit.](./media/backup-azure-manage-mars/select-items-exclude.png)
 
 4. Ve výchozím nastavení jsou vyloučeny všechny **podsložky** v rámci vybraných složek. Můžete to změnit výběrem možnosti **Ano** nebo **ne**. Můžete upravit a zadat typy souborů k vyloučení, jak je uvedeno níže:
 
-    ![Vybrat položky](./media/backup-azure-manage-mars/subfolders-type.png)
+    ![Vybrat typy podsložek](./media/backup-azure-manage-mars/subfolders-type.png)
 
-5. Dokončete následující kroky a kliknutím na **Dokončit** dokončete operaci.
+5. Dokončete následující kroky a vyberte **Dokončit** pro dokončení operace.
 
 ### <a name="remove-items-from-existing-policy"></a>Odebrat položky z existujících zásad
 
-1. V podokně Akce klikněte na **naplánovat zálohování**. Přejít na **Vyberte položky, které chcete zálohovat**. V seznamu vyberte soubory a složky, které chcete z plánu zálohování odebrat, a klikněte na **Odebrat položky**.
+1. V podokně Akce vyberte **naplánovat zálohování**. Přejít na **Vyberte položky, které chcete zálohovat**. V seznamu vyberte soubory a složky, které chcete odebrat z plánu zálohování, a vyberte **Odebrat položky**.
 
-    ![Vybrat položky](./media/backup-azure-manage-mars/select-items-remove.png)
+    ![Vyberte položky, které chcete odebrat.](./media/backup-azure-manage-mars/select-items-remove.png)
 
     > [!NOTE]
     > Po úplném odebrání svazku ze zásad postupujte opatrně.  Pokud ho budete potřebovat znovu přidat, bude se považovat za nový svazek. Další naplánované zálohování provede prvotní zálohování (úplné zálohování) místo přírůstkového zálohování. Pokud potřebujete dočasně odebrat a přidat pozdější položky, doporučuje se místo **Odebrání položek** použít **Nastavení vyloučení** , aby bylo zajištěno přírůstkové zálohování místo úplného zálohování.
 
-2. Dokončete následující kroky a kliknutím na **Dokončit** dokončete operaci.
+2. Dokončete následující kroky a vyberte **Dokončit** pro dokončení operace.
 
 ## <a name="stop-protecting-files-and-folder-backup"></a>Zastavení ochrany zálohování souborů a složek
 
@@ -102,17 +102,17 @@ Existují dva způsoby, jak zabránit ochraně zálohování souborů a složek:
 
 1. Otevřete konzolu pro správu MARS, klikněte na **podokno akce**a **Vyberte naplánovat zálohování**.
 
-    ![Upravte nebo zastavte naplánované zálohování.](./media/backup-azure-manage-mars/mars-actions.png)
-1. Na stránce **Vybrat položku zásady** vyberte možnost **Upravit plán zálohování pro vaše soubory a složky** a klikněte na **Další**.
+    ![Vybrat plán zálohování](./media/backup-azure-manage-mars/mars-actions.png)
+1. Na stránce **Vybrat položku zásady** vyberte možnost **Upravit plán zálohování pro vaše soubory a složky** a vyberte **Další**.
 
-    ![Upravte nebo zastavte naplánované zálohování.](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
+    ![Vybrat položku zásad](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
 1. Na stránce **změnit nebo zastavit naplánované zálohování** vyberte možnost **zastavit použití tohoto plánu zálohování, ale uložte uložené zálohy, dokud nebude plán znovu aktivován**. Pak vyberte **Další**.
 
-    ![Upravte nebo zastavte naplánované zálohování.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. V části **pozastavit naplánované zálohování**zkontrolujte informace a klikněte na **Dokončit**.
+    ![Zastavte naplánované zálohování.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
+1. V části **pozastavit naplánované zálohování**zkontrolujte informace a vyberte **Dokončit**.
 
-    ![Upravte nebo zastavte naplánované zálohování.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. V nabídce **Upravit průběh zálohování**ověřte, že je pozastavení zálohování plánu v úspěšném stavu, a kliknutím na **Zavřít** dokončete akci.
+    ![Pozastaví naplánované zálohování.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
+1. V nástroji **Upravit průběh zálohování**ověřte, že je v plánu úspěšné ukončení zálohování, a pak vyberte **Zavřít** .
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Zastavení ochrany a odstranění zálohovaných dat
 
@@ -123,7 +123,7 @@ Existují dva způsoby, jak zabránit ochraně zálohování souborů a složek:
 
 3. Na stránce **zastavit naplánované zálohování** vyberte **Dokončit**.
 
-    ![Zastavte naplánované zálohování.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
+    ![Zastavte naplánované zálohování a vyberte Dokončit.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. Zobrazí se výzva k zadání bezpečnostního kódu PIN (osobní identifikační číslo), které musíte vygenerovat ručně. Abyste to mohli udělat, nejdřív se přihlaste k Azure Portal.
 5. Přejít na vlastnosti nastavení **trezoru Recovery Services**  >  **Settings**  >  **Properties**.
 6. V části **bezpečnostní kód PIN**vyberte **Generovat**. Zkopírujte tento kód PIN. PIN kód je platný jenom po dobu pěti minut.
@@ -133,7 +133,7 @@ Existují dva způsoby, jak zabránit ochraně zálohování souborů a složek:
 
 8. Na stránce **Upravit průběh zálohování** se zobrazí následující zpráva: *Odstraněná data zálohy se uchovávají 14 dní. Po uplynutí této doby se zálohovaná data trvale odstraní.*  
 
-    ![Odstraňte infrastrukturu zálohování.](./media/backup-azure-delete-vault/deleted-backup-data.png)
+    ![Upravit průběh zálohování](./media/backup-azure-delete-vault/deleted-backup-data.png)
 
 Po odstranění místních zálohových položek postupujte podle dalších kroků na portálu.
 
@@ -142,15 +142,15 @@ Po odstranění místních zálohových položek postupujte podle dalších krok
 Pokud jste zastavili ochranu při zachování dat a rozhodli jste se obnovit ochranu, pak můžete plán zálohování znovu povolit pomocí úpravy zásady zálohování.
 
 1. V **akcích** vyberte **naplánovat zálohování**.
-1. Vyberte **znovu povolit plán zálohování. Můžete také upravit Zálohované položky nebo časy** a kliknout na **Další**.<br>
+1. Vyberte **znovu povolit plán zálohování. Můžete také upravit Zálohované položky nebo časy** a vybrat **Další**.<br>
 
-    ![Odstraňte infrastrukturu zálohování.](./media/backup-azure-manage-mars/re-enable-policy-next.png)
-1. V nabídce **Vybrat položky, které se mají zálohovat**klikněte na **Další**.
+    ![Znovu povolit plán zálohování](./media/backup-azure-manage-mars/re-enable-policy-next.png)
+1. V poli **Vybrat položky, které se mají zálohovat**vyberte **Další**.
 
-    ![Odstraňte infrastrukturu zálohování.](./media/backup-azure-manage-mars/re-enable-next.png)
-1. V části **zadat plán zálohování**zadejte plán zálohování a klikněte na **Další**.
-1. V nabídce **Vybrat zásady uchovávání informací**zadejte dobu uchování a klikněte na **Další**.
-1. Nakonec na obrazovce **potvrzení** zkontrolujte podrobnosti zásady a klikněte na **Dokončit**.
+    ![Vyberte položky, které chcete zálohovat.](./media/backup-azure-manage-mars/re-enable-next.png)
+1. V části **zadat plán zálohování**zadejte plán zálohování a vyberte **Další**.
+1. V poli **Vybrat zásady uchovávání informací**zadejte dobu uchování a vyberte **Další**.
+1. Nakonec na obrazovce **potvrzení** zkontrolujte podrobnosti zásady a vyberte **Dokončit**.
 
 ## <a name="re-generate-passphrase"></a>Znovu vygenerovat heslo
 
@@ -158,15 +158,15 @@ K šifrování a dešifrování dat se používá přístupové heslo při zálo
 
 1. V konzole agenta Mars přejděte do **podokna akce**  >  **změnit vlastnosti** >. Pak přejdete na **kartu šifrování**.<br>
 1. Zaškrtněte políčko **změnit heslo** .<br>
-1. Zadejte nové heslo nebo klikněte na **vygenerovat heslo**.
-1. Kliknutím na tlačítko **Procházet** uložte nové heslo.
+1. Zadejte nové heslo nebo vyberte **generovat heslo**.
+1. Vyberte **Procházet** a uložte nové heslo.
 
     ![Vygenerujte heslo.](./media/backup-azure-manage-mars/passphrase.png)
 
-1. Změny aplikujete kliknutím na **OK** .  Pokud je [funkce zabezpečení](./backup-azure-security-feature.md#enable-security-features) v Azure Portal pro trezor Recovery Services povolená, zobrazí se výzva k zadání bezpečnostního kódu PIN. Chcete-li získat kód PIN, postupujte podle kroků uvedených v tomto [článku](./backup-azure-security-feature.md#authentication-to-perform-critical-operations).<br>
-1. Vložte bezpečnostní kód PIN z portálu a kliknutím na **OK** změny aplikujte.<br>
+1. Kliknutím na **tlačítko OK** aplikujte změny.  Pokud je [funkce zabezpečení](./backup-azure-security-feature.md#enable-security-features) v Azure Portal pro trezor Recovery Services povolená, zobrazí se výzva k zadání bezpečnostního kódu PIN. Chcete-li získat kód PIN, postupujte podle kroků uvedených v tomto [článku](./backup-azure-security-feature.md#authentication-to-perform-critical-operations).<br>
+1. Vložte bezpečnostní kód PIN z portálu a vyberte **OK** , aby se změny projevily.<br>
 
-    ![Vygenerujte heslo.](./media/backup-azure-manage-mars/passphrase2.png)
+    ![Vložte bezpečnostní kód PIN.](./media/backup-azure-manage-mars/passphrase2.png)
 1. Ujistěte se, že je přístupové heslo bezpečně uložené v alternativním umístění (jiné než zdrojový počítač), nejlépe v Azure Key Vault. Pokud máte více počítačů zálohovaných pomocí agentů MARS, Sledujte všechna hesla.
 
 ## <a name="managing-backup-data-for-unavailable-machines"></a>Správa zálohovaných dat pro nedostupné počítače

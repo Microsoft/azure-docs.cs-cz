@@ -1,14 +1,14 @@
 ---
 title: Zálohování stavu systému Windows do Azure
-description: Naučte se zálohovat stav systému Windows Server nebo počítačů s Windows do Azure.
+description: Naučte se zálohovat stav systému počítačů s Windows serverem do Azure.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ea38b76d9a8b7b8ccc1898ed9450177da2cb2458
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a56e500cc0330a6406b4465ab5baeafa39b544aa
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003723"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263040"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Zálohování stavu systému Windows do Azure
 
@@ -24,21 +24,21 @@ Pokud předplatné Azure nemáte, vytvořte si [bezplatný účet](https://azure
 
 Při vytváření trezoru služby Recovery Services se ujistěte, že je redundance úložiště nakonfigurována požadovaným způsobem.
 
-1. V okně **Trezory služby Recovery Services** klikněte na nový trezor.
+1. V podokně **Recovery Services trezory** vyberte nový trezor.
 
     ![Výběr nového trezoru ze seznamu trezorů služby Recovery Services](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
-    Po výběru trezoru se okno **Trezory služby Recovery Services** zúží a otevře se okno Nastavení (*s názvem trezoru v horní části*) a okno s podrobnostmi o trezoru.
+    Po výběru trezoru se podokno **Recovery Services trezoru** zúží a podokno nastavení (*s názvem trezoru v horní části*) a otevřené podokno Podrobnosti trezoru.
 
     ![Zobrazení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
-2. V okně Nastavení nového trezoru pomocí vertikálního posuvníku přejděte dolů do části Správa a klikněte na **Infrastruktura zálohování**.
-    Otevře se okno Infrastruktura zálohování.
-3. V okně Infrastruktura zálohování klikněte na **Konfigurace zálohování**. Otevře se okno **Konfigurace zálohování**.
+2. V podokně nastavení nového trezoru pomocí svislého snímku přejděte dolů k části Správa a vyberte **infrastruktura zálohování**.
+    Otevře se podokno infrastruktura zálohování.
+3. V podokně infrastruktura zálohování vyberte **Konfigurace zálohování** a otevřete podokno **Konfigurace zálohování** .
 
     ![Nastavení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
 4. Zvolte vhodnou možnost replikace pro svůj trezor.
 
-    ![volby konfigurace úložiště](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
+    ![Volby konfigurace úložiště](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
     Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud používáte Azure jako primární koncový bod úložiště záloh, pokračujte v používání **geograficky redundantního** úložiště. Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md) a [místně redundantního](../storage/common/storage-redundancy.md) úložiště najdete v tomto [přehledu redundance úložiště](../storage/common/storage-redundancy.md).
 
@@ -46,47 +46,47 @@ Teď, když jste vytvořili trezor, nakonfigurujte ho pro zálohování stavu sy
 
 ## <a name="configure-the-vault"></a>Konfigurace trezoru
 
-1. V okně trezoru služby Recovery Services (pro trezor, který jste právě vytvořili) klikněte v části Začínáme na **Zálohovat** a potom v okně **Začínáme se zálohováním** vyberte **Cíl zálohování**.
+1. V podokně Recovery Services trezoru (pro trezor, který jste právě vytvořili), v části Začínáme vyberte **zálohování**a pak v podokně **Začínáme s zálohováním** vyberte **cíl zálohování**.
 
-    ![Otevřete okno cíle zálohování](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
+    ![Otevřít nastavení zálohování](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
-    Otevře se okno **Cíl zálohování**.
+    Otevře se podokno **cíl zálohování** .
 
-    ![Otevřete okno cíle zálohování](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
+    ![Otevřít podokno cíle zálohování](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
 
 2. V rozevírací nabídce **Kde běží vaše úlohy?** vyberte **Místní**.
 
-    Možnost **Místní** jste vybrali proto, že počítačem s Windows Serverem nebo Windows je fyzický počítač, který není v Azure.
+    Zvolíte možnost **místní** , protože počítač se systémem Windows Server nebo Windows je fyzický počítač, který není v Azure.
 
-3. V nabídce **co chcete zálohovat?** vyberte možnost **stav systému**a klikněte na tlačítko **OK**.
+3. V nabídce **co chcete zálohovat?** vyberte možnost **stav systému**a vyberte **OK**.
 
     ![Konfigurace souborů a složek](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    Po kliknutí na OK se vedle položky **Cíl zálohování** zobrazí zaškrtnutí a otevře se okno **Připravit infrastrukturu**.
+    Po kliknutí na tlačítko OK se vedle **cíle zálohování**zobrazí značka zaškrtnutí a otevře se podokno **Příprava infrastruktury** .
 
     ![Cíl zálohování je nakonfigurovaný, teď se připraví infrastruktura](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 
-4. V okně **Připravit infrastrukturu** klikněte na **Stáhnout agenta pro Windows Server nebo klienta Windows**.
+4. V podokně **připravit infrastrukturu** vyberte **Stáhnout agenta pro Windows Server nebo klienta Windows**.
 
     ![Příprava infrastruktury](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
-    Pokud používáte Windows Server Essential, vyberte ke stažení agenta pro Windows Server Essential. Místní nabídka zobrazí výzvu ke spuštění nebo uložení MARSAgentInstaller.exe.
+    Pokud používáte Windows Server Essential, zvolte stažení agenta pro Windows Server Essential. Místní nabídka zobrazí výzvu ke spuštění nebo uložení MARSAgentInstaller.exe.
 
     ![Dialogové okno MARSAgentInstaller](./media/backup-try-azure-backup-in-10-mins/mars-installer-run-save.png)
 
-5. V místní nabídce stahování klikněte na **Uložit**.
+5. V místní nabídce stáhnout vyberte **Uložit**.
 
     Ve výchozím nastavení se soubor **MARSagentinstaller.exe** uloží do složky Stažené soubory. Po dokončení instalačního programu se zobrazí automaticky otevírané okno s dotazem, jestli chcete spustit instalační program nebo otevřít složku.
 
-    ![Příprava infrastruktury](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
+    ![Instalační program MARS je dokončený.](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
 
     Agenta ještě nemusíte instalovat. Agenta můžete nainstalovat po stažení přihlašovacích údajů trezoru.
 
-6. V okně **Připravit infrastrukturu** klikněte na **Stáhnout**.
+6. V podokně **připravit infrastrukturu** vyberte **Stáhnout**.
 
     ![stažení přihlašovacích údajů trezoru](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    Přihlašovací údaje trezoru se stáhnou do složky Stažené soubory. Po dokončení stahování přihlašovacích údajů trezoru se zobrazí automaticky otevírané okno s dotazem, jestli chcete přihlašovací údaje otevřít nebo uložit. Klikněte na **Uložit**. Pokud omylem kliknete **Otevřít**, nechte dialogové okno, které se pokusí otevřít přihlašovací údaje trezoru, zobrazit chybu. Přihlašovací údaje trezoru nejde otevřít. Přejděte k dalšímu kroku. Přihlašovací údaje trezoru jsou ve složce Stažené soubory.
+    Přihlašovací údaje trezoru se stáhnou do složky **stažené soubory** . Po dokončení stahování přihlašovacích údajů trezoru se zobrazí automaticky otevírané okno s dotazem, jestli chcete přihlašovací údaje otevřít nebo Uložit. Vyberte **Uložit**. Pokud omylem vyberete **otevřít**, nechte dialogové okno, které se pokusí otevřít přihlašovací údaje trezoru, selže. Nebudete moct otevřít přihlašovací údaje trezoru. Pokračujte k dalšímu kroku. Přihlašovací údaje trezoru jsou ve složce **stažené soubory** .
 
     ![dokončené stahování přihlašovacích údajů trezoru](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -142,39 +142,39 @@ K dokončení prvotního zálohování použijte agenta Microsoft Azure Recovery
 
     ![Spuštění agenta Služeb zotavení Azure](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
 
-2. V agentu Služeb zotavení klikněte na **Naplánovat zálohování**.
+2. V Recovery Services agenta vyberte **naplánovat zálohování**.
 
     ![Naplánování zálohování Windows Serveru](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
 
-3. Na stránce Začínáme v Průvodci plánování zálohování klikněte na **Další**.
+3. Na stránce **Začínáme** v Průvodci plánováním zálohování vyberte **Další**.
 
-4. Na stránce Výběr položek k zálohování klikněte na **Přidat**.
+4. Na stránce **Vyberte položky, které chcete zálohovat** vyberte možnost **Přidat položky**.
 
-5. Vyberte **stav systému** a pak klikněte na **OK**.
+5. Vyberte možnost **stav systému** a pak vyberte **OK**.
 
-6. Klikněte na **Next** (Další).
+6. Vyberte **Další**.
 
 7. Na následujících stránkách vyberte požadovanou četnost zálohování a zásady uchovávání informací pro zálohy stavu systému.
 
-8. Na stránce Potvrzení zkontrolujte uvedené informace a pak klikněte na **Dokončit**.
+8. Na stránce potvrzení zkontrolujte informace a pak vyberte **Dokončit**.
 
-9. Až průvodce dokončí vytváření plánu zálohování, klikněte na **Zavřít**.
+9. Až průvodce dokončí vytváření plánu zálohování, vyberte **Zavřít**.
 
 ### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>Postup při prvním zálohování stavu systému Windows Server
 
 1. Ujistěte se, že neexistují žádné nedokončené aktualizace pro Windows Server, které vyžadují restart.
 
-2. Chcete-li dokončit prvotní synchronizaci přes síť, v agentu Služeb zotavení klikněte na **Zálohovat nyní**.
+2. V agentovi Recovery Services vyberte **Zálohovat nyní** , abyste mohli dokončit počáteční osazení přes síť.
 
     ![Zálohování Windows serveru hned teď](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. Na obrazovce **Vybrat zálohovanou položku** vyberte **stav systému** , který se zobrazí, a klikněte na **Další**.
+3. Na obrazovce **Vybrat zálohovanou položku** vyberte **stav systému** , který se zobrazí, a vyberte **Další**.
 
-4. Na stránce Potvrzení zkontrolujte nastavení, které Průvodce Zálohování nyní použije k zálohování počítače. Poté klikněte na **Zálohovat**.
+4. Na stránce Potvrzení zkontrolujte nastavení, které Průvodce Zálohování nyní použije k zálohování počítače. Pak vyberte **zálohovat**.
 
-5. Průvodce zavřete kliknutím na **Zavřít**. Pokud průvodce zavřete před dokončením procesu zálohování, průvodce zůstane spuštěný na pozadí.
+5. Kliknutím na **Zavřít** zavřete průvodce. Pokud průvodce zavřete před dokončením procesu zálohování, průvodce zůstane spuštěný na pozadí.
     > [!NOTE]
-    > Agent MARS aktivuje nástroj SFC/VERIFYONLY jako součást předkontrol všech záloh stavu systému. K tomu je potřeba zajistit, aby byly soubory zálohované jako součást stavu systému správné verze odpovídající verzi Windows. Další informace o nástroji pro kontrolu systémových souborů (SFC) najdete v [tomto článku](/windows-server/administration/windows-commands/sfc).
+    > Agent MARS se spustí `SFC /verifyonly` jako součást předkontroly před všemi zálohováními stavu systému. K tomu je potřeba zajistit, aby byly soubory zálohované jako součást stavu systému správné verze odpovídající verzi Windows. Další informace o nástroji pro kontrolu systémových souborů (SFC) najdete v [tomto článku](/windows-server/administration/windows-commands/sfc).
     >
 
 Po dokončení prvotní zálohy se v konzole Zálohování zobrazí stav **Úloha byla dokončena**.
@@ -183,7 +183,7 @@ Po dokončení prvotní zálohy se v konzole Zálohování zobrazí stav **Úloh
 
 ## <a name="questions"></a>Máte otázky?
 
-Máte-li nějaké dotazy nebo pokud víte o funkci, kterou byste uvítali, [odešlete nám svůj názor](https://feedback.azure.com/forums/258995-azure-backup).
+Pokud máte nějaké dotazy, [pošlete nám svůj názor](https://feedback.azure.com/forums/258995-azure-backup).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,12 +4,12 @@ description: Tento článek popisuje oblíbené obecné otázky týkající se A
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 89a5785811b4f4833a5a5ddcef827b258ce1775a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b5730fba1a0267ab72497bc65b51de75654f970
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083731"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263373"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Obecné otázky týkající se Azure Site Recovery
 
@@ -23,7 +23,7 @@ Tento článek shrnuje Nejčastější dotazy týkající se Azure Site Recovery
 
 ### <a name="what-does-site-recovery-do"></a>K čemu Site Recovery slouží?
 
-Site Recovery přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), a to tím, že orchestruje a automatizuje replikaci virtuálních počítačů Azure mezi oblastmi, místními virtuálními počítači a fyzickými servery do Azure a místními počítači do sekundárního datacentra. [Přečtěte si další informace](site-recovery-overview.md).
+Site Recovery přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), a to tím, že orchestruje a automatizuje replikaci virtuálních počítačů Azure mezi oblastmi, místními virtuálními počítači a fyzickými servery do Azure a místními počítači do sekundárního datacentra. [Další informace](site-recovery-overview.md).
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Můžu chránit virtuální počítač, který má disk Docker?
 
@@ -39,7 +39,7 @@ Existují různé míry, které Site Recovery, aby se zajistila integrita dat. M
 Ano, Site Recovery podporuje jak vyhrazené, tak sdílené modely infrastruktury.
 
 ### <a name="for-a-service-provider-is-the-identity-of-my-tenant-shared-with-the-site-recovery-service"></a>Pro poskytovatele služeb je identitou mého tenanta sdíleného pomocí služby Site Recovery?
-Ne. Identita tenanta zůstává anonymní. Vaši klienti nepotřebují přístup k portálu Site Recovery. Pouze správce poskytovatele služeb pracuje s portálem.
+No. Identita tenanta zůstává anonymní. Vaši klienti nepotřebují přístup k portálu Site Recovery. Pouze správce poskytovatele služeb pracuje s portálem.
 
 ### <a name="will-tenant-application-data-ever-go-to-azure"></a>Budou data aplikace tenanta někdy přejít do Azure?
 Při replikaci mezi lokalitami ve vlastnictví poskytovatele služeb se data aplikací do Azure nikdy nepřenášejí. Data se šifrují během přenosu a replikují se přímo mezi lokalitami poskytovatele služeb.
@@ -47,7 +47,7 @@ Při replikaci mezi lokalitami ve vlastnictví poskytovatele služeb se data apl
 Pokud replikujete do Azure, data aplikací se posílají do úložiště Azure, ale nikoli do služby Site Recovery. Data se šifrují během přenosu a zůstávají šifrovaná v Azure.
 
 ### <a name="will-my-tenants-receive-a-bill-for-any-azure-services"></a>Obdrží mí klienti fakturu za služby Azure?
-Ne. Azure má fakturační vztah přímo s poskytovatelem služeb. Za generování konkrétních faktur pro své klienty má plnou odpovědnost poskytovatel služeb.
+No. Azure má fakturační vztah přímo s poskytovatelem služeb. Za generování konkrétních faktur pro své klienty má plnou odpovědnost poskytovatel služeb.
 
 ### <a name="if-im-replicating-to-azure-do-we-need-to-run-virtual-machines-in-azure-at-all-times"></a>Pokud replikuji do Azure, potřebujeme mít virtuální počítače v Azure spuštěné nepřetržitě?
 Ne, data se replikují do úložiště Azure v rámci vašeho předplatného. Když provedete testovací převzetí služeb při selhání (rutina pro zotavení po havárii) nebo skutečné převzetí, Site Recovery ve vašem předplatném automaticky vytvoří virtuální počítače.
@@ -121,7 +121,7 @@ Můžete přepnout na spravovanou identitu trezoru služby Recovery Services tak
 
 - Účty úložiště založené na Správce prostředků (standardní typ):
   - [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor)
-  - [Přispěvatel dat objektu BLOB služby Storage](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+  - [Přispěvatel dat v objektech blob služby Storage](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
 - Účty úložiště založené na Správce prostředků (typ Premium):
   - [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor)
   - [Vlastník dat objektu BLOB služby Storage](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
@@ -248,10 +248,79 @@ Yes. Azure Site Recovery pro operační systém Linux podporuje vlastní skripty
 >[!Note]
 >Aby bylo možné podporovat vlastní skripty, musí být verze agenta Site Recovery 9,24 nebo vyšší.
 
+## <a name="replication-policy"></a>Zásady replikace
+
+### <a name="what-is-a-replication-policy"></a>Co je zásada replikace?
+
+Zásady replikace definují nastavení pro historii uchovávání bodů obnovení. Zásady také definují četnost snímků konzistentních vzhledem k aplikacím. Ve výchozím nastavení Azure Site Recovery vytvoří novou zásadu replikace s výchozími nastaveními:
+
+- 24 hodin pro historii uchovávání bodů obnovení.
+- 4 hodiny pro četnost snímků konzistentních vzhledem k aplikacím.
+
+[Přečtěte si další informace o nastavení replikace](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
+
+### <a name="what-is-a-crash-consistent-recovery-point"></a>Co je bod obnovení konzistentní vzhledem k selháním?
+
+Bod obnovení konzistentní s chybou obsahuje data na disku, jako kdyby jste ze serveru během snímku vyžádali napájecí kabel. Bod obnovení konzistentní vzhledem k chybě neobsahuje cokoli, co bylo v paměti při pořízení snímku.
+
+V současné době se většina aplikací může zotavit i z snímků konzistentních vzhledem k chybě. Bod obnovení konzistentní vzhledem k selháním je obvykle dostačující pro operační systémy bez databáze a aplikace jako souborové servery, servery DHCP a tiskové servery.
+
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Jaká je četnost generování bodu obnovení konzistentního vzhledem k chybě?
+
+Site Recovery vytvoří bod obnovení konzistentní vzhledem k selháním každých 5 minut.
+
+### <a name="what-is-an-application-consistent-recovery-point"></a>Co je bod obnovení konzistentní vzhledem k aplikacím?
+
+Body obnovení konzistentní vzhledem k aplikacím se vytvářejí z snímků konzistentních vzhledem k aplikacím. Body obnovení konzistentní vzhledem k aplikacím zachycují stejná data jako snímky konzistentní s chybou a zároveň zachytí data v paměti a všechny probíhající transakce.
+
+Vzhledem k tomu, že se jedná o další obsah, jsou nejdůležitější snímky konzistentní vzhledem k aplikacím a trvat nejdéle. Pro databázové operační systémy a aplikace, jako je například SQL Server, doporučujeme body obnovení konzistentní vzhledem k aplikacím.
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Jaký je dopad bodů obnovení konzistentních vzhledem k aplikacím na výkon aplikace?
+
+Body obnovení konzistentní vzhledem k aplikacím zachytí všechna data v paměti a v procesu. Vzhledem k tomu, že body obnovení zachytí tato data, vyžadují rozhraní, jako služba Stínová kopie svazku ve Windows, aby bylo možné aplikaci neuvést. Pokud je proces zachytávání častý, může to mít vliv na výkon, pokud je zatížení už zaneprázdněné. Nedoporučujeme používat pro úlohy mimo databázi nízkou frekvenci pro body obnovení konzistentní vzhledem k aplikacím. I pro databázová zatížení je k dispozici 1 hodina.
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Jaká je minimální frekvence generování bodu obnovení konzistentního vzhledem k aplikacím?
+
+Site Recovery může vytvořit bod obnovení konzistentní vzhledem k aplikacím s minimální frekvencí 1 hodina.
+
+### <a name="how-are-recovery-points-generated-and-saved"></a>Jak se vygenerovaly a ukládají body obnovení?
+
+Pokud chcete pochopit, jak Site Recovery generuje body obnovení, Podívejme se na příklad zásady replikace. Tato zásada replikace má bod obnovení s časovým intervalem pro uchovávání v 24hodinovém formátu a snímkem frekvence konzistentního vzhledem k aplikacím 1 hodina.
+
+Site Recovery vytvoří bod obnovení konzistentní vzhledem k selháním každých 5 minut. Tuto frekvenci nemůžete změnit. Za poslední hodinu můžete vybrat z 12 bodů konzistentních z havárie a 1 bodu konzistentního vzhledem k aplikacím. V průběhu času Site Recovery vyřadí všechny body obnovení za poslední hodinu a uloží pouze 1 bod obnovení za hodinu.
+
+Příklad ukazuje následující snímek obrazovky. Na snímku obrazovky:
+
+- Během poslední hodiny existují body obnovení s frekvencí 5 minut.
+- Po uplynutí poslední hodiny zachovává Site Recovery jenom 1 bod obnovení.
+
+   ![Seznam generovaných bodů obnovení](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
+
+### <a name="how-far-back-can-i-recover"></a>Jak daleko zpátky můžu obnovit?
+
+Nejstarší bod obnovení, který můžete použít, je 72 hodin.
+
+### <a name="i-have-a-replication-policy-of-24-hours-what-will-happen-if-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>Mám zásady replikace za 24 hodin. Co se stane, když problém zabrání Site Recovery generování bodů obnovení po dobu delší než 24 hodin? Ztratí se předchozí body obnovení?
+
+Ne, Site Recovery bude uchovávat všechny předchozí body obnovení. V závislosti na okně pro uchování bodů obnovení Site Recovery nahradí nejstarší bod pouze v případě, že generuje nové body. Kvůli problému Site Recovery nemůže vygenerovat žádné nové body obnovení. Dokud nebudou k dispozici nové body obnovení, všechny staré body zůstanou po dosažení okna uchování.
+
+### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Jak se po replikaci na virtuálním počítači povolí replikace, jak změním zásady replikace?
+
+Přejít na **Site Recovery trezor**  >  **Site Recovery**  >  **Zásady replikace**infrastruktury. Vyberte zásadu, kterou chcete upravit, a uložte změny. Všechny změny se projeví i u všech stávajících replikací.
+
+### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Má všechny body obnovení úplnou kopii virtuálního počítače nebo rozdílu?
+
+První vygenerovaný bod obnovení má úplnou kopii. Všechny úspěšné body obnovení mají rozdílové změny.
+
+### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Zvyšuje doba uchování bodů obnovení náklady na úložiště?
+
+Ano, Pokud zvýšíte dobu uchovávání dat z 24 hodin na 72 hodin, Site Recovery bude body obnovení ukládat po dobu dalších 48 hodin. Přidaný čas účtuje poplatky za úložiště. Například jeden bod obnovení může mít rozdílové změny 10 GB s $0,16 za GB za měsíc. Další poplatky by byly $1,60 × 48 za měsíc.
+
+
 ## <a name="failover"></a>Převzetí služeb při selhání
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Pokud převezmem služby při selhání do Azure, jak mám přístup k virtuálním počítačům Azure po převzetí služeb při selhání?
 
-K virtuálním počítačům Azure můžete přistoupit přes zabezpečené internetové připojení, síť site-to-site VPN nebo přes Azure ExpressRoute. Aby bylo možné se připojit, je nutné připravit množství věcí. [Přečtěte si další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+K virtuálním počítačům Azure můžete přistoupit přes zabezpečené internetové připojení, síť site-to-site VPN nebo přes Azure ExpressRoute. Aby bylo možné se připojit, je nutné připravit množství věcí. [Další informace](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Při převzetí služeb při selhání do Azure, jak Azure zajišťuje, aby moje data byla odolná?

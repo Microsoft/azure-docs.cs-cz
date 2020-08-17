@@ -1,15 +1,14 @@
 ---
 title: Obnovení souborů na Windows serveru pomocí agenta MARS
 description: V tomto článku se dozvíte, jak obnovit data uložená v Azure do počítače s Windows serverem nebo Windows pomocí agenta Microsoft Azure Recovery Services (MARS).
-ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 040ac3069500d0e52441df6f07d92645a7ae69df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d96c6c54431d0160bd58be0c3491ef2b22753e53
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764430"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263397"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Obnovení souborů na Windows serveru pomocí agenta MARS
 
@@ -18,7 +17,7 @@ Tento článek vysvětluje, jak obnovit data z trezoru služby Backup. Chcete-li
 * Obnovte data na stejném počítači, ze kterého byly zálohy pořízeny.
 * Obnovení dat na jiný počítač
 
-Pomocí funkce okamžitého obnovení můžete připojit zapisovatelný zapisovatelný snímek bodu obnovení jako svazek pro obnovení. Pak můžete prozkoumat svazek pro obnovení a kopírovat soubory do místního počítače, a tak selektivně obnovovat soubory.
+Pomocí funkce okamžitého obnovení můžete připojit zapisovatelný zapisovatelný snímek bodu obnovení jako svazek pro obnovení. Pak můžete prozkoumat svazek pro obnovení a kopírovat soubory do místního počítače, v tomto případě selektivně obnovování souborů.
 
 > [!NOTE]
 > Pokud chcete k obnovení dat použít okamžité obnovení, je potřeba [aktualizace z ledna 2017 Azure Backup](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) . Zálohovaná data musí být také chráněna v trezorech v místních prostředích uvedených v článku podpory. Nejnovější seznam národních prostředí, která podporují okamžité obnovení, najdete v [2017. Azure Backup aktualizace](https://support.microsoft.com/help/3216528/azure-backup-update-for-microsoft-azure-recovery-services-agent-januar) .
@@ -38,15 +37,15 @@ Pokud jste omylem odstranili soubor a chcete ho obnovit do stejného počítače
 
 2. Vyberte **obnovit data** a spusťte průvodce.
 
-    ![Snímek obrazovky Azure Backup se zvýrazněnou možností obnovit data](./media/backup-azure-restore-windows-server/recover.png)
+    ![Snímek obrazovky Azure Backup se zvýrazněnou možností obnovit data (obnovit do stejného počítače)](./media/backup-azure-restore-windows-server/recover.png)
 
 3. Na stránce **Začínáme** pro obnovení dat na stejném serveru nebo počítači vyberte **Tento server ( `<server name>` )**  >  **Další**.
 
-    ![Snímek obrazovky s Začínáme stránku Průvodce obnovením dat](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
+    ![Snímek obrazovky s průvodcem obnovením dat Začínáme stránce (obnovení do stejného počítače)](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
 4. Na stránce **Vybrat režim obnovení** vyberte **jednotlivé soubory a složky** > **Další**.
 
-    ![Snímek obrazovky Průvodce obnovením dat – výběr stránky režimu obnovení](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
+    ![Snímek obrazovky Průvodce obnovením dat výběr stránky režimu obnovení (obnovení do stejného počítače)](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
    > Možnost obnovení jednotlivých souborů a složek vyžaduje .NET Framework 4.5.2 nebo novější. Pokud nevidíte možnost **jednotlivé soubory a složky** , musíte upgradovat .NET Framework na verzi 4.5.2 nebo novější. potom to zkuste znovu.
 
@@ -57,7 +56,7 @@ Pokud jste omylem odstranili soubor a chcete ho obnovit do stejného počítače
 
     V kalendáři vyberte bod obnovení. Kalendářní data **tučně** označují dostupnost alespoň jednoho bodu obnovení. Pokud je v jednom dni k dispozici více bodů obnovení, vyberte konkrétní bod obnovení z rozevírací nabídky **čas** .
 
-    ![Snímek obrazovky Průvodce obnovením dat výběr svazku a data stránky](./media/backup-azure-restore-windows-server/samemachine_selectvolumedate_instantrestore.png)
+    ![Snímek obrazovky Průvodce obnovením dat výběr svazku a data stránky (obnovení do stejného počítače)](./media/backup-azure-restore-windows-server/samemachine_selectvolumedate_instantrestore.png)
 
 6. Po výběru bodu obnovení, který se má obnovit, vyberte **připojit**.
 
@@ -65,15 +64,15 @@ Pokud jste omylem odstranili soubor a chcete ho obnovit do stejného počítače
 
 7. Na stránce **Procházet a obnovit soubory** vyberte **Procházet** a otevřete Průzkumníka Windows a najděte požadované soubory a složky.
 
-    ![Snímek obrazovky se stránkou Průvodce obnovením dat procházení a obnovení souborů](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
+    ![Snímek obrazovky se stránkou Průvodce obnovením dat procházení a obnovení souborů (obnovení do stejného počítače)](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
-8. V Průzkumníku Windows zkopírujte soubory a složky, které chcete obnovit, a vložte je do libovolného umístění na serveru nebo v místním počítači. Soubory můžete otevřít nebo zasílat přímo ze svazku pro obnovení a ověřit, jestli obnovujete správné verze.
+8. V Průzkumníku Windows zkopírujte soubory a složky, které chcete obnovit, a vložte je do libovolného umístění na serveru nebo v místním počítači. Soubory můžete otevřít nebo zasílat přímo ze svazku pro obnovení a ověřit si, že obnovujete správné verze.
 
-    ![Snímek obrazovky Průzkumníka Windows se zvýrazněnou možností kopírovat](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
+    ![Snímek obrazovky Průzkumníka Windows se zvýrazněnou možností kopírovat (obnovit do stejného počítače)](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 
 9. Až budete hotovi, na stránce **Procházet a obnovit soubory** vyberte **Odpojit**. Pak vyberte **Ano** a potvrďte tak, že chcete odpojit svazek.
 
-    ![Snímek obrazovky se stránkou Průvodce obnovením dat procházení a obnovení souborů](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
+    ![Snímek obrazovky se stránkou Průvodce obnovením dat procházení a obnovení souborů (obnovení do stejného počítače)](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
     > Pokud nevyberete **Odpojit**, svazek pro obnovení zůstane připojený po dobu 6 hodin od okamžiku, kdy byl připojen. Doba připojení se ale v případě probíhajícího kopírování souborů prodlouží na 24 hodin. Během připojení svazku se nespustí žádné operace zálohování. Jakákoli zálohovací operace naplánovaná ke spuštění v době, kdy je svazek připojen, se spustí po odpojení svazku pro obnovení.
@@ -100,11 +99,11 @@ Tyto kroky zahrnují následující terminologii:
 
 3. Vyberte **obnovit data** a otevřete tak **Průvodce obnovením dat**.
 
-    ![Snímek obrazovky Azure Backup se zvýrazněnou možností obnovit data](./media/backup-azure-restore-windows-server/recover.png)
+    ![Snímek obrazovky Azure Backup s zvýrazněnou možností obnovit data (obnovit do alternativního počítače)](./media/backup-azure-restore-windows-server/recover.png)
 
 4. Na stránce **Začínáme** vyberte **jiný server**.
 
-    ![Snímek obrazovky s Začínáme stránku Průvodce obnovením dat](./media/backup-azure-restore-windows-server/alternatemachine_gettingstarted_instantrestore.png)
+    ![Snímek obrazovky s průvodcem obnovením dat Začínáme stránce (obnovení do alternativního počítače)](./media/backup-azure-restore-windows-server/alternatemachine_gettingstarted_instantrestore.png)
 
 5. Zadejte soubor s přihlašovacími údaji úložiště, který odpovídá trezoru ukázek, a vyberte **Další**.
 
@@ -112,31 +111,31 @@ Tyto kroky zahrnují následující terminologii:
 
 6. Na stránce **Vybrat záložní server** vyberte zdrojový počítač ze seznamu zobrazených počítačů a zadejte heslo. Pak vyberte **Další**.
 
-    ![Snímek obrazovky Průvodce obnovením dat výběr stránky záložního serveru](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
+    ![Snímek obrazovky Průvodce obnovením dat vybrat záložní server stránku (obnovit do alternativního počítače)](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
 7. Na stránce **Vybrat režim obnovení** vyberte **jednotlivé soubory a složky**  >  **Další**.
 
-    ![Snímek obrazovky Průvodce obnovením dat – výběr stránky režimu obnovení](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
+    ![Snímek obrazovky Průvodce obnovením dat výběr stránky režim obnovení (obnovení do alternativního počítače)](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 
 8. Na stránce **Vybrat svazek a datum** vyberte svazek, který obsahuje soubory a složky, které chcete obnovit.
 
     V kalendáři vyberte bod obnovení. Kalendářní data **tučně** označují dostupnost alespoň jednoho bodu obnovení. Pokud je v jednom dni k dispozici více bodů obnovení, vyberte konkrétní bod obnovení z rozevírací nabídky **čas** .
 
-    ![Snímek obrazovky Průvodce obnovením dat výběr svazku a data stránky](./media/backup-azure-restore-windows-server/alternatemachine_selectvolumedate_instantrestore.png)
+    ![Snímek obrazovky Průvodce obnovením dat výběr svazku a data stránky (obnovení do alternativního počítače)](./media/backup-azure-restore-windows-server/alternatemachine_selectvolumedate_instantrestore.png)
 
 9. Vyberte **připojit** k místnímu připojení bodu obnovení jako svazku pro obnovení na cílovém počítači.
 
 10. Na stránce **Procházet a obnovit soubory** vyberte **Procházet** a otevřete Průzkumníka Windows a najděte požadované soubory a složky.
 
-    ![Snímek obrazovky se stránkou Průvodce obnovením dat procházení a obnovení souborů](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
+    ![Snímek obrazovky se stránkou Průvodce obnovením dat procházení a obnovení souborů (obnovení do alternativního počítače)](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
 
 11. V Průzkumníku Windows zkopírujte soubory a složky ze svazku pro obnovení a vložte je do umístění cílového počítače. Soubory můžete otevřít nebo zasílat přímo ze svazku pro obnovení a ověřit, jestli se obnovily správné verze.
 
-    ![Snímek obrazovky Průzkumníka Windows se zvýrazněnou možností kopírovat](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
+    ![Snímek obrazovky Průzkumníka Windows se zvýrazněnou možností kopírovat (obnovit do alternativního počítače)](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
 12. Až budete hotovi, na stránce **Procházet a obnovit soubory** vyberte **Odpojit**. Pak vyberte **Ano** a potvrďte tak, že chcete odpojit svazek.
 
-    ![Snímek obrazovky se stránkou Průvodce obnovením dat procházení a obnovení souborů](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
+    ![Odpojte svazek (obnovit do alternativního počítače).](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
     > Pokud nevyberete **Odpojit**, svazek pro obnovení zůstane připojený po dobu 6 hodin od okamžiku, kdy byl připojen. Doba připojení se ale v případě probíhajícího kopírování souborů prodlouží na 24 hodin. Během připojení svazku se nespustí žádné operace zálohování. Jakákoli zálohovací operace naplánovaná ke spuštění v době, kdy je svazek připojen, se spustí po odpojení svazku pro obnovení.

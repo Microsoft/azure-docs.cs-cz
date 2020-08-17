@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/27/2020
-ms.openlocfilehash: 2edd5b661240b6156cf8a02059b2b9a668c402f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/16/2020
+ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83829116"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263465"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Řešení potíží s toky dat v Azure Data Factory
 
@@ -70,6 +70,13 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 - **Příčiny**: Jedná se o chybu back-endové služby. Můžete to zkusit znovu a taky znovu spustit relaci ladění.
 - **Doporučení**: Pokud akci opakovat a restartovat neodstraníte, obraťte se na zákaznickou podporu.
 
+### <a name="error-code-debug-data-preview-no-output-data-on-join"></a>Kód chyby: náhled dat ladění při spojení neobsahují výstupní data.
+
+- **Zpráva**: existuje velký počet hodnot null nebo chybějící hodnoty, které mohou být způsobeny příliš malým počtem řádků vzorků. Zkuste aktualizovat limit řádků ladění a aktualizovat data.
+- **Příčiny**: podmínka spojení se neshoduje s žádnými řádky nebo způsobila vysoký počet hodnot null během období náhledu dat.
+- **Doporučení**: Přejít na nastavení ladění a zvýšit počet řádků v limitu zdrojového řádku. Ujistěte se, že máte vybrat a Azure IR s velkým dostatečným clusterem toku dat pro zpracování více dat.
+
+
 ## <a name="general-troubleshooting-guidance"></a>Obecné pokyny k odstraňování potíží
 
 1. Ověřte stav připojení datové sady. V každé transformaci zdroje a jímky navštivte propojenou službu pro každou datovou sadu, kterou používáte, a otestujte připojení.
@@ -79,9 +86,9 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 ## <a name="next-steps"></a>Další kroky
 
 Pro další nápovědu k řešení potíží zkuste tyto prostředky:
-*  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Blog Data Factory](https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog)
 *  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
-*  [Videa Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Videa k Azure](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/videos)
 *  [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Stack Overflow fórum pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)

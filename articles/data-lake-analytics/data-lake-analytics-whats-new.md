@@ -6,19 +6,19 @@ ms.service: data-lake-analytics
 ms.topic: overview
 ms.author: xujiang1
 ms.date: 07/31/2020
-ms.openlocfilehash: 0afd37a9f80fd2778f2b7206f58cec6ff423763e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 6f4885594e4f67d91c595d8afdddc15e8ed4ae75
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184954"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263176"
 ---
 # <a name="whats-new-in-data-lake-analytics"></a>Co je nového v Data Lake Analytics?
 
 Azure Data Lake Analytics se aktualizuje na základě aperiodic pro určité komponenty. V tomto článku najdete informace o tom, jak se má aktualizovat s nejnovější aktualizací.
 
 - Oznámení o klíčové součásti beta verze Preview
-- Důležité informace o verzi součásti, např.: seznam dostupných verzí komponenty, aktuální výchozí verze atd.
+- Důležité informace o verzi součásti, například: seznam dostupných verzí komponenty, aktuální výchozí verze atd.
 
 
 ## <a name="notification-of-key-component-beta-preview"></a>Oznámení o klíčové součásti beta verze Preview
@@ -33,14 +33,13 @@ Když odešlete úlohu Azure Data Lake Analytics ze všech nástrojů, bude vaš
 
 Verze modulu runtime bude aktualizována aperiodically. A předchozí modul runtime bude v některých časových intervalech stále k dispozici. Když je nová beta verze připravená na verzi Preview, bude k dispozici také zde.
 
-Níže jsou uvedené aktuálně dostupné verze modulu runtime.
+> [!CAUTION]
+> - Výběr modulu runtime, který je jiný než výchozí, má potenciál rozdělit úlohy U-SQL. Důrazně doporučujeme, abyste nepoužívali tyto jiné než výchozí verze pro produkční prostředí, ale jenom pro testování.
+> - Nevýchozí verze modulu runtime má pevný životní cyklus. Dojde k automatickému vypršení platnosti.
 
-- Release-20200124live_adl_16283022_2--> **aktuální výchozí verze**
-- release_20200124live_adl_16283022
-- release_20200124_adl_14480125
-- release_20190904_adl_10236248_1
-- release_20190904_adl_10236248
-- release_20190904_adl_9225818
+Následující verze je aktuální výchozí verze modulu runtime.
+
+- verze 20200124live_adl_16283022_2
 
 Chcete-li získat informace o řešení potíží s modulem runtime U-SQL, přečtěte si téma [řešení potíží s modulem runtime u-SQL](runtime-troubleshoot.md).
 

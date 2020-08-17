@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 30609535f21b64c137d7f94b89bedfab41159deb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e20e57a5fe1dde786097c658374516a1f3bf4005
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830559"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263346"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Výstrahy zabezpečení – referenční příručka
 
@@ -42,6 +42,7 @@ V dolní části této stránky je k dispozici Tabulka popisující Azure Securi
 |**Přidání účtu hosta do místní skupiny Administrators**|Analýza dat hostitele zjistila Přidání předdefinovaného účtu hosta do místní skupiny Administrators na hostiteli% {ohroženého hostitele}, což se důrazně přidružit k aktivitě útočníka.|-|Střední|
 |**Protokol událostí byl vymazán.**|Protokoly počítače označují podezřelou operaci mazání protokolu událostí uživatelem:% {uživatelské jméno} v počítači:% {CompromisedEntity}. Protokol% {log Channel} byl vymazán.|-|Informační|
 |**Antimalwarová akce provedena**|Microsoft Antimalware pro Azure přijal akci k ochraně tohoto počítače před malwarem nebo jiným potenciálně nežádoucím softwarem.|-|Střední|
+|**Antimalwarová akce selhala**|V případě programu Microsoft Antimalware došlo k chybě při pokusu o provedení akce s malwarem nebo jiným potenciálně nežádoucím softwarem.|-|Střední|
 |**Detected Petya ransomware indicators**|Analýza dat hostitele na% {ohroženém hostiteli} zjistila indikátory přidružené k Petya ransomwarem. Další informace naleznete v tématu https://blogs.technet.microsoft.com/mmpc/2017/06/27/new-ransomware-old-techniques-petya-adds-worm-capabilities/. Zkontrolujte příkazový řádek přidružený k této výstraze a přeupozorněte tuto výstrahu na svůj bezpečnostní tým.|-|Vysoké|
 |**Zjištěné akce, jejichž součástí je zakázání a odstranění souborů protokolu IIS**|Analýza dat hostitele zjistila akce, které zobrazují zakázané nebo odstraněné soubory protokolu IIS.|-|Střední|
 |**Zjistila se neobvyklé kombinace velkých a malých písmen na příkazovém řádku.**|Analýza dat hostitele na% {napadený hostitel} zjistila příkazový řádek s neobvyklé směsí velkých a malých písmen. Tento druh vzoru, i když je potenciálně neškodný, je také typický pro útočníky, kteří se pokoušejí při provádění úloh správy na napadeném hostiteli skrývat z pravidel založených na velikosti písmen nebo hash.|-|Střední|
@@ -61,7 +62,7 @@ V dolní části této stránky je k dispozici Tabulka popisující Azure Securi
 |**V příkazovém řádku se zjistily podezřelé přihlašovací údaje.**|Analýza dat hostitele na% {napadený hostitel} zjistila podezřelé heslo, které se používá ke spuštění souboru podle skupiny činností BÓR. Pro tuto skupinu aktivit bylo známo, že se toto heslo používá ke spouštění Pirpi malwaru na hostiteli oběti.|-|Vysoké|
 |**Zjištěné podezřelé přihlašovací údaje dokumentu**|Analýza dat hostitele na% {napadený hostitel} zjistila podezřelou, běžně vypočítanou hodnotu hash hesla použitou malwarem ke spuštění souboru. U skupiny aktivit bylo známo, že toto heslo použijete ke spuštění malwaru na hostiteli oběti.|-|Vysoké|
 |**Zjistilo se podezřelé spuštění příkazu VBScript. Encode.**|Analýza dat hostitele na% {ohroženém hostiteli} zjistila spuštění příkazu VBScript. Encode. Tím se skripty zakódují do nečitelného textu, což uživatelům ztěžuje kontrolu kódu. Výzkum hrozeb společnosti Microsoft ukazuje, že útočníci často používají kódované soubory VBscript jako součást svého útoku k obcházení systémů detekce. Může se jednat o legitimní aktivitu nebo označení ohroženého hostitele.|-|Střední|
-|**Zjistilo se podezřelé spuštění prostřednictvím rundll32.exe.**|V rámci analýzy dat hostitele na% {ohroženého hostitele} se zjistilo, rundll32.exe se používá ke spuštění procesu s neběžným názvem, a to v souladu se schématem pojmenovávání procesů, které dříve používala skupina aktivit GOLD při instalaci své první fáze implantátu na napadeného hostitele.|-|Vysoké|
+|**Zjistilo se podezřelé spuštění prostřednictvím rundll32.exe. **|V rámci analýzy dat hostitele na% {ohroženého hostitele} se zjistilo, rundll32.exe se používá ke spuštění procesu s neběžným názvem, a to v souladu se schématem pojmenovávání procesů, které dříve používala skupina aktivit GOLD při instalaci své první fáze implantátu na napadeného hostitele.|-|Vysoké|
 |**Zjištěné podezřelé příkazy pro vyčištění souborů**|Analýza dat hostitele na hostiteli% {ohroženého hostitele} zjistila kombinaci příkazů systeminfo, které dříve byly přidruženy k jedné z metod, které jsou předtím v rámci aktivity automatického čištění po napadení přidruženy k jedné z skupin aktivit. I když je systeminfo.exe legitimní Nástroj pro Windows, spouští se dvakrát po úspěchu a za ním následuje příkaz pro odstranění, na kterém k tomu došlo zřídka.|-|Vysoké|
 |**Zjištěn podezřelý vytvoření souboru**|Při analýze dat hostitele na% {napadený hostitel} se zjistilo vytvoření nebo spuštění procesu, který dříve označil akci po napadení u hostitele oběti pomocí skupiny aktivit barya. Tato skupina aktivit je známá k použití této techniky ke stažení dalšího malwaru do napadeného hostitele po otevření přílohy v dokumentu útoku phishing.|-|Vysoké|
 |**Zjištěna komunikace podezřelého pojmenovaného kanálu**|Analýza dat hostitele na% {ohroženém hostiteli} zjistila, že se zapisují data do místního pojmenovaného kanálu z příkazu konzoly Windows. Pojmenované kanály jsou známy jako kanál používaný útočníky k úkolování a komunikaci se zlými implantátu. Může se jednat o legitimní aktivitu nebo označení ohroženého hostitele.|-|Vysoké|

@@ -1,17 +1,17 @@
 ---
 title: Přístup ke službě Azure Blob Storage s využitím služeb Azure Databricks a Azure Key Vault
 description: V tomto kurzu se dozvíte, jak získat přístup k Azure Blob Storage z Azure Databricks pomocí tajného kódu uloženého v Azure Key Vault
-author: taytran0
-ms.author: t-trtr
+author: msmbaldwin
+ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: 50ea93dea62b6e4e333e58550b2750897c7e0a77
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 9b3d07eae9e47b7a8466cfb32f03b8790c079f02
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84988888"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262989"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>Kurz: přístup k Azure Blob Storage pomocí Azure Databricks a Azure Key Vault
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 Než začnete s tímto kurzem, nainstalujte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c896e617346c9bab598044cedfc475b471466cd0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b89b3e2cf799e1aa182f7005d92e2c91ce4b76ce
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998846"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263074"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Kurz: Vytváření a správa virtuálních počítačů s Windows pomocí Azure PowerShellu
 
@@ -237,7 +237,7 @@ Virtuální počítač Azure může mít jeden z mnoha stavů napájení.
 | Stav napájení | Popis
 |----|----|
 | Spouštění | Virtuální počítač se právě spouští. |
-| Spuštěný | Virtuální počítač je spuštěný. |
+| Spuštěno | Virtuální počítač je spuštěný. |
 | Zastavování | Virtuální počítač se právě zastavuje. |
 | Zastaveno | Virtuální počítač je zastavený. Poplatky za výpočetní výkon se účtují i za virtuální počítače v zastaveném stavu.  |
 | Rušení přidělení | Probíhá navýšení virtuálního počítače. |
@@ -261,6 +261,8 @@ Status
 ------
 PowerState/running
 ```
+
+Pokud chcete načíst stav napájení všech virtuálních počítačů ve vašem předplatném, použijte [Virtual Machines – Vypíše všechna rozhraní API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) s parametrem **statusOnly** nastavenou na *hodnotu true*.
 
 ## <a name="management-tasks"></a>Úlohy správy
 
@@ -310,4 +312,4 @@ V tomto kurzu jste se dozvěděli o základních úkolech při vytváření a sp
 V dalším kurzu se dozvíte něco o discích virtuálních počítačů.  
 
 > [!div class="nextstepaction"]
-> [Vytvoření a správa disků virtuálního počítače](./tutorial-manage-data-disk.md)
+> [Vytvoření a Správa disků virtuálních počítačů](./tutorial-manage-data-disk.md)

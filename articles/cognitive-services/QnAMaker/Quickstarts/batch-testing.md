@@ -3,12 +3,12 @@ title: 'Rychlý Start: testování znalostní báze s dotazy služby Batch'
 description: Pomocí nástroje QnA Maker Batch Test otestujete znalostní bázi v prostředku QnA Maker pro očekávané odpovědi, hodnocení spolehlivosti a výzvy k vícenásobnému zapnutí.
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: 01c767a6fbea5061f644052234f7462857dd342b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 498f84c97fdc022e460dec453b1d65bb8088b787
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337729"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263142"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Rychlý Start: testování znalostní báze s dotazy služby Batch a očekávanými odpověďmi
 
@@ -25,7 +25,7 @@ Pomocí nástroje QnA Maker Batch Test otestujete znalostní bázi v prostředku
 
 [Přihlaste](https://www.qnamaker.ai/) se k portálu QnA maker.
 
-## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>Vytvoří novou znalostní bázi z ukázkového souboru. docx s vícenásobným zapnete.
+## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>Vytvoření nové znalostní báze z sample.docx souboru s vícenásobným zahnutím
 
 1. Na panelu nástrojů vyberte **vytvořit znalostní bázi** .
 1. Přeskočte **Krok 1** , protože byste už měli mít QnA maker prostředek, přesunete se ke **kroku 2** a vyberete své existující informace o zdroji:
@@ -39,10 +39,10 @@ Pomocí nástroje QnA Maker Batch Test otestujete znalostní bázi v prostředku
 
     |Nastavení|Hodnota|
     |--|--|
-    |**Povolí vícenásobné extrakce z adres URL, souborů PDF a DOCX.**|Zaškrtnuté|
+    |**Povolí vícenásobné extrakce z adres URL, souborů PDF a DOCX.**|Zaškrtnuto|
     |**Výchozí text odpovědi**| `Batch test - default answer not found.`|
     |**+ Přidat soubor**|Vyberte stažený `.docx` soubor výpisu v části požadavky.|
-    |**CHITEST – chat**|Vybrat **Professional**|
+    |**Povídání**|Vybrat **Professional**|
 
 1. V **kroku 5**vyberte **vytvořit znalostní báze**.
 
@@ -56,16 +56,16 @@ Pomocí nástroje QnA Maker Batch Test otestujete znalostní bázi v prostředku
     |Požadovaná data| Příklad|
     |--|--|
     |Publikovaný hostitel|`https://YOUR-RESOURCE-NAME.azurewebsites.net`|
-    |Publikovaný klíč|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`(32 řetězec znaků zobrazený po `Endpoint` )|
-    |ID aplikace|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 řetězec znaků zobrazený jako součást `POST` ) |
+    |Publikovaný klíč|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` (32 řetězec znaků zobrazený po `Endpoint` )|
+    |ID aplikace|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (36 řetězec znaků zobrazený jako součást `POST` ) |
 
 ## <a name="create-batch-test-file-with-question-ids"></a>Vytvořit soubor dávkového testu s ID dotazů
 
-Chcete-li použít nástroj Batch test, vytvořte soubor s názvem `batch-test-data-1.tsv` s textovým editorem. Soubor musí mít následující sloupce oddělené tabulátorem.
+Chcete-li použít nástroj Batch test, vytvořte soubor s názvem `batch-test-data-1.tsv` s textovým editorem. Soubor by měl být ve formátu UTF-8 a musí mít následující sloupce oddělené tabulátorem.
 
 |Pole vstupního souboru TSV|Poznámky|Příklad|
 |--|--|--|
-|ID znalostní báze|ID vašeho znalostní báze bylo nalezeno na stránce publikování. Pomocí různých ID znalostní báze v jednom souboru otestujete několik znalostí ve stejné službě najednou v jednom souboru.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 řetězec znaků zobrazený jako součást `POST` ) |
+|ID znalostní báze|ID vašeho znalostní báze bylo nalezeno na stránce publikování. Pomocí různých ID znalostní báze v jednom souboru otestujete několik znalostí ve stejné službě najednou v jednom souboru.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (36 řetězec znaků zobrazený jako součást `POST` ) |
 |Otázka|Text otázky, kterou uživatel zadal. maximální počet znaků: 1 000|`How do I sign out?`|
 |Značky metadat|optional|`topic:power`používá formát _klíč: hodnota_|
 |První parametr|optional|`25`|

@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte, jak vytvořit trezor Recovery Services,
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7a8849bba51939a0c40cba81925e1b4b4a6e3826
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372548"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263414"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Zálohování několika virtuálních počítačů pomocí webu Azure Portal
 
@@ -24,7 +24,7 @@ Když zálohujete data v Azure, ukládáte tato data do prostředku Azure označ
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -156,7 +156,7 @@ Pokud máte v úmyslu pokračovat v práci s dalšími kurzy, neprovádějte či
 
 1. Na řídicím panelu **trezoru myrecoveryservicesvault** vyberte v části **zálohované položky** položku **3** a otevřete tak nabídku zálohované položky.
 
-    ![Zálohované položky](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
+    ![Otevřít nabídku zálohované položky](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 
 1. V nabídce **zálohované položky** vyberte **virtuální počítač Azure** a otevřete seznam virtuálních počítačů přidružených k trezoru.
 
@@ -185,7 +185,7 @@ Pokud máte v úmyslu pokračovat v práci s dalšími kurzy, neprovádějte či
 
 1. Pokud v trezoru nejsou žádné další položky, vyberte **Odstranit**.
 
-    ![Vyberte Zastavit zálohování pro odstranění trezoru.](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
+    ![Vybrat odstranit](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
 
     Po odstranění trezoru se vrátíte do seznamu Recovery Services trezorů.
 

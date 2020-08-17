@@ -3,12 +3,12 @@ title: Dotazy týkající se zjišťování, hodnocení a analýzy závislostí 
 description: Získejte odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 8db9103494c0006127c45c0ae5f9672d3bd2bbb1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9b8ba0ec83b9f2faedebb2bfb4ba84109f6f8b77
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829879"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263499"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analýzy zjišťování, hodnocení a závislostí – běžné otázky
 
@@ -36,23 +36,34 @@ Můžete zjistit až 10 000 virtuálních počítačů VMware, až 5 000 virtuá
 - Posouzení **Řešení Azure VMware (AVS)** použijte, když chcete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do [Řešení Azure VMware (AVS)](../azure-vmware/introduction.md) pomocí tohoto typu posouzení. [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - Ke spuštění obou typů hodnocení můžete použít společnou skupinu pouze s počítači VMware. Poznámka: Pokud ve službě Azure Migrate spouštíte hodnocení služby AVS poprvé, doporučujeme vytvořit novou skupinu počítačů VMware.
+ 
+
+## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>Proč v sestavě posouzení chybí data o výkonu některých nebo všech virtuálních počítačů?
+
+Pokud zařízení Azure Migrate nemůže shromáždit údaje o výkonu místních virtuálních počítačů, v sestavě posouzení na základě výkonu se zobrazí PercentageOfCoresUtilizedMissing nebo PercentageOfMemoryUtilizedMissing. Zkontrolujte následující:
+
+- Byly virtuální počítače po dobu trvání, pro kterou vytváříte posouzení, zapnuté?
+- Pokud chybí pouze čítače paměti a pokoušíte se posoudit virtuální počítače Hyper-V, zkontrolujte, jestli je na těchto virtuálních počítačích povolená dynamická paměť. V současné době existuje známý problém, kvůli kterému zařízení Azure Migrate nemůže shromáždit data o využití paměti takových virtuálních počítačů.
+- Pokud chybí všechny čítače výkonu, ujistěte se, že jsou povolená odchozí připojení na portu 443 (HTTPS).
+
+Poznámka: Pokud jakýkoli čítač výkonu chybí, nástroj Azure Migrate: Hodnocení serverů se vrátí zpět k přiděleným jádrům a paměti v místním prostředí a na jejich základě doporučí velikost virtuálního počítače.
+
+## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Proč je míra spolehlivosti mého hodnocení nízká?
+
+Míra spolehlivosti posouzení na základě výkonu se počítá na základě procentuální hodnoty [dostupných datových bodů](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings) potřebných k výpočtu posouzení. Níže jsou uvedené důvody, proč k hodnocení může být přidělená nízká míra spolehlivosti:
+
+- Neprofilovali jste své prostředí po dobu trvání, pro kterou vytváříte interní hodnocení. Například pokud vytváříte posouzení s dobou výkonu nastavenou na jeden týden, budete muset počkat alespoň jeden týden po spuštění zjišťování, aby se shromáždily všechny datové body. Pokud tuto dobu nemůžete počkat, snižte dobu výkonu a přepočítejte posouzení.
+ 
+- Nástroj Hodnocení serverů nemůže shromáždit údaje o výkonu některých nebo všech virtuálních počítačů v daném období posouzení. Zkontrolujte, jestli byly virtuální počítače po dobu trvání posouzení zapnuté a jestli jsou povolená odchozí připojení na portu 443. U virtuálních počítačů Hyper-V platí, že pokud je povolená dynamická paměť, čítače paměti budou chybět, což povede ke snížení míry spolehlivosti. Přepočítejte posouzení, aby se projevily poslední změny míry spolehlivosti. 
+
+- Po zahájení zjišťování v nástroji Hodnocení serverů se vytvořilo několik virtuálních počítačů. Například pokud vytváříte posouzení historie výkonu za poslední měsíc, ale před týdnem se v prostředí vytvořilo několik virtuálních počítačů. V takovém případě nebudou k dispozici data o výkonu nových virtuálních počítačů za celou dobu trvání a míra spolehlivosti bude nízká.
+
+[Další informace](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based) o míře spolehlivosti
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Při vytváření posouzení řešení Azure VMware (AVS) nejde zobrazit některé skupiny
 
 - Hodnocení služby AVS je možné provádět pouze pro skupiny, které obsahují pouze počítače VMware. Pokud chcete provést hodnocení služby AVS, odeberte ze skupiny všechny jiné počítače než VMware.
 - Pokud ve službě Azure Migrate spouštíte hodnocení služby AVS poprvé, doporučujeme vytvořit novou skupinu počítačů VMware.
-
-## <a name="how-do-i-select-ftt-raid-level-in-avs-assessment"></a>Návody vybrat úroveň FTT-RAID v hodnocení AVS?
-
-Modul úložiště používaný v rozhraní AVS je síti vSAN. Zásady úložiště vSAN definují požadavky na úložiště pro vaše virtuální počítače. Tyto zásady pro vaše virtuální počítače zaručují požadovanou úroveň služeb, protože určují, jak se virtuálním počítačům přiděluje úložiště. Tady jsou dostupné kombinace FTT a RAID: 
-
-**Tolerované chyby (FTT)** | **Konfigurace RAID** | **Minimální požadovaný počet hostitelů** | **Důležité informace o nastavení velikosti**
---- | --- | --- | --- 
-1 | RAID-1 (zrcadlení) | 3 | Virtuální počítač o velikosti 100 GB spotřebuje 200 GB.
-1 | RAID-5 (kódování pro případ vymazaní) | 4 | Virtuální počítač o velikosti 100 GB spotřebuje 133,33 GB.
-2 | RAID-1 (zrcadlení) | 5 | Virtuální počítač o velikosti 100 GB spotřebuje 300 GB.
-2 | RAID-6 (kódování pro případ vymazaní) | 6 | Virtuální počítač o velikosti 100 GB spotřebuje 150 GB.
-3 | RAID-1 (zrcadlení) | 7 | Virtuální počítač o velikosti 100 GB spotřebuje 400 GB.
 
 ## <a name="i-cant-see-some-vm-types-in-azure-government"></a>V Azure Government nevidím některé typy virtuálních počítačů.
 
@@ -131,7 +142,7 @@ Rozdíly mezi vizualizacemi bez agentů a vizualizací na základě agentů jsou
 --- | --- | ---
 Podpora | Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální počítače VMware. [Zkontrolujte](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) podporované operační systémy. | Obecně dostupná (GA).
 Agent | Není nutné instalovat agenty na počítačích, které chcete křížově kontrolovat. | Agenti, kteří se mají nainstalovat na každý místní počítač, který chcete analyzovat: [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)a [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent). 
-Předpoklady | [Projděte si](concepts-dependency-visualization.md#agentless-analysis) požadavky a požadavky na nasazení. | [Projděte si](concepts-dependency-visualization.md#agent-based-analysis) požadavky a požadavky na nasazení.
+Požadavky | [Projděte si](concepts-dependency-visualization.md#agentless-analysis) požadavky a požadavky na nasazení. | [Projděte si](concepts-dependency-visualization.md#agent-based-analysis) požadavky a požadavky na nasazení.
 Log Analytics | Nepožadováno. | Azure Migrate používá řešení [Service map](../azure-monitor/insights/service-map.md) v [protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md) pro vizualizaci závislostí. [Další informace](concepts-dependency-visualization.md#agent-based-analysis).
 Jak to funguje | Zachycuje data připojení TCP na počítačích, které jsou povoleny pro vizualizaci závislostí. Po zjištění se data shromáždí v intervalech po pěti minutách. | Agenti Service Map nainstalovaná na počítači shromažďují data o procesech TCP a příchozích a odchozích připojeních pro jednotlivé procesy.
 Data | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port. | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port.<br/><br/> Pro Log Analytics dotazy se shromažďují a k dispozici informace o počtu připojení, latenci a přenosu dat. 
@@ -145,7 +156,7 @@ Ano, [zařízení Azure Migrate](migrate-appliance.md) musí být nasazeno.
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>Platíte za vizualizaci závislostí?
 
-Ne. Přečtěte si další informace o [cenách Azure Migrate](https://azure.microsoft.com/pricing/details/azure-migrate/).
+No. Přečtěte si další informace o [cenách Azure Migrate](https://azure.microsoft.com/pricing/details/azure-migrate/).
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>Co mám nainstalovat pro vizualizaci závislostí založenou na agentech?
 

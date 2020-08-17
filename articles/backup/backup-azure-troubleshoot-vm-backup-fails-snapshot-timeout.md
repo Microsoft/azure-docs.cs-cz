@@ -4,12 +4,12 @@ description: Příznaky, příčiny a řešení chyb Azure Backup souvisejícíc
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 274435a958820c3fd08fef4a61643a1d656e31e3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 99982af7f16431ac5b1c2c4a0e419d647d3d2ca0
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167925"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262853"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -23,7 +23,7 @@ Většinu běžných selhání zálohování můžete vyřešit sami pomocí ná
 
 ### <a name="step-1-check-azure-vm-health"></a>Krok 1: ověření stavu virtuálního počítače Azure
 
-- Ujistěte se, že **stav zřizování virtuálních počítačů Azure je spuštěný**: Pokud [stav zřizování virtuálního počítače](../virtual-machines/states-lifecycle.md#provisioning-states) je ve stavu **Zastaveno/zrušeno přidělení/aktualizace** , bude v konfliktu s operací zálohování. Otevřete *Azure Portal > > přehled >* a zkontrolujte stav virtuálního počítače, abyste se ujistili, že je **spuštěný** , a zkuste operaci zálohování zopakovat.
+- Ujistěte se, že **stav zřizování virtuálních počítačů Azure je spuštěný**: Pokud [stav zřizování virtuálního počítače](../virtual-machines/states-lifecycle.md#provisioning-states) je ve stavu **Zastaveno/zrušeno přidělení/aktualizace** , bude v konfliktu s operací zálohování. Otevřete *Azure Portal > > přehled >* a zkontrolujte stav virtuálního počítače, abyste se ujistili, že je **spuštěný**  , a zkuste operaci zálohování zopakovat.
 - **Kontrola nedokončených aktualizací operačního systému nebo restartování**: Ujistěte se, že na virtuálním počítači nejsou žádné nevyřízené aktualizace operačního systému ani čekají na restartování.
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>Krok 2: ověření stavu služby agenta hosta virtuálního počítače Azure
@@ -96,7 +96,7 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 
 **Příčina 5: [řešení řízení aplikací blokuje IaaSBcdrExtension.exe](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
 
-## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed – virtuální počítač je ve stavu selhání zřizování.
+## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed – Virtuální počítač je ve stavu neúspěšného zřízení
 
 **Kód chyby**: UserErrorVmProvisioningStateFailed<br>
 **Chybová zpráva**: virtuální počítač je ve stavu selhání zřizování.<br>
@@ -107,7 +107,7 @@ K této chybě dojde, když se jedna z chyb rozšíření přesune virtuální p
 - Pokud je jakékoli jiné rozšíření ve stavu selhání, může to narušit zálohování. Zajistěte, aby byly problémy s rozšířením vyřešeny, a opakujte operaci zálohování.
 - Pokud je stav zřizování virtuálního počítače v aktualizovaném stavu, může to narušit zálohování. Ujistěte se, že je v pořádku, a zkuste operaci zálohování zopakovat.
 
-## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached – Bylo dosaženo maximálního limitu kolekcí bodu obnovení
+## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached – Dosáhlo se maximálního limitu kolekcí bodů obnovení
 
 **Kód chyby**: UserErrorRpCollectionLimitReached <br>
 **Chybová zpráva**: dosáhlo se maximálního limitu kolekce bodů obnovení. <br>
@@ -140,7 +140,7 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 
 **[Stav snímku nelze načíst nebo nelze vytvořit snímek.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 
-## <a name="extensionoperationfailedformanageddisks---vmsnapshot-extension-operation-failed"></a><a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>Operace rozšíření ExtensionOperationFailedForManagedDisks-VMSnapshot se nezdařila.
+## <a name="extensionoperationfailedformanageddisks---vmsnapshot-extension-operation-failed"></a><a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks – Operace rozšíření VMSnapshot selhala
 
 **Kód chyby**: ExtensionOperationFailedForManagedDisks <br>
 **Chybová zpráva**: operace rozšíření VMSnapshot se nezdařila.<br>
@@ -175,36 +175,36 @@ Operace zálohování může selhat při zálohování virtuálního počítače
 
 Poslední úloha zálohování se nezdařila, protože probíhá existující úloha zálohování. Novou úlohu zálohování nemůžete spustit, dokud se nedokončí aktuální úloha. Před aktivací nebo plánováním dalších operací zálohování zajistěte, aby byla právě probíhající operace zálohování dokončena. Chcete-li zjistit stav úloh zálohování, proveďte následující kroky:
 
-1. Přihlaste se k Azure Portal klikněte na **všechny služby**. Zadejte Recovery Services a klikněte na **Trezory služby Recovery Services**. Objeví se seznam trezorů Recovery Services.
+1. Přihlaste se k Azure Portal vyberte **všechny služby**. Zadejte Recovery Services a vyberte **trezory Recovery Services**. Objeví se seznam trezorů Recovery Services.
 2. V seznamu trezorů služby Recovery Services vyberte trezor, ve kterém je zálohování nakonfigurované.
-3. V nabídce řídicího panelu trezoru klikněte na **úlohy zálohování** . zobrazí se všechny úlohy zálohování.
+3. V nabídce řídicího panelu trezoru vyberte **úlohy zálohování** , ve kterých se zobrazí všechny úlohy zálohování.
    - Pokud úloha zálohování probíhá, počkejte, než se dokončí, nebo zrušte úlohu zálohování.
-     - Úlohu zálohování zrušíte tak, že kliknete pravým tlačítkem na úlohu zálohování a kliknete na **Zrušit** nebo použijete [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
+     - Úlohu zálohování zrušíte tak, že kliknete pravým tlačítkem na úlohu zálohování a vyberete **Zrušit** nebo použijete [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
    - Pokud jste znovu nakonfigurovali zálohu v jiném trezoru, ujistěte se, že ve starém trezoru nejsou spuštěné žádné úlohy zálohování. Pokud existuje, zrušte úlohu zálohování.
-     - Pokud chcete zrušit úlohu zálohování, klikněte na ni pravým tlačítkem a pak klikněte na **Zrušit** nebo použijte [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
+     - Pokud chcete zrušit úlohu zálohování, klikněte pravým tlačítkem na úlohu zálohování a vyberte **Zrušit** nebo použít [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) .
 4. Opakujte operaci zálohování.
 
 Pokud naplánovaná operace zálohování trvá déle, v konfliktu s další konfigurací zálohování, Projděte si [osvědčené postupy](backup-azure-vms-introduction.md#best-practices), [výkon zálohování](backup-azure-vms-introduction.md#backup-performance)a [aspekty obnovení](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 
-## <a name="usererrorcrpreportedusererror---backup-failed-due-to-an-error-for-details-see-job-error-message-details"></a>UserErrorCrpReportedUserError – zálohování se nepovedlo kvůli chybě. Podrobnosti najdete v podrobnostech o chybové zprávě úlohy.
+## <a name="usererrorcrpreportedusererror---backup-failed-due-to-an-error-for-details-see-job-error-message-details"></a>UserErrorCrpReportedUserError – Zálohování selhalo kvůli chybě. Podrobnosti najdete v podrobnostech o chybové zprávě úlohy.
 
 **Kód chyby**: UserErrorCrpReportedUserError <br>
 **Chybová zpráva**: zálohování se nezdařilo z důvodu chyby. Podrobnosti najdete v podrobnostech o chybové zprávě úlohy.
 
-Tato chyba je hlášena z virtuálního počítače IaaS. Hlavní příčinu problému zjistíte tak, že přejdete do nastavení trezoru Recovery Services. V části **monitorování** vyberte **úlohy zálohování** pro filtrování a zobrazení stavu. Kliknutím na **chyby** zobrazíte podrobnosti o příslušné chybové zprávě. Proveďte další akce podle doporučení na stránce s podrobnostmi o chybě.
+Tato chyba je hlášena z virtuálního počítače IaaS. Hlavní příčinu problému zjistíte tak, že přejdete do nastavení trezoru Recovery Services. V části **monitorování** vyberte **úlohy zálohování** pro filtrování a zobrazení stavu. Vyberte **selhání** a zkontrolujte podrobnosti příslušné chybové zprávy. Proveďte další akce podle doporučení na stránce s podrobnostmi o chybě.
 
 ## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasourceNotPresent-zálohování se nezdařilo: Tento virtuální počítač není (aktivně) chráněn nástrojem Azure Backup
 
 **Kód chyby**: UserErrorBcmDatasourceNotPresent <br>
 **Chybová zpráva**: zálohování se nepovedlo: Tento virtuální počítač není (aktivně) chráněný pomocí Azure Backup.
 
-Zkontrolujte prosím, jestli je zadaný virtuální počítač aktivně (není ve stavu pozastavení) chráněný pomocí Azure Backup. Pokud chcete tento problém vyřešit, ujistěte se, že je virtuální počítač aktivní, a zkuste operaci zopakovat.
+Ověřte, jestli je zadaný virtuální počítač aktivně (není ve stavu pozastavení) chráněný pomocí Azure Backup. Pokud chcete tento problém vyřešit, ujistěte se, že je virtuální počítač aktivní, a zkuste operaci zopakovat.
 
 ## <a name="causes-and-solutions"></a>Příčiny a řešení
 
 ### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Agent je nainstalovaný na virtuálním počítači, ale nereaguje (pro virtuální počítače s Windows).
 
-#### <a name="solution"></a>Řešení
+#### <a name="solution-for-this-error"></a>Řešení pro tuto chybu
 
 Je možné, že agent virtuálního počítače je poškozený nebo se služba zastavila. Opětovná instalace agenta virtuálního počítače pomáhá získat nejnovější verzi. Také pomáhá s restartováním komunikace se službou.
 
@@ -229,12 +229,12 @@ Většina selhání souvisejících s agentem nebo rozšířeními pro virtuáln
    > [!NOTE]
    > *Důrazně doporučujeme* , abyste agenta aktualizovali pouze prostřednictvím distribučního úložiště. Nedoporučujeme stahovat kód agenta přímo z GitHubu a aktualizovat ho. Pokud není k dispozici nejnovější agent pro distribuci, obraťte se na podporu distribuce, kde najdete pokyny k jeho instalaci. Chcete-li zjistit nejnovějšího agenta, v úložišti GitHubu, navštivte stránku [agenta Windows Azure Linux](https://github.com/Azure/WALinuxAgent/releases) .
 
-2. Spuštěním následujícího příkazu zajistěte, aby byl na virtuálním počítači spuštěný agent Azure:`ps -e`
+2. Spuštěním následujícího příkazu zajistěte, aby byl na virtuálním počítači spuštěný agent Azure: `ps -e`
 
    Pokud proces není spuštěný, restartujte ho pomocí následujících příkazů:
 
-   - Pro Ubuntu:`service walinuxagent start`
-   - Pro ostatní distribuce:`service waagent start`
+   - Pro Ubuntu: `service walinuxagent start`
+   - Pro ostatní distribuce: `service waagent start`
 
 3. [Nakonfigurujte agenta automatického restartování](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Spusťte novou zálohu testu. Pokud chyba přetrvává, shromážděte z virtuálního počítače následující protokoly:
@@ -252,13 +252,13 @@ Pokud požadujete podrobné protokolování pro waagent, postupujte takto:
 ### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM – možnosti konfigurace agenta nejsou nastavené (pro virtuální počítače se systémem Linux)
 
 Konfigurační soubor (/etc/waagent.conf) řídí akce waagent. Rozšíření možností konfiguračního souboru **. možnost Enable** by měla být nastavena na **y** a **zřizování. Agent** by měl být nastaven na hodnotu **automaticky** , aby mohla zálohování fungovat.
-Úplný seznam možností konfiguračního souboru agenta virtuálního počítače najdete v tématu.<https://github.com/Azure/WALinuxAgent#configuration-file-options>
+Úplný seznam možností konfiguračního souboru agenta virtuálního počítače najdete v tématu. <https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Řešení řízení aplikací blokuje IaaSBcdrExtension.exe
 
 Pokud používáte [AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (nebo jiné řešení řízení aplikací) a pravidla jsou založená na vydavateli nebo cestě, může **IaaSBcdrExtension.exe** spustitelný soubor zablokovat spuštění.
 
-#### <a name="solution"></a>Řešení
+#### <a name="solution-to-this-issue"></a>Řešení tohoto problému
 
 Vylučte `/var/lib` cestu nebo spustitelný soubor **IaaSBcdrExtension.exe** z AppLockeru (nebo jiného softwaru pro řízení aplikací.)
 
@@ -266,7 +266,7 @@ Vylučte `/var/lib` cestu nebo spustitelný soubor **IaaSBcdrExtension.exe** z A
 
 Zálohování virtuálního počítače se spoléhá na vydání příkazu Snapshot do základního účtu úložiště. Zálohování může selhat buď proto, že nemá přístup k účtu úložiště, nebo protože provádění úlohy snímku je zpožděné.
 
-#### <a name="solution"></a>Řešení
+#### <a name="solution-for-this-issue"></a>Řešení pro tento problém
 
 Následující podmínky mohou způsobit selhání úlohy snímku:
 
@@ -277,14 +277,14 @@ Následující podmínky mohou způsobit selhání úlohy snímku:
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Odebrat zámek ze skupiny prostředků bodu obnovení
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Přejděte na **možnost všechny prostředky**, vyberte skupinu prostředků kolekce bodů obnovení v následujícím formátu AzureBackupRG_ `<Geo>` _ `<number>` .
 3. V části **Nastavení** vyberte **zámky** a zobrazte zámky.
-4. Pokud chcete zámek odebrat, vyberte tři tečky a klikněte na **Odstranit**.
+4. Pokud chcete zámek odebrat, vyberte tři tečky a vyberte **Odstranit**.
 
     ![Odstranit zámek](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
-### <a name="clean-up-restore-point-collection"></a><a name="clean_up_restore_point_collection"></a>Vyčistit kolekci bodů obnovení
+### <a name="clean-up-restore-point-collection"></a><a name="clean_up_restore_point_collection"></a> Vyčistit kolekci bodů obnovení
 
 Po odebrání zámku je potřeba vyčistit body obnovení.
 
@@ -306,17 +306,17 @@ Po odebrání zámku aktivujte zálohování na vyžádání. Tato akce zajistí
 
 Chcete-li ručně vymazat kolekci bodů obnovení, která není smazána z důvodu zámku skupiny prostředků, zkuste provést následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
-2. V nabídce **centra** klikněte na **všechny prostředky**a vyberte skupinu prostředků s následujícím formátem AzureBackupRG_ `<Geo>` _ `<number>` , kde se virtuální počítač nachází.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. V nabídce **centra** vyberte **všechny prostředky**, vyberte skupinu prostředků s následujícím formátem AzureBackupRG_ `<Geo>` _ `<number>` , kde se nachází váš virtuální počítač.
 
-    ![Odstranit zámek](./media/backup-azure-arm-vms-prepare/resource-group.png)
+    ![Vyberte skupinu prostředků.](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
-3. Klikněte na skupina prostředků. zobrazí se podokno **Přehled** .
+3. Vyberte skupina prostředků, zobrazí se podokno **Přehled** .
 4. Výběrem možnosti **Zobrazit skryté typy** zobrazíte všechny skryté prostředky. Vyberte kolekce bodů obnovení s následujícím formátem AzureBackupRG_ `<VMName>` _ `<number>` .
 
-    ![Odstranit zámek](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
+    ![Vyberte kolekci bodů obnovení.](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 
-5. Kliknutím na tlačítko **Odstranit** vyčistíte kolekci bodů obnovení.
+5. Výběrem možnosti **Odstranit** vyčistíte kolekci bodů obnovení.
 6. Opakujte operaci zálohování znovu.
 
 > [!NOTE]

@@ -4,12 +4,12 @@ description: Obnovení virtuálního počítače Azure z bodu obnovení pomocí 
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a006988049925d2d81c3f15fe24cfe60205b5789
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: af9b505e762e201713b8e554b7886e5e2062dfef
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006328"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263006"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -53,7 +53,7 @@ Pokud nemáte oprávnění, můžete [disk obnovit](#restore-disks)a po obnoven�
 
 1. V trezoru přidruženého k virtuálnímu počítači, který chcete obnovit, vyberte **zálohované položky**  >  **virtuální počítač Azure**.
 1. Vyberte virtuální počítač. Ve výchozím nastavení se na řídicím panelu virtuálních počítačů zobrazí body obnovení za posledních 30 dní. Můžete zobrazit body obnovení starší než 30 dní nebo filtrovat a vyhledat body obnovení na základě dat, časových rozsahů a různých typů konzistence snímků.
-1. Pokud chcete virtuální počítač obnovit, klikněte na **obnovit virtuální počítač**.
+1. Pokud chcete virtuální počítač obnovit, vyberte **obnovit virtuální počítač**.
 
     ![Bod obnovení](./media/backup-azure-arm-restore-vms/restore-point.png)
 
@@ -85,7 +85,7 @@ Jako jednu z [možností obnovení](#restore-options)můžete vytvořit virtuál
 
 ## <a name="restore-disks"></a>Obnovit disky
 
-Jako jednu z [možností obnovení](#restore-options)můžete vytvořit disk z bodu obnovení. Pak s diskem můžete provést jednu z následujících akcí:
+Jako jednu z [možností obnovení](#restore-options)můžete vytvořit disk z bodu obnovení. Pak s diskem můžete udělat jednu z následujících akcí:
 
 - Použijte šablonu generovanou během operace obnovení k přizpůsobení nastavení a aktivaci nasazení virtuálního počítače. Můžete upravit výchozí nastavení šablony a odeslat šablonu pro nasazení virtuálního počítače.
 - [Připojte obnovené disky](../virtual-machines/windows/attach-managed-disk-portal.md) k EXISTUJÍCÍmu virtuálnímu počítači.
@@ -95,7 +95,7 @@ Jako jednu z [možností obnovení](#restore-options)můžete vytvořit disk z b
 1. V části **Skupina prostředků**vyberte existující skupinu prostředků pro obnovené disky nebo vytvořte novou s globálně jedinečným názvem.
 1. Do pole **pracovní umístění**zadejte účet úložiště, do kterého se mají kopírovat virtuální pevné disky. [Další informace](#storage-accounts).
 
-    ![Konfigurace obnovení se dokončila.](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
+    ![Vybrat skupinu prostředků a pracovní umístění](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
 1. Vyberte **obnovit** pro aktivaci operace obnovení.
 
