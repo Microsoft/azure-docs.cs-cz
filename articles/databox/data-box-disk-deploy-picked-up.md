@@ -1,20 +1,20 @@
 ---
 title: Kurz vracení Azure Data Box Disku| Microsoft Docs
-description: V tomto výukovém kurzu se naučíte, jak odeslat Azure Data Box Disk zpátky do Microsoftu
+description: V tomto kurzu se naučíte, jak vrátit Azure Data Box Disk. Pokyny pro vyzvednutí závisí na tom, kam toto zařízení vracíte.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 07/21/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 62ab110a24bbf6b93f7f019c829222ca666ecfaf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 692ddbf1e17e316bdcee6c34062ffa51ef278bc7
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039459"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923777"
 ---
 ::: zone target="docs"
 
@@ -85,7 +85,7 @@ Datacentra Azure v Austrálii mají další bezpečnostní oznámení. Všechny 
 
 1. Použijte poskytnutý zpáteční expediční štítek a ujistěte se, že je na něm uvedený kód TAU (referenční číslo). Pokud zpáteční expediční štítek chybí nebo máte nějaké jiné problémy, pošlete e-mail oddělení [Data Box Asia Operations](mailto:adbo@microsoft.com). Zadejte v hlavičce název objednávky a uveďte podrobnosti o problému, se kterým se potýkáte.
 2. Připevněte štítek na krabici.
-3. Zarezervujte si vyzvednutí online pomocí odkazu https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference. 
+3. Zarezervujte si vyzvednutí online pomocí odkazu https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference.
 
 ### <a name="japan"></a>[Japonsko](#tab/in-japan)
 
@@ -138,7 +138,7 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
 
     ```
     To: kadcustcare@singpost.com
-    Subject: Microsoft Azure Pick-up - XZ00001234567
+    Subject: Microsoft Azure Pickup - XZ00001234567
     Body:
      a.    Requestor name
      b.    Requestor contact number
@@ -155,6 +155,32 @@ V případě potřeby můžete kontaktovat podporu společnosti Quantium Solutio
    V případě jakýchkoli potíží se laskavě obraťte na Data Box Operations Asia na adrese adbo@microsoft.com. V hlavičce uveďte název úlohy a problém, ke kterému došlo.
 
 3. Předejte zásilku kurýrovi.
+
+### <a name="south-africa"></a>[Jižní Afrika](#tab/in-sa)
+
+Při vracení zařízení v Jihoafrické republice proveďte následující kroky.
+
+1. Na krabici připevněte poskytnutý expediční štítek. Tento štítek obsahuje sledovací číslo. Pokud expediční štítek chybí, můžete si ho stáhnout pomocí příkazu **Přehled > Zobrazit expediční štítek**.
+
+2. Zapečeťte přepravní box a zkontrolujte, že zpáteční expediční štítek je vidět.
+
+3. Pokud chcete objednat vyzvednutí společností DHL:
+
+    * Zavolejte na kontaktní centrum služeb pro zákazníky na čísle +27(0) 11 9213600, vyberte možnost 1 a uveďte číslo nákladového listu.
+    * Při plánování vyzvednutí prosím volejte před 14. hodinou jihoafrického času (ZA).  
+    * Pomocí e-mailové šablony níže pošlete e-mail na adresu [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com), aby bylo možné zařídit vyzvednutí:
+
+    ```output
+    To: Priority.Support@dhl.com
+    Subject:Pickup request for Microsoft Azure
+    Body:  Need pick up for the below shipment
+    *  DHL tracking number (reference number/waybill number)
+    *  Requested pickup date：yyyy/mm/dd; time: HH MM
+    ```
+
+    * Další možností je donést balíček na nejbližší sběrné místo DHL.
+
+4. Pokud dojde k nějakým problémům, pošlete e-mail na adresu [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) a uveďte podrobnosti o problému, ke kterému došlo. Do řádku Předmět: nezapomeňte uvést číslo nákladového listu. Můžete také zavolat na číslo +27(0)119213902.
 
 ### <a name="china"></a>[Čína](#tab/in-china)
 
@@ -231,7 +257,3 @@ Přejděte k dalšímu postupu, kde se dozvíte, jak ověřit nahrání dat z Da
 > [Ověření nahrání dat z Azure Data Box Disku](./data-box-disk-deploy-upload-verify.md)
 
 ::: zone-end
-
-
-
-

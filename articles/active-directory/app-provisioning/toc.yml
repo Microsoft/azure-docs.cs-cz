@@ -57,7 +57,9 @@
           href: export-import-provisioning-configuration.md
     - name: Řešení potíží se zřizováním aplikací
       items:
-        - name: Řešení potíží se zřizováním aplikací
+        - name: Známé problémy
+          href: known-issues.md
+        - name: Řešení potíží s konfigurací
           href: application-provisioning-config-problem.md
         - name: Stav karantény
           href: application-provisioning-quarantine-status.md

@@ -1,6 +1,6 @@
 ---
 title: Kurz rozbalení, připojení a odemknutí Azure Data Box Disku | Microsoft Docs
-description: V tomto výukovém kurzu se naučíte, jak nastavit Azure Data Box Disk.
+description: V tomto kurzu se naučíte, jak rozbalit Azure Data Box Disk, připojit ho k diskům, získat klíč a odemknout disky na klientech pro Windows a Linux.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1fbd99e8233b068efda4d0fb87e87788f49835cf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 570653d620c5e314db9e6a0bc56d731f8acf9296
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214356"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925647"
 ---
 ::: zone target="docs"
 

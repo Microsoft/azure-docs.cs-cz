@@ -1,4 +1,4 @@
-- name: Dokumentace ke službě Data Lake Analytics
+- name: Dokumentace k Data Lake Analytics
   href: index.yml
 - name: Přehled
   items:
@@ -16,7 +16,7 @@
       href: data-lake-analytics-data-lake-tools-for-vscode.md
     - name: Azure PowerShell
       href: data-lake-analytics-get-started-powershell.md
-    - name: Rozhraní příkazového řádku Azure
+    - name: Azure CLI
       href: data-lake-analytics-get-started-cli.md
 - name: ukázky
   items:
@@ -32,7 +32,7 @@
           href: ./security-controls-policy.md
         - name: Standardní hodnoty zabezpečení pro srovnávací test zabezpečení Azure
           href: security-baseline.md
-- name: Postup
+- name: Návody
   items:
     - name: Správa služby Data Lake Analytics
       items:

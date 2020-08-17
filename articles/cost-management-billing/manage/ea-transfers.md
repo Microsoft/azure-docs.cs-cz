@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: c49894c722897233afa6325def1d3e17562d2dab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a770fe2362e1e1c98c683f694f7f834ac6f4ea6c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075106"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836849"
 ---
 # <a name="azure-enterprise-transfers"></a>Převody Azure Enterprise
 
@@ -98,7 +98,7 @@ Na portálu Azure EA můžete převádět předplatná od jednoho vlastníka ú�
 
 ## <a name="subscription-transfer-effects"></a>Účinek převodu předplatného
 
-Pokud se předplatné Azure převádí do účtu ve stejném tenantovi Azure Active Directory, zachovají si všichni uživatelé, skupiny a instanční objekty, které ke správě prostředků používaly [přístup na základě role (RBAC)](../../role-based-access-control/overview.md), stále svůj přístup.
+Pokud se předplatné Azure převádí do účtu ve stejném tenantovi Azure Active Directory, zachovají si všichni uživatelé, skupiny a instanční objekty, které ke správě prostředků používaly [přístup na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md), stále svůj přístup.
 
 Zobrazení uživatelů s přístupem RBAC k předplatnému:
 

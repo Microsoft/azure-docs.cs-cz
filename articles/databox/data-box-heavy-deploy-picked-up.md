@@ -1,6 +1,6 @@
 ---
 title: Kurz vrácení Azure Data Boxu Heavy | Microsoft Docs
-description: Zjistěte, jak odeslat Azure Data Box Heavy do Microsoftu.
+description: V tomto kurzu se naučíte, jak vracet Azure Data Box Heavy, včetně přípravy na odeslání, expedice Data Boxu Heavy, ověření nahrání dat a mazání dat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 3aedfed980a61ea6718a02a188ff88d4941026d9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fa4df7119763e835cf62e67512105b748c7e2265
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199178"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921006"
 ---
 ::: zone target = "docs"
 

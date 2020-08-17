@@ -19,15 +19,15 @@
       href: advisor-get-started.md
 - name: Návody
   items:
-    - name: Zlepšení dostupnosti aplikace Azure
+    - name: Spolehlivost
       href: advisor-high-availability-recommendations.md
-    - name: Lepší zabezpečení prostředků
+    - name: Zabezpečení
       href: advisor-security-recommendations.md
-    - name: Vylepšení výkonu aplikací Azure
+    - name: Efektivita výkonu
       href: advisor-performance-recommendations.md
-    - name: Snížení nákladů na služby
+    - name: Optimalizace nákladů
       href: advisor-cost-recommendations.md
-    - name: Dosažení efektivity provozu
+    - name: Efektivita provozu
       href: advisor-operational-excellence-recommendations.md
     - name: Konfigurace doporučení
       href: view-recommendations.md
@@ -35,6 +35,8 @@
       href: permissions.md
     - name: Konfigurace výstrah pro doporučení
       href: advisor-alerts-portal.md
+    - name: Konfigurace přehledu doporučení
+      href: advisor-recommendations-digest.md
     - name: Hromadná náprava pro doporučení
       href: advisor-quick-fix.md
     - name: Data Advisoru v Azure Resource Graphu

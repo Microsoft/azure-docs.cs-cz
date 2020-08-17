@@ -7,20 +7,20 @@ metadata:
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 06/26/2020
+  ms.date: 08/13/2020
   ms.author: magoedte
-  ms.openlocfilehash: f9d4da85185d3a8541c165b407d276af0a25ccc6
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: afb1dd4986220bcf3f244532a730faf6b80e6074
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87008485"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88212768"
 landingContent:
-- title: Přehled služby Azure Arc
+- title: Informace o službě Azure Arc
   linkLists:
   - linkListType: overview
     links:
-    - text: Další informace o službě Azure Arc
+    - text: Co je Azure Arc?
       url: https://aka.ms/Azure-Arc-Info
 - title: Připojení počítačů k Azure s využitím serverů s podporou služby Azure Arc
   linkLists:
@@ -30,12 +30,18 @@ landingContent:
       url: ./servers/overview.md
   - linkListType: quickstart
     links:
+    - text: Povolení agenta Servery s podporou služby Arc
+      url: ./servers/learn/quick-enable-hybrid-vm.md
+  - linkListType: how-to-guide
+    links:
     - text: Připojení počítačů ke službě Azure Arc z webu Azure Portal
       url: ./servers/onboard-portal.md
     - text: Připojení počítačů ve velkém měřítku s využitím instančního objektu
       url: ./servers/onboard-service-principal.md
     - text: Připojení počítačů k Azure s využitím DSC PowerShellu
       url: ./servers/onboard-dsc.md
+    - text: Správa a použití rozšíření virtuálních počítačů Azure
+      url: ./servers/manage-vm-extensions.md
 - title: Připojení clusterů Kubernetes k Azure s využitím služby Azure Arc
   linkLists:
   - linkListType: overview

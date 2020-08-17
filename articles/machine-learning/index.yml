@@ -11,25 +11,26 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 07/30/2020
-  ms.openlocfilehash: 40a8fc105dd297ec4bc70ecc0a27b9fa295d3fe1
-  ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+  ms.date: 08/17/2020
+  ms.custom: contperfq1
+  ms.openlocfilehash: 63e1e9216a5150b957a34e15def9726167694978
+  ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/31/2020
-  ms.locfileid: "87474508"
+  ms.lasthandoff: 08/16/2020
+  ms.locfileid: "88258695"
 landingContent:
 - title: Začínáme se strojovým učením
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Poznámkové bloky v Pythonu
+    - text: Použití poznámkových bloků v Pythonu
       url: tutorial-1st-experiment-sdk-setup.md
-    - text: AutoML (bez kódu / bez rozsáhlého kódu)
+    - text: S využitím AutoML (bez kódu / bez rozsáhlého kódu)
       url: tutorial-first-experiment-automated-ml.md
-    - text: Designer (podporující přetahování)
+    - text: V designeru (přetažení a vložení)
       url: tutorial-designer-automobile-price-train-score.md
-    - text: RStudio
+    - text: S využitím sady RStudio
       url: tutorial-1st-r-experiment.md
 - title: Přenesení modelu ML do Azure
   linkLists:

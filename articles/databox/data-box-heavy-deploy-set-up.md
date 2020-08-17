@@ -1,6 +1,6 @@
 ---
 title: Kurz nastavení Azure Data Boxu Heavy | Microsoft Docs
-description: Postup zapojení kabeláže a připojení Azure Data Boxu Heavy
+description: V tomto kurzu se naučíte, jak zapojit kabeláž Azure Data Boxu Heavy, připojit Azure Data Box Heavy a zapnout Azure Data Box Heavy.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 15e031bcdcac7bd84d58286f5bdb5a7b6cd0c973
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c38ff7e642017afe5f220ae26d3a04c2c0b706ee
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199210"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920938"
 ---
 ::: zone target = "docs"
 

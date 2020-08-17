@@ -1,6 +1,6 @@
 ---
 title: Rychlý start pro Microsoft Azure Data Box Heavy | Microsoft Docs
-description: Přečtěte si, jak rychle nasadit Azure Data Box Heavy pomocí webu Azure Portal
+description: V tomto rychlém startu se dozvíte, jak nasadit Azure Data Box Heavy s využitím webu Azure Portal, včetně zapojení kabeláže, konfigurace a kopírování dat, která se mají nahrát Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9d007f4fa8721214a7c97595fa297ef44199119f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5a0a040d80911b086561213bd0884ed67545c618
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199128"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920785"
 ---
 ::: zone target = "docs"
 

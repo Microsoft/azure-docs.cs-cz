@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 7b5487233e2bd0e532efad4e108c41f188b51d91
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 08/17/2020
 ms.locfileid: "83727152"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v C prostřednictvím datových proudů zařízení IoT Hub (Preview)
@@ -26,7 +26,7 @@ Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve verzi Pre
 
 * [Komunikace s aplikacemi zařízení v jazyce C# prostřednictvím datových proudů zařízení IoT Hub](./quickstart-device-streams-echo-csharp.md)
 
-* [Komunikace s aplikacemi pro zařízení v Node. js prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-nodejs.md)
+* [Komunikace s aplikacemi zařízení v Node.js prostřednictvím datových proudů IoT Hub zařízení](./quickstart-device-streams-echo-nodejs.md)
 
 Aplikace C na straně zařízení v tomto rychlém startu má následující funkce:
 
@@ -58,7 +58,7 @@ Potřebujete následující požadavky:
 
 Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
 
-  * USA – střed
+  * Střední USA
   * Střed USA EUAP
   * Severní Evropa
   * Jihovýchodní Asie
@@ -118,7 +118,7 @@ V tomto rychlém startu použijete [sadu SDK pro zařízení Azure IoT pro jazyk
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-device"></a>Registrování zařízení
+## <a name="register-a-device"></a>Registrace zařízení
 
 Abyste se mohli připojit, musíte zařízení zaregistrovat ve službě IoT Hub. V této části použijete Azure Cloud Shell s [rozšířením IoT](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) k registraci simulovaného zařízení.
 
@@ -194,7 +194,7 @@ Jak již bylo uvedeno výše, sada IoT Hub C SDK podporuje pouze datové proudy 
 
 * [Komunikace s aplikací zařízení v jazyce C# prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-csharp.md)
 
-* [Komunikace s aplikací v Node. js pomocí IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-nodejs.md)
+* [Komunikace s aplikací zařízení v Node.js prostřednictvím datových proudů IoT Hub zařízení](./quickstart-device-streams-echo-nodejs.md)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

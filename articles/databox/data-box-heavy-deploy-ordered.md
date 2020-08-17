@@ -1,6 +1,6 @@
 ---
 title: Kurz objednání Azure Data Boxu Heavy | Microsoft Docs
-description: Seznamte se s požadavky na nasazení a postupem objednání Azure Data Boxu Heavy.
+description: V tomto kurzu se dozvíte víc o Azure Data Boxu Heavy, hybridním řešení, které umožňuje import místních dat do Azure, a také o postupu při objednání Data Boxu Heavy.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 91d78975106299c3b3a6df6d8dee05f337dd339a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9b2b97f11c1493deca9b79907e894efbb7b9c456
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742977"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920989"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>Kurz: Objednání Azure Data Boxu Heavy
 

@@ -1,6 +1,6 @@
 ---
 title: Rychlý start pro Microsoft Azure Data Box | Microsoft Docs
-description: Přečtěte si, jak rychle nasadit Azure Data Box pomocí webu Azure Portal
+description: V tomto rychlém startu se dozvíte, jak nasadit Azure Data Box pomocí webu Azure Portal pro objednávku importu. Nakonfigurujte Azure Data Box a zkopírujte data pro nahrání do Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: dd429dadcbe67f0ac91da19d6606626b39f34ef5
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2ee9d1edefb0e248d0eba13e2d0b9f1c651fdd42
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201082"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924508"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Začínáme s Azure Data Boxem pro import dat do Azure
 

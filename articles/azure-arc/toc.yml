@@ -8,7 +8,7 @@
       href: ./servers/overview.md
 - name: Rychlé starty
   items:
-    - name: Povolení agenta Arc pro servery
+    - name: Povolení agenta Servery s podporou služby Arc
       href: ./servers/learn/quick-enable-hybrid-vm.md
 - name: Kurzy
   items:

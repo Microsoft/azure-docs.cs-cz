@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/19/2020
 ms.author: banders
-ms.openlocfilehash: 925a69f1f3a408e50cb9dc1d03cb5c1cf673ef41
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7db0a5bd4697c99c071d685903dfc394c2b49f25
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102680"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835795"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Přenos předplatných Azure mezi předplatiteli a CSP
 
@@ -32,7 +32,7 @@ Aby bylo možné přenést jakékoli jiné předplatné Azure na partnera CSP, m
 1. Ujistěte se, že předplatná zdrojového a cílového poskytovatele CSP jsou ve stejném tenantovi Azure Active Directory (Azure AD).  
     Pro předplatné Azure CSP nemůžete změnit tenanta Azure AD. Místo toho je nutné přidat nebo přidružit zdrojové předplatné k tenantovi služby Azure AD poskytovatele CSP. Další informace najdete v tématu [Přiřazení nebo přidání předplatného Azure do tenanta Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
     > [!IMPORTANT]
-    > - Když přidružíte předplatné k jinému adresáři služby Azure AD, ztratí přístup uživatelé, kteří mají přiřazené role pomocí [řízení přístupu na základě role (RBAC)](../../role-based-access-control/role-assignments-portal.md). Klasičtí správci předplatných, včetně správců služeb a spolusprávců, také ztratí přístup.
+    > - Když přidružíte předplatné k jinému adresáři služby Azure AD, ztratí přístup uživatelé, kteří mají přiřazené role Azure pomocí [řízení přístupu na základě role (RBAC) v Azure](../../role-based-access-control/role-assignments-portal.md). Klasičtí správci předplatných, včetně správců služeb a spolusprávců, také ztratí přístup.
     > - Z předplatného se také odstraní přiřazení zásad, jakmile se předplatné přidruží k jinému adresáři.
 1. Uživatelský účet, který použijete k provedení přenosu, musí mít u obou předplatných přístup vlastníka [RBAC](add-change-subscription-administrator.md).
 1. Než začnete, [ověřte](/rest/api/resources/resources/validatemoveresources), že se všechny prostředky Azure můžou přesunout ze zdrojového předplatného do cílového předplatného.  

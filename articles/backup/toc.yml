@@ -287,8 +287,10 @@
       items:
         - name: Přehled
           href: offline-backup-overview.md
-        - name: Offline zálohování s využitím Azure Data Boxu
+        - name: Offline zálohování s využitím Azure Data Boxu (MARS)
           href: offline-backup-azure-data-box.md
+        - name: Offline zálohování s využitím Azure Data Boxu (DPM/MABS)
+          href: offline-backup-azure-data-box-dpm-mabs.md
         - name: Offline zálohování s využitím služby Import/export (MARS)
           href: backup-azure-backup-import-export.md
         - name: Offline zálohování s využitím služby Import/export (DPM/MABS)

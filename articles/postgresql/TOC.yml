@@ -163,10 +163,6 @@
               href: concepts-read-replicas.md
             - name: Logické dekódování
               href: concepts-logical.md
-        - name: Přesun mezi oblastmi
-          items:
-            - name: portál Azure
-              href: howto-move-regions-portal.md
     - name: Hyperscale (Citus)
       items:
         - name: Distribuovaná data
@@ -339,6 +335,10 @@
               href: howto-read-replicas-cli.md
             - name: Správa replik pro čtení – Azure PowerShell
               href: howto-read-replicas-powershell.md
+        - name: Přesun mezi oblastmi
+          items:
+            - name: portál Azure
+              href: howto-move-regions-portal.md
     - name: Hyperscale (Citus)
       items:
         - name: Vytvoření uživatelů
