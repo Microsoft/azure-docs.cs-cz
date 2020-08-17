@@ -3,12 +3,12 @@ title: Podporované typy prostředků prostřednictvím Azure Resource Health | 
 description: Podporované typy prostředků prostřednictvím služby Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f4d622ac6d37059731b51a679e13f824670b9dc8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6420283f3d3c07182faa2cb2a82ba7b2d784055
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071284"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272650"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu v Azure Resource Health
 Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím stavu prostředků podle typů prostředků.
@@ -42,6 +42,11 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 |Provedené kontroly|
 |---|
 |<ul><li>Je hostitelský server v provozu a běží?</li><li>Je spuštění hostitelského operačního systému dokončeno?</li><li>Je kontejner virtuálních počítačů zřízený a zapnutý?</li><li>Je mezi hostitelem a účtem úložiště připojení k síti?</li><li>Bylo spuštění hostovaného operačního systému dokončeno?</li><li>Probíhá plánovaná údržba?</li><li>Je hardwarově snížená a předpokládaná chyba v brzké době?</li></ul>|
+
+## <a name="microsoftclassiccomputedomainnames"></a>Microsoft. classiccompute/DomainNames
+|Provedené kontroly|
+|---|
+|<ul><li>Je hostovaný a běžící název cloudové služby?</li><li>Je spuštění hostitelského operačního systému dokončeno?</li><li>Je kontejner virtuálních počítačů zřízený a zapnutý?</li><li>Je mezi hostitelem a účtem úložiště připojení k síti?</li><li>Bylo spuštění hostovaného operačního systému dokončeno?</li><li>Probíhá plánovaná údržba?</li><li>Je hardwarově snížená a předpokládaná chyba v brzké době?</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. cognitiveservices Account/účty
 |Provedené kontroly|

@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dca903591c5d6805108d55163aaedc2435d9297e
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 718f4c0b41400ae2e35b88820b2d4154dab23111
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610075"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272820"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Kurz: posílání dat přes transparentní bránu
 
@@ -225,7 +225,7 @@ Pokud plánujete prozkoumat prostředky používané v tomto uceleném kurzu, po
 
 1. Odstraňte vytvořené skupiny prostředků pro vývoj virtuálních počítačů, IoT Edge virtuálních počítačů, IoT Hub, účtu úložiště, služby Machine Learning Workspace Service (a vytvořených prostředků: registr kontejnerů, Application Insights, Trezor klíčů, účet úložiště).
 
-1. Odstraňte projekt Machine Learningu v [poznámkových blocích Azure](https://notebooks.azure.com).
+1. Odstraňte projekt Machine Learning v [Azure Notebooks](https://notebooks.azure.com).
 
 1. Pokud jste úložiště naklonováni místně, zavřete všechny prostředí PowerShell nebo VS Code Windows odkazující na místní úložiště a pak odstraňte adresář úložiště.
 

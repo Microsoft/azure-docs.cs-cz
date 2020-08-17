@@ -1,17 +1,17 @@
 ---
 title: Další odkazy týkající se avere vFXT pro Azure
-description: Odkazy na Další informace o avere vFXT pro Azure
+description: Tyto prostředky použijte pro další informace o avere vFXT pro Azure, včetně dokumentace clusteru avere a dokumentace ke správě vFXT.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f9a9f8e6d2a279871ded3dff614be99dd2901df
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76153764"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271086"
 ---
 # <a name="additional-documentation"></a>Další dokumentace
 

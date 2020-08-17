@@ -1,17 +1,17 @@
 ---
 title: Konfigurace úložiště avere vFXT – Azure
-description: Postup přidání back-endového úložného systému do služby avere vFXT pro Azure
+description: Naučte se, jak přidat back-end úložný systém pro cluster v avere vFXT pro Azure. Pokud jste vytvořili kontejner objektů BLOB v Azure s clusterem, je připravený k použití.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: e011b349c9296fd0ca15d119b35c1e6ec6af268a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505745"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271137"
 ---
 # <a name="configure-storage"></a>Konfigurace úložiště
 
@@ -49,7 +49,7 @@ Pomocí těchto kroků přidejte souborového pro NAS Core:
 
 1. Na levé straně klikněte na **Core souborového**  >  **Spravovat Core filers** .
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
    ![Snímek obrazovky se stránkou přidat novou základní souborového s ukazatelem na tlačítku pro vytvoření](media/avere-vfxt-add-core-filer-start.png)
 

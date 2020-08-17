@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: fff032d37fa0746695736e0dbdde73c6bcaade4b
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: a786baf70dfd9063c635fd27d43d198b3bd89bfb
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445674"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272123"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>Kurz: integrace vzdáleného vykreslování do holografické aplikace HoloLens
 
@@ -58,7 +58,7 @@ V dialogovém okně výzvy vyhledejte balíček NuGet s názvem **Microsoft. Azu
 
 a přidejte ho do projektu tak, že ho vyberete a pak stisknete tlačítko nainstalovat.
 
-Balíček NuGet přidá závislosti vzdáleného vykreslování do projektu. Konkrétně:
+Balíček NuGet přidá závislosti vzdáleného vykreslování do projektu. Konkrétně se jedná o tyto:
 * Odkaz na klientskou knihovnu (RemoteRenderingClient. lib).
 * Nastavte závislosti. dll.
 * Nastavte správnou cestu k adresáři include.
@@ -99,14 +99,15 @@ Začneme přidáním potřebných součástí. Do souboru HolographicAppMain. h 
 #include <AzureRemoteRendering.h>
 ```
 
-... a tato dodatečná `include` direktiva pro soubor HolographicAppMain. cpp:
+... a tyto další `include` direktivy do souboru HolographicAppMain. cpp:
 
 ```cpp
 #include <AzureRemoteRendering.inl>
 #include <RemoteRenderingExtensions.h>
+#include <windows.perception.spatial.h>
 ```
 
-Pro jednoduchost kódu definujeme následující zástupce oboru názvů v horní části souboru HolographicAppMain. h za `include` direktivou:
+Pro jednoduchost kódu definujeme následující zástupce oboru názvů v horní části souboru HolographicAppMain. h za `include` direktivami:
 
 ```cpp
 namespace RR = Microsoft::Azure::RemoteRendering;
@@ -297,7 +298,7 @@ namespace HolographicApp
         bool m_modelLoadTriggered = false;
         float m_modelLoadingProgress = 0.f;
         bool m_modelLoadFinished = false;
-
+        bool m_needsCoordinateSystemUpdate = true;
     }
 ```
 
@@ -420,9 +421,13 @@ void HolographicAppMain::OnConnectionStatusChanged(RR::ConnectionStatus status, 
 
 ### <a name="per-frame-update"></a>Aktualizace za jednotlivé snímky
 
-Musíme klienta vyznačte jednou pro každou simulaci. Třída `HolographicApp1Main` poskytuje dobrý vidlici pro aktualizace pro jednotlivé snímky. Dále potřebujeme dotazovat se na stav relace a zjistit, jestli se převedla na `Ready` stav. Pokud jsme se úspěšně připojili, nakonec zahájíme načítání modelu prostřednictvím `StartModelLoading` .
+Musíme aktualizovat klienta jednou pro každou simulaci a provést některé další aktualizace stavu. Funkce `HolographicAppMain::Update` poskytuje dobrý vidlici pro aktualizace pro jednotlivé snímky.
 
-Do těla funkce přidejte následující kód `HolographicApp1Main::Update` :
+#### <a name="state-machine-update"></a>Aktualizace stavového počítače
+
+Musíme se dotázat na stav relace a zjistit, jestli se převedla do `Ready` stavu. Pokud jsme se úspěšně připojili, nakonec zahájíme načítání modelu prostřednictvím `StartModelLoading` .
+
+Do těla funkce přidejte následující kód `HolographicAppMain::Update` :
 
 ```cpp
 // Updates the application state once per frame.
@@ -485,9 +490,57 @@ HolographicFrame HolographicAppMain::Update()
         }
     }
 
+    if (m_needsCoordinateSystemUpdate && m_stationaryReferenceFrame && m_graphicsBinding)
+    {
+        // Set the coordinate system once. This must be called again whenever the coordinate system changes.
+        winrt::com_ptr<ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem> ptr{ m_stationaryReferenceFrame.CoordinateSystem().as<ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem>() };
+        m_graphicsBinding->UpdateUserCoordinateSystem(ptr.get());
+        m_needsCoordinateSystemUpdate = false;
+    }
+
     // Rest of the body:
     ...
 }
+```
+
+#### <a name="coordinate-system-update"></a>Aktualizace systému souřadnic
+
+Potřebujeme souhlasit se službou vykreslování, která se má použít v systému souřadnic. Pro přístup k systému souřadnic, který chceme použít, potřebujeme `m_stationaryReferenceFrame` , aby byl vytvořen na konci funkce `HolographicAppMain::OnHolographicDisplayIsAvailableChanged` .
+
+Tento systém souřadnic se obvykle nemění, takže se jedná o jednorázovou inicializaci. Je nutné ji volat znovu, pokud vaše aplikace změní systém souřadnic.
+
+Kód výše nastaví souřadnicový systém jednou ve funkci hned po tom, co `Update` máme referenční systém souřadnic a připojenou relaci.
+
+#### <a name="camera-update"></a>Aktualizace kamery
+
+Musíme aktualizovat roviny klipu kamery tak, aby byl server kamera udržován synchronizovaný s místním fotoaparátem. Můžeme to udělat na konci `Update` funkce:
+
+```cpp
+    ...
+    if (m_isConnected)
+    {
+        // Any near/far plane values of your choosing.
+        constexpr float fNear = 0.1f;
+        constexpr float fFar = 10.0f;
+        for (HolographicCameraPose const& cameraPose : prediction.CameraPoses())
+        {
+            // Set near and far to the holographic camera as normal
+            cameraPose.HolographicCamera().SetNearPlaneDistance(fNear);
+            cameraPose.HolographicCamera().SetFarPlaneDistance(fFar);
+        }
+
+        // The API to inform the server always requires near < far. Depth buffer data will be converted locally to match what is set on the HolographicCamera.
+        auto settings = *m_api->CameraSettings();
+        settings->NearPlane(std::min(fNear, fFar));
+        settings->FarPlane(std::max(fNear, fFar));
+        settings->EnableDepth(true);
+    }
+
+    // The holographic frame will be used to get up-to-date view and projection matrices and
+    // to present the swap chain.
+    return holographicFrame;
+}
+
 ```
 
 ### <a name="rendering"></a>Vykreslování

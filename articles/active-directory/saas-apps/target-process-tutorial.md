@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 60cd043c34ba2aee365c59feb38cc9dd02d45746
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 78c702f5ea4ae403c4183a1cc311aaed94eb0c7d
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67089045"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272582"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Kurz: Azure Active Directory integrace s TargetProcess
 
@@ -32,7 +32,7 @@ Integrace TargetProcess s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -70,7 +70,7 @@ Pokud chcete nakonfigurovat integraci TargetProcess do služby Azure AD, musíte
 
      ![TargetProcess v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí TargetProcess na základě testovacího uživatele s názvem **Britta Simon**.
 Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v TargetProcess.
@@ -106,9 +106,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TargetPr
 
     ![Informace o jednotném přihlašování v doméně TargetProcess a adresách URL](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.tpondemand.com/`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.tpondemand.com/`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.tpondemand.com/`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.tpondemand.com/`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta TargetProcess](mailto:support@targetprocess.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -133,25 +133,27 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TargetPr
 
     ![image](./media/target-process-tutorial/install_extension.png)
 
-2. Po přidání rozšíření do prohlížeče klikněte na **TargetProcess nastavení** a nasměrujte vás na aplikaci TargetProcess. Odtud zadejte přihlašovací údaje správce, které se přihlásí k TargetProcess. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-7.
+1. Po přidání rozšíření do prohlížeče klikněte na **TargetProcess nastavení** a nasměrujte vás na aplikaci TargetProcess. Odtud zadejte přihlašovací údaje správce, které se přihlásí k TargetProcess. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-7.
+
+    ![Konfigurace instalace](common/setup-sso.png)
 
     **Pokud chcete aplikaci nakonfigurovat ručně, proveďte následující kroky:**
 
-3. Přihlaste se k aplikaci TargetProcess jako správce.
+1. Přihlaste se k aplikaci TargetProcess jako správce.
 
-4. V nabídce v horní části klikněte na **Nastavení**.
+1. V nabídce v horní části klikněte na **Nastavení**.
 
     ![Nastavení](./media/target-process-tutorial/tutorial_target_process_05.png)
 
-5. Klikněte na kartu **Nastavení** .
+1. Klikněte na kartu **Nastavení** .
 
     ![Nastavení](./media/target-process-tutorial/tutorial_target_process_06.png)
 
-6. Klikněte na kartu **jednotné přihlašování** .
+1. Klikněte na kartu **jednotné přihlašování** .
 
     ![klikněte na jednotné přihlašování.](./media/target-process-tutorial/tutorial_target_process_07.png)
 
-7. V dialogovém okně nastavení jednotného přihlašování proveďte následující kroky:
+1. V dialogovém okně nastavení jednotného přihlašování proveďte následující kroky:
 
     ![Konfigurace jednotného přihlašování](./media/target-process-tutorial/tutorial_target_process_08.png)
 
@@ -183,12 +185,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -229,7 +231,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici TargetProcess, měli byste se automaticky přihlásit k TargetProcess, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

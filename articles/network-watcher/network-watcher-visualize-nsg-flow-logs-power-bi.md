@@ -1,7 +1,7 @@
 ---
 title: Vizualizace protokolů toku Azure NSG – Power BI
 titleSuffix: Azure Network Watcher
-description: Tato stránka popisuje, jak vizualizovat protokoly toku NSG pomocí Power BI.
+description: Naučte se používat Power BI k vizualizaci protokolů toku skupin zabezpečení sítě, které vám umožní zobrazit informace o provozu IP v Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1ef2e32614b5a57208f91ac0fe5a4c17affa38e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4c97b8baaf5265f984622e2dc47e6c8c714172a
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738545"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272633"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Vizualizace protokolů toku skupin zabezpečení sítě pomocí Power BI
 
@@ -111,7 +111,7 @@ Tuto šablonu si můžete přizpůsobit podle svých potřeb. Existuje mnoho zp�
 
 ## <a name="notes"></a>Poznámky
 
-* Protokoly ve výchozím nastavení jsou uloženy v`https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
+* Protokoly ve výchozím nastavení jsou uloženy v `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
 
     * Pokud jiná data existují v jiném adresáři, dotazy na vyžádání a zpracování dat musí být upraveny.
 

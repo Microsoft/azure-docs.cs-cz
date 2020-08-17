@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 737617b1fb8bd233a8747deacbbb328a02fa30ef
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9db8a0397c836e8cbc45404d9c4f149255fc76fa
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185617"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271052"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
@@ -135,7 +135,7 @@ Pomocí protokolu událostí telemetrie na serveru můžete monitorovat stav zar
 
 Synchronizovat stav
 
-- Po dokončení relace synchronizace se protokoluje událost s ID 9102. Tuto událost použijte k určení, jestli jsou relace synchronizace úspěšné (**HRESULT = 0**), a pokud dojde k chybám synchronizace pro jednotlivé položky. Další informace najdete v dokumentaci ke [stavu synchronizace](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) a [chybách jednotlivých položek](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) .
+- Po dokončení relace synchronizace se protokoluje událost s ID 9102. Tuto událost použijte k určení, jestli jsou relace synchronizace úspěšné (**HRESULT = 0**), a pokud dojde k chybám synchronizace pro jednotlivé položky (**PerItemErrorCount**). Další informace najdete v dokumentaci ke [stavu synchronizace](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) a  [chybách jednotlivých položek](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) .
 
   > [!Note]  
   > V některých případech se relace synchronizace nezdařila celkem nebo má nenulovou PerItemErrorCount. Pořád se ale dál dostanou a některé soubory se úspěšně synchronizují. Můžete to vidět v použitých polích, jako jsou AppliedFileCount, AppliedDirCount, AppliedTombstoneCount a AppliedSizeBytes. Tato pole vám sdělí, kolik relací bylo úspěšně dokončeno. Pokud vidíte, že se více relací synchronizace nedaří na řádku a že mají rostoucí počet použitých hodnot, podělte čas synchronizace, aby se mohl pokusit znovu před otevřením lístku podpory.
@@ -196,7 +196,7 @@ V této části najdete příklady výstrah pro Azure File Sync.
 5. V okně **Konfigurovat logiku signálu** klikněte v části Název signálu na **výsledek synchronizace relace** .  
 6. Vyberte následující konfiguraci dimenzí: 
     - Název dimenze: **název koncového bodu serveru**  
-    - Podnikatel**=** 
+    - Podnikatel **=** 
     - Hodnoty dimenzí: **všechny aktuální a budoucí hodnoty**  
 7. Přejděte do **logiky výstrah** a proveďte následující: 
     - Prahová hodnota nastavená na **static** 
@@ -218,7 +218,7 @@ V této části najdete příklady výstrah pro Azure File Sync.
 5. V okně **Konfigurovat logiku signálu** klikněte v části Název signálu na **soubory, které se nesynchronizují** .  
 6. Vyberte následující konfiguraci dimenzí: 
      - Název dimenze: **název koncového bodu serveru**  
-     - Podnikatel**=** 
+     - Podnikatel **=** 
      - Hodnoty dimenzí: **všechny aktuální a budoucí hodnoty**  
 7. Přejděte do **logiky výstrah** a proveďte následující: 
      - Prahová hodnota nastavená na **static** 
@@ -240,7 +240,7 @@ V této části najdete příklady výstrah pro Azure File Sync.
 5. V okně **Konfigurovat logiku signálu** klikněte v části Název signálu na **stav online server** .  
 6. Vyberte následující konfiguraci dimenzí: 
      - Název dimenze: **název serveru**  
-     - Podnikatel**=** 
+     - Podnikatel **=** 
      - Hodnoty dimenzí: **všechny aktuální a budoucí hodnoty**  
 7. Přejděte do **logiky výstrah** a proveďte následující: 
      - Prahová hodnota nastavená na **static** 
@@ -262,7 +262,7 @@ V této části najdete příklady výstrah pro Azure File Sync.
 5. V okně **Konfigurovat logiku signálu** klikněte v části Název signálu na možnost **navrácení úrovně cloudu na velikost** .  
 6. Vyberte následující konfiguraci dimenzí: 
      - Název dimenze: **název serveru**  
-     - Podnikatel**=** 
+     - Podnikatel **=** 
      - Hodnoty dimenzí: **všechny aktuální a budoucí hodnoty**  
 7. Přejděte do **logiky výstrah** a proveďte následující: 
      - Prahová hodnota nastavená na **static** 

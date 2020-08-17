@@ -1,17 +1,17 @@
 ---
 title: Povolení podpory pro avere vFXT – Azure
-description: Jak povolit nahrávání podpory z avere vFXT pro Azure
+description: Naučte se, jak povolit automatické odesílání podpůrných dat o vašem clusteru z avere vFXT pro Azure, které vám pomůžou zajistit podporu poskytování služeb zákazníkům.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: fc86cca1b73eb58a038a0a6da109e86b995709c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93b99aa624a21d9312297e4279b1dcf053c79ae3
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505473"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272724"
 ---
 # <a name="enable-support-uploads"></a>Povolení nahrávání podpory
 

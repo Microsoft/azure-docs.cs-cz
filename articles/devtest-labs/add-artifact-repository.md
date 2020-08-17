@@ -1,14 +1,14 @@
 ---
 title: Přidání úložiště artefaktů do testovacího prostředí v Azure DevTest Labs | Microsoft Docs
-description: Naučte se, jak přidat úložiště artefaktů do testovacího prostředí ve službě Azure DevTest Labs.
+description: Naučte se, jak zadat vlastní úložiště artefaktů pro testovací prostředí v Azure DevTest Labs k ukládání nástrojů nedostupných ve veřejném úložišti artefaktů.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d823f437cddef0a33c7d7ea3b4c4fbdaad90fb8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7553f6b1afa416a5428577a8313bdadb669e32c2
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013433"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270967"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Přidání úložiště artefaktů do testovacího prostředí v DevTest Labs
 DevTest Labs umožňuje zadat artefakt, který se má přidat k virtuálnímu počítači v době vytváření nebo po vytvoření virtuálního počítače. Tento artefakt může být nástroj nebo aplikace, kterou chcete nainstalovat na virtuální počítač. Artefakty jsou definované v souboru JSON, který se načte z GitHubu nebo z úložiště Git Azure DevOps.
@@ -19,7 +19,7 @@ Tento článek poskytuje informace o tom, jak přidat vlastní úložiště arte
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete do testovacího prostředí přidat úložiště, nejdřív Získejte klíčové informace z vašeho úložiště. Následující části popisují, jak získat požadované informace pro úložiště, která jsou hostovaná na **GitHubu** nebo v **Azure DevOps**.
 
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>Získání adresy URL pro klonování úložiště GitHub a tokenu osobního přístupu
@@ -55,7 +55,7 @@ Pokud chcete do testovacího prostředí přidat úložiště, nejdřív Získej
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
 V této části najdete postup přidání úložiště artefaktů do testovacího prostředí v Azure Portal.
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **Další služby**a v seznamu služeb vyberte **DevTest Labs** .
 3. V seznamu cvičení vyberte testovací prostředí.
 4. V nabídce vlevo vyberte **Konfigurace a zásady** .
@@ -78,7 +78,7 @@ V této části najdete postup přidání úložiště artefaktů do testovacíh
 
 V této části najdete postup přidání úložiště artefaktů do testovacího prostředí pomocí šablony Azure Resource Manager.  Šablona vytvoří testovací prostředí, pokud ještě neexistuje.
 
-### <a name="template"></a>Template (Šablona)
+### <a name="template"></a>Šablona
 Ukázková šablona použitá v tomto článku shromažďuje následující informace prostřednictvím parametrů. Většina parametrů má inteligentní výchozí hodnoty, ale je třeba zadat několik hodnot. Je nutné zadat název testovacího prostředí, identifikátor URI pro úložiště artefaktů a token zabezpečení pro úložiště.
 
 - Název testovacího prostředí.

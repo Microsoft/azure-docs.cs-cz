@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c81e63a073882dea3a7aea32d5e9f4d3d5c48f7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36e29ebbdc4207c0cfe3a9967d433c6595d3fdc1
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018588"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271120"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s 8x8
 
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak integrovat 8x8 s Azure Active Directory (Azure AD
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -64,7 +64,7 @@ Pokud chcete nakonfigurovat integraci 8x8 do služby Azure AD, musíte přidat 8
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **8x8** .
 1. Na panelu výsledků vyberte **8x8** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-8x8"></a>Konfigurace a testování jednotného přihlašování Azure AD pro 8x8
+## <a name="configure-and-test-azure-ad-sso-for-8x8"></a>Konfigurace a testování jednotného přihlašování Azure AD pro 8x8
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí 8x8 pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v 8x8.
 
@@ -89,9 +89,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL:`https://sso.8x8.com/saml2`
+    a. Do textového pole **identifikátor** zadejte adresu URL: `https://sso.8x8.com/saml2`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL:`https://sso.8x8.com/saml2`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL: `https://sso.8x8.com/saml2`
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače. Certifikát budete používat později v tomto kurzu v části **Konfigurace jednotného přihlašování 8x8** .
 
@@ -111,7 +111,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -139,7 +139,15 @@ V další části kurzu záleží na tom, jaký typ předplatného máte v 8x8.
 
 ### <a name="configure-8x8-configuration-manager"></a>Konfigurace Configuration Manager 8x8
 
-1. Přihlaste se k 8x8 [Configuration Manager](https://vo-cm.8x8.com/).
+1. Pokud chcete automatizovat konfiguraci v rámci 8x8, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
+
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+1. Po přidání rozšíření do prohlížeče klikněte na **nastavit 8x8** , které vás přesměruje do aplikace 8x8. Odtud zadejte přihlašovací údaje správce, které se přihlásí k 8x8. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-6.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+1. Pokud chcete nastavit 8x8 ručně, přihlaste se k 8x8 [Configuration Manager](https://vo-cm.8x8.com/) jako správce.
 
 1. Z domovské stránky klikněte na **Správa identit**.
 
@@ -211,11 +219,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici 8x8, měli byste se automaticky přihlásit k 8x8, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

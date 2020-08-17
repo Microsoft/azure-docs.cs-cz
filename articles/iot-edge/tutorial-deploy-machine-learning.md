@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ae76fab6359675a87ad252a08ebb199bf724f129
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: fd297ec5cfb7831a438fc51e72e3c2fc163eff49
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439368"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271273"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení Azure Machine Learning jako modulu IoT Edge (Preview)
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Zařízení Azure IoT Edge:
 
@@ -49,7 +49,7 @@ Cloudové prostředky:
 
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
 * Pracovní prostor služby Azure Machine Learning. Postupujte podle pokynů v [části použití Azure Portal k tomu, abyste mohli začít pracovat s Azure Machine Learning](../machine-learning/tutorial-1st-experiment-sdk-setup.md) a Naučte se, jak ho používat.
-  * Poznamenejte si název pracovního prostoru, skupinu prostředků a ID předplatného. Tyto hodnoty jsou všechny dostupné v přehledu pracovního prostoru v Azure Portal. Tyto hodnoty použijete později v tomto kurzu, abyste k prostředkům pracovního prostoru připojili notebook Azure.
+  * Poznamenejte si název pracovního prostoru, skupinu prostředků a ID předplatného. Tyto hodnoty jsou všechny dostupné v přehledu pracovního prostoru v Azure Portal. Tyto hodnoty použijete později v tomto kurzu, abyste připojili soubor Azure Notebooks k prostředkům pracovního prostoru.
 
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>Vytvořit a nasadit modul Azure Machine Learning
 

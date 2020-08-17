@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 337b75412751fb15e3fc1746666a8efb385a8939
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cffd72171693499365f31b6eb51fd2586187b98b
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854461"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271258"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Kurz: Konfigurace Průvodce Log Analytics
 
@@ -88,7 +88,7 @@ Konfigurace pracovního prostoru Log Analytics se skládá ze dvou hlavních kro
 
 5. Klikněte na **Zkontrolovat a vytvořit**.
 
-    ![Zkontrolovat a vytvořit](./media/tutorial-log-analytics-wizard/review-create.png)
+    ![Podokno Zkontrolovat a vytvořit](./media/tutorial-log-analytics-wizard/review-create.png)
 
 6. Klikněte na **vytvořit** a počkejte na úspěšné nasazení. Je možné, že budete muset aktualizovat stránku, aby se zobrazil nový pracovní prostor.
 
@@ -152,7 +152,7 @@ Podívejte se na přihlášení, kdy byl podmíněný přístup úspěšný.
 
 Spočítat, kolik úspěchů bylo
 
-SigninLogs | kde ConditionalAccessStatus = = "úspěch" | projekt UserDisplayName, ConditionalAccessStatus | výpočtu
+`SigninLogs | where ConditionalAccessStatus == "success" | project UserDisplayName, ConditionalAccessStatus | count`
 
 
 Agregovaný počet úspěšných přihlášení uživatelem podle dne:
@@ -216,7 +216,7 @@ Tento postup ukazuje, jak odeslat výstrahy při použití účtu breakglass.
 
 4. Na stránce **protokoly** **klikněte na Začínáme.**
 
-5. Do textového pole **hledání** zadejte:`SigninLogs |where UserDisplayName contains "BreakGlass" | project UserDisplayName`
+5. Do textového pole **hledání** zadejte: `SigninLogs |where UserDisplayName contains "BreakGlass" | project UserDisplayName`
 
 6. Klikněte na **Spustit**.  
 
@@ -268,7 +268,7 @@ Tento postup ukazuje, jak odeslat výstrahy při použití účtu breakglass.
 
     3. Klikněte na **Zkontrolovat a vytvořit**. 
 
-    4. Klikněte na **Vytvořit**.
+    4. Klikněte na možnost **Vytvořit**.
 
 
 15. V části **přizpůsobit akci**proveďte následující kroky:
@@ -277,15 +277,15 @@ Tento postup ukazuje, jak odeslat výstrahy při použití účtu breakglass.
 
     1. Vyberte **Předmět e-mailu**.
 
-    2. Do textového pole **řádek předmětu** zadejte:`Breakglass account has been used`
+    2. Do textového pole **řádek předmětu** zadejte: `Breakglass account has been used`
 
 16. V části **Podrobnosti pravidla výstrahy**proveďte následující kroky:
 
     ![Podrobnosti pravidla výstrahy](./media/tutorial-log-analytics-wizard/alert-rule-details.png)
 
-    1. Do textového pole **název pravidla výstrahy** zadejte:`Breakglass account`
+    1. Do textového pole **název pravidla výstrahy** zadejte: `Breakglass account`
 
-    2. Do textového pole **Popis** zadejte:`Your emergency access account has been used`
+    2. Do textového pole **Popis** zadejte: `Your emergency access account has been used`
 
 17. Klikněte na **Vytvořit pravidlo upozornění**.   
 
@@ -328,7 +328,7 @@ Tento postup ukazuje, jak vytvořit nový sešit pomocí šablony pro rychlý St
 
     ![Přidat dotaz](./media/tutorial-log-analytics-wizard/add-query.png)
 
-9. Do textového pole dotazu zadejte:`SigninLogs | where TimeGenerated > ago(7d) | project TimeGenerated, UserDisplayName, ClientAppUsed | summarize count() by ClientAppUsed`
+9. Do textového pole dotazu zadejte: `SigninLogs | where TimeGenerated > ago(7d) | project TimeGenerated, UserDisplayName, ClientAppUsed | summarize count() by ClientAppUsed`
 
 10. Klikněte na **Spustit dotaz**.
 
@@ -371,7 +371,7 @@ Tento postup ukazuje, jak přidat dotaz do existující šablony sešitu. Tento 
 
     ![Přidat dotaz na sešit](./media/tutorial-log-analytics-wizard/add-custom-workbook-query.png)
 
-7. Do textového pole dotazu zadejte:`SigninLogs | where TimeGenerated > ago(20d) | where ConditionalAccessPolicies != "[]" | summarize dcount(UserDisplayName) by bin(TimeGenerated, 1d), ConditionalAccessStatus`
+7. Do textového pole dotazu zadejte: `SigninLogs | where TimeGenerated > ago(20d) | where ConditionalAccessPolicies != "[]" | summarize dcount(UserDisplayName) by bin(TimeGenerated, 1d), ConditionalAccessStatus`
 
 8. Klikněte na **Spustit dotaz**.
 

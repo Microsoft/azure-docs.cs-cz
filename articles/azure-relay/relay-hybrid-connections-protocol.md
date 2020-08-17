@@ -3,12 +3,12 @@ title: Průvodce protokolem Hybrid Connections Azure Relay | Microsoft Docs
 description: Tento článek popisuje interakce na straně klienta s Hybrid Connections Relay pro připojení klientů v rolích naslouchacího procesu a odesilatele.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 798be7f0003509aee6ae616ba33fcc41e5c86275
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec021d961a17102f8d979c61ee46af6b938f073
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316658"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272005"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Protokol Azure Relay Hybrid Connections
 
@@ -135,14 +135,14 @@ Parametry řetězce dotazu jsou následující.
 
 | Parametr        | Povinné | Popis
 | ---------------- | -------- | -------------------------------------------
-| `sb-hc-action`   | Yes      | Pro roli naslouchacího procesu musí být parametr **SB-HC-Action = Listen** .
-| `{path}`         | Yes      | Cesta oboru názvů zakódovaného URL předkonfigurovaného hybridního připojení k registraci tohoto naslouchacího procesu. Tento výraz je připojen k části s pevnou `$hc/` cestou.
-| `sb-hc-token`    | Yes\*    | Naslouchací proces musí poskytovat platný, Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, které uděluje právo na **naslouchání** .
-| `sb-hc-id`       | No       | Toto volitelné ID pro klienta poskytuje kompletní trasování diagnostiky.
+| `sb-hc-action`   | Ano      | Pro roli naslouchacího procesu musí být parametr **SB-HC-Action = Listen** .
+| `{path}`         | Ano      | Cesta oboru názvů zakódovaného URL předkonfigurovaného hybridního připojení k registraci tohoto naslouchacího procesu. Tento výraz je připojen k části s pevnou `$hc/` cestou.
+| `sb-hc-token`    | Ano\*    | Naslouchací proces musí poskytovat platný, Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, které uděluje právo na **naslouchání** .
+| `sb-hc-id`       | Ne       | Toto volitelné ID pro klienta poskytuje kompletní trasování diagnostiky.
 
 Pokud se připojení protokolu WebSocket nepovede kvůli registraci cesty k hybridnímu připojení nebo neplatnému nebo chybějícímu tokenu nebo nějaké jiné chybě, je k dispozici zpětná vazba k chybě pomocí běžného modelu zpětné vazby stavu HTTP 1,1. Popis stavu obsahuje ID sledování chyb, které může být sděleno pracovníkům podpory Azure:
 
-| Kód | Chyba          | Description
+| Kód | Chyba          | Popis
 | ---- | -------------- | -------------------------------------------------------------------
 | 404  | Nenalezeno      | Cesta k hybridnímu připojení je neplatná nebo základní adresa URL je poškozená.
 | 401  | Neautorizováno   | Token zabezpečení chybí nebo je neplatný nebo neplatný.
@@ -151,7 +151,7 @@ Pokud se připojení protokolu WebSocket nepovede kvůli registraci cesty k hybr
 
 Pokud se připojení protokolu WebSocket úmyslně vypíná službou po jeho počátečním nastavení, je důvod k tomu sdělen pomocí vhodného kódu chyby protokolu WebSocket spolu s popisnou chybovou zprávou, která také obsahuje ID sledování. Služba nevypne řídicí kanál bez výskytu chybové podmínky. Jakékoli čisté vypnutí je řízeno klientem.
 
-| Stav WS | Description
+| Stav WS | Popis
 | --------- | -------------------------------------------------------------------------------
 | 1001      | Cesta k hybridnímu připojení je Odstraněná nebo zakázaná.
 | 1008      | Platnost tokenu zabezpečení vypršela, a proto je porušena zásada autorizace.
@@ -195,11 +195,11 @@ Adresa URL musí být použita jako-je určena pro vytvoření přijatelného so
 
 | Parametr      | Povinné | Popis
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Yes      | Pro přijetí soketu musí být parametr`sb-hc-action=accept`
-| `{path}`       | Yes      | (viz následující odstavec)
-| `sb-hc-id`     | No       | Viz předchozí popis **ID**.
+| `sb-hc-action` | Ano      | Pro přijetí soketu musí být parametr `sb-hc-action=accept`
+| `{path}`       | Ano      | (viz následující odstavec)
+| `sb-hc-id`     | Ne       | Viz předchozí popis **ID**.
 
-`{path}`je cesta oboru názvů zakódovaná URL předkonfigurovaného hybridního připojení, na které se má tento naslouchací proces zaregistrovat. Tento výraz je připojen k části s pevnou `$hc/` cestou.
+`{path}` je cesta oboru názvů zakódovaná URL předkonfigurovaného hybridního připojení, na které se má tento naslouchací proces zaregistrovat. Tento výraz je připojen k části s pevnou `$hc/` cestou.
 
 `path`Výraz může být prodloužen s příponou a výrazem řetězce dotazu, který následuje za zaregistrovaným názvem po oddělení lomítka.
 To umožňuje klientovi odesílatele předat argumenty odeslání do přijímacího naslouchacího procesu, pokud není možné zahrnout hlavičky protokolu HTTP. Očekává se, že rozhraní naslouchacího procesu analyzuje část pevné cesty a registrovaný název z cesty a provede zbytek, případně bez argumentů řetězce dotazu, který je s předponou `sb-` , k dispozici pro aplikaci k rozhodnutí, zda má být připojení přijatelné.
@@ -208,14 +208,14 @@ Další informace najdete v části "odesilatel protokolu".
 
 Pokud dojde k chybě, může služba odpovědět následujícím způsobem:
 
-| Kód | Chyba          | Description
+| Kód | Chyba          | Popis
 | ---- | -------------- | -----------------------------------
 | 403  | Forbidden      | Adresa URL není platná.
 | 500  | Vnitřní chyba | Ve službě se něco pokazilo.
 
  Po navázání připojení server vypne WebSocket při vypnutí WebSocket odesílatele nebo s následujícím stavem:
 
-| Stav WS | Description                                                                     |
+| Stav WS | Popis                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1001      | Klient odesilatele ukončí připojení.                                    |
 | 1001      | Cesta k hybridnímu připojení je Odstraněná nebo zakázaná.                        |
@@ -232,14 +232,14 @@ Pokud dojde k chybě, může služba odpovědět následujícím způsobem:
 
 | Param                   | Povinné | Popis                              |
 | ----------------------- | -------- | ---------------------------------------- |
-| SB-HC-statusCode        | Yes      | Číselný kód stavu HTTP.                |
-| SB-HC-statusDescription | Yes      | Důvod pro odmítání z lidského čitelného. |
+| SB-HC-statusCode        | Ano      | Číselný kód stavu HTTP.                |
+| SB-HC-statusDescription | Ano      | Důvod pro odmítání z lidského čitelného. |
 
 Výsledný identifikátor URI se pak použije k navázání připojení protokolu WebSocket.
 
 Při správném dokončení se tato metoda handshake úmyslně nezdařila s kódem chyby HTTP 410, protože nebyl vytvořen žádný WebSocket. Pokud dojde k nějaké chybě, popíše následující kódy chybu:
 
-| Kód | Chyba          | Description                          |
+| Kód | Chyba          | Popis                          |
 | ---- | -------------- | ------------------------------------ |
 | 403  | Forbidden      | Adresa URL není platná.                |
 | 500  | Vnitřní chyba | Ve službě se něco pokazilo. |
@@ -294,16 +294,16 @@ Obsah JSON pro `request` je následující:
 * **ID** – řetězec. Jedinečný identifikátor pro tento požadavek.
 * **requestHeaders hostitele** – tento objekt obsahuje všechny hlavičky HTTP, které byly dodány do koncového bodu odesílatelem, s výjimkou informací o autorizaci, jak je vysvětleno [výše](#request-operation), a záhlavími, které se striktně vztahují k připojení s bránou. Konkrétně jsou všechny hlavičky definované nebo vyhrazené v [RFC7230](https://tools.ietf.org/html/rfc7230), s výjimkou `Via` , jsou odstraněny a nepředávány:
 
-  * `Connection`(RFC7230, oddíl 6,1)
-  * `Content-Length`(RFC7230, oddíl 3.3.2)
-  * `Host`(RFC7230, oddíl 5,4)
-  * `TE`(RFC7230, oddíl 4,3)
-  * `Trailer`(RFC7230, oddíl 4,4)
-  * `Transfer-Encoding`(RFC7230, oddíl 3.3.1)
-  * `Upgrade`(RFC7230, oddíl 6,7)
-  * `Close`(RFC7230, oddíl 8,1)
+  * `Connection` (RFC7230, oddíl 6,1)
+  * `Content-Length`  (RFC7230, oddíl 3.3.2)
+  * `Host`  (RFC7230, oddíl 5,4)
+  * `TE`  (RFC7230, oddíl 4,3)
+  * `Trailer`  (RFC7230, oddíl 4,4)
+  * `Transfer-Encoding`  (RFC7230, oddíl 3.3.1)
+  * `Upgrade` (RFC7230, oddíl 6,7)
+  * `Close`  (RFC7230, oddíl 8,1)
 
-* **requestTarget** – řetězec. Tato vlastnost obsahuje ["cíl žádosti" (RFC7230, část 5,3)](https://tools.ietf.org/html/rfc7230#section-5.3) žádosti. To zahrnuje část řetězce dotazu, která je odstraněna ze všech `sb-hc-` předpevněných parametrů.
+* **requestTarget** – řetězec. Tato vlastnost obsahuje  ["cíl žádosti" (RFC7230, část 5,3)](https://tools.ietf.org/html/rfc7230#section-5.3) žádosti. To zahrnuje část řetězce dotazu, která je odstraněna ze všech `sb-hc-` předpevněných parametrů.
 * řetězec **metody** . Toto je metoda požadavku, na [RFC7231, část 4](https://tools.ietf.org/html/rfc7231#section-4). `CONNECT`Metoda nesmí být použita.
 * **tělo** – logická hodnota. Určuje, zda jeden nebo více binárních bloků textu následuje.
 
@@ -367,11 +367,11 @@ Pro odpovědi, které překračují 64 kB, musí být odpověď doručena přes 
 
 | Parametr      | Povinné | Popis
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Yes      | Pro přijetí soketu musí být parametr`sb-hc-action=request`
+| `sb-hc-action` | Ano      | Pro přijetí soketu musí být parametr `sb-hc-action=request`
 
 Pokud dojde k chybě, může služba odpovědět následujícím způsobem:
 
-| Kód | Chyba           | Description
+| Kód | Chyba           | Popis
 | ---- | --------------- | -----------------------------------
 | 400  | Neplatný požadavek | Nerozpoznaná akce nebo adresa URL je neplatná.
 | 403  | Forbidden       | Platnost adresy URL vypršela.
@@ -379,7 +379,7 @@ Pokud dojde k chybě, může služba odpovědět následujícím způsobem:
 
  Po navázání připojení server vypne WebSocket, když se soket HTTP klienta ukončí nebo s následujícím stavem:
 
-| Stav WS | Description                                                                     |
+| Stav WS | Popis                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1001      | Klient odesilatele ukončí připojení.                                    |
 | 1001      | Cesta k hybridnímu připojení je Odstraněná nebo zakázaná.                        |
@@ -404,7 +404,7 @@ Až vyprší platnost tokenu naslouchacího procesu, může ho nahradit odeslán
 
 Pokud se ověření tokenu nepovede, přístup se odepře a cloudová služba uzavře WebSocket řídicího kanálu s chybou. V opačném případě neexistuje žádná odpověď.
 
-| Stav WS | Description                                                                     |
+| Stav WS | Popis                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1008      | Platnost tokenu zabezpečení vypršela, a proto je porušena zásada autorizace. |
 
@@ -423,12 +423,12 @@ Požadavek může obsahovat libovolné dodatečné hlavičky protokolu HTTP, vč
 
 Možnosti parametru řetězce dotazu jsou následující:
 
-| Param          | Povinné? | Description
+| Param          | Povinné? | Popis
 | -------------- | --------- | -------------------------- |
-| `sb-hc-action` | Yes       | V případě role odesílatele musí být parametr `sb-hc-action=connect` .
-| `{path}`       | Yes       | (viz následující odstavec)
-| `sb-hc-token`  | Yes\*     | Naslouchací proces musí poskytovat platný, Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, které uděluje právo **Odeslat** .
-| `sb-hc-id`     | No        | Volitelné ID, které umožňuje kompletní diagnostické trasování a zpřístupnění posluchači během metody Accept handshake.
+| `sb-hc-action` | Ano       | V případě role odesílatele musí být parametr `sb-hc-action=connect` .
+| `{path}`       | Ano       | (viz následující odstavec)
+| `sb-hc-token`  | Ano\*     | Naslouchací proces musí poskytovat platný, Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, které uděluje právo **Odeslat** .
+| `sb-hc-id`     | Ne        | Volitelné ID, které umožňuje kompletní diagnostické trasování a zpřístupnění posluchači během metody Accept handshake.
 
  `{path}`Je cesta oboru názvů zakódovaného URL předkonfigurovaného hybridního připojení, na které se má tento naslouchací proces zaregistrovat. `path`Výraz lze rozšířit s příponou a výrazem řetězce dotazu pro další komunikaci. Pokud je hybridní připojení registrováno pod cestou `hyco` , `path` za výraz může `hyco/suffix?param=value&...` následovat parametry řetězce dotazu, které jsou zde definovány. Úplný výraz může být následující:
 
@@ -440,7 +440,7 @@ wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id
 
 Pokud se připojení protokolu WebSocket nepovede z důvodu registrace cesty k hybridnímu připojení, neplatného nebo chybějícího tokenu nebo nějaké jiné chyby, je k dispozici zpětná vazba k chybě pomocí běžného modelu zpětné vazby stavu HTTP 1,1. Popis stavu obsahuje ID sledování chyb, které se dá sdělit pracovníkům podpory Azure:
 
-| Kód | Chyba          | Description
+| Kód | Chyba          | Popis
 | ---- | -------------- | -------------------------------------------------------------------
 | 404  | Nenalezeno      | Cesta k hybridnímu připojení je neplatná nebo základní adresa URL je poškozená.
 | 401  | Neautorizováno   | Token zabezpečení chybí nebo je neplatný nebo neplatný.
@@ -449,7 +449,7 @@ Pokud se připojení protokolu WebSocket nepovede z důvodu registrace cesty k h
 
 Pokud se připojení protokolu WebSocket úmyslně ukončí službou po počátečním nastavování, je důvod k tomu sdělen pomocí vhodného kódu chyby protokolu WebSocket spolu s popisnou chybovou zprávou, která také obsahuje ID sledování.
 
-| Stav WS | Description
+| Stav WS | Popis
 | --------- | ------------------------------------------------------------------------------- 
 | 1000      | Naslouchací proces vypnul soket.
 | 1001      | Cesta k hybridnímu připojení je Odstraněná nebo zakázaná.
@@ -467,13 +467,13 @@ https://{namespace-address}/{path}?sbc-hc-token=...
 
 _Obor názvů – adresa_ je plně kvalifikovaný název domény Azure Relay oboru názvů, který je hostitelem hybridního připojení, většinou formuláře `{myname}.servicebus.windows.net` .
 
-Požadavek může obsahovat libovolné dodatečné hlavičky protokolu HTTP, včetně aplikací definovaných aplikací. Všechna dodaná záhlaví, kromě těch, která jsou přímo definována v RFC7230 (viz [zpráva požadavku](#Request message)) toku k naslouchacímu procesu a lze ji najít v `requestHeader` objektu zprávy **požadavku** .
+Požadavek může obsahovat libovolné dodatečné hlavičky protokolu HTTP, včetně aplikací definovaných aplikací. Všechna dodaná záhlaví, kromě těch, která jsou přímo definována v RFC7230 (viz [zpráva požadavku](#request-message)) toku k naslouchacímu procesu a lze ji najít v `requestHeader` objektu zprávy **požadavku** .
 
 Možnosti parametru řetězce dotazu jsou následující:
 
-| Param          | Povinné? | Description
+| Param          | Povinné? | Popis
 | -------------- | --------- | ---------------- |
-| `sb-hc-token`  | Yes\*     | Naslouchací proces musí poskytovat platný, Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, které uděluje právo **Odeslat** .
+| `sb-hc-token`  | Ano\*     | Naslouchací proces musí poskytovat platný, Service Bus sdílený přístupový token s kódováním URL pro obor názvů nebo hybridní připojení, které uděluje právo **Odeslat** .
 
 Token se dá také přenést buď v hlavičce, `ServiceBusAuthorization` nebo v `Authorization` hlavičce HTTP. Token se dá vynechat, pokud je hybridní připojení nakonfigurované tak, aby povolovalo anonymní požadavky.
 
@@ -487,7 +487,7 @@ Služba přidá název hostitele oboru názvů Relay do `Via` .
 
 Pokud dojde k chybě, může služba odpovědět následujícím způsobem. Zda je odpověď pocházející ze služby nebo naslouchacího procesu, může být identifikována prostřednictvím přítomnosti `Via` hlavičky. Pokud je hlavička přítomna, odpověď je od naslouchacího procesu.
 
-| Kód | Chyba           | Description
+| Kód | Chyba           | Popis
 | ---- | --------------- |--------- |
 | 404  | Nenalezeno       | Cesta k hybridnímu připojení je neplatná nebo základní adresa URL je poškozená.
 | 401  | Neautorizováno    | Token zabezpečení chybí nebo je neplatný nebo neplatný.

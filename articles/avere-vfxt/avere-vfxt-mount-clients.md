@@ -1,17 +1,17 @@
 ---
 title: Připojení avere vFXT – Azure
-description: Jak připojit klienty pomocí avere vFXT pro Azure
+description: Naučte se, jak připojit klienty ke clusteru vFXT v avere vFXT pro Azure a jak vyrovnávat zatížení klientského provozu mezi uzly clusteru.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: e8850162847f2dd416b0951a797e2eb0cd7d55d2
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 44a4e1293bc4c5a54e1e345d5cf95ba307a7b120
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229563"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272567"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Připojení clusteru Avere vFXT
 
@@ -64,7 +64,7 @@ Výše uvedená funkce je součástí příkladu dávky, který je k dispozici n
 > [!NOTE]
 > Pokud jste při vytváření clusteru avere vFXT nevytvořili nový kontejner objektů blob, přidejte systémy úložiště, jak je popsáno v tématu [Konfigurace úložiště](avere-vfxt-add-storage.md) před pokusem o připojení klientů.
 
-Z klienta ``mount`` příkaz mapuje virtuální server (VServer) v clusteru vFXT na cestu v místním systému souborů. Formát je``mount <vFXT path> <local path> {options}``
+Z klienta ``mount`` příkaz mapuje virtuální server (VServer) v clusteru vFXT na cestu v místním systému souborů. Formát je ``mount <vFXT path> <local path> {options}``
 
 Příkaz Mount má tři prvky:
 
@@ -76,7 +76,7 @@ Příkaz Mount má tři prvky:
 
 Cesta VServer je kombinací své *IP adresy* a cesty k *oboru názvů*. Spojení oboru názvů je virtuální cesta, která byla definována při přidání systému úložiště.
 
-Pokud byl cluster vytvořen s úložištěm objektů blob, cesta oboru názvů k tomuto kontejneru je`/msazure`
+Pokud byl cluster vytvořen s úložištěm objektů blob, cesta oboru názvů k tomuto kontejneru je `/msazure`
 
 Příklad: ``mount 10.0.0.12:/msazure /mnt/vfxt``
 

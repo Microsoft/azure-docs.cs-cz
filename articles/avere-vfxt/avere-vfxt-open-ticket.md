@@ -1,17 +1,17 @@
 ---
 title: Jak získat podporu pro avere vFXT pro Azure
-description: Vysvětlení otevření lístků podpory o avere vFXT pro Azure
+description: Naučte se řešit problémy, které mohou nastat při nasazení nebo používání avere vFXT pro Azure, vytvořením lístku podpory prostřednictvím Azure Portal.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 522d29505d7d10f5f6d97136f270f07a63053d19
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847345"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271103"
 ---
 # <a name="get-help-with-your-system"></a>Získejte pomoc s vaším systémem.
 
@@ -43,7 +43,7 @@ Pomocí těchto kroků se ujistěte, že je váš lístek podpory označený pro
 
     ![snímek obrazovky s novou žádostí o podporu v Azure Portal. Je vybrána karta základy. Položky obrazovky zahrnují typ problému, předplatné, službu, souhrn a typ problému.](media/ticket-basics.png)
 
-   Pokračujte výběrem tlačítka **Další**.
+   Pokračujte kliknutím na **Next** (Další).
 
 1. Druhá stránka formuláře podpory obsahuje návrhy pro vyřešení problému na základě vašeho souhrnného popisu. Pokud stále potřebujete vytvořit lístek podpory, klikněte na tlačítko **Další** v dolní části.
 

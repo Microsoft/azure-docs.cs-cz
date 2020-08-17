@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/16/2020
+ms.date: 08/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51be98654950ba290fa83f77eccdae4d6f549891
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6857fba86aebbcfd7b20326e4a4a268467e4fc3
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81603829"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272463"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Kurz: Azure Active Directory Integration with Amazon Web Services (AWS) (kurz starší verze)
 
@@ -86,7 +86,7 @@ Pokud chcete nakonfigurovat integraci Amazon Web Services (AWS) do Azure AD, mus
 
     ![Amazon Web Services (AWS) v seznamu výsledků](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-properties.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Amazon Web Services (AWS) na základě testovacího uživatele s názvem "Britta Simon".
 
@@ -126,7 +126,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 6. V části **deklarace identity uživatelů** v dialogu **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Name  | Zdrojový atribut  | Obor názvů |
+    | Název  | Zdrojový atribut  | Obor názvů |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | User. userPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Role            | User. assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
@@ -273,11 +273,11 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Pokud používáte více adresářů, můžete použít následující vzor, který má vaši primární doménu v něm.`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Pokud používáte více adresářů, můžete použít následující vzor, který má vaši primární doménu v něm.  `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Dialogové okno Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
-    f. V seznamu načtených instančních objektů Získejte ten, který potřebujete upravit. K vyhledání aplikace ze všech uvedených ServicePrincipals můžete použít také kombinaci kláves CTRL + F. Pomocí následujícího dotazu můžete získat přístup k příslušnému instančnímu **objektu pomocí ID objektu** , který jste zkopírovali ze stránky vlastností Azure AD.
+    f. V seznamu načtených instančních objektů Získejte ten, který potřebujete upravit. K vyhledání aplikace ze všech uvedených ServicePrincipals můžete použít také kombinaci kláves CTRL + F. Můžete použít následující dotaz pomocí **ID objektu instančního objektu** , který jste zkopírovali ze stránky vlastností Azure AD, abyste se dostali k příslušnému instančnímu objektu.
 
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 

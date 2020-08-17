@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 7776345ee4e02baa2d2a6ae7bc08389aa94bd09b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3c097260812e72dfaa3678a4aade556a337e6a6c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534477"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272895"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Podpora IoT Hub pro virtuální sítě s privátním odkazem a spravovanou identitou
 
@@ -182,7 +182,7 @@ IoT Hub může směrovat zprávy do účtu úložiště ve vlastnictví zákazn�
 
 5. Přejděte do části **vlastní koncové body** a klikněte na **Přidat**. Jako typ koncového bodu vyberte **úložiště** .
 
-6. Na stránce, která se zobrazí, zadejte název koncového bodu, vyberte kontejner, který chcete použít ve službě BLOB Storage, zadejte kódování a formát názvu souboru. Jako **typ ověřování** vyberte **systém přiřazený** ke koncovému bodu úložiště. Klikněte na tlačítko **Vytvořit**.
+6. Na stránce, která se zobrazí, zadejte název koncového bodu, vyberte kontejner, který chcete použít ve službě BLOB Storage, zadejte kódování a formát názvu souboru. Jako **typ ověřování** vyberte na **základě identity** na koncový bod úložiště. Klikněte na tlačítko **Vytvořit**.
 
 Vlastní koncový bod úložiště je teď nastavený tak, aby používal identitu přiřazenou systémem vašeho rozbočovače a měl oprávnění pro přístup k vašemu prostředku úložiště Navzdory omezením brány firewall. Nyní můžete použít tento koncový bod k nastavení pravidla směrování.
 
@@ -234,7 +234,7 @@ Funkce nahrávání souborů IoT Hub umožňuje zařízením nahrávat soubory d
 
 4. Na stránce prostředku IoT Hub přejděte na kartu **nahrávání souborů** .
 
-5. Na stránce, která se zobrazí, vyberte kontejner, který chcete použít ve svém úložišti objektů blob, nakonfigurujte **Nastavení oznamování souborů**, **TTL SAS**, **výchozí hodnotu TTL**a **maximální počet doručení** podle potřeby. Jako **typ ověřování** vyberte **systém přiřazený** ke koncovému bodu úložiště. Klikněte na tlačítko **Vytvořit**.
+5. Na stránce, která se zobrazí, vyberte kontejner, který chcete použít ve svém úložišti objektů blob, nakonfigurujte **Nastavení oznamování souborů**, **TTL SAS**, **výchozí hodnotu TTL**a **maximální počet doručení** podle potřeby. Jako **typ ověřování** vyberte na **základě identity** na koncový bod úložiště. Klikněte na tlačítko **Vytvořit**.
 
 Teď je koncový bod úložiště pro nahrání souborů nastavený tak, aby používal identitu přiřazenou systémem vašeho rozbočovače a měl oprávnění pro přístup k vašemu prostředku úložiště Navzdory omezením brány firewall.
 

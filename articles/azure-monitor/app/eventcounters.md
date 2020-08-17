@@ -3,22 +3,22 @@ title: Čítače událostí v Application Insights | Microsoft Docs
 description: Monitorujte systém a vlastní .NET/.NET Core EventCounters v Application Insights.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 42140f68a5f383a2a60fe8327f5023754366e6b7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 000486ecd4fddd5749e4c7cc9f9210a1f0f8666c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324399"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272361"
 ---
 # <a name="eventcounters-introduction"></a>Úvod do EventCounters
 
-`EventCounter`je základní mechanismus .NET/.NET pro publikování a používání čítačů nebo statistik. [Tento](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) dokument obsahuje přehled `EventCounters` a příklady, jak je publikovat a využívat. EventCounters jsou podporované na všech platformách OS – Windows, Linux a macOS. Můžeme si představit jako ekvivalent pro [čítače výkonu](/dotnet/api/system.diagnostics.performancecounter) pro různé platformy, který je podporován pouze v systémech Windows.
+`EventCounter` je základní mechanismus .NET/.NET pro publikování a používání čítačů nebo statistik. [Tento](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) dokument obsahuje přehled `EventCounters` a příklady, jak je publikovat a využívat. EventCounters jsou podporované na všech platformách OS – Windows, Linux a macOS. Můžeme si představit jako ekvivalent pro [čítače výkonu](/dotnet/api/system.diagnostics.performancecounter) pro různé platformy, který je podporován pouze v systémech Windows.
 
 I když uživatelé mohou publikovat jakékoli vlastní `EventCounters` , aby splnili požadavky, modul runtime .NET Core 3,0 ve výchozím nastavení publikuje sadu těchto čítačů. Dokument vás provede kroky potřebnými ke shromáždění a zobrazení `EventCounters` (definované systémem nebo uživatelem) v Azure Application Insights.
 
 ## <a name="using-application-insights-to-collect-eventcounters"></a>Shromažďování EventCounters pomocí Application Insights
 
-Application Insights podporuje shromažďování `EventCounters` s jeho `EventCounterCollectionModule` součástí nově vydaných balíčků NuGet [Microsoft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector). `EventCounterCollectionModule`se automaticky povolí při použití [AspNetCore](asp-net-core.md) nebo [WorkerService](worker-service.md). `EventCounterCollectionModule`shromažďuje čítače s nekonfigurovatelnou frekvencí kolekce 60 sekund. Ke shromáždění EventCounters nejsou nutná žádná zvláštní oprávnění.
+Application Insights podporuje shromažďování `EventCounters` s jeho `EventCounterCollectionModule` součástí nově vydaných balíčků NuGet [Microsoft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector). `EventCounterCollectionModule` se automaticky povolí při použití [AspNetCore](asp-net-core.md) nebo [WorkerService](worker-service.md). `EventCounterCollectionModule` shromažďuje čítače s nekonfigurovatelnou frekvencí kolekce 60 sekund. Ke shromáždění EventCounters nejsou nutná žádná zvláštní oprávnění.
 
 ## <a name="default-counters-collected"></a>Shromážděny výchozí čítače
 
@@ -45,10 +45,6 @@ Pro aplikace běžící v .NET Core 3,0 se sada SDK automaticky shromáždí ná
 |`System.Runtime` | `threadpool-queue-length` |
 |`System.Runtime` | `threadpool-completed-items-count` |
 |`System.Runtime` | `active-timer-count` |
-|`Microsoft.AspNetCore.Hosting` | `requests-per-second` |
-|`Microsoft.AspNetCore.Hosting` | `total-requests` |
-|`Microsoft.AspNetCore.Hosting` | `current-requests` |
-|`Microsoft.AspNetCore.Hosting` | `failed-requests` |
 
 > [!NOTE]
 > Čítače kategorie Microsoft. AspNetCore. Hosting se přidávají jenom v aplikacích ASP.NET Core.

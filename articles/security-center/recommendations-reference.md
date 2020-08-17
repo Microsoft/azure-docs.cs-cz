@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8038ace4469123e50d98d9296a1aecf0107efbf2
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 1609fc720474f92b3a3fa8c0631452164a7e4d0f
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262547"
+ms.locfileid: "88272022"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Doporučení zabezpečení – referenční příručka
 
@@ -181,6 +181,7 @@ Vaše zabezpečené skóre vychází z počtu Security Center doporučení, kter
 |**Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.**|Určete méně než tři vlastníky předplatného, aby bylo možné snížit riziko narušení napadeného vlastníka.<br>(Související zásady: pro vaše předplatné by se měly určit maximálně 3 vlastníci)|Vysoká|N|Předplatné|
 |**V trezorech Azure Key Vault by měla být povolena rozšířená ochrana před internetovými útoky.**|Azure Security Center zahrnuje rozšířenou ochranu před internetovými útoky Azure pro Azure Key Vault a poskytuje další vrstvu funkcí Security Intelligence.<br>Důležité: Oprava toto doporučení bude mít za následek poplatky za ochranu vašich trezorů integrace. Pokud v tomto předplatném nemáte žádné trezory integrace, neúčtují se žádné poplatky. Pokud v budoucnu vytvoříte v tomto předplatném nějaké trezory integrace, budou automaticky chráněny a v této době začnou platit poplatky.<br>(Související zásady: [Rozšířená ochrana před internetovými útoky by měla být povolená v úložištích Azure Key Vault](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047))|Vysoké|**A**|Předplatné|
 |**Měly by být povolené diagnostické protokoly v Key Vault.**|Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě.<br>(Související zásady: protokoly diagnostiky v Key Vault by měly být povolené)|Nízká|**A**|Key Vault|
+|**K ochraně předplatných namísto certifikátů pro správu by se měly použít instanční objekty.**|Certifikáty pro správu umožňují všem, kteří se s nimi ověřují, spravovat odběry, ke kterým jsou přidružené. Pro bezpečnější správu předplatných se doporučuje použití instančních objektů s Správce prostředků omezit poloměr vysokého poloměru v případě ohrožení bezpečnosti certifikátu. Také automatizuje správu prostředků.|Střední|Ne|Předplatné|
 ||||||
 
 

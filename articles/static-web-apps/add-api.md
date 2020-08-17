@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-javascript
-ms.openlocfilehash: d6a25e7c36118f6a11bd1a177159bc9050ee69ca
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 8d48a8a9f52c3edb4350c16a25deda9894dcdda1
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431009"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271154"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Přidání rozhraní API do služby Azure static Web Apps Preview pomocí Azure Functions
 
 Do služby Azure static Web Apps můžete přidat rozhraní API bez serveru prostřednictvím integrace s Azure Functions. Tento článek ukazuje, jak přidat a nasadit rozhraní API do webu Azure static Web Apps.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným.
   - Pokud účet nemáte, můžete si [ho vytvořit zdarma](https://azure.microsoft.com/free).
@@ -28,7 +28,7 @@ Do služby Azure static Web Apps můžete přidat rozhraní API bez serveru pros
 - Rozšíření pro [živý Server Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) .
 - [Node.js](https://nodejs.org/download/) pro místní spuštění aplikace API
 
-## <a name="create-a-git-repository"></a>Vytvoření úložiště Git
+## <a name="create-a-git-repository"></a>Vytvořte úložiště Git
 
 Následující kroky ukazují, jak vytvořit nové úložiště a klonovat soubory do počítače.
 

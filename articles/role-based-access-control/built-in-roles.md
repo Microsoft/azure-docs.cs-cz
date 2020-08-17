@@ -7,16 +7,16 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/29/2020
+ms.date: 08/16/2020
 ms.custom: generated
-ms.openlocfilehash: edf0d0085a8f1f9446e9c699c15b1eebb0a2d004
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 44b4134404d5af3a8dde7028ffa1b43258df7558
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448901"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271987"
 ---
-# <a name="azure-built-in-roles"></a>Předdefinované role Azure
+# <a name="azure-built-in-roles"></a>Předdefinované role v Azure
 
 [Řízení přístupu na základě role v Azure (Azure RBAC)](overview.md) má několik předdefinovaných rolí Azure, které můžete přiřadit uživatelům, skupinám, objektům služby a spravovaným identitám. Přiřazení rolí představují způsob, jakým ovládáte přístup k prostředkům Azure. Pokud předdefinované role nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní [vlastní role Azure](custom-roles.md).
 
@@ -30,9 +30,9 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | Předdefinovaná role | Popis | ID |
 > | --- | --- | --- |
 > | **Obecné** |  |  |
-> | [Přispěvatel](#contributor) | Umožňuje spravovat vše kromě udělení přístupu k prostředkům. | b24988ac-6180-42a0-ab88-20f7382dd24c |
-> | [Vlastník](#owner) | Umožňuje správu všeho, včetně přístupu k prostředkům. | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
-> | [Čtenář](#reader) | Umožňuje zobrazit vše, ale ne provádět žádné změny. | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
+> | [Přispěvatel](#contributor) | Udělí úplný přístup ke správě všech prostředků, ale neumožňuje přiřadit role v Azure RBAC. | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | [Vlastník](#owner) | Udělí úplný přístup ke správě všech prostředků, včetně možnosti přiřadit role v Azure RBAC. | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
+> | [Čtenář](#reader) | Zobrazit všechny prostředky, ale neumožňuje provádět žádné změny. | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [Správce uživatelského přístupu](#user-access-administrator) | Umožňuje spravovat přístup uživatelů k prostředkům Azure. | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **Výpočetní služby** |  |  |
 > | [Přispěvatel klasických virtuálních počítačů](#classic-virtual-machine-contributor) | Umožňuje správu klasických virtuálních počítačů, ale ne přístup k nim ani k virtuální síti nebo účtu úložiště, ke kterým se připojuje. | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
@@ -63,7 +63,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Čtenář a přístup k datům](#reader-and-data-access) | Umožňuje zobrazit vše, ale neumožní vám odstranit ani vytvořit účet úložiště nebo obsažený prostředek. Umožní taky přístup pro čtení a zápis ke všem datům, která jsou obsažená v účtu úložiště, prostřednictvím přístupu k klíčům účtu úložiště. | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | [Přispěvatel účtů úložiště](#storage-account-contributor) | Umožňuje správu účtů úložiště. Poskytuje přístup k klíči účtu, který se dá použít pro přístup k datům přes autorizaci pomocí sdíleného klíče. | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | [Role služby operátora klíče účtu úložiště](#storage-account-key-operator-service-role) | Povoluje výpis a opětovné generování přístupových klíčů účtu úložiště. | 81a9662b-bebf-436f-a333-f67b29880f12 |
-> | [Přispěvatel dat objektu BLOB služby Storage](#storage-blob-data-contributor) | Čtení, zápis a odstraňování kontejnerů Azure Storage a objektů BLOB. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | [Přispěvatel dat v objektech blob služby Storage](#storage-blob-data-contributor) | Čtení, zápis a odstraňování kontejnerů Azure Storage a objektů BLOB. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
 > | [Vlastník dat objektu BLOB služby Storage](#storage-blob-data-owner) | Poskytuje úplný přístup k Azure Storage kontejnerů a dat objektů blob, včetně přiřazování řízení přístupu k POSIX. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | [Čtečka dat objektů BLOB úložiště](#storage-blob-data-reader) | Čtení a výpis Azure Storage kontejnerů a objektů BLOB. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | [Delegování objektu BLOB úložiště](#storage-blob-delegator) | Získejte klíč pro delegování uživatelů, který se pak dá použít k vytvoření sdíleného přístupového podpisu pro kontejner nebo objekt blob, který je podepsaný pomocí přihlašovacích údajů Azure AD. Další informace najdete v tématu [Vytvoření SAS pro delegování uživatelů](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas). | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
@@ -207,7 +207,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 
 ### <a name="contributor"></a>Přispěvatel
 
-Umožňuje spravovat vše kromě udělení přístupu k prostředkům. [Další informace](rbac-and-directory-admin-roles.md)
+Udělí úplný přístup ke správě všech prostředků, ale neumožňuje přiřadit role v Azure RBAC. [Další informace](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -229,7 +229,7 @@ Umožňuje spravovat vše kromě udělení přístupu k prostředkům. [Další 
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage everything except access to resources.",
+  "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
   "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
   "permissions": [
@@ -256,7 +256,7 @@ Umožňuje spravovat vše kromě udělení přístupu k prostředkům. [Další 
 
 ### <a name="owner"></a>Vlastník
 
-Umožňuje správu všeho, včetně přístupu k prostředkům. [Další informace](rbac-and-directory-admin-roles.md)
+Udělí úplný přístup ke správě všech prostředků, včetně možnosti přiřadit role v Azure RBAC. [Další informace](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -274,7 +274,7 @@ Umožňuje správu všeho, včetně přístupu k prostředkům. [Další informa
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage everything, including access to resources.",
+  "description": "Grants full access to manage all resources, including the ability to assign roles in Azure RBAC.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
   "name": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
   "permissions": [
@@ -295,7 +295,7 @@ Umožňuje správu všeho, včetně přístupu k prostředkům. [Další informa
 
 ### <a name="reader"></a>Čtenář
 
-Umožňuje zobrazit vše, ale ne provádět žádné změny. [Další informace](rbac-and-directory-admin-roles.md)
+Zobrazit všechny prostředky, ale neumožňuje provádět žádné změny. [Další informace](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -313,7 +313,7 @@ Umožňuje zobrazit vše, ale ne provádět žádné změny. [Další informace]
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you view everything, but not make any changes.",
+  "description": "View all resources, but does not allow you to make any changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
   "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
   "permissions": [
@@ -2094,7 +2094,7 @@ Povoluje výpis a opětovné generování přístupových klíčů účtu úlož
 }
 ```
 
-### <a name="storage-blob-data-contributor"></a>Přispěvatel dat objektu BLOB služby Storage
+### <a name="storage-blob-data-contributor"></a>Přispěvatel dat v objektech blob služby Storage
 
 Čtení, zápis a odstraňování kontejnerů Azure Storage a objektů BLOB. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Další informace](../storage/common/storage-auth-aad-rbac-portal.md)
 
@@ -2776,7 +2776,7 @@ Umožňuje spravovat weby (nikoli webové plány), ale ne přístup k nim.
 }
 ```
 
-## <a name="containers"></a>Kontejnery
+## <a name="containers"></a>Containers
 
 
 ### <a name="acrdelete"></a>AcrDelete
@@ -3026,6 +3026,7 @@ Vypíše akci přihlašovacích údajů správce clusteru. [Další informace](.
 > | --- | --- |
 > | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterAdminCredential/Action | Výpis přihlašovacích údajů clusterAdmin spravovaného clusteru |
 > | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/accessProfiles/listCredential/Action | Získání profilu přístupu spravovaného clusteru podle názvu role pomocí přihlašovacích údajů pro seznam |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Read | Získání spravovaného clusteru |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -3045,7 +3046,8 @@ Vypíše akci přihlašovacích údajů správce clusteru. [Další informace](.
     {
       "actions": [
         "Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action",
-        "Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action"
+        "Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action",
+        "Microsoft.ContainerService/managedClusters/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -3066,6 +3068,7 @@ Vypíše akci přihlašovacích údajů uživatele clusteru. [Další informace]
 > | Akce | Popis |
 > | --- | --- |
 > | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/Action | Výpis přihlašovacích údajů clusterUser spravovaného clusteru |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Read | Získání spravovaného clusteru |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -3084,7 +3087,8 @@ Vypíše akci přihlašovacích údajů uživatele clusteru. [Další informace]
   "permissions": [
     {
       "actions": [
-        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action",
+        "Microsoft.ContainerService/managedClusters/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -6811,6 +6815,8 @@ Může číst všechna data monitorování a upravovat nastavení monitorování
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/activityLogAlerts/* |  |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/AlertRules/* | Vytvoření a Správa klasického upozornění na metriku |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/* | Vytváření a Správa komponent Insights |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/dataCollectionRules/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/dataCollectionRuleAssociations/* |  |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/DiagnosticSettings/* | Vytvoří, aktualizuje nebo přečte nastavení diagnostiky pro Analysis Server |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/EventTypes/* | Vypíše události protokolu aktivit (události správy) v předplatném. Toto oprávnění platí pro programový i portálový přístup k protokolu aktivit. |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/LogDefinitions/* | Toto oprávnění je nezbytné pro uživatele, kteří potřebují přístup k protokolům aktivit prostřednictvím portálu. Vypíše kategorie protokolů v protokolu aktivit. |
@@ -6860,6 +6866,8 @@ Může číst všechna data monitorování a upravovat nastavení monitorování
         "Microsoft.Insights/activityLogAlerts/*",
         "Microsoft.Insights/AlertRules/*",
         "Microsoft.Insights/components/*",
+        "Microsoft.Insights/dataCollectionRules/*",
+        "Microsoft.Insights/dataCollectionRuleAssociations/*",
         "Microsoft.Insights/DiagnosticSettings/*",
         "Microsoft.Insights/eventtypes/*",
         "Microsoft.Insights/LogDefinitions/*",

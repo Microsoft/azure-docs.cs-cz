@@ -8,12 +8,12 @@ ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
-ms.openlocfilehash: a7316bc60ea26968e30bb11ef97d63bddb33895a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3023b478ef7a4aaf6d9239e997bdf63282b56210
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235957"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271188"
 ---
 # <a name="modeling-relationships"></a>Modelování relací
 Tento článek popisuje proces modelování, který vám může pomáhat navrhovat řešení úložiště tabulek v Azure.
@@ -51,7 +51,7 @@ Následující tabulka shrnuje odborníky a nevýhody jednotlivých přístupů 
 <td>
 <ul>
 <li>Entitu oddělení můžete aktualizovat jedinou operací.</li>
-<li>EGT můžete použít k udržení konzistence v případě, že máte požadavek na změnu entity oddělení vždy, když aktualizujete/vložíte/odstraníte entitu zaměstnance. Pokud například udržujete počet zaměstnanců oddělení pro každé oddělení.</li>
+<li>Můžete použít transakci skupiny entit * (EGT) k zachování konzistence v případě, že máte požadavek na změnu entity oddělení vždy, když aktualizujete/vložíte/odstraníte entitu zaměstnance. Pokud například udržujete počet zaměstnanců oddělení pro každé oddělení.</li>
 </ul>
 </td>
 <td>
@@ -92,6 +92,9 @@ Následující tabulka shrnuje odborníky a nevýhody jednotlivých přístupů 
 </td>
 </tr>
 </table>
+
+* Další informace najdete v tématu [transakce skupin entit](table-storage-design.md#entity-group-transactions) .  
+
 
 Jak si zvolíte mezi těmito možnostmi, které jsou nejdůležitější pro odborníky a nevýhody, závisí na konkrétních scénářích aplikací. Například jak často měníte entity oddělení. všechny dotazy zaměstnanců potřebují další informace oddělení; Jak blízko máte omezení škálovatelnosti pro vaše oddíly nebo účet úložiště?  
 

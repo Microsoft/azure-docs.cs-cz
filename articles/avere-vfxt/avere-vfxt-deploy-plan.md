@@ -1,17 +1,17 @@
 ---
 title: Plánování avere vFXT systému – Azure
-description: Vysvětluje plánování před nasazením avere vFXT pro Azure.
+description: Naplánujte avere vFXT pro cluster Azure, který je pro vaše potřeby nejvhodnější. Seznamte se s otázkami, které se dotazují před tím, než budou Azure Marketplace nebo vytváření virtuálních počítačů.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 995ac2776f4197dac1c2ef73fd209833474be5a5
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e5c33144dcebe491757dfafb2879fe51545827ce
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922672"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272786"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Plánování systému Avere vFXT
 

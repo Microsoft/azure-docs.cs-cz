@@ -1,14 +1,14 @@
 ---
 title: Konfigurace Galerie sdílených imagí v Azure DevTest Labs | Microsoft Docs
-description: Přečtěte si, jak nakonfigurovat galerii sdílených imagí v Azure DevTest Labs
+description: Naučte se konfigurovat galerii sdílených imagí v Azure DevTest Labs, která uživatelům umožňuje přístup k obrázkům ze sdíleného umístění při vytváření prostředků testovacího prostředí.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f4a80062a245530c5d15e761a9eb7dc95fee091e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ec08fa741c1b52d3dd1d1e2b4247d3689190020
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483784"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271035"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Konfigurace galerie sdílených imagí v Azure DevTest Labs
 DevTest Labs teď podporuje funkci [Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md) . Umožňuje uživatelům testovacího prostředí přistupovat k obrázkům ze sdíleného umístění při vytváření prostředků testovacího prostředí. Pomůže vám taky vytvářet strukturu a organizaci kolem vašich vlastních imagí virtuálních počítačů spravovaných vaším uživatelem. Funkce Galerie sdílených imagí podporuje:
@@ -25,14 +25,14 @@ Pokud máte velký počet spravovaných imagí, které potřebujete udržovat a 
 > [!NOTE]
 > Další informace o nákladech souvisejících se službou Galerie sdílených imagí najdete v tématu [fakturace pro galerii sdílených imagí](../virtual-machines/windows/shared-image-galleries.md#billing).
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 - Současně můžete k testovacímu prostředí připojit jenom jednu galerii sdílených imagí. Pokud chcete připojit jinou galerii, budete muset odpojit stávající a připojit další. 
 - DevTest Labs aktuálně nepodporuje nahrávání imagí do galerie prostřednictvím testovacího prostředí. 
 - Při vytváření virtuálního počítače pomocí Image Galerie sdílených imagí DevTest Labs vždycky používá nejnovější publikovanou verzi tohoto obrázku. Pokud má však image více verzí, uživatel se může pokusit vytvořit počítač ze starší verze tak, že v průběhu vytváření virtuálního počítače zobrazí kartu Pokročilá nastavení.  
 - I když DevTest Labs automaticky vytvoří nejlepší pokus o zajištění, že Galerie sdílených imagí replikuje image do oblasti, ve které testovací prostředí existuje, není vždy možné. Aby uživatelům nedocházelo k problémům s vytvářením virtuálních počítačů z těchto imagí, zajistěte, aby byly image již replikovány do oblasti testovacího prostředí. "
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V levé navigační nabídce vyberte **všechny služby** .
 1. Ze seznamu vyberte **DevTest Labs**.
 1. V seznamu cvičení vyberte **testovací prostředí**.

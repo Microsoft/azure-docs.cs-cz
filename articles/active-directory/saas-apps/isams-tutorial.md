@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75c9f9065fdb2be86438f1517c07de1ce45f5623
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: aea7e18a7ccfb42a3ef641150d74c0ce54eaee04
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88187211"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272840"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-isams"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím iSAMs
 
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak integrovat iSAMs s Azure Active Directory (Azure 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -84,13 +84,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.isams.cloud/main/sso/saml2`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.isams.cloud/main/sso/saml2`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.isams.cloud/main/sso/saml2/acs`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.isams.cloud/main/sso/saml2/acs`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.isams.cloud/`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<SUBDOMAIN>.isams.cloud/`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory klientů ISAM](mailto:support@isams.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -147,21 +147,15 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     ![Konfigurace](./media/isams-tutorial/configure-isams.png)
 
-    a. Do textového pole **název** zadejte platný název, například`Saml2 Azure`
+    a. Do textového pole **název** zadejte platný název jako `Saml2 Azure` . Toto je název, který se zobrazí na přihlašovací stránce.
 
-    b. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
+    b. Do pole Adresa URL metadat zadejte hodnotu **adresy URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal.
+    
+    c. Stiskněte **importovat**.
+    
+    d. V seznamu **aplikace** v části **povolené klientské aplikace** vyberte všechny aplikace typu ISAM, u kterých chcete, aby se Váš poskytovatel zobrazoval na přihlašovací stránce pro.
 
-    c. Do textového pole **vystavitele** vložte hodnotu **ID entity** , kterou jste zkopírovali z Azure Portal.
-
-    d. V rozevíracím seznamu nastavte **vynucené ověřování** na **false** .
-
-    e. Vyplňte textové pole **příkazu atributu uživatele** platným uživatelským jménem.
-
-    f. Otevřete stažený **certifikát** z Azure Portal do programu Poznámkový blok a vložte obsah do textového pole **otisku x509** .
-
-    například V rozevíracím seznamu nastavte hodnotu **zakázat omezení cílové skupiny** na **false** .
-
-    h. Klikněte na **uložit & zavřít**.
+    e. Klikněte na **uložit & zavřít**.
 
 ### <a name="create-isams-test-user"></a>Vytvořit testovacího uživatele iSAMs
 
@@ -186,9 +180,9 @@ Když kliknete na dlaždici iSAMs na přístupovém panelu, měli byste být aut
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

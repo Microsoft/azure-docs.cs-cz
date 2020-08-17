@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT pro ukázkové projekty Azure
-description: odkazy na ukázky kódu pro avere vFXT
+description: 'Tyto ukázky ukazují klíčové funkce a případy použití pro avere vFXT pro Azure: vykreslování videa, vysoce výkonné výpočetní prostředí, vFXT výkon a nastavení klienta.'
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: b01bcb743e4ffc110f0182e50630baea288f16d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31e32bfc0a2c3279375148bdf3da7d4a4829af1c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76153696"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271069"
 ---
 # <a name="avere-vfxt-demo-projects"></a>Ukázkové projekty avere vFXT
 
@@ -23,7 +23,7 @@ Ukázkové kurzy jsou k dispozici na [GitHubu](https://github.com/Azure/Avere). 
 
 * [Proč používat avere vFXT pro vykreslování?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) – Ukázka, která porovnává dobu vykreslování z úložiště připojeného k síti s clusterem avere vFXT a bez něj
 
-## <a name="high-performance-computing"></a>Vysoce výkonné výpočetní prostředí
+## <a name="high-performance-computing"></a>Vysokovýkonné výpočetní prostředí
 
 * [Osvědčené postupy pro zlepšení času spuštění virtuálního počítače Azure](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) – reprodukovatelný test, který používá avere VFXT pro Azure ke zlepšení časů spouštění při rychlém spuštění tisíců výpočetních klientů
 

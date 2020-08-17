@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 08/12/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 127629cb0102c2736995364db9202cd837d99a17
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 23c3dfc6670c96f44a10b2ad5d5bfeb3ff96382c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214278"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271001"
 ---
 # <a name="known-issues-application-provisioning"></a>Známé problémy: zřizování aplikací
 Známé problémy, které je třeba znát při práci s zřizováním aplikací. Zpětnou vazbu o službě zřizování aplikací na UserVoice najdete v tématu [Azure AD Application zřizování UserVoice](https://aka.ms/appprovisioningfeaturerequest). Úzce sledujeme UserVoice, abychom mohli službu vylepšit. 
@@ -66,9 +66,11 @@ Výrazy mapování atributu můžou mít maximálně 10 000 znaků.
 - Zřizování vnořených skupin se nepodporuje. 
 - Zřizování pro klienty B2C se nepodporuje kvůli velikosti klientů. 
 
+**Interval zřizování je opravený** . [Čas](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) mezi cykly zřizování není v současné době možné konfigurovat. 
+
 **Změny, které se nepohybují z cílové aplikace do Azure AD**
 
-Služba zřizování aplikací neví o změnách provedených v externích aplikacích. Takže se neprovádí žádná akce, která by se vrátila zpět. Služba zřizování aplikací se spoléhá na změny provedené ve službě Azure AD.  
+Služba zřizování aplikací neví o změnách provedených v externích aplikacích. Takže se neprovádí žádná akce, která by se vrátila zpět. Služba zřizování aplikací se spoléhá na změny provedené ve službě Azure AD. 
 
 **Cyklus zřizování pokračuje až do dokončení.**
 

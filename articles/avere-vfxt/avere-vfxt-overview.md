@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT for Azure
-description: Úvod do Avere vFXT for Azure, cloudové vrstvy mezipaměti pro prostředí HPC
+description: Přečtěte si o avere vFXT pro Azure, což je cloudové řešení pro ukládání souborů do mezipaměti pro vysoce výkonné výpočetní úkoly náročné na data.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 7967b58819523173fd66d45eeabeaddc8605a21d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 5095f05b0c9ce9061781c3558ca6c7091ef37aa5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229461"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270952"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Co je Avere vFXT for Azure?
 
@@ -66,7 +66,7 @@ Cluster Avere vFXT ukládá požadované soubory okamžitě do mezipaměti. Opak
 
 Avere vFXT pro Azure používá následující prostředky Azure:
 
-|Komponenta Azure| Resource |
+|Komponenta Azure| Prostředek |
 |----------|-----------|
 |Virtuální počítače|3 nebo více E32s_v3|
 |Úložiště SSD úrovně Premium|200 GB místa na operační systém a 1 až 4 TB místa v mezipaměti na uzel |

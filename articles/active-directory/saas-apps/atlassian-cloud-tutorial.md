@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb3522898a40dc79e8465af813633015568f1c8
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9aafe6af0157ec187e787006d6c04bc1c5c8a8b0
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033734"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271205"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Kurz: integrace Atlassian cloudu s Azure Active Directory
 
@@ -77,6 +77,16 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 ### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
+
+1. Pokud chcete automatizovat konfiguraci v rámci Atlassian cloudu, je potřeba nainstalovat **rozšíření prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
+
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
+
+1. Po přidání rozšíření do prohlížeče klikněte na **nastavit Cloud Atlassian** , který vás přesměruje na cloudovou aplikaci Atlassian. Odtud zadejte přihlašovací údaje správce pro přihlášení ke cloudu Atlassian. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás.
+
+    ![Konfigurace instalace](common/setup-sso.png)
+
+1. Pokud chcete nastavit Cloud Atlassian ručně, přihlaste se k webu cloudové společnosti Atlassian jako správce a proveďte následující kroky.
 
 1. Než začnete, přejdete do instance produktu Atlassian a zkopírujete/uložíte adresu URL instance.
    > [!NOTE]
@@ -177,7 +187,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
       ![image](./media/atlassian-cloud-tutorial/email-address.png)
          
-      b. Zatímco Azure neplní atribut **User. mail** pro uživatele vytvořené v klientech Azure AD bez licencí Office 365 a ukládá e-mail pro tyto uživatele v atributu **userPrincipalName** . Atlassian Cloud očekává, že **NameIdentifier** (**jedinečný uživatelský identifikátor**) se namapuje na e-mail uživatele (**User. userPrincipalName**).  Upravte **zdrojový atribut** a změňte jej na **User. userPrincipalName**. Uložte změny v deklaraci identity.
+      b. Zatímco Azure neplní atribut **User. mail** pro uživatele vytvořené v klientech Azure AD bez licencí Office 365 a ukládá e-mail pro tyto uživatele v atributu **userPrincipalName** . Atlassian Cloud očekává, že **NameIdentifier** (**jedinečný uživatelský identifikátor**) se namapuje na e-mail uživatele (**User. userPrincipalName**).  Upravte **zdrojový atribut**  a změňte jej na **User. userPrincipalName**. Uložte změny v deklaraci identity.
 
       ![image](./media/atlassian-cloud-tutorial/set-email.png)
          

@@ -4,12 +4,12 @@ description: Naučte se přizpůsobit funkci ověřování a autorizace v App Se
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 52213999ae0ec9f6891c8ec10ab65471926e87d2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7ec16b5de6053256fa6565db510ee94776def2c4
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208022"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272310"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené použití ověřování a autorizace v Azure App Service
 
@@ -33,7 +33,7 @@ Nejprve na stránce **ověřování/autorizace** v Azure Portal nakonfigurujte k
 
 V **akci, která se má provést, když se žádost neověřuje**, vyberte možnost **povoluje anonymní žádosti (bez akce)**.
 
-Na přihlašovací stránce nebo v navigačním panelu nebo jakémkoli jiném umístění aplikace přidejte odkaz pro přihlášení ke každému poskytovateli, který jste povolili ( `/.auth/login/<provider>` ). Například:
+Na přihlašovací stránce nebo v navigačním panelu nebo jakémkoli jiném umístění aplikace přidejte odkaz pro přihlášení ke každému poskytovateli, který jste povolili ( `/.auth/login/<provider>` ). Příklad:
 
 ```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -55,7 +55,7 @@ Pokud chcete přesměrovat uživatele po přihlášení na vlastní adresu URL, 
 
 V přihlašování klienta se aplikace přihlásí k poskytovateli ručně a poté odešle ověřovací token k App Service k ověření (viz [tok ověřování](overview-authentication-authorization.md#authentication-flow)). Toto ověření sama o sobě neuděluje přístup k požadovaným prostředkům aplikace, ale úspěšné ověření vám poskytne token relace, který můžete použít pro přístup k prostředkům aplikace. 
 
-Pokud chcete ověřit token poskytovatele, App Service aplikace musí být nejdřív nakonfigurované s požadovaným poskytovatelem. Po načtení tokenu ověřování od poskytovatele za běhu vystavte token `/.auth/login/<provider>` pro ověření. Například: 
+Pokud chcete ověřit token poskytovatele, App Service aplikace musí být nejdřív nakonfigurované s požadovaným poskytovatelem. Po načtení tokenu ověřování od poskytovatele za běhu vystavte token `/.auth/login/<provider>` pro ověření. Příklad: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -86,7 +86,7 @@ V případě úspěšného ověření tokenu poskytovatele vrátí rozhraní API
 }
 ```
 
-Po vytvoření tohoto tokenu relace můžete získat přístup k prostředkům chráněných aplikací přidáním `X-ZUMO-AUTH` hlavičky do požadavků HTTP. Například: 
+Po vytvoření tohoto tokenu relace můžete získat přístup k prostředkům chráněných aplikací přidáním `X-ZUMO-AUTH` hlavičky do požadavků HTTP. Příklad: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -107,7 +107,7 @@ Tady je jednoduchý odkaz na odhlášení z webové stránky:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Ve výchozím nastavení se při úspěšném odhlášení přesměruje klient na adresu URL `/.auth/logout/done` . Stránku přesměrování po odhlášení můžete změnit přidáním `post_logout_redirect_uri` parametru dotazu. Například:
+Ve výchozím nastavení se při úspěšném odhlášení přesměruje klient na adresu URL `/.auth/logout/done` . Stránku přesměrování po odhlášení můžete změnit přidáním `post_logout_redirect_uri` parametru dotazu. Příklad:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -146,7 +146,7 @@ App Service předá do vaší aplikace deklarace identity uživatelů pomocí sp
 
 Kód, který je napsán v libovolném jazyce nebo v rozhraní, může získat informace, které potřebuje z těchto hlaviček. Pro aplikace ASP.NET 4,6 se **ClaimsPrincipal** automaticky nastaví s příslušnými hodnotami. ASP.NET Core ale neposkytuje middleware ověřování, který se integruje s deklaracemi identity uživatelů App Service. Alternativní řešení najdete v tématu [MaximeRouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth).
 
-Vaše aplikace může také získat další podrobnosti o ověřeném uživateli voláním `/.auth/me` . Sady SDK Mobile Apps serveru poskytují pomocné metody pro práci s těmito daty. Další informace najdete v tématu [Jak používat sadu azure Mobile Apps Node.js SDK a jak](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity) [pracovat se serverem back-end .NET sdk pro Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+Pokud je [úložiště tokenů](overview-authentication-authorization.md#token-store) pro vaši aplikaci povoleno, můžete také získat další podrobnosti o ověřeném uživateli voláním `/.auth/me` . Sady SDK Mobile Apps serveru poskytují pomocné metody pro práci s těmito daty. Další informace najdete v tématu [Jak používat sadu azure Mobile Apps Node.js SDK a jak](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity) [pracovat se serverem back-end .NET sdk pro Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
 
 ## <a name="retrieve-tokens-in-app-code"></a>Načtení tokenů v kódu aplikace
 
@@ -161,14 +161,14 @@ Z kódu serveru jsou tokeny specifické pro poskytovatele vloženy do hlavičky 
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
-Z kódu klienta (například mobilní aplikace nebo JavaScript v prohlížeči) odešle `GET` požadavek HTTP na `/.auth/me` . Vrácený kód JSON má tokeny specifické pro poskytovatele.
+Z kódu klienta (jako je mobilní aplikace nebo JavaScript v prohlížeči) odešle `GET` požadavek HTTP `/.auth/me` (musí být povolený[úložiště tokenů](overview-authentication-authorization.md#token-store) ). Vrácený kód JSON má tokeny specifické pro poskytovatele.
 
 > [!NOTE]
 > Přístupové tokeny slouží k přístupu k prostředkům poskytovatele, takže jsou k dispozici pouze v případě, že poskytovatele nakonfigurujete pomocí tajného klíče klienta. Informace o tom, jak získat aktualizační tokeny, najdete v tématu aktualizace přístupových tokenů.
 
 ## <a name="refresh-identity-provider-tokens"></a>Aktualizovat tokeny zprostředkovatele identity
 
-Když vyprší platnost přístupového tokenu poskytovatele (ne [tokenu relace](#extend-session-token-expiration-grace-period)), budete muset uživatele před opětovným použitím tohoto tokenu znovu ověřit. Vypršení platnosti tokenu se můžete vyhnout provedením `GET` volání `/.auth/refresh` koncového bodu aplikace. Při volání App Service automaticky aktualizuje přístupové tokeny v úložišti tokenů pro ověřeného uživatele. Následné žádosti o tokeny pomocí kódu vaší aplikace získají aktualizované tokeny. Aby ale aktualizace tokenu fungovala, musí úložiště tokenů obsahovat [aktualizační tokeny](https://auth0.com/learn/refresh-tokens/) pro vašeho poskytovatele. Způsob získání aktualizačních tokenů je popsán u každého poskytovatele, ale následující seznam je stručným shrnutím:
+Když vyprší platnost přístupového tokenu poskytovatele (ne [tokenu relace](#extend-session-token-expiration-grace-period)), budete muset uživatele před opětovným použitím tohoto tokenu znovu ověřit. Vypršení platnosti tokenu se můžete vyhnout provedením `GET` volání `/.auth/refresh` koncového bodu aplikace. Při volání App Service automaticky aktualizuje přístupové tokeny v [úložišti tokenů](overview-authentication-authorization.md#token-store) pro ověřeného uživatele. Následné žádosti o tokeny pomocí kódu vaší aplikace získají aktualizované tokeny. Aby ale aktualizace tokenu fungovala, musí úložiště tokenů obsahovat [aktualizační tokeny](https://auth0.com/learn/refresh-tokens/) pro vašeho poskytovatele. Způsob získání aktualizačních tokenů je popsán u každého poskytovatele, ale následující seznam je stručným shrnutím:
 
 - **Google**: připojí `access_type=offline` k `/.auth/login/google` volání rozhraní API parametr řetězce dotazu. Pokud používáte sadu Mobile Apps SDK, můžete do jednoho z přetížení přidat parametr `LogicAsync` (viz [aktualizace tokenů Google](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: neposkytuje aktualizační tokeny. Do vypršení platnosti tokenů po dobu 60 dnů (viz [doba ukončení a rozšíření přístupových tokenů Facebook](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
@@ -269,7 +269,7 @@ V případě jakékoli aplikace pro Windows můžete definovat chování webové
 
 ### <a name="identity-provider-level"></a>Úroveň poskytovatele identity
 
-Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. Například:
+Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. Příklad:
 
 - Pro [Azure App Service](configure-authentication-provider-aad.md)můžete [spravovat přístup na podnikové úrovni](../active-directory/manage-apps/what-is-access-management.md) přímo ve službě Azure AD. Pokyny najdete v tématu [Postup odebrání přístupu uživatele k aplikaci](../active-directory/manage-apps/methods-for-removing-user-access.md).
 - Pro [Google](configure-authentication-provider-google.md)jsou projekty Google API, které patří do [organizace](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) , možné nakonfigurovat tak, aby povolovaly přístup jenom uživatelům ve vaší organizaci (viz [Stránka podpory **OAuth 2,0 s nastavením** Google](https://support.google.com/cloud/answer/6158849?hl=en)).

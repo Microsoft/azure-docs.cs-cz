@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT požadavky – Azure
-description: Předpoklady pro avere vFXT pro Azure
+description: Přečtěte si o úlohách, které se mají provést před vytvořením clusteru v avere vFXT pro Azure, včetně práce s předplatnými, kvótami a koncovými body služby úložiště.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 538f3f18e1c8889834b9ee6588b85c9094dfbebe
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: be5c640ef069690c408460b7374aee82c35b3a67
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496708"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272412"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Příprava k vytvoření Avere vFXT
 

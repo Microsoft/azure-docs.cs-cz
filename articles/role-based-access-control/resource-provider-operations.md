@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/29/2020
+ms.date: 08/16/2020
 ms.custom: generated
-ms.openlocfilehash: 753ee8eef1af1dbac9c776ed0410d2143cd71735
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5809a2325b825bde74c7a8859c3a96f94c05b170
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449062"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272039"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -569,7 +569,7 @@ Služba Azure: [Virtual Machines](../virtual-machines/index.yml), [Virtual Machi
 > | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/networkInterfaces/IPConfiguration/Read | Získá vlastnosti jedné nebo všech konfigurací IP síťového rozhraní vytvořeného pomocí sady škálování virtuálního počítače. Konfigurace protokolu IP reprezentují privátní IP adresy. |
 > | Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/networkInterfaces/IPConfiguration/publicIPAddresses/číst | Získá vlastnosti veřejné IP adresy vytvořené pomocí sady škálování virtuálních počítačů. Sada škálování virtuálního počítače může vytvořit maximálně jednu veřejnou IP adresu na IPConfiguration (privátní IP adresa). |
 > | Microsoft. COMPUTE/virtualMachineScaleSets/povolených velikostí/Read | Vypíše dostupné velikosti pro vytvoření nebo aktualizaci virtuálního počítače v sadě škálování virtuálního počítače. |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft. COMPUTE/virtualMachines/Login/Action | Přihlaste se k virtuálnímu počítači jako běžný uživatel. |
 > | Microsoft. COMPUTE/virtualMachines/loginAsAdmin/Action | Přihlášení k virtuálnímu počítači pomocí oprávnění správce Windows nebo kořenového uživatele platformy Linux |
 
@@ -620,12 +620,21 @@ Služba Azure: [Content Delivery Network](../cdn/index.yml)
 > | Microsoft. CDN/CheckNameAvailability/Action |  |
 > | Microsoft. CDN/ValidateProbe/Action |  |
 > | Microsoft. CDN/CheckResourceUsage/Action |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallmanagedrulesets/Read |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallmanagedrulesets/Write |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallmanagedrulesets/DELETE |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallpolicies/Read |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallpolicies/Write |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallpolicies/DELETE |  |
 > | Microsoft. CDN/edgenodes/Read |  |
 > | Microsoft. CDN/edgenodes/Write |  |
 > | Microsoft. CDN/edgenodes/DELETE |  |
 > | Microsoft. CDN/operationresults/Read |  |
 > | Microsoft. CDN/operationresults/Write |  |
 > | Microsoft. CDN/operationresults/DELETE |  |
+> | Microsoft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/Read |  |
+> | Microsoft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/Write |  |
+> | Microsoft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/DELETE |  |
 > | Microsoft. CDN/operationresults/profileresults/Read |  |
 > | Microsoft. CDN/operationresults/profileresults/Write |  |
 > | Microsoft. CDN/operationresults/profileresults/DELETE |  |
@@ -1559,7 +1568,7 @@ Služba Azure: [úložiště](../storage/index.yml)
 > | Microsoft. Storage/storageAccounts/tableServices/Tables/Read |  |
 > | Microsoft. Storage/storageAccounts/tableServices/Tables/Write |  |
 > | Microsoft. Storage/použití/čtení | Vrátí limit a aktuální počet použití pro prostředky v zadaném předplatném. |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Read | Vrátí objekt BLOB nebo seznam objektů BLOB. |
 > | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Write | Vrátí výsledek zápisu objektu BLOB. |
 > | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE | Vrátí výsledek odstranění objektu BLOB. |
@@ -1888,7 +1897,7 @@ Služba Azure: [Azure Maps](../azure-maps/index.yml)
 > | Microsoft. Maps/Accounts/privateAtlases/Read | Získejte soukromou Atlas. |
 > | Microsoft. Maps/Accounts/privateAtlases/DELETE | Odstraňte soukromou Atlas. |
 > | Microsoft. Maps/Operations/Read | Přečtěte si operace poskytovatele. |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft. Maps/Accounts/Services/data/Read | Umožňuje čtení dat pro služby nahrávání dat a soukromou Atlas. |
 > | Microsoft. Maps/Accounts/Services/data/DELETE | Umožňuje odstranit data pro služby nahrávání dat a soukromou Atlas. |
 > | Microsoft. Maps/Accounts/Services/data/Write | Povoluje zápis nebo aktualizaci dat pro služby nahrávání dat a soukromou Atlas. |
@@ -2065,7 +2074,7 @@ Služba Azure: [Služba signalizace Azure](../azure-signalr/index.yml)
 > | Microsoft. SignalRService/Signaler/privateEndpointConnections/Write | Schválení nebo zamítnutí připojení privátního koncového bodu |
 > | Microsoft. SignalRService/Signaler/privateEndpointConnections/Read | Čtení připojení privátního koncového bodu |
 > | Microsoft. SignalRService/Signaler/privateLinkResources/Read | Zobrazit seznam všech prostředků privátního propojení signálem |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft. SignalRService/Signaler/serverConnection/Write | Spusťte připojení k serveru. |
 > | Microsoft. SignalRService/Signaler/Service/accessKey/Action | Získejte dočasnou AccessKey pro podepisování ClientTokens. |
 > | Microsoft. SignalRService/Signaler/Service/clientToken/Action | Získejte ClientToken pro spuštění připojení klienta. |
@@ -2114,6 +2123,7 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/connectionGateways/DELETE | Odstraní bránu připojení. |
 > | Microsoft. Web/connectionGateways/Move/Action | Přesune bránu připojení. |
 > | Microsoft. Web/connectionGateways/JOIN/Action | Připojí se k bráně připojení. |
+> | Microsoft. Web/connectionGateways/přidružit/akce | Přidruží se k bráně připojení. |
 > | Microsoft. Web/connectionGateways/ListStatus/Action | Zobrazí seznam stavů brány připojení. |
 > | Microsoft. Web/Connections/Read | Získá seznam připojení. |
 > | Microsoft. Web/Connections/Write | Vytvoří nebo aktualizuje připojení. |
@@ -2249,6 +2259,11 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/weby/zálohy/obnovení/akce | Obnovte Web Apps zálohy. |
 > | Microsoft. Web/weby/zálohy/odstranit | Odstraňte zálohy Web Apps. |
 > | Microsoft. Web/weby/zálohy/zápis | Aktualizace záloh Web Apps. |
+> | Microsoft. Web/Sites/basicPublishingCredentialsPolicies/Read | Seznam, které metody publikování jsou pro webovou aplikaci povolené |
+> | Microsoft. Web/weby/basicPublishingCredentialsPolicies/FTP/číst | Zjištění, jestli jsou pro webovou aplikaci povolené přihlašovací údaje pro publikování FTP |
+> | Microsoft. Web/weby/basicPublishingCredentialsPolicies/FTP/Write | Aktualizace, jestli jsou pro webovou aplikaci povolené přihlašovací údaje pro publikování FTP |
+> | Microsoft. Web/Sites/basicPublishingCredentialsPolicies/SCM/Read | Získat, jestli jsou pro webovou aplikaci povolené přihlašovací údaje pro publikování SCM |
+> | Microsoft. Web/Sites/basicPublishingCredentialsPolicies/SCM/Write | Aktualizace, jestli jsou pro webovou aplikaci povolené přihlašovací údaje pro publikování SCM |
 > | Microsoft. Web/lokality/config/Read | Získat nastavení konfigurace webové aplikace |
 > | Microsoft. Web/weby/config/list/Action | Vypíše nastavení citlivá na zabezpečení webové aplikace, jako jsou například přihlašovací údaje pro publikování, nastavení aplikace a připojovací řetězce. |
 > | Microsoft. Web/weby/config/Write | Aktualizovat konfigurační nastavení webové aplikace |
@@ -2341,6 +2356,9 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/weby/metriky/číst | Získat Web Apps metriky. |
 > | Microsoft. Web/Sites/metricsdefinitions/Read | Získá definice metrik Web Apps. |
 > | Microsoft. Web/Sites/migratemysql/Read | Získejte Web Apps migrovat MySql. |
+> | Microsoft. Web/Sites/networkConfig/Read | Získat App Service konfiguraci sítě. |
+> | Microsoft. Web/weby/networkConfig/Write | Aktualizujte konfiguraci App Service sítě. |
+> | Microsoft. Web/weby/networkConfig/DELETE | Odstraní konfiguraci App Service sítě. |
 > | Microsoft. Web/Sites/networktraces/operationresults/Read | Získá Web Apps výsledky operace trasování sítě. |
 > | Microsoft. Web/Sites/operationresults/Read | Získá výsledky Web Apps operace. |
 > | Microsoft. Web/weby/operace/čtení | Získat Web Apps operace. |
@@ -2349,6 +2367,10 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/Sites/premieraddons/Read | Získejte Web Apps doplňky Premier. |
 > | Microsoft. Web/weby/premieraddons/Write | Aktualizujte Web Apps doplňky Premier. |
 > | Microsoft. Web/Sites/privateaccess/Read | Získat data kolem povolení přístupu k privátnímu webu a autorizovaných virtuálních sítí, které mají přístup k webu. |
+> | Microsoft. Web/weby/privateEndpointConnections/Write | Schvalte nebo odmítněte připojení privátního koncového bodu. |
+> | Microsoft. Web/Sites/privateEndpointConnections/Read | Získat připojení privátního koncového bodu nebo seznam připojení privátního koncového bodu. |
+> | Microsoft. Web/weby/privateEndpointConnections/DELETE | Odstraní připojení privátního koncového bodu. |
+> | Microsoft. Web/Sites/privateLinkResources/Read | Získat prostředky privátního propojení. |
 > | Microsoft. Web/weby/procesy/číst | Získat Web Apps procesy. |
 > | Microsoft. Web/weby/procesy/moduly/číst | Získá moduly Web Apps procesy. |
 > | Microsoft. Web/weby/procesy/vlákna/číst | Získá vlákna Web Apps procesů. |
@@ -2394,6 +2416,11 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/weby/sloty/zálohy/seznam/akce | Vypíše zálohy Web Appsch slotů. |
 > | Microsoft. Web/weby/sloty/zálohy/obnovení/akce | Obnovte zálohy Web Appsch slotů. |
 > | Microsoft. Web/weby/sloty/zálohy/odstranění | Odstraňte zálohy Web Appsch slotů. |
+> | Microsoft. Web/weby/sloty/basicPublishingCredentialsPolicies/Read | Seznam, která pověření pro publikování jsou povolená pro slot webové aplikace |
+> | Microsoft. Web/weby/sloty/basicPublishingCredentialsPolicies/FTP/číst | Získání přihlašovacích údajů pro publikování FTP pro slot webové aplikace |
+> | Microsoft. Web/weby/sloty/basicPublishingCredentialsPolicies/FTP/Write | Aktualizace, jestli jsou pro slot webové aplikace povolené přihlašovací údaje pro publikování FTP |
+> | Microsoft. Web/Sites/sloty/basicPublishingCredentialsPolicies/SCM/Read | Získat, jestli jsou pro slot webové aplikace povolené přihlašovací údaje pro publikování SCM |
+> | Microsoft. Web/weby/sloty/basicPublishingCredentialsPolicies/SCM/Write | Aktualizace, jestli jsou pro slot webové aplikace povolené přihlašovací údaje pro publikování SCM |
 > | Microsoft. Web/weby/sloty/config/číst | Získat konfigurační nastavení slotu webové aplikace |
 > | Microsoft. Web/weby/sloty/config/list/Action | Vypíše nastavení zabezpečení oblasti webové aplikace, jako je například přihlašovací údaje pro publikování, nastavení aplikace a připojovací řetězce. |
 > | Microsoft. Web/weby/sloty/config/Write | Aktualizovat konfigurační nastavení slotu webové aplikace |
@@ -2514,6 +2541,7 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/staticSites/Write | Vytvořit nový statický web nebo aktualizovat existující |
 > | Microsoft. Web/staticSites/DELETE | Odstraní existující statický Web. |
 > | Microsoft. Web/staticSites/createinvitation/Action | Vytvoří odkaz Invitiation pro uživatele statické lokality pro sadu rolí. |
+> | Microsoft. Web/staticSites/listConfiguredRoles/Action | Zobrazí seznam rolí nakonfigurovaných pro statickou lokalitu. |
 > | Microsoft. Web/staticSites/listfunctionappsettings/Action | Vypsat nastavení aplikace Function App pro statickou lokalitu |
 > | Microsoft. Web/staticSites/detach/Action | Odpojení statické lokality od aktuálně propojeného úložiště |
 > | Microsoft. Web/staticSites/GetUser/Action | Získat informace uživatele pro statickou lokalitu |
@@ -2533,7 +2561,7 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/staticSites/customdomains/ověřit/akce | Ověření, jestli se vlastní doména dá přidat ke statické lokalitě |
 > | Microsoft. Web/staticSites/Functions/Read | Seznam funkcí pro statický Web |
 
-## <a name="containers"></a>Kontejnery
+## <a name="containers"></a>Containers
 
 ### <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
@@ -2696,7 +2724,7 @@ Služba Azure: [Služba Azure Kubernetes (AKS)](../aks/index.yml)
 > | Microsoft. ContainerService/openShiftManagedClusters/Write | Vytvoří nový spravovaný cluster s otevřeným Shift nebo aktualizuje stávající. |
 > | Microsoft. ContainerService/openShiftManagedClusters/DELETE | Odstranění spravovaného clusteru s otevřeným Shift |
 > | Microsoft. ContainerService/Operations/Read | Zobrazí seznam operací dostupných v poskytovateli prostředků Microsoft. ContainerService. |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft. ContainerService/managedClusters/admissionregistration. k8s. IO/initializerconfigurations/Read | Přečte initializerconfigurations |
 > | Microsoft. ContainerService/managedClusters/admissionregistration. k8s. IO/initializerconfigurations/Write | Zapisuje initializerconfigurations |
 > | Microsoft. ContainerService/managedClusters/admissionregistration. k8s. IO/initializerconfigurations/DELETE | Odstraní nebo odstraní prostředek initializerconfigurationscollection. |
@@ -3114,6 +3142,7 @@ Služba Azure: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/Factory/sandboxpipelineruns/Action | Provede dotaz na spuštění kanálu ladění. |
 > | Microsoft. DataFactory/Factory/querytriggers/Action | Spustí dotaz na triggery. |
 > | Microsoft. DataFactory/Factory/getFeatureValue/Action | Získat hodnotu funkce řízení expozice pro konkrétní umístění. |
+> | Microsoft. DataFactory/Factory/queryFeaturesValue/Action | Získat hodnoty funkcí řízení expozice pro seznam funkcí |
 > | Microsoft. DataFactory/Factory/getDataPlaneAccess/Action | Získá přístup k službě ADF (dataplaning Service). |
 > | Microsoft. DataFactory/Factory/getGitHubAccessToken/Action | Získá přístupový token GitHubu. |
 > | Microsoft. DataFactory/Factory/querytriggerruns/Action | Provede dotaz na spuštění triggeru. |
@@ -3133,6 +3162,8 @@ Služba Azure: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/Factory/integrationruntimes/DELETE | Odstraní všechny Integration Runtime. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/Start/Action | Spustí všechny Integration Runtime. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/stop/Action | Zastaví všechny Integration Runtime. |
+> | Microsoft. DataFactory/Factory/integrationruntimes/GetConnectionInfo/Action | Přečte Integration Runtime informace o připojení. |
+> | Microsoft. DataFactory/Factory/integrationruntimes/listauthkeys/Action | Zobrazí seznam ověřovacích klíčů pro všechny Integration Runtime. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/synccredentials/Action | Synchronizuje pověření pro zadaný Integration Runtime. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/upgrade/Action | Upgraduje zadaný Integration Runtime. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/createexpressshirinstalllink/Action | Vytvoří odkaz Expresní instalace pro samoobslužné Integration Runtime. |
@@ -3141,9 +3172,7 @@ Služba Azure: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/Factory/integrationruntimes/linkedIntegrationRuntime/Action | Vytvoří odkaz na propojenou Integration Runtime v zadaném sdíleném Integration Runtime. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/getObjectMetadata/Action | Získá metadata SSIS Integration Runtime pro zadaný Integration Runtime. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/refreshObjectMetadata/Action | Aktualizuje SSIS metadata Integration Runtime pro zadaný Integration Runtime. |
-> | Microsoft. DataFactory/Factory/integrationruntimes/GetConnectionInfo/Read | Přečte Integration Runtime informace o připojení. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/GetStatus/Read | Přečte stav Integration Runtime. |
-> | Microsoft. DataFactory/Factory/integrationruntimes/listauthkeys/Read | Zobrazí seznam ověřovacích klíčů pro všechny Integration Runtime. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/monitoringdata/Read | Načte data monitorování pro všechny Integration Runtime. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/Nodes/Read | Přečte uzel pro zadaný Integration Runtime. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/Nodes/DELETE | Odstraní uzel pro zadaný Integration Runtime. |
@@ -3187,6 +3216,8 @@ Služba Azure: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/Factory/Triggers/Start/Action | Spustí jakoukoli aktivační událost. |
 > | Microsoft. DataFactory/Factory/Triggers/stop/Action | Zastaví všechny triggery. |
 > | Microsoft. DataFactory/Factory/Triggers/triggerruns/Read | Přečte spuštění triggeru. |
+> | Microsoft. DataFactory/Factory/Triggers/triggerruns/Cancel/Action | Zrušte spuštění aktivační události s daným ID spuštění triggeru. |
+> | Microsoft. DataFactory/Factory/Triggers/triggerruns/znovu spustit/akce | Spusťte Trigger znovu s daným ID spuštění triggeru. |
 > | Microsoft. DataFactory/Locations/configureFactoryRepo/Action | Nakonfiguruje úložiště pro objekt pro vytváření. |
 > | Microsoft. DataFactory/Locations/getFeatureValue/Action | Získat hodnotu funkce řízení expozice pro konkrétní umístění. |
 > | Microsoft. DataFactory/Locations/getFeatureValue/Read | Přečte hodnotu funkce řízení expozice pro konkrétní umístění. |
@@ -4368,7 +4399,7 @@ Služba Azure: [Event Hubs](../event-hubs/index.yml)
 > | Microsoft. EventHub/Operations/Read | Získat operace |
 > | Microsoft. EventHub/SKU/číst | Získá seznam popisů prostředků SKU. |
 > | Microsoft. EventHub/SKU/Regions/Read | Získá seznam popisů prostředků SkuRegions. |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft. EventHub/obory názvů/zprávy/odeslání/akce | Odesílání zpráv |
 > | Microsoft. EventHub/obory názvů/zprávy/přijmout/akce | Příjem zpráv |
 > | Microsoft. EventHub/obory názvů/schemas/Read | Načtení schémat |
@@ -4551,7 +4582,7 @@ Služba Azure: [Služba Azure blockchain](../blockchain/workbench/index.yml)
 > | Microsoft. blockchain/Locations/checkNameAvailability/Action | Kontroluje, zda je název prostředku platný a není používán. |
 > | Microsoft. blockchain/Locations/blockchainMemberOperationResults/Read | Získá výsledky operace členů blockchain. |
 > | Microsoft. blockchain/Operations/Read | Vypíše všechny operace v poskytovateli prostředků Microsoft blockchain. |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft. blockchain/blockchainMembers/transactionNodes/Connect/Action | Připojí se k uzlu transakce člena blockchain. |
 
 ## <a name="ai--machine-learning"></a>AI a strojové učení
@@ -4630,7 +4661,7 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/Locations/checkSkuAvailability/Action | Přečte dostupné SKU pro předplatné. |
 > | Microsoft. Cognitiveservices Account/Locations/operationresults/Read | Přečtěte si stav asynchronní operace. |
 > | Microsoft. Cognitiveservices Account/Operations/Read | Vypsat všechny dostupné operace |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft. Cognitiveservices Account/Accounts/AnomalyDetector/časové řady/celého/Detect/Action | Tato operace generuje model pomocí celé řady, přičemž každý bod je zjištěn stejným modelem.<br>V této metodě body před a po určitém bodu se používají k určení, zda se jedná o anomálii.<br>Celá detekce může uživateli poskytnout celkový stav časových řad. |
 > | Microsoft. Cognitiveservices Account/Accounts/AnomalyDetector/časové řady/Last/Detect/Action | Tato operace vygeneruje model pomocí bodů před poslední. S touto metodou se k určení, zda je cílový bod anomálií, používají pouze historické body. Nejnovější body, které se zjišťují, se shodují se scénářem monitorování obchodních metrik v reálném čase. |
 > | Microsoft. Cognitiveservices Account/Accounts/Automatický návrh/hledání/akce | Tato operace poskytuje návrhy na daný dotaz nebo částečný dotaz. |
@@ -4881,12 +4912,29 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/Accounts/Face/Snapshot/Write | Aktualizuje vlastnosti snímku. |
 > | Microsoft. Cognitiveservices Account/účty/Face/snímky/číst | Vypíše všechny dostupné snímky uživatele s informacemi. * |
 > | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/vlak/Action | Vytvoření a výuka vlastního modelu.<br>Požadavek na vlak musí zahrnovat zdrojový parametr, který je externě přístupný Azure Storage identifikátor URI kontejneru objektů BLOB (nejlépe pro identifikátor URI sdíleného přístupového podpisu) nebo platnou cestou ke složce dat na místně připojené jednotce.<br>Pokud jsou zadány místní cesty, musí následovat po formátu cesty Linux/UNIX a musí představovat absolutní cestu, která je kořenem pro vstupní konfiguraci připojení. |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/Action | Vytvoření a výuka vlastního modelu.<br>Požadavek musí zahrnovat zdrojový parametr, který je externě přístupným identifikátorem URI kontejneru objektů BLOB služby Azure Storage (nejlépe pro identifikátor URI sdíleného přístupového podpisu) nebo platnou cestou ke složce dat na místně připojené jednotce.<br>Pokud jsou zadány místní cesty, musí následovat po formátu cesty Linux/UNIX a představovat absolutní cestu, která je kořenem hodnoty nastavení konfigurace vstupního připojení, např. Pokud je hodnota nastavení konfigurace {Mounts: Input} nastavena na hodnotu "/Input", bude platná zdrojová cesta "/Input/contosodataset".<br>Očekává se, že všechna data, která mají být vyškolená, budou ve zdrojové složce nebo podsložkách pod ní.<br>Modely jsou vyškolené pomocí dokumentů, které jsou v následujícím typu obsahu: Application/PDF, image/jpeg, image/png, image/TIFF.<br>Jiný typ obsahu je ignorován. |
 > | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/analyzovat/Action | Extrahuje páry klíč-hodnota z daného dokumentu. Vstupní dokument musí být jednoho z podporovaných typů obsahu – "Application/PDF", "image/jpeg" nebo "image/png". Ve formátu JSON se vrátí odpověď na úspěch. |
 > | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/DELETE | Odstraňte artefakty modelu. |
-> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/Read | Získejte informace o modelu. Získat informace o všech proškolených vlastních modelech * |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/Read | Získejte informace o modelu. |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/copyauthorization/Action | Vygenerujte datovou část autorizace pro zkopírování modelu v prostředku rozpoznávání cílového formuláře. |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/Copy/Action | Zkopírujte model rozpoznávání vlastního formuláře z jednoho předplatného do jiného.<br>Zahajte proces získáním `modelId` tokenu z cílového koncového bodu pomocí tohoto rozhraní API s `source=false` řetězcem dotazu.<br>Pak předejte `modelId` odkaz v těle žádosti spolu s dalšími informacemi o cílovém prostředku. |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/analyzovat/Action | Extrahuje páry klíč-hodnota, tabulky a sémantické hodnoty z daného dokumentu.<br>Vstupní dokument musí být jednoho z podporovaných typů obsahu – "Application/PDF", "image/jpeg", "image/png" nebo "image/TIFF".<br>Alternativně můžete pomocí typu Application/JSON zadat umístění adresy URL dokumentu, který se má analyzovat. |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/Copy/Action | Zkopírujte model rozpoznávání vlastního formuláře do prostředku pro rozpoznávání cílového formuláře. Před vyvoláním této operace je třeba nejprve získat autorizaci pro kopírování do  |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/DELETE | Označte model pro odstranění. Artefakty modelu budou trvale odebrány během 48 hodin. |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/copyauthorization/Action | Vygeneruje datovou část autorizace pro operaci kopírování modelu. Tato operace se volá na koncový bod prostředku pro rozpoznávání cílového formuláře.  |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/Read | Získejte podrobné informace o vlastním modelu. Získat informace o všech vlastních modelech |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/analyzeresults/Read | Získejte aktuální stav a výsledek operace formuláře analýzy. |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/analyzeresults/Read | Získejte aktuální stav a výsledek operace formuláře analýzy. |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/copyresults/Read | Získejte aktuální stav a výsledek operace kopírování modelu vlastního formuláře. |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/copyresults/Read | Získejte aktuální stav a výsledek operace kopírování modelu vlastního formuláře. |
 > | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/Custom/Models/Keys/Read | Načte klíče pro model. |
-> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/předdefinovaná/Receipt/asyncbatchanalyze/Action | Extrahuje text pole a sémantické hodnoty z daného příjmového dokumentu. Vstupní dokument obrázku musí být jedním z podporovaných typů obsahu – JPEG, PNG, BMP, PDF nebo TIFF. Odpověď na úspěch je JSON obsahující pole s názvem operace-Location, které obsahuje adresu URL pro operaci získat výsledek příjemky pro asynchronní načtení výsledků. |
-> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/předdefinovaná/Receipt/Operations/Action | Umožňuje zadat dotaz na stav a načíst výsledek operace analýzy příjmu. Adresu URL tohoto rozhraní lze získat z hlavičky "umístění operace" v odpovědi na příjemku analýzy. |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/layout/Analyze/Action | Extrahuje z daného dokumentu informace o textu a rozložení.<br>Vstupní dokument musí být jednoho z podporovaných typů obsahu – "Application/PDF", "image/jpeg", "image/png" nebo "image/TIFF".<br>Alternativně můžete pomocí typu Application/JSON zadat umístění adresy URL dokumentu, který se má analyzovat. |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/layout/analyzeresults/Read | Sledovat průběh a získat výsledek operace analyzovat rozložení |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/předdefinovaná/businesscard/analyzovat/Action | Extrahuje text pole a sémantické hodnoty z daného dokumentu na vizitce.  |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/předdefinovaná/businesscard/analyzeresults/Read | Umožňuje zadat dotaz na stav a načíst výsledek operace analyzovat obchodní karty. Adresu URL tohoto rozhraní lze získat z hlavičky "umístění operace" v odpovědi na kartě analyzovat obchodní kartu. |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/předdefinovaná/Receipt/asyncbatchanalyze/Action | Extrahuje text pole a sémantické hodnoty z daného příjmového dokumentu. Vstupní dokument musí být jednoho z podporovaných. |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/předdefinovaná/Receipt/analyzeresults/Read | Umožňuje zadat dotaz na stav a načíst výsledek operace analýzy příjmu. Adresu URL tohoto rozhraní lze získat z hlavičky "umístění operace" v odpovědi na příjemku analýzy. |
+> | Microsoft. Cognitiveservices Account/Accounts/FormRecognizer/předdefinovaná/Receipt/Operations/Read | Umožňuje zadat dotaz na stav a načíst výsledek operace analýzy příjmu. Adresu URL tohoto rozhraní lze získat z hlavičky "umístění operace" v odpovědi na příjemku analýzy. |
 > | Microsoft. Cognitiveservices Account/Accounts/ImageSearch/Details/Action | Vrátí přehledy o obrázku, jako jsou například webové stránky, které obsahují obrázek. |
 > | Microsoft. Cognitiveservices Account/Accounts/ImageSearch/Search/Action | Získání relevantních imagí pro daný dotaz. |
 > | Microsoft. Cognitiveservices Account/Accounts/ImageSearch/LINTREND/Action | Získat aktuálně trendy obrázků. |
@@ -5322,7 +5370,7 @@ Služba Azure: [prostorové kotvy Azure](../spatial-anchors/index.yml)
 > | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro Microsoft. MixedReality/spatialAnchorsAccounts. |
 > | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro Microsoft. MixedReality/spatialAnchorsAccounts. |
 > | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. Insights/metricDefinitions/Read | Získá dostupné metriky pro Microsoft. MixedReality/spatialAnchorsAccounts. |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft. MixedReality/ObjectUnderstandingAccounts/ingesta/akce | Vytvořit úlohu ingestování modelu |
 > | Microsoft. MixedReality/ObjectUnderstandingAccounts/ingestovat/číst | Získat stav úlohy příjmu modelu |
 > | Microsoft. MixedReality/RemoteRenderingAccounts/Convert/Action | Spustit převod assetu |
@@ -5595,7 +5643,7 @@ Služba Azure: jádro
 > | Microsoft. AppConfiguration/configurationStores/Providers/Microsoft. Insights/metricDefinitions/Read | Načte všechny definice metriky pro konfiguraci aplikací Microsoft. |
 > | Microsoft. AppConfiguration/Locations/operationsStatus/Read | Získá stav operace. |
 > | Microsoft. AppConfiguration/Operations/Read | Zobrazí seznam všech operací, které aplikace Microsoft App Configuration podporuje. |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft. AppConfiguration/configurationStores/hodnoty/čtení | Přečte klíčovou hodnotu z úložiště konfigurace. |
 > | Microsoft. AppConfiguration/configurationStores/hodnoty/zápis | Vytvoří nebo aktualizuje klíčovou hodnotu v úložišti konfigurace. |
 > | Microsoft. AppConfiguration/configurationStores/hodnoty a/DELETE | Odstraní existující klíč-hodnota z úložiště konfigurace. |
@@ -5659,6 +5707,7 @@ Služba Azure: [Azure Stack Edge](../databox-online/azure-stack-edge-overview.md
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Orders/Read | Zobrazí nebo získá objednávky. |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Orders/Write | Vytvoří nebo aktualizuje objednávky. |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Orders/DELETE | Odstraní objednávky. |
+> | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Orders/listDCAccessCode/Action | ArmApiDesc_action_listDCAccessCode_orders |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Orders/operationResults/Read | Zobrazí nebo získá výsledek operace. |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/role/číst | Zobrazí nebo získá role. |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/role/číst | Zobrazí nebo získá role. |
@@ -5700,7 +5749,6 @@ Služba Azure: [Azure Stack Edge](../databox-online/azure-stack-edge-overview.md
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Users/Write | Vytvoří nebo aktualizuje uživatele sdílené složky. |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Users/DELETE | Odstraní uživatele sdílené složky. |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Users/operationResults/Read | Zobrazí nebo získá výsledek operace. |
-> | Microsoft. DataBoxEdge/Operations/Read | Zobrazí nebo získá operace. |
 > | Microsoft. DataBoxEdge/SKU/číst | Zobrazí nebo získá SKU. |
 
 ### <a name="microsoftdatacatalog"></a>Microsoft. datacatalog
@@ -5763,6 +5811,13 @@ Služba Azure: [Event Grid](../event-grid/index.yml)
 > | Microsoft. EventGrid/operationResults/Read | Přečtěte si výsledek operace. |
 > | Microsoft. EventGrid/Operations/Read | Vypíše EventGrid operace. |
 > | Microsoft. EventGrid/operationsStatus/Read | Přečtěte si stav operace. |
+> | Microsoft. EventGrid/partnerNamespaces/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro obory názvů partnerů. |
+> | Microsoft. EventGrid/partnerNamespaces/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro obory názvů partnerů. |
+> | Microsoft. EventGrid/partnerNamespaces/Providers/Microsoft. Insights/logDefinitions/Read | Povolit přístup k diagnostickým protokolům |
+> | Microsoft. EventGrid/partnerNamespaces/Providers/Microsoft. Insights/metricDefinitions/Read | Získá dostupné metriky pro obory názvů partnerů. |
+> | Microsoft. EventGrid/partnerTopics/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro témata partnerů. |
+> | Microsoft. EventGrid/partnerTopics/Providers/Microsoft. Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky pro témata partnerů. |
+> | Microsoft. EventGrid/partnerTopics/Providers/Microsoft. Insights/logDefinitions/Read | Povolit přístup k diagnostickým protokolům |
 > | Microsoft. EventGrid/partnerTopics/Providers/Microsoft. Insights/metricDefinitions/Read | Získá dostupné metriky pro témata partnerů. |
 > | Microsoft. EventGrid/SKU/číst | Číst dostupné definice SKU pro prostředky služby Event Grid |
 > | Microsoft. EventGrid/systemTopics/Providers/Microsoft. Insights/diagnosticSettings/Read | Získá nastavení diagnostiky pro systémová témata. |
@@ -6057,7 +6112,7 @@ Služba Azure: [Service Bus](../service-bus/index.md)
 > | Microsoft. ServiceBus/Operations/Read | Získat operace |
 > | Microsoft. ServiceBus/SKU/číst | Získá seznam popisů prostředků SKU. |
 > | Microsoft. ServiceBus/SKU/Regions/Read | Získá seznam popisů prostředků SkuRegions. |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft. ServiceBus/obory názvů/zprávy/odeslání/akce | Odesílání zpráv |
 > | Microsoft. ServiceBus/obory názvů/zprávy/přijmout/akce | Příjem zpráv |
 
@@ -6254,7 +6309,7 @@ Služba Azure: [Key Vault](../key-vault/index.yml)
 > | Trezory Microsoft. a trezory/eventGridFilters/DELETE | Upozorní Microsoft. webtrezor, že se odstraňuje EventGrid odběr pro Key Vault. |
 > | Trezor Microsoft. a trezory/tajné klíče/čtení | Umožňuje zobrazit vlastnosti tajného klíče, ale ne jeho hodnotu. |
 > | Trezor Microsoft. a trezory/tajné klíče/zápis | Vytvoří nový tajný klíč nebo aktualizuje hodnotu existujícího tajného kódu. |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Trezory Microsoft. a trezory/certificatecas/DELETE | Odstranit vystavitele certifikátu |
 > | Trezory Microsoft. a trezory/certificatecas/Read | Přečíst Vystavitel certifikátu |
 > | Trezory Microsoft. a trezory/certificatecas/Write | Zápis vystavitele certifikátu |
@@ -6339,6 +6394,10 @@ Služba Azure: [Security Center](../security-center/index.yml)
 > | Microsoft. Security/iotSecuritySolutions/DELETE | Odstraní řešení zabezpečení IoT. |
 > | Microsoft. Security/iotSecuritySolutions/Read | Získá řešení zabezpečení IoT. |
 > | Microsoft. Security/iotSecuritySolutions/analyticsModels/Read | Získá model IoT Security Analytics. |
+> | Microsoft. Security/iotSecuritySolutions/analyticsModels/Read | Získá typy výstrah IoT. |
+> | Microsoft. Security/iotSecuritySolutions/analyticsModels/Read | Získá výstrahy IoT. |
+> | Microsoft. Security/iotSecuritySolutions/analyticsModels/Read | Získá typy doporučení IoT. |
+> | Microsoft. Security/iotSecuritySolutions/analyticsModels/Read | Získá doporučení IoT. |
 > | Microsoft. Security/iotSecuritySolutions/analyticsModels/aggregatedAlerts/Read | Načte agregovaná upozornění IoT. |
 > | Microsoft. Security/iotSecuritySolutions/analyticsModels/aggregatedAlerts/zavřít/akce | Vynechává agregované výstrahy IoT. |
 > | Microsoft. Security/iotSecuritySolutions/analyticsModels/aggregatedRecommendations/Read | Získá agregovaná doporučení IoT. |
@@ -6599,6 +6658,7 @@ Služba Azure: [Azure Lab Services](../lab-services/index.yml)
 > | Microsoft. LabServices/labAccounts/Labs/AddUsers/Action | Přidání uživatelů do testovacího prostředí |
 > | Microsoft. LabServices/labAccounts/Labs/SendEmail/Action | Odeslání e-mailu s odkazem na registraci do testovacího prostředí |
 > | Microsoft. LabServices/labAccounts/Labs/GetLabPricingAndAvailability/Action | Získejte ceny na jednotku testovacího prostředí pro toto testovací prostředí a dostupnost, která indikuje, jestli se může toto testovací prostředí škálovat. |
+> | Microsoft. LabServices/labAccounts/Labs/SyncUserList/Action | Synchronizuje změny ze skupiny AAD až po userlist. |
 > | Microsoft. LabServices/labAccounts/Labs/environmentSettings/DELETE | Odstranit nastavení prostředí. |
 > | Microsoft. LabServices/labAccounts/Labs/environmentSettings/Read | Čtení nastavení prostředí. |
 > | Microsoft. LabServices/labAccounts/Labs/environmentSettings/Write | Přidat nebo upravit nastavení prostředí |
@@ -6668,6 +6728,8 @@ Služba Azure: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. migruje/assessmentprojects/DELETE | Odstraní projekt vyhodnocení. |
 > | Microsoft. migruje/assessmentprojects/assessmentOptions/Read | Získá možnosti posouzení, které jsou k dispozici v daném umístění. |
 > | Microsoft. migrace/assessmentprojects/posouzení/čtení | Vypíše posouzení v rámci projektu. |
+> | Microsoft. migruje/assessmentprojects/assessmentsSummary/Read | Získá Souhrn posouzení, který je k dispozici v daném umístění. |
+> | Microsoft. migruje/assessmentprojects/avsAssessmentOptions/Read | Získá možnosti vyhodnocení pro funkci AVS, které jsou k dispozici v daném umístění. |
 > | Microsoft. migruje/assessmentprojects/Groups/Read | Získá vlastnosti skupiny. |
 > | Microsoft. migruje/assessmentprojects/Groups/Write | Vytvoří novou skupinu nebo aktualizuje stávající skupinu. |
 > | Microsoft. migruje/assessmentprojects/Groups/DELETE | Odstraní skupinu. |
@@ -6677,6 +6739,11 @@ Služba Azure: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. migruje/assessmentprojects/skupiny/posouzení/odstranění | Odstraní posouzení. |
 > | Microsoft. migruje/assessmentprojects/skupiny/posouzení/DownloadUrl/Action | Stáhne adresu URL sestavy posouzení. |
 > | Microsoft. migruje/assessmentprojects/Groups/Assessments/assessedmachines/Read | Získá vlastnosti vyhodnoceného počítače. |
+> | Microsoft. migruje/assessmentprojects/Groups/avsAssessments/Read | Získá vlastnosti posouzení služby AVS. |
+> | Microsoft. migruje/assessmentprojects/Groups/avsAssessments/Write | Vytvoří nové vyhodnocení pro funkci AVS nebo aktualizuje stávající hodnocení služby AVS. |
+> | Microsoft. migruje/assessmentprojects/Groups/avsAssessments/DELETE | Odstraní posouzení služby AVS. |
+> | Microsoft. migruje/assessmentprojects/Groups/avsAssessments/DownloadUrl/Action | Stáhne adresu URL zprávy o posouzení služby AVS. |
+> | Microsoft. migruje/assessmentprojects/Groups/avsAssessments/avsassessedmachines/Read | Získá vlastnosti vyhodnoceného počítače s neplatnou verzí. |
 > | Microsoft. migruje/assessmentprojects/hypervcollectors/Read | Získá vlastnosti kolekce HyperV. |
 > | Microsoft. migruje/assessmentprojects/hypervcollectors/Write | Vytvoří nový kolektor HyperV nebo aktualizuje existující kolektor HyperV. |
 > | Microsoft. migruje/assessmentprojects/hypervcollectors/DELETE | Odstraní kolektor HyperV. |
@@ -6684,6 +6751,14 @@ Služba Azure: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. migruje/assessmentprojects/importcollectors/Write | Vytvoří nový kolektor importu nebo aktualizuje existující kolektor importu. |
 > | Microsoft. migruje/assessmentprojects/importcollectors/DELETE | Odstraní kolektor importu. |
 > | Microsoft. migruje/assessmentprojects/Machines/Read | Získá vlastnosti počítače. |
+> | Microsoft. migruje/assessmentprojects/privateEndpointConnectionProxies/Read | Získat proxy připojení privátního koncového bodu |
+> | Microsoft. migruje/assessmentprojects/privateEndpointConnectionProxies/ověřit/akce | Ověření proxy připojení privátního koncového bodu |
+> | Microsoft. migruje/assessmentprojects/privateEndpointConnectionProxies/Write | Vytvořit nebo aktualizovat proxy připojení privátního koncového bodu |
+> | Microsoft. migruje/assessmentprojects/privateEndpointConnectionProxies/DELETE | Odstranění proxy serveru připojení privátního koncového bodu |
+> | Microsoft. migruje/assessmentprojects/privateEndpointConnections/Read | Získat připojení privátního koncového bodu |
+> | Microsoft. migruje/assessmentprojects/privateEndpointConnections/Write | Aktualizace připojení privátního koncového bodu |
+> | Microsoft. migruje/assessmentprojects/privateEndpointConnections/DELETE | Odstranění připojení privátního koncového bodu |
+> | Microsoft. migruje/assessmentprojects/privateLinkResources/Read | Získat prostředek privátního odkazu |
 > | Microsoft. migruje/assessmentprojects/servercollectors/Read | Získá vlastnosti kolekce serverů. |
 > | Microsoft. migruje/assessmentprojects/servercollectors/Write | Vytvoří nové kolektor serverů nebo aktualizuje existující kolektor serverů. |
 > | Microsoft. migruje/assessmentprojects/vmwarecollectors/Read | Získá vlastnosti kolekce VMware. |
@@ -6696,16 +6771,28 @@ Služba Azure: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. migruje/migrateprojects/DELETE | Odstraní projekt migrace. |
 > | Microsoft. migruje/migrateprojects/registerTool/Action | Registruje nástroj do projektu migrace. |
 > | Microsoft. migruje/migrateprojects/RefreshSummary/Action | Aktualizuje Souhrn projektu migrace. |
+> | Microsoft. migruje/migrateprojects/registrationDetails/Action | Poskytuje informace o registraci nástroje. |
 > | Microsoft. migruje/migrateprojects/DatabaseInstances/Read | Získá vlastnosti instance databáze. |
 > | Microsoft. migrace/migrateprojects/databáze/čtení | Získá vlastnosti databáze. |
 > | Microsoft. migruje/migrateprojects/Machines/Read | Získá vlastnosti počítače. |
 > | Microsoft. migruje/migrateprojects/MigrateEvents/Read | Získá vlastnosti události migrace. |
 > | Microsoft. migruje/migrateprojects/MigrateEvents/DELETE | Odstraní událost migrace. |
+> | Microsoft. migruje/migrateprojects/privateEndpointConnectionProxies/Read | Získat proxy připojení privátního koncového bodu |
+> | Microsoft. migruje/migrateprojects/privateEndpointConnectionProxies/ověřit/akce | Ověření proxy připojení privátního koncového bodu |
+> | Microsoft. migruje/migrateprojects/privateEndpointConnectionProxies/Write | Vytvořit nebo aktualizovat proxy připojení privátního koncového bodu |
+> | Microsoft. migruje/migrateprojects/privateEndpointConnectionProxies/DELETE | Odstranění proxy serveru připojení privátního koncového bodu |
+> | Microsoft. migruje/migrateprojects/privateEndpointConnections/Read | Získat připojení privátního koncového bodu |
+> | Microsoft. migruje/migrateprojects/privateEndpointConnections/Write | Aktualizace připojení privátního koncového bodu |
+> | Microsoft. migruje/migrateprojects/privateEndpointConnections/DELETE | Odstranění připojení privátního koncového bodu |
+> | Microsoft. migruje/migrateprojects/privateLinkResources/Read | Získat prostředek privátního odkazu |
 > | Microsoft. migruje/migrateprojects/Solutions/Read | Získá vlastnosti migrace projektového řešení. |
 > | Microsoft. migruje/migrateprojects/Solutions/Write | Vytvoří nové řešení migrace projektu nebo aktualizuje existující řešení migrace projektu. |
 > | Microsoft. migruje/migrateprojects/Solutions/DELETE | Odstraní řešení migrace projektu. |
 > | Microsoft. migruje/migrateprojects/Solutions/GetConfig/Action | Získá konfiguraci řešení migrace projektu. |
 > | Microsoft. migruje/migrateprojects/Solutions/cleanupData/Action | Vyčištění dat řešení migrace projektů |
+> | Microsoft. migruje/migrateprojects/VirtualDesktopUsers/Read | Získá vlastnosti uživatele virtuálního počítače. |
+> | Microsoft. migruje/migrateprojects/webservers/Read | Získá vlastnosti webového serveru. |
+> | Microsoft. migruje/migrateprojects/websites/Read | Získá vlastnosti webu. |
 > | Microsoft. migrace/operace/čtení | Zobrazí seznam operací, které jsou k dispozici v Microsoft. migrace prostředků Provider |
 > | Microsoft. migrace/projekty/číst | Získá vlastnosti projektu. |
 > | Microsoft. migrace/projekty/zapisovat | Vytvoří nový projekt nebo aktualizuje existující projekt. |
@@ -7318,7 +7405,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. Insights/sešity/zápis | Vytvoří nebo aktualizuje sešit. |
 > | Microsoft. Insights/sešity/odstranit | Odstranění sešitu |
 > | Microsoft. Insights/sešity/číst | Přečíst sešit |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft. Insights/DataCollectionRules/data/Write | Odeslat data do pravidla shromažďování dat |
 > | Microsoft. Insights/metriky/Write | Zapsat metriky |
 
@@ -7432,6 +7519,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppPlatformLogsforSpring/číst | Čtení dat z tabulky AppPlatformLogsforSpring |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppPlatformSystemLogs/číst | Čtení dat z tabulky AppPlatformSystemLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppRequests/číst | Čtení dat z tabulky AppRequests |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppServiceAntivirusScanLogs/číst | Čtení dat z tabulky AppServiceAntivirusScanLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppServiceAppLogs/číst | Čtení dat z tabulky AppServiceAppLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppServiceAuditLogs/číst | Čtení dat z tabulky AppServiceAuditLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppServiceConsoleLogs/číst | Čtení dat z tabulky AppServiceConsoleLogs |
@@ -7512,6 +7600,35 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ExchangeOnlineAssessmentRecommendation/číst | Čtení dat z tabulky ExchangeOnlineAssessmentRecommendation |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/FailedIngestion/číst | Čtení dat z tabulky FailedIngestion |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/FunctionAppLogs/číst | Čtení dat z tabulky FunctionAppLogs |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightAmbariClusterAlerts/číst | Čtení dat z tabulky HDInsightAmbariClusterAlerts |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightAmbariSystemMetrics/číst | Čtení dat z tabulky HDInsightAmbariSystemMetrics |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightGatewayAuditLogs/číst | Čtení dat z tabulky HDInsightGatewayAuditLogs |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightHadoopAndYarnLogs/číst | Čtení dat z tabulky HDInsightHadoopAndYarnLogs |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightHadoopAndYarnMetrics/číst | Čtení dat z tabulky HDInsightHadoopAndYarnMetrics |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightHBaseLogs/číst | Čtení dat z tabulky HDInsightHBaseLogs |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightHBaseMetrics/číst | Čtení dat z tabulky HDInsightHBaseMetrics |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightHiveAndLLAPLogs/číst | Čtení dat z tabulky HDInsightHiveAndLLAPLogs |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightHiveAndLLAPMetrics/číst | Čtení dat z tabulky HDInsightHiveAndLLAPMetrics |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightJupyterNotebookEvents/číst | Čtení dat z tabulky HDInsightJupyterNotebookEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightKafkaLogs/číst | Čtení dat z tabulky HDInsightKafkaLogs |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightKafkaMetrics/číst | Čtení dat z tabulky HDInsightKafkaMetrics |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightOozieLogs/číst | Čtení dat z tabulky HDInsightOozieLogs |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightRangerAuditLogs/číst | Čtení dat z tabulky HDInsightRangerAuditLogs |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightSecurityLogs/číst | Čtení dat z tabulky HDInsightSecurityLogs |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightSparkApplicationEvents/číst | Čtení dat z tabulky HDInsightSparkApplicationEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightSparkBlockManagerEvents/číst | Čtení dat z tabulky HDInsightSparkBlockManagerEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightSparkEnvironmentEvents/číst | Čtení dat z tabulky HDInsightSparkEnvironmentEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightSparkExecutorEvents/číst | Čtení dat z tabulky HDInsightSparkExecutorEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightSparkExtraEvents/číst | Čtení dat z tabulky HDInsightSparkExtraEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightSparkJobEvents/číst | Čtení dat z tabulky HDInsightSparkJobEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightSparkLogs/číst | Čtení dat z tabulky HDInsightSparkLogs |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightSparkSQLExecutionEvents/číst | Čtení dat z tabulky HDInsightSparkSQLExecutionEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightSparkStageEvents/číst | Čtení dat z tabulky HDInsightSparkStageEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightSparkStageTaskAccumulables/číst | Čtení dat z tabulky HDInsightSparkStageTaskAccumulables |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightSparkTaskEvents/číst | Čtení dat z tabulky HDInsightSparkTaskEvents |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightStormLogs/číst | Čtení dat z tabulky HDInsightStormLogs |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightStormMetrics/číst | Čtení dat z tabulky HDInsightStormMetrics |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/HDInsightStormTopologyMetrics/číst | Čtení dat z tabulky HDInsightStormTopologyMetrics |
 > | Microsoft. OperationalInsights/pracovní prostory/dotaz/prezenční signál/čtení | Čtení dat z tabulky prezenčního signálu |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/HuntingBookmark/číst | Čtení dat z tabulky HuntingBookmark |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/IISAssessmentRecommendation/číst | Čtení dat z tabulky IISAssessmentRecommendation |
@@ -7527,6 +7644,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/KubeNodeInventory/číst | Čtení dat z tabulky KubeNodeInventory |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/KubePodInventory/číst | Čtení dat z tabulky KubePodInventory |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/KubeServices/číst | Čtení dat z tabulky KubeServices |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/LAQueryLogs/číst | Čtení dat z tabulky LAQueryLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/LinuxAuditLog/číst | Čtení dat z tabulky LinuxAuditLog |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/MAApplication/číst | Čtení dat z tabulky MAApplication |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/MAApplicationHealth/číst | Čtení dat z tabulky MAApplicationHealth |
@@ -7646,6 +7764,8 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/UpdateRunProgress/číst | Čtení dat z tabulky UpdateRunProgress |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/UpdateSummary/číst | Čtení dat z tabulky UpdateSummary |
 > | Microsoft. OperationalInsights/pracovní prostory/dotaz/použití/číst | Čtení dat z tabulky využití |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/UserAccessAnalytics/číst | Čtení dat z tabulky UserAccessAnalytics |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/UserPeerAnalytics/číst | Čtení dat z tabulky UserPeerAnalytics |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/VMBoundPort/číst | Čtení dat z tabulky VMBoundPort |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/VMComputer/číst | Čtení dat z tabulky VMComputer |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/VMConnection/číst | Čtení dat z tabulky VMConnection |
@@ -7654,6 +7774,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/WaaSDeploymentStatus/číst | Čtení dat z tabulky WaaSDeploymentStatus |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/WaaSInsiderStatus/číst | Čtení dat z tabulky WaaSInsiderStatus |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/WaaSUpdateStatus/číst | Čtení dat z tabulky WaaSUpdateStatus |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/seznamu ke zhlédnutí/číst | Čtení dat z tabulky seznamu ke zhlédnutí |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/WDAVStatus/číst | Čtení dat z tabulky WDAVStatus |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/WDAVThreat/číst | Čtení dat z tabulky WDAVThreat |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/WindowsClientAssessmentRecommendation/číst | Čtení dat z tabulky WindowsClientAssessmentRecommendation |
@@ -7781,6 +7902,7 @@ Služba Azure: [Azure Policy](../governance/policy/overview.md), [azure RBAC](ov
 > | Microsoft. Authorization/policyAssignments/Read | Získejte informace o přiřazení zásady. |
 > | Microsoft. Authorization/policyAssignments/Write | Vytvoří přiřazení zásady v zadaném oboru. |
 > | Microsoft. Authorization/policyAssignments/DELETE | Odstraní přiřazení zásady v zadaném oboru. |
+> | Microsoft. Authorization/policyAssignments/zprostit/Action | Vyloučení přiřazení zásady v zadaném oboru |
 > | Microsoft. Authorization/policyAssignments/privateLinkAssociations/Read | Získat informace o přidružení privátního odkazu. |
 > | Microsoft. Authorization/policyAssignments/privateLinkAssociations/Write | Vytvoří nebo aktualizuje přidružení privátního odkazu. |
 > | Microsoft. Authorization/policyAssignments/privateLinkAssociations/DELETE | Odstraní přidružení privátního propojení. |
@@ -7797,6 +7919,9 @@ Služba Azure: [Azure Policy](../governance/policy/overview.md), [azure RBAC](ov
 > | Microsoft. Authorization/policyDefinitions/Read | Získat informace o definici zásady. |
 > | Microsoft. Authorization/policyDefinitions/Write | Vytvořte vlastní definici zásad. |
 > | Microsoft. Authorization/policyDefinitions/DELETE | Odstraní definici zásady. |
+> | Microsoft. Authorization/policyExemptions/Read | Získat informace o výjimce zásady. |
+> | Microsoft. Authorization/policyExemptions/Write | Vytvoří výjimku zásady v zadaném oboru. |
+> | Microsoft. Authorization/policyExemptions/DELETE | Odstraní výjimku zásady v zadaném oboru. |
 > | Microsoft. Authorization/policySetDefinitions/Read | Získejte informace o definici sady zásad. |
 > | Microsoft. Authorization/policySetDefinitions/Write | Vytvoření vlastní definice sady zásad |
 > | Microsoft. Authorization/policySetDefinitions/DELETE | Odstraní definici sady zásad. |
@@ -7982,7 +8107,7 @@ Služba Azure: [Batch](../batch/index.yml)
 > | Microsoft.Batch/Locations/accountOperationResults/Read | Získá výsledky dlouhotrvající operace účtu Batch. |
 > | Microsoft.Batch/umístění/kvóty/čtení | Načte kvóty dávky zadaného předplatného v zadané oblasti Azure. |
 > | Microsoft.Batch/operací/čtení | Vypíše dostupné operace pro poskytovatele prostředků Microsoft.Batch. |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft.Batch/batchAccounts/Jobs/Read | Vypisuje úlohy na účtu Batch nebo získá vlastnosti úlohy. |
 > | Microsoft.Batch/batchAccounts/Jobs/Write | Vytvoří novou úlohu na účtu Batch nebo aktualizuje existující úlohu. |
 > | Microsoft.Batch/batchAccounts/Jobs/DELETE | Odstraní úlohu z účtu Batch. |
@@ -8244,7 +8369,7 @@ Služba Azure: [Kubernetes s povoleným ARC Azure](https://docs.microsoft.com/az
 > | Microsoft. Kubernetes/connectedClusters/DELETE | Odstraní connectedClusters |
 > | Microsoft. Kubernetes/connectedClusters/listClusterUserCredentials/Action | Zobrazit seznam přihlašovacích údajů clusterUser |
 > | Microsoft. Kubernetes/RegisteredSubscriptions/Read | Čtení registrovaných předplatných |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft. Kubernetes/connectedClusters/admissionregistration. k8s. IO/initializerconfigurations/Read | Přečte initializerconfigurations |
 > | Microsoft. Kubernetes/connectedClusters/admissionregistration. k8s. IO/initializerconfigurations/Write | Zapisuje initializerconfigurations |
 > | Microsoft. Kubernetes/connectedClusters/admissionregistration. k8s. IO/initializerconfigurations/DELETE | Odstraní initializerconfigurations |
@@ -8611,7 +8736,7 @@ Služba Azure: [Azure Policy](../governance/policy/index.yml)
 > | Microsoft. PolicyInsights/nápravy/odstranit | Odstraňte nápravy zásad. |
 > | Microsoft. PolicyInsights/nápravy/zrušit/akce | Zruší probíhající nápravu zásad Microsoftu. |
 > | Microsoft. PolicyInsights/nápravy/listDeployments/Read | Zobrazí seznam nasazení vyžadovaných nápravou zásad. |
-> | **Akce dataaction** | **Description** |
+> | **Akce dataaction** | **Popis** |
 > | Microsoft. PolicyInsights/checkDataPolicyCompliance/Action | Zkontroluje stav dodržování předpisů dané součásti proti zásadám dat. |
 > | Microsoft. PolicyInsights/policyEvents/logDataEvents/Action | Zaprotokoluje události zásad součásti prostředků. |
 
@@ -8994,5 +9119,5 @@ Služba Azure: [mapy Bing](https://docs.microsoft.com/BingMaps/)
 ## <a name="next-steps"></a>Další kroky
 
 - [Spárovat poskytovatele prostředků se službou](../azure-resource-manager/management/azure-services-resource-providers.md)
-- [Předdefinované role Azure](built-in-roles.md)
+- [Předdefinované role v Azure](built-in-roles.md)
 - [Architektura pro přijetí do cloudu: Správa přístupu k prostředkům v Azure](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

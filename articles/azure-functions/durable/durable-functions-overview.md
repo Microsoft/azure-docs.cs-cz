@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 8fd670104a04229ed688b365de89e2ffc22b5429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adf58b667d17393fc905fbf31261530fce88d9f8
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499377"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272344"
 ---
 # <a name="what-are-durable-functions"></a>Co je Durable Functions?
 
@@ -25,6 +25,7 @@ Durable Functions aktuálně podporuje následující jazyky:
 * **JavaScript**: podporuje se jenom pro verzi 2. x Azure Functions runtime. Vyžaduje verzi 1.7.0 rozšíření Durable Functions nebo novější verzi. 
 * **Python**: vyžaduje verzi 1.8.5 rozšíření Durable Functions nebo novější verzi. 
 * **F #**: předkompilované knihovny tříd a skript jazyka F #. Skript F # se podporuje jenom pro verzi 1. x modulu runtime Azure Functions.
+* **PowerShell**: podpora pro Durable Functions je aktuálně ve verzi Public Preview. Podporováno pouze pro verzi 3. x modulu Azure Functions runtime a prostředí PowerShell 7. Vyžaduje verzi 2.2.2 rozšíření Durable Functions nebo novější verzi. V současné době jsou podporovány pouze následující vzorce: [řetězení funkcí](#chaining), [ventilátor nebo ventilátor –](#fan-in-out) [asynchronní rozhraní HTTP API](#async-http).
 
 Durable Functions má za cíl podporu všech [Azure Functionsch jazyků](../supported-languages.md). Nejnovější stav práce pro podporu dalších jazyků najdete v [seznamu problémů s Durable Functions](https://github.com/Azure/azure-functions-durable-extension/issues) .
 
@@ -119,6 +120,19 @@ Můžete použít `context` objekt k vyvolání dalších funkcí podle názvu, 
 > [!NOTE]
 > `context`Objekt v Pythonu představuje kontext orchestrace. Přístup k hlavnímu kontextu Azure Functions pomocí `function_context` vlastnosti v kontextu orchestrace.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+$X = Invoke-ActivityFunction -FunctionName 'F1'
+$Y = Invoke-ActivityFunction -FunctionName 'F2' -Input $X
+$Z = Invoke-ActivityFunction -FunctionName 'F3' -Input $Y
+Invoke-ActivityFunction -FunctionName 'F4' -Input $Z
+```
+
+Pomocí `Invoke-ActivityFunction` příkazu můžete vyvolat další funkce podle názvu, Pass Parameters a vracet výstup funkce. Pokaždé, když kód volá `Invoke-ActivityFunction` bez `NoWait` přepínače, Durable Functions Framework kontrolní body průběh aktuální instance funkce. Pokud se proces nebo virtuální počítač recykluje v průběhu provádění, instance funkce pokračuje z předchozího `Invoke-ActivityFunction` volání. Další informace najdete v další části vzor #2: ventilátor nebo ventilátor v.
+
 ---
 
 ### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>Vzor #2: ventilátor nebo ventilátor v
@@ -156,7 +170,7 @@ public static async Task Run(
 }
 ```
 
-Práce s ventilátorem je distribuována do více instancí `F2` funkce. Práce je sledována pomocí dynamického seznamu úkolů. `Task.WhenAll`se volá, aby se čekalo na dokončení všech volaných funkcí. `F2`Výstupy funkcí pak jsou agregovány z dynamického seznamu úkolů a předány `F3` funkci.
+Práce s ventilátorem je distribuována do více instancí `F2` funkce. Práce je sledována pomocí dynamického seznamu úkolů. `Task.WhenAll` se volá, aby se čekalo na dokončení všech volaných funkcí. `F2`Výstupy funkcí pak jsou agregovány z dynamického seznamu úkolů a předány `F3` funkci.
 
 Automatické kontrolní body, ke kterým dojde při `await` volání, `Task.WhenAll` zajistí, že potenciální funkce pro zhroucení nebo restartování počítače nevyžadují restartování již dokončené úlohy.
 
@@ -182,7 +196,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Práce s ventilátorem je distribuována do více instancí `F2` funkce. Práce je sledována pomocí dynamického seznamu úkolů. `context.df.Task.all`Volá se rozhraní API, které čeká na dokončení všech volaných funkcí. `F2`Výstupy funkcí pak jsou agregovány z dynamického seznamu úkolů a předány `F3` funkci.
+Práce s ventilátorem je distribuována do více instancí `F2` funkce. Práce je sledována pomocí dynamického seznamu úkolů. `context.df.Task.all` Volá se rozhraní API, které čeká na dokončení všech volaných funkcí. `F2`Výstupy funkcí pak jsou agregovány z dynamického seznamu úkolů a předány `F3` funkci.
 
 Automatické kontrolní body, ke kterým dojde při `yield` volání, `context.df.Task.all` zajistí, že potenciální funkce pro zhroucení nebo restartování počítače nevyžadují restartování již dokončené úlohy.
 
@@ -208,9 +222,33 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
-Práce s ventilátorem je distribuována do více instancí `F2` funkce. Práce je sledována pomocí dynamického seznamu úkolů. `context.task_all`Volá se rozhraní API, které čeká na dokončení všech volaných funkcí. `F2`Výstupy funkcí pak jsou agregovány z dynamického seznamu úkolů a předány `F3` funkci.
+Práce s ventilátorem je distribuována do více instancí `F2` funkce. Práce je sledována pomocí dynamického seznamu úkolů. `context.task_all` Volá se rozhraní API, které čeká na dokončení všech volaných funkcí. `F2`Výstupy funkcí pak jsou agregovány z dynamického seznamu úkolů a předány `F3` funkci.
 
 Automatické kontrolní body, ke kterým dojde při `yield` volání, `context.task_all` zajistí, že potenciální funkce pro zhroucení nebo restartování počítače nevyžadují restartování již dokončené úlohy.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+# Get a list of work items to process in parallel.
+$WorkBatch = Invoke-ActivityFunction -FunctionName 'F1'
+
+$ParallelTasks =
+    foreach ($WorkItem in $WorkBatch) {
+        Invoke-ActivityFunction -FunctionName 'F2' -Input $WorkItem -NoWait
+    }
+
+$Outputs = Wait-ActivityFunction -Task $ParallelTasks
+
+# Aggregate all outputs and send the result to F3.
+$Total = ($Outputs | Measure-Object -Sum).Sum
+Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
+```
+
+Práce s ventilátorem je distribuována do více instancí `F2` funkce. Všimněte si, že použití `NoWait` přepínače u `F2` volání funkce: Tento přepínač umožňuje, aby nástroj Orchestrator pokračoval v volání `F2` bez pro dokončení aktivity. Práce je sledována pomocí dynamického seznamu úkolů. `Wait-ActivityFunction`Příkaz se zavolá, aby čekal na dokončení všech volaných funkcí. `F2`Výstupy funkcí pak jsou agregovány z dynamického seznamu úkolů a předány `F3` funkci.
+
+Automatický kontrolní bod, který se stane při `Wait-ActivityFunction` volání, zajistí, že potenciální chyba nástroje Midway nebo restartování nevyžaduje restartování již dokončené úlohy.
 
 ---
 
@@ -357,6 +395,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Monitorování se v prostředí PowerShell aktuálně nepodporuje.
+
 ---
 
 Po přijetí žádosti se pro ID úlohy vytvoří nová instance Orchestration. Instance se dotazuje na stav, dokud není splněna podmínka a dojde k ukončení smyčky. Interval cyklického dotazování řídí trvalý časovač. Pak je možné provést více práce, nebo orchestrace může skončit. Když `nextCheck` se překročí `expiryTime` , monitor skončí.
@@ -455,6 +497,10 @@ main = df.Orchestrator.create(orchestrator_function)
 
 Chcete-li vytvořit trvalý časovač, zavolejte `context.create_timer` . Oznámení přijal (a) `context.wait_for_external_event` . Pak `context.task_any` se zavolá, aby se rozhodlo, jestli se má eskalovat (časový limit nastane jako první), nebo jestli se má schválit schválení (schválení se přijme před časovým limitem)
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+V PowerShellu se v současnosti nepodporuje lidská interakce.
+
 ---
 
 Externí klient může doručovat oznámení události do čekající funkce Orchestrator pomocí [integrovaných rozhraní API http](durable-functions-http-api.md#raise-event):
@@ -501,6 +547,10 @@ async def main(client: str):
     is_approved = True
     await durable_client.raise_event(instance_id, "ApprovalEvent", is_approved)
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+V PowerShellu se v současnosti nepodporuje lidská interakce.
 
 ---
 
@@ -583,6 +633,10 @@ module.exports = df.entity(function(context) {
 
 V Pythonu se v současnosti nepodporují trvalé entity.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+V PowerShellu se v současnosti nepodporují trvalé entity.
+
 ---
 
 Klienti mohou zařadit *operace* do fronty (označované také jako "signalizace") entity funkce pomocí [vazby klienta entit](durable-functions-bindings.md#entity-client).
@@ -622,6 +676,10 @@ module.exports = async function (context) {
 # <a name="python"></a>[Python](#tab/python)
 
 V Pythonu se v současnosti nepodporují trvalé entity.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+V PowerShellu se v současnosti nepodporují trvalé entity.
 
 ---
 
