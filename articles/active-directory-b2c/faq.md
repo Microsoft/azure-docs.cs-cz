@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 08a1d655d19b5e7deb81e42ca5bebdfe4f18aeef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85ce79644ead939eaeffa5cfffeb495da15e7fe5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84297900"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270661"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
 
@@ -49,7 +49,7 @@ Azure AD B2C také podporuje [vlastní zásady](custom-policy-overview.md). Vlas
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Můžu nakonfigurovat obory pro shromažďování dalších informací o uživatelích z různých poskytovatelů sociálních identit?
 
-Ne. Výchozí obory používané pro naši podporovanou sadu zprostředkovatelů sociálních identit jsou:
+No. Výchozí obory používané pro naši podporovanou sadu zprostředkovatelů sociálních identit jsou:
 
 * Facebook: e-mail
 * Google +: e-mail
@@ -134,7 +134,7 @@ Momentálně ne. Tato funkce je v našem plánu. Ověření domény na kartě **
 
 Chcete-li odstranit svého tenanta Azure AD B2C, postupujte podle těchto kroků.
 
-Můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
+Můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze  **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
@@ -154,7 +154,7 @@ Můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo 
 1. V části **Správa přístupu pro prostředky Azure** vyberte **Ano** a pak vyberte **Uložit**.
 1. Odhlaste se ze Azure Portal a pak se znovu přihlaste, abyste mohli aktualizovat svůj přístup.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
-1. Na stránce **Přehled** vyberte **odstranit adresář**. Dokončete proces podle pokynů na obrazovce.
+1. Na stránce **Přehled** vyberte **Odstranit tenanta**. Dokončete proces podle pokynů na obrazovce.
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 

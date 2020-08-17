@@ -1,20 +1,20 @@
 ---
 title: Vytváření a správa virtuálních počítačů s deklarací identity v Azure DevTest Labs | Microsoft Docs
-description: Přečtěte si, jak přidat vynucený virtuální počítač do testovacího prostředí v Azure DevTest Labs
+description: Naučte se, jak pomocí Azure Portal přidat do Azure DevTest Labs nárokovat virtuální počítač s deklarací identity a zobrazit následující procesy pro nárokování nebo odmítání virtuálního počítače.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7a4e465f0ba6c592f173a0c48aadd51f3e12ea07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fe949d7104fe6437087e77c403cc0d921ebd025
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481302"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270974"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Vytváření a správa virtuálních počítačů s deklarací identity v Azure DevTest Labs
 Do testovacího prostředí můžete přidat vynucené virtuální počítače podobným způsobem jako při [přidávání standardního virtuálního počítače](devtest-lab-add-vm.md) – od *základu* , který je buď [vlastní image](devtest-lab-create-template.md), [vzorec](devtest-lab-manage-formulas.md)nebo Image na [webu Marketplace](devtest-lab-configure-marketplace-images.md). Tento kurz vás provede použitím Azure Portal k přidání s nárokem na virtuální počítač do testovacího prostředí v DevTest Labs a ukazuje procesy, které uživatel sleduje, aby mohl uplatnit deklaraci virtuálního počítače a uvolnit ho.
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Postup přidání vynuceného virtuálního počítače do testovacího prostředí v Azure DevTest Labs
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Vyberte **všechny služby**a potom v části **DEVOPS** vyberte **DevTest Labs** . Pokud vyberete * (hvězdička) vedle **DevTest Labs** v části **DEVOPS** . Tato akce přidá **DevTest Labs** do levé navigační nabídky, abyste k ní mohli snadno získat přístup později. Pak můžete v levé navigační nabídce vybrat **DevTest Labs** .
 
     ![Všechny služby – výběr DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)

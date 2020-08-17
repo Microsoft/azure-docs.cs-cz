@@ -1,18 +1,18 @@
 ---
 title: Nejčastější dotazy k Azure bastionu | Microsoft Docs
-description: Nejčastější dotazy k Azure bastionu
+description: Řešení běžných otázek pro Azure bastionu, jako je dostupnost, kolik souběžných relací se podporuje, problémy s konfigurací a cenami.
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: charwen
-ms.openlocfilehash: a37ca4b9977a1d2bd51a6153f4da1b65c1c916be
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: e546888689ff290c750d594f1e737857049bf1ff
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276107"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270542"
 ---
 # <a name="azure-bastion-faq"></a>Nejčastější dotazy ke službě Azure Bastion
 

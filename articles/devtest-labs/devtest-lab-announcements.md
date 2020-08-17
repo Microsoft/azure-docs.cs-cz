@@ -1,14 +1,14 @@
 ---
 title: Zveřejnění oznámení do testovacího prostředí v Azure DevTest Labs | Microsoft Docs
-description: Naučte se, jak přidat oznámení do testovacího prostředí v Azure DevTest Labs
+description: Naučte se publikovat vlastní oznámení v existujícím testovacím prostředí a upozornit uživatele na nedávné změny nebo dodatky do testovacího prostředí v Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bac2b0a4e33a01977418b36ce6e3726999d10ed5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72c6ed7ab691ece094673ff5a158ffa769a9f7a1
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478990"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270763"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Zveřejnění oznámení do testovacího prostředí v Azure DevTest Labs
 
@@ -24,7 +24,7 @@ Funkce oznámení je určena k použití pro dočasná oznámení.  Oznámení m
 
 ## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Postup zveřejnění oznámení v existujícím testovacím prostředí
 
-1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. V případě potřeby vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** . (Vaše testovací prostředí se už možná zobrazuje na řídicím panelu v části **všechny prostředky**).
 1. V seznamu cvičení vyberte testovací prostředí, ve kterém chcete publikovat oznámení.
 1. V oblasti **Přehled** testovacího prostředí vyberte **Konfigurace a zásady**.

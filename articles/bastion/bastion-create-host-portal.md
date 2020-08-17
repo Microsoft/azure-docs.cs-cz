@@ -1,18 +1,18 @@
 ---
 title: 'Vytvoření hostitele Azure bastionu: portál'
-description: V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu pomocí portálu.
+description: V tomto článku se dozvíte, jak vytvořit hostitele Azure bastionu, který poskytuje připojení RDP/SSH ke všem virtuálním počítačům ve virtuální síti.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: d18d520419e77a225431d9c2a395f62411656537
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e0bc9a17a12afac6d91867b19aba0f90b7f6edb
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744268"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270746"
 ---
 # <a name="create-an-azure-bastion-host-using-the-portal"></a>Vytvoření hostitele Azure bastionu pomocí portálu
 
@@ -30,7 +30,7 @@ Bastionu je k dispozici v následujících veřejných oblastech Azure:
 
 Tato část vám pomůže vytvořit nový prostředek Azure bastionu z Azure Portal.
 
-1. V nabídce [Azure Portal](https://portal.azure.com) nebo na **domovské** stránce vyberte **vytvořit prostředek**.
+1. V nabídce webu [Azure Portal](https://portal.azure.com) nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
 
 1. Na **nové** stránce v poli *Hledat na Marketplace* zadejte **bastionu**a kliknutím na **ENTER** se dostanete do výsledků hledání.
 

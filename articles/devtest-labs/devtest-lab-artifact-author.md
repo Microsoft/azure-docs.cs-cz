@@ -1,14 +1,14 @@
 ---
 title: Vytvoření vlastních artefaktů pro virtuální počítač s DevTest Labs | Microsoft Docs
-description: Naučte se vytvářet vlastní artefakty pro použití s Azure DevTest Labs.
+description: Naučte se vytvářet artefakty pro použití s Azure DevTest Labs k nasazení a nastavení aplikací po zřízení virtuálního počítače.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 775908749f52c71eeaf97eef25e3787f9b6794fc
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857023"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270678"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Vytvoření vlastních artefaktů pro virtuální počítač s DevTest Labs
 
@@ -44,15 +44,15 @@ Následující příklad ukazuje oddíly, které tvoří základní strukturu de
   }
 ```
 
-| Název elementu | Povinné? | Description |
+| Název elementu | Povinné? | Popis |
 | --- | --- | --- |
-| $schema |No |Umístění souboru schématu JSON. Soubor schématu JSON vám může přispět k otestování platnosti definičního souboru. |
-| title |Yes |Název artefaktu zobrazeného v testovacím prostředí |
-| description |Yes |Popis artefaktu zobrazeného v testovacím prostředí |
-| iconUri |No |Identifikátor URI ikony zobrazené v testovacím prostředí |
-| targetOsType |Yes |Operační systém virtuálního počítače, ve kterém je artefakt nainstalovaný. Podporované možnosti jsou Windows a Linux. |
-| parameters |No |Hodnoty, které jsou k dispozici při spuštění instalačního příkazu artefaktu v počítači. To vám pomůže přizpůsobit svůj artefakt. |
-| SpustitPříkaz |Yes |Instalační příkaz artefaktu, který je spuštěný na virtuálním počítači. |
+| $schema |Ne |Umístění souboru schématu JSON. Soubor schématu JSON vám může přispět k otestování platnosti definičního souboru. |
+| title |Ano |Název artefaktu zobrazeného v testovacím prostředí |
+| description |Ano |Popis artefaktu zobrazeného v testovacím prostředí |
+| iconUri |Ne |Identifikátor URI ikony zobrazené v testovacím prostředí |
+| targetOsType |Ano |Operační systém virtuálního počítače, ve kterém je artefakt nainstalovaný. Podporované možnosti jsou Windows a Linux. |
+| parameters |Ne |Hodnoty, které jsou k dispozici při spuštění instalačního příkazu artefaktu v počítači. To vám pomůže přizpůsobit svůj artefakt. |
+| SpustitPříkaz |Ano |Instalační příkaz artefaktu, který je spuštěný na virtuálním počítači. |
 
 ### <a name="artifact-parameters"></a>Parametry artefaktu
 V oddílu Parameters souboru definice určete, které hodnoty může uživatel zadat při instalaci artefaktu. Na tyto hodnoty můžete odkazovat v příkazu pro instalaci artefaktů.
@@ -69,11 +69,11 @@ Chcete-li definovat parametry, použijte následující strukturu:
   }
 ```
 
-| Název elementu | Povinné? | Description |
+| Název elementu | Povinné? | Popis |
 | --- | --- | --- |
-| typ |Yes |Typ hodnoty parametru Seznam povolených typů najdete v následujícím seznamu. |
-| displayName |Yes |Název parametru, který se zobrazí uživateli v testovacím prostředí. |
-| description |Yes |Popis parametru, který se zobrazí v testovacím prostředí. |
+| typ |Ano |Typ hodnoty parametru Seznam povolených typů najdete v následujícím seznamu. |
+| displayName |Ano |Název parametru, který se zobrazí uživateli v testovacím prostředí. |
+| description |Ano |Popis parametru, který se zobrazí v testovacím prostředí. |
 
 Povolené typy:
 
