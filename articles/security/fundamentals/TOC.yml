@@ -78,12 +78,16 @@
   items:
     - name: Zabezpečení a šifrování dat
       href: encryption-overview.md
+    - name: Dvojité šifrování
+      href: double-encryption.md
     - name: Šifrování disku
       items:
         - name: Osvědčené postupy
           href: data-encryption-best-practices.md
-        - name: Šifrování neaktivních dat
+        - name: Šifrování v klidovém stavu
           href: encryption-atrest.md
+        - name: Modely šifrování dat
+          href: encryption-models.md
         - name: Azure Disk Encryption pro virtuální počítače
           href: azure-disk-encryption-vms-vmss.md
     - name: Zabezpečení databází

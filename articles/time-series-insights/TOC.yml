@@ -67,7 +67,9 @@
       items:
         - name: Ověřování a autorizace
           href: time-series-insights-authentication-and-authorization.md
-        - name: Dotazování dat pomocí jazyka C#
+        - name: Dotazování dat pomocí jazyka C# – Gen2
+          href: time-series-insights-update-query-data-csharp.md
+        - name: Dotazování dat pomocí jazyka C# – Gen1
           href: time-series-insights-query-data-csharp.md
         - name: Správa referenčních dat v jazyce C#
           href: time-series-insights-manage-reference-data-csharp.md

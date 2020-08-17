@@ -43,6 +43,8 @@
               href: solutions-benefits-azure-netapp-files-oracle-database.md
             - name: Výhody použití Azure NetApp Files pro automatizaci elektronických návrhů
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+            - name: Využití Windows Virtual Desktopu se službou Azure NetApp Files
+              href: solutions-windows-virtual-desktop.md
     - name: Nejčastější dotazy k Azure NetApp Files
       href: azure-netapp-files-faqs.md
 - name: Návody
@@ -61,16 +63,24 @@
           href: azure-netapp-files-create-volumes.md
         - name: Konfigurace výchozí domény NFSv4.1
           href: azure-netapp-files-configure-nfsv41-domain.md
+        - name: Konfigurace šifrování Kerberos NFSv4.1
+          href: configure-kerberos-encryption.md
+        - name: Konfigurace klienta NFS pro Azure NetApp Files
+          href: configure-nfs-clients.md
         - name: Konfigurace zásad exportu pro svazek NFS
           href: azure-netapp-files-configure-export-policy.md
     - name: Vytvoření svazku SMB
       href: azure-netapp-files-create-volumes-smb.md
+    - name: Vytvoření svazku se dvěma protokoly
+      href: create-volumes-dual-protocol.md
     - name: Připojování nebo odpojování svazku pro virtuální počítače s Windows nebo Linuxem
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: Správa snímků
       href: azure-netapp-files-manage-snapshots.md
     - name: Změna velikosti fondu kapacity nebo svazku
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: Dynamická změna úrovně služeb svazku
+      href: dynamic-change-volume-service-level.md
     - name: Vývoj
       items:
         - name: REST API

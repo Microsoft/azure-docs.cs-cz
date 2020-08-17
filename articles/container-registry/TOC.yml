@@ -148,6 +148,12 @@
         - name: Řešení potíží
           expanded: false
           items:
+            - name: Řešení potíží s přihlášením
+              href: container-registry-troubleshoot-login.md
+            - name: Řešení potíží se sítí
+              href: container-registry-troubleshoot-access.md
+            - name: Řešení potíží s výkonem registru
+              href: container-registry-troubleshoot-performance.md
             - name: Detekce běžných problémů
               href: container-registry-check-health.md
             - name: Nejčastější dotazy
