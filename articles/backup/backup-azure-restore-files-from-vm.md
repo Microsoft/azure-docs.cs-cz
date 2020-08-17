@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu 
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3a7fe7ca2e439739cbdeeb626fea9d2fb3983b83
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 01235e116ca93f9c73e698e4d72ae0cb561824d5
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236297"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262666"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -32,7 +32,7 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
 
 3. V nabídce řídicího panelu zálohování vyberte **obnovení souboru**.
 
-    ![Tlačítko pro obnovení souboru](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![Vybrat obnovení souboru](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
     Otevře se nabídka **obnovení souborů** .
 
@@ -42,7 +42,7 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
 
 5. Pokud chcete stáhnout software, který se používá ke kopírování souborů z bodu obnovení, vyberte **stáhnout spustitelný soubor** (pro virtuální počítače s Windows Azure) nebo **stáhnout skript** (pro virtuální počítače se systémem Linux Azure se vygeneruje skript Pythonu).
 
-    ![Generované heslo](./media/backup-azure-restore-files-from-vm/download-executable.png)
+    ![Stáhnout spustitelný soubor](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
     Azure stáhne spustitelný soubor nebo skript do místního počítače.
 
@@ -56,7 +56,7 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
 
 7. Ujistěte se, že [máte správný počítač](#selecting-the-right-machine-to-run-the-script) pro spuštění skriptu. Pokud je pravý počítač stejný jako počítač, do kterého jste stáhli skript, můžete pokračovat do části ke stažení. Z umístění pro stahování (obvykle složky *stažené soubory* ) klikněte pravým tlačítkem na spustitelný soubor nebo skript a spusťte ho s přihlašovacími údaji správce. Po zobrazení výzvy zadejte heslo nebo vložte heslo z paměti a stiskněte klávesu **ENTER**. Po zadání platného hesla se skript připojí k bodu obnovení.
 
-    ![Nabídka obnovení souborů](./media/backup-azure-restore-files-from-vm/executable-output.png)
+    ![Spustitelný výstup](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
 8. Pro počítače se systémem Linux se vygeneruje skript Pythonu. Jeden potřebuje stáhnout skript a zkopírovat ho na relevantní/kompatibilní server Linux. Možná budete muset změnit oprávnění k provedení ```chmod +x <python file name>``` . Pak spusťte soubor Python s nástrojem ```./<python file name>``` .
 

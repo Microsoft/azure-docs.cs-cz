@@ -6,14 +6,14 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: 84798dbcd158b62ce6714bf73494a9e85bf932a8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 3469b612081f9cb96beec98a065e0827d1c04b4c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387944"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261833"
 ---
-# <a name="avs-assessments-in-azure-migrate-server-assessment"></a>Posuzování pro funkci AVS v Azure Migrate: posouzení serveru
+# <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>Přehled posouzení serveru (migrace do řešení VMware Azure)
 
 [Azure Migrate](migrate-services-overview.md) poskytuje centrální centrum pro sledování zjišťování, hodnocení a migrace vašich místních aplikací a úloh. Také sleduje vaše soukromé a veřejné cloudové instance do Azure. Centrum nabízí Azure Migrate nástroje pro posouzení a migraci a také nabídky nezávislého výrobce softwaru (ISV) od jiných výrobců.
 
@@ -128,7 +128,7 @@ Co je je součástí posouzení služby AVS při vyhodnocování serveru:
 **Percentilové využití** | Určuje hodnotu percentilu sady ukázek výkonu, která má být považována za správné určení velikosti. Tato vlastnost je platná pouze v případě, že je velikost na základě výkonu.
 **Faktor komfortu** | Vyhodnocování Azure Migrate serveru během posuzování považuje vyrovnávací paměť (faktor komfortu). Tato rezerva se použije nad rámec dat o využití počítače pro virtuální počítače (procesor, paměť, disk a síť). Důvodem použití faktoru komfortu jsou problémy, jako jsou sezónní využití, krátká historie výkonu a pravděpodobný růst budoucího využití.<br/><br/> Například z virtuálního počítače s 10 jádry a 20% využitím je normálně ve výsledku virtuální počítač se 2 jádry. S faktorem komfortu 2,0× je však výsledkem virtuální počítač se 4 jádry. 
 **Nabídka** | Zobrazí [nabídku Azure](https://azure.microsoft.com/support/legal/offer-details/) , kterou jste si zaregistrovali. Azure Migrate odhadne náklady odpovídajícím způsobem.
-**Měně** | Zobrazuje fakturační měnu vašeho účtu. 
+**Měna** | Zobrazuje fakturační měnu vašeho účtu. 
 **Sleva (%)** | Obsahuje seznam všech slev specifických pro předplatné, které obdržíte nad nabídkou Azure. Výchozí nastavení je 0 %. 
 **Zvýhodněné hybridní využití Azure** | Určuje, jestli máte program Software Assurance a máte nárok na [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/). I když nemá žádný vliv na ceny řešení Azure VMware z důvodu ceny založené na uzlu, zákazníci můžou dál používat místní licence na operační systém (na základě Microsoftu) v prostředí AVS pomocí hybridních výhod Azure. Ostatní dodavatelé softwaru pro operační systémy budou muset zadat vlastní licenční podmínky, například RHEL. 
 **vCPU – předplatné** | Určuje poměr počtu virtuálních jader vázaných k jednomu fyzickému jádru v uzlu AVS. Výchozí hodnota ve výpočtech je 4 vCPU: 1 fyzická jádro v funkci AVS. <br/><br/> Uživatelé rozhraní API můžou tuto hodnotu nastavit jako celé číslo. Všimněte si, že vCPU > 4:1 může mít dopad na úlohy v závislosti na využití procesoru. 

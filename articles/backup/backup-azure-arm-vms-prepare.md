@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů Azure v trezoru Recovery Service
 description: Popisuje, jak zálohovat virtuální počítače Azure v Recovery Services trezoru pomocí Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 91fca2eef21a817c0f78b826e507901d94156dcd
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1ae501be57be672238c8b55f431b6f5962a5fd99
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533593"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261935"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure v trezoru Recovery Services
 
@@ -140,7 +140,7 @@ Fáze snímkování zaručuje dostupnost bodu obnovení uloženého spolu s disk
 
 Existují dva **dílčí úkoly** spuštěné v back-endu, jednu pro úlohu front-end zálohování, kterou lze zkontrolovat v podokně podrobností **úlohy zálohování** , jak je uvedeno níže:
 
-  ![Stav úlohy zálohování](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
+  ![Dílčí úkoly stavu úlohy zálohování](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
 
 Fáze **přenosu dat do trezoru** může trvat několik dní v závislosti na velikosti disků, počtu změn na disk a několika dalších faktorech.
 

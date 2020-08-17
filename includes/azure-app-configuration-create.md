@@ -27,7 +27,7 @@ ms.locfileid: "77619293"
     | **Předplatné** | Vaše předplatné | Vyberte předplatné Azure, které chcete použít k testování konfigurace aplikace. Pokud má váš účet jenom jedno předplatné, vybere se automaticky a seznam **předplatných** se nezobrazí. |
     | **Skupina prostředků** | *AppConfigTestResources* | Vyberte nebo vytvořte skupinu prostředků pro prostředek úložiště konfigurace aplikace. Tato skupina je užitečná k organizování více prostředků, které můžete chtít odstranit současně odstraněním skupiny prostředků. Další informace najdete v tématu [použití skupin prostředků ke správě prostředků Azure](/azure/azure-resource-manager/resource-group-overview). |
     | **Umístění** | *USA – střed* | **Umístění** použijte k určení geografického umístění, ve kterém je úložiště konfigurace aplikace hostované. Nejlepšího výkonu dosáhnete vytvořením prostředku ve stejné oblasti jako jiné součásti aplikace. |
-    | **Cenová úroveň** | *Free* | Vyberte požadovanou cenovou úroveň. Další podrobnosti najdete na [stránce s cenami konfigurace aplikace](https://azure.microsoft.com/pricing/details/app-configuration/).
+    | **Cenová úroveň** | Zadejte možnost pro *bezplatnou* SKU. | Vyberte požadovanou cenovou úroveň. Další podrobnosti najdete na [stránce s cenami konfigurace aplikace](https://azure.microsoft.com/pricing/details/app-configuration/).
 
     ![Vytvoření prostředku úložiště konfigurace aplikace](media/azure-app-configuration-create/azure-portal-app-configuration-create-settings.png)
 

@@ -3,14 +3,14 @@ title: Posouzení virtuálních počítačů Azure v Azure Migrate posouzení se
 description: Další informace o hodnoceních v Azure Migrate posouzení serveru
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 7664c8296f0d47f37f9542dee82d3c718be40126
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825986"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261850"
 ---
-# <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Posouzení virtuálních počítačů Azure v Azure Migrate: posouzení serveru
+# <a name="server-assessment-overview-migrate-to-azure-vms"></a>Přehled posouzení serveru (migrace na virtuální počítače Azure)
 
 Tento článek poskytuje přehled posouzení v nástroji [Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool. Nástroj může vyhodnotit místní virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery pro migraci do Azure.
 
@@ -112,7 +112,7 @@ Výpočty jsou v předchozím pořadí. Počítačový Server se přesune do poz
 
 Co je je součástí posouzení virtuálních počítačů Azure v posouzení serveru:
 
-**Majetek** | **Podrobnosti**
+**Vlastnost** | **Podrobnosti**
 --- | ---
 **Cílové umístění** | Umístění, do kterého chcete migrovat. Posouzení serveru aktuálně podporuje tyto cílové oblasti Azure:<br/><br/> Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Střed Indie, Střed USA, Čína – východ, Čína – sever, Východní Asie, východní USA, Východní USA 2, Německo – střed, Německo – severovýchod, Japonsko – východ, Japonsko – západ, Korea – jih, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Velká Británie – západ, US Gov – Arizona, US gov – Texas, US gov – Virginie , Středozápadní USA, Západní Evropa, Západní Indie, Západní USA a Západní USA 2.
 **Cílový disk úložiště (stejně jako velikost)** | Typ disku, který se má použít pro úložiště v Azure. <br/><br/> Zadejte cílový disk úložiště jako spravovaný SSD úrovně Standard spravovaný na úrovni Premium nebo HDD úrovně Standard.
@@ -122,9 +122,9 @@ Co je je součástí posouzení virtuálních počítačů Azure v posouzení se
 **Historie výkonu** | Používá se při změně velikosti na základě výkonu. Historie výkonu určuje dobu použitou při vyhodnocování údajů o výkonu.
 **Percentilové využití** | Používá se při změně velikosti na základě výkonu. Procento využití Určuje hodnotu percentilu pro vzorek výkonu, který se používá pro snižování.
 **Řada virtuálních počítačů** | Řady virtuálních počítačů Azure, které chcete zvážit pro snižování. Pokud například nemáte produkční prostředí, které potřebuje pro virtuální počítače řady A-Series v Azure, můžete ze seznamu řad vyloučit řady.
-**Faktor komfortu** | Vyrovnávací paměť použitá během posouzení. Aplikuje se na data o využití procesoru, paměti RAM, disku a sítě pro virtuální počítače. IT účty pro problémy, jako je sezónní využití, historie krátkého výkonu a pravděpodobná zvýšení využití v budoucnu.<br/><br/> Například virtuální počítač s 10 jádry s 20% využitím obvykle vede k virtuálnímu počítači se dvěma jádry. Výsledkem je faktor komfortu 2,0, ale výsledkem je virtuální počítač se čtyřmi jádry.
+**Faktor komfortu** | Vyrovnávací paměť použitá během posouzení. Aplikuje se na procesor, paměť RAM, disk a síťová data pro virtuální počítače. IT účty pro problémy, jako je sezónní využití, historie krátkého výkonu a pravděpodobná zvýšení využití v budoucnu.<br/><br/> Například virtuální počítač s 10 jádry s 20% využitím obvykle vede k virtuálnímu počítači se dvěma jádry. Výsledkem je faktor komfortu 2,0, ale výsledkem je virtuální počítač se čtyřmi jádry.
 **Nabídka** | [Nabídka Azure](https://azure.microsoft.com/support/legal/offer-details/) , do které jste zaregistrovaní. Posouzení serveru odhaduje náklady na tuto nabídku.
-**Měně** | Fakturační měna vašeho účtu.
+**Měna** | Fakturační měna vašeho účtu.
 **Sleva (%)** | Všechny slevy specifické pro předplatné, které obdržíte nad nabídkou Azure. Výchozí nastavení je 0 %.
 **Doba provozu virtuálního počítače** | Doba ve dnech za měsíc a hodiny za den pro virtuální počítače Azure, které nebudou běžet nepřetržitě. Odhad nákladů vychází z této doby trvání.<br/><br/> Výchozí hodnoty jsou 31 dní za měsíc a 24 hodin denně.
 **Zvýhodněné hybridní využití Azure** | Určuje, jestli máte program Software Assurance a máte nárok na [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Pokud má nastavení výchozí hodnotu "Ano", ceny za Azure pro jiné operační systémy než Windows se považují za virtuální počítače s Windows.
@@ -151,8 +151,8 @@ V případě posouzení virtuálních počítačů Azure vyhodnocování serveru
 Vlastnost | Podrobnosti | Stav připravenosti na Azure
 --- | --- | ---
 **Typ spouštění** | Azure podporuje virtuální počítače s typem spouštění systému BIOS, nikoli UEFI. | Podmíněně připravený, pokud je typ spouštění UEFI
-**Cores** | Každý počítač nesmí mít více než 128 jader, což je maximální počet podporovaných virtuálních počítačů Azure.<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využité jádra k porovnání. Pokud nastavení posouzení určí faktor komfortu, vynásobí se počet využitých jader faktorem komfortu.<br/><br/> Pokud není k dispozici žádná historie výkonu, Azure Migrate používá přidělená jádra bez použití faktoru pohodlí. | Připraveno, pokud je počet jader v rámci limitu
-**SRAM** | Každý počítač nesmí mít více než 3 892 GB paměti RAM, což je maximální velikost, kterou virtuální počítač Azure M-Series Standard_M128m &nbsp; <sup>2</sup> podporuje. [Další informace](../virtual-machines/sizes.md).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využitou paměť RAM za účelem porovnání. Pokud je určen faktor komfortu, vynásobit se využití paměti RAM faktorem komfortu.<br/><br/> Pokud není k dispozici žádná historie, přidělená paměť RAM se použije bez použití faktoru pohodlí.<br/><br/> | Připraveno, pokud je velikost paměti RAM v rámci limitu
+**Cores** | Každý počítač nesmí mít více než 128 jader, což je maximální počet podporovaných virtuálních počítačů Azure.<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využité jádra k porovnání. Pokud nastavení posouzení určí faktor komfortu, vynásobí se počet využitých jader faktorem komfortu.<br/><br/> Pokud není k dispozici žádná historie výkonu, Azure Migrate používá přidělená jádra k použití faktoru pohodlí. | Připraveno, pokud je počet jader v rámci limitu
+**SRAM** | Každý počítač nesmí mít více než 3 892 GB paměti RAM, což je maximální velikost, kterou virtuální počítač Azure M-Series Standard_M128m &nbsp; <sup>2</sup> podporuje. [Další informace](../virtual-machines/sizes.md).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využitou paměť RAM za účelem porovnání. Pokud je určen faktor komfortu, vynásobit se využití paměti RAM faktorem komfortu.<br/><br/> Pokud není k dispozici žádná historie, použije se přidělená paměť RAM k použití faktoru pohodlí.<br/><br/> | Připraveno, pokud je velikost paměti RAM v rámci limitu
 **Disk úložiště** | Přidělená velikost disku nesmí být větší než 32 TB. I když Azure podporuje disky 64 – TB s SSD úrovně Ultra disky Azure, Azure Migrate: posouzení serveru aktuálně kontroluje 32 TB jako limit velikosti disku, protože to ještě nepodporuje SSD úrovně Ultra. <br/><br/> Počet disků připojených k počítači, včetně disku s operačním systémem, musí být 65 nebo menší. | Připraveno, pokud je velikost disku a číslo v mezích
 **Sítě** | Počítač musí mít k němu připojená maximálně 32 síťových rozhraní (nic). | Připraveno, pokud je počet síťových adaptérů v limitu
 

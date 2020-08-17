@@ -3,12 +3,12 @@ title: Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 description: Popisuje postup zálohování a obnovení šifrovaných virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 25c5e66bde817e824a307df2a2b1b5f76c773c01
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: a5c12f9f9177c4495a82ced2b3c7d0c5edcdd78e
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405682"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262785"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Zálohování a obnovení šifrovaného virtuálního počítače Azure
 
@@ -70,13 +70,13 @@ Kromě toho je možné, že v některých případech budete muset udělat něko
     - Zásady zálohování určují, kdy se mají vytvářet zálohy a jak dlouho se budou ukládat.
     - Podrobnosti výchozí zásady jsou uvedené pod rozevírací nabídkou.
 
-    ![Otevřené okno Scénář](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
+    ![Zvolit zásady zálohování](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
 
 1. Pokud nechcete používat výchozí zásady, vyberte **vytvořit novou**a [vytvořte vlastní zásadu](backup-azure-arm-vms-prepare.md#create-a-custom-policy).
 
 1. V části **Virtual Machines**vyberte **Přidat**.
 
-    ![Otevřené okno Scénář](./media/backup-azure-vms-encryption/add-virtual-machines.png)
+    ![Přidat virtuální počítače](./media/backup-azure-vms-encryption/add-virtual-machines.png)
 
 1. Vyberte šifrované virtuální počítače, které chcete zálohovat, pomocí možnosti vybrat zásadu a vyberte **OK**.
 
@@ -131,7 +131,7 @@ Nastavení oprávnění:
 
     ![Výběr služby Azure Backup](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-1. Vyberte možnost **Přidat**. Do **zásad přístupu**se přidá **Služba správy zálohování** .
+1. Vyberte **Přidat**. Do **zásad přístupu**se přidá **Služba správy zálohování** .
 
     ![Zásady přístupu](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
@@ -145,8 +145,8 @@ Následujícím způsobem obnovte šifrované virtuální počítače:
 
 1. [Obnovte disk virtuálního počítače](backup-azure-arm-restore-vms.md#restore-disks).
 2. Znovu vytvořte instanci virtuálního počítače jedním z následujících způsobů:
-    1. Použijte šablonu generovanou během operace obnovení k přizpůsobení nastavení virtuálního počítače a aktivaci nasazení virtuálního počítače. [Přečtěte si další informace](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
-    2. Vytvořte nový virtuální počítač z obnovených disků pomocí PowerShellu. [Přečtěte si další informace](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
+    1. Použijte šablonu generovanou během operace obnovení k přizpůsobení nastavení virtuálního počítače a aktivaci nasazení virtuálního počítače. [Další informace](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm).
+    2. Vytvořte nový virtuální počítač z obnovených disků pomocí PowerShellu. [Další informace](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 3. Pro virtuální počítače se systémem Linux přeinstalujte rozšíření ADE, aby byly datové disky otevřené a připojené.
 
 ## <a name="next-steps"></a>Další kroky

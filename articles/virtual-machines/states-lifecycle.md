@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 0613b4c444b9eacaaf2b9d3e0795f4872cb903f3
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: cd104a31fdba932481889db198ae3cc4998a4466
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182935"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261884"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Životní cyklus a stavy virtuálních počítačů
 
@@ -31,7 +31,7 @@ Následující tabulka obsahuje popis každého stavu instance a označuje, zda 
 :::row:::
    :::column span="":::
 
-   **Státech**
+   **State**
    
    :::column-end:::
    :::column span="":::
@@ -232,7 +232,7 @@ Zde jsou přechodné stavy operace poté, co platforma přijala akci iniciované
 :::row:::
    :::column span="":::
 
-   **Státech**
+   **State**
    
    :::column-end:::
    :::column span="2":::
@@ -423,6 +423,8 @@ Rozhraní API pro zobrazení instancí poskytuje informace o běhu virtuálního
 Průzkumník prostředků Azure poskytuje jednoduché uživatelské rozhraní pro zobrazení stavu spuštěného virtuálního počítače: [Průzkumník prostředků](https://resources.azure.com/).
 
 Stavy zřizování jsou viditelné pro vlastnosti virtuálního počítače a zobrazení instance. Stavy napájení jsou k dispozici v zobrazení instance virtuálního počítače.
+
+Pokud chcete načíst stav napájení všech virtuálních počítačů ve vašem předplatném, použijte [Virtual Machines – Vypíše všechna rozhraní API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) s parametrem **statusOnly** nastavenou na *hodnotu true*.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -2,19 +2,17 @@
 title: Přehled trezorů služby Recovery Services
 description: Přehled a porovnání mezi trezory Recovery Services a trezory Azure Backup.
 ms.topic: conceptual
-ms.date: 08/10/2018
-ms.openlocfilehash: 0e1d061c6baf31fad2e937a604098f0baff6086d
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.date: 08/17/2020
+ms.openlocfilehash: 2b292a39e38ef5e298f45c2babbee9fbd20c39ea
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041897"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261867"
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezorů služby Recovery Services
 
 Tento článek popisuje funkce trezoru Recovery Services. Recovery Services trezor je entita úložiště v Azure, která slouží k ukládání dat. Data obvykle kopírují data nebo konfigurační informace pro virtuální počítače, úlohy, servery nebo pracovní stanice. Pomocí služby Recovery Services trezory můžete uchovávat data záloh pro různé služby Azure, jako jsou například virtuální počítače IaaS (Linux nebo Windows) a databáze SQL Azure. Trezory Recovery Services podporují System Center DPM, Windows Server, Azure Backup Server a další. Trezory služby Recovery Services usnadňují uspořádání dat záloh a současně minimalizují režii spojenou s jejich správou. Trezory Recovery Services jsou založené na modelu Azure Resource Manager Azure, který poskytuje funkce, jako například:
-
-## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Porovnávání Recovery Services trezorů a trezorů služby Backup
 
 - **Rozšířené možnosti, které vám pomůžou zabezpečit**zálohovaná data: pomocí Recovery Services trezorů Azure Backup poskytuje možnosti zabezpečení pro ochranu cloudových záloh. Funkce zabezpečení zajistí, že budete moci zabezpečit zálohy a bezpečně obnovit data, i když dojde k ohrožení produkčního a záložního serveru. [Další informace](backup-azure-security-feature.md)
 
