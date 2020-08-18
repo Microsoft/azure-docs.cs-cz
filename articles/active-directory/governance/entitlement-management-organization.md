@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 272dd95b97c65ecc52dd73909f1ed87d5e5ae3ca
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2c57f23a5cad2f47311b54728d576eb810ad88a4
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170492"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506018"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Přidání propojené organizace v Azure AD – Správa nároků
 
@@ -103,7 +103,7 @@ Pokud chcete přidat externí adresář nebo doménu služby Azure AD jako přip
 
 Pokud se připojená organizace změní v jiné doméně, změní se název organizace nebo chcete změnit sponzory, můžete propojenou organizaci aktualizovat podle pokynů uvedených v této části.
 
-**Požadovaná role**: *globální správce*, *Správce uživatelů*nebo *Pozvánka hosta*
+**Požadovaná role**: *globální správce* nebo *Správce uživatelů*
 
 1. V Azure Portal vyberte **Azure Active Directory**a potom vyberte zásady **správného řízení identity**.
 
@@ -120,7 +120,7 @@ Pokud se připojená organizace změní v jiné doméně, změní se název orga
 
 Pokud už nebudete mít relaci s externím adresářem nebo doménou služby Azure AD, můžete propojenou organizaci odstranit.
 
-**Požadovaná role**: *globální správce*, *Správce uživatelů*nebo *Pozvánka hosta*
+**Požadovaná role**: *globální správce* nebo *Správce uživatelů*
 
 1. V Azure Portal vyberte **Azure Active Directory**a potom vyberte zásady **správného řízení identity**.
 

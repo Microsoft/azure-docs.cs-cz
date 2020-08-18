@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 8/11/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5209ffb0328e90fb2ca9b91773cbf18dd4ed2916
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 47e4bb291d031c41c89c88435a795004490e20a1
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163599"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505321"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Ingestování IoT Hub telemetrie do digitálních vláken Azure
 
@@ -22,12 +22,12 @@ Proces pro ingestování dat do digitálních vláken Azure je nastavení extern
 
 Tento postup popisuje, jak dokumentovat pomocí procesu vytváření funkce Azure, která může ingestovat telemetrii od IoT Hub.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Než budete pokračovat v tomto příkladu, musíte splnit následující požadavky.
-* **Centrum IoT**. Pokyny najdete v části *vytvoření IoT Hub* v [tomto IoT Hub rychlém](../iot-hub/quickstart-send-telemetry-cli.md) startu.
-* **Funkce Azure** se správnými oprávněními pro volání vaší digitální zdvojené instance. Pokyny najdete v tématu [*Postup: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md) . 
-* **Instance digitálního vlákna** , která bude přijímat telemetrii zařízení. Viz [ *Postup: nastavení instance a ověřování digitálních vláken Azure*](./how-to-set-up-instance-portal.md) 
+Než budete pokračovat v tomto příkladu, budete muset nastavit následující prostředky jako požadavky:
+* **Centrum IoT**. Pokyny najdete v části *vytvoření IoT Hub* [tohoto IoT Hub rychlé](../iot-hub/quickstart-send-telemetry-cli.md)spuštění.
+* **Funkce Azure** se správnými oprávněními pro volání vaší digitální zdvojené instance. Pokyny najdete v tématu [*Postup: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md). 
+* **Instance digitálního vlákna Azure** , která bude přijímat telemetrii zařízení. Pokyny najdete v tématu [*Postup: nastavení instance a ověřování digitálních vláken Azure*](./how-to-set-up-instance-portal.md).
 
 ### <a name="example-telemetry-scenario"></a>Ukázkový scénář telemetrie
 

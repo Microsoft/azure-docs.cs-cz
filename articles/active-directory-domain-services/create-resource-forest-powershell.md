@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: eb627b8069bcd9efd1d56adab5eda45dc34a1a10
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 50a8e4f6d966a63a8e727dbacefbc7bb21f5f98b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921992"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506324"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Vytvoření doménové struktury prostředků Azure Active Directory Domain Services a odchozího vztahu důvěryhodnosti doménové struktury do místní domény pomocí Azure PowerShell
 
@@ -88,7 +88,7 @@ Pokud chcete vytvořit doménovou strukturu prostředků spravované domény, po
 
 1. Nejdřív vytvořte skupinu prostředků pomocí rutiny [New-AzResourceGroup][New-AzResourceGroup] . V následujícím příkladu má skupina prostředků název *myResourceGroup* a je vytvořená v oblasti *westus* . Použijte svůj vlastní název a požadovanou oblast:
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzResourceGroup `
       -Name "myResourceGroup" `
       -Location "WestUS"
@@ -102,7 +102,7 @@ Pokud chcete vytvořit doménovou strukturu prostředků spravované domény, po
 
 1. Zkontrolujte následující parametry potřebné pro tento `New-AzureAaddsForest` skript. Ujistěte se, že máte také požadované **Azure PowerShell** a moduly **Azure AD PowerShellu** . Ujistěte se, že jste naplánovali požadavky virtuální sítě, aby poskytovaly aplikace a místní připojení.
 
-    | Name                         | Parametr skriptu          | Popis |
+    | Název                         | Parametr skriptu          | Popis |
     |:-----------------------------|---------------------------|:------------|
     | Předplatné                 | *– azureSubscriptionId*    | ID předplatného, které se používá pro fakturaci Azure služba AD DS Seznam předplatných můžete získat pomocí rutiny [Get-AzureRMSubscription][Get-AzureRMSubscription] . |
     | Skupina prostředků               | *-aaddsResourceGroupName* | Název skupiny prostředků pro spravovanou doménu a přidružené prostředky. |
@@ -112,7 +112,7 @@ Pokud chcete vytvořit doménovou strukturu prostředků spravované domény, po
 
     `New-AzureAaddsForest`Skript může vytvořit virtuální síť Azure a podsíť azure služba AD DS, pokud tyto prostředky ještě neexistují. Skript může volitelně vytvořit podsítě úloh, pokud jsou zadané:
 
-    | Name                              | Parametr skriptu                  | Popis |
+    | Název                              | Parametr skriptu                  | Popis |
     |:----------------------------------|:----------------------------------|:------------|
     | Název virtuální sítě              | *-aaddsVnetName*                  | Název virtuální sítě pro spravovanou doménu.|
     | Adresní prostor                     | *-aaddsVnetCIDRAddressSpace*      | Rozsah adres virtuální sítě v zápisu CIDR (při vytváření virtuální sítě).|
@@ -123,7 +123,7 @@ Pokud chcete vytvořit doménovou strukturu prostředků spravované domény, po
 
 1. Teď pomocí skriptu vytvořte doménovou strukturu prostředků spravované domény `New-AzureAaaddsForest` . Následující příklad vytvoří doménovou strukturu s názvem *addscontoso.com* a vytvoří podsíť úloh. Zadejte vlastní názvy parametrů a rozsahy IP adres nebo existující virtuální sítě.
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzureAaddsForest `
         -azureSubscriptionId <subscriptionId> `
         -aaddsResourceGroupName "myResourceGroup" `
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Nyní zadejte skript následující informace:
 
-| Name                               | Parametr skriptu     | Popis |
+| Název                               | Parametr skriptu     | Popis |
 |:-----------------------------------|:---------------------|:------------|
 | Název domény pro Azure služba AD DS            | *-ManagedDomainFqdn* | Plně kvalifikovaný název domény spravované domény, například *aaddscontoso.com* |
 | Název domény v místním služba AD DS      | *-TrustFqdn*         | Plně kvalifikovaný název domény důvěryhodné doménové struktury, například *OnPrem.contoso.com* |
@@ -204,7 +204,7 @@ Nyní zadejte skript následující informace:
 
 Následující příklad vytvoří vztah důvěryhodnosti s názvem *myAzureADDSTrust* a *OnPrem.contoso.com*. Použijte vlastní názvy parametrů a hesla:.
 
-```azure-powershell
+```azurepowershell
 Add-AaddsResourceForestTrust `
     -ManagedDomainFqdn "aaddscontoso.com" `
     -TrustFqdn "onprem.contoso.com" `

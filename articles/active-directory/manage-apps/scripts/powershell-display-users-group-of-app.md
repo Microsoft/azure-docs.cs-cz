@@ -2,22 +2,21 @@
 title: Ukázka prostředí PowerShell – seznam uživatelů & skupin pro aplikaci proxy aplikací
 description: Příklad PowerShellu, který obsahuje seznam všech uživatelů a skupin přiřazených ke konkrétní aplikaci proxy aplikace Azure Active Directory (Azure AD).
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: aab5ac5d4712dd9e72fc0b9665d740859b5a6775
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 236850684ce479c2356943aea4fb0af570843f1f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75483385"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506944"
 ---
 # <a name="display-users-and-groups-assigned-to-an-application-proxy-application"></a>Zobrazit uživatele a skupiny přiřazené k aplikaci proxy aplikací
 

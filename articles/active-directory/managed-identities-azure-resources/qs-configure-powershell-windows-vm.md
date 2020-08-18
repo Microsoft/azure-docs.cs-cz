@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62c4baafdd66465502bf45fe19a111e17a9539ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e56a5d8607ac2472ba4ef4bdb090468691c93de6
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609064"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505000"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači Azure pomocí PowerShellu
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Spravované identity pro prostředky Azure poskytují služby Azure s automaticky spravovanou identitou v Azure Active Directory. Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu. 
+Spravované identity pro prostředky Azure poskytují služby Azure s automaticky spravovanou identitou v Azure Active Directory. Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu.
 
 V tomto článku se naučíte, jak provádět následující spravované identity pro operace prostředků Azure na virtuálním počítači Azure pomocí následujících spravovaných identit.
 
@@ -47,9 +47,9 @@ V této části se dozvíte, jak povolit a zakázat spravovanou identitu přiřa
 Aby bylo možné vytvořit virtuální počítač Azure s povolenou spravovanou identitou přiřazenou systémem, váš účet potřebuje přiřazení role [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
 1. Přečtěte si jedno z následujících rychlých startů virtuálních počítačů Azure a vyplněním pouze nezbytných oddílů ("přihlášení do Azure", "vytvořit skupinu prostředků", "vytvořit síťovou skupinu", "Vytvoření virtuálního počítače").
-    
+
     Až se dostanete do části Vytvoření virtuálního počítače, udělejte nepatrnou úpravu syntaxe rutiny [New-AzVMConfig](/powershell/module/az.compute/new-azvm) . Nezapomeňte přidat `-AssignIdentity:$SystemAssigned` parametr pro zřízení virtuálního počítače s povolenou identitou přiřazenou systémem, například:
-      
+
     ```powershell
     $vmConfig = New-AzVMConfig -VMName myVM -AssignIdentity:$SystemAssigned ...
     ```
@@ -90,7 +90,7 @@ Po povolení identity přiřazené systémem na virtuálním počítači ji mů�
 
 2. Načte a poznamenejte si `ObjectID` (jak je uvedeno v `Id` poli vrácených hodnot) objektu služby virtuálního počítače:
 
-   ```powerhshell
+   ```powershell
    Get-AzADServicePrincipal -displayname "myVM"
    ```
 
@@ -120,8 +120,8 @@ Pokud máte virtuální počítač, který už nepotřebuje spravovanou identitu
 
 2. Pomocí rutiny načtěte vlastnosti virtuálního počítače `Get-AzVM` a nastavte `-IdentityType` parametr na `UserAssigned` :
 
-   ```powershell   
-   $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM 
+   ```powershell
+   $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
    Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType "UserAssigned"
    ```
 
@@ -142,14 +142,14 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
 
 K přiřazení uživatelsky přiřazené identity k VIRTUÁLNÍmu počítači potřebuje váš účet [přispěvatele virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) a přiřazení rolí [spravovaného operátoru identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Nevyžadují se žádné další přiřazení role adresáře Azure AD.
 
-1. Přečtěte si jedno z následujících rychlých startů virtuálních počítačů Azure a vyplněním pouze nezbytných oddílů ("přihlášení do Azure", "vytvořit skupinu prostředků", "vytvořit síťovou skupinu", "Vytvoření virtuálního počítače"). 
-  
+1. Přečtěte si jedno z následujících rychlých startů virtuálních počítačů Azure a vyplněním pouze nezbytných oddílů ("přihlášení do Azure", "vytvořit skupinu prostředků", "vytvořit síťovou skupinu", "Vytvoření virtuálního počítače").
+
     Až se dostanete do části Vytvoření virtuálního počítače, udělejte mírně změnu [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) syntaxe rutiny. Přidáním `-IdentityType UserAssigned` parametrů a `-IdentityID` ZŘÍDÍTE virtuální počítač s uživatelem přiřazenou identitou.  Nahraďte `<VM NAME>` ,, `<SUBSCRIPTION ID>` `<RESROURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami.  Příklad:
-    
-    ```powershell 
+
+    ```powershell
     $vmConfig = New-AzVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>..."
     ```
-    
+
     - [Virtuální počítač s Windows s využitím PowerShellu](../../virtual-machines/windows/quick-create-powershell.md)
     - [Vytvoření virtuálního počítače se systémem Linux pomocí prostředí PowerShell](../../virtual-machines/linux/quick-create-powershell.md)
 
@@ -203,7 +203,7 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 ```
 Pokud má váš virtuální počítač spravované identity přiřazené systémem i uživatelem, můžete odebrat všechny spravované identity přiřazené uživatelem, a to přepnutím na použití pouze spravovaných identit přiřazených systémem.
 
-```powershell 
+```powershell
 $vm = Get-AzVm -ResourceGroupName myResourceGroup -Name myVm
 Update-AzVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType "SystemAssigned"
 ```
@@ -212,6 +212,6 @@ Update-AzVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType
 
 - [Přehled spravovaných identit pro prostředky Azure](overview.md)
 - Kompletní rychlé starty pro vytváření virtuálních počítačů Azure najdete v těchto tématech:
-  
-  - [Vytvoření virtuálního počítače s Windows pomocí PowerShellu](../../virtual-machines/windows/quick-create-powershell.md) 
-  - [Vytvoření virtuálního počítače s Linuxem pomocí PowerShellu](../../virtual-machines/linux/quick-create-powershell.md) 
+
+  - [Vytvoření virtuálního počítače s Windows pomocí PowerShellu](../../virtual-machines/windows/quick-create-powershell.md)
+  - [Vytvoření virtuálního počítače s Linuxem pomocí PowerShellu](../../virtual-machines/linux/quick-create-powershell.md)

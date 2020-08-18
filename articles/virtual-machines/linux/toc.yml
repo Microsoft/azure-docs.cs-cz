@@ -418,7 +418,7 @@
         - name: Přehled migrace
           href: migration-classic-resource-manager-overview.md
         - name: Podrobné informace o migraci
-          href: migration-classic-resource-manager-deep-dive.md
+          href: ../migration-classic-resource-manager-deep-dive.md
         - name: Plánování migrace
           href: migration-classic-resource-manager-plan.md
         - name: Migrovat pomocí rozhraní příkazového řádku
@@ -428,7 +428,7 @@
         - name: Komunitní nástroje pro migraci
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Nejčastější dotazy
-          href: migration-classic-resource-manager-faq.md
+          href: ../migration-classic-resource-manager-faq.md
     - name: Použití imagí
       displayName: 'SIG, AMI, image'
       items:
@@ -954,7 +954,7 @@
           href: detach-disk.md
         - name: Nasazení disků s využitím šablony ARM
           displayName: 'Azure Resource Manager, ARM'
-          href: using-managed-disks-template-deployments.md
+          href: ../using-managed-disks-template-deployments.md
         - name: Povolení sdílených disků
           href: disks-shared-enable.md
         - name: Nahrání virtuálního pevného disku na disk – CLI
@@ -1004,7 +1004,7 @@
         - name: Výkon
           items:
             - name: Použití akcelerátoru zápisu
-              href: how-to-enable-write-accelerator.md
+              href: ../how-to-enable-write-accelerator.md
             - name: Použití disků Ultra
               href: disks-enable-ultra-ssd.md
             - name: Srovnávací test disku

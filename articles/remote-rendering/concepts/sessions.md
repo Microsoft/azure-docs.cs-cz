@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 509375459d019ead5a7992b808044a75e2666393
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a74fae74a2d0ebbb71d65420475e5772e44a8d84
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83758856"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507089"
 ---
 # <a name="remote-rendering-sessions"></a>Relace Remote Renderingu
 
@@ -40,10 +40,10 @@ Každá relace projde několik fází.
 
 Když požádáte o [Vytvoření nové relace](../how-tos/session-rest-api.md#create-a-session)pomocí ARR, je první věc, kterou vrátí [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)relace. Tento identifikátor UUID vám umožní zadat dotaz na informace o relaci. Identifikátor UUID a některé základní informace o relaci jsou trvalé po dobu 30 dnů, takže je můžete zadat dotaz na tyto informace i po zastavení relace. V tomto okamžiku bude **stav relace** hlášen jako **spuštění**.
 
-V dalším kroku se vzdálené vykreslování Azure pokusí najít server, který může hostovat vaši relaci. Pro toto hledání existují dva parametry. Nejprve bude vyhradit jenom servery ve vaší [oblasti](../reference/regions.md). Důvodem je, že latence sítě v různých oblastech může být příliš vysoká, aby se zaručilo dáté prostředí. Druhý faktor je požadovaná *Velikost* , kterou jste určili. V každé oblasti je k dispozici omezený počet serverů, které mohou splňovat požadavky na velikost *Standard* nebo *Premium* . V důsledku toho platí, že pokud jsou všechny servery požadované velikosti aktuálně používány ve vaší oblasti, vytvoření relace se nezdaří. Důvodem selhání [může být dotazování](../how-tos/session-rest-api.md#get-sessions-properties).
+V dalším kroku se vzdálené vykreslování Azure pokusí najít server, který může hostovat vaši relaci. Pro toto hledání existují dva parametry. Nejprve bude vyhradit jenom servery ve vaší [oblasti](../reference/regions.md). Důvodem je, že latence sítě v různých oblastech může být příliš vysoká, aby se zaručilo dáté prostředí. Druhý faktor je požadovaná *Velikost* , kterou jste určili. V každé oblasti je k dispozici omezený počet serverů, které mohou splňovat požadavky na velikost [*Standard*](../reference/vm-sizes.md) nebo [*Premium*](../reference/vm-sizes.md) . V důsledku toho platí, že pokud jsou všechny servery požadované velikosti aktuálně používány ve vaší oblasti, vytvoření relace se nezdaří. Důvodem selhání [může být dotazování](../how-tos/session-rest-api.md#get-sessions-properties).
 
 > [!IMPORTANT]
-> Pokud si vyžádáte *standardní* velikost virtuálního počítače a požadavek selže kvůli vysokému vyžádání, neznamená to, že požadavek na *prémiový* server selže i nadále. Takže pokud je to pro vás možnost, můžete se pokusit vrátit se k virtuálnímu počítači *Premium* .
+> Pokud vyžádáte velikost *standardního* serveru a požadavek selže kvůli vysokému vyžádání, neznamená to, že požadavek na *prémiový* server selže i nadále. Takže pokud je to pro vás možnost, můžete se pokusit vrátit se k velikosti *Premium* serveru.
 
 Když služba najde vhodný server, bude muset zkopírovat do něj příslušný virtuální počítač (VM), aby se přepnul na hostitele vzdáleného vykreslování Azure. Tento proces trvá několik minut. Následně se virtuální počítač spustí a přechodem **stavu relace** na **připraveno**.
 
@@ -72,7 +72,7 @@ V důsledku nějaké chyby se může také zastavit relace.
 Ve všech případech se po zastavení relace neúčtují další poplatky.
 
 > [!WARNING]
-> Bez ohledu na to, jestli se k relaci připojujete a jak dlouho nemá vliv na fakturaci. To, co platíte za službu, závisí na *době trvání relace*, což znamená čas, kdy je server exkluzivně vyhrazený, a požadované hardwarové funkce (velikost virtuálního počítače). Pokud spustíte relaci, připojíte po dobu pěti minut a pak relaci nezastavíte, takže zůstane spuštěná, dokud její zapůjčení nevyprší, bude se vám účtovat doba zapůjčení celé relace. Naopak *Maximální doba zapůjčení* je většinou bezpečnostní síť. Nezáleží na tom, jestli si vyžádáte relaci s časem zapůjčení na osm hodin, a pak ji používejte jenom pět minut, když relaci ručně zastavíte.
+> Bez ohledu na to, jestli se k relaci připojujete a jak dlouho nemá vliv na fakturaci. To, co platíte za službu, závisí na *době trvání relace*, což znamená čas, kdy je server exkluzivně vyhrazený, a požadované hardwarové schopnosti ( [přidělená velikost](../reference/vm-sizes.md)). Pokud spustíte relaci, připojíte po dobu pěti minut a pak relaci nezastavíte, takže zůstane spuštěná, dokud její zapůjčení nevyprší, bude se vám účtovat doba zapůjčení celé relace. Naopak *Maximální doba zapůjčení* je většinou bezpečnostní síť. Nezáleží na tom, jestli si vyžádáte relaci s časem zapůjčení na osm hodin, a pak ji používejte jenom pět minut, když relaci ručně zastavíte.
 
 #### <a name="extend-a-sessions-lease-time"></a>Prodloužení doby zapůjčení relace
 
@@ -138,7 +138,7 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 Více `AzureFrontend` `AzureSession` instancí a lze spravovat, manipulovat a dotazovat z kódu. V jednom okamžiku se ale může připojit jenom jedno zařízení `AzureSession` .
 
-Životnost virtuálního počítače není vázaná na `AzureFrontend` instanci nebo `AzureSession` instanci. `AzureSession.StopAsync`se musí volat, aby se zastavila relace.
+Životnost virtuálního počítače není vázaná na `AzureFrontend` instanci nebo `AzureSession` instanci. `AzureSession.StopAsync` se musí volat, aby se zastavila relace.
 
 Na ID trvalé relace se dá dotazovat `AzureSession.SessionUUID()` místně pomocí mezipaměti. S tímto ID může aplikace volat `AzureFrontend.OpenSession` , aby se k této relaci navázala.
 

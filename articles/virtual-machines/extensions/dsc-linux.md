@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: a1a166d12ef753a7a6fc7225d0467ead08514f99
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 59b05fcd7fbaf9b0fd9b4083c884edadb4bfef4e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876712"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505576"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozšíření DSC pro Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -40,10 +40,11 @@ Rozšíření DSCForLinux je publikované a podporované Microsoftem. Rozšíře
 ### <a name="operating-system"></a>Operační systém
 
 Pro uzly se systémem Linux podporuje rozšíření DSC Linux všechna distribuce systému Linux uvedená v [dokumentaci k prostředí POWERSHELL DSC](/powershell/scripting/dsc/getting-started/lnxgettingstarted).
- 
+
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Rozšíření DSCForLinux vyžaduje, aby byl cílový virtuální počítač připojený k Internetu. Například rozšíření registr vyžaduje připojení ke službě Automation. Pro jiné akce, jako je například vyžádání, vyžádání, instalace vyžaduje připojení k Azure Storage a GitHubu. Závisí na nastaveních poskytovaných zákazníkem.
+Rozšíření DSCForLinux vyžaduje, aby byl cílový virtuální počítač připojený k Internetu. Například rozšíření registr vyžaduje připojení ke službě Automation.
+Pro jiné akce, jako je například vyžádání, vyžádání, instalace vyžaduje připojení k Azure Storage a GitHubu. Závisí na nastaveních poskytovaných zákazníkem.
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
@@ -55,13 +56,13 @@ Tady jsou všechny podporované parametry veřejné konfigurace:
 * `ResourceName`: (volitelné, String) název vlastního modulu prostředků.
 * `ExtensionAction`: (volitelné, String) určuje, co rozšíření dělá. Platné hodnoty jsou registry, push, Pull, install a Remove. Pokud není zadaný, je ve výchozím nastavení považován za nabízenou akci.
 * `NodeConfigurationName`: (volitelné, String) název konfigurace uzlu, která se má použít.
-* `RefreshFrequencyMins`: (volitelné, int) určuje, jak často (v minutách) se DSC pokusí získat konfiguraci ze serveru vyžádané replikace. 
+* `RefreshFrequencyMins`: (volitelné, int) určuje, jak často (v minutách) se DSC pokusí získat konfiguraci ze serveru vyžádané replikace.
        Pokud se konfigurace na serveru pro vyžádání liší od aktuální položky na cílovém uzlu, zkopíruje se do úložiště čeká na vyřízení a použije se.
 * `ConfigurationMode`: (volitelné, řetězec) určuje, jak má DSC použít konfiguraci. Platné hodnoty jsou ApplyOnly, ApplyAndMonitor a ApplyAndAutoCorrect.
 * `ConfigurationModeFrequencyMins`: (volitelné, int) určuje, jak často (v minutách) DSC ověří, jestli je konfigurace v požadovaném stavu.
 
 > [!NOTE]
-> Pokud používáte verzi starší než 2,3, parametr Mode je stejný jako ExtensionAction. Režim se jeví jako přetížený termín. Aby nedocházelo k nejasnostem, použije se ExtensionAction z verze 2,3. Z důvodu zpětné kompatibility podporuje rozšíření jak režim, tak ExtensionAction. 
+> Pokud používáte verzi starší než 2,3, parametr Mode je stejný jako ExtensionAction. Režim se jeví jako přetížený termín. Aby nedocházelo k nejasnostem, použije se ExtensionAction z verze 2,3. Z důvodu zpětné kompatibility podporuje rozšíření jak režim, tak ExtensionAction.
 >
 
 ### <a name="protected-configuration"></a>Chráněná konfigurace
@@ -269,7 +270,7 @@ $publicConfig = '{
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení, jako je například připojování k Azure Automation. 
+Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení, jako je například připojování k Azure Automation.
 
 Vzorová Správce prostředků šablona je [201-DSC-Linux-Azure-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) a [201-DSC-Linux-Public-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu).
 
@@ -323,13 +324,13 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 
 Můžete se přihlásit ke svému účtu Azure v režimu správy služeb Azure spuštěním:
 
-```powershell>
+```powershell
 Add-AzureAccount
 ```
 
 A nasaďte rozšíření DSCForLinux spuštěním:
 
-```powershell>
+```powershell
 $vmname = '<vm-name>'
 $vm = Get-AzureVM -ServiceName $vmname -Name $vmname
 $extensionName = 'DSCForLinux'
@@ -362,7 +363,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
 
 Můžete se přihlásit ke svému účtu Azure v režimu Azure Resource Manager spuštěním:
 
-```powershell>
+```powershell
 Login-AzAccount
 ```
 
@@ -370,7 +371,7 @@ Další informace o tom, jak používat Azure PowerShell s Azure Resource Manage
 
 Rozšíření DSCForLinux můžete nasadit spuštěním:
 
-```powershell>
+```powershell
 $rgName = '<resource-group-name>'
 $vmName = '<vm-name>'
 $location = '< location>'

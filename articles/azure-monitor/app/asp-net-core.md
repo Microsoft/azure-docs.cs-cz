@@ -3,12 +3,12 @@ title: Application Insights Azure pro ASP.NET Core aplikace | Microsoft Docs
 description: Monitorujte ASP.NET Core webové aplikace pro účely dostupnosti, výkonu a využití.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1a9bc3e46e108c50b36e0318e0f9a51a94e83573
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 99d2a85e96aff650573e142368a136886945dcb0
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475511"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270916"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro ASP.NET Core aplikace
 
@@ -30,7 +30,7 @@ Příklad, který budeme používat, je [aplikace MVC](/aspnet/core/tutorials/fi
 > [!NOTE]
 > ASP.NET Core 3. X vyžaduje [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) nebo novější.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Funkční aplikace ASP.NET Core. Pokud potřebujete vytvořit aplikaci ASP.NET Core, postupujte podle tohoto [ASP.NET Core kurzu](/aspnet/core/getting-started/).
 - Platný klíč instrumentace Application Insights. Tento klíč je nutný k odeslání jakékoli telemetrie do Application Insights. Pokud potřebujete vytvořit nový prostředek Application Insights, abyste získali klíč instrumentace, přečtěte si téma [vytvoření prostředku Application Insights](./create-new-resource.md).
@@ -109,12 +109,16 @@ Příklad, který budeme používat, je [aplikace MVC](/aspnet/core/tutorials/fi
 
     * `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-    * `APPINSIGHTS_INSTRUMENTATIONKEY`se obvykle používá v [Azure Web Apps](./azure-web-apps.md?tabs=net), ale dá se použít i na všech místech, kde je tato sada SDK podporovaná. (Pokud provádíte monitorování webové aplikace bez kódu, je tento formát vyžadován, pokud nepoužíváte připojovací řetězce.)
+    * `APPINSIGHTS_INSTRUMENTATIONKEY` se obvykle používá v [Azure Web Apps](./azure-web-apps.md?tabs=net), ale dá se použít i na všech místech, kde je tato sada SDK podporovaná. (Pokud provádíte monitorování webové aplikace bez kódu, je tento formát vyžadován, pokud nepoužíváte připojovací řetězce.)
 
     Místo nastavování klíčů instrumentace teď můžete také použít [připojovací řetězce](./sdk-connection-string.md?tabs=net).
 
     > [!NOTE]
     > Klíč instrumentace zadaný v kódu služby WINS přes proměnnou prostředí `APPINSIGHTS_INSTRUMENTATIONKEY` , která je službou WINS nad jinými možnostmi.
+
+### <a name="user-secrets-and-other-configuration-providers"></a>Uživatelské klíče a další poskytovatelé konfigurace
+
+Pokud chcete uložit klíč instrumentace v ASP.NET Core uživatelských tajných klíčích nebo si ho načíst z jiného poskytovatele konfigurace, můžete použít přetížení s `Microsoft.Extensions.Configuration.IConfiguration` parametrem. Například, `services.AddApplicationInsightsTelemetry(Configuration);`.
 
 ## <a name="run-your-application"></a>Spusťte aplikaci
 
@@ -143,7 +147,7 @@ Podpora [čítačů výkonu](./web-monitor-performance.md) v ASP.NET Core je ome
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule`je ve výchozím nastavení povolená a bude shromažďovat výchozí sadu čítačů z aplikací .NET Core 3. X. Kurz [EventCounter](eventcounters.md) obsahuje seznam výchozích sad čítačů, které jsou shromažďovány. Obsahuje také pokyny k přizpůsobení seznamu.
+`EventCounterCollectionModule` je ve výchozím nastavení povolená a bude shromažďovat výchozí sadu čítačů z aplikací .NET Core 3. X. Kurz [EventCounter](eventcounters.md) obsahuje seznam výchozích sad čítačů, které jsou shromažďovány. Obsahuje také pokyny k přizpůsobení seznamu.
 
 ## <a name="enable-client-side-telemetry-for-web-applications"></a>Povolení telemetrie na straně klienta pro webové aplikace
 
@@ -199,16 +203,16 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Úplný seznam nastavení v`ApplicationInsightsServiceOptions`
+Úplný seznam nastavení v `ApplicationInsightsServiceOptions`
 
 |Nastavení | Popis | Výchozí
 |---------------|-------|-------
-|EnablePerformanceCounterCollectionModule  | Povolit/zakázat`PerformanceCounterCollectionModule` | true
-|EnableRequestTrackingTelemetryModule   | Povolit/zakázat`RequestTrackingTelemetryModule` | true
-|EnableEventCounterCollectionModule   | Povolit/zakázat`EventCounterCollectionModule` | true
-|EnableDependencyTrackingTelemetryModule   | Povolit/zakázat`DependencyTrackingTelemetryModule` | true
-|EnableAppServicesHeartbeatTelemetryModule  |  Povolit/zakázat`AppServicesHeartbeatTelemetryModule` | true
-|EnableAzureInstanceMetadataTelemetryModule   |  Povolit/zakázat`AzureInstanceMetadataTelemetryModule` | true
+|EnablePerformanceCounterCollectionModule  | Povolit/zakázat `PerformanceCounterCollectionModule` | true
+|EnableRequestTrackingTelemetryModule   | Povolit/zakázat `RequestTrackingTelemetryModule` | true
+|EnableEventCounterCollectionModule   | Povolit/zakázat `EventCounterCollectionModule` | true
+|EnableDependencyTrackingTelemetryModule   | Povolit/zakázat `DependencyTrackingTelemetryModule` | true
+|EnableAppServicesHeartbeatTelemetryModule  |  Povolit/zakázat `AppServicesHeartbeatTelemetryModule` | true
+|EnableAzureInstanceMetadataTelemetryModule   |  Povolit/zakázat `AzureInstanceMetadataTelemetryModule` | true
 |EnableQuickPulseMetricStream | Povolit nebo zakázat funkci LiveMetrics | true
 |EnableAdaptiveSampling | Povolit/zakázat adaptivní vzorkování | true
 |EnableHeartbeat | Povolí nebo zakáže funkci prezenčních signálů, které pravidelně (ve výchozím nastavení 15 minut) pošle vlastní metriku s názvem HeartbeatState s informacemi o modulu runtime, jako je verze .NET, informace o prostředí Azure, pokud jsou k dispozici atd. | true
@@ -281,13 +285,13 @@ Application Insights používá moduly telemetrie k automatickému shromažďov�
 
 Ve výchozím nastavení jsou povoleny následující moduly automatických kolekcí. Tyto moduly zodpovídají za automatické shromažďování telemetrie. Můžete je zakázat nebo nakonfigurovat, aby se změnily jejich výchozí chování.
 
-* `RequestTrackingTelemetryModule`– Shromáždí RequestTelemetry z příchozích webových požadavků.
-* `DependencyTrackingTelemetryModule`– Shromažďuje [DependencyTelemetry](./asp-net-dependencies.md) z odchozích volání http a volání SQL.
-* `PerformanceCollectorModule`-Shromažďuje Windows čítače výkonu.
-* `QuickPulseTelemetryModule`– Shromažďuje telemetrii pro zobrazení na portálu živých metrik.
-* `AppServicesHeartbeatTelemetryModule`– Shromažďuje srdce Beats (které se odesílají jako vlastní metriky) o Azure App Service prostředí, ve kterém je aplikace hostovaná.
-* `AzureInstanceMetadataTelemetryModule`– Shromažďuje srdce Beats (které se odesílají jako vlastní metriky) o prostředí Azure VM, ve kterém je aplikace hostovaná.
-* `EventCounterCollectionModule`– Shromažďuje [EventCounters.](eventcounters.md) Tento modul je novou funkcí a je k dispozici v sadě SDK verze 2.8.0 a vyšších.
+* `RequestTrackingTelemetryModule` – Shromáždí RequestTelemetry z příchozích webových požadavků.
+* `DependencyTrackingTelemetryModule` – Shromažďuje [DependencyTelemetry](./asp-net-dependencies.md) z odchozích volání http a volání SQL.
+* `PerformanceCollectorModule` -Shromažďuje Windows čítače výkonu.
+* `QuickPulseTelemetryModule` – Shromažďuje telemetrii pro zobrazení na portálu živých metrik.
+* `AppServicesHeartbeatTelemetryModule` – Shromažďuje srdce Beats (které se odesílají jako vlastní metriky) o Azure App Service prostředí, ve kterém je aplikace hostovaná.
+* `AzureInstanceMetadataTelemetryModule` – Shromažďuje srdce Beats (které se odesílají jako vlastní metriky) o prostředí Azure VM, ve kterém je aplikace hostovaná.
+* `EventCounterCollectionModule` – Shromažďuje [EventCounters.](eventcounters.md) Tento modul je novou funkcí a je k dispozici v sadě SDK verze 2.8.0 a vyšších.
 
 Pro konfiguraci všech výchozích možností `TelemetryModule` použijte metodu rozšíření `ConfigureTelemetryModule<T>` na `IServiceCollection` , jak je znázorněno v následujícím příkladu.
 
@@ -367,7 +371,7 @@ Výše uvedené nebrání žádnému modulu automatické kolekce v shromažďov�
 
 ### <a name="does-application-insights-support-aspnet-core-3x"></a>Podporuje Application Insights ASP.NET Core 3. X?
 
-Ano. Aktualizace na [sadu Application Insights SDK pro ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verze 2.8.0 nebo vyšší. Starší verze sady SDK nepodporují ASP.NET Core 3. X.
+Yes. Aktualizace na [sadu Application Insights SDK pro ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verze 2.8.0 nebo vyšší. Starší verze sady SDK nepodporují ASP.NET Core 3. X.
 
 Také Pokud používáte pokyny na základě sady Visual Studio z [tohoto místa](#enable-application-insights-server-side-telemetry-visual-studio), aktualizujte na zprovoznění nejnovější verzi sady visual Studio 2019 (16.3.0). Předchozí verze sady Visual Studio nepodporují automatickou registraci pro aplikace ASP.NET Core 3. X.
 
@@ -420,7 +424,7 @@ Pokud je sada SDK nainstalována v době sestavení, jak je znázorněno v tomto
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>Můžu Application Insights monitorování povolit pomocí nástrojů jako Monitorování stavu?
 
-Ne. [Monitorování stavu](./monitor-performance-live-website-now.md) a [monitorování stavu v2](./status-monitor-v2-overview.md) aktuálně podporují pouze ASP.NET 4. x.
+No. [Monitorování stavu](./monitor-performance-live-website-now.md) a [monitorování stavu v2](./status-monitor-v2-overview.md) aktuálně podporují pouze ASP.NET 4. x.
 
 ### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>Je Application Insights automaticky povolená pro moji aplikaci ASP.NET Core 2,0?
 
@@ -428,7 +432,7 @@ Ne. [Monitorování stavu](./monitor-performance-live-website-now.md) a [monitor
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Pokud Spouštím aplikaci v systému Linux, jsou podporovány všechny funkce?
 
-Ano. Podpora funkcí pro sadu SDK je stejná na všech platformách, s následujícími výjimkami:
+Yes. Podpora funkcí pro sadu SDK je stejná na všech platformách, s následujícími výjimkami:
 
 * Sada SDK shromažďuje [čítače událostí](./eventcounters.md) v systému Linux, protože [čítače výkonu](./performance-counters.md) jsou podporovány pouze ve Windows. Většina metrik je stejná.
 * I když `ServerTelemetryChannel` je ve výchozím nastavení povolená, pokud je aplikace spuštěná v systému Linux nebo MacOS, kanál automaticky nevytvoří místní složku úložiště, aby se telemetrie dočasně zachovala v případě, že dojde k problémům se sítí. Z důvodu tohoto omezení dojde ke ztrátě telemetrie, pokud dojde k dočasným problémům se sítí nebo serverem. Pokud chcete tento problém obejít, nakonfigurujte pro tento kanál místní složku:

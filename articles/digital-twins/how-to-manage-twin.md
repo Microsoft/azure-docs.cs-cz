@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0f4d9811dc288222c0a2190805a8b052cb1ae47b
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8e0f0b37dd429578194c18e5a9a1f063b74fb693
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563921"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506528"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -151,7 +151,7 @@ Výsledek volání `object result = await client.DigitalTwins.GetByIdAsync("my-m
 Definované vlastnosti digitálního vlákna jsou vráceny jako vlastnosti nejvyšší úrovně u digitálního vlákna. Metadata nebo systémové informace, které nejsou součástí definice DTDL, se vrátí s `$` předponou. Mezi vlastnosti metadat patří:
 * ID digitálního vlákna v této instanci digitálních vláken Azure, jako je `$dtId` .
 * `$etag`, standardní pole HTTP přiřazené webovým serverem
-* Další vlastnosti v `$metadata` oddílu. Mezi ně patří:
+* Další vlastnosti v `$metadata` oddílu. Tady jsou některé z nich:
     - DTMI modelu digitálního vlákna.
     - Stav synchronizace pro každou zapisovatelnou vlastnost. To je nejužitečnější pro zařízení, kde je možné, že služba a zařízení mají Rozbíhající se stavy (například když je zařízení offline). V současné době se tato vlastnost vztahuje pouze na fyzická zařízení připojená k IoT Hub. S daty v části metadata je možné pochopit úplný stav vlastnosti a také poslední změněná časová razítka. Další informace o stavu synchronizace najdete v [tomto IoT Hub kurzu](../iot-hub/tutorial-device-twins.md) synchronizace stavu zařízení.
     - Metadata specifická pro službu, například z IoT Hub nebo z digitálních vláken Azure. 
@@ -181,6 +181,8 @@ Chcete-li aktualizovat vlastnosti digitálního vlákna, zapište informace, kte
 await client.UpdateDigitalTwin(id, patch);
 ```
 
+Volání opravy může aktualizovat libovolný počet vlastností u jediného vlákna, jak byste chtěli (dokonce i u všech). Pokud potřebujete aktualizovat vlastnosti v rámci více vláken, budete potřebovat samostatné volání aktualizace pro každý z vláken.
+
 > [!TIP]
 > Po vytvoření nebo aktualizaci vlákna může být latence až 10 sekund, než se změny projeví v [dotazech](how-to-query-graph.md). `GetDigitalTwin`Rozhraní API (popsané [dříve v tomto článku) v](#get-data-for-a-digital-twin)této prodlevě nefunguje, proto použijte volání rozhraní API namísto dotazování, abyste viděli nově aktualizovaná vlákna, pokud potřebujete okamžitou reakci. 
 
@@ -204,6 +206,7 @@ Tady je příklad kódu opravy JSON. Tento dokument nahrazuje hodnoty *mass* vla
 Můžete ručně vytvořit opravy nebo pomocí pomocné třídy serializace v [sadě SDK](how-to-use-apis-sdks.md). Tady je příklad každé z nich.
 
 #### <a name="create-patches-manually"></a>Ruční vytvoření oprav
+
 ```csharp
 List<object> twinData = new List<object>();
 twinData.Add(new Dictionary<string, object>() {
@@ -278,6 +281,19 @@ Oprava pro tuto situaci musí aktualizovat model i vlastnost teploty vlákna, na
   }
 ]
 ```
+
+### <a name="handle-conflicting-update-calls"></a>Zpracování konfliktních volání aktualizace
+
+Digitální vlákna Azure zajišťuje, že se všechny příchozí žádosti zpracovávají jednou po druhém. To znamená, že i v případě, že se více funkcí pokusí aktualizovat stejnou vlastnost na vlákna ve stejnou dobu, není **nutné** psát explicitní kód uzamykání pro zpracování konfliktu.
+
+Toto chování je na základě vlákna. 
+
+Představte si například scénář, ve kterém tato tři volání dorazí ve stejnou dobu: 
+*   Zapsat vlastnost A v *Twin1*
+*   Zapsat vlastnost B v *Twin1*
+*   Zapsat vlastnost A v *Twin2*
+
+Dvě volání, která mění *Twin1* , se spustí jednou po druhém a při každé změně se vygenerují zprávy o změně. Volání úpravy *Twin2* může být spuštěno souběžně bez konfliktu, jakmile bude dodáno.
 
 ## <a name="delete-a-digital-twin"></a>Odstranění digitálního vlákna
 

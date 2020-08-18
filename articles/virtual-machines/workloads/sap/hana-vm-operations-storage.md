@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5497f50f9e868338541143a18ab0c83f32c1d1b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4e1b510ed970b253adedef0fb6efb4abe0c3b65b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080520"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506392"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -42,11 +42,11 @@ Seznam typů úložišť a jejich SLA v rámci vstupně-výstupních operací a 
 
 Minimální SAP HANA certifikované podmínky pro různé typy úložišť: 
 
-- Služba Azure Premium Storage podporuje službu Azure Premium Storage – **/hana/log** [akcelerátor zápisu](../../linux/how-to-enable-write-accelerator.md). Svazek **/Hana/data** může být umístěný na Premium Storage bez použití Azure akcelerátor zápisu nebo na disku Ultra.
+- Služba Azure Premium Storage podporuje službu Azure Premium Storage – **/hana/log** [akcelerátor zápisu](../../how-to-enable-write-accelerator.md). Svazek **/Hana/data** může být umístěný na Premium Storage bez použití Azure akcelerátor zápisu nebo na disku Ultra.
 - Azure Ultra disk alespoň pro svazek **/Hana/log** . Svazek **/Hana/data** můžete umístit do úložiště Premium Storage bez použití Azure akcelerátor zápisu nebo za účelem dosažení rychlejšího restartování Ultra disk
 - Svazky **systému souborů NFS v 4.1** nad Azure NetApp Files **/Hana/log a/Hana/data**. Svazek/Hana/Shared může používat protokol NFS v3 nebo NFS verze 4.1.
 
-Některé typy úložišť lze kombinovat. Například je možné umístit **/Hana/data** do služby Premium Storage a **/Hana/log** je možné umístit do úložiště Ultra disk, aby se dosáhlo požadované nízké latence. Pokud používáte svazek založený na ANF pro **/Hana/data**, musí být **/Hana/log** svazek založen na systému souborů NFS nad ANF. Použití systému souborů NFS nad ANF pro jeden ze svazků (jako je/Hana/data) a Azure Premium Storage nebo Ultra disk pro ostatní svazky (jako **/Hana/log** **) se nepodporuje.**
+Některé typy úložišť lze kombinovat. Například je možné umístit **/Hana/data** do služby Premium Storage a **/Hana/log** je možné umístit do úložiště Ultra disk, aby se dosáhlo požadované nízké latence. Pokud používáte svazek založený na ANF pro **/Hana/data**, musí být  **/Hana/log** svazek založen na systému souborů NFS nad ANF. Použití systému souborů NFS nad ANF pro jeden ze svazků (jako je/Hana/data) a Azure Premium Storage nebo Ultra disk pro ostatní svazky (jako **/Hana/log** **) se nepodporuje.**
 
 V místním světě se zřídka postará o subsystémech I/O a jeho schopnosti. Důvodem je, že dodavatel zařízení musí zajistit, aby byly splněny minimální požadavky na úložiště pro SAP HANA. Při sestavování infrastruktury Azure byste si měli být vědomi některých z těchto požadavků na vydaných SAP. Některé z minimálních vlastností propustnosti, které SAP doporučuje, jsou:
 
@@ -75,7 +75,7 @@ Linux má několik různých režimů plánování vstupu a výstupu. Běžnými
 Azure Akcelerátor zápisu je funkce, která je k dispozici pro virtuální počítače Azure M-Series výhradně. Jako název uvádíme účel funkce k vylepšení latence v/v zápisu do služby Azure Premium Storage. V případě SAP HANA se má Akcelerátor zápisu použít jenom pro svazek **/Hana/log** . Proto jsou **/Hana/data** a **/Hana/log** samostatné svazky s Azure akcelerátor zápisu podporují pouze svazek **/Hana/log** . 
 
 > [!IMPORTANT]
-> Při použití služby Azure Premium Storage je použití Azure [akcelerátor zápisu](../../linux/how-to-enable-write-accelerator.md) pro svazek **/Hana/log** povinné. Akcelerátor zápisu je k dispozici pouze pro virtuální počítače s podporou Premium Storage a řady M-Series a Mv2-Series. Akcelerátor zápisu nepracuje v kombinaci s jinými rodinami virtuálních počítačů Azure, jako je Esv3 nebo Edsv4.
+> Při použití služby Azure Premium Storage je použití Azure [akcelerátor zápisu](../../how-to-enable-write-accelerator.md) pro svazek **/Hana/log** povinné. Akcelerátor zápisu je k dispozici pouze pro virtuální počítače s podporou Premium Storage a řady M-Series a Mv2-Series. Akcelerátor zápisu nepracuje v kombinaci s jinými rodinami virtuálních počítačů Azure, jako je Esv3 nebo Edsv4.
 
 Doporučení pro ukládání do mezipaměti pro disky Azure Premium níže jsou popsány v parametrech v/v pro SAP HANA, jako je:
 
@@ -194,7 +194,7 @@ U ostatních svazků by konfigurace vypadala takto:
 
 Ověřte, zda propustnost úložiště pro různé navrhované svazky splňuje zatížení, které chcete spustit. Pokud zatížení vyžaduje větší objemy pro **/Hana/data** a **/Hana/log**, je potřeba zvýšit počet virtuálních pevných disků Azure Premium Storage. Změna velikosti svazku s více virtuálními disky, než je uvedené, zvyšuje počet IOPS a propustnost vstupně-výstupních operací v rámci omezení typu virtuálního počítače Azure.
 
-Azure Akcelerátor zápisu funguje jenom ve spojení se službou [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Proto musí být alespoň disky Azure Premium Storage, které tvoří **/Hana/log** svazek, nasazeny jako spravované disky. Podrobnější pokyny a omezení služby Azure Akcelerátor zápisu najdete v článku [akcelerátor zápisu](../../linux/how-to-enable-write-accelerator.md).
+Azure Akcelerátor zápisu funguje jenom ve spojení se službou [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Proto musí být alespoň disky Azure Premium Storage, které tvoří **/Hana/log** svazek, nasazeny jako spravované disky. Podrobnější pokyny a omezení služby Azure Akcelerátor zápisu najdete v článku [akcelerátor zápisu](../../how-to-enable-write-accelerator.md).
 
 Pro virtuální počítače s certifikací HANA řady Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series) a [EDSV4](../../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series)je nutné ANF pro **/Hana/data** a **/Hana/log** svazek. Nebo potřebujete místo Azure Premium Storage využívat službu Azure Ultra disk Storage jenom pro svazek **/Hana/log** . V důsledku toho by konfigurace pro **/Hana/data** svazek v Azure Premium Storage vypadala takto:
 
@@ -352,9 +352,9 @@ Méně nákladná alternativa takových konfigurací by mohla vypadat takto:
 | M416ms_v2 | 11400 GiB | 2 000 MB/s | 7 x P40 | 1 × E30 | 1 × E10 | 1 × E6 | Při použití Akcelerátor zápisu pro kombinované objemy dat a svazků protokolu se omezí frekvence IOPS na 20 000<sup>2</sup> . |
 
 
-<sup>1</sup> službu [Azure akcelerátor zápisu](../../linux/how-to-enable-write-accelerator.md) nelze použít se rodinou virtuálních počítačů Ev4 a Ev4. V důsledku použití služby Azure Premium Storage nebude latence vstupu/výstupu menší než 1 ms.
+<sup>1</sup> službu [Azure akcelerátor zápisu](../../how-to-enable-write-accelerator.md) nelze použít se rodinou virtuálních počítačů Ev4 a Ev4. V důsledku použití služby Azure Premium Storage nebude latence vstupu/výstupu menší než 1 ms.
 
-<sup>2</sup> rodina virtuálních počítačů podporuje [Azure akcelerátor zápisu](../../linux/how-to-enable-write-accelerator.md), ale je možné, že limit IOPS pro zápis akcelerátoru může omezit možnosti IOPS konfigurace disku.
+<sup>2</sup> rodina virtuálních počítačů podporuje [Azure akcelerátor zápisu](../../how-to-enable-write-accelerator.md), ale je možné, že limit IOPS pro zápis akcelerátoru může omezit možnosti IOPS konfigurace disku.
 
 V případě kombinace dat a svazku protokolu pro SAP HANA by disky vytvářející prokládaný svazek neměly mít povolenou mezipaměť pro čtení nebo mezipaměť pro čtení/zápis.
 

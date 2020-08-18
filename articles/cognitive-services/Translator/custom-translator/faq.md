@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 2edc5e9e255af321a30521ba1e707eea30d81f73
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 06caafe75682a2375a8023787f9905ca1e8117c9
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957592"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507225"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>Vlastní Překladatel – Nejčastější dotazy
 
@@ -41,14 +41,15 @@ Nasazení obvykle trvá méně než hodinu.
 
 ## <a name="how-do-you-access-a-deployed-system"></a>Jak přistupujete k nasazenému systému?
 
-Nasazené systémy jsou k dispozici prostřednictvím překladatele zadáním KódKategorie. Další informace o překladateli najdete na webové stránce [referenčního rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) .
+Nasazené systémy jsou k dispozici prostřednictvím Microsoft Translator Text API V3 zadáním KódKategorie. Další informace o Translator Text API najdete na webové stránce [referenčního rozhraní API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) .
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Návody přeskočit zarovnání a konce věty, pokud jsou moje data už zarovnané na větu?
 
-Vlastní Překladatel přeskočí zarovnání věty a konce věty pro soubory TMX a textové soubory s `.align` příponou. `.align`soubory dávají uživatelům možnost přeskočit krok a proces zarovnání věty vlastního překladatele pro soubory, které jsou dokonale zarovnané a nemusí provádět žádné další zpracování. `.align`Pro soubory, které jsou dokonale zarovnané, doporučujeme použít rozšíření.
+Vlastní Překladatel přeskočí zarovnání věty a konce věty pro soubory TMX a textové soubory s `.align` příponou. `.align` soubory dávají uživatelům možnost přeskočit krok a proces zarovnání věty vlastního překladatele pro soubory, které jsou dokonale zarovnané a nemusí provádět žádné další zpracování. `.align`Pro soubory, které jsou dokonale zarovnané, doporučujeme použít rozšíření.
 
 Pokud se počet extrahovaných vět neshoduje se dvěma soubory se stejným základním názvem, vlastní Překladatel pořád spustí zarovnání věty u `.align` souborů.
 
-## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Zkoušel jsem odeslat svůj TMX, ale říká "zpracování dokumentu se nezdařilo".
+## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Zkoušel jsem odeslat svůj TMX, ale říká "zpracování dokumentu se nezdařilo"
+
 
 Ujistěte se, že TMX odpovídá specifikaci TMX 1.4 b na adrese <https://www.gala-global.org/tmx-14b> .

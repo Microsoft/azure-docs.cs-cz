@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 947f7afba6a8b40e9b1c71ac817239dd039539f7
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9f92e703dd45e893a3dfdd8a4c1d6aa3e9b8e96e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192395"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506494"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Izolace sítě během školení & odvození s privátními virtuálními sítěmi
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,7 +92,7 @@ Studio podporuje čtení dat z následujících typů úložiště dat ve virtu�
 
 Přidejte svůj pracovní prostor a účet úložiště do stejné virtuální sítě, aby k nim měli přístup.
 
-1. Pokud chcete připojit svůj pracovní prostor k virtuální síti, [Povolte privátní odkaz na Azure](how-to-configure-private-link.md). Tato funkce je aktuálně ve verzi Preview a je k dispozici v USA – východ USA – západ 2 USA (střed) – jih oblastech.
+1. Pokud chcete připojit svůj pracovní prostor k virtuální síti, [Povolte privátní odkaz na Azure](how-to-configure-private-link.md). Tato funkce je aktuálně ve verzi Preview a je dostupná v oblastech USA – východ a USA – západ 2.
 
 1. Pokud chcete připojit svůj účet úložiště k virtuální síti, [nakonfigurujte nastavení brány firewall a virtuální sítě](#use-a-storage-account-for-your-workspace).
 
@@ -832,4 +832,4 @@ Pokud chcete použít virtuální počítač nebo cluster Azure HDInsight ve vir
 * [Nastavení prostředí trénování](how-to-set-up-training-targets.md)
 * [Nastavení privátních koncových bodů](how-to-configure-private-link.md)
 * [Kam se mají modely nasadit](how-to-deploy-and-where.md)
-* [Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
+* [Zabezpečení webové služby prostřednictvím služby Azure Machine Learning s využitím protokolu TLS](how-to-secure-web-service.md)

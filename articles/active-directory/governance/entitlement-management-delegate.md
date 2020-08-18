@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa18b55884a22f6c64f1c08bd5be8a71b265029a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a01f945496d2f0bc81a108c5e58c89587c1c4e38
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034379"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505474"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegování a role v Azure AD – Správa nároků
 
@@ -116,7 +116,7 @@ V následující tabulce jsou uvedeny úlohy, které mohou provádět role sprá
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Požadované role pro přidání prostředků do katalogu
 
-Globální správce může přidat nebo odebrat libovolnou skupinu (v cloudu vytvořené skupiny zabezpečení nebo skupiny Office 365), aplikaci nebo web SharePointu Online v katalogu. Správce uživatele může přidat nebo odebrat libovolnou skupinu nebo aplikaci v katalogu.
+Globální správce může přidat nebo odebrat libovolnou skupinu (v cloudu vytvořené skupiny zabezpečení nebo skupiny Office 365), aplikaci nebo web SharePointu Online v katalogu. Správce uživatele může v katalogu přidat nebo odebrat jakoukoli skupinu nebo aplikaci, s výjimkou skupiny nakonfigurované jako přiřaditelné k roli adresáře.
 
 Pro uživatele, který není globálním správcem nebo správcem uživatelů, pokud chcete přidat skupiny, aplikace nebo weby SharePointu Online do katalogu, musí mít tento uživatel *jak* požadovanou roli adresáře služby Azure AD, tak roli správy oprávnění vlastníka katalogu. V následující tabulce jsou uvedeny kombinace rolí, které jsou nutné k přidání prostředků do katalogu. Chcete-li odebrat prostředky z katalogu, je nutné mít stejné role.
 
@@ -131,6 +131,9 @@ Pro uživatele, který není globálním správcem nebo správcem uživatelů, p
 | [Správce aplikace](../users-groups-roles/directory-assign-admin-roles.md) | Vlastník katalogu |  |  | :heavy_check_mark: |  |
 | [Správce cloudové aplikace](../users-groups-roles/directory-assign-admin-roles.md) | Vlastník katalogu |  |  | :heavy_check_mark: |  |
 | Uživatel | Vlastník katalogu | Pouze v případě, že vlastník skupiny | Pouze v případě, že vlastník skupiny | Jenom v případě, že vlastník aplikace |  |
+
+> [!NOTE]
+> Pokud uživatel přidá skupinu zabezpečení nebo skupinu Office 365, nemůže být skupina přiřazená roli. Pokud uživatel přidá skupinu, která je přiřazena rolím při vytváření balíčku pro přístup, musí být také vlastníkem této skupiny, kterou lze přiřadit roli. Další informace najdete v referenčních informacích o [Vytvoření skupiny s přiřazením rolí v Azure Active Directory](../users-groups-roles/roles-groups-create-eligible.md).
 
 K určení nejnižší privilegované role pro úlohu můžete také [v Azure Active Directory odkazovat na role správce podle úlohy](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)správce.
 

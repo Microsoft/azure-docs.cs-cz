@@ -11,17 +11,63 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: ac4b0c59cfad3d435858e094cbcb8c9f855a0041
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 8985d8ab0b5fa8477a636254d1a5179cd2187963
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185311"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505801"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
 
+## <a name="text-to-speech-2020-august-release"></a>Převod textu na řeč 2020 – srpen Release
+
+### <a name="new-features"></a>Nové funkce
+
+* **Neuronové TTS: nový styl speaking pro `en-US` Hlasový Standard**. AriaNeural může při čtení zpráv newscaster zvuk, jako je. Styl "newscast-formální" se podrobněji rozpíná, zatímco styl "newscast-příležitostné" je uvolněn a neformální. Podívejte se, [Jak používat styly Speak v SSML](speech-synthesis-markup.md).
+
+* **Vlastní hlas: nová funkce se uvolní k automatickému ověření kvality dat školení**. Po nahrání dat prohlíží schopnost kontroly dat různé aspekty zvukového záznamu a přepisu a automaticky opravuje nebo filtruje data, aby se zlepšila kvalita vyškolené hlasového modelu. To pokrývá objem zvuku, hladinu hluku, přesnosti výslovnosti řeči, zarovnání řeči s normalizovaným textem, tichá zvuk, kromě formátu zvuku a skriptu. 
+
+* **Vytvoření zvukového obsahu: sada nových funkcí pro zajištění výkonnějšího ladění hlasu a možností správy zvuku**.
+
+    * Výslovnost: funkce optimalizace výslovnosti se aktualizuje na nejnovější foném sadu. Můžete vybrat správný prvek foném z knihovny a zpřesnit výslovnost slov, která jste vybrali. 
+
+    * Stažení: zvuk "stažení"/"Export" je vylepšený, aby podporoval generování zvuků každým odstavcem. Při generování několika zvukových výstupů můžete snadno upravovat různý obsah ve stejném souboru nebo SSML. Struktura souborů "Download" je také revidována. Teď můžete snadno získat všechny zvuky v jedné složce. 
+
+    * Stav úlohy: vylepšené možnosti exportu z více souborů. Pokud exportujete více souborů v minulosti, v případě selhání jednoho ze souborů dojde k selhání celé úlohy. Všechny ostatní soubory ale teď budou úspěšně exportovány. Sestava úkolu je obohacena o podrobnější a strukturované informace. V protokolech můžete zkontrolovat všechny neúspěšné soubory a věty teď se sestavou. 
+
+    * Dokumentace k SSML: propojená s dokumentem SSML vám umožní kontrolovat pravidla, jak používat všechny funkce ladění.
+
+* **Rozhraní API pro seznam hlasu se aktualizuje tak, aby obsahovalo uživatelsky přívětivé zobrazované jméno a styly speaking podporované neuronové hlasy**.
+
+### <a name="general-tts-voice-quality-improvements"></a>Obecná vylepšení kvality hlasu TTS
+
+* Snížená chyba výslovnosti na úrovni aplikace% pro `ru-RU` (chyba snížená o 56%) a `sv-SE` (chyba se snížila o 49%)
+
+* Vylepšené polyphonyé čtení slov na `en-US` neuronové hlasy o 40%. Příklady slov Polyphony zahrnují "Read", "Live", "content", "Record", "Object" atd. 
+
+* Vylepšení přirozeného tónu pro otázky v nástroji `fr-FR` . MOS (střední skóre názoru) získat: + 0,28
+
+* Aktualizovali jsme vocoders na následující hlasy s vylepšeními přesnosti a celkovou rychlostí výkonu 40%.
+
+    | Národní prostředí | Hlas |
+    |---|---|    
+    | `en-GB` | Mia |
+    | `es-MX` | Dalia |
+    | `fr-CA` | Sylvie |
+    | `fr-FR` | Denise |
+    | `ja-JP` | Nanami |
+    | `ko-KR` | Sun – Hi |
+
+### <a name="bug-fixes"></a>Opravy chyb
+
+* Opravili jsme několik chyb pomocí nástroje pro tvorbu zvukového obsahu. 
+    * Opravili jsme problém při automatické aktualizaci. 
+    * Opravené problémy s hlasy stylu v zh-CN v oblasti jih Východní Asie
+    * Opravili jsme problém v stabilitě, včetně chyby exportu se značkou Break, chyb v interpunkčních znaménekch.    
+
 ## <a name="new-speech-to-text-locales-2020-august-release"></a>Nové národní prostředí pro převod řeči na text: 2020 – srpen Release
-Speech-to-text vydaná 26 nových národních prostředí v srpnu: 2 Evropské jazyky cs-CZ a hu-HU, 5 anglické národní prostředí a 19 Španělská národní prostředí, která se týkají většiny zemí jihovýchodní Ameriky. Níže je uveden seznam nových národních prostředí. Seznam kompletních jazyků najdete [tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
+Převod řeči na text vydaný 26 nových národních prostředí v srpnu: 2 Evropské jazyky `cs-CZ` a `hu-HU` , 5 anglické národní prostředí a 19 Španělská národní prostředí, která se týkají většiny zemí jihovýchodní Ameriky. Níže je uveden seznam nových národních prostředí. Seznam kompletních jazyků najdete [tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
 
 | Národní prostředí  | Jazyk                          |
 |---------|-----------------------------------|
@@ -279,7 +325,7 @@ Buďte v pořádku!
 - JavaScript: Přidání podpory pro pro `FromHost API` usnadnění používání s Prem kontejnery a svrchovanými cloudy. Další informace [najdete v dokumentaci.](speech-container-howto.md)
 - JavaScript: nyní jsme se spojili `NODE_TLS_REJECT_UNAUTHORIZED` s příspěvkem z [orgads](https://github.com/orgads). [Tady](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)najdete podrobnosti.
 
-**Změny způsobující chyby**
+**Průlomové změny**
 
 - `OpenSSL` byla aktualizována na verzi 1.1.1 b a staticky propojená se základní knihovnou sady Speech SDK pro Linux. To může způsobit přerušení, pokud vaše Doručená pošta nebyla `OpenSSL` nainstalována do `/usr/lib/ssl` adresáře v systému. Pokud chcete tento problém obejít, přečtěte si [naši dokumentaci](how-to-configure-openssl-linux.md) v části dokumentace k sadě Speech SDK.
 - Změnili jsme datový typ vrácený pro C# `WordLevelTimingResult.Offset` z `int` na, `long` aby bylo umožněno přístupu k `WordLevelTimingResults` datům, když jsou data řeči delší než 2 minuty.
@@ -320,7 +366,7 @@ Buďte v pořádku!
 - Přidání `KeywordRecognizer` podpory pro Windows (UWP), Android a iOS prostřednictvím balíčků NuGet a Unity
 - Bylo přidáno rozhraní API vzdálené konverzace Java, které umožní přepis konverzace v asynchronních dávkách.
 
-**Změny způsobující chyby**
+**Průlomové změny**
 
 - Funkce konverzace Transcriber přesunuté do oboru názvů `Microsoft.CognitiveServices.Speech.Transcription` .
 - Součást metod konverzace Transcriber je přesunuta do nové `Conversation` třídy.
@@ -627,7 +673,7 @@ V našem [ukázkovém úložišti](https://aka.ms/csspeech/samples)se přidala N
 - Podpora pro cíl-C v iOS. Podívejte se na náš rychlý úvodní úkol [v jazyce C pro iOS](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md).
 - Podpora JavaScriptu v prohlížeči Podívejte se na náš [rychlý úvodní JavaScript](quickstart-js-browser.md).
 
-**Změny způsobující chyby**
+**Průlomové změny**
 
 - V této verzi se zavádí určitý počet nezměněných změn.
   Podrobnosti najdete na [této stránce](https://aka.ms/csspeech/breakingchanges_1_0_0) .
@@ -646,7 +692,7 @@ V našem [ukázkovém úložišti](https://aka.ms/csspeech/samples)se přidala N
 
 - Vystavení dalších podrobností o chybách při chybě připojení
 
-**Změny způsobující chyby**
+**Průlomové změny**
 
 - V jazyce Java (Android) `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` již funkce nevyžaduje parametr cesty. Tato cesta se teď automaticky detekuje na všech podporovaných platformách.
 - Přístupový objekt get vlastnosti `EndpointUrl` v jazycích Java a C# byl odebrán.
@@ -675,7 +721,7 @@ V našem [ukázkovém úložišti](https://aka.ms/csspeech/samples)se přidala N
 - Výsledek rozpoznávání obsahuje více polí. Jsou posunuty od zahájení zvuku a doby trvání (v tiků) rozpoznaného textu a dalších hodnot, které představují stav rozpoznávání, například `InitialSilenceTimeout` a `InitialBabbleTimeout` .
 - Podporuje AuthorizationToken pro vytváření instancí továrny.
 
-**Změny způsobující chyby**
+**Průlomové změny**
 
 - Události rozpoznávání: `NoMatch` Typ události byl sloučen do `Error` události.
 - SpeechOutputFormat v jazyce C# byla přejmenována na `OutputFormat` , aby zůstala v souladu s C++.

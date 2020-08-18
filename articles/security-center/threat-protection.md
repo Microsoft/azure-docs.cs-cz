@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: d049538653ea345935d40bd965afd7d2453b2aa2
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 69f439e102edc53207e44d63cb29396f64f59e0e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041982"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272497"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Ochrana před hrozbami v Azure Security Center
 
@@ -43,7 +43,7 @@ Bez ohledu na to, jestli je výstraha vygenerovaná Security Center nebo přijat
 
 
 
-## <a name="threat-protection-for-windows-machines"></a>Ochrana před hrozbami pro počítače s Windows<a name="windows-machines"></a>
+## <a name="threat-protection-for-windows-machines"></a>Ochrana před hrozbami pro počítače s Windows <a name="windows-machines"></a>
 
 Azure Security Center se integruje se službami Azure za účelem monitorování a ochrany počítačů se systémem Windows. Security Center prezentuje výstrahy a návrhy oprav ze všech těchto služeb ve snadno použitelném formátu.
 
@@ -74,7 +74,7 @@ Azure Security Center se integruje se službami Azure za účelem monitorování
 
 
 
-## <a name="threat-protection-for-linux-machines"></a>Ochrana před hrozbami pro počítače se systémem Linux<a name="linux-machines"></a>
+## <a name="threat-protection-for-linux-machines"></a>Ochrana před hrozbami pro počítače se systémem Linux <a name="linux-machines"></a>
 
 Security Center shromažďuje záznamy auditu z počítačů se systémem Linux pomocí **auditu**, jeden z nejběžnějších rozhraní pro auditování Linux. auditované života v jádru hlavní. 
 
@@ -91,7 +91,7 @@ Security Center shromažďuje záznamy auditu z počítačů se systémem Linux 
 
 
 
-## <a name="threat-protection-for-azure-app-service"></a>Ochrana před hrozbami pro Azure App Service<a name="app-services"></a>
+## <a name="threat-protection-for-azure-app-service"></a>Ochrana před hrozbami pro Azure App Service <a name="app-services"></a>
 
 > [!NOTE]
 > Tato služba není aktuálně dostupná v oblastech cloudu Azure pro státní správu a svrchované oblasti.
@@ -110,7 +110,7 @@ Další informace o plánech App Service najdete v tématu [plány App Service](
 
 
 
-## <a name="threat-protection-for-containers"></a>Ochrana před hrozbami pro kontejnery<a name="azure-containers"></a>
+## <a name="threat-protection-for-containers"></a>Ochrana před hrozbami pro kontejnery <a name="azure-containers"></a>
 
 ### <a name="availability"></a>Dostupnost
 
@@ -131,7 +131,7 @@ Další informace o plánech App Service najdete v tématu [plány App Service](
 
 
 
-## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>Ochrana před hrozbami pro SQL Database a SQL Data Warehouse<a name="data-sql"></a>
+## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>Ochrana před hrozbami pro SQL Database a SQL Data Warehouse <a name="data-sql"></a>
 
 Rozšířená ochrana před internetovými útoky pro Azure SQL Database detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
@@ -147,7 +147,7 @@ Další informace:
 
 
 
-## <a name="threat-protection-for-azure-storage"></a>Ochrana před hrozbami pro Azure Storage<a name="azure-storage"></a>
+## <a name="threat-protection-for-azure-storage"></a>Ochrana před hrozbami pro Azure Storage <a name="azure-storage"></a>
 
 ### <a name="availability"></a>Dostupnost
 
@@ -204,7 +204,7 @@ Další informace:
 
 
 
-## <a name="threat-protection-for-azure-cosmos-db"></a>Ochrana před hrozbami pro Azure Cosmos DB<a name="cosmos-db"></a>
+## <a name="threat-protection-for-azure-cosmos-db"></a>Ochrana před hrozbami pro Azure Cosmos DB <a name="cosmos-db"></a>
 
 Výstrahy Azure Cosmos DB jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k účtům Azure Cosmos DB nebo jejich zneužití.
 
@@ -216,7 +216,7 @@ Další informace:
 
 
 
-## <a name="threat-protection-for-azure-network-layer"></a>Ochrana před hrozbami pro síťovou vrstvu Azure<a name="network-layer"></a>
+## <a name="threat-protection-for-azure-network-layer"></a>Ochrana před hrozbami pro síťovou vrstvu Azure <a name="network-layer"></a>
 
 Analýza Security Centerch síťových vrstev vychází z ukázkových [dat IPFIX](https://en.wikipedia.org/wiki/IP_Flow_Information_Export), což jsou hlavičky paketů shromážděné směrovači Azure Core. Na základě tohoto datového kanálu používá Security Center k identifikaci a označení aktivit škodlivého provozu modely strojového učení. Security Center k rozšíření IP adres používá taky databázi Microsoft Threat Intelligence.
 
@@ -230,7 +230,6 @@ Některé konfigurace sítě mohou omezit Security Center generování výstrah 
 
 Seznam výstrah síťových vrstev Azure najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-azurenetlayer).
 
-Podrobnosti o tom, jak Security Center můžou použít signály související se sítí pro použití ochrany před hrozbami, najdete [v tématu heuristické detekce služby DNS v Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
 
 
 
@@ -281,9 +280,9 @@ Seznam výstrah Azure Key Vault najdete v [referenční tabulce výstrah](alerts
 
 
 
-## <a name="threat-protection-for-other-microsoft-services"></a>Ochrana před hrozbami pro další služby Microsoftu<a name="alerts-other"></a>
+## <a name="threat-protection-for-other-microsoft-services"></a>Ochrana před hrozbami pro další služby Microsoftu <a name="alerts-other"></a>
 
-### <a name="threat-protection-for-azure-waf"></a>Ochrana před hrozbami pro Azure WAF<a name="azure-waf"></a>
+### <a name="threat-protection-for-azure-waf"></a>Ochrana před hrozbami pro Azure WAF <a name="azure-waf"></a>
 
 Azure Application Gateway nabízí Firewall webových aplikací (WAF) poskytující centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení.
 
@@ -292,7 +291,7 @@ Webové aplikace jsou stále více zaměřené na škodlivé útoky, které vyu�
 Pokud máte licenci pro Azure WAF, vaše výstrahy WAF se streamují Security Center bez nutnosti další konfigurace. Další informace o výstrahách vygenerovaných službou WAF najdete v tématu [skupiny pravidel a pravidla pro Firewall webových aplikací](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31).
 
 
-### <a name="threat-protection-for-azure-ddos-protection"></a>Ochrana před hrozbami pro Azure DDoS Protection<a name="azure-ddos"></a>
+### <a name="threat-protection-for-azure-ddos-protection"></a>Ochrana před hrozbami pro Azure DDoS Protection <a name="azure-ddos"></a>
 
 Je známo, že je možné snadno spustit útok s cílem odepření služeb (DDoS). Jsou to skvělé problémy se zabezpečením, zejména pokud přesouváte aplikace do cloudu. 
 

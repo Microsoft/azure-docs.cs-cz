@@ -3,12 +3,12 @@ title: Podpora značek pro prostředky
 description: Zobrazuje, které typy prostředků Azure podporují značky. Poskytuje podrobnosti pro všechny služby Azure.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 2ebf55a15233c401904460d459a118fc46142ac3
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: e3a51bb7c21b6ea2e8baa86fe2981184c41d7d69
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337989"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272429"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](tag-resources.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů. Náklady můžete zobrazit podle značek v [cost management analýza nákladů](../../cost-management-billing/costs/group-filter.md) a [fakturace Azure a data o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -216,7 +216,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | anonymousapiusers | Ne | Ne |
 > | konfigurace | Ne | Ne |
 > | Protokoly | Ne | Ne |
-> | sestavy | Ne | Ne |
+> | reports | Ne | Ne |
 > | servicehealthmetrics | Ne | Ne |
 > | services | Ne | Ne |
 
@@ -771,8 +771,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ReservationRecommendationDetails | Ne | Ne |
 > | ReservationRecommendations | Ne | Ne |
 > | ReservationSummaries | Ne | Ne |
-> | ReservationTransactions | Ne | Ne |
-> | Značky | Ne | Ne |
+> | ReservationTransactions | Ne | No |
+> | Značky | No | Ne |
 > | tenantů | Ne | Ne |
 > | Terminologie | Ne | Ne |
 > | UsageDetails (Podrobnosti o využití) | Ne | Ne |
@@ -902,7 +902,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | pracovní prostory | Ano | Ne |
+> | pracovní prostory | Ano | Ano |
 > | pracovní prostory/dbWorkspaces | Ne | Ne |
 > | pracovní prostory/storageEncryption | Ne | Ne |
 > | pracovní prostory/virtualNetworkPeerings | Ne | Ne |
@@ -2412,7 +2412,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | monitorInstances | Ne | Ne |
 > | monitorInstancesSummary | Ne | Ne |
 > | Monitor | Ne | Ne |
-> | notificationSettings | Ne | Ne |
+> | notificationSettings | Ne | No |
 
 ## <a name="next-steps"></a>Další kroky
 

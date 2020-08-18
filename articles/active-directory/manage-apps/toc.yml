@@ -91,16 +91,6 @@
           href: application-proxy-high-availability-load-balancing.md
         - name: Porovnání řešení vzdáleného přístupu
           href: application-proxy-migration.md
-    - name: Uvedení aplikace na trh
-      items:
-        - name: Povolení jednotného přihlašování pro aplikaci s více tenanty
-          href: isv-sso-content.md
-        - name: Vytvoření tenanta Azure pro aplikaci s více tenanty
-          href: isv-tenant-multi-tenant-app.md
-        - name: Volba federace s více tenanty
-          href: isv-choose-multi-tenant-federation.md
-        - name: Vytvoření dokumentace pro aplikaci s více tenanty
-          href: isv-create-sso-documentation.md
 - name: Návody
   expanded: false
   items:

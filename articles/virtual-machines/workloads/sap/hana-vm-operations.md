@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e01eecf24802bc43aebfa7b02105a2b1aa679a52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 93587c6bbed20982bd96d04f58106ec1617542d3
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051934"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506426"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operace v Azure
 Tento dokument poskytuje pokyny pro konfiguraci infrastruktury Azure a operačních SAP HANA systémů, které jsou nasazené na nativních virtuálních počítačích Azure (VM). Dokument obsahuje také informace o konfiguraci pro SAP HANA škálování pro SKU virtuálního počítače M128s. Tento dokument nemá za cíl nahradit standardní dokumentaci SAP, která zahrnuje následující obsah:
@@ -29,7 +29,7 @@ Tento dokument poskytuje pokyny pro konfiguraci infrastruktury Azure a operačn�
 - [Instalační příručky SAP](https://service.sap.com/instguides)
 - [Poznámky SAP](https://service.sap.com/notes)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K použití tohoto průvodce potřebujete základní znalosti následujících součástí Azure:
 
 - [Virtuální počítače Azure](../../linux/tutorial-manage-vm.md)
@@ -259,7 +259,7 @@ V případě, že virtuální počítač M64-32ms má mnoho paměti, zatížení
 
 Zvláště pro případ, že je zatížení náročné na čtení, může zvýšit výkon v/v, aby se zapnula mezipaměť hostitele Azure jen pro čtení, jak se doporučuje pro datové svazky databázového softwaru. Vzhledem k tomu, že mezipaměť disku hostitele Azure musí být v transakčním protokolu "none". 
 
-V souvislosti s velikostí svazku protokolu doporučeným výchozím bodem je heuristika o 15% velikosti dat. Vytvoření svazku protokolu se dá provést pomocí různých typů disků Azure v závislosti na nákladech a propustnosti. Pro svazek protokolu je potřeba vysoká propustnost vstupně-výstupních operací.  V případě použití typu virtuálního počítače M64-32ms je povinné povolit [akcelerátor zápisu](../../linux/how-to-enable-write-accelerator.md). Azure Akcelerátor zápisu poskytuje optimální latenci zápisu na disk pro transakční protokol (k dispozici pouze pro řadu M-Series). K dispozici jsou některé položky, které by měly být zváženy, podobně jako maximální počet disků na typ virtuálního počítače. Podrobnosti o Akcelerátor zápisu najdete [tady](../../windows/how-to-enable-write-accelerator.md) .
+V souvislosti s velikostí svazku protokolu doporučeným výchozím bodem je heuristika o 15% velikosti dat. Vytvoření svazku protokolu se dá provést pomocí různých typů disků Azure v závislosti na nákladech a propustnosti. Pro svazek protokolu je potřeba vysoká propustnost vstupně-výstupních operací.  V případě použití typu virtuálního počítače M64-32ms je povinné povolit [akcelerátor zápisu](../../how-to-enable-write-accelerator.md). Azure Akcelerátor zápisu poskytuje optimální latenci zápisu na disk pro transakční protokol (k dispozici pouze pro řadu M-Series). K dispozici jsou některé položky, které by měly být zváženy, podobně jako maximální počet disků na typ virtuálního počítače. Podrobnosti o Akcelerátor zápisu najdete [tady](../../how-to-enable-write-accelerator.md) .
 
 
 Tady je několik příkladů velikosti svazku protokolu:

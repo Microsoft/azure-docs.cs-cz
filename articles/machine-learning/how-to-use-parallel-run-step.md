@@ -9,21 +9,23 @@ ms.topic: tutorial
 ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 07/16/2020
+ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 960b59275885efd547df63febab37d2403c1c7cf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: dddb332498f41437eba77d75c38218c58b8c8379
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847700"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507110"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Spuštění dávkového odvozování pro velké objemy dat pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Naučte se, jak spustit dávku dávkového odvozování velkých objemů dat asynchronně a paralelně pomocí Azure Machine Learning. ParallelRunStep poskytuje možnosti paralelního zpracování v poli.
+V tomto článku se dozvíte, jak spustit model Azure Machine Learning paralelně a rychle vyhodnocovat velké objemy dat. 
 
-S ParallelRunStep je jednoduché škálovat offline oddělení na velké clustery počítačů na terabajtech strukturovaných nebo nestrukturovaných dat s vyšší produktivitou a optimalizovanými náklady.
+Inferencing prostřednictvím velkých datových sad nebo složitých modelů může být časově náročná. Tato `ParallelRunStep` Třída umožňuje zpracovávat paralelně a může rychleji získat celkové výsledky. I v případě, že je jedno vyhodnocení poměrně rychlé, mnoho scénářů (detekce objektů, zpracování videa, zpracování přirozeného jazyka atd.) zahrnuje spouštění mnoha hodnocení. 
+
+V systému je `ParallelRunStep` jednoduché škálovat dávky z dávek na velké clustery počítačů. Tyto clustery můžou zpracovávat terabajty strukturovaných nebo nestrukturovaných dat s vyšší produktivitou a optimalizovanými náklady.
 
 V tomto článku se seznámíte s následujícími úlohami:
 
@@ -52,7 +54,7 @@ Následující akce nastaví prostředky strojového učení, které potřebujet
 
 ### <a name="configure-workspace"></a>Konfigurace pracovního prostoru
 
-Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. `Workspace.from_config()`přečte config.jsv souboru a načte podrobnosti do objektu s názvem WS.
+Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. `Workspace.from_config()` přečte config.jsv souboru a načte podrobnosti do objektu s názvem WS.
 
 ```python
 from azureml.core import Workspace
@@ -134,7 +136,7 @@ def_data_store = ws.get_default_datastore()
 
 Vstupy pro odvození dávky jsou data, která chcete rozdělit na oddíly pro paralelní zpracování. Kanál odvození dávky přijímá datové vstupy prostřednictvím [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) .
 
-`Dataset`slouží k prozkoumávání, transformaci a správě dat v Azure Machine Learning. Existují dva typy: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) a [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py) . V tomto příkladu použijete `FileDataset` jako vstupy. `FileDataset`poskytuje možnost stahovat soubory nebo je připojit k výpočetnímu prostředí. Vytvořením datové sady vytvoříte odkaz na umístění zdroje dat. Pokud jste pro datovou sadu použili jakékoli transformace podNastavení, budou uloženy i v datové sadě. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště.
+`Dataset` slouží k prozkoumávání, transformaci a správě dat v Azure Machine Learning. Existují dva typy: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) a [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py) . V tomto příkladu použijete `FileDataset` jako vstupy. `FileDataset` poskytuje možnost stahovat soubory nebo je připojit k výpočetnímu prostředí. Vytvořením datové sady vytvoříte odkaz na umístění zdroje dat. Pokud jste pro datovou sadu použili jakékoli transformace podNastavení, budou uloženy i v datové sadě. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště.
 
 Další informace o Azure Machine Learning datových sadách najdete v tématu [Vytvoření a přístup k datovým sadám (Preview)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
 
@@ -157,7 +159,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 
 ### <a name="create-the-output"></a>Vytvoření výstupu
 
-[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)objekty se používají k přenosu mezilehlých dat mezi jednotlivými kroky kanálu. V tomto příkladu je použit pro výstup odvození.
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) objekty se používají k přenosu mezilehlých dat mezi jednotlivými kroky kanálu. V tomto příkladu je použit pro výstup odvození.
 
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
@@ -287,14 +289,14 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 ### <a name="specify-the-parameters-using-parallelrunconfig"></a>Zadejte parametry pomocí ParallelRunConfig
 
-`ParallelRunConfig`je hlavní konfigurací `ParallelRunStep` instance v rámci Azure Machine Learning kanálu. Použijete ho k zabalení skriptu a ke konfiguraci nezbytných parametrů, včetně všech následujících položek:
+`ParallelRunConfig` je hlavní konfigurací `ParallelRunStep` instance v rámci Azure Machine Learning kanálu. Použijete ho k zabalení skriptu a ke konfiguraci nezbytných parametrů, včetně všech následujících položek:
 - `entry_script`: Uživatelský skript jako cesta k místnímu souboru, který bude spuštěn paralelně na více uzlech. Pokud `source_directory` je k dispozici, použijte relativní cestu. V opačném případě použijte jakoukoli cestu, která je přístupná v počítači.
 - `mini_batch_size`: Velikost malé dávky předaná jednomu `run()` volání. (volitelné; výchozí hodnota je `10` soubory pro `FileDataset` a `1MB` pro `TabularDataset` .)
     - V případě je `FileDataset` to počet souborů s minimální hodnotou `1` . Můžete zkombinovat více souborů do jedné Mini-dávky.
     - Pro `TabularDataset` je to velikost dat. Příklady hodnot jsou `1024` , `1024KB` , `10MB` a `1GB` . Doporučená hodnota je `1MB` . Ze zkrácené dávky `TabularDataset` nebude nikdy mezi hranicemi souborů. Například pokud máte soubory. csv s různými velikostmi, nejmenší soubor je 100 KB a největší je 10 MB. Pokud nastavíte `mini_batch_size = 1MB` , budou se soubory s velikostí menší než 1 MB považovat za jednu miniickou dávku. Soubory o velikosti větší než 1 MB budou rozděleny do několika Mini-dávek.
 - `error_threshold`: Počet selhání záznamu `TabularDataset` a selhání souborů pro `FileDataset` , které by měly být během zpracování ignorovány. Pokud se počet chyb pro celý vstup překročí k této hodnotě, bude úloha přerušena. Prahová hodnota chyby je pro celý vstup a nikoli pro jednotlivé Mini-dávky odeslané do `run()` metody. Rozsah je `[-1, int.max]` . `-1`Část indikuje ignorování všech selhání během zpracování.
 - `output_action`: Jedna z následujících hodnot indikuje, jak bude uspořádán výstup:
-    - `summary_only`: Uživatelský skript uloží výstup. `ParallelRunStep`použije výstup pouze pro výpočet prahové hodnoty chyby.
+    - `summary_only`: Uživatelský skript uloží výstup. `ParallelRunStep` použije výstup pouze pro výpočet prahové hodnoty chyby.
     - `append_row`: Pro všechny vstupy se ve výstupní složce vytvoří pouze jeden soubor pro připojení všech výstupů oddělených čárou.
 - `append_row_file_name`: Chcete-li přizpůsobit název výstupního souboru pro append_row output_action (volitelné; výchozí hodnota je `parallel_run_step.txt` ).
 - `source_directory`: Cesty ke složkám, které obsahují všechny soubory, které mají být spuštěny na cílovém výpočetním cíli (volitelné).

@@ -12,20 +12,20 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: b2252a70aea6df755bb8b37c36b77b08db819ba9
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 51e31977a5f31777252920f9cd18bf069bad6d1e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037537"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507191"
 ---
-# <a name="create-azure-machine-learning-datasets"></a>Vytváření Azure Machine Learning datových sad
+# <a name="create-azure-machine-learning-datasets"></a>Vytváření datových sad služby Azure Machine Learning
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak vytvořit Azure Machine Learning datové sady pro přístup k datům pro místní nebo vzdálené experimenty. Informace o tom, kde se datové sady vejdou do celého pracovního postupu pro přístup k datům v Azure Machine Learning, najdete v článku [zabezpečený přístup k datům](concept-data.md#data-workflow) .
 
-Vytvořením datové sady vytvoříte odkaz na umístění zdroje dat společně s kopií jeho metadat. Vzhledem k tomu, že data zůstanou ve svém stávajícím umístění, nebudete mít žádné dodatečné náklady na úložiště a nebudete mít na paměti integritu vašich zdrojů dat. Také jsou laxně vytvářená vyhodnocovány datové sady, což pomáhá zrychlit výkon pracovního postupu. Můžete vytvořit datové sady z úložišť dat, veřejných adres URL a [Azure Open DataSet](../open-datasets/how-to-create-dataset-from-open-dataset.md).
+Vytvořením datové sady vytvoříte odkaz na umístění zdroje dat společně s kopií jeho metadat. Vzhledem k tomu, že data zůstanou ve svém stávajícím umístění, nebudete mít žádné dodatečné náklady na úložiště a nebudete mít na paměti integritu vašich zdrojů dat. Také jsou laxně vytvářená vyhodnocovány datové sady, což pomáhá zrychlit výkon pracovního postupu. Můžete vytvořit datové sady z úložišť dat, veřejných adres URL a [Azure Open DataSet](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md).
 
 S Azure Machine Learningmi datovými sadami můžete:
 
@@ -232,7 +232,7 @@ Vytvoření datové sady v studiu:
 
 [Otevřené datové sady v Azure](https://azure.microsoft.com/services/open-datasets/) jsou spravované veřejné datové sady, které můžete použít k přidání funkcí specifických pro konkrétní scénář do řešení Machine Learning pro přesnější modely. Datové sady zahrnují data z veřejných domén pro počasí, sčítání, svátky, veřejné zabezpečení a umístění, které vám pomůžou naučit modely strojového učení a rozšířit prediktivní řešení. Otevřené datové sady jsou v cloudu na Microsoft Azure a jsou součástí sady SDK i sady Studio.
 
-Naučte se vytvářet [Azure Machine Learning datové sady z Azure Open DataSets](../open-datasets/how-to-create-dataset-from-open-dataset.md). 
+Naučte se vytvářet [Azure Machine Learning datové sady z Azure Open DataSets](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md). 
 
 ## <a name="train-with-datasets"></a>Trénování s datovými sadami
 

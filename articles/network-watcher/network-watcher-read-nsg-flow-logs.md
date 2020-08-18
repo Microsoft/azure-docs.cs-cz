@@ -1,6 +1,6 @@
 ---
 title: Čtení protokolů toku NSG | Microsoft Docs
-description: Tento článek ukazuje, jak analyzovat protokoly toku NSG
+description: Naučte se používat Azure PowerShell k analýze protokolů toku skupiny zabezpečení sítě, které se vytvářejí každou hodinu a aktualizují se každých několik minut v Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
-ms.openlocfilehash: ffbf37730d5064edcd067c3383fe18c342a2b053
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18023f5a5b36dd971080d7a62fdd44698a205bb4
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738494"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272531"
 ---
 # <a name="read-nsg-flow-logs"></a>Čtení protokolů toku NSG
 

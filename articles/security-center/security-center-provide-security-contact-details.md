@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: c09dca8b5927e417714ef89393950cfb58c89020
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 9bbb4ee4a2fd41ca0605d7dd5d8c66c83d475744
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042271"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506463"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>Nastavení e-mailových oznámení pro výstrahy zabezpečení 
 
@@ -32,6 +32,9 @@ Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mail�
 - maximálně **dva** e-maily za den pro upozornění **středních závažnosti**
 - maximálně **jeden** e-mail za den pro upozornění **s nízkou závažností**
 
+
+:::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="Konfigurace podrobností o kontaktu, který bude dostávat e-maily o výstrahách zabezpečení." :::
+
 ## <a name="availability"></a>Dostupnost
 
 |Aspekt|Podrobnosti|
@@ -43,9 +46,7 @@ Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mail�
 |||
 
 
-
-
-## <a name="set-up-email-notifications-for-alerts"></a>Nastavení e-mailových oznámení pro výstrahy<a name="email"></a>
+## <a name="set-up-email-notifications-for-alerts"></a>Nastavení e-mailových oznámení pro výstrahy <a name="email"></a>
 
 Můžete posílat e-mailová oznámení jednotlivcům nebo všem uživatelům s konkrétními rolemi Azure.
 
@@ -64,3 +65,4 @@ Další informace o výstrahách zabezpečení najdete v následujících témat
 
 * [Výstrahy zabezpečení – referenční průvodce](alerts-reference.md) – Přečtěte si o výstrahách zabezpečení, které se můžou zobrazit v modulu Azure Security Center ochrany před internetovými útoky.
 * [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Přečtěte si, jak spravovat výstrahy zabezpečení a reagovat na ně.
+- [Automatizace pracovního postupu](workflow-automation.md) – automatizace odpovědí na výstrahy pomocí vlastní logiky oznámení

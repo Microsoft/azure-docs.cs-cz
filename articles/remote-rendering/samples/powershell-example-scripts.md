@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: 831f09ecf7550a847c483fbe1678f1e4c3cecb61
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 07055025eff9ab81c7321624daed9b4a6e993a60
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052286"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506507"
 ---
 # <a name="example-powershell-scripts"></a>Ukázkové skripty PowerShellu
 
@@ -26,21 +26,21 @@ Vzdálené vykreslování Azure poskytuje následující dvě rozhraní REST API
 Chcete-li spustit ukázkové skripty, budete potřebovat instalaci funkcí [Azure PowerShell](https://docs.microsoft.com/powershell/azure/).
 
 1. Nainstalujte Azure PowerShell:
-    1. Otevření PowerShellu s právy správce
-    1. Spouštěl`Install-Module -Name Az -AllowClobber`
+    1. Otevřete okno PowerShellu s právy správce.
+    1. Spouštěl `Install-Module -Name Az -AllowClobber`
 
 1. Pokud se zobrazí chyby týkající se spouštění skriptů, ujistěte se, že jsou správně nastavené [zásady spouštění](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) :
-    1. Otevření PowerShellu s právy správce
-    1. Spouštěl`Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
+    1. Otevřete okno PowerShellu s právy správce.
+    1. Spouštěl `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
 1. [Příprava účtu Azure Storage](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
 1. Přihlaste se ke svému předplatnému, které obsahuje účet vzdáleného vykreslování Azure:
-    1. Otevření PowerShellu
+    1. Otevřete okno PowerShellu.
     1. Spusťte: `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
 
-> [!NOTE]
-> V případě, že má vaše organizace více než jedno předplatné, možná budete muset zadat SubscriptionId a argumenty tenanta. Vyhledejte podrobnosti v [dokumentaci Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+    > [!NOTE]
+    > V případě, že má vaše organizace více než jedno předplatné, možná budete muset zadat SubscriptionId a argumenty tenanta. Vyhledejte podrobnosti v [dokumentaci Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
 
 1. Stáhněte složku *skripty* z [úložiště GitHubu pro vzdálené vykreslování Azure](https://github.com/Azure/azure-remote-rendering).
 
@@ -77,7 +77,7 @@ Vedle souborů je `.ps1` `arrconfig.json` potřeba vyplnit:
 > Ujistěte se, že jsou v cestě LocalAssetDirectoryPath správně uvozená zpětná lomítka, pomocí dvojitých zpětných lomítek: \\ \\ a na všech ostatních cestách, jako je InputFolderPath a inputAssetPath, použijte lomítka (/).
 
 > [!CAUTION]
-> Volitelné hodnoty musí být vyplněny nebo je nutné úplně odebrat klíč a hodnotu. Například pokud nepoužijete `"outputAssetFileName"` parametr, je nutné odstranit celý řádek uvnitř `arrconfig.json` .
+> Volitelné hodnoty musí být vyplněny nebo je nutné úplně odebrat klíč a hodnotu. Například pokud nepoužijete  `"outputAssetFileName"` parametr, je nutné odstranit celý řádek uvnitř `arrconfig.json` .
 
 ### <a name="accountsettings"></a>accountSettings
 
@@ -86,9 +86,9 @@ Vedle souborů je `.ps1` `arrconfig.json` potřeba vyplnit:
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-Tato struktura musí být vyplněna, pokud chcete spustit **RenderingSession.ps1**.
+Tato struktura musí být vyplněna, pokud chcete spustit **RenderingSession.ps1**:
 
-- **vmSize:** Vybere velikost virtuálního počítače. Vyberte *úroveň Standard* nebo *Premium*. Vypnutí relací vykreslování, když už je nepotřebujete
+- **vmSize:** Vybere velikost virtuálního počítače. Vyberte [*úroveň Standard*](../reference/vm-sizes.md) nebo [*Premium*](../reference/vm-sizes.md). Vypnutí relací vykreslování, když už je nepotřebujete
 - **maxLeaseTime:** Doba, po kterou chcete virtuální počítač zapůjčit. Po vypršení platnosti zapůjčení se vypne. Čas zapůjčení lze později prodloužit (viz níže).
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
@@ -189,10 +189,10 @@ Použití propojeného účtu úložiště je preferovaným způsobem, jak použ
 .\Conversion.ps1
 ```
 
-1. Nahrajte všechny soubory obsažené v `assetConversionSettings.modelLocation` do vstupního kontejneru objektů BLOB v rámci daného`inputFolderPath`
+1. Nahrajte všechny soubory obsažené v souboru `assetConversionSettings.modelLocation` do vstupního kontejneru objektů BLOB pod daným `inputFolderPath` ...
 1. Zavolejte [REST API převodu modelu](../how-tos/conversion/conversion-rest-api.md) , aby se aktivoval [Převod modelu](../how-tos/conversion/model-conversion.md) .
-1. Cyklické dotazování na stav převodu, dokud převod není úspěšný nebo neúspěšný
-1. Podrobnosti výstupu převedeného umístění souboru (účet úložiště, výstupní kontejner, cesta k souboru v kontejneru)
+1. Cyklické dotazování na stav převodu, dokud převod není úspěšný nebo neúspěšný.
+1. Podrobnosti výstupu převedených umístění souboru (účet úložiště, výstupní kontejner, cesta k souboru v kontejneru).
 
 ### <a name="access-to-storage-via-shared-access-signatures"></a>Přístup k úložišti prostřednictvím sdílených přístupových podpisů
 
@@ -202,13 +202,13 @@ Použití propojeného účtu úložiště je preferovaným způsobem, jak použ
 
 Tato akce:
 
-1. Nahrání místního souboru z `assetConversionSettings.localAssetDirectoryPath` do vstupního kontejneru objektů BLOB
-1. Vygenerovat identifikátor URI SAS pro vstupní kontejner
-1. Vygenerovat identifikátor URI SAS pro výstupní kontejner
-1. Zavolejte [REST API převodu modelu](../how-tos/conversion/conversion-rest-api.md) , aby se aktivoval [Převod modelu](../how-tos/conversion/model-conversion.md) .
-1. Cyklické dotazování na stav převodu, dokud převod není úspěšný nebo neúspěšný
-1. Podrobnosti výstupu převedeného umístění souboru (účet úložiště, výstupní kontejner, cesta k souboru v kontejneru)
-1. Výstup identifikátoru URI SAS do převedeného modelu ve výstupním kontejneru objektů BLOB
+1. Nahrajte místní soubor z do `assetConversionSettings.localAssetDirectoryPath` vstupního kontejneru objektů BLOB.
+1. Vygenerujte identifikátor URI SAS pro vstupní kontejner.
+1. Vygenerujte identifikátor URI SAS pro výstupní kontejner.
+1. Zavolejte [REST API převodu modelu](../how-tos/conversion/conversion-rest-api.md) , aby se aktivoval [Převod modelu](../how-tos/conversion/model-conversion.md).
+1. Cyklické dotazování na stav převodu, dokud převod není úspěšný nebo neúspěšný.
+1. Podrobnosti výstupu převedených umístění souboru (účet úložiště, výstupní kontejner, cesta k souboru v kontejneru).
+1. Vytvoří výstup identifikátoru URI SAS pro převedený model ve výstupním kontejneru objektů BLOB.
 
 ### <a name="additional-command-line-options"></a>Další možnosti příkazového řádku
 
@@ -249,7 +249,7 @@ Například můžete zkombinovat určitý počet z těchto možností:
 
 Pokud chcete spustit jednotlivé kroky procesu, můžete použít:
 
-Nahrávat pouze data z daného LocalAssetDirectoryPath
+Nahrajte jenom data z daného LocalAssetDirectoryPath.
 
 ```PowerShell
 .\Conversion.ps1 -Upload

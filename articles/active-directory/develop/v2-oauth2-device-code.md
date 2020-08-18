@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a0677603f02b429c269c0f93ef348b2b1d717a9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82689766"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272446"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity Platform a tok udělení autorizace zařízení OAuth 2,0
 
@@ -53,9 +53,9 @@ scope=user.read%20openid%20profile
 
 | Parametr | Podmínka | Popis |
 | --- | --- | --- |
-| `tenant` | Vyžadováno | Může být/běžné,/consumers nebo/Organizations.  Může to být také tenant adresáře, ze kterého chcete požádat o oprávnění ve formátu GUID nebo popisného názvu.  |
+| `tenant` | Povinné | Může být/běžné,/consumers nebo/Organizations.  Může to být také tenant adresáře, ze kterého chcete požádat o oprávnění ve formátu GUID nebo popisného názvu.  |
 | `client_id` | Vyžadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
-| `scope` | Doporučené | Mezerou oddělený seznam [oborů](v2-permissions-and-consent.md) , ke kterým má uživatel udělit souhlas.  |
+| `scope` | Vyžadováno | Mezerou oddělený seznam [oborů](v2-permissions-and-consent.md) , ke kterým má uživatel udělit souhlas.  |
 
 ### <a name="device-authorization-response"></a>Odpověď na autorizaci zařízení
 
@@ -92,8 +92,8 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 | Parametr | Povinné | Popis|
 | -------- | -------- | ---------- |
-| `tenant`  | Vyžadováno | Stejný tenant nebo alias tenanta použitý v počátečním požadavku. |
-| `grant_type` | Vyžadováno | Musí být`urn:ietf:params:oauth:grant-type:device_code`|
+| `tenant`  | Povinné | Stejný tenant nebo alias tenanta použitý v počátečním požadavku. |
+| `grant_type` | Vyžadováno | Musí být `urn:ietf:params:oauth:grant-type:device_code`|
 | `client_id`  | Vyžadováno | Musí odpovídat `client_id` použitému v počátečním požadavku. |
 | `device_code`| Vyžadováno | `device_code`Vrácený v žádosti o autorizaci zařízení.  |
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848727"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507174"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrujte svoji infrastrukturu VPN s Azure MFA pomocí rozšíření serveru NPS (Network Policy Server) pro Azure.
 
@@ -308,6 +308,10 @@ Pomoc s konfigurací uživatelů pro Multi-Factor Authentication najdete v člá
 
 V této části najdete pokyny pro konfiguraci sítě VPN pro použití VÍCEFAKTOROVÉHO ověřování klientů pomocí serveru VPN.
 
+> [!NOTE]
+> Klíč registru REQUIRE_USER_MATCH rozlišuje velká a malá písmena. Všechny hodnoty musí být nastaveny ve velkých malých písmenech.
+>
+
 Až nainstalujete a nakonfigurujete rozšíření serveru NPS, bude pro použití VÍCEFAKTOROVÉHO ověřování potřeba všechna ověření klienta na základě protokolu RADIUS, která jsou zpracována tímto serverem. Pokud všichni uživatelé VPN nejsou zaregistrovaní v Azure Multi-Factor Authentication, můžete provést jednu z následujících akcí:
 
 * Nastavte jiný server RADIUS pro ověřování uživatelů, kteří nejsou nakonfigurovaní pro použití vícefaktorového ověřování.
@@ -319,6 +323,8 @@ Vytvořte novou řetězcovou hodnotu s názvem _REQUIRE_USER_MATCH v HKLM\SOFTWA
 ![Nastavení "vyžadovat shod uživatele"](./media/howto-mfa-nps-extension-vpn/image34.png)
 
 Pokud je hodnota nastavená na *true* nebo je prázdná, budou se všechny žádosti o ověření vztahovat na výzvu MFA. Pokud je hodnota nastavená na *false*, budou se problémy MFA vydávat jenom uživatelům, kteří jsou zaregistrovaní v Azure Multi-Factor Authentication. Použijte nastavení *false* pouze při testování nebo v produkčním prostředí během období připojování.
+
+
 
 ### <a name="obtain-the-azure-active-directory-tenant-id"></a>Získat ID tenanta Azure Active Directory
 

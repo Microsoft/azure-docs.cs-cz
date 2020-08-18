@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 18263f9e77961fb4c169559f221ab94eb4a38840
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: bbdc05d2b5a770791bb81f26a71b9dc3eb7523d5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207452"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505712"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -39,7 +39,7 @@ Existují tři verze Azure Functions Core Tools. Použitá verze závisí na va�
 
 Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 3. x.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Azure Functions Core Tools v současné době závisí na Azure CLI pro ověřování pomocí účtu Azure. To znamená, že musíte [Azure CLI nainstalovat místně](/cli/azure/install-azure-cli) , aby bylo možné [publikovat do Azure](#publish) z Azure Functions Core Tools. 
 
@@ -164,6 +164,9 @@ V okně terminálu nebo z příkazového řádku spusťte následující příka
 ```
 func init MyFunctionProj
 ```
+
+>[!IMPORTANT]
+> Java používá Maven Archetype k vytvoření projektu místní funkce spolu s první funkcí aktivovanou protokolem HTTP. Pro vytvoření projektu Java použijte následující příkaz: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Příklad použití Maven Archetype naleznete v tématu [rychlý Start k příkazovému řádku](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java).  
 
 Když zadáte název projektu, vytvoří se a inicializuje nová složka s tímto názvem. V opačném případě se aktuální složka inicializuje.  
 Pokud ve verzi 3. x/2. x spustíte příkaz, musíte zvolit modul runtime pro váš projekt. 
@@ -334,6 +337,14 @@ Chcete-li spustit projekt funkcí, spusťte hostitele Functions. Hostitel povol�
 ```
 func start --build
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```
+mvn clean package 
+mvn azure-functions:run
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/node)
 
 ```
@@ -504,6 +515,9 @@ Pokud chcete publikovat místní kód do aplikace Function App v Azure, použijt
 ```
 func azure functionapp publish <FunctionAppName>
 ```
+
+>[!IMPORTANT]
+> Java používá Maven k publikování místního projektu do Azure. K publikování do Azure použijte následující příkaz: `mvn azure-functions:deploy` . Prostředky Azure se vytvářejí při počátečním nasazení.
 
 Tento příkaz se publikuje do existující aplikace Function App v Azure. Pokud se pokusíte publikovat do `<FunctionAppName>` , který ve vašem předplatném neexistuje, zobrazí se chyba. Informace o tom, jak vytvořit aplikaci funkcí z příkazového řádku nebo okna terminálu pomocí Azure CLI, najdete v tématu [vytvoření Function App pro provádění bez serveru](./scripts/functions-cli-create-serverless.md). Ve výchozím nastavení tento příkaz používá [vzdálené sestavení](functions-deployment-technologies.md#remote-build) a nasadí vaši aplikaci, aby [běžela z balíčku pro nasazení](run-functions-from-deployment-package.md). Pokud chcete tento doporučený režim nasazení zakázat, použijte `--nozip` možnost.
 

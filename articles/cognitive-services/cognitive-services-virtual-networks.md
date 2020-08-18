@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: db1b88b9c22012cb4e6b5025dda31432c9278ff8
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 808d42c821272882bbf0e01a36e49f7f10b30efa
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080894"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505023"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurace virtuálních sítí služeb Azure Cognitive Services
 
@@ -54,6 +54,7 @@ Virtuální sítě (virtuální sítě) jsou podporované v [oblastech, kde jsou
 > * [Analýza textu](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
 > * [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
+> * [Asistivní čtečka](./immersive-reader/index.yml)
 
 ## <a name="service-tags"></a>Značky služeb
 
@@ -70,8 +71,9 @@ Cognitive Services podporuje značky služby pro konfiguraci pravidel sítě. N�
 > * [Personalizace](./personalizer/index.yml)
 > * [Analýza textu](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
-> * [Translator](./translator/index.yml)
+> * [Překladač](./translator/index.yml)
 > * [Služba řeči](./speech-service/index.yml)
+> * [Asistivní čtečka](./immersive-reader/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Změna výchozího pravidla přístupu k síti
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e217540b1dd3744da855c71e0add289dd1c9e18
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e73bc3791ceb75685275af99f888136315c6e50d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831052"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505554"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server nasazení Azure Virtual Machines DBMS pro SAP NetWeaver
 
@@ -314,7 +314,7 @@ Tento dokument popisuje několik různých oblastí, které je potřeba vzít v 
 
 
 > [!IMPORTANT]
-> Rozsah tohoto dokumentu je verze Windows na SQL Server. SAP nepodporuje SQL Server verzi pro Linux pomocí žádného softwaru SAP. Dokument se nezabývá Microsoft Azure SQL Database, což je platforma jako nabídka služby Microsoft Azure platformy. Diskuze v tomto dokumentu se týká spuštění SQL Serverho produktu, který je známý pro místní nasazení v Azure Virtual Machines a využití infrastruktury jako služby pro Azure. Možnosti databáze a funkce mezi těmito dvěma nabídkami se liší a neměly by se vzájemně kombinovat. Viz také:<https://azure.microsoft.com/services/sql-database/>
+> Rozsah tohoto dokumentu je verze Windows na SQL Server. SAP nepodporuje SQL Server verzi pro Linux pomocí žádného softwaru SAP. Dokument se nezabývá Microsoft Azure SQL Database, což je platforma jako nabídka služby Microsoft Azure platformy. Diskuze v tomto dokumentu se týká spuštění SQL Serverho produktu, který je známý pro místní nasazení v Azure Virtual Machines a využití infrastruktury jako služby pro Azure. Možnosti databáze a funkce mezi těmito dvěma nabídkami se liší a neměly by se vzájemně kombinovat. Viz také: <https://azure.microsoft.com/services/sql-database/>
 > 
 >
 
@@ -355,13 +355,13 @@ V diagramu výše se zobrazí jednoduchý případ. Eluded se v článku [aspekt
 
 
 ### <a name="special-for-m-series-vms"></a>Speciální pro virtuální počítače řady M-Series
-Pro virtuální počítače Azure řady M-Series se při použití Azure Akcelerátor zápisu můžou latence zápisu do transakčního protokolu snížit podle faktorů v porovnání s výkonem Azure Premium Storage. Proto byste měli nasadit Azure Akcelerátor zápisu pro virtuální pevné disky, které tvoří svazek pro SQL Server protokol transakcí. Podrobnosti lze přečíst v dokumentu [akcelerátor zápisu](../../windows/how-to-enable-write-accelerator.md).
+Pro virtuální počítače Azure řady M-Series se při použití Azure Akcelerátor zápisu můžou latence zápisu do transakčního protokolu snížit podle faktorů v porovnání s výkonem Azure Premium Storage. Proto byste měli nasadit Azure Akcelerátor zápisu pro virtuální pevné disky, které tvoří svazek pro SQL Server protokol transakcí. Podrobnosti lze přečíst v dokumentu [akcelerátor zápisu](../../how-to-enable-write-accelerator.md).
   
 
 ### <a name="formatting-the-disks"></a>Formátování disků
 Pro SQL Server je velikost bloku NTFS pro disky obsahující SQL Server data a soubory protokolu 64 KB. Není nutné naformátovat D:\ disky. Tato jednotka je předem naformátovaná.
 
-Aby se zajistilo, že obnovení nebo vytváření databází neinicializuje datové soubory tak, že se obsah souborů neinicializuje, měli byste se ujistit, že kontext uživatele, ke kterému je služba SQL Server spuštěná, má určité oprávnění. Tato oprávnění mají obvykle uživatelé ve skupině správce systému Windows. Pokud je služba SQL Server spuštěna v uživatelském kontextu uživatele, který není správcem systému Windows, je třeba přiřadit tohoto uživatele k **provádění úloh údržby svazku**.  Podívejte se na podrobnosti v tomto článku znalostní báze Microsoft Knowledge Base:<https://support.microsoft.com/kb/2574695>
+Aby se zajistilo, že obnovení nebo vytváření databází neinicializuje datové soubory tak, že se obsah souborů neinicializuje, měli byste se ujistit, že kontext uživatele, ke kterému je služba SQL Server spuštěná, má určité oprávnění. Tato oprávnění mají obvykle uživatelé ve skupině správce systému Windows. Pokud je služba SQL Server spuštěna v uživatelském kontextu uživatele, který není správcem systému Windows, je třeba přiřadit tohoto uživatele k **provádění úloh údržby svazku**.  Podívejte se na podrobnosti v tomto článku znalostní báze Microsoft Knowledge Base: <https://support.microsoft.com/kb/2574695>
 
 ### <a name="impact-of-database-compression"></a>Dopad komprimace databáze
 V konfiguracích, kde se může I/O šířka pásma stát omezením, by každá míra, která omezuje IOPS, mohla přispět k roztažení úlohy, která může běžet ve scénáři IaaS, jako je Azure. Pokud se to ještě neudělalo, doporučujeme, abyste před nahráním existující databáze SAP do Azure doporučili použití SQL Server komprese stránky od společnosti SAP i Microsoftu.
@@ -487,16 +487,16 @@ Zrcadlení databáze podle podpor SAP (viz SAP Note [965908]) spoléhá na defin
 
 Od nasazení jenom pro Cloud je nejjednodušší způsob, jak mít v Azure další nastavení domény, aby tyto virtuální počítače s DBMS (a ideálním vyhrazeným virtuálním počítačům SAP) v jedné doméně.
 
-Pokud není doména možná, může použít taky certifikáty pro koncové body zrcadlení databáze, jak je popsáno zde:<https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
+Pokud není doména možná, může použít taky certifikáty pro koncové body zrcadlení databáze, jak je popsáno zde: <https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
 
-Kurz nastavení zrcadlení databáze v Azure najdete tady:<https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
+Kurz nastavení zrcadlení databáze v Azure najdete tady: <https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
 
 ### <a name="sql-server-always-on"></a>AlwaysOn SQL Serveru
 Stejně jako je podpora pro SAP místně podporovaná (viz článek SAP Note [1772688]), podporuje se v kombinaci s SAP v Azure. K nasazení naslouchacího procesu skupiny dostupnosti SQL Server (nemusíte se zaměňovat se skupinou dostupnosti Azure) dochází k nějakým zvláštním hlediskům, protože Azure v tuto chvíli neumožňuje vytvoření objektu AD/DNS, protože je možné ho použít místně. Proto je nutné provést některé jiné kroky instalace pro překonání konkrétního chování Azure.
 
 Některé okolnosti použití naslouchacího procesu skupiny dostupnosti:
 
-* Pomocí naslouchacího procesu skupiny dostupnosti je možné používat jenom Windows Server 2012 nebo novější jako hostovaný operační systém virtuálního počítače. V případě systému Windows Server 2012 je nutné se ujistit, že je tato oprava použita:<https://support.microsoft.com/kb/2854082> 
+* Pomocí naslouchacího procesu skupiny dostupnosti je možné používat jenom Windows Server 2012 nebo novější jako hostovaný operační systém virtuálního počítače. V případě systému Windows Server 2012 je nutné se ujistit, že je tato oprava použita: <https://support.microsoft.com/kb/2854082> 
 * V systému Windows Server 2008 R2 Tato oprava neexistuje a je možné ji vždy použít stejným způsobem jako zrcadlení databáze tím, že v řetězci připojení zadáte partnerský server pro převzetí služeb při selhání (provede se pomocí výchozího parametru SAP. pfl databáze/MSS/Server – viz SAP Note [965908]).
 * Při použití naslouchacího procesu skupiny dostupnosti musí být virtuální počítače databáze připojené k vyhrazené Load Balancer. Aby se zabránilo tomu, že Azure přiřadí nové IP adresy v případech, kdy se oba virtuální počítače vypínají, má jedna z nich přiřadit statické IP adresy k síťovým rozhraním těchto virtuálních počítačů v konfiguraci služby Always On (definování statické IP adresy je popsané v [tomto][virtual-networks-reserved-private-ip] článku).
 * Při sestavování konfigurace clusteru služby WSFC, kde cluster potřebuje speciální přiřazenou IP adresu, se vyžadují speciální kroky, protože Azure s jeho aktuální funkcí přiřadí stejný název clusteru jako uzel, ve kterém je cluster vytvořený. To znamená, že je potřeba provést ruční krok, který clusteru přiřadí jinou IP adresu.

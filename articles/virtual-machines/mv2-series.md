@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: f86400f1fb45217133bbd715788986994f5f77cc
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f6dc732a512368b007a289c3aaabc3123a696d96
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836254"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505253"
 ---
 # <a name="mv2-series"></a>Řada Mv2
 
@@ -28,7 +28,7 @@ Migrace za provozu: nepodporováno
 
 Aktualizace pro zachování paměti: nepodporováno
 
-Akcelerátor zápisu: [podporováno](./windows/how-to-enable-write-accelerator.md)
+Akcelerátor zápisu: [podporováno](./how-to-enable-write-accelerator.md)
 
 |Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet | Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|---|

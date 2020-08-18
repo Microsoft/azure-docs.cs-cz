@@ -1,20 +1,20 @@
 ---
 title: Formáty dokumentů a konvence pojmenování – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: Toto je průvodce formáty dokumentů a konvence pojmenování ve vlastním překladateli. Tento koncept pomáhá spravovat názvy dokumentů lépe Abd konflikty při pojmenovávání.
+description: Toto je průvodce formáty dokumentů a konvence pojmenování ve vlastním překladateli. Tento koncept pomáhá lépe spravovat názvy dokumentů a vyhnout se konfliktům názvů.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: e976b59c0128adef6536e78985e7cf89d256062c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 46a19cd4396e598a74f9099727ac80d44c0a44f5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992704"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507242"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Formáty dokumentů a pokyny k konvenci pojmenování
 
@@ -22,7 +22,7 @@ Každý soubor, který se používá pro vlastní překlad, musí mít délku al
 
 Tato tabulka obsahuje všechny podporované formáty souborů, které můžete použít k sestavení systému překladu:
 
-| Formát            | Rozšíření   | Description                                                                                                                                                                                                                                                                    |
+| Formát            | Rozšíření   | Popis                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | . XLF, . XLIFF | Formát paralelního dokumentu, který exportuje systémy překladu paměti. Používané jazyky jsou definovány v souboru.                                                                                                                                                              |
 | TMX               | . TMX         | Formát paralelního dokumentu, který exportuje systémy překladu paměti. Používané jazyky jsou definovány v souboru.                                                                                                                                                              |

@@ -146,7 +146,11 @@
         - name: Přehled
           href: backup-azure-sql-database.md
         - name: Backup
-          href: backup-sql-server-database-azure-vms.md
+          items:
+            - name: Zálohování několika virtuálních počítačů s SQL Serverem z trezoru
+              href: backup-sql-server-database-azure-vms.md
+            - name: Zálohování virtuálního počítače s SQL Serverem z podokna virtuálního počítače
+              href: backup-sql-server-vm-from-vm-pane.md
         - name: Obnovení
           href: restore-sql-database-azure-vm.md
         - name: Spravovat

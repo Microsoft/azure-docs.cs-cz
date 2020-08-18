@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15838e1e9acf328a0deaa981d1227c22c08dbbdf
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bd8177f6fd8e40e9c4ea37bc7ead910806efbad2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832259"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504938"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení Azure Virtual Machines DBMS pro úlohy SAP
 
@@ -372,7 +372,7 @@ Pokud chcete identifikovat podporované typy virtuálních počítačů Azure, p
 
 Minimální konfigurace je následující: 
 
-| Komponenta | Disk | Ukládání do mezipaměti | Fond úložiště |
+| Součást | Disk | Ukládání do mezipaměti | Fond úložiště |
 | --- | ---| --- | --- |
 | \oracle \<SID> \origlogaA & mirrlogB | Premium | Žádné | Není potřeba |
 | \oracle \<SID> \origlogaB & mirrlogA | Premium | Žádné | Není potřeba |
@@ -385,7 +385,7 @@ Výběr disků pro hostování online protokolů opětovného provedení by měl
 
 Konfigurace výkonu je následující:
 
-| Komponenta | Disk | Ukládání do mezipaměti | Fond úložiště |
+| Součást | Disk | Ukládání do mezipaměti | Fond úložiště |
 | --- | ---| --- | --- |
 | \oracle \<SID> \origlogaA | Premium | Žádné | Dá se použít  |
 | \oracle \<SID> \origlogaB | Premium | Žádné | Dá se použít |
@@ -404,7 +404,7 @@ Pokud je potřeba víc IOPS, doporučujeme použít fondy úložiště Windows (
 
 
 #### <a name="write-accelerator"></a>Akcelerátor zápisu
-U virtuálních počítačů Azure M-Series je latence při psaní do online protokolů možné snížit o faktorech v porovnání s Azure Premium Storage. Povolte Azure Akcelerátor zápisu pro disky (VHD) založené na Premium Storage Azure, které se používají pro soubory protokolu online opětovného provedení. Další informace najdete v tématu [akcelerátor zápisu](../../linux/how-to-enable-write-accelerator.md).
+U virtuálních počítačů Azure M-Series je latence při psaní do online protokolů možné snížit o faktorech v porovnání s Azure Premium Storage. Povolte Azure Akcelerátor zápisu pro disky (VHD) založené na Premium Storage Azure, které se používají pro soubory protokolu online opětovného provedení. Další informace najdete v tématu [akcelerátor zápisu](../../how-to-enable-write-accelerator.md).
 
 
 ### <a name="backuprestore"></a>Zálohování a obnovení
@@ -420,7 +420,7 @@ Další informace o zotavení po havárii pro databáze Oracle v Azure najdete v
 
 ### <a name="accelerated-networking"></a>Urychlení sítě
 Pro nasazení Oracle ve Windows důrazně doporučujeme zrychlit sítě, jak je popsáno v tématu [urychlené síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Zvažte také doporučení, která jsou k [disVirtual Machines v části požadavky na nasazení Azure DBMS pro úlohy SAP](dbms_guide_general.md). 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Další
 [Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) popisují další důležité koncepty týkající se nasazení virtuálních počítačů s Oracle Database, včetně skupin dostupnosti Azure a monitorování SAP.
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Specifické pro Oracle Database Oracle Linux
@@ -462,7 +462,7 @@ Pokud chcete identifikovat podporované typy virtuálních počítačů Azure, p
 
 Minimální konfigurace:
 
-| Komponenta | Disk | Ukládání do mezipaměti | Odstranění |
+| Součást | Disk | Ukládání do mezipaměti | Odstranění |
 | --- | ---| --- | --- |
 | /Oracle/ \<SID> /origlogaA & mirrlogB | Premium | Žádné | Není potřeba |
 | /Oracle/ \<SID> /origlogaB & mirrlogA | Premium | Žádné | Není potřeba |
@@ -476,7 +476,7 @@ Výběr disku pro hostování protokolů opětovného provedení online v Oracle
 
 Konfigurace výkonu:
 
-| Komponenta | Disk | Ukládání do mezipaměti | Odstranění |
+| Součást | Disk | Ukládání do mezipaměti | Odstranění |
 | --- | ---| --- | --- |
 | /Oracle/ \<SID> /origlogaA | Premium | Žádné | Dá se použít  |
 | /Oracle/ \<SID> /origlogaB | Premium | Žádné | Dá se použít |
@@ -498,7 +498,7 @@ Pokud je vyžadováno více IOPS, doporučujeme použít LVM (Správce logickýc
 
 
 #### <a name="write-accelerator"></a>Akcelerátor zápisu
-U virtuálních počítačů Azure řady M-Series se při použití služby Azure Akcelerátor zápisu dá latence zápisu do online protokolů pro opětovné provedení omezit o faktory ve srovnání s výkonem Azure Premium Storage. Povolte Azure Akcelerátor zápisu pro disky (VHD) založené na Premium Storage Azure, které se používají pro soubory protokolu online opětovného provedení. Další informace najdete v tématu [akcelerátor zápisu](../../linux/how-to-enable-write-accelerator.md).
+U virtuálních počítačů Azure řady M-Series se při použití služby Azure Akcelerátor zápisu dá latence zápisu do online protokolů pro opětovné provedení omezit o faktory ve srovnání s výkonem Azure Premium Storage. Povolte Azure Akcelerátor zápisu pro disky (VHD) založené na Premium Storage Azure, které se používají pro soubory protokolu online opětovného provedení. Další informace najdete v tématu [akcelerátor zápisu](../../how-to-enable-write-accelerator.md).
 
 
 ### <a name="backuprestore"></a>Zálohování a obnovení
@@ -523,5 +523,5 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 </code></pre>
 
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Další
 [Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) popisují další důležité koncepty týkající se nasazení virtuálních počítačů s Oracle Database, včetně skupin dostupnosti Azure a monitorování SAP.
