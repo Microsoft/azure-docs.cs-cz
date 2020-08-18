@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 10e209228ad12b377b729bc251eb761b51ff5378
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0731848e1ff187afb6e9f607516dd74b6c16de9b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514368"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520477"
 ---
 # <a name="repairing-an-export-job"></a>Oprava úlohy exportu
 Po dokončení úlohy exportu můžete spustit nástroj Microsoft Azure Import/Export místně a:  
@@ -32,15 +32,15 @@ Pomocí **RepairExport**lze zadat následující parametry:
   
 |Parametr|Popis|  
 |---------------|-----------------|  
-|**/r: <RepairFile\>**|Povinná hodnota. Cesta k souboru opravy, který sleduje průběh opravy a umožňuje obnovit přerušenou opravu. Každá jednotka musí mít jeden a jenom jeden opravný soubor. Když zahájíte opravu dané jednotky, předáte cestu k souboru opravy, který ještě neexistuje. Chcete-li obnovit přerušenou opravu, měli byste předat název existujícího opravného souboru. Opravný soubor, který odpovídá cílové jednotce, je třeba zadat vždy.|  
+|**/r: <RepairFile\>**|Povinná hodnota. Cesta k souboru opravy, který sleduje průběh opravy a umožňuje obnovit přerušenou opravu. Každá jednotka musí mít jeden a jenom jeden opravný soubor. Když zahájíte opravu dané jednotky, předáte cestu k souboru opravy, který ještě neexistuje. Chcete-li obnovit přerušenou opravu, měli byste předat název existujícího opravného souboru. Vždy zadejte soubor opravy odpovídající cílové jednotce.|  
 |**/logdir: <LogDirectory\>**|Nepovinný parametr. Adresář protokolu. Podrobné soubory protokolu budou zapsány do tohoto adresáře. Pokud není zadaný žádný adresář protokolu, použije se jako adresář protokolu aktuální adresář.|  
-|**/d: <TargetDirectory\>**|Povinná hodnota. Adresář, který se má ověřit a opravit Obvykle se jedná o kořenový adresář jednotky exportu, ale může to být také síťová sdílená složka obsahující kopii exportovaných souborů.|  
-|**/BK: <BitLockerKey\>**|Nepovinný parametr. Klíč BitLockeru byste měli zadat, pokud chcete, aby nástroj Odemkl zašifrovaný soubor, kde jsou uložené exportované soubory.|  
+|**/d: <TargetDirectory\>**|Povinná hodnota. Adresář, který se má ověřit a opravit Tento adresář je obvykle kořenový adresář jednotky exportu, ale může to být také síťová sdílená složka obsahující kopii exportovaných souborů.|  
+|**/BK: <BitLockerKey\>**|Nepovinný parametr. Zadejte klíč BitLockeru, pokud chcete, aby nástroj Odemkl šifrované místo, kde jsou uloženy exportované soubory.|  
 |**/SN: <StorageAccountName\>**|Povinná hodnota. Název účtu úložiště pro úlohu exportu|  
-|**/SK: <StorageAccountKey\>**|**Vyžaduje** se jenom v případě, že není zadané SAS kontejneru. Klíč účtu pro účet úložiště pro úlohu exportu|  
+|**/SK: <StorageAccountKey\>**|**Vyžaduje** se, pokud a jenom v případě, že není zadané SAS kontejneru. Klíč účtu pro účet úložiště pro úlohu exportu|  
 |**/csas: <ContainerSas\>**|**Vyžaduje** se jenom v případě, že není zadaný klíč účtu úložiště. SAS kontejneru pro přístup k objektům blob přidruženým k úloze exportu|  
 |**/CopyLogFile: <DriveCopyLogFile\>**|Povinná hodnota. Cesta k souboru protokolu pro kopírování jednotek Soubor vygeneruje služba Windows Azure pro import/export a dá se stáhnout z úložiště objektů BLOB přidruženého k úloze. Soubor protokolu kopírování obsahuje informace o neúspěšných objektech blob nebo souborech, které se mají opravit.|  
-|**/ManifestFile: <DriveManifestFile\>**|Nepovinný parametr. Cesta k souboru manifestu pro exportovou jednotku. Tento soubor vygeneruje služba Windows Azure pro import/export, která je uložená na exportní jednotce, a volitelně v objektu BLOB v účtu úložiště přidruženého k úloze.<br /><br /> Obsah souborů na exportní jednotce se ověří pomocí hodnot hash MD5 obsažených v tomto souboru. Všechny soubory, které jsou určeny k poškození, budou staženy a přepsány do cílových adresářů.|  
+|**/ManifestFile: <DriveManifestFile\>**|Nepovinný parametr. Cesta k souboru manifestu pro exportovou jednotku. Tento soubor je vygenerovaný službou Windows Azure import/export a uložený na jednotce pro export. Volitelně můžete v objektu BLOB v účtu úložiště přidruženého k úloze.<br /><br /> Obsah souborů na exportní jednotce se ověří pomocí hodnot hash MD5 obsažených v tomto souboru. Všechny poškozené soubory budou staženy a přepsány do cílových adresářů.|  
   
 ## <a name="using-repairexport-mode-to-correct-failed-exports"></a>Oprava neúspěšných exportů pomocí režimu RepairExport  
 K stažení souborů, které se nepodařilo exportovat, můžete použít nástroj pro import/export Azure. Soubor protokolu kopírování bude obsahovat seznam souborů, které se nepodařilo exportovat.  
@@ -57,7 +57,7 @@ Chcete-li spustit nástroj v režimu **RepairExport** , musíte nejprve připoji
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log  
 ```  
   
-Následuje příklad souboru protokolu kopírování, který ukazuje, že jeden blok v objektu BLOB se nepovedlo exportovat:  
+Následující příklad je soubor protokolu kopírování, který ukazuje, že jeden blok v objektu BLOB se nepovedlo exportovat:  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -81,7 +81,7 @@ Soubor protokolu kopírování indikuje, že došlo k chybě, když služba Wind
 ## <a name="using-repairexport-to-validate-drive-contents"></a>Ověření obsahu jednotky pomocí RepairExport  
 K ověření, jestli je obsah na disku správný, můžete taky použít Azure import/export s možností **RepairExport** . Soubor manifestu na každé jednotce pro export obsahuje MD5s pro obsah jednotky.  
   
-Služba import/export v Azure může také ukládat soubory manifestu do účtu úložiště během procesu exportu. Umístění souborů manifestu je k dispozici prostřednictvím operace [získat úlohu](/rest/api/storageimportexport/jobs) po dokončení úlohy. Další informace o formátu souboru manifestu jednotky najdete v tématu [Formát souboru manifestu služby Import/export](storage-import-export-file-format-metadata-and-properties.md) .  
+Služba import/export v Azure může také ukládat soubory manifestu do účtu úložiště během procesu exportu. Umístění souborů manifestu je k dispozici prostřednictvím operace [získat úlohu](/rest/api/storageimportexport/jobs) po dokončení úlohy. Další informace o formátu souboru manifestu jednotky najdete v tématu [Formát souboru manifestu služby Import/export](storage-import-export-file-format-metadata-and-properties.md).  
   
 Následující příklad ukazuje, jak spustit nástroj pro import/export Azure s parametry **/MANIFESTFILE** a **/CopyLogFile** :  
   
@@ -89,7 +89,7 @@ Následující příklad ukazuje, jak spustit nástroj pro import/export Azure s
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log /ManifestFile:G:\9WM35C3U.manifest  
 ```  
   
-Následuje příklad souboru manifestu:  
+Následující příklad ukazuje soubor manifestu:  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -155,5 +155,4 @@ Všechny součásti, které selžou ověření, budou staženy nástrojem a pře
 * [Nastavení nástroje Azure pro import/export](storage-import-export-tool-setup-v1.md)   
 * [Příprava pevných disků pro úlohu importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Kontrola stavu úlohy s použitím kopií souborů protokolu](storage-import-export-tool-reviewing-job-status-v1.md)   
-* [Oprava úlohy importu](storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [Řešení potíží s nástrojem Azure pro import/export](storage-import-export-tool-troubleshooting-v1.md)
+* [Oprava úlohy importu](storage-import-export-tool-repairing-an-import-job-v1.md)

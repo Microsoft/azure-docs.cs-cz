@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s ovládacím prvkem Workspot | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování pro Azure Active Directory a ovládací prvek Workspot.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3ea8e4e9-f61f-4f45-b635-b0e306eda3d1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 086ec95531b01477be56d4b1a19d189f167a020f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67086687"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526512"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Kurz: Azure Active Directory integrace s ovládacím prvkem Workspot
 
@@ -107,17 +103,17 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ovládac
     ![Informace o jednotném přihlašování v doméně řízení Workspot a adresách URL](common/idp-intiated.png)
 
     1. Do textového pole **identifikátor** zadejte adresu URL v následujícím vzoru:<br/>
-    ***https://<<i> </i>InstanceName>-SAML.workspot.com/SAML/metadata***
+    ***https://<<i></i> instancename>-SAML.workspot.com/SAML/metadata***
 
     1. Do textového pole **Adresa URL odpovědi** zadejte adresu URL v následujícím vzoru:<br/>
-    ***https://<<i> </i>InstanceName>-SAML.workspot.com/SAML/Assertion***
+    ***https://<<i></i> instancename>-SAML.workspot.com/SAML/Assertion***
 
 5. Chcete-li nakonfigurovat aplikaci v režimu iniciované SP, vyberte možnost **nastavit další adresy URL**.
 
     ![Informace o jednotném přihlašování v doméně řízení Workspot a adresách URL](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL v následujícím vzoru:<br/>
-    ***https://<<i> </i>InstanceName>-SAML.workspot.com/***
+    ***https://<<i></i> instancename>-SAML.workspot.com/***
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Nahraďte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory Workspot Control Client](mailto:support@workspot.com) . Případně můžete také odkazovat na vzory v části **základní konfigurační oddíl SAML** v Azure Portal.
@@ -176,7 +172,7 @@ V této části vytvoříte testovacího uživatele v Azure Portal.
 
     1. Do pole **název** zadejte **BrittaSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **brittasimon@* yourcompanydomain. extension * * *. Zadejte ** BrittaSimon@contosonapříklad.<i> </i> model COM**.
+    1. Do pole **uživatelské jméno** zadejte **brittasimon@* yourcompanydomain. extension * * *. Zadejte například ** BrittaSimon@contoso . <i></i> model COM**.
 
     1. Zaškrtněte políčko **Zobrazit heslo** . Pak zapište hodnotu, která se zobrazí v poli **heslo** .
 
@@ -228,7 +224,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k ovládacímu prvku Workspot, m
 
     1. Do textového pole **poslední jméno** zadejte příjmení uživatele, například **Simon**.
 
-    1. Do pole **e-mail** zadejte e-mailovou adresu uživatele, například ** Brittasimon@contoso.<i> </i> model COM**.
+    1. Do pole **e-mail** zadejte e-mailovou adresu uživatele, například ** Brittasimon@contoso . <i></i> model COM**.
 
     1. V rozevíracím seznamu **role** vyberte příslušnou roli uživatele.
 

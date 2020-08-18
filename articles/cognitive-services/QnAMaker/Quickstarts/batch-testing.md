@@ -3,12 +3,12 @@ title: 'Rychlý Start: testování znalostní báze s dotazy služby Batch'
 description: Pomocí nástroje QnA Maker Batch Test otestujete znalostní bázi v prostředku QnA Maker pro očekávané odpovědi, hodnocení spolehlivosti a výzvy k vícenásobnému zapnutí.
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: 498f84c97fdc022e460dec453b1d65bb8088b787
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: bcee98678212a3bc233c36a831f6bcde7e6ae550
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263142"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531065"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Rychlý Start: testování znalostní báze s dotazy služby Batch a očekávanými odpověďmi
 
@@ -16,7 +16,7 @@ Pomocí nástroje QnA Maker Batch Test otestujete znalostní bázi v prostředku
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Buď [vytvořte službu QnA maker](create-publish-knowledge-base.md) , nebo použijte existující službu, která používá anglický jazyk.
 * Stažení [ukázkového `.docx` souboru s vícenásobným zapnete](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)
 * Stáhněte si [Nástroj Batch test](https://aka.ms/qnamakerbatchtestingtool), extrahujte spustitelný soubor ze `.zip` souboru.

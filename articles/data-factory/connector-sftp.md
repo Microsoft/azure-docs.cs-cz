@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 32650d44b452b90ffd2935eb31f7c7b958c0f7ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/18/2020
+ms.openlocfilehash: 8ec950ddabd3844618c878471d2e1391979e2056
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737750"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521368"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Kopírování dat z a do serveru SFTP pomocí Azure Data Factory
 
@@ -56,10 +56,10 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro propojenou službu SFTP jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type musí být nastavená na *SFTP*. |Yes |
-| host | Název nebo IP adresa serveru SFTP. |Yes |
+| Hostitel | Název nebo IP adresa serveru SFTP. |Yes |
 | port | Port, na kterém naslouchá server SFTP.<br/>Povolená hodnota je celé číslo a výchozí hodnota je *22*. |No |
 | skipHostKeyValidation | Určete, zda se má přeskočit ověření klíče hostitele.<br/>Povolené hodnoty jsou *true* a *false* (výchozí).  | No |
 | hostKeyFingerprint | Zadejte otisk prstu hostitelského klíče. | Ano, pokud je hodnota "skipHostKeyValidation" nastavená na false.  |
@@ -70,7 +70,7 @@ Pro propojenou službu SFTP jsou podporovány následující vlastnosti:
 
 Chcete-li použít základní ověřování, nastavte vlastnost *AuthenticationType* na hodnotu *Basic*a kromě obecných vlastností konektoru SFTP, které byly představené v předchozí části, zadejte následující vlastnosti:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | userName | Uživatel, který má přístup k serveru SFTP. |Yes |
 | heslo | Heslo pro uživatele (uživatelské jméno). Označte toto pole jako SecureString a bezpečně ho uložte do své datové továrny nebo [vytvořte odkaz na tajný kód uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Yes |
@@ -107,7 +107,7 @@ Chcete-li použít základní ověřování, nastavte vlastnost *AuthenticationT
 
 Chcete-li použít ověřování pomocí veřejného klíče SSH, nastavte vlastnost "authenticationType" jako **SshPublicKey**a zadejte následující vlastnosti kromě obecných typů KONEKTORů SFTP zavedených v poslední části:
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | userName | Uživatel, který má přístup k serveru SFTP. |Yes |
 | privateKeyPath | Zadejte absolutní cestu k souboru privátního klíče, ke kterému má prostředí Integration runtime přístup. To platí pouze v případě, že je typ místního prostředí Integration runtime uveden v části "connectVia". | Zadejte buď `privateKeyPath` nebo `privateKeyContent` .  |
@@ -184,7 +184,7 @@ Chcete-li použít ověřování pomocí veřejného klíče SSH, nastavte vlast
 
 Následující vlastnosti jsou podporovány pro SFTP v části `location` nastavení v datové sadě založené na formátu:
 
-| Vlastnost   | Popis                                                  | Vyžadováno |
+| Vlastnost   | Popis                                                  | Povinné |
 | ---------- | ------------------------------------------------------------ | -------- |
 | typ       | Vlastnost *Type* v rámci `location` datové sady musí být nastavená na *SftpLocation*. | Yes      |
 | folderPath | Cesta ke složce Pokud chcete použít zástupný znak k filtrování složky, přeskočte toto nastavení a zadejte cestu v nastavení zdroje aktivity. | No       |
@@ -226,7 +226,7 @@ Následující vlastnosti jsou podporovány pro SFTP v části `location` nastav
 
 V `storeSettings` nastaveních ve zdroji kopírování založeném na formátu jsou podporovány následující vlastnosti protokolu SFTP:
 
-| Vlastnost                 | Popis                                                  | Vyžadováno                                      |
+| Vlastnost                 | Popis                                                  | Povinné                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | typ                     | Vlastnost *Type* v poli `storeSettings` musí být nastavená na *SftpReadSettings*. | Yes                                           |
 | ***Vyhledejte soubory ke zkopírování.*** |  |  |
@@ -284,11 +284,11 @@ V `storeSettings` nastaveních ve zdroji kopírování založeném na formátu j
 
 ### <a name="sftp-as-a-sink"></a>SFTP jako jímka
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
 
 Následující vlastnosti jsou podporovány pro SFTP v `storeSettings` nastavení v jímky kopírování na základě formátu:
 
-| Vlastnost                 | Popis                                                  | Vyžadováno |
+| Vlastnost                 | Popis                                                  | Povinné |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | typ                     | Vlastnost *Type* v poli `storeSettings` musí být nastavená na *SftpWriteSettings*. | Yes      |
 | copyBehavior             | Definuje chování kopírování, pokud je zdrojem soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>-PreserveHierarchy (výchozí)</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru ke zdrojové složce je shodná s relativní cestou cílového souboru k cílové složce.<br/><b>-FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>-MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Je-li zadán název souboru, Název sloučeného souboru je zadaný název. V opačném případě se jedná o automaticky vygenerovaný název souboru. | No       |
@@ -351,7 +351,7 @@ Tato tabulka popisuje chování, které je výsledkem použití cesty seznamu so
 
 | Ukázka zdrojové struktury                                      | Obsah v FileListToCopy.txt                             | Konfigurace Azure Data Factory                                            |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
-| kořen<br/>&nbsp;&nbsp;&nbsp;&nbsp;Složka<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.jsna<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsna<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Mezipaměť<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **V datové sadě:**<br>– Cesta ke složce:`root/FolderA`<br><br>**Ve zdroji aktivity kopírování:**<br>– Cesta k seznamu souborů:`root/Metadata/FileListToCopy.txt` <br><br>Cesta k seznamu souborů odkazuje na textový soubor ve stejném úložišti dat, který obsahuje seznam souborů, které chcete zkopírovat (jeden soubor na řádek, přičemž relativní cesta k cestě je nakonfigurovaná v datové sadě). |
+| kořen<br/>&nbsp;&nbsp;&nbsp;&nbsp;Složka<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.jsna<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsna<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Mezipaměť<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **V datové sadě:**<br>– Cesta ke složce: `root/FolderA`<br><br>**Ve zdroji aktivity kopírování:**<br>– Cesta k seznamu souborů: `root/Metadata/FileListToCopy.txt` <br><br>Cesta k seznamu souborů odkazuje na textový soubor ve stejném úložišti dat, který obsahuje seznam souborů, které chcete zkopírovat (jeden soubor na řádek, přičemž relativní cesta k cestě je nakonfigurovaná v datové sadě). |
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 
@@ -372,11 +372,11 @@ Informace o vlastnostech aktivity odstranění najdete v tématu [Odstranění a
 
 ### <a name="legacy-dataset-model"></a>Model zastaralé sady dat
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost *Type* datové sady musí být nastavená na *Shared*. |Yes |
 | folderPath | Cesta ke složce Je podporován filtr zástupných znaků. Povolené zástupné znaky jsou `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); `^` Pokud má skutečný název souboru zástupný znak nebo znak escape v rámci, použijte k ukončení. <br/><br/>Příklady: RootFolder/podsložce/, další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). |Yes |
-| fileName |  **Název nebo zástupný filtr** pro soubory v zadaném "FolderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada bude ukazovat na všechny soubory ve složce. <br/><br/>Pro filtr je povolený zástupný znak `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku).<br/>-Příklad 1:`"fileName": "*.csv"`<br/>-Příklad 2:`"fileName": "???20180427.txt"`<br/>`^`Pokud vlastní název složky obsahuje zástupný znak nebo tento řídicí znak v rámci, použijte k ukončení. |No |
+| fileName |  **Název nebo zástupný filtr** pro soubory v zadaném "FolderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada bude ukazovat na všechny soubory ve složce. <br/><br/>Pro filtr je povolený zástupný znak `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku).<br/>-Příklad 1: `"fileName": "*.csv"`<br/>-Příklad 2: `"fileName": "???20180427.txt"`<br/>`^`Pokud vlastní název složky obsahuje zástupný znak nebo tento řídicí znak v rámci, použijte k ukončení. |No |
 | modifiedDatetimeStart | Soubory jsou filtrovány na základě *Poslední změny*atributu. Soubory jsou vybrány, pokud čas poslední změny spadá do rozsahu `modifiedDatetimeStart` až `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu *2018-12-01T05:00:00Z*. <br/><br/> Celkový výkon přesunu dat bude ovlivněn tím, že toto nastavení povolíte, pokud chcete provést filtr souborů z velkého počtu souborů. <br/><br/> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu není použit žádný filtr atributů souboru.  Když `modifiedDatetimeStart` má hodnotu DateTime, ale má hodnotu `modifiedDatetimeEnd` null, znamená, že jsou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Když `modifiedDatetimeEnd` má hodnotu DateTime, ale `modifiedDatetimeStart` je null, znamená to, že jsou vybrány soubory, jejichž atribut Last Modified je menší, než hodnota DateTime.| No |
 | modifiedDatetimeEnd | Soubory jsou filtrovány na základě *Poslední změny*atributu. Soubory jsou vybrány, pokud čas poslední změny spadá do rozsahu `modifiedDatetimeStart` až `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu *2018-12-01T05:00:00Z*. <br/><br/> Celkový výkon přesunu dat bude ovlivněn tím, že toto nastavení povolíte, pokud chcete provést filtr souborů z velkého počtu souborů. <br/><br/> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu není použit žádný filtr atributů souboru.  Když `modifiedDatetimeStart` má hodnotu DateTime, ale má hodnotu `modifiedDatetimeEnd` null, znamená, že jsou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Když `modifiedDatetimeEnd` má hodnotu DateTime, ale `modifiedDatetimeStart` je null, znamená to, že jsou vybrány soubory, jejichž atribut Last Modified je menší, než hodnota DateTime.| No |
 | formát | Pokud chcete kopírovat soubory mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady.<br/><br/>Chcete-li analyzovat soubory s konkrétním formátem, jsou podporovány následující typy formátu souboru: *TextFormat*, *JsonFormat*, *AvroFormat*, *OrcFormat*a *ParquetFormat*. V části formát nastavte vlastnost *typ* na jednu z těchto hodnot. Další informace najdete v částech [Formát textu](supported-file-formats-and-compression-codecs-legacy.md#text-format), [formát JSON](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Formát Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [Formát ORC](supported-file-formats-and-compression-codecs-legacy.md#orc-format)a formátování [Parquet](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) . |Ne (jenom pro binární scénář kopírování) |
@@ -421,7 +421,7 @@ Informace o vlastnostech aktivity odstranění najdete v tématu [Odstranění a
 
 ### <a name="legacy-copy-activity-source-model"></a>Starší zdrojový model aktivity kopírování
 
-| Vlastnost | Popis | Vyžadováno |
+| Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost *Type* zdroje aktivity kopírování musí být nastavená na *FileSystemSource* . |Yes |
 | zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Pokud je rekurzivní nastavení nastaveno na *hodnotu true* a jímka je úložiště založené na souborech, prázdné složky a podsložky se nebudou kopírovat ani vytvářet v jímky.<br/>Povolené hodnoty jsou *true* (výchozí) a *false* . | No |

@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s cloudovou službou Alibaba (SSO založené na rolích) | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a cloudovou službou Alibaba (jednotné přihlašování založené na rolích).
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3667841e-acfc-4490-acf5-80d9ca3e71e8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e22bec224d185d0306f2b0032aef929f627c910e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0e9ccb3f4308a1a75a715a16ab4c1a2887b0a915
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77367937"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521973"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s cloudovou službou Alibaba (jednotné přihlašování založené na rolích)
 
@@ -117,9 +112,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -154,11 +149,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 3. Na kartě **jednotné přihlašování na základě rolí** klikněte na **vytvořit IDP**.
 
-4. Na `AAD` zobrazené stránce zadejte do pole název IDP, zadejte popis do pole **Poznámka** , klikněte na tlačítko **nahrát** a nahrajte soubor federačních metadat, který jste stáhli dříve, a klikněte na **OK**.
+4. Na zobrazené stránce zadejte `AAD` do pole název IDP, zadejte popis do pole **Poznámka** , klikněte na tlačítko **nahrát** a nahrajte soubor federačních metadat, který jste stáhli dříve, a klikněte na **OK**.
 
 5. Po úspěšném vytvoření IdP klikněte na **vytvořit roli RAM**.
 
-6. V poli **název role RAM** zadejte `AADrole`vyberte `AAD` v rozevíracím seznamu **Vybrat IDP** a klikněte na OK.
+6. V poli **název role RAM** zadejte `AADrole` vyberte v `AAD` rozevíracím seznamu **Vybrat IDP** a klikněte na OK.
 
     >[!NOTE]
     >Podle potřeby můžete roli udělit oprávnění. Po vytvoření IdP a odpovídající role doporučujeme, abyste uložili ARNs pro IdP a roli pro následné použití. ARNs můžete získat na stránce informace o IdP a na stránce s informacemi o roli.
@@ -190,7 +185,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
     ![Konfigurace grafu](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
 
     >[!NOTE]
-    >Vlastnost appRoles můžete vyhledat zadáním `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` do pole dotazu. Všimněte si, `objectID` že je ID objektu, které jste zkopírovali ze stránky **vlastností** Azure AD.
+    >Vlastnost appRoles můžete vyhledat zadáním `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` do pole dotazu. Všimněte si, že `objectID` je ID objektu, které jste zkopírovali ze stránky **vlastností** Azure AD.
 
     f. Vraťte se do Průzkumníka graphu, změňte metodu z možnosti **získat** na **opravu**, vložte následující obsah do části **Text žádosti** a klikněte na **Spustit dotaz**:
     ```
@@ -221,9 +216,9 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
     }
     ```
     > [!NOTE]
-    > `value` Je ARNs IDP a role, kterou jste vytvořili v konzole RAM. Tady můžete podle potřeby přidat víc rolí. Azure AD pošle hodnotu těchto rolí jako hodnotu deklarace v odpovědi SAML. Nové role však můžete přidat pouze po `msiam_access` části operace opravy. Pro vyhlazení procesu vytváření doporučujeme, abyste pro generování ID v reálném čase použili generátor ID, jako je například generátor GUID.
+    > `value`Je ARNs IDP a role, kterou jste vytvořili v konzole RAM. Tady můžete podle potřeby přidat víc rolí. Azure AD pošle hodnotu těchto rolí jako hodnotu deklarace v odpovědi SAML. Nové role však můžete přidat pouze po `msiam_access` části operace opravy. Pro vyhlazení procesu vytváření doporučujeme, abyste pro generování ID v reálném čase použili generátor ID, jako je například generátor GUID.
 
-    g. Po opravě ' instančního objektu ' s požadovanou rolí připojte roli k uživateli Azure AD (U2) podle postupu v části **přiřazení testovacího uživatele Azure AD** v tomto kurzu.
+    například Po opravě ' instančního objektu ' s požadovanou rolí připojte roli k uživateli Azure AD (U2) podle postupu v části **přiřazení testovacího uživatele Azure AD** v tomto kurzu.
 
 ### <a name="configure-alibaba-cloud-service-role-based-sso-sso"></a>Konfigurace služby Alibaba pro jednotné přihlašování na základě rolí
 
@@ -253,11 +248,11 @@ Po dokončení předchozích konfigurací otestujte cloudovou službu Alibaba (S
 
     ![Konfigurace testu](./media/alibaba-cloud-service-role-based-sso-tutorial/test06.png)
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

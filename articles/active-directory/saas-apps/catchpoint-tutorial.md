@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s záchytný bod'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a záchytný bod.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ab3eead7-8eb2-4c12-bb3a-0e46ec899d37
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b19e286d299811a950df05f93d221bd710676ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 649396b81402e9229eb9ea2c627b60f249f8c601
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80743490"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530252"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí záchytný bod
 
@@ -85,30 +81,30 @@ Pokud chcete povolit jednotné přihlašování Azure AD, postupujte podle těch
 1. Nakonfigurujte inicializovaný režim pro záchytný bod:
    - V případě režimu iniciované **IDP**zadejte hodnoty pro následující pole:
      - **Identifikátor**:`https://portal.catchpoint.com/SAML2`
-     - Pro **adresu URL odpovědi**:`https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
+     - Pro **adresu URL odpovědi**: `https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
    - Pro režim inicializovaný v režimu **SP**vyberte **nastavit další adresy URL** a zadejte následující hodnotu:
      - **Přihlašovací adresa URL**:`https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
 
 1. Aplikace záchytný bod očekává kontrolní výrazy SAML v určitém formátu. Přidejte mapování vlastních atributů do vaší konfigurace atributů tokenu SAML. Následující tabulka obsahuje seznam výchozích atributů:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------ | --------- |
     | GivenName | User. givenneame |
     | příjmení | User. příjmení |
     | EmailAddress | uživatel. pošta |
-    | Název | User. userPrincipalName |
+    | Name | User. userPrincipalName |
     | Jedinečný identifikátor uživatele | User. userPrincipalName |
 
     ![Uživatelské atributy & snímku seznamu deklarací identity](common/default-attributes.png)
 
 1. Také aplikace záchytný bod očekává, že se do odpovědi SAML předává jiný atribut. Podívejte se na následující tabulku. Tento atribut je také předem vyplněný, ale můžete ho zkontrolovat a aktualizovat tak, aby vyhovoval vašim požadavkům.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------ | --------- |
     | namespace | User. assignedrole |
 
     > [!NOTE]
-    > `namespace` Deklarace identity musí být namapovaná s názvem účtu. Tento název účtu by měl být nastavený s rolí v Azure AD, aby se zpátky v odpovědi SAML. Další informace o rolích ve službě Azure AD najdete v tématu [konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
+    > `namespace`Deklarace identity musí být namapovaná s názvem účtu. Tento název účtu by měl být nastavený s rolí v Azure AD, aby se zpátky v odpovědi SAML. Další informace o rolích ve službě Azure AD najdete v tématu [konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
 1. Přejít na stránku **nastavit jednotné přihlašování pomocí SAML** . V části **podpisový certifikát SAML** Najděte **certifikát (Base64)**. Vyberte **Stáhnout** a uložte certifikát do počítače.
 
@@ -122,11 +118,11 @@ Pokud chcete povolit jednotné přihlašování Azure AD, postupujte podle těch
 
 V této části použijete Azure Portal k vytvoření testovacího uživatele Azure AD s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Zadejte například `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Zadejte například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** . Všimněte si zobrazované hodnoty hesla.
    1. Vyberte **Vytvořit**.
 
@@ -134,7 +130,7 @@ V této části použijete Azure Portal k vytvoření testovacího uživatele Az
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k záchytný bod.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
 1. V seznamu aplikace vyberte **záchytný bod**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
@@ -162,9 +158,9 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
    Pole | Hodnota
    ----- | ----- 
-   **Hosting** | Platná hodnota oboru názvů.
-   **Vystavitel zprostředkovatele identity** | `Azure AD Identifier` Hodnota z Azure Portal.
-   **Adresa URL jednotného přihlašování** | `Login URL` Hodnota z Azure Portal.
+   **Obor názvů** | Platná hodnota oboru názvů.
+   **Vystavitel zprostředkovatele identity** | `Azure AD Identifier`Hodnota z Azure Portal.
+   **Adresa URL jednotného přihlašování** | `Login URL`Hodnota z Azure Portal.
    **Certifikát** | Obsah staženého `Certificate (Base64)` souboru z Azure Portal. K zobrazení a kopírování použijte Poznámkový blok.
 
    Můžete také nahrát **XML federačních metadat** , a to tak, že vyberete možnost **nahrát metadata** .
@@ -186,7 +182,7 @@ Když na portálu moje aplikace vyberete dlaždici záchytný bod, měli byste b
 > 
 > ![Konfigurace záchytný bod](./media/catchpoint-tutorial/loginimage.png)
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

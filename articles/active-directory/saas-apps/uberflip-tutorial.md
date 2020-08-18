@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Uberflip | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Uberflip.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 754b1f5b-6694-4fd6-9e1e-9fad769c64db
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: d20c05e6ec5a413b81ede9cb4906de2595967115
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8936c2150c32a22877f9b56736ecc4b8f3424b32
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80048477"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533125"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Kurz: Azure Active Directory integrace s Uberflip
 
@@ -38,7 +34,7 @@ Podrobnosti o integraci aplikací SaaS (software jako služba) se službou Azure
 
 Ke konfiguraci integrace služby Azure AD s Uberflip potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Předplatné služby Azure AD. Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 * Předplatné Uberflip s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -139,7 +135,7 @@ Ke konfiguraci jednotného přihlašování na straně Uberflip je potřeba odes
 
 V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure Portal.
 
-1. V Azure Portal v levém podokně vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 
     ![Možnosti uživatelé a všichni uživatelé](common/users.png)
 
@@ -153,7 +149,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 
     1. Do pole **název** zadejte **BSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **BSimon\@\<\< yourcompanydomain>.>rozšíření **. Například **BSimon\@contoso.com**.
+    1. Do pole **uživatelské jméno** zadejte **BSimon \@ \<yourcompanydomain> . \<extension> **. Například **BSimon \@ contoso.com**.
 
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
 
@@ -163,7 +159,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Uberflip.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace** > **Uberflip**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**  >  **Uberflip**.
 
     ![Podokno podnikové aplikace](common/enterprise-applications.png)
 

@@ -2,25 +2,20 @@
 title: 'Kurz: zřizování uživatelů pro CERN – střed – Azure AD'
 description: Naučte se, jak nakonfigurovat Azure Active Directory pro Automatické zřizování uživatelů v seznamu v centru CERN.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ed04d8fdcc2d79c66e2ebc53c737c78664e4621
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58b991f5b229d924bc933ff34987db24bc895e10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058312"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529861"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Kurz: Konfigurace centrálního přivisionu pro Automatické zřizování uživatelů
 
@@ -65,29 +60,29 @@ Aby bylo možné zřídit uživatelské účty pro společnost "CERN", budete mu
 
 1. Prvním krokem je zajistit, aby lidé, kteří spravují CERN a integraci služby Azure AD, měli účet CernerCare, který je nezbytný pro přístup k dokumentaci, která je nutná k dokončení těchto pokynů. V případě potřeby pomocí níže uvedených adres URL vytvořte účty CernerCare v každém příslušném prostředí.
 
-   * Úložištihttps://sandboxcernercare.com/accounts/create
+   * Úložišti  https://sandboxcernercare.com/accounts/create
 
-   * Produkčníhttps://cernercare.com/accounts/create  
+   * Produkční  https://cernercare.com/accounts/create  
 
 2. V dalším kroku se musí vytvořit systémový účet pro Azure AD. Pomocí níže uvedených pokynů si vyžádejte systémový účet pro izolovaný prostor a produkční prostředí.
 
-   * Pokynůhttps://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
+   * Pokynů  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
-   * Úložištihttps://sandboxcernercentral.com/system-accounts/
+   * Úložišti https://sandboxcernercentral.com/system-accounts/
 
-   * Produkčníhttps://cernercentral.com/system-accounts/
+   * Produkční  https://cernercentral.com/system-accounts/
 
 3. Dále vygenerujte nosný token OAuth pro každý účet systému. Pokud to chcete provést, postupujte podle následujících pokynů.
 
-   * Pokynůhttps://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
+   * Pokynů  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
-   * Úložištihttps://sandboxcernercentral.com/system-accounts/
+   * Úložišti https://sandboxcernercentral.com/system-accounts/
 
-   * Produkčníhttps://cernercentral.com/system-accounts/
+   * Produkční  https://cernercentral.com/system-accounts/
 
 4. Nakonec potřebujete pro dokončení konfigurace získat ID sféry soupisu uživatelů pro izolovaný prostor a produkční prostředí ve společnosti CERN. Informace o tom, jak to získat, najdete v tématu: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM . 
 
-5. Teď můžete službu Azure AD nakonfigurovat tak, aby zřídila uživatelské účty pro CERN. Přihlaste se k [Azure Portal](https://portal.azure.com)a přejděte do části **Azure Active Directory > podnikové aplikace > všechny aplikace** .
+5. Teď můžete službu Azure AD nakonfigurovat tak, aby zřídila uživatelské účty pro CERN. Přihlaste se k [Azure Portal](https://portal.azure.com)a přejděte do části **Azure Active Directory > podnikové aplikace > všechny aplikace**  .
 
 6. Pokud jste již v rámci jednotného přihlašování nakonfigurovali CERN (), vyhledejte svou instanci poskytovatele CERN pomocí vyhledávacího pole. V opačném případě vyberte možnost **Přidat** a vyhledejte v galerii aplikací položku **CERN** . Z výsledků hledání vyberte CERN – střed a přidejte ho do seznamu aplikací.
 
@@ -101,9 +96,9 @@ Aby bylo možné zřídit uživatelské účty pro společnost "CERN", budete mu
 
    * V poli **Adresa URL tenanta** zadejte adresu URL ve formátu níže a nahraďte "User-The-REALM-ID" ID sféry, kterou jste získali v kroku #4.
 
-    > Úložištihttps://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > Úložišti https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
     > 
-    > Produkčníhttps://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > Produkční https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * V poli **token tajného klíče** zadejte token nosiče OAuth, který jste vygenerovali v kroku #3 a klikněte na **Test připojení**.
 

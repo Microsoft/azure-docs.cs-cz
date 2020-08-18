@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) ke sledování pomocí barev | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a sledujte barvy.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 586a029c-fb8d-4233-b280-103b9ba7102d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d8fdc8ba2337a3be49a4645e48a45120fb0ccec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79fd6c5212b2ad956259f2cfbfb36ec3e7e92844
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026090"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523793"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) ke sledování pomocí barev
 
@@ -84,7 +79,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://app.colorscorporation.com/login`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://app.colorscorporation.com/login`
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
@@ -98,9 +93,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -132,7 +127,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 3. Pokud chcete nastavit sledování pomocí barev ručně, otevřete nové okno webového prohlížeče a přihlaste se ke svému kukátku pomocí barev webu společnosti jako správce a proveďte následující kroky:
 
-4. V pravém horním rohu stránky klikněte na **profil** > **Nastavení** > účtu**SSO (jednotné přihlašování)**.
+4. V pravém horním rohu stránky klikněte na **profil**  >  **Nastavení účtu**  >  **SSO (jednotné přihlašování)**.
 
     ![Sledovat podle konfigurace barev](./media/watch-by-colors-tutorial/config01.png)
 
@@ -156,7 +151,7 @@ Pokud chcete uživatelům Azure AD povolit, aby se k nim přihlásili, aby se mo
 
 1. Přihlaste se a sledujte barvy jako správce zabezpečení.
 
-1. V pravém horním rohu stránky klikněte na **profily** > **Uživatelé** > **Přidat uživatele**.
+1. V pravém horním rohu stránky klikněte na **profily**  >  **Uživatelé**  >  **Přidat uživatele**.
 
     ![Sledovat podle konfigurace barev](./media/watch-by-colors-tutorial/config03.png)
 
@@ -168,7 +163,7 @@ Pokud chcete uživatelům Azure AD povolit, aby se k nim přihlásili, aby se mo
 
     b. Do textového pole **příjmení** zadejte příjmení uživatele, jako je **Simon**.
 
-    c. Do textového pole **e-mailu** zadejte e-maily uživatele jako `B.Simon@contoso.com`.
+    c. Do textového pole **e-mailu** zadejte e-maily uživatele jako `B.Simon@contoso.com` .
 
     d. Do textového pole **heslo** zadejte heslo.
 
@@ -184,9 +179,9 @@ Když kliknete na dlaždici sledovat podle barev na přístupovém panelu, měli
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

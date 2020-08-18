@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s TOPdesk-Public | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TOPdesk-Public.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0873299f-ce70-457b-addc-e57c5801275f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: e5575a2e8f776e87fcd4e6f4a7a9244752ebfd9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a18cb583b246c3cfbf09f43b9921497de37a3613
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71950423"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524259"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Kurz: Azure Active Directory integrace s TOPdesk – Public
 
@@ -32,7 +28,7 @@ Integrace TOPdesk-Public s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -118,11 +114,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TOPdesk-
 
     ![TOPdesk – informace jednotného přihlašování pro veřejné domény a adresy URL](common/sp-identifier-reply.png)
 
-    d. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.topdesk.net`
+    d. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.topdesk.net`
 
-    e. Do textového pole **Adresa URL identifikátoru** zadejte adresu URL metadat TopDesk, kterou můžete načíst z konfigurace TopDesk. Měl by používat následující vzor:`https://<companyname>.topdesk.net/saml-metadata/<identifier>`
+    e. Do textového pole **Adresa URL identifikátoru** zadejte adresu URL metadat TopDesk, kterou můžete načíst z konfigurace TopDesk. Měl by používat následující vzor: `https://<companyname>.topdesk.net/saml-metadata/<identifier>`
     
-    f. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.topdesk.net/tas/public/login/verify`
+    f. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.topdesk.net/tas/public/login/verify`
     
     > [!NOTE] 
     > Pokud se hodnoty **adresy URL** pro **identifikátor** a odpověď nezískají automaticky, je nutné je zadat ručně. V případě identifikátoru postupujte podle vzoru uvedeného výše a získejte adresu URL odpovědi z oddílu **Konfigurace jednotného přihlašování TopDesk** , který je vysvětlen dále v tomto kurzu. Hodnota **přihlašovací adresy URL** není skutečná, takže je potřeba aktualizovat hodnotu pomocí skutečné přihlašovací adresy URL. Kontaktujte [TopDesk – tým podpory veřejného klienta](https://help.topdesk.com/saas/enterprise/user/) , který získá hodnotu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -195,7 +191,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TOPdesk-
 
     c. Pokud chcete nahrát soubor loga, který jste dostali z týmu podpory TOPdesk, klikněte v části **ikona loga**na **Procházet**.
 
-    d. Do textového pole **atributu uživatelského jména** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    d. Do textového pole **atributu uživatelského jména** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
     e. Do textového pole **Zobrazovaný název** zadejte název konfigurace.
 
@@ -219,11 +215,11 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -259,7 +255,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k TOPdesk veřejnému, musí se 
 
 1. Přihlaste se k vaší veřejné lokalitě společnosti **TopDesk** jako správce.
 
-2. V nabídce v horní části klikněte na **TopDesk \> nové \> soubory \> podpory osoba**.
+2. V nabídce v horní části klikněte na **TopDesk \> nové \> soubory podpory \> osoba**.
    
     ![Person (Osoba)](./media/topdesk-public-tutorial/ic790628.png "Person (Osoba)")
 
@@ -284,7 +280,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici TOPdesk-Public na přístupovém panelu, měli byste se automaticky přihlásit k TOPdesk – veřejnému, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

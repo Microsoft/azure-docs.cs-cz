@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s cukrem CRM | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a cukrem CRM.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3331b9fc-ebc0-4a3a-9f7b-bf20ee35d180
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3199509b03b058b71b609d276a8d95e8d225175
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cd1be43bd8984df8fef690e595ec99f4b112c3c1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86167755"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533615"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s cukrem v cukru CRM
 
@@ -117,7 +112,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -143,7 +138,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Přejít na **správce**.
 
-    ![Správce](./media/sugarcrm-tutorial/ic795888.png "Správce")
+    ![Správce](./media/sugarcrm-tutorial/ic795888.png "správce")
 
 1. V části **Správa** klikněte na **Správa hesel**.
 
@@ -175,7 +170,7 @@ Aby se uživatelé Azure AD mohli přihlásit k cukru CRM, musí se zřídit do 
 
 1. Přejít na **správce**.
 
-    ![Správce](./media/sugarcrm-tutorial/ic795888.png "Správce")
+    ![Správce](./media/sugarcrm-tutorial/ic795888.png "správce")
 
 1. V části **Správa** klikněte na **Správa uživatelů**.
 
@@ -212,9 +207,9 @@ Po kliknutí na dlaždici cukru CRM na přístupovém panelu byste měli být au
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

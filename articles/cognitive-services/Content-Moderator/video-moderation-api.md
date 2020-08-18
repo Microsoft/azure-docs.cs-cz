@@ -10,18 +10,18 @@ ms.subservice: content-moderator
 ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 081f512fd421bf46a86f3789eadd75e178e1b6f5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e1054edbece83804b8e49394f979dbaaf0b99917
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685304"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516584"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Analýza obsahu videa pro nevhodný materiál v jazyce C #
 
 V tomto článku najdete informace a ukázky kódu, které vám pomůžou začít používat [sadu Content moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ke skenování obsahu videa pro dospělé nebo pikantní obsah.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
 
 ## <a name="prerequisites"></a>Požadavky
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/)
@@ -120,7 +120,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 Pokud chcete použít místní videosoubor (nejjednodušší případ), přidejte ho do projektu a zadejte jeho cestu jako `INPUT_FILE` hodnotu (relativní cesty jsou relativní vzhledem ke spouštěcímu adresáři).
 
-Budete také muset vytvořit soubor _přednastavení. JSON_ v aktuálním adresáři a použít ho k zadání čísla verze. Například:
+Budete také muset vytvořit _preset.jspro_ soubor v aktuálním adresáři a použít ho k zadání čísla verze. Příklad:
 
 ```JSON
 {
@@ -369,10 +369,10 @@ Po dokončení úlohy Moderování obsahu Analyzujte odpověď JSON. Skládá se
 - možnost **Start**, **Duration**, **totalDuration**a **timestamp** jsou v "Ticks". Rozdělte podle **časové osy** k získání počtu v sekundách.
  
 > [!NOTE]
-> - `adultScore`představuje potenciální přítomnost a předpověď skóre obsahu, který může být v určitých situacích považován za zřejmý nebo dospělý.
-> - `racyScore`představuje potenciální stav a předpověď skóre obsahu, který může být v určitých situacích považovaný za pohlavní sugestivní nebo vyspělý.
-> - `adultScore`a `racyScore` jsou mezi 0 a 1. Čím vyšší je skóre, tím vyšší je model, který předpokládá, že se kategorie může použít. Tato verze Preview spoléhá na místo ručně kódovaných výsledků z statistického modelu. Doporučujeme, abyste při testování pomocí vlastního obsahu určili, jak jednotlivé kategorie odpovídají vašim požadavkům.
-> - `reviewRecommended`je buď true, nebo false v závislosti na vnitřních prahech skóre. Zákazníci by měli posoudit, jestli tuto hodnotu použít, nebo se rozhodnout o vlastních prahech na základě zásad obsahu.
+> - `adultScore` představuje potenciální přítomnost a předpověď skóre obsahu, který může být v určitých situacích považován za zřejmý nebo dospělý.
+> - `racyScore` představuje potenciální stav a předpověď skóre obsahu, který může být v určitých situacích považovaný za pohlavní sugestivní nebo vyspělý.
+> - `adultScore` a `racyScore` jsou mezi 0 a 1. Čím vyšší je skóre, tím vyšší je model, který předpokládá, že se kategorie může použít. Tato verze Preview spoléhá na místo ručně kódovaných výsledků z statistického modelu. Doporučujeme, abyste při testování pomocí vlastního obsahu určili, jak jednotlivé kategorie odpovídají vašim požadavkům.
+> - `reviewRecommended` je buď true, nebo false v závislosti na vnitřních prahech skóre. Zákazníci by měli posoudit, jestli tuto hodnotu použít, nebo se rozhodnout o vlastních prahech na základě zásad obsahu.
 
 ```json
 {

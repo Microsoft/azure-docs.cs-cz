@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 05/11/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 49a9cfca1c1f3a76c85dfac98cafea00df1d5ff0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3c34fd198164d7e3ae0851749cf51809df31ca19
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504882"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522942"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Série videí s postupy pro Azure Portal
 
@@ -22,17 +22,18 @@ Informace o tom, jak se naučíte pracovat se službami Azure v Azure Portal, na
 
 ## <a name="featured-video"></a>Vybrané video
 
-V tomto doporučeném videu vám ukážeme, jak se připojit k účtu úložiště pomocí privátního propojení Azure.
+V tomto doporučeném videu vám ukážeme, jak nasadit statickou webovou aplikaci Azure.
 
-> [!VIDEO https://www.youtube.com/embed/vM7yDwHSc_o]
+> [!VIDEO https://www.youtube.com/embed/H2MPsgujpNk]
 
-[Jak se připojit k účtu úložiště pomocí privátního odkazu Azure](https://www.youtube.com/watch?v=vM7yDwHSc_o)
+[Jak nasadit statickou webovou aplikaci Azure](https://www.youtube.com/watch?v=H2MPsgujpNk)
 
 Zachyťte tato Nedávná videa, která jste pravděpodobně nenalezli:
 
-| [Nové prostředí Azure Functions](https://www.youtube.com/watch?v=0bdT_9uOqkg)  | [Nasazení webové aplikace pomocí akcí GitHubu](https://www.youtube.com/watch?v=b2oyxbSbLPA)  | [Používání karet informací o službě](https://www.youtube.com/watch?v=u00TU531qsQ)  |
+| [Jak monitorovat Azure Functions](https://www.youtube.com/watch?v=eVDZz8h0s00)  | [Jak používat správu verzí objektů BLOB](https://www.youtube.com/watch?v=b2oyxbSbLPA)  | [Připojení k účtu úložiště pomocí privátního odkazu Azure](https://www.youtube.com/watch?v=m7e9h1gedWQ)  |
 | ------| ------ | ------ |
-| [![Obrázek videa YouTube o novém prostředí Azure Functions](https://i.ytimg.com/vi/0bdT_9uOqkg/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=0bdT_9uOqkg) | [![Obrázek YouTube videa nasazení webové aplikace pomocí akcí GitHubu](https://i.ytimg.com/vi/b2oyxbSbLPA/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=b2oyxbSbLPA) | [![Obrázek videa YouTube o používání karet informací o službě](https://i.ytimg.com/vi/u00TU531qsQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=u00TU531qsQ) |
+| [![Obrázek videa YouTube o tom, jak monitorovat Azure Functions](https://i.ytimg.com/vi/eVDZz8h0s00/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=eVDZz8h0s00) | [![Obrázek videa YouTube o používání správy verzí objektů BLOB](https://i.ytimg.com/vi/m7e9h1gedWQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=m7e9h1gedWQ) | [![Obrázek videa YouTube o připojení k účtu úložiště pomocí privátního odkazu Azure](https://i.ytimg.com/vi/vM7yDwHSc_o/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](https://www.youtube.com/watch?v=vM7yDwHSc_o) |
+
 
 ## <a name="video-playlist"></a>Seznam videí
 

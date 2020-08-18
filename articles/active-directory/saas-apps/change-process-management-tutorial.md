@@ -2,25 +2,21 @@
 title: 'Kurz: integrace služby Azure AD SSO se správou změn procesů'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a měnit správu procesů.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d1215e3d-44f6-477d-9d94-bec0c9ebdbb0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f803fda1d1709e60db078f7b729d7588aa725fd
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 501f19b2022d221ad6facd66c483790b13491ba0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456823"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529674"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-change-process-management"></a>Kurz: Azure Active Directory integraci jednotného přihlašování se správou změn procesů
 
@@ -83,9 +79,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** proveďte tyto kroky:
 
-    a. Do pole **identifikátor** zadejte adresu URL v následujícím vzoru:`https://<hostname>:8443/`
+    a. Do pole **identifikátor** zadejte adresu URL v následujícím vzoru: `https://<hostname>:8443/`
 
-    b. Do pole **Adresa URL odpovědi** zadejte adresu URL v následujícím vzoru:`https://<hostname>:8443/changepilot/saml/sso`
+    b. Do pole **Adresa URL odpovědi** zadejte adresu URL v následujícím vzoru: `https://<hostname>:8443/changepilot/saml/sso`
 
     > [!NOTE]
     > Hodnoty **adresy URL** předchozího **identifikátoru** a odpovědi nejsou aktuálními hodnotami, které byste měli použít. Pokud chcete získat skutečné hodnoty, obraťte se na [tým podpory správy změn procesů](mailto:support@realtech-us.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.

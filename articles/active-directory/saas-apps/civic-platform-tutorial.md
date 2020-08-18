@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s platformou Civic | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Civic platformou.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1d790454-143e-40ac-b3cb-5a256977b4db
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ccf124c5a4160715df4e685e405dcd591c49ae7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 47ffaef940b3fe2ffe033405a712195c5c74d774
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68496823"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520376"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>Kurz: integrace platformy Civic s Azure Active Directory
 
@@ -87,9 +82,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.accela.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.accela.com`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL:`civicplatform.accela.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL: `civicplatform.accela.com`
 
     > [!NOTE]
     > Hodnota adresy URL pro přihlášení není v reálném čase. Aktualizujte tuto hodnotu skutečnou adresou URL pro přihlášení. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory Civic Platform Client](mailto:skale@accela.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -98,7 +93,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
-1. V Azure AD přejděte na **Azure Active Directory** > **Registrace aplikací** a vyberte svou aplikaci.
+1. V Azure AD přejděte na **Azure Active Directory**  >  **Registrace aplikací** a vyberte svou aplikaci.
 
 1. Zkopírujte **ID adresáře (tenant)** a uložte ho do poznámkového bloku.
 
@@ -108,7 +103,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Kopírovat ID aplikace (klienta)](media/civic-platform-tutorial/applicationid.png)
 
-1. V Azure AD přejděte na **Azure Active Directory** > **Registrace aplikací** a vyberte svou aplikaci. Vyberte **certifikáty & tajných**kódů.
+1. V Azure AD přejděte na **Azure Active Directory**  >  **Registrace aplikací** a vyberte svou aplikaci. Vyberte **certifikáty & tajných**kódů.
 
 1. Vyberte **Client tajných klíčů – > nový tajný klíč klienta**.
 
@@ -129,7 +124,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Vytvořte standardní možnost **ssoconfig**.
 
-1. Vyhledejte **ssoconfig** a odešlete.
+1. Vyhledejte **ssoconfig**  a odešlete.
 
     ![Odkaz na stažení certifikátu](media/civic-platform-tutorial/sso-config.png)
 
@@ -147,7 +142,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     1. Do pole **directoryId** zadejte hodnotu **ID adresáře (tenant)** , kterou jste zkopírovali z Azure Portal.
 
-    1. Zadejte idpName. Např.: `Azure`–.
+    1. Zadejte idpName. Např.: – `Azure` .
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -157,9 +152,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -189,11 +184,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici Civic Platform na přístupovém panelu, měli byste se automaticky přihlásit k platformě Civic, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

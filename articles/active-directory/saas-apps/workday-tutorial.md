@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Workday | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Workday.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: e9da692e-4a65-4231-8ab3-bc9a87b10bca
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83fd986e31410e34871d1b795db0c8c83ece688e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4867a1735f091085f64bbe7010969bd086f820a1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648612"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527168"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k Workday
 
@@ -83,11 +79,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://impl.workday.com/<tenant>/login-saml2.flex`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://impl.workday.com/<tenant>/login-saml2.flex`
 
-    b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`http://www.workday.com`
+    b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `http://www.workday.com`
 
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://impl.workday.com/<tenant>/login-saml.htmld`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://impl.workday.com/<tenant>/login-saml.htmld`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a adresy URL odpovědi. Vaše adresa URL odpovědi musí mít subdoménu například: www, WD2, WD3, WD3-impl, wd5, wd5-impl).
@@ -112,7 +108,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Pro **možnost podepisování**vyberte **podepsat odpověď SAML a kontrolní výraz** .
 
-    b. Klikněte na **Uložit** .
+    b. Klikněte na **Uložit**.
 
 1. V části **nastavit pracovní den** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
@@ -128,7 +124,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -170,7 +166,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
    > [!NOTE]
    > Hodnota atributu prostředí je vázána na hodnotu adresy URL klienta:  
-   > – Pokud název domény pro adresu URL tenanta Workday začíná na impl, například: * https://www.myworkday.com/ tenant/Login-Saml2.htmld*), musí být atribut **prostředí** nastavený na implementaci.  
+   > – Pokud název domény adresy URL tenanta Workday začíná na impl, například * https://www.myworkday.com/ tenant nebo login-saml2.htmld*), musí být atribut **prostředí** nastavený na implementaci.  
    > – Pokud název domény začíná na něco jiného, musíte kontaktovat [tým podpory pro pracovníka pracovního](https://www.workday.com/en-us/partners-services/services/support.html) dne a získat tak porovnání hodnoty **prostředí** .
 
 4. V části **Nastavení SAML** proveďte následující kroky:
@@ -201,7 +197,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Vytvořit](./media/workday-tutorial/IC782928.png "Vytvořit")
 
-    g. Klikněte na **vytvořit veřejný klíč x509**.
+    například Klikněte na **vytvořit veřejný klíč x509**.
 
     ![Vytvořit](./media/workday-tutorial/IC782929.png "Vytvořit")
 
@@ -224,9 +220,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     e.  Do textového pole **certifikát** vložte obsah schránky.
 
-    f.  Klikněte na tlačítko **OK**.
+    f.  Klikněte na **OK**.
 
-7. Proveďte následující kroky:
+7. Proveďte tyto kroky:
 
     ![Konfigurace jednotného přihlašování](./media/workday-tutorial/WorkdaySSOConfiguratio.png "Konfigurace jednotného přihlašování")
 
@@ -238,7 +234,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Metoda podpisu žádosti o ověření](./media/workday-tutorial/WorkdaySSOConfiguration.png "Metoda podpisu žádosti o ověření")
 
-    d. Klikněte na tlačítko **OK**.
+    d. Klikněte na **OK**.
 
     ![OK](./media/workday-tutorial/IC782933.png "OK")
 

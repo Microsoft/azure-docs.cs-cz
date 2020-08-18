@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci se softwarem Cezanne HR | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a software Cezanne HR.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 62b42e15-c282-492d-823a-a7c1c539f2cc
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa689e6138f8d965e59f7cfa7a85e0835301086c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c9e0b6a81742ea4022bb8db2dd8d933f917331b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158695"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530065"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Kurz: Azure Active Directory integraci se softwarem Cezanne HR
 
@@ -33,7 +28,7 @@ Integrace softwaru Cezanne HR s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,11 +101,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí softwaru
 
     ![Informace o jednotném přihlašování Cezanne HR software a adresy URL](common/sp-identifier-reply.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://w3.cezanneondemand.com/CezanneOnDemand/-/<tenantidentifier>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://w3.cezanneondemand.com/CezanneOnDemand/-/<tenantidentifier>`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL:`https://w3.cezanneondemand.com/CezanneOnDemand/`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL: `https://w3.cezanneondemand.com/CezanneOnDemand/`
 
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://w3.cezanneondemand.com:443/cezanneondemand/-/<tenantidentifier>/Saml/samlp`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://w3.cezanneondemand.com:443/cezanneondemand/-/<tenantidentifier>/Saml/samlp`
     
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a adresy URL odpovědi. K získání těchto hodnot se obraťte na [tým podpory CEZANNE HR software Client](https://cezannehr.com/services/support/) .
@@ -157,11 +152,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí softwaru
 
     d. Do textového pole **koncového bodu služby tokenu zabezpečení** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    e. Do textového pole název atributu ID uživatele zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    e. Do textového pole název atributu ID uživatele zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
     f. Kliknutím na **nahrát** ikonu nahrajte stažený certifikát z Azure Portal.
 
-    g. Klikněte na tlačítko **OK** .
+    například Klikněte na tlačítko **OK** .
 
 6. Klikněte na tlačítko **Uložit** .
 
@@ -185,12 +180,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -240,19 +235,19 @@ Aby se uživatelé Azure AD mohli přihlásit k Cezanne softwaru pro personál, 
 
     c. Do textového pole **příjmení** zadejte jméno uživatele jako **Simon**.
 
-    d. Do textového pole **e-mail** zadejte e-mailovou adresu uživatele Brittasimon@contoso.com.
+    d. Do textového pole **e-mail** zadejte e-mailovou adresu uživatele Brittasimon@contoso.com .
 
 4. V části **informace o účtu** proveďte následující kroky:
 
     ![Nový uživatel](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "Nový uživatel")
 
-    a. Do textového pole **uživatelské jméno** zadejte e-maily jako Brittasimon@contoso.comuživatel.
+    a. Do textového pole **uživatelské jméno** zadejte e-maily jako uživatel Brittasimon@contoso.com .
 
     b. Do textového pole **heslo** zadejte heslo uživatele.
 
     c. Jako **roli zabezpečení**vyberte **HR Professional** .
 
-    d. Klikněte na tlačítko **OK**.
+    d. Klikněte na **OK**.
 
 5. Přejděte na kartu **jednotné přihlašování** a v oblasti **identifikátory SAML 2,0** vyberte **Přidat nový** .
 
@@ -272,7 +267,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici software Cezanne HR na přístupovém panelu, měli byste se automaticky přihlásit k softwaru Cezanne HR, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

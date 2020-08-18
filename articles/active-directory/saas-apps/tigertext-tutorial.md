@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s TigerText Secure Messenger | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TigerText Secure Messenger.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 03f1e128-5bcb-4e49-b6a3-fe22eedc6d5e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: ea3bda1dd51a7c3a2e5e3f8b669d7138898f1595
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9dff60767e923bad1322b689acd98e69eb9c2ac6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67088660"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516911"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Kurz: Azure Active Directory integrace s TigerText Secure Messenger
 
@@ -38,7 +34,7 @@ Podrobnosti o integraci aplikací SaaS (software jako služba) se službou Azure
 
 Ke konfiguraci integrace služby Azure AD s TigerText Secure Messenger potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Předplatné služby Azure AD. Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 * Předplatné zabezpečeného kurýrní služby TigerText s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -134,7 +130,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování na straně zabezpečenéh
 
 V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azure Portal.
 
-1. V Azure Portal v levém podokně vyberte **Azure Active Directory**   > **Uživatelé** > **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte **Azure Active Directory**    >  **Uživatelé**  >  **Všichni uživatelé**.
 
     ![Možnosti uživatelé a všichni uživatelé](common/users.png)
 
@@ -148,7 +144,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
     1. Do pole **název** zadejte **BrittaSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **BrittaSimon\@\<\< yourcompanydomain>.>rozšíření **. Například **BrittaSimon\@contoso.com**.
+    1. Do pole **uživatelské jméno** zadejte **BrittaSimon \@ \<yourcompanydomain> . \<extension> **. Například **BrittaSimon \@ contoso.com**.
 
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
 
@@ -158,7 +154,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že jim udělíte přístup k TigerText zabezpečenému Kurýrnímu programu.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace** > **TigerText zabezpečený Messenger**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**  >  **TigerText zabezpečený Messenger**.
 
     ![Podokno podnikové aplikace](common/enterprise-applications.png)
 

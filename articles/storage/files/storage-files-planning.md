@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2e8a2030acd4297ab3032e8f1e3bde5b6df66659
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: references_regions
+ms.openlocfilehash: aab06b4870efd88893b4a14c1127de7ffcd2ba68
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037163"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520515"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí Azure File Sync. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
@@ -103,7 +104,7 @@ Další informace najdete v tématu [Rozšířená ochrana před internetovými 
 ## <a name="storage-tiers"></a>Úrovně úložiště
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-Obecně platí, že funkce služby soubory Azure a interoperabilita s ostatními službami jsou stejné mezi sdílenými složkami souborů Premium a standardními sdílenými složkami, ale existuje několik důležitých rozdílů:
+Obecně platí, že funkce a interoperabilita souborů Azure s ostatními službami jsou stejné mezi sdílenými složkami souborů Premium a standardními sdílenými složkami (včetně transakcí optimalizovaných, Hot a studených souborů), ale existuje několik důležitých rozdílů:
 - **Model fakturace**
     - Soubory úrovně Premium se účtují pomocí zřízeného fakturačního modelu, což znamená, že platíte za to, kolik úložiště místo toho vyžádáte. 
     - Standardní sdílené složky se účtují s využitím modelu průběžných plateb, který zahrnuje základní náklady na úložiště pro množství úložiště, které skutečně spotřebováváte, a další náklady na transakci na základě toho, jak sdílenou složku používáte. Se standardními sdílenými složkami se vaše vyúčtování zvýší, pokud používáte (čtení/zápis/připojení) sdílené složky Azure.

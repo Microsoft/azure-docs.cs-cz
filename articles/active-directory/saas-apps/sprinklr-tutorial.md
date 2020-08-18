@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory Integration with autopostřikovače | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a postřikovače.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b33938a1-25a5-484c-8e75-7dc6de2d534d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e4025d040783bff1cd85fb46d571e3a89967892
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 02b9adcb72b4d26a19b6514d19ce94a70a2415ed
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67089646"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534145"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Kurz: Azure Active Directory Integration with autopostřikovače
 
@@ -32,7 +28,7 @@ Integrování programu pro automatických přihlášení do Azure AD poskytuje n
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -105,9 +101,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí programu pro auto
 
     ![Informace o jednotném přihlašování pro doménu a adresy URL automatického přihlašování](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.sprinklr.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.sprinklr.com`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.sprinklr.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.sprinklr.com`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienta pro automatické postřikovače](https://www.sprinklr.com/contact-us/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -130,11 +126,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí programu pro auto
 
 1. V jiném okně webového prohlížeče se přihlaste k vaší společnosti automatického přihlašování jako správce.
 
-1. Přejít na **nastavení \> správy**.
+1. Přejít na ** \> Nastavení správy**.
 
     ![Správa](./media/sprinklr-tutorial/ic782907.png "Správa")
 
-1. V levém podokně můžete **Spravovat jednotné přihlašování partnerů \> ** .
+1. V levém podokně můžete **Spravovat \> jednotné přihlašování partnerů** .
 
     ![Spravovat partnera](./media/sprinklr-tutorial/ic782908.png "Spravovat partnera")
 
@@ -158,7 +154,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí programu pro auto
 
     f. Vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z webu Azure Portal, do textového pole **Adresa URL pro přihlášení zprostředkovatele identity** .
 
-    g. Do textového pole **Adresa URL pro odhlášení zprostředkovatele identity** vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z webu Azure Portal.
+    například Do textového pole **Adresa URL pro odhlášení zprostředkovatele identity** vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z webu Azure Portal.
 
     h. Jako **Typ ID uživatele SAML**vyberte **kontrolní výraz obsahuje uživatelské jméno uživatele Sprinklr.com**.
 
@@ -191,7 +187,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -223,11 +219,11 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. Přihlaste se k webu společnosti pro automatické přihlášení jako správce.
 
-1. Přejít na **nastavení \> správy**.
+1. Přejít na ** \> Nastavení správy**.
 
     ![Správa](./media/sprinklr-tutorial/ic782907.png "Správa")
 
-1. V levém podokně přejdete na **Spravovat uživatele klienta \> ** .
+1. V levém podokně přejdete na **Spravovat \> uživatele klienta** .
 
     ![Nastavení](./media/sprinklr-tutorial/ic782914.png "Nastavení")
 
@@ -269,7 +265,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici automatických přihlášení na přístupovém panelu, měli byste se automaticky přihlásit do automatického přihlašování, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

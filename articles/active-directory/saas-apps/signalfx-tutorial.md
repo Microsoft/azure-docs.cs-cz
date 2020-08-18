@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s SignalFx | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SignalFx.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6d5ab4b0-29bc-4b20-8536-d64db7530f32
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 149718dcd325ef6bd6a6754ba100ffdc34be0a07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3eae423763d2d4a05b33e4e1d4b6e9e087a47ba3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79136410"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521524"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SignalFx
 
@@ -88,15 +84,15 @@ Pomocí těchto pokynů povolte jednotné přihlašování služby Azure AD v Az
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyplňte následující pole: 
 
-    a. Do pole **identifikátor**zadejte následující adresu URL `https://api.<realm>.signalfx.com/v1/saml/metadata` a nahraďte `<realm>` ji svou sférou SignalFx. 
+    a. Do pole **identifikátor**zadejte následující adresu URL `https://api.<realm>.signalfx.com/v1/saml/metadata` a nahraďte ji `<realm>` svou sférou SignalFx. 
 
-    b. Do pole **Adresa URL odpovědi**zadejte následující adresu `https://api.<realm>.signalfx.com/v1/saml/acs/<integration ID>` URL a `<realm>` nahraďte ji svou sférou SignalFx a `<integration ID>` **ID integrace** , které jste zkopírovali dříve z uživatelského rozhraní SignalFx.
+    b. Do pole **Adresa URL odpovědi**zadejte následující adresu URL `https://api.<realm>.signalfx.com/v1/saml/acs/<integration ID>` a nahraďte ji `<realm>` svou sférou SignalFx a `<integration ID>` **ID integrace** , které jste zkopírovali dříve z uživatelského rozhraní SignalFx.
 
 1. SignalFx aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. 
     
 1. Zkontrolujte a ověřte, zda jsou následující deklarace identity mapovány na zdrojové atributy, které jsou vyplněny ve službě Active Directory. 
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | ------------------- | -------------------- |
     | User. FirstName  | User. křestní jméno |
     | Uživatel. e-mail  | uživatel. pošta |
@@ -119,10 +115,10 @@ Pomocí těchto pokynů můžete vytvořit testovacího uživatele ve Azure Port
 1. V Azure Portal v levém navigačním okně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části stránky vyberte **Nový uživatel**.
 1. Ve vlastnostech **uživatele** :
-   1. Do **uživatelského jména**zadejte `username@companydomain.extension`, například `b.simon@contoso.com`.
-   1. Do **název**zadejte `B.Simon`.
+   1. Do **uživatelského jména**zadejte `username@companydomain.extension` , například `b.simon@contoso.com` .
+   1. Do **název**zadejte `B.Simon` .
    1. Označte **Zobrazit heslo**a potom zkopírujte zobrazenou hodnotu v **hesle**. Tyto informace budete potřebovat v pozdějším kroku, aby bylo možné tuto integraci otestovat. 
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ## <a name="step-5-assign-the-azure-ad-test-user"></a>Krok 5: přiřazení testovacího uživatele Azure AD
 
@@ -163,7 +159,7 @@ Přečtěte si následující informace týkající se testování jednotného p
         * Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 * K aplikaci SignalFx se dá získat přístup prostřednictvím přístupového panelu nebo vlastní přihlašovací stránky přiřazené k organizaci. Testovací uživatel by měl otestovat integraci od některého z těchto umístění.
-    * Testovací uživatel může použít pověření vytvořená dříve v tomto procesu pro **b.simon@contoso.com**.
+    * Testovací uživatel může použít pověření vytvořená dříve v tomto procesu pro **b.simon@contoso.com** .
 
 ### <a name="first-time-logins"></a>Přihlašovací jména při prvním přihlášení
 
@@ -173,9 +169,9 @@ Přečtěte si následující informace týkající se testování jednotného p
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

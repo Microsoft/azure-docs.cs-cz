@@ -2,26 +2,21 @@
 title: 'Kurz: Konfigurace VELPIC pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
 description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro VELPIC.
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd-msft
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b7a6c2c9b7ecb0b160f7481d95f7682f3f7a109
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbed4b888c48a518d9f10a91ff0494aa7bdc1843
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064117"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88532360"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Kurz: Konfigurace VELPIC pro Automatické zřizování uživatelů
 
@@ -61,7 +56,7 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-velpic-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na VELPIC ve službě Azure AD:
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace** .
+1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace**  .
 
 2. Pokud jste už nakonfigurovali VELPIC pro jednotné přihlašování, vyhledejte vaši instanci VELPIC pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **VELPIC** v galerii aplikací. Ve výsledcích hledání vyberte VELPIC a přidejte je do seznamu aplikací.
 

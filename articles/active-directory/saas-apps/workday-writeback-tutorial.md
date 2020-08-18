@@ -3,23 +3,19 @@ title: 'Kurz: Konfigurace zpětného zápisu do Workday v Azure Active Directory
 description: Přečtěte si, jak nakonfigurovat zpětný zápis atributů z Azure AD na Workday.
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: ad255bd4-9e50-43a1-a92b-359215867b6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 1d76fb96676ad49ce28ff4ef0d6c4fbc84636638
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041789"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526826"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Kurz: Konfigurace zpětného zápisu atributu z Azure AD na Workday
 Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zpětném zápisu atributů z Azure AD do Workday. Aplikace pro zřizování zpětného zápisu do pracovního dne podporuje přiřazení hodnot k následujícím atributům Workday:
@@ -56,7 +52,7 @@ Podle těchto pokynů nakonfigurujte zpětný zápis e-mailových adres a uživa
 
 **Konfigurace konektoru pro zápis do Workday:**
 
-1. Přejděte do části <https://portal.azure.com> (Soubor > Nový > Jiné).
+1. Přejděte na <https://portal.azure.com>.
 
 2. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 08/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c8c4e65c7ee97b33acbd68bfd8267a334508e25c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40672ac958e84d816d4b582472ae04502a910c6a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203737"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521259"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -74,7 +74,7 @@ Následující příklad ukazuje element **RelyingParty** v souboru zásad *B2C_
 
 Volitelný element **RelyingParty** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | Výchozí cesta uživatele pro aplikaci RP. |
 | UserJourneyBehaviors | 0:1 | Rozsah chování při jízdě uživatelů. |
@@ -110,7 +110,7 @@ Element **DefaultUserJourney** obsahuje následující atribut:
 
 Element **UserJourneyBehaviors** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Rozsah chování relace jednotného přihlašování (SSO) pro cestu uživatele. |
 | SessionExpiryType |0:1 | Chování při ověřování relace. Možné hodnoty: `Rolling` nebo `Absolute` . `Rolling`Hodnota (výchozí) znamená, že uživatel zůstane přihlášený, dokud bude uživatel v aplikaci neustále aktivní. `Absolute`Hodnota označuje, že se uživatel bude nucen znovu ověřit po uplynutí časového období určeného v době platnosti relace aplikace. |
@@ -155,7 +155,7 @@ Následující příklad předává parametr s názvem `campaignId` s hodnotou `
 
 Element **ContentDefinitionParameters** obsahuje následující element:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0: n | Řetězec, který obsahuje dvojici klíč-hodnota, která je připojena k řetězci dotazu identifikátoru URI pro načtení definice obsahu. |
 
@@ -163,7 +163,7 @@ Element **ContentDefinitionParameter** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Name | Yes | Název páru klíč-hodnota. |
+| Název | Yes | Název páru klíč-hodnota. |
 
 Další informace najdete v tématu [Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) .
 
@@ -173,15 +173,15 @@ Element **TechnicalProfile** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Yes | Hodnota musí být `PolicyProfile` . |
+| Id | Yes | Hodnota musí být `PolicyProfile` . |
 
 **TechnicalProfile** obsahuje následující prvky:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Řetězec, který obsahuje název technického profilu. |
-| Description | 0:1 | Řetězec, který obsahuje popis technického profilu. |
-| Protocol (Protokol) | 1:1 | Protokol používaný pro federaci. |
+| Popis | 0:1 | Řetězec, který obsahuje popis technického profilu. |
+| Protokol | 1:1 | Protokol používaný pro federaci. |
 | Metadata | 0:1 | Kolekce *položek* párů klíč/hodnota využívané protokolem pro komunikaci s koncovým bodem v průběhu transakce pro konfiguraci interakce mezi předávající stranou a ostatními účastníky komunity. |
 | OutputClaims | 1:1 | Seznam typů deklarací, které jsou pořízeny jako výstup v technickém profilu. Každý z těchto prvků obsahuje odkaz na objekt **ClaimType** , který je již definován v části **ClaimsSchema** nebo v zásadě, ze které tento soubor zásad dědí. |
 | SubjectNamingInfo | 1:1 | Název subjektu, který se používá v tokenech. |
@@ -190,13 +190,21 @@ Element **Protocol** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Name | Yes | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné hodnoty: `OpenIdConnect` nebo `SAML2` . `OpenIdConnect`Hodnota představuje standard protokolu OpenID Connect 1,0 podle specifikace OpenID Foundation. `SAML2`Představuje standard protokolu SAML 2,0 podle specifikace pro Oasis. |
+| Název | Yes | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné hodnoty: `OpenIdConnect` nebo `SAML2` . `OpenIdConnect`Hodnota představuje standard protokolu OpenID Connect 1,0 podle specifikace OpenID Foundation. `SAML2`Představuje standard protokolu SAML 2,0 podle specifikace pro Oasis. |
 
-## <a name="outputclaims"></a>OutputClaims
+### <a name="metadata"></a>Metadata
+
+Pokud je protokol `SAML` , element metadata obsahuje následující prvky.
+
+| Atribut | Povinné | Popis |
+| --------- | -------- | ----------- |
+| XmlSignatureAlgorithm | No | Metoda, kterou Azure AD B2C používá k podepsání odpovědi SAML. Možné hodnoty: `Sha256` , `Sha384` , `Sha512` , nebo `Sha1` . Nezapomeňte nakonfigurovat algoritmus podpisu na obou stranách se stejnou hodnotou. Používejte jenom algoritmus, který podporuje váš certifikát. Pokud chcete nakonfigurovat kontrolní výraz SAML, přečtěte si [metadata Technical profil vystavitele SAML](saml-issuer-technical-profile.md#metadata). |
+
+### <a name="outputclaims"></a>OutputClaims
 
 Element **OutputClaims** obsahuje následující element:
 
-| Prvek | Výskytů | Description |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0: n | Název očekávaného typu deklarace v seznamu podporovaných pro zásadu, které předávající strana přihlašuje k odběru. Tato deklarace slouží jako výstup pro technický profil. |
 
@@ -212,13 +220,14 @@ Element **OutputClaim** obsahuje následující atributy:
 
 Pomocí elementu **SubjectNameingInfo** řídíte hodnotu předmětu tokenu:
 - **Token JWT** – `sub` deklarace identity Jedná se o objekt zabezpečení, o kterém token vyhodnotí informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Dá se použít k provádění bezpečných ověřovacích kontrol, například když se token používá pro přístup k prostředku. Ve výchozím nastavení se deklarace identity subjektu naplní s ID objektu uživatele v adresáři. Další informace najdete v tématu [Konfigurace tokenu, relace a jednotného přihlašování](session-behavior.md).
-- **Token SAML** – `<Subject><NameID>` element, který identifikuje prvek předmětu.
+- **Token SAML** – `<Subject><NameID>` element, který identifikuje prvek předmětu. Formát NameId lze upravit.
 
 Element **SubjectNamingInfo** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | ClaimType | Yes | Odkaz na **PartnerClaimTypeu**výstupní deklarace identity. Deklarace výstupů musí být definované v **OutputClaims** kolekci zásad předávající strany. |
+| Formát | No | Používá se pro předávající strany SAML k nastavení **formátu NameId** vráceného v kontrolním výrazu SAML. |
 
 Následující příklad ukazuje, jak definovat předávající stranu OpenID Connect. Informace o názvu subjektu jsou nakonfigurovány jako `objectId` :
 
@@ -248,4 +257,25 @@ Token JWT zahrnuje `sub` deklaraci identity s identifikátorem objectID uživate
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
   ...
 }
+```
+
+Následující příklad ukazuje, jak definovat předávající stranu SAML. Informace o názvu subjektu jsou nakonfigurovány jako `objectId` a k `format` dispozici je NameId:
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"/>
+  </TechnicalProfile>
+</RelyingParty>
 ```

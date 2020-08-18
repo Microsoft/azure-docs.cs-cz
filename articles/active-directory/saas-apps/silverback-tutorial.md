@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Silverback | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Silverback.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 32cfc96f-2137-49ff-818b-67feadcd73b7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 3c4eab02ed0c7c09fe9b5893bbaaf7cbe1c8028f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43f7cddfa6fb887fd421d1f90a41145c6182654d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67090912"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517072"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Kurz: Azure Active Directory integrace s Silverback
 
@@ -32,7 +28,7 @@ Integrace Silverback s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -105,11 +101,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Silverba
 
     ![Informace o jednotném přihlašování v doméně Silverback a adresách URL](common/sp-identifier-reply.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<YOURSILVERBACKURL>.com/ssp`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<YOURSILVERBACKURL>.com/ssp`
 
-    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`<YOURSILVERBACKURL>.com`
+    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `<YOURSILVERBACKURL>.com`
 
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<YOURSILVERBACKURL>.com/sts/authorize/login`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Silverback](mailto:helpdesk@matrix42.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -122,7 +118,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Silverba
 
 1. V jiném webovém prohlížeči se přihlaste k serveru Silverback jako správce.
 
-2. Přejděte k **Admin** > **poskytovateli ověřování**správce.
+2. Přejděte k **Admin**  >  **poskytovateli ověřování**správce.
 
 3. Na stránce **nastavení zprostředkovatele ověřování** proveďte následující kroky:
 
@@ -140,7 +136,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Silverba
 
     f.  Vytvoří **název** tlačítka na samoobslužném portálu.
 
-    g.  Kliknutím na **zvolit soubor**nahrajte **ikonu** .
+    například  Kliknutím na **zvolit soubor**nahrajte **ikonu** .
 
     h.  Vyberte **barvu** pozadí tlačítka.
 
@@ -169,7 +165,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -217,16 +213,16 @@ Aby se uživatelé Azure AD mohli přihlásit k Silverback, musí se zřídit v 
 
     c. Do textového pole **příjmení** zadejte příjmení uživatele, jako je **Simon**.
 
-    d. Do textového pole **e-mailová adresa** zadejte e-maily uživatele jako **Brittasimon@contoso.com**.
+    d. Do textového pole **e-mailová adresa** zadejte e-maily uživatele jako **Brittasimon@contoso.com** .
 
     e. Do textového pole **heslo** zadejte heslo.
 
     f. Do textového pole **Potvrdit heslo** zadejte znovu heslo a potvrďte ho.
 
-    g. Klikněte na **Uložit**.
+    například Klikněte na **Uložit**.
 
 > [!NOTE]
-> Pokud nechcete každého uživatele sami vytvořit, zaškrtněte v části**Zprostředkovatel ověřování** **správce** > políčko **dynamického vytvoření uživatele** .
+> Pokud nechcete každého uživatele sami vytvořit, zaškrtněte v části **Admin**zprostředkovatel ověřování správce políčko **dynamického vytvoření uživatele**  >  **Authentication Provider**.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
@@ -234,7 +230,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Silverback, měli byste se automaticky přihlásit k Silverback, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

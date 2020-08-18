@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Wandera | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Wandera.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a4615e56-1deb-423e-ad19-2e74c0d6d17a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f5004571c849d90b7d811906684e66c10ee487
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4af2fa415c22abe5cd8ac98d510feb44abab0e97
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68825284"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523962"
 ---
 # <a name="tutorial-integrate-wandera-with-azure-active-directory"></a>Kurz: integrace Wandera s Azure Active Directory
 
@@ -83,7 +78,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://radar.wandera.com/saml/acs/<tenant id>`
+    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:  `https://radar.wandera.com/saml/acs/<tenant id>`
 
     > [!NOTE]
     > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou adresou URL odpovědi. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta Wandera](https://www.wandera.com/about-wandera/contact/#supportsection) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -116,7 +111,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 3. Pokud chcete nastavit Wandera ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu Wandera společnosti jako správce a proveďte následující kroky:
 
-4. V pravém horním rohu stránky klikněte na **Nastavení** > **Správa** > **jednotného přihlašování** a potom zaškrtněte možnost **Povolit SAML 2,0** k provedení následujících kroků.
+4. V pravém horním rohu stránky klikněte na **Nastavení**  >  **Správa**  >  **jednotného přihlašování** a potom zaškrtněte možnost **Povolit SAML 2,0** k provedení následujících kroků.
 
     ![Konfigurace Wandera](./media/wandera-tutorial/config01.png)
 
@@ -136,9 +131,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -168,7 +163,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Wandera, měli byste se automaticky přihlásit k Wandera, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

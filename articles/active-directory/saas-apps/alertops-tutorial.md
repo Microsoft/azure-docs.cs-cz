@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s AlertOps | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a AlertOps.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 3db13ed4-35c2-4b1e-bed8-9b5977061f93
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21b8cb06712e370972e0b8fec518c37d078262e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d820a3fc9b12a36a76e2eb887b32d27acc156c76
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67107059"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522332"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>Kurz: integrace AlertOps s Azure Active Directory
 
@@ -80,13 +75,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    1. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.alertops.com`
+    1. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.alertops.com`
 
-    1. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.alertops.com/login.aspx`
+    1. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<SUBDOMAIN>.alertops.com/login.aspx`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.alertops.com/login.aspx`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<SUBDOMAIN>.alertops.com/login.aspx`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta AlertOps](mailto:support@alertops.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -131,7 +126,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     f. V rozevíracím seznamu vyberte **SHA256** jako **algoritmus podpisu SAML** .
 
-    g. Otevřete stažený soubor certifikátu (Base64) v programu Poznámkový blok. Zkopírujte obsah této složky do schránky a vložte ji do textového pole certifikát X. 509.
+    například Otevřete stažený soubor certifikátu (Base64) v programu Poznámkový blok. Zkopírujte obsah této složky do schránky a vložte ji do textového pole certifikát X. 509.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -141,9 +136,9 @@ V této části vytvoříte testovacího uživatele v Azure Portal s názvem Bri
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `Britta Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -181,7 +176,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     a. Do textového pole **přihlašovací uživatelské jméno** zadejte uživatelské jméno uživatele, jako je **Brittasimon**.
 
-    b. Do textového pole **oficiální e-mail** zadejte e-mailovou adresu uživatele, jako **je\@Brittasimon contoso.com**.
+    b. Do textového pole **oficiální e-mail** zadejte e-mailovou adresu uživatele, jako je **Brittasimon \@ contoso.com**.
 
     c. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako například **Britta**.
 
@@ -191,13 +186,13 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     f. V rozevíracím seznamu vyberte **roli** uživatele podle vaší organizace.
 
-    g. Vyberte **Přidat**.
+    například Vyberte **Přidat**.
 
 ### <a name="test-sso"></a>Test SSO
 
 Když na přístupovém panelu vyberete dlaždici AlertOps, měli byste se automaticky přihlásit k AlertOps, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

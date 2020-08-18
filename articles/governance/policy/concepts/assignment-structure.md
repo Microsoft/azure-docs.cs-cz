@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti struktury přiřazení zásad
 description: Popisuje definici přiřazení zásad, kterou používá Azure Policy k přidružení definic a parametrů zásad k prostředkům pro vyhodnocení.
-ms.date: 04/15/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9f400aa72508822f8fff2fe41fb17ce98339737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 969274d72724c8d0a8f10f86f614fe2c50d066f7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84205037"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520709"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura přiřazení Azure Policy
 
@@ -61,10 +61,10 @@ Vlastnost **enforcementMode** poskytuje zákazníkům možnost Testovat výslede
 
 Tato vlastnost má následující hodnoty:
 
-|Mode |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Description |
+|Mode |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Popis |
 |-|-|-|-|-|-|
-|Povoleno |Výchozí |řetězec |Ano |Ano |Účinek zásad se vynutil při vytváření nebo aktualizaci prostředku. |
-|Zakázáno |DoNotEnforce |řetězec |Yes |No | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
+|Povoleno |Výchozí |řetězec |Yes |Yes |Účinek zásad se vynutil při vytváření nebo aktualizaci prostředku. |
+|Zakázáno |DoNotEnforce |řetězec |Ano |No | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
 
 Pokud není v definici zásady nebo iniciativy zadaný **enforcementMode** , použije se _výchozí_ hodnota. Pro zásady [deployIfNotExists](./effects.md#deployifnotexists) se dají spouštět [úlohy nápravy](../how-to/remediate-resources.md) , a to i v případě, že **EnforcementMode** je nastavená na _DoNotEnforce_.
 
@@ -75,12 +75,11 @@ Pokud není v definici zásady nebo iniciativy zadaný **enforcementMode** , pou
 ## <a name="policy-definition-id"></a>ID definice zásady
 
 Toto pole musí být úplný název cesty buď definice zásady, nebo definice iniciativy.
-`policyDefinitionId`je řetězec, nikoli pole. Doporučuje se, aby se místo toho k použití [iniciativy](./initiative-definition-structure.md) používala i v případě, že je často přiřazováno více zásad.
+`policyDefinitionId` je řetězec, nikoli pole. Doporučuje se, aby se místo toho k použití [iniciativy](./initiative-definition-structure.md) používala i v případě, že je často přiřazováno více zásad.
 
 ## <a name="parameters"></a>Parametry
 
-Tento segment přiřazení zásad poskytuje hodnoty pro parametry definované v definici [zásady nebo definici iniciativy](./definition-structure.md#parameters).
-Tento návrh umožňuje znovu použít definici zásad nebo iniciativ s různými prostředky, ale kontrolovat různé obchodní hodnoty nebo výsledky.
+Tento segment přiřazení zásad poskytuje hodnoty pro parametry definované v definici [zásady nebo definici iniciativy](./definition-structure.md#parameters). Tento návrh umožňuje znovu použít definici zásad nebo iniciativ s různými prostředky, ale kontrolovat různé obchodní hodnoty nebo výsledky.
 
 ```json
 "parameters": {

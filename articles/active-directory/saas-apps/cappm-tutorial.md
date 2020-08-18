@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s přehledností | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directoryou a srozumitelnou.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ca9d5e71-e429-4891-8d10-3498e7210e89
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/05/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89700ccac8e197b393cb1e96cdbf5e04877c4a44
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 969fb8c688fe26e1aa830cab2bbc35c5712b060e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484604"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530694"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarity"></a>Kurz: Azure Active Directory integrace s přehledností
 
@@ -82,9 +78,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. Na stránce **nastavit jednotné přihlašování pomocí SAML** proveďte následující kroky:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://ca.ondemand.saml.20.post.<companyname>`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://ca.ondemand.saml.20.post.<companyname>`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte:`https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer`
+    b. Do textového pole **Adresa URL odpovědi** zadejte: `https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer`
 
     > [!NOTE]
     > Tato hodnota není reálné číslo. Aktualizuje tuto hodnotu skutečným identifikátorem. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory pro přehlednost klienta](mailto:catechnicalsupport@ca.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -107,7 +103,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

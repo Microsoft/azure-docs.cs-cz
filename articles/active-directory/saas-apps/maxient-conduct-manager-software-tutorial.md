@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace jednotného přihlašování se softwarem Maxientu pro správu softwaru | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Maxient software správce.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 85e71b76-cac3-4ce6-a35f-796d2cb7bdb5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09399f59e61ded49fef5a2388900b7b478111119
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: dd6872fd8dca3f29b61c6f1dffb5f219abac5cb8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847170"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518885"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Kurz: Azure Active Directory integrace jednotného přihlašování pomocí softwaru správce Maxient
 
@@ -86,7 +81,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://cm.maxient.com/<SCHOOLCODE>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://cm.maxient.com/<SCHOOLCODE>`
 
     > [!NOTE]
     > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, spolupracujte se svým Maxient implementací nebo podporou.
@@ -113,13 +108,13 @@ V této části udělíte přístup pro všechny účty k ověřování pomocí 
 
 ## <a name="test-with-maxient"></a>Testování pomocí Maxient 
 
-Pokud se lístek podpory ještě neotevřel s Maxient implementací nebo pracovníkem podpory, pošlete e-mail na [support@maxient.com](mailto:support@maxient.com) téma "ověřování na základě areálu/nastavení Azure – \< \< školní název \> \> ". Do těla e-mailu zadejte **adresu URL federačních metadat aplikace**. Maxient zaměstnanci budou reagovat s odkazem na testování a ověřit, jestli jsou vydávány správné atributy.  
+Pokud se lístek podpory ještě neotevřel s Maxient implementací nebo pracovníkem podpory, pošlete e-mail na [support@maxient.com](mailto:support@maxient.com) téma "ověřování na základě areálu/nastavení Azure- \<\<School Name\> \> ". Do těla e-mailu zadejte **adresu URL federačních metadat aplikace**. Maxient zaměstnanci budou reagovat s odkazem na testování a ověřit, jestli jsou vydávány správné atributy.  
     
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

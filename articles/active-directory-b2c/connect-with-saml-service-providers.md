@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3baa659d454a24a132eda914d50acddbd5df8a90
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bf767bd87e0df791b0efff1294f15353234ba2c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020062"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520205"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -41,7 +41,7 @@ Shrnutí dvou scénářů, které nejsou exkluzivní, pomocí SAML:
 | Moje aplikace očekává pro dokončení ověřování kontrolní výraz SAML. | **Azure AD B2C funguje jako zprostředkovatel identity (IdP).**<br />Azure AD B2C funguje jako IdP SAML pro aplikace. | Tento článek. |
 | Moji uživatelé potřebují jednotné přihlašování pomocí zprostředkovatele identity kompatibilního s SAML, jako je ADFS, Salesforce nebo Shibboleth.  | **Azure AD B2C funguje jako poskytovatel služeb (SP).**<br />Azure AD B2C slouží jako poskytovatel služeb při připojování k poskytovateli identity SAML. Jedná se o federační proxy mezi vaší aplikací a poskytovatelem identity SAML.  | <ul><li>[Nastavení přihlášení pomocí služby ADFS jako IdP SAML pomocí vlastních zásad](identity-provider-adfs2016-custom.md)</li><li>[Nastavení přihlašování pomocí poskytovatele služby Salesforce SAML pomocí vlastních zásad](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Proveďte kroky v části Začínáme [s vlastními zásadami v Azure AD B2C](custom-policy-get-started.md). Vlastní zásady *SocialAndLocalAccounts* potřebujete od úvodní sady Custom Policy Pack popsané v článku.
 * Základní porozumění protokolu Security Assertion Markup Language (SAML).
@@ -267,7 +267,7 @@ Vaše vlastní zásady a Azure AD B2C tenant jsou teď připravené. V dalším 
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 zaregistrovat aplikaci v Azure AD B2C
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
@@ -334,7 +334,7 @@ Posledním krokem je povolení Azure AD B2C IdP jako SAML v aplikaci předávaj�
 
 Obvykle jsou potřeba některé z těchto možností:
 
-* **Metadata**:`https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
+* **Metadata**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 * **Vystavitel**: použijte entityID v souboru metadat.
 * **Adresa URL pro přihlášení/koncový bod SAML/adresa URL SAML**: ověřte hodnotu v souboru metadat.
 * **Certifikát**: toto je *B2C_1A_SamlIdpCert*, ale bez privátního klíče. Získání veřejného klíče certifikátu:
@@ -350,7 +350,7 @@ K dokončení tohoto kurzu použijte naši [aplikaci testu SAML][samltest]:
 
 * Aktualizovat název tenanta
 * Název zásad aktualizace, například *B2C_1A_signup_signin_saml*
-* Zadejte tento identifikátor URI vystavitele:`https://contoso.onmicrosoft.com/app-name`
+* Zadejte tento identifikátor URI vystavitele: `https://contoso.onmicrosoft.com/app-name`
 
 Vyberte **přihlašovací údaje** , které byste měli mít k dispozici na přihlašovací obrazovce uživatele. Po přihlášení je kontrolní výraz SAML vydán zpět do ukázkové aplikace.
 
@@ -414,6 +414,10 @@ Následující scénáře předávající strany SAML (RP) jsou podporovány pro
 * Několik adres URL pro odhlášení nebo příspěvek pro odhlašovací adresu URL v objektu Application nebo instančního objektu.
 * Zadejte podpisový klíč pro ověření požadavků RP v objektu Application nebo instančního objektu.
 * Zadejte šifrovací klíč tokenu v objektu aplikace nebo instančního objektu.
+* Zprostředkovatel identity inicioval přihlášení, kde je poskytovatel identity Azure AD B2C.
+
+V současné době nejsou podporovány následující scénáře předávající strany SAML (RP):
+* Zprostředkovatel identity inicioval přihlášení, kde poskytovatel identity je externí zprostředkovatel identity, například ADFS.
 
 ## <a name="next-steps"></a>Další kroky
 

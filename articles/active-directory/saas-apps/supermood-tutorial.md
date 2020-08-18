@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s využitím nálady | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a náladou.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: afc04efa-2eba-4e47-8ce4-b71eb293cd09
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 12/31/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: acb3704541e4c573da4d5331ee10a9c7256162e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f30dea768e7b3a0376ebdf6c3d80e98eaba6f760
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75640155"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533380"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-supermood"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím nálady
 
@@ -84,11 +80,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Ověřte **nastavení dalších adres URL**.
     
-    b. Do textového pole **stav přenosu** zadejte adresu URL:`https://supermood.co/auth/sso/saml20`
+    b. Do textového pole **stav přenosu** zadejte adresu URL: `https://supermood.co/auth/sso/saml20`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující kroky, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://supermood.co/app/#!/loginv2`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://supermood.co/app/#!/loginv2`
 
 1. Klikněte na **Uložit**.
 
@@ -98,7 +94,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše uvedeného platí, že aplikace s větší náladou očekává, že se v odpovědi SAML vrátí další atributy, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| ------|
     | firstName | User. křestní jméno |
     | lastName | User. příjmení |
@@ -115,9 +111,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -157,7 +153,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     b. Do textového pole **použít adresu URL metadat** vložte **adresu URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal.
 
-    c. Klikněte na tlačítko **Add** (Přidat).
+    c. Klikněte na **Přidat**.
 
 ### <a name="create-supermood-test-user"></a>Vytvořit testovacího uživatele s více náladami
 
@@ -171,9 +167,9 @@ Když kliknete na dlaždici o náladě na přístupovém panelu, měli byste bý
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

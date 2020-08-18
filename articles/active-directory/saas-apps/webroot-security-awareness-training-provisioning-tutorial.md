@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace školení na vědomí zabezpečení společnosti Webroot pro Automatické zřizování uživatelů s Azure Active Directory | Microsoft Docs'
 description: Přečtěte si, jak automaticky zřídit a zrušit zřízení uživatelských účtů od Azure AD až po školení o povědomí o zabezpečení společnosti Webroot.
 services: active-directory
-documentationcenter: ''
 author: Zhchia
 writer: Zhchia
-manager: beatrizd
-ms.assetid: 455f4396-930e-4db5-a167-d3ea6a860a17
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0b9792ce25541917bfde3291b3864f58d70d6d03
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9345aaac306c8c009d6fc0a01c57beed3a22b10b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923981"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523469"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>Kurz: Konfigurace školení na vědomí zabezpečení společnosti Webroot pro Automatické zřizování uživatelů
 
@@ -88,7 +84,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-webroot-security-awareness-training-in-azure-ad"></a>Postup při konfiguraci automatického zřizování uživatelů pro školení o povědomí o zabezpečení služby Webroot v Azure AD:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

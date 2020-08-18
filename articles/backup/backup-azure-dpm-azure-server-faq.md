@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné otázky týkající 
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2994e250c37d707eee5428e83c151728f83a1ab
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74173163"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522925"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server a DPM – Nejčastější dotazy
 
@@ -36,6 +36,10 @@ Ano. Měli byste ale nejdřív nastavit DPM a pak nainstalovat agenta Azure Back
 ### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Proč po instalaci UR7 a nejnovějšího agenta Azure Backup nelze přidat externí server DPM?
 
 Pro servery DPM se zdroji dat, které jsou chráněny do cloudu (pomocí kumulativní aktualizace starší než je kumulativní aktualizace 7), musíte počkat alespoň jeden den po instalaci UR7 a nejnovějšího agenta Azure Backup, abyste mohli začít **Přidat externí server DPM**. Pro nahrání metadat skupin ochrany DPM do Azure je nutné jednorázové časové období. Metadata skupiny ochrany se nahrají poprvé prostřednictvím noční úlohy.
+
+### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>Existují doporučení pro konfiguraci vyloučení pro antivirový software?
+
+Ano, doporučuje se nakonfigurovat vyloučení antivirové ochrany. Informace o vyloučení pro aplikaci DPM najdete v tématu [spuštění antivirového softwaru na serveru aplikace DPM](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019). Informace o vyloučení pro MABS najdete v tématu [Konfigurace antivirového programu pro server MABS](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
 
 ## <a name="vmware-and-hyper-v-backup"></a>Zálohování VMware a Hyper-V
 

@@ -4,18 +4,19 @@ description: Přehled možností sítě pro soubory Azure.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 3/19/2020
+ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cef1aab42eea84c737d5c0173bd4d0e0aa509fe4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c144442ecd93ca87683179adef496a5d68cce98e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497762"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525893"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Konfigurace koncových bodů sítě služby soubory Azure
+
 Soubory Azure poskytují dva hlavní typy koncových bodů pro přístup ke sdíleným složkám Azure: 
 - Veřejné koncové body, které mají veřejnou IP adresu a jsou přístupné odkudkoli na světě.
 - Privátní koncové body, které existují v rámci virtuální sítě a které mají privátní IP adresu v adresním prostoru virtuální sítě.
@@ -27,12 +28,21 @@ Tento článek se zaměřuje na konfiguraci koncových bodů účtu úložiště
 Před načtením tohoto průvodce doporučujeme přečíst si [informace o sítích Azure Files](storage-files-networking-overview.md) .
 
 ## <a name="prerequisites"></a>Požadavky
+
 - V tomto článku se předpokládá, že jste už vytvořili předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 - V tomto článku se předpokládá, že už máte vytvořenou sdílenou složku Azure v účtu úložiště, ke kterému se chcete připojit z místního prostředí. Informace o tom, jak vytvořit sdílenou složku Azure, najdete v tématu [Vytvoření sdílené složky Azure](storage-how-to-create-file-share.md).
 - Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-a-private-endpoint"></a>Vytvoření privátního koncového bodu
+## <a name="endpoint-configurations"></a>Konfigurace koncových bodů
+
+Můžete nakonfigurovat koncové body, aby se omezil síťový přístup k vašemu účtu úložiště. Existují dva způsoby, jak omezit přístup k účtu úložiště na virtuální síť:
+
+- [Vytvořte jeden nebo několik privátních koncových bodů pro účet úložiště](#create-a-private-endpoint)  a omezte veškerý přístup k veřejnému koncovému bodu. Tím se zajistí, že budou mít přístup ke sdíleným složkám Azure v rámci účtu úložiště jenom přenosy pocházející z požadovaných virtuálních sítí.
+- [Omezte veřejný koncový bod na jednu nebo více virtuálních sítí](#restrict-public-endpoint-access). To funguje pomocí funkce virtuální sítě s názvem *koncové body služby*. Když omezíte provoz na účet úložiště prostřednictvím koncového bodu služby, stále přistupujete k účtu úložiště přes veřejnou IP adresu, ale přístup je možný jenom z umístění, která zadáte v konfiguraci.
+
+### <a name="create-a-private-endpoint"></a>Vytvoření privátního koncového bodu
+
 Vytvořením privátního koncového bodu pro účet úložiště dojde k nasazení těchto prostředků Azure:
 
 - **Privátní koncový bod**: prostředek Azure, který představuje privátní koncový bod účtu úložiště. Můžete si to představit jako prostředek, který připojuje účet úložiště a síťové rozhraní.
@@ -106,7 +116,7 @@ hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/"
 nslookup $hostName
 ```
 
-Pokud vše úspěšně fungovalo, měl by se zobrazit následující výstup, kde `192.168.0.5` je privátní IP adresa privátního koncového bodu ve vaší virtuální síti. Všimněte si, že k připojení sdílené složky místo cesty byste měli dál používat storageaccount.file.core.windows.net `privatelink` .
+Pokud vše úspěšně fungovalo, měl by se zobrazit následující výstup, kde `192.168.0.5` je privátní IP adresa privátního koncového bodu ve vaší virtuální síti. K připojení sdílené složky místo cesty byste měli dál používat storageaccount.file.core.windows.net `privatelink` .
 
 ```Output
 Server:         127.0.0.53
@@ -120,13 +130,12 @@ Address: 192.168.0.5
 
 ---
 
-## <a name="restrict-access-to-the-public-endpoint"></a>Omezení přístupu k veřejnému koncovému bodu
-Přístup k veřejnému koncovému bodu můžete omezit pomocí nastavení brány firewall účtu úložiště. Obecně platí, že většina zásad brány firewall pro účet úložiště omezí přístup k síti na jednu nebo více virtuálních sítí. Existují dva způsoby, jak omezit přístup k účtu úložiště na virtuální síť:
+### <a name="restrict-public-endpoint-access"></a>Omezení přístupu k veřejnému koncovému bodu
 
-- [Vytvořte jeden nebo několik privátních koncových bodů pro účet úložiště](#create-a-private-endpoint) a omezte veškerý přístup k veřejnému koncovému bodu. Tím se zajistí, že budou mít přístup ke sdíleným složkám Azure v rámci účtu úložiště jenom přenosy pocházející z požadovaných virtuálních sítí.
-- Omezte veřejný koncový bod na jednu nebo více virtuálních sítí. To funguje pomocí funkce virtuální sítě s názvem *koncové body služby*. Když omezíte provoz na účet úložiště prostřednictvím koncového bodu služby, stále přistupujete k účtu úložiště prostřednictvím veřejné IP adresy.
+Omezení přístupu ke veřejnému koncovému bodu nejdřív vyžaduje, abyste zakázali obecný přístup k veřejnému koncovému bodu. Zákaz přístupu ke veřejnému koncovému bodu nemá vliv na privátní koncové body. Po zakázání veřejného koncového bodu můžete vybrat konkrétní sítě nebo IP adresy, které k nim můžou dál přistupovat. Obecně platí, že většina zásad brány firewall pro účet úložiště omezuje přístup k síti na jednu nebo více virtuálních sítí.
 
-### <a name="disable-access-to-the-public-endpoint"></a>Zakázat přístup k veřejnému koncovému bodu
+#### <a name="disable-access-to-the-public-endpoint"></a>Zakázat přístup k veřejnému koncovému bodu
+
 Když je zakázaný přístup k veřejnému koncovému bodu, je možné, že k účtu úložiště budete mít přístup prostřednictvím svých privátních koncových bodů. Jinak budou požadavky na veřejný koncový bod účtu úložiště odmítnuty. 
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
@@ -140,7 +149,8 @@ Když je zakázaný přístup k veřejnému koncovému bodu, je možné, že k �
 
 ---
 
-### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>Omezení přístupu k veřejnému koncovému bodu na konkrétní virtuální sítě
+#### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>Omezení přístupu k veřejnému koncovému bodu na konkrétní virtuální sítě
+
 Když omezíte účet úložiště na konkrétní virtuální sítě, povolujete požadavky na veřejný koncový bod v rámci zadaných virtuálních sítí. To funguje pomocí funkce virtuální sítě s názvem *koncové body služby*. Tato možnost se dá použít s privátními koncovými body nebo bez nich.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
@@ -155,6 +165,7 @@ Když omezíte účet úložiště na konkrétní virtuální sítě, povolujete
 ---
 
 ## <a name="see-also"></a>Viz také
+
 - [Požadavky na síť pro Azure Files](storage-files-networking-overview.md)
 - [Konfigurace přesměrování DNS pro Azure Files](storage-files-networking-dns.md)
 - [Konfigurace S2S VPN pro soubory Azure](storage-files-configure-s2s-vpn.md)

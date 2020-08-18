@@ -6,13 +6,14 @@ ms.author: robinsh
 ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
+ms.custom: fasttrack-edit, iot
 services: iot-dps
-ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a5e8b6f430f6af49ab79ca0f8cb2253bd0f2049
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975070"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520652"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Správa registrace zařízení pomocí sad SDK služby Azure Device Provisioning
 *Registrace zařízení* vytvoří záznam o jednom zařízení nebo skupině zařízení, která se můžou v některých bodech zaregistrovat ve službě Device Provisioning. Záznam zápisu obsahuje počáteční požadovanou konfiguraci pro zařízení v rámci této registrace, včetně požadovaného centra IoT Hub. V tomto článku se dozvíte, jak spravovat registraci zařízení pro službu zřizování programově pomocí sad SDK služby zřizování pro Azure IoT.  Sady SDK jsou dostupné na GitHubu ve stejném úložišti jako sady SDK Azure IoT.
@@ -28,7 +29,7 @@ ms.locfileid: "74975070"
         * Skupina registrací: [certifikační autorita/kořenový certifikát](/azure/iot-dps/concepts-security#root-certificate) nebo [zprostředkující certifikát](/azure/iot-dps/concepts-security#intermediate-certificate), který se používá k vytvoření certifikátu zařízení na fyzickém zařízení.  Dá se taky vygenerovat z emulátoru kostky sady SDK.
 * Přesná volání rozhraní API se můžou lišit v důsledku jazykových rozdílů. Podrobnosti najdete v ukázkách uvedených na GitHubu:
    * [Ukázky klientů služby zřizování pro Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
-   * [Ukázkové klientské ukázky službyNode.js Provisioning](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
+   * [ Ukázkové klientské ukázky službyNode.js Provisioning](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
    * [Ukázky klienta služby zřizování .NET](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
 
 ## <a name="create-a-device-enrollment"></a>Vytvoření registrace zařízení
@@ -39,7 +40,7 @@ Existují dva způsoby, jak můžete zařízení zaregistrovat pomocí služby z
     Můžete vytvořit skupinu registrací se sadami SDK, které následují tento pracovní postup:
 
     1. Pro skupinu registrací používá mechanismus ověřování certifikát X. 509 Root Certificate.  Volejte rozhraní API služby Service SDK ```X509Attestation.createFromRootCertificate``` s kořenovým certifikátem pro vytvoření ověření identity pro registraci.  Kořenový certifikát X. 509 je k dispozici buď v souboru PEM, nebo jako řetězec.
-    1. Vytvořte novou ```EnrollmentGroup``` proměnnou pomocí ```attestation``` vytvořeného a jedinečného ```enrollmentGroupId``` .  Volitelně můžete nastavit parametry jako ```Device ID``` , ```IoTHubHostName``` , ```ProvisioningStatus``` .
+    1. Vytvořte novou ```EnrollmentGroup``` proměnnou pomocí ```attestation``` vytvořeného a jedinečného ```enrollmentGroupId``` .  Volitelně můžete nastavit parametry jako ```IoTHubHostName``` , ```ProvisioningStatus``` .
     2. V back-endu aplikace volejte rozhraní API služby Service SDK ```createOrUpdateEnrollmentGroup``` ```EnrollmentGroup``` a vytvořte skupinu registrace.
 
 * **Jednotlivá registrace** je záznam pro jedno zařízení, které se může zaregistrovat. Jednotlivé registrace můžou použít buď certifikáty X. 509, nebo tokeny SAS (z fyzického nebo virtuálního čipu TPM) jako mechanismy ověřování. Pro zařízení, která vyžadují jedinečné počáteční konfigurace, doporučujeme používat jednotlivé registrace nebo pro zařízení, která jako mechanismus ověřování používají jenom tokeny SAS přes TPM nebo virtuální čip TPM. Jednotlivé registrace můžou mít zadané požadované ID zařízení centra IoT.

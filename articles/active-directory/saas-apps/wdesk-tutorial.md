@@ -2,24 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Wdesk | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Wdesk.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 06900a91-a326-4663-8ba6-69ae741a536e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 349a9920adc0d9353ee8e8e821f54bc2ea2f2616
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9e64d76e29ba98181aac12e1e3167351a9c1aa95
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80666986"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523993"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Wdesk
 
@@ -92,15 +89,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Wdesk, p
 
     ![Informace o jednotném přihlašování v doméně Wdesk a adresách URL](common/idp-intiated.png)
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>`
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
     ![Informace o jednotném přihlašování v doméně Wdesk a adresách URL](common/metadata-upload-additional-signon.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Tyto hodnoty získáte z portálu WDesk při konfiguraci jednotného přihlašování.
@@ -137,11 +134,11 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -177,7 +174,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
  
      ![Konfigurace jednotného přihlašování](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-3. V Wdesk správce přejděte na **zabezpečení** **a pak** > na**Nastavení SAML SAML**:
+3. V Wdesk správce přejděte na **zabezpečení** **a pak na**  >  **Nastavení SAML SAML**:
 
     ![Konfigurace jednotného přihlašování](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
@@ -201,7 +198,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
    
       d. Uložte změny kliknutím na **Uložit** na Azure Portal.      
 
-6. Kliknutím na **Konfigurovat nastavení IDP** otevřete dialogové okno **Upravit nastavení IDP** . Klikněte na **zvolit soubor** a vyhledejte soubor **metadata. XML** , který jste uložili z Azure Portal a pak ho nahrajte.
+6. Kliknutím na **Konfigurovat nastavení IDP** otevřete dialogové okno **Upravit nastavení IDP** . Kliknutím na **zvolit soubor** vyhledejte **Metadata.xml** soubor, který jste uložili z Azure Portal a pak ho nahrajte.
     
     ![Konfigurace jednotného přihlašování](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
@@ -217,7 +214,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Wdesk, musí se zřídit v Wde
 
 1. Přihlaste se k Wdesk jako správce zabezpečení.
 
-2. Přejděte na **Admin** > **správce účtu**správce.
+2. Přejděte na **Admin**  >  **správce účtu**správce.
 
      ![Konfigurace jednotného přihlašování](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
@@ -235,7 +232,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Wdesk, musí se zřídit v Wde
   
     ![Vytvoření testovacího uživatele Azure AD](./media/wdesk-tutorial/createuser4.png)
  
-    a. Do textového pole **e-mail** zadejte e-maily uživatele, b.simon@contoso.comjako je například.
+    a. Do textového pole **e-mail** zadejte e-maily uživatele, jako je například b.simon@contoso.com .
 
     b. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako **B**.
 
@@ -251,7 +248,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Wdesk, měli byste se automaticky přihlásit k Wdesk, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

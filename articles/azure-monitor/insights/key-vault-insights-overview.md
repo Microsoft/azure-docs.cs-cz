@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498946"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531255"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Monitorování služby trezoru klíčů pomocí Azure Monitor pro Key Vault (Preview)
 Azure Monitor for Key Vault (Preview) poskytuje ucelený přehled o vašich trezorech klíčů tím, že nabízí jednotný pohled na vaše Key Vault požadavky, výkon, chyby a latenci.
@@ -45,7 +45,7 @@ Azure Monitor pro Key Vault kombinuje protokoly a metriky, aby poskytovaly glob�
 
 Z Azure Monitor můžete zobrazit podrobnosti žádosti, latence a chyby z několika trezorů klíčů v rámci vašeho předplatného a identifikovat problémy s výkonem a omezování scénářů.
 
-Pokud chcete zobrazit využití a operace vašich účtů úložiště napříč všemi vašimi předplatnými, proveďte následující kroky:
+Pokud chcete zobrazit využití a operace vašich trezorů klíčů ve všech vašich předplatných, proveďte následující kroky:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/)
 

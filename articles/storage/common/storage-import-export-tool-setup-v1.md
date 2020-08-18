@@ -1,6 +1,6 @@
 ---
 title: Nastavení nástroje Azure pro import/export v1 | Microsoft Docs
-description: Naučte se, jak nastavit nástroj pro přípravu a opravu jednotky pro službu Azure import/export. To odkazuje na v1 nástroje Import/export.
+description: Naučte se, jak nastavit nástroj pro přípravu a opravu jednotky pro službu Azure import/export. Tento článek se týká verze 1 nástroje Import/export.
 author: twooley
 services: storage
 ms.service: storage
@@ -8,28 +8,28 @@ ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: ca74e3aea8a847344c75ca7167c46675e1339459
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2aeb010d0c6f62284f1347bd90b952be50c665e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077819"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530796"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>Nastavení nástroje Azure pro import/export v1
 Nástroj Microsoft Azure Import/Export je nástroj pro přípravu a opravu jednotky, který můžete použít se službou Microsoft Azure Import/Export. Nástroj můžete použít pro následující funkce:  
 
--   Před vytvořením úlohy importu můžete pomocí tohoto nástroje Kopírovat data na pevné disky, které budete dodávat do datového centra Microsoft Azure.  
+-   Před vytvořením úlohy importu můžete pomocí tohoto nástroje Kopírovat data na pevné disky, které odesíláte do datového centra Microsoft Azure.  
 
 -   Po dokončení úlohy importu můžete pomocí tohoto nástroje opravit všechny objekty blob, které byly poškozeny nebo byly v konfliktu s jinými objekty blob.  
 
 -   Po přijetí jednotek z dokončené úlohy exportu můžete pomocí tohoto nástroje opravit všechny soubory, které byly na jednotkách poškozeny nebo nebyly nalezeny.  
 
-## <a name="prerequisites"></a>Předpoklady  
-Pokud připravujete jednotky pro úlohu importu, budete muset splnit následující požadavky:  
+## <a name="prerequisites"></a>Požadavky  
+Pokud připravujete jednotky pro úlohu importu, musíte splnit následující předpoklady:  
 
 -   Musíte mít aktivní předplatné Azure.  
 
--   Vaše předplatné musí obsahovat účet úložiště, který má dostatek volného místa pro uložení souborů, které chcete importovat.  
+-   Vaše předplatné musí obsahovat účet úložiště s dostatkem volného místa pro ukládání importovaných souborů.  
 
 -   Potřebujete alespoň jeden z klíčů účtu pro účet úložiště.  
 
@@ -253,5 +253,4 @@ Examples:
 * [Náhled využití disku pro úlohu exportu](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
 * [Kontrola stavu úlohy s použitím kopií souborů protokolu](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Oprava úlohy importu](../storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [Oprava úlohy exportu](../storage-import-export-tool-repairing-an-export-job-v1.md)   
-* [Řešení potíží s nástrojem Azure pro import/export](storage-import-export-tool-troubleshooting-v1.md)
+* [Oprava úlohy exportu](../storage-import-export-tool-repairing-an-export-job-v1.md)

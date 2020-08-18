@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 06/04/2020
+ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 15e1b52bfa79063cd5d7801a1aaaebc726309a16
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 55cbf0a304bbf13d47fefad0981c0143c101bbb0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507106"
+ms.locfileid: "88520766"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Rychlý Start: vytvoření, stažení a výpis objektů BLOB pomocí Azure CLI
 
@@ -78,7 +78,7 @@ az storage account create \
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Objekty blob se vždy nahrávají do kontejneru. Skupiny objektů blob můžete uspořádat v kontejnerech podobně jako při organizování souborů v počítači ve složkách. K vytvoření kontejneru pro ukládání objektů blob použijte příkaz [az storage container create](/cli/azure/storage/container). 
+Objekty blob se vždy nahrávají do kontejneru. Skupiny objektů blob můžete uspořádat v kontejnerech podobně jako při organizování souborů v počítači ve složkách. K vytvoření kontejneru pro ukládání objektů blob použijte příkaz [az storage container create](/cli/azure/storage/container).
 
 Následující příklad používá účet Azure AD k autorizaci operace vytvoření kontejneru. Než vytvoříte kontejner, přiřaďte roli [Přispěvatel dat objektů BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) sami sobě. I když jste vlastníkem účtu, potřebujete explicitní oprávnění k provádění operací s daty v účtu úložiště. Další informace o přiřazování rolí Azure najdete v tématu [přiřazení role Azure k přístupu pomocí Azure CLI](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json).  
 
@@ -89,21 +89,17 @@ az ad signed-in-user show --query objectId -o tsv | az role assignment create \
     --role "Storage Blob Data Contributor" \
     --assignee @- \
     --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
+
+az storage container create \
+    --account-name <storage-account> \
+    --name <container> \
+    --auth-mode login
 ```
 
 > [!IMPORTANT]
 > Rozšiřování přiřazení rolí Azure může trvat několik minut.
 
 K autorizaci operace vytvoření kontejneru můžete použít taky klíč účtu úložiště. Další informace o autorizaci operací s daty pomocí Azure CLI najdete v tématu [autorizace přístupu k objektům blob nebo Queue data ve frontě pomocí Azure CLI](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json).
-
-Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
-
-```azurecli
-az storage container create \
-    --account-name <storage-account> \
-    --name <container> \
-    --auth-mode login
-```
 
 ## <a name="upload-a-blob"></a>Nahrání objektu blob
 

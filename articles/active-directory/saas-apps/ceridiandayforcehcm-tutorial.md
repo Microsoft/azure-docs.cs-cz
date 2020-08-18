@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Ceridian Dayforce HCM | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Ceridian Dayforce HCM.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 7adf1eb3-d063-45d6-96a8-fd53b329b3f3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f488f22535c290b5fecbd0ffa9f8867f0b715bac
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 47e438b53f6aa3c9bc00da77c3532278b99e7269
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158687"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530371"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Kurz: Azure Active Directory integrace s Ceridian Dayforce HCM
 
@@ -33,7 +28,7 @@ Integrace Ceridian Dayforce HCM se službou Azure AD poskytuje následující v�
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,21 +103,21 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Ceridian
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL používanou vašimi uživateli, abyste se přihlásili do vaší aplikace CERIDIAN Dayforce HCM.
 
-    | Prostředí | zprostředkovatele identity |
+    | Prostředí | URL |
     | :-- | :-- |
     | Pro produkční prostředí | `https://sso.dayforcehcm.com/<DayforcehcmNamespace>` |
     | Pro test | `https://ssotest.dayforcehcm.com/<DayforcehcmNamespace>` |
 
     b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
-    | Prostředí | zprostředkovatele identity |
+    | Prostředí | URL |
     | :-- | :-- |
     | Pro produkční prostředí | `https://ncpingfederate.dayforcehcm.com/sp` |
     | Pro test | `https://fs-test.dayforcehcm.com/sp` |
 
     c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, kterou služba Azure AD používá k odeslání odpovědi.
 
-    | Prostředí | zprostředkovatele identity |
+    | Prostředí | URL |
     | :-- | :-- |
     | Pro produkční prostředí | `https://ncpingfederate.dayforcehcm.com/sp/ACS.saml2` |
     | Pro test | `https://fs-test.dayforcehcm.com/sp/ACS.saml2` |
@@ -136,9 +131,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Ceridian
 
 6. V části **deklarace identity uživatelů** v dialogu **atributy uživatele** NAKONFIGURUJTE atribut tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
     
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------| --------- |
-    | jméno  | User. extensionAttribute2 |
+    | name  | User. extensionAttribute2 |
 
     a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
@@ -156,7 +151,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Ceridian
 
     f. Klikněte na **OK** .
 
-    g. Klikněte na **Uložit**.
+    například Klikněte na **Uložit**.
 
 7. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a stáhněte **XML metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -194,12 +189,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -237,7 +232,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici Ceridian Dayforce HCM na přístupovém panelu, měli byste se automaticky přihlásit k DAYFORCE HCM Ceridian, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -3,23 +3,19 @@ title: 'Kurz: Konfigurace zpětného zápisu SAP SuccessFactors v Azure Active D
 description: Naučte se konfigurovat zápis atributů zpátky do SAP SuccessFactors ze služby Azure AD.
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: ad255bd4-9e50-43a1-a92b-359215868b6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: f150d6abf2ac6a423a99d3347df9bf0adc9b294b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 4b048053a553176f73b5bd199bcb6e28bc74cc6c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809927"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533992"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Kurz: Konfigurace zpětného zápisu atributu z Azure AD do SAP SuccessFactors
 Cílem tohoto kurzu je Ukázat kroky pro atributy zpětného zápisu z Azure AD do SAP SuccessFactors Employee Central. 
@@ -151,7 +147,7 @@ Aplikace pro zřizování zpětného zápisu SuccessFactors používá určité 
 1. V poli pro odeslání klikněte na tlačítko se třemi tečkami (...) spojené s kolekcí SuccessFactors a přidejte "nový požadavek" nazvaný "získat e-mailové typy", jak je znázorněno níže. 
 
    > [!div class="mx-imgBorder"]
-   > ![Žádost o odeslání e-mailu](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
+   > ![Žádost o odeslání e-mailu ](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
 
 1. Otevřete panel žádosti "získat typ e-mailu". 
 1. Do pole získat adresu URL přidejte následující adresu URL, která nahrazuje `successFactorsAPITenantName` tenanta rozhraní API vaší instance SuccessFactors. 

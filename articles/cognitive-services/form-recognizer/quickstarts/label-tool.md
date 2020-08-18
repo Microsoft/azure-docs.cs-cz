@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 234d6af25f37bf04d3240177142d5ef919e8dd2d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 54fe33750b08b5da85b30d876a32daf33d8b4bc2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903472"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517910"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
 V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů REST API s ukázkovým nástrojem pro označování, pomocí kterého můžete vytvořit vlastní model s ručně označenými daty. Další informace o této funkci najdete v části [výuka s visačkami](../overview.md#train-with-labels) v přehledu.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -159,11 +159,11 @@ Volitelně můžete pro každou značku nastavit očekávaný datový typ. Otev�
 
 V současné době jsou podporovány následující typy hodnot a variace:
 * `string`
-    * výchozí, `no-whitespaces` ,`alphanumeric`
+    * výchozí, `no-whitespaces` , `alphanumeric`
 * `number`
-    * výchozí`currency`
+    * výchozí `currency`
 * `date` 
-    * výchozí, `dmy` , `mdy` ,`ymd`
+    * výchozí, `dmy` , `mdy` , `ymd`
 * `time`
 * `integer`
 

@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
-ms.openlocfilehash: 10d1fe9e47b7a3bf2d921f86703d5ae6d067813c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/17/2020
+ms.openlocfilehash: 61cb5384fd4d935ef4038c18b391b5da5fbc96b1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294726"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516686"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Kurz: vytvoření uživatelů Azure AD pomocí aplikací Azure AD
 
@@ -94,6 +94,8 @@ Pokud chcete toto požadované oprávnění udělit, spusťte následující skr
 
 > [!NOTE] 
 > Tento skript musí být spuštěný pomocí Azure AD `Global Administrator` nebo `Privileged Roles Administrator` .
+>
+> Ve **verzi Public Preview**můžete tuto roli přiřadit `Directory Readers` ke skupině ve službě Azure AD. Vlastníci skupiny pak můžou přidat spravovanou identitu jako člena této skupiny, což by obejít potřebu `Global Administrator` nebo `Privileged Roles Administrator` pro udělení této `Directory Readers` role. Další informace o této funkci najdete v tématu [role čtečky adresářů v Azure Active Directory pro Azure SQL](authentication-aad-directory-readers-role.md).
 
 - Nahraďte `<TenantId>` `TenantId` dříve shromážděnými.
 - Nahraďte `<server name>` názvem logického serveru SQL. Pokud je název vašeho serveru `myserver.database.windows.net` , nahraďte parametr `<server name>` `myserver` .
@@ -304,3 +306,4 @@ Po vytvoření instančního objektu ve službě Azure AD vytvořte uživatele v
 - [Ověřování instančního objektu služby Azure AD do SQL DB – ukázka kódu](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)
 - [Instanční objekty aplikace a služby v Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md)
 - [Vytvoření instančního objektu Azure s použitím prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+- [Role čtenáři adresáře v Azure Active Directory pro Azure SQL](authentication-aad-directory-readers-role.md)

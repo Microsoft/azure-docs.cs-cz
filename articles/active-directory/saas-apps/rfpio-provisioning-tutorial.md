@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace RFPIO pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
 description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro RFPIO.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 54419db4-47d5-4fb4-ab74-7b0b28afb11b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 6ae423305b39c1335b5db1cd893d5f817be1929b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 963f89c99d71afbebbe122e3c7d8b3227dc4a8be
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77060857"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518386"
 ---
 # <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>Kurz: Konfigurace RFPIO pro Automatické zřizování uživatelů
 
@@ -94,7 +90,7 @@ Pokud chcete nakonfigurovat RFPIO pro Automatické zřizování uživatelů pomo
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **RFPIO**, na panelu výsledků vyberte **RFPIO** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **RFPIO**, na panelu výsledků vyberte **RFPIO** a potom kliknutím na tlačítko    **Přidat** přidejte aplikaci.
 
     ![RFPIO v seznamu výsledků](common/search-new-app.png)
 
@@ -107,7 +103,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-rfpio-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro RFPIO ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

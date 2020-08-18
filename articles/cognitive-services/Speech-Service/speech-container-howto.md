@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: 4f14a5cf21a372c66378521fd293b7569b181653
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: dc17c25a84c3d0af39bfa7a8902bdc1d93f201e8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808656"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518318"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Instalace a spuštění kontejnerů služby Speech (verze Preview)
 
-Kontejnery umožňují spouštět některá rozhraní API služby Speech Service ve vašem vlastním prostředí. Kontejnery jsou skvělé pro specifické požadavky zabezpečení a zásad správného řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejner řeči.
+Kontejnery umožňují spouštět některá z rozhraní API služby Speech ve vlastním prostředí. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat. V tomto článku se dozvíte, jak stáhnout, nainstalovat a spustit kontejner služby Speech.
 
-Kontejnery řeči umožňují zákazníkům vytvořit architekturu aplikace pro rozpoznávání řeči, která je optimalizována pro možnosti robustního cloudu i pro celou hranici. K dispozici jsou čtyři různé kontejnery. Dva standardní kontejnery jsou **Převod řeči na text** a **Převod textu na řeč**. Mezi dva vlastní kontejnery patří **Custom Speech** textu a **vlastní převod textu na řeč**. Kontejnery řeči mají stejné [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) jako cloudové služby Azure Speech.
+Kontejnery služby Speech umožňují zákazníkům vytvořit architekturu aplikace pro zpracování řeči, která je optimalizovaná pro robustní cloudové funkce i umístění v hraničních zařízeních. K dispozici jsou čtyři různé kontejnery. Dva standardní kontejnery jsou **Převod řeči na text** a **Převod textu na řeč**. Mezi dva vlastní kontejnery patří **Custom Speech** textu a **vlastní převod textu na řeč**. Kontejnery řeči mají stejné [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) jako cloudové služby Azure Speech.
 
 > [!IMPORTANT]
 > Všechny kontejnery řeči jsou aktuálně nabízeny jako součást [veřejné "gated" verze Preview](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services). Oznámení se provede, když se v kontejnerech rozpoznávání řeči dosáhne všeobecné dostupnosti (GA).
@@ -33,13 +33,13 @@ Kontejnery řeči umožňují zákazníkům vytvořit architekturu aplikace pro 
 | Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.5.0 |
 | Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.5.0 |
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před použitím kontejnerů řeči je nutné splnit následující předpoklady:
 
-| Povinné | Účel |
+| Vyžadováno | Účel |
 |--|--|
 | Docker Engine | Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které nakonfigurují prostředí Dockeru v systému [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).<br><br> Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br> |
 | Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů. |
@@ -107,7 +107,7 @@ Základní a paměť odpovídají `--cpus` `--memory` nastavení a, která se po
 > [!NOTE]
 > Minimum a doporučené jsou založeny na omezeních Docker, *nikoli* na prostředky hostitelského počítače. Například kontejnery Speech-to-text namapují část velkých jazykových modelů a *doporučuje* se, aby se celý soubor vešel do paměti, což je dalších 4-6 GB. První spuštění obou kontejnerů může trvat delší dobu, protože modely jsou stránkované v paměti.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí `docker pull`
 
 Obrázky kontejneru pro řeč jsou k dispozici v následujících Container Registry.
 
@@ -237,7 +237,7 @@ Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použij
 1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. [examples](speech-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou další příklady příkazu.
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
 
-## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s`docker run`
+## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s `docker run`
 
 Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat hodnoty a, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) `{Endpoint_URI}` `{API_Key}` . [examples](speech-container-configuration.md#example-docker-run-commands) `docker run` K dispozici jsou také další příklady příkazu.
 
@@ -441,7 +441,7 @@ speech_config.set_service_property(
 )
 ```
 
-`Simple.Extensions`Vrátí výsledek mínění v kořenové vrstvě odpovědi.
+`Simple.Extensions` Vrátí výsledek mínění v kořenové vrstvě odpovědi.
 
 ```json
 {
@@ -480,7 +480,7 @@ speech_config.set_service_property(
 )
 ```
 
-`Detailed.Extensions`poskytuje výsledek mínění v kořenové vrstvě odpovědi. `Detailed.Options`poskytuje výsledek ve `NBest` vrstvě odpovědi. Dají se použít samostatně nebo společně.
+`Detailed.Extensions` poskytuje výsledek mínění v kořenové vrstvě odpovědi. `Detailed.Options` poskytuje výsledek ve `NBest` vrstvě odpovědi. Dají se použít samostatně nebo společně.
 
 ```json
 {
@@ -569,7 +569,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů řeči. Souhrn:
 

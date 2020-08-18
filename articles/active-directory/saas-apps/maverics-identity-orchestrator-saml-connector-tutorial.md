@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování pomocí nástroje Maverics identity Orchestrator SAML Connector | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a konektorem Maverics identity Orchestrator.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9cad791f-8746-4584-bf4e-e281b709fb2b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e923e051116b70b2db35d1ac710a40941305aae
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ec5368427f50f548be965bb883683c859759bbf3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214303"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518924"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maverics-identity-orchestrator-saml-connector"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s nástrojem Maverics identity Orchestrator konektor SAML
 
@@ -44,7 +40,7 @@ V tomto kurzu se dozvíte, jak migrovat místní webovou aplikaci, která je akt
 
 Další pokyny k instalaci a konfiguraci najdete na stránce https://strata.io/docs
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 - Maverics identity Orchestrator Orchestrator Connector – jednotné přihlašování (SSO) s povoleným odběrem. Pokud chcete získat Maverics software, kontaktujte prosím sales@strata.io

@@ -4,12 +4,12 @@ description: Řešení potíží s instalací, registrací Azure Backup Server a
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: a4882867f9bbe5123df275b8d1c69fe4e163f294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54b7295eaed5f04a118cf5097ebc7b25b18f67d2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054828"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522840"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
 
@@ -20,13 +20,46 @@ Informace v následujících tabulkách použijte k řešení chyb, ke kterým d
 Než začnete řešit potíže s Microsoft Azure Backupm serverem (MABS), doporučujeme provést níže uvedené ověření:
 
 - [Zajistěte, aby byl agent Microsoft Azure Recovery Services (MARS) aktuální.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [Ujistěte se, že existuje síťové propojení mezi agentem MARS a Azure.](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [Zajistěte, aby mezi agentem MARS a Azure bylo síťové připojení.](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Ujistěte se, že je spuštěná služba Microsoft Azure Recovery Services (v konzole služby). V případě potřeby restartujte operaci a operaci opakujte.
 - [Ujistěte se, že je v umístění pomocné složky k dispozici 5 až 10 % volného místa.](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
-- Pokud se registrace nedaří, ujistěte se, že server, na který se pokoušíte nainstalovat Azure Backup Server, ještě není zaregistrovaný v jiném trezoru.
+- Pokud se registrace nedaří, ujistěte se, že server, na který se pokoušíte nainstalovat Azure Backup Server, už není zaregistrovaný v jiném trezoru.
 - Pokud nabízená instalace selže, zkontrolujte, jestli už agent DPM neexistuje. Pokud agent existuje, odinstalujte ho a pak instalaci opakujte.
 - [Zajištění, aby službě Azure Backup nepřekáží jiný proces nebo antivirový software](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
 - Ujistěte se, že je služba SQL Agent spuštěná a na serveru MABS je nastavená na automatické.<br>
+
+## <a name="configure-antivirus-for-mabs-server"></a>Konfigurace antivirového programu pro MABS Server
+
+MABS je kompatibilní s nejoblíbenějšími antivirovými softwarovými produkty. Pro zamezení konfliktů doporučujeme následující postup:
+
+1. **Zakázat monitorování v reálném čase** – antivirový software v reálném čase zakažte sledováním těchto možností:
+    - `C:\Program Files<MABS Installation path>\XSD` složky
+    - `C:\Program Files<MABS Installation path>\Temp` složky
+    - Písmeno jednotky Moderní úložiště zálohování svazku
+    - Replika a protokoly přenosů: Chcete-li to provést, zakažte sledování **dpmra.exe**v reálném čase, který je umístěn ve složce `Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` . Monitorování v reálném čase snižuje výkon, protože antivirový software kontroluje repliky pokaždé, když se MABS synchronizuje s chráněným serverem, a kontroluje všechny zasažené soubory pokaždé, když MABS použije změny v replikách.
+    - Konzola pro správu: Chcete-li se vyhnout dopadu na výkon, zakažte sledování **csc.exeho ** procesu v reálném čase. **csc.exe** proces je kompilátor jazyka C \# a sledování v reálném čase může snížit výkon, protože antivirový software kontroluje soubory, které proces **csc.exe** generuje při generování zpráv XML. **CSC.exe** se nachází v následujících cestách:
+        - `\Windows\Microsoft.net\Framework\v2.0.50727\csc.exe`
+        - `\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe`
+    - Pro agenta MARS nainstalovaného na serveru MABS doporučujeme, abyste vyloučili následující soubory a umístění:
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\cbengine.exe` jako proces
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\folder`
+        - Pomocné umístění (Pokud nepoužíváte standardní umístění)
+2. **Zakázat sledování v reálném čase na chráněném serveru**: zakáže sledování **dpmra.exe**v reálném čase, které se nachází ve složce `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` , na chráněném serveru.
+3. **Konfigurace antivirového softwaru k odstranění nakažených souborů na chráněných serverech a na serveru MABS**: Pokud chcete zabránit poškození dat repliky a bodů obnovení, nakonfigurujte antivirový software tak, aby odstranil napadené soubory místo automatického čištění nebo umístění do karantény. Automatické čištění a umístění do karantény může způsobovat antivirovému softwaru upravovat soubory a provádět změny, které MABS nemůže detekovat.
+
+Měli byste spustit ruční synchronizaci s konzistencí. Zkontroluje úlohu pokaždé, když antivirový software odstraní soubor z repliky, a to i v případě, že je replika označena jako nekonzistentní.
+
+### <a name="mabs-installation-folders"></a>Instalační složky MABS
+
+Výchozí instalační složky pro aplikaci DPM jsou následující:
+
+- `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM`
+
+Pokud chcete najít cestu k instalační složce, můžete taky spustit následující příkaz:
+
+```cmd
+Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
+```
 
 ## <a name="invalid-vault-credentials-provided"></a>Zadali jste neplatné přihlašovací údaje trezoru.
 

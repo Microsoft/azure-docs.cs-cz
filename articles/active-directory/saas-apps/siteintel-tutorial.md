@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s SiteIntel | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SiteIntel.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c987f101-8746-467e-ad12-75cf2920af2b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45b3f6bbda9923b7f4f19dda505e799cb8b102ca
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: f681dd2931300ec00fd6388b4636015c87f38170
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424325"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525067"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SiteIntel
 
@@ -87,15 +83,15 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
 1. Chcete-li nakonfigurovat aplikaci v režimu iniciované IdP, proveďte v **základní části Konfigurace SAML** následující akce:
 
-    a. Do pole **identifikátor** zadejte adresu URL v následujícím formátu:`urn:amazon:cognito:sp:<REGION>_<USERPOOLID>`
+    a. Do pole **identifikátor** zadejte adresu URL v následujícím formátu: `urn:amazon:cognito:sp:<REGION>_<USERPOOLID>`
 
-    b. Do pole **Adresa URL odpovědi** zadejte adresu URL v následujícím formátu:`https://<CLIENT>.auth.siteintel.com/saml2/idpresponse`
+    b. Do pole **Adresa URL odpovědi** zadejte adresu URL v následujícím formátu: `https://<CLIENT>.auth.siteintel.com/saml2/idpresponse`
 
-    c. Do pole **stav přenosu** zadejte adresu URL v následujícím formátu:`https://<CLIENT>.siteintel.com`
+    c. Do pole **stav přenosu** zadejte adresu URL v následujícím formátu: `https://<CLIENT>.siteintel.com`
 
 1. Chcete-li nakonfigurovat aplikaci v režimu iniciované SP, vyberte možnost **nastavit další adresy URL**a proveďte následující kroky:
 
-   * Do pole **přihlašovací adresa URL** zadejte adresu URL v následujícím formátu:`https://<CLIENT>.siteintel.com`
+   * Do pole **přihlašovací adresa URL** zadejte adresu URL v následujícím formátu: `https://<CLIENT>.siteintel.com`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte je skutečným identifikátorem, adresou URL odpovědi, přihlašovací adresou URL a stavem přenosu. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory SiteIntel Client](mailto:support@intalytics.com). Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -154,7 +150,7 @@ Když na přístupovém panelu vyberete dlaždici **SiteIntel** , měli byste se
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [Vyzkoušejte si SiteIntel s Azure AD](https://aad.portal.azure.com/)

@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s LaunchDarkly | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a LaunchDarkly.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 3f0671bc-f93f-496e-b465-b9ce8c6633fa
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e32f8c3ea300960893163264e99bd6c51138c7c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bae3f4a0d8c793061bb3833b04717d378e86f85f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159656"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88519654"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Kurz: Azure Active Directory integrace s LaunchDarkly
 
@@ -33,7 +28,7 @@ Integrace LaunchDarkly s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,16 +102,16 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí [název 
 
     ![Informace o jednotném přihlašování v doméně LaunchDarkly a adresách URL](common/idp-intiated.png)
 
-    a. Do textového pole **identifikátor** zadejte adresu URL:`app.launchdarkly.com`
+    a. Do textového pole **identifikátor** zadejte adresu URL: `app.launchdarkly.com`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://app.launchdarkly.com/trust/saml2/acs/<customers-unique-id>`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://app.launchdarkly.com/trust/saml2/acs/<customers-unique-id>`
 
     > [!NOTE]
     > Hodnota adresy URL odpovědi není reálné číslo. Hodnotu aktualizujete skutečnou adresou URL odpovědi, která je vysvětlena dále v tomto kurzu. Pokud hodláte používat aplikaci v režimu **IDP** , musíte ponechat pole pro **přihlášení URL** prázdné, jinak nebudete moct zahájit přihlášení z **IDP**. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://app.launchdarkly.com`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://app.launchdarkly.com`
 
     ![Informace o jednotném přihlašování v doméně LaunchDarkly a adresách URL](common/metadata-upload-additional-signon.png)
 
@@ -160,7 +155,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí [název 
 
     c. Otevřete stažený certifikát z Azure Portal do programu Poznámkový blok, zkopírujte obsah a vložte ho do pole **certifikát X. 509** , nebo můžete certifikát nahrát přímo kliknutím na **nahrát**ho.
 
-    d. Klikněte na **Uložit** .
+    d. Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -180,12 +175,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -226,7 +221,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici LaunchDarkly, měli byste se automaticky přihlásit k LaunchDarkly, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

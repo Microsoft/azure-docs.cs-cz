@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 6ba0be3a6fba35e413270dd6770f5d3f47586b5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28b6a70297efb8d8237f085e1f5b08dbb6a09072
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873325"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522602"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Přizpůsobení sady standardů na řídicím panelu dodržování předpisů
 
@@ -73,6 +73,8 @@ Následující postup vysvětluje, jak přidat balíček, abyste mohli monitorov
     - **PBMMa Kanady**
     
     ![Přidání regulativních balíčků do řídicího panelu dodržování předpisů pro Azure Security Center](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+
+1. Vyberte **Přidat** a zadejte všechny potřebné údaje o konkrétní iniciativě, jako je například rozsah, parametry a náprava.
 
 1. Z bočního panelu Security Center vyberte znovu **dodržování předpisů** , abyste se mohli vrátit na řídicí panel dodržování předpisů.
     * Vaše nové standardní zobrazení se zobrazí v seznamu oborových & regulativních standardů. 

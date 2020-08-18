@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s BitaBIZ | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a BitaBIZ.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1a51e677-c62b-4aee-9c61-56926aaaa899
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f827945cbeccacfdf048865b6e89b6947fe7de9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 397197c2ab3ba4f135912eab800f1abd7ab73a0f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159382"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531051"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>Kurz: Azure Active Directory integrace s BitaBIZ
 
@@ -33,7 +28,7 @@ Integrace BitaBIZ s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,7 +101,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí BitaBIZ,
 
     ![Informace o jednotném přihlašování v doméně BitaBIZ a adresách URL](common/idp-identifier.png)
 
-    Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://www.bitabiz.com/<instanceId>`
+    Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:  `https://www.bitabiz.com/<instanceId>`
 
     > [!NOTE]
     > Hodnota uvedená v poli Adresa URL je určena pouze pro ukázku. Aktualizujte hodnotu skutečným identifikátorem, který je vysvětlen později v tomto kurzu.
@@ -115,7 +110,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí BitaBIZ,
 
     ![image](common/both-preintegrated-signon.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://www.bitabiz.com/dashboard`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://www.bitabiz.com/dashboard`
 
 6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -159,7 +154,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí BitaBIZ,
 
     f. Označte **jednotné přihlašování s povoleným** účtem BitaBIZ.
 
-    g. Kliknutím na **Uložit konfiguraci Azure AD** uložte a aktivujte konfiguraci jednotného přihlašování.
+    například Kliknutím na **Uložit konfiguraci Azure AD** uložte a aktivujte konfiguraci jednotného přihlašování.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -179,12 +174,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -241,7 +236,7 @@ V případě BitaBIZ je zřizování ručním úkolem.
 
     b. Do textového pole **příjmení** zadejte jméno uživatele jako Simon.
 
-    c. Do textového pole **e-mail** zadejte e-mailovou adresu uživatele Brittasimon@contoso.com.
+    c. Do textového pole **e-mail** zadejte e-mailovou adresu uživatele Brittasimon@contoso.com .
 
     d. Vyberte datum v **datu zaměstnání**.
 
@@ -258,7 +253,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici BitaBIZ, měli byste se automaticky přihlásit k BitaBIZ, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
