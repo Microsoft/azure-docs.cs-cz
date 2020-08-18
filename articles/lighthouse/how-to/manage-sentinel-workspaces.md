@@ -1,14 +1,14 @@
 ---
 title: Správa pracovních prostorů Sentinel Azure ve velkém měřítku
 description: Zjistěte, jak efektivně spravovat Sentinel Azure na delegovaných zákaznických zdrojích.
-ms.date: 06/17/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: fc6d66a31ed46766bbe664fd8656792c97ff69fd
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 1734efb57b18cfc559144b13aaecb882612ca73b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163233"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511248"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Správa pracovních prostorů Sentinel Azure ve velkém měřítku
 
@@ -69,9 +69,9 @@ Můžete nasazovat sešity ve vašem tenantovi pro správu a vytvářet na úrov
 
 Sešity můžete nasadit také přímo do samostatného tenanta, který spravujete pro scénáře specifické pro daného zákazníka.
 
-## <a name="run-queries-across-azure-sentinel-workspaces"></a>Spouštění dotazů napříč pracovními prostory Azure Sentinel
+## <a name="run-log-analytics-and-hunting-queries-across-azure-sentinel-workspaces"></a>Spouštění Log Analytics a loveckých dotazů napříč pracovními prostory Azure Sentinel
 
-Můžete vytvořit a uložit Log Analytics dotazy pro detekci hrozeb centrálně ve správě tenanta. Tyto dotazy se pak dají spouštět napříč všemi vašimi pracovními prostory Azure Sentinel ve vašich zákaznících pomocí operátoru Union a výrazu pracovního prostoru (). Další informace najdete v tématu [dotazování mezi jednotlivými pracovními prostory](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
+Můžete vytvořit a uložit Log Analytics dotazy pro detekci hrozeb centrálně ve správě tenanta, včetně [loveckých dotazů](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting). Tyto dotazy se pak dají spouštět napříč všemi vašimi pracovními prostory Azure Sentinel ve vašich zákaznících pomocí operátoru Union a výrazu pracovního prostoru (). Další informace najdete v tématu [dotazování mezi jednotlivými pracovními prostory](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
 
 ## <a name="use-automation-for-cross-workspace-management"></a>Použití automatizace pro správu mezi jednotlivými pracovními prostory
 

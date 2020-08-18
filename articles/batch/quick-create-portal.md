@@ -2,14 +2,14 @@
 title: Rychlý Start Azure – spuštění první úlohy služby Batch v Azure Portal
 description: Naučte se, jak pomocí Azure Portal vytvořit účet Batch, fond výpočetních uzlů a úlohu, která spouští základní úlohy ve fondu.
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: f9af6a2f0fbbbd799b781480d499adf124b4cb7d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: cf65a681764a848f8132ec44b8ba313ef1a83235
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225311"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511367"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rychlý start: Spuštění první úlohy služby Batch na webu Azure Portal
 
@@ -23,7 +23,7 @@ Začněte s Azure Batch pomocí Azure Portal k vytvoření účtu Batch, fondu v
 
 Pomocí těchto kroků si vytvořte ukázkový účet Batch pro účely testování. Účet Batch budete potřebovat k vytváření fondů a úloh. Jak vidíte, účet Batch můžete propojit s účtem Azure Storage. I když to k tomuto rychlému startu není nutné, účet úložiště je užitečný při nasazování aplikací a ukládání vstupních a výstupních dat ve většině reálných způsobů využití.
 
-1. V Azure Portal vyberte **vytvořit prostředek**  >  **Compute**  >  **Služba COMPUTE Batch**. 
+1. V [Azure Portal](https://portal.azure.com)vyberte **vytvořit prostředek**  >  **Compute**  >  **Služba COMPUTE Batch**. 
 
    :::image type="content" source="media/quick-create-portal/marketplace-batch.png" alt-text="Snímek obrazovky služby Batch v Azure Marketplace.":::
 

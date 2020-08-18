@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47973a8444de64dc5c2bb75b5f0d65d1e6d35f6e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698763"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509075"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
 Tento článek popisuje různé místní a Azure Active Directory (Azure AD) topologie, které používají Azure AD Connect synchronizaci jako klíčové řešení pro integraci. Tento článek zahrnuje podporované i nepodporované konfigurace.
@@ -29,7 +29,7 @@ Tento článek popisuje různé místní a Azure Active Directory (Azure AD) top
 
 Tady je legenda k obrázkům v článku:
 
-| Description | Symbol |
+| Popis | Symbol |
 | --- | --- |
 | Místní doménová struktura služby Active Directory |![Místní doménová struktura služby Active Directory](./media/plan-connect-topologies/LegendAD1.png) |
 | Místní služba Active Directory s filtrovaným importem |![Služba Active Directory s filtrovaným importem](./media/plan-connect-topologies/LegendAD2.png) |
@@ -191,6 +191,11 @@ Klienti Azure AD jsou izolováni podle návrhu. Tyto úlohy nejsou podporované:
 ![GALSync v topologii pro více doménových struktur a více adresářů](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync.png)
 
 K synchronizaci uživatelů (přes GALSync) mezi dvěma organizacemi Exchange můžete použít produkt FIM 2010 nebo místní MIM 2016. Uživatelé v jedné organizaci se zobrazí jako cizí uživatelé/kontakty v jiné organizaci. Tyto různé místní instance služby Active Directory se pak dají synchronizovat s vlastními klienty Azure AD.
+
+### <a name="using-unauthorized-clients-to-access-the-azure-ad-connect-backend"></a>Použití neautorizovaných klientů pro přístup k Azure AD Connect back-endu
+![Použití neautorizovaných klientů pro přístup k Azure AD Connect back-endu](./media/plan-connect-topologies/other-client-unsupported.png)
+
+Azure Active Directory Connect Server komunikuje s Azure Active Directory prostřednictvím Azure Active Directory Connect back-endu. Jediný software, který se dá použít ke komunikaci s tímto back-end, je Azure Active Directory Connect. Komunikace s Azure Active Directory Connect back-endu není podporovaná pomocí jiného softwaru nebo metody. 
 
 ## <a name="next-steps"></a>Další kroky
 Informace o tom, jak nainstalovat Azure AD Connect pro tyto scénáře, najdete v tématu [vlastní instalace Azure AD Connect](how-to-connect-install-custom.md).

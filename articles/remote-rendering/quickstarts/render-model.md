@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 62669457f73ba78186614433fb6d10cc4dc01089
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b5865f2fd76c1159f7f72633362a96335af8a059
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565504"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509361"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Rychlý Start: vykreslení modelu pomocí Unity
 
@@ -84,7 +84,7 @@ Později chceme nasadit tento projekt na HoloLens a připojit se ke službě vzd
 
 ### <a name="create-a-session-and-view-the-default-model"></a>Vytvoření relace a zobrazení výchozího modelu
 
-Kliknutím na tlačítko **Přehrát** v Unity spustíte relaci. V dolní části zobrazení na panelu *hry* by se měla zobrazit překryvný text stavu. Relace se bude podrobit sérii přechodů mezi stavy. Ve **výchozím** stavu je vzdálený virtuální počítač vyspuninstý, což trvá několik minut. Po úspěšném přechodu přejde do stavu **připraveno** . Nyní relace vstoupí do stavu **připojení** , kde se pokusí získat přístup k modulu runtime vykreslování na daném virtuálním počítači. Po úspěšném přechodu se ukázka přepne do stavu **připojeno** . V tuto chvíli začne stahovat model pro vykreslování. Kvůli velikosti modelu může stahování trvat několik minut. Pak se zobrazí vzdálený vykreslený model.
+Kliknutím na tlačítko **Přehrát** v Unity spustíte relaci. V dolní části zobrazení na panelu *hry* by se měla zobrazit překryvný text stavu. Relace se bude podrobit sérii přechodů mezi stavy. Ve **výchozím** stavu je server vyspuninstý, což trvá několik minut. Po úspěšném přechodu přejde do stavu **připraveno** . Nyní relace vstoupí do stavu **připojení** , kde se pokusí spojit s modulem runtime vykreslování na tomto serveru. Po úspěšném přechodu se ukázka přepne do stavu **připojeno** . V tuto chvíli začne stahovat model pro vykreslování. Kvůli velikosti modelu může stahování trvat několik minut. Pak se zobrazí vzdálený vykreslený model.
 
 ![Výstup z ukázky](media/arr-sample-output.png)
 

@@ -6,16 +6,16 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/26/2020
-ms.openlocfilehash: 858315008434f511e3adc0a91d591d924634fc39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 919883025075ca38bcef6c23ac744528e7bd5502
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809502"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510058"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>Konfigurace sady škálování virtuálních počítačů s existujícím Azure Load Balancer pomocí Azure PowerShell
 
-V tomto článku se dozvíte, jak nakonfigurovat sadu škálování virtuálních počítačů s existujícím Azure Load Balancer. 
+V tomto článku se dozvíte, jak nakonfigurovat sadu škálování virtuálních počítačů s existujícím Azure Load Balancer.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -23,7 +23,7 @@ V tomto článku se dozvíte, jak nakonfigurovat sadu škálování virtuálníc
 - Existující Nástroj pro vyrovnávání zatížení Standard SKU v předplatném, kde se bude nasazovat sada škálování virtuálního počítače.
 - Virtual Network Azure pro sadu škálování virtuálního počítače.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ Následující příklad nasadí sadu škálování virtuálního počítače po
 - Podsíť s názvem **mySubnet**
 - Skupina prostředků s názvem **myResourceGroup**
 
-```azureppowershell-interactive
+```azurepowershell-interactive
 
 $rsg = "myResourceGroup"
 $loc = "East US 2"
@@ -87,4 +87,3 @@ V tomto článku jste nasadili sadu škálování virtuálního počítače s ex
 
 - [Co je Azure Load Balancer?](load-balancer-overview.md)
 - [Co jsou škálovací sady virtuálních počítačů?](../virtual-machine-scale-sets/overview.md)
-                                

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 78eedb9bd4f12644a1bc992d0786a43b8af767a9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0dd787916159637ce92a29a5d4baa1ffe7a09ba4
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507926"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510007"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementace databáze Oracle v Azure
 
@@ -187,7 +187,7 @@ Po jasném přehledu požadavků na vstupně-výstupní operace můžete zvolit 
 - Komprese dat slouží k omezení vstupně-výstupních operací (pro data i indexy).
 - Oddělte protokoly znovu, systém a dočasné soubory a vraťte se do služby TS TS na samostatných datových discích.
 - Neumísťujte žádné soubory aplikace na výchozí disky s operačním systémem (/dev/sda). Tyto disky nejsou optimalizované pro rychlé spouštění virtuálních počítačů a nemusí pro vaši aplikaci poskytovat dobrý výkon.
-- Při použití virtuálních počítačů řady M-Series na Premium Storage povolte [akcelerátor zápisu](../../linux/how-to-enable-write-accelerator.md) na disku znovu protokoly.
+- Při použití virtuálních počítačů řady M-Series na Premium Storage povolte [akcelerátor zápisu](../../how-to-enable-write-accelerator.md) na disku znovu protokoly.
 
 ### <a name="disk-cache-settings"></a>Nastavení diskové mezipaměti
 

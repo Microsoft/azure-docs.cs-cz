@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6fd20819d17861ed5171bf61e4c485fcceba7985
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2032a7c9d9cd9b17da956dc829234462f8b9e726
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006107"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509599"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
 
@@ -36,7 +36,7 @@ Než budete moct používat Microsoft Teams na virtuálním počítači s Window
 
 ## <a name="install-the-teams-desktop-app"></a>Instalace desktopové aplikace Teams
 
-V této části se dozvíte, jak nainstalovat desktopovou aplikaci Teams na Windows 10 s více relacemi nebo na image virtuálního počítače s Windows 10 Enterprise. Pokud se chcete dozvědět víc, podívejte se na [instalaci nebo aktualizaci desktopové aplikace Teams na VDI](/microsoftteams/teams-for-vdi#install-or-update-the-teams-desktop-app-on-vdi/).
+V této části se dozvíte, jak nainstalovat desktopovou aplikaci Teams na Windows 10 s více relacemi nebo na image virtuálního počítače s Windows 10 Enterprise. Pokud se chcete dozvědět víc, podívejte se na [instalaci nebo aktualizaci desktopové aplikace Teams na VDI](/microsoftteams/teams-for-vdi#install-or-update-the-teams-desktop-app-on-vdi).
 
 ### <a name="prepare-your-image-for-teams"></a>Příprava image pro týmy
 
@@ -71,17 +71,17 @@ V následující tabulce jsou uvedeny nejnovější verze služby WebSocket Serv
 
 Aplikaci Teams Desktop můžete nasadit pomocí instalace pro jednotlivé počítače nebo uživatele. Instalace Microsoft Teams do prostředí virtuálních počítačů s Windows:
 
-1. Stáhněte [balíček MSI Teams](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/) , který odpovídá vašemu prostředí. Doporučujeme použít 64 instalačního programu na 64 operačním systému.
+1. Stáhněte [balíček MSI Teams](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) , který odpovídá vašemu prostředí. Doporučujeme použít 64 instalačního programu na 64 operačním systému.
 
-      > [!NOTE]
-      > Optimalizace médií pro Microsoft Teams vyžaduje týmy aplikace pro stolní počítače verze 1.3.00.4461 nebo novější.
+      > [!IMPORTANT]
+      > Nejnovější aktualizace desktopového klienta Teams verze 1.3.00.21759 opravila problém, který týmy ukázaly časové pásmo UTC v chatu, kanálech a kalendáři. V nové verzi klienta se zobrazí časové pásmo vzdálené relace.
 
 2. Spusťte jeden z následujících příkazů k instalaci MSI na hostitelský virtuální počítač:
 
     - Instalace vázaná na uživatele
 
         ```powershell
-        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSERS=1
+        msiexec /i <path_to_msi> /l*v <install_logfile_name>
         ```
 
         Tento proces je výchozí instalací, která nainstaluje týmy do složky uživatele **% data%** . Týmy nebudou správně fungovat s instalací pro jednotlivé uživatele při netrvalé instalaci.
@@ -89,13 +89,13 @@ Aplikaci Teams Desktop můžete nasadit pomocí instalace pro jednotlivé počí
     - Instalace vázaná na počítač
 
         ```powershell
-        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1
         ```
 
         Tím se nainstalují týmy do složky Program Files (x86) v operačním systému 64 a do složky Program Files v 32 operačním systému. V tuto chvíli je instalace zlaté image dokončená. Instalace týmů na počítač se vyžaduje pro netrvalá nastavení.
 
-        Při příštím otevření týmů v relaci budete požádáni o zadání vašich přihlašovacích údajů.
-
+        K dispozici jsou dva příznaky, které mohou být nastaveny při instalaci týmů, **ALLUSER = 1** a **AllUsers = 1**. Je důležité pochopit rozdíl mezi těmito parametry. Parametr **ALLUSER = 1** se používá pouze v prostředích VDI k určení instalace pro jednotlivé počítače. Parametr **AllUsers = 1** lze použít v prostředích mimo VDI a VDI. Když nastavíte tento parametr, zobrazí se v nástroji program a funkce v Ovládacích panelech aplikace a také aplikace & funkce v nastavení systému Windows. Všichni uživatelé s přihlašovacími údaji správce na počítači můžou odinstalovat týmy. 
+       
         > [!NOTE]
         > Uživatelé a správci nemůžou v současné době přihlášení zakázat automatické spuštění pro týmy.
 
@@ -125,12 +125,11 @@ Po instalaci služby WebSocket a desktopové aplikace Teams použijte následuj�
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 
-Použití týmů ve virtualizovaném prostředí se liší od použití týmů v nevirtualizovaném prostředí. Další informace o omezeních týmů ve virtualizovaných prostředích najdete v [týmech pro infrastrukturu virtualizovaných ploch](/microsoftteams/teams-for-vdi#known-issues-and-limitations/).
+Použití týmů ve virtualizovaném prostředí se liší od použití týmů v nevirtualizovaném prostředí. Další informace o omezeních týmů ve virtualizovaných prostředích najdete v [týmech pro infrastrukturu virtualizovaných ploch](/microsoftteams/teams-for-vdi#known-issues-and-limitations).
 
 ### <a name="client-deployment-installation-and-setup"></a>Nasazení, instalace a nastavení klienta
 
 - Při instalaci vázané na počítač se týmy na VDI neaktualizují automaticky stejným způsobem jako klienti, kteří nejsou týmy VDI. Chcete-li aktualizovat klienta, je nutné aktualizovat image virtuálního počítače instalací nové služby MSI.
-- Týmy aktuálně zobrazují časové pásmo UTC v chatu, kanálech a kalendáři.
 - Optimalizace médií pro týmy je podporovaná jenom pro desktopové klienta Windows na počítačích s Windows 10.
 - Použití explicitních proxy serverů HTTP definovaných u koncového bodu není podporováno.
 
@@ -143,7 +142,7 @@ Použití týmů ve virtualizovaném prostředí se liší od použití týmů v
 - V důsledku omezení WebRTC je řešení příchozího a odchozího streamování videa omezené na 720p.
 - Aplikace Teams nepodporuje tlačítka HID ani ovládací prvky diody LED s jinými zařízeními.
 
-Pro týmy známé problémy, které nesouvisejí s virtualizovanými prostředími, najdete informace v tématu [Podpora týmů ve vaší organizaci](/microsoftteams/known-issues/) .
+Pro týmy známé problémy, které nesouvisejí s virtualizovanými prostředími, najdete informace v tématu [Podpora týmů ve vaší organizaci](/microsoftteams/known-issues) .
 
 ## <a name="uservoice-site"></a>Web UserVoice
 
@@ -165,8 +164,8 @@ Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) fondu h
 
 Povolení přesměrování zařízení není nutné při použití týmů s optimalizací médií. Pokud používáte týmy bez optimalizace médií, nastavte následující vlastnosti protokolu RDP tak, aby umožňovaly přesměrování mikrofonu a kamery:
 
-- `audiocapturemode:i:1`povolí záznam zvuku z místního zařízení a přesměruje zvukové aplikace ve vzdálené relaci.
-- `audiomode:i:0`přehrává zvuk na místním počítači.
-- `camerastoredirect:s:*`přesměruje všechny kamery.
+- `audiocapturemode:i:1` povolí záznam zvuku z místního zařízení a přesměruje zvukové aplikace ve vzdálené relaci.
+- `audiomode:i:0` přehrává zvuk na místním počítači.
+- `camerastoredirect:s:*` přesměruje všechny kamery.
 
 Další informace najdete v podrobnostech o [Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů](customize-rdp-properties.md).

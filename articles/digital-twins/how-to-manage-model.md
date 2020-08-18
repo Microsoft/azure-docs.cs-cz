@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 64c7db4223fcb703272749b0bf8d5b1583fbb818
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 919db9338917a9c2bedd7806eb251a2e5ef6187b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987320"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509990"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -113,7 +113,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Například:
+Soubory modelu mohou obsahovat více než jeden model. V takovém případě musí být modely umístěny do pole JSON. Příklad:
 
 ```json
 [
@@ -160,7 +160,7 @@ Pageable<ModelData> pmd3 = client.GetModels(null, true);
 Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 ```
 
-Rozhraní API volá pro načtení modelů všechny návratové `ModelData` objekty. `ModelData`obsahuje metadata o modelu uloženém v instanci digitálních vláken Azure, jako je název, DTMI a datum vytvoření modelu. `ModelData`Objekt také volitelně zahrnuje samotný model. V závislosti na parametrech lze proto použít volání metody načíst buď k načtení metadat (což je užitečné ve scénářích, kde chcete zobrazit seznam dostupných nástrojů, například), nebo celý model.
+Rozhraní API volá pro načtení modelů všechny návratové `ModelData` objekty. `ModelData` obsahuje metadata o modelu uloženém v instanci digitálních vláken Azure, jako je název, DTMI a datum vytvoření modelu. `ModelData`Objekt také volitelně zahrnuje samotný model. V závislosti na parametrech lze proto použít volání metody načíst buď k načtení metadat (což je užitečné ve scénářích, kde chcete zobrazit seznam dostupných nástrojů, například), nebo celý model.
 
 `RetrieveModelWithDependencies`Volání vrátí nejen požadovaný model, ale také všechny modely, na kterých je požadovaný model závislý.
 
@@ -174,7 +174,7 @@ Modely je také možné z této služby odebrat jedním ze dvou způsobů:
 
 Jedná se o samostatné funkce, které nejsou navzájem ovlivněny, i když je lze použít společně k tomu, abyste model odebrali postupně. 
 
-### <a name="decommissioning"></a>Vyřazení
+#### <a name="decommissioning"></a>Vyřazení
 
 Zde je kód pro vyřazení modelu z provozu:
 

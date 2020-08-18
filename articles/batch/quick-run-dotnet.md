@@ -1,29 +1,31 @@
 ---
-title: Rychlý start Azure – spuštění úlohy služby Batch – .NET
-description: Rychle spusťte ukázkovou úlohu Azure Batch a úlohy z aplikace v jazyce C# pomocí klientské knihovny Batch .NET.
+title: Rychlý Start – spuštění první Azure Batch úlohy pomocí rozhraní .NET API
+description: V tomto rychlém startu spustíte ukázkovou úlohu Azure Batch a úlohy z aplikace v jazyce C# pomocí klientské knihovny Batch .NET.
 ms.topic: quickstart
-ms.date: 11/29/2018
+ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: 1163d63f8cbd6afedfb6e5323fa469059fa8021c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f17fc2103e4b8512e050d79f5a639b38d90a2a95
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117212"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511027"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rychlý start: Spuštění první úlohy služby Azure Batch pomocí rozhraní API .NET
 
-V rámci tohoto rychlého startu spustíte úlohu služby Azure Batch z aplikace C# sestavené pomocí rozhraní API .NET služby Azure Batch. Aplikace odešle několik vstupních datových souborů do služby Azure Storage a potom vytvoří *fond* výpočetních uzlů služby Batch (virtuálních počítačů). Potom vytvoří ukázkovou *úlohu*, která pomocí základního příkazu spouští *úkoly* pro zpracování jednotlivých vstupních souborů ve fondu. Po dokončení tohoto rychlého startu budete rozumět klíčovým konceptům služby Batch a budete moct službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě.
+Začněte s Azure Batch spuštěním úlohy z aplikace v jazyce C# postavené na rozhraní Azure Batch .NET API. Aplikace odešle několik vstupních datových souborů do služby Azure Storage a potom vytvoří fond výpočetních uzlů služby Batch (virtuálních počítačů). Potom vytvoří ukázkovou úlohu, která pomocí základního příkazu spouští úkoly pro zpracování jednotlivých vstupních souborů ve fondu.
 
-![Pracovní postup aplikace Rychlý start](./media/quick-run-dotnet/sampleapp.png)
+Po dokončení tohoto rychlého startu budete rozumět klíčovým konceptům služby Batch a budete moct službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě.
 
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+![Diagram znázorňující přehled pracovního postupu aplikace Azure Batch.](./media/quick-run-dotnet/sampleapp.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)nebo [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) pro Linux, MacOS nebo Windows. 
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch. 
+- Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch.
+
+- [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)nebo [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) pro Linux, MacOS nebo Windows. 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -56,15 +58,15 @@ private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfw
 
 [!INCLUDE [batch-credentials-include](../../includes/batch-credentials-include.md)]
 
-## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
+## <a name="build-and-run-the-app"></a>Sestavte a spusťte aplikaci.
 
 Pokud chcete vidět pracovní postup služby Batch v praxi, sestavte a spusťte aplikaci v sadě Visual Studio nebo na příkazovém řádku pomocí příkazů `dotnet build` a `dotnet run`. Po spuštění aplikace se podívejte do kódu a najděte si, co jednotlivé části aplikace dělají. Příklad pro sadu Visual Studio:
 
-* Klikněte na řešení pravým tlačítkem myši v Průzkumníku řešení a klikněte na **Sestavit řešení**. 
+- Klikněte na řešení pravým tlačítkem myši v Průzkumníku řešení a klikněte na **Sestavit řešení**. 
 
-* Pokud se zobrazí výzva, potvrďte obnovení všech balíčků NuGet. Pokud potřebujete stáhnout chybějící balíčky, ujistěte se, že máte nainstalovaného [Správce balíčků NuGet](https://docs.nuget.org/consume/installing-nuget).
+- Pokud se zobrazí výzva, potvrďte obnovení všech balíčků NuGet. Pokud potřebujete stáhnout chybějící balíčky, ujistěte se, že máte nainstalovaného [Správce balíčků NuGet](https://docs.nuget.org/consume/installing-nuget).
 
-Potom aplikaci spusťte. Po spuštění ukázkové aplikace vypadá výstup konzoly zhruba následovně. Během provádění dojde k pozastavení na řádku `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` a mezitím se spustí výpočetní uzly fondu. Jakmile se spustí první výpočetní uzel, úkoly se zařadí do fronty ke spuštění. Pokud chcete monitorovat fond, výpočetní uzly, úlohy a úkoly, můžete přejít na účet Batch v [Azure Portal](https://portal.azure.com) .
+Po spuštění ukázkové aplikace vypadá výstup konzoly zhruba následovně. Během provádění dojde k pozastavení na řádku `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` a mezitím se spustí výpočetní uzly fondu. Jakmile se spustí první výpočetní uzel, úkoly se zařadí do fronty ke spuštění. Pokud chcete monitorovat fond, výpočetní uzly, úlohy a úkoly, můžete přejít na účet Batch v [Azure Portal](https://portal.azure.com) .
 
 ```
 Sample start: 11/16/2018 4:02:54 PM
@@ -93,17 +95,16 @@ stderr:
 
 Typická doba provádění je přibližně 5 minut, když aplikaci spouštíte ve výchozí konfiguraci. Nejdelší dobu trvá počáteční vytvoření fondu. Pokud chcete úlohu znovu spustit, odstraňte úlohu z předchozího spuštění, ale neodstraňujte fond. Ve fondu, který je už nakonfigurovaný, se úloha dokončí za pár sekund.
 
-
 ## <a name="review-the-code"></a>Kontrola kódu
 
 Aplikace .NET v tomto rychlém startu provádí tyto kroky:
 
-* Odešle tři malé textové soubory do kontejneru objektů blob ve vašem účtu služby Azure Storage. Tyto soubory představují vstup pro zpracování službou Batch.
-* Vytvoří fond výpočetních uzlů se systémem Windows Server.
-* Vytvoří úlohu a tři úkoly ke spuštění v uzlech. Každý úkol zpracovává pomocí příkazového řádku Windows jeden vstupní soubor. 
-* Zobrazí soubory vrácené úkoly.
+- Odešle tři malé textové soubory do kontejneru objektů blob ve vašem účtu služby Azure Storage. Tyto soubory představují vstup pro zpracování službou Batch.
+- Vytvoří fond výpočetních uzlů se systémem Windows Server.
+- Vytvoří úlohu a tři úkoly ke spuštění v uzlech. Každý úkol zpracovává pomocí příkazového řádku Windows jeden vstupní soubor. 
+- Zobrazí soubory vrácené úkoly.
 
-Podrobnosti najdete v souboru `Program.cs` a v následujících částech. 
+Podrobnosti najdete v souboru `Program.cs` a v následujících částech.
 
 ### <a name="preliminaries"></a>Nezbytné úkony
 
@@ -200,7 +201,7 @@ try
 ...
 ```
 
-### <a name="create-tasks"></a>Vytvoření úkolů
+### <a name="create-tasks"></a>Vytváření úloh
 
 Aplikace vytvoří seznam objektů [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask). Každý úkol zpracovává vstupní objekt `ResourceFile` pomocí vlastnosti [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline). Příkazový řádek v ukázce spustí příkaz Windows `type`, který zobrazí vstupní soubor. Tento příkaz představuje jednoduchý příklad pro demonstrační účely. Při použití služby Batch se aplikace nebo skript zadávají právě na příkazovém řádku. Služba Batch poskytuje několik způsobů, jak nasazovat aplikace a skripty do výpočetních uzlů.
 
@@ -245,7 +246,6 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a ú�
 ## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste spustili malou aplikaci sestavenou pomocí rozhraní API .NET služby Batch a ta vytvořila fond a úlohu služby Batch. Úloha spustila ukázkové úkoly a stáhla výstup vytvořený v uzlech. Teď chápete klíčové koncepty služby Batch a můžete službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě. Další informace o službě Azure Batch a vysvětlení paralelních úloh v reálné aplikaci najdete v kurzu o rozhraní .NET služby Batch.
-
 
 > [!div class="nextstepaction"]
 > [Zpracování paralelních úloh pomocí rozhraní .NET](tutorial-parallel-dotnet.md)

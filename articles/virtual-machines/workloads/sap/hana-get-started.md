@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: ec63d08b164a3ed767a7622a9829beaf73e65ef3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2a62cb08fcce6597f02c080231f5e1808794054
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042323"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509956"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Instalace SAP HANA na virtuálních počítačích Azure
 ## <a name="introduction"></a>Úvod
@@ -29,7 +29,7 @@ Tato příručka vám pomůže nasměrovat na správné prostředky pro úspěš
 > [!NOTE]
 > Tato příručka popisuje nasazení SAP HANA do virtuálních počítačů Azure. Informace o tom, jak nasadit SAP HANA do velkých instancí HANA, najdete v tématu [Jak nainstalovat a nakonfigurovat SAP Hana (velké instance) v Azure](./hana-installation.md).
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Tato příručka také předpokládá, že jste obeznámeni s:
 * SAP HANA a SAP NetWeaver a jak je nainstalovat místně.
 * Jak nainstalovat a provozovat instance aplikací SAP HANA a SAP v Azure
@@ -72,7 +72,7 @@ V této fázi potřebujete projít kroky nasazení virtuálních počítačů k 
     -  [Poznámka k podpoře SAP #2382421 – optimalizace konfigurace sítě v HANA a na úrovni operačního systému](https://launchpad.support.sap.com/#/notes/2382421)
 
 1. Vyberte typ úložiště Azure pro SAP HANA. V tomto kroku se musíte rozhodnout pro rozložení úložiště pro SAP HANA instalaci. Budete používat buď připojené disky Azure, nebo nativní sdílené složky Azure NFS. Typy úložiště Azure, které se dají použít, a kombinace různých typů úložiště Azure, které se dají použít, jsou popsané v části [SAP HANA konfigurací úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md). Vezměte v úvahu konfigurace popsané jako výchozí bod. U neprodukčních systémů možná budete moct nakonfigurovat nižší propustnost nebo IOPS. Pro produkční účely možná budete muset nakonfigurovat trochu větší propustnost a IOPS.
-2. Pokud používáte virtuální počítače řady M-Series nebo Mv2-Series, ujistěte se, že jste nakonfigurovali [Azure akcelerátor zápisu](../../linux/how-to-enable-write-accelerator.md) pro svazky, které obsahují protokoly transakcí DBMS nebo protokoly opětovného provedení. Pamatujte na omezení pro Akcelerátor zápisu zdokumentované.
+2. Pokud používáte virtuální počítače řady M-Series nebo Mv2-Series, ujistěte se, že jste nakonfigurovali [Azure akcelerátor zápisu](../../how-to-enable-write-accelerator.md) pro svazky, které obsahují protokoly transakcí DBMS nebo protokoly opětovného provedení. Pamatujte na omezení pro Akcelerátor zápisu zdokumentované.
 2. Ověřte, jestli je na nasazených virtuálních počítačích zapnuté [akcelerované síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) .
 
 > [!NOTE]

@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 40a0429c4296426042e5baa58c9575ddb195cd7c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4c48a8a18a3ad0487b4c3840847c7f5edbb6d29f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996733"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510330"
 ---
 # <a name="search-edit-and-delete-projects"></a>Hledání, úpravy a odstraňování projektů
 
@@ -24,36 +24,35 @@ Vlastní Překladatel nabízí několik způsobů, jak můžete své projekty sp
 
 Nástroj filtru umožňuje vyhledávat projekty podle různých podmínek filtrování. Filtruje jako název projektu, stav, zdrojový a cílový jazyk a kategorii projektu.
 
-1.  Klikněte na tlačítko filtr.
+1. Klikněte na tlačítko filtr.
 
     ![Hledat projekt](media/how-to/how-to-search-project.png)
 
-1.  Můžete filtrovat podle všech (nebo všech) následujících polí: název projektu, stav, zdrojový jazyk, cílový jazyk a kategorie.
+2. Můžete filtrovat podle všech (nebo všech) následujících polí: název projektu, jazyk zdrojového kódu, cílový jazyk, kategorie a dostupnost projektu.
 
-2.  Klikněte na použít.
+3. Klikněte na použít.
 
     ![Vyhledat možnosti filtru projektu](media/how-to/how-to-search-project-filters.png)
 
-3.  Pokud chcete zobrazit všechny vaše projekty klepnutím na Vymazat, vymažte filtr.
-
+4. Pokud chcete zobrazit všechny vaše projekty klepnutím na Vymazat, vymažte filtr.
 
 ## <a name="edit-a-project"></a>Upravit projekt
 
 Vlastní Překladatel vám dává možnost upravit název a popis projektu. Jiná metadata projektu, jako je kategorie, zdrojový jazyk a cílový jazyk, nejsou k dispozici pro úpravy. Následující postup popisuje, jak upravit projekt.
 
-1.  Klikněte na ikonu tužky, která se zobrazí při najetí myší na projekt.
+1. Klikněte na ikonu tužky, která se zobrazí při najetí myší na projekt.
 
     ![Upravit projekt](media/how-to/how-to-edit-project.png)
 
-2.  V dialogovém okně lze upravit buď název projektu, nebo popis projektu, ale nelze změnit popisek projektu, kategorii nebo dvojici jazyků.
+2. V dialogovém okně můžete upravit název projektu, popis projektu, Popis kategorie a popisek projektu, pokud není nasazen žádný model. Po vytvoření projektu nelze změnit dvojici kategorie nebo jazyka.
 
     ![Dialogové okno Upravit projekt](media/how-to/how-to-edit-project-dialog.png)
 
-3.  Klikněte na tlačítko filtr.
+3. Klikněte na tlačítko Uložit.
 
 ## <a name="delete-a-project"></a>Odstranit projekt
 
-Projekt můžete odstranit, pokud ho již nepotřebujete. Následující kroky popisují, jak odstranit projekt.
+Projekt můžete odstranit, pokud ho již nepotřebujete. Nastavte, aby projekt nemá modely v aktivním stavu, jako je například nasazené, školení odesláno, zpracování dat, nasazování atd., jinak operace odstranění selže. Následující kroky popisují, jak odstranit projekt.
 
 1. Najeďte myší na libovolný záznam projektu a klikněte na ikonu koše.
 

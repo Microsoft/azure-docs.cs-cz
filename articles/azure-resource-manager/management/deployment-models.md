@@ -3,12 +3,12 @@ title: Resource Manager a klasické nasazení
 description: Popisuje rozdíly mezi modelem nasazení Resource Manager a modelem nasazení Classic (neboli Service Management).
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: 9e44128da9b6e180bd2857f4574c0b384fdffef2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: d9c1a27efc1f474e25d0ed164d106e8f64ba3e96
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057564"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511401"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Nasazení Azure Resource Manager vs. Classic: Vysvětlení modelů nasazení a stavu prostředků
 
@@ -122,7 +122,7 @@ Informace o připojení virtuálních sítí z různých modelů nasazení najde
 
 Pokud jste připraveni migrovat prostředky z klasického nasazení do nasazení Správce prostředků, přečtěte si téma:
 
-1. [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
+1. [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](../../virtual-machines/migration-classic-resource-manager-deep-dive.md)
 2. [Platformou podporovaná migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
 3. [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí Azure PowerShellu](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
 4. [Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku Azure](../../virtual-machines/linux/migration-classic-resource-manager-cli.md)

@@ -1,6 +1,6 @@
 ---
 title: Správa oprávnění uživatelů a správců – Azure Active Directory | Microsoft Docs
-description: Přečtěte si, jak kontrolovat a spravovat oprávnění pro aplikaci v Azure AD. Například pokud chcete odvolat všechna oprávnění udělená aplikaci.
+description: Přečtěte si, jak kontrolovat a spravovat oprávnění pro aplikaci v Azure AD. Odvolejte například všechna oprávnění udělená aplikaci.
 services: active-directory
 author: mimart
 manager: CelesteDG
@@ -12,22 +12,22 @@ ms.date: 7/10/2020
 ms.author: mimart
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00d878c7b2f78d037e89235f3bb30c02fd11a7ae
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 95e13cedc0cdbaedc8c00b9d855057da7e631c19
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277630"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510874"
 ---
-# <a name="take-action-on-overpriviledged-or-suspicious-application-in-azure-active-directory"></a>Provedení akce na overpriviledged nebo podezřelé aplikace v Azure Active Directory
+# <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Provedení akce na privilegovaných nebo podezřelých aplikacích v Azure Active Directory
 
-Přečtěte si, jak kontrolovat a spravovat oprávnění aplikace. V závislosti na scénáři vám tento článek poskytne různé akce, které můžete provést k zabezpečení aplikace. To platí pro všechny aplikace, které byly přidány do tenanta Azure Active Directory (Azure AD) prostřednictvím souhlasu uživatele nebo správce.
+Přečtěte si, jak kontrolovat a spravovat oprávnění aplikace. Tento článek poskytuje různé akce, které můžete provést k zabezpečení vaší aplikace podle scénáře. Tyto akce se vztahují na všechny aplikace, které byly přidány do tenanta Azure Active Directory (Azure AD) prostřednictvím souhlasu uživatele nebo správce.
 
 Další informace o tom, jak se předávají aplikacím, najdete v tématu [Azure Active Directory souhlasu Framework](../develop/consent-framework.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Schopnost provádět následující akce vyžaduje, abyste se přihlásili jako globální správce, správce aplikace nebo správce cloudové aplikace.
+Chcete-li provést následující akce, musíte se přihlásit jako globální správce, správce aplikace nebo správce cloudové aplikace.
 
 Chcete-li omezit přístup k aplikacím, je nutné vyžadovat přiřazení uživatele a pak přiřadit uživatele nebo skupiny k aplikaci.  Další informace najdete v tématu [metody přiřazení uživatelů a skupin](methods-for-assigning-users-and-groups.md).
 
@@ -35,80 +35,82 @@ K portálu Azure AD můžete přistupovat a získat tak kontextové skripty Powe
  
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 2. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
-3. Vyberte aplikaci, pro kterou chcete omezit přístup.
+3. Vyberte aplikaci, ke které chcete omezit přístup.
 4. Vyberte **oprávnění**. Na panelu příkazů vyberte **zkontrolovat oprávnění**.
 
-![Zkontrolovat oprávnění](./media/manage-application-permissions/review-permissions.png)
+![Snímek obrazovky okna zkontrolovat oprávnění](./media/manage-application-permissions/review-permissions.png)
 
-## <a name="i-want-to-control-access-to-an-application"></a>Chci řídit přístup k aplikaci
 
-Doporučujeme, abyste omezení přístupu k této aplikaci omezili zapnutím nastavení přiřazení uživatelů na.
+## <a name="control-access-to-an-application"></a>Řízení přístupu k aplikaci
+
+Doporučujeme, abyste omezili přístup k aplikaci tak, že zapnete nastavení **přiřazení uživatelů** .
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 2. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
-3. Vyberte aplikaci, pro kterou chcete omezit přístup.
-4. Vyberte **vlastnosti** a pak nastavte nastavení požadováno pro uživatele na Ano.
-5. Vyberte **uživatele a skupiny** a potom odeberte nechtěné uživatele přiřazené k aplikaci.
-6. Přiřaďte aplikaci uživatele nebo skupiny.
+3. Vyberte aplikaci, ke které chcete omezit přístup.
+4. Vyberte **vlastnosti**a pak nastavte **požadavky uživatele** na **Ano**.
+5. Vyberte **uživatele a skupiny**a potom odeberte nechtěné uživatele, kteří jsou přiřazeni k aplikaci.
+6. Přiřaďte aplikaci uživatelům nebo skupinám.
 
-Volitelně můžete odebrat všechny uživatele přiřazené k aplikaci pomocí prostředí PowerShell.
+Volitelně můžete odebrat všechny uživatele, kteří jsou přiřazeni k aplikaci pomocí prostředí PowerShell.
 
-## <a name="i-want-to-revoke-all-permissions-for-an-application"></a>Chci odvolat všechna oprávnění pro aplikaci
+## <a name="revoke-all-permissions-for-an-application"></a>Odvolat všechna oprávnění pro aplikaci
 
-Použití PowerShellu odvolá všechna oprávnění udělená této aplikaci.
+Použití skriptu PowerShellu odvolá všechna oprávnění udělená této aplikaci.
 
 > [!NOTE]
-> Odvolání aktuálně uděleného oprávnění neukončí uživatele reconseing k aplikacím. Pokud chcete uživatelům zablokovat souhlas s aplikací, přečtěte si téma [Konfigurace způsobu souhlasu koncových uživatelů s aplikacemi](configure-user-consent.md).
+> Odvolání aktuálně uděleného oprávnění neukončí uživatelům opětovné odeslání do aplikace. Pokud chcete uživatele zablokovat, přečtěte si téma [Konfigurace souhlasu uživatelů s aplikacemi](configure-user-consent.md).
 
-Volitelné, aplikaci můžete zakázat, pokud chcete uživatelům zablokovat přístup k aplikaci a aplikaci pro přístup k vašim datům.
+Volitelně můžete aplikaci zakázat, aby uživatelé měli přístup k aplikaci a aby aplikace měla přístup k vašim datům.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 2. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
-3. Vyberte aplikaci, pro kterou chcete omezit přístup.
-4. Vyberte **vlastnosti** a pak nastavte možnost povoleno pro uživatele, aby se přihlásili? na ne.
+3. Vyberte aplikaci, ke které chcete omezit přístup.
+4. Vyberte **vlastnosti**a pak nastavte možnost **povoleno pro uživatele, aby se přihlásili?** na **ne**.
 
-## <a name="application-is-suspicious-and-i-want-to-investigate"></a>Aplikace je podezřelá a chci ji prozkoumat.
+## <a name="investigate-a-suspicious-application"></a>Prozkoumat podezřelou aplikaci
 
-Doporučujeme, abyste omezili přístup k této aplikaci tím, že zapnete nastavení přiřazení uživatelů na a zkontrolujete oprávnění, která uživatelé a správci udělili aplikaci.
+Doporučujeme, abyste omezili přístup k aplikaci tak, že zapnete nastavení **přiřazení uživatelů** . Pak zkontrolujte oprávnění, která uživatelé a správci udělili aplikaci.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 3. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
-5. Vyberte aplikaci, pro kterou chcete omezit přístup.
-6. Vyberte **vlastnosti** a pak nastavte nastavení požadováno pro uživatele na Ano.
-7. Vyberte **oprávnění** a zkontrolujte oprávnění správce a uživatel se souhlasem.
+5. Vyberte aplikaci, ke které chcete omezit přístup.
+6. Vyberte **vlastnosti**a pak nastavte **požadavky uživatele** na **Ano**.
+7. Vyberte **oprávnění**a zkontrolujte oprávnění správce a uživatel se souhlasem.
 
-Volitelné, můžete:
+Volitelně můžete pomocí prostředí PowerShell:
 
-- Pomocí PowerShellu odeberte všechny přiřazené uživatele, aby je nemuseli přihlašovat k aplikaci.
-- Pomocí PowerShellu zruší platnost tokenů aktualizace pro uživatele, kteří mají přístup k aplikaci.
-- Pomocí PowerShellu Odvolejte všechna oprávnění pro tuto aplikaci.
-- Zakažte aplikaci, aby blokovala přístup uživatelů, a zastavte těmto aplikacím přístup k vašim datům.
+- Odeberte všechny přiřazené uživatele, abyste je zazastavili v přihlášení k aplikaci.
+- Zruší platnost tokenů aktualizace pro uživatele, kteří mají přístup k aplikaci.
+- Odvolat všechna oprávnění pro aplikaci.
+
+Nebo můžete zakázat aplikaci pro blokování přístupu uživatelů a zastavení přístupu aplikace k vašim datům.
 
 
-## <a name="application-is-malicious-and-im-compromised"></a>Aplikace je škodlivá a došlo k ohrožení zabezpečení.
+## <a name="disable-a-malicious-application"></a>Zakázat škodlivou aplikaci 
 
-Doporučujeme, abyste aplikaci zakázali, aby uživatelům zablokovala přístup k aplikaci a aplikaci z přístupu k vašim datům. Pokud aplikaci odstraníte, koncoví uživatelé budou moci znovu vyjádřit souhlas s aplikací a udělit přístup k vašim datům.
+Doporučujeme, abyste aplikaci zakázali, aby blokovala přístup uživatelů a aby aplikace měla přístup k vašim datům. Pokud místo toho odstraníte aplikaci, můžou si uživatelé aplikaci znovu vyjádřit a udělit jim přístup k vašim datům.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 2. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
-3. Vyberte aplikaci, pro kterou chcete omezit přístup.
-4. Vyberte **vlastnosti** a pak zkopírujte ID objektu.
+3. Vyberte aplikaci, ke které chcete omezit přístup.
+4. Vyberte **vlastnosti**a pak zkopírujte ID objektu.
 
 ### <a name="powershell-commands"></a>Příkazy prostředí PowerShell
 
 
-Načíst ID instančního objektu služby
+Načte ID instančního objektu služby.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce, správce aplikace nebo správce cloudové aplikace.
 2. Vyberte **Azure Active Directory**  >  **podnikových aplikací**.
-3. Vyberte aplikaci, pro kterou chcete omezit přístup.
-4. Vyberte **vlastnosti** a pak zkopírujte ID objektu.
+3. Vyberte aplikaci, ke které chcete omezit přístup.
+4. Vyberte **vlastnosti**a pak zkopírujte ID objektu.
 
 ```powershell
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
     $sp.ObjectId
 ```
-Odebere všechny uživatele přiřazené k aplikaci.
+Odeberte všechny uživatele, kteří jsou přiřazeni k aplikaci.
  ```powershell
     Connect-AzureAD
 
@@ -128,7 +130,7 @@ Odebere všechny uživatele přiřazené k aplikaci.
     }
  ```
 
-Odvolat oprávnění udělená aplikaci
+Odvolat oprávnění udělená aplikaci.
 
 ```powershell
     Connect-AzureAD
@@ -152,7 +154,7 @@ Odvolat oprávnění udělená aplikaci
         Remove-AzureADServiceAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.objectId
     }
 ```
-Zrušit platnost obnovovacích tokenů
+Zruší platnost obnovovacích tokenů.
 ```powershell
         Connect-AzureAD
 

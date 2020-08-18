@@ -2,16 +2,16 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
+ms.date: 08/17/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0cb31f5470519e33b76c6cad83d7b47972f21381
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 6705e6f1e988a836a3a9b7e7c4950510fcb2b228
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407301"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511285"
 ---
-V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s Node.js k vytvoření modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace Node.js.
+V tomto článku se dozvíte, jak začít používat Custom Vision klientské knihovny s Node.js k vytvoření modelu detekce objektu. Po vytvoření můžete přidat tagované oblasti, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace Node.js.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -24,9 +24,9 @@ V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s No
 [!INCLUDE [node-get-images](../../includes/node-get-images.md)]
 
 
-## <a name="install-the-custom-vision-sdk"></a>Instalace sady Custom Vision SDK
+## <a name="install-the-custom-vision-client-library"></a>Instalace klientské knihovny Custom Vision
 
-Chcete-li nainstalovat sady SDK služby Custom Vision pro Node.js ve vašem projektu, spusťte následující příkazy:
+Chcete-li nainstalovat klientské knihovny Custom Vision služby pro Node.js ve vašem projektu, spusťte následující příkazy:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training

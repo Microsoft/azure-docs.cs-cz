@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/30/2020
 ms.author: absha
-ms.openlocfilehash: 9315884db30c053d86c889ff3b45aaea17d48b17
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 32809c33e1c365d8d333bb89a5c2f773b311c2ff
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438915"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511078"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace Application Gateway
 
@@ -25,7 +25,7 @@ Tento obrázek znázorňuje aplikaci, která má tři naslouchací procesy. Prvn
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Virtuální síť Azure a vyhrazená podsíť
 
@@ -38,11 +38,13 @@ Application Gateway je ve vaší virtuální síti vyhrazené nasazení. V rámc
 
 Application Gateway používá jednu privátní IP adresu na instanci a další privátní IP adresu, pokud je nakonfigurovaná privátní IP adresa front-endu.
 
-Azure také rezervuje pět IP adres v každé podsíti pro interní použití: první čtyři a poslední IP adresy. Zvažte například 15 instancí aplikační brány bez soukromé front-endové IP adresy. Pro tuto podsíť potřebujete alespoň 20 IP adres: pět pro interní použití a 15 pro instance služby Application Gateway. Proto potřebujete velikost podsítě/27 nebo větší.
+Azure také rezervuje pět IP adres v každé podsíti pro interní použití: první čtyři a poslední IP adresy. Zvažte například 15 instancí aplikační brány bez soukromé front-endové IP adresy. Pro tuto podsíť potřebujete alespoň 20 IP adres: pět pro interní použití a 15 pro instance služby Application Gateway.
 
-Vezměte v úvahu podsíť, která má 27 instancí aplikační brány a IP adresu pro soukromou front-end IP adresu. V takovém případě potřebujete 33 IP adres: 27 pro instance služby Application Gateway, jednu pro privátní front-end a pět pro interní použití. Proto potřebujete velikost podsítě/26 nebo větší.
+Vezměte v úvahu podsíť, která má 27 instancí aplikační brány a IP adresu pro soukromou front-end IP adresu. V takovém případě potřebujete 33 IP adres: 27 pro instance služby Application Gateway, jednu pro privátní front-end a pět pro interní použití.
 
-Doporučujeme použít velikost podsítě alespoň/28. Tato velikost poskytuje 11 použitelných IP adres. Pokud zatížení vaší aplikace vyžaduje více než 10 Application Gateway instancí, zvažte velikost podsítě/27 nebo/26.
+SKU Application Gateway (Standard nebo WAF) může podporovat až 32 instancí (32 IP adres instancí + 1 privátní front-endové IP adresy + 5 rezervované v Azure) – Proto se doporučuje minimální velikost podsítě/26.
+
+Application Gateway (Standard_v2 nebo WAF_v2 SKU) můžou podporovat až 125 instancí (125 IP adres instancí + 1 privátní front-endové IP adresy + 5 rezervované v Azure) – Proto se doporučuje minimální velikost podsítě/24.
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Skupiny zabezpečení sítě na Application Gateway podsíti
 
@@ -292,7 +294,7 @@ Další informace o přesměrování najdete v tématu:
 Pomocí pravidel pro přepsání můžete přidat, odebrat nebo aktualizovat žádosti a hlavičky odpovědí HTTP (S) a také cestu URL a parametry řetězce dotazu, protože pakety požadavků a odpovědí se pohybují mezi klienty klienta a back-endu přes Aplikační bránu.
 
 Parametry hlaviček a adres URL lze nastavit na statické hodnoty nebo na jiné hlavičky a proměnné serveru. To pomáhá s důležitými případy použití, jako je například extrakce IP adres klientů, odebrání citlivých informací o back-endu, přidání dalších zabezpečení atd.
-Další informace naleznete v tématu:
+Další informace:
 
  - [Přehled přepsaných hlaviček a adres URL protokolu HTTP](rewrite-http-headers-url.md)
  - [Konfigurace přepsání hlaviček HTTP](rewrite-http-headers-portal.md)

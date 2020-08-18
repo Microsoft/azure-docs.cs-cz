@@ -1,32 +1,34 @@
 ---
-title: Použití rozhraní Python API ke spuštění úlohy Azure Batch
-description: Pomocí klientské knihovny Batch Pythonu rychle spustíte ukázkovou úlohu Azure Batch a úlohy. Seznamte se s klíčovými koncepty služby Batch.
+title: Rychlý Start – použití rozhraní Python API ke spuštění úlohy Azure Batch
+description: V tomto rychlém startu spustíte ukázkovou úlohu Azure Batch a úlohy pomocí klientské knihovny Batch Python. Seznamte se s klíčovými koncepty služby Batch.
 ms.topic: quickstart
-ms.date: 11/27/2018
+ms.date: 08/17/2020
 ms.custom:
 - seo-python-october2019
 - mvc
 - devx-track-python
-ms.openlocfilehash: 7cef08c81a4122fcbfcc18160ad8e6602f335569
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852561"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511010"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Rychlý Start: použití rozhraní Python API ke spuštění úlohy Azure Batch
 
-V tomto rychlém startu použijete rozhraní Python API ke spuštění Azure Batch úlohy z aplikace. Aplikace nahrává vstupní datové soubory pro Azure Storage a vytvoří *fond* výpočetních uzlů Batch (virtuálních počítačů). Pak vytvoří *úlohu* , která spustí *úlohy* ke zpracování jednotlivých vstupních souborů ve fondu pomocí příkazu Basic.
+Začněte s Azure Batch pomocí rozhraní Python API ke spuštění úlohy Azure Batch z aplikace. Aplikace nahrává vstupní datové soubory pro Azure Storage a vytvoří fond výpočetních uzlů Batch (virtuálních počítačů). Pak vytvoří úlohu, která spustí úlohy ke zpracování jednotlivých vstupních souborů ve fondu pomocí příkazu Basic.
 
-Tady se dozvíte o klíčových konceptech služby Batch a o tom, jak se dá vyzkoušet dávka s efektivnějšími úlohami ve větším měřítku.
+Po dokončení tohoto rychlého startu budete porozumět klíčovým konceptům služby Batch a budete připraveni vyzkoušet dávku s efektivnějšími úlohami ve větším měřítku.
 
 ![Přehled pracovního postupu Azure Batch](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Účet **Azure Batch** a propojený **Azure Storage** účet. K vytvoření těchto účtů použijte [Azure Portal](quick-create-portal.md) nebo [CLI](quick-create-cli.md) .
-- [Python](https://python.org/downloads), verze 2,7 nebo 3,3 nebo novější, včetně Správce balíčků [PIP](https://pip.pypa.io/en/stable/installing/)
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+- Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch.
+
+- [Python](https://python.org/downloads) verze 2,7 nebo 3,3 nebo novější, včetně Správce balíčků [PIP](https://pip.pypa.io/en/stable/installing/)
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -68,7 +70,7 @@ Pokud chcete vidět pracovní postup Batch v akci, spusťte skript:
 python python_quickstart_client.py
 ```
 
-Po spuštění skriptu se podívejte do kódu a najděte si, co jednotlivé části aplikace dělají. 
+Po spuštění skriptu se podívejte do kódu a najděte si, co jednotlivé části aplikace dělají.
 
 Po spuštění ukázkové aplikace vypadá výstup konzoly zhruba následovně. Během provádění dojde k pozastavení na řádku `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` a mezitím se spustí výpočetní uzly fondu. Jakmile se spustí první výpočetní uzel, úkoly se zařadí do fronty ke spuštění. Fond, výpočetní uzly, úlohy a úkoly můžete sledovat ve svém účtu Batch na webu [Azure Portal](https://portal.azure.com).
 
@@ -102,9 +104,9 @@ Když aplikaci spouštíte v její výchozí konfiguraci, je obvyklá doba prov�
 
 Aplikace Python v tomto rychlém startu provádí tyto kroky:
 
-* Odešle tři malé textové soubory do kontejneru objektů blob ve vašem účtu služby Azure Storage. Tyto soubory představují vstup pro zpracování úlohami služby Batch.
-* Vytvoří fond dvou výpočetních uzlů se systémem Ubuntu 18,04 LTS.
-* Vytvoří úlohu a tři úkoly ke spuštění v uzlech. Každý úkol zpracovává pomocí příkazového řádku prostředí Bash jeden vstupní soubor.
+- Odešle tři malé textové soubory do kontejneru objektů blob ve vašem účtu služby Azure Storage. Tyto soubory představují vstup pro zpracování úlohami služby Batch.
+- Vytvoří fond dvou výpočetních uzlů se systémem Ubuntu 18,04 LTS.
+- Vytvoří úlohu a tři úkoly ke spuštění v uzlech. Každý úkol zpracovává pomocí příkazového řádku prostředí Bash jeden vstupní soubor.
 * Zobrazí soubory vrácené úkoly.
 
 Podrobnosti najdete v souboru `python_quickstart_client.py` a v následujících částech.
@@ -182,7 +184,7 @@ batch_service_client.job.add(job)
 
 Aplikace vytvoří seznam objektů úlohy pomocí třídy [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter). Každý úkol zpracovává vstupní objekt `resource_files` pomocí parametru `command_line`. Příkazový řádek v ukázce spustí příkaz prostředí Bash `cat`, který zobrazí textový soubor. Tento příkaz představuje jednoduchý příklad pro demonstrační účely. Při použití služby Batch se aplikace nebo skript zadávají právě na příkazovém řádku. Služba Batch poskytuje několik způsobů, jak nasazovat aplikace a skripty do výpočetních uzlů.
 
-Potom aplikace přidá úkoly do úlohy pomocí metody [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) a ta je zařadí do fronty ke spuštění ve výpočetních uzlech. 
+Potom aplikace přidá úkoly do úlohy pomocí metody [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) a ta je zařadí do fronty ke spuštění ve výpočetních uzlech.
 
 ```python
 tasks = list()

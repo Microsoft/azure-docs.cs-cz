@@ -5,20 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 03/17/2020
+ms.date: 08/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
+ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80873b2e2655e7cedbafb526d0fe757eaa282312
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 39c9522362ca6710fae5dee5d831e63cc36a3950
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019607"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509106"
 ---
-# <a name="what-is-azure-active-directory-identity-protection"></a>Co je Azure Active Directory Identity Protection?
+# <a name="what-is-identity-protection"></a>Co je ochrana identit?
 
 Identity Protection je nástroj, který organizacím umožňuje provádět tři klíčové úlohy:
 
@@ -69,6 +70,12 @@ Správci mohou kontrolovat zjišťování a v případě potřeby provádět ru�
 
 Další informace najdete v článku [Postupy: šetření rizik](howto-identity-protection-investigate-risk.md).
 
+### <a name="risk-levels"></a>Úrovně rizika
+
+Identity Protection kategorizuje riziko do tří úrovní: nízká, střední a vysoká. 
+
+Zatímco společnost Microsoft neposkytuje konkrétní informace o tom, jakým způsobem je riziko vypočítáno, říkáme, že každá úroveň přináší větší jistotu, že se uživateli nebo přihlášení naruší zabezpečení. Například něco jako jedna instance neznámého přihlašovacího oprávnění pro uživatele nemusí být ohroženo jako nevrácená pověření pro jiného uživatele.
+
 ## <a name="exporting-risk-data"></a>Export rizikových dat
 
 Data z ochrany identity je možné exportovat do jiných nástrojů pro archivaci a další zkoumání a korelaci. Rozhraní API založená na Microsoft Graph umožňují organizacím shromažďovat tato data pro další zpracování v nástroji, jako jsou jejich SIEM. Informace o tom, jak získat přístup k rozhraní Identity Protection API, najdete v článku [Začínáme s Azure Active Directory Identity Protection a Microsoft Graph](howto-identity-protection-graph-api.md)
@@ -96,15 +103,15 @@ Správci podmíněného přístupu můžou taky vytvářet zásady, které přis
 
 | Schopnost | Podrobnosti | Azure AD Premium P2 | Azure AD Premium P1 | Aplikace Azure AD Free/Office 365 |
 | --- | --- | --- | --- | --- |
-| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection) | Ano | No | No |
-| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup) | Ano | No | No |
-| Sestavy zabezpečení | Přehled | Ano | No | No |
+| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection) | Ano | Ne | Ne |
+| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup) | Ano | Ne | Ne |
+| Sestavy zabezpečení | Přehled | Ano | Ne | Ne |
 | Sestavy zabezpečení | Rizikoví uživatelé | Full access | Omezené informace | Omezené informace |
 | Sestavy zabezpečení | Riziková přihlášení | Full access | Omezené informace | Omezené informace |
-| Sestavy zabezpečení | Detekce rizik | Full access | Omezené informace | No |
-| Oznámení | Uživatelé s výstrahami zjištěnými riziky | Ano | No | No |
-| Oznámení | Týdenní výtah | Ano | No | No |
-| | Zásady registrace MFA | Ano | No | No |
+| Sestavy zabezpečení | Detekce rizik | Full access | Omezené informace | Ne |
+| Oznámení | Uživatelé s výstrahami zjištěnými riziky | Ano | Ne | Ne |
+| Oznámení | Týdenní výtah | Ano | Ne | Ne |
+| | Zásady registrace MFA | Ano | Ne | No |
 
 ## <a name="next-steps"></a>Další kroky
 

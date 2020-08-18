@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 56d947a6b2d236a04f2b71421a235120a9f02c76
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 52e305f9d50ab0f383810778be681ac41be97c72
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994185"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509776"
 ---
 # <a name="view-model-details"></a>Zobrazení podrobností o modelu
 
@@ -22,25 +22,25 @@ Karta modely v rámci projektu zobrazuje všechny modely v daném projektu. Na t
 
 Pro každý model v projektu se zobrazí tyto podrobnosti.
 
-1.  Název modelu: zobrazuje název modelu daného modelu.
+1. Název modelu: zobrazuje název modelu daného modelu.
 
-2.  Stav: zobrazuje stav daného modelu. Vaše nové školení bude mít stav Odesláno až do přijetí. Stav se změní na zpracování dat, zatímco služba vyhodnocuje obsah vašich dokumentů. Po dokončení vyhodnocení vašich dokumentů se stav změní na spuštěno a uvidíte počet vět, které jsou součástí školení, včetně sad pro vyladění a testování, které jsou vytvořeny automaticky. Níže je uveden seznam stavů modelu, který popisuje stav modelů.
+2. Stav: zobrazuje stav daného modelu. Vaše nové školení bude mít stav Odesláno až do přijetí. Stav se změní na zpracování dat, zatímco služba vyhodnocuje obsah vašich dokumentů. Po dokončení vyhodnocení vašich dokumentů se stav změní na spuštěno a uvidíte počet vět, které jsou součástí školení, včetně sad pro vyladění a testování, které jsou vytvořeny automaticky. Níže je uveden seznam stavů modelu, který popisuje stav modelů.
 
-    -  Odesláno: Určuje, že back-end zpracovává dokumenty pro tento model.
+    - Odesláno: Určuje, že back-end zpracovává dokumenty pro tento model.
 
-    -  TrainingQueued: Určuje, zda je školení zařazeno do systému MT pro tento model.
+    - TrainingQueued: Určuje, zda je školení zařazeno do systému MT pro tento model.
 
-    -  Running: Určuje, že školení běží v systému MT pro daný model.
+    - Running: Určuje, že školení běží v systému MT pro daný model.
 
-    -  Úspěch: Určuje, že školení bylo úspěšné v systému MT a že je k dispozici model. V tomto stavu se pro tento model zobrazí BLEU skóre.
+    - Úspěch: Určuje, že školení bylo úspěšné v systému MT a že je k dispozici model. V tomto stavu se pro tento model zobrazí BLEU skóre.
 
-    -  Deployed: Určuje, jestli se úspěšně proučený model posílá do MT systému pro nasazení.
+    - Deployed: Určuje, jestli se úspěšně proučený model posílá do MT systému pro nasazení.
 
-    -  Zrušit nasazení: Určuje, jestli se nasazený model odsazuje.
+    - Zrušit nasazení: Určuje, jestli se nasazený model odsazuje.
 
-    -  Undeployed: Určuje, že proces odsazování modelu byl úspěšně dokončen.
+    - Undeployed: Určuje, že proces odsazování modelu byl úspěšně dokončen.
 
-    -  Školení se nepovedlo: Určuje, že se nepovedlo školení. Pokud dojde k selhání školení, zkuste úlohu školení zopakovat. Pokud chyba přetrvává, kontaktujte nás. Neodstraňujte model, který selhal.
+    - Školení se nepovedlo: Určuje, že se nepovedlo školení. Pokud dojde k selhání školení, zkuste úlohu školení zopakovat. Pokud chyba přetrvává, kontaktujte nás. Neodstraňujte model, který selhal.
 
     - DataProcessingFailed: Určuje, zda zpracování dat pro jeden nebo více dokumentů patřících do modelu selhalo.
 
@@ -48,19 +48,19 @@ Pro každý model v projektu se zobrazí tyto podrobnosti.
 
     - MigratedDraft: Určuje, zda je model ve stavu konceptu po migraci z centra na vlastní překladatel.
 
-4.  BLEU skore: zobrazuje skóre BLEU (dvojjazyčné vyhodnocení destudie) modelu a označuje kvalitu vašeho systému překladu. V tomto skóre se dozvíte, jak pečlivě překlady provedené systémem překladu vycházející z tohoto školení odpovídají referenčním vět v sadě testovacích dat. Po úspěšném dokončení školení se zobrazí BLEU skóre. Pokud není školení dokončené/neúspěšné, neuvidíte žádné BLEU skóre.
+3. BLEU skore: zobrazuje skóre BLEU (dvojjazyčné vyhodnocení destudie) modelu a označuje kvalitu vašeho systému překladu. V tomto skóre se dozvíte, jak pečlivě překlady provedené systémem překladu vycházející z tohoto školení odpovídají referenčním vět v sadě testovacích dat. Po úspěšném dokončení školení se zobrazí BLEU skóre. Pokud není školení dokončené/neúspěšné, neuvidíte žádné BLEU skóre.
 
-5.  Počet vět pro cvičení: zobrazuje celkový počet vět použitých jako školicí sada.
+4. Počet vět pro cvičení: zobrazuje celkový počet vět použitých jako školicí sada.
 
-6.  Počet vět pro ladění: zobrazuje celkový počet vět použitých jako nastavení optimalizace.
+5. Počet vět pro ladění: zobrazuje celkový počet vět použitých jako nastavení optimalizace.
 
-7.  Počet vět pro cvičení: zobrazuje celkový počet vět použitých jako zkušební sada.
+6.  Počet vět pro cvičení: zobrazuje celkový počet vět použitých jako zkušební sada.
 
-8.  Počet vět v mono: zobrazuje celkový počet vět použitých jako monofonní sadu.
+7.  Počet vět v mono: zobrazuje celkový počet vět použitých jako monofonní sadu.
 
-9.  Tlačítko pro nasazení akce: u úspěšného školení modelu se zobrazí tlačítko nasadit, pokud není nasazeno. Pokud je model nasazený, zobrazí se tlačítko zrušit nasazení.
+8.  Tlačítko pro nasazení akce: u úspěšného školení modelu se zobrazí tlačítko nasadit, pokud není nasazeno. Pokud je model nasazený, zobrazí se tlačítko zrušit nasazení.
 
-10. Odstranit: Toto tlačítko můžete použít, pokud chcete model odstranit. Odstraněním modelu se neodstraní žádné dokumenty použité k vytvoření tohoto modelu.
+9. Odstranit: Toto tlačítko můžete použít, pokud chcete model odstranit. Odstraněním modelu se neodstraní žádné dokumenty použité k vytvoření tohoto modelu.
 
     ![Zobrazení podrobností o modelu](media/how-to/how-to-view-model-details.png)
 

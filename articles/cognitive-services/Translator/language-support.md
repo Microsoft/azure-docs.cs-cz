@@ -10,22 +10,22 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d692daf2f7f8b77358e73246fd8d8760f95982ac
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888306"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510789"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Podpora jazyků a oblastí pro převod textu a řeči
 
-Použijte překladatele k překladu na libovolný z 60 + textových jazyků pro překlady a z nich. Neuronové Machine Translation (NMT) je nový standard pro vysoce kvalitní překlady počítačů s podporou AI a je k dispozici jako výchozí v případě, že je k dispozici systém neuronové.
+Použijte překladatele k překladu do a z libovolného z 70 a textových jazyků pro překlad textu. Neuronové Machine Translation (NMT) je nový standard pro vysoce kvalitní překlady počítačů s podporou AI a je k dispozici jako výchozí v případě, že je k dispozici systém neuronové.
 
 Překladatele můžete také použít ve spojení s vlastním překladatelem k vytváření neuronové překladových systémů, které rozumí terminologii používané ve vašem podniku a průmyslu, a pomocí služby Microsoft Speech Service k přidání překladu řeči do aplikace.
 
 [Další informace o tom, jak strojový překlad funguje](https://www.microsoft.com/translator/mt.aspx)
 
-## <a name="text-translation"></a>Překlad textu
+## <a name="text-translation"></a>překlad textu,
 Překlad textu je k dispozici pomocí operace překladu do nebo z libovolného jazyka, který je k dispozici v překladateli. Rozhraní API také nabízí detekci jazyka pomocí operace zjišťování, použití operace přepřepisu a dvojjazyčné slovníky pomocí operací vyhledávání slovníku a slovníku. Dostupné jazyky pro každou z těchto operací jsou uvedeny níže. 
 
 ### <a name="translate"></a>Překlad
@@ -47,6 +47,7 @@ Překladatel podporuje pro převod textu na text následující jazyky.
 |Čínština (tradiční)|   `zh-Hant`       |
 |Chorvatština|  `hr`    |
 |Čeština| `cs`    |
+|Dáríština|  `prs`   |
 |Dánština|    `da`        |
 |Nizozemština| `nl`|
 |Angličtina|   `en`    |
@@ -83,6 +84,8 @@ Překladatel podporuje pro převod textu na text následující jazyky.
 |Maorština| `mi`  |
 |Maráthština| `mr`  |
 |Norština| `nb`    |
+|Udijština|  `or`    |
+|Paštština|    `ps`    |
 |Perština|   `fa`    |
 |Polština|    `pl`    |
 |Portugalština (Brazílie)|   `pt-br` |
@@ -185,26 +188,26 @@ Metoda přepisu podporuje následující jazyky. V "do/z", "<-->" označuje, že
 
 | Jazyk    | Kód jazyka | Skript | Směr | Skript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| Arabština | `ar` | Arabština`Arab` | <--> | Znak`Latn` |
-| Bengálština  | `bn` | Bengálština`Beng` | <--> | Znak`Latn` |
-| Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština`Hans`| <--> | Znak`Latn` |
-| Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština`Hans`| <--> | Tradiční čínština`Hant`|
-| Čínština (tradiční) | `zh-Hant` | Tradiční čínština`Hant`| <--> | Znak`Latn` |
-| Čínština (tradiční) | `zh-Hant` | Tradiční čínština`Hant`| <--> | Zjednodušená čínština`Hans` |
-| Gudžarátština | `gu`  | Gudžarátština`Gujr` | --> | Znak`Latn` |
-| Hebrejština | `he` | Hebrejština`Hebr` | <--> | Znak`Latn` |
-| Hindština | `hi` | Koncový`Deva` | <--> | Znak`Latn` |
-| Japonština | `ja` | Japonština`Jpan` | <--> | Znak`Latn` |
-| Kannadština | `kn` | Kannadština`Knda` | --> | Znak`Latn` |
-| Malajalámština | `ml` | Malajalámština`Mlym` | --> | Znak`Latn` |
-| Maráthština | `mr` | Koncový`Deva` | --> | Znak`Latn` |
-| Udijština | `or` | Krí`Orya` | <--> | Znak`Latn` |
-| Paňdžábština | `pa` | Západní`Guru`  | <--> | Znak`Latn`  |
-| Srbština (cyrilice) | `sr-Cyrl` | B`Cyrl`  | --> | Znak`Latn` |
-| Srbština (latinka) | `sr-Latn` | Znak`Latn` | --> | B`Cyrl`|
-| Tamilština | `ta` | Tamilština`Taml` | --> | Znak`Latn` |
-| Telugština | `te` | Telugština`Telu` | --> | Znak`Latn` |
-| Thajština | `th` | Thajština`Thai` | --> | Znak`Latn` |
+| Arabština | `ar` | Arabština `Arab` | <--> | Znak `Latn` |
+| Bengálština  | `bn` | Bengálština `Beng` | <--> | Znak `Latn` |
+| Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština `Hans`| <--> | Znak `Latn` |
+| Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština `Hans`| <--> | Tradiční čínština `Hant`|
+| Čínština (tradiční) | `zh-Hant` | Tradiční čínština `Hant`| <--> | Znak `Latn` |
+| Čínština (tradiční) | `zh-Hant` | Tradiční čínština `Hant`| <--> | Zjednodušená čínština `Hans` |
+| Gudžarátština | `gu`  | Gudžarátština `Gujr` | --> | Znak `Latn` |
+| Hebrejština | `he` | Hebrejština `Hebr` | <--> | Znak `Latn` |
+| Hindština | `hi` | Koncový `Deva` | <--> | Znak `Latn` |
+| Japonština | `ja` | Japonština `Jpan` | <--> | Znak `Latn` |
+| Kannadština | `kn` | Kannadština `Knda` | --> | Znak `Latn` |
+| Malajalámština | `ml` | Malajalámština `Mlym` | --> | Znak `Latn` |
+| Maráthština | `mr` | Koncový `Deva` | --> | Znak `Latn` |
+| Udijština | `or` | Krí `Orya` | <--> | Znak `Latn` |
+| Paňdžábština | `pa` | Západní `Guru`  | <--> | Znak `Latn`  |
+| Srbština (cyrilice) | `sr-Cyrl` | B `Cyrl`  | --> | Znak `Latn` |
+| Srbština (latinka) | `sr-Latn` | Znak `Latn` | --> | B `Cyrl`|
+| Tamilština | `ta` | Tamilština `Taml` | --> | Znak `Latn` |
+| Telugština | `te` | Telugština `Telu` | --> | Znak `Latn` |
+| Thajština | `th` | Thajština `Thai` | --> | Znak `Latn` |
 
 ### <a name="dictionary"></a>Slovník
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 08/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 185992284e353c3e58104bc46296c1741fbca7d9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b9882168cd063cb4448269cc6a4949778fe93fb1
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502167"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509854"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)
 
@@ -29,7 +29,7 @@ Azure Storage podporuje tři typy podpisů sdíleného přístupu:
 
     Další informace o SAS delegování uživatele najdete v tématu [Vytvoření SAS (REST API) delegování uživatele](/rest/api/storageservices/create-user-delegation-sas).
 
-- **SAS služby.** Podpis SAS služby je zabezpečený pomocí klíče účtu úložiště. SAS služby deleguje přístup k prostředku pouze v jedné z Azure Storage Services: BLOB Storage, Queue Storage, Table Storage nebo Azure Files. 
+- **SAS služby.** Podpis SAS služby je zabezpečený pomocí klíče účtu úložiště. SAS služby deleguje přístup k prostředku pouze v jedné z Azure Storage Services: BLOB Storage, Queue Storage, Table Storage nebo Azure Files.
 
     Další informace o SAS služby najdete v tématu [Vytvoření SAS služby (REST API)](/rest/api/storageservices/create-service-sas).
 
@@ -38,7 +38,7 @@ Azure Storage podporuje tři typy podpisů sdíleného přístupu:
     Další informace o SAS účtu získáte [vytvořením SAS (REST API) účtu](/rest/api/storageservices/create-account-sas).
 
 > [!NOTE]
-> Microsoft doporučuje používat přihlašovací údaje Azure AD, pokud je to možné, a ne používat klíč účtu, který může být snáze ohrožen. Když návrh aplikace vyžaduje pro přístup k úložišti objektů BLOB sdílené přístupové podpisy, pomocí přihlašovacích údajů Azure AD vytvořte přidružení zabezpečení uživatele, pokud je to možné, pro zajištění nadřazeného zabezpečení.
+> Microsoft doporučuje používat přihlašovací údaje Azure AD, pokud je to možné, a ne používat klíč účtu, který může být snáze ohrožen. Když návrh aplikace vyžaduje pro přístup k úložišti objektů BLOB sdílené přístupové podpisy, pomocí přihlašovacích údajů Azure AD vytvořte přidružení zabezpečení uživatele, pokud je to možné, pro zajištění nadřazeného zabezpečení. Další informace najdete v tématu [autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory](storage-auth-aad.md).
 
 Sdílený přístupový podpis může mít jednu ze dvou forem:
 
@@ -52,15 +52,27 @@ Sdílený přístupový podpis může mít jednu ze dvou forem:
 
 Sdílený přístupový podpis je podepsaný identifikátor URI, který odkazuje na jeden nebo více prostředků úložiště a obsahuje token, který obsahuje speciální sadu parametrů dotazu. Token indikuje, jak může klient přistupovat k prostředkům. Jeden z parametrů dotazu, signatura, je vytvořen z parametrů SAS a podepsaný klíčem, který byl použit k vytvoření SAS. Tento podpis používá Azure Storage k autorizaci přístupu k prostředku úložiště.
 
-### <a name="sas-signature"></a>Podpis SAS
+### <a name="sas-signature-and-authorization"></a>Podpis a autorizace SAS
 
-SAS můžete podepsat jedním ze dvou způsobů:
+Token SAS můžete podepsat jedním ze dvou způsobů:
 
 - Pomocí *klíče pro delegování uživatele* , který byl vytvořen pomocí pověření Azure Active Directory (Azure AD). Delegování uživatele je podepsané klíčem delegování uživatele.
 
     Aby se získal klíč pro delegování uživatelů a vytvořil SAS, musí být objekt zabezpečení služby Azure AD přiřazený k roli Azure, která zahrnuje akci **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** . Podrobné informace o rolích Azure s oprávněními k získání klíče pro delegování uživatelů najdete v tématu [Vytvoření SAS uživatele pro delegování (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
-- Pomocí klíče účtu úložiště. Podpis SAS služby i účtu SAS jsou podepsané klíčem účtu úložiště. K vytvoření SAS podepsaného klíčem účtu musí aplikace mít přístup k tomuto klíči účtu.
+- Pomocí klíče účtu úložiště (sdílený klíč). Podpis SAS služby i účtu SAS jsou podepsané klíčem účtu úložiště. K vytvoření SAS podepsaného klíčem účtu musí aplikace mít přístup k tomuto klíči účtu.
+
+Pokud požadavek obsahuje token SAS, je požadavek autorizován na základě toho, jak je token SAS podepsaný. Přístupový klíč nebo přihlašovací údaje, které použijete k vytvoření tokenu SAS, používá Azure Storage pro udělení přístupu ke klientovi, který má SAS.
+
+Následující tabulka shrnuje, jak je každý typ tokenu SAS autorizovaný, když je součástí žádosti o Azure Storage:
+
+| Typ SAS | Typ autorizace |
+|-|-|
+| SAS delegování uživatelů (jenom BLOB Storage) | Azure AD |
+| SAS služby | Sdílený klíč |
+| SAS účtu | Sdílený klíč |
+
+Pokud je to možné, společnost Microsoft doporučuje používat k zajištění nadřazeného zabezpečení přidružení zabezpečení při delegování uživatelů.
 
 ### <a name="sas-token"></a>Token SAS
 

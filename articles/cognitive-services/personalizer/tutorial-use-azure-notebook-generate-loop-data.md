@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3aa45050286888dd8ae1d26d96c8ed02da197326
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 0cf2aa504fd7a36a55740b3a59eeb3759e67f469
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876729"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509905"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Kurz: použití přizpůsobeného úložiště v Azure poznámkovém bloku
 
@@ -623,7 +623,7 @@ Coffee count 4
 
 ## <a name="validate-new-learning-policy"></a>Ověřit nové zásady učení
 
-Vraťte se do poznámkového bloku Azure a pokračujte spuštěním stejné smyčky, ale jenom pro 2 000 iterace. Aktualizujte graf metrik v Azure Portal pravidelně, aby se zobrazila celková volání služby. Pokud máte kolem volání 4 000, je pro každou iteraci smyčky volání pořadí a odměna dokončena.
+Vraťte se do souboru Azure Notebooks a pokračujte spuštěním stejné smyčky, ale pouze pro 2 000 iterace. Aktualizujte graf metrik v Azure Portal pravidelně, aby se zobrazila celková volání služby. Pokud máte kolem volání 4 000, je pro každou iteraci smyčky volání pořadí a odměna dokončena.
 
 ```python
 # max iterations

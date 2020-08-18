@@ -5,12 +5,12 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 722d3e218272202074820db442ab1592042c7011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5c38ac88503416b37b720a091c9e46d819a3146
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805013"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509293"
 ---
 # <a name="get-information-about-a-converted-model"></a>Získání informací o převedeném modelu
 
@@ -100,7 +100,7 @@ V této části jsou zaznamenány informace o formátu zdrojového souboru.
 V této části najdete informace o zdrojové scéně. Mezi hodnotami v této části a odpovídajícími hodnotami v nástroji, který vytvořil zdrojový model, budou často zjištěny rozdíly. Tyto rozdíly se očekávají, protože model se během exportu a převodu změnil.
 
 * `numMeshes`: Počet částí mřížky, kde každá část může odkazovat na jeden materiál.
-* `numFaces`: Celkový počet _trojúhelníků_ v celém modelu. Všimněte si, že síť je během převodu triangulated. Toto číslo přispívá k omezení mnohoúhelníku ve [standardní velikosti virtuálních počítačů pro vykreslování](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons).
+* `numFaces`: Celkový počet _trojúhelníků_ v celém modelu. Všimněte si, že síť je během převodu triangulated. Toto číslo přispívá k omezení mnohoúhelníku ve [standardní velikosti serveru vykreslování](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons).
 * `numVertices`: Celkový počet vrcholů v celém modelu.
 * `numMaterial`: Celkový počet materiálů v celém modelu.
 * `numFacesSmallestMesh`: Počet trojúhelníků v nejmenší mřížce modelu.

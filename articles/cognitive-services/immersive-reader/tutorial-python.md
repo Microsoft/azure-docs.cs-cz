@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
 ms.custom: devx-track-python
-ms.openlocfilehash: 967e290af390ff4310de3e7d0fd844e340ac289d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 5a6c68dbb7dd4171fad3b3a13e904a152618a55d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876559"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516381"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-python-sample-project"></a>Kurz: spuštění moderního čtečky pomocí ukázkového projektu Python
 
@@ -27,7 +27,7 @@ V tomto [přehledu](./overview.md)jste se dozvěděli o tom, co je moderní čte
 > * Získání přístupového tokenu
 > * Spusťte moderní čtečku s ukázkovým obsahem.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -217,7 +217,7 @@ sudo nano /etc/paths
 - Přejděte do dolní části souboru a zadejte cestu, kterou chcete přidat jako poslední položku seznamu, například `PATH=$PATH:/usr/local/bin` .
 - Pro ukončení vyberte **CTRL + X** .
 - Zadáním **Y** uložte upravenou vyrovnávací paměť.
-- A je to! Chcete-li ji otestovat, zadejte do nového okna terminálu `echo $PATH` .
+- A to je vše! Chcete-li ji otestovat, zadejte do nového okna terminálu `echo $PATH` .
 
 Nainstalovat baňce.
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae3851da1dbcc5f7ac37821a64cada20164c7661
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 668f8ffdc4b797219dc1f3c23fecb858d8f706ad
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825000"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510857"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Typy služby Azure Storage pro úlohy SAP
 Azure má spoustu typů úložiště, které se v různých možnostech, propustnosti, latenci a cenách liší. Některé typy úložiště nejsou ani omezené možnosti použitelné pro scénáře SAP. Vzhledem k tomu, že některé typy úložiště Azure jsou vhodné nebo optimalizované pro konkrétní scénáře úloh SAP. Zejména u SAP HANA některé typy úložiště Azure získali certifikaci pro použití s SAP HANA. V tomto dokumentu procházíme mezi různými typy úložišť a popisujete jejich schopnost a použitelnost pomocí úloh SAP a komponent SAP.
@@ -84,7 +84,7 @@ Než přejdete k podrobnostem, prezentujeme Shrnutí a doporučení, které už 
 | DBMS protokoluje řady virtuálních počítačů, které nejsou M/HANA/Mv2. | nepodporováno | vhodné (nepatří do výrobního typu) | vhodné pro až středně velké zatížení | doporučil | nepodporováno |
 
 
-<sup>1</sup> s využitím služby [Azure akcelerátor zápisu](../../windows/how-to-enable-write-accelerator.md) pro řady virtuálních počítačů M/Mv2 pro svazky protokolu/opakování protokolů <sup>2</sup> pomocí ANF vyžaduje/Hana/data a také/Hana/log pro ANF. 
+<sup>1</sup> s využitím služby [Azure akcelerátor zápisu](../../how-to-enable-write-accelerator.md) pro řady virtuálních počítačů M/Mv2 pro svazky protokolu/opakování protokolů <sup>2</sup> pomocí ANF vyžaduje/Hana/data a také/Hana/log pro ANF. 
 
 Vlastnosti, které můžete očekávat od různých typů úložišť, jako je:
 
@@ -101,7 +101,7 @@ Vlastnosti, které můžete očekávat od různých typů úložišť, jako je:
 | Geografická redundance | nepoužívá se pro spravované disky | nepoužívá se pro spravované disky | ne | ne | ne |
 
 
-<sup>1</sup> s využitím [Azure akcelerátor zápisu](../../windows/how-to-enable-write-accelerator.md) pro řady virtuálních počítačů M/Mv2 pro svazky protokolů/opakování
+<sup>1</sup> s využitím [Azure akcelerátor zápisu](../../how-to-enable-write-accelerator.md) pro řady virtuálních počítačů M/Mv2 pro svazky protokolů/opakování
 
 <sup>2</sup> náklady závisí na ZŘÍZENých vstupně-výstupních operacích a propustnosti.
 
@@ -137,7 +137,7 @@ Matrice schopností pro úlohu SAP vypadá takto:
 | Schopnost| Komentář| Poznámky a odkazy | 
 | --- | --- | --- | 
 | Základní virtuální pevný disk operačního systému | vhodnou | Všechny systémy |
-| Datový disk | vhodnou | Všechny systémy – [speciálně pro SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
+| Datový disk | vhodnou | Všechny systémy – [speciálně pro SAP HANA](../../how-to-enable-write-accelerator.md) |
 | Adresář globálního přenosu SAP | ANO | [Podporováno](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP sapmnt | vhodnou | Všechny systémy |
 | Úložiště zálohování | vhodnou | pro krátkodobé ukládání záloh |
@@ -149,12 +149,12 @@ Matrice schopností pro úlohu SAP vypadá takto:
 | Maximální počet IOPS na disk | 20 000 [závislý na velikosti disku](https://azure.microsoft.com/pricing/details/managed-disks/) | Zvážit také [omezení počtu virtuálních počítačů](../../sizes.md) |
 | Smlouva SLA pro propustnost | ANO | - |
 | Propustnost lineární pro kapacitu | poloviční lineární v závorkách | [Ceny spravovaného disku](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| Certified HANA | ANO | [speciálně pro SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
+| Certified HANA | ANO | [speciálně pro SAP HANA](../../how-to-enable-write-accelerator.md) |
 | Možné snímky disku | ANO | - |
-| Možné snímky Azure Backup VM | ANO | s výjimkou [akcelerátor zápisu](../../windows/how-to-enable-write-accelerator.md) disků uložených v mezipaměti  |
+| Možné snímky Azure Backup VM | ANO | s výjimkou [akcelerátor zápisu](../../how-to-enable-write-accelerator.md) disků uložených v mezipaměti  |
 | Náklady | ÚROVNĚ | - |
 
-Azure Premium Storage nesplňuje SAP HANA klíčových ukazatelů výkonu úložiště s běžnými typy ukládání do mezipaměti, které nabízí Azure Premium Storage. Aby bylo možné splnit klíčové ukazatele výkonu latence úložiště pro zápisy do protokolu SAP HANA, je nutné použít službu Azure Akcelerátor zápisu Caching, jak je popsáno v článku [povolení akcelerátor zápisu](../../windows/how-to-enable-write-accelerator.md). Azure Akcelerátor zápisu přináší všechny ostatní systémy DBMS pro jejich zápisy do protokolu transakcí a zápisy do protokolu znovu. Proto se doporučuje používat v rámci všech nasazení SAP DBMS. Pro SAP HANA je povinná použití Azure Akcelerátor zápisu ve spojení se službou Azure Premium Storage.
+Azure Premium Storage nesplňuje SAP HANA klíčových ukazatelů výkonu úložiště s běžnými typy ukládání do mezipaměti, které nabízí Azure Premium Storage. Aby bylo možné splnit klíčové ukazatele výkonu latence úložiště pro zápisy do protokolu SAP HANA, je nutné použít službu Azure Akcelerátor zápisu Caching, jak je popsáno v článku [povolení akcelerátor zápisu](../../how-to-enable-write-accelerator.md). Azure Akcelerátor zápisu přináší všechny ostatní systémy DBMS pro jejich zápisy do protokolu transakcí a zápisy do protokolu znovu. Proto se doporučuje používat v rámci všech nasazení SAP DBMS. Pro SAP HANA je povinná použití Azure Akcelerátor zápisu ve spojení se službou Azure Premium Storage.
 
 
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: f7295515b75ba7e26454f8b6ce6e0d660657ec4e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 9355482c26cabb96fc6292bab5d542f36aec6a8c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055235"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509752"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Vývoj šablon ARM pro cloudovou konzistenci
 
@@ -570,7 +570,7 @@ Naopak pro určení konfigurace spravovaného disku v šabloně odeberte `vhd` p
 }
 ```
 
-Stejné změny také platí pro [datové disky](../../virtual-machines/windows/using-managed-disks-template-deployments.md).
+Stejné změny také platí pro [datové disky](../../virtual-machines/using-managed-disks-template-deployments.md).
 
 ### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>Ověřte, že jsou rozšíření virtuálních počítačů k dispozici v Azure Stack
 

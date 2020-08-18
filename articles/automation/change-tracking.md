@@ -3,14 +3,14 @@ title: Přehled Azure Automation Change Tracking a inventáře
 description: Tento článek popisuje funkci Change Tracking a inventáře, která vám pomůže identifikovat změny softwaru a služeb Microsoftu ve vašem prostředí.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 06/08/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca96f817407aaef808fa10fbedec7af7b5912dc8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2fe92942e263cf53b9827ccbcb13a2d7bafc367c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447934"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511044"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Přehled Change Tracking a inventáře
 
@@ -26,10 +26,10 @@ Tento článek vás seznámí s Change Tracking a inventarizací v Azure Automat
 > [!NOTE]
 > Pokud chcete sledovat změny vlastností Azure Resource Manager, přečtěte si téma [historie změn](../governance/resource-graph/how-to/get-resource-changes.md)grafu prostředků Azure.
 
-Change Tracking a inventář získává data z Azure Monitor. Virtuální počítače připojené k pracovním prostorům Log Analytics používají Log Analytics agenti ke shromažďování dat o změnách nainstalovaného softwaru, služeb Microsoftu, registru a souborů systému Windows a démonech systému Linux na monitorovaných serverech. Když jsou data k dispozici, agenti ji odesílají Azure Monitor ke zpracování. Azure Monitor používá logiku pro přijatá data, zaznamenává je a zpřístupňuje je. 
+Change Tracking a inventář získává data z Azure Monitor. Virtuální počítače připojené k pracovním prostorům Log Analytics používají agenta Log Analytics ke shromažďování dat o změnách nainstalovaného softwaru, služeb Microsoftu, registru a souborů systému Windows a démonech systému Linux na monitorovaných serverech. Když jsou data k dispozici, agent je pošle Azure Monitor ke zpracování. Azure Monitor používá logiku pro přijatá data, zaznamenává je a zpřístupňuje je.
 
 > [!NOTE]
-> Pokud chcete používat funkci Change Tracking a inventáře, musíte najít všechny své virtuální počítače ve stejném předplatném a oblasti účtu Automation.
+> Change Tracking a inventář vyžaduje propojení pracovního prostoru Log Analytics s vaším účtem Automation. Konečný seznam podporovaných oblastí najdete v tématu [mapování pracovních prostorů Azure](./how-to/region-mappings.md). Mapování oblastí neovlivňují možnost spravovat virtuální počítače v samostatné oblasti z účtu Automation.
 
 Change Tracking a inventář aktuálně nepodporují následující položky:
 
@@ -53,7 +53,7 @@ Change Tracking a inventarizace v současné době dochází k následujícím p
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Change Tracking a inventář se podporují ve všech operačních systémech, které splňují požadavky agenta Log Analytics. Oficiální verze operačního systému jsou Windows Server 2008 SP1 nebo novější a Windows 7 SP1 nebo novější. Tato funkce je také podporována v řadě operačních systémů Linux. Operační systémy podporující Log Analytics najdete v tématu [Přehled agenta Log Analytics](../azure-monitor/platform/log-analytics-agent.md).
+Change Tracking a inventář se podporují ve všech operačních systémech, které splňují požadavky agenta Log Analytics. Oficiální verze operačního systému jsou Windows Server 2008 SP1 nebo novější a Windows 7 SP1 nebo novější. Tato funkce je také podporována v řadě operačních systémů Linux. Seznam podporovaných operačních systémů najdete v tématu [Přehled agenta Log Analytics](../azure-monitor/platform/log-analytics-agent.md).
 
 Informace o požadavcích klienta na TLS 1,2 najdete v tématu [vynucení TLS 1,2 pro Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
@@ -164,7 +164,7 @@ V následující tabulce jsou uvedené limity sledovaných položek na počíta�
 
 | **Prostředek** | **Počtu** |
 |---|---|---|
-|File|500|
+|Soubor|500|
 |Registry|250|
 |Software Windows (nezahrnuje opravy hotfix) |250|
 |Balíčky Linux|1250|

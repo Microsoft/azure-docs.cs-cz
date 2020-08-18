@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3c22a46d22ef4eb717eb686fa295c820c78c934
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: f3402f4ff719752cca6e1d7a4aeeb3b7e12c3e28
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067252"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511138"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -114,7 +114,7 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
         - Obecně nedoporučujeme používat [HDD úrovně Standard disky Azure](../../windows/disks-types.md#standard-hdd).
         - [Azure Premium Storage](../../windows/disks-types.md#premium-ssd) použít pro všechny virtuální počítače s DBMS, na kterých je vzdáleně citlivý výkon.
         - Použijte službu [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/).
-        - Použijte Azure Akcelerátor zápisu pro DBMS protokolové jednotky s M-Series. Akcelerátor zápisu omezení a využití, jak je popsáno v [akcelerátor zápisu](../../linux/how-to-enable-write-accelerator.md).
+        - Použijte Azure Akcelerátor zápisu pro DBMS protokolové jednotky s M-Series. Akcelerátor zápisu omezení a využití, jak je popsáno v [akcelerátor zápisu](../../how-to-enable-write-accelerator.md).
         - Pro různé typy DBMS ověřte [dokumentaci k obecnému systému DBMS související s SAP](./dbms_guide_general.md) a dokumentaci ke konkrétnímu systému DBMS, na kterou se odkazuje obecný dokument.
         - Další informace o SAP HANA najdete v tématu [Konfigurace a operace SAP HANA infrastruktury v Azure](./hana-vm-operations.md).
         - Nepřipojujte disky Azure data k virtuálnímu počítači Azure Linux pomocí ID zařízení. Místo toho použijte univerzálně jedinečný identifikátor (UUID). Buďte opatrní při použití grafických nástrojů k připojení datových disků Azure, například. Zkontrolujte položky v/etc/fstab a ujistěte se, že se k připojení disků používá UUID. Další podrobnosti najdete v [tomto článku](../../linux/attach-disk-portal.md#connect-to-the-linux-vm-to-mount-the-new-disk).

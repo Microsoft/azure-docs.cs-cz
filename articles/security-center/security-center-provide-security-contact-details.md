@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 9bbb4ee4a2fd41ca0605d7dd5d8c66c83d475744
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: dda61b81ee2c357ddac29701832fe4780ea06859
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506463"
+ms.locfileid: "88516295"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>Nastavení e-mailových oznámení pro výstrahy zabezpečení 
 
@@ -42,7 +42,7 @@ Aby nedošlo k únavě výstrah, Security Center omezí objem odchozích e-mail�
 |Stav vydaných verzí:|Všeobecně dostupné|
 |Stanov|Úroveň Free|
 |Požadované role a oprávnění:|**Správce zabezpečení**<br>**Vlastník předplatného** |
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov (částečný)<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov (částečný)<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 
@@ -60,9 +60,9 @@ Můžete posílat e-mailová oznámení jednotlivcům nebo všem uživatelům s 
 1. Pokud chcete u svého předplatného použít kontaktní informace zabezpečení, vyberte **Uložit**.
 
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 Další informace o výstrahách zabezpečení najdete v následujících tématech:
 
 * [Výstrahy zabezpečení – referenční průvodce](alerts-reference.md) – Přečtěte si o výstrahách zabezpečení, které se můžou zobrazit v modulu Azure Security Center ochrany před internetovými útoky.
 * [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Přečtěte si, jak spravovat výstrahy zabezpečení a reagovat na ně.
-- [Automatizace pracovního postupu](workflow-automation.md) – automatizace odpovědí na výstrahy pomocí vlastní logiky oznámení
+* [Automatizace pracovního postupu](workflow-automation.md) – automatizace odpovědí na výstrahy pomocí vlastní logiky oznámení

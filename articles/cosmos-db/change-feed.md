@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 223514e8e873d36f8551e18956aafc0a54243990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cd0ad1553f04a781349a4664fbb408108015632
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119371"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510279"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Kanál změn ve službě Azure Cosmos DB
 
@@ -27,10 +27,10 @@ Tato funkce je v současnosti podporovaná následujícími Azure Cosmos DB rozh
 
 | **Klientské ovladače** | **ROZHRANÍ SQL API** | **Rozhraní API pro Cassandra Azure Cosmos DB** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Rozhraní Gremlin API**|**Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | Ano | Ano | Ano | Ano | No |
-|Java|Ano|Ano|Ano|Ano|No|
-|Python|Ano|Ano|Ano|Ano|No|
-|Uzel/JS|Ano|Ano|Ano|Ano|No|
+| .NET | Ano | Ano | Ano | Ano | Ne |
+|Java|Ano|Ano|Ano|Ano|Ne|
+|Python|Ano|Ano|Ano|Ano|Ne|
+|Uzel/JS|Ano|Ano|Ano|Ano|Ne|
 
 ## <a name="change-feed-and-different-operations"></a>Změna kanálu a různých operací
 
@@ -56,7 +56,7 @@ Pokud je vlastnost TTL (Time to Live) nastavená na položku na hodnotu-1, kaná
 
 ### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Změna kanálu a _etag _lsn nebo _ts
 
-Formát _etag je interní a na něj byste neměli mít závislost, protože se může kdykoli změnit. _ts je změna nebo časové razítko vytvoření. K chronologickému porovnání můžete použít _ts. _lsn je ID dávky, které se přidají jenom pro změny kanálu. představuje ID transakce. Mnoho položek může mít stejné _lsn. ETag v FeedResponse se liší od _etag, které vidíte na položce. _etag je interní identifikátor a používá se pro řízení souběžnosti o verzi položky, zatímco značka ETag se používá pro sekvencování informačního kanálu.
+Formát _etag je interní a na něj byste neměli mít závislost, protože se může kdykoli změnit. _ts je změna nebo časové razítko vytvoření. K chronologickému porovnání můžete použít _ts. _lsn je ID dávky, které se přidají jenom pro změny kanálu. představuje ID transakce. Mnoho položek může mít stejné _lsn. ETag v FeedResponse se liší od _etag, které vidíte na položce. _etag je interní identifikátor, který se používá pro řízení souběžnosti. Vlastnost _etag informuje o verzi položky, zatímco vlastnost ETag se používá pro sekvencování informačního kanálu.
 
 ## <a name="working-with-change-feed"></a>Práce s kanálem změn
 

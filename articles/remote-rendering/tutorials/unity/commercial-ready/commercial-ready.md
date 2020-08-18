@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: e827f7eff707f5a7c467f53eacab6973bff2ef2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0dad78ad76a870ea9f1db28a3cb5ccace5cd804f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076429"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510925"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Kurz: Vytvoření aplikace pro vzdálené vykreslování Azure připravené pro komerční zpracování
 
@@ -23,7 +23,7 @@ V tomto kurzu získáte informace o těchto tématech:
 > * Optimalizace uživatelského prostředí kolem času načítání relace
 > * Okolnosti týkající se latence sítě
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Tento kurz sestaví [kurz: zabezpečení vzdáleného vykreslování Azure a úložiště modelu](../security/security.md).
 
@@ -78,13 +78,13 @@ Další informace najdete na adrese:
 
 Váš případ použití může vyžadovat rychlé spuštění od spuštění aplikace až po 3D model zobrazení. Například během důležité schůzky, kde je důležité mít vše v chodu. Dalším příkladem je 3D model kontrola CAD, kde je pro zajištění efektivita rychlá iterace návrhu mezi aplikací CAD a smíšenou realitou.
 
-Vzdálené vykreslování Azure vyžaduje předzpracované 3D modely a Azure v současné době trvá několik minut, než vytvoří virtuální počítač a nahraje model pro vykreslování. Díky tomu, aby tento proces byl co nejrychlejší a co nejrychleji, je potřeba připravit 3D model dat a relace ARR předem.
+Vzdálené vykreslování Azure vyžaduje předzpracované 3D modely a Azure v současné době trvá několik minut, než vytvoří relaci a nahraje model pro vykreslování. Díky tomu, aby tento proces byl co nejrychlejší a co nejrychleji, je potřeba připravit 3D model dat a relace ARR předem.
 
 Zde sdílené návrhy nejsou aktuálně součástí standardního vzdáleného vykreslování Azure, ale můžete je implementovat sami pro rychlejší spuštění.
 
 ### <a name="initiate-early"></a>Zahájit včas
 
-Aby se zkrátil čas spuštění, nejjednodušší řešení je přesunout vytvoření a inicializaci virtuálního počítače co nejdříve v pracovním postupu uživatele. Jednou z strategií je inicializovat relaci, jakmile bude známo, že bude potřeba relace ARR. Tato akce bude často pokaždé, když uživatel začne nahrávat 3D model do Azure Blob Storage pro použití se vzdáleným vykreslováním Azure. V takovém případě je možné spustit vytvoření relace a inicializaci virtuálního počítače ve stejnou dobu jako 3D model nahrání tak, aby oba pracovní proudy běžely paralelně.
+Aby se zkrátil čas spuštění, nejjednodušší řešení je přesunout vytváření a inicializaci relace co nejdříve v pracovním postupu uživatele. Jednou z strategií je inicializovat relaci, jakmile bude známo, že bude potřeba relace ARR. Tato akce bude často pokaždé, když uživatel začne nahrávat 3D model do Azure Blob Storage pro použití se vzdáleným vykreslováním Azure. V takovém případě je možné vytvořit a inicializovat vytvoření relace ve stejnou dobu jako 3D model nahrávání tak, aby oba pracovní proudy běžely paralelně.
 
 Tento proces se dá zjednodušit tím, že zajistíte, aby zvolené vstupní a výstupní kontejnery Azure Blob Storage ve stejném oblastním datovém centru jako relace vzdáleného vykreslování Azure.
 
@@ -92,41 +92,41 @@ Tento proces se dá zjednodušit tím, že zajistíte, aby zvolené vstupní a v
 
 Pokud víte, že máte budoucí potřebu vzdáleného vykreslování Azure, můžete naplánovat konkrétní datum a čas, abyste spustili relaci vzdáleného vykreslování Azure.
 
-Tato možnost může být nabízena prostřednictvím webového portálu, kde mohou uživatelé nahrát 3D model a naplánovat čas jejich zobrazení v budoucnu. To by bylo také dobrým místem pro dotazování na jiné předvolby, jako je například Standard nebo Premium Render. Vykreslování na úrovni Premium může být vhodné, pokud si přejete, aby se zobrazila směs assetů, kde je ideální velikost, která je nevhodná pro automatické určení nebo nutnost zajistit, aby v oblasti Azure byly dostupné virtuální počítače v zadaném čase.
+Tato možnost může být nabízena prostřednictvím webového portálu, kde mohou uživatelé nahrát 3D model a naplánovat čas jejich zobrazení v budoucnu. To by bylo také dobrým místem pro dotazování na jiné předvolby, jako je například [*Standard*](../../../reference/vm-sizes.md) nebo [*Premium*](../../../reference/vm-sizes.md) Render. Vykreslování na úrovni *Premium* může být vhodné, pokud si přejete, aby se zobrazila směs assetů, kde je ideální velikost, která je nevhodná pro automatické určení nebo nutnost zajistit, aby v oblasti Azure byly dostupné virtuální počítače v zadaném čase.
 
 ### <a name="session-pooling"></a>Sdružování relací
 
 V nejnáročnějších situacích je další možností sdružování relací, kdy se jedna nebo víc relací vytvoří a inicializuje v tuto dobu. Tím se vytvoří fond relací pro okamžité použití žádajícím uživatelem. Nevýhodou tohoto přístupu znamená, že jakmile se virtuální počítač inicializuje, spustí se fakturace za službu. Je možné, že nebudete nákladově efektivní udržovat fond relací neustále spuštěný, ale na základě analýz je možné předpovědět zátěže ve špičce nebo je můžete v kombinaci se strategií plánování uvedenou výše odhadnout, až budou relace potřeba, a odpovídajícím způsobem zvýšit a snížit zatížení fondu relací.
 
-Tato strategie také pomáhá s optimalizací volby mezi relacemi Standard a Premium, protože by bylo mnohem rychlejší přepínat mezi těmito dvěma typy v rámci jedné relace uživatele, jako je například případ, kdy se jako první zobrazuje model složitosti Premium, následovaný ten, který může fungovat v rámci standardu Standard. Pokud jsou tyto uživatelské relace poměrně dlouhé, může dojít k výraznému snížení nákladů.
+Tato strategie také pomáhá s optimalizací volby mezi relacemi *Standard* a *Premium* , protože by bylo mnohem rychlejší přepínat mezi těmito dvěma typy v rámci jedné relace uživatele, jako je například případ, kdy se jako první zobrazuje model složitosti *Premium* , následovaný ten, který může fungovat v rámci *standardu Standard*. Pokud jsou tyto uživatelské relace poměrně dlouhé, může dojít k výraznému snížení nákladů.
 
 Další informace o relacích vzdáleného vykreslování Azure najdete v těchto případech:
 
 * [Relace Remote Renderingu](https://docs.microsoft.com/azure/remote-rendering/concepts/sessions)
 
-## <a name="standard-vs-premium-vm-routing-strategies"></a>Strategie směrování virtuálních počítačů Standard vs. Premium
+## <a name="standard-vs-premium-server-size-routing-strategies"></a>Strategie směrování pro velikost Standard vs. Premium Server
 
-Aby bylo možné vytvořit virtuální počítač Standard nebo Premium, je třeba vybrat, jestli se má při navrhování uživatelského prostředí a komplexního systému jednat o výzvu. I když je možnost používat jenom relace Premium, standardní relace využívají mnohem méně výpočetních prostředků Azure a jsou levnější než Premium. To poskytuje silnou motivaci k používání standardních relací, kdykoli je to možné, a v případě potřeby používejte jenom Premium.
+Pokud potřebujete vybrat, jestli se má vytvořit server *úrovně Standard* nebo *Premium* , zobrazí se výzva při navrhování uživatelského prostředí a komplexního systému. I když je možnost používat jenom relace *Premium* , *standardní* relace využívají mnohem méně výpočetních prostředků Azure a jsou levnější než *Premium*. To poskytuje silnou motivaci k používání *standardních* relací, kdykoli je to možné, a v případě potřeby používejte jenom *Premium* .
 
 Tady sdílíme několik možností, od nejmenších po nejucelenější, aby bylo možné spravovat možnosti relace.
 
 ### <a name="use-only-standard-or-premium"></a>Použít pouze Standard nebo Premium
 
-Pokud jste si jistí, že vaše požadavky *vždycky* spadají pod prahovou hodnotu mezi standardem a Premium, bude toto rozhodnutí výrazně jednodušší. Stačí použít standardní. Mějte na paměti, že dopad na činnost koncového uživatele je významný, pokud je celková složitost načtených assetů pro standardní relaci odmítnutá jako příliš složitá.
+Pokud jste si jistí, že vaše požadavky *vždycky* spadají pod prahovou hodnotu mezi *standardem* a *Premium*, bude toto rozhodnutí výrazně jednodušší. Stačí použít *standardní*. Mějte na paměti, že dopad na činnost koncového uživatele je významný, pokud je celková složitost načtených assetů pro *standardní* relaci odmítnutá jako příliš složitá.
 
-Podobně platí, že pokud očekáváte, že velká část použití překročí prahovou hodnotu mezi standardem a Premium, nebo když náklady není klíčovým faktorem v případu použití, pak vždy zvolte možnost Premium je také možností, jak ji udržet jednoduché.
+Podobně platí, že pokud očekáváte, že velká část použití překročí prahovou hodnotu mezi *standardem* a *Premium*, nebo když náklady není klíčovým faktorem v případu použití, pak vždy zvolte možnost *Premium* je také možností, jak ji udržet jednoduché.
 
 ### <a name="ask-the-user"></a>Požádat uživatele
 
-Pokud chcete podporovat obě úrovně Standard i Premium, nejjednodušší způsob, jak určit typ relace virtuálního počítače pro vytvoření instance, je požádat uživatele, aby si vybral 3D prostředky, které se mají zobrazit. Výzvou k tomuto přístupu je to, že vyžaduje, aby uživatel rozuměl složitosti 3D prostředků nebo dokonce i více prostředků, které se budou zobrazovat. Obvykle to z tohoto důvodu nedoporučujeme. Pokud uživatel vybere možnost nesprávného a zvolíte možnost standard, výsledné uživatelské prostředí by mohlo být v nevhodném okamžiku ohroženo.
+Pokud chcete podporovat obě *úrovně Standard* i *Premium*, nejjednodušší způsob, jak určit typ relace, která se má vytvořit, je požádat uživatele, aby si vybral 3D prostředky, které se mají zobrazit. Výzvou k tomuto přístupu je to, že vyžaduje, aby uživatel rozuměl složitosti 3D prostředků nebo dokonce i více prostředků, které se budou zobrazovat. Obvykle to z tohoto důvodu nedoporučujeme. Pokud uživatel vybere možnost nesprávného a zvolíte možnost *Standard*, výsledné uživatelské prostředí by mohlo být v nevhodném okamžiku ohroženo.
 
 ### <a name="analyze-the-3d-model"></a>Analyzovat 3D model
 
-Dalším poměrně jednoduchým přístupem je analýza složitosti vybraných 3D prostředků. Je-li složitost modelu pod prahovou hodnotou pro standard, iniciuje standardní relaci, jinak inicializuje relaci Premium. V tomto případě se jedná o to, že jedna relace může být nakonec použita k zobrazení více modelů, které mohou překročit prahovou hodnotu složitosti standardní relace. Výsledkem je nemožnost bezproblémového použití stejné relace pro posloupnost různých 3D prostředků.
+Dalším poměrně jednoduchým přístupem je analýza složitosti vybraných 3D prostředků. Je-li složitost modelu pod prahovou hodnotou pro *Standard*, iniciuje *standardní* relaci, jinak inicializuje relaci *Premium* . V tomto případě se jedná o to, že jedna relace může být nakonec použita k zobrazení více modelů, které mohou překročit prahovou hodnotu složitosti *standardní* relace. Výsledkem je nemožnost bezproblémového použití stejné relace pro posloupnost různých 3D prostředků.
 
 ### <a name="automatic-switching"></a>Automatické přepínání
 
-Automatické přepínání mezi relacemi Standard a Premium může mít spoustu smyslů v rámci návrhu systému, který zahrnuje i sdružování relací. Tato strategie umožňuje další optimalizaci využití prostředků. Když uživatel načte modely pro zobrazení, určí se složitost a ve službě sdružování relací se vyžádá správná velikost relace.
+Automatické přepínání mezi relacemi *Standard* a *Premium* může mít spoustu smyslů v rámci návrhu systému, který zahrnuje i sdružování relací. Tato strategie umožňuje další optimalizaci využití prostředků. Když uživatel načte modely pro zobrazení, určí se složitost a ve službě sdružování relací se vyžádá správná velikost relace.
 
 ## <a name="working-with-networks"></a>Práce se sítěmi
 
@@ -213,7 +213,7 @@ Na základě očekávaného případu použití Určete nejvhodnější místo n
 
 Pokud má váš případ použití vzory použití, ve kterých se stejný 3D prostředek dá nahrát víckrát, pak back-endu bude sledovat, které modely už jsou převedené pro použití s ARR, takže model je předem zpracovaný jenom jednou pro několik budoucích výběrů. Příkladem přezkoumání návrhu je, kde má tým přístup k běžnému původnímu prostředku 3D. U každého člena týmu se očekává, že v určitém okamžiku ve svém pracovním proudu bude model kontrolovat pomocí ARR. Pouze první zobrazení by pak aktivovalo krok před zpracováním. Následující zobrazení budou vyhledávat přidružený soubor po zpracování v kontejneru výstupu SAS.
 
-V závislosti na případu použití pravděpodobně budete chtít určit a potenciálně zachovat správné velikosti virtuálních počítačů vzdáleného vykreslování Azure (Standard nebo Premium) pro každý 3D prostředek nebo skupinu assetů, které se ve stejné relaci budou zobrazovat společně.  
+V závislosti na případu použití pravděpodobně budete chtít určit a potenciálně zachovat správnou velikost serveru Azure Remote Render ( *Standard* nebo *Premium*) pro každý 3D prostředek nebo skupinu assetů, které se ve stejné relaci budou zobrazovat společně.  
 
 ### <a name="on-device-model-selection-list"></a>Seznam pro výběr modelu na zařízení
 
@@ -269,7 +269,7 @@ Je důležité sestavit komplexní řešení vzdáleného vykreslování Azure o
 * Distribuované útoky s cílem odepření služeb (DDoS)
 * Detekce hrozeb
 * Sítě VPN a zabezpečené sítě
-* brány firewall,
+* Brány firewall
 * Správa certifikátů a tajných klíčů
 * Ohrožení zabezpečení a zneužití aplikace
 

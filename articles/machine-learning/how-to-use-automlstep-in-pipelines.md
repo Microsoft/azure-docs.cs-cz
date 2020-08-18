@@ -11,19 +11,19 @@ manager: cgronlun
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 20a85c17ccd4167b29e167c55df1bd8a8cc4d56e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: c2fc0b0bc1b59bcb3fa4a84235135d9b8ff1fc27
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185651"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510245"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Použití automatizovaného ML v kanálu Azure Machine Learning v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Funkce automatizovaného škálování na základě Azure Machine Learning vám pomůže zjistit modely s vysokým výkonem bez nutnosti opětovné implementace každého možného přístupu. V kombinaci s Azure Machine Learning kanály můžete vytvářet nasaditelné pracovní postupy, které umožňují rychle zjistit algoritmus, který je pro vaše data nejvhodnější. V tomto článku se dozvíte, jak efektivně připojit krok přípravy dat k automatizovanému kroku ML. Automatizovaná ML může rychle zjistit algoritmus, který je pro vaše data nejvhodnější, a přitom vás zavede na cestách, aby MLOps a modeloval provozní životní cyklus s kanály.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -39,7 +39,7 @@ Existuje několik podtříd třídy `PipelineStep` . Kromě toho se v `AutoMLSte
 
 Upřednostňovaným způsobem, jak zpočátku přesunout data _do_ kanálu ml, je `Dataset` objekty. Chcete-li přesunout data _mezi_ kroky, upřednostňovaným způsobem je `PipelineData` objekty. Chcete-li použít s `AutoMLStep` , `PipelineData` objekt musí být transformován do `PipelineOutputTabularDataset` objektu. Další informace najdete v tématu [vstupní a výstupní data z kanálů ml](how-to-move-data-in-out-of-pipelines.md).
 
-`AutoMLStep`Je nakonfigurován prostřednictvím `AutoMLConfig` objektu. `AutoMLConfig`je flexibilní třída, jak je popsáno v tématu [Konfigurace automatizované experimenty ml v Pythonu](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings). 
+`AutoMLStep`Je nakonfigurován prostřednictvím `AutoMLConfig` objektu. `AutoMLConfig` je flexibilní třída, jak je popsáno v tématu [Konfigurace automatizované experimenty ml v Pythonu](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings). 
 
 `Pipeline`Spuštění v `Experiment` . Kanál `Run` má pro každý krok podřízenou položku `StepRun` . Výstupy automatizovaného ML `StepRun` jsou metriky školení a model nejvyšší výkon.
 
@@ -250,7 +250,7 @@ dataprep_step = PythonScriptStep(
 
 Konfigurace postupu automatizovaného kanálu se provádí s `AutoMLConfig` třídou. Tato flexibilní třída je popsaná v tématu [Konfigurace automatizované experimenty ml v Pythonu](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train). Vstupní a výstupní data jsou jediné aspekty konfigurace, které vyžadují zvláštní pozornost v kanálu ML. Vstupní a výstupní `AutoMLConfig` informace pro v kanálech jsou podrobněji popsány níže. Kromě dat je výhodou kanálů ML možnost použít pro různé kroky různé výpočetní cíle. Můžete se rozhodnout, že budete používat výkonnější `ComputeTarget` jenom pro proces automatizovaného ml. Uděláte to jednoduše tak, že přiřadíte výkonnějšímu `RunConfiguration` `AutoMLConfig` `run_configuration` parametru objektu.
 
-### <a name="send-data-to-automlstep"></a>Odeslat data do`AutoMLStep`
+### <a name="send-data-to-automlstep"></a>Odeslat data do `AutoMLStep`
 
 Vstupní data v kanálu ML musí být `Dataset` objekt. Nejvyšší způsob provádění je poskytnout vstupní data ve formě `PipelineOutputTabularDataset` objektů. Vytvoříte objekt typu s `parse_parquet_files()` nebo `parse_delimited_files()` na `PipelineOutputFileDataset` , například `prepped_data_path` objekt.
 
@@ -273,10 +273,10 @@ Porovnávání dvou technik:
 | Technika | Výhody a nevýhody | 
 |-|-|
 |`PipelineOutputTabularDataset`| Vyšší výkon | 
-|| Fyzická trasa z`PipelineData` | 
+|| Fyzická trasa z `PipelineData` | 
 || Po spuštění kanálu nejsou data trvalá. |
 || [Postup ukazující na Poznámkový blok `PipelineOutputTabularDataset`](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
-| Registrovat`Dataset` | Nižší výkon |
+| Registrovat `Dataset` | Nižší výkon |
 | | Může být vygenerováno mnoha způsoby | 
 | | Data se přetrvají a jsou viditelná v celém pracovním prostoru. |
 | | [Poznámkový blok znázorňující registrovanou `Dataset` techniku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/continuous-retraining/auto-ml-continuous-retraining.ipynb)
@@ -337,17 +337,17 @@ Fragment kódu ukazuje idiom, který se běžně používá s `AutoMLConfig` . A
 
 `automl_settings`Slovník se předává `AutoMLConfig` konstruktoru jako kwargs. Ostatní parametry nejsou komplexní:
 
-- `task`je nastaven na `classification` pro tento příklad. Další platné hodnoty jsou `regression` a`forecasting`
-- `path`a `debug_log` popište cestu k projektu a místní soubor, do kterého budou zapsány informace o ladění. 
-- `compute_target`je dříve definovaná `compute_target` , to znamená, že v tomto příkladu je levný počítač založený na procesoru. Pokud používáte zařízení s hloubkovým učením v AutoML, měli byste změnit cíl výpočetní služby na bázi GPU.
-- `featurization`je nastaven na `auto` . Další podrobnosti najdete v části [Featurization dat](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) v dokumentu konfigurace AUTOMATIZOVANÉho ml. 
-- `training_data`je nastaven na `PipelineOutputTabularDataset` objekty vytvořené z výstupu kroku Příprava dat. 
-- `label_column_name`Určuje, který sloupec má zajímat předpověď. 
+- `task` je nastaven na `classification` pro tento příklad. Další platné hodnoty jsou `regression` a `forecasting`
+- `path` a `debug_log` popište cestu k projektu a místní soubor, do kterého budou zapsány informace o ladění. 
+- `compute_target` je dříve definovaná `compute_target` , to znamená, že v tomto příkladu je levný počítač založený na procesoru. Pokud používáte zařízení s hloubkovým učením v AutoML, měli byste změnit cíl výpočetní služby na bázi GPU.
+- `featurization` je nastaven na `auto` . Další podrobnosti najdete v části [Featurization dat](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) v dokumentu konfigurace AUTOMATIZOVANÉho ml. 
+- `training_data` je nastaven na `PipelineOutputTabularDataset` objekty vytvořené z výstupu kroku Příprava dat. 
+- `label_column_name` Určuje, který sloupec má zajímat předpověď. 
 
 `AutoMLStep`Sám o sobě použije `AutoMLConfig` a má jako výstupy `PipelineData` objekty vytvořené pro uchování metrik a data modelu. 
 
 >[!Important]
-> Pokud používáte, musíte nastavit `enable_default_model_output` a `enable_default_metrics_output` na `False` `AutoMLStep` .
+> Je nutné nastavit `enable_default_model_output` a `enable_default_metrics_output`  na `True` pouze v případě, že používáte  `AutoMLStepRun` .
 
 V tomto příkladu proces automatizovaného ML provede křížové ověřování v `training_data` . Můžete řídit počet křížových ověření s `n_cross_validations` argumentem. Pokud jste již data školení rozdělili jako součást kroků přípravy dat, můžete nastavit `validation_data` vlastní `Dataset` .
 

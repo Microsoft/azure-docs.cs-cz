@@ -1,20 +1,20 @@
 ---
-title: 'Rychlý Start: vytvoření detekce objektů pomocí sady Custom Vision SDK'
-description: 'Rychlý Start: vytvoření projektu, přidání značek, nahrání obrázků, výuka projektu a detekce objektů pomocí Custom Vision SDK.'
+title: 'Rychlý Start: vytvoření detekce objektů pomocí Custom Vision klientské knihovny'
+description: 'Rychlý Start: vytvoření projektu, přidání značek, nahrání obrázků, výuka projektu a rozpoznávání objektů pomocí klientské knihovny Custom Vision.'
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 04/27/2020
+ms.date: 08/17/2020
 ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 9febd3a242834a930beae5130a33d230e9e83b6b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: c6b40fe7abe0b7ad4b6993b55206eabc5b4681d0
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875962"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511280"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk"></a>Rychlý Start: vytvoření projektu pro detekci objektů pomocí sady Custom Vision SDK
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e65655f1809c6badc50e39a2a5e932516ef99d2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681243"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509837"
 ---
 # <a name="use-the-session-management-rest-api"></a>Použití rozhraní REST API pro správu relací
 
@@ -71,15 +71,15 @@ Tento příkaz vytvoří relaci. Vrátí ID nové relace. Budete potřebovat ID 
 
 **Text žádosti:**
 
-* maxLeaseTime (TimeSpan): hodnota časového limitu v případě, že se virtuální počítač automaticky vyřadí z provozu
+* maxLeaseTime (TimeSpan): hodnota časového limitu v případě, že se relace automaticky vyřadí z provozu
 * modely (pole): adresy URL kontejneru assetů k přednačtení
-* velikost (String): velikost virtuálního počítače (**"Standard"** nebo **"Premium"**). Podívejte se na určitá [omezení velikosti virtuálních počítačů](../reference/limits.md#overall-number-of-polygons).
+* velikost (String): velikost serveru, která se má konfigurovat ([**"Standard"**](../reference/vm-sizes.md) nebo [**"Premium"**](../reference/vm-sizes.md)). Podívejte se na určitá [omezení velikosti](../reference/limits.md#overall-number-of-polygons).
 
 **Požadavků**
 
 | Stavový kód | Datová část JSON | Komentáře |
 |-----------|:-----------|:-----------|
-| 202 | -sessionId: GUID | Úspěch |
+| 202 | -sessionId: GUID | Success |
 
 ### <a name="example-script-create-a-session"></a>Ukázkový skript: vytvoření relace
 
@@ -130,13 +130,13 @@ Tento příkaz aktualizuje parametry relace. V současné době můžete pouze r
 
 **Text žádosti:**
 
-* maxLeaseTime (TimeSpan): hodnota časového limitu v případě, že se virtuální počítač automaticky vyřadí z provozu
+* maxLeaseTime (TimeSpan): hodnota časového limitu v případě, že se relace automaticky vyřadí z provozu
 
 **Požadavků**
 
 | Stavový kód | Datová část JSON | Komentáře |
 |-----------|:-----------|:-----------|
-| 200 | | Úspěch |
+| 200 | | Success |
 
 ### <a name="example-script-update-a-session"></a>Ukázkový skript: aktualizace relace
 
@@ -258,7 +258,7 @@ Tento příkaz zastaví relaci. Přidělený virtuální počítač se po uplynu
 
 | Stavový kód | Datová část JSON | Komentáře |
 |-----------|:-----------|:-----------|
-| 204 | | Úspěch |
+| 204 | | Success |
 
 ### <a name="example-script-stop-a-session"></a>Ukázkový skript: zastavení relace
 

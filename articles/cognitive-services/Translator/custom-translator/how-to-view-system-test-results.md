@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 3361241bf0a330abc18701f93460208b8804a7dc
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994255"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509639"
 ---
 # <a name="view-system-test-results"></a>Zobrazení výsledků systémových testů
 
@@ -54,11 +54,11 @@ Kliknutím na odkaz Stáhnout překlady Stáhněte soubor zip. PSČ obsahuje str
 
 Stažený archiv zip obsahuje tři soubory.
 
-1.  **vlastní. mt. txt:** Tento soubor obsahuje překlady strojových vět zdrojové jazykové verze v cílovém jazyce, který provede model vyškolený daty uživatele.
+1.  **custom.mt.txt:** Tento soubor obsahuje překlady strojových vět zdrojové jazykové verze v cílovém jazyce, který provede model vyškolený daty uživatele.
 
-2.  **ref. txt:** Tento soubor obsahuje překlady uživatelsky zadaných překladů zdrojových vět v cílovém jazyce.
+2.  **ref.txt:** Tento soubor obsahuje překlady uživatelsky zadaných překladů zdrojových vět v cílovém jazyce.
 
-3.  **zdrojový. txt:** Tento soubor obsahuje ve zdrojovém jazyce věty.
+3.  **source.txt:** Tento soubor obsahuje ve zdrojovém jazyce věty.
 
     ![Výsledky staženého systému testů](media/how-to/how-to-download-system-test.png)
 
@@ -102,6 +102,6 @@ Aktualizace nastavení nasazení:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Začněte používat nasazený vlastní model překladu prostřednictvím [překladatele V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- Začněte používat nasazený vlastní model překladu přes [Microsoft Translator text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
 - Naučte se [Spravovat nastavení](how-to-manage-settings.md) , abyste mohli sdílet svůj pracovní prostor, spravovat klíč předplatného.
 - Naučte [se migrovat pracovní prostor a projekt](how-to-migrate.md) z [centra Microsoft Translator](https://hub.microsofttranslator.com) .

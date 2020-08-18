@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ad6bbc1d3c20659441b8b062898526471f4d713a
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827414"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510228"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -77,7 +77,7 @@ V celém dokumentu se používají tyto výrazy:
 
 Některá dokumentace Microsoftu popisuje různé scénáře různých scénářů, a to hlavně v případě konfigurací s vysokou dostupností systému DBMS. V případě dokumentů souvisejících s SAP se scénář mezi místními systémy doloží na připojení typu Site-to-site nebo Private [ExpressRoute](https://azure.microsoft.com/services/expressroute/) a na šířku SAP, která je distribuována mezi místními a Azure.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 V úlohách SAP v Azure jsou k dispozici další články. Začněte s [úlohou SAP v Azure:](./get-started.md) začněte a pak zvolte svou oblast zájmu.
 
 Následující poznámky SAP souvisejí s SAP v Azure v souvislosti s oblastí pokrytou v tomto dokumentu.
@@ -221,7 +221,7 @@ V případě služby Premium Storage existují následující možnosti ukládá
 
 Pro prémiové úložiště doporučujeme, abyste pro **datové soubory** databáze SAP používali ukládání pro čtení a nezvolili jste **žádné ukládání do mezipaměti pro disky souborů protokolu**.
 
-Pro nasazení řady M-Series doporučujeme, abyste pro nasazení DBMS používali Azure Akcelerátor zápisu. Podrobnosti, omezení a nasazení služby Azure Akcelerátor zápisu najdete v tématu [povolení akcelerátor zápisu](../../windows/how-to-enable-write-accelerator.md).
+Pro nasazení řady M-Series doporučujeme, abyste pro nasazení DBMS používali Azure Akcelerátor zápisu. Podrobnosti, omezení a nasazení služby Azure Akcelerátor zápisu najdete v tématu [povolení akcelerátor zápisu](../../how-to-enable-write-accelerator.md).
 
 
 ### <a name="azure-nonpersistent-disks"></a>Netrvalé disky Azure

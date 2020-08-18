@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: c43ed412116d0cb30f7d06ba65467fd529f367ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcff550b5411ac00dc54d2103278812f32f56543
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552701"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509973"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>Použití rozhraní API front-endu Azure pro ověřování
 
@@ -60,11 +60,11 @@ Informace o účtu lze získat z portálu, jak je popsáno v odstavci [načtení
 
 ## <a name="azure-frontend"></a>Azure front-end
 
-Příslušné třídy jsou ```AzureFrontend``` a ```AzureSession``` . ```AzureFrontend```se používá ke správě účtů a funkcím na úrovni účtu, mezi které patří: převod assetů a vytváření relací vykreslování. ```AzureSession```se používá pro funkce na úrovni relace a zahrnuje: aktualizace relace, dotazy, obnovení a vyřazení z provozu.
+Příslušné třídy jsou ```AzureFrontend``` a ```AzureSession``` . ```AzureFrontend``` se používá ke správě účtů a funkcím na úrovni účtu, mezi které patří: převod assetů a vytváření relací vykreslování. ```AzureSession``` se používá pro funkce na úrovni relace a zahrnuje: aktualizace relace, dotazy, obnovení a vyřazení z provozu.
 
 Každý otevřený/vytvořený ```AzureSession``` bude mít odkaz na front-end, který je vytvořil. Chcete-li provést čistě vypnutí, je nutné zrušit přidělení všech relací před tím, než dojde k uvolnění front-endu.
 
-Zrušení přidělení relace nezastaví virtuální počítač v Azure, `AzureSession.StopAsync` musí být explicitně volaný.
+Zrušení přidělení relace nezastaví Server v Azure, `AzureSession.StopAsync` musí se volat explicitně.
 
 Jakmile je relace vytvořena a její stav byl označen jako připravený, může se připojit k modulu runtime vzdáleného vykreslování pomocí `AzureSession.ConnectToRuntime` .
 

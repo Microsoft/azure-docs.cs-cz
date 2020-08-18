@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2cb143e08e3901b1d0ab7181df68f06887069012
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563261"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509276"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -105,7 +105,7 @@ Pokud vám tyto dva kroky nepomohly, je nutné zjistit, zda jsou snímky videa p
 
 **Model překračuje limity vybraného virtuálního počítače, konkrétně maximální počet mnohoúhelníků:**
 
-Viz [omezení velikosti určitých virtuálních počítačů](../reference/limits.md#overall-number-of-polygons).
+Podívejte se na konkrétní [omezení velikosti serveru](../reference/limits.md#overall-number-of-polygons).
 
 **Model není uvnitř frustum kamery:**
 
@@ -148,7 +148,7 @@ Vzdálené vykreslování Azure se zapojte do kanálu vykreslování Unity a pro
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Po načtení modelu se vykresluje šachovnicový vzor.
 
-Pokud vykreslený obrázek vypadá takto: ![ šachovnice ](../reference/media/checkerboard.png) narazí na [omezení mnohoúhelníku pro standardní velikost virtuálního počítače](../reference/vm-sizes.md). Pokud chcete zmírnit, buď přepněte na velikost **virtuálního počítače úrovně Premium** , nebo snižte počet viditelných mnohoúhelníků.
+Pokud vykreslený obrázek vypadá takto: ![ šachovnice ](../reference/media/checkerboard.png) narazí na [omezení mnohoúhelníku pro standardní velikost konfigurace](../reference/vm-sizes.md). Chcete-li zmírnit, buď přepněte na velikost konfigurace **Premium** , nebo snižte počet viditelných mnohoúhelníků.
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Vykreslený obraz v Unity je souběžný
 

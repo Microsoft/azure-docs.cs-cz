@@ -3,12 +3,12 @@ title: Preview – informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí. Tato funkce je ve verzi Preview.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: dc81d22677eeab16ae06e782c5ae47c121af04c6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003521"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509871"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Vysvětlení Azure Policy pro clustery Kubernetes (Preview)
 
@@ -73,19 +73,19 @@ Před instalací doplňku Azure Policy nebo povolením jakékoli funkce služby 
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Kubernetes Service provider
      az provider register --namespace Microsoft.ContainerService
-   
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
-   
+
      # Feature register: enables installing the add-on
      az feature register --namespace Microsoft.ContainerService --name AKS-AzurePolicyAutoApprove
-     
+
      # Use the following to confirm the feature has registered
      az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzurePolicyAutoApprove')].   {Name:name,State:properties.state}"
-     
+
      # Once the above shows 'Registered' run the following to propagate the update
      az provider register -n Microsoft.ContainerService
      ```
@@ -135,7 +135,7 @@ Po dokončení výše uvedených požadovaných kroků nainstalujte doplněk Azu
      <a name="migrate-from-v1"></a>
      > [!NOTE]
      > Pokud se tlačítko **Povolit doplněk** zobrazí šedě, předplatné ještě není přidané do verze Preview. Pokud je povolené tlačítko **zakázat doplněk** a zobrazí se zpráva s upozorněním na migraci v2, nainstaluje se doplněk V1 a před přiřazením definic zásad v2 se musí odebrat. _Nepoužívané_ doplňky V1 se automaticky nahradí doplňkem v2 od 24. srpna 2020. Je potřeba přiřadit nové verze V2 definic zásad. Chcete-li upgradovat nyní, postupujte následovně:
-     > 
+     >
      > 1. Ověřte, jestli má cluster AKS nainstalovaný doplněk V1 na stránce **zásady (Preview)** v clusteru AKS a jestli má "aktuální cluster používá Azure Policy doplněk v1...". Zpráva.
      > 1. [Odeberte doplněk](#remove-the-add-on-from-aks).
      > 1. Kliknutím na tlačítko **Povolit doplněk** nainstalujete verzi v2 doplňku.
@@ -185,16 +185,16 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-     
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
    - Azure PowerShell
-   
+
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Policy provider
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
@@ -205,7 +205,7 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
 
 1. Váš cluster Kubernetes je povolený pro Azure ARC. Další informace najdete v tématu připojení [clusteru Kubernetes ke službě Azure ARC](../../../azure-arc/kubernetes/connect-cluster.md).
 
-1. Máte plně kvalifikované ID prostředku Azure pro cluster Kubernetes s povoleným ARC Azure. 
+1. Máte plně kvalifikované ID prostředku Azure pro cluster Kubernetes s povoleným ARC Azure.
 
 1. Otevřete porty pro doplněk. Azure Policy doplněk používá tyto domény a porty k načtení definic zásad a přiřazení a nahlášení kompatibility clusteru zpátky do Azure Policy.
 
@@ -226,7 +226,7 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
 
    - Azure PowerShell
 
-     ```azure powershell-interactive
+     ```azurepowershell-interactive
      $sp = New-AzADServicePrincipal -Role "Policy Insights Data Writer (Preview)" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
 
      @{ appId=$sp.ApplicationId;password=[System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret));tenant=(Get-AzContext).Tenant.Id } | ConvertTo-Json
@@ -289,16 +289,16 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-     
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
    - Azure PowerShell
-   
+
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Policy provider
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
@@ -310,7 +310,7 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
      ```bash
      # Get the kube-apiserver pod name
      kubectl get pods -n kube-system
-   
+
      # Find the aadClientID value
      kubectl exec <kube-apiserver pod name> -n kube-system cat /etc/kubernetes/azure.json
      ```
@@ -393,21 +393,20 @@ V následujících krocích najdete předdefinované definice zásad pro správu
 
 1. Nastavte **obor** na skupinu pro správu, předplatné nebo skupinu prostředků clusteru Kubernetes, kde se bude přiřazení zásady vztahovat.
 
-   > [!NOTE]    
+   > [!NOTE]
    > Při přiřazování Azure Policy pro definici Kubernetes musí **obor** zahrnovat prostředek clusteru. V případě clusteru AKS Engine musí být **obor** skupinou prostředků clusteru.
 
-1. Udělte přiřazení zásad **název** a **Popis** , který můžete použít k jeho snadnému identifikaci.    
+1. Udělte přiřazení zásad **název** a **Popis** , který můžete použít k jeho snadnému identifikaci.
 
-1. Nastavte [vynucování zásad](./assignment-structure.md#enforcement-mode) na jednu z hodnot.    
-   níže.   
+1. Nastavte [vynucování zásady](./assignment-structure.md#enforcement-mode) na jednu z následujících hodnot.
 
-   - **Povoleno** – vynutilo zásady v clusteru. Žádosti o přístup Kubernetes s porušením jsou odepřeny.    
+   - **Povoleno** – vynutilo zásady v clusteru. Žádosti o přístup Kubernetes s porušením jsou odepřeny.
 
    - **Zakázáno** – neuplatněte zásady v clusteru. Žádosti o přístup Kubernetes s porušením nejsou odepřeny. Výsledky hodnocení dodržování předpisů jsou stále k dispozici. Při zavedení nových definic zásad do spuštěných clusterů je možnost _disabled_ užitečná pro testování definice zásady, protože žádosti o přístup s porušením nejsou zamítnuté.
 
-1. Vyberte **Další**. 
+1. Vyberte **Další**.
 
-1. Nastavení **hodnot parametrů** 
+1. Nastavení **hodnot parametrů**
 
    - Pokud chcete vyloučit obory názvů Kubernetes ze vyhodnocení zásad, zadejte seznam oborů názvů v **vyloučeních oboru názvů**parametrů. Doporučuje se vyloučit: _Kube-System_, _gatekeeper-System_a _Azure-ARC_.
 

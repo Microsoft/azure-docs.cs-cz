@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26179dd2491a8b8cbc2ef3eb0ad66fa61722d413
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 82dbb73da06097407d91f23d4d372aaa4cc76e99
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525258"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510891"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP
 
@@ -59,7 +59,7 @@ Velikost stránky je obvykle 2048 KB. Podrobnosti najdete v článku [velké str
 
 ## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>Doporučení k VIRTUÁLNÍm počítačům a diskovým strukturám pro nasazení SAP pomocného mechanismu
 
-Pro všechny typy virtuálních počítačů uvedené v [poznámce SAP Support](https://launchpad.support.sap.com/#/notes/1928533) se podporuje SAP Poznámkový pro aplikace SAP #1928533 typické typy virtuálních počítačů používané pro databázové servery SAP pomocného mechanismu podpory střední velikosti zahrnují Esv3.  Velké databáze s více terabajty můžou využívat typy virtuálních počítačů řady M-Series. Zvýšení výkonu zápisu na disk protokolu transakcí SAP pomocného protokolu se může zlepšit povolením Akcelerátor zápisu řady M-Series. Akcelerátor zápisu by se měla pečlivě testovat se SAP pomocným mechanismem SAP v důsledku způsobu, jakým protokol SAP pomocného programu provádí zápis  Přečtěte [si poznámku k podpoře SAP #2816580](../../windows/how-to-enable-write-accelerator.md) a zvažte spuštění testu výkonnosti.  
+Pro všechny typy virtuálních počítačů uvedené v [poznámce SAP Support](https://launchpad.support.sap.com/#/notes/1928533) se podporuje SAP Poznámkový pro aplikace SAP #1928533 typické typy virtuálních počítačů používané pro databázové servery SAP pomocného mechanismu podpory střední velikosti zahrnují Esv3.  Velké databáze s více terabajty můžou využívat typy virtuálních počítačů řady M-Series. Zvýšení výkonu zápisu na disk protokolu transakcí SAP pomocného protokolu se může zlepšit povolením Akcelerátor zápisu řady M-Series. Akcelerátor zápisu by se měla pečlivě testovat se SAP pomocným mechanismem SAP v důsledku způsobu, jakým protokol SAP pomocného programu provádí zápis  Přečtěte [si poznámku k podpoře SAP #2816580](../../how-to-enable-write-accelerator.md) a zvažte spuštění testu výkonnosti.  
 Akcelerátor zápisu je navržena pouze pro disk protokolu transakcí. Mezipaměť na úrovni disku by měla být nastavená na NONE. Nepoužívejte překvapen, pokud Azure Akcelerátor zápisu nezobrazuje podobná vylepšení jako s jinými systémy DBMS. Na základě způsobu, jakým protokol SAP pomocného mechanismu zápisu do transakčního protokolu, může to být tím, že Azure Akcelerátor zápisu nezrychluje žádnou akceleraci.
 Pro datová zařízení a protokolová zařízení se doporučují samostatné disky.  Systémové databáze sybsecurity a `saptools` nevyžadují vyhrazené disky a je možné je umístit na disky obsahující data databáze SAP a protokolová zařízení. 
 
