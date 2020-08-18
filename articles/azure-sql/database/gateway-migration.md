@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 30e57736d0b0e40eb01573d6acca2c618dcf6ee3
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: af5486630eb89de198b6ed2975a919b04b01a902
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87759695"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507494"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,21 +28,43 @@ Zákazníci budou upozorňováni e-mailem a v Azure Portal předem o jakékoli z
 
 # <a name="in-progress"></a>[Rozpracované](#tab/in-progress-ip)
 ### <a name="september-2020"></a>Září 2020
+Nové brány SQL se přidávají do následujících oblastí. Tyto brány SQL začnou přijímat provoz zákazníků 15. **září 2020**:
 
-Nové brány SQL se přidávají do následujících oblastí. Tyto brány SQL začnou přijímat provoz zákazníků 10. září 2020:
+- Austrálie – jihovýchod: 13.77.48.10
+- Kanada – východ: 40.86.226.166, 52.242.30.154
+- Velká Británie – jih: 51.140.184.11, 51.105.64.0
+
+Stávající brány SQL začnou přijímat přenosy v následujících oblastech. Tyto brány SQL začnou přijímat provoz zákazníků 15. **září 2020** :
+
+- Austrálie – jihovýchod: 191.239.192.109 a 13.73.109.251
+- Střed USA: 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96 a 104.208.21.1
+- Východní Asie: 191.234.2.139, 52.175.33.150 a 13.75.32.4
+- Východní USA: 40.121.158.30, 40.79.153.12, 191.238.6.43 a 40.78.225.32
+- Východní USA 2:40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107 a 104.208.150.3
+- Francie – střed: 40.79.137.0 a 40.79.129.1
+- Japonsko – západ: 104.214.148.156, 40.74.100.192, 191.238.68.11 a 40.74.97.10
+- Střed USA – sever: 23.96.178.199, 23.98.55.75 a 52.162.104.33
+- Jihovýchodní Asie: 104.43.15.0, 23.100.117.95 a 40.78.232.3
+- Západní USA: 104.42.238.205, 23.99.34.75 a 13.86.216.196
+
+Nové brány SQL se přidávají do následujících oblastí. Tyto brány SQL začnou přijímat provoz zákazníků 10. **září 2020**:
 
 - Středozápadní USA: 13.78.248.43 
 - Jižní Afrika sever: 102.133.120.2  
 
-Nové brány SQL se přidávají do následujících oblastí. Tyto brány SQL začnou přijímat provoz zákazníků dne 1. září 2020:
+Nové brány SQL se přidávají do následujících oblastí. Tyto brány SQL začnou přijímat provoz zákazníků dne **1. září 2020**:
 
 - Severní Evropa: 13.74.104.113 
 - Západ USA 2:40.78.248.10 
 - Západní Evropa: 52.236.184.163 
 - Střed USA – jih: 20.45.121.1, 20.49.88.1 
 
-Stávající brány SQL začnou přijímat přenosy v následujících oblastech. Tyto brány SQL začnou přijímat zákaznická data od 1. září 2020. :
+Stávající brány SQL začnou přijímat přenosy v následujících oblastech. Tyto brány SQL začnou přijímat provoz zákazníků dne **1. září 2020** :
 - Japonsko – východ: 40.79.184.8, 40.79.192.5
+
+# <a name="completed"></a>[Dokončeno](#tab/completed-ip)
+
+Následující migrace brány jsou dokončené: 
 
 ### <a name="august-2020"></a>Srpen 2020
 
@@ -53,10 +75,6 @@ Nové brány SQL se přidávají do následujících oblastí:
 - Západní USA 2:40.78.240.8
 
 Tyto brány SQL začnou přijímat provoz zákazníků 10. srpna 2020. 
-
-# <a name="completed"></a>[Dokončeno](#tab/completed-ip)
-
-Následující migrace brány jsou dokončené: 
 
 ### <a name="october-2019"></a>Říjen 2019
 - Brazil South
@@ -96,7 +114,7 @@ Doporučujeme, abyste povolili odchozí přenosy na IP adresy pro všechny [IP a
 
 Neúspěšné ověření certifikátu prostřednictvím připojení od aplikací pomocí ovladače Microsoft JDBC pod verzí 4,0. Nižší verze Microsoft JDBC spoléhají na běžný název (CN) v poli subjekt certifikátu. Zmírnění je zajistit, aby vlastnost hostNameInCertificate byla nastavena na hodnotu *. database.windows.net. Další informace o tom, jak nastavit vlastnost hostNameInCertificate, najdete v tématu [připojení pomocí šifrování](/sql/connect/jdbc/connecting-with-ssl-encryption).
 
-Pokud výše uvedené omezení nefunguje, zaregistrujte žádost o podporu pro SQL Database nebo spravovanou instanci SQL pomocí následující adresy URL:https://aka.ms/getazuresupport
+Pokud výše uvedené omezení nefunguje, zaregistrujte žádost o podporu pro SQL Database nebo spravovanou instanci SQL pomocí následující adresy URL: https://aka.ms/getazuresupport
 
 ## <a name="next-steps"></a>Další kroky
 

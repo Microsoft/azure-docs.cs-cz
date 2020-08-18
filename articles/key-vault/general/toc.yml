@@ -138,6 +138,8 @@
           href: move-region.md
 - name: Referenční informace
   items:
+    - name: Klientské knihovny
+      href: client-libraries.md
     - name: Kódy chyb rozhraní REST API –⁠ Azure Key Vault
       href: rest-error-codes.md
     - name: Běžné parametry a záhlaví

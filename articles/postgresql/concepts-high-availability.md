@@ -1,17 +1,17 @@
 ---
 title: Vysoká dostupnost – Azure Database for PostgreSQL – jeden server
 description: Tento článek poskytuje informace o vysoké dostupnosti v Azure Database for PostgreSQL jednom serveru.
-author: sr-pg20
-ms.author: srranga
+author: jasonwhowell
+ms.author: jasonh
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 564aa030c442331fbcd965c87da3bfbc03d00d79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33c66fff681b0458d1cff1ff6176c34f4771b38e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85105873"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508460"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Vysoká dostupnost v Azure Database for PostgreSQL – jeden server
 Azure Database for PostgreSQL – jedna serverová služba poskytuje zaručenou vysokou úroveň dostupnosti s finančně zajištěnou smlouvou SLA [99,99%](https://azure.microsoft.com/support/legal/sla/postgresql) provozní dobou. Azure Database for PostgreSQL poskytuje vysokou dostupnost během plánovaných událostí, jako je například operace COMPUTE initated (User-Scale), a také když dojde k neplánovaným událostem, jako je například základní hardware, software nebo selhání sítě. Azure Database for PostgreSQL se můžou rychle zotavit z nejdůležitějších okolností, takže při použití této služby prakticky neexistují žádné aplikace.
@@ -31,6 +31,9 @@ Azure Database for PostgreSQL je navržena tak, aby poskytovala vysokou dostupno
 
 ![zobrazení elastického škálování v Azure PostgreSQL](./media/concepts-high-availability/azure-postgresql-elastic-scaling.png)
 
+1. Horizontální navýšení a snížení kapacity PostgreSQL databázových serverů v řádu sekund
+2. Brána, která funguje jako proxy ke směrování klienta, se připojuje ke správnému databázovému serveru.
+3. Škálování úložiště se dá provádět bez výpadků. Po převzetí služeb při selhání umožňuje vzdálené úložiště rychlé odpojení nebo opětovné připojení.
 Tady je několik plánovaných scénářů údržby:
 
 | **Scénář** | **Popis**|
@@ -48,24 +51,29 @@ K neplánovanému výpadku může dojít v důsledku neočekávaných selhání,
 
 ![zobrazení vysoké dostupnosti v Azure PostgreSQL](./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png)
 
+1. Servery Azure PostgreSQL s možnostmi rychlého škálování.
+2. Brána, která slouží jako proxy ke směrování připojení klienta ke správnému databázovému serveru
+3. Azure Storage se třemi kopiemi pro spolehlivost, dostupnost a redundanci.
+4. Po převzetí služeb při selhání serveru umožňuje vzdálené úložiště také rychlé odpojení nebo opětovné připojení.
+   
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>Neplánované výpadky: scénáře selhání a obnovení služby
 Tady je několik scénářů selhání a Azure Database for PostgreSQL automatické obnovení:
 
 | **Scénář** | **Automatické obnovení** |
 | ---------- | ---------- |
-| <B>Selhání databázového serveru | Pokud je databázový server mimo provoz z důvodu určité základní hardwarové chyby, jsou aktivní připojení vynechána a všechny transakce v transakci jsou přerušeny. Automaticky se nasadí nový databázový server a vzdálené úložiště dat je připojené k novému databázovému serveru. Po dokončení obnovení databáze se klienti mohou připojit k novému databázovému serveru prostřednictvím brány. <br /> <br /> Aplikace, které používají databáze PostgreSQL, musí být sestaveny způsobem, který detekuje a znovu Zahozená připojení a neúspěšné transakce.  Po opakování aplikace brána transparentně přesměruje připojení k nově vytvořenému databázovému serveru. |
+| <B>Selhání databázového serveru | Pokud je databázový server mimo provoz z důvodu určité základní hardwarové chyby, jsou aktivní připojení vynechána a všechny transakce v transakci jsou přerušeny. Automaticky se nasadí nový databázový server a vzdálené úložiště dat je připojené k novému databázovému serveru. Po dokončení obnovení databáze se klienti mohou připojit k novému databázovému serveru prostřednictvím brány. <br /> <br /> Doba obnovení (RTO) závisí na různých faktorech, včetně aktivity v době selhání, jako je například Velká transakce, a množství obnovení, které se má provést během procesu spuštění databázového serveru. <br /> <br /> Aplikace, které používají databáze PostgreSQL, musí být sestaveny způsobem, který detekuje a znovu Zahozená připojení a neúspěšné transakce.  Po opakování aplikace brána transparentně přesměruje připojení k nově vytvořenému databázovému serveru. |
 | <B>Selhání úložiště | Aplikace nevidí žádný dopad na jakékoli problémy související s úložištěm, jako je selhání disku nebo poškození fyzického bloku. Jelikož jsou data uložená ve třech kopiích, kopie dat se obsluhuje zbývajícím úložištěm. Blokování poškození se automaticky opraví. Pokud dojde ke ztrátě kopie dat, automaticky se vytvoří nová kopie dat. |
 
 Tady je několik scénářů selhání, které vyžadují akci uživatele při obnovení:
 
 | **Scénář** | **Plán obnovení** |
 | ---------- | ---------- |
-| <b>Selhání oblasti | Selhání oblasti je vzácná událost. Pokud však potřebujete ochranu při selhání oblasti, můžete nakonfigurovat jednu nebo více replik pro čtení v jiných oblastech pro zotavení po havárii (DR). (Podrobnosti najdete v [tomto článku](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) o vytváření a správě replik pro čtení). V případě selhání na úrovni oblasti můžete ručně povýšit repliku pro čtení nakonfigurovanou v jiné oblasti na provozní server databáze. |
-| <b>Chyby logických/uživatelských uživatelů | Obnovení z uživatelských chyb, například omylem vyřazených tabulek nebo nesprávně aktualizovaných dat, zahrnuje provádění obnovení k určitému [bodu v čase](https://docs.microsoft.com/azure/postgresql/concepts-backup) (PITR) tím, že se obnoví a obnoví data, až do doby, kdy došlo k chybě.<br> <br>  Chcete-li obnovit pouze podmnožinu databází nebo konkrétních tabulek a nikoli všechny databáze na databázovém serveru, můžete obnovit databázový server v nové instanci, exportovat tyto tabulky prostřednictvím [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html)a potom pomocí [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) obnovit tyto tabulky do databáze. |
+| <b> Selhání oblasti | Selhání oblasti je vzácná událost. Pokud však potřebujete ochranu při selhání oblasti, můžete nakonfigurovat jednu nebo více replik pro čtení v jiných oblastech pro zotavení po havárii (DR). (Podrobnosti najdete v [tomto článku](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) o vytváření a správě replik pro čtení). V případě selhání na úrovni oblasti můžete ručně povýšit repliku pro čtení nakonfigurovanou v jiné oblasti na provozní server databáze. |
+| <b> Chyby logických/uživatelských uživatelů | Obnovení z uživatelských chyb, například omylem vyřazených tabulek nebo nesprávně aktualizovaných dat, zahrnuje provádění obnovení k určitému [bodu v čase](https://docs.microsoft.com/azure/postgresql/concepts-backup) (PITR) tím, že se obnoví a obnoví data, až do doby, kdy došlo k chybě.<br> <br>  Chcete-li obnovit pouze podmnožinu databází nebo konkrétních tabulek a nikoli všechny databáze na databázovém serveru, můžete obnovit databázový server v nové instanci, exportovat tyto tabulky prostřednictvím [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html)a potom pomocí [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) obnovit tyto tabulky do databáze. |
 
 
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Azure Database for PostgreSQL poskytuje možnost rychlého restartování databázových serverů, redundantního úložiště a efektivního směrování z brány. Pro dodatečnou ochranu dat můžete nakonfigurovat zálohování na geograficky replikované a také nasadit jednu nebo více replik pro čtení v jiných oblastech. Díky funkcím vysoké dostupnosti Azure Database for PostgreSQL chrání vaše databáze před Nejčastějšími výpadky a nabízí špičkovou smlouvu SLA, která se poskytuje s financemi [99,99% z provozu](https://azure.microsoft.com/support/legal/sla/postgresql). Všechny tyto možnosti dostupnosti a spolehlivosti umožňují, aby Azure byl ideální platformou pro spouštění důležitých podnikových aplikací.
 

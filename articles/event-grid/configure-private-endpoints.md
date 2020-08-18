@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak nakonfigurovat soukromé koncové body
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7796c4160cbf40a241db901e31cc91edc361b00d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fa67ba8dbe8106c0311bafec07a1510ca0c25c3f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495280"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508834"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Konfigurace privátních koncových bodů pro Azure Event Grid témata nebo domény
 Pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md) můžete v případě, že chcete přijímat události přímo z vaší virtuální sítě, zabezpečit vaše témata a domény přes [privátní propojení](../private-link/private-link-overview.md) , aniž byste museli procházet veřejným internetem. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro vaše téma nebo doménu. Další koncepční informace najdete v tématu [zabezpečení sítě](network-security.md).
@@ -31,7 +31,7 @@ V této části se dozvíte, jak použít Azure Portal k vytvoření privátníh
     2. Vyberte **skupinu prostředků Azure** pro privátní koncový bod. 
     3. Zadejte **název** koncového bodu. 
     4. Vyberte **oblast** pro koncový bod. Váš privátní koncový bod musí být ve stejné oblasti jako vaše virtuální síť, ale může v jiné oblasti než prostředek privátního odkazu (v tomto příkladu téma Event gridu). 
-    5. Potom v dolní části stránky vyberte tlačítko **Další: >prostředku** . 
+    5. Potom v dolní části stránky vyberte tlačítko **Další: >prostředku ** . 
 
       ![Stránka základy privátního koncového bodu](./media/configure-private-endpoints/basics-page.png)
 3. Na stránce **prostředek** použijte následující postup: 
@@ -40,14 +40,14 @@ V této části se dozvíte, jak použít Azure Portal k vytvoření privátníh
         1. V části **typ prostředku**vyberte **Microsoft. EventGrid/témata** nebo **Microsoft. EventGrid/domény** pro **typ prostředku**.
         2. V části **prostředek**vyberte v rozevíracím seznamu téma/doména. 
         3. Potvrďte, že je **cílový podprostředek** nastavený na **téma** nebo **doménu** (na základě vybraného typu prostředku).    
-        4. V dolní části stránky vyberte tlačítko **Další: >konfigurace** . 
+        4. V dolní části stránky vyberte tlačítko **Další: >konfigurace ** . 
 
             ![Privátní koncový bod – stránka prostředků](./media/configure-private-endpoints/resource-page.png)
     2. Pokud vyberete **připojit k prostředku pomocí ID prostředku nebo aliasu**, postupujte podle následujících kroků:
         1. Zadejte ID prostředku. Například: `/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`.  
         2. Jako **prostředek**zadejte **téma** nebo **doména**. 
         3. volitelné Přidejte zprávu požadavku. 
-        4. V dolní části stránky vyberte tlačítko **Další: >konfigurace** . 
+        4. V dolní části stránky vyberte tlačítko **Další: >konfigurace ** . 
 
             ![Privátní koncový bod – stránka prostředků](./media/configure-private-endpoints/connect-azure-resource-id.png)
 4. Na stránce **Konfigurace** vyberte podsíť ve virtuální síti, do které chcete nasadit privátní koncový bod. 
@@ -68,9 +68,9 @@ Při vytváření privátního koncového bodu musí být připojení schváleno
 
 Existují čtyři stavy zřizování:
 
-| Akce služby | Stav privátního koncového bodu příjemce služby | Description |
+| Akce služby | Stav privátního koncového bodu příjemce služby | Popis |
 |--|--|--|
-| Žádná | Čekající | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
+| Žádné | Čekající | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
 | Schválení | Schválené | Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití. |
 | Odmítnout | Zamítnuto | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu. |
 | Odebrat | Propojení | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění. |
@@ -366,13 +366,13 @@ $body = @{"location"="<LOCATION>"; "properties"=@{"publicNetworkAccess"="disable
 
 # create topic
 Invoke-RestMethod -Method 'Put'  `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview"  `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01"  `
     -Headers $Headers  `
     -Body $body
 
 # verify that the topic was created
 $topic=Invoke-RestMethod -Method 'Get'  `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview"   `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01"   `
     -Headers $Headers  
 
 # create private link service connection
@@ -399,7 +399,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName <RESOURCE GROUP NAME
 
 # verify that the endpoint was created
 Invoke-RestMethod -Method 'Get'  `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections?api-version=2020-04-01-preview"   `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections?api-version=2020-06-01"   `
     -Headers $Headers   `
     | ConvertTo-Json -Depth 5
 
@@ -445,13 +445,13 @@ $approvedBody = @{"properties"=@{"privateLinkServiceConnectionState"=@{"status"=
 
 # approve endpoint connection
 Invoke-RestMethod -Method 'Put'  `
-    -Uri "https://management.azure.com/subscriptions/<AzuRE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-04-01-preview"  `
+    -Uri "https://management.azure.com/subscriptions/<AzuRE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-06-01"  `
     -Headers $Headers  `
     -Body $approvedBody
 
 # confirm that the endpoint connection was approved
 Invoke-RestMethod -Method 'Get'  `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-04-01-preview"  `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-06-01"  `
     -Headers $Headers
 
 ```
@@ -468,13 +468,13 @@ $rejectedBody = @{"properties"=@{"privateLinkServiceConnectionState"=@{"status"=
 
 # reject private endpoint
 Invoke-RestMethod -Method 'Put'  `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-04-01-preview"  `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-06-01"  `
     -Headers $Headers  `
     -Body $rejectedBody
 
 # confirm that endpoint was rejected
 Invoke-RestMethod -Method 'Get' 
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-04-01-preview" ` 
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>/privateEndpointConnections/<PRIVATE ENDPOINT NAME>.<GUID>?api-version=2020-06-01" ` 
     -Headers $Headers
 ```
 

@@ -236,7 +236,7 @@
       items:
         - name: Konfigurace privátních koncových bodů
           href: configure-private-endpoints.md
-        - name: Konfigurace brány firewall protokolu IP (Preview)
+        - name: Konfigurace brány firewall protokolu P
           href: configure-firewall.md
         - name: Zabezpečený webhook s AAD
           href: secure-webhook-delivery.md

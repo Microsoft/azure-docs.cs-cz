@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 707b432a4cb3918aa2dfbe460fc3cdcd53761bf1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 08099ede82f8ebd9c1cd6e585a16800ee1626f65
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497076"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508783"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Získat data ze senzorů od partnerů snímačů
 
@@ -62,19 +62,19 @@ Pokud chcete vygenerovat výše uvedené informace, postupujte podle následují
 
 5. Přejít do domovského adresáře.
 
-    ```azurepowershell-interactive 
-    cd  
+    ```azurepowershell-interactive
+    cd
     ```
 
 6. Spusťte následující příkaz. Tím se k tomu připojí ověřený účet, který se bude používat pro žádosti Azure AD.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
     Connect-AzureAD
     ```
-    
+
 7. Spusťte následující příkaz. Tím se stáhne skript do domovského adresáře.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
     wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
 
@@ -82,9 +82,9 @@ Pokud chcete vygenerovat výše uvedené informace, postupujte podle následují
 
 8. Spusťte následující skript. Skript zobrazí výzvu k zadání ID tenanta, které se dá získat ze **Azure Active Directory**  >  stránky s**přehledem** Azure Active Directory.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
-    ./generatePartnerCredentials.ps1   
+    ./generatePartnerCredentials.ps1
 
     ```
 
@@ -120,7 +120,7 @@ V současné době FarmBeats podporuje následující zařízení:
 - **Uzel**: zařízení, ke kterému jsou připojené některé snímače.
 - **Brána**: zařízení, ke kterému jsou připojené aspoň jeden uzel.
 
-Postupujte takto:
+Postupujte následovně:
 
 1. Na domovské stránce v nabídce vyberte **zařízení** .
   Na stránce **zařízení** se zobrazí typ zařízení, model, stav, farma, na kterou je umístěna, a datum poslední aktualizace pro metadata. Ve výchozím nastavení je sloupec farma nastaven na *hodnotu null*. Můžete se rozhodnout přiřadit zařízení k farmě. Další informace najdete v tématu [přiřazení zařízení](#assign-devices).
@@ -130,7 +130,7 @@ Postupujte takto:
 
 ### <a name="view-sensors"></a>Zobrazit senzory
 
-Postupujte takto:
+Postupujte následovně:
 
 1. Na domovské stránce vyberte z nabídky **snímače** .
   Na stránce **senzory** se zobrazí podrobnosti o typu senzoru, farmě, k níž je připojen, k nadřazenému zařízení, názvu portu, typu portu a posledním aktualizovanému stavu.
@@ -138,7 +138,7 @@ Postupujte takto:
 
     ![Stránka senzorů](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
 
-## <a name="assign-devices"></a>Přiřazení zařízení  
+## <a name="assign-devices"></a>Přiřazení zařízení
 
 Po přetečení dat senzoru je můžete přiřadit do farmy, do které jste nasadili senzory.
 
@@ -159,7 +159,7 @@ Po přetečení dat senzoru je můžete přiřadit do farmy, do které jste nasa
 
 ### <a name="visualize-sensor-data"></a>Vizualizace dat ze snímačů
 
-Postupujte takto:
+Postupujte následovně:
 
 1. Na stránce domů v nabídce vyberte možnost **farmy** a zobrazte stránku **farmy** .
 2. Vyberte **farmu** , pro kterou chcete zobrazit data ze senzorů.
@@ -169,7 +169,7 @@ Postupujte takto:
 
 ## <a name="delete-a-sensor"></a>Odstranění snímače
 
-Postupujte takto:
+Postupujte následovně:
 
 1. Na domovské stránce výběrem **senzorů** z nabídky zobrazíte stránku **senzory** .
 2. Vyberte zařízení, které chcete odstranit, a v potvrzovacím okně vyberte **Odstranit** .
@@ -180,7 +180,7 @@ Potvrzovací zpráva ukazuje, že senzor byl úspěšně odstraněn.
 
 ## <a name="delete-devices"></a>Odstranit zařízení
 
-Postupujte takto:
+Postupujte následovně:
 
 1. Na stránce domů v nabídce vyberte **zařízení** a zobrazte stránku **zařízení** .
 2. Vyberte zařízení, které chcete odstranit, a v potvrzovacím okně vyberte **Odstranit** .

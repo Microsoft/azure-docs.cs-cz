@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 3e452cd548738e5f211899d3a6a676f883d800ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04f0c3c63d00ea49bf43f00f256266599a73d6c0
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77132048"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508800"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>Získání pomocí dronů snímků z partnerů pomocí dronů
 
@@ -38,7 +38,7 @@ Pokud chcete povolit integraci s FarmBeats, poskytněte poskytovateli zařízen�
 Postupujte takto:
 
 1. Stáhněte si tento [skript](https://aka.ms/farmbeatspartnerscript)a extrahujte ho na místní disk. V souboru ZIP jsou dva soubory.
-2. Přihlaste se k [Azure Portal](https://portal.azure.com/) a otevřete Azure Cloud Shell. Tato možnost je k dispozici na panelu nástrojů v pravém horním rohu portálu.
+2. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) a otevřete Azure Cloud Shell. Tato možnost je k dispozici na panelu nástrojů v pravém horním rohu portálu.
 
     ![Otevřít Azure Cloud Shell na pravém horním panelu portálu](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
@@ -53,9 +53,9 @@ Postupujte takto:
 5. Přejít do adresáře, kam se nahrály soubory. Ve výchozím nastavení se odešlou do domovského adresáře pod uživatelským jménem.
 6. Spusťte tento skript:
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
-    ./generateCredentials.ps1   
+    ./generateCredentials.ps1
 
     ```
 

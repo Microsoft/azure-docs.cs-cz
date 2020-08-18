@@ -2,15 +2,15 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: 14ea15734a1db71c03d4ebd0cc3b10dabfb9b2dc
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.date: 08/17/2020
+ms.openlocfilehash: 1bf0ecbc996fe853a6ca1d0ed5a749c798383146
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85805992"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508514"
 ---
-V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s Pythonem k vytváření modelu klasifikace imagí. Po vytvoření můžete přidat značky, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v Pythonu. Pokud chcete procesem vytvoření a používání modelu klasifikace projít _bez_ kódu, přečtěte si místo toho [pokyny s využitím prohlížeče](../../getting-started-build-a-classifier.md).
+V tomto článku se dozvíte, jak začít používat knihovnu klienta Custom Vision s Pythonem k sestavení modelu klasifikace imagí. Po vytvoření můžete přidat značky, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v Pythonu. Pokud chcete procesem vytvoření a používání modelu klasifikace projít _bez_ kódu, přečtěte si místo toho [pokyny s využitím prohlížeče](../../getting-started-build-a-classifier.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -18,9 +18,9 @@ V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s Py
 - Nástroj [pip](https://pip.pypa.io/en/stable/installing/)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>Instalace sady Custom Vision SDK
+## <a name="install-the-custom-vision-client-library"></a>Instalace klientské knihovny Custom Vision
 
-Pokud chcete nainstalovat sadu SDK služby Custom Vision pro Python, spusťte v PowerShellu následující příkaz:
+Pokud chcete nainstalovat knihovnu klienta služby Custom Vision pro Python, spusťte v PowerShellu následující příkaz:
 
 ```powershell
 pip install azure-cognitiveservices-vision-customvision

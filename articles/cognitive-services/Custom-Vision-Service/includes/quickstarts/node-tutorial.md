@@ -2,16 +2,16 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
+ms.date: 08/17/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f1a89b311a524e6ef0d8e1fc8145f7e13d10bb6b
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 2a8937debc38dab4b2d38b56d1c6a9c3edcbe2a7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406027"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508513"
 ---
-V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s Node.js k sestavení modelu klasifikace imagí. Po vytvoření můžete přidat značky, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace Node.js. Pokud chcete procesem vytvoření a používání modelu klasifikace projít _bez_ kódu, přečtěte si místo toho [pokyny s využitím prohlížeče](../../getting-started-build-a-classifier.md).
+V tomto článku se dozvíte, jak začít používat Custom Vision klientské knihovny s Node.js k sestavení modelu klasifikace imagí. Po vytvoření můžete přidat značky, nahrát obrázky, naučit projekt, získat adresu URL koncového bodu předpovědi projektu a použít koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace Node.js. Pokud chcete procesem vytvoření a používání modelu klasifikace projít _bez_ kódu, přečtěte si místo toho [pokyny s využitím prohlížeče](../../getting-started-build-a-classifier.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -19,9 +19,9 @@ V tomto článku se dozvíte, jak začít používat sadu Custom Vision SDK s No
 - [npm](https://www.npmjs.com/) je nainstalovaný.
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>Instalace sady Custom Vision SDK
+## <a name="install-the-custom-vision-client-library"></a>Instalace klientské knihovny Custom Vision
 
-Pokud chcete nainstalovat sadu Custom Vision Service SDK pro Node.js, spusťte v PowerShellu následující příkaz:
+Pokud chcete nainstalovat knihovnu klienta služby Custom Vision pro Node.js, spusťte v PowerShellu následující příkaz:
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training

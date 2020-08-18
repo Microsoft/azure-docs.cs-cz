@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: aa754868677802b7d0000045f22090fbca62d9b6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: fbe3f0109ca3af2cf9ff44061c7882e6bd72c8a6
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927415"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508598"
 ---
-# <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Edice Azure Machine Learning Enterprise a Basic 
+# <a name="enterprise-preview-and-basic-editions-of-azure-machine-learning"></a>Enterprise (Preview) a Basic – edice Azure Machine Learning 
 
 Azure Machine Learning nabízí dvě edice přizpůsobené potřebám strojového učení. Tyto edice určují, které nástroje Machine Learning jsou dostupné vývojářům a odborníkům přes data z pracovního prostoru.
 
@@ -23,7 +23,7 @@ Azure Machine Learning nabízí dvě edice přizpůsobené potřebám strojovéh
 
 Edici přiřadíte pokaždé, když vytvoříte pracovní prostor. Zákazníci se za tuto dobu účtují za náklady, které se týkají výpočtů a dalších prostředků Azure. Naučte se [Spravovat náklady na Azure Machine Learning](concept-plan-manage-cost.md).
 
-Přečtěte si, jak [upgradovat základní pracovní prostor na edici Enterprise](how-to-manage-workspace.md#upgrade). 
+Přečtěte si, jak [upgradovat základní pracovní prostor na edici Enterprise (Preview)](how-to-manage-workspace.md#upgrade). 
 
 ## <a name="whats-in-each-edition"></a>Co je v jednotlivých edicích
 
@@ -49,7 +49,7 @@ Přečtěte si, jak [upgradovat základní pracovní prostor na edici Enterprise
 | Možnosti    | Edice                 |
 |------------------------------------------------------------------------------------|:-----------:|
 | Vytváření a spouštění [AutoML experimentů v poznámkových blocích](how-to-configure-auto-train.md)               | Vše                     |
-| Vytváření a spouštění [AutoML experimentů v studiu (Web)](how-to-use-automated-ml-for-ml-models.md)   | Pouze edice Enterprise |
+| Vytváření a spouštění  [AutoML experimentů v studiu (Web)](how-to-use-automated-ml-for-ml-models.md)   | Pouze edice Enterprise |
 | Špičkové možnosti prognózování AutoML v oboru             | Pouze edice Enterprise |
 | Podpora hloubkového učení a dalších pokročilých učících | Pouze edice Enterprise |
 | Klasifikace a regresní úlohy pro velké objemy dat (až 100 GB)                     | Pouze edice Enterprise |

@@ -6,22 +6,22 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 67807e18559006b7d7eb6089a30370d614aefca3
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 1076a4fe3a460fa07e061e9ec0ec41b088ec7eca
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992830"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507259"
 ---
 # <a name="data-filtering"></a>Filtrování dat
 
 Když odesíláte dokumenty, které se mají použít pro školení vlastního systému, provedou dokumenty řadu kroků zpracování a filtrování, které se připraví na školení. Tyto kroky jsou vysvětleny zde. Znalosti tohoto filtrování vám můžou porozumět počtu vět zobrazeným ve vlastním překladateli a postupům, které můžete provést při přípravě dokumentů pro školení pomocí vlastního překladatele.
 
 ## <a name="sentence-alignment"></a>Přidružení vět
-Pokud váš dokument není ve formátu XLIFF, TMX nebo ALIGN, vlastní Překladatel zarovnává věty vašich zdrojových a cílových dokumentů navzájem a větu po větě. Překladatel neprovádí zarovnání dokumentu – sleduje pojmenování dokumentů a hledá odpovídající dokument v jiném jazyce. V rámci dokumentu se vlastní Překladatel pokusí najít odpovídající větu v jiném jazyce. Pomocí značek dokumentu, jako jsou vložené značky HTML, usnadňuje zarovnání.  
+Pokud váš dokument není ve formátu XLIFF, TMX nebo ALIGN, vlastní Překladatel zarovnává věty vašich zdrojových a cílových dokumentů navzájem a větu po větě. Vlastní Překladatel neprovádí zarovnání dokumentu – sleduje pojmenování dokumentů a hledá odpovídající dokument v jiném jazyce. V rámci dokumentu se vlastní Překladatel pokusí najít odpovídající větu v jiném jazyce. Pomocí značek dokumentu, jako jsou vložené značky HTML, usnadňuje zarovnání.  
 
 Pokud se zobrazí velký rozdíl mezi počtem vět ve zdrojovém a cílovém dokumentu na straně, váš dokument možná nebude v prvním místě paralelní nebo z jiných důvodů nelze zarovnávat. Dvojice dokumentů s velkým rozdílem (>10%) vět na každé straně má za cíl druhý vzhled, abyste se ujistili, že jsou skutečně paralelní. Vlastní Překladatel zobrazuje upozornění vedle dokumentu, pokud se počet vět liší podezřelě.  
 
@@ -49,9 +49,9 @@ Převede písmena a číslice s plnou šířkou na znaky s poloviční šířkou
 
 ## <a name="unescaped-xml-tags"></a>Neřídicí značky XML
 Filtrování transformuje neřídicí značky do řídicích značek:
-* `&lt;`stane`&amp;lt;`
-* `&gt;`stane`&amp;gt;`
-* `&amp;`stane`&amp;amp;`
+* `&lt;` stane `&amp;lt;`
+* `&gt;` stane `&amp;gt;`
+* `&amp;` stane `&amp;amp;`
 
 ## <a name="invalid-characters"></a>Neplatné znaky
 Vlastní Překladatel odebere věty, které obsahují znak Unicode U + FFFD. Znak U + FFFD označuje neúspěšný převod kódování.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: dececd066597682e240e737727d3bcaf8f8f3619
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: c1a8fbb5558d5b9069c5b8103bca2fc3f8bcddf3
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375309"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507569"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Musí mít uživatel k používání Azure Virtual WAN rozbočovač a paprsek se zařízeními SD-WAN/VPN?
 
@@ -111,7 +111,7 @@ Informace o krocích automatizace u partnerů najdete v tématu o [automatizaci 
 
 ### <a name="am-i-required-to-use-a-preferred-partner-device"></a>Musím použít preferované partnerské zařízení?
 
-Ne. Můžete použít libovolné zařízení s podporou VPN, které vyhovuje požadavkům Azure na podporu IKEv2/IKEv1 protokolu IPsec. Virtuální síť WAN má také CPE Partnerská řešení, která automatizují připojení k virtuální síti WAN Azure, což usnadňuje nastavení připojení VPN s protokolem IPsec ve velkém měřítku.
+No. Můžete použít libovolné zařízení s podporou VPN, které vyhovuje požadavkům Azure na podporu IKEv2/IKEv1 protokolu IPsec. Virtuální síť WAN má také CPE Partnerská řešení, která automatizují připojení k virtuální síti WAN Azure, což usnadňuje nastavení připojení VPN s protokolem IPsec ve velkém měřítku.
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Jak partneři pro Virtual WAN automatizují možnosti připojení s využitím Azure Virtual WAN?
 
@@ -155,7 +155,7 @@ Síťové virtuální zařízení (síťové virtuální zařízení) se nedá n
 
 ### <a name="can-a-spoke-vnet-have-a-virtual-network-gateway"></a>Je možné, že virtuální síť rozbočovače má bránu virtuální sítě?
 
-Ne. Virtuální síť paprsků nemůže mít bránu virtuální sítě, pokud je připojená k virtuálnímu rozbočovači.
+No. Virtuální síť paprsků nemůže mít bránu virtuální sítě, pokud je připojená k virtuálnímu rozbočovači.
 
 ### <a name="is-there-support-for-bgp-in-vpn-connectivity"></a>Je podpora protokolu BGP v připojení k síti VPN podporovaná?
 
@@ -183,11 +183,11 @@ Yes.
 
 ### <a name="does-virtual-wan-require-expressroute-from-each-site"></a>Vyžaduje virtuální síť WAN ExpressRoute z každé lokality?
 
-Ne. Virtuální síť WAN nevyžaduje ExpressRoute z každé lokality. Vaše lokality můžou být připojené k síti poskytovatele prostřednictvím okruhu ExpressRoute. Pro lokality, které jsou připojené pomocí ExpressRoute k virtuálnímu rozbočovači a také IPsec VPN, do stejného rozbočovače, virtuální rozbočovač zajišťuje přenosové připojení mezi uživatelem VPN a ExpressRoute.
+No. Virtuální síť WAN nevyžaduje ExpressRoute z každé lokality. Vaše lokality můžou být připojené k síti poskytovatele prostřednictvím okruhu ExpressRoute. Pro lokality, které jsou připojené pomocí ExpressRoute k virtuálnímu rozbočovači a také IPsec VPN, do stejného rozbočovače, virtuální rozbočovač zajišťuje přenosové připojení mezi uživatelem VPN a ExpressRoute.
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Je při používání Azure Virtual WAN k dispozici propustnost sítě nebo omezení připojení?
 
-Propustnost sítě je vázaná na službu ve virtuálním rozbočovači WAN. I když můžete mít tolik virtuálních sítí WAN, kolik jich budete chtít, každá virtuální síť WAN umožňuje 1 rozbočovač na oblast. V každém z nich je agregovaná propustnost sítě VPN až 20 GB/s, ale agregovaná propustnost ExpressRoute je až 20 GB/s a agregovaná propustnost uživatele VPN typu Point-to-site je až 20 GB/s. Směrovač ve virtuálním centru podporuje až 50 GB/s pro přenosy dat VNet-to-VNet a předpokládá celkový počet úloh na 2000 virtuálních počítačů ve všech virtuální sítě ve virtuálních sítích WAN.
+Propustnost sítě je vázaná na službu ve virtuálním rozbočovači WAN. I když můžete mít tolik virtuálních sítí WAN, kolik jich budete chtít, každá virtuální síť WAN umožňuje 1 rozbočovač na oblast. V každém z nich je agregovaná propustnost sítě VPN až 20 GB/s, ale agregovaná propustnost ExpressRoute je až 20 GB/s a agregovaná propustnost uživatele VPN typu Point-to-site je až 20 GB/s. Směrovač ve virtuálním rozbočovači podporuje až 50 GB/s pro přenosové toky VNet-to-VNet a předpokládá celkový počet úloh 2000 virtuálních počítačů v rámci všech virtuální sítě připojených k jednomu virtuálnímu rozbočovači.
 
 Když se sítě VPN připojí k rozbočovači, provedou připojení. Virtuální síť WAN podporuje až 1000 připojení nebo 2000 tunelů IPsec na virtuální rozbočovač. Když se vzdálení uživatelé připojují k virtuálnímu rozbočovači, připojí se k bráně VPN P2S, která podporuje až 10 000 uživatelů v závislosti na jednotce škálování (šířka pásma) zvolené pro bránu VPN P2S ve virtuálním rozbočovači.
 

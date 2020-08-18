@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: 0c28d36c7934fbbac0ddd11562c8dc237b0360ee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8e5dcb6c9dfa08efc0889fcab779d6cb333d2330
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679482"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507531"
 ---
 # <a name="sample-models"></a>Ukázkové modely
 
@@ -20,13 +20,13 @@ V tomto článku jsou uvedené některé prostředky pro ukázková data, která
 
 Poskytujeme vestavěný Vzorový model, který se dá vždycky načíst pomocí adresy URL **Builtin://Engine** .
 
-![Vzorový model](./media/sample-model.png "Vzorový model")
+![Ukázkový model](./media/sample-model.png "Ukázkový model")
 
 Statistika modelu:
 
 | Název | Hodnota |
 |-----------|:-----------|
-| [Požadovaná velikost virtuálního počítače](../how-tos/session-rest-api.md#create-a-session) | standardní |
+| [Požadovaná velikost serveru](../how-tos/session-rest-api.md#create-a-session) | standardní |
 | Počet trojúhelníků | 18 700 000 |
 | Počet pohyblivých částí | 2073 |
 | Počet materiálů | 94 |
