@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 6a2208fac98d3cd8e4ddcea887d9b8cf30fb6482
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f5409fea1cdbbc35e9068fae6b3ba7fbc2a95580
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524501"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547388"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Instalace a spuštění kontejnerů Docker LUIS
 
@@ -26,9 +26,9 @@ Následující video znázorňuje použití tohoto kontejneru.
 
 [![Ukázka kontejneru pro Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete spustit kontejner LUIS, vezměte na vědomí následující požadavky:
 
@@ -64,7 +64,7 @@ V níže uvedené tabulce jsou uvedeny minimální a doporučené hodnoty pro ho
 
 Základní a paměť odpovídají `--cpus` `--memory` nastavení a, která se používají jako součást `docker run` příkazu.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru pomocí `docker pull`
 
 Pomocí [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) příkazu si stáhněte image kontejneru z `mcr.microsoft.com/azure-cognitive-services/luis` úložiště:
 
@@ -109,7 +109,7 @@ Vstupní adresář pro připojení může obsahovat současně **produkční**, 
 |--|--|--|--|
 |Verzí|ZÍSKAT, ZVEŘEJNIT|Pouze kontejner|`{APP_ID}_v{APP_VERSION}.gz`|
 |Příprava|ZÍSKAT, ZVEŘEJNIT|Azure a kontejner|`{APP_ID}_STAGING.gz`|
-|Provoz|ZÍSKAT, ZVEŘEJNIT|Azure a kontejner|`{APP_ID}_PRODUCTION.gz`|
+|Výroba|ZÍSKAT, ZVEŘEJNIT|Azure a kontejner|`{APP_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
 > Neměňte přejmenování, změnu, přepsání nebo dekomprimaci souborů balíčku LUIS.
@@ -171,7 +171,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 | **{APP_ID}** | ID aplikace publikované aplikace LUIS |
 | **{SLOT_NAME}** | Prostředí publikované aplikace v LUIS Použijte jednu z následujících hodnot:<br/>`PRODUCTION`<br/>`STAGING` |
 | **{AUTHORING_KEY}** | Klíč pro tvorbu účtu LUIS pro publikovanou aplikaci LUIS<br/>Svůj klíč pro vytváření můžete získat ze stránky **uživatelských nastavení** na portálu Luis. |
-| **{AZURE_REGION}** | Příslušná oblast Azure:<br/><br/>`westus`-Západní USA<br/>`westeurope`-Západní Evropa<br/>`australiaeast`– Austrálie – východ |
+| **{AZURE_REGION}** | Příslušná oblast Azure:<br/><br/>`westus` -Západní USA<br/>`westeurope` -Západní Evropa<br/>`australiaeast` – Austrálie – východ |
 
 Pokud si chcete stáhnout publikovaný balíček, přečtěte si [tu dokumentaci k rozhraní API][download-published-package]. Po úspěšném stažení je odpověď souborem balíčku LUIS. Uložte soubor do umístění úložiště zadaného pro vstupní připojení kontejneru.
 
@@ -190,11 +190,11 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 | **{APP_ID}** | ID aplikace vyškolené aplikace LUIS |
 | **{APP_VERSION}** | Verze aplikace vyškolené aplikace LUIS |
 | **{AUTHORING_KEY}** | Klíč pro tvorbu účtu LUIS pro publikovanou aplikaci LUIS<br/>Svůj klíč pro vytváření můžete získat ze stránky **uživatelských nastavení** na portálu Luis. |
-| **{AZURE_REGION}** | Příslušná oblast Azure:<br/><br/>`westus`-Západní USA<br/>`westeurope`-Západní Evropa<br/>`australiaeast`– Austrálie – východ |
+| **{AZURE_REGION}** | Příslušná oblast Azure:<br/><br/>`westus` -Západní USA<br/>`westeurope` -Západní Evropa<br/>`australiaeast` – Austrálie – východ |
 
 Pokud chcete stáhnout balíček se správou verzí, přečtěte si [tady dokumentaci k rozhraní API][download-versioned-package]. Po úspěšném stažení je odpověď souborem balíčku LUIS. Uložte soubor do umístění úložiště zadaného pro vstupní připojení kontejneru.
 
-## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s`docker run`
+## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s `docker run`
 
 Ke spuštění kontejneru použijte příkaz [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) . Podrobnosti o tom, jak získat hodnoty a, najdete v článku [shromáždění požadovaných parametrů](#gathering-required-parameters) `{ENDPOINT_URI}` `{API_KEY}` .
 
@@ -245,7 +245,7 @@ Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`.
 
 # <a name="v3-prediction-endpoint"></a>[Prediktivní koncový bod V3](#tab/v3)
 
-|Typ balíčku|Příkaz HTTP|Trasa|Parametry dotazů|
+|Typ balíčku|Příkaz HTTP|Trasa|Parametry dotazu|
 |--|--|--|--|
 |Publikováno|ZÍSKAT, ZVEŘEJNIT|`/luis/v3.0/apps/{appId}/slots/{slotName}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
 |Verzí|ZÍSKAT, ZVEŘEJNIT|`/luis/v3.0/apps/{appId}/versions/{versionId}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
@@ -261,7 +261,7 @@ Parametry dotazu konfigurují jak a co je vráceno v odpovědi na dotaz:
 
 # <a name="v2-prediction-endpoint"></a>[Koncový bod pro předpověď v2](#tab/v2)
 
-|Typ balíčku|Příkaz HTTP|Trasa|Parametry dotazů|
+|Typ balíčku|Příkaz HTTP|Trasa|Parametry dotazu|
 |--|--|--|--|
 |Publikováno|[získat](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [zveřejnit](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|`/luis/v2.0/apps/{appId}?`|`q={q}`<br>`&staging`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]<br>|
 |Verzí|ZÍSKAT, ZVEŘEJNIT|`/luis/v2.0/apps/{appId}/versions/{versionId}?`|`q={q}`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]|
@@ -372,7 +372,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili koncepty a pracovní postup pro stažení, instalaci a spuštění kontejnerů Language Understanding (LUIS). Souhrn:
 

@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s plátnem | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a plátnem.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: bfed291c-a33e-410d-b919-5b965a631d45
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3ce5cff0de2939c25400d1d63138b23bc6c9822
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 24350c63df04e55107ed32c2d61d1026aa27bdb9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74232033"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547626"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Kurz: Azure Active Directory integrace s plátnem
 
@@ -33,7 +28,7 @@ Integrace plátna se službou Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,9 +101,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
     ![Informace o jednotném přihlašování domény plátna a adresy URL](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<tenant-name>.instructure.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<tenant-name>.instructure.com`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<tenant-name>.instructure.com/saml2`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<tenant-name>.instructure.com/saml2`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pro získání těchto hodnot [tým podpory pro klienty](https://community.canvaslms.com/community/help) s kontaktními osobami. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -159,7 +154,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí služby Azure AD,
 
     f. V seznamu **atribut přihlášení** vyberte **NameId**.
 
-    g. V seznamu **Formát identifikátoru** vyberte možnost **EmailAddress**.
+    například V seznamu **Formát identifikátoru** vyberte možnost **EmailAddress**.
 
     h. Klikněte na **Uložit nastavení ověřování**.
 
@@ -181,12 +176,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -236,13 +231,13 @@ Aby se uživatelé Azure AD mohli přihlásit k plátnu, musí se zřídit do pl
 
 5. Na stránce Přidat nový uživatelský dialog proveďte následující kroky:
 
-   ![Přidání uživatele](./media/canvas-lms-tutorial/ic775997.png "Přidání uživatele")
+   ![Přidat uživatele](./media/canvas-lms-tutorial/ic775997.png "Přidání uživatele")
 
    a. Do textového pole **celé jméno** zadejte jméno uživatele, jako je **BrittaSimon**.
 
-   b. Do textového pole **e-mail** zadejte e-maily uživatele, jako je **brittasimon\@contoso.com**.
+   b. Do textového pole **e-mail** zadejte e-maily uživatele, jako je **brittasimon \@ contoso.com**.
 
-   c. Do textového pole pro **přihlášení** zadejte e-mailovou adresu Azure AD, jako je **brittasimon\@contoso.com**.
+   c. Do textového pole pro **přihlášení** zadejte e-mailovou adresu Azure AD, jako je **brittasimon \@ contoso.com**.
 
    d. Vyberte **Odeslat e-mail uživateli o vytvoření tohoto účtu**.
 
@@ -257,7 +252,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici plátno na přístupovém panelu, měli byste být automaticky přihlášeni k plátnu, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

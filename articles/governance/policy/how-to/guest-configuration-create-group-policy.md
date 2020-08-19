@@ -1,29 +1,29 @@
 ---
 title: Jak vytvořit definice zásad konfigurace hostů z Zásady skupinyho směrného plánu pro Windows
 description: Přečtěte si, jak převést Zásady skupiny ze směrného plánu zabezpečení Windows serveru 2019 do definice zásady.
-ms.date: 06/05/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: bbb634ed55acf8aa994045fbef6569fae031c841
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080665"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547764"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Jak vytvořit definice zásad konfigurace hostů z Zásady skupinyho směrného plánu pro Windows
 
-Než začnete vytvářet vlastní definice zásad, je vhodné si přečíst informace o koncepčním přehledu v tématu [Azure Policy konfigurace hostů](../concepts/guest-configuration.md). Další informace o vytváření vlastních definic zásad konfigurace hostů pro Linux najdete v tématu [Postup vytvoření zásad konfigurace hostů pro Linux](./guest-configuration-create-linux.md). Další informace o vytváření vlastních definic zásad konfigurace hostů pro Windows najdete v tématu [Postup vytvoření zásad konfigurace hostů pro Windows](./guest-configuration-create.md). 
+Než začnete vytvářet vlastní definice zásad, je vhodné si přečíst informace o koncepčním přehledu v tématu [Azure Policy konfigurace hostů](../concepts/guest-configuration.md). Další informace o vytváření vlastních definic zásad konfigurace hostů pro Linux najdete v tématu [Postup vytvoření zásad konfigurace hostů pro Linux](./guest-configuration-create-linux.md). Další informace o vytváření vlastních definic zásad konfigurace hostů pro Windows najdete v tématu [Postup vytvoření zásad konfigurace hostů pro Windows](./guest-configuration-create.md).
 
-Při auditování používá konfigurace hosta k vytvoření konfiguračního souboru modul prostředku [Konfigurace požadovaného stavu](/powershell/scripting/dsc/overview/overview) (DSC). Konfigurace DSC definuje stav, ve kterém má být počítač. Pokud vyhodnocení konfigurace **nedodržuje předpisy**, aktivuje se *auditIfNotExists* účinek zásad. [Azure Policy konfigurace hostů](../concepts/guest-configuration.md) jenom auditují nastavení v počítačích.
+Při auditování Windows konfigurace hosta k vytvoření konfiguračního souboru využívá modul prostředků DSC ([Desired State Configuration](/powershell/scripting/dsc/overview/overview)). Konfigurace DSC definuje stav, ve kterém by počítač měl být. Pokud vyhodnocení konfigurace **nedodržuje předpisy**, aktivuje se *auditIfNotExists* účinek zásad.
+[Azure Policy konfigurace hostů](../concepts/guest-configuration.md) jenom auditují nastavení v počítačích.
 
 > [!IMPORTANT]
 > Vlastní definice zásad s konfigurací hosta je funkce ve verzi Preview.
 >
-> K provádění auditů na virtuálních počítačích Azure se vyžaduje rozšíření konfigurace hosta.
-> Pokud chcete nasadit rozšíření v celém počítači s Windows, přiřaďte následující definice zásad:
->   - [Nasaďte požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích s Windows.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> Rozšíření konfigurace hosta se vyžaduje k provádění auditů na virtuálních počítačích Azure. Pokud chcete nasadit rozšíření v celém počítači s Windows, přiřaďte následující definice zásad:
+> - [Nasaďte požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích s Windows.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
-Komunita DSC publikovala [modul BaselineManagement](https://github.com/microsoft/BaselineManagement) k převedení exportovaných šablon zásady skupiny do formátu DSC. V kombinaci s rutinou GuestConfiguration vytvoří modul BaselineManagement v Zásady skupiny obsahu Azure Policy konfigurační balíček hosta pro Windows. Podrobnosti o používání modulu BaselineManagement naleznete v článku [rychlý Start: převod zásady skupiny do DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart). 
+Komunita DSC publikovala [modul BaselineManagement](https://github.com/microsoft/BaselineManagement) k převedení exportovaných šablon zásady skupiny do formátu DSC. V kombinaci s rutinou GuestConfiguration vytvoří modul BaselineManagement v Zásady skupiny obsahu Azure Policy konfigurační balíček hosta pro Windows. Podrobnosti o používání modulu BaselineManagement naleznete v článku [rychlý Start: převod zásady skupiny do DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
 
 V této příručce Vás provedeme procesem vytvoření Azure Policy konfiguračního balíčku hosta z objektu Zásady skupiny (GPO). I když tento návod popisuje převod směrného plánu zabezpečení Windows serveru 2019, můžete stejný postup použít i u jiných objektů zásad skupiny.  
 
@@ -62,7 +62,7 @@ Instalace rozhraní **DSC**, **GuestConfiguration**, **správy standardních hod
 
 ## <a name="convert-from-group-policy-to-azure-policy-guest-configuration"></a>Převod z Zásady skupiny na Azure Policy konfiguraci hostů
 
-V dalším kroku převede stažený směrný plán serveru 2019 na konfigurační balíček hosta pomocí modulů konfigurace hosta a základní správy. 
+V dalším kroku převede stažený směrný plán serveru 2019 na konfigurační balíček hosta pomocí modulů konfigurace hosta a základní správy.
 
 1. Pomocí modulu pro správu standardních hodnot převeďte Zásady skupiny na konfiguraci požadovaného stavu.
 
@@ -203,5 +203,5 @@ Přiřazení definice zásady s _DeployIfNotExists_ účinkem vyžaduje další 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o auditování virtuálních počítačů pomocí [Konfigurace hostů](../concepts/guest-configuration.md).
-- Zjistěte, jak [programově vytvářet zásady](programmatically-create.md).
-- Přečtěte si, jak [získat data o dodržování předpisů](get-compliance-data.md).
+- Zjistěte, jak [programově vytvářet zásady](./programmatically-create.md).
+- Přečtěte si, jak [získat data o dodržování předpisů](./get-compliance-data.md).

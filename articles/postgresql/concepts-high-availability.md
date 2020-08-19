@@ -1,17 +1,17 @@
 ---
 title: Vysoká dostupnost – Azure Database for PostgreSQL – jeden server
 description: Tento článek poskytuje informace o vysoké dostupnosti v Azure Database for PostgreSQL jednom serveru.
-author: jasonwhowell
-ms.author: jasonh
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 33c66fff681b0458d1cff1ff6176c34f4771b38e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 16ce5b42e35ff3d650ba18aa95ab80b83fdbfdad
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508460"
+ms.locfileid: "88547677"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Vysoká dostupnost v Azure Database for PostgreSQL – jeden server
 Azure Database for PostgreSQL – jedna serverová služba poskytuje zaručenou vysokou úroveň dostupnosti s finančně zajištěnou smlouvou SLA [99,99%](https://azure.microsoft.com/support/legal/sla/postgresql) provozní dobou. Azure Database for PostgreSQL poskytuje vysokou dostupnost během plánovaných událostí, jako je například operace COMPUTE initated (User-Scale), a také když dojde k neplánovaným událostem, jako je například základní hardware, software nebo selhání sítě. Azure Database for PostgreSQL se můžou rychle zotavit z nejdůležitějších okolností, takže při použití této služby prakticky neexistují žádné aplikace.

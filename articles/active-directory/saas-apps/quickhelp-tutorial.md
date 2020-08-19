@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s QuickHelp | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a QuickHelp.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 655c9ad3-2076-4e2c-8e47-9ed3bf04be56
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: f4b41098a3b374506e655bf90f972b57195e0958
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 10803a16a2ceb84e084070d899b50360446710fc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67093382"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548921"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Kurz: Azure Active Directory integrace s QuickHelp
 
@@ -32,7 +28,7 @@ Integrace QuickHelp s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,9 +103,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí QuickHel
 
     ![Informace o jednotném přihlašování v doméně QuickHelp a adresách URL](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://quickhelp.com/<ROUTEURL>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://quickhelp.com/<ROUTEURL>`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL:`https://auth.quickhelp.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL: `https://auth.quickhelp.com`
 
     > [!NOTE]
     > Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na správce QuickHelp vaší organizace nebo na manažera úspěšného klienta pracovní debaty. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -150,11 +146,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí QuickHel
    
     b. Pokud chcete nahrát stažený soubor s metadaty Azure, klikněte na **Procházet**, přejděte do souboru, ukončete a klikněte na **nahrát metadata**.
    
-    c. Do textového pole **e-mail** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    c. Do textového pole **e-mail** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
    
-    d. Do textového pole **jméno** v prvním `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`poli.
+    d. Do textového pole **jméno v prvním** poli `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
    
-    e. Do textového pole **příjmení** ( `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`jméno).
+    e. Do textového pole **Příjmení (jméno** ) `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` .
    
     f. Na **panelu akcí**klikněte na **Uložit**.
 
@@ -176,11 +172,11 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -218,7 +214,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici QuickHelp, měli byste se automaticky přihlásit k QuickHelp, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

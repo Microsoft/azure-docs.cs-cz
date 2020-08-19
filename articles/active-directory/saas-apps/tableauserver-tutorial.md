@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace jednotného přihlašování se serverem Tableau | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Tableau serverem.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c1917375-08aa-445c-a444-e22e23fa19e0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2325259cd5e613223ee77371d7e563e8ab1e94ca
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a074b3f0accf0e0cf800f6b06ce8466e984f8693
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648453"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546581"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Kurz: Azure Active Directory integrace jednotného přihlašování se serverem Tableau
 
@@ -82,11 +78,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://azure.<domain name>.link`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://azure.<domain name>.link`
 
-    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://azure.<domain name>.link`
+    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://azure.<domain name>.link`
 
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://azure.<domain name>.link/wg/saml/SSO/index.html`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://azure.<domain name>.link/wg/saml/SSO/index.html`
 
     > [!NOTE]
     > Předchozí hodnoty nejsou reálné hodnoty. Aktualizujte hodnoty skutečnou adresou URL a identifikátorem na stránce konfigurace serveru Tableau, která je vysvětlena dále v tomto kurzu.
@@ -109,7 +105,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -153,9 +149,9 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     f. Vyhledejte soubor federačních metadat stažený z Azure Portal a pak ho nahrajte do **souboru metadat SAML IDP**.
 
-    g. Zadejte názvy atributů, které IdP používá k ukládání uživatelských jmen, zobrazovaných jmen a e-mailových adres.
+    například Zadejte názvy atributů, které IdP používá k ukládání uživatelských jmen, zobrazovaných jmen a e-mailových adres.
 
-    h. Klikněte na **Uložit** .
+    h. Klikněte na **Uložit**.
 
     > [!NOTE]
     > Zákazník musí nahrát PEM soubor certifikátu x509 s příponou. CRT a soubor privátního klíče RSA nebo DSA s příponou. Key jako soubor klíče certifikátu. Další informace o souboru certifikátu a souboru klíče certifikátu najdete v [tomto](https://help.tableau.com/current/server/en-us/saml_requ.htm) dokumentu. Pokud potřebujete pomáhat s konfigurací SAML na serveru Tableau, přečtěte si tento článek [Konfigurace protokolu SAML pro server na šířku](https://help.tableau.com/current/server/en-us/config_saml.htm).
@@ -177,9 +173,9 @@ Když kliknete na dlaždici Tableau Server na přístupovém panelu, měli byste
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

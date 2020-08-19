@@ -1,14 +1,14 @@
 ---
 title: 'Vzor: použití značek v definici zásady'
 description: Tento vzor Azure Policy poskytuje příklady přidávání parametrizovaných značek nebo dědění značek ze skupiny prostředků v definici zásady.
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: sample
-ms.openlocfilehash: b71a21fadfc8dec3da2feabbce127303174a95d3
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 3016fc7889f68fd13e993c67ca645a4af055c651
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83704583"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545552"
 ---
 # <a name="azure-policy-pattern-tags"></a>Azure Policy – vzor: značky
 

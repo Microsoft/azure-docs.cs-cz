@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrací se službou Symantec Web Security Service (WSS) | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a službou Symantec Web Security Service (WSS).
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: d6e4d893-1f14-4522-ac20-0c73b18c72a5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d496015440deb80a0159ed0ec234ae60c2c64a66
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7e2087fdd5568156a96645b25cb105cc5f3ca6b7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159941"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544940"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Kurz: Azure Active Directory integrací se službou Symantec Web Security Service (WSS)
 
@@ -36,7 +31,7 @@ Integrace služby WSS Web Security Service (WSS) se službou Azure AD poskytuje 
 - Povolte vynucování pravidel zásad uživatelů a úrovní skupin definovaných ve vašem účtu WSS.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -109,9 +104,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby 
 
     ![Informace o jednotném přihlašování v doméně a adresách URL společnosti Symantec Web Security Service (WSS)](common/idp-intiated.png)
 
-    a. Do textového pole **identifikátor** zadejte adresu URL:`https://saml.threatpulse.net:8443/saml/saml_realm`
+    a. Do textového pole **identifikátor** zadejte adresu URL: `https://saml.threatpulse.net:8443/saml/saml_realm`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL:`https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL: `https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
 
     > [!NOTE]
     > Obraťte se na [tým podpory pro klienta podpory Symantec Web Security Service (WSS)](https://www.symantec.com/contact-us) . hodnoty pro **identifikátor** a **adresu URL odpovědi** z nějakého důvodu nefungují. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -142,12 +137,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -188,7 +183,7 @@ V této části otestujete funkci jednotného přihlašování teď, když jste 
 
 Po nakonfigurování webového prohlížeče na provoz proxy na WSS, když otevřete webový prohlížeč a zkusíte přejít na web, budete přesměrováni na přihlašovací stránku Azure. Zadejte přihlašovací údaje koncového uživatele testu, který byl zřízen ve službě Azure AD (tj. BrittaSimon) a přidruženém heslu. Po ověření budete moct přejít na web, který jste zvolili. Měli byste na straně WSS vytvořit pravidlo zásad, které zablokuje BrittaSimon k procházení na konkrétní lokalitu. při pokusu o přechod na tuto lokalitu jako uživatel BrittaSimon by se měla zobrazit stránka blok WSS.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

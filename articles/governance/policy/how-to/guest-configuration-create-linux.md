@@ -1,22 +1,22 @@
 ---
-title: Postup vytvoření zásad konfigurace hostů pro Linux
+title: Postup vytváření zásad konfigurace hosta pro Linux
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Linux.
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: fef5bdea1b7f98e19f9f8ee8bc9bce8553107fda
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 8bf01d8f69439f7b4d60fba76de0b7abf636c274
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236586"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547716"
 ---
-# <a name="how-to-create-guest-configuration-policies-for-linux"></a>Postup vytvoření zásad konfigurace hostů pro Linux
+# <a name="how-to-create-guest-configuration-policies-for-linux"></a>Postup vytváření zásad konfigurace hosta pro Linux
 
 Než začnete vytvářet vlastní zásady, přečtěte si informace v přehledu [Azure Policy konfiguraci hostů](../concepts/guest-configuration.md).
  
 Další informace o vytváření zásad konfigurace hostů pro Windows najdete na stránce [Postup vytvoření zásad konfigurace hostů pro Windows](./guest-configuration-create.md) .
 
-Při auditování systému [Linux používá konfigurace](https://www.inspec.io/)hosta nespecifikované. Profil INSPEC definuje podmínku, ve které by měl být počítač. Pokud se konfigurace nezdařila, je aktivován efekt zásad **auditIfNotExists** a počítač se považuje za **nevyhovující**.
+Při auditování Linuxu konfigurace hosta využívá [Chef InSpec](https://www.inspec.io/). Profil InSpec definuje stav, ve kterém by počítač měl být. Pokud se konfigurace nezdařila, je aktivován efekt zásad **auditIfNotExists** a počítač se považuje za **nevyhovující**.
 
 [Konfiguraci hosta Azure Policy](../concepts/guest-configuration.md) můžete použít jenom k auditování nastavení v počítačích. Náprava nastavení v počítačích ještě není k dispozici.
 
@@ -25,9 +25,8 @@ Pomocí následujících akcí můžete vytvořit vlastní konfiguraci pro ově�
 > [!IMPORTANT]
 > Vlastní zásady s konfigurací hosta jsou funkcí verze Preview.
 >
-> K provádění auditů na virtuálních počítačích Azure se vyžaduje rozšíření konfigurace hosta.
-> Pokud chcete nasadit rozšíření v rámci všech počítačů se systémem Linux, přiřaďte následující definici zásady:
->   - [Nasaďte požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích se systémem Linux.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> Rozšíření konfigurace hosta se vyžaduje k provádění auditů na virtuálních počítačích Azure. Pokud chcete nasadit rozšíření v rámci všech počítačů se systémem Linux, přiřaďte následující definici zásady:
+> - [Nasaďte požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích se systémem Linux.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>Instalace modulu PowerShellu
 
@@ -52,8 +51,7 @@ Operační systémy, ve kterých se modul dá nainstalovat:
 - Windows
 
 > [!NOTE]
-> Rutina ' test-GuestConfigurationPackage ' vyžaduje OpenSSL verze 1,0 z důvodu závislosti na OMI.
-> To způsobí chybu v jakémkoli prostředí s OpenSSL 1,1 nebo novějším.
+> Rutina ' test-GuestConfigurationPackage ' vyžaduje OpenSSL verze 1,0 z důvodu závislosti na OMI. To způsobí chybu v jakémkoli prostředí s OpenSSL 1,1 nebo novějším.
 
 Modul prostředků konfigurace hosta vyžaduje následující software:
 
@@ -81,7 +79,8 @@ Postup instalace modulu **GuestConfiguration** do PowerShellu:
 
 ## <a name="guest-configuration-artifacts-and-policy-for-linux"></a>Artefakty konfigurace hosta a zásady pro Linux
 
-I v prostředích systému Linux používá konfigurace hosta konfiguraci požadovaného stavu jako abstrakci jazyka. Implementace je založena na nativním kódu (C++), takže nevyžaduje načítání PowerShellu. Nicméně vyžaduje konfiguraci MOF popisující podrobnosti o prostředí. DSC slouží jako obálka pro nespecifikované informace pro standardizaci způsobu jejich spuštění, způsobu zadání parametrů a způsobu, jakým se výstup vrátí službě. Při práci s vlastním netechnickým obsahem se vyžaduje jenom krátké znalosti DSC.
+I v prostředích systému Linux používá konfigurace hosta konfiguraci požadovaného stavu jako abstrakci jazyka. Implementace je založena na nativním kódu (C++), takže nevyžaduje načítání PowerShellu. Nicméně vyžaduje konfiguraci MOF popisující podrobnosti o prostředí.
+DSC slouží jako obálka pro nespecifikované informace pro standardizaci způsobu jejich spuštění, způsobu zadání parametrů a způsobu, jakým se výstup vrátí službě. Při práci s vlastním netechnickým obsahem se vyžaduje jenom krátké znalosti DSC.
 
 #### <a name="configuration-requirements"></a>Požadavky na konfiguraci
 
@@ -141,8 +140,6 @@ AuditFilePathExists -out ./Config
 Uložte tento soubor s názvem `config.ps1` do složky projektu. Spusťte ji v PowerShellu tak, že ji spustíte `./config.ps1` v terminálu. Vytvoří se nový soubor MOF.
 
 `Node AuditFilePathExists`Příkaz není technicky vyžadován, ale vytváří soubor s názvem `AuditFilePathExists.mof` , nikoli jako výchozí `localhost.mof` . Pokud má název souboru. mof postupovat podle konfigurace, usnadňuje uspořádání mnoha souborů při škálování.
-
-
 
 Nyní byste měli mít strukturu projektu, jak je uvedeno níže:
 
@@ -288,8 +285,7 @@ Následující soubory vytvořil `New-GuestConfigurationPolicy` :
 
 Výstup rutiny vrátí objekt, který obsahuje zobrazovaný název iniciativy a cestu k souborům zásad.
 
-Nakonec publikujte definice zásad pomocí `Publish-GuestConfigurationPolicy` rutiny.
-Rutina má pouze parametr **path** , který odkazuje na umístění souborů JSON, které vytvořil `New-GuestConfigurationPolicy` .
+Nakonec publikujte definice zásad pomocí `Publish-GuestConfigurationPolicy` rutiny. Rutina má pouze parametr **path** , který odkazuje na umístění souborů JSON, které vytvořil `New-GuestConfigurationPolicy` .
 
 K provedení příkazu Publikovat budete potřebovat přístup k vytváření zásad v Azure. Konkrétní autorizační požadavky jsou zdokumentovány na stránce [přehled Azure Policy](../overview.md) . Nejlepší integrovanou rolí je **Přispěvatel zásad prostředků**.
 
@@ -314,7 +310,7 @@ V rámci zásad vytvořených v Azure je posledním krokem přiřazení iniciati
 > [!IMPORTANT]
 > Zásady konfigurace hosta se musí **vždy** přiřadit pomocí iniciativy, která kombinuje zásady _AuditIfNotExists_ a _DeployIfNotExists_ . Pokud je přiřazena pouze zásada _AuditIfNotExists_ , požadavky nejsou nasazeny a zásady vždy ukazují, že jsou servery "0" kompatibilní.
 
-Přiřazení definice zásady s efektem _DeployIfNotExists_ vyžaduje další úroveň přístupu. Chcete-li udělit nejnižší oprávnění, můžete vytvořit vlastní definici role, která rozšiřuje **přispěvatele zásad prostředků**. V následujícím příkladu se vytvoří role s názvem **Přispěvatel zásad prostředků Rewards** s dodatečným oprávněním _Microsoft. Authorization/roleAssignments/Write_.
+Přiřazení definice zásady s _DeployIfNotExists_ účinkem vyžaduje další úroveň přístupu. Chcete-li udělit nejnižší oprávnění, můžete vytvořit vlastní definici role, která rozšiřuje **přispěvatele zásad prostředků**. V následujícím příkladu se vytvoří role s názvem **Přispěvatel zásad prostředků Rewards** s dodatečným oprávněním _Microsoft. Authorization/roleAssignments/Write_.
 
 ```azurepowershell-interactive
 $subscriptionid = '00000000-0000-0000-0000-000000000000'
@@ -459,5 +455,5 @@ Další informace o rutinách v tomto nástroji získáte pomocí příkazu Get-
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o auditování virtuálních počítačů pomocí [Konfigurace hostů](../concepts/guest-configuration.md).
-- Zjistěte, jak [programově vytvářet zásady](programmatically-create.md).
-- Přečtěte si, jak [získat data o dodržování předpisů](get-compliance-data.md).
+- Zjistěte, jak [programově vytvářet zásady](./programmatically-create.md).
+- Přečtěte si, jak [získat data o dodržování předpisů](./get-compliance-data.md).

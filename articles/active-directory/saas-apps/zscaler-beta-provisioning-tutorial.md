@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace Zscaler Beta pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
 description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Zscaler Beta verzi.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 83db6b8d-503b-48f3-b918-f9fba1369d53
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 505cd7a3350c937885f0f03268ef326a4f784258
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71b40fe903e5a837046b9b29f62ef4875e3139e5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77062723"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545913"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler Beta pro Automatické zřizování uživatelů
 
@@ -113,7 +109,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
 
-    Vyberte **Povolit zřizování na základě SCIM** k načtení **základní adresy URL** a **nosného tokenu**a pak nastavení uložte. Zkopírujte **základní adresu URL** na **adresu URL tenanta**a **token nosiče** do **tajného tokenu** v Azure Portal.
+    Vyberte **Povolit zřizování na základě SCIM** k načtení **základní adresy URL** a **nosného tokenu**a pak nastavení uložte. Zkopírujte **základní adresu URL** na **adresu URL tenanta**a **token nosiče**  do **tajného tokenu** v Azure Portal.
 
 7. Po vyplnění polí zobrazených v kroku 5 klikněte na **Test připojení** , aby se služba Azure AD mohla připojit k Zscaler Beta. Pokud se připojení nepovede, zajistěte, aby měl účet Zscaler Beta oprávnění správce, a zkuste to znovu.
 

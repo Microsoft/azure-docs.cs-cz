@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s ThirdLight | Microsoft Docs'
 description: V tomto kurzu se dozvíte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ThirdLight.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 168aae9a-54ee-4c2b-ab12-650a2c62b901
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 448d46cd21a63488c4f567d5555fe6406fc0fa73
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3193df0848c0d67935faa0020465e79bd50e2151
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67089093"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544974"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>Kurz: Azure Active Directory integrace s ThirdLight
 
@@ -32,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat ThirdLight s Azure Active Directory (A
 
 Pokud se chcete dozvědět víc o integraci aplikací SaaS s Azure AD, přečtěte si téma [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -55,7 +51,7 @@ K nastavení integrace ThirdLight do služby Azure AD je nutné přidat ThirdLig
 
     ![Vyberte Azure Active Directory.](common/select-azuread.png)
 
-2. Přejít k **podnikovým aplikacím** > **všechny aplikace**:
+2. Přejít k **podnikovým aplikacím**  >  **všechny aplikace**:
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -132,7 +128,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ThirdLig
 
 1. V novém okně webového prohlížeče se přihlaste k webu ThirdLight společnosti jako správce.
 
-1. Přejít do **Configuration** > **správy** > konfiguračního systému**typu Saml2**:
+1. Přejít do **Configuration**  >  **správy konfiguračního systému**  >  **typu Saml2**:
 
     ![Správa systému](./media/thirdlight-tutorial/ic805843.png "Správa systému")
 
@@ -166,7 +162,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
     1. Do pole **název** zadejte **BrittaSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **BrittaSimon@\<\< yourcompanydomain>.>rozšíření **. (Například BrittaSimon@contoso.com.)
+    1. Do pole **uživatelské jméno** zadejte **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Například BrittaSimon@contoso.com .)
 
     1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu, která je uvedena v poli **heslo** .
 
@@ -225,7 +221,7 @@ Teď je potřeba otestovat konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici ThirdLight, měli byste se automaticky přihlásit k instanci ThirdLight, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Kurzy integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

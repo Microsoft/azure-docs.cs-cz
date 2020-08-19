@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d0c6488f9a75bbf9ba6775138edeed9c4a397abf
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 7a0fd4178df92cc9102456c1fa2ae4e8927337e4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552216"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547320"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Povolit protokolování v běhu školicích kurzů Azure ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,12 +42,6 @@ Můžete protokolovat více datových typů, včetně skalárních hodnot, sezna
 ## <a name="interactive-logging-session"></a>Relace interaktivního protokolování
 
 Relace interaktivního protokolování se obvykle používají v prostředích poznámkových bloků. Metoda [experiment. start_logging ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) spustí interaktivní relaci protokolování. Všechny metriky zaznamenávané během relace jsou přidány do záznamu spuštění v experimentu. Metoda [Run. Complete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) ukončí relace a označí běh jako dokončený.
-
-Následující fragment kódu používá interaktivní relaci protokolování k protokolování parametrů školení a metriky výkonu pomocí metody [Run. log ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#log-name--value--description----) . Také nahraje školený model do zadaného výstupního umístění.
-
-[! notebook-Python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb? název = create_experiment)]
-
-Úplný ukázkový Poznámkový blok, který používá interaktivní protokolování, najdete [v tématu výuka modelu v poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb).
 
 ## <a name="scriptrunconfig-logs"></a>Protokoly ScriptRunConfig
 

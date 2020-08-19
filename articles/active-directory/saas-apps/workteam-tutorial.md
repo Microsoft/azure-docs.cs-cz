@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Workteam | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Workteam.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 41df17a1-ba69-414f-8ec3-11079b030df6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b14c08604fcc0f6d2550127ca1f1aa053172b75
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c95fceaa90ca379519379d37c19fb15dcd1de321
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026734"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546340"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workteam"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Workteam
 
@@ -84,7 +79,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://app.workte.am`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://app.workte.am`
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -102,9 +97,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -156,7 +151,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     d. V programu Poznámkový blok otevřete **certifikát s kódováním Base-64** , který jste stáhli z Azure Portal, zkopírujte jeho obsah a vložte ho do pole **podpisový certifikát SAML (Base64)** .
 
-    e. Klikněte na tlačítko **OK**.
+    e. Klikněte na **OK**.
 
 ### <a name="create-workteam-test-user"></a>Vytvořit testovacího uživatele Workteam
 
@@ -176,9 +171,9 @@ Aby se uživatelé Azure AD mohli přihlašovat k Workteam, musí se zřídit v 
 
     a. Do textového pole **název** zadejte jméno uživatele jako **B. Simon**.
 
-    b. Do textového pole **e-mailu** zadejte e-maily uživatele jako `B.Simon\@contoso.com`.
+    b. Do textového pole **e-mailu** zadejte e-maily uživatele jako `B.Simon\@contoso.com` .
 
-    c. Klikněte na tlačítko **OK**.
+    c. Klikněte na **OK**.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -188,9 +183,9 @@ Když na přístupovém panelu kliknete na dlaždici Workteam, měli byste se au
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

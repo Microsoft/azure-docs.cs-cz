@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s iLMS | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a iLMS.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: d6e11639-6cea-48c9-b008-246cf686e726
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50097aec1c4a003d3494029e8f25bb13b564f207
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 219dd6e4a8f04da8b28a28e5473394f0721e4013
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68944022"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545199"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Kurz: integrace iLMS s Azure Active Directory
 
@@ -82,11 +77,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **identifikátor** vložte hodnotu **identifikátoru** , kterou jste zkopírovali z části **poskytovatel služeb** v nastavení SAML na portálu pro správu iLMS.
 
-    b. Do textového pole **Adresa URL odpovědi** vložte hodnotu **koncového bodu (URL)** , který kopírujete z části **poskytovatel služeb** nastavení SAML na portálu pro správu iLMS, který má následující vzor.`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
+    b. Do textového pole **Adresa URL odpovědi** vložte hodnotu **koncového bodu (URL)** , který kopírujete z části **poskytovatel služeb** nastavení SAML na portálu pro správu iLMS, který má následující vzor. `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **koncového bodu (URL)** , kterou kopírujete z oddílu **Service Provider** v nastavení SAML na portálu pro správu iLMS jako`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
+    Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **koncového bodu (URL)** , kterou kopírujete z oddílu **Service Provider** v nastavení SAML na portálu pro správu iLMS jako `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
 
 1. Pro povolení zřizování JIT očekává vaše aplikace iLMS kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
@@ -95,7 +90,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše očekává aplikace iLMS několik dalších atributů, které se vrátí zpátky v odpovědi SAML. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | --------|------------- |
     | dělení | User. Department |
     | oblast | User. State |
@@ -113,7 +108,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     f. Klikněte na **OK** .
 
-    g. Klikněte na **Uložit**.
+    například Klikněte na **Uložit**.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -165,7 +160,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     f. Pokud je zaškrtnutá možnost **aktualizovat prázdné hodnoty pro povinná pole v profilu uživatele** , způsobí to, že při přihlášení bude profil iLMS uživatele obsahovat prázdné hodnoty pro tato pole.
 
-    g. Zaregistrujte **e-mail s oznámením o chybách** a zadejte e-mail uživatele, u kterého chcete dostávat e-mailové oznámení o chybách.
+    například Zaregistrujte **e-mail s oznámením o chybách** a zadejte e-mail uživatele, u kterého chcete dostávat e-mailové oznámení o chybách.
 
 7. Uložte nastavení kliknutím na tlačítko **Uložit** .
 
@@ -179,9 +174,9 @@ V této části vytvoříte testovacího uživatele v Azure Portal s názvem Bri
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `Britta Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -221,7 +216,7 @@ Pokud potřebujete ručně vytvořit uživatele, postupujte podle následující
 
     b. Do textového pole **příjmení** zadejte příjmení, jako je Simon.
 
-    c. Do textového pole **ID e-mailu** zadejte e-mailovou adresu BrittaSimon@contoso.comuživatele.
+    c. Do textového pole **ID e-mailu** zadejte e-mailovou adresu uživatele BrittaSimon@contoso.com .
 
     d. V rozevíracím seznamu **oblast** vyberte hodnotu pro oblast.
 
@@ -229,7 +224,7 @@ Pokud potřebujete ručně vytvořit uživatele, postupujte podle následující
 
     f. V rozevíracím seznamu **oddělení** vyberte hodnotu pro oddělení.
 
-    g. Klikněte na **Uložit**.
+    například Klikněte na **Uložit**.
 
     > [!NOTE]
     > Registrační e-maily můžete odeslat uživateli zaškrtnutím políčka **Odeslat registrační poštu** .
@@ -238,7 +233,7 @@ Pokud potřebujete ručně vytvořit uživatele, postupujte podle následující
 
 Když na přístupovém panelu vyberete dlaždici iLMS, měli byste se automaticky přihlásit k iLMS, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

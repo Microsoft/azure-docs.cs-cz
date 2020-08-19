@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace Juno cesty pro Automatické zřizování uživatelů s Azure Active Directory | Microsoft Docs'
 description: Přečtěte si, jak automaticky zřídit a zrušit zřízení uživatelských účtů z Azure AD až po Juno cestu.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 79813b19-c96e-4459-a4e5-636a6b6f5041
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0538902897d088c8ce271487b3f30698af0bb1eb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 96dd5c617eb643ce8db5058bca238f5c3a83e756
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926548"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546880"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Kurz: Konfigurace Juno cesty pro Automatické zřizování uživatelů
 
@@ -50,7 +46,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 ## <a name="step-2-configure-juno-journey-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace Juno cesty pro podporu zřizování pomocí Azure AD
 
-1. V případě **tajného tokenu** a **adresy URL klienta** kontaktujte tým podpory Juno pro jízdu na adrese support@the-juno.com . Tato hodnota se zadá do polí **tajný token** a **Adresa URL tenanta** na kartě zřizování aplikace Juno pro cestu v Azure Portal. 
+1. V případě **tajného tokenu**  a **adresy URL klienta** kontaktujte tým podpory Juno pro jízdu na adrese support@the-juno.com . Tato hodnota se zadá do polí **tajný token**  a **Adresa URL tenanta** na kartě zřizování aplikace Juno pro cestu v Azure Portal. 
 
 ## <a name="step-3-add-juno-journey-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání cesty Juno z Galerie aplikací Azure AD
 
@@ -71,7 +67,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-juno-journey-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro cestu Juno ve službě Azure AD:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

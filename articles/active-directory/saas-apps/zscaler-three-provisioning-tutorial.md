@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace Zscaler tří pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
 description: V tomto kurzu se dozvíte, jak nakonfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů, které Zscaler tři.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 385a1153-0f47-4e41-8f44-da1b49d7629e
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 177bc34162c2b5e4dadc54e1166c5f6061068bae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b7cb55b5d14208128c894a007d13f4e73fc54b3b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77064100"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545801"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler tří pro Automatické zřizování uživatelů
 
@@ -79,7 +75,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 > [!TIP]
 > Pro Zscaler tři možná budete chtít povolit jednotné přihlašování založené na SAML. Pokud to uděláte, postupujte podle pokynů v tématu [Zscaler tři jednotné přihlašování](zscaler-three-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, ale tyto dvě funkce spolu doplňují.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a **Vyberte podnikové aplikace** > **všechny aplikace** > **Zscaler tři**:
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace**  >  **všechny aplikace**  >  **Zscaler tři**:
 
     ![Podnikové aplikace](common/enterprise-applications.png)
 
@@ -97,7 +93,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** vašeho Zscaler tři účtu, jak je popsáno v dalším kroku.
 
-6. Pokud chcete získat **adresu URL tenanta** a **tajný token**, klikněte **na** > tlačítko**nastavení ověřování** na portálu Zscaler tři a v části **typ ověřování**vyberte **SAML** :
+6. Pokud chcete získat **adresu URL tenanta** a **tajný token**, klikněte **na**  >  tlačítko**nastavení ověřování** na portálu Zscaler tři a v části **typ ověřování**vyberte **SAML** :
 
     ![Zscaler tři nastavení ověřování](./media/zscaler-three-provisioning-tutorial/secret-token-1.png)
 

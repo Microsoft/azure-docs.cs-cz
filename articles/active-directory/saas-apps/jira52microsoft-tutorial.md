@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s JIRA SAML SSO Microsoft (V 5.2) | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a JIRA SSO SSO Microsoft (V 5.2).
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d0c00408-f9b8-4a79-bccc-c346a7331845
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3b304bb35ea69906fc9576f45733134387be1b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e0198fdcfea1656e3aec5179358e69fb6fb55723
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67099517"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547524"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Kurz: Azure Active Directory Integration JIRA SSO Microsoftu (V 5.2)
 
@@ -33,7 +28,7 @@ Integrace služby JIRA SAML SSO Microsoftu (V 5.2) pomocí Azure AD poskytuje n�
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="description"></a>Popis
 
@@ -132,11 +127,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
     ![JIRA jednotné přihlašování SAML od Microsoftu (V 5.2) informace o jednotném přihlašování v doméně a adresách URL](common/sp-identifier-reply.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<domain:port>/plugins/servlet/saml/auth`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<domain:port>/plugins/servlet/saml/auth`
 
-    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<domain:port>/`
+    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<domain:port>/`
 
-    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<domain:port>/plugins/servlet/saml/auth`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Port je nepovinný pro případ, že se jedná o pojmenovanou adresu URL. Tyto hodnoty jsou obdrženy během konfigurace modulu plug-in JIRA, který je vysvětlen dále v tomto kurzu.
@@ -187,7 +182,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
     f. Pokud používáte federované domény (třeba ADFS atd.) se službou Azure AD, klikněte na možnost **Povolit zjišťování domovské sféry** a nakonfigurujte **název domény**.
 
-    g. Do pole **název domény** zadejte název domény v případě přihlášení založeného na ADFS.
+    například Do pole **název domény** zadejte název domény v případě přihlášení založeného na ADFS.
 
     h. Zaškrtněte **možnost Povolit jednotné odhlašování** , pokud se chcete odhlásit ze služby Azure AD, když se uživatel odhlásí z JIRA. 
 
@@ -214,11 +209,11 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte `brittasimon\@yourcompanydomain.extension`. Například, BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon\@yourcompanydomain.extension` . Například, BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -270,11 +265,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k JIRA místním serveru, musí 
 
     ![Přidat zaměstnance](./media/jira52microsoft-tutorial/user4.png)
 
-    a. Do textového pole **e-mailová adresa** zadejte e-mailovou Brittasimon@contoso.comadresu uživatele.
+    a. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele Brittasimon@contoso.com .
 
     b. Do textového pole **celé jméno** zadejte jméno a příjmení uživatele, jako je Britta Simon.
 
-    c. Do textového pole **uživatelské jméno** zadejte e-maily jako Brittasimon@contoso.comuživatel.
+    c. Do textového pole **uživatelské jméno** zadejte e-maily jako uživatel Brittasimon@contoso.com .
 
     d. Do textového pole **heslo** zadejte heslo uživatele.
 
@@ -286,7 +281,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici JIRA SAML SSO Microsoft (V 5.2) na přístupovém panelu, měli byste se automaticky přihlásit k JIRA SAML SSO Microsoft (V 5.2), pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

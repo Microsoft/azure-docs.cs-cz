@@ -3,24 +3,23 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá agenta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 906c86856342febc92f070493fde31af42e4ca10
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 624f0a2464323e8002b9940471c93b3030f053d5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987099"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544668"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta ve službě Azure Policy
 
-Azure Policy můžou auditovat nastavení v počítači, a to pro počítače běžící v Azure i v [počítačích připojených k Arc](../../../azure-arc/servers/overview.md).
-Ověřování se provádí pomocí rozšíření Konfigurace hosta a prostřednictvím klienta. Toto rozšíření prostřednictvím klienta ověřuje nastavení, jako například:
+Azure Policy můžou auditovat nastavení v počítači, a to pro počítače běžící v Azure i v [počítačích připojených k Arc](../../../azure-arc/servers/overview.md). Ověřování se provádí pomocí rozšíření Konfigurace hosta a prostřednictvím klienta. Toto rozšíření prostřednictvím klienta ověřuje nastavení, jako například:
 
 - Konfigurace operačního systému
 - Konfigurace nebo přítomnost aplikací
 - Nastavení prostředí
 
-V tuto chvíli většina zásad konfigurace hosta Azure Policy jenom auditovat nastavení v rámci počítače.
-Nepoužívají konfigurace. Výjimkou je jedna integrovaná zásada, na [kterou se odkazuje níže](#applying-configurations-using-guest-configuration).
+Většina zásad konfigurace hosta Azure Policy momentálně pouze audituje nastavení uvnitř počítače.
+Neaplikují konfigurace. Výjimkou je jedna integrovaná zásada, na [kterou se odkazuje níže](#applying-configurations-using-guest-configuration).
 
 ## <a name="enable-guest-configuration"></a>Povolit konfiguraci hosta
 
@@ -32,7 +31,7 @@ Než budete moct použít konfiguraci hosta, musíte zaregistrovat poskytovatele
 
 ## <a name="deploy-requirements-for-azure-virtual-machines"></a>Nasazení požadavků pro virtuální počítače Azure
 
-Pokud chcete auditovat nastavení v rámci počítače, je povolená [rozšíření virtuálního počítače](../../../virtual-machines/extensions/overview.md) a počítač musí mít systémově spravovanou identitu. Rozšíření stáhne příslušné přiřazení zásad a odpovídající definici konfigurace. Identita se používá k ověření počítače při jeho čtení a zápisu do služby konfigurace hosta. Pro připojené počítače ARC není rozšíření vyžadováno, protože je zahrnuto v agentovi počítače připojeného k ARC.
+Pokud chcete auditovat nastavení v rámci počítače, je povolená [rozšíření virtuálního počítače](../../../virtual-machines/extensions/overview.md) a počítač musí mít systémově spravovanou identitu. Toto rozšíření stáhne příslušné přiřazení zásad a odpovídající definici konfigurace. Identita se používá k ověření počítače při jeho čtení a zápisu do služby konfigurace hosta. Pro připojené počítače ARC není rozšíření vyžadováno, protože je zahrnuto v agentovi počítače připojeného k ARC.
 
 > [!IMPORTANT]
 > K auditování virtuálních počítačů Azure se vyžaduje rozšíření konfigurace hosta a spravovaná identita. Pokud chcete nasadit rozšíření ve velkém měřítku, přiřaďte následující iniciativu zásad:
@@ -60,7 +59,7 @@ Klient konfigurace hosta kontroluje nový obsah každých 5 minut. Po přijetí 
 
 ## <a name="supported-client-types"></a>Podporované typy klientů
 
-Zásady konfigurace hosta jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici ve Azure Marketplace, jsou vyloučené, pokud není agent konfigurace hosta kompatibilní.
+Zásady konfigurace hosta jsou zahrnuté do nových verzí. Starší verze operačních systémů, které jsou k dispozici v Azure Marketplace, jsou vyloučené, pokud není agent konfigurace hosta kompatibilní.
 Následující tabulka obsahuje seznam podporovaných operačních systémů pro Image Azure:
 
 |Publisher|Name|Verze|
@@ -93,8 +92,7 @@ Provoz se směruje pomocí [virtuální veřejné IP adresy](../../../virtual-ne
 
 ### <a name="azure-arc-connected-machines"></a>Počítače připojené k Azure ARC
 
-Uzly umístěné mimo Azure, které jsou připojené přes Azure ARC, vyžadují připojení ke službě konfigurace hosta.
-Podrobnosti o požadavcích sítě a proxy serveru, které jsou k dispozici v [dokumentaci k Azure ARC](../../../azure-arc/servers/overview.md).
+Uzly umístěné mimo Azure, které jsou připojené přes Azure ARC, vyžadují připojení ke službě konfigurace hosta. Podrobnosti o požadavcích sítě a proxy serveru, které jsou k dispozici v [dokumentaci k Azure ARC](../../../azure-arc/servers/overview.md).
 
 Aby počítače komunikovaly s poskytovatelem prostředků konfigurace hosta v Azure, vyžadují odchozí přístup k datacentrům Azure na portu **443**. Pokud síť v Azure nepovoluje odchozí přenosy, nakonfigurujte výjimky s pravidly [skupiny zabezpečení sítě](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) . [Označení služby](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" lze použít k odkazování na službu konfigurace hosta.
 
@@ -157,9 +155,9 @@ Zásady konfigurace hosta momentálně podporují přiřazování stejného při
 
 Rozšíření konfigurace hosta zapisuje soubory protokolu do následujících umístění:
 
-Systému`C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
+Systému `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
-Linux`/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
+Linux `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
 
 Kde `<version>` odkazuje na aktuální číslo verze.
 

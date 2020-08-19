@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: nové přiřazení zásad s portálem'
 description: V tomto rychlém startu použijete Azure Portal k vytvoření přiřazení Azure Policy k identifikaci prostředků, které nedodržují předpisy.
-ms.date: 03/24/2020
+ms.date: 08/17/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3a514478f3cefa49c37c3431a80b578dff480584
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb3f97ab2f8da3ff2809cb969c8442779e173983
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240005"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548375"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy
 
@@ -19,9 +19,9 @@ Na konci tohoto procesu úspěšně identifikujete virtuální počítače, kter
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="create-a-policy-assignment"></a>Vytvoření přiřazení zásady
+## <a name="create-a-policy-assignment"></a>Vytvoření přiřazení zásad
 
 V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte _virtuální počítače auditu, které nepoužívají definici zásad spravované disky_ .
 
@@ -37,7 +37,7 @@ V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte _virtuá
 
    :::image type="content" source="./media/assign-policy-portal/select-assign-policy.png" alt-text="Přiřazení definice zásady ze stránky přiřazení" border="false":::
 
-1. Na stránce **Přiřadit zásadu** vyberte **Obor** tak, že kliknete na tři tečky a vyberete skupinu pro správu nebo předplatné. Volitelně můžete vybrat skupinu prostředků. Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat. Pak v dolní části stránky **Obor** klikněte na **Vybrat**.
+1. Na stránce **přiřadit zásadu** nastavte **obor** tak, že vyberete tři tečky a pak vyberete buď skupinu pro správu nebo předplatné. Volitelně můžete vybrat skupinu prostředků. Obor určuje, pro které prostředky nebo seskupení prostředků se toto přiřazení zásady bude vynucovat. Pak použijte tlačítko **Vybrat** v dolní části stránky **Rozsah** .
 
    V tomto příkladu se používá předplatné **Contoso** . Vaše předplatné se bude lišit.
 
@@ -51,7 +51,7 @@ V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte _virtuá
 
    Částečný seznam dostupných integrovaných zásad najdete v tématu [Azure Policy Samples](./samples/index.md).
 
-1. Prohledejte seznam definic zásad a najděte definici _Audit virtuálních počítačů, které nepoužívají spravované disky_. Klikněte na tuto zásadu a potom na **Vybrat**.
+1. Prohledejte seznam definic zásad a najděte definici _Audit virtuálních počítačů, které nepoužívají spravované disky_. Vyberte tuto zásadu a pak použijte tlačítko **Vybrat** .
 
    :::image type="content" source="./media/assign-policy-portal/select-available-definition.png" alt-text="Vyhledání správné definice zásady" border="false":::
 
@@ -60,13 +60,13 @@ V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte _virtuá
 
 1. Políčko **Vytvořit spravovanou identitu** ponechte nezaškrtnuté. Toto políčko _musí_ být zaškrtnuto, pokud zásada nebo iniciativa zahrnuje zásadu s efektem [deployIfNotExists](./concepts/effects.md#deployifnotexists) . Protože zásady použité pro tento rychlý Start nejsou, ponechte pole prázdné. Další informace najdete v tématech věnovaných [spravovaným identitám](../../active-directory/managed-identities-azure-resources/overview.md) a [principu fungování zabezpečení náprav](./how-to/remediate-resources.md#how-remediation-security-works).
 
-1. Klikněte na **Přiřadit**.
+1. Vyberte **Přiřadit**.
 
 Nyní můžete identifikovat nekompatibilní prostředky, abyste pochopili stav dodržování předpisů vašeho prostředí.
 
-## <a name="identify-non-compliant-resources"></a>Identifikace prostředků, které nedodržují předpisy
+## <a name="identify-non-compliant-resources"></a>Zjištění nevyhovujících prostředků
 
-Na levé straně stránky vyberte **dodržování předpisů** . Pak vyhledejte **auditované virtuální počítače, které nepoužívají přiřazení zásad spravovaných disků** , které jste vytvořili.
+Na levé straně stránky vyberte **dodržování předpisů** . Pak vyhledejte _auditované virtuální počítače, které nepoužívají přiřazení zásad spravovaných disků_ , které jste vytvořili.
 
 :::image type="content" source="./media/assign-policy-portal/policy-compliance.png" alt-text="Podrobnosti o kompatibilitě na stránce dodržování zásad" border="false":::
 
@@ -76,10 +76,10 @@ Pokud se napříč stávajícími prostředky vyhodnotí nějaká podmínka a zj
 
 | **Stav prostředku** | **Účinek** | **Vyhodnocení zásad** | **Stav dodržování předpisů** |
 | --- | --- | --- | --- |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Nevyhovující předpisům |
-| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Odpovídající |
-| Nová | Audit, AuditIfNotExist\* | True | Nevyhovující předpisům |
-| Nová | Audit, AuditIfNotExist\* | False | Odpovídající |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Ano | Nevyhovující předpisům |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Ne | Odpovídající |
+| Nová | Audit, AuditIfNotExist\* | Ano | Nevyhovující předpisům |
+| Nová | Audit, AuditIfNotExist\* | Ne | Odpovídající |
 
 \* Účinky Append, DeployIfNotExist a AuditIfNotExist vyžadují, aby byl příkaz IF nastaven na TRUE.
 Tyto účinky také vyžadují, aby existovala podmínka, která musí nabývat hodnoty FALSE, aby byla zásada vyhodnocena jako Nevyhovující předpisům. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
@@ -88,9 +88,9 @@ Tyto účinky také vyžadují, aby existovala podmínka, která musí nabývat 
 
 K odebrání vytvořeného přiřazení použijte následující postup:
 
-1. Na levé straně stránky služby Azure Policy vyberte **Dodržování předpisů** (nebo **Přiřazení**) a vyhledejte přiřazení zásady **Audit virtuálních počítačů, které nepoužívají spravované disky**, které jste vytvořili.
+1. Na levé straně stránky služby Azure Policy vyberte **Dodržování předpisů** (nebo **Přiřazení**) a vyhledejte přiřazení zásady _Audit virtuálních počítačů, které nepoužívají spravované disky_, které jste vytvořili.
 
-1. Klikněte pravým tlačítkem na **Auditovat virtuální počítače, které nepoužívají správu zásad spravovaných disků** , a vyberte **Odstranit přiřazení**.
+1. Klikněte pravým tlačítkem na _Auditovat virtuální počítače, které nepoužívají správu zásad spravovaných disků_ , a vyberte **Odstranit přiřazení**.
 
    :::image type="content" source="./media/assign-policy-portal/delete-assignment.png" alt-text="Odstranění přiřazení ze stránky dodržování předpisů" border="false":::
 

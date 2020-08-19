@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: 6190653934dede1fa042beca8dbd2d7c06f43cfc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cdcf4182f098affba0a18be5846ae6f6e52d7229
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538016"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547354"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Instalace a spuštění kontejnerů pro rozpoznávání formulářů (Preview)
 
@@ -28,9 +28,9 @@ Chcete-li omezit složitost a snadno integrovat model rozpoznávání vlastního
 |----------|----------|
 | Rozpoznávání formulářů | <li>Zpracovává soubory PDF, PNG a JPG.<li>Vlastní modely vlaků s minimálně pěti formuláři stejného rozložení <li>Extrahuje páry klíč-hodnota a informace o tabulce. <li>K detekci a extrakci vytištěného textu z obrázků uvnitř formulářů používá funkci Azure Cognitive Services rozhraní API pro počítačové zpracování obrazu Rozpoznávání textu.<li>Nevyžaduje poznámku nebo popisky |
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete používat kontejnery pro rozpoznávání formulářů, musíte splnit následující předpoklady:
 
@@ -49,13 +49,13 @@ Než začnete používat kontejnery pro rozpoznávání formulářů, musíte sp
 
 Existují tři primární parametry pro všechny požadované kontejnery Cognitive Services. Podmínky licenční smlouvy s koncovým uživatelem (EULA) musí být k dispozici s hodnotou `accept` . Kromě toho je potřeba adresa URL koncového bodu i klíč rozhraní API.
 
-### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>Identifikátor URI koncového bodu `{COMPUTER_VISION_ENDPOINT_URI}` a`{FORM_RECOGNIZER_ENDPOINT_URI}`
+### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>Identifikátor URI koncového bodu `{COMPUTER_VISION_ENDPOINT_URI}` a `{FORM_RECOGNIZER_ENDPOINT_URI}`
 
 Hodnota identifikátoru URI **koncového bodu** je k dispozici na stránce *Přehled* Azure Portal odpovídajícího prostředku služby pro rozpoznávání. Přejděte na stránku *Přehled* , najeďte myší na koncový bod a `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> zobrazí se ikona. Zkopírujte a použijte tam, kde je to potřeba.
 
 ![Shromáždit identifikátor URI koncového bodu pro pozdější použití](../containers/media/overview-endpoint-uri.png)
 
-### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>Klíče `{COMPUTER_VISION_API_KEY}` a`{FORM_RECOGNIZER_API_KEY}`
+### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>Klíče `{COMPUTER_VISION_API_KEY}` a `{FORM_RECOGNIZER_API_KEY}`
 
 Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíčů Azure Portal odpovídajícího prostředku služby pro rozpoznávání. Přejděte na stránku *klíče* a klikněte na `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> ikonu.
 
@@ -319,7 +319,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, instalaci a spuštění kontejnerů pro rozpoznávání formulářů. Souhrn:
 

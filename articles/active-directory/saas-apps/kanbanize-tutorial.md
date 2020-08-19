@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Kanbanize | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Kanbanize.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b436d2f6-bfa5-43fd-a8f9-d2144dc25669
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c5a3a096c5a44f681d23587837ae31fd1af33b2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 686a186650bfe4066533b0f086c080b5ffb14eb6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72373230"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546827"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kanbanize"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Kanbanize
 
@@ -83,17 +78,17 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.kanbanize.com/`
+     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.kanbanize.com/`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.kanbanize.com/saml/acs`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<subdomain>.kanbanize.com/saml/acs`
 
     c. Klikněte na **nastavit další adresy URL**.
 
-    d. Do textového pole **stav přenosu** zadejte adresu URL:`/ctrl_login/saml_login`
+    d. Do textového pole **stav přenosu** zadejte adresu URL: `/ctrl_login/saml_login`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.kanbanize.com`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<subdomain>.kanbanize.com`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Kanbanize](mailto:support@ms.kanbanize.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -118,9 +113,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -174,16 +169,16 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     c. Do textového pole **koncového bodu odhlašovacího IDP** vložte hodnotu **URL pro odhlášení**, kterou jste zkopírovali z Azure Portal.
 
-    d. Do pole **název atributu pro textové pole e-mailu** zadejte tuto hodnotu.`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    d. Do pole **název atributu pro textové pole e-mailu** zadejte tuto hodnotu. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-    e. Do textového pole **název atributu pro křestní jméno** zadejte tuto hodnotu.`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    e. Do textového pole **název atributu pro křestní jméno** zadejte tuto hodnotu. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    f. Do textového pole **název atributu pro jméno a příjmení** zadejte tuto hodnotu.`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
+    f. Do textového pole **název atributu pro jméno a příjmení** zadejte tuto hodnotu. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
 
     > [!Note]
     > Tyto hodnoty lze získat kombinováním oboru názvů a hodnot názvu příslušného atributu z oddílu atributy uživatele v Azure Portal.
 
-    g. V programu Poznámkový blok otevřete certifikát s kódováním Base-64, který jste stáhli z Azure Portal, zkopírujte jeho obsah (bez počátečních a koncových značek) a pak ho vložte do pole **certifikát IDP X. 509** .
+    například V programu Poznámkový blok otevřete certifikát s kódováním Base-64, který jste stáhli z Azure Portal, zkopírujte jeho obsah (bez počátečních a koncových značek) a pak ho vložte do pole **certifikát IDP X. 509** .
 
     h. Zaškrtněte **Povolit přihlášení pomocí jednotného přihlašování i Kanbanize**.
 
@@ -199,11 +194,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Kanbanize, měli byste se automaticky přihlásit k Kanbanize, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

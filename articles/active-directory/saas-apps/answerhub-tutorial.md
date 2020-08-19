@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s AnswerHub | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a AnswerHub.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 818b91d7-01df-4b36-9706-f167c710a73c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a124832bd42a0a144ebc6000b818fb825aa422ef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d453cc5300dc658e4b33bb0591100deae5f34aef
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73152984"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544736"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Kurz: Azure Active Directory integrace s AnswerHub
 
@@ -33,7 +28,7 @@ Integrace AnswerHub s Azure AD přináší tyto výhody:
 * Účty můžete spravovat z centrálního umístění: Azure Portal.
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,9 +101,9 @@ V této části nastavíte jednotné přihlašování Azure AD v Azure Portal.
 
     ![Základní konfigurační oddíl SAML](common/sp-identifier.png)
 
-    a. Do pole **přihlašovací adresa URL** zadejte adresu URL, která má tento vzor:`https://<company>.answerhub.com`
+    a. Do pole **přihlašovací adresa URL** zadejte adresu URL, která má tento vzor: `https://<company>.answerhub.com`
 
-    b. Do pole **identifikátor (ID entity)** zadejte adresu URL, která má tento vzor:`https://<company>.answerhub.com`
+    b. Do pole **identifikátor (ID entity)** zadejte adresu URL, která má tento vzor: `https://<company>.answerhub.com`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL a identifikátoru. Pokud chcete získat hodnoty, obraťte se na [tým podpory AnswerHub](mailto:success@answerhub.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -185,7 +180,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@<yourcompanydomain. Extension>**.  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@<yourcompanydomain. Extension>**.  
     Například, BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
@@ -249,7 +244,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici AnswerHub, měli byste se automaticky přihlásit k AnswerHub, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Kurzy pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

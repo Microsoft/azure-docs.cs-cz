@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Image Relay | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a předáváním obrázků.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 65bb5990-07ef-4244-9f41-cd28fc2cb5a2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fd0637a632b277eae019ac4aebfbc7cdb87e8e2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec0cc88122521a5f59da45107956b4f25156b02f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158969"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545246"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Kurz: Azure Active Directory integrace s obrázkovým přenosem
 
@@ -33,7 +28,7 @@ Integrace Image Relay se službou Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,9 +101,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s využitím Ima
 
     ![Informace o jednotném přihlašování k doméně a adresám URL Image Relay](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.imagerelay.com/`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.imagerelay.com/`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.imagerelay.com/sso/metadata`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<companyname>.imagerelay.com/sso/metadata`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pro získání těchto hodnot [tým podpory pro klienty](http://support.imagerelay.com/) s kontaktem pro předávání obrázků. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -157,7 +152,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s využitím Ima
 
     a. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    b. Do textového pole **Adresa URL pro odhlášení** vložte hodnotu **adresy URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
+    b. Do textového pole **Adresa URL pro odhlášení**  vložte hodnotu **adresy URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
 
     c. Jako **formát ID názvu**vyberte název **urn: Oasis: název: TC: SAML: 1.1: NameId-Format: EmailAddress**.
 
@@ -171,7 +166,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s využitím Ima
 
     ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
 
-    g. V části **zřizování uživatelů za běhu** vyberte možnost **Povolit zřizování uživatelů za běhu**.
+    například V části **zřizování uživatelů za běhu** vyberte možnost **Povolit zřizování uživatelů za běhu**.
 
     ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
 
@@ -199,12 +194,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -240,7 +235,7 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v obrazovém
 
 1. Přihlaste se k webu Image Relay společnosti jako správce.
 
-2. Klepněte na **uživatelé & oprávnění** a vyberte **vytvořit uživatele jednotného přihlašování**.
+2. Klepněte na **uživatelé & oprávnění**     a vyberte **vytvořit uživatele jednotného přihlašování**.
 
     ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
@@ -248,7 +243,7 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v obrazovém
 
     ![Konfigurace jednotného přihlašování](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 
-4. Klikněte na **Vytvořit**.
+4. Klikněte na možnost **Vytvořit**.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
@@ -256,7 +251,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici s obrázkem Relay na přístupovém panelu byste měli být automaticky přihlášeni k předávání obrázků, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

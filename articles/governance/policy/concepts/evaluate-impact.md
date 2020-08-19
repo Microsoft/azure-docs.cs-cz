@@ -1,14 +1,14 @@
 ---
 title: Vyhodnotit dopad nové definice Azure Policy
 description: Pochopení procesu, který se má provést při zavedení nové definice zásady do prostředí Azure
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9844e8435452b388c934c5969898fe01d23fb47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 243f04cc20e1fb7167306b925a0e494b34cf1267
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684303"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544698"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Vyhodnotit dopad nové definice Azure Policy
 

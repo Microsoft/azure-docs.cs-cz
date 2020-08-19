@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s TalentLMS | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TalentLMS.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c903d20d-18e3-42b0-b997-6349c5412dde
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 970ab9de270b1227884a13ac578d4c439043b20c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57445d1010e9775e3a1735fd64722c44db8e0a4e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74233369"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546576"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Kurz: Azure Active Directory integrace s TalentLMS
 
@@ -33,7 +28,7 @@ Integrace TalentLMS s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,9 +101,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TalentLM
 
     ![Informace o jednotném přihlašování v doméně TalentLMS a adresách URL](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<tenant-name>.TalentLMSapp.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<tenant-name>.TalentLMSapp.com`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`http://<tenant-name>.talentlms.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `http://<tenant-name>.talentlms.com`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta TalentLMS](https://www.talentlms.com/contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -157,13 +152,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TalentLM
 
     f. Zadejte tyto informace:
 
-    * Do textového pole **TargetedID** zadejte`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
+    * Do textového pole **TargetedID** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
 
-    * Do textového pole **název** zadejte`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    * Do textového pole **název** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    * Do textového pole **příjmení** zadejte`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
+    * Do textového pole **příjmení** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
 
-    * Do textového pole **e-mail** zadejte`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    * Do textového pole **e-mail** zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
 1. Klikněte na **Uložit**.
 
@@ -185,11 +180,11 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -229,13 +224,13 @@ Aby se uživatelé Azure AD mohli přihlašovat k TalentLMS, musí se zřídit v
 
 1. Na stránce **Přidat uživatelský** dialog proveďte následující kroky:
 
-    ![Přidání uživatele](./media/talentlms-tutorial/IC777299.png "Přidání uživatele")  
+    ![Přidat uživatele](./media/talentlms-tutorial/IC777299.png "Přidání uživatele")  
 
     a. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako například **Britta**.
 
     b. Do textového pole **příjmení** zadejte jméno uživatele jako **Simon**.
  
-    c. Do textového pole **e-mailová adresa** zadejte e-maily uživatele, jako `brittasimon\@contoso.com`je.
+    c. Do textového pole **e-mailová adresa** zadejte e-maily uživatele, jako je `brittasimon\@contoso.com` .
 
     d. Klikněte na **Add User** (Přidat uživatele).
 
@@ -248,7 +243,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici TalentLMS, měli byste se automaticky přihlásit k TalentLMS, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace BitaBIZ pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
 description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro BitaBIZ.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: d0d38abe-c041-482a-9d3f-ca340678c226
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ad9176614c4a5235e5138444d4197286204a747f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f3e01147e44b495a666d11a3927eabbbe0dec0e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77059179"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547270"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Kurz: Konfigurace BitaBIZ pro Automatické zřizování uživatelů
 
@@ -64,7 +60,7 @@ Před konfigurací BitaBIZ pro Automatické zřizování uživatelů pomocí Azu
 
     ![Konzola pro správu BitaBIZ](media/bitabiz-provisioning-tutorial/integration.png)
 
-2.  Přejděte na **Microsoft Azure AD zřizování**.  V případě automatického zřizování uživatelů vyberte **povoleno** . Zkopírujte hodnoty pro **adresu URL koncového bodu zřizování SCIM** a **token nosiče**. Tyto hodnoty se zadají do polí Adresa URL tenanta a tajného tokenu na kartě zřizování vaší aplikace BitaBIZ ve Azure Portal.
+2.  Přejděte na **Microsoft Azure AD zřizování**.  V případě automatického zřizování uživatelů vyberte **povoleno** . Zkopírujte hodnoty pro **adresu URL koncového bodu zřizování SCIM** a  **token nosiče**. Tyto hodnoty se zadají do polí Adresa URL tenanta a tajného tokenu na kartě zřizování vaší aplikace BitaBIZ ve Azure Portal.
 
     ![BitaBIZ přidat SCIM](media/bitabiz-provisioning-tutorial/authentication.png)
 
@@ -100,7 +96,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-bitabiz-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro BitaBIZ ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

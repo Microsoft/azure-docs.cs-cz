@@ -1,14 +1,14 @@
 ---
 title: Postup vytváření zásad konfigurace hosta pro Windows
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Windows.
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 31c40640babea961ef3bb255112306f59772bae2
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 4ee0c9d1912338235e53eb287bfc86a14b75cc97
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236535"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547660"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Postup vytváření zásad konfigurace hosta pro Windows
 
@@ -16,8 +16,7 @@ Než začnete vytvářet vlastní definice zásad, je vhodné si přečíst info
  
 Další informace o vytváření zásad konfigurace hostů pro Linux najdete na stránce [Postup vytvoření zásad konfigurace hostů pro Linux](./guest-configuration-create-linux.md) .
 
-Při auditování používá konfigurace hosta k vytvoření konfiguračního souboru modul prostředku [Konfigurace požadovaného stavu](/powershell/scripting/dsc/overview/overview) (DSC). Konfigurace DSC definuje stav, ve kterém má být počítač.
-Pokud se konfigurace nezdařila, je aktivován efekt zásad **auditIfNotExists** a počítač se považuje za **nevyhovující**.
+Při auditování Windows konfigurace hosta k vytvoření konfiguračního souboru využívá modul prostředků DSC ([Desired State Configuration](/powershell/scripting/dsc/overview/overview)). Konfigurace DSC definuje stav, ve kterém by počítač měl být. Pokud se konfigurace nezdařila, je aktivován efekt zásad **auditIfNotExists** a počítač se považuje za **nevyhovující**.
 
 [Konfiguraci hosta Azure Policy](../concepts/guest-configuration.md) můžete použít jenom k auditování nastavení v počítačích. Náprava nastavení v počítačích ještě není k dispozici.
 
@@ -26,7 +25,7 @@ Pomocí následujících akcí můžete vytvořit vlastní konfiguraci pro ově�
 > [!IMPORTANT]
 > Vlastní zásady s konfigurací hosta jsou funkcí verze Preview.
 >
-> K provádění auditů na virtuálních počítačích Azure se vyžaduje rozšíření konfigurace hosta.
+> Rozšíření konfigurace hosta se vyžaduje k provádění auditů na virtuálních počítačích Azure.
 > Pokud chcete nasadit rozšíření v celém počítači s Windows, přiřaďte následující definice zásad:
 >   - [Nasaďte požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích s Windows.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
@@ -90,8 +89,7 @@ Když Audituje konfigurace hosta počítač, sekvence událostí se liší od ro
 1. Logická hodnota vrácená funkcí určuje, zda má být stav Azure Resource Manager pro přiřazení hostů kompatibilní/nekompatibilní.
 1. Zprostředkovatel spustí, `Get-TargetResource` aby vrátil aktuální stav každého nastavení, takže podrobnosti jsou k dispozici jak k tomu, proč počítač nedodržuje předpisy, a ověřil, zda je aktuální stav kompatibilní.
 
-Parametry v Azure Policy, které předávají hodnoty přiřazení konfigurace hosta musí být typu _řetězec_ .
-Není možné předat pole pomocí parametrů, i když prostředek DSC podporuje pole.
+Parametry v Azure Policy, které předávají hodnoty přiřazení konfigurace hosta musí být typu _řetězec_ . Není možné předat pole pomocí parametrů, i když prostředek DSC podporuje pole.
 
 ### <a name="get-targetresource-requirements"></a>Požadavky GET-TargetResource
 
@@ -121,7 +119,7 @@ return @{
 }
 ```
 
-Vlastnost důvody musí být také přidána do souboru MOF schématu pro prostředek jako vložená třída.
+Vlastnost důvody musí být přidána do souboru MOF schématu pro prostředek jako vložená třída.
 
 ```mof
 [ClassVersion("1.0.0.0")] 
@@ -166,8 +164,7 @@ Formát balíčku musí být soubor. zip.
 ### <a name="storing-guest-configuration-artifacts"></a>Ukládání artefaktů konfigurace hosta
 
 Balíček. zip musí být uložený v umístění, ke kterému mají přístup spravované virtuální počítače.
-Mezi příklady patří úložiště GitHub, úložiště Azure nebo Azure Storage. Pokud nechcete, aby balíček byl veřejný, můžete do adresy URL přidat [token SAS](../../../storage/common/storage-sas-overview.md) .
-Můžete také implementovat [koncový bod služby](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) pro počítače v privátní síti, i když tato konfigurace platí pouze pro přístup k balíčku a nekomunikuje se službou.
+Mezi příklady patří úložiště GitHub, úložiště Azure nebo Azure Storage. Pokud nechcete, aby balíček byl veřejný, můžete do adresy URL přidat [token SAS](../../../storage/common/storage-sas-overview.md) . Můžete také implementovat [koncový bod služby](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) pro počítače v privátní síti, i když tato konfigurace platí pouze pro přístup k balíčku a nekomunikuje se službou.
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Krok za krokem – vytvoření vlastní zásady auditu konfigurace hosta pro Windows
 
@@ -602,5 +599,5 @@ Další informace o rutinách v tomto nástroji získáte pomocí příkazu Get-
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o auditování virtuálních počítačů pomocí [Konfigurace hostů](../concepts/guest-configuration.md).
-- Zjistěte, jak [programově vytvářet zásady](programmatically-create.md).
-- Přečtěte si, jak [získat data o dodržování předpisů](get-compliance-data.md).
+- Zjistěte, jak [programově vytvářet zásady](./programmatically-create.md).
+- Přečtěte si, jak [získat data o dodržování předpisů](./get-compliance-data.md).

@@ -1,14 +1,14 @@
 ---
 title: 'Kurz: Správa zásad správného řízení značek'
 description: V tomto kurzu použijete efekt změny Azure Policy k vytvoření a vykonání modelu zásad správného řízení pro nové a stávající prostředky.
-ms.date: 04/21/2020
+ms.date: 08/17/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8b3d0db100a601950ec82824897a3ba3e5145b79
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: f49eedb00c98d3c362140fdca9b195a086903f10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142261"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545501"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Kurz: Správa řízení značek pomocí Azure Policy
 
@@ -45,7 +45,7 @@ Stejně jako jakákoli dobrá implementace řízení zásad správného řízen�
 
 ## <a name="configure-the-costcenter-tag"></a>Konfigurace značky CostCenter
 
-V závislosti na prostředí Azure spravovaném pomocí Azure Policy požadavky na značku _CostCenter_ volají následující:
+V závislosti na prostředí Azure spravovaném pomocí Azure Policy požadavky na značku _CostCenter_ volají následující výsledky:
 
 - Odepření skupin prostředků chybí značka _CostCenter_ .
 - Upravit prostředky pro přidání značky _CostCenter_ z nadřazené skupiny prostředků, když chybí
@@ -107,7 +107,7 @@ Toto pravidlo zásady používá operaci **Přidání** místo **addOrReplace** 
 
 ## <a name="configure-the-env-tag"></a>Konfigurace značky ENV
 
-V souvislosti s prostředím Azure spravovaným pomocí Azure Policy požadavky na značku _ENV_ vyvolají následující:
+V souvislosti s prostředím Azure spravovaným pomocí Azure Policy se požadavky na značku _ENV_ zavolají do následujících výsledků:
 
 - Upravte značku _ENV_ pro skupinu prostředků na základě schématu pojmenování skupiny prostředků.
 - Upravte značku _ENV_ u všech prostředků ve skupině prostředků na stejnou jako nadřazená skupina prostředků.
@@ -204,7 +204,7 @@ Pokud jste dokončili práci s prostředky z tohoto kurzu, pomocí následujíc�
 
 1. Klikněte na řádek pravým tlačítkem nebo vyberte tři tečky na konci definice (nebo přiřazení) a pak vyberte **Odstranit definici** (nebo **Odstranit přiřazení**).
 
-## <a name="review"></a>Revize
+## <a name="review"></a>Opakování
 
 V tomto kurzu jste se dozvěděli o následujících úlohách:
 

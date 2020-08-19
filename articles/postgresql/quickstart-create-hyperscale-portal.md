@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: vytvoření distribuovaných tabulek – Citus (škálování) – Azure Database for PostgreSQL'
+title: 'Rychlý Start: Vytvoření skupiny serverů – Citus (škálování na serveru) – Azure Database for PostgreSQL'
 description: Rychlý Start pro vytváření a dotazování distribuovaných tabulek v Azure Database for PostgreSQL Citus ().
 author: jonels-msft
 ms.author: jonels
@@ -7,15 +7,15 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/14/2019
-ms.openlocfilehash: c17018e0f2f3a7c1c23d176a441842abcf5521f4
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.date: 08/17/2020
+ms.openlocfilehash: 977082b7f9055b90ee5c93913154934741d93772
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183917"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547694"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Rychlý Start: vytvoření Azure Database for PostgreSQL – Citus (škálování) v Azure Portal
+# <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>Rychlý Start: Vytvoření skupiny serverů Citus () v Azure Portal
 
 Azure Database for PostgreSQL je spravovaná služba, pomocí které spouštíte, spravujete a škálujete vysoce dostupné databáze PostgreSQL v cloudu. V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit skupinu serverů Azure Database for PostgreSQL-Citus (škálovatelný škálování). Budete zkoumat distribuovaná data: horizontálního dělení tabulky napříč uzly, ingestování ukázkových dat a spouštění dotazů, které se spouštějí na více uzlech.
 
@@ -104,7 +104,7 @@ Teď je čas na zábavu, ve kterém jsou ve skutečnosti spuštěné nějaké do
 SELECT count(*) from github_events;
 ```
 
-Ty, které byly k dispracovanému. Vrátíme se k tomuto uspořádání agregace, ale teď se podíváme na několik dalších dotazů. Ve sloupci JSONB `payload` je dobrým bitem dat, ale liší se v závislosti na typu události. `PushEvent`události obsahují velikost, která zahrnuje počet jedinečných potvrzení pro vložení. Dá se použít k vyhledání celkového počtu potvrzení za hodinu:
+Ty, které byly k dispracovanému. Vrátíme se k tomuto uspořádání agregace, ale teď se podíváme na několik dalších dotazů. Ve sloupci JSONB `payload` je dobrým bitem dat, ale liší se v závislosti na typu události. `PushEvent` události obsahují velikost, která zahrnuje počet jedinečných potvrzení pro vložení. Dá se použít k vyhledání celkového počtu potvrzení za hodinu:
 
 ```sql
 SELECT date_trunc('hour', created_at) AS hour,

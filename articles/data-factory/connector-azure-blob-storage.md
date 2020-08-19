@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/05/2020
-ms.openlocfilehash: 7296ec52f8bede86b73e7494af3a784526b639c3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.date: 08/18/2020
+ms.openlocfilehash: e9561c0b54d256d5f24dc02c6f46d84821b9708c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849110"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548442"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopírování a transformace dat v úložišti objektů BLOB v Azure pomocí Azure Data Factory
 
@@ -78,9 +78,9 @@ Data Factory podporuje následující vlastnosti pro ověřování klíčů úč
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** musí být nastavená na **AzureBlobStorage** (navrhovaná) nebo **AzureStorage** (viz následující poznámky). |Ano |
-| připojovací řetězec | Zadejte informace potřebné pro připojení k úložišti pro vlastnost **ConnectionString** . <br/> Klíč účtu můžete také vložit do Azure Key Vault a získat `accountKey` konfiguraci z připojovacího řetězce. Další informace najdete v následujících ukázkách a [přihlašovací údaje úložiště v článku Azure Key Vault](store-credentials-in-key-vault.md) . |Ano |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud je vaše úložiště dat v privátní síti). Pokud tato vlastnost není zadaná, služba použije výchozí prostředí Azure Integration runtime. |Ne |
+| typ | Vlastnost **Type** musí být nastavená na **AzureBlobStorage** (navrhovaná) nebo **AzureStorage** (viz následující poznámky). |Yes |
+| připojovací řetězec | Zadejte informace potřebné pro připojení k úložišti pro vlastnost **ConnectionString** . <br/> Klíč účtu můžete také vložit do Azure Key Vault a získat `accountKey` konfiguraci z připojovacího řetězce. Další informace najdete v následujících ukázkách a [přihlašovací údaje úložiště v článku Azure Key Vault](store-credentials-in-key-vault.md) . |Yes |
+| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud je vaše úložiště dat v privátní síti). Pokud tato vlastnost není zadaná, služba použije výchozí prostředí Azure Integration runtime. |No |
 
 >[!NOTE]
 >Sekundární koncový bod Blob service není podporován, pokud používáte ověřování klíčů účtu. Můžete použít jiné typy ověřování.
@@ -88,7 +88,7 @@ Data Factory podporuje následující vlastnosti pro ověřování klíčů úč
 >[!NOTE]
 >Pokud používáte propojenou službu typu "AzureStorage", je stále podporovaná, jak je to. Doporučujeme ale použít nový typ propojené služby "AzureBlobStorage".
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -148,14 +148,14 @@ Data Factory podporuje následující vlastnosti pro použití ověřování pom
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** musí být nastavená na **AzureBlobStorage** (navrhovaný) nebo **AzureStorage** (viz následující poznámka). |Ano |
-| sasUri | Zadejte identifikátor URI sdíleného přístupového podpisu k prostředkům úložiště, jako je například objekt BLOB nebo kontejner. <br/>Označte toto pole jako **SecureString** a bezpečně ho uložte do Data Factory. Můžete také zadat token SAS v Azure Key Vault, aby se použilo automatické otočení a odebrala se část tokenu. Další informace najdete v následujících ukázkách a [přihlašovací údaje uložené v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud je vaše úložiště dat v privátní síti). Pokud tato vlastnost není zadaná, služba použije výchozí prostředí Azure Integration runtime. |Ne |
+| typ | Vlastnost **Type** musí být nastavená na **AzureBlobStorage** (navrhovaný) nebo **AzureStorage** (viz následující poznámka). |Yes |
+| sasUri | Zadejte identifikátor URI sdíleného přístupového podpisu k prostředkům úložiště, jako je například objekt BLOB nebo kontejner. <br/>Označte toto pole jako **SecureString** a bezpečně ho uložte do Data Factory. Můžete také zadat token SAS v Azure Key Vault, aby se použilo automatické otočení a odebrala se část tokenu. Další informace najdete v následujících ukázkách a [přihlašovací údaje uložené v Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
+| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud je vaše úložiště dat v privátní síti). Pokud tato vlastnost není zadaná, služba použije výchozí prostředí Azure Integration runtime. |No |
 
 >[!NOTE]
 >Pokud používáte propojenou službu typu "AzureStorage", je stále podporovaná, jak je to. Doporučujeme ale použít nový typ propojené služby "AzureBlobStorage".
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -232,18 +232,18 @@ Tyto vlastnosti jsou podporované pro propojenou službu Azure Blob Storage:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** musí být nastavená na **AzureBlobStorage**. |Ano |
-| serviceEndpoint | Zadejte koncový bod služby Azure Blob Storage se vzorem `https://<accountName>.blob.core.windows.net/` . |Ano |
-| servicePrincipalId | Zadejte ID klienta aplikace. | Ano |
-| servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** a bezpečně ho uložte do Data Factory nebo [odkazujte na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| tenant | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Načtěte ho tak, že najedete myší do pravého horního rohu Azure Portal. | Ano |
-| azureCloudType | Pro ověřování instančního objektu zadejte typ cloudového prostředí Azure, do kterého se zaregistruje vaše aplikace AAD. <br/> Povolené hodnoty jsou **AzurePublic**, **AzureChina**, **AzureUsGovernment**a **AzureGermany**. Ve výchozím nastavení se používá cloudové prostředí pro datovou továrnu. | Ne |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud je vaše úložiště dat v privátní síti). Pokud tato vlastnost není zadaná, služba použije výchozí prostředí Azure Integration runtime. |Ne |
+| typ | Vlastnost **Type** musí být nastavená na **AzureBlobStorage**. |Yes |
+| serviceEndpoint | Zadejte koncový bod služby Azure Blob Storage se vzorem `https://<accountName>.blob.core.windows.net/` . |Yes |
+| servicePrincipalId | Zadejte ID klienta aplikace. | Yes |
+| servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** a bezpečně ho uložte do Data Factory nebo [odkazujte na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| tenant | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Načtěte ho tak, že najedete myší do pravého horního rohu Azure Portal. | Yes |
+| azureCloudType | Pro ověřování instančního objektu zadejte typ cloudového prostředí Azure, ve kterém je vaše aplikace Azure Active Directory zaregistrovaná. <br/> Povolené hodnoty jsou **AzurePublic**, **AzureChina**, **AzureUsGovernment**a **AzureGermany**. Ve výchozím nastavení se používá cloudové prostředí pro datovou továrnu. | No |
+| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud je vaše úložiště dat v privátní síti). Pokud tato vlastnost není zadaná, služba použije výchozí prostředí Azure Integration runtime. |No |
 
 >[!NOTE]
 >Ověřování instančního objektu je podporováno pouze propojenou službou typu "AzureBlobStorage", nikoli předchozím propojenou službou typu "AzureStorage".
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -267,7 +267,7 @@ Tyto vlastnosti jsou podporované pro propojenou službu Azure Blob Storage:
 }
 ```
 
-### <a name="managed-identities-for-azure-resource-authentication"></a><a name="managed-identity"></a>Spravované identity pro ověřování prostředků Azure
+### <a name="managed-identities-for-azure-resource-authentication"></a><a name="managed-identity"></a> Spravované identity pro ověřování prostředků Azure
 
 Datová továrna může být přidružená ke [spravované identitě prostředků Azure](data-factory-service-identity.md), která představuje tento konkrétní objekt pro vytváření dat. Tuto spravovanou identitu můžete přímo použít pro ověřování úložiště objektů blob, které se podobá používání vlastního instančního objektu. Umožňuje této určené továrně přistupovat a kopírovat data z nebo do úložiště objektů BLOB.
 
@@ -287,14 +287,14 @@ Tyto vlastnosti jsou podporované pro propojenou službu Azure Blob Storage:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** musí být nastavená na **AzureBlobStorage**. |Ano |
-| serviceEndpoint | Zadejte koncový bod služby Azure Blob Storage se vzorem `https://<accountName>.blob.core.windows.net/` . |Ano |
-| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud je vaše úložiště dat v privátní síti). Pokud tato vlastnost není zadaná, služba použije výchozí prostředí Azure Integration runtime. |Ne |
+| typ | Vlastnost **Type** musí být nastavená na **AzureBlobStorage**. |Yes |
+| serviceEndpoint | Zadejte koncový bod služby Azure Blob Storage se vzorem `https://<accountName>.blob.core.windows.net/` . |Yes |
+| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud je vaše úložiště dat v privátní síti). Pokud tato vlastnost není zadaná, služba použije výchozí prostředí Azure Integration runtime. |No |
 
 > [!NOTE]
 > Spravované identity pro ověřování prostředků Azure jsou podporované jenom propojenou službou typu "AzureBlobStorage", a ne předchozím propojenou službou typu "AzureStorage".
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -322,12 +322,12 @@ V části `location` nastavení v datové sadě založené na formátu jsou podp
 
 | Vlastnost   | Popis                                                  | Povinné |
 | ---------- | ------------------------------------------------------------ | -------- |
-| typ       | Vlastnost **Type** umístění v datové sadě musí být nastavená na **AzureBlobStorageLocation**. | Ano      |
-| kontejner  | Kontejner objektů BLOB.                                          | Ano      |
-| folderPath | Cesta ke složce v daném kontejneru. Pokud chcete použít zástupný znak k filtrování složky, toto nastavení nechejte a určete v nastavení zdroje aktivity. | Ne       |
-| fileName   | Název souboru v daném kontejneru a cestě ke složce. Pokud chcete použít zástupný znak k filtrování souborů, přeskočte toto nastavení a zadejte ho v nastavení zdroje aktivity. | Ne       |
+| typ       | Vlastnost **Type** umístění v datové sadě musí být nastavená na **AzureBlobStorageLocation**. | Yes      |
+| kontejner  | Kontejner objektů BLOB.                                          | Yes      |
+| folderPath | Cesta ke složce v daném kontejneru. Pokud chcete použít zástupný znak k filtrování složky, toto nastavení nechejte a určete v nastavení zdroje aktivity. | No       |
+| fileName   | Název souboru v daném kontejneru a cestě ke složce. Pokud chcete použít zástupný znak k filtrování souborů, přeskočte toto nastavení a zadejte ho v nastavení zdroje aktivity. | No       |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -366,24 +366,24 @@ V `storeSettings` nastaveních ve zdrojovém kopírování založeném na formá
 
 | Vlastnost                 | Popis                                                  | Povinné                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| typ                     | Vlastnost **Type** v poli `storeSettings` musí být nastavená na **AzureBlobStorageReadSettings**. | Ano                                           |
+| typ                     | Vlastnost **Type** v poli `storeSettings` musí být nastavená na **AzureBlobStorageReadSettings**. | Yes                                           |
 | ***Vyhledejte soubory ke zkopírování:*** |  |  |
 | MOŽNOST 1: statická cesta<br> | Kopírování ze zadaného kontejneru nebo složky/cesty k souboru v datové sadě. Pokud chcete kopírovat všechny objekty BLOB z kontejneru nebo složky, zadejte také `wildcardFileName` jako `*` . |  |
-| MOŽNOST 2: Předpona objektu BLOB<br>-prefix | Předpona pro název objektu BLOB v daném kontejneru nakonfigurovaném v datové sadě pro filtrování zdrojových objektů BLOB Jsou vybrány objekty blob, jejichž názvy začínají na `container_in_dataset/this_prefix` . Využívá filtr na straně služby pro úložiště objektů blob, což poskytuje lepší výkon než filtr zástupných znaků. | Ne                                                          |
-| MOŽNOST 3: zástupný znak<br>- wildcardFolderPath | Cesta ke složce se zástupnými znaky v daném kontejneru nakonfigurovaném v datové sadě pro filtrování zdrojových složek. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). Použijte `^` k Escape, jestli má název složky zástupný znak nebo tento řídicí znak uvnitř. <br>Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Ne                                            |
-| MOŽNOST 3: zástupný znak<br>- wildcardFileName | Název souboru se zástupnými znaky v daném kontejneru a cestě ke složce (nebo cesta ke složce se zástupnými znaky) pro filtrování zdrojových souborů. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). Použijte `^` k ukončení, jestli má název složky zástupný znak nebo tento řídicí znak uvnitř. Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Ano |
-| MOŽNOST 4: seznam souborů<br>- fileListPath | Určuje, že se má zkopírovat daná sada souborů. Najeďte na textový soubor, který obsahuje seznam souborů, které chcete zkopírovat, jeden soubor na řádek, což je relativní cesta k cestě nakonfigurované v datové sadě.<br/>Při použití této možnosti nezadávejte název souboru v datové sadě. Další příklady najdete v [příkladech seznamu souborů](#file-list-examples). |Ne |
+| MOŽNOST 2: Předpona objektu BLOB<br>-prefix | Předpona pro název objektu BLOB v daném kontejneru nakonfigurovaném v datové sadě pro filtrování zdrojových objektů BLOB Jsou vybrány objekty blob, jejichž názvy začínají na `container_in_dataset/this_prefix` . Využívá filtr na straně služby pro úložiště objektů blob, což poskytuje lepší výkon než filtr zástupných znaků. | No                                                          |
+| MOŽNOST 3: zástupný znak<br>- wildcardFolderPath | Cesta ke složce se zástupnými znaky v daném kontejneru nakonfigurovaném v datové sadě pro filtrování zdrojových složek. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). Použijte `^` k Escape, jestli má název složky zástupný znak nebo tento řídicí znak uvnitř. <br>Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | No                                            |
+| MOŽNOST 3: zástupný znak<br>- wildcardFileName | Název souboru se zástupnými znaky v daném kontejneru a cestě ke složce (nebo cesta ke složce se zástupnými znaky) pro filtrování zdrojových souborů. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). Použijte `^` k ukončení, jestli má název složky zástupný znak nebo tento řídicí znak uvnitř. Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Yes |
+| MOŽNOST 4: seznam souborů<br>- fileListPath | Určuje, že se má zkopírovat daná sada souborů. Najeďte na textový soubor, který obsahuje seznam souborů, které chcete zkopírovat, jeden soubor na řádek, což je relativní cesta k cestě nakonfigurované v datové sadě.<br/>Při použití této možnosti nezadávejte název souboru v datové sadě. Další příklady najdete v [příkladech seznamu souborů](#file-list-examples). |No |
 | ***Další nastavení:*** |  | |
-| zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Všimněte si, že pokud je **rekurzivní** nastavení nastaveno na **hodnotu true** a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky. <br>Povolené hodnoty jsou **true** (výchozí) a **false**.<br>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . |Ne |
-| deleteFilesAfterCompletion | Uvádí, zda budou binární soubory po úspěšném přesunutí do cílového úložiště odstraněny ze zdrojového úložiště. Odstranění souboru je vázané na soubor, takže když aktivita kopírování selže, uvidíte, že některé soubory se už zkopírovaly do cílového umístění a odstranily ze zdroje, zatímco ostatní jsou pořád ve zdrojovém úložišti. <br/>Tato vlastnost je platná jenom ve scénáři binárního kopírování, kde zdroje dat ukládají objekty blob, ADLS Gen1, ADLS Gen2, S3, Google Cloud Storage, File, Azure File, SFTP nebo FTP. Výchozí hodnota: false. |Ne |
-| modifiedDatetimeStart    | Soubory jsou filtrovány na základě atributu: Naposledy změněno. <br>Soubory budou vybrány, pokud čas poslední změny spadá do časového rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br> Vlastnosti mohou mít **hodnotu null**, což znamená, že pro datovou sadu nebude použit filtr atributů souborů.  Když `modifiedDatetimeStart` má hodnotu DateTime, ale `modifiedDatetimeEnd` je **null**, budou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Když `modifiedDatetimeEnd` má hodnotu DateTime, ale `modifiedDatetimeStart` je **null**, soubory, jejichž atribut Last Modified je menší než hodnota DateTime, se vybere.<br/>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . | Ne                                            |
-| modifiedDatetimeEnd      | Stejné jako výše.                                               | Ne                                            |
-| maxConcurrentConnections | Počet souběžných připojení k úložišti. Určete pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | Ne                                            |
+| zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Všimněte si, že pokud je **rekurzivní** nastavení nastaveno na **hodnotu true** a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky. <br>Povolené hodnoty jsou **true** (výchozí) a **false**.<br>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . |No |
+| deleteFilesAfterCompletion | Uvádí, zda budou binární soubory po úspěšném přesunutí do cílového úložiště odstraněny ze zdrojového úložiště. Odstranění souboru je vázané na soubor, takže když aktivita kopírování selže, uvidíte, že některé soubory se už zkopírovaly do cílového umístění a odstranily ze zdroje, zatímco ostatní jsou pořád ve zdrojovém úložišti. <br/>Tato vlastnost je platná jenom ve scénáři binárního kopírování, kde zdroje dat ukládají objekty blob, ADLS Gen1, ADLS Gen2, S3, Google Cloud Storage, File, Azure File, SFTP nebo FTP. Výchozí hodnota: false. |No |
+| modifiedDatetimeStart    | Soubory jsou filtrovány na základě atributu: Naposledy změněno. <br>Soubory budou vybrány, pokud čas poslední změny spadá do časového rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br> Vlastnosti mohou mít **hodnotu null**, což znamená, že pro datovou sadu nebude použit filtr atributů souborů.  Když `modifiedDatetimeStart` má hodnotu DateTime, ale `modifiedDatetimeEnd` je **null**, budou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Když `modifiedDatetimeEnd` má hodnotu DateTime, ale `modifiedDatetimeStart` je **null**, soubory, jejichž atribut Last Modified je menší než hodnota DateTime, se vybere.<br/>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . | No                                            |
+| modifiedDatetimeEnd      | Stejné jako výše.                                               | No                                            |
+| maxConcurrentConnections | Počet souběžných připojení k úložišti. Určete pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | No                                            |
 
 > [!NOTE]
 > V případě textového formátu Parquet/s oddělovači je typ **BlobSource** pro zdroj aktivity kopírování, který je uveden v další části, stále podporován, jak je z důvodu zpětné kompatibility. Doporučujeme, abyste nový model používali, dokud uživatelské rozhraní pro vytváření Data Factory nepřešlo na vygenerování těchto nových typů.
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -426,18 +426,18 @@ V `storeSettings` nastaveních ve zdrojovém kopírování založeném na formá
 
 ### <a name="blob-storage-as-a-sink-type"></a>Úložiště objektů BLOB jako typ jímky
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)] 
 
 Následující vlastnosti jsou podporovány pro Azure Blob Storage v `storeSettings` nastavení v jímky kopírování na základě formátu:
 
 | Vlastnost                 | Popis                                                  | Povinné |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| typ                     | Vlastnost **Type** v poli `storeSettings` musí být nastavená na **AzureBlobStorageWriteSettings**. | Ano      |
-| copyBehavior             | Definuje chování kopírování, pokud je zdrojem soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>-PreserveHierarchy (výchozí)</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru ke zdrojové složce je shodná s relativní cestou cílového souboru k cílové složce.<br/><b>-FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>-MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název souboru nebo objektu blob, sloučený název souboru je zadaný název. V opačném případě se jedná o automaticky vygenerovaný název souboru. | Ne       |
-| blockSizeInMB | Zadejte velikost bloku (v megabajtech), která se používá k zápisu dat pro objekty blob bloku. Přečtěte si další informace o objektech [blob bloku](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Povolená hodnota je *mezi 4 MB a 100 MB*. <br/>Ve výchozím nastavení Data Factory automaticky určuje velikost bloku na základě typu zdrojového úložiště a dat. Pro nebinární kopírování do úložiště objektů BLOB je výchozí velikost bloku 100 MB, takže se může vejít do velikosti (nejvíce) 4,95 TB dat. Nemusí být optimální, pokud vaše data nejsou velká, zejména při použití modulu Integration runtime v místním prostředí s nedostatečnými síťovými připojeními, které mají za následek časový limit operace nebo problémy s výkonem. Velikost bloku můžete explicitně zadat, přičemž zajistěte, aby `blockSizeInMB*50000` byla data ukládána dostatečně veliké. V opačném případě se spuštění aktivity kopírování nezdaří. | Ne |
-| maxConcurrentConnections | Počet souběžných připojení k úložišti. Určete pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | Ne       |
+| typ                     | Vlastnost **Type** v poli `storeSettings` musí být nastavená na **AzureBlobStorageWriteSettings**. | Yes      |
+| copyBehavior             | Definuje chování kopírování, pokud je zdrojem soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>-PreserveHierarchy (výchozí)</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru ke zdrojové složce je shodná s relativní cestou cílového souboru k cílové složce.<br/><b>-FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>-MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název souboru nebo objektu blob, sloučený název souboru je zadaný název. V opačném případě se jedná o automaticky vygenerovaný název souboru. | No       |
+| blockSizeInMB | Zadejte velikost bloku (v megabajtech), která se používá k zápisu dat pro objekty blob bloku. Přečtěte si další informace o objektech [blob bloku](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Povolená hodnota je *mezi 4 MB a 100 MB*. <br/>Ve výchozím nastavení Data Factory automaticky určuje velikost bloku na základě typu zdrojového úložiště a dat. Pro nebinární kopírování do úložiště objektů BLOB je výchozí velikost bloku 100 MB, takže se může vejít do velikosti (nejvíce) 4,95 TB dat. Nemusí být optimální, pokud vaše data nejsou velká, zejména při použití modulu Integration runtime v místním prostředí s nedostatečnými síťovými připojeními, které mají za následek časový limit operace nebo problémy s výkonem. Velikost bloku můžete explicitně zadat, přičemž zajistěte, aby `blockSizeInMB*50000` byla data ukládána dostatečně veliké. V opačném případě se spuštění aktivity kopírování nezdaří. | No |
+| maxConcurrentConnections | Počet souběžných připojení k úložišti. Určete pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | No       |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -491,7 +491,7 @@ Předpokládejme, že máte následující strukturu zdrojové složky a chcete 
 
 | Ukázka zdrojové struktury                                      | Obsah v FileListToCopy.txt                             | Konfigurace Data Factory                                            |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
-| kontejner<br/>&nbsp;&nbsp;&nbsp;&nbsp;Složka<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.jsna<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsna<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Mezipaměť<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **V datové sadě:**<br>Vnitřního`container`<br>– Cesta ke složce:`FolderA`<br><br>**Ve zdroji aktivity kopírování:**<br>– Cesta k seznamu souborů:`container/Metadata/FileListToCopy.txt` <br><br>Cesta k seznamu souborů odkazuje na textový soubor ve stejném úložišti dat, který obsahuje seznam souborů, které chcete zkopírovat, jeden soubor na řádek s relativní cestou k cestě, která je nakonfigurovaná v datové sadě. |
+| kontejner<br/>&nbsp;&nbsp;&nbsp;&nbsp;Složka<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.jsna<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.jsna<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Mezipaměť<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **V datové sadě:**<br>Vnitřního `container`<br>– Cesta ke složce: `FolderA`<br><br>**Ve zdroji aktivity kopírování:**<br>– Cesta k seznamu souborů: `container/Metadata/FileListToCopy.txt` <br><br>Cesta k seznamu souborů odkazuje na textový soubor ve stejném úložišti dat, který obsahuje seznam souborů, které chcete zkopírovat, jeden soubor na řádek s relativní cestou k cestě, která je nakonfigurovaná v datové sadě. |
 
 ### <a name="some-recursive-and-copybehavior-examples"></a>Některé příklady rekurzivních a copyBehavior
 
@@ -534,15 +534,15 @@ Ze zdrojového kontejneru vyberte řadu souborů, které odpovídají vzoru. V d
 
 Příklady zástupných znaků:
 
-* ```*```Představuje libovolnou sadu znaků.
-* ```**```Představuje rekurzivní vnořování adresářů.
-* ```?```Nahradí jeden znak.
-* ```[]```Odpovídá jednomu nebo více znakům v závorkách.
+* ```*``` Představuje libovolnou sadu znaků.
+* ```**``` Představuje rekurzivní vnořování adresářů.
+* ```?``` Nahradí jeden znak.
+* ```[]``` Odpovídá jednomu nebo více znakům v závorkách.
 
-* ```/data/sales/**/*.csv```Načte všechny soubory. csv pod/data/Sales.
-* ```/data/sales/20??/**/```Načte všechny soubory ve dvacátém století.
-* ```/data/sales/*/*/*.csv```Získá soubory. csv dvě úrovně v/data/Sales.
-* ```/data/sales/2004/*/12/[XY]1?.csv```Načte všechny soubory. CSV v prosinci 2004 od X nebo Y s předponou a číslem se dvěma číslicemi.
+* ```/data/sales/**/*.csv``` Načte všechny soubory. csv pod/data/Sales.
+* ```/data/sales/20??/**/``` Načte všechny soubory ve dvacátém století.
+* ```/data/sales/*/*/*.csv``` Získá soubory. csv dvě úrovně v/data/Sales.
+* ```/data/sales/2004/*/12/[XY]1?.csv``` Načte všechny soubory. CSV v prosinci 2004 od X nebo Y s předponou a číslem se dvěma číslicemi.
 
 **Kořenová cesta oddílu:** Pokud jste ve zdroji souborů nastavili dělené složky s ```key=value``` formátem (například `year=2019` ), můžete přiřadit nejvyšší úroveň stromu složek oddílu k názvu sloupce v datovém proudu toku dat.
 
@@ -619,18 +619,18 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu odstranit](delete
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** datové sady musí být nastavená na **azureblobu**. |Ano |
+| typ | Vlastnost **Type** datové sady musí být nastavená na **azureblobu**. |Yes |
 | folderPath | Cesta ke kontejneru a složce v úložišti objektů BLOB <br/><br/>Pro cestu se podporuje filtr zástupných znaků s výjimkou názvu kontejneru. Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). Použijte `^` k ukončení, jestli má název složky zástupný znak nebo tento řídicí znak uvnitř. <br/><br/>Příklad: myblobcontainer/myblobfolder/. Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). |Ano pro aktivitu kopírování nebo vyhledávání, ne pro aktivitu GetMetadata |
-| fileName | Název nebo zástupný filtr pro objekty BLOB v zadané hodnotě **FolderPath** Pokud nezadáte hodnotu pro tuto vlastnost, datová sada bude ukazovat na všechny objekty blob ve složce. <br/><br/>Pro filtr jsou povoleny zástupné znaky: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku).<br/>-Příklad 1:`"fileName": "*.csv"`<br/>-Příklad 2:`"fileName": "???20180427.txt"`<br/>Použijte `^` pro Escape, jestli název souboru obsahuje zástupný znak nebo tento řídicí znak uvnitř.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu a v jímky aktivity není zadán parametr **PreserveHierarchy** , aktivita kopírování automaticky vygeneruje název objektu BLOB s následujícím vzorem: "*data. [ identifikátor GUID ID běhu aktivity]. [GUID if FlattenHierarchy]. [formát, pokud je nakonfigurován]. [komprese, pokud je nakonfigurována]*". Například: "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. gz". <br/><br/>Pokud kopírujete z tabulkového zdroje místo dotazu pomocí názvu tabulky, bude vzor názvu "*[název tabulky]. [ formát]. [komprese, pokud je nakonfigurována]*". Například: "MyTable.csv". |Ne |
-| modifiedDatetimeStart | Soubory jsou filtrovány na základě atributu: Naposledy změněno. Soubory budou vybrány, pokud čas poslední změny spadá do časového rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br/><br/> Mějte na paměti, že povolení tohoto nastavení bude mít vliv na celkový výkon přesunu dat, pokud chcete filtrovat velké objemy souborů. <br/><br/> Vlastnosti mohou mít **hodnotu null**, což znamená, že pro datovou sadu nebude použit filtr atributů souborů.  Když `modifiedDatetimeStart` má hodnotu DateTime, ale `modifiedDatetimeEnd` je **null**, budou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Když `modifiedDatetimeEnd` má hodnotu DateTime, ale `modifiedDatetimeStart` je **null**, soubory, jejichž atribut Last Modified je menší než hodnota DateTime, se vybere.| Ne |
-| modifiedDatetimeEnd | Soubory jsou filtrovány na základě atributu: Naposledy změněno. Soubory budou vybrány, pokud čas poslední změny spadá do časového rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br/><br/> Mějte na paměti, že povolení tohoto nastavení bude mít vliv na celkový výkon přesunu dat, pokud chcete filtrovat velké objemy souborů. <br/><br/> Vlastnosti mohou mít **hodnotu null**, což znamená, že pro datovou sadu nebude použit filtr atributů souborů.  Když `modifiedDatetimeStart` má hodnotu DateTime, ale `modifiedDatetimeEnd` je **null**, budou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Když `modifiedDatetimeEnd` má hodnotu DateTime, ale `modifiedDatetimeStart` je **null**, soubory, jejichž atribut Last Modified je menší než hodnota DateTime, se vybere.| Ne |
+| fileName | Název nebo zástupný filtr pro objekty BLOB v zadané hodnotě **FolderPath** Pokud nezadáte hodnotu pro tuto vlastnost, datová sada bude ukazovat na všechny objekty blob ve složce. <br/><br/>Pro filtr jsou povoleny zástupné znaky: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku).<br/>-Příklad 1: `"fileName": "*.csv"`<br/>-Příklad 2: `"fileName": "???20180427.txt"`<br/>Použijte `^` pro Escape, jestli název souboru obsahuje zástupný znak nebo tento řídicí znak uvnitř.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu a v jímky aktivity není zadán parametr **PreserveHierarchy** , aktivita kopírování automaticky vygeneruje název objektu BLOB s následujícím vzorem: "*data. [ identifikátor GUID ID běhu aktivity]. [GUID if FlattenHierarchy]. [formát, pokud je nakonfigurován]. [komprese, pokud je nakonfigurována]*". Například: "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. gz". <br/><br/>Pokud kopírujete z tabulkového zdroje místo dotazu pomocí názvu tabulky, bude vzor názvu "*[název tabulky]. [ formát]. [komprese, pokud je nakonfigurována]*". Například: "MyTable.csv". |No |
+| modifiedDatetimeStart | Soubory jsou filtrovány na základě atributu: Naposledy změněno. Soubory budou vybrány, pokud čas poslední změny spadá do časového rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br/><br/> Mějte na paměti, že povolení tohoto nastavení bude mít vliv na celkový výkon přesunu dat, pokud chcete filtrovat velké objemy souborů. <br/><br/> Vlastnosti mohou mít **hodnotu null**, což znamená, že pro datovou sadu nebude použit filtr atributů souborů.  Když `modifiedDatetimeStart` má hodnotu DateTime, ale `modifiedDatetimeEnd` je **null**, budou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Když `modifiedDatetimeEnd` má hodnotu DateTime, ale `modifiedDatetimeStart` je **null**, soubory, jejichž atribut Last Modified je menší než hodnota DateTime, se vybere.| No |
+| modifiedDatetimeEnd | Soubory jsou filtrovány na základě atributu: Naposledy změněno. Soubory budou vybrány, pokud čas poslední změny spadá do časového rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br/><br/> Mějte na paměti, že povolení tohoto nastavení bude mít vliv na celkový výkon přesunu dat, pokud chcete filtrovat velké objemy souborů. <br/><br/> Vlastnosti mohou mít **hodnotu null**, což znamená, že pro datovou sadu nebude použit filtr atributů souborů.  Když `modifiedDatetimeStart` má hodnotu DateTime, ale `modifiedDatetimeEnd` je **null**, budou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Když `modifiedDatetimeEnd` má hodnotu DateTime, ale `modifiedDatetimeStart` je **null**, soubory, jejichž atribut Last Modified je menší než hodnota DateTime, se vybere.| No |
 | formát | Pokud chcete kopírovat soubory mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát jak v definicích vstupní, tak i ve výstupní datové sadě.<br/><br/>Pokud chcete analyzovat nebo generovat soubory s konkrétním formátem, podporují se tyto typy formátů souborů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**a **ParquetFormat**. V části **Formát** nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v oddílech [Formát textu](supported-file-formats-and-compression-codecs-legacy.md#text-format), [formát JSON](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Formát Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format), formát [ORC](supported-file-formats-and-compression-codecs-legacy.md#orc-format)a formát [Parquet](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) . |Ne (jenom pro binární scénář kopírování) |
-| komprese | Zadejte typ a úroveň komprese dat. Další informace najdete v tématu [podporované formáty souborů a kompresní kodeky](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Podporované typy jsou **gzip**, **Deflate**, **bzip2**a **ZipDeflate**.<br/>Podporované úrovně jsou **optimální** a **nejrychlejší**. |Ne |
+| komprese | Zadejte typ a úroveň komprese dat. Další informace najdete v tématu [podporované formáty souborů a kompresní kodeky](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Podporované typy jsou **gzip**, **Deflate**, **bzip2**a **ZipDeflate**.<br/>Podporované úrovně jsou **optimální** a **nejrychlejší**. |No |
 
 >[!TIP]
 >Pokud chcete zkopírovat všechny objekty blob ve složce, zadejte jenom **FolderPath** .<br>Chcete-li zkopírovat jeden objekt BLOB se zadaným názvem, zadejte **FolderPath** pro část **složky a název souboru pro** název souboru.<br>Pokud chcete zkopírovat podmnožinu objektů BLOB ve složce, zadejte **FolderPath** pro část složky a **název souboru** se zástupným filtrem. 
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -664,11 +664,11 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu odstranit](delete
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **BlobSource**. |Ano |
-| zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Všimněte si, že pokud je **rekurzivní** nastavení nastaveno na **hodnotu true** a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky.<br/>Povolené hodnoty jsou **true** (výchozí) a **false**. | Ne |
-| maxConcurrentConnections | Počet souběžných připojení k úložišti. Určete pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | Ne |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **BlobSource**. |Yes |
+| zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Všimněte si, že pokud je **rekurzivní** nastavení nastaveno na **hodnotu true** a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky.<br/>Povolené hodnoty jsou **true** (výchozí) a **false**. | No |
+| maxConcurrentConnections | Počet souběžných připojení k úložišti. Určete pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | No |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -704,11 +704,11 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu odstranit](delete
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na **BlobSink**. |Ano |
-| copyBehavior | Definuje chování kopírování, pokud je zdrojem soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>-PreserveHierarchy (výchozí)</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru se zdrojovou složkou je shodná s relativní cestou cílového souboru do cílové složky.<br/><b>-FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>-MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název souboru nebo objektu blob, sloučený název souboru je zadaný název. V opačném případě se jedná o automaticky vygenerovaný název souboru. | Ne |
-| maxConcurrentConnections | Počet souběžných připojení k úložišti. Určete pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | Ne |
+| typ | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na **BlobSink**. |Yes |
+| copyBehavior | Definuje chování kopírování, pokud je zdrojem soubory z úložiště dat založeného na souborech.<br/><br/>Povolené hodnoty jsou následující:<br/><b>-PreserveHierarchy (výchozí)</b>: zachovává hierarchii souborů v cílové složce. Relativní cesta ke zdrojovému souboru se zdrojovou složkou je shodná s relativní cestou cílového souboru do cílové složky.<br/><b>-FlattenHierarchy</b>: všechny soubory ze zdrojové složky jsou v první úrovni cílové složky. Cílové soubory mají automaticky generované názvy. <br/><b>-MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název souboru nebo objektu blob, sloučený název souboru je zadaný název. V opačném případě se jedná o automaticky vygenerovaný název souboru. | No |
+| maxConcurrentConnections | Počet souběžných připojení k úložišti. Určete pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | No |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

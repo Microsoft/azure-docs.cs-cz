@@ -2,25 +2,20 @@
 title: 'Kurz: zřizování uživatelů pro ThousandEyes – Azure AD'
 description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro ThousandEyes.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d87cffce636146eac3e557670ffc4fb2fc34ae38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a009361267a364f04237716f3623921c892e2708
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77062876"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546419"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Kurz: Konfigurace ThousandEyes pro Automatické zřizování uživatelů
 
@@ -60,7 +55,7 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na ThousandEyes ve službě Azure AD
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace** .
+1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace**  .
 
 2. Pokud jste už nakonfigurovali ThousandEyes pro jednotné přihlašování, vyhledejte vaši instanci ThousandEyes pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **ThousandEyes** v galerii aplikací. Ve výsledcích hledání vyberte ThousandEyes a přidejte je do seznamu aplikací.
 
@@ -70,7 +65,7 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
     ![Zřizování ThousandEyes](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
-5. V části **přihlašovací údaje správce** zadejte **token nosiče OAuth** generovaný účtem ThousandEyes (můžete najít nebo vygenerovat token v části **profil** účtu ThousandEyes).
+5. V části **přihlašovací údaje správce**  zadejte **token nosiče OAuth** generovaný účtem ThousandEyes (můžete najít nebo vygenerovat token v části **profil** účtu ThousandEyes).
 
     ![Zřizování ThousandEyes](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 

@@ -2,26 +2,21 @@
 title: 'Kurz: Integrace Azure Active Directory s využitím bonusu | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a bonusem.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 29fea32a-fa20-47b2-9e24-26feb47b0ae6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea9c88f8eb8ac7b72f11ff286d2294df8cb70860
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd82d3d2d2a76e0c0671c57d9254ff8c9030d3a3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74232061"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548256"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Kurz: Integrace Azure Active Directory s využitím bonusu
 
@@ -33,7 +28,7 @@ Služba Azure AD integruje bonus s následujícími výhodami:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,7 +101,7 @@ Pokud chcete jednotné přihlašování pomocí služby Azure AD nakonfigurovat 
 
     ![Vybonusit informace o jednotném přihlašování v doméně a adresách URL](common/idp-reply.png)
 
-    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://Bonus.ly/saml/<tenant-name>`
+    Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:  `https://Bonus.ly/saml/<tenant-name>`
 
     > [!NOTE]
     > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou adresou URL odpovědi. Chcete-li získat hodnotu, obraťte se na [tým podpory pro mimořádné klienty](https://bonus.ly/contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -170,11 +165,11 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -213,7 +208,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k bonusu, musí se zřídit Bonu
 
 1. V okně webového prohlížeče se přihlaste k vašemu bonusovém tenantovi.
 
-1. Klikněte na příkaz **Nastavení**.
+1. Klikněte na **Nastavení**.
 
     ![Nastavení](./media/bonus-tutorial/ic781041.png "Nastavení")
 
@@ -227,17 +222,17 @@ Aby se uživatelé Azure AD mohli přihlašovat k bonusu, musí se zřídit Bonu
 
 1. Klikněte na **Add User** (Přidat uživatele).
 
-    ![Přidání uživatele](./media/bonus-tutorial/ic781044.png "Přidání uživatele")
+    ![Přidat uživatele](./media/bonus-tutorial/ic781044.png "Přidání uživatele")
 
 1. V dialogovém okně **Přidat uživatele** proveďte následující kroky:
 
-    ![Přidání uživatele](./media/bonus-tutorial/ic781045.png "Přidání uživatele")  
+    ![Přidat uživatele](./media/bonus-tutorial/ic781045.png "Přidání uživatele")  
 
     a. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako například **Britta**.
 
     b. Do textového pole **příjmení** zadejte jméno uživatele jako **Simon**.
 
-    c. Do textového pole **e-mail** zadejte e-maily uživatele, `brittasimon\@contoso.com`jako je.
+    c. Do textového pole **e-mail** zadejte e-maily uživatele, jako je `brittasimon\@contoso.com` .
 
     d. Klikněte na **Uložit**.
 
@@ -250,7 +245,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici bonus na přístupovém panelu byste se měli automaticky přihlášeni k bonusu, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

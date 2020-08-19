@@ -1,14 +1,14 @@
 ---
 title: Programové vytváření zásad
 description: Tento článek vás provede programově vytvářením a správou zásad pro Azure Policy pomocí rozhraní příkazového řádku Azure, Azure PowerShell a REST API.
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 3f785556dd86aa8b02f5aa0af09190266b8c509f
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 7a72986d8ffe64953e68ff166de9a02a15fb9c86
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969885"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548307"
 ---
 # <a name="programmatically-create-policies"></a>Programové vytváření zásad
 
@@ -88,12 +88,12 @@ Prvním krokem k lepšímu přehledu vašich prostředků je vytváření a při
    Nahraďte _ContosoRG_ názvem vaší zamýšlené skupiny prostředků.
 
    Parametr **Scope** v `New-AzPolicyAssignment` sadě funguje se skupinou pro správu, předplatným, skupinou prostředků nebo jedním prostředkem. Parametr používá úplnou cestu prostředku, která vrací vlastnost **ResourceID** `Get-AzResourceGroup` . Vzor pro **Rozsah** každého kontejneru je následující. Nahraďte `{rName}` ,, `{rgName}` a názvem `{subId}` `{mgName}` prostředku, názvem skupiny prostředků, ID předplatného a názvem skupiny pro správu v uvedeném pořadí.
-   `{rType}`by se nahradilo **typem prostředku** prostředku, například `Microsoft.Compute/virtualMachines` pro virtuální počítač.
+   `{rType}` by se nahradilo **typem prostředku** prostředku, například `Microsoft.Compute/virtualMachines` pro virtuální počítač.
 
-   - Partner`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Skupina prostředků –`/subscriptions/{subId}/resourceGroups/{rgName}`
-   - Formě`/subscriptions/{subId}/`
-   - Skupina pro správu –`/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Partner `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Skupina prostředků – `/subscriptions/{subId}/resourceGroups/{rgName}`
+   - Formě `/subscriptions/{subId}/`
+   - Skupina pro správu – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Další informace o správě zásad prostředků pomocí modulu Správce prostředků PowerShellu najdete v tématu [AZ. Resources](/powershell/module/az.resources/#policies).
 
@@ -216,12 +216,12 @@ Pokud chcete vytvořit definici zásady, použijte následující postup:
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   Parametr **Scope** v `az policy assignment create` sadě funguje se skupinou pro správu, předplatným, skupinou prostředků nebo jedním prostředkem. Parametr používá úplnou cestu prostředku. Vzor pro **Rozsah** každého kontejneru je následující. Nahraďte `{rName}` ,, `{rgName}` a názvem `{subId}` `{mgName}` prostředku, názvem skupiny prostředků, ID předplatného a názvem skupiny pro správu v uvedeném pořadí. `{rType}`by se nahradilo **typem prostředku** prostředku, například `Microsoft.Compute/virtualMachines` pro virtuální počítač.
+   Parametr **Scope** v `az policy assignment create` sadě funguje se skupinou pro správu, předplatným, skupinou prostředků nebo jedním prostředkem. Parametr používá úplnou cestu prostředku. Vzor pro **Rozsah** každého kontejneru je následující. Nahraďte `{rName}` ,, `{rgName}` a názvem `{subId}` `{mgName}` prostředku, názvem skupiny prostředků, ID předplatného a názvem skupiny pro správu v uvedeném pořadí. `{rType}` by se nahradilo **typem prostředku** prostředku, například `Microsoft.Compute/virtualMachines` pro virtuální počítač.
 
-   - Partner`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Skupina prostředků –`/subscriptions/{subID}/resourceGroups/{rgName}`
-   - Formě`/subscriptions/{subID}`
-   - Skupina pro správu –`/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Partner `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Skupina prostředků – `/subscriptions/{subID}/resourceGroups/{rgName}`
+   - Formě `/subscriptions/{subID}`
+   - Skupina pro správu – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 ID definice Azure Policy můžete získat pomocí PowerShellu pomocí následujícího příkazu:
 

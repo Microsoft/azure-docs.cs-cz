@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace MindTickle pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
 description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro MindTickle.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: fb48deae-4653-448a-ba2f-90258edab3a7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 6ae7b6ac9c6feb539e4da3627ebbabd3c5b628fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3cac57e0f205da7a39447ddd48810b8fd120ab58
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77061214"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549055"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>Kurz: Konfigurace MindTickle pro Automatické zřizování uživatelů
 
@@ -57,7 +53,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 Před konfigurací MindTickle pro Automatické zřizování uživatelů pomocí Azure AD budete muset povolit SCIM zřizování na MindTickle.
 
 
-1.  Přihlaste se k [MindTickle týmu podpory](mailto:help@mindtickle.com) , abyste získali token JWT potřebný ke konfiguraci zřizování SCIM.
+1.  Přihlaste se k  [MindTickle týmu podpory](mailto:help@mindtickle.com) , abyste získali token JWT potřebný ke konfiguraci zřizování SCIM.
 
 
 ## <a name="add-mindtickle-from-the-gallery"></a>Přidání MindTickle z Galerie
@@ -91,7 +87,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-mindtickle-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro MindTickle ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

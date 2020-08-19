@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Zwayam | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Zwayam.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7754344c-34d6-4764-a368-e1dbfe876c0c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: c36749c40f3ce2e1d5478b3d9ab5eb2637a3c63b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e0e16d5eb41bf038e29d7786395a9ec946efac78
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67085630"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545673"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zwayam"></a>Kurz: Azure Active Directory integrace s Zwayam
 
@@ -32,7 +28,7 @@ Integrace Zwayam s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -105,12 +101,12 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zwayam, 
 
     ![Informace o jednotném přihlašování v doméně Zwayam a adresách URL](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://sso.zwayam.com/zwayam-saml/zwayam-saml/saml/login?idp=<SAML Entity ID>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://sso.zwayam.com/zwayam-saml/zwayam-saml/saml/login?idp=<SAML Entity ID>`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL:`https://sso.zwayam.com/zwayam-saml/saml/metadata`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL: `https://sso.zwayam.com/zwayam-saml/saml/metadata`
 
     > [!NOTE]
-    > Hodnota **adresy URL pro přihlášení** není v reálném čase. Aktualizujte hodnotu skutečnou adresou URL pro přihlášení. `<SAML Entity ID>`je hodnota identifikátoru služby Azure AD, která je vysvětleno dále v tomto kurzu.
+    > Hodnota **adresy URL pro přihlášení** není v reálném čase. Aktualizujte hodnotu skutečnou adresou URL pro přihlášení. `<SAML Entity ID>` je hodnota identifikátoru služby Azure AD, která je vysvětleno dále v tomto kurzu.
 
 6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -148,11 +144,11 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -190,7 +186,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Zwayam, měli byste se automaticky přihlásit k Zwayam, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

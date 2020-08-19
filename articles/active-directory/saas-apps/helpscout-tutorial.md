@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Help Scout | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a help Scout.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0aad9910-0bc1-4394-9f73-267cf39973ab
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b71ccbc6cfdb9d3d37fc46b0e932fa98eee2fb43
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 16783d344c6a0dedec4e24d49150e0b4b2edbe3e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159089"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548136"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Kurz: Azure Active Directory integrace s Help Scout
 
@@ -33,7 +28,7 @@ Integrace Help Scout s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -96,9 +91,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Help Sco
 
     ![Informace o jednotném přihlašování k doméně Scout a adresám URL](common/idp-intiated.png)
 
-    a. **Identifikátor** je identifikátor **URI cílové skupiny (ID entity poskytovatele služeb)** z Help Scout, začíná na`urn:`
+    a. **Identifikátor** je identifikátor **URI cílové skupiny (ID entity poskytovatele služeb)** z Help Scout, začíná na `urn:`
 
-    b. **Adresa URL odpovědi** je **Adresa URL pro zpětné odeslání (adresa URL služby potvrzení)** z Help Scout, začíná na`https://` 
+    b. **Adresa URL odpovědi** je **Adresa URL pro zpětné odeslání (adresa URL služby potvrzení)** z Help Scout, začíná na `https://` 
 
     > [!NOTE]
     > Hodnoty v těchto adresách URL jsou pouze pro ukázku. Tyto hodnoty je potřeba aktualizovat ze skutečné adresy URL a identifikátoru odpovědi. Tyto hodnoty získáte na kartě **jednotného přihlašování** v části ověřování, které jsou vysvětleny dále v tomto kurzu.
@@ -107,7 +102,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Help Sco
 
     ![Informace o jednotném přihlašování k doméně Scout a adresám URL](common/metadata-upload-additional-signon.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL jako:`https://secure.helpscout.net/members/login/`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL jako: `https://secure.helpscout.net/members/login/`
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -141,12 +136,12 @@ Cílem této části je vytvořit testovacího uživatele ve Azure Portal s náz
 
     a. Do pole **název** zadejte **B. Simon**.
   
-    b. Do pole **uživatelské jméno** zadejte **B. Simon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **B. Simon \@ yourcompanydomain. extension.**  
     Například B.Simon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -226,7 +221,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici Help Scout na přístupovém panelu byste se měli automaticky přihlášeni k nápovědě Scout, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

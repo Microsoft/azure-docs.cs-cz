@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace Zscaler ZSCloud pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
 description: V tomto kurzu se dozvíte, jak nakonfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů na Zscaler ZSCloud.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: a752be80-d3ef-45d1-ac8f-4fb814c07b07
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: af9d4aa15a4ff2784d2e1ca1334d9c24a8d12251
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5e8571da46ca188e975119c387fa4ee0695c4fde
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062672"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545705"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler ZSCloud pro Automatické zřizování uživatelů
 
@@ -80,7 +76,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 > [!TIP]
 > Pro Zscaler ZSCloud možná budete chtít povolit jednotné přihlašování založené na SAML. Pokud to uděláte, postupujte podle pokynů v [kurzu Zscaler ZSCloud jednotného přihlašování](zscaler-zsCloud-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, ale tyto dvě funkce spolu doplňují.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a **Vyberte podnikové aplikace** > **všechny aplikace** > **Zscaler ZSCloud**:
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace**  >  **všechny aplikace**  >  **Zscaler ZSCloud**:
 
     ![Podnikové aplikace](common/enterprise-applications.png)
 
@@ -98,7 +94,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** účtu Zscaler ZSCloud, jak je popsáno v dalším kroku.
 
-6. Pokud chcete získat **adresu URL tenanta** a **tajný token**, klikněte na portál Zscaler ZSCloud na**nastavení ověřování** pro **správu** > a v části **typ ověřování**vyberte **SAML** :
+6. Pokud chcete získat **adresu URL tenanta** a **tajný token**, klikněte **Administration**na  >  portál Zscaler ZSCloud na**nastavení ověřování** pro správu a v části **typ ověřování**vyberte **SAML** :
 
     ![Nastavení ověřování Zscaler ZSCloud](./media/zscaler-zscloud-provisioning-tutorial/secrettoken1.png)
 
@@ -152,7 +148,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů a skupin def
 
 Informace o tom, jak číst protokoly zřizování služby Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

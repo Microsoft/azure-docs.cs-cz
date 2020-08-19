@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s helpdeskem Jitbit | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Jitbit helpdeskem.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 15ce27d4-0621-4103-8a34-e72c98d72ec3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 29addcd62afd193af83196b2d942e9778ff3f031
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5d4900713cd8d96180bf74b300a738a8b676421e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67099413"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547150"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Kurz: Azure Active Directory integrace s helpdeskem Jitbit
 
@@ -32,7 +28,7 @@ Integrace Jitbit helpdesku s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -115,7 +111,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí helpdesk
     > [!NOTE] 
     > Tato hodnota není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné přihlašovací adresy URL. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory Jitbit Helpdesk klienta](https://www.jitbit.com/support/) .
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL následujícím způsobem:`https://www.jitbit.com/web-helpdesk/`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL následujícím způsobem: `https://www.jitbit.com/web-helpdesk/`
 
 5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -178,7 +174,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -224,7 +220,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k Jitbit helpdesku, musí se zř
 
 1. Klikněte na **Přidat uživatele**.
 
-    ![Přidat uživatele](./media/jitbit-helpdesk-tutorial/ic777685.png "Přidání uživatele")
+    ![Přidat uživatele](./media/jitbit-helpdesk-tutorial/ic777685.png "Přidat uživatele")
 
 1. V části vytvořit zadejte data účtu Azure AD, který chcete zřídit, následovně:
 
@@ -232,13 +228,13 @@ Aby se uživatelé Azure AD mohli přihlašovat k Jitbit helpdesku, musí se zř
 
    a. Do textového pole **uživatelské jméno** zadejte uživatelské jméno uživatele, jako je **BrittaSimon**.
 
-   b. Do textového pole **e-mailu** zadejte e-maily uživatele jako **BrittaSimon@contoso.com**.
+   b. Do textového pole **e-mailu** zadejte e-maily uživatele jako **BrittaSimon@contoso.com** .
 
    c. Do textového pole **jméno** zadejte jméno uživatele, jako je **Britta**.
 
    d. Do textového pole **příjmení** zadejte příjmení uživatele, jako je **Simon**.
 
-   e. Klikněte na **Vytvořit**.
+   e. Klikněte na možnost **Vytvořit**.
 
 > [!NOTE]
 > K zřizování uživatelských účtů Azure AD můžete použít jakékoli další nástroje pro vytváření uživatelských účtů Jitbit helpdesku nebo rozhraní API poskytovaná Jitbit helpdesk.
@@ -249,7 +245,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici helpdesku Jitbit na přístupovém panelu byste se měli automaticky přihlášeni k helpdesku Jitbit, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

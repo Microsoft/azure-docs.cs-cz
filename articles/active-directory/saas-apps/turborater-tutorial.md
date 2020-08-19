@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s TurboRater | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TurboRater.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: abb116b8-8024-4cc6-bc81-f32ef490ea17
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 3777cf09ec669fe3df6bca13f6960f53c689767c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c22993baa6a9095bddba67bdc9d18a40021db6c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67088278"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Kurz: Azure Active Directory integrace s TurboRater
 
@@ -38,7 +34,7 @@ Podrobnosti o integraci aplikací SaaS (software jako služba) se službou Azure
 
 Ke konfiguraci integrace služby Azure AD s TurboRater potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Předplatné služby Azure AD. Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 * Předplatné TurboRater s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -70,7 +66,7 @@ Pokud chcete nakonfigurovat integraci TurboRater do služby Azure AD, musíte p�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí TurboRater na základě testovacího uživatele s názvem **B Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v TurboRater.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí TurboRater na základě testovacího uživatele s názvem  **B Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v TurboRater.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí TurboRater, musíte dokončit tyto stavební bloky:
 
@@ -109,10 +105,10 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TurboRat
 
     1. Do pole **Adresa URL odpovědi (adresa URL služby vyhodnocení zákazníka)** zadejte adresu URL pomocí následujícího vzoru:
 
-       | Prostředí | zprostředkovatele identity |
+       | Prostředí | URL |
        | ---------------| --------------- |
        | Test  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
-       | Živé  | `https://www.itcratingservices.com/webservices/imp/saml/login` |
+       | Živě  | `https://www.itcratingservices.com/webservices/imp/saml/login` |
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory TurboRater](https://www.getitc.com/support). Můžete také odkazovat na vzory zobrazené v podokně **základní konfigurace SAML** v Azure Portal.
@@ -137,7 +133,7 @@ Ke konfiguraci jednotného přihlašování na straně TurboRater je potřeba od
 
 V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azure Portal.
 
-1. V Azure Portal v levém podokně vyberte **Azure Active Directory**   > **Uživatelé** > **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte **Azure Active Directory**    >  **Uživatelé**  >  **Všichni uživatelé**.
 
     ![Možnosti uživatelé a všichni uživatelé](common/users.png)
 
@@ -151,7 +147,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
     1. Do pole **název** zadejte **BSimon**.
   
-    1. Do pole **uživatelské jméno** zadejte **BSimon\@\<\< yourcompanydomain>.>rozšíření **. Například **BSimon\@contoso.com**.
+    1. Do pole **uživatelské jméno** zadejte **BSimon \@ \<yourcompanydomain> . \<extension> **. Například **BSimon \@ contoso.com**.
 
     1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
 
@@ -161,7 +157,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k TurboRater.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace** > **TurboRater**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**  >  **TurboRater**.
 
     ![Podokno podnikové aplikace](common/enterprise-applications.png)
 

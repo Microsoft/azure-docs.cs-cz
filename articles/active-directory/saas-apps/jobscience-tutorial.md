@@ -2,25 +2,20 @@
 title: 'Kurz: Azure Active Directory integrace s Jobscience | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Jobscience.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 77282dcc-bbe2-4728-953d-adb4ab6a713b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0de47cc12c461e47d8703861a99d11e7ee72d581
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870547"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547063"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Kurz: Azure Active Directory integrace s Jobscience
 
@@ -105,7 +100,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     ![Konfigurace jednotného přihlašování][4]
 
-1. V dialogovém okně **jednotného přihlašování** vyberte **režim** jako **přihlašování založené na SAML** pro povolení jednotného přihlašování.
+1. V dialogovém okně **jednotného přihlašování** vyberte **režim** jako    **přihlašování založené na SAML** pro povolení jednotného přihlašování.
  
     ![Konfigurace jednotného přihlašování](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
 
@@ -113,7 +108,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     ![Konfigurace jednotného přihlašování](./media/jobscience-tutorial/tutorial_jobscience_url.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`http://<company name>.my.salesforce.com`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `http://<company name>.my.salesforce.com`
     
     > [!NOTE] 
     > Tato hodnota není reálné číslo. Aktualizujte tuto hodnotu pomocí skutečné přihlašovací adresy URL. Tuto hodnotu získáte v [Jobscience týmu podpory klientů](http://www.jobscience.com/support) nebo v profilu jednotného přihlašování, který se vysvětluje později v tomto kurzu. 
@@ -146,7 +141,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 1. Na webu Jobscience společnosti klikněte na **ovládací prvky zabezpečení**a pak klikněte na **nastavení jednotného přihlašování**.
     
-    ![Zabezpečovací mechanismy](./media/jobscience-tutorial/ic784364.png "Zabezpečovací mechanismy")
+    ![Ovládací prvky zabezpečení](./media/jobscience-tutorial/ic784364.png "Zabezpečovací mechanismy")
 
 1. V části **nastavení jednotného přihlašování** proveďte následující kroky:
     
@@ -164,7 +159,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
     b. Do textového pole **vystavitele** vložte hodnotu **ID entity SAML**, kterou jste zkopírovali z Azure Portal.
 
-    c. Do textového pole **ID entity** zadejte`https://salesforce-jobscience.com`
+    c. Do textového pole **ID entity** zadejte `https://salesforce-jobscience.com`
 
     d. Klikněte na **Procházet** a nahrajte svůj certifikát Azure AD.
 
@@ -192,7 +187,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 1. Pokud chcete získat adresu URL jednotného přihlašování inicializované v rámci SP, klikněte na **nastavení jednotného přihlašování** v části nabídky **ovládací prvky zabezpečení** .
 
-    ![Zabezpečovací mechanismy](./media/jobscience-tutorial/ic784368.png "Zabezpečovací mechanismy")
+    ![Ovládací prvky zabezpečení](./media/jobscience-tutorial/ic784368.png "Zabezpečovací mechanismy")
     
     Klikněte na profil jednotného přihlašování, který jste vytvořili v předchozím kroku. Tato stránka zobrazuje adresu URL jednotného přihlašování vaší společnosti (například `https://companyname.my.salesforce.com?so=companyid` .    
 
@@ -229,7 +224,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Vyberte možnost **Zobrazit heslo** a zapište hodnotu **hesla**.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-jobscience-test-user"></a>Vytváření Jobscience testovacího uživatele
 

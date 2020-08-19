@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
-ms.date: 06/12/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 87cdca414a04d287f02fec5b3510c4f561cab8c0
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: ba6b8160eefb0a59bc8273989c27a3a8501a79b7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116993"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547796"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -17,12 +17,12 @@ Přečtěte si další informace o [podmínkách](#conditions).
 
 Definováním konvencí můžete řídit náklady a snadněji spravovat prostředky. Můžete například určit, že jsou povoleny pouze určité typy virtuálních počítačů. Nebo můžete vyžadovat, aby prostředky měly konkrétní značku. Přiřazení zásad se dědí prostřednictvím podřízených prostředků. Pokud se pro skupinu prostředků použije přiřazení zásady, vztahuje se na všechny prostředky v této skupině prostředků.
 
-Schéma definice zásad najdete tady:[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
+Schéma definice zásad najdete tady: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 K vytvoření definice zásady použijete JSON. Definice zásad obsahuje prvky pro:
 
 - zobrazované jméno
-- Popis
+- description
 - režim
 - zprostředkovatele identity
 - parameters
@@ -100,15 +100,15 @@ Například prostředek `Microsoft.Network/routeTables` podporuje značky a umí
 
 Ve většině případů doporučujeme nastavit **režim** na `all` . Všechny definice zásad vytvořené prostřednictvím portálu používají `all` režim. Pokud používáte PowerShell nebo Azure CLI, můžete zadat parametr **Mode** ručně. Pokud definice zásady neobsahuje hodnotu **režimu** , použije se výchozí hodnota `all` v Azure PowerShell a v rozhraní příkazového `null` řádku Azure CLI. `null`Režim je stejný jako při použití `indexed` k podpoře zpětné kompatibility.
 
-`indexed`by měla být použita při vytváření zásad, které vysazují značky nebo umístění. I když to není nutné, zabrání prostředkům, které nepodporují značky a umístění, z hlediska výsledků dodržování předpisů v nedodržení předpisů. Výjimkou jsou **skupiny prostředků** a **předplatná**. Definice zásad, které vynutily umístění nebo značky v rámci skupiny prostředků nebo předplatného, by měly nastavit **režim** na `all` a konkrétně cílit na `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` typ nebo. Příklad naleznete v tématu [Pattern: Tags-Sample #1](../samples/pattern-tags.md). Seznam prostředků, které podporují značky, najdete v tématu [Podpora značek pro prostředky Azure](../../../azure-resource-manager/management/tag-support.md).
+`indexed` by měla být použita při vytváření zásad, které vysazují značky nebo umístění. I když to není nutné, zabrání prostředkům, které nepodporují značky a umístění, z hlediska výsledků dodržování předpisů v nedodržení předpisů. Výjimkou jsou **skupiny prostředků** a **předplatná**. Definice zásad, které vynutily umístění nebo značky v rámci skupiny prostředků nebo předplatného, by měly nastavit **režim** na `all` a konkrétně cílit na `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` typ nebo. Příklad naleznete v tématu [Pattern: Tags-Sample #1](../samples/pattern-tags.md). Seznam prostředků, které podporují značky, najdete v tématu [Podpora značek pro prostředky Azure](../../../azure-resource-manager/management/tag-support.md).
 
 ### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>Režimy poskytovatele prostředků (Preview)
 
 V současné době jsou podporovány následující režimy poskytovatele prostředků ve verzi Preview:
 
-- `Microsoft.ContainerService.Data`pro správu pravidel kontroleru přístupu pro [službu Azure Kubernetes](../../../aks/intro-kubernetes.md). Definice používající tento režim poskytovatele prostředků **musí** používat efekt [EnforceRegoPolicy](./effects.md#enforceregopolicy) . Tento režim je _zastaralý_.
-- `Microsoft.Kubernetes.Data`pro správu clusterů Kubernetes v systému Azure nebo mimo něj. Definice používající tento režim poskytovatele prostředků používají účinky _audit_, _Deny_a _disabled_. Použití efektu [EnforceOPAConstraint](./effects.md#enforceopaconstraint) se _už nepoužívá_.
-- `Microsoft.KeyVault.Data`pro správu trezorů a certifikátů v [Azure Key Vault](../../../key-vault/general/overview.md).
+- `Microsoft.ContainerService.Data` pro správu pravidel kontroleru přístupu pro [službu Azure Kubernetes](../../../aks/intro-kubernetes.md). Definice používající tento režim poskytovatele prostředků **musí** používat efekt [EnforceRegoPolicy](./effects.md#enforceregopolicy) . Tento režim je _zastaralý_.
+- `Microsoft.Kubernetes.Data` pro správu clusterů Kubernetes v systému Azure nebo mimo něj. Definice používající tento režim poskytovatele prostředků používají účinky _audit_, _Deny_a _disabled_. Použití efektu [EnforceOPAConstraint](./effects.md#enforceopaconstraint) se _už nepoužívá_.
+- `Microsoft.KeyVault.Data` pro správu trezorů a certifikátů v [Azure Key Vault](../../../key-vault/general/overview.md).
 
 > [!NOTE]
 > Režimy poskytovatele prostředků podporují jenom integrované definice zásad a nepodporují iniciativy ve verzi Preview.
@@ -119,10 +119,10 @@ Volitelná `metadata` vlastnost ukládá informace o definici zásady. Zákazní
 
 ### <a name="common-metadata-properties"></a>Vlastnosti běžných metadat
 
-- `version`(String): sleduje podrobnosti o verzi obsahu definice zásady.
-- `category`(String): Určuje, pod kterou kategorii v Azure Portal je tato definice zásad zobrazená.
-- `preview`(Boolean): příznak True nebo false pro, pokud je definice zásady ve _verzi Preview_.
-- `deprecated`(Boolean): příznak True nebo false pro, pokud byla definice zásad označena jako _zastaralá_.
+- `version` (String): sleduje podrobnosti o verzi obsahu definice zásady.
+- `category` (String): Určuje, pod kterou kategorii v Azure Portal je tato definice zásad zobrazená.
+- `preview` (Boolean): příznak True nebo false pro, pokud je definice zásady ve _verzi Preview_.
+- `deprecated` (Boolean): příznak True nebo false pro, pokud byla definice zásad označena jako _zastaralá_.
 
 > [!NOTE]
 > Služba Azure Policy používá `version` vlastnosti, `preview` a `deprecated` k vyjádření úrovně změny předdefinované definice nebo iniciativy a stavu zásad. Formát `version` je: `{Major}.{Minor}.{Patch}` . Konkrétní stavy, například _zastaralé_ nebo ve _verzi Preview_, jsou připojeny k `version` vlastnosti nebo v jiné vlastnosti jako **logická hodnota**. Další informace o způsobu, jakým jsou předdefinované verze Azure Policy, najdete v tématu [Vestavěná správa verzí](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
@@ -188,7 +188,7 @@ Tento příklad odkazuje na parametr **allowedLocations** , který byl prokázá
 
 V rámci `metadata` vlastnosti můžete použít **strongType** k poskytnutí seznamu možností s vícenásobným výběrem v rámci Azure Portal. **strongType** může být podporovaný _typ prostředku_ nebo povolená hodnota. Chcete-li zjistit, zda je _typ prostředku_ platný pro **strongType**, použijte [příkaz Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider). Formát pro _typ prostředku_ **strongType** je `<Resource Provider>/<Resource Type>` . Například, `Microsoft.Network/virtualNetworks/subnets`.
 
-Některé _typy prostředků_ , které nejsou vraceny **Get-AzResourceProvider** , jsou podporovány. Jsou to tyto:
+Některé _typy prostředků_ , které nejsou vraceny **Get-AzResourceProvider** , jsou podporovány. Tyto typy jsou:
 
 - `Microsoft.RecoveryServices/vaults/backupPolicies`
 
@@ -275,7 +275,8 @@ Podmínka vyhodnocuje, zda **pole** nebo **hodnota** přistupující objekty spl
 - `"less": "dateValue"` | `"less": "stringValue"` | `"less": intValue`
 - `"lessOrEquals": "dateValue"` | `"lessOrEquals": "stringValue"` | `"lessOrEquals": intValue`
 - `"greater": "dateValue"` | `"greater": "stringValue"` | `"greater": intValue`
-- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` | `"greaterOrEquals": intValue`
+- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` |
+  `"greaterOrEquals": intValue`
 - `"exists": "bool"`
 
 Pro **méně**, **lessOrEquals**, **větší**a **greaterOrEquals**, pokud typ vlastnosti neodpovídá typu podmínky, je vyvolána chyba. Porovnávání řetězců je provedeno pomocí `InvariantCultureIgnoreCase` .
@@ -346,8 +347,7 @@ V následujícím příkladu `concat` se používá k vytvoření vyhledávání
 
 ### <a name="value"></a>Hodnota
 
-Podmínky mohou být také vytvořeny pomocí **hodnoty**. **hodnota** kontroluje podmínky proti [parametrům](#parameters), [podporované funkce šablon](#policy-functions)nebo literály.
-**hodnota** je spárována s libovolnou podporovanou [podmínkou](#conditions).
+Podmínky mohou být také vytvořeny pomocí **hodnoty**. **hodnota** kontroluje podmínky proti [parametrům](#parameters), [podporované funkce šablon](#policy-functions)nebo literály. **hodnota** je spárována s libovolnou podporovanou [podmínkou](#conditions).
 
 > [!WARNING]
 > Pokud je výsledkem _funkce šablony_ chyba, vyhodnocení zásad se nezdařilo. Neúspěšné vyhodnocení je implicitní **odmítnutí**. Další informace najdete v tématu [předcházení chybám šablon](#avoiding-template-failures). Použijte [enforcementMode](./assignment-structure.md#enforcement-mode) z **DoNotEnforce** , abyste zabránili dopadu neúspěšného vyhodnocení nových nebo aktualizovaných prostředků při testování a ověřování nové definice zásady.
@@ -453,7 +453,7 @@ Pro **počet**se používají tyto vlastnosti:
 - **Count. Field** (Required): obsahuje cestu k poli a musí se jednat o alias pole. Pokud pole chybí, je výraz vyhodnocen jako _nepravdivý_ bez zvážení výrazu podmínky.
 - **Count. Where** (volitelné): výraz podmínky, který má individuálně vyhodnotit každého člena pole [ \[ \* \] aliasu](#understanding-the--alias) **Count. Field**. Pokud tato vlastnost není k dispozici, jsou všechny členy pole s cestou pole vyhodnoceny na _hodnotu true_. V této vlastnosti lze použít jakoukoli [podmínku](../concepts/definition-structure.md#conditions) .
   [Logické operátory](#logical-operators) lze použít uvnitř této vlastnosti k vytvoření složitých požadavků na vyhodnocení.
-- **\<condition\>**(povinné): hodnota je porovnána s počtem položek, které splnily výraz **Count. Where** podmínky. Měla by se použít číselná [Podmínka](../concepts/definition-structure.md#conditions) .
+- **\<condition\>** (povinné): hodnota je porovnána s počtem položek, které splnily výraz **Count. Where** podmínky. Měla by se použít číselná [Podmínka](../concepts/definition-structure.md#conditions) .
 
 #### <a name="count-examples"></a>Příklady počtu
 
@@ -575,7 +575,7 @@ Pro použití v rámci pravidla zásad jsou k dispozici všechny [funkce šablon
 
 Tato funkce je k dispozici pro použití v pravidle zásad, ale liší se od použití v šabloně Azure Resource Manager (šablona ARM):
 
-- `utcNow()`-Na rozdíl od šablony ARM lze tuto vlastnost použít mimo vlastnost _DefaultValue_.
+- `utcNow()` -Na rozdíl od šablony ARM lze tuto vlastnost použít mimo vlastnost _DefaultValue_.
   - Vrátí řetězec, který je nastaven na aktuální datum a čas ve formátu Universal ISO 8601 DateTime yyyy-MM-ddTHH: mm: ss. fffffffZ.
 
 Následující funkce jsou dostupné jenom v pravidlech zásad:
@@ -586,7 +586,7 @@ Následující funkce jsou dostupné jenom v pravidlech zásad:
 - `field(fieldName)`
   - **FieldName**: [required] řetězec-název [pole](#fields) , které se má načíst
   - Vrátí hodnotu tohoto pole z prostředku, který je vyhodnocován podmínkou if.
-  - `field`se primárně používá s **AuditIfNotExists** a **DeployIfNotExists** pro odkazování na pole v prostředku, který je vyhodnocován. Příklad tohoto použití lze zobrazit v [DeployIfNotExists příkladu](effects.md#deployifnotexists-example).
+  - `field` se primárně používá s **AuditIfNotExists** a **DeployIfNotExists** pro odkazování na pole v prostředku, který je vyhodnocován. Příklad tohoto použití lze zobrazit v [DeployIfNotExists příkladu](effects.md#deployifnotexists-example).
 - `requestContext().apiVersion`
   - Vrátí verzi rozhraní API žádosti, která aktivovala vyhodnocování zásad (například: `2019-09-01` ).
     Tato hodnota je verze rozhraní API, která se použila v požadavku PUT/PATCH k vyhodnocení při vytváření nebo aktualizaci prostředku. Nejnovější verze rozhraní API se vždycky používá během hodnocení dodržování předpisů u stávajících prostředků.

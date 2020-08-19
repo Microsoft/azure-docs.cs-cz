@@ -1,14 +1,14 @@
 ---
 title: Vysvětlení fungování efektů
 description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
-ms.date: 06/15/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 54c2a687c6386c075ef5802826bc60b87b4d3ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0cfa8215d828de6d5426c3883ca1968e7a7cb542
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791414"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544719"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -17,12 +17,12 @@ Každá definice zásady v Azure Policy má jediný účinek. Tím se určuje, c
 V definici zásad se v současné době podporují tyto efekty:
 
 - [Připojit](#append)
-- [Audit](#audit)
+- [Auditovat](#audit)
 - [AuditIfNotExists](#auditifnotexists)
 - [Deny](#deny)
 - [DeployIfNotExists](#deployifnotexists)
-- [Disabled](#disabled) (Zakázáno)
-- [Úprava](#modify)
+- [Zakázáno](#disabled)
+- [Upravit](#modify)
 
 Následující efekty jsou _zastaralé_:
 
@@ -546,7 +546,7 @@ Pole vlastností **Operations** umožňuje změnit několik značek různými zp
 
 Vlastnost **Operation** má následující možnosti:
 
-|Operace |Description |
+|Operace |Popis |
 |-|-|
 |addOrReplace |Přidá do prostředku definovanou značku a hodnotu, i když značka již existuje s jinou hodnotou. |
 |Přidat |Přidá do prostředku definovanou značku a hodnotu. |

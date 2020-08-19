@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti struktury definice iniciativy
 description: Popisuje způsob, jakým se definice iniciativ zásad používají k definování zásad pro nasazení do prostředků Azure ve vaší organizaci.
-ms.date: 05/29/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 80fa90765caa25d6995220134b9a5b4225133219
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b151ef4d58998b810e116321de68cbdb2e8d3eff
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84205957"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544634"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Struktura definice Azure Policy iniciativy
 
@@ -109,14 +109,14 @@ Zákazníci mohou definovat libovolné vlastnosti a hodnoty, které jsou užite�
 
 ### <a name="common-metadata-properties"></a>Vlastnosti běžných metadat
 
-- `version`(řetězec): sleduje podrobnosti o verzi obsahu definice iniciativy zásad.
-- `category`(String): Určuje, pod kterou kategorii v Azure Portal je tato definice zásad zobrazená.
+- `version` (řetězec): sleduje podrobnosti o verzi obsahu definice iniciativy zásad.
+- `category` (String): Určuje, pod kterou kategorii v Azure Portal je tato definice zásad zobrazená.
 
   > [!NOTE]
   > V případě iniciativ [dodržování předpisů](./regulatory-compliance.md) `category` musí být **předpisy dodržování**předpisů.
 
-- `preview`(Boolean): příznak True nebo false pro, pokud je definice iniciativy pro zásady ve _verzi Preview_.
-- `deprecated`(Boolean): příznak True nebo false pro, pokud byla definice iniciativy zásad označena jako _zastaralá_.
+- `preview` (Boolean): příznak True nebo false pro, pokud je definice iniciativy pro zásady ve _verzi Preview_.
+- `deprecated` (Boolean): příznak True nebo false pro, pokud byla definice iniciativy zásad označena jako _zastaralá_.
 
 > [!NOTE]
 > Služba Azure Policy používá `version` vlastnosti, `preview` a `deprecated` k vyjádření úrovně změny předdefinované definice nebo iniciativy a stavu zásad. Formát `version` je: `{Major}.{Minor}.{Patch}` . Konkrétní stavy, například _zastaralé_ nebo ve _verzi Preview_, jsou připojeny k `version` vlastnosti nebo v jiné vlastnosti jako **logická hodnota**. Další informace o způsobu, jakým jsou předdefinované verze Azure Policy, najdete v tématu [Vestavěná správa verzí](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
@@ -218,10 +218,10 @@ Povolené hodnoty pro **strongType** typu non-Resource jsou:
 
 Každý prvek _pole_ , který představuje definici zásady, má následující vlastnosti:
 
-- `policyDefinitionId`(String): ID vlastní nebo předdefinované definice zásady, která se má zahrnout.
-- `policyDefinitionReferenceId`(String): krátký název zahrnuté definice zásady.
+- `policyDefinitionId` (String): ID vlastní nebo předdefinované definice zásady, která se má zahrnout.
+- `policyDefinitionReferenceId` (String): krátký název zahrnuté definice zásady.
 - `parameters`: (Volitelné) páry název/hodnota pro předání parametru iniciativy do zahrnuté definice zásad jako vlastnost v této definici zásady. Další informace najdete v tématu [parametry](#parameters).
-- `groupNames`(pole řetězců): (volitelné) skupina, které je definicí zásad členem. Další informace najdete v tématu [skupiny zásad](#policy-definition-groups).
+- `groupNames` (pole řetězců): (volitelné) skupina, které je definicí zásad členem. Další informace najdete v tématu [skupiny zásad](#policy-definition-groups).
 
 Tady je příklad `policyDefinitions` , který má dvě zahrnuté definice zásad, které mají každý stejný parametr iniciativy:
 
@@ -257,11 +257,11 @@ Další podrobnosti o seskupení se dají najít v objektu **policyMetadata** vy
 
 Každý prvek _pole_ v `policyDefinitionGroups` musí mít obě následující vlastnosti:
 
-- `name`(String) \[ požadováno \] : krátký název **ovládacího prvku**. Hodnota této vlastnosti je používána `groupNames` v `policyDefinitions` .
-- `category`(String): **doména dodržování předpisů** ovládacího prvku.
-- `displayName`(String): popisný název **ovládacího prvku**. Používáno portálem.
-- `description`(String): popis toho, co **ovládací prvek** dělá.
-- `additionalMetadataId`(String): umístění objektu [policyMetadata](#metadata-objects) , který obsahuje další podrobnosti o **řízení** a **doméně dodržování předpisů**.
+- `name` (String) \[ požadováno \] : krátký název **ovládacího prvku**. Hodnota této vlastnosti je používána `groupNames` v `policyDefinitions` .
+- `category` (String): **doména dodržování předpisů** ovládacího prvku.
+- `displayName` (String): popisný název **ovládacího prvku**. Používáno portálem.
+- `description` (String): popis toho, co **ovládací prvek** dělá.
+- `additionalMetadataId` (String): umístění objektu [policyMetadata](#metadata-objects) , který obsahuje další podrobnosti o **řízení** a **doméně dodržování předpisů**.
 
   > [!NOTE]
   > Zákazníci mohou ukazovat na existující objekt [policyMetadata](#metadata-objects) . Tyto objekty jsou však jen _pro čtení_ a jsou vytvořeny pouze společností Microsoft.
@@ -292,9 +292,9 @@ Tyto informace jsou:
 Metadata pro seskupení zásad mají v uzlu následující informace `properties` :
 
 - `metadataId`: **ID ovládacího prvku** , ke kterému se vztahuje seskupení.
-- `category`(povinné): **doména dodržování předpisů** , ke které **ovládací prvek** patří.
-- `title`(povinné): popisný název **ID ovládacího prvku**.
-- `owner`(povinné): Určuje, kdo má odpovědnost za ovládací prvek v Azure: _Customer_, _Microsoft_, _Shared_.
+- `category` (povinné): **doména dodržování předpisů** , ke které **ovládací prvek** patří.
+- `title` (povinné): popisný název **ID ovládacího prvku**.
+- `owner` (povinné): Určuje, kdo má odpovědnost za ovládací prvek v Azure: _Customer_, _Microsoft_, _Shared_.
 - `description`: Další informace o ovládacím prvku.
 - `requirements`: Podrobnosti o odpovědnosti za implementaci ovládacího prvku.
 - `additionalContentUrl`: Odkaz na Další informace o ovládacím prvku. Tato vlastnost je obvykle odkazem na část dokumentace, která pokrývá tento ovládací prvek ve standardu dodržování předpisů.

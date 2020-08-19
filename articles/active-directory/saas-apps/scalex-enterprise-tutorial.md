@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování pomocí programu ScaleX Enterprise | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ScaleX Enterprise.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c2379a8d-a659-45f1-87db-9ba156d83183
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e54994d02dd1abbca1602952fbad058b3ad993d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7033886d55e381445d99035115654332491441c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72594263"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547845"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí programu ScaleX Enterprise
 
@@ -83,13 +78,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://platform.rescale.com/saml2/<company id>/`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://platform.rescale.com/saml2/<company id>/`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://platform.rescale.com/saml2/<company id>/acs/`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://platform.rescale.com/saml2/<company id>/acs/`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://platform.rescale.com/saml2/<company id>/sso/`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://platform.rescale.com/saml2/<company id>/sso/`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory scaleX Enterprise Client](https://info.rescale.com/contact_sales) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -114,9 +109,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -167,7 +162,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     b. **Zprostředkovatel služeb SAML**: vložte hodnotu ***urn: Oasis: names: TC: SAML: 2.0: NameId-Format: persistent***
 
-    c. **Název pole e-mailu zprostředkovatele identity v odpovědi ACS**: vložte hodnotu.`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    c. **Název pole e-mailu zprostředkovatele identity v odpovědi ACS**: vložte hodnotu. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
     d. **ID entity EntityDescriptor zprostředkovatele identity:** Vložte hodnotu **identifikátoru Azure AD** zkopírovanou z Azure Portal.
 
@@ -175,7 +170,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     f. **Certifikát veřejného certifikátu x509 zprostředkovatele identity:** Otevřete certifikát x509 stažený z Azure v poznámkovém bloku a vložte obsah do tohoto pole. Zajistěte, aby uprostřed obsahu certifikátu nedocházelo k žádným koncům řádků.
 
-    g. Zaškrtněte následující políčka: **povoleno, zašifrujte NameId a podepište AuthnRequests.**
+    například Zaškrtněte následující políčka: **povoleno, zašifrujte NameId a podepište AuthnRequests.**
 
     h. Kliknutím na **aktualizovat nastavení jednotného přihlašování** nastavení uložte.
 
@@ -189,11 +184,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici ScaleX Enterprise, měli byste být automaticky přihlášeni k organizaci ScaleX, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

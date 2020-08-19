@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace se systémy PEGA | Microsoft Docs'
 description: V tomto kurzu se dozvíte, jak nakonfigurovat jednotné přihlašování mezi systémy Azure Active Directory a PEGA.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 31acf80f-1f4b-41f1-956f-a9fbae77ee69
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: bd54466e054055ff84cd5bb2b28c5cc074ac0017
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3dd09770ef5f747f008090368c35b1f274374c5f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026804"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549063"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Kurz: Azure Active Directory integrací se systémy PEGA
 
@@ -57,7 +53,7 @@ K nastavení integrace systémů PEGA do služby Azure AD je nutné přidat syst
 
     ![Vyberte Azure Active Directory.](common/select-azuread.png)
 
-2. Přejít k **podnikovým aplikacím** > **všechny aplikace**.
+2. Přejít k **podnikovým aplikacím**  >  **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -119,7 +115,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí systém�
 
     1. Do pole **přihlašovací adresa URL** zadejte hodnotu adresy URL pro přihlášení.
 
-    1. Do pole **stav přenosu** zadejte adresu URL v tomto vzoru:`https://<customername>.pegacloud.io/prweb/sso`
+    1. Do pole **stav přenosu** zadejte adresu URL v tomto vzoru: `https://<customername>.pegacloud.io/prweb/sso`
 
     > [!NOTE]
     > Zde uvedené hodnoty jsou zástupné symboly. Musíte použít skutečný identifikátor, adresu URL odpovědi, adresu URL pro přihlášení a adresu URL stavu přenosu. Hodnoty adresy URL pro odpovědi můžete získat z aplikace PEGA, jak je vysvětleno dále v tomto kurzu. Pokud chcete získat hodnotu stavu přenosu, obraťte se na [tým podpory PEGA Systems](https://www.pega.com/contact-us). Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -180,7 +176,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí systém�
 
 1. Pokud chcete nakonfigurovat jednotné přihlašování na straně **systémů PEGA** , přihlaste se k portálu PEGA pomocí účtu správce v jiném okně prohlížeče.
 
-2. Vyberte **vytvořit** > **SysAdmin** > **ověřovací službu**sysadmin:
+2. Vyberte **vytvořit**  >  **SysAdmin**  >  **ověřovací službu**sysadmin:
 
     ![Vybrat ověřovací službu](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
     
@@ -234,7 +230,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azu
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon@\<\< yourcompanydomain>.>rozšíření **. (Například BrittaSimon@contoso.com.)
+    b. Do pole **uživatelské jméno** zadejte **brittasimon@ \<yourcompanydomain> . \<extension> **. (Například BrittaSimon@contoso.com .)
 
     c. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu, která je uvedena v poli **heslo** .
 
@@ -276,7 +272,7 @@ Teď je potřeba otestovat konfiguraci jednotného přihlašování Azure AD pom
 
 Když vyberete dlaždici PEGA Systems na přístupovém panelu, měli byste se automaticky přihlásit k instanci systému PEGA, pro kterou jste nastavili jednotné přihlašování. Další informace najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Kurzy integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
