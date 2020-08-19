@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s portálem Palo Alto Networks na více sítích | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Palo Alto Networks na portálu.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 67a0b476-2305-4157-8658-2ec3625850d5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f926741bde3bdcc69cb4ea30f54daca79606047e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1dad0ecc80302ae6b48d420664723a3a03fc9ea5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160163"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554007"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Kurz: Integrace Azure Active Directory s Palo Alto Networks na portálu
 
@@ -35,7 +30,7 @@ Při integraci Palo Alto Networks na portálu s Azure AD získáte následujíc�
 
 Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
+Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -61,7 +56,7 @@ Začněte tím, že v galerii přidáte portál Palo Alto Networks do vašeho se
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte **podnikové aplikace** > **všechny aplikace**.
+2. Vyberte **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Možnost podnikové aplikace v nabídce](common/enterprise-applications.png)
 
@@ -106,9 +101,9 @@ Nejdřív povolte jednotné přihlašování Azure AD v Azure Portal:
 
     ![Palo Alto Networks – základní konfigurační podokno SAML na portálu](common/idp-intiated.png)
 
-   1. V poli **identifikátor**zadejte adresu URL, která má vzor `https://<customer_firewall_host_name>/SAML20/SP`.
+   1. V poli **identifikátor**zadejte adresu URL, která má vzor `https://<customer_firewall_host_name>/SAML20/SP` .
 
-   2. V poli **Adresa URL odpovědi**zadejte adresu URL, která má `https://<customer_firewall_host_name>/SAML20/SP/ACS`vzor.
+   2. V poli **Adresa URL odpovědi**zadejte adresu URL, která má vzor `https://<customer_firewall_host_name>/SAML20/SP/ACS` .
 
       > [!NOTE]
       > Aktualizujte zástupné hodnoty v tomto kroku skutečným identifikátorem a adresou URL pro odpovědi. Chcete-li získat skutečné hodnoty, obraťte se na [tým podpory klienta podpory Palo Alto Networks na portálu](https://support.paloaltonetworks.com/support).
@@ -137,7 +132,7 @@ V dalším kroku nastavte jednotné přihlašování v Palo Alto Networks na sam
 
     1. Jako **název profilu**zadejte název, třeba **AzureAD-CaptivePortal**.
     
-    2. Vedle pole **metadata zprostředkovatele identity**vyberte **Procházet**. Vyberte soubor metadata. XML, který jste stáhli v Azure Portal.
+    2. Vedle pole **metadata zprostředkovatele identity**vyberte **Procházet**. Vyberte soubor metadata.xml, který jste stáhli v Azure Portal.
     
     3. Vyberte **OK**.
 
@@ -145,7 +140,7 @@ V dalším kroku nastavte jednotné přihlašování v Palo Alto Networks na sam
 
 Dále vytvořte testovacího uživatele s názvem *Britta Simon* v Azure Portal:
 
-1. V Azure Portal vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. V Azure Portal vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -159,7 +154,7 @@ Dále vytvořte testovacího uživatele s názvem *Britta Simon* v Azure Portal:
 
     1. Jako **název**zadejte **BrittaSimon**.
   
-    2. Jako **uživatelské jméno**zadejte **BrittaSimon\@\<\>your_company_domain**. Například **BrittaSimon\@contoso.com**.
+    2. Jako **uživatelské jméno**zadejte **BrittaSimon \@ \<your_company_domain\> **. Například **BrittaSimon \@ contoso.com**.
 
     3. Jako **heslo**zadejte heslo. Doporučujeme, abyste si zaznamenali záznam hesla, které zadáte. Pro zobrazení hesla můžete zaškrtnout políčko **Zobrazit heslo** .
 
@@ -169,7 +164,7 @@ Dále vytvořte testovacího uživatele s názvem *Britta Simon* v Azure Portal:
 
 Dále udělte přístup k samoobslužnému portálu Palo Alto Networks, aby Britta Simon mohl používat jednotné přihlašování Azure:
 
-1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Podokno podnikové aplikace](common/enterprise-applications.png)
 
@@ -181,7 +176,7 @@ Dále udělte přístup k samoobslužnému portálu Palo Alto Networks, aby Brit
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Vyberte **Přidat uživatele**. Pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+4. Vyberte možnost **Přidat uživatele**. Pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
     ![Podokno přidat přiřazení](common/add-assign-user.png)
 
@@ -202,7 +197,7 @@ V dalším kroku vytvořte uživatele s názvem *Britta Simon* v Palo Alto Netwo
 
 Palo Alto Networks Hosted Portal se nainstaluje za bránou firewall na virtuálním počítači s Windows. K otestování jednotného přihlašování v Palo Alto Networks Portalu se přihlaste k virtuálnímu počítači s Windows pomocí protokol RDP (Remote Desktop Protocol) (RDP). V relaci RDP otevřete prohlížeč a přejdete na libovolný web. Otevře se adresa URL jednotného přihlašování a budete vyzváni k ověření. Po dokončení ověřování máte přístup k webům.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 Další informace najdete v těchto článcích:
 

@@ -9,15 +9,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0989c31611b2f42c0219324fa517adc5c216c6c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77048553"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586601"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Architektura nasazení Azure Dedicated HSM
 
@@ -29,18 +29,18 @@ Vyhrazený modul HSM Azure poskytuje úložiště kryptografických klíčů v A
 
 HSM jsou distribuované napříč datovými centry Microsoftu a dají se snadno zřídit jako pár zařízení jako základ pro vysoce dostupné řešení. Můžou být nasazené i v různých oblastech řešení odolného proti havárii. V současné době jsou dostupné oblasti s vyhrazeným modulem HSM:
 
-* USA – východ
+* East US
 * USA – východ 2
 * USA – západ
-* USA – středojih
-* Jihovýchodní Asie
+* Středojižní USA
+* Southeast Asia
 * Východní Asie
 * Indie – střed
 * Indie – jih
 * Japonsko – východ
 * Japonsko – západ
 * Severní Evropa
-* Západní Evropa
+* West Europe
 * Spojené království – jih
 * Spojené království – západ
 * Střední Kanada
@@ -48,7 +48,7 @@ HSM jsou distribuované napříč datovými centry Microsoftu a dají se snadno 
 * Austrálie – východ
 * Austrálie – jihovýchod
 
-Každá z těchto oblastí má racky HSM nasazené buď v obou nezávislých datových centrech, nebo alespoň ve dvou nezávislých zónách dostupnosti. Jižní Východní Asie má tři zóny dostupnosti a Východní USA 2 má dvě. Existuje celkem osm oblastí napříč Evropa, Asie a USA, které nabízejí vyhrazenou službu HSM. Další informace o oblastech Azure najdete v informacích o oficiálních [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
+Každá z těchto oblastí má racky HSM nasazené buď v obou nezávislých datových centrech, nebo alespoň ve dvou nezávislých zónách dostupnosti. Jižní Východní Asie má tři zóny dostupnosti a Východní USA 2 má dvě. Existuje celkem osm oblastí napříč Evropa, Asie a USA, které nabízejí vyhrazenou službu HSM. Další informace o oblastech Azure najdete v informacích o oficiálních  [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
 Některé faktory návrhu pro jakékoli vyhrazené řešení založené na HSM jsou umístění/latence, vysoká dostupnost a podpora pro jiné distribuované aplikace.
 
 ## <a name="device-location"></a>Device location (Umístění zařízení)

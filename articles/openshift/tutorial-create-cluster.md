@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 9a393e29c4b5b2faa48cbcd273c7bc7a46169ba3
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d4938d2e4649d62ab656b6854e8176fd82b59a8f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904186"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587731"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift 4
 
@@ -22,13 +22,13 @@ V tomto kurzu, který je první částí tři, připravíte své prostředí, ab
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.75 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ### <a name="verify-your-permissions"></a>Ověření oprávnění
 
 Pokud chcete vytvořit cluster Azure Red Hat OpenShift, ověřte následující oprávnění k vašemu předplatnému Azure, Azure Active Directory uživateli nebo instančnímu objektu:
 
-|Oprávnění|Skupina prostředků, která obsahuje virtuální síť|Provádění uživatelem`az aro create`|Instanční objekt se předal jako`–client-id`|
+|Oprávnění|Skupina prostředků, která obsahuje virtuální síť|Provádění uživatelem `az aro create`|Instanční objekt se předal jako `–client-id`|
 |----|:----:|:----:|:----:|
 |**Správce uživatelského přístupu**|X|X| |
 |**Přispěvatel**|X|X|X|

@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Perceptyx | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Perceptyx.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3b542350-0d2a-4213-90a2-b08225a51d86
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fba95add63a0784712b4c5b0d3989ae7b987ffb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 837c1c1a3bac064ddc808c7c083fcaa56e60f210
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67108312"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553882"
 ---
 # <a name="tutorial-integrate-perceptyx-with-azure-active-directory"></a>Kurz: integrace Perceptyx s Azure Active Directory
 
@@ -80,9 +75,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<SubDomain>.perceptyx.com/<SurveyId>/index.cgi/saml-login?o=B`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<SubDomain>.perceptyx.com/<SurveyId>/index.cgi/saml-login?o=B`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<SubDomain>.perceptyx.com/<SurveyId>/index.cgi/saml-login?o=P`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<SubDomain>.perceptyx.com/<SurveyId>/index.cgi/saml-login?o=P`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Perceptyx](mailto:customersupport@perceptyx.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -103,9 +98,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -133,7 +128,7 @@ V této části vytvoříte uživatele s názvem B. Simon v Perceptyx. Pokud chc
 
 Když na přístupovém panelu vyberete dlaždici Perceptyx, měli byste se automaticky přihlásit k Perceptyx, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

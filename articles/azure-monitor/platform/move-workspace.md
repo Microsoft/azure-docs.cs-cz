@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: e0ecfd3acb6a8a1d40e006aef1bbf63eae0e1ff4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3937eaa5017ed66641d886ecd45e812f7070b83
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770794"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566280"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Přesunutí pracovního prostoru Log Analytics do jiného předplatného nebo skupiny prostředků
 
@@ -39,7 +39,10 @@ Spravovaná řešení, která jsou nainstalovaná v pracovním prostoru, se pře
 - Azure Security Center
 
 >[!IMPORTANT]
-> - Po povolení v pracovním prostoru Azure Sentinel v **současné době nepodporuje** přesun tohoto pracovního prostoru do jiných skupin prostředků nebo předplatných. Pokud potřebujete pracovní prostor přesunout, kontaktujte [Azure Sentinel](mailto:AzureSentinel@microsoft.com).
+> **Zákazníci se službou Sentinel Azure:**
+> - Po nasazení v pracovním prostoru Azure Sentinel v **současné době nepodporuje** přesun tohoto pracovního prostoru do jiných skupin prostředků nebo předplatných. 
+>
+>   Pokud jste pracovní prostor již přesunuli, zakažte v rámci **analýz** všechna aktivní pravidla a po pěti minutách je znovu povolte. Tato činnost by se měla projevit ve většině případů, ale při opakování iterace není podporovaná a je prováděná na vlastním riziku.
 
 ### <a name="delete-solutions-in-azure-portal"></a>Odstranění řešení v Azure Portal
 K odebrání řešení pomocí Azure Portal použijte následující postup:

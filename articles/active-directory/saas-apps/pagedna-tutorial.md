@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s PageDNA | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a PageDNA.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c8765864-45f4-48c2-9d86-986a4aa431e4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34e496ea9d2a89894951856a19854bff18f20a8b
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 543085eaea993f6e464a501ffc93befd7589a009
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800870"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554120"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Kurz: Azure Active Directory integrace s PageDNA
 
@@ -39,7 +34,7 @@ Podrobnosti o integraci aplikací SaaS (software jako služba) se službou Azure
 
 Ke konfiguraci integrace služby Azure AD s PageDNA potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Předplatné služby Azure AD. Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 * Předplatné PageDNA s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
@@ -56,7 +51,7 @@ PageDNA podporuje následující funkce:
 
 Pokud chcete nakonfigurovat integraci PageDNA do služby Azure AD, musíte přidat PageDNA z Azure Marketplace do seznamu spravovaných aplikací SaaS:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com?azure-portal=true).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com?azure-portal=true).
 1. V levém podokně vyberte **Azure Active Directory**.
 
     ![Možnost Azure Active Directory](common/select-azuread.png)

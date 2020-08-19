@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f280e6754d40ad5dc8cbfa4b760e090d0b5b81aa
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 76671ba2dec2590baf4f3df38325b4cfb0129e8d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846475"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586099"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -26,7 +26,8 @@ ms.locfileid: "87846475"
 > * [Sada Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Jarní data v2](sql-api-sdk-java-spring-v2.md)
+> * [Jarní data V3](sql-api-sdk-java-spring-v3.md)
 > * [Konektor Spark](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -41,7 +42,7 @@ ms.locfileid: "87846475"
 |Dokumentace k rozhraní API  |  [Referenční dokumentace sady JavaScript SDK](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |Pokyny k instalaci sady SDK  |  [Pokyny k instalaci](https://github.com/Azure/azure-sdk-for-js)
 |Přispívání do sady SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
-| ukázky | [Ukázky kóduNode.js](sql-api-nodejs-samples.md)
+| ukázky | [ Ukázky kóduNode.js](sql-api-nodejs-samples.md)
 | Úvodní kurz | [Začínáme se sadou JavaScript SDK](sql-api-nodejs-get-started.md)
 | Kurz webové aplikace | [Vytvoření Node.js webové aplikace pomocí Azure Cosmos DB](sql-api-nodejs-application.md)
 | Aktuální podporovaná platforma | [Node.js V12. x](https://nodejs.org/en/blog/release/v12.7.0/) -SDK verze 3. x. x<br/>[Node.js v10 za účelem. x](https://nodejs.org/en/blog/release/v10.6.0/) -SDK verze 3. x. x<br/>[Node.js V8. x](https://nodejs.org/en/blog/release/v8.16.0/) -SDK verze 3. x. x<br/>[Node.js v6. x](https://nodejs.org/en/blog/release/v6.10.3/) -SDK verze 2. x. x<br/>[Node.js v 4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)– sada SDK verze 1. x. x<br/> [Node.js v 0.12](https://nodejs.org/en/blog/release/v0.12.0/)– sada SDK verze 1. x. x<br/> [Node.js v 0.10](https://nodejs.org/en/blog/release/v0.10.0/)– sada SDK verze 1. x. x
@@ -470,7 +471,7 @@ Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady 
 | [1.0.1](#1.0.1) |15. května 2015 |30. srpna 2020 |
 | [1.0.0](#1.0.0) |08 8. dubna 2015 |30. srpna 2020 |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také

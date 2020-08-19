@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Coggle | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Coggle.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4193278b-414a-4e1e-8216-aa3848622fd4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 429571e2dae625664e482482f4245ed7e6325b0a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ffa4f0ab40e413da78257bde81a00fd3910131b1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101473"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555963"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coggle"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Coggle
 
@@ -32,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Coggle s Azure Active Directory (Azure
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -87,7 +83,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://coggle.it/<TENANT_NAME>/login`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://coggle.it/<TENANT_NAME>/login`
 
     > [!NOTE]
     > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta Coggle](mailto:hello@Coggle.it) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -100,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Coggle několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------- |
     | firstName | User. křestní jméno |
     | lastName | User. příjmení |
@@ -124,7 +120,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -180,11 +176,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici Coggle na přístupovém panelu, měli byste se automaticky přihlásit k Coggle, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

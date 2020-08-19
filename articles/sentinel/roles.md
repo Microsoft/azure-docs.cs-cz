@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 7dded3b938444198e72d6eb87476f571dd3f4d78
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b48ff1043ae8128a5cbfdcbba0548d89b5af2624
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836764"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565838"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Oprávnění v Azure Sentinel
 
@@ -59,6 +59,10 @@ Uživatelům s konkrétními požadavky na úlohy může být potřeba přiřadi
 - Připojení zdrojů dat ke službě Azure Sentinel
 
     Aby mohl uživatel přidat **datové konektory**, je nutné přiřadit oprávnění pro zápis uživatele v pracovním prostoru Azure Sentinel. Také si poznamenejte požadovaná další oprávnění pro každý konektor, jak je uvedeno na příslušné stránce konektoru.
+
+- Uživatelé typu Host přiřazují incidenty
+
+    Pokud uživatel typu Host potřebuje, aby mohl přiřadit incidenty, pak kromě role respondérů služby Azure Sentinel bude muset uživateli také přiřadit roli [čtečky adresářů](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers). Všimněte si, že tato *role není role* Azure RBAC, ale role **Azure Active Directory** a tento běžný uživatel (bez hosta) má tuto roli přiřazenou ve výchozím nastavení. 
 
 Pro souběžné porovnání se podívejte na [následující tabulku](#roles-and-allowed-actions).
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 9ec482af2878ba302a4658314723b96fb9a42999
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 92e032eb104835788f515cc7800fe5dacfa8adaa
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904883"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566127"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Správa uživatelských účtů ve službě Azure API Management
 

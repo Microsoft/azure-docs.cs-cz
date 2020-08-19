@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Mapbox | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Mapbox.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 78ae0db9-1ba2-4f54-a645-43c537719123
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e901fd3600a0a5b3efbe816b906f8598e202f454
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: faedec24bc4b962044d55a47345739592e276b61
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83876480"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554766"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mapbox"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Mapbox
 
@@ -114,7 +110,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -174,9 +170,9 @@ Když na přístupovém panelu kliknete na dlaždici Mapbox, měli byste se auto
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

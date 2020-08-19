@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Palo Alto Networks – GlobalProtect | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Palo Alto Networks – GlobalProtect.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 03bef6f2-3ea2-4eaa-a828-79c5f1346ce5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7aa6c799535db21a9d40f2eb8b74300a8c6b00f0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2b8c74b8a456815400f6d68200ea93f43e3adff0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739817"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554044"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks---globalprotect"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Palo Alto Networks – GlobalProtect
 
@@ -83,9 +78,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<Customer Firewall URL>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<Customer Firewall URL>`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<Customer Firewall URL>/SAML20/SP`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<Customer Firewall URL>/SAML20/SP`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Chcete-li získat tyto hodnoty, kontaktujte [Palo Alto Networks – GlobalProtect tým podpory klientů](https://support.paloaltonetworks.com/support) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -108,7 +103,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -146,7 +141,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     a. Do textového pole **název profilu** zadejte název, třeba Azure AD GlobalProtect.
 
-    b. V části **metadata zprostředkovatele identity**klikněte na **Procházet** a vyberte soubor metadata. XML, který jste stáhli z Azure Portal
+    b. V části **metadata zprostředkovatele identity**klikněte na **Procházet** a vyberte soubor metadata.xml, který jste stáhli z Azure Portal
 
     c. Klikněte na tlačítko **OK**.
 
@@ -162,8 +157,8 @@ Když na přístupovém panelu kliknete na dlaždici Palo Alto Networks-GlobalPr
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Vyzkoušejte Palo Alto Networks – GlobalProtect se službou Azure AD](https://aad.portal.azure.com/)

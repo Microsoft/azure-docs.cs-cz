@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 1decd57c8389cb826c370d47793b793c24f9e6b8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d5d16181eb4dda08f002587545f99fab757b6b0e
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833670"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586422"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Kurz: Vytvoření aplikace WPF (Windows Presentation Framework) pro zobrazení obličejových dat v obrázku
 
@@ -34,7 +34,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Kompletní vzorový kód je k dispozici v [ukázkovém úložišti pro rozpoznávání tváře CSharp](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample) na GitHubu.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -53,7 +53,7 @@ Postupujte podle těchto kroků a vytvořte nový projekt aplikace WPF.
 1. V aplikaci Visual Studio otevřete dialogové okno Nový projekt. Rozbalte položku **nainstalované**, potom **Visual C#** a pak vyberte **aplikace WPF (.NET Framework)**.
 1. Pojmenujte tuto aplikaci **FaceTutorial** a klikněte na **OK**.
 1. Získejte požadované balíčky NuGet. V Průzkumník řešení klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**; pak vyhledejte a nainstalujte následující balíček:
-    - [Microsoft. Azure. Cognitiveservices Account. Vision. Face 2.5.0-Preview. 1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)
+    - [Microsoft. Azure. Cognitiveservices Account. Vision. Face 2.6.0-Preview. 1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1)
 
 ## <a name="add-the-initial-code"></a>Přidání počátečního kódu
 

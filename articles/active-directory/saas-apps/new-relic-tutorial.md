@@ -2,24 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci s novým Relic podle účtu | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a novým Relic pomocí účtu.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3186b9a8-f4d8-45e2-ad82-6275f95e7aa6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 9fdcec5b55f52b7b6b824bf2ba25c14541b2a3c6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 19a471b9339828250baa190b1de57c86eb22b30c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82186562"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554457"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s novým Relic podle účtu
 
@@ -83,9 +80,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
-    `https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login`– Nezapomeňte nahradit `acc_id` vlastní ID účtu novým Relic podle účtu.
+    `https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login` – Nezapomeňte nahradit `acc_id` vlastní ID účtu novým Relic podle účtu.
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL:`rpm.newrelic.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL: `rpm.newrelic.com`
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -109,9 +106,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -186,11 +183,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici nový účet Relic podle účtu na přístupovém panelu byste měli být automaticky přihlášeni k novému Relic podle účtu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,71 +1,82 @@
 ---
 title: Informace o Azure Key Vault obnovení certifikátu
-description: Informace o Azure Key Vault obnovení certifikátu
+description: Tento článek popisuje, jak obnovit certifikáty Azure Key Vault.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: bbd65cdfc7c8ebbc08b914158577337cc49ec887
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3809fa9e1ce17a5a0c3cf333ac20ef543db4b5a7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236059"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588799"
 ---
-# <a name="about-azure-key-vault-certificate-renewal"></a>Informace o Azure Key Vault obnovení certifikátu
+# <a name="renew-your-azure-key-vault-certificates"></a>Obnovení certifikátů Azure Key Vault
 
-Azure Key Vault umožňuje snadno zřídit, spravovat a nasazovat digitální certifikáty pro vaši síť a povolit zabezpečenou komunikaci pro aplikace. Obecnější informace o certifikátech najdete v tématu [Azure Key Vault certifikátů](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) .
+Pomocí Azure Key Vault můžete snadno zřídit, spravovat a nasazovat digitální certifikáty pro vaši síť a povolit zabezpečenou komunikaci pro vaše aplikace. Další informace o certifikátech najdete v tématu [informace o Azure Key Vaultch certifikátech](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates).
 
-U krátkodobého nepracovního certifikátu nebo zvýšení frekvence rotace certifikátů omezuje nežádoucí osoba rozsah škod.
+Pomocí krátkodobých certifikátů nebo zvýšením frekvence rotace certifikátů můžete pomoci zabránit přístupu k aplikacím neautorizovaným uživatelům.
 
-## <a name="certificate-expiration-notifications"></a>Oznámení o vypršení platnosti certifikátu
-Nejdřív nezapomeňte přidat do svého Key Vault kontakt s certifikátem, abyste mohli dostávat oznámení, když brzy vyprší platnost certifikátů. (např. pomocí rutiny prostředí PowerShell [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0)) nakonfigurujete, kdy se má zobrazit oznámení o vypršení platnosti certifikátu. Pokud chcete nakonfigurovat akci životního cyklu, postupujte podle [zde](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate) .
+Tento článek popisuje, jak obnovit certifikáty Azure Key Vault.
 
-V trezoru klíčů existují tři kategorie vytvoření certifikátu. Tato příručka vám pomůže pochopit, jak lze dosáhnout obnovení certifikátů.
--   Certifikáty vytvořené s integrovanou certifikační autoritou (DigiCert nebo GlobalSign)
--   Certifikáty vytvořené bez integrované certifikační autority
+## <a name="get-notified-about-certificate-expirations"></a>Dostávat oznámení o vypršení platnosti certifikátu
+Chcete-li být upozorněni na vypršení platnosti certifikátů, postupujte následovně:
+
+Nejdřív přidejte do trezoru klíčů kontakt s certifikátem pomocí rutiny prostředí PowerShell [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0).
+
+Potom nakonfigurujte, kdy chcete být upozorněni na vypršení platnosti certifikátu. Informace o konfiguraci atributů životního cyklu certifikátu najdete v tématu [Konfigurace automatické rotace certifikátů v Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate).
+
+V Key Vault existují tři kategorie certifikátů:
+-   Certifikáty, které jsou vytvořené pomocí integrované certifikační autority (CA), jako je DigiCert nebo GlobalSign
+-   Certifikáty vytvořené s neintegrovanou certifikační autoritou
 -   Certifikáty podepsané svým držitelem
 
-## <a name="renewal-of-integrated-ca-certificate"></a>Obnovení integrovaného certifikátu certifikační autority 
-Máme pro vás dobré zprávy! Trezory klíčů Azure se postará o komplexní údržbu certifikátů vydaných důvěryhodnými certifikačními autoritami Microsoftu, tj. DigiCert a GlobalSign. Naučte se [integrovat důvěryhodnou certifikační autoritu s trezorem klíčů](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority).
+## <a name="renew-an-integrated-ca-certificate"></a>Obnovení integrovaného certifikátu certifikační autority 
+Azure Key Vault zpracovává ucelenou údržbu certifikátů vydaných důvěryhodnými certifikačními autoritami Microsoftu DigiCert a GlobalSign. Naučte se [integrovat důvěryhodnou certifikační autoritu pomocí Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority).
 
-## <a name="renewal-of-non-integrated-ca-certificate"></a>Obnovování neintegrovaného certifikátu certifikační autority 
-Azure Key trezor poskytuje svým uživatelům výhody importu certifikátů z libovolné certifikační autority, aby se mohli jejich uživatelé integrovat s několika prostředky Azure a usnadnit nasazení. Pokud jste se seznámili se ztrátou vyprší platnost vašeho certifikátu nebo jste zjistili, že platnost certifikátu již vypršela, potom vám Key Vault může pokaždé v aktuálním stavu. V případě neintegrovaného certifikátu certifikační autority umožňuje Trezor klíčů uživateli nastavení e-mailových oznámení téměř po vypršení platnosti. Tato oznámení lze nastavit také pro více uživatelů.
+## <a name="renew-a-nonintegrated-ca-certificate"></a>Obnovit neintegrovanou certifikační AUTORITu 
+Pomocí Azure Key Vault můžete importovat certifikáty z libovolné certifikační autority, což vám umožní integrovat s několika prostředky Azure a usnadnit nasazení. Pokud máte obavy o ztrátu sledování dat vypršení platnosti certifikátu nebo, horší, zjistili jste, že platnost certifikátu již vypršela, váš Trezor klíčů vám může pomáhat v aktuálním stavu. V případě neintegrovaných certifikátů certifikační autority vám Trezor klíčů umožňuje nastavit e-mailová oznámení s blížícím se koncem platnosti. Taková oznámení je možné nastavit i pro více uživatelů.
 
-Teď pro obnovení certifikátu je důležité pochopit, že Azure Key Vault certifikát je objekt s verzí. Pokud aktuální verze vyprší, budete muset vytvořit novou verzi. V koncepčních případech by každá nová verze měla zcela nový certifikát, který se skládá z klíče a objektu blob, který tento klíč přiřazuje identitě. Když použijete nepartnerský certifikační autoritu, Trezor klíčů vygeneruje pár klíč-hodnota a vrátí CSR.
+> [!IMPORTANT]
+> Certifikát je objekt se správou verzí. Pokud aktuální verze vyprší, je nutné vytvořit novou verzi. V koncepčních případech každá nová verze je nový certifikát, který se skládá z klíče a objektu blob, který tento klíč přiřazuje k identitě. Když použijete nepartnerský certifikační autoritu, Trezor klíčů vygeneruje dvojici klíč/hodnota a vrátí žádost o podepsání certifikátu (CSR).
 
-**Postup, jak postupovat v Azure Portal: –**
-1.  Otevřete certifikát, který chcete obnovit.
-2.  Na obrazovce certifikátu klikněte na tlačítko **+ Nová verze** .
-3.  Vybrat **operaci certifikátu**
-4.  Vyberte **Stáhnout CSR**. Tím se stáhne soubor. CSR na místním disku.
-5.  Přinese CSR na váš výběr certifikační autority pro podepsání žádosti.
-6.  Vraťte podepsaný požadavek a vyberte **Sloučit CSR** na stejné obrazovce operace certifikátu.
+Pokud chcete obnovit neintegrovanou certifikační AUTORITu, udělejte toto:
+
+1. Přihlaste se k Azure Portal a pak otevřete certifikát, který chcete obnovit.
+1. V podokně certifikát vyberte **Nová verze**.
+1. Vyberte **operaci certifikátu**.
+1. Vyberte **Stáhnout CSR** a Stáhněte si soubor CSR na místní disk.
+1. Odešlete CSR podle vašeho výběru certifikační autority pro podepsání žádosti.
+1. Vraťte podepsaný požadavek a vyberte **Sloučit CSR** do stejného podokna operace certifikátu.
 
 > [!NOTE]
-> Je důležité sloučit podepsaného CSR se stejným vytvořeným požadavkem CSR, jinak se klíč neshoduje.
+> Je důležité sloučit podepsaného CSR se stejným požadavkem CSR, který jste vytvořili. V opačném případě se klíč neshoduje.
 
-Postup je podobný jako při vytváření nového certifikátu a je [tady]( https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request#azure-portal)popsaný podrobněji.
+Další informace o tom, jak vytvořit nového CSR, najdete [v tématu Vytvoření a sloučení CSR v Key Vault]( https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request#azure-portal).
 
-## <a name="renewal-of-self-signed-certificate"></a>Obnovení certifikátu podepsaného svým držitelem
+## <a name="renew-a-self-signed-certificate"></a>Obnovení certifikátu podepsaného svým držitelem
 
-Dobrá zpráva. Trezory klíčů Azure se také postará o automatické obnovení certifikátů podepsaných svým držitelem pro své uživatele. Další informace o tom, jak změnit zásady vystavování a aktualizovat atributy akce životního cyklu certifikátu, si můžete přečíst [tady](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate).
+Azure Key Vault také zpracovává automatické obnovení certifikátů podepsaných svým držitelem. Další informace o změně zásad vystavování a aktualizaci atributů životního cyklu certifikátu najdete v tématu [Konfigurace automatické rotace certifikátů v Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate).
 
-### <a name="troubleshoot"></a>Řešení potíží
-Pokud je certifikát vystavený ve Azure Portal stav zakázáno, přejděte k části zobrazení certifikátu a zobrazte chybovou zprávu pro tento certifikát.
+## <a name="troubleshoot"></a>Řešení potíží
+Pokud je vystavený certifikát v *neaktivním* stavu na Azure Portal, podívejte se na **operaci certifikátu** a zobrazí se chybová zpráva certifikátu.
 
-### <a name="frequently-asked-questions"></a>Nejčastější dotazy
-* Jak můžu otestovat funkci autorotace certifikátu?
-  Vytvořte certifikát s platností 1 měsíc a pak nastavte akci životního cyklu pro otočení o 1%. Toto nastavení otočí certifikát během 7,2 hodin.
+## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+**Jak můžu otestovat funkci autorotace certifikátu?**
+
+Vytvořte certifikát s platností **1 měsíc**a pak nastavte akci životnosti pro otočení o **1%**. Toto nastavení otočí certifikát každých 7,2 hodin.
   
-* Budou značky replikovány po automatickém obnovení certifikátu?
-  Ano, značky budou replikovány po automatickém obnovení.
+**Budou tyto značky replikovány po automatickém obnovení certifikátu?**
 
-### <a name="see-also"></a>Viz také
-*   [Integrace služby Key Vault s certifikační autoritou DigiCert](how-to-integrate-certificate-authority.md)
-*   [Kurz: Konfigurace automatického rotace certifikátů v Key Vault](tutorial-rotate-certificates.md)
+Ano, značky se replikují po automatickém obnovení.
+
+## <a name="next-steps"></a>Další kroky
+*   [Integrace Key Vault s certifikační autoritou DigiCert](how-to-integrate-certificate-authority.md)
+*   [Kurz: konfigurace automatické rotace certifikátů v Key Vault](tutorial-rotate-certificates.md)

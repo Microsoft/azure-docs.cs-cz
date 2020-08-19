@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB SQL Python API, SDK & prostředky
 description: Seznamte se se všemi informacemi o rozhraních API SQL Pythonu a sadě SDK, včetně dat vydání, data odchodu a změn provedených mezi jednotlivými verzemi Azure Cosmos DB Python SDK.
-author: anfeldma-ms
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: 44d9521e9d02195cb1d4ff61fd519f31ce9c0018
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876253"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585980"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro SQL API: poznámky k verzi a prostředky
 
@@ -27,7 +27,8 @@ ms.locfileid: "87876253"
 > * [Sada Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Jarní data v2](sql-api-sdk-java-spring-v2.md)
+> * [Jarní data V3](sql-api-sdk-java-spring-v3.md)
 > * [Konektor Spark](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -45,6 +46,20 @@ ms.locfileid: "87876253"
 |**Aktuální podporovaná platforma**|[Python 2,7](https://www.python.org/downloads/) a [Python 3.5.3 +](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>Historie verzí
+
+### <a name="410-2020-08-10"></a>4.1.0 (2020-08-10)
+
+- Přidání upozornění na zastaralost pro režim indexování "opožděné". Back-end už neumožňuje vytvářet kontejnery s tímto režimem a bude je místo toho nastavit na konzistentní.
+
+**Nové funkce**
+- Byla přidána možnost nastavit hodnotu TTL analytického úložiště při vytváření nového kontejneru.
+
+**Opravy chyb**
+- Pevná podpora pro Dicts jako vstupní hodnoty pro rozhraní API pro get_client.
+- Opravená kompatibilita Pythonu 2/3 ve iterátorech dotazů.
+- Došlo k chybě pomocného parametru pro pevný typ (problém #12570).
+- Opravená chyba, kdy se záhlaví možností do funkce upsert_item nepřidala. Problém #11791 – Děkujeme vám @aalapatirvbd .
+- Při použití neřetězcového ID v položce byla vyvolána Opravená chyba. Nyní vyvolává TypeError místo AttributeError (problém #11793).
 
 ### <a name="400"></a>4.0.0
 
@@ -81,14 +96,14 @@ ms.locfileid: "87876253"
 
 * Přidání nových argumentů konstruktoru a v rámci operace konfigurace:
 
-  * `retry_total`– Maximální počet opakovaných pokusů.
-  * `retry_backoff_max`– Maximální doba čekání na opakování v sekundách.
-  * `retry_fixed_interval`– Pevný interval opakování v milisekundách
-  * `retry_read`– Maximální počet soketů pro čtení a pokusů o opakování čtení
-  * `retry_connect`– Maximální počet opakovaných pokusů o připojení.
-  * `retry_status`– Maximální počet opakovaných pokusů u stavových kódů chyb.
-  * `retry_on_status_codes`– Seznam specifických stavových kódů, které se mají opakovat.
-  * `retry_backoff_factor`-Faktor pro výpočet čekací doby mezi opakovanými pokusy.
+  * `retry_total` – Maximální počet opakovaných pokusů.
+  * `retry_backoff_max` – Maximální doba čekání na opakování v sekundách.
+  * `retry_fixed_interval` – Pevný interval opakování v milisekundách
+  * `retry_read` – Maximální počet soketů pro čtení a pokusů o opakování čtení
+  * `retry_connect` – Maximální počet opakovaných pokusů o připojení.
+  * `retry_status` – Maximální počet opakovaných pokusů u stavových kódů chyb.
+  * `retry_on_status_codes` – Seznam specifických stavových kódů, které se mají opakovat.
+  * `retry_backoff_factor` -Faktor pro výpočet čekací doby mezi opakovanými pokusy.
 
 ### <a name="400b3"></a>4.0.0 B3
 
@@ -98,7 +113,7 @@ ms.locfileid: "87876253"
 
 * 4.0.0 B2 je druhá iterace v naší snaze vytvořit klientskou knihovnu, která bude vyhovovat osvědčeným postupům jazyka Python.
 
-**Změny způsobující chyby**
+**Průlomové změny**
 
 * Připojení klienta bylo upraveno za účelem využívání kanálu HTTP definovaného v `azure.core.pipeline` .
 
@@ -139,13 +154,13 @@ ms.locfileid: "87876253"
 * Hierarchie chyb je nyní děděna z `azure.core.AzureError` :
 
   * Přejmenování `HTTPFailure` na `CosmosHttpResponseError`
-  * `JSONParseFailure`byl odebrán a nahrazen`azure.core.DecodeError`
+  * `JSONParseFailure` byl odebrán a nahrazen `azure.core.DecodeError`
   * Přidání dalších chyb pro konkrétní kódy odpovědí:
-    * `CosmosResourceNotFoundError`pro stav 404
-    * `CosmosResourceExistsError`pro stav 409
-    * `CosmosAccessConditionFailedError`pro stav 412
+    * `CosmosResourceNotFoundError` pro stav 404
+    * `CosmosResourceExistsError` pro stav 409
+    * `CosmosAccessConditionFailedError` pro stav 412
 
-* `CosmosClient`Nyní se můžete spustit ve Správci kontextu, aby bylo možné zpracovat ukončení připojení klienta.
+* `CosmosClient` Nyní se můžete spustit ve Správci kontextu, aby bylo možné zpracovat ukončení připojení klienta.
 
 * Odpovědi iterované (například odpovědi na dotazy a odpovědi na seznam) jsou nyní typu `azure.core.paging.ItemPaged` . Metoda byla `fetch_next_block` nahrazena sekundárním iterátorem, ke kterému přistupovala `by_page` metoda.
 
@@ -338,7 +353,7 @@ Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady 
 | 0.9.1 – zapůjčení |23. září 2014 |29. února 2016 |
 | 0.9.0 – zapůjčení |21. srpna 2014 |29. února 2016 |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

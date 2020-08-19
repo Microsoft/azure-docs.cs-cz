@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 3d0a8444312f37b1f59817d50bdc50d3aff22164
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 212aa3613335fe60bab2fa3d4f632577418a7d41
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038189"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88602236"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
 V tomto rychlém startu vytvoříte aplikaci pro iOS od začátku a integrujete moderní čtečku. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -553,7 +553,7 @@ function sendContentToReader(message) {
 }
 ```
 
-## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
+## <a name="build-and-run-the-app"></a>Sestavte a spusťte aplikaci.
 
 Nastavte schéma archivu v Xcode tak, že vyberete simulátor nebo cíl zařízení.
 

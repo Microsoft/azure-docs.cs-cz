@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d2d4af5086e3cf4099013969cd359f8e11873c6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0aa9a9728c3a59b6f47ef1427cbcd368d4f1e77c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090616"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586116"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Zajištění Key Vault ověřování pomocí spravované identity
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak vytvořit spravovanou identitu pro aplikaci Ap
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 K dokončení této příručky musíte mít následující prostředky. 
 
@@ -42,7 +42,7 @@ K dokončení této příručky musíte mít následující prostředky.
 
 Nejdřív musíte do aplikace přidat identitu přiřazenou systémem. 
  
-### <a name="azure-portal"></a>Portál Azure Portal 
+### <a name="azure-portal"></a>portál Azure 
 
 Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte aplikaci jako normální a pak tuto funkci povolte. 
 
@@ -88,7 +88,7 @@ Poznamenejte si `PrincipalId` , který bude potřeba v další části.
 ```
 ## <a name="grant-your-app-access-to-key-vault"></a>Udělit aplikaci přístup k Key Vault 
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1.  Přejděte na prostředek Key Vault. 
 

@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak vytvořit a nakonfigurovat trezor
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 244562efdc4c274a79ea27cdfa00dd51ae671fa4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7084fb9b599e127fac2b8c75748448d37d3f5365
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032948"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586184"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Vytvoření a konfigurace trezoru Recovery Services
 
@@ -25,10 +25,10 @@ Azure Backup automaticky zpracovává úložiště pro trezor. Musíte určit zp
 >- Pokud jste ještě nenakonfigurovali zálohu, zkontrolujte a upravte nastavení [podle těchto pokynů](#set-storage-redundancy) .
 >- Pokud jste už zálohu nakonfigurovali a musíte se přesunout z GRS na LRS, [Přečtěte si tato alternativní řešení](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
-1. V okně **Trezory služby Recovery Services** klikněte na nový trezor. V části **Nastavení** klikněte na **vlastnosti**.
-1. V části **vlastnosti**v části **Konfigurace zálohování**klikněte na **aktualizovat**.
+1. V podokně **Recovery Services trezory** vyberte nový trezor. V části **Nastavení** vyberte  **vlastnosti**.
+1. V části **vlastnosti**v části **Konfigurace zálohování**vyberte **aktualizovat**.
 
-1. Vyberte typ replikace úložiště a klikněte na **Uložit**.
+1. Vyberte typ replikace úložiště a vyberte **Uložit**.
 
      ![Nastavení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
@@ -46,7 +46,7 @@ Jedna z možností obnovení (CRR) umožňuje obnovení virtuálních počítač
 - postupovat v případě, že dojde k auditu nebo požadavkům na dodržování předpisů
 - Pokud dojde k havárii v primární oblasti, obnovte virtuální počítač nebo jeho disk.
 
-Tuto funkci zvolíte tak, že v okně **Konfigurace zálohování** vyberete **Povolit obnovení mezi oblastmi** .
+Tuto funkci zvolíte tak, že v podokně **Konfigurace zálohování** vyberete **Povolit obnovení mezi oblastmi** .
 
 Pro tento proces se na úrovni úložiště účtují cenové dopady.
 
@@ -62,22 +62,40 @@ Pro tento proces se na úrovni úložiště účtují cenové dopady.
 
 ### <a name="configure-cross-region-restore"></a>Konfigurace obnovení mezi oblastmi
 
-Trezor vytvořený s redundancí GRS zahrnuje možnost konfigurace funkce obnovení mezi oblastmi. Každý trezor GRS bude obsahovat banner, který bude odkazovat na dokumentaci. Pokud chcete nakonfigurovat CRR pro trezor, otevřete okno Konfigurace zálohování, které obsahuje možnost povolit tuto funkci.
+Trezor vytvořený s redundancí GRS zahrnuje možnost konfigurace funkce obnovení mezi oblastmi. Každý trezor GRS bude obsahovat banner, který bude odkazovat na dokumentaci. Pokud chcete nakonfigurovat CRR pro trezor, otevřete podokno konfigurace zálohování, které obsahuje možnost povolit tuto funkci.
 
  ![Banner konfigurace zálohování](./media/backup-azure-arm-restore-vms/banner.png)
 
 1. Na portálu klikněte na Recovery Services trezor > nastavení > vlastnosti.
-2. Pokud chcete povolit funkci, klikněte na **Povolit obnovení mezi oblastmi v tomto trezoru** .
+2. Pokud chcete povolit funkci, vyberte **Povolit obnovení mezi oblastmi v tomto trezoru** .
 
-   ![Než kliknete na Povolit obnovení mezi oblastmi v tomto trezoru](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![Před výběrem Povolit obnovení mezi oblastmi v tomto trezoru](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
 
-   ![Po kliknutí na Povolit obnovení mezi oblastmi v tomto trezoru](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+   ![Po výběru povolit obnovení mezi oblastmi v tomto trezoru](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
 
 Přečtěte si, jak [Zobrazit zálohované položky v sekundární oblasti](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region).
 
 Naučte se [obnovit v sekundární oblasti](backup-azure-arm-restore-vms.md#restore-in-secondary-region).
 
 Naučte se [monitorovat úlohy obnovení sekundární oblasti](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs).
+
+## <a name="set-encryption-settings"></a>Nastavení šifrování
+
+Ve výchozím nastavení se data v trezoru Recovery Services šifrují pomocí klíčů spravovaných platformou. Od konce nejsou vyžadovány žádné explicitní akce pro povolení tohoto šifrování a vztahuje se na všechny úlohy zálohované do vašeho trezoru Recovery Services.  Můžete si vybrat vlastní klíč k šifrování zálohovaných dat v tomto trezoru. Tato funkce se označuje jako klíče spravované zákazníkem. Pokud chcete data záloh šifrovat pomocí vlastního klíče, musí být zadaný šifrovací klíč před tím, než dojde k ochraně položky v tomto trezoru. Po povolení šifrování pomocí klíče nejde vrátit zpět.
+
+### <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>Konfigurace trezoru pro šifrování pomocí klíčů spravovaných zákazníkem
+
+Pokud chcete nakonfigurovat šifrování pro šifrování pomocí klíčů spravovaných zákazníkem, musí být tento postup následován v tomto pořadí:
+
+1. Povolení spravované identity pro váš Recovery Services trezor
+
+1. Přiřaďte k trezoru oprávnění pro přístup k šifrovacímu klíči v Azure Key Vault
+
+1. Povolení ochrany obnovitelného odstranění a vyprázdnění na Azure Key Vault
+
+1. Přiřazení šifrovacího klíče k trezoru Recovery Services
+
+Pokyny pro každý z těchto kroků najdete [v tomto článku](encryption-at-rest-with-cmk.md#configuring-a-vault-to-encrypt-using-customer-managed-keys).
 
 ## <a name="modifying-default-settings"></a>Úprava výchozích nastavení
 
@@ -132,7 +150,6 @@ Pokud potřebujete zachovat aktuální chráněná data v trezoru GRS a pokračo
   - Abyste zachovali body obnovení v trezoru GRS, bude nutné platit za to, že se budou Azure Backup zobrazovat informace o [cenách](azure-backup-pricing.md) .
   - V případě potřeby budete moci obnovit virtuální počítač z trezoru GRS.
   - První záloha v LRS trezoru virtuálního počítače v novém prostředku bude počáteční replikou.
-
 
 ## <a name="next-steps"></a>Další kroky
 

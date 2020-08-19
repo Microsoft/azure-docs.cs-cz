@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s adaptérem Five9 plus (CTI, agenti kontaktních center) | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a adaptérem Five9 plus (CTI, agenti kontaktních center).
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 88dc82ab-be0b-4017-8335-c47d00775d7b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: dd4eab2d8e877cac468097c0a6ed6aa3cfb750b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2ab03aecf8226662eeb03a5bb3f8adc85013375d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67102455"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Kurz: Azure Active Directory integrace s adaptérem Five9 plus (CTI, agenti kontaktních center)
 
@@ -32,7 +28,7 @@ Integrací adaptéru Five9 plus (CTI, agenti centra kontaktů) k Azure AD získ�
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,7 +103,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí adaptér
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
     
-    |    Prostředí      |       zprostředkovatele identity      |
+    |    Prostředí      |       URL      |
     | :-- | :-- |
     | Pro adaptér Five9 Plus pro Microsoft Dynamics CRM " | `https://app.five9.com/appsvcs/saml/metadata/alias/msdc` |
     | Pro "adaptér Five9 Plus pro Zendesk" | `https://app.five9.com/appsvcs/saml/metadata/alias/zd` |
@@ -115,7 +111,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí adaptér
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
 
-    |      Prostředí     |      zprostředkovatele identity      |
+    |      Prostředí     |      URL      |
     | :--                  | :--           |
     | Pro adaptér Five9 Plus pro Microsoft Dynamics CRM " | `https://app.five9.com/appsvcs/saml/SSO/alias/msdc` |
     | Pro "adaptér Five9 Plus pro Zendesk" | `https://app.five9.com/appsvcs/saml/SSO/alias/zd` |
@@ -139,11 +135,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí adaptér
 
 1. Chcete-li nakonfigurovat jednotné přihlašování na straně **adaptéru Five9 plus (cti, agenti centra kontaktů)** , je třeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL do [týmu podpory Five9 (cti, agenti centra kontaktů)](https://www.five9.com/about/contact). Kromě toho pro konfiguraci jednotného přihlašování (SSO) dále postupujte podle následujících kroků v závislosti na adaptéru:
 
-    a. "Five9 plus Adapter for agent Desktop Toolkit" – Příručka pro správce:[https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
+    a. "Five9 plus Adapter for agent Desktop Toolkit" – Příručka pro správce: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
     
-    b. Příručka pro správce Five9 plus Adapter pro Microsoft Dynamics CRM:[https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
+    b. Příručka pro správce Five9 plus Adapter pro Microsoft Dynamics CRM: [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/microsoft/microsoft-administrators-guide.pdf)
     
-    c. Příručka pro správce "Five9 plus Adapter pro Zendesk":[https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf)
+    c. Příručka pro správce "Five9 plus Adapter pro Zendesk": [https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf](https://webapps.five9.com/assets/files/for_customers/documentation/integrations/zendesk/zendesk-plus-administrators-guide.pdf)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -163,11 +159,11 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension` . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -205,7 +201,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici Five9 plus Adapter (CTI; agenti centra kontaktů na přístupovém panelu byste měli být automaticky přihlášeni k adaptéru Five9 plus (CTI, agentům kontaktního centra), pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

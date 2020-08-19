@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Nomadic | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Nomadic.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 13d02b1c-d98a-40b1-824f-afa45a2deb6a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 07e6e0d1a7d358deebba7b4857b6afebcfb3be1c
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 5e710e8df594f6792a150fa1ffbd7779e96bb744
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800112"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554332"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadic"></a>Kurz: Azure Active Directory integrace s Nomadic
 
@@ -32,7 +28,7 @@ Integrace Nomadic s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -105,7 +101,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Nomadic,
 
     ![Informace o jednotném přihlašování v doméně Nomadic a adresách URL](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<company name>.nomadic.fm/signin`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<company name>.nomadic.fm/signin`
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:
     
@@ -158,7 +154,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -196,7 +192,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Nomadic, měli byste se automaticky přihlásit k Nomadic, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

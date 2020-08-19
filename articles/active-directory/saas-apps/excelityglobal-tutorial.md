@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s ExcelityGlobal | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ExcelityGlobal.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e84becde-64bf-4089-be06-7555616b0965
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: a8ea503343f05f8b7ae5f121f3365f82794be2f3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 48aa1313dbcc9e56fc50abd64ea167fb1ca8943b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73156785"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555324"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-excelityglobal"></a>Kurz: Azure Active Directory integrace s ExcelityGlobal
 
@@ -32,7 +28,7 @@ Integrace ExcelityGlobal s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,15 +103,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Excelity
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
-    **V produkčním prostředí** :`https://ess.excelityglobal.com`
+    **V produkčním prostředí** : `https://ess.excelityglobal.com`
 
-    **Pro prostředí izolovaného prostoru** :`https://s6.excelityglobal.com`
+    **Pro prostředí izolovaného prostoru** : `https://s6.excelityglobal.com`
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
 
-    **V produkčním prostředí** :`https://ess.excelityglobal.com/ACS`
+    **V produkčním prostředí** : `https://ess.excelityglobal.com/ACS`
 
-    **Pro prostředí izolovaného prostoru** :`https://s6.excelityglobal.com/ACS`
+    **Pro prostředí izolovaného prostoru** : `https://s6.excelityglobal.com/ACS`
 
 5. Vaše aplikace ExcelityGlobal očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**. Aplikace ExcelityGlobal očekává, že **NameIdentifier** budou mapovány pomocí **User. mail**, takže potřebujete upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
  
@@ -161,12 +157,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -204,7 +200,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici ExcelityGlobal, měli byste se automaticky přihlásit k ExcelityGlobal, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

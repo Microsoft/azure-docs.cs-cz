@@ -2,25 +2,21 @@
 title: 'Kurz: Konfigurace hejna pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
 description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů k hejnu.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: fb48deae-4653-448a-ba2f-90258edab3a7
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: cd7aae05b064657c7b9072402f4bc4d4d7fef7a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5090741b6e7c50e7a3179fb2fdd84fa19ddf657c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057854"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554886"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>Kurz: Konfigurace hejna pro Automatické zřizování uživatelů
 
@@ -100,7 +96,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-flock--in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro hejno ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

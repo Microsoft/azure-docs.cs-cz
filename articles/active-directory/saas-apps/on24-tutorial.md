@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory Integration s virtuálním prostředím ON24 s připojením SAML | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a připojením SAML virtuálního prostředí ON24.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d4028fb5-b2ad-4c5d-b123-7b675c509d64
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 801a631b56a11e68c444ede846ff82195cd7627f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3977aee84b1281e7918987c63185069892b5909e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67095730"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554248"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Kurz: Azure Active Directory integrace s virtuálním prostředím ON24 s připojením SAML
 
@@ -32,7 +28,7 @@ Integrací připojení ON24 s virtuálním prostředím SAML se službou Azure A
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -147,13 +143,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s připojením S
 
     c. Klikněte na **nastavit další adresy URL**. 
 
-    d. Do textového pole **stav přenosu** zadejte adresu URL:`https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>`
+    d. Do textového pole **stav přenosu** zadejte adresu URL: `https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>`
 
 5.  Pokud chcete nakonfigurovat aplikaci v režimu **SP** iniciované, proveďte následující krok:
 
     ![Informace o jednotném přihlašování ON24 virtuálního prostředí SAML pro doménu připojení SAML a adresy URL](common/both-signonurl.png)
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://vshow.on24.com/vshow/<INSTANCENAME>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://vshow.on24.com/vshow/<INSTANCENAME>`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným stavem předávání a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta připojení SAML pro ON24 virtuálního prostředí](https://www.on24.com/contact-us/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -194,12 +190,12 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -237,7 +233,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici připojení SAML virtuálního prostředí ON24 na přístupovém panelu byste se měli automaticky přihlášeni k připojení SAML ve virtuálním prostředí ON24, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

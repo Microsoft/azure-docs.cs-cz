@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s compasem Netvision | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Netvision COMPAS.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a56f44c5-dc08-4c7c-ad20-b6e7127deb2c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3015ea26d81505c4f058846dbcb3b7858f79267
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8f92ff60dacd78687207c7523504182521700a7b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80520089"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554494"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s compasem Netvision
 
@@ -84,13 +80,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<TENANT>.compas.cloud/Identity/Saml20`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<TENANT>.compas.cloud/Identity/Saml20`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta podpory Netvision COMPAS](mailto:contact@net.vision) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -109,9 +105,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -159,7 +155,7 @@ V této části povolíte jednotné přihlašování SAML v **Netvision COMPAS**
 
 V této části nakonfigurujete stávajícího uživatele v **Netvision COMPAS** , aby používal Azure AD pro jednotné přihlašování.
 1. Postupujte podle postupu zřizování uživatele **Netvision COMPAS** podle definice vaší společnosti nebo upravte existující uživatelský účet.
-1. Při definování profilu uživatele se ujistěte, že je **e-mailová adresa uživatele (osobní)** shodná s uživatelským jménem Azure username@companydomain.extensionAD:. Například, `B.Simon@contoso.com`.
+1. Při definování profilu uživatele se ujistěte, že je **e-mailová adresa uživatele (osobní)** shodná s uživatelským jménem Azure AD: username@companydomain.extension . Například, `B.Simon@contoso.com`.
 
     ![Upravit uživatele](media/netvision-compas-tutorial/user-config.png)
 
@@ -186,11 +182,11 @@ Když na přístupovém panelu kliknete na dlaždici Netvision COMPAS, měli bys
 
 1. Budete přesměrováni na službu Azure AD, aby bylo možné provést ověření. Po úspěšném ověření byste se měli automaticky přihlášeni k **Netvision COMPAS** , pro kterou jste nastavili jednotné přihlašování.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

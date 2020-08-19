@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: dc566d2702fb24ef551e4900bed7b828d2597383
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6e1a6cb583c0d310cc7ce73995224c42bb84784d
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557059"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566161"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Rychlý Start: nasazení ukázky Unity do desktopu
 
@@ -58,9 +58,6 @@ Na ploše se aktuálně podporují jenom ploché aplikace klasické pracovní pl
 1. Přepněte režim ladicího programu na **místní počítač**. \
   ![Konfigurace řešení](./media/unity-deploy-config-pc.png)
 1. Sestavte řešení (F7).
-
-> [!WARNING]
-> Ujistěte se, že jste vybrali možnost **x86**. **UWP/x64** se momentálně nepodporuje, přečtěte si o [omezeních platforem](../reference/limits.md#platform-limitations).
 
 ## <a name="launch-the-sample-project"></a>Spustit vzorový projekt
 

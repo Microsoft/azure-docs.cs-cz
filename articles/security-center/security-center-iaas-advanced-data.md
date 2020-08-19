@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: f159d2cdc48b144d0c75c62cd8a7ba6667424243
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e0085ef5213853a1577ec039d5e360114aa7c64e
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043865"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566263"
 ---
 # <a name="advanced-data-security-for-sql-machines-preview"></a>Pokročilé zabezpečení dat pro počítače SQL (Preview)
 
@@ -72,7 +72,7 @@ Obě tyto parametry jsou popsány níže.
 
     [![Stránka s cenami Security Center s volitelnými sadami](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-large.png#lightbox)
 
-    Rozšířené zabezpečení dat pro servery SQL na počítačích se povolí na všech serverech SQL připojených k vybranému pracovnímu prostoru. Ochrana bude po prvním restartování SQL Server plně aktivní. 
+    Rozšířené zabezpečení dat pro servery SQL na počítačích se povolí na všech serverech SQL připojených k vybranému pracovnímu prostoru. Ochrana bude plně aktivní po prvním restartování instance SQL Server.
 
     >[!TIP] 
     > Pokud chcete vytvořit nový pracovní prostor, postupujte podle pokynů v tématu [Vytvoření pracovního prostoru Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).

@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d558b414bfa27b387a559ff6c8fdb5ada32730fc
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185634"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588921"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Integrace služby Key Vault s certifikační autoritou DigiCert
 
@@ -27,7 +27,7 @@ Obecnější informace o certifikátech najdete v tématu [Azure Key Vault certi
 
 Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení této příručky musíte mít následující prostředky.
 * Trezor klíčů. Můžete použít existující Trezor klíčů nebo vytvořit nový pomocí následujících kroků v jednom z těchto rychlých startů:
@@ -105,7 +105,7 @@ New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGrou
 
 ```azurepowershell-interactive
 $accountId = "myDigiCertCertCentralAccountID"
-$org = New-AzureKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
+$org = New-AzKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
 $issuerName = "DigiCertCA"
 ```
@@ -124,7 +124,7 @@ Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertifica
 
 Certifikát byl teď úspěšně vydaný certifikační autoritou DigiCert v zadaném Key Vault prostřednictvím této integrace.
 
-## <a name="troubleshoot"></a>Odstranit potíže
+## <a name="troubleshoot"></a>Řešení potíží
 
 Pokud je certifikát vystavený ve Azure Portal stav zakázáno, přejděte k části zobrazení **certifikátu** a zkontrolujte, jestli je v něm zobrazená chybová zpráva DigiCert.
 

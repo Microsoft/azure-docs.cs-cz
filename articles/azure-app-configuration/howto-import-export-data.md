@@ -1,18 +1,18 @@
 ---
 title: Import nebo export dat pomocí konfigurace aplikace Azure
-description: Přečtěte si, jak importovat nebo exportovat data z konfigurace aplikace Azure nebo z ní.
+description: Naučte se importovat nebo exportovat konfigurační data do nebo z konfigurace aplikace Azure. Výměna dat mezi úložištěm konfigurace aplikace a projektem kódu.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 5b3d6d0561d7d6d6b23cb4f579b0988850da9771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21eba653bcd853db9550d0d3781aacd281884605
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80056869"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588071"
 ---
 # <a name="import-or-export-configuration-data"></a>Import nebo export konfiguračních dat
 
@@ -44,7 +44,7 @@ Importujte data buď pomocí [Azure Portal](https://portal.azure.com) , nebo pom
 
     ![Import souboru byl dokončen.](./media/import-file-complete.png)
 
-## <a name="export-data"></a>Exportovat data
+## <a name="export-data"></a>Export dat
 
 Export vypíše konfigurační data uložená v konfiguraci aplikace do jiného cílového umístění. Použijte funkci exportu, například k uložení dat v úložišti konfigurace aplikace do souboru, který je vložený s vaším kódem aplikace během nasazení.
 

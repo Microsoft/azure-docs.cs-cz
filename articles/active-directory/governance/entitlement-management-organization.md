@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c57f23a5cad2f47311b54728d576eb810ad88a4
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3c4869859e11cb6c0cc868ec9deacb3e5cb972c6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506018"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586567"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Přidání propojené organizace v Azure AD – Správa nároků
 
@@ -131,6 +131,10 @@ Pokud už nebudete mít relaci s externím adresářem nebo doménou služby Azu
     V současné době můžete propojenou organizaci odstranit pouze v případě, že nejsou k dispozici žádní uživatelé.
 
     ![Tlačítko Odstranit připojenou organizaci](./media/entitlement-management-organization/organization-delete.png)
+
+## <a name="managing-a-connected-organization-programmatically"></a>Programové řízení připojené organizace
+
+Připojené organizace můžete také vytvořit, vypsat, aktualizovat a odstranit pomocí Microsoft Graph. Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API pro správu objektů [connectedOrganization](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta) a pro ně nastavit sponzory.
 
 ## <a name="next-steps"></a>Další kroky
 

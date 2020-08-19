@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8e0f0b37dd429578194c18e5a9a1f063b74fb693
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506528"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587595"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -37,18 +37,22 @@ K vytvoření digitálního vlákna musíte zadat:
 
 Volitelně můžete zadat počáteční hodnoty pro všechny vlastnosti digitálního vlákna. 
 
-Hodnoty modelů a počátečních vlastností jsou k dispozici prostřednictvím `initData` parametru, což je řetězec JSON obsahující relevantní data.
+Hodnoty modelů a počátečních vlastností jsou k dispozici prostřednictvím `initData` parametru, což je řetězec JSON obsahující relevantní data. Další informace o strukturování tohoto objektu získáte, když budete pokračovat k další části.
 
 > [!TIP]
 > Po vytvoření nebo aktualizaci vlákna může být latence až 10 sekund, než se změny projeví v [dotazech](how-to-query-graph.md). `GetDigitalTwin`Rozhraní API (popsané [dále v tomto článku) v](#get-data-for-a-digital-twin)této prodlevě nefunguje, proto použijte volání rozhraní API namísto dotazování, abyste viděli nově vytvořená vlákna, pokud potřebujete okamžitou reakci. 
 
-### <a name="initialize-properties"></a>Inicializovat vlastnosti
+### <a name="initialize-model-and-properties"></a>Inicializace modelu a vlastností
 
-Rozhraní API pro vytvoření vlákna přijímá objekt, který lze serializovat na platný popis JSON vlastností. V tématu [*Koncepty: digitální vlákna a Dvojitá graf*](concepts-twins-graph.md) pro Popis formátu JSON pro dvojitou hodnotu.
+Rozhraní API pro vytvoření vlákna přijímá objekt, který je serializován do platného popisu JSON vlastností. V tématu [*Koncepty: digitální vlákna a Dvojitá graf*](concepts-twins-graph.md) pro Popis formátu JSON pro dvojitou hodnotu. 
+
+Nejprve vytvoříte datový objekt, který bude představovat vlákna a data vlastností. Pak můžete použít `JsonSerializer` k předání serializované verze do volání rozhraní API pro `initdata` parametr.
 
 Můžete vytvořit objekt parametru buď ručně, nebo pomocí poskytnuté pomocné třídy. Tady je příklad každé z nich.
 
 #### <a name="create-twins-using-manually-created-data"></a>Vytváření dvojitých vláken pomocí ručně vytvořených dat
+
+Bez použití vlastních pomocných tříd můžete reprezentovat vlastnosti vlákna v `Dictionary<string, object>` , kde `string` je název vlastnosti a `object` je objekt představující vlastnost a její hodnotu.
 
 ```csharp
 // Define the model type for the twin to be created
@@ -68,6 +72,8 @@ client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<stri
 
 #### <a name="create-twins-with-the-helper-class"></a>Vytvoření vláken s podpůrnou třídou
 
+Pomocná třída `BasicDigitalTwin` umožňuje ukládat pole vlastností do "" vlákna "objektu více přímo. Přesto můžete chtít sestavit seznam vlastností pomocí `Dictionary<string, object>` , který lze následně přidat k dodanému objektu jako `CustomProperties` přímo.
+
 ```csharp
 BasicDigitalTwin twin = new BasicDigitalTwin();
 twin.Metadata = new DigitalTwinMetadata();
@@ -80,6 +86,13 @@ twin.CustomProperties = props;
 
 client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
 ```
+
+>[!NOTE]
+> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateDigitalTwin` volání. Pro výše uvedený příklad by to vypadalo takto:
+>
+>```csharp
+>twin.Id = "myNewRoomID";
+>```
 
 ## <a name="get-data-for-a-digital-twin"></a>Získání dat z digitálního vlákna
 

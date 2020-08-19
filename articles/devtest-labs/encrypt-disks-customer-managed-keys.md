@@ -3,12 +3,12 @@ title: Šifrování disků s operačním systémem pomocí klíčů spravovanýc
 description: Naučte se šifrovat disky operačního systému (OS) pomocí klíčů spravovaných zákazníkem v Azure DevTest Labs.
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: b9eb401521f6bd81efe3238dc05d07e4554c4f62
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 209ab1f74dce0982af66777f211c41066d53b8f9
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542411"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566195"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Šifrování disků operačního systému (OS) pomocí klíčů spravovaných zákazníkem v Azure DevTest Labs
 Šifrování na straně serveru (SSE) chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů vaší organizace. SSE automaticky šifruje vaše data uložená na spravovaných discích v Azure (s operačním systémem a datovými disky) ve výchozím nastavení, když je trvale ukládá do cloudu. Přečtěte si další informace o [šifrování disků](../virtual-machines/windows/disk-encryption.md) v Azure. 
@@ -28,12 +28,11 @@ V následující části se dozvíte, jak může vlastník testovacího prostře
 1. Pokud nemáte sadu šifrování disku nastavenou, postupujte podle pokynů v tomto článku [a nastavte Key Vault a sadu šifrování disku](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault). Všimněte si následujících požadavků pro sadu Disk Encryption: 
 
     - Sada Encryption disk musí být **ve stejné oblasti a předplatném jako vaše testovací prostředí**. 
-    - Ujistěte se, že (vlastník testovacího prostředí) má alespoň **přístup na úrovni čtenáře** ke sadě Encryption disk, která bude použita k šifrování disků testovacího prostředí.  
-2. Aby testovací prostředí mohlo zpracovávat šifrování pro všechny disky s operačním systémem testovacího prostředí, musí vlastník testovacího prostředí explicitně udělit **identitě přiřazené systému** oprávnění k sadě Disk Encryption. Vlastník testovacího prostředí to může udělat provedením následujících kroků:
+    - Ujistěte se, že (vlastník testovacího prostředí) má alespoň **přístup na úrovni čtenáře** ke sadě Encryption disk, která bude použita k šifrování disků testovacího prostředí. 
+2. Pro laboratoře vytvořené před 8/1/2020 se vlastník testovacího prostředí bude muset ujistit, že je povolená identita přiřazená testovacímu systému. Pokud to chcete udělat, může vlastník testovacího prostředí přejít ke své laboratoři, kliknout na **Konfigurace a zásady**, kliknout na okno **identita (Preview)** , změnit **stav** identity přiřazené systémem na **zapnuto** a kliknout na **Uložit**. Pro novou laboratoř vytvořenou po identitě přiřazenou systémem 8/1/2020 testovacího prostředí bude ve výchozím nastavení povolená. 
+3. Aby testovací prostředí mohlo zpracovávat šifrování pro všechny disky s operačním systémem, musí vlastník testovacího prostředí explicitně udělit roli pro správce identit v testovacím **systému** v sadě šifrování disku a také roli Přispěvatel virtuálních počítačů na základním předplatném Azure. Vlastník testovacího prostředí to může udělat provedením následujících kroků:
 
-    > [!IMPORTANT]
-    > Tento postup je třeba provést pro laboratoře vytvořené v systému nebo po 8/1/2020. Pro laboratoře, které byly vytvořeny před tímto datem, není vyžadována žádná akce.
-
+   
     1. Ujistěte se, že jste členem [role správce přístupu uživatele](../role-based-access-control/built-in-roles.md#user-access-administrator) na úrovni předplatného Azure, abyste mohli spravovat přístup uživatelů k prostředkům Azure. 
     1. Na stránce **sada šifrování disku** vyberte v nabídce vlevo možnost **řízení přístupu (IAM)** . 
     1. Na panelu nástrojů vyberte **+ Přidat** a vyberte **Přidat přiřazení role**.  
@@ -48,9 +47,7 @@ V následující části se dozvíte, jak může vlastník testovacího prostře
         :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Uložit přiřazení role":::
 3. Přidejte **identitu přiřazenou systémem** testovacího prostředí do role **Přispěvatel virtuálních počítačů** pomocí stránky řízení přístupu **předplatného**  ->  **(IAM)** . Postup se podobá těm, které jsou v předchozích krocích. 
 
-    > [!IMPORTANT]
-    > Tento postup je třeba provést pro laboratoře vytvořené v systému nebo po 8/1/2020. Pro laboratoře, které byly vytvořeny před tímto datem, není vyžadována žádná akce.
-
+    
     1. Přejděte na stránku **předplatného** v Azure Portal. 
     1. Vyberte **Řízení přístupu (IAM)** . 
     1. Na panelu nástrojů vyberte **+ Přidat** a vyberte **Přidat přiřazení role**. 

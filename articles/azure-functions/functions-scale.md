@@ -3,14 +3,14 @@ title: Hostování a škálování Azure Functions
 description: Naučte se vybírat mezi plánem Azure Functions spotřebu a plánem Premium.
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26924498f32b8aac2e3e7fb5cfd7c1965ee5884f
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 80bb59527f416afd78b992fb12a4ef72956f91b7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025824"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587221"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
 
@@ -86,7 +86,7 @@ Při spouštění funkcí JavaScriptu v plánu App Service byste měli zvolit pl
 
 Spuštění v [App Service Environment](../app-service/environment/intro.md) (pomocného programu) umožňuje plně izolovat vaše funkce a využívat vysoké škálování.
 
-### <a name="always-on"></a><a name="always-on"></a>Vždy zapnuto
+### <a name="always-on"></a><a name="always-on"></a> Vždy zapnuto
 
 Pokud spustíte v plánu App Service, měli byste povolit nastavení **vždycky zapnuto** , aby aplikace Function App běžela správně. V App Serviceovém plánu se modul runtime Functions po několika minutách nečinnosti neukončí, takže se vaše funkce vystaví jenom triggery HTTP. Always On je k dispozici pouze v plánu App Service. V plánu spotřeby platforma automaticky aktivuje aplikace funkcí.
 
@@ -144,11 +144,19 @@ Až bude aplikace Function App po určitou dobu nečinná, může tato platforma
 
 Škálování se může u různých faktorů lišit a škáluje se různě na základě zvoleného triggeru a jazyka. Existuje několik složitými rozhraními chování škálování, která je potřeba znát:
 
-* Jedna aplikace Function App se škáluje maximálně na 200 instancí. Jedna instance může zpracovávat více než jednu zprávu nebo požádat současně, takže neexistuje nastavený limit počtu souběžných spuštění.
+* Jedna aplikace Function App se škáluje maximálně na 200 instancí. Jedna instance může zpracovávat více než jednu zprávu nebo požádat současně, takže neexistuje nastavený limit počtu souběžných spuštění.  Můžete [zadat nižší maximum](#limit-scale-out) pro omezení škálování podle potřeby.
 * Pro aktivační události HTTP se přidělují nové instance, a to nejvíce jednou za sekundu.
 * U triggerů bez protokolu HTTP se přidělují nové instance, a to nejvíce každých 30 sekund. Škálování je rychlejší při provozu v [plánu Premium](#premium-plan).
 * Pro aktivační události Service Bus použijte pro nejúčinnější škálování _Spravovat_ práva k prostředkům. U oprávnění k _naslouchání_ není škálování tak přesné, protože délka fronty se nedá použít k informování rozhodnutí o škálování. Další informace o nastavení práv v zásadách přístupu Service Bus najdete v tématu [zásady autorizace sdíleného přístupu](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies).
 * Aktivační události centra událostí najdete v [návodu k škálování](functions-bindings-event-hubs-trigger.md#scaling) v referenčním článku. 
+
+### <a name="limit-scale-out"></a>Omezení horizontálního navýšení kapacity
+
+Možná budete chtít omezit počet instancí, na které aplikace škáluje.  Toto je nejběžnější pro případy, kdy komponenta pro příjem dat, jako je databáze, má omezené propustnost.  Ve výchozím nastavení se funkce plánu spotřeby škálují až na až 200 instancí a funkce plánu Premium se škálují až na až 100 instancí.  Úpravou hodnoty můžete určit nižší maximum pro konkrétní aplikaci `functionAppScaleLimit` .  `functionAppScaleLimit`Hodnota může být nastavena na hodnotu 0 nebo null pro neomezenou nebo platnou hodnotu mezi 1 a maximum.
+
+```azurecli
+az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <function_app_name>/config/web --set properties.functionAppScaleLimit=<scale_limit>
+```
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Osvědčené postupy a vzory pro škálovatelné aplikace
 

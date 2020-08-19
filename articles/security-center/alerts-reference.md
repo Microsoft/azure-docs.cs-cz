@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 40485014d819026c6fbc1f82da57c494f7a6a182
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: dd0a9bf69a3b5a6a17d91f0521bebd0fc78f606f
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272588"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566212"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Výstrahy zabezpečení – referenční příručka
 
@@ -283,7 +283,6 @@ V dolní části této stránky je k dispozici Tabulka popisující Azure Securi
 | **Přihlášení z neobvyklého umístění**             | Došlo ke změně vzoru přístupu pro SQL Server, kdy se někdo přihlásil k serveru z neobvyklého zeměpisného umístění. V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec nebo externí útočník).                                                                                             | Využívání                       | Střední   |
 | **Potenciální pokus o útok hrubou silou SQL**           | Došlo k neobvyklému vysokému počtu neúspěšných pokusů o přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.                                                                                                                                                                                                                      | Zkušební fáze                            | Vysoké     |
 | **Potenciální útok prostřednictvím injektáže SQL**                     | K aktivnímu zneužití došlo v případě, že je zjištěná aplikace zranitelná pomocí injektáže SQL. To znamená, že se útočník pokouší vložit škodlivé příkazy SQL pomocí ohroženého kódu aplikace nebo uložených procedur.                                                                                                                                                                                                            | -                                  | Vysoké     |
-| **Potenciálně nebezpečná akce**                   | Vysoce privilegovaný příkaz SQL, který se běžně používá v škodlivých relacích, se spustil v SQL Server. Ve výchozím nastavení se doporučuje tyto příkazy zakázat. V některých případech výstraha detekuje legitimní akci (spuštěný skript pro správu). V jiných případech výstraha detekuje škodlivou akci (útočník, který pomocí vztahů důvěryhodnosti SQL důvěřuje porušování vrstvy Windows).                                                                               | Spuštění                          | Vysoké     |
 | **Neobvyklé umístění exportu**                     | Došlo ke změně cíle úložiště exportu pro operaci importu a exportu SQL. V některých případech výstraha detekuje legitimní změnu (nové umístění zálohy). V jiných případech výstraha detekuje škodlivou akci (útočník snadno exfiltrated data do souboru).                                                                                                                                                          | Exfiltrace                       | Vysoké     |
 |                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                             |                                    |          |
 

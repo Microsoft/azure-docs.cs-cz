@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace jednotného přihlašování se softwarem OfficeSpace | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a OfficeSpace softwarem.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 95d8413f-db98-4e2c-8097-9142ef1af823
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80712c7f59845287006c1699524573c6094498b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ae8a1fa68e61e160ce08b93bf66776a050b45613
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75561707"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554154"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s OfficeSpace softwarem
 
@@ -87,9 +82,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<company name>.officespacesoftware.com/users/sign_in/saml`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<company name>.officespacesoftware.com/users/sign_in/saml`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`<company name>.officespacesoftware.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `<company name>.officespacesoftware.com`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. K získání těchto hodnot se obraťte na [tým podpory OfficeSpace softwaru klienta](mailto:support@officespacesoftware.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -100,10 +95,10 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše uvedené OfficeSpace softwarová aplikace očekává, že se v odpovědi SAML vrátí zpátky několik atributů, které jsou uvedené dál. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------------- |
     | e-mail | uživatel. pošta |
-    | jméno | User. DisplayName |
+    | name | User. DisplayName |
     | first_name | User. křestní jméno |
     | last_name | User. příjmení |
 
@@ -127,9 +122,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -186,11 +181,11 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici OfficeSpace Software na přístupovém panelu, měli byste se automaticky přihlásit k softwaru OfficeSpace, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

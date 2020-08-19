@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace jednotného přihlašování s cloudem MongoDB | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a MongoDB cloudem.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ef392044-235b-4d80-8a33-eeba9b142849
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a502a8273aef3df3488764ea7b01c21c512ba43
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 6a59df062adf9b5c2e511db29cb8601d4a4df70e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800205"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554554"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s cloudem MongoDB
 
@@ -84,13 +80,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v části **základní konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL, která používá následující vzor:`https://www.okta.com/saml2/service-provider/<Customer_Unique>`
+    a. Do textového pole **identifikátor** zadejte adresu URL, která používá následující vzor: `https://www.okta.com/saml2/service-provider/<Customer_Unique>`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která používá následující vzor:`https://auth.mongodb.com/sso/saml2/<Customer_Unique>`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL, která používá následující vzor: `https://auth.mongodb.com/sso/saml2/<Customer_Unique>`
 
 1. Vyberte **nastavit další adresy URL**a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL, která používá následující vzor:`https://cloud.mongodb.com/sso/<Customer_Unique>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL, která používá následující vzor:  `https://cloud.mongodb.com/sso/<Customer_Unique>`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory MongoDB Cloud Client](https://support.mongodb.com/). Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.

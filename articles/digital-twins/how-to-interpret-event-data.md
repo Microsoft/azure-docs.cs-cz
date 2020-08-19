@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d32ad29bf652cad62a5950859ebff0366e09fc6f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 10b74f7b795df2cf8c19d044fce44da3f798af7a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510024"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587629"
 ---
 # <a name="understand-event-data"></a>Pochopení dat událostí
 
@@ -30,7 +30,7 @@ Obecně platí, že oznámení se skládají ze dvou částí: hlavičky a textu
 
 Hlavičky zpráv s oznámením jsou reprezentovány s páry klíč-hodnota. V závislosti na použitém protokolu (MQTT, AMQP nebo HTTP) budou záhlaví zpráv serializována jinak. Tato část popisuje obecné informace v hlavičce pro oznamovací zprávy bez ohledu na zvolené konkrétní protokoly a serializace.
 
-Některá oznámení odpovídají standardu CloudEvents. Shoda CloudEvents je následující.
+Některá oznámení odpovídají standardu [CloudEvents](https://cloudevents.io/) . Shoda CloudEvents je následující.
 * Oznámení vysílaná ze zařízení budou dál dodržovat stávající specifikace oznámení.
 * Oznámení zpracovaná a generovaná pomocí IoT Hub nadále postupovat podle stávajících specifikací pro oznámení, s výjimkou případů, kdy IoT Hub zvolit podporu CloudEvents, jako je například Event Grid
 * Oznámení vysílaná z [digitálních vláken](concepts-twins-graph.md) s [modelem](concepts-models.md) vyhovujícím CloudEvents
@@ -103,11 +103,11 @@ Oznámení životního cyklu se aktivují v těchto případech:
 
 Tady jsou pole v těle oznámení o životním cyklu.
 
-| Název | Hodnota |
+| Name | Hodnota |
 | --- | --- |
 | `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id` je jedinečný pro každou událost DISTINCT. |
 | `source` | Název instance služby IoT Hub nebo instance digitálního vlákna Azure, jako je například *myhub.Azure-Devices.NET* nebo *mydigitaltwins.westus2.azuredigitaltwins.NET* |
-| `specversion` | *1.0*<br>Zpráva odpovídá této verzi specifikace CloudEvents. |
+| `specversion` | *1.0*<br>Zpráva odpovídá této verzi [specifikace CloudEvents](https://github.com/cloudevents/spec). |
 | `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
 | `datacontenttype` | `application/json` |
 | `subject` | ID digitálního vlákna |
@@ -189,11 +189,11 @@ Tady je další příklad digitálního vlákna. Tento model je založen na [mod
 
 Tady jsou pole v těle oznámení o změně hrany.
 
-| Název    | Hodnota |
+| Name    | Hodnota |
 | --- | --- |
 | `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id` je jedinečný pro každou událost DISTINCT |
 | `source` | Název instance digitálního vlákna Azure, jako je *mydigitaltwins.westus2.azuredigitaltwins.NET* |
-| `specversion` | *1.0*<br>Zpráva odpovídá této verzi specifikace CloudEvents. |
+| `specversion` | *1.0*<br>Zpráva odpovídá této verzi [specifikace CloudEvents](https://github.com/cloudevents/spec). |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
 |`datacontenttype`| `application/json` |
 | `subject` | ID vztahu, např. `<twinID>/relationships/<relationshipID>` |
@@ -245,11 +245,11 @@ Při aktualizaci digitálního vlákna se aktivují **oznámení o změně digit
 
 Tady jsou pole v těle oznámení o změně digitálního vlákna.
 
-| Název    | Hodnota |
+| Name    | Hodnota |
 | --- | --- |
 | `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id` je jedinečný pro každou událost DISTINCT |
 | `source` | Název instance služby IoT Hub nebo instance digitálního vlákna Azure, jako je například *myhub.Azure-Devices.NET* nebo *mydigitaltwins.westus2.azuredigitaltwins.NET*
-| `specversion` | *1.0*<br>Zpráva odpovídá této verzi specifikace CloudEvents. |
+| `specversion` | *1.0*<br>Zpráva odpovídá této verzi [specifikace CloudEvents](https://github.com/cloudevents/spec). |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
 | `datacontenttype` | `application/json` |
 | `subject` | ID digitálního vlákna |

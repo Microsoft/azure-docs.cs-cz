@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s EBSCO | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a EBSCO.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 144f7f65-69e9-4016-a151-fe1104fd6ba8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f37085744b9a0e7785ef3a411d53e4df5d15e494
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2395f3c8b46f69105a81cd2d866ee4e330f4791e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72595013"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555480"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ebsco"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s EBSCO
 
@@ -86,18 +81,18 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    Do textového pole **identifikátor** zadejte adresu URL:`pingsso.ebscohost.com`
+    Do textového pole **identifikátor** zadejte adresu URL:  `pingsso.ebscohost.com`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`http://search.ebscohost.com/login.aspx?authtype=sso&custid=<unique EBSCO customer ID>&profile=<profile ID>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `http://search.ebscohost.com/login.aspx?authtype=sso&custid=<unique EBSCO customer ID>&profile=<profile ID>`
 
     > [!NOTE]
     > Hodnota přihlašovací adresy URL není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta EBSCO](mailto:support@ebsco.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-    o **jedinečných prvcích:**  
+    o   **jedinečných prvcích:**  
 
-    o **custid** = zadejte jedinečné ID zákazníka EBSCO 
+    o   **custid** = zadejte jedinečné ID zákazníka EBSCO 
 
     **Profiling** = klienti můžou přizpůsobit odkaz na směrování uživatelů na konkrétní profil (v závislosti na tom, co kupují z EBSCO). Můžou zadat konkrétní ID profilu. Hlavní ID jsou EDS (služba EBSCO Discovery) a ehost (databáze EBSOCOhost). Pokyny pro stejné jsou uvedeny [zde](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile).
 
@@ -110,11 +105,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace EBSCO několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------------- |
     | FirstName   | User. křestní jméno |
     | LastName   | User. příjmení |
-    | E-mailu   | uživatel. pošta |
+    | E-mail   | uživatel. pošta |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
@@ -132,9 +127,9 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -186,11 +181,11 @@ Další informace o přístupovém panelu najdete v tématu [Úvod do přístupo
 
 1. Po dokončení výše uvedeného nastavení vymažte soubory cookie/mezipaměť a znovu se přihlaste. Nebudete se muset ručně přihlašovat znovu a nastavení přizpůsobení se zapamatuje.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

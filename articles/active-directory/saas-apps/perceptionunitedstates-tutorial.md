@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integraci se vnímání USA (ne UltiPro) | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a vnímání USA (ne UltiPro).
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b4a8f026-cb5f-41eb-9680-68eddc33565e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e9ba42f780c93486409077383750d0635637e99b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed2f2cd9fc10017619937cfd6b5644934f7631f1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67094839"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553936"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Kurz: Azure Active Directory integrace se vnímání USA (ne UltiPro)
 
@@ -32,7 +28,7 @@ Integrování příUSA příUltiProch) do Azure AD poskytuje následující výh
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -105,11 +101,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování služby Azure AD pomocí 
 
     ![Informace o jednotném přihlašování v doméně a adresách USA (UltiPro)](common/idp-intiated.png)
 
-    a. Do textového pole **identifikátor** zadejte adresu URL:`https://perception.kanjoya.com/sp`
+    a. Do textového pole **identifikátor** zadejte adresu URL: `https://perception.kanjoya.com/sp`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://perception.kanjoya.com/sso?idp=<entity_id>`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://perception.kanjoya.com/sso?idp=<entity_id>`
 
-    c. Aplikace **vnímání USA (UltiPro)** vyžaduje, aby byla hodnota **identifikátoru Azure AD** jako <entity_id>, kterou získáte v části **nastavení příUltiProho vnímání USA (mimo)** , která bude kódována jako identifikátor URI. K získání hodnoty kódované identifikátorem URI použijte následující odkaz: **http://www.url-encode-decode.com/**.
+    c. Aplikace **vnímání USA (UltiPro)** vyžaduje, aby byla hodnota **identifikátoru Azure AD** jako <entity_id>, kterou získáte v části **nastavení příUltiProho vnímání USA (mimo)** , která bude kódována jako identifikátor URI. K získání hodnoty kódované identifikátorem URI použijte následující odkaz: **http://www.url-encode-decode.com/** .
 
     d. Po získání hodnoty zakódované identifikátorem URI se bude kombinovat s **adresou URL odpovědi** , jak je uvedeno níže.
 
@@ -161,7 +157,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování služby Azure AD pomocí 
     
     c. Do textového pole **název zprostředkovatele identity** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal. 
 
-    d. Do **textového pole doména SAML**zadejte doménu, jako @contoso.comje.
+    d. Do **textového pole doména SAML**zadejte doménu, jako je @contoso.com .
 
     e. Znovu klikněte na **nahrát** a nahrajte soubor **XML s metadaty** .
 
@@ -185,11 +181,11 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -227,7 +223,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici USA vnímání (UltiPro), měli byste být automaticky přihlášeni ke vnímání USA (ne UltiPro), pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

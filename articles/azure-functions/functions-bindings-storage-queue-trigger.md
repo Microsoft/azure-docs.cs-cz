@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 2b44728d1f5b2a6985e7e636d9e3593b09d009ba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1755c2d572b44f1e0d8597a108ca83d429405f25
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212964"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565651"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Aktivační událost služby Azure Queue Storage pro Azure Functions
 
@@ -313,7 +313,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**textový** | Není k dispozici| Musí být nastaven na hodnotu `queueTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
+|**typ** | Není k dispozici| Musí být nastaven na hodnotu `queueTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**směr**| Není k dispozici | V *function.jspouze v* souboru. Musí být nastaven na hodnotu `in` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
 |**Jméno** | Není k dispozici |Název proměnné, která obsahuje datovou část položky fronty v kódu funkce.  |
 |**Proměnné QueueName** | **Proměnné QueueName**| Název fronty, která se má dotazovat. |
@@ -400,7 +400,7 @@ Pokud se čeká více zpráv ve frontách, aktivační událost fronty načte d�
 
 Velikost dávky a prahová hodnota pro získání nové dávky lze konfigurovat v [host.jsv souboru](functions-host-json.md#queues). Pokud chcete minimalizovat paralelní spouštění funkcí aktivovaných frontou ve Function App, můžete nastavit velikost dávky na 1. Toto nastavení eliminuje souběžnost, pokud vaše aplikace Function App běží na jednom virtuálním počítači (VM). 
 
-Aktivační událost fronty automaticky zabrání funkci ve zpracování zprávy fronty vícekrát. funkce není nutné zapisovat, aby bylo možné je idempotentní.
+Aktivační událost fronty automaticky zabrání funkci ve zpracování zprávy fronty vícekrát.
 
 ## <a name="hostjson-properties"></a>host.jsvlastností
 

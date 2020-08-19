@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 5c4c6be7c8a6287c5a8ec6a60121751ff9fc0dc9
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: af935aeaaeee11ab50b327b7f7b5b77246cb974b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509223"
+ms.locfileid: "88566042"
 ---
 # <a name="limitations"></a>Omezení
 
@@ -46,7 +46,6 @@ Podrobnější informace o tomto omezení najdete v části [velikost serveru](.
 
 **Stolní počítač s Windows 10**
 
-* UWP/x86 je jediná podporovaná platforma UWP. UWP/x64 se nepodporuje.
 * Jedinou podporovanou platformou Win32 je Win32/x64. Win32/x86 se nepodporuje.
 
 **HoloLens 2**

@@ -2,26 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s fieldglass | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a fieldglass.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2510195f-d5b1-4684-b3da-283fb8619df2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a5c405095a3c045a3bf1dd7c62486ffda73825
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 442445bc930408097f213329fad98b84200943ee
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85798909"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555143"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>Kurz: Azure Active Directory integrace s fieldglass
 
@@ -33,7 +28,7 @@ Integrace fieldglass s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,7 +101,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí fieldgla
 
     ![Informace o jednotném přihlašování v doméně fieldglass a adresách URL](common/idp-intiated.png)
 
-    a. Do textového pole **identifikátor** zadejte adresu URL `https://www.fieldglass.com` nebo postupujte podle vzoru:`https://<company name>.fgvms.com`
+    a. Do textového pole **identifikátor** zadejte adresu URL  `https://www.fieldglass.com` nebo postupujte podle vzoru: `https://<company name>.fgvms.com`
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
     
@@ -159,7 +154,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -197,7 +192,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici fieldglass, měli byste se automaticky přihlásit k fieldglass, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

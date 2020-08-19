@@ -1,20 +1,20 @@
 ---
-title: Použití emulátoru úložiště Azure pro vývoj a testování
-description: Emulátor úložiště Azure poskytuje bezplatné místní vývojové prostředí pro vývoj a testování vašich Azure Storagech aplikací.
+title: Použití emulátoru Azure Storage pro vývoj a testování
+description: Emulátor Azure Storage poskytuje bezplatné místní vývojové prostředí pro vývoj a testování vašich Azure Storagech aplikací.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: 3bef3ba1e993d91fee8b6f6ef2734f008c91d1a1
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 959a58a38861075c6509fe57136d8991eeb98ce6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236824"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588190"
 ---
-# <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
+# <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru Azure Storage pro vývoj a testování
 
 Emulátor úložiště Microsoft Azure je nástroj, který emuluje služby Azure Blob, Queue a Table pro účely místního vývoje. Svou aplikaci můžete testovat i v místním úložišti, aniž byste museli vytvářet předplatné Azure nebo náklady. Až budete spokojeni s tím, jak vaše aplikace funguje v emulátoru, přepněte na použití účtu úložiště Azure v cloudu.
 
@@ -322,7 +322,7 @@ V emulátoru nejsou žádné rozdíly specifické pro úložiště Queue.
 
 ### <a name="version-30"></a>Verze 3,0
 
-* Emulátor úložiště Azure se už nedodává ve stejném balíčku jako emulátor služby Compute.
+* Emulátor Azure Storage již není dodáván ve stejném balíčku jako emulátor pro výpočty.
 * Grafické uživatelské rozhraní emulátoru úložiště je zastaralé. Byl nahrazen rozhraním skriptového příkazového řádku. Podrobnosti o rozhraní příkazového řádku najdete v tématu Referenční informace k nástroji příkazového řádku emulátoru úložiště. Grafické rozhraní bude nadále k dispozici ve verzi 3,0, ale je k němu možné přistupovat pouze v případě, že se emulátor služby COMPUTE nainstaluje kliknutím pravým tlačítkem na ikonu na hlavním panelu systému a výběrem možnosti zobrazit uživatelské rozhraní emulátoru úložiště.
 * Služba Azure Storage je teď plně podporovaná ve verzi 2013-08-15. (Dřív byla tato verze podporovaná jenom emulátorem úložiště verze 2.2.1 Preview.)
 

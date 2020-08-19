@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 07/21/2020
-ms.openlocfilehash: 24c7e0a3c9a7d3c28823db0418e17cb94bc101ec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/14/2020
+ms.openlocfilehash: 7131ddac840d2854969147da2eeb82a890ce3410
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325062"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586796"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Přehled modelu vCore – Azure SQL Database a Azure SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ Model nákupu Virtual Core (vCore), který používá Azure SQL Database a Azure
 
 Mezi možnosti vrstvy služeb v modelu vCore patří Pro obecné účely, Pro důležité obchodní informace a měřítko. Vrstva služeb obecně definuje architekturu úložiště, omezení místa a vstupně-výstupních operací a možnosti provozní kontinuity související s dostupností a zotavením po havárii.
 
-|-|**Pro obecné účely**|**Pro důležité obchodní informace**|**Hyperškálování**|
+|-|**Pro obecné účely**|**Pro důležité obchodní informace**|**Hyperscale**|
 |---|---|---|---|
 |Nejvhodnější pro|Většina obchodních úloh. Nabízí uživatelsky orientované, vyvážené a škálovatelné možnosti výpočtů a úložiště. |Nabízí podnikovým aplikacím nejvyšší odolnost proti chybám pomocí několika izolovaných replik a poskytuje nejvyšší výkon vstupně-výstupních operací na jednu repliku databáze.|Většina obchodních úloh s vysokou škálovatelností úložiště a požadavky na škálování pro čtení.  Nabízí vyšší odolnost proti chybám tím, že umožňuje konfiguraci více než jedné repliky izolované databáze. |
 |Storage|Používá vzdálené úložiště.<br/>**SQL Database zřízené výpočetní**prostředky:<br/>5 GB – 4 TB<br/>**Výpočetní**prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance SQL**: 32 GB až 8 TB |Používá místní úložiště SSD.<br/>**SQL Database zřízené výpočetní**prostředky:<br/>5 GB – 4 TB<br/>**Spravovaná instance SQL**:<br/>32 GB AŽ 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
@@ -102,12 +102,12 @@ To enable M-series hardware for a subscription and region, a support request mus
 
 |Generování hardwaru  |Compute  |Paměť  |
 |:---------|:---------|:---------|
-|COMPUTE GEN4 –     |– Procesory Intel E5-2673 V3 (Haswell) 2,4 GHz<br>-Zřídit až 24 virtuální jádra (1 vCore = 1 fyzický jádro)  |– 7 GB na vCore<br>– Zřídit až 168 GB|
-|Gen5     |**Zřízené výpočetní prostředky**<br>– Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz a Intel SP-8160 (Skylake) * procesory<br>-Zřídit až 80 virtuální jádra (1 vCore = 1 Hyper-thread)<br><br>**Bezserverové výpočetní prostředí**<br>– Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz a Intel SP-8160 (Skylake) * procesory<br>– Automatické škálování až na 16 virtuální jádra (1 vCore = 1 Hyper-thread)|**Zřízené výpočetní prostředky**<br>-5,1 GB na vCore<br>– Zřídit až 408 GB<br><br>**Bezserverové výpočetní prostředí**<br>– Automatické škálování až na 24 GB na vCore<br>– Automatické škálování až do 48 GB max.|
-|Řada Fsv2     |– Procesory Intel Xeon Platinum 8168 (Skylake)<br>– S trvalou frekvencí 3,4 GHz a maximální jednotnou rychlostí Turbo 3,7 GHz v jádře.<br>-Zřídit až 72 virtuální jádra (1 vCore = 1 Hyper-thread)|-1,9 GB na vCore<br>– Zřídit až 136 GB|
-|Řada M     |– Intel Xeon E7-8890 V3 2,5 GHz a procesory Intel Xeon Platinum 8280M 2,7 GHz (Cascade Lake)<br>-Zřídit až 128 virtuální jádra (1 vCore = 1 Hyper-thread)|– 29 GB na vCore<br>– Zřídit až 3,7 TB|
+|COMPUTE GEN4 –     |– Procesory Intel® E5-2673 V3 (Haswell) 2,4 GHz<br>-Zřídit až 24 virtuální jádra (1 vCore = 1 fyzický jádro)  |– 7 GB na vCore<br>– Zřídit až 168 GB|
+|Gen5     |**Zřízené výpočetní prostředky**<br>– Intel® E5-2673 v4 (Broadwell) 2,3-GHz, Intel® SP-8160 (Skylake) \* a intel® 8272CL (Cascade Lake) 2,5 GHz \*<br>-Zřídit až 80 virtuální jádra (1 vCore = 1 Hyper-thread)<br><br>**Bezserverové výpočetní prostředí**<br>-Intel® E5-2673 v4 (Broadwell) 2,3-GHz a Intel® SP-8160 (Skylake) * procesory<br>– Automatické škálování až do 40 virtuální jádra (1 vCore = 1 Hyper-thread)|**Zřízené výpočetní prostředky**<br>-5,1 GB na vCore<br>– Zřídit až 408 GB<br><br>**Bezserverové výpočetní prostředí**<br>– Automatické škálování až na 24 GB na vCore<br>– Automatické škálování až do 120 GB max.|
+|Řada Fsv2     |– Procesory Intel® 8168 (Skylake)<br>– S trvalou frekvencí 3,4 GHz a maximální jednotnou rychlostí Turbo 3,7 GHz v jádře.<br>-Zřídit až 72 virtuální jádra (1 vCore = 1 Hyper-thread)|-1,9 GB na vCore<br>– Zřídit až 136 GB|
+|Řada M     |– Intel® E7-8890 V3 2,5 GHz a Intel® 8280M 2,7 GHz (Cascade Lake) procesory<br>-Zřídit až 128 virtuální jádra (1 vCore = 1 Hyper-thread)|– 29 GB na vCore<br>– Zřídit až 3,7 TB|
 
-\*V zobrazení dynamické správy [Sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) se generování hardwaru pro databáze Gen5 využívající procesory Intel SP-8160 (Skylake) zobrazí jako Gen6. Omezení prostředků pro všechny databáze Gen5 jsou stejná bez ohledu na typ procesoru (Broadwell nebo Skylake).
+\* V zobrazení [Sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dynamické správy se generování hardwaru pro databáze, které používají procesory Intel® SP-8160 (Skylake), zobrazuje jako Gen6, zatímco generování hardwaru pro databáze pomocí technologie Intel® 8272CL (Cascade Lake) se zobrazuje jako Gen7. Omezení prostředků pro všechny databáze Gen5 jsou stejná bez ohledu na typ procesoru (Broadwell, Skylake nebo Cascade Lake).
 
 Další informace o omezeních prostředků najdete v tématech [omezení prostředků pro izolované databáze (Vcore)](resource-limits-vcore-single-databases.md)nebo [omezení prostředků pro elastické fondy (Vcore)](resource-limits-vcore-elastic-pools.md).
 
@@ -180,7 +180,7 @@ Další podrobnosti najdete v příkazu [AZ SQL mi Update](https://docs.microsof
 
 ### <a name="hardware-availability"></a>Dostupnost hardwaru
 
-#### <a name="gen4gen5"></a><a name="gen4gen5-1"></a>COMPUTE GEN4 –/Gen5
+#### <a name="gen4gen5"></a><a name="gen4gen5-1"></a> COMPUTE GEN4 –/Gen5
 
 COMPUTE GEN4 – hardware se [rozchází a už není k](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) dispozici pro nová nasazení. Všechny nové databáze musí být nasazeny na Gen5 hardwaru.
 

@@ -2,25 +2,21 @@
 title: 'Kurz: Azure Active Directory integrace s Manabi Pocket | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Manabi.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8e521099-bf7d-43ab-a0e0-86aa1c9e577e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 44cbad443cb1341ea080f517bbe614ec6fc46b13
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 441c9db16550ef2b1e1c51828a4fd37068678af6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67097813"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554822"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>Kurz: Azure Active Directory integrací s Manabi Pocket
 
@@ -32,7 +28,7 @@ Integrace Manabie s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -105,9 +101,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí služby 
 
     ![Manabi informace o jednotném přihlašování k doméně a adrese URL pro Pocket](common/sp-identifier.png)
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://ed-cl.com/`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL: `https://ed-cl.com/`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider`
 
     > [!NOTE]
     > Hodnota identifikátoru není reálné číslo. Aktualizuje tuto hodnotu skutečným identifikátorem. Pokud chcete získat hodnotu, kontaktujte [tým podpory Manabi pro Pocket Client](mailto:info-ed-cl@ntt.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -148,11 +144,11 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -190,7 +186,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Manabi, měli byste být automaticky přihlášeni ke službě Manabi Pocket, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

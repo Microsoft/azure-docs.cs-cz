@@ -5,19 +5,17 @@ ms.topic: include
 ms.date: 08/17/2020
 ms.author: inhenkel
 ms.custom: CLI
-ms.openlocfilehash: c902ea001d18504dabffc8431acafe33822792e1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
-ms.translationtype: HT
+ms.openlocfilehash: 5c0341087cdd348e973da5faaa1f90081780c9c8
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88539105"
+ms.locfileid: "88602228"
 ---
 <!--Create a media services account -->
 
 Následující příkaz Azure CLI vytvoří nový účet Media Services. Můžete nahradit následující hodnoty: `amsaccount` `storageaccountforams` (musí odpovídat hodnotě, kterou jste zadali pro účet úložiště), a `amsResourceGroup` (musí se shodovat s hodnotou, kterou jste zadali pro skupinu prostředků).  
 
 ```azurecli
-az ams account create --name amsaccount \
-   -g amsResourceGroup --storage-account storageaccountforams \
-   -l westus2 
+az ams account create --name amsaccount -g amsResourceGroup --storage-account storageaccountforams -l westus2
 ```

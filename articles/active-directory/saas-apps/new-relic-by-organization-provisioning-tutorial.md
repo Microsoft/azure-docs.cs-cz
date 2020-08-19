@@ -2,25 +2,21 @@
 title: 'Kurz: konfigurace nového Relic podle organizace pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
 description: Přečtěte si, jak automaticky zřídit a zrušit zřízení uživatelských účtů z Azure AD až po nové Relic organizací.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 7fd0d976-4f70-4ce5-992e-3ea4ed8e5d60
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2020
 ms.author: Zhchia
-ms.openlocfilehash: da260221f42bb7e191040857abe4222f449257f5
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c7061be06f8a87c2304b678790a2b1eb63ea81f7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926837"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554418"
 ---
 # <a name="tutorial-configure-new-relic-by-organization-for-automatic-user-provisioning"></a>Kurz: konfigurace nového Relic podle organizace pro Automatické zřizování uživatelů
 
@@ -83,7 +79,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-new-relic-by-organization-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro nové Relic podle organizace ve službě Azure AD:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

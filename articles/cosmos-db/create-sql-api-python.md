@@ -1,24 +1,24 @@
 ---
 title: 'Rychlý Start: sestavení aplikace v Pythonu pomocí Azure Cosmos DB účtu rozhraní SQL API'
 description: Tento článek představuje ukázku kódu Python, který můžete použít k připojení a dotazování služby Azure Cosmos DB přes rozhraní SQL API.
-author: anfeldma-ms
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 05/11/2020
-ms.author: anfeldma
+ms.date: 08/11/2020
+ms.author: rosouz
 ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: 7014e39492033b241d05cb670083d5b6277fac6e
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 16f1a7d3608b13dd5423205dc75500d76f62d69a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872935"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588122"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Rychlý Start: sestavení aplikace v Pythonu pomocí Azure Cosmos DB účtu rozhraní SQL API
 
@@ -34,11 +34,19 @@ V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB účet rozhran�
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) můžete použít také s identifikátorem URI `https://localhost:8081` a klíčem `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
-- [Python 3.6 +](https://www.python.org/downloads/), se `python` spustitelným souborem v `PATH` .
+- Účet Cosmos DB. Máte tyto možnosti:
+    * V rámci předplatného Azure Active:
+        * [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free) nebo použijte stávající předplatné. 
+        * [Měsíční kredity sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
+        * [Azure Cosmos DB úroveň Free](https://docs.microsoft.com/azure/cosmos-db/optimize-dev-test#azure-cosmos-db-free-tier)
+    * Bez aktivního předplatného Azure:
+        * [Vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/), což je testovací prostředí, které trvá po dobu 30 dnů.
+        * [Emulátor služby Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) 
+- [Python 2,7 nebo 3.5.3 +](https://www.python.org/downloads/), se `python` spustitelným souborem v `PATH` .
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Přípona Pythonu pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview).
 - [Git](https://www.git-scm.com/downloads). 
+- [Azure Cosmos DB SQL API SDK pro Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 

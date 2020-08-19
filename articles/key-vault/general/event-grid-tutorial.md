@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 300abc8ca6798866295c865e68bf5ec24a00cf5f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 283c66eb3b49b60b87283c5d94cc4f110adceffe
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81423252"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588743"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Příjem a reakce na oznámení trezoru klíčů pomocí Azure Event Grid (Preview)
 
@@ -25,7 +25,7 @@ Tato příručka popisuje, jak dostávat oznámení o Key Vault prostřednictví
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Trezor klíčů ve vašem předplatném Azure. Nový trezor klíčů můžete rychle vytvořit podle kroků v části [nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure CLI](../secrets/quick-create-cli.md).
 
 ## <a name="concepts"></a>Koncepty
@@ -187,7 +187,7 @@ Znovu zaregistrujte Event Grid a poskytovatele trezoru klíčů ve svých poskyt
 
 ## <a name="next-steps"></a>Další kroky
 
-Blahopřejeme! Pokud jste správně postupovali podle všech těchto kroků, jste teď připraveni programově reagovat na změny stavu tajných kódů uložených ve vašem trezoru klíčů.
+Gratulujeme! Pokud jste správně postupovali podle všech těchto kroků, jste teď připraveni programově reagovat na změny stavu tajných kódů uložených ve vašem trezoru klíčů.
 
 Pokud jste k hledání změn stavu tajných kódů v trezorech klíčů používali systém založený na cyklické dotazování, můžete nyní začít používat tuto funkci oznámení. Můžete také nahradit testovací skript v Runbooku kódem pro programové obnovení tajných kódů, když brzy vyprší platnost.
 

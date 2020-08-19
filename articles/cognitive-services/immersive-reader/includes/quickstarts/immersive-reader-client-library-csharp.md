@@ -10,18 +10,18 @@ ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 68009797e48ab15c1c8df983b3413d7b7dac54b0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: fdcffeda1c57cdb043c51c8a3640006be8ae7418
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87425082"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88602580"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
 V tomto rychlém startu vytvoříte webovou aplikaci od začátku a integrujete moderní čtečku pomocí klientské knihovny pro moderní čtenáře. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -306,7 +306,7 @@ Po kliknutí na tlačítko "moderní čtečka" se zobrazí moderní čtečka, kt
 
 ## <a name="next-steps"></a>Další kroky
 
-* Zobrazte si [rychlý startNode.js](../../tutorial-nodejs.md) , abyste viděli, co dalšího můžete dělat s klientskou knihovnou pro moderní čtenáře pomocí Node.js
+* Zobrazte si [ rychlý startNode.js](../../tutorial-nodejs.md) , abyste viděli, co dalšího můžete dělat s klientskou knihovnou pro moderní čtenáře pomocí Node.js
 * Podívejte se na [kurz pro Android](../../tutorial-android.md) , kde najdete další informace, které můžete dělat v sadě moderní čtečky pomocí Java nebo Kotlin pro Android.
 * Podívejte se na [kurz pro iOS](../../tutorial-ios.md) , kde najdete další informace, které můžete dělat v sadě pro moderní čtečku pomocí SWIFT pro iOS.
 * Podívejte se na [kurz Pythonu](../../tutorial-python.md) , abyste viděli, co dalšího můžete dělat s klientskou knihovnou moderního čtenáře pomocí Pythonu.

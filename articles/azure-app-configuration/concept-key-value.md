@@ -1,17 +1,17 @@
 ---
 title: Porozumění konfiguračnímu klíči Azure App – úložiště hodnot
-description: Pochopte, jak jsou konfigurační data uložená v konfiguraci aplikace Azure.
+description: Pochopení úložiště klíč-hodnota v konfiguraci aplikace Azure, které ukládá konfigurační data jako klíčové hodnoty. Klíčové hodnoty jsou reprezentace nastavení aplikace.
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: 9a0ed747ea0c894214a633bdbc8141e95e95b5fb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b1998532c3d9e4272d91280d57d9ea2f6e7a262c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830032"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586388"
 ---
 # <a name="keys-and-values"></a>Klíče a hodnoty
 
@@ -69,16 +69,16 @@ Každý klíč-hodnota je jednoznačně identifikovaný pomocí klíče a popisk
 
 | Klíč | Popis |
 |---|---|
-| `key`je vynecháno nebo`key=*` | Odpovídá všem klíčům |
+| `key` je vynecháno nebo `key=*` | Odpovídá všem klíčům |
 | `key=abc` | Odpovídá přesně názvu klíče **ABC** |
 | `key=abc*` | Odpovídá názvům klíčů, které začínají na **ABC** |
 | `key=abc,xyz` | Odpovídá názvům klíčů **ABC** nebo **XYZ**. Omezeno na pět CSV |
 
 Můžete také zahrnout následující vzory popisku:
 
-| Štítek | Popis |
+| Popisek | Popis |
 |---|---|
-| `label`je vynecháno nebo`label=*` | Odpovídá jakémukoli popisku, který obsahuje`\0` |
+| `label` je vynecháno nebo `label=*` | Odpovídá jakémukoli popisku, který obsahuje `\0` |
 | `label=%00` | Odpovídá `\0` popisku |
 | `label=1.0.0` | Přesně odpovídá popisku **1.0.0** |
 | `label=1.0.*` | Odpovídá popiskům, které začínají na **1,0.** |

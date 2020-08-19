@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: e7aa5963f6e26776184de361aaa91f5a3c36ec9e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b8297175c24aac132fd7d83580e0889e0da4730
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546615"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587952"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Spotinst
 
@@ -75,18 +75,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované v IDP, proveďte v **základní části Konfigurace SAML** tyto kroky:
 
-    a. Ověřte **nastavení dalších adres URL**.
-
-    b. Do textového pole **stav přenosu** zadejte hodnotu: `<ID>`
-
-1. Klikněte na **nastavit další adresy URL** a proveďte následující kroky, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
-
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://console.spotinst.com/auth/saml`
-
-    > [!NOTE]
-    > Hodnota stavu přenosu není v reálném čase. Hodnotu stavu přenosu aktualizujete skutečnou hodnotou stavu přenosu, která je vysvětlena dále v tomto kurzu.
+   1. Ujistěte se, že **Adresa URL odpovědi** je nastavená na: https://console.spotinst.com/auth/saml .
+   1. Do pole **stav přenosu**zadejte ID organizace Spotinst, které můžete také potvrdit na kartě **jednotného přihlašování** .
+   1. **Adresa URL pro přihlášení** musí být prázdná.
 
 1. Klikněte na **Uložit**.
 
